@@ -2,12 +2,12 @@
   tocHref: /azure/
   topicHref: /azure/index
   items:
-    - name: Container Kayıt Defteri
+    - name: Container Registry
       tocHref: /azure/security-center/
       topicHref: /azure/container-registry/index
-    - name: Container Kayıt Defteri
+    - name: Container Registry
       tocHref: /azure/aks/
       topicHref: /azure/container-registry/index
-    - name: Container Kayıt Defteri
+    - name: Container Registry
       tocHref: /azure/event-grid/
       topicHref: /azure/container-registry/index

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/07/2018
 ms.author: alkohli
 ms.openlocfilehash: 8a09a52db40f4f52219bce3e703e275b0f310c1a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67189038"
 ---
 Depolama hesabına bağlanmak ve bağlantıyı doğrulamak için aşağıdaki adımları izleyin.
@@ -21,7 +21,7 @@ Depolama hesabına bağlanmak ve bağlantıyı doğrulamak için aşağıdaki ad
 
     ![Data Box panosu](media/data-box-verify-connection/data-box-connect-via-rest-11.png)    
 
-3. **Bağlantı Özeti** iletişim kutusunda, belirtilen bilgileri gözden geçirin. **Bağlan**’ı seçin.
+3. **Bağlantı Özeti** iletişim kutusunda, belirtilen bilgileri gözden geçirin. **Bağlan**'ı seçin.
 
     ![Data Box panosu](media/data-box-verify-connection/data-box-connect-via-rest-12.png)
 

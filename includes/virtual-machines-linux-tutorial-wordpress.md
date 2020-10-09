@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 76a080d40721fa78ad703f77f6dbe7a3363ab77e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68857516"
 ---
 ## <a name="install-wordpress"></a>WordPress yükleme
@@ -85,6 +85,6 @@ sudo ln -s /usr/share/wordpress /var/www/html/wordpress
 sudo mv /etc/wordpress/config-localhost.php /etc/wordpress/config-default.php
 ```
 
-Şimdi WordPress kurulumunu tamamlayabilir ve platformda içerik yayımlayabilirsiniz. Bir tarayıcı açın ve `http://yourPublicIPAddress/wordpress` adresine gidin. Sanal makinenizin genel IP adresini değiştirin. Şu görüntüye benzemelidir.
+Şimdi WordPress kurulumunu tamamlayabilir ve platformda içerik yayımlayabilirsiniz. Bir tarayıcıyı açın ve `http://yourPublicIPAddress/wordpress` adresine gidin. Sanal makinenizin genel IP adresini değiştirin. Şu görüntüye benzemelidir.
 
 ![WordPress yükleme sayfası](./media/virtual-machines-linux-tutorial-wordpress/wordpressstartpage.png)

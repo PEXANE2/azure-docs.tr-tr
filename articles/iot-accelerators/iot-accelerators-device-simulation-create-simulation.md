@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: troyhop
 ms.openlocfilehash: 09a6920e0d3a50da1bdacbf2bc7a80396c885897
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "61448569"
 ---
 # <a name="tutorial-create-and-run-an-iot-device-simulation"></a>Öğretici: IoT cihaz simülasyonu oluşturma ve çalıştırma
@@ -30,7 +30,7 @@ Bu öğreticide şunları yaptınız:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi izlemek için Azure aboneliğinizde Cihaz Simülasyonu'nun dağıtılmış örneğine sahip olmanız gerekir.
 

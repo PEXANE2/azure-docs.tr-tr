@@ -15,15 +15,15 @@ ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
 ms.openlocfilehash: b5a136ae05b3cd410ca252b6d5a1df443aff6f7a
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75350132"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak ağ trafiğini ağ güvenlik grubuyla filtreleme
 
-Bir sanal ağ alt ağına gelen ve sanal ağ alt ağından giden ağ trafiğini, bir ağ güvenlik grubu ile filtreleyebilirsiniz. Ağ güvenlik grupları, ağ trafiğini IP adresi, bağlantı noktası ve protokole göre filtreleyen güvenlik kuralları içerir. Güvenlik kuralları bir alt ağda dağıtılmış kaynaklara uygulanır. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bir sanal ağ alt ağına gelen ve sanal ağ alt ağından giden ağ trafiğini, bir ağ güvenlik grubu ile filtreleyebilirsiniz. Ağ güvenlik grupları, ağ trafiğini IP adresi, bağlantı noktası ve protokole göre filtreleyen güvenlik kuralları içerir. Güvenlik kuralları bir alt ağda dağıtılmış kaynaklara uygulanır. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Ağ güvenlik grubu ve güvenlik kuralları oluşturma
@@ -47,7 +47,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
     | Ayar                 | Değer                                              |
     | ---                     | ---                                                |
-    | Ad                    | myVirtualNetwork                                   |
+    | Adı                    | myVirtualNetwork                                   |
     | Adres alanı           | 10.0.0.0/16                                        |
     | Abonelik            | Aboneliğinizi seçin.                          |
     | Kaynak grubu          | **Yeni oluştur**’u seçin ve *myResourceGroup* değerini girin. |
@@ -65,7 +65,7 @@ Uygulama güvenlik grubu, web sunucuları gibi benzer işlevlere sahip sunucular
 
     | Ayar        | Değer                                                         |
     | ---            | ---                                                           |
-    | Ad           | myAsgWebServers                                               |
+    | Adı           | myAsgWebServers                                               |
     | Abonelik   | Aboneliğinizi seçin.                                     |
     | Kaynak grubu | **Mevcut olanı kullan** ' ı seçin ve ardından **myresourcegroup**öğesini seçin. |
     | Konum       | Doğu ABD                                                       |
@@ -74,7 +74,7 @@ Uygulama güvenlik grubu, web sunucuları gibi benzer işlevlere sahip sunucular
 
     | Ayar        | Değer                                                         |
     | ---            | ---                                                           |
-    | Ad           | myAsgMgmtServers                                              |
+    | Adı           | myAsgMgmtServers                                              |
     | Abonelik   | Aboneliğinizi seçin.                                     |
     | Kaynak grubu | **Mevcut olanı kullan** ' ı seçin ve ardından **myresourcegroup**öğesini seçin. |
     | Konum       | Doğu ABD                                                       |
@@ -87,7 +87,7 @@ Uygulama güvenlik grubu, web sunucuları gibi benzer işlevlere sahip sunucular
 
     |Ayar|Değer|
     |---|---|
-    |Ad|myNsg|
+    |Adı|myNsg|
     |Abonelik| Aboneliğinizi seçin.|
     |Kaynak grubu | **Mevcut olanı kullan** ' ı seçin ve ardından *myresourcegroup*öğesini seçin.|
     |Konum|Doğu ABD|
@@ -114,7 +114,7 @@ Uygulama güvenlik grubu, web sunucuları gibi benzer işlevlere sahip sunucular
     | Hedef             | **Uygulama güvenlik grubu**'nu seçin ve sonra da **Uygulama güvenlik grubu** olarak **myAsgWebServers** öğesini seçin.  |
     | Hedef bağlantı noktası aralıkları | 80, 443 girin                                                                                                    |
     | Protokol                | TCP seçin                                                                                                      |
-    | Name                    | Allow-Web-All                                                                                                   |
+    | Adı                    | Allow-Web-All                                                                                                   |
 
 3. Aşağıdaki değerleri kullanarak 2. adımı yeniden tamamlayın:
 
@@ -124,7 +124,7 @@ Uygulama güvenlik grubu, web sunucuları gibi benzer işlevlere sahip sunucular
     | Hedef bağlantı noktası aralıkları | 3389 girin                                                                                                      |
     | Protokol                | TCP seçin                                                                                                      |
     | Öncelik                | 110 girin                                                                                                       |
-    | Name                    | İzin Ver-RDP-Tümü                                                                                                   |
+    | Adı                    | İzin Ver-RDP-Tümü                                                                                                   |
 
     Bu öğreticide, RDP (3389 numaralı bağlantı noktası) *myAsgMgmtServers* uygulama güvenlik grubuna atanmış olan VM için İnternet'te kullanıma sunulur. Üretim ortamlarında 3389 numaralı bağlantı noktasını İnternette kullanıma sunmak yerine VPN veya özel ağ bağlantısı kullanarak yönetmek istediğiniz Azure kaynaklarına bağlamanız önerilir.
 
@@ -146,10 +146,10 @@ Sanal ağ üzerinde iki sanal makine oluşturun.
     |---|---|
     |Abonelik| Aboneliğinizi seçin.|
     |Kaynak grubu| **Mevcut olanı kullan**’ı seçin ve **myResourceGroup** seçeneğini belirleyin.|
-    |Name|myVmWeb|
+    |Adı|myVmWeb|
     |Konum| **Doğu ABD**’yi seçin.|
     |Kullanıcı adı| Seçtiğiniz bir kullanıcı adını girin.|
-    |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
+    |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)karşılamalıdır.|
 
    
 

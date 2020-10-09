@@ -10,17 +10,17 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 01031159d1894c7cb5f36b48f268186dff21fd22
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77471338"
 ---
 # <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>Öğretici: Azure 'da verileri yönetilen diskler olarak içeri aktarmak için Data Box Heavy kullanma
 
 Bu öğreticide, şirket içi VHD 'leri Azure 'da yönetilen disklere geçirmek için Azure Data Box Heavy nasıl kullanılacağı açıklanmaktadır. Şirket içi VM 'lerden VHD 'Ler, sayfa Blobları olarak Data Box Heavy kopyalanır ve yönetilen diskler olarak Azure 'a yüklenir. Bu yönetilen diskler daha sonra Azure VM 'lerine iliştirilebilir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Önkoşulları inceleyin
@@ -116,7 +116,7 @@ Bir Linux ana bilgisayar kullanıyorsanız, cihazınızı NFS istemcilerine eri�
 
     ![NFS istemci erişimini yapılandırma 1](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
 
-2. NFS istemcisinin IP adresini girin ve **Ekle**'ye tıklayın. Bu adımı tekrarlayarak birden fazla NFS istemcisi için erişim sağlayabilirsiniz. **Tamam** düğmesine tıklayın.
+2. NFS istemcisinin IP adresini girin ve **Ekle**'ye tıklayın. Bu adımı tekrarlayarak birden fazla NFS istemcisi için erişim sağlayabilirsiniz. **Tamam**'a tıklayın.
 
     ![NFS istemci erişimini yapılandırma 2](media/data-box-deploy-copy-data-from-vhds/nfs-client-access2.png)
 

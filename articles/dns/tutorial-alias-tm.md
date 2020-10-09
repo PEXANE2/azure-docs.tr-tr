@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: 4bdfc950cc1277809811dc2c548a57cc2138a8e4
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77149958"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Öğretici: Traffic Manager ile tepe etki alanı adlarını desteklemek için diğer ad kaydı yapılandırma 
@@ -20,7 +20,7 @@ ms.locfileid: "77149958"
 Bir Azure Traffic Manager profiline başvurmak üzere etki alanı tepe adı için diğer ad kaydı oluşturabilirsiniz. Örneğin: contoso.com. Yönlendirme hizmeti kullanmak yerine Azure DNS yapılandırması ile Traffic Manager profiline doğrudan bölgenizden başvurabilirsiniz. 
 
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Ana bilgisayar VM'si ve ağ altyapısı oluşturma.
@@ -31,7 +31,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Birlikte test edilecek Azure DNS içinde barındırabileceğiniz bir etki alanı adınızın olması gerekir. Bu etki alanı üzerinde tam denetime sahip olmanız gerekir. Tam denetim, etki alanı için ad sunucusu (NS) kayıtlarını ayarlama olanağını kapsar.
 
 Azure DNS’te etki alanınızı barındırma yönergeleri için bkz. [Öğretici: Azure DNS’te etki alanınızı barındırma](dns-delegate-domain-azure-dns.md).
@@ -88,7 +88,7 @@ Bu işlemleri tekrarlayarak **Web-02** üzerine de IIS yükleyin.
 3. **Oluştur**’u seçin.
 4. Dağıtım tamamlandıktan sonra **Kaynağa git**'i seçin.
 5. Traffic Manager profili sayfasının **Ayarlar** bölümünde **Uç noktalar**'ı seçin.
-6. **Ekle**’yi seçin.
+6. **Add (Ekle)** seçeneğini belirleyin.
 7. **Tür** olarak **Dış uç nokta**'yı seçin ve **Ad** alanına **EP-Web01** girin.
 8. **Tam etki alanı adı (FQDN) veya IP** metin kutusuna önceden not ettiğiniz **Web-01-ip** IP adresini girin.
 9. Diğer kaynaklarınızla aynı **Konum** değerini seçin ve **Tamam**'ı seçin.

@@ -16,15 +16,15 @@ ms.date: 10/25/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: acdaf2318c3082db876ed9c69b704d3d00cd4c90
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76834663"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak iki sanal makine arasındaki ağ iletişimini izleme
 
-Bir sanal makine (VM) ve başka bir sanal makine gibi bir uç nokta arasındaki iletişimin başarılı olması, kuruluşunuz için kritik olabilir. Bazen iletişimi kesebilecek yapılandırma değişiklikleri olur. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bir sanal makine (VM) ve başka bir sanal makine gibi bir uç nokta arasındaki iletişimin başarılı olması, kuruluşunuz için kritik olabilir. Bazen iletişimi kesebilecek yapılandırma değişiklikleri olur. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * İki sanal makine oluşturma
@@ -36,7 +36,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 ## <a name="create-vms"></a>VM oluşturma
 
@@ -50,9 +50,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
     |Ayar|Değer|
     |---|---|
-    |Ad|myVm1|
+    |Adı|myVm1|
     |Kullanıcı adı| Seçtiğiniz bir kullanıcı adını girin.|
-    |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
+    |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)karşılamalıdır.|
     |Abonelik| Aboneliğinizi seçin.|
     |Kaynak grubu| **Yeni oluştur**’u seçin ve **myResourceGroup** değerini girin.|
     |Konum| **Doğu ABD** seçin|
@@ -73,7 +73,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 |Adım|Ayar|Değer|
 |---|---|---|
 | 1 | **Ubuntu Server** sürümü seçin |                                                                         |
-| 3 | Name                                  | myVm2                                                                   |
+| 3 | Adı                                  | myVm2                                                                   |
 | 3 | Kimlik doğrulaması türü                   | SSH genel anahtarınızı yapıştırın veya **Parola**’yı seçin bir parola girin. |
 | 3 | Kaynak grubu                        | **Mevcut olanı kullan**’ı seçin ve **myResourceGroup** seçeneğini belirleyin.                 |
 | 6 | Uzantıları                            | **Linux için ağ Izleyicisi Aracısı**                                             |
@@ -92,7 +92,7 @@ Sanal makinenin dağıtılması birkaç dakika sürer. Kalan adımlara devam etm
 
     | Ayar                  | Değer               |
     | ---------                | ---------           |
-    | Ad                     | myVm1-myVm2(22)     |
+    | Adı                     | myVm1-myVm2(22)     |
     | Kaynak                   |                     |
     | Sanal makine          | myVm1               |
     | Hedef              |                     |

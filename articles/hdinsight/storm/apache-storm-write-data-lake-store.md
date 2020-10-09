@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.openlocfilehash: 579163180f6c7ba19927ca66d20bd92d1b2de52e
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73241201"
 ---
 # <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Apache Storm Apache Hadoop ini yazma
@@ -21,7 +21,7 @@ Bu öğreticide, HDInsight üzerinde Apache Storm tarafından kullanılan, Apach
 
 Bu belgede kullanılan örnek topoloji, HDInsight üzerinde fırtınası ile birlikte gelen bileşenlere bağımlıdır. Diğer Apache Storm kümeleriyle birlikte kullanıldığında, değişikliğin Azure Data Lake Storage çalışmasını gerektirebilir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Kümeyi betik eylemiyle yapılandırma
@@ -30,7 +30,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > * Çıktı verilerini görüntüle
 > * Topolojiyi durdurma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Java geliştirici seti (JDK) sürüm 8](https://aka.ms/azure-jdks)
 
@@ -117,7 +117,7 @@ Varsayılan olarak, HDInsight üzerindeki fırtınası, `HdfsBolt` Azure depolam
 |Betik türü |-Özel|
 |Bash betiği URI 'SI |`https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh`|
 |Düğüm türleri |Nimbus, Gözetmen|
-|Parametreler |Yok|
+|Parametreler |Hiçbiri|
 
 Bu betiği kümenizle birlikte kullanma hakkında bilgi için bkz. [betik eylemleri kullanarak HDInsight kümelerini özelleştirme](./../hdinsight-hadoop-customize-cluster-linux.md) belgesi.
 

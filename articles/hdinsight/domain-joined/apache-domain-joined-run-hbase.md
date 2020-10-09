@@ -8,17 +8,17 @@ ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.openlocfilehash: 89e9faeb3c67d0fd0c57adea3a3f69ec5438e3a0
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73044654"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Öğretici: HDInsight 'ta Kurumsal Güvenlik Paketi ile Apache HBase ilkelerini yapılandırma
 
 Kurumsal Güvenlik Paketi (ESP) Apache HBase kümeleri için Apache Ranger ilkelerini nasıl yapılandıracağınızı öğrenin. ESP kümeleri bir etki alanına bağlıdır ve kullanıcıların etki alanı kimlik bilgileriyle kimlik doğrulaması yapmasına olanak sağlar. Bu öğreticide, bir HBase tablosundaki farklı sütun ailelerine erişimi kısıtlamak için iki Ranger ilkesi oluşturacaksınız.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Etki alanı kullanıcılarını oluşturma
@@ -30,7 +30,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-* [Azure portalında](https://portal.azure.com/) oturum açın.
+* [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 * Kurumsal Güvenlik Paketi bir [HDInsight HBase kümesi](apache-domain-joined-configure-using-azure-adds.md)oluşturun.
 
@@ -235,11 +235,11 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
 
 Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz HBase kümesini aşağıdaki adımlarla silin:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. Üstteki **arama** kutusuna **HDInsight**yazın. 
 1. **Hizmetler**altında **HDInsight kümeleri** ' ni seçin.
 1. Görüntülenen HDInsight kümeleri listesinde, bu öğretici için oluşturduğunuz kümenin yanındaki **...** öğesine tıklayın. 
-1. **Sil**'e tıklayın. **Evet**' e tıklayın.
+1. **Sil**'e tıklayın. **Evet**'e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

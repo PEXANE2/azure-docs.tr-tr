@@ -9,17 +9,17 @@ ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: e07fc34c7177e3a1dace34ab298b64dc3aa6a06a
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74011358"
 ---
 # <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>Öğretici: Web uygulaması erişimini geliştiren bir uygulama ağ geçidi oluşturma
 
 Web uygulaması erişimini iyileştirmeye yönelik bir BT yöneticisiyseniz, uygulama ağ geçidinizin, müşteri taleplerine göre ölçeklendirilmesi ve birden çok kullanılabilirlik alanını yaymak için iyileştirebilirler. Bu öğretici, Azure Application Gateway özelliklerini yapılandırmanıza yardımcı olur: otomatik ölçeklendirme, bölge artıklığı ve ayrılmış VIP 'ler (statik IP). Azure PowerShell cmdlet 'lerini ve Azure Resource Manager dağıtım modelini kullanarak sorunu çözebilirsiniz.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Otomatik olarak imzalanan sertifika oluşturma
@@ -32,7 +32,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -180,7 +180,7 @@ $appgw = New-AzApplicationGateway -Name "AutoscalingAppGw" -Zone 1,2,3 `
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 
-Uygulama ağ geçidinin genel IP adresini almak için Get-Azpublicıpaddress komutunu kullanın. Genel IP adresini veya DNS adını kopyalayıp tarayıcınızın adres çubuğuna yapıştırın.
+Uygulama ağ geçidinin genel IP adresini almak için Get-AzPublicIPAddress kullanın. Genel IP adresini veya DNS adını kopyalayıp tarayıcınızın adres çubuğuna yapıştırın.
 
 `Get-AzPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP`
 

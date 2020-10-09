@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 09/12/2018
 ms.author: raynew
 ms.openlocfilehash: f4cd9cad3813378fcdc3f06e8ab1c28eced4f93c
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67188896"
 ---
-Ad | Ticari URL | Kamu URL 'SI | Açıklama
+Adı | Ticari URL | Kamu URL 'SI | Açıklama
 --- | --- | --- | ---
 Azure Active Directory | ``login.microsoftonline.com`` | ``login.microsoftonline.us`` | Azure Active Directory kullanarak erişim denetimi ve kimlik yönetimi için kullanılır. 
 Backup | ``*.backup.windowsazure.com`` | ``*.backup.windowsazure.us`` | Çoğaltma veri aktarımı ve düzenlemesi için kullanılır.

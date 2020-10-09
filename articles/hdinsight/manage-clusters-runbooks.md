@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/27/2019
 ms.openlocfilehash: 05c0aaf6cc33442fa4f36eb38eb0d6d593fc6c1f
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75553516"
 ---
 # <a name="tutorial-create-azure-hdinsight-clusters-with-azure-automation"></a>Öğretici: Azure Otomasyonu ile Azure HDInsight kümeleri oluşturma
 
 Azure Otomasyonu, bulutta çalışan ve Azure kaynaklarını isteğe bağlı olarak veya bir zamanlamaya göre yöneten betikler oluşturmanızı sağlar. Bu makalede, Azure HDInsight kümelerini oluşturmak ve silmek için PowerShell runbook 'ların nasıl oluşturulacağı açıklanır.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * HDInsight ile etkileşim kurmak için gereken modülleri yükler.
@@ -28,7 +28,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Mevcut bir [Azure Otomasyonu hesabı](../automation/automation-quickstart-create-account.md).
 * Küme depolama alanı olarak kullanılacak mevcut bir [Azure depolama hesabı](../storage/common/storage-account-create.md).
@@ -60,7 +60,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
     | Özellik | Değer |
     | --- | --- |
-    | Ad | `cluster-password` |
+    | Adı | `cluster-password` |
     | Kullanıcı adı | `admin` |
     | Parola | `SECURE_PASSWORD` |
     | Parolayı onayla | `SECURE_PASSWORD` |

@@ -6,17 +6,17 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 09/17/2019
 ms.openlocfilehash: 22d1dcd997a4ddb94aba184c5dace4c00509054d
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75649942"
 ---
 # <a name="tutorial-resource-onboarding-with-azure-custom-providers"></a>Öğretici: Azure özel sağlayıcılarıyla kaynak ekleme
 
 Bu öğreticide, Microsoft. CustomProviders/Association kaynak türü ile Azure Resource Manager API 'yi genişleten özel bir kaynak sağlayıcısı Azure 'a dağıtırsınız. Öğreticide, özel sağlayıcı örneğinin bulunduğu kaynak grubunun dışındaki mevcut kaynakların nasıl genişletileceği gösterilmektedir. Bu öğreticide, özel kaynak sağlayıcısı bir Azure Logic App tarafından desteklenir, ancak herhangi bir genel API uç noktasını kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için şunları bilmeniz gerekir:
 

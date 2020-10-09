@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: notification-hubs
 author: spelluru
 ms.service: notification-hubs
@@ -9,10 +9,10 @@ ms.date: 02/05/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: cd202c98ed605209f5600965ecdb6c0b4c03c17e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67509120"
 ---
 1. Android Studio menüsünde **Araçlar** ' ı seçin ve ardından **SDK yöneticisi**' ni seçin. 
@@ -27,7 +27,7 @@ ms.locfileid: "67509120"
     ![Android SDK Manager-Google Play Hizmetleri seçildi](./media/notification-hubs-android-studio-add-google-play-services/google-play-services-selected.png)
 3. **Değişikliği Onayla** iletişim kutusunu görürseniz **Tamam**' ı seçin. Bileşen yükleyicisi istenen bileşenleri yüklüyor. Bileşenler yüklendikten sonra **son** ' u seçin.
 4. **Yeni projeler Için ayarlar** iletişim kutusunu kapatmak için **Tamam ' ı** seçin.  
-5. **App** dizinindeki Build. Gradle dosyasını açın ve altına `dependencies`aşağıdaki satırı ekleyin. 
+5. **App** dizinindeki Build. Gradle dosyasını açın ve altına aşağıdaki satırı ekleyin `dependencies` . 
 
     ```gradle
     implementation 'com.google.android.gms:play-services-gcm:16.0.0'
@@ -35,7 +35,7 @@ ms.locfileid: "67509120"
 5. Araç çubuğunda **Şimdi Eşitle** simgesini seçin.
 
     ![Gradle ile Eşitle](./media/notification-hubs-android-studio-add-google-play-services/gradle-sync.png)
-1. AndroidManifest. xml dosyasını açın ve ardından aşağıdaki etiketi *uygulama* etiketine ekleyin.
+1. AndroidManifest.xml dosyasını açın ve ardından aşağıdaki etiketi *uygulama* etiketine ekleyin.
 
     ```xml
     <meta-data android:name="com.google.android.gms.version"

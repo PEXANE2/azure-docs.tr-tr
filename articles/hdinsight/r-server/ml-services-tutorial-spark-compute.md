@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/21/2019
 ms.openlocfilehash: 73ca0d089ab758fb13e69d341337139d79194cc5
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "71121931"
 ---
 # <a name="tutorial-use-r-in-a-spark-compute-context-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Spark işlem bağlamında R kullanma
 
 Bu öğreticide, Azure HDInsight Machine Learning Hizmetleri kümesinde çalışan Apache Spark R işlevlerinin kullanılmasına yönelik adım adım bir giriş sunulmaktadır.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Örnek verileri yerel depolamaya indirme
@@ -31,7 +31,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > * Bileşik XDF dosyalarını kullan
 > * XDF 'u CSV 'ye Dönüştür
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure HDInsight Machine Learning Hizmetleri kümesi. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) bölümüne gidin ve **küme türü**için **ml Hizmetleri**' ni seçin.
 
@@ -363,7 +363,7 @@ Bir kümeyi silmek için bkz. [tarayıcınızı, PowerShell 'i veya Azure CLI 'y
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir HDInsight Machine Learning Hizmetleri kümesinde çalışan Apache Spark R işlevlerinin nasıl kullanılacağını öğrendiniz. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+Bu öğreticide, bir HDInsight Machine Learning Hizmetleri kümesinde çalışan Apache Spark R işlevlerinin nasıl kullanılacağını öğrendiniz. Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 * [Azure HDInsight Machine Learning Hizmetleri kümesi için işlem bağlamı seçenekleri](r-server-compute-contexts.md)
 * [Hadoop üzerinde Spark için R Işlevleri](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler-hadoop-functions)

@@ -18,18 +18,18 @@ ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 52d398fa9c258528ef8f87842ba94f139bbf737b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76845211"
 ---
 # <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak bir sanal ağ yönlendirme sorununu tanılama
 
-Bir sanal makine (VM) dağıttığınızda, Azure bu sanal makine için birkaç varsayılan yol oluşturur. Azure’un varsayılan yollarını geçersiz kılmak için özel yollar oluşturabilirsiniz. Bazı durumlarda özel bir yol, bir sanal makinenin diğer kaynaklarla iletişim kuramamasına neden olabilir. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bir sanal makine (VM) dağıttığınızda, Azure bu sanal makine için birkaç varsayılan yol oluşturur. Azure’un varsayılan yollarını geçersiz kılmak için özel yollar oluşturabilirsiniz. Bazı durumlarda özel bir yol, bir sanal makinenin diğer kaynaklarla iletişim kuramamasına neden olabilir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * VM oluştur
+> * VM oluşturma
 > * Ağ İzleyicisinin sonraki atlama özelliğini kullanarak bir URL ile iletişimi test etme
 > * Bir IP adresi ile iletişimi test etme
 > * Bir yönlendirme sorununu tanılayın ve nasıl giderebileceğinizi öğrenin
@@ -42,7 +42,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 https://portal.azure.com adresinden Azure portalında oturum açın.
 
-## <a name="create-a-vm"></a>VM oluştur
+## <a name="create-a-vm"></a>VM oluşturma
 
 1. Azure portalının sol üst köşesinde bulunan **+ Kaynak oluştur** seçeneğini belirleyin.
 2. **İşlem**'i seçin ve sonra **Windows Server 2016 Datacenter** veya **Ubuntu Server 17.10 VM** seçeneğini belirleyin.
@@ -50,9 +50,9 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
     |Ayar|Değer|
     |---|---|
-    |Ad|myVm|
+    |Adı|myVm|
     |Kullanıcı adı| Seçtiğiniz bir kullanıcı adını girin.|
-    |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
+    |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)karşılamalıdır.|
     |Abonelik| Aboneliğinizi seçin.|
     |Kaynak grubu| **Yeni oluştur**’u seçin ve **myResourceGroup** değerini girin.|
     |Konum| **Doğu ABD** seçin|

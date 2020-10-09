@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/07/2018
 ms.author: alkohli
 ms.openlocfilehash: e4b366075cb16f62a0e16b5b06da6fb19ffefdb9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67189036"
 ---
 1. Data Box cihazda oturum açın. Kilidinin açık olduğundan emin olun.
@@ -27,7 +27,7 @@ ms.locfileid: "67189036"
 
     ![Data Box panosu](media/data-box-add-device-ip/data-box-connect-via-rest-4.png)
 
-5. **Not defteri 'ni** yönetici olarak başlatın ve ardından konumunda `C:\Windows\System32\Drivers\etc`bulunan **Hosts** dosyasını açın.
+5. **Not defteri 'ni** yönetici olarak başlatın ve ardından konumunda bulunan **Hosts** dosyasını açın `C:\Windows\System32\Drivers\etc` .
 6. **Hosts** dosyanıza aşağıdaki girişi ekleyin:`<device IP address> <Blob service endpoint>`
 7. Başvuru için aşağıdaki görüntüyü kullanın. **Hosts** dosyasını kaydedin.
 

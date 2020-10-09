@@ -8,10 +8,10 @@ ms.date: 10/08/2019
 ms.author: rogarana
 ms.subservice: blobs
 ms.openlocfilehash: dd87e1a9bcff55813dff420976df58351386fb34
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75371947"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Büyük miktarda rastgele verileri paralel şekilde Azure Depolama’ya yükleme
@@ -30,7 +30,7 @@ Azure blob depolama, verilerinizi depolamak için ölçeklenebilir bir hizmet sa
 
 Blob kullanan yüksek performanslı bir uygulama tasarlarken [bölüm adlandırma](../blobs/storage-performance-checklist.md#partitioning) , potansiyel olarak önemli bir faktördür. 4 MIB 'den büyük veya buna eşit blok boyutları için [yüksek aktarım hızı blok Blobları](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) kullanılır ve bölüm adlandırma performansı etkilemez. 4 MiB 'den küçük blok boyutları için Azure depolama, ölçek ve yük dengelemek için Aralık tabanlı bölümleme şeması kullanır. Bu yapılandırma, benzer adlandırma kurallarına veya ön eklere sahip dosyaların aynı bölüme gideceği anlamına gelir. Bu mantık, dosyaların yüklendiği kapsayıcının adını içerir. Bu öğreticide, rastgele oluşturulan içerik ve adlar için GUID’e sahip olan dosyaları kullanırsınız. Bunlar daha sonra rastgele adlarla beş farklı kapsayıcıya yüklenir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için önceki şu Depolama öğreticisini tamamlamış olmanız gerekir: [Ölçeklenebilir uygulama için sanal makine ve depolama hesabı oluşturma][previous-tutorial].
 

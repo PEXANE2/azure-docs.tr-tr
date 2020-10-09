@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 05/06/2019
 ms.openlocfilehash: 1fffeec1434cb066487bf383589554edec2e6a86
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75443688"
 ---
 # <a name="tutorial-custom-net-deserializers-for-azure-stream-analytics"></a>Öğretici: Azure Stream Analytics için özel .NET seri hale Getiricileri
@@ -20,7 +20,7 @@ Azure Stream Analytics [üç veri biçimi için yerleşik desteğe](stream-analy
 
 Bu öğreticide, Visual Studio kullanarak Azure Stream Analytics bir bulut işi için özel bir .NET seri hale getirici oluşturma işlemi gösterilmektedir. 
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Protokol arabelleği için özel bir seri hale getirici oluşturun.
@@ -28,7 +28,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > * Stream Analytics işinizi özel seri hale getirici 'yi kullanacak şekilde yapılandırın.
 > * Özel seri hale getirici 'yi test etmek için Stream Analytics işinizi yerel olarak çalıştırın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
