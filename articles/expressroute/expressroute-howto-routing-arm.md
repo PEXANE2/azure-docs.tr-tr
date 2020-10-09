@@ -1,25 +1,25 @@
 ---
-title: 'Azure ExpressRoute: eşlemeyi yapılandırma: PowerShell'
-description: PowerShell kullanarak Kaynak Yöneticisi dağıtım modelinde bir ExpressRoute bağlantı hattı için Yönlendirme yapılandırması oluşturmayı ve yönetmeyi öğrenin.
+title: 'Öğretici: ExpressRoute bağlantı hattı için eşlemeyi Yapılandırma-Azure PowerShell'
+description: Bu öğreticide, PowerShell kullanarak Kaynak Yöneticisi dağıtım modelinde bir ExpressRoute bağlantı hattı için Yönlendirme yapılandırması oluşturma ve yönetme işlemlerinin nasıl yapılacağı gösterilir.
 services: expressroute
 author: duongau
 ms.service: expressroute
-ms.topic: how-to
-ms.date: 12/13/2019
+ms.topic: tutorial
+ms.date: 10/08/2020
 ms.author: duau
-ms.openlocfilehash: 2c29dc051780b15fb55d446d3f4002c3870fb529
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 641d7eeef96af84f0f058aebd19d795083e3567f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90968392"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855370"
 ---
-# <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>PowerShell kullanarak bir ExpressRoute bağlantı hattı için eşleme oluşturma ve değiştirme
+# <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>Öğretici: PowerShell kullanarak bir ExpressRoute bağlantı hattı için eşleme oluşturma ve değiştirme
 
-Bu makale, PowerShell kullanarak Kaynak Yöneticisi dağıtım modelinde bir ExpressRoute devresi için Yönlendirme yapılandırması oluşturmanıza ve yönetmenize yardımcı olur. Ayrıca, bir ExpressRoute bağlantı hattı için durum, güncelleştirme veya silme ve yinelenenleri kaldırma ve sağlama ayarlarını da denetleyebilirsiniz. Devrenize çalışmak için farklı bir yöntem kullanmak istiyorsanız, aşağıdaki listeden bir makale seçin:
+Bu öğretici, PowerShell kullanarak Kaynak Yöneticisi dağıtım modelinde bir ExpressRoute devresi için Yönlendirme yapılandırması oluşturmanıza ve yönetmenize yardımcı olur. Ayrıca, bir ExpressRoute bağlantı hattı için durum, güncelleştirme veya silme ve yinelenenleri kaldırma ve sağlama ayarlarını da denetleyebilirsiniz. Devrenize çalışmak için farklı bir yöntem kullanmak istiyorsanız, aşağıdaki listeden bir makale seçin:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
+> * [Azure portalındaki](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
 > * [Ortak eşleme](about-public-peering.md)
@@ -28,26 +28,28 @@ Bu makale, PowerShell kullanarak Kaynak Yöneticisi dağıtım modelinde bir Exp
 > * [PowerShell (klasik)](expressroute-howto-routing-classic.md)
 > 
 
-
-Bu yönergeler yalnızca Katman 2 bağlantı hizmetleri sunan hizmet sağlayıcıları ile oluşturulan bağlantı hatları için geçerlidir. Yönetilen katman 3 Hizmetleri (genellikle MPLS gibi bir ıPVPN) sunan bir hizmet sağlayıcısı kullanıyorsanız, bağlantı sağlayıcınız yönlendirmeyi sizin için yapılandırıp yönetecektir.
+Bu yönergeler yalnızca Katman 2 bağlantı hizmetleri sunan hizmet sağlayıcıları ile oluşturulan bağlantı hatları için geçerlidir. Yönetilen katman 3 Hizmetleri (genellikle MPLS gibi bir ıPVPN) sunan bir hizmet sağlayıcısı kullanıyorsanız, bağlantı sağlayıcınız yönlendirmeyi sizin için yapılandırır ve yönetir.
 
 > [!IMPORTANT]
 > Şu anda hizmet yönetim portalı aracılığıyla hizmet sağlayıcılar tarafından yapılandırılan eşlemeleri tanıtmıyoruz. Bu özelliği yakında etkinleştirmek için çalışıyoruz. BGP eşayarlarını yapılandırmadan önce hizmet sağlayıcınıza danışın.
 > 
-> 
 
 ExpressRoute bağlantı hattı için özel eşleme ve Microsoft eşlemesi yapılandırabilirsiniz (Azure genel eşleme yeni devreler için kullanım dışıdır). Eşlemeler, seçtiğiniz herhangi bir sırada yapılandırılabilir. Ancak, her eşlemenin yapılandırmasını birer birer tamamladığınızdan emin olmanız gerekir. Yönlendirme etki alanları ve eşlemeler hakkında daha fazla bilgi için bkz. [ExpressRoute yönlendirme etki alanları](expressroute-circuit-peerings.md). Ortak eşleme hakkında daha fazla bilgi için bkz. [ExpressRoute genel eşleme](about-public-peering.md).
 
-## <a name="configuration-prerequisites"></a>Yapılandırma önkoşulları
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+> [!div class="checklist"]
+> - Devre için Microsoft eşlemesini yapılandırma, güncelleştirme ve silme
+> - Devre için Azure özel eşlemesini yapılandırma, güncelleştirme ve silme
 
-* Yapılandırmaya başlamadan önce [önkoşullar](expressroute-prerequisites.md) sayfasını, [yönlendirme gereksinimleri](expressroute-routing.md) sayfasını ve [iş akışları](expressroute-workflows.md) sayfasını gözden geçirdiğinizden emin olun.
-* Etkin bir ExpressRoute bağlantı hattınızın olması gerekir. Devam etmeden önce [ExpressRoute bağlantı hattı oluşturma](expressroute-howto-circuit-arm.md) yönergelerini izleyin ve bağlantı sağlayıcınızın bağlantı hattını etkinleştirmesini isteyin. Bu makaledeki cmdlet 'leri çalıştırabilmeniz için ExpressRoute bağlantı hattının sağlanması ve etkinleştirilmesi durumunda olması gerekir.
+## <a name="prerequisites"></a>Ön koşullar
 
-### <a name="working-with-azure-powershell"></a>Azure PowerShell çalışma
+* Yapılandırmaya başlamadan önce aşağıdaki sayfaları gözden geçirdiğinizden emin olun:
+    * [Önkoşullar](expressroute-prerequisites.md) 
+    * [Yönlendirme gereksinimleri](expressroute-routing.md)
+    * [İş akışları](expressroute-workflows.md)
+* Etkin bir ExpressRoute bağlantı hattınızın olması gerekir. Devam etmeden önce [ExpressRoute](expressroute-howto-circuit-arm.md) bağlantı hattı oluşturma ve bağlantı sağlayıcınız için devre dışı bırakma yönergelerini izleyin. Bu makaledeki cmdlet 'leri çalıştırmanız için ExpressRoute bağlantı hattının sağlanması ve etkinleştirilmesi durumunda olması gerekir.
 
-[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
-
-[!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="microsoft-peering"></a><a name="msft"></a>Microsoft eşlemesi
 
@@ -55,7 +57,6 @@ Bu bölüm, bir ExpressRoute bağlantı hattı için Microsoft eşleme yapıland
 
 > [!IMPORTANT]
 > 1 Ağustos 2017 ' den önce yapılandırılmış ExpressRoute bağlantı hattı Microsoft eşlemesi, yönlendirme filtreleri tanımlanmasa bile Microsoft eşlemesi aracılığıyla tanıtılan tüm hizmet öneklerini de alacak. 1 Ağustos 2017 ' de veya sonrasında yapılandırılan ExpressRoute devrelerinin Microsoft eşlemesi, bir yol filtresi devresine iliştirilene kadar tanıtılan öneklere sahip olmayacaktır. Daha fazla bilgi için bkz. [Microsoft eşlemesi için rota filtresi yapılandırma](how-to-routefilter-powershell.md).
-> 
 > 
 
 ### <a name="to-create-microsoft-peering"></a>Microsoft eşlemesi oluşturmak için
@@ -75,9 +76,9 @@ Bu bölüm, bir ExpressRoute bağlantı hattı için Microsoft eşleme yapıland
    ```
 2. ExpressRoute bağlantı hattı oluşturun.
 
-   Bir [ExpressRoute bağlantı hattı](expressroute-howto-circuit-arm.md) oluşturmak için yönergeleri izleyin ve bağlantı sağlayıcısından bağlantı hattını sağlamasını isteyin. f bağlantı sağlayıcınız yönetilen katman 3 hizmetleri sunuyorsa, bağlantı sağlayıcınızdan Microsoft eşlemesini sizin için etkinleştirmesini isteyebilirsiniz. Bu durumda, sonraki bölümlerde listelenen yönergeleri izlemeniz gerekmez. Ancak, bağlantı sağlayıcınız yönlendirmeyi sizin için yönetmezse, devrenizi oluşturduktan sonra sonraki adımları kullanarak yapılandırmanıza devam edin. 
+   Bir [ExpressRoute bağlantı hattı](expressroute-howto-circuit-arm.md) oluşturmak için yönergeleri izleyin ve bağlantı sağlayıcısından bağlantı hattını sağlamasını isteyin. Bağlantı sağlayıcınız yönetilen katman 3 hizmetleri sunuyorsa, bağlantı sağlayıcınızdan Microsoft eşlemesini sizin için etkinleştirmesini isteyebilirsiniz. Sonraki bölümlerde listelenen yönergeleri izlemeniz gerekmez. Ancak, bağlantı sağlayıcınız yönlendirmeyi sizin için yönetmezse, devrenizi oluşturduktan sonra sonraki adımları kullanarak yapılandırmanıza devam edin. 
 
-3. Sağlanmış ve ayrıca etkinleştirildiğinden emin olmak için ExpressRoute devresini denetleyin. Şu örneği kullanın:
+3. Sağlanan ve ayrıca etkinleştirildiğinden emin olmak için ExpressRoute bağlantı hattını denetleyin. Şu örneği kullanın:
 
    ```azurepowershell-interactive
    Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -110,22 +111,21 @@ Bu bölüm, bir ExpressRoute bağlantı hattı için Microsoft eşleme yapıland
    ```
 4. Bağlantı hattı için Microsoft eşlemesini yapılandırın. Devam etmeden önce aşağıdaki bilgilere sahip olduğunuzdan emin olun.
 
-   * Birincil bağlantı için bir/30 veya/126 alt ağı. Bu, size ait olan ve bir RıR/IÇ_VERIM_ORANı 'ye kayıtlı geçerli bir genel IPv4 veya IPv6 ön eki olmalıdır.
-   * İkincil bağlantı için bir/30 veya/126 alt ağı. Bu, size ait olan ve bir RıR/IÇ_VERIM_ORANı 'ye kayıtlı geçerli bir genel IPv4 veya IPv6 ön eki olmalıdır.
+   * Birincil bağlantı için bir/30 veya/126 alt ağı. Adres bloğu size ait geçerli bir genel IPv4 veya IPv6 öneki olmalıdır ve bir RıR/IÇ_VERIM_ORANı 'ye kaydedilir.
+   * İkincil bağlantı için bir/30 veya/126 alt ağı. Adres bloğu size ait geçerli bir genel IPv4 veya IPv6 öneki olmalıdır ve bir RıR/IÇ_VERIM_ORANı 'ye kaydedilir.
    * Bu eşlemenin kurulacağı geçerli bir VLAN kimliği. Bağlantı hattındaki başka bir eşlemenin aynı VLAN kimliğini kullanmadığından emin olun.
    * Eşleme için AS numarası. 2 bayt ve 4 bayt AS numaralarını kullanabilirsiniz.
-   * Tanıtılan önekler: BGP oturumunda tanıtmayı planladığınız tüm öneklerin bir listesini sağlamanız gerekir. Yalnızca ortak IP adresi ön ekleri kabul edilir. Bir önek kümesi gönderilmesini planlıyorsanız, virgülle ayrılmış bir liste gönderebilirsiniz. Bu önekler size bir RIR / IRR içinde kaydedilmiş olmalıdır. IPv4 BGP oturumları IPv4 tanıtılan ön ekleri ve IPv6 BGP oturumlarını IPv6 tanıtılan ön ekler gerektirir. 
+   * Tanıtılan ön ekler: BGP oturumunda tanıtmayı planladığınız tüm ön eklerin bir listesini sağlarsınız. Yalnızca ortak IP adresi ön ekleri kabul edilir. Bir önek kümesi gönderilmesini planlıyorsanız, virgülle ayrılmış bir liste gönderebilirsiniz. Bu önekler size bir RIR / IRR içinde kaydedilmiş olmalıdır. IPv4 BGP oturumları IPv4 tanıtılan ön ekleri ve IPv6 BGP oturumlarını IPv6 tanıtılan ön ekler gerektirir. 
    * Yönlendirme Kayıt Defteri Adı: AS numarası ve öneklerinin kaydedildiği RIR / IRR’yi belirtebilirsiniz.
    * İsteğe bağlı:
-     * Müşteri ASN’si: Eşleme AS numarasına kayıtlı olmayan önekler tanıtıyorsanız, kayıtlı oldukları AS numarasını belirtebilirsiniz.
+     * Müşteri ASN: eşdeğer olarak eşleme kayıtlı olmayan ön ekler varsa, birlikte kaydettirildikleri AS numarasını belirtebilirsiniz.
      * Kullanmayı seçerseniz bir MD5 karma değeri.
 
 > [!IMPORTANT]
-> Microsoft, belirtilen ' tanıtılan genel ön eklerin ' ve ' eşdüzey ASN ' (veya ' müşteri ASN ') tarafından Internet yönlendirme kayıt defterinde size atanıp atanmadığını doğrular. Diğer bir varlıktan ortak ön ekleri alıyorsanız ve atama, yönlendirme kayıt defteriyle birlikte kaydedilmetiyse, otomatik doğrulama tamamlanmaz ve el ile doğrulama gerektirir. Otomatik doğrulama başarısız olursa, "Get-Azexpressroutedevresi Peeringconfig" çıktısında ' AdvertisedPublicPrefixesState ' öğesini ' doğrulama gerekli ' olarak görürsünüz (bkz. "Microsoft eşleme ayrıntılarını almak Için" aşağıdaki) komutu. 
+> Microsoft, belirtilen ' tanıtılan genel ön eklerin ' ve ' eşdüzey ASN ' (veya ' müşteri ASN ') tarafından Internet yönlendirme kayıt defterinde size atanıp atanmadığını doğrular. Diğer bir varlıktan ortak ön ekleri alıyorsanız ve atama, yönlendirme kayıt defteriyle birlikte kaydedilmetiyse, otomatik doğrulama tamamlanmaz ve el ile doğrulama gerektirir. Otomatik doğrulama başarısız olursa, "Get-Azexpressroutedevresi Peeringconfig" çıktısında ' AdvertisedPublicPrefixesState ' öğesini ' doğrulama gerekli ' olarak görürsünüz (aşağıdaki bölümde yer alan "Microsoft eşlemesi ayrıntılarını almak Için" bölümüne bakın). 
 > 
-> ' Doğrulama gerekli ' iletisini görürseniz, genel önekleri gösteren belge (ler) i, yönlendirme kayıt defterindeki ön eklerin sahibi olarak listelenen varlık tarafından kuruluşunuza atanır ve aşağıda gösterildiği gibi bir destek bileti açarak bu belgeleri el ile doğrulama için gönderir. 
+> ' Doğrulama gerekli ' iletisini görürseniz, genel önekleri gösteren belge (ler) i, yönlendirme kayıt defterindeki ön eklerin sahibi olarak listelenen varlık tarafından kuruluşunuza atanır ve bir destek bileti açarak bu belgeleri el ile doğrulama için gönderir. 
 > 
->
 
    Devreniz için Microsoft eşlemesini yapılandırmak üzere aşağıdaki örneği kullanın:
 
@@ -159,16 +159,6 @@ Set-AzExpressRouteCircuitPeeringConfig  -Name "MicrosoftPeering" -ExpressRouteCi
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-### <a name="to-delete-microsoft-peering"></a><a name="deletemsft"></a>Microsoft eşlemesini silmek için
-
-Aşağıdaki cmdlet 'i çalıştırarak eşleme yapılandırmanızı kaldırabilirsiniz:
-
-```azurepowershell-interactive
-Remove-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
-
-Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
-```
-
 ## <a name="azure-private-peering"></a><a name="private"></a>Azure özel eşlemesi
 
 Bu bölüm, bir ExpressRoute bağlantı hattı için Azure özel eşleme yapılandırmasını oluşturmanıza, almanıza, güncelleştirmenize ve silmenize yardımcı olur.
@@ -177,7 +167,7 @@ Bu bölüm, bir ExpressRoute bağlantı hattı için Azure özel eşleme yapıla
 
 1. ExpressRoute için PowerShell modülünü içeri aktarın.
 
-   ExpressRoute cmdlet’lerini kullanmaya başlamak için [PowerShell Galerisi](https://www.powershellgallery.com/)’nden en yeni PowerShell yükleyicisini yüklemeniz ve Azure Resource Manager modüllerini PowerShell oturumuna aktarmanız gerekir. PowerShell'i Yönetici olarak çalıştırmanız gerekir.
+   [PowerShell Galerisi](https://www.powershellgallery.com/)adresinden en son PowerShell yükleyicisini yükleme. Ardından, ExpressRoute cmdlet 'lerini kullanmaya başlamak için Azure Resource Manager modüllerini PowerShell oturumuna aktarın. PowerShell 'i yönetici olarak çalıştırmanız gerekir.
 
    ```azurepowershell-interactive
    Install-Module Az
@@ -208,9 +198,9 @@ Bu bölüm, bir ExpressRoute bağlantı hattı için Azure özel eşleme yapıla
    ```
 2. ExpressRoute bağlantı hattı oluşturun.
 
-   Bir [ExpressRoute bağlantı hattı](expressroute-howto-circuit-arm.md) oluşturmak için yönergeleri izleyin ve bağlantı sağlayıcısından bağlantı hattını sağlamasını isteyin. Bağlantı sağlayıcınız yönetilen katman 3 hizmetleri sunuyorsa, bağlantı sağlayıcınızdan sizin için Azure özel eşlemeyi etkinleştirmesini isteyebilirsiniz. Bu durumda, sonraki bölümlerde listelenen yönergeleri izlemeniz gerekmez. Ancak, bağlantı sağlayıcınız yönlendirmeyi sizin için yönetmezse, devrenizi oluşturduktan sonra sonraki adımları kullanarak yapılandırmanıza devam edin.
+   Bir [ExpressRoute bağlantı hattı](expressroute-howto-circuit-arm.md) oluşturmak için yönergeleri izleyin ve bağlantı sağlayıcısından bağlantı hattını sağlamasını isteyin. Bağlantı sağlayıcınız yönetilen katman 3 hizmetleri sunuyorsa, bağlantı sağlayıcınızdan sizin için Azure özel eşlemeyi etkinleştirmesini isteyebilirsiniz. Sonraki bölümlerde listelenen yönergeleri izlemeniz gerekmez. Ancak, bağlantı sağlayıcınız yönlendirmeyi sizin için yönetmezse, devrenizi oluşturduktan sonra sonraki adımları kullanarak yapılandırmanıza devam edin.
 
-3. Sağlanmış ve ayrıca etkinleştirildiğinden emin olmak için ExpressRoute devresini denetleyin. Şu örneği kullanın:
+3. Sağlanan ve ayrıca etkinleştirildiğinden emin olmak için ExpressRoute bağlantı hattını denetleyin. Şu örneği kullanın:
 
    ```azurepowershell-interactive
    Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -241,12 +231,12 @@ Bu bölüm, bir ExpressRoute bağlantı hattı için Azure özel eşleme yapıla
    ServiceKey                       : **************************************
    Peerings                         : []
    ```
-4. Bağlantı hattı için Azure özel eşlemesini yapılandırın. Sonraki adımlara devam etmeden önce aşağıdaki öğelerin bulunduğundan emin olun:
+4. Bağlantı hattı için Azure özel eşlemesini yapılandırın. Sonraki adımlarla devam etmeden önce aşağıdaki öğelere sahip olduğunuzdan emin olun:
 
    * Birincil bağlantı için bir /30 alt ağı. Alt ağ, sanal ağlar için ayrılmış herhangi bir adres alanının parçası olmamalıdır.
    * İkincil bağlantı için bir /30 alt ağı. Alt ağ, sanal ağlar için ayrılmış herhangi bir adres alanının parçası olmamalıdır.
    * Bu eşlemenin kurulacağı geçerli bir VLAN kimliği. Bağlantı hattındaki başka bir eşlemenin aynı VLAN kimliğini kullanmadığından emin olun.
-   * Eşleme için AS numarası. 2 bayt ve 4 bayt AS numaralarını kullanabilirsiniz. Bu eşleme için özel bir AS numarası kullanabilirsiniz. 65515’i kullanmadığınızdan emin olun.
+   * Eşleme için AS numarası. 2 bayt ve 4 bayt AS numaralarını kullanabilirsiniz. Bu eşleme için özel bir AS numarası kullanabilirsiniz. 65515 kullandığınızdan emin olun.
    * İsteğe bağlı:
      * Kullanmayı seçerseniz bir MD5 karma değeri.
 
@@ -289,13 +279,24 @@ Set-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRoute
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+### <a name="to-delete-microsoft-peering"></a><a name="deletemsft"></a>Microsoft eşlemesini silmek için
+
+Aşağıdaki cmdlet 'i çalıştırarak eşleme yapılandırmanızı kaldırabilirsiniz:
+
+```azurepowershell-interactive
+Remove-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
+
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
+```
+
 ### <a name="to-delete-azure-private-peering"></a><a name="deleteprivate"></a>Azure özel eşlemesini silmek için
 
 Aşağıdaki örneği çalıştırarak, eşleme yapılandırmanızı kaldırabilirsiniz:
 
 > [!WARNING]
 > Bu örneği çalıştırmadan önce tüm sanal ağların ve ExpressRoute Global Reach bağlantılarının kaldırıldığından emin olmanız gerekir. 
-> 
 > 
 
 ```azurepowershell-interactive
@@ -304,11 +305,9 @@ Remove-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRo
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sonraki adım, [ExpressRoute bağlantı hattına bir VNet bağlama](expressroute-howto-linkvnet-arm.md).
+Azure özel eşlemesini yapılandırdıktan sonra, sanal bir ağı devresine bağlamak için bir ExpressRoute ağ geçidi oluşturabilirsiniz. 
 
-* ExpressRoute iş akışları hakkında daha fazla bilgi için bkz. [ExpressRoute iş akışları](expressroute-workflows.md).
-* Bağlantı hattı eşlemesi hakkında daha fazla bilgi için bkz. [ExpressRoute bağlantı hattı ve yönlendirme etki alanları](expressroute-circuit-peerings.md).
-* Sanal ağlarla çalışma hakkında daha fazla bilgi için bkz. [Sanal ağa genel bakış](../virtual-network/virtual-networks-overview.md).
+> [!div class="nextstepaction"]
+> [ExpressRoute için sanal ağ geçidi yapılandırma](expressroute-howto-add-gateway-resource-manager.md)

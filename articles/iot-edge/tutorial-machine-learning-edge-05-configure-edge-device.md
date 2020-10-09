@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp
-ms.openlocfilehash: d7ff9efcedc1a6a5f92555a62e429be0431f2098
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 1e92da6f99ccb32580d7f0286b5bcbf77d694262
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448520"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855659"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Öğretici: IoT Edge cihaz yapılandırma
 
@@ -294,12 +294,9 @@ Ardından, config. YAML dosyasını doğrudan düzenleyerek sertifikaları ve an
     ```bash
     journalctl -u iotedge --no-pager --no-full
     ```
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure VM 'yi Azure IoT Edge saydam ağ geçidi olarak yapılandırmayı tamamladık. Azure Key Vault için karşıya yüklemediğimiz test sertifikalarını oluşturarak başladık. Daha sonra, Azure Marketi 'nden "Ubuntu Server 16,04 LTS + Azure IoT Edge Runtime" görüntüsüyle VM 'yi dağıtmak için bir betik ve Kaynak Yöneticisi şablonu kullandık. VM, SSH aracılığıyla bağlandığımız sanal makine ile Azure 'da oturum açdık ve Key Vault 'ten indirilen sertifikalar ile oturum açmamız gerekir. Config. YAML dosyasını güncelleştirerek IoT Edge çalışma zamanının yapılandırmasında birkaç güncelleştirme yaptık.
-
-Daha fazla bilgi için [, bir IoT Edge cihazının ağ geçidi olarak nasıl kullanılabileceğini](iot-edge-as-gateway.md) ve bir [IoT Edge cihazının saydam bir ağ geçidi olarak davranacak şekilde nasıl yapılandırılacağını](how-to-create-transparent-gateway.md)öğrenin.
 
 IoT Edge modülleri derlemek için sonraki makaleye geçin.
 

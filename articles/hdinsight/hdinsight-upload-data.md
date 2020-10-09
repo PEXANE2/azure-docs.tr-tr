@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdiseo17may2017,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: b678e4de76619ff17703caecfa7a52682e835674
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 45170e9df7082e277c445a2dab6d617eb208cd44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462573"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855642"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>HDInsight 'ta Apache Hadoop işleri için veri yükleme
 
-HDInsight, Azure depolama üzerinden bir Hadoop Dağıtılmış dosya sistemi (bir) sağlar ve Azure Data Lake Storage. Bu depolama gen1 ve Gen2 içerir. Azure depolama ve Data Lake Storage 1. ile Gen2, Bunlar, Hadoop ortamında doğrudan yönettiği verilerde çalışmak üzere tüm bileşen kümesini etkinleştirir. Azure depolama, Data Lake Storage 1. ve Gen2 farklı dosya sistemleridir. Sistemler verilerin ve hesaplamaların depolanması için en iyi duruma getirilmiştir. Azure Storage kullanmanın avantajları hakkında daha fazla bilgi için bkz. [HDInsight Ile Azure depolama 'Yı kullanma](hdinsight-hadoop-use-blob-storage.md). Ayrıca bkz. [HDInsight ile Data Lake Storage 1. kullanma](hdinsight-hadoop-use-data-lake-store.md)ve [HDInsight ile Data Lake Storage 2. kullanma](hdinsight-hadoop-use-data-lake-storage-gen2.md).
+HDInsight, Azure depolama üzerinden bir Hadoop Dağıtılmış dosya sistemi (bir) sağlar ve Azure Data Lake Storage. Bu depolama gen1 ve Gen2 içerir. Azure depolama ve Data Lake Storage 1. ile Gen2, Bunlar, Hadoop ortamında doğrudan yönettiği verilerde çalışmak üzere tüm bileşen kümesini etkinleştirir. Azure depolama, Data Lake Storage 1. ve Gen2 farklı dosya sistemleridir. Sistemler verilerin ve hesaplamaların depolanması için en iyi duruma getirilmiştir. Azure Storage kullanmanın avantajları hakkında daha fazla bilgi için bkz. [HDInsight Ile Azure depolama 'Yı kullanma](hdinsight-hadoop-use-blob-storage.md). Ayrıca bkz. [HDInsight ile Data Lake Storage 1. kullanma](hdinsight-hadoop-use-data-lake-storage-gen1.md)ve [HDInsight ile Data Lake Storage 2. kullanma](hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -26,7 +26,7 @@ Başlamadan önce aşağıdaki gereksinimleri dikkate alın:
 * Bir Azure HDInsight kümesi. Yönergeler için bkz. [Azure HDInsight kullanmaya başlama](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 * Aşağıdaki makaleler hakkında bilgi:
     * [HDInsight ile Azure depolama kullanma](hdinsight-hadoop-use-blob-storage.md)
-    * [HDInsight ile Data Lake Storage 1. kullanma](hdinsight-hadoop-use-data-lake-store.md)
+    * [HDInsight ile Data Lake Storage 1. kullanma](hdinsight-hadoop-use-data-lake-storage-gen1.md)
     * [HDInsight ile Data Lake Storage 2. kullanma](hdinsight-hadoop-use-data-lake-storage-gen2.md)  
 
 ## <a name="upload-data-to-azure-storage"></a>Azure depolama 'ya veri yükleme
@@ -37,7 +37,7 @@ Microsoft, Azure depolama ile çalışmak için aşağıdaki yardımcı programl
 
 | Araç | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
+| [Azure portalındaki](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
 | [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
 | [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
 | [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/4/2019
 ms.author: jeedes
-ms.openlocfilehash: 0ff2464705a770e257010347f0f04e9b695bb6e4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b462dff45263ba3f5e533cd6bd7c4ce089933f66
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540142"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855534"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>Öğretici: Lifesize bulutu ile Azure Active Directory tümleştirme
 
@@ -78,7 +78,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açma 'yı ömrü bulutla birlikte yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, **[Lifesize bulutu çoklu oturum açmayı yapılandırın](#configure-lifesize-cloud-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Lifesize bulutu çoklu oturum açmayı yapılandırın](#configure-lifesize-cloud-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcı Azure AD gösterimine bağlı olan, Lifesize bulutu 'nda Britta Simon 'ın bir karşılığı olacak şekilde, **[Lifesize bulut test kullanıcısı oluşturun](#create-lifesize-cloud-test-user)** .
@@ -98,7 +98,7 @@ Azure AD çoklu oturum açmayı, ' Lifesize bulutu ile yapılandırmak için aş
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -115,9 +115,9 @@ Azure AD çoklu oturum açmayı, ' Lifesize bulutu ile yapılandırmak için aş
     d. **Geçiş durumu** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://webapp.lifesizecloud.com/?ent=<identifier>`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI, tanımlayıcı ve geçiş durumuyla güncelleştirin. Oturum açma URL 'SI ve tanımlayıcı değerleri almak için [bulut istemci desteği ekibine](https://www.lifesize.com/en/support) başvurun ve öğreticide daha sonra açıklanan SSO yapılandırmasından geçiş durumu değeri alabilirsiniz. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI, tanımlayıcı ve geçiş durumuyla güncelleştirin. Sign-On URL 'SI ve tanımlayıcı değerleri almak için [bulut istemci desteği ekibine](https://www.lifesize.com/en/support) başvurun ve daha sonra ÖĞRETICIDE açıklanan SSO yapılandırmasından geçiş durumu değeri alabilirsiniz. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -131,21 +131,21 @@ Azure AD çoklu oturum açmayı, ' Lifesize bulutu ile yapılandırmak için aş
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-lifesize-cloud-single-sign-on"></a>Lifesize bulutu çoklu oturum açmayı yapılandırma
+### <a name="configure-lifesize-cloud-single-sign-on"></a>Lifesize bulutu tek Sign-On yapılandırma
 
 1. Uygulamanız için yapılandırılmış SSO 'yu almak için, yönetici ayrıcalıklarıyla, Lifesize bulut uygulamasında oturum açın.
 
 2. Sağ üst köşedeki ad ' a tıklayın ve ardından **Gelişmiş ayarlar**' a tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_06.png)
+    ![Ekran görüntüsü Gelişmiş ayarlar menü öğesini gösterir.](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_06.png)
 
 3. Gelişmiş ayarlar ' da artık **SSO yapılandırma** bağlantısına tıklayın. Bu işlem, örneğiniz için SSO yapılandırma sayfasını açar.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_07.png)
+    ![Ekran görüntüsü, S S O yapılandırması seçebileceğiniz Gelişmiş ayarları gösterir.](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_07.png)
 
 4. Şimdi SSO yapılandırma Kullanıcı arabiriminde aşağıdaki değerleri yapılandırın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_08.png)
+    ![Ekran görüntüsü, tanımlanan değerleri girebileceğiniz S S O yapılandırma sayfasını gösterir.](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_08.png)
 
     a. **Kimlik sağlayıcısı veren** metin kutusunda, Azure Portal kopyaladığınız **Azure AD tanımlayıcısının** değerini yapıştırın.
 

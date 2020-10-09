@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: a6dc9aa70c55a0ed511a73570274c68708988451
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8350ebc92575911991ca772229912941f2af10e0
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331242"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851297"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için 4me yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları 4me 'y
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -122,15 +122,15 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grupl
 
 10. Eşlemeler bölümünde, **kullanıcıları Azure Active Directory** **eşleme** ' yi seçin.
 
-    ![4me Kullanıcı eşlemeleri](media/4me-provisioning-tutorial/4me-user-mapping.png)
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-user-mapping.png" alt-text="Eşlemeler sayfasının ekran görüntüsü. Ad ' ın altında, Azure Active Directory Kullanıcılar ' ı on onme ile eşitler." border="false":::
     
 11. **Öznitelik eşleme** bölümünde Azure AD 'den 4me 'ye eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri için 4me 'deki Kullanıcı hesaplarını eşleştirmek için kullanılır. Lütfen 4me 'nin seçtiğiniz eşleşen öznitelikte [filtrelemeyi desteklediğinden](https://developer.4me.com/v1/scim/users/) emin olun. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![4me Kullanıcı eşlemeleri](media/4me-provisioning-tutorial/4me-user-attributes.png)
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-user-attributes.png" alt-text="Eşlemeler sayfasının ekran görüntüsü. Ad ' ın altında, Azure Active Directory Kullanıcılar ' ı on onme ile eşitler." border="false":::
     
 12. **Eşlemeler** bölümünde **Azure Active Directory gruplarını 4Me olarak eşitler**' ı seçin.
 
-    ![4me Kullanıcı eşlemeleri](media/4me-provisioning-tutorial/4me-group-mapping.png)
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-group-mapping.png" alt-text="Eşlemeler sayfasının ekran görüntüsü. Ad ' ın altında, Azure Active Directory Kullanıcılar ' ı on onme ile eşitler." border="false":::
     
 13. **Öznitelik eşleme** bölümünde Azure AD 'den 4me 'ye eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri için 4me 'deki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 

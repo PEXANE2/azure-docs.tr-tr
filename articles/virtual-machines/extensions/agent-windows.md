@@ -2,23 +2,17 @@
 title: Azure sanal makine aracısına genel bakış
 description: Azure sanal makine aracısına genel bakış
 services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: mimckitt
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: 0a1f212e-053e-4a39-9910-8d622959f594
 ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
 ms.date: 07/20/2019
-ms.author: akjosh
-ms.openlocfilehash: d9939b706eb63e5681ddef438cde92f32786f889
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.author: mimckitt
+ms.openlocfilehash: 2db83b643ec3000c5b86388f4b603bba32f2a9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612837"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855784"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure sanal makine aracısına genel bakış
 Microsoft Azure sanal makine Aracısı (VM Aracısı), Azure yapı denetleyicisi ile sanal makine (VM) etkileşimini yöneten güvenli ve hafif bir işlemdir. VM aracısının Azure sanal makine uzantıları 'nı etkinleştirmek ve yürütmek için birincil bir rolü vardır. VM uzantıları, yazılım yükleme ve yapılandırma gibi VM 'nin dağıtım sonrası yapılandırmasını etkinleştirir. VM uzantıları, bir VM 'nin yönetici parolasını sıfırlama gibi kurtarma özelliklerini de etkinleştirir. Azure VM Aracısı olmadan VM uzantıları çalıştırılamaz.
@@ -70,7 +64,7 @@ $vm | Update-AzVM
 
 ### <a name="prerequisites"></a>Ön koşullar
 
-- Windows VM aracısının, .NET Framework 4,0 ile en az Windows Server 2008 SP2 (64-bit) çalıştırması gerekir. Bkz. [Azure 'da sanal makine aracıları Için en düşük sürüm desteği](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
+- Windows VM Aracısı 'nın çalışması için en az Windows Server 2008 SP2 (64 bit) gerekir. .NET Framework 4,0. Bkz. [Azure 'da sanal makine aracıları Için en düşük sürüm desteği](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
 
 - VM 'nizin 168.63.129.16 IP adresine erişimi olduğundan emin olun. Daha fazla bilgi için bkz. [IP adresi 168.63.129.16 nedir](../../virtual-network/what-is-ip-address-168-63-129-16.md).
 
@@ -87,7 +81,7 @@ Azure Resource Manager PowerShell modülü, Azure VM 'Leri hakkında bilgi almak
 Get-AzVM
 ```
 
-Aşağıdaki sıkıştırılmış örnek çıktıda, *Osprofile*içinde iç Içe geçmiş *Provisionvmagent* özelliği gösterilmektedir. Bu özellik VM aracısının VM 'ye dağıtılıp dağıtılmadığını anlamak için kullanılabilir:
+Aşağıdaki sıkıştırılmış örnek çıktıda, içinde iç içe geçmiş *Provisionvmagent* özelliği gösterilmektedir `OSProfile` . Bu özellik VM aracısının VM 'ye dağıtılıp dağıtılmadığını anlamak için kullanılabilir:
 
 ```powershell
 OSProfile                  :
@@ -119,6 +113,15 @@ Windows için Azure VM Aracısı, Azure Marketi 'nden dağıtılan görüntüler
 
 ## <a name="windows-guest-agent-automatic-logs-collection"></a>Windows Konuk Aracısı otomatik Günlükler koleksiyonu
 Windows Konuk Aracısı, bazı günlükleri otomatik olarak toplamak için bir özelliğe sahiptir. Bu özellik CollectGuestLogs.exe işlem tarafından denetleyici 'dir. Hem PaaS Cloud Services hem de IaaS sanal makineleri ve hedefi &, bir VM 'den bazı tanılama günlüklerini otomatik olarak toplamaktır ve bu nedenle çevrimdışı analizler için kullanılabilirler. Toplanan Günlükler olay günlüklerdir, işletim sistemi günlükleri, Azure günlükleri ve bazı kayıt defteri anahtarlarıdır. VM 'nin konağa aktarılan bir ZIP dosyası üretir. Bu ZIP dosyası daha sonra mühendislik ekiplerine ve destek uzmanlarına bakarak VM 'ye sahip olan müşterinin isteğiyle ilgili sorunları araştırmak için göz ardı edilebilir.
+
+## <a name="guest-agent-and-osprofile-certificates"></a>Konuk Aracısı ve OSProfile sertifikaları
+Azure VM Aracısı, `OSProfile` BIR VM 'de veya sanal makine ölçek kümesinde başvurulan sertifikaların yüklenmesinden sorumludur. Bu sertifikaları Konuk VM 'nin içindeki Sertifikalar MMC konsolundan el ile kaldırırsanız, Konuk aracısının onları geri eklemesi beklenir.
+Bir sertifikayı kalıcı olarak kaldırmak için, ' dan kaldırmanız `OSProfile` ve ardından Konuk işletim sisteminin içinden kaldırmanız gerekir.
+
+Bir sanal makine için, ' dan sertifikaları kaldırmak için [Remove-AzVMSecret]() ' i kullanın `OSProfile` .
+
+Sanal makine ölçek kümesi sertifikaları hakkında daha fazla bilgi için bkz. [Sanal Makine Ölçek Kümeleri-nasıl yaparım? kullanımdan kaldırılan sertifikaları kaldırma](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#how-do-i-remove-deprecated-certificates) .
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 VM uzantıları hakkında daha fazla bilgi için bkz. [Azure sanal makine uzantılarına ve özelliklerine genel bakış](overview.md).

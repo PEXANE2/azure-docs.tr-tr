@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Azure Arc ile Azure Arc etkin bir Kubernetes kümesi bağlama
 keywords: Kubernetes, yay, Azure, K8s, kapsayıcılar
 ms.custom: references_regions
-ms.openlocfilehash: 8f1d95db9c30e78e1ca697d5d7e5638988bc9965
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 74a0de494148f1f3315511c0bf6cb10f40cdc416
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540634"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855013"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure Arc etkin bir Kubernetes kümesine bağlanma (Önizleme)
 
@@ -68,10 +68,8 @@ Azure Arc aracıları için aşağıdaki protokollerin/bağlantı noktalarının
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | `https://management.azure.com`                                                                                 | Aracının Azure 'a bağlanması ve kümeyi kaydetmesi için gereklidir                                                        |
 | `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com` | Aracının durum ve getirme yapılandırma bilgilerini itilmesi için veri düzlemi uç noktası                                      |
-| `https://docker.io`                                                                                            | Kapsayıcı görüntülerini çekmek için gereklidir                                                                                         |
-| `https://github.com`, git://github.com                                                                         | Örnek giler depoları GitHub üzerinde barındırılır. Yapılandırma Aracısı, belirttiğiniz git uç noktasına bağlantı gerektirir. |
 | `https://login.microsoftonline.com`                                                                            | Azure Resource Manager belirteçleri getirmek ve güncelleştirmek için gereklidir                                                                                    |
-| `https://azurearcfork8s.azurecr.io`                                                                            | Azure Arc aracıları için kapsayıcı görüntülerini çekmek için gereklidir                                                                  |
+| `https://mcr.microsoft.com`                                                                            | Azure Arc aracıları için kapsayıcı görüntülerini çekmek için gereklidir                                                                  |
 | `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`                                                                            |  Sistem tarafından atanan yönetilen kimlik sertifikalarını çekmek için gereklidir                                                                  |
 
 ## <a name="register-the-two-providers-for-azure-arc-enabled-kubernetes"></a>Azure Arc etkin Kubernetes için iki sağlayıcıyı kaydedin:
@@ -183,17 +181,36 @@ Kümeniz giden bir proxy sunucusunun arkasındaysa, Azure CLı ve Arc etkin Kube
     az -v
     ```
 
-    `connectedk8s`Giden ara sunucu ile aracıları ayarlamak için >= 0.2.3 uzantı sürümüne ihtiyacınız vardır. Makinenizde sürüm < 0.2.3 varsa, uzantınızın en son sürümünü almak için [güncelleştirme adımlarını](#before-you-begin) izleyin.
+    `connectedk8s`Giden ara sunucu ile aracıları ayarlamak için >= 0.2.5 uzantı sürümüne ihtiyacınız vardır. Makinenizde sürüm < 0.2.3 varsa, uzantınızın en son sürümünü almak için [güncelleştirme adımlarını](#before-you-begin) izleyin.
 
-2. Connect komutunu belirtilen proxy parametreleriyle Çalıştır:
+2. Azure CLı için gereken ortam değişkenlerini giden proxy sunucusunu kullanacak şekilde ayarlayın:
+
+    * Bash kullanıyorsanız, aşağıdaki komutu uygun değerlerle çalıştırın:
+
+        ```bash
+        export HTTP_PROXY=<proxy-server-ip-address>:<port>
+        export HTTPS_PROXY=<proxy-server-ip-address>:<port>
+        export NO_PROXY=<cluster-apiserver-ip-address>:<port>
+        ```
+
+    * PowerShell kullanıyorsanız, aşağıdaki komutu uygun değerlerle çalıştırın:
+
+        ```powershell
+        $Env:HTTP_PROXY = "<proxy-server-ip-address>:<port>"
+        $Env:HTTPS_PROXY = "<proxy-server-ip-address>:<port>"
+        $Env:NO_PROXY = "<cluster-apiserver-ip-address>:<port>"
+        ```
+
+3. Connect komutunu belirtilen proxy parametreleriyle Çalıştır:
 
     ```console
-    az connectedk8s connect -n <cluster-name> -g <resource-group> --proxy-https https://<proxy-server-ip-address>:<port> --proxy-http http://<proxy-server-ip-address>:<port> --proxy-skip-range <excludedIP>,<excludedCIDR>
+    az connectedk8s connect -n <cluster-name> -g <resource-group> --proxy-https https://<proxy-server-ip-address>:<port> --proxy-http http://<proxy-server-ip-address>:<port> --proxy-skip-range <excludedIP>,<excludedCIDR> --proxy-cert <path-to-cert-file>
     ```
 
 > [!NOTE]
 > 1. --Proxy-Skip-Aralık ' ın altında Excludedcıdr belirtilmesi, küme içi iletişimin aracıların kesilmediğinden emin olmak açısından önemlidir.
-> 2. Yukarıdaki proxy belirtimi yalnızca Arc aracıları için geçerlidir ve sourcecontrolconfiguration içinde kullanılan Flox pod için geçerli değildir. Yay etkin Kubernetes ekibi bu özellik üzerinde etkin bir şekilde çalışıyor ve yakında kullanıma sunulacaktır.
+> 2. Ancak--proxy-http,--proxy-https ve--proxy-atlama-aralığı çoğu giden proxy ortamları için beklenirken,--proxy-CERT yalnızca, proxy 'nin güvenilen sertifika deposuna eklenmesi gereken proxy 'den güvenilen sertifikalar varsa gereklidir.
+> 3. Yukarıdaki proxy belirtimi Şu anda yalnızca Arc aracıları için uygulanabilir ve sourcecontrolconfiguration içinde kullanılan Flox pod için geçerli değildir. Yay etkin Kubernetes ekibi bu özellik üzerinde etkin bir şekilde çalışıyor ve yakında kullanıma sunulacaktır.
 
 ## <a name="azure-arc-agents-for-kubernetes"></a>Kubernetes için Azure Arc aracıları
 

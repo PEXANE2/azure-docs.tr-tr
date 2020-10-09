@@ -4,17 +4,17 @@ description: Azure depolama ile ilgili sorunları tanımlamak, tanılamak ve sor
 author: normesta
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 10/02/2020
+ms.date: 10/08/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: a63af55161c2e60724fd35987f9dcbf05b12df2e
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 5f43654b4ff7d0e1f73bd2d83df21d7277c570d1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91667920"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854566"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage izleme, tanılama ve sorun giderme
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -23,8 +23,6 @@ ms.locfileid: "91667920"
 Bulut ortamında barındırılan dağıtılmış bir uygulamada tanılama ve sorun giderme sorunları geleneksel ortamlarından daha karmaşık olabilir. Uygulamalar PaaS veya IaaS altyapısına, şirket içinde, mobil cihaza veya bu ortamların bir birleşimine dağıtılabilir. Genellikle, uygulamanızın ağ trafiği ortak ve özel ağlarla geçiş gösterebilir ve uygulamanız, ilişkisel ve belge veritabanları gibi diğer veri depolarına ek olarak Microsoft Azure Depolama tabloları, Bloblar, kuyruklar veya dosyalar gibi birden çok depolama teknolojilerini kullanabilir.
 
 Bu tür uygulamaları başarılı bir şekilde yönetmek için bunları önceden izlemeniz ve bunların tüm yönlerini ve bağımlı teknolojilerini nasıl tanılamanıza ve giderebileceğinizi anlamanız gerekir. Azure depolama hizmetleri 'nin bir kullanıcısı olarak, uygulamanızda beklenmedik değişiklikler (örneğin, olağan yanıt süreleriyle daha yavaş) için uygulamanızın kullandığı depolama hizmetlerini sürekli olarak izlemeniz ve daha ayrıntılı veriler toplamak ve bir sorunu ayrıntılı olarak çözümlemek için günlüğe kaydetme özelliğini kullanmanız gerekir. Hem izleme hem de günlüğe kaydetme işleminden elde ettiğiniz tanılama bilgileri, uygulamanızın karşılaştığı sorunun temel nedenini belirlemenize yardımcı olur. Daha sonra sorunu giderebilmeniz ve düzeltmek için uygulayabileceğiniz uygun adımları belirleyebilirsiniz. Azure depolama, temel bir Azure hizmetidir ve müşterilerin Azure altyapısına dağıtmaları çözümlerinin önemli bir bölümünü oluşturur. Azure depolama, bulut tabanlı uygulamalarınızda depolama sorunlarını izleme, tanılama ve sorun giderme işlemlerini basitleştirmeye yönelik yetenekler içerir.
-
-Azure depolama uygulamalarında uçtan uca sorun giderme kılavuzu için bkz. [Azure depolama ölçümlerini ve günlük, AzCopy ve Ileti Çözümleyicisi 'ni kullanarak uçtan uca sorun giderme](../storage-e2e-troubleshooting.md).
 
 * [Giriş]
   * [Bu kılavuz nasıl düzenlenir]
@@ -68,11 +66,10 @@ Azure depolama uygulamalarında uçtan uca sorun giderme kılavuzu için bkz. [A
 * [Ekler]
   * [Ek 1: HTTP ve HTTPS trafiğini yakalamak için Fiddler kullanma]
   * [Ek 2: ağ trafiğini yakalamak için Wireshark kullanma]
-  * [Ek 3: ağ trafiğini yakalamak için Microsoft Ileti Çözümleyicisi 'ni kullanma]
   * [Ek 4: ölçümleri ve günlük verilerini görüntülemek için Excel kullanma]
   * [Ek 5: Azure DevOps için Application Insights ile Izleme]
 
-## <a name="introduction"></a><a name="introduction"></a>Tanıtım
+## <a name="introduction"></a><a name="introduction"></a>Giriş
 Bu kılavuzda, Azure depolama Istemci kitaplığı 'nda Azure Depolama Analizi, istemci tarafı günlüğe kaydetme gibi özelliklerin yanı sıra Azure depolama ile ilgili sorunları tanımlamak, tanılamak ve gidermek için diğer üçüncü taraf araçları nasıl kullanabileceğiniz gösterilmektedir.
 
 ![İstemci uygulamaları ile Azure depolama hizmetleri arasındaki bilgi akışını gösteren diyagram.][1]
@@ -92,7 +89,7 @@ Bu kılavuz, birincil olarak Azure depolama hizmetleri ve bu tür çevrimiçi hi
 
 "[Sorun giderme kılavuzu]" bölümü, karşılaşabileceğiniz bazı yaygın depolama ile ilgili sorunlar için sorun giderme kılavuzu sağlar.
 
-"[Appendıces]", ağ paketi verilerini çözümlemek için Wireshark ve NetMon gibi diğer araçları kullanma hakkında BILGI, http/https iletilerini çözümlemek Için Fiddler ve günlük verilerinin bağıntıları Için Microsoft ileti çözümleyici 'yi içerir.
+"[Appendıces]", ağ paketi verilerini çözümlemek için Wireshark ve NetMon gibi diğer araçları kullanma hakkında BILGI ve http/https iletilerini çözümlemek Için Fiddler bilgilerini içerir.
 
 ## <a name="monitoring-your-storage-service"></a><a name="monitoring-your-storage-service"></a>Depolama hizmetinizi izleme
 Windows performans izleme hakkında bilgi sahibiyseniz, depolama ölçümlerini Windows performans Izleyicisi sayaçlarından oluşan bir Azure depolama ile eşdeğer olarak düşünebilirsiniz. Depolama ölçümleri ' nde, hizmet kullanılabilirliği, hizmete gönderilen toplam istek sayısı veya hizmete yönelik başarılı isteklerin yüzdesi gibi kapsamlı bir ölçüm kümesi (Windows performans Izleyicisi terminolojisinde sayaçlar) bulacaksınız. Kullanılabilir ölçümlerin tam listesi için bkz. [ölçüm tablosu şeması depolama Analizi](https://msdn.microsoft.com/library/azure/hh343264.aspx). Depolama hizmetinin ölçümleri her saat veya dakikada toplamasını isteyip istemediğinizi belirtebilirsiniz. Ölçümleri etkinleştirme ve depolama hesaplarınızı izleme hakkında daha fazla bilgi için bkz. [depolama ölçümlerini etkinleştirme ve ölçüm verilerini görüntüleme](https://go.microsoft.com/fwlink/?LinkId=510865).
@@ -176,7 +173,7 @@ Genellikle, Azure depolama hizmetleriyle ilgili sorunlar dört geniş kategoride
 Aşağıdaki bölümlerde, bu dört kategorinin her birinde sorunları tanılamak ve gidermek için izlemeniz gereken adımlar ana hatlarıyla verilmiştir. Bu kılavuzun ilerleyen bölümlerindeki "[sorun giderme kılavuzu]" bölümü, karşılaşabileceğiniz bazı yaygın sorunlar için daha fazla ayrıntı sağlar.
 
 ### <a name="service-health-issues"></a><a name="service-health-issues"></a>Hizmet durumu sorunları
-Hizmet durumu sorunları genellikle denetiminizin dışındadır. [Azure Portal](https://portal.azure.com) , depolama hizmetleri dahil olmak üzere Azure hizmetleriyle ilgili devam eden sorunlar hakkında bilgi sağlar. Depolama hesabınızı oluştururken Okuma Erişimli Coğrafi olarak yedekli depolamayı tercih ettiyseniz, verileriniz birincil konumda kullanılamaz hale gelirse, uygulamanız geçici olarak ikincil konumdaki Salt-okunabilir kopyaya geçiş yapabilir. İkincilden okumak için, uygulamanız birincil ve ikincil depolama konumlarını kullanarak geçiş yapabilmelidir ve Salt okunabilir verilerle sınırlı işlevsellik modunda çalışabilebilmelidir. Azure Storage Istemci kitaplıkları, birincil depolamadan okuma başarısız olursa ikincil depolamadan okuyabilen bir yeniden deneme ilkesi tanımlamanızı sağlar. Uygulamanızın, ikincil konumdaki verilerin sonunda tutarlı olduğunu da unutmayın. Daha fazla bilgi için bkz. [Azure depolama yedekliliği seçenekleri ve Okuma Erişimli Coğrafi olarak yedekli depolama](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/).
+Hizmet durumu sorunları genellikle denetiminizin dışındadır. [Azure Portal](https://portal.azure.com) , depolama hizmetleri dahil olmak üzere Azure hizmetleriyle ilgili devam eden sorunlar hakkında bilgi sağlar. Depolama hesabınızı oluştururken Read-Access Geo-Redundant depolamayı tercih ettiyseniz, verileriniz birincil konumda kullanılamaz hale gelirse, uygulamanız geçici olarak ikincil konumdaki Salt-okunabilir kopyaya geçiş yapabilir. İkincilden okumak için, uygulamanız birincil ve ikincil depolama konumlarını kullanarak geçiş yapabilmelidir ve Salt okunabilir verilerle sınırlı işlevsellik modunda çalışabilebilmelidir. Azure Storage Istemci kitaplıkları, birincil depolamadan okuma başarısız olursa ikincil depolamadan okuyabilen bir yeniden deneme ilkesi tanımlamanızı sağlar. Uygulamanızın, ikincil konumdaki verilerin sonunda tutarlı olduğunu da unutmayın. Daha fazla bilgi için bkz. [Azure depolama yedekliliği seçenekleri ve Okuma Erişimli Coğrafi olarak yedekli depolama](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/).
 
 ### <a name="performance-issues"></a><a name="performance-issues"></a>Performans sorunları
 Bir uygulamanın performansı, özellikle kullanıcının bakış açısıyla, öznel olabilir. Bu nedenle, bir performans sorunu olabilecek yerleri belirlemek için temel ölçümlere sahip olmak önemlidir. Birçok etken, bir Azure depolama hizmetinin performansını istemci uygulama perspektifinden etkileyebilir. Bu faktörler, depolama hizmetinde, istemcisinde veya ağ altyapısında çalışmayabilir; Bu nedenle, performans sorununun kaynağını belirlemek için bir stratejinin olması önemlidir.
@@ -221,10 +218,9 @@ Depolama günlüğü, Azure Depolama hesabınızdaki depolama isteklerinin sunuc
 
 * [Fiddler](https://www.telerik.com/fiddler) , http ve https istek ve yanıt iletilerinin üst bilgilerini ve yük verilerini incelemenize olanak tanıyan, ücretsiz bir Web hata ayıklama proxy 'si. Daha fazla bilgi için bkz. [ek 1: http ve HTTPS trafiğini yakalamak Için Fiddler kullanma](#appendix-1).
 * [Microsoft Ağ İzleyicisi (Netmon)](https://cnet-downloads.com/network-monitor) ve [Wireshark](https://www.wireshark.org/) , çok çeşitli ağ protokolleri için ayrıntılı paket bilgilerini görüntülemenize olanak tanıyan ücretsiz ağ protokol çözümleyicileri vardır. Wireshark hakkında daha fazla bilgi için bkz. "[ek 2: ağ trafiğini yakalamak Için Wireshark kullanma](#appendix-2)".
-* Microsoft Message Analyzer, Microsoft 'un Netmon 'u yerine geçen ve ağ paketi verilerinin yakalanmasının yanı sıra diğer araçlardan yakalanan günlük verilerini görüntülemenize ve çözümlemenize yardımcı olan bir araçtır. Daha fazla bilgi için bkz. "[ek 3: ağ trafiğini yakalamak Için Microsoft Message Analyzer 'ı kullanma](#appendix-3)".
 * İstemci Makinenizin ağ üzerinden Azure depolama hizmetine bağlanıp bağlanamamasını denetlemek için temel bir bağlantı testi gerçekleştirmek istiyorsanız, bu işlemi istemcisinde standart **ping** aracını kullanarak yapamazsınız. Ancak, bağlantı denetlemek için [ **tcpıng** aracını](https://www.elifulkerson.com/projects/tcping.php) kullanabilirsiniz.
 
-Çoğu durumda, depolama günlüğü ve depolama Istemci kitaplığı 'ndaki günlük verileri bir sorunu tanılamak için yeterli olacaktır, ancak bazı senaryolarda bu ağ günlüğü araçlarının sağlayabilecek daha ayrıntılı bilgilere ihtiyacınız olabilir. Örneğin, HTTP ve HTTPS iletilerini görüntülemek için Fiddler kullanılması, depolama hizmetlerinden ve istemci uygulamasının depolama işlemlerini nasıl yeniden deneyeceğini incelemenize olanak tanıyan üst bilgi ve yük verilerini görüntülemenize olanak sağlar. Wireshark gibi protokol çözümleyicileri, paket düzeyinde çalışır ve kayıp paketleri ve bağlantı sorunlarını gidermenize olanak sağlayan TCP verilerini görüntülemenize olanak sağlar. İleti çözümleyici, hem HTTP hem de TCP katmanlarında çalışabilir.
+Çoğu durumda, depolama günlüğü ve depolama Istemci kitaplığı 'ndaki günlük verileri bir sorunu tanılamak için yeterli olacaktır, ancak bazı senaryolarda bu ağ günlüğü araçlarının sağlayabilecek daha ayrıntılı bilgilere ihtiyacınız olabilir. Örneğin, HTTP ve HTTPS iletilerini görüntülemek için Fiddler kullanılması, depolama hizmetlerinden ve istemci uygulamasının depolama işlemlerini nasıl yeniden deneyeceğini incelemenize olanak tanıyan üst bilgi ve yük verilerini görüntülemenize olanak sağlar. Wireshark gibi protokol çözümleyicileri, paket düzeyinde çalışır ve kayıp paketleri ve bağlantı sorunlarını gidermenize olanak sağlayan TCP verilerini görüntülemenize olanak sağlar. 
 
 ## <a name="end-to-end-tracing"></a><a name="end-to-end-tracing"></a>Uçtan uca izleme
 Çeşitli günlük dosyalarını kullanarak uçtan uca izleme, olası sorunları araştırmak için kullanışlı bir tekniktir. Sorun gidermenize yardımcı olacak ayrıntılı bilgiler için günlük dosyalarında nerede başlayacağımızı belirten bir gösterge olarak ölçüm verilerinizin tarih/saat bilgilerini kullanabilirsiniz.
@@ -385,11 +381,9 @@ queueServicePoint.UseNagleAlgorithm = false;
 İstemci uygulamanızın kaç istek kullandığını görmek için istemci tarafı günlüklerini denetlemeniz ve istemcinizdeki CPU, .NET atık toplama, ağ kullanımı veya bellek gibi genel .NET ile ilgili performans sorunlarını kontrol etmeniz gerekir. .NET istemci uygulamalarında sorun giderme için bir başlangıç noktası olarak bkz. [hata ayıklama, izleme ve profil oluşturma](https://msdn.microsoft.com/library/7fe0dd2y).
 
 #### <a name="investigating-network-latency-issues"></a>Ağ gecikme sorunlarını araştırma
-Genellikle, ağ nedeniyle oluşan yüksek uçtan uca gecikme süresi geçici koşullardır. Wireshark veya Microsoft Message Analyzer gibi araçları kullanarak, bırakılan paketler gibi geçici ve kalıcı ağ sorunlarını araştırabilirsiniz.
+Genellikle, ağ nedeniyle oluşan yüksek uçtan uca gecikme süresi geçici koşullardır. Wireshark gibi araçları kullanarak, bırakılan paketler gibi geçici ve kalıcı ağ sorunlarını araştırabilirsiniz.
 
 Ağ sorunlarını gidermek için Wireshark kullanma hakkında daha fazla bilgi için bkz. "[ek 2: ağ trafiğini yakalamak Için Wireshark kullanma]."
-
-Ağ sorunlarını gidermek üzere Microsoft Ileti Çözümleyicisi 'ni kullanma hakkında daha fazla bilgi için, bkz. "[ek 3: ağ trafiğini yakalamak Için Microsoft Message Analyzer 'ı kullanma]".
 
 ### <a name="metrics-show-low-averagee2elatency-and-low-averageserverlatency-but-the-client-is-experiencing-high-latency"></a><a name="metrics-show-low-AverageE2ELatency-and-low-AverageServerLatency"></a>Ölçümler yüksek AverageE2ELatency ve düşük AverageServerLatency gösteriyor, ancak istemci yüksek gecikme durumu yaşıyor
 Bu senaryoda, en olası neden depolama hizmetine ulaşan depolama isteklerindeki bir gecikme olur. İstemciden gelen isteklerin neden blob hizmetine bunu yapmadığına ilişkin araştırma yapmanız gerekir.
@@ -402,11 +396,9 @@ Ayrıca, istemcinin birden çok yeniden deneme gerçekleştirip gerçekleştirme
 * İstemci günlüklerini inceleyin. Ayrıntılı günlük kaydı, yeniden deneme gerçekleştiğini gösterir.
 * Kodunuzda hata ayıklayın ve istekle ilişkili **OperationContext** nesnesinin özelliklerini kontrol edin. İşlem yeniden denenmışsa **Requestresults** özelliği birden çok benzersiz sunucu istek kimliği içerir. Her isteğin başlangıç ve bitiş zamanlarını da denetleyebilirsiniz. Daha fazla bilgi için, bölüm [sunucusu Istek kimliği]içindeki kod örneğine bakın.
 
-İstemcide herhangi bir sorun yoksa, paket kaybı gibi olası ağ sorunlarını araştırmanız gerekir. Ağ sorunlarını araştırmak için Wireshark veya Microsoft Message Analyzer gibi araçları kullanabilirsiniz.
+İstemcide herhangi bir sorun yoksa, paket kaybı gibi olası ağ sorunlarını araştırmanız gerekir. Wireshark gibi araçları, ağ sorunlarını araştırmak için kullanabilirsiniz.
 
 Ağ sorunlarını gidermek için Wireshark kullanma hakkında daha fazla bilgi için bkz. "[ek 2: ağ trafiğini yakalamak Için Wireshark kullanma]."
-
-Ağ sorunlarını gidermek üzere Microsoft Ileti Çözümleyicisi 'ni kullanma hakkında daha fazla bilgi için, bkz. "[ek 3: ağ trafiğini yakalamak Için Microsoft Message Analyzer 'ı kullanma]".
 
 ### <a name="metrics-show-high-averageserverlatency"></a><a name="metrics-show-high-AverageServerLatency"></a>Ölçümler yüksek AverageServerLatency gösteriyor
 Blob indirme istekleri için yüksek **Averageserverlatency** durumunda, aynı blob (veya blob kümesi) için yinelenen istekler olup olmadığını görmek Için depolama günlüğü günlüklerini kullanmanız gerekir. Blob yükleme istekleri için, istemcinin kullandığı blok boyutunu araştırmanız gerekir (örneğin, boyutu 64 K 'den az olan bloklar, okumalar 64 K öbekten daha az yer içermedikleri ve birden çok istemci, blokları aynı Blobun aynı blob 'a yüklüyorsanız aşırı kafa oluşmasına neden olabilir. Ayrıca, saniye başına ölçeklenebilirlik hedeflerinin aşılmaya neden olan istek sayısı için dakika başına ölçümleri denetlemeniz gerekir: Ayrıca bkz. "[ölçümler PercentTimeoutError 'da artış göster]."
@@ -476,7 +468,7 @@ Sunucu zaman aşımları, daha fazla araştırma gerektiren depolama hizmetiyle 
 ### <a name="metrics-show-an-increase-in-percentnetworkerror"></a><a name="metrics-show-an-increase-in-PercentNetworkError"></a>Ölçümler PercentNetworkError’da artış gösteriyor
 Ölçümleriniz, depolama hizmetlerinizin biri için **Percentnetworkerror** 'da artış gösterir. **Percentnetworkerror** ölçümü, şu ölçümlerin bir toplamadır: **networkerror**, **anonymousnetworkerror**ve **sasnetworkerror**. Bu durum, istemci bir depolama isteği yaptığında depolama hizmeti bir ağ hatası algıladığında meydana gelir.
 
-Bu hatanın en yaygın nedeni, depolama hizmetindeki zaman aşımı süresi dolmadan önce bir istemci bağlantısının kesilmesi olur. İstemcinin depolama hizmetinden ne zaman ve ne zaman bağlantısını kesmediğini anlamak için, istemcinizdeki kodu araştırın. Ayrıca, istemciden gelen ağ bağlantısı sorunlarını araştırmak için Wireshark, Microsoft Ileti Çözümleyicisi veya Tcping ' i de kullanabilirsiniz. Bu araçlar, [Appendıces]' de açıklanmıştır.
+Bu hatanın en yaygın nedeni, depolama hizmetindeki zaman aşımı süresi dolmadan önce bir istemci bağlantısının kesilmesi olur. İstemcinin depolama hizmetinden ne zaman ve ne zaman bağlantısını kesmediğini anlamak için, istemcinizdeki kodu araştırın. Ayrıca, Wireshark veya Tcping kullanarak istemciden gelen ağ bağlantısı sorunlarını araştırabilirsiniz. Bu araçlar, [Appendıces]' de açıklanmıştır.
 
 ### <a name="the-client-is-receiving-http-403-forbidden-messages"></a><a name="the-client-is-receiving-403-messages"></a>İstemci HTTP 403 (Yasak) iletileri alıyor
 İstemci uygulamanızda HTTP 403 (Yasak) hataları oluşuyorsa büyük ihtimalle istemci depolama isteği gönderirken süresi dolmuş bir Paylaşılan Erişim İmzası kullandığı içindir (saat sapması, geçersiz anahtarlar ve boş üst bilgiler gibi başka olası nedenler de vardır). Sorun süresi dolmuş bir SAS anahtarından kaynaklanıyorsa sunucu tarafı Depolama Günlük Kaydı günlük verilerinde herhangi bir giriş görmezsiniz. Aşağıdaki tabloda, oluşan bu sorunu gösteren depolama Istemci kitaplığı tarafından oluşturulan istemci tarafı günlüğünden bir örnek gösterilmektedir:
@@ -719,13 +711,11 @@ sqllocaldb create v11.0
 
 * Beklenen taban çizgisi davranışınızdan herhangi bir değişiklik olup olmadığını görmek için ölçülerinizi kontrol edin. Ölçülerden, sorunun geçici veya kalıcı olduğunu ve sorunun hangi depolama işlemlerini etkilediğini belirleyebilirsiniz.
 * Oluşan hatalar hakkında daha ayrıntılı bilgi için, sunucu tarafı günlük verilerinizi aramanıza yardımcı olması için ölçüm bilgilerini kullanabilirsiniz. Bu bilgiler sorunu gidermenize ve çözmenize yardımcı olabilir.
-* Sunucu tarafı günlüklerindeki bilgiler sorunu başarıyla gidermek için yeterli değilse, istemci uygulamanızın davranışını araştırmak ve ağınızı araştırmak için Fiddler, Wireshark ve Microsoft Message Analyzer gibi araçlar için depolama Istemci kitaplığı istemci tarafı günlüklerini kullanabilirsiniz.
+* Sunucu tarafı günlüklerindeki bilgiler sorunu başarıyla gidermek için yeterli değilse, istemci uygulamanızın davranışını araştırmak için depolama Istemci kitaplığı istemci tarafı günlüklerini ve Wireshark gibi araçları, ağınızı araştırmak için de kullanabilirsiniz.
 
 Fiddler kullanma hakkında daha fazla bilgi için bkz. "[ek 1: http ve HTTPS trafiğini yakalamak Için Fiddler kullanma]."
 
 Wireshark kullanma hakkında daha fazla bilgi için bkz. "[ek 2: ağ trafiğini yakalamak Için Wireshark kullanma]."
-
-Microsoft Message Analyzer 'ı kullanma hakkında daha fazla bilgi için bkz. "[ek 3: ağ trafiğini yakalamak Için Microsoft Message Analyzer 'ı kullanma]".
 
 ## <a name="appendices"></a><a name="appendices"></a>Ekler
 Appendıces, Azure depolama (ve diğer hizmetler) ile ilgili sorunları tanılarken ve sorunlarını giderirken yararlı bulabileceğiniz çeşitli araçları betimlebiliriz. Bu araçlar Azure Storage 'ın bir parçası değildir ve bazıları üçüncü taraf ürünlerdir. Bu nedenle, bu appendıces ' de açıklanan araçlar, Microsoft Azure veya Azure depolama ile sahip olduğunuz herhangi bir destek sözleşmesi kapsamında değildir ve bu nedenle değerlendirme işleminizin bir parçası olarak, bu araçların sağlayıcılarından sunulan lisanslama ve destek seçeneklerini incelemeniz gerekir.
@@ -776,40 +766,6 @@ Ayrıca, TCP verilerini, TCP verilerine sağ tıklayıp **TCP akışını izle**
 > Wireshark kullanma hakkında daha fazla bilgi için bkz. [Wireshark Users Guide](https://www.wireshark.org/docs/wsug_html_chunked).
 >
 >
-
-### <a name="appendix-3-using-microsoft-message-analyzer-to-capture-network-traffic"></a><a name="appendix-3"></a>Ek 3: ağ trafiğini yakalamak için Microsoft Ileti Çözümleyicisi 'ni kullanma
-Microsoft Message Analyzer 'ı HTTP ve HTTPS trafiğini Fiddler için benzer bir şekilde yakalamak ve ağ trafiğini Wireshark ile benzer bir şekilde yakalamak için kullanabilirsiniz.
-
-#### <a name="configure-a-web-tracing-session-using-microsoft-message-analyzer"></a>Microsoft Message Analyzer 'ı kullanarak bir Web izleme oturumu yapılandırma
-Microsoft Message Analyzer 'ı kullanarak HTTP ve HTTPS trafiğine yönelik bir Web izleme oturumu yapılandırmak için, Microsoft Message Analyzer uygulamasını çalıştırın ve ardından **Dosya** menüsünde **yakala/izle**' ye tıklayın. Kullanılabilir izleme senaryoları listesinde **Web proxy**' yi seçin. Ardından, **Izleme senaryosu yapılandırma** panelinde, **hostnamefilter** metin kutusunda, depolama uç noktalarınızın adlarını ekleyin (Bu adları [Azure Portal](https://portal.azure.com)arayabilirsiniz). Örneğin, Azure depolama hesabınızın adı **contosodata**Ise, **hostnamefilter** metin kutusuna aşağıdakileri eklemeniz gerekir:
-
-```
-contosodata.blob.core.windows.net contosodata.table.core.windows.net contosodata.queue.core.windows.net
-```
-
-> [!NOTE]
-> Bir boşluk karakteri, ana bilgisayar adlarını ayırır.
->
->
-
-İzleme verilerini toplamaya başlamaya hazırsanız, **kullanmaya başla** düğmesine tıklayın.
-
-Microsoft Message Analyzer **Web proxy** izlemesi hakkında daha fazla bilgi için bkz. [Microsoft-PEF-WebProxy sağlayıcısı](https://technet.microsoft.com/library/jj674814.aspx).
-
-Microsoft Message Analyzer 'daki yerleşik **Web proxy** Izlemesi Fiddler 'a dayalıdır; Bu, istemci tarafı HTTPS trafiğini yakalayabilir ve şifrelenmemiş HTTPS iletilerini görüntüleyebilir. **Web proxy** izlemesi, şifrelenmemiş iletilere erişim sağlayan tüm http ve HTTPS trafiği için yerel bir proxy yapılandırarak işe yarar.
-
-#### <a name="diagnosing-network-issues-using-microsoft-message-analyzer"></a>Microsoft Message Analyzer kullanarak ağ sorunlarını tanılama
-İstemci uygulaması ve depolama hizmeti arasındaki HTTP/HTTPs trafiğinin ayrıntılarını yakalamak için Microsoft Message Analyzer **Web proxy** izlemeyi kullanmanın yanı sıra, yerleşik **yerel bağlantı katmanı** izlemesini ağ paketi bilgilerini yakalamak için de kullanabilirsiniz. Bu, Wireshark ile yakalayabilmeniz ve bırakılan paketler gibi ağ sorunlarını tanılamak için benzer verileri yakalamanızı sağlar.
-
-Aşağıdaki ekran görüntüsünde, **DiagnosisTypes** sütununda bazı **bilgilendirici** Iletilerle örnek bir **yerel bağlantı katmanı** izlemesi gösterilmektedir. **DiagnosisTypes** sütunundaki bir simgeye tıkladığınızda iletinin ayrıntıları gösterilir. Bu örnekte, istemciden bir bildirim almadığı için sunucu #305 yeniden aktarılan ileti:
-
-![DiagnosisTypes sütununda bazı bilgilendirici iletilerle örnek bir yerel bağlantı katmanı izlemesi gösteren ekran görüntüsü][9]
-
-Microsoft Message Analyzer 'da izleme oturumu oluştururken, izlemede gürültü miktarını azaltmak için filtreler belirtebilirsiniz. İzlemeyi tanımladığınız **yakalama/izleme** sayfasında, **Microsoft-Windows-NDIS-packetcapture**' ın yanındaki **Yapılandır** bağlantısına tıklayın. Aşağıdaki ekran görüntüsünde, üç depolama hizmetinin IP adresleri için TCP trafiğini filtreleyen bir yapılandırma gösterilmektedir:
-
-![Üç depolama hizmetinin IP adresleri için TCP trafiğini filtreleyen bir yapılandırmayı gösteren ekran görüntüsü.][10]
-
-Microsoft Message Analyzer yerel bağlantı katmanı izleme hakkında daha fazla bilgi için bkz. [Microsoft-PEF-NDIS-PacketCapture sağlayıcısı](https://technet.microsoft.com/library/jj659264.aspx).
 
 ### <a name="appendix-4-using-excel-to-view-metrics-and-log-data"></a><a name="appendix-4"></a>Ek 4: ölçümleri ve günlük verilerini görüntülemek için Excel kullanma
 Birçok araç, Azure Tablo depolamadan depolama ölçümleri verilerini, görüntüleme ve analiz amacıyla Excel 'e yüklemeyi kolaylaştıran ayrılmış bir biçimde indirmenizi sağlar. Azure Blob Storage 'dan alınan depolama günlüğü verileri, Excel 'e yükleyebildiğiniz ayrılmış bir biçimde zaten vardır. Ancak, [depolama Analizi günlük biçimi](https://msdn.microsoft.com/library/azure/hh343259.aspx) ve [depolama Analizi ölçüm tablosu şeması](https://msdn.microsoft.com/library/azure/hh343264.aspx)bilgilerine göre uygun sütun başlıkları eklemeniz gerekir.
@@ -897,7 +853,6 @@ Azure depolama 'da analiz hakkında daha fazla bilgi için şu kaynaklara bakın
 [Ekler]: #appendices
 [Ek 1: HTTP ve HTTPS trafiğini yakalamak için Fiddler kullanma]: #appendix-1
 [Ek 2: ağ trafiğini yakalamak için Wireshark kullanma]: #appendix-2
-[Ek 3: ağ trafiğini yakalamak için Microsoft Ileti Çözümleyicisi 'ni kullanma]: #appendix-3
 [Ek 4: ölçümleri ve günlük verilerini görüntülemek için Excel kullanma]: #appendix-4
 [Ek 5: Azure DevOps için Application Insights ile Izleme]: #appendix-5
 

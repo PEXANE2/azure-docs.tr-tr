@@ -3,12 +3,12 @@ title: Yedekleme merkezi 'ni kullanarak eylem gerçekleştirme
 description: Bu makalede, yedekleme merkezi kullanılarak eylemlerin nasıl gerçekleştirileceği açıklanır.
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: 81c81f0e9d955e0a5243485baaedff4e6f0fc10d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 65ac6374b1a9571d0415bc097a6ee957874d3d44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90998211"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854435"
 ---
 # <a name="perform-actions-using-backup-center"></a>Yedekleme merkezi 'ni kullanarak eylem gerçekleştirme
 
@@ -70,7 +70,7 @@ Geri yüklemek istediğiniz veri kaynağı türüne bağlı olarak, aşağıda a
 ### <a name="if-youre-restoring-an-azure-database-for-postgresql-server"></a>PostgreSQL için Azure veritabanı sunucusunu geri yüklüyorsanız
 
 1. Yedekleme merkezi ' ne gidin ve **genel bakış** sekmesinin en üstünde **geri yükle** ' yi seçin.
-2. Yedeklemek istediğiniz veri kaynağı türünü seçin (Bu durumda PostgreSQL için Azure veritabanı sunucusu).
+2. Geri yüklemek istediğiniz veri kaynağı türünü seçin (Bu durumda PostgreSQL için Azure veritabanı sunucusu).
 
     ![PostgreSQL için Azure veritabanı sunucusunun geri yüklenmesi için veri kaynağı seçin](./media/backup-center-actions/restore-select-datasource-postgresql.png)
 

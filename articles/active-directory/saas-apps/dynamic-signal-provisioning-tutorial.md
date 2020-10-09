@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 9a11ff33245bf92e225f0f2382f6e873eab1338c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9ebb0927f9721c5c35ee0d83a108efd72732958b
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323879"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851246"
 ---
 # <a name="tutorial-configure-dynamic-signal-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için dinamik sinyal yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları dinami
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -100,11 +100,11 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alarak d
 
 6. Dinamik sinyal Yönetici Konsolu 'nda **yönetim > gelişmiş > API**'sine gidin.
 
-    ![Dinamik sinyal sağlama](./media/dynamic-signal-provisioning-tutorial/secret-token-1.png)
+    :::image type="content" source="./media/dynamic-signal-provisioning-tutorial/secret-token-1.png" alt-text="Dinamik sinyal yönetici konsolunun ekran görüntüsü. Gelişmiş, Yönetici menüsünde vurgulanır. Gelişmiş Menü, vurguladığım bir P ile de görünür." border="false":::
 
     **SCIM API URL 'Sini** **kiracı URL**'sine kopyalayın. Bir **taşıyıcı belirteci** oluşturmak Için **Yeni belirteç oluştur** ' a tıklayın ve değeri **gizli belirtece**kopyalayın.
 
-    ![Dinamik sinyal sağlama](./media/dynamic-signal-provisioning-tutorial/secret-token-2.png)
+    :::image type="content" source="./media/dynamic-signal-provisioning-tutorial/secret-token-2.png" alt-text="Dinamik sinyal yönetici konsolunun ekran görüntüsü. Gelişmiş, Yönetici menüsünde vurgulanır. Gelişmiş Menü, vurguladığım bir P ile de görünür." border="false":::
 
 7. 5. adımda gösterilen alanları doldurarak Azure AD 'nin dinamik **sinyalle** bağlantı kuramadığından emin olmak Için Bağlantıyı Sına ' ya tıklayın. Bağlantı başarısız olursa, dinamik sinyal hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 

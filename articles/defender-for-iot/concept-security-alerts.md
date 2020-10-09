@@ -4,21 +4,21 @@ description: IoT özellikleri ve hizmeti için Defender 'ı kullanarak güvenlik
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: elazark
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2020
-ms.author: mlottner
-ms.openlocfilehash: 09ee0f9d5bd6e789d8acd4c70db866983beb1119
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/08/2020
+ms.author: v-ekrieg
+ms.openlocfilehash: c4c92bfa25d9c43d3c654fbd1f23e242effc7577
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90942207"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851212"
 ---
 # <a name="defender-for-iot-security-alerts"></a>IoT güvenlik uyarıları için Defender
 
@@ -28,11 +28,11 @@ Bir uyarı olası bir uzlaşmaya ilişkin bir gösterge olarak davranır ve ara�
 
 Bu makalede, IoT Hub ve/veya IoT cihazlarınızda tetiklenebilecek yerleşik uyarıların bir listesini bulacaksınız.
 IoT için Defender, yerleşik uyarılara ek olarak beklenen IoT Hub ve/veya cihaz davranışına göre özel uyarılar tanımlamanızı sağlar.
-Daha ayrıntılı bilgi için bkz. [özelleştirilebilir uyarılar](concept-customizable-security-alerts.md).
+Daha fazla bilgi için bkz. [özelleştirilebilir uyarılar](concept-customizable-security-alerts.md).
 
 ## <a name="built-in-alerts-for-iot-devices"></a>IoT cihazları için yerleşik uyarılar
 
-| Ad | Önem Derecesi | Veri Kaynağı | Açıklama | Önerilen düzeltme adımları|
+| Adı | Önem Derecesi | Veri Kaynağı | Açıklama | Önerilen düzeltme adımları|
 |----------|---------------|-------------|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |**Yüksek** önem derecesi|  |  |  |
 |   İkili komut satırı   | Yüksek | Aracı | Komut satırından çağrılan/yürütülen LA Linux ikilisi algılandı. Bu işlem meşru bir etkinlik veya cihazınızın güvenliğinin aşıldığını belirten bir gösterge olabilir.|   Komutunu çalıştıran kullanıcıyla birlikte gözden geçirin ve cihazın cihazda çalıştırılması beklenen bir işlem olup olmadığını denetleyin. Aksi takdirde, uyarıyı bilgi güvenliği ekibinize iletin. |

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 494a698ac4b6f8262851878cfee4bb91126d9f02
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: a050f7a7d86ef8586cab3e90d9c1bac310a7f18b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91823029"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854588"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-litmus"></a>Öğretici: Litmus ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Litmus 'i Azure Active Directory (Azure AD) ile tümleştirmeyi
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -129,11 +129,11 @@ Bu bölümde, Litmus 'e erişim vererek Azure çoklu oturum açma özelliğini k
 
 1. Sol Gezinti panelinden **güvenlik** ' e tıklayın.
 
-    ![Litmus yapılandırması](./media/litmus-tutorial/security-img.png)
+    ![Ekran görüntüsü seçili güvenlik öğesini gösterir.](./media/litmus-tutorial/security-img.png)
 
 1. **SAML kimlik doğrulamasını Yapılandır** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Litmus yapılandırması](./media/litmus-tutorial/configure1.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz SAML kimlik doğrulamasını yapılandırma bölümünü gösterir.](./media/litmus-tutorial/configure1.png)
 
     a. **SAML etkinleştir** geçiş geçişi üzerinde geçiş yapın.
 
@@ -143,7 +143,7 @@ Bu bölümde, Litmus 'e erişim vererek Azure çoklu oturum açma özelliğini k
 
 1. Aşağıdaki adımları gerçekleştirin:
 
-    ![Litmus yapılandırması](./media/litmus-tutorial/configure3.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz bölümünü gösterir.](./media/litmus-tutorial/configure3.png)
 
     a. **SAML 2,0 uç noktası (http)** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
@@ -157,15 +157,15 @@ Bu bölümde, Litmus 'e erişim vererek Azure çoklu oturum açma özelliğini k
 
 1. Sol gezinti bölmesindeki **hesaplara** tıklayın.
 
-    ![Litmus yapılandırması](./media/litmus-tutorial/accounts-img.png)
+    ![Ekran görüntüsü seçili hesaplar öğesini gösterir.](./media/litmus-tutorial/accounts-img.png)
 
 1. **Yeni Kullanıcı Ekle** sekmesine tıklayın.
 
-    ![Litmus yapılandırması](./media/litmus-tutorial/add-new-user.png)
+    ![Ekran görüntüsü, seçili Yeni Kullanıcı Ekle öğesini gösterir.](./media/litmus-tutorial/add-new-user.png)
 
 1. **Kullanıcı Ekle** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Litmus yapılandırması](./media/litmus-tutorial/user-profile.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz Kullanıcı ekle bölümünü gösterir.](./media/litmus-tutorial/user-profile.png)
 
     a. **E-posta** metin kutusuna **B. Simon \@ contoso.com** gibi kullanıcının e-posta adresini girin
 

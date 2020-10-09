@@ -1,41 +1,42 @@
 ---
-title: Azure Batch görev başlatma olayı
-description: Batch görevi başlatma olayı için başvuru bilgileri. Bu olay, bir Görev Zamanlayıcı tarafından bir işlem düğümünde başlamak üzere zamanlandıktan sonra yayınlanır.
+title: Azure Batch görev zamanlaması başarısız olayı
+description: Batch görev zamanlaması hata olayı için başvuru. Bu olay, bir görev zamanlanırsa ve daha sonra yeniden deneneceği zaman yayılır.
 ms.topic: reference
-ms.date: 10/08/2020
-ms.openlocfilehash: 3a57ffbb1e1659cff54d101aa4b90ca1bd5d3a57
+ms.date: 09/20/2020
+ms.openlocfilehash: 549281d2b2c371e8f09c584e771cf44f7abc8a00
 ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/08/2020
-ms.locfileid: "91851025"
+ms.locfileid: "91852188"
 ---
-# <a name="task-start-event"></a>Görev başlangıç olayı
+# <a name="task-schedule-fail-event"></a>Görev zamanlama başarısız olayı
 
- Bu olay, bir Görev Zamanlayıcı tarafından bir işlem düğümünde başlamak üzere zamanlandıktan sonra yayınlanır. Görev yeniden deneniyorsa veya yeniden kuyruğa bu olay aynı görev için tekrar yayınlanacaktır, ancak yeniden deneme sayısı ve sistem görevinin sürümü uygun şekilde güncelleştirilir.
+ Bu olay, bir görev zamanlanırsa ve daha sonra yeniden deneneceği zaman yayılır. Bu, kaynak sınırlaması nedeniyle görev zamanlama zamanında geçici bir hata, örneğin, belirtilen bir görevi çalıştırmak için düğümlerde yeterli kullanılabilir yuva yok `requiredSlots` .
 
-
- Aşağıdaki örnekte, bir görev başlatma olayının gövdesi gösterilmektedir.
+ Aşağıdaki örnekte, bir görev zamanlaması hata olayının gövdesi gösterilmektedir.
 
 ```
 {
-    "jobId": "myJob",
-    "id": "myTask",
+    "jobId": "job-01",
+    "id": "task-01",
     "taskType": "User",
-    "systemTaskVersion": 220192842,
+    "systemTaskVersion": 665378862,
     "requiredSlots": 1,
     "nodeInfo": {
-        "poolId": "pool-001",
-        "nodeId": "tvm-257509324_1-20160908t162728z"
+        "poolId": "pool-01",
+        "nodeId": " "
     },
     "multiInstanceSettings": {
         "numberOfInstances": 1
     },
     "constraints": {
-        "maxTaskRetryCount": 2
+        "maxTaskRetryCount": 0
     },
-    "executionInfo": {
-        "retryCount": 0
+    "schedulingError": {
+        "category": "UserError",
+        "code": "JobPreparationTaskFailed",
+        "message": "Task cannot run because the job preparation task failed on node"
     }
 }
 ```
@@ -44,13 +45,13 @@ ms.locfileid: "91851025"
 |------------------|----------|-----------|
 |`jobId`|Dize|Görevi içeren işin KIMLIĞI.|
 |`id`|Dize|Görevin KIMLIĞI.|
-|`taskType`|Dize|Görevin türü. Bu, bir iş Yöneticisi görevi olduğunu ya da bir iş Yöneticisi görevi olmadığını belirten ' user ' olduğunu belirten ' JobManager ' olabilir.|
+|`taskType`|Dize|Görevin türü. Bu, bir iş Yöneticisi görevi olduğunu ya da bir iş Yöneticisi görevi olmadığını belirten ' user ' olduğunu belirten ' JobManager ' olabilir. Bu olay iş hazırlama görevleri, iş bırakma görevleri veya başlangıç görevleri için yayınlanmaz.|
 |`systemTaskVersion`|Int32|Bu, bir görevde iç yeniden deneme sayacıdır. Toplu olarak Batch hizmeti, geçici sorunlar için bir görevi hesaba yeniden deneyebilir. Bu sorunlar, iç zamanlama hataları içerebilir veya işlem düğümlerinden hatalı bir durumda kurtarmaya çalışır.|
 |`requiredSlots`|Int32|Görevi çalıştırmak için gereken yuvalar.|
 |[`nodeInfo`](#nodeInfo)|Karmaşık Tür|Görevin çalıştırıldığı işlem düğümüyle ilgili bilgiler içerir.|
-|[`multiInstanceSettings`](#multiInstanceSettings)|Karmaşık Tür|Görevin birden çok işlem düğümü gerektiren çok örnekli bir görev olduğunu belirtir.  Ayrıntılar için bkz. [Multiınstancesettings](/rest/api/batchservice/get-information-about-a-task) .|
+|[`multiInstanceSettings`](#multiInstanceSettings)|Karmaşık Tür|Görevin birden çok işlem düğümü gerektiren çok örnekli bir görev olduğunu belirtir.  [`multiInstanceSettings`](/rest/api/batchservice/get-information-about-a-task)Ayrıntılar için bkz..|
 |[`constraints`](#constraints)|Karmaşık Tür|Bu görev için uygulanan yürütme kısıtlamaları.|
-|[`executionInfo`](#executionInfo)|Karmaşık Tür|Görevin yürütülmesi hakkındaki bilgileri içerir.|
+|[`schedulingError`](#schedulingError)|Karmaşık Tür|Görevin zamanlama hatası hakkında bilgi içerir.|
 
 ###  <a name="nodeinfo"></a><a name="nodeInfo"></a> NodeInfo
 
@@ -63,7 +64,7 @@ ms.locfileid: "91851025"
 
 |Öğe adı|Tür|Notlar|
 |------------------|----------|-----------|
-|`numberOfInstances`|int|Görevin gerektirdiği işlem düğümü sayısı.|
+|`numberOfInstances`|Int32|Görevin gerektirdiği işlem düğümü sayısı.|
 
 ###  <a name="constraints"></a><a name="constraints"></a> kısıtlamaları
 
@@ -71,8 +72,11 @@ ms.locfileid: "91851025"
 |------------------|----------|-----------|
 |`maxTaskRetryCount`|Int32|Görevin en fazla yeniden denenme sayısı. Batch hizmeti, çıkış kodu sıfır değilse bir görevi yeniden dener.<br /><br /> Bu değerin özellikle yeniden deneme sayısını denetlediğine unutmayın. Batch hizmeti görevi bir kez dener ve daha sonra bu sınıra kadar yeniden deneyebilir. Örneğin, en fazla yeniden deneme sayısı 3 ise Batch, 4 kata kadar bir görevi dener (bir başlangıç denemesi ve 3 yeniden deneme).<br /><br /> En fazla yeniden deneme sayısı 0 ise, Batch hizmeti görevleri yeniden denemeyecek.<br /><br /> En fazla yeniden deneme sayısı-1 ise, Batch hizmeti görevleri sınırlı olmadan yeniden dener.<br /><br /> Varsayılan değer 0 ' dır (yeniden deneme yok).|
 
-###  <a name="executioninfo"></a><a name="executionInfo"></a> ExecutionInfo
+
+###  <a name="schedulingerror"></a><a name="schedulingError"></a> schedulingError
 
 |Öğe adı|Tür|Notlar|
 |------------------|----------|-----------|
-|`retryCount`|Int32|Görevin Batch hizmeti tarafından yeniden denenme sayısı. Bu görev, belirtilen MaxTaskRetryCount 'a kadar sıfır olmayan çıkış kodu ile çıktıktan sonra yeniden denenir|
+|`category`|Dize|Hatanın kategorisi.|
+|`code`|Dize|Görev zamanlama hatası için bir tanımlayıcı. Kodlar değişmez ve programlı olarak tüketilmelidir.|
+|`message`|Dize|Bir kullanıcı arabiriminde görüntülenmek üzere uygun olması amaçlanan görev zamanlama hatasını açıklayan bir ileti.|

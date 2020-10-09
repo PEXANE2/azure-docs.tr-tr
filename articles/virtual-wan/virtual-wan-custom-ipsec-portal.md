@@ -7,16 +7,16 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: 0ea4523d1558f6887e1aef344198026591dac617
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07eae453441ea8bff81d7cdb60f9c46c08a22829
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84752608"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851191"
 ---
 # <a name="configure-a-custom-ipsec-policy-for-virtual-wan-using-the-portal"></a>Portalı kullanarak sanal WAN için özel bir IPSec ilkesi yapılandırma
 
-Azure portal sanal WAN için özel IPSec ilkesi yapılandırabilirsiniz. Özel ilkeler, her iki tarafının da (Şirket içi ve Azure VPN Gateway) ıKE Aşama 1 ve ıKE aşama 2 için aynı ayarları kullanmasını istediğinizde yararlıdır.
+Azure portal bir sanal WAN VPN bağlantısı için özel bir IPSec ilkesi yapılandırabilirsiniz. Özel ilkeler, her iki tarafının da (Şirket içi ve Azure VPN Gateway) ıKE Aşama 1 ve ıKE aşama 2 için aynı ayarları kullanmasını istediğinizde yararlıdır.
 
 ## <a name="working-with-custom-policies"></a>Özel ilkelerle çalışma
 
@@ -24,14 +24,14 @@ Azure portal sanal WAN için özel IPSec ilkesi yapılandırabilirsiniz. Özel i
 
 ## <a name="configure-a-policy"></a>İlke yapılandırma
 
-1. **Sanal hub 'ı bulun**. Bir tarayıcıdan [Azure portalına](https://aka.ms/azurevirtualwanpreviewfeatures) gidin ve Azure hesabınızla oturum açın. Siteniz için sanal hub 'ı bulun.
-2. **VPN sitesini seçin**. Hub sayfasından, özel bir ilke ayarlamak istediğiniz VPN sitesini seçin.
+1. **Sanal hub 'ı bulun**. Bir tarayıcıdan [Azure portalına](https://aka.ms/azurevirtualwanpreviewfeatures) gidin ve Azure hesabınızla oturum açın. Sanal WAN kaynağınız ' ne gidin ve VPN sitenizin bağlı olduğu sanal hub 'ı bulun.
+2. **VPN sitesini seçin**. Hub Genel Bakış sayfasında **VPN (siteden siteye)** seçeneğine tıklayın ve özel bir IPSec ilkesi kurmak Istediğiniz VPN sitesini seçin.
 
    ![seçin](./media/virtual-wan-custom-ipsec-portal/locate.png)
 3. **VPN bağlantısını düzenleyin**. **Bağlam menüsünden** **...**, **VPN bağlantısını Düzenle**' yi seçin.
 
    ![düzenle](./media/virtual-wan-custom-ipsec-portal/contextmenu.png)
-4. **Ayarları yapılandırın**. **VPN bağlantısını Düzenle** sayfasında ayarları Ayarlar ' ı yapılandırın. Ayarlarınızı kaydetmek için **Kaydet** ' i seçin.
+4. **Ayarları yapılandırın**. **VPN bağlantısını Düzenle** sayfasında, IPSec ayarını varsayılan olarak özel olarak değiştirin ve IPSec ilkesini özelleştirin. Ayarlarınızı kaydetmek için **Kaydet** ' i seçin.
 
    ![Yapılandır ve Kaydet](./media/virtual-wan-custom-ipsec-portal/edit.png)
 

@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: 7e298afa7efa6035b24f689d1163308ac6b14bff
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: af61254643e9f072995bceed1b6ecf8ecc29e5f8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82233338"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855461"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-starter"></a>Azure DevOps Starter ile Azure Kubernetes hizmetine ASP.NET Core uygulamaları dağıtma
 
@@ -24,7 +24,7 @@ DevOps Starter ayrıca:
 * Azure Kubernetes hizmeti (AKS) gibi Azure kaynaklarını otomatik olarak oluşturur.
 * CI/CD için derleme ve yayın işlem hattı ayarlayan Azure DevOps 'da bir yayın işlem hattı oluşturur ve yapılandırır.
 * İzleme için bir Azure Application Insights kaynağı oluşturur.
-* AKS kümesindeki kapsayıcı iş yüklerinin performansını izlemek için [kapsayıcılar Için Azure izleyicisini](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) sağlar
+* AKS kümesindeki kapsayıcı iş yüklerinin performansını izlemek için [kapsayıcılar Için Azure izleyicisini](../azure-monitor/insights/container-insights-overview.md) sağlar
 
 Bu öğreticide şunları yapacaksınız:
 
@@ -45,7 +45,7 @@ Bu öğreticide şunları yapacaksınız:
 
 DevOps Starter Azure Pipelines ' de bir CI/CD işlem hattı oluşturur. Yeni bir Azure DevOps kuruluşu oluşturabilir veya var olan bir kuruluşu kullanabilirsiniz. DevOps Starter Ayrıca, tercih ettiğiniz Azure aboneliğinde AKS kümesi gibi Azure kaynakları da oluşturur.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. Arama kutusuna **DevOps Starter**yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın.
 
@@ -171,4 +171,4 @@ Ekibinizin gereksinimlerine uygun olarak bu derleme ve yayın işlem hatlarını
 Kubernetes panosunu kullanma hakkında daha fazla bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [Kubernetes panosunu kullanma](https://docs.microsoft.com/azure/aks/kubernetes-dashboard)
+> [Kubernetes panosunu kullanma](../aks/kubernetes-dashboard.md)

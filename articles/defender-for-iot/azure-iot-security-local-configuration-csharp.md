@@ -4,7 +4,7 @@ description: IoT için Defender güvenlik hizmeti, C# için güvenlik Aracısı 
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: elazark
 manager: rkarlin
 editor: ''
 ms.devlang: na
@@ -12,20 +12,20 @@ ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2019
-ms.author: mlottner
-ms.openlocfilehash: 19fa5b2949888993954f3075d1e10c9e8f126e2f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/08/2020
+ms.author: v-ekrieg
+ms.openlocfilehash: 13c16407481d4fa6f7d468a73051cc4945e6314e
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941734"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851242"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>Yerel yapılandırma dosyasını anlama (C# Aracısı)
 
 IoT güvenlik Aracısı için Defender, yerel bir yapılandırma dosyasından yapılandırmaları kullanır.
 
-Güvenlik Aracısı, Aracı başladığında yapılandırma dosyasını bir kez okur. Yerel yapılandırma dosyasında bulunan yapılandırmalar hem kimlik doğrulama yapılandırmasını hem de aracıyla ilgili diğer yapılandırmaları içerir.
+Güvenlik Aracısı, aracı çalışmaya başladığında yapılandırma dosyasını okur. Yerel yapılandırma dosyasında bulunan yapılandırmalar hem kimlik doğrulama yapılandırmasını hem de aracıyla ilgili diğer yapılandırmaları içerir.
 
 C# güvenlik Aracısı birden çok yapılandırma dosyası kullanır:
 
@@ -57,7 +57,7 @@ Windows için:
 | highPriorityQueueSizePercentage | 0 < numarası < 1 | Yüksek öncelikli iletiler için ayrılan toplam önbelleğin bölümü. |
 | logLevel | "Off", "önemli", "Error", "Warning", "Information", "Debug"  | Bu önem derecesine sahip ve yukarıdaki günlük iletileri hata ayıklama konsolunda günlüğe kaydedilir (Linux 'ta syslog). |
 | Dosya LogLevel |  "Off", "önemli", "Error", "Warning", "Information", "Debug"| Bu önem derecesine sahip olan ve yukarıdaki günlük iletileri, dosyaya (Linux 'ta syslog) kaydedilir. |
-| diagnosticVerbosityLevel | "None", "Some", "tümü", | Tanılama olaylarının ayrıntı düzeyi. Hiçbiri-tanılama olayları gönderilmez, yüksek önem taşıyan bazı tanılama olayları gönderilir, tüm Günlükler de tanılama olayları olarak gönderilir. |
+| diagnosticVerbosityLevel | "None", "Some", "tümü", | Tanılama olaylarının ayrıntı düzeyi. Hiçbiri-tanılama olayları gönderilmez. Yalnızca yüksek önem taşıyan bazı tanılama olayları gönderilir. Tümü-tüm Günlükler de tanılama olayları olarak gönderilir. |
 | logFilePath | Dosya yolu | FileLogLevel > kapalıysa Günlükler bu dosyaya yazılır. |
 | defaultEventPriority | "Yüksek", "düşük", "kapalı" | Varsayılan olay önceliği. |
 
@@ -85,10 +85,11 @@ Windows için:
 | Yapılandırma adı | Olası değerler | Ayrıntılar |
 |:-----------|:---------------|:--------|
 | Ladı | string | Güvenlik modülü kimliğinin adı. Bu ad, cihazdaki modül kimliği adına karşılık gelmelidir. |
-| deviceId | string | Cihazın KIMLIĞI (Azure IoT Hub kayıtlı olarak). || schedulerInterval | TimeSpan dizesi | İç Zamanlayıcı aralığı. |
+| deviceId | string | Cihazın KIMLIĞI (Azure IoT Hub kayıtlı olarak). |
+| schedulerInterval | TimeSpan dizesi | İç Zamanlayıcı aralığı. |
 | gatewayHostname | string | Azure IoT Hub 'ının konak adı. Genellikle <-hub>. azure-devices.net |
 | Null | dize-dosyanın yolu | Kimlik doğrulama parolasını içeren dosyanın yolu.|
-| tür | "SymmetricKey", "SelfSignedCertificate" | Kimlik doğrulaması için Kullanıcı parolası. *SymmetricKey* ' i seçin Kullanıcı parolası bir simetrik anahtaralıysa, gizli dizi otomatik olarak imzalanan bir sertifikadır, *otomatik olarak imzalanan sertifika* seçeneğini belirleyin. |
+| tür | "SymmetricKey", "SelfSignedCertificate" | Kimlik doğrulaması için Kullanıcı parolası. *SymmetricKey* ' i seçin Kullanıcı parolası bir simetrik anahtaralıysa, parola otomatik olarak imzalanan bir sertifika ise, *otomatik olarak imzalanan sertifika* seçeneğini belirleyin. |
 | identity | "DPS", "Module", "cihaz" | Kimlik doğrulaması kimliği-kimlik doğrulama, DPS aracılığıyla yapılırsa, modül kimlik bilgileri kullanılarak kimlik doğrulaması yapıldığında modül veya cihaz kimlik bilgileri kullanılarak kimlik doğrulaması yapılmışsa kullanılır.
 | certificateLocationKind |  "YerelDosya", "Mağaza" | YerelDosya sertifika bir dosyada depolanıyorsa, sertifika bir sertifika deposunda bulunuyorsa mağaza. |
 | idScope | string | DPS KIMLIK kapsamı |

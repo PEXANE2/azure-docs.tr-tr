@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 55c6cbc18e37368dd47c47227041024b13987c47
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 41f2ee9806b8f6818f2b2dd7a48920ac9907ca79
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82233219"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854656"
 ---
 # <a name="create-a-cicd-pipeline-for-github-repo-using-azure-devops-starter"></a>Azure DevOps Starter kullanarak GitHub deposu için bir CI/CD işlem hattı oluşturma
 
@@ -43,7 +43,7 @@ Azure DevOps Starter, Azure 'da sürekli tümleştirme (CI) ve sürekli teslim (
 
 Azure DevOps Starter, Azure Pipelines içinde bir CI/CD işlem hattı oluşturur. Yeni bir Azure DevOps kuruluşu oluşturabilir veya var olan bir kuruluşu kullanabilirsiniz. Azure DevOps Starter Ayrıca seçtiğiniz Azure aboneliğindeki Azure kaynaklarını da oluşturur.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. Arama kutusuna **DevOps Starter**yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın.
 
@@ -83,7 +83,7 @@ Azure DevOps Starter, Azure Pipelines içinde bir CI/CD işlem hattı oluşturur
 
 Artık bir ekiple uygulamanızda işbirliği yapmaya hazırsınız. CI/CD işlemi, en son çalışmalarınızı otomatik olarak Web sitenize dağıtır. GitHub deposunda yapılan her değişiklik Azure DevOps 'da bir derleme başlatır ve bir CD işlem hattı Azure 'a bir dağıtım çalıştırır.
 
-1. DevOps başlangıç panonuzdan **depolar**' ı seçin. GitHub deponuz yeni bir tarayıcı sekmesinde açılır. uygulamanızda bir değişiklik yapın ve ardından **Değişiklikleri Kaydet**' i seçin.
+1. DevOps başlangıç panonuzdan **depolar**' ı seçin. GitHub deponuz yeni bir tarayıcı sekmesinde açılır. Uygulamanızda bir değişiklik yapın ve ardından **Değişiklikleri Kaydet**' i seçin.
 
 1. Birkaç dakika sonra, bir derleme Azure Pipelines başlar. Yapı durumunu DevOps başlangıç panosunda izleyebilirsiniz. Ayrıca, DevOps başlangıç panosundan **derleme işlem hatları** sekmesini seçerek Azure DevOps kuruluşunuzda da izleme yapabilirsiniz.
 
@@ -118,9 +118,9 @@ Bu öğreticide CI/CD işleminizi yapılandırdığınızda, Azure DevOps Projel
 CI/CD işlem hattı hakkında daha fazla bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [Çoklu aşamalı sürekli dağıtım (CD) işlem hattınızı tanımlama](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Çoklu aşamalı sürekli dağıtım (CD) işlem hattınızı tanımlama](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
 
 Uygulama izleme hakkında daha fazla bilgi için bkz.
   
  > [!div class="nextstepaction"]
- > [Azure izleyici nedir?](https://docs.microsoft.com/azure/azure-monitor/overview)
+ > [Azure izleyici nedir?](../azure-monitor/overview.md)

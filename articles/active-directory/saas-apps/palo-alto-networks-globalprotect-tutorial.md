@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 9c52050d432701f4af2e166b36e38dc23e0cc002
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3c08694efafef315b0f5e96d293d883767860fef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91286990"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855217"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-palo-alto-networks---globalprotect"></a>Öğretici: Palo Alto Networks ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory-GlobalProtect
 
@@ -26,7 +26,7 @@ Bu öğreticide, Palo Alto Networks-GlobalProtect Azure Active Directory (Azure 
 * Kullanıcılarınızın Azure AD hesaplarıyla ağları genele almak için otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -117,7 +117,7 @@ Bu bölümde, Palo Alto Networks-GlobalProtect 'e erişim vererek Azure çoklu o
 
 ## <a name="configure-palo-alto-networks---globalprotect-sso"></a>Palo Alto ağlarını yapılandırma-GlobalProtect SSO
 
-1. Diğer bir tarayıcı penceresinde, bir yönetici olarak Palo Alto Networks güvenlik duvarı GlobalProtect ' i açın.
+1. Diğer bir tarayıcı penceresinde, Palo Alto ağlarını-GlobalProtect ' u yönetici olarak açın.
 
 2. **Cihaz**' a tıklayın.
 

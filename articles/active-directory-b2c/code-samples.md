@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 76cacbea3f98f65e290cb2722062127d2264e171
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 63a79df8e540e88d0f1e3f4c5b8d339ff03c877f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91664843"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854299"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C kod örnekleri
 
@@ -54,3 +54,15 @@ Aşağıdaki tablolarda iOS, Android, .NET ve Node.js de dahil olmak üzere uygu
 | Örnek | Açıklama |
 |--------| ----------- |
 | [SAML-SP-sınayıcı](https://github.com/azure-ad-b2c/saml-sp-tester/tree/master/source-code) | SAML kimlik sağlayıcısı olarak davranacak şekilde Azure AD B2C test edilecek SAML test uygulaması. |
+
+## <a name="api-connectors"></a>API bağlayıcıları
+
+Aşağıdaki tablolar, [API bağlayıcıları](api-connectors-overview.md)kullanarak Kullanıcı akışlarınızdaki Web API 'lerini kullanmak için kod örneklerine bağlantılar sağlar.
+
+## <a name="api-connector-azure-function-quickstarts"></a>API Bağlayıcısı Azure Işlevi hızlı başlangıç
+
+| Örnek                                                                                                                          | Açıklama                                                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [.NET Core](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-api-connector-azure-function-validate) | Bu .NET Core Azure Işlevi örneği, oturum açma işlemlerinin belirli e-posta etki alanlarına nasıl sınırlandırılacağını ve Kullanıcı tarafından belirtilen bilgilerin nasıl doğrulandığını gösterir. |
+| [Node.js](https://github.com/Azure-Samples/active-directory-nodejs-external-identities-api-connector-azure-function-validate)   | Bu Node.js Azure Işlevi örneği, oturum açma işlemlerinin belirli e-posta etki alanlarına nasıl sınırlandırılacağını ve Kullanıcı tarafından belirtilen bilgilerin nasıl doğrulandığını gösterir.  |
+| [Python](https://github.com/Azure-Samples/active-directory-python-external-identities-api-connector-azure-function-validate)    | Bu Python Azure Işlevi örneği, oturum açma işlemlerinin belirli e-posta etki alanlarına nasıl sınırlandırılacağını ve Kullanıcı tarafından belirtilen bilgilerin nasıl doğrulandığını gösterir.    |

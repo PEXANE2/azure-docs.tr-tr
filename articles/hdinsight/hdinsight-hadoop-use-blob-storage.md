@@ -8,20 +8,23 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 7941748f7f917847e551b0cf5cd0a7bf926d31a9
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a97147395d4f877b666f4aa54254c8631400c735
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086985"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855676"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Azure HDInsight kümeleri ile Azure Depolama'yı kullanma
 
-Verileri [Azure depolama](../storage/common/storage-introduction.md), [Azure Data Lake Storage gen 1](../data-lake-store/data-lake-store-overview.md)veya [Azure Data Lake Storage Gen 2](../storage/blobs/data-lake-storage-introduction.md)' de saklayabilirsiniz. Ya da bu seçeneklerin bir birleşimi. Bu depolama seçenekleri, hesaplama için kullanılan HDInsight kümelerini Kullanıcı verilerini kaybetmeden güvenle silmenizi sağlar.
+Verileri [Azure Blob depolama](../storage/common/storage-introduction.md), [Azure Data Lake Storage 1.](../data-lake-store/data-lake-store-overview.md)veya [Azure Data Lake Storage 2.](../storage/blobs/data-lake-storage-introduction.md)kaydedebilirsiniz. Ya da bu seçeneklerin bir birleşimi. Bu depolama seçenekleri, hesaplama için kullanılan HDInsight kümelerini Kullanıcı verilerini kaybetmeden güvenle silmenizi sağlar.
 
-Apache Hadoop, varsayılan dosya sisteminin bir kavramını destekler. Varsayılan dosya sistemi varsayılan şema ve yetkilisi anlamına gelir. Bu göreceli yolları çözümlemek için de kullanılabilir. HDInsight kümesi oluşturma işlemi sırasında Azure depolama 'da varsayılan dosya sistemi olarak bir blob kapsayıcısı belirtebilirsiniz. Ya da HDInsight 3,6 ile, birkaç özel durum dışında Azure Storage veya Azure Data Lake Storage Gen 1/Azure Data Lake Storage Gen 2 ' yi varsayılan dosya sistemi olarak seçebilirsiniz. Hem varsayılan hem de bağlı depolama alanı olarak Data Lake Storage Gen 1 kullanmanın desteklenebilirliği için bkz. [HDInsight kümesi Için kullanılabilirlik](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters).
+Apache Hadoop, varsayılan dosya sisteminin bir kavramını destekler. Varsayılan dosya sistemi varsayılan şema ve yetkilisi anlamına gelir. Bu göreceli yolları çözümlemek için de kullanılabilir. HDInsight kümesi oluşturma işlemi sırasında Azure depolama 'da varsayılan dosya sistemi olarak bir blob kapsayıcısı belirtebilirsiniz. Ya da HDInsight 3,6 ile, birkaç özel durum dışında Azure Blob Storage veya Azure Data Lake Storage 1./Azure Data Lake Storage 2. varsayılan dosya sistemi olarak seçebilirsiniz. Hem varsayılan hem de bağlantılı depolama olarak Data Lake Storage 1. kullanmanın desteklenebilirliği için bkz. [HDInsight kümesi Için kullanılabilirlik](./hdinsight-hadoop-use-data-lake-storage-gen1.md#availability-for-hdinsight-clusters).
 
-Bu makalede Azure Depolama'nın HDInsight kümeleri ile nasıl çalıştığı hakkında bilgi edinebilirsiniz. Data Lake Storage Gen 1 ' in HDInsight kümeleri ile nasıl çalıştığını öğrenmek için bkz. [Azure HDInsight kümeleri ile Azure Data Lake Storage kullanma](hdinsight-hadoop-use-data-lake-store.md). HDInsight kümesi oluşturma hakkında daha fazla bilgi için bkz. [HDInsight 'ta Apache Hadoop kümeleri oluşturma](hdinsight-hadoop-provision-linux-clusters.md).
+Bu makalede Azure Depolama'nın HDInsight kümeleri ile nasıl çalıştığı hakkında bilgi edinebilirsiniz. 
+* Data Lake Storage 1. HDInsight kümeleri ile nasıl çalıştığını öğrenmek için bkz. [Azure HDInsight kümeleri ile Azure Data Lake Storage 1. kullanma](./hdinsight-hadoop-use-data-lake-storage-gen1.md).
+* Data Lake Storage 2. HDInsight kümeleri ile nasıl çalıştığını öğrenmek için bkz. [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](./hdinsight-hadoop-use-data-lake-storage-gen2.md).
+* HDInsight kümesi oluşturma hakkında daha fazla bilgi için bkz. [HDInsight 'ta Apache Hadoop kümeleri oluşturma](./hdinsight-hadoop-provision-linux-clusters.md).
 
 > [!IMPORTANT]  
 > Depolama hesabı türü **blobstorage** yalnızca HDInsight kümeleri için ikincil depolama alanı olarak kullanılabilir.
@@ -29,7 +32,7 @@ Bu makalede Azure Depolama'nın HDInsight kümeleri ile nasıl çalıştığı h
 | Depolama hesabı türü | Desteklenen hizmetler | Desteklenen performans katmanları |Desteklenmeyen performans katmanları| Desteklenen erişim katmanları |
 |----------------------|--------------------|-----------------------------|---|------------------------|
 | StorageV2 (genel amaçlı v2)  | Blob     | Standart                    |Premium| Sık erişimli, seyrek erişimli Arşiv\*   |
-| Depolama (genel amaçlı v1)   | Blob     | Standart                    |Premium| YOK                    |
+| Depolama (genel amaçlı v1)   | Blob     | Standart                    |Premium| Yok                    |
 | BlobStorage                    | Blob     | Standart                    |Premium| Sık erişimli, seyrek erişimli Arşiv\*   |
 
 İş verilerini depolamak için varsayılan blob kapsayıcısını kullanmanızı önermiyoruz. Depolama maliyetini azaltmak için blob kapsayıcısının her kullanımdan sonra silinmesi iyi bir uygulamadır. Varsayılan kapsayıcı, uygulama ve sistem günlükleri içerir. Kapsayıcıyı silmeden önce günlükleri aldığınızdan emin olun.
@@ -169,9 +172,9 @@ Bu makalede HDFS ile uyumlu Azure Depolama'yı HDInsight ile nasıl kullanacağ�
 
 Daha fazla bilgi için bkz.
 
-* [Azure HDInsight 'ı kullanmaya başlama](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [Azure Data Lake Storage kullanmaya başlayın](../data-lake-store/data-lake-store-get-started-portal.md)
-* [HDInsight'a veri yükleme](hdinsight-upload-data.md)
-* [HDInsight ile verilere erişimi kısıtlamak için Azure Depolama Paylaşılan Erişim İmzaları kullanma](hdinsight-storage-sharedaccesssignature-permissions.md)
+* [Hızlı başlangıç: Apache Hadoop kümesi oluşturma](hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)
+* [Öğretici: HDInsight kümeleri oluşturma](hdinsight-hadoop-provision-linux-clusters.md)
 * [Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma](hdinsight-hadoop-use-data-lake-storage-gen2.md)
+* [HDInsight'a veri yükleme](hdinsight-upload-data.md)
 * [Öğretici: Azure HDInsight 'ta etkileşimli sorgu kullanarak verileri ayıklama, dönüştürme ve yükleme](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
+* [HDInsight ile verilere erişimi kısıtlamak için Azure Depolama Paylaşılan Erişim İmzaları kullanma](hdinsight-storage-sharedaccesssignature-permissions.md)

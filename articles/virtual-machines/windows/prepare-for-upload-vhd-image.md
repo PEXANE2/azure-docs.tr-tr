@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 642a1937f44a608ebf235c20da060972788046a0
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 3274e45738c079c89560f546fe58163f695e12df
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321744"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851110"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure’a yüklemek için Windows VHD veya VHDX’i hazırlama
 
@@ -421,6 +421,7 @@ Windows tabanlı bir bilgisayarda yüklü her rol veya uygulama Genelleştirilmi
 
 1. Windows VM 'de oturum açın.
 1. Yönetici olarak bir PowerShell oturumu çalıştırın.
+1. Panther dizinini (C:\Windows\Panther) silin.
 1. Dizini olarak değiştirin `%windir%\system32\sysprep` . Ardından `sysprep.exe` komutunu çalıştırın.
 1. **Sistem Hazırlama Aracı** iletişim kutusunda, **sistem kutudan çıkar deneyimi (OOBE)** seçeneğini belirleyin ve **generalize** onay kutusunun seçildiğinden emin olun.
 
@@ -432,7 +433,7 @@ Windows tabanlı bir bilgisayarda yüklü her rol veya uygulama Genelleştirilmi
 Artık VHD karşıya yüklenmeye hazırdır. Genelleştirilmiş bir diskten VM oluşturma hakkında daha fazla bilgi için bkz. [Genelleştirilmiş BIR VHD 'Yi karşıya yükleme ve Azure 'da yeni BIR VM oluşturmak için kullanma](sa-upload-generalized.md).
 
 >[!NOTE]
-> Özel bir *unattend.xml* dosyası desteklenmez. , [Microsoft-Windows-Shell-Setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) seçeneklerini Azure sağlama aracısının kullandığı *unattend.xml* dosyasına eklemek için yalnızca sınırlı destek sağlayan **additionalunattendcontent** özelliğini destekliyoruz. FirstLogonCommand ve LogonCommands eklemek için, örneğin, [Additionalunattendcontent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) ' i kullanabilirsiniz. Daha fazla bilgi için bkz. [Additionalunattendcontent FirstLogonCommands örneği](https://github.com/Azure/azure-quickstart-templates/issues/1407).
+> Özel bir *unattend.xml* dosyası desteklenmez. , [Microsoft-Windows-Shell-Setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) seçeneklerini Azure sağlama aracısının kullandığı *unattend.xml* dosyasına eklemek için yalnızca sınırlı destek sağlayan **additionalunattendcontent** özelliğini destekliyoruz. FirstLogonCommand ve LogonCommands eklemek için, örneğin, [Additionalunattendcontent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet&preserve-view=true) ' i kullanabilirsiniz. Daha fazla bilgi için bkz. [Additionalunattendcontent FirstLogonCommands örneği](https://github.com/Azure/azure-quickstart-templates/issues/1407).
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>Sanal diski sabit boyutlu bir VHD 'ye Dönüştür
 

@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 092246da4c01aa826fd4425e5a778d567b75d9d6
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 824b8f386e6bf822444450305e603e6068a34c5e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91828580"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854367"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>Kaydolma Kullanıcı akışına API Bağlayıcısı ekleme
 
@@ -70,7 +70,7 @@ Content-type: application/json
 }
 ```
 
-Yalnızca **Azure Active Directory**  >  **dış kimlikler**  >  **Özel Kullanıcı öznitelikleri** deneyiminde listelenen kullanıcı özellikleri ve özel öznitelikler, istekte gönderilebilir.
+İstekte yalnızca Kullanıcı özellikleri ve **Azure AD B2C**  >  **Kullanıcı öznitelikleri** deneyiminde listelenen özel öznitelikler kullanılabilir.
 
 Özel öznitelikler dizindeki **extension_ \<extensions-app-id> _CustomAttribute**  biçiminde bulunur. API 'nizin bu aynı serileştirilmiş biçimde talepler alması beklenir. Özel öznitelikler hakkında daha fazla bilgi için, bkz. [Azure Active Directory B2C özel öznitelikleri tanımlama](user-flow-custom-attributes.md).
 
@@ -294,7 +294,7 @@ Content-type: application/json
 ## <a name="best-practices-and-how-to-troubleshoot"></a>En iyi uygulamalar ve sorun giderme
 
 ### <a name="using-serverless-cloud-functions"></a>Sunucusuz bulut işlevlerini kullanma
-Azure Işlevlerinde HTTP Tetikleyicileri gibi sunucusuz işlevler, API Bağlayıcısı ile kullanmak üzere API uç noktaları oluşturma basit bir yol sağlar. Örneğin, doğrulama mantığını gerçekleştirmek ve kayıt pencerelerini belirli etki alanlarına kısıtlamak için sunucusuz bulut işlevini kullanabilirsiniz. Sunucusuz bulut işlevi ayrıca daha karmaşık senaryolar için diğer Web API 'Lerini, Kullanıcı depolarını ve diğer bulut hizmetlerini çağırıp çağırabilir.
+Azure Işlevlerinde HTTP Tetikleyicileri gibi sunucusuz işlevler, API Bağlayıcısı ile kullanmak üzere API uç noktaları oluşturma basit bir yol sağlar. [Örneğin](code-samples.md#api-connectors), doğrulama mantığını gerçekleştirmek ve belirli e-posta etki alanları için oturum açma işlemleri kısıtlamak gibi sunucusuz bulut işlevini kullanabilirsiniz. Sunucusuz bulut işlevi ayrıca daha karmaşık senaryolar için diğer Web API 'Lerini, Kullanıcı depolarını ve diğer bulut hizmetlerini çağırıp çağırabilir.
 
 ### <a name="best-practices"></a>En iyi uygulamalar
 Aşağıdakileri doğrulayın:
@@ -314,4 +314,4 @@ Genel olarak, API 'nizi beklenmedik hata kodları, özel durumlar ve düşük pe
 
 ## <a name="next-steps"></a>Sonraki adımlar
 <!-- - Learn how to [add a custom approval workflow to sign-up](add-approvals.md) -->
-<!-- - Get started with our [Azure Function quickstart samples](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts). -->
+- [Azure işlevi hızlı başlangıç örneklerimize](code-samples.md#api-connectors)başlayın.
