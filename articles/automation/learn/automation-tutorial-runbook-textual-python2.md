@@ -7,10 +7,10 @@ ms.date: 04/19/2020
 ms.topic: tutorial
 ms.custom: has-adal-ref, devx-track-python
 ms.openlocfilehash: e12327651165606e6a9b571d410f547a09a8ec8e
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87847933"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>Öğretici: Python runbook 'u oluşturma
@@ -26,7 +26,7 @@ Bu öğreticide, Azure Otomasyonu 'nda bir [Python runbook](../automation-runboo
 > [!NOTE]
 > Python runbook 'u başlatmak için Web kancası kullanılması desteklenmez.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -116,7 +116,7 @@ Bunu yapmak için, komut dosyasının Otomasyon hesabınızdaki kimlik bilgileri
 > Otomasyon hesabı, bir farklı çalıştır sertifikası olmak için hizmet sorumlusu özelliği ile oluşturulmuş olmalıdır.
 > Otomasyon hesabınız hizmet sorumlusu ile oluşturulmadıysa, [Python Için Azure Yönetim kitaplıklarıyla kimlik doğrulama](/azure/python/python-sdk-azure-authenticate)konusunda açıklandığı gibi kimlik doğrulaması yapabilirsiniz.
 
-1. MyFirstRunbook-Python bölmesinde **Düzenle** ' ye tıklayarak metinsel düzenleyiciyi açın.
+1. MyFirstRunbook-Python bölmesinde **Düzenle** ' ye tıklayarak metin düzenleyicisini açın.
 
 2. Azure 'da kimlik doğrulaması yapmak için aşağıdaki kodu ekleyin:
 

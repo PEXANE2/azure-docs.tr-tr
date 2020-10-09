@@ -10,10 +10,10 @@ ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
 ms.openlocfilehash: 483ca63abbabaabd3b25446c9267a1b0540f60dd
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87852982"
 ---
 # <a name="client-application-registration"></a>İstemci uygulama kaydı
@@ -21,7 +21,7 @@ ms.locfileid: "87852982"
 
 1. Azure Active Directory git
 1. **Uygulama kaydı**  -->  **Yeni kayıt** seçeneğini belirleyin
-1. Uygulamanızı adlandırın ve yeniden yönlendirme URI 'sini ayarlayınhttps://www.getpostman.com/oauth2/callback
+1. Uygulamanızı adlandırın ve yeniden yönlendirme URI 'sini ayarlayın https://www.getpostman.com/oauth2/callback
 
    :::image type="content" source="media/tutorial-web-app/register-public-app.png" alt-text="Uygulama kaydetme bölmesinin ekran görüntüsü ve örnek uygulama adı ve yönlendirme URL 'SI.":::
 
@@ -29,7 +29,7 @@ ms.locfileid: "87852982"
 
 İstemci uygulamanız kaydedildikten sonra, genel bakış sayfasından uygulama (istemci) KIMLIĞI ve kiracı KIMLIĞI ' ni kopyalayın. İstemciye erişirken bu iki değere daha sonra ihtiyacınız olacak.
 
-:::image type="content" source="media/tutorial-web-app/client-id-tenant-id.png" alt-text="Uygulama ve Dizin kimlikleri vurgulanmış şekilde istemci uygulama ayarları bölmesinin ekran görüntüsü.":::
+:::image type="content" source="media/tutorial-web-app/client-id-tenant-id.png" alt-text="Uygulama kaydetme bölmesinin ekran görüntüsü ve örnek uygulama adı ve yönlendirme URL 'SI.":::
 
 ### <a name="connect-with-web-app"></a>Web uygulamasıyla bağlantı
 
@@ -43,7 +43,7 @@ ms.locfileid: "87852982"
 
 1. **Erişim belirteci** ve **kimlik belirteci** onay kutularını seçin.
 
-   :::image type="content" source="media/tutorial-web-app/web-app-authentication.png" alt-text="Uygulama kimlik doğrulama ayarları dikey penceresinin, vurgulanan bir platform ekleme adımlarıyla ilgili ekran görüntüsü.":::
+   :::image type="content" source="media/tutorial-web-app/web-app-authentication.png" alt-text="Uygulama kaydetme bölmesinin ekran görüntüsü ve örnek uygulama adı ve yönlendirme URL 'SI.":::
 
 ## <a name="add-api-permissions"></a>API izinleri ekleme
 
@@ -53,7 +53,7 @@ Doğru kimlik doğrulamasını kurdığınıza göre, API izinlerini ayarlayın:
 1. **Kuruluşumun kullandığı API 'ler**altında Azure sağlık API 'leri için arama yapın.
 1. **User_impersonation** seçin ve **izin Ekle**' ye tıklayın.
 
-:::image type="content" source="media/tutorial-web-app/api-permissions.png" alt-text="API izinleri ekleme dikey penceresinin, API izinleri ekleme adımları ile ekran görüntüsü.":::
+:::image type="content" source="media/tutorial-web-app/api-permissions.png" alt-text="Uygulama kaydetme bölmesinin ekran görüntüsü ve örnek uygulama adı ve yönlendirme URL 'SI.":::
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 Artık ortak bir istemci uygulamanız var. Sonraki öğreticide, bu uygulamaya Postman aracılığıyla test ve erişim kazanıyoruz.

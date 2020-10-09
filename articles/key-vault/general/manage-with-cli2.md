@@ -11,10 +11,10 @@ ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: dc60d2b6cef8ad19526c5ec243ae1c43529954a6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87504543"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Azure CLı kullanarak Key Vault yönetme 
@@ -39,15 +39,15 @@ Azure Anahtar Kasası çoğu bölgede kullanılabilir. Daha fazla bilgi için bk
 
 Azure Key Vault genel bir bakış için bkz. [Azure Key Vault nedir?](overview.md)) Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki Azure CLı komutlarını kullanmak için aşağıdaki öğelere sahip olmanız gerekir:
 
 * Bir Microsoft Azure aboneliği. Hesabınız yoksa, [ücretsiz deneme için kaydolabilirsiniz](https://azure.microsoft.com/pricing/free-trial).
-* Azure komut satırı arabirimi sürüm 2,0 veya üzeri. En son sürümü yüklemek için bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli).
+* Azure Command-Line Interface sürüm 2,0 veya üzeri. En son sürümü yüklemek için bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli).
 * Bu makalede oluşturduğunuz anahtar veya parolayı kullanacak şekilde yapılandırılacak bir uygulama. [Microsoft Yükleme Merkezi](https://www.microsoft.com/download/details.aspx?id=45343)'nde örnek bir uygulama kullanılabilir. Yönergeler için, eklenen Benioku dosyasına bakın.
 
-### <a name="getting-help-with-azure-cross-platform-command-line-interface"></a>Azure platformlar arası komut satırı arabirimi ile ilgili yardım alma
+### <a name="getting-help-with-azure-cross-platform-command-line-interface"></a>Azure platformlar arası Command-Line arabirimi ile ilgili yardım alma
 
 Bu makalede komut satırı arabirimi (Bash, Terminal, komut istemi) hakkında bilgi sahibi olduğunuz varsayılır.
 
@@ -58,7 +58,7 @@ az account set --help
 az account set -h
 ```
 
-Azure platformlar arası komut satırı arabirimindeki Azure Resource Manager hakkında bilgi edinmek için aşağıdaki makaleleri de okuyabilirsiniz:
+Azure platformlar arası Command-Line arabirimindeki Azure Resource Manager hakkında bilgi edinmek için aşağıdaki makaleleri de okuyabilirsiniz:
 
 * [Azure CLı 'yı yükler](/cli/azure/install-azure-cli)
 * [Azure CLI'yi kullanmaya başlama](/cli/azure/get-started-with-azure-cli)
@@ -92,7 +92,7 @@ Abonelik parametresine sahip bir abonelik belirtin.
 az account set --subscription <subscription name or ID>
 ```
 
-Azure platformlar arası komut satırı arabirimini yapılandırma hakkında daha fazla bilgi için bkz. [Azure CLI 'Yı yüklemeye](/cli/azure/install-azure-cli).
+Azure platformlar arası Command-Line arabirimini yapılandırma hakkında daha fazla bilgi için bkz. [Azure CLI 'Yı yüklemeye](/cli/azure/install-azure-cli).
 
 ### <a name="create-a-new-resource-group"></a>Yeni bir kaynak grubu oluşturma
 
@@ -219,7 +219,7 @@ Kasadaki gizli dizileri okumak için aynı uygulamayı yetkilendirmek üzere aş
 az keyvault set-policy --name "ContosoKeyVault" --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --secret-permissions get
 ```
 
-## <a name="setting-key-vault-advanced-access-policies"></a><a name="bkmk_KVperCLI"></a>Anahtar Kasası Gelişmiş erişim ilkelerini ayarlama
+## <a name="setting-key-vault-advanced-access-policies"></a><a name="bkmk_KVperCLI"></a> Anahtar Kasası Gelişmiş erişim ilkelerini ayarlama
 
 Anahtar Kasası için gelişmiş ilkeleri etkinleştirmek üzere [az keykasa Update](/cli/azure/keyvault#az-keyvault-update) kullanın.
 
@@ -271,7 +271,7 @@ Sonraki komut bir "kendi anahtarını getir" (BYOK) paketini içeri aktarır. B�
 az keyvault key import --vault-name "ContosoKeyVaultHSM" --name "ContosoFirstHSMKey" --byok-file "./ITByok.byok" --protection "hsm"
 ```
 
-Bu BYOK paketini oluşturma hakkında daha ayrıntılı yönergeler için bkz. [Azure Key Vault Ile HSM korumalı anahtarları kullanma](../keys/hsm-protected-keys.md).
+Bu BYOK paketini oluşturma hakkında daha ayrıntılı yönergeler için bkz. [Azure Key Vault ile HSM-Protected anahtarları kullanma](../keys/hsm-protected-keys.md).
 
 ## <a name="deleting-the-key-vault-and-associated-keys-and-secrets"></a>Anahtar kasasını ve ilişkili anahtarları ve gizli dizileri silme
 
@@ -327,4 +327,4 @@ az keyvault secret delete --vault-name "ContosoKeyVault" --name "SQLPassword"
 
 - Programlama başvuruları için [Azure Key Vault Geliştirici Kılavuzu](developers-guide.md) ' na bakın.
 
-- Azure Key Vault ve HSM 'ler hakkında bilgi için bkz. [Azure Key Vault Ile HSM korumalı anahtarları kullanma](../keys/hsm-protected-keys.md).
+- Azure Key Vault ve HSM 'ler hakkında bilgi için bkz. [Azure Key Vault ile HSM-Protected anahtarları kullanma](../keys/hsm-protected-keys.md).

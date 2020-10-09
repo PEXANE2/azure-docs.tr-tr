@@ -7,10 +7,10 @@ author: lazinnat
 ms.date: 06/20/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: e8824f534f573d97353cc86d2a1b112b1acdb211
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87494511"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Öğretici: özel eylemler ve kaynaklarla yönetilen uygulama oluşturma
@@ -27,7 +27,7 @@ Bu öğretici aşağıdaki adımları içerir:
 > * Yönetilen uygulamanın bir örneğini dağıtma
 > * Özel eylemler gerçekleştirme ve özel kaynaklar oluşturma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için şunları bilmeniz gerekir:
 
@@ -41,7 +41,7 @@ Bu öğreticiyi tamamlayabilmeniz için şunları bilmeniz gerekir:
 
 Bu öğreticide, yönetilen bir uygulama oluşturursunuz ve yönetilen kaynak grubu özel sağlayıcı örneği, depolama hesabı ve işlev içerecektir. Bu örnekte kullanılan Azure Işlevi, Eylemler ve kaynaklar için özel sağlayıcı işlemlerini işleyen bir API uygular. Azure depolama hesabı, özel sağlayıcı kaynaklarınız için temel depolama alanı olarak kullanılır.
 
-Yönetilen uygulama örneği oluşturmak için Kullanıcı arabirimi tanımı, `funcname` ve `storagename` giriş öğeleri içerir. Depolama hesabı adı ve işlev adı genel olarak benzersiz olmalıdır. Varsayılan olarak, işlev dosyaları [örnek işlev paketinden](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip)dağıtılır, ancak *üzerindecreateUIDefinition.js*bir paket bağlantısı için bir giriş öğesi ekleyerek bunu değiştirebilirsiniz:
+Yönetilen uygulama örneği oluşturmak için Kullanıcı arabirimi tanımı, `funcname` ve `storagename` giriş öğeleri içerir. Depolama hesabı adı ve işlev adı genel olarak benzersiz olmalıdır. Varsayılan olarak, işlev dosyaları [örnek işlev paketinden](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip)dağıtılır, ancak * üzerindecreateUIDefinition.js*bir paket bağlantısı için bir giriş öğesi ekleyerek bunu değiştirebilirsiniz:
 
 ```json
 {
@@ -74,7 +74,7 @@ Yönetilen uygulama örneği oluşturmak için Kullanıcı arabirimi tanımı, `
 }
 ```
 
-ve *üzerindecreateUIDefinition.js*çıkış:
+ve * üzerindecreateUIDefinition.js*çıkış:
 
 ```json
   "funcname": "[steps('applicationSettings').funcname]",
@@ -82,7 +82,7 @@ ve *üzerindecreateUIDefinition.js*çıkış:
   "zipFileBlobUri": "[steps('applicationSettings').zipFileBlobUri]"
 ```
 
-Örnek *üzerindeki tümcreateUIDefinition.js* , [Başvuru: Kullanıcı arabirimi öğeleri yapıtlarına başvurabilir](reference-createuidefinition-artifact.md).
+Örnek * üzerindeki tümcreateUIDefinition.js* , [Başvuru: Kullanıcı arabirimi öğeleri yapıtlarına başvurabilir](reference-createuidefinition-artifact.md).
 
 ## <a name="template-with-custom-provider"></a>Özel sağlayıcı içeren şablon
 
@@ -123,11 +123,11 @@ Bu öğreticide, `users` özel bir kaynak bağlamında gerçekleştirilecek bir 
 }
 ```
 
-Örnek *üzerinde tümmainTemplate.js* , [Başvuru: dağıtım şablonu yapıtında](reference-main-template-artifact.md)bulunabilir.
+Örnek * üzerinde tümmainTemplate.js* , [Başvuru: dağıtım şablonu yapıtında](reference-main-template-artifact.md)bulunabilir.
 
 ## <a name="view-definition-artifact"></a>Tanım yapıtını görüntüleme
 
-Yönetilen uygulamanızda özel eylemleri ve özel kaynakları içeren Kullanıcı arabirimini tanımlamak için, yapıt **üzerindeviewDefinition.js** yazmanız gerekir. Görünüm tanımı yapıtı hakkında daha fazla bilgi için bkz. [Azure yönetilen uygulamalar 'da tanım yapıtı görüntüleme](concepts-view-definition.md).
+Yönetilen uygulamanızda özel eylemleri ve özel kaynakları içeren Kullanıcı arabirimini tanımlamak için, yapıt ** üzerindeviewDefinition.js** yazmanız gerekir. Görünüm tanımı yapıtı hakkında daha fazla bilgi için bkz. [Azure yönetilen uygulamalar 'da tanım yapıtı görüntüleme](concepts-view-definition.md).
 
 Bu öğreticide şunları tanımlarsınız:
 * Temel metin girişi ile özel bir eylemi temsil eden araç çubuğu düğmesi içeren bir *genel bakış* sayfası `TestAction` .
@@ -175,7 +175,7 @@ Aşağıdaki örnekte, "kullanıcılar" kaynakları sayfa yapılandırması öze
   }
 ```
 
-Örnek *üzerindeki tümviewDefinition.js* , [Başvuru: View definition yapay](reference-view-definition-artifact.md)öğesinde bulunabilir.
+Örnek * üzerindeki tümviewDefinition.js* , [Başvuru: View definition yapay](reference-view-definition-artifact.md)öğesinde bulunabilir.
 
 ## <a name="managed-application-definition"></a>Yönetilen uygulama tanımı
 

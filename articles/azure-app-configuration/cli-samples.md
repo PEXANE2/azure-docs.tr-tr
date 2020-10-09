@@ -8,10 +8,10 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: d6e644a73a18cdfda71ae6a4e5360b713c08f4f5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87504407"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI örnekleri
@@ -22,7 +22,7 @@ Aşağıdaki tablo, Azure CLı kullanarak Azure Uygulama yapılandırması için
 |-|-|
 |**Oluştur**||
 | [Uygulama yapılandırma deposu oluşturma](./scripts/cli-create-service.md) | Bir kaynak grubu ve bir uygulama yapılandırma deposu örneği oluşturur.  |
-|**Kullanırsınız**||
+|**Kullanın**||
 | [Anahtar değerleriyle çalışma](./scripts/cli-work-with-keys.md) | Anahtar değerlerini oluşturur, görüntüler, güncelleştirir ve siler. |
 | [Anahtar değerlerini içeri aktar](./scripts/cli-import.md) | Diğer kaynaklardaki anahtar değerlerini içeri aktarır. |
 | [Anahtar değerlerini dışarı aktar](./scripts/cli-export.md) | Anahtar değerlerini diğer hedeflere dışa aktarır. |

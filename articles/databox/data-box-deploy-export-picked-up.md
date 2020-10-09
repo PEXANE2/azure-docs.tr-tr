@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: alkohli
 ms.openlocfilehash: 04e4394e6a439c923558ef90e13c14c0adaa4020
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88142120"
 ---
 # <a name="tutorial-return-azure-data-box-preview"></a>Öğretici: Azure Data Box Döndür (Önizleme)
@@ -71,7 +71,7 @@ Avustralya’daki Azure veri merkezlerinde ek güvenlik bildirimi uygulanır. Ge
 2. Cihaza veri kopyalamanın tamamlandığından ve **göndermeye hazırlama** işleminin başarılı olduğundan emin olun.
 3. Cihazı kapatın ve kabloları çıkarın.
 4. Cihaz ile beraber sağlanan güç kablosunu sararak emniyetli şekilde cihazın arkasına yerleştirin.
-5. [DHL bağlantısına](https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference)çevrimiçi malzeme çekme kitabı.
+5. [DHL Bağlantısında](https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference) çevrimiçi olarak bir teslim alma rezervasyonu yapın.
 
 ## <a name="japan"></a>[Japonya](#tab/in-japan)
 
@@ -135,7 +135,7 @@ Gerekirse, aşağıdaki bilgilerden Quantium Solutions Desteği (Japonca) ile il
 4. DHL ile bir toplama kitabı sağlamak için aşağıdaki seçeneklerden birini seçin:
 
     * Müşteri hizmeti iletişim merkezini, **+ 27 (0) 11 9213600**' de 2:00 PM 'den önce çağırın, 1. seçeneği belirleyin ve ardından Waybill numarasını belirtin.
-    * Aşağıdaki şablonu kullanarak e-posta gönderin [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) :
+    * Aşağıdaki şablonu kullanarak [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) adresine e-posta gönderin:
 
     ```output
     To: Priority.Support@dhl.com
@@ -145,20 +145,20 @@ Gerekirse, aşağıdaki bilgilerden Quantium Solutions Desteği (Japonca) ile il
       *  Requested pickup date: yyyy/mm/dd;time:HH MM
     ```
 
-    * Alternatif olarak, paketi en yakın DHL hizmet noktasında bırakabilirsiniz.
+    * Alternatif olarak, paketi en yakın DHL hizmet noktasına da bırakabilirsiniz.
 
-5. Herhangi bir sorunla karşılaşırsanız, karşılaştığınız sorunların ayrıntıları ile e-posta gönderin [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) ve Waybill numarasını Konu: satırına koyun. Ayrıca + 27 (0) 119213902 çağırabilirsiniz.
+5. Herhangi bir sorunla karşılaşırsanız [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) adresine karşılaştığınız sorunun ayrıntılarını içeren bir e-posta gönderin ve Konu: satırına irsaliye numarasını ekleyin. +27(0)119213902 numaralı telefonu da arayabilirsiniz.
 
 ## <a name="hong-kong"></a>[Hong Kong](#tab/in-hk)
 
-1. Orijinal kutuya iade sevk irsaliyesi için cihazı paketleme.
+1. İade gönderimi için cihazı orijinal kutusunda paketleyin.
 2. Cihazın yerel Web Kullanıcı arabiriminde gösterilen başvuru numarasını (ters sevkiyat için izleme numarası) göz önünde bulunmak. Bu sayı, **göndermeye hazırlama çalıştırması** başarılı olduktan sonra görüntülenir.
 3. Cihazın yerel Web Kullanıcı arabiriminde bulunan ve sevkiyat paketine yapıştırılmış sevkiyat etiketini indirin ve yazdırın.
 4. Cihaz ile beraber sağlanan güç kablosunu sararak emniyetli şekilde cihazın arkasına yerleştirin.
-5. Office saatlerinde ( **852) 2318 1213** ' de **Quantium çözümleri** hattını (00 Ila 18:00, Pazartesi 'den Cuma 'ya) çağırın.  
-6. Teklif Microsoft Azure toplama ve bir koleksiyon için düzenlemek üzere iade sevkiyat etiketindeki başvuru numarası ve izleme numarası (barkod üzerinde).
-7. Teslim alma zamanlaması için sözlü teyit alırsınız. Courier Collection 'a ulaşmazsa, alternatif düzenlemeler için Quantium çözüm hattını çağırın.
-8. Quantium ile bir toplama işlemi oluşturduktan sonra, aşağıdaki şablonu kullanarak onayı [Microsoft Data Box Operations Asya](mailto:adbo@microsoft.com) ile paylaşabilirsiniz:
+5. Çalışma saatleri içinde (Pazartesi - Cuma saat 09:00 ile 18:00 arası) **(852) 2318 1213** numaralı telefondan **Quantium Solutions** bilgi hattını arayın.  
+6. Teslim almayı planlamak için iade gönderimi etiketinde Microsoft Azure teslim alma ifadesini, referans numarasını ve takip numarasını (barkodun üzerinde) belirtin.
+7. Teslim alma zamanlaması için sözlü teyit alırsınız. Teslim almak için kurye gönderilmezse alternatif düzenlemeler için Quantium Solutions bilgi hattını arayın.
+8. Quantium'la teslim alma rezervasyonunu yaptıktan sonra, aşağıdaki şablonu kullanarak onayı [Microsoft Data Box Operations Asia](mailto:adbo@microsoft.com) ile paylaşın:
 
     ```output
     To: adbo@microsoft.com
@@ -176,7 +176,7 @@ Gerekirse, aşağıdaki bilgilerden Quantium Solutions Desteği (Japonca) ile il
 
 ## <a name="self-managed"></a>[Kullanıcı Yönetimli](#tab/in-selfmanaged)
 
-Japonya, Singapur, Kore, Hindistan, Güney Afrika veya Batı Avrupa Data Box kullanıyorsanız ve sipariş oluşturma sırasında kendi kendine yönetilen sevkiyat seçeneğini belirlediyseniz, bu yönergeleri izleyin.
+Data Box’ı Japonya, Singapur, Güney Kore, Hindistan, Güney Afrika veya Batı Avrupa’da kullanıyorsanız ve sipariş oluşturma sırasında kullanıcı yönetimli gönderim seçeneğini belirlediyseniz bu yönergeleri izleyin.
 
 1. Bu adım başarıyla tamamlandıktan sonra Data Box yerel web kullanıcı arabiriminin Göndermeye Hazırlama sayfasında gösterilen Yetkilendirme kodunu not alın.
 2. Cihazı kapatın ve kabloları çıkarın. Cihaz ile beraber sağlanan güç kablosunu sararak emniyetli şekilde cihazın arkasına yerleştirin.

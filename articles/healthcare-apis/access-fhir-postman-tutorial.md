@@ -10,27 +10,27 @@ ms.author: matjazl
 author: matjazl
 ms.date: 02/07/2019
 ms.openlocfilehash: f8b5e344fc963d466571e75ff16f17367dc32971
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87844856"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Postman ile FHıR için Azure API 'sine erişme
 
 İstemci uygulaması bir [REST API](https://www.hl7.org/fhir/http.html)aracılığıyla bir FHıR API 'sine erişir. Ayrıca, uygulamalar oluştururken, örneğin hata ayıklama amacıyla, FHıR sunucusuyla doğrudan etkileşim kurmak isteyebilirsiniz. Bu öğreticide, bir FHıR sunucusuna erişmek için [Postman](https://www.getpostman.com/) 'ı kullanmak için gereken adımları adım adım göstereceğiz. Postman, API 'Lere erişen uygulamalar oluştururken genellikle hata ayıklama için kullanılan bir araçtır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure 'da bir FHıR uç noktası. Azure için, FHıR için yönetilen Azure API 'sini veya açık kaynaklı FHıR sunucusunu kullanarak bu ayarı yapabilirsiniz. [Azure Portal](fhir-paas-portal-quickstart.md), [POWERSHELL](fhir-paas-powershell-quickstart.md)veya [Azure CLI](fhir-paas-cli-quickstart.md)kullanarak FHıR için yönetilen Azure API 'sini ayarlayın.
 - FHıR hizmetine erişmek için kullanacağınız bir [istemci uygulaması](register-confidential-azure-ad-client-app.md)
-- Postman yüklendi. Buradan edinebilirsiniz[https://www.getpostman.com](https://www.getpostman.com)
+- Postman yüklendi. Buradan edinebilirsiniz [https://www.getpostman.com](https://www.getpostman.com)
 
 ## <a name="fhir-server-and-authentication-details"></a>FHıR sunucusu ve kimlik doğrulaması ayrıntıları
 
 Postman kullanabilmek için aşağıdaki ayrıntılar gereklidir:
 
-- FHıR sunucu URL 'niz, örneğin`https://MYACCOUNT.azurehealthcareapis.com`
+- FHıR sunucu URL 'niz, örneğin `https://MYACCOUNT.azurehealthcareapis.com`
 - `Authority`Fhır sunucunuzun kimlik sağlayıcısı, örneğin,`https://login.microsoftonline.com/{TENANT-ID}`
 - Yapılandırıldı `audience` . Bu genellikle FHıR sunucusunun URL 'sidir. Örneğin, `https://MYACCOUNT.azurehealthcareapis.com` yalnızca `https://azurehealthcareapis.com` .
 - `client_id`Fhır hizmetine erişmek için kullanacağınız [istemci uygulamasının](register-confidential-azure-ad-client-app.md) (veya uygulama kimliği).

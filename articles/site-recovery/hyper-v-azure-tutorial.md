@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 5ce98c785700301bba92926d7d5a243b614eca7f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87504237"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Şirket içi Hyper-V sanal makineleri için Azure’da olağanüstü durum kurtarma ayarlama
@@ -103,7 +103,7 @@ Hyper-V çekirdek sunucusu çalıştırıyorsanız, kurulum dosyasını indirin 
 
     `AzureSiteRecoveryProvider.exe /x:. /q`
  
-2. `.\setupdr.exe /i` öğesini çalıştırın. Sonuçlar%ProgramData%\asrlogs\drasetupwizard.log günlüğüne kaydedilir.
+2. `.\setupdr.exe /i` komutunu çalıştırın. Sonuçlar%ProgramData%\asrlogs\drasetupwizard.log günlüğüne kaydedilir.
 
 3. Şu komutu çalıştırarak sunucuyu kaydedin:
 

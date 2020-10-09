@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 07/01/2020
 ms.author: pafarley
 ms.openlocfilehash: 981c6f6bb2b0eb597b32ce8e428ef0aa7d19929b
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88003361"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>Öğretici: AI Oluşturucu ile form işleme uygulaması oluşturma
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Modelinizi eğitme
 > * Azure Power Apps veya Power otomatikleştirmek 'de kullanmak için modelinizi yayımlayın
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Eğitim/test verileri için kullanılan aynı türden en az beş form kümesi. Eğitim veri kümesini birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [eğitim verileri kümesi oluşturma](./build-training-data-set.md) . Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2128080) **eğitme** klasörü altındaki dosyaları kullanabilirsiniz.
 * Bir Power Apps veya güç otomatikleştirme lisansı- [lisanslama kılavuzuna](https://go.microsoft.com/fwlink/?linkid=2085130)bakın. Lisansın [Common Data Service](https://powerplatform.microsoft.com/en-us/common-data-service/)içermesi gerekir.
@@ -124,7 +124,7 @@ Belirli alanlar için hatalı sonuçlar veya düşük güvenilirlik puanları al
 
 ## <a name="publish-your-model"></a>Modelinizi yayımlama
 
-Modelinize memnunsanız yayımlamak için **Yayımla** ' yı seçin. Yayımlama işlemi tamamlandığında modeliniz **Yayımlandı** durumuna geçer ve kullanıma hazır hale gelir.
+Modelinize memnunsanız yayımlamak için **Yayımla**  ' yı seçin. Yayımlama işlemi tamamlandığında modeliniz **Yayımlandı** durumuna geçer ve kullanıma hazır hale gelir.
 
 > [!div class="mx-imgBorder"]
 > ![Belge Ekle sayfası](./media/tutorial-ai-builder/model-page.png)

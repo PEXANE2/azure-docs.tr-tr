@@ -10,10 +10,10 @@ ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
 ms.openlocfilehash: bb9c206a17a11f0cf710ac4ee3ac7ccae0fa9eb9
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87848035"
 ---
 # <a name="write-azure-web-application-to-read-fhir-data"></a>FHıR verilerini okumak için Azure Web uygulaması yazma
@@ -151,7 +151,7 @@ Buradan, Web uygulaması kaynağınız için geri dönüp Genel Bakış sayfası
 FHıR için Azure API 'SI başarıyla dağıtıldı, bir ortak istemci uygulaması kaydedildi, test edildi ve küçük bir Web uygulaması oluşturdunuz. Sonraki adım olarak desteklenen FHIR özellikleri için Azure API 'sine göz atın.
 
 >[!div class="nextstepaction"]
->[Desteklenen özellikler](fhir-features-supported.md)
+>[Desteklenen Özellikler](fhir-features-supported.md)
 
 
 

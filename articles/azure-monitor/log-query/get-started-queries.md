@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
 ms.openlocfilehash: 345d4fe218f5eed433204622bd47481628ec810f
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87874070"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure İzleyici’de günlük sorgularını kullanmaya başlama
@@ -130,7 +130,7 @@ SecurityEvent
 ```
     
 > [!NOTE]
-> Değerler farklı türlerde olabilir, bu nedenle doğru türde karşılaştırma gerçekleştirmek için bunları atamalısınız. Örneğin, SecurityEvent *düzeyi* sütunu dize türündedir, bu yüzden sayısal işleçleri kullanabilmeniz için önce *int* veya *Long*gibi sayısal bir türe dönüştürmeniz gerekir:`SecurityEvent | where toint(Level) >= 10`
+> Değerler farklı türlerde olabilir, bu nedenle doğru türde karşılaştırma gerçekleştirmek için bunları atamalısınız. Örneğin, SecurityEvent *düzeyi* sütunu dize türündedir, bu yüzden sayısal işleçleri kullanabilmeniz için önce *int* veya *Long*gibi sayısal bir türe dönüştürmeniz gerekir: `SecurityEvent | where toint(Level) >= 10`
 
 ## <a name="specify-a-time-range"></a>Bir zaman aralığı belirtin
 
@@ -151,7 +151,7 @@ SecurityEvent
 | where toint(Level) >= 10
 ```
 
-Yukarıdaki zaman filtresi `ago(30m)` "30 dakika önce" anlamına gelir, bu nedenle bu sorgu yalnızca son 30 dakikadan kayıtları döndürür. Diğer zaman birimleri gün (2B), dakika (25m) ve saniye (10 s).
+Yukarıdaki zaman filtresi  `ago(30m)` "30 dakika önce" anlamına gelir, bu nedenle bu sorgu yalnızca son 30 dakikadan kayıtları döndürür. Diğer zaman birimleri gün (2B), dakika (25m) ve saniye (10 s).
 
 
 ## <a name="project-and-extend-select-and-compute-columns"></a>Proje ve genişletme: sütunları seçme ve hesaplama

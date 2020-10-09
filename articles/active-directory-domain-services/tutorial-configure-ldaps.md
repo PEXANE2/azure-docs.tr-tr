@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
 ms.openlocfilehash: 1164d838a45496a075d356995a60beb967cdfcca
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88054349"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanı için Güvenli LDAP yapılandırma
@@ -34,7 +34,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -121,7 +121,7 @@ Bu öğreticide, özel anahtarla kendinden imzalı bir sertifika oluşturdunuz, 
 
 ### <a name="export-a-certificate-for-azure-ad-ds"></a>Azure AD DS için bir sertifika dışarı aktarma
 
-Yönetilen etki alanınız ile önceki adımda oluşturulan dijital sertifikayı kullanabilmeniz için, sertifikayı bir öğesine dışarı aktarın *. *Özel anahtarı IÇEREN PFX Sertifika dosyası.
+Yönetilen etki alanınız ile önceki adımda oluşturulan dijital sertifikayı kullanabilmeniz için, sertifikayı bir öğesine dışarı aktarın *. * Özel anahtarı IÇEREN PFX Sertifika dosyası.
 
 1. *Çalıştır* iletişim kutusunu açmak için **Windows**  +  **R** tuşlarını seçin.
 1. *Çalıştır* iletişim kutusuna **MMC** girerek Microsoft YÖNETIM konsolu 'nu (MMC) açın ve **Tamam**' ı seçin.
@@ -142,7 +142,7 @@ Yönetilen etki alanınız ile önceki adımda oluşturulan dijital sertifikayı
 1. Sertifika için özel anahtar verilmelidir. Özel anahtar, dışarıya aktarılmış sertifikaya dahil edilmediğinde, yönetilen etki alanınız için Güvenli LDAP 'yi etkinleştirme eylemi başarısız olur.
 
     **Özel anahtarı dışarı aktar** sayfasında **Evet, özel anahtarı dışarı aktar**' ı seçin ve ardından **İleri**' yi seçin.
-1. Yönetilen etki alanları yalnızca ' i destekler *. *Özel anahtarı IÇEREN PFX Sertifika dosyası biçimi. Sertifikayı olarak dışarı aktarmayın *. *Özel anahtar olmadan cer sertifika dosyası biçimi.
+1. Yönetilen etki alanları yalnızca ' i destekler *. * Özel anahtarı IÇEREN PFX Sertifika dosyası biçimi. Sertifikayı olarak dışarı aktarmayın *. * Özel anahtar olmadan cer sertifika dosyası biçimi.
 
     **Dışarı aktarma dosyası biçimi** sayfasında **Kişisel BILGI değişimi-PKCS #12 (. PFX)** , dışarıya aktarılmış sertifikanın dosya biçimi olarak. *Mümkünse sertifika yolundaki tüm sertifikaları Ekle*onay kutusunu işaretleyin:
 
@@ -151,7 +151,7 @@ Yönetilen etki alanınız ile önceki adımda oluşturulan dijital sertifikayı
 1. Bu sertifika verilerin şifresini çözmek için kullanıldığından, erişimi dikkatle kontrol etmeniz gerekir. Sertifika kullanımını korumak için bir parola kullanılabilir. Doğru parola olmadan sertifika bir hizmete uygulanamaz.
 
     **Güvenlik** sayfasında, korumak için **parola** seçeneğini belirleyin *. PFX* sertifika dosyası. Şifreleme algoritması *TripleDES-SHA1*olmalıdır. Bir parola girin ve onaylayın, ardından **İleri**' yi seçin. Bu parola, yönetilen etki alanınız için Güvenli LDAP özelliğini etkinleştirmek üzere bir sonraki bölümde kullanılır.
-1. **Dışarı aktarılacak dosya** sayfasında, sertifikayı dışarı aktarmak istediğiniz dosya adını ve konumunu belirtin, örneğin *C:\Users\accountname\azure-AD-DS.pfx*. Parolasını ve konumunu bir yere göz önünde bulundurun *. *Bu bilgilerin sonraki adımlarda kullanılması IÇIN pfx dosyası.
+1. **Dışarı aktarılacak dosya** sayfasında, sertifikayı dışarı aktarmak istediğiniz dosya adını ve konumunu belirtin, örneğin *C:\Users\accountname\azure-AD-DS.pfx*. Parolasını ve konumunu bir yere göz önünde bulundurun *. * Bu bilgilerin sonraki adımlarda kullanılması IÇIN pfx dosyası.
 1. Gözden geçirme sayfasında, sertifikayı bir öğesine aktarmak için **son** ' u seçin *. PFX* sertifika dosyası. Sertifika başarıyla verildiğinde bir onay iletişim kutusu görüntülenir.
 1. Aşağıdaki bölümde MMC 'YI kullanılmak üzere açık bırakın.
 
@@ -234,7 +234,7 @@ Belirli bir IP adresi kümesinden TCP bağlantı noktası 636 üzerinden gelen g
     | Protokol                          | TCP          |
     | Eylem                            | İzin Ver        |
     | Öncelik                          | 401          |
-    | Name                              | AllowLDAPS   |
+    | Adı                              | AllowLDAPS   |
 
 1. Hazırsanız, kuralı kaydetmek ve uygulamak için **Ekle** ' yi seçin.
 
@@ -286,7 +286,7 @@ Bu öğreticinin bağlantısını test etmek için bilgisayarınızın yerel Hos
 
 1. Yerel makinenizde, yönetici olarak *Not defteri* 'ni açın
 1. *C:\Windows\system32\drivers\etc\hosts* dosyasına göz atın ve dosyayı açın
-1. Eklediğiniz kaydın satırını silin, örneğin`168.62.205.103    ldaps.aaddscontoso.com`
+1. Eklediğiniz kaydın satırını silin, örneğin `168.62.205.103    ldaps.aaddscontoso.com`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

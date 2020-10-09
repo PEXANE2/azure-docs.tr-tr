@@ -6,10 +6,10 @@ ms.date: 04/21/2020
 ms.reviewer: sunayv
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47, references_regions
 ms.openlocfilehash: 9083ff7d8f65c68ce8d173973a4eda650ac355aa
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212919"
 ---
 # <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>Azure API Management kullanarak sunucusuz bir API için Openapı tanımı oluşturma
@@ -49,12 +49,12 @@ Bu işlev daha sonra bir onarımın ne kadar maliyetlendirilebileceğini ve turb
 
 1. **[Yetkilendirme düzeyi](functions-bindings-http-webhook-trigger.md#http-auth)** açılan listesinden **işlev** ' ı seçin ve ardından **işlev oluştur**' u seçin.
 
-    :::image type="content" source="media/functions-openapi-definition/select-http-trigger-openapi.png" alt-text="Openapı için HTTP işlevi oluşturma":::
+    :::image type="content" source="media/functions-openapi-definition/select-http-trigger-openapi.png" alt-text="Openapı için HTTP işlevi oluşturma&quot;:::
 
 1. **Kod + test**' i seçin ve ardından açılır listeden **. CSX 'i Çalıştır** ' ı seçin. Run. CSX C# betik dosyasının içeriğini aşağıdaki kodla değiştirin ve ardından **Kaydet**' i seçin:
 
     ```csharp
-    #r "Newtonsoft.Json"
+    #r &quot;Newtonsoft.Json"
     
     using System.Net;
     using Microsoft.AspNetCore.Mvc;
@@ -115,7 +115,12 @@ Bu işlev daha sonra bir onarımın ne kadar maliyetlendirilebileceğini ve turb
     }
     ```
 
-    :::image type="content" source="media/functions-openapi-definition/test-function.png" alt-text="İşlevi Azure portalında test etme":::
+    :::image type="content" source="media/functions-openapi-definition/test-function.png" alt-text="Openapı için HTTP işlevi oluşturma&quot;:::
+
+1. **Kod + test**' i seçin ve ardından açılır listeden **. CSX 'i Çalıştır** ' ı seçin. Run. CSX C# betik dosyasının içeriğini aşağıdaki kodla değiştirin ve ardından **Kaydet**' i seçin:
+
+    ```csharp
+    #r &quot;Newtonsoft.Json":::
 
     **Çıkış** sekmesinde aşağıdaki çıktı döndürülür:
 
@@ -131,7 +136,12 @@ Openapı tanımını oluşturmak için:
 
 1. İşlev uygulamasını seçin, sol menüden **API Management** öğesini seçin ve ardından **API Management** **Yeni oluştur** ' u seçin.
 
-    :::image type="content" source="media/functions-openapi-definition/select-all-settings-openapi.png" alt-text="API Management seçin":::
+    :::image type="content" source="media/functions-openapi-definition/select-all-settings-openapi.png" alt-text="Openapı için HTTP işlevi oluşturma&quot;:::
+
+1. **Kod + test**' i seçin ve ardından açılır listeden **. CSX 'i Çalıştır** ' ı seçin. Run. CSX C# betik dosyasının içeriğini aşağıdaki kodla değiştirin ve ardından **Kaydet**' i seçin:
+
+    ```csharp
+    #r &quot;Newtonsoft.Json":::
 
 
 1. Aşağıdaki tabloda belirtildiği gibi API Management ayarlarını kullanın:
@@ -158,7 +168,12 @@ Openapı tanımını oluşturmak için:
 
 1. **İşlev uygulaması oluştur** sayfasında, varsayılan değerleri kabul edin ve **Oluştur**' u seçin.
 
-    :::image type="content" source="media/functions-openapi-definition/create-function-openapi.png" alt-text="İşlev Uygulaması Oluştur":::
+    :::image type="content" source="media/functions-openapi-definition/create-function-openapi.png" alt-text="Openapı için HTTP işlevi oluşturma&quot;:::
+
+1. **Kod + test**' i seçin ve ardından açılır listeden **. CSX 'i Çalıştır** ' ı seçin. Run. CSX C# betik dosyasının içeriğini aşağıdaki kodla değiştirin ve ardından **Kaydet**' i seçin:
+
+    ```csharp
+    #r &quot;Newtonsoft.Json":::
 
     Azure işlevi için API 'YI oluşturur.
 
@@ -179,7 +194,12 @@ Openapı tanımını kullanmadan önce API 'nin çalıştığını doğrulamanı
 
 1. **Gönder**' i seçin ve ardından **HTTP yanıtını**görüntüleyin.
 
-    :::image type="content" source="media/functions-openapi-definition/test-function-api-openapi.png" alt-text="Test işlevi API 'SI":::
+    :::image type="content" source="media/functions-openapi-definition/test-function-api-openapi.png" alt-text="Openapı için HTTP işlevi oluşturma&quot;:::
+
+1. **Kod + test**' i seçin ve ardından açılır listeden **. CSX 'i Çalıştır** ' ı seçin. Run. CSX C# betik dosyasının içeriğini aşağıdaki kodla değiştirin ve ardından **Kaydet**' i seçin:
+
+    ```csharp
+    #r &quot;Newtonsoft.Json":::
 
 ## <a name="download-the-openapi-definition"></a>Openapı tanımını indirin
 

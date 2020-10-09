@@ -4,10 +4,10 @@ description: Bu öğreticide, bir kaynak grafiği sorgusu oluşturur ve yeni sor
 ms.date: 06/29/2020
 ms.topic: tutorial
 ms.openlocfilehash: f602a6ed26f467f2d3395bdf5e3346c83684b108
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88005174"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Öğretici: Azure portal Azure Kaynak Grafiği sorgusu oluşturma ve paylaşma
@@ -24,7 +24,7 @@ Bu öğreticide, aşağıdaki görevleri tamamlayacaksınız:
 > - Paylaşılan sorguları bulma
 > - Paylaşılan bir sorguyu silme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
@@ -89,7 +89,7 @@ Yeni bir paylaşılan sorgu oluşturmak için aşağıdaki adımları izleyin:
 
 1. **Sorguyu Kaydet** bölmesinin en altında bulunan **Kaydet** ' i seçin. Sekme başlığı, **sorgu 1** ' den **Işletim sistemine göre VM 'lere göre**değişir. **Kaynak-grafik sorguları** kaynak grubu ilk kez kullanıldığında, kaynak grubu oluşturulduğundan, kaydetme beklenenden uzun sürer.
    
-   :::image type="content" source="../media/create-share-query/save-shared-query-window.png" alt-text="Yeni sorguyu paylaşılan sorgu olarak kaydet" border="false":::
+   :::image type="content" source="../media/create-share-query/save-shared-query-window.png" alt-text="Kaydet düğmesini kullanarak yeni sorguyu kaydetme" border="false":::
 
    > [!NOTE] 
    > Paylaşılan sorguyu kaydetmek için mevcut bir kaynak grubunun adını sağlamak istiyorsanız **kaynağa Yayımla-Graph-Queries kaynak grubu** onay kutusunu temizleyebilirsiniz. Sorgular için varsayılan adlandırılmış kaynak grubunun kullanılması, paylaşılan sorguları bulmayı kolaylaştırır. Ayrıca, bu kaynak grubunun amacını daha belirgin hale getirir. Bununla birlikte, mevcut izinlere göre güvenlik nedenleriyle mevcut bir kaynak grubunu seçebilirsiniz.
@@ -98,7 +98,7 @@ Yeni bir paylaşılan sorgu oluşturmak için aşağıdaki adımları izleyin:
 
 1. **Sorgu aç**' ı seçin. Türün **paylaşılan sorgu** olarak ayarlandığını, **aboneliğin** ve **kaynak grubunun** birleşimini, sorguyu kaydettiğiniz yere göre eşleştiğini doğrulayın. **İşletim sistemi öğesine göre kaydedilen sayı VM 'leri** artık **sorgu adı** listesinde görünür. Kaydedilen sorgunun başlık bağlantısını seçerek sorgunun adına sahip yeni bir sekmeye yükleyin. Paylaşılan bir sorgu olarak, başlığın yanındaki sekmede, paylaşılan olarak gösterildiği gibi bir simge görüntüler.
 
-   :::image type="content" source="../media/create-share-query/show-saved-shared-query.png" alt-text="Paylaşılan sorguyu simge ile göster" border="false":::
+   :::image type="content" source="../media/create-share-query/show-saved-shared-query.png" alt-text="Kaydet düğmesini kullanarak yeni sorguyu kaydetme" border="false":::
 
    > [!NOTE] 
    > Kaydedilen bir sorgu açık olduğunda ve sekme bu adı gösteriyorsa, **Kaydet** düğmesi bunu yapılmış değişikliklerle günceller. Yeni kaydedilmiş bir sorgu oluşturmak için **farklı kaydet** ' i seçin ve yepyeni bir sorgu kaydediyorsunuz gibi ilerleyin.

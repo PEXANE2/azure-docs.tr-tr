@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 3a6ce5860704e6fd16b79fc253650dd45ec743e7
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87852625"
 ---
 # <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>Öğretici: ML denemeleri 'yi üretim Python koduna dönüştürme
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * İlgili görevler için Python betikleri oluşturma
 > * Birim testleri oluşturma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [MLOpsPython şablonunu](https://github.com/microsoft/MLOpsPython/generate) oluşturun ve `experimentation/Diabetes Ridge Regression Training.ipynb` ve `experimentation/Diabetes Ridge Regression Scoring.ipynb` not defterlerini kullanın. Bu not defterleri, deneme 'den üretime dönüştürme örneği olarak kullanılır. Bu not defterlerini adresinde bulabilirsiniz [https://github.com/microsoft/MLOpsPython/tree/master/experimentation](https://github.com/microsoft/MLOpsPython/tree/master/experimentation) .
 - `nbconvert`yükleyin. [Yükleme](https://nbconvert.readthedocs.io/en/latest/install.html) sayfasında, yalnızca __nbconvert 'i yükleme__ bölümündeki yükleme yönergelerini izleyin.
@@ -431,7 +431,7 @@ if __name__ == '__main__':
     main()
 ```
 
-`train.py`, artık çalıştırılarak bir terminalden çağrılabilir `python train.py` .
+`train.py` , artık çalıştırılarak bir terminalden çağrılabilir `python train.py` .
 Ayrıca, işlevleri `train.py` başka dosyalardan de çağrılabilir.
 
 `train_aml.py` `diabetes_regression/training` MLOpsPython deposundaki dizininde bulunan dosya `train.py` Azure Machine Learning deneme çalıştırması bağlamında içinde tanımlanan işlevleri çağırır. İşlevler, bu kılavuzun ilerleyen kısımlarında ele alınan birim testlerinde de çağrılabilir.
@@ -493,7 +493,7 @@ def init():
 
 Dördüncü olarak, Python işlevleriniz için birim testleri oluşturun. Birim testleri kodu işlevsel gerilemeler ile koruyabilir ve bakımını daha kolay hale getirir. Bu bölümde, içindeki işlevler için birim testleri oluşturacağız `train.py` .
 
-`train.py`birden çok işlev içerir, ancak `train_model` Bu öğreticide yalnızca pytest çerçevesini kullanarak işlev için tek bir birim testi oluşturacağız. Pytest tek Python birimi test çatısı değildir, ancak en sık kullanılan bir biridir. Daha fazla bilgi için [Pytest](https://pytest.org)' i ziyaret edin.
+`train.py` birden çok işlev içerir, ancak `train_model` Bu öğreticide yalnızca pytest çerçevesini kullanarak işlev için tek bir birim testi oluşturacağız. Pytest tek Python birimi test çatısı değildir, ancak en sık kullanılan bir biridir. Daha fazla bilgi için [Pytest](https://pytest.org)' i ziyaret edin.
 
 Birim testi genellikle üç ana eylem içerir:
 

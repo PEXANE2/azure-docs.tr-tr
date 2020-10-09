@@ -9,10 +9,10 @@ ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: edf30d628a73c879ce81f68bda7cd2d7daa6cde3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87503659"
 ---
 # <a name="azure-storage-samples"></a>Azure depolama örnekleri
@@ -45,7 +45,7 @@ Python örneklerini araştırmak için [Python depolama Istemci kitaplığını]
 
 Node.js örnekleri araştırmak için [Node.js depolama Istemci kitaplığını](https://github.com/Azure/azure-storage-node)indirin.
 
-* [JavaScript/Node.jskullanan Azure depolama örnekleri](storage-samples-javascript.md)
+* [JavaScript/Node.jskullanan Azure depolama örnekleri ](storage-samples-javascript.md)
 
 ## <a name="c-samples"></a>C++ örnekleri
 
@@ -59,7 +59,7 @@ C++ örneklerini araştırmak için, NuGet 'den [C++ depolama Istemci kitaplığ
 
 Azure CLı örneklerini araştırmak için önce [Azure CLI 'Yı yüklemeniz](/cli/azure/install-azure-cli)gerekir.
 
-* [Azure CLI'yı kullanmaya başlama](/cli/azure/get-started-with-azure-cli)
+* [Azure CLI’yı kullanmaya başlama](/cli/azure/get-started-with-azure-cli)
 * [Azure CLı kullanan Azure depolama örnekleri](/azure/storage/blobs/storage-samples-blobs-cli)
 * [Azure depolama ile Azure CLı kullanma hakkında popüler makaleler](/cli/azure/popular-articles-using-the-azure-cli#storage)
 

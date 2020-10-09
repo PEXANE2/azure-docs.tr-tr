@@ -4,10 +4,10 @@ description: Medya şeması örneklerinin denetim eşlemesi. Her denetim, değer
 ms.date: 08/13/2020
 ms.topic: sample
 ms.openlocfilehash: 4101b9030425c22b8806870d467581521870d639
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88208463"
 ---
 # <a name="control-mapping-of-the-media-blueprint-sample"></a>Medya şeması örneğinin denetim eşlemesi
@@ -47,7 +47,7 @@ Aşağıdaki eşlemeler **medya** denetimlerine göre yapılır. Sağ taraftaki 
 
 ### <a name="ac-1-21---separation-of-duties-must-be-enforced-through-appropriate-assignment-of-role"></a>AC-1-21-görevlerin ayrılması uygun rol ataması aracılığıyla zorlanmalıdır.
 
-- [Önizleme \] : rol tabanlı Access Control (RBAC), Kubernetes hizmetlerinde kullanılmalıdır
+- [Önizleme \] : Role-Based Access Control (RBAC), Kubernetes hizmetlerinde kullanılmalıdır
 
 ### <a name="ac-140--ensure-that-systems-are-not-connecting-trusted-network-and-untrusted-networks-at-the-same-time"></a>AC-1,40-sistemlerin, güvenilen ağı ve güvenilmeyen ağları aynı anda bağmadığından emin olun.
 
@@ -63,7 +63,7 @@ Aşağıdaki eşlemeler **medya** denetimlerine göre yapılır. Sağ taraftaki 
 
 ### <a name="ac-154--ensure-multi-factor-authentication-mfa-is-enabled-for-all-cloud-console-users"></a>AC-1,54-Multi-Factor Authentication 'ın (MFA) tüm bulut konsolu kullanıcıları için etkinleştirildiğinden emin olun.
 
-- MFA, aboneliğinizde yazma izinleri olan hesaplar etkinleştirilmelidir
+- Aboneliğinizde yazma izinleri olan hesaplarda MFA etkinleştirilmelidir
 - Hesapların veya kaynakların ihlal oluşmasını engellemek için yazma ayrıcalıklarına sahip tüm abonelik hesapları için Multi-Factor Authentication (MFA) etkinleştirilmelidir.
 
 ## <a name="auditing--logging"></a>& günlüğü denetleme
