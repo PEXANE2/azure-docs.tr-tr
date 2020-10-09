@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 0465d6219f9c9d13b4dd3321beb90af524cade36
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91741661"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>Öğretici: Bime ile tümleştirme Azure Active Directory
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açma 'yı çift ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Çoklu **[oturum açmayı yapılandırma](#configure-bime-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. Çoklu **[oturum açmayı yapılandırma](#configure-bime-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. **[Bime test kullanıcısı oluşturun](#create-bime-test-user)** -Kullanıcı IÇIN Azure AD gösterimine bağlı olan, Bime 'de Britta Simon 'un bir karşılığı olacak.
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açma 'yı Bime ile yapılandırmak için aşağıdaki ad
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -126,7 +126,7 @@ Azure AD çoklu oturum açma 'yı Bime ile yapılandırmak için aşağıdaki ad
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-bime-single-sign-on"></a>Bime çoklu oturum açmayı yapılandırma
+### <a name="configure-bime-single-sign-on"></a>Bime tek Sign-On yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, yönetici olarak Bime şirket sitenizde oturum açın.
 
@@ -136,7 +136,7 @@ Azure AD çoklu oturum açma 'yı Bime ile yapılandırmak için aşağıdaki ad
 
 3. Hesap yapılandırması sayfasında, aşağıdaki adımları uygulayın:
   
-    ![Çoklu oturum açmayı yapılandırma](./media/bime-tutorial/ic775559.png "Çoklu oturum açmayı yapılandırma")
+    ![Çoklu oturum açmayı yapılandırma](./media/bime-tutorial/ic775559.png "Tek Sign-On yapılandırma")
 
     a. **SAML kimlik doğrulamasını etkinleştir**' i seçin.
 

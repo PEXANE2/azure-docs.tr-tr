@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: jingwang
 ms.openlocfilehash: 22ab4433d84db926733fd0b18035875e63322dda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81451695"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Kimlik bilgilerini Azure Key Vault içinde depola
@@ -44,8 +44,8 @@ Azure Key Vault bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **AzureKeyVault**olarak ayarlanmalıdır. | Yes |
-| baseUrl | Azure Key Vault URL 'sini belirtin. | Yes |
+| tür | Type özelliği: **AzureKeyVault**olarak ayarlanmalıdır. | Evet |
+| baseUrl | Azure Key Vault URL 'sini belirtin. | Evet |
 
 **Yazma Kullanıcı arabirimini kullanma:**
 
@@ -77,10 +77,10 @@ Aşağıdaki özellikler, bağlantılı hizmette bir Anahtar Kasası gizliliğin
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Alanın Type özelliği: **AzureKeyVaultSecret**olarak ayarlanmalıdır. | Yes |
-| secretName | Azure Key Vault ' deki gizli dizi adı. | Yes |
-| Gizlidizisürümü | Azure Key Vault ' deki gizli dizi sürümü.<br/>Belirtilmemişse, her zaman gizli dizinin en son sürümünü kullanır.<br/>Belirtilmişse, belirtilen sürüme de sahiptir.| No |
-| mağaza | Kimlik bilgisini depolamak için kullandığınız Azure Key Vault bağlı bir hizmete başvurur. | Yes |
+| tür | Alanın Type özelliği: **AzureKeyVaultSecret**olarak ayarlanmalıdır. | Evet |
+| secretName | Azure Key Vault ' deki gizli dizi adı. | Evet |
+| Gizlidizisürümü | Azure Key Vault ' deki gizli dizi sürümü.<br/>Belirtilmemişse, her zaman gizli dizinin en son sürümünü kullanır.<br/>Belirtilmişse, belirtilen sürüme de sahiptir.| Hayır |
+| mağaza | Kimlik bilgisini depolamak için kullandığınız Azure Key Vault bağlı bir hizmete başvurur. | Evet |
 
 **Yazma Kullanıcı arabirimini kullanma:**
 

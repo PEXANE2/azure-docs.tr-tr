@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 06/22/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 57a9186033b8df71d1972289fe33b0fe654690f6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91316435"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Öğretici: C 'de Language Understanding etkinleştirilmiş bir Web uygulaması bot kullanın #
@@ -324,7 +324,7 @@ Visual Studio 2019 ' de, bot 'ı başlatın. Web uygulaması robotunun `http://l
 
     [![Ekran görüntüsü, temel bir bot yanıtıyla bot Framework öykünücüsünü gösterir.](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
-1. **Evet** seçeneğini belirleyin. Bot, eylemlerinin bir özeti ile yanıt verir.
+1. **Evet**’i seçin. Bot, eylemlerinin bir özeti ile yanıt verir.
 1. Bot öykünücüsünün günlüğünden, dahil edilen satırı seçin `<- trace LuisV3 Trace` . Bu, deterance 'in amacı ve varlıkları için LUSıS 'den gelen JSON yanıtını görüntüler.
 
     [![Ekran görüntüsünde, LuisV3 Trace seçili ve JSON yanıtı vurgulanmış olan temel bir bot yanıtı gösterilmektedir.](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)

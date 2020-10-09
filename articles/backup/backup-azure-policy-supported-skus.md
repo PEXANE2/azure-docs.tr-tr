@@ -4,10 +4,10 @@ description: Yedekleme tarafından sunulan yerleşik Azure Ilkeleri için destek
 ms.topic: conceptual
 ms.date: 11/08/2019
 ms.openlocfilehash: 4658d1beffe707682e173491edea1eac0db9c811
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82183628"
 ---
 # <a name="supported-vm-skus-for-azure-policy"></a>Azure İlkesi için desteklenen VM SKU’ları
@@ -68,10 +68,10 @@ SUSE | SLES-HPC | 12. X
 SUSE | SLES-HPC-Priority | 12. X
 SUSE | SLES-SAP | 12. X
 SUSE | SLES-SAP-BYOS | 12. X
-SUSE | SLES-öncelik | 12. X
+SUSE | SLES-Priority | 12. X
 SUSE | SLES-BYOS | 12. X
 SUSE | SLES-SAPCAL | 12. X
-SUSE | SLES-standart | 12. X
+SUSE | SLES-Standard | 12. X
 Canonical | UbuntuServer | 14.04.0-LTS
 Canonical | UbuntuServer | 14.04.1-LTS
 Canonical | UbuntuServer | 14.04.2-LTS

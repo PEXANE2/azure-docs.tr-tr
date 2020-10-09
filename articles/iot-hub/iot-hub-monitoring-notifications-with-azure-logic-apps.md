@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
 ms.openlocfilehash: 2720f9acfa308294b30f9203ba80e3f9b426e1e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81680714"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>IoT Hub 'ınızı ve posta kutunuzu bağlama Azure Logic Apps IoT uzaktan izleme ve bildirimler
@@ -56,7 +56,7 @@ Bu konu başlığında, `temperatureAlert` özelliğin Service Bus uç noktasın
 * Service Bus kuyruğuna sıcaklık uyarısı içeren iletileri yönlendirmek için IoT Hub 'ınıza özel bir uç nokta ve yönlendirme kuralı ekleyin.
 * Service Bus kuyruğunuzdan iletileri tüketmek ve istenen alıcıya bildirim e-postaları göndermek için bir mantıksal uygulama oluşturun, yapılandırın ve test edin.
 
-## <a name="what-you-need"></a>Ne gerekiyor
+## <a name="what-you-need"></a>Gerekenler
 
 * [Raspberry PI Çevrimiçi simülatör](iot-hub-raspberry-pi-web-simulator-get-started.md) öğreticisini veya cihaz öğreticilerinin birini doldurun; Örneğin, [node.jsRaspberry Pi ](iot-hub-raspberry-pi-kit-node-get-started.md). Bu, aşağıdaki gereksinimleri kapsar:
 
@@ -84,7 +84,7 @@ Service Bus ad alanı ve kuyruğu oluşturun. Bu konunun ilerleyen kısımların
 
    ![Azure portal bir Service Bus ad alanı oluşturma](media/iot-hub-monitoring-notifications-with-azure-logic-apps/1-create-service-bus-namespace-azure-portal.png)
 
-1. **Oluştur**'u seçin. Sonraki adıma geçmeden önce dağıtımın tamamlanmasını bekleyin.
+1. **Oluştur**’u seçin. Sonraki adıma geçmeden önce dağıtımın tamamlanmasını bekleyin.
 
 ### <a name="add-a-service-bus-queue-to-the-namespace"></a>Ad alanına Service Bus kuyruğu ekleme
 
@@ -124,7 +124,7 @@ IoT Hub 'ınıza Service Bus kuyruğu için özel bir uç nokta ekleyin ve bir s
 
    ![Azure portal IoT Hub 'ınıza bir uç nokta ekleyin](media/iot-hub-monitoring-notifications-with-azure-logic-apps/3-add-iot-hub-endpoint-azure-portal.png)
 
-1. **Oluştur**'u seçin. Uç nokta başarıyla oluşturulduktan sonra, sonraki adıma geçin.
+1. **Oluştur**’u seçin. Uç nokta başarıyla oluşturulduktan sonra, sonraki adıma geçin.
 
 ### <a name="add-a-routing-rule"></a>Yönlendirme kuralı ekleme
 
@@ -142,7 +142,7 @@ IoT Hub 'ınıza Service Bus kuyruğu için özel bir uç nokta ekleyin ve bir s
 
    ![Azure portal yönlendirme kuralı ekleme](media/iot-hub-monitoring-notifications-with-azure-logic-apps/4-add-routing-rule-azure-portal.png)
 
-1. **Kaydet**'i seçin. **İleti yönlendirme** bölmesini kapatabilirsiniz.
+1. **Kaydet**’i seçin. **İleti yönlendirme** bölmesini kapatabilirsiniz.
 
 ## <a name="create-and-configure-a-logic-app"></a>Mantıksal uygulama oluşturma ve yapılandırma
 
@@ -162,7 +162,7 @@ Yukarıdaki bölümde, IoT Hub 'ınızı Service Bus kuyruğuna bir sıcaklık u
 
    ![Azure portal bir mantıksal uygulama oluşturun](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-a-logic-app.png)
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 ### <a name="configure-the-logic-app-trigger"></a>Mantıksal uygulama tetikleyicisini yapılandırma
 
@@ -185,7 +185,7 @@ Yukarıdaki bölümde, IoT Hub 'ınızı Service Bus kuyruğuna bir sıcaklık u
 
       ![Azure portal mantıksal uygulamanız için bir hizmet veri yolu bağlantısı oluşturma](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-connection-1.png)
 
-   1. Service Bus ilkesini (RootManageSharedAccessKey) seçin. Ardından **Oluştur**' u seçin.
+   1. Service Bus ilkesini (RootManageSharedAccessKey) seçin. Ardından  **Oluştur**' u seçin.
 
       ![Azure portal mantıksal uygulamanız için bir hizmet veri yolu bağlantısı oluşturma](media/iot-hub-monitoring-notifications-with-azure-logic-apps/7-create-service-bus-connection-in-logic-app-azure-portal.png)
 

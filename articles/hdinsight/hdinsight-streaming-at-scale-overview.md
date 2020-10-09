@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: 006310f1a0efa69881bbe6d6ea4403b9c50402e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75435388"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>HDInsight’ta ölçeğe göre akış
@@ -35,7 +35,7 @@ Apache Storm, Hadoop ile gerçek zamanlı olarak veri akışlarını işlemek i�
 
 Daha fazla bilgi için bkz. [Azure HDInsight 'ta Apache Storm nedir?](storm/apache-storm-overview.md).
 
-## <a name="spark-streaming"></a>Spark akışı
+## <a name="spark-streaming"></a>Spark Streaming
 
 Spark akışı, toplu işleme için kullandığınız kodu yeniden kullanmanıza olanak tanıyan Spark uzantısıdır. Aynı uygulamadaki hem Batch hem de etkileşimli sorguları birleştirebilirsiniz. Bu durumda, Spark akışı, durum bilgisi olarak bir kez işleme semantiğini sağlar. [Kafka DIRECT API](https://spark.apache.org/docs/latest/streaming-kafka-integration.html)'siyle birlikte kullanıldığında, tüm Kafka verilerinin tek bir kez Spark akışı tarafından alındığından emin olmanızı sağlayan, uçtan uca tam olarak bir kez garanti elde etmek mümkündür. Spark akışının güçlerinden biri hataya dayanıklı yeteneklerdir ve küme içinde birden çok düğüm kullanılırken, hatalı düğümleri hızlı bir şekilde kurtarıyor.
 
@@ -49,7 +49,7 @@ Teknoloji kullanmanın avantajları vardır. Örneğin, Kafka bir olay arabelle�
 
 ### <a name="scale-the-stream-buffering-layer"></a>Akış arabelleğe alma katmanını ölçeklendirme
 
-Akış arabelleğe alma teknolojileri Event Hubs ve Kafka her ikisi de bu bölümlerden okunan bölümleri ve müşterileri kullanır. Giriş aktarım hızını ölçeklendirmek için bölüm sayısının ölçeğini ölçekleme gerekir ve bölüm eklemek de artan paralellik sağlar. Event Hubs, bölüm sayısı dağıtımdan sonra değiştirilemez, bu nedenle hedef ölçeklendirmeye göz önünde bulundurularak başlamak önemlidir. Kafka ile, Kafka verileri işlerken bile [bölüm eklemek](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion)mümkündür. Kafka, bölümleri yeniden atamak için bir araç sağlar `kafka-reassign-partitions.sh` . HDInsight, [bölüm çoğaltma yeniden dengeleme aracı](https://github.com/hdinsight/hdinsight-kafka-tools)sağlar `rebalance_rackaware.py` . Bu yeniden dengeleme Aracı, `kafka-reassign-partitions.sh` her çoğaltmanın ayrı bir hata etki alanında ve güncelleştirme etki alanında olması, Kafka rafa göz önünde bulundurulması ve hata toleransı artırdığından bu şekilde aracı çağırır.
+Akış arabelleğe alma teknolojileri Event Hubs ve Kafka her ikisi de bu bölümlerden okunan bölümleri ve müşterileri kullanır. Giriş aktarım hızını ölçeklendirmek için bölüm sayısının ölçeğini ölçekleme gerekir ve bölüm eklemek de artan paralellik sağlar. Event Hubs, bölüm sayısı dağıtımdan sonra değiştirilemez, bu nedenle hedef ölçeklendirmeye göz önünde bulundurularak başlamak önemlidir. Kafka ile, Kafka verileri işlerken bile [bölüm eklemek](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion)mümkündür. Kafka, bölümleri yeniden atamak için bir araç sağlar  `kafka-reassign-partitions.sh` . HDInsight, [bölüm çoğaltma yeniden dengeleme aracı](https://github.com/hdinsight/hdinsight-kafka-tools)sağlar  `rebalance_rackaware.py` . Bu yeniden dengeleme Aracı, `kafka-reassign-partitions.sh` her çoğaltmanın ayrı bir hata etki alanında ve güncelleştirme etki alanında olması, Kafka rafa göz önünde bulundurulması ve hata toleransı artırdığından bu şekilde aracı çağırır.
 
 ### <a name="scale-the-stream-processing-layer"></a>Akış işleme katmanını ölçeklendirme
 

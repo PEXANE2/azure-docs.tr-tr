@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
 ms.openlocfilehash: 3414f50d6d0fc4983b7a05226a2f768e7ead81dd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319682"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>Google Maps 'tan bir Web uygulaması geçirme
@@ -1011,16 +1011,16 @@ Veri kaynağındaki verileri ekleyin ve yönetin. Veri kaynaklarını ve katmanl
 
 Kümeleme etkinleştirildiğinde veri kaynağı, işleme için katmanlara kümelenmiş ve kümelenmemiş veri noktaları gönderir. Veri kaynağı yüzlerce binlerce veri noktası kümelemesine sahiptir. Kümelenmiş bir veri noktası aşağıdaki özelliklere sahiptir:
 
-| Özellik adı             | Tür    | Description   |
+| Özellik adı             | Tür    | Açıklama   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | Özelliğin bir kümeyi temsil ettiğini belirtir. |
 | `cluster_id`              | string  | Küme için, veri kaynağı `getClusterExpansionZoom` , ve yöntemleriyle kullanılabilecek benzersiz BIR kimlik `getClusterChildren` `getClusterLeaves` . |
-| `point_count`             | sayı  | Kümenin içerdiği noktaların sayısı.  |
+| `point_count`             | number  | Kümenin içerdiği noktaların sayısı.  |
 | `point_count_abbreviated` | string  | Long ise değeri abbreviates bir dize `point_count` . (örneğin, 4.000 4K olur)  |
 
 `DataSource`Sınıfı, kullanarak bir kümeyle ilgili ek bilgilere erişmek için aşağıdaki yardımcı işleve sahiptir `cluster_id` .
 
-| Yöntem | Dönüş türü | Description |
+| Yöntem | Dönüş türü | Açıklama |
 |--------|-------------|-------------|
 | `getClusterChildren(clusterId: number)` | Promise &lt; dizi &lt; özelliği &lt; geometrisi, herhangi bir &gt; \| Şekil&gt;&gt; | Sonraki yakınlaştırma düzeyinde verilen kümenin alt öğelerini alır. Bu alt öğeler şekil ve alt kümelerin bir birleşimi olabilir. Alt kümeler, ClusteredProperties ile eşleşen özelliklerle özellik olacaktır. |
 | `getClusterExpansionZoom(clusterId: number)` | Promise &lt; numarası&gt; | Kümenin genişlemekte veya parçalanmasına başlayacağı yakınlaştırma düzeyini hesaplar. |
@@ -1504,7 +1504,7 @@ Bu kodun bir tarayıcıda çalıştırılması, aşağıdaki görüntü gibi gö
 
 ### <a name="add-kml-data-to-the-map"></a>KML verilerini haritaya ekleme
 
-Hem Azure hem de Google Maps, haritada KML, KMZ ve GeoRSS verilerini içeri aktarabilir ve işleyebilir. Azure haritalar Ayrıca GPX, GML, uzamsal CSV dosyaları, GeoJSON, Iyi bilinen metin (WKT), Web eşleme Hizmetleri (WMS), Web eşleme kutucuk Hizmetleri (WMTS) ve web özelliği Hizmetleri (WFS) destekler. Azure haritalar dosyaları yerel olarak belleğe okur ve çoğu durumda çok daha büyük KML dosyaları işleyebilir. 
+Hem Azure hem de Google Maps, haritada KML, KMZ ve GeoRSS verilerini içeri aktarabilir ve işleyebilir. Azure haritalar Ayrıca GPX, GML, uzamsal CSV dosyalarını, GeoJSON, Iyi bilinen metin (WKT), Web-Mapping Services (WMS), Web-Mapping kutucuk Hizmetleri (WMTS) ve web özelliği hizmetlerini (WFS) destekler. Azure haritalar dosyaları yerel olarak belleğe okur ve çoğu durumda çok daha büyük KML dosyaları işleyebilir. 
 
 #### <a name="before-google-maps"></a>Önce: Google Maps
 

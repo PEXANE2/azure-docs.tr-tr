@@ -8,10 +8,10 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: 4548bf77c01194802c2e6203bcbf9fbd240370a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81461659"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric güvenliği en iyi yöntemleri
@@ -60,7 +60,7 @@ Ayrıca, aşağıdaki yapılandırma seçeneklerini göz önünde bulundurun:
 -   Düğümden düğüme güvenlik: Bu senaryo, sanal makineler ve kümedeki bilgisayarlar arasındaki iletişimin güvenliğini sağlar. Bu güvenlik biçimi, yalnızca kümeye katılması gereken bilgisayarların kümedeki uygulamaları ve Hizmetleri barındırmasını sağlar.
 Bu senaryoda, Azure 'da çalışan kümeler ya da Windows üzerinde çalışan tek başına kümeler Windows Server makineleri için [sertifika güvenliği](../../service-fabric/service-fabric-windows-cluster-x509-security.md) veya [Windows güvenliği](../../service-fabric/service-fabric-windows-cluster-windows-security.md) kullanabilir.
 -   İstemciden düğüme güvenlik: Bu senaryo, Service Fabric istemci ile kümedeki tek tek düğümler arasındaki iletişimin güvenliğini sağlar.
--   Rol tabanlı Access Control (RBAC): Bu senaryo, kümeye erişen her yönetici ve Kullanıcı istemci rolü için ayrı kimlikler (sertifikalar, Azure AD vb.) kullanır. Kümeyi oluştururken rol kimliklerini belirtirsiniz.
+-   Role-Based Access Control (RBAC): Bu senaryo, kümeye erişen her yönetici ve Kullanıcı istemci rolü için ayrı kimlikler (sertifikalar, Azure AD vb.) kullanır. Kümeyi oluştururken rol kimliklerini belirtirsiniz.
 
 >[!NOTE]
 >**Azure kümeleri Için güvenlik önerisi:** Düğümden düğüme güvenlik için istemcilerin ve sertifikaların kimliğini doğrulamak üzere Azure AD güvenliği ' ni kullanın.

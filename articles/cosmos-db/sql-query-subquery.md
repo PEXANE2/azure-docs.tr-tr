@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 42d9e8b190747a3ffaf0e46ea1eddda33d09bb24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74870573"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Azure Cosmos DB için SQL alt sorgu örnekleri
@@ -124,7 +124,7 @@ Genellikle ölçü birimleri veya ülke kodu gibi nadiren değişiklik yapan sta
 
 Örneğin, bu başvuru verileri kümesini göz önünde bulundurun:
 
-| **Birim** | **Adı**            | **Çarpanını** | **Taban birim** |
+| **Birim** | **Ad**            | **Çarpanını** | **Taban birim** |
 | -------- | ------------------- | -------------- | ------------- |
 | denetimini       | Nanogram            | 1,00 e-09       | Durumu          |
 | µg       | Mikro gram           | 1,00 e-06       | Durumu          |

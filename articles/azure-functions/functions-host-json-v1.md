@@ -4,10 +4,10 @@ description: Azure Işlevleri için başvuru belgeleri v1 çalışma zamanı ile
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.openlocfilehash: 36d028d09c94ae28e77404297bd576f5e20404c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81757524"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Işlevleri 1. x için başvuru host.js
@@ -19,7 +19,7 @@ ms.locfileid: "81757524"
 Meta veri dosyası *host.js* , bir işlev uygulaması için tüm işlevleri etkileyen genel yapılandırma seçeneklerini içerir. Bu makalede v1 çalışma zamanı için kullanılabilen ayarlar listelenir. JSON şeması http://json.schemastore.org/host .
 
 > [!NOTE]
-> Bu makale, Azure Işlevleri 1. x içindir.  Işlevler 2. x ve sonraki sürümlerde host.jsbaşvurusu için bkz. [Azure işlevleri için başvuru üzerindehost.js2. x](functions-host-json.md).
+> Bu makale, Azure Işlevleri 1. x içindir.  Işlevler 2. x ve sonraki sürümlerde host.jsbaşvurusu için bkz. [ Azure işlevleri için başvuru üzerindehost.js2. x](functions-host-json.md).
 
 Diğer işlev uygulaması yapılandırma seçenekleri [uygulama ayarlarınızda](functions-app-settings.md)yönetilir.
 
@@ -138,7 +138,7 @@ Bu makalenin aşağıdaki bölümlerinde her üst düzey özellik açıklanmakta
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
-|GatewayMode|Ağ geçidi|Azure Cosmos DB hizmetine bağlanırken işlev tarafından kullanılan bağlantı modu. Seçenekler `Direct` ve`Gateway`|
+|GatewayMode|Ağ geçidi|Azure Cosmos DB hizmetine bağlanırken işlev tarafından kullanılan bağlantı modu. Seçenekler `Direct` ve `Gateway`|
 |Protokol|'Dir|Azure Cosmos DB hizmetine bağlantı sırasında işlev tarafından kullanılan bağlantı protokolü.  [Her iki modun açıklaması için buraya](../cosmos-db/performance-tips.md#networking) okuyun|
 |leasePrefix|yok|Bir uygulamadaki tüm işlevler genelinde kullanılacak kira öneki.|
 
@@ -214,7 +214,7 @@ Tüm işlevler için zaman aşımı süresini gösterir. Sunucusuz tüketim plan
 |dynamicThrottlesEnabled|yanlış|Bu ayar etkinleştirildiğinde, istek işleme işlem hattının bağlantılar/iş parçacıkları/işlemler/bellek/CPU/vb gibi sistem performans sayaçlarını düzenli olarak denetlemesini sağlar. bu sayaçlardan herhangi biri yerleşik yüksek eşikten (%80%) olursa, sayaçlar normal düzeylere dönene kadar istekler 429 "çok meşgul" yanıtıyla reddedilir.|
 |maxConcurrentRequests|Sınırsız ( `-1` )|Paralel olarak yürütülecek HTTP işlevlerinin maksimum sayısı. Bu, kaynak kullanımının yönetilmesine yardımcı olabilecek eşzamanlılık denetlemenize olanak tanır. Örneğin, eşzamanlılık çok yüksek olduğunda sorunlara yol açacağından, çok fazla sistem kaynağı (bellek/CPU/yuva) kullanan bir HTTP işleviniz olabilir. Ya da bir üçüncü taraf hizmetine giden istekleri yapan bir işleviniz olabilir ve bu çağrıların hız sınırlı olması gerekir. Bu durumlarda, burada bir kısıtlama uygulanması yardımcı olabilir.|
 |maxOutstandingRequests|Sınırsız ( `-1` )|Belirli bir zamanda tutulan bekleyen istek sayısı üst sınırı. Bu sınır, kuyruğa alınmış ancak yürütmeyi başlatmayan isteklerin yanı sıra devam eden yürütmeler içerir. Bu sınırın üzerindeki tüm gelen istekler, 429 "çok meşgul" yanıtıyla reddedilir. Bu, çağıranların zamana dayalı yeniden deneme stratejileri kullanmasına izin verir ve ayrıca en fazla istek gecikme sürelerini denetlemenize yardımcı olur. Bu, yalnızca betik ana bilgisayar yürütme yolu içinde oluşan kuyruğu denetler. ASP.NET istek kuyruğu gibi diğer kuyruklar da etkin olmaya devam eder ve bu ayardan etkilenmez.|
-|routePrefix|API|Tüm yollar için geçerli olan rota öneki. Varsayılan ön eki kaldırmak için boş bir dize kullanın. |
+|routePrefix|api|Tüm yollar için geçerli olan rota öneki. Varsayılan ön eki kaldırmak için boş bir dize kullanın. |
 
 ## <a name="id"></a>kimlik
 
@@ -251,7 +251,7 @@ Bir [ILogger nesnesi](functions-monitoring.md#write-logs-in-c-functions) veya [C
 |---------|---------|---------| 
 |categoryFilter|yok|Kategoriye göre filtrelemeyi belirtir| 
 |defaultLevel|Bilgi|Dizide belirtilmeyen hiçbir kategori için `categoryLevels` , günlükleri bu düzeyde ve yukarıya Application Insights için gönderin.| 
-|categoryLevels|yok|Her kategori için Application Insights gönderilmek üzere en düşük günlük düzeyini belirten kategori dizisi. Burada belirtilen kategori, aynı değerle başlayan tüm kategorileri denetler ve daha uzun değerler öncelik kazanır. Yukarıdaki örnekhost.jsdosya *üzerinde* , "Host. toplayıcısı" ile başlayan tüm kategoriler düzeyinde günlüğe kaydedilir `Information` . "Ana bilgisayar" (örneğin, "Host.Executor") ile başlayan tüm diğer kategoriler düzeyinde oturum açın `Error` .| 
+|categoryLevels|yok|Her kategori için Application Insights gönderilmek üzere en düşük günlük düzeyini belirten kategori dizisi. Burada belirtilen kategori, aynı değerle başlayan tüm kategorileri denetler ve daha uzun değerler öncelik kazanır. Yukarıdaki örnekhost.jsdosya * üzerinde* , "Host. toplayıcısı" ile başlayan tüm kategoriler düzeyinde günlüğe kaydedilir `Information` . "Ana bilgisayar" (örneğin, "Host.Executor") ile başlayan tüm diğer kategoriler düzeyinde oturum açın `Error` .| 
 
 ## <a name="queues"></a>klarında
 
@@ -340,7 +340,7 @@ Tek kilit davranışı için yapılandırma ayarları. Daha fazla bilgi için bk
 
 *Sürüm 1. x*
 
-Bir nesne kullanarak oluşturduğunuz Günlükler için yapılandırma ayarları `TraceWriter` . Bkz. [C# günlüğe kaydetme](functions-reference-csharp.md#logging) ve [günlüğe kaydetmeNode.js](functions-reference-node.md#writing-trace-output-to-the-console).
+Bir nesne kullanarak oluşturduğunuz Günlükler için yapılandırma ayarları `TraceWriter` . Bkz. [C# günlüğe kaydetme](functions-reference-csharp.md#logging) ve [ günlüğe kaydetmeNode.js](functions-reference-node.md#writing-trace-output-to-the-console).
 
 ```json
 {

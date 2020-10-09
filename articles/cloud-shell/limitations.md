@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/15/2018
 ms.author: damaerte
 ms.openlocfilehash: 092dccab82326bb9983f11ff64fe50aee7b1084d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74951488"
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell sınırlamaları
@@ -63,11 +63,11 @@ Cloud Shell, etkileşimli kullanım örneklerine yöneliktir. Sonuç olarak, uzu
 
 ## <a name="powershell-limitations"></a>PowerShell sınırlamaları
 
-### <a name="azuread-module-name"></a>`AzureAD`Modül adı
+### <a name="azuread-module-name"></a>`AzureAD` Modül adı
 
 `AzureAD`Modül adı şu anda `AzureAD.Standard.Preview` , modül aynı işlevselliği sağlar.
 
-### <a name="sqlserver-module-functionality"></a>`SqlServer`Modül işlevselliği
+### <a name="sqlserver-module-functionality"></a>`SqlServer` Modül işlevselliği
 
 `SqlServer`Cloud Shell eklenen modül yalnızca PowerShell Core için ön sürüm desteğine sahiptir. Özellikle, `Invoke-SqlCmd` henüz kullanılamaz.
 

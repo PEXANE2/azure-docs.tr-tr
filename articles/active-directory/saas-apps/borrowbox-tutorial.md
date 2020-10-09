@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.openlocfilehash: c0ffa67725c3178155c495754ca67270c946778b
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91744318"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-borrowbox"></a>Öğretici: ödünç alınan kutusuyla Azure Active Directory tümleştirme
@@ -74,7 +74,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açma 'yı ödünç alınan kutusuyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurmanız gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Ödünç alınan kutuyu tek oturum açma yapılandırma](#configure-borrowbox-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırma.
+2. **[Ödünç alınan kutuyu yapılandırma çoklu oturum açma](#configure-borrowbox-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan ödünç veren kutusunda Britta Simon 'a sahip olmak için **[ödünç veren test kullanıcısı oluşturun](#create-borrowbox-test-user)** .
@@ -94,7 +94,7 @@ Azure AD çoklu oturum açmayı ödünç alınan kutusuyla yapılandırmak için
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -115,7 +115,7 @@ Azure AD çoklu oturum açmayı ödünç alınan kutusuyla yapılandırmak için
 
     ![image](common/edit-attribute.png)
 
-7. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+7. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -129,7 +129,7 @@ Azure AD çoklu oturum açmayı ödünç alınan kutusuyla yapılandırmak için
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-borrowbox-single-sign-on"></a>Ödünç alınan kutu çoklu oturum açmayı Yapılandır
+### <a name="configure-borrowbox-single-sign-on"></a>Ödünç alınan kutu tek Sign-On yapılandırma
 
 **Ödünç alan kutusu** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'leri Azure Portal, [ödünç alınan kutusu destek ekibine](mailto:borrowbox@bolinda.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

@@ -10,10 +10,10 @@ ms.date: 05/08/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 6772150338dd0d172f2f100c2aa8cae7175b18d6
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89051312"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Öğretici: .NET SDK kullanarak Azure Cosmos DB ile ASP.NET Core MVC web uygulaması geliştirme
@@ -43,7 +43,7 @@ Bu öğreticinin içindekiler:
 > [!TIP]
 > Bu öğreticide, ASP.NET Core MVC ve Azure App Service kullanarak önceki deneyiminiz olduğunu varsaymaktadır. ASP.NET Core veya [Önkoşul araçları](#prerequisites)' nı yeni kullanıyorsanız, [GitHub][GitHub]'dan tüm örnek projeyi indirmeniz, gerekli NuGet paketlerini eklemeniz ve çalıştırmanız önerilir. Projeyi oluşturduktan sonra, proje bağlamındaki kodla ilgili bilgi edinmek için bu makaleyi gözden geçirebilirsiniz.
 
-## <a name="prerequisites"></a><a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a><a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki yönergeleri izleyerek önce aşağıdaki kaynaklara sahip olduğunuzdan emin olun:
 
@@ -71,7 +71,7 @@ Sonraki bölümde, yeni bir ASP.NET Core MVC uygulaması oluşturacaksınız.
 
 1. **Yeni proje oluştur**' da, C# için **ASP.NET Core Web uygulaması** bulun ve seçin. Devam etmek için **İleri** seçeneğini belirleyin.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png" alt-text="Yeni ASP.NET Core Web uygulaması projesi oluştur":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png" alt-text="Bu öğretici tarafından oluşturulan yapılacaklar listesi MVC web uygulaması ekran görüntüsü-ASP NET Core MVC öğretici adım adım":::
 
 1. **Yeni projenizi yapılandırın**bölümünde, projeyi *Todo* olarak adlandırın ve **Oluştur**' u seçin.
 
@@ -87,9 +87,9 @@ Bu çözüm için ihtiyaç duyduğumuz ASP.NET Core MVC Framework kodunun çoğu
 
 1. **Çözüm Gezgini**, projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin.
 
-1. **NuGet Paket Yöneticisi**' nde, **Microsoft. Azure. Cosmos**arayın ve seçin. **Yükle**’yi seçin.
+1. **NuGet Paket Yöneticisi**' nde, **Microsoft. Azure. Cosmos**arayın ve seçin. **Yükle**'yi seçin.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-nuget.png" alt-text="NuGet paketini yükler":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-nuget.png" alt-text="Bu öğretici tarafından oluşturulan yapılacaklar listesi MVC web uygulaması ekran görüntüsü-ASP NET Core MVC öğretici adım adım":::
 
    Visual Studio, Azure Cosmos DB paketini ve bağımlılıklarını indirir ve yükler.
 
@@ -139,7 +139,7 @@ Ardından aşağıdaki görünümleri ekleyelim.
    * **Düzen kullan sayfasını** seçin ve *~/views/Shared/_Layout. cshtml*yazın.
    * **Ekle**’yi seçin.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="MVC görünümü Ekle iletişim kutusunu gösteren ekran görüntüsü":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="Bu öğretici tarafından oluşturulan yapılacaklar listesi MVC web uygulaması ekran görüntüsü-ASP NET Core MVC öğretici adım adım":::
 
 1. Sonra **Ekle** ' yi seçin ve Visual Studio 'nun yeni bir şablon görünümü oluşturmasına izin verin. Oluşturulan dosyadaki kodu aşağıdaki içeriklerle değiştirin:
 
@@ -262,7 +262,7 @@ Bu adımları tamamladıktan sonra, Visual Studio 'daki tüm *cshtml* belgelerin
 
 1. **Yapı Iskelesi Ekle**' de **MVC denetleyicisi-boş** ' yı seçin ve **Ekle**' yi seçin.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png" alt-text="Yapı Iskelesi Ekle bölümünde MVC denetleyicisini seçin-boş":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png" alt-text="Bu öğretici tarafından oluşturulan yapılacaklar listesi MVC web uygulaması ekran görüntüsü-ASP NET Core MVC öğretici adım adım":::
 
 1. Yeni Controller *ıtemcontroller*'ı adlandırın.
 
@@ -280,7 +280,7 @@ Uygulamayı yerel bilgisayarınızda test etmek için aşağıdaki adımları ku
 
 1. Uygulamayı hata ayıklama modunda derlemek için Visual Studio 'da F5 tuşuna basın. Bu işlemin uygulamayı oluşturması ve bir tarayıcıyı daha önce gördüğümüz boş kılavuz sayfasıyla başlatması gerekir:
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png" alt-text="Bu öğretici tarafından oluşturulan yapılacaklar listesi Web uygulamasının ekran görüntüsü":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png" alt-text="Bu öğretici tarafından oluşturulan yapılacaklar listesi MVC web uygulaması ekran görüntüsü-ASP NET Core MVC öğretici adım adım":::
    
    Uygulama bunun yerine giriş sayfasında açılırsa `/Item` URL 'ye ekleyin.
 
@@ -288,11 +288,11 @@ Uygulamayı yerel bilgisayarınızda test etmek için aşağıdaki adımları ku
 
 1. **Oluştur**’u seçin. Uygulama sizi **Dizin** görünümüne geri gönderir ve öğe listede görüntülenir. **Yapılacaklar** listenize birkaç öğe ekleyebilirsiniz.
 
-    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png" alt-text="Dizin görünümünün ekran görüntüsü":::
+    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png" alt-text="Bu öğretici tarafından oluşturulan yapılacaklar listesi MVC web uygulaması ekran görüntüsü-ASP NET Core MVC öğretici adım adım":::
   
 1. Listedeki bir **öğenin** yanındaki **Düzenle** ' yi seçin. Uygulama, **Tamamlanan** bayrak dahil olmak üzere, nesnenizin herhangi bir özelliğini güncelleştirebileceğiniz **düzenleme** görünümünü açar. **Tamamlandı** ' ı ve **Kaydet**' i seçerseniz, uygulama **öğeyi** listede tamamlandı olarak görüntüler.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png" alt-text="Tamamlandı kutusu işaretli dizin görünümünün ekran görüntüsü":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png" alt-text="Bu öğretici tarafından oluşturulan yapılacaklar listesi MVC web uygulaması ekran görüntüsü-ASP NET Core MVC öğretici adım adım":::
 
 1. [Cosmos Gezginini](https://cosmos.azure.com) veya Azure Cosmos DB öykünücü Veri Gezgini kullanarak Azure Cosmos DB hizmetindeki verilerin durumunu doğrulayın.
 
@@ -312,7 +312,7 @@ Artık uygulamanın tamamı Azure Cosmos DB ile doğru şekilde çalıştığın
 
 1. Profilinizi bulun ve **Tamam**' ı seçin. Sonra gerekli Azure App Service arayın ve **Tamam**' ı seçin.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-app-service-2019.png" alt-text="Visual Studio’da App Service iletişim kutusu":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-app-service-2019.png" alt-text="Bu öğretici tarafından oluşturulan yapılacaklar listesi MVC web uygulaması ekran görüntüsü-ASP NET Core MVC öğretici adım adım":::
 
 Başka bir seçenek de yeni bir profil oluşturmaktır:
 
@@ -324,7 +324,7 @@ Başka bir seçenek de yeni bir profil oluşturmaktır:
 
 1. **App Service**, Web uygulaması adınızı ve uygun aboneliği, kaynak grubunu ve barındırma planını girip **Oluştur**' u seçin.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-app-service-2019.png" alt-text="Visual Studio’da App Service’i Oluştur iletişim kutusu":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-app-service-2019.png" alt-text="Bu öğretici tarafından oluşturulan yapılacaklar listesi MVC web uygulaması ekran görüntüsü-ASP NET Core MVC öğretici adım adım":::
 
 Visual Studio, birkaç saniye içinde Web uygulamanızı yayımlar ve projenizi Azure 'da çalıştırdığınız yerde görebileceğiniz bir tarayıcı başlatır!
 
@@ -333,7 +333,7 @@ Visual Studio, birkaç saniye içinde Web uygulamanızı yayımlar ve projenizi 
 Bu öğreticide, ASP.NET Core MVC web uygulaması oluşturmayı öğrendiniz. Uygulamanız, Azure Cosmos DB depolanan verilere erişebilir. Artık şu kaynaklarla devam edebilirsiniz:
 
 * [Azure Cosmos DB'de bölümleme](./partitioning-overview.md)
-* [SQL sorgularıyla çalışmaya başlama](./how-to-sql-query.md)
+* [SQL sorgularını kullanmaya başlama](./how-to-sql-query.md)
 * [Gerçek dünyadan bir örnek kullanarak Azure Cosmos DB'de verileri modelleme ve bölümleme](./how-to-model-partition-example.md)
 
 [Visual Studio Express]: https://www.visualstudio.com/products/visual-studio-express-vs.aspx

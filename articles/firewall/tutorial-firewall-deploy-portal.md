@@ -9,10 +9,10 @@ ms.date: 07/15/2020
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: d6f72231e84650a17850932979b43c21dd045f30
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89069332"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Öğretici: Azure portalı kullanarak Azure Güvenlik Duvarı'nı dağıtma ve yapılandırma
@@ -74,7 +74,7 @@ Bu sanal ağda üç alt ağ bulunacaktır.
 > [!NOTE]
 > AzureFirewallSubnet alt ağının boyutu/26 ' dır. Alt ağ boyutu hakkında daha fazla bilgi için bkz. [Azure Güvenlik DUVARı SSS](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
 
-1. Azure portal menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
+1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
 1. **Ağ**  >  **sanal ağını**seçin.
 2. **Abonelik** bölümünde aboneliğinizi seçin.
 3. **Kaynak grubu**için **Test-FW-RG**öğesini seçin.
@@ -92,7 +92,7 @@ Bu sanal ağda üç alt ağ bulunacaktır.
 1. **Alt ağ ekle**' yi seçin.
 4. **Alt ağ adı**Için **Iş yükü-sn**yazın.
 5. **Alt ağ adres aralığı**için **10.0.2.0/24**yazın.
-6. **Add (Ekle)** seçeneğini belirleyin.
+6. **Ekle**’yi seçin.
 7. **Gözden geçir ve oluştur**’u seçin.
 8. **Oluştur**’u seçin.
 
@@ -100,7 +100,7 @@ Bu sanal ağda üç alt ağ bulunacaktır.
 
 Şimdi iş yükü sanal makinesini oluşturun ve **Iş yükü-sn** alt ağına yerleştirin.
 
-1. Azure portal menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
+1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
 2. **İşlem** ' ı seçin ve ardından **sanal makine**' yi seçin.
 3. Öne çıkan listede **Windows Server 2016 Datacenter** .
 4. Sanal makine için şu değerleri girin:
@@ -109,7 +109,7 @@ Bu sanal ağda üç alt ağ bulunacaktır.
    |---------|---------|
    |Kaynak grubu     |**Test-ILT-RG**|
    |Sanal makine adı     |**SRV-Iş**|
-   |Bölge     |Öncekiyle aynı|
+   |Region     |Öncekiyle aynı|
    |Görüntü|Windows Server 2019 Datacenter|
    |Yönetici Kullanıcı adı     |Kullanıcı adı yazın|
    |Parola     |Parola yazın|
@@ -127,7 +127,7 @@ Bu sanal ağda üç alt ağ bulunacaktır.
 
 Güvenlik duvarını sanal ağa dağıtın.
 
-1. Azure portal menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
+1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
 2. Arama kutusuna **güvenlik duvarı** yazın ve **ENTER**tuşuna basın.
 3. **Güvenlik duvarı** ' nı seçip **Oluştur**' u seçin.
 4. **Güvenlik duvarı oluştur** sayfasında aşağıdaki ayarları kullanarak güvenlik duvarını yapılandırın:
@@ -136,7 +136,7 @@ Güvenlik duvarını sanal ağa dağıtın.
    |---------|---------|
    |Abonelik     |\<your subscription\>|
    |Kaynak grubu     |**Test-ILT-RG** |
-   |Ad     |**Test-FW01**|
+   |Name     |**Test-FW01**|
    |Konum     |Önceden kullandığınız konumu seçin|
    |Bir sanal ağ seçin     |**Mevcut olanı kullan**: **Test-FW-vn**|
    |Genel IP adresi     |**Yeni Ekle**<br>**Ad**:  **FW-PIP**|
@@ -154,7 +154,7 @@ Güvenlik duvarını sanal ağa dağıtın.
 
 1. Azure portal menüsünde **tüm hizmetler** ' i seçin veya herhangi bir sayfadan *tüm hizmetler* ' i arayın ve seçin.
 2. **Ağ**altında, **Rota tabloları**' nı seçin.
-3. **Add (Ekle)** seçeneğini belirleyin.
+3. **Ekle**’yi seçin.
 4. **Ad** alanına **Firewall-route** yazın.
 5. **Abonelik** bölümünde aboneliğinizi seçin.
 6. **Kaynak grubu**için **Test-FW-RG**öğesini seçin.
@@ -191,7 +191,7 @@ Bu, için giden erişime izin veren uygulama kuralıdır `www.google.com` .
 10. **Kaynak**için **10.0.2.0/24**yazın.
 11. **Protokol:bağlantı noktası** alanına **http, https** yazın.
 12. **Hedef FQDN 'ler**için şunu yazın**`www.google.com`**
-13. **Add (Ekle)** seçeneğini belirleyin.
+13. **Ekle**’yi seçin.
 
 Azure Güvenlik Duvarı'nda varsayılan olarak izin verilen altyapı FQDN'leri için yerleşik bir kural koleksiyonu bulunur. Bu FQDN'ler platforma özgüdür ve başka amaçlarla kullanılamaz. Daha fazla bilgi için bkz. [Altyapı FQDN'leri](infrastructure-fqdns.md).
 
@@ -213,11 +213,11 @@ Bu, bağlantı noktası 53’deki (DNS) iki IP adresine giden erişime izin vere
 
    Bunlar, CenturyLink tarafından çalıştırılan genel DNS sunucularıdır.
 1. **Hedef Bağlantı Noktaları** için **53** yazın.
-2. **Add (Ekle)** seçeneğini belirleyin.
+2. **Ekle**’yi seçin.
 
 ## <a name="configure-a-dnat-rule"></a>DNAT kuralını yapılandırma
 
-Bu kural, uzak bir masaüstünü güvenlik duvarı üzerinden SRV-Iş sanal makinesine bağlamanıza olanak tanır.
+Bu kural, güvenlik duvarı üzerinden uzak bir masaüstünü Srv-Work sanal makinesine bağlamanıza olanak tanır.
 
 1. **NAT kural koleksiyonu** sekmesini seçin.
 2. **NAT kuralı koleksiyonu Ekle**' yi seçin.
@@ -231,7 +231,7 @@ Bu kural, uzak bir masaüstünü güvenlik duvarı üzerinden SRV-Iş sanal maki
 10. **Hedef bağlantı noktaları**için **3389**yazın.
 11. **Çevrilen adres**Için, **SRV-iş** özel IP adresini yazın.
 12. **Çevrilmiş bağlantı noktası** için **3389** yazın.
-13. **Add (Ekle)** seçeneğini belirleyin.
+13. **Ekle**’yi seçin.
 
 
 ### <a name="change-the-primary-and-secondary-dns-address-for-the-srv-work-network-interface"></a>**Srv-Work** ağ arabiriminin birincil ve ikincil DNS adresini değiştirme

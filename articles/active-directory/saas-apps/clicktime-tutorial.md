@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.openlocfilehash: 98b5c3bd1f41bd3b6a4100fdaebd1d44fb45bf9f
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91760317"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Öğretici: tıklama saati ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Tıklama saatini Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini tıklama saati ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açmayı tıklama saati ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Tıklama zamanı çoklu oturum açmayı yapılandırma](#configure-clicktime-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[Tıklama zamanı çoklu oturum açmayı yapılandırma](#configure-clicktime-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Tıklama **[zamanı test kullanıcısı oluşturma](#create-clicktime-test-user)** -kullanıcının Azure AD gösterimine bağlı olan tıklama sırasında Britta Simon 'ın bir karşılığı olacak şekilde.
@@ -93,11 +93,11 @@ Azure AD çoklu oturum açmayı tıklama saati ile yapılandırmak için aşağ�
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki adımları uygulayın:
+4. **SAML Ile tek Sign-On ayarlama** sayfasında, aşağıdaki adımları gerçekleştirin:
 
     ![Tıklama saati etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
 
@@ -110,7 +110,7 @@ Azure AD çoklu oturum açmayı tıklama saati ile yapılandırmak için aşağ�
     https://app.clicktime.com/App/Login/Consume.aspx
     ```
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+4. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -124,17 +124,17 @@ Azure AD çoklu oturum açmayı tıklama saati ile yapılandırmak için aşağ�
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-clicktime-single-sign-on"></a>Tıklama zamanı çoklu oturum açmayı Yapılandır
+### <a name="configure-clicktime-single-sign-on"></a>Tıklama saati tek Sign-On yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, yönetici olarak tıklama saati şirket sitenizde oturum açın.
 
 1. Üstteki araç çubuğunda **Tercihler**' e ve ardından **güvenlik ayarları**' na tıklayın.
 
-1. **Çoklu oturum açma tercihleri** yapılandırma bölümünde aşağıdaki adımları uygulayın:
+1. **Tek Sign-On tercihleri** yapılandırma bölümünde aşağıdaki adımları uygulayın:
    
     ![Güvenlik ayarları](./media/clicktime-tutorial/tic777280.png "Güvenlik Ayarları")
    
-    a.  **Azure AD**Ile çoklu oturum açma (SSO) kullanarak oturum açmaya **izin ver** ' i seçin.
+    a.  **Azure AD**ile tek Sign-On (SSO) kullanarak oturum açmaya **izin ver** ' i seçin.
    
     b. **Kimlik sağlayıcısı uç noktası** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'sini** yapıştırın.
    

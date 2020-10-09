@@ -10,10 +10,10 @@ ms.date: 09/06/2016
 ms.author: robinsh
 ms.custom: amqp
 ms.openlocfilehash: d4916d651638f0d1dbb4f10e0e0732f5c330d300
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81767018"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>C için Azure IoT cihaz SDK 'Sı – serileştirici hakkında daha fazla bilgi
@@ -75,7 +75,7 @@ Aşağıdaki veri türleri, **serileştirici** kitaplığı ile oluşturulan mod
 | Int16 \_ t |16 bit tamsayı |
 | Int32 \_ t |32 bit tamsayı |
 | Int64 \_ t |64 bit tamsayı |
-| bool |boole |
+| bool |boolean |
 | ASCII \_ char \_ PTR |ASCII dizesi |
 | EDM \_ Tarih \_ Saat \_ boşluğu |Tarih saat boşluğu |
 | EDM \_ GUID |GUID |

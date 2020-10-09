@@ -4,10 +4,10 @@ description: Bu öğreticide, iki kaynak grubu ayarlayan ve her biri için bir r
 ms.date: 08/27/2020
 ms.topic: tutorial
 ms.openlocfilehash: 891240dcafe0cbfbfab4ff1fd415cba4abf682a5
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89048741"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Öğretici: bir şema örneğinden ortam oluşturma
@@ -18,12 +18,12 @@ Aşağıdaki öğreticide, Azure şemaları hizmetinin farklı yönlerini göste
 
 > [!div class="checklist"]
 > - Örnekten yeni bir şema tanımı oluşturun
-> - Örnek kopyanızı **yayımlandı** olarak işaretleyin
-> - Şema kopyanızı mevcut bir aboneliğe atama
+> - Örneğinizin kopyasını **Yayımlandı** olarak işaretleyin
+> - Şemanızın kopyasını mevcut bir aboneliğe atayın
 > - Atama için dağıtılan kaynakları İncele
 > - Kilitleri kaldırmak için şema atamasını kaldırma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için bir Azure aboneliği gerekir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
@@ -31,36 +31,36 @@ Bu öğreticiyi tamamlayabilmeniz için bir Azure aboneliği gerekir. Azure abon
 
 İlk olarak, şema örneğini uygulayın. İçeri aktarma, ortamınızda örneğe bağlı olarak yeni bir şema oluşturur.
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
-1. Soldaki **Başlarken** sayfasında, şema _Oluştur_altında **Oluştur** düğmesini seçin.
+1. Soldaki **Başlangıç** sayfasında, _Şema oluştur_ bölümündeki **Oluştur** düğmesini seçin.
 
 1. _Diğer örnekler_ altında RBAC şeması örneği **ile kaynak gruplarını** bulun ve seçin.
 
-1. Şema örneği _hakkında temel bilgileri_ girin:
+1. Şema örneğinin _Temel bilgiler_ bölümüne girin:
 
    - **Şema adı**: şema örneğinin kopyasına bir ad verin. Bu öğreticide,- _role-atamaları ile birlikte iki-RGS_adı kullanacağız.
    - **Tanım konumu**: üç noktayı kullanın ve örnek kopyanızı kaydetmek için yönetim grubunu veya aboneliği seçin.
 
-1. Sayfanın üst kısmındaki _yapıtlar_ sekmesini veya sonraki: sayfanın en altındaki **yapıtları** seçin.
+1. Sayfanın üst kısmındaki _Yapıtlar_ sekmesini seçin veya sayfanın en altındaki **Sonraki: Yapıtlar** seçeneğini belirleyin.
 
 1. Şema örneğini oluşturan yapıtların listesini gözden geçirin. Bu örnek, _prodrg_ ve _preprodrg_görünen adları ile iki kaynak grubu tanımlar. Her kaynak grubunun son adı ve konumu, şema atama sırasında ayarlanır. _Prodrg_ kaynak grubuna _katkıda_ bulunan rolü atanır ve _Preprodrg_ kaynak grubuna _sahip_ ve _Okuyucular_ rolleri atanır. Tanımda atanan roller statiktir, ancak rol atanmış kullanıcı, uygulama veya Grup, şema atama sırasında ayarlanır.
 
-1. Şema örneğini gözden geçirmeyi bitirdiğinizde **Taslağı kaydet** ' i seçin.
+1. Şema örneğini gözden geçirmeyi tamamladığınızda **Taslağı Kaydet**’i seçin.
 
 Bu adım, seçili yönetim grubunda veya abonelikte örnek şema tanımının bir kopyasını oluşturur. Kayıtlı şema tanımı, sıfırdan oluşturulan herhangi bir şema gibi yönetilir. Örneği, gereken sayıda yönetim grubunuza veya aboneliğine kaydedebilirsiniz. Ancak, her kopyaya benzersiz bir ad verilmelidir.
 
 Şema **tanımını kaydetme başarılı oldu** Portal bildirimi göründüğünde, sonraki adıma geçin.
 
-## <a name="publish-the-sample-copy"></a>Örnek kopyayı Yayımla
+## <a name="publish-the-sample-copy"></a>Örnek kopyayı yayımlama
 
-Şema örneğinin kopyası artık ortamınızda oluşturulmuştur. **Taslak** modunda oluşturulur ve atanmadan ve dağıtılmadan önce **yayımlanmaları** gerekir. Şema örneğinin kopyası ortamınıza ve gereksinimlerinize göre özelleştirilebilir. Bu öğreticide hiçbir değişiklik yapmayacağız.
+Şimdi şema örneği kopyanız, ortamınızda oluşturulmuştur. Bu, **Taslak** modunda oluşturulur ve atanabilmesi ve dağıtılabilmesi için önce **Yayımlandı** durumunda olmalıdır. Şema örneğinin kopyası ortamınıza ve gereksinimlerinize göre özelleştirilebilir. Bu öğreticide hiçbir değişiklik yapmayacağız.
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
 1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. _İki-RGS-rol-atamaları_ şema tanımını bulmak için filtreleri kullanın ve ardından bunu seçin.
 
-1. Sayfanın üst kısmındaki şemayı **Yayımla** ' yı seçin. Sağdaki yeni bölmede, şema örneğinin kopyası için **Sürüm** _1,0_ olarak sağlayın. Daha sonra bir değişiklik yaparsanız, bu özellik için faydalıdır. "RBAC şeması örneği ile kaynak gruplarından yayımlanan Ilk sürüm" gibi **değişiklik notları** sağlayın. Ardından sayfanın alt kısmında **Yayımla** ' yı seçin.
+1. Sayfanın üst kısmında **Şemayı yayımla**’yı seçin. Sağdaki yeni bölmede, şema örneğinin kopyası için **Sürüm** _1,0_ olarak sağlayın. Bu özellik daha sonra bir değişiklik yaptığınızda faydalı olacaktır. "RBAC şeması örneği ile kaynak gruplarından yayımlanan Ilk sürüm" gibi **değişiklik notları** sağlayın. Sayfanın alt kısmında **Yayımla** düğmesini seçin.
 
 Bu adım, şema 'in bir aboneliğe atanmasını olanaklı kılar. Yayımlandıktan sonra değişiklikler yine de yapılabilir. Aynı şema tanımının farklı sürümleri arasındaki farkları izlemek için ek değişiklikler yeni bir **Sürüm** değeriyle yayımlamayı gerektirir.
 
@@ -68,19 +68,19 @@ Bu adım, şema 'in bir aboneliğe atanmasını olanaklı kılar. Yayımlandıkt
 
 ## <a name="assign-the-sample-copy"></a>Örnek kopyayı atama
 
-Şema örneğinin kopyası başarıyla **yayımlandıktan**sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adım, her bir şema örneğinin kopyasının her dağıtımını yapmak için parametrelerin sağlandığı yerdir.
+Şema örneğinin kopyası başarıyla **yayımlandıktan**sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adımda, şema örneği kopyasının her bir dağıtımını benzersiz hale getirmek için parametreler sağlanır.
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
 1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. _İki-RGS-rol-atamaları_ şema tanımını bulmak için filtreleri kullanın ve ardından bunu seçin.
 
-1. Şema tanım sayfasının en üstünde şema **ata** ' yı seçin.
+1. Şema tanımı sayfasının en üstünde **Şema ata**’yı seçin.
 
-1. Şema atamasının parametre değerlerini sağlayın:
+1. Şema ataması için parametre değerlerini sağlayın:
 
    - Temel Bilgiler
 
-     - **Abonelikler**: şema örneğinin kopyasını kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreleri kullanarak her biri için bir atama oluşturulur.
+     - **Abonelikler**: şema örneğinin kopyasını kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreler kullanılarak her biri için bir atama oluşturulur.
      - **Atama adı**: ad, şema tanımının adına göre önceden doldurulur.
      - **Konum**: yönetilen kimliğin oluşturulacağı bölgeyi seçin. Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../../active-directory/managed-identities-azure-resources/overview.md).
        Bu öğretici için _Doğu ABD 2_' yi seçin.
@@ -96,7 +96,7 @@ Bu adım, şema 'in bir aboneliğe atanmasını olanaklı kılar. Yayımlandıkt
 
    - Yapıt parametreleri
 
-     Bu bölümde tanımlanan parametreler, tanımlanan yapıt için geçerlidir. Bu parametreler, Blueprint atama sırasında tanımlandıklarından [dinamik parametrelerdir](../concepts/parameters.md#dynamic-parameters) . Her yapıt için, parametre değerini **değer** sütununda tanımlananla ayarlayın. İçin `{Your ID}` , Azure kullanıcı hesabınızı seçin.
+     Bu bölümde tanımlanan parametreler, tanımlandığı yapıt için geçerlidir. Bu parametreler, Blueprint atama sırasında tanımlandıklarından [dinamik parametrelerdir](../concepts/parameters.md#dynamic-parameters) . Her yapıt için, parametre değerini **değer** sütununda tanımlananla ayarlayın. İçin `{Your ID}` , Azure kullanıcı hesabınızı seçin.
 
      |Yapıt adı|Yapıt türü|Parametre adı|Değer|Açıklama|
      |-|-|-|-|-|
@@ -108,7 +108,7 @@ Bu adım, şema 'in bir aboneliğe atanmasını olanaklı kılar. Yayımlandıkt
      |Sahip|Rol ataması|Kullanıcı veya Grup|{KIMLIĞINIZ}|İkinci kaynak grubu içinde _sahip_ rolü atamasını hangi kullanıcı veya gruba veririm tanımlar.|
      |Okuyucular|Rol ataması|Kullanıcı veya Grup|{KIMLIĞINIZ}|İkinci kaynak grubu içinde _Okuyucular_ rolü atamasını hangi kullanıcı veya gruba veririm tanımlar.|
 
-1. Tüm parametreler girildikten sonra sayfanın alt kısmındaki **ata** ' yı seçin.
+1. Tüm parametreler girildikten sonra, sayfanın alt kısmında **Ata** seçeneğini belirleyin.
 
 Bu adım, tanımlı kaynakları dağıtır ve seçili **kilit atamasını**yapılandırır. Blueprint kilitlerinin uygulanması 30 dakika kadar sürebilir.
 
@@ -118,7 +118,7 @@ Bu adım, tanımlı kaynakları dağıtır ve seçili **kilit atamasını**yapı
 
 Şema ataması, şema tanımında tanımlanan yapıtları oluşturur ve izler. Nesnelerin durumunu şema atama sayfasından görebilir ve kaynaklara doğrudan bakarak erişebilirsiniz.
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
 1. Sol taraftaki **atanan** şemalar sayfasını seçin. ------------------ _Role-_ ----------
 
@@ -157,7 +157,7 @@ Bu adımlar, kaynaklarımızın tanımlandığı şekilde oluşturulduğunu ve �
 Son adım, şema 'in ve dağıtıldığı kaynakların atanmasını kaldırmakta.
 Atamanın kaldırılması dağıtılan yapıtları kaldırmaz.
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
 1. Sol taraftaki **atanan** şemalar sayfasını seçin. ------------------ _Role-_ ----------
 

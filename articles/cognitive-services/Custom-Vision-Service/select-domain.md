@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
 ms.openlocfilehash: 1fb30cc0634224213dc9a188a16902e07d379904
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82127769"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Özel Görüntü İşleme projesi için bir etki alanı seçin
@@ -23,17 +23,17 @@ ms.locfileid: "82127769"
 
 ## <a name="image-classification"></a>Resimleri Sınıflandırma
 
-|Domain|Amaç|
+|Etki alanı|Amaç|
 |---|---|
 |__Genel__| Çok çeşitli resim Sınıflandırma görevleri için iyileştirilmiştir. Diğer etki alanlarından hiçbiri uygun değilse veya hangi etki alanının seçeceğinizden emin değilseniz, genel etki alanını seçin.|
 |__Yemek__|Bir restoran menüsünde gördüğünüz gibi yemeklerin fotoğrafları için iyileştirildi. Bireysel meyve veya vegetables fotoğraflarını sınıflandırmak istiyorsanız, yiyecek etki alanını kullanın.|
-|__Yer işaretleri__|Hem doğal hem de yapay olan tanınabilir yer işaretleri için iyileştirilmiştir. Bu etki alanı, yer işareti fotoğrafta açık bir şekilde görünür olduğunda en iyi şekilde çalışıyor. Bu etki alanı, yer işareti, önündeki kişiler tarafından biraz engelde olsa bile çalışıyor.|
+|__Bölümler__|Hem doğal hem de yapay olan tanınabilir yer işaretleri için iyileştirilmiştir. Bu etki alanı, yer işareti fotoğrafta açık bir şekilde görünür olduğunda en iyi şekilde çalışıyor. Bu etki alanı, yer işareti, önündeki kişiler tarafından biraz engelde olsa bile çalışıyor.|
 |__Perakende__|Bir alışveriş kataloğunda veya alışveriş web sitesinde bulunan görüntüler için iyileştirilmiştir. Dresler, Pants ve Shirts arasında yüksek duyarlıklı sınıflandırmaları istiyorsanız bu etki alanını kullanın.|
 |__Compact etki alanları__| Edge cihazlarında gerçek zamanlı sınıflandırmanın kısıtlamaları için iyileştirildi.|
 
 ## <a name="object-detection"></a>Nesne Algılama
 
-|Domain|Amaç|
+|Etki alanı|Amaç|
 |---|---|
 |__Genel__| Çok çeşitli nesne algılama görevleri için iyileştirilmiştir. Diğer etki alanlarından hiçbiri uygun değilse veya hangi etki alanının seçeceğinizden emin değilseniz, genel etki alanını seçin.|
 |__Logo__|Görüntülerde marka logolarını bulmak için iyileştirildi.|
@@ -42,12 +42,12 @@ ms.locfileid: "82127769"
 
 ## <a name="compact-domains"></a>Compact etki alanları
 
-Compact etki alanları tarafından oluşturulan modeller yerel olarak çalışacak şekilde aktarılabilir. Model performansı seçilen etki alanına göre değişir. Aşağıdaki tabloda, Intel Masaüstü CPU ve NVIDIA GPU \[1\]' deki model boyutunu ve çıkarım zamanını raporlarız. 
+Compact etki alanları tarafından oluşturulan modeller yerel olarak çalışacak şekilde aktarılabilir. Model performansı seçilen etki alanına göre değişir. Aşağıdaki tabloda, Intel Masaüstü CPU ve NVIDIA GPU 1 ' deki model boyutunu ve çıkarım zamanını raporlarız \[ \] . 
 
 > [!NOTE]
 > Bu numaralar ön işleme ve anında işleme süresini içermez.
 
-|Görev|Domain|Model boyutu|CPU çıkarımı süresi|GPU çıkarımı süresi|
+|Görev|Etki alanı|Model boyutu|CPU çıkarımı süresi|GPU çıkarımı süresi|
 |---|---|---|---|---|
 |Sınıflandırma|General (compact) (Genel (kompakt))|5 MB|13 MS|5 MS|
 |Nesne Algılama|General (compact) (Genel (kompakt))|45 MB|35 MS|5 MS|
@@ -70,4 +70,4 @@ _VISION AI Dev Kit_ 'i seçildiğinde, genel _,_ yer _işaretleri_ve _Perakende_
 >[!IMPORTANT]
 >Verme modellerinin, buluttaki tahmin API 'siyle tam olarak aynı sonucu vereceğiyle ilgili hiçbir garanti yoktur. Çalışan platformda veya ön işleme uygulamasındaki hafif fark, model çıkışları üzerinde daha büyük farka neden olabilir. Ön işleme mantığının ayrıntıları için lütfen [Bu belgeye](quickstarts/image-classification.md)bakın.
 
-\[1\] Intel Xeon E5-2690 CPU ve NVIDIA Tesla M60
+\[1 \] Intel Xeon E5-2690 CPU ve NVIDIA Tesla M60

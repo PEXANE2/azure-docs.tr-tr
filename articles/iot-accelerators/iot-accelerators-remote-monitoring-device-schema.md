@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: ac681bb13ccea49c7a2f566a6fcdb6adb8cec5bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81683739"
 ---
 # <a name="understand-the-device-model-schema"></a>Cihaz modeli şemasını anlama
@@ -82,14 +82,14 @@ Aşağıdaki tabloda en üst düzey şema girdileri açıklanmaktadır:
 
 Aşağıdaki bölümlerde JSON şemasındaki diğer bölümler açıklanır:
 
-## <a name="simulation"></a>Benzetim
+## <a name="simulation"></a>Simülasyon
 
 `Simulation`Bölümünde, sanal cihazın iç durumunu tanımlarsınız. Cihaz tarafından gönderilen telemetri değerlerinin bu cihaz durumunun bir parçası olması gerekir.
 
 Cihaz durumunun tanımında iki öğe vardır:
 
-* `InitialState`Cihaz durumu nesnesinin tüm özellikleri için başlangıç değerlerini tanımlar.
-* `Script`cihaz durumunu güncelleştirmek için bir zamanlamaya göre çalışan bir JavaScript dosyasını tanımlar. Cihaz tarafından gönderilen telemetri değerlerini rastgele atamak için bu komut dosyasını kullanabilirsiniz.
+* `InitialState` Cihaz durumu nesnesinin tüm özellikleri için başlangıç değerlerini tanımlar.
+* `Script` cihaz durumunu güncelleştirmek için bir zamanlamaya göre çalışan bir JavaScript dosyasını tanımlar. Cihaz tarafından gönderilen telemetri değerlerini rastgele atamak için bu komut dosyasını kullanabilirsiniz.
 
 Cihaz durumu nesnesini güncelleştiren JavaScript dosyası hakkında daha fazla bilgi edinmek için bkz. [cihaz modeli davranışını anlama](../../articles/iot-accelerators/iot-accelerators-device-simulation-advanced-device.md).
 
@@ -158,9 +158,9 @@ Aşağıdaki örnek `floor` ,, `vibration` ve `temperature` Asansör sensörleri
 ]
 ```
 
-`MessageTemplate`sanal cihaz tarafından gönderilen JSON iletisinin yapısını tanımlar. İçindeki yer tutucular, `MessageTemplate` `${NAME}` `NAME` [cihaz durumu nesnesinden](#simulation)bir anahtar olan söz dizimini kullanır. Dizeler tırnak içine alınmalıdır, sayılar olmamalıdır.
+`MessageTemplate` sanal cihaz tarafından gönderilen JSON iletisinin yapısını tanımlar. İçindeki yer tutucular, `MessageTemplate` `${NAME}` `NAME` [cihaz durumu nesnesinden](#simulation)bir anahtar olan söz dizimini kullanır. Dizeler tırnak içine alınmalıdır, sayılar olmamalıdır.
 
-`MessageSchema`sanal cihaz tarafından gönderilen iletinin şemasını tanımlar. İleti şeması, arka uç uygulamalarının gelen telemetrileri yorumlamak için bilgileri yeniden kullanmasına olanak tanımak üzere IoT Hub de yayımlanır.
+`MessageSchema` sanal cihaz tarafından gönderilen iletinin şemasını tanımlar. İleti şeması, arka uç uygulamalarının gelen telemetrileri yorumlamak için bilgileri yeniden kullanmasına olanak tanımak üzere IoT Hub de yayımlanır.
 
 Şu anda yalnızca JSON ileti şemalarını kullanabilirsiniz. Şemada listelenen alanlar aşağıdaki türlerde olabilir:
 

@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 4c7382f84522333b6aae0d79941aae8f2147a12f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81729154"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Azure IoT Hub fiyatlandırma bilgileri
@@ -26,7 +26,7 @@ ms.locfileid: "81729154"
 
 ## <a name="charges-per-operation"></a>İşlem başına ücretler
 
-| Çalışma | Fatura bilgileri | 
+| İşlem | Fatura bilgileri | 
 | --------- | ------------------- |
 | Kimlik kayıt defteri işlemleri <br/> (oluşturma, alma, listeleme, güncelleştirme, silme) | Ücretlendirilmedi. |
 | Cihazdan buluta iletiler | Başarıyla gönderilen iletiler, IoT Hub giriş sırasında 4 KB 'lık öbeklere göre ücretlendirilir. Örneğin, 6 KB 'lik bir ileti, 2 ileti olarak ücretlendirilir. |
@@ -45,7 +45,7 @@ ms.locfileid: "81729154"
 
 ## <a name="example-1"></a>Örnek #1
 
-Bir cihaz, IoT Hub için dakikada bir 1 KB 'lik cihazdan buluta ileti gönderir ve sonra Azure Stream Analytics tarafından okunabilir. Çözüm arka ucu, belirli bir eylemi tetiklemek için her 10 dakikada bir bir yöntemi (512 baytlık yük ile) çağırır. Cihaz, 200 baytlık bir sonuçla bir yönteme yanıt verir.
+Bir cihaz, IoT Hub için dakika başına 1 1 KB 'lik cihazdan buluta ileti gönderir ve sonra Azure Stream Analytics tarafından okunabilir. Çözüm arka ucu, belirli bir eylemi tetiklemek için her 10 dakikada bir bir yöntemi (512 baytlık yük ile) çağırır. Cihaz, 200 baytlık bir sonuçla bir yönteme yanıt verir.
 
 Cihaz şunları kullanır:
 

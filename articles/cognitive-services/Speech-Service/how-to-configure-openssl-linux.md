@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jhakulin
 ms.openlocfilehash: 42960c25c4124203b64646fdc5cbca833b246e21
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81683157"
 ---
 # <a name="configure-openssl-for-linux"></a>Linux için OpenSSL’yi yapılandırma
@@ -31,22 +31,22 @@ Ubuntu/de, tabanlı sistemlerdeki çıkış şu şekilde olmalıdır:
 OPENSSLDIR: "/usr/lib/ssl"
 ```
 
-OPENSSLDIR altında `certs` alt dizin olup olmadığını denetleyin. Yukarıdaki örnekte, olacaktır `/usr/lib/ssl/certs`.
+`certs`OPENSSLDIR altında alt dizin olup olmadığını denetleyin. Yukarıdaki örnekte, olacaktır `/usr/lib/ssl/certs` .
 
 * Varsa `/usr/lib/ssl/certs` ve çok sayıda ayrı sertifika dosyası ( `.crt` veya `.pem` uzantısı) içeriyorsa, başka eylemlere gerek yoktur.
 
-* OPENSSLDIR, ve/' den `/usr/lib/ssl` başka bir şeydir veya birden çok ayrı dosya yerine tek bir sertifika paketi dosyası varsa, sertifikaların nerede bulunabileceği göstermek için uygun bir SSL ortam değişkeni ayarlamanız gerekir.
+* OPENSSLDIR, ve/' den başka bir şeydir `/usr/lib/ssl` veya birden çok ayrı dosya yerine tek bir sertifika paketi dosyası varsa, sertifikaların nerede bulunabileceği göstermek için uygun BIR SSL ortam değişkeni ayarlamanız gerekir.
 
 ## <a name="examples"></a>Örnekler
 
-- OPENSSLDIR `/opt/ssl`. Çok `certs` `.crt` veya `.pem` dosyaları olan alt dizin vardır.
-Ortam değişkenini `SSL_CERT_DIR` , konuşma SDK 'sını `/opt/ssl/certs` kullanan bir programı çalıştırmadan önce işaret etmek üzere ayarlayın. Örneğin:
+- OPENSSLDIR `/opt/ssl` . `certs`Çok veya dosyaları olan alt dizin vardır `.crt` `.pem` .
+Ortam değişkenini `SSL_CERT_DIR` `/opt/ssl/certs` , konuşma SDK 'sını kullanan bir programı çalıştırmadan önce işaret etmek üzere ayarlayın. Örneğin:
 ```bash
 export SSL_CERT_DIR=/opt/ssl/certs
 ```
 
-- OPENSSLDIR, `/etc/pki/tls` (RHEL/CentOS tabanlı sistemlerde olduğu gibi). Örneğin `ca-bundle.crt`, `certs` bir sertifika paketi dosyası olan alt dizin bulunur.
-Konuşma SDK 'sını `SSL_CERT_FILE` kullanan bir programı çalıştırmadan önce bu dosyaya işaret etmek için ortam değişkenini ayarlayın. Örneğin:
+- OPENSSLDIR, `/etc/pki/tls` (RHEL/CentOS tabanlı sistemlerde olduğu gibi). `certs`Örneğin, bir sertifika paketi dosyası olan alt dizin bulunur `ca-bundle.crt` .
+`SSL_CERT_FILE`Konuşma SDK 'sını kullanan bir programı çalıştırmadan önce bu dosyaya işaret etmek için ortam değişkenini ayarlayın. Örneğin:
 ```bash
 export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt
 ```

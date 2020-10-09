@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: robinsh
 ms.openlocfilehash: 60d0ef30a1c7d948a9e837a8bc37c76ace415545
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82024974"
 ---
-# <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>Azure CLı kullanarak otomatik IoT cihaz ve modül yönetimi
+# <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>Azure CLI’yı kullanarak otomatik IoT cihazı ve modül yönetimi
 
 [!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
@@ -134,7 +134,7 @@ Bir yapılandırma oluşturmak için aşağıdaki komutu kullanın:
 
 * --ikizi istenen özellikler olarak ayarlanacak hedef içeriğe yönelik **içerik** satır içi JSON veya dosya yolu. 
 
-* --**hub-adı** -yapılandırmanın oluşturulacağı IoT Hub 'ının adı. Hub geçerli abonelikte olmalıdır. Komutuyla istenen aboneliğe geçiş yapın`az account set -s [subscription name]`
+* --**hub-adı** -yapılandırmanın oluşturulacağı IoT Hub 'ının adı. Hub geçerli abonelikte olmalıdır. Komutuyla istenen aboneliğe geçiş yapın `az account set -s [subscription name]`
 
 * --**hedef koşul** -Bu yapılandırmayla hangi cihazların veya modüllerin hedefleneceğini belirleyen bir hedef koşul girin.Otomatik cihaz yapılandırması için, bu durum cihaz ikizi etiketlerine veya cihaz ikizi istenen özelliklere dayalıdır ve ifade biçimiyle eşleşmelidir.Örneğin `tags.environment='test'` veya `properties.desired.devicemodel='4000x'` olabilir.Otomatik modül yapılandırması için, koşul modül ikizi Tags veya Module ikizi istenen özellikleri temel alır. Örneğin `from devices.modules where tags.environment='test'` veya `from devices.modules where properties.reported.chillerProperties.model='4000x'` olabilir.
 
@@ -153,7 +153,7 @@ az iot hub configuration show --config-id [configuration id] \
 
 * --**yapılandırma-kimliği** -IoT Hub 'ında bulunan yapılandırmanın adı.
 
-* --**hub-adı** -yapılandırmanın bulunduğu IoT Hub 'ının adı. Hub geçerli abonelikte olmalıdır. Komutuyla istenen aboneliğe geçiş yapın`az account set -s [subscription name]`
+* --**hub-adı** -yapılandırmanın bulunduğu IoT Hub 'ının adı. Hub geçerli abonelikte olmalıdır. Komutuyla istenen aboneliğe geçiş yapın `az account set -s [subscription name]`
 
 Komut penceresinde yapılandırmayı inceleyin.**Ölçümler** özelliği her bir hub tarafından değerlendirilen her ölçüm için bir sayı listeler:
 
@@ -203,7 +203,7 @@ az iot hub configuration update --config-id [configuration id] \
 
 * --yapılandırmada bir özelliği **ayarlayın** . Aşağıdaki özellikleri güncelleştirebilirsiniz:
 
-    * targetCondition-Örneğin`targetCondition=tags.location.state='Oregon'`
+    * targetCondition-Örneğin `targetCondition=tags.location.state='Oregon'`
 
     * etikete 
 
