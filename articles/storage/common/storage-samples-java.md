@@ -9,10 +9,10 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.openlocfilehash: b0e0588810fcac239a3647f9b750dd036341ab9f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87322236"
 ---
 # <a name="azure-storage-samples-using-v12-java-client-libraries"></a>V12 Java istemci kitaplıklarını kullanan Azure depolama örnekleri
@@ -398,7 +398,7 @@ Aşağıdaki tabloda, örnek havuzumuza ve her örnekte ele alınan senaryolara 
 
 :::row:::
    :::column span="":::
-      [Tablo oluşturma](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L50)
+      [Tablo oluştur](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L50)
    :::column-end:::
    :::column span="":::
       [Varlığı/tabloyu Sil](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L109)
@@ -437,7 +437,7 @@ Java örnek kitaplıklarının tamamını görüntülemek için şuraya gidin:
 
 Her kitaplık için GitHub deposuna gözatıp kopyalayabilirsiniz.
 
-## <a name="getting-started-guides"></a>Başlarken kılavuzlarını
+## <a name="getting-started-guides"></a>Başlangıç kılavuzları
 
 Azure Storage Istemci kitaplıklarını yüklemek ve kullanmaya başlamak için yönergeler arıyorsanız aşağıdaki kılavuzlara göz atın.
 

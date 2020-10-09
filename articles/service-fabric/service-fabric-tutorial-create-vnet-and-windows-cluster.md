@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: a7390858e55a456ec5fb2f851be1a7443be97082
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86245067"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Öğretici: Windows çalıştıran bir Service Fabric kümesini Azure sanal ağına dağıtma
@@ -42,7 +42,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -58,7 +58,7 @@ Aşağıdaki yordamlar yedi düğümlü Service Fabric kümesi oluşturur. Azure
 
 Aşağıdaki Azure Resource Manager şablon dosyalarını indirin:
 
-* [Üzerindeazuredeploy.js][template]
+* [ Üzerindeazuredeploy.js][template]
 * [azuredeploy.parameters.json][parameters]
 
 Bu şablon, bir sanal ağa ve bir ağ güvenlik grubuna yedi sanal makine ve üç düğümlü tür güvenli bir küme dağıtır.  Diğer örnek şablonlar [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates)'da bulunabilir. [azuredeploy.js][template] , aşağıdakiler dahil olmak üzere birkaç kaynak dağıtır.
@@ -172,7 +172,7 @@ Azure AD 'yi Service Fabric bir kümeyle yapılandırma ile ilgili adımları ba
 ### <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>Azure AD uygulamaları oluşturma ve rollere kullanıcı atama
 Kümeye erişimi denetlemek için iki Azure AD uygulaması oluşturun: bir Web uygulaması ve bir yerel uygulama. Kümenizi temsil etmek üzere uygulamalar oluşturduktan sonra, kullanıcılarınızı [Service Fabric tarafından desteklenen rollere](service-fabric-cluster-security-roles.md)atayın: salt okunurdur ve yönetici.
 
-`SetupApplications.ps1`Öğesini çalıştırın ve KIRACı kimliği, küme adı ve Web uygulaması yanıt URL 'sini parametre olarak sağlayın. Kullanıcılar için Kullanıcı adlarını ve parolaları belirtin. Örneğin:
+`SetupApplications.ps1`Öğesini çalıştırın ve KIRACı kimliği, küme adı ve Web uygulaması yanıt URL 'sini parametre olarak sağlayın. Kullanıcılar için Kullanıcı adlarını ve parolaları belirtin. Örnek:
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysfcluster123' -WebApplicationReplyUrl 'https://mysfcluster123.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -249,7 +249,7 @@ Betik, kümeyi oluştururken Kaynak Yöneticisi şablonu için gereken JSON 'ı 
 }
 ```
 
-Parametre değerlerini parametreler dosyasına [azuredeploy.parameters.js][parameters] ekleyin. Örneğin:
+Parametre değerlerini parametreler dosyasına [azuredeploy.parameters.js][parameters] ekleyin. Örnek:
 
 ```json
 "aadTenantId": {

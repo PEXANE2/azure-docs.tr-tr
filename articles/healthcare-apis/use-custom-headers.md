@@ -10,10 +10,10 @@ ms.author: matjazl
 author: matjazl
 ms.date: 10/13/2019
 ms.openlocfilehash: 937be72bfec96119474e7effe9ba88a2cf253444
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86081852"
 ---
 # <a name="add-data-to-audit-logs-by-using-custom-http-headers"></a>Özel HTTP üstbilgilerini kullanarak denetim günlüklerine veri ekleme
@@ -24,9 +24,9 @@ Azure hızlı sağlık birlikte çalışabilirlik kaynakları (FHıR) API 'sinde
 
 Bu veri akışını aşağıdaki diyagramda görebilirsiniz:
 
-:::image type="content" source="media/custom-headers/custom-headers-diagram.png" alt-text="Özel üstbilgiler diyagramı":::
+:::image type="content" source="media/custom-headers/custom-headers-diagram.png" alt-text="Özel üstbilgiler diyagramı&quot;:::
 
-Çeşitli bilgi türlerini yakalamak için özel üst bilgileri kullanabilirsiniz. Örneğin:
+Çeşitli bilgi türlerini yakalamak için özel üst bilgileri kullanabilirsiniz. Örnek:
 
 * Kimlik veya yetkilendirme bilgileri
 * Çağıranın kaynağı
@@ -38,26 +38,26 @@ Bu veri akışını aşağıdaki diyagramda görebilirsiniz:
 
 HTTP başlıklarınız için aşağıdaki adlandırma kuralını kullanmanız gerekir: X-MS-AZUREFHıR-AUDIT- \<name> .
 
-Bu HTTP üstbilgileri, günlüğe eklenen bir özellik çantasına dahildir. Örneğin:
+Bu HTTP üstbilgileri, günlüğe eklenen bir özellik çantasına dahildir. Örnek:
 
 * X-MS-AZUREFHıR-AUDIT-USERıD: 1234 
 * X-MS-AZUREFHıR-AUDIT-USERLOCATION: XXXX
 * X-MS-AZUREFHıR-AUDIT-XYZ: 1234
 
-Bu bilgiler daha sonra günlükteki Özellikler sütununa eklendiğinde JSON olarak serileştirilir. Örneğin:
+Bu bilgiler daha sonra günlükteki Özellikler sütununa eklendiğinde JSON olarak serileştirilir. Örnek:
 
 ```json
-{ "X-MS-AZUREFHIR-AUDIT-USERID" : "1234",
-"X-MS-AZUREFHIR-AUDIT-USERLOCATION" : "XXXX",
-"X-MS-AZUREFHIR-AUDIT-XYZ" : "1234" }
+{ &quot;X-MS-AZUREFHIR-AUDIT-USERID&quot; : &quot;1234&quot;,
+&quot;X-MS-AZUREFHIR-AUDIT-USERLOCATION&quot; : &quot;XXXX&quot;,
+&quot;X-MS-AZUREFHIR-AUDIT-XYZ&quot; : &quot;1234" }
 ```
  
-Herhangi bir HTTP üst bilgisinde olduğu gibi, aynı üst bilgi adı farklı değerlerle tekrarlanabilir. Örneğin:
+Herhangi bir HTTP üst bilgisinde olduğu gibi, aynı üst bilgi adı farklı değerlerle tekrarlanabilir. Örnek:
 
 * X-MS-AZUREFHıR-AUDIT-USERLOCATION: Hospyürüla
 * X-MS-AZUREFHıR-AUDIT-USERLOCATION: acil durum
 
-Günlüğe eklendiğinde, değerler virgülle ayrılmış bir liste ile birleştirilir. Örneğin:
+Günlüğe eklendiğinde, değerler virgülle ayrılmış bir liste ile birleştirilir. Örnek:
 
 {"X-MS-AZUREFHıR-AUDIT-USERLOCATION": "Hospyürüla, acil durum"}
  

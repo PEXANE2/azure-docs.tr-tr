@@ -9,10 +9,10 @@ ms.date: 07/31/2019
 ms.author: sharrai
 ms.custom: MVC
 ms.openlocfilehash: a8cb5ec782b5932c13e321b2ba2d6513597fef52
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87422649"
 ---
 # <a name="move-a-recovery-services-vault-and-azure-site-recovery-configuration-to-another-azure-region"></a>Kurtarma Hizmetleri kasasını ve Azure Site Recovery yapılandırmasını başka bir Azure bölgesine taşıma
@@ -33,7 +33,7 @@ Bu belgede şunları yapmanız gerekir:
 > [!IMPORTANT]
 > Şu anda, kurtarma hizmetleri kasasını ve olağanüstü durum kurtarma yapılandırmasını farklı bir bölgeye taşımak için birinci sınıf bir yol yoktur. Bu makale, çoğaltmayı devre dışı bırakma ve yeni bölgede ayarlama sürecinde size rehberlik eder.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure VM 'lerini farklı bir bölgeye taşımayı denemeden önce olağanüstü durum kurtarma yapılandırmasını kaldırıp sildiğinizden emin olun. 
 
@@ -73,7 +73,7 @@ Bir sonraki adıma geçmeden önce bu adımı yapmanızı öneririz. VM 'Ler ço
 Azure VM 'lerini hedef bölgeye taşıma gereksiniminize bağlı olarak bu makalelerdeki adımları izleyin:
 
 - [Azure VM’lerini başka bir bölgeye taşıma](azure-to-azure-tutorial-migrate.md)
-- [Azure VM'lerini Kullanılabilirlik Alanlarına taşıma](move-azure-VMs-AVset-Azone.md)
+- [Azure VM 'lerini Kullanılabilirlik Alanları içine taşıyın](move-azure-VMs-AVset-Azone.md)
 
 ## <a name="set-up-site-recovery-based-on-the-new-source-region-for-the-vms"></a>VM 'Ler için yeni kaynak bölgeye göre Site Recovery ayarlama
 

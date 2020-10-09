@@ -13,10 +13,10 @@ ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
 ms.openlocfilehash: 0d001144f1a2703db118261e5cae5417b1d8c17a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87080140"
 ---
 # <a name="tutorial---configure-the-blue-green-deployment-strategy-for-azure-linux-virtual-machines"></a>Öğretici-Azure Linux sanal makineleri için mavi yeşil dağıtım stratejisini yapılandırma
@@ -53,7 +53,7 @@ Sürekli teslim seçeneğini kullanarak, Azure portal sanal makinelerinize mavi 
 1. **Dağıtım stratejisi**' nda **mavi-yeşil**' i seçin.
 1. Mavi-yeşil dağıtımların parçası olacak VM 'lere "mavi" veya "yeşil" bir etiket ekleyin. Bir VM bir bekleme rolü için ise, "yeşil" olarak etiketleyin. Aksi halde, "mavi" olarak etiketleyin.
 
-   ![Sürekli teslim paneli; dağıtım stratejisi değeri mavi-yeşil seçildi](media/tutorial-devops-azure-pipelines-classic/azure-devops-blue-green-configure.png)
+   ![Dağıtım stratejisi değeri Blue-Green seçili olan sürekli teslim paneli](media/tutorial-devops-azure-pipelines-classic/azure-devops-blue-green-configure.png)
 
 1. Sanal makineye dağıtılacak sürekli teslim işlem hattını yapılandırmak için **Tamam ' ı** seçin.
 
@@ -65,7 +65,7 @@ Sürekli teslim seçeneğini kullanarak, Azure portal sanal makinelerinize mavi 
    1. Bu aşamada, işlem hattı duraklatılır ve el ile müdahale çalışmasının çalışmayı sürdürmesini bekler. Kullanıcılar, "yeşil" olarak etiketlenen VM 'lere dağıtım kararlılığını el ile yaptıktan sonra işlem hattı çalıştırmasını sürdürür.
    1. Bu aşama, VM 'lerdeki "mavi" ve "yeşil" etiketleri değiştirir. Bu, eski uygulama sürümlerine sahip VM 'Lerin artık "yeşil" olarak etiketlenmesini sağlar. Sonraki işlem hattı çalıştırıldığında, uygulamalar bu VM 'lere dağıtılır.
 
-      ![Dağıt mavi-yeşil görevi için dağıtım grubu bölmesi](media/tutorial-devops-azure-pipelines-classic/azure-devops-blue-green-tasks.png)
+      ![Blue-Green dağıt görevinin dağıtım grubu bölmesi](media/tutorial-devops-azure-pipelines-classic/azure-devops-blue-green-tasks.png)
 
 1. Dağıtımı betiği Yürüt görevi varsayılan olarak deploy.ps1 veya deploy.sh dağıtım betiğini çalıştırır. Betik, yayımlanan paketin kök klasöründe yer aldığı deployscripts klasöründedir. Seçili derleme işlem hattının dağıtımı paketin kök klasöründe yayınlayıp yayımlamadığını doğrulayın.
 

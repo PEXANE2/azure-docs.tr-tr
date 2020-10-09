@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.custom: seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: 7353366af14ca785c5635e1bde8101c1d71cd47f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87079108"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Öğretici: Azure Data Factory kullanarak HDInsight 'ta isteğe bağlı Apache Hadoop kümeleri oluşturma
@@ -35,7 +35,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * PowerShell [az Module](https://docs.microsoft.com/powershell/azure/) yüklendi.
 
@@ -184,7 +184,7 @@ Bu makalede, Hive etkinliğini isteğe bağlı bir HDInsight Hadoop kümesi olu�
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 2. Sol menüden **`+ Create a resource`**  >  **analiz**  >  **Data Factory**' a gidin.
 
@@ -194,7 +194,7 @@ Bu makalede, Hive etkinliğini isteğe bağlı bir HDInsight Hadoop kümesi olu�
 
     |Özellik  |Değer  |
     |---------|---------|
-    |Ad | Veri Fabrikası için bir ad girin. Bu adın genel olarak benzersiz olması gerekir.|
+    |Adı | Veri Fabrikası için bir ad girin. Bu adın genel olarak benzersiz olması gerekir.|
     |Sürüm | **V2**adresinden ayrılın. |
     |Abonelik | Azure aboneliğinizi seçin. |
     |Kaynak grubu | PowerShell betiğini kullanarak oluşturduğunuz kaynak grubunu seçin. |
@@ -236,7 +236,7 @@ Bu bölümde, veri fabrikanızın içinde iki bağlı hizmet yazardınız.
 
     |Özellik |Değer |
     |---|---|
-    |Ad |Şunu girin: `HDIStorageLinkedService`.|
+    |Adı |`HDIStorageLinkedService` yazın.|
     |Azure aboneliği |Açılır listeden aboneliğinizi seçin.|
     |Depolama hesabı adı |PowerShell betiğinin bir parçası olarak oluşturduğunuz Azure Depolama hesabını seçin.|
 
@@ -258,7 +258,7 @@ Bu bölümde, veri fabrikanızın içinde iki bağlı hizmet yazardınız.
 
     | Özellik | Değer |
     | --- | --- |
-    | Ad | Şunu girin: `HDInsightLinkedService`.|
+    | Adı | `HDInsightLinkedService` yazın.|
     | Tür | **İsteğe bağlı HDInsight '** ı seçin. |
     | Azure Storage Bağlı Hizmeti | `HDIStorageLinkedService` öğesini seçin. |
     | Küme türü | **Hadoop** seçin |

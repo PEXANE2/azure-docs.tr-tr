@@ -9,10 +9,10 @@ ms.service: hdinsight
 ms.topic: sample
 ms.date: 11/29/2019
 ms.openlocfilehash: 5876626ed4ba27c0f39b0c02af926c61261fca71
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327438"
 ---
 # <a name="azure-hdinsight-java-samples"></a>Azure HDInsight: Java örnekleri
@@ -30,7 +30,7 @@ Bu makalede aşağıdakiler sunulmaktadır:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [Java için Azure HDInsight SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight#sdk-installation)
 

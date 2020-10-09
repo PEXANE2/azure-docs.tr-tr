@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 03/13/2020
 ms.author: kumud
 ms.openlocfilehash: d630a41f9b83a852605ffad2a85ad6dd14bbac73
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86079658"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak bir yönlendirme tablosu ile ağ trafiğini yönlendirme
@@ -53,7 +53,7 @@ Ağ sanal gereçleri (NVA 'lar), Yönlendirme ve güvenlik duvarı iyileştirmes
     | **Proje ayrıntıları** | Abonelik | Aboneliğinizi seçin. |
     | | Kaynak grubu | **Yeni oluştur**' u seçin, *Myresourcegroup*girin ve **Tamam**' ı seçin. |
     | **Örnek ayrıntıları** | Sanal makine adı | *Myvmnva*girin. |
-    | | Region | **Doğu ABD (ABD)** seçin. |
+    | | Bölge | **Doğu ABD (ABD)** seçin. |
     | | Kullanılabilirlik seçenekleri | **Altyapı yedekliliği gerekli değil**' i seçin. |
     | | Görüntü | **Windows Server 2016 Datacenter**' ı seçin. |
     | | Boyut | Varsayılan **Standart DS1 v2**'yi koruyun. |
@@ -101,16 +101,16 @@ Ağ sanal gereçleri (NVA 'lar), Yönlendirme ve güvenlik duvarı iyileştirmes
 
         | Ayar | Değer |
         | ------- | ----- |
-        | Ad | *mynvastorageaccount* |
+        | Adı | *mynvastorageaccount* |
         | Hesap türü | **Depolama (genel amaçlı v1)** |
         | Performans | **Standart** |
         | Çoğaltma | **Yerel olarak yedekli depolama (LRS)** |
     
     1. İletişim kutusundan çıkmak için **Tamam ' ı** seçin.
 
-    1. **Gözden geçir + oluştur**’u seçin. **Gözden geçir + oluştur** sayfasına götürülürsünüz ve Azure yapılandırmanızı doğrular.
+    1. **Gözden geçir ve oluştur**’u seçin. **Gözden geçir + oluştur** sayfasına götürülürsünüz ve Azure yapılandırmanızı doğrular.
 
-1. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin.
+1. **Doğrulama başarılı** iletisini gördüğünüzde **Oluştur**’u seçin.
 
     Sanal makinenin oluşturulması birkaç dakika sürer. Azure VM oluşturmayı bitirene kadar bekleyin. **Dağıtım çalışıyor** sayfasında dağıtım ayrıntıları gösterilir.
 
@@ -128,10 +128,10 @@ Ağ sanal gereçleri (NVA 'lar), Yönlendirme ve güvenlik duvarı iyileştirmes
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Ad | *myRouteTablePublic* |
+    | Adı | *myRouteTablePublic* |
     | Abonelik | Aboneliğiniz |
     | Kaynak grubu | **myResourceGroup** |
-    | Konum | **ABD Doğu ABD** |
+    | Konum | **(ABD) Doğu ABD** |
     | Sanal ağ geçidi yol yayma | **Etkin** |
 
     ![Yol tablosu oluşturma, Azure portal](./media/tutorial-create-route-table-portal/create-route-table.png)

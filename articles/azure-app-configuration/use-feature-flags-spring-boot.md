@@ -15,10 +15,10 @@ ms.date: 09/26/2019
 ms.author: mametcal
 ms.custom: mvc, devx-track-java
 ms.openlocfilehash: 83c437cb613e3dad04dee17f0f67040532066c3b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87326605"
 ---
 # <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>Öğretici: bir Spring Boot uygulamasında Özellik bayraklarını kullanma
@@ -37,7 +37,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 ## <a name="set-up-feature-management"></a>Özellik yönetimini ayarlama
 
-Spring Boot Feature Manager, `FeatureManager` Framework 'ün yerel yapılandırma sisteminden Özellik bayraklarını alır. Sonuç olarak, yerel *önyükleme. yıml* dosyası veya ortam değişkenleri dahil olmak üzere Spring Boot tarafından desteklenen herhangi bir yapılandırma kaynağını kullanarak uygulamanızın Özellik bayraklarını tanımlayabilirsiniz. `FeatureManager`bağımlılık ekleme işlemini kullanır. Özellik yönetimi hizmetlerini standart kuralları kullanarak kaydedebilirsiniz:
+Spring Boot Feature Manager, `FeatureManager` Framework 'ün yerel yapılandırma sisteminden Özellik bayraklarını alır. Sonuç olarak, yerel *önyükleme. yıml* dosyası veya ortam değişkenleri dahil olmak üzere Spring Boot tarafından desteklenen herhangi bir yapılandırma kaynağını kullanarak uygulamanızın Özellik bayraklarını tanımlayabilirsiniz. `FeatureManager` bağımlılık ekleme işlemini kullanır. Özellik yönetimi hizmetlerini standart kuralları kullanarak kaydedebilirsiniz:
 
 ```java
 private FeatureManager featureManager;
@@ -96,7 +96,7 @@ Kurala göre, `feature-management` Bu IML belgesinin bölümü Özellik bayrağ�
 
 * `feature-a`*Açık*.
 * `feature-b`*kapalıdır*.
-* `feature-c`özelliği olan adlı bir filtre belirtir `Percentage` `parameters` . `Percentage`, yapılandırılabilir bir filtredir. Bu örnekte, `Percentage` `feature-c` bayrağın *Açık*olması için yüzde 50 olasılık değerini belirtir.
+* `feature-c` özelliği olan adlı bir filtre belirtir `Percentage` `parameters` . `Percentage` , yapılandırılabilir bir filtredir. Bu örnekte, `Percentage` `feature-c` bayrağın *Açık*olması için yüzde 50 olasılık değerini belirtir.
 
 ## <a name="feature-flag-checks"></a>Özellik bayrağı denetimleri
 

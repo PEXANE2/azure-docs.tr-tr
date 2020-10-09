@@ -7,10 +7,10 @@ ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
 ms.openlocfilehash: a1b0dff9421f493958554c659043c49ff2874379
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87015009"
 ---
 # <a name="tutorial-create-a-powershell-runbook"></a>Öğretici: PowerShell runbook 'u oluşturma
@@ -23,7 +23,7 @@ Bu öğretici, Azure Automation’da bir [PowerShell runbook](../automation-runb
 > * Runbook işinin durumunu çalıştırma ve izleme
 > * Runbook parametreleri ile bir Azure sanal makinesini başlatmak için Runbook 'u güncelleştirme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 

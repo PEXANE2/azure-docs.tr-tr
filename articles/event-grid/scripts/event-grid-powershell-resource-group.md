@@ -5,10 +5,10 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 07/08/2020
 ms.openlocfilehash: c8e84fe12cf239e7dbb0e6a15088efda793ddec9
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87460754"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-with-powershell"></a>PowerShell ile bir kaynak grubu için olaylara abone olma
@@ -17,7 +17,7 @@ Bu betik, bir kaynak grubu için olaylara bir Event Grid aboneliği oluşturur.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-Önizleme örnek betiği Event Grid modülünü gerektirir. Yüklemek için şunu çalıştırın`Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
+Önizleme örnek betiği Event Grid modülünü gerektirir. Yüklemek için şunu çalıştırın `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
 
 ## <a name="sample-script---stable"></a>Örnek betik - kararlı
 

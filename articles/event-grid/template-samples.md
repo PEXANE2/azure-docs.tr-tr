@@ -4,10 +4,10 @@ description: Bu makale, GitHub üzerinde Azure Event Grid için Azure Resource M
 ms.topic: sample
 ms.date: 07/07/2020
 ms.openlocfilehash: 910012adf2dc930e6f1a26f1a7fc41f5ed0580c9
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86119064"
 ---
 # <a name="azure-resource-manager-templates-for-event-grid"></a>Event Grid için Azure Resource Manager şablonları

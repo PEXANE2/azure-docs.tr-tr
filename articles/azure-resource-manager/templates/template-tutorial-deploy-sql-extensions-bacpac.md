@@ -6,10 +6,10 @@ ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 6a56602ad5217af07d9e35872a26ddb478146d0e
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86101894"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Öğretici: ARM şablonlarıyla SQL BACPAC dosyalarını Içeri aktarma
@@ -259,4 +259,4 @@ Artık Azure kaynakları gerekli değilse, kaynak grubunu silerek dağıttığı
 Bu öğreticide, bir sunucu ve veritabanı dağıtmış ve BACPAC dosyasını içeri aktardınız. Şablon dağıtımı sorunlarını giderme hakkında bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [ARM şablon dağıtımları sorunlarını giderme](./template-tutorial-troubleshoot.md)
+> [ARM şablonu dağıtım sorunlarını giderme](./template-tutorial-troubleshoot.md)

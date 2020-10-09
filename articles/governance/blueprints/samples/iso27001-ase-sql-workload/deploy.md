@@ -4,10 +4,10 @@ description: ISO 27001 App Service ortamı/SQL veritabanı iş yükü şeması '
 ms.date: 07/13/2020
 ms.topic: sample
 ms.openlocfilehash: 74f2670b79d1968755e376d1f5a75bbb76e6e6c3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87072888"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>ISO 27001 App Service Ortamı/SQL veritabanı iş yükü şeması örneğini dağıtma
@@ -16,9 +16,9 @@ Azure şemaları ISO 27001 App Service Ortamı/SQL veritabanı iş yükü şemas
 
 > [!div class="checklist"]
 > - [ISO 27001 paylaşılan hizmetleri](../iso27001-shared/index.md) şema örneğini dağıtma
-> - Örnekten yeni bir şema oluştur
-> - Örnek kopyanızı **yayımlandı** olarak işaretleyin
-> - Şema kopyanızı mevcut bir aboneliğe atama
+> - Örnekten yeni bir şema oluşturma
+> - Örneğinizin kopyasını **Yayımlandı** olarak işaretleyin
+> - Şemanızın kopyasını mevcut bir aboneliğe atayın
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
 
@@ -31,48 +31,48 @@ Bu şema örneği dağıtılmadan önce [ISO 27001 paylaşılan hizmetleri](../i
 
 ## <a name="create-blueprint-from-sample"></a>Örnekten şema oluştur
 
-İlk olarak, bir başlangıç olarak örneği kullanarak ortamınızda yeni bir şema oluşturarak şema örneğini uygulayın.
+İlk olarak, başlangıç noktası olarak örneği kullanarak ortamınızda yeni bir şema oluşturup şema örneğini uygulayın.
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
-1. Soldaki **Başlarken** sayfasında, şema _Oluştur_altında **Oluştur** düğmesini seçin.
+1. Soldaki **Başlangıç** sayfasında, _Şema oluştur_ bölümündeki **Oluştur** düğmesini seçin.
 
 1. _Diğer örnekler_ altında **ISO 27001: Ao/SQL iş yükü** şeması örneğini bulun ve **Bu örneği kullan**' ı seçin.
 
-1. Şema örneği _hakkında temel bilgileri_ girin:
+1. Şema örneğinin _Temel bilgiler_ bölümüne girin:
 
    - **Şema adı**: ISO 27001 Ao/SQL iş yükü şeması örneğinin kopyasına bir ad verin.
    - **Tanım konumu**: üç noktayı kullanın ve örneğin kopyasını kaydetmek için yönetim grubunu seçin.
 
-1. Sayfanın üst kısmındaki _yapıtlar_ sekmesini veya sonraki: sayfanın en altındaki **yapıtları** seçin.
+1. Sayfanın üst kısmındaki _Yapıtlar_ sekmesini seçin veya sayfanın en altındaki **Sonraki: Yapıtlar** seçeneğini belirleyin.
 
-1. Şema örneğini oluşturan yapıtların listesini gözden geçirin. Yapıtların çoğunda, daha sonra tanımlayacağımız parametreler vardır. Şema örneğini gözden geçirmeyi bitirdiğinizde **Taslağı kaydet** ' i seçin.
+1. Şema örneğini oluşturan yapıtların listesini gözden geçirin. Yapıtların çoğu parametreler içerir; bu parametreleri daha sonra tanımlayacağız. Şema örneğini gözden geçirmeyi tamamladığınızda **Taslağı Kaydet**’i seçin.
 
-## <a name="publish-the-sample-copy"></a>Örnek kopyayı Yayımla
+## <a name="publish-the-sample-copy"></a>Örnek kopyayı yayımlama
 
-Şema örneğinin kopyası artık ortamınızda oluşturulmuştur. **Taslak** modunda oluşturulur ve atanmadan ve dağıtılmadan önce **yayımlanmaları** gerekir. Şema örneğinin kopyası ortamınıza ve gereksinimlerinize göre özelleştirilebilir, ancak bu değişiklik bu değişikliği ISO 27001 standbundan uzağa taşıyabilir.
+Şimdi şema örneği kopyanız, ortamınızda oluşturulmuştur. Bu, **Taslak** modunda oluşturulur ve atanabilmesi ve dağıtılabilmesi için önce **Yayımlandı** durumunda olmalıdır. Şema örneğinin kopyası ortamınıza ve gereksinimlerinize göre özelleştirilebilir, ancak bu değişiklik bu değişikliği ISO 27001 standbundan uzağa taşıyabilir.
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
-1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Şemayı kullanarak şema örneğinin kopyasını bulun ve ardından seçin.
+1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Filtreleri kullanarak şema örneği kopyanızı bulup seçin.
 
-1. Sayfanın üst kısmındaki şemayı **Yayımla** ' yı seçin. Sağ taraftaki yeni sayfada, şema örneğinin kopyası için bir **Sürüm** belirtin. Daha sonra bir değişiklik yaparsanız, bu özellik için faydalıdır. "ISO 27001 şema örneğinden yayımlanan ilk sürüm" gibi **değişiklik notları** sağlayın. Ardından sayfanın alt kısmında **Yayımla** ' yı seçin.
+1. Sayfanın üst kısmında **Şemayı yayımla**’yı seçin. Sağdaki yeni sayfada, şema örneği kopyanız için bir **Sürüm** sağlayın. Bu özellik daha sonra bir değişiklik yaptığınızda faydalı olacaktır. "ISO 27001 şema örneğinden yayımlanan ilk sürüm" gibi **değişiklik notları** sağlayın. Sayfanın alt kısmında **Yayımla** düğmesini seçin.
 
 ## <a name="assign-the-sample-copy"></a>Örnek kopyayı atama
 
-Şema örneğinin kopyası başarıyla **yayımlandıktan**sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adım, her bir şema örneğinin kopyasının her dağıtımını yapmak için parametrelerin sağlandığı yerdir.
+Şema örneğinin kopyası başarıyla **yayımlandıktan**sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adımda, şema örneği kopyasının her bir dağıtımını benzersiz hale getirmek için parametreler sağlanır.
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
-1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Şemayı kullanarak şema örneğinin kopyasını bulun ve ardından seçin.
+1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Filtreleri kullanarak şema örneği kopyanızı bulup seçin.
 
-1. Şema tanım sayfasının en üstünde şema **ata** ' yı seçin.
+1. Şema tanımı sayfasının en üstünde **Şema ata**’yı seçin.
 
-1. Şema atamasının parametre değerlerini sağlayın:
+1. Şema ataması için parametre değerlerini sağlayın:
 
-   - Temel bilgiler
+   - Temel Bilgiler
 
-     - **Abonelikler**: şema örneğinin kopyasını kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreleri kullanarak her biri için bir atama oluşturulur.
+     - **Abonelikler**: şema örneğinin kopyasını kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreler kullanılarak her biri için bir atama oluşturulur.
      - **Atama adı**: ad, BLUEPRINT adına göre önceden doldurulur.
        Gerektiğinde değiştirin veya olduğu gibi bırakın.
      - **Konum**: yönetilen kimliğin oluşturulacağı bölgeyi seçin. Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../../../active-directory/managed-identities-azure-resources/overview.md).
@@ -80,7 +80,7 @@ Bu şema örneği dağıtılmadan önce [ISO 27001 paylaşılan hizmetleri](../i
 
    - Kilit ataması
 
-     Ortamınız için BLUEPRINT Lock ayarını seçin. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../../concepts/resource-locking.md).
+     Ortamınız için şema kilitleme ayarını seçin. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../../concepts/resource-locking.md).
 
    - Yönetilen Kimlik
 
@@ -88,7 +88,7 @@ Bu şema örneği dağıtılmadan önce [ISO 27001 paylaşılan hizmetleri](../i
 
    - Şema parametreleri
 
-     Bu bölümde tanımlanan parametreler, tutarlılığı sağlamak için şema tanımındaki birçok yapıtlar tarafından kullanılır.
+     Bu bölümde tanımlanan parametreler, tutarlılık sağlamak için şemadaki yapıtların birçoğu tarafından kullanılır.
 
      - **Kuruluş adı**: kuruluşunuz için kısa bir ad girin. Bu özellik birincil olarak adlandırma kaynakları için kullanılır.
      - **Paylaşılan hizmet aboneliği kimliği**: [ISO 27001 paylaşılan hizmetleri](../iso27001-shared/index.md) şema örneğinin atandığı abonelik kimliği.
@@ -98,25 +98,25 @@ Bu şema örneği dağıtılmadan önce [ISO 27001 paylaşılan hizmetleri](../i
 
    - Yapıt parametreleri
 
-     Bu bölümde tanımlanan parametreler, tanımlanan yapıt için geçerlidir. Bu parametreler, Blueprint atama sırasında tanımlandıklarından [dinamik parametrelerdir](../../concepts/parameters.md#dynamic-parameters) . Tam liste veya yapıt parametreleri ve açıklamaları için bkz. [yapıt parametreleri tablosu](#artifact-parameters-table).
+     Bu bölümde tanımlanan parametreler, tanımlandığı yapıt için geçerlidir. Bu parametreler, Blueprint atama sırasında tanımlandıklarından [dinamik parametrelerdir](../../concepts/parameters.md#dynamic-parameters) . Tam liste veya yapıt parametreleri ve açıklamaları için bkz. [yapıt parametreleri tablosu](#artifact-parameters-table).
 
-1. Tüm parametreler girildikten sonra sayfanın alt kısmındaki **ata** ' yı seçin. Şema ataması oluşturulur ve yapıt dağıtımı başlar. Dağıtım kabaca bir saat sürer. Dağıtımın durumunu denetlemek için, BLUEPRINT atamasını açın.
+1. Tüm parametreler girildikten sonra, sayfanın alt kısmında **Ata** seçeneğini belirleyin. Şema ataması oluşturulur ve yapıt dağıtımı başlar. Dağıtım kabaca bir saat sürer. Dağıtımın durumunu denetlemek için şema atamasını açın.
 
 > [!WARNING]
-> Azure şemaları hizmeti ve yerleşik şema örnekleri **ücretsiz olarak ücretsizdir**. Azure kaynakları [ürüne göre fiyatlandırılır](https://azure.microsoft.com/pricing/). Bu şema örneği tarafından dağıtılan çalışan kaynakların maliyetini tahmin etmek için [fiyatlandırma hesaplayıcısını](https://azure.microsoft.com/pricing/calculator/) kullanın.
+> Azure Blueprints hizmeti ve yerleşik şema örnekleri **ücretsizdir**. Azure kaynakları, [ürüne göre fiyatlandırılır](https://azure.microsoft.com/pricing/). Bu şema örneği tarafından dağıtılan kaynakları çalıştırma maliyetini tahmin etmek için [fiyatlandırma hesaplayıcısını](https://azure.microsoft.com/pricing/calculator/) kullanın.
 
 ## <a name="artifact-parameters-table"></a>Yapıt parametreleri tablosu
 
-Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
+Aşağıdaki tabloda, şema yapıtı parametrelerinin bir listesi verilmiştir:
 
 |Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
 |-|-|-|-|
-|Log Analytics kaynak grubu|Kaynak grubu|Name|**Kilitli** - **Organization name** `-workload-log-rg` kaynak grubunu benzersiz hale getirmek için kuruluş adını ile birleştirir.|
+|Log Analytics kaynak grubu|Kaynak grubu|Adı|**Kilitli** - **Organization name** `-workload-log-rg` kaynak grubunu benzersiz hale getirmek için kuruluş adını ile birleştirir.|
 |Log Analytics kaynak grubu|Kaynak grubu|Konum|**Kilitli** -şema parametresini kullanır.|
 |Log Analytics şablonu|Resource Manager şablonu|Hizmet katmanı|Log Analytics çalışma alanının katmanını ayarlar. Varsayılan değer _PerNode_değeridir.|
 |Log Analytics şablonu|Resource Manager şablonu|Günlük tutma gün sayısı|Gün cinsinden veri saklama. Varsayılan değer _365_' dir.|
 |Log Analytics şablonu|Resource Manager şablonu|Konum|Log Analytics çalışma alanını oluşturmak için kullanılan bölge. Varsayılan değer _Batı ABD 2_.|
-|Ağ kaynak grubu|Kaynak grubu|Name|**Kilitli** - **Organization name** `-workload-net-rg` kaynak grubunu benzersiz hale getirmek için kuruluş adını ile birleştirir.|
+|Ağ kaynak grubu|Kaynak grubu|Adı|**Kilitli** - **Organization name** `-workload-net-rg` kaynak grubunu benzersiz hale getirmek için kuruluş adını ile birleştirir.|
 |Ağ kaynak grubu|Kaynak grubu|Konum|**Kilitli** -şema parametresini kullanır.|
 |Ağ güvenlik grubu şablonu|Resource Manager şablonu|Günlük tutma gün sayısı|Gün cinsinden veri saklama. Varsayılan değer _365_' dir.|
 |Sanal ağ ve yol tablosu şablonu|Resource Manager şablonu|Azure Güvenlik Duvarı özel IP 'si|[Azure Güvenlik duvarının](../../../../firewall/overview.md)özel IP 'sini yapılandırır. _Iso 27001: paylaşılan hizmetler_ yapıt parametresi **Azure Güvenlik Duvarı alt ağ adresi ön eki**' nde tanımlanan CIDR gösteriminin bir parçası olmalıdır. Varsayılan değer _10.0.4.4_' dir.|
@@ -124,13 +124,13 @@ Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 |Sanal ağ ve yol tablosu şablonu|Resource Manager şablonu|Sanal ağ adresi ön eki|Sanal ağın CıDR gösterimi. Varsayılan değer _10.1.0.0/16_' dır.|
 |Sanal ağ ve yol tablosu şablonu|Resource Manager şablonu|Varsayılan alt ağ adresi ön eki|Sanal ağ varsayılan alt ağının CıDR gösterimi. Varsayılan değer _10.1.0.0/16_' dır.|
 |Sanal ağ ve yol tablosu şablonu|Resource Manager şablonu|IP adresi ekler|İlk VM 'yi ekleyen IP adresi. Bu değer özel VNET DNS olarak kullanılır.|
-|Key Vault kaynak grubu|Kaynak grubu|Name|**Kilitli** - **Organization name** `-workload-kv-rg` kaynak grubunu benzersiz hale getirmek için kuruluş adını ile birleştirir.|
+|Key Vault kaynak grubu|Kaynak grubu|Adı|**Kilitli** - **Organization name** `-workload-kv-rg` kaynak grubunu benzersiz hale getirmek için kuruluş adını ile birleştirir.|
 |Key Vault kaynak grubu|Kaynak grubu|Konum|**Kilitli** -şema parametresini kullanır.|
 |Key Vault şablonu|Resource Manager şablonu|AAD nesne KIMLIĞI|Key Vault örneğine erişim gerektiren hesabın AAD nesne tanımlayıcısı. Varsayılan değer olmadığından boş bırakılamaz. Azure portal bu değeri bulmak için, _Hizmetler_altında "kullanıcılar" ı arayın ve seçin. Hesap adını filtrelemek için _ad_ kutusunu kullanın ve bu hesabı seçin. _Kullanıcı profili_ sayfasında, _nesne kimliğinin_yanındaki "kopyalamak için tıklayın" simgesini seçin.|
 |Key Vault şablonu|Resource Manager şablonu|Günlük tutma gün sayısı|Gün cinsinden veri saklama. Varsayılan değer _365_' dir.|
 |Key Vault şablonu|Resource Manager şablonu|Key Vault SKU 'SU|Oluşturulan Key Vault SKU 'sunu belirtir. Varsayılan değer _Premium_' dur.|
 |Key Vault şablonu|Resource Manager şablonu|Azure SQL Server Yönetici Kullanıcı adı|Azure SQL Server erişmek için kullanılan Kullanıcı adı. **Azure SQL veritabanı şablonundaki**aynı özellik değeriyle eşleşmelidir. Varsayılan değer _SQL-admin-User_değeridir.|
-|Azure SQL veritabanı kaynak grubu|Kaynak grubu|Name|**Kilitli** - **Organization name** `-workload-azsql-rg` kaynak grubunu benzersiz hale getirmek için kuruluş adını ile birleştirir.|
+|Azure SQL veritabanı kaynak grubu|Kaynak grubu|Adı|**Kilitli** - **Organization name** `-workload-azsql-rg` kaynak grubunu benzersiz hale getirmek için kuruluş adını ile birleştirir.|
 |Azure SQL veritabanı kaynak grubu|Kaynak grubu|Konum|**Kilitli** -şema parametresini kullanır.|
 |Azure SQL veritabanı şablonu|Resource Manager şablonu|Azure SQL Server Yönetici Kullanıcı adı|Azure SQL Server için Kullanıcı adı. **Key Vault şablonunda**aynı özellik değeriyle eşleşmelidir. Varsayılan değer _SQL-admin-User_değeridir.|
 |Azure SQL veritabanı şablonu|Resource Manager şablonu|Azure SQL Server yönetici parolası (Key Vault kaynak KIMLIĞI)|Key Vault kaynak KIMLIĞI. "/Subscription/{SubscriptionID}/resourceGroups/{orgName}-Workload-kV/Providers/Microsoft.KeyVault/Vaults/{orgName}-Workload-kV" kullanın ve `{subscriptionId}` abonelik Kimliğiniz ile ve `{orgName}` **kuruluşunuzun adı** şema parametresiyle değiştirin.|
@@ -138,7 +138,7 @@ Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 |Azure SQL veritabanı şablonu|Resource Manager şablonu|Günlük tutma gün sayısı|Gün cinsinden veri saklama. Varsayılan değer _365_' dir.|
 |Azure SQL veritabanı şablonu|Resource Manager şablonu|AAD yönetim nesnesi KIMLIĞI|Active Directory yöneticisi olarak atanacak kullanıcının AAD nesne KIMLIĞI. Varsayılan değer olmadığından boş bırakılamaz. Azure portal bu değeri bulmak için, _Hizmetler_altında "kullanıcılar" ı arayın ve seçin. Hesap adını filtrelemek için _ad_ kutusunu kullanın ve bu hesabı seçin. _Kullanıcı profili_ sayfasında, _nesne kimliğinin_yanındaki "kopyalamak için tıklayın" simgesini seçin.|
 |Azure SQL veritabanı şablonu|Resource Manager şablonu|AAD yönetici oturumu açma|Şu anda Microsoft hesapları (örneğin live.com veya outlook.com) yönetici olarak ayarlanamaz. Yalnızca kuruluşunuzdaki kullanıcılar ve güvenlik grupları yönetici olarak ayarlanabilir. Varsayılan değer olmadığından boş bırakılamaz. Azure portal bu değeri bulmak için, _Hizmetler_altında "kullanıcılar" ı arayın ve seçin. Hesap adını filtrelemek için _ad_ kutusunu kullanın ve bu hesabı seçin. _Kullanıcı profili_ sayfasında, _Kullanıcı adını_kopyalayın.|
-|App Service Ortamı kaynak grubu|Kaynak grubu|Name|**Kilitli** - **Organization name** `-workload-ase-rg` kaynak grubunu benzersiz hale getirmek için kuruluş adını ile birleştirir.|
+|App Service Ortamı kaynak grubu|Kaynak grubu|Adı|**Kilitli** - **Organization name** `-workload-ase-rg` kaynak grubunu benzersiz hale getirmek için kuruluş adını ile birleştirir.|
 |App Service Ortamı kaynak grubu|Kaynak grubu|Konum|**Kilitli** -şema parametresini kullanır.|
 |App Service Ortamı şablonu|Resource Manager şablonu|Etki alanı adı|Örnek tarafından oluşturulan Active Directory adı. Varsayılan değer _contoso.com_' dir.|
 |App Service Ortamı şablonu|Resource Manager şablonu|Ao konumu|App Service Ortamı konumu. Varsayılan değer _Batı ABD 2_.|

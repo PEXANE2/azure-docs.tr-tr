@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 05/01/2020
 ms.author: apimpm
 ms.openlocfilehash: 5814ff3909aa36ccfd9e14033f200fb4d3b8d32d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86252870"
 ---
 # <a name="export-apis-from-azure-api-management-to-the-power-platform"></a>API 'Leri Azure API Management Power platform 'a aktarın 
@@ -25,7 +25,7 @@ Microsoft [Güç platformunu](https://powerplatform.microsoft.com) kullanan vata
 
 Bu makalede, API 'Leri API Management Power platform 'a aktarma adımlarında izlenecek yol gösterilmektedir. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 + Şu hızlı başlangıcı doldurun: [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
 + API Management örneğiniz için güç platformuna aktarmak istediğiniz bir API olduğundan emin olun

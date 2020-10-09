@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: c259e913a8ee5181bc58aea651af62324cf01fcb
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87439410"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Öğretici: Azure Stream Analytics IoT Edge modülü olarak dağıtma
@@ -68,7 +68,7 @@ IoT Edge cihazında çalıştırmak üzere oluşturduğunuz Azure Stream Analyti
    | ----- | ----- |
    | Abonelik | IoT hub'ınızla aynı aboneliği seçin. |
    | Kaynak grubu | Hızlı başlangıç ve öğreticiler IoT Edge için tüm test kaynaklarınız için aynı kaynak grubunu kullanmanızı öneririz. Örneğin, **IoTEdgeResources**. |
-   | Name | Depolama hesabınıza benzersiz bir ad verin. |
+   | Adı | Depolama hesabınıza benzersiz bir ad verin. |
    | Konum | Size yakın bir konum seçin. |
 
 1. Diğer alanlar için varsayılan değerleri tutun ve **gözden geçir + oluştur**' u seçin.

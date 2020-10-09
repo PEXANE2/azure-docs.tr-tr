@@ -8,10 +8,10 @@ ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
 ms.openlocfilehash: 9b2ef5ddb56e3d0422a2a876993ddda0bd97e4ff
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85961107"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Öğretici: verileri analiz etmek ve görselleştirmek için Azure Cosmos DB bir not defteri oluşturun
@@ -30,11 +30,11 @@ Bu bölümde, Azure Cosmos veritabanını, kapsayıcısını oluşturacak ve per
 
 1. **Not** defterleri sekmesine gidin, `…` **Not Defterlerimin** Ileri ' yi seçin ve **Yeni bir not defteri**oluşturun. Varsayılan Çekirdek olarak **Python 3 ' ü** seçin.
 
-   :::image type="content" source="./media/create-notebook-visualize-data/create-new-notebook.png" alt-text="Yeni bir not defteri oluşturun":::
+   :::image type="content" source="./media/create-notebook-visualize-data/create-new-notebook.png" alt-text="Yeni bir not defteri oluşturun&quot;:::
 
 1. Yeni bir not defteri oluşturulduktan sonra, bunu **Visualizere, Data. ipynb** gibi bir şekilde yeniden adlandırabilirsiniz.
 
-1. Daha sonra perakende verilerini depolamak için "RetailDemo" adlı bir veritabanı ve "WebsiteData" adlı bir kapsayıcı oluşturacaksınız. /CartId ' i bölüm anahtarı olarak kullanabilirsiniz. Aşağıdaki kodu kopyalayıp Not defterinize yeni bir hücreye yapıştırın ve çalıştırın:
+1. Daha sonra perakende verilerini depolamak için &quot;RetailDemo&quot; adlı bir veritabanı ve &quot;WebsiteData" adlı bir kapsayıcı oluşturacaksınız. /CartId ' i bölüm anahtarı olarak kullanabilirsiniz. Aşağıdaki kodu kopyalayıp Not defterinize yeni bir hücreye yapıştırın ve çalıştırın:
 
    ```python
    import azure.cosmos
@@ -49,7 +49,11 @@ Bu bölümde, Azure Cosmos veritabanını, kapsayıcısını oluşturacak ve per
 
    Bir hücreyi çalıştırmak için, `Shift + Enter` hücreyi seçin veya seçin ve veri Gezgini gezinti çubuğunda **etkin hücreyi Çalıştır** seçeneğini belirleyin.
 
-   :::image type="content" source="./media/create-notebook-visualize-data/run-active-cell.png" alt-text="Etkin hücreyi Çalıştır":::
+   :::image type="content" source="./media/create-notebook-visualize-data/run-active-cell.png" alt-text="Yeni bir not defteri oluşturun&quot;:::
+
+1. Yeni bir not defteri oluşturulduktan sonra, bunu **Visualizere, Data. ipynb** gibi bir şekilde yeniden adlandırabilirsiniz.
+
+1. Daha sonra perakende verilerini depolamak için &quot;RetailDemo&quot; adlı bir veritabanı ve &quot;WebsiteData":::
 
    Veritabanı ve kapsayıcı, geçerli Azure Cosmos hesabınızda oluşturulur. Kapsayıcı, 400 RU/s ile sağlanır. Veritabanı ve kapsayıcı oluşturulduktan sonra aşağıdaki çıktıyı görürsünüz. 
 
@@ -60,23 +64,11 @@ Bu bölümde, Azure Cosmos veritabanını, kapsayıcısını oluşturacak ve per
 
    Ayrıca, **veri** sekmesini yenileyebilir ve yeni oluşturulan kaynakları görebilirsiniz:
 
-   :::image type="content" source="media/create-notebook-visualize-data/refresh-data-tab.png" alt-text="Yeni kapsayıcıyı görmek için veri sekmesini yenileyin":::
+   :::image type="content" source="media/create-notebook-visualize-data/refresh-data-tab.png" alt-text="Yeni bir not defteri oluşturun&quot;:::
 
-1. Ardından, örnek perakende verilerini Azure Cosmos kapsayıcısına içeri aktaracaksınız. Perakende verilerinden bir öğenin biçimi aşağıda verilmiştir:
+1. Yeni bir not defteri oluşturulduktan sonra, bunu **Visualizere, Data. ipynb** gibi bir şekilde yeniden adlandırabilirsiniz.
 
-   ```json
-    {
-       "CartID":5399,
-       "Action":"Viewed",
-       "Item":"Cosmos T-shirt",
-       "Price":350,
-       "UserName":"Demo.User10",
-       "Country":"Iceland",
-       "EventDate":"2015-06-25T00:00:00",
-       "Year":2015,"Latitude":-66.8673,
-       "Longitude":-29.8214,
-       "Address":"852 Modesto Loop, Port Ola, Iceland",
-       "id":"00ffd39c-7e98-4451-9b91-b2bcf2f9a32d"
+1. Daha sonra perakende verilerini depolamak için &quot;RetailDemo&quot; adlı bir veritabanı ve &quot;WebsiteData"
     }
    ```
 
@@ -135,7 +127,11 @@ Yeni bir not defteri hücresinde, çıktısından ilk 10 öğeyi okumak için a�
 df_cosmos.head(10)
 ```
 
-:::image type="content" source="./media/create-notebook-visualize-data/run-query-get-top10-items.png" alt-text="İlk 10 öğeyi almak için sorguyu Çalıştır":::
+:::image type="content" source="./media/create-notebook-visualize-data/run-query-get-top10-items.png" alt-text="Yeni bir not defteri oluşturun&quot;:::
+
+1. Yeni bir not defteri oluşturulduktan sonra, bunu **Visualizere, Data. ipynb** gibi bir şekilde yeniden adlandırabilirsiniz.
+
+1. Daha sonra perakende verilerini depolamak için &quot;RetailDemo&quot; adlı bir veritabanı ve &quot;WebsiteData":::
 
 ## <a name="run-queries-and-analyze-your-data"></a>Sorguları çalıştırın ve verilerinizi çözümleyin
 
@@ -148,7 +144,11 @@ Bu bölümde, alınan verilerde bazı sorgular çalıştıracaksınız.
    display(df_revenue.head(5))
    ```
 
-   :::image type="content" source="./media/create-notebook-visualize-data/total-sales-revenue-output.png" alt-text="Toplam satış geliri çıkışı":::
+   :::image type="content" source="./media/create-notebook-visualize-data/total-sales-revenue-output.png" alt-text="Yeni bir not defteri oluşturun&quot;:::
+
+1. Yeni bir not defteri oluşturulduktan sonra, bunu **Visualizere, Data. ipynb** gibi bir şekilde yeniden adlandırabilirsiniz.
+
+1. Daha sonra perakende verilerini depolamak için &quot;RetailDemo&quot; adlı bir veritabanı ve &quot;WebsiteData":::
 
 * **Query2:** Satın alınan beş öğenin bir listesini almak için yeni bir not defteri hücresi açın ve aşağıdaki kodu çalıştırın:
 
@@ -159,7 +159,11 @@ Bu bölümde, alınan verilerde bazı sorgular çalıştıracaksınız.
    pd.DataFrame(df_cosmos[df_cosmos['Action']=='Purchased'].groupby('Item').size().sort_values(ascending=False).head(5), columns=['Count'])
    ```
 
-   :::image type="content" source="./media/create-notebook-visualize-data/top5-purchased-items.png" alt-text="İlk beş satın alınan öğe":::
+   :::image type="content" source="./media/create-notebook-visualize-data/top5-purchased-items.png" alt-text="Yeni bir not defteri oluşturun&quot;:::
+
+1. Yeni bir not defteri oluşturulduktan sonra, bunu **Visualizere, Data. ipynb** gibi bir şekilde yeniden adlandırabilirsiniz.
+
+1. Daha sonra perakende verilerini depolamak için &quot;RetailDemo&quot; adlı bir veritabanı ve &quot;WebsiteData":::
 
 ## <a name="visualize-your-data"></a>Verilerinizi görselleştirme  
 
@@ -235,7 +239,11 @@ Bu bölümde, alınan verilerde bazı sorgular çalıştıracaksınız.
 
    Çıktı, dünya haritasını farklı renklerle görüntüler. Daha hafif olan renkler, en düşük gelirle en yüksek gelire sahip ülkeleri/bölgeleri temsil eder.
 
-   :::image type="content" source="./media/create-notebook-visualize-data/countries-revenue-map-visualization.png" alt-text="Ülkeler/bölgeler gelir Haritası görselleştirmesi":::
+   :::image type="content" source="./media/create-notebook-visualize-data/countries-revenue-map-visualization.png" alt-text="Yeni bir not defteri oluşturun&quot;:::
+
+1. Yeni bir not defteri oluşturulduktan sonra, bunu **Visualizere, Data. ipynb** gibi bir şekilde yeniden adlandırabilirsiniz.
+
+1. Daha sonra perakende verilerini depolamak için &quot;RetailDemo&quot; adlı bir veritabanı ve &quot;WebsiteData":::
 
 1. Veri görselleştirmesinin başka bir durumunu görelim. WebsiteData kapsayıcısı, bir öğeyi görüntüleyen, sepetine eklenen ve öğeyi satın alan kullanıcıların kaydına sahiptir. Satın alınan öğelerin dönüştürme oranını çizelim. Her bir öğenin dönüştürme oranını görselleştirmek için aşağıdaki kodu yeni bir hücrede çalıştırın:
 
@@ -286,7 +294,11 @@ Bu bölümde, alınan verilerde bazı sorgular çalıştıracaksınız.
    show(p)
    ```
 
-   :::image type="content" source="./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png" alt-text="Satın alma dönüştürme oranını görselleştirin":::
+   :::image type="content" source="./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png" alt-text="Yeni bir not defteri oluşturun&quot;:::
+
+1. Yeni bir not defteri oluşturulduktan sonra, bunu **Visualizere, Data. ipynb** gibi bir şekilde yeniden adlandırabilirsiniz.
+
+1. Daha sonra perakende verilerini depolamak için &quot;RetailDemo&quot; adlı bir veritabanı ve &quot;WebsiteData":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

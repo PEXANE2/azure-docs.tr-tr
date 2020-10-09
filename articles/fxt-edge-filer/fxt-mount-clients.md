@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: rohogue
 ms.openlocfilehash: ea963b143cedf36137d9c36bc57d323353da6786
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86231361"
 ---
 # <a name="tutorial-mount-the-cluster"></a>Öğretici: kümeyi bağlama
@@ -49,7 +49,7 @@ Diğer yük dengeleme yöntemleri büyük veya karmaşık sistemler için uygun 
 
 Komut, istemcinizden ``mount`` Azure FXT Edge Filer kümesindeki sanal sunucuyu (vServer) yerel dosya sistemindeki bir yola eşler.
 
-Biçim``mount <FXT cluster path> <local path> {options}``
+Biçim ``mount <FXT cluster path> <local path> {options}``
 
 Bağlama komutunda üç öğe vardır:
 
@@ -77,7 +77,7 @@ IP adresi, vServer için tanımlanan istemciye yönelik IP adreslerinden biridir
 
 Bağlama komutunun küme yolunu oluşturmak için IP adresini ve ad alanı yolunu birleştirin.
 
-Örnek istemci bağlama komutu:``mount 10.0.0.12:/sd-access /mnt/fxt {options}``
+Örnek istemci bağlama komutu: ``mount 10.0.0.12:/sd-access /mnt/fxt {options}``
 
 ### <a name="create-the-local-path"></a>Yerel yolu oluşturma
 

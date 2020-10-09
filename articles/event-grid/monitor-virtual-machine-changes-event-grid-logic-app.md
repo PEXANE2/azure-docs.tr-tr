@@ -10,10 +10,10 @@ ms.reviewer: estfan, LADocs
 ms.topic: tutorial
 ms.date: 07/20/2020
 ms.openlocfilehash: 7af555a634f0e362bdf2d530627a782843105bdf
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87461281"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>Öğretici: Azure Event Grid ve Logic Apps'i kullanarak sanal makine değişikliklerini izleme
@@ -68,10 +68,10 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Ad** | Yes | <*Logic-App-adı*> | Mantıksal uygulamanız için benzersiz bir ad sağlayın. |
-   | **Abonelik** | Yes | <*Azure-abonelik-adı*> | Bu öğreticideki tüm hizmetler için aynı Azure aboneliğini seçin. |
-   | **Kaynak grubu** | Yes | <*Azure-Resource-Group*> | Mantıksal uygulamanızın Azure Kaynak grubu adı, bu öğreticideki tüm hizmetler için seçim yapabilirsiniz. |
-   | **Konum** | Yes | <*Azure-bölge*> | Bu öğreticideki tüm hizmetler için aynı bölgeyi seçin. |
+   | **Ad** | Evet | <*Logic-App-adı*> | Mantıksal uygulamanız için benzersiz bir ad sağlayın. |
+   | **Abonelik** | Evet | <*Azure-abonelik-adı*> | Bu öğreticideki tüm hizmetler için aynı Azure aboneliğini seçin. |
+   | **Kaynak grubu** | Evet | <*Azure-Resource-Group*> | Mantıksal uygulamanızın Azure Kaynak grubu adı, bu öğreticideki tüm hizmetler için seçim yapabilirsiniz. |
+   | **Konum** | Evet | <*Azure-bölge*> | Bu öğreticideki tüm hizmetler için aynı bölgeyi seçin. |
    |||
 
 1. Azure mantıksal Uygulamanızı dağıttıktan sonra, Logic Apps tasarımcısında tanıtım videosu ve yaygın olarak kullanılan Tetikleyiciler içeren bir sayfa görüntülenir. Video ve tetikleyicileri kaydırın.
@@ -103,9 +103,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
    | Özellik | Gerekli | Değer | Açıklama |
    | -------- | -------- | ----- | ----------- |
-   | **Abonelik** | Yes | <*olay-yayımcı-Azure-abonelik-adı*> | *Olay yayımcıyla*ilişkili Azure aboneliğinin adını seçin. Bu öğreticide, sanal makineniz için Azure abonelik adını seçin. |
-   | **Kaynak Türü** | Yes | <*olay-yayımcı-Azure-Resource-Type*> | Olay Yayımcısı için Azure Kaynak türünü seçin. Azure Kaynak türleri hakkında daha fazla bilgi için bkz. [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md). Bu öğreticide, `Microsoft.Resources.ResourceGroups` Azure kaynak gruplarını izlemek için değeri seçin. |
-   | **Kaynak Adı** |  Yes | <*olay-yayımcı-Azure-Kaynak-adı*> | Olay Yayımcısı için Azure Kaynak adı ' nı seçin. Bu liste, seçtiğiniz kaynak türüne göre farklılık gösterir. Bu öğreticide, sanal makinenizi içeren Azure Kaynak grubunun adını seçin. |
+   | **Abonelik** | Evet | <*olay-yayımcı-Azure-abonelik-adı*> | *Olay yayımcıyla*ilişkili Azure aboneliğinin adını seçin. Bu öğreticide, sanal makineniz için Azure abonelik adını seçin. |
+   | **Kaynak Türü** | Evet | <*olay-yayımcı-Azure-Resource-Type*> | Olay Yayımcısı için Azure Kaynak türünü seçin. Azure Kaynak türleri hakkında daha fazla bilgi için bkz. [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md). Bu öğreticide, `Microsoft.Resources.ResourceGroups` Azure kaynak gruplarını izlemek için değeri seçin. |
+   | **Kaynak Adı** |  Evet | <*olay-yayımcı-Azure-Kaynak-adı*> | Olay Yayımcısı için Azure Kaynak adı ' nı seçin. Bu liste, seçtiğiniz kaynak türüne göre farklılık gösterir. Bu öğreticide, sanal makinenizi içeren Azure Kaynak grubunun adını seçin. |
    | **Olay türü öğesi** |  Hayır | <*olay türleri*> | Filtre uygulamak ve olay kılavuzunuzda göndermek için bir veya daha fazla belirli olay türü seçin. Örneğin, isteğe bağlı olarak, kaynakların ne zaman değiştirildiğini veya silindiğini saptamak için bu olay türlerini ekleyebilirsiniz: <p><p>- `Microsoft.Resources.ResourceActionSuccess` <br>- `Microsoft.Resources.ResourceDeleteSuccess` <br>- `Microsoft.Resources.ResourceWriteSuccess` <p>Daha fazla bilgi için şu konulara bakın: <p><p>- [Kaynak grupları için Azure Event Grid olay şeması](../event-grid/event-schema-resource-groups.md) <br>- [Olay filtrelemeyi anlama](../event-grid/event-filtering.md) <br>- [Olayları Event Grid filtrele](../event-grid/how-to-filter-events.md) |
    | İsteğe bağlı özellikler eklemek için **yeni parametre Ekle**' yi seçin ve ardından istediğiniz özellikleri seçin. | Hayır | {açıklamalara bakın} | * **Önek filtresi**: Bu öğretici için bu özelliği boş bırakın. Varsayılan davranış tüm değerlerle eşleşir. Ancak filtre olarak bir ön ek dizesi (örneğin belirli bir kaynak için bir yol ve bir parametre) belirtebilirsiniz. <p>* **Sonek filtresi**: Bu öğreticide, bu özelliği boş bırakın. Varsayılan davranış tüm değerlerle eşleşir. Ancak yalnızca belirli dosya türlerini istediğinizde filtre olarak bir sonek dizesi (örneğin dosya adı uzantısı) belirtebilirsiniz. <p>* **Abonelik adı**: Bu öğretici için, olay aboneliğiniz için benzersiz bir ad sağlayabilirsiniz. |
    |||
@@ -190,7 +190,7 @@ Mantıksal uygulamanızı yalnızca belirli bir olay veya işlem gerçekleştiğ
 
 1. E-posta sağlayıcınız için henüz bir bağlantınız yoksa, kimlik doğrulaması istendiğinde e-posta hesabınızda oturum açın.
 
-1. E-posta gönder eylemini şu başlığa göre yeniden adlandırın:`Send email when virtual machine updated`
+1. E-posta gönder eylemini şu başlığa göre yeniden adlandırın: `Send email when virtual machine updated`
 
 1. Aşağıdaki tabloda belirtildiği gibi e-posta hakkında bilgi sağlayın:
 
@@ -201,9 +201,9 @@ Mantıksal uygulamanızı yalnızca belirli bir olay veya işlem gerçekleştiğ
 
    | Özellik | Gerekli | Değer | Açıklama |
    | -------- | -------- | ----- | ----------- |
-   | **Hedef** | Yes | <*alıcı \@ etki alanı*> | Alıcının e-posta adresi girin. Test için kendi e-posta adresinizi kullanabilirsiniz. |
-   | **Konu** | Yes | `Resource updated:`**Konu** | E-posta konusunun içeriğini girin. Bu öğretici için, belirtilen metni girin ve olayın **Konu** alanını seçin. Burada, e-postanızın konusu güncelleştirilen kaynağın (sanal makine) adını içerir. |
-   | **Gövde** | Yes | `Resource:` **Konu** <p>`Event type:`**Olay türü**<p>`Event ID:` **ID**<p>`Time:`**Olay saati** | E-posta gövdesinin içeriğini girin. Bu öğretici için, belirtilen metni girin ve olay **konusunu**, olay **türünü**, **kimliği**ve **Olay saati** alanlarını seçerek e-postanız, güncelleştirme için olayı, olay türünü, olay zaman damgasını ve olay kimliğini tetikleyen kaynağı içerir. Bu öğretici için kaynak, tetikleyicide seçilen Azure Kaynak grubudur. <p>İçeriğinize boş satır eklemek için Shift + Enter tuşlarını kullanın. |
+   | **Amaç** | Evet | <*alıcı \@ etki alanı*> | Alıcının e-posta adresi girin. Test için kendi e-posta adresinizi kullanabilirsiniz. |
+   | **Konu** | Evet | `Resource updated:` **Konu** | E-posta konusunun içeriğini girin. Bu öğretici için, belirtilen metni girin ve olayın **Konu** alanını seçin. Burada, e-postanızın konusu güncelleştirilen kaynağın (sanal makine) adını içerir. |
+   | **Gövde** | Evet | `Resource:` **Konu** <p>`Event type:` **Olay Türü**<p>`Event ID:`**Kimliği**<p>`Time:`**Olay saati** | E-posta gövdesinin içeriğini girin. Bu öğretici için, belirtilen metni girin ve olay **konusunu**, olay **türünü**, **kimliği**ve **Olay saati** alanlarını seçerek e-postanız, güncelleştirme için olayı, olay türünü, olay zaman damgasını ve olay kimliğini tetikleyen kaynağı içerir. Bu öğretici için kaynak, tetikleyicide seçilen Azure Kaynak grubudur. <p>İçeriğinize boş satır eklemek için Shift + Enter tuşlarını kullanın. |
    ||||
 
    > [!NOTE]

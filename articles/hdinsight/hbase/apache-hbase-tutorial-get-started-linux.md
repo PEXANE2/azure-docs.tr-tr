@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/14/2020
 ms.openlocfilehash: a19e2c6647f1ff072c61044e8e5777d5d3f8d2db
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85958370"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Apache HBase kullanma
@@ -306,15 +306,15 @@ HDInsight içinde HBase, kümelerin izlenmesi için bir Web Kullanıcı Arabirim
 
 Tutarsızlıkları önlemek için kümeyi silmeden önce HBase tablolarını devre dışı bırakmanız önerilir. HBase komutunu kullanabilirsiniz `disable 'Contacts'` . Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz HBase kümesini aşağıdaki adımlarla silin:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 1. Üstteki **arama** kutusuna **HDInsight**yazın.
 1. **Hizmetler**altında **HDInsight kümeleri** ' ni seçin.
 1. Görüntülenen HDInsight kümeleri listesinde, bu öğretici için oluşturduğunuz kümenin yanındaki **...** öğesine tıklayın.
-1. **Sil**'e tıklayın. **Evet**' e tıklayın.
+1. **Sil**'e tıklayın. **Evet**'e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Apache HBase kümesi oluşturmayı öğrendiniz. Ve tablo oluşturma ve bu tablolardaki verileri HBase kabuğundan görüntüleme. Ayrıca, HBase tablolarındaki veriler üzerinde Hive sorgusu kullanmayı öğrendiniz. HBase C# REST API 'Lerini kullanarak bir HBase tablosu oluşturma ve tablodaki verileri alma. Daha fazla bilgi için bkz:
+Bu öğreticide, Apache HBase kümesi oluşturmayı öğrendiniz. Ve tablo oluşturma ve bu tablolardaki verileri HBase kabuğundan görüntüleme. Ayrıca, HBase tablolarındaki veriler üzerinde Hive sorgusu kullanmayı öğrendiniz. HBase C# REST API 'Lerini kullanarak bir HBase tablosu oluşturma ve tablodaki verileri alma. Daha fazla bilgi edinmek için şu makalelere bakın:
 
 > [!div class="nextstepaction"]
 > [HDInsight HBase 'e genel bakış](./apache-hbase-overview.md)

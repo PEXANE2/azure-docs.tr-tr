@@ -2,7 +2,7 @@
   items:
     - name: Genel Bakış
       items:
-        - name: Kullanmaya başlayın
+        - name: başlarken
           href: overview.md
         - name: İş yükleri
           href: partner-workloads.md

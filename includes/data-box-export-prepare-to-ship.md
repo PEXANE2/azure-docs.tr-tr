@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 06/19/2020
 ms.author: alkohli
 ms.openlocfilehash: 97491000c63c966c3d8159b9361fcb60e062aa49
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86210452"
 ---
 Son adım cihazı göndermeye hazırlamaktır. Bu adımda tüm cihaz paylaşımları çevrimdışı duruma getirilir. Bu işlem başlatıldıktan sonra paylaşımlara erişilemez. Ayrıca, cihazdaki yerel verilerin kalıcı olarak silineceği cihazı temizlemeyi de tercih edebilirsiniz. Adım tamamlandıktan sonra e-mürekkep görüntüleme işlemi, iade sevkiyat etiketini gösterir.

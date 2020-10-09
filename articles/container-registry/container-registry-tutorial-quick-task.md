@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 7178d7171d4c9c0183eb744f19776f6b2fac09ef
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86259497"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Öğretici: Azure Container Registry Görevleri ile bulutta kapsayıcı görüntüleri derleme ve dağıtma
@@ -32,7 +32,7 @@ Sonraki öğreticilerde, ACR Görevlerini kod işleme ve temel görüntü günce
 
 Azure CLI’yı yerel olarak kullanmak istiyorsanız [az login][az-login] ile Azure CLI **2.0.46** veya sonraki bir sürüm yüklü olmalıdır. Sürümü bulmak için `az --version` komutunu çalıştırın. CLI’yı yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI’yı yükleme][azure-cli].
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="github-account"></a>GitHub hesabı
 
