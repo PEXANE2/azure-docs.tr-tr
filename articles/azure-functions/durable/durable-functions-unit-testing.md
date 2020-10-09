@@ -4,10 +4,10 @@ description: Birim testi Dayanıklı İşlevler nasıl yapılacağını öğreni
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.openlocfilehash: 86733f8b5b80799bad3e52c643ed27465dfc7641
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74231218"
 ---
 # <a name="durable-functions-unit-testing"></a>Dayanıklı İşlevler birim testi
@@ -17,7 +17,7 @@ Birim testi modern yazılım geliştirme uygulamalarının önemli bir parçası
 > [!NOTE]
 > Bu makalede, Dayanıklı İşlevler 1. x ' i hedefleyen Dayanıklı İşlevler uygulamalar için birim testi Kılavuzu sağlanmıştır. Henüz Dayanıklı İşlevler 2. x sürümünde tanıtılan değişiklikler için hesaba güncelleştirilmedi. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki örneklerde aşağıdaki kavramlar ve çerçeveler hakkında bilgi sahibi olmanız gerekir:
 
@@ -87,7 +87,7 @@ Sonraki adımda `CreateCheckStatusResponse` her zaman boş BIR HTTP 200 yanıtı
         });
 ```
 
-`ILogger`Ayrıca şu şekilde olur:
+`ILogger` Ayrıca şu şekilde olur:
 
 ```csharp
     // Mock ILogger

@@ -12,13 +12,13 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: 1b73b82b4367d50cc5fbe9881a67e0afa041db86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85201167"
 ---
-# <a name="data-loading-strategies-for-synapse-sql-pool"></a>SYNAPSE SQL havuzu için veri yükleme stratejileri
+# <a name="data-loading-strategies-for-synapse-sql-pool"></a>Synapse SQL havuzu için veri yükleme stratejileri
 
 Geleneksel SMP SQL havuzları verileri yüklemek için bir Ayıkla, dönüştürme ve yükleme (ETL) işlemi kullanır. Azure SYNAPSE Analytics 'te SYNAPSE SQL havuzu, bilgi işlem ve depolama kaynaklarının ölçeklenebilirlik ve esnekliğinden faydalanan, yüksek düzeyde paralel işleme (MPP) mimarisine sahiptir.
 
@@ -113,11 +113,11 @@ Parquet dosyalarını yüklerken aşağıdaki SQL veri türü eşlemesini kullan
 |                            INT32                             |           INT (32, false)            |      bigint      |
 |                            INT32                             |                 DATE                  |       date       |
 |                            INT32                             |                KATEGORI                |     decimal      |
-|                            INT32                             |            SAAT (MILIMETRE)             |       time       |
+|                            INT32                             |            SAAT (MILIMETRE)             |       saat       |
 |                            INT64                             |            INT (64, true)            |      bigint      |
 |                            INT64                             |           INT (64, false)            |  ondalık (20, 0)   |
 |                            INT64                             |                KATEGORI                |     decimal      |
-|                            INT64                             |         SAAT (MIKRO S/NANOS)         |       time       |
+|                            INT64                             |         SAAT (MIKRO S/NANOS)         |       saat       |
 |                            INT64                             | ZAMAN DAMGASı (MILIMETRE/MIKRO S/NANOS) |    datetime2     |
 | [Karmaşık tür](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fparquet-format%2Fblob%2Fmaster%2FLogicalTypes.md%23lists&data=02\|01\|kevin%40microsoft.com\|19f74d93f5ca45a6b73c08d7d7f5f111\|72f988bf86f141af91ab2d7cd011db47\|1\|0\|637215323617803168&sdata=6Luk047sK26ijTzfvKMYc%2FNu%2Fz0AlLCX8lKKTI%2F8B5o%3D&reserved=0) |                 LISTELE                  |   varchar(maks.)   |
 | [Karmaşık tür](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fparquet-format%2Fblob%2Fmaster%2FLogicalTypes.md%23maps&data=02\|01\|kevin%40microsoft.com\|19f74d93f5ca45a6b73c08d7d7f5f111\|72f988bf86f141af91ab2d7cd011db47\|1\|0\|637215323617803168&sdata=FiThqXxjgmZBVRyigHzfh5V7Z%2BPZHjud2IkUUM43I7o%3D&reserved=0) |                  HARITA                  |   varchar(maks.)   |

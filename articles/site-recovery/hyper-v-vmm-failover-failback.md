@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: d31355bcb0ce42874c19988738ba06138c7a0b7c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74082595"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>İkincil şirket içi sitenize çoğaltılan Hyper-V VM 'lerinin yükünü devreder ve geri devreder
@@ -35,7 +35,7 @@ Yük devretme ve yeniden çalışma üç aşamaya sahiptir:
 3. Planlı Yük devretmenin ardından, isteğe bağlı olarak birincil siteden ikincil konuma çoğaltmayı yeniden başlatın.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Her şeyin beklendiği gibi çalıştığını denetlemek için bir [olağanüstü durum kurtarma detayının](hyper-v-vmm-test-failover.md) tamamlandığından emin olun.
 - Yeniden çalışmayı gerçekleştirmek için, birincil ve ikincil VMM sunucularının Site Recovery bağlı olduğundan emin olun.

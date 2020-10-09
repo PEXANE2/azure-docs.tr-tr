@@ -11,10 +11,10 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
 ms.openlocfilehash: 552b3f55632e817cc4669ce5da41b1e127c7d808
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91283879"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>Öğretici: Azure AD Server sorumlularını (oturum açma) kullanarak Azure SQL yönetilen örneği 'nde güvenlik
@@ -48,7 +48,7 @@ Daha fazla bilgi edinmek için bkz. [Azure SQL yönetilen örneğine genel bakı
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)
 - Yönetilen bir örnek
   - Şu makaleyi izleyin: [hızlı başlangıç: yönetilen örnek oluşturma](instance-create-quickstart.md)
-- Yönetilen örneğe erişebilir ve [yönetilen örnek için bir Azure AD yöneticisi temin](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)edebilir. Daha fazla bilgi için bkz:
+- Yönetilen örneğe erişebilir ve [yönetilen örnek için bir Azure AD yöneticisi temin](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)edebilir. Daha fazla bilgi edinmek için şu makalelere bakın:
   - [Uygulamanızı yönetilen bir örneğe bağlama](connect-application-instance.md)
   - [SQL yönetilen örnek bağlantısı mimarisi](connectivity-architecture-overview.md)
   - [SQL ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme](../database/authentication-aad-configure.md)

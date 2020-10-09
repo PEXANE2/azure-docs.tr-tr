@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: mevcut Azure Application Gateway mevcut AKS kümesi için giriş denetleyicisi eklentisini etkinleştirin'
-description: Mevcut AKS kümeniz için mevcut bir Application Gateway giriş denetleyicisi eklentisini etkinleştirmek için bu öğreticiyi kullanın
+title: 'Öğretici: mevcut Azure Application Gateway ile mevcut AKS kümesi için giriş denetleyicisi Add-On etkinleştirme'
+description: Mevcut AKS kümeniz için mevcut bir Application Gateway giriş denetleyicisi Add-On etkinleştirmek için bu öğreticiyi kullanın
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
 ms.openlocfilehash: d0ce58c5bb6de4712117959f10b48ae3449f0b97
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91285681"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>Öğretici: mevcut bir AKS kümesi için Application Gateway giriş denetleyicisi eklentisini Azure CLı aracılığıyla mevcut bir Application Gateway ile etkinleştirme (Önizleme)

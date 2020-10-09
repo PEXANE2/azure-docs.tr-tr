@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 28c4dc7831f97d66eb4d47f08e640344d5cca0d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77014955"
 ---
 # <a name="cloudsimple-private-cloud-permission-model-of-vmware-vcenter"></a>CloudSimple özel bulut izin modeli VMware vCenter
@@ -21,14 +21,14 @@ CloudSimple, özel bulut ortamına tam yönetici erişimini korur. Her CloudSimp
 
 ## <a name="cloud-owner"></a>Bulut sahibi
 
-Özel bir bulut oluştururken, özel buluttaki nesneleri yönetmek için **bulut sahibi rol** erişimi Ile vCenter çoklu oturum açma etki alanında bir **cloudowner** kullanıcısı oluşturulur. Bu Kullanıcı ayrıca ek [vCenter kimlik kaynakları](set-vcenter-identity.md)ve diğer kullanıcıları özel bulut vCenter 'a da ayarlayabilir.
+Özel bir bulut oluştururken, özel buluttaki nesneleri yönetmek için **bulut sahibi rol** erişimi Ile vCenter tek Sign-On etki alanında bir **cloudowner** kullanıcısı oluşturulur. Bu Kullanıcı ayrıca ek [vCenter kimlik kaynakları](set-vcenter-identity.md)ve diğer kullanıcıları özel bulut vCenter 'a da ayarlayabilir.
 
 > [!NOTE]
 > CloudSimple özel bulut vCenter 'niz için varsayılan kullanıcı, cloudowner@cloudsimple.local özel bir bulut oluşturulduğunda oluşturulur.
 
 ## <a name="user-groups"></a>Kullanıcı Grupları
 
-**Bulut sahibi grubu** adlı bir grup, özel bulutun dağıtımı sırasında oluşturulur. Bu gruptaki kullanıcılar, özel buluttaki vSphere ortamının çeşitli kısımlarını yönetebilir. Bu gruba **bulut sahibi rol** ayrıcalıkları otomatik olarak verilir ve **cloudowner** kullanıcısı bu grubun bir üyesi olarak eklenir.  CloudSimple, yönetim kolaylığı için sınırlı ayrıcalıklara sahip ek gruplar oluşturur.  Bu önceden oluşturulmuş gruplara herhangi bir kullanıcı ekleyebilirsiniz ve aşağıda tanımlanan ayrıcalıklar gruplardaki kullanıcılara otomatik olarak atanır.
+**Bulut sahibi grubu** adlı bir grup, özel bulutun dağıtımı sırasında oluşturulur. Bu gruptaki kullanıcılar, özel buluttaki vSphere ortamının çeşitli kısımlarını yönetebilir. Bu gruba  **bulut sahibi rol** ayrıcalıkları otomatik olarak verilir ve  **cloudowner** kullanıcısı bu grubun bir üyesi olarak eklenir.  CloudSimple, yönetim kolaylığı için sınırlı ayrıcalıklara sahip ek gruplar oluşturur.  Bu önceden oluşturulmuş gruplara herhangi bir kullanıcı ekleyebilirsiniz ve aşağıda tanımlanan ayrıcalıklar gruplardaki kullanıcılara otomatik olarak atanır.
 
 ### <a name="pre-created-groups"></a>Önceden oluşturulmuş gruplar
 
@@ -58,7 +58,7 @@ Bireysel kullanıcılara özel bulutu yönetme izinleri vermek için, Kullanıc�
 | **dvPort grubu** | Oluştur <br> Sil <br> Değiştir <br> İlke işlemi <br> Kapsam işlemi |
 | **Hatayla** | Alan ayır <br> Veri deposuna gözatamıyorum <br> Veri deposunu yapılandırma <br> Alt düzey dosya işlemleri <br> Veri deposunu taşı <br> Veri deposunu kaldır <br> Dosyayı kaldır <br> Veri deposunu yeniden adlandır <br> Sanal makine dosyalarını Güncelleştir <br> Sanal makine meta verilerini Güncelleştir |
 | **ESX Aracısı Yöneticisi** | Config <br> Değiştir <br> Görüntüle |
-| **Uzantı** | Uzantıyı Kaydet <br> Uzantı kaydını sil <br> Uzantıyı Güncelleştir |
+| **Dahili numara** | Uzantıyı Kaydet <br> Uzantı kaydını sil <br> Uzantıyı Güncelleştir |
 | **Dış istatistik sağlayıcısı**| Kaydol <br> Kaydı Kaldır <br> Güncelleştir |
 | **Klasör** | Klasör oluştur <br> Klasörü Sil <br> Klasörü taşı <br> Klasörü yeniden adlandır |
 | **Genel** | Görevi iptal et <br> Kapasite planlaması <br> Tanılama <br> Yöntemi devre dışı bırak <br> Yöntemleri etkinleştir <br> Genel etiket <br> Sağlık <br> Lisanslar <br> Olayı günlüğe kaydet <br> Özel öznitelikleri Yönet <br> Ara sunucu <br> Betik eylemi <br> Hizmet yöneticileri <br> Özel öznitelik ayarla <br> Sistem etiketi |
@@ -77,7 +77,7 @@ Bireysel kullanıcılara özel bulutu yönetme izinleri vermek için, Kullanıc�
 | **Depolama görünümleri** | Hizmeti Yapılandır <br> Görüntüle |
 | **Görevler** | Görev Oluştur <br> Güncelleştirme görevi |
 | **Aktarım Hizmeti**| Yönetme <br> İzleme |
-| **vApp** | Sanal makine Ekle <br> Kaynak havuzu ata <br> VApp atama <br> Kopyalama <br> Oluştur <br> Sil <br> Dışarı Aktarma <br> İçeri Aktar <br> Taşı <br> Kapatma <br> Açma <br> Rename <br> Askıya Alma <br> Kaydı Kaldır <br> OVF ortamını görüntüle <br> vApp uygulama yapılandırması <br> vApp örneği yapılandırması <br> yapılandırmaya göre vApp Managed <br> vApp kaynak yapılandırması |
+| **vApp** | Sanal makine Ekle <br> Kaynak havuzu ata <br> VApp atama <br> Kopyalama <br> Oluştur <br> Sil <br> Dışarı Aktarma <br> İçeri Aktarma <br> Taşı <br> Kapatma <br> Açma <br> Rename <br> Askıya Alma <br> Kaydı Kaldır <br> OVF ortamını görüntüle <br> vApp uygulama yapılandırması <br> vApp örneği yapılandırması <br> yapılandırmaya göre vApp Managed <br> vApp kaynak yapılandırması |
 | **VRMPolicy** | VRMPolicy sorgula <br> VRMPolicy 'yi Güncelleştir |
 | **Sanal makine > yapılandırması** | Mevcut diski Ekle <br> Yeni Disk Ekle <br> Cihaz Ekle veya Kaldır <br> Gelişmiş <br> Değişiklik CPU sayısı <br> Kaynağı değiştir <br> ManagedBy 'yi yapılandırma <br> Disk değişiklik izleme <br> Disk kirası <br> Bağlantı ayarlarını görüntüle <br> Sanal diski Genişlet <br> Konak USB cihazı <br> Bellek <br> Cihaz ayarlarını değiştir <br> Sorgu hatası toleransı uyumluluğu <br> Sahip olunan dosyaları sorgula <br> Ham cihaz <br> Yoldan yeniden yükle <br> Diski Kaldır <br> Rename <br> Konuk bilgilerini Sıfırla <br> Ek açıklamayı ayarla <br> Ayarlar <br> Swapfile yerleşimi <br> Çatal üst öğesini aç <br> Sanal makinenin kilidini aç <br> Sanal makine uyumluluğunu yükselt |
 | **Sanal makine > Konuk işlemleri** | Konuk işlemi diğer adı değişikliği <br> Konuk işlemi diğer adı sorgusu <br> Konuk işlemi değişiklikleri <br> Konuk işlemi program yürütme <br> Konuk işlem sorguları |
@@ -99,7 +99,7 @@ Bireysel kullanıcılara özel bulutu yönetme izinleri vermek için, Kullanıc�
 | **vSphere etiketleme** | VSphere etiketi atama veya atamasını kaldırma <br> VSphere etiketi oluştur <br> VSphere etiket kategorisi oluştur <br> VSphere etiketini Sil <br> VSphere etiket kategorisini Sil <br> VSphere etiketini Düzenle <br> VSphere etiket kategorisini Düzenle <br> Kategori Için UsedBy alanını değiştirme <br> Etiket Için UsedBy alanını değiştirme |
 | **Ağ** | Ağ ata |
 | **Kaynak** | Öneriyi Uygula <br> Sanal uygulamayı kaynak havuzuna ata <br> Sanal makineyi kaynak havuzuna ata <br> Kaynak havuzu oluştur <br> Sanal makineyi kapalı geçir <br> Sanal makinede güç geçişi gerçekleştir <br> Kaynak havuzunu Değiştir <br> Kaynak havuzunu taşı <br> VMotion sorgula <br> Kaynak havuzunu kaldır <br> Kaynak havuzunu yeniden adlandır |
-| **vApp** | Sanal makine Ekle <br> Kaynak havuzu ata <br> VApp atama <br> Kopyalama <br> Oluştur <br> Sil <br> Dışarı Aktarma <br> İçeri Aktar <br> Taşı <br> Kapatma <br> Açma <br> Rename <br> Askıya Alma <br> Kaydı Kaldır <br> OVF ortamını görüntüle <br> vApp uygulama yapılandırması <br> vApp örneği yapılandırması <br> yapılandırmaya göre vApp Managed <br> vApp kaynak yapılandırması |
+| **vApp** | Sanal makine Ekle <br> Kaynak havuzu ata <br> VApp atama <br> Kopyalama <br> Oluştur <br> Sil <br> Dışarı Aktarma <br> İçeri Aktarma <br> Taşı <br> Kapatma <br> Açma <br> Rename <br> Askıya Alma <br> Kaydı Kaldır <br> OVF ortamını görüntüle <br> vApp uygulama yapılandırması <br> vApp örneği yapılandırması <br> yapılandırmaya göre vApp Managed <br> vApp kaynak yapılandırması |
 | **VRMPolicy** | VRMPolicy sorgula <br> VRMPolicy 'yi Güncelleştir |
 | **Sanal makine > yapılandırması** | Mevcut diski Ekle <br> Yeni Disk Ekle <br> Cihaz Ekle veya Kaldır <br> Gelişmiş <br> Değişiklik CPU sayısı <br> Kaynağı değiştir <br> ManagedBy 'yi yapılandırma <br> Disk değişiklik izleme <br> Disk kirası <br> Bağlantı ayarlarını görüntüle <br> Sanal diski Genişlet <br> Konak USB cihazı <br> Bellek <br> Cihaz ayarlarını değiştir <br> Sorgu hatası toleransı uyumluluğu <br> Sahip olunan dosyaları sorgula <br> Ham cihaz <br> Yoldan yeniden yükle <br> Diski Kaldır <br> Rename <br> Konuk bilgilerini Sıfırla <br> Ek açıklamayı ayarla <br> Ayarlar <br> Swapfile yerleşimi <br> Çatal üst öğesini aç <br> Sanal makinenin kilidini aç <br> Sanal makine uyumluluğunu yükselt |
 | **Sanal makine > Konuk işlemleri** | Konuk işlemi diğer adı değişikliği <br> Konuk işlemi diğer adı sorgusu <br> Konuk işlemi değişiklikleri <br> Konuk işlemi program yürütme <br> Konuk işlem sorguları |
@@ -136,7 +136,7 @@ Bireysel kullanıcılara özel bulutu yönetme izinleri vermek için, Kullanıc�
 | **Hatayla** | Alan ayır <br> Veri deposuna gözatamıyorum |
 | **Ağ** | Ağ ata |
 | **Kaynak** | Sanal makineyi kaynak havuzuna ata <br> Sanal makineyi kapalı geçir <br> Sanal makinede güç geçişi gerçekleştir
-| **vApp** | Dışarı Aktarma <br> İçeri Aktar |
+| **vApp** | Dışarı Aktarma <br> İçeri Aktarma |
 | **Sanal makine > yapılandırması** | Mevcut diski Ekle <br> Yeni Disk Ekle <br> Cihaz Ekle veya Kaldır <br> Gelişmiş <br> Değişiklik CPU sayısı <br> Kaynağı değiştir <br> ManagedBy 'yi yapılandırma <br> Disk değişiklik izleme <br> Disk kirası <br> Bağlantı ayarlarını görüntüle <br> Sanal diski Genişlet <br> Konak USB cihazı <br> Bellek <br> Cihaz ayarlarını değiştir <br> Sorgu hatası toleransı uyumluluğu <br> Sahip olunan dosyaları sorgula <br> Ham cihaz <br> Yoldan yeniden yükle <br> Diski Kaldır <br> Rename <br> Konuk bilgilerini Sıfırla <br> Ek açıklamayı ayarla <br> Ayarlar <br> Swapfile yerleşimi <br> Çatal üst öğesini aç <br> Sanal makinenin kilidini aç <br> Sanal makine uyumluluğunu yükselt |
 | **Sanal makine >Konuk işlemleri** | Konuk işlemi diğer adı değişikliği <br> Konuk işlemi diğer adı sorgusu <br> Konuk işlemi değişiklikleri <br> Konuk işlemi program yürütme <br> Konuk işlem sorguları    |
 | **Sanal makine >etkileşimi** | Soru cevap <br> Sanal makinede yedekleme işlemi <br> CD medyasını yapılandırma <br> Disket ortamını yapılandırma <br> Konsol etkileşimi <br> Ekran görüntüsü oluşturma <br> Tüm diskleri birleştirin <br> Cihaz bağlantısı <br> Sürükleyip bırakma <br> VIX API tarafından Konuk işletim sistemi yönetimi <br> USB HID tarama kodları Ekle <br> Duraklatma veya duraklamayı kaldırma <br> Temizleme veya küçültme işlemleri gerçekleştirme <br> Kapatma <br> Açma <br> Sanal makinede oturum Kaydet <br> Sanal makinede oturumu yeniden Yürüt <br> Sıfırla <br> Hata toleransını sürdürür <br> Askıya Alma <br> Askıya alma hatası toleransı <br> Yük devretme testi <br> Test yeniden başlatma Ikincil VM <br> Hata toleransını devre dışı bırakma <br> Hata toleransını aç <br> VMware araçları yüklemesi |

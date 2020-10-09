@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e771a988faca98d009b97b1e705ddac7110a255f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91266505"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Mevcut bir eşitlenmiş AD ormanı için pilot bulut sağlama 
@@ -50,8 +50,8 @@ Minimum olarak, [Azure AD Connect](https://www.microsoft.com/download/details.as
 Azure AD Connect eşitleme, bir Zamanlayıcı kullanarak şirket içi dizininizde gerçekleşen değişiklikleri eşitler. Özel kuralları değiştirmek ve eklemek için, bu Zamanlayıcı 'yı devre dışı bırakmak istiyorsunuz. bu sayede, bu işlem üzerinde çalışırken eşitlemeler çalışmaz.  Aşağıdaki adımları kullanın:
 
 1.  Azure AD Connect çalıştıran sunucuda, açık PowerShell 'i yönetici ayrıcalıklarıyla eşitleyin.
-2.  `Stop-ADSyncSyncCycle` öğesini çalıştırın.  ENTER tuşuna basın.
-3.  `Set-ADSyncScheduler -SyncCycleEnabled $false` öğesini çalıştırın.
+2.  `Stop-ADSyncSyncCycle` komutunu çalıştırın.  ENTER tuşuna basın.
+3.  `Set-ADSyncScheduler -SyncCycleEnabled $false` komutunu çalıştırın.
 
 >[!NOTE] 
 >Azure AD Connect eşitleme için kendi özel zamanlayıcınız çalıştırıyorsanız, lütfen Zamanlayıcıyı devre dışı bırakın. 

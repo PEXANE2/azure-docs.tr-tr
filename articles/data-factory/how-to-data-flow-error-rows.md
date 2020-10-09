@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: makromer
 ms.openlocfilehash: 3f8ac2d1434019548b01d8468015a543d89d0fba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85254421"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>Data Factory eşleme veri akışlarında SQL kesme hatası satırlarını işle
@@ -29,7 +29,7 @@ Veri akışlarını eşleme kullanılırken Data Factory ortak bir senaryo, dön
 
     ![Film veri akışı 1](media/data-flow/error4.png)
     
-3. Bu sorun, film başlığının hepsi yalnızca 5 karakter içerebilen bir havuz sütunu içine sığmayadır. Bu veri akışını yürüttüğünüzde, şöyle bir hata alırsınız:```"Job failed due to reason: DF-SYS-01 at Sink 'WriteToDatabase': java.sql.BatchUpdateException: String or binary data would be truncated. java.sql.BatchUpdateException: String or binary data would be truncated."```
+3. Bu sorun, film başlığının hepsi yalnızca 5 karakter içerebilen bir havuz sütunu içine sığmayadır. Bu veri akışını yürüttüğünüzde, şöyle bir hata alırsınız: ```"Job failed due to reason: DF-SYS-01 at Sink 'WriteToDatabase': java.sql.BatchUpdateException: String or binary data would be truncated. java.sql.BatchUpdateException: String or binary data would be truncated."```
 
 Bu video, veri akışınızda hata satırı işleme mantığını ayarlamaya ilişkin bir örnek göstermektedir:
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4uOHj]

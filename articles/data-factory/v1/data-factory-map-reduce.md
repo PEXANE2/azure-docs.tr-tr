@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 598a16d25ba375b984a966cba190181edbda3d15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74703146"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Data Factory 'den MapReduce programlarını çağırma
@@ -178,7 +178,7 @@ Bu örnekteki işlem hattı herhangi bir giriş yapmaz. HDInsight MapReduce etki
 }
 ```
 
-### <a name="pipeline"></a>İşlem hattı
+### <a name="pipeline"></a>İşlem Hattı
 Bu örnekteki işlem hattının şu türde yalnızca bir etkinliği vardır: HDInsightMapReduce. JSON 'daki önemli özelliklerden bazıları şunlardır: 
 
 | Özellik | Notlar |

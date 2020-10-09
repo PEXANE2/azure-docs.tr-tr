@@ -5,10 +5,10 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 ms.reviewer: chroyal
 ms.openlocfilehash: 78c93880007259267b26cf53e93de722be1c7323
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77209452"
 ---
 # <a name="what-is-blockchain-data-manager-for-azure-blockchain-service"></a>Azure Blok Zinciri Hizmeti için Blok Zinciri Veri Yöneticisi nedir?
@@ -21,7 +21,7 @@ Blok zinciri Veri Yöneticisi üç ana işlev gerçekleştirir: yakalama, dönü
 
 ![Blok zinciri Veri Yöneticisi işlevleri](./media/data-manager/functions.png)
 
-## <a name="capture"></a>Capture
+## <a name="capture"></a>Yakalama
 
 Her blok zinciri Veri Yöneticisi örneği, bir Azure blok zinciri hizmeti üye işlem düğümüne bağlanır. Yalnızca işlem düğümüne erişimi olan kullanıcılar, müşteri verilerine doğru erişim denetimi sağlayan bir bağlantı oluşturabilir. Bir blok zinciri Veri Yöneticisi örneği, işlem düğümünden tüm ham blok ve ham işlem verilerini güvenilir bir şekilde yakalar ve kurumsal iş yüklerini destekleyecek şekilde ölçeklendirebilir.
 

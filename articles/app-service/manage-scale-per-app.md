@@ -8,10 +8,10 @@ ms.date: 05/13/2019
 ms.author: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: f1ca4958fe2608d0c040ef5b93827a7e71a4151c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74672344"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>Uygulama başına ölçeklendirmeyi kullanarak Azure App Service yüksek yoğunluklu barındırma
@@ -65,7 +65,7 @@ Set-AzWebApp $newapp
 ```
 
 > [!IMPORTANT]
-> `$newapp.SiteConfig.NumberOfWorkers`, öğesinden farklıdır `$newapp.MaxNumberOfWorkers` . Uygulama başına ölçeklendirme `$newapp.SiteConfig.NumberOfWorkers` , uygulamanın ölçek özelliklerini belirlemede kullanır.
+> `$newapp.SiteConfig.NumberOfWorkers` , öğesinden farklıdır `$newapp.MaxNumberOfWorkers` . Uygulama başına ölçeklendirme `$newapp.SiteConfig.NumberOfWorkers` , uygulamanın ölçek özelliklerini belirlemede kullanır.
 
 ## <a name="per-app-scaling-using-azure-resource-manager"></a>Azure Resource Manager kullanarak uygulama başına ölçeklendirme
 

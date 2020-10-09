@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2020
 ms.openlocfilehash: 627c03409b0808ff2bcdbb24e961800e944dcfc8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91291308"
 ---
 # <a name="tutorial-migrate-rds-postgresql-to-azure-db-for-postgresql-online-using-dms"></a>Öğretici: DMS kullanarak RDS PostgreSQL 'i PostgreSQL için Azure DB 'ye geçirme
@@ -65,7 +65,7 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 2. Azure veritabanı geçiş hizmeti ' nden kaynağa bağlanmak için ana Kullanıcı adını kullanın. Ana Kullanıcı hesabı dışında bir hesap kullanıyorsanız, hesabın rds_superuser rolü ve rds_replication rolü olmalıdır. Rds_replication rolü, mantıksal yuvaları yönetme ve mantıksal yuvaları kullanarak veri akışı için izinler verir.
 3. Aşağıdaki yapılandırmayla yeni bir parametre grubu oluşturun:
 
-    a. DB parametre grubunuzda RDS. logical_replication parametresini 1 olarak ayarlayın.
+    a. DB parametre grubunuzda rds.logical_replication parametresini 1 olarak ayarlayın.
 
     b. max_wal_senders = [eşzamanlı görev sayısı]-max_wal_senders parametresi çalıştırılabilen eşzamanlı görevlerin sayısını belirler, 10 görev önerir.
 

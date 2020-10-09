@@ -12,10 +12,10 @@ ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 1ad9cc3d6d07c8d744ec667e2fffb035848121b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85203257"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection talep dönüştürmeleri
@@ -132,7 +132,7 @@ Bir StringCollection talep türünün bir öğe içerip içermediğini denetler
 | Inputclaim | ınputclaim | stringCollection | Aranacak talep türü. |
 |InputParameter|öğe|string|Aranacak değer.|
 |InputParameter|ignoreCase|string|Bu karşılaştırmanın karşılaştırılan dizelerin durumunu yoksayıp saymayacağını belirtir.|
-| OutputClaim | outputClaim | boole | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. Koleksiyon böyle bir dize içeriyorsa Boolean göstergesi |
+| OutputClaim | outputClaim | boolean | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. Koleksiyon böyle bir dize içeriyorsa Boolean göstergesi |
 
 Aşağıdaki örnek, `roles` StringCollection talep türünün **yönetici**değerini içerip içermediğini denetler.
 
@@ -168,7 +168,7 @@ Bir StringCollection talep türünün bir talep değeri içerip içermediğini d
 | Inputclaim |  koleksiyonu | stringCollection | Aranacak talep türü. |
 | Inputclaim | öğe|string| Aranacak değeri içeren talep türü.|
 |InputParameter|ignoreCase|string|Bu karşılaştırmanın karşılaştırılan dizelerin durumunu yoksayıp saymayacağını belirtir.|
-| OutputClaim | outputClaim | boole | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. Koleksiyon böyle bir dize içeriyorsa Boolean göstergesi |
+| OutputClaim | outputClaim | boolean | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. Koleksiyon böyle bir dize içeriyorsa Boolean göstergesi |
 
 Aşağıdaki örnek, `roles` StringCollection talep türünün talep türü değerini içerip içermediğini denetler `role` .
 

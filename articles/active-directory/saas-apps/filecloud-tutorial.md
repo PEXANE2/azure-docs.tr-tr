@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.openlocfilehash: f41312521202f406c3826880f345e0bbe7600bd3
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91817218"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filecloud"></a>Öğretici: FileCloud ile tümleştirme Azure Active Directory
@@ -75,7 +75,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açma 'yı FileCloud ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Dosya bulutu çoklu oturum açmayı yapılandırma](#configure-filecloud-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[Dosya bulutu çoklu oturum açmayı yapılandırma](#configure-filecloud-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Dosya bulutu 'nda kullanıcının Azure AD gösterimine bağlı olan Britta Simon 'ın bir karşılığı olacak şekilde **[filecloud test kullanıcısı oluşturun](#create-filecloud-test-user)** .
@@ -95,7 +95,7 @@ Azure AD çoklu oturum açmayı FileCloud ile yapılandırmak için aşağıdaki
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -110,7 +110,7 @@ Azure AD çoklu oturum açmayı FileCloud ile yapılandırmak için aşağıdaki
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Dosya bulutu istemci destek ekibine](mailto:support@codelathe.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -124,7 +124,7 @@ Azure AD çoklu oturum açmayı FileCloud ile yapılandırmak için aşağıdaki
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-filecloud-single-sign-on"></a>Dosya bulutu çoklu oturum açmayı yapılandırma
+### <a name="configure-filecloud-single-sign-on"></a>Dosya bulutu tek Sign-On yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, dosya bulutu kiracınızda yönetici olarak oturum açın.
 
@@ -146,7 +146,7 @@ Azure AD çoklu oturum açmayı FileCloud ile yapılandırmak için aşağıdaki
 
 6. İndirilen meta veri dosyanızı Not defteri 'nde açın, bu içeriği panonuza kopyalayın ve ardından **SAML ayarları** panelinde **IDP meta verileri** metin kutusuna yapıştırın.
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/filecloud-tutorial/tutorial_filecloud_004.png)
+    ![Uygulama tarafında tek Sign-On yapılandırma](./media/filecloud-tutorial/tutorial_filecloud_004.png)
 
 7. **Kaydet** düğmesine tıklayın.
 

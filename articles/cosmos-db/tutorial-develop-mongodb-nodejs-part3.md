@@ -11,10 +11,10 @@ ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
 ms.openlocfilehash: c16d7ccba24680604bc7f083f7242edd53abe102
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91282910"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>MongoDB için Azure Cosmos DB API 'SI ile angular uygulaması oluşturma-kullanıcı arabirimini angular ile derleme
@@ -62,7 +62,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni 
 
 4. Aynı klasörde **app.module.ts** dosyasını açın. 5. ve 10. satırdaki bildirimlere `HeroesComponent` bileşeninin eklendiğine dikkat edin.
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png" alt-text="app-module.ts dosyasını açın":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png" alt-text="Hero bileşenini yükleme":::
 
 5. **heroes.component.html** dosyasına dönün ve bu kodları kopyalayın. `<div>`, tüm sayfaya yönelik kapsayıcıdır. Kapsayıcı içinde, oluşturmamız gereken hero'ların bir listesi vardır. Kullanıcı arabiriminde bunları tıklayarak seçebilir, düzenleyebilir veya silebilirsiniz. HTML'de hangisinin seçili olduğunu anlayabilmeniz için bazı stil farklılıkları vardır. Ayrıca yeni hero’yu eklemenizi veya mevcut bir hero’yu düzenlemenizi sağlayan bir düzenleme alanı bulunur. 
 
@@ -394,7 +394,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni 
 
 5. `Hero` terimine sol tıkladığınızda Visual Studio, kod bloğunun sol tarafında bir ampul simgesi görüntüler. 
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png" alt-text="Visual Studio Code'da Ampul":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png" alt-text="Hero bileşenini yükleme":::
 
 6. Ampule ve ardından **Import Hero from "/app/hero".** ("/uygulama/hero"dan Hero İçeri Aktar) seçeneğine tıklayın. veya **Import Hero from "./hero".** ("./hero"dan Hero İçeri Aktar.) seçeneğine tıklayın. (İleti, kurulumunuza bağlı olarak değişebilir)
 
@@ -490,7 +490,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni 
 
 3. Şimdi bir İnternet tarayıcısı açın ve **localhost:3000** adresine giderek yerel olarak çalışan uygulamayı görüntüleyin.
 
-     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png" alt-text="Yerel olarak çalışan Hero uygulaması":::
+     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png" alt-text="Hero bileşenini yükleme":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
 ms.openlocfilehash: c110a4e0429ba52e01c472097a2241f91d504cf5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77616201"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>Azure 'da SAP S/4HANA veya siyah beyaz/4HANA dağıtma
@@ -35,7 +35,7 @@ Bu makalede SAP Cloud gereç kitaplığı (SAP CAL) 3,0 kullanılarak Azure 'da 
 
 Aşağıdaki ekran görüntüleri dizisi, SAP CAL kullanarak Azure 'da S/4HANA 'yı nasıl dağıtacağınızı gösterir. İşlem, siyah beyaz/4HANA gibi diğer çözümlerle aynı şekilde işler.
 
-**Çözümler** sayfasında, Azure 'DA KULLANıLABILEN SAP Cal Hana tabanlı çözümlerin bazıları gösterilir. **SAP S/4HANA 1610 FPS01, tam özellikli gereç** orta satırdaysa:
+**Çözümler** sayfasında, Azure 'DA KULLANıLABILEN SAP Cal Hana tabanlı çözümlerin bazıları gösterilir. **SAP S/4HANA 1610 FPS01, Fully-Activated gereç** orta satırdaysa:
 
 ![SAP CAL çözümleri](./media/cal-s4h/s4h-pic-1c.png)
 

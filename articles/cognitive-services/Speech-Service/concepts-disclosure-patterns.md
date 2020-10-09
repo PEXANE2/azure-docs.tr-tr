@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: angle
 ms.openlocfilehash: 3e7d8ee2b156a30b11cda79798a8af8a8ecf4f64
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74776631"
 ---
 # <a name="disclosure-design-patterns"></a>Tasarım desenlerini açıklama
@@ -62,7 +62,7 @@ Ses deneyimi başlamadan önce, sesin kaynakları ve özellikleri hakkında tama
 *Yeni bir Kullanıcı eklenirken yapay ses ortaya çıkartılır.*
 
 Öneriler
-- Sesin yapay olduğunu (örn. &quot;dijital&quot;) Açıklama
+- Sesin yapay olduğunu (örn. &quot; dijital &quot; ) Açıklama
 - Aracının yapabilme yeteneğine sahip olduğunu açıkla
 - Sesli&#39;s kaynakları açıkça durumu
 - Yapay ses hakkında daha fazla bilgi edinmek için bir giriş noktası sunun
@@ -141,7 +141,7 @@ COPPA düzenlemelerine uyanın yanı sıra, birincil amaçlanan hedef kitlesi k�
 - Ana öğeleri birincil hedef kitle olarak açıklama olarak hedefleyin
 - Üst öğeleri, alt öğelerine açıklama ile iletişim kurmaya teşvik edin
 - Birleştirilmiş ses hakkında daha fazla bilgi edinmek için giriş noktaları sunun
-- Ebeveynler, üst bilgilerin açığa çıkmasına neden olduğunu &quot;göstermek&quot; için ebeveynlerle basit bir güvenlik sorusu sorarak deneyim
+- Ebeveynler &quot; &quot; , üst bilgilerin açığa çıkmasına neden olduğunu göstermek için ebeveynlerle basit bir güvenlik sorusu sorarak deneyim
 
 ### <a name="providing-opportunities-to-learn-more-about-how-the-voice-was-made"></a>Sesin nasıl yapıldığı hakkında daha fazla bilgi edinmek için fırsat sağlama
 
@@ -193,13 +193,13 @@ Konuşmalar beklenmeyen yollara denk geldiğinde, beklentileri sıfırlamasına,
 ![Beklenmeyen yolları işleme](media/responsible-ai/disclosure-patterns/conversational-transparency-1.png)<br/>
 
 <br/>
-Kapalı görev veya &quot;aracıya&quot; yönelik kişisel sorular, kullanıcılara aracının yapay yapısını anımsatmak ve BT 'yi uygun bir kişiye doğru şekilde yönelmek ya da onları gerçek bir kişiye yönlendirmek için iyi bir zaman harcar.
+Kapalı görev veya &quot; &quot; aracıya yönelik kişisel sorular, kullanıcılara aracının yapay yapısını anımsatmak ve BT 'yi uygun bir kişiye doğru şekilde yönelmek ya da onları gerçek bir kişiye yönlendirmek için iyi bir zaman harcar.
 
 ![Görev için soruları işleme](media/responsible-ai/disclosure-patterns/conversational-transparency-2.png)<br/>
 
 ## <a name="when-to-disclose"></a>Ne zaman açığa çıkar
 
-Kullanıcı yolculuğu boyunca açıklananın çok sayıda fırsat vardır. İlk kullanım için tasarım, ikinci kullanım, n...., ayrıca &quot;&quot; , saydamlık vurgulamamasının (sistem bir hata yaptığı veya Kullanıcı aracı&#39;s özellikleri sınırlaması bulduğunda olduğu gibi).
+Kullanıcı yolculuğu boyunca açıklananın çok sayıda fırsat vardır. İlk kullanım için tasarım, ikinci kullanım, n...., Ayrıca, &quot; &quot; Saydamlık vurgulamamasının (sistem bir hata yaptığı veya kullanıcı aracı&#39;s özellikleri sınırlaması bulduğunda olduğu gibi).
 
 ![Kullanıcı yolculuğu boyunca açıklama fırsatları](media/responsible-ai/disclosure-patterns/touchpoints.png)<br/>
 

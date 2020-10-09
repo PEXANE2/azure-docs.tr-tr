@@ -8,10 +8,10 @@ keywords: Azure App Service, Web uygulaması, Linux, Windows, Docker, kapsayıc�
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python
 zone_pivot_groups: app-service-containers-windows-linux
 ms.openlocfilehash: f4b2aea0a6782b5484b2f6d15066d71990348596
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91312065"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Özel bir kapsayıcı kullanarak Azure App Service özel yazılım geçirme
@@ -64,7 +64,7 @@ Yüklenmiş olan bir yazı tipini kullandığından uygulama App Service korumal
 
 Çözüm Gezgini'nde **CustomFontSample** projesine sağ tıklayıp **Ekle** > **Kapsayıcı Düzenleme Desteği**'ne tıklayın.
 
-:::image type="content" source="media/tutorial-custom-container/enable-container-orchestration.png" alt-text="CustomFontSample projesi, ekleme ve kapsayıcı Orchestrator desteği menü öğelerini gösteren Çözüm Gezgini penceresinin ekran görüntüsü.":::
+:::image type="content" source="media/tutorial-custom-container/enable-container-orchestration.png" alt-text="Varsayılan tarayıcıda gösterilen uygulamayı gösteren ekran görüntüsü.":::
 
 **Docker Compose**  >  **Tamam ' ı**seçin.
 
@@ -98,13 +98,13 @@ _InstallFont.ps1_ dosyasını **CustomFontSample** projesinde bulabilirsiniz. Ya
 
 Çözüm Gezgini'nde **CustomFontSample** projesine sağ tıklayın ve **Yayımla**'yı seçin.
 
-:::image type="content" source="media/tutorial-custom-container/open-publish-wizard.png" alt-text="CustomFontSample projesini gösteren Çözüm Gezgini ekran görüntüsü ve seçili yayımlama.":::
+:::image type="content" source="media/tutorial-custom-container/open-publish-wizard.png" alt-text="Varsayılan tarayıcıda gösterilen uygulamayı gösteren ekran görüntüsü.":::
 
 ### <a name="create-registry-and-publish"></a>Kayıt defterini oluşturma ve yayımlama
 
 Yayımla sihirbazında **Container Registry**  >  **yeni Azure Container Registry oluştur**' u seçin  >  **Publish**.
 
-:::image type="content" source="media/tutorial-custom-container/create-registry.png" alt-text="Container Registry, yeni Azure Container Registry oluştur ve Yayımla düğmesi seçili olan Yayımla Sihirbazı ekran görüntüsü.":::
+:::image type="content" source="media/tutorial-custom-container/create-registry.png" alt-text="Varsayılan tarayıcıda gösterilen uygulamayı gösteren ekran görüntüsü.":::
 
 ### <a name="sign-in-with-azure-account"></a>Azure hesabınızla oturum açın
 

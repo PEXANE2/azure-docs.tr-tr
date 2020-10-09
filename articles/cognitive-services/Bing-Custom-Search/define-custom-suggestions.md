@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
 ms.openlocfilehash: 5b2b8871d868e827532f23c7ef4f14fb00afb5bc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74072796"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>Özel otomatik öneri deneyiminizi yapılandırın
@@ -65,13 +65,13 @@ Barındırılan Kullanıcı arabiriminiz için sorgu dizesi önerilerini etkinle
 
 ## <a name="calling-the-autosuggest-api"></a>Otomatik öneri API 'sini çağırma
 
-Bing Özel Arama API'si kullanarak önerilen Sorgu dizelerini almak için aşağıdaki uç noktaya bir `GET` istek gönderin.
+Bing Özel Arama API'si kullanarak önerilen Sorgu dizelerini almak için `GET` aşağıdaki uç noktaya bir istek gönderin.
 
 ```
 GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/Suggestions 
 ```
 
-Yanıt, önerilen Sorgu dizelerini içeren `SearchAction` nesnelerin bir listesini içerir.
+Yanıt, `SearchAction` Önerilen Sorgu dizelerini içeren nesnelerin bir listesini içerir.
 
 ```
         {  
@@ -81,7 +81,7 @@ Yanıt, önerilen Sorgu dizelerini içeren `SearchAction` nesnelerin bir listesi
         },  
 ```
 
-Her öneri bir `displayText` ve `query` alanı içerir. Alan `displayText` , arama kutusunun açılan listesini doldurmak için kullandığınız önerilen sorgu dizesini içerir.
+Her öneri bir `displayText` ve `query` alanı içerir. `displayText`Alan, arama kutusunun açılan listesini doldurmak için kullandığınız önerilen sorgu dizesini içerir.
 
 Kullanıcı, açılan listeden önerilen bir sorgu dizesi seçerse, `query` [Bing özel arama API'si](overview.md)çağırırken alanın sorgu dizesini kullanın.
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: bbd39c85385d6690a80f540c9e0cd23a321e7e84
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91821219"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-front"></a>Öğretici: önde Azure Active Directory tümleştirme
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açma 'yı ön ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Ön çoklu oturum açmayı yapılandırma](#configure-front-single-sign-on)** uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[Ön çoklu oturum açmayı yapılandırma](#configure-front-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Ön **[test kullanıcısı oluşturun](#create-front-test-user)** -önde gelen, kullanıcının Azure AD gösterimine bağlı olan Britta Simon 'un bir karşılığı vardır.
@@ -93,11 +93,11 @@ Azure AD çoklu oturum açmayı ön ile yapılandırmak için aşağıdaki adım
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki adımları uygulayın:
+4. **SAML Ile tek Sign-On ayarlama** sayfasında, aşağıdaki adımları gerçekleştirin:
 
     ![Ön etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
 
@@ -108,7 +108,7 @@ Azure AD çoklu oturum açmayı ön ile yapılandırmak için aşağıdaki adım
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [ön istemci desteği ekibine](mailto:support@frontapp.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -122,7 +122,7 @@ Azure AD çoklu oturum açmayı ön ile yapılandırmak için aşağıdaki adım
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-front-single-sign-on"></a>Ön çoklu oturum açmayı yapılandırma
+### <a name="configure-front-single-sign-on"></a>Ön Single Sign-On yapılandırma
 
 1. Ön kiracınızda yönetici olarak oturum açın.
 
@@ -148,7 +148,7 @@ Azure AD çoklu oturum açmayı ön ile yapılandırmak için aşağıdaki adım
 
 7. **Hizmet sağlayıcı ayarları** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/front-tutorial/tutorial_front_005.png)
+    ![Uygulama tarafında tek Sign-On yapılandırma](./media/front-tutorial/tutorial_front_005.png)
 
     a. **VARLıK kimliği** değerini kopyalayın ve Azure Portal ' deki **ön etki alanı ve URL 'ler** bölümünde **tanımlayıcı** metin kutusuna yapıştırın.
 

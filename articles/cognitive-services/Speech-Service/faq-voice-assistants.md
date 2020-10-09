@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
 ms.openlocfilehash: 8480299c2c889a243150028ac9651f4b62656aec
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74110349"
 ---
 # <a name="voice-assistants-frequently-asked-questions"></a>Sesli yardımcılar hakkında sık sorulan sorular
@@ -43,11 +43,11 @@ Y **:** Özel komutlar (Önizleme) uygulaması veya temel bot Framework bot olu�
 
 **S: Kanal gizliliğim nerede?**
 
-Y **:** Doğrudan hat konuşma önizleme sürümünü kullandıysanız veya ilgili belgeleri okuyorsanız, doğrudan hat konuşma kanalı kaydı sayfasında bir gizli anahtar bulmayı bekleyebilir. Konuşma SDK 'sında `DialogServiceConfig` v 1.7 `FromBotSecret` Factory yöntemi de bu değeri bekler.
+Y **:** Doğrudan hat konuşma önizleme sürümünü kullandıysanız veya ilgili belgeleri okuyorsanız, doğrudan hat konuşma kanalı kaydı sayfasında bir gizli anahtar bulmayı bekleyebilir. `DialogServiceConfig`Konuşma SDK 'sında v 1.7 Factory yöntemi `FromBotSecret` de bu değeri bekler.
 
-Doğrudan hat konuşma 'nın en son sürümü bir cihazdan bot ile iletişim kurma sürecini basitleştirir. Kanal kaydı sayfasında, üstteki açılan kutuda doğrudan hat konuşma kanalı kaydınızı bir konuşma kaynağıyla ilişkilendirir. Bağlantı kurulduktan sonra, v 1.8 konuşma SDK 'Sı, `BotFrameworkConfig::FromSubscription` aboneliğiniz ile ilişkilendirdiğiniz bot ile iletişim `DialogServiceConnector` kurmak üzere bir fabrika yöntemi içerir.
+Doğrudan hat konuşma 'nın en son sürümü bir cihazdan bot ile iletişim kurma sürecini basitleştirir. Kanal kaydı sayfasında, üstteki açılan kutuda doğrudan hat konuşma kanalı kaydınızı bir konuşma kaynağıyla ilişkilendirir. Bağlantı kurulduktan sonra, v 1.8 konuşma SDK 'Sı, `BotFrameworkConfig::FromSubscription` `DialogServiceConnector` aboneliğiniz ile ilişkilendirdiğiniz bot ile iletişim kurmak üzere bir fabrika yöntemi içerir.
 
-Hala, istemci uygulamanızı v 1.7 'den v 1.8 'e geçiriyorsanız, `DialogServiceConfig::FromBotSecret` kanal gizli parametresi için boş olmayan ve null olmayan bir değer ile çalışmaya devam edebilir, örneğin, daha önce kullandığınız gizli dizi. Daha yeni bir kanal kaydıyla ilişkili bir konuşma aboneliği kullanılırken yalnızca yok sayılır. Bu değer, hizmet tarafı ilişkisinin ilgili olması için cihazda denetlendiğinden, null ve boş olmayan bir değer _olmalıdır_ .
+Hala, istemci uygulamanızı v 1.7 'den v 1.8 'e geçiriyorsanız, `DialogServiceConfig::FromBotSecret` Kanal gizli parametresi için boş olmayan ve null olmayan bir değer ile çalışmaya devam edebilir, örneğin, daha önce kullandığınız gizli dizi. Daha yeni bir kanal kaydıyla ilişkili bir konuşma aboneliği kullanılırken yalnızca yok sayılır. Bu değer, hizmet tarafı ilişkisinin ilgili olması için cihazda denetlendiğinden, null ve boş olmayan bir değer _olmalıdır_ .
 
 Daha ayrıntılı bir kılavuz için, lütfen kanal kaydını adım adım gösteren [öğretici bölümüne](tutorial-voice-enable-your-bot-speech-sdk.md#register-the-direct-line-speech-channel) bakın.
 
@@ -57,14 +57,14 @@ Y **:** Aboneliğinizi Azure portal yönetirken, lütfen _bilişsel_ **Hizmetler
 
 ![doğrudan hat konuşmayı için doğru abonelik](media/voice-assistants/faq-supported-subscription.png "uyumlu bir konuşma aboneliği örneği")
 
-**S: tanıma metnini My `DialogServiceConnector`'dan geri aldım, ancak bir ' 1011 ' hatası ve botum 'dan hiçbir şey görmüyorum. Kaydol?**
+**S: tanıma metnini My 'dan geri aldım `DialogServiceConnector` , ancak bir ' 1011 ' hatası ve botum 'dan hiçbir şey görmüyorum. Kaydol?**
 
 Y **:** Bu hata, yardımcınızla ses Yardımcısı hizmeti arasında bir iletişim sorunu olduğunu gösterir.
 
 - Özel komutlar (Önizleme) için, özel komutlar (Önizleme) uygulamanızın yayımlandığından emin olun
 - Doğrudan hat konuşması için, [bot 'Unuzu doğrudan hat konuşma kanalına bağladığınıza](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech), bot 'Unuza [akış protokolü desteği](https://aka.ms/botframework/addstreamingprotocolsupport) (ilgili Web yuva desteğiyle) eklemiş olduğunuzdan emin olun ve ardından, bot 'un kanaldan gelen isteklere yanıt verdiğini denetleyin.
 
-**S: Bu kod hala çalışmıyor ve/veya kullanırken farklı bir hata alıyorum `DialogServiceConnector`. Ne yapmam gerekir?**
+**S: Bu kod hala çalışmıyor ve/veya kullanırken farklı bir hata alıyorum `DialogServiceConnector` . Ne yapmam gerekir?**
 
 Y **:** Dosya tabanlı günlük kaydı önemli ölçüde daha fazla ayrıntı sağlar ve destek isteklerini hızlandırmaya yardımcı olabilir. Bu işlevi etkinleştirmek için bkz. [dosya günlüğünü kullanma](how-to-use-logging.md).
 

@@ -4,7 +4,7 @@
   items:
     - name: Azure Haritalar nedir?
       href: about-azure-maps.md
-- name: Hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   expanded: true
   items:
     - name: Web uygulaması oluşturma

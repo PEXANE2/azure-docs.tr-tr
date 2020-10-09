@@ -4,7 +4,7 @@
   items:
     - name: Maliyet Yönetimi ve Faturalandırma nedir?
       href: cost-management-billing-overview.md
-- name: Hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   expanded: true
   items:
     - name: Maliyet analizini başlatın

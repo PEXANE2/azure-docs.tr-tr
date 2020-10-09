@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 2/5/2020
 ms.author: ramamill
 ms.openlocfilehash: f24d321e882024d324435498adf11694037547f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77252236"
 ---
 # <a name="automate-mobility-service-installation"></a>Mobility hizmeti yüklemesini otomatikleştirin
@@ -31,7 +31,7 @@ Otomatik yükleme ve güncelleştirme, şu durumlarda bir çözüm sağlar:
 - Aracı yüklemelerini aynı anda çok sayıda sunucuya ölçeklendirmeniz gerekir.
 - Planlı bakım pencereleri sırasında yüklemeleri ve yükseltmeleri zamanlamak istiyorsunuz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Yüklemeyi otomatikleştirmek için aşağıdaki öğeler gereklidir:
 
@@ -354,7 +354,7 @@ cd /tmp
 
     **Parametre** | **Windows değeri** | **Linux değeri**
     --- | --- | ---
-    **Adı** | Microsoft Azure Mobility hizmetini (Windows) yükler | Microsoft Azure Mobility hizmeti 'ni (Linux) yükler.
+    **Ad** | Microsoft Azure Mobility hizmetini (Windows) yükler | Microsoft Azure Mobility hizmeti 'ni (Linux) yükler.
     **Komut satırı** | install.bat | ./install_linux. sh
     **Program çalışabilir** | Kullanıcının oturum açmış olup olmadığı | Kullanıcının oturum açmış olup olmadığı
     **Diğer parametreler** | Varsayılan ayarı kullan | Varsayılan ayarı kullan
@@ -364,7 +364,7 @@ cd /tmp
 1. **Bu standart program için gereksinimleri belirtin**bölümünde aşağıdaki görevleri yapın:
 
    - Windows makineleri için, **Bu program yalnızca belirtilen platformlarda çalıştırılabilir**' i seçin. Ardından, [desteklenen Windows işletim sistemlerini](vmware-physical-azure-support-matrix.md#replicated-machines) seçin ve **İleri**' yi seçin.
-   - Linux makineleri için, **Bu program herhangi bir platformda çalışabilir**' i seçin. Ardından **İleri**' yi seçin.
+   - Linux makineleri için, **Bu program herhangi bir platformda çalışabilir**' i seçin. Ardından **İleri**’yi seçin.
 
 1. Sihirbazı tamamlayın.
 

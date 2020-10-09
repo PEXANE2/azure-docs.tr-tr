@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 0d2953710c559deb094761410e6d46401e103d8b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88553300"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purecloud-by-genesys"></a>Öğretici: Genesys tarafından Purecg ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile Genesys tarafından Purec
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -46,7 +46,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 ## <a name="adding-purecloud-by-genesys-from-the-gallery"></a>Galeriden Genesys 'e göre Purecg ekleme
 
-Genesys tarafından Azure AD 'ye göre purecı tümleştirmesini yapılandırmak için, Genesys tarafından yönetilen SaaS uygulamaları listenize, Genesys 'e göre pureci 'yi eklemeniz gerekir. Bunu yapmak için şu adımları izleyin:
+Genesys tarafından Azure AD 'ye göre purecı tümleştirmesini yapılandırmak için, Genesys tarafından yönetilen SaaS uygulamaları listenize, Genesys 'e göre pureci 'yi eklemeniz gerekir. Bunu yapmak için şu adımları uygulayın:
 
 1. Bir iş veya okul hesabı kullanarak veya kişisel bir Microsoft hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
@@ -73,8 +73,8 @@ Genesys tarafından Purecı ile Azure AD SSO 'yu yapılandırmak ve test etmek i
 Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com/), **Genesys** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesini seçin.
+1. **Tek bir Sign-On yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesini seçin.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -118,12 +118,12 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
 
 1. Ayrıca, Genesys uygulamasına göre Purecı, aşağıdaki tabloda gösterildiği gibi SAML yanıtına birkaç özniteliğin geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gerektiğinde bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ---------------| --------------- |
     | E-posta | User. UserPrincipalName |
     | OrganizationName | `Your organization name` |
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML Ile tekli Sign-On ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -167,11 +167,11 @@ Bu bölümde, Genesys tarafından Purecg 'ye erişim izni vererek Azure çoklu o
 
 1. Üstte **yönetici** ' yi seçin ve ardından **tümleştirmeler**altında **Çoklu oturum açma '** ya gidin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/purecloud-by-genesys-tutorial/configure01.png)
+    ![Tek Sign-On yapılandırma](./media/purecloud-by-genesys-tutorial/configure01.png)
 
 1. **ADFS/Azure AD (Premium)** sekmesine geçin ve aşağıdaki adımları uygulayın:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/purecloud-by-genesys-tutorial/configure02.png)
+    ![Tek Sign-On yapılandırma](./media/purecloud-by-genesys-tutorial/configure02.png)
 
     a. Azure portal indirdiğiniz Base-64 kodlu sertifikayı **ADFS sertifikasına**yüklemek için **Araştır** ' ı seçin.
 
@@ -181,7 +181,7 @@ Bu bölümde, Genesys tarafından Purecg 'ye erişim izni vererek Azure çoklu o
 
     d. **Bağlı olan taraf tanımlayıcı** değeri için Azure Portal gidin ve **Genesys tarafından poreck** uygulama tümleştirmesi sayfasında, **ÖZELLIKLER** sekmesini seçin ve **uygulama kimliği** değerini kopyalayın. **Bağlı olan taraf tanımlayıcısı** kutusuna yapıştırın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/purecloud-by-genesys-tutorial/configure06.png)
+    ![Tek Sign-On yapılandırma](./media/purecloud-by-genesys-tutorial/configure06.png)
 
     e. **Kaydet**’i seçin.
 
@@ -195,15 +195,15 @@ Azure AD kullanıcılarının Genesys tarafından purecg 'de oturum açmasını 
 
 1. Üstte **yönetici** ' yi seçin ve **kişiler & izinler**' in altındaki **kişilere** gidin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/purecloud-by-genesys-tutorial/configure03.png)
+    ![Tek Sign-On yapılandırma](./media/purecloud-by-genesys-tutorial/configure03.png)
 
 1. **Kişiler** sayfasında **kişi ekle**' yi seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/purecloud-by-genesys-tutorial/configure04.png)
+    ![Tek Sign-On yapılandırma](./media/purecloud-by-genesys-tutorial/configure04.png)
 
 1. **Kuruluşa kişi ekle** iletişim kutusunda aşağıdaki adımları izleyin:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/purecloud-by-genesys-tutorial/configure05.png)
+    ![Tek Sign-On yapılandırma](./media/purecloud-by-genesys-tutorial/configure05.png)
 
     a. **Tam ad** kutusuna bir kullanıcının adını girin. Örneğin: **B. Simon**.
 

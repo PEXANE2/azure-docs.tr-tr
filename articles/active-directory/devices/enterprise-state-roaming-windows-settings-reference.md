@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6048ee9237640799b7bec37083e607fc74ffb8e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85252976"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 dolaşım ayarları başvurusu
@@ -26,11 +26,11 @@ Windows 10 ' da dolaşılabilir veya yedeklenecek ayarların bir listesi aşağ�
 
 Windows 10 ' da eşitleme, yedekleme ve geri yükleme çerçevesi tarafından desteklenen cihazların ve hesap türlerinin Özeti için aşağıdaki tabloya bakın.
 
-| Hesap türü ve işlem | Masaüstü | Mobil |
+| Hesap türü ve işlem | Masaüstü | Cep telefonu |
 | --- | --- | --- |
 | Azure Active Directory: eşitleme |Evet |Hayır |
 | Azure Active Directory: yedekleme/geri yükleme |Hayır |Hayır |
-| Microsoft hesabı: eşitleme |Yes |Yes |
+| Microsoft hesabı: eşitleme |Evet |Evet |
 | Microsoft hesabı: yedekleme/geri yükleme |Hayır |Evet |
 
 ## <a name="what-is-backup"></a>Yedekleme nedir?
@@ -69,11 +69,11 @@ Aşağıdaki tabloda, ayarlar grubu sütunundaki diğer girişler ayarlar > hesa
 Ayarlar Grup sütunundaki iç girişler yalnızca uygulamanın kendisi içinde eşitlenmesi devre dışı bırakılabilecek veya mobil cihaz yönetimi (MDM) veya grup ilkesi ayarları kullanılarak tüm cihazın eşitlemesini devre dışı bırakarak, ayarlar ve uygulamalar bölümüne başvurur.
 Dolaşımda olmayan veya eşitlenmeyecek ayarlar bir gruba ait değil.
 
-| Ayarlar | Masaüstü | Mobil | Grup |
+| Ayarlar | Masaüstü | Cep telefonu | Grup |
 | --- | --- | --- | --- |
 | **Hesaplar**: hesap resmi |eşitleme |X |Tema |
 | **Hesaplar**: diğer hesap ayarları |X |X | |
-| **Gelişmiş Mobil geniş bant**: Internet bağlantısı paylaşımı ağ adı (Bluetooth Ile mobil Wi-Fi etkin noktalarına otomatik bulma imkanı sunar) |X |X |Parolalar |
+| **Gelişmiş Mobil geniş bant**: Internet bağlantısı paylaşımı ağ adı (Bluetooth ile mobil Wi-Fi etkin noktalara otomatik bulma imkanı sunar) |X |X |Parolalar |
 | **Uygulama verileri**: ayrı uygulamalar, verileri eşitleyebilir |Eşitleme yedeklemesi |Eşitleme yedeklemesi |internal |
 | **Uygulama listesi**: yüklü uygulamaların listesi |X |yedekleme |Diğer |
 | **Bluetooth**: tüm Bluetooth ayarları |X |X | |
@@ -95,7 +95,7 @@ Dolaşımda olmayan veya eşitlenmeyecek ayarlar bir gruba ait değil.
 | **Masaüstü kişiselleştirme**: slayt gösterisi duvar kağıdı |eşitleme |X |Tema |
 | **Masaüstü kişiselleştirme**: görev çubuğu ayarları (konum, otomatik gizleme vb.) |eşitleme |X |Tema |
 | **Masaüstü kişiselleştirme**: başlangıç ekranı düzeni |X |yedekleme | |
-| **Cihazlar**: bağladığınız paylaşılan yazıcılar |X |X |diğer |
+| **Cihazlar**: bağladığınız paylaşılan yazıcılar |X |X |other |
 | **Microsoft Edge tarayıcısı**: okuma listesi |eşitleme |eşitleme |internal |
 | **Microsoft Edge tarayıcısı**: Sık Kullanılanlar |eşitleme |eşitleme |internal |
 | **Microsoft Edge tarayıcısı**: en iyi siteler <sup> [[1]](#footnote-1)</sup> |eşitleme |eşitleme |internal |
@@ -152,8 +152,8 @@ Dolaşımda olmayan veya eşitlenmeyecek ayarlar bir gruba ait değil.
 | **Büyüteç**: izleme-klavye odağını izleyin |eşitleme |X |Erişim kolaylığı |
 | **Büyüteç**: izleme-fare imlecini izleyin |eşitleme |X |Erişim kolaylığı |
 | **Büyüteç**: kullanıcılar oturum açtığında Başlat (varsayılan olarak kapalıdır) |eşitleme |X |Erişim kolaylığı |
-| **Fare**: fare imlecinin boyutunu değiştirme |eşitleme |X |diğer |
-| **Fare**: fare imlecinin rengini değiştirme |eşitleme |X |diğer |
+| **Fare**: fare imlecinin boyutunu değiştirme |eşitleme |X |other |
+| **Fare**: fare imlecinin rengini değiştirme |eşitleme |X |other |
 | **Fare**: diğer tüm ayarlar |X |X | |
 | **Ekran okuyucusu**: hızlı başlatma |eşitleme |X |Erişim kolaylığı |
 | **Ekran okuyucusu**: kullanıcılar ekran okuyucusu konuşma aralığını değiştirebilir |eşitleme |X |Erişim kolaylığı |

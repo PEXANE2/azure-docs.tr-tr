@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 81b4ffc8f77673e52bb78f891e3de618b67e0d1b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74806071"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>İnsan etiketlendirmeleri oluşturma
@@ -31,7 +31,7 @@ Ingilizce ses için insan etiketli dökümlerde yalnızca ASCII karakterler kull
 
 | Kaçınacak karakterler | Değiştirme | Notlar |
 | ------------------- | ------------ | ----- |
-| "Merhaba Dünya" | "Merhaba Dünya" | Açma ve kapatma tırnak işaretleri, uygun ASCII karakterleriyle değiştirilmiştir. |
+| "Merhaba Dünya" | “Merhaba dünya” | Açma ve kapatma tırnak işaretleri, uygun ASCII karakterleriyle değiştirilmiştir. |
 | John 'un günü | John 'un günü | Kesme işareti uygun ASCII karakteriyle değiştirildi. |
 | Her şey iyi değildi. harika! | iyi--Hayır, harika! | Em Dash iki kısa çizgi ile değiştirildi. |
 
@@ -76,7 +76,7 @@ Bu, otomatik olarak dökümde gerçekleştirilen normalleştirme örnekleri aşa
 | 104 ağaç Caddesi                         | 1 0 4 ağaç Caddesi            |
 | 102,7 olarak ayarla                          | 1 0 2 noktası yedi olarak ayarlayın    |
 | PI yaklaşık 3,14                       | Pi üç nokta 1 4  |
-| BT maliyetleri \$3,14                        | BT maliyetleri 3 14           |
+| BT maliyetleri \$ 3,14                        | BT maliyetleri 3 14           |
 
 ## <a name="mandarin-chinese-zh-cn"></a>Mandarin Çince (zh-CN)
 
@@ -133,7 +133,7 @@ Metin normalleştirme, bir modeli eğitmek için kullanılan tutarlı bir biçim
 - Ondalık noktaları "," olarak yazın ve "." değil.
 - Zaman ayırıcıları ":" olarak yazın ve "." olarak yazın. (örneğin: 12:00 Uhr).
 - "CA" gibi kısaltmalar. değiştirilmez. Tam konuşulan formu kullanmanızı öneririz.
-- Dört ana matematik işleci (+,-, \*, ve/) kaldırılır. "Plus", "", "" yanlış "ve" geteilt "yazılı formuyla değiştirmeniz önerilir.
+- Dört ana matematik işleci (+,-, \* , ve/) kaldırılır. "Plus", "", "" yanlış "ve" geteilt "yazılı formuyla değiştirmeniz önerilir.
 - Karşılaştırma işleçleri kaldırılır (=, < ve >). Bunları "Gleich," "Kleiner ALS" ve "grösser ALS" ile değiştirmeniz önerilir.
 - Yazılan biçimde 3/4 gibi kesirleri yazın (örneğin, 3/4 yerine "Drei Viertel").
 - "€" Sembolünü "Euro" yazılı formuyla değiştirin.

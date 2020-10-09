@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: MVC
 ms.openlocfilehash: ed5a1b6dc47c91815cc88200ddd1b1246603f806
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91275413"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Azure 'a geçiş için şirket içi makineleri hazırlama
@@ -135,12 +135,12 @@ Aşağıdaki tabloda, yukarıda listelenen işletim sistemleri için otomatik ol
 
 | Eylem                                      | Aracı \- tabanlı VMware geçişi | Aracısız VMware geçişi | Hyper\-V   |
 |---------------------------------------------|-------------------------------|----------------------------|------------|
-| Hyper \- V Linux Tümleştirme Hizmetleri 'ni yükler | Yes                           | Yes                        | Gerekli değil |
-| Azure seri konsol günlüğünü etkinleştirme         | Yes                           | Yes                        | Hayır         |
-| Cihaz eşleme dosyasını güncelleştir                      | Yes                           | Hayır                         | Hayır         |
-| Fstab girdilerini Güncelleştir                        | Yes                           | Yes                        | Hayır         |
-| Uıdev kuralını kaldır                            | Yes                           | Yes                        | Hayır         |
-| Ağ arabirimlerini Güncelleştir                   | Yes                           | Yes                        | Hayır         |
+| Hyper \- V Linux Tümleştirme Hizmetleri 'ni yükler | Evet                           | Evet                        | Gerekli değil |
+| Azure seri konsol günlüğünü etkinleştirme         | Evet                           | Evet                        | Hayır         |
+| Cihaz eşleme dosyasını güncelleştir                      | Evet                           | Hayır                         | Hayır         |
+| Fstab girdilerini Güncelleştir                        | Evet                           | Evet                        | Hayır         |
+| Uıdev kuralını kaldır                            | Evet                           | Evet                        | Hayır         |
+| Ağ arabirimlerini Güncelleştir                   | Evet                           | Evet                        | Hayır         |
 | SSH 'yi etkinleştirme                                  | Hayır                            | Hayır                         | Hayır         |
 
 [Azure 'Da LINUX VM çalıştırma](../virtual-machines/linux/create-upload-generic.md)adımları hakkında daha fazla bilgi edinin ve popüler Linux dağıtımlarından bazılarına yönelik yönergeler edinin.

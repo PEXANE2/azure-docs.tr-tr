@@ -8,10 +8,10 @@ ms.topic: guide
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: a4a5b058666fab3e9048a7d92726dccd1360ff37
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74184263"
 ---
 # <a name="azure-internet-analyzer-faq-preview"></a>Azure Internet Analyzer hakkında SSS (Önizleme)
@@ -22,7 +22,7 @@ Bu, Azure Internet Analyzer için SSS-ek sorularınız varsa, [geri bildirim for
 
 Önizleme, müşteriler arasından seçim yapmak için kullanılabilir. Önizlemeye katılmakla ilgileniyorsanız lütfen aşağıdakileri yapın:
 
-1. [Azure portalında](https://ms.portal.azure.com) oturum açın.
+1. [Azure Portal](https://ms.portal.azure.com)’ında oturum açın.
 2. **Abonelikler** sayfasına gidin.
 3. Internet Analyzer 'ı ile kullanmayı planladığınız Azure aboneliğine tıklayın.
 4. Abonelik için **kaynak sağlayıcıları** ayarlarına gidin.
@@ -65,9 +65,9 @@ Internet Çözümleyicisi 'nde oluşturduğunuz her test, uç nokta A ve uç nok
 
 Önizleme sırasında aşağıdaki önceden yapılandırılmış uç noktalar kullanılabilir:
 * **Azure bölgeleri**
-    * Güney Brezilya
+    * Brezilya Güney
     * Orta Hindistan
-    * Orta ABD
+    * Central US
     * Doğu Asya
     * Doğu ABD
     * Batı Japonya
@@ -76,7 +76,7 @@ Internet Çözümleyicisi 'nde oluşturduğunuz her test, uç nokta A ve uç nok
     * Güneydoğu Asya
     * BAE Kuzey
     * Batı Birleşik Krallık  
-    * Batı Avrupa
+    * West Europe
     * Batı ABD
     * Batı ABD 2
 * **Birden çok Azure bölge kombinasyonu**

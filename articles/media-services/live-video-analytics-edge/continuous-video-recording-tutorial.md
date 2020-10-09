@@ -4,10 +4,10 @@ description: Bu öğreticide, Azure IoT Edge üzerinde Azure Live video analizi 
 ms.topic: tutorial
 ms.date: 05/27/2020
 ms.openlocfilehash: 4333ceb9c02f39629e4bd06d3d9634b97bb2e2d7
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91774037"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Öğretici: buluta sürekli video kaydetme ve buluttan kayıttan yürütme
@@ -33,7 +33,7 @@ Başlamadan önce şu makaleleri okuyun:
 * [Medya grafiği kavramları](media-graph-concept.md) 
 * [Sürekli video kayıt senaryoları](continuous-video-recording-concept.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticinin önkoşulları şunlardır:
 
