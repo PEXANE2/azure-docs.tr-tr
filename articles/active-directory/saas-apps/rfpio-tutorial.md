@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 6732857e278285071c9d36c629920ad9e67368f2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88528574"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>Öğretici: RFıO ile tümleştirme Azure Active Directory
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açma 'yı RFıO ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[RFıO çoklu oturum açmayı yapılandırın](#configure-rfpio-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[RFıO çoklu oturum açmayı yapılandırın](#configure-rfpio-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcı Azure AD gösterimi ile bağlantılı olan RFıO 'da Britta Simon 'ın bir karşılığı olacak şekilde **[rfıo test kullanıcısı oluşturun](#create-rfpio-test-user)** .
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı RFıO ile yapılandırmak için aşağıdaki ad�
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -118,7 +118,7 @@ Azure AD çoklu oturum açmayı RFıO ile yapılandırmak için aşağıdaki ad�
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [Rfıo istemci destek ekibine](https://www.rfpio.com/contact/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -132,36 +132,36 @@ Azure AD çoklu oturum açmayı RFıO ile yapılandırmak için aşağıdaki ad�
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-rfpio-single-sign-on"></a>RFıO çoklu oturum açmayı yapılandırma
+### <a name="configure-rfpio-single-sign-on"></a>RFıO tek Sign-On yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, **Rfıo** Web sitesinde yönetici olarak oturum açın.
 
 1. Sol alt köşedeki aşağı açılan listeye tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/rfpio-tutorial/app1.png)
+    ![Tek Sign-On yapılandırma](./media/rfpio-tutorial/app1.png)
 
 1. **Kuruluş ayarları**' na tıklayın. 
 
-    ![Çoklu oturum açmayı yapılandırma](./media/rfpio-tutorial/app2.png)
+    ![Tek Sign-On yapılandırma](./media/rfpio-tutorial/app2.png)
 
 1. **Tümleştirme & Özellikler**' e tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/rfpio-tutorial/app4.png)
+    ![Tek Sign-On yapılandırma](./media/rfpio-tutorial/app4.png)
 
 1. **SAML SSO yapılandırması** ' nda **Düzenle**' ye tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/rfpio-tutorial/app3.png)
+    ![Tek Sign-On yapılandırma](./media/rfpio-tutorial/app3.png)
 
 1. Bu bölümde aşağıdaki eylemleri gerçekleştirin:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/rfpio-tutorial/app5.png)
+    ![Tek Sign-On yapılandırma](./media/rfpio-tutorial/app5.png)
     
     a. **Indirilen meta VERI XML** içeriğini kopyalayın ve **kimlik yapılandırma** alanına yapıştırın.
 
     > [!NOTE]
     >İndirilen **Federasyon meta VERILERI XML** içeriğini kopyalamak için **Notepad + +** veya uygun **XML Düzenleyicisi**kullanın.
 
-    b. **Doğrula**'ya tıklayın.
+    b. **Doğrula**' ya tıklayın.
 
     c. **Doğrula**' ya tıkladıktan sonra **SAML 'yi (etkin)** açık olarak çevirin.
 
@@ -223,23 +223,23 @@ Bu bölümde, RFıO 'a erişim vererek Azure çoklu oturum açma özelliğini ku
 
 1. Sol alt köşedeki aşağı açılan listeye tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/rfpio-tutorial/app1.png)
+    ![Tek Sign-On yapılandırma](./media/rfpio-tutorial/app1.png)
 
 1. **Kuruluş ayarları**' na tıklayın. 
 
-    ![Çoklu oturum açmayı yapılandırma](./media/rfpio-tutorial/app2.png)
+    ![Tek Sign-On yapılandırma](./media/rfpio-tutorial/app2.png)
 
 1. **Takım üyeleri**' ne tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/rfpio-tutorial/app6.png)
+    ![Tek Sign-On yapılandırma](./media/rfpio-tutorial/app6.png)
 
 1. **Üye Ekle**' ye tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/rfpio-tutorial/app7.png)
+    ![Tek Sign-On yapılandırma](./media/rfpio-tutorial/app7.png)
 
 1. **Yeni Üyeler Ekle** bölümünde. Aşağıdaki eylemleri gerçekleştirin:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/rfpio-tutorial/app8.png)
+    ![Tek Sign-On yapılandırma](./media/rfpio-tutorial/app8.png)
 
     a. **Her satıra bir e-posta girin** alanına e-posta **adresini** girin.
 

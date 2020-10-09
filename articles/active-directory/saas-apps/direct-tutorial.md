@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: ac19eba35e478fbd30aff647e1605fc7fc4c45a6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88536592"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-direct"></a>Öğretici: doğrudan tümleştirme Azure Active Directory
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Doğrudan Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Doğrudan çoklu oturum açmayı yapılandırma](#configure-direct-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[Doğrudan çoklu oturum açmayı yapılandırma](#configure-direct-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Doğrudan **[test kullanıcısı oluşturun](#create-direct-test-user)** -Kullanıcı IÇIN Azure AD gösterimine bağlı olan Britta Simon 'ın bir karşılığı olacak şekilde.
@@ -93,7 +93,7 @@ Doğrudan Azure AD çoklu oturum açmayı yapılandırmak için aşağıdaki ad�
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -109,7 +109,7 @@ Doğrudan Azure AD çoklu oturum açmayı yapılandırmak için aşağıdaki ad�
 
     **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://direct4b.com/sso`
 
-6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -123,7 +123,7 @@ Doğrudan Azure AD çoklu oturum açmayı yapılandırmak için aşağıdaki ad�
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-direct-single-sign-on"></a>Doğrudan çoklu oturum açmayı yapılandırma
+### <a name="configure-direct-single-sign-on"></a>Doğrudan tek Sign-On yapılandırma
 
 **Doğrudan** destek ekibine çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'leri Azure Portal [doğrudan destek ekibine](https://direct4b.com/ja/support.html#inquiry)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

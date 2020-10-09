@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 4/13/2020
 ms.openlocfilehash: ffd4ab463080001dbab5b0ed9ece69c4b5f91382
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81272092"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda yavaş sorgu günlükleri
@@ -59,18 +59,18 @@ Aşağıdaki tabloda her günlükte neler olduğu açıklanmaktadır. Çıkış 
 |---|---|
 | `TenantId` | Kiracı KIMLIĞINIZ |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated`UTC | Günlük kaydedildiği zaman damgası (UTC) |
-| `Type` | Günlüğün türü. Her`AzureDiagnostics` |
+| `TimeGenerated` UTC | Günlük kaydedildiği zaman damgası (UTC) |
+| `Type` | Günlüğün türü. Her `AzureDiagnostics` |
 | `SubscriptionId` | Sunucunun ait olduğu abonelik için GUID |
 | `ResourceGroup` | Sunucunun ait olduğu kaynak grubunun adı |
-| `ResourceProvider` | Kaynak sağlayıcının adı. Her`MICROSOFT.DBFORMARIADB` |
+| `ResourceProvider` | Kaynak sağlayıcının adı. Her `MICROSOFT.DBFORMARIADB` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Kaynak URI 'SI |
 | `Resource` | Sunucunun adı |
 | `Category` | `MySqlSlowLogs` |
 | `OperationName` | `LogEvent` |
 | `Logical_server_name_s` | Sunucunun adı |
-| `start_time_t`UTC | Sorgunun başladığı zaman |
+| `start_time_t` UTC | Sorgunun başladığı zaman |
 | `query_time_s` | Sorgunun yürütülmesi için geçen toplam süre |
 | `lock_time_s` | Sorgunun kilitlenme toplam süre |
 | `user_host_s` | Kullanıcı adı |

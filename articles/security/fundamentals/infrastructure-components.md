@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 68535f70507e7a81d217f4148314a3d76ec832ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68727208"
 ---
 # <a name="azure-information-system-components-and-boundaries"></a>Azure Information System bileşenleri ve sınırları
@@ -97,7 +97,7 @@ Microsoft 'un çalışanları (veya yükleniciler), iç Kullanıcı olarak kabul
 | Azure dağıtım mühendisleri | İç | Müşteri verilerine erişim | Azure desteğiyle platform bileşenlerini, yazılımlarını ve zamanlanan yapılandırma değişikliklerini dağıtın ve yükseltin. | Müşteriye ait olmayan sistemlere sınırlı kalıcı erişimle, ortama tam zamanında erişim. |
 | Azure müşteri kesintisi desteği (kiracı) | İç | Müşteri verilerine erişim | Bireysel işlem kiracılarının ve Azure hesaplarının hata ayıklama ve tanılama sorunlarını giderme. Hataları analiz edin. Platform veya müşteri için kritik düzeltmeleri sürüyor ve destek genelinde teknik iyileştirmeleri sürüyor. | Müşteriye ait olmayan sistemlere sınırlı kalıcı erişimle, ortama tam zamanında erişim. |
 | Azure Live site mühendisleri (izleme mühendisleri) ve olay | İç | Müşteri verilerine erişim | Tanılama araçlarını kullanarak platform sistem durumunu tanılayın ve azaltabilirsiniz. Birim sürücüleri için düzeltme, kesintiden kaynaklanan öğeleri onarır ve geri yükleme eylemlerine yardımcı olur. | Müşteriye ait olmayan sistemlere sınırlı kalıcı erişimle, ortama tam zamanında erişim. |
-|Azure müşterileri | Dış | YOK | YOK | YOK |
+|Azure müşterileri | Dış | Yok | Yok | Yok |
 
 Azure, kurumsal kullanıcıların ve müşterilerin (veya kuruluş kullanıcıları adına işlem gören işlemlerin) kimliğini doğrulamak için benzersiz tanımlayıcılar kullanır. Bu, Azure ortamının bir parçası olan tüm varlıklar ve cihazlar için geçerlidir.
 

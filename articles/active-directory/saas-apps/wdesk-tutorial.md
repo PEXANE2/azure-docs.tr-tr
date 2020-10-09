@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/02/2020
 ms.author: jeedes
 ms.openlocfilehash: 9e64d76e29ba98181aac12e1e3167351a9c1aa95
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88524026"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wdesk"></a>Öğretici: Wdesk ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -81,7 +81,7 @@ Azure AD çoklu oturum açmayı Wdesk ile yapılandırmak için aşağıdaki ad�
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -100,9 +100,9 @@ Azure AD çoklu oturum açmayı Wdesk ile yapılandırmak için aşağıdaki ad�
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<subdomain>.wdesk.com/auth/login/saml/<instancename>`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri, SSO 'yu yapılandırırken WDesk portalından alırsınız.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve Sign-On URL 'siyle güncelleştirin. Bu değerleri, SSO 'yu yapılandırırken WDesk portalından alırsınız.
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+4. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -172,23 +172,23 @@ Bu bölümde, Wdesk 'e erişim vererek Azure çoklu oturum açma özelliğini ku
 
 2. Sol alt tarafta **yönetici** ' ye tıklayın ve **Hesap Yöneticisi**' ni seçin:
  
-     ![Çoklu oturum açmayı yapılandırma](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
+     ![Tek Sign-On yapılandırma](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
 
 3. Wdesk Yöneticisi 'nde **güvenlik**' e gidin ve **SAML**  >  **SAML ayarları**:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
+    ![Tek Sign-On yapılandırma](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
 
 1. **SAML Kullanıcı kimliği ayarları**altında **SAML Kullanıcı kimliği ' nin Wdesk Kullanıcı adı**' na bakın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/wdesk-tutorial/wdesk-username.png)
+    ![Tek Sign-On yapılandırma](./media/wdesk-tutorial/wdesk-username.png)
 
 4. **Genel ayarlar**altında **SAML çoklu oturum açmayı etkinleştir**' i işaretleyin:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig3.png)
+    ![Tek Sign-On yapılandırma](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig3.png)
 
 5. **Hizmet sağlayıcı ayrıntıları**' nın altında, aşağıdaki adımları uygulayın:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig4.png)
+    ![Tek Sign-On yapılandırma](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig4.png)
 
       a. **Oturum açma URL** 'sini kopyalayın ve Azure Portal oturum açma **URL 'si** metin kutusuna yapıştırın.
    
@@ -200,11 +200,11 @@ Bu bölümde, Wdesk 'e erişim vererek Azure çoklu oturum açma özelliğini ku
 
 6. IDP ayarlarını **Düzenle** iletişim kutusunu açmak Için **IDP ayarlarını yapılandır** öğesine tıklayın. Azure portal kaydettiğiniz **Metadata.xml** dosyasını bulmak Için **Dosya Seç** ' e tıklayın, ardından karşıya yükleyin.
     
-    ![Çoklu oturum açmayı yapılandırma](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig5.png)
+    ![Tek Sign-On yapılandırma](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig5.png)
   
 7. **Değişiklikleri Kaydet**' e tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/wdesk-tutorial/tutorial_wdesk_ssoconfigsavebutton.png)
+    ![Tek Sign-On yapılandırma](./media/wdesk-tutorial/tutorial_wdesk_ssoconfigsavebutton.png)
 
 ### <a name="create-wdesk-test-user"></a>Wdesk test kullanıcısı oluşturma
 
@@ -216,7 +216,7 @@ Azure AD kullanıcılarının Wdesk 'de oturum açmasını sağlamak için, Wdes
 
 2. **Yönetici**  >  **hesabı Yöneticisi**' ne gidin.
 
-     ![Çoklu oturum açmayı yapılandırma](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
+     ![Tek Sign-On yapılandırma](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
 
 3. **Kişiler**altında **Üyeler** ' e tıklayın.
 

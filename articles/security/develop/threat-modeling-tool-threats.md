@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: eb006482b851e9094b82ec3d0753b74c05296994
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68727842"
 ---
 # <a name="microsoft-threat-modeling-tool-threats"></a>Microsoft Threat Modeling Tool tehditler
@@ -40,12 +40,12 @@ Microsoft bu tür kapsamlı soruları düzenlemenize yardımcı olmak için, far
 
 | Kategori | Açıklama |
 | -------- | ----------- |
-| **Kandırma** | Kullanıcı adı ve parola gibi başka bir kullanıcının kimlik doğrulama bilgilerini geçersiz şekilde erişimi ve daha sonra kullanmayı içerir |
-| **İzinsiz Değişiklik** | Kötü amaçlı veri değişikliğini içerir. Örnek olarak, bir veritabanında tutulan gibi kalıcı verilere yapılan yetkisiz değişiklikler ve Internet gibi açık bir ağ üzerinden iki bilgisayar arasında akar. veri değişikliği dahil değildir. |
-| **Kar** | Başka taraflar olmadan bir eylemi gerçekleştirmeyi reddeden kullanıcılarla ilişkili, aksi takdirde (örneğin, bir Kullanıcı yasaklanmış işlemleri izleme yeteneğine sahip olmayan bir sistemde geçersiz bir işlem gerçekleştirir). Red olmayan bir sistem, bir sistemin, Red tehditleri sayacı anlamına gelir. Örneğin, bir öğeyi satın alan bir kullanıcının, alındıktan sonra öğe için imzalaması gerekebilir. Satıcı daha sonra, kullanıcının paketi aldığı kanıt olarak imzalı alındı bilgisini kullanabilir |
-| **Bilgileri Açıklama** | , Erişimi olmayan kişilere yönelik bilgilerin açıklanmasını içerir — örneğin, kullanıcıların erişim izni verilmeyen bir dosyayı okumaları veya iki bilgisayar arasındaki geçişte verileri okuma yeteneği. |
+| **Kimlik Sahtekarlığı** | Kullanıcı adı ve parola gibi başka bir kullanıcının kimlik doğrulama bilgilerini geçersiz şekilde erişimi ve daha sonra kullanmayı içerir |
+| **Kurcalama** | Kötü amaçlı veri değişikliğini içerir. Örnek olarak, bir veritabanında tutulan gibi kalıcı verilere yapılan yetkisiz değişiklikler ve Internet gibi açık bir ağ üzerinden iki bilgisayar arasında akar. veri değişikliği dahil değildir. |
+| **İnkar** | Başka taraflar olmadan bir eylemi gerçekleştirmeyi reddeden kullanıcılarla ilişkili, aksi takdirde (örneğin, bir Kullanıcı yasaklanmış işlemleri izleme yeteneğine sahip olmayan bir sistemde geçersiz bir işlem gerçekleştirir). Red olmayan bir sistem, bir sistemin, Red tehditleri sayacı anlamına gelir. Örneğin, bir öğeyi satın alan bir kullanıcının, alındıktan sonra öğe için imzalaması gerekebilir. Satıcı daha sonra, kullanıcının paketi aldığı kanıt olarak imzalı alındı bilgisini kullanabilir |
+| **Bilgilerin Açığa Çıkması** | , Erişimi olmayan kişilere yönelik bilgilerin açıklanmasını içerir — örneğin, kullanıcıların erişim izni verilmeyen bir dosyayı okumaları veya iki bilgisayar arasındaki geçişte verileri okuma yeteneği. |
 | **Hizmet Reddi** | Hizmet reddi (DoS) saldırıları, örneğin bir Web sunucusunu geçici olarak kullanılamaz veya kullanılamaz hale getirerek geçerli kullanıcılara hizmeti reddeder. Sistem kullanılabilirliğini ve güvenilirliği geliştirmek için bazı DoS tehditleri türlerine karşı korumanız gerekir |
-| **Ayrıcalıkların Yükseltilmesi** | Ayrıcalıksız bir kullanıcı ayrıcalıklı erişim kazanmıştır ve bu nedenle sistemin tamamını aşmak veya yok etmek için yeterli erişime sahip değildir. Ayrıcalıkların yükseltilmesi, bir saldırganın tüm sistem savunmalarına etkili bir şekilde sızma ve güvenilen sistemin bir parçası olduğu durumlarda, gerçekten de tehlikeli bir durumdur |
+| **Ayrıcalık Yükseltme** | Ayrıcalıksız bir kullanıcı ayrıcalıklı erişim kazanmıştır ve bu nedenle sistemin tamamını aşmak veya yok etmek için yeterli erişime sahip değildir. Ayrıcalıkların yükseltilmesi, bir saldırganın tüm sistem savunmalarına etkili bir şekilde sızma ve güvenilen sistemin bir parçası olduğu durumlarda, gerçekten de tehlikeli bir durumdur |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

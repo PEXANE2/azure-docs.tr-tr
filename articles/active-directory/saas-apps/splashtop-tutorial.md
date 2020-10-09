@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/04/2020
 ms.author: jeedes
 ms.openlocfilehash: 72c7a24f165d48d3ba2ea0dbcc2b41c818e3f1d7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88524577"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-splashtop"></a>Öğretici: Splashtop ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -139,7 +139,7 @@ Bu bölümde, [Splashtop Web portalından](https://my.splashtop.com/login)yenı 
 
     ![görüntü ](media/splashtop-tutorial/cert-1.png) resmi resmi ![ ](media/splashtop-tutorial/cert-2.png) ![](media/splashtop-tutorial/azure-sso-2.png)
 
-1. İşte bu kadar! **Kaydet** ve SPLASHTOP SSO doğrulama ekibi, doğrulama bilgileri için sizinle iletişim kuracaktır, sonra SSO yöntemini etkinleştirir.
+1. Hepsi bu! **Kaydet** ve SPLASHTOP SSO doğrulama ekibi, doğrulama bilgileri için sizinle iletişim kuracaktır, sonra SSO yöntemini etkinleştirir.
 
 ### <a name="create-splashtop-test-user"></a>Splashtop test kullanıcısı oluşturma
 
@@ -153,7 +153,7 @@ Bu bölümde, [Splashtop Web portalından](https://my.splashtop.com/login)yenı 
 
 1. Ayrıca, var olan bir Splashtop hesabını bir SSO hesabı olarak değiştirebilirsiniz, bkz. [yönergeler](https://support-splashtopbusiness.splashtop.com/hc/en-us/articles/360038685691-How-to-associate-SSO-method-to-existing-team-admin-member-).
 
-1. İşte bu kadar! Bu SSO hesabını kullanarak, Splashtop web portalında veya Splashtop Business uygulamasında oturum açabilirsiniz.
+1. Hepsi bu! Bu SSO hesabını kullanarak, Splashtop web portalında veya Splashtop Business uygulamasında oturum açabilirsiniz.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 

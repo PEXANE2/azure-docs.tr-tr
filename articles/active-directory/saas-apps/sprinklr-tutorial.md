@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 02b9adcb72b4d26a19b6514d19ce94a70a2415ed
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88534226"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>Öğretici: Sprınklr ile tümleştirme Azure Active Directory
@@ -73,7 +73,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına bağlı olarak Spr
 Azure AD çoklu oturum açma 'yı Sprınklr ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Sprınklr çoklu oturum açmayı yapılandırma](#configure-sprinklr-single-sign-on)** uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[Sprınklr çoklu oturum açmayı yapılandırma](#configure-sprinklr-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Sprınklr **[test kullanıcısı oluşturun](#create-sprinklr-test-user)** -bu, kullanıcının Azure AD gösterimine bağlı olan Sprınklr 'de Britta Simon 'a sahip olacak.
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı Sprınklr ile yapılandırmak için aşağıdaki
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -108,7 +108,7 @@ Azure AD çoklu oturum açmayı Sprınklr ile yapılandırmak için aşağıdaki
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Sprınklr istemci destek ekibine](https://www.sprinklr.com/contact-us/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -122,7 +122,7 @@ Azure AD çoklu oturum açmayı Sprınklr ile yapılandırmak için aşağıdaki
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-sprinklr-single-sign-on"></a>Sprınklr çoklu oturum açmayı yapılandırma
+### <a name="configure-sprinklr-single-sign-on"></a>Sprınklr tek Sign-On yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, Sprınklr şirket sitenizde yönetici olarak oturum açın.
 
@@ -136,11 +136,11 @@ Azure AD çoklu oturum açmayı Sprınklr ile yapılandırmak için aşağıdaki
 
 1. **+ Çoklu oturum açma Ekle**seçeneğine tıklayın.
 
-    ![Çoklu oturum açma bileşenleri](./media/sprinklr-tutorial/ic782909.png "Çoklu oturum açma bileşenleri")
+    ![Çoklu oturum açma bileşenleri](./media/sprinklr-tutorial/ic782909.png "Tek Sign-Ons")
 
 1. **Çoklu oturum açma** sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Çoklu oturum açma bileşenleri](./media/sprinklr-tutorial/ic782910.png "Çoklu oturum açma bileşenleri")
+    ![Çoklu oturum açma bileşenleri](./media/sprinklr-tutorial/ic782910.png "Tek Sign-Ons")
 
     a. **Ad** metin kutusuna yapılandırmanız için bir ad yazın (örneğin: *Waadssotest*).
 

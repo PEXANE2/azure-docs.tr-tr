@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 82af00c091aedb56e0cad954e554094e75df0013
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88535892"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>Öğretici: LockPath Keylight ile tümleştirme Azure Active Directory
@@ -74,7 +74,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açma 'yı LockPath Keylight ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[LockPath Keylight çoklu oturum açma 'Yı yapılandırın](#configure-lockpath-keylight-single-sign-on)** .
+2. **[Kilit yolunu yapılandırma Keylight çoklu oturum açma](#configure-lockpath-keylight-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan LockPath Keylight öğesinde Britta Simon 'ın bir karşılığı olacak şekilde **[LockPath Keylight test kullanıcısı oluşturun](#create-lockpath-keylight-test-user)** .
@@ -94,7 +94,7 @@ Azure AD çoklu oturum açmayı LockPath Keylight ile yapılandırmak için aşa
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -111,7 +111,7 @@ Azure AD çoklu oturum açmayı LockPath Keylight ile yapılandırmak için aşa
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [LockPath Keylight istemci destek ekibine](https://www.lockpath.com/contact/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (ham)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (ham)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificateraw.png)
 
@@ -125,7 +125,7 @@ Azure AD çoklu oturum açmayı LockPath Keylight ile yapılandırmak için aşa
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-lockpath-keylight-single-sign-on"></a>LockPath Keylight çoklu oturum açmayı yapılandırma
+### <a name="configure-lockpath-keylight-single-sign-on"></a>LockPath Keylight tek Sign-On yapılandırma
 
 1. LockPath Keylight içinde SSO 'yu etkinleştirmek için aşağıdaki adımları uygulayın:
 
@@ -133,19 +133,19 @@ Azure AD çoklu oturum açmayı LockPath Keylight ile yapılandırmak için aşa
 
     b. Üstteki menüde **kişi**' ye tıklayın ve **Keylight kurulum**' u seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/keylight-tutorial/401.png)
+    ![Tek Sign-On yapılandırma](./media/keylight-tutorial/401.png)
 
     c. Soldaki TreeView 'da **SAML**' ye tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/keylight-tutorial/402.png)
+    ![Tek Sign-On yapılandırma](./media/keylight-tutorial/402.png)
 
     d. **SAML ayarları** iletişim kutusunda, **Düzenle**' ye tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/keylight-tutorial/404.png)
+    ![Tek Sign-On yapılandırma](./media/keylight-tutorial/404.png)
 
 1. **SAML ayarlarını Düzenle** iletişim sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/keylight-tutorial/405.png)
+    ![Tek Sign-On yapılandırma](./media/keylight-tutorial/405.png)
 
     a. **SAML kimlik doğrulamasını** **etkin**olarak ayarlayın.
 

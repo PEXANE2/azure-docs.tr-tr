@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: tomfitz
 ms.openlocfilehash: ce58fc69496f54c078b0a0a55a8a3c7cad82a051
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81391702"
 ---
 # <a name="quickstart-deploy-service-catalog-app-through-azure-portal"></a>Hızlı başlangıç: Azure portal aracılığıyla Hizmet kataloğu uygulaması dağıtma
@@ -28,11 +28,11 @@ Azure portal, aşağıdaki adımları kullanın:
 
    ![Hizmet kataloğu uygulamasını ara](./media/deploy-service-catalog-quickstart/select-service-catalog.png)
 
-1. Yönetilen uygulama hizmetinin bir açıklamasını görürsünüz. **Oluştur**'u seçin.
+1. Yönetilen uygulama hizmetinin bir açıklamasını görürsünüz. **Oluştur**’u seçin.
 
    ![Oluştur’u seçin](./media/deploy-service-catalog-quickstart/create-service-catalog.png)
 
-1. Portal, erişiminiz olan yönetilen uygulama tanımlarını gösterir. Kullanılabilir tanımlardan, dağıtmak istediğiniz birini seçin. Bu hızlı başlangıçta, önceki hızlı başlangıçta oluşturduğunuz **yönetilen depolama hesabı** tanımını kullanın. **Oluştur**'u seçin.
+1. Portal, erişiminiz olan yönetilen uygulama tanımlarını gösterir. Kullanılabilir tanımlardan, dağıtmak istediğiniz birini seçin. Bu hızlı başlangıçta, önceki hızlı başlangıçta oluşturduğunuz **yönetilen depolama hesabı** tanımını kullanın. **Oluştur**’u seçin.
 
    ![Dağıtılacak tanımı seçin](./media/deploy-service-catalog-quickstart/select-definition.png)
 

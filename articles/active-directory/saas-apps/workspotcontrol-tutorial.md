@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
 ms.openlocfilehash: bfbecc71638e6feaaf29809f09dda752dd29b2ae
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88526644"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>Öğretici: Iş noktası denetimiyle tümleştirme Azure Active Directory
@@ -94,7 +94,7 @@ Azure AD çoklu oturum açmayı Iş noktası denetimiyle yapılandırmak için a
 
     ![Çoklu oturum açma seçme yöntemi penceresi seçin](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırmasına**erişmek için **Düzenle** (kurşun kalem) simgesini seçin.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırmasına**erişmek için **Düzenle** (kurşun kalem) simgesini seçin.
 
     !["Temel SAML yapılandırması" içinde vurgulanmış düzenleme simgesi](common/edit-urls.png)
 
@@ -118,7 +118,7 @@ Azure AD çoklu oturum açmayı Iş noktası denetimiyle yapılandırmak için a
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile değiştirin. Bu değerleri almak için [Iş noktası denetimi istemci destek ekibine](mailto:support@workspot.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümündeki desenlere de başvurabilirsiniz.
 
-6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, gereksinimlerinize göre kullanılabilir seçeneklerden **sertifikayı (base64)** indirmek için **İndir** ' i seçin. Bu dosyayı bilgisayarınıza kaydedin.
+6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, gereksinimlerinize göre kullanılabilir seçeneklerden **sertifika (base64)** indirmek için **İndir** ' i seçin. Bu dosyayı bilgisayarınıza kaydedin.
 
     ![Sertifika (base64) indirme bağlantısı](common/certificatebase64.png)
 

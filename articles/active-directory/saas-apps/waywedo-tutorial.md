@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: jeedes
 ms.openlocfilehash: 310a42d25ce7fb7970777e8f36abbbee562ab01d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88523904"
 ---
 # <a name="tutorial-integrate-way-we-do-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile yaptığımız şekilde tümleştirin
@@ -60,7 +60,7 @@ Azure AD SSO 'yu, **B. Simon**adlı bir test kullanıcısı kullandığımız ş
 Azure AD SSO 'yu bunu yaptığımız şekilde yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-2. **[SSO yaptığımız yöntemi yapılandırma](#configure-way-we-do-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırma.
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[SSO yaptığımız yöntemi yapılandırın](#configure-way-we-do-sso)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlandığımızda yaptığımız gibi, Kullanıcı sınaması yaptığımız gibi, **[Kullanıcı sınama konusunda bir yol oluşturun](#create-way-we-do-test-user)** .
@@ -72,7 +72,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. [Azure Portal](https://portal.azure.com/), uygulama tümleştirmesi **yaptığımız** gibi, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -85,7 +85,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [istemci destek ekibi yaptığımız Iletişim gibi](mailto:support@waywedo.com) iletişim kurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama Sertifikası** bölümünde **sertifika (ham)** bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML Ile tekli Sign-On ayarlama** sayfasında, **SAML Imzalama Sertifikası** bölümünde **sertifika (ham)** bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
    ![Sertifika indirme bağlantısı](common/certificateraw.png)
 

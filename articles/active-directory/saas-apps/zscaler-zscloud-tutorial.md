@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
 ms.openlocfilehash: 21a6d6f728b11c3dee166921538bb844d1e72f70
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88545838"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>Öğretici: Zscaler Zscyüksek ile tümleştirme Azure Active Directory
@@ -75,7 +75,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Zscaler Zscy
 Azure AD çoklu oturum açma 'yı Zscaler Zscyüksek ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Zscaler Zscyüksek çoklu oturum açmayı yapılandırın](#configure-zscaler-zscloud-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Zscaler Zscyüksek çoklu oturum açmayı yapılandırın](#configure-zscaler-zscloud-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. **[Zscaler zscsesli test kullanıcısı oluşturun](#create-zscaler-zscloud-test-user)** -Zscaler zscyüksek 'Da kullanıcının Azure AD gösterimine bağlanmış bir Britta Simon 'a sahip olacak.
@@ -95,7 +95,7 @@ Azure AD çoklu oturum açmayı Zscaler Zscyüksek ile yapılandırmak için aş
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -106,7 +106,7 @@ Azure AD çoklu oturum açmayı Zscaler Zscyüksek ile yapılandırmak için aş
     Oturum açma **URL 'si** metin kutusuna kullanıcılarınızın ZScaler Zscyüksek uygulamanızda oturum açmasını sağlamak için kullanılan URL 'yi yazın.
 
     > [!NOTE]
-    > Değeri, gerçek oturum açma URL 'SI ile güncelleştirmeniz gerekir. Değeri almak için [Zscaler Zscyüksek istemci destek ekibine](https://help.zscaler.com/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Değeri gerçek Sign-On URL 'siyle güncelleştirmeniz gerekir. Değeri almak için [Zscaler Zscyüksek istemci destek ekibine](https://help.zscaler.com/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 5. Zscaler Zscyüksek uygulamanız, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. **Kullanıcı öznitelikleri** iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
@@ -137,7 +137,7 @@ Azure AD çoklu oturum açmayı Zscaler Zscyüksek ile yapılandırmak için aş
     > [!NOTE]
     > Azure AD 'de rolün nasıl yapılandırılacağını öğrenmek için lütfen [buraya](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) tıklayın
 
-7. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+7. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -151,7 +151,7 @@ Azure AD çoklu oturum açmayı Zscaler Zscyüksek ile yapılandırmak için aş
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-zscaler-zscloud-single-sign-on"></a>Zscaler Zscyüksek çoklu oturum açmayı yapılandırma
+### <a name="configure-zscaler-zscloud-single-sign-on"></a>Zscaler Zscyüksek tek Sign-On yapılandırma
 
 1. Zscaler Zscyüksek içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek**üzere **uygulamalarımı güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 

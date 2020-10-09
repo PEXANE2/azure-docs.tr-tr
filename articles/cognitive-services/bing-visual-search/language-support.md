@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: scottwhi
 ms.openlocfilehash: b17341bc234ff3dfecc2c6dcd84ef77116a95d61
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68883542"
 ---
 # <a name="language-and-region-support-for-the-bing-visual-search-api"></a>Bing Görsel Arama API'si için dil ve bölge desteği
 
 Bing Görsel Arama API'si, birden fazla dilden çok sayıda ülkeyi/bölgeyi destekler. Her istek, kullanıcının ülke/bölge ve tercih edilen dilini içermelidir. Kullanıcının pazarını bilmek, Bing 'in uygun sonuçlara dönüşmesini sağlar. Bir ülke/bölge ve dil belirtmezseniz, Bing kullanıcının ülke/bölge ve dilini belirlemek için en iyi çabayı sağlar. Sonuçlar Bing bağlantıları içerebileceğinden, Kullanıcı Bing bağlantılarına tıkladığında ülke/bölge ve dil tercih edilen yerelleştirilmiş Bing Kullanıcı deneyimi sağlayabilir.
 
-Ülke/bölge ve dil belirtmek için, `mkt` (Pazar) sorgu parametresini aşağıdaki **pazarlar** tablosundan bir koda ayarlayın. Pazar, hem ülke/bölge hem de dili belirtir. Kullanıcı farklı bir dilde görüntüleme metnini görmeyi tercih ediyorsa, sorgu parametresini uygun dil `setLang` koduna ayarlayın.
+Ülke/bölge ve dil belirtmek için, `mkt` (Pazar) sorgu parametresini aşağıdaki **pazarlar** tablosundan bir koda ayarlayın. Pazar, hem ülke/bölge hem de dili belirtir. Kullanıcı farklı bir dilde görüntüleme metnini görmeyi tercih ediyorsa, `setLang` sorgu parametresini uygun dil koduna ayarlayın.
 
-Alternatif olarak, ülke/bölge ' yi `cc` sorgu parametresini kullanarak belirtebilirsiniz. Bir ülke/bölge belirtirseniz, `Accept-Language` http üstbilgisini kullanarak bir veya daha fazla dil kodu da belirtmeniz gerekir. Desteklenen diller ülkeye/bölgeye göre farklılık gösterir. Bunlar, pazarlar tablosundaki her bir ülke için verilir.
+Alternatif olarak, ülke/bölge ' yi `cc` sorgu parametresini kullanarak belirtebilirsiniz. Bir ülke/bölge belirtirseniz, http üstbilgisini kullanarak bir veya daha fazla dil kodu da belirtmeniz gerekir `Accept-Language` . Desteklenen diller ülkeye/bölgeye göre farklılık gösterir. Bunlar, pazarlar tablosundaki her bir ülke için verilir.
 
 
 
@@ -51,7 +51,7 @@ Alternatif olarak, ülke/bölge ' yi `cc` sorgu parametresini kullanarak belirte
 |Almanya|DE|
 |Hong Kong ÖİB|HK|
 |Hindistan|IN|
-|Endonezya|Kimlik|
+|Endonezya|ID|
 |İtalya|BT|
 |Japonya|JP|
 |Güney Kore|KR|
@@ -73,7 +73,7 @@ Alternatif olarak, ülke/bölge ' yi `cc` sorgu parametresini kullanarak belirte
 |Tayvan|TW|
 |Türkiye|TR|
 |Birleşik Krallık|GB|
-|Amerika Birleşik Devletleri|ABD|
+|Birleşik Devletler|ABD|
 
 
 ## <a name="markets"></a>Pazar
@@ -117,5 +117,5 @@ Alternatif olarak, ülke/bölge ' yi `cc` sorgu parametresini kullanarak belirte
 |Tayvan|Geleneksel Çince|zh-TW|
 |Türkiye|Türkçe|tr-TR|
 |Birleşik Krallık|İngilizce|en-GB|
-|Amerika Birleşik Devletleri|İngilizce|tr-TR|
-|Amerika Birleşik Devletleri|İspanyolca|es-US|
+|Birleşik Devletler|İngilizce|tr-TR|
+|Birleşik Devletler|İspanyolca|es-US|

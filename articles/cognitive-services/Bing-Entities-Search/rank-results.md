@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
 ms.openlocfilehash: 110cef117683b20170649a231226c8193496edf3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68423906"
 ---
 # <a name="using-ranking-to-display-entity-search-results"></a>Varlık arama sonuçlarını göstermek için derecelendirmeyi kullanma  
@@ -26,12 +26,12 @@ Her grup içinde, [öğeler](https://docs.microsoft.com/rest/api/cognitiveservic
 
 |Alan | Açıklama  |
 |---------|---------|
-|`answerType` ve `resultIndex` | `answerType`yanıtı tanımlar (varlık veya yer) ve `resultIndex` bu yanıt içinde bir sonucu tanımlar (örneğin, bir varlık). Dizin 0 ' da başlar.|
-|`value`    | `value`Yanıt ya da yanıt içindeki bir sonuç KIMLIĞIYLE eşleşen bir KIMLIK içerir. Yanıt ya da sonuçlar KIMLIĞI içeriyor ancak her ikisini de içermemelidir. |
+|`answerType` ve `resultIndex` | `answerType` yanıtı tanımlar (varlık veya yer) ve `resultIndex` Bu yanıt içinde bir sonucu tanımlar (örneğin, bir varlık). Dizin 0 ' da başlar.|
+|`value`    | `value` Yanıt ya da yanıt içindeki bir sonuç KIMLIĞIYLE eşleşen bir KIMLIK içerir. Yanıt ya da sonuçlar KIMLIĞI içeriyor ancak her ikisini de içermemelidir. |
   
-`answerType` Ve `resultIndex` kullanarak iki adımlı bir işlemdir. İlk olarak, `answerType` görüntülenecek sonuçları içeren yanıtı belirlemek için kullanın. Daha sonra `resultIndex` , görüntülenecek sonucu almak için bu yanıtın sonuçlarına dizin eklemek için kullanın. ( `answerType` Değer, [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) nesnesindeki alanın adıdır.) Tüm yanıtın sonuçlarını birlikte görüntülemesi gerekiyorsa, derecelendirme yanıtı öğesi `resultIndex` alanı içermez.
+Ve kullanarak `answerType` `resultIndex` iki adımlı bir işlemdir. İlk olarak, `answerType` görüntülenecek sonuçları içeren yanıtı belirlemek için kullanın. Daha sonra `resultIndex` , görüntülenecek sonucu almak için bu yanıtın sonuçlarına dizin eklemek için kullanın. ( `answerType` Değer, [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) nesnesindeki alanın adıdır.) Tüm yanıtın sonuçlarını birlikte görüntülemesi gerekiyorsa, derecelendirme yanıtı öğesi `resultIndex` alanı içermez.
 
-KIMLIĞI kullanmak, derecelendirme KIMLIĞINI bir yanıtın KIMLIĞIYLE veya sonuçlardan biriyle eşleştirmeye gerek duyar. Bir yanıt nesnesi bir `id` alan içeriyorsa, tüm yanıtın sonuçlarını birlikte görüntüleyin. Örneğin, `Entities` nesnesi `id` alanı içeriyorsa, tüm varlıklar makalelerini birlikte görüntüleyin. Nesne alanını içermiyorsa, her varlık bir `id` alan içerir ve derecelendirme yanıtı, yerleri sonuçları ile karıştırmaz. `id` `Entities`  
+KIMLIĞI kullanmak, derecelendirme KIMLIĞINI bir yanıtın KIMLIĞIYLE veya sonuçlardan biriyle eşleştirmeye gerek duyar. Bir yanıt nesnesi bir alan içeriyorsa `id` , tüm yanıtın sonuçlarını birlikte görüntüleyin. Örneğin, `Entities` nesnesi `id` alanı içeriyorsa, tüm varlıklar makalelerini birlikte görüntüleyin. `Entities`Nesne `id` alanını içermiyorsa, her varlık bir `id` alan içerir ve derecelendirme yanıtı, yerleri sonuçları ile karıştırmaz.  
   
 ## <a name="ranking-response-example"></a>Derecelendirme yanıtı örneği
 

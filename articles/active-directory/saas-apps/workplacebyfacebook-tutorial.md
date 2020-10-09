@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/03/2020
 ms.author: jeedes
 ms.openlocfilehash: fade4176cbbf432aabae4422553a3caf0235ebed
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88526458"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Öğretici: Facebook tarafından çalışma alanı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -68,7 +68,7 @@ Azure AD SSO 'yu Facebook ile çalışma alanıyla yapılandırmak ve test etmek
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
     * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Facebook SSO Ile çalışma alanı yapılandırma](#configure-workplace-by-facebook-sso)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Facebook SSO Ile çalışma alanı yapılandırma](#configure-workplace-by-facebook-sso)** .
     * Facebook 'a ait çalışma alanında, kullanıcının Azure AD gösterimine bağlı olan Facebook tarafından Iş yerinde B. Simon 'ın bir karşılığı olacak şekilde **[çalışma alanı oluşturun](#create-workplace-by-facebook-test-user)** .
 3. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
@@ -78,7 +78,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. [Azure Portal](https://portal.azure.com/), **Facebook uygulama tümleştirmesiyle çalışma alanı** sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -91,9 +91,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://www.facebook.com/company/<instanceID>`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Çalışma alanı Community 'nizin kimlik doğrulama sayfasına bakın. Bu, bu öğreticide daha sonra açıklanmaktadır.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek Sign-On URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Çalışma alanı Community 'nizin kimlik doğrulama sayfasına bakın. Bu, bu öğreticide daha sonra açıklanmaktadır.
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML Ile tekli Sign-On ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 

@@ -14,10 +14,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: dfe4f09d00a5629249a3041946190f56e83c3480
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68934881"
 ---
 # <a name="deploy-secure-applications-on-azure"></a>Azure 'da güvenli uygulamalar dağıtma
@@ -25,10 +25,10 @@ Bu makalede, bulut için uygulama dağıtırken göz önünde bulundurmanız ger
 
 Aşağıdaki SDL aşamaları bu makalede ele alınmıştır:
 
-- Sürüm
+- Yayınla
 - Yanıt
 
-## <a name="release"></a>Sürüm
+## <a name="release"></a>Yayınla
 Yayın aşamasının odağı, bir projeyi ortak yayın için Read.
 Bu, daha sonra gerçekleşebilecek yayın sonrası bakım görevlerini ve adres güvenliği güvenlik açıklarını etkili bir şekilde gerçekleştirmenin planlama yollarını içerir.
 
@@ -43,7 +43,6 @@ Web uygulamaları, bilinen yaygın güvenlik açıklarından yararlanan kötü a
 [Azure Application Gateway WAF](../../application-gateway/waf-overview.md) , Web uygulamalarınızın yaygın güvenlik açıklarından ve güvenlik açıklarından merkezi bir şekilde korunmasını sağlar. WAF, [OWASP çekirdek kural kümelerinden](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,0 veya 2.2.9 göre kuralları temel alır.
 
 ### <a name="create-an-incident-response-plan"></a>Bir olay yanıtı planı oluşturma
-
 
 Bir olay yanıt planının hazırlanması, zaman içinde ortaya çıkabilir yeni tehditleri ele almanıza yardımcı olmak için önemlidir. Bir olay yanıt planının hazırlanması, uygun güvenlik acil durum kişilerini tanımlamayı ve kuruluştaki diğer gruplardan devralınan ve lisanslı üçüncü taraf kodu için güvenlik bakım planlarını oluşturmayı içerir.
 

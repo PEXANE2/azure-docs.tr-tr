@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.openlocfilehash: db7f2afa7993c8f8d2fe9fe30e5ecd4f2388b44b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88524276"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>Öğretici: Topmasa güvenliğine Azure Active Directory tümleştirme
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açmayı, TOPdesk ile güvenli bir şekilde yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[TOPdesk-Secure çoklu oturum açmayı yapılandırın](#configure-topdesk---secure-single-sign-on)** .
+2. **[TOPdesk-Secure çoklu oturum açmayı yapılandırma](#configure-topdesk---secure-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Topmasa **[-Secure test kullanıcısı oluşturun](#create-topdesk---secure-test-user)** . Bu, kullanıcının Azure AD gösterimine bağlı olan Topmasa 'da güvenli bir Britta Simon 'a sahip olacak.
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı TOPdesk ile güvenli olarak yapılandırmak içi
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -108,9 +108,9 @@ Azure AD çoklu oturum açmayı TOPdesk ile güvenli olarak yapılandırmak içi
     c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<companyname>.topdesk.net/tas/secure/login/verify`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Topmasa-güvenli istemci desteği ekibine](https://www.topdesk.com/us/support/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek Sign-On URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Topmasa-güvenli istemci desteği ekibine](https://www.topdesk.com/us/support/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -124,7 +124,7 @@ Azure AD çoklu oturum açmayı TOPdesk ile güvenli olarak yapılandırmak içi
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-topdesk---secure-single-sign-on"></a>TOPdesk-Secure çoklu oturum açmayı yapılandırma
+### <a name="configure-topdesk---secure-single-sign-on"></a>TOPdesk-Secure tek Sign-On yapılandırma
 
 1. **Topoloji güvenli** şirket sitenizde yönetici olarak oturum açın.
 

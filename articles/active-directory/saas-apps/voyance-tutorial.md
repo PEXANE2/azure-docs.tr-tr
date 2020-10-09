@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/07/2019
 ms.author: jeedes
 ms.openlocfilehash: e51d275b32b634b7914b4e4f53959c1b89d96aed
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88531732"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-voyance"></a>Öğretici: Voyance ile tümleştirme Azure Active Directory
@@ -75,7 +75,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Voyance Ile 
 Azure AD çoklu oturum açma 'yı Voyance ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Voyance çoklu oturum açmayı yapılandırma](#configure-voyance-single-sign-on)** uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Voyance çoklu oturum açmayı yapılandırın](#configure-voyance-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. **[Voyance test kullanıcısı oluşturun](#create-voyance-test-user)** -Voyance 'de kullanıcının Azure AD gösterimine bağlanan Britta Simon 'a sahip olmak için.
@@ -95,7 +95,7 @@ Azure AD çoklu oturum açmayı Voyance ile yapılandırmak için aşağıdaki a
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -116,7 +116,7 @@ Azure AD çoklu oturum açmayı Voyance ile yapılandırmak için aşağıdaki a
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [Voyance istemci destek ekibine](mailto:support@nyansa.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -130,29 +130,29 @@ Azure AD çoklu oturum açmayı Voyance ile yapılandırmak için aşağıdaki a
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-voyance-single-sign-on"></a>Voyance çoklu oturum açmayı yapılandırma
+### <a name="configure-voyance-single-sign-on"></a>Voyance tek Sign-On yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, Voyance kiracınızda yönetici olarak oturum açın.
 
 2. Gezinti çubuğunun sağ üst köşesine gidin ve **profil**' e tıklayın.
     
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma Acme University](./media/voyance-tutorial/tutorial_voyance_001.png) 
+    ![Uygulama tarafında tek Sign-On yapılandırma Acme University](./media/voyance-tutorial/tutorial_voyance_001.png) 
 
 3. **Yönetici ayarları**' na tıklayın.
 
-    ![Uygulama tarafı yönetici ayarlarında çoklu oturum açmayı yapılandırma](./media/voyance-tutorial/tutorial_voyance_002.png)
+    ![Uygulama tarafı yönetici ayarlarında tek Sign-On yapılandırma](./media/voyance-tutorial/tutorial_voyance_002.png)
 
 4. **Kullanıcı erişimi** sekmesine tıklayın.
 
-    ![Uygulama tarafında Kullanıcı erişiminde çoklu oturum açmayı yapılandırma](./media/voyance-tutorial/tutorial_voyance_003.png)
+    ![Uygulama tarafında Kullanıcı erişiminde tek Sign-On yapılandırma](./media/voyance-tutorial/tutorial_voyance_003.png)
 
 5. Azure AD 'yi SAML 2,0 kullanarak bir IDP olarak yapılandırmak için **SSO devre dışı** düğmesine tıklayın.
 
-    ![Uygulama tarafı SSO 'Da çoklu oturum açmayı yapılandırma devre dışı bırakıldı düğmesi](./media/voyance-tutorial/tutorial_voyance_004.png)
+    ![Uygulama tarafı SSO 'SU üzerinde tek Sign-On yapılandırma devre dışı düğmesi](./media/voyance-tutorial/tutorial_voyance_004.png)
 
 6. **SAML V2** bölümüne gidin ve aşağıdaki adımları gerçekleştirin:
 
-    ![Uygulama tarafı SAML V2 'de çoklu oturum açmayı yapılandırma](./media/voyance-tutorial/tutorial-voyance-005.png)
+    ![Uygulama tarafında SAML V2 'de tek Sign-On yapılandırma](./media/voyance-tutorial/tutorial-voyance-005.png)
     
     a. **Etkin**'i seçin.
     

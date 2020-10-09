@@ -1,5 +1,5 @@
 ---
-title: "Öğretici: Michigan veri hub 'ı çoklu oturum açma ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs"
+title: 'Öğretici: Michigan Data hub tek Sign-On ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Michigan veri merkezi çoklu oturum açma arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 author: jeevansd
@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.date: 07/23/2020
 ms.author: jeedes
 ms.openlocfilehash: 031190bee2dc81398ee0c4ac23ad9ec62469333a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88528378"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-michigan-data-hub-single-sign-on"></a>Öğretici: Michigan veri merkezi çoklu oturum açma ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-michigan-data-hub-single-sign-on"></a>Öğretici: tek oturum açma (SSO) Michigan veri merkezi tek Sign-On tümleştirmesi Azure Active Directory
 
-Bu öğreticide, Michigan Data Hub çoklu oturum açmayı Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Michigan Data Hub çoklu oturum açma 'yı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu öğreticide, Michigan Data hub tek Sign-On Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Michigan Data hub tek Sign-On Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
 * Azure AD 'de Michigan veri hub 'ı çoklu oturum açma 'ya erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla çoklu oturum açma Michigan için otomatik olarak oturum açmasını sağlar.
+* Kullanıcılarınızın Azure AD hesaplarıyla Michigan veri merkezi tek Sign-On otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
@@ -33,18 +33,18 @@ Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek
 Başlamak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Michigan veri hub 'ı çoklu oturum açma (SSO) etkin aboneliği.
+* Michigan Data hub tek Sign-On çoklu oturum açma (SSO) etkin abonelik.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Michigan veri hub 'ı çoklu oturum açma, **SP** tarafından başlatılan SSO 'yu destekler
-* Michigan Data Hub çoklu oturum açma 'Yı yapılandırdıktan sonra, kuruluşunuzun gizli verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Michigan Data hub tek Sign-On **SP** tarafından başlatılan SSO 'yu destekler
+* Michigan Data hub tekil Sign-On yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-michigan-data-hub-single-sign-on-from-the-gallery"></a>Galeriden Michigan veri hub 'ı çoklu oturum açma ekleme
+## <a name="adding-michigan-data-hub-single-sign-on-from-the-gallery"></a>Galeriden Michigan Data hub tek Sign-On ekleme
 
-Michigan veri hub 'ı çoklu oturum açma 'nın tümleştirmesini Azure AD 'de yapılandırmak için galerideki Michigan veri hub 'ı çoklu oturum açma 'yı yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Michigan Data hub tek Sign-On tümleştirmesini Azure AD 'ye göre yapılandırmak için galerideki Michigan Data hub tek Sign-On ' i yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
 
 1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
@@ -54,17 +54,17 @@ Michigan veri hub 'ı çoklu oturum açma 'nın tümleştirmesini Azure AD 'de y
 1. Sonuçlar panelinden **Michigan Data Hub çoklu oturum açma** seçeneğini belirleyin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
-## <a name="configure-and-test-azure-ad-sso-for-michigan-data-hub-single-sign-on"></a>Michigan veri merkezi çoklu oturum açma için Azure AD SSO 'yu yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-michigan-data-hub-single-sign-on"></a>Michigan veri merkezi tekil Sign-On için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Michigan veri merkezi çoklu oturum açma özelliğiyle yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Michigan veri merkezi çoklu oturum açma içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Michigan Data Hub tek Sign-On ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Michigan veri merkezi çoklu oturum açma içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Michigan veri merkezi çoklu oturum açma ile Azure AD SSO 'yu yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
     1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Michigan Data Hub çoklu oturum açma SSO 'Yu yapılandırın](#configure-michigan-data-hub-single-sign-on-sso)** .
-    1. **[Michigan veri merkezi çoklu oturum açma testi kullanıcısı oluşturun](#create-michigan-data-hub-single-sign-on-test-user)** ; bu, kullanıcının Azure AD gösterimine bağlı olan Michigan veri merkezi çoklu oturum açma sürümünde B. Simon 'a sahip olmak için.
+1. **[Michigan Data hub tek Sign-On SSO yapılandırma](#configure-michigan-data-hub-single-sign-on-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+    1. **[Michigan Data hub tekil Sign-On test kullanıcısı oluşturun](#create-michigan-data-hub-single-sign-on-test-user)** ; bu, kullanıcının Azure AD gösterimine bağlı tek Sign-On Michigan veri hub 'ında B. Simon 'a sahip olmak için.
 1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
@@ -115,19 +115,19 @@ Bu bölümde, Michigan veri merkezi çoklu oturum açma erişimine izin vererek 
 1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-## <a name="configure-michigan-data-hub-single-sign-on-sso"></a>Michigan Data Hub çoklu oturum açma SSO 'yu yapılandırma
+## <a name="configure-michigan-data-hub-single-sign-on-sso"></a>Michigan Data hub tek Sign-On SSO yapılandırma
 
-**Michigan veri merkezi çoklu** oturum açma tarafında çoklu oturum açmayı yapılandırmak Için, **uygulama Federasyon meta verileri URL 'Sini** [Michigan veri merkezi çoklu oturum açma desteği ekibine](mailto:support@midatahub.org)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+**Michigan veri merkezi çoklu oturum** açma tarafında çoklu oturum açmayı yapılandırmak Için, **uygulama Federasyon meta verileri URL 'Sini** [Michigan veri merkezi tek Sign-On destek ekibine](mailto:support@midatahub.org)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
-### <a name="create-michigan-data-hub-single-sign-on-test-user"></a>Michigan veri merkezi çoklu oturum açma testi kullanıcısı oluşturma
+### <a name="create-michigan-data-hub-single-sign-on-test-user"></a>Michigan Data hub tek Sign-On test kullanıcısı oluşturma
 
-Bu bölümde, Michigan Data Hub çoklu oturum açma bölümünde B. Simon adlı bir Kullanıcı oluşturacaksınız. Michigan veri merkezi çoklu oturum açma platformunda kullanıcıları eklemek için [Michigan veri merkezi çoklu oturum açma desteği ekibi](mailto:support@midatahub.org) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, Michigan Data Hub çoklu oturum açma bölümünde B. Simon adlı bir Kullanıcı oluşturacaksınız. Michigan veri merkezi tek Sign-On platformunda kullanıcıları eklemek için [Michigan Data hub tek Sign-On destek ekibi](mailto:support@midatahub.org) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde Michigan Data Hub çoklu oturum açma kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Michigan veri merkezi çoklu oturum açma çubuğunda otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Michigan veri merkezi tek Sign-On kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Michigan veri merkezi tekil Sign-On otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
@@ -137,8 +137,8 @@ Erişim panelinde Michigan Data Hub çoklu oturum açma kutucuğuna tıkladığ�
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile Michigan Data Hub çoklu oturum açmayı deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile Michigan Data hub tek Sign-On deneyin](https://aad.portal.azure.com/)
 
 - [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Gelişmiş görünürlük ve denetimlerle Michigan veri hub 'ı çoklu oturum açmayı koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Gelişmiş görünürlük ve denetimlerle Michigan veri hub 'ı tek Sign-On koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

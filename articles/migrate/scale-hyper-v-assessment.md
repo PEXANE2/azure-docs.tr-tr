@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: raynew
 ms.openlocfilehash: c1ae3a9ed8a775161aaf85ab2c91b1e43113d2e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "70279448"
 ---
 # <a name="assess-large-numbers-of-hyper-v-vms-for-migration-to-azure"></a>Azure 'a geçiş için çok sayıda Hyper-V VM 'yi değerlendirin
@@ -48,7 +48,7 @@ Planlama için bu tabloda özetlenen limitleri kullanın.
 --- | --- 
 **Azure geçişi projeleri** | Bir projede en fazla 35.000 VM 'yi değerlendirin.
 **Azure Geçişi gereci** | Bir gereç, en fazla 5000 VM bulabilir.<br/> Bir gereç, 300 adede kadar Hyper-V konaklarına bağlanabilir.<br/> Bir gereç, yalnızca tek bir Azure geçişi projesiyle ilişkilendirilebilir.<br/> Herhangi bir sayıda gereç, tek bir Azure geçişi projesiyle ilişkilendirilebilir. <br/><br/> 
-**Grubu** | Tek bir gruba en fazla 35.000 VM ekleyebilirsiniz.
+**Grup** | Tek bir gruba en fazla 35.000 VM ekleyebilirsiniz.
 **Azure geçişi değerlendirmesi** | Tek bir değerlendirmede 35.000 adede kadar VM 'yi değerlendirebilirsiniz.
 
 
@@ -75,7 +75,7 @@ Planlama gereksinimlerinize uygun olarak şunları yapın:
 1. Bir Azure geçişi projesi oluşturun.
 2. Azure geçişi sunucu değerlendirmesi aracını projelere ekleyin.
 
-[Daha fazla bilgi](how-to-add-tool-first-time.md)
+[Daha fazla bilgi edinin](how-to-add-tool-first-time.md)
 
 ## <a name="create-and-review-an-assessment"></a>Değerlendirme oluşturma ve gözden geçirme
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/04/2020
 ms.author: jeedes
 ms.openlocfilehash: d93cd2efe49f819c8adeb53674b6d4f465312e06
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88527429"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smart-global-governance"></a>Öğretici: akıllı genel Idare ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -73,7 +73,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com/), **akıllı küresel idare** uygulama tümleştirmesi sayfasında, **Yönet** bölümünde **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem düğmesini seçin:
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem düğmesini seçin:
 
    ![Temel SAML yapılandırması için kalem düğmesi](common/edit-urls.png)
 
@@ -96,7 +96,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
     - `https://eu-fr-south.console.smartglobalprivacy.com/dpo`
     - `https://eu-fr-south.console.smartglobalprivacy.com/platform`
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, sertifikayı Indirip bilgisayarınıza kaydetmek için sertifika **yükleme** bağlantısını **(ham)** seçin:
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, sertifikayı Indirip bilgisayarınıza kaydetmek için sertifika **yükleme** bağlantısını **(ham)** seçin:
 
     ![Sertifika indirme bağlantısı](common/certificateraw.png)
 

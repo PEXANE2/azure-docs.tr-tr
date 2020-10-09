@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
 ms.openlocfilehash: f3029acd791e7c45eb5943d298189430ac308e99
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88528480"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mimecast-admin-console"></a>Öğretici: Mimecast Yönetici Konsolu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -80,7 +80,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     a. **Tanımlayıcı** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | Region  |  Değer | 
+    | Bölge  |  Değer | 
     | --------------- | --------------- |
     | Avrupa          | `https://eu-api.mimecast.com/sso/<accountcode>`|
     | Birleşik Devletler   | `https://us-api.mimecast.com/sso/<accountcode>`|
@@ -93,7 +93,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     b. **Yanıt URL** 'si metin kutusuna bir URL yazın: 
 
-    | Region  |  Değer | 
+    | Bölge  |  Değer | 
     | --------------- | --------------- | 
     | Avrupa          | `https://eu-api.mimecast.com/login/saml`|
     | Birleşik Devletler   | `https://us-api.mimecast.com/login/saml`|
@@ -105,7 +105,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     **Oturum açma URL 'si** metin kutusuna bir URL yazın: 
 
-    | Region  |  Değer | 
+    | Bölge  |  Değer | 
     | --------------- | --------------- | 
     | Avrupa          | `https://login-eu.mimecast.com/administration/app/#/administration-dashboard`|
     | Birleşik Devletler   | `https://login-us.mimecast.com/administration/app/#/administration-dashboard`|

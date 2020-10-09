@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.openlocfilehash: 4867a1735f091085f64bbe7010969bd086f820a1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88527183"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>Öğretici: Workday ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -73,7 +73,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. [Azure Portal](https://portal.azure.com/), **Workday** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -96,7 +96,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!NOTE]
     > Burada ad KIMLIĞINI UPN (User. UserPrincipalName) ile varsayılan olarak eşleştirdik. SSO 'nun başarıyla çalışması için, ad KIMLIĞINI Workday hesabınızdaki (e-postanız, UPN, vb.) gerçek Kullanıcı KIMLIĞIYLE eşlemeniz gerekir.
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML Ile tekli Sign-On ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
    ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -220,7 +220,7 @@ Bu bölümde, Workday 'e erişim izni vererek Azure çoklu oturum açma özelli�
 
     e.  **Sertifika** metin kutusunda, panonuzun içeriğini yapıştırın.
 
-    f.  **Tamam** düğmesine tıklayın.
+    f.  **Tamam**'a tıklayın.
 
 7. Aşağıdaki adımları gerçekleştirin:
 
@@ -234,7 +234,7 @@ Bu bölümde, Workday 'e erişim izni vererek Azure çoklu oturum açma özelli�
 
     ![Kimlik doğrulama Isteği Imza yöntemi](./media/workday-tutorial/WorkdaySSOConfiguration.png "Kimlik doğrulama Isteği Imza yöntemi")
 
-    d. **Tamam** düğmesine tıklayın.
+    d. **Tamam**'a tıklayın.
 
     ![Tamam](./media/workday-tutorial/IC782933.png "Tamam")
 

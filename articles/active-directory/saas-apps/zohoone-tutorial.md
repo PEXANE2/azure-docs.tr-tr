@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.openlocfilehash: baa33e79b3bba8eccb2d0fc03e110e1a3c4defde
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88546015"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>Öğretici: Zoho One ile tümleştirme Azure Active Directory
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açmayı, Zoho One ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Zoho 'Yi bir çoklu oturum açma yapılandırması](#configure-zoho-one-single-sign-on)** , uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[Zoho 'Yi tek bir oturum açma yapılandırma](#configure-zoho-one-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Zoho **[One test kullanıcısı oluşturun](#create-zoho-one-test-user)** -kullanıcının Azure AD gösterimine bağlı olan Zoho 'Da Britta Simon 'un bir karşılığı olacak şekilde.
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı, Zoho One ile birlikte yapılandırmak için aş
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -120,9 +120,9 @@ Azure AD çoklu oturum açmayı, Zoho One ile birlikte yapılandırmak için aş
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://accounts.zoho.com/samlauthrequest/<domain_name>?serviceurl=https://one.zoho.com` 
 
     > [!NOTE] 
-    > Önceki **oturum açma URL 'si** değeri gerçek değil. Bu değeri, Öğreticinin ilerleyen kısımlarında açıklanan **bir çoklu oturum açma yapılandırma** bölümünde yer alan gerçek oturum açma URL 'si ile güncelleşceksiniz. 
+    > Önceki **oturum açma URL 'si** değeri gerçek değil. Değeri, Öğreticinin ilerleyen kısımlarında açıklanan **bir çoklu oturum açma yapılandırma** bölümünün gerçek Sign-On URL 'siyle güncellecektir. 
 
-6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -136,7 +136,7 @@ Azure AD çoklu oturum açmayı, Zoho One ile birlikte yapılandırmak için aş
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-zoho-one-single-sign-on"></a>Zoho 'Yi tek bir oturum açma yapılandırması
+### <a name="configure-zoho-one-single-sign-on"></a>Zoho 'yi tek bir Sign-On yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, Zoho One şirket sitenizde yönetici olarak oturum açın.
 

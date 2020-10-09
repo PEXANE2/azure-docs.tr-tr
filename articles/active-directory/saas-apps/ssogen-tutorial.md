@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
 ms.openlocfilehash: 72b91be9875abf07e5f6f828ed32483a5d61eadd
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88524450"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ssogen---azure-ad-sso-gateway-for-oracle-e-business-suite---ebs-peoplesoft-and-jde"></a>Öğretici: Oracle E-Business Suite-EBS, PeopleSoft ve JDE için SSOGEN-Azure AD SSO ağ geçidiyle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -88,7 +88,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<customer_name>.ssogen.com/ssogen/login?client_name=<customer_name>`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [Oracle E-Business Suite-EBS, PeopleSoft ve JDE istemci destek ekibi Için Ssogen-Azure AD SSO Gateway](mailto:support@ssogen.com) 'e başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek yanıt URL 'si ve Sign-On URL 'siyle güncelleştirin. Bu değerleri almak için [Oracle E-Business Suite-EBS, PeopleSoft ve JDE istemci destek ekibi Için Ssogen-Azure AD SSO Gateway](mailto:support@ssogen.com) 'e başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 1. Oracle E-Business Suite-EBS, PeopleSoft ve JDE uygulaması için SSOGEN-Azure AD SSO ağ geçidiniz, SAML belirteci öznitelik yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde, **NameIdentifier** 'ın **User. UserPrincipalName**ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. Oracle E-Business Suite-EBS, PeopleSoft ve JDE uygulaması için SSOGEN-Azure AD SSO Gateway, **NameIdentifier** 'ın **User. onpremisessamaccountname**ile eşlenmesini bekliyor, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
 

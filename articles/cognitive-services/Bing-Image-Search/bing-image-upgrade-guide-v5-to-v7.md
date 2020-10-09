@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
 ms.openlocfilehash: c4c6b95996206cfb38ea3f77b89c3ebe3c2c0026
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68883499"
 ---
 # <a name="bing-image-search-api-v7-upgrade-guide"></a>Bing Resim Arama API'si v7 Yükseltme Kılavuzu
@@ -26,15 +26,15 @@ Bu yükseltme Kılavuzu, sürüm 5 ve Bing Resim Arama API'si sürüm 7 arasınd
 
 ### <a name="endpoints"></a>Uç Noktalar
 
-- Uç noktanın sürüm numarası, V5 'ten v7 'e değişti. Örneğin, https:\//api.Cognitive.Microsoft.com/Bing/\*\*v 7.0 * */images/Search.
+- Uç noktanın sürüm numarası, V5 'ten v7 'e değişti. Örneğin, https: \/ /api.Cognitive.Microsoft.com/Bing/ \* \* v 7.0 * */images/Search.
 
 ### <a name="error-response-objects-and-error-codes"></a>Hata yanıtı nesneleri ve hata kodları
 
-- Tüm başarısız istekler yanıt gövdesine bir `ErrorResponse` nesne içermelidir.
+- Tüm başarısız istekler `ErrorResponse` Yanıt gövdesine bir nesne içermelidir.
 
-- `Error` Nesnesine aşağıdaki alanlar eklendi.  
+- Nesnesine aşağıdaki alanlar eklendi `Error` .  
   - `subCode`&mdash;Mümkünse hata kodunu farklı demetlere göre bölümler
-  - `moreDetails`&mdash;`message` Alanda açıklanan hata hakkında ek bilgiler
+  - `moreDetails`&mdash;Alanda açıklanan hata hakkında ek bilgiler `message`
 
 
 - V5 hata kodları aşağıdaki olası `code` ve `subCode` değerlerle değiştirilmiştir.
@@ -74,7 +74,7 @@ Engellendi|Invalidrequest. engellendi
 
 ### <a name="query-parameters"></a>Sorgu parametreleri
 
-- `modulesRequested` Sorgu parametresi [modüller](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)olarak yeniden adlandırıldı.  
+- `modulesRequested`Sorgu parametresi [modüller](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)olarak yeniden adlandırıldı.  
 
 - Ek açıklamaları Etiketler olarak yeniden adlandırıldı. Bkz. Etiketler için [modüller](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) sorgu parametresi.  
 
@@ -83,17 +83,17 @@ Engellendi|Invalidrequest. engellendi
 
 ### <a name="image-insights-changes"></a>Görüntü öngörüleri değişiklikleri
 
-- `annotations` Imaiçgörüler [ImagesInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) alanı olarak `imageTags`yeniden adlandırıldı.  
+- `annotations`Imaiçgörüler [ImagesInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) alanı olarak yeniden adlandırıldı `imageTags` .  
 
-- `AnnotationModule` Nesnesi [ımagetagsmodule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetagsmodule)olarak yeniden adlandırıldı.  
+- `AnnotationModule`Nesnesi [ımagetagsmodule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetagsmodule)olarak yeniden adlandırıldı.  
 
-- `Annotation` Nesneyi [etiketlemek](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#tag)için yeniden adlandırıldı ve `confidence` alan kaldırıldı.  
+- `Annotation`Nesneyi [etiketlemek](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#tag)için yeniden adlandırıldı ve `confidence` alan kaldırıldı.  
 
-- [Görüntü](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) `insightsMetadata`nesnesinin `insightsSourcesSummary` alanı olarak yeniden adlandırıldı.  
+- `insightsSourcesSummary` [Görüntü](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) nesnesinin alanı olarak yeniden adlandırıldı `insightsMetadata` .  
 
 - Nesnesi, `InsightsSourcesSummary` [ınsightsmetadata](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightsmetadata)olarak yeniden adlandırıldı.  
 
-- `https://api.cognitive.microsoft.com/bing/v7.0/images/details` Uç nokta eklendi. Bu uç noktayı,/images/Search uç noktası yerine görüntü öngörüleri istemek için kullanın. Bkz. [görüntü öngörüleri](./image-insights.md).
+- `https://api.cognitive.microsoft.com/bing/v7.0/images/details`Uç nokta eklendi. Bu uç noktayı,/images/Search uç noktası yerine görüntü öngörüleri istemek için kullanın. Bkz. [görüntü öngörüleri](./image-insights.md).
 
 - Aşağıdaki sorgu parametreleri artık yalnızca `/images/details` uç noktayla geçerlidir.  
 
@@ -106,33 +106,33 @@ Engellendi|Invalidrequest. engellendi
     -   [kedi](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cat)  
     -   [unu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#ct)  
 
-- `ImageInsightsResponse` Nesne [ımageınsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsights)olarak yeniden adlandırıldı.  
+- `ImageInsightsResponse`Nesne [ımageınsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsights)olarak yeniden adlandırıldı.  
 
 - [Imageınsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsights) nesnesindeki aşağıdaki alanların veri türleri değiştirildi.  
 
-    -   `relatedCollections` Alanın türü, öğesinden `ImageGallery[]` [relatedcollectionsmodule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#relatedcollectionsmodule)olarak değiştirildi.  
+    -   Alanın türü, `relatedCollections` öğesinden `ImageGallery[]` [Relatedcollectionsmodule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#relatedcollectionsmodule)olarak değiştirildi.  
 
-    -   `pagesIncluding` Alanın türü, öğesinden `Image[]` [ımabir modül](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule)olarak değiştirildi.  
+    -   Alanın türü, `pagesIncluding` öğesinden `Image[]` [ımabir modül](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule)olarak değiştirildi.  
 
-    -   `relatedSearches` Alanın türü, öğesinden `Query[]` [relatedsearchesmodule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#relatedsearchesmodule)olarak değiştirildi.  
+    -   Alanın türü, `relatedSearches` öğesinden `Query[]` [Relatedsearchesmodule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#relatedsearchesmodule)olarak değiştirildi.  
 
-    -   `recipes` Alan türü `Recipe[]` [RecipesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#recipesmodule)olarak değiştirildi.  
+    -   `recipes`Alan türü `Recipe[]` [RecipesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#recipesmodule)olarak değiştirildi.  
 
-    -   `visuallySimilarImages` Alanın türü, öğesinden `Image[]` [ımabir modül](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule)olarak değiştirildi.  
+    -   Alanın türü, `visuallySimilarImages` öğesinden `Image[]` [ımabir modül](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule)olarak değiştirildi.  
 
-    -   `visuallySimilarProducts` Alanın türü, öğesinden `ProductSummaryImage[]` [ımabir modül](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule)olarak değiştirildi.  
+    -   Alanın türü, `visuallySimilarProducts` öğesinden `ProductSummaryImage[]` [ımabir modül](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule)olarak değiştirildi.  
 
-    -   `ProductSummaryImage` Nesne kaldırıldı ve ürünle Ilgili alanları [Image](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) nesnesine taşındı. `Image` Nesne, yalnızca görüntü Insight yanıtında görsel açıdan benzer ürünlerin bir parçası olarak dahil edildiğinde ürünle ilgili alanları içerir.  
+    -   Nesne kaldırıldı `ProductSummaryImage` ve ürünle ilgili alanları [Image](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) nesnesine taşındı. `Image`Nesne, yalnızca görüntü Insight yanıtında görsel açıdan benzer ürünlerin bir parçası olarak dahil edildiğinde ürünle ilgili alanları içerir.  
 
-    -   `recognizedEntityGroups` Alanın türü, yerine `RecognizedEntityGroup[]` [Recognizedentitıesmodule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#recognizedentitiesmodule)olarak değiştirildi.  
+    -   Alanın türü, yerine `recognizedEntityGroups` `RecognizedEntityGroup[]` [Recognizedentitıesmodule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#recognizedentitiesmodule)olarak değiştirildi.  
 
--   `categoryClassification` [Imageınsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) alanını olarak `annotations`yeniden adlandırdı ve türünü olarak `AnnotationsModule`değiştirdi.  
+-   `categoryClassification` [Imageınsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) alanını olarak yeniden adlandırdı `annotations` ve türünü olarak değiştirdi `AnnotationsModule` .  
 
 ### <a name="images-answer"></a>Görüntü yanıtı
 
 -   [Görüntülerden](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images)displayShoppingSourcesBadges ve displayRecipeSourcesBadges alanları kaldırıldı.  
 
--   `nextOffsetAddCount` [Görüntülerin](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) alanı olarak `nextOffset`yeniden adlandırıldı. Sapmayı kullanma yönteminiz de değişmiştir. Daha önce, [fark](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offset) sorgu parametresini `nextOffsetAddCount` değere ve önceki fark değerine ve sonuç içindeki görüntü sayısına göre ayarlarsınız. Şimdi `offset` `nextOffset` değere ayarlanır.  
+-   `nextOffsetAddCount` [Görüntülerin](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) alanı olarak yeniden adlandırıldı `nextOffset` . Sapmayı kullanma yönteminiz de değişmiştir. Daha önce, [fark](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offset) sorgu parametresini `nextOffsetAddCount` değere ve önceki fark değerine ve sonuç içindeki görüntü sayısına göre ayarlarsınız. Şimdi `offset` `nextOffset` değere ayarlanır.  
 
 
 ## <a name="non-breaking-changes"></a>Kırılamayan değişiklikler
@@ -149,8 +149,8 @@ Engellendi|Invalidrequest. engellendi
 
 ### <a name="object-changes"></a>Nesne değişiklikleri
 
-- Teklif nesnesine `description` ve `lastUpdated` alanları eklendi. [Offer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offer)  
+- `description` `lastUpdated` [Teklif](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offer) nesnesine ve alanları eklendi.  
 
-- `name` Alanı [ımagegallery](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagegallery) nesnesine eklediniz.  
+- `name`Alanı [ımagegallery](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagegallery) nesnesine eklediniz.  
 
-- Images `similarTerms` nesnesine eklendi [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) . Bu alan, kullanıcının sorgu dizesinde anlamı olan koşulların bir listesini içerir.  
+- `similarTerms` [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) nesnesine eklendi. Bu alan, kullanıcının sorgu dizesinde anlamı olan koşulların bir listesini içerir.  

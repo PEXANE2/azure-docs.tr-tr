@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 2ee2eb7586489527272d92dd1eaef6976bc41f94
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88524859"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-statuspage"></a>Öğretici: StatusPage ile tümleştirme Azure Active Directory
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açma 'yı StatusPage ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[StatusPage çoklu oturum açmayı yapılandırma](#configure-statuspage-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[StatusPage çoklu oturum açmayı yapılandırma](#configure-statuspage-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. StatusPage **[test kullanıcısı oluşturun](#create-statuspage-test-user)** ve kullanıcının Azure AD gösterimine bağlı olarak, StatusPage 'de Britta Simon 'un bir karşılığı vardır.
@@ -93,11 +93,11 @@ Azure AD çoklu oturum açmayı StatusPage ile yapılandırmak için aşağıdak
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki adımları uygulayın:
+4. **SAML Ile tek Sign-On ayarlama** sayfasında, aşağıdaki adımları gerçekleştirin:
 
     ![StatusPage etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
 
@@ -118,7 +118,7 @@ Azure AD çoklu oturum açmayı StatusPage ile yapılandırmak için aşağıdak
     >
     > b. Meta verilerden, yanıt URL 'sini kopyalayın ve ardından **yanıt URL 'si** metin kutusuna yapıştırın.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -132,23 +132,23 @@ Azure AD çoklu oturum açmayı StatusPage ile yapılandırmak için aşağıdak
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-statuspage-single-sign-on"></a>StatusPage çoklu oturum açmayı yapılandırma
+### <a name="configure-statuspage-single-sign-on"></a>StatusPage tek Sign-On yapılandırma
 
 1. Başka bir tarayıcı penceresinde, StatusPage şirket sitenizde yönetici olarak oturum açın.
 
 1. Ana araç çubuğunda **Hesabı Yönet**' e tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/statuspage-tutorial/tutorial_statuspage_06.png)
+    ![Tek Sign-On yapılandırma](./media/statuspage-tutorial/tutorial_statuspage_06.png)
 
 1. **Çoklu oturum açma** sekmesine tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/statuspage-tutorial/tutorial_statuspage_07.png)
+    ![Tek Sign-On yapılandırma](./media/statuspage-tutorial/tutorial_statuspage_07.png)
 
 1. SSO kurulum sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/statuspage-tutorial/tutorial_statuspage_08.png)
+    ![Tek Sign-On yapılandırma](./media/statuspage-tutorial/tutorial_statuspage_08.png)
 
-    ![Çoklu oturum açmayı yapılandırma](./media/statuspage-tutorial/tutorial_statuspage_09.png)
+    ![Tek Sign-On yapılandırma](./media/statuspage-tutorial/tutorial_statuspage_09.png)
 
     a. **SSO hedef URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
 
@@ -219,7 +219,7 @@ StatusPage tam zamanında sağlamayı destekler. Bu özelliği [Azure AD çoklu 
 
 1. Üstteki menüde **Hesabı Yönet**' e tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/statuspage-tutorial/tutorial_statuspage_06.png)
+    ![Tek Sign-On yapılandırma](./media/statuspage-tutorial/tutorial_statuspage_06.png)
 
 1. **Ekip üyeleri** sekmesine tıklayın.
   

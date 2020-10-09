@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.openlocfilehash: a46771b38a56469483a59b622fde04a2a9021e75
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88533087"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ultipro"></a>Öğretici: UltiPro ile tümleştirme Azure Active Directory
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açmayı, UltiPro ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Çoklu oturum açma ayarlarını uygulama tarafında yapılandırmak için **[UltiPro çoklu oturum açmayı yapılandırın](#configure-ultipro-single-sign-on)** .
+2. Çoklu **[Pro çoklu oturum açmayı yapılandırma](#configure-ultipro-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. UltiPro **[test kullanıcısı oluşturun](#create-ultipro-test-user)** -kullanıcının Azure AD gösterimine bağlı olan, UltiPro 'Da Britta Simon 'un bir karşılığı olacak şekilde.
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı UltiPro ile yapılandırmak için aşağıdaki a
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -120,9 +120,9 @@ Azure AD çoklu oturum açmayı UltiPro ile yapılandırmak için aşağıdaki a
     - `https://<companyname>.ultipro.ca/<instancename>`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için, [UltiPro istemci desteği ekibine](https://www.ultimatesoftware.com/ContactUs) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek Sign-On URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için, [UltiPro istemci desteği ekibine](https://www.ultimatesoftware.com/ContactUs) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+4. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -136,7 +136,7 @@ Azure AD çoklu oturum açmayı UltiPro ile yapılandırmak için aşağıdaki a
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-ultipro-single-sign-on"></a>UltiPro çoklu oturum açmayı yapılandırma
+### <a name="configure-ultipro-single-sign-on"></a>UltiPro tek Sign-On yapılandırma
 
 **UltiPro** tarafında çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (base64)** ve uygun kopyalanmış URL 'Leri Azure Portal ' den [UltiPro destek ekibine](https://www.ultimatesoftware.com/ContactUs)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

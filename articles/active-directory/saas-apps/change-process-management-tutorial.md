@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/07/2020
 ms.author: jeedes
 ms.openlocfilehash: 501f19b2022d221ad6facd66c483790b13491ba0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88529687"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-change-process-management"></a>Öğretici: değişiklik Işlemi yönetimiyle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -73,11 +73,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. [Azure Portal](https://portal.azure.com/), **işlem yönetimini Değiştir** uygulama tümleştirmesi sayfasında, **Yönet** bölümünde, **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem düğmesini seçin:
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem düğmesini seçin:
 
    ![Temel SAML yapılandırması için kalem düğmesi](common/edit-urls.png)
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında şu adımları uygulayın:
+1. **SAML Ile tek Sign-On ayarlama** sayfasında şu adımları uygulayın:
 
     a. **Tanımlayıcı** kutusunda, aşağıdaki düzende bir URL girin:`https://<hostname>:8443/`
 
@@ -86,7 +86,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!NOTE]
     > Önceki **tanımlayıcı** ve **yanıt URL** değerleri, kullanmanız gereken gerçek değerler değildir. Gerçek değerleri almak için [Işlem yönetimi destek ekibine](mailto:support@realtech-us.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, sertifikayı Indirip bilgisayarınıza kaydetmek için sertifika **indirme** bağlantısını **(base64)** seçin:
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, sertifikayı Indirip bilgisayarınıza kaydetmek için sertifika **indirme** bağlantısını **(base64)** seçin:
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 

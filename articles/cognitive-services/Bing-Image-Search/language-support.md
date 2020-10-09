@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: ca3821b6088e45730334d1b0971e270b1d86dfce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68881915"
 ---
 # <a name="language-and-region-support-for-the-bing-image-search-api"></a>Bing Resim Arama API'si için dil ve bölge desteği
 
 Bing Resim Arama API'si, birden fazla dilden çok sayıda ülkeyi/bölgeyi destekler. Bir ülkeyi/bölgeyi bir sorgu ile belirtmek, birincil olarak bu ülkenin/bölgedeki ilgi alanları temelinde arama sonuçlarını iyileştirmesini sağlar. Ayrıca, sonuçlar Bing bağlantıları içerebilir ve bu bağlantılar, belirtilen ülkeye/bölgelere veya dile göre Bing Kullanıcı deneyimini yerelleştiremeyebilir.
 
-Ülke/bölge ve dil belirtmek için, `mkt` (Pazar) sorgu parametresini aşağıdaki **pazarlar** tablosundan bir koda ayarlayın. Pazar, hem ülke/bölge hem de dili belirtir. Kullanıcı farklı bir dilde görüntüleme metnini görmeyi tercih ediyorsa, sorgu parametresini uygun dil `setLang` koduna ayarlayın.
+Ülke/bölge ve dil belirtmek için, `mkt` (Pazar) sorgu parametresini aşağıdaki **pazarlar** tablosundan bir koda ayarlayın. Pazar, hem ülke/bölge hem de dili belirtir. Kullanıcı farklı bir dilde görüntüleme metnini görmeyi tercih ediyorsa, `setLang` sorgu parametresini uygun dil koduna ayarlayın.
 
-Alternatif olarak, ülke/bölge ' yi `cc` sorgu parametresini kullanarak belirtebilirsiniz. Bir ülke/bölge belirtirseniz, `Accept-Language` http üstbilgisini kullanarak bir veya daha fazla dil kodu da belirtmeniz gerekir. Desteklenen diller ülkeye/bölgeye göre farklılık gösterir. Bunlar, pazarlar tablosundaki her bir ülke/bölge için verilir.
+Alternatif olarak, ülke/bölge ' yi `cc` sorgu parametresini kullanarak belirtebilirsiniz. Bir ülke/bölge belirtirseniz, http üstbilgisini kullanarak bir veya daha fazla dil kodu da belirtmeniz gerekir `Accept-Language` . Desteklenen diller ülkeye/bölgeye göre farklılık gösterir. Bunlar, pazarlar tablosundaki her bir ülke/bölge için verilir.
 
 > [!NOTE]
 > Popüler resimler API 'SI Şu anda yalnızca aşağıdaki pazarları desteklemektedir:
@@ -49,7 +49,7 @@ Alternatif olarak, ülke/bölge ' yi `cc` sorgu parametresini kullanarak belirte
 |Almanya|DE|
 |Hong Kong ÖİB|HK|
 |Hindistan|IN|
-|Endonezya|Kimlik|
+|Endonezya|ID|
 |İtalya|BT|
 |Japonya|JP|
 |Güney Kore|KR|
@@ -71,7 +71,7 @@ Alternatif olarak, ülke/bölge ' yi `cc` sorgu parametresini kullanarak belirte
 |Tayvan|TW|
 |Türkiye|TR|
 |Birleşik Krallık|GB|
-|Amerika Birleşik Devletleri|ABD|
+|Birleşik Devletler|ABD|
 
 
 ## <a name="markets"></a>Pazar
@@ -115,8 +115,8 @@ Alternatif olarak, ülke/bölge ' yi `cc` sorgu parametresini kullanarak belirte
 |Tayvan|Geleneksel Çince|zh-TW|
 |Türkiye|Türkçe|tr-TR|
 |Birleşik Krallık|İngilizce|en-GB|
-|Amerika Birleşik Devletleri|İngilizce|tr-TR|
-|Amerika Birleşik Devletleri|İspanyolca|es-US|
+|Birleşik Devletler|İngilizce|tr-TR|
+|Birleşik Devletler|İspanyolca|es-US|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bing Haber Arama uç noktaları hakkında daha fazla bilgi için bkz. [News resım arama API v7 Reference](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).

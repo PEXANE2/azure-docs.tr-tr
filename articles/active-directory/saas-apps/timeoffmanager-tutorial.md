@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.openlocfilehash: 59eb2e320a828b644af6f740cf9f8381370a0dda
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88527375"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-timeoffmanager"></a>Öğretici: TimeOffManager ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -144,13 +144,13 @@ Bu bölümde, TimeOffManager erişimi vererek Azure çoklu oturum açma özelli�
 
 1. Farklı bir Web tarayıcısı penceresinde, TimeOffManager şirket sitenizde yönetici olarak oturum açın.
 
-2. **Hesap \> hesabı seçenekleri \> Çoklu oturum açma ayarları**' na gidin.
+2. **Hesap \> hesabı seçenekleri \> tek Sign-On ayarları**' na gidin.
    
-    ![Çoklu oturum açma ayarları](./media/timeoffmanager-tutorial/ic795917.png "Çoklu oturum açma ayarları")
+    ![Tek Sign-On ayarları](./media/timeoffmanager-tutorial/ic795917.png "Tek Sign-On ayarları")
 
-3. **Çoklu oturum açma ayarları** bölümünde aşağıdaki adımları uygulayın:
+3. **Tek Sign-On ayarları** bölümünde aşağıdaki adımları gerçekleştirin:
    
-    ![Çoklu oturum açma ayarları](./media/timeoffmanager-tutorial/ic795918.png "Çoklu oturum açma ayarları")
+    ![Tek Sign-On ayarları](./media/timeoffmanager-tutorial/ic795918.png "Tek Sign-On ayarları")
    
     a. Base-64 kodlu sertifikanızı Not defteri 'nde açın, bu içeriği panonuza kopyalayın ve ardından tüm sertifikayı **X. 509.440 sertifikası** metin kutusuna yapıştırın.
    
@@ -168,7 +168,7 @@ Bu bölümde, TimeOffManager erişimi vererek Azure çoklu oturum açma özelli�
 
 4. **Çoklu oturum açma ayarları** sayfasında, **onaylama tüketici hizmeti URL 'si** değerini kopyalayın ve Azure Portal içindeki **temel SAML yapılandırması** bölümündeki **yanıt URL** 'si metin kutusuna yapıştırın. 
 
-      ![Çoklu oturum açma ayarları](./media/timeoffmanager-tutorial/ic795915.png "Çoklu oturum açma ayarları")
+      ![Tek Sign-On ayarları](./media/timeoffmanager-tutorial/ic795915.png "Tek Sign-On ayarları")
 
 ### <a name="create-timeoffmanager-test-user"></a>TimeOffManager test kullanıcısı oluşturma
 

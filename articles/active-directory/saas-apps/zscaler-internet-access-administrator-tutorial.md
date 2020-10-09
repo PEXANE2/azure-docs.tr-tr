@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 0cbcfb65d7c7ac71b17e38dd72545a3d8fd2f162
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88545894"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>Öğretici: Zscaler Internet erişim yöneticisiyle Azure Active Directory tümleştirme
@@ -76,7 +76,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Zscaler Inte
 Azure AD çoklu oturum açma 'yı Zscaler Internet erişim yöneticisiyle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Zscaler Internet erişimi yöneticisini yapılandırma tek](#configure-zscaler-internet-access-administrator-single-sign-on)** oturum açma, uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[Zscaler Internet erişimi yöneticisini yapılandırma çoklu oturum açma](#configure-zscaler-internet-access-administrator-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. **[Zscaler Internet Access Administrator test kullanıcısı oluşturun](#create-zscaler-internet-access-administrator-test-user)** -Zscaler Internet Erişim Yöneticisi 'Nde kullanıcının Azure AD gösterimine bağlı Britta Simon 'a sahip olmak için.
@@ -96,11 +96,11 @@ Azure AD çoklu oturum açma 'yı Zscaler Internet erişimi yöneticisiyle yapı
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
+4. **SAML Ile tek Sign-On ayarla** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
 
     ![Zscaler Internet erişimi yönetici etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
 
@@ -126,7 +126,7 @@ Azure AD çoklu oturum açma 'yı Zscaler Internet erişimi yöneticisiyle yapı
     | `https://admin.zscloud.net/adminsso.do` |
     | `https://admin.zscalerbeta.net/adminsso.do` |
 
-5. Zscaler Internet erişimi yönetici uygulaması, belirli bir biçimde SAML onayları bekliyor. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu özniteliklerin değerlerini, uygulama tümleştirme sayfasındaki **Kullanıcı öznitelikleri & talepler** bölümünde yönetebilirsiniz. **SAML Ile çoklu oturum açmayı ayarlama sayfasında**, **Kullanıcı öznitelikleri & talepler** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
+5. Zscaler Internet erişimi yönetici uygulaması, belirli bir biçimde SAML onayları bekliyor. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu özniteliklerin değerlerini, uygulama tümleştirme sayfasındaki **Kullanıcı öznitelikleri & talepler** bölümünde yönetebilirsiniz. **SAML Ile tek Sign-On ayarlama sayfasında**, **Kullanıcı öznitelikleri & talepler** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
 
     ![Öznitelik bağlantısı](./media/zscaler-internet-access-administrator-tutorial/tutorial_zscaler-internet_attribute.png)
 
@@ -151,7 +151,7 @@ Azure AD çoklu oturum açma 'yı Zscaler Internet erişimi yöneticisiyle yapı
     > [!NOTE]
     > Azure AD 'de rolün nasıl yapılandırılacağını öğrenmek için lütfen [buraya](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) tıklayın
 
-7. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+7. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -165,7 +165,7 @@ Azure AD çoklu oturum açma 'yı Zscaler Internet erişimi yöneticisiyle yapı
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-zscaler-internet-access-administrator-single-sign-on"></a>Zscaler Internet Erişim Yöneticisi çoklu oturum açmayı yapılandırma
+### <a name="configure-zscaler-internet-access-administrator-single-sign-on"></a>Zscaler Internet Erişim Yöneticisi tek Sign-On yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, Zscaler Internet Access Yönetici Kullanıcı arabiriminize oturum açın.
 

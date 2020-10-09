@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/31/2019
 ms.author: jeedes
 ms.openlocfilehash: daef8a91c2f31379ebf50d1e8ec66d0b33ebb2cc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88534856"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-administrator-console"></a>Öğretici: Netüse Yönetici Konsolu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory

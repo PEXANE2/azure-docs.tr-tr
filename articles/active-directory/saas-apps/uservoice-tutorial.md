@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 3313e923bbe5218a965c58d2faee810182c00aa6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88532865"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>Öğretici: UserVoice ile Azure Active Directory tümleştirme
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açma 'yı, **Britta Simon**adlı bir test 
 Azure AD çoklu oturum açmayı UserVoice ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[UserVoice çoklu oturum açmayı yapılandırma](#configure-uservoice-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[UserVoice çoklu oturum açmayı yapılandırma](#configure-uservoice-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. UserVoice 'ın, kullanıcının Azure AD gösterimine bağlı olan, UserVoice 'ta Britta Simon 'a sahip olması için **[UserVoice test kullanıcısı oluşturun](#create-uservoice-test-user)** .
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı UserVoice ile yapılandırmak için aşağıdaki
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -126,7 +126,7 @@ Azure AD çoklu oturum açmayı UserVoice ile yapılandırmak için aşağıdaki
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-uservoice-single-sign-on"></a>UserVoice çoklu oturum açmayı yapılandırma
+### <a name="configure-uservoice-single-sign-on"></a>UserVoice tek Sign-On yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde UserVoice şirket sitenizde yönetici olarak oturum açın.
 
@@ -142,11 +142,11 @@ Azure AD çoklu oturum açmayı UserVoice ile yapılandırmak için aşağıdaki
    
     ![Kullanıcı kimlik doğrulamasını Düzenle](./media/uservoice-tutorial/ic777521.png "Kullanıcı kimlik doğrulamasını Düzenle")
    
-    a. **Çoklu oturum açma (SSO)** seçeneğine tıklayın.
+    a. **Tek Sign-On (SSO)** seçeneğine tıklayın.
  
     b. Azure portal kopyaladığınız **oturum açma URL 'si** değerini **SSO uzaktan oturum açma** metin kutusuna yapıştırın.
 
-    c. Azure portal, **SSO uzaktan oturum kapatma metin kutusuna**KOPYALADıĞıNıZ **Logout URL** değerini yapıştırın.
+    c. Azure portal kopyaladığınız **Logout URL** değerini, **SSO uzak Sign-Out metin kutusuna**yapıştırın.
  
     d. Azure portal 'tan kopyaladığınız **parmak izi** değerini **geçerli sertifika SHA1 parmak izi** metin kutusuna yapıştırın.
     

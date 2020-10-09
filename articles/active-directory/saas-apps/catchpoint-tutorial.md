@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/27/2020
 ms.author: jeedes
 ms.openlocfilehash: 649396b81402e9229eb9ea2c627b60f249f8c601
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88530316"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-catchpoint"></a>Öğretici: Catch noktasıyla çoklu oturum açma tümleştirmesi Azure Active Directory
@@ -71,10 +71,10 @@ Aşağıdaki bölümleri doldurun:
 
 Azure AD SSO 'yu etkinleştirmek için Azure portal aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 1. **Catch noktası** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırma** ayarlarını düzenlemek için kalem simgesini seçin.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırma** ayarlarını düzenlemek için kalem simgesini seçin.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -106,7 +106,7 @@ Azure AD SSO 'yu etkinleştirmek için Azure portal aşağıdaki adımları izle
     > [!NOTE]
     > `namespace`Talebin hesap adıyla eşlenmesi gerekir. Bu hesap adı, bir Azure AD 'de SAML yanıtına geri geçirilecek bir rolle ayarlanmalıdır. Azure AD 'deki roller hakkında daha fazla bilgi için bkz. [Kurumsal uygulamalar IÇIN SAML belirtecinde verilen rol talebini yapılandırma](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management).
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasına gidin. **SAML Imzalama sertifikası** bölümünde, **sertifika (base64)** bulun. Sertifikayı bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML Ile tek Sign-On ayarlama** sayfasına gidin. **SAML Imzalama sertifikası** bölümünde, **sertifika (base64)** bulun. Sertifikayı bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -158,7 +158,7 @@ Bu bölümde, catch noktasına erişim vererek Azure çoklu oturum açma özelli
 
    Alan | Değer
    ----- | ----- 
-   **Ad Alanı** | Geçerli bir ad alanı değeri.
+   **Uzayına** | Geçerli bir ad alanı değeri.
    **Kimlik sağlayıcısı veren** | `Azure AD Identifier`Azure Portal değeri.
    **Çoklu oturum açma URL 'Si** | `Login URL`Azure Portal değeri.
    **Sertifika** | `Certificate (Base64)`Azure Portal indirilen dosyanın içeriği. Görüntülemek ve kopyalamak için Not defteri 'ni kullanın.
