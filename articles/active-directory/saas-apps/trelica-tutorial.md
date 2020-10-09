@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
 ms.openlocfilehash: dcc304febe6fcebe3aba3047d1773e695b80f9e2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88551950"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trelica"></a>Öğretici: Trelica ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -30,7 +30,7 @@ Bu tümleştirmeyle şunları yapabilirsiniz:
 
 Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -77,7 +77,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
-   ![Temel SAML yapılandırması için kalem simgesi vurgulanmış şekilde SAML ile çoklu oturum açmayı ayarla sayfası](common/edit-urls.png)
+   ![Temel SAML yapılandırması için kalem simgesi vurgulanmış şekilde SAML ile tek Sign-On ayarla sayfası](common/edit-urls.png)
 
 1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki değerleri girin:
 
@@ -102,7 +102,7 @@ Bu bölümde, Azure portal B. Simon adlı bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmında **Yeni Kullanıcı**' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına **B. Simon**girin.
-   1. **Kullanıcı adı** alanına **B. Simon@**_şirketetkialanı_yazın **.** _uzantı_. Örneğin, B.Simon@contoso.com.
+   1. **Kullanıcı adı** alanına **B.Simon@**_şirketetkialanı_yazın **.** _uzantı_. Örneğin, B.Simon@contoso.com.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda gösterilen değeri yazın.
    1. **Oluştur**’u seçin.
 

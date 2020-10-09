@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 51e27526b10bcdd74d6e2bffb8bf620d7b022aac
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88551481"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>Öğretici: HubSpot ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Hubleke 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
 Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory uygulamalarda çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini HubSpot ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -50,7 +50,7 @@ HubSpot aşağıdaki özellikleri destekler:
 
 Hubleke 'yi Azure AD ile bütünleştirmek için, yönetilen SaaS uygulamaları listenize HubSpot eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. Sol menüden **Azure Active Directory**' yi seçin.
 
@@ -95,7 +95,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı Azure portal HubSpot ile yapıland
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-1. **SAML Ile çoklu oturum açmayı ayarla** bölmesinde, **temel SAML yapılandırması** bölmesini açmak için **Düzenle** ' yi (kurşun kalem simgesi) seçin.
+1. **SAML Ile tek Sign-On ayarla** bölmesinde, **temel SAML yapılandırması** bölmesini açmak için **Düzenle** ' yi (kurşun kalem simgesi) seçin.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -118,7 +118,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı Azure portal HubSpot ile yapıland
 
     ![Ek URL ayarla seçeneği](common/metadata-upload-additional-signon.png)
 
-1. **SAML Ile çoklu oturum açmayı ayarla** bölmesinde, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** yanındaki **İndir** ' i seçin. Gereksinimlerinize göre bir indirme seçeneği belirleyin. Sertifikayı bilgisayarınıza kaydedin.
+1. **SAML Ile tek Sign-On ayarla** bölmesinde, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** yanındaki **İndir** ' i seçin. Gereksinimlerinize göre bir indirme seçeneği belirleyin. Sertifikayı bilgisayarınıza kaydedin.
 
     ![Sertifika (base64) indirme seçeneği](common/certificatebase64.png)
 
@@ -154,7 +154,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı Azure portal HubSpot ile yapıland
 
     1. Hubworkıda, **kimlik sağlayıcısı tanımlayıcısı veya veren URL** kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısı** için değeri yapıştırın.
 
-    1. Hubworkıda, **kimlik sağlayıcısı çoklu oturum açma URL 'si** kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** için değeri yapıştırın.
+    1. Hubworkıda, **kimlik sağlayıcısı tek Sign-On URL** kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** için değeri yapıştırın.
 
     1. Windows Not defteri 'nde indirdiğiniz sertifika (base64) dosyasını açın. Dosyanın içeriğini seçin ve kopyalayın. Ardından, Hubin ' de **X. 509.440 sertifika** kutusuna yapıştırın.
 

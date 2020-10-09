@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: pafarley
 ms.openlocfilehash: 478f7b7671a71d0d1f1f56c5d1d9889db81f7d37
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91760206"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Öğretici: Azure Content Moderator ile orta Facebook gönderileri ve komutları
@@ -37,7 +37,7 @@ Bu diyagramda bu senaryonun her bileşeni gösterilmektedir:
 
 ![Facebook 'tan "FBListener" aracılığıyla bilgi alma ve "CMListener" aracılığıyla bilgi gönderme Content Moderator diyagramı](images/tutorial-facebook-moderation.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Content Moderator abonelik anahtarı. Content Moderator hizmetine abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin.
 - [Facebook hesabı](https://www.facebook.com/).

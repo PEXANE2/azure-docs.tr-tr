@@ -8,10 +8,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/19/2018
 ms.openlocfilehash: 6fc0833f70e3e9cd98100f193b52e5a1bfa4d651
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75666678"
 ---
 # <a name="exchange-edi-messages-as-batches-or-groups-between-trading-partners-in-azure-logic-apps"></a>Azure Logic Apps ' deki ticari iş ortakları arasında toplu iş veya grup olarak Exchange EDI iletileri
@@ -30,7 +30,7 @@ Bu makalede, aynı Azure aboneliği, Azure bölgesi içinde iki mantıksal uygul
 
 Batch alıcılarınızın ve toplu iş göndericisinin aynı Azure aboneliğini *ve* Azure bölgesini paylaştığından emin olun. Böyle bir işlem yoksa, Batch sender 'ı bir diğeri tarafından görülemeyen için oluşturduğunuzda Batch alıcısını seçemezsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu örneği takip etmek için şu öğelere ihtiyacınız vardır:
 
@@ -70,7 +70,7 @@ Bu toplu iş alıcısı için Batch modunu, adı, yayın ölçütünü, x12 söz
    | **Toplu iş adı** | TestBatch | Yalnızca **satır içi** Batch moduyla kullanılabilir | 
    | **Yayın ölçütleri** | İleti sayısı tabanlı, zamanlama tabanlı | Yalnızca **satır içi** Batch moduyla kullanılabilir | 
    | **İleti sayısı** | 10 | Yalnızca **ileti sayısı tabanlı** yayın ölçütlerine göre kullanılabilir | 
-   | **Interval** | 10 | Yalnızca **zamanlama tabanlı** yayın ölçütleriyle kullanılabilir | 
+   | **Aralık** | 10 | Yalnızca **zamanlama tabanlı** yayın ölçütleriyle kullanılabilir | 
    | **Sıklık** | dakika | Yalnızca **zamanlama tabanlı** yayın ölçütleriyle kullanılabilir | 
    ||| 
 

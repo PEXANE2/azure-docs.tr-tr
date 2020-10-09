@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
 ms.openlocfilehash: 0dab71b6d169e26a3d7dc208dd09efe1143fbe13
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67188060"
 ---
 ### <a name="open-the-publish-wizard"></a>Yayımlama sihirbazını açın
 
 **Çözüm Gezgini**, **sharingservice** projesine sağ tıklayın ve **Yayımla**' yı seçin.
 
-Yayımla Sihirbazı başlatılır. **App Service oluştur** iletişim kutusunu açmak için **App Service** > **Yayımla** ' yı seçin.
+Yayımla Sihirbazı başlatılır. **App Service**  >  **App Service oluştur** iletişim kutusunu açmak için App Service**Yayımla** ' yı seçin.
 
 ### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -51,7 +51,7 @@ Kaynak grubunuzu **myResourceGroup** olarak adlandırıp **Tamam**’ı seçin.
 
 ### <a name="create-and-publish-the-web-app"></a>Web uygulaması oluşturma ve yayımlama
 
-**Uygulama adı**alanına benzersiz bir uygulama adı girin (geçerli karakterler `a-z`, `0-9`ve `-`) veya otomatik olarak oluşturulan benzersiz adı kabul edin. Web uygulamasının URL'si `https://<app_name>.azurewebsites.net` şeklindedir; burada `<app_name>`, uygulamanızın adıdır.
+**Uygulama adı**alanına benzersiz bir uygulama adı girin (geçerli karakterler `a-z` , `0-9` ve `-` ) veya otomatik olarak oluşturulan benzersiz adı kabul edin. Web uygulamasının URL'si `https://<app_name>.azurewebsites.net` şeklindedir; burada `<app_name>`, uygulamanızın adıdır.
 
 Azure kaynaklarını oluşturmaya başlamak için **Oluştur**’u seçin.
 
@@ -59,4 +59,4 @@ Sihirbaz tamamlandıktan sonra, ASP.NET Core Web uygulamasını Azure 'da yayım
 
 ![Azure’da yayımlanmış ASP.NET web uygulaması](./media/spatial-anchors-azure/web-app-running-live.png)
 
-Bu bölümde kullandığınız uygulama adı, biçimdeki `https://<app_name>.azurewebsites.net`URL ön eki olarak kullanılır. Bu URL 'YI bir yere göz atın çünkü ihtiyacınız olacak.
+Bu bölümde kullandığınız uygulama adı, biçimdeki URL ön eki olarak kullanılır `https://<app_name>.azurewebsites.net` . Bu URL 'YI bir yere göz atın çünkü ihtiyacınız olacak.

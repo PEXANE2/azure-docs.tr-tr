@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/18/2016
 tags: connectors
 ms.openlocfilehash: 8d3b180b6f1e9dc4ec4b09dd81786cc81e8588da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75707195"
 ---
 # <a name="manage-email-calendars-and-contacts-in-outlookcom-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak e-posta, takvim ve kişileri Outlook.com içinde yönetin
@@ -27,7 +27,7 @@ ms.locfileid: "75707195"
 > [!NOTE]
 > Gibi bir Microsoft iş hesabına yönelik görevleri otomatikleştirmek için @fabrikam.onmicrosoft.com [Office 365 Outlook bağlayıcısını](../connectors/connectors-create-api-office365-outlook.md)kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir [Outlook.com hesabı](https://outlook.live.com/owa/)
 

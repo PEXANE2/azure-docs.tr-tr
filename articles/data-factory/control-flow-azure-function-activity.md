@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.openlocfilehash: ee2e59e794cf34a8fd5043a56867a81c2537f1ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81415318"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure Data Factory 'de Azure Işlevi etkinliği
@@ -46,7 +46,7 @@ Azure işlevinin dönüş türü geçerli bir olmalıdır `JObject` . ( [Jarray]
 | bağlı hizmet | Karşılık gelen Azure İşlev Uygulaması için Azure Işlevi bağlı hizmeti  | Bağlı hizmet başvurusu | evet |
 | işlev adı  | Bu etkinliğin çağırdığı Azure İşlev Uygulaması işlevin adı | Dize | evet |
 | method  | İşlev çağrısı için REST API yöntemi | Dize desteklenen türler: "GET", "POST", "PUT"   | evet |
-| üst bilgi  | İsteğe gönderilen üst bilgiler. Örneğin, bir istek için dili ve türü ayarlamak için: "üstbilgiler": {"Accept-Language": "en-US", "Content-Type": "Application/JSON"} | Dize (veya dize resultType 'ı olan ifade) | No |
+| üst bilgi  | İsteğe gönderilen üst bilgiler. Örneğin, bir istek için dili ve türü ayarlamak için: "üstbilgiler": {"Accept-Language": "en-US", "Content-Type": "Application/JSON"} | Dize (veya dize resultType 'ı olan ifade) | Hayır |
 | body  | işlevin API metoduna isteğiyle birlikte gönderilen gövde  | Dize (veya dize resultType 'ı olan ifade) veya nesne.   | PUT/POST yöntemleri için gereklidir |
 |   |   |   | |
 
@@ -54,7 +54,7 @@ Azure işlevinin dönüş türü geçerli bir olmalıdır `JObject` . ( [Jarray]
 
 ## <a name="routing-and-queries"></a>Yönlendirme ve sorgular
 
-Azure Işlevi etkinliği **yönlendirmeyi**destekler. Örneğin, Azure işlevinizin uç noktası varsa, `https://functionAPP.azurewebsites.net/api/<functionName>/<value>?code=<secret>` `functionName` Azure işlevi etkinliğinde kullanmak için `<functionName>/<value>` . Çalışma zamanında istenen işlemi sağlamak için bu işlevi parametreleştirebilirsiniz `functionName` .
+Azure Işlevi etkinliği **yönlendirmeyi**destekler. Örneğin, Azure işlevinizin uç noktası varsa,  `https://functionAPP.azurewebsites.net/api/<functionName>/<value>?code=<secret>` `functionName` Azure işlevi etkinliğinde kullanmak için `<functionName>/<value>` . Çalışma zamanında istenen işlemi sağlamak için bu işlevi parametreleştirebilirsiniz `functionName` .
 
 Azure Işlevi etkinliği **sorguları**da destekler. Bir sorgu öğesinin bir parçası olarak eklenmelidir `functionName` . Örneğin, işlev adı `HttpTriggerCSharp` ve dahil etmek istediğiniz sorgu ise, `name=hello` bunu `functionName` olarak Azure işlevi etkinliğinde oluşturabilirsiniz `HttpTriggerCSharp?name=hello` . Değerin çalışma zamanında belirlenebilmesi için bu işlev parametreleştirilenebilir.
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
 ms.openlocfilehash: 3edd182e335bc679d95d7be64f45b617a9f54c1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73663182"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>İkincil siteye Hyper-V çoğaltması için test sonuçları
@@ -131,7 +131,7 @@ Sonuçlar, Hyper-V çoğaltmayla bağlanmış Site Recovery açıkça gösterir,
 * Simülasyonu için tabloda özetlenen iş yükü özelliği ile [Iometer](http://www.iometer.org) kullanıyoruz.
 * Tüm Iometer profilleri, iş yükleri için en kötü durum yazma desenlerinin benzetimini yapmak için rastgele baytlar yazmak üzere ayarlanır.
 
-| İş yükü | G/ç boyutu (KB) | Erişim yüzdesi | % Okuma | Bekleyen g/ç | G/ç stili |
+| İş Yükü | G/ç boyutu (KB) | Erişim yüzdesi | % Okuma | Bekleyen g/ç | G/ç stili |
 | --- | --- | --- | --- | --- | --- |
 | Dosya Sunucusu |4<br />8<br />16<br />32<br />64 |%60<br />%20<br />%5<br />%5<br />%10 |%80<br />%80<br />%80<br />%80<br />%80 |8<br />8<br />8<br />8<br />8 |Tüm %100 rastgele |
 | SQL Server (birim 1)<br />SQL Server (birim 2) |8<br />64 |%100<br />%100 |%70<br />%0 |8<br />8 |%100 rastgele<br />%100 sıralı |
@@ -145,12 +145,12 @@ Sonuçlar, Hyper-V çoğaltmayla bağlanmış Site Recovery açıkça gösterir,
 * VHDX diski olan tüm VM 'Ler.
 * Tabloda özetlenen iş yüklerini çalıştıran VM 'Ler. Tümü VMM şablonlarıyla oluşturulmuştur.
 
-| İş yükü | VM 'Ler | En düşük RAM (GB) | Maksimum RAM (GB) | VM başına mantıksal disk boyutu (GB) | Maksimum ıOPS |
+| İş Yükü | VM 'Ler | En düşük RAM (GB) | Maksimum RAM (GB) | VM başına mantıksal disk boyutu (GB) | Maksimum ıOPS |
 | --- | --- | --- | --- | --- | --- |
 | SQL Server |51 |1 |4 |167 |10 |
 | Exchange Server |71 |1 |4 |552 |10 |
 | Dosya Sunucusu |50 |1 |2 |552 |22 |
-| VDı |149 |5 |1 |80 |6 |
+| VDI |149 |5 |1 |80 |6 |
 | Web sunucusu |149 |5 |1 |80 |6 |
 | TOPLAM |470 | | |96,83 TB |4108 |
 
@@ -161,10 +161,10 @@ Sonuçlar, Hyper-V çoğaltmayla bağlanmış Site Recovery açıkça gösterir,
 
 | Birincil VMM bulutu | Korumalı VM'ler | Çoğaltma sıklığı | Ek kurtarma noktaları |
 | --- | --- | --- | --- |
-| PrimaryCloudRpo15m |142 |15 dakika |Hiçbiri |
-| PrimaryCloudRpo30s |47 |30 saniye |Hiçbiri |
+| PrimaryCloudRpo15m |142 |15 dakika |Yok |
+| PrimaryCloudRpo30s |47 |30 saniye |Yok |
 | PrimaryCloudRpo30sArp1 |47 |30 saniye |1 |
-| PrimaryCloudRpo5m |235 |5 dk. |Hiçbiri |
+| PrimaryCloudRpo5m |235 |5 dk. |Yok |
 
 ### <a name="performance-metrics"></a>Performans ölçümleri
 

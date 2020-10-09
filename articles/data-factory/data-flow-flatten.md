@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: a0e75957a0ab49394dab56f2b7fb847dee4b43cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81413688"
 ---
 # <a name="flatten-transformation-in-mapping-data-flow"></a>Eşleme veri akışında dönüştürmeyi düzleştirme
@@ -66,9 +66,9 @@ Düzleştirme dönüşümünün aşağıdaki örnekleri için aşağıdaki JSON 
 
 ### <a name="no-unroll-root-with-string-array"></a>Dize dizisi ile hiçbir toplama kökü yok
 
-| Alma ölçütü | Kökü al | Yansıtma |
+| Alma ölçütü | Kökü al | Projeksiyon |
 | --------- | ----------- | ---------- |
-| mallar. müşteriler | Hiçbiri | name <br> Müşteri = mallar. müşteri |
+| mallar. müşteriler | Yok | name <br> Müşteri = mallar. müşteri |
 
 #### <a name="output"></a>Çıktı
 
@@ -84,9 +84,9 @@ Düzleştirme dönüşümünün aşağıdaki örnekleri için aşağıdaki JSON 
 
 ### <a name="no-unroll-root-with-complex-array"></a>Karmaşık dizi ile hiçbir toplama kökü yok
 
-| Alma ölçütü | Kökü al | Yansıtma |
+| Alma ölçütü | Kökü al | Projeksiyon |
 | --------- | ----------- | ---------- |
-| mallar. Orders. sevkedildi. OrderItems | Hiçbiri | name <br> OrderID = mal. Orders. OrderID <br> ItemName = mal. Orders. sevkedildi. OrderItems. ItemName <br> ımqty = mallar. Orders. sevkedildi. OrderItems. ıtemqty <br> Konum = Konum |
+| mallar. Orders. sevkedildi. OrderItems | Yok | name <br> OrderID = mal. Orders. OrderID <br> ItemName = mal. Orders. sevkedildi. OrderItems. ItemName <br> ımqty = mallar. Orders. sevkedildi. OrderItems. ıtemqty <br> Konum = Konum |
 
 #### <a name="output"></a>Çıktı
 
@@ -105,7 +105,7 @@ Düzleştirme dönüşümünün aşağıdaki örnekleri için aşağıdaki JSON 
 
 ### <a name="same-root-as-unroll-array"></a>Geri alma dizisi olarak aynı kök
 
-| Alma ölçütü | Kökü al | Yansıtma |
+| Alma ölçütü | Kökü al | Projeksiyon |
 | --------- | ----------- | ---------- |
 | mallar. siparişler | mallar. siparişler | name <br> mallar. Orders. sevkedildi. OrderItems. ItemName <br> mallar. müşteriler <br> location |
 
@@ -121,7 +121,7 @@ Düzleştirme dönüşümünün aşağıdaki örnekleri için aşağıdaki JSON 
 
 ### <a name="unroll-root-with-complex-array"></a>Karmaşık dizi ile kök al
 
-| Alma ölçütü | Kökü al | Yansıtma |
+| Alma ölçütü | Kökü al | Projeksiyon |
 | --------- | ----------- | ---------- |
 | mallar. Orders. sevkedildi. OrderItem | mallar. siparişler |name <br> OrderID = mal. Orders. OrderID <br> ItemName = mal. Orders. sevkedildi. OrderItems. ItemName <br> ımqty = mallar. Orders. sevkedildi. OrderItems. ıtemqty <br> Konum = Konum |
 
@@ -141,7 +141,7 @@ Düzleştirme dönüşümünün aşağıdaki örnekleri için aşağıdaki JSON 
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
-### <a name="syntax"></a>Syntax
+### <a name="syntax"></a>Sözdizimi
 
 ```
 <incomingStream>

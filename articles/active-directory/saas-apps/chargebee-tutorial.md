@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/08/2019
 ms.author: jeedes
 ms.openlocfilehash: c620393903ee08199632d457ece3b4c06db8ed68
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91760657"
 ---
 # <a name="tutorial-integrate-chargebee-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile Chargebee 'yi tümleştirin
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile Chargebee tümleştirmeyi
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -61,7 +61,7 @@ Azure AD SSO 'yu, Chargebee ile yapılandırmak ve test etmek için aşağıdaki
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
     1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Chargebee SSO 'Yu yapılandırın](#configure-chargebee-sso)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Chargebee SSO 'Yu yapılandırın](#configure-chargebee-sso)** .
     1. Kullanıcı Azure AD gösterimine bağlı olan Chargebee 'de B. Simon 'a sahip olmak için, **[chargebee test kullanıcısı oluşturun](#create-chargebee-test-user)** .
 3. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
@@ -71,7 +71,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. [Azure Portal](https://portal.azure.com/), **chargebee** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -88,7 +88,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!NOTE]
     > `<domainname>` , hesabı talep ettikten sonra kullanıcının oluşturduğu etki alanının adıdır. Diğer bilgiler söz konusu olduğunda, [Chargebee istemci destek ekibine](mailto:support@chargebee.com)başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+4. **SAML Ile tekli Sign-On ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -136,7 +136,7 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Chargebee 'e eri
 
 5. **Çoklu oturum açma** açılır penceresinde aşağıdaki adımları uygulayın:
 
-    ![Ekran görüntüsü, SAML seçiliyken çoklu oturum açma iletişim kutusunu ve onaylama seçeneğini gösterir.](./media/chargebee-tutorial/config02.png)
+    ![Ekran görüntüsü, SAML seçiliyken tek Sign-On iletişim kutusunu ve onaylama seçeneğini gösterir.](./media/chargebee-tutorial/config02.png)
 
     a. **SAML**'yi seçin.
 

@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/23/2019
 ms.openlocfilehash: b871775bc7a6d795e86147ae9cffa27bdd2f3348
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76263770"
 ---
 # <a name="notification-hubs-security"></a>Notification Hubs güvenliği
@@ -68,7 +68,7 @@ Yeni bir güvenlik talebi oluşturmak veya mevcut SAS anahtarlarını görüntü
 2. **Tüm kaynaklar**’ı seçin.
 3. Talep oluşturmak istediğiniz Bildirim Hub 'ının adını seçin veya SAS anahtarını görüntüleyin.
 4. Sol taraftaki menüde **erişim ilkeleri**' ni seçin.
-5. Yeni bir güvenlik talebi oluşturmak için **Yeni ilke** ' yi seçin. İlkeye bir ad verin ve vermek istediğiniz izinleri seçin. Sonra **Tamam**’ı seçin.
+5. Yeni bir güvenlik talebi oluşturmak için **Yeni ilke** ' yi seçin. İlkeye bir ad verin ve vermek istediğiniz izinleri seçin. Ardından **Tamam**'ı seçin.
 6. Tam bağlantı dizesi (yeni SAS anahtarı dahil), erişim Ilkeleri penceresinde görüntülenir. Daha sonra kullanmak üzere bu dizeyi panoya kopyalayabilirsiniz.
 
 SAS anahtarını belirli bir ilkeden ayıklamak için, istediğiniz SAS anahtarını içeren ilkenin yanındaki **Kopyala** düğmesini seçin. Bu değeri geçici bir konuma yapıştırın, sonra bağlantı dizesinin SAS anahtar kısmını kopyalayın. Bu örnek, **mytestnamespace1**adlı bir Notification Hubs ad alanı ve **policy2**adlı bir ilke kullanır. SAS anahtarı, bir dizenin sonundaki, **Sharedaccesskey**tarafından belirtilen değerdir:

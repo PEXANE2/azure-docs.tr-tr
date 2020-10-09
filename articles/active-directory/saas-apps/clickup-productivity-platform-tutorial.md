@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.openlocfilehash: 8a8a9587fd50b63dc862f8b74bc99548699fa6e2
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91760688"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>Öğretici: tıklama üretkenlik platformuyla tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Tıklama üretkenlik platformunu Azure AD ile tümleştirmek aşağıdaki avanta
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini tıklama verimliliği platformu ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Tıklama üretkenlik platformuyla Azure AD çoklu oturum açma 'yı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Tıklama Için üretkenlik platformunu çoklu oturum açma yapılandırma](#configure-clickup-productivity-platform-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[Tıklama Için üretkenlik platformunu çoklu oturum açma yapılandırma](#configure-clickup-productivity-platform-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. **[Tıklama üretkenlik platformu test kullanıcısı oluşturma](#create-clickup-productivity-platform-test-user)** -kullanıcının Azure AD gösterimine bağlı olan tıklama verimliliği platformunda Britta Simon 'ın bir karşılığı.
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açma 'yı tıklama verimliliği platformu ile yapıland�
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -108,11 +108,11 @@ Azure AD çoklu oturum açma 'yı tıklama verimliliği platformu ile yapıland�
     > [!NOTE]
     > Tanımlayıcı değeri gerçek değil. Bu değeri, Bu öğreticinin ilerleyen kısımlarında açıklanan gerçek tanımlayıcı ile güncelleştirin.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
     ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
-### <a name="configure-clickup-productivity-platform-single-sign-on"></a>Tıklama temelli üretkenlik platformunu çoklu oturum açmayı yapılandırma
+### <a name="configure-clickup-productivity-platform-single-sign-on"></a>Tıklama üretkenlik platformunu tek Sign-On yapılandırma
 
 1. Farklı bir Web tarayıcı penceresinde, yönetici olarak tıklama üretkenlik platformu kiracınızda oturum açın.
 
@@ -122,7 +122,7 @@ Azure AD çoklu oturum açma 'yı tıklama verimliliği platformu ile yapıland�
 
     ![Ekran görüntüsü ayarları gösterir.](./media/clickup-productivity-platform-tutorial/configure1.png)
 
-3. Çoklu oturum açma (SSO) sağlayıcısı altında **Microsoft**' u seçin.
+3. Tek Sign-On (SSO) sağlayıcısı altında **Microsoft**' u seçin.
 
     ![Ekran görüntüsünde Microsoft 'un seçtiği kimlik doğrulama bölmesi görüntülenir.](./media/clickup-productivity-platform-tutorial/configure2.png)
 

@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Azure Active Directory-PE ile tümleştirme | Microsoft Docs'
+title: 'Öğretici: Gra-Pe ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve GRA-PE arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 author: jeevansd
@@ -12,42 +12,42 @@ ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 99357c01774ef10d9c759df89b94c538abc720f3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88551601"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-gra-pe"></a>Öğretici: GRA Azure Active Directory-PE ile tümleştirme
+# <a name="tutorial-azure-active-directory-integration-with-gra-pe"></a>Öğretici: Gra-Pe ile tümleştirme Azure Active Directory
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile GRA-PE tümleştirme hakkında bilgi edineceksiniz.
-Azure AD ile GRA-PE ' i tümleştirmek aşağıdaki avantajları sağlar:
+Bu öğreticide, Gra-Pe Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
+Gra-Pe Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
 * Azure AD 'de, gra-PE erişimi olan bir denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak GRA-PE (çoklu oturum açma) ile oturum açmasını sağlayabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla Gra-Pe (çoklu oturum açma) için otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini bir GRA-PE ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
-* Gri-PE çoklu oturum açma etkin abonelik
+* Çoklu oturum açma özellikli abonelik Gra-Pe
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
 Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* Gri-PE **SP** tarafından başlatılan SSO 'yu destekler
+* Gra-Pe **SP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-gra-pe-from-the-gallery"></a>Galeriden GRA-PE ekleme
+## <a name="adding-gra-pe-from-the-gallery"></a>Galeriden Gra-Pe ekleme
 
-Bir GRA z-PE tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden, yönetilen SaaS uygulamaları listenize bir GRA z-PE eklemeniz gerekir.
+Gra-Pe tümleştirmesini Azure AD ile yapılandırmak için, Galeriden Gra-Pe yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Galeriden GRA-PE eklemek için aşağıdaki adımları uygulayın:**
+**Galeriden Gra-Pe eklemek için aşağıdaki adımları uygulayın:**
 
 1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
@@ -63,20 +63,20 @@ Bir GRA z-PE tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galerid
 
 4. Arama kutusuna, **GRA-PE**yazın, sonuç panelinden bir **GRA-PE** ' yi seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
-     ![Sonuçlar listesinde GRA-PE](common/search-new-app.png)
+     ![Sonuçlar listesinde Gra-Pe](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına bağlı olarak, Azure AD çoklu oturum açmayı, gra-PE ile yapılandırıp test edersiniz.
-Çoklu oturum açma için, bir Azure AD kullanıcısı ve GRA-PE ' deki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Gra-Pe ile yapılandırıp test edersiniz.
+Çoklu oturum açma için, bir Azure AD kullanıcısı ve Gra-Pe ile ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açmayı, gra-PE ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. , Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, **[GRA-PE çoklu oturum açmayı yapılandırın](#configure-gra-pe-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Gra-Pe çoklu oturum açmayı yapılandırın](#configure-gra-pe-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. Kullanıcının Azure AD gösterimine bağlı olan, gra TTA, vb-PE ' de bir Britta Simon 'un bir karşılığı olacak şekilde, bir **[GRA-pe test kullanıcısı oluşturun](#create-gra-pe-test-user)** .
+5. Kullanıcının Azure AD gösterimine bağlı Gra-Pe ' de Britta Simon 'un bir karşılığı olacak **[Gra-Pe test kullanıcısı oluşturun](#create-gra-pe-test-user)** .
 6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
@@ -93,17 +93,17 @@ Azure AD çoklu oturum açmayı, gra-PE ile yapılandırmak için aşağıdaki a
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Gri-PE etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-signonurl.png)
+    ![Etki alanı ve URL 'Ler Gra-Pe çoklu oturum açma bilgileri](common/sp-signonurl.png)
 
     **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://btm.tts.co.jp/portal/apl/SSOLogin.aspx`
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -117,7 +117,7 @@ Azure AD çoklu oturum açmayı, gra-PE ile yapılandırmak için aşağıdaki a
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-gra-pe-single-sign-on"></a>GRA-PE çoklu oturum açmayı yapılandırma
+### <a name="configure-gra-pe-single-sign-on"></a>Gra-Pe tek Sign-On yapılandırma
 
 Bir adet, **GRA-PE** tarafında çoklu oturum açmayı yapılandırmak Için indirilen **sertifikayı (base64)** ve uygun kopyalanmış URL 'Leri Azure Portal ' den [GRA-PE destek ekibine](https://www.toppantravel.com/inquiry/)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
@@ -156,7 +156,7 @@ Bu bölümde, gra-PE erişimi vererek Azure çoklu oturum açma özelliğini kul
 
 2. Uygulamalar listesinde, **gri-PE**' yi seçin.
 
-    ![Uygulamalar listesindeki GRA-PE bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki Gra-Pe bağlantısı](common/all-applications.png)
 
 3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
@@ -172,15 +172,15 @@ Bu bölümde, gra-PE erişimi vererek Azure çoklu oturum açma özelliğini kul
 
 7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-gra-pe-test-user"></a>Gri-pe test kullanıcısı oluşturma
+### <a name="create-gra-pe-test-user"></a>Gra-Pe test kullanıcısı oluştur
 
-Bu bölümde, gra-PE ' de Britta Simon adlı bir Kullanıcı oluşturacaksınız. Gri-PE platformunda kullanıcıları eklemek için, [GRA-PE destek ekibi](https://www.toppantravel.com/inquiry/) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, gra-PE ' de Britta Simon adlı bir Kullanıcı oluşturacaksınız. Gra-Pe platformunda kullanıcıları eklemek için, [GRA-PE destek ekibi](https://www.toppantravel.com/inquiry/) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde, gra-PE kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız GRA-PE ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Gra-Pe kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Gra-Pe otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 

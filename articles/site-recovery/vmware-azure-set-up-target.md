@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 03/03/2019
 ms.author: mayg
 ms.openlocfilehash: c721234f2e1d806d51d31f3466e441bf8360f6b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73693175"
 ---
 # <a name="prepare-the-target-environment-for-disaster-recovery-of-vmware-vms-or-physical-servers-to-azure"></a>VMware VM 'Leri veya fiziksel sunucuları Azure 'a olağanüstü durum kurtarma için hedef ortamı hazırlama
 
 Bu makalede, hedef Azure ortamınızı VMware sanal makinelerini veya fiziksel sunucuları Azure 'a Çoğaltmaya başlamak için nasıl hazırlayacağınız açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Makalede şunları varsayılmaktadır:
 - Kaynak makinelerinizi korumak için [Azure Portal](https://portal.azure.com "Azure portal") bir kurtarma hizmetleri Kasası oluşturdunuz

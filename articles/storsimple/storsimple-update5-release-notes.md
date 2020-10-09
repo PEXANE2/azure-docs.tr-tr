@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/13/2017
 ms.author: alkohli
 ms.openlocfilehash: 4fed65e12a166c046a0c63d7c4849f86805bbe9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76275166"
 ---
 # <a name="storsimple-8000-series-update-5-release-notes"></a>StorSimple 8000 serisi güncelleştirme 5 sürüm notları
@@ -47,8 +47,8 @@ Aşağıdaki tabloda güncelleştirme 5 ' te düzeltilen sorunların özeti veri
 | Hayır | Özellik | Sorun | Fiziksel cihaz için geçerlidir | Sanal cihaz için geçerlidir |
 | --- | --- | --- | --- | --- |
 | 1 |Windows PowerShell uzaktan iletişim |Önceki sürümde, bir Kullanıcı Windows PowerShell aracılığıyla StorSimple Cloud Appliance uzak bağlantı kurmaya çalışırken bir hata alıyor. Bu sorun köklenmiştir ve bu sürümde düzeltildi. |Hayır |Evet |
-| 2 |Bant genişliği şablonları |Daha önceki sürümlerde, bant genişliği şablonlarındaki bir sorun oluştu ve bu, cihazın için yapılandırılmış olandan daha düşük bant genişliğine neden oldu. Bu sorun, bu yayında çözümlenir. |Evet |Yes |
-| 3 |Yük devretme |Önceki sürümde, çok sayıda birime sahip bir cihaz, güncelleştirme 4 çalıştıran başka bir cihaza devredildiği zaman, erişim denetim kayıtlarını uygulamaya çalışırken işlem başarısız olur. Bu sorun bu sürümde düzeltilmiştir. |Evet |Yes |
+| 2 |Bant genişliği şablonları |Daha önceki sürümlerde, bant genişliği şablonlarındaki bir sorun oluştu ve bu, cihazın için yapılandırılmış olandan daha düşük bant genişliğine neden oldu. Bu sorun, bu yayında çözümlenir. |Evet |Evet |
+| 3 |Yük devretme |Önceki sürümde, çok sayıda birime sahip bir cihaz, güncelleştirme 4 çalıştıran başka bir cihaza devredildiği zaman, erişim denetim kayıtlarını uygulamaya çalışırken işlem başarısız olur. Bu sorun bu sürümde düzeltilmiştir. |Evet |Evet |
 
 
 

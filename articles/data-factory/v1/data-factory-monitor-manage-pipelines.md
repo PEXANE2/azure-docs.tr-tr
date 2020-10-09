@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.openlocfilehash: 44aadecfa80524345932c03abb51e8ebd040a902
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73666975"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure portal ve PowerShell 'i kullanarak Azure Data Factory işlem hatlarını izleme ve yönetme
@@ -46,7 +46,7 @@ Azure portal kullanarak şunları yapabilirsiniz:
 Bu bölümde ayrıca bir veri kümesi diliminin bir durumdan başka bir duruma nasıl geçirdiği açıklanmaktadır.   
 
 ### <a name="navigate-to-your-data-factory"></a>Veri fabrikanıza gitme
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. Soldaki menüdeki **veri fabrikaları** ' na tıklayın. Bunu görmüyorsanız, **diğer hizmetler >**' a tıklayın ve ardından **zeka + analiz** kategorisi altında **veri fabrikaları** ' na tıklayın.
 
    ![Tüm > veri fabrikalarını inceleyin](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
@@ -90,7 +90,7 @@ Data Factory 'deki veri kümesi dilimleri aşağıdaki durumlardan birine sahip 
     <th align="left">Durum</th><th align="left">Alt</th><th align="left">Açıklama</th>
 </tr>
 <tr>
-    <td rowspan="8">Bekleniyor</td><td>ScheduleTime</td><td>Dilimin çalışması için geçen süre.</td>
+    <td rowspan="8">Bekleme</td><td>ScheduleTime</td><td>Dilimin çalışması için geçen süre.</td>
 </tr>
 <tr>
 <td>DatasetDependencies</td><td>Yukarı akış bağımlılıkları için hazırlanma.</td>
@@ -135,10 +135,10 @@ Data Factory 'deki veri kümesi dilimleri aşağıdaki durumlardan birine sahip 
 <td>Hazır</td><td>-</td><td>Dilim, tüketim için hazırlayın.</td>
 </tr>
 <tr>
-<td>Atlandı</td><td>Hiçbiri</td><td>Dilim işlenmiyor.</td>
+<td>Atlandı</td><td>Yok</td><td>Dilim işlenmiyor.</td>
 </tr>
 <tr>
-<td>Hiçbiri</td><td>-</td><td>Farklı bir durumla aynı şekilde kullanılan bir dilim, ancak sıfırlandı.</td>
+<td>Yok</td><td>-</td><td>Farklı bir durumla aynı şekilde kullanılan bir dilim, ancak sıfırlandı.</td>
 </tr>
 </table>
 
@@ -278,7 +278,7 @@ Etkinlik bir işlem hattında başarısız olursa, işlem hattı tarafından ür
 > [!IMPORTANT]
 > Hataları gidermek ve Izleme & Yönetimi uygulamasını kullanarak başarısız dilimleri yeniden çalıştırmak daha kolay. Uygulamayı kullanma hakkında ayrıntılı bilgi için bkz. [izleme ve yönetim uygulamasını kullanarak Data Factory işlem hatlarını izleme ve yönetme](data-factory-monitor-manage-app.md). 
 
-### <a name="use-the-azure-portal"></a>Azure portalı kullanma
+### <a name="use-the-azure-portal"></a>Azure portalını kullanma
 Bir işlem hattındaki hata giderme ve hata ayıklama gerçekleştirdikten sonra, hata dilimine giderek ve Komut çubuğundaki **Çalıştır** düğmesine tıklayarak hataları yeniden çalıştırabilirsiniz.
 
 ![Başarısız olan dilimi yeniden çalıştır](./media/data-factory-monitor-manage-pipelines/rerun-slice.png)

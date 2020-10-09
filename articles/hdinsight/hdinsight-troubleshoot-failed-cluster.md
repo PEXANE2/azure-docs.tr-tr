@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: be991b63784a2c72a51bfbdc8506f3b4695ed6c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75895311"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>HDInsight kümesinde yavaş veya başarısız olan bir işin sorunlarını giderme
@@ -63,7 +63,7 @@ az hdinsight list --resource-group <ResourceGroup>
 az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 ```
 
-Başka bir seçenek PowerShell kullanıyor. Daha fazla bilgi için bkz. [HDInsight 'ta Azure PowerShell Apache Hadoop kümelerini yönetme](hdinsight-administer-use-powershell.md).
+Başka bir seçenek PowerShell kullanıyor. Daha fazla bilgi için bkz.  [HDInsight 'ta Azure PowerShell Apache Hadoop kümelerini yönetme](hdinsight-administer-use-powershell.md).
 
 ## <a name="step-2-validate-the-hdinsight-cluster-environment"></a>2. Adım: HDInsight küme ortamını doğrulama
 
@@ -148,7 +148,7 @@ Aşağıdaki bölümlerde, WebHCat zaman aşımları için olası bazı nedenler
 
 ##### <a name="webhcat-level-timeout"></a>WebHCat düzeyi zaman aşımı
 
-WebHCat yük altındayken, 10 ' dan fazla açık yuvalarla, yeni yuva bağlantıları kurmak daha uzun sürer ve bu da zaman aşımına neden olabilir. WebHCat 'e ve öğesinden ağ bağlantılarını listelemek için, `netstat` geçerli etkin headnode üzerinde kullanın:
+WebHCat yük altındayken, 10 ' dan fazla açık yuvalarla, yeni yuva bağlantıları kurmak daha uzun sürer ve bu da zaman aşımına neden olabilir. WebHCat 'e ve öğesinden ağ bağlantılarını listelemek için, `netstat`  geçerli etkin headnode üzerinde kullanın:
 
 ```bash
 netstat | grep 30111
@@ -202,11 +202,11 @@ Bu sorunları tanılamak için:
 
     WebHCat etkileşimlerinin başarılı olduğu, ancak işlerin başarısız olduğu durumlar olabilir.
 
-    Temptaton, iş konsolu çıkışını ' de olduğu gibi toplar `stderr` `statusdir` ve bu genellikle sorun giderme için kullanışlıdır. `stderr`Asıl sorgunun YARN uygulama tanımlayıcısını içerir.
+    Temptaton, iş konsolu çıkışını ' de olduğu gibi toplar `stderr` `statusdir` ve bu genellikle sorun giderme için kullanışlıdır. `stderr` Asıl sorgunun YARN uygulama tanımlayıcısını içerir.
 
 ## <a name="step-4-review-the-environment-stack-and-versions"></a>4. Adım: ortam yığınını ve sürümlerini gözden geçirme
 
-Ambarı Kullanıcı arabirimi **yığını ve sürümü** sayfası, Küme Hizmetleri Yapılandırması ve hizmet sürümü geçmişi hakkında bilgi sağlar.  Hatalı Hadoop hizmeti kitaplık sürümleri, küme hatasının nedeni olabilir.  Ambarı Kullanıcı arabiriminde, **yönetici** menüsünü ve ardından **yığınlar ve sürümler**' i seçin.  Hizmet sürümü bilgilerini görmek için sayfada **sürümler** sekmesini seçin:
+Ambarı Kullanıcı arabirimi **yığını ve sürümü** sayfası, Küme Hizmetleri Yapılandırması ve hizmet sürümü geçmişi hakkında bilgi sağlar.  Hatalı Hadoop hizmeti kitaplık sürümleri, küme hatasının nedeni olabilir.  Ambarı Kullanıcı arabiriminde, **yönetici** menüsünü ve ardından  **yığınlar ve sürümler**' i seçin.  Hizmet sürümü bilgilerini görmek için sayfada **sürümler** sekmesini seçin:
 
 ![Apache ambarı yığını ve sürümleri](./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png)
 
