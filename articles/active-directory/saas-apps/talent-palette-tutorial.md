@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 1b7cfa03aeb705ea7e7caf3254bc39d9fff722ce
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88546543"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talent-palette"></a>Öğretici: Taödünle Azure Active Directory tümleştirme
@@ -30,7 +30,7 @@ Azure AD ile Taödünçeden paleti tümleştirmek aşağıdaki avantajları sağ
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Taödünle birlikte yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -74,7 +74,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına bağlı olarak, Az
 Azure AD çoklu oturum açmayı, Taödünçle birlikte yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Çoklu oturum **[açmayı yapılandırma](#configure-talent-palette-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. Çoklu **[oturum açmayı yapılandırma](#configure-talent-palette-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan tasıya paleti 'nde Britta Simon 'a sahip olmak için **[Tatatkli palet testi kullanıcısı oluşturun](#create-talent-palette-test-user)** .
@@ -94,7 +94,7 @@ Azure AD çoklu oturum açma 'yı Taödünle paleti ile yapılandırmak için a�
 
     ![Çoklu oturum açma seçme modu](common/select_saml_option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit_urls.png)
 
@@ -111,9 +111,9 @@ Azure AD çoklu oturum açma 'yı Taödünle paleti ile yapılandırmak için a�
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://talent-p.net/saml/sso/<tenantID>`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için, [Taödünli palet istemci destek ekibine](mailto:talent-support@pa-consul.co.jp) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek yanıt URL 'si ve Sign-On URL 'siyle güncelleştirin. Bu değerleri almak için, [Taödünli palet istemci destek ekibine](mailto:talent-support@pa-consul.co.jp) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (ham)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (ham)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificateraw.png)
 
@@ -127,7 +127,7 @@ Azure AD çoklu oturum açma 'yı Taödünle paleti ile yapılandırmak için a�
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-talent-palette-single-sign-on"></a>Taödünpalet çoklu oturum açmayı yapılandırma
+### <a name="configure-talent-palette-single-sign-on"></a>Taödünpalet tek Sign-On yapılandırma
 
 **Taham palet** tarafında çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (ham)** ve uygun kopyalanmış URL 'Leri Azure Portal ' den [taham palet destek ekibine](mailto:talent-support@pa-consul.co.jp)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 384fd7aab73781ffa868e826421eab6b7062a88f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88549356"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bc-in-the-cloud"></a>Öğretici: bulutta BC ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Azure AD ile bulutta BC 'yi tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bulutta BC ile Azure AD tümleştirmesini yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -73,7 +73,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre buluttaki BC
 Bulutta BC ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Bulut çoklu oturum açma 'DA BC 'Yi yapılandırma](#configure-bc-in-the-cloud-single-sign-on)** uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[Bulut çoklu oturum açma 'DA BC 'Yi yapılandırma](#configure-bc-in-the-cloud-single-sign-on)** uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Bulutta BC 'yi, kullanıcının Azure AD gösterimine bağlı olan, BC 'de bulunan BC 'de bulunan bir de bir arada **[oluşturmak Için Cloud test kullanıcısına göre oluşturun](#create-bc-in-the-cloud-test-user)** .
@@ -93,7 +93,7 @@ Bulutta BC ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdak
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -106,9 +106,9 @@ Bulutta BC ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdak
     b. **Tanımlayıcı (VARLıK kimliği)** metın kutusuna URL yazın:`https://app.bcinthecloud.com`
 
     > [!NOTE]
-    > Bu değer gerçek değil. Bu değeri, gerçek oturum açma URL 'siyle güncelleştirin. Bu değeri almak için [Cloud Client destek ekibinizdeki BC](https://www.bcinthecloud.com/supportcenter/) ile iletişim kurun.
+    > Bu değer gerçek değil. Bu değeri gerçek Sign-On URL 'siyle güncelleştirin. Bu değeri almak için [Cloud Client destek ekibinizdeki BC](https://www.bcinthecloud.com/supportcenter/) ile iletişim kurun.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -122,7 +122,7 @@ Bulutta BC ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdak
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-bc-in-the-cloud-single-sign-on"></a>Bulutta çoklu oturum açma bölümünde BC 'yi yapılandırma
+### <a name="configure-bc-in-the-cloud-single-sign-on"></a>Tek Sign-On bulutta BC 'yi yapılandırma
 
 **Bulut tarafında BC** 'de çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'sini ve Azure Portal ' den uygun kopyalanmış URL 'leri [bulut destek ekibinizdeki BC](https://www.bcinthecloud.com/supportcenter/)'e göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

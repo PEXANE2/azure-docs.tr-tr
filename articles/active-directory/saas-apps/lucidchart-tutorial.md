@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
 ms.openlocfilehash: d2a63110a3527bd6b164f6ec72b99ee66c76564b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88550316"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lucidchart"></a>Öğretici: Lucidchart ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Lucidchart 'i Azure Active Directory (Azure AD) ile tümleştir
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -82,7 +82,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
    **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://chart2.office.lucidchart.com/saml/sso/azure`
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 

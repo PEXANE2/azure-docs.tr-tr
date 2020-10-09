@@ -9,10 +9,10 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: bfa6690c636e15fa933f50698cd81359600b5c05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77368313"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>Web uygulaması güvenlik duvarı v2 özel kurallarını oluşturma ve kullanma Application Gateway
@@ -28,7 +28,7 @@ Bu makalede, v2 WAF 'niz ile oluşturabileceğiniz ve kullanabileceğiniz bazı 
 
 ## <a name="example-1"></a>Örnek 1
 
-Web sitenizde gezinmeyi engellemek istediğiniz *evilbot* adlı bir bot olduğunu bilirsiniz. Bu durumda, istek üst bilgilerinde Kullanıcı Aracısı *evbotu* 'yı engellemelisiniz.
+Web sitenizde gezinmeyi engellemek istediğiniz *evilbot* adlı bir bot olduğunu bilirsiniz. Bu durumda, istek üst bilgilerinde User-Agent *evbot* üzerinde bir engel olacaksınız.
 
 Logic: p
 
@@ -225,11 +225,11 @@ Buna karşılık gelen JSON şu şekildedir:
   }
 ```
 
-Karşılık gelen yukarı ve kuralları:`SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
+Karşılık gelen yukarı ve kuralları: `SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
 
 ## <a name="example-4"></a>Örnek 4
 
-Bu örnek için, Kullanıcı Aracısı *evbotbot*'ı ve 192.168.5.0/24 aralığındaki trafiği engellemek istiyorsunuz. Bunu gerçekleştirmek için iki ayrı eşleştirme koşulu oluşturabilir ve bunları aynı kurala yerleştirebilirsiniz. Bu, 192.168.5.0/24 aralığındaki Kullanıcı Aracısı üst bilgisinde **ve** IP adreslerinde bulunan her iki taraf da *eşleştiriliyorsa* , isteğin engellenmesini sağlar.
+Bu örnekte, 192.168.5.0/24 aralığında User-Agent *evbot*ve trafik engellemek istiyorsunuz. Bunu gerçekleştirmek için iki ayrı eşleştirme koşulu oluşturabilir ve bunları aynı kurala yerleştirebilirsiniz. Bu, 192.168.5.0/24 aralığından User-Agent üst bilgi **ve** IP *adreslerinin her ikisi de eşleştiriliyorsa* , istek engelleniyorsa emin olur.
 
 Logic: p **ve** q
 

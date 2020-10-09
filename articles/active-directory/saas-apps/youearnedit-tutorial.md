@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 48f00d657bfe2a1bcd335be1cc366d574383e869
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88546211"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-youearnedit"></a>Öğretici: Youkazanydıt ile tümleştirme Azure Active Directory
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD 'de çoklu oturum açmayı yapılandırmak ve test etmek için şu yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, **[tek oturum açma](#configure-youearnedit-single-sign-on)** işlemi yapın.
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için, **[tek bir oturum açma](#configure-youearnedit-single-sign-on)** işlemi yapın.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimi ile bağlantılı olarak, Younedıt ' te bir Britta Simon 'a sahip olmak için, size bir **[test kullanıcısı oluşturun](#create-youearnedit-test-user)** .
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı, istediğiniz şekilde yapılandırmak için aş
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -116,9 +116,9 @@ Azure AD çoklu oturum açmayı, istediğiniz şekilde yapılandırmak için aş
     | Korumalı alan  |`<company name>.sandbox.youearnedit.com` |
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için size atanan müşteri başarısı yöneticinize başvurun.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek Sign-On URL 'SI ve tanımlayıcısıyla güncelleştirin. Bu değerleri almak için size atanan müşteri başarısı yöneticinize başvurun.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -132,7 +132,7 @@ Azure AD çoklu oturum açmayı, istediğiniz şekilde yapılandırmak için aş
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-youearnedit-single-sign-on"></a>Youndıt tekli oturum açmayı yapılandırma
+### <a name="configure-youearnedit-single-sign-on"></a>Younedıt tek Sign-On yapılandırma
 
 Bir **yandan,** tek oturum açmayı yapılandırmak için, indirilen **sertifikayı (Base64)** ve Azure Portal ' den uygun kopyalanmış URL 'Leri atanan You, müşteri başarısı yöneticinize göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

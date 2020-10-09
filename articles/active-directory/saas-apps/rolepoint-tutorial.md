@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 235010cbcdde326cf17643cec81f3b6fcb1eea59
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88548778"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rolepoint"></a>Öğretici: RolePoint ile tümleştirme Azure Active Directory
@@ -31,7 +31,7 @@ Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini RolePoint ile yapılandırmak için şunları yapmanız gerekir:
 
@@ -92,7 +92,7 @@ Azure AD çoklu oturum açmayı RolePoint ile yapılandırmak için şu adımlar
 
     ![Çoklu oturum açma yöntemi seçin](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesini seçin:
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesini seçin:
 
     ![Düzenle simgesi](common/edit-urls.png)
 
@@ -111,7 +111,7 @@ Azure AD çoklu oturum açmayı RolePoint ile yapılandırmak için şu adımlar
     > [!NOTE]
     > Bu değerler yer tutuculardır. Gerçek oturum açma URL 'sini ve tanımlayıcıyı kullanmanız gerekir. Tanımlayıcıda benzersiz bir dize değeri kullanmanızı öneririz. Bu değerleri almak için [Rolepoint destek ekibine](mailto:info@rolepoint.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** iletişim kutusunda gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML**' nun yanında, gereksinimlerinize göre **yükleme** bağlantısını seçin ve dosyayı bilgisayarınıza kaydedin.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML**' nün yanındaki **indirme** bağlantısını ve gereksinimlerinize göre dosyayı bilgisayarınıza kaydedin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 

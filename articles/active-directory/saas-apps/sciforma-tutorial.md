@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: c82d12c88ad7d4f63d7e0ceb8c535a7ac06f77ee
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88547852"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sciforma"></a>Öğretici: bilimle Azure Active Directory tümleştirme
@@ -30,7 +30,7 @@ Bilimlerinizi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Bilimsiz olarak yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -74,7 +74,7 @@ Bu bölümde, Azure AD çoklu oturum açma 'yı, **Britta Simon**adlı bir test 
 Azure AD çoklu oturum açma 'yı bilimi ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. , Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[bilimi forma çoklu oturum açmayı yapılandırın](#configure-sciforma-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[bilimi forma çoklu oturum açmayı yapılandırın](#configure-sciforma-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Bilime, kullanıcının Azure AD gösterimine bağlı olan, bilimte bir Britta Simon 'a sahip olmak için **[Bilimsiz test kullanıcısı oluşturun](#create-sciforma-test-user)** .
@@ -94,7 +94,7 @@ Azure AD çoklu oturum açmayı bilimi olarak yapılandırmak için aşağıdaki
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -109,7 +109,7 @@ Azure AD çoklu oturum açmayı bilimi olarak yapılandırmak için aşağıdaki
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Bilimforma istemci destek ekibine](https://www.sciforma.com/about/contact) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -123,7 +123,7 @@ Azure AD çoklu oturum açmayı bilimi olarak yapılandırmak için aşağıdaki
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-sciforma-single-sign-on"></a>Bilimi forma çoklu oturum açmayı yapılandırma
+### <a name="configure-sciforma-single-sign-on"></a>Bilni forma tek Sign-On yapılandırma
 
 **Bilimi** olarak çoklu oturum açma 'yı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'sini ve Azure Portal ' den uygun kopyalanmış URL 'leri, [bilimbiçimli destek ekibine](https://www.sciforma.com/about/contact)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

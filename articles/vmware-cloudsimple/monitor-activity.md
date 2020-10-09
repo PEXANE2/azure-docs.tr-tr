@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 1228f3a54e02d4fe7a5133e2bfba55c38e34718a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77019681"
 ---
 # <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>CloudSimple etkinliğine göre VMware çözümünü izleme
@@ -49,8 +49,8 @@ Aşağıdaki bilgi sütunları uyarılar için kullanılabilir. **Sütunları D�
 | Sütun | Açıklama |
 ------------ | ------------- |
 | Uyarı türü | Uyarı kategorisi.|
-| Saat | Uyarının gerçekleştiği zaman. |
-| Severity | Uyarının önemi.|
+| Süre | Uyarının gerçekleştiği zaman. |
+| Önem Derecesi | Uyarının önemi.|
 | Kaynak Adı | Kaynağa atanan, özel bulut adı gibi ad. |
 | Kaynak Türü | Kaynak kategorisi: özel bulut, bulut rafı. |
 | Kaynak kimliği | Kaynağın tanımlayıcısı. |
@@ -65,9 +65,9 @@ Aşağıdaki bilgi sütunları uyarılar için kullanılabilir. **Sütunları D�
 
 | Sütun | Açıklama |
 ------------ | ------------- |
-| Saat | Olayın gerçekleştiği tarih ve saat. |
+| Süre | Olayın gerçekleştiği tarih ve saat. |
 | Olay Türü | Olayı tanımlayan sayısal kod. |
-| Severity | Olay önem derecesi.|
+| Önem Derecesi | Olay önem derecesi.|
 | Kaynak Adı | Kaynağa atanan, özel bulut adı gibi ad. |
 | Kaynak Türü | Kaynak kategorisi: özel bulut, bulut rafı. |
 | Açıklama | Uyarının tetiklendiği açıklama. |
@@ -81,7 +81,7 @@ Aşağıdaki bilgi sütunları uyarılar için kullanılabilir. **Sütunları D�
 | Sütun | Açıklama |
 ------------ | ------------- |
 | Görev Kimliği | Görevin benzersiz tanımlayıcısı. |
-| Çalışma | Görevin gerçekleştirdiği eylem. |
+| İşlem | Görevin gerçekleştirdiği eylem. |
 | Kullanıcı | Görevi tamamlamaya yönelik Kullanıcı atandı. |
 | Kaynak Adı | Kaynağa atanan ad. |
 | Kaynak Türü | Kaynak kategorisi: özel bulut, bulut rafı. |
@@ -100,8 +100,8 @@ Aşağıdaki bilgi sütunları uyarılar için kullanılabilir. **Sütunları D�
 
 | Sütun | Açıklama |
 ------------ | ------------- |
-| Saat | Denetim girişinin saati. |
-| Çalışma | Görevin gerçekleştirdiği eylem. |
+| Süre | Denetim girişinin saati. |
+| İşlem | Görevin gerçekleştirdiği eylem. |
 | Kullanıcı | Göreve atanan kullanıcı. |
 | Kaynak Adı | Kaynağa atanan ad. |
 | Kaynak Türü | Kaynak kategorisi: özel bulut, bulut rafı. |

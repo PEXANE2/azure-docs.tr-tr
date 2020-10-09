@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 4d51a4c25ef09943d992ca35aef9d11c6ca7122d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88549628"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appblade"></a>Öğretici: Appdikey ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Appdikey uygulamayı Azure AD ile tümleştirmek aşağıdaki avantajları sağl
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Appdikey pencerede yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -74,7 +74,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Appdikey penceresinde Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[AppBlade çoklu oturum açmayı yapılandırın](#configure-appblade-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[AppBlade çoklu oturum açmayı yapılandırın](#configure-appblade-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. User 'ın Azure AD gösterimine bağlı olan Appdikey penceresinde Britta Simon 'un bir karşılığı olacak şekilde **[AppBlade test kullanıcısı oluşturun](#create-appblade-test-user)** .
@@ -94,7 +94,7 @@ Azure AD çoklu oturum açmayı Appdikey pencerede yapılandırmak için aşağ�
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -105,9 +105,9 @@ Azure AD çoklu oturum açmayı Appdikey pencerede yapılandırmak için aşağ�
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<companyname>.appblade.com/saml/<tenantid>`
 
     > [!NOTE]
-    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [AppBlade istemci destek ekibine](mailto:support@appblade.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Değer gerçek değil. Değeri gerçek Sign-On URL 'siyle güncelleştirin. Değeri almak için [AppBlade istemci destek ekibine](mailto:support@appblade.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -121,7 +121,7 @@ Azure AD çoklu oturum açmayı Appdikey pencerede yapılandırmak için aşağ�
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-appblade-single-sign-on"></a>AppBlade çoklu oturum açmayı yapılandırma
+### <a name="configure-appblade-single-sign-on"></a>Appdikey tek Sign-On yapılandırma
 
 **Appdikey** pencerede çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'Leri Azure Portal ' den [AppBlade destek ekibine](mailto:support@appblade.com)göndermeniz gerekir. Ayrıca, lütfen **SSO VERENIN URL** 'sini olarak yapılandırmasını isteyin `https://appblade.com/saml` . Bu ayar, çoklu oturum açma 'nın çalışması için gereklidir.
 

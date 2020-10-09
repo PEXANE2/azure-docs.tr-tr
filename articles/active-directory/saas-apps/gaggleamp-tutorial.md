@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 7293430968d82fbf9a5efd370f3e0a3ca85842a2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88550937"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gaggleamp"></a>Öğretici: Gkararlılığı ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Gleleamp 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Gkararlılığı ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -75,7 +75,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açmayı Gkararlılığı ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Gkararlılığı yapılandırma çoklu oturum](#configure-gaggleamp-single-sign-on)** açma ayarlarını uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için yapılandırın.
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Gkararlılığı 'Nı çoklu oturum açmayı yapılandırın](#configure-gaggleamp-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Gkararlılığı, kullanıcının Azure AD gösterimine bağlı olan Gkararlılığı için Gkararlılığı Simon 'a sahip olmak için **[gkararlılık ve test kullanıcısı oluşturun](#create-gaggleamp-test-user)** .
@@ -95,7 +95,7 @@ Azure AD çoklu oturum açmayı Gkararlılığı ile birlikte yapılandırmak i�
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -114,7 +114,7 @@ Azure AD çoklu oturum açmayı Gkararlılığı ile birlikte yapılandırmak i�
     > [!NOTE]
     > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [Gkararlılığı istemci destek ekibine](mailto:sales@gaggleamp.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -128,19 +128,19 @@ Azure AD çoklu oturum açmayı Gkararlılığı ile birlikte yapılandırmak i�
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-gaggleamp-single-sign-on"></a>Gkararlılığı yapılandırma çoklu oturum açma
+### <a name="configure-gaggleamp-single-sign-on"></a>Gkararlılığı yapılandırma tek Sign-On
 
 1. Başka bir tarayıcı örneğinde, Gaggle destek ekibi tarafından sizin için oluşturulan SAML SSO sayfasına gidin (örneğin: *https://accounts.gaggleamp.com/saml_configurations/oXH8sQcP79dOzgFPqrMTyw/edit* ).
 
 2. **SAML SSO** sayfanızda aşağıdaki adımları gerçekleştirin:  
    
-    ![Gkararlılığı çoklu oturum açma](./media/gaggleamp-tutorial/tutorial_gaggleamp_06.png)
+    ![Gkararlılığı tek başına Sign-On](./media/gaggleamp-tutorial/tutorial_gaggleamp_06.png)
 
     a. **Kimlik sağlayıcısı** açılır menüsünü **diğer** form ' u seçin.
     
     b. **Kimlik sağlayıcısı veren** metin kutusunda, Azure Portal kopyaladığınız **Azure AD tanımlayıcısının** değerini yapıştırın.
     
-    c. **Kimlik sağlayıcısı çoklu oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
+    c. **Kimlik sağlayıcısı tek Sign-On URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
     
     d. İndirilen **sertifika (base64)** dosyanızı Not defteri 'nde açın, içeriğini panonuza kopyalayın ve **X. 509.440 sertifikası** metin kutusuna yapıştırın.
     

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
 ms.openlocfilehash: 48754b6ac1d6348df440db496d713f0d0a0b71ea
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88547656"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-browserstack-single-sign-on"></a>Öğretici: BrowserStack çoklu oturum açma ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile BrowserStack çoklu oturu
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 8eed884ed9d957ede4ae9fc192ae5a8e501b652e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88546245"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yodeck"></a>Öğretici: Yodestesi tümleştirme Azure Active Directory
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Yodestesi Azure AD çoklu oturum açma 'yı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için izin **[Çoklu oturum açmayı yapılandırın](#configure-yodeck-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için, **[Yodestesi çoklu oturum açmayı yapılandırın](#configure-yodeck-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan Yodestesi 'de Britta Simon 'ın bir karşılığı olacak şekilde **[Kullanıcı oluşturun](#create-yodeck-test-user)** .
@@ -93,7 +93,7 @@ Yodestesi Azure AD çoklu oturum açma 'yı yapılandırmak için aşağıdaki a
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -109,11 +109,11 @@ Yodestesi Azure AD çoklu oturum açma 'yı yapılandırmak için aşağıdaki a
 
     **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://app.yodeck.com/login`
 
-6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
+6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
     ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
-### <a name="configure-yodeck-single-sign-on"></a>Yodestesi çoklu oturum açmayı yapılandırma
+### <a name="configure-yodeck-single-sign-on"></a>Yodestesi tek Sign-On yapılandırma
 
 1. **Yodestesi**içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek**üzere **uygulamalarımı güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 

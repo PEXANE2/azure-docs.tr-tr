@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 309bbca762149f8804742d9ef02d4c3e8dfcdc6b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67542759"
 ---
 # <a name="get-images-from-the-web-with-the-bing-image-search-api"></a>Bing Resim Arama API'si Web 'den resimleri alın
@@ -31,7 +31,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-URL kodlamalı arama teriminizle ilgili [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) sorgu parametresini kullanın. Örneğin, *SAI dingerleri*girerseniz, veya `q` `sailing+dinghies` `sailing%20dinghies`olarak ayarlayın.
+URL kodlamalı arama teriminizle ilgili [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) sorgu parametresini kullanın. Örneğin, *SAI dingerleri*girerseniz, `q` veya olarak ayarlayın `sailing+dinghies` `sailing%20dinghies` .
 
 > [!IMPORTANT]
 > * Tüm isteklerin bir istemciden değil, bir sunucudan yapılması gerekir.
@@ -46,7 +46,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghi
 ```
 
 > [!NOTE]
-> `site:` İşleci kullanarak sorgulara verilen yanıtlar, [SafeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) ayarından bağımsız olarak yetişkinlere yönelik içerik içerebilir. Yalnızca etki `site:` alanındaki içeriğin farkında değilseniz kullanın.
+> İşleci kullanarak sorgulara verilen yanıtlar `site:` , [SafeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) ayarından bağımsız olarak yetişkinlere yönelik içerik içerebilir. Yalnızca `site:` etki alanındaki içeriğin farkında değilseniz kullanın.
 
 ## <a name="filter-images"></a>Görüntüleri filtrele
 

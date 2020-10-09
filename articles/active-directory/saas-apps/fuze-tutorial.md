@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
 ms.openlocfilehash: e57b9f4bf4fdd28b342bb1612e5d59d52d08cfc9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88550903"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fuze"></a>Öğretici: belirsizlik ile Azure Active Directory tümleştirme
@@ -30,7 +30,7 @@ Belirsizlik 'in Azure AD ile tümleştirilmesi aşağıdaki avantajları sağlar
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini belirsizlik ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -75,7 +75,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açma 'yı belirsizlik ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Belirsizlik çoklu oturum açmayı yapılandırma](#configure-fuze-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[Belirsizlik çoklu oturum açmayı yapılandırma](#configure-fuze-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan, belirsizlik 'e yönelik Britta Simon 'un bir karşılığı olacak şekilde, **[belirsizlik testi kullanıcısı oluşturun](#create-fuze-test-user)** .
@@ -95,7 +95,7 @@ Azure AD çoklu oturum açmayı belirsizlik ile yapılandırmak için aşağıda
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarla** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarla** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -105,7 +105,7 @@ Azure AD çoklu oturum açmayı belirsizlik ile yapılandırmak için aşağıda
 
     **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://www.thinkingphones.com/jetspeed/portal/`
 
-5. SAML **Imzalama sertifikası** bölümünde, **SAML Ile çoklu oturum açmayı ayarla** sayfasında, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarla** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -119,7 +119,7 @@ Azure AD çoklu oturum açmayı belirsizlik ile yapılandırmak için aşağıda
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-fuze-single-sign-on"></a>Belirsizlik çoklu oturum açmayı Yapılandır
+### <a name="configure-fuze-single-sign-on"></a>Belirsizlik tek Sign-On yapılandırma
 
 **Belirsizlik** temelinde çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'leri Azure Portal, [belirsizlik desteği ekibine](https://www.fuze.com/support)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

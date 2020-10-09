@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: aahi
 ms.openlocfilehash: ca93de71f64efaf21c78b37b9c9aee193d13b28d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "71840216"
 ---
 # <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>Nasıl yapılır: zaman serisi verilerinizde anomali algılayıcısı API 'sini kullanma  
@@ -26,7 +26,7 @@ ms.locfileid: "71840216"
 Anomali algılayıcı API 'SI algılama modları sağlar: Batch ve streaming.
 
 > [!NOTE]
-> Aşağıdaki istek URL 'Leri, aboneliğiniz için uygun uç noktayla birleştirilmelidir. Örneğin, `https://<your-custom-subdomain>.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/entire/detect`
+> Aşağıdaki istek URL 'Leri, aboneliğiniz için uygun uç noktayla birleştirilmelidir. Örnek: `https://<your-custom-subdomain>.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/entire/detect`
 
 
 ### <a name="batch-detection"></a>Toplu iş algılama
@@ -47,7 +47,7 @@ Yeni veri noktalarını oluştururken gönderdiğinizde verilerinizi gerçek zam
 
 ## <a name="adjusting-lower-and-upper-anomaly-detection-boundaries"></a>Alt ve üst anomali algılama sınırlarını ayarlama
 
-Varsayılan olarak, anomali algılama için üst ve alt sınırlar, `expectedValue` `upperMargin`, ve `lowerMargin`kullanılarak hesaplanır. Farklı sınırlara ihtiyaç duyuyorsanız, `marginScale` `upperMargin` veya `lowerMargin`' a uygulanmasını öneririz. Sınırlar aşağıdaki şekilde hesaplanır:
+Varsayılan olarak, anomali algılama için üst ve alt sınırlar,, ve kullanılarak `expectedValue` hesaplanır `upperMargin` `lowerMargin` . Farklı sınırlara ihtiyaç duyuyorsanız, veya ' a uygulanmasını öneririz `marginScale` `upperMargin` `lowerMargin` . Sınırlar aşağıdaki şekilde hesaplanır:
 
 |Oluşturmasını  |Hesaplama  |
 |---------|---------|

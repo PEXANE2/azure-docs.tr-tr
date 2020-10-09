@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 6d51e02f323b4b51c2fe4f3c8e4792adf8d87eb1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88551229"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-collaborative-innovation"></a>Öğretici: Işbirliğine dayalı yenilik ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Işbirlikçi yeniliklerini Azure Active Directory (Azure AD) il
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -94,7 +94,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Daha fazlasına ek olarak, Işbirliğine dayalı yenilik uygulaması aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ---------------| --------------- |
     | givenname | Kullanıcı. |
     | surname | User. soyadı |

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: mbaldwin
 ms.openlocfilehash: 3fde577a6b0efb7584e1c9efd57c95583ebe4ec9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "70881428"
 ---
 # <a name="azure-dedicated-hsm-monitoring"></a>Azure adanmış HSM izleme
@@ -41,6 +41,6 @@ Her iki yöntem de bir müşterinin sorunları belirlemesini ve uygun düzeltme 
 Hizmetin yüksek kullanılabilirlik ve güvenlik gibi tüm temel kavramlarının herhangi bir cihaz sağlama ve uygulama tasarımı ya da dağıtımdan önce iyi anlaşıldığından emin olmanız önerilir. Daha fazla kavram düzeyi konuları:
 
 * [Yüksek kullanılabilirlik](high-availability.md)
-* [Fiziksel güvenlik](physical-security.md)
+* [Fiziksel Güvenlik](physical-security.md)
 * [Ağ](networking.md)
 * [Desteklenebilirlik](supportability.md)

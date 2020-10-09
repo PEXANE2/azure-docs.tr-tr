@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: d99355a88a52e318b231d9032ede770ee0ba5208
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88548695"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-humanity"></a>Öğretici: ınsanlarla Azure Active Directory tümleştirme
@@ -30,7 +30,7 @@ Insanların Azure AD ile tümleştirilmesi aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini ınsanlarla yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açma 'yı ınsanla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Insandaki çoklu oturum açma](#configure-humanity-single-sign-on)** ayarlarını, uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için yapılandırın.
+2. **[İnsandaki çoklu oturum açmayı yapılandırma](#configure-humanity-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan insandaki Britta Simon 'un bir karşılığı olan **[insanın bir test kullanıcısı oluşturun](#create-humanity-test-user)** .
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açma 'yı ınsanlarla yapılandırmak için aşağıdaki
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -108,7 +108,7 @@ Azure AD çoklu oturum açma 'yı ınsanlarla yapılandırmak için aşağıdaki
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Humanity istemci destek ekibine](https://www.humanity.com/support/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+4. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -122,7 +122,7 @@ Azure AD çoklu oturum açma 'yı ınsanlarla yapılandırmak için aşağıdaki
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-humanity-single-sign-on"></a>Insandaki çoklu oturum açmayı yapılandırma
+### <a name="configure-humanity-single-sign-on"></a>Insandaki tek Sign-On yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, **insandaki** şirket sitenizde yönetici olarak oturum açın.
 

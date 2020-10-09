@@ -11,25 +11,25 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
 ms.openlocfilehash: 213457bc583494bbe039269b96b25990f7d0a961
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "69906240"
 ---
 # <a name="use-geographic-boundaries-to-filter-results-from-the-bing-local-business-search-api"></a>Bing yerel Iş Arama API 'sindeki sonuçları filtrelemek için coğrafi sınırları kullanın
 
-Bing yerel Iş Arama API 'SI, `localCircularView` veya `localMapView` sorgu parametrelerini kullanarak aramak istediğiniz belirli coğrafi alanda sınır ayarlamanıza olanak sağlar. Sorgularda yalnızca bir parametre kullandığınızdan emin olun. 
+Bing yerel Iş Arama API 'SI, `localCircularView` veya sorgu parametrelerini kullanarak aramak istediğiniz belirli coğrafi alanda sınır ayarlamanıza olanak sağlar `localMapView` . Sorgularda yalnızca bir parametre kullandığınızdan emin olun. 
 
-Bir arama terimi açık bir coğrafi konum içeriyorsa, Bing yerel Iş API 'SI, arama sonuçlarının sınırlarını ayarlamak için otomatik olarak bunu kullanacaktır. Örneğin, arama terimi ise `sailing in San Diego` `San Diego` , konum olarak kullanılır ve sorgu parametrelerinde veya Kullanıcı üst bilgilerinde belirtilen diğer konumlar göz ardı edilir. 
+Bir arama terimi açık bir coğrafi konum içeriyorsa, Bing yerel Iş API 'SI, arama sonuçlarının sınırlarını ayarlamak için otomatik olarak bunu kullanacaktır. Örneğin, arama terimi ise, `sailing in San Diego` `San Diego` konum olarak kullanılır ve sorgu parametrelerinde veya Kullanıcı üst bilgilerinde belirtilen diğer konumlar göz ardı edilir. 
 
-Arama Teriminde bir coğrafi konum algılanmazsa ve sorgu parametreleri kullanılarak hiçbir coğrafi konum belirtilmemişse, Bing yerel Iş Arama API 'SI, isteğin `X-Search-ClientIP` veya `X-Search-Location` üst bilgilerden konum belirlemeyi dener. Hiçbir üst bilgi belirtilmemişse, API isteğin istemci IP 'sinden veya mobil cihazlar için GPS koordinatlarından konumu tespit eder.
+Arama Teriminde bir coğrafi konum algılanmazsa ve sorgu parametreleri kullanılarak hiçbir coğrafi konum belirtilmemişse, Bing yerel Iş Arama API 'SI, isteğin `X-Search-ClientIP` veya üst bilgilerden konum belirlemeyi dener `X-Search-Location` . Hiçbir üst bilgi belirtilmemişse, API isteğin istemci IP 'sinden veya mobil cihazlar için GPS koordinatlarından konumu tespit eder.
 
 ## <a name="localcircularview"></a>Localmılarview
 
-`localCircularView` Parametresi, bir RADIUS tarafından tanımlanan bir dizi Enlem/Boylam koordinatı etrafında dairesel bir coğrafi alan oluşturur. Bu parametre kullanılırken, Bing yerel Iş Arama API 'sindeki yanıtlar yalnızca bu dairenin içindeki konumları içerir ve bu da, arama alanının `localMapView` dışında kalan konumları içerebilen parametrenin aksine.
+`localCircularView`Parametresi, bir RADIUS tarafından tanımlanan bir dizi Enlem/Boylam koordinatı etrafında dairesel bir coğrafi alan oluşturur. Bu parametre kullanılırken, Bing yerel Iş Arama API 'sindeki yanıtlar yalnızca bu dairenin içindeki konumları içerir ve bu da, `localMapView` arama alanının dışında kalan konumları içerebilen parametrenin aksine.
 
-Dairesel bir coğrafi arama alanı belirtmek için, dairenin ortası olarak kullanılacak bir enlem ve boylam, ölçü cinsinden bir yarıçap seçin. Bu parametre daha sonra bir sorgu dizesine eklenebilir, örneğin: `q=Restaurants&localCircularView=47.6421,-122.13715,5000`.
+Dairesel bir coğrafi arama alanı belirtmek için, dairenin ortası olarak kullanılacak bir enlem ve boylam, ölçü cinsinden bir yarıçap seçin. Bu parametre daha sonra bir sorgu dizesine eklenebilir, örneğin: `q=Restaurants&localCircularView=47.6421,-122.13715,5000` .
 
 Sorgu Tamam:
 
@@ -39,9 +39,9 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search?q=restauran
 
 ## <a name="localmapview"></a>localMapView
 
-`localMapView` Parametresi, Güneydoğu ve Kuzeybatı köşelerini belirtmek için iki koordinat kümesini kullanarak arama yapılacak dikdörtgen bir coğrafi alanı belirtir. Bu parametre kullanılırken, Bing yerel Iş Arama API 'sindeki yanıtlar, yalnızca arama alanındaki konumları içeren `localCircularView` parametresinin aksine, belirtilen alanın içindeki ve yalnızca dışındaki konumları içerebilir.
+`localMapView`Parametresi, Güneydoğu ve Kuzeybatı köşelerini belirtmek için iki koordinat kümesini kullanarak arama yapılacak dikdörtgen bir coğrafi alanı belirtir. Bu parametre kullanılırken, Bing yerel Iş Arama API 'sindeki yanıtlar, `localCircularView` yalnızca arama alanındaki konumları içeren parametresinin aksine, belirtilen alanın içindeki ve yalnızca dışındaki konumları içerebilir.
 
-Dikdörtgen bir arama alanı belirtmek için, sınırın Güneydoğu ve Kuzeybatı köşeleri olarak kullanılacak iki Enlem/Boylam koordinatı kümesi seçin. Aşağıdaki örnekte olduğu gibi, ilk olarak Güneydoğu koordinatları tanımlamanız gerekir: `localMapView=47.619987,-122.181671,47.6421,-122.13715`.
+Dikdörtgen bir arama alanı belirtmek için, sınırın Güneydoğu ve Kuzeybatı köşeleri olarak kullanılacak iki Enlem/Boylam koordinatı kümesi seçin. Aşağıdaki örnekte olduğu gibi, ilk olarak Güneydoğu koordinatları tanımlamanız gerekir: `localMapView=47.619987,-122.181671,47.6421,-122.13715` .
 
 Sorgu Tamam:
 

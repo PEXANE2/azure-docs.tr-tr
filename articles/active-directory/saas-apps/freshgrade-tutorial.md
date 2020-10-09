@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: d913cd01b25aebe6d0a58aca87b35367315380f5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88551125"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshgrade"></a>Öğretici: Azure Active Directory en iyi sınıf ile tümleştirme
@@ -30,7 +30,7 @@ Artık Azure AD ile birlikte tümleştirme, aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini geçici olarak yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açma 'yı, **Britta Simon**adlı bir test 
 Azure AD çoklu oturum açma 'yı yeniden yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, isteğe **[bağlı çoklu oturum açmayı yapılandırın](#configure-freshgrade-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için, isteğe **[bağlı çoklu oturum açmayı yapılandırın](#configure-freshgrade-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcı için Azure AD gösterimine bağlı olan, daha sonra, bir kullanıcı adına, ister bir daha sonra, ister bir Kullanıcı **[oluşturun](#create-freshgrade-test-user)** .
@@ -93,11 +93,11 @@ Azure AD çoklu oturum açmayı, geçici olarak yapılandırmak için aşağıda
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki adımları uygulayın:
+4. **SAML Ile tek Sign-On ayarlama** sayfasında, aşağıdaki adımları gerçekleştirin:
 
     ![Etki alanı ve URL 'Leri tek oturum açma bilgilerini yeniden açın](common/sp-identifier.png)
 
@@ -116,13 +116,13 @@ Azure AD çoklu oturum açmayı, geçici olarak yapılandırmak için aşağıda
     ```
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için, daha önce, [istemci desteği ekibine](mailto:support@freshgrade.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek Sign-On URL 'SI ve tanımlayıcısıyla güncelleştirin. Bu değerleri almak için, daha önce, [istemci desteği ekibine](mailto:support@freshgrade.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
     ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
-### <a name="configure-freshgrade-single-sign-on"></a>İsteğe bağlı çoklu oturum açmayı Yapılandır
+### <a name="configure-freshgrade-single-sign-on"></a>Tek Sign-On için bir diğer sınıfı Yapılandır
 
 İsteğe **bağlı olarak,** tek oturum açma 'yı yapılandırmak Için, **uygulama Federasyon meta veri URL 'Sini** en güncel [sınıf desteği ekibine](mailto:support@freshgrade.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

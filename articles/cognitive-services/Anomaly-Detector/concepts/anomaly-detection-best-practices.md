@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: aahi
 ms.openlocfilehash: 9407f2fc9375765efb6eb9688b3ebfeef24ba90a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67721630"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Anomali algılayıcı API 'sini kullanmaya yönelik en iyi uygulamalar
@@ -72,7 +72,7 @@ Anomali algılayıcı API 'sine gönderilen veri noktaları, geçerli bir Eşgü
 }
 ```
 
-Verileriniz standart olmayan bir zaman aralığında örneklenir, isteğinize `customInterval` özniteliği ekleyerek bunu belirtebilirsiniz. Örneğin, seriniz her 5 dakikada bir örneklenir, JSON isteğinize aşağıdakileri ekleyebilirsiniz:
+Verileriniz standart olmayan bir zaman aralığında örneklenir, isteğinize özniteliği ekleyerek bunu belirtebilirsiniz `customInterval` . Örneğin, seriniz her 5 dakikada bir örneklenir, JSON isteğinize aşağıdakileri ekleyebilirsiniz:
 
 ```json
 {
@@ -93,9 +93,9 @@ Anomali algılayıcı API 'SI, eşit olarak dağıtılan bir zaman serisinde en 
 
 Zaman serisi verilerinizin düzenli aralıklarla bir düzene sahip olduğunu biliyorsanız, doğruluk ve API yanıt süresini geliştirebilirsiniz. 
 
-JSON isteğinizi `period` oluştururken belirtme, anomali algılama gecikmesini %50 oranında azaltabilir. , `period` Zaman serisinin bir kalıbı yinelemek için kaç veri noktası olduğunu kabaca belirten bir tamsayıdır. Örneğin, günlük bir veri noktasına sahip bir zaman serisi `period` bir olarak `7`olur ve saat başına bir noktaya sahip bir zaman serisi (aynı haftalık desenli) ' a `period` sahip olur. `7*24` Verilerinizin desenlerinden emin değilseniz, bu parametreyi belirtmeniz gerekmez.
+`period`JSON isteğinizi oluştururken belirtme, anomali algılama gecikmesini %50 oranında azaltabilir. , `period` Zaman serisinin bir kalıbı yinelemek için kaç veri noktası olduğunu kabaca belirten bir tamsayıdır. Örneğin, günlük bir veri noktasına sahip bir zaman serisi bir `period` olarak olur `7` ve saat başına bir noktaya sahip bir zaman serisi (aynı haftalık desenli) ' a sahip olur `period`  `7*24` . Verilerinizin desenlerinden emin değilseniz, bu parametreyi belirtmeniz gerekmez.
 
-En iyi sonuçlar için, 4 `period`' ün veri noktası ve ek bir tane girin. Örneğin, yukarıda açıklanan haftalık bir desenli saatlik veriler, istek gövdesinde (`7 * 24 * 4 + 1`) 673 veri noktası sağlamalıdır.
+En iyi sonuçlar için, 4 `period` ' ün veri noktası ve ek bir tane girin. Örneğin, yukarıda açıklanan haftalık bir desenli saatlik veriler, istek gövdesinde () 673 veri noktası sağlamalıdır `7 * 24 * 4 + 1` .
 
 ### <a name="sampling-data-for-real-time-monitoring"></a>Gerçek zamanlı izleme için örnekleme verileri
 

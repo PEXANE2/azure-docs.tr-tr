@@ -12,10 +12,10 @@ ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 8d6dc91ae7bb0f6d7a24064749d9295558a7d39c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68946333"
 ---
 # <a name="detect-domain-specific-content"></a>Etki alanına özgü içeriği algılama
@@ -26,7 +26,7 @@ Etki alanına özgü modelleri kullanmanın iki yolu vardır: kendilerine (kapsa
 
 ### <a name="scoped-analysis"></a>Kapsamlı analiz
 
-[Modeller/\<model\>/Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) API 'sini çağırarak bir görüntüyü yalnızca seçilen alana özgü modeli kullanarak çözümleyebilirsiniz.
+[Modelleri/ \<model\> /Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) API 'sini çağırarak yalnızca seçili alana özgü modeli kullanarak bir görüntüyü çözümleyebilirsiniz.
 
 Aşağıda, belirtilen görüntü için **Modeller/Ünlüler/çözümle** API 'si tarafından döndürülen örnek bir JSON yanıtı verilmiştir:
 
@@ -61,7 +61,7 @@ Genel görüntü analizine ek olarak, etki alanına özgü modeller de kullanabi
 
 Bu durumda, ilk olarak 86 kategori taksonomi Sınıflandırıcısı çağırılır. Algılanan kategorilerden herhangi birinde eşleşen bir etki alanına özgü model varsa, görüntü bu modelden de geçirilir ve sonuçlar eklenir.
 
-Aşağıdaki JSON yanıtı, etki alanına özgü çözümlemenin daha geniş bir kategori analizinde `detail` düğüm olarak nasıl dahil edileceğini gösterir.
+Aşağıdaki JSON yanıtı, etki alanına özgü çözümlemenin `detail` daha geniş bir kategori analizinde düğüm olarak nasıl dahil edileceğini gösterir.
 
 ```json
 "categories":[
@@ -100,10 +100,10 @@ Aşağıdaki JSON yanıtı, etki alanına özgü çözümlemenin daha geniş bir
 
 Şu anda Görüntü İşleme, etki alanına özgü aşağıdaki modelleri destekler:
 
-| Adı | Açıklama |
+| Ad | Açıklama |
 |------|-------------|
-| ünlüleri | Bu şekilde, `people_` kategoride sınıflandırılan görüntüler için desteklenen ünlülik tanıma |
-| sakal | Yer işareti tanıma, `outdoor_` veya `building_` kategorilerinde sınıflandırılan görüntüler için desteklenir |
+| ünlüleri | Bu şekilde, kategoride sınıflandırılan görüntüler için desteklenen ünlülik tanıma `people_` |
+| sakal | Yer işareti tanıma, `outdoor_` veya kategorilerinde sınıflandırılan görüntüler için `building_` desteklenir |
 
 [Modeller](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd) API 'sini çağırmak, bu bilgileri her modelin uygulayabileceği kategorilerle birlikte döndürür:
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: jeedes
 ms.openlocfilehash: 7e27bb9a342270c821eba92b19248933e760809a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88550597"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-heybuddy"></a>Öğretici: Heyarkadaş ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Hei arkadaş Azure Active Directory (Azure AD) ile nasıl tüml
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -87,7 +87,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`YourCompanyInstanceofHeyBuddy`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcı (varlık KIMLIĞI) ile güncelleştirin. `Entity ID`Oturum açma URL 'si her kuruluş için otomatik olarak oluşturulur. Bu değerleri almak için [Heyıarkadaş istemci destek ekibine](mailto:support@heybuddy.com) başvurun.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek Sign-On URL 'SI ve tanımlayıcı (varlık KIMLIĞI) ile güncelleştirin. `Entity ID`Oturum açma URL 'si her kuruluş için otomatik olarak oluşturulur. Bu değerleri almak için [Heyıarkadaş istemci destek ekibine](mailto:support@heybuddy.com) başvurun.
 
 1. Heyıarkadaş uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
@@ -95,7 +95,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Ezofficeınventory uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
 
-    | Adı |  Kaynak özniteliği|
+    | Name |  Kaynak özniteliği|
     | -------- | --------- |
     | Roller  | Kullanıcı. atandroles |
     | | |

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
 ms.openlocfilehash: f342371ec065c4fb60c492c4354c6f8c717c9bb8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88546086"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>Öğretici: Zscaler Beta ile tümleştirme Azure Active Directory
@@ -94,7 +94,7 @@ Azure AD çoklu oturum açma 'yı Zscaler Beta ile yapılandırmak için aşağ�
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** ' yi seçin.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** ' yi seçin.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -138,7 +138,7 @@ Azure AD çoklu oturum açma 'yı Zscaler Beta ile yapılandırmak için aşağ�
     > [!NOTE]
     > Azure AD 'de rolleri yapılandırma hakkında bilgi edinmek için bkz. [rol talebini yapılandırma](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management).
 
-7. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, sertifikayı indirmek için **Indir** ' i seçin **(base64)**. Bu dosyayı bilgisayarınıza kaydedin.
+7. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, sertifikayı indirmek için **Indir** ' i seçin **(base64)**. Bu dosyayı bilgisayarınıza kaydedin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 

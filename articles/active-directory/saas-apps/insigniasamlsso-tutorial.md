@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 9d3463e04f06e02f8d27e633a10c22069ad9b57f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88550427"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insignia-saml-sso"></a>Öğretici: Insignia SAML SSO ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Insignia SAML SSO 'yu Azure AD ile tümleştirmek aşağıdaki avantajları sağ
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Insignia SAML SSO 'SU ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -73,7 +73,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına bağlı olarak Ins
 Azure AD çoklu oturum açma 'yı Insignia SAML SSO 'SU ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Insignia SAML SSO çoklu oturum açma 'Yı yapılandırın](#configure-insignia-saml-sso-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Insignia SAML SSO çoklu oturum açma 'Yı yapılandırın](#configure-insignia-saml-sso-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. **[INSIGNIA SAML SSO 'su test kullanıcısı oluşturun](#create-insignia-saml-sso-test-user)** ; ıNSIGNIA SAML SSO 'Da kullanıcının Azure AD gösterimine bağlı olan Britta Simon 'un bir karşılığı vardır.
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı Insignia SAML SSO 'SU ile yapılandırmak için 
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -114,7 +114,7 @@ Azure AD çoklu oturum açmayı Insignia SAML SSO 'SU ile yapılandırmak için 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Insignia SAML SSO istemci destek ekibine](http://www.insigniasoftware.com/insignia/Techsupport.aspx) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -128,7 +128,7 @@ Azure AD çoklu oturum açmayı Insignia SAML SSO 'SU ile yapılandırmak için 
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-insignia-saml-sso-single-sign-on"></a>Insignia SAML SSO çoklu oturum açmayı yapılandırma
+### <a name="configure-insignia-saml-sso-single-sign-on"></a>Insignia SAML SSO tek Sign-On yapılandırma
 
 **INSIGNIA SAML SSO** tarafında çoklu oturum açma 'yı yapılandırmak için, indirilen **sertifikayı (Base64)** ve Azure Portal ' den [Insignia SAML SSO destek ekibine](http://www.insigniasoftware.com/insignia/Techsupport.aspx)uygun şekilde kopyalanmış URL 'leri göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

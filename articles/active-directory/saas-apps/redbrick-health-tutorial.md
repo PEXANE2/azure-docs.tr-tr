@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: jeedes
 ms.openlocfilehash: c6acbd115dfb6a4411add844f91cff921c2a2371
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88548795"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-redbrick-health"></a>Öğretici: Redblok sistem durumu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Redblok durumunun Azure Active Directory (Azure AD) ile nasıl 
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -93,13 +93,13 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!NOTE]
     > Geçiş durumu değeri gerçek değil. Bu değeri gerçek geçiş durumuyla güncelleştirin. Bu değeri almak için [Redblok sistem durumu istemci destek ekibine](https://home.redbrickhealth.com/contact/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. Redblok sistem durumu uygulaması, SAML onaylamalarını belirli bir biçimde bekliyor. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu özniteliklerin değerlerini, uygulama tümleştirme sayfasındaki **Kullanıcı öznitelikleri** bölümünden yönetebilirsiniz. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **Kullanıcı öznitelikleri** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
+1. Redblok sistem durumu uygulaması, SAML onaylamalarını belirli bir biçimde bekliyor. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu özniteliklerin değerlerini, uygulama tümleştirme sayfasındaki **Kullanıcı öznitelikleri** bölümünden yönetebilirsiniz. **SAML Ile tek Sign-On ayarlama** sayfasında, **Kullanıcı öznitelikleri** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
 
     ![image](common/edit-attribute.png)
 
 1. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde, YUKARıDAKI görüntüde gösterildiği gibi SAML belirteci özniteliğini yapılandırın ve aşağıdaki adımları gerçekleştirin:
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ----------- | --------- |
     | Asıl ad | ********** |
     | istemci kimliği | ********** |

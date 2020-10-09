@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 6282e159a537eb3b9bf5d9a44c7498f3f1db0019
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88550733"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-happyfox"></a>Öğretici: Sonuçişareti ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Nki yıllarından Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini, bir Diyfox ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -77,7 +77,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına bağlı olarak, Az
 Azure AD çoklu oturum açma 'yı, bir Diyfox ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. , Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, bu **[Çoklu oturum açmayı yapılandırma](#configure-happyfox-single-sign-on)** .
+2. , Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için, bu **[Çoklu oturum açma özelliğini yapılandırma](#configure-happyfox-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan, bir alımon ile Ilgili Britta Simon 'a sahip olmak için bir, ki. bir **[test kullanıcısı oluşturun](#create-happyfox-test-user)** .
@@ -97,7 +97,7 @@ Azure AD ile çoklu oturum açmayı, bir Diyfox ile yapılandırmak için aşağ
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -112,7 +112,7 @@ Azure AD ile çoklu oturum açmayı, bir Diyfox ile yapılandırmak için aşağ
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [istemci destek ekibine](https://support.happyfox.com/home) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+4. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -126,29 +126,29 @@ Azure AD ile çoklu oturum açmayı, bir Diyfox ile yapılandırmak için aşağ
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-happyfox-single-sign-on"></a>Dipefox çoklu oturum açmayı Yapılandır
+### <a name="configure-happyfox-single-sign-on"></a>Tek başına bir Sign-On Dipefox Yapılandır
 
 1. Farklı bir Web tarayıcısı penceresinde, bir yönetici olarak, bir, bir ISS olarak da
 
 2. **Yönet**' e gidin, **tümleştirmeler** sekmesine tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/happyfox-tutorial/header.png) 
+    ![Tek Sign-On yapılandırma](./media/happyfox-tutorial/header.png) 
 
 3. Tümleştirme sekmesinde, **SAML tümleştirme** altında **Yapılandır** ' a tıklayarak çoklu oturum açma ayarlarını açın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/happyfox-tutorial/configure.png)
+    ![Tek Sign-On yapılandırma](./media/happyfox-tutorial/configure.png)
 
 4. SAML yapılandırması bölümünde, Azure portal ' den **SSO hedef URL** metin kutusuna kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/happyfox-tutorial/targeturl.png)
+    ![Tek Sign-On yapılandırma](./media/happyfox-tutorial/targeturl.png)
 
 5. Not defteri 'nde Azure portal indirilen sertifikayı açın ve içerik **IDP Signature** bölümüne yapıştırın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/happyfox-tutorial/cert.png)
+    ![Tek Sign-On yapılandırma](./media/happyfox-tutorial/cert.png)
 
 6. **Ayarları Kaydet** düğmesine tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/happyfox-tutorial/savesettings.png)
+    ![Tek Sign-On yapılandırma](./media/happyfox-tutorial/savesettings.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 

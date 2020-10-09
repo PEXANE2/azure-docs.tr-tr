@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
 ms.openlocfilehash: 10773a2a379291fa861dbb2adfdda2ba3f63117f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88550648"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mind-tools-toolkit"></a>Öğretici: fikir araçları araç seti ile Azure Active Directory tümleştirme
@@ -30,7 +30,7 @@ Bu tümleştirmeyle şunları yapabilirsiniz:
 
 Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini, fikir araçları araç seti ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -81,16 +81,16 @@ Bu bölümde, aşağıdaki adımları izleyerek Azure AD çoklu oturum açma 'y�
 
     ![SAML vurgulanmış olarak çoklu oturum açma yöntemi seç iletişim kutusu](common/select-saml-option.png)
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesini seçin.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesini seçin.
 
-    ![Temel SAML yapılandırması için kalem simgesi vurgulanmış şekilde SAML ile çoklu oturum açmayı ayarla sayfası](common/edit-urls.png)
+    ![Temel SAML yapılandırması için kalem simgesi vurgulanmış şekilde SAML ile tek Sign-On ayarla sayfası](common/edit-urls.png)
 
 1. **Temel SAML yapılandırması** bölümünde, **oturum açma URL 'si** kutusuna, modele sahip bir URL girin `https://app.goodpractice.net/#/<subscriptionUrl>/s/<locationId>` .
 
     > [!NOTE]
     > **Oturum açma URL 'si** değeri gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için, [fikir araçları araç seti istemci destek ekibine](mailto:support@goodpractice.com) başvurun.
 
-1. **SAML Ile çoklu oturum açmayı ayarla** sayfasında, **SAML imzalama sertifikası** bölümüne gidin. **Federasyon meta VERI XML**' nin SAĞıNDA, XML metnini indirmek ve bilgisayarınıza kaydetmek için **İndir** ' i seçin. XML içeriği, belirlediğiniz seçeneklere bağlıdır.
+1. **SAML Ile tek Sign-On ayarla** sayfasında, **SAML imzalama sertifikası** bölümüne gidin. **Federasyon meta VERI XML**' nin SAĞıNDA, XML metnini indirmek ve bilgisayarınıza kaydetmek için **İndir** ' i seçin. XML içeriği, belirlediğiniz seçeneklere bağlıdır.
 
     ![SAML Imzalama sertifikası bölümü, Federasyon meta veri XML ' nün yanında vurgulanmış şekilde](common/metadataxml.png)
 
@@ -112,7 +112,7 @@ Bu bölümde, Azure portal, B. Simon adlı bir test kullanıcısı oluşturacaks
 1. Ekranın üst kısmında **Yeni Kullanıcı**' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına **B. Simon**girin.  
-   1. **Kullanıcı adı** alanına **B. Simon@**_şirketetkialanı_yazın **.** _uzantı_. Örneğin, B.Simon@contoso.com.
+   1. **Kullanıcı adı** alanına **B.Simon@**_şirketetkialanı_yazın **.** _uzantı_. Örneğin, B.Simon@contoso.com.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda gösterilen değeri yazın.
    1. **Oluştur**’u seçin.
 

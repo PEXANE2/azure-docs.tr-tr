@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: jeedes
 ms.openlocfilehash: 5457730494d509a2923ce929f41e397cb6064126
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88550097"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cylanceprotect"></a>Öğretici: CylancePROTECT ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, CylancePROTECT 'i Azure Active Directory (Azure AD) ile tümle�
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -81,8 +81,8 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     
     | Region | URL değeri |
     |----------|---------|
-    | Asya-Pasifik Kuzeydoğu (APNE1)| `https://login-apne1.cylance.com/EnterpriseLogin/ConsumeSaml`|
-    | Asya-Pasifik Güneydoğu (AU) | `https://login-au.cylance.com/EnterpriseLogin/ConsumeSaml` |
+    | Asia-Pacific Kuzeydoğu (APNE1)| `https://login-apne1.cylance.com/EnterpriseLogin/ConsumeSaml`|
+    | Asia-Pacific Güneydoğu (AU) | `https://login-au.cylance.com/EnterpriseLogin/ConsumeSaml` |
     | Avrupa Orta (EUC1)|`https://login-euc1.cylance.com/EnterpriseLogin/ConsumeSaml`|
     | Kuzey Amerika|`https://login.cylance.com/EnterpriseLogin/ConsumeSaml`|
     | Güney Amerika (SAE1)|`https://login-sae1.cylance.com/EnterpriseLogin/ConsumeSaml`|
@@ -91,8 +91,8 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     
     | Region | URL değeri |
     |----------|---------|
-    | Asya-Pasifik Kuzeydoğu (APNE1)|`https://login-apne1.cylance.com/EnterpriseLogin/ConsumeSaml`|
-    | Asya-Pasifik Güneydoğu (AU)|`https://login-au.cylance.com/EnterpriseLogin/ConsumeSaml`|
+    | Asia-Pacific Kuzeydoğu (APNE1)|`https://login-apne1.cylance.com/EnterpriseLogin/ConsumeSaml`|
+    | Asia-Pacific Güneydoğu (AU)|`https://login-au.cylance.com/EnterpriseLogin/ConsumeSaml`|
     | Avrupa Orta (EUC1)|`https://login-euc1.cylance.com/EnterpriseLogin/ConsumeSaml`|
     | Kuzey Amerika|`https://login.cylance.com/EnterpriseLogin/ConsumeSaml`|
     | Güney Amerika (SAE1)|`https://login-sae1.cylance.com/EnterpriseLogin/ConsumeSaml`|

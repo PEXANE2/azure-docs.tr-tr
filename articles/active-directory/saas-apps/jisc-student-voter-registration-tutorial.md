@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 4db900efd9ca637993f8f09cdc34e1897529367c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88547435"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jisc-student-voter-registration"></a>Öğretici: JISC öğrenci Voter kaydıyla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, JISC öğrenci Voter kaydını Azure Active Directory (Azure AD
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -86,7 +86,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdakine ek olarak, JISC öğrenci Voter kayıt uygulaması aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı |  Kaynak özniteliği|
+    | Name |  Kaynak özniteliği|
     | ---------|  --------- |
     | PostalCode | Kullanıcı. PostaKodu |
     | Benzersiz kullanıcı tanımlayıcısı | User. ObjectID |

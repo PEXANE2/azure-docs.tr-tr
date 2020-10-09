@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
 ms.openlocfilehash: 7fafe177ea0c6c618dc4ab0727ba14c83cbb0102
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68965008"
 ---
 # <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>StorSimple cihazınızda 10 GbE ağ arabirimleri için desteklenen donanım
@@ -117,7 +117,7 @@ Aşağıdaki tabloda, Mellanox tarafından desteklenen anahtarlar listelenmekted
 | S. Hayır. | Hız | Model | Açıklama | Marka |
 | --- | --- | --- | --- | --- |
 | 1. |Noktalı |516733-B21 |HP ProCurve 6120XG 10GbE Ethernet dikey pencere anahtarı |HP |
-| 2. |Noktalı |538113-B21 |HP 10GbE geçişli geçişli modül (PTM) |HP |
+| 2. |Noktalı |538113-B21 |HP 10GbE Pass-Through modülü (PTM) |HP |
 | 3. |Noktalı |EN4093 |IBM Purefleks System Fabric EN4093 10 Gigabit ölçeklenebilir anahtar modülü |IBM |
 | 4. |1GbE |3020 |Cisco Catalyst 3020 1GbE anahtar dikey penceresi |Cisco |
 | 5. |1GbE |3020X |Cisco Catalyst 3020X 1GbE anahtar dikey penceresi |Cisco |

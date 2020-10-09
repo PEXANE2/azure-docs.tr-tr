@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.openlocfilehash: a25feca4715313339c4138fcb2abce8801e99cf3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88549866"
 ---
 # <a name="tutorial-integrate-learning-at-work-with-azure-active-directory"></a>Öğretici: Azure Active Directory Iş üzerinde öğrenmeyi tümleştirin
@@ -28,7 +28,7 @@ Bu öğreticide, öğrenme Işini Azure Active Directory (Azure AD) ile tümleş
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -60,7 +60,7 @@ Iş üzerinde öğrenme tümleştirmesini Azure AD 'ye göre yapılandırmak iç
 Azure AD SSO 'yu Iş başında öğrenerek yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-2. **[Iş SSO 'su üzerinde öğrenme yapılandırma](#configure-learning-at-work-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[Iş SSO 'su üzerinde öğrenimi yapılandırma](#configure-learning-at-work-sso)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
 5. Kullanıcının Azure AD gösterimine bağlı olarak öğrenmekte olan iş için öğrenme konusunda B. Simon 'a sahip olmak için **[iş testi kullanıcısına öğrenme oluşturma](#create-learning-at-work-test-user)** .
@@ -72,7 +72,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. [Azure Portal](https://portal.azure.com/) **iş için öğrenme** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -91,7 +91,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![image](common/edit-attribute.png)
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+4. **SAML Ile tekli Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 

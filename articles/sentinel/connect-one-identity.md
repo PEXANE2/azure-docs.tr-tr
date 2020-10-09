@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 849087cbbe91be799c51929353b9f020859c85b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77588153"
 ---
 # <a name="connect-one-identity-safeguard"></a>Tek bir kimlik güvenliğini bağlama
 Tek bir kimlik koruma veri bağlayıcısını standart ortak olay biçimi (CEF) bağlayıcısını, ayrıcalıklı oturumlara özgü panolar için koruma ile geliştirir. Cihazınızın görselleştirme, uyarılar, araştırmalar ve daha fazlası için oluşturulan olayları kolayca kullanmaya başlamak için bu bağlayıcıyı kullanın.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Sentinel çalışma alanına yönelik okuma ve yazma izinleri.
 

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 061194422a8c1bc449dbef0c4f04bb8e1db10dea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68965282"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>StorSimple cihazı için teknik belirtimler ve uyumluluk
@@ -38,7 +38,7 @@ EBOD Kasası 580 W PCM kullanır ve birincil kutu 764 W PCM kullanır. Aşağıd
 | Belirtim | 580 W PCM (EBOD) | 764 W PCM (birincil) |
 | --- | --- | --- |
 | Maksimum çıkış gücü |580 W |764 |
-| Sıklık |50/60 Hz |50/60 Hz |
+| Frequency |50/60 Hz |50/60 Hz |
 | Voltaj aralığı seçimi |Otomatik Aralık: 90 – 264 V AC, 47/63 Hz |Otomatik Aralık: 90-264 V AC, 47/63 Hz |
 | En fazla inrush geçerli |20 A |20 A |
 | Güç faktörü düzeltmesi |>% 95 kabul edilen giriş gerilimi |>% 95 kabul edilen giriş gerilimi |
@@ -119,7 +119,7 @@ Bu bölümde, kasa ortamıyla ilgili belirtimler listelenmektedir. Bu kategoriye
 
 | Kutu | Çevresel sıcaklık aralığı | Çevresel göreli nem | Maksimum ıslak ampul |
 | --- | --- | --- | --- |
-| İşlemdeki |5 °C-35 °C (41 °F-95 °F) |%20-%80 yoğunlaşmayan- |28 °C (82 °F) |
+| Operasyonel |5 °C-35 °C (41 °F-95 °F) |%20-%80 yoğunlaşmayan- |28 °C (82 °F) |
 | İşlemsel olmayan |-40 °C-70 °C (40 °F-158 °F) |%5-%100 yoğunlaşmayan |29 °C (84 °F) |
 
 ### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Airflow, yükseklik, darbe, titreşim, yönlendirme, güvenlik ve EMC

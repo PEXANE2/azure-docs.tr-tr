@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 9a9e2298b6707304df96a2e954015459534abfa9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88546092"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>Öğretici: Ziflow ile tümleştirme Azure Active Directory
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açma 'yı Ziflow ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Ziflow çoklu oturum açmayı yapılandırın](#configure-ziflow-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Ziflow Single oturum açmayı yapılandırın](#configure-ziflow-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan Ziflow 'da Britta Simon 'ın bir karşılığı olacak şekilde **[ziflow test kullanıcısı oluşturun](#create-ziflow-test-user)** .
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açma 'yı Ziflow ile yapılandırmak için aşağıdaki 
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -108,7 +108,7 @@ Azure AD çoklu oturum açma 'yı Ziflow ile yapılandırmak için aşağıdaki 
     > [!NOTE]
     > Yukarıdaki değerler gerçek değildir. Tanımlayıcıdaki benzersiz KIMLIK değerini güncelleştirirsiniz ve gerçek değer ile URL 'yi oturum açarak Öğreticinin ilerleyen kısımlarında açıklanmıştır.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -122,7 +122,7 @@ Azure AD çoklu oturum açma 'yı Ziflow ile yapılandırmak için aşağıdaki 
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-ziflow-single-sign-on"></a>Ziflow çoklu oturum açmayı yapılandırma
+### <a name="configure-ziflow-single-sign-on"></a>Ziflow Single Sign-On yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, bir güvenlik yöneticisi olarak Ziflow 'da oturum açın.
 

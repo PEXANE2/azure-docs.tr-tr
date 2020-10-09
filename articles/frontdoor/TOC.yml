@@ -4,7 +4,7 @@
   items:
     - name: Azure Front Door nedir?
       href: front-door-overview.md
-- name: Hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   expanded: true
   items:
     - name: Front Door oluşturma - Portal
@@ -89,7 +89,7 @@
           href: front-door-troubleshoot-allowed-ca.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/ext/front-door/
     - name: Azure PowerShell
       href: /powershell/module/az.frontdoor

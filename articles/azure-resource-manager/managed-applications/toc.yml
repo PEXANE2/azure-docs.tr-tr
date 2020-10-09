@@ -4,7 +4,7 @@
   items:
     - name: Yönetilen uygulamalar hakkında
       href: overview.md
-- name: Hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   expanded: true
   items:
     - name: Uygulama tanımını yayımlama

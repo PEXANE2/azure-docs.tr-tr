@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
 ms.openlocfilehash: c6bd0c130e860a5700256a54c081cc046219b41a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88546755"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>Öğretici: Man Password Manager ile Azure Active Directory tümleştirme & dijital kasa
@@ -30,7 +30,7 @@ Azure AD ile Man Password Manager & bir dijital kasada tümleştirmek aşağıda
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini, Man Password Manager & dijital kasa ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -69,7 +69,7 @@ Azure AD SSO 'yu, Man Password Manager & dijital kasa ile yapılandırmak ve tes
     * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
     * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 
-1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, **[Man Password Manager & dijital kasa SSO 'Yu yapılandırın](#configure-keeper-password-manager--digital-vault-sso)** .
+1. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için, **[Man Password Manager & dijital kasa SSO 'Yu yapılandırın](#configure-keeper-password-manager--digital-vault-sso)** .
     * Man Password Manager &, kullanıcının Azure AD gösterimine bağlı dijital kasa& daki Britta Simon 'a sahip olması için bir **[Man parola Yöneticisi oluşturun](#create-keeper-password-manager--digital-vault-test-user)** .
 1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
@@ -100,7 +100,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için, [Man Password Manager & dijital kasa istemci desteği ekibine](https://keepersecurity.com/contact.html) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 

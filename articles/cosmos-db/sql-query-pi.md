@@ -8,16 +8,16 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 27832008e8922e339a648985192a58b111555bc9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "71349659"
 ---
 # <a name="pi-azure-cosmos-db"></a>PI (Azure Cosmos DB)
  PI 'nin sabit değerini döndürür.  
   
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Sözdizimi
   
 ```sql
 PI ()  
@@ -45,4 +45,4 @@ SELECT PI() AS pi
 
 - [Matematik işlevleri Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
+- [Azure Cosmos DB'ye giriş](introduction.md)

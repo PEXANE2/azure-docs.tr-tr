@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: damaerte
 ms.openlocfilehash: 3435d958049012750e775e2a17f43f463a0cc358
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "70860311"
 ---
 # <a name="using-the-azure-cloud-shell-window"></a>Azure Cloud Shell penceresini kullanma
@@ -44,7 +44,7 @@ Pencerenin sol üst kısmındaki Ayarlar simgesine tıklayın, ardından "metin 
 Pencerenin sol üst kısmındaki Ayarlar simgesine tıklayın, ardından "yazı tipi" seçeneğinin üzerine gelin ve istediğiniz yazı tipini seçin.  Seçiminiz, oturumlarda kalıcı hale getirilir.
 ![Yazı tipi](media/using-the-shell-window/text-font.png)
 
-## <a name="upload-and-download-files"></a>Dosyaları yükleme ve indirme
+## <a name="upload-and-download-files"></a>Dosyaları karşıya yükleme ve indirme
 Pencerenin sol üst kısmındaki dosyaları karşıya yükle/indir simgesine tıklayın ve ardından karşıya yükle veya indir ' i seçin.  
 ![Dosyaları karşıya yükle/indir](media/using-the-shell-window/uploaddownload.png)
 * Dosyaları karşıya yüklemek için, yerel bilgisayarınızdaki dosyaya gitmek üzere açılan pencereyi kullanın, istediğiniz dosyayı seçin ve "Aç" düğmesine tıklayın.  Dosya `/home/user` dizine yüklenir.
@@ -66,7 +66,7 @@ Pencerenin sol üst kısmındaki Web önizlemesi simgesine tıklayın, "Yapılan
 ![Web önizlemesi](media/using-the-shell-window/preview.png)  
 <br>
 ![Bağlantı noktasını yapılandır](media/using-the-shell-window/preview-configure.png)  
-Pencerenin sol üst kısmındaki Web önizlemesi simgesine tıklayın, "Önizleme bağlantı noktası..." seçeneğini belirleyin. Yeni bir sekmede açık bir bağlantı noktasını önizlemek için. pencerenin sol üst kısmındaki Web önizlemesi simgesine tıklayın, "bağlantı noktasını kapat..." seçeneğini belirleyin. açık bağlantı noktasını kapatmak için.  
+Pencerenin sol üst kısmındaki Web önizlemesi simgesine tıklayın, "Önizleme bağlantı noktası..." seçeneğini belirleyin. Yeni bir sekmede açık bir bağlantı noktasını önizlemek için. Pencerenin sol üst kısmındaki Web önizlemesi simgesine tıklayın, "bağlantı noktasını kapat..." seçeneğini belirleyin. açık bağlantı noktasını kapatmak için.  
 ![Önizleme/kapatma bağlantı noktası](media/using-the-shell-window/preview-options.png)
 
 ## <a name="minimize--maximize-cloud-shell-window"></a>Cloud Shell pencerenin ekranı kaplamasını & Küçült

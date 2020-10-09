@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/29/2020
 ms.author: jeedes
 ms.openlocfilehash: 4e23c8a8497459ce7cb3cab3d1469359f80ad846
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88550784"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-enterprise-cloud---enterprise-account"></a>Öğretici: GitHub Enterprise Cloud-Enterprise hesabıyla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, GitHub Enterprise Cloud-Enterprise hesabını Azure Active Dire
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -65,7 +65,7 @@ Azure AD SSO 'yu GitHub Enterprise Cloud-Enterprise hesabıyla yapılandırmak v
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
     1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
 1. **[GitHub Enterprise Cloud-Enterprise HESABı SSO 'Yu yapılandırma](#configure-github-enterprise-cloud-enterprise-account-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-    1. GitHub Enterprise **[Cloud-Enterprise hesabı test kullanıcısı oluşturma](#create-github-enterprise-cloud-enterprise-account-test-user)** -Kullanıcı IÇIN Azure AD gösterimine bağlı olan GitHub Enterprise Cloud-Enterprise hesabında B. Simon 'a karşılık gelen bir.
+    1. GitHub Enterprise **[Cloud-Enterprise hesabı test kullanıcısı oluşturma](#create-github-enterprise-cloud-enterprise-account-test-user)** -Kullanıcı Azure AD gösterimine bağlı GitHub Enterprise Cloud-Enterprise hesabında B. Simon 'a sahip olmak için.
 1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma

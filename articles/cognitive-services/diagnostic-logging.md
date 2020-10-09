@@ -10,17 +10,17 @@ ms.topic: article
 ms.date: 06/14/2019
 ms.author: erhopf
 ms.openlocfilehash: 539a35f170b2ee0c94762a30ed9376ca4a416210
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "71827908"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Azure bilişsel hizmetler için tanılama günlüğünü etkinleştirme
 
 Bu kılavuzda bir Azure bilişsel hizmeti için tanılama günlüğünü etkinleştirmek üzere adım adım yönergeler sağlanmaktadır. Bu Günlükler, sorun tanımlama ve hata ayıklama için kullanılan bir kaynağın çalışması hakkında zengin, sık veriler sağlar. Devam etmeden önce, [Bing Web araması](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/overview), [konuşma Hizmetleri](https://docs.microsoft.com/azure/cognitive-services/speech-service/overview)veya [Luo](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis)gibi en az bir bilişsel hizmetin aboneliğine sahip bir Azure hesabınızın olması gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Tanılama günlüğünü etkinleştirmek için, günlük verilerinizi depolamak üzere bir yere ihtiyacınız vardır. Bu öğretici, Azure depolama ve Log Analytics kullanır.
 

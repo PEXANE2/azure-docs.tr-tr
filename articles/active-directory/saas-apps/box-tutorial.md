@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 ms.author: jeedes
 ms.openlocfilehash: 8045076ce77e98345c0db3cd19293b4ef76293e4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88548198"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-box"></a>Öğretici: Box ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, kutuyu Azure Active Directory (Azure AD) ile tümleştirmeyi ö
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -90,7 +90,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     c. **Yanıt URL** 'si metin kutusuna bir URL yazın:`https://sso.services.box.net/sp/ACS.saml2`
 
     > [!NOTE]
-    > Oturum açma URL 'SI değeri gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [istemci destek ekibi Iletişim kutusu](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) . Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Oturum açma URL 'SI değeri gerçek değil. Değeri gerçek Sign-On URL 'siyle güncelleştirin. Değeri almak için [istemci destek ekibi Iletişim kutusu](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) . Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 

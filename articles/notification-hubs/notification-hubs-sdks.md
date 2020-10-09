@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/14/2019
 ms.openlocfilehash: 8a4b05c0ee76aca07fd740a16a76a634727504e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "71213016"
 ---
 # <a name="azure-notification-hubs-sdks"></a>Azure Notification Hubs SDK 'Ları
@@ -33,7 +33,7 @@ Azure Notification Hubs için Microsoft ve üçüncü taraf SDK 'Ları yayımlay
 | [iOS](https://github.com/Azure/azure-notificationhubs-ios) |Microsoft |
 | [Java sunucusu](https://github.com/Azure/azure-notificationhubs-java-backend) |Microsoft |
 | [NodeJS](https://github.com/Azure/azure-sdk-for-node) | Microsoft |
-| [Yerel olarak tepki verme](https://github.com/CatalystCode/react-native-azurenotificationhub) | Üçüncü taraf |
+| [React Native](https://github.com/CatalystCode/react-native-azurenotificationhub) | Üçüncü taraf |
 
 > [!Note]
 > Microsoft, üçüncü taraf çözümlerin kalite, kullanışlılığı veya desteklenebiliründen sorumlu değildir.

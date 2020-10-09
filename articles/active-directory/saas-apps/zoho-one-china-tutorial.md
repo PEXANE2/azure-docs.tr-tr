@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/26/2020
 ms.author: jeedes
 ms.openlocfilehash: 1d429981bc85523483907e94876668c280ba12ff
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88546109"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoho-one-china"></a>Öğretici: Zoho One Çin ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -88,7 +88,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://accounts.zoho.com.cn/samlauthrequest/<zoid>?serviceurl=https://one.zoho.com.cn`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [Zoho One Çin istemci destek ekibine](mailto:support@zohocorp.com.cn) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek yanıt URL 'si ve Sign-On URL 'siyle güncelleştirin. Bu değerleri almak için [Zoho One Çin istemci destek ekibine](mailto:support@zohocorp.com.cn) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 

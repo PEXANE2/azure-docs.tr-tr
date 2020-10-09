@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 1623d4501a89e3614e694b57f6cae1eee28062da
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88547047"
 ---
 # <a name="tutorial-integrate-jobhub-with-azure-active-directory"></a>Öğretici: iş hub 'ını Azure Active Directory tümleştirin
@@ -28,7 +28,7 @@ Bu öğreticide, JOBHUB 'ı Azure Active Directory (Azure AD) ile tümleştirmey
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -57,7 +57,7 @@ Azure AD SSO 'yu, **Britta Simon**adlı bir test kullanıcısı kullanarak jobhu
 Azure AD SSO 'yu iş hub 'ı ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[JOBHUB SSO 'Yu yapılandırın](#configure-jobhub-sso)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[JOBHUB SSO 'Yu yapılandırın](#configure-jobhub-sso)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcı Azure AD gösterimine bağlı olan JOBHUB 'da Britta Simon 'a sahip olmak için **[jobhub test kullanıcısı oluşturun](#create-jobhub-test-user)** .
@@ -69,14 +69,14 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. [Azure Portal](https://portal.azure.com/), **jobhub** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 1. **Temel SAML yapılandırması** bölümünde aşağıdaki alanlar için değerleri girin: **oturum açma URL 'si** metin kutusuna AŞAĞıDAKI kalıbı kullanarak bir URL yazın:`https://pasona.jobhub.jp/saml/init`
 
     > [!NOTE]
-    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [Jobhub istemci destek ekibine](mailto:platform@pasonagroup.co.jp) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Değer gerçek değil. Değeri gerçek Sign-On URL 'siyle güncelleştirin. Değeri almak için [Jobhub istemci destek ekibine](mailto:platform@pasonagroup.co.jp) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 1. **SAML Imzalama sertifikası** bölümünde, **SAML imzalama sertifikası** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
 

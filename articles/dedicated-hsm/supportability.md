@@ -13,10 +13,10 @@ ms.custom: seodec18
 ms.date: 03/27/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d83d688707baf6098d63dfde9b4181eb04fb9729
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "70881012"
 ---
 # <a name="azure-dedicated-hsm-supportability"></a>Azure ayrılmış HSM desteklenebilirliği
@@ -47,7 +47,7 @@ Gemalto, [Müşteri Destek Portalı](https://supportportal.gemalto.com/csm/)arac
 
 ### <a name="support"></a>Destek
 
-Özel HSM hizmeti 'nin bir parçası olarak HSM 'leri kullanmayla ilgili herhangi bir yazılım düzeyi sorunu veya sorusu, doğrudan desteklemek üzere bildirilmelidir. Yukarıda listelenen tüm yazılım bileşenleri ve sağlama sonrası olan tüm özel HSM yapılandırmaları, Gemalto tarafından giderilecektir. Daha fazla bilgi için bkz. [Gemalto müşteri destek portalı](https://supportportal.gemalto.com/csm/).
+Özel HSM hizmeti 'nin bir parçası olarak HSM 'leri kullanmayla ilgili herhangi bir yazılım düzeyi sorunu veya sorusu, doğrudan desteklemek üzere bildirilmelidir. Yukarıda listelenen tüm yazılım bileşenleri ve sağlama sonrası olan tüm özel HSM yapılandırmaları, Gemalto tarafından giderilecektir. Daha fazla bilgi için bkz.  [Gemalto müşteri destek portalı](https://supportportal.gemalto.com/csm/).
 
 ### <a name="consulting-services"></a>Danışmanlık hizmetleri
 
@@ -95,6 +95,6 @@ Yüksek kullanılabilirlik ve güvenlik gibi temel kavramların cihaz sağlama v
 
 * [Dağıtım mimarisi](deployment-architecture.md)
 * [Yüksek kullanılabilirlik](high-availability.md)
-* [Fiziksel güvenlik](physical-security.md)
+* [Fiziksel Güvenlik](physical-security.md)
 * [Ağ](networking.md)
 
