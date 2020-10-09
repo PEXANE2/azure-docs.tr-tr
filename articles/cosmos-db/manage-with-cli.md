@@ -1,25 +1,25 @@
 ---
-title: Azure CLı kullanarak Azure Cosmos DB kaynaklarını yönetme
-description: Azure Cosmos DB hesabınızı, veritabanınızı ve Kapsayıcılarınızı yönetmek için Azure CLı 'yi kullanın.
+title: Azure CLı kullanarak Azure Cosmos DB Core (SQL) API kaynaklarını yönetme
+description: Azure CLı kullanarak Azure Cosmos DB Core (SQL) API kaynaklarını yönetme.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 10/07/2020
 ms.author: mjbrown
-ms.openlocfilehash: c8726801e8becd6533ae5fec099d6c535b63261a
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: dce041a46f173216844322b5a8985acbdfb86f26
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767547"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840600"
 ---
-# <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Azure CLı kullanarak Azure Cosmos kaynaklarını yönetme
+# <a name="manage-azure-cosmos-core-sql-api-resources-using-azure-cli"></a>Azure CLı kullanarak Azure Cosmos Core (SQL) API kaynaklarını yönetme
 
 Aşağıdaki kılavuzda Azure Cosmos DB hesaplarınız, veritabanlarınız ve kapsayıcılarınızı yönetme işleminin Azure CLI kullanılarak otomatikleştirilmesini sağlayan yaygın komutlar açıklanır. Tüm Azure Cosmos DB CLı komutlarına yönelik başvuru sayfaları, [Azure CLI başvurusunda](https://docs.microsoft.com/cli/azure/cosmosdb)bulunabilir. Ayrıca, MongoDB, Gremlin, Cassandra ve Tablo API'si için Cosmos DB hesapları, veritabanları ve kapsayıcıları oluşturma ve yönetme dahil olmak üzere [Azure Cosmos DB Için Azure CLI örneklerinde](cli-samples.md)daha fazla örnek bulabilirsiniz.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu konu başlığı altında, Azure CLı sürüm 2.9.1 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu konu başlığı altında, Azure CLı sürüm 2.12.1 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
 > [!IMPORTANT]
 > Azure Cosmos DB kaynaklar, Azure Resource Manager kaynak URI 'leriyle nasıl çalıştığını ihlal ettiğinden yeniden adlandırılamaz.
@@ -214,8 +214,9 @@ Aşağıdaki bölümlerde aşağıdakiler de dahil olmak üzere Azure Cosmos DB 
 
 * [Veritabanı oluşturma](#create-a-database)
 * [Paylaşılan verimlilik ile veritabanı oluşturma](#create-a-database-with-shared-throughput)
+* [Veritabanını otomatik ölçeklendirme aktarım hızına geçirme](#migrate-a-database-to-autoscale-throughput)
 * [Veritabanı aktarım hızını değiştirme](#change-database-throughput)
-* [Bir veritabanındaki kilitleri yönetme](#manage-lock-on-a-database)
+* [Veritabanının silinmesini önleme](#prevent-a-database-from-being-deleted)
 
 ### <a name="create-a-database"></a>Veritabanı oluşturma
 
@@ -249,6 +250,29 @@ az cosmosdb sql database create \
     --throughput $throughput
 ```
 
+### <a name="migrate-a-database-to-autoscale-throughput"></a>Veritabanını otomatik ölçeklendirme aktarım hızına geçirme
+
+```azurecli-interactive
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+
+# Migrate to autoscale throughput
+az cosmosdb sql database throughput migrate \
+    -a $accountName \
+    -g $resourceGroupName \
+    -n $databaseName \
+    -t 'autoscale'
+
+# Read the new autoscale max throughput
+az cosmosdb sql database throughput show \
+    -g $resourceGroupName \
+    -a $accountName \
+    -n $databaseName \
+    --query resource.autoscaleSettings.maxThroughput \
+    -o tsv
+```
+
 ### <a name="change-database-throughput"></a>Veritabanı aktarım hızını değiştirme
 
 Cosmos veritabanının verimini 1000 RU/s ile artırın.
@@ -275,14 +299,14 @@ az cosmosdb sql database throughput update \
     --throughput $newRU
 ```
 
-### <a name="manage-lock-on-a-database"></a>Bir veritabanında kilidi yönetme
+### <a name="prevent-a-database-from-being-deleted"></a>Veritabanının silinmesini önleme
 
-Bir veritabanına silme kilidi koyun. Bu şekilde nasıl etkinleştirileceği hakkında daha fazla bilgi edinmek için bkz. [SDK 'lardan değişiklikleri önler](role-based-access-control.md#prevent-sdk-changes).
+Silinmesini engellemek için bir veritabanına Azure Kaynak silme kilidi koyun. Bu özellik, Cosmos hesabının veri düzlemi SDK 'Ları tarafından değiştirilmesini gerektirir. Daha fazla bilgi edinmek için bkz. [SDK 'lardan değişiklikleri engellemeyi](role-based-access-control.md#prevent-sdk-changes). Azure kaynak kilitleri, bir kaynağın bir kilit türü belirtilerek değiştirilmesini de engelleyebilir `ReadOnly` . Cosmos veritabanı için, iş aktarımının değiştirilmesini engellemek üzere kullanılabilir.
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'
-accountName='my-cosmos-account'
-databaseName='myDatabase'
+accountName='mycosmosaccount'
+databaseName='database1'
 
 lockType='CanNotDelete' # CanNotDelete or ReadOnly
 databaseParent="databaseAccounts/$accountName"
@@ -315,7 +339,8 @@ Aşağıdaki bölümlerde aşağıdakiler dahil Azure Cosmos DB kapsayıcısın�
 * [TTL etkin olan bir kapsayıcı oluşturma](#create-a-container-with-ttl)
 * [Özel dizin ilkesiyle kapsayıcı oluşturma](#create-a-container-with-a-custom-index-policy)
 * [Kapsayıcı verimini değiştirme](#change-container-throughput)
-* [Bir kapsayıcıdaki kilitleri yönetme](#manage-lock-on-a-container)
+* [Kapsayıcıyı otomatik ölçeklendirme aktarım hızına geçirme](#migrate-a-container-to-autoscale-throughput)
+* [Kapsayıcının silinmesini önleme](#prevent-a-container-from-being-deleted)
 
 ### <a name="create-a-container"></a>Bir kapsayıcı oluşturma
 
@@ -454,15 +479,41 @@ az cosmosdb sql container throughput update \
     --throughput $newRU
 ```
 
-### <a name="manage-lock-on-a-container"></a>Kapsayıcıda kilidi yönetme
+### <a name="migrate-a-container-to-autoscale-throughput"></a>Kapsayıcıyı otomatik ölçeklendirme aktarım hızına geçirme
 
-Bir kapsayıcıya silme kilidi koyun. Bu şekilde nasıl etkinleştirileceği hakkında daha fazla bilgi edinmek için bkz. [SDK 'lardan değişiklikleri önler](role-based-access-control.md#prevent-sdk-changes).
+```azurecli-interactive
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+containerName='container1'
+
+# Migrate to autoscale throughput
+az cosmosdb sql container throughput migrate \
+    -a $accountName \
+    -g $resourceGroupName \
+    -d $databaseName \
+    -n $containerName \
+    -t 'autoscale'
+
+# Read the new autoscale max throughput
+az cosmosdb sql container throughput show \
+    -g $resourceGroupName \
+    -a $accountName \
+    -d $databaseName \
+    -n $containerName \
+    --query resource.autoscaleSettings.maxThroughput \
+    -o tsv
+```
+
+### <a name="prevent-a-container-from-being-deleted"></a>Kapsayıcının silinmesini önleme
+
+Bir kapsayıcıya bir Azure Kaynak silme kilidi koymak için bir kapsayıcı yerleştirin. Bu özellik, Cosmos hesabının veri düzlemi SDK 'Ları tarafından değiştirilmesini gerektirir. Daha fazla bilgi edinmek için bkz. [SDK 'lardan değişiklikleri engellemeyi](role-based-access-control.md#prevent-sdk-changes). Azure kaynak kilitleri, bir kaynağın bir kilit türü belirtilerek değiştirilmesini de engelleyebilir `ReadOnly` . Cosmos kapsayıcısı için bu, üretilen iş veya başka bir özelliğin değiştirilmesini engellemek için kullanılabilir.
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'
-accountName='my-cosmos-account'
-databaseName='myDatabase'
-containerName='myContainer'
+accountName='mycosmosaccount'
+databaseName='database1'
+containerName='container1'
 
 lockType='CanNotDelete' # CanNotDelete or ReadOnly
 databaseParent="databaseAccounts/$accountName"
@@ -491,6 +542,6 @@ az lock delete --ids $lockid
 
 Azure CLı hakkında daha fazla bilgi için bkz.
 
-- [Azure CLı 'yı yükler](/cli/azure/install-azure-cli)
-- [Azure CLı başvurusu](https://docs.microsoft.com/cli/azure/cosmosdb)
-- [Azure Cosmos DB için ek Azure CLı örnekleri](cli-samples.md)
+* [Azure CLı 'yı yükler](/cli/azure/install-azure-cli)
+* [Azure CLı başvurusu](https://docs.microsoft.com/cli/azure/cosmosdb)
+* [Azure Cosmos DB için ek Azure CLı örnekleri](cli-samples.md)

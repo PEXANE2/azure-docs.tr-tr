@@ -1,5 +1,5 @@
 ---
-title: Bölge kullanılabilirliği ve veri yerleşimi
+title: Bölge kullanılabilirliği ve veri yerleşikliği
 titleSuffix: Azure AD B2C
 description: Bölge kullanılabilirliği, veri yerleşimi ve Azure Active Directory B2C Preview kiracılar hakkında bilgiler.
 services: active-directory-b2c
@@ -12,12 +12,12 @@ ms.date: 06/06/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: references_regions
-ms.openlocfilehash: bb9c6dbf9984ec81fbd4b93a61552211928d0f0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8c6f7daecd38babaa4f2961d04a6cd4c3b4dbed
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388723"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840566"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: bölge kullanılabilirliği & veri yerleşimi
 
@@ -45,15 +45,15 @@ Veri yerleşimi, [Azure AD B2C kiracı oluştururken](tutorial-create-tenant.md)
 
 Veriler aşağıdaki ülkeler/bölgeler için **Birleşik Devletler** bulunur:
 
-> Birleşik Devletler, Kanada, Kosta Rika, Dominik Cumhuriyeti, El Salvador, Guatemala, Meksika, Panama, Porto Riko ve Trinidad & Tobago
+> Birleşik Devletler (ABD), Kanada (CA), Kosta Rika (CR), Dominik Cumhuriyeti (DO), El Salvador (ZF), Guatemala (GT), Meksika (MX), Panama (PA), Porto Riko (PR) ve Trinidad & Tobago (TT)
 
 Veriler aşağıdaki ülkeler/bölgeler için **Avrupa** 'da bulunur:
 
-> Cezayir, Avusturya, Azerbaycan, Bahreyn, Belarus, Belçika, Bulgaristan, Hırvatistan, Kıbrıs, Çek Cumhuriyeti, Danimarka, Mısır, Estonya, Finlandiya, Fransa, Almanya, Yunanistan, Macaristan, Iceland, Irlanda, Israil, Italya, Ürdün, Kazakistan, Kenya, Kuveyt, Letonya, Lübnan, Liechtenstein, Litvanya, Lüksemburg, Kuzey Makedonya, Malta, Karadağ, Fas, Hollanda, Nijerya, Norveç, Umman, Pakistan, Polonya, Portekiz, Qtor, Romanya, Rusya, Suudi Arabistan, Sırbistan, Slovakya, Slovenya, Güney Afrika, Rusça, Isveç, Isviçre, Tunus, Türkiye, Ukrayna, Birleşik Arap Emirlikleri ve Birleşik Krallık.
+> Cezayir (DZ), Avusturya (AT), Azerbaycan (az), Bahreyn (BH), Belarus (BY), Belçika (BE), Bulgaristan (BG), Hırvatistan (HR), Kıbrıs (CY), Çek Cumhuriyeti (CZ), Danimarka (DK), Mısır (örn., Finlandiya (EE), Finlandiya (FT), Fransa (FR), Almanya (DE), Yunanistan (GR), Macaristan (HU), Voiceland (yanı), Irlanda (IE), Israil (IL), Italya (It), Ürdün (JO), Kazakistan (KZ), Kenya (KE), Kuveyt (KW), Litvanya (LV), Lübnan (LB), Liechtenstein (LI), Litvanya (LT) , Lüksemburg (LU), Kuzey Makedonya (ML), Malta (MT), Karadağ (ME), Fas (MA), Hollanda (NL), Nijerya (&), Norveç (NO), Umman (OM), Pakistan (PK), Polonya (PL), Portekiz (PT), Qtor (QA), Romanya (RO), Rusya (RU), Suudi Arabistan (SA), Sırbistan (RS), Slovakya (SK), Slovenya (ST), Güney Afrika (ZA), Ispanya (ES), Isveç (VAG), Isviçre (CH), Tunus (TN), Türkiye (TR), Ukrayna (UA), Birleşik Arap Emirlikleri (AE) ve Birleşik Krallık (GB)
 
 Veriler aşağıdaki ülkeler/bölgeler için **Asya Pasifik** bulunur:
 
-> Afganistan, Hong Kong ÖIB, Hindistan, Endonezya, Japonya, Kore, Malezya, Filipinler, Singapur, Sri Lanka, Tayvan ve Tayland.
+> Afganistan (AF), Hong Kong ÖIB (HK), Hindistan (ın), Endonezya (ID), Japonya (JP), Kore (KR), Malezya (MY), Filipinler (PH), Singapur (SG), Sri Lanka (LK), Tayvan (TW) ve Tayland (TH).
 
 Aşağıdaki ülkeler/bölgeler listeye eklenmekte. Şimdilik, Yukarıdaki ülkelerin/bölgelerin birini seçerek Azure AD B2C kullanmaya devam edebilirsiniz.
 

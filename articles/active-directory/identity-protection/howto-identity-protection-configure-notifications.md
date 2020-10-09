@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 10/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 291afbdd902c7563e47595132d56b354dab28a3a
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 71c786aaecd3ab2f18f242cea2f5c45838f9ecf3
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950400"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839356"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Kimlik Koruması bildirimleri
 
@@ -44,8 +44,8 @@ E-postaların aşırı yüklenmesini engellemek için, risk altında 5 saniyelik
 Yönetici olarak şunları yapabilirsiniz:
 
 - **Bu e-postanın oluşturulmasını tetikleyen Kullanıcı risk düzeyi** -varsayılan olarak, risk düzeyi "yüksek" riskli olarak ayarlanır.
-- **Bu e-postanın alıcıları** varsayılan olarak tüm genel yöneticileri içerir. Genel Yöneticiler, diğer genel Yöneticiler, güvenlik yöneticileri, güvenlik okuyucularını da alıcı olarak ekleyebilir.
-   - İsteğe bağlı olarak, **uyarı bildirimleri almak için ek e-postalar ekleyebilirsiniz** . Bu özellik bir önizlemedir ve tanımlanan kullanıcılar Azure Portal bağlantılı raporları görüntülemek için uygun izinlere sahip olmalıdır.
+- **Bu e-postanın alıcıları** -genel yönetici, güvenlik yöneticisi veya güvenlik okuyucusu rollerinin kullanıcıları bu listeye otomatik olarak eklenir. Her rolün ilk 20 üyesine e-posta göndermeye çalışıyoruz. Bir Kullanıcı, isteğe bağlı olarak bu rollerden birine yükseltmek üzere PıM 'ye kaydedildiyse, **e-posta gönderildiğinde e-posta alırlar**.
+   - İsteğe bağlı olarak, tanımlı kullanıcıların Azure portal bağlantılı raporları görüntülemek için uygun izinlere sahip olması için **burada özel e-posta ekleyebilirsiniz** .
 
 Risk altındaki **Azure Portal** Kullanıcı e-postalarını **Azure Active Directory**  >  **güvenlik**  >  **kimlik koruması**  >  **kullanıcıları tarafından algılanan uyarıları**yapılandırın.
 
@@ -60,7 +60,7 @@ Haftalık Özet e-postası yeni risk algılamaları özetini içerir.
 
 ![Haftalık Özet e-postası](./media/howto-identity-protection-configure-notifications/weekly-digest-email.png)
 
-Varsayılan olarak, alıcılar tüm genel yöneticileri içerir. Genel Yöneticiler, diğer genel Yöneticiler, güvenlik yöneticileri, güvenlik okuyucularını da alıcı olarak ekleyebilir.
+Genel yönetici, güvenlik yöneticisi veya güvenlik okuyucusu rollerinin kullanıcıları bu listeye otomatik olarak eklenir. Her rolün ilk 20 üyesine e-posta göndermeye çalışıyoruz. Bir Kullanıcı Bu rollerden isteğe bağlı olarak Yükseltilmek üzere PıM 'ye kaydedildiyse, **e-posta gönderildiğinde yalnızca e-postaları alırlar**
 
 ### <a name="configure-weekly-digest-email"></a>Haftalık Özet e-postasını Yapılandırma
 

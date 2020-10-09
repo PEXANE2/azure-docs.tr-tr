@@ -1,17 +1,15 @@
 ---
 title: Tek başına kümede uygulama yükleme
 description: Bu öğreticide, tek başına Service Fabric kümenize bir uygulamanın nasıl yükleneceğini öğreneceksiniz.
-author: dkkapur
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 8dd47d27f928cb33e5a2bbc3ba9a6ab2bc044852
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0b35bd02af5e1c90cac2e94d31dfca2344f3cc85
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245390"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840634"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Öğretici: Service Fabric tek başına kümenize uygulama dağıtma
 
@@ -19,7 +17,7 @@ Service Fabric tek başına kümeleri, kendi ortamınızı seçme ve Service Fab
 
 Bu öğretici, bir serinin üçüncü bölümüdür.  Tek başına kümeler Service Fabric kendi ortamınızı seçme ve "tüm işletim sistemi, herhangi bir bulut" Service Fabric yaklaşımızın parçası olarak bir küme oluşturma seçeneğini sunar. Bu öğreticide, bu tek başına kümeyi barındırmak için gereken AWS altyapısını oluşturma işlemi gösterilmektedir.
 
-Serinin üçüncü bölümünde şunları öğrenirsiniz:
+Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Örnek uygulamayı indirme
@@ -52,7 +50,7 @@ Uygulama indirildikten sonra, doğrudan Visual Studio'dan bir kümeye dağıtabi
 
 4. `Voting`Çözüm Gezgini uygulama projesine sağ tıklayın ve **Yayımla** ' yı seçin.
 
-5. **Bağlantı Uç Noktası** açılır listesini seçin ve kümenizdeki düğümlerden birinin genel DNS Adını girin.  Örneğin, `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. Azure 'da tam etki alanı adı (FQDN) otomatik olarak verilmediğini, ancak [VM 'ye Genel Bakış sayfasında kolayca ayarlanabildiğini unutmayın.](../virtual-machines/linux/portal-create-fqdn.md)
+5. **Bağlantı Uç Noktası** açılır listesini seçin ve kümenizdeki düğümlerden birinin genel DNS Adını girin.  Örneğin, `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. Azure 'da tam etki alanı adı (FQDN) otomatik olarak verilmez, ancak [VM 'ye Genel Bakış sayfasında kolayca ayarlanabilir.](../virtual-machines/linux/portal-create-fqdn.md)
 
 6. Tercih ettiğiniz tarayıcıyı açın ve küme adresini girin (bu uygulamanın 8080 numaralı bağlantı noktasında dağıttığı bağlantı uç noktası - örneğin, ec2-34-215-183-77.us-west-2.compute.amazonaws.com:8080).
 
@@ -60,7 +58,7 @@ Uygulama indirildikten sonra, doğrudan Visual Studio'dan bir kümeye dağıtabi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Serinin üçüncü bölümünde, kümenize bir uygulamanın nasıl dağıtılacağı öğrendiniz:
+Bu makalede, kümenize bir uygulamayı nasıl dağıtacağınızı öğrendiniz:
 
 > [!div class="checklist"]
 > * Örnek uygulamayı indirme

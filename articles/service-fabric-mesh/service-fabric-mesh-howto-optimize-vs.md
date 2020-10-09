@@ -1,16 +1,16 @@
 ---
 title: Azure Service Fabric ağı için Visual Studio 'Yu iyileştirin
 description: Bu makalede, ilk hata ayıklama çalıştırmasının (F5) çok daha hızlı olması için Service Fabric ağı projelerinin Visual Studio performansının nasıl iyileştirileceği gösterilmektedir.
-author: dkkapur
-ms.author: dekapur
+author: georgewallace
+ms.author: gwallace
 ms.date: 11/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 40c4e9972a3d83a5dd8247bacac12e9d67a15f66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa7a959128d3bcdfcce67d3abeac245975339a9f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75497985"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840311"
 ---
 # <a name="optimize-visual-studio-performance-for-service-fabric-mesh-projects"></a>Service Fabric kafes projeleri için Visual Studio performansını iyileştirin
 

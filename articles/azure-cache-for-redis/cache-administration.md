@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: c9da97607961a7d701851c6892393cdf537b9a32
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 156dfd1d9553e369357eb68225e722222a59d847
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008041"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91838679"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini yönetme
 Bu konu, Redsıs örnekleri için Azure önbelleğiniz için güncelleştirmeleri yeniden [başlatma](#reboot) ve [zamanlama](#schedule-updates) gibi yönetim görevlerinin nasıl gerçekleştirileceğini açıklamaktadır.
@@ -21,11 +21,11 @@ Bu konu, Redsıs örnekleri için Azure önbelleğiniz için güncelleştirmeler
 ## <a name="reboot"></a>Yeniden başlatma
 **Yeniden başlatma** dikey penceresi, önbelleğinizin bir veya daha fazla düğümünü yeniden başlatmanızı sağlar. Bu yeniden başlatma özelliği, bir önbellek düğümünde hata oluşursa uygulamanızı dayanıklılık açısından test etmenizi sağlar.
 
-![Yeniden başlatma](./media/cache-administration/redis-cache-administration-reboot.png)
+![Yeniden başlatma menü seçeneğini vurgulayan ekran görüntüsü.](./media/cache-administration/redis-cache-administration-reboot.png)
 
 Yeniden başlatılacak düğümleri seçin ve **Yeniden Başlat**' a tıklayın.
 
-![Yeniden başlatma](./media/cache-administration/redis-cache-reboot.png)
+![Hangi düğümlerin yeniden başlatılabileceği gösteren ekran görüntüsü.](./media/cache-administration/redis-cache-reboot.png)
 
 Kümelemenin etkinleştirildiği Premium bir önbelleğiniz varsa, önbelleğin hangi parçaları yeniden başlatılacağını seçebilirsiniz.
 

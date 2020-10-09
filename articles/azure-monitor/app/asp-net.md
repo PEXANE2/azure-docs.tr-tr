@@ -4,12 +4,12 @@ description: Şirket içinde veya Azure 'da barındırılan ASP.NET Web siteniz 
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 5f52f1febcc69723dae76e31d17b5a9a7e8c67bb
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 861a9f53c2f149268e06005053206a7411e842f8
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91616763"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91838951"
 ---
 # <a name="configure-application-insights-for-your-aspnet-website"></a>ASP.NET Web siteniz için Application Insights yapılandırma
 
@@ -349,6 +349,12 @@ Parçacığı her HTML sayfasının üstbilgisine el ile eklemek mümkün olsa d
 ## <a name="troubleshooting"></a>Sorun giderme
 
 Geçerli Visual Studio 2019 sürümünde, izleme anahtarının bir kullanıcı gizliliğine depolanmasında .NET Framework tabanlı uygulamalar için bozuk olduğu ve anahtarın bu hatayı çözmek için applicationinsights.config dosyasına son olarak kodlanması gereken bilinen bir sorun vardır. Bu makale, bu sorunu tamamen önlemek için tasarlandı, Kullanıcı gizli dizileri kullanmayın.  
+
+## <a name="open-source-sdk"></a>Açık kaynaklı SDK
+
+* [Kodu okuyun ve koda katkıda bulunun](https://github.com/microsoft/ApplicationInsights-dotnet).
+
+En son güncelleştirmeler ve hata düzeltmeleri için [sürüm notlarına bakın](./release-notes.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

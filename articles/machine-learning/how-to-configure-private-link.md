@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/30/2020
-ms.openlocfilehash: 1a34f8ec42969cded5921d377b1fa62276a30cc7
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 4ba7ec73ac70723e21b6acad571d62d14edd250a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91630398"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828127"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanı için Azure özel bağlantısını yapılandırma
 
@@ -82,4 +82,6 @@ Azure sanal makineleri hakkında daha fazla bilgi için bkz. [sanal makineler be
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning çalışma alanınızı güvenli hale getirme hakkında daha fazla bilgi için [sanal ağ yalıtımı ve gizliliği genel bakış](how-to-network-security-overview.md) makalesine bakın.
+* Azure Machine Learning çalışma alanınızı güvenli hale getirme hakkında daha fazla bilgi için [sanal ağ yalıtımı ve gizliliği genel bakış](how-to-network-security-overview.md) makalesine bakın.
+
+* Sanal ağınızda özel bir DNS çözümü kullanmayı planlıyorsanız, bkz. [Özel BIR DNS sunucusu ile çalışma alanı kullanma](how-to-custom-dns.md).

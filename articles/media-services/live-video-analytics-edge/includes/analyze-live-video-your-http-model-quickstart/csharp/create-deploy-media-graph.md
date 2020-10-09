@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 4277007938f664592432080ec9799b5b64d98f5c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6732fe364ba67bb2c4ea8fb2543c576166f8a110
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88684326"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91829321"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>Örnek dosyaları İnceleme ve düzenleme
 
@@ -72,9 +72,19 @@ ms.locfileid: "88684326"
 
 ### <a name="prepare-to-monitor-events"></a>Olayları izlemeye hazırlanma
 
-Canlı video analizi cihazına sağ tıklayın ve **Izlemeyi Başlat yerleşik olay uç noktası**' nı seçin. Visual Studio Code **Çıkış** penceresinde IoT Hub olaylarını izlemek için bu adıma ihtiyacınız vardır. 
+1. Visual Studio Code, **Uzantılar** sekmesini açın (veya CTRL + SHIFT + X tuşlarına basın) ve Azure IoT Hub aratın.
+1. Sağ tıklayıp **uzantı ayarları**' nı seçin.
 
-![İzlemeyi Başlat](../../../media/quickstarts/start-monitoring-iothub-events.png) 
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/run-program/extensions-tab.png" alt-text="Uzantı ayarları&quot;:::
+1. &quot;Ayrıntılı Iletiyi göster" i arayın ve etkinleştirin.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="Uzantı ayarları&quot;:::
+1. &quot;Ayrıntılı Iletiyi göster":::
+1. Canlı video analizi cihazına sağ tıklayın ve **Izlemeyi Başlat yerleşik olay uç noktası**' nı seçin. Visual Studio Code **Çıkış** penceresinde IoT Hub olaylarını izlemek için bu adıma ihtiyacınız vardır. 
+
+   ![İzlemeyi Başlat](../../../media/quickstarts/start-monitoring-iothub-events.png) 
 
 ### <a name="run-the-sample-program"></a>Örnek programı çalıştırma
 

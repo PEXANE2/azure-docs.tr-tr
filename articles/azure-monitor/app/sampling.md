@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bb6793bc1e3d5bb55426c1f344520ae19a22a9f9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 151bc87bd5674a61b8652adfa70634318c405240
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549574"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839614"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights’ta örnekleme
 
@@ -34,10 +34,10 @@ Aşağıdaki tabloda her SDK ve uygulama türü için kullanılabilir örnekleme
 |-|-|-|-|
 | ASP.NET | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-aspnet-applications) | [Evet](#configuring-fixed-rate-sampling-for-aspnet-applications) | Yalnızca başka bir örnekleme geçerli değilse |
 | ASP.NET Çekirdeği | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Evet](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Yalnızca başka bir örnekleme geçerli değilse |
-| Azure İşlevleri | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-azure-functions) | No | Yalnızca başka bir örnekleme geçerli değilse |
-| Java | No | [Evet](#configuring-fixed-rate-sampling-for-java-applications) | Yalnızca başka bir örnekleme geçerli değilse |
-| Node.JS | No | [Evet](./nodejs.md#sampling) | Yalnızca başka bir örnekleme geçerli değilse
-| Python | No | [Evet](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Yalnızca başka bir örnekleme geçerli değilse |
+| Azure İşlevleri | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-azure-functions) | Hayır | Yalnızca başka bir örnekleme geçerli değilse |
+| Java | Hayır | [Evet](#configuring-fixed-rate-sampling-for-java-applications) | Yalnızca başka bir örnekleme geçerli değilse |
+| Node.JS | Hayır | [Evet](./nodejs.md#sampling) | Yalnızca başka bir örnekleme geçerli değilse
+| Python | Hayır | [Evet](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Yalnızca başka bir örnekleme geçerli değilse |
 | Tüm diğerleri | Hayır | Hayır | [Evet](#ingestion-sampling) |
 
 > [!NOTE]
@@ -295,9 +295,9 @@ Diğer örnekleme teknikleri gibi, bu da ilgili öğeleri de korur. Ayrıca, ilg
 
         var builder = configuration.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
         // For older versions of the Application Insights SDK, use the following line instead:
-        // var builder = TelemetryConfiguration.Active.TelemetryProcessorChainBuilder;
+        // var builder = configuration.TelemetryProcessorChainBuilder;
 
-        // Using fixed rate sampling   
+        // Using fixed rate sampling
         double fixedSamplingPercentage = 10;
         builder.UseSampling(fixedSamplingPercentage);
 
@@ -482,7 +482,7 @@ Genel olarak, çoğu küçük ve orta büyüklükte uygulamalar için örnekleme
 
 Diğer örnekleme formlarını kullanma koşulları geçerli değilse, uyarlamalı örnekleme önerilir. Bu ayar, ASP.NET/ASP.NET Core SDK 'sında varsayılan olarak etkinleştirilmiştir. Belirli bir minimum hıza ulaşılana kadar trafiği azaltmaz, bu nedenle düşük-kullanılan siteler büyük olasılıkla hiç örneklenemez.
 
-## <a name="knowing-whether-sampling-is-in-operation"></a>Örnekleme işleminin çalışıp çalışmadığını bilme
+## <a name="knowing-whether-sampling-is-in-operation"></a>Örneklemenin çalışıp çalışmadığını öğrenme
 
 Gerçek örnekleme oranını nerede uygulandığını fark etmeksizin öğrenmek için, şöyle bir [analiz sorgusu](../log-query/log-query-overview.md) kullanın:
 

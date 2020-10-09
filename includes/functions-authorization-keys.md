@@ -4,16 +4,16 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: glenga
-ms.openlocfilehash: 046bd8fcbb8fab50269c8d35da0956bdc63f2304
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 617608f382d3331e59ae92c9eb272347c736b768
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298608"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828928"
 ---
 İşlevler, geliştirme sırasında HTTP işlev uç noktalarınıza erişmeyi daha zor hale getirmek için anahtarları kullanmanıza olanak sağlar. HTTP ile tetiklenen bir işlev üzerinde HTTP erişim düzeyi olarak ayarlanmadığı takdirde `anonymous` istekler istekte BIR API erişim anahtarı içermelidir. 
 
-Anahtarlar varsayılan bir güvenlik mekanizması sağlarken, üretimde bir HTTP uç noktasının güvenliğini sağlamak için ek seçenekler düşünmek isteyebilirsiniz. Örneğin, ortak uygulamalarda paylaşılan gizli dizi dağıtımı genellikle iyi bir uygulamadır. İşleviniz ortak bir istemciden çağrılırsa, başka bir kasa mekanizması uygulamayı düşünmek isteyebilirsiniz. Daha fazla bilgi edinmek için bkz. [üretimde BIR HTTP uç noktası güvenli hale getirme](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#secure-an-http-endpoint-in-production).
+Anahtarlar varsayılan bir güvenlik mekanizması sağlarken, üretimde bir HTTP uç noktasının güvenliğini sağlamak için ek seçenekler düşünmek isteyebilirsiniz. Örneğin, ortak uygulamalarda paylaşılan gizli dizi dağıtımı genellikle iyi bir uygulamadır. İşleviniz ortak bir istemciden çağrılırsa, başka bir güvenlik mekanizması uygulamayı düşünmek isteyebilirsiniz. Daha fazla bilgi edinmek için bkz. [üretimde BIR HTTP uç noktası güvenli hale getirme](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#secure-an-http-endpoint-in-production).
 
 İşlev anahtarı değerlerinizi yenilediğinizde, güncelleştirilmiş anahtar değerlerini işlevinizi çağıran tüm istemcilere el ile yeniden dağıtmanız gerekir.  
 

@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 11/15/2019
 ms.author: matjazl
-ms.openlocfilehash: 652445a96acfa0358211d1d97e0fcf288989d6ba
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: be3cf7d946e7502147942fa8954ade70dd47bedf
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795788"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839937"
 ---
 # <a name="configure-database-settings"></a>Veritabanı ayarlarını yapılandırma 
 
@@ -38,7 +38,12 @@ Veritabanı üretimi 10.000 RU/sn 'den büyükse veya veritabanında depolanan v
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, FHıR için RUs for Azure API 'nizi güncelleştirmeyi öğrendiniz. Daha sonra FHIR için tam olarak yönetilen bir Azure API dağıtımı:
+Bu makalede, FHıR için RUs for Azure API 'nizi güncelleştirmeyi öğrendiniz. Müşteri tarafından yönetilen anahtarları bir veritabanı ayarı olarak yapılandırma hakkında bilgi edinmek için:
+
+>[!div class="nextstepaction"]
+>[Müşteri tarafından yönetilen anahtarları yapılandırma](bring-your-own-key.md)
+
+Ya da FHıR için tam olarak yönetilen bir Azure API 'SI dağıtabilirsiniz:
  
 >[!div class="nextstepaction"]
 >[FHIR için Azure API'sini dağıtma](fhir-paas-portal-quickstart.md)

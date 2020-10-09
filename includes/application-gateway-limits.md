@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: a3fb3dbf026a696b9d472efcba139c371ff1e587
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92ec7c0a1469c9f02855cd6191faa8514e54c8f0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334928"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91829088"
 ---
 | Kaynak | Sınır | Not |
 | --- | --- | --- |
@@ -41,4 +41,4 @@ ms.locfileid: "80334928"
 | En fazla WAF özel kuralları|100||
 | Maksimum WAF dışlamaları|100||
 
-<sup>1</sup> WAF özellikli SKU 'lar söz konusu olduğunda, en iyi performans için kaynak sayısını 40 olarak sınırlamanızı öneririz.
+<sup>1</sup> WAF özellikli SKU 'lar söz konusu olduğunda, kaynak sayısını 40 ile sınırlamanız gerekir.

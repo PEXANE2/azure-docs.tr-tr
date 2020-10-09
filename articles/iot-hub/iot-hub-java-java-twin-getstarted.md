@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: mqtt, devx-track-java
-ms.openlocfilehash: c439f1a5aaa03774652dc815364c45633096f6de
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b433ab29ab5a2520f503e002e630068126ddb328
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327608"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91838696"
 ---
 # <a name="get-started-with-device-twins-java"></a>Cihaz ikizlerini kullanmaya başlama (Java)
 
@@ -39,7 +39,7 @@ Bu öğreticide, iki Java konsol uygulaması oluşturursunuz:
 
 * Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu makaledeki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>IoT hub oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -380,7 +380,7 @@ Artık konsol uygulamalarını çalıştırmaya hazırsınız.
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![Etiket değerlerini güncelleştirmek ve cihaz sorgularını çalıştırmak için Java IoT Hub hizmet uygulaması](./media/iot-hub-java-java-twin-getstarted/service-app-1.png)
+    ![Etiket ekleme sorgu hizmeti uygulamasını çalıştırmak için komuttan gelen çıktıyı gösteren ekran görüntüsü.](./media/iot-hub-java-java-twin-getstarted/service-app-1.png)
 
     Cihaza ve bölgeye ikizi eklenmiş **tesis** ve **bölge** etiketlerini görebilirsiniz. İlk sorgu cihazınızı döndürür, ancak ikincisi değildir.
 
@@ -390,7 +390,7 @@ Artık konsol uygulamalarını çalıştırmaya hazırsınız.
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![Cihaz istemcisi * * connectivityType * * bildirilen özelliğini ekler](./media/iot-hub-java-java-twin-getstarted/device-app-1.png)
+    ![Cihaz istemcisi, bildirilen bağlantı türü özelliğini ekler](./media/iot-hub-java-java-twin-getstarted/device-app-1.png)
 
 3. Add-Tags- **Query klasöründeki bir** komut isteminde, **Add-Tags-Query** Service uygulamasını ikinci bir kez çalıştırmak için aşağıdaki komutu çalıştırın:
 

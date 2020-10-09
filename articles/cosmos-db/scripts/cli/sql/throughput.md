@@ -1,30 +1,30 @@
 ---
-title: Azure Cosmos DB için bir SQL (çekirdek) API veritabanı ve kapsayıcısı için RU/sn 'yi Güncelleştir
-description: Azure Cosmos DB için bir SQL (çekirdek) API veritabanı ve kapsayıcısı için RU/sn 'yi Güncelleştir
+title: Azure Cosmos DB Core (SQL) API kaynakları için üretilen iş (RU/s) işlemleri için Azure CLı betikleri
+description: Azure Cosmos DB Core (SQL) API kaynakları için üretilen iş (RU/s) işlemleri için Azure CLı betikleri
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 07/29/2020
-ms.openlocfilehash: 23b18d903bfd4e9d723524924e6c31db45c14d62
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 10/07/2020
+ms.openlocfilehash: 5ad1e40f12609e708a2bb818175146967b7dccf2
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87429889"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839513"
 ---
-# <a name="update-rus-for-a-sql-core-api-database-and-container-for-azure-cosmos-db-using-azure-cli"></a>Azure CLı kullanarak Azure Cosmos DB bir SQL (çekirdek) API veritabanı ve kapsayıcısı için RU/sn 'yi güncelleştirme
+# <a name="throughput-rus-operations-with-azure-cli-for-a-database-or-container-for-azure-cosmos-db-core-sql-api"></a>Azure Cosmos DB Core (SQL) API 'sine yönelik bir veritabanı veya kapsayıcı için Azure CLı ile üretilen iş (RU/s) işlemleri
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu konu başlığı altında, Azure CLı sürüm 2.9.1 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu konu başlığı altında, Azure CLı sürüm 2.12.1 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Örnek betik
 
-Bu betik, paylaşılan aktarım hızına sahip bir SQL (Core) API veritabanı ve adanmış aktarım hızına sahip bir SQL (Core) API kapsayıcısı oluşturur, ardından hem veritabanı hem de kapsayıcı için üretilen işi günceller.
+Bu betik, paylaşılan aktarım hızı ile bir çekirdek (SQL) API veritabanını ve adanmış işleme sahip bir çekirdek (SQL) API kapsayıcısını oluşturur, ardından hem veritabanı hem de kapsayıcı için aktarım hızını günceller. Komut dosyası daha sonra standart 'den otomatik ölçeklendirme aktarım hızına geçirilir ve sonra otomatik ölçeklendirme üretilen işinin değerini geçiş yapıldıktan sonra okur.
 
-[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/sql/throughput.sh "Update RU/s for a SQL database and container.")]
+[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/sql/throughput.sh "Throughput operations for a SQL database and container.")]
 
 ## <a name="clean-up-deployment"></a>Dağıtımı temizleme
 
@@ -42,10 +42,12 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Azure Cosmos DB hesabı oluşturur. |
-| [az cosmosdb SQL veritabanı oluşturma](/cli/azure/cosmosdb/sql/database#az-cosmosdb-sql-database-create) | Azure Cosmos SQL (Core) veritabanı oluşturur. |
-| [az cosmosdb SQL kapsayıcı oluşturma](/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-create) | Azure Cosmos SQL (Core) kapsayıcısı oluşturur. |
-| [az cosmosdb SQL veritabanı aktarım hızı güncelleştirmesi](/cli/azure/cosmosdb/sql/database/throughput#az-cosmosdb-sql-database-throughput-update) | Azure Cosmos SQL (Core) veritabanı için RU/s 'yi güncelleştirin. |
-| [az cosmosdb SQL Container üretilen iş güncelleştirmesi](/cli/azure/cosmosdb/sql/container/throughput#az-cosmosdb-sql-container-throughput-update) | Azure Cosmos SQL (Core) kapsayıcısı için RU/s 'yi güncelleştirin. |
+| [az cosmosdb SQL veritabanı oluşturma](/cli/azure/cosmosdb/sql/database#az-cosmosdb-sql-database-create) | Azure Cosmos Core (SQL) veritabanı oluşturur. |
+| [az cosmosdb SQL kapsayıcı oluşturma](/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-create) | Bir Azure Cosmos Core (SQL) kapsayıcısı oluşturur. |
+| [az cosmosdb SQL veritabanı aktarım hızı güncelleştirmesi](/cli/azure/cosmosdb/sql/database/throughput#az-cosmosdb-sql-database-throughput-update) | Azure Cosmos Core (SQL) veritabanı için üretilen işi güncelleştirin. |
+| [az cosmosdb SQL Container üretilen iş güncelleştirmesi](/cli/azure/cosmosdb/sql/container/throughput#az-cosmosdb-sql-container-throughput-update) | Azure Cosmos Core (SQL) kapsayıcısının aktarım hızını güncelleştirin. |
+| [az cosmosdb SQL veritabanı aktarım hızı geçişi](/cli/azure/cosmosdb/sql/database/throughput#az-cosmosdb-sql-database-throughput-migrate) | Azure Cosmos Core (SQL) veritabanı için aktarım hızını geçirin. |
+| [az cosmosdb SQL Container verimlilik geçişi](/cli/azure/cosmosdb/sql/container/throughput#az-cosmosdb-sql-container-throughput-migrate) | Azure Cosmos Core (SQL) kapsayıcısı için aktarım hızını geçirin. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

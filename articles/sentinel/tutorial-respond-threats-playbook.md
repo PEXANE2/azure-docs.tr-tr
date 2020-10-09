@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2019
 ms.author: yelevin
-ms.openlocfilehash: f75731fab9a238ffcac2e620235c9d8c5da97549
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 0e7d790fa9c5d4052ddb1e20defed1d1cc457a2e
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053499"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840209"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>Öğretici: Azure Sentinel 'de otomatik tehdit yanıtlarını ayarlama
 
@@ -72,7 +72,7 @@ Azure Sentinel 'de yeni bir güvenlik PlayBook oluşturmak için aşağıdaki ad
 
 5. [**Mantıksal uygulama Tasarımcısı**](../logic-apps/logic-apps-overview.md)' nda, kullanmak istediğiniz şablonu seçin. Kimlik bilgilerini gerektiren bir şablon seçerseniz, bunları sağlamanız gerekir. Alternatif olarak, sıfırdan yeni bir boş PlayBook oluşturabilirsiniz. **Boş mantıksal uygulama**' yı seçin. 
 
-   ![Mantıksal uygulama tasarımcısı](./media/tutorial-respond-threats-playbook/playbook-template.png)
+   ![Boş mantıksal uygulama panelini gösteren ekran görüntüsü.](./media/tutorial-respond-threats-playbook/playbook-template.png)
 
 6. Yeni oluşturabileceğiniz veya şablonu düzenleyebileceğiniz Logic App Designer 'a yönlendirilirsiniz. [Logic Apps](../logic-apps/logic-apps-create-logic-apps-from-templates.md)ile bir PlayBook oluşturma hakkında daha fazla bilgi için.
 

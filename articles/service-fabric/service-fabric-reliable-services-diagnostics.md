@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric durum bilgisi Reliable Services tanılaması
 description: Azure Service Fabric durum bilgisi olan Reliable Services için tanılama işlevi
-author: dkkapur
 ms.topic: conceptual
 ms.date: 8/24/2018
-ms.author: dekapur
-ms.openlocfilehash: 92fd8dbd1afbd2bdcabbaebbd5dc056d912ae118
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5a3831dd4f8d5402980fac3daf8c35d9884c852d
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253125"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840770"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Durum Bilgisi Olan Reliable Services için tanılama işlevi
 Azure Service Fabric durum bilgisi olan Reliable Services StatefulServiceBase sınıfı, hizmette hata ayıklamak, çalışma zamanının nasıl çalıştığı hakkında Öngörüler sağlamak ve sorun gidermeye yardımcı olmak için kullanılan [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) olaylarını yayar.
@@ -89,7 +87,7 @@ Aşağıdaki sayaç örneği adı, kategori altındaki bir sayaç için tipik ol
 
 `00d0126d-3e36-4d68-98da-cc4f7195d85e:131652217797162571:142652217797162571_1337_urn:MyReliableDictionary/dataStore`
 
-Yukarıdaki örnekte, `00d0126d-3e36-4d68-98da-cc4f7195d85e` Service Fabric bölüm kimliğinin dize gösterimidir, `131652217797162571` çoğaltma kimliği, `142652217797162571` durum sağlayıcı kimliğidir ve `1337` performans sayacı örneği farklıdır. `urn:MyReliableDictionary/dataStore`, adlı koleksiyon için veri depolayan durum sağlayıcısının adıdır `urn:MyReliableDictionary` .
+Yukarıdaki örnekte, `00d0126d-3e36-4d68-98da-cc4f7195d85e` Service Fabric bölüm kimliğinin dize gösterimidir, `131652217797162571` çoğaltma kimliği, `142652217797162571` durum sağlayıcı kimliğidir ve `1337` performans sayacı örneği farklıdır. `urn:MyReliableDictionary/dataStore` , adlı koleksiyon için veri depolayan durum sağlayıcısının adıdır `urn:MyReliableDictionary` .
 
 ### <a name="transactional-replicator-performance-counters"></a>İşlem çoğaltıcı performans sayaçları
 

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: cherylmc
-ms.openlocfilehash: e6078ffcaaf98702bf809dfeb435cdaa0f9b5701
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: e602905b461e370189cefed706ddc3a47e0199fe
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91777199"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839648"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>Azure Sanal WAN’a geçiş
 
@@ -110,10 +110,6 @@ Her bölgeye bir sanal WAN hub 'ı dağıtın. Sanal WAN hub 'ını VPN ve Expre
 
 Sanal WAN hub 'ını mevcut ExpressRoute devrelerine bağlayın ve Internet üzerinden siteden siteye VPN 'Leri uzak dallara ayarlayın.
 
-> [!NOTE]
-> Express rotalar devrelerinin sanal WAN hub 'ına bağlanması için Premium SKU türüne yükseltilmesi gerekir.
->
-
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/figure3.png" alt-text="Hub ve bağlı bileşen":::
 **Şekil 3: müşteri tarafından yönetilen hub ve sanal WAN geçişine bağlı bileşen**
 
@@ -190,7 +186,7 @@ Yol 2, Avrupa HQ 'ya bağlı olan ExpressRoute 'daki trafik akışını Güney D
 
 Trafik şu şekilde yönlendirilir:
 
-* Avrupa HQ, Batı Avrupa sanal WAN hub 'ına Premium ExpressRoute devresi aracılığıyla bağlanır.
+* Avrupa HQ, Batı Avrupa sanal WAN hub 'ına ExpressRoute bağlantı hattı aracılığıyla bağlanır.
 
 * Sanal WAN hub 'dan hub 'a genel bağlantı, uzak bölgede bağlı olan VNet 'e trafik aktarımına olanak sağlar.
 

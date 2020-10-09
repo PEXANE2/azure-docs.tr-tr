@@ -1,17 +1,15 @@
 ---
 title: Tek başına Service Fabric istemcisini yükleme
-description: Bu öğreticide, Service Fabric tek başına istemcisini önceki öğretici makalesinde oluşturduğunuz kümeye yüklemeyi öğreneceksiniz.
-author: dkkapur
+description: Bu öğreticide, Service Fabric tek başına istemcisini kümeye yüklemeyi öğrenin.
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: bbaf7dfc546c739dfb858be7ef8372eccf60111b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: ae0b343be986f4d8d5176c1f39eef6b23ca81278
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "75613950"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840651"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>Öğretici: Service Fabric kümesi yükleme ve oluşturma
 
@@ -19,7 +17,7 @@ Service Fabric tek başına kümeleri, kendi ortamınızı seçme ve Service Fab
 
 Bu öğretici, bir dizinin ikinci bölümüdür. Bu öğreticide, tek başına Service Fabric kümesi oluşturma adımları gösterilmektedir.
 
-Serinin ikinci bölümünde şunları öğrenirsiniz:
+Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Service Fabric tek başına paketini indirme ve yükleme
@@ -38,7 +36,7 @@ Daha ayrıntılı bilgi için [kurulum paketinin içeriğine](service-fabric-clu
 
 Üç düğümlü Windows kümesi oluşturduğunuz için `ClusterConfig.Unsecure.MultiMachine.json` dosyasını değiştirmeniz gerekir.
 
-Ardından, dosyanın 8, 15 ve 22. satırlarında oluşan üç ipAddress satırını her bir örneğin IP Adresleri ile güncelleştirin.
+Sonra, 8, 15 ve 22. satırlardaki dosyada gerçekleşen üç IPAddress satırını örneklerin her birine ait IP adreslerine güncelleştirin.
 
 Düğümler güncelleştirildikten sonra şu şekilde görünür:
 
@@ -77,7 +75,7 @@ cd .\Desktop\Microsoft.Azure.ServiceFabric.WindowsServer.6.2.274.9494\
 .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json
 ```
 
-Aşağıdaki gibi bir çıktı görmeniz gerekir. Alttaki "Başarılı" alanı `True` olarak döndürülürse, sağlamlık denetimleri başarılı olmuştur ve giriş yapılandırmasına bağlı olarak küme dağıtılabilir görünür.
+Aşağıdaki örnekte olduğu gibi bir çıktı görmeniz gerekir. Alttaki "Başarılı" alanı `True` olarak döndürülürse, sağlamlık denetimleri başarılı olmuştur ve giriş yapılandırmasına bağlı olarak küme dağıtılabilir görünür.
 
 ```powershell
 Trace folder already exists. Traces will be written to existing trace folder: C:\Users\Administrator\Desktop\Microsoft.Azure.ServiceFabric.WindowsServer.6.2.274.9494\DeploymentTraces
@@ -101,7 +99,7 @@ Passed                     : True
 
 ## <a name="create-the-cluster"></a>Kümeyi oluşturma
 
-Küme yapılandırmanızı başarıyla doğruladıktan sonra *CreateServiceFabricCluster.ps1* betiğini çalıştırarak Service Fabric kümesini yapılandırma dosyasındaki sanal makinelere dağıtın.
+Küme yapılandırmanızı başarıyla doğrulandıktan sonra, Service Fabric kümesini yapılandırma dosyasındaki sanal makinelere dağıtmak için *CreateServiceFabricCluster.ps1* betiğini çalıştırın.
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json -AcceptEULA
@@ -118,7 +116,7 @@ Your cluster is successfully created! You can connect and manage your cluster us
 >
 >
 
-### <a name="bring-up-service-fabric-explorer"></a>Service Fabric Explorer’ı getirme
+### <a name="open-service-fabric-explorer"></a>Service Fabric Explorer açın
 
 Artık, http: \/ /localhost: 19080/Explorer/index.html ve http: \/ /< *ipaddressofamachine*>:19080/Explorer/index.html ile uzaktan bir makineden yalnızca Service Fabric Explorer ile kümeye bağlanabilirsiniz.
 
@@ -128,7 +126,7 @@ Artık, http: \/ /localhost: 19080/Explorer/index.html ve http: \/ /< *ipaddress
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Serinin ikinci kısmında, büyük miktarlarda rastgele verileri paralel şekilde bir depolama hesabına yüklemeyle ilgili aşağıda örnekleri verilen işlemleri öğrendiniz:
+Bu makalede, büyük miktarlarda rastgele verileri paralel olarak bir depolama hesabına yükleme hakkında bilgi edindiniz, örneğin:
 
 > [!div class="checklist"]
 > * Bağlantı dizesini yapılandırma

@@ -4,12 +4,12 @@ description: Azure Izleyici Application Insights .NET Core/. NET Framework HTTP 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
-ms.openlocfilehash: 643edf81d6a98c8f423267b657feb9dfb6da1070
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 8156541a5b04a5db5f2ce683fd0e514c81e8b53e
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91816403"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840413"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Çalışan hizmeti uygulamaları için Application Insights (HTTP olmayan uygulamalar)
 
@@ -333,19 +333,18 @@ SDK, yukarıda açıklandığı gibi telemetri otomatik olarak toplarken, çoğu
 `ApplicationInsightsServiceOptions` `AddApplicationInsightsTelemetryWorkerService` Aşağıdaki örnekte olduğu gibi, ' a geçirerek birkaç ortak ayarı değiştirebilirsiniz:
 
 ```csharp
-    using Microsoft.ApplicationInsights.WorkerService;
+using Microsoft.ApplicationInsights.WorkerService;
 
-    public void ConfigureServices(IServiceCollection services)
-    {
-        Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions aiOptions
-                    = new Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions();
-        // Disables adaptive sampling.
-        aiOptions.EnableAdaptiveSampling = false;
+public void ConfigureServices(IServiceCollection services)
+{
+    var aiOptions = new ApplicationInsightsServiceOptions();
+    // Disables adaptive sampling.
+    aiOptions.EnableAdaptiveSampling = false;
 
-        // Disables QuickPulse (Live Metrics stream).
-        aiOptions.EnableQuickPulseMetricStream = false;
-        services.AddApplicationInsightsTelemetryWorkerService(aiOptions);
-    }
+    // Disables QuickPulse (Live Metrics stream).
+    aiOptions.EnableQuickPulseMetricStream = false;
+    services.AddApplicationInsightsTelemetryWorkerService(aiOptions);
+}
 ```
 
 `ApplicationInsightsServiceOptions`Bu SDK 'daki ASP.NET Core SDK 'nın aksine ad alanında olduğunu unutmayın `Microsoft.ApplicationInsights.WorkerService` `Microsoft.ApplicationInsights.AspNetCore.Extensions` .
@@ -364,7 +363,37 @@ En güncel listesi için [içindeki `ApplicationInsightsServiceOptions` yapılan
 
 ### <a name="sampling"></a>Örnekleme
 
-Çalışan hizmeti için Application Insights SDK hem sabit hızlı hem de Uyarlamalı örneklemeyi destekler. Uyarlamalı örnekleme varsayılan olarak etkindir. Çalışan hizmeti için örnekleme yapılandırması, [ASP.NET Core uygulamalarla](./sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications)aynı şekilde yapılır.
+Çalışan hizmeti için Application Insights SDK hem sabit hızlı hem de Uyarlamalı örneklemeyi destekler. Uyarlamalı örnekleme varsayılan olarak etkindir. `EnableAdaptiveSampling` [Applicationınsightsserviceoptions](#using-applicationinsightsserviceoptions) seçeneği kullanılarak örnekleme devre dışı bırakılabilir
+
+Ek örnekleme ayarlarını yapılandırmak için aşağıdaki örnek kullanılabilir.
+
+```csharp
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.ApplicationInsights.WorkerService;
+
+public void ConfigureServices(IServiceCollection services)
+{
+    // ...
+
+    var aiOptions = new ApplicationInsightsServiceOptions();
+    
+    // Disable adaptive sampling.
+    aiOptions.EnableAdaptiveSampling = false;
+    services.AddApplicationInsightsTelemetryWorkerService(aiOptions);
+
+    // Add Adaptive Sampling with custom settings.
+    // the following adds adaptive sampling with 15 items per sec.
+    services.Configure<TelemetryConfiguration>((telemetryConfig) =>
+        {
+            var builder = telemetryConfig.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
+            builder.UseAdaptiveSampling(maxTelemetryItemsPerSecond: 15);
+            builder.Build();
+        });
+    //...
+}
+```
+
+[Örnekleme](#sampling) belgesinde daha fazla bilgi bulunabilir.
 
 ### <a name="adding-telemetryinitializers"></a>TelemetryInitializers ekleme
 
@@ -540,7 +569,9 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 ## <a name="open-source-sdk"></a>Açık kaynaklı SDK
 
-[Kodu okuyun ve koda katkıda bulunun](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates).
+* [Kodu okuyun ve koda katkıda bulunun](https://github.com/microsoft/ApplicationInsights-dotnet).
+
+En son güncelleştirmeler ve hata düzeltmeleri için [sürüm notlarına bakın](./release-notes.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

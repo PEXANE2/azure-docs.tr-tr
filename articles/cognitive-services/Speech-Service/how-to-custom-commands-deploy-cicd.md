@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: f4dde6831902c0d15d5f985208e382963125d200
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: bd1ab5110313380c90e71ed161935c7274a845b7
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307918"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839257"
 ---
-# <a name="continuous-deployment-with-azure-devops"></a>Azure DevOps ile sürekli dağıtım
+# <a name="continuous-deployment-with-azure-devops"></a>Azure DevOps ile Sürekli Dağıtım
 
 Bu makalede, özel komutlar uygulamalarınız için sürekli dağıtımı ayarlamayı öğreneceksiniz. CI/CD iş akışını desteklemeye yönelik betikler size sağlanır.
 
@@ -72,7 +72,7 @@ Betikler bilişsel [Hizmetler ses Yardımcısı-özel komutlarda](https://github
 1. Bu betiklerin, bu `westus2` durumda görevin bağımsız değişkenlerini güncelleştirdiğine ilişkin bölgeyi kullandığınızı varsaydığını unutmayın.
 
     > [!div class="mx-imgBorder"]
-    > ![Etkinlik yükünü gönder](media/custom-commands/cicd-new-pipeline-yaml.png)
+    > ![Bağımsız değişkenlerdeki bölge değerini vurgulayan ekran görüntüsü.](media/custom-commands/cicd-new-pipeline-yaml.png)
 
 1. "Kaydet ve Çalıştır" düğmesinde, açılan menüyü açın ve "Kaydet" e tıklayın
 
@@ -83,12 +83,12 @@ Betikler bilişsel [Hizmetler ses Yardımcısı-özel komutlarda](https://github
 1. Sağ üst köşedeki "Çalıştır" düğmesinin yanındaki **değişkenler**' i seçin. **Yeni değişken**' e tıklayın.
 1. Şu değişkenleri ekleyin:
     
-    | Değişken | Description |
+    | Değişken | Açıklama |
     | ------- | --------------- | ----------- |
     | Sourceappıd | GELIŞTIRME uygulamasının KIMLIĞI |
     | Targetappıd | ÜRETIM uygulaması KIMLIĞI |
     | SubscriptionKey | Her iki uygulama için kullanılan abonelik anahtarı |
-    | Culture (Kültür) | Uygulamaların kültürü (yani, en-US) |
+    | Kültür | Uygulamaların kültürü (yani, en-US) |
 
     > [!div class="mx-imgBorder"]
     > ![Etkinlik yükünü gönder](media/custom-commands/cicd-edit-pipeline-variables.png)
@@ -110,7 +110,7 @@ Betikler bilişsel [Hizmetler ses Yardımcısı-özel komutlarda](https://github
     ```BASH
     bash/export.sh -r <region> -s <subscriptionkey> -c en-us -a <appid> -f apps/myapp.json
     ```
-    | Arguments | Description |
+    | Bağımsız değişkenler | Açıklama |
     | ------- | --------------- | ----------- |
     | region | uygulamanın bölgesi (örn. westus2). |
     | subscriptionkey | konuşma kaynağınızın abonelik anahtarı. |
@@ -159,11 +159,11 @@ Betikler bilişsel [Hizmetler ses Yardımcısı-özel komutlarda](https://github
 1. Sağ üst köşedeki "Çalıştır" düğmesinin yanındaki **değişkenler**' i seçin. **Yeni değişken**' e tıklayın.
 1. Şu değişkenleri ekleyin:
 
-    | Değişken | Description |
+    | Değişken | Açıklama |
     | ------- | --------------- | ----------- |
     | Targetappıd | ÜRETIM uygulaması KIMLIĞI |
     | SubscriptionKey | Her iki uygulama için kullanılan abonelik anahtarı |
-    | Culture (Kültür) | Uygulamaların kültürü (yani, en-US) |
+    | Kültür | Uygulamaların kültürü (yani, en-US) |
 
 1. "Çalıştır" a tıklayın ve sonra çalışan "Iş" düğmesine tıklayın.
     Çalıştıran görevlerin bir listesini görmeniz gerekir: "uygulama alma" & "uygulamayı eğitme ve yayımlama"

@@ -1,63 +1,23 @@
 ---
-ms.openlocfilehash: ed7be82146f38cc7ae57fd863bb0c1b8e6910fd2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2349939d4997ddc57d0c0c56a21eeec0357bf0ec
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88691181"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91829046"
 ---
 Örnek kodu çalıştırmak için aşağıdaki adımları izleyin:
 
-1. Visual Studio Code ' de, *src/buluttan cihaza-Console-App/operations.json*' a gidin.
-1. **Graphtopologyset** düğümünde aşağıdaki değeri görtığınızdan emin olun:
+1. Visual Studio Code, **Uzantılar** sekmesini açın (veya CTRL + SHIFT + X tuşlarına basın) ve Azure IoT Hub aratın.
+1. Sağ tıklayıp **uzantı ayarları**' nı seçin.
 
-    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/motion-detection/topology.json"`
-1. **Graphınstanceset** ve **Graphtopologydelete** düğümlerinde, değerinin `topologyName` `name` grafik topolojisinde özelliğin değeriyle eşleştiğinden emin olun:
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/run-program/extensions-tab.png" alt-text="Uzantı ayarları&quot;:::
+1. &quot;Ayrıntılı Iletiyi göster" i arayın ve etkinleştirin.
 
-    `"topologyName" : "MotionDetection"`
-    
-1. F5 tuşunu seçerek bir hata ayıklama oturumu başlatın. **TERMINAL** penceresinde bazı iletiler görüntülenir.
-1. Dosyasındaki *operations.js* , ve çağrıları ile başlatılır `GraphTopologyList` `GraphInstanceList` . Önceki hızlı başlangıçlarını bitirdikten sonra kaynakları temizledikten sonra bu işlem boş listeleri döndürür ve ardından duraklatılır. Devam etmek için Enter tuşunu seçin.
-
-    ```
-    --------------------------------------------------------------------------
-    Executing operation GraphTopologyList
-    -----------------------  Request: GraphTopologyList  --------------------------------------------------
-    {
-        "@apiVersion": "1.0"
-    }
-    ---------------  Response: GraphTopologyList - Status: 200  ---------------
-    {
-        "value": []
-    }
-    --------------------------------------------------------------------------
-    Executing operation WaitForInput
-    Press Enter to continue
-    ```
-    
-    **TERMINAL** penceresinde, bir sonraki doğrudan yöntem çağrısı kümesi gösterilir:
-     * Daha önce kullanılan bir çağrısı `GraphTopologySet``topologyUrl`
-     * Aşağıdaki gövdesini kullanan öğesine yapılan bir çağrı `GraphInstanceSet` :
-         
-    ```
-    {
-      "@apiVersion": "1.0",
-      "name": "Sample-Graph",
-      "properties": {
-        "topologyName": "MotionDetection",
-        "description": "Sample graph description",
-        "parameters": [
-          {
-            "name": "rtspUrl",
-            "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
-          },
-          {
-            "name": "rtspUserName",
-            "value": "testuser"
-          },
-          {
-            "name": "rtspPassword",
-            "value": "testpassword"
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="Uzantı ayarları&quot;:::
+1. &quot;Ayrıntılı Iletiyi göster"
           }
         ]
       }

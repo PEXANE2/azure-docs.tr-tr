@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/26/2020
+ms.date: 10/07/2020
 ms.author: alkohli
-ms.openlocfilehash: b0eaa9778480a6a767a4b37bd92a395d2b1ee6cb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 225cb9a31b73f330d8b4ed5790caacc4fa729477
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899024"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839954"
 ---
 # <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>GPU ile Azure Stack Edge Pro için teknik belirtimler ve uyumluluk 
 
@@ -47,7 +47,7 @@ Azure Stack Edge Pro cihazının yüksek performanslı fanlarla iki 100-240 V g�
 | Maksimum çıkış gücü    | 750 W                     |
 | Frequency               | 50/60 Hz                   |
 | Voltaj aralığı seçimi | Otomatik olarak değişen: 100-240 V AC |
-| Etkin takılabilir           | Yes                        |
+| Etkin takılabilir           | Evet                        |
 
 
 ## <a name="network-interface-specifications"></a>Ağ arabirimi belirtimleri
@@ -67,7 +67,7 @@ Aşağıda, Mellanox kartının ayrıntıları verilmiştir:
 
 | Parametre           | Açıklama                 |
 |-------------------------|----------------------------|
-| Modelleme    | ConnectX®-4 LX EN fazla ağ arabirim kartı                      |
+| Model    | ConnectX®-4 LX EN fazla ağ arabirim kartı                      |
 | Model açıklaması               | 25GbE çift bağlantı noktası SFP28; PCIe 3.0 x8; ROHS R6                    |
 | Cihaz bölüm numarası (R640) | MCX4121A-ACAT  |
 | PSıD (R640)           | MT_2420110034                         |
@@ -79,20 +79,20 @@ Bu ağ kartlarında desteklenen kabloların, anahtarların ve alıcı sayısın�
 
 ## <a name="storage-specifications"></a>Depolama belirtimleri
 
-Azure Stack Edge Pro cihazlarında beş 2,5 "NVMe DC P4610 SSDs, her biri 1,6 TB kapasiteye sahiptir. Önyükleme sürücüsü 240 GB SATA SSD 'dir. Cihaz için kullanılabilen toplam kapasite kabaca 8,28 TB 'tır. Aşağıdaki tabloda, cihazın depolama kapasitesi listelenmektedir.
+Azure Stack Edge Pro cihazlarında beş 2,5 "NVMe DC P4610 SSDs, her biri 1,6 TB kapasiteye sahiptir. Önyükleme sürücüsü 240 GB SATA SSD 'dir. Cihaz için kullanılabilen toplam kapasite kabaca 4,19 TB 'tır. Aşağıdaki tabloda, cihazın depolama kapasitesi listelenmektedir.
 
 |     Belirtim                          |     Değer             |
 |--------------------------------------------|-----------------------|
-|    Önyükleme SATA katı hal sürücüleri (SSD)      |    1                  |
 |    NVMe SSDs sayısı                     |    5                  |
-|    Önyükleme SSD kapasitesi                       |    240 GB             |
 |    Tek NVMe SSD kapasitesi                |    1,6 TB             |
-|    Toplam kapasite                          |    8,28 TB            |
-|    Toplam kullanılabilir kapasite *                  |    ~ 7,95 TB          |
+|    Önyükleme SATA katı hal sürücüleri (SSD)      |    1                  |
+|    Önyükleme SSD kapasitesi                       |    240 GB             |
+|    Toplam kapasite                          |    8,0 TB             |
+|    Toplam kullanılabilir kapasite *                  |    ~ 4,19 TB          |
 |    SAS denetleyicisi                          |    HBA330 12 Gbps     |
 
 
-**Bazı boşluklar iç kullanım için ayrılmıştır.*
+**Eşlik dayanıklılığı sonrasında ve iç kullanım için alan ayırdıktan sonra.*
 
 <!--Remove based on feedback from Ravi
 ## Other hardware specifications

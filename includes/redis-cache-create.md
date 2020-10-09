@@ -2,26 +2,27 @@
 title: dosya dahil etme
 description: dosya dahil etme
 services: redis-cache
-author: wesmc7777
+author: curib
 ms.service: cache
 ms.topic: include
-ms.date: 11/05/2019
-ms.author: wesmc
+ms.date: 10/06/2020
+ms.author: cauribeg
 ms.custom: include file
-ms.openlocfilehash: e0557f8eb2fd120baeebee96acb4ef539344e3e7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ae9526a47a77118503274fc824538980ebcd50de
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87528845"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91829048"
 ---
-1. Önbellek oluşturmak için [Azure Portal](https://portal.azure.com) oturum açın ve **kaynak oluştur**' u seçin. 
-   
-   ![Kaynak oluştur ' u seçin](media/redis-cache-create/create-a-resource.png)
+1. Önbellek oluşturmak için [Azure Portal](https://portal.azure.com) oturum açın ve **kaynak oluştur**' u seçin.
+
+    :::image type="content" source="media/redis-cache-create/create-resource.png" alt-text="Redsıs için Azure önbelleği ' ni seçin.":::
+
    
 1. **Yeni** sayfada **veritabanları** ' nı seçin ve ardından **redsıs için Azure önbelleği**' ni seçin.
-   
-   ![Redsıs için Azure önbelleğini seçin](media/redis-cache-create/redis-cache-new-cache-menu.png)
+
+    :::image type="content" source="media/redis-cache-create/select-cache.png" alt-text="Redsıs için Azure önbelleği ' ni seçin.":::
    
 1. **Yeni Redis Cache** sayfasında, yeni önbelleğiniz için ayarları yapılandırın.
    
@@ -32,15 +33,23 @@ ms.locfileid: "87528845"
    | **Kaynak grubu** | Açılır ve bir kaynak grubu seçin veya **Yeni oluştur** ' u seçin ve yeni bir kaynak grubu adı girin. | Önbelleğinizin ve diğer kaynaklarınızın oluşturulacağı kaynak grubunun adı. Tüm uygulama kaynaklarınızı tek bir kaynak grubuna yerleştirerek, bunları birlikte kolayca yönetebilir veya silebilirsiniz. | 
    | **Konum** | Açılır ve bir konum seçin. | Önbelleğinizi kullanacak diğer hizmetlerin yakınında bir [bölge](https://azure.microsoft.com/regions/) seçin. |
    | **Fiyatlandırma katmanı** | Açılır ve bir [fiyatlandırma katmanı](https://azure.microsoft.com/pricing/details/cache/)seçin. |  Fiyatlandırma katmanı önbellek için kullanılabilen boyut, performans ve özellikleri belirler. Daha fazla bilgi için bkz. [redsıs Için Azure önbelleği 'Ne genel bakış](../articles/azure-cache-for-redis/cache-overview.md). |
-   
-1. **Oluştur**’u seçin. 
-   
-   ![Redsıs için Azure önbelleği oluşturma](media/redis-cache-create/redis-cache-cache-create.png) 
-   
-   > [!NOTE]
-   > Önbelleğin, 15 ila 20 dakika sürecek şekilde sağlanması beklenir.   
-   
-   Redsıs **genel bakış** sayfasında ilerlemeyi izleyebilirsiniz. **Durum** **çalışıyor**olarak görüntülendiğinde, önbellek kullanıma hazırdır.
-   
-   ![Redin için Azure önbelleği oluşturuldu](media/redis-cache-create/redis-cache-cache-created.png)
 
+1. **Ağ** sekmesini seçin veya sayfanın altındaki **ağ** düğmesine tıklayın.
+
+1. **Ağ** sekmesinde, bağlantı yönteminizi seçin.
+
+1. **İleri: Gelişmiş** sekmesini seçin veya sayfanın altındaki **İleri: Gelişmiş** düğmesine tıklayın.
+
+1. Bir temel veya standart önbellek örneğinin **Gelişmiş** SEKMESINDE, TLS olmayan bir bağlantı noktasını etkinleştirmek istiyorsanız geçişi etkinleştir ' i seçin.
+
+1. Premium önbellek örneğinin **Gelişmiş** SEKMESINDE, TLS olmayan bağlantı noktası, kümeleme ve veri kalıcılığı için ayarları yapılandırın.
+
+1. **Sonraki: Etiketler** sekmesini seçin veya sayfanın altındaki **Sonraki: Etiketler** düğmesine tıklayın.
+
+1. İsteğe bağlı olarak, **Etiketler** sekmesinde, kaynağı sınıflandırmak istiyorsanız ad ve değeri girin. 
+
+1.  **Gözden geçir + oluştur**' u seçin. Azure 'un yapılandırmanızı doğruladığı, gözden geçir + Oluştur sekmesine götürülürsünüz.
+
+1. Yeşil doğrulama başarılı iletisi göründüğünde **Oluştur**' u seçin.
+
+Önbelleğin oluşturulması biraz zaman alır. Redsıs **genel bakış**   sayfasında ilerlemeyi izleyebilirsiniz.  **Durum**    **çalışıyor**olarak görüntülendiğinde, önbellek kullanıma hazırdır. 

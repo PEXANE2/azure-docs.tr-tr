@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: 71bfff1b2ef75a13a3898d2fd9760dd60b83e3a5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a6f1a5b532ba3d8d5ce24d6f9856d86719d35c6f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318322"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839546"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Öğretici: Azure AD kullanarak uçtan uca içerik koruma
 
@@ -77,7 +77,7 @@ Bu, isteğe bağlıdır, ancak Bu öğreticiye başlamadan önce aşağıdaki ka
 
 Alt sistemi tasarlarken bazı sorunlar sunulmuştur. Birden çok hareketli parçaya sahiptir, her altı haftada bir gerçekleşen istemci uygulama kısıtlamaları ve Azure AD anahtar geçişi vardır.
 
-Bu öğreticide kullanılan tek sayfalı uygulama (SPA), kimlik doğrulama gereksinimlerine ve izleyen kısıtlamalara karşı sorunları ele alır. Şunları kullanır:
+Bu öğreticide kullanılan Single-Page App (SPA), kimlik doğrulama gereksinimlerine ve izleyen kısıtlamalara karşı sorunları ele alır. Şunları kullanır:
 
 * Azure AD geliştirici platformu (v1 uç noktaları) olarak Azure AD v2 uç noktaları Microsoft Identity platform (v2 uç noktaları) olarak değiştiriliyor.
 * OAuth 2 örtük verme akışı kullanım dışı bırakıldığından yetkilendirme kodu akışı.
@@ -129,11 +129,11 @@ Oturum açma, belirteç alma, belirteç yenileme ve belirteç görüntüleme ekr
 
 JWT belirteçlerini ayrıştırma ekranı (access_token veya id_token):
 
-![JWT belirteçlerini ayrıştırma ekranı](media/aad-ams-content-protection/parsing-jwt-tokens.png)
+![J W T belirteçlerini ayrıştırmayı gösteren ekran görüntüsü.](media/aad-ams-content-protection/parsing-jwt-tokens.png)
 
 Farklı DRM/AES vs akış protokolleriyle korumalı içeriği test etme ekranı, kapsayıcı biçimi:
 
-![JWT belirteçlerini ayrıştırma ekranı](media/aad-ams-content-protection/testing-protected-content.png)
+![Farklı D R M veya A ve akış protokolleriyle karşı korumalı içeriği test eden, kapsayıcı biçimine karşı test eden ekran görüntüsü](media/aad-ams-content-protection/testing-protected-content.png)
 -->
 
 <!-- You can see a hosted version of the sample at [https://aka.ms/ott](https://aka.ms/ott)-->
@@ -313,7 +313,7 @@ Geliştirme makinenizde çalışan IIS gibi başka bir IDE/web platformu ve/veya
 
 Artık öğreticiyi tamamlayıp çalışan bir alt sisteme sahip olduğunuza göre, aşağıdaki müşteri senaryolarında bunu değiştirmeyi deneyebilirsiniz:
 
-### <a name="role-based-access-control-rbac-for-license-delivery-via-azure-ad-group-membership"></a>Azure AD grup üyeliği aracılığıyla lisans teslimi için rol tabanlı Access Control (RBAC)
+### <a name="role-based-access-control-rbac-for-license-delivery-via-azure-ad-group-membership"></a>Azure AD grup üyeliği aracılığıyla lisans teslimi için Access Control (RBAC) Role-Based
 
 Şimdiye kadar, sistem, geçerli bir lisans almak ve korunan içeriği yürütmek için oturum açabilen tüm kullanıcılara izin verir.
 
@@ -344,7 +344,7 @@ if (tokenClaims != null && tokenClaims.Length > 0)
 
 *Gruplar* talebi, Azure AD 'de kısıtlı bir [talep kümesinin](../../active-directory/develop/active-directory-claims-mapping.md#claim-sets) üyesidir.
 
-#### <a name="test"></a>Test etme
+#### <a name="test"></a>Test
 
 1. *Premium_user* hesabıyla oturum açın. Korunan içeriği oynatabilmelisiniz.
 1. *Basic_user* hesabıyla oturum açın. Videonun şifrelendiğini belirten bir hata almalısınız, ancak şifresini çözmek için bir anahtar yok. Player tanılama alt sürümünün altındaki açılan menüde olayları, hataları ve İndirmeleri görüntülediğinizde, hata iletisi, Azure AD belirteç uç noktası tarafından verilen JWT içindeki gruplar talebi için eksik talep değeri nedeniyle lisans alma başarısızlığını göstermelidir.

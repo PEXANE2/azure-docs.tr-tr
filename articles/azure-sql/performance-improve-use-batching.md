@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 94f54e02de1b61cb05b4e41bb4c40118299cf20f
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 487b668d9a3d934220fecf5c0896f7ef492c6775
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91618650"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840498"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örnek uygulama performansını artırmak için toplu işlem kullanma
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -229,7 +229,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Toplu kopyalamanın tablo değerli parametreler üzerinden tercih edildiği bazı durumlar vardır. Tablo değerli parametrelerin karşılaştırma tablosuna ve [tablo değerli parametrelerde](/sql/relational-databases/tables/use-table-valued-parameters-database-engine)bulk INSERT işlemlerine bakın.
+Toplu kopyalamanın tablo değerli parametreler üzerinden tercih edildiği bazı durumlar vardır. [Tablo değerli parametrelerde](/sql/relational-databases/tables/use-table-valued-parameters-database-engine)Table-Valued parametrelerinin karşılaştırma tablosuna ve bulk INSERT işlemlerine bakın.
 
 Aşağıdaki geçici test sonuçları, her saniye içinde **SqlBulkCopy** ile toplu işleme performansını gösterir.
 
@@ -291,9 +291,9 @@ Bu yaklaşım 100 satırdan az olan toplu işlemler için biraz daha hızlı ola
 
 **DataAdapter** sınıfı, bir **veri kümesi** nesnesini DEĞIŞTIRMENIZE ve sonra değişiklikleri INSERT, Update ve DELETE işlemleri olarak göndermenize olanak tanır. Bu şekilde **DataAdapter** kullanıyorsanız, her farklı işlem için ayrı çağrıların yapıldığını unutmayın. Performansı artırmak için, **UpdateBatchSize** özelliğini tek seferde toplu olarak oluşturulacak işlem sayısına göre kullanın. Daha fazla bilgi için bkz. [DataAdapter kullanarak Batch Işlemleri gerçekleştirme](/dotnet/framework/data/adonet/performing-batch-operations-using-dataadapters).
 
-### <a name="entity-framework"></a>Varlık çerçevesi
+### <a name="entity-framework"></a>Varlık Çerçevesi
 
-[Entity Framework 6](https://github.com/dotnet/ef6) artık toplu işi destekliyor.
+[Entity Framework Core](https://docs.microsoft.com/ef/efcore-and-ef6/#saving-data) toplu işlemeyi destekler.
 
 ### <a name="xml"></a>XML
 

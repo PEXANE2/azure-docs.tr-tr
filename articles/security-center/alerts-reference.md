@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: memildin
-ms.openlocfilehash: 257c6f30709448da2f6067cec226bc810d0ffe53
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 943aedb34cef8e7db73877c926da81887ca01df2
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826157"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839508"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Güvenlik uyarıları-bir başvuru kılavuzu
 
@@ -112,7 +112,6 @@ Bu sayfanın en altında, bu uyarıların amaçlarını kategorilere ayırmak i�
 |**Şüpheli işlem adı algılandı [birden çok kez görüldü]**|% {Riskli konak} üzerindeki konak verilerinin analizi, adı şüpheli olan bir işlem algıladı (örneğin, bilinen bir saldırgan aracına karşılık gelen veya adında, kötü bir biçimde gizlemeyi deneyen saldırganlar araçlarıyla). Bu işlem meşru etkinlik veya makinelerinizden birinin tehlikede olduğunu belirten bir gösterge olabilir. Bu davranış şu makinelerde bugün [x] kez görüldü: [makine adları]|-|Orta|
 |**Şüpheli işlem adı algılandı**|% {Riskli konak} üzerindeki konak verilerinin analizi, adı şüpheli olan bir işlem algıladı (örneğin, bilinen bir saldırgan aracına karşılık gelen veya adında, kötü bir biçimde gizlemeyi deneyen saldırganlar araçlarıyla). Bu işlem meşru etkinlik veya makinelerinizden birinin tehlikede olduğunu belirten bir gösterge olabilir.|-|Orta|
 |**Şüpheli işlem sonlandırma veri bloğu**|Konak verilerinin çözümlenmesi,% {Machine Name} içindeki şüpheli bir işlem sonlandırma veri bloğu olduğunu gösterir. Özellikle,% {NumberOfCommands} işlem% {BEGIN} ile% {bitiriliyor} arasında sonlandırıldı.|-|Düşük|
-|**Şüpheli sistem dosyası yürütme**|Konak verilerinin çözümlenmesi, olağan dışı bir konumdan çalışan% {güvenliği aşılmış konak} üzerinde yürütülebilir bir dosya algıladı. Bu yürütülebilir dosya meşru etkinlik veya güvenliği aşılmış bir ana bilgisayar göstergesi olabilir.|-|Yüksek|
 |**Şüpheli sistem işlemi yürütüldü**|% {Process Name} sistem işlemi olağan dışı bir bağlamda çalışmayı gözlemlendi. Kötü amaçlı yazılım genellikle bu işlem adını kullanarak kötü amaçlı etkinliklerini geçici olarak kullanır.|-|Yüksek|
 |**Suspiciously adlı işlem algılandı**|% {Riskli konak} üzerindeki konak verilerinin analizi, adı çok yaygın bir çalıştırma işleminden (% {Işlem adına benzer}) çok benzer ancak farklı olan bir işlem algıladı. Bu işlem, kötü amaçlı saldırganların meşru işlem adlarına benzemek üzere kötü amaçlı araçlarını adlandırarak, bazen kötü bir şekilde gizli bir şekilde gizlenmekte olabilir.|-|Orta|
 |**Olağan dışı işlem yürütmesi algılandı**|% {Güvenliği aşılmış konak} üzerindeki konak verilerinin çözümlenmesi,% {User Name} tarafından olağan dışı bir işlemin yürütülmesini algıladı. % {User Name} gibi hesaplar sınırlı bir işlem kümesi gerçekleştirmeye eğilimlidir, bu yürütmenin karakter dışı olduğu belirlendi ve şüpheli olabilir.|-|Yüksek|

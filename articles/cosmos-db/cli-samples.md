@@ -5,15 +5,15 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 07/29/2020
+ms.date: 10/07/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 954215f04525e850151fdad93af6e7272b41b3df
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 58460dffad3d44090644a544f4082b7727ece3f2
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498472"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840345"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure CLI örnekleri
 
@@ -40,7 +40,7 @@ Bu örnekler tüm Azure Cosmos DB API 'Leri için geçerlidir
 |---|---|
 | [Azure Cosmos hesabı, veritabanı ve kapsayıcısı oluşturma](scripts/cli/sql/create.md?toc=%2fcli%2fazure%2ftoc.json)| Çekirdek (SQL) API 'SI için bir Azure Cosmos DB hesabı, veritabanı ve kapsayıcı oluşturur. |
 | [Otomatik ölçeklendirme ile bir Azure Cosmos hesabı, veritabanı ve kapsayıcısı oluşturma](scripts/cli/sql/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Çekirdek (SQL) API 'SI için otomatik ölçeklendirmeyi olan bir Azure Cosmos DB hesabı, veritabanı ve kapsayıcı oluşturur. |
-| [Aktarım hızını değiştirme](scripts/cli/sql/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Bir veritabanında ve kapsayıcıda RU/s 'yi güncelleştirin.|
+| [Aktarım hızı işlemleri](scripts/cli/sql/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Bir veritabanı ve kapsayıcıda, otomatik ölçeklendirme ve standart verimlilik arasında okuma, güncelleştirme ve geçirme.|
 | [Kaynakları silinmeye karşı kilitle](scripts/cli/sql/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Kaynakların kaynak kilitleri ile silinmesini engelleyin.|
 |||
 
@@ -50,7 +50,7 @@ Bu örnekler tüm Azure Cosmos DB API 'Leri için geçerlidir
 |---|---|
 | [Azure Cosmos hesabı, veritabanı ve koleksiyonu oluşturma](scripts/cli/mongodb/create.md?toc=%2fcli%2fazure%2ftoc.json)| MongoDB API 'SI için bir Azure Cosmos DB hesabı, veritabanı ve koleksiyonu oluşturur. |
 | [Paylaşılan verimlilik içeren bir Azure Cosmos hesabı, otomatik ölçeklendirme ve iki koleksiyon ile veritabanı oluşturma](scripts/cli/mongodb/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| MongoDB API 'SI için paylaşılan iş hızına sahip bir Azure Cosmos DB hesap, otomatik ölçeklendirme ve iki koleksiyon içeren bir veritabanı oluşturur. |
-| [Aktarım hızını değiştirme](scripts/cli/mongodb/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Bir veritabanında ve koleksiyonda RU/s 'yi güncelleştirin.|
+| [Aktarım hızı işlemleri](scripts/cli/mongodb/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Bir veritabanında ve koleksiyonda bulunan otomatik ölçeklendirme ve standart verimlilik arasında okuma, güncelleştirme ve geçirme.|
 | [Kaynakları silinmeye karşı kilitle](scripts/cli/mongodb/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Kaynakların kaynak kilitleri ile silinmesini engelleyin.|
 |||
 
@@ -60,7 +60,7 @@ Bu örnekler tüm Azure Cosmos DB API 'Leri için geçerlidir
 |---|---|
 | [Azure Cosmos hesabı, anahtar alanı ve tablo oluşturma](scripts/cli/cassandra/create.md?toc=%2fcli%2fazure%2ftoc.json)| Cassandra API için Azure Cosmos DB bir hesap, anahtar uzayı ve tablo oluşturur. |
 | [Otomatik ölçeklendirme ile bir Azure Cosmos hesabı, anahtar alanı ve tablo oluşturma](scripts/cli/cassandra/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Cassandra API için otomatik ölçeklendirmeyi içeren Azure Cosmos DB bir hesap, anahtar uzayı ve tablo oluşturur. |
-| [Aktarım hızını değiştirme](scripts/cli/cassandra/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Anahtar alanı ve tablodaki RU/s 'yi güncelleştirin.|
+| [Aktarım hızı işlemleri](scripts/cli/cassandra/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Anahtar alanı ve tablodaki otomatik ölçeklendirme ve standart verimlilik arasında okuma, güncelleştirme ve geçirme.|
 | [Kaynakları silinmeye karşı kilitle](scripts/cli/cassandra/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Kaynakların kaynak kilitleri ile silinmesini engelleyin.|
 |||
 
@@ -70,7 +70,7 @@ Bu örnekler tüm Azure Cosmos DB API 'Leri için geçerlidir
 |---|---|
 | [Azure Cosmos hesabı, veritabanı ve grafik oluşturma](scripts/cli/gremlin/create.md?toc=%2fcli%2fazure%2ftoc.json)| Gremlin API için bir Azure Cosmos DB hesabı, veritabanı ve grafik oluşturur. |
 | [Otomatik ölçeklendirme ile bir Azure Cosmos hesabı, veritabanı ve grafik oluşturma](scripts/cli/gremlin/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Gremlin API için otomatik ölçeklendirmeyi olan bir Azure Cosmos DB hesabı, veritabanı ve grafik oluşturur. |
-| [Aktarım hızını değiştirme](scripts/cli/gremlin/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Bir veritabanında ve grafikte RU/s 'yi güncelleştirin.|
+| [Aktarım hızı işlemleri](scripts/cli/gremlin/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Bir veritabanında ve grafikte otomatik ölçeklendirme ve standart verimlilik arasında okuma, güncelleştirme ve geçirme.|
 | [Kaynakları silinmeye karşı kilitle](scripts/cli/gremlin/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Kaynakların kaynak kilitleri ile silinmesini engelleyin.|
 |||
 
@@ -80,6 +80,6 @@ Bu örnekler tüm Azure Cosmos DB API 'Leri için geçerlidir
 |---|---|
 | [Azure Cosmos hesabı ve tablosu oluşturma](scripts/cli/table/create.md?toc=%2fcli%2fazure%2ftoc.json)| Tablo API'si için bir Azure Cosmos DB hesabı ve tablo oluşturur. |
 | [Otomatik ölçeklendirme ile bir Azure Cosmos hesabı ve tablosu oluşturma](scripts/cli/table/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Tablo API'si için otomatik ölçeklendirmeyi olan bir Azure Cosmos DB hesabı ve tablo oluşturur. |
-| [Aktarım hızını değiştirme](scripts/cli/table/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Bir tablodaki RU/s 'yi güncelleştirin.|
+| [Aktarım hızı işlemleri](scripts/cli/table/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Bir tablodaki otomatik ölçeklendirme ve standart verimlilik arasında okuma, güncelleştirme ve geçirme.|
 | [Kaynakları silinmeye karşı kilitle](scripts/cli/table/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Kaynakların kaynak kilitleri ile silinmesini engelleyin.|
 |||

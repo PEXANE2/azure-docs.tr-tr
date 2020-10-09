@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: anavin
-ms.openlocfilehash: ffea6cdd1c8558a07559829b025cb5338cc59ee3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3a20b69189226486de8cfceb95e2fa79a976cb12
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88586724"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841042"
 ---
 # <a name="whats-new-in-azure-load-balancer"></a>Azure Load Balancer yenilikler nelerdir?
 
@@ -29,6 +29,7 @@ Ayrıca en son Azure Load Balancer güncelleştirmelerini bulabilir ve RSS akı�
 
 | Tür |Ad |Açıklama  |Eklenme tarihi  |
 | ------ |---------|---------|---------|
+| Özellik | Kaynak grupları arasında taşınmasına yönelik destek | [Kaynak grubu](https://azure.microsoft.com/updates/standard-resource-group-move/)için standart Load Balancer ve standart genel IP desteği. | 2020 Ekim |
 | Özellik | IP tabanlı arka uç havuzu yönetimi desteği (Önizleme) | Azure Load Balancer, bir arka uç havuzundan IPv4 veya IPv6 adresleri aracılığıyla kaynak eklemeyi ve kaldırmayı destekler. Bu, kapsayıcıların, sanal makinelerin ve Load Balancer ilişkili sanal makine ölçek kümelerinin kolay yönetilmesini mümkün. Ayrıca, ilişkili kaynaklar oluşturulmadan önce, bir arka uç havuzunun parçası olarak IP adreslerinin ayrılması sağlanır. [Daha fazla bilgi edinin](backend-pool-management.md)|Temmuz 2020 |
 | Özellik| Azure Izleyici kullanarak Öngörüler Azure Load Balancer | Ağlar için Azure Izleyici 'nin bir parçası olarak oluşturulan müşteriler artık tüm Load Balancer yapılandırmalarına ve sistem durumu panolarına ait, Azure portal ölçümleriyle önceden yapılandırılmış standart yük dengeleyiciler için topik haritalar sahibi vardır. [Başlayın ve daha fazla bilgi edinin](https://azure.microsoft.com/blog/introducing-azure-load-balancer-insights-using-azure-monitor-for-networks/) | Haziran 2020 |
 | Doğrulama | HA bağlantı noktaları için doğrulama ekleme | HA bağlantı noktası kurallarının ve HA olmayan bağlantı noktası kurallarının yalnızca kayan IP etkin olduğunda yapılandırılamasından emin olmak için bir doğrulama eklenmiştir. Daha önce bu yapılandırma, istendiği gibi çalışmaz, ancak işe devam etmez. İşlev değişikliği yapılmadı. [Buradan](load-balancer-ha-ports-overview.md#limitations) daha fazla bilgi edinebilirsiniz| Haziran 2020 |

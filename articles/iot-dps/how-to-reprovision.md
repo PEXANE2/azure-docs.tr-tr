@@ -7,12 +7,12 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 0ded494debab19daa15a953715b1ab7b0b10ad18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5cc5b557aa4dff793f7e87093eeb65028da4f8c
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74974913"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839801"
 ---
 # <a name="how-to-reprovision-devices"></a>Cihazları yeniden sağlama
 
@@ -75,7 +75,7 @@ Aşağıdaki adımlar, bir cihazın kaydı için ayırma ilkesini yapılandırı
 
 4. Değişikliklerinizi temel alarak cihazın yeniden sağlamasını etkinleştirmek için **Kaydet** ' e tıklayın.
 
-    ![Kayıt ayırma ilkesi seçin](./media/how-to-reprovision/reprovisioning-policy.png)
+    ![Yaptığınız değişiklikleri ve Kaydet düğmesini vurgulayan ekran görüntüsü.](./media/how-to-reprovision/reprovisioning-policy.png)
 
 
 

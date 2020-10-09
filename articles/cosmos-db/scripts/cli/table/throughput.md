@@ -1,30 +1,30 @@
 ---
-title: Azure Cosmos DB için Tablo API'si tablosu için RU/sn 'yi Güncelleştir
-description: Azure Cosmos DB için Tablo API'si tablosu için RU/sn 'yi Güncelleştir
+title: Azure Cosmos DB Tablo API'si kaynakları için üretilen iş (RU/s) işlemleri için Azure CLı betikleri
+description: Azure Cosmos DB Tablo API'si kaynakları için üretilen iş (RU/s) işlemleri için Azure CLı betikleri
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-ms.date: 07/29/2020
-ms.openlocfilehash: 3f3a39e546c83620ded539180197f6fda760260f
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 10/07/2020
+ms.openlocfilehash: 19fe3ecd3b8127c50ef90ef8195afbf14b04509b
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431545"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839359"
 ---
-# <a name="update-rus-for-a-table-api-table-for-azure-cosmos-db-azure-cli"></a>Azure Cosmos DB Azure CLı için Tablo API'si tablosu için RU/sn 'yi güncelleştirme
+# <a name="throughput-rus-operations-with-azure-cli-for-a-table-for-azure-cosmos-db-table-api"></a>Azure Cosmos DB için bir tablo için Azure CLı ile üretilen iş (RU/s) işlemleri Tablo API'si
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu konu başlığı altında, Azure CLı sürüm 2.9.1 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu konu başlığı altında, Azure CLı sürüm 2.12.1 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Örnek betik
 
-Bu betik bir Tablo API'si tablosu oluşturur ve ardından tablonun üretilen iş miktarını günceller.
+Bu betik bir Tablo API'si tablosu oluşturur ve ardından tablonun üretilen iş miktarını günceller. Komut dosyası daha sonra standart 'den otomatik ölçeklendirme aktarım hızına geçirilir ve sonra otomatik ölçeklendirme üretilen işinin değerini geçiş yapıldıktan sonra okur.
 
-[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/table/throughput.sh "Update RU/s for a Table API table.")]
+[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/table/throughput.sh "Throughput operations for Table API.")]
 
 ## <a name="clean-up-deployment"></a>Dağıtımı temizleme
 
@@ -43,7 +43,8 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | [az group create](/cli/azure/group#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Azure Cosmos DB hesabı oluşturur. |
 | [az cosmosdb Table Create](/cli/azure/cosmosdb/table#az-cosmosdb-table-create) | Azure Cosmos Tablo API'si tablosu oluşturur. |
-| [az cosmosdb tablo üretilen iş güncelleştirmesi](/cli/azure/cosmosdb/table/throughput#az-cosmosdb-table-throughput-update) | Azure Cosmos Tablo API'si tablosu için RU/sn 'yi güncelleştirin. |
+| [az cosmosdb tablo üretilen iş güncelleştirmesi](/cli/azure/cosmosdb/table/throughput#az-cosmosdb-table-throughput-update) | Azure Cosmos Tablo API'si tablosu için üretilen işi güncelleştirin. |
+| [az cosmosdb tablo aktarım hızı geçişi](/cli/azure/cosmosdb/table/throughput#az-cosmosdb-table-throughput-migrate) | Azure Cosmos Tablo API'si tablosu için aktarım hızını geçirin. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 6e8e6feb064a5d26eb6cb72b521d3f9df0380086
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: fc62c87fd12457c60d3eb26cba6814aa1df76f87
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360115"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839223"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>İstemci uygulamasına özel komutlar etkinliği gönder
 
@@ -154,7 +154,7 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 1. `turn on the tv` deyin
 1. TV 'nin görsel durumu "açık" olarak değiştirilmelidir
    > [!div class="mx-imgBorder"]
-   > ![Etkinlik yükünü gönder](media/custom-commands/send-activity-to-client-turn-on-tv.png)
+   > ![T V 'nin görsel durumunun artık açık olduğunu gösteren ekran görüntüsü.](media/custom-commands/send-activity-to-client-turn-on-tv.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

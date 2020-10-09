@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 1fb05b52bbe3e8f544b17537ef9070e5b2b0b77b
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 81a65c088fd83ce179f67edd1ecdb96149dd1614
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460178"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840260"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini yapılandırma
 Bu konuda, Redsıs örnekleri için Azure önbelleğiniz için kullanılabilen yapılandırma açıklanmaktadır. Bu konu, Redsıs örnekleri için Azure önbelleği için varsayılan Redsıs sunucu yapılandırmasını da içerir.
@@ -33,7 +33,7 @@ Redsıs ayarları için Azure önbelleği, **Kaynak menüsü**kullanılarak **re
 * [Genel Bakış](#overview)
 * [Etkinlik günlüğü](#activity-log)
 * [Erişim denetimi (IAM)](#access-control-iam)
-* [Etiketler](#tags)
+* [Lerimi](#tags)
 * [Sorunları tanılama ve çözme](#diagnose-and-solve-problems)
 * [Ayarlar](#settings)
     * [Erişim tuşları](#access-keys)
@@ -169,11 +169,11 @@ Daha fazla bilgi için bkz. [Redsıs keyspace bildirimleri](https://redis.io/top
 ## <a name="azure-cache-for-redis-advisor"></a>Redsıs Danışmanı için Azure önbelleği
 **Redsıs Advisor dikey penceresinde Azure önbelleği** önbelleğiniz için öneriler görüntüler. Normal işlemler sırasında hiçbir öneri gösterilmez.
 
-![Öneriler](./media/cache-configure/redis-cache-no-recommendations.png)
+![Önerilerin nerede görüntülendiğini gösteren ekran görüntüsü.](./media/cache-configure/redis-cache-no-recommendations.png)
 
 Önbelleğinizin yüksek bellek kullanımı, ağ bant genişliği veya sunucu yükü gibi işlemleri sırasında herhangi bir koşul oluşursa, **redsıs dikey penceresinde Azure önbelleğinde** bir uyarı görüntülenir.
 
-![Öneriler](./media/cache-configure/redis-cache-recommendations-alert.png)
+![Redsıs için Azure önbelleğinde uyarıların nerede görüntülendiğini gösteren ekran görüntüsü.](./media/cache-configure/redis-cache-recommendations-alert.png)
 
 **Öneriler** dikey penceresinde daha fazla bilgi bulunabilir.
 
@@ -258,13 +258,13 @@ Bir bakım penceresi belirtmek için, istenen günleri denetleyin ve her gün i�
 >
 >
 
-### <a name="firewall"></a>Güvenlik duvarı
+### <a name="firewall"></a>Güvenlik Duvarı
 
 Güvenlik duvarı kuralları yapılandırması, Redsıs katmanlarında tüm Azure önbelleği için kullanılabilir.
 
 Önbellek güvenlik duvarı kurallarını görüntülemek ve yapılandırmak için **güvenlik duvarı** ' na tıklayın.
 
-![Güvenlik duvarı](./media/cache-configure/redis-firewall-rules.png)
+![Güvenlik Duvarı](./media/cache-configure/redis-firewall-rules.png)
 
 Bir başlangıç ve bitiş IP adresi aralığı ile güvenlik duvarı kuralları belirtebilirsiniz. Güvenlik duvarı kuralları yapılandırıldığında, yalnızca belirtilen IP adresi aralıklarından gelen istemci bağlantıları önbelleğe bağlanabilir. Bir güvenlik duvarı kuralı kaydedildiğinde, kural yürürlüğe girmeden önce kısa bir gecikme olur. Bu gecikme genellikle bir dakikadan azdır.
 
@@ -314,7 +314,7 @@ Dışarı aktarma işlemi, redin için Azure önbelleğinde depolanan verileri R
 
 Kümelemenin etkinleştirildiği Premium bir önbelleğiniz varsa, önbelleğin hangi parçaları yeniden başlatılacağını seçebilirsiniz.
 
-![Yeniden başlatma](./media/cache-configure/redis-cache-reboot-cluster.png)
+![Önbelleğin hangi parçaların yeniden başlatılması gerektiğini gösteren ekran görüntüsü.](./media/cache-configure/redis-cache-reboot-cluster.png)
 
 Önbelleğinizin bir veya daha fazla düğümünü yeniden başlatmak için, istenen düğümleri seçin ve **Yeniden Başlat**' a tıklayın. Kümelendirmeyi etkin bir Premium önbelleğiniz varsa, yeniden başlatılacak olan parça (ler) i seçin ve ardından **Yeniden Başlat**' a tıklayın. Birkaç dakika sonra, seçilen düğüm (ler) i yeniden başlatılır ve birkaç dakika sonra yeniden çevrimiçi olacak.
 
@@ -474,11 +474,11 @@ Redsıs örnekleri için Azure önbelleğiniz için, tüm önbellek katmanların
 
 Redsıs konsoluna erişmek için, **redsıs** dikey penceresinde **konsol** ' a tıklayın.
 
-![Redsıs konsolu](./media/cache-configure/redis-console-menu.png)
+![Konsol düğmesini vurgulayan ekran görüntüsü.](./media/cache-configure/redis-console-menu.png)
 
 Önbellek Örneğinizde komut vermek için konsola istenen komutu yazın.
 
-![Redsıs konsolu](./media/cache-configure/redis-console.png)
+![Giriş komutu ve sonuçlarıyla birlikte Redsıs konsolunu gösteren ekran görüntüsü.](./media/cache-configure/redis-console.png)
 
 
 ### <a name="using-the-redis-console-with-a-premium-clustered-cache"></a>Redsıs konsolunu Premium kümelenmiş önbelleğiyle kullanma

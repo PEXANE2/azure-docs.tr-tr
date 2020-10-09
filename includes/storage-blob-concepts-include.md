@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/05/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 7c3438631dca921989309bb8701e113cb5ce3ff2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cb4cac18f887a72c05fe520d6103dc00399cc05e
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89570109"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91829253"
 ---
 Azure Blob depolama, Microsoft’un buluta yönelik nesne depolama çözümüdür. Blob depolama, çok miktarda yapılandırılmamış veriyi depolamak için iyileştirilmiştir. Yapılandırılmamış veriler, metin veya ikili veriler gibi belirli bir veri modeline veya tanımına bağlı olmayan bir veri.
 
@@ -32,7 +32,7 @@ Kullanıcılar veya istemci uygulamaları, blob depolamadaki nesnelere, dünyan�
 
 * [.NET](/dotnet/api/overview/azure/storage?view=azure-dotnet)
 * [Java](https://docs.microsoft.com/java/api/overview/azure/storage)
-* [Node.js](https://azure.github.io/azure-storage-node)
+* [Node.js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage)
 * [Python](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-python)
 * [Git](https://github.com/azure/azure-storage-blob-go/)
 * [PHP](https://azure.github.io/azure-storage-php/)

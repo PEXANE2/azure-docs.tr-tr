@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 03/15/2020
 ms.author: matjazl
 ms.reviewer: dseven
-ms.openlocfilehash: c4a78168f2759f9d7bb9e50165b8cf03c71ecab5
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 1df2d112814c93261c364883f4b834e0bdb657bb
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845946"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839920"
 ---
 # <a name="configure-azure-rbac-for-fhir"></a>FHıR için Azure RBAC 'yi yapılandırma 
 
@@ -31,11 +31,11 @@ Azure RBAC 'yi kullanmak için, FHıR için Azure API 'nizin, veri düzlemi içi
 
 Kullanıcıları, hizmet sorumlularını veya grupları FHıR veri düzlemine erişim izni vermek için **erişim denetimi (IAM)** öğesine tıklayın, ardından **rol atamaları** ' na tıklayın ve **+ Ekle**' ye tıklayın:
 
-:::image type="content" source="media/rbac/add-azure-rbac-role-assignment.png" alt-text="Azure rol ataması Ekle":::
+:::image type="content" source="media/rbac/add-azure-rbac-role-assignment.png" alt-text="Azure RBAC modunu onaylama":::
 
 **Rol** seçiminde, fhır veri düzlemi için yerleşik rollerden birini arayın:
 
-:::image type="content" source="media/rbac/built-in-fhir-data-roles.png" alt-text="Yerleşik FHıR veri rolleri":::
+:::image type="content" source="media/rbac/built-in-fhir-data-roles.png" alt-text="Azure RBAC modunu onaylama":::
 
 Arasından seçim yapabilirsiniz:
 
@@ -54,7 +54,7 @@ FHıR için Azure API 'SI, kararları 5 dakikaya kadar önbelleğe alacak. İzin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, FHıR veri düzlemi için Azure rolleri atamayı öğrendiniz. Daha sonra FHıR için Azure API 'SI için ek ayarlar hakkında bilgi edinin:
+Bu makalede, FHıR veri düzlemi için Azure rolleri atamayı öğrendiniz. FHIR için Azure API 'SI ile ilgili ek ayarlar hakkında bilgi edinmek için:
  
 >[!div class="nextstepaction"]
->[Ek ayarlar FHıR için Azure API](azure-api-for-fhir-additional-settings.md)
+>[FHıR için Azure API için ek ayarlar](azure-api-for-fhir-additional-settings.md)

@@ -1,17 +1,17 @@
 ---
 title: İstekleri yönlendirmek için bir ağ geçidi yapılandırma
 description: Service Fabric ağ üzerinde çalışan uygulamanız için gelen trafiği işleyen ağ geçidini nasıl yapılandıracağınızı öğrenin.
-author: dkkapur
+author: georgewallace
 ms.topic: conceptual
 ms.date: 11/28/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ec408403d4baa0f211c6bfe867a15c96513693cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa3ac9d8835cd17387346bb29b3e7c30f286cd1f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75461959"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839733"
 ---
 # <a name="configure-a-gateway-resource-to-route-requests"></a>İstekleri yönlendirmek için bir ağ geçidi kaynağı yapılandırma
 
@@ -26,11 +26,11 @@ Ağ Geçidi kaynağı, uygulamanızın ağı ile temeldeki altyapının ağı (a
 ### <a name="gateway-resource-metadata"></a>Ağ Geçidi kaynak meta verileri
 
 Bir ağ geçidi aşağıdaki meta verilerle bildiriliyor:
-* `apiVersion`-"2018-09-01-Preview" (veya sonraki bir sürümü) olarak ayarlanması gerekiyor
-* `name`-Bu ağ geçidi için bir dize adı
-* `type`-"Microsoft. Servicefabrickafes/Gateway"
-* `location`-Uygulamanızın/ağınızın konumuna ayarlanmalıdır; genellikle dağıtımınızdaki konum parametresine bir başvuru olur
-* `dependsOn`-Bu ağ geçidinin, için bir giriş noktası olarak kullanılacak ağ
+* `apiVersion` -"2018-09-01-Preview" (veya sonraki bir sürümü) olarak ayarlanması gerekiyor
+* `name` -Bu ağ geçidi için bir dize adı
+* `type` -"Microsoft. Servicefabrickafes/Gateway"
+* `location` -Uygulamanızın/ağınızın konumuna ayarlanmalıdır; genellikle dağıtımınızdaki konum parametresine bir başvuru olur
+* `dependsOn` -Bu ağ geçidinin, için bir giriş noktası olarak kullanılacak ağ
 
 Azure Resource Manager (JSON) dağıtım şablonunda şöyle görünür: 
 
@@ -79,9 +79,9 @@ Yönlendirme kuralları her bağlantı noktası temelinde belirtilir. Her giriş
 #### <a name="tcp-routing-rules"></a>TCP yönlendirme kuralları 
 
 TCP yönlendirme kuralı aşağıdaki özelliklerden oluşur: 
-* `name`-seçtiğiniz herhangi bir dize olabilecek kurala başvuru 
-* `port`-gelen istekler için dinlemek için bağlantı noktası 
-* `destination`- `applicationName` `serviceName` `endpointName` isteklerin yönlendirilmek zorunda olduğu yerde,, ve içeren uç nokta belirtimi
+* `name` -seçtiğiniz herhangi bir dize olabilecek kurala başvuru 
+* `port` -gelen istekler için dinlemek için bağlantı noktası 
+* `destination` - `applicationName` `serviceName` `endpointName` isteklerin yönlendirilmek zorunda olduğu yerde,, ve içeren uç nokta belirtimi
 
 Örnek bir TCP yönlendirme kuralı aşağıda verilmiştir:
 
@@ -106,14 +106,14 @@ TCP yönlendirme kuralı aşağıdaki özelliklerden oluşur:
 #### <a name="http-routing-rules"></a>HTTP yönlendirme kuralları 
 
 Bir HTTP yönlendirme kuralı aşağıdaki özelliklerden oluşur: 
-* `name`-seçtiğiniz herhangi bir dize olabilecek kurala başvuru 
-* `port`-gelen istekler için dinlemek için bağlantı noktası 
-* `hosts`-Yukarıda belirtilen bağlantı noktasında çeşitli "konaklara" gelen isteklere uygulanan bir ilke dizisi. Konaklar, ağda çalışan uygulamalar ve hizmetler kümesidir ve gelen isteklere (örn. bir Web uygulaması) hizmet verebilir. Ana bilgisayar ilkeleri sırayla yorumlanıyor, bu nedenle aşağıdakileri azalan düzeyde ayrıntısıyla olarak oluşturmanız gerekir
-    * `name`-aşağıdaki yönlendirme kurallarının belirtildiği konağın DNS adı. Burada "*" kullanılması, tüm konaklar için yönlendirme kuralları oluşturur.
-    * `routes`-Bu belirli ana bilgisayar için bir ilke dizisi
-        * `match`-Bu kural için, bir öğesine göre uygulanacak gelen istek yapısının belirtimi`path`
-            * `path`-bir `value` (gelen URI), `rewrite` (isteğin iletilmesini istediğiniz) ve a `type` (Şu anda yalnızca "önek" olabilir) içerir
-            * `header`-isteğin, yol belirtimiyle (yukarıda) eşleşiyorsa, isteğin üst bilgisinde eşleşmesi için isteğe bağlı bir üst bilgi dizisi değeri.
+* `name` -seçtiğiniz herhangi bir dize olabilecek kurala başvuru 
+* `port` -gelen istekler için dinlemek için bağlantı noktası 
+* `hosts` -Yukarıda belirtilen bağlantı noktasında çeşitli "konaklara" gelen isteklere uygulanan bir ilke dizisi. Konaklar, ağda çalışan uygulamalar ve hizmetler kümesidir ve gelen isteklere (örn. bir Web uygulaması) hizmet verebilir. Ana bilgisayar ilkeleri sırayla yorumlanıyor, bu nedenle aşağıdakileri azalan düzeyde ayrıntısıyla olarak oluşturmanız gerekir
+    * `name` -aşağıdaki yönlendirme kurallarının belirtildiği konağın DNS adı. Burada "*" kullanılması, tüm konaklar için yönlendirme kuralları oluşturur.
+    * `routes` -Bu belirli ana bilgisayar için bir ilke dizisi
+        * `match` -Bu kural için, bir öğesine göre uygulanacak gelen istek yapısının belirtimi `path`
+            * `path` -bir `value` (gelen URI), `rewrite` (isteğin iletilmesini istediğiniz) ve a `type` (Şu anda yalnızca "önek" olabilir) içerir
+            * `header` -isteğin, yol belirtimiyle (yukarıda) eşleşiyorsa, isteğin üst bilgisinde eşleşmesi için isteğe bağlı bir üst bilgi dizisi değeri.
               * her giriş `name` (eşleştirilecek üstbilginin dize adı), `value` (istekteki üstbilginin dize değeri) ve a `type` (Şu anda yalnızca "tam" olabilir)
         * `destination`-istek eşleşiyorsa,, ve kullanılarak belirtilen bu hedefe yönlendirilir. `applicationName` `serviceName``endpointName`
 

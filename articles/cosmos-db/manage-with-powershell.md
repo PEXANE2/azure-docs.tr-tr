@@ -1,22 +1,22 @@
 ---
-title: PowerShell kullanarak Azure Cosmos DB oluşturma ve yönetme
-description: Azure Cosmos hesaplarınızı, veritabanlarınızı, Kapsayıcılarınızı ve aktarım hızını yönetmek Azure PowerShell kullanın.
+title: PowerShell 'i kullanarak Azure Cosmos DB Core (SQL) API kaynaklarını yönetme
+description: PowerShell kullanarak Azure Cosmos DB Core (SQL) API kaynaklarını yönetme.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 09/18/2020
+ms.date: 10/07/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 77c91d96beb2722b7fce54be8a1db32d66be6196
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 652c546c5a38543e89f7a3b5ab8bc036c8d80911
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767545"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840889"
 ---
-# <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>PowerShell kullanarak Azure Cosmos DB SQL API kaynaklarını yönetme
+# <a name="manage-azure-cosmos-db-core-sql-api-resources-using-powershell"></a>PowerShell kullanarak Azure Cosmos DB Core (SQL) API kaynaklarını yönetme
 
-Aşağıdaki kılavuzda hesap, veritabanı, kapsayıcı ve aktarım hızı gibi Azure Cosmos DB kaynaklarının yönetimine yönelik betik oluşturmak ve yönetimini otomatikleştirmek için PowerShell’in nasıl kullanılacağı açıklanır.
+Aşağıdaki kılavuzda, Cosmos hesabı, veritabanı, kapsayıcısı ve verimlilik dahil olmak üzere Azure Cosmos DB Çekirdek (SQL) API kaynaklarının yönetimi ve otomatik hale getirmek için PowerShell 'in nasıl kullanılacağı açıklanmaktadır.
 
 > [!NOTE]
 > Bu makaledeki örneklerde [az. CosmosDB](/powershell/module/az.cosmosdb) yönetim cmdlet 'leri kullanılır. En son değişiklikler için [az. CosmosDB](/powershell/module/az.cosmosdb) API başvuru sayfasına bakın.
@@ -169,6 +169,7 @@ Update-AzCosmosDBAccountRegion `
 Write-Host "Update-AzCosmosDBAccountRegion returns before the region update is complete."
 Write-Host "Check account in Azure portal or using Get-AzCosmosDBAccount for region status."
 ```
+
 ### <a name="enable-multiple-write-regions-for-an-azure-cosmos-account"></a><a id="multi-region-writes"></a> Azure Cosmos hesabı için birden çok yazma bölgesini etkinleştirme
 
 ```azurepowershell-interactive
@@ -352,6 +353,7 @@ Aşağıdaki bölümlerde aşağıdakiler de dahil olmak üzere Azure Cosmos DB 
 * [Azure Cosmos DB veritabanı oluşturma](#create-db)
 * [Paylaşılan verimlilik ile Azure Cosmos DB veritabanı oluşturma](#create-db-ru)
 * [Azure Cosmos DB veritabanının verimini al](#get-db-ru)
+* [Veritabanı aktarım hızını otomatik ölçeklendirmeyi geçirme](#migrate-db-ru)
 * [Bir hesaptaki tüm Azure Cosmos DB veritabanlarını listeleme](#list-db)
 * [Tek bir Azure Cosmos DB veritabanı al](#get-db)
 * [Azure Cosmos DB veritabanını silme](#delete-db)
@@ -397,6 +399,20 @@ Get-AzCosmosDBSqlDatabaseThroughput `
     -ResourceGroupName $resourceGroupName `
     -AccountName $accountName `
     -Name $databaseName
+```
+
+## <a name="migrate-database-throughput-to-autoscale"></a><a id="migrate-db-ru"></a>Veritabanı aktarım hızını otomatik ölçeklendirmeyi geçirme
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+
+Invoke-AzCosmosDBSqlDatabaseThroughputMigration `
+    -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName `
+    -Name $databaseName `
+    -ThroughputType Autoscale
 ```
 
 ### <a name="get-all-azure-cosmos-db-databases-in-an-account"></a><a id="list-db"></a>Bir hesaptaki tüm Azure Cosmos DB veritabanlarını al
@@ -480,6 +496,7 @@ Aşağıdaki bölümlerde aşağıdakiler dahil Azure Cosmos DB kapsayıcısın�
 * [Otomatik ölçeklendirme ile Azure Cosmos DB kapsayıcısı oluşturma](#create-container-autoscale)
 * [Büyük bölüm anahtarı ile Azure Cosmos DB kapsayıcısı oluşturma](#create-container-big-pk)
 * [Azure Cosmos DB kapsayıcısının verimini al](#get-container-ru)
+* [Kapsayıcı aktarım hızını Otomatik ölçeklendirmeye geçir](#migrate-container-ru)
 * [Özel dizin oluşturma ile Azure Cosmos DB kapsayıcısı oluşturma](#create-container-custom-index)
 * [Dizin oluşturma kapalıyken Azure Cosmos DB kapsayıcısı oluşturma](#create-container-no-index)
 * [Benzersiz anahtar ve TTL ile Azure Cosmos DB kapsayıcısı oluşturma](#create-container-unique-key-ttl)
@@ -565,6 +582,22 @@ Get-AzCosmosDBSqlContainerThroughput `
     -AccountName $accountName `
     -DatabaseName $databaseName `
     -Name $containerName
+```
+
+### <a name="migrate-container-throughput-to-autoscale"></a><a id="migrate-container-ru"></a>Kapsayıcı aktarım hızını Otomatik ölçeklendirmeye geçir
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+
+Invoke-AzCosmosDBSqlContainerThroughputMigration `
+    -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName `
+    -DatabaseName $databaseName `
+    -Name $containerName `
+    -ThroughputType Autoscale
 ```
 
 ### <a name="create-an-azure-cosmos-db-container-with-custom-index-policy"></a><a id="create-container-custom-index"></a>Özel dizin ilkesiyle bir Azure Cosmos DB kapsayıcısı oluşturma

@@ -1,54 +1,21 @@
 ---
-ms.openlocfilehash: 93c88f34e32e2057efd3eae25b1f41f58b948575
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f5e180cb85e65cf832ffe0a3746e25790644e1ba
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88682407"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828846"
 ---
-1. F5 tuşunu seçerek bir hata ayıklama oturumu başlatın. **TERMINAL** penceresinde bazı iletiler yazdırılır.
-1. Koddaki *operations.js* doğrudan yöntemleri `GraphTopologyList` ve ' i çağırır `GraphInstanceList` . Önceki hızlı başlangıçlardan sonra kaynakları temizledikten sonra bu işlem boş listeleri döndürür ve sonra duraklatılır. Enter tuşuna basın.
-    
-    ```
-    --------------------------------------------------------------------------
-    Executing operation GraphTopologyList
-    -----------------------  Request: GraphTopologyList  --------------------------------------------------
-    {
-      "@apiVersion": "1.0"
-    }
-    ---------------  Response: GraphTopologyList - Status: 200  ---------------
-    {
-      "value": []
-    }
-    --------------------------------------------------------------------------
-    Executing operation WaitForInput
-    Press Enter to continue
-    ```
-  
-  **TERMINAL** penceresinde, bir sonraki doğrudan yöntem çağrısı kümesi gösterilir:  
-  
-  * Öğesine yapılan bir çağrı `GraphTopologySet``topologyUrl` 
-  * Aşağıdaki gövdesini kullanan öğesine yapılan bir çağrı `GraphInstanceSet` :
-  
-  ```
-  {
-    "@apiVersion": "1.0",
-    "name": "Sample-Graph",
-    "properties": {
-      "topologyName": "EVRToFilesOnMotionDetection",
-      "description": "Sample graph description",
-      "parameters": [
-        {
-          "name": "rtspUrl",
-          "value": "rtsp://rtspsim:554/media/lots_015.mkv"
-        },
-        {
-          "name": "rtspUserName",
-          "value": "testuser"
-        },
-        {
-          "name": "rtspPassword",
-          "value": "testpassword"
+1. Visual Studio Code, **Uzantılar** sekmesini açın (veya CTRL + SHIFT + X tuşlarına basın) ve Azure IoT Hub aratın.
+1. Sağ tıklayıp **uzantı ayarları**' nı seçin.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/run-program/extensions-tab.png" alt-text="Uzantı ayarları&quot;:::
+1. &quot;Ayrıntılı Iletiyi göster" i arayın ve etkinleştirin.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="Uzantı ayarları&quot;:::
+1. &quot;Ayrıntılı Iletiyi göster"
         }
       ]
     }

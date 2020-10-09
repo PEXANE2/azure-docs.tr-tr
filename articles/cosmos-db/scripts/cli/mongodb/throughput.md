@@ -1,30 +1,30 @@
 ---
-title: Azure Cosmos DB için MongoDB API 'si için bir veritabanı ve koleksiyon için RU/sn 'yi Güncelleştir
-description: Azure Cosmos DB için MongoDB API 'si için bir veritabanı ve koleksiyon için RU/sn 'yi Güncelleştir
+title: MongoDB kaynakları için Azure Cosmos DB API 'SI için üretilen iş (RU/s) işlemleri için Azure CLı betikleri
+description: MongoDB kaynakları için Azure Cosmos DB API 'SI için üretilen iş (RU/s) işlemleri için Azure CLı betikleri
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
-ms.date: 07/29/2020
-ms.openlocfilehash: 6f3bd23f11abf0e72dc4b7affe54ada42e0cf712
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 10/07/2020
+ms.openlocfilehash: 785f77df117b8072f6b8970287f4051795d07167
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432168"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91838642"
 ---
-# <a name="update-rus-for-a-database-and-collection-for-mongodb-api-for-azure-cosmos-db-using-azure-cli"></a>Azure CLı kullanarak Azure Cosmos DB için MongoDB API 'sine yönelik bir veritabanı ve koleksiyon için RU/sn 'yi güncelleştirme
+# <a name="throughput-rus-operations-with-azure-cli-for-a-database-or-graph-for-azure-cosmos-db-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sine yönelik bir veritabanı veya grafik için Azure CLı ile üretilen iş (RU/s) işlemleri
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu konu başlığı altında, Azure CLı sürüm 2.9.1 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu konu başlığı altında, Azure CLı sürüm 2.12.1 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Örnek betik
 
-Bu betik, bir paylaşılan aktarım hızı ve MongoDB API 'SI için Azure Cosmos DB için adanmış aktarım hızı olan bir koleksiyon oluşturur ve ardından hem veritabanı hem de koleksiyon için üretilen işi günceller.
+Bu betik, paylaşılan aktarım hızı ile bir MongoDB veritabanı oluşturur ve ayrılmış iş hacmi olan koleksiyonu, ardından her ikisi için de üretilen işi güncelleştirir. Komut dosyası daha sonra standart 'den otomatik ölçeklendirme aktarım hızına geçirilir ve sonra otomatik ölçeklendirme üretilen işinin değerini geçiş yapıldıktan sonra okur.
 
-[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/mongodb/throughput.sh "Update RU/s for an Azure Cosmos DB MongoDB API database and collection.")]
+[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/mongodb/throughput.sh "Throughput operations for Azure Cosmos DB API for MongoDB.")]
 
 ## <a name="clean-up-deployment"></a>Dağıtımı temizleme
 
@@ -46,6 +46,8 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | [az cosmosdb MongoDB koleksiyon oluşturma](/cli/azure/cosmosdb/mongodb/collection#az-cosmosdb-mongodb-collection-create) | Azure Cosmos MongoDB API 'SI koleksiyonu oluşturur. |
 | [az cosmosdb MongoDB veritabanı aktarım hızı güncelleştirmesi](/cli/azure/cosmosdb/mongodb/database/throughput#az-cosmosdb-mongodb-database-throughput-update) | Azure Cosmos MongoDB API veritabanı için ru güncelleştirme. |
 | [az cosmosdb MongoDB koleksiyon verimlilik güncelleştirmesi](/cli/azure/cosmosdb/mongodb/collection/throughput#az-cosmosdb-mongodb-collection-throughput-update) | Azure Cosmos MongoDB API koleksiyonu için ru güncelleştirme. |
+| [az cosmosdb MongoDB veritabanı verimlilik geçişi](/cli/azure/cosmosdb/mongodb/database/throughput#az-cosmosdb-mongodb-database-throughput-migrate) | Bir veritabanı için aktarım hızını geçirin. |
+| [az cosmosdb MongoDB koleksiyon verimlilik geçişi](/cli/azure/cosmosdb/mongodb/collection/throughput#az-cosmosdb-mongodb-collection-throughput-migrate) | Bir koleksiyon için aktarım hızını geçirin. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

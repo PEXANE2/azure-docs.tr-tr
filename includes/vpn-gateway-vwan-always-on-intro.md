@@ -5,19 +5,19 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 10/07/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 4ea97e2dbee87f7ab129c4295276c9024c0212c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e40f421c0fa45d772cd333dac51fe2bdf2779f48
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80116896"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828970"
 ---
 Windows 10 VPN istemcisinin yeni bir özelliği olan her zaman açık, bir VPN bağlantısını sürdürme olanağıdır. Her zaman açık olduğunda, etkin VPN profili otomatik olarak bağlanabilir ve Kullanıcı oturum açma, ağ durumu değişikliği veya cihaz ekranı etkin gibi tetikleyicilere göre bağlı kalır.
 
-Azure 'a kalıcı Kullanıcı tüneli ve cihaz tünelleri sağlamak için Windows 10 her zaman açık olan ağ geçitleri kullanabilirsiniz. Bu makale, her zaman açık VPN Kullanıcı tüneli yapılandırmanıza yardımcı olur.
+Azure 'a kalıcı Kullanıcı tüneli ve cihaz tünelleri sağlamak için Windows 10 her zaman açık olan ağ geçitleri kullanabilirsiniz.
 
 Her zaman VPN bağlantılarında iki tür tünelden biri vardır:
 

@@ -4,12 +4,12 @@ description: Kullanılabilirlik, performans ve kullanım için ASP.NET Core Web 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: eae6117f82f3bb138edb6cea23a2c052e19fb0cf
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: cb192aa44e9e2ab8578881494852ddd41ae9094d
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803600"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839019"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core uygulamalar için Application Insights
 
@@ -106,7 +106,7 @@ Mac için Visual Studio için [el ile Kılavuzu](#enable-application-insights-se
 
     * `ApplicationInsights:InstrumentationKey`
 
-    Örneğin:
+    Örnek:
 
     * `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 
@@ -134,7 +134,7 @@ Uygulamanızı çalıştırın ve ona istek yapın. Telemetri artık Application
 
 ### <a name="ilogger-logs"></a>ILogger günlükleri
 
-`ILogger`Önem derecesi `Warning` veya daha büyük aracılığıyla yayılan Günlükler otomatik olarak yakalanır. Application Insights tarafından yakalanan günlük düzeylerini özelleştirmek için [ILogger belgelerini](ilogger.md#control-logging-level) izleyin.
+`ILogger`Önem derecesi ve üzeri aracılığıyla yayılan Günlükler `Warning` otomatik olarak yakalanır. Application Insights tarafından yakalanan günlük düzeylerini özelleştirmek için [ILogger belgelerini](ilogger.md#control-logging-level) izleyin.
 
 ### <a name="dependencies"></a>Bağımlılıklar
 
@@ -397,7 +397,7 @@ Ayrıca, [burada](#enable-application-insights-server-side-telemetry-visual-stud
 
 ### <a name="how-can-i-track-telemetry-thats-not-automatically-collected"></a>Otomatik olarak toplanmayan telemetrileri nasıl izleyebilirim?
 
-`TelemetryClient`Oluşturucu Ekleme kullanarak bir örneğini alın ve `TrackXXX()` üzerinde gerekli yöntemi çağırın. `TelemetryClient`ASP.NET Core uygulamasında yeni örnekler oluşturmanız önerilmez. Tek bir örneği `TelemetryClient` kapsayıcıda zaten kayıtlı olduğundan `DependencyInjection` `TelemetryConfiguration` telemetri geri kalanıyla birlikte paylaşır. Yeni bir `TelemetryClient` örnek oluşturmak yalnızca telemetri geri kalanından ayrı bir yapılandırmaya ihtiyaç duyduğunda önerilir.
+`TelemetryClient`Oluşturucu Ekleme kullanarak bir örneğini alın ve `TrackXXX()` üzerinde gerekli yöntemi çağırın. `TelemetryClient`ASP.NET Core uygulamasında yeni veya örnek oluşturmanız önerilmez `TelemetryConfiguration` . Tek bir örneği `TelemetryClient` kapsayıcıda zaten kayıtlı olduğundan `DependencyInjection` `TelemetryConfiguration` telemetri geri kalanıyla birlikte paylaşır. Yeni bir `TelemetryClient` örnek oluşturmak yalnızca telemetri geri kalanından ayrı bir yapılandırmaya ihtiyaç duyduğunda önerilir.
 
 Aşağıdaki örnek, bir denetleyiciden ek Telemetriyi nasıl izleyeceğinizi gösterir.
 
@@ -423,6 +423,40 @@ public class HomeController : Controller
 ```
 
 Application Insights özel veri raporlama hakkında daha fazla bilgi için bkz. [Application Insights özel ölçümler API başvurusu](./api-custom-events-metrics.md). Benzer bir yaklaşım, [GetMetric API 'si](./get-metric.md)kullanılarak Application Insights özel ölçümler göndermek için kullanılabilir.
+
+### <a name="how-do-i-customize-ilogger-logs-collection"></a>ILogger günlükleri koleksiyonunu özelleştirmek Nasıl yaparım? mı?
+
+Varsayılan olarak, yalnızca önem derecesi `Warning` ve yukarıdaki Günlükler otomatik olarak yakalanır. Bu davranışı değiştirmek için, sağlayıcının günlük yapılandırmasını `ApplicationInsights` aşağıda gösterildiği gibi açıkça geçersiz kılın.
+Aşağıdaki yapılandırma, ApplicationInsights 'ın tüm önem derecesi ve üst günlüklerini yakalamasına olanak tanır `Information` .
+
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Warning"
+    },
+    "ApplicationInsights": {
+      "LogLevel": {
+        "Default": "Information"
+      }
+    }
+  }
+}
+```
+
+Aşağıdaki, ApplicationInsights sağlayıcısının günlükleri yakalamasına neden olmaz `Information` . Bunun nedeni, SDK 'nın `ApplicationInsights` yalnızca ve üstünü yakalamalarını ve bir varsayılan günlük filtresi eklemesine olanak sağlar `Warning` . Bu nedenle, ApplicationInsights için açık bir geçersiz kılma gereklidir.
+
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information"
+    }
+  }
+}
+```
+
+[ILogger yapılandırması](ilogger.md#control-logging-level)hakkında daha fazla bilgi edinin.
 
 ### <a name="some-visual-studio-templates-used-the-useapplicationinsights-extension-method-on-iwebhostbuilder-to-enable-application-insights-is-this-usage-still-valid"></a>Bazı Visual Studio şablonları, Application Insights etkinleştirmek için ıwebhostbuilder üzerinde Useapplicationınsights () genişletme yöntemini kullandı. Bu kullanım hala geçerli mi?
 
@@ -477,7 +511,7 @@ Bu SDK `HttpContext` , .NET Core 3. X çalışan hizmeti uygulamaları dahil olm
 
 ## <a name="open-source-sdk"></a>Açık kaynaklı SDK
 
-* [Kodu okuyun ve koda katkıda bulunun](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates).
+* [Kodu okuyun ve koda katkıda bulunun](https://github.com/microsoft/ApplicationInsights-dotnet).
 
 En son güncelleştirmeler ve hata düzeltmeleri için [sürüm notlarına bakın](./release-notes.md).
 
