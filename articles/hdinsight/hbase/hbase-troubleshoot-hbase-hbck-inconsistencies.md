@@ -8,17 +8,17 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/08/2019
 ms.openlocfilehash: fa02ac0dfe229f3e82d1c1c62d83ca06a81efca6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75887334"
 ---
 # <a name="scenario-hbase-hbck-command-returns-inconsistencies-in-azure-hdinsight"></a>Senaryo: `hbase hbck` komut Azure HDInsight 'ta tutarsızlıklar döndürüyor
 
 Bu makalede, Azure HDInsight kümeleriyle etkileşim kurarken sorun giderme adımları ve olası çözümleri açıklanmaktadır.
 
-## <a name="issue-region-is-not-in-hbasemeta"></a>Sorun: bölge içinde değil`hbase:meta`
+## <a name="issue-region-is-not-in-hbasemeta"></a>Sorun: bölge içinde değil `hbase:meta`
 
 Xxx bölgesi, her bölge sunucusunda ' de listelenmemiş `hbase:meta` veya dağıtılan bölge.
 
@@ -81,7 +81,7 @@ Bu senaryoda, RegionA ve RegionC 'yi birleştirmeniz ve regionb ile RegionD 'yi,
 
 ---
 
-## <a name="issue-cant-load-regioninfo"></a>Sorun: yüklenemiyor`.regioninfo`
+## <a name="issue-cant-load-regioninfo"></a>Sorun: yüklenemiyor `.regioninfo`
 
 `.regioninfo`Bölge için yüklenemiyor `/hbase/data/default/tablex/regiony` .
 

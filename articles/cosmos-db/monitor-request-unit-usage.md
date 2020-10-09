@@ -7,10 +7,10 @@ author: kanshiG
 ms.author: govindk
 ms.date: 04/09/2020
 ms.openlocfilehash: e3ec3bc0e0c6028eb5d7a90ee1920938d792941b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85260755"
 ---
 # <a name="how-to-monitor-throughput-or-request-unit-usage-of-an-operation-in-azure-cosmos-db"></a>Azure Cosmos DB bir işlemin üretilen iş veya istek birimi kullanımını izleme
@@ -34,7 +34,7 @@ Bazı sorgulara daha fazla istek birimi olduğunu fark ederseniz, şu gibi eylem
 
 ## <a name="view-the-total-request-unit-usage-metric"></a>Toplam istek birimi kullanım ölçümünü görüntüleyin
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 1. Sol taraftaki Gezinti çubuğundan **izleyici** ' yi seçin ve **ölçümler**' i seçin.
 
@@ -42,11 +42,11 @@ Bazı sorgulara daha fazla istek birimi olduğunu fark ederseniz, şu gibi eylem
 
 1. **Ölçümler** bölmesinden > **bir kaynak seçin** > gerekli **aboneliği**ve **kaynak grubunu**seçin. **Kaynak türü**için **Azure Cosmos DB hesapları**' nı seçin, mevcut Azure Cosmos hesaplarınızdan birini seçin ve **Uygula**' yı seçin.
 
-   :::image type="content" source="./media/monitor-request-unit-usage/select-cosmos-db-account.png" alt-text="Ölçümleri görüntülemek için Azure Cosmos DB hesabı seçin":::
+   :::image type="content" source="./media/monitor-request-unit-usage/select-cosmos-db-account.png" alt-text="Azure Izleyici 'de ölçümler bölmesi":::
 
 1. Ardından, kullanılabilir ölçümler listesinden **Toplam Istek birimleri** ölçüsünü seçin. Bu listedeki tüm kullanılabilir ölçümler hakkında ayrıntılı bilgi edinmek için [kategoriye göre ölçümler](monitor-cosmos-db-reference.md) makalesine bakın. Bu örnekte **Toplam Istek birimlerini** ve toplama değeri olarak **Ort** ' i seçelim. Bu ayrıntılara ek olarak, ölçümlerin **zaman aralığını** ve **zaman parçalı yapısını** da seçebilirsiniz. En fazla, son 30 güne ait ölçümleri görüntüleyebilirsiniz.  Filtreyi uyguladıktan sonra filtreniz temelinde bir grafik görüntülenir. Seçili dönem için dakika başına tüketilen ortalama istek birimi sayısını görebilirsiniz.  
 
-   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-metric.png" alt-text="Azure portal bir ölçüm seçin":::
+   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-metric.png" alt-text="Azure Izleyici 'de ölçümler bölmesi":::
 
 ## <a name="filters-for-request-unit-usage"></a>İstek birimi kullanımı için filtreler
 
@@ -54,11 +54,11 @@ Ayrıca ölçümleri filtreleyebilir ve belirli bir **CollectionName**, **Databa
 
 Her bir işlemin istek birimi kullanımını toplam (Toplam) veya ortalamaya göre almak için, **bölmeyi Uygula** ' yı seçin ve aşağıdaki görüntüde gösterildiği gibi **işlem türünü** ve filtre değerini seçin:
 
-   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-operations.png" alt-text="Azure izleyici 'de işlemler için Cosmos DB Isteği birimleri":::
+   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-operations.png" alt-text="Azure Izleyici 'de ölçümler bölmesi":::
 
 İstek birim kullanımını koleksiyona göre görmek isterseniz, **bölmeyi Uygula** ' yı seçin ve koleksiyon adını filtre olarak seçin. Panoda bulunan koleksiyonlar arasından aşağıdaki gibi bir sohbet görürsünüz. Daha sonra daha fazla ayrıntı görüntülemek için belirli bir koleksiyon adı seçebilirsiniz:
 
-   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-collection.png" alt-text="Azure izleyici 'de koleksiyon tarafından tüm işlemler için Istek birimleri Cosmos DB":::
+   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-collection.png" alt-text="Azure Izleyici 'de ölçümler bölmesi":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: deb64aa0c344e818b5fd85ca1a161293fd35d6f6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88554024"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>Öğretici: Percogeç ile tümleştirme Azure Active Directory
@@ -32,7 +32,7 @@ Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Percogeç olarak yapılandırmak için şunları yapmanız gerekir:
 
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı Percogeç olarak yapılandırmak için şu adım
 
     ![Çoklu oturum açma yöntemi seçin](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesini seçin:
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesini seçin:
 
     ![Düzenle simgesi](common/edit-urls.png)
 
@@ -104,7 +104,7 @@ Azure AD çoklu oturum açmayı Percogeç olarak yapılandırmak için şu adım
 5. Uygulamayı SP tarafından başlatılan modda yapılandırmak istiyorsanız **ek URL 'Ler ayarla** ' yı seçin ve **oturum açma URL 'si** kutusuna şunu girin **https://percolate.com/app/login** :
 
    ![Percogeç etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
-6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini**kopyalamak için **Kopyala** simgesini seçin. Bu URL 'YI kaydedin.
+6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini**kopyalamak için **Kopyala** simgesini seçin. Bu URL 'YI kaydedin.
 
     ![Uygulama Federasyon meta veri URL 'sini Kopyala](common/copy-metadataurl.png)
 

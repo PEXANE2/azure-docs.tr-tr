@@ -11,10 +11,10 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.openlocfilehash: ddfe8b6010ddc241364ccf7b2d4f5f648bd3ce0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72248604"
 ---
 # <a name="how-to-contact-microsoft-genomics-for-support"></a>Destek için Microsoft Genomiks ile iletişim kurma
@@ -32,7 +32,7 @@ Ardından, öğesini seçin `New support request` .
 
 ![Yeni destek isteği](./media/file-support-ticket/new-support-request.png "Yeni destek isteği") 
 
-`Basics`Ve dahil olmak üzere doldurun `Issue type` `Subscription` . Sorununuzla ilgili en çok ilgisi seçin `Issue type` ; aşağıdaki görüntüde bir örnek olarak `Technical` seçilmiştir. İlgili hizmet olarak ' yi seçtiğinizden emin olun `Microsoft Genomics` .  `Microsoft Genomics`Kategori altında listelenecektir `Intelligence and Analytics` .   Öğesini seçtikten sonra `Microsoft Genomics` , sizin de `Support plan` yazmanız istenecektir.
+`Basics`Ve dahil olmak üzere doldurun `Issue type` `Subscription` . Sorununuzla ilgili en çok ilgisi seçin `Issue type` ; aşağıdaki görüntüde bir örnek olarak `Technical` seçilmiştir. İlgili hizmet olarak ' yi seçtiğinizden emin olun `Microsoft Genomics` .  `Microsoft Genomics` Kategori altında listelenecektir `Intelligence and Analytics` .   Öğesini seçtikten sonra `Microsoft Genomics` , sizin de `Support plan` yazmanız istenecektir.
 
 ![Destek isteği temel bilgiler](./media/file-support-ticket/support-request-basics.png "Destek isteği temel bilgiler")
 

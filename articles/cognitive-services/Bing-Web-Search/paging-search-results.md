@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: aahi
 ms.openlocfilehash: ea883bb294a8769b3c9be1e0eafc2e3e7c811b48
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73481731"
 ---
 # <a name="how-to-page-through-results-from-the-bing-search-apis"></a>Bing Arama API'leri sonuçları arasında sayfa oluşturma
@@ -37,19 +37,19 @@ Bing Web, özel, görüntü, haber veya Video Arama API 'Lerine bir çağrı gö
 
 ## <a name="paging-through-search-results"></a>Arama sonuçları aracılığıyla sayfalama
 
-Kullanılabilir sonuçlar aracılığıyla sayfa eklemek için isteğinizi gönderirken `count` ve `offset` sorgu parametrelerini kullanın.  
+Kullanılabilir sonuçlar aracılığıyla sayfa eklemek için `count` `offset` isteğinizi gönderirken ve sorgu parametrelerini kullanın.  
 
 > [!NOTE]
 >
-> * Bing video, resim ve haber API 'Leri ile sayfalama yalnızca genel video (`/video/search`), haber (`/news/search`) ve görüntü (`/image/search`) aramalarında geçerlidir. Popüler konular ve Kategoriler aracılığıyla sayfalama desteklenmez.  
-> * Bu `TotalEstimatedMatches` alan, geçerli sorgu için toplam arama sonucu sayısının tahminidir. `count` Ve `offset` parametrelerini ayarladığınızda bu tahmin değişebilir.
+> * Bing video, resim ve haber API 'Leri ile sayfalama yalnızca genel video ( `/video/search` ), haber ( `/news/search` ) ve görüntü ( `/image/search` ) aramalarında geçerlidir. Popüler konular ve Kategoriler aracılığıyla sayfalama desteklenmez.  
+> * Bu `TotalEstimatedMatches` alan, geçerli sorgu için toplam arama sonucu sayısının tahminidir. `count`Ve `offset` parametrelerini ayarladığınızda bu tahmin değişebilir.
 
 | Parametre | Açıklama                                                                                                                                                                |
 |-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `count`   | Yanıtta döndürülecek sonuçların sayısını belirtir. Varsayılan değerinin `count`ve talep ettiğiniz en fazla sonuç sayısının API 'ye göre değiştiğini unutmayın. Bu değerleri, [sonraki adımlar](#next-steps)altındaki başvuru belgelerinde bulabilirsiniz. |
-| `offset`  | Atlanacak sonuç sayısını belirtir. `offset` Sıfır tabanlıdır ve (`totalEstimatedMatches` - `count`) değerinden küçük olmalıdır.                                           |
+| `count`   | Yanıtta döndürülecek sonuçların sayısını belirtir. Varsayılan değerinin `count` ve talep ettiğiniz en fazla sonuç SAYıSıNıN API 'ye göre değiştiğini unutmayın. Bu değerleri, [sonraki adımlar](#next-steps)altındaki başvuru belgelerinde bulabilirsiniz. |
+| `offset`  | Atlanacak sonuç sayısını belirtir. `offset`Sıfır tabanlıdır ve () değerinden küçük olmalıdır `totalEstimatedMatches`  -  `count` .                                           |
 
-Örnek olarak, sayfa başına 15 sonuç göstermek istiyorsanız, sonuçların ilk sayfasını almak için 15 ve `count` `offset` 0 olarak ayarlanır. Sonraki her API çağrısı için 15 oranında arttırılırsınız `offset` . Aşağıdaki örnek 45 uzaklığında başlayan 15 Web sayfasını ister.
+Örnek olarak, sayfa başına 15 sonuç göstermek istiyorsanız, `count` `offset` sonuçların ilk sayfasını almak için 15 ve 0 olarak ayarlanır. Sonraki her API çağrısı için 15 oranında arttırılırsınız `offset` . Aşağıdaki örnek 45 uzaklığında başlayan 15 Web sayfasını ister.
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&count=15&offset=45&mkt=en-us HTTP/1.1  
@@ -57,7 +57,7 @@ Ocp-Apim-Subscription-Key: 123456789ABCDE
 Host: api.cognitive.microsoft.com  
 ```
 
-Varsayılan `count` değeri KULLANıRSANıZ, API aramalarınızın yalnızca `offset` sorgu parametresini belirtmeniz gerekir.  
+Varsayılan `count` değeri kullanırsanız, `offset` API aramalarınızın yalnızca sorgu parametresini belirtmeniz gerekir.  
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&offset=45&mkt=en-us HTTP/1.1  
@@ -65,12 +65,12 @@ Ocp-Apim-Subscription-Key: 123456789ABCDE
 Host: api.cognitive.microsoft.com  
 ```
 
-Bing görüntüsünü ve video API 'Lerini kullanırken yinelenen arama sonuçlarından kaçınmak için `nextOffset` değerini kullanabilirsiniz. Veya Yanıt nesnelerinden değeri alın ve bu `offset` parametre ile isteklerinizi kullanın. `Videos` `Images`  
+Bing görüntüsünü ve video API 'Lerini kullanırken `nextOffset` yinelenen arama sonuçlarından kaçınmak için değerini kullanabilirsiniz. `Images`Veya `Videos` Yanıt nesnelerinden değeri alın ve bu parametre ile isteklerinizi kullanın `offset` .  
 
 > [!NOTE]
-> Bing Web Araması API'si, Web sayfalarını, resimleri, Videoları ve haberleri içerebilen arama sonuçlarını döndürür. Bing Web Araması API'si arama sonuçlarıyla çalışırken, görüntü veya haber gibi diğer yanıt türlerini değil, yalnızca [Web sayfalarının](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webpage)sayfalamalarından olursunuz. `WebPage` Nesnelerde arama sonuçları, diğer yanıt türlerinde de görünen sonuçları içerebilir.
+> Bing Web Araması API'si, Web sayfalarını, resimleri, Videoları ve haberleri içerebilen arama sonuçlarını döndürür. Bing Web Araması API'si arama sonuçlarıyla çalışırken, görüntü veya haber gibi diğer yanıt türlerini değil, yalnızca [Web sayfalarının](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webpage)sayfalamalarından olursunuz. Nesnelerde arama sonuçları `WebPage` , diğer yanıt türlerinde de görünen sonuçları içerebilir.
 >
-> `responseFilter` Sorgu parametresini herhangi bir filtre değeri belirtmeden kullanırsanız, `count` ve `offset` parametrelerini kullanmayın. 
+> `responseFilter`Sorgu parametresini herhangi bir filtre değeri belirtmeden kullanırsanız, `count` ve `offset` parametrelerini kullanmayın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

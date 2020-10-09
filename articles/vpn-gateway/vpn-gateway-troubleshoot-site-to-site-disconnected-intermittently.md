@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 82054099a5a496e99c49135ab98ee1163af19784
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75862569"
 ---
 # <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Sorun giderme: Azure Siteden Siteye VPN bağlantısı aralıklı olarak kesiliyor
@@ -42,7 +42,7 @@ Azure sanal ağ geçidi türünü denetleyin:
 1. Microsoft Azure içindeki **yerel ağ geçidi** tanımındaki sanal ağın, alt ağların ve aralıklarının, ŞIRKET içi VPN cihazındaki yapılandırmayla aynı olduğundan emin olun.
 2. Güvenlik Ilişkilendirmesi ayarlarının eşleştiğini doğrulayın.
 
-### <a name="step-3-check-for-user-defined-routes-or-network-security-groups-on-gateway-subnet"></a>3. adım ağ geçidi alt ağında Kullanıcı tanımlı yollar veya ağ güvenlik grupları denetimi
+### <a name="step-3-check-for-user-defined-routes-or-network-security-groups-on-gateway-subnet"></a>3. adım ağ geçidi alt ağında User-Defined yollar veya ağ güvenlik grupları denetimi
 
 Ağ geçidi alt ağında Kullanıcı tanımlı bir yol, bazı trafiği kısıtlıyor ve diğer trafiğe izin verebilir. Bu, VPN bağlantısının bazı trafik için güvenilir olmadığı ve başkaları için iyi hale gelmesini sağlar. 
 

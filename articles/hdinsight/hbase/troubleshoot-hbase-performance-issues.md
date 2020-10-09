@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
 ms.openlocfilehash: 93698fadcecf190dd8bbc24a9d03978899d3c5e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75887164"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Azure HDInsight'ta Apache HBase performans sorunlarını giderme
@@ -110,7 +110,7 @@ Aşağıda, belirlediğimiz diğer özel parametrelerden bazıları ve değişen
 
 Ayarlamayı göz önünde bulundurmanız gereken ek parametreler aşağıda verilmiştir:
 
-- `Hbase.rs.cacheblocksonwrite`– Varsayılan olarak HDI 'de, bu ayar **true**olarak ayarlanır.
+- `Hbase.rs.cacheblocksonwrite` – Varsayılan olarak HDI 'de, bu ayar **true**olarak ayarlanır.
 
 - Daha sonra küçük sıkıştırmayı erteleme ayarlarına izin veren ayarlar.
 

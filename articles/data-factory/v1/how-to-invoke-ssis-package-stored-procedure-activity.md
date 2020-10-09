@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
 ms.openlocfilehash: ab3b5c2ba892205f87235f7f0ce009719016622d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85322132"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory saklı yordam etkinliğini kullanarak bir SSIS paketini çağırma
@@ -26,7 +26,7 @@ Bu makalede, bir saklı yordam etkinliği kullanarak bir Azure Data Factory işl
 > [!NOTE]
 > Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, bkz. [içindeki saklı yordam kullanarak SSIS paketlerini çağırma](../how-to-invoke-ssis-package-stored-procedure-activity.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="azure-sql-database"></a>Azure SQL Veritabanı 
 Bu makaledeki izlenecek yol, Azure SQL veritabanı 'nı kullanır. Azure SQL yönetilen örneği de kullanabilirsiniz.

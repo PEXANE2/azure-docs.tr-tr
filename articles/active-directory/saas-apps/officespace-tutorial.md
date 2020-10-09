@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: jeedes
 ms.openlocfilehash: ae8a1fa68e61e160ce08b93bf66776a050b45613
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88554205"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-officespace-software"></a>Öğretici: Officesi yazılımıyla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Officesi yazılımını Azure Active Directory (Azure AD) ile t
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -95,7 +95,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Daha fazlasına ek olarak, Officesi yazılım uygulaması aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ---------------| --------------- |
     | e-posta | Kullanıcı. Mail |
     | name | User. DisplayName |
@@ -150,15 +150,15 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Officesi yazıl�
 
 2. **Ayarlar** ' a gidin ve **Bağlayıcılar**' a tıklayın.
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/officespace-tutorial/tutorial_officespace_002.png)
+    ![Uygulama tarafında tek Sign-On yapılandırma](./media/officespace-tutorial/tutorial_officespace_002.png)
 
 3. **SAML kimlik doğrulaması**' na tıklayın.
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/officespace-tutorial/tutorial_officespace_003.png)
+    ![Uygulama tarafında tek Sign-On yapılandırma](./media/officespace-tutorial/tutorial_officespace_003.png)
 
 4. **SAML kimlik doğrulaması** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/officespace-tutorial/tutorial_officespace_004.png)
+    ![Uygulama tarafında tek Sign-On yapılandırma](./media/officespace-tutorial/tutorial_officespace_004.png)
 
     a. **Logout Provider URL** metin kutusunda, Azure Portal kopyaladığınız **Logout URL 'si** değerini yapıştırın.
 

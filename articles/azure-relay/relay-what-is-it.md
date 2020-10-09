@@ -1,16 +1,16 @@
 ---
-title: Azure Geçiş nedir? | Microsoft Belgeleri
+title: Azure Relay nedir? | Microsoft Belgeleri
 description: Bu makale, bir güvenlik duvarı bağlantısı açmak ya da kurumsal ağ altyapısına müdahale eden değişiklikler yapmak zorunda kalmadan kurumsal ağınızda çalışan şirket içi hizmetleri kullanan bulut uygulamaları geliştirmenizi sağlayan Azure Relay hizmetine genel bakış sağlamaktadır.
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 0c9a67bcad47ad2e7284bcf6e70914d2ffb06a8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85322642"
 ---
-# <a name="what-is-azure-relay"></a>Azure Geçiş nedir?
+# <a name="what-is-azure-relay"></a>Azure Relay nedir?
 Azure Relay hizmeti, kurumsal ağınızda çalışan hizmetleri güvenli bir şekilde genel buluta açmanızı sağlar. Bu şekilde, güvenlik duvarınızda bir bağlantı noktasını açmadan veya kurumsal ağ altyapınızda izinsiz değişiklikler yapmaya gerek kalmadan yapabilirsiniz. 
 
 Geçiş hizmeti, şirket içi hizmetler ile bulutta veya başka bir şirket içi ortamda çalışan uygulamalar arasında aşağıdaki senaryoları destekler. 

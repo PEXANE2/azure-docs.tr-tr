@@ -17,10 +17,10 @@ ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
 ms.openlocfilehash: 5a6da7e65a9a3e962a2df37b062792fbb990d04d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73159685"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Azure Kubernetes ağ ilkelerine genel bakış
@@ -32,7 +32,7 @@ Ağ Ilkeleri, ağ güvenlik grupları (NSG 'Ler) gibi sanal makineler için mikr
 Azure ağ ilkeleri, kapsayıcılar için VNet tümleştirmesi sağlayan Azure CNı ile birlikte çalışır. Günümüzde yalnızca Linux düğümlerinde desteklenir. Uygulamalar, trafik filtrelemeyi zorlamak için tanımlanan ilkeleri temel alan Linux IP tablosu kurallarını yapılandırır.
 
 ## <a name="planning-security-for-your-kubernetes-cluster"></a>Kubernetes kümeniz için güvenliği planlama
-Kümeniz için güvenlik uygularken, Kuzey-Güney trafiğini filtrelemek için ağ güvenlik grupları (NSG) kullanın, diğer bir deyişle, küme alt ağınızı girip bırakarak trafik ve Doğu Batı trafiği için Kubernetes ağ ilkelerini kullanın, diğer bir deyişle, kümenizdeki IP 'ler arasındaki trafik.
+Kümeniz için güvenlik uygularken, ağ güvenlik grupları (NSG) kullanarak North-South trafiği filtreleyin, diğer bir deyişle, küme alt ağınızı girip bırakarak trafik, diğer bir deyişle, kümenizdeki düğüm arasındaki trafik East-West için Kubernetes ağ ilkelerini kullanın.
 
 ## <a name="using-azure-kubernetes-network-policies"></a>Azure Kubernetes ağ ilkelerini kullanma
 Azure ağ Ilkeleri, pods için mikro segmentasyon sağlamak üzere aşağıdaki yollarla kullanılabilir.

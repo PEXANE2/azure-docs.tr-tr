@@ -9,17 +9,17 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
 ms.openlocfilehash: 30bd3187973de204f27a3be3862351550d6a56f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85260483"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>Azure Databricks Azure Cosmos DB Cassandra API verilere erişin
 
 Bu makalede, [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks)Spark 'tan Azure Cosmos DB Cassandra API nasıl çalıştığı açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure Cosmos DB Cassandra API hesabı sağlama](create-cassandra-dotnet.md#create-a-database-account)
 
@@ -47,7 +47,7 @@ Bu makalede, [Azure Databricks](https://docs.microsoft.com/azure/azure-databrick
 
 * **Cassandra Spark Bağlayıcısı:** -Azure Cosmos DB Cassandra API Spark ile bütünleştirmek Için, Cassandra Bağlayıcısı Azure Databricks kümesine eklenmelidir. Kümeyi eklemek için:
 
-  * Spark sürümü olan Databricks çalışma zamanı sürümünü gözden geçirin. Ardından, Cassandra Spark Bağlayıcısı ile uyumlu olan [Maven koordinatlarını](https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) bulun ve kümeye ekleyin. Bağlayıcı kitaplığını kümeye eklemek için ["Maven paketi veya Spark paketini karşıya yükleme"](https://docs.databricks.com/user-guide/libraries.html) makalesini inceleyin. Örneğin, "Databricks Runtime Version 4,3", "Spark 2.3.1" ve "Scala 2,11" için Maven koordinatı`spark-cassandra-connector_2.11-2.3.1`
+  * Spark sürümü olan Databricks çalışma zamanı sürümünü gözden geçirin. Ardından, Cassandra Spark Bağlayıcısı ile uyumlu olan [Maven koordinatlarını](https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) bulun ve kümeye ekleyin. Bağlayıcı kitaplığını kümeye eklemek için ["Maven paketi veya Spark paketini karşıya yükleme"](https://docs.databricks.com/user-guide/libraries.html) makalesini inceleyin. Örneğin, "Databricks Runtime Version 4,3", "Spark 2.3.1" ve "Scala 2,11" için Maven koordinatı `spark-cassandra-connector_2.11-2.3.1`
 
 * **Cassandra API özel kitaplığı Azure Cosmos DB:** -yeniden deneme Ilkesini Cassandra Spark bağlayıcısından Azure Cosmos DB Cassandra API kadar yapılandırmak için özel bir bağlantı fabrikası gerekir. `com.microsoft.azure.cosmosdb:azure-cosmos-cassandra-spark-helper:1.0.0`Kitaplığı kümeye eklemek için [Maven koordinatlarını](https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) ekleyin.
 

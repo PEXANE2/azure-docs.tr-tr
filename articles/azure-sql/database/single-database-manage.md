@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 43e28774625db0217dde1227bad160ba87750c8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85255015"
 ---
 # <a name="create-and-manage-servers-and-single-databases-in-azure-sql-database"></a>Azure SQL veritabanı 'nda sunucular ve tek veritabanları oluşturma ve yönetme
@@ -126,11 +126,11 @@ Transact-SQL ile sunucular, veritabanları ve güvenlik duvarları oluşturup y�
 |[VERITABANı OLUŞTUR](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)|Yeni bir tek veritabanı oluşturur. Yeni bir veritabanı oluşturmak için ana veritabanına bağlı olmanız gerekir.|
 | [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Bir veritabanını veya elastik havuzu değiştirir. |
 |[VERITABANıNı BıRAK](/sql/t-sql/statements/drop-database-transact-sql)|Bir veritabanını siler.|
-|[sys. database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Azure SQL veritabanı veya Azure SYNAPSE Analytics SQL havuzu için sürüm (hizmet katmanı), hizmet hedefi (Fiyatlandırma Katmanı) ve elastik havuz adı döndürür. SQL veritabanı 'ndaki bir sunucuda ana veritabanında oturum açtıysanız tüm veritabanlarına bilgi döndürür. Azure SYNAPSE Analytics için ana veritabanına bağlı olmanız gerekir.|
-|[sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Azure SQL veritabanı 'nda bir veritabanı için CPU, GÇ ve bellek tüketimi döndürür. Veritabanında etkinlik olmasa bile, her 15 saniyede bir satır vardır.|
-|[sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Azure SQL veritabanı 'nda bir veritabanının CPU kullanımını ve depolama verilerini döndürür. Veriler, beş dakikalık aralıklar içinde toplanır ve toplanır.|
-|[sys. database_connection_stats](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Veritabanı bağlantısı başarılarına ve hatalara genel bir bakış sunan SQL veritabanı bağlantı olayları için istatistikler içerir. |
-|[sys. event_log](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|Başarılı Azure SQL veritabanı bağlantılarını, bağlantı başarısızlıklarını ve kilitlenmeleri döndürür. Bu bilgileri, SQL veritabanı ile veritabanı etkinliğinizi izlemek veya sorunlarını gidermek için kullanabilirsiniz.|
+|[sys.database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Azure SQL veritabanı veya Azure SYNAPSE Analytics SQL havuzu için sürüm (hizmet katmanı), hizmet hedefi (Fiyatlandırma Katmanı) ve elastik havuz adı döndürür. SQL veritabanı 'ndaki bir sunucuda ana veritabanında oturum açtıysanız tüm veritabanlarına bilgi döndürür. Azure SYNAPSE Analytics için ana veritabanına bağlı olmanız gerekir.|
+|[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Azure SQL veritabanı 'nda bir veritabanı için CPU, GÇ ve bellek tüketimi döndürür. Veritabanında etkinlik olmasa bile, her 15 saniyede bir satır vardır.|
+|[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Azure SQL veritabanı 'nda bir veritabanının CPU kullanımını ve depolama verilerini döndürür. Veriler, beş dakikalık aralıklar içinde toplanır ve toplanır.|
+|[sys.database_connection_stats](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Veritabanı bağlantısı başarılarına ve hatalara genel bir bakış sunan SQL veritabanı bağlantı olayları için istatistikler içerir. |
+|[sys.event_log](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|Başarılı Azure SQL veritabanı bağlantılarını, bağlantı başarısızlıklarını ve kilitlenmeleri döndürür. Bu bilgileri, SQL veritabanı ile veritabanı etkinliğinizi izlemek veya sorunlarını gidermek için kullanabilirsiniz.|
 |[sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database)|Sunucunuz için sunucu düzeyinde güvenlik duvarı ayarlarını oluşturur veya güncelleştirir. Bu saklı yordam yalnızca ana veritabanında sunucu düzeyinde asıl oturum açma için kullanılabilir. Sunucu düzeyi güvenlik duvarı kuralı, yalnızca ilk sunucu düzeyi güvenlik duvarı kuralı, Azure düzeyinde izinlerle bir kullanıcı tarafından oluşturulduktan sonra Transact-SQL kullanılarak oluşturulabilir|
 |[sys.firewall_rules](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database)|Azure SQL veritabanı 'nda veritabanınızdan ilişkili sunucu düzeyi güvenlik duvarı ayarları hakkında bilgi döndürür.|
 |[sp_delete_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-delete-firewall-rule-azure-sql-database)|Sunucu düzeyi güvenlik duvarı ayarlarını sunucudan kaldırır. Bu saklı yordam yalnızca ana veritabanında sunucu düzeyinde asıl oturum açma için kullanılabilir.|

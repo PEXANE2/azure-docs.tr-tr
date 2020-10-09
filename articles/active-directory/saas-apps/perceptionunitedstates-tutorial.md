@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: ed2f2cd9fc10017619937cfd6b5644934f7631f1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88553972"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Öğretici: Perception Birleşik Devletler Azure Active Directory tümleştirme (UltiPro olmayan)
@@ -30,7 +30,7 @@ Azure AD ile Perception Birleşik Devletler Tümleştirme (non-UltiPro), aşağ�
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Perception Birleşik Devletler (non-UltiPro) ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açmayı, Perception Birleşik Devletler (non-UltiPro) ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Perception Birleşik Devletler (UltiPro olmayan) çoklu oturum açmayı yapılandırın](#configure-perception-united-states-non-ultipro-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Perception Birleşik Devletler (UltiPro olmayan) çoklu oturum açmayı yapılandırın](#configure-perception-united-states-non-ultipro-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan Perception Birleşik Devletler (UltiPro olmayan) ile bir Britta Simon 'ın bir karşılığı olan **[perception Birleşik Devletler (UltiPro olmayan) test kullanıcısı oluşturun](#create-perception-united-states-non-ultipro-test-user)** .
@@ -93,11 +93,11 @@ Azure AD çoklu oturum açmayı, Perception Birleşik Devletler (UltiPro) ile bi
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki adımları uygulayın:
+4. **SAML Ile tek Sign-On ayarlama** sayfasında, aşağıdaki adımları gerçekleştirin:
 
     ![Perception Birleşik Devletler (UltiPro olmayan) etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
 
@@ -113,7 +113,7 @@ Azure AD çoklu oturum açmayı, Perception Birleşik Devletler (UltiPro) ile bi
     
     e. Yukarıdaki değeri **yanıt URL** metin kutusuna yapıştırın.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -127,7 +127,7 @@ Azure AD çoklu oturum açmayı, Perception Birleşik Devletler (UltiPro) ile bi
 
     c. Oturum kapatma URL 'SI   
 
-### <a name="configure-perception-united-states-non-ultipro-single-sign-on"></a>Perception Birleşik Devletler (UltiPro olmayan) çoklu oturum açmayı yapılandırma
+### <a name="configure-perception-united-states-non-ultipro-single-sign-on"></a>Perception Birleşik Devletler (UltiPro olmayan) tek Sign-On yapılandırma
 
 1. Başka bir tarayıcı penceresinde, Perception Birleşik Devletler (UltiPro olmayan) Şirket sitenizde yönetici olarak oturum açın.
 
@@ -143,7 +143,7 @@ Azure AD çoklu oturum açmayı, Perception Birleşik Devletler (UltiPro) ile bi
     
     b. **Hesap adı** metin kutusuna **hesabın**adını yazın.
 
-    c. **Varsayılan yanıt e-posta** metin kutusuna geçerli **e-postayı**yazın.
+    c. **Varsayılan Reply-To e-posta** metin kutusuna geçerli **e-postayı**yazın.
 
     d. **SAML 2,0**olarak **SSO kimlik sağlayıcısını** seçin.
 

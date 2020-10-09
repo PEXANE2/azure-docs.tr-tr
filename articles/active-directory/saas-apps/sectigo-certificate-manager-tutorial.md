@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.openlocfilehash: d68e5335fff0341d8808e581061519977e1bb517
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88543287"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>Öğretici: Sectigo sertifika yöneticisiyle Azure Active Directory tümleştirme
@@ -50,7 +50,7 @@ Sectıgo Sertifika Yöneticisi aşağıdaki özellikleri destekler:
 
 Sectigo sertifika yöneticisini Azure AD ile tümleştirmek için, yönetilen SaaS uygulamaları listenize Sectıgo Sertifika Yöneticisi eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. Sol menüden **Azure Active Directory**' yi seçin.
 
@@ -95,7 +95,7 @@ Bu bölümde Azure AD çoklu oturum açma 'yı Azure portal Sectıgo Sertifika Y
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-1. **SAML Ile çoklu oturum açmayı ayarla** bölmesinde, **temel SAML yapılandırması** bölmesini açmak için **Düzenle** ' yi (kurşun kalem simgesi) seçin.
+1. **SAML Ile tek Sign-On ayarla** bölmesinde, **temel SAML yapılandırması** bölmesini açmak için **Düzenle** ' yi (kurşun kalem simgesi) seçin.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -125,7 +125,7 @@ Bu bölümde Azure AD çoklu oturum açma 'yı Azure portal Sectıgo Sertifika Y
 
       ![Sectıgo sertifika yöneticisi etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/both-signonurl.png)
 
-1. **SAML Ile çoklu oturum açmayı ayarla** bölmesinde, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** yanındaki **İndir** ' i seçin. Gereksinimlerinize göre bir indirme seçeneği belirleyin. Sertifikayı bilgisayarınıza kaydedin.
+1. **SAML Ile tek Sign-On ayarla** bölmesinde, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** yanındaki **İndir** ' i seçin. Gereksinimlerinize göre bir indirme seçeneği belirleyin. Sertifikayı bilgisayarınıza kaydedin.
 
     ![Sertifika (base64) indirme seçeneği](common/certificatebase64.png)
 

@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 05/29/2019
 ms.author: pafarley
 ms.openlocfilehash: 7fc46d06b68dca074da060b4866186a6242ffad2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72757371"
 ---
 # <a name="content-moderator-api-reference"></a>Content Moderator API başvurusu
@@ -43,4 +43,4 @@ Inceleme API 'Leri aşağıdaki bileşenlere sahiptir:
 | -------------------- |-------------|
 | **İşler**<br /><br /> Tarama yapın ve hem görüntü hem de metin içeriği için denetleme iş akışlarını gözden geçirin. Bir denetleme işi, görüntü denetleme API 'sini ve metin denetleme API 'sini kullanarak içeriğinizi tarar. Denetleme işleri, gözden geçirmeler oluşturmak için tanımlı ve varsayılan iş akışlarını kullanır. <br /><br />Bir insan aracı otomatik olarak atanan etiketleri ve tahmin verilerini inceledikten ve bir içerik denetleme kararı gönderdikten sonra, gözden geçirme API 'SI tüm bilgileri API uç noktanıza gönderir.<br /><br /> | [İş başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5 "İş başvurusu")   |
 | **İncelemeler**<br /><br />İnsan moderatör için doğrudan görüntü veya metin incelemesi oluşturmak için Inceleme aracını kullanın.<br /><br /> Bir insan aracı otomatik olarak atanan etiketleri ve tahmin verilerini inceledikten ve bir içerik denetleme kararı gönderdikten sonra, gözden geçirme API 'SI tüm bilgileri API uç noktanıza gönderir.<br /><br /> | [Başvuruyu gözden geçir](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4 "Başvuruyu gözden geçir")   |
-| **İş Akışları**<br /><br />Takımınızın oluşturduğu özel iş akışlarıyla ilgili ayrıntıları oluşturun, güncelleştirin ve alın. İş akışlarını gözden geçirme aracını kullanarak tanımlarsınız. <br /> <br />İş akışları genellikle Content Moderator kullanır, ancak Inceleme aracında bağlayıcı olarak kullanılabilen diğer API 'Leri de kullanabilir.<br /><br /> | [İş akışı başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59 "İş akışı başvurusu")   |
+| **İş akışları**<br /><br />Takımınızın oluşturduğu özel iş akışlarıyla ilgili ayrıntıları oluşturun, güncelleştirin ve alın. İş akışlarını gözden geçirme aracını kullanarak tanımlarsınız. <br /> <br />İş akışları genellikle Content Moderator kullanır, ancak Inceleme aracında bağlayıcı olarak kullanılabilen diğer API 'Leri de kullanabilir.<br /><br /> | [İş akışı başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59 "İş akışı başvurusu")   |

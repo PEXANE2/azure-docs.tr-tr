@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/05/2019
 ms.openlocfilehash: 701e314ad2a3762b1e8ca022ce18d9435ce2db37
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75894116"
 ---
 # <a name="scenario-watchdog-bug-soft-lockup---cpu-error-from-an-azure-hdinsight-cluster"></a>Senaryo: "izleme: hata: bir Azure HDInsight kümesinden yazılım kilitleme-CPU" hatası
@@ -42,11 +42,11 @@ Linux çekirdeğindeki bir [hata](https://bugzilla.kernel.org/show_bug.cgi?id=19
     | Name |Çekirdek geçici kilit sorunu için çözüm |
     | Bash betiği URI 'SI |`https://raw.githubusercontent.com/hdinsight/hdinsight.github.io/master/ClusterCRUD/KernelSoftLockFix/scripts/KernelSoftLockIssue_FixAndReboot.sh` |
     | Düğüm türleri |Çalışan, Zookeeper |
-    | Parametreler |YOK |
+    | Parametreler |Yok |
 
     Yeni düğümler eklendiğinde betiği yürütmek istiyorsanız **bu betiği kalıcı yap...** öğesini seçin.
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 1. Yürütmenin başarılı olmasını bekleyin.
 

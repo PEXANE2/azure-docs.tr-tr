@@ -8,22 +8,22 @@ ms.service: web-application-firewall
 ms.date: 10/31/2019
 ms.author: victorh
 ms.openlocfilehash: 89c863e85d9eab27a47bc1bf7b98cd1c8d89e900
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73516870"
 ---
-# <a name="configure-bot-protection-for-web-application-firewall-on-azure-application-gateway-preview"></a>Azure Application Gateway Web uygulaması güvenlik duvarı için bot korumasını yapılandırma (Önizleme)
+# <a name="configure-bot-protection-for-web-application-firewall-on-azure-application-gateway-preview"></a>Azure Application Gateway'de Web Uygulaması Güvenlik Duvarı için bot korumasını yapılandırma (Önizleme)
 
 Bu makalede, Azure portal kullanarak Application Gateway için Azure Web uygulaması güvenlik duvarı 'nda (WAF) bir bot koruma kuralının nasıl yapılandırılacağı gösterilmektedir. 
 
-WAF 'niz için yönetilen bir bot koruma kuralı kümesini, bilinen kötü amaçlı IP adreslerinden gelen istekleri engellemek veya günlüğe kaydetmek için etkinleştirebilirsiniz. IP adresleri Microsoft Threat Intelligence akışından kaynaklıdır. Intelligent Security Graph, Microsoft Threat Intelligence 'ı güçlendirir ve Azure Güvenlik Merkezi dahil birden çok hizmet tarafından kullanılır.
+Bilinen kötü amaçlı IP adreslerinden gelen istekleri engellemek veya günlüğe kaydetmek için WAF'niz için yönetilen bot koruma kuralı kümesi etkinleştirebilirsiniz. IP adresleri, Microsoft Tehdit Analizi akışından alınır. Microsoft Tehdit Analizi, Intelligent Security Graph tarafından desteklenir ve Azure Güvenlik Merkezi dahil olmak üzere birçok hizmet tarafından kullanılır.
 
 > [!NOTE]
 > Bot koruma kuralı kümesi şu anda genel önizleme aşamasındadır ve bir önizleme hizmet düzeyi sözleşmesi ile sunulmaktadır. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Ayrıntılar için [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bölümüne bakın   .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
  [Application Gateway Için Web uygulaması güvenlik duvarı Ilkeleri oluşturma](create-waf-policy-ag.md)bölümünde açıklanan yönergeleri izleyerek Application Gateway için temel bir WAF ilkesi oluşturun.
 

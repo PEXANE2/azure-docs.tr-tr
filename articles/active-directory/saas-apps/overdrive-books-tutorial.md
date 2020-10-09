@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: b73ca3ffd7553ec36b6e6b4c985704049cbdcb99
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88554238"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-overdrive"></a>Öğretici: OverDrive ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Overdrive 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini OverDrive ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -75,7 +75,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Overdrive Il
 Azure AD çoklu oturum açma 'yı fazla sürücü ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Fazla sürücü çoklu oturum açmayı yapılandırma](#configure-overdrive-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[Fazla sürücü çoklu oturum açmayı yapılandırma](#configure-overdrive-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan Overtta SION 'ın üzerine gelin ve fazla sürücü için **[test kullanıcısı oluşturun](#create-overdrive-test-user)** .
@@ -95,7 +95,7 @@ Azure AD çoklu oturum açmayı, Overdrive ile yapılandırmak için aşağıdak
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -106,9 +106,9 @@ Azure AD çoklu oturum açmayı, Overdrive ile yapılandırmak için aşağıdak
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`http://<subdomain>.libraryreserve.com`
 
     > [!NOTE]
-    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [fazla sürücü istemci desteği ekibine](https://help.overdrive.com/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Değer gerçek değil. Değeri gerçek Sign-On URL 'siyle güncelleştirin. Değeri almak için [fazla sürücü istemci desteği ekibine](https://help.overdrive.com/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -122,7 +122,7 @@ Azure AD çoklu oturum açmayı, Overdrive ile yapılandırmak için aşağıdak
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-overdrive-single-sign-on"></a>Fazla sürücülü çoklu oturum açmayı yapılandırma
+### <a name="configure-overdrive-single-sign-on"></a>Fazla sürücülü tek Sign-On yapılandırma
 
 **Fazla sürücü** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'Leri Azure Portal 'ten [fazla sürücü destek ekibine](https://help.overdrive.com/)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

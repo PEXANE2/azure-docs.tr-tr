@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
 ms.openlocfilehash: 1e48b2ff6e469a5f792b64c20631e4bd64fb9fd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85263553"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Azure Cosmos DB’ye yüzlerce terabaytlık verileri geçirme 
@@ -145,7 +145,7 @@ Geçiş tamamlandıktan sonra, Azure Cosmos DB içindeki belge sayısı, kaynak 
 ## <a name="contact-the-azure-cosmos-db-team"></a>Azure Cosmos DB ekibine başvurun
 Büyük veri kümelerini Azure Cosmos DB başarılı bir şekilde geçirmek için bu kılavuzu takip edebilir, ancak büyük ölçekli geçişler için, veri modellemeyi ve genel mimari incelemesini doğrulamak üzere Azure Cosmos DB ürün ekibine ulaşmanıza önerilir. Veri kümeniz ve iş yükünüze göre, ürün ekibi sizin için geçerli olabilecek diğer performans ve maliyet iyileştirmeleri de önerebilir. Büyük ölçekli geçişlerle yardım için Azure Cosmos DB ekibine başvurmak için, aşağıda gösterildiği gibi "genel danışmanlık" sorun türü ve "büyük (TB +) geçişleri" sorun alt türü altında bir destek bileti açabilirsiniz.
 
-:::image type="content" source="./media/migrate-cosmosdb-data/supporttopic.png" alt-text="Geçiş desteği konusu":::
+:::image type="content" source="./media/migrate-cosmosdb-data/supporttopic.png" alt-text="Geçiş Aracı Kurulumu":::
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

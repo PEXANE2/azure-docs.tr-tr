@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: 0204a2873b288dcb2082dbd5c9c984d29fa6d456
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85254931"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Kaynak güncelleştirme etkinliğini kullanarak Azure Machine Learning modellerini güncelleştirme
@@ -259,7 +259,7 @@ Azure ML güncelleştirme kaynağı etkinliği herhangi bir çıktı oluşturmaz
 }
 ```
 
-### <a name="pipeline"></a>İşlem hattı
+### <a name="pipeline"></a>İşlem Hattı
 İşlem hattının iki etkinliği vardır: **AzureMLBatchExecution** ve **AzureMLUpdateResource**. Azure ML Batch yürütme etkinliği eğitim verilerini giriş olarak alır ve çıkış olarak bir iLearner dosyası üretir. Etkinlik, eğitim Web hizmetini (bir Web hizmeti olarak sunulan eğitim denemesine) giriş eğitim verileriyle çağırır ve IBU dosya hizmetten ilearner dosyasını alır. PlaceholderBlob, işlem hattını çalıştırmak için Azure Data Factory hizmetinin gerektirdiği yalnızca bir kukla çıkış veri kümesidir.
 
 ![ardışık düzen diyagramı](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)

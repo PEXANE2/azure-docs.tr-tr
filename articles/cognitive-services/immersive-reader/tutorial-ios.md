@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: dylankil
 ms.openlocfilehash: ce9d3af8f7517e2acae5264197b842d47085279c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88516376"
 ---
 # <a name="tutorial-start-the-immersive-reader-using-the-swift-ios-code-sample"></a>Öğretici: Swift iOS kod örneğini kullanarak modern okuyucu başlatma
@@ -28,7 +28,7 @@ ms.locfileid: "88516376"
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure Active Directory kimlik doğrulaması için yapılandırılmış bir tam ekran okuyucu kaynağı. Kurulumunu yapmak için [Bu yönergeleri](./how-to-create-immersive-reader.md) izleyin. Ortam özelliklerini yapılandırırken burada oluşturulan bazı değerler gerekir. Daha sonra başvurmak üzere oturumunuzun çıkışını bir metin dosyasına kaydedin.
 * [MacOS](https://www.apple.com/macos).

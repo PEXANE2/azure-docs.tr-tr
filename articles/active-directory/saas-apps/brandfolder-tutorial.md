@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 67691aa20070ec77eab824255cefb7e06e142ba4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88525828"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brandfolder"></a>Öğretici: Brandfolder ile tümleştirme Azure Active Directory
@@ -75,7 +75,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açma 'yı Brandfolder ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Brandfolder çoklu oturum açmayı yapılandırma](#configure-brandfolder-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[Brandfolder çoklu oturum açma yapılandırma](#configure-brandfolder-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. **[Brandfolder test kullanıcısı oluşturun](#create-brandfolder-test-user)** . Bu, kullanıcının Azure AD gösterimine bağlı olan Brandfolder 'Da Britta Simon 'un bir karşılığı olacak.
@@ -95,11 +95,11 @@ Azure AD çoklu oturum açmayı Brandfolder ile yapılandırmak için aşağıda
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki adımları uygulayın:
+4. **SAML Ile tek Sign-On ayarlama** sayfasında, aşağıdaki adımları gerçekleştirin:
 
     ![Brandfolder etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
 
@@ -110,11 +110,11 @@ Azure AD çoklu oturum açmayı Brandfolder ile yapılandırmak için aşağıda
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Brandfolder istemci destek ekibine](mailto:support@brandfolder.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
     ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
-### <a name="configure-brandfolder-single-sign-on"></a>Brandfolder çoklu oturum açmayı yapılandırma
+### <a name="configure-brandfolder-single-sign-on"></a>Brandfolder tek Sign-On yapılandırma
 
 **Brandfolder** tarafında çoklu oturum açmayı yapılandırmak Için, [brandfolder destek ekibine](mailto:support@brandfolder.com) **uygulama Federasyon meta veri URL 'sini** göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

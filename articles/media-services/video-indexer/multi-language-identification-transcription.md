@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 09/01/2019
 ms.author: juliako
 ms.openlocfilehash: f0dede42891069bb5d01ddc33f3797c20c5493d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72968734"
 ---
 # <a name="automatically-identify-and-transcribe-multi-language-content-preview"></a>Çoklu dil içeriğini otomatik olarak tanımla ve yeniden tanımla (Önizleme)
@@ -23,7 +23,7 @@ Video Indexer, çok dilli içerikte otomatik dil tanımlamayı ve dökümünü d
 
 ## <a name="choosing-multilingual-identification-on-indexing-with-portal"></a>Portal ile dizin oluşturma sırasında çok dilli kimlik seçme
 
-Videonuzu karşıya yüklerken ve dizin oluştururken **Çoklu dil algılama** seçeneğini belirleyebilirsiniz. Alternatif olarak, videonuzu yeniden dizinlerken **Çoklu dil algılamayı** seçebilirsiniz. Aşağıdaki adımlar, yeniden dizin oluşturmayı açıklamaktadır:
+Videonuzu karşıya yüklerken ve dizin oluştururken **Çoklu dil algılama** seçeneğini belirleyebilirsiniz. Alternatif olarak, videonuzu yeniden dizinlerken **Çoklu dil algılamayı**  seçebilirsiniz. Aşağıdaki adımlar, yeniden dizin oluşturmayı açıklamaktadır:
 
 1. [Video Indexer](https://vi.microsoft.com/) web sitesine gidip oturum açın.
 1. **Kitaplık** sayfasına gidin ve yeniden adlandırmak istediğiniz videonun adının üzerine gelin. 

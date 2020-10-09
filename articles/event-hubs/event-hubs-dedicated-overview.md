@@ -4,10 +4,10 @@ description: Bu makalede, özel Azure Event Hubs, Olay Hub 'larının tek kirac�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 70061b5dc4fe72c9fd2fd60dd8c67da31b1d1e6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85322446"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Event Hubs Ayrılmış genel bakış
@@ -41,7 +41,7 @@ Event Hubs Ayrılmış teklif, en az 4 saatlik kullanım ile sabit bir aylık fi
 | Özellik | Standart | Ayrılmış |
 | --- |:---:|:---:|
 | Bant genişliği | 20 s (40 'e kadar) | 20 cu düzeyinde kapsanır |
-| Ad alanları |  1 | CU başına 50 |
+| Ad Alanları |  1 | CU başına 50 |
 | Event Hubs |  ad alanı başına 10 | ad alanı başına 1000 |
 | Giriş olayları | Milyon olay başına ödeme | Dahil |
 | İleti boyutu | 1.000.000 bayt | 1.000.000 bayt |
@@ -49,7 +49,7 @@ Event Hubs Ayrılmış teklif, en az 4 saatlik kullanım ile sabit bir aylık fi
 | Tüketici grupları | Olay Hub 'ı başına 20 | Her saniyedeki limit yok, Olay Hub 'ı başına 1000 |
 | Aracılı bağlantılar | 1.000 dahil, en fazla 5.000 | 100 K dahil ve maks |
 | İleti bekletme | 7 gün, TU başına 84 GB dahil | 90 gün, CU başına 10 TB dahildir |
-| Capture | Saat başına ödeme | Dahil |
+| Yakalama | Saat başına ödeme | Dahil |
 
 ## <a name="how-to-onboard"></a>Ekleme
 

@@ -11,10 +11,10 @@ ms.date: 09/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.openlocfilehash: bc159452c81a673ca4a7ed46aa7eff19fd9209eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73176033"
 ---
 # <a name="understanding-azure-ad-connect-14xxx-and-device-disappearance"></a>Azure AD Connect 1.4. xx. x ve cihaz görünümlerini anlama
@@ -22,7 +22,7 @@ Azure AD Connect 1.4. xx. x sürümü sayesinde bazı müşteriler Windows cihaz
 
 Azure AD 'de cihaz nesneleri silme işlemini dışarı aktarma silme eşiğini aştıktan sonra, müşterinin silme işlemlerinin devam yapmasına izin verilmesi önerilir. [Nasıl yapılır: silme eşiğini aştıklarında akışa silmeye izin ver](how-to-connect-sync-feature-prevent-accidental-deletes.md)
 
-## <a name="background"></a>Arka plan
+## <a name="background"></a>Arka Plan
 Karma Azure AD 'ye katılmış olarak kaydedilen Windows cihazları, Azure AD 'de cihaz nesneleri olarak gösterilir. Bu cihaz nesneleri, koşullu erişim için kullanılabilir. Windows 10 cihazları Azure AD Connect aracılığıyla buluta eşitlenir, alt düzey Windows cihazları doğrudan AD FS veya kesintisiz çoklu oturum açma kullanılarak kaydedilir.
 
 ## <a name="windows-10-devices"></a>Windows 10 cihazları
@@ -30,14 +30,14 @@ Yalnızca karma Azure AD katılımı tarafından yapılandırılan belirli bir u
 
 Azure AD Connect bu sürümü, karma Azure AD 'ye katılmış olarak doğru yapılandırılmış Windows 10 cihazlarını eşitler. Azure AD JOIN 'e özel kullanıcı sertifikası olmadan Windows 10 cihaz nesneleri Azure AD 'den kaldırılacaktır.
 
-## <a name="down-level-windows-devices"></a>Alt düzey Windows cihazları
+## <a name="down-level-windows-devices"></a>Windows cihazlarını Down-Level
 Azure AD Connect hiçbir şekilde [alt düzey Windows cihazlarını](../devices/hybrid-azuread-join-plan.md#windows-down-level-devices)eşitlemiyor olmalıdır. Azure AD 'de daha önce yanlış eşitlenmiş olan cihazlar artık Azure AD 'den silinecek. Azure AD Connect [alt düzey Windows cihazlarını](../devices/hybrid-azuread-join-plan.md#windows-down-level-devices)silmeye çalışıyorsa, cihaz [Windows 10 olmayan bilgisayarlar için Microsoft WORKPLACE JOIN](https://www.microsoft.com/download/details.aspx?id=53554) tarafından oluşturulan MSI DEĞILDIR ve diğer Azure AD özellikleri tarafından tüketilemiyor.
 
 Bazı müşterilerin Windows cihazlarını doğru şekilde kaydetmesi ve bu cihazların cihaz tabanlı koşullu erişime tam olarak katılmasını sağlamak için [karma Azure Active Directory katılma uygulamanızı nasıl planlayıp planlayabilmesi](../devices/hybrid-azuread-join-plan.md) gerekebilir. 
 
 ## <a name="how-can-i-verify-which-devices-are-deleted-with-this-update"></a>Bu güncelleştirmeyle hangi cihazların silineceğini nasıl doğrulayabilirim?
 
-Hangi cihazların silindiğini doğrulamak için bu PowerShell betiğini kullanabilirsiniz:https://gallery.technet.microsoft.com/scriptcenter/Export-Hybrid-Azure-AD-f8e51436
+Hangi cihazların silindiğini doğrulamak için bu PowerShell betiğini kullanabilirsiniz: https://gallery.technet.microsoft.com/scriptcenter/Export-Hybrid-Azure-AD-f8e51436
 
 Bu betik, karma Azure AD JOIN özelliği tarafından verilen sertifikalar, özellikle Active Directory bilgisayar nesnelerinde depolanan sertifikalar hakkında bir rapor oluşturur.
 AD 'de bir bilgisayar nesnesinin UserCertificate özelliğinde bulunan sertifikaları denetler ve bu durumda, bir süre sonu olmayan her sertifika için, sertifikanın karma Azure AD JOIN özelliği için verildiğini doğrular (konu adı CN = {Objectguıd} ile eşleşir).

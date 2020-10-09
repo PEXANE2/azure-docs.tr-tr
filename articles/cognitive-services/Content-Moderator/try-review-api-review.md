@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: pafarley
 ms.openlocfilehash: a9726e41a84926d00d48b51e31f534a3d8c2fe0c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72757133"
 ---
 # <a name="create-human-reviews-rest"></a>İnsan incelemeleri oluşturma (REST)
 
 , İnsan moderatör 'nin değerlendirilmesine yönelik depolamayı ve görüntüleme içeriğini [gözden geçirir](./review-api.md#reviews) . Bir Kullanıcı bir gözden geçirmeyi tamamladığında, sonuçlar belirtilen geri çağırma uç noktasına gönderilir. Bu kılavuzda, API konsolundan REST API 'Lerini gözden geçirme ' yi kullanarak İncelemeleri ayarlamayı öğreneceksiniz. API 'lerin yapısını anladıktan sonra, bu çağrıları REST ile uyumlu herhangi bir platforma kolayca bağlayabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Content Moderator [İnceleme aracı](https://contentmoderator.cognitive.microsoft.com/) sitesinde oturum açın veya hesap oluşturun.
 
@@ -127,15 +127,15 @@ Varsayılan istek gövdesi, oluşturabileceğiniz farklı gözden geçirmeler t�
 ]
 ```
 
-### <a name="submit-your-request"></a>İsteğinizi gönderme
+### <a name="submit-your-request"></a>İsteğinizi gönderin
   
-**Gönder**’i seçin. İşlem başarılı olursa, **yanıt durumu** olur `200 OK`ve **Yanıt IÇERIĞI** kutusu İnceleme için bir kimlik görüntüler. Aşağıdaki adımlarda kullanmak için bu KIMLIĞI kopyalayın.
+**Gönder**’i seçin. İşlem başarılı olursa, **yanıt durumu** olur `200 OK` ve **yanıt içeriği** kutusu İnceleme için bir kimlik görüntüler. Aşağıdaki adımlarda kullanmak için bu KIMLIĞI kopyalayın.
 
 ![İnceleme-konsol yanıt içeriği oluştur kutusu İnceleme KIMLIĞINI görüntüler](images/test-drive-review-2.PNG)
 
 ### <a name="examine-the-new-review"></a>Yeni incelemeyi inceleyin
 
-[İnceleme aracında](https://contentmoderator.cognitive.microsoft.com) > **görüntü**/**Video** **Review**/**metni**videosunu gözden geçir ' i (kullandığınız içeriğe göre) seçin. Karşıya yüklediğiniz içerik görünür, insan gözden geçirmesi için hazırlanın.
+[İnceleme aracında](https://contentmoderator.cognitive.microsoft.com)görüntü metni videosunu **gözden geçir**' i  >  **Image** / **Text** / **Video** (kullandığınız içeriğe göre) seçin. Karşıya yüklediğiniz içerik görünür, insan gözden geçirmesi için hazırlanın.
 
 ![Futbol topu araç görüntüsünü gözden geçirme](images/test-drive-review-5.PNG)
 
@@ -149,7 +149,7 @@ REST çağrı parametrelerini yukarıdaki bölümde olduğu gibi girin. Bu adım
 
 ![İnceleme-konsol oluşturma sonuçları al](images/test-drive-review-3.PNG)
   
-**Gönder**’i seçin. İşlem başarılı olursa, **yanıt durumu** olur `200 OK`ve **yanıt içeriği** kutusu, gözden geçirme ayrıntılarını aşağıdakiler gibi JSON biçiminde görüntüler:
+**Gönder**’i seçin. İşlem başarılı olursa, **yanıt durumu** olur `200 OK` ve **yanıt içeriği** kutusu, gözden geçirme ayrıntılarını aşağıdakiler gibi JSON biçiminde görüntüler:
 
 ```json
 {  

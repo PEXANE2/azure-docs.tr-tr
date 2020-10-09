@@ -5,10 +5,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.openlocfilehash: 7f62c7dc7aacf9be4a59498aa5c556e9991ad578
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85298557"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti (AKS) ile hizmet sorumluları
@@ -135,7 +135,7 @@ AKS ve Azure AD hizmet sorumlularını kullanılırken aşağıdaki noktalara di
 - Varsayılan olarak, hizmet sorumlusu kimlik bilgileri bir yıl için geçerlidir. [Hizmet sorumlusu kimlik bilgilerini dilediğiniz zaman güncelleştirebilir veya döndürebilirsiniz][update-credentials] .
 - Her hizmet sorumlusunun bir Azure AD uygulamasıyla ilişkilendirilmiş olması gerekir. Bir Kubernetes kümesinin hizmet sorumlusu, geçerli herhangi bir Azure AD uygulama adıyla ilişkilendirilebilir (örneğin: *https://www.contoso.org/example* ). Uygulama URL'sinin gerçek bir uç nokta olması gerekmez.
 - Hizmet sorumlusu **İstemci kimliğini** belirttiğinizde `appId` değerini kullanın.
-- Kubernetes kümesindeki aracı düğümü VM 'lerinde hizmet sorumlusu kimlik bilgileri dosyada depolanır`/etc/kubernetes/azure.json`
+- Kubernetes kümesindeki aracı düğümü VM 'lerinde hizmet sorumlusu kimlik bilgileri dosyada depolanır `/etc/kubernetes/azure.json`
 - Hizmet sorumlusunu otomatik olarak oluşturmak için [az aks create][az-aks-create] komutunu kullandığınızda, hizmet sorumlusu kimlik bilgileri komutun çalıştırıldığı makinede `~/.azure/aksServicePrincipal.json` dosyasına yazılır.
 - Ek AKS CLı komutlarına özel olarak bir hizmet sorumlusu geçirmezseniz, adresinde bulunan varsayılan hizmet sorumlusu `~/.azure/aksServicePrincipal.json` kullanılır.  
 - Ayrıca, isteğe bağlı olarak dosyadaki aksServicePrincipal.jskaldırabilirsiniz ve AKS 'ler yeni bir hizmet sorumlusu oluşturur.

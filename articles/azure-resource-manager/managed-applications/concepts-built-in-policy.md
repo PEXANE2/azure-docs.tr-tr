@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: hich
 ms.openlocfilehash: ec0fe8f66ef2ad2458b4ffad0e848591793e5b05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75650948"
 ---
 # <a name="deploy-associations-for-a-managed-application-using-azure-policy"></a>Azure Ilkesi kullanarak yönetilen bir uygulama için ilişkileri dağıtma
@@ -29,7 +29,7 @@ Yönetilen bir uygulama için ilişkilendirmeleri dağıtmak, bir kaynağı yön
 
 ## <a name="how-to-use-the-deploy-associations-built-in-policy"></a>Dağıtım ilişkilendirmelerini yerleşik ilkesini kullanma 
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Yönetilen uygulamanın bir eylem gerçekleştirmek için abonelik için izinleri olması gerekiyorsa, ilişkilendirme kaynağının ilke dağıtımı izinleri vermeden çalışmaz.
 
 ### <a name="policy-assignment"></a>İlke ataması

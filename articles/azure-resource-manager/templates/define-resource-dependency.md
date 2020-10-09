@@ -4,10 +4,10 @@ description: Kaynakların doğru sırada dağıtılmasını sağlamak için dağ
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.openlocfilehash: 84cea915565ec6ac9872681e1d4173abacb46ac4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85255220"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>ARM şablonlarında kaynak dağıtma sırasını tanımlayın
@@ -140,7 +140,7 @@ Daha fazla bilgi için bkz. [başvuru işlevi](template-functions-resource.md#re
 
 Kaynak Yöneticisi, şablon doğrulaması sırasında dairesel bağımlılıkları belirler. Döngüsel bağımlılığın olduğunu belirten bir hata alırsanız, herhangi bir bağımlılığın gerekli olup olmadığını ve kaldırılamadığını görmek için şablonunuzu değerlendirin. Bağımlılıkları kaldırmak işe yaramazsa, bazı dağıtım işlemlerini, döngüsel bağımlılığı olan kaynaklardan sonra dağıtılan alt kaynaklara taşıyarak dairesel bağımlılıklardan kaçınabilirsiniz. Örneğin, iki sanal makine dağıttığını, ancak birbirlerine başvuran her bir üzerinde Özellikler ayarlamanız gerektiğini varsayalım. Bunları aşağıdaki sırayla dağıtabilirsiniz:
 
-1. VM1
+1. vm1
 2. VM2
 3. VM1 üzerindeki uzantı VM1 ve VM2 'ye bağımlıdır. Uzantı, VM1 'teki VM2 'dan aldığı değerleri ayarlar.
 4. VM2 üzerindeki uzantı VM1 ve VM2 'ye bağımlıdır. Uzantı, VM2 'teki VM1 'dan aldığı değerleri ayarlar.

@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d099d7c233c3f4b5e65bfdb7d4b875a0e4098499
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75864290"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Takım veri bilimi süreç ekibi üzerinde ekip liderine yönelik görevler
@@ -49,7 +49,7 @@ Aşağıdaki öğreticide, ayrıntılı adımlarda adım adım gösterilmektedir
 > [!NOTE] 
 > Bu makalede, Microsoft 'ta TDSP 'nin uygulanması nedeniyle bir TDSP ekip ortamı ayarlamak için Azure DevOps ve DSVM kullanılmaktadır. Takımınız diğer kod barındırma veya geliştirme platformlarını kullanıyorsa, ekip sağlama görevleri aynıdır, ancak bunları tamamlamaya yönelik yol farklı olabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide, aşağıdaki kaynakların ve izinlerin [Grup yöneticiniz](group-manager-tasks.md)tarafından ayarlandığı varsayılır:
 
@@ -91,7 +91,7 @@ Takımınız için ayrı bir proje oluşturmak için:
    
 1. **Proje oluştur** iletişim kutusunda, **Proje adı**' nın altındaki *myTeam*adını girin ve **Gelişmiş**' i seçin. 
    
-1. **Sürüm denetimi**altında **Git**' i seçin ve **iş öğesi işlemi**altında **çevik**' i seçin. Ardından **Oluştur**'u seçin. 
+1. **Sürüm denetimi**altında **Git**' i seçin ve **iş öğesi işlemi**altında **çevik**' i seçin. Ardından **Oluştur**’u seçin. 
    
    ![Proje oluşturma](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
    

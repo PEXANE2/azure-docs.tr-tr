@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: mansha
 ms.openlocfilehash: cfdeda8ac3957da272ab4c47fb93930c826d55aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85261877"
 ---
 # <a name="migrate-your-application-from-amazon-dynamodb-to-azure-cosmos-db"></a>Uygulamanızı Amazon DynamoDB konumundan Azure Cosmos DB geçirin
@@ -28,8 +28,8 @@ Azure Cosmos DB ve DynamoDB arasındaki önemli kavramsal farklılıklar aşağ�
 |  Öğe |  Belge |
 |Öznitelik|Alan|
 |İkincil dizin|İkincil dizin|
-|Birincil anahtar – bölüm anahtarı|Bölüm anahtarı|
-|Birincil anahtar – sıralama anahtarı| Gerekli Değil |
+|Birincil anahtar – bölüm anahtarı|Bölüm Anahtarı|
+|Birincil anahtar – sıralama anahtarı| Gerekli değil |
 |Akış|Değişiklik akışı|
 |Işlem birimini yaz|İstek birimi (esnek, okuma veya yazma işlemleri için kullanılabilir)|
 |Işlem birimini oku    |İstek birimi (esnek, okuma veya yazma işlemleri için kullanılabilir)|
@@ -389,7 +389,7 @@ Yukarıdaki örnekteki belgeler koleksiyonu şu şekilde olacaktır:
 - tür kullanımı güvenli
 - doğal bir sorgu seçeneği belirtin.
 
-### <a name="update-an-item"></a>Öğe güncelleştirme
+### <a name="update-an-item"></a>Öğeyi güncelleştirme
 
 **Dynamodb**: Amazon dynamodb içindeki öğeyi güncelleştirmek için:
 

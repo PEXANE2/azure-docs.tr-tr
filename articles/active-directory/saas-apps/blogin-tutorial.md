@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: jeedes
 ms.openlocfilehash: 2a50d7b037cec2c10f83fdbbd875f80513c00a6d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88517100"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-blogin"></a>Öğretici: BlogIn ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -141,7 +141,7 @@ Bu bölümde, BlogIn 'e erişim vererek Azure çoklu oturum açma özelliğini k
 Blogin **hesabınızda Blogin yan oturum** açmada çoklu oturum açmayı yapılandırmak için aşağıdaki adımları izleyin:
 
 1. **Ayarlar**  >  **Kullanıcı kimlik doğrulaması**' na gidin  >  **SSO 'yu & Kullanıcı sağlamayı yapılandırın**.
-2. Sonraki ekranda, çoklu oturum açma durumunu **Açık** olarak değiştirin ve oturum açma EKRANıNDA görüntülenen SSO oturumu açma düğmesine özel bir ad seçin.
+2. Sonraki ekranda, tek Sign-On durumunu **Açık** olarak değiştirin ve oturum açma EKRANıNDA görüntülenen SSO oturumu açma düğmesi için özel bir ad seçin.
 
 3. **Uygulamanın Federasyon meta veri URL 'sini** önceki bölümün son adımında kaydettiyseniz, yapılandırma yöntemi **meta veri URL 'Sini** seçin ve **uygulama Federasyon meta verileri URL** 'sini meta veri URL 'si alanına yapıştırın. Aksi takdirde, yapılandırma **yöntemini el ile olarak değiştirin,** **kimlik sağlayıcısı SSO URL 'Sini (oturum açma URL 'Si)** ve **kimlik sağlayıcısı veren 'i (varlık kimliği)** el ile doldurun ve Azure AD 'den aldığınız **sertifikayı (base64)** karşıya yükleyin   .
 

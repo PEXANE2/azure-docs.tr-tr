@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 18814d23c634dc58148c26b67c2f669e22a136ee
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88554303"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nuclino"></a>Öğretici: Nuclino ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Nuclino Azure Active Directory (Azure AD) ile nasıl tümleşti
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -98,7 +98,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 7. Yukarıdakine ek olarak, Nuclino uygulaması aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı |  Kaynak özniteliği|
+    | Name |  Kaynak özniteliği|
     | ---------------| --------- |
     | first_name | Kullanıcı. |
     | last_name | User. soyadı |

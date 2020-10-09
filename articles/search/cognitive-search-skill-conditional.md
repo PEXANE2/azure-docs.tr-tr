@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: b5f1fc7f877854dd06fbbe09ff82e47208fa12d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72792039"
 ---
 # <a name="conditional-cognitive-skill"></a>Koşullu Bilişsel Beceri
@@ -85,7 +85,7 @@ Koşullu beceri değerlendirmeyi desteklediğinden, bunu küçük dönüştürme
 ## <a name="skill-inputs"></a>Beceri girişleri
 Girişler büyük/küçük harfe duyarlıdır.
 
-| Giriş   | Description |
+| Giriş   | Açıklama |
 |-------------|-------------|
 | koşul   | Bu giriş, değerlendirilecek koşulu temsil eden [değerlendirilmiş bir alandır](#evaluated-fields) . Bu koşul, bir Boole değeri (*true* veya *false*) olarak değerlendirilmelidir.   <br/>  Örnekler: <br/> "= true" <br/> "= $ (/Document/Language) = = ' fr '" <br/> "= $ (/Document/Pages/ \* /Language) = = $ (/Document/expectedLanguage)" <br/> |
 | whenTrue    | Bu giriş, koşul *true*olarak değerlendirilirse döndürülecek değeri temsil eden [değerlendirilmiş bir alandır](#evaluated-fields) . Sabitler dizeleri tek tırnak işaretleri (' ve ') olarak döndürülmelidir. <br/>Örnek değerler: <br/> "=" Sözleşme ' "<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/ \* )" <br/> |

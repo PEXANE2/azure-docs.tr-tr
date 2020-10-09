@@ -4,10 +4,10 @@ description: Bu makalede, Azure Event Hubs (ağ, kimlik, veri koruma vb.) değer
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: da20778f1e24372e445d635e675df6484905f195
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85315394"
 ---
 # <a name="security-controls-for-azure-event-hubs"></a>Azure Event Hubs için güvenlik denetimleri
@@ -46,8 +46,8 @@ Bu makale, Azure Event Hubs yerleşik olarak bulunan güvenlik denetimlerini bel
 |---|---|--|--|
 | Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar |  Evet | |  |
 | Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Evet. Adanmış kümeler için kullanılabilir. | Azure Anahtar Kasası 'nda müşteri tarafından yönetilen anahtar, bekleyen bir olay hub 'ında verileri şifrelemek için kullanılabilir. | [Azure Event Hubs verilerini Rest 'te şifrelemek için müşteri tarafından yönetilen anahtarları Azure portal kullanarak yapılandırın](configure-customer-managed-key.md) |
-| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| YOK | |  |
-| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | |  |
+| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Yok | |  |
+| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifrelemesi ve VNet-VNet şifreleme gibi)| Evet | |  |
 | Şifrelenmiş API çağrıları| Evet |  |  |
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi

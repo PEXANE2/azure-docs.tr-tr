@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.openlocfilehash: ca0bfcb0c90142924285215c427a7071297be730
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88553929"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>Öğretici: Periscope verileriyle tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Periscope verilerini Azure AD ile tümleştirmek aşağıdaki avantajları sağl
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Periscope verileriyle yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -73,7 +73,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Periscope VE
 Azure AD çoklu oturum açma 'yı Periscope verilerle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Periscope Data çoklu oturum açmayı yapılandırın](#configure-periscope-data-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Periscope verileri çoklu oturum açmayı yapılandırın](#configure-periscope-data-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan Periscope verilerinde Britta Simon 'a sahip olmak için **[Periscope Data test kullanıcısı oluşturun](#create-periscope-data-test-user)** .
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı Periscope verileriyle yapılandırmak için aşa
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -113,11 +113,11 @@ Azure AD çoklu oturum açmayı Periscope verileriyle yapılandırmak için aşa
     > [!NOTE]
     > Oturum açma URL 'SI değeri gerçek değil. Değerleri gerçek oturum açma URL 'SI ile güncelleştirin. Öğreticide daha sonra açıklanan bu değeri ve **Configure Periscope Data çoklu oturum açma** bölümünden alacağınız tanımlayıcı değeri almak Için [Periscope Data Client support ekibine](mailto:support@periscopedata.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
     ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
-### <a name="configure-periscope-data-single-sign-on"></a>Periscope verileri çoklu oturum açmayı yapılandırma
+### <a name="configure-periscope-data-single-sign-on"></a>Tek Sign-On Periscope verileri yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, Periscope verilerinde yönetici olarak oturum açın.
 

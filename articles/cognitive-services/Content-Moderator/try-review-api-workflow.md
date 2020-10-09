@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
 ms.openlocfilehash: 3e58be4b94457d95d28cf6528b9151e4be1802cf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72754176"
 ---
 # <a name="define-and-use-moderation-workflows-rest"></a>Denetleme iş akışlarını tanımlama ve kullanma (REST)
 
 İş akışları, içeriği daha verimli bir şekilde işlemek için kullanabileceğiniz bulut tabanlı özelleştirilmiş filtrelerdir. İş akışları, farklı yollarla içerik filtrelemek için çeşitli hizmetlere bağlanabilir ve ardından uygun eylemi gerçekleştirebilir. Bu kılavuzda, iş akışları oluşturmak ve kullanmak için, API konsolu aracılığıyla iş akışı REST API 'Lerinin nasıl kullanılacağı gösterilir. API 'lerin yapısını anladıktan sonra, bu çağrıları REST ile uyumlu herhangi bir platforma kolayca bağlayabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Content Moderator [İnceleme aracı](https://contentmoderator.cognitive.microsoft.com/) sitesinde oturum açın veya hesap oluşturun.
 
@@ -43,7 +43,7 @@ Bir iş akışı oluşturmak veya güncelleştirmek için, **[Iş akışı-API b
 
 ### <a name="enter-a-workflow-definition"></a>İş akışı tanımı girin
 
-1. **Açıklama** ve **tür** ayrıntıları ile JSON isteğini girmek için `Image` **İstek gövdesi** kutusunu düzenleyin (ya da `Text`).
+1. **Açıklama** ve **tür** ayrıntıları ile JSON isteğini girmek için **İstek gövdesi** kutusunu düzenleyin (ya da `Image` `Text` ).
 2. **İfade**için, varsayılan Iş akışı JSON ifadesini kopyalayın. Son JSON dizeniz şöyle görünmelidir:
 
 ```json
@@ -78,13 +78,13 @@ Bir iş akışı oluşturmak veya güncelleştirmek için, **[Iş akışı-API b
 > [!NOTE]
 > Bu API 'YI kullanarak iş akışlarınız için basit, karmaşık ve hatta iç içe geçmiş ifadeler tanımlayabilirsiniz. [Iş akışı-oluşturma veya güncelleştirme](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59) belgelerinin daha karmaşık bir mantığa örnekleri vardır.
 
-### <a name="submit-your-request"></a>İsteğinizi gönderme
+### <a name="submit-your-request"></a>İsteğinizi gönderin
   
-**Gönder**’i seçin. İşlem başarılı olursa, **yanıt durumu** olur `200 OK`ve **yanıt içeriği** kutusu görüntülenir `true`.
+**Gönder**’i seçin. İşlem başarılı olursa, **yanıt durumu** olur `200 OK` ve **yanıt içeriği** kutusu görüntülenir `true` .
 
 ### <a name="examine-the-new-workflow"></a>Yeni iş akışını inceleyin
 
-[İnceleme aracında](https://contentmoderator.cognitive.microsoft.com/) **Ayarlar** > **iş akışları**' nı seçin. Yeni iş akışınız listede görünmelidir.
+[İnceleme aracında](https://contentmoderator.cognitive.microsoft.com/) **Ayarlar**  >  **iş akışları**' nı seçin. Yeni iş akışınız listede görünmelidir.
 
 ![İş akışlarının araç listesini gözden geçirin](images/workflow-console-new-workflow.PNG)
 
@@ -102,7 +102,7 @@ REST çağrı parametrelerini yukarıdaki bölümde olduğu gibi girin. Bu zaman
 
 ![Sorgu parametrelerini ve üstbilgilerini al](images/workflow-get-default.PNG)
 
-**Gönder**’i seçin. İşlem başarılı olursa, **yanıt durumu** olur `200 OK`ve **yanıt içeriği** kutusu, iş akışını aşağıdakine benzer şekilde JSON biçiminde görüntüler:
+**Gönder**’i seçin. İşlem başarılı olursa, **yanıt durumu** olur `200 OK` ve **yanıt içeriği** kutusu, Iş akışını aşağıdakine benzer şekilde JSON biçiminde görüntüler:
 
 ```json
 {

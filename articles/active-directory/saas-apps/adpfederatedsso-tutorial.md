@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: jeedes
 ms.openlocfilehash: c170581496241ab3be0fe54bb484549ab4b1f976
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88542913"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adp"></a>Öğretici: ADP ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -64,7 +64,7 @@ Azure AD SSO 'yu ADP ile yapılandırmak ve test etmek için aşağıdaki yapı 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
     1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[ADP SSO 'Yu yapılandırın](#configure-adp-sso)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[ADP SSO 'Yu yapılandırın](#configure-adp-sso)** .
     1. Kullanıcının Azure AD gösterimine bağlı olan ADP 'de B. Simon 'a sahip olmak için, **[ADP test kullanıcısı oluşturun](#create-adp-test-user)** .
 3. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
@@ -86,7 +86,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. [Azure Portal](https://portal.azure.com/), **ADP** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -94,7 +94,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     **Tanımlayıcı (VARLıK kimliği)** metin kutusuna bir URL yazın:`https://fed.adp.com`
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+4. **SAML Ile tekli Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 

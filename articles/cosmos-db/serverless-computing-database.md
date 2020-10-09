@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
 ms.openlocfilehash: d6399da204ba930fad2dd3656d27a807a83b1b13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85263271"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB ve Azure Işlevleri 'ni kullanarak sunucusuz veritabanı hesaplama
@@ -61,7 +61,7 @@ IoT uygulamalarında, bağlı bir otomobilde Check Engine ışığı görüntül
 
 Aşağıdaki görüntüde, bu tetikleyici için Azure portal yazılan kod gösterilmektedir.
 
-:::image type="content" source="./media/serverless-computing-database/cosmos-db-trigger-portal.png" alt-text="Azure portal Cosmos DB için bir Azure Işlevleri tetikleyicisi oluşturun":::
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-trigger-portal.png" alt-text="Azure Cosmos DB ve Azure Işlevleri nasıl tümleştirilir?":::
 
 ### <a name="financial-use-case---timer-trigger-and-input-binding"></a>Finansal kullanım örneği-Zamanlayıcı tetikleyicisi ve giriş bağlama
 
@@ -75,9 +75,9 @@ Mali uygulamalarda, banka hesabı bakiyesi belirli bir miktarın altına düşt�
 
 Aşağıdaki resimlerde, bu senaryonun Azure portal kodu gösterilmektedir.
 
-:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text="Finansal senaryo için bir Zamanlayıcı tetikleyicisinin dosyasıIndex.js":::
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text="Azure Cosmos DB ve Azure Işlevleri nasıl tümleştirilir?":::
 
-:::image type="content" source="./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png" alt-text="Finansal senaryo için bir Zamanlayıcı tetikleyicisi için. CSX dosyasını çalıştır":::
+:::image type="content" source="./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png" alt-text="Azure Cosmos DB ve Azure Işlevleri nasıl tümleştirilir?":::
 
 ### <a name="gaming-use-case---azure-functions-trigger-and-output-binding-for-cosmos-db"></a>Oyun kullanım örneği-Cosmos DB için Azure Işlevleri tetikleme ve çıkış bağlama 
 

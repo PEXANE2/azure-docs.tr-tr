@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
 ms.openlocfilehash: d5af58f886eccf0835941bd4a65982b17cf9cbbb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88521549"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ares-for-enterprise"></a>Öğretici: Kurumsal için ARES ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Azure AD ile kurumsal için ARES 'yi tümleştirmek aşağıdaki avantajları sa
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini kurumsal için ARES ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -75,7 +75,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına bağlı olarak, Az
 Azure AD çoklu oturum açma 'yı kurumsal için ARES ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulamalar **[Çoklu oturum açma IÇIN ARES 'Yi yapılandırma](#configure-ares-for-enterprise-single-sign-on)** uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için. 
+2. Uygulamalar **[Çoklu oturum açma IÇIN ARES 'Yi yapılandırma](#configure-ares-for-enterprise-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için. 
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcıların Azure AD gösterimine bağlı olan, en çok kurumsal test kullanıcısı için Ares için **[ARES 'Yi oluşturun](#create-ares-for-enterprise-test-user)** .
@@ -95,7 +95,7 @@ Azure AD çoklu oturum açma 'yı kurumsal için ARES ile yapılandırmak için 
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -105,11 +105,11 @@ Azure AD çoklu oturum açma 'yı kurumsal için ARES ile yapılandırmak için 
 
     **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://login.graebert.com`
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
     ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
-### <a name="configure-ares-for-enterprise-single-sign-on"></a>ARES 'yi Kurumsal Çoklu oturum açma için yapılandırma
+### <a name="configure-ares-for-enterprise-single-sign-on"></a>ARES 'yi Kurumsal tek Sign-On yapılandırma
 
 **Şirket içi Için Ares** 'de çoklu oturum açmayı yapılandırmak Için, [Kurumsal Destek ekibine yönelik](mailto:support@graebert.com)uygulamalar Için **uygulama Federasyon meta verileri URL 'sini** göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

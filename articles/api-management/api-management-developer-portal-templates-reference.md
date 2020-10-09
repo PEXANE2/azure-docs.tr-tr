@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 9bbb7ef46fbde881c8968128870d24a03b046c23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73176796"
 ---
 # <a name="developer-portal-templates"></a>Geliştirici portalı şablonları
@@ -30,7 +30,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-##  <a name="developer-portal-templates"></a><a name="DeveloperPortalTemplates"></a>Geliştirici portalı şablonları  
+##  <a name="developer-portal-templates"></a><a name="DeveloperPortalTemplates"></a> Geliştirici portalı şablonları  
   
 -   [API'ler](api-management-api-templates.md)  
     -   [API listesi](api-management-api-templates.md#APIList)  
@@ -52,7 +52,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
     -   [Uygulama](api-management-application-templates.md#Application)  
 -   [Sorunlar](api-management-issue-templates.md)  
     -   [Sorun listesi](api-management-issue-templates.md#IssueList)  
--   [Kullanıcı profili](api-management-user-profile-templates.md)  
+-   [Kullanıcı Profili](api-management-user-profile-templates.md)  
     -   [Profil](api-management-user-profile-templates.md#Profile)  
     -   [Abonelikler](api-management-user-profile-templates.md#Subscriptions)  
     -   [Uygulamalar](api-management-user-profile-templates.md#Applications)  

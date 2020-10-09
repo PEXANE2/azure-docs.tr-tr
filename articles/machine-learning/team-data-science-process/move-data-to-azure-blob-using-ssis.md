@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: ad87272749011c81c1040825da3f3c53858a55bd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85322865"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>SSIS bağlayıcıları kullanarak verileri Azure Blob depolama alanına veya sunucudan taşıma
@@ -34,7 +34,7 @@ Karma veri tümleştirme senaryolarında sık kullanılan iş ihtiyaçlarını b
 > 
 > 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makalede açıklanan görevleri gerçekleştirmek için bir Azure aboneliğiniz ve ayarlanmış bir Azure depolama hesabınızın olması gerekir. Verileri karşıya yüklemek veya indirmek için Azure depolama hesabı adı ve hesap anahtarı gerekir.
 
 * Bir **Azure aboneliği**ayarlamak için bkz. [ücretsiz bir aylık deneme sürümü](https://azure.microsoft.com/pricing/free-trial/).
@@ -81,7 +81,7 @@ Görevin kullandığı parametreler burada açıklanmıştır:
 ## <a name="download-data-from-azure-blob-storage"></a>Azure Blob depolamadan veri yükleme
 SSIS ile şirket içi depolamaya Azure Blob depolamadan veri indirmek için [Azure Blob Indirme görevinin](https://msdn.microsoft.com/library/mt146779.aspx)bir örneğini kullanın.
 
-## <a name="more-advanced-ssis-azure-scenarios"></a>Daha gelişmiş SSIS-Azure senaryoları
+## <a name="more-advanced-ssis-azure-scenarios"></a>Daha gelişmiş SSIS-Azure senaryolar
 SSIS özellik paketi, paketleme görevleri ile birlikte daha karmaşık akışların işlenmesine olanak tanır. Örneğin, blob verileri, çıkışı bir blob 'a ve ardından Şirket içi depolamaya geri yüklenebilen bir HDInsight kümesine doğrudan akış yapılabilir. SSIS, ek SSIS bağlayıcıları kullanarak bir HDInsight kümesinde Hive ve Pig işleri çalıştırabilir:
 
 * SSIS ile bir Azure HDInsight kümesinde Hive betiğini çalıştırmak için [Azure HDInsight Hive görevini](https://msdn.microsoft.com/library/mt146771.aspx)kullanın.

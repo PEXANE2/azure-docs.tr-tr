@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
 ms.openlocfilehash: bb12b666315f6d30df64b33b6a87d6ce831fd225
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88553868"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>Öğretici: Picturepark ile Azure Active Directory tümleştirme
@@ -30,7 +30,7 @@ Picturepark 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Picturepark ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açma 'yı Picturepark ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurmanız gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. , Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Picturepark çoklu oturum açmayı yapılandırın](#configure-picturepark-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Picturepark çoklu oturum açmayı yapılandırın](#configure-picturepark-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan Picturepark ortamında Britta Simon 'un bir karşılığı olacak şekilde **[Picturepark testi kullanıcısı oluşturun](#create-picturepark-test-user)** .
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı Picturepark ile yapılandırmak için aşağıda
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -133,7 +133,7 @@ Azure AD çoklu oturum açmayı Picturepark ile yapılandırmak için aşağıda
 
     b. Oturum kapatma URL 'SI
 
-### <a name="configure-picturepark-single-sign-on"></a>Picturepark çoklu oturum açmayı yapılandırma
+### <a name="configure-picturepark-single-sign-on"></a>Picturepark tek Sign-On yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, Picturepark şirketi sitenizde yönetici olarak oturum açın.
 

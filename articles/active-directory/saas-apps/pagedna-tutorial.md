@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 543085eaea993f6e464a501ffc93befd7589a009
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88554150"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>Öğretici: PageDNA ile Azure Active Directory tümleştirme
@@ -30,7 +30,7 @@ PageDNA 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
 Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini PageDNA ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -51,7 +51,7 @@ PageDNA aşağıdaki özellikleri destekler:
 
 PageDNA 'in Azure AD 'ye tümleştirmesini yapılandırmak için, Azure Marketi 'nden yönetilen SaaS uygulamaları listenize PageDNA eklemeniz gerekir:
 
-1. [Azure Portal](https://portal.azure.com?azure-portal=true) oturum açın.
+1. [Azure Portal](https://portal.azure.com?azure-portal=true)’ında oturum açın.
 1. Sol bölmede **Azure Active Directory**’yi seçin.
 
     ![Azure Active Directory seçeneği](common/select-azuread.png)
@@ -95,7 +95,7 @@ Azure AD çoklu oturum açmayı PageDNA ile yapılandırmak için aşağıdaki a
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-1. **SAML Ile çoklu oturum açmayı ayarla** bölmesinde, **temel SAML yapılandırması** bölmesini açmak için **Düzenle** ' yi (kurşun kalem simgesi) seçin.
+1. **SAML Ile tek Sign-On ayarla** bölmesinde, **temel SAML yapılandırması** bölmesini açmak için **Düzenle** (kurşun kalem simgesi) öğesini seçin.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -122,7 +122,7 @@ Azure AD çoklu oturum açmayı PageDNA ile yapılandırmak için aşağıdaki a
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için, [PageDNA destek ekibine](mailto:success@pagedna.com)başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölmesinde gösterilen desenlere de başvurabilirsiniz.
 
-1. **SAML Ile çoklu oturum açmayı ayarla** bölmesinde, **SAML imzalama sertifikası** bölümünde, **sertifikayı (ham)** verilen seçeneklerden indirmek için **İndir** ' i seçin ve bilgisayarınıza kaydedin.
+1. **SAML Ile tek Sign-On ayarla** bölmesinde, **SAML imzalama sertifikası** bölümünde, **sertifikayı (ham)** verilen seçeneklerden indirmek için **İndir** ' i seçin ve bilgisayarınıza kaydedin.
 
     ![Sertifika (ham) indirme seçeneği](common/certificateraw.png)
 

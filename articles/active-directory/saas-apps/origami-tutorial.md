@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 0fe7e0d43050120daa017669a96e90f96b873530
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88543797"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-origami"></a>Öğretici: origami ile tümleştirme Azure Active Directory
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açmayı origami ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[origami çoklu oturum açmayı yapılandırın](#configure-origami-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[origami çoklu oturum açmayı yapılandırın](#configure-origami-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan origami 'de Britta Simon 'ın bir karşılığı olacak şekilde **[origami test kullanıcısı oluşturun](#create-origami-test-user)** .
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı origami ile yapılandırmak için aşağıdaki a
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -104,9 +104,9 @@ Azure AD çoklu oturum açmayı origami ile yapılandırmak için aşağıdaki a
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://live.origamirisk.com/origami/account/login?account=<companyname>`
 
     > [!NOTE]
-    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [origami istemci destek ekibine](https://wordpress.org/support/theme/origami) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Değer gerçek değil. Değeri gerçek Sign-On URL 'siyle güncelleştirin. Değeri almak için [origami istemci destek ekibine](https://wordpress.org/support/theme/origami) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -120,17 +120,17 @@ Azure AD çoklu oturum açmayı origami ile yapılandırmak için aşağıdaki a
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-origami-single-sign-on"></a>Origami çoklu oturum açmayı yapılandırma
+### <a name="configure-origami-single-sign-on"></a>Origami Single Sign-On yapılandırma
 
 1. Yönetici haklarıyla origami hesabında oturum açın.
 
 2. Üstteki menüden **yönetici**' ye tıklayın.
    
-    ![Çoklu oturum açmayı yapılandırma](./media/origami-tutorial/tutorial_origami_51.png)
+    ![Tek Sign-On yapılandırma](./media/origami-tutorial/tutorial_origami_51.png)
 
 3. Çoklu oturum açma Kurulumu iletişim sayfasında, aşağıdaki adımları uygulayın:
    
-    ![Çoklu oturum açmayı yapılandırma](./media/origami-tutorial/tutorial_origami_531.png)
+    ![Tek Sign-On yapılandırma](./media/origami-tutorial/tutorial_origami_531.png)
 
     a. **Çoklu oturum açmayı etkinleştir '** i seçin.
 
@@ -201,19 +201,19 @@ Bu bölümde, origami içinde Britta Simon adlı bir Kullanıcı oluşturacaksı
 
 2. Üstteki menüden **yönetici**' ye tıklayın.
    
-    ![Çoklu oturum açmayı yapılandırma](./media/origami-tutorial/tutorial_origami_51.png)
+    ![Tek Sign-On yapılandırma](./media/origami-tutorial/tutorial_origami_51.png)
 
 3. **Kullanıcılar ve güvenlik** Iletişim kutusunda **Kullanıcılar**' a tıklayın.
    
-    ![Çoklu oturum açmayı yapılandırma](./media/origami-tutorial/tutorial_origami_54.png)
+    ![Tek Sign-On yapılandırma](./media/origami-tutorial/tutorial_origami_54.png)
 
 4. **Yeni Kullanıcı Ekle**' ye tıklayın.
    
-    ![Çoklu oturum açmayı yapılandırma](./media/origami-tutorial/tutorial_origami_55.png)
+    ![Tek Sign-On yapılandırma](./media/origami-tutorial/tutorial_origami_55.png)
 
 5. Yeni Kullanıcı Ekle iletişim kutusunda aşağıdaki adımları gerçekleştirin:
    
-    ![Çoklu oturum açmayı yapılandırma](./media/origami-tutorial/tutorial_origami_56.png)
+    ![Tek Sign-On yapılandırma](./media/origami-tutorial/tutorial_origami_56.png)
 
     a. **Kullanıcı adı** metin kutusuna, **brittasıon \@ contoso.com**gibi kullanıcının e-postasını girin.
 
@@ -227,11 +227,11 @@ Bu bölümde, origami içinde Britta Simon adlı bir Kullanıcı oluşturacaksı
 
     f. **Kaydet**’e tıklayın.
    
-    ![Çoklu oturum açmayı yapılandırma](./media/origami-tutorial/tutorial_origami_57.png)
+    ![Tek Sign-On yapılandırma](./media/origami-tutorial/tutorial_origami_57.png)
 
 6. Kullanıcıya **Kullanıcı rolleri** ve **istemci erişimi** atayın. 
    
-    ![Çoklu oturum açmayı yapılandırma](./media/origami-tutorial/tutorial_origami_58.png)
+    ![Tek Sign-On yapılandırma](./media/origami-tutorial/tutorial_origami_58.png)
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 

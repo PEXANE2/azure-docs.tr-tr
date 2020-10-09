@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/22/2019
 ms.author: dech
 ms.openlocfilehash: 4c485bf6b9eb34e68e399c24e51286428f47586f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85261911"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>Azure Cosmos DB hesapları için not defterlerini etkinleştirme (Önizleme)
@@ -28,18 +28,18 @@ Azure Cosmos DB 'daki yerleşik jupi Not defterleri, Azure portal verilerinizi a
  
     :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks.png" alt-text="Azure Cosmos DB dikey pencere Oluştur bölümünde Not defterleri seçeneğini belirleyin":::
 
-1. **İncele ve oluştur**’u seçin. **Ağ** ve **Etiketler** seçeneğini atlayabilirsiniz. 
+1. **Gözden geçir ve oluştur**’u seçin. **Ağ** ve **Etiketler** seçeneğini atlayabilirsiniz. 
 1. Hesap ayarlarını gözden geçirip **Oluştur** seçeneğini belirleyin. Hesabın oluşturulması birkaç dakika sürer. Portal sayfasında **Dağıtımınız tamamlandı** iletisinin görüntülenmesini bekleyin. 
 
-   :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks-complete.png" alt-text="Azure portalındaki Bildirimler bölmesi":::
+   :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks-complete.png" alt-text="Azure Cosmos DB dikey pencere Oluştur bölümünde Not defterleri seçeneğini belirleyin":::
 
 1. Azure Cosmos DB hesabı sayfasına gitmek için **Kaynağa git** seçeneğini belirleyin.
 
-   :::image type="content" source="../../includes/media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created-3.png" alt-text="Azure Cosmos DB hesabı sayfası":::
+   :::image type="content" source="../../includes/media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created-3.png" alt-text="Azure Cosmos DB dikey pencere Oluştur bölümünde Not defterleri seçeneğini belirleyin":::
 
 1. **Veri Gezgini** bölmesine gidin. Artık Not defteri çalışma alanınızı görmeniz gerekir.
 
-    :::image type="content" source="media/enable-notebooks/new-notebooks-workspace.png" alt-text="Yeni Azure Cosmos DB Not defteri çalışma alanı":::
+    :::image type="content" source="media/enable-notebooks/new-notebooks-workspace.png" alt-text="Azure Cosmos DB dikey pencere Oluştur bölümünde Not defterleri seçeneğini belirleyin":::
 
 ## <a name="enable-notebooks-in-an-existing-cosmos-account"></a>Mevcut Cosmos hesabındaki not defterlerini etkinleştir
 
@@ -48,7 +48,7 @@ Ayrıca, mevcut hesaplarda not defterlerini etkinleştirebilirsiniz. Bu adımın
 1. Cosmos hesabınızda **Veri Gezgini** bölmesine gidin.
 1. **Not defterlerini etkinleştir**' i seçin.
 
-    :::image type="content" source="media/enable-notebooks/enable-notebooks-workspace.png" alt-text="Veri Gezgini yeni bir not defteri çalışma alanı oluştur":::
+    :::image type="content" source="media/enable-notebooks/enable-notebooks-workspace.png" alt-text="Azure Cosmos DB dikey pencere Oluştur bölümünde Not defterleri seçeneğini belirleyin":::
 
 1. Bu, yeni bir not defteri çalışma alanı oluşturmanızı ister. **Kurulumu Tamam** ' ı seçin.
 1. Hesabınız artık not defterlerini kullanacak şekilde etkinleştirilmiştir!
@@ -59,18 +59,18 @@ Not defterlerini kullanacağınızı doğrulamak için örnek Not defterleri alt
 
 Bu örnekte, **gettingstarted. ipynb**' yi kullanacağız. 
 
-:::image type="content" source="media/enable-notebooks/select-getting-started-notebook.png" alt-text="GettingStarted. ipynb Not defterini görüntüle":::
+:::image type="content" source="media/enable-notebooks/select-getting-started-notebook.png" alt-text="Azure Cosmos DB dikey pencere Oluştur bölümünde Not defterleri seçeneğini belirleyin":::
 
 Not defterini çalıştırmak için:
 1. Python kodunu içeren ilk kod hücresini seçin. 
 1. Hücreyi çalıştırmak için **Çalıştır** ' ı seçin. Hücreyi çalıştırmak için **SHIFT + enter** ' i de kullanabilirsiniz.
 1. Oluşturulan veritabanını ve kapsayıcıyı görmek için kaynak bölmesini yenileyin.
 
-    :::image type="content" source="media/enable-notebooks/run-first-notebook-cell.png" alt-text="Başlarken Not defterini çalıştır":::
+    :::image type="content" source="media/enable-notebooks/run-first-notebook-cell.png" alt-text="Azure Cosmos DB dikey pencere Oluştur bölümünde Not defterleri seçeneğini belirleyin":::
 
 Yeni bir not defteri oluşturmak için **Yeni Not** defteri ' ni **seçip not defterim menüsünden** **dosya karşıya yükle** ' yi seçerek var olan bir not defteri (. ipynb) dosyasını karşıya yükleyebilirsiniz. 
 
-:::image type="content" source="media/enable-notebooks/create-or-upload-new-notebook.png" alt-text="Yeni bir not defteri oluşturun veya karşıya yükleyin":::
+:::image type="content" source="media/enable-notebooks/create-or-upload-new-notebook.png" alt-text="Azure Cosmos DB dikey pencere Oluştur bölümünde Not defterleri seçeneğini belirleyin":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
