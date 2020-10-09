@@ -3,18 +3,18 @@ title: Sanal Ağlar
 titleSuffix: Azure Cognitive Services
 description: Bilişsel hizmetler kaynaklarınız için katmanlı ağ güvenliğini yapılandırın.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 05/26/2020
-ms.author: dapine
-ms.openlocfilehash: 808d42c821272882bbf0e01a36e49f7f10b30efa
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 10/07/2020
+ms.author: aahi
+ms.openlocfilehash: d320fcd0b7f9666da39dd1208efd9cdec04ad6b5
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505036"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843150"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Azure Bilişsel Hizmetler sanal ağlarını yapılandırma
 
@@ -40,40 +40,29 @@ Ağ kuralları, REST ve WebSocket dahil olmak üzere Azure bilişsel hizmetler '
 
 ## <a name="supported-regions-and-service-offerings"></a>Desteklenen bölgeler ve hizmet teklifleri
 
-Sanal ağlar (VNet 'ler) bilişsel [Hizmetler 'in kullanılabildiği bölgelerde](https://azure.microsoft.com/global-infrastructure/services/)desteklenir. Bilişsel hizmet listede yoksa, şu anda sanal ağları desteklememektedir.
+Sanal ağlar (VNet 'ler) bilişsel [Hizmetler 'in kullanılabildiği bölgelerde](https://azure.microsoft.com/global-infrastructure/services/)desteklenir. Bilişsel hizmetler, ağ kuralları yapılandırması için hizmet etiketlerini destekler. Aşağıda listelenen hizmetler, **Biliveservicesmanagement** hizmeti etiketinde bulunur.
 
 > [!div class="checklist"]
-> * [Anomali Algılayıcısı](./anomaly-detector/index.yml)
-> * [Görüntü İşleme](./computer-vision/index.yml)
-> * [Content Moderator](./content-moderator/index.yml)
-> * [Özel Görüntü İşleme](./custom-vision-service/index.yml)
-> * [Yüz Tanıma](./face/index.yml)
-> * [Form Tanıma](./form-recognizer/index.yml)
-> * [Language Understanding](./luis/index.yml)
-> * [Kişiselleştirme](./personalizer/index.yml)
-> * [Metin Analizi](./text-analytics/index.yml)
-> * [Soru-Cevap Oluşturucu](./qnamaker/index.yml)
-> * [Translator Metin Çevirisi](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#virtual-network-support)
-> * [Tam Ekran Okuyucu](./immersive-reader/index.yml)
+> * Anomali Algılayıcısı
+> * Görüntü İşleme
+> * Content Moderator
+> * Özel Görüntü
+> * Yüz
+> * Form Tanıma
+> * Language Understanding (LUIS)
+> * Kişiselleştirme
+> * Metin Analizi
+> * Soru-Cevap Oluşturucu
+> * Translator Metin Çevirisi
+> * Tam Ekran Okuyucu
 
-## <a name="service-tags"></a>Hizmet Etiketleri
+> [!NOTE]
+> LUSıS kullanıyorsanız, **Biliveservicesmanagement** etiketi yalnızca SDK 'yı veya REST API kullanarak hizmeti kullanmanıza izin verebilir. Bir sanal ağ üzerinden HALU portalına erişmek ve bu portalı kullanmak için aşağıdaki etiketleri kullanmanız gerekir:  
+> * **AzureResourceManager** 
+> * **Biliveservicesmanagement**
+> * **AzureActiveDirectory**
+> * **Azurefrontkapısı. ön uç**
 
-Bilişsel hizmetler, ağ kuralları yapılandırması için hizmet etiketlerini destekler. Aşağıda listelenen hizmetler, **Biliveservicesmanagement** hizmeti etiketinde bulunur.
-
-> [!div class="checklist"]
-> * [Anomali Algılayıcısı](./anomaly-detector/index.yml)
-> * [Görüntü İşleme](./computer-vision/index.yml)
-> * [Content Moderator](./content-moderator/index.yml)
-> * [Özel Görüntü İşleme](./custom-vision-service/index.yml)
-> * [Yüz Tanıma](./face/index.yml)
-> * [Form Tanıma](./form-recognizer/index.yml)
-> * [Language Understanding (LUIS)](./luis/index.yml)
-> * [Kişiselleştirme](./personalizer/index.yml)
-> * [Metin Analizi](./text-analytics/index.yml)
-> * [Soru-Cevap Oluşturucu](./qnamaker/index.yml)
-> * [Translator](./translator/index.yml)
-> * [Konuşma hizmeti](./speech-service/index.yml)
-> * [Tam Ekran Okuyucu](./immersive-reader/index.yml)
 
 ## <a name="change-the-default-network-access-rule"></a>Varsayılan ağ erişim kuralını değiştirme
 
@@ -86,7 +75,7 @@ Bilişsel hizmetler kaynakları, varsayılan olarak herhangi bir ağdaki istemci
 
 Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı aracılığıyla varsayılan ağ erişim kurallarını yönetebilirsiniz.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
 
 1. Güvenli hale getirmek istediğiniz bilişsel hizmetler kaynağına gidin.
 
@@ -188,7 +177,7 @@ Bilişsel hizmetler kaynağı ve erişim verilen sanal ağlar, farklı bir Azure
 
 Bilişsel hizmetler kaynakları için sanal ağ kurallarını Azure portal, PowerShell veya Azure CLı aracılığıyla yönetebilirsiniz.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
 
 1. Güvenli hale getirmek istediğiniz bilişsel hizmetler kaynağına gidin.
 
@@ -364,7 +353,7 @@ IP ağ kurallarına yalnızca **genel İnternet** IP adresleri için izin verili
 
 Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı aracılığıyla IP ağ kurallarını yönetebilirsiniz.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
 
 1. Güvenli hale getirmek istediğiniz bilişsel hizmetler kaynağına gidin.
 

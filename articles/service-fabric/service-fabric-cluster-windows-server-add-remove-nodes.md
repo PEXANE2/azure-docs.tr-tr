@@ -1,19 +1,20 @@
 ---
 title: Tek başına Service Fabric kümesine düğüm ekleme veya kaldırma
 description: Şirket içinde veya herhangi bir bulutta olabilecek Windows Server çalıştıran fiziksel veya sanal bir makinede Azure Service Fabric kümesine düğüm ekleme veya kaldırma hakkında bilgi edinin.
-author: dkkapur
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: dekapur
-ms.openlocfilehash: 9fa8b0970d198f9801c7661b9555db17cdf67b3c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3e5f32274d2263bc5bf1bbec8f1626d519f8ca3f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258719"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842929"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Windows Server’da çalışan tek başına Service Fabric kümesine düğüm ekleme veya kaldırma
-[Windows Server makinelerinde tek başına Service Fabric kümenizi](service-fabric-cluster-creation-for-windows-server.md)oluşturduktan sonra, (iş) gereksinimleriniz değişebilir ve kümenize düğüm eklemeniz ya da kaldırmanız gerekecektir. Bu makalede bunun elde edilebilmesi için ayrıntılı adımlar sağlanmaktadır. Lütfen yerel geliştirme kümelerinde düğüm Ekle/Kaldır işlevinin desteklenmediğini unutmayın.
+[Tek başına Service Fabric kümenizi Windows Server makinelerinde oluşturduktan](service-fabric-cluster-creation-for-windows-server.md)sonra, (iş) gereksinimleriniz değişebilir ve bu makalede açıklandığı gibi kümenize düğüm eklemeniz veya kaldırmanız gerekir.
+
+> [!NOTE]
+> Düğüm ekleme ve kaldırma işlevselliği yerel geliştirme kümelerinde desteklenmez.
 
 ## <a name="add-nodes-to-your-cluster"></a>Kümenize düğüm ekleme
 
@@ -29,7 +30,7 @@ ms.locfileid: "86258719"
 
 5. PowerShell 'i yükseltilmiş ayrıcalıklarla çalıştırın ve daraltılmış paketin konumuna gidin.
 
-6. *AddNode.ps1* betiği, eklenecek yeni düğümü açıklayan parametrelerle çalıştırın. Aşağıdaki örnek, UD1 ve FD:/DC1/R0 içine NodeType0 ve IP adresi 182.17.34.52 ile VM5 adlı yeni bir düğüm ekler. `ExistingClusterConnectionEndPoint`, var olan kümede zaten bulunan bir düğüm için, kümedeki *herhangi* BIR düğümün IP adresi olabilecek bir bağlantı uç noktasıdır. 
+6. *AddNode.ps1* betiği, eklenecek yeni düğümü açıklayan parametrelerle çalıştırın. Aşağıdaki örnek, UD1 ve FD:/DC1/R0 içine NodeType0 ve IP adresi 182.17.34.52 ile VM5 adlı yeni bir düğüm ekler. `ExistingClusterConnectionEndPoint` , var olan kümede zaten bulunan bir düğüm için, kümedeki *herhangi* BIR düğümün IP adresi olabilecek bir bağlantı uç noktasıdır. 
 
    Güvenli olmayan (prototipleme):
 
@@ -132,7 +133,7 @@ Bir düğüm, yapılandırma yükseltmesi kullanılarak bir kümeden aşağıdak
 > 
 
 ### <a name="remove-node-types-from-your-cluster"></a>Düğüm türlerini kümenizdeki kaldırma
-Düğüm türünü kaldırmadan önce lütfen düğüm türüne başvuran bir düğüm olup olmadığını iki kez kontrol edin. Karşılık gelen düğüm türünü kaldırmadan önce bu düğümleri kaldırın. Karşılık gelen tüm düğümler kaldırıldıktan sonra, küme yapılandırmasından NodeType 'yi kaldırabilir ve [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps)kullanarak bir yapılandırma yükseltmesi başlatabilirsiniz.
+Düğüm türünü kaldırmadan önce düğüm türüne başvuran düğüm olup olmadığını kontrol edin. Karşılık gelen düğüm türünü kaldırmadan önce bu düğümleri kaldırın. Karşılık gelen tüm düğümler kaldırıldıktan sonra, küme yapılandırmasından NodeType 'yi kaldırabilir ve [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps)kullanarak bir yapılandırma yükseltmesi başlatabilirsiniz.
 
 
 ### <a name="replace-primary-nodes-of-your-cluster"></a>Kümenizin birincil düğümlerini değiştirme

@@ -4,14 +4,14 @@ description: Azure Cosmos DB ortak görevleri gerçekleştirmek için Azure Powe
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 07/30/2020
+ms.date: 10/07/2020
 ms.author: mjbrown
-ms.openlocfilehash: 678e9490fe52a329365174e1a2283a475f3312e5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0c2d13ef49676917bc48dd5a2e682471558567f3
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87506661"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842980"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure PowerShell örnekleri
 
@@ -37,8 +37,7 @@ Aşağıdaki tabloda, Azure Cosmos DB için yaygın olarak kullanılan Azure Pow
 |[Büyük bölüm anahtarı ile bir kapsayıcı oluşturma](scripts/powershell/sql/create-large-partition-key.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Büyük bölüm anahtarı ile bir kapsayıcı oluşturun. |
 |[Dizin ilkesi olmadan kapsayıcı oluşturma](scripts/powershell/sql/create-index-none.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Dizin ilkesi kapalıyken bir Azure Cosmos kapsayıcısı oluşturun.|
 |[Veritabanları veya kapsayıcıları listeleme veya edinme](scripts/powershell/sql/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Veritabanı veya kapsayıcıları listeleyin veya alın. |
-|[Aktarım hızı alma](scripts/powershell/sql/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bir veritabanı veya kapsayıcı için aktarım hızı alın. |
-|[Üretimi Güncelleştir](scripts/powershell/sql/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bir veritabanı veya kapsayıcı için üretilen işi güncelleştirin. |
+|[Aktarım hızı işlemleri](scripts/powershell/sql/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bir veritabanı veya kapsayıcı için, otomatik ölçeklendirme ve standart verimlilik arasında al, Güncelleştir ve geçir dahil işleme işlemleri. |
 |[Kaynakları silinmeye karşı kilitle](scripts/powershell/sql/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Kaynakların kaynak kilitleri ile silinmesini engelleyin. |
 |||
 
@@ -49,8 +48,7 @@ Aşağıdaki tabloda, Azure Cosmos DB için yaygın olarak kullanılan Azure Pow
 |[Hesap, anahtar alanı ve tablo oluşturma](scripts/powershell/cassandra/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Azure Cosmos hesabı, anahtar alanı ve tablo oluşturur. |
 |[Otomatik ölçeklendirme ile hesap, anahtar alanı ve tablo oluşturma](scripts/powershell/cassandra/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Otomatik ölçeklendirme ile bir Azure Cosmos hesabı, anahtar alanı ve tablo oluşturur. |
 |[Anahtar alanları veya tabloları listeleme veya edinme](scripts/powershell/cassandra/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Anahtar alanları veya tabloları listeleyin veya alın. |
-|[Aktarım hızı alma](scripts/powershell/cassandra/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Anahtar alanı veya tablo için üretilen iş alın. |
-|[Üretimi Güncelleştir](scripts/powershell/cassandra/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Anahtar alanı veya tablo için üretilen işi güncelleştirin. |
+|[Aktarım hızı işlemleri](scripts/powershell/cassandra/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Anahtar uzayı veya tablo için, otomatik ölçeklendirme ve standart verimlilik arasında al, Güncelleştir ve geçir dahil işleme işlemleri. |
 |[Kaynakları silinmeye karşı kilitle](scripts/powershell/cassandra/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Kaynakların kaynak kilitleri ile silinmesini engelleyin. |
 |||
 
@@ -61,8 +59,7 @@ Aşağıdaki tabloda, Azure Cosmos DB için yaygın olarak kullanılan Azure Pow
 |[Hesap, veritabanı ve koleksiyon oluşturma](scripts/powershell/mongodb/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Azure Cosmos hesabı, veritabanı ve koleksiyonu oluşturur. |
 |[Otomatik ölçeklendirme ile hesap, veritabanı ve koleksiyon oluşturma](scripts/powershell/mongodb/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Otomatik ölçeklendirme ile bir Azure Cosmos hesabı, veritabanı ve koleksiyonu oluşturur. |
 |[Veritabanları veya koleksiyonları listeleme veya edinme](scripts/powershell/mongodb/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Veritabanını veya toplamayı listeleyin veya alın. |
-|[Aktarım hızı alma](scripts/powershell/mongodb/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bir veritabanı veya koleksiyon için üretilen iş alın. |
-|[Üretimi Güncelleştir](scripts/powershell/mongodb/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bir veritabanı veya koleksiyon için üretilen işi güncelleştirin. |
+|[Aktarım hızı işlemleri](scripts/powershell/mongodb/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bir veritabanı veya koleksiyon için, otomatik ölçeklendirme ve standart verimlilik arasında al, Güncelleştir ve geçir dahil işleme işlemleri. |
 |[Kaynakları silinmeye karşı kilitle](scripts/powershell/mongodb/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Kaynakların kaynak kilitleri ile silinmesini engelleyin. |
 |||
 
@@ -73,8 +70,7 @@ Aşağıdaki tabloda, Azure Cosmos DB için yaygın olarak kullanılan Azure Pow
 |[Hesap, veritabanı ve grafik oluşturma](scripts/powershell/gremlin/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Azure Cosmos hesabı, veritabanı ve grafik oluşturur. |
 |[Otomatik ölçeklendirme ile hesap, veritabanı ve grafik oluşturma](scripts/powershell/gremlin/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Otomatik ölçeklendirme ile bir Azure Cosmos hesabı, veritabanı ve grafik oluşturur. |
 |[Veritabanları veya grafikleri listeleme veya edinme](scripts/powershell/gremlin/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Veritabanını veya grafiği listeleyin veya alın. |
-|[Aktarım hızı alma](scripts/powershell/gremlin/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bir veritabanı veya grafik için üretilen iş alın. |
-|[Üretimi Güncelleştir](scripts/powershell/gremlin/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bir veritabanı veya grafik için üretilen işi güncelleştirin. |
+|[Aktarım hızı işlemleri](scripts/powershell/gremlin/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bir veritabanı veya grafiğe yönelik işleme, otomatik ölçeklendirme ve standart verimlilik arasında Get, Update ve Migrate işlemleri dahildir. |
 |[Kaynakları silinmeye karşı kilitle](scripts/powershell/gremlin/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Kaynakların kaynak kilitleri ile silinmesini engelleyin. |
 |||
 
@@ -85,7 +81,6 @@ Aşağıdaki tabloda, Azure Cosmos DB için yaygın olarak kullanılan Azure Pow
 |[Hesap ve tablo oluşturma](scripts/powershell/table/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bir Azure Cosmos hesabı ve tablosu oluşturur. |
 |[Otomatik ölçeklendirme ile hesap ve tablo oluşturma](scripts/powershell/table/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Azure Cosmos hesabı ve tablo otomatik ölçeklendirmeyi oluşturur. |
 |[Tabloları listeleme veya al](scripts/powershell/table/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tabloları listeleyin veya alın. |
-|[Aktarım hızı alma](scripts/powershell/table/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bir tablo için üretilen iş kazanın. |
-|[Üretimi Güncelleştir](scripts/powershell/table/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tablo için üretilen işi güncelleştirin. |
+|[Aktarım hızı işlemleri](scripts/powershell/table/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Otomatik ölçeklendirme ve standart verimlilik arasında al, Güncelleştir ve geçir dahil olmak üzere bir tablo için işleme işlemleri. |
 |[Kaynakları silinmeye karşı kilitle](scripts/powershell/table/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Kaynakların kaynak kilitleri ile silinmesini engelleyin. |
 |||

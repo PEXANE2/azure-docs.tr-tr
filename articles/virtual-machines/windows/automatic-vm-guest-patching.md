@@ -7,14 +7,14 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: manayar
-ms.openlocfilehash: 47ac9fa91f391442691661a3ba03dd1f0d918601
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 0a777b9008864368a6d1731cae0374e55a4c585f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669064"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842878"
 ---
-# <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>Önizleme: Azure 'da Windows VM 'Leri için otomatik VM Konuk düzeltme eki uygulama
+# <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>Önizleme: Azure'da Windows VM'leri için Otomatik VM konuk düzeltme eki uygulama
 
 Windows VM 'leriniz için otomatik sanal makine konuk düzeltme eki uygulamayı etkinleştirmek, güncelleştirme yönetimini güvenli bir şekilde ve sanal makinelere güvenlik uyumluluğunu sürdürmek için otomatik olarak yama sağlar
 
@@ -162,7 +162,7 @@ Aboneliğiniz için özellik kaydedildikten sonra, değişikliği işlem kaynak 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Compute
 ```
-## <a name="enable-automatic-vm-guest-patching"></a>Otomatik VM Konuk düzeltme eki uygulamayı etkinleştir
+## <a name="enable-automatic-vm-guest-patching"></a>Otomatik VM konuk düzeltme eki uygulamayı etkinleştirme
 Otomatik VM Konuk düzeltme eki uygulamayı etkinleştirmek için, sanal makine şablon tanımında *Osprofile. windowsConfiguration. enableAutomaticUpdates* özelliğinin *true* olarak ayarlandığından emin olun. Bu özellik yalnızca VM oluşturulurken ayarlanabilir.
 
 ### <a name="rest-api"></a>REST API
@@ -251,8 +251,10 @@ VM 'niz için düzeltme eki yükleme sonuçları, bölümünde incelenebilir `la
 ## <a name="on-demand-patch-assessment"></a>İsteğe bağlı düzeltme eki değerlendirmesi
 VM 'niz için otomatik VM Konuk düzeltme eki uygulama özelliği zaten etkinse, VM 'de sanal makinenin yoğun olmayan saatlerde düzenli aralıklarla bir düzeltme eki değerlendirmesi yapılır. Bu işlem otomatiktir ve en son değerlendirmenin sonuçları, bu belgede daha önce açıklandığı gibi VM 'nin örnek görünümü aracılığıyla incelenebilir. Ayrıca, istediğiniz zaman VM 'niz için isteğe bağlı bir yama değerlendirmesi tetikleyebilirsiniz. Düzeltme Eki değerlendirmesi işleminin tamamlanması birkaç dakika sürebilir ve en son değerlendirmenin durumu VM 'nin örnek görünümünde güncelleştirilir.
 
+Önizleme işlevselliğinin etkinleştirilmesi, abonelik başına *InGuestPatchVMPreview* özelliği için tek seferlik bir kabul gerektirir. İsteğe bağlı düzeltme eki değerlendirmesi için özellik önizlemesi, daha önce otomatik VM Konuk düzeltme eki uygulama için açıklanan [Önizleme etkinleştirme işleminden](automatic-vm-guest-patching.md#requirements-for-enabling-automatic-vm-guest-patching) sonra etkinleştirilebilir.
+
 > [!NOTE]
->İsteğe bağlı düzeltme eki değerlendirmesi, düzeltme ekinin yüklü olarak otomatik olarak tetiklemez. VM için değerlendirilen ve geçerli düzeltme ekleri, bu belgede daha önce açıklanan kullanılabilirlik için ilk düzeltme eki uygulama işleminin ardından VM 'nin yoğun olmayan saatlerde yüklenecektir.
+>İsteğe bağlı yama değerlendirmesi, düzeltme eki yüklemesini otomatik olarak tetiklemez. VM için değerlendirilen ve geçerli düzeltme ekleri, bu belgede daha önce açıklanan kullanılabilirlik için ilk düzeltme eki uygulama işleminin ardından VM 'nin yoğun olmayan saatlerde yüklenecektir.
 
 ### <a name="rest-api"></a>REST API
 ```

@@ -1,31 +1,29 @@
 ---
 title: Tek başına kümeyi Temizleme
-description: Bu öğreticide, tek başına Service Fabric kümenizdeki AWS veya Azure kaynaklarını temizlemeyi öğreneceksiniz.
-author: dkkapur
+description: Bu öğreticide, tek başına Service Fabric kümeniz için AWS veya Azure kaynaklarını silmeyi öğrenin.
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: bfb23ca5f5eb9540491fbd05efdfd6997db15e6b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 0d46e9068a311594f779411c3ccee2b408febb3f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "75639029"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842895"
 ---
 # <a name="tutorial-clean-up-your-standalone-cluster"></a>Öğretici: Tek başına kümenizi temizleme
 
-Service Fabric tek başına kümeleri, kendi ortamınızı seçme ve Service Fabric’in benimsediği "her işletim sistemi, her bulut" yaklaşımının bir parçası olarak bir küme oluşturma seçeneği sunar. Bu öğretici serisinde, AWS veya Azure üzerinde barındırılan bir tek başına küme oluşturur ve bu kümeye bir uygulama yüklersiniz.
+Tek başına kümeler Service Fabric, size Service Fabric barındırmak için kendi ortamınızı seçme seçeneği sunar. Bu öğretici serisinde, AWS veya Azure 'da barındırılan tek başına bir küme oluşturacak ve bu uygulamaya bir uygulama dağıtırsınız.
 
-Bu öğretici, bir serinin dördüncü bölümüdür. Öğreticinin bu bölümü, Service Fabric kümenizi barındırmak için oluşturduğunuz AWS veya Azure kaynaklarını nasıl temizleyekullanabileceğinizi gösterir.
+Bu öğretici, bir serinin dördüncü bölümüdür. Öğreticinin bu bölümünde, Service Fabric kümenizi barındırmak için oluşturduğunuz AWS veya Azure kaynaklarının nasıl silineceği gösterilir.
 
-Serinin dördüncü kısmında öğrenecekleriniz:
+Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Service Fabric kümesini temizleme
-> * AWS veya Azure kaynaklarınızı temizleyin
+> * Service Fabric kümeyi kaldırma
+> * AWS veya Azure kaynaklarınızı silme
 
-## <a name="clean-up-service-fabric-cluster"></a>Service Fabric kümesini temizleme
+## <a name="remove-a-service-fabric-cluster"></a>Service Fabric kümeyi kaldırma
 
 1. Service Fabric yüklemek için kullandığınız sanal makineye RDP.
 2. PowerShell’i açın.
@@ -36,7 +34,7 @@ Serinin dördüncü kısmında öğrenecekleriniz:
   .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json
   ```
 
-5. `Y`İstendiğinde, Çıktınıza, kendı IP adreslerinizin yerini alarak aşağıdaki gibi görünür:
+5. `Y`İstendiğinde girin. Başarılı olduysa, çıktılarınız aşağıdaki gibi görünür (kendi IP adreslerinizle birlikte):
 
   ```powershell
   Best Practices Analyzer completed successfully.
@@ -49,23 +47,23 @@ Serinin dördüncü kısmında öğrenecekleriniz:
   The cluster is successfully removed.
   ```
 
-## <a name="clean-up-aws-resources"></a>AWS kaynaklarını temizleme
+## <a name="delete-aws-resources"></a>AWS kaynaklarını silme
 
 1. AWS hesabınızda oturum açın.
 2. EC2 Konsolu'na gidin.
 3. Öğreticinin birinci bölümünde oluşturduğunuz üç düğümü seçin.
-4. **Eylemler**  >  **örneği durum**  >  **Sonlandır**' a tıklayın.
+4. **Eylemler**  >  **örnek durumunu**  >  **Sonlandır**' ı seçin.
 
-## <a name="clean-up-azure-resources"></a>Azure kaynaklarını Temizleme
+## <a name="delete-azure-resources"></a>Azure kaynaklarını silme
 
-1. Azure portalında oturum açın.
+1. Azure Portal’da oturum açın.
 2. **Sanal makineler** bölümüne gidin.
 3. Öğreticinin bir parçası olarak oluşturduğunuz üç düğüm için onay kutularını seçin.
-4. **Sil**' e tıklayın.
+4. **Sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Serinin dördüncü bölümünde, önceki adımlarda oluşturulan kaynaklarınızı nasıl temizleyeceğinizi öğrendiniz.
+Bu öğreticide, önceki adımlarda oluşturduğunuz kaynakları silmeyi öğrendiniz.
 
 > [!div class="checklist"]
 > * Kaynaklarınızı temizleme

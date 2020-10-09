@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric tek başına kümenizi yapılandırma
 description: Tek başına veya şirket içi Azure Service Fabric kümenizi nasıl yapılandıracağınızı öğrenin.
-author: dkkapur
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.author: dekapur
-ms.openlocfilehash: e8a1fdfb23b6e0aee9b9bdd04f70c554824f4c35
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: fd93263b38340ce080cca1aecb98f3a599ff1861
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246580"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843167"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Tek başına Windows kümesi için yapılandırma ayarları
 Bu makalede, *ClusterConfig.json* dosyasında ayarlanyüklenebilen tek başına Azure Service Fabric kümesinin yapılandırma ayarları açıklanmaktadır. Bu dosyayı, küme düğümleri, güvenlik yapılandırmalarının yanı sıra hata ve yükseltme etki alanları açısından ağ topolojisi ile ilgili bilgileri belirtmek için kullanacaksınız.  Yapılandırma ayarlarını değiştirdikten veya ekledikten sonra [tek başına küme oluşturabilir](service-fabric-cluster-creation-for-windows-server.md) veya [tek başına bir kümenin yapılandırmasını yükseltebilirsiniz](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -199,7 +197,7 @@ Tüm kullanılabilir eklenti özellikleri [Service Fabric REST API başvurusunda
 Tek başına kümeler için hem Windows Server kapsayıcıları hem de Hyper-V kapsayıcıları için kapsayıcı desteğini etkinleştirmek üzere DnsService eklentisi özelliğinin etkinleştirilmesi gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Tek başına küme kuruluma göre yapılandırılmış dosya *üzerinde birClusterConfig.js* tamamladıktan sonra, kümenizi dağıtabilirsiniz. [Tek başına Service Fabric kümesi oluşturma](service-fabric-cluster-creation-for-windows-server.md)bölümündeki adımları izleyin. 
+Tek başına küme kuruluma göre yapılandırılmış dosya * üzerinde birClusterConfig.js* tamamladıktan sonra, kümenizi dağıtabilirsiniz. [Tek başına Service Fabric kümesi oluşturma](service-fabric-cluster-creation-for-windows-server.md)bölümündeki adımları izleyin. 
 
 Dağıtılan tek başına bir kümeniz varsa, [tek başına bir kümenin yapılandırmasını da yükseltebilirsiniz](service-fabric-cluster-config-upgrade-windows-server.md). 
 

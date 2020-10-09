@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2020
 ms.author: yelevin
-ms.openlocfilehash: 3f59fea9f6d96f6e259a47c75bcfb0fd0be76d34
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 63a9a6dc9f052c01a7440f616f0baeaab083ad73
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826566"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843082"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>Öğretici: Verilerinizi görselleştirme ve izleme
 
@@ -62,7 +62,7 @@ Bu öğretici, verilerinizi Azure Sentinel 'de görselleştirmenize yardımcı o
 ## <a name="create-new-workbook"></a>Yeni çalışma kitabı oluştur
 
 1. Çalışma **kitaplarına** gidip sıfırdan yeni bir çalışma kitabı oluşturmak için **çalışma kitabı Ekle** ' yi seçin.
-  ![çalışma kitaplarına git](./media/tutorial-monitor-data/create-workbook.png)
+  ![Yeni çalışma kitabı ekranını gösteren ekran görüntüsü.](./media/tutorial-monitor-data/create-workbook.png)
 
 1. Çalışma kitabını düzenlemek için **Düzenle**' yi seçin ve ardından gerektiğinde metin, sorgular ve parametreler ekleyin. Çalışma kitabını özelleştirme hakkında daha fazla bilgi için bkz. [Azure Izleyici çalışma kitapları ile etkileşimli raporlar oluşturma](../azure-monitor/platform/workbooks-overview.md). 
 
@@ -72,7 +72,7 @@ Bu öğretici, verilerinizi Azure Sentinel 'de görselleştirmenize yardımcı o
 
 1. Kuruluşunuzdaki başkalarının çalışma kitabını kullanmasına izin vermek istiyorsanız, **paylaşılan raporlar**' ı seçmek **için Kaydet** ' in altında. Bu çalışma kitabının yalnızca sizin için kullanılabilir olmasını istiyorsanız, **Raporlarım**' ı seçin.
 
-1. Çalışma alanınızdaki çalışma kitapları arasında geçiş yapmak için **Open** ![ ](./media/tutorial-monitor-data/switch.png) herhangi bir çalışma kitabının üst bölmesinde anahtar çalışma kitaplarını aç ' ı seçebilirsiniz. Sağ tarafta açılan pencerede, çalışma kitapları arasında geçiş yapın.
+1. Çalışma alanınızdaki çalışma kitapları arasında geçiş yapmak için, **Open** ![ bir çalışma kitabı açmak için aç simgesini seçebilirsiniz. ](./media/tutorial-monitor-data/switch.png) çalışma kitabının üst bölmesinde. Sağ tarafta açılan pencerede, çalışma kitapları arasında geçiş yapın.
 
    ![Çalışma kitaplarını değiştirme](./media/tutorial-monitor-data/switch-workbooks.png)
 

@@ -7,12 +7,12 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 2bf369b784cddf307abc59d2b8766fc8a87e0985
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9653a584382584d982c55008a6e8547de28691b7
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74975355"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842861"
 ---
 # <a name="iot-hub-device-reprovisioning-concepts"></a>Cihaz yeniden sağlama kavramlarını IoT Hub
 
@@ -32,7 +32,7 @@ Cihaz sağlama hizmeti içindeki yeniden sağlama desteği bu ihtiyaçları ele 
 
 Cihaz durumu verileri [cihaz ikizi](../iot-hub/iot-hub-devguide-device-twins.md) ve cihaz yetilerinden oluşur. Bu veriler cihaz sağlama Hizmeti örneğinde ve bir cihazın atandığı IoT Hub 'ında depolanır.
 
-![Cihaz sağlama hizmeti ile sağlama](./media/concepts-device-reprovisioning/dps-provisioning.png)
+![Sağlama, cihaz sağlama hizmeti ile nasıl çalıştığını gösteren diyagram.](./media/concepts-device-reprovisioning/dps-provisioning.png)
 
 Bir cihaz başlangıçta bir cihaz sağlama hizmeti örneğiyle sağlandığında, aşağıdaki adımlar gerçekleştirilir:
 
@@ -52,13 +52,13 @@ Senaryoya bağlı olarak, bir cihaz genellikle yeniden başlatma sırasında bir
 
 * **Verileri yeniden sağlayın ve geçirin**: Bu ilke, yeni kayıt girişleri için varsayılandır. Bu ilke, kayıt girdisiyle ilişkili cihazlar yeni bir istek (1) gönderdiğinde işlem gerçekleştirir. Kayıt girişi yapılandırmasına bağlı olarak, cihaz başka bir IoT Hub 'ına yeniden atanabilir. Cihaz IoT Hub 'larını değiştirirse, ilk IoT Hub 'ına sahip cihaz kaydı kaldırılır. Bu ilk IoT Hub 'ından güncelleştirilmiş cihaz durumu bilgileri, yeni IoT Hub 'ına (2) geçirilecek. Geçiş sırasında cihazın durumu **atama**olarak bildirilir.
 
-    ![Cihaz sağlama hizmeti ile sağlama](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
+    ![Kayıt girişiyle ilişkilendirilen cihazlar yeni bir istek gönderdiğinde bir ilkenin işlem yapması gerektiğini gösteren diyagram.](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
 
 * **İlk yapılandırmaya yeniden sağlama ve sıfırlama**: Bu ilke, kayıt girdisiyle ilişkili cihazlar yeni sağlama isteği (1) gönderdiğinde işlem gerçekleştirir. Kayıt girişi yapılandırmasına bağlı olarak, cihaz başka bir IoT Hub 'ına yeniden atanabilir. Cihaz IoT Hub 'larını değiştirirse, ilk IoT Hub 'ına sahip cihaz kaydı kaldırılır. Cihaz sağlandıysa sağlama hizmeti örneğinin aldığı ilk yapılandırma verileri yeni IoT Hub 'ına (2) sağlanır. Geçiş sırasında cihazın durumu **atama**olarak bildirilir.
 
     Bu ilke genellikle IoT Hub 'larını değiştirmeden fabrika sıfırlaması için kullanılır.
 
-    ![Cihaz sağlama hizmeti ile sağlama](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
+    ![Kayıt girişiyle ilişkilendirilen cihazlar yeni bir sağlama isteği gönderdiğinde bir ilkenin nasıl işlem yapılacağını gösteren diyagram.](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
 
 * **Hiçbir şekilde yeniden sağlama**: cihaz, farklı bir hub 'a hiçbir şekilde yeniden atanmaz. Bu ilke geriye dönük uyumluluğu yönetmek için sağlanır.
 

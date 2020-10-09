@@ -1,17 +1,17 @@
 ---
 title: Service Fabric bir kafes uygulamasında Azure dosya tabanlı birim kullanma
 description: Azure CLı kullanarak bir hizmet içinde Azure dosya tabanlı bir birim bağlayarak Azure Service Fabric kafes uygulamasında durum depolamayı öğrenin.
-author: dkkapur
+author: georgewallace
 ms.topic: conceptual
 ms.date: 11/21/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 54edc242260479a8f48cc4aae91845041fc2d376
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 01cee3dc3f6b67aba1e6f8455ed7b538a44fc6f7
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260103"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842796"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Azure dosya tabanlı bir birimi Service Fabric bir kafes uygulamasına bağlama 
 
@@ -21,7 +21,7 @@ Bir hizmete bir birimi bağlamak için, Service Fabric kafes uygulamanızda bir 
 
 ## <a name="prerequisites"></a>Önkoşullar
 > [!NOTE]
-> **WINDOWS RS5 geliştirme makinesinde dağıtım ile Ilgili bilinen sorun:** Azurefile birimlerinin bağlanmasını engelleyen RS5 Windows makinelerde New-SmbGlobalMapping PowerShell cmdlet 'i ile açık hata var. AzureFile tabanlı birim yerel geliştirme makinesine bağlandığında karşılaşılan örnek hata aşağıda verilmiştir.
+> **WINDOWS RS5 geliştirme makinesinde dağıtım ile Ilgili bilinen sorun:** Azurefile birimlerinin bağlanmasını önleyen RS5 Windows makinelerde PowerShell cmdlet 'i New-SmbGlobalMapping açık hata vardır. AzureFile tabanlı birim yerel geliştirme makinesine bağlandığında karşılaşılan örnek hata aşağıda verilmiştir.
 ```
 Error event: SourceId='System.Hosting', Property='CodePackageActivation:counterService:EntryPoint:131884291000691067'.
 There was an error during CodePackage activation.System.Fabric.FabricException (-2147017731)
@@ -75,9 +75,9 @@ az storage account keys list --account-name <storageAccountName> --query "[?keyN
 ```
 
 Bu değerleri [Azure Portal](https://portal.azure.com)de bulabilirsiniz:
-* `<storageAccountName>`- **Depolama hesapları**altında, dosya paylaşımının oluşturulması için kullanılan depolama hesabının adı.
-* `<storageAccountKey>`- **Depolama hesapları** altında depolama hesabınızı seçin ve ardından **erişim anahtarları** ' nı seçin ve **KEY1**altındaki değeri kullanın.
-* `<fileShareName>`- **Depolama hesapları** altında depolama hesabınızı seçin ve ardından **dosyalar**' ı seçin. Kullanılacak ad, oluşturduğunuz dosya paylaşımının adıdır.
+* `<storageAccountName>` - **Depolama hesapları**altında, dosya paylaşımının oluşturulması için kullanılan depolama hesabının adı.
+* `<storageAccountKey>` - **Depolama hesapları** altında depolama hesabınızı seçin ve ardından **erişim anahtarları** ' nı seçin ve **KEY1**altındaki değeri kullanın.
+* `<fileShareName>` -  **Depolama hesapları** altında depolama hesabınızı seçin ve ardından **dosyalar**' ı seçin. Kullanılacak ad, oluşturduğunuz dosya paylaşımının adıdır.
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-json"></a>Bir birim kaynağı bildirme ve hizmet kaynağını güncelleştirme (JSON)
 
@@ -85,7 +85,7 @@ Bu değerleri [Azure Portal](https://portal.azure.com)de bulabilirsiniz:
 
 Uygulama kaynağının eşi olarak bir birim kaynağı oluşturun. Azure dosya tabanlı birimi kullanmak için bir ad ve sağlayıcı ("SFAzureFile") belirtin. İçinde, `azureFileParameters` `<fileShareName>` `<storageAccountName>` `<storageAccountKey>` önceki adımda bulduğunuz, ve değerleri için parametreleri belirtin.
 
-Birimi hizmetinize bağlamak için, `volumeRefs` `codePackages` hizmetinin öğesine bir ekleyin.  `name`birim için kaynak KIMLIĞI (veya birim kaynağı için bir dağıtım şablonu parametresi) ve Volume. YAML kaynak dosyasında belirtilen birimin adı.  `destinationPath`, birimin bağlı olacağı yerel dizindir.
+Birimi hizmetinize bağlamak için, `volumeRefs` `codePackages` hizmetinin öğesine bir ekleyin.  `name` birim için kaynak KIMLIĞI (veya birim kaynağı için bir dağıtım şablonu parametresi) ve Volume. YAML kaynak dosyasında belirtilen birimin adı.  `destinationPath` , birimin bağlı olacağı yerel dizindir.
 
 ```json
 {
@@ -210,7 +210,7 @@ volume:
         accountKey: <storageAccountKey>
 ```
 
-Hizmet *kaynakları* dizinindeki *Service. YAML* dosyasını, birimi hizmetinize bağlamak için güncelleştirin.  Öğesini `volumeRefs` `codePackages` öğesine ekleyin.  `name`birim için kaynak KIMLIĞI (veya birim kaynağı için bir dağıtım şablonu parametresi) ve Volume. YAML kaynak dosyasında belirtilen birimin adı.  `destinationPath`, birimin bağlı olacağı yerel dizindir.
+Hizmet *kaynakları* dizinindeki *Service. YAML* dosyasını, birimi hizmetinize bağlamak için güncelleştirin.  Öğesini `volumeRefs` `codePackages` öğesine ekleyin.  `name` birim için kaynak KIMLIĞI (veya birim kaynağı için bir dağıtım şablonu parametresi) ve Volume. YAML kaynak dosyasında belirtilen birimin adı.  `destinationPath` , birimin bağlı olacağı yerel dizindir.
 
 ```yaml
 ## Service definition ##

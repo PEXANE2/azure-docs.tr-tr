@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-js
-ms.openlocfilehash: fe6c7f10ce64e25f46444cd2db8b67aab4ae2135
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 304ded466aeb734388c13b87331eb4813e850e56
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91308356"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842827"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Öğretici: Cihaz yazılımı güncelleştirme işlemi gerçekleştirme
 
@@ -184,7 +184,7 @@ Aşağıdaki ekran görüntüsünde simülasyon cihazı uygulamasından alınan 
 
 Aşağıdaki ekran görüntüsünde arka uç uygulamasından alınan çıkış gösterilmiş ve uygulamanın cihaz yazılımının istenen özelliklerini güncelleştirmek için yapılandırmayı nasıl oluşturduğu vurgulanmıştır:
 
-![Arka uç uygulaması](./media/tutorial-firmware-update/BackEnd1.png)
+![Arka uç uygulamasındaki çıktıyı gösteren ekran görüntüsü.](./media/tutorial-firmware-update/BackEnd1.png)
 
 Aşağıdaki ekran görüntüsünde arka uç uygulamasından alınan çıkış gösterilmiş ve uygulamanın simülasyon cihazından cihaz yazılımı güncelleştirme ölçümlerini nasıl izlediği vurgulanmıştır:
 

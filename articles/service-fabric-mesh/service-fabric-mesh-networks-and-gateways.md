@@ -1,17 +1,17 @@
 ---
 title: Azure Service Fabric ağı 'na giriş
 description: Service Fabric ağı 'nda ağlar, ağ geçitleri ve akıllı trafik yönlendirmesi hakkında bilgi edinin.
-author: dkkapur
+author: georgewallace
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: dc793e2991783cc9b7b46d92fcc8e0267feb529b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 372e8a46bfe588aa22b0f3be0ef8ae442fa342e2
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75459142"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842708"
 ---
 # <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Service Fabric kafes uygulamalarında ağa giriş
 Bu makalede, farklı türlerde yük dengeleyiciler, ağ geçitlerinin ağ uygulamalarınızı diğer ağlara nasıl bağlanacağı ve uygulamalardaki hizmetler arasında trafiğin nasıl yönlendirildiği açıklanmaktadır.

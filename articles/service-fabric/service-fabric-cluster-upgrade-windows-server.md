@@ -1,16 +1,14 @@
 ---
 title: Tek başına kümenin sürümünü yükseltme
 description: Tek başına Service Fabric kümesi çalıştıran Azure Service Fabric kodunu yükseltin.
-author: dkkapur
 ms.topic: conceptual
 ms.date: 11/09/2018
-ms.author: dekapur
-ms.openlocfilehash: 31712ce4f661b13802d9a0f2d798c1fe87fdebf3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5831fcffe718e4966c3444a29d35c5bbd55e5f57
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261011"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842946"
 ---
 # <a name="upgrade-the-service-fabric-version-that-runs-on-your-cluster"></a>Kümenizde çalışan Service Fabric sürümünü yükseltme 
 
@@ -81,7 +79,7 @@ Küme durumu uyarısını gördüğünüzde, kümeyi yükseltin:
     Get-ServiceFabricClusterUpgrade
     ```
 
-    Küme sistem durumu ilkelerine uyulmazsa, yükseltme geri alınır. Start-ServiceFabricClusterUpgrade komutuna yönelik özel sistem durumu ilkeleri belirtmek için [Start-servicefabricclusterupgrade](/powershell/module/servicefabric/start-servicefabricclusterupgrade)belgelerine bakın.
+    Küme sistem durumu ilkelerine uyulmazsa, yükseltme geri alınır. Start-ServiceFabricClusterUpgrade komutuna yönelik özel sistem durumu ilkeleri belirtmek için [Start-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/start-servicefabricclusterupgrade)belgelerine bakın.
 
     Geri alma ile sonuçlanan sorunları düzelttikten sonra, daha önce açıklanan adımları izleyerek yükseltmeyi yeniden başlatın.
 
@@ -155,7 +153,7 @@ Kullanım ayrıntıları için, [Start-ServiceFabricClusterConfigurationUpgrade]
     Get-ServiceFabricClusterUpgrade
     ```
 
-    Küme sistem durumu ilkelerine uyulmazsa, yükseltme geri alınır. Start-ServiceFabricClusterUpgrade komutuna yönelik özel sistem durumu ilkeleri belirtmek için [Start-servicefabricclusterupgrade](/powershell/module/servicefabric/start-servicefabricclusterupgrade)belgelerine bakın.
+    Küme sistem durumu ilkelerine uyulmazsa, yükseltme geri alınır. Start-ServiceFabricClusterUpgrade komutuna yönelik özel sistem durumu ilkeleri belirtmek için [Start-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/start-servicefabricclusterupgrade)belgelerine bakın.
 
     Geri alma ile sonuçlanan sorunları düzelttikten sonra, daha önce açıklanan adımları izleyerek yükseltmeyi yeniden başlatın.
 

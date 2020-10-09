@@ -6,16 +6,83 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: d82e9244152f1ecb78b062b4b1dbf02c45c505a1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6722b88947fda8f1a09e540d69c4a8bec74143df
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91325666"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842674"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Izleyici belgelerindeki yenilikler nelerdir?
 
 Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici makaleleri listelenmektedir. Önceki aydan makale güncelleştirmelerini dahil etmek için her ayın ilk haftası yenilenir.
+
+## <a name="september-2020"></a>Eylül 2020
+
+### <a name="general"></a>Genel
+- [Azure IZLEYICI SSS](faq.md) -opentelemetri üzerine bölüm eklendi.
+
+### <a name="agents"></a>Aracılar
+- [Azure izleyici aracısına genel bakış](platform/azure-monitor-agent-overview.md) -yeni aracıya geçiş için karar etmenleri eklenmiştir.
+- [Azure izleme aracılarına genel bakış](platform/agents-overview.md) -Windows 10 için destek eklendi.
+
+### <a name="alerts"></a>Uyarılar
+- [Azure Resource Manager şablonuyla bir günlük uyarısı oluşturun](platform/alerts-log-create-templates.md) -yeni makale.
+- [Azure ölçüm uyarıları sorunlarını giderme](platform/alerts-troubleshoot-metric.md) -bir ölçüm uyarısı KURALı için ARM şablonunu dışarı aktarma bölümü eklendi.
+
+### <a name="application-insights"></a>Application Insights
+- [Yeni bir Azure Izleyici oluşturun Application Insights çalışma alanı tabanlı kaynak](app/create-workspace-resource.md) kaldırıldı önizleme belirtimi.
+- [Azure Application Insights veri saklama ve depolama](app/data-retention-privacy.md) , Mac ve Linux veri kaybı koruması için yeni destek için Ayrıntılar eklendi.
+- [Application Insights,](app/eventcounters.md) varsayılan olarak toplanan sayaçlara eklenen notta olay sayaçları.
+- [Azure Application Insights ile önceden toplanmış ve önceden toplanmış ölçümler,](app/pre-aggregated-metrics-log-metrics.md) önizleme atamasıdır.
+- [Bir Azure izleyici Application Insights klasik kaynağını çalışma alanı tabanlı bir kaynağa geçirme](app/convert-classic-resource.md) -yeni makale.
+- [Tüm ortamlarda Java uygulamalarını izleme-Azure izleyici Application Insights](app/java-in-process-agent.md) -aracının yeni önizleme sürümü için güncelleştirildi.
+- [Azure Application Insights ile ASP.NET için Web App Analytics 'ı ayarlama](app/asp-net.md) -makale yeniden yazıldı.
+- [Azure Application Insights telemetri kanalları](app/telemetry-channels.md) -Mac ve Linux veri kaybı koruması için yeni destek için Ayrıntılar eklendi.
+- [Azure Application Insights Snapshot Debugger sorunlarını](app/snapshot-debugger-troubleshoot.md) giderme-Snapshot Debugger sorun GIDERME için SSL bölümü eklendi.
+- Web uygulaması sorunlarını, eklenen sanal makine ve etkinlik günlüğünü [bulmak Için Azure izleyici 'de uygulama değişikliği analizini kullanın](app/change-analysis.md) .
+
+
+### <a name="containers"></a>Kapsayıcılar
+- [Azure Arc etkin Kubernetes kümesini, kapsayıcılar Için Azure izleyici ile,](insights/container-insights-enable-arc-enabled-clusters.md) hizmet sorumlusu kullanılarak izlemeyi etkinleştirmeye yönelik rehberlik için yapılandırın.
+- [Kapsayıcılar Için Azure izleyici ile & HPA ölçümleri dağıtımı](insights/container-insights-deployment-hpa-metrics.md) -yeni makale.
+
+### <a name="insights-and-solutions"></a>Öngörüler ve çözümler
+- Reda tarafından kaldırılan önizleme ataması [için Azure önbelleği Için Azure izleyici](insights/redis-cache-insights-overview.md) .
+- [Ağlar Için Azure izleyici (Önizleme)](insights/network-insights-overview.md) -bağlantı ve trafik bölümleri eklendi.
+- [BT hizmet yönetimi Bağlayıcısı-Azure izleyici 'de güvenli dışarı aktarma](platform/it-service-management-connector-secure-webhook-connections.md) -yeni makale.
+- [Azure izleyici 'de BT hizmet yönetimi Bağlayıcısı](platform/itsmc-connections.md) -Cherwell ve Provance ISM tümleştirmelerine göz önünde.
+- Key Vault kaldırılan önizleme belirtimi [Için Azure izleyici ile Key Vault izleyin](insights/key-vault-insights-overview.md) .
+
+### <a name="logs"></a>Günlükler
+- [Azure izleyici günlük sorgularıyla denetim sorguları](log-query/query-audit.md) -yeni makale.
+- [Azure izleyici müşteri tarafından yönetilen, anahtar](platform/customer-managed-keys.md) eklenen müşteri Kasası.
+- [Azure Izleyici ayrılmış kümeleri günlüğe kaydeder](log-query/logs-dedicated-clusters.md) -yeni makale.
+- [Azure Izleyici günlükleri dağıtımını tasarlama](platform/design-logs-deployment.md) -güncelleştirilmiş ölçek ve Alım birimi hız limiti bölümü.
+- [Azure izleyici Log Analytics günlük sorgu kapsamı](log-query/scope.md) -çalışma alanı tabanlı uygulamaları dahil etmek için güncelleştirmeler.
+- [Azure izleyici 'de Günlükler](platform/data-platform-logs.md) -çalışma alanı tabanlı uygulamaları dahil etmek için güncelleştirmeler.
+- [Azure izleyici günlük kayıtlarında standart sütunlar](platform/log-standard-columns.md) -çalışma alanı tabanlı uygulamaları dahil etmek için güncelleştirmeler.
+- [Azure İzleyici hizmeti sınırları](service-limits.md) -Kullanıcı sorgu azaltma için sınırlamalar güncelleştirildi.
+- [Azure izleyici 'de müşteri tarafından yönetilen depolama hesaplarını kullanma Log Analytics](platform/private-storage.md) -makaleye yeniden yazıldı.
+- [Azure Log Analytics 'de verileri görüntüleme ve çözümleme](log-query/logs-structure.md) -çalışma alanı tabanlı uygulamaları dahil etmek için güncelleştirmeler.
+
+
+### <a name="platform-logs"></a>Platform günlükleri
+- [Azure etkinlik günlüğü olay şeması-Azure izleyici](platform/activity-log-schema.md) -önem düzeyleri eklendi.
+- [Tanılama ayarları için şablon örnekleri Kaynak Yöneticisi](samples/resource-manager-diagnostic-settings.md) -Azure depolama hesabı için örnek eklendi.
+
+### <a name="visualizations"></a>Görsel öğeler
+- [Azure izleyici çalışma kitabı grafik görselleştirmeleri](platform/workbooks-chart-visualizations.md) -yeni makale.
+- [Azure izleyici çalışma kitabı bileşik çubuk Oluşturucusu](platform/workbooks-composite-bar.md) -yeni makale.
+- [Azure izleyici çalışma kitabı grafik görselleştirmeleri](platform/workbooks-graph-visualizations.md) -yeni makale.
+- [Azure izleyici çalışma kitabı kılavuz görselleştirmeleri](platform/workbooks-grid-visualizations.md) -yeni makale.
+- [Azure izleyici çalışma kitabı Honey çağrısıyla görselleştirmeleri](platform/workbooks-honey-comb.md) -yeni makale.
+- [Azure izleyici çalışma kitabı metin görselleştirmeleri](platform/workbooks-text-visualizations.md) -yeni makale.
+- [Azure izleyici çalışma kitabı kutucuk görselleştirmeleri](platform/workbooks-tile-visualizations.md) -yeni makale.
+- [Azure izleyici çalışma kitabı ağaç görselleştirmeleri](platform/workbooks-tree-visualizations.md) -yeni makale.
+
+
+
 
 ## <a name="august-2020"></a>Ağustos 2020
 
