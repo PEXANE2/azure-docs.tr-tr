@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: f1e861bf9c6cc2a485ac9f153a0c932ec2e6fbb2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85318918"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory örnekleri
@@ -24,7 +24,7 @@ ms.locfileid: "85318918"
 
 
 ## <a name="samples-on-github"></a>GitHub’daki örnekler
-[GitHub Azure-DataFactory deposu](https://github.com/azure/azure-datafactory) , Azure Data Factory hizmetine hızlıca başlamanıza yardımcı olan birkaç örnek içerir (veya) betikleri değiştirebilir ve kendi uygulamasında kullanabilirsiniz. Samples\JSON klasörü, yaygın senaryolar için JSON kod parçacıklarını içerir.
+[GitHub Azure-DataFactory deposu](https://github.com/azure/azure-datafactory) , Azure Data Factory hizmetine hızlı bir şekilde yararlanmanıza yardımcı olan birkaç örnek içerir (veya) betikleri değiştirebilir ve kendi uygulamasında kullanabilirsiniz. Samples\JSON klasörü, yaygın senaryolar için JSON kod parçacıklarını içerir.
 
 | Örnek | Açıklama |
 |:--- |:--- |
@@ -32,7 +32,7 @@ ms.locfileid: "85318918"
 | [JSON örnekleri](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON) |Bu örnek, yaygın senaryolar için JSON örnekleri sağlar. |
 | [Http veri yükleyici örneği](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample) |Bu örnek, özel .NET etkinliği kullanarak bir HTTP uç noktasından Azure Blob depolama alanına veri indirme örneklerini gösterir. |
 | [Çapraz AppDomain nokta net etkinlik örneği](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Bu örnek, ADF başlatıcısı tarafından kullanılan derleme sürümleriyle sınırlı olmayan özel bir .NET etkinliği yazmanıza izin verir (örneğin, WindowsAzure. Storage v 4.3.0, Newtonsoft.Jsv 6.0. x, vb.). |
-| [R betiğini Çalıştır](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |Bu örnek, RScript.exe çağırmak için kullanılabilecek Data Factory özel etkinliğini içerir. Bu örnek yalnızca R 'nin yüklü olduğu (isteğe bağlı olmayan) HDInsight kümeniz ile birlikte kullanılabilir. |
+| [R betiği çalıştırma](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |Bu örnek, RScript.exe çağırmak için kullanılabilecek Data Factory özel etkinliğini içerir. Bu örnek yalnızca R 'nin yüklü olduğu (isteğe bağlı olmayan) HDInsight kümeniz ile birlikte kullanılabilir. |
 | [HDInsight Hadoop kümesinde Spark işlerini çağırma](https://docs.microsoft.com/azure/data-factory/tutorial-transform-data-spark-portal) |Bu örnek, bir Spark programını çağırmak için MapReduce etkinliğinin nasıl kullanılacağını gösterir. Spark programı yalnızca bir Azure Blob kapsayıcısından diğerine veri kopyalar. |
 | [Azure Machine Learning Batch puanlama etkinliği kullanarak Twitter Analizi](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |Bu örnekte, Twitter yaklaşım analizi, Puanlama, tahmin vb. gerçekleştiren bir Azure Machine Learning modeli çağırmak için AzureMLBatchScoringActivity 'nin nasıl kullanılacağı gösterilmektedir. |
 | [Özel etkinlik kullanan Twitter Analizi](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Bu örnekte, Twitter yaklaşım analizi, Puanlama, tahmin vb. gerçekleştiren bir Azure Machine Learning modeli çağırmak için özel bir .NET etkinliğinin nasıl kullanılacağı gösterilmektedir. |
@@ -75,7 +75,7 @@ Veri fabrikanıza örnek işlem hatlarını ve bunlarla ilişkili varlıkları (
     ![Data Factory dikey penceresi](./media/data-factory-samples/DataFactoryBladeAfter.png)
 
 ## <a name="samples-in-visual-studio"></a>Visual Studio 'da örnekler
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Bilgisayarınızda şunların yüklü olması gerekir:
 
 * Visual Studio 2013 veya Visual Studio 2015

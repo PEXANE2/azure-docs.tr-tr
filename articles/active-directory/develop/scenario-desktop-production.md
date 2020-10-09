@@ -12,10 +12,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: ea564eb69f102d8e548bf8ae9a626598fa264cd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80882888"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Web API 'Lerini çağıran masaüstü uygulaması: üretime taşı
@@ -35,8 +35,8 @@ Microsoft Identity platform (v 2.0) uç noktası ile aynı anda birkaç kaynak i
 
 Örneğin, her biri iki kapsamın bulunduğu iki kaynak olabilir:
 
-- `https://mytenant.onmicrosoft.com/customerapi`kapsamları `customer.read` ve`customer.write`
-- `https://mytenant.onmicrosoft.com/vendorapi`kapsamları `vendor.read` ve`vendor.write`
+- `https://mytenant.onmicrosoft.com/customerapi` kapsamları `customer.read` ve `customer.write`
+- `https://mytenant.onmicrosoft.com/vendorapi` kapsamları `vendor.read` ve `vendor.write`
 
 Bu örnekte, `.WithAdditionalPromptToConsent` parametresine sahip olan değiştiriciyi kullanın `extraScopesToConsent` .
 

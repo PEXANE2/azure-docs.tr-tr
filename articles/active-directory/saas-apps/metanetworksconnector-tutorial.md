@@ -15,7 +15,7 @@ ms.openlocfilehash: 941218f9a35a0a242612ae1d6230c642129c8259
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856902"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>Öğretici: meta ağlar Bağlayıcısı ile Azure Active Directory tümleştirme
@@ -30,7 +30,7 @@ Meta Networks bağlayıcısını Azure AD ile tümleştirmek aşağıdaki avanta
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini meta Networks Bağlayıcısı ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -124,7 +124,7 @@ Azure AD çoklu oturum açmayı meta Networks Bağlayıcısı ile yapılandırma
     
 7. Meta Networks bağlayıcı uygulaması, yukarıdakine ek olarak, SAML yanıtına daha fazla öznitelik geçirilmesini bekler. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde AŞAĞıDAKI tabloda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin:
     
-    | Adı | Kaynak özniteliği | Ad Alanı|
+    | Name | Kaynak özniteliği | Ad Alanı|
     | ---------------| --------------- | -------- |
     | FirstName | Kullanıcı. | |
     | Soyadı | User. soyadı | |

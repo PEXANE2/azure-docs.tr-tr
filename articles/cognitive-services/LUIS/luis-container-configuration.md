@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 48a9856c58a815eabcc0b105efcd548e66ddd552
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80874220"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Language Understanding Docker kapsayıcılarını yapılandırma 
@@ -28,21 +28,21 @@ Bu kapsayıcı aşağıdaki yapılandırma ayarlarına sahiptir:
 
 |Gerekli|Ayar|Amaç|
 |--|--|--|
-|Yes|[ApiKey](#apikey-setting)|Faturalandırma bilgilerini izlemek için kullanılır.|
+|Evet|[ApiKey](#apikey-setting)|Faturalandırma bilgilerini izlemek için kullanılır.|
 |Hayır|[ApplicationInsights](#applicationinsights-setting)|, Kapsayıcınıza [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) telemetri desteği eklemenize olanak tanır.|
-|Yes|[Faturalama](#billing-setting)|Azure üzerindeki hizmet kaynağının uç nokta URI 'sini belirtir.|
-|Yes|[Sözleşmesi](#eula-setting)| Kapsayıcının lisansını kabul ettiğinizi gösterir.|
+|Evet|[Faturalandırma](#billing-setting)|Azure üzerindeki hizmet kaynağının uç nokta URI 'sini belirtir.|
+|Evet|[Sözleşmesi](#eula-setting)| Kapsayıcının lisansını kabul ettiğinizi gösterir.|
 |Hayır|[Fluentd](#fluentd-settings)|Günlük ve isteğe bağlı olarak ölçüm verilerini Floentd sunucusuna yazın.|
 |Hayır|[Http proxy 'Si](#http-proxy-credentials-settings)|Giden istekler oluşturmak için bir HTTP proxy 'si yapılandırın.|
-|Hayır|[Günlüğe Kaydetme](#logging-settings)|, Kapsayıcınız için ASP.NET Core günlük desteği sağlar. |
-|Yes|[Kullan](#mount-settings)|Ana bilgisayardan kapsayıcıya ve kapsayıcıdan, ana bilgisayara geri veri okuma ve yazma.|
+|Hayır|[Günlüğe kaydetme](#logging-settings)|, Kapsayıcınız için ASP.NET Core günlük desteği sağlar. |
+|Evet|[Kullan](#mount-settings)|Ana bilgisayardan kapsayıcıya ve kapsayıcıdan, ana bilgisayara geri veri okuma ve yazma.|
 
 > [!IMPORTANT]
-> [`ApiKey`](#apikey-setting), [`Billing`](#billing-setting)Ve [`Eula`](#eula-setting) ayarları birlikte kullanılır ve üçü için geçerli değerler sağlamalısınız; Aksi takdirde Kapsayıcınız başlatılmaz. Bir kapsayıcı oluşturmak için bu yapılandırma ayarlarını kullanma hakkında daha fazla bilgi için bkz. [faturalandırma](luis-container-howto.md#billing).
+> [`ApiKey`](#apikey-setting), [`Billing`](#billing-setting) Ve [`Eula`](#eula-setting) ayarları birlikte kullanılır ve üçü için geçerli değerler sağlamanız gerekir; Aksi takdirde Kapsayıcınız başlatılmaz. Bir kapsayıcı oluşturmak için bu yapılandırma ayarlarını kullanma hakkında daha fazla bilgi için bkz. [faturalandırma](luis-container-howto.md#billing).
 
 ## <a name="apikey-setting"></a>ApiKey ayarı
 
-Bu `ApiKey` ayar, kapsayıcının fatura bilgilerini izlemek Için kullanılan Azure Kaynak anahtarını belirtir. ApiKey için bir değer belirtmeniz gerekir ve değerin [`Billing`](#billing-setting) yapılandırma ayarı için belirtilen bilişsel _Hizmetler_ kaynağı için geçerli bir anahtar olması gerekir.
+Bu `ApiKey` ayar, kapsayıcının fatura bilgilerini izlemek için kullanılan Azure Kaynak anahtarını belirtir. ApiKey için bir değer belirtmeniz gerekir ve değerin yapılandırma ayarı için belirtilen bilişsel _Hizmetler_ kaynağı için geçerli bir anahtar olması gerekir [`Billing`](#billing-setting) .
 
 Bu ayar aşağıdaki konumlarda bulunabilir:
 
@@ -57,16 +57,16 @@ Başlangıç anahtarını veya yazma anahtarını kullanmayın.
 
 ## <a name="billing-setting"></a>Faturalandırma ayarı
 
-`Billing` Ayar, Azure üzerinde bulunan bilişsel _Hizmetler_ kaynağının, kapsayıcının fatura bilgilerini ölçmek IÇIN kullanılan uç nokta URI 'sini belirtir. Bu yapılandırma ayarı için bir değer belirtmeniz gerekir ve Azure 'daki bilişsel _Hizmetler_ kaynağı için değer geçerli bir uç nokta URI 'si olmalıdır. Kapsayıcı her 10 ila 15 dakikada bir kullanım raporu sağlar.
+`Billing`Ayar, Azure üzerinde bulunan bilişsel _Hizmetler_ kaynağının, kapsayıcının fatura bilgilerini ölçmek için kullanılan uç nokta URI 'sini belirtir. Bu yapılandırma ayarı için bir değer belirtmeniz gerekir ve Azure 'daki bilişsel _Hizmetler_ kaynağı için değer geçerli bir uç nokta URI 'si olmalıdır. Kapsayıcı her 10 ila 15 dakikada bir kullanım raporu sağlar.
 
 Bu ayar aşağıdaki konumlarda bulunabilir:
 
-* Azure portal: bilişsel **Hizmetler** genel bakış, etiketli`Endpoint`
+* Azure portal: bilişsel **Hizmetler** genel bakış, etiketli `Endpoint`
 * LUO Portalı: uç nokta URI 'sinin bir parçası olarak **anahtarlar ve uç nokta ayarları** sayfası.
 
-| Gerekli | Adı | Veri türü | Açıklama |
+| Gerekli | Name | Veri türü | Açıklama |
 |----------|------|-----------|-------------|
-| Yes      | `Billing` | string | Faturalama uç noktası URI 'SI. Faturalandırma URI 'sini alma hakkında daha fazla bilgi için bkz. [gerekli parametreleri toplama](luis-container-howto.md#gathering-required-parameters). Daha fazla bilgi ve bölgesel uç noktaların tamamen listesi için bkz. bilişsel [Hizmetler Için özel alt etki alanı adları](../cognitive-services-custom-subdomains.md). |
+| Evet      | `Billing` | string | Faturalama uç noktası URI 'SI. Faturalandırma URI 'sini alma hakkında daha fazla bilgi için bkz. [gerekli parametreleri toplama](luis-container-howto.md#gathering-required-parameters). Daha fazla bilgi ve bölgesel uç noktaların tamamen listesi için bkz. bilişsel [Hizmetler Için özel alt etki alanı adları](../cognitive-services-custom-subdomains.md). |
 
 ## <a name="eula-setting"></a>EULA ayarı
 
@@ -94,30 +94,30 @@ Konak bağlama konumunun tam sözdizimi, ana bilgisayar işletim sistemine bağl
 
 Aşağıdaki tabloda desteklenen ayarlar açıklanmaktadır.
 
-|Gerekli| Adı | Veri türü | Açıklama |
+|Gerekli| Name | Veri türü | Açıklama |
 |-------|------|-----------|-------------|
-|Yes| `Input` | Dize | Giriş bağlama hedefi. Varsayılan değer: `/input`. Bu, LUSıS paket dosyalarının konumudur. <br><br>Örnek:<br>`--mount type=bind,src=c:\input,target=/input`|
+|Evet| `Input` | Dize | Giriş bağlama hedefi. Varsayılan değer: `/input`. Bu, LUSıS paket dosyalarının konumudur. <br><br>Örnek:<br>`--mount type=bind,src=c:\input,target=/input`|
 |Hayır| `Output` | Dize | Çıkış bağlama hedefi. Varsayılan değer: `/output`. Bu, günlüklerin konumudur. Bu, LUSıS sorgu günlüklerini ve kapsayıcı günlüklerini içerir. <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Örnek Docker Run komutları
 
-Aşağıdaki örneklerde, komutlarının nasıl yazılacağını ve kullanılacağını `docker run` göstermek için yapılandırma ayarları kullanılır.  Çalışan bir kez, kapsayıcıyı [durduruncaya](luis-container-howto.md#stop-the-container) kadar çalışmaya devam eder.
+Aşağıdaki örneklerde, komutlarının nasıl yazılacağını ve kullanılacağını göstermek için yapılandırma ayarları kullanılır `docker run` .  Çalışan bir kez, kapsayıcıyı [durduruncaya](luis-container-howto.md#stop-the-container) kadar çalışmaya devam eder.
 
-* Bu örnekler, Windows 'ta herhangi bir `C:` izin çakışmasını önlemek için dizini sürücüden kullanır. Giriş dizini olarak belirli bir dizin kullanmanız gerekiyorsa, Docker hizmeti iznini vermeniz gerekebilir. 
+* Bu örnekler, `C:` Windows 'ta herhangi bir izin çakışmasını önlemek için dizini sürücüden kullanır. Giriş dizini olarak belirli bir dizin kullanmanız gerekiyorsa, Docker hizmeti iznini vermeniz gerekebilir. 
 * Docker Kapsayıcıları hakkında bilginiz yoksa bağımsız değişkenlerin sırasını değiştirmeyin.
-* Farklı bir işletim sistemi kullanıyorsanız, sistem için doğru konsol/Terminal, bağlama için klasör söz dizimi ve satır devamlılık karakteri kullanın. Bu örneklerde bir Windows konsolunun satır devamlılık karakteriyle `^`birlikte varsayılmaktadır. Kapsayıcı bir Linux işletim sistemi olduğundan, hedef bağlama bir Linux stili klasör söz dizimini kullanır.
+* Farklı bir işletim sistemi kullanıyorsanız, sistem için doğru konsol/Terminal, bağlama için klasör söz dizimi ve satır devamlılık karakteri kullanın. Bu örneklerde bir Windows konsolunun satır devamlılık karakteriyle birlikte varsayılmaktadır `^` . Kapsayıcı bir Linux işletim sistemi olduğundan, hedef bağlama bir Linux stili klasör söz dizimini kullanır.
 
 {_Argument_name_} değerini kendi değerlerinizle değiştirin:
 
 | Yer tutucu | Değer | Biçim veya örnek |
 |-------------|-------|---|
-| **{API_KEY}** | Azure `LUIS` `LUIS` anahtarları sayfasında kaynağın uç nokta anahtarı. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{API_KEY}** | `LUIS`Azure anahtarları sayfasında kaynağın uç nokta anahtarı `LUIS` . | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
 | **{ENDPOINT_URI}** | Faturalandırma uç noktası değeri, Azure `LUIS` Genel Bakış sayfasında bulunur.| Açık örnekler için [gerekli parametreleri toplama](luis-container-howto.md#gathering-required-parameters) konusuna bakın. |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> Kapsayıcısını `Eula`çalıştırmak `Billing`için, `ApiKey` , ve seçenekleri belirtilmelidir; Aksi takdirde, kapsayıcı başlatılmaz. Daha fazla bilgi için bkz. [faturalandırma](luis-container-howto.md#billing).
+> `Eula` `Billing` `ApiKey` Kapsayıcıyı çalıştırmak için, ve seçenekleri belirtilmelidir; Aksi takdirde kapsayıcı başlatılmaz. Daha fazla bilgi için bkz. [faturalandırma](luis-container-howto.md#billing).
 > ApiKey **değeri,** Lua portalındaki anahtarlar ve uç noktalar sayfasından ve Azure `Cognitive Services` kaynak anahtarları sayfasında da kullanılabilir. 
 
 ### <a name="basic-example"></a>Temel örnek
@@ -151,7 +151,7 @@ InstrumentationKey={INSTRUMENTATION_KEY}
 
 ### <a name="logging-example"></a>Günlüğe kaydetme örneği 
 
-Aşağıdaki komut, günlük düzeyini olarak `Logging:Console:LogLevel` [`Information`](https://msdn.microsoft.com)yapılandırmak için günlüğe kaydetme düzeyini ayarlar. 
+Aşağıdaki komut, `Logging:Console:LogLevel` günlük düzeyini olarak yapılandırmak için günlüğe kaydetme düzeyini ayarlar [`Information`](https://msdn.microsoft.com) . 
 
 ```console
 docker run --rm -it -p 5000:5000 --memory 6g --cpus 2 ^

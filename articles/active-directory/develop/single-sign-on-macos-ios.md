@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 25389348476552298ddb947ccb59acb8b3d5bc57
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80881257"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>Nasıl yapılır: macOS ve iOS 'ta SSO 'yu yapılandırma
@@ -67,9 +67,9 @@ Hangi uygulamaların belirteçleri paylaşabileceği hakkında bilgi sahibi olma
 
 Microsoft Identity platform 'un aynı uygulama KIMLIĞINI kullanan uygulamalara **yeniden yönlendirme URI 'leri**tarafından nasıl olduğunu söyleme şekli. Her uygulamanın, ekleme portalında kayıtlı birden çok yeniden yönlendirme URI 'si olabilir. Paketinizdeki her uygulamanın farklı bir yeniden yönlendirme URI 'SI olacaktır. Örneğin:
 
-APP1 yeniden yönlendirme URI 'SI:`msauth.com.contoso.mytestapp1://auth`  
-App2 yeniden yönlendirme URI 'SI:`msauth.com.contoso.mytestapp2://auth`  
-App3 yeniden yönlendirme URI 'SI:`msauth.com.contoso.mytestapp3://auth`  
+APP1 yeniden yönlendirme URI 'SI: `msauth.com.contoso.mytestapp1://auth`  
+App2 yeniden yönlendirme URI 'SI: `msauth.com.contoso.mytestapp2://auth`  
+App3 yeniden yönlendirme URI 'SI: `msauth.com.contoso.mytestapp3://auth`  
 
 > [!IMPORTANT]
 > Yeniden yönlendirme URI 'lerinin biçimi, [msal yeniden yönlendirme URI 'si biçim gereksinimleri](redirect-uris-ios.md#msal-redirect-uri-format-requirements)bölümünde belgelenen msal desteği biçimiyle uyumlu olmalıdır.
@@ -97,8 +97,8 @@ Yetkilendirmeler doğru şekilde ayarlandığında, `entitlements.plist` Proje d
 #### <a name="add-a-new-keychain-group"></a>Yeni bir anahtarlık grubu Ekle
 
 Proje **olanaklarınız**için yeni bir anahtarlık grubu ekleyin. Anahtarlık grubu şu olmalıdır:
-* `com.microsoft.adalcache`iOS 'ta 
-* `com.microsoft.identity.universalstorage`macOS 'ta.
+* `com.microsoft.adalcache` iOS 'ta 
+* `com.microsoft.identity.universalstorage` macOS 'ta.
 
 ![Anahtarlık örneği](media/single-sign-on-macos-ios/keychain-example.png)
 
@@ -137,7 +137,7 @@ do {
 > Arka plan çalışması yapmak için belirteçleri kullanan uygulamalarınız varsa, bu özellikle etkili bir şekilde belirlenir.
 > Anahtarlık paylaşımı, uygulamanız Microsoft Identity SDK kaldırma işlemlerini kullandığında çok dikkatli olmanız gerektiği anlamına gelir.
 
-İşte bu kadar! Microsoft Identity SDK artık tüm uygulamalarınızda kimlik bilgilerini paylaşacaktır. Hesap listesi, uygulama örnekleri arasında da paylaşılır.
+Hepsi bu! Microsoft Identity SDK artık tüm uygulamalarınızda kimlik bilgilerini paylaşacaktır. Hesap listesi, uygulama örnekleri arasında da paylaşılır.
 
 ## <a name="sso-through-authentication-broker-on-ios"></a>İOS üzerinde kimlik doğrulama Aracısı aracılığıyla SSO
 

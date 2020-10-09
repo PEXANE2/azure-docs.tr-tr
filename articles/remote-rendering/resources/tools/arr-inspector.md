@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 03/09/2020
 ms.topic: article
 ms.openlocfilehash: e3acfc15b0c12822e48009bef4aabadac701fb2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80680082"
 ---
 # <a name="the-arrinspector-inspection-tool"></a>ArrInspector inceleme aracı
@@ -115,7 +115,7 @@ Araç varsayılan olarak, ArrInspector hizmet veren ana bilgisayarda çalışan 
 
 Bunu yapmak için, üst bilgi çubuğunun solundaki ana menüye erişin ve *konak yapılandırması*' nı seçin. **Yeni konak Ekle**' ye tıklayın ve adı ve ana bilgisayar adını girin. *Ana bilgisayar* adı için yalnızca içinde biten ana bilgisayar adını kullanın `.mixedreality.azure.com` , `http://` bir bağlantı noktası eklemeyin.
 
-![Konak yapılandırması](./media/host-configuration.png)
+![Konak Yapılandırması](./media/host-configuration.png)
 
 Bir konaktan diğerine hızlıca geçiş yapmak için sağ üst köşedeki açılan eklentiyi kullanın.
 

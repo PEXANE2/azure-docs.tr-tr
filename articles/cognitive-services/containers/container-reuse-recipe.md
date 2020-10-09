@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 7380ff58d033a68565de7e419ff318f7bdec121d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80875087"
 ---
 # <a name="create-containers-for-reuse"></a>Yeniden kullanım için kapsayıcı oluşturma
@@ -25,19 +25,19 @@ Bu yeni kapsayıcı katmanı (ayarlarla) varsa ve yerel olarak test ederseniz ka
 
 ## <a name="docker-run-syntax"></a>Docker Run sözdizimi
 
-Bu `docker run` belgedeki örneklerde, bir `^` satır devamlılık karakteriyle Windows konsolu varsayılmaktadır. Kendi kullanımı için aşağıdakileri göz önünde bulundurun:
+`docker run`Bu belgedeki örneklerde, bir `^` satır devamlılık karakteriyle Windows konsolu varsayılmaktadır. Kendi kullanımı için aşağıdakileri göz önünde bulundurun:
 
 * Docker Kapsayıcıları hakkında bilginiz yoksa bağımsız değişkenlerin sırasını değiştirmeyin.
 * Windows dışında bir işletim sistemi veya Windows konsolu dışında bir konsol kullanıyorsanız, doğru konsol/Terminal, bağlar için klasör söz dizimini ve konsolunuz ve sisteminiz için satır devamlılık karakteri kullanın.  Bilişsel hizmetler kapsayıcısı bir Linux işletim sistemi olduğundan, hedef bağlama bir Linux stili klasör söz dizimini kullanır.
-* `docker run`örnekler, Windows 'ta herhangi bir `c:` izin çakışmasını önlemek için dizini sürücüden kullanır. Giriş dizini olarak belirli bir dizin kullanmanız gerekiyorsa, Docker hizmeti iznini vermeniz gerekebilir.
+* `docker run` örnekler, `c:` Windows 'ta herhangi bir izin çakışmasını önlemek için dizini sürücüden kullanır. Giriş dizini olarak belirli bir dizin kullanmanız gerekiyorsa, Docker hizmeti iznini vermeniz gerekebilir.
 
 ## <a name="store-no-configuration-settings-in-image"></a>Görüntüde yapılandırma ayarları depolama
 
-Her hizmet `docker run` için örnek komutlar, kapsayıcıda herhangi bir yapılandırma ayarını depolamaz. Kapsayıcıyı bir konsoldan veya kayıt defteri hizmetinden başlattığınızda, bu yapılandırma ayarlarının geçmesi gerekir. Özel kayıt kapsayıcısı, içindeki bu ayarları geçirmeniz için yapılandırma alanı sağlar.
+`docker run`Her hizmet için örnek komutlar, kapsayıcıda herhangi bir yapılandırma ayarını depolamaz. Kapsayıcıyı bir konsoldan veya kayıt defteri hizmetinden başlattığınızda, bu yapılandırma ayarlarının geçmesi gerekir. Özel kayıt kapsayıcısı, içindeki bu ayarları geçirmeniz için yapılandırma alanı sağlar.
 
 ## <a name="reuse-recipe-store-all-configuration-settings-with-container"></a>Tarifi yeniden kullan: tüm yapılandırma ayarlarını kapsayıcı ile depola
 
-Tüm yapılandırma ayarlarını depolamak için bu ayarlarla bir `Dockerfile` oluşturun.
+Tüm yapılandırma ayarlarını depolamak için `Dockerfile` Bu ayarlarla bir oluşturun.
 
 Bu yaklaşımla ilgili sorunlar:
 
@@ -50,8 +50,8 @@ Kullanmak istediğiniz mevcut bilişsel hizmetler kapsayıcısından çekerek Do
 
 Bu örnek:
 
-* Uygulamasının kullanılarak `{BILLING_ENDPOINT}` `ENV`, ana bilgisayarın ortam anahtarından faturalandırma bitiş noktasını ayarlar.
-* Faturalandırma API anahtarını `{ENDPOINT_KEY}` konağın ortam ANAHTARıNDAN ' env ' kullanarak ayarlar.
+* `{BILLING_ENDPOINT}`Uygulamasının kullanılarak, ana bilgisayarın ortam anahtarından faturalandırma bitiş noktasını ayarlar `ENV` .
+* Faturalandırma API anahtarını `{ENDPOINT_KEY}` konağın ortam anahtarından ' env ' kullanarak ayarlar.
 
 ### <a name="reuse-recipe-store-billing-settings-with-container"></a>Tarifi yeniden kullan: kapsayıcı ile faturalandırma ayarlarını depolayın
 
@@ -70,9 +70,9 @@ Kapsayıcıyı [yerel olarak](#how-to-use-container-on-your-local-host) veya [ö
 
 Bu örnek, Dockerfile 'dan Language Understanding, faturalandırma ve modellerin nasıl kullanılacağını gösterir.
 
-* Language Understanding (LUSıS) model dosyasını ana bilgisayarın dosya sisteminden kullanarak `COPY`kopyalar.
-* LUSıS kapsayıcısı birden fazla modeli destekler. Tüm modeller aynı klasörde depolanıyorsa, hepsi bir `COPY` deyime gerek duyarsınız.
-* Model giriş dizininin göreli üst öğesinden Docker dosyasını çalıştırın. Aşağıdaki örnekte, öğesinin `docker build` `docker run` `/input`göreli üst öğesinden ve komutlarını çalıştırın. `COPY` Komutta ilk `/input` , ana bilgisayarın dizinidir. İkincisi `/input` kapsayıcının dizinidir.
+* Language Understanding (LUSıS) model dosyasını ana bilgisayarın dosya sisteminden kullanarak kopyalar `COPY` .
+* LUSıS kapsayıcısı birden fazla modeli destekler. Tüm modeller aynı klasörde depolanıyorsa, hepsi bir deyime gerek duyarsınız `COPY` .
+* Model giriş dizininin göreli üst öğesinden Docker dosyasını çalıştırın. Aşağıdaki örnekte, `docker build` `docker run` öğesinin göreli üst öğesinden ve komutlarını çalıştırın `/input` . Komutta ilk, `/input` `COPY` ana bilgisayarın dizinidir. İkincisi `/input` kapsayıcının dizinidir.
 
 ```Dockerfile
 FROM <container-registry>/<cognitive-service-container-name>:<tag>
@@ -86,13 +86,13 @@ Kapsayıcıyı [yerel olarak](#how-to-use-container-on-your-local-host) veya [ö
 
 ## <a name="how-to-use-container-on-your-local-host"></a>Yerel ana bilgisayarınızda kapsayıcı kullanma
 
-Docker dosyasını oluşturmak için, görüntünün yeni `<your-image-name>` adıyla değiştirin ve ardından şunu kullanın:
+Docker dosyasını oluşturmak için, `<your-image-name>` görüntünün yeni adıyla değiştirin ve ardından şunu kullanın:
 
 ```console
 docker build -t <your-image-name> .
 ```
 
-Görüntüyü çalıştırmak ve kapsayıcı durdurulduğunda kaldırmak için (`--rm`):
+Görüntüyü çalıştırmak ve kapsayıcı durdurulduğunda kaldırmak için ( `--rm` ):
 
 ```console
 docker run --rm <your-image-name>
@@ -102,13 +102,13 @@ docker run --rm <your-image-name>
 
 Dockerfile dosyasını kullanmak ve yeni görüntüyü özel kapsayıcı Kayıt defterinize yerleştirmek için bu adımları izleyin.  
 
-1. Yeniden kullanım `Dockerfile` tarifi ' nden metin ile oluşturun. `Dockerfile` , Uzantısı yoktur.
+1. `Dockerfile`Yeniden kullanım tarifi ' nden metin ile oluşturun. , `Dockerfile` Uzantısı yoktur.
 
 1. Açılı ayraçlar içindeki tüm değerleri kendi değerlerinizle değiştirin.
 
-1. Aşağıdaki komutu kullanarak dosyayı komut satırında veya terminalde bir görüntüde oluşturun. Köşeli parantez `<>`içindeki değerleri, kendi kapsayıcı adınız ve etiketlerinizle değiştirin.  
+1. Aşağıdaki komutu kullanarak dosyayı komut satırında veya terminalde bir görüntüde oluşturun. Köşeli parantez içindeki değerleri, `<>` kendi kapsayıcı adınız ve etiketlerinizle değiştirin.  
 
-    Etiket seçeneği `-t`, kapsayıcı için ne değiştirdikleriniz hakkında bilgi eklemenin bir yoludur. Örneğin kapsayıcı adı, orijinal kapsayıcının katmanlı `modified-LUIS` olduğunu gösterir. Etiket adı, Language Understanding `with-billing-and-model` (Luo) kapsayıcısının nasıl değiştirildiğini gösterir.
+    Etiket seçeneği, `-t` kapsayıcı için ne değiştirdikleriniz hakkında bilgi eklemenin bir yoludur. Örneğin kapsayıcı adı, `modified-LUIS` orijinal kapsayıcının katmanlı olduğunu gösterir. Etiket adı `with-billing-and-model` , Language Understanding (Luo) kapsayıcısının nasıl değiştirildiğini gösterir.
 
     ```Bash
     docker build -t <your-new-container-name>:<your-new-tag-name> .
@@ -122,7 +122,7 @@ Dockerfile dosyasını kullanmak ve yeni görüntüyü özel kapsayıcı Kayıt 
 
 1. Bir konsoldan Azure CLı ile özel kayıt defterinizde oturum açın.
 
-    Açılı ayraçlar `<my-registry>`içindeki değerleri kendi kayıt defteri adınızla değiştirin.  
+    Açılı ayraçlar içindeki değerleri `<my-registry>` kendi kayıt defteri adınızla değiştirin.  
 
     ```azurecli
     az acr login --name <my-registry>
@@ -134,7 +134,7 @@ Dockerfile dosyasını kullanmak ve yeni görüntüyü özel kapsayıcı Kayıt 
     docker login <my-registry>.azurecr.io
     ```
 
-1. Kapsayıcıyı özel kayıt defteri konumuyla etiketleyin. Açılı ayraçlar `<my-registry>`içindeki değerleri kendi kayıt defteri adınızla değiştirin. 
+1. Kapsayıcıyı özel kayıt defteri konumuyla etiketleyin. Açılı ayraçlar içindeki değerleri `<my-registry>` kendi kayıt defteri adınızla değiştirin. 
 
     ```Bash
     docker tag <your-new-container-name>:<your-new-tag-name> <my-registry>.azurecr.io/<your-new-container-name-in-registry>:<your-new-tag-name>

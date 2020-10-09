@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 06/07/2017
 ms.openlocfilehash: f5ecd2334ca80f5561c0611239b5bb00d222112a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76277182"
 ---
 # <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Application Gateway ile Azure Güvenlik Merkezi arasındaki tümleştirmeye genel bakış
@@ -40,7 +40,7 @@ Kritik bir sorunla bir Web uygulamasına tıkladığınızda, **uygulama güvenl
 
 **Öneriler** altında **Web uygulaması güvenlik duvarı Ekle** ' ye tıklayarak **Web uygulaması güvenlik duvarı Ekle** sayfasını açın.
 
-Mevcut bir Application Gateway yoksa veya yeni bir tane oluşturmak istiyorsanız, **Yeni oluştur** ' a tıklayın ve yeni bir **Web uygulaması güvenlik duvarı oluşturun**ve **Microsoft-Application Gateway**' a tıklayın. Bu, uygulama ağ geçidi oluşturma adımlarında size kılavuzluk sağlar. Bu noktada, Web uygulamanız korumalı bir kaynak olarak eklenir ve Güvenlik Merkezi artık bu kaynağın bir Web uygulaması güvenlik duvarı tarafından korunduğunu izler. Bu, bir arka uç havuzu üyesi olarak eklemez.
+Mevcut bir Application Gateway yoksa veya yeni bir tane oluşturmak istiyorsanız, **Yeni oluştur** ' a tıklayın ve yeni bir  **Web uygulaması güvenlik duvarı oluşturun**ve **Microsoft-Application Gateway**' a tıklayın. Bu, uygulama ağ geçidi oluşturma adımlarında size kılavuzluk sağlar. Bu noktada, Web uygulamanız korumalı bir kaynak olarak eklenir ve Güvenlik Merkezi artık bu kaynağın bir Web uygulaması güvenlik duvarı tarafından korunduğunu izler. Bu, bir arka uç havuzu üyesi olarak eklemez.
 
 Mevcut bir uygulama ağ geçidiniz varsa, **mevcut çözümü kullan** altında bu seçeneği belirleyebilirsiniz.
 

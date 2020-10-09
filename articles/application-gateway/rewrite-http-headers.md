@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: absha
 ms.openlocfilehash: fb5196f9612cb4ce1f0a49be8b5a76f6703fdab6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85248692"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>HTTP üstbilgilerini Application Gateway yeniden yazın
@@ -109,7 +109,7 @@ HTTP üstbilgisini yeniden yazmayı yapılandırmak için, bu adımları gerçek
 
 Birden çok HTTP üst bilgisi yeniden yazma kümesi oluşturabilir ve her bir yeniden yazma kümesini birden çok dinleyiciyle uygulayabilirsiniz. Ancak belirli bir dinleyiciye yalnızca bir yeniden yazma kümesi uygulayabilirsiniz.
 
-## <a name="common-scenarios"></a>Yaygın senaryolar
+## <a name="common-scenarios"></a>Genel senaryolar
 
 Üst bilgi yeniden yazma kullanımına yönelik bazı yaygın senaryolar aşağıda verilmiştir.
 
@@ -156,7 +156,7 @@ Bir üst bilgi veya sunucu değişkeni varlığı için bir HTTP isteği veya ya
 
 ## <a name="limitations"></a>Sınırlamalar
 
-- Bir yanıtta aynı ada sahip birden fazla üst bilgi varsa, bu üst bilgilerden birinin değerini yeniden yazmak yanıttaki diğer üstbilgilerin bırakılmasına neden olur. Bu, genellikle bir yanıtta birden fazla set-Cookie üst bilgisine sahip olabileceğinizden, set-Cookie üst bilgisinde meydana gelebilir. Bu tür bir senaryo, uygulama ağ geçidi ile uygulama hizmeti kullanırken ve uygulama ağ geçidinde tanımlama bilgisi tabanlı oturum benzeşimi yapılandırmış olduğunuz bir senaryodur. Bu durumda, yanıt iki set-Cookie üst bilgisi içerir: bir App Service tarafından kullanılan, örneğin: `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` ve uygulama ağ geçidi benzeşimi için bir diğeri (örneğin,) `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/` . Bu senaryodaki set-Cookie başlıklarından birini yeniden yazmak, diğer set-Cookie üst bilgisinin yanıttan kaldırılmasına neden olabilir.
+- Bir yanıtta aynı ada sahip birden fazla üst bilgi varsa, bu üst bilgilerden birinin değerini yeniden yazmak yanıttaki diğer üstbilgilerin bırakılmasına neden olur. Yanıt içinde birden fazla Set-Cookie üst bilgisine sahip olabileceğinizden bu durum genellikle Set-Cookie üst bilgisinde meydana gelebilir. Bu tür bir senaryo, uygulama ağ geçidi ile uygulama hizmeti kullanırken ve uygulama ağ geçidinde tanımlama bilgisi tabanlı oturum benzeşimi yapılandırmış olduğunuz bir senaryodur. Bu durumda, yanıt iki Set-Cookie üst bilgi içerir: App Service tarafından kullanılan, örneğin: `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` ve uygulama ağ geçidi benzeşimi için bir diğeri (örneğin,) `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/` . Bu senaryodaki Set-Cookie başlıklarından birini yeniden yazmak, diğer Set-Cookie üstbilgisinin yanıttan kaldırılmasına neden olabilir.
 
 - Uygulama ağ geçidi istekleri yeniden yönlendirmek veya özel bir hata sayfası göstermek üzere yapılandırıldığında, yeniden yazar desteklenmez.
 
@@ -168,5 +168,5 @@ Bir üst bilgi veya sunucu değişkeni varlığı için bir HTTP isteği veya ya
 
 HTTP üstbilgilerini yeniden yazmayı öğrenmek için bkz.:
 
-- [Azure portal kullanarak HTTP üstbilgilerini yeniden yazma](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
+- [Azure portalını kullanarak HTTP üst bilgilerini yeniden yazma](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
 - [Azure PowerShell kullanarak HTTP üstbilgilerini yeniden yazma](add-http-header-rewrite-rule-powershell.md)

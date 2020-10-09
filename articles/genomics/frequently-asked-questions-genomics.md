@@ -10,10 +10,10 @@ ms.service: genomics
 ms.topic: troubleshooting
 ms.date: 12/07/2017
 ms.openlocfilehash: e8806bc4f761214e6740a22093b7e18030fdf881
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76986045"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomiks: genel sorular
@@ -25,7 +25,7 @@ Bu makalede, Microsoft Genomiks ile ilgili olabilecek en iyi sorgular listelenme
 Microsoft Genomiks hizmetinin config.txt dosyasında, process_name belirtin `gatk4` . Düzenli faturalandırma ücretleri üzerinden faturalandırılabileceğinizi unutmayın.
 
 ## <a name="how-do-i-enable-output-compression"></a>Çıkış sıkıştırması etkinleştirilsin mi Nasıl yaparım??
-Çıkış sıkıştırması için isteğe bağlı bir bağımsız değişken kullanarak, çıkış VCF veya gvcf 'yi sıkıştırabilirsiniz. Bu, `-bgzip` `-tabix` `.gz` (bgzıp çıkışı) ve (tabx çıkışı) dosyalarını oluşturmak için, bu, VCF veya gvcf çıktısında çalıştırılan çalıştırmaya eşdeğerdir `.tbi` . `bgzip`VCF veya gvcf dosyasını sıkıştırır ve `tabix` Sıkıştırılmış dosya için bir dizin oluşturur. Bağımsız değişkeni, `false` Varsayılan olarak VCF çıktısı için ve varsayılan olarak gcvf çıktısı için olarak ayarlanan bir Boole değeri `true` . Komut satırında kullanmak için ya da olarak belirtin `-bz` `--bgzip-output` `true` (bgzip ve tabx 'i çalıştırın) veya `false` . Bu bağımsız değişkeni config.txt dosyasında kullanmak için `bgzip_output: true` `bgzip_output: false` dosya ekleyin.
+Çıkış sıkıştırması için isteğe bağlı bir bağımsız değişken kullanarak, çıkış VCF veya gvcf 'yi sıkıştırabilirsiniz. Bu, `-bgzip` `-tabix` `.gz` (bgzıp çıkışı) ve (tabx çıkışı) dosyalarını oluşturmak için, bu, VCF veya gvcf çıktısında çalıştırılan çalıştırmaya eşdeğerdir `.tbi` . `bgzip` VCF veya gvcf dosyasını sıkıştırır ve `tabix` Sıkıştırılmış dosya için bir dizin oluşturur. Bağımsız değişkeni, `false` Varsayılan olarak VCF çıktısı için ve varsayılan olarak gcvf çıktısı için olarak ayarlanan bir Boole değeri `true` . Komut satırında kullanmak için ya da olarak belirtin `-bz` `--bgzip-output` `true` (bgzip ve tabx 'i çalıştırın) veya `false` . Bu bağımsız değişkeni config.txt dosyasında kullanmak için `bgzip_output: true` `bgzip_output: false` dosya ekleyin.
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>Microsoft Genomiks için SLA nedir?
 Microsoft Genomiks hizmeti 'nin iş akışı API 'SI isteklerini almak için kullanılabilir olduğu sürenin% 99,9 olacağını garanti ediyoruz. Daha fazla bilgi için bkz. [SLA](https://azure.microsoft.com/support/legal/sla/genomics/v1_0/).
@@ -63,7 +63,7 @@ Depolama hesabı anahtarınız, giriş dosyalarınızı okumak ve çıktı dosya
 
 Bu başvurular desteklenir:
 
- |Başvuru              | Değeri`-pa/--process-args` |
+ |Başvuru              | Değeri `-pa/--process-args` |
  |:-------------         |:-------------                 |
  |b37                    | `R=b37m1`                     |
  |hg38                   | `R=hg38m1`                    |      

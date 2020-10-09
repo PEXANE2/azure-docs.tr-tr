@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Azure, Kinect, SDK, indirme güncelleştirme, en son, kullanılabilir, yükleme, gövde, izleme
 ms.openlocfilehash: e3f8233d208e2a45c1af9a52a76b6064b15bfe4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85277728"
 ---
 # <a name="download-azure-kinect-body-tracking-sdk"></a>Azure Kinect gövde Izleme SDK 'sını indirin
@@ -71,7 +71,7 @@ Komut başarılı olursa SDK kullanıma hazırlanmaya devam edilir.
 * Özellik C# desteği. C# sarmalayıcı, NuGet paketinde paketlenmiştir.
 * Özellik Çoklu izleyici desteği. Birden çok trackingsize oluşturulmasına izin verilir. Artık Kullanıcı, farklı Azure Kinect cihazlarından gövdeler izlemek için birden çok izleme oluşturabilir.
 * Özellik CPU modu için çoklu iş parçacığı işleme desteği. CPU modunda çalışırken, tüm çekirdekler hızı en üst düzeye çıkarmak için kullanılacaktır.
-* Özellik `gpu_device_id`Struct öğesine ekleyin `k4abt_tracker_configuration_t` . Kullanıcıların gövde izleme algoritmasını çalıştırmak için varsayılan olandan başka bir GPU aygıtı belirtmesini sağlar.
+* Özellik `gpu_device_id` Struct öğesine ekleyin `k4abt_tracker_configuration_t` . Kullanıcıların gövde izleme algoritmasını çalıştırmak için varsayılan olandan başka bir GPU aygıtı belirtmesini sağlar.
 * [Hata düzeltildi/Son değişiklik] Bir Birleşik adda yazım hatası 'ı düzeltir. Birleşik adı ' dan ' a değiştirin `K4ABT_JOINT_SPINE_NAVAL` `K4ABT_JOINT_SPINE_NAVEL` .
 
 ### <a name="v094"></a>v 0.9.4
@@ -90,9 +90,9 @@ Komut başarılı olursa SDK kullanıma hazırlanmaya devam edilir.
 ### <a name="v092"></a>v 0.9.2
 * [Son değişiklik] Güncelleştirme, en son Azure Kinect algılayıcı SDK 1.2.0 bağımlıdır.
 * [API değişikliği] `k4abt_tracker_create` işlevi bir girişi alacak şekilde başlayacaktır `k4abt_tracker_configuration_t` . 
-* [API değişikliği] `k4abt_frame_get_timestamp_usec`API 'yi `k4abt_frame_get_device_timestamp_usec` , algılayıcı SDK 1.2.0 ile daha belirli ve tutarlı olacak şekilde değiştirin.
+* [API değişikliği] `k4abt_frame_get_timestamp_usec` API 'yi `k4abt_frame_get_device_timestamp_usec` , algılayıcı SDK 1.2.0 ile daha belirli ve tutarlı olacak şekilde değiştirin.
 * Özellik Farklı açılardan bağlama sırasında daha doğru gövde izleme sonuçları elde etmek üzere izleyici oluştururken kullanıcıların algılayıcı bağlama yönlendirmesini belirtmesini sağlar.
-* Özellik `k4abt_tracker_set_temporal_smoothing`Kullanıcının uygulamak istediği zamana bağlı yumuşatma miktarını değiştirmek için yenı API sağlayın.
+* Özellik `k4abt_tracker_set_temporal_smoothing` Kullanıcının uygulamak istediği zamana bağlı yumuşatma miktarını değiştirmek için yenı API sağlayın.
 * Özellik C++ sarmalayıcı K4ABT. hpp ekleyin.
 * Özellik Sürüm tanımı üst bilgisi k4abtversion. h ekleyin.
 * [Hata düzeltildi] Son derece yüksek CPU kullanımına neden olan hatayı düzeltir.
@@ -109,9 +109,9 @@ Komut başarılı olursa SDK kullanıma hazırlanmaya devam edilir.
 
 * [Son değişiklik] SDK bağımlılığını CUDA 10,0 (CUDA 10,1) olarak düşürülemez. ONNX Runtime resmi yalnızca CUDA 10,0 ' i destekler.
 * [Son değişiklik] TensorFlow çalışma zamanı yerine ONNX çalışma zamanına geçti. İlk çerçeveyi, zaman ve bellek kullanımını Başlatan şekilde azaltır. Ayrıca SDK ikili boyutunu da azaltır.
-* [API değişikliği] Yeniden `k4abt_tracker_queue_capture()` adlandırıldı`k4abt_tracker_enqueue_capture()`
-* [API değişikliği] `k4abt_frame_get_body()`İki ayrı işleve sahiptir: `k4abt_frame_get_body_skeleton()` ve `k4abt_frame_get_body_id()` . Artık tüm iskelet yapısını kopyalamaya gerek kalmadan gövde KIMLIĞINI sorgulayabilirsiniz.
-* [API değişikliği] `k4abt_frame_get_timestamp_usec()`Kullanıcıların gövde çerçevesi zaman damgasını sorgulayabilecek adımları basitleştirmek için işlevi eklenmiştir.
+* [API değişikliği] Yeniden `k4abt_tracker_queue_capture()` adlandırıldı `k4abt_tracker_enqueue_capture()`
+* [API değişikliği] `k4abt_frame_get_body()` İki ayrı işleve sahiptir: `k4abt_frame_get_body_skeleton()` ve `k4abt_frame_get_body_id()` . Artık tüm iskelet yapısını kopyalamaya gerek kalmadan gövde KIMLIĞINI sorgulayabilirsiniz.
+* [API değişikliği]  `k4abt_frame_get_timestamp_usec()` Kullanıcıların gövde çerçevesi zaman damgasını sorgulayabilecek adımları basitleştirmek için işlevi eklenmiştir.
 * Gövde izleme algoritması doğruluğu ve izleme güvenilirliği daha da geliştirildi
 
 ## <a name="next-steps"></a>Sonraki adımlar

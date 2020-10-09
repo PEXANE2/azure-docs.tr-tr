@@ -13,7 +13,7 @@ ms.openlocfilehash: 99e00ebc8034e77b95986d3062578548bbe32df9
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91857512"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Öğretici: Windows cihazları için C IoT Edge modülü geliştirme
@@ -43,7 +43,7 @@ Windows cihazlarına C modülleri geliştirme ve dağıtmaya yönelik seçenekle
 | -- | ------------------ | ------------------ |
 | **Windows AMD64** |  | ![Visual Studio 'da WinAMD64 için C modülleri geliştirme](./media/tutorial-c-module/green-check.png) |
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce, Windows kapsayıcı geliştirmesi için geliştirme ortamınızı ayarlamak üzere önceki öğreticiden çıkmalısınız: [Windows cihazları için IoT Edge modüller](tutorial-develop-for-windows.md)geliştirme. Bu Öğreticiyi tamamladıktan sonra, aşağıdaki önkoşulların yerine gelmelidir:
 
@@ -101,7 +101,7 @@ Dağıtım bildirimi, IoT Edge çalışma zamanına sahip kapsayıcı kayıt def
 
 1. Visual Studio Çözüm Gezgini ' nde, dosyadaki **deployment.template.js** açın.
 
-2. $EdgeAgent istenen özelliklerde **Registrycredentials** özelliğini bulun. Proje oluştururken verdiğiniz bilgilerden kayıt defteri adresiniz, sizin için yeniden doldurulmalıdır. Kullanıcı adı ve parola alanları, değişken adlarını içermelidir. Örnek:
+2. $EdgeAgent istenen özelliklerde **Registrycredentials** özelliğini bulun. Proje oluştururken verdiğiniz bilgilerden kayıt defteri adresiniz, sizin için yeniden doldurulmalıdır. Kullanıcı adı ve parola alanları, değişken adlarını içermelidir. Örneğin:
 
    ```json
    "registryCredentials": {

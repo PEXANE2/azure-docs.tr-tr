@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
 ms.openlocfilehash: 496ee1bc97f6b72e09a62ae3491af7ccc7328583
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80811093"
 ---
 # <a name="azure-network-security-overview"></a>Azure ağ güvenliğine genel bakış
@@ -210,7 +210,7 @@ Daha fazla bilgi edinin:
 
 * [Azure Resource Manager ve PowerShell kullanarak VNet-VNet bağlantısı yapılandırma](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
-Sanal ağlarınızı bağlamak için başka bir yöntem de [VNET eşlemedir](../../virtual-network/virtual-network-peering-overview.md). Bu özellik, iki Azure ağını, aralarında iletişim kurmak zorunda kalmadan Microsoft omurga altyapısı üzerinden meydana gelecek şekilde bağlamanıza olanak tanır. VNET eşlemesi, Azure bölgelerinde aynı bölgedeki iki sanal ağı veya iki sanal ağı birbirine bağlayabilirler. NSG 'ler, farklı alt ağlar veya sistemler arasındaki bağlantıyı sınırlamak için kullanılabilir.
+Sanal ağlarınızı bağlamak için başka bir yöntem de  [VNET eşlemedir](../../virtual-network/virtual-network-peering-overview.md). Bu özellik, iki Azure ağını, aralarında iletişim kurmak zorunda kalmadan Microsoft omurga altyapısı üzerinden meydana gelecek şekilde bağlamanıza olanak tanır. VNET eşlemesi, Azure bölgelerinde aynı bölgedeki iki sanal ağı veya iki sanal ağı birbirine bağlayabilirler. NSG 'ler, farklı alt ağlar veya sistemler arasındaki bağlantıyı sınırlamak için kullanılabilir.
 
 ## <a name="availability"></a>Kullanılabilirlik
 

@@ -4,10 +4,10 @@ description: Bu makalede, AzureEvent hub 'Larda bir Kafka kümesini yansıtmak i
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: aea8ebcfa65d5f4c90aa1908d03f0fcde8906bba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85320199"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Apache Kafka için Event Hubs ile Kafka MirrorMaker 'ı kullanma
@@ -33,7 +33,7 @@ Modern bulut ölçekli uygulamalar için önemli bir göz önünde bulundurun, h
 
 Azure Event Hubs Kafka uç noktası, Azure Event Hubs 'a Kafka protokolünü (yani, Kafka istemcileri) kullanarak bağlanmanızı sağlar. Bir Kafka uygulamasında en az değişiklik yaparak Azure Event Hubs bağlanabilir ve Azure ekosisteminin avantajlarından yararlanabilirsiniz. Event Hubs Şu anda Kafka sürümleri 1,0 ve üstünü desteklemektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 
@@ -126,5 +126,5 @@ Kafka için Event Hubs hakkında daha fazla bilgi için aşağıdaki makalelere 
 - [Apache Flink'i bir olay hub'ına bağlama](event-hubs-kafka-flink-tutorial.md)
 - [Kafka Connect 'i bir olay hub 'ı ile tümleştirme](event-hubs-kafka-connect-tutorial.md)
 - [GitHub'ımızdaki örnekleri inceleme](https://github.com/Azure/azure-event-hubs-for-kafka)
-- [Akka akışlarını bir olay hub 'ına bağlama](event-hubs-kafka-akka-streams-tutorial.md)
+- [Akka Streams’i bir olay hub’ına bağlama](event-hubs-kafka-akka-streams-tutorial.md)
 - [Azure Event Hubs için Apache Kafka Geliştirici Kılavuzu](apache-kafka-developer-guide.md)

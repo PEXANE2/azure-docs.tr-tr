@@ -10,10 +10,10 @@ ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
 ms.openlocfilehash: 100be6a4376883a4f2a91b1efd172242c1d19e19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80878400"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Azure Scheduler kavramları, terminolojisi ve varlıkları
@@ -148,7 +148,7 @@ Bu örnekte bir HTTP eyleminin kapsamlı iş tanımı gösterilmiştir ve öğel
 
 <a name="action"></a>
 
-## <a name="action"></a>action
+## <a name="action"></a>eylem
 
 Scheduler işiniz belirtilen zamanlamayı kullanarak birincil **eylemi** çalıştırır. Scheduler HTTP, Depolama kuyruğu, Service Bus kuyruğu ve Service Bus konusu eylemlerini destekler. Birincil **action** nesnesi başarısız olursa Scheduler hatayı işleyen ikincil [**errorAction**](#erroraction) nesnesini çalıştırabilir. **action** nesnesi şu öğeleri tanımlar:
 
@@ -248,12 +248,12 @@ Birincil **eylemde** olduğu gibi, hata eylemi diğer eylemler temelinde basit y
 
 | Özellik | Gerekli | Değer | Açıklama | 
 |----------|----------|-------|-------------| 
-| **lemiyor** | **recurrence** kullanıldığında evet | "Minute", "Hour", "Day", "Week", "Month", "Year" | Yinelemeler arası zaman birimi | 
-| **aralığında** | Hayır | 1-1000 arası, ikisi de dahil | **frequency** nesnesine göre yinelemeler arasındaki zaman birimi sayısını belirleyen pozitif tamsayı | 
+| **frequency** | **recurrence** kullanıldığında evet | "Minute", "Hour", "Day", "Week", "Month", "Year" | Yinelemeler arası zaman birimi | 
+| **interval** | Hayır | 1-1000 arası, ikisi de dahil | **frequency** nesnesine göre yinelemeler arasındaki zaman birimi sayısını belirleyen pozitif tamsayı | 
 | **çizelgesini** | Hayır | Değişir | Daha karmaşık ve gelişmiş zamanlamaların ayrıntıları. Bkz. **hours**, **minutes**, **weekDays**, **months** ve **monthDays** | 
 | **saatlerinin** | Hayır | 1-24 arası | İşin çalıştırılacağı saati belirten dizi | 
 | **dakika** | Hayır | 0-59 | İşin çalıştırılacağı dakikayı belirten dizi | 
-| **months** | Hayır | 1-12 arası | İşin çalıştırılacağı ayı belirten dizi | 
+| **aylar** | Hayır | 1-12 arası | İşin çalıştırılacağı ayı belirten dizi | 
 | **monthDays** | Hayır | Değişir | İşin çalıştırılacağı ayın gününü belirten dizi | 
 | **weekDays** | Hayır | "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" | İşin çalıştırılacağı haftanın gününü belirten dizi | 
 | **biriktirme** | Hayır | <*seçim*> | Yineleme sayısı. Varsayılan değer sonsuzdur. **count** ve **endTime** nesnelerini birlikte kullanamazsınız ancak ilk tamamlanan kural uygulanır. | 
@@ -287,7 +287,7 @@ Daha fazla bilgi için bkz. [Yüksek kullanılabilirlik ve güvenilirlik](../sch
 
 <a name="status"></a>
 
-## <a name="state"></a>durum
+## <a name="state"></a>state
 
 Bir işin durumu **Etkin**, **Devre Dışı**, **Tamamlandı** veya **Hatalı** olacaktır, örneğin: 
 

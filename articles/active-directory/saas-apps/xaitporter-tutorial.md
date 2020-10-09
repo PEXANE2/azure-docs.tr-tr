@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 80900f8a63d29e8c36ec190945efc3c44f713a3f
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89296949"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>Öğretici: XaitPorter ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Xaıporter 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini, Xaıporter ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açmayı, Xaıporter ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, **[Xaıporter çoklu oturum açmayı yapılandırın](#configure-xaitporter-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için, **[Xaıporter çoklu oturum açmayı yapılandırın](#configure-xaitporter-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan, XaitPorter 'ta Britta Simon 'un bir karşılığı olacak şekilde, **[xaitporter test kullanıcısı oluşturun](#create-xaitporter-test-user)** .
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı, Xaıporter ile yapılandırmak için aşağıda
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -108,13 +108,13 @@ Azure AD çoklu oturum açmayı, Xaıporter ile yapılandırmak için aşağıda
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için, bu [istemci destek ekibine](https://www.xait.com/support/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
     ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
 6. [Smartitporter destek ekibine](https://www.smartrecruiters.com/about-us/contact-us/) **IP adresini** veya **uygulama Federasyon meta verileri URL 'sini** sağlayın. bu sayede, bu nedenle, bir IP adresinin, kendi tarafında onaylanan listeyi yapılandırarak, bu IP adresine olan xaıporter örneğinden erişilebilir olmasını sağlayabilirsiniz. 
 
-### <a name="configure-xaitporter-single-sign-on"></a>Xaıporter çoklu oturum açmayı yapılandırma
+### <a name="configure-xaitporter-single-sign-on"></a>Xaıporter tek Sign-On yapılandırma
 
 1. Bu yapılandırmayı, Xaılanter içinde otomatik hale getirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
@@ -128,23 +128,23 @@ Azure AD çoklu oturum açmayı, Xaıporter ile yapılandırmak için aşağıda
 
 4. **Yönetici**' ye tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/xaitporter-tutorial/user1.png)
+    ![Tek Sign-On yapılandırma](./media/xaitporter-tutorial/user1.png)
 
 5. **Sistem Kurulum** açılır listesinden **Çoklu oturum açmayı Yönet '** i seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/xaitporter-tutorial/user2.png)
+    ![Tek Sign-On yapılandırma](./media/xaitporter-tutorial/user2.png)
 
 6. **Çoklu oturum açmayı Yönet** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/xaitporter-tutorial/user3.png)
+    ![Tek Sign-On yapılandırma](./media/xaitporter-tutorial/user3.png)
 
-    a. **Çoklu oturum açma kimlik doğrulamasını etkinleştir**' i seçin.
+    a. **Tek Sign-On kimlik doğrulamasını etkinleştir**' i seçin.
 
     b. **Kimlik sağlayıcısı ayarları** metin kutusunda, Azure Portal kopyaladığınız **uygulama Federasyon meta verileri URL 'Sini** yapıştırın ve **getir**' e tıklayın.
 
     c. **Kullanıcıları oto oluşturmayı etkinleştir**' i seçin.
 
-    d. **Tamam**’a tıklayın.
+    d. **Tamam**'a tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 

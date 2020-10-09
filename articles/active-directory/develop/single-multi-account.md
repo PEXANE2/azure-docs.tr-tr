@@ -13,10 +13,10 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: 89a383aabf3487a0938604bc28ddb06c0541d13e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80881359"
 ---
 # <a name="single-and-multiple-account-public-client-apps"></a>Tek ve birden çok hesap genel istemci uygulamaları
@@ -25,7 +25,7 @@ Bu makale, tek hesap genel istemci uygulamalarına odaklanarak tek ve çoklu hes
 
 Azure Active Directory kimlik doğrulama kitaplığı (ADAL), sunucuyu modelleyen.  İstemci uygulamanızı modelleyen, Microsoft kimlik doğrulama kitaplığı (MSAL).  Android uygulamalarının çoğu ortak istemci olarak kabul edilir. Ortak istemci, gizli anahtarı güvenli bir şekilde saklayamıyorum bir uygulamadır.  
 
-MSAL, tek seferde `PublicClientApplication` yalnızca bir hesabın kullanılmasına izin veren uygulamalar için geliştirme deneyimini basitleştirecek ve açıklığa kavuşturmaya YÖNELIK API yüzeyini uzmanlar. `PublicClientApplication`, ve tarafından alt sınıflanmış `SingleAccountPublicClientApplication` `MultipleAccountPublicClientApplication` .  Aşağıdaki diyagramda bu sınıflar arasındaki ilişki gösterilmektedir.
+MSAL, tek seferde `PublicClientApplication` yalnızca bir hesabın kullanılmasına izin veren uygulamalar için geliştirme deneyimini basitleştirecek ve açıklığa kavuşturmaya YÖNELIK API yüzeyini uzmanlar. `PublicClientApplication` , ve tarafından alt sınıflanmış `SingleAccountPublicClientApplication` `MultipleAccountPublicClientApplication` .  Aşağıdaki diyagramda bu sınıflar arasındaki ilişki gösterilmektedir.
 
 ![SingleAccountPublicClientApplication UML sınıf diyagramı](./media/single-multi-account/single-and-multiple-account.png)
 
@@ -35,14 +35,14 @@ MSAL, tek seferde `PublicClientApplication` yalnızca bir hesabın kullanılmas�
 
 - MSAL Şu anda oturum açmış olan hesabı izler.
   - Uygulamanız bir aracı kullanıyorsa (Azure portal uygulama kaydı sırasında varsayılan) ve bir aracısının bulunduğu bir cihaza yüklüyse, MSAL hesabın cihazda hala kullanılabilir olduğunu doğrular.
-- `signIn`bir hesapta bir hesabı açık ve ayrı olarak oturum açmanıza olanak tanır.
-- `acquireTokenSilent`Hesap parametresi gerektirmez.  Bir hesap sağlarsanız ve sağladığınız hesap, MSAL tarafından izlenen geçerli hesapla eşleşmiyorsa, bir oluşturulur `MsalClientException` .
-- `acquireToken`kullanıcının hesaplara geçiş yapmasına izin vermez. Kullanıcı farklı bir hesaba geçiş yapmayı denerse, bir özel durum oluşturulur.
-- `getCurrentAccount`aşağıdakileri sağlayan bir sonuç nesnesi döndürür:
+- `signIn` bir hesapta bir hesabı açık ve ayrı olarak oturum açmanıza olanak tanır.
+- `acquireTokenSilent` Hesap parametresi gerektirmez.  Bir hesap sağlarsanız ve sağladığınız hesap, MSAL tarafından izlenen geçerli hesapla eşleşmiyorsa, bir oluşturulur `MsalClientException` .
+- `acquireToken` kullanıcının hesaplara geçiş yapmasına izin vermez. Kullanıcı farklı bir hesaba geçiş yapmayı denerse, bir özel durum oluşturulur.
+- `getCurrentAccount` aşağıdakileri sağlayan bir sonuç nesnesi döndürür:
   - Hesabın değişip değişmediğini gösteren bir Boole değeri. Örneğin, cihazdan kaldırılmakta olan bir hesap değişebilir.
   - Önceki hesap. Bu, hesap cihazdan kaldırıldığında veya yeni bir hesap oturum açtığınızda herhangi bir yerel veri temizliği yapmanız gerekiyorsa yararlıdır.
   - CurrentAccount.
-- `signOut`cihazınızdan istemciyle ilişkili belirteçleri cihazdan kaldırır.  
+- `signOut` cihazınızdan istemciyle ilişkili belirteçleri cihazdan kaldırır.  
 
 Microsoft Authenticator veya Intune Şirket Portalı gibi bir Android kimlik doğrulama Aracısı cihaza yüklendiğinde ve uygulamanız aracıyı kullanmak üzere yapılandırıldığında, `signOut` hesabı cihazdan kaldırmaz.
 

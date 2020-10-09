@@ -13,10 +13,10 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.custom: aaddev
 ms.openlocfilehash: 1507231c3ab395319d5ce95ec06dbb592c324aa6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80881086"
 ---
 # <a name="how-to-troubleshoot-msal-for-ios-and-macos-tlsssl-issues"></a>Nasıl yapılır: iOS ve macOS TLS/SSL sorunları için MSAL sorunlarını giderme
@@ -41,7 +41,7 @@ SHA-1 karmaları kullanan sertifikaların bilinen güvenlik açıkları vardır.
 
 ## <a name="captive-portals"></a>Kıltıcı portallar
 
-Açıklamalı Portal, bir Wi-Fi ağına ilk kez erişirken ve henüz bu ağa erişim verilmemişse bir kullanıcıya Web sayfası sunar. Kullanıcı portalın gereksinimlerini karşılaana kadar internet trafiğini karşılar. Kullanıcı Portal üzerinden bağlanana kadar ağ kaynaklarına bağlanamadığı için ağ hataları beklenmektedir.
+Açıklamalı Portal, bir Wi-Fi ağa ilk kez erişirken bir Web sayfası sunar ve henüz bu ağa erişim verilmemiştir. Kullanıcı portalın gereksinimlerini karşılaana kadar internet trafiğini karşılar. Kullanıcı Portal üzerinden bağlanana kadar ağ kaynaklarına bağlanamadığı için ağ hataları beklenmektedir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

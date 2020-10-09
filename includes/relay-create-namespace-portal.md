@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
 ms.openlocfilehash: 500db9f6d299ea81b1f1b1be864df5d91ba1eae7
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76020867"
 ---
-1. [Azure portalında][Azure portal] oturum açın.
+1. [Azure Portal][Azure portal]’ında oturum açın.
 1. **Kaynak oluştur**’u seçin. Ardından, **tümleştirme**  >  **geçişi**' ni seçin. Listede **Geçiş**'i görmüyorsanız sağ üst köşedeki **Tümünü Gör**'ü seçin.
 1. **Oluştur**' u seçin ve **ad** alanına bir ad alanı adı girin. Azure portal, adın kullanılabilir olup olmadığını denetler.
 1. Ad alanını oluşturmak için bir Azure aboneliği seçin.

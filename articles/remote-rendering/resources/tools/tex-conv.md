@@ -6,10 +6,10 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 1d9b2ca163b70435a6c0e245e66492e8e2866639
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80680030"
 ---
 # <a name="texconv---texture-conversion-tool"></a>TexConv-doku dönüştürme aracı
@@ -31,9 +31,9 @@ En düz ileri sarma komut satırı budur:
 TexConv.exe -out D:/result.dds -in0 D:/img.jpg -rgba in0
 ```
 
-- `-out`çıkış dosyasını ve biçimini belirtir
-- `-in0`ilk giriş görüntüsünü belirtir
-- `-rgba`çıkış resminin tüm dört kanalı kullanması gerektiğini ve giriş görüntüsünden 1:1 alınması gerektiğini söyler
+- `-out` çıkış dosyasını ve biçimini belirtir
+- `-in0` ilk giriş görüntüsünü belirtir
+- `-rgba` çıkış resminin tüm dört kanalı kullanması gerektiğini ve giriş görüntüsünden 1:1 alınması gerektiğini söyler
 
 ## <a name="multiple-input-files"></a>Birden çok giriş dosyası
 
@@ -68,9 +68,9 @@ Her kanal için eşlemenin belirtilmesi, en büyük esnekliği sağlar. Daha kol
 Aşağıdaki kanal eşleme seçenekleri kullanılabilir:
 
 - `-r`,,, `-g` `-b` `-a` : Bu tek kanal atamalarını belirtir
-- `-rg`: Kırmızı ve yeşil kanal atamalarını belirtin.
-- `-rgb`: Kırmızı, yeşil ve mavi kanal atamalarını belirtin.
-- `-rgba`: Dört kanal atamasını belirtir.
+- `-rg` : Kırmızı ve yeşil kanal atamalarını belirtin.
+- `-rgb` : Kırmızı, yeşil ve mavi kanal atamalarını belirtin.
+- `-rgba` : Dört kanal atamasını belirtir.
 
 Yalnızca R, RG veya RGB kanalının bahsetmesi, TexConv 'ın sırasıyla yalnızca 1, 2 veya 3 kanallı bir çıkış dosyası oluşturmasını söyler.
 
@@ -78,14 +78,14 @@ Yalnızca R, RG veya RGB kanalının bahsetmesi, TexConv 'ın sırasıyla yalnı
 
 Hangi giriş dokusunun hangi çıkış kanalını dolduracağı konusunda bir Swizzle, bir tane girişi içerebilir:
 
-- `-rgba in0`eşdeğerdir`-rgba in0.rgba`
-- `-rgba in0.bgra`Giriş kanallarını Swizzle
-- `-rgb in0.rrr`kırmızı kanalı tüm kanallarla çoğaltır
+- `-rgba in0` eşdeğerdir `-rgba in0.rgba`
+- `-rgba in0.bgra` Giriş kanallarını Swizzle
+- `-rgb in0.rrr` kırmızı kanalı tüm kanallarla çoğaltır
 
 Ayrıca, kanalları siyah ya da beyazla doldurabilir.
 
-- `-rgb in0 -a white`4 kanal çıkış dokusu oluşturur, ancak alfa 'yi tamamen opak olarak ayarlar
-- `-rg black -b white`tamamen mavi bir doku oluşturacak
+- `-rgb in0 -a white` 4 kanal çıkış dokusu oluşturur, ancak alfa 'yi tamamen opak olarak ayarlar
+- `-rg black -b white` tamamen mavi bir doku oluşturacak
 
 ## <a name="common-options"></a>Ortak seçenekler
 
@@ -93,41 +93,41 @@ En ilginç seçenekler aşağıda listelenmiştir. Daha fazla seçenek tarafınd
 
 ### <a name="output-type"></a>Çıkış türü
 
-- `-type 2D`: Çıktı normal bir 2B görüntü olacaktır.
-- `-type Cubemap`: Çıktı bir küp harita görüntüsü olacaktır. Yalnızca DDS çıkış dosyaları için desteklenir. Bu belirtildiğinde, bir tane, 6 normal 2B giriş görüntülerinden küp harita 'i birleştirebilir.
+- `-type 2D` : Çıktı normal bir 2B görüntü olacaktır.
+- `-type Cubemap` : Çıktı bir küp harita görüntüsü olacaktır. Yalnızca DDS çıkış dosyaları için desteklenir. Bu belirtildiğinde, bir tane, 6 normal 2B giriş görüntülerinden küp harita 'i birleştirebilir.
 
-### <a name="image-compression"></a>Görüntü sıkıştırma
+### <a name="image-compression"></a>Resim sıkıştırma
 
-- `-compression none`: Çıkış resminin sıkıştırması kaldırılacak.
-- `-compression medium`: Destekleniyorsa, çıkış resmi çok fazla kaliteden ödün vermeden sıkıştırmayı kullanacaktır.
-- `-compression high`: Destekleniyorsa, çıkış resmi daha küçük bir dosya için sıkıştırmayı ve feice kalitesini kullanır.
+- `-compression none` : Çıkış resminin sıkıştırması kaldırılacak.
+- `-compression medium` : Destekleniyorsa, çıkış resmi çok fazla kaliteden ödün vermeden sıkıştırmayı kullanacaktır.
+- `-compression high` : Destekleniyorsa, çıkış resmi daha küçük bir dosya için sıkıştırmayı ve feice kalitesini kullanır.
 
 ### <a name="mipmaps"></a>Mipmap
 
 Varsayılan olarak, TexConv çıkış biçimi onu desteklediğinde, msunucudan mı haritaları oluşturur.
 
-- `-mipmaps none`: Msunucudan haritalar oluşturulmayacak.
-- `-mipmaps Linear`: Destekleniyorsa, bir kutu filtresi kullanılarak mı haritaları oluşturulacaktır.
+- `-mipmaps none` : Msunucudan haritalar oluşturulmayacak.
+- `-mipmaps Linear` : Destekleniyorsa, bir kutu filtresi kullanılarak mı haritaları oluşturulacaktır.
 
 ### <a name="usage-srgb--gamma-correction"></a>Kullanım (sRGB/Gamma düzeltme)
 
 Bu `-usage` seçenek, çıktının amacını belirtir ve bu nedenle, giriş ve çıkış dosyalarına gama düzeltmesinin uygulanıp uygulanamayacağını belirten TexConv öğesine söyler. Kullanım yalnızca RGB kanallarını etkiler. Alfa kanalı her zaman ' doğrusal ' değerler içerecek şekilde değerlendirilir. Kullanım belirtilmemişse, ' Auto ' modu, ilk giriş görüntüsünün biçiminden ve dosya adından kullanımı algılamaya çalışır. Örneğin, tek ve çift kanal çıkış biçimleri her zaman doğrusal değildir. Hangi karar TexConv yaptığını görmek için çıktıyı kontrol edin.
 
-- `-usage Linear`: Çıkış resmi, renkleri temsil eden değerler içeriyor. Bu genellikle metalik ve kabalık dokuların yanı sıra tüm maske türlerini kullanır.
+- `-usage Linear` : Çıkış resmi, renkleri temsil eden değerler içeriyor. Bu genellikle metalik ve kabalık dokuların yanı sıra tüm maske türlerini kullanır.
 
-- `-usage Color`: Çıkış resmi, dağıtma/Albedo haritaları gibi rengi temsil eder. SRGB bayrağı output DDS üst bilgisinde ayarlanacak.
+- `-usage Color` : Çıkış resmi, dağıtma/Albedo haritaları gibi rengi temsil eder. SRGB bayrağı output DDS üst bilgisinde ayarlanacak.
 
-- `-usage HDR`: Çıkış dosyası kodlama için piksel başına 8 bitten fazlasını kullanmalıdır. Sonuç olarak tüm değerler doğrusal alanda depolanır. HDR dokuları için, verilerin rengi veya diğer verileri temsil etmeksizin önemi yoktur.
+- `-usage HDR` : Çıkış dosyası kodlama için piksel başına 8 bitten fazlasını kullanmalıdır. Sonuç olarak tüm değerler doğrusal alanda depolanır. HDR dokuları için, verilerin rengi veya diğer verileri temsil etmeksizin önemi yoktur.
 
-- `-usage NormalMap`: Çıkış resmi bir teğet-Space normal eşlemesini temsil eder. Değerler normalleştirilir ve mipmap hesaplama biraz iyileştirecektir.
+- `-usage NormalMap` : Çıkış resmi bir teğet-Space normal eşlemesini temsil eder. Değerler normalleştirilir ve mipmap hesaplama biraz iyileştirecektir.
 
-- `-usage NormalMap_Inverted`: Çıktı, Y ile bir teğet-Space normal eşlemedir ve girişin ters yönünde işaret eder.
+- `-usage NormalMap_Inverted` : Çıktı, Y ile bir teğet-Space normal eşlemedir ve girişin ters yönünde işaret eder.
 
 ### <a name="image-rescaling"></a>Görüntü yeniden oluşturma
 
-- `-minRes 64`: Çıktının en düşük çözünürlüğünü belirtir. Giriş resmi daha küçükse, ölçeklendirilmez.
-- `-maxRes 1024`: Çıktının en yüksek çözünürlüğünü belirtir. Giriş resmi daha büyükse, küçük ölçekli olur.
-- `-downscale 1`: Bu 0 ' dan büyükse, giriş görüntüleri çözüm N kez yarıya iner. Genel kalite azaltma uygulamak için bunu kullanın.
+- `-minRes 64` : Çıktının en düşük çözünürlüğünü belirtir. Giriş resmi daha küçükse, ölçeklendirilmez.
+- `-maxRes 1024` : Çıktının en yüksek çözünürlüğünü belirtir. Giriş resmi daha büyükse, küçük ölçekli olur.
+- `-downscale 1` : Bu 0 ' dan büyükse, giriş görüntüleri çözüm N kez yarıya iner. Genel kalite azaltma uygulamak için bunu kullanın.
 
 ## <a name="examples"></a>Örnekler
 

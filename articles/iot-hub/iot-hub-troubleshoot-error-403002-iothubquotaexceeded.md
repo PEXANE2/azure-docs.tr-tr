@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: 8312c3267e826088f34b3bffe1520703eec00bdc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76961120"
 ---
 # <a name="403002-iothubquotaexceeded"></a>403002 IoTHubQuotaExceeded
@@ -21,7 +21,7 @@ Bu makalede, **403002 Iothubkotasına** yönelik nedenler ve çözümler açıkl
 
 ## <a name="symptoms"></a>Belirtiler
 
-IoT Hub tüm istekleri **403002 Iothubquotaerror**ile başarısız olur. Azure portal, IoT Hub cihaz listesi yüklenmez.
+IoT Hub tüm istekleri  **403002 Iothubquotaerror**ile başarısız olur. Azure portal, IoT Hub cihaz listesi yüklenmez.
 
 ## <a name="cause"></a>Nedeni
 

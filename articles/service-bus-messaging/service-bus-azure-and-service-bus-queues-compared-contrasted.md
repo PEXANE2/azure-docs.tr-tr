@@ -4,10 +4,10 @@ description: Azure tarafından sunulan iki kuyruk türü arasındaki farkları v
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: a64000741de68518dd459b105a093ccf4cb6ab7b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85337645"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Depolama kuyrukları ve Service Bus kuyrukları-karşılaştırılan ve değişken maliyetli
@@ -41,7 +41,7 @@ Belirli bir çözüm için hangi sıraya alma teknolojisinin amacına uygun oldu
 * Uygulamanızın iletileri paralel uzun süreli akışlar olarak işlemesini istiyorsunuz (ileti, iletideki [SessionID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid) özelliği kullanılarak bir akışla ilişkilendirilir). Bu modelde, tüketim uygulamasındaki her düğüm, iletiler yerine akışlar için bir kullanıcı tarafından kabul edilebilir. Bir akış tüketen bir düğüme verildiğinde, düğüm işlemleri kullanarak uygulama akış durumunun durumunu inceleyebilir.
 * Çözümünüz, bir kuyruktan birden çok ileti gönderirken veya alırken işlemsel davranış ve kararlılık gerektirir.
 * Uygulamanız 64 KB 'ı aşan iletileri işler, ancak 256 KB sınırına büyük olasılıkla yaklaşımlar.
-* Sıralara rol tabanlı erişim modeli sağlamak ve Gönderenler ve alıcılar için farklı haklar/izinler sağlamak üzere bir gereksinimle uğraşmanız gerekir. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+* Sıralara rol tabanlı erişim modeli sağlamak ve Gönderenler ve alıcılar için farklı haklar/izinler sağlamak üzere bir gereksinimle uğraşmanız gerekir. Daha fazla bilgi için aşağıdaki makalelere bakın:
     - [Yönetilen kimliklerle kimlik doğrulaması](service-bus-managed-service-identity.md)
     - [Uygulamadan kimlik doğrulaması yapma](authenticate-application.md)
 * Kuyruk boyutunuz 80 GB'ın üzerine çıkmayacaktır.

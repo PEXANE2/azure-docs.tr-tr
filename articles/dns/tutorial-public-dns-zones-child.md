@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 7/16/2020
 ms.author: jonbeck
 ms.openlocfilehash: 3f35d39634470ccacffa4d35c272a82725e9001c
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89088366"
 ---
 # <a name="tutorial-creating-a-new-child-dns-zone"></a>Öğretici: yeni bir alt DNS bölgesi oluşturma
@@ -50,7 +50,7 @@ Alt DNS bölgenizi oluşturmak için iki yol vardır.
 ## <a name="create-child-dns-zone-via-create-dns-zone"></a>DNS bölgesi oluştur aracılığıyla alt DNS bölgesi oluştur
 
 Bu adımda, **subdomain.contoso.com** adlı yeni BIR alt DNS bölgesi oluşturacak ve var olan üst dns bölgesi **contoso.com**' a temsilci seçeceğiz. DNS bölgesi **Oluştur** sayfasındaki SEKMELERI kullanarak DNS bölgesini oluşturacaksınız.
-1.  Azure portal menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin. **Yeni** pencere görüntülenir.
+1.  Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin. **Yeni** pencere görüntülenir.
 1.  **Ağ**' ı ve ardından **DNS bölgesi** ' ni seçip düğme **Ekle** ' yi seçin.
 
 1.  **Temel bilgiler** sekmesinde, aşağıdaki değerleri yazın veya seçin:
@@ -74,14 +74,14 @@ Ayrıca, üst bölgeye genel bakış sayfasından **alt bölge** düğmesini kul
 1.  Azure portal, **tüm kaynaklar**altında, **myresourcegroup** kaynak grubundaki *contoso.com* DNS bölgesini açın. Daha kolay bulmak için **ada göre filtrele** kutusuna *contoso.com* yazabilirsiniz.
 1.  DNS bölgesine Genel Bakış sayfasında **+ alt bölge** düğmesini seçin.
 
-      :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-inline.png" alt-text="Ekran görüntüsü alt bölge düğmesi." border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-expanded.png":::
+      :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-inline.png" alt-text="DNS bölgesi oluştur sayfasının ekran görüntüsü." border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-expanded.png":::
 
 1.  DNS bölgesi oluştur sayfası açılır. Alt bölge seçeneği zaten işaretli ve üst bölge aboneliği ve üst bölgesi bu sayfada zaten doldurulmuş.
 1.  Bu öğretici örneği için bu adı *alt öğe* olarak yazın. Contoso.com üst DNS bölgesi adı, otomatik olarak ada önek olarak eklendiğine dikkat edin.
 1.  Ileri ' yi seçin **: Etiketler** ve sonra **İleri: İnceleme + oluştur**.
 1.  **Gözden geçir + oluştur** sekmesinde, Özeti gözden geçirin, doğrulama hatalarını düzeltin ve ardından **Oluştur**' u seçin.
 
-    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="Seçili alt bölge ekran görüntüsü" border="true"  lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
+    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="DNS bölgesi oluştur sayfasının ekran görüntüsü." border="true"  lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
 ## <a name="verify-child-dns-zone"></a>Alt DNS bölgesini doğrula
 Artık yeni bir alt DNS bölge *subdomain.contoso.com* oluşturmuş olduğunuza göre. Temsilcinin doğru şekilde gerçekleştiğini doğrulamak için, alt bölgeniz için nameserver (NS) kayıtlarının, aşağıda açıklandığı gibi üst bölgede olduğunu kontrol etmek isteyeceksiniz.  
 
@@ -90,7 +90,7 @@ Artık yeni bir alt DNS bölge *subdomain.contoso.com* oluşturmuş olduğunuza 
 1.  Azure portal, **tüm kaynaklar**altında, **myresourcegroup** kaynak grubundaki *subdomain.contoso.com* DNS bölgesini açın. Daha kolay bulmak için **ada göre filtrele** kutusuna *subdomain.contoso.com* yazabilirsiniz.
 1.  DNS bölgesine genel bakış sayfasından ad sunucularını alın. Bu örnekte, contoso.com bölgesine ad Servers *ns1-08.Azure-DNS.com, ns2-08.Azure-DNS.net, NS3-08.Azure-DNS.org*ve *NS4-08.Azure-DNS.info*atanmıştır:
 
-      :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-inline.png" alt-text="Alt bölge kullanır ekran görüntüsü" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-expanded.png":::
+      :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-inline.png" alt-text="DNS bölgesi oluştur sayfasının ekran görüntüsü." border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-expanded.png":::
 **Üst DNS bölgesindeki NS kaydını doğrulayın:**
 
 Bu adımda, üst DNS bölgesine *contoso.com* ve alt bölgeler kullanır için NS kayıt kümesi girişinin oluşturulup oluşturulmadığımıza göz atın.
@@ -99,7 +99,7 @@ Bu adımda, üst DNS bölgesine *contoso.com* ve alt bölgeler kullanır için N
 1.  *Contoso.com* DNS bölgelerine Genel Bakış sayfasında, kayıt kümelerini denetleyin.
 1.  NS ve Name alt etki alanı türündeki kayıt kümesinin zaten üst DNS bölgesinde oluşturulduğunu göreceksiniz. Bu kayıt kümesinin değerlerini kontrol edin ve yukarıdaki adımda alt DNS bölgesinden elde ettiğimiz ad sunucusu listesine benzer.
 
-     :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-inline.png" alt-text="Alt bölge kullanır doğrulamasının ekran görüntüsü" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-expanded.png":::
+     :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-inline.png" alt-text="DNS bölgesi oluştur sayfasının ekran görüntüsü." border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-expanded.png":::
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 Bu öğreticide oluşturduğunuz kaynaklara artık ihtiyacınız kalmadığında, **Myresourcegroup** kaynak grubunu silerek bunları kaldırın. **Myresourcegroup** kaynak grubunu açın ve **kaynak grubunu sil**' i seçin.
 
@@ -108,4 +108,4 @@ Bu öğreticide oluşturduğunuz kaynaklara artık ihtiyacınız kalmadığında
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure DNS Özel Bölgeleri senaryoları](private-dns-scenarios.md)
+> [Azure DNS Özel Bölgeleri senaryolar](private-dns-scenarios.md)

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: jhakulin
 ms.openlocfilehash: d35c02386b7bcb18781dcbd8c209da43d590868c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76169522"
 ---
 # <a name="support-and-help-options"></a>Destek ve yardım seçenekleri
@@ -37,7 +37,7 @@ Bilişsel hizmetler hakkında haberler bilişsel [Hizmetler blogu](https://azure
 
 [Sürüm notları](https://aka.ms/csspeech/whatsnew) , yeni bir sürüm kullanılabilir duruma geldiğinde güncelleştirilir. Notlar yeni özellikler, geliştirmeler ve hata düzeltmeleri hakkında bilgiler içerir.
 
-## <a name="search"></a>Arama
+## <a name="search"></a>Search
 
 Belgelerinize, örneklere veya [Stack Overflow](https://www.stackoverflow.com) soruların veya örneklerde cevapdaki cevapları bulabilirsiniz.
 
@@ -55,7 +55,7 @@ Burada *{arama koşullarınız}* arama anahtar sözcüklerdir.
 
 Azure müşterileri Azure portal destek istekleri oluşturabilir ve yönetebilir.
 
-* [Azure portalı](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure portalındaki](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Birleşik Devletler kamu Azure portal](https://portal.azure.us)
 
 ## <a name="create-a-github-issue"></a>GitHub sorunu oluştur
@@ -101,7 +101,7 @@ Hangi SDK sürümünün kullanıyorsunuz.
 
 Stack Overflow, geliştirmeyle ilgili sorular için tercih edilen kanaldır. Bu, topluluk ve Microsoft ekip üyelerinin üyelerinin, sorunlarınızı çözmenize yardımcı olmak için doğrudan dahil olduğu yerdir.
 
-Arama yoluyla sorununuz için bir yanıt bulamazsanız, [ \[Microsoft-\]\[\]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech)bilişsel konuşma etiketlerini kullanarak Stack Overflow için yeni bir soru gönderin.
+Arama yoluyla sorununuz için bir yanıt bulamazsanız, Microsoft-bilişsel [ \[ \] \[ konuşma \] ](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech)etiketlerini kullanarak Stack Overflow için yeni bir soru gönderin.
 
 > [!TIP]
 > Stack Overflow 'den aşağıdaki gönderiler, soruların nasıl ayarlanacağını ve kaynak kodu nasıl ekleneceğini gösteren ipuçları içerir. Bu yönergelerin ardından, topluluk üyelerinin sorunuzu hızla değerlendirmesi ve yanıtlaması ihtimalini artırmaya yardımcı olabilirsiniz:  

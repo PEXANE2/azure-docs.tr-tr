@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/03/2020
 ms.author: jeedes
 ms.openlocfilehash: 5344354c05547d6d2a5e2762c70a97cc4222c464
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88552365"
 ---
 # <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>Öğretici: Qlik Sense Enterprise 'ı Azure Active Directory tümleştirme
@@ -28,7 +28,7 @@ Bu öğreticide, Qlik Sense Enterprise 'ı Azure Active Directory (Azure AD) ile
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -63,7 +63,7 @@ Azure AD SSO 'yu Qlik Sense Enterprise ile yapılandırmak ve test etmek için a
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
     * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Qlik Sense ENTERPRISE SSO 'Yu yapılandırın](#configure-qlik-sense-enterprise-sso)** .
+1. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Qlik Sense ENTERPRISE SSO 'Yu yapılandırın](#configure-qlik-sense-enterprise-sso)** .
     * **[Qlik Sense kurumsal test kullanıcısı oluşturun](#create-qlik-sense-enterprise-test-user)** -kullanıcının Azure AD gösterimine bağlı olan Qlik Sense kuruluşunda Britta Simon 'ın bir karşılığı olacak şekilde.
 1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
@@ -73,7 +73,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. [Azure Portal](https://portal.azure.com/), **Qlik Sense kurumsal** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -93,9 +93,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     `https://<Fully Qualified Domain Name>:443{/virtualproxyprefix}/samlauthn/`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri, Bu öğreticinin ilerleyen kısımlarında açıklanan gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin veya bu değerleri almak için [Qlik Sense Kurumsal istemci destek ekibine](https://www.qlik.com/us/services/support) başvurun. URL 'Ler için varsayılan bağlantı noktası 443 ' dir ancak kuruluşunuzun ihtiyaç duyduğu şekilde özelleştirebilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri, Bu öğreticinin ilerleyen kısımlarında açıklanan gerçek Sign-On URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin veya bu değerleri almak için [Qlik Sense Kurumsal istemci destek ekibine](https://www.qlik.com/us/services/support) başvurun. URL 'Ler için varsayılan bağlantı noktası 443 ' dir ancak kuruluşunuzun ihtiyaç duyduğu şekilde özelleştirebilirsiniz.
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, gereksiniminize göre verilen seçeneklerden **Federasyon meta veri XML 'sini** bulun ve bilgisayarınıza kaydedin.
+1. **SAML Ile tekli Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, gereksiniminize göre verilen seçeneklerden **Federasyon meta veri XML 'sini** bulun ve bilgisayarınıza kaydedin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 

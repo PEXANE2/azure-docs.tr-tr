@@ -9,17 +9,17 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 87b8a112a319519dbde977ee30136a884137212d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77020004"
 ---
 # <a name="migrate-workload-vms-from-on-premises-vcenter-to-private-cloud-vcenter-environment"></a>Şirket içi vCenter 'dan özel bulut vCenter ortamına iş yükü VM 'lerini geçirme
 
 Şirket içi veri merkezindeki VM 'Leri CloudSimple özel buluta geçirmek için birkaç seçenek mevcuttur.  Özel bulut VMware vCenter 'a yerel erişim sağlar ve VMware tarafından desteklenen araçlar iş yükü geçişi için kullanılabilir. Bu makalede vCenter geçiş seçeneklerinden bazıları açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Şirket içi veri merkezinizden VM 'lerin ve verilerin geçirilmesi, veri merkezinizden özel bulut ortamınıza ağ bağlantısı gerektirir.  Ağ bağlantısı kurmak için aşağıdaki yöntemlerden birini kullanın:
 

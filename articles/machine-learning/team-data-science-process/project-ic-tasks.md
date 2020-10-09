@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d9942c31b63de77196b8b51b88376cb8ef74b990
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76721260"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Ekip veri bilimi Işleminde bireysel katkıda bulunan görevler
@@ -32,7 +32,7 @@ Aşağıdaki diyagramda, takım ortamlarını ayarlamak için projenin bireysel 
 > [!NOTE] 
 > Bu makalede, Microsoft 'ta TDSP 'nin nasıl uygulanacağı için bir TDSP ortamı ayarlamak üzere Azure Repos ve bir Veri Bilimi Sanal Makinesi (DSVM) kullanılmaktadır. Takımınız diğer kod barındırma veya geliştirme platformlarını kullanıyorsa, bireysel katkıda bulunan görevleri aynıdır, ancak bunları tamamlamaya yönelik yol farklı olabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide, aşağıdaki kaynakların ve izinlerin [Grup yöneticiniz](group-manager-tasks.md), [ekip lideri](team-lead-tasks.md)ve [Proje lideri](project-lead-tasks.md)tarafından ayarlandığı varsayılır:
 

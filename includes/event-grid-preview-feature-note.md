@@ -9,10 +9,10 @@ ms.date: 11/06/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: d32beb2d799a60cb9c5be061c39e4ec834da8dcf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "66814842"
 ---
 Bu özellik önizlemede. Bunu kullanmak için bir önizleme uzantısı veya modülü yüklemelisiniz.
@@ -23,13 +23,13 @@ Azure CLı için [Event Grid uzantıya](/cli/azure/azure-cli-extensions-list)iht
 
 [Cloudshell](/azure/cloud-shell/quickstart)içinde:
 
-* Uzantıyı daha önce yüklediyseniz, güncelleştirme`az extension update -n eventgrid`
-* Uzantıyı daha önce yüklemediyseniz, yükleme`az extension add -n eventgrid`
+* Uzantıyı daha önce yüklediyseniz, güncelleştirme `az extension update -n eventgrid`
+* Uzantıyı daha önce yüklemediyseniz, yükleme `az extension add -n eventgrid`
 
 Yerel yükleme için:
 
 1. [Azure CLI 'Yı yükler](/cli/azure/install-azure-cli). İle kontrol ederek en son sürüme sahip olduğunuzdan emin olun `az --version` .
-1. Uzantının önceki sürümlerini Kaldır`az extension remove -n eventgrid`
+1. Uzantının önceki sürümlerini Kaldır `az extension remove -n eventgrid`
 1. `eventgrid`Uzantıyı ile birlikte yükler`az extension add -n eventgrid`
 
 ### <a name="install-module-for-powershell"></a>PowerShell için modülü yükler
@@ -38,17 +38,17 @@ PowerShell için [Azurerd. EventGrid modülüne](https://www.powershellgallery.c
 
 [Cloudshell](/azure/cloud-shell/quickstart-powershell)içinde:
 
-* Modülü yükler`Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
+* Modülü yükler `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
 
 Yerel yükleme için:
 
 1. PowerShell konsolunu yönetici olarak aç
-1. Modülü yükler`Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
+1. Modülü yükler `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
 
 `-AllowPrerelease`Parametre kullanılamıyorsa, aşağıdaki adımları kullanın:
 
-1. `Install-Module PowerShellGet -Force` öğesini çalıştırın
-1. `Update-Module PowerShellGet` öğesini çalıştırın
+1. `Install-Module PowerShellGet -Force` komutunu çalıştırın
+1. `Update-Module PowerShellGet` komutunu çalıştırın
 1. PowerShell konsolunu kapatma
 1. PowerShell 'i yönetici olarak yeniden Başlat
-1. Modülü yükler`Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
+1. Modülü yükler `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`

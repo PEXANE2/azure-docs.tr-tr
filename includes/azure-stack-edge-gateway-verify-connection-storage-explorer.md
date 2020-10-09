@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/02/2019
 ms.author: alkohli
 ms.openlocfilehash: 3474a97f4b05fd1f944e18abebcef927232453e4
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89088176"
 ---
 Depolama Gezgini ilk kez kullanıyorsanız, aşağıdaki adımları gerçekleştirmeniz gerekir.
@@ -41,7 +41,7 @@ Depolama hesabına bağlanmak ve bağlantıyı doğrulamak için aşağıdaki ad
 
     ![Depolama Gezgini Yapılandır](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-4.png)    
 
-3. **Bağlantı Özeti** iletişim kutusunda, belirtilen bilgileri gözden geçirin. **Bağlan**’ı seçin.
+3. **Bağlantı Özeti** iletişim kutusunda, belirtilen bilgileri gözden geçirin. **Bağlan**'ı seçin.
 
     ![Depolama Gezgini Yapılandır](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-5.png)
 
@@ -76,7 +76,7 @@ Cihazdaki uç depolama hesabınıza veri yüklemek için aşağıdaki adımları
     ![Veri aktarımını doğrulama](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-4.png)
 
 
-5. **Bağlantı Özeti** iletişim kutusunda, belirtilen bilgileri gözden geçirin. **Bağlan**’ı seçin.
+5. **Bağlantı Özeti** iletişim kutusunda, belirtilen bilgileri gözden geçirin. **Bağlan**'ı seçin.
 
     ![Veri aktarımını doğrulama](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-6.png)
 
