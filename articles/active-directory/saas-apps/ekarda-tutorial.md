@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
 ms.openlocfilehash: cfd7a007c8f26a96d929026e231cb412cdc70279
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89440890"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ekarda"></a>Öğretici: ekarda ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -73,12 +73,12 @@ Azure AD SSO 'yu ekarda ile yapılandırmak ve test etmek için aşağıdaki ad�
 
 Azure AD SSO 'yu etkinleştirmek için Azure portal aşağıdaki adımları izleyin:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 1. **Ekarda** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırma** ayarlarını düzenlemek için kurşun kalem simgesini seçin.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırma** ayarlarını düzenlemek için kurşun kalem simgesini seçin.
 
-   ![Kurşun kalem simgesi vurgulanmış şekilde SAML ile çoklu oturum açmayı ayarlama ekran görüntüsü.](common/edit-urls.png)
+   ![Kurşun kalem simgesi vurgulanmış şekilde SAML sayfası ile tek Sign-On ayarlama ekran görüntüsü.](common/edit-urls.png)
 
 1. **Temel SAML yapılandırması** bölümünde, **hizmet sağlayıcısı meta verileri dosyası**' nı görürseniz, aşağıdaki adımları izleyin:
     1. **Meta veri dosyasını karşıya yükle**' yi seçin.
@@ -100,13 +100,13 @@ Azure AD SSO 'yu etkinleştirmek için Azure portal aşağıdaki adımları izle
     > [!NOTE]
     > Yukarıdaki iki adımda yer almayan değerler gerçek değildir. Bunları gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI değerleriyle güncelleştirin. Bu değerleri almak için [Ekarda istemci destek ekibine](mailto:contact@ekarda.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, bilgisayarınıza **sertifika (base64)** kaydetmek için **İndir** ' i seçin.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, bilgisayarınıza **sertifika (base64)** kaydetmek için **İndir** ' i seçin.
 
-    ![Bir SAML ile çoklu oturum açmayı ayarlama sayfasındaki SAML Imzalama sertifikası bölümünün ekran görüntüsü, indirme bağlantısı, Base64 sertifikası için vurgulanır.](common/certificatebase64.png)
+    ![Base64 sertifikası için karşıdan yükleme bağlantısı vurgulanmış şekilde SAML ile tek Sign-On ayarlama sayfasının SAML Imzalama sertifikası bölümünün ekran görüntüsü.](common/certificatebase64.png)
 
 1. **Ekarda ayarla** bölümünde, gereksinimlerinize göre uygun URL 'leri kopyalayın.
 
-    ![SAML ile çoklu oturum açmayı ayarla sayfasındaki URL kopyalama bağlantıları vurgulanmış şekilde, SAML ile çoklu oturum açmayı ayarlama ekarda 'ın ekran görüntüsü.](common/copy-configuration-urls.png)
+    ![SAML ile tek Sign-On ayarla sayfasındaki URL kopyalama bağlantıları vurgulanmış şekilde, set up ekarda bölümünün ekran görüntüsü.](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 

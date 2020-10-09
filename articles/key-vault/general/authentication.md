@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault kimlik doğrulaması
+title: Azure Key Vault'ta kimliği doğrulama
 description: Azure Key Vault için kimlik doğrulaması yapmayı öğrenin
 author: ShaneBala-keyvault
 ms.author: sudbalas
@@ -8,13 +8,13 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.openlocfilehash: d247e657e93afd0c43ecee1154c542398304d8dd
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89481384"
 ---
-# <a name="authenticate-to-azure-key-vault"></a>Azure Key Vault kimlik doğrulaması
+# <a name="authenticate-to-azure-key-vault"></a>Azure Key Vault'ta kimliği doğrulama
 
 Azure Key Vault, gizli dizileri depolamanıza ve bunların dağıtımını, uygulamalarda kimlik bilgilerinin depolanması gereksinimini ortadan kaldıran merkezi bir güvenli bulut deposunda depolamanızı sağlar. Uygulamalar, bu gizli dizileri erişmek için çalışma zamanında yalnızca Key Vault kimlik doğrulaması gerektirir.
 
@@ -48,7 +48,7 @@ Key Vault iki ayrı yetkilendirme düzeyiyle kullanılabilir:
 
     Erişim ilkeleri atamak için aşağıdaki makalelere bakın:
 
-    - [Azure portal](assign-access-policy-portal.md)
+    - [Azure portalındaki](assign-access-policy-portal.md)
     - [Azure CLI](assign-access-policy-cli.md)
     - [Azure PowerShell](assign-access-policy-portal.md)
 
@@ -56,13 +56,13 @@ Key Vault iki ayrı yetkilendirme düzeyiyle kullanılabilir:
  
     Rolleri atamak ve yönetmek için aşağıdaki makalelere bakın:
 
-    - [Azure portal](/azure/role-based-access-control/role-assignments-portal)
+    - [Azure portalındaki](/azure/role-based-access-control/role-assignments-portal)
     - [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
     - [Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 
     Key Vault Şu anda, Key Vault kaynaklarında yönetim işlemlerine izin veren [katkıda](/azure/role-based-access-control/built-in-roles#key-vault-contributor) bulunan rolünü desteklemektedir. Diğer birçok rol Şu anda önizlemededir. Ayrıca, [Azure özel rolleri](/azure/role-based-access-control/custom-roles)' nde açıklandığı gibi özel roller de oluşturabilirsiniz.
 
-    Roller hakkında genel bilgi için bkz. [Azure rol tabanlı Access Control (RBAC) nedir?](/azure/role-based-access-control/overview).
+    Roller hakkında genel bilgi için bkz. [Azure Role-Based Access Control (RBAC) nedir?](/azure/role-based-access-control/overview).
 
 
 > [!IMPORTANT]
@@ -115,7 +115,7 @@ Aşağıdaki tablo, söz konusu dilin Azure SDK kitaplıklarını kullanarak uyg
 | [Java](/azure/key-vault/secrets/quick-create-java) | -- | -- |
 | [JavaScript](/azure/key-vault/secrets/quick-create-node) | -- | -- | 
 | | | |
-| [Azure portal](/azure/key-vault/secrets/quick-create-portal) | [Azure portal](/azure/key-vault/keys/quick-create-portal) | [Azure portal](/azure/key-vault/certificates/quick-create-portal) |
+| [Azure portalındaki](/azure/key-vault/secrets/quick-create-portal) | [Azure portalındaki](/azure/key-vault/keys/quick-create-portal) | [Azure portalındaki](/azure/key-vault/certificates/quick-create-portal) |
 | [Azure CLI](/azure/key-vault/secrets/quick-create-cli) | [Azure CLI](/azure/key-vault/keys/quick-create-cli) | [Azure CLI](/azure/key-vault/certificates/quick-create-cli) |
 | [Azure PowerShell](/azure/key-vault/secrets/quick-create-powershell) | [Azure PowerShell](/azure/key-vault/keys/quick-create-powershell) | [Azure PowerShell](/azure/key-vault/certificates/quick-create-powershell) |
 | [ARM şablonu](/azure/key-vault/secrets/quick-create-net) | -- | -- |
@@ -125,4 +125,4 @@ Aşağıdaki tablo, söz konusu dilin Azure SDK kitaplıklarını kullanarak uyg
 - [Key Vault erişim ilkesi sorunlarını giderme](troubleshooting-access-issues.md)
 - [Key Vault REST API hata kodları](rest-error-codes.md)
 - [Geliştirici Kılavuzu Key Vault](developers-guide.md)
-- [Azure rol tabanlı Access Control (RBAC) nedir?](/azure/role-based-access-control/overview)
+- [Azure Role-Based Access Control (RBAC) nedir?](/azure/role-based-access-control/overview)

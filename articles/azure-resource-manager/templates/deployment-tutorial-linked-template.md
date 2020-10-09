@@ -6,17 +6,17 @@ ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
 ms.openlocfilehash: a90bb90c90206ffe00f8b4f2d035c0ea844b5c47
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91611682"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>Öğretici: bağlı bir şablon dağıtma
 
 [Önceki öğreticilerde](./deployment-tutorial-local-template.md), yerel bilgisayarınızda depolanan bir şablonu dağıtmayı öğrendiniz. Karmaşık çözümleri dağıtmak için bir şablonu birçok şablona bölebilir ve bu şablonları bir ana şablon aracılığıyla dağıtabilirsiniz. Bu öğreticide, bağlantılı bir şablona başvuruyu içeren bir ana şablon dağıtmayı öğreneceksiniz. Ana şablon dağıtıldığında, bağlantılı şablonun dağıtımını tetikler. Ayrıca, bağlı şablonu SAS belirtecini kullanarak depolamayı ve güvenliğini nasıl sağlayacağınızı öğreneceksiniz. Yaklaşık **12 dakika** sürer.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Önceki öğreticiyi tamamlamanızı öneririz, ancak bu gerekli değildir.
 

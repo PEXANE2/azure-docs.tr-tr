@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: rambala
 ms.openlocfilehash: e0e5806ec59cd2d75111db213d8511488d043eec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80982863"
 ---
 # <a name="working-remotely-using-azure-networking-services"></a>Azure ağ hizmetleri 'ni kullanarak uzaktan çalışma
@@ -80,7 +80,7 @@ Diğer genel bulutlardaki dağıtımlarınız için, Microsoft genel bağlantı 
 
 Aşağıdaki makalelerde, farklı Azure ağ özelliklerinin, kullanıcıları uzaktan çalışacak şekilde ölçeklendirmek için nasıl kullanılabileceği açıklanmaktadır:
 
-| **Makalenin** | **Açıklama** |
+| **Makale** | **Açıklama** |
 | --- | --- |
 | [Kullanıcıların uzaktan çalışmasını sağlama](../vpn-gateway/work-remotely-support.md) | Kullanıcılara uzaktan erişim ayarlamak veya mevcut çözümlerini kuruluşunuz için ek kapasiteye göre tamamlamak için kullanılabilir seçenekleri gözden geçirin.|
 | [Ev gereksinimlerden işe yaramaz mi? Burada Azure sanal WAN ' ın yardım edebilir](../virtual-wan/work-remotely-support.md) | Kuruluşunuzun uzak bağlantı ihtiyaçlarını karşılamak için Azure sanal WAN 'ı kullanın.|

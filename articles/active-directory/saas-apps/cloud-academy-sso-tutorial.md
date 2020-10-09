@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: jeedes
 ms.openlocfilehash: 37ed9bb09b6b15af0c32f489cbc3c02ec27c2827
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89461982"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-cloud-academy---sso"></a>Öğretici: bulut akademik My-SSO ile çoklu oturum açma tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide Cloud akademik My-SSO 'yu Azure Active Directory (Azure AD) ile 
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -74,13 +74,13 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com/), **Cloud AKADEMIK My-SSO** uygulama tümleştirmesi sayfasında, **Yönet** bölümünde **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem düğmesini seçin:
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem düğmesini seçin:
 
    ![Temel SAML yapılandırmasını düzenlemenin kalem düğmesini gösteren ekran görüntüsü.](common/edit-urls.png)
 
 1. **Temel SAML yapılandırması** bölümünde, **oturum açma URL 'si** kutusuna girin `https://cloudacademy.com/login/enterprise/` .
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini**kopyalamak için Kopyala düğmesini seçin. URL 'YI kaydedin.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini**kopyalamak için Kopyala düğmesini seçin. URL 'YI kaydedin.
 
     ![Uygulama Federasyon meta veri URL 'SI için Kopyala düğmesini gösteren ekran görüntüsü.](common/copy-metadataurl.png)
 

@@ -9,10 +9,10 @@ ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
 ms.openlocfilehash: 01501b99d5d7c42af98d0397cf6ff8cbca14b07b
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89485813"
 ---
 # <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Öğretici: Azure 'da RHEL sanal makinelerinde SQL Server için bir kullanılabilirlik grubu dinleyicisi yapılandırma
@@ -104,7 +104,7 @@ Araştırma, Azure 'un şu anda kullanılabilirlik grubu dinleyicisine sahip SQL
    | **Aralık** |*5* |
    | **İyi durumda olmayan durum eşiği** |*2* |
 
-4.  **Tamam**’a tıklayın. 
+4.  **Tamam**'a tıklayın. 
 
 5. Tüm sanal makinelerinizde oturum açın ve aşağıdaki komutları kullanarak araştırma bağlantı noktasını açın:
 
@@ -136,9 +136,9 @@ Yük Dengeleme kuralları, yük dengeleyicinin trafiği SQL Server örneklerine 
    | **Boşta kalma zaman aşımı (dakika)** |*4* |
    | **Kayan IP (doğrudan sunucu dönüşü)** |**Etkin** |
 
-   :::image type="content" source="media/rhel-high-availability-listener-tutorial/add-load-balancing-rule.png" alt-text="Yük Dengeleme kuralı ekle":::
+   :::image type="content" source="media/rhel-high-availability-listener-tutorial/add-load-balancing-rule.png" alt-text="Arka uç Havuzu Ekle":::
 
-4. **Tamam**’a tıklayın. 
+4. **Tamam**'a tıklayın. 
 5. Azure, Yük Dengeleme kuralını yapılandırır. Artık yük dengeleyici, trafiği kullanılabilirlik grubu için dinleyiciyi barındıran SQL Server örneğine yönlendirmek üzere yapılandırılmıştır. 
 
 Bu noktada, kaynak grubunun tüm SQL Server makinelere bağlanan bir yük dengeleyici vardır. Yük dengeleyici Ayrıca, her makinenin kullanılabilirlik grupları için isteklere yanıt verebilmeleri için SQL Server Always on kullanılabilirlik grubu dinleyicisi için bir IP adresi de içerir.
@@ -176,7 +176,7 @@ Bu noktada, kaynak grubunun tüm SQL Server makinelere bağlanan bir yük dengel
     sudo pcs constraint list --full
     ```
 
-    Aşağıdaki çıktıyı görmeniz gerekir:
+    Aşağıdaki çıkışı görmeniz gerekir:
 
     ```output
     Location Constraints:

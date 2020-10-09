@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
 ms.openlocfilehash: 5e0dcd478c6eb6696a0e07d35d4dccddac68ac1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80656228"
 ---
 # <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>Azure Logic Apps 'ten özel API çağrıları için güvenliği artırma
@@ -142,7 +142,7 @@ Web uygulamanız veya API uygulamanız zaten dağıtılmışsa, kimlik doğrulam
 
 4. **Veren URL 'si**altında yalnızca 3. kısım için GUID 'yi kopyalayın ve kaydedin. Ayrıca, bu GUID 'yi Web uygulamanızda veya API uygulamanızın dağıtım şablonunda da kullanabilirsiniz.
 
-   Bu GUID, özel kiracınızın GUID 'sidir ("Kiracı KIMLIĞI") ve bu URL 'de görünmelidir:`https://sts.windows.net/{GUID}`
+   Bu GUID, özel kiracınızın GUID 'sidir ("Kiracı KIMLIĞI") ve bu URL 'de görünmelidir: `https://sts.windows.net/{GUID}`
 
 5. Değişikliklerinizi kaydetmeden **Azure Active Directory ayarları** sayfasını kapatın.
 
@@ -179,7 +179,7 @@ Ayrıca Bölüm 1 ' deki adımları da izleyebilirsiniz, ancak `https://{URL}` *
 
 Boş bir Web uygulamasını ve bir mantıksal uygulamayı Azure Active Directory kimlik doğrulamasıyla birlikte otomatik olarak dağıtmak için, [burada tüm şablonu görüntüleyin](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-custom-api/azuredeploy.json)veya buradan **Azure 'a dağıt** ' a tıklayın:
 
-[![Azure’a dağıtma](media/logic-apps-custom-api-authentication/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-custom-api%2Fazuredeploy.json)
+[![Azure’a dağıtın](media/logic-apps-custom-api-authentication/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-custom-api%2Fazuredeploy.json)
 
 #### <a name="part-3-populate-the-authorization-section-in-your-logic-app"></a>3. kısım: mantıksal uygulamanızdaki yetkilendirme bölümünü doldurma
 
@@ -274,7 +274,7 @@ Mantıksal uygulamanızdan Web uygulamanıza veya API uygulamanıza gelen istekl
 | Özellik | Gerekli | Açıklama | 
 | -------- | -------- | ----------- | 
 | tür | Evet | Kullanmak istediğiniz kimlik doğrulama türü. Temel kimlik doğrulaması için değer olmalıdır `Basic` . | 
-| kullanıcı adı | Evet | Kimlik doğrulaması için kullanmak istediğiniz Kullanıcı adı | 
+| username | Evet | Kimlik doğrulaması için kullanmak istediğiniz Kullanıcı adı | 
 | password | Evet | Kimlik doğrulaması için kullanmak istediğiniz parola | 
 |||| 
 

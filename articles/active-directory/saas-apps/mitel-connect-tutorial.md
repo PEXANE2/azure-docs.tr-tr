@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/31/2020
 ms.author: jeedes
 ms.openlocfilehash: 63f1d1d40d8aff21641f3fa4ee10a289de40800d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88552620"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>Öğretici: Mitel Micyüksek Connect veya CloudLink platformuyla Azure Active Directory tümleştirme
@@ -29,7 +29,7 @@ Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi için b
 
 Azure aboneliğiniz yoksa, Mitel Micyüksek Connect veya CloudLink platformuyla Azure AD tümleştirmesi başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini, Micyüksek Connect ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -104,11 +104,11 @@ Azure AD için aynı SSO ile Micyüksek Connect 'i yapılandırmak için Azure p
 
     1. **Çoklu oturum açma**'Nın sağında **Etkinleştir** veya **Ayarlar**' ı seçin.
     
-    Çoklu oturum açma ayarlarını bağla iletişim kutusu görüntülenir.
+    Tek bir Sign-On ayarları Bağlan iletişim kutusu görüntülenir.
     
 3. **Çoklu oturum açmayı etkinleştir** onay kutusunu seçin.
     
-    ![Mitel Connect çoklu oturum açma ayarları sayfasını gösteren ve çoklu oturum açmayı etkinleştir onay kutusunun seçili olduğu ekran görüntüsü.](./media/mitel-connect-tutorial/mitel-connect-enable.png)
+    ![Tek Sign-On etkinleştir onay kutusu seçili olan Mitel Connect Single Sign-On ayarları sayfasını gösteren ekran görüntüsü.](./media/mitel-connect-tutorial/mitel-connect-enable.png)
 
 4. Azure portal, **temel SAML yapılandırması** bölümünde **Düzenle** simgesini seçin.
    
@@ -148,7 +148,7 @@ Azure AD için aynı SSO ile Micyüksek Connect 'i yapılandırmak için Azure p
          
          ![image](./media/mitel-connect-tutorial/mitel-azure-set-up-connect.png)
 
-12. Mitel hesap portalındaki **tek oturum açma ayarlarını bağla** Iletişim kutusunda **Kaydet** ' i seçin.
+12. Mitel hesap portalındaki **tek Sign-On ayarları Bağlan** Iletişim kutusunda **Kaydet** ' i seçin.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 

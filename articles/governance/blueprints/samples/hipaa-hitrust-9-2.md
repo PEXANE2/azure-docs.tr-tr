@@ -4,10 +4,10 @@ description: HIPAA HiTRUST 9,2 şema örneğine genel bakış. Bu şema örneği
 ms.date: 09/04/2020
 ms.topic: sample
 ms.openlocfilehash: 4df6f05019976b3de1172cc5127c27ac00fe3c44
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89493706"
 ---
 # <a name="hipaa-hitrust-92-blueprint-sample"></a>HIPAA HiTRUST 9,2 şema örneği
@@ -23,56 +23,56 @@ HIPAA HiTRUST 9,2 şema örneği, belirli HIPAA HiTRUST 9,2 denetimlerini değer
 Azure planları HIPAA HiTRUST 9,2 şema örneğini dağıtmak için aşağıdaki adımlar gerçekleştirilmelidir:
 
 > [!div class="checklist"]
-> - Örnekten yeni bir şema oluştur
-> - Örnek kopyanızı **yayımlandı** olarak işaretleyin
-> - Şema kopyanızı mevcut bir aboneliğe atama
+> - Örnekten yeni bir şema oluşturma
+> - Örneğinizin kopyasını **Yayımlandı** olarak işaretleyin
+> - Şemanızın kopyasını mevcut bir aboneliğe atayın
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
 
 ### <a name="create-blueprint-from-sample"></a>Örnekten şema oluştur
 
-İlk olarak, bir başlangıç olarak örneği kullanarak ortamınızda yeni bir şema oluşturarak şema örneğini uygulayın.
+İlk olarak, başlangıç noktası olarak örneği kullanarak ortamınızda yeni bir şema oluşturup şema örneğini uygulayın.
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
-1. Soldaki **Başlarken** sayfasında, şema _Oluştur_altında **Oluştur** düğmesini seçin.
+1. Soldaki **Başlangıç** sayfasında, _Şema oluştur_ bölümündeki **Oluştur** düğmesini seçin.
 
 1. _Diğer örnekler_ altında **HIPAA HiTRUST** şema örneğini bulun ve **Bu örneği kullan**' ı seçin.
 
-1. Şema örneği _hakkında temel bilgileri_ girin:
+1. Şema örneğinin _Temel bilgiler_ bölümüne girin:
 
    - **Şema adı**: HIPAA zrust 9,2 şema Sample kopyasına bir ad verin.
    - **Tanım konumu**: üç noktayı kullanın ve örneğin kopyasını kaydetmek için yönetim grubunu seçin.
 
-1. Sayfanın üst kısmındaki _yapıtlar_ sekmesini veya sonraki: sayfanın en altındaki **yapıtları** seçin.
+1. Sayfanın üst kısmındaki _Yapıtlar_ sekmesini seçin veya sayfanın en altındaki **Sonraki: Yapıtlar** seçeneğini belirleyin.
 
-1. Şema örneğini oluşturan yapıtların listesini gözden geçirin. Yapıtların çoğunda, daha sonra tanımlayacağımız parametreler vardır. Şema örneğini gözden geçirmeyi bitirdiğinizde **Taslağı kaydet** ' i seçin.
+1. Şema örneğini oluşturan yapıtların listesini gözden geçirin. Yapıtların çoğu parametreler içerir; bu parametreleri daha sonra tanımlayacağız. Şema örneğini gözden geçirmeyi tamamladığınızda **Taslağı Kaydet**’i seçin.
 
-### <a name="publish-the-sample-copy"></a>Örnek kopyayı Yayımla
+### <a name="publish-the-sample-copy"></a>Örnek kopyayı yayımlama
 
-Şema örneğinin kopyası artık ortamınızda oluşturulmuştur. **Taslak** modunda oluşturulur ve atanmadan ve dağıtılmadan önce **yayımlanmaları** gerekir. Şema örneğinin kopyası ortamınıza ve gereksinimlerinize göre özelleştirilebilir, ancak bu değişiklik, HIPAA 'nın HIPAA 'dan uzaklaşmaya 9,2 denetimleriyle hizalı olarak taşınmasını sağlayabilir.
+Şimdi şema örneği kopyanız, ortamınızda oluşturulmuştur. Bu, **Taslak** modunda oluşturulur ve atanabilmesi ve dağıtılabilmesi için önce **Yayımlandı** durumunda olmalıdır. Şema örneğinin kopyası ortamınıza ve gereksinimlerinize göre özelleştirilebilir, ancak bu değişiklik, HIPAA 'nın HIPAA 'dan uzaklaşmaya 9,2 denetimleriyle hizalı olarak taşınmasını sağlayabilir.
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
-1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Şemayı kullanarak şema örneğinin kopyasını bulun ve ardından seçin.
+1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Filtreleri kullanarak şema örneği kopyanızı bulup seçin.
 
-1. Sayfanın üst kısmındaki şemayı **Yayımla** ' yı seçin. Sağ taraftaki yeni sayfada, şema örneğinin kopyası için bir **Sürüm** belirtin. Daha sonra bir değişiklik yaparsanız, bu özellik için faydalıdır. "HIPAA HiTRUST 9,2 şema örneğinden yayınlanan ilk sürüm" gibi **değişiklik notları** sağlayın. Ardından sayfanın alt kısmında **Yayımla** ' yı seçin.
+1. Sayfanın üst kısmında **Şemayı yayımla**’yı seçin. Sağdaki yeni sayfada, şema örneği kopyanız için bir **Sürüm** sağlayın. Bu özellik daha sonra bir değişiklik yaptığınızda faydalı olacaktır. "HIPAA HiTRUST 9,2 şema örneğinden yayınlanan ilk sürüm" gibi **değişiklik notları** sağlayın. Sayfanın alt kısmında **Yayımla** düğmesini seçin.
 
 ### <a name="assign-the-sample-copy"></a>Örnek kopyayı atama
 
-Şema örneğinin kopyası başarıyla **yayımlandıktan**sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adım, her bir şema örneğinin kopyasının her dağıtımını yapmak için parametrelerin sağlandığı yerdir.
+Şema örneğinin kopyası başarıyla **yayımlandıktan**sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adımda, şema örneği kopyasının her bir dağıtımını benzersiz hale getirmek için parametreler sağlanır.
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
-1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Şemayı kullanarak şema örneğinin kopyasını bulun ve ardından seçin.
+1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Filtreleri kullanarak şema örneği kopyanızı bulup seçin.
 
-1. Şema tanım sayfasının en üstünde şema **ata** ' yı seçin.
+1. Şema tanımı sayfasının en üstünde **Şema ata**’yı seçin.
 
-1. Şema atamasının parametre değerlerini sağlayın:
+1. Şema ataması için parametre değerlerini sağlayın:
 
    - Temel Bilgiler
 
-     - **Abonelikler**: şema örneğinin kopyasını kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreleri kullanarak her biri için bir atama oluşturulur.
+     - **Abonelikler**: şema örneğinin kopyasını kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreler kullanılarak her biri için bir atama oluşturulur.
      - **Atama adı**: ad, BLUEPRINT adına göre önceden doldurulur.
        Gerektiğinde değiştirin veya olduğu gibi bırakın.
      - **Konum**: yönetilen kimliğin oluşturulacağı bölgeyi seçin. Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../../active-directory/managed-identities-azure-resources/overview.md).
@@ -80,7 +80,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
    - Kilit ataması
 
-     Ortamınız için BLUEPRINT Lock ayarını seçin. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../concepts/resource-locking.md).
+     Ortamınız için şema kilitleme ayarını seçin. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../concepts/resource-locking.md).
 
    - Yönetilen Kimlik
 
@@ -88,16 +88,16 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
    - Yapıt parametreleri
 
-     Bu bölümde tanımlanan parametreler, tanımlanan yapıt için geçerlidir. Bu parametreler, Blueprint atama sırasında tanımlandıklarından [dinamik parametrelerdir](../concepts/parameters.md#dynamic-parameters) . Tam liste veya yapıt parametreleri ve açıklamaları için bkz. [yapıt parametreleri tablosu](#artifact-parameters-table).
+     Bu bölümde tanımlanan parametreler, tanımlandığı yapıt için geçerlidir. Bu parametreler, Blueprint atama sırasında tanımlandıklarından [dinamik parametrelerdir](../concepts/parameters.md#dynamic-parameters) . Tam liste veya yapıt parametreleri ve açıklamaları için bkz. [yapıt parametreleri tablosu](#artifact-parameters-table).
 
-1. Tüm parametreler girildikten sonra sayfanın alt kısmındaki **ata** ' yı seçin. Şema ataması oluşturulur ve yapıt dağıtımı başlar. Dağıtım kabaca bir saat sürer. Dağıtımın durumunu denetlemek için, BLUEPRINT atamasını açın.
+1. Tüm parametreler girildikten sonra, sayfanın alt kısmında **Ata** seçeneğini belirleyin. Şema ataması oluşturulur ve yapıt dağıtımı başlar. Dağıtım kabaca bir saat sürer. Dağıtımın durumunu denetlemek için şema atamasını açın.
 
 > [!WARNING]
-> Azure şemaları hizmeti ve yerleşik şema örnekleri **ücretsiz olarak ücretsizdir**. Azure kaynakları [ürüne göre fiyatlandırılır](https://azure.microsoft.com/pricing/). Bu şema örneği tarafından dağıtılan çalışan kaynakların maliyetini tahmin etmek için [fiyatlandırma hesaplayıcısını](https://azure.microsoft.com/pricing/calculator/) kullanın.
+> Azure Blueprints hizmeti ve yerleşik şema örnekleri **ücretsizdir**. Azure kaynakları, [ürüne göre fiyatlandırılır](https://azure.microsoft.com/pricing/). Bu şema örneği tarafından dağıtılan kaynakları çalıştırma maliyetini tahmin etmek için [fiyatlandırma hesaplayıcısını](https://azure.microsoft.com/pricing/calculator/) kullanın.
 
 ### <a name="artifact-parameters-table"></a>Yapıt parametreleri tablosu
 
-Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
+Aşağıdaki tabloda, şema yapıtı parametrelerinin bir listesi verilmiştir:
 
 |Yapıt adı |Parametre adı |Açıklama |
 |---|---|---|
@@ -119,7 +119,7 @@ Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 |Denetim gereksinimlerini desteklemek için, HITRUST/HIPAA denetimlerini denetleme ve belirli VM uzantılarını dağıtma |Güvenli olmayan konuk oturum açmaları etkinleştir |SMB istemcisinin bir SMB sunucusuna güvenli olmayan konuk oturumlarına izin verip vermeyeceğini belirtir. |
 |Denetim gereksinimlerini desteklemek için, HITRUST/HIPAA denetimlerini denetleme ve belirli VM uzantılarını dağıtma |Sanal makinelere anlık ağ erişim denetimi uygulanmalıdır |Ağın anında erişiminin izlenmesini etkinleştirme veya devre dışı bırakma |
 |Denetim gereksinimlerini desteklemek için, HITRUST/HIPAA denetimlerini denetleme ve belirli VM uzantılarını dağıtma |Yönetim bağlantı noktaları sanal makinelerinizde kapatılmalıdır |Sanal makinelerde açık yönetim bağlantı noktalarının izlenmesini etkinleştirme veya devre dışı bırakma |
-|Denetim gereksinimlerini desteklemek için, HITRUST/HIPAA denetimlerini denetleme ve belirli VM uzantılarını dağıtma |MFA, aboneliğinizde yazma izinleri olan hesaplar etkinleştirilmelidir |Abonelikte yazma izinleri olan hesaplar için MFA izlemesini etkinleştirin veya devre dışı bırakın |
+|Denetim gereksinimlerini desteklemek için, HITRUST/HIPAA denetimlerini denetleme ve belirli VM uzantılarını dağıtma |Aboneliğinizde yazma izinleri olan hesaplarda MFA etkinleştirilmelidir |Abonelikte yazma izinleri olan hesaplar için MFA izlemesini etkinleştirin veya devre dışı bırakın |
 |Denetim gereksinimlerini desteklemek için, HITRUST/HIPAA denetimlerini denetleme ve belirli VM uzantılarını dağıtma |MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir |Abonelikte sahip izinleri olan hesaplar için MFA izlemesini etkinleştirin veya devre dışı bırakın |
 |Denetim gereksinimlerini desteklemek için, HITRUST/HIPAA denetimlerini denetleme ve belirli VM uzantılarını dağıtma |Ağ erişimi: Uzaktan erişilebilir kayıt defteri yolları |Kayıt defteri anahtarının erişim denetim listesinde (ACL) listelenen kullanıcı veya gruplardan bağımsız olarak, ağ üzerinden hangi kayıt defteri yollarına erişilebileceğini belirtir `winreg` . |
 |Denetim gereksinimlerini desteklemek için, HITRUST/HIPAA denetimlerini denetleme ve belirli VM uzantılarını dağıtma |Ağ erişimi: Uzaktan erişilebilir kayıt defteri yolları ve alt yollar |Kayıt defteri anahtarının erişim denetim listesinde (ACL) listelenen kullanıcı veya gruplardan bağımsız olarak, ağ üzerinden hangi kayıt defteri yollarına ve alt yollara erişilebileceğini belirtir `winreg` . |
@@ -131,7 +131,7 @@ Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 |Denetim gereksinimlerini desteklemek için, HITRUST/HIPAA denetimlerini denetleme ve belirli VM uzantılarını dağıtma |Azure Search hizmetindeki günlüklerin gerekli saklama (gün cinsinden) |Gerekli tanılama günlükleri bekletme süresi (gün) |
 |Denetim gereksinimlerini desteklemek için, HITRUST/HIPAA denetimlerini denetleme ve belirli VM uzantılarını dağıtma |Olay Hub 'ı hesaplarında gereken bekletme (gün cinsinden) |Gerekli tanılama günlükleri bekletme süresi (gün) |
 |Denetim gereksinimlerini desteklemek için, HITRUST/HIPAA denetimlerini denetleme ve belirli VM uzantılarını dağıtma |Ağ güvenlik grupları için tanılama ayarlarını dağıtmak üzere depolama hesabının kaynak grubu adı (var olmalıdır) |Depolama hesabının oluşturulacağı kaynak grubu. Bu kaynak grubu zaten var olmalıdır. |
-|Denetim gereksinimlerini desteklemek için, HITRUST/HIPAA denetimlerini denetleme ve belirli VM uzantılarını dağıtma |Rol tabanlı Access Control (RBAC), Kubernetes hizmetlerinde kullanılmalıdır |RBAC etkin olmadan Kubernetes hizmetlerinin izlenmesini etkinleştirme veya devre dışı bırakma |
+|Denetim gereksinimlerini desteklemek için, HITRUST/HIPAA denetimlerini denetleme ve belirli VM uzantılarını dağıtma |Kubernetes hizmetlerinde Role-Based Access Control (RBAC) kullanılmalıdır |RBAC etkin olmadan Kubernetes hizmetlerinin izlenmesini etkinleştirme veya devre dışı bırakma |
 |Denetim gereksinimlerini desteklemek için, HITRUST/HIPAA denetimlerini denetleme ve belirli VM uzantılarını dağıtma |SQL yönetilen örnek TDE koruyucusu kendi anahtarınızla şifrelenmelidir |Saydam Veri Şifrelemesi (TDE), kendi anahtar desteklerinizi kullanarak izlemeyi etkinleştirin veya devre dışı bırakın. Kendi anahtar desteğiniz ile TDE, TDE koruyucu üzerinde daha fazla saydamlık ve denetim, HSM destekli bir dış hizmetle artırılmış güvenlik ve görev ayrımı ile ilgili yükseltme sağlar. |
 |Denetim gereksinimlerini desteklemek için, HITRUST/HIPAA denetimlerini denetleme ve belirli VM uzantılarını dağıtma |SQL Server TDE koruyucusu kendi anahtarınızla şifrelenmelidir |Saydam Veri Şifrelemesi (TDE), kendi anahtar desteklerinizi kullanarak izlemeyi etkinleştirin veya devre dışı bırakın. Kendi anahtar desteğiniz ile TDE, TDE koruyucu üzerinde daha fazla saydamlık ve denetim, HSM destekli bir dış hizmetle artırılmış güvenlik ve görev ayrımı ile ilgili yükseltme sağlar. |
 |Denetim gereksinimlerini desteklemek için, HITRUST/HIPAA denetimlerini denetleme ve belirli VM uzantılarını dağıtma |Ağ güvenlik grupları için tanılama ayarlarını dağıtmak üzere bölgesel depolama hesabı için depolama hesabı ön eki |Bu ön ek, oluşturulan depolama hesabı adını biçimlendirmek için ağ güvenlik grubu konumuyla birleştirilir. |

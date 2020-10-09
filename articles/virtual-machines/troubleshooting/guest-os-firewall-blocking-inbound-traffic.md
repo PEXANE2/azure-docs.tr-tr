@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: 1b80fc997a4b3d2b472717b1ec2f379a4e958d8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80422549"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Azure VM Konuk işletim sistemi güvenlik duvarı gelen trafiği engelliyor
@@ -142,7 +142,7 @@ Sorunu gidermek için, [Uzak araçları kullanarak](remote-tools-troubleshoot-az
 
 #### <a name="mitigation-1"></a>Risk azaltma 1
 
-Bkz. [Enable-bir güvenlik duvarı kuralını Konuk işletim sisteminde devre dışı bırakma](enable-disable-firewall-rule-guest-os.md).
+Bkz. bir [Konuk işletim sisteminde güvenlik duvarı kuralı Enable-Disable](enable-disable-firewall-rule-guest-os.md).
 
 #### <a name="mitigation-2"></a>Risk azaltma 2
 

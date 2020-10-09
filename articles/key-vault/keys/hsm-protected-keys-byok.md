@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
 ms.openlocfilehash: 1869ec9b617a7451ec42fa9d092ea3bb5834f9e8
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88585483"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>HSM korumalı anahtarları Key Vault içeri aktar (BYOK)
@@ -43,7 +43,7 @@ Daha fazla bilgi ve Key Vault kullanmaya başlama öğreticisi için (HSM koruma
 * KEK, hedef anahtarın içeri aktarılacağı aynı anahtar kasasında olmalıdır.
 * BYOK dosyası Key Vault karşıya yüklendiğinde, Key Vault HSM, hedef anahtar malzemelerinin şifresini çözmek ve bir HSM anahtarı olarak içeri aktarmak için KEK özel anahtarını kullanır. Bu işlem tamamen bir Key Vault HSM içinde gerçekleşir. Hedef anahtar her zaman HSM koruma sınırında kalır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki tabloda Azure Key Vault BYOK kullanımına yönelik önkoşullar listelenmektedir:
 
@@ -60,7 +60,7 @@ Aşağıdaki tabloda Azure Key Vault BYOK kullanımına yönelik önkoşullar li
 |---|---|---|---|
 |nCipher|Üreticisini<br/>Hizmet olarak HSM|<ul><li>HSM 'lerin nShield ailesi</li><li>hizmet olarak nShield</ul>|[nCipher yeni BYOK aracı ve belgeleri](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|
 |Thales|Üretici|<ul><li>Bellenim sürüm 7,3 veya daha yeni bir sürümü içeren Luna HSM 7 ailesi</li></ul>| [Luna BYOK aracı ve belgeleri](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
-|Fortanx|Üreticisini<br/>Hizmet olarak HSM|<ul><li>Kendi kendine savunma anahtar yönetimi hizmeti (SDKMS)</li><li>Equinix SmartKey</li></ul>|[SDKMS anahtarlarını BYOK için bulut sağlayıcılarına dışarı aktarma-Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
+|Fortanx|Üreticisini<br/>Hizmet olarak HSM|<ul><li>Self-Defending anahtar yönetim hizmeti (SDKMS)</li><li>Equinix SmartKey</li></ul>|[SDKMS anahtarlarını BYOK için bulut sağlayıcılarına dışarı aktarma-Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
 |Marvell|Üretici|Tüm LiquidSecurity HSM 'leri<ul><li>Bellenim sürümü 2.0.4 veya üzeri</li><li>Bellenim sürüm 3,2 veya daha yenisi</li></ul>|[Marvell BYOK aracı ve belgeleri](https://www.marvell.com/products/security-solutions/nitrox-hs-adapters/exporting-marvell-hsm-keys-to-cloud-azure-key-vault.html)|
 |Cryptomathic|ISV (Kurumsal anahtar yönetim sistemi)|Birden çok HSM markalarını ve modellerini kapsayan<ul><li>nCipher</li><li>Thales</li><li>Utıco</li></ul>[Ayrıntılar için bkz. Cryptomathic sitesi](https://www.cryptomathic.com/azurebyok)|[Cryptomathic BYOK aracı ve belgeleri](https://www.cryptomathic.com/azurebyok)|
 

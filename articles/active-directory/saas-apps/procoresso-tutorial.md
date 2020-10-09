@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: e0a8e6786dbce1015d587cf8015e3624c97a5817
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88553623"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Öğretici: Procore SSO ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Procore SSO 'yu Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Procore SSO 'SU ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açmayı Procore SSO 'SU ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Procore SSO çoklu oturum açmayı yapılandırma](#configure-procore-sso-single-sign-on)** uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[Procore SSO çoklu oturum açmayı yapılandırma](#configure-procore-sso-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan Procore SSO 'SU içinde Britta Simon 'ın bir karşılığı olacak şekilde **[Procore SSO test kullanıcısı oluşturun](#create-procore-sso-test-user)** .
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı Procore SSO ile yapılandırmak için aşağıda
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -101,7 +101,7 @@ Azure AD çoklu oturum açmayı Procore SSO ile yapılandırmak için aşağıda
 
     ![Procore SSO etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/preintegrated.png)
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -115,17 +115,17 @@ Azure AD çoklu oturum açmayı Procore SSO ile yapılandırmak için aşağıda
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-procore-sso-single-sign-on"></a>Procore SSO çoklu oturum açmayı yapılandırma
+### <a name="configure-procore-sso-single-sign-on"></a>Procore SSO tek Sign-On yapılandırma
 
 1. **PROCORE SSO** tarafında çoklu oturum açmayı yapılandırmak için, Procore şirket sitenizde yönetici olarak oturum açın.
 
 2. Araç kutusu açılan listesinden **yönetici** ' ye tıklayarak SSO ayarları sayfasını açın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/procoresso-tutorial/procore_tool_admin.png)
+    ![Tek Sign-On yapılandırma](./media/procoresso-tutorial/procore_tool_admin.png)
 
 3. Kutulara değerleri aşağıda açıklandığı gibi yapıştırın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/procoresso-tutorial/procore_setting_admin.png)  
+    ![Tek Sign-On yapılandırma](./media/procoresso-tutorial/procore_setting_admin.png)  
 
     a. **Çoklu oturum açma veren URL 'si** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının** değerini yapıştırın.
 
@@ -195,11 +195,11 @@ Procore SSO tarafında bir Procore test kullanıcısı oluşturmak için lütfen
 
 2. Araç kutusu açılan listesinden **Dizin** ' e tıklayarak Şirket dizini sayfasını açın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/procoresso-tutorial/Procore_sso_directory.png)
+    ![Tek Sign-On yapılandırma](./media/procoresso-tutorial/Procore_sso_directory.png)
 
 3. Formu açmak için **kişi ekle** seçeneğine tıklayın ve aşağıdaki seçenekleri Uygula ' yı girin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/procoresso-tutorial/Procore_user_add.png)
+    ![Tek Sign-On yapılandırma](./media/procoresso-tutorial/Procore_user_add.png)
 
     a. **Ilk ad** metin kutusuna kullanıcının Ilk adını **Britta**yazın.
 
@@ -213,11 +213,11 @@ Procore SSO tarafında bir Procore test kullanıcısı oluşturmak için lütfen
 
 4. Yeni eklenen kişinin ayrıntılarını denetleyin ve güncelleştirin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/procoresso-tutorial/Procore_user_check.png)
+    ![Tek Sign-On yapılandırma](./media/procoresso-tutorial/Procore_user_check.png)
 
 5. Kullanıcı kaydını gerçekleştirmek için **Kaydet ve davet gönder** (posta ile davet et gerekliyse) veya **Kaydet** (doğrudan Kaydet) seçeneğine tıklayın.
     
-    ![Çoklu oturum açmayı yapılandırma](./media/procoresso-tutorial/Procore_user_save.png)
+    ![Tek Sign-On yapılandırma](./media/procoresso-tutorial/Procore_user_save.png)
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 

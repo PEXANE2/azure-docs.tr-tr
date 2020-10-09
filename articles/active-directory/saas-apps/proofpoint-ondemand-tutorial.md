@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.openlocfilehash: c3cebb7a63dd26f4dfb1fa46cb3b31a8b149da1d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88553445"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proofpoint-on-demand"></a>Öğretici: Isteğe bağlı olarak, denetleme noktası ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Azure AD ile Istek üzerine Redaknme noktasını tümleştirmek aşağıdaki ava
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Isteğe bağlı bir Istek üzerine yapılandırma için aşağıdaki öğeler gereklidir:
 
@@ -76,7 +76,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre isteğe bağ
 Azure AD 'nin Isteğe bağlı olarak Redaklala çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. , Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, **[isteğe bağlı çoklu oturum açma Için yazım noktası yapılandırma](#configure-proofpoint-on-demand-single-sign-on)** .
+2. , Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için, **[isteğe bağlı çoklu oturum açma üzerinde Redakpoint 'ı yapılandırın](#configure-proofpoint-on-demand-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı Isteğe bağlı olarak, yazım noktasında bir Britta Simon 'a sahip olmak için, Isteğe bağlı test kullanıcısına yönelik bir istek üzerine **[denetleme noktası oluşturun](#create-proofpoint-on-demand-test-user)** .
@@ -96,7 +96,7 @@ Azure AD 'nin Isteğe bağlı olarak, yazım noktasında çoklu oturum açmayı 
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -111,9 +111,9 @@ Azure AD 'nin Isteğe bağlı olarak, yazım noktasında çoklu oturum açmayı 
     c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<hostname>.pphosted.com:portnumber/v1/samlauth/samlconsumer`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Isteğe bağlı, istek üzerine istemci desteği ekibine](https://www.proofpoint.com/us/support-services) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek Sign-On URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Isteğe bağlı, istek üzerine istemci desteği ekibine](https://www.proofpoint.com/us/support-services) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -127,7 +127,7 @@ Azure AD 'nin Isteğe bağlı olarak, yazım noktasında çoklu oturum açmayı 
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-proofpoint-on-demand-single-sign-on"></a>Isteğe bağlı çoklu oturum açma için yazım noktası yapılandırma
+### <a name="configure-proofpoint-on-demand-single-sign-on"></a>Isteğe bağlı tek Sign-On için bir Istek üzerine yazım yapılandırma
 
 **İsteğe bağlı yazım noktasında** çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (Base64)** ve Azure Portal ' den uygun kopyalanmış URL 'leri [isteğe bağlı destek ekibine](https://www.proofpoint.com/us/support-services)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

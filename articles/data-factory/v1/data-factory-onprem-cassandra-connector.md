@@ -13,10 +13,10 @@ ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 0f96680f1ea91434c84d6606e3637c68c1cb5a84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80991510"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Azure Data Factory kullanarak şirket içi Cassandra veritabanından veri taşıma
@@ -34,7 +34,7 @@ Bu makalede, verileri şirket içi Cassandra veritabanından taşımak için Azu
 ## <a name="supported-versions"></a>Desteklenen sürümler
 Cassandra Bağlayıcısı, Cassandra: 2. x ve 3. x 'in aşağıdaki sürümlerini destekler. Şirket içinde barındırılan Integration Runtime çalışan etkinlik için Cassandra 3. x, IR sürüm 3,7 ve üzeri sürümlerde desteklenir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Azure Data Factory hizmetinin şirket içi Cassandra veritabanınıza bağlanabilmesi için, veritabanını barındıran aynı makineye veya veritabanına sahip kaynakların rekabeti önlemek için ayrı bir makineye bir Veri Yönetimi ağ geçidi yüklemelisiniz. Veri Yönetimi ağ geçidi, şirket içi veri kaynaklarını güvenli ve yönetilen bir şekilde bulut hizmetlerine bağlayan bir bileşendir. Veri Yönetimi ağ geçidi hakkındaki ayrıntılar için bkz. [veri yönetimi ağ geçidi](data-factory-data-management-gateway.md) makalesi. Verileri taşımak için bir veri işlem hattı ayarlama hakkında adım adım yönergeler için bkz. [Şirket içinden buluta veri taşıma](data-factory-move-data-between-onprem-and-cloud.md) makalesi.
 
 Veritabanı bulutta barındırılıyorsa, örneğin bir Azure IaaS VM 'sinde, Cassandra veritabanına bağlanmak için ağ geçidini kullanmanız gerekir. Ağ geçidinin veritabanına bağlanabildiği sürece, veritabanını barındıran sanal makinede veya ayrı bir VM 'de ağ geçidine sahip olabilirsiniz.
@@ -69,7 +69,7 @@ Aşağıdaki tabloda, Cassandra bağlı hizmetine özgü JSON öğeleri için a�
 | konak |Cassandra sunucularının bir veya daha fazla IP adresi veya ana bilgisayar adı.<br/><br/>Aynı anda tüm sunuculara bağlanmak için IP adreslerinin veya ana bilgisayar adlarının virgülle ayrılmış bir listesini belirtin. |Evet |
 | port |Cassandra sunucusunun istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası. |Hayır, varsayılan değer: 9042 |
 | authenticationType |Temel veya anonim |Evet |
-| kullanıcı adı |Kullanıcı hesabı için Kullanıcı adını belirtin. |Evet, authenticationType temel olarak ayarlandıysa. |
+| username |Kullanıcı hesabı için Kullanıcı adını belirtin. |Evet, authenticationType temel olarak ayarlandıysa. |
 | password |Kullanıcı hesabı için parola belirtin. |Evet, authenticationType temel olarak ayarlandıysa. |
 | gatewayName |Şirket içi Cassandra veritabanına bağlanmak için kullanılan ağ geçidinin adı. |Evet |
 | encryptedCredential |Ağ Geçidi tarafından şifrelenen kimlik bilgileri. |Hayır |

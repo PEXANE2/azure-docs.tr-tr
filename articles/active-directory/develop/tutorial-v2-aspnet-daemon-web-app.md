@@ -13,10 +13,10 @@ ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.openlocfilehash: 72b72959f7b5c89bfad4495c8534de5dfaaefe8b
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91611104"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Öğretici: Microsoft Identity platformunu kullanan çok kiracılı bir Daemon oluşturma
@@ -31,7 +31,7 @@ Bu öğreticide Microsoft Identity platformunu kullanarak, uzun süreli ve etkil
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Visual Studio 2017 veya 2019](https://visualstudio.microsoft.com/downloads/).
 - Azure AD kiracısı. Daha fazla bilgi için bkz. [Azure AD kiracısı alma](quickstart-create-new-tenant.md).
@@ -112,7 +112,7 @@ Otomasyonu kullanmak istemiyorsanız, aşağıdaki bölümlerde bulunan adımlar
 1. Uygulama sayfa listesinde **Kimlik doğrulaması**'nı seçin. Sonra:
    - **Gelişmiş ayarlar** bölümünde, **oturum kapatma URL 'sini** olarak ayarlayın **https://localhost:44316/Account/EndSession** .
    - **Gelişmiş ayarlar**  >  **örtük verme** bölümünde, **erişim belirteçleri** ve **Kimlik belirteçleri**' ni seçin. Bu örnek, kullanıcının oturum açması ve bir API çağırması için [örtük verme akışının](v2-oauth2-implicit-grant-flow.md) etkinleştirilmesini gerektirir.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 1. **Sertifikalar & gizlilikler** sayfasında, **istemci gizli** dizileri bölümünde **yeni istemci parolası**' nı seçin. Sonra:
 
    1. Bir anahtar açıklaması girin (örneğin, **uygulama gizli**anahtarı),
@@ -207,7 +207,7 @@ Bu projede Web uygulaması ve Web API projeleri vardır. Azure Web siteleri 'ne 
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>Bir Azure Web sitesinde DotNet-Web-Daemon-v2 oluşturma ve yayımlama
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Sol üst köşeden **Kaynak oluştur**'u seçin.
 1. **Web**  >  **Web uygulaması**' nı seçin ve ardından Web sitenize bir ad verin. Örneğin, **DotNet-Web-Daemon-v2-contoso.azurewebsites.net**olarak adlandırın.
 1. **Abonelik**, **kaynak grubu**ve **App Service planı ve konum**bilgilerini seçin. **Işletim sistemi** **Windows**ve **Yayımlama** **kodudur**.
@@ -222,7 +222,7 @@ Bu projede Web uygulaması ve Web API projeleri vardır. Azure Web siteleri 'ne 
 1. **Yapılandır**'ı seçin.
 1. **Bağlantı** sekmesinde, hedef URL 'yi "https" kullanacak şekilde güncelleştirin. Örneğin, kullanın `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` . **İleri**’yi seçin.
 1. **Ayarlar** sekmesinde, **Kurumsal kimlik doğrulamasını etkinleştir** ' in temizlenmiş olduğundan emin olun.
-1. **Kaydet**'i seçin. Ana ekranda **Yayımla** ' yı seçin.
+1. **Kaydet**’i seçin. Ana ekranda **Yayımla** ' yı seçin.
 
 Visual Studio projeyi yayımlayacak ve projenin URL 'sine otomatik olarak bir tarayıcı açacak. Projenin varsayılan Web sayfasını görürseniz, yayın başarılı olmuştur.
 

@@ -4,10 +4,10 @@ description: Azure Service Bus mesajlaşma değerlendirmesi için güvenlik dene
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 3130150a227076befae3f58f65e00a36578b68d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85341634"
 ---
 # <a name="security-controls-for-azure-service-bus-messaging"></a>Azure Service Bus mesajlaşma için güvenlik denetimleri
@@ -46,8 +46,8 @@ Bu makale, Azure Service Bus mesajlaşma 'da yerleşik olarak bulunan güvenlik 
 |---|---|--|--|
 | Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar |  Varsayılan olarak sunucu tarafı şifreleme için Evet. |  |  |
 | Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Evet. | Azure Anahtar Kasası 'nda müşteri tarafından yönetilen bir anahtar, bekleyen Service Bus ad alanındaki verileri şifrelemek için kullanılabilir. | [Azure portal kullanarak geri kalan Azure Service Bus verileri şifrelemek için müşteri tarafından yönetilen anahtarları yapılandırın](configure-customer-managed-key.md)  |
-| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| YOK | |   |
-| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | Standart HTTPS/TLS mekanizmasını destekler. |   |
+| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Yok | |   |
+| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifrelemesi ve VNet-VNet şifreleme gibi)| Evet | Standart HTTPS/TLS mekanizmasını destekler. |   |
 | Şifrelenmiş API çağrıları| Evet | API çağrıları [Azure Resource Manager](../azure-resource-manager/index.yml) ve HTTPS aracılığıyla yapılır. |   |
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi

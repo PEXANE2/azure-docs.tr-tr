@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: seodec18
 ms.openlocfilehash: 79a4fc048b8301d67206bf28b571f88f9e5ad024
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91597679"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>Öğretici: bir Azure Time Series Insights Gen2 ortamı ayarlama
@@ -109,7 +109,7 @@ Bu bölümde, bir Azure Time Series Insights Gen2 ortamının nasıl oluşturula
 
    | Parametre | Eylem |
    | --- | --- |
-   | **Olay kaynağı oluşturulsun mu?** | **Evet** seçeneğini belirleyin.|
+   | **Olay kaynağı oluşturulsun mu?** | **Evet**’i seçin.|
    | **Ad** | Olay kaynağı adı için benzersiz bir değer girin. |
    | **Kaynak türü** | **IoT Hub**seçin. |
    | **Bir hub seçin** | **Varolanı Seç ' i**seçin. |
@@ -183,7 +183,7 @@ Bu bölümde, [Azure Time Series Insights Gen2 Gezginini](./time-series-insights
 
     [![Azure Time Series Insights Gen2 Explorer URL 'SI.](media/v2-update-provision/tsi-select-explorer-url.png)](media/v2-update-provision/tsi-select-explorer-url.png#lightbox)
 
-1. Azure Time Series Insights Gen2 Explorer 'da, ekranın üst kısmına yayılan bir çubuk görüntülenir. Bu, kullanılabilirlik seçicinizdeki bir değer. En az iki 2 e seçili olduğundan emin olun ve gerekirse, seçici tutamaçlarını seçip sola ve sağa sürükleyerek zaman çerçevesini genişletin.
+1. Azure Time Series Insights Gen2 Explorer 'da, ekranın üst kısmına yayılan bir çubuk görüntülenir. Bu, kullanılabilirlik seçicinizdeki bir değer. En az 2 2 e seçtiğinizden emin olun ve gerekirse, seçici tutamaçlarını seçip sola ve sağa sürükleyerek zaman çerçevesini genişletin.
 
 1. Sol tarafta **zaman serisi örnekleri** görüntülenecektir.
 
@@ -255,7 +255,7 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
         [![Tür değişkenleri ekleyin.](media/v2-update-provision/tsi-add-type-variables.png)](media/v2-update-provision/tsi-add-type-variables.png#lightbox)
 
     1. **Uygula**’yı seçin. 
-    1. **Kaydet**'i seçin. Üç değişken oluşturulur ve görüntülenir.
+    1. **Kaydet**’i seçin. Üç değişken oluşturulur ve görüntülenir.
 
         [![Tür eklendikten sonra Model görünümünde gözden geçirin.](media/v2-update-provision/tsi-add-type-and-view.png)](media/v2-update-provision/tsi-add-type-and-view.png#lightbox)
 
@@ -268,7 +268,7 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
         | **Ad** | **Konum hiyerarşisini**girin. |
         |**Düzeyler**| **Ülkeyi** ilk düzeyin adı olarak girin <br /> **+ Düzey Ekle** seçeneğini belirleyin <br /> İkinci düzey için **şehir** girin ve ardından **+ düzey Ekle** ' yi seçin. <br /> Üçüncü ve son düzeyin adı olarak **oluşturma** girin |
 
-   1. **Kaydet**'i seçin.
+   1. **Kaydet**’i seçin.
 
         [![Yeni hiyerarşinizi Model görünümünde görüntüleyin.](media/v2-update-provision/tsi-add-hierarchy-and-view.png)](media/v2-update-provision/tsi-add-hierarchy-and-view.png#lightbox)
 
@@ -291,7 +291,7 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
         | **Şehir** | **Seattle** girin |
         | **Yapım** | **Space iğne** girin |
 
-    1. **Kaydet**'i seçin.
+    1. **Kaydet**’i seçin.
 
 1. Aşağıdaki değerleri kullanırken önceki adımı diğer iki örnek ile tekrarlayın:
 

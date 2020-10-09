@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/09/2020
 ms.author: jeedes
 ms.openlocfilehash: 60a8f433cd4fc059b7f7df0836307c8cc1ea6bba
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88551524"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-gr8-people"></a>Öğretici: gr8 kişilerle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, gr8 kişilerin Azure Active Directory (Azure AD) ile nasıl tü
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/13/2017
 ms.author: terrylan
 ms.openlocfilehash: fc5899fe5aca4bbaa9250cf41b240816e2cbedb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80548600"
 ---
 # <a name="how-to-log-a-security-event-support-ticket"></a>Güvenlik Olayı Destek Biletini Günlüğe Kaydetme
@@ -43,7 +43,7 @@ ms.locfileid: "80548600"
     - Sorununuz hakkında bizimle iletişim kurması gerekiyorsa, tüm yazışmalarda onay numarasını kullanın.
     - Sorununuzu dilediğiniz zaman görebilirsiniz.
 
-5. Sonra ne olur? Soruna ve önem derecesine bağlı olarak, aşağıdaki adımlar uygulanabilir:
+5. Sırada ne var? Soruna ve önem derecesine bağlı olarak, aşağıdaki adımlar uygulanabilir:
 
     - Değerlendirmem sonucunu size ileteceğiz. Sonuca bağlı olarak, teklifinizi değiştirmenize veya sizin için değişiklik yapma isteyebiliriz. Bu durumda, etkilenen müşterilerin kesintiye uğramasını önlemek için sizinle birlikte çalışacağız.
     - Karşılıklı müşterilerimiz için olay/güvenlik açığının etkisini azaltmaya yardımcı olmak üzere sizinle çalışacağız.

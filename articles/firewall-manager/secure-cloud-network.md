@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/08/2020
 ms.author: victorh
 ms.openlocfilehash: 9d1e2d257074555e7a2e78930e1f9be6cd4d90fe
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89536012"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>Öğretici: Azure Güvenlik Duvarı Yöneticisi 'Ni kullanarak sanal hub 'ınızı güvenli hale getirme
@@ -56,7 +56,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 3. **Alt ağ ekle**' yi seçin.
 4. **Iş yükü-01-sn**yazın.
 5. **Alt ağ adres aralığı**için **10.1.1.0/24**yazın.
-6. **Add (Ekle)** seçeneğini belirleyin.
+6. **Ekle**’yi seçin.
 1. **Gözden geçir ve oluştur**’u seçin.
 2. **Oluştur**’u seçin.
 
@@ -162,7 +162,7 @@ Bir güvenlik duvarı ilkesi, trafiği bir veya daha fazla güvenli sanal hub ü
 10. **Protokol**için **http, https**yazın.
 11. **Hedef türün** **FQDN**olduğundan emin olun.
 12. **Hedef**için ** \* . Microsoft.com**yazın.
-13. **Add (Ekle)** seçeneğini belirleyin.
+13. **Ekle**’yi seçin.
 
 Bir uzak masaüstü 'nü **SRV-Workload-01** sanal makinesine bağlayabilmeniz IÇIN BIR DNAT kuralı ekleyin.
 
@@ -179,7 +179,7 @@ Bir uzak masaüstü 'nü **SRV-Workload-01** sanal makinesine bağlayabilmeniz I
 11. **Hedef**için, daha önce not ettiğiniz güvenlik DUVARı genel IP adresini yazın.
 12. **Çevrilen adres**için, daha önce not ettiğiniz **SRV-Workload-01** özel IP adresini yazın.
 13. **Çevrilmiş bağlantı noktası** için **3389** yazın.
-14. **Add (Ekle)** seçeneğini belirleyin.
+14. **Ekle**’yi seçin.
 
 Bir ağ kuralı ekleyerek, **SRV-Iş yükü-01** ' den **SRV-iş yüküne-02**' e bir uzak masaüstü bağlayabilirsiniz.
 
@@ -194,7 +194,7 @@ Bir ağ kuralı ekleyerek, **SRV-Iş yükü-01** ' den **SRV-iş yüküne-02**' 
 9. **Hedef bağlantı noktaları**için **3389**yazın.
 9. **Hedef türü**Için **IP adresi**' ni seçin.
 10. **Hedef**için, daha önce not ettiğiniz **SRV-Workload-02** özel IP adresini yazın.
-11. **Add (Ekle)** seçeneğini belirleyin.
+11. **Ekle**’yi seçin.
 1. **İleri ' yi seçin: tehdit bilgileri**.
 2. Ileri 'yi seçin **: hub**.
 3. **Hub 'lar** sekmesinde **sanal hub 'ları ilişkilendir**' i seçin.

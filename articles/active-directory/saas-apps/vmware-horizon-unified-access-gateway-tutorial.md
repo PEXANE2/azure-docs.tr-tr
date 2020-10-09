@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/02/2020
 ms.author: jeedes
 ms.openlocfilehash: 9e9d98e8b68b4e01d7e8f19e7c7d89a88d9bf69f
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89500910"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-vmware-horizon---unified-access-gateway"></a>Öğretici: VMware ufku Birleşik erişim ağ geçidi ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -26,7 +26,7 @@ Bu öğreticide, VMware ufku Birleşik erişim ağ geçidini Azure Active Direct
 * Kullanıcılarınızın Azure AD hesaplarıyla VMware ufku Birleşik erişim ağ geçidi ' ne otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -60,8 +60,8 @@ Azure AD SSO 'yu VMware ufuk Birleşik erişim ağ geçidi ile yapılandırmak v
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
     1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-1. **[VMware ufuk-Birleşik erişim ağ GEÇIDI SSO](#configure-vmware-horizon-unified-access-gateway-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-    1. VMware **[ufku Birleşik erişim ağ geçidi test kullanıcısı oluşturma](#create-vmware-horizon-unified-access-gateway-test-user)** -kullanıcının Azure AD gösterimine bağlı olan VMware ufuk ve Birleşik erişim ağ geçidinde B. Simon 'a sahip olmak için.
+1. **[VMware Horizon-Unified Access Gateway SSO](#configure-vmware-horizon-unified-access-gateway-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için yapılandırın.
+    1. VMware **[Horizon-Unified Access Gateway test kullanıcısı](#create-vmware-horizon-unified-access-gateway-test-user)** ' nı, kullanıcının Azure AD gösterimine bağlı olan VMWare ufku Birleşik erişim ağ geçidinde B. Simon 'a sahip olacak şekilde oluşturun.
 1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
@@ -119,11 +119,11 @@ Bu bölümde, VMware ufku Birleşik erişim ağ geçidine erişim vererek, B. Si
 1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-## <a name="configure-vmware-horizon-unified-access-gateway-sso"></a>VMware ufku-Birleşik erişim ağ geçidi SSO 'yu yapılandırma
+## <a name="configure-vmware-horizon-unified-access-gateway-sso"></a>VMware Horizon-Unified Access Gateway SSO 'yu yapılandırma
 
 **VMWare ufku Birleşik erişim ağ geçidi** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'sini ve Azure Portal ' den uygun kopyalanmış URL 'Leri [VMware ufuk-Birleşik erişim ağ geçidi destek ekibine](mailto:support@vmware.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
-### <a name="create-vmware-horizon-unified-access-gateway-test-user"></a>VMware ufku Birleşik erişim ağ geçidi test kullanıcısı oluşturma
+### <a name="create-vmware-horizon-unified-access-gateway-test-user"></a>VMware Horizon-Unified Access Gateway test kullanıcısı oluşturma
 
 Bu bölümde, VMware ufku Birleşik erişim ağ geçidinde B. Simon adlı bir Kullanıcı oluşturacaksınız. VMWare ufku Birleşik erişim ağ geçidi platformunda kullanıcıları eklemek için [VMWare ufku Birleşik erişim ağ geçidi destek ekibi](mailto:support@vmware.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 

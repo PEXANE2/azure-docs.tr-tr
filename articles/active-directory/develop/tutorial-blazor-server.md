@@ -9,10 +9,10 @@ ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.openlocfilehash: 42aa51fdd3b0da5a0d438ba46b39bada159aeba6
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91611480"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>Öğretici: kimlik doğrulaması için Microsoft Identity platformunu kullanan bir Blazor Server uygulaması oluşturma
@@ -26,7 +26,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Microsoft. Identity. Web kullanarak hem kimlik doğrulamasını hem de yetkilendirmeyi işleme
 > * Korumalı bir Web API 'sinden veri alma, Microsoft Graph
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [.NET Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 - Bir uygulamayı kaydedebileceğiniz bir Azure AD kiracısı. Bir Azure AD kiracısına erişiminiz yoksa, [Microsoft 365 Geliştirici programına](https://developer.microsoft.com/microsoft-365/dev-program) kaydolarak veya [ücretsiz Azure hesabı](https://azure.microsoft.com/free)oluşturarak bir tane edinebilirsiniz.

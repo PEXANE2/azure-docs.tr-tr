@@ -18,17 +18,17 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0443dcb2bf3bd58f2474c507c9f9594fb6d8a7f0
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89469193"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>Öğretici: Azure Olay Hub 'ına akış Azure Active Directory günlükleri
 
 Bu öğreticide, Azure Olay Hub 'ına Azure Active Directory (Azure AD) günlüklerini akışa almak için Azure Izleyici tanılama ayarlarını ayarlamayı öğreneceksiniz. Bu mekanizmayı kullanarak günlüklerinizi Splunk ve QRadar gibi üçüncü taraf Güvenlik Bilgileri ve Olay Yönetimi (SIEM) araçlarıyla tümleştirebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 Bu özelliği kullanmak için şunlara ihtiyacınız vardır:
 
@@ -39,7 +39,7 @@ Bu özelliği kullanmak için şunlara ihtiyacınız vardır:
 
 ## <a name="stream-logs-to-an-event-hub"></a>Günlükleri bir olay hub 'ına akış
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
 
 2. **Azure Active Directory**  >  **Monitoring**  >  **Denetim günlüklerini**Azure Active Directory izleme ' yi seçin. 
 

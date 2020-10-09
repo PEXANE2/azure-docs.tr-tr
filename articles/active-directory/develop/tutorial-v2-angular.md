@@ -13,10 +13,10 @@ ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-js
 ms.openlocfilehash: ae486ac8ddd233487bb10c897a155337aa815fe5
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91611257"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Öğretici: Kullanıcı oturum açma ve angular tek sayfalı uygulamadan Microsoft Graph API 'sini çağırma
@@ -32,7 +32,7 @@ Bu öğreticide:
 > * Microsoft Graph API 'sini çağırmak için kod ekleme
 > * Uygulamayı test etme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Yerel bir Web sunucusu çalıştırmak için [Node.js](https://nodejs.org/en/download/) .
 * Proje dosyalarını değiştirmek için [Visual Studio Code](https://code.visualstudio.com/download) veya başka bir düzenleyici.
@@ -49,7 +49,7 @@ Bu senaryoda, bir Kullanıcı oturum açtıktan sonra, yetkilendirme üst bilgis
 
 Bu öğretici aşağıdaki kitaplığı kullanır:
 
-|Kitaplık|Description|
+|Kitaplık|Açıklama|
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|JavaScript angular sarmalayıcı için Microsoft kimlik doğrulama kitaplığı|
 

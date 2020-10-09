@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 6a74f105525ec8ce28559b47ed4fc9624f518a06
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89488346"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Öğretici: mevcut bir özel DNS adını Azure App Service eşleme
@@ -29,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Varsayılan URL 'YI özel bir dizine yönlendirin.
 > * Betiklerle etki alanı eşlemeyi otomatikleştirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -127,7 +127,7 @@ Dışında başka bir alt etki alanınız varsa `www` , alt etki `www` alanını
 
 Bir alt etki alanını uygulamanın varsayılan etki alanı adına eşleyin ( `<app-name>.azurewebsites.net` , burada `<app-name>` uygulamanızın adıdır). Alt etki alanı için bir CNAME eşlemesi oluşturmak için `www` iki kayıt oluşturun:
 
-| Kayıt türü | Konak | Değer | Yorumlar |
+| Kayıt türü | Ana bilgisayar | Değer | Yorumlar |
 | - | - | - |
 | CNAME | `www` | `<app-name>.azurewebsites.net` | Etki alanı eşlemesi. |
 | TXT | `asuid.www` | [Daha önce aldığınız doğrulama KIMLIĞI](#get-a-domain-verification-id) | App Service, `asuid.<subdomain>` özel etki alanının sahipliğini doğrulamak için txt kaydına erişir. |
@@ -195,7 +195,7 @@ A kaydını eşlemek için, uygulamanın dış IP adresine ihtiyacınız vardır
 
 Bir kaydı bir uygulamayla eşlemek için genellikle kök etki alanına iki kayıt oluşturun:
 
-| Kayıt türü | Konak | Değer | Yorumlar |
+| Kayıt türü | Ana bilgisayar | Değer | Yorumlar |
 | - | - | - |
 | A | `@` | [Uygulamanın IP adresini kopyalama](#info) bölümünden IP adresi | Etki alanı eşlemesi ( `@` genellikle kök etki alanını temsil eder). |
 | TXT | `asuid` | [Daha önce aldığınız doğrulama KIMLIĞI](#get-a-domain-verification-id) | App Service, `asuid.<subdomain>` özel etki alanının sahipliğini doğrulamak için txt kaydına erişir. Kök etki alanı için kullanın `asuid` . |
@@ -203,7 +203,7 @@ Bir kaydı bir uygulamayla eşlemek için genellikle kök etki alanına iki kay�
 > [!NOTE]
 > `www.contoso.com`Önerilen [CNAME kaydı](#map-a-cname-record)yerine bir kayıt kullanarak bir alt etki alanı (gibi) eklemek için BIR kayıt ve txt kaydımızda aşağıdaki tablo gibi görünmesi gerekir:
 >
-> | Kayıt türü | Konak | Değer |
+> | Kayıt türü | Ana bilgisayar | Değer |
 > | - | - | - |
 > | A | `www` | [Uygulamanın IP adresini kopyalama](#info) bölümünden IP adresi |
 > | TXT | `asuid.www` | `<app-name>.azurewebsites.net` |
@@ -256,7 +256,7 @@ Azure portal uygulamanın **özel etki alanları** sayfasına geri döndüğün�
 
 `*`Uygulamanın varsayılan etki alanı adına ( `<app-name>.azurewebsites.net` , uygulamanızın adıdır) bir joker karakter adı eşleyin `<app-name>` . Joker karakter adını eşlemek için iki kayıt oluşturun:
 
-| Kayıt türü | Konak | Değer | Yorumlar |
+| Kayıt türü | Ana bilgisayar | Değer | Yorumlar |
 | - | - | - |
 | CNAME | `*` | `<app-name>.azurewebsites.net` | Etki alanı eşlemesi. |
 | TXT | `asuid` | [Daha önce aldığınız doğrulama KIMLIĞI](#get-a-domain-verification-id) | App Service, `asuid` özel etki alanının sahipliğini doğrulamak için txt kaydına erişir. |

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/18/2020
 ms.author: jeedes
 ms.openlocfilehash: cfbb704799a1884c689bd0de547526a33f1ba7ce
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88651930"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Öğretici: Citrix ShareFile ile tümleştirme Azure Active Directory
@@ -66,7 +66,7 @@ Azure AD çoklu oturum açmayı Citrix ShareFile ile yapılandırmak ve test etm
     
     * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
     * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-2. **[Citrix ShareFile SSO 'Yu yapılandırma](#configure-citrix-sharefile-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[Citrix ShareFile SSO 'Yu yapılandırma](#configure-citrix-sharefile-sso)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
     * Citrix **[ShareFile test kullanıcısı oluşturun](#create-citrix-sharefile-test-user)** ; bu, kullanıcının Azure AD gösterimine bağlı olan Citrix ShareFile 'Da Britta Simon 'a sahip olmalıdır.
 3. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
@@ -99,9 +99,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     - `https://<tenant-name>.sharefile.com/saml/<URL path>`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Citrix ShareFile istemci destek ekibine](https://www.citrix.co.in/products/citrix-content-collaboration/support.html) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek Sign-On URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Citrix ShareFile istemci destek ekibine](https://www.citrix.co.in/products/citrix-content-collaboration/support.html) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+4. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 

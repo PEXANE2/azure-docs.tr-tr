@@ -5,10 +5,10 @@ ms.date: 03/26/2020
 ms.topic: conceptual
 ms.reviewer: janders
 ms.openlocfilehash: 4a98e5ea025894303bc5c77bba0c6154a08315f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80348372"
 ---
 # <a name="azure-blockchain-service-development-overview"></a>Azure blok zinciri hizmeti geliştirmeye genel bakış
@@ -41,7 +41,7 @@ Daha fazla bilgi için bkz. [hızlı başlangıç: Azure blok zinciri hizmeti i�
 
 ## <a name="ethereum-quorum-private-transactions"></a>Ethereum çekirdeği özel işlemleri
 
-Çekirdek, işlem artı sözleşme gizliliği ve yeni konsensus mekanizmalarına sahip bir Ethereum tabanlı dağıtılmış bir genel muhasebe protokolüdür. Go-Ethereum üzerinde önemli geliştirmeler şunları içerir:
+Çekirdek, işlem artı sözleşme gizliliği ve yeni konsensus mekanizmalarına sahip bir Ethereum tabanlı dağıtılmış bir genel muhasebe protokolüdür. Go-Ethereum üzerinde temel geliştirmeler şunları içerir:
 
 * **Gizlilik** -çekirdek, genel ve özel durum ayrımı aracılığıyla özel işlemleri ve özel sözleşmeleri destekler ve özel verilerin ağ katılımcılarına yönlendirilme için eşler arası şifreli ileti değişimlerini kullanır.
 * **Alternatif konsensus mekanizmaları** -iş açısından kanıtlama veya Stake consened, izinleri bulunan bir ağ için gerekli değildir. Çekirdek, Raft ve iBFT gibi Consortium zincirleri için tasarlanan birden çok konsensus mekanizması sunar.Azure blok zinciri hizmeti, iBFT konsensus mekanizmasını kullanır.

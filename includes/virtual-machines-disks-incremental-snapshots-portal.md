@@ -9,10 +9,10 @@ ms.date: 04/02/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: de0cf260207747f4acb02a377819a13de8b8ba22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80628409"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
@@ -35,11 +35,11 @@ ms.locfileid: "80628409"
 1. Kullanmak istediğiniz kaynak grubunu seçin ve bir ad girin.
 1. **Artımlı** ' i seçin ve **gözden geçir + oluştur** seçeneğini belirleyin
 
-    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/incremental-snapshot-create-snapshot-blade.png" alt-text="Yakala. Bir anlık görüntü dikey penceresi oluşturun, adı doldurup artımlı ' i seçin ve ardından anlık görüntü oluşturun.":::
+    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/incremental-snapshot-create-snapshot-blade.png" alt-text="Yakala. Seçtiğiniz gibi, * * + anlık görüntü oluştur * * vurgulanmış olarak diskinizin dikey pencerenizin olması gerekir.":::
 
 1. **Oluştur**’u seçin
 
-    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/create-incremental-snapshot-validation.png" alt-text="Yakala. Anlık görüntü için doğrulama sayfası, seçimlerinizi onaylayın ve ardından anlık görüntüyü oluşturun.":::
+    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/create-incremental-snapshot-validation.png" alt-text="Yakala. Seçtiğiniz gibi, * * + anlık görüntü oluştur * * vurgulanmış olarak diskinizin dikey pencerenizin olması gerekir.":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

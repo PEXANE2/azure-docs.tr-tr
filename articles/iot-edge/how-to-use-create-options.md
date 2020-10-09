@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c07e161042a497a232cbd5e3f11128893a095381
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80550350"
 ---
 # <a name="how-to-configure-container-create-options-for-iot-edge-modules"></a>IoT Edge modülleri için kapsayıcı oluşturma seçeneklerini yapılandırma
@@ -52,17 +52,17 @@ IoT Edge dağıtım bildirimi JSON olarak biçimlendirilen oluşturma seçenekle
 
 Bu edgeHub örneği, kapsayıcıda gösterilen bağlantı noktalarını konak cihazdaki bir bağlantı noktasına eşlemek için **Hostconfig. PortBindings** parametresini kullanır.
 
-Visual Studio için Azure IoT Araçları uzantıları 'nı veya Visual Studio Code kullanıyorsanız, oluşturma seçeneklerini **deployment.template.js** dosyadaki JSON biçiminde yazabilirsiniz. Daha sonra, IoT Edge çözümünü derlemek veya dağıtım bildirimini oluşturmak için uzantıyı kullandığınızda, bu, JSON 'u, IoT Edge çalışma zamanının beklediği biçimde, sizin için bir dize olarak oluşturur. Örnek:
+Visual Studio için Azure IoT Araçları uzantıları 'nı veya Visual Studio Code kullanıyorsanız, oluşturma seçeneklerini **deployment.template.js** dosyadaki JSON biçiminde yazabilirsiniz. Daha sonra, IoT Edge çözümünü derlemek veya dağıtım bildirimini oluşturmak için uzantıyı kullandığınızda, bu, JSON 'u, IoT Edge çalışma zamanının beklediği biçimde, sizin için bir dize olarak oluşturur. Örneğin:
 
 ```json
 "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
 ```
 
-Oluşturma seçeneklerini yazmak için bir ipucu, `docker inspect` komutunu kullanmaktır. Geliştirme işleminizin bir parçası olarak, kullanarak modülü yerel olarak çalıştırın `docker run <container name>` . Modülün istediğiniz şekilde çalışmasını istediğinizde, öğesini çalıştırın `docker inspect <container name>` . Bu komut modül ayrıntılarını JSON biçiminde verir. Yapılandırdığınız parametreleri bulun ve JSON ' ı kopyalayın. Örnek:
+Oluşturma seçeneklerini yazmak için bir ipucu, `docker inspect` komutunu kullanmaktır. Geliştirme işleminizin bir parçası olarak, kullanarak modülü yerel olarak çalıştırın `docker run <container name>` . Modülün istediğiniz şekilde çalışmasını istediğinizde, öğesini çalıştırın `docker inspect <container name>` . Bu komut modül ayrıntılarını JSON biçiminde verir. Yapılandırdığınız parametreleri bulun ve JSON ' ı kopyalayın. Örneğin:
 
 [![Docker Inceleme edgeHub ](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png) sonuçları](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png#lightbox)
 
-## <a name="common-scenarios"></a>Yaygın senaryolar
+## <a name="common-scenarios"></a>Genel senaryolar
 
 Kapsayıcı oluşturma seçenekleri birçok senaryoyu etkinleştirir, ancak IoT Edge çözüm oluştururken en sık kullanılan bazı bazıları aşağıda verilmiştir:
 

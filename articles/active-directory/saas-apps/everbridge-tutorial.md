@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 1da2fd879dbeac1836469d46567566769f6163a2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88555408"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>Öğretici: her yaprak Köprüsü ile Azure Active Directory tümleştirme
@@ -29,7 +29,7 @@ Her bir Azure AD ile bir yaprak Köprüsü tümleştirdiğinizde şunları yapab
 Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini her bir yaprak Köprüle yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açma 'yı tek köprü ile yapılandırmak için aşağı
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** ' yi seçin.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** ' yi seçin.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -130,7 +130,7 @@ Azure AD çoklu oturum açma 'yı tek köprü ile yapılandırmak için aşağı
      > [!NOTE]
      > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'si ve oturum açma URL 'SI değerleriyle güncelleştirin. Bu değerleri almak için, [yaprak Köprüsü destek ekibine](mailto:support@everbridge.com)başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML**'sini indirmek için **İndir** ' i seçin. Bu dosyayı bilgisayarınıza kaydedin.
+6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML**'sini indirmek için **İndir** ' i seçin. Bu dosyayı bilgisayarınıza kaydedin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 

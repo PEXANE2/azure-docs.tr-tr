@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: jeedes
 ms.openlocfilehash: fa8b150e7b5e1bd5bfc5e05b3b00a13522b52f87
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89500902"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-rsa-archer-suite"></a>Öğretici: RSA ıleyici Suite ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -26,7 +26,7 @@ Bu öğreticide, RSA ıleyici paketini Azure Active Directory (Azure AD) ile tü
 * Kullanıcılarınızın Azure AD hesaplarıyla RSA ıleyici Suite 'e otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -98,7 +98,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     | FirstName | Kullanıcı. |
     | LastName | User. soyadı |
     | PhoneNumber | Kullanıcı. telephoneNumber |
-    | City | Kullanıcı. City |
+    | Şehir | Kullanıcı. City |
     | Posta kodu | Kullanıcı. PostaKodu |
     | Durum | Kullanıcı. durum |
     | Sokak | User. StreetAddress |
@@ -143,7 +143,7 @@ Bu bölümde, RSA ıleyici Suite 'e erişim vererek Azure çoklu oturum açma ö
 
     ![RSA ıleyici Suite SSO 'yu yapılandırma](./media/rsa-archer-suite-tutorial/configuring-saml-sso.png)
 
-    a. **Çoklu oturum** açma sekmesine gidin ve açılan listeden **Çoklu oturum açma modu** olarak **SAML** ' yi seçin.
+    a. **Çoklu oturum açma** sekmesine gidin ve açılan listeden **tek bir Sign-On modu** olarak **SAML** ' yi seçin.
 
     b. **Elle atlamaya Izin ver** onay kutusunu seçin.
 
@@ -153,7 +153,7 @@ Bu bölümde, RSA ıleyici Suite 'e erişim vererek Azure çoklu oturum açma ö
 
     e. **Seç** düğmesine tıklayın ve Azure Portal Indirilen **Federasyon meta veri XML** dosyasını karşıya yükleyin.
 
-    f. Çoklu oturum açma ayarlarını **kaydedin** . 
+    f. Tek Sign-On ayarlarını **kaydedin** . 
 
 ### <a name="create-rsa-archer-suite-test-user"></a>RSA ıleyici Suite test kullanıcısı oluştur
 

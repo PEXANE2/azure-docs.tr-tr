@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
 ms.openlocfilehash: 00ddd61209af6e0d16b7f7579a6e8729cde0cdf0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88552484"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-namely"></a>Öğretici: Bu şekilde Azure Active Directory tümleştirme
@@ -30,7 +30,7 @@ Burada Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini bu şekilde yapılandırmak için, aşağıdaki öğeler gereklidir:
 
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, yani **Britta Simon**adlı bir te
 Azure AD çoklu oturum açmayı bu şekilde yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[yani çoklu oturum açmayı yapılandırın](#configure-namely-single-sign-on)** .
+2. Bu şekilde, uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Çoklu oturum açmayı yapılandırın](#configure-namely-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Bu şekilde, kullanıcının Azure AD gösterimine bağlı olan ' de Britta Simon 'un bir karşılığı olacak şekilde **[test kullanıcısı oluşturun](#create-namely-test-user)** .
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı bu şekilde yapılandırmak için aşağıdaki a
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -108,7 +108,7 @@ Azure AD çoklu oturum açmayı bu şekilde yapılandırmak için aşağıdaki a
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [istemci desteği ekibine](https://www.namely.com/contact/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -122,25 +122,25 @@ Azure AD çoklu oturum açmayı bu şekilde yapılandırmak için aşağıdaki a
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-namely-single-sign-on"></a>Bu şekilde çoklu oturum açmayı Yapılandır
+### <a name="configure-namely-single-sign-on"></a>Bu şekilde tek Sign-On yapılandırın
 
 1. Başka bir tarayıcı penceresinde, farklı şirket sitenizde yönetici olarak oturum açın.
 
 2. Üstteki araç çubuğunda **Şirket**' e tıklayın.
    
-    ![Çoklu oturum açmayı yapılandırma](./media/namely-tutorial/tutorial_namely_06.png) 
+    ![Tek Sign-On yapılandırma](./media/namely-tutorial/tutorial_namely_06.png) 
 
 3. **Ayarlar** sekmesine tıklayın.
    
-    ![Çoklu oturum açmayı yapılandırma](./media/namely-tutorial/tutorial_namely_07.png) 
+    ![Tek Sign-On yapılandırma](./media/namely-tutorial/tutorial_namely_07.png) 
 
 4. **SAML**' ye tıklayın.
    
-    ![Çoklu oturum açmayı yapılandırma](./media/namely-tutorial/tutorial_namely_08.png) 
+    ![Tek Sign-On yapılandırma](./media/namely-tutorial/tutorial_namely_08.png) 
 
 5. **SAML ayarları** sayfasında, aşağıdaki adımları gerçekleştirin:
    
-    ![Çoklu oturum açmayı yapılandırma](./media/namely-tutorial/tutorial_namely_09.png)
+    ![Tek Sign-On yapılandırma](./media/namely-tutorial/tutorial_namely_09.png)
  
     a. **SAML etkinleştir**' e tıklayın. 
 
@@ -211,15 +211,15 @@ Bu bölümün amacı, ' de Britta Simon adlı bir Kullanıcı oluşturmaktır.
 
 2. Üstteki araç çubuğunda **kişiler**' e tıklayın.
    
-    ![Çoklu oturum açmayı yapılandırma](./media/namely-tutorial/tutorial_namely_10.png) 
+    ![Tek Sign-On yapılandırma](./media/namely-tutorial/tutorial_namely_10.png) 
 
 3. **Dizin** sekmesine tıklayın.
    
-    ![Çoklu oturum açmayı yapılandırma](./media/namely-tutorial/tutorial_namely_11.png) 
+    ![Tek Sign-On yapılandırma](./media/namely-tutorial/tutorial_namely_11.png) 
 
 4. **Yeni kişi ekle**' ye tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/namely-tutorial/tutorial_namely_12.png)
+    ![Tek Sign-On yapılandırma](./media/namely-tutorial/tutorial_namely_12.png)
 
 5. **Yeni kişi ekle** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
 

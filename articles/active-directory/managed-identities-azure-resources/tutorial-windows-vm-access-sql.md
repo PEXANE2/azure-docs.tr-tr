@@ -18,7 +18,7 @@ ms.openlocfilehash: 9f4f56ce9fa86dc27b77ad6b463479d13c8e4e7d
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856521"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Öğretici: Azure SQL hizmetine erişmek için Windows VM sistem tarafından atanan yönetilen kimlik kullanma
@@ -34,7 +34,7 @@ Bu öğreticide, Azure SQL veritabanına erişmek için bir Windows sanal makine
 > * VM’nin sistem tarafından atanan kimliğini temsil eden veritabanında içerilen kullanıcı oluşturma
 > * VM kimliğini kullanarak bir erişim belirteci alın ve Azure SQL veritabanını sorgulamak için kullanın
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.openlocfilehash: 27e346dd97824918d859ea6819e3c2b43f4c02aa
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88551957"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-unifi"></a>Öğretici: sınıfı olmayan tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Azure AD ile bir sınıfı tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini, sınıfı olmayan bir şekilde yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -74,7 +74,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD 'de çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Yerleşik **[olmayan çoklu oturum açmayı yapılandırma](#configure-unifi-single-sign-on)** uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. Çoklu **[oturum açmayı yapılandırma](#configure-unifi-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olarak, bir örneği oluşturma bölümünde Britta Simon 'un bir karşılığı olacak şekilde bir **[test kullanıcısı oluşturun](#create-unifi-test-user)** .
@@ -94,7 +94,7 @@ Azure AD 'de çoklu oturum açmayı yapılandırmak için aşağıdaki adımlar�
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -110,7 +110,7 @@ Azure AD 'de çoklu oturum açmayı yapılandırmak için aşağıdaki adımlar�
 
     ![image](common/both-preintegrated-signon.png)
 
-6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -124,21 +124,21 @@ Azure AD 'de çoklu oturum açmayı yapılandırmak için aşağıdaki adımlar�
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-unifi-single-sign-on"></a>SıNıFı çoklu oturum açmayı yapılandırma
+### <a name="configure-unifi-single-sign-on"></a>Tek başına sınıfı yapılandırma Sign-On
 
 1. Farklı bir Web tarayıcısı penceresinde, **sınıfı olmayan** şirket sitenizde yönetici olarak oturum açın.
 
 2. **Kullanıcılara**tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/unifi-tutorial/app1.png)
+    ![Tek Sign-On yapılandırma](./media/unifi-tutorial/app1.png)
 
 3. **Yeni kimlik sağlayıcısı ekle**' ye tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/unifi-tutorial/app2.png)
+    ![Tek Sign-On yapılandırma](./media/unifi-tutorial/app2.png)
 
 4. **Kimlik sağlayıcısı ekle** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/unifi-tutorial/app3.png) 
+    ![Tek Sign-On yapılandırma](./media/unifi-tutorial/app3.png) 
 
     a. **Sağlayıcı adı** metin kutusuna kimlik sağlayıcısının adını yazın.
 

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
 ms.openlocfilehash: 83548063a796401792bd19e7ec27be36a0efa4e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80549200"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure 'da kullanılabilen güvenlik hizmetleri ve teknolojileri
@@ -31,21 +31,21 @@ Bulut hizmeti sağlayıcısı seçeneklerini değerlendirirken, bu bilgilerin ol
 Zaman içinde, bu liste Azure 'un yaptığı gibi değişir ve büyür. Güvenlikle ilgili hizmetlerimiz ve teknolojilerimizde güncel kalmak için bu sayfayı düzenli olarak kontrol ettiğinizden emin olun.
 
 ## <a name="general-azure-security"></a>Genel Azure güvenliği
-|Hizmet|Description|
+|Hizmet|Açıklama|
 |--------|--------|
 |[Azure &nbsp; Güvenlik &nbsp; Merkezi](/azure/security-center/security-center-intro)| Karma bulut iş yükleri arasında güvenlik yönetimi ve Gelişmiş tehdit koruması sağlayan bir bulut iş yükü koruma çözümüdür.|
 |[Azure Key Vault](/azure/key-vault/key-vault-overview)| Parolalar, bağlantı dizeleri ve uygulamalarınızın çalışır durumda tutulması için gereken diğer bilgiler için güvenli bir gizli anahtar deposu. |
-|[Azure İzleyici günlükleri](/azure/log-analytics/log-analytics-overview)|Telemetri ve diğer verileri toplayan bir izleme hizmeti ve uygulamalarınız ve kaynaklarınız için operasyonel içgörüler sunmak üzere bir sorgu dili ve analiz altyapısı sağlar. , Tek başına veya güvenlik merkezi gibi diğer hizmetlerle kullanılabilir. |
+|[Azure Izleyici günlükleri](/azure/log-analytics/log-analytics-overview)|Telemetri ve diğer verileri toplayan bir izleme hizmeti ve uygulamalarınız ve kaynaklarınız için operasyonel içgörüler sunmak üzere bir sorgu dili ve analiz altyapısı sağlar. , Tek başına veya güvenlik merkezi gibi diğer hizmetlerle kullanılabilir. |
 |[Azure geliştirme ve test laboratuvarları](/azure/lab-services/devtest-lab-overview)|Geliştiricilerin ve Test edicilerin Azure 'da hızlı bir şekilde ortam oluşturmalarına yardımcı olan ve maliyeti en aza indirirken bir hizmet.  |
 
 <!---|[Azure&nbsp;Disk&nbsp;Encryption](/azure/azure-security-disk-encryption-overview)| THIS WILL GO TO THE NEW OVERVIEW TOPIC MEGHAN STEWART IS WRITING|--->
 
 ## <a name="storage-security"></a>Depolama alanı güvenliği
-|Hizmet|Description|
+|Hizmet|Açıklama|
 |------|--------|
 | [Azure &nbsp; depolama &nbsp; hizmeti &nbsp; şifrelemesi](/azure/storage/common/storage-service-encryption)|Verilerinizi Azure Storage 'da otomatik olarak şifreleyen bir güvenlik özelliği.   |
 |[StorSimple şifrelenmiş karma depolama](/azure/storsimple/storsimple-ova-overview)| Şirket içi cihazlar ile Azure bulut depolama arasındaki depolama görevlerini yöneten tümleşik bir depolama çözümüdür.|
-|[Azure Istemci tarafı şifreleme](/azure/storage/common/storage-client-side-encryption)| Azure Storage 'a yüklemeden önce istemci uygulamaları içindeki verileri şifreleyen istemci tarafı şifreleme çözümü; Ayrıca, indirme sırasında verilerin şifresini çözer. |
+|[Azure Client-Side şifreleme](/azure/storage/common/storage-client-side-encryption)| Azure Storage 'a yüklemeden önce istemci uygulamaları içindeki verileri şifreleyen istemci tarafı şifreleme çözümü; Ayrıca, indirme sırasında verilerin şifresini çözer. |
 | [Azure depolama paylaşılan erişim Imzaları](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)|Paylaşılan erişim imzası, Depolama hesabınızdaki kaynaklara temsilci erişimi sağlar.  |
 |[Azure depolama hesabı anahtarları](/azure/storage/common/storage-create-storage-account)| Depolama hesabına erişildiğinde kimlik doğrulama için kullanılan Azure depolama için erişim denetimi yöntemi. |
 |[SMB 3,0 şifrelemesi ile Azure dosya paylaşımları](/azure/storage/files/storage-files-introduction)|Sunucu Ileti bloğu (SMB) dosya paylaşımı protokolü için otomatik ağ şifrelemeyi sağlayan bir ağ güvenlik teknolojisi. |
@@ -54,7 +54,7 @@ Zaman içinde, bu liste Azure 'un yaptığı gibi değişir ve büyür. Güvenli
 <!------>
 
 ## <a name="database-security"></a>Veritabanı güvenliği
-|Hizmet|Description|
+|Hizmet|Açıklama|
 |------|--------|
 | [Azure &nbsp; SQL &nbsp; güvenlik duvarı](/azure/sql-database/sql-database-firewall-configure)|Veritabanına yönelik ağ tabanlı saldırılara karşı koruma sağlayan bir ağ erişim denetimi özelliği. |
 |[Azure &nbsp; SQL &nbsp; hücre &nbsp; düzeyi şifreleme](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)| Parçalı düzeyde şifreleme sağlayan bir veritabanı güvenlik teknolojisi.  |
@@ -65,7 +65,7 @@ Zaman içinde, bu liste Azure 'un yaptığı gibi değişir ve büyür. Güvenli
 
 
 ## <a name="identity-and-access-management"></a>Kimlik ve erişim yönetimi
-|Hizmet|Description|
+|Hizmet|Açıklama|
 |------|--------|
 | [Azure &nbsp; rol &nbsp; tabanlı &nbsp; Access Control](/azure/active-directory/role-based-access-control-configure)|Kullanıcıların yalnızca kuruluştaki rollerine göre erişmesi gereken kaynaklara erişmesine izin vermek için tasarlanan bir erişim denetimi özelliği.  |
 | [Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)|Azure 'da çok kiracılı, bulut tabanlı bir dizini ve birden çok kimlik yönetimi hizmetini destekleyen bulut tabanlı bir kimlik doğrulama deposu.  |
@@ -74,13 +74,13 @@ Zaman içinde, bu liste Azure 'un yaptığı gibi değişir ve büyür. Güvenli
 | [Azure Multi-Factor Authentication](/azure/active-directory/authentication/multi-factor-authentication)| Güvenli bilgilere erişim izni vermeden önce birkaç farklı kimlik doğrulama ve doğrulama biçimi kullanan bir güvenlik sağlaması. |
 
 ## <a name="backup-and-disaster-recovery"></a>Yedekleme ve olağanüstü durum kurtarma
-|Hizmet|Description|
+|Hizmet|Açıklama|
 |------|--------|
 | [Azure &nbsp; yedekleme](/azure/backup/backup-introduction-to-azure-backup)| Azure bulutunda verileri yedeklemek ve geri yüklemek için kullanılan Azure tabanlı bir hizmet. |
 | [Azure &nbsp; site &nbsp; Recovery](/azure/site-recovery/site-recovery-overview)|Fiziksel ve sanal makinelerde (VM) çalışan iş yüklerini birincil bir siteden ikincil bir konuma çoğaltan bir hatadan sonra hizmetlerin kurtarılmasını sağlamak için bir çevrimiçi hizmet. |
 
 ## <a name="networking"></a>Ağ
-|Hizmet|Description|
+|Hizmet|Açıklama|
 |------|--------|
 | [Ağ &nbsp; Güvenlik &nbsp; grupları](/azure/virtual-network/virtual-networks-nsg)| İzin verme veya reddetme kararları vermek için 5 tanımlama grubu kullanan ağ tabanlı erişim denetimi özelliği.  |
 | [Azure VPN Gateway](/azure/vpn-gateway/vpn-gateway-about-vpngateways)| Azure sanal ağlarına şirket içi erişime izin vermek için VPN uç noktası olarak kullanılan bir ağ aygıtı.  |
