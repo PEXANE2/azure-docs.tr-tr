@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 10/08/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 897e36a6c5165549d7809512d0298fa2cfed2fa8
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 2f5f653fdaf9df5d1bb2cf87d06047510ad46d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90606926"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856746"
 ---
 1. **Siteleri BAĞLAN** sayfasını açmak Için **VPN sitelerini bağla** ' yı seçin.
 
@@ -22,10 +22,10 @@ ms.locfileid: "90606926"
    Aşağıdaki alanları doldurun:
 
    * Önceden paylaşılan bir anahtar girin. Anahtar girmezseniz, Azure oto sizin için bir tane oluşturur.
-   * Protokol ve IPSec ayarlarını seçin. [Varsayılan/özel IPSec Ayrıntıları] bölümüne bakın (https://docs.microsoft.com/azure/virtual-wan/virtual-wan-ipsec)
+   * Protokol ve IPSec ayarlarını seçin. Daha fazla bilgi için bkz. [varsayılan/özel IPSec](../articles/virtual-wan/virtual-wan-ipsec.md).
    * **Varsayılan yolu yayma**için uygun seçeneği belirleyin. **Etkinleştir** seçeneği, sanal hub 'ın bu bağlantıya öğrenilen bir varsayılan yol yaymasını sağlar. Bu bayrak, yalnızca varsayılan yol sanal WAN hub 'ı hub 'da bir güvenlik duvarı dağıtımının bir sonucu olarak zaten öğrenildiği ya da başka bir bağlı sitede zorlamalı tünelyi etkin olan bir bağlantıya varsayılan yol yaymayı sağlar. Varsayılan yol, sanal WAN hub 'ında değil.
 
-2. **Bağlan**’ı seçin.
+2. **Bağlan**'ı seçin.
 3. Birkaç dakika içinde, site bağlantının ve bağlantı durumunun gösterilmesi gerekir.
 
    ![Ekran görüntüsü, site bağlantısı ve bağlantı durumu için bir V P N sitesini gösterir.](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "durum")

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 10/02/2020
-ms.openlocfilehash: 73a097907a5b44c77ba5e1a9ead4cb4e3a8077c6
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 17d887f0834733fdc833bbbad66c957b057a588a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91777755"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857818"
 ---
 # <a name="cognitive-services-docs-whats-new-for-september-1-2020---september-30-2020"></a>Bilişsel hizmetler belgeleri: 1 Eylül 2020 ' deki yenilikler-30 Eylül 2020
 
@@ -22,7 +22,7 @@ ms.locfileid: "91777755"
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
-- [Hızlı başlangıç: Azure komut satırı arabirimi 'ni (CLı) kullanarak bilişsel hizmetler kaynağı oluşturma](cognitive-services-apis-create-account-cli.md)
+- [Hızlı başlangıç: Azure Command-Line arabirimini (CLı) kullanarak bilişsel hizmetler kaynağı oluşturma](cognitive-services-apis-create-account-cli.md)
 - [Hızlı başlangıç: Azure Yönetim istemci kitaplığını kullanarak bilişsel hizmetler kaynağı oluşturma](cognitive-services-apis-create-account-client-library.md)
 - [Hızlı başlangıç: Azure portal kullanarak bilişsel hizmetler kaynağı oluşturma](cognitive-services-apis-create-account.md)
 - [Hızlı başlangıç: ARM şablonunu kullanarak bilişsel hizmetler kaynağı oluşturma](create-account-resource-manager-template.md)
@@ -99,3 +99,5 @@ Aşağıdaki kişiler bu süre boyunca bilişsel hizmetler belgelerine katkıda 
 - [iAmBipinPaul](https://github.com/iAmBipinPaul) -Bipin Paul (1)
 - [rexwan](https://github.com/rexwan) -Rex Wang (1)
 - [rglidden](https://github.com/rglidden) -Richard Glidden (1)
+
+[!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]

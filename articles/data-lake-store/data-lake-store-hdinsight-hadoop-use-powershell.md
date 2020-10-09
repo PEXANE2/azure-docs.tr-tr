@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 69cfe529f3d2b0f956bfbe9d002a5a220b37e19f
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: d11d3edc4eec0a006e71ef1787cbbd62a7f5957e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91620024"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856985"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>Azure Data Lake Storage 1. ile bir HDInsight kümesi oluşturmak için Azure PowerShell kullanma (ek depolama olarak)
 
@@ -29,7 +29,7 @@ ms.locfileid: "91620024"
 > HDInsight kümesi için ek depolama alanı olarak Data Lake Storage 1. kullanacaksanız, bu makalede açıklandığı gibi kümeyi oluştururken bunu yapmanızı önemle öneririz. Mevcut bir HDInsight kümesine ek depolama alanı olarak Data Lake Storage 1. eklemek karmaşık bir işlemdir ve hatalara açıktır.
 >
 
-Desteklenen küme türleri için Data Lake Storage 1. varsayılan depolama veya ek depolama hesabı olarak kullanılabilir. Data Lake Storage 1. ek depolama alanı olarak kullanıldığında, kümeler için varsayılan depolama hesabı yine de Azure Storage blob 'Ları (işb) olmaya devam eder ve küme ile ilgili dosyalar (örneğin Günlükler vb.) varsayılan depolama alanına yazılır, ancak işlemek istediğiniz veriler bir Data Lake Storage 1. hesabında depolanabilir. Ek depolama hesabı olarak Data Lake Storage 1. kullanmak, performansı veya kümeden depolama alanını okuma/yazma özelliğini etkilemez.
+Desteklenen küme türleri için Data Lake Storage 1. varsayılan depolama veya ek depolama hesabı olarak kullanılabilir. Data Lake Storage 1. ek depolama alanı olarak kullanıldığında, kümeler için varsayılan depolama hesabı hala Azure Blob depolama (işb) olacaktır ve kümeyle ilgili dosyalar (örneğin Günlükler vb.) varsayılan depolama alanına yazılır, ancak işlemek istediğiniz veriler bir Data Lake Storage 1. depolanabilir. Ek depolama hesabı olarak Data Lake Storage 1. kullanmak, performansı veya kümeden depolama alanını okuma/yazma özelliğini etkilemez.
 
 ## <a name="using-data-lake-storage-gen1-for-hdinsight-cluster-storage"></a>HDInsight küme depolaması için Data Lake Storage 1. kullanma
 
@@ -39,12 +39,12 @@ HDInsight 'ı Data Lake Storage 1. ile kullanmayla ilgili bazı önemli noktalar
 
 HDInsight 'ı PowerShell kullanarak Data Lake Storage 1. çalışacak şekilde yapılandırmak aşağıdaki adımları içerir:
 
-* Data Lake Storage 1. Nesil hesabı oluşturma
+* Data Lake Storage 1. Nesil hesabı oluşturma 
 * Data Lake Storage 1. için rol tabanlı erişim için kimlik doğrulamasını ayarlama
 * Data Lake Storage 1. kimlik doğrulamasıyla HDInsight kümesi oluşturma
 * Kümede bir test işi çalıştırma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -57,7 +57,7 @@ Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
     **Bir Azure AD yöneticisi**değilseniz, hizmet sorumlusu oluşturmak için gereken adımları gerçekleştiremezsiniz. Böyle bir durumda, Data Lake Storage 1. bir HDInsight kümesi oluşturabilmeniz için önce Azure AD yöneticinizin bir hizmet sorumlusu oluşturması gerekir. Ayrıca hizmet sorumlusu, [sertifikayla hizmet sorumlusu oluşturma](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority)bölümünde açıklandığı gibi bir sertifika kullanılarak oluşturulmalıdır.
 
-## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage 1. Nesil hesabı oluşturma
+## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage 1. Nesil hesabı oluşturma 
 Data Lake Storage 1. hesabı oluşturmak için bu adımları izleyin.
 
 1. Masaüstünüzde yeni bir Azure PowerShell penceresi açın ve aşağıdaki kod parçacığını girin. Oturum açmanız istendiğinde, abonelik Yöneticisi/sahibinin bir üyesi olarak oturum seçtiğinizden emin olun:
@@ -80,7 +80,7 @@ Data Lake Storage 1. hesabı oluşturmak için bu adımları izleyin.
    > Data Lake Storage 1. kaynak sağlayıcısını kaydederken buna benzer bir hata alırsanız `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` , aboneliğiniz Data Lake Storage 1. için onaylanmamış olabilir. Bu [yönergeleri](data-lake-store-get-started-portal.md)izleyerek Data Lake Storage 1. için Azure aboneliğinizi etkinleştirdiğinizden emin olun.
    >
    >
-2. Bir Data Lake Storage 1. hesabı bir Azure Kaynak grubuyla ilişkilendirilir. Azure Kaynak Grubu oluşturma işlemiyle başlayın.
+2. Data Lake Storage 1. olan bir depolama hesabı bir Azure Kaynak grubuyla ilişkilendirilir. Azure Kaynak Grubu oluşturma işlemiyle başlayın.
 
     ```azurepowershell
     $resourceGroupName = "<your new resource group name>"
@@ -97,10 +97,10 @@ Data Lake Storage 1. hesabı oluşturmak için bu adımları izleyin.
     ResourceId        : /subscriptions/<subscription-id>/resourceGroups/hdiadlgrp
     ```
 
-3. Data Lake Storage 1. hesabı oluşturun. Belirttiğiniz hesap adı yalnızca küçük harf ve rakam içermelidir.
+3. Data Lake Storage 1. bir depolama hesabı oluşturun. Belirttiğiniz hesap adı yalnızca küçük harf ve rakam içermelidir.
 
     ```azurepowershell
-    $dataLakeStorageGen1Name = "<your new Data Lake Storage Gen1 account name>"
+    $dataLakeStorageGen1Name = "<your new storage account with Data Lake Storage Gen1 name>"
     New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
     ```
 
@@ -132,7 +132,7 @@ Data Lake Storage 1. hesabı oluşturmak için bu adımları izleyin.
 
 ## <a name="set-up-authentication-for-role-based-access-to-data-lake-storage-gen1"></a>Data Lake Storage 1. için rol tabanlı erişim için kimlik doğrulamasını ayarlama
 
-Her Azure aboneliği bir Azure Active Directory ilişkilendirilir. Azure portal veya Azure Resource Manager API 'sini kullanarak aboneliğin kaynaklarına erişen kullanıcı ve hizmetler öncelikle bu Azure Active Directory kimlik doğrulamasından uymalıdır. Azure abonelikleri ve Hizmetleri 'ne, Azure kaynağına uygun rol atanarak erişim verilir.  Hizmetler için, hizmet sorumlusu Azure Active Directory (AAD) hizmetini tanımlar. Bu bölümde, uygulama için bir hizmet sorumlusu oluşturarak ve Azure PowerShell aracılığıyla roller atayarak, HDInsight gibi bir uygulama hizmeti (daha önce oluşturduğunuz Data Lake Storage 1. hesap) nasıl vereceğiniz gösterilmektedir.
+Her Azure aboneliği bir Azure Active Directory ilişkilendirilir. Azure portal veya Azure Resource Manager API 'sini kullanarak aboneliğin kaynaklarına erişen kullanıcı ve hizmetler öncelikle bu Azure Active Directory kimlik doğrulamasından uymalıdır. Azure abonelikleri ve Hizmetleri 'ne, Azure kaynağına uygun rol atanarak erişim verilir.  Hizmetler için, hizmet sorumlusu Azure Active Directory (Azure AD) hizmetini tanımlar. Bu bölümde, uygulama için bir hizmet sorumlusu oluşturup Azure PowerShell aracılığıyla roller atayarak, HDInsight gibi bir uygulama hizmetinin (daha önce oluşturduğunuz Data Lake Storage 1. depolama hesabı) nasıl yapılacağı gösterilmektedir.
 
 Data Lake Storage 1. için Active Directory kimlik doğrulaması ayarlamak için aşağıdaki görevleri gerçekleştirmeniz gerekir.
 
@@ -197,7 +197,7 @@ Bu bölümde, bir Azure Active Directory uygulaması için hizmet sorumlusu olu�
      $objectId = $servicePrincipal.Id
     ```
 
-3. Data Lake Storage 1. klasöre ve HDInsight kümesinden erişebileceğiniz dosyaya hizmet sorumlusu erişimi verin. Aşağıdaki kod parçacığı, Data Lake Storage 1. hesabının köküne erişim sağlar (örnek veri dosyasını kopyaladığınız yerdir) ve dosyanın kendisidir.
+3. Data Lake Storage 1. klasöre ve HDInsight kümesinden erişebileceğiniz dosyaya hizmet sorumlusu erişimi verin. Aşağıdaki kod parçacığı, Data Lake Storage 1. (örnek veri dosyasını kopyaladığınız) depolama hesabının köküne ve dosyanın kendisini erişim sağlar.
 
     ```azurepowershell
     Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path / -AceType User -Id $objectId -Permissions All
@@ -206,7 +206,7 @@ Bu bölümde, bir Azure Active Directory uygulaması için hizmet sorumlusu olu�
 
 ## <a name="create-an-hdinsight-linux-cluster-with-data-lake-storage-gen1-as-additional-storage"></a>Ek depolama alanı olarak Data Lake Storage 1. bir HDInsight Linux kümesi oluşturma
 
-Bu bölümde, ek depolama alanı olarak Data Lake Storage 1. bir HDInsight Hadoop Linux kümesi oluşturacağız. Bu sürümde, HDInsight kümesi ve Data Lake Storage 1. hesabı aynı konumda olmalıdır.
+Bu bölümde, ek depolama alanı olarak Data Lake Storage 1. bir HDInsight Hadoop Linux kümesi oluşturacağız. Bu sürümde, Data Lake Storage 1. HDInsight kümesi ve depolama hesabı aynı konumda olmalıdır.
 
 1. Abonelik kiracı KIMLIĞINI almaya başlayın. Daha sonra ihtiyacınız olacak.
 
@@ -214,7 +214,7 @@ Bu bölümde, ek depolama alanı olarak Data Lake Storage 1. bir HDInsight Hadoo
     $tenantID = (Get-AzContext).Tenant.TenantId
     ```
 
-2. Bu sürümde, bir Hadoop kümesi için Data Lake Storage 1. yalnızca küme için ek depolama alanı olarak kullanılabilir. Varsayılan depolama alanı, Azure depolama Blobları (. GB) olmaya devam edecektir. Bu nedenle, önce küme için gereken depolama hesabını ve depolama kapsayıcılarını oluşturacağız.
+2. Bu sürümde, bir Hadoop kümesi için Data Lake Storage 1. yalnızca küme için ek depolama alanı olarak kullanılabilir. Varsayılan depolama alanı, Azure Blob depolama alanı (. GB) olmaya devam edecektir. Bu nedenle, önce küme için gereken depolama hesabını ve depolama kapsayıcılarını oluşturacağız.
 
     ```azurepowershell
     # Create an Azure storage account
@@ -245,8 +245,8 @@ Bu bölümde, ek depolama alanı olarak Data Lake Storage 1. bir HDInsight Hadoo
     Cmdlet başarıyla tamamlandıktan sonra, küme ayrıntılarının listelendiği bir çıktı görmeniz gerekir.
 
 
-## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-the-data-lake-storage-gen1-account"></a>Data Lake Storage 1. hesabını kullanmak için HDInsight kümesinde test işleri çalıştırma
-Bir HDInsight kümesini yapılandırdıktan sonra, HDInsight kümesinin Data Lake Storage 1. erişebileceğini sınamak için test işlerini kümede çalıştırabilirsiniz. Bunu yapmak için, daha önce Data Lake Storage 1. hesabınıza yüklediğiniz örnek verileri kullanarak tablo oluşturan örnek bir Hive işi çalıştıracağız.
+## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-the-data-lake-storage-gen1"></a>Data Lake Storage 1. kullanmak için HDInsight kümesinde test işleri çalıştırın
+Bir HDInsight kümesini yapılandırdıktan sonra, HDInsight kümesinin Data Lake Storage 1. erişebileceğini sınamak için test işlerini kümede çalıştırabilirsiniz. Bunu yapmak için, daha önce Data Lake Storage 1. ile depolama hesabınıza yüklediğiniz örnek verileri kullanarak bir tablo oluşturan örnek bir Hive işi çalıştıracağız.
 
 Bu bölümde, oluşturduğunuz HDInsight Linux kümesine SSH oluşturacak ve örnek Hive sorgusunu çalıştıracaksınız.
 
@@ -290,10 +290,10 @@ Bu bölümde, oluşturduğunuz HDInsight Linux kümesine SSH oluşturacak ve bu 
 * Kümeye SSH için bir Windows istemcisi kullanıyorsanız, bkz. [Windows 'Da HDInsight 'Ta Linux tabanlı Hadoop Ile SSH kullanma](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
 * Kümeye SSH için bir Linux istemcisi kullanıyorsanız bkz. [Linux 'Tan HDInsight 'ta Linux tabanlı Hadoop Ile SSH kullanma](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)
 
-Bağlandıktan sonra, Data Lake Storage 1. hesabındaki dosyaları listelemek için aşağıdaki bir bu dosya sistemi komutunu kullanın.
+Bağlandıktan sonra, Data Lake Storage 1. depolama hesabındaki dosyaları listelemek için aşağıdaki bir bu dosya sistemi komutunu kullanın.
 
 ```azurepowershell
-hdfs dfs -ls adl://<Data Lake Storage Gen1 account name>.azuredatalakestore.net:443/
+hdfs dfs -ls adl://<storage account with Data Lake Storage Gen1 name>.azuredatalakestore.net:443/
 ```
 
 Bu, daha önce karşıya yüklediğiniz dosyayı Data Lake Storage 1. olarak listelemelidir.
@@ -307,7 +307,7 @@ Found 1 items
 Ayrıca, `hdfs dfs -put` Data Lake Storage 1. ' ye bazı dosyaları yüklemek için komutunu kullanabilir ve ardından `hdfs dfs -ls` dosyaların başarıyla karşıya yüklenip yüklenmediğini doğrulamak için kullanabilirsiniz.
 
 ## <a name="see-also"></a>Ayrıca Bkz.
-* [Azure HDInsight kümeleri ile Data Lake Storage 1. kullanma](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
+* [Azure HDInsight kümeleri ile Data Lake Storage 1. kullanma](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md)
 * [Portal: Data Lake Storage 1. kullanmak için HDInsight kümesi oluşturma](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx

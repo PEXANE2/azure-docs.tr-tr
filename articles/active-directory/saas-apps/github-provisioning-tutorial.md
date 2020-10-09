@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.openlocfilehash: b88408480bb0822a061e97336eee5c6b3ccfc8e0
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 847c69a18a73d67b9b994e72686a4073ddd6d27f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91358330"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857546"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için GitHub 'ı yapılandırma
 
@@ -28,6 +28,7 @@ Bu öğreticide anlatılan senaryoda aşağıdakilere sahip olduğunuz kabul edi
 * Azure Active Directory kiracısı
 * GitHub Enterprise [Cloud](https://help.github.com/articles/github-s-products/#github-enterprise)'da oluşturulmuş GitHub [Enterprise faturalandırma planını](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations) gerektiren bir GitHub kuruluşu
 * Kuruluş için yönetici izinlerine sahip GitHub 'da bir kullanıcı hesabı
+* [GitHub Enterprise bulut organizasyonu için yapılandırılmış SAML](https://docs.microsoft.com/azure/active-directory/saas-apps/github-tutorial)
 * [Burada](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization) açıklandığı gibi, kuruluşunuz için OAuth erişiminin sağlandığından emin olun
 * Tek bir kuruluşa SCıM sağlama yalnızca, kuruluş düzeyinde SSO etkinleştirildiğinde desteklenir
 
@@ -51,9 +52,6 @@ Sağlama hizmetini yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki 
 ## <a name="configuring-user-provisioning-to-github"></a>GitHub 'da Kullanıcı sağlamayı yapılandırma
 
 Bu bölümde, Azure AD 'nizi GitHub 'ın Kullanıcı hesabı sağlama API 'sine bağlama ve sağlama hizmeti 'ni Azure AD 'de Kullanıcı ve grup atamasını temel alan GitHub 'da atanan kullanıcı hesaplarını oluşturmak, güncelleştirmek ve devre dışı bırakmak için yapılandırma işlemi kılavuzluk eder.
-
-> [!TIP]
-> Ayrıca, [Azure Portal](https://portal.azure.com)' de sağlanan yönergeleri izleyerek GITHUB için SAML tabanlı çoklu oturum açmayı da seçebilirsiniz. Çoklu oturum açma özelliği otomatik sağlanmadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
 
 ### <a name="configure-automatic-user-account-provisioning-to-github-in-azure-ad"></a>Azure AD 'de otomatik Kullanıcı hesabı sağlamayı GitHub 'a yapılandırma
 

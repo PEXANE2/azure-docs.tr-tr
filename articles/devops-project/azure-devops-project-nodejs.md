@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: angrobe
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: fa6d0f78f984c5e71ccdbcada45ea1bc50be9e95
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6cffa6065f0e1cefc31223553a42a7a78c1dbea8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91318628"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856220"
 ---
 # <a name="create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-starter"></a>Azure DevOps Starter ile Node.js için Azure Pipelines bir CI/CD işlem hattı oluşturma
 
 Bu hızlı başlangıçta, [Gatsbyjs](https://www.gatsbyjs.org/) ve Basitleştirilmiş Azure DevOps Starter oluşturma deneyimini kullanarak bir NodeJS aşamalı Web UYGULAMASı (PWA) oluşturacaksınız. İşiniz bittiğinde, Azure Pipelines ' de PWA 'niz için sürekli tümleştirme (CI) ve sürekli teslim (CD) işlem hattı vardır. Azure DevOps Starter, geliştirme, dağıtma ve izleme için gerekenleri ayarlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 - [Azure DevOps](https://azure.microsoft.com/services/devops/) organizasyonu.
@@ -73,7 +73,7 @@ DevOps Starter Azure Pipelines ' de bir CI/CD işlem hattı oluşturur. Yeni bir
 
     ![Azure DevOps panosu](_img/azure-devops-project-nodejs/devops-projects-dashboard.png) 
 
-1. Azure DevOps projenizden, ekip üyelerini işbirliği yapmak ve işinizi izlemeye başlamak için bir Kanban panosu kurmak üzere davet edebilirsiniz. Daha fazla bilgi için [buraya](https://docs.microsoft.com/azure/devops/user-guide/what-is-azure-devops?view=azure-devops)bakın.
+1. Azure DevOps projenizden, ekip üyelerini işbirliği yapmak ve işinizi izlemeye başlamak için bir Kanban panosu kurmak üzere davet edebilirsiniz. Daha fazla bilgi için [buraya](/azure/devops/user-guide/what-is-azure-devops?view=azure-devops)bakın.
 
 ![Azure DevOps genel bakış](_img/azure-devops-project-nodejs/azure-devops-overview.png)
 
@@ -195,5 +195,4 @@ Artık kaynaklara gerek duymadığınızda oluşturduğunuz Azure App Service ve
 CI/CD işleminizi yapılandırdığınızda, derleme ve yayın işlem hatları otomatik olarak oluşturulur. Bu derleme ve yayın işlem hatlarını takımınızın ihtiyaçlarını karşılayacak şekilde değiştirebilirsiniz. CI/CD işlem hattı hakkında daha fazla bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [CD işlemini özelleştirme](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
-
+> [CD işlemini özelleştirme](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

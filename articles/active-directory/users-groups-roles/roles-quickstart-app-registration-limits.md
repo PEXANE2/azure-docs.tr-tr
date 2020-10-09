@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, devx-track-azurepowershell
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7304ecd73ed73e3ec6ae3c060fef264e016fe38
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bb53f9a6121ec9329eaec5d8cb554e7f125e058f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89067816"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856662"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>Hızlı başlangıç: sınırsız uygulama kaydı oluşturmak için izin verme
 
@@ -60,7 +60,7 @@ Bitti! Bu hızlı başlangıçta, sınırsız sayıda uygulama kaydı oluşturma
 Her biri farklı davranışa sahip olan uygulama kayıtları oluşturmak için iki izin mevcuttur.
 
 - Microsoft. Directory/Apps/createAsOwner: Bu iznin atanması, oluşturucunun oluşturulan uygulama kaydının ilk sahibi olarak eklenmekte ve oluşturulan uygulama kaydı, oluşturucunun 250 tarafından oluşturulan nesne kotasına göre sayılır.
-- Microsoft. Directory/applicationPolicies/Create: Bu izin atama, Oluşturucu oluşturulan uygulama kaydının ilk sahibi olarak eklenmeyecektir ve oluşturulan uygulama kaydı, oluşturucunun 250 tarafından oluşturulan nesneler kotasına göre sayılmaz. Bu izni dikkatle kullanın çünkü dizin düzeyi kotasına ulaşılana kadar atanan uygulama kaydı oluşturulmasını hiçbir şey yok. Her iki izin atanırsa, bu izin önceliklidir.
+- Microsoft. Directory/Applications/Create: Bu izin atama, Oluşturucu oluşturulan uygulama kaydının ilk sahibi olarak eklenmeyecektir ve oluşturulan uygulama kaydı, oluşturucunun 250 tarafından oluşturulan nesneler kotasına göre sayılmaz. Bu izni dikkatle kullanın çünkü dizin düzeyi kotasına ulaşılana kadar atanan uygulama kaydı oluşturulmasını hiçbir şey yok. Her iki izin atanırsa, bu izin önceliklidir.
 
 ## <a name="create-a-custom-role-in-azure-ad-powershell"></a>Azure AD PowerShell 'de özel bir rol oluşturma
 

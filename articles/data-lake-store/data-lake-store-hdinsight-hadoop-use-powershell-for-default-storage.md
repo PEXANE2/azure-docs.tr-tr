@@ -6,17 +6,17 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: d96718176c3cd7486c51e57942c4d12bf0d57992
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: db29b6743458a4a3ec87dfec9e367bef0c946a15
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91620027"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857019"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>PowerShell kullanarak Azure Data Lake Storage 1. varsayılan depolama alanı olarak HDInsight kümeleri oluşturma
 
 > [!div class="op_single_selector"]
-> * [Azure portalı kullanma](data-lake-store-hdinsight-hadoop-use-portal.md)
+> * [Azure portalını kullanma](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [PowerShell kullanma (varsayılan depolama için)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 > * [PowerShell kullanma (ek depolama için)](data-lake-store-hdinsight-hadoop-use-powershell.md)
 > * [Kaynak Yöneticisi kullan](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
@@ -31,7 +31,7 @@ HDInsight 'ı Data Lake Storage 1. ile kullanmayla ilgili bazı önemli noktalar
 
 HDInsight 'ı PowerShell kullanarak Data Lake Storage 1. çalışacak şekilde yapılandırmak için sonraki beş bölümde yer alarak bulunan yönergeleri izleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -46,7 +46,7 @@ Bu öğreticiye başlamadan önce, aşağıdaki gereksinimleri karşıladığın
     >Yalnızca bir Azure AD yöneticisiyseniz bir hizmet sorumlusu oluşturabilirsiniz. Data Lake Storage 1. ile bir HDInsight kümesi oluşturabilmeniz için Azure AD yöneticinizin bir hizmet sorumlusu oluşturması gerekir. Hizmet sorumlusu, [sertifikayla birlikte hizmet sorumlusu oluşturma](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority)bölümünde açıklandığı gibi bir sertifikayla oluşturulmalıdır.
     >
 
-## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage 1. Nesil hesabı oluşturma
+## <a name="create-an-azure-data-lake-storage-gen1-account"></a>Azure Data Lake Storage 1. hesabı oluşturma
 
 Data Lake Storage 1. bir hesap oluşturmak için aşağıdakileri yapın:
 
@@ -282,7 +282,7 @@ hdfs dfs -ls adl:///
 Ayrıca, `hdfs dfs -put` Data Lake Storage 1. ' ye bazı dosyaları yüklemek için komutunu kullanabilir ve ardından `hdfs dfs -ls` dosyaların başarıyla karşıya yüklenip yüklenmediğini doğrulamak için kullanabilirsiniz.
 
 ## <a name="see-also"></a>Ayrıca bkz.
-* [Azure HDInsight kümeleri ile Data Lake Storage 1. kullanma](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
+* [Azure HDInsight kümeleri ile Data Lake Storage 1. kullanma](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md)
 * [Azure portal: kullanmak için HDInsight kümesi oluşturma Data Lake Storage 1.](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx

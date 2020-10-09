@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: a35fb30ca19e08c68c99c9c9524231706b066e11
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fc6cb5d992d4c961e23034560a688c7090622359
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549900"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858107"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-knowledgeowl"></a>Öğretici: KnowledgeOwl ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -111,7 +111,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     ```
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değeri, öğreticide daha sonra açıklanan gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'sinden güncelleştirmeniz gerekir.
+    > Bu değerler gerçek değildir. Bu değeri, öğreticide daha sonra açıklanan gerçek tanımlayıcı, yanıt URL 'SI ve Sign-On URL 'den güncelleştirmeniz gerekir.
 
 1. KnowledgeOwl uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
@@ -167,11 +167,11 @@ Bu bölümde, KnowledgeOwl erişimi vererek Azure çoklu oturum açma özelliği
 
 1. **Ayarlar** ' a ve ardından **güvenlik**' i seçin.
 
-    ![KnowledgeOwl yapılandırması](./media/knowledgeowl-tutorial/configure1.png)
+    ![Ekran görüntüsü ayarlar menüsünden Seçili güvenlik ' i gösterir.](./media/knowledgeowl-tutorial/configure1.png)
 
 1. **SAML SSO tümleştirmesi** ' ne gidin ve aşağıdaki adımları gerçekleştirin:
 
-    ![KnowledgeOwl yapılandırması](./media/knowledgeowl-tutorial/configure2.png)
+    ![Ekran görüntüsünde, burada açıklanan değişiklikleri yapabileceğiniz SAML S S O tümleştirmesi gösterilmektedir.](./media/knowledgeowl-tutorial/configure2.png)
 
     a. **SAML SSO 'Yu etkinleştir**' i seçin.
 
@@ -189,7 +189,7 @@ Bu bölümde, KnowledgeOwl erişimi vererek Azure çoklu oturum açma özelliği
 
     h. Öznitelikleri eşlemek için **SAML özniteliklerini eşle** ' ye tıklayın ve aşağıdaki adımları uygulayın:
 
-    ![KnowledgeOwl yapılandırması](./media/knowledgeowl-tutorial/configure3.png)
+    ![Ekran görüntüsü, eşleme SAML özniteliklerini gösterir ve burada açıklanan değişiklikleri yapabilirsiniz.](./media/knowledgeowl-tutorial/configure3.png)
 
     * `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ssoid` **SSO kimliği** metin kutusuna girin
     * `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` **Kullanıcı adı/e-posta** metin kutusuna girin.
@@ -199,7 +199,7 @@ Bu bölümde, KnowledgeOwl erişimi vererek Azure çoklu oturum açma özelliği
 
     i. Sayfanın alt kısmındaki **Kaydet**’e tıklayın.
 
-    ![KnowledgeOwl yapılandırması](./media/knowledgeowl-tutorial/configure4.png)
+    ![Ekran görüntüsü Kaydet düğmesini gösterir.](./media/knowledgeowl-tutorial/configure4.png)
 
 ### <a name="create-knowledgeowl-test-user"></a>KnowledgeOwl test kullanıcısı oluştur
 

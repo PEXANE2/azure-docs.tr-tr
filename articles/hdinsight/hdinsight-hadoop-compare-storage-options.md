@@ -8,20 +8,20 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: ce1c6bdfb38e37c18a18cf970d2dd08683967da3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a866a225da87c22a3a276a5d59b8e86f1f955cae
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536757"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856203"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Depolama seçeneklerini Azure HDInsight kümeleriyle kullanım için karşılaştırın
 
 HDInsight kümeleri oluştururken birkaç farklı Azure depolama hizmeti arasında seçim yapabilirsiniz:
 
-* [Azure Depolama](./overview-azure-storage.md)
-* [Azure Data Lake Storage 2. Nesil](./overview-data-lake-storage-gen2.md)
-* [Azure Data Lake Storage Gen1](./overview-data-lake-storage-gen1.md)
+* [HDInsight ile Azure Blob depolama](./overview-azure-storage.md)
+* [HDInsight ile Azure Data Lake Storage 2.](./overview-data-lake-storage-gen2.md)
+* [HDInsight ile Azure Data Lake Storage 1.](./overview-data-lake-storage-gen1.md)
 
 Bu makale, bu depolama türlerine ve bunların benzersiz özelliklerine genel bir bakış sağlar.
 
@@ -47,18 +47,18 @@ Birincil ve isteğe bağlı ikincil depolama için hizmet birleşimlerini kullan
 
 | HDInsight sürümü | Birincil depolama alanı | İkincil depolama | Desteklenir |
 |---|---|---|---|
-| 3,6 & 4,0 | Genel Amaçlı v1, Genel Amaçlı v2 | Genel Amaçlı v1, Genel Amaçlı v2, BlobStorage (blok Blobları) | Yes |
-| 3,6 & 4,0 | Genel Amaçlı v1, Genel Amaçlı v2 | Data Lake Storage 2. Nesil | No |
-| 3,6 & 4,0 | Data Lake Storage 2. * | Data Lake Storage 2. Nesil | Yes |
-| 3,6 & 4,0 | Data Lake Storage 2. * | Genel Amaçlı v1, Genel Amaçlı v2, BlobStorage (blok Blobları) | Yes |
-| 3,6 & 4,0 | Data Lake Storage 2. Nesil | Data Lake Storage 1. Nesil | No |
-| 3,6 | Data Lake Storage 1. Nesil | Data Lake Storage 1. Nesil | Yes |
-| 3,6 | Data Lake Storage 1. Nesil | Genel Amaçlı v1, Genel Amaçlı v2, BlobStorage (blok Blobları) | Yes |
-| 3,6 | Data Lake Storage 1. Nesil | Data Lake Storage 2. Nesil | No |
-| 4.0 | Data Lake Storage 1. Nesil | Herhangi bir | No |
-| 4.0 | Genel Amaçlı v1, Genel Amaçlı v2 | Data Lake Storage 1. Nesil | No |
+| 3,6 & 4,0 | Genel Amaçlı v1, Genel Amaçlı v2 | Genel Amaçlı v1, Genel Amaçlı v2, BlobStorage (blok Blobları) | Evet |
+| 3,6 & 4,0 | Genel Amaçlı v1, Genel Amaçlı v2 | Data Lake Storage Gen2 | Hayır |
+| 3,6 & 4,0 | Data Lake Storage 2. * | Data Lake Storage Gen2 | Evet |
+| 3,6 & 4,0 | Data Lake Storage 2. * | Genel Amaçlı v1, Genel Amaçlı v2, BlobStorage (blok Blobları) | Evet |
+| 3,6 & 4,0 | Data Lake Storage Gen2 | Data Lake Storage 1. Nesil | Hayır |
+| 3.6 | Data Lake Storage 1. Nesil | Data Lake Storage 1. Nesil | Evet |
+| 3.6 | Data Lake Storage 1. Nesil | Genel Amaçlı v1, Genel Amaçlı v2, BlobStorage (blok Blobları) | Evet |
+| 3.6 | Data Lake Storage 1. Nesil | Data Lake Storage 2. Nesil | Hayır |
+| 4.0 | Data Lake Storage 1. Nesil | Herhangi biri | Hayır |
+| 4.0 | Genel Amaçlı v1, Genel Amaçlı v2 | Data Lake Storage 1. Nesil | Hayır |
 
-* = Bu, bir veya birden çok Data Lake Storage 2. hesabı olabilir, çünkü tüm kurulum, küme erişimi için aynı yönetilen kimliği kullanır.
+* = Bu, bir veya birden çok Data Lake Storage 2. olabilir, çünkü tüm kurulum, küme erişimi için aynı yönetilen kimliği kullanır.
 
 > [!NOTE]
 > Spark 2,1 veya 2,2 kümelerinde birincil depolama Data Lake Storage 2. desteklenmez.
@@ -71,8 +71,8 @@ HDInsight ile ilişkili depolama hesabının LRS veya [Güven Merkezi](https://a
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Depolama’ya genel bakış](./overview-azure-storage.md)
-* [Azure Data Lake Storage 1. Nesil’e genel bakış](./overview-data-lake-storage-gen1.md)
-* [Azure Data Lake Storage 2. Nesil’e genel bakış](./overview-data-lake-storage-gen2.md)
-* [Azure Data Lake Storage 2. giriş](../storage/blobs/data-lake-storage-introduction.md)
+* [HDInsight 'ta Azure depolama 'ya genel bakış](./overview-azure-storage.md)
+* [HDInsight 'ta Azure Data Lake Storage 1. genel bakış](./overview-data-lake-storage-gen1.md)
+* [HDInsight 'ta Azure Data Lake Storage 2. genel bakış](./overview-data-lake-storage-gen2.md)
+* [Azure Data Lake Storage 2. Nesil'e giriş](../storage/blobs/data-lake-storage-introduction.md)
 * [Azure Depolama’ya giriş](../storage/common/storage-introduction.md)

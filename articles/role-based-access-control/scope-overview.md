@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 09/30/2020
+ms.date: 10/08/2020
 ms.author: rolyon
-ms.openlocfilehash: 80a05fd389ecaf504f58d12bf8efe87debd4ab86
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: ad906e3665c6ffc354cf6292c2559d1184037594
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91604392"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856168"
 ---
 # <a name="understand-scope-for-azure-rbac"></a>Azure RBAC kapsamını anlama
 
@@ -25,6 +25,10 @@ ms.locfileid: "91604392"
 Azure 'da, dört düzeyde bir kapsam belirtebilirsiniz: [Yönetim grubu](../governance/management-groups/overview.md), abonelik, [kaynak grubu](../azure-resource-manager/management/overview.md#resource-groups)ve kaynak. Kapsamlar üst-alt ilişkisiyle yapılandırılmıştır. Her hiyerarşi düzeyi kapsamı daha belirgin hale getirir. Bu kapsam düzeylerinden herhangi birine roller atayabilirsiniz. Seçtiğiniz düzey rolün ne kadar büyük ölçüde uygulanacağını belirler. Alt düzeyler, daha yüksek düzeylerdeki rol izinlerini miras alır. 
 
 ![Rol ataması kapsamı](./media/scope-overview/rbac-scope-no-label.png)
+
+Yönetim grupları, aboneliklerin üzerindeki kapsam düzeyidir, ancak yönetim grupları daha karmaşık hiyerarşileri destekler. Aşağıdaki diyagramda, tanımlayabileceğiniz bir yönetim grupları ve abonelikler hiyerarşisi örneği gösterilmektedir. Yönetim grupları hakkında daha fazla bilgi için bkz. [Azure Yönetim grupları nelerdir?](../governance/management-groups/overview.md).
+
+![Yönetim grubu ve abonelik hiyerarşisi](./media/scope-overview/rbac-scope-management-groups.png)
 
 ## <a name="scope-format"></a>Kapsam biçimi
 
@@ -120,4 +124,4 @@ Bir yönetim grubu, abonelik veya kaynak grubu için kapsamı belirlenmesi olduk
 
 - [Rol ataması ekleme adımları](role-assignments-steps.md)
 - [Azure hizmetleri için kaynak sağlayıcıları](../azure-resource-manager/management/azure-services-resource-providers.md)
-- [Kaynaklarınızı Azure yönetim gruplarıyla düzenleme](../governance/management-groups/overview.md)
+- [Azure yönetim grupları nedir?](../governance/management-groups/overview.md)

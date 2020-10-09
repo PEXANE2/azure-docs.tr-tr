@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: c6a55958102c89c78fe2cd797bb59cf72f9ec505
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 855cbe3d2926a04af773aa32ea0ab63bde89491c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91773153"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857274"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>Azure Web App için özel uç noktaları kullanma
 
@@ -114,6 +114,8 @@ Fiyatlandırma ayrıntıları için bkz. [Azure özel bağlantı fiyatlandırmas
 Azure Işlevi 'ni özel uç nokta ile elastik Premium planda kullandığınızda, işlevi Azure Web portalında çalıştırmak veya yürütmek için doğrudan ağ erişiminizin olması gerekir veya bir HTTP 403 hatası alırsınız. Diğer bir deyişle, tarayıcınızın Azure Web portalından işlevi yürütmek için özel uç noktaya erişebilmesi gerekir. 
 
 Belirli bir Web uygulamasına en fazla 100 özel uç nokta bağlayabilirsiniz.
+
+Web uygulaması için özel uç nokta etkinleştirildiğinde uzaktan hata ayıklama işlevselliği kullanılamaz. Bu öneri, kodu bir yuvaya dağıtmaktır ve burada uzaktan hata ayıklayın.
 
 Özel uç nokta PremiumV2, PremiumV3, Windows ve Linux Web uygulaması, Kapsayıcılı veya olmayan ve Azure Işlevleri Premium planı (bazen elastik Premium plan olarak adlandırılır) için kullanılabilir. 
 

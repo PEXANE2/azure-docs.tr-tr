@@ -7,20 +7,20 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 07/24/2020
-ms.openlocfilehash: e47cd89b2f0a5de4e0fc7663f37a2960e2ada971
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 10/08/2020
+ms.openlocfilehash: 1845de8332287f85e96b4e29c40caa66cb8704d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078638"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856679"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps'te AS2 kurumsal tümleştirme için AS2 iletilerini gönderme ve alma
 
 > [!IMPORTANT]
 > Özgün AS2 Bağlayıcısı kullanım dışı olduğundan, izleme özelliklerine ihtiyacınız yoksa bunun yerine **AS2 (v2)** bağlayıcısını kullanın. İzleme haricinde, v2 Bağlayıcısı özgün sürümle aynı özellikleri sağlar, Logic Apps çalışma zamanına yereldir ve ileti boyutu, aktarım hızı ve gecikme süresi içinde önemli performans iyileştirmeleri vardır. Ayrıca, v2 Bağlayıcısı tümleştirme hesabınıza bir bağlantı oluşturmanızı gerektirmez. Bunun yerine, Önkoşullar bölümünde açıklandığı gibi, tümleştirme hesabınızı bağlayıcıyı kullanmayı planladığınız Logic App 'e bağladığınızdan emin olun.
 
-Azure Logic Apps'te AS2 iletileriyle çalışmak için AS2 iletişiminin yönetilmesine yönelik tetikleyiciler ve eylemler sunan AS2 bağlayıcısını kullanabilirsiniz. Örneğin, iletileri aktarırken güvenlik ve güvenilirlik sağlamak için şu işlemleri kullanabilirsiniz:
+Azure Logic Apps 'de AS2 iletilerle çalışmak için, AS2 (sürüm 1,2) iletişimini destekleyen ve yöneten Tetikleyiciler ve eylemler sağlayan AS2 bağlayıcısını kullanabilirsiniz. Örneğin, iletileri aktarırken güvenlik ve güvenilirlik sağlamak için şu işlemleri kullanabilirsiniz:
 
 * [ **AS2 kodlama** ](#encode) , dijital Imzalama ve ileti değerlendirme bildirimleri (MDN) aracılığıyla, geçiş dışı desteği sağlamaya yardımcı olan bir kodlama eylemi. Örneğin, bu eylem AS2/HTTP üstbilgilerini uygular ve yapılandırıldığında bu görevleri gerçekleştirir:
 
@@ -88,7 +88,7 @@ Bu makalede, AS2 Encoding ve kod çözme eylemlerinin mevcut bir mantıksal uygu
    | **AS2** | İleti alıcısının AS2 anlaşmanız tarafından belirtilen tanımlayıcısı |
    |||
 
-   Örneğin:
+   Örnek:
 
    ![İleti kodlama özellikleri](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
 

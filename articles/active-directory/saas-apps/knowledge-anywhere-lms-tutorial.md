@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 507298f323fe14e3b114afebed5f2f258145a76e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bc820eb282d08c248b588aa926eb3fd837fe51c3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549952"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858141"
 ---
 # <a name="tutorial-integrate-knowledge-anywhere-lms-with-azure-active-directory"></a>Öğretici: Azure Active Directory her yerde LMS 'yi tümleştirin
 
@@ -69,7 +69,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. [Azure Portal](https://portal.azure.com/) **her yerde LMS** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -89,7 +89,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!NOTE]
     > Oturum açma URL 'SI değeri gerçek değil. Bu değeri, gerçek oturum açma URL 'siyle güncelleştirin. Bu değeri almak için [her yerde LMS istemci desteği ekibinin bilgi bilgisine](https://knowany.zendesk.com/hc/en-us/articles/360000469034-SAML-2-0-Single-Sign-On-SSO-Set-Up-Guide) ulaşın. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML Ile tekli Sign-On ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
    ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -111,19 +111,19 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 4. **Site** sekmesinde öğesini seçin.
 
-    ![Her yerde LMS yapılandırması bilgisi](./media/knowledge-anywhere-lms-tutorial/configure1.png)
+    ![Ekran görüntüsü site sekmesini gösterir.](./media/knowledge-anywhere-lms-tutorial/configure1.png)
 
 5. **SAML ayarları** sekmesinde öğesini seçin.
 
-    ![Her yerde LMS yapılandırması bilgisi](./media/knowledge-anywhere-lms-tutorial/configure2.png)
+    ![Ekran görüntüsünde, SAML ayarlarının seçildiği her yerde bilgi görüntülenir.](./media/knowledge-anywhere-lms-tutorial/configure2.png)
 
 6. **Yeni Ekle**' ye tıklayın.
 
-    ![Her yerde LMS yapılandırması bilgisi](./media/knowledge-anywhere-lms-tutorial/configure3.png)
+    ![Ekran görüntüsünde, hizmet sağlayıcı ayarları ' nda yeni Ekle düğmesi gösterilir.](./media/knowledge-anywhere-lms-tutorial/configure3.png)
 
 7. **SAML ayarlarını Ekle/güncelleştir** sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Her yerde LMS yapılandırması bilgisi](./media/knowledge-anywhere-lms-tutorial/configure4.png)
+    ![Ekran görüntüsü, burada açıklanan değişiklikleri yapabileceğiniz SAML ayarlarını Ekle/güncelleştir sayfasını gösterir.](./media/knowledge-anywhere-lms-tutorial/configure4.png)
 
     a. IDP adını kuruluşunuza göre girin. For Ex:- `Azure` .
 

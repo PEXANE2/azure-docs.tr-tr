@@ -8,21 +8,21 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 23e7b0f8dcb0c64259627d5350511ebdc48d6fac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 73b5966bf90d2829456401a25cc5b8ea001397d4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078978"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856237"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>HDInsight 'a ek depolama hesapları ekleme
 
-HDInsight 'a ek Azure depolama *hesapları* eklemek için betik eylemlerinin nasıl kullanılacağını öğrenin. Bu belgedeki adımlar, var olan bir HDInsight kümesine bir depolama *hesabı* ekler. Bu makale, ve gibi ek depolama için depolama *hesapları* (varsayılan küme depolama hesabı değil) için geçerlidir [`Azure Data Lake Storage Gen1`](hdinsight-hadoop-use-data-lake-store.md) [`Azure Data Lake Storage Gen2`](hdinsight-hadoop-use-data-lake-storage-gen2.md) .
+HDInsight 'a ek Azure depolama *hesapları* eklemek için betik eylemlerinin nasıl kullanılacağını öğrenin. Bu belgedeki adımlar, var olan bir HDInsight kümesine bir depolama *hesabı* ekler. Bu makale, ve gibi ek depolama için depolama *hesapları* (varsayılan küme depolama hesabı değil) için geçerlidir [`Azure Data Lake Storage Gen1`](hdinsight-hadoop-use-data-lake-storage-gen1.md) [`Azure Data Lake Storage Gen2`](hdinsight-hadoop-use-data-lake-storage-gen2.md) .
 
 > [!IMPORTANT]  
 > Bu belgedeki bilgiler, bir kümeye oluşturulduktan sonra ek depolama hesapları ekleme hakkında bilgi içerir. Küme oluşturma sırasında depolama hesapları ekleme hakkında daha fazla bilgi için bkz. [HDInsight 'ta Apache Hadoop, Apache Spark, Apache Kafka ve daha fazlası ile kümeleri ayarlama](hdinsight-hadoop-provision-linux-clusters.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * HDInsight üzerinde bir Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](./hadoop/apache-hadoop-linux-tutorial-get-started.md).
 * Depolama hesabı adı ve anahtarı. Bkz. [depolama hesabı erişim anahtarlarını yönetme](../storage/common/storage-account-keys-manage.md).
@@ -55,8 +55,8 @@ Değişiklikleri aşağıdaki noktalara uygulamak için [betik eylemi](hdinsight
 |Düğüm türleri|Head|
 |Parametreler|`ACCOUNTNAME``ACCOUNTKEY` `-p` (isteğe bağlı)|
 
-* `ACCOUNTNAME`, HDInsight kümesine eklenecek depolama hesabının adıdır.
-* `ACCOUNTKEY`, için erişim anahtarıdır `ACCOUNTNAME` .
+* `ACCOUNTNAME` , HDInsight kümesine eklenecek depolama hesabının adıdır.
+* `ACCOUNTKEY` , için erişim anahtarıdır `ACCOUNTNAME` .
 * `-p` isteğe bağlıdır. Belirtilmişse, anahtar şifrelenmez ve core-site.xml dosyasında düz metin olarak depolanır.
 
 ## <a name="verification"></a>Doğrulama

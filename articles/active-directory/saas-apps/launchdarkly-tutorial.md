@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: bae3f4a0d8c793061bb3833b04717d378e86f85f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 78f9217ea7288bac56b008911f7b39c73bba7771
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88519900"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856577"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-launchdarkly"></a>Öğretici: Launchkaranlık ile tümleştirme Azure Active Directory
 
@@ -74,7 +74,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açma 'yı [uygulama adı] ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, **[Launchkoyu çoklu oturum açmayı yapılandırma](#configure-launchdarkly-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için, **[Launchkoyu çoklu oturum açmayı yapılandırma](#configure-launchdarkly-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olarak, Launchkaranlık ve üzerinde bir Britta Simon 'a sahip olmak için, **[launchkaranlık test kullanıcısı oluşturun](#create-launchdarkly-test-user)** .
@@ -94,13 +94,13 @@ Azure AD çoklu oturum açmayı [uygulama adı] ile yapılandırmak için aşağ
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    ![Koyu etki alanı ve URL 'Ler çoklu oturum açma bilgileri başlatma](common/idp-intiated.png)
+    ![Ekran görüntüsü; tanımlayıcı girebileceğiniz, yanıt U R L ve Kaydet ' i seçebileceğiniz temel SAML yapılandırmasını gösterir.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusuna bir URL yazın:`app.launchdarkly.com`
 
@@ -113,9 +113,9 @@ Azure AD çoklu oturum açmayı [uygulama adı] ile yapılandırmak için aşağ
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://app.launchdarkly.com`
 
-    ![Koyu etki alanı ve URL 'Ler çoklu oturum açma bilgileri başlatma](common/metadata-upload-additional-signon.png)
+    ![Ekran görüntüsü, U R L 'ye bir Işaret girebileceğiniz ek U R 'Leri ayarlamayı gösterir.](common/metadata-upload-additional-signon.png)
 
-6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -129,25 +129,25 @@ Azure AD çoklu oturum açmayı [uygulama adı] ile yapılandırmak için aşağ
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-launchdarkly-single-sign-on"></a>Launchkoyu çoklu oturum açmayı yapılandırma
+### <a name="configure-launchdarkly-single-sign-on"></a>Launchkoyu tek Sign-On yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, Launchkaranlık şirket sitenizde yönetici olarak oturum açın.
 
 2. Sol Gezinti panelinden **Hesap ayarları** ' nı seçin.
 
-    ![Başlatma koyu yapılandırma](./media/launchdarkly-tutorial/configure1.png)
+    ![Ekran görüntüsünde, üretim altında seçilen hesap ayarları öğesi gösterilir.](./media/launchdarkly-tutorial/configure1.png)
 
 3. **Güvenlik** sekmesine tıklayın.
 
-    ![Başlatma koyu yapılandırma](./media/launchdarkly-tutorial/configure2.png)
+    ![Ekran görüntüsü, hesap ayarlarının Güvenlik sekmesini gösterir.](./media/launchdarkly-tutorial/configure2.png)
 
 4. **SSO 'Yu etkinleştir** ' e tıklayın ve ardından **SAML yapılandırmasını düzenleyin**.
 
-    ![Başlatma koyu yapılandırma](./media/launchdarkly-tutorial/configure3.png)
+    ![Ekran görüntüsü, S S 'yi ETKINLEŞTIREBILECEĞINIZ ve SAML YAPıLANDıRMASıNı DÜZENLEYEBILECEĞINIZ çoklu oturum açma sayfasını gösterir.](./media/launchdarkly-tutorial/configure3.png)
 
 5. **SAML yapılandırmanızı Düzenle** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Başlatma koyu yapılandırma](./media/launchdarkly-tutorial/configure4.png)
+    ![Ekran görüntüsü, burada açıklanan değişiklikleri yapabileceğiniz SAML yapılandırmanızı düzenleyin bölümünü gösterir.](./media/launchdarkly-tutorial/configure4.png)
 
     a. Örneğiniz için **SAML tüketicisi hizmeti URL 'sini** kopyalayın ve Azure Portal ' de **Launchkoyu etki alanı ve URL 'ler** bölümünde yanıt URL 'si metin kutusuna yapıştırın.
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 55ffd563ea0a99d32608bd90bd53d7dc88eb4cf2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c8862398d5c79335e4ed59f4ca42df9abd58965e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961821"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856594"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux’ta HDInsight kullanma ile ilgili bilgiler
 
@@ -101,15 +101,15 @@ Hadoop ile ilgili dosyalar konumundaki küme düğümlerinde bulunabilir `/usr/h
 
 Çoğu Hadoop dağıtımlarında veriler, Bu, kümedeki makinelerde yerel depolama alanı tarafından desteklenir. Yerel depolama kullanmak, saatlik olarak veya işlem kaynakları için dakikaya göre ücretlendirilebilen bulut tabanlı bir çözüm için maliyetli olabilir.
 
-HDInsight kullanılırken, veri dosyaları Azure Blob depolama ve isteğe bağlı olarak Azure Data Lake Storage bulutta bir uyarlamalı tablo ve dayanıklı bir şekilde depolanır. Bu hizmetler aşağıdaki avantajları sağlar:
+HDInsight kullanılırken, veri dosyaları Azure Blob depolama ve isteğe bağlı olarak Azure Data Lake Storage 1./Gen2 kullanarak bulutta Uyarlamalı ve dayanıklı bir şekilde depolanır. Bu hizmetler aşağıdaki avantajları sağlar:
 
 * Cheap uzun süreli depolama.
 * Web siteleri, dosya yükleme/indirme yardımcı programları, çeşitli dil SDK 'Ları ve Web tarayıcıları gibi dış hizmetlerden erişilebilirlik.
 * Büyük dosya kapasitesi ve büyük uyarlanabilir depolama.
 
-Daha fazla bilgi için bkz. [Blobları](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) ve [Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)anlama.
+Daha fazla bilgi için bkz. [Azure Blob depolama](../storage/common/storage-introduction.md), [Azure Data Lake Storage 1.](../data-lake-store/data-lake-store-overview.md)veya [Azure Data Lake Storage 2.](../storage/blobs/data-lake-storage-introduction.md).
 
-Azure Storage veya Data Lake Storage kullanılırken, HDInsight 'tan verilere erişmek için özel bir şey yapmanız gerekmez. Örneğin, aşağıdaki komut, `/example/data` klasördeki dosyaları Azure depolama 'da mi yoksa Data Lake Storage, mi depolandığını listeler:
+Azure Blob depolama veya Data Lake Storage 1./Gen2 kullanılırken, HDInsight 'tan verilere erişmek için özel bir şey yapmanız gerekmez. Örneğin, aşağıdaki komut, `/example/data` klasördeki dosyaları Azure depolama 'da mi yoksa Data Lake Storage, mi depolandığını listeler:
 
 ```console
 hdfs dfs -ls /example/data
@@ -135,7 +135,7 @@ Bazı komutlar bir dosyaya erişirken, şemayı URI 'nin bir parçası olarak be
 
 * `abfs://<container-name>@<account-name>.dfs.core.windows.net/`: Varsayılan olmayan bir depolama hesabıyla iletişim kurulurken kullanılır. Örneğin, ek bir depolama hesabınız olduğunda veya genel olarak erişilebilen bir depolama hesabında depolanan verilere erişirken.
 
-[**Azure Data Lake Storage 1.**](./hdinsight-hadoop-use-data-lake-store.md)kullanırken, aşağıdaki URI düzenlerinden birini kullanın:
+[**Azure Data Lake Storage 1.**](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md)kullanırken, aşağıdaki URI düzenlerinden birini kullanın:
 
 * `adl:///`: Küme için varsayılan Data Lake Storage erişin.
 
@@ -159,11 +159,11 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
 
 Bu komut aşağıdaki URI 'lere benzer bir değer döndürür:
 
-* `wasb://<container-name>@<account-name>.blob.core.windows.net`bir Azure depolama hesabı kullanıyorsanız.
+* `wasb://<container-name>@<account-name>.blob.core.windows.net` bir Azure depolama hesabı kullanıyorsanız.
 
     Hesap adı, Azure depolama hesabının adıdır. Kapsayıcı adı, küme depolamanın kökü olan blob kapsayıcısıdır.
 
-* `adl://home`Azure Data Lake Storage kullanıyorsanız. Data Lake Storage adı almak için aşağıdaki REST çağrısını kullanın:
+* `adl://home` Azure Data Lake Storage kullanıyorsanız. Data Lake Storage adı almak için aşağıdaki REST çağrısını kullanın:
 
      ```bash
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'
@@ -189,9 +189,9 @@ Ayrıca, aşağıdaki adımları kullanarak Azure portal kullanarak depolama bil
 
 HDInsight kümesi dışından verilere erişmenin çeşitli yolları vardır. Aşağıda, verilerle çalışmak için kullanılabilecek yardımcı programlar ve SDK 'ların birkaç bağlantısı verilmiştir:
 
-__Azure Storage__kullanıyorsanız verilerinize erişebilmenizin yolları için aşağıdaki bağlantılara bakın:
+__Azure Blob depolama__kullanılıyorsa verilerinize erişebilmenizin yolları için aşağıdaki bağlantılara bakın:
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2): Azure ile çalışmaya yönelik komut satırı arabirimi komutları. Yükledikten sonra, `az storage` depolamayı kullanma hakkında yardım için veya `az storage blob` BLOB 'a özgü komutlar için komutunu kullanın.
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2): Azure ile çalışmaya yönelik arabirim komutlarını Command-Line. Yükledikten sonra, `az storage` depolamayı kullanma hakkında yardım için veya `az storage blob` BLOB 'a özgü komutlar için komutunu kullanın.
 * [blobxfer.py](https://github.com/Azure/blobxfer): Azure depolama 'da bloblarla çalışmaya yönelik bir Python betiği.
 * Çeşitli SDK 'lar:
 
@@ -203,7 +203,7 @@ __Azure Storage__kullanıyorsanız verilerinize erişebilmenizin yolları için 
     * [.NET](https://github.com/Azure/azure-sdk-for-net)
     * [Depolama REST API’si](https://msdn.microsoft.com/library/azure/dd135733.aspx)
 
-__Azure Data Lake Storage__kullanıyorsanız verilerinize erişebilmenizin yolları için aşağıdaki bağlantılara bakın:
+__Azure Data Lake Storage 1.__ kullanıyorsanız verilerinize erişebilmenizin yolları için aşağıdaki bağlantılara bakın:
 
 * [Web tarayıcısı](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)

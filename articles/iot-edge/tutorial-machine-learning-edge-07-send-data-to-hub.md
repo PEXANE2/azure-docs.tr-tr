@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 78d3cbac28a85452f23e4a7c7ba3904fe3d1f488
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ec7337ad798d586cb93bd13e60ead1ef9f2a4abe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997889"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857257"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Öğretici: saydam ağ geçidi aracılığıyla veri gönderme
 
@@ -238,5 +238,8 @@ Bu makalede, IoT Edge cihazımız algılayıcısı ve işletimsel verileri gönd
 
 Aşağıdaki sayfalarda daha fazla bilgi bulabilirsiniz:
 
-* [Aşağı akış cihazını Azure IoT Edge ağ geçidine bağlama](how-to-connect-downstream-device.md)
-* [IoT Edge Azure Blob Storage ile verileri kenarda depolayın (Önizleme)](how-to-store-data-blob.md)
+> [!div class="nextstepaction"]
+> [Aşağı akış cihazını Azure IoT Edge ağ geçidine bağlama](how-to-connect-downstream-device.md)
+
+> [!div class="nextstepaction"]
+> [IoT Edge Azure Blob Storage ile verileri kenarda depolayın (Önizleme)](how-to-store-data-blob.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 77c83e82577cb1d6d07c90a0260a5fa006fd8625
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8cf4df682a5c141e39a3860547a5b6130e2a3002
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554854"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856946"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-m-files"></a>Öğretici: d-dosyalarla Azure Active Directory tümleştirme
 
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açma 'yı e-dosyalarla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[A-Files çoklu oturum açmayı yapılandırma](#configure-m-files-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[A-Files çoklu oturum açmayı yapılandırma](#configure-m-files-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. E- **[Files test kullanıcısı oluşturun](#create-m-files-test-user)** -kullanıcının Azure AD gösterimine bağlı olan, d-dosyalarında Britta Simon 'a sahip olmak için.
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı, e-dosyalarla birlikte yapılandırmak için aş
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -108,7 +108,7 @@ Azure AD çoklu oturum açmayı, e-dosyalarla birlikte yapılandırmak için aş
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için, [e-Files istemci destek ekibine](mailto:support@m-files.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -122,7 +122,7 @@ Azure AD çoklu oturum açmayı, e-dosyalarla birlikte yapılandırmak için aş
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-m-files-single-sign-on"></a>A-Files çoklu oturum açmayı yapılandırma
+### <a name="configure-m-files-single-sign-on"></a>Tek tek dosyaları yapılandırın Sign-On
 
 1. Uygulamanız için yapılandırılmış SSO 'yu almak için, [e-Files destek ekibine](mailto:support@m-files.com) başvurun ve Indirilen meta verileri sağlayın.
    
@@ -133,11 +133,11 @@ Azure AD çoklu oturum açmayı, e-dosyalarla birlikte yapılandırmak için aş
 
 1. **D-Files masaüstü ayarları** penceresini açın. Ardından **Ekle**' ye tıklayın.
    
-    ![Çoklu oturum açmayı yapılandırma](./media/m-files-tutorial/tutorial_m_files_10.png)
+    ![Ekran görüntüsü, Ekle ' yi seçebileceğiniz, a-Files masaüstü ayarlarını gösterir.](./media/m-files-tutorial/tutorial_m_files_10.png)
 
 1. **Belge Kasası bağlantısı özellikleri** penceresinde, aşağıdaki adımları uygulayın:
    
-    ![Çoklu oturum açmayı yapılandırma](./media/m-files-tutorial/tutorial_m_files_11.png)  
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz belge Kasası bağlantı özelliklerini gösterir.](./media/m-files-tutorial/tutorial_m_files_11.png)  
 
     Sunucu bölümünün altında, aşağıdaki gibi değerleri:  
 
@@ -151,7 +151,7 @@ Azure AD çoklu oturum açmayı, e-dosyalarla birlikte yapılandırmak için aş
 
     e. **Sunucu üzerindeki kasa**için, sunucuda ilgili kasayı seçin.
  
-    f. **Tamam** düğmesine tıklayın.
+    f. **Tamam**'a tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 

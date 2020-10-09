@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: ce35f3af38b98f43ebbd0d3f42136ab8358b19a5
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 723f46652643883dc8e718468a9ca9eead50e1aa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82233729"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856033"
 ---
 # <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-starter"></a>Öğretici: Azure DevOps Starter kullanarak ASP.NET Core uygulamanızı Azure Service Fabric dağıtma
 
@@ -43,7 +43,7 @@ Bu öğreticide şunları yapacaksınız:
 
 DevOps Starter Azure Pipelines ' de bir CI/CD işlem hattı oluşturur. Yeni bir Azure DevOps kuruluşu oluşturabilir veya var olan bir kuruluşu kullanabilirsiniz. DevOps Starter Ayrıca tercih ettiğiniz Azure aboneliğinde Service Fabric kümesi gibi Azure kaynakları oluşturur.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. Arama kutusuna **DevOps Starter**yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın.
 
@@ -158,4 +158,4 @@ Ekibinizin gereksinimlerine uygun olarak bu Azure CI/CD işlem hatlarını isted
 Service Fabric ve mikro hizmetler hakkında daha fazla bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [Uygulamaları oluşturmak için bir mikro hizmetler yaklaşımı kullanma](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Uygulamaları oluşturmak için bir mikro hizmetler yaklaşımı kullanma](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

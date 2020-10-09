@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: f7d2351fdc39ec4600cbca2e436cdcd527157275
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7bdb2c6ba6717624b19184ca3bcb47ee9b3da367
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332973"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856118"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure için SQL Data Sync nedir?
 
@@ -83,7 +83,7 @@ Veri eşitleme, aşağıdaki senaryolar için tercih edilen çözüm değildir:
 | **Avantajlar** | -Etkin-etkin destek<br/>-Şirket içi ve Azure SQL veritabanı arasında çift yönlü | -Düşük gecikme süresi<br/>-İşlemsel tutarlılık<br/>-Geçişten sonra var olan topolojiyi yeniden kullan <br/>-Azure SQL yönetilen örnek desteği |
 | **Dezavantajlar** | -5 dk veya daha fazla gecikme<br/>-İşlem tutarlılığı yok<br/>-Daha yüksek performans etkisi | -Azure SQL veritabanından yayımlanamıyor <br/>-Yüksek bakım maliyeti |
 
-## <a name="get-started"></a>Kullanmaya başlayın 
+## <a name="get-started"></a>başlarken 
 
 ### <a name="set-up-data-sync-in-the-azure-portal"></a>Azure portal veri eşitlemesini ayarlama
 
@@ -126,7 +126,7 @@ Eşitleme grubu oluşturma, güncelleştirme ve silme sırasında sağlama ve sa
 > - Eşit bir sorun bildirmese de, hub ve üye arasındaki veriler kaybolabilir.
 > - Birincil anahtar değişikliği nedeniyle izleme tablosu kaynaktan mevcut olmayan bir satır içerdiğinden eşitleme başarısız olabilir.
 
-- Anlık görüntü yalıtımı etkinleştirilmelidir. Daha fazla bilgi için bkz. [SQL Server'da Anlık Görüntü Yalıtımı](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
+- Hem eşitleme üyeleri hem de Hub için anlık görüntü yalıtımının etkinleştirilmesi gerekir. Daha fazla bilgi için bkz. [SQL Server'da Anlık Görüntü Yalıtımı](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
 
 ### <a name="general-limitations"></a>Genel sınırlamalar
 
@@ -137,7 +137,7 @@ Eşitleme grubu oluşturma, güncelleştirme ve silme sırasında sağlama ve sa
 - Nesnelerin (veritabanları, tablolar ve sütunlar) adları, yazdırılabilir karakterler (.), sol köşeli ayraç ([) veya sağ köşeli ayraç (]) içeremez.
 - Azure Active Directory kimlik doğrulaması desteklenmiyor.
 - Aynı ada ancak farklı şemaya (örneğin, dbo. Customers ve Sales. Customers) sahip tablolar desteklenmez.
-- Kullanıcı tanımlı veri türleri olan sütunlar desteklenmez
+- User-Defined veri türlerine sahip sütunlar desteklenmez
 - Sunucuları farklı abonelikler arasında taşımak desteklenmez. 
 
 #### <a name="unsupported-data-types"></a>Desteklenmeyen veri türleri
@@ -149,7 +149,7 @@ Eşitleme grubu oluşturma, güncelleştirme ve silme sırasında sağlama ve sa
 
 #### <a name="unsupported-column-types"></a>Desteklenmeyen sütun türleri
 
-Veri eşitleme, salt okuma veya sistem tarafından oluşturulmuş sütunları eşitleyemiyor. Örneğin:
+Veri eşitleme, salt okuma veya sistem tarafından oluşturulmuş sütunları eşitleyemiyor. Örnek:
 
 - Hesaplanan sütunlar.
 - Zamana bağlı tablolar için sistem tarafından oluşturulan sütunlar.
@@ -224,7 +224,7 @@ Verilerinizin yedeğini oluşturmak için SQL Data Sync kullanılması önerilme
 ### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>Veri eşitleme eşitleme şifrelenmiş tabloları ve sütunları
 
 - Bir veritabanı Always Encrypted kullanıyorsa, *yalnızca şifrelenmemiş tabloları* ve sütunları eşitleyebilirsiniz. Veri eşitlemesi verilerin şifresini çözemediği için şifrelenmiş sütunları eşitleyemezsiniz.
-- Bir sütun, sütun düzeyinde şifreleme (CLE) kullanıyorsa, satır boyutu en fazla 24 MB boyutundan daha az olduğu sürece sütunu eşitleyebilirsiniz. Veri eşitleme, anahtar (CLE) tarafından şifrelenmiş sütunu normal ikili veriler olarak değerlendirir. Diğer eşitleme üyelerdeki verilerin şifresini çözmek için aynı sertifikaya sahip olmanız gerekir.
+- Bir sütun Column-Level şifrelemeyi (CLE) kullanıyorsa, satır boyutu en fazla 24 MB boyutundan daha az olduğu sürece sütunu eşitleyebilirsiniz. Veri eşitleme, anahtar (CLE) tarafından şifrelenmiş sütunu normal ikili veriler olarak değerlendirir. Diğer eşitleme üyelerdeki verilerin şifresini çözmek için aynı sertifikaya sahip olmanız gerekir.
 
 ### <a name="is-collation-supported-in-sql-data-sync"></a>SQL Data Sync içinde harmanlama destekleniyor
 

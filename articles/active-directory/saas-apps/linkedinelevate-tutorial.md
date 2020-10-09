@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 1f4569a45b9ed0eee7c375e660df97925335313b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5dcd705719510cce3a113c5b0fdc46d016313b6d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549815"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856424"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-elevate"></a>Öğretici: LinkedIn yükseltme ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -144,11 +144,11 @@ Bu bölümde, LinkedIn yükseltmesine erişim izni vererek Azure çoklu oturum a
 
 1. **Hesap Merkezi**'nde **Ayarlar**' ın altında **Genel ayarlar** ' a tıklayın. Ayrıca, açılır listeden **Yükselt-Yükselt AAD test** ' i seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_01.png)
+    ![Ekran görüntüsü, D testi Yükselt ' i seçebileceğiniz genel ayarları gösterir.](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_01.png)
 
 1. **Formdan tek tek alanları yüklemek ve kopyalamak için tıklayın veya buraya tıklayın** ve aşağıdaki adımları uygulayın:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_03.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz tek Sign-On gösterir.](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_03.png)
 
     a. **VARLıK kimliğini** kopyalayın ve Azure Portal **temel SAML yapılandırmasındaki** **tanımlayıcı** metin kutusuna yapıştırın.
 
@@ -156,11 +156,11 @@ Bu bölümde, LinkedIn yükseltmesine erişim izni vererek Azure çoklu oturum a
 
 1. **LinkedIn yönetici ayarları** bölümüne gidin. XML dosyasını karşıya yükle seçeneğine tıklayarak Azure portal indirdiğiniz XML dosyasını karşıya yükleyin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/linkedinelevate-tutorial/tutorial_linkedin_metadata_03.png)
+    ![Ekran görüntüsü, bir X M L dosyasını karşıya yükleyebileceğiniz LinkedIn Service Provider S S O ayarlarını yapılandırmayı gösterir.](./media/linkedinelevate-tutorial/tutorial_linkedin_metadata_03.png)
 
 1. SSO 'yu **etkinleştirmek için tıklayın** . SSO durumu **bağlı** **değil** olarak değiştirilecek
 
-    ![Çoklu oturum açmayı yapılandırma](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_05.png)
+    ![Ekran görüntüsü, otomatik olarak lisans atayabileceğiniz tek Sign-On gösterir.](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_05.png)
 
 ### <a name="create-linkedin-elevate-test-user"></a>LinkedIn yükseltme testi Kullanıcı Oluştur
 

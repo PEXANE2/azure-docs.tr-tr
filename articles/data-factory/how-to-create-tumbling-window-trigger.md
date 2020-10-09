@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 964190108bb53a349fa1cb1301e2a554c1e32b26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c35fa28457e3cb9a063fa29c20d8651fcb4eeb45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83996695"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856495"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Atlayan pencerede işlem hattı çalıştıran bir tetikleyici oluşturma
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -98,8 +98,8 @@ Aşağıdaki tabloda, atlayan bir pencere tetikleyicisinin yinelenme ve zamanlam
 |:--- |:--- |:--- |:--- |:--- |
 | **türüyle** | Tetikleyicinin türü. Tür, "TumblingWindowTrigger" sabit değeridir. | Dize | "TumblingWindowTrigger" | Evet |
 | **runtimeState** | Tetikleyici çalışma zamanının geçerli durumu.<br/>**Note**: Bu öğe \<readOnly> . | Dize | "Başlatıldı," "durduruldu," "devre dışı" | Evet |
-| **lemiyor** | Tetikleyicinin yineleneceği sıklık birimini (dakika veya saat) temsil eden bir dize. **StartTime** tarih değerleri **Sıklık** değerinden daha ayrıntılı ise, pencere sınırları hesaplandıktan sonra **StartTime** tarihleri kabul edilir. Örneğin **Sıklık** değeri saat Ise ve **StartTime** değeri 2017-09-01T10:10:10z ise, ilk pencere (2017-09-01T10:10:10z, 2017-09-01T11:10:10z). | Dize | "dakika", "saat"  | Evet |
-| **aralığında** | Tetikleyicinin çalışma sıklığını belirten **frequency** değerinin aralığını gösteren bir pozitif tamsayı. Örneğin, **Aralık** 3, **Sıklık** ise "saat" ise, tetikleyici her 3 saatte bir yinelenir. <br/>**Note**: en düşük pencere aralığı 5 dakikadır. | Tamsayı | Pozitif bir tamsayı. | Evet |
+| **frequency** | Tetikleyicinin yineleneceği sıklık birimini (dakika veya saat) temsil eden bir dize. **StartTime** tarih değerleri **Sıklık** değerinden daha ayrıntılı ise, pencere sınırları hesaplandıktan sonra **StartTime** tarihleri kabul edilir. Örneğin **Sıklık** değeri saat Ise ve **StartTime** değeri 2017-09-01T10:10:10z ise, ilk pencere (2017-09-01T10:10:10z, 2017-09-01T11:10:10z). | Dize | "dakika", "saat"  | Evet |
+| **interval** | Tetikleyicinin çalışma sıklığını belirten **frequency** değerinin aralığını gösteren bir pozitif tamsayı. Örneğin, **Aralık** 3, **Sıklık** ise "saat" ise, tetikleyici her 3 saatte bir yinelenir. <br/>**Note**: en düşük pencere aralığı 5 dakikadır. | Tamsayı | Pozitif bir tamsayı. | Evet |
 | **startTime**| Geçmişte olabilecek ilk oluşum. İlk tetikleyici aralığı (**başlangıçsaati**, **başlangıçsaati**  +  **aralığı**). | DateTime | Bir tarih saat değeri. | Evet |
 | **endTime**| Geçmişte olabilecek son oluşum. | DateTime | Bir tarih saat değeri. | Evet |
 | **ilir** | Pencere için veri işleme başlangıcını geciktirmek için geçen süre. İşlem hattı çalıştırması beklenen yürütme süresi artı **gecikme**miktarı ile başlatılır. **Gecikme** , tetikleyicinin yeni bir çalıştırmayı tetiklemeden önce geçen süreyi ne kadar bekleyeceğini tanımlar. **Gecikme** , pencerenin **StartTime**öğesini değiştirmez. Örneğin, 00:10:00 **gecikme** değeri 10 dakikalık bir gecikme anlamına gelir. | Timespan<br/>(SS: DD: SS)  | Varsayılan değer 00:00:00 olan bir TimeSpan değeri. | Hayır |
@@ -147,7 +147,7 @@ Aşağıdaki tabloda, atlayan bir pencere tetikleyicisinin yinelenme ve zamanlam
 
 ### <a name="execution-order-of-windows-in-a-backfill-scenario"></a>Arka doldurma senaryosunda Windows 'un yürütme sırası
 
-Tetikleyicinin startTime öğesi geçmişte ise, bu formüle dayalı olarak, z = (CurrentTime-TriggerStartTime)/Triggerdilimleyicesize, tetikleyici, gelecekteki çalıştırmaları yürütmeden önce {z} geri doldurma (geçmiş) ile paralel olarak çalışır. Windows için yürütme sırası, en eskiden en yeni aralıklarda belirleyici olur. Şu anda bu davranışın değiştirilmesi mümkün değildir.
+Tetikleyicinin startTime öğesi geçmişte ise, bu formüle dayalı olarak, z = (CurrentTime-TriggerStartTime)/TumblingWindowSize, tetikleyici, gelecekteki çalıştırmaları yürütmeden önce paralel olarak {z} geri doldurma (geçmiş) çalıştırır. Windows için yürütme sırası, en eskiden en yeni aralıklarda belirleyici olur. Şu anda bu davranışın değiştirilmesi mümkün değildir.
 
 ### <a name="existing-triggerresource-elements"></a>Mevcut TriggerResource öğeleri
 

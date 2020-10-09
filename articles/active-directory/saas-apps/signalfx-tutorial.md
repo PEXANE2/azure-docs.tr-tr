@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 3eae423763d2d4a05b33e4e1d4b6e9e087a47ba3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 989b41d4fc55241a5fa75a0eed9ea8f4ebaeee67
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521578"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856832"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>Öğretici: SignalFx ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -159,7 +159,7 @@ SSO 'yu test etme ile ilgili olarak aşağıdaki bilgileri ve SignalFx ' de ilk 
         * Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 * SignalFx uygulamasına erişim panelinden veya kuruluşa atanmış özel bir oturum açma sayfası aracılığıyla erişilebilir. Test kullanıcısı bu konumdan başlayarak tümleştirmeyi test etmelidir.
-    * Test kullanıcısı için bu işlemde daha önce oluşturulan kimlik bilgilerini kullanabilir **b.simon@contoso.com** .
+    * Test kullanıcısı **b. Simon \@ contoso.com**için bu işlemde daha önce oluşturulan kimlik bilgilerini kullanabilir.
 
 ### <a name="first-time-logins"></a>İlk kez oturum açma işlemleri
 

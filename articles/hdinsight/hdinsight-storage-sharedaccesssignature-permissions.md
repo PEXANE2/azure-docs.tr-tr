@@ -1,6 +1,6 @@
 ---
 title: Paylaşılan erişim Imzalarını kullanarak erişimi kısıtlama-Azure HDInsight
-description: Azure Storage Bloblarında depolanan verilere HDInsight erişimini kısıtlamak için paylaşılan erişim Imzalarını nasıl kullanacağınızı öğrenin.
+description: Azure Blob depolama alanında depolanan verilere HDInsight erişimini kısıtlamak için paylaşılan erişim Imzalarını nasıl kullanacağınızı öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 8ab181eb72b5a3ab54ad8dba19d23288926b8969
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ea14a67f11974c8f7cdeea9eb84e5efb2377fb15
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006322"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856573"
 ---
-# <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>HDInsight ile verilere erişimi kısıtlamak için Azure Depolama Paylaşılan Erişim İmzaları kullanma
+# <a name="use-azure-blob-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>HDInsight 'taki verilere erişimi kısıtlamak için Azure Blob depolama paylaşılan erişim Imzalarını kullanma
 
-HDInsight, kümeyle ilişkili Azure depolama hesaplarında bulunan verilere tam erişime sahiptir. Verilere erişimi kısıtlamak için blob kapsayıcısında paylaşılan erişim Imzalarını kullanabilirsiniz. Paylaşılan erişim Imzaları (SAS), Azure depolama hesaplarının verilere erişimi sınırlandırmanıza olanak tanıyan bir özelliktir. Örneğin, verilere salt okunurdur erişim sağlama.
+HDInsight, kümeyle ilişkili Azure Blob depolama hesaplarında bulunan verilere tam erişim sağlar. Verilere erişimi kısıtlamak için blob kapsayıcısında paylaşılan erişim Imzalarını kullanabilirsiniz. Paylaşılan erişim Imzaları (SAS), Azure Blob depolama hesaplarının verilere erişimi sınırlandırmanıza olanak tanıyan bir özelliktir. Örneğin, verilere salt okunurdur erişim sağlama.
 
 > [!IMPORTANT]  
 > Apache Ranger kullanan bir çözüm için, etki alanına katılmış HDInsight kullanmayı düşünün. Daha fazla bilgi için bkz. [etki alanına katılmış HDInsight belgesi yapılandırma](./domain-joined/apache-domain-joined-configure.md) .
@@ -25,7 +25,7 @@ HDInsight, kümeyle ilişkili Azure depolama hesaplarında bulunan verilere tam 
 > [!WARNING]  
 > HDInsight, küme için varsayılan depolamaya tam erişime sahip olmalıdır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](./hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -39,7 +39,7 @@ HDInsight, kümeyle ilişkili Azure depolama hesaplarında bulunan verilere tam 
 
 * C# kullanıyorsanız, Visual Studio sürüm 2013 veya üzeri olmalıdır.
 
-* Depolama hesabınızın URI şeması. Bu düzen `wasb://` , `abfs://` Azure Data Lake Storage 2. veya Azure Data Lake Storage 1. Için Azure depolama için olacaktır `adl://` . Azure depolama için güvenli aktarım etkinse URI olur `wasbs://` .
+* Depolama hesabınızın URI şeması. Bu düzen `wasb://` , `abfs://` Azure Data Lake Storage 2. veya Azure Data Lake Storage 1. Için Azure Blob depolama alanı olacaktır `adl://` . Azure Blob depolama için güvenli aktarım etkinse URI olur `wasbs://` .
 
 * Paylaşılan erişim Imzası eklemek için var olan bir HDInsight kümesi. Aksi takdirde, küme oluşturmak ve küme oluşturma sırasında paylaşılan erişim Imzası eklemek için Azure PowerShell kullanabilirsiniz.
 
@@ -48,7 +48,7 @@ HDInsight, kümeyle ilişkili Azure depolama hesaplarında bulunan verilere tam 
   * HDInsight ile kullanılmak üzere depolama kapsayıcısı, saklı ilke ve SAS oluşturabileceğiniz bir Visual Studio projesi
   * HDInsight ile kullanılmak üzere depolama kapsayıcısı, saklı ilke ve SAS oluşturabilecek bir Python betiği
   * HDInsight kümesi oluşturup SAS kullanacak şekilde yapılandırasağlayan bir PowerShell betiği. Aşağıda daha fazla güncelleştirilmiş sürüm kullanılıyor.
-  * Örnek dosya:`hdinsight-dotnet-python-azure-storage-shared-access-signature-master\sampledata\sample.log`
+  * Örnek dosya: `hdinsight-dotnet-python-azure-storage-shared-access-signature-master\sampledata\sample.log`
 
 ## <a name="shared-access-signatures"></a>Paylaşılan Erişim İmzaları
 
@@ -86,7 +86,7 @@ Her yöntemin sonunda üretilen SAS belirtecini kaydedin. Belirteç aşağıdaki
 ?sv=2018-03-28&sr=c&si=myPolicyPS&sig=NAxefF%2BrR2ubjZtyUtuAvLQgt%2FJIN5aHJMj6OsDwyy4%3D
 ```
 
-### <a name="using-powershell"></a>PowerShell'i kullanma
+### <a name="using-powershell"></a>PowerShell’i kullanma
 
 `RESOURCEGROUP`, `STORAGEACCOUNT` Ve `STORAGECONTAINER` değerlerini mevcut depolama Kapsayıcınız için uygun değerlerle değiştirin. Dizini değiştirin `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` veya `-File` parametresi için mutlak yolu içerecek şekilde düzeltin `Set-AzStorageblobcontent` . Aşağıdaki PowerShell komutunu girin:
 
@@ -357,7 +357,7 @@ Mevcut bir kümeniz varsa, aşağıdaki adımları kullanarak SAS 'yi **çekirde
 
 1. **Özel çekirdek-site** bölümünü genişletin, sonuna ilerleyin ve sonra **Özellik Ekle...** seçeneğini belirleyin. **Anahtar** ve **değer**için aşağıdaki değerleri kullanın:
 
-    * **Anahtar**:`fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
+    * **Anahtar**: `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
     * **Değer**: daha önce yürütülen yöntemlerin biri tarafından döndürülen sas.
 
     `CONTAINERNAME`C# veya SAS uygulamasıyla kullandığınız kapsayıcı adıyla değiştirin. `STORAGEACCOUNTNAME`Kullandığınız depolama hesabı adıyla değiştirin.

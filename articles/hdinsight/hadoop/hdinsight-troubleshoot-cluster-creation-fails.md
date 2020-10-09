@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 04/14/2020
-ms.openlocfilehash: 14b449590f6ffc5e735faa26baadfcc4e526450c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8be230044d868cc3ec03f6dc3fc2d21e102f121
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82996408"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856305"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Azure HDInsight ile küme oluşturma hatalarıyla ilgili sorunları giderme
 
@@ -21,7 +21,7 @@ Aşağıdaki sorunlar, küme oluşturma hatalarının en yaygın temel nedenlerd
 
 - İzin sorunları
 - Kaynak ilkesi kısıtlamaları
-- Güvenlik Duvarları
+- Güvenlik duvarları
 - Kaynak kilitleri
 - Desteklenmeyen bileşen sürümleri
 - Depolama hesabı adı kısıtlamaları
@@ -29,9 +29,9 @@ Aşağıdaki sorunlar, küme oluşturma hatalarının en yaygın temel nedenlerd
 
 ## <a name="permissions-issues"></a>İzin sorunları
 
-Azure Data Lake Storage 2. kullanıyorsanız ve şu hatayı alırsanız `AmbariClusterCreationFailedErrorCode` : " :::no-loc text="Internal server error occurred while processing the request. Please retry the request or contact support."::: ", Azure Portal açın, depolama hesabınıza gidin ve Access Control (IAM) altında, **Depolama Blobu veri katılımcısı** veya **Depolama Blobu veri sahibi** rolünün, abonelik için **Kullanıcı tarafından atanan yönetilen kimliğe** erişimi atandığından emin olun. Ayrıntılı yönergeler için [Data Lake Storage 2. Nesil hesabında yönetilen kimlik için izinleri ayarlama](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) konusuna bakın.
+Azure Data Lake Storage 2. kullanıyorsanız ve şu hatayı alırsanız `AmbariClusterCreationFailedErrorCode` : " :::no-loc text="Internal server error occurred while processing the request. Please retry the request or contact support."::: ", Azure Portal açın, depolama hesabınıza gidin ve Access Control (IAM) altında, **Depolama Blobu veri katılımcısı** veya **Depolama Blobu veri sahibi** rolünün, abonelik için **Kullanıcı tarafından atanan yönetilen kimliğe** erişimi atandığından emin olun. Ayrıntılı yönergeler için [Data Lake Storage 2. yönetilen kimlik için Izinleri ayarlama](../hdinsight-hadoop-use-data-lake-storage-gen2-portal.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2) bölümüne bakın.
 
-Azure Data Lake Storage 1. kullanıyorsanız, kurulum ve [yapılandırma yönergeleri bölümüne](../hdinsight-hadoop-use-data-lake-store.md)bakın. Data Lake Storage 1., HBase kümelerinde desteklenmez ve HDInsight sürüm 4,0 ' de desteklenmez.
+Azure Data Lake Storage 1. kullanıyorsanız, bkz. Kurulum ve yapılandırma yönergeleri [Azure HDInsight kümeleri ile Azure Data Lake Storage 1. kullanma](../hdinsight-hadoop-use-data-lake-storage-gen1.md). Data Lake Storage 1., HBase kümelerinde desteklenmez ve HDInsight sürüm 4,0 ' de desteklenmez.
 
 Azure Storage kullanıyorsanız, küme oluşturma sırasında depolama hesabı adının geçerli olduğundan emin olun.
 
@@ -45,7 +45,7 @@ Genel olarak, aşağıdaki ilkeler küme oluşturmayı etkileyebilir:
 * Depolama hesabı oluşturulmasını önleyecek ilke.
 * Ağ kaynaklarının silinmesini önleyecek ilke (IP adresi/yük dengeleyiciler).
 
-## <a name="firewalls"></a>Güvenlik Duvarları
+## <a name="firewalls"></a>Güvenlik duvarları
 
 Sanal ağ veya depolama hesabınızdaki güvenlik duvarları, HDInsight yönetim IP adresleriyle iletişimi reddedebilir.
 
@@ -53,10 +53,10 @@ Aşağıdaki tablodaki IP adreslerinden gelen trafiğe izin verin.
 
 | Kaynak IP adresi | Hedef | Yön |
 |---|---|---|
-| 168.61.49.99 | *: 443 | Gelen |
-| 23.99.5.239 | *: 443 | Gelen |
-| 168.61.48.131 | *: 443 | Gelen |
-| 138.91.141.162 | *: 443 | Gelen |
+| 168.61.49.99 | *: 443 | Inbound |
+| 23.99.5.239 | *: 443 | Inbound |
+| 168.61.48.131 | *: 443 | Inbound |
+| 138.91.141.162 | *: 443 | Inbound |
 
 Ayrıca, kümenin oluşturulduğu bölgeye özgü IP adreslerini de ekleyin. Her bir Azure bölgesinin adres listesi için bkz. [HDInsight YÖNETIMI IP adresleri](../hdinsight-management-ip-addresses.md) .
 

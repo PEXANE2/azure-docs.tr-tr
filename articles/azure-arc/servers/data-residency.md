@@ -2,20 +2,20 @@
 title: Veri yerleşimi
 description: Veri yerleşimi ve Azure Arc etkin sunucuları hakkında bilgiler.
 ms.topic: reference
-ms.date: 09/22/2020
+ms.date: 10/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 73acb07b8caa3c1368c936463f04969c29d37985
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c5ece96acc3ee07ba2896279888363c7d52d737e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327774"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856458"
 ---
 # <a name="azure-arc-enabled-servers-data-residency"></a>Azure Arc etkin sunucular: veri yerleşimi
 
 Bu makalede, veri yerleşimi kavramı ve Azure Arc özellikli sunucular için nasıl uygulandığı açıklanmaktadır.
 
-Azure yay özellikli sunucular **Birleşik Devletler, Avrupa, Birleşik Krallık veya Asya Pasifik** **[kullanılabilir](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)** .
+Azure yay özellikli sunucular **Birleşik Devletler, Avrupa, Birleşik Krallık, Avustralya ve Asya Pasifik** **[kullanılabilir](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)** .
 
 ## <a name="data-residency"></a>Veri yerleşimi
 

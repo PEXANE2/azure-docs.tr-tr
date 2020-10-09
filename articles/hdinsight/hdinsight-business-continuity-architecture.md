@@ -8,12 +8,12 @@ keywords: Hadoop yüksek kullanılabilirlik
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: cb3ef1e802546d5a8b1574b304770fe7a364e2df
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 9eb0cd3fd327a53dd0761779916caa096153a010
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/08/2020
-ms.locfileid: "91844078"
+ms.locfileid: "91856441"
 ---
 # <a name="azure-hdinsight-business-continuity-architectures"></a>Azure HDInsight iş sürekliliği mimarileri
 
@@ -206,8 +206,6 @@ Ranger ilkelerini birincil ve ikincil arasında çoğaltmak, ikincörün yazma �
 
 Bu makalede ele alınan öğeler hakkında daha fazla bilgi edinmek için bkz.:
 
-* [Apache ambarı REST başvurusu](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
-* [Azure CLı 'yı yükleyip yapılandırma](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
-* [Azure PowerShell modülünü yükleyip yapılandırın az](/powershell/azure/)
-* [Apache ambarı kullanarak HDInsight 'ı yönetme](hdinsight-hadoop-manage-ambari.md)
-* [Linux tabanlı HDInsight kümeleri sağlama](hdinsight-hadoop-provision-linux-clusters.md)
+* [Azure HDInsight iş sürekliliği](./hdinsight-business-continuity.md)
+* [Azure HDInsight yüksek oranda kullanılabilir çözüm mimarisi örnek olay incelemesi](./hdinsight-high-availability-case-study.md)
+* [Azure HDInsight 'ta Apache Hive ve HiveQL nedir?](./hadoop/hdinsight-use-hive.md)

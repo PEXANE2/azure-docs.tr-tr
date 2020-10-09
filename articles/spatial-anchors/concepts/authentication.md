@@ -5,20 +5,20 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 05/28/2019
+ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1726f3a1ddc62cbb76a65f1d284793e57ea2f2a8
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 133b565bc54feaf49a2fec9dd0056ca8e7ef43f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91538254"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857733"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure uzamsal Tutturucuların kimlik doğrulaması ve yetkilendirmesi
 
-Bu bölümde, uygulamanızın veya Web hizmetinizin Azure uzamsal bağlayıcılarının kimliğini doğrulamak için kullanabileceğiniz çeşitli yollar ve Azure Directory 'de (Azure AD) rol tabanlı Access Control kullanarak uzamsal Tutturucuların hesaplarına erişimi denetleme yolları ele alınacaktır.
+Bu bölümde, uygulamanızın veya Web hizmetinizin Azure uzamsal bağlayıcılarını kimlik doğrulaması yapma ve Azure Directory 'de (Azure AD) Role-Based Access Control kullanarak uzamsal bağlayıcı hesaplarınıza erişimi denetlemek için kullanabileceğiniz çeşitli yollar ele alınacaktır.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -95,28 +95,28 @@ Bu işlem yapıldıktan sonra SDK, bir erişim belirtecinin hesap anahtarının 
 Kullanıcıları Azure Active Directory hedefleyen uygulamalar için, önerilen yaklaşım Kullanıcı için bir Azure AD belirteci kullanmaktır ve bu, [msal kitaplığını](../../active-directory/develop/msal-overview.md)kullanarak elde edebilirsiniz. [Uygulamayı kaydetme hızlı](../../active-directory/develop/quickstart-register-app.md)başlangıcı ' nı içeren aşağıdaki adımları izlemeniz gerekir:
 
 1. Azure portal yapılandırma
-    1.  Uygulamanızı Azure AD 'ye **yerel uygulama**olarak kaydedin. Kayıt kapsamında, uygulamanızın çok kiracılı olup olmayacağını belirlemeniz ve uygulamanız için izin verilen yeniden yönlendirme URL 'Lerini sağlamanız gerekir.
+    1.    Uygulamanızı Azure AD 'ye **yerel uygulama**olarak kaydedin. Kayıt kapsamında, uygulamanızın çok kiracılı olup olmayacağını belirlemeniz ve uygulamanız için izin verilen yeniden yönlendirme URL 'Lerini sağlamanız gerekir.
         1.  **API izinleri** sekmesine geçiş yap
         2.  **Izin Ekle** seçeneğini belirleyin
-            1.  **Kuruluşumun kullandığı API 'ler** altında **Microsoft Mixed Reality** 'yi seçin
+            1.  **Kuruluşumun kullandığı API 'ler** altında **karma gerçeklik kaynak sağlayıcısını** seçin
             2.  **Temsilci izinleri** seçin
             3.  **Mixedreality** altında **mixedreality. SignIn** kutusunu işaretleyin
             4.  **Izin Ekle** seçeneğini belirleyin
         3.  **Yönetici Izni ver** ' i seçin
-    2.  Uygulamanıza veya kullanıcılarınıza kaynağınızın erişimini verin:
-        1.  Azure portal içindeki uzamsal bağlayıcılarınızın kaynağına gidin
-        2.  **Erişim denetimi (IAM)** sekmesine geçiş yap
-        3.  **Rol ataması Ekle** ' ye basın
-            1.  [Rol seç](#role-based-access-control)
-            2.  **Seç** alanında, erişim atamak istediğiniz kullanıcı, Grup veya uygulama (lar) ı ve uygulamanın adını girin.
-            3.  **Kaydet**'e tıklayın.
+    2.    Uygulamanıza veya kullanıcılarınıza kaynağınızın erişimini verin:
+        1.    Azure portal içindeki uzamsal bağlayıcılarınızın kaynağına gidin
+        2.    **Erişim denetimi (IAM)** sekmesine geçiş yap
+        3.    **Rol ataması Ekle** ' ye basın
+            1.    [Rol seç](#role-based-access-control)
+            2.    **Seç** alanında, erişim atamak istediğiniz kullanıcı, Grup veya uygulama (lar) ı ve uygulamanın adını girin.
+            3.    **Kaydet**'e tıklayın.
 2. Kodunuzda:
-    1.  MSAL içinde **ISTEMCI kimliği** ve **redirecturi** PARAMETRELERI olarak kendi Azure AD uygulamanızın **uygulama kimliği** ve **yeniden yönlendirme URI** 'sini kullandığınızdan emin olun
-    2.  Kiracı bilgilerini ayarla:
-        1.  Uygulamanız **yalnızca Kuruluşumu**destekliyorsa, bu DEĞERI **kiracı kimliğiniz** veya **kiracı adınızla** değiştirin (örneğin, contoso.Microsoft.com)
-        2.  Uygulamanız **herhangi bir kuruluş dizinindeki hesapları**destekliyorsa, bu değeri **kuruluşlar** ile değiştirin
-        3.  Uygulamanız **tüm Microsoft hesabı kullanıcıları**destekliyorsa, bu değeri **ortak** ile değiştirin
-    3.  Belirteç isteğiniz üzerinde, **kapsamı** "" olarak ayarlayın https://sts.mixedreality.azure.com//.default . Bu kapsam, Azure AD 'ye, uygulamanızın karma gerçeklik güvenlik belirteci hizmeti (STS) için bir belirteç istediğini gösterir.
+    1.    MSAL içinde **ISTEMCI kimliği** ve **redirecturi** PARAMETRELERI olarak kendi Azure AD uygulamanızın **uygulama kimliği** ve **yeniden yönlendirme URI** 'sini kullandığınızdan emin olun
+    2.    Kiracı bilgilerini ayarla:
+        1.    Uygulamanız **yalnızca Kuruluşumu**destekliyorsa, bu DEĞERI **kiracı kimliğiniz** veya **kiracı adınızla** değiştirin (örneğin, contoso.Microsoft.com)
+        2.    Uygulamanız **herhangi bir kuruluş dizinindeki hesapları**destekliyorsa, bu değeri **kuruluşlar** ile değiştirin
+        3.    Uygulamanız **tüm Microsoft hesabı kullanıcıları**destekliyorsa, bu değeri **ortak** ile değiştirin
+    3.    Belirteç isteğiniz üzerinde, **kapsamı** "" olarak ayarlayın https://sts.mixedreality.azure.com//.default . Bu kapsam, Azure AD 'ye, uygulamanızın karma gerçeklik güvenlik belirteci hizmeti (STS) için bir belirteç istediğini gösterir.
 
 Bu şekilde, uygulamanız MSAL bir Azure AD belirteci ile elde edilebilir. Bu Azure AD belirtecini, bulut oturumu yapılandırma nesneniz üzerinde **Authenticationtoken** olarak ayarlayabilirsiniz.
 
@@ -170,24 +170,24 @@ Burada, uygulamanızın arka uç hizmetinde kimlik doğrulaması yapmak için ke
 
 Azure AD erişim belirteci [msal kitaplığı](../../active-directory/develop/msal-overview.md)kullanılarak alınır. [Uygulamayı kaydetme hızlı](../../active-directory/develop/quickstart-register-app.md)başlangıcı ' nı içeren aşağıdaki adımları izlemeniz gerekir:
 
-1.  Azure portal yapılandırma:
-    1.  Uygulamanızı Azure AD 'ye kaydedin:
-        1.  Azure portal ' de **Azure Active Directory**' a gidin ve **uygulama kayıtları** ' nı seçin.
-        2.  **Yeni uygulama kaydı** seçin
-        3.  Uygulamanızın adını girin, uygulama türü olarak **Web uygulaması/API** ' yi seçin ve hizmetinizin kimlik doğrulama URL 'sini girin. Sonra **Oluştur**' a basın.
-        4.  Bu uygulamada, **Ayarlar**' a, sonra da **Sertifikalar ve gizlilikler** sekmesini seçin. Yeni bir istemci parolası oluşturun, bir süre seçin ve **Ekle**'ye basın. Web hizmetinizin koduna dahil etmeniz gerekeceğinden gizli anahtar değerini kaydettiğinizden emin olun.
-    2.  Uygulamanıza ve/veya kullanıcılarınızın kaynağına erişmesine izin verin:
-        1.  Azure portal içindeki uzamsal bağlayıcılarınızın kaynağına gidin
-        2.  **Erişim denetimi (IAM)** sekmesine geçiş yap
-        3.  **Rol ataması Ekle** ' ye basın
-        1.  [Rol seç](#role-based-access-control)
-        2.  **Seç** alanına, oluşturduğunuz ve erişim atamak istediğiniz uygulama (lar) ın adını girin. Uygulamanızın kullanıcılarının uzamsal bağlayıcı hesabına karşı farklı rollere sahip olmasını istiyorsanız, Azure AD 'de birden çok uygulamayı kaydetmeniz ve ayrı bir role atamanız gerekir. Ardından, kullanıcılarınız için doğru rolü kullanmak üzere yetkilendirme mantığınızı uygulayın.
-        3.  Not- **atanan erişimi** **eklemek istediğiniz rol atama** seçimini "Azure AD Kullanıcı, Grup veya hizmet sorumlusu" olarak ayarlayın.
-    3.  **Kaydet**'e tıklayın.
-2.  Kodunuzda (Note: GitHub ' da bulunan hizmet örneğini kullanabilirsiniz):
-    1.  MSAL ' de istemci KIMLIĞI, gizli anahtar ve Redirecturı parametreleri olarak kendi Azure AD uygulamanızın uygulama KIMLIĞI, uygulama gizli anahtarı ve yeniden yönlendirme URI 'sini kullandığınızdan emin olun
-    2.  Kiracı KIMLIĞINI, MSAL ' deki yetkili parametresinde bulunan Azure kiracı KIMLIĞINIZLE belirleyin.
-    3.  Belirteç isteğiniz içinde, **kapsamı** "" olarak ayarlayın https://sts.mixedreality.azure.com//.default
+1.    Azure portal yapılandırma:
+    1.    Uygulamanızı Azure AD 'ye kaydedin:
+        1.    Azure portal ' de **Azure Active Directory**' a gidin ve **uygulama kayıtları** ' nı seçin.
+        2.    **Yeni uygulama kaydı** seçin
+        3.    Uygulamanızın adını girin, uygulama türü olarak **Web uygulaması/API** ' yi seçin ve hizmetinizin kimlik doğrulama URL 'sini girin. Sonra **Oluştur**' a basın.
+        4.    Bu uygulamada, **Ayarlar**' a, sonra da **Sertifikalar ve gizlilikler** sekmesini seçin. Yeni bir istemci parolası oluşturun, bir süre seçin ve **Ekle**'ye basın. Web hizmetinizin koduna dahil etmeniz gerekeceğinden gizli anahtar değerini kaydettiğinizden emin olun.
+    2.    Uygulamanıza ve/veya kullanıcılarınızın kaynağına erişmesine izin verin:
+        1.    Azure portal içindeki uzamsal bağlayıcılarınızın kaynağına gidin
+        2.    **Erişim denetimi (IAM)** sekmesine geçiş yap
+        3.    **Rol ataması Ekle** ' ye basın
+        1.    [Rol seç](#role-based-access-control)
+        2.    **Seç** alanına, oluşturduğunuz ve erişim atamak istediğiniz uygulama (lar) ın adını girin. Uygulamanızın kullanıcılarının uzamsal bağlayıcı hesabına karşı farklı rollere sahip olmasını istiyorsanız, Azure AD 'de birden çok uygulamayı kaydetmeniz ve ayrı bir role atamanız gerekir. Ardından, kullanıcılarınız için doğru rolü kullanmak üzere yetkilendirme mantığınızı uygulayın.
+        3.    Not- **atanan erişimi** **eklemek istediğiniz rol atama** seçimini "Azure AD Kullanıcı, Grup veya hizmet sorumlusu" olarak ayarlayın.
+    3.    **Kaydet**'e tıklayın.
+2.    Kodunuzda (Note: GitHub ' da bulunan hizmet örneğini kullanabilirsiniz):
+    1.    MSAL ' de istemci KIMLIĞI, gizli anahtar ve Redirecturı parametreleri olarak kendi Azure AD uygulamanızın uygulama KIMLIĞI, uygulama gizli anahtarı ve yeniden yönlendirme URI 'sini kullandığınızdan emin olun
+    2.    Kiracı KIMLIĞINI, MSAL ' deki yetkili parametresinde bulunan Azure kiracı KIMLIĞINIZLE belirleyin.
+    3.    Belirteç isteğiniz içinde, **kapsamı** "" olarak ayarlayın https://sts.mixedreality.azure.com//.default
 
 Bu şekilde, arka uç hizmetiniz bir Azure AD belirteci alabilir. Daha sonra, istemciye geri dönecektir için bunu bir MR belirteci için değiş tokuş edebilir. Bir MR belirtecini almak için Azure AD belirtecinin kullanılması bir REST çağrısıyla yapılır. Örnek bir çağrı aşağıda verilmiştir:
 

@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: e40eb9cc22cdc071381cc847b49a01d4d713653d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 6a1af644bbd88af5c513ed9a43ce154f285c06df
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85318633"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856016"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-starter"></a>Öğretici: Azure DevOps Starter kullanarak ASP.NET uygulamanızı ve Azure SQL veritabanı kodunuzu dağıtın
 
@@ -44,7 +44,7 @@ Bu öğreticide şunları yapacaksınız:
 
 DevOps Starter Azure Pipelines ' de bir CI/CD işlem hattı oluşturur. Yeni bir Azure DevOps kuruluşu oluşturabilir veya var olan bir kuruluşu kullanabilirsiniz. DevOps Starter Ayrıca Azure SQL veritabanı gibi tercih ettiğiniz Azure aboneliğinde Azure kaynakları da oluşturur.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. Arama kutusuna **DevOps Starter**yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın.
 
@@ -66,7 +66,7 @@ DevOps Starter Azure Pipelines ' de bir CI/CD işlem hattı oluşturur. Yeni bir
 
 1. Azure abonelik hizmetlerinizi seçin. İsteğe bağlı olarak, ek Azure yapılandırma ayarlarını görüntülemek ve **veritabanı sunucusu oturum açma ayrıntıları** bölümünde Kullanıcı adını belirlemek için **Değiştir**' i seçebilirsiniz. Bu öğreticinin sonraki adımları için kullanıcı adınısaklayın. Bu isteğe bağlı adımı gerçekleştirirseniz, **bitti**' yi seçmeden önce Azure yapılandırma alanından çıkın.
  
-1. **Bitti**'yi seçin. Birkaç dakika sonra işlem tamamlanır ve DevOps başlangıç panosu Azure portal açılır. Ayrıca, panoda doğrudan Azure portal **tüm kaynaklardan** da gidebilirsiniz. Sağ tarafta, çalışan uygulamanızı görüntülemek için **Araştır** ' ı seçin.
+1. **Bitti** seçeneğini belirleyin. Birkaç dakika sonra işlem tamamlanır ve DevOps başlangıç panosu Azure portal açılır. Ayrıca, panoda doğrudan Azure portal **tüm kaynaklardan** da gidebilirsiniz. Sağ tarafta, çalışan uygulamanızı görüntülemek için **Araştır** ' ı seçin.
     
 ## <a name="examine-the-ci-pipeline"></a>CI işlem hattını inceleme
 
@@ -190,7 +190,7 @@ Ekibinizin gereksinimlerine uygun olarak bu derleme ve yayın işlem hatlarını
 CI/CD işlem hattı hakkında daha fazla bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [Çoklu aşamalı sürekli dağıtım (CD) işlem hattınızı tanımlama](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Çoklu aşamalı sürekli dağıtım (CD) işlem hattınızı tanımlama](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
 
 ## <a name="videos"></a>Videolar
 

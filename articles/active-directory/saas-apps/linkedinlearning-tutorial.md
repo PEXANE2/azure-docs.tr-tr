@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: d598017c8b41dffc486bfef4b9af63c6942cef58
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fde0bcdb70384e791d7337d212d7353b6ea168bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549808"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856420"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-learning"></a>Öğretici: LinkedIn Learning ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -141,19 +141,19 @@ Bu bölümde, LinkedIn Learning 'e erişim izni vererek Azure çoklu oturum açm
 
 2. **Hesap Merkezi**'nde **Ayarlar**' ın altında **Genel ayarlar** ' a tıklayın. Ayrıca, açılır listeden **öğrenme-varsayılan** öğesini seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_01.png)
+    ![Ekran görüntüsü varsayılan seçebileceğiniz genel ayarları gösterir.](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_01.png)
 
 3. Form ve **varlık kimliği** ve **onaylama TÜKETICI hizmeti (ACS) URL** **'sinden ayrı alanları yüklemek ve kopyalamak için buraya tıklayın veya tıklayın** ve Azure Portal içindeki **temel SAML yapılandırması** bölümüne yapıştırın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_03.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz tek Sign-On gösterir.](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_03.png)
 
 4. **LinkedIn yönetici ayarları** bölümüne gidin. **XML dosyasını karşıya yükle** seçeneğine tıklayarak Azure Portal indirdiğiniz XML dosyasını karşıya yükleyin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/linkedinlearning-tutorial/tutorial_linkedin_metadata_03.png)
+    ![Ekran görüntüsü, bir X M L dosyasını karşıya yükleyebileceğiniz LinkedIn Service Provider S S O ayarlarını yapılandırmayı gösterir.](./media/linkedinlearning-tutorial/tutorial_linkedin_metadata_03.png)
 
 5. SSO 'yu **etkinleştirmek için tıklayın** . SSO durum, bağlı **değil** olarak değişir **Connected**
 
-    ![Çoklu oturum açmayı yapılandırma](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_05.png)
+    ![Ekran görüntüsü, S S ile kullanıcıların kimlik doğrulamasını etkinleştirebileceğiniz tek bir Sign-On gösterir.](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_05.png)
 
 ### <a name="create-linkedin-learning-test-user"></a>LinkedIn öğrenme testi kullanıcısı oluşturma
 
