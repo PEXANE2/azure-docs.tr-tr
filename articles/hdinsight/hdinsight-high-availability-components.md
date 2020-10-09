@@ -6,24 +6,23 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/11/2019
-ms.openlocfilehash: e1da26d9067427734d407451bdb53e51ba1e6243
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/07/2020
+ms.openlocfilehash: ac63846e2679e9b4a51cb26b32415eb81a4b76ed
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609174"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842589"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Azure HDInsight tarafından desteklenen yüksek kullanılabilirlik Hizmetleri
 
- Analiz bileşenleriniz için en uygun düzeylerde kullanılabilirlik sağlamak amacıyla, HDInsight, önemli hizmetlerin yüksek kullanılabilirliğini sağlamak için benzersiz bir mimariye geliştirilmiştir. Bu mimarinin bazı bileşenleri, Microsoft tarafından otomatik yük devretme sağlamak üzere geliştirilmiştir. Diğer bileşenler, belirli hizmetleri desteklemek için dağıtılan standart Apache bileşenleridir. Bu makalede, HDInsight 'ta HA hizmeti modelinin mimarisi, HDInsight 'ın HA Hizmetleri için yük devretmeyi nasıl desteklediği ve diğer hizmet kesintilerinden kurtarmak için en iyi uygulamalar açıklanmaktadır.
+Analiz bileşenleriniz için en uygun düzeylerde kullanılabilirlik sağlamak amacıyla, HDInsight, önemli hizmetlerin yüksek kullanılabilirliğini sağlamak için benzersiz bir mimariye geliştirilmiştir. Bu mimarinin bazı bileşenleri, Microsoft tarafından otomatik yük devretme sağlamak üzere geliştirilmiştir. Diğer bileşenler, belirli hizmetleri desteklemek için dağıtılan standart Apache bileşenleridir. Bu makalede, HDInsight 'ta HA hizmeti modelinin mimarisi, HDInsight 'ın HA Hizmetleri için yük devretmeyi nasıl desteklediği ve diğer hizmet kesintilerinden kurtarmak için en iyi uygulamalar açıklanmaktadır.
  
 > [!NOTE]
 > Sapma ücretsiz iletişim
 >
 > Microsoft, farklı ve üçlü ortamları destekler. Bu makale, _İkincil_sözcüğe başvurular içerir. Kullanım açısından [ücretsiz iletişim Için Microsoft Stil Kılavuzu](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) bunu bir exclusionword olarak tanır. Bu makalede, şu anda yazılımda görüntülenen sözcük olduğundan, bu makalede tutarlılık için kullanılır. Yazılım, sözcüğü kaldıracak şekilde güncelleniyorsa, bu makale hizalamayla olacak şekilde güncelleştirilir.
 >
-
 
 ## <a name="high-availability-infrastructure"></a>Yüksek kullanılabilirlik altyapısı
 
@@ -43,7 +42,7 @@ Bu altyapı, bazıları Microsoft tarafından tasarlanan bir dizi hizmet ve yaz�
 
 ![yüksek kullanılabilirlik altyapısı](./media/hdinsight-high-availability-components/high-availability-architecture.png)
 
-Açık kaynaklı Apache güvenilirlik bileşenleri tarafından desteklenen diğer yüksek kullanılabilirlik hizmetleri de vardır. Bu bileşenler HDInsight kümelerinde da mevcuttur:
+Ayrıca, açık kaynaklı Apache güvenilirlik bileşenleri tarafından desteklenen diğer yüksek kullanılabilirlik hizmetleri de vardır. Bu bileşenler HDInsight kümelerinde da mevcuttur:
 
 - Hadoop dosya sistemi (bir) süs Yot
 - YARN ResourceManager
@@ -100,7 +99,7 @@ Master-ha-Service yalnızca etkin baş düğümüne üzerinde çalışır, bekle
 
 ![Yük devretme işlemi](./media/hdinsight-high-availability-components/failover-steps.png)
 
-Bir sistem durumu İzleyicisi, Zookeeper çekirdeğe sinyal bildirimleri göndermek için ana yük devretme denetleyicisiyle birlikte her bir baş düğümüne üzerinde çalışır. Bu senaryoda, baş düğümüne bir ha hizmeti olarak kabul edilir. Sistem durumu İzleyicisi, her bir yüksek kullanılabilirlik hizmetinin sağlıklı olup olmadığını ve liderlik seçimi 'ne katılmayı hazır olup olmadığını denetler. Yanıt Evet ise, bu baş düğümüne seçim içinde rekabet eder. Aksi takdirde, tekrar hazır olana kadar seçimi çıkar.
+Bir sistem durumu İzleyicisi, Zookeeper çekirdeğe sinyal bildirimleri göndermek için ana yük devretme denetleyicisiyle birlikte her bir yayın düğümünde çalışır. Bu senaryoda, baş düğümüne bir ha hizmeti olarak kabul edilir. Sistem durumu İzleyicisi, her bir yüksek kullanılabilirlik hizmetinin sağlıklı olup olmadığını ve liderlik seçimi 'ne katılmayı hazır olup olmadığını denetler. Yanıt Evet ise, bu baş düğümüne seçim içinde rekabet eder. Aksi takdirde, tekrar hazır olana kadar seçimi çıkar.
 
 Bekleyen yayın düğümü liderlik devreder ve etkin hale gelirse (önceki etkin düğüm ile ilgili bir başarısızlık durumunda olduğu gibi), ana yük devretme denetleyicisi tüm HDInsight HA Hizmetleri üzerinde başlatılır. Ana yük devretme denetleyicisi aynı zamanda diğer headnode üzerinde bu hizmetleri de durdurur.
 

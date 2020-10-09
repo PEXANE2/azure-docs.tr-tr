@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to
-ms.openlocfilehash: 5ddfa2adbc9ec39949d7352903445407ff8e8881
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 116dd65bf04c01f513e196a2f1b37d54aacbf1fe
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91542164"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841365"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Azure Machine Learning Studio ile verilere bağlanma
 
@@ -87,6 +87,7 @@ Studio 'da bir veri kümesi oluşturmak için:
 1. Veri kümesi türü için **tablo** veya **Dosya** seçin.
 1. **Veri deposu ve dosya seçim** formunu açmak için **İleri ' yi** seçin. Bu formda, oluşturulduktan sonra veri kümenizin saklanacağı yeri ve veri kümeniz için kullanılacak veri dosyalarını seçin.
     1. Verileriniz bir sanal ağda ise doğrulamayı atlamayı etkinleştirin. [Sanal ağ yalıtımı ve gizliliği](how-to-enable-virtual-network.md#machine-learning-studio)hakkında daha fazla bilgi edinin.
+    1. Tablo veri kümeleri için, veri kümenizde zaman ilişkili işlemleri etkinleştirmek üzere bir ' timeseries ' nitelik belirtebilirsiniz. [Veri kümenize zaman serisi nitelik eklemeyi](how-to-monitor-datasets.md#studio-dataset)öğrenin.
 1. **Ayarları ve önizleme** ve **şema** formlarını doldurmak için **İleri ' yi** seçin; Bunlar dosya türüne göre akıllıca doldurulmuştur ve veri kümenizi bu formlarda oluşturmadan önce daha sonra yapılandırabilirsiniz. 
 1. **Ayrıntıları Onayla** formunu gözden geçirmek için **İleri ' yi** seçin. Seçimlerinizi denetleyin ve veri kümeniz için isteğe bağlı bir veri profili oluşturun. [Veri profili oluşturma](#profile)hakkında daha fazla bilgi edinin.
 1. Veri kümesi oluşturmayı gerçekleştirmek için **Oluştur** ' u seçin.
@@ -114,13 +115,13 @@ Veri ayarlanmış olup olmadığını doğrulamak için veri kümesi genelinde �
 
 |İstatistik|Açıklama
 |------|------
-|Öne çıkan özelliği| Özetlenen sütunun adı.
+|Özellik| Özetlenen sütunun adı.
 |Profil| Çıkarılan türe göre satır içi görselleştirme. Örneğin, dizeler, Boole değerleri ve tarihler değer sayılarına sahip olacaktır, ancak Ondalıklar (Numerics) de yaklaşık histogramlar olur. Bu, verilerin dağıtımını hızlı bir şekilde anlayabilmeniz için size izin verir.
 |Tür dağılımı| Bir sütun içindeki türlerin satır içi değer sayısı. Null değerler kendi türlerdir, bu nedenle bu görselleştirme tek veya eksik değerleri algılamak için yararlıdır.
 |Tür|Sütunun Çıkarsanan türü. Olası değerler şunlardır: dizeler, Boole değerleri, tarihler ve ondalıklar.
 |Min| Sütunun minimum değeri. Boş girdiler, türü bir devralınan sıralamaya (örneğin, Boolean) sahip olmayan özellikler için görünür.
-|En yüksek değer| Sütunun en büyük değeri. 
-|Count| Sütundaki eksik ve eksik olmayan girdilerin toplam sayısı.
+|Max| Sütunun en büyük değeri. 
+|Sayı| Sütundaki eksik ve eksik olmayan girdilerin toplam sayısı.
 |Eksik sayı yok| Sütundaki eksik girdi sayısı. Boş dizeler ve hatalar değer olarak değerlendirilir ve bu nedenle "eksik sayısı" öğesine katkıda bulunmazlar.
 |Dağılım Dilimleri| Verilerin dağıtılması hakkında bir fikir sağlamak için her bir satışla yaklaşık değerler.
 |Ortalama| Sütunun aritmetik ortalaması veya ortalaması.

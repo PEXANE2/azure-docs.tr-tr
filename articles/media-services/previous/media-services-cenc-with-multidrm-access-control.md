@@ -15,12 +15,12 @@ ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e7e63225df4e337a93912bf1e1c17eb61a6cc9e0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: b98b66d8f0350c32e89d62d776ee1288d9271712
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258614"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841161"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Azure Media Services kullanarak erişim denetimiyle içerik koruma sistemi tasarlama
 
@@ -206,11 +206,11 @@ Uygulama aşağıdaki adımları içerir:
 
 7. Video yürütücünüzü barındırmak için bir ASP.NET MVC uygulaması oluşturun. Bu ASP.NET uygulaması, Azure AD kiracısında Kullanıcı kimlik doğrulamasıyla korunuyor. Kullanıcı kimlik doğrulamasından sonra alınan erişim belirteçlerine uygun talepler dahildir. Bu adım için OpenID Connect API 'SI önerilir. Aşağıdaki NuGet paketlerini yükleyin:
 
-   * Install-Package Microsoft. Azure. ActiveDirectory. GraphClient
-   * Install-Package Microsoft. Owin. Security. Openıdconnect
-   * Install-Package Microsoft. Owin. Security. Cookies
+   * Microsoft. Azure. ActiveDirectory. GraphClient Install-Package
+   * Microsoft. Owin. Security. Openıdconnect Install-Package
+   * Microsoft. Owin. Security. Cookies Install-Package
    * Install-Package Microsoft.Owin.Host.SystemWeb
-   * Install-Package Microsoft. IdentityModel. clients. ActiveDirectory
+   * Microsoft. IdentityModel. clients. ActiveDirectory Install-Package
 
 8. [Azure MEDIA Player API](https://amp.azure.net/libs/amp/latest/docs/)'sini kullanarak bir oyuncu oluşturun. Farklı DRM platformlarında hangi DRM teknolojisinin kullanılacağını belirtmek için [Azure Media Player Protectionınfo API](https://amp.azure.net/libs/amp/latest/docs/) 'sini kullanın.
 
@@ -421,11 +421,11 @@ Aşağıdaki ekran görüntülerinde farklı etki alanı hesapları tarafından 
 
 **Özel Azure AD kiracı etki alanı hesabı**: özel Azure AD kiracı etki alanının özelleştirilmiş oturum açma sayfası.
 
-![Özel Azure AD kiracı etki alanı hesabı](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain1.png)
+![Özel Azure A D kiracı etki alanının özelleştirilmiş oturum açma sayfasını gösteren ekran görüntüsü.](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain1.png)
 
 **Akıllı kart Ile Microsoft etki alanı hesabı**: MICROSOFT kurumsal BT tarafından iki öğeli kimlik doğrulama ile özelleştirilmiş oturum açma sayfası.
 
-![Özel Azure AD kiracı etki alanı hesabı](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain2.png)
+![İki öğeli kimlik doğrulama ile Microsoft Kurumsal ı T tarafından özelleştirilmiş oturum açma sayfasını gösteren ekran görüntüsü.](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain2.png)
 
 **Microsoft hesabı**: tüketiciler için Microsoft hesabı oturum açma sayfası.
 
@@ -488,6 +488,6 @@ Bu belgede, belirteç kimlik doğrulaması, tasarımı ve Azure, Media Services 
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
  

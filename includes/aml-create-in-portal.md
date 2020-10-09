@@ -9,18 +9,18 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 11/04/2019
-ms.openlocfilehash: 8ccd3e6129f4a061eacf83a1f4e70174c697480f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f5f132d257e30cd8f4fa1153087bf0df2f0f5b2c
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73633763"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841873"
 ---
-1. Azure aboneliğinizin kimlik bilgilerini kullanarak [Azure Portal](https://portal.azure.com/) için oturum açın.
+1. Azure aboneliğinizin kimlik bilgilerini kullanarak [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. Azure portal sol üst köşesinde **+ kaynak oluştur**' u seçin.
 
-    ![Yeni kaynak oluşturma](media/aml-create-in-portal/create-workspace.gif)
+    ![Kaynak oluştur seçeneğini gösteren ekran görüntüsü.](media/aml-create-in-portal/create-workspace.gif)
 
 1. **Machine Learning**bulmak için arama çubuğunu kullanın.
 
@@ -30,20 +30,20 @@ ms.locfileid: "73633763"
 
 1. Yeni çalışma alanınızı yapılandırmak için aşağıdaki bilgileri sağlayın:
 
-   Alan|Açıklama 
+   Alan|Açıklama
    ---|---
-   Çalışma alanı adı |Çalışma alanınızı tanımlayan benzersiz bir ad girin. Bu örnekte **docs-WS**kullanıyoruz. Adlar, kaynak grubu genelinde benzersiz olmalıdır. Başkaları tarafından oluşturulan çalışma alanlarını birbirinden ayırmak ve geri çekmek için kolay bir ad kullanın.  
+   Çalışma alanı adı |Çalışma alanınızı tanımlayan benzersiz bir ad girin. Bu örnekte **docs-WS**kullanıyoruz. Adlar, kaynak grubu genelinde benzersiz olmalıdır. Başkaları tarafından oluşturulan çalışma alanlarını birbirinden ayırmak ve geri çekmek için kolay bir ad kullanın.
    Abonelik |Kullanmak istediğiniz Azure aboneliğini seçin.
-   Kaynak grubu | Aboneliğinizde mevcut kaynak gruplarından birini seçin veya bir ad girerek yeni bir kaynak grubu oluşturun. Kaynak grubu, bir Azure çözümü için ilgili kaynakları barındırır. Bu örnekte **docs-AML**kullanılır. 
+   Kaynak grubu | Aboneliğinizde var olan bir kaynak grubunu kullanın veya yeni bir kaynak grubu oluşturmak için bir ad girin. Kaynak grubu, bir Azure çözümü için ilgili kaynakları barındırır. Bu örnekte **docs-AML**kullanılır. 
    Konum | Çalışma alanınızı oluşturmak için kullanıcılarınıza en yakın konumu ve veri kaynaklarını seçin.
-   Çalışma alanı sürümü | Bu öğretici için çalışma alanı türü olarak **temel** ' yı seçin. Çalışma alanı türü (temel & kurumsal), erişim ve fiyatlandırmaya sahip olduğunuz özellikleri belirler. Bu öğreticideki her şey, temel veya kurumsal çalışma alanıyla gerçekleştirilebilir.
+   Çalışma alanı sürümü | Bu öğretici için çalışma alanı türü olarak **temel** ' yı seçin. Çalışma alanı türü, erişim ve fiyatlandırmaya sahip olduğunuz özellikleri belirler. Bu öğreticideki her şey, temel veya kurumsal çalışma alanıyla gerçekleştirilebilir.
 
-1. Çalışma alanını yapılandırmayı tamamladıktan sonra, **gözden geçir + oluştur**' u seçin. 
+1. Çalışma alanını yapılandırmayı tamamladıktan sonra, **gözden geçir + oluştur**' u seçin.
 
-   > [!Warning] 
+   > [!Warning]
    > Çalışma alanınızı bulutta oluşturmak birkaç dakika sürebilir.
 
-   İşlem tamamlandığında, bir dağıtım başarı iletisi görüntülenir. 
+   İşlem tamamlandığında, bir dağıtım başarı iletisi görüntülenir.
  
  1. Yeni çalışma alanını görüntülemek için **Kaynağa Git**' i seçin.
 

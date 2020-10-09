@@ -1,17 +1,15 @@
 ---
 title: Azure ve tek başına Service Fabric kümelerine genel bakış
 description: Windows Server veya Linux çalıştıran tüm VM 'lerde veya bilgisayarlarda Service Fabric kümeleri oluşturabilirsiniz. Bu, şirket içinde, Microsoft Azure veya herhangi bir bulut sağlayıcısıyla birbirine bağlı bir Windows Server veya Linux bilgisayar kümesine sahip olduğunuz herhangi bir ortamda Service Fabric uygulamaları dağıtabileceğiniz ve çalıştırabileceğiniz anlamına gelir.
-author: dkkapur
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.author: dekapur
 ms.custom: sfrev
-ms.openlocfilehash: a3627effe10039ded5007f9dd060bf1865929040
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8313d75bb6398bbe614c6f56b494079548c99954
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75751148"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842606"
 ---
 # <a name="comparing-azure-and-standalone-service-fabric-clusters-on-windows-server-and-linux"></a>Windows Server ve Linux 'ta Azure ve tek başına Service Fabric kümelerini karşılaştırma
 
@@ -28,7 +26,7 @@ Azure 'da, diğer Azure özellikleri ve hizmetleriyle tümleştirme sağlıyoruz
 * **Azure kaynağı olarak Service Fabric kümesi** Service Fabric kümesi bir Azure kaynağıdır, bu nedenle Azure 'daki diğer kaynakları istediğiniz gibi modelleyebilirsiniz.
 * **Azure altyapısıyla tümleştirme** , Uygulamalarınızın kullanılabilirliğini ve güvenilirliğini artırmak için işletim sistemi, ağ ve diğer yükseltmelere yönelik temel Azure altyapısıyla birlikte koordinatları Service Fabric.  
 * **Tanılama:** Azure 'da Azure tanılama ve Azure Izleyici günlükleri ile tümleştirme sağlıyoruz.
-* **Otomatik ölçeklendirme:** Azure üzerindeki kümeler için, sanal makine ölçek kümeleri nedeniyle yerleşik otomatik ölçeklendirme işlevselliği sağlıyoruz. Şirket içi ve diğer bulut ortamlarında kendi otomatik ölçeklendirme özelliğini oluşturmanız veya Service Fabric kümeleri ölçeklendirmeye yönelik API 'Leri kullanarak el ile ölçeklendirmeniz gerekir.
+* **Otomatik ölçeklendirme:** Azure üzerindeki kümeler için, sanal makine ölçek kümeleri aracılığıyla yerleşik otomatik ölçeklendirme işlevselliği sağlıyoruz. Şirket içi ve diğer bulut ortamlarında kendi otomatik ölçeklendirme özelliğini oluşturmanız veya Service Fabric kümeleri ölçeklendirmeye yönelik API 'Leri kullanarak el ile ölçeklendirmeniz gerekir.
 
 ## <a name="benefits-of-standalone-clusters"></a>Tek başına kümelerin avantajları
 

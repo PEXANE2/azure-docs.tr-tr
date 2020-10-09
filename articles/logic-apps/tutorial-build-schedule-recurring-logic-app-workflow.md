@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/30/2020
-ms.openlocfilehash: 3bf4ad12bab3e71675ff35203bf69526b3b8614f
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: aad271875abb9024a1ecc7f45018c04d8c79ce95
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574871"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842572"
 ---
 # <a name="tutorial-create-schedule-based-and-recurring-automation-workflows-with-azure-logic-apps"></a>Öğretici: Azure Logic Apps ile zamanlamaya dayalı ve yinelenen Otomasyon iş akışları oluşturma
 
@@ -335,7 +335,7 @@ Ardından, aşağıdaki örneğe benzer şekilde mantıksal uygulamanızı test 
 
 ## <a name="run-your-logic-app"></a>Mantıksal uygulamanızı çalıştırın
 
-Mantıksal uygulamanızı el ile başlatmak için tasarımcı araç çubuğu çubuğunda **Çalıştır**' ı seçin.
+Mantıksal uygulamanızı el ile başlatmak için, Tasarımcı araç çubuğunda **Çalıştır**' ı seçin.
 
 * Geçerli seyahat süresi sınırınızda kalırsa, mantıksal uygulamanız başka bir şey yapmaz ve yeniden denetlemeden önce bir sonraki aralığı bekler. 
 
@@ -360,18 +360,18 @@ Mantıksal uygulamanız, uygulamayı devre dışı bırakana veya silme yapılı
 
 1. Azure portal arama kutusuna oluşturduğunuz kaynak grubunun adını girin. Sonuçlardan **kaynak grupları**' nın altında kaynak grubunu seçin.
 
-   Bu örnek adlı kaynak grubunu oluşturdu `LA-TravelTime-RG` . 
+   Bu örnek adlı kaynak grubunu oluşturdu `LA-TravelTime-RG` .
 
    !["La-seyahat-saat-RG" girilen ve * * LA-Seyahatsaati-RG * * seçili olan Azure Arama kutusunu gösteren ekran görüntüsü.](./media/tutorial-build-scheduled-recurring-logic-app-workflow/find-resource-group.png)
 
    > [!TIP]
    > Azure giriş sayfasında **son kaynaklar**altında kaynak grubu görünüyorsa, giriş sayfasından grubu seçebilirsiniz.
 
-1. Kaynak grubu menüsünde, **genel bakış** ' ın seçili olduğunu denetleyin. **Genel bakış** bölmesinin araç çubuğunda **kaynak grubunu sil**' i seçin. 
+1. Kaynak grubu menüsünde, **genel bakış** ' ın seçili olduğunu denetleyin. **Genel bakış** bölmesinin araç çubuğunda **kaynak grubunu sil**' i seçin.
 
    ![Kaynak grubunun "genel bakış" bölmesini gösteren ekran görüntüsü ve bölmenin araç çubuğunda "kaynak grubunu sil" seçilidir.](./media/tutorial-build-scheduled-recurring-logic-app-workflow/delete-resource-group.png)
 
-1. Onay bölmesinde, kaynak grubu adını girin ve **Sil**' i seçin.
+1. Görüntülenen onay bölmesinde, kaynak grubu adını girin ve **Sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

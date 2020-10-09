@@ -11,12 +11,12 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 454e205904b3623bdb5adc906465f01abd77092a
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 48db8541ebad19e3b22b737f7e92dcc980708ef6
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795618"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841603"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Sıralı kümelenmiş columnstore dizini ile performans ayarlama  
 
@@ -48,9 +48,6 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 
 
 ```
-
->[!TIP]
-> SYNAPSE SQL 'de geliştirilmiş performans için, kalıcı Kullanıcı tablolarında **sys. pdw_table_mappings** yerine **sys. pdw_permanent_table_mappings** kullanmayı düşünün. Daha fazla bilgi için bkz. **[sys. pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** .
 
 > [!NOTE] 
 > Sıralı bir CCı tablosunda, aynı DML veya veri yükleme işlemlerinden kaynaklanan yeni veriler, bu toplu iş içinde sıralanır ve tablodaki tüm verilerde Genel sıralama yapılmaz.  Kullanıcılar tablodaki tüm verileri sıralamak için sıralı CCı 'yı YENIDEN oluşturabilir.  SYNAPSE SQL 'de, columnstore dizini yeniden oluşturma, çevrimdışı bir işlemdir.  Bölümlenmiş bir tablo için, yeniden oluşturma tek seferde bir bölüm olarak gerçekleştirilir.  Yeniden oluşturulmakta olan bölümdeki veriler "çevrimdışı" ve bu bölüm için yeniden oluşturma tamamlanana kadar kullanılamaz. 
@@ -98,7 +95,7 @@ Sıralı bir CCı tablosuna yükleme verilerinin performansı bölümlenmiş bir
 
 Aşağıda, verileri farklı şemalara sahip tablolara yüklemenin bir örnek performans karşılaştırması verilmiştir.
 
-![Performance_comparison_data_loading](./media/performance-tuning-ordered-cci/cci-data-loading-performance.png)
+![Farklı şemalara sahip tablolara veri yükleme performansı karşılaştırmasını gösteren çubuk grafiği.](./media/performance-tuning-ordered-cci/cci-data-loading-performance.png)
 
 
 CCı ve sıralı CCı arasında örnek bir sorgu performansı karşılaştırması aşağıda verilmiştir.
@@ -139,7 +136,7 @@ Sıralı bir CCı oluşturma, çevrimdışı bir işlemdir.  Bölüm içermeyen 
 
 ## <a name="examples"></a>Örnekler
 
-**A. sıralı sütunları ve sıra sıra sayısını denetlemek Için:**
+**A. Sıralı sütunları ve sıra sıra sayısını denetlemek için:**
 
 ```sql
 SELECT object_name(c.object_id) table_name, c.name column_name, i.column_store_order_ordinal 
@@ -148,7 +145,7 @@ JOIN sys.columns c ON i.object_id = c.object_id AND c.column_id = i.column_id
 WHERE column_store_order_ordinal <>0
 ```
 
-**B. sütun sırasını değiştirmek Için, sipariş listesinden sütun ekleyin veya kaldırın ya da CCı 'dan sıralı CCı 'ya geçiş yapın:**
+**Kenarı. Sütun sırasını değiştirmek için, sipariş listesinden sütun ekleyin veya kaldırın ya da CCı 'dan sıralı CCı 'ya geçiş yapın:**
 
 ```sql
 CREATE CLUSTERED COLUMNSTORE INDEX InternetSales ON  InternetSales
