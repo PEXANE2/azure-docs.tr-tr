@@ -14,17 +14,17 @@ ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
 ms.openlocfilehash: 0d72ea23b74137e7e57f892b831b0be1b4a89de5
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82735530"
 ---
 # <a name="tutorial-grant-a-group-access-to-azure-resources-using-azure-powershell"></a>Öğretici: Azure PowerShell kullanarak Azure kaynaklarına grup erişimi verme
 
 Azure [rol tabanlı erişim denetimi (Azure RBAC)](overview.md) , Azure kaynaklarına erişimi yönetme yöntemidir. Bu öğreticide bir gruba bir abonelik içindeki her şeyi görüntüleme ve bir kaynak grubundaki her şeyi yönetme izni vermek için Azure PowerShell'i kullanacaksınız.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Bir gruba farklı kapsamlarda erişim izni verme
@@ -35,7 +35,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -48,8 +48,8 @@ Azure RBAC 'de, erişim izni vermek için bir rol ataması oluşturun. Rol atama
 
 | Güvenlik sorumlusu | Rol tanımı | Kapsam |
 | --- | --- | --- |
-| Gruplama<br>(RBAC Tutorial Group) | [Okuyucu](built-in-roles.md#reader) | Abonelik |
-| Gruplama<br>(RBAC Tutorial Group)| [Katkıda Bulunan](built-in-roles.md#contributor) | Kaynak grubu<br>(rbac-tutorial-resource-group) |
+| Grup<br>(RBAC Tutorial Group) | [Okuyucu](built-in-roles.md#reader) | Abonelik |
+| Grup<br>(RBAC Tutorial Group)| [Katkıda Bulunan](built-in-roles.md#contributor) | Kaynak grubu<br>(rbac-tutorial-resource-group) |
 
    ![Bir grup için rol atama](./media/tutorial-role-assignments-group-powershell/rbac-role-assignments.png)
 
@@ -294,4 +294,4 @@ Bu öğretici ile oluşturulan kaynakları temizlemek için kaynak grubunu ve gr
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure PowerShell kullanarak Azure rol atamaları ekleme veya kaldırma](role-assignments-powershell.md)
+> [Azure PowerShell kullanarak Azure rol atamalarını ekleme veya kaldırma](role-assignments-powershell.md)

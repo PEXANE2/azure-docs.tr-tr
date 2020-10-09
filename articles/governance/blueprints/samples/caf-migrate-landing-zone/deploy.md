@@ -4,10 +4,10 @@ description: CAF geçiş giriş bölgesi şeması, şema yapıt parametresi ayr�
 ms.date: 05/06/2020
 ms.topic: sample
 ms.openlocfilehash: 109c9a2c4c5670d6f5a676498ae1010a4ab0e418
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82871171"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>Azure geçişi giriş bölgesi şeması örneği için Microsoft Bulut benimseme çerçevesini dağıtma
@@ -18,54 +18,54 @@ Azure planları CAF geçiş giriş bölgesi şema örneğini dağıtmak için a�
 > - [CAF Foundation](../caf-foundation/index.md) şema örneğini dağıtmak için önerilir
 
 > [!div class="checklist2"]
-> - Örnekten yeni bir şema oluştur
-> - Örnek kopyanızı **yayımlandı** olarak işaretleyin
-> - Şema kopyanızı mevcut bir aboneliğe atama
+> - Örnekten yeni bir şema oluşturma
+> - Örneğinizin kopyasını **Yayımlandı** olarak işaretleyin
+> - Şemanızın kopyasını mevcut bir aboneliğe atayın
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
 
 ## <a name="create-blueprint-from-sample"></a>Örnekten şema oluştur
 
-İlk olarak, bir başlangıç olarak örneği kullanarak ortamınızda yeni bir şema oluşturarak şema örneğini uygulayın.
+İlk olarak, başlangıç noktası olarak örneği kullanarak ortamınızda yeni bir şema oluşturup şema örneğini uygulayın.
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
-1. Soldaki **Başlarken** sayfasında, şema _Oluştur_altında **Oluştur** düğmesini seçin.
+1. Soldaki **Başlangıç** sayfasında, _Şema oluştur_ bölümündeki **Oluştur** düğmesini seçin.
 
-1. _Diğer örnekler_ altında **CAF geçiş giriş bölgesi** şema örneğini bulun ve **Bu örneği kullan**' ı seçin.
+1. _Diğer Örnekler_ bölümünden **CAF Geçişi giriş bölgesi** şema örneğini bulun ve **Bu örneği kullanın** seçeneğini belirleyin.
 
-1. Şema örneği _hakkında temel bilgileri_ girin:
+1. Şema örneğinin _Temel bilgiler_ bölümüne girin:
    - **Blueprint adı** CAF geçiş giriş bölgesi şeması örneğinin kopyasına bir ad verin.
    - **Tanım konumu** Üç noktayı kullanın ve örnek kopyanızı ' e kaydetmek için yönetim grubunu seçin.
 
-1. Sayfanın üst kısmındaki _yapıtlar_ sekmesini veya sonraki: sayfanın en altındaki **yapıtları** seçin.
+1. Sayfanın üst kısmındaki _Yapıtlar_ sekmesini seçin veya sayfanın en altındaki **Sonraki: Yapıtlar** seçeneğini belirleyin.
 
-1. Şema örneğini oluşturan yapıtların listesini gözden geçirin. Yapıtların çoğunda, daha sonra tanımlayacağımız parametreler vardır. Şema örneğini gözden geçirmeyi bitirdiğinizde **Taslağı kaydet** ' i seçin.
+1. Şema örneğini oluşturan yapıtların listesini gözden geçirin. Yapıtların çoğu parametreler içerir; bu parametreleri daha sonra tanımlayacağız. Şema örneğini gözden geçirmeyi tamamladığınızda **Taslağı Kaydet**’i seçin.
 
-## <a name="publish-the-sample-copy"></a>Örnek kopyayı Yayımla
+## <a name="publish-the-sample-copy"></a>Örnek kopyayı yayımlama
 
-Şema örneğinin kopyası artık ortamınızda oluşturulmuştur. **Taslak** modunda oluşturulur ve atanmadan ve dağıtılmadan önce **yayımlanmaları** gerekir. Şema örneğinin kopyası ortamınıza ve gereksinimlerinize göre özelleştirilebilir, ancak bu değişiklik, CAF geçiş giriş bölgesi kılavuzunlarından uzaklaştırabilir.
+Şimdi şema örneği kopyanız, ortamınızda oluşturulmuştur. Bu, **Taslak** modunda oluşturulur ve atanabilmesi ve dağıtılabilmesi için önce **Yayımlandı** durumunda olmalıdır. Şema örneğinin kopyası, ortamınıza ve ihtiyaçlarınıza göre özelleştirilebilir, ancak bu değişiklik sonucunda kopya, CAF geçişi giriş bölgesi kılavuzundan dışarı taşınabilir.
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
-1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Şemayı kullanarak şema örneğinin kopyasını bulun ve ardından seçin.
+1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Filtreleri kullanarak şema örneği kopyanızı bulup seçin.
 
-1. Sayfanın üst kısmındaki şemayı **Yayımla** ' yı seçin. Sağ taraftaki yeni sayfada, şema örneğinin kopyası için bir **Sürüm** belirtin. Daha sonra bir değişiklik yaparsanız, bu özellik için faydalıdır. "CAF geçiş giriş bölgesinden yayınlanan ilk sürüm, şema örneğinden" gibi **değişiklik notları** sağlayın. Ardından sayfanın alt kısmında **Yayımla** ' yı seçin.
+1. Sayfanın üst kısmında **Şemayı yayımla**’yı seçin. Sağdaki yeni sayfada, şema örneği kopyanız için bir **Sürüm** sağlayın. Bu özellik daha sonra bir değişiklik yaptığınızda faydalı olacaktır. "CAF geçiş giriş bölgesinden yayınlanan ilk sürüm, şema örneğinden" gibi **değişiklik notları** sağlayın. Sayfanın alt kısmında **Yayımla** düğmesini seçin.
 
 ## <a name="assign-the-sample-copy"></a>Örnek kopyayı atama
 
-Şema örneğinin kopyası başarıyla **yayımlandıktan**sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adım, her bir şema örneğinin kopyasının her dağıtımını yapmak için parametrelerin sağlandığı yerdir.
+Şema örneğinin kopyası başarıyla **yayımlandıktan**sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adımda, şema örneği kopyasının her bir dağıtımını benzersiz hale getirmek için parametreler sağlanır.
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
-1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Şemayı kullanarak şema örneğinin kopyasını bulun ve ardından seçin.
+1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Filtreleri kullanarak şema örneği kopyanızı bulup seçin.
 
-1. Şema tanım sayfasının en üstünde şema **ata** ' yı seçin.
+1. Şema tanımı sayfasının en üstünde **Şema ata**’yı seçin.
 
-1. Şema atamasının parametre değerlerini sağlayın:
+1. Şema ataması için parametre değerlerini sağlayın:
 
    - Temel Bilgiler
-     - **Abonelikler**: şema örneğinin kopyasını kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreleri kullanarak her biri için bir atama oluşturulur.
+     - **Abonelikler**: şema örneğinin kopyasını kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreler kullanılarak her biri için bir atama oluşturulur.
      - **Atama adı**: ad, BLUEPRINT adına göre önceden doldurulur.
        Gerektiğinde değiştirin veya olduğu gibi bırakın.
      - **Konum**: yönetilen kimliğin oluşturulacağı bölgeyi seçin.
@@ -75,39 +75,39 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     
    - Kilit ataması
 
-     Ortamınız için BLUEPRINT Lock ayarını seçin. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../../concepts/resource-locking.md).
+     Ortamınız için şema kilitleme ayarını seçin. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../../concepts/resource-locking.md).
 
    - Yönetilen Kimlik
 
-     Varsayılan _sistem tarafından atanmış_ yönetilen kimlik seçeneğini veya _Kullanıcı tarafından atanan_ kimlik seçeneğini belirleyin.
+     Varsayılan _sistem tarafından atanan_ yönetilen kimlik seçeneğini veya _kullanıcı tarafından atanan_ kimlik seçeneğini belirleyin.
 
    - Şema parametreleri
 
-     Bu bölümde tanımlanan parametreler, tutarlılığı sağlamak için şema tanımındaki birçok yapıtlar tarafından kullanılır.
+     Bu bölümde tanımlanan parametreler, tutarlılık sağlamak için şemadaki yapıtların birçoğu tarafından kullanılır.
 
        - **Kuruluş**: contoso veya fabrikam gibi kuruluşunuzun adını girin, benzersiz olmalıdır.
        - **Azureregion**: dağıtım Için bir Azure bölgesi seçin.
        
    - Yapıt parametreleri
 
-     Bu bölümde tanımlanan parametreler, tanımlanan yapıt için geçerlidir. Bu parametreler, Blueprint atama sırasında tanımlandıklarından [dinamik parametrelerdir](../../concepts/parameters.md#dynamic-parameters) . Tam liste veya yapıt parametreleri ve açıklamaları için bkz. [yapıt parametreleri tablosu](#artifact-parameters-table).
+     Bu bölümde tanımlanan parametreler, tanımlandığı yapıt için geçerlidir. Bu parametreler, Blueprint atama sırasında tanımlandıklarından [dinamik parametrelerdir](../../concepts/parameters.md#dynamic-parameters) . Tam liste veya yapıt parametreleri ve açıklamaları için bkz. [yapıt parametreleri tablosu](#artifact-parameters-table).
 
-1. Tüm parametreler girildikten sonra sayfanın alt kısmındaki **ata** ' yı seçin. Şema ataması oluşturulur ve yapıt dağıtımı başlar. Dağıtım yaklaşık beş dakika sürer. Dağıtımın durumunu denetlemek için, BLUEPRINT atamasını açın.
+1. Tüm parametreler girildikten sonra, sayfanın alt kısmında **Ata** seçeneğini belirleyin. Şema ataması oluşturulur ve yapıt dağıtımı başlar. Dağıtım yaklaşık beş dakika sürer. Dağıtımın durumunu denetlemek için şema atamasını açın.
 
 > [!WARNING]
-> Azure şemaları hizmeti ve yerleşik şema örnekleri **ücretsiz olarak ücretsizdir**. Azure kaynakları [ürüne göre fiyatlandırılır](https://azure.microsoft.com/pricing/). Bu şema örneği tarafından dağıtılan çalışan kaynakların maliyetini tahmin etmek için [fiyatlandırma hesaplayıcısını](https://azure.microsoft.com/pricing/calculator/) kullanın.
+> Azure Blueprints hizmeti ve yerleşik şema örnekleri **ücretsizdir**. Azure kaynakları, [ürüne göre fiyatlandırılır](https://azure.microsoft.com/pricing/). Bu şema örneği tarafından dağıtılan kaynakları çalıştırma maliyetini tahmin etmek için [fiyatlandırma hesaplayıcısını](https://azure.microsoft.com/pricing/calculator/) kullanın.
 
 ## <a name="artifact-parameters-table"></a>Yapıt parametreleri tablosu
 
-Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
+Aşağıdaki tabloda, şema yapıtı parametrelerinin bir listesi verilmiştir:
 
 |Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
 |-|-|-|-|
-|VNET giriş bölgesini dağıt|Resource Manager şablonu|IPAddress_Space|**Kilitli** -ilk iki sekizli örnek sağlayın, 10,0|
-|Key Vault dağıt|Resource Manager şablonu|KV-AccessPolicy|Key Vault içinde izinler vermek için **kilitli** grup veya Kullanıcı nesne kimliği|
-|Log Analytics dağıt|Resource Manager şablonu|LogAnalytics_DataRetention|**Kilitli** -Log Analytics verilerin tutulacağı gün sayısı|
-|Log Analytics dağıt|Resource Manager şablonu|LogAnalytics_Location|Çalışma alanı oluşturulurken kullanılan **kilitli** bölge|
-|Azure geçişi 'ni dağıtma|Resource Manager şablonu|Azure_Migrate_Location|**Kilitli** -Azure geçişi 'ni dağıtmak için bölgeyi seçin|
+|VNET giriş bölgesini dağıt|Resource Manager şablonu|IPAddress_Space|**Kilitli** - İlk iki sekizlik tabanı sağlayın; örnek, 10.0|
+|Key Vault’u dağıt|Resource Manager şablonu|KV-AccessPolicy|Key Vault içinde izinler vermek için **kilitli** grup veya Kullanıcı nesne kimliği|
+|Log Analytics’i dağıt|Resource Manager şablonu|LogAnalytics_DataRetention|**Kilitli** -Log Analytics verilerin tutulacağı gün sayısı|
+|Log Analytics’i dağıt|Resource Manager şablonu|LogAnalytics_Location|**Kilitli** - Çalışma alanı oluşturulurken kullanılan bölge|
+|Azure Geçişi’ni dağıt|Resource Manager şablonu|Azure_Migrate_Location|**Kilitli** -Azure geçişi 'ni dağıtmak için bölgeyi seçin|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

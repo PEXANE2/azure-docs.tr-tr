@@ -9,23 +9,23 @@ ms.topic: tutorial
 ms.custom: hdinsightactive,mvc,seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: 4eb10298ac683c991835f86582d82fb952b314b2
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82195120"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Öğretici: HDInsight 'ta Power BI kullanarak Apache Spark verileri çözümleme
 
 Bu öğreticide, Azure HDInsight 'ta bir Apache Spark kümesindeki verileri görselleştirmek için Microsoft Power BI kullanmayı öğreneceksiniz.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Power BI kullanarak Spark verilerini görselleştirme
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Öğretici: Azure HDInsight içindeki bir Apache Spark kümesinde veri yükleme ve sorgu çalıştırma](./apache-spark-load-data-run-query.md) makalesini tamamlayın.
 
@@ -83,7 +83,7 @@ Spark ile çalışmanın ilk adımları, Power BI Desktop’ta kümeye bağlanma
 
 4. `mysparkcluster.azurehdinsight.net` **Sunucu** metın kutusuna küme URL 'nizi (biçimde) girin.
 
-5. **Veri bağlantısı modu**altında **DirectQuery**' yi seçin. Ardından **Tamam**’ı seçin.
+5. **Veri bağlantısı modu**altında **DirectQuery**' yi seçin. Ardından **Tamam**'ı seçin.
 
     Spark ile herhangi bir veri bağlantısı modunu kullanabilirsiniz. DirectQuery kullanırsanız, değişiklikler tüm veri kümesi yenilenmeden raporlara yansıtılır. Verileri içeri aktarırsanız, değişiklikleri görmek için veri kümesini yenilemeniz gerekir. DirectQuery’nin nasıl ve ne zaman kullanılacağı hakkında daha fazla bilgi için bkz. [Power BI’da DirectQuery kullanma](https://powerbi.microsoft.com/documentation/powerbi-desktop-directquery-about/).
 

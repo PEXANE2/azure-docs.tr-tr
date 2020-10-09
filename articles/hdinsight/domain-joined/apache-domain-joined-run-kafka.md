@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 05/19/2020
 ms.openlocfilehash: d2780b3456a802904800b894f6849544cfee4e61
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85105949"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Öğretici: HDInsight 'ta Kurumsal Güvenlik Paketi ile Apache Kafka ilkeleri yapılandırma (Önizleme)
@@ -142,7 +142,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 3. Derleme bölümünde 3. adımı izleyin **ve örneği** öğreticide dağıtın: sales_user için de kullanılabilir olduğundan emin olmak Için [Apache Kafka Producer ve Consumer API 'lerini kullanın](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) `kafka-producer-consumer.jar` . **sales_user**
 
    > [!NOTE]  
-   > Bu öğreticide, lütfen etki alanına katılmış olmayan senaryolar için "Domainkatılmış-Producer-Consumer" projesi altındaki Kafka-Producer-Consumer. jar dosyasını kullanın (Producer-Consumer projesi altında değil).
+   > Bu öğreticide, lütfen "Domainkatılmış-Producer-Consumer" projesi altındaki Kafka-Producer-Consumer. jar dosyasını kullanın (etki alanına katılmış olmayan senaryolar için Producer-Consumer projesi altında değil).
 
 4. **Sales_user1** , aşağıdaki komutu yürüterek konuya üretebildiğini doğrulayın `salesevents` :
 
@@ -218,14 +218,14 @@ Konsolunu kullanarak ESP Kafka ile ilgili konular oluşturmak ve kullanmak için
 
 Bu uygulamayı kullanmaya devam etmeyecekecekseniz, aşağıdaki adımlarla oluşturduğunuz Kafka kümesini silin:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 1. Üstteki **arama** kutusuna **HDInsight**yazın.
 1. **Hizmetler**altında **HDInsight kümeleri** ' ni seçin.
 1. Görüntülenen HDInsight kümeleri listesinde, bu öğretici için oluşturduğunuz kümenin yanındaki **...** öğesine tıklayın. 
-1. **Sil**'e tıklayın. **Evet**' e tıklayın.
+1. **Sil**'e tıklayın. **Evet**'e tıklayın.
 
 ## <a name="troubleshooting"></a>Sorun giderme
-Kafka-Producer-Consumer. jar, etki alanına katılmış bir kümede çalışmazsa, lütfen "Domainkatılmış-Producer-Consumer" projesi altındaki Kafka-Producer-Consumer. jar dosyasını kullandığınızdan emin olun (etki alanına katılmış olmayan senaryolar için, Producer-Consumer projesi altında değil).
+Kafka-Producer-Consumer. jar, etki alanına katılmış bir kümede çalışmazsa, lütfen "Domainkatılmış-Producer-Consumer" projesi altındaki Kafka-Producer-Consumer. jar dosyasını kullandığınızdan emin olun (Producer-Consumer projesi altında değil, etki alanına katılmış olmayan senaryolar için).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -9,13 +9,13 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 555da74da65f3b1897a276cf819a263334cfa053
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80999055"
 ---
-# <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Öğretici: Azure IoT Central uygulamanızda bir kural oluşturma ve bildirim ayarlama
+# <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Öğretici: Azure IoT Central uygulamanızda kural oluşturma ve bildirimleri ayarlama
 
 *Bu makale, işleçler, oluşturucular ve yöneticiler için geçerlidir.*
 
@@ -25,14 +25,14 @@ Cihazlar, cihazdan sayısal veri göndermek için telemetri kullanır. Seçilen 
 
 Bu öğreticide, sanal bir ortam algılayıcısı cihazındaki sıcaklık 70 F 'yi aştığında bir e-posta göndermek için bir kural oluşturacaksınız &deg; .
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
 > * Kural oluşturma
 > * E-posta eylemi ekleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce [Azure IoT Central oluşturma uygulamasını](./quick-deploy-iot-central.md) tamamlayıp [IoT Central uygulamanıza sanal bir cihaz ekleyerek](./quick-create-simulated-device.md) , birlikte çalışmak üzere **mxyonga IoT devkit** cihaz şablonunu oluşturun.
 

@@ -106,7 +106,7 @@
           href: 'https://github.com/Azure-Samples/cognitive-services-python-sdk-samples'
         - name: Node.js SDK örnekleri
           href: 'https://github.com/Azure-Samples/cognitive-services-node-sdk-samples'
-        - name: 'C# dilinde REST API örnekleri'
+        - name: C# dilinde REST API örnekleri
           href: samples-rest.md
         - name: Diğer Azure örnekleri
           href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=content-moderator'

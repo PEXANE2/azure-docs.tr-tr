@@ -9,13 +9,13 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 433e909563602a2ef32b7986959b428c9afaf9f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82789020"
 ---
-| Kaynak | Description|
+| Kaynak | Açıklama|
 |----------|------------|
 | **Görüntü kaynağı** | Bu, bir görüntü galerisinde **görüntü sürümü** oluşturmak için kullanılabilecek bir kaynaktır. Görüntü kaynağı, başka bir görüntü galerisinde [Genelleştirilmiş veya özelleştirilmiş](../articles/virtual-machines/windows/shared-image-galleries.md#generalized-and-specialized-images), yönetilen bir görüntü, anlık görüntü veya görüntü sürümü olan mevcut BIR Azure VM olabilir. |
 | **Görüntü Galerisi** | Azure Marketi gibi bir **görüntü Galerisi** , görüntüleri yönetmek ve paylaşmak için bir depodur, ancak kimlerin erişimi olduğunu kontrol edersiniz. |

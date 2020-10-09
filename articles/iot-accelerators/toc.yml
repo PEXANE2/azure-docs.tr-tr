@@ -90,7 +90,7 @@
               href: iot-accelerators-remote-monitoring-deploy-local-java.md
             - name: Docker ile yerel olarak dağıtma
               href: iot-accelerators-remote-monitoring-deploy-local-docker.md
-        - name: Gerçek cihaz bağlama
+        - name: Gerçek cihazı bağlama
           items:
             - name: Windows üzerinde C
               href: iot-accelerators-connecting-devices.md
@@ -201,7 +201,7 @@
       href: /azure/iot-fundamentals/iot-support-help
     - name: Azure IoT hizmetleri
       items:
-        - name: IoT Hub’ı
+        - name: IoT Hub
           href: /azure/iot-hub
         - name: IoT Hub Cihazı Sağlama Hizmeti
           href: /azure/iot-dps
@@ -215,14 +215,14 @@
           href: /azure/iot-pnp
         - name: Azure Haritalar
           href: /azure/azure-maps
-        - name: Zaman Serisi Öngörüleri
+        - name: Time Series Insights
           href: /azure/time-series-insights
     - name: Azure IoT SDK’ları
       items:
         - name: IoT Hizmet SDK’ları
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT Cihaz SDK'ları
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: Uzaktan izleme
       items:
         - name: Geliştirici başvuru kılavuzu (.NET)

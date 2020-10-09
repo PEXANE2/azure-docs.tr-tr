@@ -16,10 +16,10 @@ ms.date: 03/11/2019
 ms.author: allensu
 ms.custom: seodec18
 ms.openlocfilehash: 8961a50490bdbf8b456e87e1c00577c2c8afd050
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80240372"
 ---
 # <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak internet trafiğini sanal makinelere Yük Dengeleme
@@ -51,8 +51,8 @@ Bu bölümde, sanal makinelerin yük dengelemeye yardımcı olan bir Standart Lo
     | ---                     | ---                                                |
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | **Yeni oluştur** ' u seçin ve metin kutusuna *Myresourcegroupslb* yazın.|
-    | Name                   | *myLoadBalancer*                                   |
-    | Region         | **Batı Avrupa**'yı seçin.                                        |
+    | Adı                   | *myLoadBalancer*                                   |
+    | Bölge         | **Batı Avrupa**'yı seçin.                                        |
     | Tür          | **Genel**’i seçin.                                        |
     | SKU           | **Standart**' ı seçin.                          |
     | Genel IP adresi | **Yeni oluştur**’u seçin. |
@@ -85,7 +85,7 @@ Load Balancer uygulamanızın durumunu izlemesine izin vermek için, bir sistem 
      
     | Ayar | Değer |
     | ------- | ----- |
-    | Ad | *Myhealtharaştırması*girin. |
+    | Adı | *Myhealtharaştırması*girin. |
     | Protokol | **Http**'yi seçin. |
     | Bağlantı noktası | *80*girin.|
     | Aralık | Yoklama denemeleri arasındaki saniye cinsinden **Aralık** sayısı için *15* girin. |
@@ -103,7 +103,7 @@ Trafiğin sanal makinelere dağıtımını tanımlamak için bir Yük Dengeleyic
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Ad | *Myhttprule*girin. |
+    | Adı | *Myhttprule*girin. |
     | Protokol | **TCP**’yi seçin. |
     | Bağlantı noktası | *80*girin.|
     | Arka uç bağlantı noktası | *80*girin. |
@@ -179,7 +179,7 @@ Bu bölümde, HTTP kullanarak gelen bağlantılara izin veren bir ağ güvenlik 
     - **Öncelik** için *100*
     - ad için *Myhttprule*
     - Açıklama için *HTTP’ye İzin Ver*
-4. **Ekle**’yi seçin.
+4. **Add (Ekle)** seçeneğini belirleyin.
 
 ### <a name="install-iis-on-vms"></a>VM’lere IIS yükleme
 

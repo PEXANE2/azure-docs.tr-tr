@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
 ms.openlocfilehash: d798725892a9586c17cd7023863fe5cf7df05cb6
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84417846"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>Öğretici: Azure portal kullanarak NAT ağ geçidi oluşturma ve NAT hizmetini test etme
@@ -30,7 +30,7 @@ Bu öğreticide, Azure 'da sanal makineler için giden bağlantı sağlamak üze
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 ## <a name="prepare-the-source-for-outbound-traffic"></a>Kaynağı giden trafik için hazırlama
 
@@ -83,7 +83,7 @@ Ayrıca, bu VM 'yi ortak IP olmadan oluşturabilir ve bir alıştırma olarak ge
 
 4. **Yönetim** sekmesinde, **izleme**' nin altında, **önyükleme tanılamayı** **kapalı**olarak ayarlayın.
 
-5. **Gözden geçir + oluştur**’u seçin.
+5. **Gözden geçir ve oluştur**’u seçin.
 
 6. Ayarları gözden geçirin ve **Oluştur**' a tıklayın.
 
@@ -105,7 +105,7 @@ Bu bölümde, NAT ağ geçidi kaynağını kullanarak NAT hizmetinin aşağıdak
     | ------- | ----- |
     | IP sürümü | **IPv4** seçin.
     | SKU | **Standart**' ı seçin.
-    | Ad | **Mypublicipsource**girin. |
+    | Adı | **Mypublicipsource**girin. |
     | Abonelik | Aboneliğinizi seçin.|
     | Kaynak grubu | **Myresourcegroupnat**öğesini seçin. |
     | Konum | **Doğu ABD 2**’yi seçin.|
@@ -147,7 +147,7 @@ Bu bölümde, NAT ağ geçidi kaynağını kullanarak NAT hizmetinin aşağıdak
    - **Sanal ağ**: **myresourcegroupnat**  >  **myvnetsource**öğesini seçin.
    - **Alt ağ adı**: **mysubnetsource**seçeneğinin yanındaki kutuyu seçin.
 
-5. **Gözden geçir + oluştur**’u seçin.
+5. **Gözden geçir ve oluştur**’u seçin.
 
 6. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
 
@@ -200,7 +200,7 @@ Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değ
 
 4. **Yönetim** sekmesinde, **izleme**' nin altında, **önyükleme tanılamayı** **kapalı**olarak ayarlayın.
 
-5. **Gözden geçir + oluştur**’u seçin.
+5. **Gözden geçir ve oluştur**’u seçin.
 
 6. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
 

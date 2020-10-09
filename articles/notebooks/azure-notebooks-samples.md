@@ -4,10 +4,10 @@ description: Örnekler, ücretsiz Azure Notebooks bulut hizmetlerinde çalışan
 ms.topic: sample
 ms.date: 01/11/2019
 ms.openlocfilehash: 397e40f628e6e935fef74d2225d2e477aac7b276
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85834004"
 ---
 # <a name="discover-and-use-sample-notebooks-in-azure-notebooks-preview"></a>Azure Notebooks önizlemede örnek not defterlerini bulma ve kullanma

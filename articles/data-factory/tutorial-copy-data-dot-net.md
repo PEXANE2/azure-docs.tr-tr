@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
 ms.openlocfilehash: b2293c0dd74903921abb58037afd8eb5db3659d9
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85513262"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Blob’dan Azure SQL Veritabanına veri kopyalama
@@ -97,7 +97,7 @@ Visual Studio 'yu kullanarak bir C# .NET konsol uygulaması oluşturun.
 
 1. Visual Studio'yu açın.
 2. **Başlangıç** penceresinde **Yeni proje oluştur**' u seçin.
-3. **Yeni proje oluştur** penceresinde, proje türleri listesinden **konsol uygulamasının C# sürümünü (.NET Framework)** seçin. Sonra **İleri**’yi seçin.
+3. **Yeni proje oluştur** penceresinde, proje türleri listesinden **konsol uygulamasının C# sürümünü (.NET Framework)** seçin. Ardından **İleri**’yi seçin.
 4. **Yeni projeyi yapılandırın** penceresinde, *ADFv2Tutorial*için bir **Proje adı** girin. **Konum**için, projenin kaydedileceği dizine gidin ve/veya oluşturun. Ardından **Oluştur**’u seçin. Yeni proje, Visual Studio IDE 'de görüntülenir.
 
 ## <a name="install-nuget-packages"></a>NuGet paketlerini yükleme

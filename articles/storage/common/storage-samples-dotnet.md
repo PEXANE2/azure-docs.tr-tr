@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.openlocfilehash: f02c08e752575dd1f57ce91dfc3145b69e3a2fd2
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81010503"
 ---
 # <a name="azure-storage-samples-using-v12-net-client-libraries"></a>V12 .NET istemci kitaplıklarını kullanan Azure depolama örnekleri
@@ -23,7 +23,7 @@ Aşağıdaki tabloda, örnek havuzumuza ve her örnekte ele alınan senaryolara 
 
 ## <a name="blob-samples"></a>Blob örnekleri
 
-### <a name="authentication"></a>Kimlik Doğrulama
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 :::row:::
    :::column span="":::
@@ -94,7 +94,7 @@ Aşağıdaki tabloda, örnek havuzumuza ve her örnekte ele alınan senaryolara 
 
 ## <a name="data-lake-storage-gen2-samples"></a>Data Lake Storage 2. örnekleri
 
-### <a name="authentication"></a>Kimlik Doğrulama
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 :::row:::
    :::column span="":::
@@ -180,7 +180,7 @@ Aşağıdaki tabloda, örnek havuzumuza ve her örnekte ele alınan senaryolara 
 
 ## <a name="azure-files-samples"></a>Azure dosyaları örnekleri
 
-### <a name="authentication"></a>Kimlik Doğrulama
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 :::row:::
    :::column span="":::
@@ -222,7 +222,7 @@ Aşağıdaki tabloda, örnek havuzumuza ve her örnekte ele alınan senaryolara 
 
 ## <a name="queue-samples"></a>Kuyruk örnekleri
 
-### <a name="authentication"></a>Kimlik Doğrulama
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 :::row:::
    :::column span="":::
@@ -320,7 +320,7 @@ Aşağıdaki tabloda, örnek havuzumuza ve her örnekte ele alınan senaryolara 
 
 Her kitaplık için GitHub deposuna gözatıp kopyalayabilirsiniz.
 
-## <a name="getting-started-guides"></a>Başlarken kılavuzlarını
+## <a name="getting-started-guides"></a>Başlangıç kılavuzları
 
 Azure Storage Istemci kitaplıklarını yüklemek ve kullanmaya başlamak için yönergeler arıyorsanız aşağıdaki kılavuzlara göz atın.
 

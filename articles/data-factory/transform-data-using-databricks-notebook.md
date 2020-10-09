@@ -12,10 +12,10 @@ ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 03/12/2018
 ms.openlocfilehash: e63180a3c4b8de06ab9e26afc8fff322188291cc
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81418992"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Azure Data Factory’de Databricks Not Defteri etkinliği ile bir Databricks not defteri çalıştırma
@@ -40,7 +40,7 @@ Bu özelliğe yönelik on bir dakikalık bir giriş ve tanıtım için, aşağı
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/ingest-prepare-and-transform-using-azure-databricks-and-data-factory/player]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
   - **Azure Databricks çalışma alanı**. [Bir Databricks çalışma alanı oluşturun](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) veya var olanı kullanın. Azure Databricks çalışma alanınızda bir Python not defteri oluşturun. Ardından, not defterini yürütün ve Azure Data Factory kullanarak parametreleri not defterine geçirin.
 
@@ -195,13 +195,13 @@ Araç çubuğunda **Tetikleyici**’yi ve sonra **Şimdi Tetikle**’yi seçin.
 
 ![Şimdi Tetikle komutunu seçme](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image20.png)
 
-**İşlem Hattı Çalıştırma** iletişim kutusu **name** parametresini sorar. Burada parametre olarak **/path/filename** seçeneğini kullanın. **Son**'a tıklayın.
+**İşlem Hattı Çalıştırma** iletişim kutusu **name** parametresini sorar. Burada parametre olarak **/path/filename** seçeneğini kullanın. Son ' a tıklayın **.**
 
 ![Name parametreleri için bir değer belirtin](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image21.png)
 
 ## <a name="monitor-the-pipeline-run"></a>İşlem hattı çalıştırmasını izleme
 
-1.  **İzleyici** sekmesine geçin. bir işlem hattı çalıştırması Görtığınızdan emin olun. Not defterinin yürütüldüğü bir Databricks iş kümesinin oluşturulması yaklaşık 5-8 dakika sürer.
+1.  **İzleyici** sekmesine geçin. İşlem hattı çalıştırmasını görtığınızdan emin olun. Not defterinin yürütüldüğü bir Databricks iş kümesinin oluşturulması yaklaşık 5-8 dakika sürer.
 
     ![İşlem hattını izleme](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image22.png)
 

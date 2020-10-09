@@ -5,10 +5,10 @@ ms.date: 04/22/2020
 ms.topic: tutorial
 ms.reviewer: caleteet
 ms.openlocfilehash: dc23c680dfb2ed33cae2a251af16e1b1f25c6ac7
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82086666"
 ---
 # <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>Öğretici: Azure blok zinciri hizmetinde akıllı sözleşmeler oluşturma, derleme ve dağıtma
@@ -24,7 +24,7 @@ Ethereum için Azure blok zinciri geliştirme setini şu şekilde kullanabilirsi
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Hızlı başlangıç: Azure blok zinciri hizmeti Consortium ağına bağlanmak için Visual Studio Code kullanma](connect-vscode.md)
 * [Visual Studio Code](https://code.visualstudio.com/Download)

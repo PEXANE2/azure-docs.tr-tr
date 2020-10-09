@@ -16,10 +16,10 @@ ms.date: 02/26/2019
 ms.author: allensu
 ms.custom: seodec18
 ms.openlocfilehash: dcb151c8be0ab3a2393d0659b75985a92ac60507
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82207896"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Öğretici: portalı kullanarak Azure Load Balancer bağlantı noktası iletmeyi yapılandırma
@@ -51,8 +51,8 @@ Bu öğreticideki tüm adımlar için Azure portal oturum açın [https://portal
     | ---                     | ---                                                |
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | **Yeni oluştur** ' u seçin ve metin kutusuna *Myresourcegrouplb* yazın.|
-    | Name                   | *myLoadBalancer*                                   |
-    | Region         | **Batı Avrupa**'yı seçin.                                        |
+    | Adı                   | *myLoadBalancer*                                   |
+    | Bölge         | **Batı Avrupa**'yı seçin.                                        |
     | Tür          | **Genel**’i seçin.                                        |
     | SKU           | **Standart**' ı seçin.                          |
     | Genel IP adresi | **Yeni oluştur**’u seçin. |
@@ -153,7 +153,7 @@ VM 'Ler için gelen internet (HTTP) bağlantılarına izin veren bir ağ güvenl
    - **Ad**: *Myhttprule*yazın. 
    - **Açıklama**: tür *http 'ye izin ver*. 
    
-1. **Ekle**’yi seçin. 
+1. **Add (Ekle)** seçeneğini belirleyin. 
    
    ![NSG kuralı oluşturma](./media/tutorial-load-balancer-port-forwarding-portal/8-load-balancer-nsg-rules.png)
    

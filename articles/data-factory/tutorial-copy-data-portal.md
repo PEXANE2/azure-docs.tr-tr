@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.date: 05/28/2020
 ms.author: jingwang
 ms.openlocfilehash: 16b5eeb33f8be07d6257d8d7957ea2526ab9d3f1
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85253977"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Blob depolamadan Azure SQL veritabanı 'ndaki bir veritabanına veri kopyalama
@@ -127,7 +127,7 @@ Bu öğreticide işlem hattını oluşturmaya başlayacaksınız. Daha sonra iş
 >Bu öğreticide, *hesap anahtarını* kaynak veri deponuzu kimlik doğrulama türü olarak kullanacaksınız, ancak desteklenen diğer kimlik doğrulama yöntemlerini seçebilirsiniz: *SAS URI 'Si*,*hizmet sorumlusu* ve gerekirse *yönetilen kimlik* . Ayrıntılar için [Bu makaledeki](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#linked-service-properties) ilgili bölümlere bakın.
 >Veri depolarının gizli dizilerini güvenli bir şekilde depolamak için bir Azure Key Vault kullanılması da önerilir. Ayrıntılı çizimler için [Bu makaleye](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) bakın.
 
-1. **Kaynak** sekmesine gidin. kaynak veri kümesi oluşturmak Için **+ Yeni** seçeneğini belirleyin.
+1. **Kaynak** sekmesine gidin. Kaynak veri kümesi oluşturmak için **+ Yeni** seçeneğini belirleyin.
 
 1. **Yeni veri kümesi** Iletişim kutusunda **Azure Blob depolama**' yı seçin ve ardından **devam**' ı seçin. Kaynak veriler bir Blob depolama alanında olduğundan kaynak veri kümesi olarak **Azure Blob Depolama Alanı**'nı seçmeniz gerekir.
 
@@ -174,7 +174,7 @@ Bu öğreticide işlem hattını oluşturmaya başlayacaksınız. Daha sonra iş
 
     ![Yeni bağlı hizmeti kaydedin](./media/tutorial-copy-data-portal/new-azure-sql-linked-service-window.png)
 
-1. Otomatik olarak **ayarlanan özellikler** iletişim kutusuna gider. **Tablo**’da **[dbo].[emp]** seçeneğini belirleyin. Ardından **Tamam**’ı seçin.
+1. Otomatik olarak **ayarlanan özellikler** iletişim kutusuna gider. **Tablo**’da **[dbo].[emp]** seçeneğini belirleyin. Ardından **Tamam**'ı seçin.
 
 1. İşlem hattının bulunduğu sekmeye gidin ve **Havuz Veri Kümesi**’nde **OutputSqlDataset** seçeneğinin belirlendiğinden emin olun.
 

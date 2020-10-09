@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: evanhi
 ms.openlocfilehash: 541d140716e52b4fe1db4bc999682914a380a5f0
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85368116"
 ---
 # <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>Hızlı başlangıç: özel bir sağlayıcı oluşturma ve özel kaynaklar dağıtma
@@ -82,7 +82,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 Çözümü Azure portal de dağıtabilirsiniz. Azure portal şablonu açmak için **Azure 'A dağıt** düğmesini seçin.
 
-[![Azure’a dağıtma](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-docs-json-samples%2Fmaster%2Fcustom-providers%2Fcustomprovider.json)
+[![Azure’a dağıtın](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-docs-json-samples%2Fmaster%2Fcustom-providers%2Fcustomprovider.json)
 
 ## <a name="view-custom-provider-and-resource"></a>Özel sağlayıcıyı ve kaynağı görüntüle
 

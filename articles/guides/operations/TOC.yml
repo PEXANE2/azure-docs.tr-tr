@@ -1,10 +1,10 @@
 - name: BT Operatörleri için Azure
   items:
-    - name: Azure’u kullanmaya başlama
+    - name: Azure'ı kullanmaya başlayın
       href: azure-operations-guide.md
     - name: Hızlı Başlangıçlar
       items:
-        - name: Virtual Machines
+        - name: Sanal Makineler
           items:
             - name: Windows Sanal Makineleri
               href: ../../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
@@ -32,7 +32,7 @@
               href: ../../site-recovery/azure-to-azure-quickstart.md
     - name: Öğreticiler
       items:
-        - name: Virtual Machines
+        - name: Sanal Makineler
           items:
             - name: Windows VM oluşturma ve yönetme
               href: ../../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json

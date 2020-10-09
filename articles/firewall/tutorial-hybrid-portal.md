@@ -9,10 +9,10 @@ ms.date: 03/24/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
 ms.openlocfilehash: 5ba9bb723ab7b052440eea2ac509692200b80f6e
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84750692"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak Azure Güvenlik duvarını karma ağda dağıtma ve yapılandırma
@@ -49,11 +49,11 @@ Bu yordamı gerçekleştirmek için Azure PowerShell kullanmak istiyorsanız, bk
 
 Karma ağ, Azure sanal ağları ile şirket içi ağlar arasında trafiği yönlendirmek için hub ve bağlı bileşen mimarisi modelini kullanır. Hub ve bağlı bileşen mimarisi aşağıdaki gereksinimlere sahiptir:
 
-- VNet-hub ' ı VNet 'e eşlemeden **Allowgatewaytransit** ayarlayın. Hub ve bağlı bileşen ağ mimarisinde, bir ağ geçidi geçişi, bağlı olan sanal ağların her bağlı olan sanal ağda VPN ağ geçitleri dağıtmak yerine hub 'da VPN ağ geçidini paylaşmasına izin verir. 
+- VNet 'e bağlı VNet-Hub eşleme yaparken **Allowgatewaytransit** ayarlayın. Hub ve bağlı bileşen ağ mimarisinde, bir ağ geçidi geçişi, bağlı olan sanal ağların her bağlı olan sanal ağda VPN ağ geçitleri dağıtmak yerine hub 'da VPN ağ geçidini paylaşmasına izin verir. 
 
    Ayrıca, ağ geçidi ile bağlantılı sanal ağlara veya şirket içi ağlara yapılan yollar, ağ geçidi geçişi kullanılarak eşlenen sanal ağlar için otomatik olarak yönlendirme tablolarına yayılır. Daha fazla bilgi için bkz. [sanal ağ eşlemesi IÇIN VPN ağ geçidi geçişi yapılandırma](../vpn-gateway/vpn-gateway-peering-gateway-transit.md).
 
-- Sanal ağ hub 'ına sanal ağa bağlı olarak, **Useremotegateway** 'leri ayarlayın. **Useremotegateway** 'ler ayarlandıysa ve uzaktan eşleme üzerinde **allowgatewaytransit** da ayarlandıysa, bağlı olan sanal ağ, aktarım için uzak sanal ağın ağ geçitlerini kullanır.
+- VNet hub 'ına VNet-Spoke eşdüzey olduğunuzda **Useremotegateway** 'leri ayarlayın. **Useremotegateway** 'ler ayarlandıysa ve uzaktan eşleme üzerinde **allowgatewaytransit** da ayarlandıysa, bağlı olan sanal ağ, aktarım için uzak sanal ağın ağ geçitlerini kullanır.
 - Alt ağ trafiğini hub güvenlik duvarıyla yönlendirmek için, **sanal ağ geçidi yol yayma** seçeneği devre dışı olan güvenlik duvarını işaret eden bir Kullanıcı tanımlı yol (UDR) kullanabilirsiniz. **Sanal ağ geçidi yol yayma** devre dışı seçeneği, bağlı olan alt ağlara yönlendirme dağıtımını önler. Bu, öğrenilen yolların UDR 'niz ile çakışmasını önler. **Sanal ağ geçidi yol yaymayı** devre dışı bırakmak ISTIYORSANıZ, BGP üzerinden şirket içinden yayımlananlar üzerine yazmak için güvenlik duvarına belirli yollar tanımladığınızdan emin olun.
 - Hub ağ geçidi alt ağında, bağlı olan ağların sonraki atlaması olarak güvenlik duvarı IP adresini işaret eden bir UDR yapılandırın. Azure Güvenlik Duvarı alt ağında BGP 'deki yolları öğrendiğinden dolayı UDR gerekmez.
 
@@ -143,12 +143,12 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
    |---------|---------|
    |Abonelik     |\<your subscription\>|
    |Kaynak grubu     |**FW-karma-test** |
-   |Ad     |**AzFW01**|
+   |Adı     |**AzFW01**|
    |Konum     |Önceden kullandığınız konumu seçin|
    |Bir sanal ağ seçin     |**Mevcut olanı kullan**:<br> **VNet-hub**|
    |Genel IP adresi     |Yeni oluştur: <br>**Ad**  -  **FW-PIP**. |
 
-5. **Gözden geçir + oluştur**’u seçin.
+5. **Gözden geçir ve oluştur**’u seçin.
 6. Özeti gözden geçirin ve ardından güvenlik duvarını oluşturmak için **Oluştur** ' u seçin.
 
    Bu, dağıtılması birkaç dakika sürer.
@@ -182,7 +182,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 4. **Kaynak**için **192.168.1.0/24**yazın.
 5. **Hedef adres**için **10.6.0.0/16** yazın
 6. **Hedef bağlantı noktaları**için **3389**yazın.
-7. **Ekle**’yi seçin.
+7. **Add (Ekle)** seçeneğini belirleyin.
 
 ## <a name="create-and-connect-the-vpn-gateways"></a>VPN ağ geçitlerini oluşturma ve bağlama
 
@@ -230,18 +230,18 @@ Bu adımda, hub sanal ağından şirket içi sanal ağa bağlantı oluşturursun
 
 1. **İlt-hibrit-test** kaynak grubunu açın ve **GW-hub** ağ geçidini seçin.
 2. Sol sütundaki **Bağlantılar** ' ı seçin.
-3. **Ekle**’yi seçin.
+3. **Add (Ekle)** seçeneğini belirleyin.
 4. Bağlantı adı, **hub-Onpree**yazın.
 5. **Bağlantı türü**için **VNET-VNET** ' i seçin.
 6. **İkinci sanal ağ geçidi**için **GW-onpred**öğesini seçin.
 7. **Paylaşılan anahtar (PSK)** için **AzureA1b2C3**yazın.
 8. **Tamam**’ı seçin.
 
-Şirket içinden hub 'a sanal ağ bağlantısını oluşturun. Bu adım, VNet-Onpree ile VNet hub 'ına bağlantı oluşturmanız dışında öncekiyle benzerdir. Paylaşılan anahtarların eşleştiğinden emin olun. Bağlantı birkaç dakika içerisinde kurulacaktır.
+Şirket içinden hub 'a sanal ağ bağlantısını oluşturun. Bu adım öncekiyle benzerdir, çünkü VNet-Onprem sanal ağdan VNet hub 'ına bağlantı oluşturmanız gerekir. Paylaşılan anahtarların eşleştiğinden emin olun. Bağlantı birkaç dakika içerisinde kurulacaktır.
 
 1. ILT- **hibrit-test** kaynak grubunu açın ve **GW-onprea** Gateway ' i seçin.
 2. Sol sütundaki **Bağlantılar** ' ı seçin.
-3. **Ekle**’yi seçin.
+3. **Add (Ekle)** seçeneğini belirleyin.
 4. Bağlantı adı, **Onpree-hub**' ı yazın.
 5. **Bağlantı türü**için **VNET-VNET** ' i seçin.
 6. **İkinci sanal ağ geçidi**için **GW-hub**' ı seçin.
@@ -261,7 +261,7 @@ Artık hub ve bağlı bileşen sanal ağlarını eşler.
 
 1. **İlt-hibrit-test** kaynak grubunu açın ve **VNET hub** sanal ağını seçin.
 2. Sol sütunda, eşlemeler ' i **seçin.**
-3. **Ekle**’yi seçin.
+3. **Add (Ekle)** seçeneğini belirleyin.
 4. **Ad**Için **hubtokol**yazın.
 5. **Sanal ağ**için **VNET-bağlı bileşen** ' i seçin
 6. Sanal ağ hub 'ından VNet hub 'ına eşleme adı için **Spoketohub**yazın.
@@ -295,7 +295,7 @@ SpoketoHub eşlemesi için **iletilen trafiğe Izin ver** ' i etkinleştirmeniz 
 9. **Oluştur**’u seçin.
 10. Yol tablosu oluşturulduktan sonra, yol tablosu sayfasını açmak için seçin.
 11. Sol sütundaki **rotalar** ' ı seçin.
-12. **Ekle**’yi seçin.
+12. **Add (Ekle)** seçeneğini belirleyin.
 13. Yol adı için, uzak **bileşene**yazın.
 14. Adres ön eki için **10.6.0.0/16**yazın.
 15. Sonraki atlama türü için **Sanal Gereç**' ı seçin.
@@ -324,7 +324,7 @@ SpoketoHub eşlemesi için **iletilen trafiğe Izin ver** ' i etkinleştirmeniz 
 1. **Oluştur**’u seçin.
 2. Yol tablosu oluşturulduktan sonra, yol tablosu sayfasını açmak için seçin.
 3. Sol sütundaki **rotalar** ' ı seçin.
-4. **Ekle**’yi seçin.
+4. **Add (Ekle)** seçeneğini belirleyin.
 5. Yol adı için, **Tohub**yazın.
 6. Adres ön eki için **0.0.0.0/0**yazın.
 7. Sonraki atlama türü için **Sanal Gereç**' ı seçin.

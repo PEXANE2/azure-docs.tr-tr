@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 05/19/2020
 ms.openlocfilehash: 260a3fbb8486a1e9eeaa87e920143615e5fae867
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83681825"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Öğretici: Apache Kafka Üretici ve Tüketici API’lerini kullanma
@@ -73,7 +73,7 @@ Uygulama öncelikli olarak dört dosyadan oluşur:
 
 ### <a name="producerjava"></a>Producer.java
 
-Üretici, Kafka aracı konakları (çalışan düğümleri) ile iletişim kurar ve verileri bir Kafka konusuna gönderir. Aşağıdaki kod parçacığı, [GitHub deposundan](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) [Producer. Java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Producer.java) dosyasından bulunur ve üretici özelliklerinin nasıl ayarlanacağını gösterir. Kurumsal güvenlik etkin kümeler için ek bir özellik eklenmelidir "Properties. setProperty (CommonClientConfigs. SECURITY_PROTOCOL_CONFIG," SASL_PLAINTEXT ");"
+Üretici, Kafka aracı konakları (çalışan düğümleri) ile iletişim kurar ve verileri bir Kafka konusuna gönderir. Aşağıdaki kod parçacığı, [GitHub deposundan](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) [Producer. Java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Producer.java) dosyasından bulunur ve üretici özelliklerinin nasıl ayarlanacağını gösterir. Kurumsal güvenlik etkin kümeler için ek bir özellik eklenmelidir "Properties. setProperty (CommonClientConfigs.SECURITY_PROTOCOL_CONFIG," SASL_PLAINTEXT ");"
 
 ```java
 Properties properties = new Properties();
@@ -87,7 +87,7 @@ KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
 
 ### <a name="consumerjava"></a>Consumer.java
 
-Tüketici, Kafka aracı konakları (çalışan düğümleri) ile iletişim kurar ve bir döngüdeki kayıtları okur. [Tüketici. Java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Consumer.java) dosyasındaki aşağıdaki kod parçacığı, tüketici özelliklerini ayarlar. Kurumsal güvenlik etkin kümeler için ek bir özellik eklenmelidir "Properties. setProperty (CommonClientConfigs. SECURITY_PROTOCOL_CONFIG," SASL_PLAINTEXT ");"
+Tüketici, Kafka aracı konakları (çalışan düğümleri) ile iletişim kurar ve bir döngüdeki kayıtları okur. [Tüketici. Java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Consumer.java) dosyasındaki aşağıdaki kod parçacığı, tüketici özelliklerini ayarlar. Kurumsal güvenlik etkin kümeler için ek bir özellik eklenmelidir "Properties. setProperty (CommonClientConfigs.SECURITY_PROTOCOL_CONFIG," SASL_PLAINTEXT ");"
 
 ```java
 KafkaConsumer<String, String> consumer;

@@ -12,10 +12,10 @@ metadata:
   title: Soru-Cevap Oluşturma Belgeleri
   description: Soru-Cevap Oluşturma, verilerinizi temel alan bir sohbet ve soru-cevap katmanı oluşturan bulut tabanlı bir API hizmetidir. Soru-Cevap Oluşturma, SSS belgeleri, URL'ler ve ürün kılavuzları gibi yarı yapılandırılmış içeriklerinizden bir soru cevap hizmeti oluşturmanızı sağlar. Soru-Cevap Oluşturma hizmeti, kullanıcılarınızın doğal dil sorularını Bilgi Bankanızda bulunan en iyi cevapla eşleştirerek cevap verir.
   ms.openlocfilehash: 09c577368ef6ca9b6bc584601ad018c2a63c7347
-  ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 06/09/2020
+  ms.lasthandoff: 10/09/2020
   ms.locfileid: "84628029"
 landingContent:
 - title: Soru-Cevap Oluşturma hakkında

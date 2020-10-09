@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 06/09/2020
 ms.openlocfilehash: 0e3c2d4fe4d9377b6f9a563825a14e10eb724637
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84660929"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Veri Kopyalama aracını kullanarak bir SQL Server veritabanından Azure Blob depolama alanına veri kopyalama
@@ -141,7 +141,7 @@ Bu bölümde, Blob depolama alanınızda **adftutorial** adlı bir blob kapsayı
 
    ![Başlarken sayfası](./media/doc-common-process/get-started-page.png)
 
-1. Veri Kopyalama aracının **Özellikler** sayfasında, **Görev adı** bölümüne **CopyFromOnPremSqlToAzureBlobPipeline** adını girin. Sonra **İleri**’yi seçin. Veri Kopyalama aracı, bu alan için belirttiğiniz ada sahip bir işlem hattı oluşturur.
+1. Veri Kopyalama aracının **Özellikler** sayfasında, **Görev adı** bölümüne **CopyFromOnPremSqlToAzureBlobPipeline** adını girin. Ardından **İleri**’yi seçin. Veri Kopyalama aracı, bu alan için belirttiğiniz ada sahip bir işlem hattı oluşturur.
   ![Görev adı](./media/tutorial-hybrid-copy-data-tool/properties-page.png)
 
 1. **Kaynak veri deposu** sayfasında **Yeni bağlantı oluştur**'a tıklayın.
@@ -201,7 +201,7 @@ Bu bölümde, Blob depolama alanınızda **adftutorial** adlı bir blob kapsayı
 
    d. **Son**’u seçin.
 
-1. **Hedef veri deposu** Iletişim kutusunda **Azure Blob Storage** ' ın seçili olduğundan emin olun. Sonra **İleri**’yi seçin.
+1. **Hedef veri deposu** Iletişim kutusunda **Azure Blob Storage** ' ın seçili olduğundan emin olun. Ardından **İleri**’yi seçin.
 
 1. **Çıkış dosyasını veya klasörünü seçin** iletişim kutusunda, **Klasör yolu** bölümüne **adftutorial/fromonprem** yolunu girin. Ön koşulların bir parçası olarak **adftutorial** kapsayıcısını oluşturdunuz. Çıkış klasörü yoksa (bu örnekte **fromonprem**), Data Factory tarafından otomatik olarak oluşturulur. Blob depolamaya ve onun kapsayıcılarına/klasörlerine gitmek için de **Araştır** düğmesini kullanabilirsiniz. **Dosya adı** bölümünde değer belirtmezseniz varsayılan olarak kaynaktaki ad (bu örnekte **dbo.emp**) kullanılır.
 

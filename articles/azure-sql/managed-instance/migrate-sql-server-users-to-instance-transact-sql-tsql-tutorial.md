@@ -11,10 +11,10 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/30/2019
 ms.openlocfilehash: f2dd34ab7c6ee5be26836e4abb86960605ee44ee
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84708695"
 ---
 # <a name="tutorial-migrate-windows-users-and-groups-in-a-sql-server-instance-to-azure-sql-managed-instance-using-t-sql-ddl-syntax"></a>Öğretici: T-SQL DDL sözdizimini kullanarak bir SQL Server örneğindeki Windows kullanıcılarını ve gruplarını Azure SQL yönetilen örneği 'ne geçirme
@@ -47,7 +47,7 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdaki önkoşullar geçerlidir:
   - `sysadmin`SQL yönetilen örneğindeki bir, Azure AD oturum açmaları oluşturmak için kullanılmalıdır.
 - [SQL yönetilen örneği için bir Azure AD yöneticisi oluşturun](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance).
 - Ağınız içindeki SQL yönetilen örneğinize bağlanabilirsiniz. Daha fazla bilgi için aşağıdaki makalelere bakın:
-  - [Uygulamanızı Azure SQL yönetilen örneğine bağlama](connect-application-instance.md)
+  - [Uygulamanızı Azure SQL Yönetilen Örneği'ne bağlama](connect-application-instance.md)
   - [Hızlı başlangıç: Şirket içinden bir Azure SQL yönetilen örneğine Noktadan siteye bağlantı yapılandırma](point-to-site-p2s-configure.md)
   - [Azure SQL yönetilen örneği 'nde ortak uç noktayı yapılandırma](public-endpoint-configure.md)
 
@@ -63,7 +63,7 @@ ALTER USER [domainName\userName] WITH LOGIN = [loginName@domainName.com];
 ALTER USER [domainName\groupName] WITH LOGIN=[groupName]
 ```
 
-## <a name="arguments"></a>Arguments
+## <a name="arguments"></a>Bağımsız değişkenler
 
 _Etki_</br>
 Kullanıcının etki alanı adını belirtir.

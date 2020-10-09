@@ -9,10 +9,10 @@ ms.date: 03/01/2020
 ms.author: allensu
 ms.custom: include file
 ms.openlocfilehash: 81db46b52c9b4fe800f2fbfeadad966995d66e12
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78244965"
 ---
 ## <a name="create-the-virtual-network"></a>Sanal ağı oluşturma
@@ -30,7 +30,7 @@ Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
     | Kaynak Grubu   | **Yeni oluştur**' u seçin, girin ve **\<resource-group-name>** Tamam ' ı seçin ya da mevcut bir **\<resource-group-name>** temel parametre seçin. |
     | **Örnek ayrıntıları** |                                                                 |
     | Name             | Girmesini **\<virtual-network-name>**                                    |
-    | Region           | Seçin **\<region-name>** |
+    | Bölge           | Seçin **\<region-name>** |
 
 3. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Sonraki: IP adresleri** düğmesini seçin.
 
