@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a98ff68500593c644e6f0fa5eacb338ab90f5604
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88795387"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Azure AD 'de acil durum erişim hesaplarını yönetme
@@ -109,7 +109,7 @@ Kuruluşlar, acil durum hesaplarından oturum açma ve denetim günlüğü etkin
 
         ![Uyarı mantığı](./media/directory-emergency-access/alert-image2.png)
 
-    1. **Bitti**'yi seçin. Artık bu uyarının tahmini aylık maliyetini görüntüleyebilirsiniz.
+    1. **Bitti** seçeneğini belirleyin. Artık bu uyarının tahmini aylık maliyetini görüntüleyebilirsiniz.
 1. Uyarı tarafından bildirilecek Kullanıcı bir eylem grubu seçin. Bir tane oluşturmak isterseniz, bkz. [eylem grubu oluşturma](#create-an-action-group).
 1. Eylem grubunun üyelerine gönderilen e-posta bildirimini özelleştirmek için, **eylemleri Özelleştir**altında Eylemler ' i seçin.
 1. **Uyarı ayrıntıları**' nın altında, uyarı kuralı adını belirtin ve isteğe bağlı bir açıklama ekleyin.

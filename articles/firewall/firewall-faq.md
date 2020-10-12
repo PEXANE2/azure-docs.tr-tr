@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: victorh
 ms.openlocfilehash: 75435155ba1dad798d301006a30a5d5b6e96226a
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88611186"
 ---
 # <a name="azure-firewall-faq"></a>Azure Güvenlik Duvarı hakkında SSS
@@ -62,7 +62,7 @@ Web uygulaması güvenlik duvarı (WAF), yaygın güvenlik açıklarından ve g�
 
 ## <a name="what-is-the-difference-between-network-security-groups-nsgs-and-azure-firewall"></a>Ağ güvenlik grupları (NSG 'ler) ve Azure Güvenlik Duvarı arasındaki fark nedir?
 
-Azure Güvenlik Duvarı hizmeti, ağ güvenlik grubu işlevini tamamlar. Birlikte, daha iyi "derinlemesine savunma" ağ güvenliği sağlar. Ağ güvenlik grupları, her abonelikteki sanal ağlarda bulunan kaynaklarla trafiği sınırlamak için dağıtılmış ağ katmanı trafiği filtrelemesi sağlar. Azure Güvenlik Duvarı, farklı abonelikler ve sanal ağlar arasında ağ ve uygulama düzeyinde koruma sağlayan, hizmet olarak tam durum bilgisi olan merkezi ağ güvenlik duvarıdır.
+Azure Güvenlik Duvarı hizmeti, ağ güvenlik grubu işlevini tamamlar. Birlikte, daha iyi "derinlemesine savunma" ağ güvenliği sağlar. Ağ güvenlik grupları, trafiği her bir abonelikteki sanal ağlarla sınırlamak için dağıtılmış ağ katmanı trafik filtrelemesi sağlar. Azure Güvenlik Duvarı, farklı abonelikler ve sanal ağlar arasında ağ ve uygulama düzeyinde koruma sağlayan, hizmet olarak tam durum bilgisi olan merkezi ağ güvenlik duvarıdır.
 
 ## <a name="are-network-security-groups-nsgs-supported-on-the-azurefirewallsubnet"></a>Ağ güvenlik grupları (NSG 'ler) AzureFirewallSubnet 'de destekleniyor mu?
 
@@ -80,7 +80,7 @@ Bkz. [Azure Güvenlik Duvarı fiyatlandırması](https://azure.microsoft.com/pri
 
 Azure PowerShell *serbest bırakma* ve *ayırma* yöntemleri kullanabilirsiniz.
 
-Örnek:
+Örneğin:
 
 ```azurepowershell
 # Stop an existing firewall

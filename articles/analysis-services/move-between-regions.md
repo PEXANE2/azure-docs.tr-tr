@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: 4844f3e34a6b49559affbb4d4ed7bc5b5e38e538
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87050364"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>Analysis Services farklı bir bölgeye taşıma
@@ -71,7 +71,7 @@ Depolama ayarları yapılandırıldığında, depolama kapsayıcıda bir model v
 
 Şablonu Azure portalını kullanarak dışarı aktarmak için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 2. **Tüm kaynaklar**' ı seçin ve ardından Analysis Services sunucunuzu seçin.
 
@@ -203,7 +203,7 @@ Farklı bir bölgeye yeni bir sunucu kaynağı dağıtmak için, önceki bölüm
 
 7. Şablon düzenleyicisinin yeni hedef sunucunuz için doğru özellikleri gösterdiğini doğrulayın.
 
-8. **Kaydet**'i seçin.
+8. **Kaydet**’i seçin.
 
 9. Özellik değerlerini girin veya seçin:
 
@@ -278,7 +278,7 @@ Model veritabanı. abf yedeklemesini yeni hedef sunucuya geri yüklemek için [g
 
 İsteğe bağlı: [ALM araç seti](http://alm-toolkit.com/) , Power BI veri kümelerini karşılaştırmak ve yönetmek için *açık kaynak* bir araçtır *ve* tablosal model veritabanları Analysis Services. Hem kaynak hem de hedef sunucu veritabanlarına bağlanmak ve karşılaştırmak için araç setini kullanın. Veritabanı geçişiniz başarılı olursa model nesneleri aynı tanıma sahip olur. 
 
-:::image type="content" source="media/move-between-regions/alm-toolkit.png" alt-text="ALM Araç Seti":::
+:::image type="content" source="media/move-between-regions/alm-toolkit.png" alt-text="SAS alma":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

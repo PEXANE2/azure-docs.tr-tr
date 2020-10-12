@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: srrengar
 ms.openlocfilehash: bd952449cb088a383f0b9241fb7856522fbeeb10
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86257662"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile olay Analizi ve görselleştirme
@@ -104,6 +104,6 @@ Kusto sorgu dili güçlü. En fazla olayı hangi düğümlerin oluşturduğunu �
 
 * Altyapı izlemeyi etkinleştirmek için (performans sayaçlarını, [Log Analytics aracısını eklemek](service-fabric-diagnostics-oms-agent.md)için üzerine gidin. Aracı, performans sayaçlarını toplar ve bunları mevcut çalışma alanınıza ekler.
 * Azure Izleyici günlükleri, şirket içi kümeler için Azure Izleyici günlüklerine veri göndermek için kullanılabilen bir ağ geçidi (HTTP Iletme proxy) sunar. [Log Analytics ağ geçidini kullanarak Azure izleyici günlüklerine Internet erişimi olmadan bilgisayarları bağlama](../azure-monitor/platform/gateway.md)konusunda daha fazla bilgi edinin.
-* Algılama ve tanılamada yardımcı olması için [otomatik uyarı](../azure-monitor/platform/alerts-overview.md) yapılandırma.
+* Algılama ve tanılamada yardımcı olması için  [otomatik uyarı](../azure-monitor/platform/alerts-overview.md) yapılandırma.
 * [Günlük araması ve](../azure-monitor/log-query/log-query-overview.md) Azure izleyici günlüklerinin bir parçası olarak sunulan özellikleri sorgulama ile familiarized alın.
 * Azure Izleyici günlüklerine ve neler sunduğunu daha ayrıntılı bir şekilde öğrenin, [Azure izleyici günlüklerini okuyun?](../azure-monitor/overview.md).

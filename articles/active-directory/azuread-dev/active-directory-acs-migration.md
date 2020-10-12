@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
 ms.openlocfilehash: 9fddd5cb749b1dfe50505c139ed7900f709b584e
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90706260"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Nasıl yapılır: Azure Access Control Service geçirme
@@ -26,7 +26,7 @@ ms.locfileid: "90706260"
 
 Microsoft Azure Access Control Service (ACS), bir Azure Active Directory (Azure AD) hizmeti 7 Kasım 2018 tarihinde kullanımdan kaldırılacaktır. Şu anda Access Control kullanan uygulamalar ve hizmetler, daha sonra farklı bir kimlik doğrulama mekanizmasına tamamen geçirilmesi gerekir. Bu makalede, Access Control kullanımını kullanımdan kaldırmayı planladığınız için geçerli müşterilere yönelik öneriler açıklanır. Şu anda Access Control kullanmıyorsanız, herhangi bir işlem yapmanız gerekmez.
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 
 Access Control, Web uygulamalarınıza ve hizmetlerinize erişim için kullanıcıların kimliğini doğrulamak ve yetkilendirmek için kolay bir yol sunan bir bulut kimlik doğrulama hizmetidir. Kimlik doğrulaması ve yetkilendirmenin pek çok özelliğinin kodunuzla bir şekilde oluşturulmasına izin verir. Access Control, öncelikle Microsoft .NET istemcilerinin, ASP.NET Web uygulamalarının ve Windows Communication Foundation (WCF) Web hizmetlerinin geliştiriciler ve mimarları tarafından kullanılır.
 
@@ -148,7 +148,7 @@ Access Control tarafından verilen belirteçleri kabul eden her bir Microsoft bu
 
 SharePoint 2013, 2016 ve SharePoint Online müşterileri, bulutta, şirket içinde ve hibrit senaryolarında kimlik doğrulama amacıyla ACS 'yi uzun süredir kullandı. Bazı SharePoint özellikleri ve kullanım durumları, ACS kullanımdan kaldırılırken etkilenir, diğerleri bu durumdan etkilenmez. Aşağıdaki tabloda, ACS 'den yararlanan en popüler SharePoint özelliklerinden bazıları için geçiş kılavuzu özetlenmektedir:
 
-| Öne çıkan özelliği | Rehber |
+| Özellik | Rehber |
 | ------- | -------- |
 | Azure AD 'de kullanıcıların kimliğini doğrulama | Daha önce Azure AD, kimlik doğrulaması için SharePoint için gereken SAML 1,1 belirteçlerini desteklemediğinden ACS, SharePoint 'in Azure AD belirteç biçimleriyle uyumlu hale getirilen bir aracı olarak kullanılmıştı. Artık [SharePoint 'i şirket içi uygulama Azure AD uygulaması Galeri kullanarak doğrudan Azure AD 'ye bağlayabilirsiniz](../saas-apps/sharepoint-on-premises-tutorial.md). |
 | [Şirket içi SharePoint 'te sunucudan sunucuya kimlik doğrulaması & uygulama kimlik doğrulaması](/SharePoint/security-for-sharepoint-server/authentication-overview) | ACS emekliliğinizi etkilemez; değişiklik gerekmiyor. | 
@@ -266,7 +266,7 @@ Aşağıdaki tabloda, Web uygulamalarıyla ilgili Access Control özellikleri, A
 Azure AD B2C, uygulamalarınız ve hizmetleriniz için en iyi geçiş yolu olduğuna karar verirseniz, aşağıdaki kaynaklarla başlayın:
 
 - [Azure AD B2C belgeleri](../../active-directory-b2c/overview.md)
-- [Özel ilke Azure AD B2C](../../active-directory-b2c/custom-policy-overview.md)
+- [Azure AD B2C özel ilkeleri](../../active-directory-b2c/custom-policy-overview.md)
 - [Azure AD B2C fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
 #### <a name="migrate-to-ping-identity-or-auth0"></a>Ping kimliğine veya Auth0 geçiş

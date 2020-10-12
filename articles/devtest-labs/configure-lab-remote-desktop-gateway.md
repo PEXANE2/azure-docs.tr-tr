@@ -4,10 +4,10 @@ description: RDP bağlantı noktasını açığa çıkarmak zorunda kalmadan lab
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: bc45a0c2953f8f84289fa01d4af72bf98544bd7f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87288084"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Azure DevTest Labs ' de laboratuvarınızı Uzak Masaüstü Ağ geçidini kullanacak şekilde yapılandırma
@@ -21,9 +21,9 @@ Laboratuvar kullanıcısı ağ geçidi makinesinde doğrudan kimlik doğrulamas�
 
 1. **Bağlan** düğmesini SEÇTIĞINIZDE, [RDP dosyası içeriklerini al](/rest/api/dtl/virtualmachines/getrdpfilecontents) eylemi çağrılır. 1. 
 1. RDP dosyası içeriklerini al eylemi, `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` bir kimlik doğrulama belirteci istemek için çağırır.
-    1. `{gateway-hostname}`, Azure portal laboratuvarınızın **Laboratuvar ayarları** sayfasında belirtilen ağ geçidi ana bilgisayar adıdır. 
-    1. `{lab-machine-name}`, bağlanmaya çalıştığınız makinenin adıdır.
-    1. `{port-number}`, bağlantının yapılması gereken bağlantı noktasıdır. Genellikle bu bağlantı noktası 3389 ' dir. Laboratuvar VM 'si DevTest Labs 'de [PAYLAŞıLAN IP](devtest-lab-shared-ip.md) özelliğini kullanıyorsa, bağlantı noktası farklı olur.
+    1. `{gateway-hostname}` , Azure portal laboratuvarınızın **Laboratuvar ayarları** sayfasında belirtilen ağ geçidi ana bilgisayar adıdır. 
+    1. `{lab-machine-name}` , bağlanmaya çalıştığınız makinenin adıdır.
+    1. `{port-number}` , bağlantının yapılması gereken bağlantı noktasıdır. Genellikle bu bağlantı noktası 3389 ' dir. Laboratuvar VM 'si DevTest Labs 'de [PAYLAŞıLAN IP](devtest-lab-shared-ip.md) özelliğini kullanıyorsa, bağlantı noktası farklı olur.
 1. Uzak Masaüstü Ağ Geçidi, `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` kimlik doğrulama belirtecini oluşturmak için bir Azure işlevine çağrıyı erteler. DevTest Labs hizmeti, istek üst bilgisinde işlev anahtarını otomatik olarak ekler. İşlev anahtarı, laboratuvarın anahtar kasasına kaydedilir. Laboratuvar için **Laboratuvar ayarları** sayfasında **ağ geçidi belirteci parolası** olarak gösterilecek gizli anahtar adı.
 1. Azure işlevinin, ağ geçidi makinesine sertifika tabanlı belirteç kimlik doğrulaması için bir belirteç döndürmesi beklenmektedir.  
 1. RDP dosyası içeriklerini al eylemi, kimlik doğrulama bilgileri de dahil olmak üzere tüm RDP dosyalarını döndürür.
@@ -65,7 +65,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 
 Aşağıdaki adımları kullanarak Laboratuvarı, belirteç kimlik doğrulamasını kullanacak şekilde yapılandırın:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 1. Laboratuvarlar listesinden **laboratuvarınızı**seçin.
 1. Laboratuvarın sayfasında **yapılandırma ve ilkeler**' i seçin.

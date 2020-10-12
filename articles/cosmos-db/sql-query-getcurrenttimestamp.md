@@ -8,17 +8,17 @@ ms.date: 08/19/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: c1e0a8d69edab0c01005268ee49c23625236f03a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88606923"
 ---
 # <a name="getcurrenttimestamp-azure-cosmos-db"></a>GetCurrentTimestamp (Azure Cosmos DB)
 
  00:00:00 Perşembe, 1 Ocak 1970 tarihinden itibaren geçen milisaniye sayısını döndürür.
   
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Sözdizimi
   
 ```sql
 GetCurrentTimestamp ()  
@@ -54,4 +54,4 @@ SELECT GetCurrentTimestamp() AS currentUtcTimestamp
 
 - [Tarih ve saat işlevleri Azure Cosmos DB](sql-query-date-time-functions.md)
 - [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
+- [Azure Cosmos DB'ye giriş](introduction.md)

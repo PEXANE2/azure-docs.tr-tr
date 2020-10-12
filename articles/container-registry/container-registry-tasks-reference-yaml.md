@@ -4,10 +4,10 @@ description: Görev özellikleri, adım türleri, adım özellikleri ve yerleşi
 ms.topic: article
 ms.date: 07/08/2020
 ms.openlocfilehash: 042310d29f5561c2cd77b0b9cccfc587ca4aa767
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88067592"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR görevleri başvurusu: YAML
@@ -77,13 +77,13 @@ Görev özellikleri genellikle bir dosyanın en üstünde görünür `acr-task.y
 
 | Özellik | Tür | İsteğe Bağlı | Açıklama | Geçersiz kılma destekleniyor | Varsayılan değer |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
-| `version` | string | Evet | `acr-task.yaml`ACR görevler hizmeti tarafından ayrıştırılabilen dosyanın sürümü. ACR görevleri geriye dönük uyumluluğu sürdürmeye devam ederken, bu değer ACR görevlerinin tanımlı bir sürüm içinde uyumluluğu korumasına olanak tanır. Belirtilmemişse, varsayılan olarak en son sürümü alır. | No | Yok |
+| `version` | string | Evet | `acr-task.yaml`ACR görevler hizmeti tarafından ayrıştırılabilen dosyanın sürümü. ACR görevleri geriye dönük uyumluluğu sürdürmeye devam ederken, bu değer ACR görevlerinin tanımlı bir sürüm içinde uyumluluğu korumasına olanak tanır. Belirtilmemişse, varsayılan olarak en son sürümü alır. | Hayır | Yok |
 | `stepTimeout` | int (saniye) | Evet | Bir adımın çalıştırılacağı en fazla saniye sayısı. Özellik bir görevde belirtilmişse, `timeout` tüm adımların varsayılan özelliğini ayarlar. `timeout`Özellik bir adımda belirtilmişse, görev tarafından sunulan özelliği geçersiz kılar. | Evet | 600 (10 dakika) |
-| `workingDirectory` | string | Evet | Çalışma zamanı sırasında kapsayıcının çalışma dizini. Özellik bir görevde belirtilmişse, `workingDirectory` tüm adımların varsayılan özelliğini ayarlar. Bir adımda belirtilmişse, görev tarafından sunulan özelliği geçersiz kılar. | Evet | `c:\workspace`Windows veya `/workspace` Linux 'ta |
+| `workingDirectory` | string | Evet | Çalışma zamanı sırasında kapsayıcının çalışma dizini. Özellik bir görevde belirtilmişse, `workingDirectory` tüm adımların varsayılan özelliğini ayarlar. Bir adımda belirtilmişse, görev tarafından sunulan özelliği geçersiz kılar. | Evet | `c:\workspace` Windows veya `/workspace` Linux 'ta |
 | `env` | [dize, dize,...] | Evet |  `key=value`Görevin ortam değişkenlerini tanımlayan biçimdeki dizeler dizisi. Özellik bir görevde belirtilmişse, `env` tüm adımların varsayılan özelliğini ayarlar. Bir adımda belirtilmişse, görevden devralınan tüm ortam değişkenlerini geçersiz kılar. | Evet | Yok |
-| `secrets` | [gizli, gizli,...] | Evet | [Gizli](#secret) nesneler dizisi. | No | Yok |
-| `networks` | [Ağ, ağ,...] | Evet | [Ağ](#network) nesneleri dizisi. | No | Yok |
-| `volumes` | [Birim, birim,...] | Evet | [Birim](#volume) nesnelerinin dizisi. Bir adıma bağlanacak kaynak içeriğe sahip birimleri belirtir. | No | Yok |
+| `secrets` | [gizli, gizli,...] | Evet | [Gizli](#secret) nesneler dizisi. | Hayır | Yok |
+| `networks` | [Ağ, ağ,...] | Evet | [Ağ](#network) nesneleri dizisi. | Hayır | Yok |
+| `volumes` | [Birim, birim,...] | Evet | [Birim](#volume) nesnelerinin dizisi. Bir adıma bağlanacak kaynak içeriğe sahip birimleri belirtir. | Hayır | Yok |
 
 ### <a name="secret"></a>gizli dizi
 
@@ -114,7 +114,7 @@ Birim nesnesi aşağıdaki özelliklere sahiptir.
 | Özellik | Tür | İsteğe Bağlı | Açıklama | Varsayılan değer |
 | -------- | ---- | -------- | ----------- | ------- | 
 | `name` | dize | No | Takılacak birimin adı. Yalnızca alfasayısal karakterler, '-' ve ' _ ' içerebilir. | Yok |
-| `secret` | Map [dize] dizesi | No | Haritanın her anahtarı oluşturulan ve birimde doldurulmuş bir dosyanın adıdır. Her değer, gizli dizinin dize sürümüdür. Gizli değerlerin Base64 kodlamalı olması gerekir. | Yok |
+| `secret` | Map [dize] dizesi | Hayır | Haritanın her anahtarı oluşturulan ve birimde doldurulmuş bir dosyanın adıdır. Her değer, gizli dizinin dize sürümüdür. Gizli değerlerin Base64 kodlamalı olması gerekir. | Yok |
 
 ## <a name="task-step-types"></a>Görev adımı türleri
 
@@ -143,9 +143,9 @@ steps:
 
 | Parametre | Açıklama | İsteğe Bağlı |
 | --------- | ----------- | :-------: |
-| `-t`&#124;`--image` | Oluşturulan görüntünün tam nitelikli olduğunu tanımlar `image:tag` .<br /><br />Görüntü, işlevsel testler gibi iç görev doğrulamaları için kullanılabilir, ancak tüm görüntülerin `push` bir kayıt defterine ihtiyacı yoktur. Ancak, bir görev yürütme içindeki bir görüntüyü örnek olarak, görüntünün başvuru için bir adı olması gerekir.<br /><br />Farklı olarak `az acr build` , ACR görevlerinin çalıştırılması varsayılan gönderme davranışı sağlamaz. ACR görevleri ile, varsayılan senaryo bir görüntüyü oluşturma, doğrulama ve gönderme özelliğini kabul eder. İsteğe bağlı olarak oluşturulan görüntüleri gönderme hakkında bilgi için bkz. [gönderim](#push) . | Evet |
-| `-f`&#124;`--file` | Geçirilen Dockerfile dosyasını belirtir `docker build` . Belirtilmemişse, bağlam kökündeki varsayılan Dockerfile varsayılır. Bir Dockerfile belirtmek için, dosya adını bağlamın köküne göre geçirin. | Evet |
-| `context` | Kök dizin geçildi `docker build` . Her görevin kök dizini paylaşılan bir [WorkingDirectory](#task-step-properties)olarak ayarlanır ve ilişkili git klonlanmış dizinin kökünü içerir. | No |
+| `-t` &#124; `--image` | Oluşturulan görüntünün tam nitelikli olduğunu tanımlar `image:tag` .<br /><br />Görüntü, işlevsel testler gibi iç görev doğrulamaları için kullanılabilir, ancak tüm görüntülerin `push` bir kayıt defterine ihtiyacı yoktur. Ancak, bir görev yürütme içindeki bir görüntüyü örnek olarak, görüntünün başvuru için bir adı olması gerekir.<br /><br />Farklı olarak `az acr build` , ACR görevlerinin çalıştırılması varsayılan gönderme davranışı sağlamaz. ACR görevleri ile, varsayılan senaryo bir görüntüyü oluşturma, doğrulama ve gönderme özelliğini kabul eder. İsteğe bağlı olarak oluşturulan görüntüleri gönderme hakkında bilgi için bkz. [gönderim](#push) . | Evet |
+| `-f` &#124; `--file` | Geçirilen Dockerfile dosyasını belirtir `docker build` . Belirtilmemişse, bağlam kökündeki varsayılan Dockerfile varsayılır. Bir Dockerfile belirtmek için, dosya adını bağlamın köküne göre geçirin. | Evet |
+| `context` | Kök dizin geçildi `docker build` . Her görevin kök dizini paylaşılan bir [WorkingDirectory](#task-step-properties)olarak ayarlanır ve ilişkili git klonlanmış dizinin kökünü içerir. | Hayır |
 
 ### <a name="properties-build"></a>Özellikler: derleme
 
@@ -404,7 +404,7 @@ Her adım türü, türü için uygun olan birkaç özelliği destekler. Aşağı
 | `timeout` | int (saniye) | Evet | Bir adımın sonlandırılmadan önce yürütebilmesi için gereken en fazla saniye sayısı. | 600 |
 | [`when`](#example-when) | [dize, dize,...] | Evet | Görevin içindeki bir veya daha fazla adım için bir adımın bağımlılığını yapılandırır. | Yok |
 | `user` | string | Evet | Bir kapsayıcının Kullanıcı adı veya UID 'SI | Yok |
-| `workingDirectory` | string | Evet | Bir adım için çalışma dizinini ayarlar. Varsayılan olarak ACR görevleri, çalışma dizini olarak bir kök dizin oluşturur. Ancak, derlemeniz birkaç adım içeriyorsa, önceki adımlar aynı çalışma dizinini belirterek yapıtları sonraki adımlarla paylaşabilir. | `c:\workspace`Windows veya `/workspace` Linux 'ta |
+| `workingDirectory` | string | Evet | Bir adım için çalışma dizinini ayarlar. Varsayılan olarak ACR görevleri, çalışma dizini olarak bir kök dizin oluşturur. Ancak, derlemeniz birkaç adım içeriyorsa, önceki adımlar aynı çalışma dizinini belirterek yapıtları sonraki adımlarla paylaşabilir. | `c:\workspace` Windows veya `/workspace` Linux 'ta |
 
 ### <a name="volumemount"></a>Birimbağlama
 
@@ -432,8 +432,8 @@ az acr run -f when-parallel-dependent.yaml https://github.com/Azure-Samples/acr-
 
 `when`Özelliği, bir adımın görev içindeki diğer adımlara bağımlılığı belirtir. İki parametre değerini destekler:
 
-* `when: ["-"]`-Diğer adımlara bağımlılığı olmadığını gösterir. Öğesini belirten bir adım `when: ["-"]` , yürütme işlemini hemen başlatır ve eşzamanlı adım yürütülmesine olanak sağlayacaktır.
-* `when: ["id1", "id2"]`-Adımın `id` "ID1" ve `id` "ID2" ile adımlara bağlı olduğunu gösterir. "ID1" ve "ID2" adımları tamamlanana kadar bu adım yürütülmez.
+* `when: ["-"]` -Diğer adımlara bağımlılığı olmadığını gösterir. Öğesini belirten bir adım `when: ["-"]` , yürütme işlemini hemen başlatır ve eşzamanlı adım yürütülmesine olanak sağlayacaktır.
+* `when: ["id1", "id2"]` -Adımın `id` "ID1" ve `id` "ID2" ile adımlara bağlı olduğunu gösterir. "ID1" ve "ID2" adımları tamamlanana kadar bu adım yürütülmez.
 
 `when`Bir adımda belirtilmemişse, bu adım dosyadaki önceki adımın tamamlanmasına bağlıdır `acr-task.yaml` .
 

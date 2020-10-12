@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/25/2019
 ms.openlocfilehash: d8dd9aaeaadf13fa48577cf2853e7bcf58badb41
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86079301"
 ---
 # <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>Spark uygulamalarında hata ayıklamak ve tanılamak için Apache Spark geçmiş sunucusunun genişletilmiş özelliklerini kullanın
@@ -97,13 +97,13 @@ Spark geçmiş sunucusu Web Kullanıcı arabirimi şu resme benzer şekilde gör
    ![Spark uygulaması & Iş grafiği sayfasında ısı haritası.](./media/apache-azure-spark-history-server/sparkui-graph-heatmap.png)
 
 
-    |Renk |Açıklama |
+    |Color |Açıklama |
     |---|---|
     |Yeşil|İş başarıyla tamamlandı.|
     |Orange|Görev başarısız oldu, ancak bu, işin nihai sonucunu etkilemez. Bu görevler daha sonra başarılı olabilecek yinelenen veya yeniden deneme örnekleri var.|
     |Mavi|Görev çalışıyor.|
     |Beyaz|Görev çalışmayı bekliyor veya aşama atlandı.|
-    |Red|Görev başarısız oldu.|
+    |Kırmızı|Görev başarısız oldu.|
 
      ![Spark uygulaması & Iş grafiği sayfasında bir görevi çalıştırma.](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
 

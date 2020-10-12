@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
 ms.openlocfilehash: c2561a6dc3ad8c0af1c266b3822a80c76f45c174
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88639698"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>Azure VM 'lerinde MATLAB dağıtılmış bilgi Işlem sunucusu kümeleri oluşturma
@@ -26,7 +26,7 @@ ms.locfileid: "88639698"
 
 Azure sanal makinelerini kullanarak, paralel çalışmayı, etkileşimli işler, toplu işler, bağımsız görevler ve iletişim görevleri gibi şirket içi kümeler olarak göndermek için kullanılabilen tüm mekanizmaların bulunduğu MATLAB dağıtılmış bilgi Işlem sunucusu kümeleri oluşturabilirsiniz. Azure 'un MATLAB platformu ile birlikte kullanılması, geleneksel şirket içi donanımların sağlanması ve kullanılması ile karşılaştırıldığında birçok avantaj sunar: bir dizi sanal makine boyutu, istek üzerine küme oluşturma, bu sayede yalnızca kullandığınız işlem kaynakları için ödeme yapma ve modelleri ölçekli olarak test etme yeteneği.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * **İstemci bilgisayar** -dağıtımdan sonra Azure ve MATLAB dağıtılmış bilgi işlem sunucusu kümesiyle iletişim kurmak için Windows tabanlı bir istemci bilgisayara ihtiyacınız vardır.
 * **Azure PowerShell** -istemci bilgisayarınıza yüklemek için [Azure PowerShell yüklemeyi ve yapılandırmayı öğrenin](/powershell/azure/) .
 * **Azure aboneliği** -aboneliğiniz yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturabilirsiniz. Daha büyük kümeler için Kullandıkça Öde aboneliğine veya diğer satın alma seçeneklerine göz önünde bulundurun.

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
 ms.openlocfilehash: 6454bc863cb5fd628d581fff380c5ab61354f762
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87053049"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC için Kesintisiz Akış Protocol (MS-SSTR) Düzeltme 
@@ -40,11 +40,11 @@ Aşağıdaki terimler *[MS-GLOS]* içinde tanımlanmıştır:
 
 Aşağıdaki terimler bu belgeye özeldir:
 
->  **oluşturma zamanı:** [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695)bölümünde tanımlandığı gibi, istemcide bir örnek gösterilir.
+>  **oluşturma zamanı:**   [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695)bölümünde tanımlandığı gibi, istemcide bir örnek gösterilir.
 > 
 >   **CENC**: [ISO/IEC 23001-7] Second Edition içinde tanımlandığı şekilde Common encryption.
 > 
->   **kod çözme Zamanı:** Örneğin, [[ISO/ıec 14496-12:2008]](https://go.microsoft.com/fwlink/?LinkId=183695)bölümünde tanımlandığı gibi, istemcide kodu çözülecek zaman.
+>   **kod çözme Zamanı:** Örneğin,   [[ISO/ıec 14496-12:2008]](https://go.microsoft.com/fwlink/?LinkId=183695)bölümünde tanımlandığı gibi, istemcide kodu çözülecek zaman.
 
 **parça:** Bir veya daha fazla **örnek**içeren, karşıdan yüklenebilen bir **medya** birimi.
 
@@ -54,7 +54,7 @@ Aşağıdaki terimler bu belgeye özeldir:
 > 
 >   **sunum:** Tek bir filmi oynatmak için gereken tüm **akışlar** ve ilgili meta veriler kümesi. **istek:** [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) **yanıtında** tanımlandığı şekılde istemciden sunucuya gönderilen HTTP iletisi: [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) IÇINDE tanımlandığı gibi sunucudan istemciye gönderilen HTTP iletisi
 > 
->   **örnek:** **Medyanın** depolandığı ve işlendiği en küçük temel birim (örneğin, bir çerçeve).
+>   **örnek:**   **Medyanın** depolandığı ve işlendiği en küçük temel birim (örneğin, bir çerçeve).
 > 
 >   şunları yapmanız gerekir **:** Bu terimler (tüm büyük harfler), [[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317) içinde açıklandığı şekilde kullanılır; isteğe bağlı davranışın tüm deyimleri,
 
@@ -72,23 +72,23 @@ Aşağıdaki terimler bu belgeye özeldir:
 >   [ISO/ıEC 14496-15] Uluslararası Standardizasyon Teşkilatı, "bilgi teknolojisi--ses-görsel nesnelerinin kodlanması--15. Bölüm: ISO temel medya dosyası biçiminde", ISO 14496-15:2015, sürüm 3)
 >   <https://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=65216>
 > 
->   [ISO/ıEC 23008-2] Bilgi teknolojisi--heterojen ortamlarda yüksek verimlilik kodlama ve medya teslimi--2. Bölüm: yüksek verimlilik video kodlama: 2013 veya en yeni sürüm<https://standards.iso.org/ittf/PubliclyAvailableStandards/c035424_ISO_IEC_23008-2_2013.zip>
+>   [ISO/ıEC 23008-2] Bilgi teknolojisi--heterojen ortamlarda yüksek verimlilik kodlama ve medya teslimi--2. Bölüm: yüksek verimlilik video kodlama: 2013 veya en yeni sürüm   <https://standards.iso.org/ittf/PubliclyAvailableStandards/c035424_ISO_IEC_23008-2_2013.zip>
 > 
->   [ISO/ıEC 23001-7] Bilgi teknolojisi — MPEG Sistemleri Teknolojileri — Bölüm 7: ISO taban medya dosyası biçim dosyalarında ortak şifreleme, CENC Edition 2:2015<https://www.iso.org/iso/catalogue_detail.htm?csnumber=65271>
+>   [ISO/ıEC 23001-7] Bilgi teknolojisi — MPEG Sistemleri Teknolojileri — Bölüm 7: ISO taban medya dosyası biçim dosyalarında ortak şifreleme, CENC Edition 2:2015 <https://www.iso.org/iso/catalogue_detail.htm?csnumber=65271>
 > 
->   [RFC-6381] IETF RFC-6381, "" Bucket "medya türleri için ' codec bileşenleri ' ve ' profiles ' parametreleri"<https://tools.ietf.org/html/rfc6381>
+>   [RFC-6381] IETF RFC-6381, "" Bucket "medya türleri için ' codec bileşenleri ' ve ' profiles ' parametreleri" <https://tools.ietf.org/html/rfc6381>
 > 
->   [MPEG4-RA] MP4 kayıt yetkilisi, "MP4REG",[http://www.mp4ra.org](https://go.microsoft.com/fwlink/?LinkId=327787)
+>   [MPEG4-RA] MP4 kayıt yetkilisi, "MP4REG", [http://www.mp4ra.org](https://go.microsoft.com/fwlink/?LinkId=327787)
 > 
->   [RFC2119] Bradner, S., "gereksinim düzeylerini belirtmek için RFC 'lerde kullanım için anahtar sözcükler", BCP 14, RFC 2119, 1997 Mart[https://www.rfc-editor.org/rfc/rfc2119.txt](https://go.microsoft.com/fwlink/?LinkId=90317)
+>   [RFC2119] Bradner, S., "gereksinim düzeylerini belirtmek için RFC 'lerde kullanım için anahtar sözcükler", BCP 14, RFC 2119, 1997 Mart   [https://www.rfc-editor.org/rfc/rfc2119.txt](https://go.microsoft.com/fwlink/?LinkId=90317)
 
 ### <a name="122-informative-references"></a>1.2.2 bilgilendirici başvurular 
 
 >   [MS-GLOS] Microsoft Corporation, "*Windows protokolleri ana sözlüğü*."
 > 
->   [RFC3548] Josefsson, S., Ed., "Base16, Base32 ve Base64 veri kodlamaları", RFC 3548, 2003 Temmuz[https://www.ietf.org/rfc/rfc3548.txt](https://go.microsoft.com/fwlink/?LinkId=90432)
+>   [RFC3548] Josefsson, S., Ed., "Base16, Base32 ve Base64 veri kodlamaları", RFC 3548, 2003 Temmuz [https://www.ietf.org/rfc/rfc3548.txt](https://go.microsoft.com/fwlink/?LinkId=90432)
 > 
->   [RFC5234] Crocker, D., Ed. ve Overell, P., "genişletilmiş BNF için sözdizimi belirtimleri: ABNF", STD 68, RFC 5234, Ocak 2008,[https://www.rfc-editor.org/rfc/rfc5234.txt](https://go.microsoft.com/fwlink/?LinkId=123096)
+>   [RFC5234] Crocker, D., Ed. ve Overell, P., "genişletilmiş BNF için sözdizimi belirtimleri: ABNF", STD 68, RFC 5234, Ocak 2008,   [https://www.rfc-editor.org/rfc/rfc5234.txt](https://go.microsoft.com/fwlink/?LinkId=123096)
 
 
 ## <a name="13-overview"></a>1,3 genel bakış 
@@ -215,7 +215,7 @@ Video veya ses akışlarına Common Encryption (CENC) uygulandığında, Protect
 > 
 >   Note: Bu durum, video eşleştirme sesinin en büyük kodu çözülen resim arabelleği kaldırma gecikmesine eşit olduğu ve farklı kaldırma gecikmeleri olabilecek alternatif parçalar arasında sunum zamanlamasını koruyan bir video eşitleme hatasını önler.
 > 
->   Bu bölümde tanımlanan, ABNF [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096) içinde belirtilen alanların sözdizimi, aşağıdakiler dışında, aynı kalır:
+>   Bu bölümde tanımlanan, ABNF   [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096) içinde belirtilen alanların sözdizimi, aşağıdakiler dışında, aynı kalır:
 > 
 >   Samplekompozisyontiontimekayması = SIGNED_INT32
 
@@ -240,7 +240,7 @@ Video veya ses akışlarına Common Encryption (CENC) uygulandığında, Protect
 >   **Compatiblemarkalar (değişken):** Desteklenen MPEG-4 markalarını belirtir.
 >   "Ccff" ve "iso8" içermelidir.
 > 
->   Bu bölümde tanımlanan, ABNF [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096) içinde belirtilen alanların sözdizimi aşağıdaki gibidir:
+>   Bu bölümde tanımlanan, ABNF   [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096) içinde belirtilen alanların sözdizimi aşağıdaki gibidir:
 
 ```properties
 FileType = MajorBrand MinorVersion CompatibleBrands
@@ -324,7 +324,7 @@ TimeScale = 90000
 
 ##### <a name="3113-fragment-reference-description"></a>3.1.1.3 Fragment başvurusu açıklaması 
 
-###### <a name="31131-track-specific-fragment-reference-description"></a>3.1.1.3.1 Track 'e özgü parça başvurusu açıklaması 
+###### <a name="31131-track-specific-fragment-reference-description"></a>3.1.1.3.1 Track-Specific Fragment başvurusu açıklaması 
 
 #### <a name="3112-fragment-description"></a>3.1.1.2 Fragment açıklaması 
 
@@ -334,7 +334,7 @@ TimeScale = 90000
 
 ### <a name="313-initialization"></a>3.1.3 başlatma 
 
-### <a name="314-higher-layer-triggered-events"></a>3.1.4 üst düzey tetiklenen olayları 
+### <a name="314-higher-layer-triggered-events"></a>3.1.4 Higher-Layer tetiklenen olaylar 
 
 #### <a name="3141-open-presentation"></a>3.1.4.1 açık sunu 
 
@@ -391,7 +391,7 @@ Common Encryption uygulandığında ve [ISO/ıEC 23001-7] veya [ISO/ıEC 14496-1
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 [image1]: ./media/media-services-fmp4-live-ingest-overview/media-services-image1.png

@@ -16,10 +16,10 @@ ms.author: kenwith
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 779d1b73f45f9be5b4bd00d546987b7c1e0b6a43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84763355"
 ---
 # <a name="how-to-configure-azure-ad-saml-token-encryption"></a>Nasıl yapılır: Azure AD SAML belirteci şifrelemesini yapılandırma
@@ -55,7 +55,7 @@ SAML belirteci şifrelemesini yapılandırmak için aşağıdaki adımları izle
 
 Ortak sertifikayı, Azure portal içindeki uygulama yapılandırmanıza ekleyebilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)gidin.
+1. [Azure portalına](https://portal.azure.com) gidin.
 
 1. **Azure Active Directory > Enterprise Applications** dikey penceresine gidin ve belirteç şifrelemesini yapılandırmak istediğiniz uygulamayı seçin.
 

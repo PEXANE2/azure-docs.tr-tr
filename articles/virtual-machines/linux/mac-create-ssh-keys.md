@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
 ms.openlocfilehash: 33ba816227db4cf958fd30c9dac1a0745505c504
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513698"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Hızlı adımlar: Azure 'da Linux VM 'Ler için SSH genel-özel anahtar çifti oluşturma ve kullanma
@@ -37,7 +37,7 @@ Aşağıdaki komut RSA şifrelemesini ve 4096 bit uzunluğunu kullanarak bir SSH
 ssh-keygen -m PEM -t rsa -b 4096
 ```
 
-[Az VM Create](/cli/azure/vm#az-vm-create) komutuyla VM 'nizi oluşturmak IÇIN [Azure CLI](/cli/azure) kullanıyorsanız, isteğe bağlı olarak, seçeneğini kullanarak SSH ortak ve özel anahtar dosyaları oluşturabilirsiniz `--generate-ssh-keys` . Anahtar dosyaları, seçeneğiyle, aksi belirtilmedikçe ~/PST SSH dizininde depolanır `--ssh-dest-key-path` . Bir SSH anahtar çifti zaten varsa ve `--generate-ssh-keys` seçenek kullanılırsa, yeni bir anahtar çifti oluşturulmaz, bunun yerine var olan anahtar çifti kullanılacaktır. Aşağıdaki komutta, *VMName* ve *RgName* değerlerini kendi değerlerinizle değiştirin:
+[Az VM Create](/cli/azure/vm#az-vm-create) komutuyla VM 'nizi oluşturmak IÇIN [Azure CLI](/cli/azure) kullanıyorsanız, isteğe bağlı olarak, seçeneğini kullanarak SSH ortak ve özel anahtar dosyaları oluşturabilirsiniz `--generate-ssh-keys` . Anahtar dosyaları, seçeneğiyle, aksi belirtilmedikçe ~/PST SSH dizininde depolanır `--ssh-dest-key-path` . Bir SSH anahtar çifti zaten varsa ve  `--generate-ssh-keys` seçenek kullanılırsa, yeni bir anahtar çifti oluşturulmaz, bunun yerine var olan anahtar çifti kullanılacaktır. Aşağıdaki komutta, *VMName* ve *RgName* değerlerini kendi değerlerinizle değiştirin:
 
 ```azurecli
 az vm create --name VMname --resource-group RGname --image UbuntuLTS --generate-ssh-keys 

@@ -5,10 +5,10 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: b56b2386422d9f7f2fa598ff804a2206bf4b4d83
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91460109"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Izleyici iş ortağı tümleştirmeleri
@@ -82,7 +82,7 @@ Cloudmonitorx, Microsoft Azure platformu için izleme, otomasyon ve kendi kendin
 
 Azure, müşterilerin uygulamalarını bulutta çalışacak şekilde geçirmesini ve modernleştirin birçok iş ortağı çözümü koordine edilmesini sağlar. Bu tür bir iş ortağı, kullanıcıların karma ve çok bulut ortamlarında uygulamalarının sistem durumunu ve performansını anlamalarına yönelik Observability ve güvenlik araçları sağlayan veri Kösğıdır.  Ancak, gerekli tümleştirmelerin yapılandırılması genellikle Azure portal ve veri köpek arasında gezinme gerektirir.  Bu işlem karmaşıklık ekliyor, zaman alır ve işlemler çalışmıyorsa sorun gidermeyi zorlaştırır.  Microsoft, birden çok portal genelinde yönetim yükünü azaltmak için Azure bulut platformunda tümleşik bir Dataköpek çözümü oluşturmak üzere veri Köpeyla çalıştı.  Azure Marketi aracılığıyla sunulan bu çözüm, Azure 'da Dataköpek 'nın bulut izleme çözümünü kullanmaya yönelik sorunsuz bir deneyim sunar.  
 
-Yeni Azure-Dataköpek tümleştirmesiyle, kuruluşlar artık eski ve bulut tabanlı sistemlerini tamamen eşleyebilir, bulut geçişinin her aşamasında gerçek zamanlı verileri izler ve geçirilen uygulamaların performans hedeflerini karşıladığından emin olabilir. Bu tümleştirme, kuruluşların en iyi deneyimini oluşturmak için Azure 'un genel durumunu, esnekliğini, güvenliğini ve veri köklerinin günlüğe kaydetme ve izleme yeteneklerini birleştirir. Bu Birleşik deneyimle, şunları yapabilirsiniz: 
+Yeni Azure-Datadog tümleştirmeyle, kuruluşlar artık eski ve bulut tabanlı sistemlerini tamamen eşleyebilir, bulut geçişinin her aşamasında gerçek zamanlı verileri izler ve geçirilen uygulamaların performans hedeflerini karşıladığından emin olabilir. Bu tümleştirme, kuruluşların en iyi deneyimini oluşturmak için Azure 'un genel durumunu, esnekliğini, güvenliğini ve veri köklerinin günlüğe kaydetme ve izleme yeteneklerini birleştirir. Bu Birleşik deneyimle, şunları yapabilirsiniz: 
 
 - Yeni bir veri köpek organizasyonu sağlayın ve Azure kaynaklarını, müşteriler tarafından ayarlanması ve çalışması için altyapı olmayan, tam olarak yönetilen bir kurulum olan veri köklerine Günlükler ve ölçümler gönderecek şekilde yapılandırın.  
 - Günlükleri ve ölçümleri sorunsuzca veri Köbir şekilde gönderin. Günlük iletme işlemi tamamen otomatikleştirildi; Tanılama ayarları, Event Hubs ve Işlevleri ile bir günlük iletme işlem hattı oluşturmak yerine, her şeyi yalnızca birkaç tıklamayla yapılandırabilirsiniz.

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/06/2020
 ms.openlocfilehash: 87feba3bc79e39f1379a25fa55fe0186d5605e4a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085557"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>REST kullanarak HDInsight 'ta Apache Hadoop Apache Hive sorguları çalıştırma
@@ -48,7 +48,7 @@ Aşağıdaki betiği, `PASSWORD` gerçek parolanızla değiştirerek düzenleyin
 export password='PASSWORD'
 ```  
 
-**B. PowerShell** aşağıdaki kodu yürütün ve açılır pencerede kimlik bilgilerinizi girin:
+**B. PowerShell** Aşağıdaki kodu yürütün ve açılır pencerede kimlik bilgilerinizi girin:
 
 ```powershell
 $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
@@ -98,8 +98,8 @@ $clusterName
 
     Bu komutta kullanılan parametreler aşağıdaki gibidir:
 
-    * `-u`-İsteğin kimliğini doğrulamak için kullanılan Kullanıcı adı ve parola.
-    * `-G`-Bu isteğin bir GET işlemi olduğunu gösterir.
+    * `-u` -İsteğin kimliğini doğrulamak için kullanılan Kullanıcı adı ve parola.
+    * `-G` -Bu isteğin bir GET işlemi olduğunu gösterir.
 
 1. URL 'nin başlangıcı `https://$CLUSTERNAME.azurehdinsight.net/templeton/v1` tüm istekler için aynıdır. Yolu, `/status` isteğin, sunucu Için WebHCat (Tempkaton olarak da bilinir) durumunun döndürülmeyeceğini gösterir. Ayrıca, aşağıdaki komutu kullanarak Hive sürümünü isteyebilirsiniz:
 
@@ -140,23 +140,23 @@ $clusterName
 
     Bu istek, REST API isteğin bir parçası olarak veri gönderen POST yöntemini kullanır. Şu veri değerleri istekle birlikte gönderilir:
 
-     * `user.name`-Komutunu çalıştıran kullanıcı.
-     * `execute`-Yürütülecek HiveQL deyimleri.
-     * `statusdir`-Bu işin durumunun yazıldığı dizin.
+     * `user.name` -Komutunu çalıştıran kullanıcı.
+     * `execute` -Yürütülecek HiveQL deyimleri.
+     * `statusdir` -Bu işin durumunun yazıldığı dizin.
 
    Bu deyimler aşağıdaki eylemleri gerçekleştirir:
 
-   * `DROP TABLE`-Tablo zaten varsa, silinir.
-   * `CREATE EXTERNAL TABLE`-Hive içinde yeni bir ' External ' tablosu oluşturur. Dış tablolar yalnızca Hive içindeki tablo tanımını depolar. Veriler özgün konumda bırakılır.
+   * `DROP TABLE` -Tablo zaten varsa, silinir.
+   * `CREATE EXTERNAL TABLE` -Hive içinde yeni bir ' External ' tablosu oluşturur. Dış tablolar yalnızca Hive içindeki tablo tanımını depolar. Veriler özgün konumda bırakılır.
 
      > [!NOTE]  
      > Dış tablolar, temel alınan verilerin bir dış kaynak tarafından güncelleştirilmesini beklediğinde kullanılmalıdır. Örneğin, otomatik bir veri yükleme işlemi veya başka bir MapReduce işlemi.
      >
      > Dış tablonun atılması, yalnızca tablo tanımı olan **verileri silmez.**
 
-   * `ROW FORMAT`-Veriler nasıl biçimlendirilir. Her günlükteki alanlar boşlukla ayrılır.
-   * `STORED AS TEXTFILE LOCATION`-Verilerin depolandığı yer (örnek/veri dizini) ve metin olarak saklandığı yerdir.
-   * `SELECT`- **T4** sütununun **[Error]** değerini içerdiği tüm satırların sayısını seçer. Bu ifade, bu değeri içeren üç satır olduğu için **3** değerini döndürür.
+   * `ROW FORMAT` -Veriler nasıl biçimlendirilir. Her günlükteki alanlar boşlukla ayrılır.
+   * `STORED AS TEXTFILE LOCATION` -Verilerin depolandığı yer (örnek/veri dizini) ve metin olarak saklandığı yerdir.
+   * `SELECT` - **T4** sütununun **[Error]** değerini içerdiği tüm satırların sayısını seçer. Bu ifade, bu değeri içeren üç satır olduğu için **3** değerini döndürür.
 
      > [!NOTE]  
      > HiveQL deyimleri arasındaki boşlukların, `+` kıvrımlı ile kullanıldığında karakteriyle değiştirildiğine dikkat edin. Sınırlayıcı gibi bir boşluk içeren tırnak içine alınmış değerler ile değiştirilmemelidir `+` .

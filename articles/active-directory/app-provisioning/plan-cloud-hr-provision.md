@@ -12,10 +12,10 @@ ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
 ms.openlocfilehash: 3a3f461941bfcd5091ebb14818bac05d6844b3fe
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90706362"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Kullanıcı sağlamayı Azure Active Directory için bulut HR uygulaması planlayın
@@ -79,7 +79,7 @@ Bulut HR uygulamasını Azure AD Kullanıcı sağlama tümleştirmesi olarak yap
 
 Ayrıca, bulut HR uygulamasından kaynaklayacağı ve Active Directory ya da Azure AD 'ye sağlanan her kullanıcı için geçerli Azure AD Premium P1 veya daha yüksek bir abonelik lisansı gerekir. Bulut HR uygulamasına ait hatalı sayıda lisans, Kullanıcı sağlama sırasında hatalara yol açabilir.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 - Azure AD Connect sağlama aracısını yapılandırmak için Azure AD [karma kimlik yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator)  .
 - Azure portal sağlama uygulamasını yapılandırmak için Azure AD [Uygulama Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) rolü
@@ -255,7 +255,7 @@ Ayrıca, varolan öznitelik eşlemelerini değiştirme veya silme gibi [varsayı
 
 Varsayılan olarak, sağlama bağlayıcı uygulaması, Kullanıcı hesabının etkinleştirilip etkinleştirilmeyeceğini veya devre dışı bırakılacağını öğrenmek için HR Kullanıcı profili durumunu Active Directory veya Azure AD 'deki Kullanıcı hesabı durumuyla eşler.
 
-Birleştiriciler-sızıntı sürecini başlattığınızda, aşağıdaki gereksinimleri toplayın.
+Joiners-Leavers sürecini başlattığınızda, aşağıdaki gereksinimleri toplayın.
 
 | İşleme | Gereksinimler |
 | - | - |

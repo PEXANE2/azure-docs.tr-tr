@@ -4,10 +4,10 @@ description: Kuruluşunuzda Azure kaynakları için kural oluşturmak üzere ilk
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: f9b64255723c6e53a6d8fe945bf19506ba30644e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330290"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
@@ -435,7 +435,7 @@ Bunun yerine **, adın ilk** üç karakterinin bir hataya neden olmak üzere ü�
 
 Düzeltilen ilke kuralıyla, `if()` üç karakterden kısa bir değerde bir değer almaya çalışmadan önce **adın** uzunluğunu denetler `substring()` . **Ad** çok kısaysa, bunun yerine "ABC ile başlamıyor" değeri döndürülür ve **ABC**ile karşılaştırılır. **ABC** ile başlamayan kısa bir ada sahip bir kaynak, hala ilke kuralına neden oluyor, ancak değerlendirme sırasında hataya neden olmaz.
 
-### <a name="count"></a>Count
+### <a name="count"></a>Sayı
 
 Kaynak yükünde bir dizinin kaç üyesinin bir koşul ifadesini karşılayıp karşılamadığını sayan **sayı** ifadesi kullanılarak oluşturulabilir koşullar. Yaygın senaryolar ', ' ' veya ' hiçbiri ', ' tamamen ' veya ' hiçbiri ' ' veya ' hiçbiri ' olan dizi üyelerinin koşulu karşılayıp karşılamadığını kontrol etmekte. **Count** , bir koşul ifadesi için her bir [ \[ \* \] diğer ad](#understanding-the--alias) dizisi üyesini değerlendirir ve daha sonra ifade işleciyle karşılaştırılan _doğru_ sonuçları toplar. **Count** ifadeleri, tek bir **policyrule** tanımına en fazla üç kez eklenebilir.
 
@@ -676,7 +676,7 @@ Diğer adların listesi her zaman büyüyordur. Şu anda Azure Ilkesi tarafında
   > Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }
   > ```
 
-- Azure CLI’si
+- Azure CLI
 
   ```azurecli-interactive
   # Login first with az login if not using Cloud Shell
