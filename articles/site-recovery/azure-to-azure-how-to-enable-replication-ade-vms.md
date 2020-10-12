@@ -8,13 +8,13 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: fa4d61599e102f9a2580e704ee7a02486067daa2
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86135799"
 ---
-# <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Azure disk şifrelemesi etkinleştirilmiş sanal makineleri başka bir Azure bölgesine çoğaltma
+# <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Azure Disk Şifrelemesi'nin etkinleştirildiği sanal makineleri başka bir Azure bölgesine çoğaltma
 
 Bu makalede, Azure disk şifrelemesi (ADE) ile Azure VM 'lerinin bir Azure bölgesinden diğerine nasıl çoğaltılacağı açıklanır.
 
@@ -22,7 +22,7 @@ Bu makalede, Azure disk şifrelemesi (ADE) ile Azure VM 'lerinin bir Azure bölg
 > Site Recovery Şu anda Windows işletim sistemlerini çalıştıran VM 'Ler için Azure Active Directory (AAD) ile ve olmadan ADE 'yi desteklemektedir. Linux işletim sistemleri için yalnızca AAD olmadan ADE 'yi destekliyoruz. Ayrıca, ADE 1,1 çalıştıran makineler (AAD olmadan) için VM 'Lerin yönetilen diskleri kullanıyor olması gerekir. Yönetilmeyen disklere sahip VM 'Ler desteklenmez. ADE 0,1 ' den (AAD ile) 1,1 ' e geçiş yaparsanız, bir sanal makine için çoğaltmayı devre dışı bırakmanız ve ' i etkinleştirdikten 1,1 sonra çoğaltmayı etkinleştirmeniz gerekir.
 
 
-## <a name="required-user-permissions"></a><a id="required-user-permissions"></a>Gerekli Kullanıcı izinleri
+## <a name="required-user-permissions"></a><a id="required-user-permissions"></a> Gerekli Kullanıcı izinleri
 Site Recovery, kullanıcının hedef bölgede anahtar kasasını oluşturma ve kaynak bölgesi anahtar kasasından anahtarları hedef bölgeye anahtar kasasına kopyalama izinlerine sahip olmasını gerektirir.
 
 Azure portal disk şifrelemesi etkin VM 'lerinin çoğaltılmasını etkinleştirmek için, kullanıcının hem **kaynak bölge hem de hedef bölge** Anahtar kasaları üzerinde aşağıdaki izinlere ihtiyacı vardır.
@@ -122,7 +122,7 @@ Site Recovery varsayılan hedef ayarlarını değiştirmek için aşağıdaki ad
 4. VM 'Ler çoğaltma için etkinleştirildikten sonra, **çoğaltılan öğeler**altında VM 'lerin sistem durumunu kontrol edebilirsiniz.
 
 >[!NOTE]
->İlk çoğaltma sırasında durum, görünür ilerleme olmadan yenilenmesi biraz zaman alabilir. En son durumu almak için **Yenile** ' ye tıklayın.
+>İlk çoğaltma sırasında durum, görünür ilerleme olmadan yenilenmesi biraz zaman alabilir. En son durumu almak için **Yenile**  ' ye tıklayın.
 
 ## <a name="update-target-vm-encryption-settings"></a>Hedef VM şifreleme ayarlarını Güncelleştir
 Aşağıdaki senaryolarda, hedef VM şifreleme ayarlarını güncelleştirmeniz gerekir:

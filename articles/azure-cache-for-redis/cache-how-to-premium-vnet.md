@@ -8,10 +8,10 @@ ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.openlocfilehash: 82003ef84571c8e07982826124b33763c0e53194
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88205567"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Redsıs için Premium Azure önbelleği için sanal ağ desteğini yapılandırma
@@ -109,7 +109,7 @@ Dokuz giden bağlantı noktası gereksinimi vardır. Bu aralıklardaki giden ist
 | 10221-10231 |Outbound |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) | (Redsıs alt ağı) |
 | 20226 |Outbound |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı) |
 | 13000-13999 |Outbound |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı) |
-| 15000-15999 |Outbound |TCP |Redsıs ve coğrafi çoğaltma için dahili iletişimler | (Redsıs alt ağı) |(Redsıs alt ağı) (Coğrafi çoğaltma eş alt ağı) |
+| 15000-15999 |Outbound |TCP |Redsıs ve Geo-Replication iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı) (Coğrafi çoğaltma eş alt ağı) |
 | 6379-6380 |Outbound |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı) |
 
 <sup>1</sup> ' AzureKeyVault ' hizmet etiketini Kaynak Yöneticisi ağ güvenlik grupları ile birlikte kullanabilirsiniz.
@@ -133,7 +133,7 @@ Sekiz gelen bağlantı noktası aralığı gereksinimi vardır. Bu aralıklardak
 | 8500 |Inbound |TCP/UDP |Azure yük dengeleme | (Redsıs alt ağı) |Azure Load Balancer |
 | 10221-10231 |Inbound |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı), Azure Load Balancer |
 | 13000-13999 |Inbound |TCP |Redsıs kümelerine istemci iletişimi, Azure Yük Dengelemesi | (Redsıs alt ağı) |Sanal ağ, Azure Load Balancer |
-| 15000-15999 |Inbound |TCP |Redsıs kümelerine istemci iletişimi, Azure Yük Dengelemesi ve coğrafi çoğaltma | (Redsıs alt ağı) |Sanal ağ, Azure Load Balancer, (coğrafi çoğaltma eş alt ağı) |
+| 15000-15999 |Inbound |TCP |Redsıs kümelerine istemci iletişimi, Azure Yük Dengelemesi ve Geo-Replication | (Redsıs alt ağı) |Sanal ağ, Azure Load Balancer, (coğrafi çoğaltma eş alt ağı) |
 | 16001 |Inbound |TCP/UDP |Azure yük dengeleme | (Redsıs alt ağı) |Azure Load Balancer |
 | 20226 |Inbound |TCP |Redsıs iç iletişimleri | (Redsıs alt ağı) |(Redsıs alt ağı) |
 
@@ -159,7 +159,7 @@ Bağlantı noktası gereksinimleri önceki bölümde açıklandığı gibi yapı
 
 - Tüm önbellek düğümlerini [yeniden başlatın](cache-administration.md#reboot) . Tüm gerekli önbellek bağımlılıklarına ulaşılamadığından ( [gelen bağlantı noktası gereksinimleri](cache-how-to-premium-vnet.md#inbound-port-requirements) ve [giden bağlantı noktası gereksinimleri](cache-how-to-premium-vnet.md#outbound-port-requirements)bölümünde belirtildiği gibi), önbellek başarıyla yeniden başlatılabilir.
 - Önbellek düğümleri yeniden başlatıldıktan sonra (Azure portal önbellek durumu tarafından raporlanarak), aşağıdaki testleri gerçekleştirebilirsiniz:
-  - [tcpıng](https://www.elifulkerson.com/projects/tcping.php)kullanarak önbellek uç noktasına (6380 numaralı bağlantı noktasını kullanarak) önbellek ile aynı VNET içinde olan bir makineden ping gönderin. Örnek:
+  - [tcpıng](https://www.elifulkerson.com/projects/tcping.php)kullanarak önbellek uç noktasına (6380 numaralı bağlantı noktasını kullanarak) önbellek ile aynı VNET içinde olan bir makineden ping gönderin. Örneğin:
     
     `tcping.exe contosocache.redis.cache.windows.net 6380`
     
@@ -182,7 +182,7 @@ Aşağıdaki bağlantı dizesine benzer IP adresini kullanmaktan kaçının:
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
 
-DNS adını çözemezseniz, bazı istemci kitaplıkları `sslHost` StackExchange. redsıs istemcisi tarafından sağlanacak şekilde yapılandırma seçeneklerini içerir. Bu, sertifika doğrulama için kullanılan ana bilgisayar adını geçersiz kılmanızı sağlar. Örnek:
+DNS adını çözemezseniz, bazı istemci kitaplıkları `sslHost` StackExchange. redsıs istemcisi tarafından sağlanacak şekilde yapılandırma seçeneklerini içerir. Bu, sertifika doğrulama için kullanılan ana bilgisayar adını geçersiz kılmanızı sağlar. Örneğin:
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False;sslHost=[mycachename].redis.windows.net`
 

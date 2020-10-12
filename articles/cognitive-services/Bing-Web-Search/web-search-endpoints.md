@@ -1,7 +1,7 @@
 ---
 title: Web araması uç noktası
 titleSuffix: Azure Cognitive Services
-description: Web Araması sonuçlarını almak için aşağıdaki uç noktaya `GET` bir istek gönderin. Üst bilgiler ve URL parametreleri daha fazla belirtim tanımlar.
+description: Web Araması sonuçlarını almak için `GET` aşağıdaki uç noktaya bir istek gönderin. Üst bilgiler ve URL parametreleri daha fazla belirtim tanımlar.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,21 +11,21 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: aahi
 ms.openlocfilehash: 2edc6a4cf4d4fb174c1b2067d8b3fb3b6f31859f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74111344"
 ---
 # <a name="web-search-endpoint"></a>Web Araması uç noktası
 
 **Web araması API 'Si** Web sayfaları, Haberler, görüntüler, videolar ve [varlıklar](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web)döndürür. Varlıklarda bir kişi, yer veya konu hakkında özet bilgiler vardır.
 
-## <a name="endpoint"></a>Uç Nokta
+## <a name="endpoint"></a>Uç Noktası
 
-Bing API kullanarak Web Araması sonuçlarını almak için aşağıdaki uç noktaya bir `GET` istek gönderin. Üst bilgiler ve URL parametreleri daha fazla belirtim tanımlar.
+Bing API kullanarak Web Araması sonuçlarını almak için `GET` aşağıdaki uç noktaya bir istek gönderin. Üst bilgiler ve URL parametreleri daha fazla belirtim tanımlar.
 
-**Uç nokta**: kullanıcının tarafından `?q=""`tanımlanan arama sorgusuyla ilgili Web sonuçlarını döndürür.
+**Uç nokta**: kullanıcının tarafından tanımlanan arama sorgusuyla ilgili Web sonuçlarını döndürür `?q=""` .
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/search

@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
 ms.openlocfilehash: e418e64fe9fbe98fbd8da4e75a81c05d5e3d118d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90885170"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği ile ortak güvenlik gereksinimlerini ele almak için PlayBook
@@ -461,7 +461,7 @@ CLE kullanırken:
 
 - 3DES kullanmaktan kaçınmak için simetrik anahtarları asimetrik anahtarlar/sertifikalarla koruyun (parolalar).
 
-- Dışarı aktarma/içeri aktarma (bacpac dosyaları) aracılığıyla hücre düzeyinde şifreleme kullanarak bir veritabanını geçirirken dikkatli olun.
+- Dışarı aktarma/içeri aktarma (bacpac dosyaları) aracılığıyla Cell-Level şifrelemeyi kullanarak bir veritabanını geçirirken dikkatli olun.
   - Verileri geçirirken anahtar kaybını önleme ve diğer en iyi Yöntem Kılavuzu için [Azure SQL veritabanı 'Nda hücre düzeyinde şifrelemeyi kullanma önerileri](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/) başlıklı makaleye bakın.
 
 Always Encrypted birincil olarak Azure SQL veritabanı 'nın (bulut işleçleri, DBAs) yüksek ayrıcalıklı kullanıcılarından kullanılan hassas verileri korumak için tasarlandığını unutmayın; [yüksek ayrıcalıklı, yetkisiz kullanıcılardan kullanılan hassas verileri koruyun](#protect-sensitive-data-in-use-from-high-privileged-unauthorized-users). Uygulama kullanıcılarından verileri korumak için Always Encrypted kullanırken aşağıdaki güçlükleri göz önünde bulundurun:

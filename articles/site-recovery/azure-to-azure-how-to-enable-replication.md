@@ -6,13 +6,13 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
 ms.openlocfilehash: 3a1ac6dd940ea5d31adae45a435c5425497362b1
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86135766"
 ---
-# <a name="replicate-azure-vms-to-another-azure-region"></a>Azure VM 'lerini başka bir Azure bölgesine çoğaltma
+# <a name="replicate-azure-vms-to-another-azure-region"></a>Azure sanal makinelerini başka bir Azure bölgesine çoğaltma
 
 
 Bu makalede, Azure VM 'lerinin bir Azure bölgesinden diğerine çoğaltılmasını nasıl etkinleştireceğinizi açıklanmaktadır.
@@ -38,7 +38,7 @@ Bu makalede, [Azure 'Dan Azure 'a olağanüstü durum kurtarma öğreticisinde](
 
      ![Çoğaltmayı etkinleştirme](./media/site-recovery-replicate-azure-to-azure/enabledrwizard1.png)
 
-3. Sanal **makineler > sanal makineler**' i seçin ve çoğaltmak ISTEDIĞINIZ her VM 'yi seçin. Yalnızca çoğaltmanın etkinleştirildiği makineleri seçebilirsiniz. Ardından **Tamam**'a tıklayın.
+3. Sanal **makineler > sanal makineler**' i seçin ve çoğaltmak ISTEDIĞINIZ her VM 'yi seçin. Yalnızca çoğaltmanın etkinleştirildiği makineleri seçebilirsiniz. Daha sonra, **Tamam**'a tıklayın.
     ![Çoğaltmayı etkinleştirme](./media/site-recovery-replicate-azure-to-azure/virtualmachine_selection.png)
 
 4. **Ayarlar**' da, hedef site ayarlarını isteğe bağlı olarak yapılandırabilirsiniz:

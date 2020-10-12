@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: cc1ad3104596cc7ad4bb48f88e4c8312bc833371
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87088572"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Azure VM’ye RDP kullanarak bağlandığınızda karşılaştığınız kimlik doğrulaması hatalarını giderme
@@ -161,7 +161,7 @@ Reset-ComputerMachinePassword -Server "<COMPUTERNAME>" -Credential <DOMAIN CREDE
 
 DC ve VM arasındaki iletişim iyi ise, ancak DC 'nin bir RDP oturumu açmak için yeterince iyi olmaması durumunda DC 'yi yeniden başlatmayı deneyebilirsiniz.
 
-Yukarıdaki komutlar etki alanına iletişim sorununu gidermezse, bu VM 'yi etki alanına yeniden ekleyebilirsiniz. Bunu yapmak için şu adımları izleyin:
+Yukarıdaki komutlar etki alanına iletişim sorununu gidermezse, bu VM 'yi etki alanına yeniden ekleyebilirsiniz. Bunu yapmak için şu adımları uygulayın:
 
 1. Aşağıdaki içeriği kullanarak Unjoin.ps1 adlı bir komut dosyası oluşturun ve ardından betiği Azure portal özel bir betik uzantısı olarak dağıtın:
 
@@ -246,7 +246,7 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Prot
 > [!Note]
 > SCHANNEL hatalarında, Konuk işletim sistemi günlüklerinden SSH/TLS sürüm x. x ' i alın.
 
-#### <a name="check-fips-compliant-algorithms-connections"></a><a name="fips-compliant"></a>FIPS uyumlu algoritma bağlantılarını denetle
+#### <a name="check-fips-compliant-algorithms-connections"></a><a name="fips-compliant"></a> FIPS uyumlu algoritma bağlantılarını denetle
 
 Uzak Masaüstü, yalnızca FIPS uyumlu algoritma bağlantıları kullanmak için zorlanabilir. Bu, bir kayıt defteri anahtarı kullanılarak ayarlanabilir. Bunu yapmak için, yükseltilmiş bir komut Istemi penceresi açın ve ardından aşağıdaki anahtarları sorgulayın:
 

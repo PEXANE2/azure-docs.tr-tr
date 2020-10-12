@@ -6,21 +6,21 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
 ms.openlocfilehash: e2d075a58872f9337c7d1faa642a48047e2f9ddf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78250192"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>Azure yönetilen uygulamalar için Portal arabiriminizi test etme
 
 Yönetilen uygulamanız için [dosyada createUiDefinition.js](create-uidefinition-overview.md) oluşturduktan sonra, Kullanıcı deneyimini test etmeniz gerekir. Sınamayı basitleştirmek için, dosyanızı portala yükleyen bir korumalı alan ortamı kullanın. Yönetilen uygulamanızı gerçekten dağıtmanız gerekmez. Korumalı alan, Kullanıcı arabiriminizi geçerli, tam ekran portalı deneyiminde gösterir. Ya da, arabirimi test etmek için bir komut dosyası kullanabilirsiniz. Her iki yaklaşım da bu makalede gösterilmektedir. Korumalı alan, arabirimi önizlemek için önerilen yoldur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Dosyadaki bir **createUiDefinition.js** . Bu dosyaya sahip değilseniz [örnek dosyayı](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json)kopyalayın.
 
-* Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+* Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="use-sandbox"></a>Korumalı alanı kullan
 

@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 05/14/2020
 tags: connectors
 ms.openlocfilehash: e9e554fdc092e49f5a87049de0e3dc3163105f58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85609512"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Azure Logic Apps'ten IBM MQ sunucusuna bağlanma
@@ -35,7 +35,7 @@ Resmi olarak desteklenen IBM WebSphere MQ sürümleri aşağıda verilmiştir:
   * MQ 9,0
   * MQ 9,1
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Şirket içi MQ sunucusu kullanıyorsanız, Şirket [içi veri ağ geçidini](../logic-apps/logic-apps-gateway-install.md) ağınız içindeki bir sunucuya yükleyebilirsiniz. Şirket içi veri ağ geçidinin yüklü olduğu sunucuda, MQ bağlayıcısının çalışması için .NET Framework 4,6 yüklü olmalıdır.
 
@@ -112,10 +112,10 @@ Mantıksal uygulamanız şirket içi MQ sunucunuza bağlanmayı denediğinde şu
 
    | Özellik | Açıklama |
    |----------|-------------|
-   | **Sıradaki** | Bağlantıda belirtilen kuyruktan farklıysa, bu kuyruğu belirtin. |
+   | **Kuyruk** | Bağlantıda belirtilen kuyruktan farklıysa, bu kuyruğu belirtin. |
    | **MessageID**, **bağıntıkimliği**, **GroupID**ve diğer özellikler | Farklı MQ İleti özelliklerine dayalı bir iletiye gözatın |
    | **Includeınfo** | Çıkışa ek ileti bilgilerini eklemek için **doğru**öğesini seçin. Çıktıda ek ileti bilgisini atlamak için, **false**' ı seçin. |
-   | **Zaman aşımı** | Bir iletinin boş bir sıraya gelmesi için ne kadar bekleneceğini öğrenmek için bir değer girin. Hiçbir şey girilmişse, sıradaki ilk ileti alınır ve bir iletinin görünmesini beklerken zaman harcanması beklenmez. |
+   | **Aş** | Bir iletinin boş bir sıraya gelmesi için ne kadar bekleneceğini öğrenmek için bir değer girin. Hiçbir şey girilmişse, sıradaki ilk ileti alınır ve bir iletinin görünmesini beklerken zaman harcanması beklenmez. |
    |||
 
    Örneğin:

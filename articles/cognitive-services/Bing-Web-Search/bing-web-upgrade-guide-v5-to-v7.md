@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
 ms.openlocfilehash: 7ee8d05a542c6906d4ebe70f7e2a461752c6e3f3
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85609461"
 ---
 # <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>Bing Web Araması API'si v5 'ten v7 'ye yükseltme
@@ -39,7 +39,7 @@ Bu yükseltme Kılavuzu, sürüm 5 ve Bing Web Araması API'si sürüm 7 arasın
 
 - V5 hata kodları aşağıdaki olası `code` ve `subCode` değerlerle değiştirilmiştir.
 
-|Kod|Alt|Description
+|Kod|Alt|Açıklama
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Alt kod koşullarından herhangi biri gerçekleştiğinde Bing ServerError hatası döndürüyor. HTTP durum kodu 500 ise yanıt bu hataları içerir.
 |Invalidrequest|ParameterMissing<br/>Parameterınvalidvalue<br/>HttpNotAllowed<br/>Engellendi|İsteğin herhangi bir bölümü geçerli değilse Bing, ınvalidrequest döndürüyor. Örneğin, gerekli bir parametre eksik veya bir parametre değeri geçerli değil.<br/><br/>Hata ParameterMissing veya Parameterınvalidvalue ise, HTTP durum kodu 400 ' dir.<br/><br/>Hataya HttpNotAllowed varsa, HTTP durum kodu 410 ' dir.
@@ -73,7 +73,7 @@ Engellendi|Invalidrequest. engellendi
 
 ## <a name="non-breaking-changes"></a>Kırılamayan değişiklikler  
 
-### <a name="headers"></a>Üst Bilgiler
+### <a name="headers"></a>Üst bilgiler
 
 - İsteğe bağlı [pragma](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#pragma) istek üst bilgisi eklendi. Varsayılan olarak, Bing önbelleğe alınmış içeriği (varsa) döndürür. Bing'in önbelleğe alınmış içeriği döndürmesini önlemek için, Pragma üst bilgisini no-cache olarak ayarlayın (örneğin, Pragma: no-cache).
 

@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 08/25/2020
 ms.author: aahi
 ms.openlocfilehash: a0557c3ccf6510ab3ee2ae29cbef1fc754473345
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88933027"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Nasıl yapılır: Metin Analizi API'si kullanarak yaklaşımı algılama
@@ -90,7 +90,7 @@ Bir POST isteği oluşturun. Hızlı bir şekilde yapısına ve gönderebilmeniz
 
 ### <a name="request-endpoints"></a>İstek uç noktaları
 
-Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak yaklaşım ANALIZI için HTTPS uç noktasını ayarlayın. Kullanmak istediğiniz sürüm için doğru URL 'YI dahil etmeniz gerekir. Örnek:
+Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak yaklaşım ANALIZI için HTTPS uç noktasını ayarlayın. Kullanmak istediğiniz sürüm için doğru URL 'YI dahil etmeniz gerekir. Örneğin:
 
 > [!NOTE]
 > Azure portalında Metin Analizi kaynağınız için anahtarınızı ve uç noktanızı bulabilirsiniz. Kaynak **yönetimi**altında kaynağın **hızlı başlangıç** sayfasında yer alır. 
@@ -103,7 +103,7 @@ Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kaps
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/sentiment`
 
-Fikrinizi araştırma sonuçları almak için parametresini eklemeniz gerekir `opinionMining=true` . Örnek:
+Fikrinizi araştırma sonuçları almak için parametresini eklemeniz gerekir `opinionMining=true` . Örneğin:
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/sentiment?opinionMining=true`
 

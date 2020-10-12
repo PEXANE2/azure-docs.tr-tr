@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 09c4420647043fccc408631fec75854667923721
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74085284"
 ---
 Microsoft Azure bulut hizmeti ile ilgili sorunları tanılamak, sorunlar oluşması durumunda hizmetin günlük dosyalarının sanal makinelerde toplanmasını gerektirir. Bir veya daha fazla bulut hizmeti sanal makinelerinden (her iki web rolünden ve çalışan rolünden) tek seferlik bir günlük koleksiyonu gerçekleştirmek ve toplanan dosyaları bir sanal makineye uzaktan oturum açmadan bir Azure depolama hesabına aktarmak için AzureLogCollector uzantısını isteğe bağlı olarak kullanabilirsiniz.
 
 > [!NOTE]
-> Günlüğe kaydedilen bilgilerin çoğunun açıklamaları şurada bulunabilir:https://blogs.msdn.microsoft.com/kwill/2013/08/09/windows-azure-paas-compute-diagnostics-data/
+> Günlüğe kaydedilen bilgilerin çoğunun açıklamaları şurada bulunabilir: https://blogs.msdn.microsoft.com/kwill/2013/08/09/windows-azure-paas-compute-diagnostics-data/
 > 
 > 
 
@@ -36,7 +36,7 @@ Her iki koleksiyon modunda, aşağıdaki yapının bir koleksiyonu kullanılarak
 * **Searchmodel**: toplanacak dosyaların adlarının kalıbı. Varsayılan değer " \* "
 * **Özyinelemeli**: toplanacak dosyalar belirtilen konumun altına özyinelemeli olarak konumlandırıldı.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](./updated-for-az.md)]
 
@@ -139,7 +139,7 @@ AzureLogCollector 'i bir veya daha fazla bulut hizmeti örneğine veya seçili r
    $StorageAccountKey  = 'YourStorageAccountKey'
    ```
 
-5. Bir bulut hizmeti için AzureLogCollector uzantısını etkinleştirmek üzere aşağıdaki şekilde SetAzureServiceLogCollector.ps1 (makalenin sonuna dahildir) öğesini çağırın. Yürütme tamamlandıktan sonra karşıya yüklenen dosyayı şu şekilde bulabilirsiniz`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
+5. Bir bulut hizmeti için AzureLogCollector uzantısını etkinleştirmek üzere aşağıdaki şekilde SetAzureServiceLogCollector.ps1 (makalenin sonuna dahildir) öğesini çağırın. Yürütme tamamlandıktan sonra karşıya yüklenen dosyayı şu şekilde bulabilirsiniz `https://YourStorageAccountName.blob.core.windows.net/vmlogs`
 
    ```powershell
    .\SetAzureServiceLogCollector.ps1 -ServiceName YourCloudServiceName  -Roles $roles  -Instances $instances –Mode $mode -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -AdditionDataLocationList $AdditionalDataList
@@ -231,7 +231,7 @@ Azure PowerShell aboneliğinize bağlamak için yönergeleri izleyin.
    $StorageAccountKey  = 'YourStorageAccountKey'
    ```
 
-3. Bir bulut hizmeti için AzureLogCollector uzantısını etkinleştirmek üzere aşağıdaki şekilde SetAzureVMLogCollector.ps1 (makalenin sonuna dahildir) öğesini çağırın. Yürütme tamamlandıktan sonra karşıya yüklenen dosyayı şu şekilde bulabilirsiniz`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
+3. Bir bulut hizmeti için AzureLogCollector uzantısını etkinleştirmek üzere aşağıdaki şekilde SetAzureVMLogCollector.ps1 (makalenin sonuna dahildir) öğesini çağırın. Yürütme tamamlandıktan sonra karşıya yüklenen dosyayı şu şekilde bulabilirsiniz `https://YourStorageAccountName.blob.core.windows.net/vmlogs`
 
 Aşağıda, Betiğe geçirilen parametrelerin tanımı verilmiştir. (Bu, aşağıda de kopyalanır.)
 

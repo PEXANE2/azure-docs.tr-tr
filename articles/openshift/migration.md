@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/13/2020
 keywords: geçiş, Aro, OpenShift, Red Hat
 ms.openlocfilehash: 322c0cf5ece2a9c950e71b947e2aa6088a165cb8
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89469754"
 ---
 # <a name="migrate-from-azure-red-hat-openshift-311-to-azure-red-hat-openshift-4"></a>Azure Red Hat Openshıft 3,11 ' den Azure Red Hat OpenShift 4 ' e geçiş yapın
@@ -71,7 +71,7 @@ az aro create \
 
 ## <a name="configure-the-target-openshift-4-cluster"></a>Hedef OpenShift 4 kümesini yapılandırma
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 Kullanıcıların Azure Red Hat OpenShift ile etkileşime geçmesini sağlamak için öncelikle kümeye kimlik doğrulaması yapılmalıdır. Kimlik doğrulama katmanı, isteklerle ilişkili kullanıcıyı Azure Red Hat OpenShift API 'sine göre tanımlar. Yetkilendirme katmanı daha sonra isteğin izin verilip verilmeyeceğini belirlemede istekte bulunan kullanıcı hakkındaki bilgileri kullanır.
 

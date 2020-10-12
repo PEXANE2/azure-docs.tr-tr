@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: 9210c54305427c82d5666d68573fd3af41e8cef7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90972200"
 ---
 # <a name="create-and-manage-encryption-scopes-preview"></a>Şifreleme kapsamları oluşturma ve yönetme (Önizleme)
@@ -179,7 +179,7 @@ Azure depolama şifrelemesini bir anahtar kasasındaki müşteri tarafından yö
 
 Azure portal bir depolama hesabının şifreleme kapsamlarını görüntülemek için, depolama hesabı için **şifreleme kapsamları** ayarına gidin. Bu bölmeden, bir şifreleme kapsamını etkinleştirebilir veya devre dışı bırakabilir ya da bir şifreleme kapsamının anahtarını değiştirebilirsiniz.
 
-:::image type="content" source="media/encryption-scope-manage/list-encryption-scopes-portal.png" alt-text="Azure portal 'de şifreleme kapsamları listesini gösteren ekran görüntüsü":::
+:::image type="content" source="media/encryption-scope-manage/list-encryption-scopes-portal.png" alt-text="Azure portal 'de şifreleme kapsamı oluşturmayı gösteren ekran görüntüsü":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -223,7 +223,7 @@ Azure portal varsayılan şifreleme kapsamıyla bir kapsayıcı oluşturmak içi
 1. **Şifreleme kapsamı** açılır penceresinde kapsayıcının varsayılan şifreleme kapsamını seçin.
 1. Kapsayıcıdaki tüm Blobların varsayılan şifreleme kapsamını kullanmasını gerektirmek için, **Bu şifreleme kapsamını kapsayıcıdaki tüm Bloblar Için kullanmak**üzere onay kutusunu seçin. Bu onay kutusu işaretliyse, kapsayıcıdaki tek bir blob varsayılan şifreleme kapsamını geçersiz kılamaz.
 
-    :::image type="content" source="media/encryption-scope-manage/create-container-default-encryption-scope.png" alt-text="Varsayılan şifreleme kapsamıyla kapsayıcıyı gösteren ekran görüntüsü":::
+    :::image type="content" source="media/encryption-scope-manage/create-container-default-encryption-scope.png" alt-text="Azure portal 'de şifreleme kapsamı oluşturmayı gösteren ekran görüntüsü":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -277,7 +277,7 @@ Azure portal belirtilen bir şifreleme kapsamına sahip bir blobu karşıya yük
 1. **Şifreleme kapsamı** açılan bölümünü bulun. Varsayılan olarak, blob belirtilmişse kapsayıcı için varsayılan şifreleme kapsamıyla oluşturulur. Kapsayıcı, Blobların varsayılan şifreleme kapsamını kullanmasını gerektiriyorsa, bu bölüm devre dışıdır.
 1. Karşıya yüklediğiniz blob için farklı bir kapsam belirtmek üzere, **var olan bir kapsam**Seç ' i seçin ve ardından açılan listeden istediğiniz kapsamı seçin.
 
-    :::image type="content" source="media/encryption-scope-manage/upload-blob-encryption-scope.png" alt-text="Bir blob 'u şifreleme kapsamıyla karşıya yüklemeyi gösteren ekran görüntüsü":::
+    :::image type="content" source="media/encryption-scope-manage/upload-blob-encryption-scope.png" alt-text="Azure portal 'de şifreleme kapsamı oluşturmayı gösteren ekran görüntüsü":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

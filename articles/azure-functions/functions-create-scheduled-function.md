@@ -6,17 +6,17 @@ ms.topic: how-to
 ms.date: 04/16/2020
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 9e542c493c02174364072f91d092f05ad9ec69cf
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90973096"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Azure’da bir zamanlayıcı tarafından tetiklenen bir işlev oluşturma
 
 Azure Işlevleri 'ni kullanarak, tanımladığınız bir zamanlamaya göre çalışan [sunucusuz](https://azure.microsoft.com/solutions/serverless/) bir işlev oluşturma hakkında bilgi edinin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -36,15 +36,15 @@ Yeni işlev uygulamanız kullanıma hazırlanıyor. Ardından, yeni işlev uygul
 
 1. İşlev uygulamanızda **işlevler**' i seçin ve **+ Ekle** ' yi seçin. 
 
-   :::image type="content" source="./media/functions-create-scheduled-function/function-add-function.png" alt-text="Azure portal bir işlev ekleyin." border="true":::
+   :::image type="content" source="./media/functions-create-scheduled-function/function-add-function.png" alt-text="İşlev uygulaması başarıyla oluşturuldu." border="true":::
 
 1. **Zamanlayıcı tetikleyici** şablonunu seçin. 
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-select-timer-trigger.png" alt-text="Azure portal süreölçer tetikleyicisini seçin." border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-select-timer-trigger.png" alt-text="İşlev uygulaması başarıyla oluşturuldu." border="true":::
 
 1. Yeni tetikleyiciyi görüntünün altındaki tabloda belirtilen ayarlarla yapılandırın ve ardından **Işlev oluştur**' u seçin.
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-configure-timer-trigger.png" alt-text="Ekran görüntüsü, süreölçer tetikleyici şablonunun seçili olduğu yeni Işlev sayfasını gösterir." border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-configure-timer-trigger.png" alt-text="İşlev uygulaması başarıyla oluşturuldu." border="true":::
     
     | Ayar | Önerilen değer | Açıklama |
     |---|---|---|
@@ -55,11 +55,11 @@ Yeni işlev uygulamanız kullanıma hazırlanıyor. Ardından, yeni işlev uygul
 
 1. İşlevinizde **kod + test** ' i seçin ve Günlükler ' i genişletin.
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-test-timer-trigger.png" alt-text="Azure portal süreölçer tetikleyicisini test edin." border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-test-timer-trigger.png" alt-text="İşlev uygulaması başarıyla oluşturuldu." border="true":::
 
 1. Günlüklere yazılan bilgileri görüntüleyerek yürütmeyi doğrulayın.
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-view-timer-logs.png" alt-text="Azure portal süreölçer tetikleyicisini görüntüleyin." border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-view-timer-logs.png" alt-text="İşlev uygulaması başarıyla oluşturuldu." border="true":::
 
 Artık, işlevin zamanlamasını dakikada bir yerine saatte bir çalışacak şekilde değiştirebilirsiniz.
 
@@ -69,11 +69,11 @@ Artık, işlevin zamanlamasını dakikada bir yerine saatte bir çalışacak şe
 
 1. **Süreölçer (myTimer)** öğesini seçin.
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-update-timer-schedule.png" alt-text="Azure portal Zamanlayıcı zamanlamasını güncelleştirin." border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-update-timer-schedule.png" alt-text="İşlev uygulaması başarıyla oluşturuldu." border="true":::
 
 1. **Zamanlama** değerini olarak güncelleştirin `0 0 */1 * * *` ve ardından **Kaydet**' i seçin.  
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-edit-timer-schedule.png" alt-text="İşlevler Azure portalındaki zamanlayıcı zamanlamasını güncelleştirir." border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-edit-timer-schedule.png" alt-text="İşlev uygulaması başarıyla oluşturuldu." border="true":::
 
 Artık saatte bir kez çalışan işleviniz var.
 

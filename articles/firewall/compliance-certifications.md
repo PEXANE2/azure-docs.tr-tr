@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: b165741f9f7a4eb7af8424b9175aa5ec9261fbcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85602729"
 ---
 # <a name="azure-firewall-certifications"></a>Azure Güvenlik Duvarı sertifikaları
@@ -34,7 +34,7 @@ Aşağıdaki Azure Güvenlik Duvarı sertifikaları küresel Azure içindir:
 - CFTC 1,31
 - CSA STAR kanıtlama
 - CSA STAR sertifikası
-- CSA STAR kendini değerlendirme
+- CSA STAR Self-Assessment
 - Kanada Gizlilik Yasaları
 - DPP (UK)
 - AB ENıSA ıAF

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: victorh
 ms.openlocfilehash: 653e432ca445451fc9da7155137052b9916d0d92
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91311606"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Azure Application Gateway ve Web uygulaması güvenlik duvarını v1 'den v2 'ye geçirme
@@ -57,7 +57,7 @@ Yerel PowerShell ortamınız kuruluma ve tercihlerinize bağlı olarak sizin iç
 
 Azure az modules yüklü olup olmadığınızı öğrenmek için çalıştırın `Get-InstalledModule -Name az` . Yüklü az modül görmüyorsanız, `Install-Script` yöntemini kullanabilirsiniz.
 
-### <a name="install-using-the-install-script-method"></a>Install-Script metodunu kullanarak install
+### <a name="install-using-the-install-script-method"></a>Install-Script yöntemi kullanarak Install
 
 Bu seçeneği kullanmak için, bilgisayarınızda Azure az modules yüklü olmamalıdır. Yüklüyse, aşağıdaki komut bir hata görüntüler. Azure az modüller ' i kaldırabilir veya betiği el ile indirmek ve çalıştırmak için diğer seçeneği kullanabilirsiniz.
   

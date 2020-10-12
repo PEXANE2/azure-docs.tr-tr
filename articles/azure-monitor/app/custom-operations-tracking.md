@@ -6,10 +6,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 42a5318325f9961483465357403089755feb130d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88933316"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>.NET SDK Application Insights özel işlemleri izleme
@@ -214,7 +214,7 @@ Ayrıca, Application Insights işlem KIMLIĞINI depolama istek KIMLIĞIYLE iliş
 #### <a name="enqueue"></a>Alma
 Depolama kuyrukları HTTP API 'sini desteklediği için, kuyruğa sahip tüm işlemler Application Insights tarafından otomatik olarak izlenir. Çoğu durumda bu izleme yeterince olmalıdır. Ancak, müşteri tarafında bulunan izlemeleri üretici izlemelerle ilişkilendirmek için, bağıntı için HTTP protokolünde bunu yaptığımız şekilde bir bağıntı bağlamı geçirmeniz gerekir. 
 
-Bu örnek, işlemin nasıl izleneceğini gösterir `Enqueue` . Seçenekleriniz şunlardır:
+Bu örnek, işlemin nasıl izleneceğini gösterir `Enqueue` . Şunları yapabilirsiniz:
 
  - **Yeniden denemeler (varsa) bağıntılı**: hepsi, işlem olan bir ortak üst öğeye sahiptir `Enqueue` . Aksi takdirde, bunlar gelen isteğin alt öğesi olarak izlenir. Sıraya yönelik birden çok mantıksal istek varsa, hangi çağrının yeniden denenmesine neden olduğunu bulmak zor olabilir.
  - **Depolama günlüklerini ilişkilendirme (gerekiyorsa ve gerekirse)**: Bunlar Application Insights telemetri ile bağıntılı.

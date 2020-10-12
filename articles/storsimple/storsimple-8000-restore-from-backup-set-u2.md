@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
 ms.openlocfilehash: 8783d5ce5596cdb4678c09b79c09797ef62cc9c9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86527838"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Yedekleme kümesinden StorSimple birimini geri yükleme
@@ -59,9 +59,9 @@ Aşağıdaki uyarılar, heatmap tabanlı geri yüklemeler için geçerlidir:
 
 Güncelleştirme 4 ' te, Windows PowerShell cmdlet 'leri çalışan yeniden doldurma işlerini sorgulamak, bir yeniden doldurma işini iptal etmek ve yeniden doldurma işinin durumunu almak için kullanılabilir.
 
-* `Get-HcsRehydrationJob`-Bu cmdlet, yeniden doldurma işinin durumunu alır. Tek bir birim için tek bir yeniden doldurma işi tetiklenir.
+* `Get-HcsRehydrationJob` -Bu cmdlet, yeniden doldurma işinin durumunu alır. Tek bir birim için tek bir yeniden doldurma işi tetiklenir.
 
-* `Set-HcsRehydrationJob`-Bu cmdlet, yeniden doldurma işlemi devam ederken, yeniden doldurma işini duraklatmanızı, durdurmanızı, sürdürmenizi sağlar.
+* `Set-HcsRehydrationJob` -Bu cmdlet, yeniden doldurma işlemi devam ederken, yeniden doldurma işini duraklatmanızı, durdurmanızı, sürdürmenizi sağlar.
 
 Yeniden doldurma cmdlet 'leri hakkında daha fazla bilgi için, [StorSimple Için Windows PowerShell cmdlet başvurusuna](https://technet.microsoft.com/library/dn688168.aspx)bakın.
 

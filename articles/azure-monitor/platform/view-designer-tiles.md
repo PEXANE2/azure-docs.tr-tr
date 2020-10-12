@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/17/2018
 ms.openlocfilehash: 0320be3a2cfbb96367799577a6e56bcf5da87dcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77658515"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Azure Izleyici 'de tasarımcı kutucuklarını görüntülemek için başvuru kılavuzu
@@ -45,9 +45,9 @@ Sonraki bölümlerde, kutucuk türleri ve özellikleri ayrıntılı olarak açı
 
 | Ayar | Açıklama |
 |:--- |:--- |
-| Name |Kutucuğun en üstünde görüntülenen metin. |
+| Ad |Kutucuğun en üstünde görüntülenen metin. |
 | Açıklama |Kutucuk adının altında görüntülenen metin. |
-| **Kaldır** | |
+| **Kutucuk** | |
 | Gösterge |Değerin altında görüntülenen metin. |
 | Sorgu |Çalıştırılan sorgu. Sorgu tarafından döndürülen kayıtların sayısı görüntülenir. |
 | **Gelişmiş** |**> veri akışı doğrulaması** |
@@ -63,7 +63,7 @@ Bu kutucuk, iki farklı günlük sorgusunun kayıt sayısını ve her biri için
 
 | Ayar | Açıklama |
 |:--- |:--- |
-| Name |Kutucuğun en üstünde görüntülenen metin. |
+| Ad |Kutucuğun en üstünde görüntülenen metin. |
 | Açıklama |Kutucuk adının altında görüntülenen metin. |
 | **İlk kutucuk** | |
 | Gösterge |Değerin altında görüntülenen metin. |
@@ -84,13 +84,13 @@ Bu kutucuk, iki farklı günlük sorgusunun kayıt sayısını ve her biri için
 
 | Ayar | Açıklama |
 |:--- |:--- |
-| Name |Kutucuğun en üstünde görüntülenen metin. |
+| Ad |Kutucuğun en üstünde görüntülenen metin. |
 | Açıklama |Kutucuk adının altında görüntülenen metin. |
 | **Halka** | |
 | Sorgu |Halka için çalıştırılan sorgu. İlk özellik bir metin değeridir ve ikinci özellik sayısal bir değerdir. Bu sorgu, sonuçları özetlemek için normalde *Measure* anahtar sözcüğünü kullanır. |
 | **Halka** |**> Merkezi** |
 | Metin |Halka içindeki değer altında görüntülenen metin. |
-| Çalışma |Değer özelliğinde gerçekleştirilen ve tek bir değer olarak özetlemek için gerçekleştirilen işlem.<ul><li>Sum: özellik değerine sahip tüm kayıtların değerlerini ekleyin.</li><li>Yüzde: özellik değerine sahip kayıtlardan toplanan değerlerin yüzdesi, tüm kayıtların toplanan değerleriyle karşılaştırılır.</li></ul> |
+| İşlem |Değer özelliğinde gerçekleştirilen ve tek bir değer olarak özetlemek için gerçekleştirilen işlem.<ul><li>Sum: özellik değerine sahip tüm kayıtların değerlerini ekleyin.</li><li>Yüzde: özellik değerine sahip kayıtlardan toplanan değerlerin yüzdesi, tüm kayıtların toplanan değerleriyle karşılaştırılır.</li></ul> |
 | Merkez işleminde kullanılan sonuç değerleri |İsteğe bağlı olarak, bir veya daha fazla değer eklemek için artı işaretini (+) seçin. Sorgunun sonuçları, belirttiğiniz özellik değerleriyle kayıtlarla sınırlıdır. Hiçbir değer eklenmediyse, tüm kayıtlar sorguya dahil edilir. |
 | **Halka** |**> ek seçenekler** |
 | Renkler |Üç üst özelliklerden her biri için görüntülenen renk. Belirli özellik değerleri için alternatif renkler belirtmek üzere *Gelişmiş renk eşleme*kullanın. |
@@ -108,7 +108,7 @@ Bu kutucuk, zaman içinde günlük sorgusundan birden çok seriyi görüntüleye
 
 | Ayar | Açıklama |
 |:--- |:--- |
-| Name |Kutucuğun en üstünde görüntülenen metin. |
+| Ad |Kutucuğun en üstünde görüntülenen metin. |
 | Açıklama |Kutucuk adının altında görüntülenen metin. |
 | **Çizgi grafik** | |
 | Sorgu |Çizgi grafik için çalıştırılan sorgu. İlk özellik bir metin değeridir ve ikinci özellik sayısal bir değerdir. Bu sorgu, sonuçları özetlemek için normalde *Measure* anahtar sözcüğünü kullanır. Sorgu *Interval* anahtar sözcüğünü kullanıyorsa, x ekseni bu zaman aralığını kullanır. Sorgu *Interval* anahtar sözcüğünü kullanmıyorsa, x ekseni saatlik aralıkları kullanır. |
@@ -129,14 +129,14 @@ Bu kutucukta, zaman içinde bir günlük sorgusundan birden çok seri görüntü
 
 | Ayar | Açıklama |
 |:--- |:--- |
-| Name |Kutucuğun en üstünde görüntülenen metin. |
+| Ad |Kutucuğun en üstünde görüntülenen metin. |
 | Açıklama |Kutucuk adının altında görüntülenen metin. |
 | **Çizgi grafik** | |
 | Sorgu |Çizgi grafik için çalıştırılan sorgu. İlk özellik bir metin değeridir ve ikinci özellik sayısal bir değerdir. Bu sorgu, sonuçları özetlemek için normalde *Measure* anahtar sözcüğünü kullanır. Sorgu *Interval* anahtar sözcüğünü kullanıyorsa, x ekseni bu zaman aralığını kullanır. Sorgu *Interval* anahtar sözcüğünü kullanmıyorsa, x ekseni saatlik aralıkları kullanır. |
 | **Çizgi grafik** |**> belirtme çizgisi** |
 | Belirtme çizgisi başlığı | Belirtme çizgisi değerinin üstünde görüntülenen metin. |
 | Seri adı |Belirtme çizgisi değeri olarak kullanılacak seri özelliği değeri. Hiçbir seri sağlanmazsa, sorgudaki tüm kayıtlar kullanılır. |
-| Çalışma |Değer özelliğinde gerçekleştirilen işlem, belirtme çizgisi için tek bir değer olarak özetleme.<ul><li>Average: tüm kayıtlardaki değerlerin ortalaması.</li><li>Sayı: sorgu tarafından döndürülen tüm kayıtların sayısı.</li><li>Son örnek: grafiğe dahil edilen son aralığın değeri.</li><li>Max: grafiğe dahil edilen aralıkların en büyük değeri.</li><li>Min: grafiğe dahil edilen aralıkların minimum değeri.</li><li>Sum: tüm kayıtlardaki değerlerin toplamı.</li></ul> |
+| İşlem |Değer özelliğinde gerçekleştirilen işlem, belirtme çizgisi için tek bir değer olarak özetleme.<ul><li>Average: tüm kayıtlardaki değerlerin ortalaması.</li><li>Sayı: sorgu tarafından döndürülen tüm kayıtların sayısı.</li><li>Son örnek: grafiğe dahil edilen son aralığın değeri.</li><li>Max: grafiğe dahil edilen aralıkların en büyük değeri.</li><li>Min: grafiğe dahil edilen aralıkların minimum değeri.</li><li>Sum: tüm kayıtlardaki değerlerin toplamı.</li></ul> |
 | **Çizgi grafik** |**> Y ekseni** |
 | Logaritmik ölçek kullan |Y ekseni için Logaritmik ölçek kullanmak üzere bu bağlantıyı seçin. |
 | Birimler |Sorgu tarafından döndürülecek değerler için birimleri belirtin. Bu bilgiler, değer türlerini belirten ve isteğe bağlı olarak değerleri dönüştürmek için grafik etiketlerini göstermek için kullanılır. *Birim* türü birimin kategorisini belirtir ve kullanılabilir *geçerli birim* türü değerlerini tanımlar. *Dönüştür*' de bir değer seçerseniz, sayısal değerler *geçerli birim* türünden *dönüştürme* türüne dönüştürülür. |
@@ -154,18 +154,18 @@ Bu kutucukta, zaman içinde bir günlük sorgusundan birden çok seri görüntü
 
 | Ayar | Açıklama |
 |:--- |:--- |
-| Name |Kutucuğun en üstünde görüntülenen metin. |
+| Ad |Kutucuğun en üstünde görüntülenen metin. |
 | Açıklama |Kutucuk adının altında görüntülenen metin. |
 | İlk grafik | |
 | Gösterge |İlk serinin belirtme çizgisinin altında görüntülenen metin. |
-| Renk |İlk serideki sütunlar için kullanılan renk. |
+| Color |İlk serideki sütunlar için kullanılan renk. |
 | Grafik sorgusu |İlk seri için çalıştırılan sorgu. Her zaman aralığı içindeki kayıtların sayısı grafik sütunları tarafından temsil edilir. |
-| Çalışma |Değer özelliğinde gerçekleştirilen işlem, belirtme çizgisi için tek bir değer olarak özetleme.<ul><li>Average: tüm kayıtlardaki değerlerin ortalaması.</li><li>Sayı: sorgu tarafından döndürülen tüm kayıtların sayısı.</li><li>Son örnek: grafiğe dahil edilen son aralığın değeri.</li><li>Max: grafiğe dahil edilen aralıkların en büyük değeri.</li></ul> |
+| İşlem |Değer özelliğinde gerçekleştirilen işlem, belirtme çizgisi için tek bir değer olarak özetleme.<ul><li>Average: tüm kayıtlardaki değerlerin ortalaması.</li><li>Sayı: sorgu tarafından döndürülen tüm kayıtların sayısı.</li><li>Son örnek: grafiğe dahil edilen son aralığın değeri.</li><li>Max: grafiğe dahil edilen aralıkların en büyük değeri.</li></ul> |
 | **İkinci grafik** | |
 | Gösterge |İkinci serinin belirtme çizgisinin altında görüntülenen metin. |
-| Renk |İkinci serideki sütunlar için kullanılan renk. |
+| Color |İkinci serideki sütunlar için kullanılan renk. |
 | Grafik sorgusu |İkinci seri için çalıştırılan sorgu. Her zaman aralığı içindeki kayıtların sayısı grafik sütunları tarafından temsil edilir. |
-| Çalışma |Değer özelliğinde gerçekleştirilen işlem, belirtme çizgisi için tek bir değer olarak özetleme.<ul><li>Average: tüm kayıtlardaki değerlerin ortalaması.</li><li>Sayı: sorgu tarafından döndürülen tüm kayıtların sayısı.</li><li>Son örnek: grafiğe dahil edilen son aralığın değeri.</li><li>Max: grafiğe dahil edilen aralıkların en büyük değeri. |
+| İşlem |Değer özelliğinde gerçekleştirilen işlem, belirtme çizgisi için tek bir değer olarak özetleme.<ul><li>Average: tüm kayıtlardaki değerlerin ortalaması.</li><li>Sayı: sorgu tarafından döndürülen tüm kayıtların sayısı.</li><li>Son örnek: grafiğe dahil edilen son aralığın değeri.</li><li>Max: grafiğe dahil edilen aralıkların en büyük değeri. |
 | **Gelişmiş** |**> veri akışı doğrulaması** |
 | Etkin |Kutucuk için veri akışı doğrulamasının etkinleştirilmesi gerekiyorsa bu bağlantıyı seçin. Bu yaklaşım, veriler kullanılamıyorsa alternatif bir ileti sağlar. Genellikle, görünümün yüklendiği ve verilerin kullanılabilir hale geldiği geçici süre boyunca bir ileti sağlamak için yaklaşımı kullanırsınız. |
 | Sorgu |Verilerin görünüm için kullanılabilir olup olmadığını tespit etmek için çalıştırılan sorgu. Sorgu hiçbir sonuç döndürürse, ana sorgunun değerinin yerine bir ileti görüntülenir. |

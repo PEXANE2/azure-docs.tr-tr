@@ -14,10 +14,10 @@ ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 46b3a782d93a55ed7f6eee6c76886f27c2652572
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89469652"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure sanal ağlarındaki kaynaklar için ad çözümlemesi
@@ -47,8 +47,8 @@ Kullandığınız ad çözümlemesi türü, kaynaklarınızın birbirleriyle nas
 | Bir sanal ağdaki App Service Web Apps farklı bir sanal ağdaki VM 'lere ad çözümleme. |Müşteri tarafından yönetilen DNS sunucuları, Azure tarafından çözümlenmek üzere sanal ağlar arasında sorguları ileten (DNS proxy). Bkz. [kendı DNS sunucunuzu kullanarak ad çözümlemesi](#name-resolution-that-uses-your-own-dns-server). |Yalnızca FQDN |
 | Şirket içi bilgisayar ve hizmet adları, VM 'lerden veya Azure 'daki rol örneklerinden çözümlenmektedir. |Müşteri tarafından yönetilen DNS sunucuları (Şirket içi etki alanı denetleyicisi, yerel salt okuma etki alanı denetleyicisi veya bölge aktarımları kullanılarak eşitlenmiş bir DNS ikincil sunucu). Bkz. [kendı DNS sunucunuzu kullanarak ad çözümlemesi](#name-resolution-that-uses-your-own-dns-server). |Yalnızca FQDN |
 | Şirket içi bilgisayarlardan Azure ana bilgisayar adları çözümlemesi. |Sorguları karşılık gelen sanal ağdaki müşteri tarafından yönetilen bir DNS proxy sunucusuna ilet, proxy sunucusu sorguları çözümlenmek üzere Azure 'a iletir. Bkz. [kendı DNS sunucunuzu kullanarak ad çözümlemesi](#name-resolution-that-uses-your-own-dns-server). |Yalnızca FQDN |
-| İç IP 'Ler için ters DNS. |[Kendı DNS sunucunuzu kullanarak](#name-resolution-that-uses-your-own-dns-server) [özel bölgeler](../dns/private-dns-overview.md) veya [Azure tarafından sağlanmış ad çözümlemesi](#azure-provided-name-resolution) veya ad çözümlemesi Azure DNS. |Geçerli değil |
-| Sanal bir ağda değil, farklı bulut hizmetlerinde bulunan VM 'Ler veya rol örnekleri arasında ad çözümlemesi. |Geçerli değildir. Farklı bulut hizmetlerindeki VM 'Ler ve rol örnekleri arasında bağlantı, sanal ağ dışında desteklenmez. |Geçerli değil|
+| İç IP 'Ler için ters DNS. |[Kendı DNS sunucunuzu kullanarak](#name-resolution-that-uses-your-own-dns-server) [özel bölgeler](../dns/private-dns-overview.md) veya [Azure tarafından sağlanmış ad çözümlemesi](#azure-provided-name-resolution) veya ad çözümlemesi Azure DNS. |Uygulanamaz |
+| Sanal bir ağda değil, farklı bulut hizmetlerinde bulunan VM 'Ler veya rol örnekleri arasında ad çözümlemesi. |Geçerli değildir. Farklı bulut hizmetlerindeki VM 'Ler ve rol örnekleri arasında bağlantı, sanal ağ dışında desteklenmez. |Uygulanamaz|
 
 ## <a name="azure-provided-name-resolution"></a>Azure tarafından sağlanmış ad çözümlemesi
 

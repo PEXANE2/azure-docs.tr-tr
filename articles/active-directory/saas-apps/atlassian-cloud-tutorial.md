@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
 ms.openlocfilehash: b342731b953f7b68f8fcd9e55c49c907e5e8cc5d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90973504"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>Öğretici: Atlasduyi bulutunu Azure Active Directory tümleştirin
@@ -114,7 +114,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
    ![Azure 'da SAML](./media/atlassian-cloud-tutorial/saml-in-azure.png)
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **Atlasıı bulutu 'nı ayarlamak** için aşağı kaydırın
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, **Atlasıı bulutu 'nı ayarlamak** için aşağı kaydırın
    
    a. **Yapılandırma URL 'lerine** tıklayın
 
@@ -128,7 +128,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
    ![varlık kimliği ve SS](./media/atlassian-cloud-tutorial/entity-id-and-ss.png)
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML Ile tekli Sign-On ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
    ![imza sertifikası](./media/atlassian-cloud-tutorial/certificate.png)
 
@@ -136,7 +136,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Atlasbir 'da SAML yapılandırması **ekleme/kaydetme**
 
-1. Uygulamayı **IDP** tarafından başlatılan modda yapılandırmak Istiyorsanız, Azure 'daki **SAML Ile çoklu oturum açmayı ayarlama** sayfasındaki **temel SAML yapılandırması** bölümünü düzenleyin ve atlasıı yönetici portalında **SAML çoklu oturum açma sayfasını** açın
+1. Uygulamayı **IDP** tarafından başlatılan modda yapılandırmak Istiyorsanız, Azure 'daki **tek Sign-On SAML Ile ayarlama** sayfasında **temel SAML yapılandırması** bölümünü düzenleyin ve atlastıı yönetici portalında **SAML çoklu oturum açma sayfasını** açın
 
    a. Atlasbir 'dan **SP VARLıK kimliği** değerini kopyalayın, Azure 'daki **tanımlayıcı (varlık kimliği)** kutusuna yapıştırın ve varsayılan olarak ayarlayın
    
@@ -150,7 +150,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
    ![URL 'ler görüntüsü](./media/atlassian-cloud-tutorial/urls.png)
    
-1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız, Azure 'da **SAML Ile çoklu oturum açma ayarlama** sayfasındaki **temel SAML yapılandırması** bölümünü düzenleyin. **Örnek URL** 'nizi (1. adımdan) kopyalayın ve Azure 'Da **oturum açma URL 'si** kutusuna yapıştırın
+1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız, Azure 'da **SAML Ile tek Sign-On ayarlama** sayfasındaki **temel SAML yapılandırması** bölümünü düzenleyin. **Örnek URL** 'nizi (1. adımdan) kopyalayın ve Azure 'Da **oturum açma URL 'si** kutusuna yapıştırın
 
    ![URL 'lerdeki Düzenle düğmesi](./media/atlassian-cloud-tutorial/edit-button.png)
 

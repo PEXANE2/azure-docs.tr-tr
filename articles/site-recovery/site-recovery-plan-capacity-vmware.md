@@ -8,10 +8,10 @@ ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: a74d9347d0050a2970e698ae616eb09fe32bdc5b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86135445"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Azure 'da VMware olağanüstü durum kurtarma için kapasiteyi ve ölçeklendirmeyi planlayın
@@ -79,8 +79,8 @@ Sunucularınızı ölçeklendirmeniz, genişleme veya genişleme modeli için te
 
 * **Bant genişliğini kısıtlama**: Azure 'a çoğaltılan VMware trafiği belirli bir işlem sunucusundan geçer. İşlem sunucusu olarak çalışan makinelerde bant genişliğini azaltmayı seçebilirsiniz.
 * **Etki genişliğini etkiler**: birkaç kayıt defteri anahtarını kullanarak, çoğaltma için kullanılan bant genişliğini etkileyebilirsiniz:
-  * **HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM** kayıt defteri değeri, bir diskin veri aktarımı (başlangıç veya değişim çoğaltması) için kullanılan iş parçacıklarının sayısını belirtir. Daha yüksek bir değer, çoğaltma için kullanılan ağ bant genişliğini artırır.
-  * **HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows Azure Backup\Replication\DownloadThreadsPerVM** kayıt defteri değeri, yeniden çalışma sırasında veri aktarımı için kullanılan iş parçacıklarının sayısını belirtir.
+  * **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM** kayıt defteri değeri, bir diskin veri aktarımı (başlangıç veya değişim çoğaltması) için kullanılan iş parçacıklarının sayısını belirtir. Daha yüksek bir değer, çoğaltma için kullanılan ağ bant genişliğini artırır.
+  * **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\DownloadThreadsPerVM** kayıt defteri değeri, yeniden çalışma sırasında veri aktarımı için kullanılan iş parçacıklarının sayısını belirtir.
 
 ### <a name="throttle-bandwidth"></a>Bant genişliğini kısıtlama
 
@@ -92,7 +92,7 @@ Sunucularınızı ölçeklendirmeniz, genişleme veya genişleme modeli için te
 
     ![Azure Backup özellikleri iletişim kutusunun ekran görüntüsü](./media/site-recovery-vmware-to-azure/throttle2.png)
 
-Ayrıca, azaltma ayarı için [Set-OBMachineSetting](/previous-versions/windows/powershell-scripting/hh770409(v=wps.640)) cmdlet'ini de kullanabilirsiniz. İşte bir örnek:
+Ayrıca, azaltma ayarı için [Set-OBMachineSetting](/previous-versions/windows/powershell-scripting/hh770409(v=wps.640)) cmdlet'ini de kullanabilirsiniz. Aşağıda bir örnek verilmiştir:
 
 ```azurepowershell-interactive
 $mon = [System.DayOfWeek]::Monday
@@ -104,7 +104,7 @@ Set-OBMachineSetting -WorkDay $mon, $tue -StartWorkHour "9:00:00" -EndWorkHour "
 
 ### <a name="alter-the-network-bandwidth-for-a-vm"></a>VM için ağ bant genişliğini değiştirme
 
-1. VM kayıt defterinde **HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows Azure backup\replication hedefine gidin**' a gidin.
+1. VM kayıt defterinde **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication**' a gidin.
    * Çoğaltılan bir diskteki bant genişliği trafiğini değiştirmek için, **UploadThreadsPerVM**değerini değiştirin. Mevcut değilse anahtarı oluşturun.
    * Azure 'dan yeniden çalışma trafiği için bant genişliğini değiştirmek üzere **DownloadThreadsPerVM**değerini değiştirin.
 2. Her anahtar için varsayılan değer **4**' dir. "Fazla sağlanan" bir ağda, bu kayıt defteri anahtarlarının varsayılan değerlerinin değiştirilmesi gerekir. Kullanabileceğiniz en büyük değer **32**' dir. Değeri iyileştirmek için trafiği izleyin.
@@ -163,7 +163,7 @@ Windows tabanlı bir sanal makine için ana hedef sunucu eklemek için:
 7. Yapılandırma sunucusunun IP adresini girin ve parolayı girin. Bir parola oluşturmayı öğrenmek için bkz. [yapılandırma sunucusu parolası oluşturma](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase). 
 
     ![Yapılandırma sunucusu için IP adresinin ve parolanın nereye girdiğinin gösterildiği ekran görüntüsü](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
-8. **Kaydol**’u seçin. Kayıt tamamlandığında **son**' u seçin.
+8. **Kaydet**’i seçin. Kayıt tamamlandığında **son**' u seçin.
 
 Kayıt başarıyla tamamlandığında, sunucu, yapılandırma sunucusunun ana hedef sunucularında, **Kurtarma Hizmetleri kasasındaki**Azure Portal  >  **Site Recovery altyapı**  >  **yapılandırma sunucularında**listelenir.
 

@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
 ms.openlocfilehash: c192ba73da0cfaf1832b6a1e572bd71b250a976b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74168373"
 ---
 # <a name="add-an-email-action"></a>E-posta eylemi ekleme
@@ -49,7 +49,7 @@ Mevcut bir kurala e-posta eylemi eklemek için aşağıdaki adımları izleyin:
 
 1. **Kural durumunun** **etkin**olarak ayarlandığından emin olun.
 
-1. **Uygula**'ya tıklayın.
+1. **Uygula**’ya tıklayın.
 
 ## <a name="create-a-new-rule"></a>Yeni kural oluşturma
 
@@ -77,11 +77,11 @@ Yeni bir kural oluştururken e-posta eylemi eklemek için aşağıdaki adımlar�
 
 1. **Kural durumunun** **etkin**olarak ayarlandığından emin olun.
 
-1. **Uygula**'ya tıklayın.
+1. **Uygula**’ya tıklayın.
 
 Bir e-posta eylemiyle ilgili kuralınız artık etkinleştirilmiştir. Eylemin her tetiklenişinde alıcılara yeni bir e-posta gönderilir.
 
-## <a name="sign-in-to-outlook"></a>Outlook 'ta oturum açın<a name="outlook"></a>
+## <a name="sign-in-to-outlook"></a>Outlook 'ta oturum açın <a name="outlook"></a>
 
 Çözüm hızlandırıcısında bir e-posta eylemini ilk kez etkinleştirdiğinizde, Outlook oturumu açmanız gerekir. Bu eylem, e-posta bildirimlerini gönderen e-posta hesabını ayarlar.
 
@@ -96,7 +96,7 @@ Başlamadan önce çözüm hızlandırıcıınızdan e-posta bildirimleri gönde
 
 Aşağıdaki adımlarda, e-posta eylemlerini el ile ayarlama ve doğrulama işlemleri gösterilmektedir:
 
-1. [Azure portalına](https://portal.azure.com) gidin.
+1. [Azure Portal](https://portal.azure.com)gidin.
 
 1. Çözüm Hızlandırıcılarınızın kaynak grubuna gidin.
 
@@ -138,7 +138,7 @@ Aşağıdaki adımlar, oturum açmak ve e-posta eylemlerini ayarlamak için size
 
    ![Outlook oturumu başarıyla açıldı](./media/iot-accelerators-remote-monitoring-email-actions/success-email.png)
 
-## <a name="customize-the-email-html"></a>E-posta HTML 'sini özelleştirme<a name="htmledit"></a>
+## <a name="customize-the-email-html"></a>E-posta HTML 'sini özelleştirme <a name="htmledit"></a>
 
 Hazır olmayan, uzaktan Izleme çözümü hızlandırıcısı, eylem e-postaları için temel bir HTML şablonu sağlar. E-posta şablonu, e-posta eylemi ayarlarından değerleri kullanır. Örnek bir e-posta aşağıda verilmiştir:
 
@@ -156,9 +156,9 @@ Aşağıdaki adımlarda, HTML e-posta şablonunun nasıl düzenleneceği göster
 
 1. İletiyi özelleştirmek için bu şablondaki parametreleri ekleyebilir veya kaldırabilirsiniz. Ayrıca, gerektiğinde çağrılar ekleyebilir, kaldırabilir veya değiştirebilirsiniz:
 
-    Örneğin, .NET kodunda:`emailTemplate = emailTemplate.Replace("${subject}", emailAction.GetSubject());`
+    Örneğin, .NET kodunda:  `emailTemplate = emailTemplate.Replace("${subject}", emailAction.GetSubject());`
 
-    Örneğin, Java kodunda:`this.emailTemplate.replace("${subject}", emailAction.GetSubject());`
+    Örneğin, Java kodunda:  `this.emailTemplate.replace("${subject}", emailAction.GetSubject());`
 
 1. Şablondaki parametreler biçimini alır `${...}` . Bir parametreyi silmek için gerekli satırı silin. Bir parametre eklemek için, eklenecek değere sahip bir satır ekleyin.
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
 ms.openlocfilehash: b4d6b20e63c42616aad0f8776fae159a0f2aa455
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87088385"
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>Azure sanal ağları için ortak PowerShell komutları
@@ -29,7 +29,7 @@ Bazı değişkenler, bu makaledeki komutlardan birden fazlasını çalıştırı
 
 | Görev | Komut |
 | ---- | ------- |
-| Alt ağ yapılandırmaları oluşturma |$subnet 1 = [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) -Name "mySubnet1"-Addresspredüzeltmesini xx. X. X. X/XX<BR>$subnet 2 = New-AzVirtualNetworkSubnetConfig-Name "mySubnet2"-Addresspredüzeltmesini XX. X. X. X/XX<BR><BR>Tipik bir ağ, [İnternet 'e yönelik yük dengeleyici](../../load-balancer/load-balancer-overview.md) için bir alt ağa ve bir [iç yük dengeleyici](../../load-balancer/load-balancer-overview.md)için ayrı bir alt ağa sahip olabilir. |
+| Alt ağ yapılandırmaları oluşturma |$subnet 1 = [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) -Name "mySubnet1"-Addresspredüzeltmesini xx. X. X. X/XX<BR>$subnet 2 = New-AzVirtualNetworkSubnetConfig-adı "mySubnet2"-Addresspredüzeltmesini XX. X. X. X/XX<BR><BR>Tipik bir ağ, [İnternet 'e yönelik yük dengeleyici](../../load-balancer/load-balancer-overview.md) için bir alt ağa ve bir [iç yük dengeleyici](../../load-balancer/load-balancer-overview.md)için ayrı bir alt ağa sahip olabilir. |
 | Sanal ağ oluşturma |$vnet = [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) -Name "myvnet"-resourcegroupname $MyResourceGroup-Location $Location-Addresspredüzeltmesini xx. X. X. X/XX-subnet $subnet 1, $subnet 2 |
 | Benzersiz bir etki alanı adı için test |[Test-AzDnsAvailability](/powershell/module/az.network/test-azdnsavailability) -domainnamelabel "mydns"-Location $Location<BR><BR>[Genel IP kaynağı](../../virtual-network/public-ip-addresses.md)IÇIN bir DNS etki alanı adı belirtebilirsiniz ve bu, DomainName.Location.cloudapp.Azure.com için Azure tarafından yönetilen DNS SUNUCULARıNDAKI genel IP adresine bir eşleme oluşturur. Ad yalnızca küçük harf, sayı ve kısa çizgi içerebilir. İlk ve son karakter bir harf veya sayı olmalıdır ve etki alanı adı, Azure konumu içinde benzersiz olmalıdır. **Değer** döndürülürse, önerilen adınız genel olarak benzersizdir. |
 | Genel IP adresi oluşturma |$pip = [New-Azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress) -Name "Mypublicıp"-resourcegroupname $MyResourceGroup-DomainNameLabel "mydns"-Location $Location-Allocationmethod Dynamic<BR><BR>Genel IP adresi, daha önce test ettiğiniz ve yük dengeleyicinin ön uç yapılandırması tarafından kullanılan etki alanı adını kullanır. |
@@ -46,13 +46,13 @@ Bazı değişkenler, bu makaledeki komutlardan birden fazlasını çalıştırı
 | Görev | Komut |
 | ---- | ------- |
 | Sanal ağları listeleme |[Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) -resourcegroupname $myResourceGroup<BR><BR>Kaynak grubundaki tüm sanal ağları listeler. |
-| Bir sanal ağ hakkında bilgi alın |Get-AzVirtualNetwork-Name "myVNet"-ResourceGroupName $myResourceGroup |
-| Bir sanal ağdaki alt ağları listeleme |Get-AzVirtualNetwork-Name "myVNet"-ResourceGroupName $myResourceGroup &#124; alt ağları seçin |
+| Bir sanal ağ hakkında bilgi alın |Get-AzVirtualNetwork-adı "myVNet"-ResourceGroupName $myResourceGroup |
+| Bir sanal ağdaki alt ağları listeleme |Get-AzVirtualNetwork-adı "myVNet"-ResourceGroupName $myResourceGroup &#124; alt ağları seçin |
 | Bir alt ağ hakkında bilgi alın |[Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) -adı "mySubnet1"-VirtualNetwork $VNET<BR><BR>Belirtilen sanal ağdaki alt ağ hakkında bilgi alır. $Vnet değeri, Get-AzVirtualNetwork tarafından döndürülen nesneyi temsil eder. |
 | IP adreslerini Listele |[Get-Azpublicıpaddress](/powershell/module/az.network/get-azpublicipaddress) -resourcegroupname $myResourceGroup<BR><BR>Kaynak grubundaki genel IP adreslerini listeler. |
 | Yük dengeleyicileri listeleme |[Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer) -resourcegroupname $myResourceGroup<BR><BR>Kaynak grubundaki tüm yük dengeleyicileri listeler. |
 | Ağ arabirimlerini listeleme |[Get-Aznetworkınterface](/powershell/module/az.network/get-aznetworkinterface) -resourcegroupname $myResourceGroup<BR><BR>Kaynak grubundaki tüm ağ arabirimlerini listeler. |
-| Ağ arabirimi hakkında bilgi alın |Get-Aznetworkınterface-adı "MYNIC"-ResourceGroupName $myResourceGroup<BR><BR>Belirli bir ağ arabirimi hakkında bilgi alır. |
+| Ağ arabirimi hakkında bilgi alın |Get-AzNetworkInterface-adı "MYNIC"-ResourceGroupName $myResourceGroup<BR><BR>Belirli bir ağ arabirimi hakkında bilgi alır. |
 | Bir ağ arabiriminin IP yapılandırmasını al |[Get-Aznetworkınterfaceipconfig](/powershell/module/az.network/get-aznetworkinterfaceipconfig) -Name "Mynicıp"-networkınterface $Nic<BR><BR>Belirtilen ağ arabiriminin IP yapılandırması hakkında bilgi alır. $Nic değeri, Get-Aznetworkınterface tarafından döndürülen nesneyi temsil eder. |
 
 ## <a name="manage-network-resources"></a>Ağ kaynaklarını yönetme

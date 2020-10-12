@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 07/30/2019
 ms.author: erhopf
 ms.openlocfilehash: ffefde7d692950fc272ab2502ad8afe254bf48f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73591513"
 ---
 Aşağıdaki sınırlar, Azure aboneliği başına bilişsel hizmet kaynakları sayısıdır. Bilişsel hizmetlerin her biri ek sınırlamalara sahip olabilir. daha fazla bilgi için bkz. Azure bilişsel [Hizmetler](https://docs.microsoft.com/azure/cognitive-services/).

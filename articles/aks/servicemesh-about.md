@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: eca49a3fac1ea0398ebe1d05bde20fbca3c81232
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77594320"
 ---
 # <a name="about-service-meshes"></a>Hizmet kafesleri hakkında
@@ -56,7 +56,7 @@ Hizmet kafeslerinin her biri doğal olarak bir sığdırmaya sahiptir ve belirli
 - **Güçlü kimlik** – spiffe veya benzeri
 - **Kimlik doğrulaması – kimlik** doğrulama, yetkilendirme
 
-### <a name="observability"></a>Observability
+### <a name="observability"></a>Gözlemlenebilirlik
 
 - **Ölçümler** : altın ölçümler, Prometheus, grafana
 - **İzleme** -iş yükleri genelinde izlemeler

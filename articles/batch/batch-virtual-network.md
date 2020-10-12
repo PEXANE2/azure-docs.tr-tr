@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: seodec18
 ms.openlocfilehash: cb5cda16cd9405f0cbe91a3f88be7dc3f582d21b
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86142764"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Sanal ağda Azure Batch havuzu oluşturma
@@ -25,7 +25,7 @@ Bir havuzdaki işlem düğümleri, farklı bir VNet gerekmeden, çok örnekli g�
 
 - **Kimlik doğrulaması**. Azure sanal ağı kullanmak için Batch istemci API'sinin Azure Active Directory (AD) kimlik doğrulamasını kullanması gerekir. Azure AD için Azure Batch desteği, [Batch hizmeti çözümlerinin kimliğini Active Directory ile doğrulama](batch-aad-auth.md) makalesinde belirtilmiştir.
 
-- **Bir Azure sanal ağı**. VNet gereksinimleri ve yapılandırması için aşağıdaki bölüme bakın. Bir sanal ağı bir veya daha fazla alt ağ ile önceden hazırlamak için Azure portal, Azure PowerShell, Azure komut satırı arabirimi (CLı) veya diğer yöntemleri kullanabilirsiniz.
+- **Bir Azure sanal ağı**. VNet gereksinimleri ve yapılandırması için aşağıdaki bölüme bakın. Bir sanal ağı bir veya daha fazla alt ağ ile önceden hazırlamak için Azure portal, Azure PowerShell, Azure Command-Line arabirimi (CLı) veya diğer yöntemleri kullanabilirsiniz.
   - Azure Resource Manager tabanlı VNet oluşturmak için, bkz. [sanal ağ oluşturma](../virtual-network/manage-virtual-network.md#create-a-virtual-network). Yeni dağıtımlar için Kaynak Yöneticisi tabanlı VNet önerilir ve yalnızca sanal makine yapılandırması kullanan havuzlarda desteklenir.
   - Klasik VNet oluşturmak için, bkz. [birden çok alt ağ ile sanal ağ (klasik) oluşturma](/previous-versions/azure/virtual-network/create-virtual-network-classic). Klasik VNet yalnızca Cloud Services yapılandırma kullanan havuzlarda desteklenir.
 

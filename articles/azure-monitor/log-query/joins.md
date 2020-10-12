@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: 2dace6968fbbe69f806c27fb7a46e60c63f78b4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77670211"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularındaki birleşimler
@@ -39,7 +39,7 @@ SecurityEvent
 
 Bu örnekte, ilk veri kümesi tüm oturum açma olaylarına filtre uygular. Bu, tüm oturum kapatma olaylarını filtreleyen ikinci bir veri kümesiyle birleştirilir. Tasarlanan sütunlar _bilgisayar_, _Hesap_, _Targetlogonıd_ve _TimeGenerated_' dir. Veri kümeleri, bir paylaşılan sütunla bağıntılı, _Targetlogonıd_. Çıktı, bağıntı başına, oturum açma ve oturum kapatma zamanına sahip tek bir kayıttır.
 
-Her iki DataSet 'in de aynı ada sahip sütunları varsa, sağ taraftaki veri kümesinin sütunlarına bir dizin numarası verilir. bu nedenle, sonuçlar, sol taraftaki tablodaki değerlerle _Targetlogonıd_ ve sağ taraftaki tablodaki değerlerle _TargetLogonId1_ gösterir. Bu durumda, ikinci _TargetLogonId1_ sütunu işleci kullanılarak kaldırılmıştır `project-away` .
+Her iki DataSet 'in de aynı ada sahip sütunları varsa, sağ taraftaki veri kümesinin sütunlarına bir dizin numarası verilir. bu nedenle, sonuçlar, sol taraftaki tablodaki değerlerle _Targetlogonıd_ ve sağ taraftaki tablodaki değerlerle _TargetLogonId1_  gösterir. Bu durumda, ikinci _TargetLogonId1_ sütunu işleci kullanılarak kaldırılmıştır `project-away` .
 
 > [!NOTE]
 > Performansı artırmak için, işlecini kullanarak yalnızca birleştirilmiş veri kümelerinin ilgili sütunlarını saklayın `project` .

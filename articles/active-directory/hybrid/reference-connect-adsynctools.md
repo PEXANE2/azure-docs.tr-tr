@@ -12,10 +12,10 @@ ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: f81af557242503c6380d0ff7bc1dfaed852cd908
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89070692"
 ---
 # <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Azure AD Connect: ADSyncTools PowerShell Başvurusu
@@ -37,7 +37,7 @@ ADSyncTools PowerShell modülünü yüklemek için aşağıdakileri yapın:
 5.  Artık modülle ilgili bilgileri görmeniz gerekir.
 
 
-## <a name="clear-adsynctoolsconsistencyguid"></a>Clear-Adsyncaraçları IMDB Guid
+## <a name="clear-adsynctoolsconsistencyguid"></a>Clear-ADSyncToolsConsistencyGuid
 
 ### <a name="synopsis"></a>ÖZET
 AD kullanıcısının mS-DS-ımced GUID 'sini temizle
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
 Daha fazla bilgi için bkz. about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="confirm-adsynctoolsadmoduleloaded"></a>Onayla-ADSyncToolsADModuleLoaded
+## <a name="confirm-adsynctoolsadmoduleloaded"></a>Confirm-ADSyncToolsADModuleLoaded
 
 ### <a name="synopsis"></a>ÖZET
 {{Özeti}}
@@ -212,7 +212,7 @@ Accept wildcard characters: False
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
 Daha fazla bilgi için bkz. about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="export-adsynctoolsconsistencyguidmigration"></a>Export-Adsyncaraçları Başorguıdgeçişi
+## <a name="export-adsynctoolsconsistencyguidmigration"></a>Export-ADSyncToolsConsistencyGuidMigration
 
 ### <a name="synopsis"></a>ÖZET
 ' Me GUID raporunu dışarı aktar
@@ -225,7 +225,7 @@ Export-ADSyncToolsConsistencyGuidMigration [-AlternativeLoginId] [-UserPrincipal
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-Import-Adsynctoolsımutableidmigration öğesinden içeri aktarma CSV dosyasını temel alan bir IDB Raporu oluşturur
+Import-ADSyncToolsImmutableIdMigration bir içeri aktarma CSV dosyasını temel alan bir '% bir GUID raporu oluşturur
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -305,7 +305,7 @@ Accept wildcard characters: False
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
 Daha fazla bilgi için bkz. about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="get-adsyncsqlbrowserinstances"></a>Get-Adsyncsqlbrowserınstances
+## <a name="get-adsyncsqlbrowserinstances"></a>Get-ADSyncSQLBrowserInstances
 
 ### <a name="synopsis"></a>ÖZET
 {{Özeti}}
@@ -392,7 +392,7 @@ Accept wildcard characters: False
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
 Daha fazla bilgi için bkz. about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="get-adsynctoolsconsistencyguid"></a>Get-Adsyncaraçları IMDB Guid 'si
+## <a name="get-adsynctoolsconsistencyguid"></a>Get-ADSyncToolsConsistencyGuid
 
 ### <a name="synopsis"></a>ÖZET
 AD kullanıcısının mS-DS-ımlarımguıd 'sini alın
@@ -486,7 +486,7 @@ Accept wildcard characters: False
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
 Daha fazla bilgi için bkz. about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="get-adsynctoolsrunhistory"></a>Get-Adsyncaraçları Runhistory
+## <a name="get-adsynctoolsrunhistory"></a>Get-ADSyncToolsRunHistory
 
 ### <a name="synopsis"></a>ÖZET
 AAD Connect çalıştırma geçmişini al
@@ -533,7 +533,7 @@ Accept wildcard characters: False
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
 Daha fazla bilgi için bkz. about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="get-adsynctoolssourceanchorchanged"></a>Get-Adsyncaraçları Sourceanchorchanged
+## <a name="get-adsynctoolssourceanchorchanged"></a>Get-ADSyncToolsSourceAnchorChanged
 
 ### <a name="synopsis"></a>ÖZET
 Kaynak bağlantısı değişmiş hataları olan kullanıcıları al
@@ -554,9 +554,9 @@ Get-ADSyncToolsSourceAnchorChanged [-sourcePath] <Object> [-outputPath] <Object>
 #Required Parameters
 ```
 
-$sourcePath = Read-Host-Prompt "dosya adı" # "olan günlük dosyası yolunu girin" \<Source_Path\> $outputPath = Read-Host-Prompt "dosya adı" # "olan dosya yolunu girin \<Out_Path\>
+$sourcePath = Read-Host-Prompt "dosya adı" # "olan günlük dosyası yolunu girin" \<Source_Path\> $outputPath = Read-Host-Prompt "dosya adı" # "olan çıkış dosya yolunu girin \<Out_Path\>
  
- Get-Adsyncaraçları Userssourceanchorchanged-sourcePath $sourcePath-outputPath $outputPath
+ Get-ADSyncToolsUsersSourceAnchorChanged-sourcePath $sourcePath-outputPath $outputPath
 
 #### <a name="example-2"></a>ÖRNEK 2
 ```
@@ -599,7 +599,7 @@ Accept wildcard characters: False
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
 Daha fazla bilgi için bkz. about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="import-adsynctoolsimmutableidmigration"></a>Import-Adsynctoolsımutableıdmigration
+## <a name="import-adsynctoolsimmutableidmigration"></a>Import-ADSyncToolsImmutableIdMigration
 
 ### <a name="synopsis"></a>ÖZET
 AAD 'den ImmutableID içeri aktar
@@ -899,7 +899,7 @@ Example of how to use this cmdlet
 Another example of how to use this cmdlet
 ```
 
-## <a name="set-adsynctoolsconsistencyguid"></a>Set-Adsyncaraçları IMDB Guid
+## <a name="set-adsynctoolsconsistencyguid"></a>Set-ADSyncToolsConsistencyGuid
 
 ### <a name="synopsis"></a>ÖZET
 AD kullanıcısının mS-DS-ımced GUID 'sini ayarlama
@@ -1140,7 +1140,7 @@ Accept wildcard characters: False
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
 Daha fazla bilgi için bkz. about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="trace-adsynctoolsldapquery"></a>Trace-Adsyncaraçları Ldapquery
+## <a name="trace-adsynctoolsldapquery"></a>Trace-ADSyncToolsLdapQuery
 
 ### <a name="synopsis"></a>ÖZET
 Kısa açıklama
@@ -1233,7 +1233,7 @@ Accept wildcard characters: False
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
 Daha fazla bilgi için bkz. about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="update-adsynctoolsconsistencyguidmigration"></a>Update-Adsyncaraçları Başorguıdgeçişi
+## <a name="update-adsynctoolsconsistencyguidmigration"></a>Update-ADSyncToolsConsistencyGuidMigration
 
 ### <a name="synopsis"></a>ÖZET
 Yeni bir IBU GUID (ImmutableID) ile kullanıcıları güncelleştirir

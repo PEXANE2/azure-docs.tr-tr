@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
 ms.openlocfilehash: a2d9fc98ba6f514afbd88e543a859a69e0fc6c6b
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88192671"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN Rules altyapısı için HTTP değişkenleri
@@ -34,7 +34,7 @@ HTTP değişkenleri, HTTP isteği ve yanıt meta verilerini almak için kullanab
 Aşağıdaki tabloda desteklenen HTTP değişkenleri açıklanmaktadır. COĞRAFI meta veriler (örneğin, posta kodu) belirli bir istek için kullanılamadığında boş bir değer döndürülür.
 
 
-| Name | Değişken | Açıklama | Örnek değer |
+| Adı | Değişken | Açıklama | Örnek değer |
 | ---- | -------- | ----------- | ------------ |
 | ASN (Istek sahibi) | % {geo_asnum} | İstek sahibinin numarasını belirtir. <br /><br />**Kullanım dışı:** % {virt_dst_asnum}. <br />Bu değişken,% {geo_asnum} için kullanım dışı bırakıldı. Kullanım dışı bırakılan bu değişkeni kullanan bir kural çalışmaya devam edebilse de, yeni değişkenini kullanmak için güncelleştirmeniz gerekir. | AS15133 |
 | Şehir (Istek sahibi) | % {geo_city} | İsteyanın şehrini gösterir. | Los Angeles |
@@ -56,7 +56,7 @@ Aşağıdaki tabloda desteklenen HTTP değişkenleri açıklanmaktadır. COĞRAF
 | Sorgu dizesi değeri | % {query_string} | İstek URL 'sinde tanımlanan tüm sorgu dizesi değerini gösterir. |KEY1 = val1&key2 = val2 & lt&Key3 = VAL3 |
 | Başvuran etki alanı | % {referring_domain} | Başvuran istek üstbilgisinde tanımlanan etki alanını gösterir. | <www.google.com> |
 | Bölge (Istek sahibi) | % {geo_region} | İstek sahibinin bölgesini (örneğin, eyalet veya bölge) alfasayısal kısaltmayla gösterir. | CA |
-| İstek üst bilgisi değeri | % {http_RequestHeader} | RequestHeader terimi tarafından tanımlanan istek üst bilgisine karşılık gelen değeri döndürür. <br /><br />İstek üstbilgisinin adı bir tire içeriyorsa (örneğin, Kullanıcı Aracısı), bunu alt çizgiyle değiştirin (örneğin, User_Agent).| Örnek kullanım:% {http_Connection}<br /><br />Örnek değer: canlı tut | 
+| İstek üst bilgisi değeri | % {http_RequestHeader} | RequestHeader terimi tarafından tanımlanan istek üst bilgisine karşılık gelen değeri döndürür. <br /><br />İstek üstbilgisinin adı bir tire içeriyorsa (örneğin, Kullanıcı Aracısı), bunu alt çizgiyle değiştirin (örneğin, User_Agent).| Örnek kullanım:% {http_Connection}<br /><br />Örnek değer: Keep-Alive | 
 | İstek Konağı | % {Konak} | İstek URL 'sinde tanımlanan Konağı gösterir. | <www.mydomain.com> |
 | İstek Protokolü | % {request_protocol} | İstek protokolünü gösterir. | HTTP/1.1 |
 | İstek düzeni | % {Scheme} | İstek düzenini gösterir. |http |
@@ -69,7 +69,7 @@ Aşağıdaki tabloda desteklenen HTTP değişkenleri açıklanmaktadır. COĞRAF
 Aşağıdaki tabloda, bir HTTP değişkeni belirtmek için uygun sözdizimi açıklanmaktadır.
 
 
-| Syntax | Örnek | Açıklama |
+| Sözdizimi | Örnek | Açıklama |
 | ------ | -------- | ---------- |
 | % { &lt; Httpvariable &gt; } | % {Konak} | Belirtilen httpvariable öğesine karşılık gelen değerin tamamını almak için bu sözdizimini kullanın &lt; &gt; . |
 | % { &lt; Httpvariabledelimiter &gt; } | % {Ana bilgisayar,} | Belirtilen httpvariablesınırlayıcısına karşılık gelen değerin tamamı için büyük/küçük harf ayarlamak için bu sözdizimini kullanın  &lt; &gt; . |
@@ -107,7 +107,7 @@ Sınırlayıcılar aşağıdaki tabloda açıklanmıştır.
 | ,, | HTTP değişkeniyle ilişkili değer içindeki belirtilen karakterin tüm örneklerini küçük harfe Dönüştür. |
 | ^^ | HTTP değişkeniyle ilişkili değer içindeki belirtilen karakterin tüm örneklerini büyük harfe Dönüştür. |
 
-## <a name="exceptions"></a>Özel durumlar
+## <a name="exceptions"></a>Özel Durumlar
 Aşağıdaki tabloda, belirtilen metnin bir HTTP değişkeni olarak değerlendirilmeyeceği koşullar açıklanmaktadır.
 
 | Koşul | Açıklama | Örnek |
@@ -125,7 +125,7 @@ Aşağıdaki koşullardan herhangi birini karşıladığında, bir üst bilgiye 
 
 Aşağıdaki tabloda, varsayılan bir değerin nasıl tanımlanacağı açıklanmaktadır.
 
-| Koşul | Syntax | Örnek | Açıklama |
+| Koşul | Sözdizimi | Örnek | Açıklama |
 | --------- | ------ | --------| ----------- |
 | Aşağıdaki koşullardan herhangi birini karşıladığında bir üst bilgiyi varsayılan değere ayarlayın: <br /><br />-Eksik üst bilgi <br /><br />-Header değeri NULL olarak ayarlandı.| % {Variable: = değer} | % {http_referrer: = belirtilmemiş} | Başvuran üst bilgisi yalnızca eksik ya da NULL olarak ayarlandığında *belirtilmemiş* olarak ayarlanır. Ayarlandıysa hiçbir eylem gerçekleşmeyecektir. |
 | Bir üst bilgiyi, eksik olduğunda varsayılan değere ayarlayın. | % {Variable = değer} | % {http_referrer = belirtilmemiş} | Başvuran üst bilgisi yalnızca eksik olduğunda *belirtilmemiş* olarak ayarlanır. Ayarlandıysa hiçbir eylem gerçekleşmeyecektir. |
@@ -174,7 +174,7 @@ https: \/ /www.mydomain.com/mobile/marketing/proposal.htm
 ### <a name="pattern-removal"></a>Model kaldırma
 Belirli bir düzenle eşleşen metin, bir değişkenin değerinin başından veya sonundan kaldırılabilir.
 
-| Syntax | Eylem |
+| Sözdizimi | Eylem |
 | ------ | ------ |
 | % {Değişken # model} | Bir değişkenin değerinin başlangıcında belirtilen model bulunduğunda metni kaldır. |
 | % {Değişken% model} | Bir değişkenin değerinin sonunda belirtilen model bulunduğunda metni kaldır. |
@@ -195,7 +195,7 @@ Aşağıdaki tabloda bu sözdiziminin nasıl çalıştığı gösterilmektedir.
 ### <a name="find-and-replace"></a>Bulma ve değiştirme
 Bul ve Değiştir sözdizimi aşağıdaki tabloda açıklanmıştır.
 
-| Syntax | Eylem |
+| Sözdizimi | Eylem |
 | ------ | ------ |
 | % {Değişken/Bul/Değiştir} | Belirtilen düzenin ilk oluşumunu bul ve Değiştir. |
 | % {Değişken//Bul/Değiştir} | Belirtilen düzenin tüm oluşumlarını bul ve Değiştir. |
@@ -207,7 +207,7 @@ Bul ve Değiştir sözdizimi aşağıdaki tabloda açıklanmıştır.
 ### <a name="find-and-rewrite"></a>Bul ve yeniden yaz
 Bul ve Değiştir 'teki bir varyasyon için, yeniden yazarken belirtilen Düzenle eşleşen metni kullanın. Bul ve yeniden yaz sözdizimi aşağıdaki tabloda açıklanmıştır.
 
-| Syntax | Eylem |
+| Sözdizimi | Eylem |
 | ------ | ------ |
 | % {Variable/= bul/yeniden yaz} | Belirtilen düzenin tüm oluşumlarını bulun, kopyalayın ve yeniden yazın. |
 | % {Variable/^ bul/yeniden yaz} | Değişkenin başlangıcında gerçekleştiği sırada belirtilen kalıbı bulun, kopyalayın ve yeniden yazın. |

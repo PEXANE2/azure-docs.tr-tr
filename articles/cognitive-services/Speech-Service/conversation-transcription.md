@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: trbye
 ms.openlocfilehash: dcc7721aec067c4de309e3fdd926245a9d240f0d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81402505"
 ---
 # <a name="what-is-conversation-transcription-in-meetings-preview"></a>Toplantılar (Önizleme) ile görüşme dökümü nedir?
@@ -63,7 +63,7 @@ Konuşma dökümü üç döküm modu sunar:
 
 Ses verileri, konuşmacı tanımlayıcısı + döküm betiği döndürmek için canlı olarak işlenir. Döküm çözümünüz gereksiniminizde, konuşma katılımcılarına devam eden konuşmaları canlı döküm görünümü sağlamak istiyorsanız bu modu seçin. Örneğin, toplantıları daha erişilebilir hale getirmek için bir uygulama oluşturmak, işitme engellerin ve çok zor katılımcılarının gerçek zamanlı döküm için ideal bir kullanım durumdur.
 
-### <a name="asynchronous"></a>Zaman Uyumsuz
+### <a name="asynchronous"></a>Zaman uyumsuz
 
 Ses verileri, konuşmacı tanımlayıcısını ve dökümünü döndürecek toplu işlem olarak işlenir. Döküm çözümünüz gereksiniminizi canlı döküm görünümü olmadan daha yüksek doğruluk sağlamak istiyorsanız bu modu seçin. Örneğin, Toplantı katılımcılarının kaçırılmış toplantılara kolayca yakalayabilmesini sağlamak için bir uygulama oluşturmak istiyorsanız, yüksek doğruluk dökümü elde etmek için zaman uyumsuz döküm modunu kullanın.
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 09fa612e7e5c681da16bf19e94c626ae14a3b8a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77590710"
 ---
 Bir Linux sanal makinesine veri diski eklerken, LUN 0 ' da bir disk yoksa hatalarla karşılaşabilirsiniz. Komutunu kullanarak bir diski el ile ekliyorsanız `az vm disk attach -new` ve `--lun` Azure platformunun uygun LUN 'u belirlemesine izin vermek yerıne bir LUN () belirtirseniz, bir diskin zaten var olduğunu veya LUN 0 ' da var olacağını unutmayın. 

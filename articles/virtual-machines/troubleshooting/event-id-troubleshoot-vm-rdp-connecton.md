@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: 507cd6cfe9f251dbc304b579d634ff986b001264
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87088606"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Azure VM RDP bağlantı sorunlarını olay kimliğine göre giderme 
@@ -57,7 +57,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **Günlük adı:**      Sistemin <br />
 **Kaynak:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **Tarih:**          *saat* <br />
-**Olay kimliği:** 1058 <br />
+**Olay kimliği:**      1058 <br />
 **Görev kategorisi:** Seçim <br />
 **Düzey:**         Hatayla <br />
 **Anahtar sözcükler:**      Klasik <br />
@@ -68,7 +68,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **Günlük adı:**      Sistemin <br />
 **Kaynak:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **Tarih:**          *saat* <br />
-**Olay kimliği:** 1058 <br />
+**Olay kimliği:**      1058 <br />
 **Görev kategorisi:** Seçim <br />
 **Düzey:**         Hatayla <br />
 **Anahtar sözcükler:**      Klasik <br />
@@ -79,7 +79,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **Günlük adı:**      Sistemin <br />
 **Kaynak:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **Tarih:**          *saat* <br />
-**Olay kimliği:** 1057 <br />
+**Olay kimliği:**      1057 <br />
 **Görev kategorisi:** Seçim <br />
 **Düzey:**         Hatayla <br />
 **Anahtar sözcükler:**      Klasik <br />
@@ -96,8 +96,8 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 
 **Günlük adı:**      Sistemin <br />
 **Kaynak:**        Schannel <br />
-**Tarih:** — <br />
-**Olay kimliği:** 36870 <br />
+**Tarih:**          — <br />
+**Olay kimliği:**      36870 <br />
 **Görev kategorisi:** Seçim <br />
 **Düzey:**         Hatayla <br />
 **Lerimi**       <br />
@@ -218,8 +218,8 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 
 **Günlük adı:**      Sistemin <br />
 **Kaynak:**        Schannel <br />
-**Tarih:** — <br />
-**Olay kimliği:** 36871 <br />
+**Tarih:**          — <br />
+**Olay kimliği:**      36871 <br />
 **Görev kategorisi:** Seçim <br />
 **Düzey:**         Hatayla <br />
 **Lerimi**       <br />
@@ -249,7 +249,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Wind
 **Günlük adı:**      Microsoft-Windows-TerminalServices-SessionBroker/operasyonel <br />
 **Kaynak:**        Microsoft-Windows-TerminalServices-SessionBroker <br />
 **Tarih:**          *saat* <br />
-**Olay kimliği:** 2056 <br />
+**Olay kimliği:**      2056 <br />
 **Görev kategorisi:** (109) <br />
 **Düzey:**         Hatayla <br />
 **Lerimi**       <br />
@@ -265,7 +265,7 @@ Veritabanında oturum açılamadı.
 **Günlük adı:**      Microsoft-Windows-TerminalServices-SessionBroker-Istemci/Işlem <br />
 **Kaynak:**        Microsoft-Windows-TerminalServices-SessionBroker-Client <br />
 **Tarih:**          *saat* <br />
-**Olay kimliği:** 1296 <br />
+**Olay kimliği:**      1296 <br />
 **Görev kategorisi:** (104) <br />
 **Düzey:**         Hatayla <br />
 **Lerimi**       <br />
@@ -274,8 +274,8 @@ Veritabanında oturum açılamadı.
 **Açıklama:** Microsoft-Windows-TerminalServices-SessionBroker-Client kaynağından olay KIMLIĞI 1296 açıklaması bulunamıyor. Bu olayı başlatan bileşen yerel bilgisayarınızda yüklü değil veya yükleme bozuk. Bileşeni yerel bilgisayara yükleyebilir veya onarabilirsiniz.
 Olayın başka bir bilgisayarda kaynağı varsa, görüntüleme bilgilerinin olayla birlikte kaydedilmesi gerekiyordu.
 Olaya aşağıdaki bilgiler eklenmiştir:  <br />
-*metinleri* <br />
-*metinleri* <br />
+*metin* <br />
+*metin* <br />
 Uzak Masaüstü Bağlantı Aracısı RPC iletişimi için kullanılamaz.
 
 ### <a name="cause"></a>Nedeni

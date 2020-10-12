@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: c3f9046bd0cca8cb191397413c09a72c4cc11c55
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81416807"
 ---
 # <a name="copy-data-from-oracle-service-cloud-using-azure-data-factory-preview"></a>Azure Data Factory kullanarak Oracle Service Cloud 'dan veri kopyalama (Önizleme)
@@ -49,13 +49,13 @@ Aşağıdaki özellikler, Oracle hizmeti bulutu bağlı hizmeti için destekleni
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **OracleServiceCloud** olarak ayarlanmalıdır | Yes |
-| konak | Oracle hizmeti bulut örneğinin URL 'SI.  | Yes |
-| kullanıcı adı | Oracle Service Cloud Server 'a erişmek için kullandığınız Kullanıcı adı.  | Yes |
-| password | Kullanıcı adı anahtarında verdiğiniz kullanıcı adına karşılık gelen parola. Bu alanı, ADF 'de güvenli bir şekilde depolamak veya Azure Key Vault parolayı depolamak için bir SecureString olarak işaretlemeyi seçebilir ve veri kopyalama işlemini gerçekleştirirken ADF kopyalama etkinliği çekmeye izin verebilir. [Key Vault mağaza kimlik bilgilerinden](store-credentials-in-key-vault.md)daha fazla bilgi edinin. | Yes |
-| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | No |
-| Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | No |
-| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | No |
+| tür | Type özelliği: **OracleServiceCloud** olarak ayarlanmalıdır | Evet |
+| konak | Oracle hizmeti bulut örneğinin URL 'SI.  | Evet |
+| username | Oracle Service Cloud Server 'a erişmek için kullandığınız Kullanıcı adı.  | Evet |
+| password | Kullanıcı adı anahtarında verdiğiniz kullanıcı adına karşılık gelen parola. Bu alanı, ADF 'de güvenli bir şekilde depolamak veya Azure Key Vault parolayı depolamak için bir SecureString olarak işaretlemeyi seçebilir ve veri kopyalama işlemini gerçekleştirirken ADF kopyalama etkinliği çekmeye izin verebilir. [Key Vault mağaza kimlik bilgilerinden](store-credentials-in-key-vault.md)daha fazla bilgi edinin. | Evet |
+| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | Hayır |
 
 **Örnek:**
 
@@ -88,7 +88,7 @@ Oracle hizmeti bulutundaki verileri kopyalamak için, veri kümesinin Type özel
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | DataSet 'in Type özelliği: **OracleServiceCloudObject** olarak ayarlanmalıdır | Yes |
+| tür | DataSet 'in Type özelliği: **OracleServiceCloudObject** olarak ayarlanmalıdır | Evet |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -119,7 +119,7 @@ Oracle Service Cloud 'dan veri kopyalamak için kopyalama etkinliğindeki kaynak
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **OracleServiceCloudSource** olarak ayarlanmalıdır | Yes |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **OracleServiceCloudSource** olarak ayarlanmalıdır | Evet |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
 **Örnek:**

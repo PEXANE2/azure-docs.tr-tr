@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
 ms.openlocfilehash: dc7d16fe809e3e324f384b0d9e088dd7e6ab261c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74111490"
 ---
 # <a name="bing-news-search-api-endpoints"></a>Bing Haber Arama API'si uç noktaları
@@ -23,7 +23,7 @@ ms.locfileid: "74111490"
 
 ## <a name="endpoints"></a>Uç Noktalar
 
-Bing Haber Arama API'si kullanarak haber arama sonuçları almak için aşağıdaki uç noktalardan birine `GET` bir istek gönderin. Üst bilgiler ve URL parametreleri daha fazla belirtim tanımlar.
+Bing Haber Arama API'si kullanarak haber arama sonuçları almak için `GET` aşağıdaki uç noktalardan birine bir istek gönderin. Üst bilgiler ve URL parametreleri daha fazla belirtim tanımlar.
 
 ### <a name="news-items-by-search-query"></a>Arama sorgusuna göre haber öğeleri
 
@@ -31,7 +31,7 @@ Bing Haber Arama API'si kullanarak haber arama sonuçları almak için aşağıd
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search
 ```
 
-Arama sorgusunu temel alan haber öğelerini döndürür. Arama sorgusu boşsa, API, farklı kategorilerdeki en iyi haber makalelerini döndürür. Arama teriminizi kodlayıp`q=""` parametreye ekleyerek URL ile bir sorgu gönderin. Kullanılabilirlik için bkz. [Desteklenen ülkeler/bölgeler ve pazarlar](language-support.md#supported-markets-for-news-search-endpoint).
+Arama sorgusunu temel alan haber öğelerini döndürür. Arama sorgusu boşsa, API, farklı kategorilerdeki en iyi haber makalelerini döndürür. Arama teriminizi kodlayıp parametreye ekleyerek URL ile bir sorgu gönderin `q=""` . Kullanılabilirlik için bkz. [Desteklenen ülkeler/bölgeler ve pazarlar](language-support.md#supported-markets-for-news-search-endpoint).
 
 ### <a name="top-news-items-by-category"></a>Kategoriye göre popüler Haberler öğeleri
 
@@ -39,7 +39,7 @@ Arama sorgusunu temel alan haber öğelerini döndürür. Arama sorgusu boşsa, 
 GET https://api.cognitive.microsoft.com/bing/v7.0/news  
 ```
 
-Kategoriye göre en popüler haber öğelerini döndürür. , `category=business` `category=sports`Veya `category=entertainment`kullanarak popüler iş, spor veya eğlence makalelerini özellikle isteyebilirsiniz. `category` Parametresi yalnızca `/news` URL ile birlikte kullanılabilir. Kategorileri belirtmek için bazı biçimsel gereksinimler vardır; `category` [sorgu parametresi](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters) belgelerindeki bölümüne bakın. Arama teriminizi kodlayıp`q=""` parametreye ekleyerek URL ile bir sorgu gönderin. Kullanılabilirlik için bkz. [Desteklenen ülkeler/bölgeler ve pazarlar](language-support.md#supported-markets-for-news-endpoint).
+Kategoriye göre en popüler haber öğelerini döndürür. , Veya kullanarak popüler iş, spor veya eğlence makalelerini özellikle isteyebilirsiniz `category=business` `category=sports` `category=entertainment` . `category`Parametresi yalnızca URL ile birlikte kullanılabilir `/news` . Kategorileri belirtmek için bazı biçimsel gereksinimler vardır; `category` [sorgu parametresi](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters) belgelerindeki bölümüne bakın. Arama teriminizi kodlayıp parametreye ekleyerek URL ile bir sorgu gönderin `q=""` . Kullanılabilirlik için bkz. [Desteklenen ülkeler/bölgeler ve pazarlar](language-support.md#supported-markets-for-news-endpoint).
 
 ### <a name="trending-news-topics"></a>Popüler Haberler konuları 
 
@@ -47,7 +47,7 @@ Kategoriye göre en popüler haber öğelerini döndürür. , `category=business
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/trendingtopics
 ```
 
-Sosyal ağlarda Şu anda popüler olan haber konularını döndürür. `/trendingtopics` Seçenek dahil edildiğinde Bing arama, `freshness` ve `?q=""`gibi diğer birkaç parametreyi yoksayar. Kullanılabilirlik için bkz. [Desteklenen ülkeler/bölgeler ve pazarlar](language-support.md#supported-markets-for-news-trending-endpoint).
+Sosyal ağlarda Şu anda popüler olan haber konularını döndürür. `/trendingtopics`Seçenek dahil edildiğinde Bing arama, ve gibi diğer birkaç parametreyi yoksayar `freshness` `?q=""` . Kullanılabilirlik için bkz. [Desteklenen ülkeler/bölgeler ve pazarlar](language-support.md#supported-markets-for-news-trending-endpoint).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: d164c53e7e2be55f3cede389901a256ba388808d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77670313"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularındaki toplamalar
@@ -22,7 +22,7 @@ ms.locfileid: "77670313"
 
 Bu makalede, verilerinizi analiz etmenin yararlı yollarını sunan Azure Izleyici günlük sorgularının toplama işlevleri açıklanmaktadır. Bu işlevler `summarize` , giriş tablosunun toplanmış sonuçlarını içeren bir tablo üreten işleçle çalışır.
 
-## <a name="counts"></a>Kapsam
+## <a name="counts"></a>Sayı
 
 ### <a name="count"></a>count
 Herhangi bir filtre uygulandıktan sonra sonuç kümesindeki satır sayısını say. Aşağıdaki örnek, son 30 dakikadan itibaren _performans_ tablosundaki toplam satır sayısını döndürür. Sonuç, belirli bir ad atamadıkça *count_* adlı bir sütunda döndürülür:

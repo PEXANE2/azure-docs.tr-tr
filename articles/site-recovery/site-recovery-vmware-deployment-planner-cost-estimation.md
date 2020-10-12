@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 7/29/2019
 ms.author: mayg
 ms.openlocfilehash: d7ee72b5f6441f2b3b3ea9a7eaa41a3e1b650745
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86528970"
 ---
 # <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>VMware Dağıtım Planlayıcısı maliyet tahminleri gözden geçirin 
@@ -150,7 +150,7 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 ## <a name="supported-currencies"></a>Desteklenen para birimleri
 Azure Site Recovery Dağıtım Planlayıcısı aşağıdaki para birimlerinin tümünde maliyet raporu oluşturabilir.
 
-|Para birimi|Name|Para birimi|Name|Para birimi|Name|
+|Para Birimi|Name|Para Birimi|Name|Para Birimi|Name|
 |---|---|---|---|---|---|---|---|
 |ARS|Arjantin Pesosu ($)|AUD|Avustralya Doları ($)|BRL|Brezilya Reali (R$)|
 |CAD|Kanada Doları ($)|CHF|İsviçre Frangı (chf)|DKK|Danimarka Kronu (kr)|

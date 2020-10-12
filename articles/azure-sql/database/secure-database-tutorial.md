@@ -11,10 +11,10 @@ ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
 ms.openlocfilehash: bec60875561a9d821642d850c27e47d4f906aba3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90885412"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Öğretici: Azure SQL veritabanında bir veritabanını güvenli hale getirme
@@ -210,7 +210,7 @@ Azure AD kimlik doğrulamasıyla bir kullanıcı eklemek için:
    ```
 
 > [!NOTE]
-> Azure AD kullanıcıları, `E (EXTERNAL_USER)` gruplar için tür ve tür ile veritabanı meta verilerinde işaretlenir `X (EXTERNAL_GROUPS)` . Daha fazla bilgi için bkz. [sys. database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql).
+> Azure AD kullanıcıları, `E (EXTERNAL_USER)` gruplar için tür ve tür ile veritabanı meta verilerinde işaretlenir `X (EXTERNAL_GROUPS)` . Daha fazla bilgi için bkz. [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql).
 
 ### <a name="secure-connection-strings"></a>Güvenli bağlantı dizeleri
 
@@ -336,7 +336,7 @@ Veri maskeleme 'yi etkinleştirmek için:
     ![Saydam Veri Şifrelemesi](./media/secure-database-tutorial/encryption-settings.png)
 
 > [!NOTE]
-> Şifreleme durumunu görüntülemek için [SSMS](connect-query-ssms.md) kullanarak veritabanına bağlanın ve `encryption_state` [sys. dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) görünümünün sütununu sorgulayın. Durumu `3` , veritabanının şifrelendiğini gösterir.
+> Şifreleme durumunu görüntülemek için [SSMS](connect-query-ssms.md) kullanarak veritabanına bağlanın ve `encryption_state` [sys.dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) görünümünün sütununu sorgulayın. Durumu `3` , veritabanının şifrelendiğini gösterir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

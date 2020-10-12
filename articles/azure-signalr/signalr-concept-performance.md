@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 68cad32be177fa20794399157fca89e87c2f8f59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74157674"
 ---
 # <a name="performance-guide-for-azure-signalr-service"></a>Azure SignalR Hizmeti için performans kılavuzu
@@ -70,7 +70,7 @@ Teorik olarak, Azure SignalR hizmet kapasitesi hesaplama kaynaklarıyla sınırl
 
 Aktarım türü, performansı etkileyen başka bir faktördür. [WebSocket](https://en.wikipedia.org/wiki/WebSocket), [sunucu tarafından gönderilen olay](https://en.wikipedia.org/wiki/Server-sent_events)ve [uzun yoklama](https://en.wikipedia.org/wiki/Push_technology)olmak üzere üç tür vardır. 
 
-WebSocket, tek bir TCP bağlantısı üzerinden çift yönlü ve tam çift yönlü iletişim protokolüdür. Sunucu tarafından gönderilen olay, iletileri sunucudan istemciye göndermek için bir tek yönlü protokoldür. Uzun yoklama, istemcilerin bir HTTP isteği aracılığıyla sunucudan düzenli olarak bilgi yoklamasını gerektirir. Aynı koşullarda aynı API için, WebSocket en iyi performansa sahiptir, sunucu tarafından gönderilen olay daha yavaştır ve uzun yoklamaya en yavaş olur. Azure SignalR hizmeti, varsayılan olarak WebSocket önerir.
+WebSocket, tek bir TCP bağlantısı üzerinden çift yönlü ve tam çift yönlü iletişim protokolüdür. Sunucu tarafından gönderilen olay, iletileri sunucudan istemciye göndermek için bir tek yönlü protokoldür. Long-Polling, istemcilerin sunucudan bir HTTP isteği aracılığıyla düzenli olarak bilgi yoklamasını gerektirir. Aynı koşullarda aynı API için, WebSocket en iyi performansa sahiptir, sunucu tarafından gönderilen olay daha yavaştır ve en yavaş Long-Polling. Azure SignalR hizmeti, varsayılan olarak WebSocket önerir.
 
 İleti yönlendirme maliyeti de performansı kısıtlar. Azure SignalR hizmeti bir rolü bir istemci veya sunucu kümesinden diğer istemcilere veya sunuculara yönlendiren bir ileti yönlendiricisi olarak yürütür. Farklı bir senaryo veya API farklı bir yönlendirme ilkesi gerektirir. 
 
@@ -122,14 +122,14 @@ Aşağıdaki iki tabloda vurgulanan değerleri *aşmayın* .
 
 |       Girdilerinizi                        | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |-----------------------------------|-------|-------|-------|--------|--------|--------|---------|
-| Bağlantılar                       | 1000 | 2.000 | 5.000 | 10,000 | 20.000 | 50,000 | 100.000 |
+| Bağlantılar                       | 1.000 | 2.000 | 5.000 | 10,000 | 20.000 | 50,000 | 100.000 |
 | **Gelen bant genişliği** | **2 Mb/sn**    | **4 Mb/sn**    | **10 Mb/sn**   | **20 MBps**    | **40 MBps**    | **100 MBps**   | **200 MBps**    |
 | Giden bant genişliği | 2 Mb/sn   | 4 Mb/sn   | 10 Mb/sn  | 20 MBps   | 40 MBps   | 100 MBps  | 200 MBps   |
 
 
 |     Yayınla             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Bağlantılar               | 1000 | 2.000 | 5.000  | 10,000 | 20.000 | 50,000  | 100.000 |
+| Bağlantılar               | 1.000 | 2.000 | 5.000  | 10,000 | 20.000 | 50,000  | 100.000 |
 | Gelen bant genişliği  | 4 KBps   | 4 KBps   | 4 KBps    | 4 KBps    | 4 KBps    | 4 KBps     | 4 KBps    |
 | **Giden bant genişliği** | **4 Mb/sn**    | **8 Mb/sn**    | **20 MBps**    | **40 MBps**    | **80 MBps**    | **200 MBps**    | **400 MBps**   |
 
@@ -213,8 +213,8 @@ Aşağıdaki diyagramda, 5 ile 8 arasında (kırmızı vurgulanmış trafik) bir
 
 |       Girdilerinizi                        | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |-----------------------------------|-------|-------|-------|--------|--------|--------|---------|
-| Bağlantılar                       | 1000 | 2.000 | 5.000 | 10,000 | 20.000 | 50,000 | 100.000 |
-| Saniye başına gelen/giden ileti | 1000 | 2.000 | 5.000 | 10,000 | 20.000 | 50,000 | 100.000 |
+| Bağlantılar                       | 1.000 | 2.000 | 5.000 | 10,000 | 20.000 | 50,000 | 100.000 |
+| Saniye başına gelen/giden ileti | 1.000 | 2.000 | 5.000 | 10,000 | 20.000 | 50,000 | 100.000 |
 | Gelen/giden bant genişliği | 2 Mb/sn   | 4 Mb/sn   | 10 Mb/sn  | 20 MBps   | 40 MBps   | 100 MBps  | 200 MBps   |
 
 Bu kullanım durumunda, her istemci, uygulama sunucusunda tanımlanan hub 'ı çağırır. Hub yalnızca özgün istemci tarafında tanımlanan yöntemi çağırır. Bu Merkez, **yankı**için en hafif merkezdir.
@@ -231,7 +231,7 @@ Bu basit Hub için bile, uygulama sunucusuna uygulanan trafik, **yankı** gelen 
 
 |    Girdilerinizi          | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Bağlantılar      | 1000 | 2.000 | 5.000 | 10,000 | 20.000 | 50,000 | 100.000 |
+| Bağlantılar      | 1.000 | 2.000 | 5.000 | 10,000 | 20.000 | 50,000 | 100.000 |
 | Uygulama sunucusu sayısı | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
@@ -249,7 +249,7 @@ Aşağıdaki tabloda, en fazla istemci bağlantısı, gelen/giden ileti sayısı
 
 |     Yayınla             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Bağlantılar               | 1000 | 2.000 | 5.000  | 10,000 | 20.000 | 50,000  | 100.000 |
+| Bağlantılar               | 1.000 | 2.000 | 5.000  | 10,000 | 20.000 | 50,000  | 100.000 |
 | Saniye başına gelen ileti  | 2     | 2     | 2      | 2      | 2      | 2       | 2       |
 | Saniye başına giden ileti | 2.000 | 4.000 | 10,000 | 20.000 | 40,000 | 100.000 | 200,000 |
 | Gelen bant genişliği  | 4 KBps   | 4 KBps   | 4 KBps    | 4 KBps    | 4 KBps    | 4 KBps     | 4 KBps     |
@@ -259,7 +259,7 @@ Aşağıdaki tabloda, en fazla istemci bağlantısı, gelen/giden ileti sayısı
 
 |   Yayınla      | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Bağlantılar      | 1000 | 2.000 | 5.000 | 10,000 | 20.000 | 50,000 | 100.000 |
+| Bağlantılar      | 1.000 | 2.000 | 5.000 | 10,000 | 20.000 | 50,000 | 100.000 |
 | Uygulama sunucusu sayısı | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 > [!NOTE]
@@ -287,10 +287,10 @@ Yönlendirme maliyeti birçok küçük gruba ileti göndermek için önemlidir. 
 
 |   Küçük gruba gönder     | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50 | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|--------|---------|
-| Bağlantılar               | 1000 | 2.000 | 5.000  | 10,000 | 20.000 | 50,000 | 100.000
+| Bağlantılar               | 1.000 | 2.000 | 5.000  | 10,000 | 20.000 | 50,000 | 100.000
 | Grup üye sayısı        | 10    | 10    | 10     | 10     | 10     | 10     | 10 
-| Grup sayısı               | 100   | 200   | 500    | 1000  | 2.000  | 5.000  | 10,000 
-| Saniye başına gelen ileti  | 200   | 400   | 1000  | 2,500  | 4.000  | 7.000  | 7.000   |
+| Grup sayısı               | 100   | 200   | 500    | 1.000  | 2.000  | 5.000  | 10,000 
+| Saniye başına gelen ileti  | 200   | 400   | 1.000  | 2,500  | 4.000  | 7.000  | 7.000   |
 | Gelen bant genişliği  | 400 KBps  | 800 KBps  | 2 Mb/sn     | 5 Mb/sn     | 8 Mb/sn     | 14 MBps    | 14 MBps     |
 | Saniye başına giden ileti | 2.000 | 4.000 | 10,000 | 25,000 | 40,000 | 70.000 | 70.000  |
 | Giden bant genişliği | 4 Mb/sn    | 8 Mb/sn    | 20 MBps    | 50 MBps     | 80 MBps    | 140 MBps   | 140 MBps    |
@@ -299,7 +299,7 @@ Birçok istemci bağlantısı hub 'ı çağırıyor, bu nedenle uygulama sunucu 
 
 |  Küçük gruba gönder   | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Bağlantılar      | 1000 | 2.000 | 5.000 | 10,000 | 20.000 | 50,000 | 100.000 |
+| Bağlantılar      | 1.000 | 2.000 | 5.000 | 10,000 | 20.000 | 50,000 | 100.000 |
 | Uygulama sunucusu sayısı | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
@@ -311,8 +311,8 @@ Birçok istemci bağlantısı hub 'ı çağırıyor, bu nedenle uygulama sunucu 
 
 |    Büyük gruba gönder      | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Bağlantılar               | 1000 | 2.000 | 5.000  | 10,000 | 20.000 | 50,000  | 100.000
-| Grup üye sayısı        | 100   | 200   | 500    | 1000  | 2.000  | 5.000   | 10,000 
+| Bağlantılar               | 1.000 | 2.000 | 5.000  | 10,000 | 20.000 | 50,000  | 100.000
+| Grup üye sayısı        | 100   | 200   | 500    | 1.000  | 2.000  | 5.000   | 10,000 
 | Grup sayısı               | 10    | 10    | 10     | 10     | 10     | 10      | 10
 | Saniye başına gelen ileti  | 20    | 20    | 20     | 20     | 20     | 20      | 20      |
 | Gelen bant genişliği  | 80 KBps   | 40 KBps   | 40 KBps    | 20 KBps    | 40 KBps    | 40 KBps     | 40 KBps     |
@@ -323,7 +323,7 @@ Gönderme bağlantı sayısı 40 ' den fazla değil. Uygulama sunucusundaki yük
 
 |  Büyük gruba gönder  | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Bağlantılar      | 1000 | 2.000 | 5.000 | 10,000 | 20.000 | 50,000 | 100.000 |
+| Bağlantılar      | 1.000 | 2.000 | 5.000 | 10,000 | 20.000 | 50,000 | 100.000 |
 | Uygulama sunucusu sayısı | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 > [!NOTE]
@@ -345,15 +345,15 @@ Aşağıdaki tablo, **bağlantı gönderme** kıyaslaması çalıştırmanın bi
 
 |   Bağlantıya gönder   | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50          | Unit100         |
 |------------------------------------|-------|-------|-------|--------|--------|-----------------|-----------------|
-| Bağlantılar                        | 1000 | 2.000 | 5.000 | 10,000 | 20.000 | 50,000          | 100.000         |
-| Saniye başına gelen/giden ileti | 1000 | 2.000 | 5.000 | 8,000  | 9,000  | 20.000 | 20.000 |
+| Bağlantılar                        | 1.000 | 2.000 | 5.000 | 10,000 | 20.000 | 50,000          | 100.000         |
+| Saniye başına gelen/giden ileti | 1.000 | 2.000 | 5.000 | 8,000  | 9,000  | 20.000 | 20.000 |
 | Gelen/giden bant genişliği | 2 Mb/sn    | 4 Mb/sn    | 10 Mb/sn   | 16 MBps    | 18 MBps    | 40 MBps       | 40 MBps       |
 
 Bu kullanım örneği, uygulama sunucusu tarafında yüksek yük gerektirir. Aşağıdaki tabloda önerilen App Server sayısına bakın.
 
 |  Bağlantıya gönder  | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Bağlantılar      | 1000 | 2.000 | 5.000 | 10,000 | 20.000 | 50,000 | 100.000 |
+| Bağlantılar      | 1.000 | 2.000 | 5.000 | 10,000 | 20.000 | 50,000 | 100.000 |
 | Uygulama sunucusu sayısı | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
@@ -369,21 +369,21 @@ Aşağıdaki tabloda, ASP.NET SignalR **echo**için önerilen Web uygulaması sa
 
 |   Girdilerinizi           | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Bağlantılar      | 1000 | 2.000 | 5.000 | 10,000 | 20.000 | 50,000 | 100.000 |
+| Bağlantılar      | 1.000 | 2.000 | 5.000 | 10,000 | 20.000 | 50,000 | 100.000 |
 | Uygulama sunucusu sayısı | 2     | 2     | 4     | 4      | 8      | 32      | 40       |
 
 Aşağıdaki tabloda, ASP.NET SignalR **yayını**için önerilen Web uygulaması sayısı verilmiştir.
 
 |  Yayınla       | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Bağlantılar      | 1000 | 2.000 | 5.000 | 10,000 | 20.000 | 50,000 | 100.000 |
+| Bağlantılar      | 1.000 | 2.000 | 5.000 | 10,000 | 20.000 | 50,000 | 100.000 |
 | Uygulama sunucusu sayısı | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 Aşağıdaki tabloda, ASP.NET SignalR **için küçük gruba gönder**önerilen Web uygulaması sayısı verilmiştir.
 
 |  Küçük gruba gönder     | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Bağlantılar      | 1000 | 2.000 | 5.000 | 10,000 | 20.000 | 50,000 | 100.000 |
+| Bağlantılar      | 1.000 | 2.000 | 5.000 | 10,000 | 20.000 | 50,000 | 100.000 |
 | Uygulama sunucusu sayısı | 2     | 2     | 4     | 4      | 8      | 32      | 40       |
 
 ### <a name="serverless-mode"></a>Sunucusuz mod
@@ -397,7 +397,7 @@ Tüm istemciler Azure SignalR hizmeti ile WebSocket bağlantısı kurar. Daha so
 
 |   REST API üzerinden yayınla     | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Bağlantılar               | 1000 | 2.000 | 5.000  | 10,000 | 20.000 | 50,000  | 100.000 |
+| Bağlantılar               | 1.000 | 2.000 | 5.000  | 10,000 | 20.000 | 50,000  | 100.000 |
 | Saniye başına gelen ileti  | 2     | 2     | 2      | 2      | 2      | 2       | 2       |
 | Saniye başına giden ileti | 2.000 | 4.000 | 10,000 | 20.000 | 40,000 | 100.000 | 200,000 |
 | Gelen bant genişliği  | 4 KBps    | 4 KBps    | 4 KBps     | 4 KBps     | 4 KBps     | 4 KBps      | 4 KBps      |
@@ -408,7 +408,7 @@ Kıyaslama, Azure SignalR hizmetine bağlanmaya başlamadan önce tüm istemcile
 
 |   REST API aracılığıyla kullanıcıya gönder | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Bağlantılar               | 1000 | 2.000 | 5.000  | 10,000 | 20.000 | 50,000  | 100.000 |
+| Bağlantılar               | 1.000 | 2.000 | 5.000  | 10,000 | 20.000 | 50,000  | 100.000 |
 | Saniye başına gelen ileti  | 300   | 600   | 900    | 1.300  | 2.000  | 10,000  | 18.000  |
 | Saniye başına giden ileti | 300   | 600   | 900    | 1.300  | 2.000  | 10,000  | 18.000 |
 | Gelen bant genişliği  | 600 KBps  | 1,2 MBps  | 1,8 MBps   | 2,6 MBps   | 4 Mb/sn     | 10 Mb/sn     | 36 MBps    |

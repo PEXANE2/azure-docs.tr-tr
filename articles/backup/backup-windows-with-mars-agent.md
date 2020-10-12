@@ -4,10 +4,10 @@ description: Windows makinelerini yedeklemek için Microsoft Azure Kurtarma Hizm
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: d2cdd5d1fa98462a70d72fd9f8723685952b665a
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90052231"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>Windows Server dosyalarını ve klasörlerini Azure 'a yedekleme
@@ -36,7 +36,7 @@ Yedekleme ilkesi, kurtarma noktaları oluşturmak için verilerin ne zaman anlı
 
 Azure Backup otomatik olarak bir hesaba gün ışığından yararlanma saati (DST) almaz. Bu varsayılan değer gerçek zamanlı ve zamanlanan yedekleme zamanı arasında bir uyuşmazlık oluşmasına neden olabilir.
 
-Bir yedekleme ilkesi oluşturmak için:
+Yedekleme ilkesi oluşturmak için:
 
 1. MARS aracısını indirip kaydettikten sonra, aracı konsolunu açın. Bunu, makinenizde **Microsoft Azure Backup** aramasını yaparak bulabilirsiniz.  
 
@@ -53,7 +53,7 @@ Bir yedekleme ilkesi oluşturmak için:
     ![Yedeklenecek öğeleri seçin](./media/backup-azure-manage-mars/selected-items-to-backup.png)
 
 1. **Yedeklenecek öğeleri seçin** sayfasında **İleri**' yi seçin.
-1. **Yedekleme zamanlamasını belirtin** sayfasında, günlük veya haftalık yedeklemelerin ne zaman ele geçirmesine belirtin. Ardından **İleri**’yi seçin.
+1. **Yedekleme zamanlamasını belirtin** sayfasında, günlük veya haftalık yedeklemelerin ne zaman ele geçirmesine belirtin. Sonra **İleri**’yi seçin.
 
     * Bir yedekleme çekilirken bir kurtarma noktası oluşturulur.
     * Ortamınızda oluşturulan kurtarma noktası sayısı yedekleme zamanlamanıza bağlıdır.
@@ -65,7 +65,7 @@ Bir yedekleme ilkesi oluşturmak için:
 
         ![Haftalık yedekleme zamanlaması ayarlama](./media/backup-configure-vault/week-schedule.png)
 
-1. **Bekletme Ilkesi Seç** sayfasında, verilerinizin geçmiş kopyalarının nasıl depolanacağını belirtin. Ardından **İleri**’yi seçin.
+1. **Bekletme Ilkesi Seç** sayfasında, verilerinizin geçmiş kopyalarının nasıl depolanacağını belirtin. Sonra **İleri**’yi seçin.
 
     * Bekletme ayarları hangi kurtarma noktalarının depolanacağını ve ne kadar süreyle depolanacağını belirtir.
     * Günlük bekletme ayarı için, günlük bekletme için belirtilen zamanda, en son kurtarma noktasının belirtilen gün sayısı boyunca tutulacaksınız. Ya da her ayın 30. gününde oluşturulan kurtarma noktasının 12 ay boyunca depolanması gerektiğini göstermek için bir aylık bekletme ilkesi belirtebilirsiniz.

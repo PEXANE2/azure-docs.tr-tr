@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
 ms.openlocfilehash: 1da4154530f823d391aea779011a34a35edfd070
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89071168"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Işlevleri PowerShell Geliştirici Kılavuzu
@@ -145,7 +145,7 @@ Aşağıdaki ortak parametreler de desteklenir:
 
 Daha fazla bilgi için bkz. [CommonParameters hakkında](https://go.microsoft.com/fwlink/?LinkID=113216).
 
-#### <a name="push-outputbinding-example-http-responses"></a>Gönderme-OutputBinding örneği: HTTP yanıtları
+#### <a name="push-outputbinding-example-http-responses"></a>Push-OutputBinding örnek: HTTP yanıtları
 
 HTTP tetikleyicisi adlı çıkış bağlamasını kullanarak bir yanıt döndürür `response` . Aşağıdaki örnekte, çıkış bağlaması `response` "output #1" değerine sahiptir:
 
@@ -174,7 +174,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 }) -Clobber
 ```
 
-#### <a name="push-outputbinding-example-queue-output-binding"></a>Gönderme-OutputBinding örneği: kuyruk çıkış bağlaması
+#### <a name="push-outputbinding-example-queue-output-binding"></a>Push-OutputBinding örnek: kuyruk çıktı bağlaması
 
 `Push-OutputBinding` , [Azure kuyruk depolama çıkış bağlaması](functions-bindings-storage-queue-output.md)gibi çıkış bağlamalarına veri göndermek için kullanılır. Aşağıdaki örnekte, sıraya yazılan ileti "output #1" değerine sahiptir:
 

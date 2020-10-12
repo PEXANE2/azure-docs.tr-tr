@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/07/2019
 ms.openlocfilehash: 585bdfdd7033f75e5beeba7246c8fbdd03a5e6e8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86530041"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak belirli iOS cihazlarına anında iletme bildirimleri gönderin
@@ -39,7 +39,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * Cihazdan bildirim gönder
 > * Uygulamayı çalıştırma ve bildirimler oluşturma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu konu, [öğretici: Azure Notification Hubs kullanarak iOS uygulamalarına anında iletme bildirimleri aracılığıyla][get-started]oluşturduğunuz uygulamayı oluşturur. Bu öğreticiye başlamadan önce, [Azure Notification Hubs kullanarak iOS uygulamalarına anında iletme bildirimleri][get-started]zaten tamamlanmış olmalıdır.
 
@@ -145,7 +145,7 @@ Bu konu, [öğretici: Azure Notification Hubs kullanarak iOS uygulamalarına an�
     ```
 
 8. `didFinishLaunchingWithOptions`İçindeki yönteminde `AppDelegate.m` , yönteminin başındaki bildirimler örneğini başlatmak için kodu ekleyin.  
-    `HUBNAME`ve `HUBLISTENACCESS` (içinde tanımlanan `hubinfo.h` ), `<hub name>` `<connection string with listen access>` Bildirim Hub 'ı adı ve daha önce edindiğiniz *Defaultlistensharedaccesssignature* bağlantı dizesi ile değiştirilmelidir.
+    `HUBNAME` ve `HUBLISTENACCESS` (içinde tanımlanan `hubinfo.h` ), `<hub name>` `<connection string with listen access>` Bildirim Hub 'ı adı ve daha önce edindiğiniz *Defaultlistensharedaccesssignature* bağlantı dizesi ile değiştirilmelidir.
 
     ```objc
     self.notifications = [[Notifications alloc] initWithConnectionString:HUBLISTENACCESS HubName:HUBNAME];
@@ -369,4 +369,4 @@ Bu öğreticide, Kategoriler için kayıtlı olan belirli iOS cihazlarına yayı
 [Notification Hubs Guidance]: /previous-versions/azure/azure-services/dn530749(v=azure.100)
 [Notification Hubs How-To for iOS]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [get-started]: ios-sdk-get-started.md
-[Azure Portal]: https://portal.azure.com
+[Azure portalındaki]: https://portal.azure.com

@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: 539145836849bb66bcf1f12a97ea405fe84c47bd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91311385"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Veri tabanlı stil Ifadeleri (Web SDK)
@@ -41,7 +41,7 @@ Bu videoda, Azure Maps web SDK 'sında veri odaklı stillendirme hakkında genel
 
 Azure Haritalar Web SDK 'Sı birçok tür ifadeyi destekler. İfadeler, kendi içinde veya diğer ifadelerle birlikte kullanılabilir.
 
-| İfade türü | Description |
+| İfade türü | Açıklama |
 |---------------------|-------------|
 | [Toplama ifadesi](#aggregate-expression) | Bir veri kümesi üzerinde işlenen ve ' a ' seçeneği ile kullanılabilen bir hesaplamayı tanımlayan bir ifade `clusterProperties` `DataSource` . |
 | [Mantıksal ifadeler](#boolean-expressions) | Boolean ifadeleri, Boole karşılaştırmaları değerlendirmek için bir dizi Boole işleci sağlar. |
@@ -86,7 +86,7 @@ Bu belgedeki tüm örnekler, farklı ifade türlerinin kullanılabileceği farkl
 
 Veri ifadeleri bir özelliğin özellik verilerine erişim sağlar. 
 
-| Expression | Dönüş türü | Description |
+| Expression | Dönüş türü | Açıklama |
 |------------|-------------|-------------|
 | `['at', number, array]` | object | Diziden bir öğe alır. |
 | `['geometry-type']` | string | Özelliğin geometri türünü alır: Point, MultiPoint, LineString, MultiLineString, Çokgen, MultiPolygon. |
@@ -95,10 +95,10 @@ Veri ifadeleri bir özelliğin özellik verilerine erişim sağlar.
 | `['has', string]` | boolean | Özelliğin özelliklerinin belirtilen özelliğe sahip olup olmadığını belirler. |
 | `['has', string, object]` | boolean | Nesnenin özelliklerinin belirtilen özelliğe sahip olup olmadığını belirler. |
 | `['id']` | değer | Özelliği varsa özelliğin KIMLIĞINI alır. |
-| `['length', string | array]` | sayı | Bir dizenin veya dizinin uzunluğunu alır. |
+| `['length', string | array]` | number | Bir dizenin veya dizinin uzunluğunu alır. |
 | `['in', boolean | string | number, array]` | boolean | Dizide bir öğe olup olmadığını belirler |
 | `['in', substring, string]` | boolean | Bir dizedeki alt dizenin mevcut olup olmadığını belirler |
-| `['index-of', boolean | string | number, array | string]`<br/><br/>`['index-of', boolean | string | number, array | string, number]` | sayı | Bir öğenin dizide bulunduğu ilk konumu veya bir dize içinde bir alt dize bulunabilir ya da `-1` giriş bulunamazsa. Aramanın başlatılacağı bir isteğe bağlı dizini kabul eder. |
+| `['index-of', boolean | string | number, array | string]`<br/><br/>`['index-of', boolean | string | number, array | string, number]` | number | Bir öğenin dizide bulunduğu ilk konumu veya bir dize içinde bir alt dize bulunabilir ya da `-1` giriş bulunamazsa. Aramanın başlatılacağı bir isteğe bağlı dizini kabul eder. |
 | `['slice', array | string, number]`<br/><br/>`['slice', array | string, number, number]` | `string`\|dizi | Bir diziden veya belirtilen başlangıç dizininden bir dizeden bir alt dizeden veya ayarlandıysa bir başlangıç dizininden bir bitiş dizininden bir öğe döndürür. Dönüş değeri, Başlangıç dizininin dahil değildir ancak son dizinden değil. |
 
 **Örnekler**
@@ -179,34 +179,34 @@ Veri ifadelerinin nasıl kullanılacağına ilişkin bazı ek örnekler aşağı
 
 Matematik ifadeleri, ifade çerçevesi içinde veri odaklı hesaplamalar gerçekleştirmek için matematik işleçleri sağlar.
 
-| Expression | Dönüş türü | Description |
+| Expression | Dönüş türü | Açıklama |
 |------------|-------------|-------------|
-| `['+', number, number, …]` | sayı | Belirtilen sayıların toplamını hesaplar. |
-| `['-', number]` | sayı | Belirtilen sayı ile 0 çıkartır. |
-| `['-', number, number]` | sayı | İkinci sayıya göre ilk sayıları çıkartır. |
-| `['*', number, number, …]` | sayı | Belirtilen sayıları birlikte çarpar. |
-| `['/', number, number]` | sayı | İlk sayıyı ikinci sayıya böler. |
-| `['%', number, number]` | sayı | İlk sayıyı ikinci sayıya bölerken kalanı hesaplar. |
-| `['^', number, number]` | sayı | İkinci sayının gücünden çıkarılan ilk değerin değerini hesaplar. |
-| `['abs', number]` | sayı | Belirtilen sayının mutlak değerini hesaplar. |
-| `['acos', number]` | sayı | Belirtilen sayının arkkosinüsünü hesaplar. |
-| `['asin', number]` | sayı | Belirtilen sayının arksinüsünü hesaplar. |
-| `['atan', number]` | sayı | Belirtilen sayının ark tanjantını hesaplar. |
-| `['ceil', number]` | sayı | Sayıyı bir sonraki tam tamsayıya yuvarlar. |
-| `['cos', number]` | sayı | Belirtilen sayının cos sayısını hesaplar. |
-| `['e']` | sayı | Matematik sabitini döndürür `e` . |
-| `['floor', number]` | sayı | Sayıyı, önceki tam tamsayıya yuvarlar. |
-| `['ln', number]` | sayı | Belirtilen sayının doğal logaritmasını hesaplar. |
-| `['ln2']` | sayı | Matematik sabitini döndürür `ln(2)` . |
-| `['log10', number]` | sayı | Belirtilen sayının 10 tabanında logaritmasını hesaplar. |
-| `['log2', number]` | sayı | Belirtilen sayının temel iki logaritmasını hesaplar. |
-| `['max', number, number, …]` | sayı | Belirtilen sayı kümesindeki en büyük sayıyı hesaplar. |
-| `['min', number, number, …]` | sayı | Belirtilen sayı kümesindeki minimum sayıyı hesaplar. |
-| `['pi']` | sayı | Matematik sabitini döndürür `PI` . |
-| `['round', number]` | sayı | Sayıyı en yakın tamsayıya yuvarlar. Yarı-değerler sıfırdan uzağa yuvarlanır. Örneğin, `['round', -1.5]` -2 olarak değerlendirilir. |
-| `['sin', number]` | sayı | Belirtilen sayının sinüsünü hesaplar. |
-| `['sqrt', number]` | sayı | Belirtilen sayının kare kökünü hesaplar. |
-| `['tan', number]` | sayı | Belirtilen sayının tanjantını hesaplar. |
+| `['+', number, number, …]` | number | Belirtilen sayıların toplamını hesaplar. |
+| `['-', number]` | number | Belirtilen sayı ile 0 çıkartır. |
+| `['-', number, number]` | number | İkinci sayıya göre ilk sayıları çıkartır. |
+| `['*', number, number, …]` | number | Belirtilen sayıları birlikte çarpar. |
+| `['/', number, number]` | number | İlk sayıyı ikinci sayıya böler. |
+| `['%', number, number]` | number | İlk sayıyı ikinci sayıya bölerken kalanı hesaplar. |
+| `['^', number, number]` | number | İkinci sayının gücünden çıkarılan ilk değerin değerini hesaplar. |
+| `['abs', number]` | number | Belirtilen sayının mutlak değerini hesaplar. |
+| `['acos', number]` | number | Belirtilen sayının arkkosinüsünü hesaplar. |
+| `['asin', number]` | number | Belirtilen sayının arksinüsünü hesaplar. |
+| `['atan', number]` | number | Belirtilen sayının ark tanjantını hesaplar. |
+| `['ceil', number]` | number | Sayıyı bir sonraki tam tamsayıya yuvarlar. |
+| `['cos', number]` | number | Belirtilen sayının cos sayısını hesaplar. |
+| `['e']` | number | Matematik sabitini döndürür `e` . |
+| `['floor', number]` | number | Sayıyı, önceki tam tamsayıya yuvarlar. |
+| `['ln', number]` | number | Belirtilen sayının doğal logaritmasını hesaplar. |
+| `['ln2']` | number | Matematik sabitini döndürür `ln(2)` . |
+| `['log10', number]` | number | Belirtilen sayının 10 tabanında logaritmasını hesaplar. |
+| `['log2', number]` | number | Belirtilen sayının temel iki logaritmasını hesaplar. |
+| `['max', number, number, …]` | number | Belirtilen sayı kümesindeki en büyük sayıyı hesaplar. |
+| `['min', number, number, …]` | number | Belirtilen sayı kümesindeki minimum sayıyı hesaplar. |
+| `['pi']` | number | Matematik sabitini döndürür `PI` . |
+| `['round', number]` | number | Sayıyı en yakın tamsayıya yuvarlar. Yarı-değerler sıfırdan uzağa yuvarlanır. Örneğin, `['round', -1.5]` -2 olarak değerlendirilir. |
+| `['sin', number]` | number | Belirtilen sayının sinüsünü hesaplar. |
+| `['sqrt', number]` | number | Belirtilen sayının kare kökünü hesaplar. |
+| `['tan', number]` | number | Belirtilen sayının tanjantını hesaplar. |
 
 ## <a name="aggregate-expression"></a>Toplama ifadesi
 
@@ -234,7 +234,7 @@ Boolean ifadeleri, Boole karşılaştırmaları değerlendirmek için bir dizi B
 
 Değerler karşılaştırılırken karşılaştırma kesin olarak yazılır. Farklı türlerin değerleri her zaman eşit kabul edilir. Türlerin ayrıştırma zamanında farklı olduğu bilinen durumlar geçersiz olarak değerlendirilir ve bir ayrıştırma hatası oluşturur. 
 
-| Expression | Dönüş türü | Description |
+| Expression | Dönüş türü | Açıklama |
 |------------|-------------|-------------|
 | `['!', boolean]` | boolean | Mantıksal değilleme. `true`Girişin olup olmadığını ve girişin olup olmadığını döndürür `false` `false` `true` . |
 | `['!=', value, value]` | boolean | `true`Giriş değerleri eşit değilse döndürür, `false` Aksi takdirde. |
@@ -437,13 +437,13 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 Tür ifadeleri, dizeler, sayılar ve Boole değerleri gibi farklı veri türlerini test etmek ve dönüştürmek için araçlar sağlar.
 
-| Expression | Dönüş türü | Description |
+| Expression | Dönüş türü | Açıklama |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | dizi \| nesnesi | Sabit bir dizi veya nesne değeri döndürür. Bir dizi ya da nesnenin bir ifade olarak değerlendirilmesini engellemek için bu ifadeyi kullanın. Bir dizi ya da nesnenin bir ifade tarafından döndürülmesi gerektiğinde bu gereklidir. |
 | `['image', string]` | string | Harita görüntüsü Sprite öğesine belirtilen görüntü KIMLIĞININ yüklenip yüklenmediğini denetler. Eğer ise, KIMLIK döndürülür, aksi takdirde null döndürülür. |
 | `['to-boolean', value]` | boolean | Giriş değerini bir Boole değerine dönüştürür. Sonuç, `false` girişin boş bir dize,,, veya, `0` `false` `null` `NaN` Aksi durumda `true` . |
 | `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | Giriş değerini bir renge dönüştürür. Birden çok değer sağlanmışsa, ilk başarılı dönüştürme alınana kadar her biri sırayla değerlendirilir. Girdilerden hiçbiri dönüştürülemiyorsa, ifade bir hatadır. |
-| `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | sayı | Mümkünse, giriş değerini bir sayıya dönüştürür. Giriş `null` veya ise `false` , sonuç 0 ' dır. Giriş ise, `true` Sonuç 1 ' dir. Giriş bir dizeyse, ECMAScript dil belirtiminin [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) dize işlevini kullanarak bir sayıya dönüştürülür. Birden çok değer sağlanmışsa, ilk başarılı dönüştürme alınana kadar her biri sırayla değerlendirilir. Girdilerden hiçbiri dönüştürülemiyorsa, ifade bir hatadır. |
+| `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | number | Mümkünse, giriş değerini bir sayıya dönüştürür. Giriş `null` veya ise `false` , sonuç 0 ' dır. Giriş ise, `true` Sonuç 1 ' dir. Giriş bir dizeyse, ECMAScript dil belirtiminin [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) dize işlevini kullanarak bir sayıya dönüştürülür. Birden çok değer sağlanmışsa, ilk başarılı dönüştürme alınana kadar her biri sırayla değerlendirilir. Girdilerden hiçbiri dönüştürülemiyorsa, ifade bir hatadır. |
 | `['to-string', value]` | string | Giriş değerini bir dizeye dönüştürür. Giriş ise, `null` sonuç olur `""` . Giriş bir Boole ise, sonuç `"true"` veya olur `"false"` . Giriş bir sayı ise, ECMAScript dil belirtiminin [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) Number işlevi kullanılarak bir dizeye dönüştürülür. Giriş bir renkeyse CSS RGBA Color dizesine dönüştürülür `"rgba(r,g,b,a)"` . Aksi takdirde, giriş, ECMAScript dil belirtiminin [JSON. stringbelirt](https://tc39.github.io/ecma262/#sec-json.stringify) işlevi kullanılarak bir dizeye dönüştürülür. |
 | `['typeof', value]` | string | Verilen değerin türünü tanımlayan bir dize döndürür. |
 
@@ -473,7 +473,7 @@ Tür ifadeleri, dizeler, sayılar ve Boole değerleri gibi farklı veri türleri
 
 Renk ifadeleri renk değerleri oluşturmayı ve işlemeyi kolaylaştırır.
 
-| Expression | Dönüş türü | Description |
+| Expression | Dönüş türü | Açıklama |
 |------------|-------------|-------------|
 | `['rgb', number, number, number]` | color | Ve arasında aralığa gereken *kırmızı*, *yeşil*ve *mavi* bileşenlerden bir renk değeri oluşturur `0` `255` ve bir alfa bileşeni `1` . Herhangi bir bileşen Aralık dışında olursa ifade bir hatadır. |
 | `['rgba', number, number, number, number]` | color | Ve arasında aralığa gereken *kırmızı*, *yeşil*, *mavi* bileşenlerden `0` `255` ve bir ve aralığı içindeki bir Alfa bileşeninden bir renk değeri oluşturur `0` `1` . Herhangi bir bileşen Aralık dışında olursa ifade bir hatadır. |
@@ -899,7 +899,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 Değişken bağlama ifadeleri, bir hesaplamanın sonuçlarını bir değişkende depolar. Bu nedenle, hesaplama sonuçlarının bir ifadenin başka bir yerinde birden çok kez başvurulabilmesini sağlayabilirsiniz. Birçok hesaplamayı içeren ifadeler için yararlı bir iyileştirmedir.
 
-| Expression | Dönüş türü | Description |
+| Expression | Dönüş türü | Açıklama |
 |--------------|---------------|--------------|
 | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;' Let ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;name1: String,<br/>&nbsp;&nbsp;&nbsp;&nbsp;Değer1: Any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;AD2: dize,<br/>&nbsp;&nbsp;&nbsp;&nbsp;değer2: Any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | Bir veya daha fazla değeri `var` , sonucu döndüren alt ifadede ifadesi tarafından kullanılmak üzere değişkenler olarak depolar. |
 | `['var', name: string]` | herhangi biri | İfadesi kullanılarak oluşturulan bir değişkene başvurur `let` . |
