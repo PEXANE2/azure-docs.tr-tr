@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: f68631771b8f86d995108112b1243ab38bf826bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84984791"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Sertifika kimlik doğrulaması kullanarak noktadan siteye bağlantı yapılandırma (klasik)
@@ -35,7 +35,7 @@ Tek bir istemci bilgisayarından sanal ağınıza güvenli bir bağlantı oluşt
 
 ![Noktadan Siteye diyagramı](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/point-to-site-connection-diagram.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Noktadan siteye sertifika kimlik doğrulama bağlantıları aşağıdaki önkoşulları gerektirir:
 
@@ -81,7 +81,7 @@ Başlamadan önce, bir Azure aboneliğiniz olduğunu doğrulayın. Henüz Azure 
 
 Zaten bir sanal ağınız (VNet) yoksa, bir tane oluşturun. Ekran görüntüleri örnek olarak verilmiştir. Değerlerin kendinizinkilerle değiştirildiğinden emin olun. Azure portalını kullanarak sanal ağ oluşturmak için şu adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com) menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin. **Yeni** sayfa açılır.
+1. [Azure portalı](https://portal.azure.com) menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin. **Yeni** sayfa açılır.
 
 2. Market 'te **Ara** alanına *sanal ağ* girin ve döndürülen listeden **sanal ağ** ' ı seçin. **Sanal ağ** sayfası açılır.
 
@@ -138,7 +138,7 @@ Bu adımda bir ağ geçidi alt ağı ve dinamik yönlendirme ağ geçidi oluştu
  
 ## <a name="create-certificates"></a><a name="generatecerts"></a>Sertifika oluşturma
 
-Azure, Noktadan siteye VPN 'Lerde VPN istemcilerinin kimliğini doğrulamak için sertifikaları kullanır. Kök sertifikanın ortak anahtar bilgilerini Azure'a yükleyin. Ortak anahtar daha sonra *güvenilir*olarak değerlendirilir. İstemci sertifikalarının güvenilir kök sertifikadan oluşturulması ve ardından Sertifikalar-Geçerli Kullanıcı \ kişisel \ sertifikalar sertifika deposundaki her bir istemci bilgisayara yüklenmesi gerekir. Sertifika, VNet 'e bağlanırken istemcinin kimliğini doğrulamak için kullanılır. 
+Azure, Noktadan siteye VPN 'Lerde VPN istemcilerinin kimliğini doğrulamak için sertifikaları kullanır. Kök sertifikanın ortak anahtar bilgilerini Azure'a yükleyin. Ortak anahtar daha sonra *güvenilir*olarak değerlendirilir. İstemci sertifikalarının güvenilir kök sertifikadan oluşturulması ve ardından Certificates-Current User\person\certificates sertifika deposundaki her bir istemci bilgisayara yüklenmesi gerekir. Sertifika, VNet 'e bağlanırken istemcinin kimliğini doğrulamak için kullanılır. 
 
 Otomatik olarak imzalanan sertifikalar kullanıyorsanız, bunların belirli parametreler kullanılarak oluşturulması gerekir. [PowerShell ve Windows 10](vpn-gateway-certificates-point-to-site.md)veya [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md)yönergelerini kullanarak otomatik olarak imzalanan bir sertifika oluşturabilirsiniz. Otomatik olarak imzalanan kök sertifikaları kullanırken ve otomatik olarak imzalanan kök sertifikadan istemci sertifikaları oluştururken bu talimatlardaki adımları izlemeniz önemlidir. Aksi halde, oluşturduğunuz sertifikalar P2S bağlantılarıyla uyumlu olmaz ve bağlantı hatası alırsınız.
 

@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: 456a7e4f07b2416e1d2037205574f2e7149e70e2
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86185951"
 ---
 # <a name="deploy-an-amazon-web-services-vm-with-a-runbook"></a>Runbook ile Amazon Web Services VM dağıtma
@@ -44,7 +44,7 @@ AWS PowerShell modülü dağıtıldıktan sonra, bir PowerShell betiği kullanar
 > Bu betikle ilgili daha fazla seçenek ve bilgi için lütfen [PowerShell Galerisi](https://www.powershellgallery.com/packages/New-AwsVM/)ziyaret edin.
 > 
 
-1. PowerShell oturumu açarak ve aşağıdaki komutu yazarak yeni-AwsVM PowerShell betiğini PowerShell Galerisi indirin:<br>
+1. PowerShell komut New-AwsVM bir PowerShell oturumu açarak ve aşağıdaki komutu yazarak PowerShell Galerisi indirin:<br>
    ```powershell
    Save-Script -Name New-AwsVM -Path <path>
    ```

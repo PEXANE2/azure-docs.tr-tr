@@ -8,10 +8,10 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
 ms.openlocfilehash: 276ab2cc1d79235c00ce1bb50ff9b648bb1de6ea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87099721"
 ---
 # <a name="troubleshooting-student-login-issues"></a>Öğrenci oturum açma sorunlarını giderme
@@ -39,16 +39,16 @@ Bir öğrenciye mevcut bir Microsoft hesabı (örneğin, Xbox) varsa, bu hesap, 
 
 1. **Microsoft 'ta oturum açma şeklini Yönet ' e**tıklayın. Kimliğinizi doğrulamanız istenir. Bir güvenlik kodu e-postayla gönderilir.
 
-    :::image type="content" source="media/troubleshoot-accounts/manage-sign-in.png" alt-text="Oturum açma yönetimi." border="false":::
+    :::image type="content" source="media/troubleshoot-accounts/manage-sign-in.png" alt-text="Oturum açma hata iletisi." border="false":::
 
 1. E-postayla gönderilen güvenlik kodunu girin.
 
-    :::image type="content" source="media/troubleshoot-accounts/sign-in-enter-code.png" alt-text="Oturum açma kodunu girin." border="false":::!
+    :::image type="content" source="media/troubleshoot-accounts/sign-in-enter-code.png" alt-text="Oturum açma hata iletisi." border="false":::!
 
 1. Hesabınıza **e-posta Ekle** ' ye tıklayın ve üniversite e-posta adresinizi girin.
 Bir sonraki oturum açışınızda, öğretme için Azure geliştirme araçlarına erişmek üzere üniversite e-posta adresinizi kullanabilirsiniz.
 
-    :::image type="content" source="media/troubleshoot-accounts/manage-sign-in-add-email.png" alt-text="Microsoft 'ta oturum açma şeklini yönetin." border="false":::
+    :::image type="content" source="media/troubleshoot-accounts/manage-sign-in-add-email.png" alt-text="Oturum açma hata iletisi." border="false":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [SSS](program-faq.md)

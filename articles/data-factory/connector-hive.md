@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: 587cdd54f09be2761026c25ccd80fb67d3eb6bb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84987050"
 ---
 # <a name="copy-data-from-hive-using-azure-data-factory"></a>Azure Data Factory kullanarak Hive 'den veri kopyalama 
@@ -34,7 +34,7 @@ Verileri Hive 'dan desteklenen herhangi bir havuz veri deposuna kopyalayabilirsi
 
 Azure Data Factory, bağlantıyı etkinleştirmek için yerleşik bir sürücü sağlar, bu nedenle bu bağlayıcıyı kullanarak herhangi bir sürücüyü el ile yüklemeniz gerekmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -59,7 +59,7 @@ Hive bağlantılı hizmeti için aşağıdaki özellikler desteklenir:
 | serviceDiscoveryMode | ZooKeeper hizmetinin kullanılması gerektiğini belirtmek için true, false değil.  | Hayır |
 | zooKeeperNameSpace | Hive sunucu 2 düğümlerinin eklendiği ZooKeeper üzerindeki ad alanı.  | Hayır |
 | useNativeQuery | Sürücünün yerel HiveQL sorguları kullanıp kullanmadığını veya onları HiveQL 'teki eşdeğer bir biçime dönüştürmeyeceğini belirtir.  | Hayır |
-| kullanıcı adı | Hive sunucusuna erişmek için kullandığınız Kullanıcı adı.  | Hayır |
+| username | Hive sunucusuna erişmek için kullandığınız Kullanıcı adı.  | Hayır |
 | password | Kullanıcıya karşılık gelen parola. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Hayır |
 | httpPath | Hive sunucusuna karşılık gelen kısmi URL.  | Hayır |
 | enableSsl | Sunucu bağlantılarının TLS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer false'tur.  | Hayır |
@@ -99,7 +99,7 @@ Hive 'den veri kopyalamak için, veri kümesinin Type özelliğini **Hiveobject*
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | tür | DataSet 'in Type özelliği: **Hiveobject** olarak ayarlanmalıdır | Evet |
-| manızı | Şemanın adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
+| schema | Şemanın adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
 | tablo | Tablonun adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
 | tableName | Şema bölümü dahil olmak üzere tablonun adı. Bu özellik geriye dönük uyumluluk için desteklenir. Yeni iş yükü için `schema` ve kullanın `table` . | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/30/2020
 ms.author: memildin
 ms.openlocfilehash: a04f94f5ebc7c1fdaf7b95e71dc8549e19863b39
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91614171"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Öğretici: güvenlik uyarılarını önceliklendirme, araştırın ve yanıtlayın
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticide ele alınan özellikler arasında ilerlemek için Azure Defender 'ın etkinleştirilmiş olması gerekir. Azure Defender 'ı ücretsiz olarak deneyebilirsiniz. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/). [Güvenlik Merkezi](security-center-get-started.md) 'ni kullanmaya başlama hızlı başlangıç, nasıl yükselteceğiniz konusunda size yol gösterir.
 
 
@@ -112,7 +112,7 @@ Devam etmeyi planlamıyorsanız veya bu özelliklerden birini devre dışı bır
 1. Uygun aboneliği seçin.
 1. Düşürme için **Azure Defender kapalı**' yı seçin.
 1. Otomatik sağlamayı devre dışı bırakmak için, **veri toplama** sayfasını açın ve **otomatik sağlamayı** **kapalı**olarak ayarlayın.
-4. **Kaydet**'i seçin.
+4. **Kaydet**’i seçin.
 
 >[!NOTE]
 > Otomatik sağlamayı devre dışı bırakmak, zaten aracısına sahip olan Azure VM 'lerinden Log Analytics aracısını kaldırmaz. Otomatik sağlamanın devre dışı bırakılması, kaynaklarınızın güvenliğinin izlenmesini kısıtlar.

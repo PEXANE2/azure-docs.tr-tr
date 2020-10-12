@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.openlocfilehash: 207b597bc865c8234d447759ab8b0f53dc35413c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87090289"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure Logic Apps için genel senaryolar, örnekler, öğreticiler ve izlenecek yollar
@@ -99,7 +99,7 @@ Bazen mantıksal uygulamalarınızın ve tümleştirme hesaplarınızın, Azure 
 
 Visual Studio, Azure DevOps veya diğer kaynak denetimleri ve otomatikleştirilmiş derleme araçlarıyla mantıksal uygulamaları tamamen geliştirebilir ve dağıtabilirsiniz. Bir kaynak şablonundaki iş akışları ve bağımlı bağlantılar için dağıtımı desteklemek amacıyla Logic Apps, Azure kaynak dağıtım şablonlarını kullanır. Visual Studio Araçları otomatik olarak bu şablonları oluşturur. Bu şablonlar, sürüm oluşturma için kaynak denetimine iade edebilirsiniz. İş akışı çalıştırma durumu için bildirim ve tanılama günlükleri için Azure Logic Apps Ayrıca izleme ve uyarılar da sağlar.
 
-### <a name="deploy"></a>Dağıt
+### <a name="deploy"></a>Dağıtma
 
 * [Hızlı başlangıç: Azure Logic Apps Visual Studio kullanarak otomatikleştirilmiş görevler, süreçler ve iş akışları oluşturma](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [Genel Bakış: mantıksal uygulama dağıtımını otomatikleştirme](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
@@ -117,7 +117,7 @@ Visual Studio, Azure DevOps veya diğer kaynak denetimleri ve otomatikleştirilm
 * [B2B kurumsal Tümleştirmeler için tümleştirme hesapları oluşturma ve yönetme](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 * [Azure Logic Apps tümleştirme hizmeti ortamını (ıSE) yönetme](../logic-apps/ise-manage-integration-service-environment.md)
 
-### <a name="monitor"></a>İzleyici
+### <a name="monitor"></a>İzleme
 
 * [Azure Logic Apps için çalışma durumunu izleme, tetikleyici geçmişini gözden geçirme ve uyarı ayarlama](../logic-apps/monitor-logic-apps.md)
 * [Azure Izleyici günlüklerini ayarlama ve Azure Logic Apps için tanılama verilerini toplama](../logic-apps/monitor-logic-apps-log-analytics.md)

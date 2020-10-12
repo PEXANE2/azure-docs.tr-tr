@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: beeb771ea5053dd0ad867a7568aa64bbb2d0b4ed
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90985303"
 ---
 # <a name="configure-the-application-dashboard"></a>Uygulama panosunu yapılandırma
@@ -33,7 +33,7 @@ Aşağıdaki ekran görüntüsünde, Pano **özel uygulama** şablonundan oluşt
 1. Kutucukta göstermek için **cihazlar** açılan menüsünde bir veya daha fazla cihaz seçin. Artık cihazlarda kullanılabilir telemetri, Özellikler ve komutları görürsünüz.
 1. Telemetri bölümünde **sıcaklık** ' ı seçin ve ardından **kutucuk Ekle**' yi seçin. Kutucuk artık, görselleştirmeyi değiştirebileceğiniz, kutucuğu yeniden boyutlandırmanın ve yapılandırabileceğiniz Pano üzerinde görüntülenir:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/device-details.png" alt-text="Panoya bir sıcaklık telemetri kutucuğu ekleme":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/device-details.png" alt-text="Özel uygulama şablonunu temel alan uygulamalar için Pano":::
 
 Panoya kutucuk ekleme ve özelleştirmeyi bitirdiğinizde **Kaydet**' i seçin.
 
@@ -56,11 +56,11 @@ Aşağıdaki tabloda, bir panoya ekleyebileceğiniz farklı kutucuk türleri aç
 | Markdown         | Markın kutucukları, markaşağı kullanarak biçimlendirilen bir başlık ve açıklama metnini görüntüleyen tıklatılabilir kutucuklardır. URL, uygulamadaki başka bir sayfanın göreli bağlantısı veya dış siteye mutlak bir bağlantı olabilir.|
 | Görüntü            | Görüntü kutucukları özel bir görüntü görüntüler ve tıklatılabilir olabilir. URL, uygulamadaki başka bir sayfanın göreli bağlantısı veya dış siteye mutlak bir bağlantı olabilir.|
 | Etiketle            | Etiket kutucukları, bir panoda özel metin görüntüler. Metnin boyutunu seçebilirsiniz. İlgili bilgileri panoya, iletişim ayrıntılarına veya yardım 'a eklemek için bir etiket kutucuğu kullanın.|
-| Count            | Sayı kutucukları bir cihaz grubundaki cihaz sayısını görüntüler.|
+| Sayı            | Sayı kutucukları bir cihaz grubundaki cihaz sayısını görüntüler.|
 | Harita              | Harita kutucukları bir haritadaki bir veya daha fazla cihazın konumunu görüntüler. Ayrıca, bir cihazın konum geçmişinin en fazla 100 noktasını görüntüleyebilirsiniz. Örneğin, bir cihazın geçen hafta içinde bulunduğu yerin örneklendiği yolunu görüntüleyebilirsiniz.|
 | KPI              |  KPI kutucukları, bir veya daha fazla cihazın bir zaman diliminde toplam telemetri değerlerini görüntüler. Örneğin, son bir saat içinde bir veya daha fazla cihaz için en fazla sıcaklık ve basınç sınırına ulaşılmayı göstermek için bunu kullanabilirsiniz.|
 | Çizgi grafik       | Çizgi grafik kutucukları bir veya daha fazla cihaz için bir zaman dilimi için bir veya daha fazla toplama telemetri değeri çizdir. Örneğin, son bir saat için bir veya daha fazla cihazın ortalama sıcaklığını ve basıncını çizmek üzere bir çizgi grafik görüntüleyebilirsiniz.|
-| Çubuk Grafik        | Çubuk grafik kutucukları bir veya daha fazla cihaz için bir zaman dilimi için bir veya daha fazla toplama telemetri değeri çizdir. Örneğin, son bir saat içindeki bir veya daha fazla cihazın ortalama sıcaklığını ve basıncını göstermek için bir çubuk grafik görüntüleyebilirsiniz.|
+| Çubuk grafiği        | Çubuk grafik kutucukları bir veya daha fazla cihaz için bir zaman dilimi için bir veya daha fazla toplama telemetri değeri çizdir. Örneğin, son bir saat içindeki bir veya daha fazla cihazın ortalama sıcaklığını ve basıncını göstermek için bir çubuk grafik görüntüleyebilirsiniz.|
 | Pasta grafiği        | Pasta grafik kutucukları bir veya daha fazla cihaz için bir zaman dilimi için bir veya daha fazla toplama telemetri değeri görüntüler.|
 | Isı haritası         | Isı haritası kutucukları, renk olarak gösterilen bir veya daha fazla cihaz hakkındaki bilgileri görüntüler.|
 | Bilinen son değer | Son bilinen değer kutucukları bir veya daha fazla cihaz için en son telemetri değerlerini görüntüler. Örneğin, bir veya daha fazla cihaz için en son sıcaklık, basınç ve nem değerlerini göstermek üzere bu kutucuğu kullanabilirsiniz. |
@@ -75,23 +75,23 @@ Toplam değerleri görüntüleyen kutucuklar için, toplamayı seçmek üzere **
 
 Çizgi grafikler, çubuk grafikler ve pasta grafikleri için farklı telemetri değerlerinin rengini özelleştirebilirsiniz. Özelleştirmek istediğiniz telemetrinin yanındaki palet simgesini seçin:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/color-customization.png" alt-text="Telemetri değerinin rengini değiştirme":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/color-customization.png" alt-text="Özel uygulama şablonunu temel alan uygulamalar için Pano":::
 
 Dize özelliklerini veya telemetri değerlerini gösteren kutucuklar için metnin nasıl görüntüleneceğini seçebilirsiniz. Örneğin, cihaz bir URL 'YI dize özelliğinde depoluyorsa, bunu tıklatılabilir bir bağlantı olarak gösterebilirsiniz. URL bir resme başvuruyorsa, görüntüyü bilinen son bir değer veya özellik kutucuğunda işleyebilirsiniz. Bir dizenin nasıl görüntüleneceğini değiştirmek için, kutucuk yapılandırmasında telemetri türü veya özelliğin yanındaki dişli simgesini seçin:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="Bir kutucukta bir dizenin nasıl görüntüleneceğini değiştirme":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="Özel uygulama şablonunu temel alan uygulamalar için Pano":::
 
 Sayısal **KPI**, **bilinen son değer**ve **özellik** kutucukları için, geçerli değerine göre kutucuğun rengini özelleştirmek üzere koşullu biçimlendirme kullanabilirsiniz. Koşullu biçimlendirme eklemek için kutucukta **Yapılandır** ' ı seçin ve ardından özelleştireceğiniz değerin yanındaki **koşullu biçimlendirme** simgesini seçin:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-1.png" alt-text="Bir kutucuk için yapılandırma seçeneğinin nasıl bulunacağını ve sonra koşullu biçimlendirme simgesini gösteren ekran görüntüsü":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-1.png" alt-text="Özel uygulama şablonunu temel alan uygulamalar için Pano":::
 
 Koşullu biçimlendirme kurallarınızı ekleyin:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-2.png" alt-text="Ortalama akış için koşullu biçimlendirme kurallarını gösteren ekran görüntüsü. Üç kural vardır-daha az Tha 20 yeşil, 50 ' den az sarı ve 50 ' den fazla şey kırmızıdır":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-2.png" alt-text="Özel uygulama şablonunu temel alan uygulamalar için Pano":::
 
 Aşağıdaki ekran görüntüsünde koşullu biçimlendirme kuralının etkisi gösterilmektedir:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-3.png" alt-text="Ortalama su akışı kutucuğunda sarı arka plan rengini gösteren ekran görüntüsü. Kutucuktaki sayı 40,84 ' dir":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-3.png" alt-text="Özel uygulama şablonunu temel alan uygulamalar için Pano":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

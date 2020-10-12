@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: v-erkel
 ms.openlocfilehash: 323ecd6a2dd001c3c8df1b2ec15f0ae8402ec70c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87092414"
 ---
 # <a name="azure-hpc-cache-data-ingest---msrsync-method"></a>Azure HPC Cache Data ınest-msrsync yöntemi
@@ -21,7 +21,7 @@ Azure HPC önbelleğiniz için verileri blob depolamaya taşıma hakkında daha 
 
 ``msrsync``Araç, verileri Azure HPC önbelleği için bir arka uç depolama hedefine taşımak üzere kullanılabilir. Bu araç birden çok paralel işlem çalıştırarak bant genişliği kullanımını iyileştirmek için tasarlanmıştır ``rsync`` . Bu, tarihinde GitHub 'dan alınabilir https://github.com/jbd/msrsync .
 
-``msrsync``Kaynak dizini ayrı "demetlere" ayırır ve sonra ``rsync`` her bir Bucket üzerinde ayrı süreçler çalıştırır.
+``msrsync`` Kaynak dizini ayrı "demetlere" ayırır ve sonra ``rsync`` her bir Bucket üzerinde ayrı süreçler çalıştırır.
 
 Dört çekirdekli bir VM kullanan ön test, 64 işlemleri kullanırken en iyi verimliliği gösteriyordu. ``msrsync`` ``-p`` İşlem sayısını 64 olarak ayarlamak için seçeneğini kullanın.
 

@@ -16,10 +16,10 @@ ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ce13c3bce7cdeb0f3e6dcf1f731be22d93a65587
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88654608"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için SAP ASE Azure Sanal Makineler DBMS dağıtımı
@@ -179,7 +179,7 @@ Azure 'a yüklemeden önce sıkıştırmayı uygulama önerisi çeşitli nedenle
 * Sıkıştırma yürütmesinin süresi, bir birinin daha fazla CPU veya daha yüksek g/ç bant genişliği veya şirket içi g/ç gecikme süresiyle daha güçlü donanımlar kullanmasına olanak daha kısadır
 * Daha küçük veritabanı boyutları disk ayırma için daha az maliyete yol açabilir
 
-Veri ve LOB sıkıştırma, şirket içinde çalıştığı gibi Azure sanal makinelerinde barındırılan bir VM 'de çalışır. Sıkıştırmanın mevcut bir SAP Ao veritabanında zaten kullanımda olup olmadığını denetleme hakkında daha fazla bilgi için [sap destek notuna 1750510](https://launchpad.support.sap.com/#/notes/1750510)bakın. SAP Ao veritabanı sıkıştırması hakkında daha fazla ayrıntı için [sap destek notuna bakın #2121797](https://launchpad.support.sap.com/#/notes/2121797)
+Veri ve LOB-Compression, şirket içinde çalıştığı gibi Azure sanal makinelerinde barındırılan bir VM 'de çalışır. Sıkıştırmanın mevcut bir SAP Ao veritabanında zaten kullanımda olup olmadığını denetleme hakkında daha fazla bilgi için [sap destek notuna 1750510](https://launchpad.support.sap.com/#/notes/1750510)bakın. SAP Ao veritabanı sıkıştırması hakkında daha fazla ayrıntı için [sap destek notuna bakın #2121797](https://launchpad.support.sap.com/#/notes/2121797)
 
 ## <a name="high-availability-of-sap-ase-on-azure"></a>Azure 'da SAP ASE 'nin yüksek kullanılabilirliği 
 HADR kullanıcıları Kılavuzu, 2 düğümlü SAP ASE "her zaman açık" çözümünün kurulumunu ve yapılandırmasını ayrıntılarıyla gösterir.  Ayrıca, üçüncü bir olağanüstü durum kurtarma düğümü de desteklenir. SAP ASE, paylaşılan disk ve yerel işletim sistemi Kümelemesi (kayan IP) dahil olmak üzere çok sayıda kullanılabilir yapılandırmayı destekler. Azure 'daki tek desteklenen yapılandırma, kayan IP olmadan hata Yöneticisi kullanıyor.  Kayan IP adresi yöntemi Azure 'da çalışmayacak.  SAP Kernel, "HA duyarlı" bir uygulamadır ve birincil ve ikincil SAP Ao sunucuları hakkında bilgi sahibi olur. SAP asa ve Azure arasında hiç tümleştirme yoktur, Azure Iç yük dengeleyici kullanılmaz. Bu nedenle, standart SAP Ao belgelerinin ardından [SAP Ao HADR kullanıcıları kılavuzuyla](https://help.sap.com/viewer/efe56ad3cad0467d837c8ff1ac6ba75c/16.0.3.7/en-US/a6645e28bc2b1014b54b8815a64b87ba.html) başlaması gerekir 
@@ -188,7 +188,7 @@ HADR kullanıcıları Kılavuzu, 2 düğümlü SAP ASE "her zaman açık" çöz�
 > Azure 'daki tek desteklenen yapılandırma, kayan IP olmadan hata Yöneticisi kullanıyor.  Kayan IP adresi yöntemi Azure 'da çalışmayacak. 
 
 ### <a name="third-node-for-disaster-recovery"></a>Olağanüstü durum kurtarma için üçüncü düğüm
-Yerel yüksek kullanılabilirlik için SAP ASE 'yi her zaman açık olarak kullanmanın ötesinde, yapılandırmayı başka bir Azure bölgesindeki zaman uyumsuz olarak çoğaltılan bir düğüme genişletmek isteyebilirsiniz. Böyle bir senaryoya yönelik belgeler [burada](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)bulunabilir.
+Yerel yüksek kullanılabilirlik için SAP ASE Always-On kullanmanın ötesinde, yapılandırmayı başka bir Azure bölgesindeki zaman uyumsuz olarak çoğaltılan bir düğüme genişletmek isteyebilirsiniz. Böyle bir senaryoya yönelik belgeler [burada](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)bulunabilir.
 
 ## <a name="sap-ase-database-encryption--ssl"></a>SAP Ao veritabanı şifreleme & SSL 
 SAP yazılım sağlama Yöneticisi (SWPM), yükleme sırasında veritabanını şifrelemek için bir seçenek sunar.  Şifrelemeyi kullanmak istiyorsanız, SAP tam veritabanı şifrelemesini kullanmanız önerilir.  Şu belgelerde belgelenen ayrıntılara bakın:
@@ -239,7 +239,7 @@ ve işlem Dbakokpit içinde oluşturulan bağlantılar şuna benzer:
 
 SAP sistemini barındıran Azure sanal makinesinin AD ve DNS 'nize nasıl bağlı olduğuna bağlı olarak, ICM 'nin Dbakokpit 'yi açtığınız makinede çözümlenebileceğiniz tam bir ana bilgisayar adı kullandığını doğrulayın. ICM 'nin profil parametrelerine bağlı olarak tam ana bilgisayar adını nasıl belirlediğini ve gerekirse ICM/host_name_full parametresini ayarlama hakkında bilgi edinmek için bkz. [sap destek notunun #773830](https://launchpad.support.sap.com/#/notes/773830) .
 
-VM 'yi şirket içi ve Azure arasında şirketler arası bağlantı olmadan yalnızca bulut senaryosunda dağıttıysanız, bir genel IP adresi ve bir tanımlamanız gerekir `domainlabel` . VM 'nin Genel DNS adının biçimi şöyle görünür:
+VM 'yi şirket içi ve Azure arasında şirketler arası bağlantı olmadan bir Cloud-Only senaryosunda dağıttıysanız, bir genel IP adresi ve bir tanımlamanız gerekir `domainlabel` . VM 'nin Genel DNS adının biçimi şöyle görünür:
 
 > `<custom domainlabel`>. `<azure region`>. cloudapp.azure.com
 > 

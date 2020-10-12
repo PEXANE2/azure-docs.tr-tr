@@ -13,10 +13,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 8132eb72b3e448d7ae830b29ccb7dc51528c1250
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87921410"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Microsoft Graph ile Azure AD B2C Kullanıcı hesaplarını yönetme
@@ -62,9 +62,9 @@ Microsoft Graph API 'sinde, hem yerel hem de Federasyon kimlikleri, `identities`
 
 | Özellik   | Tür |Açıklama|
 |:---------------|:--------|:----------|
-|Signıntype|string| Dizininizdeki Kullanıcı oturum açma türlerini belirtir. Yerel hesap için:,,,, `emailAddress` `emailAddress1` `emailAddress2` `emailAddress3` `userName` veya istediğiniz diğer herhangi bir tür. Sosyal hesabın olarak ayarlanması gerekir `federated` .|
-|yayınlayan|string|Kimliğin verenini belirtir. Yerel hesaplar için ( **Signıntype** değil `federated` ), bu özellik yerel B2C kiracısı varsayılan etki alanı adıdır (örneğin,) `contoso.onmicrosoft.com` . Sosyal kimlik (burada **Signıntype** ) için `federated` değer verenin adıdır, örneğin`facebook.com`|
-|ıssueratandıd|string|Kullanıcıya veren tarafından atanan benzersiz tanımlayıcıyı belirtir. **Issuer** ve **ıssueratanmadı** birleşimi kiracınız dahilinde benzersiz olmalıdır. Yerel hesap için, **Signıntype** veya olarak ayarlandığında `emailAddress` `userName` , Kullanıcı için oturum açma adını temsil eder.<br>**Signıntype** şu şekilde ayarlandığında: <ul><li>`emailAddress`(veya `emailAddress` benzer şekilde başlıyor `emailAddress1` ) **ıssueratandıd** geçerli bir e-posta adresi olmalıdır</li><li>`userName`(veya başka bir değer), **ıssueratandıd** [bir e-posta adresinin geçerli bir yerel parçası](https://tools.ietf.org/html/rfc3696#section-3) olmalıdır</li><li>`federated`, **ıssueratanmadı** Federal hesap benzersiz tanımlayıcısını temsil ediyor</li></ul>|
+|Signıntype|string| Dizininizdeki Kullanıcı oturum açma türlerini belirtir. Yerel hesap için:,,,,  `emailAddress` `emailAddress1` `emailAddress2` `emailAddress3`  `userName` veya istediğiniz diğer herhangi bir tür. Sosyal hesabın olarak ayarlanması gerekir  `federated` .|
+|yayınlayan|string|Kimliğin verenini belirtir. Yerel hesaplar için ( **Signıntype** değil `federated` ), bu özellik yerel B2C kiracısı varsayılan etki alanı adıdır (örneğin,) `contoso.onmicrosoft.com` . Sosyal kimlik (burada **Signıntype** ) için  `federated` değer verenin adıdır, örneğin `facebook.com`|
+|ıssueratandıd|string|Kullanıcıya veren tarafından atanan benzersiz tanımlayıcıyı belirtir. **Issuer** ve **ıssueratanmadı** birleşimi kiracınız dahilinde benzersiz olmalıdır. Yerel hesap için, **Signıntype** veya olarak ayarlandığında `emailAddress` `userName` , Kullanıcı için oturum açma adını temsil eder.<br>**Signıntype** şu şekilde ayarlandığında: <ul><li>`emailAddress` (veya `emailAddress` benzer şekilde başlıyor `emailAddress1` ) **ıssueratandıd** geçerli bir e-posta adresi olmalıdır</li><li>`userName`(veya başka bir değer), **ıssueratandıd** [bir e-posta adresinin geçerli bir yerel parçası](https://tools.ietf.org/html/rfc3696#section-3) olmalıdır</li><li>`federated`, **ıssueratanmadı** Federal hesap benzersiz tanımlayıcısını temsil ediyor</li></ul>|
 
 Aşağıdaki **kimlikler** özelliği, oturum açma adı ile yerel hesap kimliği, oturum açma olarak bir e-posta adresi ve sosyal kimlik ile birlikte. 
 
@@ -117,7 +117,7 @@ Kullanıcı geçişi senaryolarında, geçirmek istediğiniz hesapların Azure A
 
 Müşterilere yönelik her uygulamanın, toplanacak bilgiler için benzersiz gereksinimleri vardır. Azure AD B2C kiracınız, belirtilen ad, soyadı, şehir ve posta kodu gibi özelliklerde depolanan yerleşik bir bilgi kümesiyle gelir. Azure AD B2C, her müşteri hesabında depolanan özellikler kümesini genişletebilirsiniz. Özel öznitelikler tanımlama hakkında daha fazla bilgi için bkz. [özel öznitelikler (Kullanıcı akışları)](user-flow-custom-attributes.md) ve [özel öznitelikler (özel ilkeler)](custom-policy-custom-attributes.md).
 
-Microsoft Graph API, uzantı öznitelikleri olan bir kullanıcının oluşturulmasını ve güncelleştirilmesini destekler. Graph API uzantı öznitelikleri, yöntemi kullanılarak adlandırılır `extension_ApplicationClientID_attributename` ; burada, `ApplicationClientID` uygulamanın uygulamanın **(istemci) kimliğidir** `b2c-extensions-app` ( **App registrations**  >  Azure Portal**tüm uygulamalarda** uygulama kayıtları bulunur). Uzantı öznitelik adında temsil edilen **uygulama (istemci) kimliğinin** hiçbir tire içerdiğini unutmayın. Örnek:
+Microsoft Graph API, uzantı öznitelikleri olan bir kullanıcının oluşturulmasını ve güncelleştirilmesini destekler. Graph API uzantı öznitelikleri, yöntemi kullanılarak adlandırılır `extension_ApplicationClientID_attributename` ; burada, `ApplicationClientID` uygulamanın uygulamanın **(istemci) kimliğidir** `b2c-extensions-app` ( **App registrations**  >  Azure Portal**tüm uygulamalarda** uygulama kayıtları bulunur). Uzantı öznitelik adında temsil edilen **uygulama (istemci) kimliğinin** hiçbir tire içerdiğini unutmayın. Örneğin:
 
 ```json
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"

@@ -9,10 +9,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9810a34021aa039354aad24f84aff373229c0190
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87021486"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>StorSimple Sanal dizisi dağıtma-VMware 'de sağlama
@@ -95,7 +95,7 @@ Hiper yöneticinizde sanal cihaz sağlamak için aşağıdaki adımları gerçek
 7. **Datastore Browser** (Veri Deposu Tarayıcısı) penceresi açılır.
 
    ![Veri deposu tarayıcısının ekran görüntüsü. Veri deposundaki klasörler görünür.](./media/storsimple-virtual-array-deploy2-provision-vmware/image6.png)
-8. Araç çubuğunda simge ' ye tıklayarak :::image type="icon" source="./media/storsimple-virtual-array-deploy2-provision-vmware/image7.png"::: Yeni bir klasör oluşturun. Klasör adını belirtin ve not edin. Sanal makine oluştururken bu klasör adını kullanacaksınız (önerilen yöntemdir). **Tamam** düğmesine tıklayın.
+8. Araç çubuğunda simge ' ye tıklayarak :::image type="icon" source="./media/storsimple-virtual-array-deploy2-provision-vmware/image7.png"::: Yeni bir klasör oluşturun. Klasör adını belirtin ve not edin. Sanal makine oluştururken bu klasör adını kullanacaksınız (önerilen yöntemdir). **Tamam**'a tıklayın.
 
    ![Yeni klasör simgesiyle vurgulanmış bir veri deposu tarayıcısının ekran görüntüsü. Bir iletişim kutusunda doldurulmuş bir klasör adı ve Tamam düğmesi vurgulanır.](./media/storsimple-virtual-array-deploy2-provision-vmware/image8.png)
 9. Yeni klasör **Datastore Browser** (Veri Deposu Tarayıcısı) penceresinin sol tarafında görünür.
@@ -169,13 +169,13 @@ Hiper yöneticinizde sanal cihaz sağlamak için aşağıdaki adımları gerçek
 32. **Gelişmiş Seçenekler** sayfasında, Varsayılanı kabul edin.
 
     ![Gelişmiş Seçenekler sayfasının ekran görüntüsü. Sanal cihaz düğümü SCSI (0:0) olarak ayarlanır ve sonraki düğme vurgulanır.](./media/storsimple-virtual-array-deploy2-provision-vmware/image33.png)
-33. **Tamamlamaya hazırlanıyor** sayfasında, disk seçeneklerini gözden geçirin. **Son**'a tıklayın.
+33. **Tamamlamaya hazırlanıyor** sayfasında, disk seçeneklerini gözden geçirin. **Finish (Son)** düğmesine tıklayın.
 
     ![Tamamlamaya hazırlanma sayfasının ekran görüntüsü. Disk seçeneklerinin bir özeti görünür ve son düğmesi vurgulanır.](./media/storsimple-virtual-array-deploy2-provision-vmware/image34.png)
-34. Sanal makine özellikleri sayfasına dönün. Sanal makinenize yeni bir sabit disk eklenir. **Son**'a tıklayın.
+34. Sanal makine özellikleri sayfasına dönün. Sanal makinenize yeni bir sabit disk eklenir. **Finish (Son)** düğmesine tıklayın.
 
     ![Sanal makine özellikleri sayfasının ekran görüntüsü. Donanım listesi yeni sabit diski içerir ve son düğmesi vurgulanır.](./media/storsimple-virtual-array-deploy2-provision-vmware/image35.png)
-35. Sağ bölmede sanal makineniz seçiliyken **Özet** sekmesine gidin. sanal makinenizin ayarlarını gözden geçirin.
+35. Sağ bölmede sanal makineniz seçiliyken **Özet** sekmesine gidin. Sanal makinenizin ayarlarını gözden geçirin.
 
     ![VSphere istemci Özeti sekmesinin ekran görüntüsü. Yeni sanal makine vurgulanır ve kaynakları ve genel özellikleri görünür olur.](./media/storsimple-virtual-array-deploy2-provision-vmware/image36.png)
 
@@ -196,10 +196,10 @@ Sanal cihazınızı başlatmak ve bağlantı kurmak için aşağıdaki adımlar�
    ![VSphere istemci konsolu sekmesinin ekran görüntüsü. Parola kutusu boştur.](./media/storsimple-virtual-array-deploy2-provision-vmware/image38.png)
 3. Güvenlik nedeniyle cihazın yönetici parolasının ilk oturum açma işleminin ardından değiştirilmesi gerekir. Parolayı değiştirmeniz istenir.
 
-   ![VSphere istemci konsolu sekmesinin ekran görüntüsü. sayfadaki metin parolanın değiştirilmesi gerektiğini belirtir.](./media/storsimple-virtual-array-deploy2-provision-vmware/image39.png)
+   ![VSphere istemci konsolu sekmesinin ekran görüntüsü. Sayfadaki metin parolanın değiştirilmesi gerektiğini belirtir.](./media/storsimple-virtual-array-deploy2-provision-vmware/image39.png)
 4. En az 8 karakterden oluşan bir parola girin. Parola şu gereksinimlerin 3 ' den 4 ' ü içermelidir: büyük harf, küçük harf, sayısal ve özel karakterler. Onaylamak için parolayı yeniden girin. Parolanın değiştiği bildirilir.
 
-   ![VSphere istemci konsolu sekmesinin ekran görüntüsü. sayfadaki metin parolanın değiştirildiğini belirtir.](./media/storsimple-virtual-array-deploy2-provision-vmware/image40.png)
+   ![VSphere istemci konsolu sekmesinin ekran görüntüsü. Sayfadaki metin parolanın değiştirildiğini belirtir.](./media/storsimple-virtual-array-deploy2-provision-vmware/image40.png)
 5. Parola başarıyla değiştirildikten sonra, sanal cihaz yeniden başlayabilir. Yeniden başlatmanın tamamlanmasını bekleyin. Cihazın Windows PowerShell konsolu bir ilerleme çubuğu ile birlikte görüntülenebilir.
 
    ![İlerleme çubuğu içeren bir konsol penceresini gösteren ekran görüntüsü. Penceredeki metin ilk kurulumun devam ettiğinden emin olur ve kullanıcıdan beklemesini ister.](./media/storsimple-virtual-array-deploy2-provision-vmware/image41.png)
@@ -210,12 +210,12 @@ Sanal cihazınızı başlatmak ve bağlantı kurmak için aşağıdaki adımlar�
    Sonra, ağı yapılandırın.
 7. `Get-HcsIpAddress`Sanal cihazınızda etkin olan ağ arabirimlerini listelemek için komutunu kullanın. Cihazınızda tek bir ağ arabirimi varsa `Ethernet` varsayılan adı atanır.
 
-   ![Get-Hcsıpaddress komutunun çıkışıyla bir konsol penceresi gösteren ekran görüntüsü. "Ethernet", cihazın adı olarak listelenir.](./media/storsimple-virtual-array-deploy2-provision-vmware/image43m.png)
+   ![Get-HcsIpAddress komutunun çıkışıyla bir konsol penceresi gösteren ekran görüntüsü. "Ethernet", cihazın adı olarak listelenir.](./media/storsimple-virtual-array-deploy2-provision-vmware/image43m.png)
 8. Ağı yapılandırmak için `Set-HcsIpAddress` cmdlet'ini kullanın. Aşağıda bir örnek gösterilmiştir:
 
     `Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
 
-    ![Get-Help set-Hcsıpaddress komutunun çıkışıyla birlikte bir konsol penceresi gösteren ekran görüntüsü ve set-Hcsıpaddress komutunun doğru kullanımı.](./media/storsimple-virtual-array-deploy2-provision-vmware/image44.png)
+    ![Get-Help Set-HcsIpAddress komutunun çıkışıyla ve Set-HcsIpAddress komutunun doğru kullanımının bir konsol penceresini gösteren ekran görüntüsü.](./media/storsimple-virtual-array-deploy2-provision-vmware/image44.png)
 9. İlk kurulum işlemleri tamamlandıktan ve cihaz önyüklendikten sonra cihaz başlık metnini görürsünüz. Cihazı yönetmek için başlık metninde görüntülenen IP adresini ve URL'yi not edin. Bu IP adresini, sanal cihazınızın Web Kullanıcı arabirimine bağlanmak ve yerel kurulumu ve kaydı gerçekleştirmek için kullanacaksınız.
 
    ![Cihaz başlık metniyle bir konsol penceresi gösteren ekran görüntüsü. Bu metin, cihaz IP adresini ve URL 'YI içerir.](./media/storsimple-virtual-array-deploy2-provision-vmware/image45.png)

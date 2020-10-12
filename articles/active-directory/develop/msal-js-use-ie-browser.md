@@ -14,10 +14,10 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 633166f3bb46212991920d6720737f8268b3f401
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87026863"
 ---
 # <a name="known-issues-on-internet-explorer-browsers-msaljs"></a>Internet Explorer tarayıcılarındaki bilinen sorunlar (MSAL.js)
@@ -47,7 +47,7 @@ Uygulamanızı Internet Explorer 'da çalışan yerel olarak çalıştırmak ve 
 
     1. Internet Explorer **araçları** (dişli simgesi) seçeneğine tıklayın.
     1. **Internet seçenekleri** ' ni ve ardından **güvenlik** sekmesini seçin.
-    1. **Internet** bölgesine tıklayın ve **korumalı modu etkinleştir (Internet Explorer 'ın yeniden başlatılmasını gerektirir)** seçeneğinin işaretini kaldırın. Internet Explorer, bilgisayarınızın artık korunmuyor olduğunu uyarır. **Tamam** düğmesine tıklayın.
+    1. **Internet** bölgesine tıklayın ve **korumalı modu etkinleştir (Internet Explorer 'ın yeniden başlatılmasını gerektirir)** seçeneğinin işaretini kaldırın. Internet Explorer, bilgisayarınızın artık korunmuyor olduğunu uyarır. **Tamam**'a tıklayın.
     1. Internet Explorer 'ı yeniden başlatın.
     1. Uygulamanızı çalıştırın ve hata ayıklayın.
 

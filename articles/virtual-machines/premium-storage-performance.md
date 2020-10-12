@@ -8,10 +8,10 @@ ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: f89358f4ca34c39527d7e65307ada042ba3df7e0
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776162"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Depolama: yüksek performans için tasarım
@@ -197,7 +197,7 @@ Uygulama performansı üzerinde GÇ boyutunun etkilerini sağlamak için, VM 'ni
 
 ## <a name="high-scale-vm-sizes"></a>Yüksek ölçekli VM boyutları
 
-Bir uygulamayı tasarlamaya başladığınızda, ilk yapmanız gereken tek şey, uygulamanızı barındırmak için bir VM seçin. Premium Depolama, daha yüksek bilgi işlem gücü ve yüksek bir yerel disk g/ç performansı gerektiren uygulamalar çalıştırabilen yüksek ölçekli VM boyutlarına sahiptir. Bu VM 'Ler, daha hızlı işlemciler, daha yüksek bellek-çekirdek oranı ve yerel disk için katı hal sürücüsü (SSD) sağlar. Premium depolamayı destekleyen yüksek ölçekli sanal makinelerin örnekleri DS ve GS serisi VM 'lardır.
+Bir uygulamayı tasarlamaya başladığınızda, ilk yapmanız gereken tek şey, uygulamanızı barındırmak için bir VM seçin. Premium Depolama, daha yüksek bilgi işlem gücü ve yüksek bir yerel disk g/ç performansı gerektiren uygulamalar çalıştırabilen yüksek ölçekli VM boyutlarına sahiptir. Bu VM 'Ler, daha hızlı işlemciler, daha yüksek bellek-çekirdek oranı ve yerel disk için bir Solid-State sürücüsü (SSD) sağlar. Premium depolamayı destekleyen yüksek ölçekli sanal makinelerin örnekleri DS ve GS serisi VM 'lardır.
 
 Yüksek ölçekli VM 'Ler, farklı boyutlarda CPU çekirdekleri, bellek, işletim sistemi ve geçici disk boyutuyla farklı boyutlarda kullanılabilir. Her VM boyutunun Ayrıca sanal makineye iliştirebilmeniz için maksimum veri diski sayısı vardır. Bu nedenle, seçilen VM boyutu, uygulamanız için ne kadar işlem, bellek ve depolama kapasitesi olduğunu etkiler. Ayrıca Işlem ve depolama maliyetini de etkiler. Örneğin, bir DS serisi ve GS serisi içindeki en büyük VM boyutunun belirtimleri aşağıda verilmiştir:
 
@@ -279,7 +279,7 @@ Veri diskleri için önerilen disk önbelleği ayarları aşağıda verilmiştir
 
 | **Disk önbelleğe alma ayarı** | **Bu ayarın ne zaman kullanılacağı önerisi** |
 | --- | --- |
-| Hiçbiri |Ana bilgisayar ön belleğini salt yazılır ve yazma ağır diskler için hiçbiri olarak yapılandırın. |
+| Yok |Ana bilgisayar ön belleğini salt yazılır ve yazma ağır diskler için hiçbiri olarak yapılandırın. |
 | ReadOnly |Salt okunur ve okuma/yazma diskleri için konak önbelleğini ReadOnly olarak yapılandırın. |
 | ReadWrite |Konak ön belleğini yalnızca, uygulamanız gerektiğinde kalıcı disklere önbelleğe alınmış verileri yazmayı doğru şekilde işlediğinde, salt yazılır olarak yapılandırın. |
 

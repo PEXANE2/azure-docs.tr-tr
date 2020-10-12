@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: f000251009bda730b15458f3ab4d8b7d6ca1db6d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87030309"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>PowerShell kullanarak Bildirim Hub 'larını dağıtma ve yönetme
@@ -78,7 +78,7 @@ catch [System.Exception]
 
 Notification Hubs sağlamak için SDK 'dan [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager?view=azure-dotnet) sınıfının bir örneğini oluşturun.
 
-Bağlantı dizesi sağlamak için kullanılan bir yetkilendirme kuralı almak için Azure PowerShell birlikte bulunan [Get-AzureSBAuthorizationRule] cmdlet 'ini kullanabilirsiniz. Örneğe bir başvuru, `NamespaceManager` `$NamespaceManager` değişkeninde depolanır. `$NamespaceManager`bir Bildirim Hub 'ı sağlamak için kullanılır.
+Bağlantı dizesi sağlamak için kullanılan bir yetkilendirme kuralı almak için Azure PowerShell birlikte bulunan [Get-AzureSBAuthorizationRule] cmdlet 'ini kullanabilirsiniz. Örneğe bir başvuru, `NamespaceManager` `$NamespaceManager` değişkeninde depolanır. `$NamespaceManager` bir Bildirim Hub 'ı sağlamak için kullanılır.
 
 ``` powershell
 $sbr = Get-AzureSBAuthorizationRule -Namespace $Namespace
