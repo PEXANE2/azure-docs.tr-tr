@@ -15,10 +15,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: e756ff0133e3d3f0f86ea2f592005f2f2986488e
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91707770"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Tanılama günlüklerini izleme Media Services
@@ -29,7 +29,7 @@ ms.locfileid: "91707770"
 
 Bu makalede, verileri depolama hesabına yönlendirme ve sonra verileri görüntüleme işlemlerinin nasıl yapılacağı gösterilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Media Services hesabı oluşturun](./create-account-howto.md).
 - [İzleme Media Services ölçümleri ve tanılama günlüklerini](media-services-metrics-diagnostic-logs.md)inceleyin.
@@ -76,7 +76,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
     }]'
 ```
 
-Örnek:
+Örneğin:
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name amsv3diagnostic \

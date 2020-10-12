@@ -4,10 +4,10 @@ description: Azure 'dan en iyi şekilde yararlanmak için danışman puanı kull
 ms.topic: article
 ms.date: 09/09/2020
 ms.openlocfilehash: 29d8480f501a78c1668b52034f439f998419f9d9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335628"
 ---
 # <a name="optimize-azure-workloads-using-advisor-score"></a>Danışman puanı kullanarak Azure iş yüklerini iyileştirin
@@ -17,11 +17,11 @@ ms.locfileid: "91335628"
 Azure Advisor, iş yükleriniz için en iyi yöntem önerilerini sağlar. Bu öneriler kişiselleştirilmiş ve size yardımcı olmaya yönelik eylem yapılabilir:
 * İş yüklerinizin duruşunu iyileştirin ve Azure dağıtımlarınızı iyileştirin
 * En iyi uygulamaları takip ederek en iyi sorunları önleyici şekilde engelleyin
-* Azure iş yüklerinizi [Microsoft Azure Iyi tasarlanmış Framework](https://docs.microsoft.com/azure/architecture/framework/) 'ün beş anına karşı değerlendirin
+* Azure iş yüklerinizi [Microsoft Azure Well-Architected çerçevesinin](https://docs.microsoft.com/azure/architecture/framework/) beş anına karşı değerlendirin
 
 Advisor 'ın temel bir özelliği olarak, **danışman puanı** bu hedeflere etkin ve verimli bir şekilde ulaşmanıza yardımcı olacak şekilde denetimli hale getirilmelidir. 
 
-Azure 'dan en iyi şekilde yararlanmak için, iş yükünün en iyi duruma getirme yolculuğunda nerede olduğunu, hangi hizmetlerin/kaynakların iyi tüketiğini ve hangilerinin hangilerinin olduğunu anlamanız çok önemlidir. Ayrıca, önerileri temel alarak eylemlerinizin önceliklerini en üst düzeye çıkarmak için nasıl önceliklendireceğimizi öğrenmek isteyeceksiniz. Bu en iyi duruma getirme yolculuğunda yaptığınız ilerlemeyi izlemek ve raporlamak de önemlidir. **Danışman puanı**sayesinde, her şeyi yeni bir kumla deneyimimize göre kolayca yapabilirsiniz. Kişiselleştirilmiş bulut danışmanınızın yanı sıra Azure Advisor, sektördeki en iyi uygulamaları denetlemek için kullanım telemetrinizi ve kaynak yapılandırmanızı sürekli olarak değerlendirir. Daha sonra danışman, bulgularını tek bir puana toplayarak, güvenilir, güvenli ve uygun maliyetli çözümler oluşturmak için gerekli adımları göz önünde bulundurularak anlayabilirsiniz. Danışman puanı, her bir Azure Advisor kategorisi için bir tane olmak üzere, doğru şekilde tasarlanmış olan Framework 'ün beş ve sonraki bir çerçevede daha fazla ayrılabilir olan genel bir puandan oluşur. Günlük, haftalık ve aylık eğilim ile genel puan ve kategori puanınızı görüntüleyerek zaman içinde yaptığınız ilerlemeyi izleyebilirsiniz ve hedeflerinizi elde etmenize yardımcı olması için kıyaslamalar belirleyebilirsiniz. 
+Azure 'dan en iyi şekilde yararlanmak için, iş yükünün en iyi duruma getirme yolculuğunda nerede olduğunu, hangi hizmetlerin/kaynakların iyi tüketiğini ve hangilerinin hangilerinin olduğunu anlamanız çok önemlidir. Ayrıca, önerileri temel alarak eylemlerinizin önceliklerini en üst düzeye çıkarmak için nasıl önceliklendireceğimizi öğrenmek isteyeceksiniz. Bu en iyi duruma getirme yolculuğunda yaptığınız ilerlemeyi izlemek ve raporlamak de önemlidir. **Danışman puanı**sayesinde, her şeyi yeni bir kumla deneyimimize göre kolayca yapabilirsiniz. Kişiselleştirilmiş bulut danışmanınızın yanı sıra Azure Advisor, sektördeki en iyi uygulamaları denetlemek için kullanım telemetrinizi ve kaynak yapılandırmanızı sürekli olarak değerlendirir. Daha sonra danışman, bulgularını tek bir puana toplayarak, güvenilir, güvenli ve uygun maliyetli çözümler oluşturmak için gerekli adımları göz önünde bulundurularak anlayabilirsiniz. Danışman puanı, Well-Architected çerçevesinin beş bir listesini temsil eden her bir Azure Advisor kategorisi için bir tane olmak üzere beş kategori puanına daha fazla ayrılabilir olan genel bir puandan oluşur. Günlük, haftalık ve aylık eğilim ile genel puan ve kategori puanınızı görüntüleyerek zaman içinde yaptığınız ilerlemeyi izleyebilirsiniz ve hedeflerinizi elde etmenize yardımcı olması için kıyaslamalar belirleyebilirsiniz. 
 
  ![Danışman puan deneyimi](./media/advisor-score-1.png)
 

@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 09/28/2020
 ms.custom: designer
 ms.openlocfilehash: d9422cfb9bd8e5539f1a9b43d6fb7b137778f3d4
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91404927"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>Öğretici: tasarımcı ile otomobil fiyatlarını tahmin etme
@@ -221,7 +221,7 @@ Fiyatı içeren bir veri kümesi vererek modeli eğitme. Algoritma, eğitim veri
     > [!IMPORTANT]
     > **Bölünmüş verilerin** sol çıkış bağlantı noktalarının **modeli eğmek**için bağlandığından emin olun. Sol bağlantı noktası eğitim kümesini içerir. Sağ bağlantı noktası, test kümesini içerir.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="Eğitim modeli modülünün doğru yapılandırmasını gösteren ekran görüntüsü. Doğrusal regresyon modülü, model eğitimi modülünün sol bağlantı noktasına bağlanır ve bölünmüş veri modülü, tren modelinin sağ bağlantı noktasına bağlanır.":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="Select-Column":::
 
 1. **Model eğitme** modülünü seçin.
 
@@ -236,7 +236,7 @@ Fiyatı içeren bir veri kümesi vererek modeli eğitme. Algoritma, eğitim veri
 
     İşlem hatlarınız şöyle görünmelidir:
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png"alt-text="Eğitim modeli modülü eklendikten sonra işlem hattının doğru yapılandırmasını gösteren ekran görüntüsü.":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png"alt-text="Select-Column":::
 
 ### <a name="add-the-score-model-module"></a>Puan modeli modülünü ekleme
 
@@ -256,7 +256,7 @@ Modelinizin test veri kümesini ne kadar iyi puanlaleceğini değerlendirmek iç
 
     Son işlem hattı şuna benzer görünmelidir:
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png"alt-text="İşlem hattının doğru yapılandırmasını gösteren ekran görüntüsü.":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png"alt-text="Select-Column":::
 
 ## <a name="submit-the-pipeline"></a>İşlem hattını gönderme
 
@@ -285,7 +285,7 @@ Modelinizin test veri kümesini ne kadar iyi puanlaleceğini değerlendirmek iç
 
     Burada, tahmin edilen fiyatları ve test verilerinin gerçek fiyatlarını görebilirsiniz.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png"alt-text="Puanlanmış etiket sütununu vurgulayan çıkış görselleştirmesinin ekran görüntüsü":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png"alt-text="Select-Column":::
 
 ### <a name="evaluate-models"></a>Modelleri değerlendir
 

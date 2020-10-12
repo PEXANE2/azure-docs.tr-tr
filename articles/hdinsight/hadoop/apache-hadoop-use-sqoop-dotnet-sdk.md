@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, hdiseo17may2017, devx-track-csharp
 ms.date: 01/14/2020
 ms.openlocfilehash: bc4b3019cb8308ea19d86eea7bf886063ea28563
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89008293"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>HDInsight 'ta Apache Hadoop için .NET SDK kullanarak Apache Sqoop işleri çalıştırma
@@ -21,7 +21,7 @@ ms.locfileid: "89008293"
 
 HDInsight kümesi ile Azure SQL veritabanı veya SQL Server veritabanı arasında içeri ve dışarı aktarmak için HDInsight 'ta Apache Sqoop işleri çalıştırmak üzere Azure HDInsight .NET SDK 'sını nasıl kullanacağınızı öğrenin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Test ortamını ayarlama](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) , [HDInsight 'Ta Hadoop Ile Apache Sqoop kullanın](./hdinsight-use-sqoop.md).
 
@@ -141,7 +141,7 @@ Linux tabanlı HDInsight aşağıdaki sınırlamaları sunar:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Şimdi Sqoop 'yi nasıl kullanacağınızı öğrendiniz. Daha fazla bilgi için bkz:
+Şimdi Sqoop 'yi nasıl kullanacağınızı öğrendiniz. Daha fazla bilgi edinmek için şu makalelere bakın:
 
 * [HDInsight Ile Apache Oozie kullanma](../hdinsight-use-oozie-linux-mac.md): bir Oozie Iş akışında Sqoop eylemini kullanın.
 * [HDInsight 'a veri yükleme](../hdinsight-upload-data.md): HDInsight 'A veya Azure Blob depolamaya veri yüklemek için diğer yöntemleri bulun.

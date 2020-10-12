@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
 ms.openlocfilehash: 90becfb79973ba45851b0e30384b0f05a7b887e3
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962256"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>Öğretici: Azure SQL veritabanı ile ASP.NET uygulamasını Azure 'a dağıtma
@@ -131,9 +131,9 @@ Bir veritabanı oluşturmadan önce, [mantıksal BIR SQL Server](../azure-sql/da
    > [!IMPORTANT]
    > Bağlantı dizelerindeki (Visual Studio ve ayrıca App Service’te) parolanız maskelenmiş olsa bile, bir yerlerde tutulması uygulamanızın saldırı yüzeyine katkıda bulunur. App Service, kodunuzda veya uygulama yapılandırmanızda gizli dizileri tutma gereksinimini tamamen ortadan kaldırarak bu riski yok etmek için [yönetilen hizmet kimliklerini](overview-managed-identity.md) kullanabilir. Daha fazla bilgi için bkz. [Sonraki adımlar](#next-steps).
 
-   ![Sunucu oluştur](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
+   ![Sunucu oluşturma](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
 
-4. **Tamam** düğmesine tıklayın. **SQL Veritabanını Yapılandır** iletişim kutusunu henüz kapatmayın.
+4. **Tamam**'a tıklayın. **SQL Veritabanını Yapılandır** iletişim kutusunu henüz kapatmayın.
 
 ### <a name="create-a-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda veritabanı oluşturma
 

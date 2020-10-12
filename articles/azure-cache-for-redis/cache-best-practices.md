@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
 ms.openlocfilehash: 7e6afd40266d280ae872d24b1828b6feadbee17e
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88007922"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Redis için Azure Cache'in en iyi yöntemleri 
@@ -61,7 +61,7 @@ Göz önünde bulundurmanız isteyebileceğiniz Redsıs sunucu örneğiniz dahil
 ## <a name="when-is-it-safe-to-retry"></a>Yeniden denenme ne zaman güvenlidir?
 Ne yazık ki kolay bir yanıt yok.  Her uygulamanın hangi işlemlerin yeniden deneneceği ve ne yapabileceğine karar sağlaması gerekir.  Her işlem, farklı gereksinimlere ve anahtar arası bağımlılıklara sahiptir.  Göz önünde bulundurmanız gereken bazı şeyler şunlardır:
 
- * Red, çalıştırmak istediğiniz komutu başarılı bir şekilde çalıştırsa bile, istemci tarafı hataları alabilirsiniz.  Örnek:
+ * Red, çalıştırmak istediğiniz komutu başarılı bir şekilde çalıştırsa bile, istemci tarafı hataları alabilirsiniz.  Örneğin:
      - Zaman aşımları, istemci tarafı kavramıdır.  İşlem sunucuya ulaştıysa, istemci beklemeye alsa bile sunucu komutu çalıştırır.  
      - Yuva bağlantısında bir hata oluştuğunda, işlemin sunucuda gerçekten çalışır durumda olup olmadığını bilmeleri mümkün değildir.  Örneğin, sunucu isteği işledikten sonra ancak istemci yanıtı almadan önce bağlantı hatası oluşabilir.
  *  Yanlışlıkla aynı işlemi iki kez çalıştırdığımda Uygulamam nasıl tepki veriyor?  Örneğin, bir tamsayıyı bir kez yerine iki kez artırdım.  Uygulamam birden çok konumdan aynı anahtara yazıyor mu?  Yeniden deneme mantığı uygulamamın başka bir bölümü tarafından ayarlanan bir değerin üzerine yazıyor mu?
@@ -74,14 +74,14 @@ Kodunuzun hata koşulları altında nasıl çalıştığını test etmek isterse
  * Daha iyi donanımlar olduğundan ve en iyi sonuçları sunduklarında, istemciniz için **dv2 VM serisini kullanmanızı öneririz** .
  * Kullandığınız istemci VM 'sinin, test edilmekte olan önbelleğin*en az işlem ve bant genişliğine* sahip olduğundan emin olun. 
  * Windows kullanıyorsanız, istemci makinesinde **vRSS 'ı etkinleştirin** .  [Ayrıntılar için buraya bakın](https://technet.microsoft.com/library/dn383582(v=ws.11).aspx).  Örnek PowerShell betiği:
-     >PowerShell-ExecutionPolicy Kısıtlanmamış Enable-NetAdapterRSS-Name (Get-NetAdapter). Ada 
+     >PowerShell-ExecutionPolicy Kısıtlamasız Enable-NetAdapterRSS-adı (Get-NetAdapter). Ada 
      
  * **Premium katman redsıs örnekleri kullanmayı düşünün**.  Bu önbellek boyutları, hem CPU hem de ağ için daha iyi donanımlar üzerinde çalıştıkları için daha iyi ağ gecikme süresi ve aktarım hızı olacaktır.
  
      > [!NOTE]
      > Gözlemlenen performans sonuçlarımız, başvurunuz için [burada yayımlanır](cache-planning-faq.md#azure-cache-for-redis-performance) .   Ayrıca, SSL/TLS 'nin bazı ek yük eklediğinden emin olun. bu nedenle, aktarım şifrelemesini kullanıyorsanız farklı gecikme süreleri ve/veya aktarım hızı sağlayabilirsiniz.
  
-### <a name="redis-benchmark-examples"></a>Redsıs-kıyaslama örnekleri
+### <a name="redis-benchmark-examples"></a>Redis-Benchmark örnekleri
 **Ön test kurulumu**: önbellek örneğini aşağıda listelenen gecikme süresi ve işleme testi komutları için gereken verilerle hazırlayın.
 > redsıs-kıyaslama-h yourcache.redis.cache.windows.net-a yourAccesskey-t SET-n 10-d 1024 
 

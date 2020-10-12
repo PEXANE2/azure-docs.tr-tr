@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: yushwang
 ms.openlocfilehash: f52d684d1e6ef63fdf4287c610608061f30395f8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90998070"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways"></a>Azure VPN ağ geçitleri üzerinde BGP 'yi yapılandırma
@@ -25,7 +25,7 @@ BGP iki veya daha fazla ağ arasında yönlendirme ve ulaşılabilirlik bilgiler
 
 BGP 'nin avantajları hakkında daha fazla bilgi edinmek ve BGP kullanma hakkında teknik gereksinimleri ve konuları anlamak için bkz. [Azure VPN ağ geçitleri Ile BGP 'ye genel bakış](vpn-gateway-bgp-overview.md).
 
-## <a name="getting-started"></a>Kullanmaya başlama
+## <a name="getting-started"></a>Başlarken
 
 Bu makalenin her bir bölümü, ağ bağlantınızda BGP 'yi etkinleştirmek için temel bir yapı taşı ayarlamanıza yardımcı olur. Üç parçayı da tamamladıktan sonra, şema 1 ' de gösterildiği gibi topolojiyi derleyebilirsiniz.
 
@@ -35,7 +35,7 @@ Bu makalenin her bir bölümü, ağ bağlantınızda BGP 'yi etkinleştirmek iç
 
 Gereksinimlerinizi karşılayan daha karmaşık, çok atlamalı, transit ağı oluşturmak için parçaları birlikte birleştirebilirsiniz.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz olduğunu doğrulayın. Henüz Azure aboneliğiniz yoksa [MSDN abonelik avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
 
@@ -45,7 +45,7 @@ Bu bölümde, bir sanal ağ oluşturur ve yapılandırır, BGP parametreleriyle 
 
 **Diyagram 2**
 
-:::image type="content" source="./media/bgp-howto/bgp-gateway.png" alt-text="Sanal ağ geçidi ayarlarını gösteren diyagram" border="false":::
+:::image type="content" source="./media/bgp-howto/bgp-gateway.png" alt-text="Ağ mimarisini ve ayarlarını gösteren diyagram" border="false":::
 
 ### <a name="1-create-and-configure-testvnet1"></a>1. TestVNet1 oluşturma ve yapılandırma
 
@@ -53,11 +53,11 @@ Bu adımda, TestVNet1 oluşturup yapılandırırsınız. Azure Sanal ağınızı
 
 * Sanal ağ:
 
-   :::image type="content" source="./media/bgp-howto/testvnet-1.png" alt-text="İlgili adres ön ekleri ile TestVNet1":::
+   :::image type="content" source="./media/bgp-howto/testvnet-1.png" alt-text="Ağ mimarisini ve ayarlarını gösteren diyagram":::
 
 * Alt ağlar:
 
-   :::image type="content" source="./media/bgp-howto/testvnet-1-subnets.png" alt-text="TestVNet1 alt ağları":::
+   :::image type="content" source="./media/bgp-howto/testvnet-1-subnets.png" alt-text="Ağ mimarisini ve ayarlarını gösteren diyagram":::
 
 ### <a name="2-create-the-vpn-gateway-for-testvnet1-with-bgp-parameters"></a>2. BGP parametreleriyle TestVNet1 için VPN Gateway oluşturun
 
@@ -67,11 +67,11 @@ Bu adımda, karşılık gelen BGP parametreleriyle bir VPN ağ geçidi oluşturu
 
 1. Parametreleri aşağıda gösterildiği gibi girin:
 
-   :::image type="content" source="./media/bgp-howto/create-gateway-1.png" alt-text="VNG1 oluştur":::
+   :::image type="content" source="./media/bgp-howto/create-gateway-1.png" alt-text="Ağ mimarisini ve ayarlarını gösteren diyagram":::
 
 1. Sayfanın vurgulanan **BGP yapılandırma** bölümünde aşağıdaki ayarları yapılandırın:
 
-   :::image type="content" source="./media/bgp-howto/create-gateway-1-bgp.png" alt-text="BGP 'yi yapılandırma":::
+   :::image type="content" source="./media/bgp-howto/create-gateway-1-bgp.png" alt-text="Ağ mimarisini ve ayarlarını gösteren diyagram":::
 
    * **Configure BGP**  -  BGP yapılandırma bölümünü göstermek için BGP 'yi**etkin** Yapılandır ' ı seçin.
 
@@ -96,7 +96,7 @@ Ağ Geçidi oluşturulduktan sonra BGP eşi IP adreslerini Azure VPN Gateway 'de
 
 1. Sanal ağ geçidi kaynağına gidin ve aşağıdaki ekran görüntüsünde gösterildiği gibi BGP yapılandırma bilgilerini görmek için **yapılandırma** sayfasını seçin. Bu sayfada, Azure VPN ağ geçidinizdeki tüm BGP yapılandırma bilgilerini, Azure tarafındaki ASN, genel IP adresi ve karşılık gelen BGP eşi IP adresleri (varsayılan ve APIPA) görebilirsiniz.
 
-   :::image type="content" source="./media/bgp-howto/vnet-1-gw-bgp.png" alt-text="BGP ağ geçidi":::
+   :::image type="content" source="./media/bgp-howto/vnet-1-gw-bgp.png" alt-text="Ağ mimarisini ve ayarlarını gösteren diyagram":::
 
 1. **Yapılandırma** sayfasında, aşağıdaki yapılandırma değişikliklerini yapabilirsiniz:
 
@@ -111,13 +111,13 @@ Ağ Geçidi oluşturulduktan sonra BGP eşi IP adreslerini Azure VPN Gateway 'de
 
 **Diyagram 3**
 
-:::image type="content" source="./media/bgp-howto/bgp-crosspremises.png" alt-text="IPSec 'i gösteren diyagram" border="false":::
+:::image type="content" source="./media/bgp-howto/bgp-crosspremises.png" alt-text="Ağ mimarisini ve ayarlarını gösteren diyagram" border="false":::
 
 ### <a name="1-configure-bgp-on-the-local-network-gateway"></a>1. yerel ağ geçidinde BGP 'yi yapılandırma
 
 Bu adımda, yerel ağ geçidinde BGP 'yi yapılandırırsınız. Örnek olarak aşağıdaki ekran görüntüsünü kullanın. Ekran görüntüsü, 1. diyagramda belirtilen parametrelerle yerel ağ geçidi (site5) gösterir.
 
-:::image type="content" source="./media/bgp-howto/create-local-bgp.png" alt-text="Yerel ağ geçidi için BGP 'yi yapılandırma":::
+:::image type="content" source="./media/bgp-howto/create-local-bgp.png" alt-text="Ağ mimarisini ve ayarlarını gösteren diyagram":::
 
 #### <a name="important-configuration-considerations"></a>Önemli yapılandırma konuları
 
@@ -130,7 +130,7 @@ Bu adımda, yerel ağ geçidinde BGP 'yi yapılandırırsınız. Örnek olarak a
 
 Bu örnek, şirket içi BGP eşi IP adresi olarak bir APIPA adresi (169.254.100.1) kullanır:
 
-:::image type="content" source="./media/bgp-howto/local-apipa.png" alt-text="Yerel ağ geçidi APIPA ve BGP":::
+:::image type="content" source="./media/bgp-howto/local-apipa.png" alt-text="Ağ mimarisini ve ayarlarını gösteren diyagram":::
 
 ### <a name="2-configure-a-s2s-connection-with-bgp-enabled"></a>2. BGP etkin olan bir S2S bağlantısı yapılandırma
 
@@ -140,13 +140,13 @@ Bu adımda, BGP etkin olan yeni bir bağlantı oluşturursunuz. Zaten bir bağla
 
 BGP etkinken yeni bir bağlantı oluşturmak için **bağlantı ekle** sayfasında değerleri girin ve BGP 'yi **Etkinleştir** SEÇENEĞINI denetleyip bu bağlantıda BGP 'yi etkinleştirin. Bağlantıyı oluşturmak için **Tamam**'ı seçin.
 
-:::image type="content" source="./media/bgp-howto/ipsec-connection-bgp.png" alt-text="BGP ile IPSec çapraz şirket içi bağlantısı":::
+:::image type="content" source="./media/bgp-howto/ipsec-connection-bgp.png" alt-text="Ağ mimarisini ve ayarlarını gösteren diyagram":::
 
 #### <a name="to-update-an-existing-connection"></a><a name ="update"></a>Var olan bir bağlantıyı güncelleştirmek için
 
 Bir bağlantıda BGP seçeneğini değiştirmek istiyorsanız, bağlantı kaynağının **yapılandırma** sayfasına gidin ve ardından aşağıdaki örnekte gösterildiği gibi **BGP** seçeneğini değiştirin. Değişiklikleri kaydetmek için **Kaydet** ' i seçin.
 
-:::image type="content" source="./media/bgp-howto/update-bgp.png" alt-text="Bağlantı için BGP 'yi Güncelleştir":::
+:::image type="content" source="./media/bgp-howto/update-bgp.png" alt-text="Ağ mimarisini ve ayarlarını gösteren diyagram":::
 
 ## <a name="part-3-configure-bgp-on-vnet-to-vnet-connections"></a><a name ="v2v"></a>3. kısım: VNet 'ten VNet 'e bağlantılar üzerinde BGP 'yi yapılandırma
 
@@ -160,7 +160,7 @@ Bağlama **için, TestVNet2**ve TESTVNET1 arasında BGP devre dışı bırakılm
 
 **Diyagram 4**
 
-:::image type="content" source="./media/bgp-howto/bgp-crosspremises-v2v.png" alt-text="Tam ağı gösteren diyagram" border="false":::
+:::image type="content" source="./media/bgp-howto/bgp-crosspremises-v2v.png" alt-text="Ağ mimarisini ve ayarlarını gösteren diyagram" border="false":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

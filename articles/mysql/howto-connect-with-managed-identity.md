@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/19/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7733148777cde2a487e5c93d7750eb7a24ff531c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88999402"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>Yönetilen Kimlik ile MySQL için Azure Veritabanı'na bağlanma
@@ -28,7 +28,7 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 > [!IMPORTANT]
 > Yönetilen kimlikle bağlantı yalnızca MySQL 5,7 ve üzeri sürümlerde kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure kaynakları için yönetilen kimlikler özelliği hakkında bilgi sahibi değilseniz bu [genel bakışı](../../articles/active-directory/managed-identities-azure-resources/overview.md) inceleyin. Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
 - Gerekli kaynak oluşturma ve rol yönetimini yapmak için hesabınızın uygun kapsamda (aboneliğiniz veya kaynak grubunuz) "sahip" izinleri olması gerekir. Rol atamayla ilgili yardıma ihtiyacınız varsa bkz. [Azure abonelik kaynaklarınıza erişimi yönetmek için Rol Tabanlı Erişim Denetimi kullanma](../../articles/role-based-access-control/role-assignments-portal.md).

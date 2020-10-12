@@ -8,10 +8,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.openlocfilehash: a34544eb29f0a1417d10955bba755fb4f9965320
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88136048"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Azure Cosmos DB veri modellemesi
@@ -299,7 +299,7 @@ Yukarıdaki örnekte, yayımcı belgesinde, sınırlandırılmamış koleksiyonu
 İlişkisel bir veritabanında *birçok: birçok* ilişki genellikle kayıtları diğer tablolardan birlikte birleştiren JOIN tablolarıyla modellenir.
 
 
-:::image type="content" source="./media/sql-api-modeling-data/join-table.png" alt-text="Tabloları Birleştir" border="false":::
+:::image type="content" source="./media/sql-api-modeling-data/join-table.png" alt-text="İlişkisel veritabanı modeli" border="false":::
 
 Belgeleri kullanarak aynı şeyi çoğaltmak ve aşağıdakine benzer bir veri modeli oluşturmak isteyebilirsiniz.
 
@@ -442,4 +442,4 @@ Azure Cosmos DB hakkında daha fazla bilgi edinmek için hizmetin [Belgeler](htt
 
 Verilerinizin birden çok bölüme nasıl atıfta olduğunu anlamak için [Azure Cosmos DB bölümünde bölümlendirme verilerine](sql-api-partition-data.md)bakın.
 
-Gerçek dünyada bir örnek kullanarak Azure Cosmos DB verileri modellemeyi ve Bölümlendirmeyi öğrenmek için, [veri modelleme ve bölümleme-gerçek hayatta bir örnek](how-to-model-partition-example.md)bölümüne bakın.
+Gerçek dünyada bir örnek kullanarak Azure Cosmos DB veri modellemeyi ve Bölümlendirmeyi öğrenmek için, [ Real-World bir örnek Için veri modelleme ve bölümleme](how-to-model-partition-example.md)bölümüne bakın.

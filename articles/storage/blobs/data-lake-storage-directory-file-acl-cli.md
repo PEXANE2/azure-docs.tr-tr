@@ -11,15 +11,15 @@ ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 6140260b75580270b365e59358d97e0a54c7b4a7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87503948"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure CLı kullanarak Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetme
 
-Bu makalede, [Azure komut satırı arabirimi 'ni (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) hiyerarşik bir ad alanına sahip depolama hesaplarında Dizin, dosya ve izinleri oluşturmak ve yönetmek için nasıl kullanacağınız gösterilmektedir. 
+Bu makalede, hiyerarşik bir ad alanına sahip depolama hesaplarında Dizin, dosya ve izinleri oluşturmak ve yönetmek için [Azure Command-Line arabirimi 'nin (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) nasıl kullanılacağı gösterilmektedir. 
 
 [Örnekler](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)  |  [Geri bildirimde](https://github.com/Azure/azure-cli-extensions/issues) bulunun
 
@@ -210,7 +210,7 @@ az storage fs file move -p my-file.txt -f my-file-system --new-path my-file-syst
 
 Komutunu kullanarak bir dosyayı silin `az storage fs file delete` .
 
-Bu örnek, adlı dosyayı siler`my-file.txt`
+Bu örnek, adlı dosyayı siler `my-file.txt`
 
 ```azurecli
 az storage fs file delete -p my-directory/my-file.txt -f my-file-system  --account-name mystorageaccount --auth-mode login 
@@ -221,7 +221,7 @@ az storage fs file delete -p my-directory/my-file.txt -f my-file-system  --accou
 Dizinler ve dosyalar için erişim izinlerini alabilir, ayarlayabilir ve güncelleştirebilirsiniz.
 
 > [!NOTE]
-> Komutları yetkilendirmek için Azure Active Directory (Azure AD) kullanıyorsanız, güvenlik sorumlusuna [Depolama Blobu veri sahibi rolü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)atandığından emin olun. ACL izinlerinin nasıl uygulandığı ve bunların nasıl değiştirileceği hakkında daha fazla bilgi edinmek için [Azure Data Lake Storage 2. erişim denetimi](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)' ne bakın.
+> Komutları yetkilendirmek için Azure Active Directory (Azure AD) kullanıyorsanız, güvenlik sorumlusuna [Depolama Blobu veri sahibi rolü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)atandığından emin olun. ACL izinlerinin nasıl uygulandığı ve bunların nasıl değiştirileceği hakkında daha fazla bilgi edinmek için  [Azure Data Lake Storage 2. erişim denetimi](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)' ne bakın.
 
 ### <a name="get-an-acl"></a>ACL al
 

@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: 18ffa0f878effda8888200c13ab312851aaebdcd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91000920"
 ---
 # <a name="secure-access-to-your-managed-hsms"></a>Yönetilen HSM 'lerinizde güvenli erişim
@@ -79,10 +79,10 @@ Aşağıdaki tabloda, yönetilen HSM 'ye erişmek üzere takımlar ve kaynaklar 
 | Rol | Yönetim düzlemi rolü | Veri düzlemi rolü |
 | --- | --- | --- |
 | Güvenlik ekibi | Yönetilen HSM Katılımcısı | Yönetilen HSM Yöneticisi |
-| Geliştiriciler ve operatörler | Hiçbiri | Hiçbiri |
-| Denetçiler | Hiçbiri | Yönetilen HSM şifre denetleyicisi |
-| Uygulama tarafından kullanılan VM 'nin yönetilen tanımlaması| Hiçbiri | Yönetilen HSM şifre kullanıcısı |
-| Uygulama tarafından kullanılan depolama hesabının yönetilen kimliği| Hiçbiri| Yönetilen HSM hizmeti şifrelemesi |
+| Geliştiriciler ve operatörler | Yok | Yok |
+| Denetçiler | Yok | Yönetilen HSM şifre denetleyicisi |
+| Uygulama tarafından kullanılan VM 'nin yönetilen tanımlaması| Yok | Yönetilen HSM şifre kullanıcısı |
+| Uygulama tarafından kullanılan depolama hesabının yönetilen kimliği| Yok| Yönetilen HSM hizmeti şifrelemesi |
 
 Üç takım rolünün, yönetilen HSM izinleriyle birlikte diğer kaynaklara erişmesi gerekir. VM 'Leri (veya Azure App Service Web Apps özelliğini) dağıtmak için, geliştiricilerin ve işleçlerin `Contributor` Bu kaynak türlerine erişmesi gerekir. Denetçilerin, yönetilen HSM günlüklerinin depolandığı depolama hesabına okuma erişimi olması gerekir.
 

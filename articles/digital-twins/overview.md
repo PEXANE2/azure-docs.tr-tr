@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: ea08843dc73ed7603181eee1cf36495fda82b8d4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 082e05bddd4fe12b279368e44b2d986bd4fa91a7
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89003856"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945337"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure Digital Twins nedir?
 
@@ -84,7 +84,7 @@ Azure dijital TWINS kullanan tüm çözümler aşağıdaki bölümleri içerebil
 * Modelleri yapılandırarak, topoloji oluşturarak ve ikizi grafiğinden öngörüleri ayıklayarak Azure dijital TWINS örneğini çalıştıran bir veya daha fazla istemci uygulaması.
 * Azure dijital TWINS tarafından oluşturulan olayları veya cihazlar gibi bağlı veri kaynaklarını işleyecek bir veya daha fazla dış işlem kaynağı. İşlem kaynaklarını sağlamanın yaygın bir yolu [Azure işlevleri](../azure-functions/functions-overview.md)aracılığıyla yapılır.
 * Cihaz yönetimi ve IoT veri akışı özellikleri sağlamak için bir IoT Hub 'ı.
-* İş akışı tümleştirmesi ( [Logic Apps](../logic-apps/logic-apps-overview.md), soğuk depolama, zaman serisi tümleştirme veya analiz gibi) görevlerini işleyecek olan aşağı akış Hizmetleri. 
+* İş akışı Tümleştirme ( [Logic Apps](../logic-apps/logic-apps-overview.md), soğuk depolama, zaman serisi tümleştirme veya analiz gibi) görevlerini işleyecek olan aşağı akış Hizmetleri.
 
 Aşağıdaki diyagramda Azure Digital TWINS 'in daha büyük bir Azure IoT çözümü bağlamında bulunduğu yer gösterilmektedir.
 

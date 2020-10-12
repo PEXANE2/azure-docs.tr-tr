@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
 ms.openlocfilehash: cc50e49d4bc59235a147d114d86ecdff95dca797
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87474351"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Microsoft. Common. DropDown UI öğesi
@@ -26,19 +26,19 @@ Seçim için yalnızca tek bir öğeye izin verildiğinde, denetim şöyle gör�
 
 Açıklamalar dahil edildiğinde, denetim şöyle görünür:
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-2.png" alt-text="Açıklamalarla birlikte Microsoft. Common. DropDown tek seçim":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-2.png" alt-text="Microsoft. Common. DropDown tek seçim":::
 
 Çoklu seçim etkinleştirildiğinde denetim, birden fazla öğe seçmek için bir **Tümünü Seç** seçeneği ve onay kutuları ekler:
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-3.png" alt-text="Microsoft. Common. DropDown çoklu seçim":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-3.png" alt-text="Microsoft. Common. DropDown tek seçim":::
 
 Açıklamalar çoklu seçim etkinleştirilmiş olarak dahil edilebilir.
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-4.png" alt-text="Microsoft. Common. DropDown çoklu seçme açıklamalarını içeren":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-4.png" alt-text="Microsoft. Common. DropDown tek seçim":::
 
 Filtreleme etkinken denetim, filtreleme değerini eklemek için bir metin kutusu içerir.
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-5.png" alt-text="Microsoft. Common. DropDown çoklu seçme açıklamalarını içeren":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-5.png" alt-text="Microsoft. Common. DropDown tek seçim":::
 
 ## <a name="schema"></a>Şema
 
@@ -88,7 +88,7 @@ Filtreleme etkinken denetim, filtreleme değerini eklemek için bir metin kutusu
 - `filter`Özelliği, kullanıcıların uzun bir seçenek listesi içinde arama yapmasına olanak sağlar.
 - Etiketi, `constraints.allowedValues` bir öğe için görüntüleme metintir ve değeri seçildiğinde öğenin çıkış değeridir.
 - Belirtilmişse, varsayılan değer içinde bulunan bir etiket olmalıdır `constraints.allowedValues` . Belirtilmemişse, içindeki ilk öğe `constraints.allowedValues` seçilir. Varsayılan değer **null**.
-- `constraints.allowedValues`en az bir öğe olmalıdır.
+- `constraints.allowedValues` en az bir öğe olmalıdır.
 - Zorunlu olmayan bir değere öykünmek için, etiketi ve değeri `""` (boş dize) olan bir öğe ekleyin `constraints.allowedValues` .
 - `defaultDescription`Özelliği, açıklaması olmayan öğeler için kullanılır.
 - `placeholder`Özelliği, Kullanıcı düzenlenmeden çalışmaya başladığında kaybolması gereken yardım metindir. `placeholder`Ve `defaultValue` her ikisi de tanımlıysa, `defaultValue` öncelik alır ve gösterilir.

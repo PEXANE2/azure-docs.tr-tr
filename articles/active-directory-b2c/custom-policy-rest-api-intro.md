@@ -12,10 +12,10 @@ ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: bc2b72779460c2b7e3999204ace50ca57388b9a2
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89594195"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>Azure AD B2C özel ilkenizde REST API talep alışverişlerini tümleştirin
@@ -131,7 +131,7 @@ Yeniden takip eden talepler sağlayıcısı tarafından ayrıştırılmış çı
 </OutputClaims>
 ```
 
-## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
+## <a name="security-considerations"></a>Güvenlik konuları
 
 Yalnızca kimliği doğrulanmış istemcilerin sizinle iletişim kurabilmesi için REST API uç noktanızı korumanız gerekir. REST API bir HTTPS uç noktası kullanmalıdır. AuthenticationType meta verilerini aşağıdaki kimlik doğrulama yöntemlerinden biri olarak ayarlayın:
 

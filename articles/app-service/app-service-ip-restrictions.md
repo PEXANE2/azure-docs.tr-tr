@@ -8,10 +8,10 @@ ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: ce5882f2621dc5b8c48bcf5be6d4ea3a2f723bfe
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962970"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure App Service erişim kısıtlamaları
@@ -48,7 +48,7 @@ Bir kural oluştururken, izin ver/Reddet ' i ve ayrıca kural türünü seçmeni
 
 ![IP erişim kısıtlama kuralı ekleme](media/app-service-ip-restrictions/access-restrictions-ip-add.png)
 
-IP adresi tabanlı bir kural ayarlamak için bir IPv4 veya IPv6 türü seçin. IPv4 ve IPv6 adresleri için CıDR gösteriminde IP adresi gösterimi belirtilmelidir. Tam bir adres belirtmek için, ilk dört sekizlinin IP adresinizi gösterdiği ve/32 maskedir. 1.2.3.4/32 gibi bir şey kullanabilirsiniz. Tüm adresler için IPv4 CıDR gösterimi 0.0.0.0/0 ' dır. CıDR gösterimi hakkında daha fazla bilgi edinmek için, [sınıfsız etki alanları arası yönlendirmeyi](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)okuyabilirsiniz. 
+IP adresi tabanlı bir kural ayarlamak için bir IPv4 veya IPv6 türü seçin. IPv4 ve IPv6 adresleri için CıDR gösteriminde IP adresi gösterimi belirtilmelidir. Tam bir adres belirtmek için, ilk dört sekizlinin IP adresinizi gösterdiği ve/32 maskedir. 1.2.3.4/32 gibi bir şey kullanabilirsiniz. Tüm adresler için IPv4 CıDR gösterimi 0.0.0.0/0 ' dır. CıDR gösterimi hakkında daha fazla bilgi edinmek için, [sınıfsız Inter-Domain yönlendirmeyi](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)okuyabilirsiniz. 
 
 ## <a name="service-endpoints"></a>Hizmet uç noktaları
 

@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 1947e57a5f200521fe57c6aaf41e9d57c1085592
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 618e9586e9824e6cea592ff78a1fbd3b991abd83
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888719"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945405"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud hakkında SSS
 
@@ -45,7 +45,7 @@ Doğu ABD, Doğu ABD 2, Orta ABD, Orta Güney ABD, Batı ABD 2, Batı Avrupa, Ku
 Azure yay bulutu aşağıdaki bilinen sınırlamalara sahiptir:
     
 * `spring.application.name` , her uygulamayı oluşturmak için kullanılan uygulama adı tarafından geçersiz kılınır.
-* `server.port` Varsayılan bağlantı noktası 1025 ' dir. Başka herhangi bir değer uygulanırsa, 1025 olarak geçersiz kılınır.
+* `server.port` Varsayılan bağlantı noktası 1025 ' dir. Başka herhangi bir değer uygulanırsa, geçersiz kılınır. Lütfen bu ayara de dikkat edin ve kodunuzda sunucu bağlantı noktası belirtmeyin.
 * Azure portal ve Azure Resource Manager şablonları uygulama paketlerinin yüklenmesini desteklemez. Uygulama paketlerini yalnızca uygulamayı Azure CLı aracılığıyla dağıtarak yükleyebilirsiniz.
 
 ### <a name="what-pricing-tiers-are-available"></a>Hangi fiyatlandırma katmanları kullanılabilir? 

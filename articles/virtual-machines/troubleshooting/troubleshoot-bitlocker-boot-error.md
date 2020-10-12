@@ -14,10 +14,10 @@ ms.date: 08/23/2019
 ms.author: genli
 ms.custom: has-adal-ref
 ms.openlocfilehash: ac1105f1fce2ac04abfa8a809161580104952917
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91404910"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM 'de BitLocker önyükleme hataları
@@ -287,7 +287,7 @@ ADAL derlemelerinin yollarının yanlış olduğu için bu hata oluşur. AZ Modu
 
 Ayrıca, `Az.Accounts` doğru yolu bulmak için klasör araması yapabilirsiniz.
 
-**Hata: Get-AzKeyVaultSecret veya Get-AzKeyVaultSecret bir cmdlet 'in adı olarak tanınmıyor**
+**Hata: Get-AzKeyVaultSecret veya Get-AzKeyVaultSecret bir cmdlet adı olarak tanınmıyor**
 
 Eski AZ PowerShell modülünü kullanıyorsanız, iki komutu `Get-AzureKeyVaultSecret` ve ile değiştirmeniz gerekir `Get-AzureKeyVaultSecret` .
 

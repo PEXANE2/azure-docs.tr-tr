@@ -4,10 +4,10 @@ description: Azure Container Registry 'de oturum açarken karşılaşılan sorun
 ms.topic: article
 ms.date: 08/11/2020
 ms.openlocfilehash: d5071a1e759d26ce43d2eb5d9b8215781d813d33
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91253363"
 ---
 # <a name="troubleshoot-registry-login"></a>Kayıt defteri oturum açma sorunlarını giderme
@@ -51,7 +51,7 @@ Bkz. komut örnekleri için [Azure Container Registry 'nin sistem durumunu denet
 
 İlgili bağlantılar:
 
-* [Kimlik Doğrulamasına genel bakış](container-registry-authentication.md#authentication-options)
+* [Kimlik doğrulamasına genel bakış](container-registry-authentication.md#authentication-options)
 * [Kapsayıcı kayıt defteri SSS](container-registry-faq.md)
 
 ### <a name="specify-correct-registry-name"></a>Doğru kayıt defteri adını belirtin
@@ -84,7 +84,7 @@ Senaryonuz için kullandığınız kimlik bilgilerinin geçerliliğini denetleyi
 
 İlgili bağlantılar:
 
-* [Kimlik Doğrulamasına genel bakış](container-registry-authentication.md#authentication-options)
+* [Kimlik doğrulamasına genel bakış](container-registry-authentication.md#authentication-options)
 * [Azure AD ile bireysel oturum açma](container-registry-authentication.md#individual-login-with-azure-ad)
 * [Hizmet sorumlusu ile oturum açma](container-registry-auth-service-principal.md)
 * [Yönetilen kimlikle oturum açma](container-registry-authentication-managed-identity.md)

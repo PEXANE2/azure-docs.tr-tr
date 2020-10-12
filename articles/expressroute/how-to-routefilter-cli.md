@@ -9,10 +9,10 @@ ms.date: 12/07/2018
 ms.author: duau
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 8fbce15b84371b7b7907deff361e2a2e706bec28
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89567716"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>Microsoft eşlemesi için rota filtrelerini yapılandırma: Azure CLı
@@ -27,7 +27,7 @@ Rota filtreleri, desteklenen servislerin bir alt kümesini Microsoft eşlemesi a
 
 Exchange Online, SharePoint Online ve Skype Kurumsal gibi Microsoft 365 hizmetlere Microsoft eşlemesi aracılığıyla erişilebilir. ExpressRoute bağlantı hattındaki Microsoft eşlemesi yapılandırıldığında, bu hizmetlerle ilgili tüm önekler oluşturulan BGP oturumları aracılığıyla bildirilir. Ön ek aracılığıyla sunulan hizmeti tanımlamak için her ön eke BGP topluluk değeri eklenir. BGP topluluk değerlerinin ve eşlendikleri hizmetlerin listesi için bkz. [BGP toplulukları](expressroute-routing.md#bgp).
 
-Tüm hizmetlere bağlantı gerekiyorsa, BGP aracılığıyla çok sayıda önek tanıtılabilir. Bu, ağınızdaki yönlendiriciler tarafından tutulan yol tablolarının boyutunu önemli ölçüde artırır. Yalnızca Microsoft eşlemesi üzerinden sunulan hizmetlerin bir alt kümesini kullanmak istiyorsanız, yol tablolarınızın boyutunu iki şekilde azaltabilirsiniz. Seçenekleriniz şunlardır:
+Tüm hizmetlere bağlantı gerekiyorsa, BGP aracılığıyla çok sayıda önek tanıtılabilir. Bu, ağınızdaki yönlendiriciler tarafından tutulan yol tablolarının boyutunu önemli ölçüde artırır. Yalnızca Microsoft eşlemesi üzerinden sunulan hizmetlerin bir alt kümesini kullanmak istiyorsanız, yol tablolarınızın boyutunu iki şekilde azaltabilirsiniz. Şunları yapabilirsiniz:
 
 * BGP topluluklarına rota filtreleri uygulayarak istenmeyen önekleri filtreleyin. Bu standart bir ağ uygulamasıdır ve genellikle birçok ağ içinde kullanılır.
 

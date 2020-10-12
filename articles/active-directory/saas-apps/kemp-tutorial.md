@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 68869d464df01d3cc89493c64d66511b4a6f369d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37b21a5e9e2839fba24b3dcc861fc7c42bdb4547
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91300067"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945218"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>Öğretici: Kemp LoadMaster Azure AD tümleştirmesiyle SSO tümleştirmesi Azure Active Directory
 
@@ -113,7 +113,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -145,7 +145,7 @@ Bu bölümde, Kemp LoadMaster Azure AD tümleştirmesine erişim izni vererek Az
 
 1. Sanal hizmet için parametreleri belirtin.
 
-    ![Kemp LoadMaster Azure AD tümleştirme Web sunucusu](./media/kemp-tutorial/kemp-1.png)
+    ![Kutulara örnek değerler içeren "Lütfen sanal hizmet parametrelerini belirtin" sayfasının ekran görüntüsü.](./media/kemp-tutorial/kemp-1.png)
 
     a. Sanal adres
     
@@ -161,7 +161,7 @@ Bu bölümde, Kemp LoadMaster Azure AD tümleştirmesine erişim izni vererek Az
 
 1. Gerçek sunucu için parametreleri belirtin.
     
-    ![Kemp LoadMaster Azure AD tümleştirme Web sunucusu](./media/kemp-tutorial/kemp-2.png)
+    !["Lütfen gerçek sunucu için parametreleri belirtin" sayfasının kutulara örnek değerler içeren ekran görüntüsü.](./media/kemp-tutorial/kemp-2.png)
 
     a. Uzak adreslere Izin ver ' i seçin
     
@@ -203,7 +203,7 @@ Bu bölümde, Kemp LoadMaster Azure AD tümleştirmesine erişim izni vererek Az
 
 1. SSL özellikleri ' ne tıklayın (katman 7 ' de çalışır).
     
-    ![Kemp LoadMaster Azure AD tümleştirme Web sunucusu](./media/kemp-tutorial/kemp-3.png)
+    !["S s l Acceleration-Enabled" seçili ve örnek bir sertifika seçilen "S S L özellikleri" bölümünü gösteren ekran görüntüsü.](./media/kemp-tutorial/kemp-3.png)
     
     a. SSL hızlandırmalı etkin öğesine tıklayın.
     
@@ -222,7 +222,7 @@ Kemp LoadMaster Azure AD tümleştirme web konsoluna git
 
 1. Sertifikalar ve yetkili altındaki ara Sertifikalar ' a tıklayın.
 
-    ![Kemp LoadMaster Azure AD tümleştirme Web sunucusu](./media/kemp-tutorial/kemp-6.png)
+    ![Örnek bir sertifika seçili olan "Şu anda yüklü ara sertifikaları" bölümünü gösteren ekran görüntüsü.](./media/kemp-tutorial/kemp-6.png)
 
     a. Yeni ara sertifika ekle ' de Dosya Seç ' e tıklayın.
     
@@ -238,7 +238,7 @@ Kemp LoadMaster Azure AD tümleştirme web konsoluna git
  
 Sanal hizmetler altında SSO Yönetimi ' ne gidin.
 
-   ![Kemp LoadMaster Azure AD tümleştirme Web sunucusu](./media/kemp-tutorial/kemp-7.png)
+   !["S S 'yi Yönet" sayfasını gösteren ekran görüntüsü.](./media/kemp-tutorial/kemp-7.png)
    
    a. Bir ad verdikten sonra yeni Istemci tarafı Yapılandırması Ekle altında Ekle ' ye tıklayın.
 
@@ -268,7 +268,7 @@ Kemp LoadMaster Azure AD tümleştirme Web konsolunda
 
 1. Değiştir ' e tıklayın ve ESP seçenekleri ' ne gidin.
     
-    ![Kemp LoadMaster Azure AD tümleştirme Web sunucusu](./media/kemp-tutorial/kemp-8.png)
+    !["ESP seçenekleri" ve "gerçek sunucular" bölümleri genişletilmiş "hizmetleri görüntüle/Değiştir" sayfasını gösteren ekran görüntüsü.](./media/kemp-tutorial/kemp-8.png)
 
     a. ESP 'yi etkinleştir ' e tıklayın.
     
@@ -286,7 +286,7 @@ Uygulama URL 'sine gidin
 
 Daha önce kimliği doğrulanmamış erişim yerine kiralandırılmış oturum açma sayfanızı görmeniz gerekir. 
 
-![Kemp LoadMaster Azure AD tümleştirme Web sunucusu](./media/kemp-tutorial/kemp-9.png)
+![Kiralanan "oturum açma" sayfasını gösteren ekran görüntüsü.](./media/kemp-tutorial/kemp-9.png)
 
 ## <a name="configuring-kerberos-based-authentication"></a>Kerberos tabanlı kimlik doğrulamasını yapılandırma 
  
@@ -294,7 +294,7 @@ Daha önce kimliği doğrulanmamış erişim yerine kiralandırılmış oturum a
 
 1. Bir kullanıcı hesabı oluşturun (Bu örnekte Apptemsili).
     
-    ![Kemp LoadMaster Azure AD tümleştirme Web sunucusu](./media/kemp-tutorial/kemp-10.png)
+    !["Hesap" sekmesi seçiliyken "KCD Kullanıcı Özellikleri" penceresini gösteren ekran görüntüsü.](./media/kemp-tutorial/kemp-10.png)
 
 
     a. Öznitelik Düzenleyicisi sekmesini seçin.
@@ -311,7 +311,7 @@ Daha önce kimliği doğrulanmamış erişim yerine kiralandırılmış oturum a
 
 1. Temsilci Seçme sekmesini seçin.
 
-    ![Kemp LoadMaster Azure AD tümleştirme Web sunucusu](./media/kemp-tutorial/kemp-11.png)
+    !["Temsili" sekmesi seçiliyken "KCD Kullanıcı Özellikleri" penceresini gösteren ekran görüntüsü.](./media/kemp-tutorial/kemp-11.png)
 
     a. Bu kullanıcıya yalnızca belirtilen hizmetlerde temsilci seçiminde güven'i seçin.
 
@@ -332,7 +332,7 @@ Daha önce kimliği doğrulanmamış erişim yerine kiralandırılmış oturum a
 
 Kemp LoadMaster Azure AD tümleştirme web konsoluna gidin > sanal Hizmetleri > SSO 'yu yönetin.
 
-![Kemp LoadMaster Azure AD tümleştirme Web sunucusu](./media/kemp-tutorial/kemp-12.png)
+!["S S u-etki alanını yönet" sayfasını gösteren ekran görüntüsü.](./media/kemp-tutorial/kemp-12.png)
 
 a. Sunucu tarafı çoklu oturum açma yapılandırması ' na gidin.
 

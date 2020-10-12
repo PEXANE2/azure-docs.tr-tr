@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 08/25/2020
 ms.author: raynew
-ms.openlocfilehash: 608d9511b14ef8dd3815d6f9b45cda31e6b38b94
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: dc931b910981578a3257c9131bea93cd836d1def
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90004315"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945172"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>Bölgeler arasında Azure kaynaklarını taşıma desteği
 
@@ -696,7 +696,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | accounts | No | 
+> | accounts | Hayır. [Daha fazla bilgi edinin](../../azure-monitor/faq.md#how-do-i-move-an-application-insights-resource-to-a-new-region).
 > | actiongroups |  No | 
 > | activitylogalerts | No | 
 > | alertrules |  No | 

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 0c1d83c2dac0163cd9b9cbc07969103381e85471
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88855387"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>Azure portal kullanarak ölçekli IoT Edge modüllerini dağıtın
@@ -115,7 +115,7 @@ Azure Stream Analytics bir modül eklemek için aşağıdaki adımları izleyin:
 
 Bir dağıtıma modül ekledikten sonra, bu adı seçerek **güncelleştirme IoT Edge modülü** sayfasını açabilirsiniz. Bu sayfada modül ayarlarını, ortam değişkenlerini, oluşturma seçeneklerini ve ikizi modülünü düzenleyebilirsiniz. Market 'ten bir modül eklediyseniz, bu parametrelerin bazıları zaten doldurulmuş olabilir.
 
-Katmanlı bir dağıtım oluşturuyorsanız, aynı cihazları hedefleyen diğer dağıtımlarda var olan bir modül yapılandırıyorsanız. Modül ikizi diğer sürümlerin üzerine yazmadan güncelleştirmek için, **module Ikizi ayarları** sekmesini açın. modülün istenen özelliklerinde bir alt bölüm için benzersiz ada sahip yeni bir **Modül ikizi özelliği** oluşturun. Örneğin, `properties.desired.settings` . Yalnızca alanın içinde Özellikler tanımlarsanız `properties.desired` , daha düşük öncelikli dağıtımlarda tanımlanan modül için istenen özelliklerin üzerine yazılır.
+Katmanlı bir dağıtım oluşturuyorsanız, aynı cihazları hedefleyen diğer dağıtımlarda var olan bir modül yapılandırıyorsanız. Modül ikizi diğer sürümlerin üzerine yazmadan güncelleştirmek için, **module Ikizi ayarları** sekmesini açın. Modül ikizi 'ın istenen özellikleri içindeki bir alt bölüm için benzersiz bir adla yeni bir **module Ikizi özelliği** oluşturun (örneğin,) `properties.desired.settings` . Yalnızca alanın içinde Özellikler tanımlarsanız `properties.desired` , daha düşük öncelikli dağıtımlarda tanımlanan modül için istenen özelliklerin üzerine yazılır.
 
 ![Katmanlı dağıtım için Module ikizi özelliğini ayarla](./media/how-to-deploy-monitor/module-twin-property.png)
 
@@ -139,7 +139,7 @@ Bilgileri [Declare rotalarındaki](module-composition.md#declare-routes)bilgiler
 
 1. **Ölçüm ölçütü**için bir sorgu girin. Sorgu IoT Edge hub modülünün ikizi [bildirilen özelliklerini](module-edgeagent-edgehub.md#edgehub-reported-properties)temel alır. Ölçüm, sorgu tarafından döndürülen satır sayısını temsil eder.
 
-   Örnek:
+   Örneğin:
 
    ```sql
    SELECT deviceId FROM devices
@@ -183,7 +183,7 @@ Bir dağıtımı değiştirdiğinizde, değişiklikler hedeflenen tüm cihazlara
 
 1. IoT Hub 'ınızda sol bölme menüsünden **IoT Edge** ' yi seçin.
 1. **IoT Edge dağıtımları** sekmesini seçin ve ardından yapılandırmak istediğiniz dağıtımı seçin.
-1. **Hedef koşul** sekmesini seçin. **hedef koşulu** hedeflenen cihazları hedefleyecek şekilde değiştirin. **Önceliği**de ayarlayabilirsiniz.  **Kaydet**’i seçin.
+1. **Hedef koşul** sekmesini seçin. **Hedef koşulu** hedeflenen cihazları hedefleyecek şekilde değiştirin. **Önceliği**de ayarlayabilirsiniz.  **Kaydet**’i seçin.
 
     Hedef koşulu güncelleştirirseniz, aşağıdaki güncelleştirmeler gerçekleşir:
 

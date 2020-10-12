@@ -4,10 +4,10 @@ description: Yeni sertifikaların nasıl ekleneceğini, sertifikanın nasıl akt
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: b1ccf83e666f9106a31809ff41d55062826be78c
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88869771"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Azure'da Service Fabric kümesine sertifika ekleme veya kaldırma
@@ -263,7 +263,7 @@ Küme sertifikalarına ek olarak, bir Service Fabric kümesinde yönetim işleml
 Herhangi bir sayıda istemci sertifikası belirtebilirsiniz. Her ekleme/silme işlemi Service Fabric kümesinde bir yapılandırma güncelleştirmesine neden olur.
 
 
-### <a name="adding-client-certificates---admin-or-read-only-via-portal"></a>Portal aracılığıyla istemci sertifikaları ekleme-yönetici veya salt okuma
+### <a name="adding-client-certificates---admin-or-read-only-via-portal"></a>Portal aracılığıyla istemci sertifikaları ekleme-yönetici veya Read-Only
 
 1. Güvenlik bölümüne gidin ve güvenlik bölümünün üstündeki ' + Authentication ' düğmesini seçin.
 2. ' Kimlik doğrulaması Ekle ' bölümünde ' kimlik doğrulama türü '-' salt okunurdur ' veya ' admin Client ' seçeneklerini belirleyin
@@ -271,7 +271,7 @@ Herhangi bir sayıda istemci sertifikası belirtebilirsiniz. Her ekleme/silme i�
 
 ![Istemci sertifikası Ekle][Add_Client_Cert]
 
-### <a name="deletion-of-client-certificates---admin-or-read-only-using-the-portal"></a>Portalı kullanarak Istemci sertifikalarını silme-yönetici veya salt okuma
+### <a name="deletion-of-client-certificates---admin-or-read-only-using-the-portal"></a>Portalı kullanarak Istemci sertifikalarını silme-yönetici veya Read-Only
 
 Küme güvenliği için kullanılan ikincil sertifikayı kaldırmak için Güvenlik bölümüne gidin ve belirli bir sertifikadaki bağlam menüsünden ' Sil ' seçeneğini belirleyin.
 

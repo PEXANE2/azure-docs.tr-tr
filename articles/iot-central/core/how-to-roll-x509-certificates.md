@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 76e2b9542d20b5788a2875dec89d447ce38276a0
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88122107"
 ---
 # <a name="how-to-roll-x509-device-certificates-in-iot-central-application"></a>IoT Central uygulamasında X. 509.440 cihaz sertifikalarını alma
@@ -30,7 +30,7 @@ OpenSSL gibi bir araç kullanarak kendi X. 509.952 sertifikalarınızı oluştur
 
 Bir güvenlik ihlaline yanıt olarak bir grup kaydını güncelleştirmek için, geçerli sertifikayı hemen güncelleştiren aşağıdaki yaklaşımı kullanmanız gerekir:
 
-1. Sol bölmedeki **Yönetim** ' e gidin ve **cihaz bağlantısı**' na tıklayın.
+1. Sol bölmedeki **Yönetim**  ' e gidin ve **cihaz bağlantısı**' na tıklayın.
 
 2. **Kayıt grupları**' na tıklayın ve listede Grup adına tıklayın.
 
@@ -52,7 +52,7 @@ Bir güvenlik ihlaline yanıt olarak bir grup kaydını güncelleştirmek için,
 
 Sertifika süre sonlarını işlemek için bir sertifika alıyorsanız, geçerli sertifikayı hemen güncelleştirmek için aşağıdaki yaklaşımı kullanın:
 
-1. Sol bölmedeki **Yönetim** ' e gidin ve **cihaz bağlantısı**' na tıklayın. 
+1. Sol bölmedeki **Yönetim**  ' e gidin ve **cihaz bağlantısı**' na tıklayın. 
 
 2. **Kayıt grupları**' na tıklayın ve listede Grup adına tıklayın.
 
