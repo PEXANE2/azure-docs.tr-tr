@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/03/2020
 ms.openlocfilehash: 07cbb28b98fcbac1932424c1c72f388813ec2400
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86037571"
 ---
 # <a name="autoscale-stream-analytics-jobs-using-azure-automation"></a>Azure Otomasyonu 'Nu kullanarak işleri Stream Analytics otomatik ölçeklendirme
@@ -20,7 +20,7 @@ Otomatik ölçeklendirmeyi yapılandırarak Stream Analytics işlerinizin maliye
 1. Tahmin edilebilir bir giriş yükleriniz olduğunda **bir zamanlamayı önceden tanımlayın** . Örneğin, dayı sırasında giriş olaylarının daha yüksek bir oranını beklediğinizi ve işinizin daha fazla SUs ile çalışmasını isteyeceksiniz.
 2. Tahmin edilebilir bir giriş yüklemeniz olmadığında **ölçeği artırma ve iş ölçümlerine göre ölçeği azaltma Işlemlerini tetikler** . Giriş olaylarının sayısı veya biriktirme listesi olayları gibi iş ölçümlerinizi temel alan SUs sayısını dinamik olarak değiştirebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 İşiniz için otomatik ölçeklendirmeyi yapılandırmaya başlamadan önce aşağıdaki adımları izleyin.
 1. İşiniz [paralel topolojiye](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization)sahip olacak şekilde iyileştirildi. Çalışma sırasında işinizin ölçeğini değiştirebiliyorsanız, işiniz paralel topolojiye sahiptir ve otomatik ölçeklendirme için yapılandırılabilir.
 2. "RunAsAccount" seçeneği etkin olan [bir Azure Otomasyonu hesabı oluşturun](https://docs.microsoft.com/azure/automation/automation-create-standalone-account) . Bu hesabın Stream Analytics işlerinizi yönetme izinleri olmalıdır.
@@ -29,7 +29,7 @@ Otomatik ölçeklendirmeyi yapılandırarak Stream Analytics işlerinizin maliye
 ### <a name="configure-variables"></a>Değişkenleri yapılandırma
 Aşağıdaki değişkenleri Azure Otomasyonu hesabının içine ekleyin. Bu değişkenler, sonraki adımlarda açıklanan runbook 'larda kullanılacaktır.
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | --- | --- | --- |
 | **jobName** | Dize | Otomatik ölçeklendirme yapmak istediğiniz Stream Analytics işinizin adı. |
 | **resourceGroupName** | Dize | İşinizin bulunduğu kaynak grubunun adı. |

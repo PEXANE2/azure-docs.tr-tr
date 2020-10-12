@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 09/16/2019
 ms.author: genli
 ms.openlocfilehash: 09056846ee3e531724f597ee35f92d812ce2c335
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86037843"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Sorun giderme: bir Azure siteden siteye VPN bağlantısı bağlanamaz ve çalışmayı durduruyor
@@ -28,7 +28,7 @@ Sorunu çözmek için öncelikle [Azure VPN Gateway 'i sıfırlamayı](vpn-gatew
 
 Azure VPN ağ geçidinin türünü denetleyin.
 
-1. [Azure Portal](https://portal.azure.com)gidin.
+1. [Azure portalına](https://portal.azure.com) gidin.
 
 2. Tür bilgileri için VPN ağ geçidinin **genel bakış** sayfasını kontrol edin.
     
@@ -75,7 +75,7 @@ Get-AzureVNetGatewayKey -VNetName -LocalNetworkSiteName
 -   Azure 'daki **yerel ağ geçidi** nesnesindeki IP tanımı, şirket içi cihaz IP 'si ile eşleşmelidir.
 -   Şirket içi cihazda ayarlanan Azure ağ geçidi IP tanımı, Azure Gateway IP 'si ile eşleşmelidir.
 
-### <a name="step-4-check-udr-and-nsgs-on-the-gateway-subnet"></a>4. Adım. Ağ geçidi alt ağındaki UDR ve NSG 'leri denetleyin
+### <a name="step-4-check-udr-and-nsgs-on-the-gateway-subnet"></a>4. Adım: Ağ geçidi alt ağındaki UDR ve NSG 'leri denetleyin
 
 Ağ geçidi alt ağında Kullanıcı tanımlı yönlendirmeyi (UDR) veya ağ güvenlik gruplarını (NSG 'ler) denetleyip kaldırın ve ardından sonucu test edin. Sorun çözümlenirse, UDR veya NSG 'nin uyguladığı ayarları doğrulayın.
 

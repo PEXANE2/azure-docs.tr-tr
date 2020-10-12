@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: shants
 ms.openlocfilehash: 38532fba2be1fedd275ed2e7f9dfc1bf5752499d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86501662"
 ---
 # <a name="move-resources-in-a-maintenance-control-configuration-to-another-region"></a>Bakım denetim yapılandırmasındaki kaynakları başka bir bölgeye taşıma
@@ -32,7 +32,7 @@ Bir bakım denetimi yapılandırmasıyla ilişkili kaynakları taşımaya başla
 - Bir kaynak için yapılandırma alırken:
     - Azure ayrılmış ana bilgisayar KIMLIĞI değil, hesap için abonelik KIMLIĞINI kullandığınızdan emin olun.
     - CLı:--output tablo parametresi yalnızca okunabilirlik için kullanılır ve silinebilir veya değiştirilebilir.
-    - PowerShell: biçim-tablo adı parametresi yalnızca okunabilirlik için kullanılır ve silinebilir veya değiştirilebilir.
+    - PowerShell: Format-Table name parametresi yalnızca okunabilirlik için kullanılır ve silinebilir veya değiştirilebilir.
     - PowerShell kullanıyorsanız, ilişkili yapılandırmalara sahip olmayan bir kaynak için yapılandırma listedenemeye çalıştığınızda bir hata alırsınız. Hata şuna benzer: "Işlem şu durumla başarısız oldu: ' Not Found '. Ayrıntılar: 404 Istemci hatası: URL için bulunamadı.
 
     

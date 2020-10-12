@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
 ms.openlocfilehash: ec81a8f7f9d9f45f1d068a415a599ce30a0d4581
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397258"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure bekleyen verileri şifreleme
@@ -107,7 +107,7 @@ Tüm yönetilen diskler, anlık görüntüler ve görüntüler, hizmet tarafınd
 
 #### <a name="custom-encryption-at-rest"></a>Bekleyen özel şifreleme
 
-Her ne kadar, IaaS uygulamalarının Azure disk şifrelemesi ve şifreleme tarafından kullanılan tüm Azure hizmetleri tarafından sunulan Rest seçeneklerinde kullanılması önerilir. Düzensiz şifreleme gereksinimleri veya Azure tabanlı olmayan depolama gibi bazı durumlarda, bir IaaS uygulamasının geliştiricisi, Rest üzerinde şifreleme uygulaması gerekebilir. IaaS çözümlerinin geliştiricileri, belirli Azure bileşenlerinden yararlanarak Azure yönetimi ve müşteri beklentileri ile daha iyi tümleşebilir. Geliştiriciler özellikle, güvenli anahtar depolaması sağlamak için Azure Key Vault hizmetini ve müşterilerine birçok Azure platform hizmeti ile tutarlı anahtar yönetim seçenekleri sağlamak için kullanmalıdır. Ayrıca, özel çözümlerin, hizmet hesaplarının şifreleme anahtarlarına erişmesini sağlamak için Azure tarafından yönetilen hizmet kimliklerini kullanması gerekir. Azure Key Vault ve yönetilen hizmet kimlikleri hakkında Geliştirici bilgileri için bkz. ilgili SDK 'lar.
+Her ne kadar, IaaS uygulamalarının Azure disk şifrelemesi ve şifreleme tarafından kullanılan tüm Azure hizmetleri tarafından sunulan Rest seçeneklerinde kullanılması önerilir. Düzensiz şifreleme gereksinimleri veya Azure tabanlı olmayan depolama gibi bazı durumlarda, bir IaaS uygulamasının geliştiricisi, Rest üzerinde şifreleme uygulaması gerekebilir. IaaS çözümlerinin geliştiricileri, belirli Azure bileşenlerinden yararlanarak Azure yönetimi ve müşteri beklentileri ile daha iyi tümleşebilir. Geliştiriciler özellikle, güvenli anahtar depolaması sağlamak için Azure Key Vault hizmetini ve müşterilerine birçok Azure platform hizmeti ile tutarlı anahtar yönetim seçenekleri sağlamak için kullanmalıdır. Ayrıca, özel çözümlerin, hizmet hesaplarının şifreleme anahtarlarına erişmesini sağlamak için Azure-Managed hizmet kimliklerini kullanması gerekir. Azure Key Vault ve yönetilen hizmet kimlikleri hakkında Geliştirici bilgileri için bkz. ilgili SDK 'lar.
 
 ## <a name="azure-resource-providers-encryption-model-support"></a>Azure kaynak sağlayıcıları şifreleme modeli desteği
 
