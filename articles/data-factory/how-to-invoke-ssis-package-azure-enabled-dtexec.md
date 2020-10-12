@@ -12,10 +12,10 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.openlocfilehash: 94b581f677e370911a60db08276ff7dd0eb45486
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87927088"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>Azure özellikli dtexec yardımcı programıyla SQL Server Integration Services paketlerini çalıştırma
@@ -32,7 +32,7 @@ AzureDTExec, paketlerinizi Data Factory işlem hatları 'nda SSIS paket etkinlik
 
 AzureDTExec, veri fabrikanıza işlem hatları üreten bir Azure Active Directory (Azure AD) uygulaması kullanmak için SSMS aracılığıyla yapılandırılabilir. Ayrıca, paketlerinizi depoladığınız dosya sistemlerine, dosya paylaşımlarına veya Azure dosyalarına erişecek şekilde yapılandırılabilir. AzureDTExec, çağırma seçeneklerine verdiğiniz değerlere bağlı olarak, içinde bir SSIS paketi yürütme etkinliği ile benzersiz bir Data Factory işlem hattı oluşturur ve çalıştırır. Options için aynı değerlerle AzureDTExec çağırma, mevcut ardışık düzeni yeniden çalıştırır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 AzureDTExec 'yi kullanmak için sürüm 18,3 veya üzeri olan SSMS 'nin en son sürümünü indirip yükleyin. [Bu Web sitesinden](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)indirin.
 
 ## <a name="configure-the-azuredtexec-utility"></a>AzureDTExec yardımcı programını yapılandırma

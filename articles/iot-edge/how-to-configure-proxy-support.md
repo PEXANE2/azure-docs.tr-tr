@@ -11,10 +11,10 @@ ms.custom:
 - amqp
 - contperfq1
 ms.openlocfilehash: e6c85ba79c21c9a8120feebc02477506eb93d2e5
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89500377"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge cihazını ara sunucu üzerinden iletişim kuracak şekilde yapılandırma
@@ -73,13 +73,13 @@ IoT Edge çalışma zamanını bir Windows cihazına yüklüyorsanız, proxy sun
 
 Aşağıdaki adımlarda, bağımsız değişkenini kullanarak bir Windows yüklemesinin örneği gösterilmektedir `-proxy` :
 
-1. Invoke-WebRequest komutu, yükleyici betiğine erişmek için ara sunucu bilgilerine sahip olmalıdır. Ardından, dağıtım-ıotedge komutunun yükleme dosyalarını indirmesi için proxy bilgilerine ihtiyacı vardır.
+1. Invoke-WebRequest komutu, yükleyici betiğine erişmek için proxy bilgilerine ihtiyaç duyuyor. Ardından Deploy-IoTEdge komutu, yükleme dosyalarını indirmek için proxy bilgilerine ihtiyaç duyuyor.
 
    ```powershell
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Deploy-IoTEdge -proxy <proxy URL>
    ```
 
-2. Initialize-ıotedge komutunun ara sunucu üzerinden gitmesi gerekmez, bu nedenle ikinci adım yalnızca Invoke-WebRequest için proxy bilgileri gerektirir.
+2. Initialize-IoTEdge komutun ara sunucu üzerinden gitmesi gerekmez, bu nedenle ikinci adım yalnızca Invoke-WebRequest için proxy bilgileri gerektirir.
 
    ```powershell
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Initialize-IoTEdge

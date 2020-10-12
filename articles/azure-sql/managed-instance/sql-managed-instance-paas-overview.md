@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: sstein, vanto
 ms.date: 08/14/2020
 ms.openlocfilehash: c98e377ec216bea6c1d4a96b15b3741aa52672e0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91618165"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği nedir?
@@ -56,15 +56,15 @@ SQL yönetilen örneği 'nin temel özellikleri aşağıdaki tabloda gösterilmi
 |Özellik | Açıklama|
 |---|---|
 | Sürüm/derleme SQL Server | SQL Server veritabanı altyapısı (en son kararlı) |
-| Yönetilen otomatik yedeklemeler | Yes |
-| Yerleşik örnek ve veritabanı izleme ve ölçümler | Yes |
-| Otomatik yazılım düzeltme eki uygulama | Yes |
-| En son veritabanı altyapısı özellikleri | Yes |
+| Yönetilen otomatik yedeklemeler | Evet |
+| Yerleşik örnek ve veritabanı izleme ve ölçümler | Evet |
+| Otomatik yazılım düzeltme eki uygulama | Evet |
+| En son veritabanı altyapısı özellikleri | Evet |
 | Veritabanı başına veri dosyası (satır) sayısı | Birden çok |
 | Veritabanı başına günlük dosyası (günlük) sayısı | 1 |
-| VNet-Azure Resource Manager dağıtımı | Yes |
+| VNet-Azure Resource Manager dağıtımı | Evet |
 | VNet-klasik dağıtım modeli | Hayır |
-| Portal desteği | Yes|
+| Portal desteği | Evet|
 | Yerleşik tümleştirme hizmeti (SSIS) | No-SSIS [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) 'in bir parçasıdır |
 | Yerleşik analiz hizmeti (SSAS) | Hayır-SSAS ayrı [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
 | Yerleşik raporlama hizmeti (SSRS) | Azure VM üzerinde [Power BI sayfalandırılmış raporlar](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) veya konak SSRS 'yi kullanın. SQL yönetilen örneği SSRS 'yi bir hizmet olarak çalıştıramıyor olsa da, Azure sanal makinesine yüklenen bir raporlama sunucusu için [SSRS Katalog veritabanlarını](https://docs.microsoft.com/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements) SQL Server kimlik doğrulaması kullanılarak barındırabilirler. |
@@ -217,7 +217,7 @@ Bazı önemli farklılıklar:
 - Yalnızca otomatik yedeklemeler ve zaman içindeki bir noktaya geri yükleme vardır. Müşteriler `copy-only` , otomatik yedekleme zinciriyle kesintiye uğramayan yedeklemeler başlatabilir.
 - Tam fiziksel yolların belirtilmesi desteklenmez. bu nedenle, tüm karşılık gelen senaryolar farklı şekilde desteklenmelidir: RESTORE DB MOVE Ile desteklemez, CREATE DB fiziksel yollara izin vermez, BULK INSERT yalnızca Azure Blob 'ları ile çalışır, vb.
 - SQL yönetilen örneği, Windows kimlik doğrulamasına bir bulut alternatifi olarak [Azure AD kimlik doğrulamasını](../database/authentication-aad-overview.md) destekler.
-- SQL yönetilen örneği, bellek Içi OLTP nesneleri içeren veritabanları için XTP dosya gruplarını ve dosyalarını otomatik olarak yönetir.
+- SQL yönetilen örnek, In-Memory OLTP nesneleri içeren veritabanları için XTP dosya gruplarını ve dosyalarını otomatik olarak yönetir.
 - SQL yönetilen örneği SQL Server Integration Services (SSIS) destekler ve SSIS paketlerini depolayan bir SSIS kataloğunu (SSıSDB) barındırabilir, ancak bunlar Azure Data Factory yönetilen bir Azure-SSIS Integration Runtime (IR) üzerinde yürütülür. Bkz. [oluşturma Azure-SSIS IR Data Factory](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). SSIS özelliklerini karşılaştırmak için bkz. [SQL veritabanı Ile SQL yönetilen örneği karşılaştırması](../../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance).
 
 ### <a name="administration-features"></a>Yönetim özellikleri

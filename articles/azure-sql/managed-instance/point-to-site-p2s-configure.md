@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, jovanpop
 ms.date: 03/13/2019
 ms.openlocfilehash: 1bcaaed394d8e802a9660e2fdf0e37994ee795a7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91617698"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>Hızlı başlangıç: şirket içi Azure SQL yönetilen örneği ile noktadan siteye bağlantı yapılandırma
@@ -24,7 +24,7 @@ ms.locfileid: "91617698"
 
 Bu hızlı başlangıçta, bir şirket içi istemci bilgisayarından Noktadan siteye bağlantı üzerinden [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) kullanarak Azure SQL yönetilen örneği 'ne nasıl bağlanacağı gösterilmektedir. Noktadan siteye bağlantılar hakkında bilgi için bkz. [noktadan sıteye VPN hakkında](../../vpn-gateway/point-to-site-about.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıç:
 

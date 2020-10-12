@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/05/2020
 ms.custom: references_regions
 ms.openlocfilehash: 41511abaa071bd0f64ee699c52486b71ec036a68
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87926459"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Azure VM 'lerinde SQL Server yedekleme için destek matrisi
@@ -60,39 +60,39 @@ Yedekleme tercihine ve yedeklemeler türlerine (tam/değişiklik/günlük/salt k
 
 #### <a name="backup-preference-primary"></a>Yedekleme tercihi: birincil
 
-**Yedekleme türü** | **Node**
+**Yedekleme Türü** | **Node**
 --- | ---
 Tam | Birincil
 Di | Birincil
-Log |  Birincil
-Salt kopya tam |  Birincil
+Günlük |  Birincil
+Copy-Only tam |  Birincil
 
 #### <a name="backup-preference-secondary-only"></a>Yedekleme tercihi: yalnızca Ikincil
 
-**Yedekleme türü** | **Node**
+**Yedekleme Türü** | **Node**
 --- | ---
 Tam | Birincil
 Di | Birincil
-Log |  İkincil
-Salt kopya tam |  İkincil
+Günlük |  İkincil
+Copy-Only tam |  İkincil
 
 #### <a name="backup-preference-secondary"></a>Yedekleme tercihi: Ikincil
 
-**Yedekleme türü** | **Node**
+**Yedekleme Türü** | **Node**
 --- | ---
 Tam | Birincil
 Di | Birincil
-Log |  İkincil
-Salt kopya tam |  İkincil
+Günlük |  İkincil
+Copy-Only tam |  İkincil
 
 #### <a name="no-backup-preference"></a>Yedekleme tercihi yok
 
-**Yedekleme türü** | **Node**
+**Yedekleme Türü** | **Node**
 --- | ---
 Tam | Birincil
 Di | Birincil
-Log |  İkincil
-Salt kopya tam |  İkincil
+Günlük |  İkincil
+Copy-Only tam |  İkincil
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

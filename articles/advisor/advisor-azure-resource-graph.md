@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 03/12/2020
 ms.author: sagupt
 ms.openlocfilehash: 66bb500d419d1f5537afafd7a2df543ded8cc7ce
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87057780"
 ---
 # <a name="query-for-advisor-data-in-resource-graph-explorer-azure-resource-graph"></a>Kaynak grafik Gezgini 'nde Advisor verileri sorgusu (Azure Kaynak Grafiği)
@@ -35,7 +35,7 @@ Bu kaynak türleri, Azure portal ' deki kaynak grafik Gezgini 'nde de sorgulayab
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Danışman önerileri hakkında daha fazla bilgi için bkz.
-* [Azure Advisor 'a giriş](advisor-overview.md)
+* [Azure Danışmanı’na Giriş](advisor-overview.md)
 * [Danışman'ı kullanmaya başlama](advisor-get-started.md)
 * [Danışman maliyet önerileri](advisor-cost-recommendations.md)
 * [Advisor güvenilirlik önerileri](advisor-high-availability-recommendations.md)

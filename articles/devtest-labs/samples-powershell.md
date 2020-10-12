@@ -4,17 +4,17 @@ description: Azure PowerShell örnekleri-Azure Lab Services laboratuvarları yö
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ce7a4f77aa0ea309afb81a54fd2f8f0a8f373e58
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187736"
 ---
 # <a name="azure-powershell-samples-for-azure-lab-services"></a>Azure Lab Services için Azure PowerShell örnekleri
 
 Aşağıdaki tablo, Azure Lab Services için örnek Azure PowerShell betiklerinin bağlantılarını içerir.
 
-| Script | Açıklama |
+| Komut Dosyası | Açıklama |
 |---|---|
 |[Laboratuvara dış kullanıcı ekleme](scripts/add-external-user-to-lab.md)| Bu PowerShell betiği, Azure DevTest Labs bir laboratuvara dış Kullanıcı ekler. |
 |[Laboratuvara market görüntüleri ekleme](scripts/add-marketplace-images-to-lab.md)| Bu PowerShell betiği, Market görüntülerini Azure DevTest Labs bir laboratuvara ekler. |

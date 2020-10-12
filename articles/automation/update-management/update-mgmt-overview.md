@@ -6,10 +6,10 @@ ms.subservice: update-management
 ms.date: 09/23/2020
 ms.topic: conceptual
 ms.openlocfilehash: 314012467da532002529a3f561b192876602b46e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335441"
 ---
 # <a name="update-management-overview"></a>Güncelleştirme Yönetimine genel bakış
@@ -164,11 +164,11 @@ Yönetim paketlerine yönelik güncelleştirmeler hakkında daha fazla bilgi iç
 
 Aşağıdaki tabloda Güncelleştirme Yönetimi tarafından desteklenen bağlı kaynaklar açıklanmaktadır:
 
-| Bağlı kaynak | Desteklenir | Description |
+| Bağlı kaynak | Desteklenir | Açıklama |
 | --- | --- | --- |
-| Windows aracıları |Yes |Güncelleştirme Yönetimi, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
-| Linux aracıları |Yes |Güncelleştirme Yönetimi, Linux aracılarından sistem güncelleştirmeleriyle ilgili bilgileri toplar ve ardından desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
-| Operations Manager yönetim grubu |Yes |Güncelleştirme Yönetimi bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar.<br/><br/>Operations Manager aracısından Azure Izleyici günlüklerine doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
+| Windows aracıları |Evet |Güncelleştirme Yönetimi, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
+| Linux aracıları |Evet |Güncelleştirme Yönetimi, Linux aracılarından sistem güncelleştirmeleriyle ilgili bilgileri toplar ve ardından desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
+| Operations Manager yönetim grubu |Evet |Güncelleştirme Yönetimi bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar.<br/><br/>Operations Manager aracısından Azure Izleyici günlüklerine doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
 
 ### <a name="collection-frequency"></a>Toplama sıklığı
 

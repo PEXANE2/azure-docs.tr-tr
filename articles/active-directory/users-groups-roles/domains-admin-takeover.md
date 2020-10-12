@@ -15,10 +15,10 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6a7dcb1d24f3c1ff848e3393687b04d79d28058
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90054713"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory’de yönetilmeyen bir dizini yönetici olarak devralma
@@ -140,7 +140,7 @@ cmdlet | Kullanım
    ```powershell
    Get-MsolDomain
    ```
-3. Bir sınama oluşturmak için Get-Msoldomaindoğrulamaları Icationdns cmdlet 'ini çalıştırın:
+3. Bir sınama oluşturmak için Get-MsolDomainVerificationDns cmdlet 'ini çalıştırın:
    ```powershell
    Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
    ```
@@ -154,7 +154,7 @@ cmdlet | Kullanım
    MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
    ```
 5. Genel DNS ad alanında, önceki adımda kopyaladığınız değeri içeren bir DNS TXT kaydı oluşturun. Bu kaydın adı üst etki alanının adıdır, bu nedenle Windows Server 'dan DNS rolünü kullanarak bu kaynak kaydını oluşturursanız, kayıt adını boş bırakın ve yalnızca değeri metin kutusuna yapıştırın.
-6. Sınamayı doğrulamak için Onayla-MsolDomain cmdlet 'ini çalıştırın:
+6. Sınamayı doğrulamak için Confirm-MsolDomain cmdlet 'ini çalıştırın:
   
    ```powershell
    Confirm-MsolDomain –DomainName *your_domain_name* –ForceTakeover Force

@@ -7,10 +7,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
 ms.openlocfilehash: 23e6834f4850cc8f44f563a12f4704fec2e13ef7
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400817"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure Logic Apps için Bağlayıcılar
@@ -66,7 +66,7 @@ Bir Azure sanal ağındaki kaynaklara doğrudan erişmesi gereken Logic Apps iç
 > [!NOTE]
 > ISE ve bağlayıcılarında çalışan Logic Apps, bu bağlayıcıların çalıştığı durumlar ne olursa olsun, tüketim tabanlı fiyatlandırma planına karşı sabit bir fiyatlandırma planını takip edin. Daha fazla bilgi için bkz. [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md) ve [Logic Apps fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/logic-apps/).
 
-| Etiket | Örnek | Description |
+| Etiketle | Örnek | Açıklama |
 |-------|---------|-------------|
 | **ÇEKIRDEĞIN** | ![Örnek çekırdek Bağlayıcısı](./media/apis-list/example-core-connector.png) | Bu etiketle birlikte yerleşik Tetikleyiciler ve Eylemler, Logic Apps ile aynı ıSE 'de çalışır. |
 | **ISE** | ![Örnek ıSE Bağlayıcısı](./media/apis-list/example-ise-connector.png) | Bu etikete sahip yönetilen bağlayıcılar, Logic Apps ile aynı ıSE 'de çalışır. Azure sanal ağına bağlı bir şirket içi sisteminiz varsa, bir ıSE, Logic Apps 'in [Şirket içi veri ağ geçidi](../logic-apps/logic-apps-gateway-connection.md)olmadan bu sisteme doğrudan erişmesini sağlar. Bunun yerine, varsa, bu sistemin **Ise** bağlayıcısını kullanabilirsiniz, bir http eylemi veya [özel bağlayıcı](#custom). **Ise** bağlayıcıları olmayan şirket içi sistemler için şirket içi veri ağ geçidi kullanın. Kullanılabilir ıSE bağlayıcılarını gözden geçirmek için bkz. [Ise bağlayıcıları](#ise-connectors). |

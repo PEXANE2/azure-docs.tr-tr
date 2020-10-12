@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
 ms.openlocfilehash: f49f115e10326887cf4d23406437467256b7df2e
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87922243"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Azure Container Instances için güvenlik konuları
@@ -117,7 +117,7 @@ Her türlü BT ortamında olduğu gibi, tüm şüpheli veya kötü amaçlı etki
 
 * [Kapsayıcılar Için Azure izleyici](../azure-monitor/insights/container-insights-overview.md) , Azure Kubernetes Service (aks) üzerinde barındırılan Kubernetes ortamlarına dağıtılan iş yüklerinizin performansını izler. Kapsayıcılar için Azure Izleyici, ölçüm API 'SI aracılığıyla Kubernetes 'te bulunan denetleyicilerden, düğümlerden ve kapsayıcılardan bellek ve işlemci ölçümleri toplayarak performans görünürlüğüne sahip olmanızı sağlar. 
 
-* [Azure Kapsayıcı izleme çözümü](../azure-monitor/insights/containers.md) , diğer Docker ve Windows kapsayıcı konaklarının tek bir konumda görüntülemenize ve yönetilmesine yardımcı olur. Örnek:
+* [Azure Kapsayıcı izleme çözümü](../azure-monitor/insights/containers.md) , diğer Docker ve Windows kapsayıcı konaklarının tek bir konumda görüntülemenize ve yönetilmesine yardımcı olur. Örneğin:
 
   * Kapsayıcılarla kullanılan komutları gösteren ayrıntılı denetim bilgilerini görüntüleyin. 
   * Docker veya Windows konaklarını uzaktan görüntülemek zorunda kalmadan merkezi günlükleri görüntüleyip arayarak kapsayıcılarla ilgili sorunları giderin.  

@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: lahugh
 ms.openlocfilehash: 6a9567669445cb5aa94c1108051c961a216fabad
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335611"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>Azure portal (Önizleme) ile Kubernetes kaynaklarına erişin
@@ -24,7 +24,7 @@ Azure portal Kubernetes kaynak görünümü, kullanımdan kaldırılması için 
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure portal Kubernetes kaynaklarını görüntülemek için bir AKS kümeniz olması gerekir. Herhangi bir küme desteklenir, ancak Azure Active Directory (Azure AD) Tümleştirmesi kullanılıyorsa, kümenizde [aks tarafından yönetilen Azure AD tümleştirmesi][aks-managed-aad]kullanılmalıdır. Kümeniz eski Azure AD kullanıyorsa, kümenizi portalda veya [Azure CLI][cli-aad-upgrade]ile yükseltebilirsiniz.
 
@@ -48,19 +48,19 @@ Bu örnekte, [aks hızlı başlangıç][portal-quickstart]noktasından Azure oy 
 
 YAML dosyası eklendikten sonra, Kaynak Görüntüleyicisi oluşturulan Kubernetes hizmetlerini gösterir: Azure oy uygulamasına erişmek için iç hizmet (Azure-oylamalı) ve dış hizmet (Azure-oyubi). Dış hizmet bağlı bir dış IP adresi içerdiğinden, uygulamayı tarayıcınızda kolayca görüntüleyebilmenizi sağlayabilirsiniz.
 
-:::image type="content" source="media/kubernetes-portal/portal-services.png" alt-text="Azure oy uygulama bilgileri Azure portal görüntülendi." lightbox="media/kubernetes-portal/portal-services.png":::
+:::image type="content" source="media/kubernetes-portal/portal-services.png" alt-text="Kubernetes Pod bilgileri Azure portal görüntülendi." lightbox="media/kubernetes-portal/portal-services.png":::
 
 ### <a name="monitor-deployment-insights"></a>Dağıtım öngörülerini izleme
 
 [Kapsayıcılar Için Azure izleyici][enable-monitor] özellikli aks kümeleri, dağıtım öngörülerini hızla görüntüleyebilir. Kullanıcılar, Kubernetes kaynakları görünümünden, CPU ve bellek kullanımı dahil olmak üzere bireysel dağıtımların canlı durumunu görebilir ve daha ayrıntılı bilgi için Azure izleyici 'ye geçiş yapabilir. Örnek bir AKS kümesinden dağıtım öngörülerine bir örnek aşağıda verilmiştir:
 
-:::image type="content" source="media/kubernetes-portal/deployment-insights.png" alt-text="Dağıtım öngörüleri Azure portal görüntülendi." lightbox="media/kubernetes-portal/deployment-insights.png":::
+:::image type="content" source="media/kubernetes-portal/deployment-insights.png" alt-text="Kubernetes Pod bilgileri Azure portal görüntülendi." lightbox="media/kubernetes-portal/deployment-insights.png":::
 
 ## <a name="edit-yaml"></a>YAML 'yi Düzenle
 
 Kubernetes kaynak görünümü bir YAML Düzenleyicisi de içerir. Yerleşik bir YAML Düzenleyicisi, Portal içinden Hizmetleri ve dağıtımları güncelleştirebilir veya oluşturabileceğiniz ve değişiklikleri hemen uygulayabileceðiniz anlamına gelir.
 
-:::image type="content" source="media/kubernetes-portal/service-editor.png" alt-text="Azure portal gösterildiği bir Kubernetes hizmeti için YAML Düzenleyicisi.":::
+:::image type="content" source="media/kubernetes-portal/service-editor.png" alt-text="Kubernetes Pod bilgileri Azure portal görüntülendi.":::
 
 YAML 'yi düzenledikten sonra değişiklikler, **gözden geçir + kaydet**' i seçerek, değişiklikleri onayladıktan sonra yeniden kaydedilerek uygulanır.
 
@@ -82,7 +82,7 @@ Kubernetes kaynaklarına erişmek için AKS kümesine, Kubernetes API 'sine ve K
 
 Mevcut kümeler için Kubernetes kaynak görünümünü etkinleştirmeniz gerekebilir. Kaynak görünümünü etkinleştirmek için, kümenizin portalındaki komut istemlerini izleyin.
 
-:::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="Kubernetes kaynak görünümünü etkinleştirmek için Azure portal ileti." lightbox="media/kubernetes-portal/enable-resource-view.png":::
+:::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="Kubernetes Pod bilgileri Azure portal görüntülendi." lightbox="media/kubernetes-portal/enable-resource-view.png":::
 
 > [!TIP]
 > API sunucusu için [**YETKILENDIRILMIŞ IP aralıklarının**](api-server-authorized-ip-ranges.md) aks ÖZELLIĞI, API sunucusu erişimini yalnızca güvenlik duvarının genel uç noktasına sınırlamak için eklenebilir. Bu tür kümeler için başka bir seçenek de `--api-server-authorized-ip-ranges` yerel bir istemci bilgisayara veya IP adresi aralığına (portala gözatılırken) erişim sağlamak üzere güncelleştiriyoruz. Bu erişime izin vermek için bilgisayarın genel IPv4 adresine sahip olmanız gerekir. Bu adresi aşağıdaki komutla veya bir internet tarayıcısında "IP adresim nedir?" arayarak bulabilirsiniz.

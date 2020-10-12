@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/02/2020
 ms.author: allensu
 ms.openlocfilehash: 0ea4f167b992ccfbc4156ac06c8f636d2ef4a355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84343209"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Verizon Premium kural altyapısı özelliklerinden Azure CDN
@@ -30,7 +30,7 @@ Kullanılabilir özellik türleri şunlardır:
 * [Üst bilgiler](#headers)
 * [Günlükler](#logs)
 * [İyileştirme](#optimize)
-* [Kaynak](#origin)
+* [Tıdır](#origin)
 * [Uzmanlık](#specialty)
 * [URL](#url)
 * [Web Uygulaması Güvenlik Duvarı](#waf)
@@ -42,10 +42,10 @@ Bu özellikler, içeriğe erişimi denetlemek için tasarlanmıştır.
 | Name       | Amaç                                                           |
 |------------|-------------------------------------------------------------------|
 | [Erişimi Reddet (403)](https://docs.vdms.com/cdn/Content/HRE/F/Deny-Access-403.htm) | Tüm isteklerin 403 yasaklanmış bir Yanıt ile reddedildiğini belirler. |
-| [Belirteç kimlik doğrulaması](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth.htm) | Belirteç tabanlı kimlik doğrulamasının bir isteğe uygulanıp uygulanmayacağını belirler. |
-| [Belirteç kimlik doğrulaması reddi kodu](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Denial-Code.htm) | Belirteç tabanlı kimlik doğrulaması nedeniyle bir istek reddedildiğinde kullanıcıya döndürülecek yanıtın türünü belirler. |
-| [Belirteç kimlik doğrulaması URL 'sini yoksay](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Ignore-URL-Case.htm) | Belirteç tabanlı kimlik doğrulaması tarafından yapılan URL karşılaştırmalarının büyük/küçük harfe duyarlı olup olmayacağını belirler. |
-| [Belirteç kimlik doğrulaması parametresi](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Parameter.htm) | Belirteç tabanlı kimlik doğrulama sorgu dizesi parametresinin yeniden adlandırılması gerekip gerekmediğini belirler. |
+| [Belirteç kimlik doğrulaması](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth.htm) | Token-Based kimlik doğrulamasının bir isteğe uygulanıp uygulanmayacağını belirler. |
+| [Belirteç kimlik doğrulaması reddi kodu](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Denial-Code.htm) | Token-Based kimlik doğrulaması nedeniyle bir istek reddedildiğinde kullanıcıya döndürülecek yanıtın türünü belirler. |
+| [Belirteç kimlik doğrulaması URL 'sini yoksay](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Ignore-URL-Case.htm) | Token-Based kimlik doğrulaması tarafından yapılan URL karşılaştırmalarının büyük/küçük harfe duyarlı olup olmadığını belirler. |
+| [Belirteç kimlik doğrulaması parametresi](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Parameter.htm) | Token-Based kimlik doğrulaması sorgu dizesi parametresinin yeniden adlandırılması gerekip gerekmediğini belirler. |
 
 **[En üste geri dön](#top)**
 
@@ -58,24 +58,24 @@ Bu özellikler, içeriğin ne zaman ve nasıl önbelleğe alınacağını özell
 | [Bant genişliği parametreleri](https://docs.vdms.com/cdn/Content/HRE/F/Bandwidth-Parameters.htm) | Bant genişliği azaltma parametrelerinin (yani, ec_rate ve ec_prebuf) etkin olup olmayacağını belirler. |
 | [Bant genişliği azaltma](https://docs.vdms.com/cdn/Content/HRE/F/Bandwidth-Throttling.htm) | Edge sunucularımız tarafından sağlanmış olan yanıtın bant genişliğini kısıtlar. |
 | [Atlama önbelleği](https://docs.vdms.com/cdn/Content/HRE/F/Bypass-Cache.htm) | İsteğin önbelleğe alma teknolojimizden yararlanıp yararlanamayacağını belirler. |
-| [Cache-Control üst bilgisi Işleme](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Control-Header-Treatment.htm) |  Dış en büyük yaş özelliği etkinken uç sunucuya göre Cache-Control üst bilgilerinin oluşturulmasını denetler. |
+| [Cache-Control üst bilgisi Işleme](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Control-Header-Treatment.htm) |  Dış Max-Age özelliği etkinken uç sunucuya Cache-Control üst bilgileri oluşturmayı denetler. |
 | [Cache-Key sorgu dizesi](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Query-String.htm) | **Cache-Key*** ' ın bir istekle ilişkili sorgu dizesi parametrelerini içerip içermediğini veya hariç tutmayacağını belirler. <br> _* Bir varlığı, önbelleğe alma amacına göre benzersiz bir şekilde tanımlayan göreli bir yol.  Uç sunucularımız, önbelleğe alınmış içerik denetlenirken bu göreli yolu kullanır.  Varsayılan olarak, önbellek anahtarı sorgu dizesi parametreleri içermez._ |
 | [Cache-Key yeniden yazma](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Rewrite.htm) | Bir istekle ilişkili önbellek anahtarını yeniden yazar. |
 | [Önbellek dolgusunu tamamla](https://docs.vdms.com/cdn/Content/HRE/F/Complete-Cache-Fill.htm) | Bir uç sunucusunda bir istek kısmi önbellek isabetsizliği ile sonuçlanırsa ne olacağını belirler. |
 | [Dosya türlerini sıkıştır](https://docs.vdms.com/cdn/Content/HRE/F/Compress-File-Types.htm) | Sunucuda Sıkıştırılacak dosya biçimlerini tanımlar. | 
 | [Varsayılan dahili maksimum yaş](https://docs.vdms.com/cdn/Content/HRE/F/Default-Internal-Max-Age.htm) | Uç sunucusunun kaynak sunucu önbelleği yeniden doğrulama için varsayılan en yüksek yaş aralığını belirler. |
-| [Süre sonu üst bilgisi Işleme](https://docs.vdms.com/cdn/Content/HRE/F/Expires-Header-Treatment.htm) | Dış en büyük yaş özelliği etkin olduğunda, uç sunucu tarafından sona erme üst bilgilerinin oluşturulmasını denetler. |
+| [Süre sonu üst bilgisi Işleme](https://docs.vdms.com/cdn/Content/HRE/F/Expires-Header-Treatment.htm) | Dış Max-Age özelliği etkin olduğunda bir uç sunucu tarafından süre sonu başlıklarının oluşturulmasını denetler. |
 | [Dış maksimum yaş](https://docs.vdms.com/cdn/Content/HRE/F/External-Max-Age.htm) | Tarayıcı için uç sunucu önbelleği yeniden doğrulama için maksimum yaş aralığını belirler. |
 | [Maksimum Iç kullanım süresi](https://docs.vdms.com/cdn/Content/HRE/F/Force-Internal-Max-Age.htm) | Uç sunucusu için sunucu önbelleği yeniden doğrulama için maksimum yaş aralığını belirler. |
 | [H. ula desteği (HTTP aşamalı Indirme)](https://docs.vdms.com/cdn/Content/HRE/F/H.264-Support-HPD.htm) | İçerik akışı için kullanılabilen H., dosya biçimlerinin türlerini belirler. |
 | [H. Bu, video arama params desteği](https://docs.vdms.com/cdn/Content/HRE/F/H.264-Support-VSP-HPD.htm) | HTTP aşamalı Indirme kullanılırken H. bir medyada aramayı denetleyen parametrelere atanan adları geçersiz kılar. |
-| [Önbellek Isteğini kabul edin](https://docs.vdms.com/cdn/Content/HRE/F/Honor-No-Cache-Request.htm) | HTTP istemcisinin önbelleğe alma isteklerinin kaynak sunucuya iletilip iletilmeyeceğini belirler. |
+| [No-Cache Isteği dikkate alarak](https://docs.vdms.com/cdn/Content/HRE/F/Honor-No-Cache-Request.htm) | HTTP istemcisinin önbelleğe alma isteklerinin kaynak sunucuya iletilip iletilmeyeceğini belirler. |
 | [Önbellek yok sayma](https://docs.vdms.com/cdn/Content/HRE/F/Ignore-Origin-No-Cache.htm) | CDN 'nin bir kaynak sunucudan sunulan belirli yönergeleri yoksayıp saymayacağını belirler. |
 | [Unsatisfiable aralıklarını yoksay](https://docs.vdms.com/cdn/Content/HRE/F/Ignore-Unsatisfiable-Ranges.htm) | İstek bir 416 Istenen Aralık Satisfiable durum kodu oluşturduğunda istemcilere döndürülecek yanıtı belirler. |
 | [İç maksimum-eski](https://docs.vdms.com/cdn/Content/HRE/F/Internal-Max-Stale.htm) | Uç sunucu, önbelleğe alınmış varlığı kaynak sunucu ile yeniden doğrulayamamışsa, son tarihi geçmiş bir varlık bir uç sunucudan ne kadar süre sonra hizmet verilebileceğini denetler. |
 | [Kısmi önbellek paylaşımı](https://docs.vdms.com/cdn/Content/HRE/F/Partial-Cache-Sharing.htm) | Bir isteğin kısmen önbelleğe alınmış içerik oluşturup üretmeyeceğini belirler. |
 | [Önbelleğe alınmış Içeriği önceden doğrula](https://docs.vdms.com/cdn/Content/HRE/F/Prevalidate-Cached-Content.htm) | Önbelleğe alınan içeriğin TTL 'nin süresi dolmadan erken yeniden doğrulama için uygun olup olmayacağını belirler. |
-| [Sıfır baytlık önbellek dosyalarını Yenile](https://docs.vdms.com/cdn/Content/HRE/F/Refresh-Zero-Byte-Cache-Files.htm) | Bir HTTP istemcisinin 0 baytlık önbellek varlığı için olan isteğinin Edge sunucularımız tarafından nasıl işlendiğini belirler. |
+| [Zero-Byte önbellek dosyalarını Yenile](https://docs.vdms.com/cdn/Content/HRE/F/Refresh-Zero-Byte-Cache-Files.htm) | Bir HTTP istemcisinin 0 baytlık önbellek varlığı için olan isteğinin Edge sunucularımız tarafından nasıl işlendiğini belirler. |
 | [Önbelleklenebilir durum kodlarını ayarlama](https://docs.vdms.com/cdn/Content/HRE/F/Set-Cacheable-Status-Codes.htm) | Önbelleğe alınmış içerikle sonuçlanabilme durum kodları kümesini tanımlar. |
 | [Hatada eski Içerik teslimi](https://docs.vdms.com/cdn/Content/HRE/F/Stale-Content-Delivery-on-Error.htm) | Önbellek yeniden doğrulama işlemi sırasında veya müşterinin kaynak sunucusundan istenen içerik alınırken bir hata oluştuğunda, süre dolma önbelleğe alınmış içeriğin teslim edilip edilmeyeceğini belirler. | 
 | [Yeniden doğrulama eski](https://docs.vdms.com/cdn/Content/HRE/F/Stale-While-Revalidate.htm) | , Uç sunucularımızın eski istemciyi istek sahibine yeniden doğrulama gerçekleştiğinde sunmalarına izin vererek performansı geliştirir. |
@@ -124,13 +124,13 @@ Bu özellikler, bir isteğin Edge Idealleştirici tarafından sağlanan iyileşt
 
 **[En üste geri dön](#top)**
 
-### <a name="origin"></a><a name="origin"></a>Kaynak
+### <a name="origin"></a><a name="origin"></a>Tıdır
 
 Bu özellikler, CDN 'nin bir kaynak sunucu ile nasıl iletişim kuracağını denetlemek için tasarlanmıştır.
 
 | Name       | Amaç                                                           |
 |------------|-------------------------------------------------------------------|
-| [Maksimum etkin tut Istekleri](https://docs.vdms.com/cdn/Content/HRE/F/Maximum-Keep-Alive-Requests.htm) | Kapalı bir bağlantıyı kapatmadan önce, etkin tutma bağlantısı için en fazla istek sayısını tanımlar. |
+| [En fazla Keep-Alive Isteği](https://docs.vdms.com/cdn/Content/HRE/F/Maximum-Keep-Alive-Requests.htm) | Kapatılmadan önce Keep-Alive bağlantı için en fazla istek sayısını tanımlar. |
 | [Proxy özel üstbilgileri](https://docs.vdms.com/cdn/Content/HRE/F/Proxy-Special-Headers.htm) | Bir uç sunucudan bir kaynak sunucuya iletilecek olan [CDN 'e özgü istek üst bilgileri](https://docs.vdms.com/cdn/Content/Knowledge_Base/Request-Format.htm#RequestHeaders) kümesini tanımlar. |
 
 **[En üste geri dön](#top)**
@@ -161,7 +161,7 @@ Bu özellikler, bir isteğin farklı bir URL 'ye yönlendirilmesini veya yeniden
 
 **[En üste geri dön](#top)**
 
-### <a name="web-application-firewall"></a><a name="waf"></a>Web Uygulaması Güvenlik Duvarı
+### <a name="web-application-firewall"></a><a name="waf"></a>Web uygulaması güvenlik duvarı
 
 [Web uygulaması güvenlik duvarı](https://docs.vdms.com/cdn/Content/HRE/F/Web_Application_Firewall.htm) özelliği, bir Isteğin Web uygulaması güvenlik duvarı tarafından görüntülenip görüntülenmeyeceğini belirler.
 

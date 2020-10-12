@@ -13,10 +13,10 @@ ms.author: jovanpop
 ms.reviewer: sstein, mathoma
 ms.date: 08/25/2019
 ms.openlocfilehash: 9b4d0fadf157ce1eef6821ccbc32f5725aea611f
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91616525"
 ---
 # <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>Azure SQL yönetilen örneğindeki bir veritabanını önceki bir zaman noktasına geri yükleme
@@ -46,9 +46,9 @@ Aşağıdaki tabloda, SQL yönetilen örneği için zaman içinde geri yükleme 
 
 |           |Mevcut VERITABANıNı SQL yönetilen örneği 'nin aynı örneğine geri yükleme| Var olan VERITABANıNı başka bir SQL yönetilen örneğine geri yükleme|Bırakılan DB 'yi aynı SQL yönetilen örneğine geri yükleme|Bırakılan VERITABANıNı başka bir SQL yönetilen örneğine geri yükleme|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure Portal**| Yes|Hayır |Yes|Hayır|
-|**Azure CLI**|Yes |Yes |Hayır|Hayır|
-|**PowerShell**| Yes|Yes |Yes|Yes|
+|**Azure portalındaki**| Evet|Hayır |Evet|Hayır|
+|**Azure CLI**|Evet |Evet |Hayır|Hayır|
+|**PowerShell**| Evet|Evet |Evet|Evet|
 
 ## <a name="restore-an-existing-database"></a>Var olan bir veritabanını geri yükleme
 

@@ -9,10 +9,10 @@ description: Azure Dev Spaces ve Azure Kubernetes hizmetlerini kullanarak iş s�
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
 manager: gwallace
 ms.openlocfilehash: 4e47d4b05dedb981d55c527f76ae1c3a120f23d0
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86232432"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Azure Dev Spaces 'de iş sürekliliği ve olağanüstü durum kurtarma

@@ -4,10 +4,10 @@ description: Uygulama verilerinizin düzenli veri yedeklemesini etkinleştirmek 
 ms.topic: conceptual
 ms.date: 5/24/2019
 ms.openlocfilehash: 18d10b365cb2e4f4b4e3592233d5f467714bd5b5
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91538679"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Azure Service Fabric kümesinde düzenli olarak yedekleme ve geri yükleme
@@ -43,7 +43,7 @@ Service Fabric, düzenli yedekleme ve geri yükleme özelliğiyle ilgili aşağ�
 - Yedeklemeleri geçici olarak askıya al
 - Yedeklemelerin bekletme yönetimi (yakında)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * Yapı sürümü 6,4 veya üzeri bir küme Service Fabric. Azure kaynak şablonu kullanarak Service Fabric kümesi oluşturma adımları için bu [makaleye](service-fabric-cluster-creation-via-arm.md) başvurun.
 * Yedeklemeleri depolamak üzere depolamaya bağlanmak için gereken gizli dizileri şifrelemek için X. 509.440 sertifikası. X. 509.952 sertifikası alma veya oluşturma hakkında bilgi edinmek için [makaleye](service-fabric-cluster-creation-via-arm.md) bakın.
 * Service Fabric SDK 3,0 veya üzeri sürümleri kullanılarak oluşturulmuş güvenilir durum bilgisi olan uygulamayı Service Fabric. .NET Core 2,0 'yi hedefleyen uygulamalar için, uygulama Service Fabric SDK sürümü 3,1 veya üzeri kullanılarak oluşturulmalıdır.

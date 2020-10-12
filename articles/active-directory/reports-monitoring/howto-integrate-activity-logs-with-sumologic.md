@@ -18,17 +18,17 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 51e1f45c787c319c32358e7f310108131647d60e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335842"
 ---
 # <a name="integrate-azure-active-directory-logs-with-sumologic-using-azure-monitor"></a>Azure Izleyici kullanarak Azure Active Directory günlüklerini SumoLogic ile tümleştirme
 
 Bu makalede, Azure Izleyici kullanarak Azure Active Directory (Azure AD) günlüklerini SumoLogic ile tümleştirmeyi öğreneceksiniz. Önce günlükleri bir Azure Olay Hub 'ına yönlendirdiğinizde Olay Hub 'ını SumoLogic ile tümleştirin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu özelliği kullanmak için şunlara ihtiyacınız vardır:
 * Azure AD etkinlik günlüklerini içeren bir Azure Olay Hub 'ı. [Etkinlik günlüklerinizi bir olay hub 'ına akışa](./tutorial-azure-monitor-stream-logs-to-event-hub.md)alma hakkında bilgi edinin. 

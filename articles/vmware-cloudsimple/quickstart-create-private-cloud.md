@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 487308aca3231650aee3fac5ae127006649e19b9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87073918"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Hızlı başlangıç-özel bir bulut ortamı yapılandırma
@@ -64,7 +64,7 @@ Bu makalede, CloudSimple özel bulutu oluşturmayı ve özel bulut ortamınızı
 
 ## <a name="launch-cloudsimple-portal"></a>CloudSimple portalını Başlat
 
-Azure portal 'ten CloudSimple portalına erişebilirsiniz.  CloudSimple portalı, çoklu oturum açma (SSO) ile Azure oturum açma kimlik bilgilerinizle başlatılır.  CloudSimple portalına erişmek için **Cloudsimple hizmet Yetkilendirme** uygulamasını yetkilendirmeniz gerekir.  İzinleri verme hakkında daha fazla bilgi için bkz. [CloudSimple hizmet Yetkilendirme uygulamasına izin](access-cloudsimple-portal.md#consent-to-cloudsimple-service-authorization-application)verme.
+Azure portal 'ten CloudSimple portalına erişebilirsiniz.  CloudSimple Portal, tek Sign-On (SSO) kullanarak Azure oturum açma kimlik bilgilerinizle başlatılır.  CloudSimple portalına erişmek için **Cloudsimple hizmet Yetkilendirme** uygulamasını yetkilendirmeniz gerekir.  İzinleri verme hakkında daha fazla bilgi için bkz. [CloudSimple hizmet Yetkilendirme uygulamasına izin](access-cloudsimple-portal.md#consent-to-cloudsimple-service-authorization-application)verme.
 
 1. **Tüm hizmetler**’i seçin.
 2. **Cloudsimple Hizmetleri**için arama yapın.
@@ -101,7 +101,7 @@ Noktadan siteye VPN bağlantısı, bilgisayarınızdan özel bulutunuzu bağlama
 
     * **Otomatik olarak ekle** seçeneği bu ağ geçidinin genel ilkesini ayarlar. Ayarlar geçerli ağ geçidi için geçerlidir. Ayarlar **seçim** alanında geçersiz kılınabilir.
     * **Özel bulutların yönetim VLAN 'ları/alt ağlarını Ekle**' yi seçin.
-    * Kullanıcı tanımlı tüm VLAN 'Ları/alt ağları eklemek için **Kullanıcı tanımlı VLAN 'lar/alt ağlar Ekle**' ye tıklayın.
+    * Kullanıcı tanımlı tüm VLAN 'Ları/alt ağları eklemek için  **Kullanıcı tanımlı VLAN 'lar/alt ağlar Ekle**' ye tıklayın.
     * **Seçim** ayarları **otomatik olarak ekle**altındaki genel ayarları geçersiz kılar.
 
 7. Ayarları gözden geçirmek için **İleri** 'ye tıklayın. Herhangi bir değişiklik yapmak için düzenleme simgeleri ' ne tıklayın.
@@ -159,7 +159,7 @@ Artık sanal makineleri ve ilkeleri ayarlamak için vCenter 'da oturum açabilir
     ![VSphere Istemcisini Başlat](media/launch-vcenter-from-cloudsimple-portal.png)
 
 2. VCenter 'a erişmek için tercih ettiğiniz vSphere istemcinizi seçin ve Kullanıcı adınızla parolanızla oturum açın.  Varsayılanlar şunlardır:
-    * Kullanıcı adı:`CloudOwner@cloudsimple.local`
+    * Kullanıcı adı: `CloudOwner@cloudsimple.local`
     * Parola: `CloudSimple123!`
 
 Sonraki yordamlardaki vCenter ekranları vSphere (HTML5) istemcisinden alınır.

@@ -12,10 +12,10 @@ ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 3c8d78c164cefbab03d9d3fa783c75ded9773d38
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87075815"
 ---
 # <a name="geo-restore-for-sql-pool"></a>SQL havuzu için coğrafi geri yükleme
@@ -87,7 +87,7 @@ Bir SQL havuzunu coğrafi yedeklemeden geri yüklemek için aşağıda özetlene
 
 4. **Temel** bilgiler sekmesinde istenen bilgileri doldurun ve **İleri**' ye tıklayın.
 
-   ![Temel bilgiler](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
+   ![Temel Bilgiler](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
 
 5. **Mevcut veri parametresini kullan** için **Yedekle** ' yi seçin ve aşağı kaydırma seçeneklerinden uygun yedeği seçin. **Gözden Geçir ve Oluştur**’a tıklayın.
 

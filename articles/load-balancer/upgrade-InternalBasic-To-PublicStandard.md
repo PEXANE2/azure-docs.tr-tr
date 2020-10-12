@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
 ms.openlocfilehash: 225252f2cd47c36de2c7eed4ed1e5dae3ebd81b2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87078762"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Azure Iç Load Balancer yükseltme-giden bağlantı gerekli
@@ -52,7 +52,7 @@ Yerel PowerShell ortamınız kuruluma ve tercihlerinize bağlı olarak sizin iç
 
 Azure az modules yüklü olup olmadığınızı öğrenmek için çalıştırın `Get-InstalledModule -Name az` . Yüklü az modül görmüyorsanız, `Install-Script` yöntemini kullanabilirsiniz.
 
-### <a name="install-using-the-install-script-method"></a>Install-Script metodunu kullanarak install
+### <a name="install-using-the-install-script-method"></a>Install-Script yöntemi kullanarak Install
 
 Bu seçeneği kullanmak için, bilgisayarınızda Azure az modules yüklü olmamalıdır. Yüklüyse, aşağıdaki komut bir hata görüntüler. Azure az modüller ' i kaldırabilir veya betiği el ile indirmek ve çalıştırmak için diğer seçeneği kullanabilirsiniz.
   
@@ -104,7 +104,7 @@ Aşağıda, yeni oluşturulan Standart genel Load Balancer için arka uç havuzl
    
     1. Temel Load Balancer arka uç havuzuyla eşleşen arka uç havuzunu seçin, aşağıdaki değeri seçin: 
       - **Sanal makine**: açılır ve temel Load Balancer eşleşen arka uç havuzundan VM 'leri seçin.
-    1. **Kaydet**'i seçin.
+    1. **Kaydet**’i seçin.
     >[!NOTE]
     >Ortak IP 'leri olan VM 'Ler için, ilk olarak aynı IP adresinin garantili olmadığı standart IP adresleri oluşturmanız gerekecektir. VM 'Lerin temel IP 'lerden ilişkisini kaldırın ve yeni oluşturulan standart IP adresleriyle ilişkilendirin. Ardından, Standart Load Balancer arka uç havuzuna VM 'Ler eklemek için yönergeleri takip edebilirsiniz. 
 

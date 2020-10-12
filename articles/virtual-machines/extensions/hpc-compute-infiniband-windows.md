@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: amverma
 ms.openlocfilehash: ccc9df8078bb7fec8be7d72b0ae18ed416bb10ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87099782"
 ---
 # <a name="infiniband-driver-extension-for-windows"></a>Windows için InfiniBand sürücü uzantısı
@@ -25,7 +25,7 @@ Bu uzantı, InfiniBand ND sürücülerini (SR-ıOV etkin olmayan) ve Ed sürüc�
 
 [Linux VM 'ler](hpc-compute-infiniband-linux.md)için InfiniBand sürücülerini yüklemek için de bir uzantı kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 
@@ -69,7 +69,7 @@ Aşağıdaki JSON uzantı için şemayı gösterir.
 
 ### <a name="properties"></a>Özellikler
 
-| Name | Değer/örnek | Veri Türü |
+| Adı | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | yayımcı | Microsoft. HpcCompute | string |

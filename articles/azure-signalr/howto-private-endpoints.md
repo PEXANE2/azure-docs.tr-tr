@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/06/2020
 ms.author: dayshen
 ms.openlocfilehash: 645b2c643c1c1d4fe82eb5998a35ccc48536603e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84300207"
 ---
 # <a name="use-private-endpoints-for-azure-signalr-service"></a>Azure SignalR hizmeti için özel uç noktaları kullanma
@@ -57,7 +57,7 @@ Azure SignalR hizmeti etki alanı adınızı VNet dışından özel uç noktayla
 
 Yukarıdaki gösterilen örnek için, Özel uç noktayı barındıran VNet dışından çözümlendiğinde ' foobar ' Azure SignalR hizmeti için DNS kaynak kayıtları şu şekilde olur:
 
-| Name                                                  | Tür  | Değer                                                 |
+| Ad                                                  | Tür  | Değer                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``foobar.service.signalr.net``                        | CNAME | ``foobar.privatelink.service.signalr.net``            |
 | ``foobar.privatelink.service.signalr.net``            | A     | \<Azure SignalR Service public IP address\>           |
@@ -66,7 +66,7 @@ Daha önce belirtildiği gibi, ağ erişim denetimi kullanarak VNet dışındaki
 
 Özel uç noktasını barındıran VNet 'teki bir istemci tarafından çözümlendiğinde ' foobar ' için DNS kaynak kayıtları şu şekilde olur:
 
-| Name                                                  | Tür  | Değer                                                 |
+| Ad                                                  | Tür  | Değer                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``foobar.service.signalr.net``                        | CNAME | ``foobar.privatelink.service.signalr.net``            |
 | ``foobar.privatelink.service.signalr.net``            | A     | 10.1.1.5                                              |
@@ -89,7 +89,7 @@ Kendi DNS sunucunuzu özel uç noktaları destekleyecek şekilde yapılandırma 
 
 ### <a name="create-a-private-endpoint-along-with-a-new-azure-signalr-service-in-the-azure-portal"></a>Azure portal yeni bir Azure SignalR hizmeti ile birlikte özel bir uç nokta oluşturun
 
-1. Yeni bir Azure SignalR hizmeti oluştururken **ağ** sekmesini seçin. bağlantı yöntemi olarak **Özel uç noktayı** seçin.
+1. Yeni bir Azure SignalR hizmeti oluştururken **ağ** sekmesini seçin. **Özel uç noktayı** bağlantı yöntemi olarak seçin.
 
     ![Azure SignalR hizmeti oluşturma-Ağ sekmesi](media/howto-private-endpoints/portal-create-blade-networking-tab.png)
 
@@ -129,7 +129,7 @@ Kendi DNS sunucunuzu özel uç noktaları destekleyecek şekilde yapılandırma 
     ```console
     az login
     ```
-1. Azure aboneliğinizi seçin
+1. Azure Aboneliğinizi seçin
     ```console
     az account set --subscription {AZURE SUBSCRIPTION ID}
     ```

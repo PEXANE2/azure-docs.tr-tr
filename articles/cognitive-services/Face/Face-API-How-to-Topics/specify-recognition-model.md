@@ -12,10 +12,10 @@ ms.date: 12/03/2019
 ms.author: longl
 ms.custom: devx-track-csharp
 ms.openlocfilehash: d250fc005c5760a3eecc2793d02b6f2a9161e663
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91283046"
 ---
 # <a name="specify-a-face-recognition-model"></a>Yüz tanıma modeli belirtme
@@ -33,7 +33,7 @@ _Recognition_03_ modeli (yayımlanan 2020) Şu anda kullanılabilir en doğru mo
 Model çakışmalarını önleyerek, farklı yüz işlemlerinde seçili bir modeli nasıl belirteceğinizi öğrenmek için okumaya devam edin. İleri düzey bir kullanıcıysanız ve en son modele geçiş yapmanız gerekip gerekmediğini öğrenmek isterseniz, yeni modeli değerlendirmek ve sonuçları geçerli veri kümesi kullanarak karşılaştırmak için [farklı modelleri değerlendir](#evaluate-different-models) bölümüne atlayın.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 AI yüz tanıma ve tanımlama kavramlarını tanımanız gerekir. Değilseniz, önce şu kılavuzlara bakın:
 
