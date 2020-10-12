@@ -14,10 +14,10 @@ ms.author: curtand
 ms.reviewer: kexia
 metadata ms.custom: contperfq1
 ms.openlocfilehash: 3d95ad4aa100b0a185bde015dfe34d747fc77ec9
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89322611"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>İki öğeli doğrulama ve iş veya okul hesabınızla ilgili yaygın sorunlar
@@ -109,7 +109,7 @@ Yeni bir mobil cihazınız varsa, bunu iki öğeli doğrulamayla çalışacak ş
 
 ## <a name="im-having-problems-signing-in-on-my-mobile-device-while-traveling"></a>Mobil cihazımın yolculukta oturum açarken sorun yaşıyorum
 
-Uluslararası bir konumdayken, kısa mesaj gibi mobil cihazla ilgili doğrulama yöntemini kullanmayı daha zor bulabilirsiniz. Mobil cihazınız, dolaşım ücretlerine tabi hale gelmesine neden olabilir. Bu durum için, Wi-Fi etkin noktasına bağlanma seçeneğiyle Microsoft Authenticator uygulamasını kullanmanızı öneririz. Mobil cihazınızda Microsoft Authenticator uygulamasının nasıl ayarlanacağı hakkında daha fazla bilgi için, [Microsoft Authenticator uygulamasını indirme ve yükleme](user-help-auth-app-download-install.md) makalesine bakın.
+Uluslararası bir konumdayken, kısa mesaj gibi mobil cihazla ilgili doğrulama yöntemini kullanmayı daha zor bulabilirsiniz. Mobil cihazınız, dolaşım ücretlerine tabi hale gelmesine neden olabilir. Bu durum için, Wi-Fi etkin bir noktaya bağlanma seçeneğiyle Microsoft Authenticator uygulamasını kullanmanızı öneririz. Mobil cihazınızda Microsoft Authenticator uygulamasının nasıl ayarlanacağı hakkında daha fazla bilgi için, [Microsoft Authenticator uygulamasını indirme ve yükleme](user-help-auth-app-download-install.md) makalesine bakın.
 
 ## <a name="i-cant-get-my-app-passwords-to-work"></a>Uygulama parolalarımı çalışacak şekilde alamıyoruz
 

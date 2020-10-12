@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
 ms.openlocfilehash: e3c47a60a6cda074eba7b5c3292577c29f50c2ab
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87424060"
 ---
 # <a name="azure-virtual-network-nat-metrics"></a>Azure sanal ağ NAT ölçümleri
@@ -38,11 +38,11 @@ NAT ağ geçidi kaynakları, Azure Izleyici 'de aşağıdaki çok boyutlu ölç�
 
 | Ölçüm | Açıklama | Önerilen toplama | Boyutlar |
 |---|---|---|---|
-| Bayt | Gelen ve giden işlenen bayt sayısı | Toplam | Yön (Içinde; Out), protokol (6 TCP; 17 UDP) |
-| Paketleri | Gelen ve giden işlenen paketler | Toplam | Yön (Içinde; Out), protokol (6 TCP; 17 UDP) |
-| Bırakılan paketler | NAT ağ geçidi tarafından bırakılan paketler | Toplam | / |
-| SNAT bağlantı sayısı | Aralık başına durum geçişleri | Toplam | Bağlantı durumu, protokol (6 TCP; 17 UDP) |
-| Toplam SNAT bağlantı sayısı | Geçerli etkin SNAT bağlantıları (~ SNAT bağlantı noktaları kullanımda) | Toplam | Protokol (6 TCP; 17 UDP) |
+| Bayt | Gelen ve giden işlenen bayt sayısı | Sum | Yön (Içinde; Out), protokol (6 TCP; 17 UDP) |
+| Paketleri | Gelen ve giden işlenen paketler | Sum | Yön (Içinde; Out), protokol (6 TCP; 17 UDP) |
+| Bırakılan paketler | NAT ağ geçidi tarafından bırakılan paketler | Sum | / |
+| SNAT bağlantı sayısı | Aralık başına durum geçişleri | Sum | Bağlantı durumu, protokol (6 TCP; 17 UDP) |
+| Toplam SNAT bağlantı sayısı | Geçerli etkin SNAT bağlantıları (~ SNAT bağlantı noktaları kullanımda) | Sum | Protokol (6 TCP; 17 UDP) |
 
 
 ## <a name="alerts"></a>Uyarılar

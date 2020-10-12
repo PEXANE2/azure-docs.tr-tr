@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/25/2018
 ms.openlocfilehash: 1d68163a9fba3ba3bcd4c0c0f3fb5f442296e781
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619398"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>Bekletme ilkesiyle zamana bağlı tablolardaki geçmiş verileri yönetme
@@ -120,7 +120,7 @@ Rowstore kümelenmiş dizini olan tablolar için temizleme görevi, SYSTEM_TIME 
 
 Azure SQL veritabanı ve Azure SQL yönetilen örneği tarafından oluşturulan varsayılan geçmiş tablosunun, bekletme ilkesi için uyumlu olan kümelenmiş dizine zaten sahip olduğunu fark etmek önemlidir. Sınırlı saklama süresine sahip bir tabloda bu dizini kaldırmaya çalışırsanız, işlem aşağıdaki hatayla başarısız olur:
 
-*İleti 13766, düzey 16, durum 1, <br> </br> eski verilerin otomatik olarak temizlenmesi için kullanıldığından ' Websiteuserınfohistory. IX_WebsiteUserInfoHistory ' kümelenmiş dizinini bırakamıyor. Bu dizini bırakmalısınız, ilgili sistem sürümü tutulan zamana bağlı tabloda HISTORY_RETENTION_PERIOD sonsuz olarak ayarlamayı düşünün.*
+*İleti 13766, düzey 16, durum 1, <br> </br> eski verilerin otomatik olarak temizlenmesi için kullanıldığından ' WebsiteUserInfoHistory.IX_WebsiteUserInfoHistory ' kümelenmiş dizinini bırakamıyor. Bu dizini bırakmalısınız, ilgili sistem sürümü tutulan zamana bağlı tabloda HISTORY_RETENTION_PERIOD sonsuz olarak ayarlamayı düşünün.*
 
 Geçmiş satırları artan düzende (dönem sonuna kadar sıralanır) eklenirse ve bu durum, geçmiş tablosu SYSTEM_VERSIONIOING mekanizması tarafından özel olarak doldurulduğu zaman büyük/küçük harf olarak, kümelenmiş columnstore dizininde Temizleme işlemi en iyi şekilde gerçekleşir. Geçmiş tablosundaki satırlar dönem sonuna göre sıralı değilse (mevcut geçmiş verileri geçirdiyseniz bu durum söz konusu olabilir), en iyi performansı elde etmek için, kümelenmiş columnstore dizinini, doğru şekilde sıralanan B-Tree rowstore dizininin üstünde yeniden oluşturmanız gerekir.
 

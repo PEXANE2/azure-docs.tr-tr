@@ -14,10 +14,10 @@ ms.date: 05/07/2019
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a0efc4bc8f89b0fbefbba171d80a3f8a1ed5e7f6
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89318939"
 ---
 # <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>Microsoft 365 Kamu 'daki Azure Active Directory yenilikleri
@@ -51,7 +51,7 @@ Daha önce müşteriler Dünya çapındaki Azure (portal.azure.com) ve Office 36
 
 Aşağıdaki tabloda tüm müşterilerin uç noktaları gösterilmektedir:
 
-| Name | Uç nokta ayrıntıları |
+| Adı | Uç nokta ayrıntıları |
 |------|------------------|
 | Portallar |Microsoft Azure Kamu: https://portal.azure.us<p>Microsoft 365 Kamu – GCC High: https://portal.office365.us<p>Microsoft 365 Kamu – DoD: https://portal.apps.mil |
 | Azure Active Directory yetkilisi uç noktası | https://login.microsoftonline.us |

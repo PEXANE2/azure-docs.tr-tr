@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.openlocfilehash: dafb4485ae9b10d89fa36bd790dcf3a799054de3
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90064182"
 ---
 # <a name="manage-spark-application-dependencies"></a>Spark uygulama bağımlılıklarını yönetme
@@ -23,7 +23,7 @@ Kullanıcı çalışmanıza göre bölüme geçmek için hızlı bağlantıları
 * [Jupyter Not defteri kullanarak Spark iş jar bağımlılıklarını ayarlama](#use-jupyter-notebook)
 * [Use Azure Toolkit for IntelliJ kullanarak Spark iş jar bağımlılıklarını ayarlama](#use-azure-toolkit-for-intellij)
 * [Spark kümesi için jar bağımlılıklarını yapılandırma](#jar-libs-for-cluster)
-* [Jar bağımlılıklarını güvenle Yönet](#safely-manage-jar-dependencies)
+* [Jar bağımlılıklarını güvenli şekilde yönetme](#safely-manage-jar-dependencies)
 * [Jupyter Not defteri kullanarak Spark işi Python paketleri ayarlama](#use-jupyter-notebook-1)
 * [Spark kümesi için Python paketlerini güvenle yönetin](#python-packages-for-cluster)
 
@@ -98,7 +98,7 @@ Bazı durumlarda, her uygulamanın varsayılan olarak aynı bağımlılıklarla 
 
 [Betik eylemlerini](../hdinsight-hadoop-customize-cluster-linux.md)kullanarak adımları otomatikleştirebilirsiniz. [Hive özel kitaplıklarını eklemek](https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh) için betik eylemi iyi bir başvurudur. Spark hizmeti yapılandırması değiştirilirken, yapılandırma dosyalarını doğrudan değiştirmek yerine, ambarı API 'Lerini kullandığınızdan emin olun. 
 
-## <a name="safely-manage-jar-dependencies"></a>Jar bağımlılıklarını güvenle Yönet
+## <a name="safely-manage-jar-dependencies"></a>Jar bağımlılıklarını güvenli şekilde yönetme
 HDInsight kümesinde yerleşik jar bağımlılıkları bulunur ve bu jar sürümleri için güncelleştirmeler zaman zaman gerçekleşir. Başvuru için yaptığınız yerleşik jliler ve jliler arasında sürüm çakışmasını önlemek için [uygulama bağımlılıklarınızı gölgelendirmeyi](./safely-manage-jar-dependency.md)göz önünde bulundurun.
 
 ## <a name="python-packages-for-one-spark-job"></a>Bir Spark işi için Python paketleri

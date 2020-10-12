@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/09/2018
 ms.openlocfilehash: ac2b79046718fe45ad0dad0396b6f7653efbb779
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86505338"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Veri Toplayıcı API 'SI ile veri işlem hattı oluşturma
@@ -61,7 +61,7 @@ Logic Apps bugün, XML, CSV veya diğer türleri JSON biçimine kolayca dönüş
 Bu örnekte, bir CSV dosyası ayrıştırıyoruz, ancak diğer dosya türleri benzer şekilde işlenebilir. Belirli veri türü için doğru mantığı yansıtmak üzere Azure Işlevinin seri durumdan çıkarma kısmını değiştirmeniz yeterlidir.
 
 1.  İstendiğinde, çalışma zamanı v1 ve tüketim tabanlı Işlevleri kullanarak yeni bir Azure Işlevi oluşturun.  Bir başlangıç noktası olarak C# ' ye hedeflenmiş **http tetikleyici** şablonunu seçin. 
-2.  Sağ bölmedeki **dosyaları görüntüle** sekmesinden, **üzerindeproject.js** adlı yeni bir dosya oluşturun ve kullanmakta olduğumuz NuGet paketlerinden aşağıdaki kodu yapıştırın:
+2.  Sağ bölmedeki **dosyaları görüntüle** sekmesinden, ** üzerindeproject.js** adlı yeni bir dosya oluşturun ve kullanmakta olduğumuz NuGet paketlerinden aşağıdaki kodu yapıştırın:
 
     ![Azure Işlevleri örnek projesi](./media/create-pipeline-datacollector-api/functions-example-project-01.png)
     
@@ -166,4 +166,4 @@ Bu makalede, doğru bir üretim kalitesi çözümüne uygulanabilecek mantıksal
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Veri [Toplayıcı API 'si](data-collector-api.md) hakkında daha fazla bilgi edinmek için REST API istemcisinden Log Analytics çalışma alanına veri yazma.
+Veri  [Toplayıcı API 'si](data-collector-api.md) hakkında daha fazla bilgi edinmek için REST API istemcisinden Log Analytics çalışma alanına veri yazma.

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
 ms.openlocfilehash: 5341cc62a7d02c3072df90becf893dec18427ac2
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87439537"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>GRUB ve tek kullanıcı moduna erişmek için seri konsol kullanma
@@ -166,7 +166,7 @@ Varsayılan olarak, Ubuntu görüntüleri, GRUB bölmesini otomatik olarak gör�
 1. Bir metin düzenleyicisinde */etc/default/grub*öğesini açın.
 1. `GRUB_HIDDEN_TIMEOUT=1`Satırı açıklama.
 1. Bir satır olduğundan emin olun `GRUB_TIMEOUT_STYLE=menu` .
-1. `sudo update-grub` öğesini çalıştırın.
+1. `sudo update-grub` komutunu çalıştırın.
 
 ### <a name="single-user-mode-in-ubuntu"></a>Ubuntu 'da tek kullanıcılı mod
 Ubuntu normal şekilde önyükleme yapamıyor, sizi otomatik olarak tek kullanıcı moduna bırakır. Tek kullanıcılı modu el ile girmek için aşağıdakileri yapın:

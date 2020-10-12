@@ -4,10 +4,10 @@ description: Dayanıklı İşlevler için otomatik Azure Event Grid yayımlamay�
 ms.topic: conceptual
 ms.date: 04/25/2020
 ms.openlocfilehash: e4651dd7548ba76380bfc2d1b314e67d7abe63d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081755"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Azure Event Grid yayımlama Dayanıklı İşlevler (Önizleme)
@@ -132,11 +132,11 @@ Azure portal kullanarak, Dayanıklı İşlevler uygulamanız tarafından yayıml
 
 1. **Event Grid**araması yapın ve **Azure Event Grid tetikleyici** şablonunu seçin. 
 
-    :::image type="content" source="./media/durable-functions-event-publishing/function-select-event-grid-trigger.png" alt-text="Azure portal olay Kılavuzu tetikleyici şablonunu seçin." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/function-select-event-grid-trigger.png" alt-text="Azure portal bir işlev ekleyin." border="true":::
 
 1. Yeni tetikleyiciyi adlandırın ve ardından **Işlev oluştur**' u seçin.
 
-    :::image type="content" source="./media/durable-functions-event-publishing/function-name-event-grid-trigger.png" alt-text="Azure portal olay Kılavuzu tetikleyicisini adlandırın." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/function-name-event-grid-trigger.png" alt-text="Azure portal bir işlev ekleyin." border="true":::
 
 
     Aşağıdaki koda sahip bir işlev oluşturuldu:
@@ -172,11 +172,11 @@ Artık oluşturduğunuz Event Grid konu için bir Event Grid aboneliği ekleyebi
 
 1. Yeni işlevinizde **tümleştirme** ' i seçin ve ardından **Event Grid tetikleyicisi (eventgridevent)** öğesini seçin. 
 
-    :::image type="content" source="./media/durable-functions-event-publishing/eventgrid-trigger-link.png" alt-text="Event Grid tetikleyici bağlantısını seçin." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/eventgrid-trigger-link.png" alt-text="Azure portal bir işlev ekleyin." border="true":::
 
 1. **Event Grid açıklaması oluştur**' u seçin.
 
-    :::image type="content" source="./media/durable-functions-event-publishing/create-event-grid-subscription.png" alt-text="Event Grid aboneliğini oluşturun." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/create-event-grid-subscription.png" alt-text="Azure portal bir işlev ekleyin." border="true":::
 
 1. Olay aboneliğinizi adlandırın ve **Event Grid konular** konu türünü seçin. 
 
@@ -184,7 +184,7 @@ Artık oluşturduğunuz Event Grid konu için bir Event Grid aboneliği ekleyebi
 
 1. **Oluştur**’u seçin.
 
-    :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="Event Grid aboneliği oluşturun." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="Azure portal bir işlev ekleyin." border="true":::
 
 Artık yaşam döngüsü olaylarını almaya hazır olursunuz.
 
@@ -237,7 +237,7 @@ Daha önce yapılandırdığınız Dayanıklı İşlevler projesinde, yerel maki
 Aşağıdaki listede yaşam döngüsü olayları şeması açıklanmaktadır:
 
 * **`id`**: Event Grid olayı için benzersiz tanımlayıcı.
-* **`subject`**: Olay konusunun yolu. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}`,, `Running` `Completed` ve olur `Failed` `Terminated` .  
+* **`subject`**: Olay konusunun yolu. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` ,, `Running` `Completed` ve olur `Failed` `Terminated` .  
 * **`data`**: Belirli parametreleri Dayanıklı İşlevler.
   * **`hubName`**: [Taskhub](durable-functions-task-hubs.md) adı.
   * **`functionName`**: Orchestrator işlev adı.

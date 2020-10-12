@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: sstein
 ms.date: 06/26/2019
 ms.openlocfilehash: ea037d12417c8fad9d80b77df69285ed2c8df31b
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91618667"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde zamana bağlı tabloları kullanmaya başlama
@@ -42,7 +42,7 @@ Yeni geliştirme yapıp başlatdığınıza veya var olan uygulamayı yükseltme
 
 ### <a name="create-new-table"></a>Yeni tablo oluştur
 
-Sorgu düzenleyicisini bir zamana bağlı tablo şablonu betiği ile açmak için SSMS Nesne Gezgini bağlam menüsü öğesini "yeni sistem sürümü tutulan tablo" ya da şablonu doldurmak için "şablon parametrelerinin değerlerini belirt" (Ctrl + Shift + M) kullanın:
+Sorgu düzenleyicisini bir zamana bağlı tablo şablonu betiği ile açmak için SSMS Nesne Gezgini bağlam menüsü öğesini "yeni System-Versioned tablosu" kullanın ve ardından şablonu doldurmak için "şablon parametrelerinin değerlerini belirt" (Ctrl + Shift + M) kullanın:
 
 ![SSMSNewTable](./media/temporal-tables/AzureTemporal2.png)
 

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
 ms.openlocfilehash: 06cf0a5692b3d80a07c305f53c9e3801cbdb5110
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764018"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Azure portalında pano oluşturma ve paylaşma
@@ -30,7 +30,7 @@ Azure portal, başlangıç noktası olarak varsayılan bir pano sağlar. Varsay�
 
 Bu örnekte, yeni, özel bir pano oluşturacağız ve bir ad atamalısınız. Kullanmaya başlamak için bu adımları izleyin:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. Azure portal menüsünde, **Pano**' yı seçin. Varsayılan görünüm zaten pano olarak ayarlanmış olabilir.
 
@@ -130,7 +130,7 @@ Bir panodaki kutucuğu kaldırmak için şu adımları izleyin:
 
    ![Panodan kutucuğun nasıl kaldırılacağını gösteren ekran görüntüsü](./media/azure-portal-dashboards/dashboard-delete-tile.png)
 
-## <a name="clone-a-dashboard"></a>Bir panoyu kopyalama
+## <a name="clone-a-dashboard"></a>Panoyu kopyalama
 
 Mevcut bir panoyu yeni bir Pano için şablon olarak kullanmak için şu adımları izleyin:
 
@@ -142,7 +142,7 @@ Mevcut bir panoyu yeni bir Pano için şablon olarak kullanmak için şu adımla
 
 ## <a name="publish-and-share-a-dashboard"></a>Bir panoyu yayımlama ve paylaşma
 
-Bir pano oluşturduğunuzda, bu, varsayılan olarak özeldir. Bu, onu görebilen tek bir tane olduğu anlamına gelir. Panoları başkaları için kullanılabilir hale getirmek için, bunları yayımlayabilir ve paylaşabilirsiniz. Daha fazla bilgi için bkz. [rol tabanlı Access Control kullanarak Azure panoları paylaşma](azure-portal-dashboard-share-access.md).
+Bir pano oluşturduğunuzda, bu, varsayılan olarak özeldir. Bu, onu görebilen tek bir tane olduğu anlamına gelir. Panoları başkaları için kullanılabilir hale getirmek için, bunları yayımlayabilir ve paylaşabilirsiniz. Daha fazla bilgi için bkz. [Role-Based Access Control kullanarak Azure panoları paylaşma](azure-portal-dashboard-share-access.md).
 
 ### <a name="open-a-shared-dashboard"></a>Paylaşılan bir panoyu açma
 
@@ -164,7 +164,7 @@ Paylaşılan bir panoyu bulup açmak için şu adımları izleyin:
 
     1. Paylaşılan panolar listesinden bir pano seçin.
 
-## <a name="delete-a-dashboard"></a>Bir panoyu silme
+## <a name="delete-a-dashboard"></a>Panoyu silme
 
 Özel veya paylaşılan bir panoyu kalıcı olarak silmek için şu adımları izleyin:
 

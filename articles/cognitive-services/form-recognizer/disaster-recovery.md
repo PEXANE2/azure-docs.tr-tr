@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.openlocfilehash: ac934f88d00521b13fd2b134c80f19656c63117b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88718824"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Form tanıyıcı modellerinizi yedekleme ve kurtarma
@@ -82,7 +82,7 @@ Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 > [!NOTE]
 > Kopya API 'SI, [AEK/CMK](https://msazure.visualstudio.com/Cognitive%20Services/_wiki/wikis/Cognitive%20Services.wiki/52146/Customer-Managed-Keys) özelliğini saydam olarak destekler. Bu, özel bir işleme gerektirmez, ancak şifrelenmemiş bir kaynak arasında şifrelenmiş bir kaynağa kopyalama yapıyorsanız, istek üst bilgisini eklemeniz gerektiğini unutmayın `x-ms-forms-copy-degrade: true` . Bu üst bilgi dahil edilmediğinden kopyalama işlemi başarısız olur ve döndürür `DataProtectionTransformServiceError` .
 
-`202\Accepted`Işlem konumu üst bilgisi ile bir yanıt alırsınız. Bu değer, işlemin ilerlemesini izlemek için kullanacağınız URL 'dir. Sonraki adım için geçici bir konuma kopyalayın.
+`202\Accepted`Operation-Location üstbilgisiyle bir yanıt alırsınız. Bu değer, işlemin ilerlemesini izlemek için kullanacağınız URL 'dir. Sonraki adım için geçici bir konuma kopyalayın.
 
 ```
 HTTP/1.1 202 Accepted

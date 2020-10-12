@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 4b533fa23d3c128b5f9f75737fb88d39aec94905
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88950077"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release-for-linux-vms"></a>Linux VM 'Ler için Azure AD (önceki sürüm) ile Azure disk şifrelemesi için bir Anahtar Kasası oluşturma ve yapılandırma
@@ -129,7 +129,7 @@ Azure AD uygulaması oluşturmak için, [kaynak makalesine erişebilen Azure Act
 3. [Uygulama kimliğini ve kimlik doğrulama anahtarını alın](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in). 
      - Kimlik doğrulama anahtarı, istemci sırrı ve set-AzVMDiskEncryptionExtension için AadClientSecret olarak kullanılır. 
         - Kimlik doğrulama anahtarı, uygulama tarafından Azure AD 'de oturum açmak için kimlik bilgileri olarak kullanılır. Azure portal, bu gizliliğe anahtarlar denir, ancak anahtar kasalarıyla ilgili hiçbir ilişki yoktur. Bu gizli anahtarı uygun şekilde koruyun. 
-     - Uygulama KIMLIĞI daha sonra set-AzVMDiskEncryptionExtension için Aadclitıd ve set-AzKeyVaultAccessPolicy için ServicePrincipalName olarak kullanılacaktır. 
+     - Uygulama KIMLIĞI daha sonra Set-AzVMDiskEncryptionExtension için Aadclientıd ve set-AzKeyVaultAccessPolicy için ServicePrincipalName olarak kullanılacaktır. 
 
 ## <a name="set-the-key-vault-access-policy-for-the-azure-ad-app"></a><a name="bkmk_KVAP"></a> Azure AD uygulaması için Anahtar Kasası erişim ilkesini ayarlama
 Şifreleme gizli dizilerini belirtilen bir Key Vault yazmak için Azure disk şifrelemesi, Key Vault gizli dizileri yazma izinlerine sahip Azure Active Directory uygulamanın Istemci KIMLIĞI ve Istemci gizli anahtarı gerektirir. 

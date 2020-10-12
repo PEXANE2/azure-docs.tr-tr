@@ -8,10 +8,10 @@ ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
 ms.openlocfilehash: 0a25ae41a5f4ed73148f629799ca4865d756a769
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962460"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Azure Uygulama Hizmeti için En İyi Uygulamalar
@@ -34,10 +34,10 @@ Bir uygulamanın beklenenden daha fazla CPU tükettiğini veya izleme ya da hizm
 "Durum bilgisi olan" vs "durum bilgisiz" uygulamaları hakkında daha fazla bilgi için, bu videoyu izleyebilirsiniz: [Azure App Service üzerinde ölçeklenebilir uçtan uca çok katmanlı bir uygulama planlama](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). App Service ölçeklendirme ve otomatik ölçeklendirme seçenekleri hakkında daha fazla bilgi için bkz. [Azure App Service bir Web uygulamasını ölçeklendirme](manage-scale-up.md).  
 
 ## <a name="when-socket-resources-are-exhausted"></a><a name="socketresources"></a>Yuva kaynakları tükendiğinde
-Giden TCP bağlantılarının tüketilmesinin yaygın bir nedeni, TCP bağlantılarını yeniden kullanmak için uygulanmayan veya HTTP-Keep-LIAS gibi daha yüksek düzey bir protokol kullanılmayan istemci kitaplıklarının kullanılmasının yaygın bir nedenidir. Dışarı giden bağlantıların verimli bir şekilde yeniden kullanılması için kodunuzda yapılandırılmış veya erişilebilir olduklarından emin olmak için App Service planınızdaki uygulamalar tarafından başvurulan her bir kitaplıkların belgelerini gözden geçirin. Ayrıca, bağlantı sızıntısına engel olmak için uygun oluşturma ve yayınlama ya da temizleme için kitaplık belge kılavuzunu izleyin. Bu tür istemci kitaplıkları araştırmalar devam ederken, etki çok örneğe ölçeklendirerek etki azaltılabilir.
+Giden TCP bağlantılarının tüketilmesinin yaygın bir nedeni, TCP bağlantılarını yeniden kullanmak için uygulanmayan veya HTTP-Keep-Alive gibi daha üst düzey bir protokol kullanılmayan istemci kitaplıklarının kullanılmasının yaygın bir nedenidir. Dışarı giden bağlantıların verimli bir şekilde yeniden kullanılması için kodunuzda yapılandırılmış veya erişilebilir olduklarından emin olmak için App Service planınızdaki uygulamalar tarafından başvurulan her bir kitaplıkların belgelerini gözden geçirin. Ayrıca, bağlantı sızıntısına engel olmak için uygun oluşturma ve yayınlama ya da temizleme için kitaplık belge kılavuzunu izleyin. Bu tür istemci kitaplıkları araştırmalar devam ederken, etki çok örneğe ölçeklendirerek etki azaltılabilir.
 
 ### <a name="nodejs-and-outgoing-http-requests"></a>Node.js ve giden http istekleri
-Node.js ve çok sayıda giden http isteği ile çalışırken, HTTP-Keep ile ilgilenirken önemli olur. [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) `npm` Kodunuzu daha kolay hale getirmek için agentkeepalive paketini kullanabilirsiniz.
+Node.js ve çok sayıda giden http isteği ile çalışırken HTTP-Keep-Alive ile ilgilenirken önemli olur. [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) `npm` Kodunuzu daha kolay hale getirmek için agentkeepalive paketini kullanabilirsiniz.
 
 `http`İşleyicide hiçbir şey yapsanız bile her zaman yanıtı işleyin. Yanıtı doğru bir şekilde işlemezseniz, daha fazla yuva kullanılamadığından uygulamanız sonunda takılmalıdır.
 

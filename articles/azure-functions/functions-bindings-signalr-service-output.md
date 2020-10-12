@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: 7fa49583c17c198642d4ad6d72a0faa19dcfe659
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323337"
 ---
 # <a name="signalr-service-output-binding-for-azure-functions"></a>Azure Işlevleri için SignalR hizmeti çıkış bağlaması
@@ -636,7 +636,7 @@ Aşağıdaki örnek bir gruba bir kullanıcı ekler.
 }
 ```
 
-*\_\_init. py__*
+*\_\_init.py__*
 
 ```python
 def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
@@ -663,7 +663,7 @@ Aşağıdaki örnek bir kullanıcıyı bir gruptan kaldırır.
 }
 ```
 
-*\_\_init. py__*
+*\_\_init.py__*
 
 ```python
 def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
@@ -728,7 +728,7 @@ public SignalRGroupAction removeFromGroup(
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `SignalRConnectionInfo` .
 
-|function.jsözelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**türüyle**| yok | Olarak ayarlanmalıdır `signalRConnectionInfo` .|
 |**Görünüm**| yok | Olarak ayarlanmalıdır `in` .|
@@ -741,9 +741,9 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `SignalR` .
 
-|function.jsözelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**tür**| yok | Olarak ayarlanmalıdır `signalR` .|
+|**türüyle**| yok | Olarak ayarlanmalıdır `signalR` .|
 |**Görünüm**| yok | Olarak ayarlanmalıdır `out` .|
 |**ada**| yok | Bağlantı bilgisi nesnesi için işlev kodunda kullanılan değişken adı. |
 |**hubName**|**HubName**| Bu değer, bağlantı bilgilerinin oluşturulduğu SignalR hub 'ının adına ayarlanmalıdır.|

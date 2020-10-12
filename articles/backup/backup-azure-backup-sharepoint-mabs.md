@@ -4,10 +4,10 @@ description: SharePoint verilerinizi yedeklemek ve geri yüklemek için Azure Ba
 ms.topic: conceptual
 ms.date: 04/26/2020
 ms.openlocfilehash: 837aabf739431eebaa6406770620329fe6345eb7
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89375406"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>MABS ile bir SharePoint grubunu Azure 'a yedekleme
@@ -217,7 +217,7 @@ Aşağıdaki örnekte, *Kurtarma SharePoint öğesi* yanlışlıkla silinmiş ve
     ![MABS SharePoint Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. Bu noktada, bir SharePoint içerik veritabanını diskten kurtarmak için bu makalenin önceki kısımlarında yer alarak kurtarma adımlarını izleyin.
 
-## <a name="switching-the-front-end-web-server"></a>Ön uç Web sunucusunu değiştirme
+## <a name="switching-the-front-end-web-server"></a>Front-End Web sunucusunu değiştirme
 
 Birden fazla ön uç Web sunucunuz varsa ve MABS 'nin grubu korumak için kullandığı sunucuyu değiştirmek istiyorsanız, yönergeleri izleyin:
 

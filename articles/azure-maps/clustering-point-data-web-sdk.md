@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: 6d0cb0c6a9cc3080ec4b2fbd2c4b707a52a88319
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91285120"
 ---
 # <a name="clustering-point-data"></a>Kümeleme noktası verileri
@@ -48,7 +48,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 `DataSource`Sınıfın kümeleme için sağladığı ek yöntemler şunlardır:
 
-| Yöntem | Dönüş türü | Description |
+| Yöntem | Dönüş türü | Açıklama |
 |--------|-------------|-------------|
 | getClusterChildren (Clusterıd: Number) | Promise &lt; dizi &lt; özelliği &lt; geometrisi, herhangi bir &gt; \| Şekil&gt;&gt; | Sonraki yakınlaştırma düzeyinde verilen kümenin alt öğelerini alır. Bu alt öğeler şekil ve alt kümelerin bir birleşimi olabilir. Alt kümeler, ClusteredProperties ile eşleşen özelliklerle özellik olacaktır. |
 | getClusterExpansionZoom (Clusterıd: Number) | Promise &lt; numarası&gt; | Kümenin genişlemekte veya parçalanmasına başlayacağı yakınlaştırma düzeyini hesaplar. |
@@ -92,11 +92,11 @@ Codepen 'da Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/
 
 Kümelenmiş veri noktaları içeren bir katmanda fare olayları gerçekleştiğinde, kümelenmiş veri noktası olaya GeoJSON Point özellik nesnesi olarak döner. Bu nokta özelliği aşağıdaki özelliklere sahip olacaktır:
 
-| Özellik adı             | Tür    | Description   |
+| Özellik adı             | Tür    | Açıklama   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | Özelliğin bir kümeyi temsil ettiğini belirtir. |
 | `cluster_id`              | string  | Küme için, veri kaynağı `getClusterExpansionZoom` , ve yöntemleriyle kullanılabilecek benzersiz BIR kimlik `getClusterChildren` `getClusterLeaves` . |
-| `point_count`             | sayı  | Kümenin içerdiği noktaların sayısı.  |
+| `point_count`             | number  | Kümenin içerdiği noktaların sayısı.  |
 | `point_count_abbreviated` | string  | `point_count`Long ise değeri abbreviates bir dize. (örneğin, 4.000 4K olur)  |
 
 Bu örnek, küme noktalarını işleyen ve bir tıklama olayı ekleyen bir kabarcık katmanı alır. Click olayı tetiklendiğinde, kod, kümenin parçalama yaptığı sonraki yakınlaştırma düzeyine kadar olan eşlemeyi hesaplar ve büyütür. Bu işlev, `getClusterExpansionZoom` `DataSource` sınıfının yöntemi ve `cluster_id` tıklanan kümelenmiş veri noktasının özelliği kullanılarak uygulanır.

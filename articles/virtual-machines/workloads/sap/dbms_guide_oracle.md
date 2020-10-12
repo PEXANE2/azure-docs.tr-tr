@@ -16,10 +16,10 @@ ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f953d87c53bc13af623c2bfd49ceb953280f8f2a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540719"
 ---
 # <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>SAP iş yükü için Azure sanal makineler Oracle DBMS dağıtımı
@@ -376,10 +376,10 @@ En düşük yapılandırma aşağıdaki gibidir:
 
 | Bileşen | Disk | Önbelleğe Alma | Depolama havuzu |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA & Irrlogb | Premium veya ultra disk | Hiçbiri | Gerekli değil |
-| \oracle \<SID> \origlogaB & Irrloga | Premium veya ultra disk | Hiçbiri | Gerekli değil |
+| \oracle \<SID> \origlogaA & Irrlogb | Premium veya ultra disk | Yok | Gerekli değil |
+| \oracle \<SID> \origlogaB & Irrloga | Premium veya ultra disk | Yok | Gerekli değil |
 | \ Oracle \<SID> \ sapdata1..exe. No | Premium veya ultra disk | Salt okunur | Premium için kullanılabilir |
-| \ Oracle \<SID> \ oraarch | Standart | Hiçbiri | Gerekli değil |
+| \ Oracle \<SID> \ oraarch | Standart | Yok | Gerekli değil |
 | Oracle ana, `saptrace` ,... | İşletim sistemi diski (Premium) | | Gerekli değil |
 
 
@@ -389,13 +389,13 @@ Performans yapılandırması aşağıdaki gibidir:
 
 | Bileşen | Disk | Önbelleğe Alma | Depolama havuzu |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir  |
-| \oracle \<SID> \origlogaB | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir |
-| \ Oracle \<SID> \Mirrlogab | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir |
-| \ Oracle \<SID> \ mrlogba | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir |
+| \oracle \<SID> \origlogaA | Premium veya ultra disk | Yok | Premium için kullanılabilir  |
+| \oracle \<SID> \origlogaB | Premium veya ultra disk | Yok | Premium için kullanılabilir |
+| \ Oracle \<SID> \Mirrlogab | Premium veya ultra disk | Yok | Premium için kullanılabilir |
+| \ Oracle \<SID> \ mrlogba | Premium veya ultra disk | Yok | Premium için kullanılabilir |
 | \ Oracle \<SID> \ sapdata1..exe. No | Premium veya ultra disk | Salt okunur | Premium için önerilir  |
-| \Oracle\sıd\sapdata (n + 1) * | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir |
-| \ Oracle \<SID> \ oraarch * | Premium veya ultra disk | Hiçbiri | Gerekli değil |
+| \Oracle\sıd\sapdata (n + 1) * | Premium veya ultra disk | Yok | Premium için kullanılabilir |
+| \ Oracle \<SID> \ oraarch * | Premium veya ultra disk | Yok | Gerekli değil |
 | Oracle ana, `saptrace` ,... | İşletim sistemi diski (Premium) | Gerekli değil |
 
 * (n + 1): barındırma SISTEMI, GEÇICI ve GERI alma Tablespaces. Sistem ve geri alma Tablespaces 'ın g/ç deseninin, uygulama verilerini barındıran diğer tabloboşluklarından farklıdır. Önbelleğe alma işlemi, sistem performansı ve tablo alanlarını geri alma için en iyi seçenektir.
@@ -416,7 +416,7 @@ Ayrıca, uygulamayla tutarlı bir VM yedeklemesi çalıştırmak için Azure Bac
 
 
 ### <a name="high-availability"></a>Yüksek kullanılabilirlik
-Oracle Data Guard, yüksek kullanılabilirlik ve olağanüstü durum kurtarma amaçları için desteklenir. Data Guard 'da otomatik yük devretmeyi başarmak için, hızlı başlatma yük devretmesini (FSFA) kullanmanız gerekir. Gözlemci (FSFA) yük devretmeyi tetikler. FSFA kullanmıyorsanız, yalnızca el ile yük devretme yapılandırması kullanabilirsiniz.
+Oracle Data Guard, yüksek kullanılabilirlik ve olağanüstü durum kurtarma amaçları için desteklenir. Data Guard 'da otomatik yük devretmeyi başarmak için Fast-Start yük devretme (FSFA) kullanmanız gerekir. Gözlemci (FSFA) yük devretmeyi tetikler. FSFA kullanmıyorsanız, yalnızca el ile yük devretme yapılandırması kullanabilirsiniz.
 
 Azure 'da Oracle veritabanları için olağanüstü durum kurtarma hakkında daha fazla bilgi için bkz. [Azure ortamında Oracle Database 12c veritabanı Için olağanüstü durum kurtarma](../oracle/oracle-disaster-recovery.md).
 
@@ -468,10 +468,10 @@ En düşük yapılandırma:
 
 | Bileşen | Disk | Önbelleğe Alma | Şeridi oluşturma |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA & Irrlogb | Premium veya ultra disk | Hiçbiri | Gerekli değil |
-| /Oracle/ \<SID> /origlogaB & Irrloga | Premium veya ultra disk | Hiçbiri | Gerekli değil |
+| /Oracle/ \<SID> /origlogaA & Irrlogb | Premium veya ultra disk | Yok | Gerekli değil |
+| /Oracle/ \<SID> /origlogaB & Irrloga | Premium veya ultra disk | Yok | Gerekli değil |
 | /Oracle/ \<SID> /sapdata1..exe. No | Premium veya ultra disk | Salt okunur | Premium için kullanılabilir |
-| /Oracle/ \<SID> /oraarch | Standart | Hiçbiri | Gerekli değil |
+| /Oracle/ \<SID> /oraarch | Standart | Yok | Gerekli değil |
 | Oracle ana, `saptrace` ,... | İşletim sistemi diski (Premium) | | Gerekli değil |
 
 * RAID0 kullanarak LVM Stripe veya MDADDM
@@ -482,13 +482,13 @@ Performans yapılandırması:
 
 | Bileşen | Disk | Önbelleğe Alma | Şeridi oluşturma |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir  |
-| /Oracle/ \<SID> /origlogaB | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir |
-| /Oracle/ \<SID> /Mirrlogab | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir |
-| /Oracle/ \<SID> /Mirrlogba | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir |
+| /Oracle/ \<SID> /origlogaA | Premium veya ultra disk | Yok | Premium için kullanılabilir  |
+| /Oracle/ \<SID> /origlogaB | Premium veya ultra disk | Yok | Premium için kullanılabilir |
+| /Oracle/ \<SID> /Mirrlogab | Premium veya ultra disk | Yok | Premium için kullanılabilir |
+| /Oracle/ \<SID> /Mirrlogba | Premium veya ultra disk | Yok | Premium için kullanılabilir |
 | /Oracle/ \<SID> /sapdata1..exe. No | Premium veya ultra disk | Salt okunur | Premium için önerilir  |
-| /Oracle/ \<SID> /sapdata (n + 1) * | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir |
-| /Oracle/ \<SID> /oraarch * | Premium veya ultra disk | Hiçbiri | Gerekli değil |
+| /Oracle/ \<SID> /sapdata (n + 1) * | Premium veya ultra disk | Yok | Premium için kullanılabilir |
+| /Oracle/ \<SID> /oraarch * | Premium veya ultra disk | Yok | Gerekli değil |
 | Oracle ana, `saptrace` ,... | İşletim sistemi diski (Premium) | Gerekli değil |
 
 * RAID0 kullanarak LVM Stripe veya MDADDM
@@ -511,7 +511,7 @@ Yedekleme/geri yükleme işlevselliği için, Hyper-V ' n i n SAP BR * araçlar�
 Oracle veritabanlarını yedeklemek ve kurtarmak üzere Azure Backup ve kurtarma hizmetlerini nasıl kullanabileceğiniz hakkında daha fazla bilgi için bkz. bir [Azure Linux sanal makinesinde Oracle Database 12c veritabanını yedekleme ve](../oracle/oracle-backup-recovery.md)kurtarma.
 
 ### <a name="high-availability"></a>Yüksek kullanılabilirlik
-Oracle Data Guard, yüksek kullanılabilirlik ve olağanüstü durum kurtarma amaçları için desteklenir. Data Guard 'da otomatik yük devretmeyi başarmak için, hızlı başlatma yük devretmesini (FSFA) kullanmanız gerekir. Gözlemci işlevselliği (FSFA) yük devretmeyi tetikler. FSFA kullanmıyorsanız, yalnızca el ile yük devretme yapılandırması kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Linux sanal makinesinde Oracle Data Guard 'ı uygulama](../oracle/configure-oracle-dataguard.md).
+Oracle Data Guard, yüksek kullanılabilirlik ve olağanüstü durum kurtarma amaçları için desteklenir. Data Guard 'da otomatik yük devretmeyi başarmak için Fast-Start yük devretme (FSFA) kullanmanız gerekir. Gözlemci işlevselliği (FSFA) yük devretmeyi tetikler. FSFA kullanmıyorsanız, yalnızca el ile yük devretme yapılandırması kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Linux sanal makinesinde Oracle Data Guard 'ı uygulama](../oracle/configure-oracle-dataguard.md).
 
 
 Azure 'da Oracle veritabanları için olağanüstü durum kurtarma yönleri, [bir Azure ortamında Oracle Database 12c veritabanı Için olağanüstü durum kurtarma](../oracle/oracle-disaster-recovery.md)makalesinde sunulmaktadır.
