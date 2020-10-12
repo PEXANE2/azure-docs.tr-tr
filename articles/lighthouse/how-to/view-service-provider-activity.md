@@ -4,10 +4,10 @@ description: Müşteriler, Azure tarafından atanan kaynak yönetimi aracılığ
 ms.date: 07/07/2020
 ms.topic: how-to
 ms.openlocfilehash: 0c92fc9b45d17e37fb3721d9cf087c5e7a62f6d7
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86131464"
 ---
 # <a name="view-service-provider-activity"></a>Hizmet sağlayıcısı etkinliğini görüntüleme
@@ -17,7 +17,7 @@ Azure açık bir [kullanım](../overview.md) için abonelikleri temsilci seçen 
 > [!TIP]
 > Ayrıca, bir yönetim kiracısına kapsamları temsilciliğini denetlemek için bir Azure Ilkesi yerleşik ilke tanımı sunuyoruz. Daha fazla bilgi için bkz. [ortamınızdaki denetim temsilcileri](view-manage-service-providers.md#audit-delegations-in-your-environment).
 
-## <a name="view-activity-log-data"></a>Etkinlik günlüğü verilerini görüntüle
+## <a name="view-activity-log-data"></a>Etkinlik günlüğü verilerini görüntüleme
 
 [Etkinlik günlüğünü](../../azure-monitor/platform/activity-log.md#view-the-activity-log) Azure Portal **Monitor** menüsünden görüntüleyebilirsiniz. Sonuçları belirli bir abonelikle sınırlamak için, belirli bir abonelik seçmek üzere filtreleri kullanın. Ayrıca, [etkinlik günlüğü olaylarını programlı bir şekilde görüntüleyebilir ve alabilirsiniz](../../azure-monitor/platform/activity-log.md#view-the-activity-log) .
 

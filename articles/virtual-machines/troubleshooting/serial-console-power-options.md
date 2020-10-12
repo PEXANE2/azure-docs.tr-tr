@@ -15,17 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 8/6/2019
 ms.author: alsin
 ms.openlocfilehash: 11c2549d7282bae5654ede1ac34d63a43cd0f059
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75451193"
 ---
 # <a name="power-options-available-from-the-azure-serial-console"></a>Azure seri konsolundan kullanılabilen güç seçenekleri
 
 Azure seri konsolu, VM 'niz veya sanal makine ölçek kümesi üzerinde güç yönetimi için çeşitli güçlü araçlar sağlar. Bu güç yönetimi seçeneklerinin bazıları kafa karıştırıcı olabilir, bu nedenle her araca ve onun amaçlanan kullanım durumuna genel bir bakış sağlanır.
 
-Seri konsol özelliği | Açıklama | Kullanım örneği
+Seri konsol özelliği | Açıklama | Kullanım Örneği
 :----------------------|:------------|:---------
 VM 'yi yeniden Başlat | VM veya sanal makine ölçek kümesi örneğinizi düzgün bir şekilde yeniden başlatın. Bu işlem, Genel Bakış sayfasında bulunan yeniden başlatma özelliğini çağırma ile aynıdır. | Çoğu durumda, sanal makineyi yeniden başlatmaya çalışırken bu seçenek ilk aracınız olmalıdır. Seri konsol bağlantınızda kısa bir kesinti yaşanacaktır ve VM yeniden başlatıldıktan hemen sonra otomatik olarak devam eder.
 VM Sıfırlama | VM 'nizin veya Azure platformu tarafından ayarlanan sanal makine ölçek kümesinin zorla bir güç döngüsüdür. | Bu seçenek, geçerli durumundan bağımsız olarak işletim sisteminizi hemen yeniden başlatmak için kullanılır. Bu işlem düzgün çalışmadığından veri kaybı veya bozulması riski vardır. Seri konsol bağlantısında, önyükleme zamanında (örneğin, bir Linux VM 'de GRUB 'ye veya bir Windows VM 'de güvenli moda alma) daha önce komut göndermek için yararlı olabilecek bir kesinti yoktur.

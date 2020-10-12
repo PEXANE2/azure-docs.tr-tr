@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 953430421bd30aaa1df352451b549994aeaa1a70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85556161"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>Application Gateway Ingress denetleyicisi ile bir AKS kümesinde birden çok ad alanı desteğini etkinleştirme
@@ -29,11 +29,11 @@ Birden çok ad alanı desteğini etkinleştirmek için:
    - `watchNamespace`anahtarı tamamen [helk-config konumundan silin. YAML](#sample-helm-config-file) -agic tüm ad alanlarını gözlemleyecek
    - `watchNamespace`boş bir dizeye ayarla-AGIC, tüm ad alanlarını gözlemleyecek
    - virgülle ayrılmış birden çok ad alanı ekleme ( `watchNamespace: default,secondNamespace` )-agic bu ad alanlarını özel olarak gözlemleyecek
-2. ile Helmtemplate değişikliklerini Uygula:`helm install -f helm-config.yaml application-gateway-kubernetes-ingress/ingress-azure`
+2. ile Helmtemplate değişikliklerini Uygula: `helm install -f helm-config.yaml application-gateway-kubernetes-ingress/ingress-azure`
 
 Birden çok ad alanını gözlemleyebilme özelliği ile dağıtıldıktan sonra, AGIC şunları sağlar:
   - tüm erişilebilir ad alanlarından giriş kaynaklarını listeleyin
-  - giriş kaynakları için açıklama eklenmiş olarak filtrele`kubernetes.io/ingress.class: azure/application-gateway`
+  - giriş kaynakları için açıklama eklenmiş olarak filtrele `kubernetes.io/ingress.class: azure/application-gateway`
   - Birleşik [Application Gateway yapılandırması](https://github.com/Azure/azure-sdk-for-go/blob/37f3f4162dfce955ef5225ead57216cf8c1b2c70/services/network/mgmt/2016-06-01/network/models.go#L1710-L1744) oluştur
   - yapılandırmayı [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) aracılığıyla ilişkili Application Gateway uygulama
 
@@ -84,11 +84,11 @@ spec:
 
 İki giriş kaynağına, ilgili `www.contoso.com` Kubernetes ad alanlarına yönlendirilmek için trafik talep etmekte olsa da, trafiğe yalnızca bir arka uç hizmet verebilir. AGIC, kaynaklardan biri için "ilk olarak ilk kez sunulan" temelinde bir yapılandırma oluşturur. Aynı anda iki giriş kaynağı oluşturulursa, alfabede daha önceki bir işlem öncelikli olur. Yukarıdaki örnekte, yalnızca giriş için ayarları oluşturabileceksiniz `production` . Application Gateway, aşağıdaki kaynaklarla yapılandırılacak:
 
-  - Oluşturulurken`fl-www.contoso.com-80`
-  - Yönlendirme kuralı:`rr-www.contoso.com-80`
-  - Arka uç havuzu:`pool-production-contoso-web-service-80-bp-80`
-  - HTTP ayarları:`bp-production-contoso-web-service-80-80-websocket-ingress`
-  - Durum araştırması:`pb-production-contoso-web-service-80-websocket-ingress`
+  - Oluşturulurken `fl-www.contoso.com-80`
+  - Yönlendirme kuralı: `rr-www.contoso.com-80`
+  - Arka uç havuzu: `pool-production-contoso-web-service-80-bp-80`
+  - HTTP ayarları: `bp-production-contoso-web-service-80-80-websocket-ingress`
+  - Durum araştırması: `pb-production-contoso-web-service-80-websocket-ingress`
 
 *Dinleyici* ve *yönlendirme kuralı*haricinde oluşturulan Application Gateway kaynakları, oluşturuldukları ad alanının () adını içerir `production` .
 

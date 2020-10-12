@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, devx-track-python
 ms.openlocfilehash: 2d41b48613ef7ba883a6a51b0fa67407fb730719
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87846235"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL uygulamalarında oturum açma
@@ -48,10 +48,10 @@ Belirli bir dilde MSAL günlük kaydı hakkında daha fazla bilgi için, diliniz
 
 MSAL 3. x içinde, günlük kaydı Oluşturucu değiştiricisini kullanarak uygulama oluşturma sırasında uygulama başına ayarlanır `.WithLogging` . Bu yöntem isteğe bağlı parametreleri alır:
 
-- `Level`hangi günlük kayıt düzeyini istediğinize karar vermenize olanak sağlar. Hatalara ayarlandığında yalnızca hatalar alınır
-- `PiiLoggingEnabled`true olarak ayarlanırsa kişisel ve kurumsal verileri günlüğe almanıza olanak sağlar. Bu, varsayılan olarak false değerine ayarlanır, böylece uygulamanız kişisel verileri günlüğe eklemez.
-- `LogCallback`günlüğe kaydetmeyi yapan bir temsilciye ayarlanır. Eğer `PiiLoggingEnabled` true ise, bu yöntem iki kez iletileri alır: `containsPii` parametre false değerine eşitse ve kişisel veriler olmadan ileti ve bir ikinci kez `containsPii` parametresi true değerine eşitse ve ileti kişisel veriler içeriyorsa. Bazı durumlarda (ileti kişisel veriler içermiyorsa), ileti aynı olur.
-- `DefaultLoggingEnabled`platformun varsayılan günlük kaydını etkinleştir. Varsayılan olarak false 'tur. Bunu true olarak ayarlarsanız, masaüstü/UWP uygulamalarında olay Izlemeyi kullanır, iOS üzerinde NSLog ve Android üzerinde Logcat.
+- `Level` hangi günlük kayıt düzeyini istediğinize karar vermenize olanak sağlar. Hatalara ayarlandığında yalnızca hatalar alınır
+- `PiiLoggingEnabled` true olarak ayarlanırsa kişisel ve kurumsal verileri günlüğe almanıza olanak sağlar. Bu, varsayılan olarak false değerine ayarlanır, böylece uygulamanız kişisel verileri günlüğe eklemez.
+- `LogCallback` günlüğe kaydetmeyi yapan bir temsilciye ayarlanır. Eğer `PiiLoggingEnabled` true ise, bu yöntem iki kez iletileri alır: `containsPii` parametre false değerine eşitse ve kişisel veriler olmadan ileti ve bir ikinci kez `containsPii` parametresi true değerine eşitse ve ileti kişisel veriler içeriyorsa. Bazı durumlarda (ileti kişisel veriler içermiyorsa), ileti aynı olur.
+- `DefaultLoggingEnabled` platformun varsayılan günlük kaydını etkinleştir. Varsayılan olarak false 'tur. Bunu true olarak ayarlarsanız, masaüstü/UWP uygulamalarında olay Izlemeyi kullanır, iOS üzerinde NSLog ve Android üzerinde Logcat.
 
 ```csharp
 class Program
@@ -86,10 +86,10 @@ class Program
 
 Günlüğe kaydetme geri araması oluşturarak uygulama oluşturma sırasında oturum açmayı açın. Geri çağırma bu parametreleri alır:
 
-- `tag`, kitaplık tarafından geri çağırmaya geçirilen bir dizedir. Günlük girdisiyle ilişkilendirilir ve günlük iletilerini sıralamak için kullanılabilir.
-- `logLevel`hangi günlük kayıt düzeyini istediğinize karar vermenize olanak sağlar. Desteklenen günlük düzeyleri şunlardır: `Error` , `Warning` , `Info` , ve `Verbose` .
-- `message`, günlük girdisinin içeridir.
-- `containsPII`kişisel verileri içeren iletilerin veya kurumsal verilerin günlüğe kaydedilip kaydedilmeyeceğini belirtir. Varsayılan olarak, uygulamanızın kişisel verileri günlüğe almamasını sağlamak için bu false olarak ayarlanır. `containsPII`İse `true` , bu yöntem iletileri iki kez alır: `containsPII` parametresi `false` ve `message` kişisel veriler olmadan bir kez, ve parametresi olarak ayarlanmış ikinci bir kez ve `containsPii` `true` ileti kişisel verileri içerebilir. Bazı durumlarda (ileti kişisel veriler içermiyorsa), ileti aynı olur.
+- `tag` , kitaplık tarafından geri çağırmaya geçirilen bir dizedir. Günlük girdisiyle ilişkilendirilir ve günlük iletilerini sıralamak için kullanılabilir.
+- `logLevel` hangi günlük kayıt düzeyini istediğinize karar vermenize olanak sağlar. Desteklenen günlük düzeyleri şunlardır: `Error` , `Warning` , `Info` , ve `Verbose` .
+- `message` , günlük girdisinin içeridir.
+- `containsPII` kişisel verileri içeren iletilerin veya kurumsal verilerin günlüğe kaydedilip kaydedilmeyeceğini belirtir. Varsayılan olarak, uygulamanızın kişisel verileri günlüğe almamasını sağlamak için bu false olarak ayarlanır. `containsPII`İse `true` , bu yöntem iletileri iki kez alır: `containsPII` parametresi `false` ve `message` kişisel veriler olmadan bir kez, ve parametresi olarak ayarlanmış ikinci bir kez ve `containsPii` `true` ileti kişisel verileri içerebilir. Bazı durumlarda (ileti kişisel veriler içermiyorsa), ileti aynı olur.
 
 ```java
 private StringBuilder mLogs;
@@ -129,9 +129,9 @@ Logger.getInstance().setEnableLogcatLog(true);
  Örnek oluşturmak için yapılandırma sırasında bir günlükçü nesnesi geçirerek MSAL.js (JavaScript) oturumunu etkinleştirin `UserAgentApplication` . Bu günlükçü nesnesi aşağıdaki özelliklere sahiptir:
 
 - `localCallback`: geliştirici tarafından günlükleri özel bir biçimde tüketmek ve yayımlamak için kullanılabilecek bir geri çağırma örneği. Günlükleri yeniden yönlendirmek istediğiniz yönteme bağlı olarak localCallback yöntemini uygulayın.
-- `level`(isteğe bağlı): yapılandırılabilir günlük düzeyi. Desteklenen günlük düzeyleri şunlardır: `Error` , `Warning` , `Info` , ve `Verbose` . Varsayılan değer: `Info`.
-- `piiLoggingEnabled`(isteğe bağlı): true olarak ayarlanırsa, kişisel ve kurumsal verileri günlüğe kaydeder. Bu, varsayılan olarak, uygulamanızın kişisel verileri günlüğe almamasını sağlamak için false 'tur. Kişisel veri günlükleri hiçbir şekilde konsol, Logcat veya NSLog gibi varsayılan çıkışlara yazılmaz.
-- `correlationId`(isteğe bağlı): isteği hata ayıklama amacıyla Yanıtla eşlemek için kullanılan benzersiz bir tanımlayıcı. Varsayılan olarak RFC4122 sürüm 4 GUID (128 bit) olur.
+- `level` (isteğe bağlı): yapılandırılabilir günlük düzeyi. Desteklenen günlük düzeyleri şunlardır: `Error` , `Warning` , `Info` , ve `Verbose` . Varsayılan değer: `Info`.
+- `piiLoggingEnabled` (isteğe bağlı): true olarak ayarlanırsa, kişisel ve kurumsal verileri günlüğe kaydeder. Bu, varsayılan olarak, uygulamanızın kişisel verileri günlüğe almamasını sağlamak için false 'tur. Kişisel veri günlükleri hiçbir şekilde konsol, Logcat veya NSLog gibi varsayılan çıkışlara yazılmaz.
+- `correlationId` (isteğe bağlı): isteği hata ayıklama amacıyla Yanıtla eşlemek için kullanılan benzersiz bir tanımlayıcı. Varsayılan olarak RFC4122 sürüm 4 GUID (128 bit) olur.
 
 ```javascript
 function loggerCallback(logLevel, message, containsPii) {
@@ -177,7 +177,7 @@ MSAL günlüğünü yakalamak ve kendi uygulamanızın günlüğüne eklemek iç
 typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL containsPII);
 ```
 
-Örnek:
+Örneğin:
 
 ```objc
 [MSALGlobalConfig.loggerConfig setLogCallback:^(MSALLogLevel level, NSString *message, BOOL containsPII)
@@ -218,7 +218,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = NO;
 | `MSALLogLevelInfo` |  Kitaplık giriş noktaları, parametreler ve çeşitli Anahtarlık işlemleri |
 |`MSALLogLevelVerbose`     |  API izleme |
 
-Örnek:
+Örneğin:
 
 ```objc
 MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
@@ -226,9 +226,9 @@ MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
 
  ### <a name="log-message-format"></a>Günlük iletisi biçimi
 
-MSAL günlük iletilerinin ileti kısmı şu biçimdedir`TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
+MSAL günlük iletilerinin ileti kısmı şu biçimdedir `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
 
-Örnek:
+Örneğin:
 
 `TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
 
@@ -255,7 +255,7 @@ MSAL günlüğünü yakalamak ve kendi uygulamanızın günlüğüne eklemek iç
 typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL containsPII);
 ```
 
-Örnek:
+Örneğin:
 
 ```swift
 MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
@@ -295,7 +295,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = false
 | `MSALLogLevelInfo` |  Kitaplık giriş noktaları, parametreler ve çeşitli Anahtarlık işlemleri |
 |`MSALLogLevelVerbose`     |  API izleme |
 
-Örnek:
+Örneğin:
 
 ```swift
 MSALGlobalConfig.loggerConfig.logLevel = .verbose
@@ -303,9 +303,9 @@ MSALGlobalConfig.loggerConfig.logLevel = .verbose
 
 ### <a name="log-message-format"></a>Günlük iletisi biçimi
 
-MSAL günlük iletilerinin ileti kısmı şu biçimdedir`TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
+MSAL günlük iletilerinin ileti kısmı şu biçimdedir `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
 
-Örnek:
+Örneğin:
 
 `TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
 
@@ -389,6 +389,6 @@ Python için MSAL kişisel verileri veya kurumsal verileri günlüğe eklemez. K
 
 İstediğiniz her şeyi günlüğe kaydetmek için standart Python günlüğünü kullanabilirsiniz, ancak hassas verileri güvenle ve yasal gereksinimleri izleyerek siz de sorumlusunuz.
 
-Python 'da günlüğe kaydetme hakkında daha fazla bilgi için lütfen Python 'un [günlüğüne](https://docs.python.org/3/howto/logging.html#logging-basic-tutorial)bakın.
+Python 'da günlüğe kaydetme hakkında daha fazla bilgi için lütfen Python 'un  [günlüğüne](https://docs.python.org/3/howto/logging.html#logging-basic-tutorial)bakın.
 
 ---

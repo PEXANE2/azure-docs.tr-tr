@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 259a1324c412dad40d32a8b8e026d84e6f5aa066
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85554929"
 ---
 # <a name="hybrid-azure-ad-joined-devices"></a>Hibrit Azure AD’ye katılmış cihazlar
@@ -35,7 +35,7 @@ Ortamınızda şirket içi AD ayak izi varsa ve Azure Active Directory ile sağl
 | **Birincil hedef kitle** | Mevcut şirket içi AD altyapısına sahip karma kuruluşlar için uygundur |
 |   | Bir kuruluştaki tüm kullanıcılar için geçerlidir |
 | **Cihaz sahipliği** | Kuruluş |
-| **İşletim Sistemleri** | Windows 10, 8,1 ve 7 |
+| **İşletim sistemleri** | Windows 10, 8,1 ve 7 |
 |   | Windows Server 2008/R2, 2012/R2, 2016 ve 2019 |
 | **Sağlanıyor** | Windows 10, Windows Server 2016/2019 |
 |   | Azure AD Connect veya ADFS yapılandırması aracılığıyla BT 'ye ve oto birleşime yönelik etki alanına ekleme |
@@ -65,5 +65,5 @@ Ortamınızda şirket içi AD ayak izi varsa ve Azure Active Directory ile sağl
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Hibrit Azure AD katılımınızı uygulamayı planlama](hybrid-azuread-join-plan.md)
-- [Azure portal kullanarak cihaz kimliklerini yönetme](device-management-azure-portal.md)
-- [Azure AD 'de eski cihazları yönetme](manage-stale-devices.md)
+- [Azure portalını kullanarak cihaz kimliklerini yönetme](device-management-azure-portal.md)
+- [Azure AD’de eski cihazları yönetme](manage-stale-devices.md)

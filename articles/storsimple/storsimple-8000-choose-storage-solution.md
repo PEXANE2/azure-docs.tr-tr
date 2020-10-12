@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 903342230b28f8e4fbdcdfd93543e5a0aa54975e
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88183284"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>StorSimple’ı Azure Dosya Eşitleme ve Data Box Edge veri aktarma seçenekleriyle karşılaştırma 
@@ -28,7 +28,7 @@ Bu belgede, Azure 'a yönelik şirket içi veri aktarımı seçeneklerine genel 
 
 |                           |StorSimple 8000   |Azure Dosya Eşitleme   |Data Box Edge           |
 |---------------------------|----------------------------------------|-------------------------------|-----------------------------------------|
-|**Genel bakış**     |Katmanlı karma depolama ve arşivleme|Bulut katmanlaması ve çok siteli eşitleme ile genel dosya sunucusu depolaması.  |Verileri önceden işlemek ve ağ üzerinden Azure 'a göndermek için depolama çözümü.        |
+|**Genel Bakış**     |Katmanlı karma depolama ve arşivleme|Bulut katmanlaması ve çok siteli eşitleme ile genel dosya sunucusu depolaması.  |Verileri önceden işlemek ve ağ üzerinden Azure 'a göndermek için depolama çözümü.        |
 |**Senaryolar**    |Dosya sunucusu, arşivleme, yedekleme hedefi |Dosya sunucusu, arşivleme (çok siteli)   |Veri aktarımı, ML ınkleme, IoT, arşivleme dahil verileri önceden işleme    |
 |**Uç işlemi** |Kullanılamaz |Kullanılamaz |Azure IoT Edge kullanarak kapsayıcıları çalıştırmayı destekler    |
 |**Form faktörü**  |Fiziksel cihaz   |Windows Server 'da yüklü aracı |Fiziksel cihaz   |

@@ -7,19 +7,19 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.openlocfilehash: a9dba7c85ded7add1a9f1494d88a3f8a1f62f175
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90882463"
 ---
 # <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı sunucusunu yönetme
 
 Bu makalede MySQL sunucuları için Azure veritabanı 'nı nasıl yöneteceğiniz gösterilmektedir. Yönetim görevleri işlem ve depolama ölçeklendirmesi, yönetici parola sıfırlama ve sunucu ayrıntılarını görüntüleme içerir.
 
-## <a name="sign-in"></a>Oturum açın
+## <a name="sign-in"></a>Oturum aç
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="create-a-server"></a>Sunucu oluşturma
 
@@ -50,7 +50,7 @@ Genel Amaçlı En Iyi duruma getirilmiş ve tam tersi yönde ölçeklendirebilir
 
 2. Kaydırıcıyı istediğiniz değere taşıyarak **Vcore** ayarını değiştirin.
 
-    :::image type="content" source="./media/howto-create-manage-server-portal/scaling-compute.png" alt-text="MySQL için Azure veritabanı 'nda vCore seçeneğini seçme Azure portal ekran görüntüsü":::
+    :::image type="content" source="./media/howto-create-manage-server-portal/scaling-compute.png" alt-text="MySQL için Azure veritabanı 'nda temel, Genel Amaçlı veya bellek için Iyileştirilmiş katmanı seçme Azure portal ekran görüntüsü":::
 
     > [!NOTE]
     > Sanal çekirdekleri ölçeklendirmek, sunucunun yeniden başlatılmasına neden olur.
@@ -63,7 +63,7 @@ Genel Amaçlı En Iyi duruma getirilmiş ve tam tersi yönde ölçeklendirebilir
 
 2. Kaydırıcıyı istediğiniz değere taşıyarak **depolama** ayarını değiştirin.
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-storage.png" alt-text="MySQL için Azure veritabanı 'nda depolama ölçeğini seçme Azure portal ekran görüntüsü":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-storage.png" alt-text="MySQL için Azure veritabanı 'nda temel, Genel Amaçlı veya bellek için Iyileştirilmiş katmanı seçme Azure portal ekran görüntüsü":::
 
    > [!NOTE]
    > Depolama alanı aşağı ölçeklendirilmez.
@@ -76,11 +76,11 @@ Azure portal kullanarak yönetici rolü parolasını değiştirebilirsiniz.
 
 1. Azure portal sunucunuzu seçin. **Genel bakış** penceresinde **Parolayı Sıfırla**' yı seçin.
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/overview-reset-password.png" alt-text="MySQL için Azure veritabanı 'nda parolayı sıfırlamaya Azure portal ekran görüntüsü":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-reset-password.png" alt-text="MySQL için Azure veritabanı 'nda temel, Genel Amaçlı veya bellek için Iyileştirilmiş katmanı seçme Azure portal ekran görüntüsü":::
 
 2. Yeni bir parola girin ve parolayı onaylayın. Metin kutusu sizden parola karmaşıklığı gereksinimlerini ister.
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/reset-password.png" alt-text="Parola sıfırlama ve MySQL için Azure veritabanı 'na kaydetme Azure portal ekran görüntüsü":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/reset-password.png" alt-text="MySQL için Azure veritabanı 'nda temel, Genel Amaçlı veya bellek için Iyileştirilmiş katmanı seçme Azure portal ekran görüntüsü":::
 
 3. Yeni parolayı kaydetmek için **Tamam ' ı** seçin.
 
@@ -90,11 +90,11 @@ Artık gerekmiyorsa, sunucunuzu silebilirsiniz.
 
 1. Azure portal sunucunuzu seçin. **Genel bakış** penceresinde **Sil**' i seçin.
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/overview-delete.png" alt-text="MySQL için Azure veritabanı 'nda sunucuyu silmek için Azure portal ekran görüntüsü":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-delete.png" alt-text="MySQL için Azure veritabanı 'nda temel, Genel Amaçlı veya bellek için Iyileştirilmiş katmanı seçme Azure portal ekran görüntüsü":::
 
 2. Bu sunucunun silmek istediğiniz sunucu olduğunu onaylamak için, giriş kutusuna sunucunun adını yazın.
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/confirm-delete.png" alt-text="MySQL için Azure veritabanı 'nda sunucu silmeyi onaylamak için Azure portal ekran görüntüsü":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/confirm-delete.png" alt-text="MySQL için Azure veritabanı 'nda temel, Genel Amaçlı veya bellek için Iyileştirilmiş katmanı seçme Azure portal ekran görüntüsü":::
 
    > [!NOTE]
    > Sunucu silindiğinde geri alınamaz.

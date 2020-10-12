@@ -5,10 +5,10 @@ ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.openlocfilehash: 7ed73678e0df1e068782c2a094846132be58cfe2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86516133"
 ---
 # <a name="alerts-on-activity-log"></a>Etkinlik günlüğü uyarıları
@@ -40,7 +40,7 @@ Etkinlik günlüğü uyarıları bazı yaygın seçeneklere sahiptir:
     - Abonelik düzeyi: Örneğin, bir abonelikteki tüm sanal makineler (veya) bir abonelikteki tüm kaynaklar
 - **Kaynak grubu**: varsayılan olarak, uyarı kuralı kapsamda tanımlanan hedefle aynı kaynak grubuna kaydedilir. Kullanıcı, uyarı kuralının saklanacağı kaynak grubunu da tanımlayabilir.
 - **Kaynak türü**: Kaynak Yöneticisi uyarının hedefi için tanımlı ad alanı.
-- **İşlem adı**: rol tabanlı Access Control için kullanılan [Azure Resource Manager işlem](../../role-based-access-control/resource-provider-operations.md) adı. Azure Resource Manager kayıtlı olmayan işlemler, etkinlik günlüğü uyarı kuralında kullanılamaz.
+- **İşlem adı**: Role-Based Access Control için kullanılan [Azure Resource Manager işlem](../../role-based-access-control/resource-provider-operations.md) adı. Azure Resource Manager kayıtlı olmayan işlemler, etkinlik günlüğü uyarı kuralında kullanılamaz.
 - **Düzey**: etkinliğin önem derecesi (bilgilendirici, uyarı, hata veya kritik).
 - **Durum**: etkinliğin durumu, genellikle başlatıldı, başarısız veya başarılı.
 - **Olay tarafından başlatılan**: "arayan" olarak da bilinir. İşlemi gerçekleştiren kullanıcının e-posta adresi veya Azure Active Directory tanımlayıcısı.

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
 ms.openlocfilehash: de42a70cf2950aca3dbe151407671306c793ed10
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86515504"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure Tanılama sorunlarını giderme
@@ -49,7 +49,7 @@ Bazı önemli günlüklerin ve yapıtların yolları aşağıda verilmiştir. Be
 | **Günlük toplama yardımcı programı yolu** | C:\WindowsAzure\Logs\WaAppAgent.log |
 | **Monme Thost günlük dosyası** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion> \Wad0107\configuration\monk\thost. <seq_num>. log |
 
-## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>Ölçüm verileri Azure portal görünmüyor
+## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>Ölçüm verileri Azure portalında görünmüyor
 Azure Tanılama, Azure portal görüntülenebilecek ölçüm verileri sağlar. Portalda verileri görmekte sorun yaşıyorsanız, \* ilgili ölçüm kayıtlarının orada olup olmadığını ve Microsoft. Insights [kaynak sağlayıcısının](../../azure-resource-manager/management/resource-providers-and-types.md) kayıtlı olduğundan emin olmak için Azure tanılama depolama hesabındaki wadmetric tablosuna bakın.
 
 Burada, tablonun **Partitionkey** 'ı kaynak kimliği, sanal makine veya sanal makine ölçek kümesidir. **Rowkey** ölçüm adıdır (performans sayacı adı olarak da bilinir).
@@ -79,7 +79,7 @@ Belirli bir ölçüm için veri yoksa, **Diagnostics Configuration**  >  metriğ
 Yapılandırma doğru şekilde ayarlandıysa ancak ölçüm verilerini göremiyorsanız, sorun gidermenize yardımcı olması için aşağıdaki yönergeleri kullanın.
 
 
-## <a name="azure-diagnostics-is-not-starting"></a>Azure Tanılama başlamıyor
+## <a name="azure-diagnostics-is-not-starting"></a>Azure Tanılama başlatılmıyor
 Azure Tanılama başlamamasının nedeni hakkında daha fazla bilgi için daha önce sağlanmış olan günlük dosyaları konumundaki **Diagnosticspluginlauncher. log** ve **Diagnosticsplugin. log** dosyalarına bakın.
 
 Bu Günlükler gösteriyorsa `Monitoring Agent not reporting success after launch` , MonAgentHost.exe başlatılırken bir hata olduğu anlamına gelir. Önceki bölümde için belirtilen konumdaki günlüklere bakın `MonAgentHost log file` .
@@ -91,7 +91,7 @@ DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] Diagnostic
 ```
 **Negatif** çıkış kodu bulursanız, [Başvurular bölümünde](#references) [Çıkış kodu tablosuna](#azure-diagnostics-plugin-exit-codes) bakın.
 
-## <a name="diagnostics-data-is-not-logged-to-azure-storage"></a>Tanılama verileri Azure depolama 'ya kayıtlı değil
+## <a name="diagnostics-data-is-not-logged-to-azure-storage"></a>Tanılama verileri Azure Depolama'da günlüğe kaydedilmiyor
 Verilerin hiçbirinin görünmediğine veya bazı verilerin görünmediğine göre belirlenir.
 
 ### <a name="diagnostics-infrastructure-logs"></a>Tanılama altyapı günlükleri
@@ -283,7 +283,7 @@ Windows Azure Tanılama uzantısı, .NET 4,5 Framework veya üzeri sürümlerde 
 
 Windows Azure Tanılama uzantısını .NET 4,5 veya üzeri olmayan bir makinede çalıştırmayı denediğinizde yine de olası bir durumla karşılaşabilirsiniz. Bu durum, makinenizi eski bir görüntüden veya anlık görüntüsünden oluşturduğunuzda ya da kendi özel diskinizi getirdiğinizde oluşur.
 
-Bu,DiagnosticsPluginLauncher.exe çalıştırılırken genellikle çıkış kodu **255** olarak bildirimler **.** Aşağıdaki işlenmeyen özel durum nedeniyle hata oluşur:
+Bu,DiagnosticsPluginLauncher.exe çalıştırılırken genellikle çıkış kodu **255** olarak bildirimler ** .** Aşağıdaki işlenmeyen özel durum nedeniyle hata oluşur:
 ```
 System.IO.FileLoadException: Could not load file or assembly 'System.Threading.Tasks, Version=1.5.11.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies
 ```

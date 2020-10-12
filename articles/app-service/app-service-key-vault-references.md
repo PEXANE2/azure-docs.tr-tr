@@ -1,5 +1,5 @@
 ---
-title: Key Vault başvurularını kullan
+title: Key Vault başvurularını kullanma
 description: Azure App Service ve Azure Işlevlerini Azure Key Vault başvurularını kullanacak şekilde ayarlamayı öğrenin. Key Vault gizli dizileri uygulama kodunuz için kullanılabilir hale getirin.
 author: mattchenderson
 ms.topic: article
@@ -7,10 +7,10 @@ ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
 ms.openlocfilehash: 5b76c940066539995dbefa76d503b5412ce0c359
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85557919"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>App Service ve Azure Işlevleri için Key Vault başvurularını kullanma
@@ -191,7 +191,7 @@ Ek bilgi edinmek için yerleşik algılayıcıları da kullanabilirsiniz.
 ### <a name="using-the-detector-for-app-service"></a>App Service için algılayıcısının kullanımı
 
 1. Portalda uygulamanıza gidin.
-2. **Sorunları tanılama ve çözme** seçeneğini belirleyin.
+2. **Sorunları tanılama ve çözme**’yi seçin.
 3. **Kullanılabilirlik ve performans** ' ı seçin ve **Web uygulaması** ' nı seçin.
 4. **Uygulama ayarları tanılamayı Key Vault** bulun ve **daha fazla bilgi**'ye tıklayın.
 
@@ -200,6 +200,6 @@ Ek bilgi edinmek için yerleşik algılayıcıları da kullanabilirsiniz.
 
 1. Portalda uygulamanıza gidin.
 2. **Platform özellikleri** ' ne gidin.
-3. **Sorunları tanılama ve çözme** seçeneğini belirleyin.
+3. **Sorunları tanılama ve çözme**’yi seçin.
 4. **Kullanılabilirlik ve performans** ' ı seçin ve **işlev uygulaması çalışmıyor veya raporlama hataları** ' nı seçin.
 5. **Uygulama ayarları tanılamayı Key Vault** ' ye tıklayın.

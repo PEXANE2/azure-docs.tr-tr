@@ -4,10 +4,10 @@ description: Avustralya kamu ile korunan şema örneğinin denetim eşlemesi. He
 ms.date: 09/11/2020
 ms.topic: sample
 ms.openlocfilehash: 605e92b75da1e5363884fc6ef9457251cfbc6e4e
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90030115"
 ---
 # <a name="control-mapping-of-the-australian-government-ism-protected-blueprint-sample"></a>Avustralya kamu ile korunan şema örneğine yönelik denetim eşlemesi
@@ -33,7 +33,7 @@ Bu şema, aşağıdaki Azure Ilke tanımlarını atayarak tüm kaynakların ve k
 ### <a name="0414-personnel-granted-access-to-a-system-and-its-resources-are-uniquely-identifiable"></a>0414 personeli bir sisteme erişim izni verdi ve kaynakları benzersiz şekilde tanımlanabilir
 
 - MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir
-- MFA, aboneliğinizde yazma izinleri olan hesaplar etkinleştirilmelidir
+- Aboneliğinizde yazma izinleri olan hesaplarda MFA etkinleştirilmelidir
 - MFA, aboneliğinizde okuma izinleri olan hesaplarda etkinleştirilmelidir
 
 ### <a name="1503-standard-access-to-systems-applications-and-data-repositories-is-limited-to-that-required-for-personnel-to-undertake-their-duties"></a>1503 sistemlere standart erişim, uygulamalar ve veri depoları, personelin görevlerini üstlerinin yapması için gerekli olan ile sınırlıdır
@@ -118,7 +118,7 @@ Bu şema, aşağıdaki Azure Ilke tanımlarını atayarak tüm kaynakların ve k
 ### <a name="1173-multi-factor-authentication-is-used-to-authenticate-all-privileged-users-and-any-other-positions-of-trust"></a>1173 Multi-Factor Authentication tüm ayrıcalıklı kullanıcılara ve diğer güven konumlarına yönelik kimlik doğrulaması için kullanılır
 
 - MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir
-- MFA, aboneliğinizde yazma izinleri olan hesaplar etkinleştirilmelidir
+- Aboneliğinizde yazma izinleri olan hesaplarda MFA etkinleştirilmelidir
 
 ### <a name="0421-passphrases-used-for-single-factor-authentication-are-a-minimum-of-14-characters-with-complexity-ideally-as-4-random-words"></a>0421 tek faktörlü kimlik doğrulaması için kullanılan parola, en az 4 Rastgele kelime olacak şekilde karmaşıklıkla birlikte 14 karakterdir
 
@@ -130,7 +130,7 @@ Bu şema, aşağıdaki Azure Ilke tanımlarını atayarak tüm kaynakların ve k
 ### <a name="1384-multi-factor-authentication-is-used-to-authenticate-users-each-time-they-perform-privileged-actions"></a>1384 çok faktörlü kimlik doğrulaması ayrıcalıklı eylemler gerçekleştirirken kullanıcıların kimliğini doğrulamak için kullanılır
 
 - MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir
-- MFA, aboneliğinizde yazma izinleri olan hesaplar etkinleştirilmelidir
+- Aboneliğinizde yazma izinleri olan hesaplarda MFA etkinleştirilmelidir
 - MFA, aboneliğinizde okuma izinleri olan hesaplarda etkinleştirilmelidir
 
 ### <a name="1386-management-traffic-is-only-allowed-to-originate-from-network-zones-that-are-used-to-administer-systems-and-applications"></a>1386 yönetim trafiğinin yalnızca sistemleri ve uygulamaları yönetmek için kullanılan ağ bölgelerinden kaynaklı olmasına izin verilir

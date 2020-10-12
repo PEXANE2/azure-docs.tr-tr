@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: 91e75b60f5324288c9f1adac59e31b9c1a1b0e9e
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89289180"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Bilgi deposunu Power BI bağlama
@@ -73,7 +73,7 @@ Bu makalede Power BI Desktop uygulamasındaki Power Query kullanarak bir bilgi d
 1. Sütunun sol üst kısmındaki ABC-123 simgesine tıklayarak aşağıdaki sütunlar için veri türünü değiştirin.
 
    + *Content. Enlem* ve *Content. Boylam*için **ondalık sayı**' yı seçin.
-   + *İçerik. reviews_date* ve *içerik. reviews_dateAdded*için **Tarih/saat**' i seçin.
+   + *Content.reviews_date* ve *Content.reviews_dateAdded*için **Tarih/saat**' i seçin.
 
    ![Veri türlerini değiştirme](media/knowledge-store-connect-power-bi/powerbi-change-type.png "Veri türlerini değiştirme")
 
