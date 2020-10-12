@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/28/2019
 ms.author: duau
 ms.openlocfilehash: d6e63ad5781b0b8d6f46aee1cb88373721bb9dfc
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89397908"
 ---
 # <a name="designing-for-high-availability-with-expressroute"></a>ExpressRoute ile yüksek kullanılabilirlik için tasarlama
@@ -54,7 +54,7 @@ Alternatif olarak, bir ExpressRoute devresine ait birincil ve ikincil bağlantı
 
 Microsoft eşlemesi, genel uç noktaları arasındaki iletişim için tasarlanmıştır. Yaygın olarak, şirket içi özel uç noktalar, Microsoft eşlemesi üzerinden iletişim kurmadan önce müşteri veya iş ortağı ağı üzerinde genel IP ile çevrilmiş (NATed) ağ adresidir. Etkin-etkin modda hem birincil hem de ikincil bağlantıları kullandığınız varsayılarak, burada ve NAT, ExpressRoute bağlantılarından birindeki bir başarısızlığı izleyen ne kadar hızlı bir şekilde kurtardığınız konusunda ne kadar hızlı bir şekilde etkilenirsiniz. İki farklı NAT seçeneği aşağıdaki şekilde gösterilmiştir:
 
-[![3]][3]
+[![03]][3]
 
 1. seçenekte, ExpressRoute 'ın birincil ve ikincil bağlantıları arasında trafik bölünmeden sonra NAT uygulanır. NAT 'nin durum bilgisi olan gereksinimlerini karşılamak için, birincil ve ikincil cihazlar arasında bağımsız NAT havuzları kullanılır. böylece, dönüş trafiği akışın altında bulunduğu uç cihaza ulaşır.
 

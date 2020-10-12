@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 260125b5e7aa4537c6e204d93263b65be042793a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540753"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a--windows-virtual-desktop-classic-host-pool"></a>Windows sanal masaüstü (klasik) konak havuzu için Uzak Masaüstü Protokolü özelliklerini özelleştirme
@@ -34,7 +34,7 @@ Varsayılan olarak, yayımlanan RDP dosyaları aşağıdaki özellikleri içerir
 
 |RDP özellikleri | Masaüstü Bilgisayarlar | RemoteApp uygulamaları |
 |---|---| --- |
-| Çoklu monitör modu | Etkin | YOK |
+| Çoklu monitör modu | Etkin | Yok |
 | Sürücü yeniden yönlendirmeleri etkin | Sürücüler, pano, yazıcılar, COM bağlantı noktaları, USB cihazları ve akıllı kartlar| Sürücüler, pano ve Yazıcılar |
 | Uzak ses modu | Yerel olarak oynat | Yerel olarak oynat |
 
@@ -61,7 +61,7 @@ Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty
 ```
 
 > [!div class="mx-imgBorder"]
-> ![Özel bir R D P özelliğini düzenlemek için, Name ve FriendlyName ile RDSRemoteApp PowerShell cmdlet 'inin bir ekran görüntüsü.](../media/multiplecustomrdpproperty.png)
+> ![Özel bir R D P özelliğini düzenlemek için, Name ve FriendlyName ile birlikte Set-RDSRemoteApp PowerShell cmdlet 'inin ekran görüntüsü.](../media/multiplecustomrdpproperty.png)
 
 ## <a name="reset-all-custom-rdp-properties"></a>Tüm özel RDP özelliklerini Sıfırla
 
@@ -72,7 +72,7 @@ Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty
 ```
 
 > [!div class="mx-imgBorder"]
-> ![Name ve FriendlyName ile birlikte Get-RDSRemoteApp PowerShell cmdlet 'inin ekran görüntüsü.](../media/resetcustomrdpproperty.png)
+> ![PowerShell cmdlet 'inin adı ve FriendlyName vurgulanmış Get-RDSRemoteApp ekran görüntüsü.](../media/resetcustomrdpproperty.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -4,10 +4,10 @@ description: Azure Stack dosyalarını ve uygulamaları Azure Stack ortamınıza
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.openlocfilehash: cae95c10c510969cc0553a54a506789d6be427d7
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89180992"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Azure Stack dosya ve uygulamaları yedekleme
@@ -52,13 +52,13 @@ Azure Stack sanal makinelerdeki dosyaları korumak üzere Azure Backup Sunucusu 
 
     **Çevrimiçi koruma**istiyorum ' u seçmek için, önce: disk **kullanarak kısa vadeli koruma istiyorum** ' u seçmeniz gerekir. Azure Backup Sunucusu banda korumadığı için disk, kısa vadeli koruma için tek seçenektir.
 
-5. **Kısa dönem hedeflerini belirtin** ekranında, diske kaydedilen kurtarma noktalarının ne kadar süreyle saklanacağını ve artımlı yedeklemelerin ne zaman kaydedileceğini seçin. **İleri**’yi seçin.
+5. **Short-Term hedeflerini belirtin** ekranında, diske kaydedilen kurtarma noktalarının ne kadar süreyle saklanacağını ve artımlı yedeklemelerin ne zaman kaydedileceğini seçin. **İleri**’yi seçin.
 
     > [!IMPORTANT]
     > Beş günden uzun bir süre boyunca Azure Backup Sunucusu bağlı disklerde işlemsel kurtarma (yedekleme) **verilerini saklamamalıdır** .
     >
 
-    ![Kısa vadeli hedefleri belirtin](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png)
+    ![Short-Term hedeflerini belirtin](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png)
 
     Artımlı yedeklemeler için bir Aralık seçmek yerine, zamanlanan her kurtarma noktasının hemen öncesinde hızlı tam yedekleme çalıştırmak için, **bir kurtarma noktasındaki hemen önce**seçeneğini belirleyin. Uygulama iş yüklerini koruyorsanız, Azure Backup Sunucusu eşitleme sıklığı zamanlaması başına kurtarma noktaları oluşturur (uygulama artımlı yedeklemeleri desteklediğinde). Uygulama artımlı yedeklemeleri desteklemiyorsa Azure Backup Sunucusu hızlı tam yedekleme çalıştırır.
 

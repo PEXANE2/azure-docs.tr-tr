@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 09/21/2020
 ms.author: v-mibufo
 ms.openlocfilehash: b07033f96402edc24edd51de57661603e57472bc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91347770"
 ---
 # <a name="windows-stop-error---0xc000021a-status-system-process-terminated"></a>Windows Dur hatası-0xC000021A durum sistem Işlemi sonlandırıldı
@@ -37,7 +37,7 @@ VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](
 
 Hata 0xC000021A **STATUS_SYSTEM_PROCESS_TERMINATED**anlamına gelir.
 
-Bu hata, WinLogon (winlogon.exe) veya Istemci sunucusu çalışma zamanı alt sistemi (csrss.exe) gibi kritik bir işlem başarısız olduğunda oluşur. Çekirdek bu hizmetlerden birinin durdurulduğunu algıladığında, **Dur 0xC000021A** hatasını yükseltir. Bu hata, aşağıdakiler de dahil olmak üzere birkaç nedenden kaynaklanabilir:
+Bu hata, WinLogon (winlogon.exe) veya Istemci sunucusu Run-Time alt sistemi (csrss.exe) gibi kritik bir işlem başarısız olduğunda oluşur. Çekirdek bu hizmetlerden birinin durdurulduğunu algıladığında, **Dur 0xC000021A** hatasını yükseltir. Bu hata, aşağıdakiler de dahil olmak üzere birkaç nedenden kaynaklanabilir:
 
 - Eşleşmeyen sistem dosyaları yüklendi.
 - Bir hizmet paketi veya BB güncelleştirme yüklemesi başarısız oldu.

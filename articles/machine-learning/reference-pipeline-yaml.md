@@ -12,10 +12,10 @@ author: NilsPohlmann
 ms.date: 07/31/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 0f7ee0e18187b0a5d8ad1eb83dbda9734a9ff7de
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89650179"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>YAML 'de makine öğrenimi işlem hatlarını tanımlama
@@ -26,23 +26,23 @@ Aşağıdaki tabloda, YAML 'de bir işlem hattı tanımlarken ne olduğu ve şu 
 
 | Adım türü | Destekleniyor mu? |
 | ----- | :-----: |
-| PythonScriptStep | Yes |
-| ParallelRunStep | Yes |
-| AdlaStep | Yes |
-| AzureBatchStep | Yes |
-| DatabricksStep | Yes |
-| DataTransferStep | Yes |
-| Oto Mlstep | No |
-| HyperDriveStep | No |
-| ModuleStep | Yes |
-| MPIStep | No |
-| EstimatorStep | No |
+| PythonScriptStep | Evet |
+| ParallelRunStep | Evet |
+| AdlaStep | Evet |
+| AzureBatchStep | Evet |
+| DatabricksStep | Evet |
+| DataTransferStep | Evet |
+| Oto Mlstep | Hayır |
+| HyperDriveStep | Hayır |
+| ModuleStep | Evet |
+| MPIStep | Hayır |
+| EstimatorStep | Hayır |
 
 ## <a name="pipeline-definition"></a>İşlem hattı tanımı
 
 İşlem hattı tanımı, işlem [hatları](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline?view=azure-ml-py&preserve-view=true) sınıfına karşılık gelen aşağıdaki anahtarları kullanır:
 
-| YAML anahtarı | Description |
+| YAML anahtarı | Açıklama |
 | ----- | ----- |
 | `name` | İşlem hattının açıklaması. |
 | `parameters` | İşlem hattının parametreleri. |
@@ -54,7 +54,7 @@ Aşağıdaki tabloda, YAML 'de bir işlem hattı tanımlarken ne olduğu ve şu 
 
 `parameters`Bölüm, [pipelineparameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py&preserve-view=true) sınıfına karşılık gelen aşağıdaki anahtarları kullanır:
 
-| YAML anahtarı | Description |
+| YAML anahtarı | Açıklama |
 | ---- | ---- |
 | `type` | Parametrenin değer türü. Geçerli türler,,, `string` `int` `float` `bool` veya `datapath` . |
 | `default` | Varsayılan değer. |
@@ -82,7 +82,7 @@ pipeline:
 
 `data_references`Bölüm, [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py&preserve-view=true)öğesine karşılık gelen aşağıdaki anahtarları kullanır:
 
-| YAML anahtarı | Description |
+| YAML anahtarı | Açıklama |
 | ----- | ----- |
 | `datastore` | Başvurulacak veri deposu. |
 | `path_on_datastore` | Veri başvurusu için yedekleme depolama alanındaki göreli yol. |
@@ -106,7 +106,7 @@ pipeline:
 
 Adımlar, ortamda çalıştırılacak dosyalarla birlikte bir hesaplama ortamı tanımlar. Bir adımın türünü tanımlamak için şu `type` anahtarı kullanın:
 
-| Adım türü | Description |
+| Adım türü | Açıklama |
 | ----- | ----- |
 | `AdlaStep` | Azure Data Lake Analytics ile bir U-SQL betiği çalıştırır. [Adlastep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.adlastep?view=azure-ml-py&preserve-view=true) sınıfına karşılık gelir. |
 | `AzureBatchStep` | İşleri Azure Batch kullanarak çalıştırır. [AzureBatchStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep?view=azure-ml-py&preserve-view=true) sınıfına karşılık gelir. |
@@ -117,7 +117,7 @@ Adımlar, ortamda çalıştırılacak dosyalarla birlikte bir hesaplama ortamı 
 
 ### <a name="adla-step"></a>ADLA adımı
 
-| YAML anahtarı | Description |
+| YAML anahtarı | Açıklama |
 | ----- | ----- |
 | `script_name` | U-SQL betiğinin adı (öğesine göre `source_directory` ). |
 | `compute_target` | Bu adım için kullanılacak işlem hedefi Azure Data Lake. |
@@ -168,7 +168,7 @@ pipeline:
 
 ### <a name="azure-batch-step"></a>Azure Batch adımı
 
-| YAML anahtarı | Description |
+| YAML anahtarı | Açıklama |
 | ----- | ----- |
 | `compute_target` | Bu adım için kullanılacak işlem hedefi Azure Batch. |
 | `inputs` | Girişler [ınputportbinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py&preserve-view=true), [DataReference](#data-reference), [portdatareference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py&preserve-view=true), [pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true), [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py&preserve-view=true), [DataSetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py&preserve-view=true)veya [pipelinedataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py&preserve-view=true)olabilir. |
@@ -222,7 +222,7 @@ pipeline:
 
 ### <a name="databricks-step"></a>Databricks adımı
 
-| YAML anahtarı | Description |
+| YAML anahtarı | Açıklama |
 | ----- | ----- |
 | `compute_target` | Bu adım için kullanılacak işlem hedefi Azure Databricks. |
 | `inputs` | Girişler [ınputportbinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py&preserve-view=true), [DataReference](#data-reference), [portdatareference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py&preserve-view=true), [pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true), [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py&preserve-view=true), [DataSetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py&preserve-view=true)veya [pipelinedataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py&preserve-view=true)olabilir. |
@@ -276,7 +276,7 @@ pipeline:
 
 ### <a name="data-transfer-step"></a>Veri aktarımı adımı
 
-| YAML anahtarı | Description |
+| YAML anahtarı | Açıklama |
 | ----- | ----- |
 | `compute_target` | Bu adım için kullanılacak işlem hedefi Azure Data Factory. |
 | `source_data_reference` | Veri aktarımı işlemlerinin kaynağı olarak hizmet veren giriş bağlantısı. Desteklenen değerler [ınputportbinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py&preserve-view=true), [DataReference](#data-reference), [portdatareference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py&preserve-view=true), [pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true), [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py&preserve-view=true), [DataSetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py&preserve-view=true)veya [pipelinedataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py&preserve-view=true). |
@@ -320,7 +320,7 @@ pipeline:
 
 ### <a name="python-script-step"></a>Python betik adımı
 
-| YAML anahtarı | Description |
+| YAML anahtarı | Açıklama |
 | ----- | ----- |
 | `inputs` | Girişler [ınputportbinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py&preserve-view=true), [DataReference](#data-reference), [portdatareference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py&preserve-view=true), [pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true), [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py&preserve-view=true), [DataSetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py&preserve-view=true)veya [pipelinedataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py&preserve-view=true)olabilir. |
 | `outputs` | Çıkışlar, [Pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) ya da [outputportbinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py&preserve-view=true)olabilir. |
@@ -367,7 +367,7 @@ pipeline:
 
 ### <a name="parallel-run-step"></a>Paralel çalıştırma adımı
 
-| YAML anahtarı | Description |
+| YAML anahtarı | Açıklama |
 | ----- | ----- |
 | `inputs` | Girişler [veri kümesi](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py&preserve-view=true), [DataSetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py&preserve-view=true)veya [pipelinedataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py&preserve-view=true)olabilir. |
 | `outputs` | Çıkışlar, [Pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) ya da [outputportbinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py&preserve-view=true)olabilir. |
@@ -419,7 +419,7 @@ pipeline:
 
 ### <a name="pipeline-with-multiple-steps"></a>Birden çok adımla işlem hattı 
 
-| YAML anahtarı | Description |
+| YAML anahtarı | Açıklama |
 | ----- | ----- |
 | `steps` | Bir veya daha fazla ardışık düzen Inestep tanımı dizisi. `destination`Bir adımın anahtarlarının bir `outputs` `source` sonraki adımın anahtarlarına dönüşdiğine unutmayın `inputs` .| 
 
@@ -480,7 +480,7 @@ pipeline:
 
 Bir işlem hattı için zamanlamayı tanımlarken, veri deposu tarafından tetiklenen veya bir zaman aralığına göre yinelenen bir değer olabilir. Aşağıda, bir zamanlamayı tanımlamak için kullanılan anahtarlar verilmiştir:
 
-| YAML anahtarı | Description |
+| YAML anahtarı | Açıklama |
 | ----- | ----- |
 | `description` | Zamanlamanın açıklaması. |
 | `recurrence` | Zamanlama yinelense, yinelenme ayarlarını içerir. |
@@ -511,7 +511,7 @@ Schedule:
 
 **Yinelenen bir zamanlama**tanımlarken aşağıdaki anahtarları kullanın `recurrence` :
 
-| YAML anahtarı | Description |
+| YAML anahtarı | Açıklama |
 | ----- | ----- |
 | `frequency` | Zamanlamanın yinelenme sıklığı. Geçerli değerler,,, `"Minute"` `"Hour"` `"Day"` `"Week"` veya `"Month"` . |
 | `interval` | Zamanlamanın ne sıklıkta tetiklendiği. Tamsayı değeri, zamanlama yeniden etkinleştirilinceye kadar beklenecek zaman birimi sayısıdır. |

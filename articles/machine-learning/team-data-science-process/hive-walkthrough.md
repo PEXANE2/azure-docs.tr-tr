@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 991e81c46a0cd6c587ac3366b63ba4da6a07f7e7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336522"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Ekip veri bilimi Işlemi sürüyor: Azure HDInsight Hadoop kümelerini kullanma
@@ -813,7 +813,7 @@ Bu sorguyu Hive Dizin isteminden çalıştırmak için:
 hive -f "C:\temp\sample_hive_prepare_for_aml_full.hql"
 ```
 
-Artık, Machine Learning [veri alma][import-data] modülü kullanılarak erişilebilen **nyctaxidb. nyctaxi_downsampled_dataset**iç tablosuna sahipsiniz. Ayrıca, bu veri kümesini Machine Learning modelleri oluşturmak için de kullanabiliriz.  
+Artık Machine Learning [verileri Içeri aktarma][import-data] modülü kullanılarak erişilebilen **nyctaxidb.nyctaxi_downsampled_dataset**iç tablo vardır. Ayrıca, bu veri kümesini Machine Learning modelleri oluşturmak için de kullanabiliriz.  
 
 ### <a name="use-the-import-data-module-in-machine-learning-to-access-the-down-sampled-data"></a>Aşağı örneklenir verilere erişmek için Machine Learning veri alma modülünü kullanın
 Machine Learning [veri Içeri aktarma][import-data] modülünde Hive sorguları vermek için, bir Machine Learning çalışma alanına erişmeniz gerekir. Ayrıca kümenin kimlik bilgilerine ve ilişkili depolama hesabına erişmeniz gerekir.

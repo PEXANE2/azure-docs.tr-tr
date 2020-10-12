@@ -11,10 +11,10 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 07/28/2020
 ms.openlocfilehash: d43f94d3555a660d6b7c8f755eebfec253d31dc2
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89322990"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Azure sanal makine kullanımını anlama
@@ -59,7 +59,7 @@ Azure galerisindeki bazı görüntülerde, görüntü türü ek bilgi alanında 
 - Windows Server Önizleme 
 
 ## <a name="service-type"></a>Hizmet Türü
-Ek bilgi alanındaki hizmet türü alanı, dağıttığınız tam VM boyutuna karşılık gelir. Premium depolama VM 'Leri (SSD tabanlı) ve Premium olmayan depolama VM 'Leri (HDD tabanlı) aynı şekilde fiyatlandırılır. Standart DS2 v2 gibi SSD tabanlı bir boyut dağıtırsanız \_ \_ , `Standard\_D2\_v2 VM` ölçüm alt kategorisi sütununda SSD olmayan boyut () ve `Standard\_DS2\_v2` ek bilgi alanındaki SSD boyutunu () görürsünüz.
+Ek bilgi alanındaki hizmet türü alanı, dağıttığınız tam VM boyutuna karşılık gelir. Premium depolama VM 'Leri (SSD tabanlı) ve Premium olmayan depolama VM 'Leri (HDD tabanlı) aynı şekilde fiyatlandırılır. Standart DS2 v2 gibi SSD tabanlı bir boyut dağıtırsanız \_ \_ , `Standard\_D2\_v2 VM` ek bilgi alanındaki Meter Sub-Category sütununda ve SSD-size () içinde SSD olmayan bir boyut () görürsünüz `Standard\_DS2\_v2` .
 
 ## <a name="region-names"></a>Bölge adları
 Kullanım ayrıntılarında kaynak konumu alanında doldurulmuş bölge adı, Azure Resource Manager kullanılan bölge adından farklıdır. Bölge değerleri arasında bir eşleme aşağıda verilmiştir:

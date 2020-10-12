@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: jushiman
 ms.openlocfilehash: a54de6dbfb320ca530e9c885af9ebe5d833274cc
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89323031"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 'da 2. nesil VM 'Ler için destek
@@ -67,7 +67,7 @@ ms.locfileid: "89323031"
 * Oracle Linux 7,7, 7,7-CI
 
 > [!NOTE]
-> Mv2-Series gibi belirli sanal makine boyutları yalnızca bu görüntülerin bir alt kümesini destekleyebilir-tam Ayrıntılar için lütfen ilgili sanal makine boyutu belgelerine bakın.
+> Mv2-Series gibi belirli sanal makine boyutları yalnızca bu görüntülerin bir alt kümesini destekleyebilir. tüm ayrıntılar için lütfen ilgili sanal makine boyutu belgelerine bakın.
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Şirket içi ve Azure 2. nesil VM 'Ler
 
@@ -85,7 +85,7 @@ Azure, 2. nesil VM 'Ler için şirket içi Hyper-V ' d i destekleyen bazı özel
 
 ### <a name="generation-1-vs-generation-2-features"></a>1. nesil ve 2. nesil Özellikler
 
-| Öne çıkan özelliği | 1. nesil | 2. nesil |
+| Özellik | 1. nesil | 2. nesil |
 |---------|--------------|--------------|
 | Önyükleme             | PCAT                      | UEFı                               |
 | Disk denetleyicileri | IDE                       | SCSI                               |
