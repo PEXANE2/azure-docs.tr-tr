@@ -9,17 +9,17 @@ ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-js
 ms.openlocfilehash: c84367a5e3ab57090f59196e8474c14cba87f32b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91250156"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Azure Işlevleri ile Azure statik Web Apps önizlemesine API ekleme
 
 Azure Işlevleri ile tümleştirme yoluyla, Azure statik Web Apps sunucusuz API 'Ler ekleyebilirsiniz. Bu makalede bir Azure statik Web Apps sitesine API ekleme ve dağıtma işlemlerinin nasıl yapılacağı gösterilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan Azure hesabı.
   - Hesabınız yoksa, [ücretsiz olarak bir tane oluşturabilirsiniz](https://azure.microsoft.com/free).
@@ -43,7 +43,7 @@ Projeniz oluşturulduktan sonra, yeni depo için tarayıcınızda URL 'YI kopyal
 1. Komut paletinde komutunu açmak için **F1** tuşuna basın.
 1. URL 'YI _Git: kopyalama_ istemine yapıştırın ve **ENTER**tuşuna basın.
 
-   :::image type="content" source="media/add-api/vscode-git-0.png" alt-text="Visual Studio Code kullanarak bir GitHub projesini kopyalama":::
+   :::image type="content" source="media/add-api/vscode-git-0.png" alt-text="Vanilla 'dan yeni bir depo oluşturma-temel":::
 
     Projeyi kopyalamak için bir depo konumu seçmek üzere istemleri izleyin.
 
@@ -59,7 +59,7 @@ Daha sonra, uygulamanın API 'SI olarak bir Azure Işlevleri projesi oluştururs
 1. Proje çalışma alanınızın dizini olarak **API** klasörünü seçin
 1. **Seç ' i** seçin
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-1.png" alt-text="Visual Studio Code kullanarak yeni bir Azure Işlevi oluşturma":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-1.png" alt-text="Vanilla 'dan yeni bir depo oluşturma-temel":::
 
 1. İstemlere aşağıdaki bilgileri sağlayın:
 
@@ -145,13 +145,13 @@ Visual Studio Code, Azure 'da yayımlamadan önce bu projeyi yerel geliştirme b
 
     Temel araçlar, _Terminal_ panelinde çalışan uygulamanın çıktısını gösterir. Çıktının bir parçası olarak, HTTP ile tetiklenen işlevinizin URL uç noktasını yerel olarak çalıştıran bir şekilde görebilirsiniz.
 
-    :::image type="content" source="media/add-api/create-azure-functions-vscode-2.png" alt-text="Visual Studio Code kullanarak yeni bir Azure Işlevi oluşturma":::
+    :::image type="content" source="media/add-api/create-azure-functions-vscode-2.png" alt-text="Vanilla 'dan yeni bir depo oluşturma-temel":::
 
 1. Temel araçlar çalışırken, API 'nin doğru şekilde çalıştığını doğrulamak için aşağıdaki URL 'ye gidin: `http://localhost:7071/api/message` .
 
    Tarayıcıdaki yanıt aşağıdaki örneğe benzer şekilde görünmelidir:
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-3.png" alt-text="Visual Studio Code kullanarak yeni bir Azure Işlevi oluşturma":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-3.png" alt-text="Vanilla 'dan yeni bir depo oluşturma-temel":::
 
 1. Hata ayıklama oturumunu durdurmak için **SHIFT + F5** tuşlarına basın.
 
@@ -199,7 +199,7 @@ Azure 'a dağıtıldığında, API 'ye gönderilen istekler, rotaya gönderilen 
 
     Şimdi Web sayfasında API iletisini görmeniz gerekir.
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-4.png" alt-text="Visual Studio Code kullanarak yeni bir Azure Işlevi oluşturma":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-4.png" alt-text="Vanilla 'dan yeni bir depo oluşturma-temel":::
 
    > [!NOTE]
    > Dosyayı çalıştırmak için diğer HTTP sunucularını veya proxy 'leri kullanabilirsiniz `index.html` . Kaynağından erişim `index.html` `file:///` çalışmayacak.
@@ -216,7 +216,7 @@ Visual Studio Code kullanarak değişikliklerinizi uzak git deposuna yürütün 
 1. **F1** tuşuna basın
 1. **Git: Push** yazın ve **ENTER** tuşuna basın
 
-## <a name="create-a-static-web-app"></a>Statik Web uygulaması oluşturma
+## <a name="create-a-static-web-app"></a>Statik web uygulaması oluşturma
 
 1. [Azure Portal](https://portal.azure.com) gidin
 1. **Kaynak oluştur** seçeneğine tıklayın
@@ -251,11 +251,11 @@ Ardından, aşağıdaki derleme ayrıntılarını ekleyin.
 
     Uygulama arka planda derlenmekte olduğundan, yapı durumunu görüntülemek için bir bağlantı içeren başlığa tıklayabilirsiniz.
 
-    :::image type="content" source="media/add-api/github-action-flag.png" alt-text="GitHub Iş akışı":::
+    :::image type="content" source="media/add-api/github-action-flag.png" alt-text="Vanilla 'dan yeni bir depo oluşturma-temel":::
 
 1. Dağıtım tamamlandıktan sonra, _genel bakış_ sayfasında gösterilen _URL_ bağlantısına tıklayarak OU Web uygulamasına gidebilir.
 
-    :::image type="content" source="media/add-api/static-app-url-from-portal.png" alt-text="Azure portal statik uygulama URL 'sine erişme":::
+    :::image type="content" source="media/add-api/static-app-url-from-portal.png" alt-text="Vanilla 'dan yeni bir depo oluşturma-temel":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: bba3666fbce6a8ea591654d1abdad319f1e0857c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86999526"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>StorSimple için Windows PowerShell’i kullanarak cihazınızı yönetme
@@ -50,14 +50,14 @@ Seri konsolundan Windows PowerShell arabirimine bağlanmak için aşağıdaki Pu
 1. PuTTY yeniden **yapılandırması** Iletişim kutusundaki **Kategori** bölmesinde **klavye**' yi seçin.
 2. Aşağıdaki seçeneklerin seçili olduğundan emin olun (yeni bir oturum başlattığınızda bunlar varsayılan ayarlardır).
    
-   | Klavye öğesi | Şunu seçin: |
+   | Klavye öğesi | Seç |
    | --- | --- |
    | Geri Al tuşu |Denetim-? (127) |
    | Giriş ve bitiş anahtarları |Standart |
    | İşlev tuşları ve tuş takımı |ESC [n ~ |
    | İmleç anahtarlarının ilk durumu |Normal |
    | Sayısal tuş takımının ilk durumu |Normal |
-   | Ek klavye özelliklerini etkinleştir |Denetim-alt, AltGr 'tan farklı |
+   | Ek klavye özelliklerini etkinleştir |Control-Alt AltGr 'tan farklı |
    
     ![Desteklenen Putty ayarları](./media/storsimple-windows-powershell-administration/IC740877.png)
 3. **Uygula**’ya tıklayın.
@@ -157,8 +157,8 @@ Aşağıda, bu Windows PowerShell arabirimine yönelik yardım türlerinin yanı
 
 ### <a name="to-get-help-for-a-cmdlet"></a>Bir cmdlet için yardım almak üzere
 
-* Herhangi bir cmdlet veya işlev hakkında yardım almak için aşağıdaki komutu kullanın:`Get-Help <cmdlet-name>`
-* Herhangi bir cmdlet 'e yönelik çevrimiçi yardım almak için, önceki cmdlet 'i `-Online` parametresiyle kullanın:`Get-Help <cmdlet-name> -Online`
+* Herhangi bir cmdlet veya işlev hakkında yardım almak için aşağıdaki komutu kullanın: `Get-Help <cmdlet-name>`
+* Herhangi bir cmdlet 'e yönelik çevrimiçi yardım almak için, önceki cmdlet 'i `-Online` parametresiyle kullanın: `Get-Help <cmdlet-name> -Online`
 * Tam yardım için `–Full` parametresini kullanabilir ve örnekler için `–Examples` parametresini kullanabilirsiniz.
 
 ### <a name="to-update-help"></a>Yardım 'ı güncelleştirmek için
@@ -167,7 +167,7 @@ Windows PowerShell arabirimindeki yardımı kolayca güncelleştirebilirsiniz. S
 
 #### <a name="to-update-cmdlet-help"></a>Cmdlet yardımını güncelleştirmek için
 1. Windows PowerShell 'i **yönetici olarak çalıştır** seçeneğiyle başlatın.
-2. Komut isteminde şunu yazın:`Update-Help`
+2. Komut isteminde şunu yazın:  `Update-Help`
 3. Güncelleştirilmiş Yardım dosyaları yüklenecek.
 4. Yardım dosyaları yüklendikten sonra, şunu yazın: `Get-Help Get-Command` . Bu, yardım 'ın kullanılabildiği cmdlet 'lerin bir listesini görüntüler.
 

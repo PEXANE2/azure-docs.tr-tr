@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
 ms.openlocfilehash: e63c3f329cb9c1fd5ca91274540f5145c3ad098a
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85921543"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>Denetimi veri akışındaki dönüştürme işlevleri
@@ -68,15 +68,15 @@ Aşağıdaki koşullara göre filtrelemek için, [. SelectRows.](https://docs.mi
 ----------------------
 * Power Query iç içe bir JOIN (Table. Nestedjoın) oluşturacak ve kullanıcılar el ile [Table. AddJoinColumn](https://docs.microsoft.com/powerquery-m/table-addjoincolumn)yazabilir.
     Kullanıcılar daha sonra iç içe JOIN sütununu iç içe olmayan bir birleşime genişletmelidir (başka bir bağlamda desteklenmez).
-* M işlevi [Table. JOIN](https://docs.microsoft.com/powerquery-m/table-join) , ek bir genişletme adımının gereksinimini ortadan kaldırmak için doğrudan yazılabilir, ancak kullanıcının birleştirilmiş tablolar arasında yinelenen sütun adları olmadığından emin olması gerekir
-* Desteklenen birleşim türleri: [iç](https://docs.microsoft.com/powerquery-m/joinkind-inner), [soltouter](https://docs.microsoft.com/powerquery-m/joinkind-leftouter), [sağtouter](https://docs.microsoft.com/powerquery-m/joinkind-rightouter), [FullOuter](https://docs.microsoft.com/powerquery-m/joinkind-fullouter)
+* M işlevi   [Table. JOIN](https://docs.microsoft.com/powerquery-m/table-join) , ek bir genişletme adımının gereksinimini ortadan kaldırmak için doğrudan yazılabilir, ancak kullanıcının birleştirilmiş tablolar arasında yinelenen sütun adları olmadığından emin olması gerekir
+* Desteklenen birleşim türleri:   [iç](https://docs.microsoft.com/powerquery-m/joinkind-inner),   [soltouter](https://docs.microsoft.com/powerquery-m/joinkind-leftouter),   [sağtouter](https://docs.microsoft.com/powerquery-m/joinkind-rightouter),   [FullOuter](https://docs.microsoft.com/powerquery-m/joinkind-fullouter)
 * [Değer. Equals](https://docs.microsoft.com/powerquery-m/value-equals) ve [Value. nullableequals](https://docs.microsoft.com/powerquery-m/value-nullableequals) , anahtar eşitlik Karşılaştırıcılar olarak desteklenir
 
 ## <a name="group-by"></a>Gruplandırma ölçütü:
 
 Değerleri toplamak için [Table. Group](https://docs.microsoft.com/powerquery-m/table-group) kullanın.
 * Bir toplama işleviyle birlikte kullanılması gerekir
-* Desteklenen toplama işlevleri: [Table. RowCount](https://docs.microsoft.com/powerquery-m/table-rowcount), [List. Sum](https://docs.microsoft.com/powerquery-m/list-sum), [List. Count](https://docs.microsoft.com/powerquery-m/list-count), [List. Average](https://docs.microsoft.com/powerquery-m/list-average), [List. min](https://docs.microsoft.com/powerquery-m/list-min), [List. Max](https://docs.microsoft.com/powerquery-m/list-max), [List. standardsapması](https://docs.microsoft.com/powerquery-m/list-standarddeviation), [List. First](https://docs.microsoft.com/powerquery-m/list-first), [List. Last](https://docs.microsoft.com/powerquery-m/list-last)
+* Desteklenen toplama işlevleri:   [Table. RowCount](https://docs.microsoft.com/powerquery-m/table-rowcount),   [List. Sum](https://docs.microsoft.com/powerquery-m/list-sum),   [List. Count](https://docs.microsoft.com/powerquery-m/list-count),   [List. Average](https://docs.microsoft.com/powerquery-m/list-average),   [List. min](https://docs.microsoft.com/powerquery-m/list-min),   [List. Max](https://docs.microsoft.com/powerquery-m/list-max),   [List. standardsapması](https://docs.microsoft.com/powerquery-m/list-standarddeviation),   [List. First](https://docs.microsoft.com/powerquery-m/list-first),   [List. Last](https://docs.microsoft.com/powerquery-m/list-last)
 
 ## <a name="sorting"></a>Sıralama
 
@@ -90,7 +90,7 @@ Bağımsız tut ve çıkar, aralığı tut (karşılık gelen k işlevleri, yaln
 
 | İşlev | Durum |
 | -- | -- |
-| Table.PromoteHeaders | Desteklenmiyor. Aynı sonuç, veri kümesindeki "Ilk satır üstbilgi olarak" ayarlanarak elde edilebilir. |
+| Table.PromoteHeaders | Desteklenmez. Aynı sonuç, veri kümesindeki "Ilk satır üstbilgi olarak" ayarlanarak elde edilebilir. |
 | Table.CombineColumns | Bu, doğrudan desteklenmeyen ancak verilen iki sütunu birleştiren yeni bir sütun eklenerek elde edilen yaygın bir senaryodur.  Örneğin, Table. AddColumn (RemoveEmailColumn, "ad", her [FirstName] & "" & [LastName]) |
 | Table.TransformColumnTypes | Çoğu durumda bu desteklenir. Aşağıdaki senaryolar desteklenmez: dizeyi para birimi türüne dönüştürme, dizeyi zaman türüne dönüştürme, dizeyi yüzde türüne dönüştürme. |
 | Table.NestedJoin | Yalnızca bir birleşimi yapmanız doğrulama hatasına neden olur. Çalışması için sütunların genişletilmesi gerekir. |
@@ -98,8 +98,8 @@ Bağımsız tut ve çıkar, aralığı tut (karşılık gelen k işlevleri, yaln
 | Table.RemoveLastN | Alt satırları kaldır desteklenmiyor. |
 | Table.RowCount | Desteklenmez, ancak tüm hücreler boş olan bir Ekle sütunuyla elde edilebilir (koşul sütunu kullanılabilir) ve ardından bu sütunda Group By kullanılıyor. Table. Group desteklenir. | 
 | Satır düzeyi hata işleme | Satır düzeyi hata işleme Şu anda desteklenmiyor. Örneğin, bir sütundan sayısal olmayan değerleri filtrelemek için, bir yaklaşım metin sütununu bir sayıya dönüştürmelidir. Dönüştürülemezse her hücre bir hata durumunda olur ve filtrelenebilir. Bu senaryo, denetimi veri akışında mümkün değildir. |
-| Table.Transpose | Desteklenmiyor |
-| Table.Pivot | Desteklenmiyor |
+| Table.Transpose | Desteklenmez |
+| Table.Pivot | Desteklenmez |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

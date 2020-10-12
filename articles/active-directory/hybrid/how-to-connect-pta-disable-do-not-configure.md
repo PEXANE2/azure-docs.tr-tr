@@ -12,17 +12,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f5db99f5e8ed2ea5844acba5500bc94d8fb0db2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85358353"
 ---
 # <a name="disable-pta-when-using-azure-ad-connect-do-not-configure"></a>"Yapılandırmayın" Azure AD Connect kullanırken PTA 'ı devre dışı bırak "
 
 Azure AD Connect ile geçişli kimlik doğrulaması kullanıyorsanız ve "yapılandırmayın" olarak ayarlandıysa, devre dışı bırakabilirsiniz. PTA 'nin devre dışı bırakılması aşağıdaki cmdlet 'ler kullanılarak yapılabilir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Aşağıdaki Önkoşullar gereklidir:
 - PTA aracısının yüklü olduğu herhangi bir Windows makinesi. 
 - Aracı 1.5.1742.0 veya üzeri bir sürümde olmalıdır. 
@@ -41,7 +41,7 @@ Aşağıdaki Önkoşullar gereklidir:
 
 ## <a name="to-disable-pta"></a>PTA 'yi devre dışı bırakmak için
 PowerShell oturumunda, PTA 'yi devre dışı bırakmak için aşağıdakileri kullanın:
-1. PS C:\Program Files\Microsoft Azure AD Connect kimlik doğrulama Aracısı>`Import-Module .\Modules\PassthroughAuthPSModule`
+1. PS C:\Program Files\Microsoft Azure AD Connect kimlik doğrulama Aracısı> `Import-Module .\Modules\PassthroughAuthPSModule`
 2. `Get-PassthroughAuthenticationEnablementStatus -Feature PassthroughAuth` veya `Get-PassthroughAuthenticationEnablementStatus -Feature PassthroughAuth -EnvironmentName <identifier>`
 3. `Disable-PassthroughAuthentication  -Feature PassthroughAuth` veya `Disable-PassthroughAuthentication -Feature PassthroughAuth -EnvironmentName <identifier>`
 
@@ -50,7 +50,7 @@ PowerShell oturumunda, PTA 'yi devre dışı bırakmak için aşağıdakileri ku
 Bir aracı makineniz yoksa, bir aracı yüklemek için aşağıdaki komutu kullanabilirsiniz.
 
 1. Portal.azure.com adresinden en son auth aracısını indirin.
-2. Özelliği yükler: `.\AADConnectAuthAgentSetup.exe` veya`.\AADConnectAuthAgentSetup.exe ENVIRONMENTNAME=<identifier>`
+2. Özelliği yükler: `.\AADConnectAuthAgentSetup.exe` veya `.\AADConnectAuthAgentSetup.exe ENVIRONMENTNAME=<identifier>`
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

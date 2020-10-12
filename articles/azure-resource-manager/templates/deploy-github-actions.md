@@ -4,10 +4,10 @@ description: GitHub eylemleri kullanılarak Azure Resource Manager şablonların
 ms.topic: conceptual
 ms.date: 07/02/2020
 ms.openlocfilehash: 313354499901bc69ec6e00f0ba7c385065cae615
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85854749"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>GitHub eylemlerini kullanarak Azure Resource Manager şablonları dağıtma
@@ -25,7 +25,7 @@ Kaynak Yöneticisi şablonu dağıtmaya yönelik temel bir iş akışında üç 
 2. Azure'da oturum açın.
 3. Kaynak Yöneticisi şablonu dağıtma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Kaynak Yöneticisi şablonlarınızı ve iş akışı dosyalarınızı depolamak için bir GitHub deposuna ihtiyacınız vardır. Bir tane oluşturmak için bkz. [Yeni bir depo oluşturma](https://help.github.com/en/enterprise/2.14/user/articles/creating-a-new-repository).
 

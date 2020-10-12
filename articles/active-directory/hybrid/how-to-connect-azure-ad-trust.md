@@ -19,10 +19,10 @@ author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 13d56ec321cd257412c2b0abbe0be655c6cb4dbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85360104"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Azure AD Connect kullanarak Azure AD ile AD FS güvenini yönetme
@@ -56,15 +56,15 @@ Azure AD Connect, yapılandırma akışları sırasında Azure AD güveninin tü
 
 | Yürütme akışı | Etkilenen ayarlar |
 | :--- | :--- |
-| İlk geçiş yükleme (Express) | Hiçbiri |
+| İlk geçiş yükleme (Express) | Yok |
 | Yüklemeyi ilk geçir (yeni AD FS grubu) | Yeni bir AD FS grubu oluşturulur ve sıfırdan Azure AD ile bir güven oluşturulur. |
 | İlk geçiş yükleme (mevcut AD FS grubu, mevcut Azure AD güveni) | Azure AD güven tanımlayıcısı, verme dönüştürme kuralları, Azure AD uç noktaları, alternatif kimliği (gerekliyse), otomatik meta veri güncelleştirmesi |
 | Azure AD güvenini sıfırlama | Belirteç imzalama sertifikası, belirteç imzalama algoritması, Azure AD güven tanımlayıcısı, verme dönüştürme kuralları, Azure AD uç noktaları, alternatif kimlik (gerekliyse), otomatik meta veri güncelleştirmesi |
-| Federasyon sunucusu Ekle | Hiçbiri |
-| WAP sunucusu Ekle | Hiçbiri |
+| Federasyon sunucusu Ekle | Yok |
+| WAP sunucusu Ekle | Yok |
 | Cihaz seçenekleri | Verme dönüştürme kuralları, cihaz kaydı için ıWA |
 | Federasyon etki alanı Ekle | Etki alanı ilk kez eklendiyse, diğer bir deyişle, kurulum tek etki alanı federasyonunu birden çok etki alanı federasyona değiştiriyor – Azure AD Connect güveni sıfırdan yeniden oluşturur. Azure AD ile güven zaten birden çok etki alanı için yapılandırılmışsa, yalnızca verme dönüşüm kuralları değiştirilir |
-| TLS güncelleştirme | Hiçbiri |
+| TLS güncelleştirme | Yok |
 
 Tüm işlemler sırasında, herhangi bir ayar değiştirildiğinde, Azure AD Connect **%ProgramData%\aadconnect\adfs** konumundaki geçerli güven ayarlarının yedeklemesini yapar
 

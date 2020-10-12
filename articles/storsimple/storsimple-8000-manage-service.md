@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 73373f788a4a87a36a800d69ffcdc646f4cd2084
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91249561"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>StorSimple 8000 serisi cihazlar için StorSimple Aygıt Yöneticisi hizmetini dağıtma
@@ -191,23 +191,23 @@ Azure portal, yalnızca güncelleştirme 5,0 ve üstünü çalıştıran StorSim
 
 | İşlem                                                                                                                       | Desteklenir      |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------|
-| Cihaz kaydetme                                                                                                               | Yes            |
-| Genel, ağ ve güvenlik gibi cihaz ayarlarını yapılandırma                                                                | Yes            |
-| Güncelleştirmeleri tarama, indirme ve yükleme                                                                                             | Yes            |
-| Cihazı devre dışı bırak                                                                                                               | Yes            |
-| Cihazı silme                                                                                                                   | Yes            |
-| Birim kapsayıcısı oluşturma, değiştirme ve silme                                                                                   | No             |
-| Birim oluşturma, değiştirme ve silme                                                                                             | No             |
-| Yedekleme ilkesi oluşturma, değiştirme ve silme                                                                                      | No             |
-| El ile yedekleme yapın                                                                                                            | No             |
-| Zamanlanmış bir yedekleme yapın                                                                                                         | Geçerli değil |
-| Yedek kümesi 'ten geri yükleme                                                                                                        | No             |
-| Güncelleştirme 3,0 ve üstünü çalıştıran bir cihaza Kopyala <br> Kaynak cihaz güncelleştirme 3,0 ' den önceki sürümü çalıştırıyor.                                | Yes            |
-| Güncelleştirme 3,0 ' den önceki sürümleri çalıştıran bir cihaza Kopyala                                                                          | No             |
-| Kaynak cihaz olarak yük devretme <br> (güncelleştirme 3,0 ' den önceki sürümü çalıştıran bir cihazdan güncelleştirme 3,0 ve üzeri sürümlerini çalıştıran bir cihaza)                                                               | Yes            |
-| Hedef cihaz olarak yük devretme <br> (güncelleştirme 3,0 ' dan önce yazılım sürümü çalıştıran bir cihaza)                                                                                   | No             |
-| Bir uyarıyı Temizleme                                                                                                                  | Yes            |
-| Klasik portalda oluşturulan yedekleme ilkelerini, yedekleme kataloğunu, birimleri, birim kapsayıcılarını, izleme grafiklerini, işleri ve uyarıları görüntüleme | Yes            |
+| Cihaz kaydetme                                                                                                               | Evet            |
+| Genel, ağ ve güvenlik gibi cihaz ayarlarını yapılandırma                                                                | Evet            |
+| Güncelleştirmeleri tarama, indirme ve yükleme                                                                                             | Evet            |
+| Cihazı devre dışı bırak                                                                                                               | Evet            |
+| Cihazı silme                                                                                                                   | Evet            |
+| Birim kapsayıcısı oluşturma, değiştirme ve silme                                                                                   | Hayır             |
+| Birim oluşturma, değiştirme ve silme                                                                                             | Hayır             |
+| Yedekleme ilkesi oluşturma, değiştirme ve silme                                                                                      | Hayır             |
+| El ile yedekleme yapın                                                                                                            | Hayır             |
+| Zamanlanmış bir yedekleme yapın                                                                                                         | Uygulanamaz |
+| Yedek kümesi 'ten geri yükleme                                                                                                        | Hayır             |
+| Güncelleştirme 3,0 ve üstünü çalıştıran bir cihaza Kopyala <br> Kaynak cihaz güncelleştirme 3,0 ' den önceki sürümü çalıştırıyor.                                | Evet            |
+| Güncelleştirme 3,0 ' den önceki sürümleri çalıştıran bir cihaza Kopyala                                                                          | Hayır             |
+| Kaynak cihaz olarak yük devretme <br> (güncelleştirme 3,0 ' den önceki sürümü çalıştıran bir cihazdan güncelleştirme 3,0 ve üzeri sürümlerini çalıştıran bir cihaza)                                                               | Evet            |
+| Hedef cihaz olarak yük devretme <br> (güncelleştirme 3,0 ' dan önce yazılım sürümü çalıştıran bir cihaza)                                                                                   | Hayır             |
+| Bir uyarıyı Temizleme                                                                                                                  | Evet            |
+| Klasik portalda oluşturulan yedekleme ilkelerini, yedekleme kataloğunu, birimleri, birim kapsayıcılarını, izleme grafiklerini, işleri ve uyarıları görüntüleme | Evet            |
 | Cihaz denetleyicilerini aç ve Kapat                                                                                              | Evet            |
 
 

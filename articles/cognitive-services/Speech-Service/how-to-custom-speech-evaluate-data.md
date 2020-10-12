@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
 ms.openlocfilehash: cadbe79bbe0af2b5cebacb3d0c7c4e910fc7dbb8
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85856824"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>Özel Konuşma doğruluğunu değerlendirme
@@ -33,7 +33,7 @@ Yanlış tanımlanmış kelimeler üç kategoride yer almalıdır:
 * Silme (D): varsayım dökümü 'nde algılanmayan sözcükler
 * Değiştirme (ler): başvuru ve varsayım arasında değiştirilen kelimeler
 
-İşte bir örnek:
+Aşağıda bir örnek verilmiştir:
 
 ![Yanlış tanımlanmış sözcüklerin örneği](./media/custom-speech/custom-speech-dis-words.png)
 
@@ -56,7 +56,7 @@ Modelleri yan yana değerlendirmek için:
 3. **Test Ekle**' ye tıklayın.
 4. **Doğruluğu değerlendir**' i seçin. Teste bir ad, açıklama verin ve ses + insan etiketli döküm veri kümenizi seçin.
 5. Test etmek istediğiniz en fazla iki model seçin.
-6. **Oluştur**'a tıklayın.
+6. **Oluştur**’a tıklayın.
 
 Testiniz başarıyla oluşturulduktan sonra sonuçları yan yana karşılaştırabilirsiniz.
 

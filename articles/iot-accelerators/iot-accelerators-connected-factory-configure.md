@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: e015c6761b920ef37af2bbfd67ced5fc3218d532
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91290696"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>Bağlı fabrika çözüm Hızlandırıcısını yapılandırma
@@ -32,7 +32,7 @@ Her contoso fabrikası, her biri üç istasyondan oluşan üretim satırlarına 
 * Test İstasyonu
 * Paketleme İstasyonu
 
-Bu OPC UA sunucuları OPC UA düğümlerine sahiptir ve [OPC yayımcısı](overview-opc-publisher.md) bu düğümlerin değerlerini bağlı fabrikaya gönderir. Buna aşağıdakiler dahildir:
+Bu OPC UA sunucuları OPC UA düğümlerine sahiptir ve [OPC yayımcısı](overview-opc-publisher.md) bu düğümlerin değerlerini bağlı fabrikaya gönderir. Şunları içerir:
 
 * Geçerli güç tüketimi gibi geçerli işlemsel durum.
 * Üretilen ürünlerin sayısı gibi üretim bilgileri.
@@ -265,7 +265,7 @@ Yapılandırma dosyasında kullanılan tüm özellikler, kullanıldıkları ayar
 
 ### <a name="visual-appearance"></a>Görsel görünüm
 
-Bu kategorideki Özellikler bağlı fabrika panosunun görsel görünümünü tanımlar. Örnekler şunları içerir:
+Bu kategorideki Özellikler bağlı fabrika panosunun görsel görünümünü tanımlar. Örneklere şunlar dahildir:
 
 * Ad
 * Açıklama

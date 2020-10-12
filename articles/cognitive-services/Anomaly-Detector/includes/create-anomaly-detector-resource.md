@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 09/10/2020
 ms.author: aahi
 ms.openlocfilehash: 8f93e0ffe74ade79059fc845788faf36ab5b4f13
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91025363"
 ---
 ## <a name="create-an-anomaly-detector-resource"></a>Anomali algılayıcısı kaynağı oluşturma
@@ -23,7 +23,7 @@ ms.locfileid: "91025363"
 
     |Ayar|Değer|
     |--|--|
-    |Ad|İstenen ad (2-64 karakter)|
+    |Adı|İstenen ad (2-64 karakter)|
     |Abonelik|Uygun aboneliği seçin|
     |Konum|Yakındaki ve kullanılabilir herhangi bir konumu seçin|
     |Fiyatlandırma Katmanı|`F0` -Minimum Fiyatlandırma Katmanı|
@@ -34,7 +34,7 @@ ms.locfileid: "91025363"
 
     |Portalda kaynak sekmesi|Ayar|Değer|
     |--|--|--|
-    |**Genel bakış**|Uç Noktası|Uç noktayı kopyalayın. Şuna benzer görünüyor `https://westus2.api.cognitive.microsoft.com/`|
+    |**Genel Bakış**|Uç Noktası|Uç noktayı kopyalayın. Şuna benzer görünüyor `https://westus2.api.cognitive.microsoft.com/`|
     |**Anahtarlar**|API Anahtarı|İki anahtardan oluşan 1 ' i kopyalayın. Boşluk veya tire içermeyen 32 alfasayısal karakter dizesidir `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` .|
 
 

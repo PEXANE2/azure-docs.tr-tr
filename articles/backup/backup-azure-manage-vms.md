@@ -4,10 +4,10 @@ description: Azure Backup hizmetini kullanarak Azure VM yedeklemelerini yönetme
 ms.topic: conceptual
 ms.date: 08/02/2020
 ms.openlocfilehash: 5a677221f16d00c19ee7083b72540ac7e1bb9cd0
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89145442"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure Backup hizmeti ile Azure VM yedeklemelerini yönetme
@@ -30,15 +30,15 @@ Azure portal, kurtarma hizmetleri Kasası panosu, aşağıdakiler de dahil olmak
 Kasa panosunda VM 'Leri görüntülemek için:
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
-1. Sol taraftaki menüden **tüm hizmetler**' i seçin.
+1. Sol taraftaki menüden **Tüm hizmetler**'i seçin.
 
-    ![Tüm hizmetleri seçin](./media/backup-azure-manage-vms/select-all-services.png)
+    ![Tüm Hizmetler’i seçin](./media/backup-azure-manage-vms/select-all-services.png)
 
-1. **Tüm hizmetler** Iletişim kutusunda *Kurtarma Hizmetleri*' ni girin. Giriş listenize göre filtrelerin kaynak listesi. Kaynak listesinde, **Kurtarma Hizmetleri kasaları**' nı seçin.
+1. **Tüm hizmetler** iletişim kutusuna *Kurtarma Hizmetleri* yazın. Kaynak listesi, yazdıklarınıza göre filtrelenir. Kaynak listesinde **Kurtarma Hizmetleri kasaları**'nı seçin.
 
-    ![Kurtarma Hizmetleri kasalarını girin ve seçin](./media/backup-azure-manage-vms/all-services.png)
+    ![Kurtarma Hizmetleri kasaları yazın ve seçin](./media/backup-azure-manage-vms/all-services.png)
 
-    Abonelikteki kurtarma hizmetleri kasalarının listesi görüntülenir.
+    Abonelikteki Kurtarma Hizmetleri kasalarının listesi görünür.
 
 1. Kullanım kolaylığı için, kasa adınızın yanındaki PIN simgesini seçin ve **panoya sabitle**' yi seçin.
 1. Kasa panosunu açın.

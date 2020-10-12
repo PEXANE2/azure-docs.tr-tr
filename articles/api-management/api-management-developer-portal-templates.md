@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 7a8c348340be143f7059ce7e64a1c66b66074a45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75430783"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>Şablonları kullanarak Azure API Management Geliştirici Portalını Özelleştirme
@@ -103,7 +103,7 @@ Her geliştirici portalı şablonunun Düzenleyicisi, sayfanın alt kısmında i
 }
 ```
 
-**Ürün listesi** şablonundaki biçimlendirme, bilgileri ve her bir ürüne yönelik bir bağlantıyı göstermek üzere ürünlerin toplanması yoluyla istenen çıktıyı sağlamak üzere verileri işler. `<search-control>` `<page-control>` İşaretlemede ve öğelerini aklınızda yapın. Bu denetim sayfada arama ve sayfalama denetimleri görüntülenir. `ProductsStrings|PageTitleProducts`, sayfanın üst bilgi metnini içeren yerelleştirilmiş bir dize başvurusudur `h2` . Geliştirici portalı şablonlarında kullanılabilecek dize kaynakları, sayfa denetimleri ve simgelerin bir listesi için, bkz. [API Management geliştirici portalı şablonları başvurusu](api-management-developer-portal-templates-reference.md).
+**Ürün listesi** şablonundaki biçimlendirme, bilgileri ve her bir ürüne yönelik bir bağlantıyı göstermek üzere ürünlerin toplanması yoluyla istenen çıktıyı sağlamak üzere verileri işler. `<search-control>` `<page-control>` İşaretlemede ve öğelerini aklınızda yapın. Bu denetim sayfada arama ve sayfalama denetimleri görüntülenir. `ProductsStrings|PageTitleProducts` , sayfanın üst bilgi metnini içeren yerelleştirilmiş bir dize başvurusudur `h2` . Geliştirici portalı şablonlarında kullanılabilecek dize kaynakları, sayfa denetimleri ve simgelerin bir listesi için, bkz. [API Management geliştirici portalı şablonları başvurusu](api-management-developer-portal-templates-reference.md).
 
 ```html
 <search-control></search-control>

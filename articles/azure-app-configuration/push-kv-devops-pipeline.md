@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: lcozzens
 ms.openlocfilehash: c1142ef7b37dee916118964778f6c1db2a65d591
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88719743"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Ayarları Azure Pipelines ile uygulama yapılandırmasına gönderme
@@ -87,7 +87,7 @@ Aşağıdaki parametreler uygulama yapılandırma gönderme görevi tarafından 
 - **Etiket**: uygulama yapılandırma deposundaki etiket olarak her anahtar değerine eklenen bir dize.
 - **Içerik türü**: uygulama yapılandırma deposu içindeki içerik türü olarak her anahtar değerine eklenen bir dize.
 - **Etiketler**: `{"tag1":"val1", "tag2":"val2"}` uygulama yapılandırma deponuza gönderilen her anahtar değerine eklenen etiketleri TANıMLAYAN biçiminde bir JSON nesnesi.
-- **Depodaki tüm diğer anahtar değerlerini belirtilen önek ve etiketle Sil**: varsayılan değer **işaretli**değildir.
+- **Depodaki tüm diğer Key-Values Belirtilen önek ve etiketle Sil**: varsayılan değer **işaretli**değildir.
   - **Checked**: yapılandırma dosyasından yeni anahtar değerleri göndermeden önce belirtilen önek ve etiketle eşleşen uygulama yapılandırma deposundaki tüm anahtar değerlerini kaldırır.
   - **İşaretlenmemiş**: yapılandırma dosyasındaki tüm anahtar değerlerini uygulama yapılandırma deposuna gönderir ve uygulama yapılandırma deposundaki diğer her şeyi bozulmadan bırakır.
 

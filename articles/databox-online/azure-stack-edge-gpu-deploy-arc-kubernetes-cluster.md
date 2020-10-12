@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: alkohli
 ms.openlocfilehash: 423345739ca5c078fbff4f267e1e8a118abf107c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90903203"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazındaki Kubernetes kümesinde Azure yayı 'yi etkinleştirme
@@ -22,7 +22,7 @@ Bu makalede, Azure Arc 'ın Azure Stack Edge Pro cihazınızdaki mevcut bir Kube
 Bu yordam, [Azure Stack Edge Pro cihazındaki Kubernetes iş yüklerini](azure-stack-edge-gpu-kubernetes-workload-management.md) Inceleyen ve [Azure Arc etkinleştirilmiş Kubernetes (Önizleme)](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)ile ilgili kavramlara yönelik kavramlar hakkında bilgi sahibi olmak için tasarlanmıştır.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Kubernetes kümesinde Azure yayı etkinleştirebilmeniz için, Azure Stack Edge Pro cihazınızda ve cihaza erişmek için kullanacağınız istemcide aşağıdaki önkoşulları tamamladığınızdan emin olun:
 

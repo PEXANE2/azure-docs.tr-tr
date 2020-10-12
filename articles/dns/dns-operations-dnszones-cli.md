@@ -13,10 +13,10 @@ ms.date: 02/27/2017
 ms.author: rohink
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: ff1abd48282a4ec9278d7182fea286178b5bd3ca
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87495922"
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>Azure CLı kullanarak Azure DNS DNS Bölgeleri Yönetme
@@ -85,7 +85,7 @@ az group create --name myresourcegroup --location "West US"
 
 ## <a name="getting-help"></a>Yardım alma
 
-Azure DNS ile ilgili tüm Azure CLı komutları ile başlar `az network dns` . Her komut için, seçeneği kullanılarak yardım vardır `--help` (kısa form `-h` ).  Örnek:
+Azure DNS ile ilgili tüm Azure CLı komutları ile başlar `az network dns` . Her komut için, seçeneği kullanılarak yardım vardır `--help` (kısa form `-h` ).  Örneğin:
 
 ```azurecli
 az network dns --help

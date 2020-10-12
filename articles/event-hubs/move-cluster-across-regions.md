@@ -4,10 +4,10 @@ description: Bu makalede, Azure Event Hubs adanmış bir kümeyi geçerli bölge
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.openlocfilehash: 94be44ee8f9442a3a65e899d7a58524b2570f194
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89381090"
 ---
 # <a name="move-an-azure-event-hubs-dedicated-cluster-to-another-region"></a>Azure Event Hubs adanmış bir kümeyi başka bir bölgeye taşıma
@@ -50,7 +50,7 @@ Hedef bölgede Event Hubs adanmış bir küme oluşturmak için şablonu dağıt
     4. **Ayarlar** bölümünde aşağıdaki adımları uygulayın:    
         1. Yeni **küme adını**girin. 
 
-            :::image type="content" source="./media/move-cluster-across-regions/deploy-template.png" alt-text="Kaynak Yöneticisi şablonu dağıtma":::
+            :::image type="content" source="./media/move-cluster-across-regions/deploy-template.png" alt-text="Kaynak Yöneticisi şablonu indir":::
     5. Sayfanın alt kısmındaki **gözden geçir + oluştur** ' u seçin. 
     1. **Gözden geçir + oluştur** sayfasında ayarları gözden geçirin ve ardından **Oluştur**' u seçin.  
 

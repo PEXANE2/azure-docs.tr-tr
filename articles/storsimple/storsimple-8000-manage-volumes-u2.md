@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 920f7f2fa6fb6e80b060f0308b124a3a1214cb3f
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86204463"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Birimleri yönetmek için StorSimple Aygıt Yöneticisi hizmetini kullanın (güncelleştirme 3 veya üzeri)
@@ -157,7 +157,7 @@ Bir birimi genişletmeniz veya birime erişen Konakları değiştirmeniz gerekti
 
        ![Birimi çevrimdışına alma etkisini gözden geçirin](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 
-5. **Kaydet**’a tıklayarak değişikliklerinizi kaydedin. Onayınız istendiğinde **Evet**’e tıklayın. Azure portal güncelleştirme birimi iletisi görüntülenir. Birim başarıyla güncelleştirildiği zaman başarılı bir ileti görüntülenir.
+5. Değişikliklerinizi kaydetmek için **Kaydet**’e tıklayın. Onayınız istendiğinde **Evet**’e tıklayın. Azure portal güncelleştirme birimi iletisi görüntülenir. Birim başarıyla güncelleştirildiği zaman başarılı bir ileti görüntülenir.
 
     ![Birimi çevrimdışına alma etkisini gözden geçirin](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
 

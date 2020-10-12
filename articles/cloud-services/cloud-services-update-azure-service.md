@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
 ms.openlocfilehash: 731f4e8cc8a93f33d6887f44fc8d09585e92a75a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75360353"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Bulut hizmetini güncelleştirme
@@ -47,18 +47,18 @@ Aşağıdaki tabloda, bir güncelleştirme sırasında bir hizmette izin verilen
 
 | Barındırma, hizmetler ve rollere izin verilen değişiklikler | Yerinde güncelleştirme | Hazırlandı (VIP takas) | Sil ve yeniden Dağıt |
 | --- | --- | --- | --- |
-| İşletim sistemi sürümü |Evet |Yes |Yes |
-| .NET güven düzeyi |Evet |Yes |Yes |
-| Sanal makine boyutu<sup>1</sup> |Evet<sup>2</sup> |Evet |Yes |
-| Yerel depolama ayarları |Yalnızca<sup>2</sup> artır |Evet |Yes |
-| Bir hizmette rol ekleme veya kaldırma |Evet |Yes |Yes |
-| Belirli bir rolün örnek sayısı |Evet |Yes |Yes |
+| İşletim sistemi sürümü |Evet |Evet |Evet |
+| .NET güven düzeyi |Evet |Evet |Evet |
+| Sanal makine boyutu<sup>1</sup> |Evet<sup>2</sup> |Evet |Evet |
+| Yerel depolama ayarları |Yalnızca<sup>2</sup> artır |Evet |Evet |
+| Bir hizmette rol ekleme veya kaldırma |Evet |Evet |Evet |
+| Belirli bir rolün örnek sayısı |Evet |Evet |Evet |
 | Bir hizmet için uç nokta sayısı veya türü |Evet<sup>2</sup> |Hayır |Evet |
-| Yapılandırma ayarlarının adları ve değerleri |Evet |Yes |Yes |
-| Yapılandırma ayarlarının değerleri (ancak adları değil) |Evet |Yes |Yes |
-| Yeni sertifika ekle |Evet |Yes |Yes |
-| Mevcut sertifikaları Değiştir |Evet |Yes |Yes |
-| Yeni kod dağıtma |Evet |Yes |Yes |
+| Yapılandırma ayarlarının adları ve değerleri |Evet |Evet |Evet |
+| Yapılandırma ayarlarının değerleri (ancak adları değil) |Evet |Evet |Evet |
+| Yeni sertifika ekle |Evet |Evet |Evet |
+| Mevcut sertifikaları Değiştir |Evet |Evet |Evet |
+| Yeni kod dağıtma |Evet |Evet |Evet |
 
 <sup>1</sup> Boyut değişikliği, bulut hizmeti için kullanılabilen boyutların alt kümesiyle sınırlıdır.
 
@@ -104,7 +104,7 @@ Bir hizmeti tek bir örnekten birden fazla örneğe yükseltirken, Azure yüksel
 |VM yeniden başlatma|Korunacağını|Korunacağını|Korunacağını|
 |Portalın yeniden başlatılması|Korunacağını|Korunacağını|Yok|
 |Portal yeniden görüntüsü|Korunacağını|Yok|Yok|
-|Yerinde yükseltme|Korunacağını|Korunacağını|Yok|
+|In-Place yükseltme|Korunacağını|Korunacağını|Yok|
 |Düğüm geçişi|Yok|Yok|Yok|
 
 Yukarıdaki listede, E: sürücüsünün rolün kök sürücüsünü temsil ettiğini ve sabit olarak kodlanmamadığını unutmayın. Bunun yerine, sürücüyü temsil etmek için **% Roleroot%** ortam değişkenini kullanın.
