@@ -16,10 +16,10 @@ ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 611edb06762b96ded7671b70ec0f5d4f07f51848
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87829093"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows için sanal makine uzantıları ve özellikleri
@@ -42,7 +42,7 @@ Birçok farklı Azure VM uzantısı, her biri belirli bir kullanım durumu ile k
 
 İşleme özgü uzantılara ek olarak, hem Windows hem de Linux sanal makineleri için özel bir betik uzantısı vardır. Windows için özel Betik uzantısı, bir VM 'de herhangi bir PowerShell betiğinin çalıştırılmasını sağlar. Özel betikler, yerel Azure araçlarının sağlayabildiklerinin ötesinde yapılandırılması gereken Azure dağıtımlarını tasarlamak için yararlıdır. Daha fazla bilgi için bkz. [WINDOWS VM özel Betik uzantısı](custom-script-windows.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 SANAL makinede uzantıyı işlemek için Azure Windows aracısının yüklü olması gerekir. Bazı ayrı uzantılar, kaynaklara veya bağımlılıklara erişim gibi önkoşullara sahiptir.
 
@@ -254,7 +254,7 @@ Aşağıdaki örnekte gösterildiği gibi, komutu, **korumalı** yapılandırmay
 
 Uzantılar kullanan bir Azure IaaS sanal makinesinde, sertifikalar konsolunda, **_Windows Azure CRP sertifika Oluşturucu_** olan sertifikalar ' ı görebilirsiniz. Klasik bir RDFE sanal makinesinde bu sertifikaların, **_Uzantılar Için Windows Azure hizmet yönetimi_** konu adı vardır.
 
-Bu sertifikalar, uzantılar tarafından kullanılan korumalı ayarların (parola, diğer kimlik bilgileri) aktarılması sırasında VM ile ana bilgisayar arasındaki iletişimin güvenliğini güvence altına alın. Sertifikalar Azure yapı denetleyicisi tarafından oluşturulur ve VM aracısına geçirilir. VM 'yi her gün durdurup başlatırsanız, yapı denetleyicisi tarafından yeni bir sertifika oluşturulabilir. Sertifika, bilgisayarın kişisel sertifikalar deposunda depolanır. Bu sertifikalar silinebilir. VM Aracısı gerekirse sertifikaları yeniden oluşturur.
+Bu sertifikalar, uzantılar tarafından kullanılan korumalı ayarların (parola, diğer kimlik bilgileri) aktarımı sırasında VM ile konağı arasındaki iletişimin güvenliğini sağlar. Sertifikalar Azure yapı denetleyicisi tarafından oluşturulur ve VM Aracısına geçirilir. VM'yi her gün durdurur ve başlatırsanız yapı denetleyicisi tarafından yeni bir sertifika oluşturulabilir. Sertifika bilgisayarın Kişisel sertifika deposunda saklanır. Bu sertifikalar silinebilir. VM Aracısı gerekirse sertifikaları yeniden oluşturur.
 
 ### <a name="how-do-agents-and-extensions-get-updated"></a>Aracılar ve uzantılar nasıl güncelleştirilir?
 
@@ -263,7 +263,7 @@ Aracılar ve uzantılar aynı güncelleştirme mekanizmasını paylaşır. Bazı
 Bir güncelleştirme kullanılabilir olduğunda, yalnızca Uzantılardaki bir değişiklik olduğunda VM 'de ve diğer VM modeli değiştikçe şu şekilde değişir:
 
 - Veri diskleri
-- Uzantılar
+- Uzantıları
 - Önyükleme tanılaması kapsayıcısı
 - Konuk işletim sistemi gizli dizileri
 - VM boyutu

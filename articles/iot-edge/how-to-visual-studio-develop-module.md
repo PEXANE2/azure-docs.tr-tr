@@ -9,10 +9,10 @@ ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.openlocfilehash: 823b16dcaf113136b10fdaa054da20840b99f02d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91297054"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Azure IoT Edge için modülleri geliştirmek ve hatalarını ayıklamak için Visual Studio 2019 kullanın
@@ -28,7 +28,7 @@ Visual Studio için Azure IoT Edge araçları aşağıdaki avantajları sağlar:
 
 Bu makalede, IoT Edge modüllerinizi geliştirmek için Visual Studio 2019 Azure IoT Edge araçlarının nasıl kullanılacağı gösterilmektedir. Ayrıca, projenizi Azure IoT Edge cihazınıza dağıtmayı de öğreneceksiniz. Şu anda Visual Studio 2019, C ve C# dilinde yazılan modüller için destek sağlar. Desteklenen cihaz mimarileri Windows x64 ve Linux x64 veya ARM32. Desteklenen işletim sistemleri, diller ve mimariler hakkında daha fazla bilgi için bkz. [dil ve mimari desteği](module-development.md#language-and-architecture-support).
   
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, geliştirme makineniz olarak Windows çalıştıran bir bilgisayar veya sanal makine kullandığınızı varsayar. Windows bilgisayarlarda, Windows veya Linux modülleri geliştirebilirsiniz. Windows modülleri geliştirmek için 1809/Build 17763 veya daha yeni sürümünü çalıştıran bir Windows bilgisayarı kullanın. Linux modülleri geliştirmek için, [Docker Desktop gereksinimlerini](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)karşılayan bir Windows bilgisayarı kullanın.
 
@@ -232,7 +232,7 @@ IoT Edge cihazınızı ayarlamak için kullandığınız hızlı başlangıç ma
 
 ## <a name="view-generated-data"></a>Oluşturulan verileri görüntüleme
 
-1. Belirli bir IoT Edge cihazının D2C iletisini izlemek için, **Cloud Explorer** 'da IoT Hub 'ınızda seçin ve ardından **eylem** penceresinde **yerleşik olay uç noktasını izlemeye başla** ' ya tıklayın.
+1. Belirli bir IoT-Edge cihazının D2C iletisini izlemek için, **Cloud Explorer** 'da IoT Hub 'ınızda seçin ve ardından **eylem** penceresinde **yerleşik olay uç noktasını izlemeye başla** ' ya tıklayın.
 
 1. İzleme verilerini durdurmak için, **eylem** penceresinde **yerleşik olay uç noktasını İzlemeyi Durdur** ' u seçin.
 

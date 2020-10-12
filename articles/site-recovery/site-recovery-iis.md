@@ -8,13 +8,13 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 7a4408b54b663b2cd8abc22772ac1b799ea50de0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87083778"
 ---
-# <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Çok katmanlı bir IIS tabanlı Web uygulaması için olağanüstü durum kurtarmayı ayarlama
+# <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Çok katmanlı, IIS tabanlı web uygulaması için olağanüstü durum kurtarmayı ayarlama
 
 Uygulama yazılımı, bir kuruluştaki iş üretkenlik altyapısıdır. Çeşitli web uygulamaları, bir kuruluşta farklı amaçlar sunabilir. Bordro işleme, finansal uygulamalar ve müşteriye yönelik Web siteleri için kullanılan uygulamalar gibi bazı uygulamalar, bir kuruluş için kritik öneme sahip olabilir. Üretkenlik kaybını engellemek için, kuruluşun bu uygulamaların sürekli olarak çalışır duruma gelmesi önemlidir. Daha da önemlisi, bu uygulamaların sürekli olarak kullanılabilir olması, kuruluşun marka veya görüntüsünün zarar görmesini önlemeye yardımcı olabilir.
 
@@ -60,8 +60,8 @@ Bu makaledeki örneklerde, Windows Server 2012 R2 Enterprise üzerinde IIS 7,5 i
 
 Senaryo | İkincil siteye | Azure’a
 --- | --- | ---
-Hyper-V | Yes | Yes
-VMware | Yes | Yes
+Hyper-V | Evet | Evet
+VMware | Evet | Evet
 Fiziksel sunucu | Hayır | Evet
 Azure|NA|Yes
 

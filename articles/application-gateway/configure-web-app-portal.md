@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: victorh
 ms.openlocfilehash: df92e08e91761d77c606ccb5389eee7dc219c101
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323403"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>Application Gateway ile App Service yapılandırma
@@ -26,7 +26,7 @@ Bu makalede şunları öğreneceksiniz:
 - Bir arka uç havuzunu düzenleyin ve buna bir App Service ekleyin
 - ' Seçim konak adı ' anahtarı etkin HTTP ayarlarını Düzenle
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Application Gateway: arka uç havuzu hedefi olmadan bir uygulama ağ geçidi oluşturun. Daha fazla bilgi için bkz [. hızlı başlangıç: Azure Application Gateway doğrudan web trafiği-Azure Portal](quick-create-portal.md)
 
@@ -56,7 +56,7 @@ Bu makalede şunları öğreneceksiniz:
 3. **Konak adı geçersiz kılma**altında, **arka uç hedefinden konak adı**Seç ' i seçin.
 4. **Kaydet**’i seçin.
 
-   :::image type="content" source="./media/configure-web-app-portal/http-settings.png" alt-text="Arka uç http ayarlarından konak adı Seç":::
+   :::image type="content" source="./media/configure-web-app-portal/http-settings.png" alt-text="App Service arka ucu":::
 
 ## <a name="additional-configuration-in-case-of-redirection-to-app-services-relative-path"></a>App Service 'in göreli yoluna yeniden yönlendirme durumunda ek yapılandırma
 

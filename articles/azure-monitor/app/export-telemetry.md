@@ -4,10 +4,10 @@ description: Tanılama ve kullanım verilerini Microsoft Azure depolama alanına
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.openlocfilehash: f67a5c555c438298cee701ca065aaf8c01c6406e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87324344"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application Insights’tan telemetriyi dışarı aktarma
@@ -36,7 +36,7 @@ Sürekli dışarı aktarma, aşağıdaki Azure depolama özelliklerini/yapıland
 
 * [Azure Data Lake Storage 2.](../../storage/blobs/data-lake-storage-introduction.md).
 
-## <a name="create-a-continuous-export"></a><a name="setup"></a>Sürekli dışarı aktarma oluşturma
+## <a name="create-a-continuous-export"></a><a name="setup"></a> Sürekli dışarı aktarma oluşturma
 
 1. Soldaki yapılandırma bölümündeki uygulamanızın Application Insights kaynağında, sürekli dışarı aktarmayı açın ve **Ekle**' yi seçin:
 
@@ -62,7 +62,7 @@ Verilerin depolamada görünmesi için bir saat yaklaşık bir gecikme olabilir.
 |:----|:------|
 | [Kullanılabilirlik](export-data-model.md#availability) | [Kullanılabilirlik Web testlerini](./monitor-web-app-availability.md)raporlar.  |
 | [Olay](export-data-model.md#events) | [Trackevent ()](./api-custom-events-metrics.md#trackevent)tarafından oluşturulan özel olaylar. 
-| [Özel durumlar](export-data-model.md#exceptions) |Sunucudaki ve tarayıcıdaki [özel durumları](./asp-net-exceptions.md) raporlar.
+| [Özel Durumlar](export-data-model.md#exceptions) |Sunucudaki ve tarayıcıdaki [özel durumları](./asp-net-exceptions.md) raporlar.
 | [İletiler](export-data-model.md#trace-messages) | [Tracktrace](./api-custom-events-metrics.md#tracktrace)tarafından ve [günlük bağdaştırıcıları](./asp-net-trace-logs.md)tarafından gönderilir.
 | [Ölçümler](export-data-model.md#metrics) | Ölçüm API çağrıları tarafından oluşturulur.
 | [PerformanceCounters](export-data-model.md) | Application Insights tarafından toplanan performans sayaçları.
@@ -81,7 +81,7 @@ Dışarı aktarmayı kalıcı olarak durdurmak için silin. Bunu yapmak, veriler
 ### <a name="cant-add-or-change-an-export"></a>Dışarı aktarma ekleyemez veya değiştirilemez mi?
 * Dışarı aktarmaları eklemek veya değiştirmek için Sahip, Katkıda Bulunan veya Application Insights Katkıda Bulunanı erişim izinleriniz olmalıdır. [Roller hakkında bilgi edinin][roles].
 
-## <a name="what-events-do-you-get"></a><a name="analyze"></a>Hangi olayları alırsınız?
+## <a name="what-events-do-you-get"></a><a name="analyze"></a> Hangi olayları alırsınız?
 Bu veriler, istemci IP adresinden hesapladığımız konum verilerini eklememiz dışında, uygulamanızdan aldığımız ham telemetri olur.
 
 [Örnekleme](./sampling.md) tarafından atılan veriler, verilmiş verilere dahil değildir.
@@ -95,7 +95,7 @@ Veriler ayrıca, ayarlamış olduğunuz tüm [kullanılabilirlik Web testlerinin
 >
 >
 
-## <a name="inspect-the-data"></a><a name="get"></a>Verileri İnceleme
+## <a name="inspect-the-data"></a><a name="get"></a> Verileri İnceleme
 Depolamayı doğrudan portalda inceleyebilirsiniz. En soldaki menüdeki giriş ' e tıklayın, en üstte "Azure Services" **depolama hesapları**' nı seçin, depolama hesabı adını seçin, Genel Bakış sayfasında hizmetler ' ın altında **Bloblar** ' ı seçin ve son olarak kapsayıcı adını seçin.
 
 Visual Studio 'da Azure Storage 'ı denetlemek için **Görünüm**, **bulut Gezgini**' ni açın. (Bu menü komutu yoksa, Azure SDK 'sını yüklemeniz gerekir: **Yeni proje** Iletişim kutusunu açın, Visual C#/Cloud öğesini genişletin ve **.NET için Microsoft Azure SDK al**' ı seçin.)
@@ -114,10 +114,10 @@ $"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}
 
 Konum
 
-* `blobCreationTimeUtc`blob 'un iç hazırlama deposunda oluşturulduğu zaman
-* `blobDeliveryTimeUtc`blob 'un dışarı aktarma hedef depolamasına kopyalandığı zaman
+* `blobCreationTimeUtc` blob 'un iç hazırlama deposunda oluşturulduğu zaman
+* `blobDeliveryTimeUtc` blob 'un dışarı aktarma hedef depolamasına kopyalandığı zaman
 
-## <a name="data-format"></a><a name="format"></a>Veri biçimi
+## <a name="data-format"></a><a name="format"></a> Veri biçimi
 * Her blob, birden çok ' \n ' ayrılmış satır içeren bir metin dosyasıdır. Yaklaşık bir dakikalık bir zaman diliminde işlenen Telemetriyi içerir.
 * Her satır, istek veya sayfa görünümü gibi bir telemetri veri noktasını temsil eder.
 * Her satır biçimlendirilmemiş bir JSON belgesidir. Satırları görüntülemek istiyorsanız, blobu Visual Studio 'da açın ve **Edit**  >  **Gelişmiş**  >  **Biçim dosyasını**Düzenle ' yi seçin:
@@ -135,7 +135,7 @@ Zaman süreleri, 10 000 ticks = 1 MS olduğunda yer işaretleri içinde bulunur.
 [Özellik türleri ve değerleri için ayrıntılı veri modeli başvurusu.](export-data-model.md)
 
 ## <a name="processing-the-data"></a>Verileri işleme
-Küçük ölçekte, verilerinizi çekmek, bir elektronik tabloya okumak ve bu şekilde devam etmek için kod yazabilirsiniz. Örnek:
+Küçük ölçekte, verilerinizi çekmek, bir elektronik tabloya okumak ve bu şekilde devam etmek için kod yazabilirsiniz. Örneğin:
 
 ```csharp
 private IEnumerable<T> DeserializeMany<T>(string folderName)
@@ -197,7 +197,7 @@ Daha büyük ölçeklendirilirken, buluttaki [HDInsight](https://azure.microsoft
   * Ayrıca, yüksek trafikli uygulamalar için ek bölüm birimleri ayrılır. Bu durumda, her birim dakikada bir blob oluşturur.
 * *Anahtarı depolama alanım olarak yeniden oluşturdum veya kapsayıcının adını değiştirdi ve şimdi dışarı aktarma çalışmıyor.*
 
-    Dışarı aktarmayı düzenleyin ve dışarı aktarma hedefi sekmesini açın. daha önce aynı depolama alanını seçili bırakın ve onaylamak için Tamam 'ı tıklatın. Dışarı aktarma yeniden başlatılır. Değişiklik son birkaç gün içinde olduysa, verileri kaybetmezsiniz.
+    Dışarı aktarmayı düzenleyin ve hedefi dışarı aktar sekmesini açın. Aynı depolama alanını daha önce olarak bırakın ve onaylamak için Tamam ' ı tıklatın. Dışarı aktarma yeniden başlatılır. Değişiklik son birkaç gün içinde olduysa, verileri kaybetmezsiniz.
 * *Dışarı aktarmayı duraklatabilir miyim?*
 
     Evet. Devre dışı bırak'ı seçin.

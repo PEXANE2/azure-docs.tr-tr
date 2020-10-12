@@ -12,17 +12,17 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 72c40b7962090492f8b4b85e555a947130c3628d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91256448"
 ---
 # <a name="azure-ad-registered-devices"></a>Azure AD kayıtlı cihazlar
 
 Azure AD kayıtlı cihazların hedefi, kullanıcılarınıza kendi cihazını getir (KCG) veya mobil cihaz senaryoları için destek sağlar. Bu senaryolarda, bir Kullanıcı kişisel bir cihaz kullanarak kuruluşunuzun Azure Active Directory denetimli kaynaklarına erişebilir.
 
-| Azure AD kayıtlı | Description |
+| Azure AD kayıtlı | Açıklama |
 | --- | --- |
 | **Tanım** | Kurumsal hesabın cihazda oturum açması gerekmeden Azure AD 'ye kayıtlı |
 | **Birincil hedef kitle** | Aşağıdaki ölçütlere sahip tüm kullanıcılar için geçerlidir: |

@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
 ms.openlocfilehash: 8459ab364fc0af15dd1a1b0035e4ce27d192f7a9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91293467"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Azure sanal makineler 'de SQL Server için iş sürekliliği ve HADR
@@ -150,7 +150,7 @@ Data Source=ReplicaServer1;Failover Partner=ReplicaServer2;Initial Catalog=Avail
 * [Istemcileri bir veritabanı yansıtma oturumuna bağlama (SQL Server)](https://technet.microsoft.com/library/ms175484.aspx)
 * [Karma BT 'de kullanılabilirlik grubu dinleyicisine bağlanma](https://docs.microsoft.com/archive/blogs/sqlalwayson/connecting-to-availability-group-listener-in-hybrid-it)
 * [Kullanılabilirlik grubu dinleyicileri, Istemci bağlantısı ve uygulama yük devretmesi (SQL Server)](https://technet.microsoft.com/library/hh213417.aspx)
-* [Kullanılabilirlik gruplarıyla veritabanı yansıtma bağlantı dizelerini kullanma](https://technet.microsoft.com/library/hh213417.aspx)
+* [Kullanılabilirlik gruplarıyla Database-Mirroring bağlantı dizelerini kullanma](https://technet.microsoft.com/library/hh213417.aspx)
 
 ### <a name="network-latency-in-hybrid-it"></a>Karma BT 'de ağ gecikmesi
 Şirket içi ağınız ve Azure arasında yüksek ağ gecikme süresi olabileceğini varsayımıyla HADR çözümünüzü dağıtın. Çoğaltmaları Azure 'a dağıttığınızda eşitleme modu için zaman uyumlu tamamlama yerine zaman uyumsuz yürütmeyi kullanın. Hem şirket içinde hem de Azure 'da veritabanı yansıtma sunucuları dağıttığınızda, yüksek performanslı mod yerine yüksek performanslı modu kullanın.

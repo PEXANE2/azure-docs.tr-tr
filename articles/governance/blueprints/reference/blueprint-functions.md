@@ -4,10 +4,10 @@ description: Azure şemaları tanımlarında ve atamalarında şema yapıtları 
 ms.date: 08/27/2020
 ms.topic: reference
 ms.openlocfilehash: fe984ee7664b0d50fb891d946f9f40a200ccce09
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89050769"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Azure şemaları ile kullanım için işlevler
@@ -19,7 +19,7 @@ Aşağıdaki işlevler desteklenir:
 - [Yapıt](#artifacts)
 - [Concat](#concat)
 - [parametrelere](#parameters)
-- [Kaynak](#resourcegroup)
+- [resourceGroup](#resourcegroup)
 - [resourceGroups](#resourcegroups)
 - [aboneliğiniz](#subscription)
 
@@ -36,7 +36,7 @@ Bu şema yapıtları çıkışları ile doldurulmuş özelliklerin bir nesnesini
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| artifactName |Yes |string |Şema yapıtı adı. |
+| artifactName |Evet |string |Şema yapıtı adı. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -125,7 +125,7 @@ Birden çok dize değerini birleştirir ve birleştirilmiş dizeyi döndürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| dize1 |Yes |string |Birleştirme için ilk değer. |
+| dize1 |Evet |string |Birleştirme için ilk değer. |
 | ek bağımsız değişkenler |Hayır |string |Birleştirme için ek değerler sıralı sırada |
 
 ### <a name="return-value"></a>Döndürülen değer
@@ -150,7 +150,7 @@ Bir şema parametre değeri döndürür. Belirtilen parametre adı, şema tanım
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| parameterName |Yes |string |Döndürülecek parametrenin adı. |
+| parameterName |Evet |string |Döndürülecek parametrenin adı. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -271,7 +271,7 @@ Belirtilen kaynak grubu yapıtını temsil eden bir nesne döndürür. `resource
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| placeholderName |Yes |string |Döndürülecek kaynak grubu yapıtı için yer tutucu adı. |
+| placeholderName |Evet |string |Döndürülecek kaynak grubu yapıtı için yer tutucu adı. |
 
 ### <a name="return-value"></a>Döndürülen değer
 

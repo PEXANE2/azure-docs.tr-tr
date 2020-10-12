@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b9a8f572189afaa726f7e01f5e0bbb73340face8
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89657226"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory self servis parola sıfırlama dağıtımını planlayın
@@ -105,7 +105,7 @@ Kullanıcılar parolayı sıfırlamak için [parola sıfırlama portalına](http
 
 Note: [Parola karması eşitlemesi (PHS)](../hybrid/whatis-phs.md) devre dışı bırakılmış kullanıcılar IÇIN, SSPR parolaları yalnızca şirket içi Active Directory depolar.
 
-### <a name="best-practices"></a>En iyi uygulamalar
+### <a name="best-practices"></a>Önerilen uygulamalar
 
 Kullanıcıların, kuruluştaki başka bir popüler uygulama veya hizmetle birlikte SSPR 'yi dağıtarak hızla kaydolmaya yardımcı olabilirsiniz. Bu eylem, büyük bir oturum açma hacmi oluşturur ve kayıt işlemini yeniden dener.
 
@@ -154,14 +154,14 @@ SSPR 'yi önerilen değerlerle birlikte etkinleştirmek için aşağıdaki ayarl
 | **SSPR özellikleri** | Self servis parola sıfırlama etkin | Pilot için **Seçili** grup ve **üretim için** |
 | **Kimlik doğrulama yöntemleri** | Kaydolmak için gereken kimlik doğrulama yöntemleri | Sıfırlama için her zaman 1 daha fazla |
 |   | Sıfırlamak için gereken kimlik doğrulama yöntemleri | Bir veya iki |
-| **Kaydını** | Kullanıcılardan oturum açarken kaydolmalarını iste | Yes |
+| **Kaydını** | Kullanıcılardan oturum açarken kaydolmalarını iste | Evet |
 |   | Kullanıcıların kimlik doğrulaması bilgilerini yeniden onaylamasını istemeden önce geçen gün sayısı | 90 – 180 gün |
-| **Bildirimler** | Parola sıfırlamayı kullanıcılara bildir | Yes |
-|   | Diğer yöneticiler parolalarını sıfırladığında tüm yöneticilere bildir | Yes |
-| **Özelleştirme** | Yardım masası bağlantısını Özelleştir | Yes |
+| **Bildirimler** | Parola sıfırlamayı kullanıcılara bildir | Evet |
+|   | Diğer yöneticiler parolalarını sıfırladığında tüm yöneticilere bildir | Evet |
+| **Özelleştirme** | Yardım masası bağlantısını Özelleştir | Evet |
 |   | Özel yardım masası e-postası veya URL 'SI | Destek sitesi veya e-posta adresi |
-| **Şirket içi tümleştirme** | Parolaları şirket içi AD 'ye geri yazma | Yes |
-|   | Kullanıcıların, parolayı sıfırlamadan hesabın kilidini açma izni ver | Yes |
+| **Şirket içi tümleştirme** | Parolaları şirket içi AD 'ye geri yazma | Evet |
+|   | Kullanıcıların, parolayı sıfırlamadan hesabın kilidini açma izni ver | Evet |
 
 ### <a name="sspr-properties"></a>SSPR özellikleri
 
@@ -254,7 +254,7 @@ SSPR genellikle kullanıcı sorunları oluşturmadığından, oluşabilecek soru
 
 Destek takımınızın başarısını etkinleştirmek için, kullanıcılarınızın aldığınız sorulara dayalı bir SSS oluşturabilirsiniz. İşte birkaç örnek:
 
-| Senaryolar| Description |
+| Senaryolar| Açıklama |
 | - | - |
 | Kullanıcının kayıtlı bir kimlik doğrulama yöntemi yok| Kullanıcı parolasını sıfırlamaya çalışıyor ancak kaydoldukları kimlik doğrulama yöntemlerinden hiçbirine sahip değil (örnek: kendi cep telefonlarını evde ve e-postaya erişemez) |
 | Kullanıcı Office veya cep telefonunda bir metin veya çağrı almıyor| Kullanıcı, kimliğini metin veya çağrı yoluyla doğrulamaya çalışıyor ancak bir metin/çağrı almıyor. |

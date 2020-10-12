@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/16/2020
 ms.author: radeltch
 ms.openlocfilehash: a0dc9f673abcac549fffc7291b8ac376c297da6b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836131"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>SAP yüksek kullanılabilirlik senaryolarında Azure Standart Load Balancer kullanan sanal makineler için genel uç nokta bağlantısı
@@ -165,7 +165,7 @@ Mimari şöyle görünür:
    Güvenlik duvarı kuralı şöyle görünebilir: ![ Azure Güvenlik Duvarı ile giden bağlantı](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall-rule.png)
 
 6. VM 'nizin alt ağından, **Myazurefirewall**özel IP 'Sinden Kullanıcı tanımlı yol oluşturun.
-   1. Yol tablosuna yerleştirdiğiniz gibi rotalar ' ı tıklatın. Add (Ekle) seçeneğini belirleyin. 
+   1. Yol tablosuna yerleştirdiğiniz gibi rotalar ' ı tıklatın. Ekle’yi seçin. 
    1. Yol adı: ToMyAzureFirewall, adres ön eki: **0.0.0.0/0**. Sonraki atlama türü: Sanal Gereç seçin. Sonraki atlama adresi: yapılandırdığınız güvenlik duvarının özel IP adresini girin: **11.97.1.4**.  
    1. Kaydet
 
@@ -176,7 +176,7 @@ Azure Yönetim API 'SI genel uç noktasına pacemaker çağrılarına izin verme
 ### <a name="important-considerations"></a>Önemli noktalar
 
   - Zaten şirket proxy 'si varsa, giden çağrıları ortak uç noktalarına yönlendirebilir. Genel uç noktalarına giden çağrılar, kurumsal denetim noktası üzerinden yapılır.  
-  - Proxy yapılandırmasının Azure Yönetim API 'sine giden bağlantıya izin verdiğinden emin olun: `https://management.azure.com` ve`https://login.microsoftonline.com`  
+  - Proxy yapılandırmasının Azure Yönetim API 'sine giden bağlantıya izin verdiğinden emin olun: `https://management.azure.com` ve `https://login.microsoftonline.com`  
   - VM 'lerden ara sunucuya bir yol olduğundan emin olun  
   - Proxy yalnızca HTTP/HTTPS çağrılarını işleymeyecektir. Genel uç noktasına giden çağrıları farklı protokoller üzerinden (RFC gibi) yapmak için ek bir gereksinim varsa, alternatif çözüm gerekecektir  
   - Pacemaker kümesinde kararsızlığa engel olmak için ara sunucu çözümü yüksek oranda kullanılabilir olmalıdır  
@@ -224,7 +224,7 @@ Pacemaker 'ın Azure Yönetim API 'siyle iletişim kurmasına izin vermek için 
 
 Giden trafik üçüncü taraf güvenlik duvarı aracılığıyla yönlendirilmemişse:
 
-- Azure sınır Aracısı 'nı kullanıyorsanız, Güvenlik Duvarı yapılandırmasının Azure Yönetim API 'sine giden bağlantıya izin verdiğinden emin olun: `https://management.azure.com` ve`https://login.microsoftonline.com`   
+- Azure sınır Aracısı 'nı kullanıyorsanız, Güvenlik Duvarı yapılandırmasının Azure Yönetim API 'sine giden bağlantıya izin verdiğinden emin olun: `https://management.azure.com` ve `https://login.microsoftonline.com`   
 - SUSE 'un güncelleştirmeleri ve düzeltme eklerini uygulamak için Azure genel bulut güncelleştirme altyapısını kullanıyorsanız bkz. [Azure genel bulut güncelleştirme altyapısı 101](https://suse.com/c/azure-public-cloud-update-infrastructure-101/)
 
 ## <a name="next-steps"></a>Sonraki adımlar
