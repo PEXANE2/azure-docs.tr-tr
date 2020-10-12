@@ -12,10 +12,10 @@ ms.date: 06/25/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: 8f54ece9a932ed4cc0adc29747e1c58ee22646c8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333877"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Veri kümelerinde veri kayması (Önizleme) Algıla
@@ -38,7 +38,7 @@ Azure Machine Learning veri kümesi izleyicileri (Önizleme) ile şunları yapab
 
 Python SDK ile veya Azure Machine Learning Studio 'da veri drimetrikleri görüntüleyebilirsiniz.  Diğer ölçümler ve Öngörüler, Azure Machine Learning çalışma alanıyla ilişkili [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) kaynağı aracılığıyla kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Veri kümesi izleyicileri oluşturmak ve bunlarla çalışmak için şunlar gerekir:
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
@@ -85,7 +85,7 @@ Geçmiş veriler üzerinde analiz gerçekleştirin. | Bu senaryo geçmiş verile
 
 Veri kümesi izleyicileri aşağıdaki Azure hizmetlerine bağımlıdır.
 
-|Azure hizmeti  |Description  |
+|Azure hizmeti  |Açıklama  |
 |---------|---------|
 | *Veri kümesi* | DRIFT, eğitim verilerini almak ve model eğitimi için verileri karşılaştırmak üzere Machine Learning veri kümelerini kullanır.  Minimum, Max, DISTINCT Values, DISTINCT Values Count gibi bildirilen ölçümlerin bazılarını oluşturmak için veri profili oluşturma kullanılır. |
 | *Azureml işlem hattı ve işlem* | DRFT hesaplama işi, azureml işlem hattında barındırılır.  İş, istek üzerine veya DRFT izleyici oluşturma zamanında yapılandırılan bir işlem üzerinde çalışacak şekilde başlatılır.
@@ -145,7 +145,7 @@ Aşağıdaki örnekte, *Noaaisdflorde/2019* alt klasörü altındaki tüm verile
 
 Verileriniz tarihe göre bölümlenmemişse, burada olduğu gibi partition_timestamp de belirtebilirsiniz.  Bu, tarihlerin daha verimli işlenmesini sağlar.
 
-:::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="Bölüm zaman damgası":::
+:::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="Zaman damgasını ayarla":::
 
 
 ## <a name="create-dataset-monitors"></a>Veri kümesi izleyicileri oluşturma
@@ -213,7 +213,7 @@ Bir veri kümesi ve veri kayması algılayıcısı ayarlama hakkında tam bir ö
 
 1. **+ Izleyici oluştur** düğmesine tıklayın ve **İleri**' ye tıklayarak sihirbaza devam edin.  
 
-:::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="İzleme oluşturma Sihirbazı":::
+:::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="Zaman damgasını ayarla":::
 
 * **Hedef veri kümesini seçin**.  Hedef veri kümesi, veri kayması için analiz edilecek zaman damgası sütunuyla belirtilen tablo veri kümesidir. Hedef veri kümesinde, temel veri kümesiyle ortak olan özellikler olmalıdır ve `timeseries` yeni verilerin eklendiği bir veri kümesi olmalıdır. Hedef veri kümesindeki geçmiş verileri analiz edilebilir veya yeni veriler izlenebilir.
 
@@ -223,14 +223,14 @@ Bir veri kümesi ve veri kayması algılayıcısı ayarlama hakkında tam bir ö
 
     | Ayar | Açıklama | İpuçları | Değiştirilebilir | 
     | ------- | ----------- | ---- | ------- |
-    | Name | Veri kümesi izleyicisinin adı. | | No |
-    | Özellikler | Zaman içinde veri kayması için analiz edilecek özelliklerin listesi. | Bir modelin, kavram SLA 'ları ölçmek için çıkış özelliklerine ayarlayın. Zamana göre (ay, yıl, Dizin vb.) bir zaman içinde olan özellikleri içermez. Özellik listesini ayarladıktan sonra, var olan veri kayması izleyicisini geri doldurabilir. | Yes | 
-    | İşlem hedefi | Veri kümesi izleyici işlerini çalıştırmak için işlem hedefini Azure Machine Learning. | | Yes | 
-    | Etkinleştir | Veri kümesi izleyici ardışık düzeninde zamanlamayı etkinleştirme veya devre dışı bırakma | Geri doldurma ayarıyla geçmiş verileri çözümleme zamanlamasını devre dışı bırakın. Veri kümesi İzleyicisi oluşturulduktan sonra etkinleştirilebilir. | Yes | 
-    | Frequency | Ardışık düzen işini zamanlamak ve geri doldurma çalıştırıyorsa geçmiş verileri çözümlemek için kullanılacak sıklık. Seçenekler günlük, haftalık veya aylık olarak verilebilir. | Her çalıştırma, hedef veri kümesindeki verileri sıklık sıklığına göre karşılaştırır: <li>Günlük: hedef veri kümesindeki en son tamamlanan günü taban çizgisiyle karşılaştırın <li>Haftalık: hedef veri kümesindeki en son tam haftayı (Pazartesi-Pazar) temel alarak karşılaştırın <li>Aylık: hedef veri kümesindeki en son tamamlanan ayı taban çizgisiyle karşılaştırın | No | 
-    | Gecikme süresi | Saat olarak, verilerin veri kümesine gelmesi için zaman alır. Örneğin, verilerin veri kümesi kapsülleyen SQL DB 'ye gelmesi üç gün sürüyorsa, gecikme süresini 72 olarak ayarlayın. | Veri kümesi İzleyicisi oluşturulduktan sonra değiştirilemez | No | 
-    | E-posta adresleri | Veri DRIP yüzdesi eşiğini ihlal eden uyarı için e-posta adresleri. | E-postalar Azure Izleyici aracılığıyla gönderilir. | Yes | 
-    | Eşik | E-posta uyarısı için veri kayması yüzdesi eşiği. | Daha fazla uyarı ve olay, çalışma alanının ilişkili Application Insights kaynağındaki diğer birçok ölçümde ayarlanabilir. | Yes |
+    | Adı | Veri kümesi izleyicisinin adı. | | Hayır |
+    | Özellikler | Zaman içinde veri kayması için analiz edilecek özelliklerin listesi. | Bir modelin, kavram SLA 'ları ölçmek için çıkış özelliklerine ayarlayın. Zamana göre (ay, yıl, Dizin vb.) bir zaman içinde olan özellikleri içermez. Özellik listesini ayarladıktan sonra, var olan veri kayması izleyicisini geri doldurabilir. | Evet | 
+    | İşlem hedefi | Veri kümesi izleyici işlerini çalıştırmak için işlem hedefini Azure Machine Learning. | | Evet | 
+    | Etkinleştir | Veri kümesi izleyici ardışık düzeninde zamanlamayı etkinleştirme veya devre dışı bırakma | Geri doldurma ayarıyla geçmiş verileri çözümleme zamanlamasını devre dışı bırakın. Veri kümesi İzleyicisi oluşturulduktan sonra etkinleştirilebilir. | Evet | 
+    | Frequency | Ardışık düzen işini zamanlamak ve geri doldurma çalıştırıyorsa geçmiş verileri çözümlemek için kullanılacak sıklık. Seçenekler günlük, haftalık veya aylık olarak verilebilir. | Her çalıştırma, hedef veri kümesindeki verileri sıklık sıklığına göre karşılaştırır: <li>Günlük: hedef veri kümesindeki en son tamamlanan günü taban çizgisiyle karşılaştırın <li>Haftalık: hedef veri kümesindeki en son tam haftayı (Pazartesi-Pazar) temel alarak karşılaştırın <li>Aylık: hedef veri kümesindeki en son tamamlanan ayı taban çizgisiyle karşılaştırın | Hayır | 
+    | Gecikme süresi | Saat olarak, verilerin veri kümesine gelmesi için zaman alır. Örneğin, verilerin veri kümesi kapsülleyen SQL DB 'ye gelmesi üç gün sürüyorsa, gecikme süresini 72 olarak ayarlayın. | Veri kümesi İzleyicisi oluşturulduktan sonra değiştirilemez | Hayır | 
+    | E-posta adresleri | Veri DRIP yüzdesi eşiğini ihlal eden uyarı için e-posta adresleri. | E-postalar Azure Izleyici aracılığıyla gönderilir. | Evet | 
+    | Eşik | E-posta uyarısı için veri kayması yüzdesi eşiği. | Daha fazla uyarı ve olay, çalışma alanının ilişkili Application Insights kaynağındaki diğer birçok ölçümde ayarlanabilir. | Evet |
 
 Sihirbazı tamamladıktan sonra, elde edilen veri kümesi İzleyicisi listede görüntülenir. Bu izleyicinin ayrıntılar sayfasına gitmek için seçin.
 
@@ -240,7 +240,7 @@ Bu bölümde, Azure Studio 'daki veri **kümeleri**  /  **veri kümesi izleyicil
 
 En üst düzey Öngörüler ile veri kayması ve daha fazla Araştırılması gereken özellikler vurgulaması ile başlayın.
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-overview.png" alt-text="Drift genel bakış":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-overview.png" alt-text="Zaman damgasını ayarla":::
 
 
 | Ölçüm | Açıklama | 
@@ -253,7 +253,7 @@ En üst düzey Öngörüler ile veri kayması ve daha fazla Araştırılması ge
 
 Veri kümesinin, belirtilen dönemde hedef veri kümesinden farklı olduğunu görün.  Daha fazla %100, iki veri kümesi farklılık gösterir.
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-magnitude.png" alt-text="Sürücü büyüklüğü eğilimi":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-magnitude.png" alt-text="Zaman damgasını ayarla":::
 
 ### <a name="drift-magnitude-by-features"></a>Özelliklere göre DRT büyüklüğü
 
@@ -263,7 +263,7 @@ Hedef veri kümesi zaman içinde de profili oluşturulmuş olur. Her bir özelli
 
 Azure Machine Learning Studio 'da, bu tarihin Özellik düzeyi ayrıntılarını görmek için grafikteki bir çubuğa tıklayın. Varsayılan olarak, temel veri kümesinin dağıtımını ve en son çalıştırmanın aynı özelliğin dağıtımını görürsünüz.
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="Özelliklere göre DRT büyüklüğü":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="Zaman damgasını ayarla":::
 
 Bu ölçümler Ayrıca `get_metrics()` bir nesne üzerindeki yöntemi aracılığıyla Python SDK ' da alınabilir `DataDriftDetector` .
 
@@ -271,7 +271,7 @@ Bu ölçümler Ayrıca `get_metrics()` bir nesne üzerindeki yöntemi aracılı�
 
 Son olarak, her bir özelliğin ayrıntılarını görüntülemek için aşağı kaydırın.  Özelliği seçmek için grafiğin üzerindeki açılan listeleri kullanın ve ayrıca görüntülemek istediğiniz ölçümü seçin.
 
-:::image type="content" source="media/how-to-monitor-datasets/numeric-feature.gif" alt-text="Sayısal Özellik grafiği ve karşılaştırması":::
+:::image type="content" source="media/how-to-monitor-datasets/numeric-feature.gif" alt-text="Zaman damgasını ayarla":::
 
 Grafikteki ölçümler özelliğin türüne bağlıdır.
 
@@ -293,7 +293,7 @@ Grafikteki ölçümler özelliğin türüne bağlıdır.
 
 Bu grafikte, görüntülenecek özellik için hedef ve bu tarih arasındaki özellik dağıtımını karşılaştırmak için tek bir tarih seçin. Sayısal özellikler için, bu iki olasılık dağıtımlarını gösterir.  Özellik sayısal ise, bir çubuk grafik görüntülenir.
 
-:::image type="content" source="media/how-to-monitor-datasets/select-date-to-compare.gif" alt-text="Hedefle Karşılaştırılacak bir tarih seçin":::
+:::image type="content" source="media/how-to-monitor-datasets/select-date-to-compare.gif" alt-text="Zaman damgasını ayarla":::
 
 ## <a name="metrics-alerts-and-events"></a>Ölçümler, uyarılar ve olaylar
 

@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 07/29/2020
 ms.openlocfilehash: df9a4dd546ddc5944d9a282e74c2444a5161b862
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87927574"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>AKS 'deki Windows Server düğüm havuzları hakkında sık sorulan sorular
@@ -58,7 +58,7 @@ Windows node havuzlarıyla AKS kümelerinin Azure CNı (Gelişmiş) ağ modelini
 
 Şu anda, [istemci kaynak IP koruması][client-source-ip] Windows düğümlerinde desteklenmez.
 
-## <a name="can-i-change-the-max--of-pods-per-node"></a>Maksimum değeri değiştirebilir miyim? düğüm başına düşen öğe sayısı?
+## <a name="can-i-change-the-max--of-pods-per-node"></a>Düğüm başına en fazla sayıda Pod 'yi değiştirebilir miyim?
 
 Evet. Kullanılabilir etkileri ve seçenekleri için bkz. [maksimum sayıda Pod][maximum-number-of-pods].
 

@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
 ms.openlocfilehash: 9c2160a241243b59ca7adda99fe2100d416c55be
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335271"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Öğretici: Azure Maps kullanarak bir mağaza Bulucu oluşturma
@@ -78,7 +78,7 @@ Verilerin ekran görüntüsüne bakarak aşağıdaki gözlemleri yapabiliriz:
 
 * Konum bilgileri **Adressatırı**, **şehir**, **municipsellik** (ilçe), **Adminbölüm** (Eyalet/bölge), **Postcode** (posta kodu) ve **ülke** sütunları kullanılarak depolanır.  
 * **Enlem** ve **boylam** sütunları, her contoso Coffee kahve dükkanı mağaza konumunun koordinatlarını içerir. Koordinat bilgilerine sahip değilseniz, Konum koordinatlarını öğrenmek için Azure haritalar 'daki arama hizmetleri ' ni kullanabilirsiniz.
-* Bazı ek sütunlar, kafeterlerle ilgili meta verileri içerir: telefon numarası, Boole sütunları ve açılış ve kapanış zamanlarını 24 saat biçiminde depolar. Boole sütunları Wi-Fi ve wheelsandalye erişilebilirliği içindir. Konum verilerinize daha uygun olan meta verileri içeren kendi sütunlarınızı oluşturabilirsiniz.
+* Bazı ek sütunlar, kafeterlerle ilgili meta verileri içerir: telefon numarası, Boole sütunları ve açılış ve kapanış zamanlarını 24 saat biçiminde depolar. Boolean sütunları Wi-Fi ve wheelsandalye erişilebilirliği içindir. Konum verilerinize daha uygun olan meta verileri içeren kendi sütunlarınızı oluşturabilirsiniz.
 
 > [!NOTE]
 > Azure Maps, verileri küresel Mercator projeksiyonu "EPSG: 3857" olarak işler, ancak WGS84 Datum kullanan "EPSG: 4325" içindeki verileri okur.

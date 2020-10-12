@@ -1,5 +1,5 @@
 ---
-title: Azure Tanılama uzantıya genel bakış
+title: Azure Tanılama uzantısına genel bakış
 description: Azure tanılama 'yı kullanarak hata ayıklama, performans, izleme, bulut hizmetlerinde trafik analizi, sanal makineler ve Service Fabric
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
@@ -7,17 +7,17 @@ author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: 6201a4e0551f0f75dde65b2bc4b8b560a0f5ea20
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87008005"
 ---
-# <a name="azure-diagnostics-extension-overview"></a>Azure Tanılama uzantıya genel bakış
+# <a name="azure-diagnostics-extension-overview"></a>Azure Tanılama uzantısına genel bakış
 Azure Tanılama uzantısı, Azure [izleyici 'de](agents-overview.md) sanal makineler dahil olmak üzere Azure işlem kaynaklarının Konuk işletim sisteminden izleme verilerini toplayan bir aracıdır. Bu makalede, desteklediği belirli işlevler ve yükleme ve yapılandırma seçenekleri de dahil olmak üzere Azure Tanılama uzantısına genel bakış sunulmaktadır. 
 
 > [!NOTE]
-> Azure Tanılama uzantısı, işlem kaynaklarının Konuk işletim sisteminden izleme verilerini toplamak için kullanılabilen aracılardan biridir. Gereksinimleriniz için uygun aracıları seçme konusunda farklı aracıların ve yönergelerin açıklaması için bkz. [Azure izleyici aracılarına genel bakış](agents-overview.md) .
+> Azure Tanılama uzantısı, işlem kaynaklarının Konuk işletim sisteminden izleme verilerini toplamak için kullanılabilen aracılardan biridir. Gereksinimleriniz için uygun aracıları seçme konusunda farklı aracıların ve yönergelerin açıklaması için bkz. [Azure izleyici aracılarına genel bakış ](agents-overview.md) .
 
 ## <a name="primary-scenarios"></a>Birincil senaryolar
 Tanılama uzantısı tarafından giderilen birincil senaryolar şunlardır:
@@ -44,7 +44,7 @@ Aşağıdaki tablolarda Windows ve Linux Tanılama uzantısı tarafından toplan
 
 ### <a name="windows-diagnostics-extension-wad"></a>Windows Tanılama uzantısı (WAD)
 
-| veri kaynağı | Açıklama |
+| Veri Kaynağı | Açıklama |
 | --- | --- |
 | Windows olay günlükleri   | Windows olay günlüğü 'nden olaylar. |
 | Performans sayaçları | Sayısal değerler, işletim sistemi ve iş yüklerinin farklı yönlerinin performansını ölçerek. |
@@ -59,7 +59,7 @@ Aşağıdaki tablolarda Windows ve Linux Tanılama uzantısı tarafından toplan
 
 ### <a name="linux-diagnostics-extension-lad"></a>Linux Tanılama uzantısı (LAD)
 
-| veri kaynağı | Açıklama |
+| Veri Kaynağı | Açıklama |
 | --- | --- |
 | Syslog | Linux olay günlüğü sistemine gönderilen olaylar.   |
 | Performans sayaçları  | Sayısal değerler, işletim sistemi ve iş yüklerinin farklı yönlerinin performansını ölçerek. |

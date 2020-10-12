@@ -7,10 +7,10 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/06/2020
 ms.openlocfilehash: ca1c63f042bd06c19f232c2ff8170d23741e73f2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88936444"
 ---
 # <a name="dependency-auto-collection"></a>Bağımlılık otomatik toplama
@@ -24,7 +24,7 @@ Aşağıda, uygulamanızın kodunda ek değişiklik yapılmasına gerek kalmadan
 | ASP.NET WebForms | 4.5 + |
 | ASP.NET MVC | 4 + |
 | ASP.NET WebAPI | 4.5 + |
-| ASP.NET Core | 1.1 + |
+| ASP.NET Çekirdeği | 1.1 + |
 | <b> İletişim kitaplıkları</b> |
 | [HttpClient](https://www.microsoft.com/net/) | 4.5 +, .NET Core 1.1 + |
 | [SqlClient](https://www.nuget.org/packages/System.Data.SqlClient) | .NET Core 1.0 +, NuGet 4.3.0 |

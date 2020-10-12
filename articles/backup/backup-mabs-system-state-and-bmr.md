@@ -4,10 +4,10 @@ description: Sistem durumunu yedeklemek ve çıplak kurtarma (BMR) koruması sa�
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.openlocfilehash: c5096158ca0e76ca03577347d8dd3e1419a33ca0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86538709"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-by-using-azure-backup-server"></a>Azure Backup Sunucusu kullanarak sistem durumunu yedekleme ve çıplak sisteme geri yükleme
@@ -25,21 +25,21 @@ Aşağıdaki tabloda neleri yedekleyebileceğiniz ve kurtarabileceğiniz özetle
 
 |Backup|Sorun|Azure Backup Sunucusu yedekten kurtar|Sistem durumu yedeklemesinden kurtarma|BMR|
 |----------|---------|---------------------------|------------------------------------|-------|
-|**Dosya verileri**<br /><br />Normal veri yedekleme<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp dosya verileri|E|H|H|
+|**Dosya verileri**<br /><br />Normal veri yedekleme<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp dosya verileri|E|H|N|
 |**Dosya verileri**<br /><br />Azure Backup Sunucusu dosya verileri yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp veya bozuk işletim sistemi|H|E|E|
-|**Dosya verileri**<br /><br />Azure Backup Sunucusu dosya verileri yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp sunucu (veri birimleri bozulmamış)|H|H|E|
+|**Dosya verileri**<br /><br />Azure Backup Sunucusu dosya verileri yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp sunucu (veri birimleri bozulmamış)|N|H|E|
 |**Dosya verileri**<br /><br />Azure Backup Sunucusu dosya verileri yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp sunucu (Veri birimleri kayıp)|E|H|E<br /><br />BMR, ardından yedeklenen dosya verilerinin normal kurtarılması|
-|**SharePoint verileri**<br /><br />Azure Backup Sunucusu grubu verileri yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp site, listeler, liste öğeleri, belgeler|E|H|H|
+|**SharePoint verileri**<br /><br />Azure Backup Sunucusu grubu verileri yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp site, listeler, liste öğeleri, belgeler|E|H|N|
 |**SharePoint verileri**<br /><br />Azure Backup Sunucusu grubu verileri yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp veya bozuk işletim sistemi|H|E|E|
-|**SharePoint verileri**<br /><br />Azure Backup Sunucusu grubu verileri yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Olağanüstü durum kurtarma|H|H|H|
-|Windows Server 2012 R2 Hyper-V<br /><br />Hyper-V konağının veya konuğun yedeklemesini Azure Backup Sunucusu<br /><br />BMR/konak sistem durumu yedeklemesi|Kayıp VM|E|H|H|
+|**SharePoint verileri**<br /><br />Azure Backup Sunucusu grubu verileri yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Olağanüstü durum kurtarma|N|N|N|
+|Windows Server 2012 R2 Hyper-V<br /><br />Hyper-V konağının veya konuğun yedeklemesini Azure Backup Sunucusu<br /><br />BMR/konak sistem durumu yedeklemesi|Kayıp VM|E|H|N|
 |Hyper-V<br /><br />Hyper-V konağının veya konuğun yedeklemesini Azure Backup Sunucusu<br /><br />BMR/konak sistem durumu yedeklemesi|Kayıp veya bozuk işletim sistemi|H|E|E|
-|Hyper-V<br /><br />Hyper-V konağının veya konuğun yedeklemesini Azure Backup Sunucusu<br /><br />BMR/konak sistem durumu yedeklemesi|Kayıp Hyper-V konağı (VM’ler bozulmamış)|H|H|E|
-|Hyper-V<br /><br />Hyper-V konağının veya konuğun yedeklemesini Azure Backup Sunucusu<br /><br />BMR/konak sistem durumu yedeklemesi|Kayıp Hyper-V konağı (VM’ler kayıp)|H|H|E<br /><br />BMR, ardından normal Azure Backup Sunucusu kurtarma|
-|SQL Server/Exchange<br /><br />Azure Backup Sunucusu uygulama yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp uygulama verileri|E|H|H|
+|Hyper-V<br /><br />Hyper-V konağının veya konuğun yedeklemesini Azure Backup Sunucusu<br /><br />BMR/konak sistem durumu yedeklemesi|Kayıp Hyper-V konağı (VM’ler bozulmamış)|N|H|E|
+|Hyper-V<br /><br />Hyper-V konağının veya konuğun yedeklemesini Azure Backup Sunucusu<br /><br />BMR/konak sistem durumu yedeklemesi|Kayıp Hyper-V konağı (VM’ler kayıp)|N|H|E<br /><br />BMR, ardından normal Azure Backup Sunucusu kurtarma|
+|SQL Server/Exchange<br /><br />Azure Backup Sunucusu uygulama yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp uygulama verileri|E|H|N|
 |SQL Server/Exchange<br /><br />Azure Backup Sunucusu uygulama yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp veya bozuk işletim sistemi|H|E|E|
-|SQL Server/Exchange<br /><br />Azure Backup Sunucusu uygulama yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp sunucu (veritabanı/işlem günlüğü dosyaları bozulmamış)|H|H|E|
-|SQL Server/Exchange<br /><br />Azure Backup Sunucusu uygulama yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp sunucu (veritabanı/işlem günlüğü dosyaları kayıp)|H|H|E<br /><br />BMR kurtarma, ardından normal Azure Backup Sunucusu kurtarma|
+|SQL Server/Exchange<br /><br />Azure Backup Sunucusu uygulama yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp sunucu (veritabanı/işlem günlüğü dosyaları bozulmamış)|N|H|E|
+|SQL Server/Exchange<br /><br />Azure Backup Sunucusu uygulama yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp sunucu (veritabanı/işlem günlüğü dosyaları kayıp)|N|H|E<br /><br />BMR kurtarma, ardından normal Azure Backup Sunucusu kurtarma|
 
 ## <a name="how-system-state-backup-works"></a>Sistem durumu yedeklemesinin çalışma şekli
 
@@ -83,13 +83,13 @@ Yedekleme tamamlandığında, dosya yedekleme sunucusu bilgisayarına aktarılı
 
 * BMR koruması için, sistem durumu korumasından farklı olarak, yedekleme sunucusunda korunan bilgisayarda bir alan gereksinimi yoktur. Windows Server Yedekleme yedeklemeleri yedekleme sunucusu bilgisayarına doğrudan aktarır. Yedekleme aktarma işi yedekleme sunucusu **işleri** görünümünde görünmüyor.
 
-* Backup Server, BMR için çoğaltma biriminde 30 GB alan ayırır. Bu alan servis birimini, koruma grubunu değiştirme Sihirbazı 'ndaki **disk ayırma** sayfasında değiştirebilirsiniz. Veya Get-DatasourceDiskAllocation ve set-DatasourceDiskAllocation PowerShell cmdlet 'lerini kullanabilirsiniz. Kurtarma noktası biriminde BMR koruması, beş gün bekletme için yaklaşık 6 GB gerektirir.
+* Backup Server, BMR için çoğaltma biriminde 30 GB alan ayırır. Bu alan servis birimini, koruma grubunu değiştirme Sihirbazı 'ndaki **disk ayırma** sayfasında değiştirebilirsiniz. Ya da Get-DatasourceDiskAllocation ve Set-DatasourceDiskAllocation PowerShell cmdlet 'lerini kullanabilirsiniz. Kurtarma noktası biriminde BMR koruması, beş gün bekletme için yaklaşık 6 GB gerektirir.
   * Çoğaltma birimi boyutunu 15 GB 'tan az azaltamaz.
   * Yedekleme sunucusu BMR veri kaynağının boyutunu hesaplamaz. Tüm sunucular için 30 GB olduğunu varsayar. Ortamınızda beklediğinizi BMR yedeklemelerinin boyutuna göre değeri değiştirin. Bir BMR yedeklemesinin boyutunu kabaca hesaplayabilirsiniz, tüm kritik birimlerde kullanılan alanın toplamı olarak hesaplayabilirsiniz. Kritik birimler = Önyükleme birimi + sistem birimi + Active Directory gibi sistem durumu verilerini barındıran birim.
 
-* Sistem durumu korumasından BMR korumasına geçiş yaparsanız, BMR koruması, *Kurtarma noktası biriminde*daha az alan gerektirir. Ancak, birimdeki ek alan geri kazanılır. Koruma grubunu değiştirme Sihirbazı 'nın **disk ayırmayı Değiştir** sayfasında birim boyutunu el ile küçültebilirsiniz. Veya Get-DatasourceDiskAllocation ve set-DatasourceDiskAllocation PowerShell cmdlet 'lerini kullanabilirsiniz.
+* Sistem durumu korumasından BMR korumasına geçiş yaparsanız, BMR koruması, *Kurtarma noktası biriminde*daha az alan gerektirir. Ancak, birimdeki ek alan geri kazanılır. Koruma grubunu değiştirme Sihirbazı 'nın **disk ayırmayı Değiştir** sayfasında birim boyutunu el ile küçültebilirsiniz. Ya da Get-DatasourceDiskAllocation ve Set-DatasourceDiskAllocation PowerShell cmdlet 'lerini kullanabilirsiniz.
 
-    Sistem durumu korumasından BMR korumasına geçiş yaparsanız BMR koruması, *Çoğaltma biriminde*daha fazla alan gerektirir. Birim otomatik olarak genişletilir. Varsayılan alan ayırmalarını değiştirmek istiyorsanız, modify-DiskAllocation PowerShell cmdlet 'ini kullanın.
+    Sistem durumu korumasından BMR korumasına geçiş yaparsanız BMR koruması, *Çoğaltma biriminde*daha fazla alan gerektirir. Birim otomatik olarak genişletilir. Varsayılan alan ayırmalarını değiştirmek istiyorsanız, Modify-DiskAllocation PowerShell cmdlet 'ini kullanın.
 
 * BMR korumasından sistem durumu korumasına geçiş yaparsanız, kurtarma noktası biriminde daha fazla alana ihtiyacınız vardır. Yedekleme sunucusu birimi otomatik olarak artırmayı deneyebilir. Depolama havuzunda yeterli alan yoksa bir hata oluşur.
 
@@ -121,11 +121,11 @@ Sistem durumu ve tam yedekleme için:
 
     Kısa süreli yedekleme, Azure Backup (kısa dönem veya uzun dönem) kullanarak diskten Azure 'a yedekleme seçeneğiyle her zaman ilk olarak diske yapılır. Buluta uzun süreli yedeklemeye alternatif olarak, bir tek başına bant cihazına veya yedekleme sunucusuna bağlı bant kitaplığına uzun süreli yedekleme ayarlanalım.
 
-1. **Kısa vadeli hedefleri seçin** sayfasında, diskte kısa süreli depolamaya nasıl yedekleme yapılacağını seçin:
+1. **Short-Term hedefleri seçin** sayfasında, diskte kısa süreli depolamaya nasıl yedekleme yapılacağını seçin:
     * **Bekletme aralığı**için, verilerin diskte ne kadar süreyle saklanacağını seçin.
     * **Eşitleme sıklığı**için diskte artımlı yedeklemenin ne sıklıkta çalıştırılacağını seçin. Bir yedekleme aralığı ayarlamak istemiyorsanız, **bir kurtarma noktasının hemen öncesinde**seçeneğini belirleyebilirsiniz. Yedekleme sunucusu, her kurtarma noktası zamanlanmadan hemen önce hızlı tam yedekleme çalıştırır.
 
-1. Verileri uzun vadeli depolama için bantta depolamak istiyorsanız, **uzun vadeli hedefleri belirtin** sayfasında, bant verilerinin ne kadar süreyle saklanacağını seçin (1-99 yıl).
+1. Verileri uzun vadeli depolama için banda depolamak istiyorsanız, **Long-Term hedeflerini belirtin** sayfasında, bant verilerinin ne kadar süreyle saklanacağını seçin (1-99 yıl).
     1. **Yedekleme sıklığı**için, bantta yedeklemenin ne sıklıkta çalıştırılacağını seçin. Sıklık, seçtiğiniz bekletme aralığına göre belirlenir:
         * Bekletme aralığı 1-99 yıl olduğunda, günlük, haftalık, iki haftada bir, aylık, üç aylık, yarı yıllık veya yıllık yedekleme yapabilirsiniz.
         * Bekletme aralığı 1 ila 11 ay olduğunda, günlük, haftalık, iki haftada bir veya aylık yedekleme yapabilirsiniz.

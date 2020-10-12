@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 12/13/2019
 ms.custom: devx-track-python
 ms.openlocfilehash: f9b81a7263dc9a1bdae9fd881519ac734da2c6bc
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88642206"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Işlevleri Python Geliştirici Kılavuzu
@@ -337,7 +337,7 @@ FUNCTIONS_WORKER_PROCESS_COUNT, uygulamanızın talebi karşılamak üzere ölç
 
 Yürütme sırasında bir işlevin çağırma bağlamını almak için, [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) bağımsız değişkenini imzasına ekleyin.
 
-Örnek:
+Örneğin:
 
 ```python
 import azure.functions
@@ -398,8 +398,8 @@ Azure Işlevleri aşağıdaki Python sürümlerini destekler:
 
 | İşlevler sürümü | Python <sup>*</sup> sürümleri |
 | ----- | ----- |
-| 3.x | 3,8<br/>3.7<br/>3,6 |
-| 2.x | 3.7<br/>3,6 |
+| 3.x | 3,8<br/>3.7<br/>3.6 |
+| 2.x | 3.7<br/>3.6 |
 
 <sup>*</sup>Resmi Cpyıthon dağıtımları
 
@@ -471,7 +471,7 @@ Ayrıca, ek paket dizin URL 'lerinizle temel kimlik doğrulama bilgilerini de ku
 
 #### <a name="install-local-packages"></a>Yerel Paketleri yükler
 
-Projeniz araçlarımızda herkese açık değil paketler kullanıyorsa, bunları \_ \_ App \_ \_ /. python_packages dizinine yerleştirerek uygulamanız için kullanılabilir hale getirebilirsiniz. Yayımlamadan önce, bağımlılıkları yerel olarak yüklemek için aşağıdaki komutu çalıştırın:
+Projeniz araçlarımızda herkese açık değil paketler kullanıyorsa, bunları \_ \_ uygulama \_ \_ /.python_packages dizinine yerleştirerek uygulamanız için kullanılabilir hale getirebilirsiniz. Yayımlamadan önce, bağımlılıkları yerel olarak yüklemek için aşağıdaki komutu çalıştırın:
 
 ```command
 pip install  --target="<PROJECT_DIR>/.python_packages/lib/site-packages"  -r requirements.txt

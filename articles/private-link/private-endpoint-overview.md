@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
 ms.openlocfilehash: 7456402605328592d4f5677767bcd985941173ec
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88639843"
 ---
-# <a name="what-is-azure-private-endpoint"></a>Azure özel uç noktası nedir?
+# <a name="what-is-azure-private-endpoint"></a>Azure Özel Uç Nokta nedir?
 
-Azure Özel Uç Noktası sizi Azure Özel Bağlantı ile desteklenen bir hizmete özel olarak ve güvenle bağlayan bir ağ arabirimidir. Özel uç nokta, sanal ağınızdan bir özel IP adresi kullanarak hizmeti sanal ağınıza etkin bir şekilde getiriyor. Hizmet, Azure depolama, Azure Cosmos DB, SQL gibi bir Azure hizmeti ya da kendi [özel bağlantı hizmetiniz](private-link-service-overview.md)olabilir.
+Azure Özel Uç Noktası sizi Azure Özel Bağlantı ile desteklenen bir hizmete özel olarak ve güvenle bağlayan bir ağ arabirimidir. Özel Uç Nokta, sanal ağınızdaki bir özel IP adresini kullanır ve bu sayede hizmeti sanal ağınıza getirir. Hizmet, Azure depolama, Azure Cosmos DB, SQL gibi bir Azure hizmeti ya da kendi [özel bağlantı hizmetiniz](private-link-service-overview.md)olabilir.
   
 ## <a name="private-endpoint-properties"></a>Özel uç nokta özellikleri 
  Özel bir uç nokta aşağıdaki özellikleri belirtir: 
@@ -74,7 +74,7 @@ Azure Özel Uç Noktası sizi Azure Özel Bağlantı ile desteklenen bir hizmete
 |**Azure Backup** | Microsoft. RecoveryServices/kasa    | kasa |
 |**Azure Event Hub** | Microsoft. EventHub/ad alanları    | ad alanı |
 |**Azure Service Bus** | Microsoft. ServiceBus/ad alanları | ad alanı |
-|**Azure Geçişi** | Microsoft. Relay/Namespace | ad alanı |
+|**Azure Relay** | Microsoft. Relay/Namespace | ad alanı |
 |**Azure Event Grid** | Microsoft. EventGrid/konuları    | konu başlığı |
 |**Azure Event Grid** | Microsoft. EventGrid/Domains    | etki alanı |
 |**Azure WebApps** | Microsoft. Web/siteler    | Siteler |

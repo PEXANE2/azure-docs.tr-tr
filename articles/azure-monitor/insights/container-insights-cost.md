@@ -4,10 +4,10 @@ description: Bu makalede, müşterilerin kullanımını ve ilişkili maliyetleri
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.openlocfilehash: a03e94fa7650c56a4d3b3beda3c27283329aebbe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84204659"
 ---
 # <a name="understand-monitoring-costs-for-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici 'nin izleme maliyetlerini anlama
@@ -117,7 +117,7 @@ Atanan Log Analytics çalışma alanında saat başına oluşturulan veri tablol
 |KubePodInventory | 1,5 |
 |Kubenodeınventory | 0,75 |
 |KubeServices | 0.13 |
-|Containerınventory | 3,6 |
+|Containerınventory | 3.6 |
 |KubeHealth | 0.1 |
 |KubeMonAgentEvents |0,005 |
 

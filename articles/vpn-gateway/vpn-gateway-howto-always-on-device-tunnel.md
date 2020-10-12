@@ -1,5 +1,5 @@
 ---
-title: Her zaman açık VPN tüneli yapılandırma
+title: Always-On VPN tüneli yapılandırma
 titleSuffix: Azure VPN Gateway
 description: Kalıcı cihaz tünellerini Azure 'a kurmak ve yapılandırmak için Windows 10 her zaman açık olan ağ geçitlerini nasıl kullanacağınızı öğrenin.
 services: vpn-gateway
@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 7688e42175b2b4e35b63979f5df25702f3bb869d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90986596"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>Always On VPN cihazı tüneli yapılandırma
@@ -31,7 +31,7 @@ VPN ağ geçidini, [noktadan sıteye VPN bağlantısı yapılandırma](vpn-gatew
 
 Profili kaldırmak için aşağıdaki komutu çalıştırın:
 
-![Ekran görüntüsünde, Remove-VpnConnection-Name Machineccerttest komutunu çalıştıran bir PowerShell penceresi gösterilir.](./media/vpn-gateway-howto-always-on-device-tunnel/cleanup.png)
+![Ekran görüntüsünde Remove-VpnConnection-Name Machineccerttest komutunu çalıştıran bir PowerShell penceresi gösterilmektedir.](./media/vpn-gateway-howto-always-on-device-tunnel/cleanup.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

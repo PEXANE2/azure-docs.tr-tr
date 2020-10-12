@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: c4ea8db464c7cae57b80837ced9f8886a8b3cf4a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87093026"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>Ayrılmış kapasiteye sahip Redsıs işlem kaynakları için Azure önbelleği için ön ödeme
@@ -54,7 +54,7 @@ Aşağıdaki tablo gerekli alanları açıklar.
 | Kapsam | Ayırma kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz: </br></br> **, Rezervasyon**indirimi, faturalandırma bağlamınızın içindeki aboneliklerde çalışan redsıs örnekleri Için Azure önbelleğine uygulanır. Kurumsal müşteriler için, paylaşılan kapsam kayıt içindedir ve kayıt dahilindeki tüm abonelikleri içerir. Kullandıkça Öde müşterileri için paylaşılan kapsam, hesap yöneticisi tarafından oluşturulan tüm Kullandıkça Öde abonelikleridir.</br></br> **Tek abonelik**, rezervasyon indirimi Bu abonelikteki redsıs örnekleri Için Azure önbelleğine uygulanır. </br></br> **Tek kaynak grubu**, ayırma indirimi seçili abonelikteki redsıs örnekleri ve bu abonelik içindeki seçili kaynak grubu Için Azure önbelleğine uygulanır.
 | Bölge | Reddir için Azure önbelleğinin kapsamına giren Azure bölgesi ayrılmış kapasite ayırması.
 | Fiyatlandırma katmanı | Redsıs sunucuları için Azure önbelleğinin hizmet katmanı.
-| Terim | Bir yıl veya üç yıl
+| Süre | Bir yıl veya üç yıl
 | Miktar | Reda için Azure önbelleği içinde satın alınan işlem kaynakları miktarı, ayrılmış kapasite ayırması. Bu miktar, seçili Azure bölgesindeki ve hizmet katmanındaki ayrılan ve fatura iskontosunu alacak olan bir dizi önbelleklerdir. Örneğin, Doğu ABD bölgesinde toplam önbellek kapasitesi 16 GB olan Redsıs sunucuları için bir Azure önbelleği çalıştırmayı planlıyorsanız veya, tüm önbellekler için avantajı en üst düzeye çıkarmak üzere 26 GB eşdeğerini sağlayan miktarı belirtirsiniz. Bu 1 P3 veya 2 P2 önbellekler olabilir.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Rezervasyonları iptal etme, değiştirme veya para iadesi alma

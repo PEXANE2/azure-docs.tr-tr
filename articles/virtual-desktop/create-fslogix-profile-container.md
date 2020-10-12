@@ -7,10 +7,10 @@ ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 6a9f2c62d8e7f17f6ea8377982c79fef3dfbb97c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88002825"
 ---
 # <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>Azure NetApp Files ve AD DS bir profil kapsayıcısı oluşturun
@@ -31,7 +31,7 @@ Bu kılavuzdaki yönergeler özellikle Windows sanal masaüstü kullanıcıları
 >[!NOTE]
 >Azure 'daki farklı FSLogix profili kapsayıcı depolama seçenekleri hakkında daha fazla bilgi arıyorsanız, bkz. [FSLogix profil kapsayıcıları Için depolama seçenekleri](store-fslogix-profile.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir konak havuzu için bir FSLogix profil kapsayıcısı oluşturabilmeniz için öncelikle şunları yapmanız gerekir:
 
@@ -166,7 +166,7 @@ Bu bölüm, bir [dosya paylaşımının kullanıldığı bir konak havuzu için 
 
 5. **Lisans hüküm ve koşullarını kabul**ediyorum seçeneğinin yanındaki onay kutusunu işaretleyin.
 
-6. **Yükle**’yi seçin.
+6. **Yükle**'yi seçin.
 
 7. Aracının yüklendiğini doğrulamak için **C: \\ Program Files \\ fslogix \\ uygulamalarına** gidin.
 

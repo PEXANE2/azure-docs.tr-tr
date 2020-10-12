@@ -8,10 +8,10 @@ ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: d9cf7b3cf996e41f90e3a40a6ee08d0fd51c8457
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85510336"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200 geçişi Azure Dosya Eşitleme
@@ -210,7 +210,7 @@ Paylaşımı/paylaşım gruplarını ortak bir köke veya birime geçirmeyi tama
 Bu kopyaların birkaçını paralel olarak çalıştırmayı deneyebilirsiniz. Tek seferde bir Azure dosya paylaşımının kapsamını işlemeyi öneririz.
 
 > [!WARNING]
-> StorSimple 'tan tüm verileri Windows Server 'a taşıdınız ve geçiş işlemi tamamlandıktan sonra: Azure portal ***Tüm*** eşitleme gruplarına geri dönün ve bulut katmanlaması birimi boş alan yüzdesi değerini önbellek kullanımına daha uygun bir şekilde ayarlayın, %20 deyin. 
+> StorSimple 'tan tüm verileri Windows Server 'a taşıdınız ve geçiş işlemi tamamlandıktan sonra: Azure portal ***Tüm***  eşitleme gruplarına geri dönün ve bulut katmanlaması birimi boş alan yüzdesi değerini önbellek kullanımına daha uygun bir şekilde ayarlayın, %20 deyin. 
 
 Bulut katmanlama birimi boş alan ilkesi, büyük olasılıkla birden çok sunucu uç noktası ile eşitlenmesi olan bir birim düzeyinde çalışır. Tek bir sunucu uç noktasında boş alanı ayarlamayı unutursanız, eşitleme en kısıtlayıcı kuralı uygulamaya devam eder ve %99 boş disk alanı tutmaya çalışır ve bu da, yerel önbelleğin bekleneceği gibi yapılmadığından bu işlemi gerçekleştirmeyecektir. Amacınız yalnızca nadiren erişilen, arşiv verileri içeren bir birimin ad alanına sahip olmadığı müddetçe.
 

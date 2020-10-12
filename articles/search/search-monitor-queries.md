@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: a5589a46a63437fb395db280222f8a9e84775df3
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935084"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de sorgu isteklerini izleme
@@ -39,10 +39,10 @@ Sorguların milisaniye cinsinden yürütülmesi yaygındır, bu nedenle yalnızc
 | Toplama Türü | Açıklama |
 |------------------|-------------|
 | Ortalama | Sorgu yürütmenin gerçekleştiği bir dakika içinde ortalama saniye sayısı.|
-| Count | Günlük için tek dakikalık aralıkta bulunan ölçüm sayısı. |
+| Sayı | Günlük için tek dakikalık aralıkta bulunan ölçüm sayısı. |
 | Maksimum | Bir dakika içinde saniyede kayıtlı en yüksek arama sorgusu sayısı. |
 | Minimum | Bir dakika içinde saniyede kaydedilen arama sorgularının en düşük sayısı.  |
-| Toplam | Dakika içinde yürütülen tüm sorguların toplamı.  |
+| Sum | Dakika içinde yürütülen tüm sorguların toplamı.  |
 
 Örneğin, bir dakika içinde şu şekilde bir düzene sahip olabilirsiniz: en yüksek bir ikinci yük olan SearchQueriesPerSecond için maksimum, ortalama yükün 58 saniye ve son olarak tek bir sorgu ile bir saniye, en az bir sorgu ile.
 
@@ -57,7 +57,7 @@ Hizmet genelinde, sorgu performansı arama gecikmesi (bir sorgunun tamamlandığ
 | Toplama Türü | Gecikme süresi | 
 |------------------|---------|
 | Ortalama | Milisaniye cinsinden ortalama sorgu süresi. | 
-| Count | Günlük için tek dakikalık aralıkta bulunan ölçüm sayısı. |
+| Sayı | Günlük için tek dakikalık aralıkta bulunan ölçüm sayısı. |
 | Maksimum | Örnekteki en uzun çalışan sorgu. | 
 | Minimum | Örnekteki en kısa çalışan sorgu.  | 
 | Toplam | Örnekteki tüm sorguların, Aralık içinde yürütülerek toplam yürütme süresi (bir dakika).  |
@@ -85,7 +85,7 @@ Kısıtlanmış sorguları onaylamak için, **Kısıtlanmış arama sorguları**
 | Toplama Türü | Azaltma |
 |------------------|-----------|
 | Ortalama | Aralık içinde bırakılan sorguların yüzdesi. |
-| Count | Günlük için tek dakikalık aralıkta bulunan ölçüm sayısı. |
+| Sayı | Günlük için tek dakikalık aralıkta bulunan ölçüm sayısı. |
 | Maksimum | Aralık içinde bırakılan sorguların yüzdesi.|
 | Minimum | Aralık içinde bırakılan sorguların yüzdesi. |
 | Toplam | Aralık içinde bırakılan sorguların yüzdesi. |

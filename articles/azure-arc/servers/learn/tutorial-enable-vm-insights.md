@@ -4,10 +4,10 @@ description: Azure Izleyici 'de karma makineden verileri nasıl toplayacağını
 ms.topic: tutorial
 ms.date: 09/23/2020
 ms.openlocfilehash: 97ab390570f434295a5aa836ef994640f6dc14f8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335424"
 ---
 # <a name="tutorial-monitor-a-hybrid-machine-with-azure-monitor-for-vms"></a>Öğretici: VM'ler için Azure İzleyici bir karma makineyi Izleme
@@ -28,7 +28,7 @@ Bu öğreticide, basit bir adım kümesini izleyerek VM'ler için Azure İzleyic
 
 ## <a name="sign-in-to-azure-portal"></a>Azure portalda oturum açın
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 ## <a name="enable-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici etkinleştir
 
@@ -40,15 +40,15 @@ Bu öğreticide, basit bir adım kümesini izleyerek VM'ler için Azure İzleyic
 
 1. **İzleme** bölümünün altındaki sol bölmeden **Öngörüler** ' i seçin ve ardından öğesini **etkinleştirin**.
 
-    :::image type="content" source="./media/tutorial-enable-vm-insights/insights-option.png" alt-text="Sol taraftaki menüden Öngörüler seçeneğini belirleyin" border="false":::
+    :::image type="content" source="./media/tutorial-enable-vm-insights/insights-option.png" alt-text="Tüm hizmetlerde yay etkin sunucular için arama yapın" border="false":::
 
 1. Azure Izleyici **öngörüleri ekleme** sayfasında, bir çalışma alanı oluşturmanız istenir. Bu öğreticide, zaten varsa, var olan bir Log Analytics çalışma alanı seçmenizi önermiyoruz. Kayıtlı bağlı makineniz ile aynı bölgede benzersiz ada sahip bir çalışma alanı olan varsayılanı seçin. Bu çalışma alanı oluşturulur ve sizin için yapılandırılır.
 
-    :::image type="content" source="./media/tutorial-enable-vm-insights/enable-vm-insights.png" alt-text="VM'ler için Azure İzleyici sayfasını etkinleştir" border="false":::
+    :::image type="content" source="./media/tutorial-enable-vm-insights/enable-vm-insights.png" alt-text="Tüm hizmetlerde yay etkin sunucular için arama yapın" border="false":::
 
 1. Yapılandırma gerçekleştirilirken durum iletileri alırsınız. Bu işlem, uzantıların bağlı makinenize yüklendiği birkaç dakika sürer.
 
-    :::image type="content" source="./media/tutorial-enable-vm-insights/onboard-vminsights-vm-portal-status.png" alt-text="VM'ler için Azure İzleyici ilerleme durumu iletisini etkinleştir" border="false":::
+    :::image type="content" source="./media/tutorial-enable-vm-insights/onboard-vminsights-vm-portal-status.png" alt-text="Tüm hizmetlerde yay etkin sunucular için arama yapın" border="false":::
 
     Bu tamamlandığında, makinenin başarıyla eklendi olduğunu ve öngörüleri başarıyla dağıtıldığını belirten bir ileti alırsınız.
 
@@ -56,11 +56,11 @@ Bu öğreticide, basit bir adım kümesini izleyerek VM'ler için Azure İzleyic
 
 Dağıtım ve yapılandırma tamamlandıktan sonra **Öngörüler**' i seçin ve ardından **performans** sekmesini seçin. Performans sekmesinde, sanal makinenizin Konuk işletim sisteminden toplanan bir grup performans sayacını gösterir. Daha fazla sayaç görüntülemek için aşağı kaydırın ve Log Analytics VM uzantısının makinede yüklendiği zamandan itibaren başlayan ortalama ve yüzdebirlik değeri görüntülemek için fareyi grafiğin üzerine taşıyın.
 
-:::image type="content" source="./media/tutorial-enable-vm-insights/insights-performance-charts.png" alt-text="Seçilen makine için performans grafiklerini VM'ler için Azure İzleyici" border="false":::
+:::image type="content" source="./media/tutorial-enable-vm-insights/insights-performance-charts.png" alt-text="Tüm hizmetlerde yay etkin sunucular için arama yapın" border="false":::
 
 Sanal makinede çalışan işlemlerin ve bağımlılıklarını gösteren haritalar özelliğini açmak için **eşle** ' yi seçin. Henüz açık değilse Özellik bölmesini açmak için **Özellikler** ' i seçin.
 
-:::image type="content" source="./media/tutorial-enable-vm-insights/insights-map.png" alt-text="Seçili makine için VM'ler için Azure İzleyici eşleme" border="false":::
+:::image type="content" source="./media/tutorial-enable-vm-insights/insights-map.png" alt-text="Tüm hizmetlerde yay etkin sunucular için arama yapın" border="false":::
 
 Sanal makineniz için süreçler ' ı genişletin. Ayrıntılarını görüntülemek ve bağımlılıklarını vurgulamak için işlemlerden birini seçin.
 

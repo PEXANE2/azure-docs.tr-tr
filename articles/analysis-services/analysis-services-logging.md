@@ -8,10 +8,10 @@ ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 7e1eab20a8e315b977c21de46dd4f6ea2fec9f5d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83701484"
 ---
 # <a name="setup-diagnostic-logging"></a>Tanılama günlüğüne kaydetmeyi ayarlama
@@ -43,7 +43,7 @@ Herhangi bir Analysis Services çözümünün önemli bir kısmı, sunucuların�
 |Komutlar     |  Komut başlangıcı       |
 |Komutlar     |  Komut sonu       |
 |Hatalar & uyarıları     |   Hata      |
-|Bul     |   Bulma bitişi      |
+|Bulma     |   Bulma bitişi      |
 |Bildirim     |    Bildirim     |
 |Oturum     |  Session Initialize       |
 |Kilitler    |  Çözül       |
@@ -154,7 +154,7 @@ Günlükler genellikle günlüğe kaydetme kurulumu için birkaç saat içinde k
 
 Ölçümler ve sunucu olayları, yan yana analize yönelik Log Analytics çalışma alanı kaynağınızın xEvents ile tümleşiktir. Log Analytics çalışma alanı, mimariniz genelinde tanılama günlüğü verilerinin bir bütünsel görünümünü sağlayan diğer Azure hizmetlerinden olayları alacak şekilde de yapılandırılabilir.
 
-Tanılama verilerinizi görüntülemek için, Log Analytics çalışma alanında, sol menüden **Günlükler** ' i açın.
+Tanılama verilerinizi görüntülemek için, Log Analytics çalışma alanında, sol menüden **Günlükler**  ' i açın.
 
 ![Azure portal günlük arama seçenekleri](./media/analysis-services-logging/aas-logging-open-log-search.png)
 
@@ -213,9 +213,9 @@ Kullanabileceğiniz yüzlerce sorgu vardır. Sorgular hakkında daha fazla bilgi
 
 ## <a name="turn-on-logging-by-using-powershell"></a>PowerShell kullanarak günlüğü açma
 
-Bu hızlı öğreticide, Analysis Service sunucunuz ile aynı abonelikte ve kaynak grubunda bir depolama hesabı oluşturursunuz. Ardından, yeni depolama hesabına çıkış göndererek tanılama günlüğünü açmak için set-AzDiagnosticSetting ' i kullanabilirsiniz.
+Bu hızlı öğreticide, Analysis Service sunucunuz ile aynı abonelikte ve kaynak grubunda bir depolama hesabı oluşturursunuz. Ardından, yeni depolama hesabına çıkış göndermek için tanılama günlüğünü açmak üzere Set-AzDiagnosticSetting kullanırsınız.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklara sahip olmanız gerekir:
 
 * Mevcut bir Azure Analysis Services sunucusu. Sunucu kaynağı oluşturma hakkında yönergeler için, bkz. [Azure Portal sunucu oluşturma](analysis-services-create-server.md)veya [PowerShell kullanarak Azure Analysis Services sunucusu oluşturma](analysis-services-create-powershell.md).
@@ -269,7 +269,7 @@ $account = Get-AzResource -ResourceGroupName awsales_resgroup `
 
 ### <a name="enable-logging"></a>Günlü kaydını etkinleştir
 
-Günlüğe kaydetmeyi etkinleştirmek için, set-AzDiagnosticSetting cmdlet 'ini yeni depolama hesabı, sunucu hesabı ve kategori değişkenleriyle birlikte kullanın. Aşağıdaki komutu çalıştırın, **-Enabled** bayrağını **$true**olarak ayarlar:
+Günlüğe kaydetmeyi etkinleştirmek için, yeni depolama hesabı, sunucu hesabı ve kategori değişkenleriyle birlikte Set-AzDiagnosticSetting cmdlet 'ini kullanın. Aşağıdaki komutu çalıştırın, **-Enabled** bayrağını **$true**olarak ayarlar:
 
 ```powershell
 Set-AzDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories Engine

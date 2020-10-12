@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
 ms.openlocfilehash: ef85b6f9e4595e7b4ff367da415fad777de68679
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88211300"
 ---
 # <a name="azure-cache-for-redis-development-faqs"></a>Redsıs geliştirme hakkında Azure önbelleği SSS
@@ -34,7 +34,7 @@ Bu bölümde aşağıdaki SSS ele alınmaktadır:
 Redsıs için Azure önbelleği 'ni kullanmaya başlamanın birkaç yolu vardır.
 
 * [.Net](cache-dotnet-how-to-use-azure-redis-cache.md), [ASP.net](cache-web-app-howto.md), [Java](cache-java-get-started.md), [Node.js](cache-nodejs-get-started.md)ve [Python](cache-python-get-started.md)için kullanılabilen öğreticilerimizden birine bakabilirsiniz.
-* [Redin için Microsoft Azure cache kullanarak yüksek performanslı uygulamalar oluşturmayı](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/)izleyebilirsiniz.
+* [Redin için Microsoft Azure cache kullanarak High-Performance uygulamalarının nasıl](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/)oluşturulacağını izleyebilirsiniz.
 * Redin 'in nasıl kullanılacağını görmek için, projenizin geliştirme diliyle eşleşen istemciler için istemci belgelerini kullanıma alabilirsiniz. Redsıs için Azure Cache ile kullanılabilen birçok Red, istemcisi vardır. Redsıs istemcilerinin bir listesi için bkz [https://redis.io/clients](https://redis.io/clients) ..
 
 Henüz bir Azure hesabınız yoksa şunları yapabilirsiniz:
@@ -64,7 +64,7 @@ Genellikle istemcinin varsayılan değerleri yeterlidir. İş yükünüze göre 
   * Uygulama için tek bir Connectionçoğullayıcı örneği kullanın. Bir bağlantı özelliği tarafından döndürülen tek bir örnek oluşturmak için bir LazyConnection kullanabilirsiniz, bu, [Connectionçoğullayıcı sınıfı kullanılarak önbelleğe bağlanma](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)bölümünde gösterilmiştir.
   * Özelliği, `ConnectionMultiplexer.ClientName` tanılama amacıyla bir uygulama örneği benzersiz adı olarak ayarlayın.
   * `ConnectionMultiplexer`Özel iş yükleri için birden çok örnek kullanın.
-      * Uygulamanızda farklı yükleme yaptıysanız bu modeli takip edebilirsiniz. Örnek:
+      * Uygulamanızda farklı yükleme yaptıysanız bu modeli takip edebilirsiniz. Örneğin:
       * Büyük anahtarlarla ilgilenirken bir Çoğullayıcı olabilir.
       * Küçük anahtarlarla ilgilenirken bir Çoğullayıcı olabilir.
       * Bağlantı zaman aşımları için farklı değerler ayarlayabilir ve kullandığınız her bir Connectionçoğullayıcı için yeniden deneme mantığı yapabilirsiniz.

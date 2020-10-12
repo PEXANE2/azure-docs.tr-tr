@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jingwang
 ms.openlocfilehash: 182e04625f829304168bfdefe000bb8797646c75
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87926901"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Teradata Vanndan veri kopyalama
@@ -44,7 +44,7 @@ Teradata Vana 'dan verileri desteklenen herhangi bir havuz veri deposuna kopyala
 - **Temel** veya **Windows** kimlik doğrulamasını kullanarak verileri kopyalama.
 - Teradata kaynağından paralel kopyalama. Ayrıntılar için [Teradata 'Dan paralel kopyalama](#parallel-copy-from-teradata) bölümüne bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -62,8 +62,8 @@ Teradata bağlı hizmeti aşağıdaki özellikleri destekler:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği **Teradata**olarak ayarlanmalıdır. | Yes |
-| Dizisi | Teradata örneğine bağlanmak için gereken bilgileri belirtir. Aşağıdaki örneklere bakın.<br/>Ayrıca Azure Key Vault bir parola yerleştirebilir ve `password` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için [Azure Key Vault 'de mağaza kimlik bilgilerini](store-credentials-in-key-vault.md) inceleyin. | Yes |
+| tür | Type özelliği **Teradata**olarak ayarlanmalıdır. | Evet |
+| Dizisi | Teradata örneğine bağlanmak için gereken bilgileri belirtir. Aşağıdaki örneklere bakın.<br/>Ayrıca Azure Key Vault bir parola yerleştirebilir ve `password` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için [Azure Key Vault 'de mağaza kimlik bilgilerini](store-credentials-in-key-vault.md) inceleyin. | Evet |
 | username | Teradata 'a bağlanmak için bir Kullanıcı adı belirtin. Windows kimlik doğrulaması kullanırken geçerlidir. | Hayır |
 | password | Kullanıcı adı için belirttiğiniz kullanıcı hesabı için bir parola belirtin. Ayrıca, [Azure Key Vault depolanan bir gizli dizi başvurusunu](store-credentials-in-key-vault.md)da seçebilirsiniz. <br>Windows kimlik doğrulaması kullandığınızda veya temel kimlik doğrulaması için Key Vault bir parolaya başvurulduğunda geçerlidir. | Hayır |
 | connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |Hayır |
@@ -73,8 +73,8 @@ Büyük/küçük harf olarak bağlantı dizesinde ayarlayabileceğiniz daha fazl
 | Özellik | Açıklama | Varsayılan değer |
 |:--- |:--- |:--- |
 | UseDataEncryption | Teradata veritabanıyla iletişimin tümünün şifrelenip şifrelenmeyeceğini belirtir. İzin verilen değerler 0 veya 1 ' dir.<br><br/>- **0 (devre dışı, varsayılan)**: yalnızca kimlik doğrulama bilgilerini şifreler.<br/>- **1 (etkin)**: sürücü ve veritabanı arasında geçirilen tüm verileri şifreler. | Hayır |
-| CharacterSet | Oturum için kullanılacak karakter kümesi. Ör., `CharacterSet=UTF16` .<br><br/>Bu değer, Kullanıcı tanımlı bir karakter kümesi veya aşağıdaki önceden tanımlanmış karakter kümelerinden biri olabilir: <br/>-ASCII<br/>-UTF8<br/>-UTF16<br/>-LATIN1252_0A<br/>-LATIN9_0A<br/>-LATIN1_0A<br/>-Shift-JıS (Windows, DOS uyumlu, KANJISJIS_0S)<br/>-EUC (UNIX ile uyumlu, KANJIEC_0U)<br/>-IBM ana bilgisayar (KANJIEBCDIC5035_0I)<br/>-KANJI932_1S0<br/>-BIG5 (TCHBIG5_1R0)<br/>-GB (SCHGB2312_1T0)<br/>-SCHINESE936_6R0<br/>-TCHINESE950_8R0<br/>-Networkkorece (HANGULKSC5601_2R4)<br/>-HANGUL949_7R0<br/>-ARABIC1256_6A0<br/>-CYRILLIC1251_2A0<br/>-HEBREW1255_5A0<br/>-LATIN1250_1A0<br/>-LATIN1254_7A0<br/>-LATIN1258_8A0<br/>-THAI874_4A0 | Varsayılan değer `ASCII` . |
-| MaxRespSize |SQL istekleri için en büyük yanıt arabelleği boyutu (kilobayt (KBs) cinsinden). Ör., `MaxRespSize=‭10485760‬` .<br/><br/>Teradata veritabanı sürüm 16,00 veya üzeri için en büyük değer 7361536 ' dir. Önceki sürümleri kullanan bağlantılarda en büyük değer 1048576 ' dir. | Varsayılan değer `65536` . |
+| CharacterSet | Oturum için kullanılacak karakter kümesi. Ör., `CharacterSet=UTF16` .<br><br/>Bu değer, Kullanıcı tanımlı bir karakter kümesi veya aşağıdaki önceden tanımlanmış karakter kümelerinden biri olabilir: <br/>-ASCII<br/>-UTF8<br/>-UTF16<br/>-LATIN1252_0A<br/>-LATIN9_0A<br/>-LATIN1_0A<br/>-Shift-JıS (Windows, DOS uyumlu, KANJISJIS_0S)<br/>-EUC (UNIX ile uyumlu, KANJIEC_0U)<br/>-IBM ana bilgisayar (KANJIEBCDIC5035_0I)<br/>-KANJI932_1S0<br/>-BIG5 (TCHBIG5_1R0)<br/>-GB (SCHGB2312_1T0)<br/>-SCHINESE936_6R0<br/>-TCHINESE950_8R0<br/>-Networkkorece (HANGULKSC5601_2R4)<br/>-HANGUL949_7R0<br/>-ARABIC1256_6A0<br/>-CYRILLIC1251_2A0<br/>-HEBREW1255_5A0<br/>-LATIN1250_1A0<br/>-LATIN1254_7A0<br/>-LATIN1258_8A0<br/>-THAI874_4A0 | Varsayılan değer `ASCII` olarak belirlenmiştir. |
+| MaxRespSize |SQL istekleri için en büyük yanıt arabelleği boyutu (kilobayt (KBs) cinsinden). Ör., `MaxRespSize=‭10485760‬` .<br/><br/>Teradata veritabanı sürüm 16,00 veya üzeri için en büyük değer 7361536 ' dir. Önceki sürümleri kullanan bağlantılarda en büyük değer 1048576 ' dir. | Varsayılan değer `65536` olarak belirlenmiştir. |
 
 **Temel kimlik doğrulaması kullanan örnek**
 
@@ -150,9 +150,9 @@ Teradata 'tan veri kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Veri kümesinin Type özelliği olarak ayarlanmalıdır `TeradataTable` . | Yes |
+| tür | Veri kümesinin Type özelliği olarak ayarlanmalıdır `TeradataTable` . | Evet |
 | database | Teradata örneğinin adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
-| table | Teradata örneğindeki tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
+| tablo | Teradata örneğindeki tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 **Örnek:**
 
@@ -173,7 +173,7 @@ Teradata 'tan veri kopyalamak için aşağıdaki özellikler desteklenir:
 
 > [!NOTE]
 >
-> `RelationalTable`tür veri kümesi hala destekleniyor. Ancak, yeni veri kümesini kullanmanızı öneririz.
+> `RelationalTable` tür veri kümesi hala destekleniyor. Ancak, yeni veri kümesini kullanmanızı öneririz.
 
 **Önceki yük:**
 
@@ -204,17 +204,17 @@ Teradata 'tan veri kopyalamak için, etkinlik **kaynağını** kopyalama bölüm
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği olarak ayarlanmalıdır `TeradataSource` . | Yes |
+| tür | Kopyalama etkinliği kaynağının Type özelliği olarak ayarlanmalıdır `TeradataSource` . | Evet |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. `"SELECT * FROM MyTable"` bunun bir örneğidir.<br>Bölümlenmiş yükü etkinleştirdiğinizde, sorgunuza karşılık gelen yerleşik bölüm parametrelerini de eklemeniz gerekir. Örnekler için, [Teradata 'Den paralel kopyalama](#parallel-copy-from-teradata) bölümüne bakın. | Hayır (veri kümesindeki tablo belirtilmişse) |
 | partitionOptions | Teradata 'tan veri yüklemek için kullanılan veri bölümleme seçeneklerini belirtir. <br>Değerlere izin ver: **none** (varsayılan), **hash** ve **DynamicRange**.<br>Bir bölüm seçeneği etkin olduğunda (yani, `None` ), Teradata 'den eşzamanlı olarak veri yükleme için paralellik derecesi [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) kopyalama etkinliğindeki ayar tarafından denetlenir. | Hayır |
 | partitionSettings | Veri bölümleme için ayarların grubunu belirtin. <br>Bölüm seçeneği olmadığında Uygula `None` . | Hayır |
-| partitionColumnName | Paralel kopya için Aralık bölümü veya karma bölümü tarafından kullanılacak kaynak sütunun adını belirtin. Belirtilmemişse, tablonun birincil dizini yeniden algılanır ve bölüm sütunu olarak kullanılır. <br>Bölüm seçeneği veya olduğunda geçerlidir `Hash` `DynamicRange` . Kaynak verileri, Hook `?AdfHashPartitionCondition` veya WHERE yan tümcesini almak için bir sorgu kullanırsanız `?AdfRangePartitionColumnName` . [Teradata 'Den paralel kopyalama](#parallel-copy-from-teradata) bölümündeki örneğe bakın. | Hayır |
+| partitionColumnName | Paralel kopya için Aralık bölümü veya karma bölümü tarafından kullanılacak kaynak sütunun adını belirtin. Belirtilmemişse, tablonun birincil dizini yeniden algılanır ve bölüm sütunu olarak kullanılır. <br>Bölüm seçeneği veya olduğunda geçerlidir `Hash` `DynamicRange` . Kaynak verileri, Hook `?AdfHashPartitionCondition` veya WHERE yan tümcesini almak için bir sorgu kullanırsanız  `?AdfRangePartitionColumnName` . [Teradata 'Den paralel kopyalama](#parallel-copy-from-teradata) bölümündeki örneğe bakın. | Hayır |
 | Partitionüstsınırı | Verilerin kopyalanacağı bölüm sütununun en büyük değeri. <br>Bölüm seçeneği olduğunda Uygula `DynamicRange` . Kaynak verileri almak için sorgu kullanırsanız `?AdfRangePartitionUpbound` WHERE yan tümcesinde kanca. Bir örnek için, [Teradata 'Den paralel kopyalama](#parallel-copy-from-teradata) bölümüne bakın. | Hayır |
 | Partitionalme sınırı | Verilerin kopyalanacağı bölüm sütununun en küçük değeri. <br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Kaynak verileri almak için bir sorgu kullanırsanız, `?AdfRangePartitionLowbound` WHERE yan tümcesinde kanca. Bir örnek için, [Teradata 'Den paralel kopyalama](#parallel-copy-from-teradata) bölümüne bakın. | Hayır |
 
 > [!NOTE]
 >
-> `RelationalSource`tür kopyalama kaynağı hala destekleniyor, ancak Teradata 'den yeni yerleşik paralel yükü (Bölüm seçenekleri) desteklemiyor. Ancak, yeni veri kümesini kullanmanızı öneririz.
+> `RelationalSource` tür kopyalama kaynağı hala destekleniyor, ancak Teradata 'den yeni yerleşik paralel yükü (Bölüm seçenekleri) desteklemiyor. Ancak, yeni veri kümesini kullanmanızı öneririz.
 
 **Örnek: bölüm olmadan temel sorgu kullanarak veri kopyalama**
 
@@ -329,7 +329,7 @@ Teradata 'tan veri kopyaladığınızda aşağıdaki eşlemeler geçerlidir. Kop
 | Süre (zaman damgası) |Desteklenmez. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
 | Süre (saat dilimiyle zaman damgası) |Desteklenmez. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
 | Small |Int16 |
-| Zaman |TimeSpan |
+| Süre |TimeSpan |
 | Saat dilimiyle saat |TimeSpan |
 | Zaman damgası |DateTime |
 | Saat dilimi Ile zaman damgası |DateTime |

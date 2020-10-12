@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/18/2018
 ms.author: alkohli
 ms.openlocfilehash: 6f8ec56cc5747921ee786bd4c069070ff865f9fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85507934"
 ---
 # <a name="install-update-11-on-your-storsimple-virtual-array"></a>StorSimple Sanal diziniz üzerinde 1,1 güncelleştirmesini yükler
@@ -32,11 +32,11 @@ StorSimple Sanal dizinizi güncel tutmak için yazılım güncelleştirmelerini 
 > [!IMPORTANT]
 > - Güncelleştirme 1,1, cihazınızdaki **10.0.10307.0** yazılım sürümüne karşılık gelir. Bu güncelleştirmedeki yenilikler hakkında daha fazla bilgi için [güncelleştirme 1,1 sürüm notları](storsimple-virtual-array-update-11-release-notes.md)' na gidin.
 >
-> - Bir güncelleştirme veya Düzeltme yüklemenin cihazınızı yeniden başlatdığını aklınızda bulundurun. StorSimple Sanal dizisi tek düğümlü bir cihaz olduğu için, devam eden g/ç işlemi bozulur ve cihazınız kesinti yaşar.
+> - Güncelleştirme veya düzeltme yüklendiğinde cihazınızın yeniden başlatıldığını aklınızda bulundurun. StorSimple Sanal dizisi tek düğümlü bir cihaz olduğu için, devam eden g/ç işlemi bozulur ve cihazınız kesinti yaşar.
 >
 > - Güncelleştirme 1,1, yalnızca sanal dizi güncelleştirme 1 çalıştırıyorsa Azure portal kullanılabilir. Güncelleştirme 0,6 sürümlerini çalıştıran sanal diziler için, önce güncelleştirme 1,0 ' i yüklemeli ve ardından güncelleştirme 1,1 ' i uygulamanız gerekir.
 
-## <a name="use-the-azure-portal"></a>Azure portalı kullanma
+## <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
 Güncelleştirme 0,2 ve sonraki bir sürümü çalıştırıyorsanız, Azure portal aracılığıyla güncelleştirmeleri yüklemenizi öneririz. Portal yordamı, kullanıcının güncelleştirmeleri taramasını, indirmesini ve yüklemesini gerektirir. Sanal diziniz çalıştığı yazılım sürümüne bağlı olarak, Azure portal aracılığıyla güncelleştirme uygulamak farklıdır.
 
@@ -103,7 +103,7 @@ Bu yordamın tamamlandığı 4 dakika sürer. Güncelleştirmeyi veya düzeltmey
    
     ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-11/update1m.png)
 
-2. **Güncelleştirme dosyası yolu**' nda, güncelleştirme veya düzeltme için dosya adını girin. Bir ağ paylaşımında yer alıyorsa güncelleştirme veya düzeltme yükleme dosyasına da gidebilirsiniz. **Uygula**'ya tıklayın.
+2. **Güncelleştirme dosyası yolu**' nda, güncelleştirme veya düzeltme için dosya adını girin. Bir ağ paylaşımında yer alıyorsa güncelleştirme veya düzeltme yükleme dosyasına da gidebilirsiniz. **Uygula**’ya tıklayın.
    
     ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-11/update2m.png)
 

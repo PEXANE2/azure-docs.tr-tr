@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 02/05/2018
 ms.author: jejiang
 ms.openlocfilehash: a99196cfad7abad38408c847a8a0b64ffe95fff5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85508801"
 ---
 # <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>Depolama Gezgini kullanarak Azure Data Lake Storage 1. kaynaklarını yönetme
@@ -19,7 +19,7 @@ ms.locfileid: "85508801"
 
 Başka bir avantaj de Data Lake Storage 1. verilerini yönetmek için abonelik iznine sahip olmanız gerekmez. Depolama Gezgini, bir kullanıcı izin verdiği sürece, Data Lake Storage 1. yolunu **yerel ve bağlı** düğüme ekleyebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için şu önkoşullar gereklidir:
 
@@ -142,7 +142,7 @@ Aşağıdaki öğeler Data Lake Storage 1. hesap içindeki kaynakların nasıl y
 1. İndirmek istediğiniz klasörleri veya dosyaları seçin.
 2. Ana bölmedeki araç çubuğunda **İndir**’i seçin.
 3. **İndirilen dosyaların kaydedileceği klasörü seçin** iletişim kutusunda, konumu ve adı belirtin.
-4. **Kaydet**'i seçin.
+4. **Kaydet**’i seçin.
 
 ### <a name="open-a-folder-or-file-from-your-local-computer"></a>Yerel bilgisayarınızdan klasör veya dosya açma
 
