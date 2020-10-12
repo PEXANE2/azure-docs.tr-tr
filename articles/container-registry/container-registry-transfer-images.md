@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
 ms.openlocfilehash: ed848380457862fee506bf5111789e5d44545bdd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91253420"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Yapıtları başka bir kayıt defterine aktar
@@ -30,7 +30,7 @@ Bu özellik **Premium** kapsayıcı kayıt defteri hizmet katmanında kullanıla
 > [!IMPORTANT]
 > Bu özellik şu anda önizleme sürümündedir. Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * **Kapsayıcı kayıt defterleri** -aktarılacak yapıtlara ve hedef kayıt defterine sahip mevcut bir kaynak kayıt defterine ihtiyacınız vardır. ACR aktarımı, fiziksel olarak bağlantısı kesilen bulutlar arasında hareket etmek için tasarlanmıştır. Test için kaynak ve hedef kayıt defterleri aynı veya farklı bir Azure aboneliğinde, Active Directory kiracısında veya bulutta olabilir. Bir kayıt defteri oluşturmanız gerekiyorsa bkz. [hızlı başlangıç: Azure CLI kullanarak özel kapsayıcı kayıt defteri oluşturma](container-registry-get-started-azure-cli.md). 
 * **Depolama hesapları** -bir abonelikte ve tercih ettiğiniz konumda kaynak ve hedef depolama hesapları oluşturun. Test amacıyla, kaynak ve hedef kayıt defterlerinden aynı abonelik veya abonelikleri kullanabilirsiniz. Platformlar arası senaryolar için genellikle her bulutta ayrı bir depolama hesabı oluşturursunuz. Gerekirse, [Azure CLI](../storage/common/storage-account-create.md?tabs=azure-cli) veya diğer araçlarla depolama hesapları oluşturun. 

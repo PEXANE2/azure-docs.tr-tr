@@ -9,10 +9,10 @@ ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 4f7ec9bbf7877d8067b3d8b1566a5cd2c2075281
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86050499"
 ---
 Nesnelerin İnterneti (IoT), dünya çapındaki işletmeler için benzersiz güvenlik, gizlilik ve uyumluluk sorunları doğurur. Bu sorunların yazılım etrafında ve nasıl uygulandıklarını gösteren geleneksel siber teknolojisinin aksine, IoT ve fiziksel çalışma LDS yakınlarından ne olur? IoT çözümlerini korumak, cihazların güvenli şekilde sağlanması, bu cihazlar ile bulut arasında güvenli bağlantı sağlanması ve işlem ve depolama sırasında buluttaki veri korumasının güvenliğini sağlamayı gerektirir. Bununla birlikte, bu işlevselliğe göre çalışarak kaynak kısıtlı cihazlar, dağıtımların coğrafi dağıtımı ve bir çözüm içinde çok sayıda cihaz vardır.

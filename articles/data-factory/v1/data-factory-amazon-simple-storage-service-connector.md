@@ -13,10 +13,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b23be9901df7ca435f412d9f49e1a7ad88382ade
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84711927"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Amazon Simple Storage Service 'ten veri taşıma
@@ -35,7 +35,7 @@ Amazon S3 'ten desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirs
 Amazon S3 öğesinden veri kopyalamak için aşağıdaki izinlerin verildiğinden emin olun:
 
 * `s3:GetObject``s3:GetObjectVersion`Amazon S3 nesne işlemleri için.
-* `s3:ListBucket`Amazon S3 demet Işlemleri için. Data Factory kopyalama Sihirbazı ' nı kullanıyorsanız `s3:ListAllMyBuckets` de gereklidir.
+* `s3:ListBucket` Amazon S3 demet Işlemleri için. Data Factory kopyalama Sihirbazı ' nı kullanıyorsanız `s3:ListAllMyBuckets` de gereklidir.
 
 Amazon S3 izinlerinin tam listesi hakkında daha fazla bilgi için bkz. [ilke Içinde Izinleri belirtme](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html).
 
@@ -71,7 +71,7 @@ Bağlı hizmet bir veri deposunu veri fabrikasına bağlar. Amazon S3 veri depon
 >Bu bağlayıcı, veri Amazon S3 ' dan veri kopyalamak için ıAM hesabının erişim anahtarlarını gerektirir. [Geçici güvenlik kimlik bilgileri](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) desteklenmiyor.
 >
 
-Örnek aşağıda verilmiştir:
+Aşağıda bir örnek verilmiştir:
 
 ```json
 {

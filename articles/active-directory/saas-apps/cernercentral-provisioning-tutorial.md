@@ -11,19 +11,19 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.openlocfilehash: 58b991f5b229d924bc933ff34987db24bc895e10
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88529874"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Cerner Central 'ı yapılandırma
 
 Bu öğreticinin amacı, Azure AD 'den Cerner merkezi 'nde Kullanıcı hesabını otomatik olarak sağlamak ve devre dışı bırakmak için Cerner Central ve Azure AD 'de gerçekleştirmeniz gereken adımları gösteriyoruz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu varsayar:
+Bu öğreticide anlatılan senaryoda aşağıdakilere sahip olduğunuz kabul edilmiştir:
 
 * Azure Active Directory kiracısı
 * Bir Cerner merkezi kiracısı
@@ -52,7 +52,7 @@ Sağlama hizmetini yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki 
 Bu bölümde, Azure AD 'nizi Cerner 'ın SCıM Kullanıcı hesabı sağlama API 'sini kullanarak Cerner merkezi 'nin Kullanıcı Roster 'sine bağlama ve sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup atamasını temel alan Cerner merkezi 'nde atanan kullanıcı hesaplarını oluşturmak, güncelleştirmek ve devre dışı bırakmak üzere yapılandırmak için kılavuzluk eder.
 
 > [!TIP]
-> Ayrıca, [Azure Portal](https://portal.azure.com)' de sağlanan yönergeleri Izleyerek, Cerner Central için SAML tabanlı çoklu oturum açmayı da tercih edebilirsiniz. Çoklu oturum açma özelliği otomatik sağlanmadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlayabilse de. Daha fazla bilgi için bkz. [Cerner merkezi çoklu oturum açma öğreticisi](cernercentral-tutorial.md).
+> Ayrıca, [Azure Portal](https://portal.azure.com)sağlanan yönergeleri Izleyerek, Cerner Central için SAML tabanlı tek Sign-On de seçebilirsiniz. Çoklu oturum açma özelliği otomatik sağlanmadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlayabilse de. Daha fazla bilgi için bkz. [Cerner merkezi çoklu oturum açma öğreticisi](cernercentral-tutorial.md).
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-cerner-central-in-azure-ad"></a>Azure AD 'de Cerner Central 'a otomatik Kullanıcı hesabı sağlamayı yapılandırmak için:
 
@@ -88,7 +88,7 @@ Cerner merkezine Kullanıcı hesapları sağlamak için, Cerner 'den bir Cerner 
 
 7. Cerner Central örneğinizi seçin, sonra **sağlama** sekmesini seçin.
 
-8. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+8. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
    ![Cerner merkezi sağlama](./media/cernercentral-provisioning-tutorial/Cerner.PNG)
 
@@ -122,7 +122,7 @@ Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi i�
 
 * [Cerner Central: Azure AD kullanarak kimlik verileri yayımlama](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD)
 * [Öğretici: Azure Active Directory ile çoklu oturum açma için Cerner Central 'ı yapılandırma](cernercentral-tutorial.md)
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı hazırlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar

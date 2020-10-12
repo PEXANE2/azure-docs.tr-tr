@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 08/26/2019
 ms.author: juliako
 ms.openlocfilehash: ceb01c97ec50f4e2a7aa146448c3da662d4314ba
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89258359"
 ---
 # <a name="use-azure-cli-to-create-an-azure-ad-app-and-configure-it-to-access-media-services-api"></a>Azure CLı kullanarak bir Azure AD uygulaması oluşturun ve Media Services API 'sine erişecek şekilde yapılandırın
@@ -67,7 +67,7 @@ Bu örnekte, **kapsam** Media Services hesabı için tam kaynak yoludur. Ancak, 
 
 Daha fazla bilgi için bkz [. Azure CLI Ile Azure hizmet sorumlusu oluşturma](/cli/azure/create-an-azure-service-principal-azure-cli)
 
-Ayrıca bkz. [Azure komut satırı arabirimiyle rol tabanlı Access Control yönetme](../../role-based-access-control/role-assignments-cli.md). 
+Ayrıca bkz. [Azure komut satırı arabirimiyle Role-Based Access Control yönetme](../../role-based-access-control/role-assignments-cli.md). 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

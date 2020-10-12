@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 95f4221b390071ad149699608d3937b9af4e1d5d
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90527012"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Azure Active Directory bir passwordless kimlik doğrulama dağıtımı planlayın
@@ -61,7 +61,7 @@ Microsoft 'un parolasız kimlik doğrulama yöntemleri farklı senaryolara olana
 
 Kuruluşunuz için en iyi yöntemi seçme hakkında daha fazla bilgi için bkz. [passwordless yöntemine karar verme](./concept-authentication-passwordless.md#choose-a-passwordless-method).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Kuruluşların, passwordless dağıtımına başlamadan önce aşağıdaki önkoşulları karşılaması gerekir:
 
@@ -118,7 +118,7 @@ Son kullanıcılara yönelik iletişimlerinizin aşağıdaki bilgileri içermesi
 - [Microsoft Authenticator uygulamasına kaydetme](howto-authentication-passwordless-phone.md)
 - [Telefonunuzla oturum açma](../user-help/user-help-auth-app-sign-in.md)
 
-Microsoft, iletişimlerinizin taslağını oluşturmanıza yardımcı olmak için Multi-Factor Authentication [iletişim şablonları](https://aka.ms/mfatemplates), self servis parola sıfırlama (SSPR) [iletişim şablonları](https://www.microsoft.com/download/details.aspx?id=56768)ve [Son Kullanıcı belgeleri](../user-help/security-info-setup-signin.md) sağlar. Kullanıcıları [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) , bu sayfadaki **güvenlik bilgileri** bağlantılarını seçerek doğrudan kaydettirmek üzere gönderebilirsiniz.
+Microsoft, iletişimlerinizin taslağını sağlamak için Multi-Factor Authentication [iletişim şablonları](https://aka.ms/mfatemplates), Self-Service parola sıfırlama (SSPR) [iletişim şablonları](https://www.microsoft.com/download/details.aspx?id=56768)ve [Son Kullanıcı belgeleri](../user-help/security-info-setup-signin.md) sağlar. Kullanıcıları [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) , bu sayfadaki **güvenlik bilgileri** bağlantılarını seçerek doğrudan kaydettirmek üzere gönderebilirsiniz.
 
 ### <a name="plan-to-pilot"></a>Pilot planı
 

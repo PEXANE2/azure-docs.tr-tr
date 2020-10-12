@@ -8,10 +8,10 @@ ms.date: 05/05/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: b60cf34e8efed2ed63b6e35cfaf7445edb701610
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82838510"
 ---
 # <a name="frequently-asked-questions-about-analysis-services-network-connectivity"></a>Analysis Services ağ bağlantısı hakkında sık sorulan sorular
@@ -48,4 +48,4 @@ Bu makalede depolama hesaplarına, veri kaynaklarına, güvenlik duvarlarını v
 
 [Şirket içi veri ağ geçidi yükleyip yapılandırma](analysis-services-gateway-install.md)   
 [Şirket içi veri ağ geçidi ile şirket içi veri kaynaklarına bağlanma](analysis-services-gateway.md)   
-[Azure sanal ağı (VNet) üzerinde veri kaynakları için ağ geçidi kullanma](analysis-services-vnet-gateway.md)
+[Azure Sanal Ağı üzerindeki veri kaynakları için ağ geçidi kullanma](analysis-services-vnet-gateway.md)

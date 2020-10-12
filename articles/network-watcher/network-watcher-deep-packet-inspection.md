@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 2a4debda712636e577639b84845dda6b9b4228a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84725064"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Azure ağ Izleyicisi ile paket incelemesi
@@ -41,7 +41,7 @@ Bu senaryoda, iki uç nokta arasında gerçekleşen bir Iletim Denetim Protokol�
 
 TCP bağlantısı oluşturulduğunda, bağlantıda gönderilen ilk üç paket, genellikle üç yönlü el sıkışma olarak adlandırılan bir düzene uyar. Bu el sıkışma içinde gönderilen ilk iki paket, istemciden gelen bir başlangıç isteği ve sunucudan bir yanıt inceleyerek, bu bağlantı oluşturulduğunda gecikme süresini hesaplayabiliriz. Bu gecikme süresi, gidiş dönüş süresi (RTT) olarak adlandırılır. TCP protokolü ve üç yönlü el sıkışma hakkında daha fazla bilgi için aşağıdaki kaynağa bakın. [https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip](https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip)
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>1. Adım
 
 WireShark Başlat
 
@@ -75,7 +75,7 @@ Azure 'da dağıttığınız bir sanal makine örneği üzerinde çalışan bir�
 
 Bu örnekte, makinenizde çalışan bir uygulamadan yetkisiz iletişimi gösterebilen istenmeyen protokoller için önceki bir çalıştırılan paket yakalamayı gözden geçiririz.
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>1. Adım
 
 Önceki senaryoda aynı yakalamanın kullanılması **istatistik**  >  **protokol hiyerarşisi** ' ne tıklayın.
 
@@ -91,7 +91,7 @@ Aşağıdaki ekran yakalamada görebileceğiniz gibi, eşler arası dosya payla�
 
 Trafik türlerini, uç noktaları ve üzerinden iletilen bağlantı noktalarını anlamak, ağınızdaki uygulamaları ve kaynakları izlerken veya sorunlarını giderirken önemli bir öneme sahiptir. Yukarıdaki bir paket yakalama dosyasını kullanarak, sanal makinenizin iletişim kurduğu en üst hedefleri ve kullanılan bağlantı noktalarını hızlıca öğreniyoruz.
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>1. Adım
 
 Önceki senaryoda aynı yakalamanın kullanılması, **istatistik**  >  **IPv4 istatistik**  >  **hedefleri ve bağlantı noktaları** ' na tıklayın.
 

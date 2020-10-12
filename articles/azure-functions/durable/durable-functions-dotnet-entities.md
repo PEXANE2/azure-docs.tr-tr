@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
 ms.openlocfilehash: d480b8db69b34eda7ca1ea8e1b2755179f9c673f
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88055182"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>.NET 'teki dayanıklı varlıklara Geliştirici Kılavuzu
@@ -267,7 +267,7 @@ Ayrıca bazı ek kurallar uyguladık:
 * Varlık arabirimleri yalnızca yöntemleri tanımlamalıdır.
 * Varlık arabirimleri genel parametreler içermemelidir.
 * Varlık Arabirim yöntemlerinin birden fazla parametresi olmamalıdır.
-* Varlık arabirimi yöntemleri,, `void` `Task` veya döndürmelidir`Task<T>` 
+* Varlık arabirimi yöntemleri,, `void` `Task` veya döndürmelidir `Task<T>` 
 
 Bu kurallardan herhangi biri ihlal edilirse, arabirim, `InvalidOperationException` veya için tür bağımsız değişkeni olarak kullanıldığında çalışma zamanında oluşturulur `SignalEntity` `CreateProxy` . Özel durum iletisi hangi kuralın bozulduğunu açıklar.
 

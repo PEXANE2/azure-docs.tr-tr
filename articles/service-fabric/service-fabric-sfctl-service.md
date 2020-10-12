@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 426220f38e6ddfaaf8b24bf4f7d34473d881ae56
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86245611"
 ---
 # <a name="sfctl-service"></a>sfctl service
@@ -22,7 +22,7 @@ Hizmeti, hizmet türlerini ve hizmet paketlerini oluşturun, silin ve yönetin.
 | uygulama adı | Bir hizmet için Service Fabric uygulamasının adını alır. |
 | kod-paket-listesi | Bir Service Fabric düğümünde dağıtılan kod paketlerinin listesini alır. |
 | oluşturmaya | Belirtilen Service Fabric hizmetini oluşturur. |
-| silme | Mevcut bir Service Fabric hizmetini siler. |
+| delete | Mevcut bir Service Fabric hizmetini siler. |
 | dağıtılan tür | Service Fabric kümesindeki bir düğüme dağıtılan uygulamanın belirtilen hizmet türüyle ilgili bilgileri alır. |
 | dağıtılan tür listesi | Service Fabric kümesindeki bir düğümde dağıtılan uygulamalardan hizmet türleriyle ilgili bilgileri içeren listeyi alır. |
 | açıklama | Mevcut bir Service Fabric hizmetinin açıklamasını alır. |
@@ -46,7 +46,7 @@ Bir hizmet için Service Fabric uygulamasının adını alır.
 
 Belirtilen hizmet için uygulamanın adını alır. Bir 404 FABRIC_E_SERVICE_DOES_NOT_EXIST hatası, belirtilen hizmet KIMLIĞINE sahip bir hizmet yoksa döndürülür.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -68,7 +68,7 @@ Bir Service Fabric düğümünde dağıtılan kod paketlerinin listesini alır.
 
 Verilen uygulama için bir Service Fabric düğümünde dağıtılan kod paketlerinin listesini alır.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -91,7 +91,7 @@ Verilen uygulama için bir Service Fabric düğümünde dağıtılan kod paketle
 ## <a name="sfctl-service-create"></a>sfctl hizmeti oluşturma
 Belirtilen Service Fabric hizmetini oluşturur.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -141,7 +141,7 @@ Mevcut bir Service Fabric hizmetini siler.
 
 Silinmeden önce bir hizmetin oluşturulması gerekir. Varsayılan olarak, Service Fabric hizmet çoğaltmalarını düzgün bir şekilde kapatmaya çalışır ve ardından hizmeti silmez. Ancak, hizmet çoğaltmayı düzgün bir şekilde kapatmada sorun yaşadığı takdirde, silme işlemi uzun zaman alabilir veya takılmış olabilir. Düzgün kapatma sırasını atlamak için isteğe bağlı ForceRemove bayrağını kullanın ve hizmeti zorla silin.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -164,7 +164,7 @@ Service Fabric kümesindeki bir düğüme dağıtılan uygulamanın belirtilen h
 
 Service Fabric kümesindeki bir düğümde dağıtılan uygulamalardan belirli bir hizmet türü hakkındaki bilgileri içeren listeyi alır. Yanıt, hizmet türünün adını, kayıt durumunu, onu kaydettiğiniz kod paketini ve hizmet paketinin etkinleştirme KIMLIĞINI içerir. Her giriş, etkinleştirme KIMLIĞIYLE ayırt edilecek bir hizmet türünün bir etkinleştirmesini temsil eder.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -189,7 +189,7 @@ Service Fabric kümesindeki bir düğümde dağıtılan uygulamalardan hizmet t�
 
 Service Fabric kümesindeki bir düğümde dağıtılan uygulamalardan hizmet türleriyle ilgili bilgileri içeren listeyi alır. Yanıt, hizmet türünün adını, kayıt durumunu, onu kaydettiğiniz kod paketini ve hizmet paketinin etkinleştirme KIMLIĞINI içerir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -213,7 +213,7 @@ Mevcut bir Service Fabric hizmetinin açıklamasını alır.
 
 Mevcut bir Service Fabric hizmetinin açıklamasını alır. Açıklaması alınabilmesi için önce bir hizmetin oluşturulması gerekir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -235,7 +235,7 @@ Service Fabric düğümüne dağıtılan kapsayıcının kapsayıcı günlükler
 
 Verilen kod paketi için bir Service Fabric düğümüne dağıtılan kapsayıcının kapsayıcı günlüklerini alır.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -262,7 +262,7 @@ Belirtilen Service Fabric hizmetinin sistem durumunu alır.
 
 Belirtilen hizmetin sistem durumu bilgilerini alır. Hizmette bildirilen sistem durumu olaylarının toplanmasını sistem durumuna göre filtrelemek için EventsHealthStateFilter ' i kullanın. Döndürülen bölümlerin koleksiyonunu filtrelemek için PartitionsHealthStateFilter kullanın. Sistem durumu deposunda mevcut olmayan bir hizmet belirtirseniz, bu istek bir hata döndürür.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -287,7 +287,7 @@ Service Fabric uygulamasına ait olan belirli hizmet hakkındaki bilgileri alır
 
 Belirtilen Service Fabric uygulamasına ait belirtilen hizmet hakkındaki bilgileri döndürür.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -310,7 +310,7 @@ Uygulama KIMLIĞI tarafından belirtilen uygulamaya ait tüm hizmetlerle ilgili 
 
 Uygulama KIMLIĞI tarafından belirtilen uygulamaya ait tüm hizmetlerle ilgili bilgileri döndürür.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -334,7 +334,7 @@ Hizmet türünü açıklayan bildirimi alır.
 
 Hizmet türünü açıklayan bildirimi alır. Yanıt, hizmet bildirimi XML 'sini bir dize olarak içerir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -356,7 +356,7 @@ Hizmet türünü açıklayan bildirimi alır. Yanıt, hizmet bildirimi XML 'sini
 ## <a name="sfctl-service-package-deploy"></a>sfctl hizmeti paketi-dağıt
 Belirtilen hizmet bildirimiyle ilişkili paketleri belirtilen düğümdeki görüntü önbelleğine indirir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -382,7 +382,7 @@ Bir Service Fabric düğümü ve uygulaması için dağıtılan belirli bir uygu
 
 Service Fabric düğümüne dağıtılan belirli bir uygulama için bir hizmet paketinin sistem durumu hakkındaki bilgileri alır. Sistem durumuna bağlı olarak dağıtılan hizmet paketinde raporlanan HealthEvent nesnelerinin toplanmasını sağlamak için EventsHealthStateFilter ' u kullanın.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -407,7 +407,7 @@ Belirtilen adı tam olarak eşleşen bir Service Fabric düğümünde dağıtıl
 
 Verilen uygulama için bir Service Fabric düğümünde dağıtılan hizmet paketleriyle ilgili bilgileri döndürür. Bu sonuçlar, adı parametresi olarak belirtilen hizmet paketi adı ile eşleşen hizmet paketlerindeklerdir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -431,7 +431,7 @@ Bir Service Fabric düğümünde dağıtılan hizmet paketlerinin listesini alı
 
 Verilen uygulama için bir Service Fabric düğümünde dağıtılan hizmet paketleriyle ilgili bilgileri döndürür.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -454,7 +454,7 @@ Service Fabric kümesine, şu anda yetersayı kaybından takılmış olan hizmet
 
 Service Fabric kümesine, şu anda yetersayı kaybından takılmış olan hizmeti kurtarmaya çalışmak zorunda olduğunu gösterir. Bu işlem yalnızca, alt kopyaların kurtarılamamış olduğu biliniyorsa gerçekleştirilmelidir. Bu API 'nin yanlış kullanımı olası veri kaybına neden olabilir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -476,7 +476,7 @@ Service Fabric hizmetine bir sistem durumu raporu gönderir.
 
 Belirtilen Service Fabric hizmetinin sistem durumunu raporlar. Rapor, sistem durumu raporunun ve rapor alındığı özelliğin kaynağı hakkında bilgi içermelidir. Rapor, sistem durumu deposuna ileten bir Service Fabric ağ geçidi hizmetine gönderilir. Rapor, ağ geçidi tarafından kabul edilebilir, ancak ek doğrulamadan sonra sistem durumu deposu tarafından reddedildi. Örneğin, eski bir sıra numarası gibi geçersiz bir parametre nedeniyle sistem durumu deposu raporu reddedebilir. Raporun sistem durumu deposuna uygulanıp uygulanmadığını görmek için raporun sistem durumu olaylarında göründüğünü kontrol edin.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -506,7 +506,7 @@ Service Fabric bölümünü çözün.
 
 Hizmet çoğaltmalarının uç noktalarını almak için Service Fabric hizmet bölümünü çözümleyin.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -531,7 +531,7 @@ Service Fabric kümesinde sağlanan uygulama türü tarafından desteklenen hizm
 
 Service Fabric kümesinde sağlanan uygulama türü tarafından desteklenen hizmet türleriyle ilgili bilgileri içeren listeyi alır. Belirtilen uygulama türü mevcut olmalıdır. Aksi takdirde, 404 durumu döndürülür.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -552,7 +552,7 @@ Service Fabric kümesinde sağlanan uygulama türü tarafından desteklenen hizm
 ## <a name="sfctl-service-update"></a>sfctl hizmeti güncelleştirmesi
 Verilen güncelleştirme açıklamasını kullanarak belirtilen hizmeti güncelleştirir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |

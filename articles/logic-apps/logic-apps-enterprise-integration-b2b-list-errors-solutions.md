@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/02/2017
 ms.openlocfilehash: 6400cfe7e524dcc16e08c2bba7dfba4a62d00b2e
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86232568"
 ---
 # <a name="b2b-errors-and-solutions-for-azure-logic-apps"></a>Azure Logic Apps için B2B hataları ve çözümleri
@@ -31,7 +31,7 @@ Bu makale, Logic Apps B2B senaryolarında oluşabilecek hataların giderilmesine
 
 **Hata açıklaması**: ' AS2Identity ':: ' Partner1 ' ve 'As2ıdentity ':: ' Partner3 ' kimliklerine sahip hiçbir anlaşma bulunamadı
 
-**Kullanıcı eylemi**: anlaşma IÇIN geçersiz AS2-from veya AS2-to yapılandırması. AS2 iletisinin "AS2-from" veya "AS2-to" üst bilgilerini veya anlaşmayı, AS2 ileti başlıklarındaki AS2 kimliklerini sözleşme yapılandırmalarına uyacak şekilde düzeltin.
+**Kullanıcı eylemi**: anlaşma için geçersiz AS2-From veya AS2-To yapılandırıldı. AS2 iletisinin "AS2-from" veya "AS2-to" üst bilgilerini veya anlaşmayı, AS2 ileti başlıklarındaki AS2 kimliklerini sözleşme yapılandırmalarına uyacak şekilde düzeltin.
 
 ## <a name="as2"></a>AS2
 
@@ -39,7 +39,7 @@ Bu makale, Logic Apps B2B senaryolarında oluşabilecek hataların giderilmesine
 
 **Hata açıklaması**: geçersiz AS2 üstbilgileri. "AS2-to" veya "AS2-from" başlıklarından biri boş.
 
-**Kullanıcı eylemi**: AS2-from veya AS2-to veya both üst bilgilerini IÇERMEYEN bir AS2 iletisi alındı. AS2 Message AS2-from ve AS2-to üst bilgilerini denetleyip anlaşma yapılandırmasına göre düzeltin.
+**Kullanıcı eylemi**: AS2-From veya AS2-To ya da her iki üst bilgi IÇERMEYEN bir AS2 iletisi alındı. AS2 ileti AS2-From denetleyin ve üst bilgileri AS2-To ve anlaşma yapılandırmasına göre düzeltin.
 
 ### <a name="missing-as2-message-body-and-headers"></a>Eksik AS2 ileti gövdesi ve başlıkları    
 

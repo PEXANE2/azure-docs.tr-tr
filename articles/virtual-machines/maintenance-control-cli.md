@@ -8,17 +8,17 @@ ms.workload: infrastructure-services
 ms.date: 04/20/2020
 ms.author: cynthn
 ms.openlocfilehash: 67e33732574d2a6c173675d5adf0a7d1c2050688
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90528185"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>Bakım denetimi ve Azure CLı ile güncelleştirmeleri denetleme
 
 Bakım denetimi, yalıtılmış sanal makinelerinize ve Azure adanmış ana bilgisayarlara güncelleştirmelerin ne zaman uygulanacağına karar vermenizi sağlar. Bu konu, bakım denetimi için Azure CLı seçeneklerini içerir. Bakım denetimini, sınırlamalarını ve diğer yönetim seçeneklerini kullanmanın avantajları hakkında daha fazla bilgi için bkz. [Platform güncelleştirmelerini bakım denetimiyle yönetme](maintenance-control.md).
 
-## <a name="create-a-maintenance-configuration"></a>Bakım yapılandırması oluşturma
+## <a name="create-a-maintenance-configuration"></a>Bakım yapılandırması oluşturun
 
 `az maintenance configuration create`Bakım yapılandırması oluşturmak için kullanın. Bu örnek, konakta *MyConfig* adlı bir bakım yapılandırması oluşturur. 
 

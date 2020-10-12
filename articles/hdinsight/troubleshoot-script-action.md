@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: e8585779a263f4ff5dbdd998bbf065c6a4e1acdf
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86079274"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>Azure HDInsight 'ta betik eylemleri sorunlarını giderme
@@ -47,11 +47,11 @@ Küme oluşturma bir betik hatası nedeniyle başarısız olursa Günlükler kü
 
     Bu dizin altında Günlükler, **baş düğümüne**, **çalışan düğümü**ve **Zookeeper düğümü**için ayrı olarak düzenlenir. Aşağıdaki örneklere bakın:
 
-    * **Headnode**:`<ACTIVE-HEADNODE-NAME>.cloudapp.net`
+    * **Headnode**: `<ACTIVE-HEADNODE-NAME>.cloudapp.net`
 
-    * **Çalışan düğümü**:`<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
+    * **Çalışan düğümü**: `<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
 
-    * **Zookeeper düğümü**:`<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
+    * **Zookeeper düğümü**: `<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
 
 * Karşılık gelen konağın tüm **stdout** ve **stderr** depolama hesabına yüklenir. Her betik eylemi için bir **output- \* . txt** ve **Errors- \* . txt** vardır. **Output-*. txt** dosyası, konakta çalıştırılan betiğin URI 'si hakkında bilgiler içerir. Aşağıdaki metin bu bilgilere bir örnektir:
 

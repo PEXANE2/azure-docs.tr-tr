@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
 ms.openlocfilehash: 8c9df3393a0554d2e65b3918c6760885f89e11ed
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86254754"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Azure API Management'ı Azure Application Insights ile Tümleştirme
@@ -34,7 +34,7 @@ Azure Application Insights kullanabilmeniz için önce hizmetin bir örneğini o
 
 1. **Azure Portal** açın ve **Application Insights**gidin.  
     ![Uygulama öngörüleri oluştur](media/api-management-howto-app-insights/apim-app-insights-instance-1.png)  
-2. **+ Ekle**'ye tıklayın.  
+2. **+ Ekle**’ye tıklayın.  
     ![Uygulama öngörüleri oluştur](media/api-management-howto-app-insights/apim-app-insights-instance-2.png)  
 3. Formu doldur. **Uygulama türü**olarak **genel** ' i seçin.
 4. **Oluştur**’a tıklayın.
@@ -43,7 +43,7 @@ Azure Application Insights kullanabilmeniz için önce hizmetin bir örneğini o
 
 1. **Azure Portal** **Azure API Management hizmet örneğinize** gidin.
 2. Soldaki menüden **Application Insights** seçin.
-3. **+ Ekle**'ye tıklayın.  
+3. **+ Ekle**’ye tıklayın.  
     ![App Insights günlükçüsü](media/api-management-howto-app-insights/apim-app-insights-logger-1.png)  
 4. Daha önce oluşturulan **Application Insights** örneğini seçin ve kısa bir açıklama sağlayın.
 5. **Oluştur**’a tıklayın.
@@ -74,12 +74,12 @@ Azure Application Insights kullanabilmeniz için önce hizmetin bir örneğini o
 
 | Ayar adı                        | Değer türü                        | Açıklama                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Etkinleştirme                              | boole                           | Bu API 'nin günlüğe kaydetmenin etkinleştirilip etkinleştirilmeyeceğini belirtir.                                                                                                                                                                                                                                                                                                |
+| Etkinleştir                              | boolean                           | Bu API 'nin günlüğe kaydetmenin etkinleştirilip etkinleştirilmeyeceğini belirtir.                                                                                                                                                                                                                                                                                                |
 | Hedef                         | Azure Application Insights günlükçüsü | Kullanılacak Azure Application Insights günlükçüsü belirtir                                                                                                                                                                                                                                                                                           |
 | Örnekleme (%)                        | decimal                           | 0 ile 100 (yüzde) arasında değerler. <br/> Azure Application Insights hangi istek yüzdesinin günlüğe kaydedileceğini belirtir. %0 örnekleme, %100 örnekleme, günlüğe kaydedilen tüm isteklerin olduğu anlamına gelen sıfır istek günlüğe kaydedilir. <br/> Bu ayar, Azure Application Insights isteklerin günlüğe kaydedilmesini azaltmaya yönelik performans etkilerini azaltmak için kullanılır (aşağıdaki bölümüne bakın). |
-| Her zaman günlüğe kaydetme hataları                   | boole                           | Bu ayar seçilirse, **örnekleme** ayarından bağımsız olarak tüm başarısızlıklar Azure Application Insights kaydedilir.                                                                                                                                                                                                                  |
+| Her zaman günlüğe kaydetme hataları                   | boolean                           | Bu ayar seçilirse, **örnekleme** ayarından bağımsız olarak tüm başarısızlıklar Azure Application Insights kaydedilir.                                                                                                                                                                                                                  |
 | Temel seçenekler: üst bilgiler              | list                              | İstekler ve yanıtlar için Azure Application Insights günlüğe kaydedilecek üst bilgileri belirtir.  Varsayılan: günlüğe hiçbir üst bilgi kaydedilmez.                                                                                                                                                                                                             |
-| Temel seçenekler: Ilk gövde baytları  | integer                           | Azure Application Insights istek ve yanıt için gövdenin kaç tane ilk baytından kaydedildiğini belirtir.  Varsayılan: gövde günlüğe kaydedilmez.                                                                                                                                                                                                    |
+| Temel seçenekler: Ilk gövde baytları  | tamsayı                           | Azure Application Insights istek ve yanıt için gövdenin kaç tane ilk baytından kaydedildiğini belirtir.  Varsayılan: gövde günlüğe kaydedilmez.                                                                                                                                                                                                    |
 | Gelişmiş Seçenekler: ayrıntı düzeyi         |                                   | Ayrıntı düzeyini belirtir. Yalnızca daha yüksek önem düzeyine sahip özel izlemeler günlüğe kaydedilir. Varsayılan: bilgi.                                                                                                                                                                                                                               |
 | Gelişmiş Seçenekler: ön uç Isteği  |                                   | *Ön uç Isteklerinin* Azure Application Insights günlüğe kaydedilip edilmeyeceğini belirtir. *Ön uç isteği* , Azure API Management hizmetine gelen bir isteğidir.                                                                                                                                                                        |
 | Gelişmiş Seçenekler: ön uç yanıtı |                                   | *Ön uç yanıtlarının* Azure Application Insights günlüğe kaydedilip edilmeyeceğini belirtir. *Ön uç yanıtı* , Azure API Management hizmetinden giden bir yanıttır.                                                                                                                                                                   |

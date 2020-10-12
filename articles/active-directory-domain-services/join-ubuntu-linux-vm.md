@@ -13,10 +13,10 @@ ms.date: 07/13/2020
 ms.author: iainfou
 ms.custom: fasttrack-edit
 ms.openlocfilehash: d01d961a5d5b86f74bb785c3fddfa09843aa060c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87283155"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Ubuntu Linux bir sanal makineyi Azure Active Directory Domain Services yönetilen bir etki alanına katma
@@ -43,7 +43,7 @@ Azure 'da mevcut bir Ubuntu Linux sanal makinesi varsa, SSH kullanarak buna bağ
 
 Bir Ubuntu Linux VM oluşturmanız veya bu makaleyle kullanmak üzere bir test sanal makinesi oluşturmak istemeniz gerekiyorsa, aşağıdaki yöntemlerden birini kullanabilirsiniz:
 
-* [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
+* [Azure portalındaki](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -77,7 +77,7 @@ Bu adları kendi değerlerinizle güncelleştirin:
 
 ## <a name="install-required-packages"></a>Gerekli paketleri yükleme
 
-VM 'nin yönetilen etki alanına sanal makineye katılması için bazı ek paketlere ihtiyacı vardır. Bu paketleri yüklemek ve yapılandırmak için, kullanarak etki alanına ekleme araçları 'nı güncelleştirme ve yüklemeyi`apt-get`
+VM 'nin yönetilen etki alanına sanal makineye katılması için bazı ek paketlere ihtiyacı vardır. Bu paketleri yüklemek ve yapılandırmak için, kullanarak etki alanına ekleme araçları 'nı güncelleştirme ve yüklemeyi `apt-get`
 
 Kerberos yüklemesi sırasında, *krb5-User* PAKETI tüm büyük harfle bölge adı ister. Örneğin, yönetilen etki alanının adı *aaddscontoso.com*ise, bölge olarak *AADDSCONTOSO.com* girin. Yükleme, `[realm]` `[domain_realm]` */etc/kronb5,conf* yapılandırma dosyasına ve bölümlerini yazar. Bölgeyi tümü büyük harfle belirttiğinizden emin olun:
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: 0c8739dff39490f14b613af483f769ac031c1bd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82792386"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Bağlı fabrika çözümü Hızlandırıcısı için sık sorulan sorular
@@ -82,7 +82,7 @@ Simülasyon VM 'de oturum açmak yalnızca çözümünüzü depodaki PowerShell 
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
         ```
 
-    * `./startsimulation` öğesini çalıştırın.
+    * `./startsimulation` komutunu çalıştırın.
 
 ### <a name="how-do-i-update-the-simulation-in-the-vm"></a>VM 'deki benzetimi güncelleştirmek Nasıl yaparım? mı?
 
@@ -186,7 +186,7 @@ OPC UA cihazlarından bağlı fabrikaya telemetri verileri göndermek için:
     ]
     ```
 
-1. Biçimi `<timestamp>` :`2017-12-08T19:24:51.886753Z`
+1. Biçimi `<timestamp>` : `2017-12-08T19:24:51.886753Z`
 
 1. Bağlı fabrika App Service yeniden başlatın.
 
