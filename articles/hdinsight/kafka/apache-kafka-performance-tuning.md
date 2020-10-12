@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.openlocfilehash: 752068af531c4a0ecc832d266f88105c14452ecb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75494918"
 ---
 # <a name="performance-optimization-for-apache-kafka-hdinsight-clusters"></a>Apache Kafka HDInsight kümeleri için performans iyileştirme
@@ -50,7 +50,7 @@ Apache Kafka üreticileri, tek bir depolama bölümünde depolanacak bir birim o
 
 Bir Kafka üreticisi, aracıları aracılarına göndermeden önce iletileri sıkıştırmak üzere yapılandırılabilir. `compression.type`Ayar, kullanılacak sıkıştırma codec 'ini belirtir. Desteklenen sıkıştırma codec bileşenleri şunlardır "gzip," "Snappy," ve "lz4." Sıkıştırma yararlı olur ve disk kapasitesinde bir kısıtlama varsa göz önünde bulundurulmalıdır.
 
-Yaygın olarak kullanılan iki sıkıştırma codec bileşeni arasında `gzip` daha `snappy` `gzip` yüksek bir sıkıştırma oranına sahiptir ve bu da daha yüksek CPU yükü maliyetinde daha düşük disk kullanımı elde olur. `snappy`Codec, daha az CPU ek yükü ile daha az sıkıştırma sağlar. Aracı diskine veya üretici CPU kısıtlamalarına göre hangi codec bileşeninin kullanılacağına karar verebilirsiniz. `gzip`verileri beş kat daha yüksek bir hızda sıkıştırabilirler `snappy` .
+Yaygın olarak kullanılan iki sıkıştırma codec bileşeni arasında `gzip` daha `snappy` `gzip` yüksek bir sıkıştırma oranına sahiptir ve bu da daha yüksek CPU yükü maliyetinde daha düşük disk kullanımı elde olur. `snappy`Codec, daha az CPU ek yükü ile daha az sıkıştırma sağlar. Aracı diskine veya üretici CPU kısıtlamalarına göre hangi codec bileşeninin kullanılacağına karar verebilirsiniz. `gzip` verileri beş kat daha yüksek bir hızda sıkıştırabilirler `snappy` .
 
 Veri sıkıştırmayı kullanmak, bir diskte depolanabilecek kayıt sayısını artırır. Ayrıca, üretici ve aracı tarafından kullanılan sıkıştırma biçimleri arasında uyuşmazlık olduğu durumlarda CPU yükünü artırabilir. verilerin gönderilmeden önce sıkıştırılması ve sonra, işlenmeden önce sıkıştırması açılması gerekir.
 

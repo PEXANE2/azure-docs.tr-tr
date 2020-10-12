@@ -8,10 +8,10 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: b80f27e490dd3b1890eab7740fb4650ba4280abb
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88207800"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Etkileyen bir Linux VM için özel ölçümler toplama telegraf Aracısı
@@ -44,7 +44,7 @@ Yeni bir Linux sanal makinesi oluşturun:
 1. **MyTelegrafVM**gıbı bir VM adı sağlayın.  
 1. Disk türünü **SSD**olarak bırakın. Daha sonra **azureuser**gibi bir **Kullanıcı adı**sağlayın. 
 1. **Kimlik doğrulama türü**için **parola**' yı seçin. Daha sonra bu VM 'ye SSH için kullanacağınız bir parola girin. 
-1. **Yeni kaynak grubu oluşturmayı**seçin. Daha sonra **Myresourcegroup**gibi bir ad sağlayın. **Konumunuzu**seçin. Ardından **Tamam**’ı seçin. 
+1. **Yeni kaynak grubu oluşturmayı**seçin. Daha sonra **Myresourcegroup**gibi bir ad sağlayın. **Konumunuzu**seçin. Ardından **Tamam**'ı seçin. 
 
     ![Ubuntu sanal makinesi oluşturma](./media/collect-custom-metrics-linux-telegraf/create-vm.png)
 
@@ -58,7 +58,7 @@ Yeni bir Linux sanal makinesi oluşturun:
 
 1. VM, Azure portalı panosuna sabitlenir. Dağıtım tamamlandıktan sonra VM Özeti otomatik olarak açılır. 
 
-1. VM bölmesinde **kimlik** sekmesine **gidin. sanal**makinenizde sistem tarafından atanan bir kimlik ayarlanmış olduğundan emin olun. 
+1. VM bölmesinde **kimlik** sekmesine gidin. VM 'nize sistem tarafından atanan bir kimliğin **Açık**olarak ayarlanmış olduğundan emin olun. 
  
     ![Telegraf VM kimlik önizlemesi](./media/collect-custom-metrics-linux-telegraf/connect-to-VM.png)
  

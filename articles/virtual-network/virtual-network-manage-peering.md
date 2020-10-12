@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: altambaw
 ms.openlocfilehash: 41cc2bfa39160d26b5c5f09687ddf1fef9ec5803
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89290200"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Sanal ağ eşlemesi oluşturma, değiştirme veya silme
@@ -147,7 +147,7 @@ Sanal ağ eşlemesi ile çalışmak için kullandığınız hesapların aşağı
 
 Hesabınız önceki rollerden birine atanmamışsa, aşağıdaki tablodan gerekli eylemlere atanmış [özel bir role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) atanması gerekir:
 
-| Eylem                                                          | Name |
+| Eylem                                                          | Adı |
 |---                                                              |---   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | A ile sanal ağ B 'ye bir eşleme oluşturmak için gereklidir. sanal ağ A 'nın sanal ağ olması gerekir (Kaynak Yöneticisi)          |
 | Microsoft. Network/virtualNetworks/eş/eylem                   | B (Kaynak Yöneticisi) sanal ağından A sanal ağına eşleme oluşturmak için gereklidir                                                       |

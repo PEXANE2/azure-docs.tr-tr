@@ -8,10 +8,10 @@ ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
 ms.openlocfilehash: ae3417f991c0d810d8946cdaf358218ebbe4f6a5
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88590039"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Azure uygulama yapılandırma olaylarına yeniden davranıma
@@ -40,7 +40,7 @@ Azure uygulama yapılandırma olayları, verilerdeki değişikliklere yanıt ver
 > |Özellik|Tür|Açıklama|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
 > |konu başlığı|string|Olayı gösteren uygulama yapılandırmasının tam Azure Resource Manager kimliği.|
-> |subject|string|Olayın konusu olan anahtar-değer URI 'SI.|
+> |Konu|string|Olayın konusu olan anahtar-değer URI 'SI.|
 > |eventTime|string|Olayın oluşturulduğu tarih/saat, ISO 8601 biçiminde.|
 > |eventType|string|"Microsoft. AppConfiguration. KeyValueModified" veya "Microsoft. AppConfiguration. KeyValueDeleted".|
 > |Id|string|Bu olayın benzersiz tanımlayıcısı.|

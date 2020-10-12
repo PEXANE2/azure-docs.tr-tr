@@ -4,10 +4,10 @@ description: Hizmet durumu bildirimleri Microsoft Azure tarafından yayınlanan 
 ms.topic: conceptual
 ms.date: 4/12/2018
 ms.openlocfilehash: 4f2b4a0779d775ed5be5bfa28831cccc68c33caf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86529021"
 ---
 # <a name="use-the-azure-portal-to-view-service-health-notifications"></a>Hizmet durumu bildirimlerini görüntülemek için Azure portal kullanma
@@ -24,7 +24,7 @@ Hizmet durumu bildirimleri Azure tarafından yayımlanır ve aboneliğinizdeki k
 
 Her hizmet durumu bildirimi, kapsamlarınızla ilgili ayrıntıları ve kaynaklarınızın etkisini içerir. Ayrıntılar şunları içerir:
 
-Özellik adı | Description
+Özellik adı | Açıklama
 -------- | -----------
 lardan | Şu değerlerden biri: **yönetici** veya **işlem**.
 correlationId | Genellikle dize biçimindeki bir GUID. Aynı eyleme ait olan olaylar genellikle aynı Bağıntıkimliği 'ı paylaşır.

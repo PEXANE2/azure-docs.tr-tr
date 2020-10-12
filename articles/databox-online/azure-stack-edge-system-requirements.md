@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/15/2020
 ms.author: alkohli
 ms.openlocfilehash: a1a0462b82629b16bd8ccbe269fb1a917357d542
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90883510"
 ---
 # <a name="azure-stack-edge-pro-system-requirements"></a>Azure Stack Edge Pro sistem gereksinimleri
@@ -60,7 +60,7 @@ Azure IoT Edge çalışma zamanını barındıran sunucular için bağlantı nok
 
 | Bağlantı noktası No. | Dışarı veya dışarı | Bağlantı noktası kapsamı | Gerekli | Rehber |
 |----------|-----------|------------|----------|----------|
-| TCP 443 (HTTPS)| Out       | WAN        | Yes      | IoT Edge sağlama için giden açık. El ile betik veya Azure IoT cihaz sağlama hizmeti (DPS) kullanılırken bu yapılandırma gereklidir.|
+| TCP 443 (HTTPS)| Out       | WAN        | Evet      | IoT Edge sağlama için giden açık. El ile betik veya Azure IoT cihaz sağlama hizmeti (DPS) kullanılırken bu yapılandırma gereklidir.|
 
 Tüm bilgiler için [IoT Edge dağıtımı Için güvenlik duvarı ve bağlantı noktası yapılandırma kuralları](https://docs.microsoft.com/azure/iot-edge/troubleshoot)' na gidin.
 

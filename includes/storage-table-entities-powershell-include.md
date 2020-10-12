@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: tamram
 ms.openlocfilehash: 9a60c624b181a1efd2f6deebd349daa82214a8a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67188046"
 ---
 <!--created by Robin Shahan to go in the articles for table storage w/powershell.
@@ -70,7 +70,7 @@ Get-AzTableRow -table $cloudTable | ft
 
 Bu komut aşağıdaki tabloya benzer sonuçlar verir:
 
-| UserID | kullanıcı adı | partition | rowkey |
+| UserID | username | partition | rowkey |
 |----|---------|---------------|----|
 | 1 | Chris | partition2 | CA |
 | 3 | Christine | partition2 | WA |
@@ -85,7 +85,7 @@ Get-AzTableRow -table $cloudTable -partitionKey $partitionKey1 | ft
 
 Sonuçlar aşağıdaki tabloya benzer şekilde görünür:
 
-| UserID | kullanıcı adı | partition | rowkey |
+| UserID | username | partition | rowkey |
 |----|---------|---------------|----|
 | 1 | Chris | partition2 | CA |
 | 3 | Christine | partition2 | WA |
@@ -104,7 +104,7 @@ Bu sorgu bir kayıt alır.
 |alan|değer|
 |----|----|
 | UserID | 1 |
-| kullanıcı adı | Chris |
+| username | Chris |
 | PartitionKey | partition2 |
 | RowKey      | CA |
 
@@ -121,7 +121,7 @@ Bu sorgu bir kayıt alır.
 |alan|değer|
 |----|----|
 | UserID | 1 |
-| kullanıcı adı | Chris |
+| username | Chris |
 | PartitionKey | partition2 |
 | RowKey      | CA |
 
@@ -156,7 +156,7 @@ Sonuçlar Jessie2 kaydını gösterir.
 |alan|değer|
 |----|----|
 | UserID | 2 |
-| kullanıcı adı | Jessie2 |
+| username | Jessie2 |
 | PartitionKey | içindeki |
 | RowKey      | NM |
 

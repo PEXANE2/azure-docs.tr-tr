@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philMea
 ms.openlocfilehash: 1f25aadf716b7768b6122a4fb165466aef7f8a16
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90053401"
 ---
 # <a name="drawing-package-requirements"></a>Çizim paketi gereksinimleri
@@ -36,7 +36,7 @@ Kolay başvuru için, bu makaleyi okurken önemli olan bazı hüküm ve tanımla
 | Katman | Bir AutoCAD DWG katmanı.|
 | Düzey | Bir küme yükseltmesinde bina alanı. Örneğin, bir bina tabanı. |
 | XREF  |AutoCAD DWG dosya biçimindeki (. dwg), dış başvuru olarak birincil Çizime eklenen bir dosya.  |
-| Öne çıkan özelliği | Ek meta veri bilgileriyle geometriyi birleştiren bir nesne. |
+| Özellik | Ek meta veri bilgileriyle geometriyi birleştiren bir nesne. |
 | Özellik sınıfları | Özellikler için ortak bir şema. Örneğin, bir *birim* bir özellik sınıfıdır ve *Office* bir özelliktir. |
 
 ## <a name="drawing-package-structure"></a>Çizim paketi yapısı
@@ -188,7 +188,7 @@ Sonraki bölümlerde her bir nesne için gereksinimler ayrıntılandırır.
 
 ### `directoryInfo`
 
-| Özellik  | Tür | Gerekli | Description |
+| Özellik  | Tür | Gerekli | Açıklama |
 |-----------|------|----------|-------------|
 | `name`      | dize | true   |  Oluşturma adı. |
 | `streetAddress`|    string |    yanlış    | Bina adresi. |
@@ -209,10 +209,10 @@ Sonraki bölümlerde her bir nesne için gereksinimler ayrıntılandırır.
 
 `buildingLevels`Nesne, bir bina seviyelerinin JSON dizisini içeriyor.
 
-| Özellik  | Tür | Gerekli | Description |
+| Özellik  | Tür | Gerekli | Açıklama |
 |-----------|------|----------|-------------|
 |`levelName`    |dize    |true |    Açıklayıcı düzey adı. Örneğin: kat 1, giriş, mavi park veya taban.|
-|`ordinal` | integer |    true | Düzeylerin dikey sırasını belirler. Her tesis 0 sıralı bir düzeye sahip olmalıdır. |
+|`ordinal` | tamsayı |    true | Düzeylerin dikey sırasını belirler. Her tesis 0 sıralı bir düzeye sahip olmalıdır. |
 |`heightAboveFacilityAnchor` | sayısal | yanlış |    Metredeki bağlayıcının üzerindeki düzey yüksekliği. |
 | `verticalExtent` | sayısal | yanlış | Ölçü cinsinden düzeyin zemin-üst yüksekliği (kalınlığı). |
 |`filename` |    string |    true |    Bir bina düzeyi için CAD çiziminin dosya sistemi yolu. Bu, binanın ZIP dosyasının köküne göreli olmalıdır. |
@@ -241,7 +241,7 @@ Sonraki bölümlerde her bir nesne için gereksinimler ayrıntılandırır.
 
 `unitProperties`Nesne, birim ÖZELLIKLERININ JSON dizisini içerir.
 
-| Özellik  | Tür | Gerekli | Description |
+| Özellik  | Tür | Gerekli | Açıklama |
 |-----------|------|----------|-------------|
 |`unitName`    |dize    |true    |Bu kayıtla ilişkilendirilecek birimin adı `unitProperty` . Bu kayıt yalnızca katmanlarda eşleşen bir etiket bulunduğunda geçerlidir `unitName` `unitLabel` . |
 |`categoryName`|    string|    yanlış    |Kategori adı. Kategorilerin tüm listesi için [Kategoriler](https://aka.ms/pa-indoor-spacecategories)' e bakın. |

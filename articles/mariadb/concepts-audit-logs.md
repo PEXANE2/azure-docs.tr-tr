@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/24/2020
 ms.openlocfilehash: 7c9d59eee1e1ce69394301023b108952eaf46790
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85362433"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda denetim günlükleri
@@ -31,7 +31,7 @@ Ayarlayabileceğiniz diğer parametreler şunlardır:
 - `audit_log_exclude_users`: MariaDB kullanıcıları günlük kaydı dışında tutulacak. En fazla dört Kullanıcı için izin verir. Parametrenin uzunluk üst sınırı 256 karakterdir.
 
 > [!Note]
-> `audit_log_include_users`daha yüksek önceliğe sahiptir `audit_log_exclude_users` . Örneğin, ve ise `audit_log_include_users`  =  `demouser` `audit_log_exclude_users`  =  `demouser` , Kullanıcı `audit_log_include_users` daha yüksek önceliğe sahip olduğu için denetim günlüklerine dahil edilir.
+> `audit_log_include_users` daha yüksek önceliğe sahiptir `audit_log_exclude_users` . Örneğin, ve ise `audit_log_include_users`  =  `demouser` `audit_log_exclude_users`  =  `demouser` , Kullanıcı `audit_log_include_users` daha yüksek önceliğe sahip olduğu için denetim günlüklerine dahil edilir.
 
 | **Olay** | **Açıklama** |
 |---|---|
@@ -59,10 +59,10 @@ Aşağıdaki bölümlerde, olay türüne göre MariaDB denetim günlükleri tara
 | `TenantId` | Kiracı KIMLIĞINIZ |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated [UTC]` | Günlük kaydedildiği zaman damgası (UTC) |
-| `Type` | Günlüğün türü. Her`AzureDiagnostics` |
+| `Type` | Günlüğün türü. Her `AzureDiagnostics` |
 | `SubscriptionId` | Sunucunun ait olduğu abonelik için GUID |
 | `ResourceGroup` | Sunucunun ait olduğu kaynak grubunun adı |
-| `ResourceProvider` | Kaynak sağlayıcının adı. Her`MICROSOFT.DBFORMARIADB` |
+| `ResourceProvider` | Kaynak sağlayıcının adı. Her `MICROSOFT.DBFORMARIADB` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Kaynak URI 'SI |
 | `Resource` | Sunucunun adı |
@@ -89,10 +89,10 @@ Aşağıdaki şema genel, DML_SELECT, DML_NONSELECT, DML, DDL, DCL ve yönetıc�
 | `TenantId` | Kiracı KIMLIĞINIZ |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated [UTC]` | Günlük kaydedildiği zaman damgası (UTC) |
-| `Type` | Günlüğün türü. Her`AzureDiagnostics` |
+| `Type` | Günlüğün türü. Her `AzureDiagnostics` |
 | `SubscriptionId` | Sunucunun ait olduğu abonelik için GUID |
 | `ResourceGroup` | Sunucunun ait olduğu kaynak grubunun adı |
-| `ResourceProvider` | Kaynak sağlayıcının adı. Her`MICROSOFT.DBFORMARIADB` |
+| `ResourceProvider` | Kaynak sağlayıcının adı. Her `MICROSOFT.DBFORMARIADB` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Kaynak URI 'SI |
 | `Resource` | Sunucunun adı |
@@ -102,7 +102,7 @@ Aşağıdaki şema genel, DML_SELECT, DML_NONSELECT, DML, DDL, DCL ve yönetıc�
 | `event_class_s` | `general_log` |
 | `event_subclass_s` | `LOG`, `ERROR`, `RESULT` |
 | `event_time` | UNIX zaman damgasında sorgu başlangıç saniyesi |
-| `error_code_d` | Sorgu başarısız olduysa hata kodu. `0`hata yok demektir |
+| `error_code_d` | Sorgu başarısız olduysa hata kodu. `0` hata yok demektir |
 | `thread_id_d` | Sorguyu yürüten iş parçacığının KIMLIĞI |
 | `host_s` | Boş |
 | `ip_s` | MariaDB 'ye bağlanan istemcinin IP adresi |

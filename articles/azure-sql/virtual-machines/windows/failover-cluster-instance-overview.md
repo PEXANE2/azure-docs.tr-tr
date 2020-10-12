@@ -13,10 +13,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.openlocfilehash: a8bfa91ac9b70c0ff4f461bd9e10899d1170b24d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91272536"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure sanal makineler 'de SQL Server yük devretme kümesi örnekleri
@@ -51,8 +51,8 @@ Azure VM 'lerinde SQL Server, SQL Server yük devretme kümesi örneklerinin da�
 |**En düşük işletim sistemi sürümü**| Tümü |Windows Server 2012|Windows Server 2016|
 |**En düşük SQL Server sürümü**|Tümü|SQL Server 2012|SQL Server 2016|
 |**Desteklenen VM kullanılabilirliği** |Yakınlık yerleşimi gruplarıyla kullanılabilirlik kümeleri |Kullanılabilirlik kümeleri ve kullanılabilirlik bölgeleri|Kullanılabilirlik kümeleri |
-|**FILESTREAM 'i destekler**|Yes|Hayır|Yes |
-|**Azure Blob önbelleği**|Hayır|Hayır|Yes|
+|**FILESTREAM 'i destekler**|Evet|Hayır|Evet |
+|**Azure Blob önbelleği**|Hayır|Hayır|Evet|
 
 Bu bölümün geri kalanında, Azure VM 'lerinde SQL Server için kullanılabilen her depolama seçeneğinin avantajları ve sınırlamaları listelenmektedir. 
 

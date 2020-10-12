@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 8087025810214f3edbb74e628698eb69558f3500
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74085282"
 ---
 Bir sanal ağ geçidi oluşturduğunuzda, kullanmak istediğiniz ağ geçidi SKU’sunu belirtmeniz gerekir. İş yükü, aktarım hızı, özellik ve SLA türlerine bağlı olarak gereksinimlerinize uyan SKU’ları seçin. Azure Kullanılabilirlik Alanları sanal ağ geçidi SKU 'Ları için, bkz. [Azure kullanılabilirlik alanları ağ geçidi SKU 'ları](../articles/vpn-gateway/about-zone-redundant-vnet-gateways.md).
@@ -41,7 +41,7 @@ Yeni VPN Gateway SKU 'Ları, ağ geçitleri üzerinde sunulan özellik kümeleri
 
 ( \* \* ) Temel SKU, eski SKU olarak kabul edilir. Temel SKU 'nun belirli özellik sınırlamaları vardır. Temel SKU kullanan bir ağ geçidini yeni ağ geçidi SKU 'larından birine yeniden boyutlandıramazsınız, bunun yerine VPN ağ geçidinizi silmeyi ve yeniden oluşturmayı içeren yeni bir SKU 'ya geçiş yapmanız gerekir.
 
-###  <a name="gateway-skus---production-vs-dev-test-workloads"></a><a name="workloads"></a>Ağ Geçidi SKU 'Ları-üretim ve geliştirme ve test Iş yükleri
+###  <a name="gateway-skus---production-vs-dev-test-workloads"></a><a name="workloads"></a>Ağ Geçidi SKU 'Ları-üretim ve Dev-Test Iş yükleri
 
 SLA'lardaki ve özellik kümelerindeki farklılıklar nedeniyle üretim ve geliştirme-test iş yükleri için aşağıdaki farklı  SKU'ları öneririz:
 

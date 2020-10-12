@@ -12,10 +12,10 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: edf51dad768e8d8b5ea5dc6c1eff88f43f0f6b70
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88589172"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) uygulama proxy 'Si hakkında sık sorulan sorular
@@ -141,7 +141,7 @@ Hayır, uygulama proxy 'Si TLS trafiğini sonlandıracağından bu senaryo deste
 
 [Azure AD uygulama ara sunucusu uzak masaüstünü yayımlama](application-proxy-integrate-with-remote-desktop-services.md)konusuna bakın.
 
-### <a name="can-i-use-kerberos-constrained-delegation-single-sign-on---windows-integrated-authentication-in-the-remote-desktop-gateway-publishing-scenario"></a>Uzak Masaüstü Ağ Geçidi yayımlama senaryosunda Kerberos kısıtlanmış temsilciyi (çoklu oturum açma-Windows tümleşik kimlik doğrulaması) kullanabilir miyim?
+### <a name="can-i-use-kerberos-constrained-delegation-single-sign-on---windows-integrated-authentication-in-the-remote-desktop-gateway-publishing-scenario"></a>Uzak Masaüstü Ağ Geçidi yayımlama senaryosunda Kerberos kısıtlanmış temsilciyi (tek Sign-On-Windows tümleşik kimlik doğrulaması) kullanabilir miyim?
 
 Hayır, bu senaryo desteklenmiyor.  
 

@@ -8,10 +8,10 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
 ms.openlocfilehash: 55ec04df2a107dabfc72298bc8849c13f3a926e0
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86147301"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>Varlık ve çıkış dosyalarını işlemeye yönelik depolama ve veri taşıma seçenekleri
@@ -132,6 +132,6 @@ Azure dosyaları, Azure depolama desteği olan tüm ana API 'Ler ve araçlar tar
 
 Depolama seçenekleri hakkında daha fazla bilgi için bkz. ayrıntılı belgeler:
 
-* [Azure Blob depolama](../storage/blobs/storage-blobs-introduction.md)
+* [Azure blob depolama](../storage/blobs/storage-blobs-introduction.md)
 * [Blobsigortası](../storage/blobs/storage-how-to-mount-container-linux.md)
-* [Azure dosyaları](../storage/files/storage-files-introduction.md)
+* [Azure Dosyaları](../storage/files/storage-files-introduction.md)

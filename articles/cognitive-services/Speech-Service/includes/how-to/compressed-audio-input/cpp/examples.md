@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
 ms.openlocfilehash: b565bf3bae61cf92133b957bb75fdae9545c030e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81422045"
 ---
-Konuşma hizmetine sıkıştırılmış bir ses biçiminde akış yapmak için, veya `PullAudioInputStream` `PushAudioInputStream`oluşturun. Daha sonra akış sınıfınızın `AudioConfig` bir örneğinden oluşturun ve akışın sıkıştırma biçimini belirtin.
+Konuşma hizmetine sıkıştırılmış bir ses biçiminde akış yapmak için, `PullAudioInputStream` veya oluşturun `PushAudioInputStream` . Daha sonra akış `AudioConfig` sınıfınızın bir örneğinden oluşturun ve akışın sıkıştırma biçimini belirtin.
 
-Adlandırılmış `pushStream` bir giriş akışı sınıfınız olduğunu ve Opus/OGG kullandığınızı varsayalım. Kodunuz şöyle görünebilir:
+Adlandırılmış bir giriş akışı sınıfınız olduğunu `pushStream` ve Opus/OGG kullandığınızı varsayalım. Kodunuz şöyle görünebilir:
 
 ```cpp
 using namespace Microsoft::CognitiveServices::Speech;

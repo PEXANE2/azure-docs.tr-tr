@@ -1,17 +1,17 @@
 ---
-title: Visual Studio Code kullanarak Azure Işlevleri geliştirme
+title: Visual Studio Code kullanarak Azure İşlevleri geliştirme
 description: Visual Studio Code için Azure Işlevleri uzantısını kullanarak Azure Işlevleri geliştirmeyi ve test yapmayı öğrenin.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
 ms.openlocfilehash: 610c80dc5552eae4f2ad8442fa11b85f2eab35eb
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88206747"
 ---
-# <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code kullanarak Azure Işlevleri geliştirme
+# <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code kullanarak Azure İşlevleri geliştirme
 
 [Visual Studio Code Için Azure işlevleri uzantısı] , işlevleri yerel olarak geliştirmenize ve bunları Azure 'a dağıtmanıza imkan tanır. Azure Işlevleri ile ilk kez bu deneyim varsa, [Azure işlevleri 'ne giriş](functions-overview.md)konusunda daha fazla bilgi edinebilirsiniz.
 
@@ -431,7 +431,7 @@ Azure Işlevleri uzantısı, Azure 'daki işlev uygulamalarınızla etkileşim k
 | **Azure Functions Core Tools yüklemeyi veya güncelleştirmeyi** | İşlevleri yerel olarak çalıştırmak için kullanılan [Azure Functions Core Tools]yüklenir veya güncelleştirir. |
 | **Yeniden dağıtım**  | Bağlı bir git deposundan proje dosyalarını Azure 'daki belirli bir dağıtıma yeniden dağıtmanıza olanak tanır. Visual Studio Code yerel güncelleştirmeleri yeniden yayımlamak için [projenizi yeniden yayımlayın](#republish-project-files). |
 | **Ayarları yeniden adlandır** | Azure 'da var olan bir işlev uygulaması ayarının anahtar adını değiştirir. Bu komut, local.settings.jsdosyadaki ayarları etkilemez. Azure 'daki ayarları yeniden adlandırdıktan sonra, [Bu değişiklikleri yerel projeye indirmeniz](#download-settings-from-azure)gerekir. |
-| **Yeniden başlat** | İşlev uygulamasını Azure 'da yeniden başlatır. Güncelleştirmelerin dağıtımı, işlev uygulamasını da yeniden başlatır. |
+| **Uygulamasını** | İşlev uygulamasını Azure 'da yeniden başlatır. Güncelleştirmelerin dağıtımı, işlev uygulamasını da yeniden başlatır. |
 | **AzureWebJobsStorage ayarla**| `AzureWebJobsStorage`Uygulama ayarının değerini ayarlar. Bu ayar, Azure Işlevleri için gereklidir. Azure 'da bir işlev uygulaması oluşturulduğunda ayarlanır. |
 | **Başlangıç** | Azure 'da durdurulmuş bir işlev uygulaması başlatır. |
 | **Akış günlüklerini başlatma** | Azure 'da işlev uygulaması için akış günlüklerini başlatır. Günlük bilgilerini neredeyse gerçek zamanlı olarak görmeniz gerekiyorsa Azure 'da uzaktan sorun giderme sırasında akış günlüklerini kullanın. Daha fazla bilgi için bkz. [akış günlükleri](#streaming-logs). |

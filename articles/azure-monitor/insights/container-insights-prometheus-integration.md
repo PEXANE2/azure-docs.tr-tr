@@ -4,10 +4,10 @@ description: Bu makalede, Kubernetes kümeniz ile Prometheus 'dan bir kapsayıc�
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.openlocfilehash: f5a9b364bc3e51307bd44d8338485f482bda6e1e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90971352"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Kapsayıcılara yönelik Azure İzleyici ile Prometheus Metrics atığını yapılandırma
@@ -24,7 +24,7 @@ ms.locfileid: "90971352"
 
 Prometheus ölçümlerinin scraping değeri, üzerinde barındırılan Kubernetes kümeleriyle desteklenir:
 
-- Azure Kubernetes Service (AKS)
+- Azure Kubernetes Hizmeti (AKS)
 - Azure Stack veya şirket içi
 - Azure Red Hat OpenShift sürüm 3. x
 - Azure Red Hat OpenShift ve Red Hat OpenShift sürüm 4. x
@@ -65,7 +65,7 @@ ConfigMaps genel bir liste ve aracıya yalnızca bir ConfigMap uygulanmış olab
 
 Aşağıdaki kümeler için ConfigMap yapılandırma dosyanızı yapılandırmak üzere aşağıdaki adımları uygulayın:
 
-* Azure Kubernetes Service (AKS)
+* Azure Kubernetes Hizmeti (AKS)
 * Azure Stack veya şirket içi
 * Azure Red Hat OpenShift sürüm 4. x ve Red Hat OpenShift sürüm 4. x
 
@@ -162,7 +162,7 @@ Bu bölüm, Azure Red Hat OpenShift v3. x kümesine yönelik ConfigMap yapıland
 >[!NOTE]
 >Azure Red Hat OpenShift v3. x için, *OpenShift-Azure-Logging* ad alanında bir şablon configmap dosyası oluşturulur. Aracıdan etkin bir şekilde hurdaya, ölçüm veya veri koleksiyonu için yapılandırılmamış.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce Kapsayıcılı aracıyı ve Prometheus scraping ayarlarını yapılandırmak için Azure Red Hat Openshıft kümenizin müşteri kümesi Yöneticisi rolünün bir üyesi olduğunu doğrulayın. *OSA-müşteri-Yöneticiler* grubunun bir üyesi olduğunuzu doğrulamak için şu komutu çalıştırın:
 
@@ -278,7 +278,7 @@ Kümenize zaten bir ConfigMap dağıttıysanız ve daha yeni bir yapılandırmay
 
 Aşağıdaki Kubernetes ortamları için:
 
-- Azure Kubernetes Service (AKS)
+- Azure Kubernetes Hizmeti (AKS)
 - Azure Stack veya şirket içi
 - Azure Red Hat OpenShift ve Red Hat OpenShift sürüm 4. x
 

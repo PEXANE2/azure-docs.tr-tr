@@ -1,7 +1,7 @@
 ---
 title: CDN tümleştirmesi ile içerik akışı
 titleSuffix: Azure Media Services
-description: CDN tümleştirmesinin yanı sıra önceden getirme ve kaynak Yardımcısı CDN-önceden getirme ile akış içeriği hakkında bilgi edinin.
+description: CDN tümleştirmesinin yanı sıra önceden getirme ve Origin-Assist CDN-önceden getirme ile akış içeriği hakkında bilgi edinin.
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: e1ea0a43783fb7abdc17655e3a3431d125d426f8
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89291288"
 ---
 # <a name="stream-content-with-cdn-integration"></a>CDN tümleştirmesi ile içerik akışı
@@ -32,7 +32,7 @@ Video parçası önbelleğe alındığı sürece popüler içerik doğrudan CDN 
 Ayrıca, uyarlamalı akışın nasıl çalıştığını göz önünde bulundurmanız gerekir. Her bir video parçası kendi varlığı olarak önbelleğe alınır. Örneğin, belirli bir videonun ilk kez nasıl izlenen hakkında düşünün. Görüntüleyici burada yalnızca birkaç saniye izlemeyi atlar ve burada yalnızca, izlenen kişilerin CDN 'de önbelleğe alınması ile ilişkili video parçaları vardır. Uyarlamalı akış sayesinde genellikle 5 ile 7 arasında farklı bit fiyatları vardır. Bir kişi bir bit hızı izlerken ve başka bir kişi farklı bir bit hızı izlerse, her biri CDN 'de ayrı olarak önbelleğe alınır. İki kişi aynı bit hızını izliyor olsa da, farklı protokollerde akış olabilir. Her protokol (HLS, MPEG-DASH, Kesintisiz Akış) ayrı olarak önbelleğe alınır. Böylece her bit hızı ve protokol ayrı olarak önbelleğe alınır ve yalnızca istenen video parçaları önbelleğe alınır.
 
 Test ortamı hariç, hem standart hem de Premium akış uç noktaları için CDN 'nin etkinleştirilmesini öneririz. Her akış uç noktası türü, desteklenen farklı bir üretilen iş sınırına sahiptir.
-Bir akış uç noktası tarafından desteklenen en fazla eşzamanlı akış sayısı için kesin bir hesaplama yapmak zordur, çünkü dikkate almanız gereken çeşitli faktörler vardır. Bu güncelleştirmeler şunlardır:
+Bir akış uç noktası tarafından desteklenen en fazla eşzamanlı akış sayısı için kesin bir hesaplama yapmak zordur, çünkü dikkate almanız gereken çeşitli faktörler vardır. Bu modüller şunlardır:
 
 - Akış için kullanılan maksimum bit hızı
 - Oynatıcı ön arabelleği ve anahtarlama davranışı. Oyuncular, bir kaynaktan kesimleri patlama ve Uyarlamalı bit hızı geçişini hesaplamak için yük hızını kullanmanıza çalışır. Akış uç noktası doygunluğu yakınsa, yanıt süreleri farklılık gösterebilir ve oyuncular daha düşük kalitede geçişe başlayabilir. Bu, akış uç noktası yürütücülerinin yükünü azaltmakta olduğundan, istenmeyen geçiş Tetikleyicileri oluşturarak daha yüksek kalitede ölçeklendirin.
@@ -67,7 +67,7 @@ Azure CDN ile tümleştirme Azure Media Services standart akış uç noktaları 
 
 Kullanarak bir akış uç noktasında (trafiğin Azure CDN yönlendirilmekte) DNS değişikliği yapıldığını belirleyebilirsiniz <https://www.digwebinterface.com> . Sonuçlarda azureedge.net etki alanı adları görürseniz, trafik artık CDN 'ye işaret ediyor.
 
-## <a name="origin-assist-cdn-prefetch"></a>Kaynak-yardımcı CDN-önceden getirme
+## <a name="origin-assist-cdn-prefetch"></a>Origin-Assist CDN-Prefetch
 
 CDN önbelleği, reaktif bir işlemdir. CDN bir sonraki nesnenin isteneceğini tahmin edebildiyse, CDN bir sonraki nesneyi proaktif olarak isteyebilir ve önbelleğe alabilir. Bu işlemle, nesnelerin tümü (veya çoğu) için, performansı artıran bir önbellek okuması elde edebilirsiniz.
 
@@ -125,11 +125,11 @@ Bu hedefe ulaşmak için, bir akış uç noktası (Origin) ve CDN 'nin el ile bi
 
     Hayır, CDN-önceden getirme yalnızca istemci tarafından başlatılan bir istek/yanıt sonrasında yapılır. CDN-önceden getirme, önceden getirme döngüsünden kaçınmak için hiçbir şekilde önceden getirme tarafından tetiklenmez.
 
-* Kaynak-CDN-önceden getirme özelliği her zaman açık olur mi? Nasıl açılıp kapatılabilir?
+* Origin-Assist CDN-Prefetch özelliği her zaman açık mı? Nasıl açılıp kapatılabilir?
 
     Bu özellik varsayılan olarak kapalıdır. Müşterilerin Akamai API aracılığıyla açık olması gerekir.
 
-* Canlı akış için, sonraki segment veya parça henüz kullanılamıyorsa, kaynak yardımı 'nda ne olur?
+* Canlı akış için, sonraki segment veya parça henüz kullanılamıyorsa Origin-Assist ne olur?
 
     Bu durumda Media Services kaynağı `CDN-Origin-Assist-Prefetch-Path` üst bilgi sağlamaz ve CDN-önceden getirme gerçekleşmeyecektir.
 

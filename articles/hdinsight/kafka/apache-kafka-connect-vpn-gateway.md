@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-python
 ms.date: 03/04/2020
 ms.openlocfilehash: ca5bff7f8a14efc0916210296048e3731aec5a59
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87873475"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Azure Sanal Ağı üzerinden HDInsight üzerinde Apache Kafka'ya bağlanma
@@ -58,7 +58,7 @@ HDInsight, genel İnternet üzerinden Kafka 'e doğrudan bağlantıya izin verme
 
 Bir sanal ağda HDInsight kullanma hakkında daha fazla bilgi için bkz. [Azure HDInsight kümeleri için bir sanal ağ planlayın](../hdinsight-plan-virtual-network-deployment.md).
 
-## <a name="connect-to-apache-kafka-from-an-on-premises-network"></a><a id="on-premises"></a>Şirket içi bir ağdan Apache Kafka bağlanma
+## <a name="connect-to-apache-kafka-from-an-on-premises-network"></a><a id="on-premises"></a> Şirket içi bir ağdan Apache Kafka bağlanma
 
 Şirket içi ağınızla iletişim kuran bir Kafka kümesi oluşturmak için HDInsight 'ı Şirket [içi ağ belgenize bağlama](./../connect-on-premises-network.md) bölümündeki adımları izleyin.
 
@@ -74,7 +74,7 @@ Bu adımlar aşağıdaki yapılandırmayı oluşturur:
 
 Bir Kafka istemcisinin Şirket içinden kümeye bağlanıp bağlanamadiğini doğrulamak için [örnek: Python istemci](#python-client) bölümündeki adımları kullanın.
 
-## <a name="connect-to-apache-kafka-with-a-vpn-client"></a><a id="vpnclient"></a>VPN istemcisiyle Apache Kafka bağlanma
+## <a name="connect-to-apache-kafka-with-a-vpn-client"></a><a id="vpnclient"></a> VPN istemcisiyle Apache Kafka bağlanma
 
 Aşağıdaki yapılandırmayı oluşturmak için bu bölümdeki adımları kullanın:
 
@@ -290,7 +290,7 @@ Varsayılan olarak, Apache Zookeeper, istemcilere Kafka aracıların etki alanı
 
 VPN ağ geçidine bağlanmak için, [Noktadan siteye bağlantı yapılandırma](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect) belgesi ' nin __Azure 'a Bağlan__ bölümünü kullanın.
 
-## <a name="example-python-client"></a><a id="python-client"></a>Örnek: Python istemcisi
+## <a name="example-python-client"></a><a id="python-client"></a> Örnek: Python istemcisi
 
 Kafka bağlantısını doğrulamak için, aşağıdaki adımları kullanarak bir Python üreticisi ve tüketicisi oluşturun ve çalıştırın:
 

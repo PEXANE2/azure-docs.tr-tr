@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 06/18/2020
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 3a767cc8ae3c8c48e1e40e0735c33fa807ba0015
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88933524"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Toplu Işlem kaynaklarını etkili bir şekilde listelemek için sorgular oluşturma
@@ -63,7 +63,7 @@ Filtre dizesi bir veya daha fazla ifadeden oluşur ve bir özellik adı, işleç
 
 Bu örnek filtre dizesinde yalnızca çalışan "render" görevleri listelenir: `(state eq 'running') and startswith(id, 'renderTask')` .
 
-### <a name="select"></a>Şunu seçin:
+### <a name="select"></a>Seç
 
 Select String her öğe için döndürülen özellik değerlerini sınırlandırır. Virgülle ayrılmış özellik adlarının bir listesini belirtirsiniz ve sorgu sonuçlarındaki öğeler için yalnızca bu özellik değerleri döndürülür. Sorgulamakta olduğunuz varlık türü için özelliklerden herhangi birini belirtebilirsiniz.
 

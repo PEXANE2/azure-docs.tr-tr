@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
 ms.openlocfilehash: 08e971e52f994ec5fa5663708fa9f173daf33d80
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86135407"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Azure Site Recovery kullanarak olağanüstü durum kurtarma için çok katmanlı bir SharePoint uygulaması için olağanüstü durum kurtarmayı ayarlama
 
-Bu makalede, [Azure Site Recovery](site-recovery-overview.md)kullanarak bir SharePoint uygulamasını nasıl koruyabileceğiniz ayrıntılı bilgiler açıklanmaktadır.
+Bu makalede,  [Azure Site Recovery](site-recovery-overview.md)kullanarak bir SharePoint uygulamasını nasıl koruyabileceğiniz ayrıntılı bilgiler açıklanmaktadır.
 
 
 ## <a name="overview"></a>Genel Bakış
@@ -62,9 +62,9 @@ Site Recovery, uygulama belirsiz ve desteklenen bir makinede çalışan herhangi
 
 **Senaryo** | **İkincil siteye** | **Azure 'a**
 --- | --- | ---
-**Hyper-V** | Yes | Yes
-**VMware** | Yes | Yes
-**Fiziksel sunucu** | Yes | Yes
+**Hyper-V** | Evet | Evet
+**VMware** | Evet | Evet
+**Fiziksel sunucu** | Evet | Evet
 **Azure** | NA | Yes
 
 
@@ -136,7 +136,7 @@ Kurtarma planı, çok katmanlı bir uygulamadaki çeşitli katmanların yük dev
 
 En yaygın olarak kullanılan Azure Site Recovery betikleri aşağıdaki ' Azure 'a Dağıt ' düğmesine tıklayarak Otomasyon hesabınıza dağıtabilirsiniz. Yayımlanmış herhangi bir betiği kullanırken, betikteki yönergeleri izlediğinizden emin olun.
 
-[![Azure’a dağıtma](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+[![Azure’a dağıtın](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 1. SQL kullanılabilirlik grubu yük devretmesi için ' Group 1 ' öğesine bir ön eylem betiği ekleyin. Örnek betikte yayımlanan ' ASR-SQL-FailoverAG ' betiğini kullanın. Betikteki yönergeleri izlediğinizden ve betikteki gerekli değişiklikleri uygun şekilde seçtiğinizden emin olun.
 
@@ -170,7 +170,7 @@ En yaygın olarak kullanılan Azure Site Recovery betikleri aşağıdaki ' Azure
 
     * Bu yöntem, DR sitesinde "arama yönetimi" veritabanının bir yedeğinin bulunduğunu varsayar.
     * Diğer Arama Hizmeti uygulama veritabanları çoğaltılmadığından, yeniden oluşturulması gerekir. Bunu yapmak için, Merkezi Yönetim ' e gidin ve Arama Hizmeti uygulamasını silin. Arama dizinini barındıran tüm sunucularda dizin dosyalarını silin.
-    * Arama Hizmeti uygulamasını yeniden oluşturun ve bu veritabanlarını yeniden oluşturur. Tüm eylemleri GUI aracılığıyla gerçekleştirmek mümkün olmadığından, bu hizmet uygulamasını yeniden oluşturan hazırlanmış bir betiğin olması önerilir. Örneğin, Dizin sürücüsü konumunu ayarlama ve arama topolojisini yapılandırma yalnızca SharePoint PowerShell cmdlet 'leri kullanılarak yapılabilir. Windows PowerShell cmdlet 'i geri yükleme-SPEnterpriseSearchServiceApplication kullanın ve günlük ve çoğaltılan arama Yönetim veritabanını Search_Service__DB belirtin. Bu cmdlet, arama yapılandırmasını, şemayı, yönetilen özellikleri, kuralları ve kaynakları verir ve diğer bileşenlerin varsayılan bir kümesini oluşturur.
+    * Arama Hizmeti uygulamasını yeniden oluşturun ve bu veritabanlarını yeniden oluşturur. Tüm eylemleri GUI aracılığıyla gerçekleştirmek mümkün olmadığından, bu hizmet uygulamasını yeniden oluşturan hazırlanmış bir betiğin olması önerilir. Örneğin, Dizin sürücüsü konumunu ayarlama ve arama topolojisini yapılandırma yalnızca SharePoint PowerShell cmdlet 'leri kullanılarak yapılabilir. Restore-SPEnterpriseSearchServiceApplication Windows PowerShell cmdlet 'ini kullanın ve günlük sevk edilen ve çoğaltılan arama Yönetim veritabanını Search_Service__DB belirtin. Bu cmdlet, arama yapılandırmasını, şemayı, yönetilen özellikleri, kuralları ve kaynakları verir ve diğer bileşenlerin varsayılan bir kümesini oluşturur.
     * Arama Hizmeti uygulama yeniden oluşturulduktan sonra, Arama Hizmeti geri yüklemek için her bir içerik kaynağı için tam bir gezinme başlatmanız gerekir. Arama önerileri gibi şirket içi gruptaki bazı analiz bilgilerini kaybedersiniz.
 
 7. Tüm adımlar tamamlandıktan sonra kurtarma planını kaydedin ve son kurtarma planı aşağıdaki gibi görünür.

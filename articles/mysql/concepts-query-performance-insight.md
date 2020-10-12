@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
 ms.openlocfilehash: 7aefa6cd048c41feb1535f2ae7fa5c87bf628b2d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90884904"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı'nda Sorgu Performansı İçgörüleri
@@ -19,7 +19,7 @@ ms.locfileid: "90884904"
 
 Sorgu Performansı İçgörüleri, en uzun çalışan sorguların ne olduğunu, zaman içinde nasıl değişdiklerinizi ve neleri etkilemeyi beklediğini hızlı bir şekilde tanımanıza yardımcı olur.
 
-## <a name="common-scenarios"></a>Yaygın senaryolar
+## <a name="common-scenarios"></a>Genel senaryolar
 
 ### <a name="long-running-queries"></a>Uzun süre çalışan sorgular
 
@@ -35,7 +35,7 @@ Sorgu Performansı İçgörüleri, en uzun çalışan sorguların ne olduğunu, 
 
 Sorgu Performansı İçgörüleri’ndeki metni görünüm için **Sahip** veya **Katkıda bulunan** izinleri gereklidir. **Okuyucu**, grafikleri ve tabloları görüntüleyebilir ancak metni sorgulayamaz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Sorgu Performansı İçgörüleri çalışması için, verilerin [sorgu deposunda](concepts-query-store.md)bulunması gerekir.
 
@@ -64,7 +64,7 @@ Sunucudaki beklemelerle ilgili görselleştirmeleri görüntülemek için **Bekl
 
 Bekleme istatistikleri görünümünde görüntülenen sorgular, belirtilen zaman aralığı boyunca en büyük değeri gösteren sorgulara göre gruplandırılır.
 
-:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="Sorgu Performansı İçgörüleri bekleyen istatistikler":::
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="Uzun süre çalışan sorguları Sorgu Performansı İçgörüleri":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

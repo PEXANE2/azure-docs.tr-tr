@@ -4,10 +4,10 @@ description: Bu makalede, Azure Event Hubs yönelik istemci SDK 'Ları hakkında
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 9f4eec603245f1e4ea6fa4d97b843ca6a770f2ad
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88930885"
 ---
 # <a name="azure-event-hubs---client-sdks"></a>Azure Event Hubs-Istemci SDK 'Ları
@@ -33,7 +33,7 @@ Aşağıdaki tabloda, şu anda kullanılabilir olan tüm Azure Event Hubs çalı
 |        | [Azure-eventhub-checkpointstoreblob-aio](https://pypi.org/project/azure-eventhub-checkpointstoreblob-aio/) | <ul><li>[GitHub konumu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio)</li><li>[Öğretici](event-hubs-python-get-started-send.md)</li></ul> |
 | JavaScript | [Azure/Olay-Hub 'lar](https://www.npmjs.com/package/@azure/event-hubs) | <ul><li>[GitHub konumu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs)</li><li>[Öğretici](event-hubs-node-get-started-send.md)</li></ul> |
 |            | [Azure/eventhubs-checkpointstore-blob](https://www.npmjs.com/package/@azure/eventhubs-checkpointstore-blob) | <ul><li>[GitHub konumu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/eventhubs-checkpointstore-blob)</li><li>[Öğretici](event-hubs-node-get-started-send.md)</li></ul> |
-| Go | [Azure-Event-hub 'lar-go](https://github.com/Azure/azure-event-hubs-go) | <ul><li>[GitHub konumu](https://github.com/Azure/azure-event-hubs-go)</li><li>[Öğretici](event-hubs-go-get-started-send.md)</li></ul> |
+| Başlayın | [Azure-Event-hub 'lar-go](https://github.com/Azure/azure-event-hubs-go) | <ul><li>[GitHub konumu](https://github.com/Azure/azure-event-hubs-go)</li><li>[Öğretici](event-hubs-go-get-started-send.md)</li></ul> |
 | C | [Azure-Event-hub 'lar-c](https://github.com/Azure/azure-event-hubs-c) | <ul><li>[GitHub konumu](https://github.com/Azure/azure-event-hubs-c)</li><li>[Öğretici](event-hubs-c-getstarted-send.md)</li></ul> |
 
 ## <a name="management-sdks"></a>Yönetim SDK 'Ları

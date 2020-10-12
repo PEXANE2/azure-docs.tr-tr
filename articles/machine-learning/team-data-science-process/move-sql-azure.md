@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1f1120c78ef2a634c079705c85170d9742eabd1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87087433"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Azure Machine Learning için Azure SQL Veritabanına veri taşıma
@@ -43,13 +43,13 @@ Burada özetlenen yordamlarda şunları yapmanız gerekir:
 
 Burada açıklanan yordamları kendi verilerinize uyarlayabilirsiniz ya da NYC TAXI veri kümesini kullanarak açıklanan adımları izleyebilirsiniz. NYC TAXI veri kümesini SQL Server veritabanınıza yüklemek için, [verileri SQL Server veritabanına toplu Içeri aktarma](sql-walkthrough.md#dbload)bölümünde özetlenen yordamı izleyin.
 
-## <a name="moving-data-from-a-flat-file-source-to-an-azure-sql-database"></a><a name="file-to-azure-sql-database"></a>Verileri düz bir dosya kaynağından Azure SQL veritabanına taşıma
+## <a name="moving-data-from-a-flat-file-source-to-an-azure-sql-database"></a><a name="file-to-azure-sql-database"></a> Verileri düz bir dosya kaynağından Azure SQL veritabanına taşıma
 Düz dosyalardaki (CSV veya TSV biçimli) veriler, toplu ekleme SQL sorgusu kullanarak bir Azure SQL veritabanına taşınabilir.
 
-### <a name="bulk-insert-sql-query"></a><a name="bulk-insert-sql-query"></a>SQL sorgusunu toplu ekleme
+### <a name="bulk-insert-sql-query"></a><a name="bulk-insert-sql-query"></a> SQL sorgusunu toplu ekleme
 Toplu ekleme SQL sorgusunu kullanan yordamın adımları, verileri bir Azure VM üzerindeki SQL Server bir düz dosya kaynağından taşıma yönlerine benzer. Ayrıntılar için bkz. [toplu ekleme SQL sorgusu](move-sql-server-virtual-machine.md#insert-tables-bulkquery).
 
-## <a name="moving-data-from-sql-server-to-an-azure-sql-database"></a><a name="sql-on-prem-to-sazure-sql-database"></a>SQL Server verileri Azure SQL veritabanına taşıma
+## <a name="moving-data-from-sql-server-to-an-azure-sql-database"></a><a name="sql-on-prem-to-sazure-sql-database"></a> SQL Server verileri Azure SQL veritabanına taşıma
 Kaynak veriler SQL Server depolanıyorsa, verileri bir Azure SQL veritabanına taşımaya yönelik çeşitli olanaklar vardır:
 
 1. [Düz dosyaya aktar](#export-flat-file)

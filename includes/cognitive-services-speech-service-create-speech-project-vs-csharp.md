@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/30/2019
 ms.author: wolfma
 ms.openlocfilehash: c7332177795a45331749225e0f3dc3856e28a6a2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "71327039"
 ---
 Windows geliştirme için bir Visual Studio projesi oluşturmak için, projeyi oluşturmanız, .NET masaüstü geliştirme için Visual Studio 'yu ayarlamanız, konuşma SDK 'sını yüklemeniz ve hedef mimariyi seçmeniz gerekir.
@@ -25,7 +25,7 @@ Başlamak için Visual Studio 'da projeyi oluşturun ve Visual Studio 'Nun .NET 
 
 1. **Yeni projenizi yapılandırın** penceresinde, **Proje adı**alanına *HelloWorld* girin, **konum**bölümünde dizin yolunu seçin veya oluşturun ve ardından **Oluştur**' u seçin.
 
-1. Visual Studio menü çubuğunda **Araçlar** > ' ı seçin ve Visual Studio yükleyicisi açan araçlar**ve Özellikler**' i seçin ve **değiştirme** iletişim kutusunu görüntüler.
+1. Visual Studio menü çubuğunda **Araçlar**' ı seçin ve  >  Visual Studio yükleyicisi açan araçlar**ve Özellikler**' i seçin ve **değiştirme** iletişim kutusunu görüntüler.
 
 1. **.Net masaüstü geliştirme** iş yükünün kullanılabilir olup olmadığını denetleyin. İş yükü yüklenmemişse, yanındaki onay kutusunu işaretleyin ve ardından yüklemeyi başlatmak için **Değiştir** ' i seçin. İndirmesi ve yüklenmesi birkaç dakika sürebilir.
 
@@ -61,7 +61,7 @@ Bir sonraki adım, [konuşma SDK 'Sı NuGet paketini](https://aka.ms/csspeech/nu
 
 Şimdi, konsol uygulamasını derlemek ve çalıştırmak için bilgisayarınızın mimarisiyle eşleşen bir platform yapılandırması oluşturun.
 
-1. Menü çubuğundan **derleme** > **Configuration Manager**' yi seçin. **Configuration Manager** iletişim kutusu görüntülenir.
+1. Menü çubuğundan **derleme**  >  **Configuration Manager**' yi seçin. **Configuration Manager** iletişim kutusu görüntülenir.
 
    ![Configuration Manager iletişim kutusu](../articles/cognitive-services/speech-service/media/sdk/vs-configuration-manager-dialog-box.png)
 

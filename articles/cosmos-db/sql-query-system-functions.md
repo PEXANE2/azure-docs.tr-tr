@@ -8,10 +8,10 @@ ms.date: 12/02/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 6f41adbb726313ef095084d079dc7852736e0c06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74870539"
 ---
 # <a name="system-functions-azure-cosmos-db"></a>Sistem işlevleri (Azure Cosmos DB)
@@ -37,7 +37,7 @@ Cosmos DB işlevleri ve ANSI SQL işlevleri arasındaki temel fark, Cosmos DB i�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Cosmos DB giriş](introduction.md)
+- [Azure Cosmos DB'ye giriş](introduction.md)
 - [Dizi işlevleri](sql-query-array-functions.md)
 - [Tarih ve saat işlevleri](sql-query-date-time-functions.md)
 - [Matematik işlevleri](sql-query-mathematical-functions.md)
@@ -45,4 +45,4 @@ Cosmos DB işlevleri ve ANSI SQL işlevleri arasındaki temel fark, Cosmos DB i�
 - [Dize işlevleri](sql-query-string-functions.md)
 - [Tür denetimi işlevleri](sql-query-type-checking-functions.md)
 - [Kullanıcı tanımlı Işlevler](sql-query-udfs.md)
-- [Toplamalar](sql-query-aggregates.md)
+- [Toplamlar](sql-query-aggregates.md)

@@ -13,10 +13,10 @@ ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 6bc07dc4a46327981c432cf8982f0c3a646fda0d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89068924"
 ---
 # <a name="use-the-sign-ins-report-to-review-azure-multi-factor-authentication-events"></a>Azure Multi-Factor Authentication olaylarını gözden geçirmek için oturum açma işlemleri raporunu kullanın
@@ -127,7 +127,7 @@ Aşağıdaki tablo, önceki Portal adımlarında veya PowerShell komutlarından 
 |SUCCESS_NO_PIN_BUT_TIMEOUT | Telefon girişi yok-zaman aşımına uğradı | Çağrı Yanıtlandı, ancak yanıt yoktu. Bu genellikle çağrının sesli posta tarafından çekildiğini gösterir. |
 | SUCCESS_PIN_EXPIRED | PIN 'in geçerliliği geçildi ve değiştirilmedi | Kullanıcının PIN 'inin kullanım zaman aşımına uğradı ve bunu değiştirmesi istenir, ancak PIN değişikliği başarıyla tamamlanamadı. |
 | SUCCESS_USED_CACHE | Kullanılan önbellek | Yapılandırılmış önbellek zaman diliminde aynı Kullanıcı adı için önceki başarılı bir kimlik doğrulama işlemi olduğundan, kimlik doğrulama Multi-Factor Authentication çağrısı olmadan başarılı oldu. |
-| SUCCESS_BYPASSED_AUTH | Atlanan kimlik doğrulaması | Kimlik doğrulaması, Kullanıcı için tek seferlik bir geçiş başlatıldı kullanılarak başarılı oldu. Atlama hakkında daha fazla bilgi için Atlanan Kullanıcı Geçmişi raporuna bakın. |
+| SUCCESS_BYPASSED_AUTH | Atlanan kimlik doğrulaması | Kimlik doğrulaması, Kullanıcı için başlatılan bir One-Time geçişi kullanılarak başarılı oldu. Atlama hakkında daha fazla bilgi için Atlanan Kullanıcı Geçmişi raporuna bakın. |
 | SUCCESS_USED_IP_BASED_CACHE | Kullanılan IP tabanlı önbellek | Yapılandırılan önbellek zaman diliminde aynı Kullanıcı adı, kimlik doğrulama türü, uygulama adı ve IP için bir önceki başarılı kimlik doğrulama işlemi başarısız olduğundan kimlik doğrulaması Multi-Factor Authentication çağrısı olmadan başarılı oldu. |
 | SUCCESS_USED_APP_BASED_CACHE | Kullanılan uygulama tabanlı önbellek | Aynı Kullanıcı adı, kimlik doğrulama türü ve yapılandırılmış önbellek zaman çerçevesi içinde uygulama adı için önceki başarılı kimlik doğrulamasından bu yana kimlik doğrulaması Multi-Factor Authentication çağrısı olmadan başarılı oldu. |
 | SUCCESS_INVALID_INPUT | Geçersiz telefon girişi | Telefondan gönderilen yanıt geçerli değil. Bu, bir faks makinesinden veya modemden olabilir veya Kullanıcı PIN 'inin bir parçası olarak * girmiş olabilir. |

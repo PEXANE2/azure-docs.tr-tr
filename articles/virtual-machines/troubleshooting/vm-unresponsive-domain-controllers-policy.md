@@ -1,5 +1,5 @@
 ---
-title: Varsayılan etki alanı denetleyicileri ilkesi uygulanırken VM yanıt vermiyor
+title: Varsayılan etki alanı denetleyicisi ilkesi uygulanırken VM yanıt vermiyor
 titlesuffix: Azure Virtual Machines
 description: Bu makalede, varsayılan etki alanı denetleyicileri Ilkesinin bir Azure VM 'nin önyüklemesini önlediği sorunları gidermeye yönelik adımlar sağlanmaktadır.
 services: virtual-machines-windows, azure-resource-manager
@@ -16,13 +16,13 @@ ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: v-miegge
 ms.openlocfilehash: 53e1daca47a2917a19cbc30db5348e4fcc06b325
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90039156"
 ---
-# <a name="vm-is-unresponsive-while-applying-default-domain-controllers-policy"></a>Varsayılan etki alanı denetleyicileri ilkesi uygulanırken VM yanıt vermiyor
+# <a name="vm-is-unresponsive-while-applying-default-domain-controllers-policy"></a>Varsayılan etki alanı denetleyicisi ilkesi uygulanırken VM yanıt vermiyor
 
 Bu makalede, varsayılan etki alanı denetleyicileri Ilkesinin bir Azure sanal makinesinin (VM) önyüklemesini önlediği sorunları gidermeye yönelik adımlar sağlanmaktadır.
 

@@ -4,10 +4,10 @@ description: Mantıksal uygulamanıza Application Insights bağlayıcısını ek
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.openlocfilehash: f6406c2e6fb933c561a8ae54009499768c81a204
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90970871"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Logic Apps kullanarak Application Insights süreçlerini otomatikleştirin
@@ -26,7 +26,7 @@ Ek eylemleri de ekleyebilirsiniz. Azure App Service Logic Apps özelliği yüzle
 Bu öğreticide, bir Web uygulamasının verilerinde öznitelikleri gruplandırmak için Analytics oto kümesi algoritmasını kullanan bir mantıksal uygulama oluşturmayı öğreneceksiniz. Akış, sonuçları otomatik olarak e-posta ile gönderir ve Application Insights analizlerini nasıl kullanabileceğinizi ve Logic Apps birlikte nasıl kullanabileceğinizi gösteren bir örnektir. 
 
 ### <a name="step-1-create-a-logic-app"></a>1. Adım: mantıksal uygulama oluşturma
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. **Kaynak oluştur ' a**tıklayın, **Web ve mobil**' yi seçin ve ardından **mantıksal uygulama**' yı seçin.
 
     ![Yeni mantıksal uygulama penceresi](./media/automate-with-logic-apps/1createlogicapp.png)
@@ -118,7 +118,7 @@ Kendi sorgularınızı oluştururken, bunları akışınıza eklemeden önce ana
       ![Office 365 e-posta Yapılandırması ekranı](./media/automate-with-logic-apps/12emailattachment.png)
 
 ### <a name="step-7-save-and-test-your-logic-app"></a>7. Adım: mantıksal Uygulamanızı kaydetme ve test etme
-* **Kaydet**’a tıklayarak değişikliklerinizi kaydedin.
+* Değişikliklerinizi kaydetmek için **Kaydet**’e tıklayın.
 
 Tetikleyicinin mantıksal uygulamayı çalıştırmasını bekleyebilir veya **Çalıştır**' ı seçerek mantıksal uygulamayı hemen çalıştırabilirsiniz.
 

@@ -11,10 +11,10 @@ ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: e1a9d2722987464b1bb3c8b1489a2d1258a41d15
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91273101"
 ---
 # <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>Azure portal SQL Server çalıştıran bir Linux sanal makinesi sağlayın
@@ -95,7 +95,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     * **Ağ**
     * **Yönetim**
     * **Konuk yapılandırması**
-    * **Etiketler**
+    * **Lerimi**
 
 1. **Gözden geçir ve oluştur**’u seçin.
 1. **Gözden geçir + oluştur** bölmesinde **Oluştur**' u seçin.

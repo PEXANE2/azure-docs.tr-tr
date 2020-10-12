@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
 ms.openlocfilehash: f15bee7e802b04d04a3c87d7f84fc975b88bf260
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86536581"
 ---
 # <a name="azure-farmbeats-apis"></a>Azure Farmtempts API 'Leri
@@ -29,7 +29,7 @@ Farmtts API 'Leri Swagger teknik belgelerini içerir. Tüm API 'Ler ve bunların
 
 Aşağıdaki tabloda, Farmrets veri hub 'ında bulunan tüm nesneler ve kaynaklar özetlenmektedir:
 
-| Nesneler ve kaynaklar | Description
+| Nesneler ve kaynaklar | Açıklama
 --- | ---|
 Çiftlik | Grup, Farmtts sistemi içinde ilgilendiğiniz fiziksel bir konuma karşılık gelir. Her grubun bir grup adı ve benzersiz bir grup KIMLIĞI vardır. |
 Cihaz  | Cihaz, grupta bulunan bir fiziksel cihaza karşılık gelir. Her cihazın benzersiz bir cihaz KIMLIĞI vardır. Bir cihaz genellikle Grup KIMLIĞI olan bir gruba sağlanır.
@@ -52,7 +52,7 @@ RoleAssignment  |Roleatama, bir rolün Kullanıcı veya hizmet sorumlusu atamas�
 
 JSON, rastgele veri yapılarının basit bir metin gösterimini sağlayan, dilden bağımsız ortak bir veri biçimidir. Daha fazla bilgi için [JSON Web sitesine](https://www.json.org/)bakın.
 
-## <a name="authentication-and-authorization"></a>Kimlik doğrulama ve yetkilendirme
+## <a name="authentication-and-authorization"></a>Kimlik doğrulaması ve yetkilendirme
 
 REST API HTTP istekleri Azure Active Directory (Azure AD) ile korunur.
 REST API 'Lerine kimliği doğrulanmış bir istek yapmak için, API 'yi çağırabilmeniz için istemci kodu geçerli kimlik bilgileriyle kimlik doğrulaması gerektirir. Kimlik doğrulaması, Azure AD tarafından çeşitli aktörler arasında düzenlenir. Kimlik doğrulaması kanıtı olarak istemcinize bir erişim belirteci sağlar. Belirteç daha sonra REST API isteklerinin HTTP yetkilendirme üstbilgisinde gönderilir. Azure AD kimlik doğrulaması hakkında daha fazla bilgi için bkz. geliştiriciler için [Azure Active Directory](https://portal.azure.com) .
@@ -71,7 +71,7 @@ Azure Farmrets veri hub 'ına bir API çağrısı yaptığınızda belirtmeniz g
 **Üst bilgi** | **Açıklama ve örnek**
 --- | ---
 İçerik Türü  | İstek biçimi (Content-Type: Application/ <format> ). Azure Farmrets veri hub 'ı API 'Leri için, biçim JSON olur. Content-Type: Application/JSON
-Yetkilendirme  | API çağrısı yapmak için gereken erişim belirtecini belirtir. Yetkilendirme: taşıyıcı <erişim-belirteç>
+Yetkilendirme  | API çağrısı yapmak için gereken erişim belirtecini belirtir. Yetkilendirme: taşıyıcı <Access-Token>
 Kabul Et | Yanıt biçimi. Azure Farmrets veri hub 'ı API 'Leri için, biçim JSON olur. Kabul et: uygulama/JSON
 
 ### <a name="api-requests"></a>API istekleri
@@ -107,7 +107,7 @@ REST GET çağrıları için, istek URI 'sinde bir veya daha fazla sorgu paramet
 
 Azure Farmrets veri hub 'ı API 'Leri, standart HTTP hatalarını döndürür. En yaygın hata kodları şunlardır:
 
- |Hata kodu             | Description |
+ |Hata kodu             | Açıklama |
  |---                    | --- |
  |200                    | Başarılı |
  |201                    | Oluşturma (post) başarılı |

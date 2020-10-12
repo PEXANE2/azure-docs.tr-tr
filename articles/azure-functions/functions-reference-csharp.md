@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 12/12/2017
 ms.author: cshoe
 ms.openlocfilehash: 4d5388f850f47323f6ad79f9f91e617e506546bf
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88205440"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Işlevleri C# betiği (. CSX) geliştirici başvurusu
@@ -483,7 +483,7 @@ public static async Task Run(string input, Binder binder)
 
 ### <a name="multiple-attribute-example"></a>Birden çok öznitelik örneği
 
-Yukarıdaki örnek, işlev uygulamasının ana depolama hesabı bağlantı dizesi (yani) için uygulama ayarını alır `AzureWebJobsStorage` . [Storageaccountattribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) ' i ekleyip öznitelik dizisini Içine geçirerek depolama hesabı için kullanılacak özel bir uygulama ayarı belirtebilirsiniz `BindAsync<T>()` . `Binder`Değil parametresini kullanın `IBinder` .  Örnek:
+Yukarıdaki örnek, işlev uygulamasının ana depolama hesabı bağlantı dizesi (yani) için uygulama ayarını alır `AzureWebJobsStorage` . [Storageaccountattribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) ' i ekleyip öznitelik dizisini Içine geçirerek depolama hesabı için kullanılacak özel bir uygulama ayarı belirtebilirsiniz `BindAsync<T>()` . `Binder`Değil parametresini kullanın `IBinder` .  Örneğin:
 
 ```cs
 using Microsoft.Azure.WebJobs;

@@ -9,17 +9,17 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 93cabb566db02de7ef991fe9cdd293f8c399c3a3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91272965"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanarak haritadaki trafik verilerini gösterme Android SDK
 
 Akış verileri ve olay verileri, haritada görüntülenebilen iki trafik verisi türüdür. Bu kılavuzda her iki trafik verisi türünün nasıl görüntüleneceği gösterilmektedir. Olaylar verileri, kurulumlarını, yol kapanışları ve kazalardan dolayı gibi şeyler için nokta ve hat tabanlı verilerden oluşur. Akış verileri, yolda trafik akışı hakkında ölçümleri gösterir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Haritada trafiği gösterebilmeniz için önce [bir Azure hesabı](quick-demo-map-app.md#create-an-azure-maps-account)oluşturmanız ve [bir abonelik anahtarı edinmeniz](quick-demo-map-app.md#get-the-primary-key-for-your-account)gerekir. Ardından, [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) yüklemeniz ve bir harita yüklemeniz gerekir.
 
@@ -53,11 +53,11 @@ import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
 
 Trafik akışı verilerini ayarlamak için aşağıdaki kod parçacığını kullanın. Önceki bölümde bulunan koda benzer şekilde, yöntemin dönüş değerini yöntemine geçiyoruz `flow` `setTraffic` . Öğesine geçirilebilecek dört değer vardır `flow` ve her bir değer `flow` ilgili değeri döndürecek şekilde tetiklenebilir. Dönüş değeri `flow` daha sonra öğesine bağımsız değişken olarak geçirilir `setTraffic` . Şu dört değer için aşağıdaki tabloya bakın:
 
-|Akış değeri | Description|
+|Akış değeri | Açıklama|
 | :-- | :-- |
 | TrafficFlow. NONE | Harita üzerinde trafik verilerini görüntülemiyor |
 | TrafficFlow. GÖRELI | Yolun serbest akış hızına göre trafik verilerini gösterir |
-| TrafficFlow. RELATIVE_DELAY | Beklenen ortalama gecikmeden daha yavaş olan bölgeleri görüntüler |
+| TrafficFlow.RELATIVE_DELAY | Beklenen ortalama gecikmeden daha yavaş olan bölgeleri görüntüler |
 | TrafficFlow. ABSOLUTE | Yolda tüm taşıtın mutlak hızını gösterir |
 
 ```java
