@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 50e202d26574c0fc8adfeb7f73eb150ebb1781af
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89664636"
 ---
 # <a name="troubleshoot-self-service-password-reset-writeback-in-azure-active-directory"></a>Azure Active Directory içinde self servis parola sıfırlama geri yazma sorunlarını giderme
@@ -104,29 +104,29 @@ Azure AD Connect parola geri yazma işlemini gerçekleştirmek için **parola s�
 1. Azure AD Connect sunucusunda oturum açın ve **Synchronization Service Manager** **Start**  >  **eşitleme hizmetini**Başlat ' a tıklayarak Synchronization Service Manager başlatın.
 1. **Bağlayıcılar** sekmesinde şirket içi **Active Directory Domain Services** Bağlayıcısı ' nı seçin ve ardından **Özellikler**' i seçin.
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager.png" alt-text="Özelliklerin nasıl düzenleneceğini gösteren Synchronization Service Manager" border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager.png" alt-text="GUI 'yi kullanarak Azure AD Eşitleme hizmetini yeniden başlatın" border="false":::
   
 1. Açılır pencerede **Active Directory ormana Bağlan** ' ı seçin ve **Kullanıcı adı** özelliğini unutmayın. Bu özellik, dizin eşitlemesi gerçekleştirmek için Azure AD Connect tarafından kullanılan AD DS hesabıdır.
 
     Parola geri yazma işlemini gerçekleştirmek için Azure AD Connect AD DS hesabının parola sıfırlama iznine sahip olması gerekir. Aşağıdaki adımlarda bu kullanıcı hesabındaki izinleri kontrol edersiniz.
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager-properties.png" alt-text="Eşitleme hizmeti Active Directory Kullanıcı hesabı bulma" border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager-properties.png" alt-text="GUI 'yi kullanarak Azure AD Eşitleme hizmetini yeniden başlatın" border="false":::
   
 1. Şirket içi etki alanı denetleyicisinde oturum açın ve **Active Directory Kullanıcıları ve bilgisayarları** uygulamasını başlatın.
 1. **Görünüm** ' ü seçin ve **Gelişmiş Özellikler** seçeneğinin etkinleştirildiğinden emin olun.  
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-advanced-features.png" alt-text="Active Directory Kullanıcıları ve bilgisayarları gelişmiş özellikleri gösterir" border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-advanced-features.png" alt-text="GUI 'yi kullanarak Azure AD Eşitleme hizmetini yeniden başlatın" border="false":::
   
 1. Doğrulamak istediğiniz AD DS kullanıcı hesabını bulun. Hesap adına sağ tıklayın ve **Özellikler**' i seçin.  
 1. Açılır pencerede **güvenlik** sekmesine gidin ve **Gelişmiş**' i seçin.  
 1. **Yönetici Için gelişmiş güvenlik ayarları** açılır penceresinde, **etkin erişim** sekmesine gidin.
 1. **Kullanıcı Seç**' i seçin, Azure AD Connect tarafından kullanılan AD DS hesabını seçin ve ardından **etkin erişimi görüntüle**' yi seçin.
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-effective-access.png" alt-text="Eşitleme hesabını gösteren geçerli erişim sekmesi" border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-effective-access.png" alt-text="GUI 'yi kullanarak Azure AD Eşitleme hizmetini yeniden başlatın" border="false":::
   
 1. Aşağı kaydırın ve **sıfırlama parolasını**bulun. Girişte bir onay işareti varsa, AD DS hesabının seçili Active Directory Kullanıcı hesabının parolasını sıfırlama izni vardır.  
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/check-permissions.png" alt-text="Eşitleme hesabının parola sıfırlama iznine sahip olduğu doğrulanıyor" border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/check-permissions.png" alt-text="GUI 'yi kullanarak Azure AD Eşitleme hizmetini yeniden başlatın" border="false":::
 
 ## <a name="common-password-writeback-errors"></a>Ortak parola geri yazma hataları
 
@@ -150,7 +150,7 @@ Parola geri yazma ile ilgili sorunları giderirken en iyi yöntem, Azure AD Conn
 
 ### <a name="if-the-source-of-the-event-is-adsync"></a>Olayın kaynağı ADSync ise
 
-| Kod | Ad veya ileti | Description |
+| Kod | Ad veya ileti | Açıklama |
 | --- | --- | --- |
 | 6329 | BAıL: MMS (4924) 0x80230619: "bir kısıtlama, parolanın belirtilen geçerli bir şekilde değiştirilmesini engelliyor." | Bu olay, parola geri yazma hizmeti yerel dizininizde, etki alanının parola yaşı, geçmişi, karmaşıklık veya filtreleme gereksinimlerini karşılamayan bir parola ayarlamaya çalıştığında oluşur. <br> <br> En az bir parola yaşı varsa ve kısa süre önce bu zaman içindeki parolayı değiştirdiyseniz, etki alanındaki belirli bir yaşa ulaşıncaya kadar parolayı tekrar değiştiremezsiniz. Sınama amacıyla, minimum yaş 0 olarak ayarlanmalıdır. <br> <br> Parola geçmişi gereksinimleriniz etkinse, son *n* kez kullanılmamış bir parola seçmeniz gerekir, burada *n* parola geçmişi ayarıdır. Son *N* kez kullanılan bir parola seçerseniz, bu durumda bir hata görürsünüz. Sınama amacıyla parola geçmişi 0 olarak ayarlanmalıdır. <br> <br> Parola karmaşıklığı gereksinimleriniz varsa, Kullanıcı bir parolayı değiştirmeye veya sıfırlamaya çalıştığında bunların hepsi zorlanır. <br> <br> Parola Filtreleriniz etkinse ve Kullanıcı filtreleme ölçütlerine uymayan bir parola seçerse, sıfırlama veya değiştirme işlemi başarısız olur. |
 | 6329 | MMS (3040): admaexport. cpp (2837): sunucuda LDAP parola ilkesi denetimi yoktur. | DC 'lerde LDAP_SERVER_POLICY_HINTS_OID Control (1.2.840.113556.1.4.2066) etkinleştirilmemişse bu sorun oluşur. Parola geri yazma özelliğini kullanmak için, denetimi etkinleştirmeniz gerekir. Bunu yapmak için, DC 'Ler Windows Server 2008R2 veya üzeri sürümlerde olmalıdır. |
@@ -158,7 +158,7 @@ Parola geri yazma ile ilgili sorunları giderirken en iyi yöntem, Azure AD Conn
 
 ### <a name="if-the-source-of-the-event-is-passwordresetservice"></a>Olayın kaynağı PasswordResetService ise
 
-| Kod | Ad veya ileti | Description |
+| Kod | Ad veya ileti | Açıklama |
 | --- | --- | --- |
 | 31001 | PasswordResetStart | Bu olay, şirket içi hizmetin, buluttan kaynaklanan bir Federasyon, geçişli kimlik doğrulama veya parola karması ile eşitlenen Kullanıcı için bir parola sıfırlama isteği algıladığını gösterir. Bu olay, her parola sıfırlama geri yazma işlemindeki ilk olaydır. |
 | 31002 | PasswordResetSuccess | Bu olay, bir kullanıcının parola sıfırlama işlemi sırasında yeni bir parola seçtiği anlamına gelir. Bu parolanın, kurumsal parola gereksinimlerini karşıladığını belirledik. Parola, yerel Active Directory ortamına başarıyla geri yazıldı. |
@@ -217,7 +217,7 @@ Size uygun bir şekilde yardımcı olması için, bir servis talebi açarken mü
 * **Destek kodu**: Kullanıcı hatayı gördüğünüzde oluşturulan destek kodu nedir?
    * Bu kodu bulmak için, hatayı yeniden oluşturun ve ardından ekranın alt kısmındaki **destek kodu** bağlantısını seçin ve destek mühendisine sonuçları veren GUID 'yi gönderin.
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-support-code.png" alt-text="Destek kodu, Web tarayıcı penceresinin sağ alt kısmında bulunur.":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-support-code.png" alt-text="GUI 'yi kullanarak Azure AD Eşitleme hizmetini yeniden başlatın":::
 
   * En altta destek kodu olmayan bir sayfadan karşılaşırsanız, F12 ' yi seçin ve SID ve CıD için arama yapın ve bu iki sonucu destek mühendisine gönderin.
 * **Tarih, saat ve saat dilimi**: Hatanın gerçekleştiği *saat dilimiyle* kesin tarih ve saati dahil edin.

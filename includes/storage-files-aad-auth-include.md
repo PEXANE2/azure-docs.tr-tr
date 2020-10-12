@@ -9,10 +9,10 @@ ms.date: 07/30/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 1da1cfff05418219fdf5217b612103e50efca05d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87841992"
 ---
 [Azure dosyaları](../articles/storage/files/storage-files-introduction.md) , [Şirket içi Active Directory Domain Services (AD DS)](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) ve [Azure Active Directory Domain Services (Azure AD DS)](../articles/active-directory-domain-services/overview.md)aracılığıyla sunucu ileti bloğu (SMB) üzerinden kimlik tabanlı kimlik doğrulamasını destekler. Bu makale, Azure dosya paylaşımlarının, SMB üzerinden Azure dosya paylaşımlarına kimlik tabanlı erişimi desteklemek için şirket içinde veya Azure 'da etki alanı hizmetlerini nasıl kullanabileceği konusunda odaklanır. Azure dosya paylaşımlarınız için kimlik tabanlı erişimin etkinleştirilmesi, var olan dizin hizmetinizi değiştirmeden mevcut dosya sunucularını Azure dosya paylaşımlarıyla değiştirmenize izin verir. böylece, paylaşımlara sorunsuz Kullanıcı erişimi sağlayabilirsiniz. 

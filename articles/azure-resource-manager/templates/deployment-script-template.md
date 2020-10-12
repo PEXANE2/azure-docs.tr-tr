@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/24/2020
 ms.author: jgao
 ms.openlocfilehash: fb6d1c9e0e2ca545be850af22df15b342cf8d82c
-ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89667497"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Şablonlarda dağıtım betikleri kullanma (Önizleme)
@@ -325,7 +325,7 @@ Kullanıcı betiği, yürütme sonuçları ve STDOUT dosyası depolama hesabın�
 
 Çıkış klasörü, üzerinde bir **executionresult.js** ve betik çıkış dosyası içerir. Betik yürütme hata iletisini ** üzerindeexecutionresult.js**görebilirsiniz. Çıkış dosyası yalnızca komut dosyası başarıyla yürütüldüğünde oluşturulur. Giriş klasörü bir sistem PowerShell betik dosyası ve kullanıcı dağıtımı komut dosyalarını içerir. Kullanıcı dağıtımı betik dosyasını düzeltilmiş bir kodla değiştirebilir ve dağıtım betiğini Azure Container Instance ' dan yeniden çalıştırabilirsiniz.
 
-### <a name="use-the-azure-portal"></a>Azure portalı kullanma
+### <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
 Dağıtım komut dosyası kaynağını dağıttıktan sonra, kaynak Azure portal kaynak grubunun altında listelenir. Aşağıdaki ekran görüntüsünde, bir dağıtım betiği kaynağının genel bakış sayfası gösterilmektedir:
 
@@ -344,7 +344,7 @@ Azure PowerShell kullanarak, Dağıtım betiklerini abonelik veya kaynak grubu k
 - [Remove-AzDeploymentScript](/powershell/module/az.resources/remove-azdeploymentscript): bir dağıtım betiğini ve ilişkili kaynaklarını kaldırır.
 - [Save-AzDeploymentScriptLog](/powershell/module/az.resources/save-azdeploymentscriptlog): bir dağıtım betiği yürütmenin günlüğünü diske kaydeder.
 
-Get-AzDeploymentScript çıkışı şuna benzer:
+Get-AzDeploymentScript çıktısı şuna benzerdir:
 
 ```output
 Name                : runPowerShellInlineWithOutput
@@ -562,7 +562,7 @@ Betiği başarıyla test edildikten sonra, şablonlarınızı şablonlarda bir d
 
 ## <a name="deployment-script-error-codes"></a>Dağıtım betiği hata kodları
 
-| Hata kodu | Description |
+| Hata kodu | Açıklama |
 |------------|-------------|
 | DeploymentScriptInvalidOperation | Şablondaki dağıtım betiği kaynak tanımı geçersiz özellik adları içeriyor. |
 | DeploymentScriptResourceConflict | Terminal dışı durumda olan bir dağıtım betiği kaynağı silinemez ve yürütme 1 saati aşmadı. Ya da aynı dağıtım betiğini aynı kaynak tanımlayıcısıyla (aynı abonelik, kaynak grubu adı ve kaynak adı), aynı anda farklı betik gövdesi içeriğiyle yeniden çalıştıramazsınız. |

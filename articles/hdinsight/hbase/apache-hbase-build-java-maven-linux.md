@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seodec18, devx-track-java
 ms.date: 12/24/2019
 ms.openlocfilehash: 7cd368df1f2a94c8f49454530e7f5997f2659a32
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323783"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Apache HBase için Java uygulamaları oluşturma
@@ -102,7 +102,7 @@ Bu bölüm, projenin **HBase-Client** ve **Phoenix-Core** bileşenleri gerektiğ
 
 | HDInsight küme sürümü | Kullanılacak Apache HBase sürümü |
 | --- | --- |
-| 3,6 | 1.1.2 |
+| 3.6 | 1.1.2 |
 | 4.0 | 2.0.0 |
 
 HDInsight sürümleri ve bileşenleri hakkında daha fazla bilgi için bkz. [HDInsight ile kullanılabilen farklı Apache Hadoop bileşenleri nelerdir](../hdinsight-component-versioning.md).
@@ -703,7 +703,7 @@ Aşağıdaki adımlarda, Apache HBase kümeniz için JAR 'yi varsayılan depolam
     Start-HBaseExample -className com.microsoft.examples.DeleteTable -clusterName $myCluster
     ```
 
-### <a name="no-results-or-unexpected-results-when-using-start-hbaseexample"></a>Start-HBaseExample kullanılırken sonuç yok veya beklenmedik sonuç
+### <a name="no-results-or-unexpected-results-when-using-start-hbaseexample"></a>Start-HBaseExample kullanırken sonuç veya beklenmedik sonuç yok
 
 `-showErr`İşi çalıştırırken üretilen standart hatayı (stderr) görüntülemek için parametresini kullanın.
 

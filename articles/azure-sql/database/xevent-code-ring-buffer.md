@@ -12,10 +12,10 @@ ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
 ms.openlocfilehash: 57449b0bbd39b6ea04ecae5a3ad766ae5687ca0b
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619840"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL veritabanı 'nda genişletilmiş olaylar için halka arabelleği hedef kodu
@@ -28,20 +28,20 @@ Sınama sırasında genişletilmiş bir olay için en kolay hızlı bir şekilde
 Bu konuda şu şekilde bir Transact-SQL kod örneği sunulmaktadır:
 
 1. Göstermek üzere verileri içeren bir tablo oluşturur.
-2. Var olan genişletilmiş bir olay için, örneğin **SqlServer. sql_statement_starting**için bir oturum oluşturur.
+2. Var olan genişletilmiş bir olay için bir oturum oluşturur, yani **SqlServer.sql_statement_starting**.
 
    * Olay, belirli bir Update dize içeren SQL deyimleriyle sınırlıdır: **'% Update tabEmployee% ' gibi bir deyim**.
-   * Olayın çıkışını halka arabelleği türünde bir hedefe göndermeyi seçer, yani  **package0. ring_buffer**.
+   * Olayın çıkışını halka arabelleği türünde bir hedefe göndermeyi seçer, yani  **package0.ring_buffer**.
 3. Olay oturumunu başlatır.
 4. Birkaç basit SQL UPDATE deyimi yayınlar.
 5. Halka arabelleğinden olay çıktısını almak için bir SQL SELECT ifadesiyle karşılaşır.
 
-   * **sys. dm_xe_database_session_targets** ve diğer dinamik yönetim görünümleri (DMVs) birleştirilir.
+   * **sys.dm_xe_database_session_targets** ve diğer dinamik yönetim görünümleri (DMVs) birleştirilir.
 6. Olay oturumunu sonlandırır.
 7. , Kaynaklarını serbest bırakmak için halka arabelleği hedefini bırakır.
 8. Olay oturumunu ve tanıtım tablosunu bırakır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir Azure hesabı ve aboneliği [Ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
 * İçinde tablo oluşturabileceğiniz herhangi bir veritabanı.
@@ -57,8 +57,8 @@ Bu konuda şu şekilde bir Transact-SQL kod örneği sunulmaktadır:
 
 Çok küçük değişikliklerle, aşağıdaki halka arabelleği kod örneği Azure SQL veritabanı veya Microsoft SQL Server üzerinde çalıştırılabilir. Bu fark, 5. adımdaki FROM yan tümcesinde kullanılan, bazı dinamik yönetim görünümlerinin (DMVs) adında bulunan ' _database ' düğümünün varlığına sahip olur. Örneğin:
 
-* sys. dm_xe<strong>_database</strong>_session_targets
-* sys. dm_xe_session_targets
+* sys.dm_xe<strong>_database</strong>_session_targets
+* sys.dm_xe_session_targets
 
 &nbsp;
 
