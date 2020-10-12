@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: dc1599fc0c2f8c55c709ab674c10dd53c8d8dc04
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84887715"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Microsoft Azure CDN’de kenar düğümü performansını çözümleme
@@ -173,8 +173,8 @@ Bu modüldeki her rapor, farklı türlerde ölçümler için bant genişliği ve
 | Sıkıştırma türleri |İstenen varlıkları kenar sunucularımızla sıkıştırılıp sıkıştırılmadığını kesen bir halka grafik içerir. Sıkıştırılan varlıkların yüzdesi, kullanılan sıkıştırma türüne göre bölünür. Her bir sıkıştırma türü ve durumu için grafiğin altında ayrıntılı bilgiler verilmiştir. |
 | Dosya türleri |Hesabınız için CDN 'umuz aracılığıyla istenen ilk 10 dosya türünü görüntüleyen bir çubuk grafik içerir. Bu raporun amaçları doğrultusunda, bir dosya türü varlığın dosya adı uzantısı ve Internet medya türü (örn. html \[ Metni/HTML \] ,. htm \[ metin/html \] ,. aspx \[ Metni/HTML vb \] .) tarafından tanımlanır. Ayrıntılı bilgiler, en üstteki 100 dosya türleri için grafiğin altında verilmiştir. |
 | Benzersiz dosyalar |Belirli bir günde belirli bir süre boyunca istenen toplam benzersiz varlık sayısını çizmiş bir grafik içerir. |
-| Belirteç kimlik doğrulama özeti |İstenen varlıkların belirteç tabanlı kimlik doğrulamasıyla korunup korunmayacağı hakkında hızlı bir genel bakış sağlayan bir pasta grafiği içerir. Korunan varlıklar, denendiği kimlik doğrulamasının sonuçlarına göre grafikte görüntülenir. |
-| Belirteç kimlik doğrulaması reddetme ayrıntıları |Belirteç tabanlı kimlik doğrulaması nedeniyle reddedilen ilk 10 isteği görüntülemenize olanak tanıyan bir çubuk grafik içerir. |
+| Belirteç kimlik doğrulama özeti |İstenen varlıkların Token-Based kimlik doğrulaması tarafından korunup korunmayacağı hakkında hızlı bir genel bakış sağlayan bir pasta grafik içerir. Korunan varlıklar, denendiği kimlik doğrulamasının sonuçlarına göre grafikte görüntülenir. |
+| Belirteç kimlik doğrulaması reddetme ayrıntıları |Token-Based kimlik doğrulaması nedeniyle reddedilen ilk 10 isteği görüntülemenize olanak tanıyan bir çubuk grafik içerir. |
 | HTTP yanıt kodları |Uç sunucularımız tarafından HTTP istemcilerinize gönderilen HTTP durum kodlarının dökümünü (ör., 200 Tamam, 403 Yasak, 404 bulunamadı vb.) sağlar. Pasta grafik, varlıklarınızın nasıl sunulduğunu hızlı bir şekilde değerlendirmenize olanak tanır. Grafiğin altındaki her yanıt kodu için ayrıntılı istatistiksel veriler sağlanır. |
 | 404 hata |404 olmayan bir yanıt kodu ile sonuçlanan ilk 10 isteği görüntülemenize olanak tanıyan bir çubuk grafik içerir. |
 | 403 hata |403 yasaklanmış yanıt kodu ile sonuçlanan ilk 10 isteği görüntülemenize olanak tanıyan bir çubuk grafik içerir. 403 yasaklanmış bir yanıt kodu, bir istek müşteri kaynak sunucusu veya POP 'umuza ait bir uç sunucu tarafından reddedildiğinde oluşur. |

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.service: automation
 ms.custom: has-adal-ref
 ms.openlocfilehash: 1cbb5be8c1a4045b218c0e6bf5ac7ed0b901aa80
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87904811"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Runbook sorunlarını giderme
@@ -122,7 +122,7 @@ Neyin yanlış olduğunu belirlemek için şu adımları izleyin:
    }
    ```
 
-## <a name="scenario-run-login-azurermaccount-to-log-in"></a><a name="login-azurerm"></a>Senaryo: oturum açmak için login-AzureRMAccount komutunu çalıştırın
+## <a name="scenario-run-login-azurermaccount-to-log-in"></a><a name="login-azurerm"></a>Senaryo: oturum açmak için Login-AzureRMAccount çalıştırın
 
 ### <a name="issue"></a>Sorun
 
@@ -677,7 +677,7 @@ Farklı Çalıştır hesabınızın Key Vault erişmek için yeterli izinlere sa
 
 ## <a name="recommended-documents"></a>Önerilen belgeler
 
-* [Azure Otomasyonu’nda runbook yürütme](../automation-runbook-execution.md)
+* [Azure Otomasyonu 'nda runbook yürütmesi](../automation-runbook-execution.md)
 * [Azure Otomasyonu 'nda runbook başlatma](../start-runbooks.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar

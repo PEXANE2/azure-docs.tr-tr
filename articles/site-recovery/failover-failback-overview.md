@@ -4,10 +4,10 @@ description: Azure Site Recovery yük devretme ve failable hakkında bilgi edini
 ms.topic: conceptual
 ms.date: 12/24/2019
 ms.openlocfilehash: d9b54f3c452212e12419a5ffd67b116c8660308d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87089541"
 ---
 # <a name="about-on-premises-disaster-recovery-failoverfailback"></a>Şirket içi olağanüstü durum kurtarma yük devretme/yeniden çalışma hakkında
@@ -43,7 +43,7 @@ Yük devretme iki aşamalı bir etkinliktir:
 
 RDP/SSH kullanılarak yük devretmeden sonra oluşturulan Azure VM 'lerine bağlanmak için bazı gereksinimler vardır.
 
-**Yükünü** | **Konum** | **Eylemler**
+**Yük devretme** | **Konum** | **Eylemler**
 --- | --- | ---
 **Azure VM (Windows (** | Yük devretmeden önce şirket içi makinede | **İnternet üzerinden erişim**: RDP 'yi etkinleştirin. TCP ve UDP kurallarının **genel**için eklendiğinden ve **Windows Güvenlik Duvarı**  >  **izin verilen uygulamalar**'daki tüm profiller için RDP 'ye izin verildiğinden emin olun.<br/><br/> **Siteden sıteye VPN üzerinden erişim**: makinede RDP 'yi etkinleştirin. **Windows Firewall**  ->  **Etki alanı ve özel** ağlar için Windows Güvenlik Duvarı**izin verilen uygulamalar ve Özellikler**'de RDP 'ye izin verildiğinden emin olun.<br/><br/>  İşletim sistemi SAN ilkesinin **OnlineAll**olarak ayarlandığından emin olun. [Daha fazla bilgi edinin](https://support.microsoft.com/kb/3031135).<br/><br/> Yük devretme tetiklemeniz sırasında VM 'de bekleyen bir Windows güncelleştirmesi olmadığından emin olun. Yük devretmek Windows Update başlayabilir ve güncelleştirmeler tamamlanana kadar VM 'de oturum açamazsınız.
 **Windows çalıştıran Azure VM** | Yük devretmeden sonra Azure VM 'de |  VM için bir [ortak IP adresi ekleyin](https://aka.ms/addpublicip).<br/><br/> Yük devredilen VM 'deki (ve bağlı olduğu Azure alt ağı) ağ güvenlik grubu kuralları, RDP bağlantı noktasına gelen bağlantılara izin vermelidir.<br/><br/> VM 'nin ekran görüntüsünü doğrulamak için **önyükleme tanılamalarını** denetleyin. Bağlanamıyorsanız, sanal makinenin çalışıp çalışmadığını denetleyin ve [sorun giderme ipuçları](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)' nı gözden geçirin.
@@ -54,7 +54,7 @@ RDP/SSH kullanılarak yük devretmeden sonra oluşturulan Azure VM 'lerine bağl
 
 Site Recovery, farklı yük devretme seçenekleri sağlar.
 
-**Yükünü** | **Ayrıntılar** | **Kurtarma** | **Workflow**
+**Yük devretme** | **Ayrıntılar** | **Kurtarma** | **Workflow**
 --- | --- | --- | ---
 **Yük devretme testi** | Veri kaybı veya kapalı kalma süresi olmadan BCDR stratejinizi doğrulayan bir detaya gitme çalıştırmak için kullanılır.| Azure 'da, devam eden çoğaltma üzerinde veya üretim ortamınızda bir etkisi olmadan VM 'nin bir kopyasını oluşturur. | 1. bir kurtarma planında tek bir VM 'de veya birden çok VM 'de yük devretme testi çalıştırın.<br/><br/> 2. test yük devretmesi için kullanılacak bir kurtarma noktası seçin.<br/><br/> 3. Azure VM 'nin yük devretme sonrasında oluşturulduğu sırada bulunduğu bir Azure ağı seçin. Ağ yalnızca yük devretme testi için kullanılır.<br/><br/> 4. detayın beklendiği gibi çalıştığını doğrulayın. Site Recovery, detaya gitme sırasında Azure 'da oluşturulan VM 'Leri otomatik olarak temizler.
 **Planlı Yük devretme-Hyper-V**  | Genellikle planlanan kapalı kalma süresi için kullanılır.<br/><br/> Kaynak VM 'Ler kapatılıyor. En son veriler, yük devretme başlatılmadan önce eşitlenir. | Planlı iş akışı için sıfır veri kaybı. | 1. kesinti süresi bakım penceresi planlayın ve kullanıcılara bildirin.<br/><br/> 2. kullanıcıya yönelik uygulamaları çevrimdışına alın.<br/><br/> 3. en son kurtarma noktasıyla planlanmış bir yük devretme başlatın. Makine kapanmazsa veya hatalarla karşılaşılırsa yük devretme çalışmaz.<br/><br/> 4. yük devretmeden sonra Azure 'da çoğaltma Azure VM 'sinin etkin olduğunu denetleyin.<br/><br/> 5. yük devretmeyi tamamlamak için yürütün. Kaydetme eylemi tüm kurtarma noktalarını siler.

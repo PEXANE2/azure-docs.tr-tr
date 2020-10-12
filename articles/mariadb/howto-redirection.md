@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/8/2020
 ms.openlocfilehash: 45d93797b72b3b35dd44cddc22124acb73eb3454
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86121104"
 ---
 # <a name="connect-to-azure-database-for-mariadb-with-redirection"></a>Yeniden yönlendirme ile MariaDB için Azure veritabanı 'na bağlanma
@@ -18,7 +18,7 @@ ms.locfileid: "86121104"
 Bu konuda, bir uygulamanın MariaDB sunucusu için Azure veritabanı 'na yeniden yönlendirme moduyla nasıl bağlanacağı açıklanmaktadır. Uygulamaların doğrudan arka uç sunucu düğümlerine bağlanmasına izin vererek istemci uygulamaları ve MariaDB sunucuları arasındaki ağ gecikmesini azaltmak için amaçlar 'yi yeniden yönlendirme.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
-[Azure portalında](https://portal.azure.com) oturum açın. Bir MariaDB sunucusu için altyapı sürümü 10,2 veya 10,3 olan bir Azure veritabanı oluşturun. 
+[Azure Portal](https://portal.azure.com)’ında oturum açın. Bir MariaDB sunucusu için altyapı sürümü 10,2 veya 10,3 olan bir Azure veritabanı oluşturun. 
 
 Ayrıntılar için [Azure Portal](quickstart-create-mariadb-server-database-using-azure-portal.md) veya [Azure CLI](quickstart-create-mariadb-server-database-using-azure-cli.md)kullanarak MariaDB sunucusu için Azure veritabanı oluşturma bölümüne bakın.
 

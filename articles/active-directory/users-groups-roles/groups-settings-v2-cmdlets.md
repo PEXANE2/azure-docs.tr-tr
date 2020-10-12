@@ -15,16 +15,16 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c00c89e5f81bcb142c50e5f3438c1af2d72a9de5
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056226"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Grup yönetimi için sürüm 2 cmdlet 'leri Azure Active Directory
 
 > [!div class="op_single_selector"]
-> - [Azure Portal](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
+> - [Azure portalındaki](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
 > - [PowerShell](groups-settings-v2-cmdlets.md)
 >
 >
@@ -146,7 +146,7 @@ Dizininizde yeni bir grup oluşturmak için New-AzureADGroup cmdlet 'ini kullan�
 
 ## <a name="update-groups"></a>Güncelleştirme grupları
 
-Var olan bir grubu güncelleştirmek için set-AzureADGroup cmdlet 'ini kullanın. Bu örnekte, "Intune yöneticileri" grubunun DisplayName özelliğini değiştiriyorsunuz. İlk olarak, Get-AzureADGroup cmdlet 'ini kullanarak grubu buluyoruz ve DisplayName özniteliğini kullanarak filtreliyoruz:
+Var olan bir grubu güncelleştirmek için Set-AzureADGroup cmdlet 'ini kullanın. Bu örnekte, "Intune yöneticileri" grubunun DisplayName özelliğini değiştiriyorsunuz. İlk olarak, Get-AzureADGroup cmdlet 'ini kullanarak grubu bulduk ve DisplayName özniteliğini kullanarak filtreliyoruz:
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
@@ -217,7 +217,7 @@ Bir gruba yeni üyeler eklemek için Add-AzureADGroupMember cmdlet 'ini kullanı
 
 ### <a name="get-members"></a>Üyeleri al
 
-Bir grubun var olan üyelerini almak için, Get-AzureADGroupMember cmdlet 'ini şu örnekte olduğu gibi kullanın:
+Bir grubun var olan üyelerini almak için, bu örnekte olduğu gibi Get-AzureADGroupMember cmdlet 'ini kullanın:
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroupMember -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df
@@ -238,7 +238,7 @@ Daha önce gruba eklediğimiz üyeyi kaldırmak için, burada gösterildiği gib
 
 ### <a name="verify-members"></a>Üyeleri doğrula
 
-Bir kullanıcının grup üyeliklerini doğrulamak için, select-AzureADGroupIdsUserIsMemberOf cmdlet 'ini kullanın. Bu cmdlet, kendi parametrelerini, grup üyeliklerini denetlemek için kullanıcının ObjectID 'sini ve üyeliklerinin denetlenecek grupların bir listesini alır. Grup listesi, "Microsoft. Open. AzureAD. model. Groupıdsformembershipcheck" türünde bir karmaşık değişken biçiminde sağlanmalıdır. bu nedenle öncelikle bu türde bir değişken oluşturmanız gerekir:
+Bir kullanıcının grup üyeliklerini doğrulamak için Select-AzureADGroupIdsUserIsMemberOf cmdlet 'ini kullanın. Bu cmdlet, kendi parametrelerini, grup üyeliklerini denetlemek için kullanıcının ObjectID 'sini ve üyeliklerinin denetlenecek grupların bir listesini alır. Grup listesi, "Microsoft. Open. AzureAD. model. Groupıdsformembershipcheck" türünde bir karmaşık değişken biçiminde sağlanmalıdır. bu nedenle öncelikle bu türde bir değişken oluşturmanız gerekir:
 
 ```powershell
     PS C:\Windows\system32> $g = new-object Microsoft.Open.AzureAD.Model.GroupIdsForMembershipCheck
@@ -260,7 +260,7 @@ Artık, ObjectID 72cd4bbd-2594-40a2-935c-016f3cfeeeea ' ı bir kullanıcının g
     https://graph.windows.net/85b5ff1e-0402-400c-9e3c-0f9e965325d1/$metadata#Collection(Edm.String)             {31f1ff6c-d48c-4f8a-b2e1-abca7fd399df}
 ```
 
-Döndürülen değer, bu kullanıcının üye olduğu grupların bir listesidir. Bu yöntemi Ayrıca, belirli bir Grup listesi için kişileri, grupları veya hizmet sorumluları üyeliğini, select-Azureadgroupidsını TISTO, select-AzureADGroupIdsGroupIsMemberOf veya Select-Azureadgroupidsservicesprincipalismemberof kullanılarak denetlemek için de uygulayabilirsiniz.
+Döndürülen değer, bu kullanıcının üye olduğu grupların bir listesidir. Bu yöntemi, belirli bir Grup listesi için kişileri, grupları veya hizmet sorumluları üyeliğini Select-Azureadgroupids, Select-AzureADGroupIdsGroupIsMemberOf veya Select-AzureADGroupIdsServicePrincipalIsMemberOf kullanarak denetlemek için de uygulayabilirsiniz.
 
 ## <a name="disable-group-creation-by-your-users"></a>Kullanıcılarınız tarafından grup oluşturmayı devre dışı bırakma
 
@@ -304,7 +304,7 @@ Cmdlet 'i, belirtilen grup için sahip (kullanıcılar ve hizmet sorumluları) l
                           e831b3fd-77c9-49c7-9fca-de43e109ef67 User
 ```
 
-Bir gruptan bir sahibi kaldırmak istiyorsanız, Remove-AzureADGroupOwner cmdlet 'ini kullanın:
+Bir gruptan bir sahibi kaldırmak istiyorsanız Remove-AzureADGroupOwner cmdlet 'ini kullanın:
 
 ```powershell
     PS C:\Windows\system32> remove-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -OwnerId e831b3fd-77c9-49c7-9fca-de43e109ef67

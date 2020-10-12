@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 5f94564c5e769d3cf0e0abbe92a309a1ee2117a1
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90055087"
 ---
 # <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>StorSimple Snapshot Manager MMC ek bileşenini dağıtma
@@ -117,7 +117,7 @@ StorSimple Snapshot Manager StorSimple cihazına bağlamak için aşağıdaki ad
 2. **Kapsam** bölmesinde, **cihazlar** düğümüne sağ tıklayın ve ardından **cihaz yapılandırma**' ya tıklayın. **Cihaz Yapılandır** iletişim kutusu görüntülenir.
    
     ![Cihaz yapılandırma](./media/storsimple-snapshot-manager-deployment/HCS_SSM_config_device.png) 
-3. **Cihaz** liste kutusunda Microsoft Azure StorSimple cihazının veya sanal cihazın IP adresini seçin. **Parola** metin kutusuna, Azure Portal cihaz Için oluşturduğunuz storsimple Snapshot Manager parolasını yazın. **Tamam**’a tıklayın.
+3. **Cihaz** liste kutusunda Microsoft Azure StorSimple cihazının veya sanal cihazın IP adresini seçin. **Parola** metin kutusuna, Azure Portal cihaz Için oluşturduğunuz storsimple Snapshot Manager parolasını yazın. **Tamam**'a tıklayın.
 4. StorSimple Snapshot Manager, tanımladığınız cihazı arar. Cihaz kullanılabiliyorsa, StorSimple Snapshot Manager bir bağlantı ekler. Bağlantının başarıyla eklendiğini doğrulamak için [cihazla olan bağlantıyı doğrulayabilirsiniz](#to-verify-the-connection) .
    
     Cihaz herhangi bir nedenle kullanılamıyorsa, StorSimple Snapshot Manager bir hata mesajı döndürür. **Tamam** ' a tıklayarak hata iletisini kapatın ve ardından **iptal** ' e tıklayarak **bir cihaz Yapılandır** iletişim kutusunu kapatın.

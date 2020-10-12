@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 5af5d3a88262792f4b32e2ce3d8143ac680f083a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87027045"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>MSAL.js kullanarak istemci uygulamalarını başlatma
@@ -28,7 +28,7 @@ Kullanıcı Aracısı uygulaması, istemci kodunun web tarayıcısı gibi bir Ku
 
 İstemci uygulama türleri ve uygulama yapılandırma seçenekleri hakkında daha fazla bilgi edinmek için bkz. [msal 'de ortak ve gizli istemci uygulamaları](msal-client-applications.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir uygulamayı başlatmadan önce, uygulamanız ile Microsoft Identity platformu arasında bir güven ilişkisi kurarak, ilk olarak [Azure Portal kaydetmeniz](scenario-spa-app-registration.md)gerekir.
 
@@ -107,9 +107,9 @@ Uygulamanız yeniden yönlendirme akışlarını kullandığında [Handleredirec
 
 Taahhüdden üç olası sonuç vardır:
 
-- `.then`çağrıldı ve `tokenResponse` Bu işlem başarılı oldu: uygulama başarılı bir yeniden yönlendirme işleminden döndürülüyor.
-- `.then`çağrıldı ve `tokenResponse` falsey ( `null` ): uygulama bir yeniden yönlendirme işleminden dönmedi.
-- `.catch`çağrıldı: uygulama bir yeniden yönlendirme işleminden döndürülüyor ve bir hata oluştu.
+- `.then` çağrıldı ve `tokenResponse` Bu işlem başarılı oldu: uygulama başarılı bir yeniden yönlendirme işleminden döndürülüyor.
+- `.then` çağrıldı ve `tokenResponse` falsey ( `null` ): uygulama bir yeniden yönlendirme işleminden dönmedi.
+- `.catch` çağrıldı: uygulama bir yeniden yönlendirme işleminden döndürülüyor ve bir hata oluştu.
 
 ## <a name="initialize-msaljs-1x-apps"></a>MSAL.js 1. x uygulamalarını başlatın
 

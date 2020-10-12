@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 2b7a81357cc6ee2608d2acd3051dcac3e5d0e07e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87023475"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub terimlerin sözlüğü
@@ -58,7 +58,7 @@ Bir IoT Hub ile etkileşime geçen [arka uç uygulamaları](#back-end-app) oluş
 
 [Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) , VS Code Azure IoT Hub ve cihazlarını yönetmenize yardımcı olan platformlar arası, açık kaynaklı Visual Studio Code uzantısıdır. IoT geliştiricileri, Azure IoT araçlarıyla VS Code ' de kolayca IoT projesi geliştirebilir.
 
-## <a name="azure-portal"></a>Azure portalı
+## <a name="azure-portal"></a>Azure portal
 
 [Microsoft Azure Portal](https://portal.azure.com) , Azure kaynaklarınızı sağlayabileceğiniz ve yönetebileceğiniz merkezi bir yerdir. Dikey _pencereleri kullanarak içeriğini_düzenler.
 
@@ -290,7 +290,7 @@ Bir [cihaz ikizi](iot-hub-devguide-device-twins.md)bağlamında, bildirilen öze
 
 [Azure Resource Manager](#azure-resource-manager) , ilgili kaynakları gruplamak için kaynak gruplarını kullanır. Gruptaki tüm kaynaklar üzerinde aynı anda işlem gerçekleştirmek için bir kaynak grubu kullanabilirsiniz.
 
-## <a name="retry-policy"></a>Yeniden deneme ilkesi
+## <a name="retry-policy"></a>Yeniden Deneme ilkesi
 
 Bir bulut hizmetine bağlandığınızda [geçici hataları](/azure/architecture/best-practices/transient-faults) işlemek için bir yeniden deneme ilkesi kullanırsınız.
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: mayg
 ms.openlocfilehash: 308958f00a3658196f124ac911d4d0195ebeb228
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86119846"
 ---
 # <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>VMware olağanüstü durum kurtarma için Dağıtım Planlayıcısı çalıştırma
@@ -44,7 +44,7 @@ Profil oluşturma modunda dağıtım planlayıcısı aracı, sanal makineye ili�
     Set-ExecutionPolicy –ExecutionPolicy AllSigned
     ```
 
-4. Cmdlet 'in adı olarak Connect-VIServer tanınmazsa, isteğe bağlı olarak aşağıdaki komutu çalıştırmanız gerekebilir.
+4. Connect-VIServer cmdlet 'in adı olarak tanınmazsa, isteğe bağlı olarak aşağıdaki komutu çalıştırmanız gerekebilir.
 
     ```powershell
     Add-PSSnapin VMware.VimAutomation.Core
@@ -71,7 +71,7 @@ Profili oluşturulacak sanal makinelerin listesini oluşturduktan sonra, aracı 
 ASRDeploymentPlanner.exe -Operation StartProfiling /?
 ```
 
-| Parametre adı | Description |
+| Parametre adı | Açıklama |
 |---|---|
 | -Operation | StartProfiling |
 | -Server | Sanal makineleri için profil oluşturulacak vCenter sunucusunun/vSphere ESXi ana bilgisayarının tam etki alanı adı.|
@@ -151,7 +151,7 @@ Profil oluşturma tamamlandıktan sonra, aracı rapor oluşturma modunda çalı�
 
 `ASRDeploymentPlanner.exe -Operation GenerateReport /?`
 
-|Parametre adı | Description |
+|Parametre adı | Açıklama |
 |-|-|
 | -Operation | GenerateReport |
 | -Server |  Raporu oluşturulacak profili oluşturulmuş sanal makinelerin bulunduğu vCenter/vSphere sunucusu tam etki alanı adı veya IP adresi (profil oluşturma sırasında kullandığınız adın veya IP adresinin aynısını kullanın). Profil oluşturma sırasında bir vCenter sunucusu kullandıysanız, rapor oluşturma için vSphere sunucusu kullanamazsınız.|
@@ -263,7 +263,7 @@ Bir komut satırı konsolu açın ve Site Recovery dağıtım planlama aracını
 
 `ASRDeploymentPlanner.exe -Operation GetThroughput /?`
 
-|Parametre adı | Description |
+|Parametre adı | Açıklama |
 |-|-|
 | -Operation | GetThroughput |
 |-Sanallaştırma|Sanallaştırma türünü (VMware veya Hyper-V) belirtin.|

@@ -10,10 +10,10 @@ ms.author: rolyon
 ms.date: 09/22/2020
 ms.custom: generated
 ms.openlocfilehash: ade4a6b791a8aca963a056800bd8c58767aeb766
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400103"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure Kaynak sağlayıcısı işlemleri
@@ -81,7 +81,7 @@ Bu bölümde, yerleşik rollerde kullanılan Azure Kaynak sağlayıcılarının 
 | [Microsoft.Kusto](#microsoftkusto) |
 | [Microsoft. Powerbiadanmış](#microsoftpowerbidedicated) |
 | [Microsoft. StreamAnalytics](#microsoftstreamanalytics) |
-| **Blok Zinciri** |
+| **Blok zinciri** |
 | [Microsoft. Blockzinciri](#microsoftblockchain) |
 | **AI + makine öğrenimi** |
 | [Microsoft. BotService](#microsoftbotservice) |
@@ -93,7 +93,7 @@ Bu bölümde, yerleşik rollerde kullanılan Azure Kaynak sağlayıcılarının 
 | [Microsoft. ıotcentral](#microsoftiotcentral) |
 | [Microsoft. Notificationhub 'Lar](#microsoftnotificationhubs) |
 | [Microsoft. Timeseriesınsights](#microsofttimeseriesinsights) |
-| **Karma Gerçeklik** |
+| **Karma gerçeklik** |
 | [Microsoft. ıotspaces](#microsoftiotspaces) |
 | [Microsoft. MixedReality](#microsoftmixedreality) |
 | **Tümleştirme** |
@@ -1421,7 +1421,7 @@ Azure hizmeti: [Azure Data Box](../databox/index.yml)
 > | Microsoft. DataBox/işlemler/okuma | Işlemleri listeleme veya edinme |
 > | **DataAction** | **Açıklama** |
 > | Microsoft. DataBox/Register/Action | Sağlayıcıyı kaydet Microsoft. databox |
-> | Microsoft. DataBox/kaydını kaldırma/eylem | Kaydettirme sağlayıcısını Kaldır Microsoft. databox |
+> | Microsoft. DataBox/kaydını kaldırma/eylem | Un-Register provider Microsoft. databox |
 > | Microsoft. DataBox/Jobs/iptal/eylem | Devam eden bir siparişi iptal eder. |
 > | Microsoft. DataBox/Jobs/bookShipmentPickUp/ACTION | İade sevk irsaliyeleri için bir çekme defterine izin verir. |
 > | Microsoft. DataBox/Jobs/listCredentials/Action | Siparişle ilgili şifrelenmemiş kimlik bilgilerini listeler. |
@@ -4634,7 +4634,7 @@ Azure hizmeti: [Stream Analytics](../stream-analytics/index.yml)
 > | Microsoft. StreamAnalytics/streamingjobs/dönüşümler/okuma | Stream Analytics Işi dönüşümünü oku |
 > | Microsoft. StreamAnalytics/streamingjobs/dönüşümler/yazma | Stream Analytics Işi dönüşümünü yaz |
 
-## <a name="blockchain"></a>Blok Zinciri
+## <a name="blockchain"></a>Blok zinciri
 
 ### <a name="microsoftblockchain"></a>Microsoft. Blockzinciri
 
@@ -5667,7 +5667,7 @@ Azure hizmeti: [API Management](../api-management/index.yml)
 > | Microsoft. Apimanayönetimi/hizmet/policyDescriptions/Read | Tüm ilke açıklamalarını listeler. |
 > | Microsoft. Apimanaya/Service/policySnippets/Read | Tüm ilke parçacıklarını listeler. |
 > | Microsoft. Apimanaveya hizmet/portalSettings/Read | Portal Ayarları koleksiyonunu listeler. veya portalın oturum açma ayarlarını ya da portalın oturum açma ayarlarını alın veya portalın yetkilendirme ayarlarını alın. |
-> | Microsoft. Apimanaveya hizmet/portalSettings/Write | Oturum açma ayarlarını güncelleştirin. ya da oturum açma ayarlarını oluşturun veya güncelleştirin. veya kaydolma ayarlarını güncelleştirebilir veya kaydolma ayarlarını güncelleştirebilir veya yetkilendirme ayarlarını güncelleştirebilirsiniz. veya, yetkilendirme ayarlarını oluşturun veya güncelleştirin. |
+> | Microsoft. Apimanaveya hizmet/portalSettings/Write | Sign-In ayarlarını güncelleştirin. veya Sign-In ayarları oluşturun veya güncelleştirin. veya kaydolma ayarlarını güncelleştirebilir veya kaydolma ayarlarını güncelleştirebilir veya yetkilendirme ayarlarını güncelleştirebilirsiniz. veya, yetkilendirme ayarlarını oluşturun veya güncelleştirin. |
 > | Microsoft. Apimanaveya hizmet/portalSettings/Listgizlilikler/Action | Portal temsili ayarlarının doğrulama anahtarını alır. ya da medya içeriği blob kapsayıcı URI 'sini alın. |
 > | Microsoft. Apimanayönetimi/hizmet/ürünler/okuma | Belirtilen hizmet örneğindeki ürünlerin koleksiyonunu listeler. ya da kendi tanımlayıcısı tarafından belirtilen ürünün ayrıntılarını alır. |
 > | Microsoft. Apimanayönetimi/hizmeti/ürünleri/yazma | Bir ürünü oluşturur veya güncelleştirir. veya mevcut ürün ayrıntılarını güncelleştirin. |
@@ -6287,8 +6287,8 @@ Azure hizmeti: Azure Active Directory
 > | Microsoft. aadihar/diagnosticsettings/Read | Tanılama ayarını okuma |
 > | Microsoft. aadihar/diagnosticsettings/Delete | Bir tanılama ayarını silme |
 > | Microsoft. aadihar/diagnosticsettingscategories/Read | Tanılama ayarı kategorilerini okuma |
-> | Microsoft. aadihar/metricDefinitions/oku | Kiracı düzeyinde ölçüm tanımlarını okuma |
-> | Microsoft. aadihar/ölçümler/okuma | Kiracı düzeyinde ölçümleri okuma |
+> | Microsoft. aadihar/metricDefinitions/oku | Tenant-Level ölçüm tanımlarını okuma |
+> | Microsoft. aadihar/ölçümler/okuma | Tenant-Level ölçümleri okunuyor |
 > | Microsoft. aadihar/privateLinkForAzureAD/Read | Özel bağlantı Ilkesi tanımını oku |
 > | Microsoft. aadihar/privateLinkForAzureAD/Write | Özel bağlantı Ilkesi tanımı oluştur ve Güncelleştir |
 > | Microsoft. aadihar/privateLinkForAzureAD/Delete | Özel bağlantı Ilkesi tanımını sil |
@@ -7216,7 +7216,7 @@ Azure hizmeti: [Azure geçişi](../migrate/migrate-services-overview.md)
 > | Microsoft. OffAzure/VMwareSites/vcenters/Read | VMware vCenter özelliklerini alır |
 > | Microsoft. OffAzure/VMwareSites/vcenters/Write | VMware vCenter 'ı oluşturur veya güncelleştirir |
 
-## <a name="monitor"></a>İzleyici
+## <a name="monitor"></a>İzleme
 
 ### <a name="microsoftalertsmanagement"></a>Microsoft. AlertsManagement
 
