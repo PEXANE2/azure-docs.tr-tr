@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/13/2019
 ms.openlocfilehash: 4b0e18e7bcc85dace93962c557d05d114df215d7
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86082225"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>HDInsight kümesi için Apache Spark uygulamalar oluşturmak üzere Azure Toolkit for Eclipse kullanma
@@ -23,7 +23,7 @@ Azure Toolkit 'teki HDInsight araçlarını kullanarak, [Scala](https://www.scal
 * Azure HDInsight Spark kümesi kaynaklarınıza erişin.
 * Bir Scala Spark uygulamasını yerel olarak geliştirmek ve çalıştırmak için.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * HDInsight üzerinde Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md).
 
@@ -111,7 +111,7 @@ Bir normal kümeyi, ambarı yönetilen Kullanıcı adı kullanarak bağlayabilir
 
 1. Çakışan IDE çalışma alanından **Dosya**  >  **Yeni**  >  **proje...** öğesini seçin.
 
-1. **Yeni proje** sihirbazında **HDInsight Project**  >  **HDInsight (Scala) üzerinde**HDInsight proje Spark ' ı seçin. Ardından **İleri**' yi seçin.
+1. **Yeni proje** sihirbazında **HDInsight Project**  >  **HDInsight (Scala) üzerinde**HDInsight proje Spark ' ı seçin. Ardından **İleri**’yi seçin.
 
    ![HDInsight üzerinde Spark (Scala) Projesi seçme](./media/apache-spark-eclipse-tool-plugin/create-hdi-scala-app-2.png)
 
@@ -128,7 +128,7 @@ Bir normal kümeyi, ambarı yönetilen Kullanıcı adı kullanarak bağlayabilir
 
 1. **Paket Gezgini**' nden, daha önce oluşturduğunuz projeyi genişletin. **Src**öğesine sağ tıklayın, **Yeni**  >  **diğer...** seçeneğini belirleyin.
 
-1. **Sihirbaz Seç** iletişim kutusunda **Scala sihirbazları**  >  **Scala nesnesi**' ni seçin. Ardından **İleri**' yi seçin.
+1. **Sihirbaz Seç** iletişim kutusunda **Scala sihirbazları**  >  **Scala nesnesi**' ni seçin. Ardından **İleri**’yi seçin.
 
    ![Bir Scala nesnesi oluşturma Sihirbazı seçin](./media/apache-spark-eclipse-tool-plugin/create-scala-project1.png)
 
@@ -248,7 +248,7 @@ Bu hatayı çözmek için **C:\wintıı S\bin**gibi bir konuma [Winutils.exe](ht
 
 1. Çakışan Küreler başlatın ve bir proje oluşturun. **Yeni proje** iletişim kutusunda aşağıdaki seçimleri yapın ve ardından **İleri**' yi seçin.
 
-1. **Yeni proje** sihirbazında, **HDInsight Project**  >  **HDInsight yerel çalıştırma örneği ' nde (Scala)** HDInsight proje Spark ' ı seçin. Ardından **İleri**' yi seçin.
+1. **Yeni proje** sihirbazında, **HDInsight Project**  >  **HDInsight yerel çalıştırma örneği ' nde (Scala)** HDInsight proje Spark ' ı seçin. Ardından **İleri**’yi seçin.
 
    ![Yeni proje bir sihirbaz iletişim kutusu seçer](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run.png)
 

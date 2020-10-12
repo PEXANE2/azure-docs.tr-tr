@@ -4,10 +4,10 @@ description: ReliableConcurrentQueue, paralel sıraya ve sıralara izin veren y�
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.openlocfilehash: 423ef3d1898176d7c25c596ad186a9c000108aa4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86257444"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Azure Service Fabric ReliableConcurrentQueue 'a giriş
@@ -215,7 +215,7 @@ while(!cancellationToken.IsCancellationRequested)
 }
 ```
 
-### <a name="best-effort-notification-based-processing"></a>En iyi deneme bildirim tabanlı Işleme
+### <a name="best-effort-notification-based-processing"></a>Best-Effort Notification-Based Işleme
 Diğer bir ilginç programlama deseninin Count API 'SI kullanılır. Burada, sıra için en iyi deneme bildirim tabanlı işleme uygulayabiliriz. Sıra sayısı, bir sıraya alma veya sıradan çıkarma görevini kısıtlamak için kullanılabilir.  Önceki örnekte olduğu gibi, işleme işlem dışında gerçekleşdiğinden, işlem sırasında bir hata oluşursa işlenmemiş öğeler kaybolabilir.
 
 ```
@@ -263,7 +263,7 @@ while(!cancellationToken.IsCancellationRequested)
 }
 ```
 
-### <a name="best-effort-drain"></a>En iyi çaba boşaltma
+### <a name="best-effort-drain"></a>Boşaltma Best-Effort
 Veri yapısının eşzamanlı yapısı nedeniyle kuyruğun bir boşaltma garantisi olamaz.  Kuyruktaki hiçbir Kullanıcı işlemi uçuş aşamasında olsa bile, bir TryDequeueAsync öğesine yapılan belirli bir çağrı daha önce kuyruğa alınmış ve kaydedilmiş bir öğe döndürmeyebilir.  Sıraya alınan öğe, *sonunda* , bant dışı bir iletişim mekanizması olmadan sıradan olarak görünür hale gelmiştir, ancak tüm üreticileri durdurulduysa ve yeni bir sıraya alma işlemine izin verilmiyorsa, bağımsız bir tüketici kuyruğun kararlı duruma geldiğini bilmez. Bu nedenle, boşaltma işlemi aşağıda uygulanan en iyi çabadır.
 
 Kullanıcı, tüm üretici ve tüketici görevlerini durdurmalı ve kuyruğu boşaltmaya çalışmadan önce, tüm uçuş işlemlerinin tamamlanmasını veya durdurulmasına izin vermez.  Kullanıcı kuyruktaki öğe sayısını biliyorsa, tüm öğelerin sıraya alınmış olduğunu işaret eden bir bildirim ayarlayabilir.

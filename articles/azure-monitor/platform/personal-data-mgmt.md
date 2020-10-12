@@ -7,13 +7,13 @@ author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
 ms.openlocfilehash: 64c461c5d3e1bb34f480e5173621f8753eadbbd8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318326"
 ---
-# <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Log Analytics ve Application Insights depolanan kişisel verilere yönelik kılavuz
+# <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Log Analytics ve Application Insights'da depolanan kişisel veriler için kılavuz
 
 Log Analytics kişisel verilerin bulunma olasılığı olan bir veri deposudur. Application Insights verilerini Log Analytics bir bölümde depolar. Bu makale, Log Analytics nerede olduğunu ve bu verilerin tipik olarak Application Insights olduğunu ve bu tür verileri işleyebileceğiniz özellikleri tartışacaktır.
 
@@ -78,7 +78,7 @@ Log Analytics, verilerinize bir şemayı etkilemeden, her alanı özel değerler
 
 ### <a name="view-and-export"></a>Görüntüle ve dışarı aktar
 
-Veri görüntüleme ve dışarı aktarma istekleri için [Log Analytics sorgu API 'si](https://dev.loganalytics.io/) veya [Application Insights sorgu API 'si](https://dev.applicationinsights.io/quickstart) kullanılmalıdır. Kullanıcılarınıza teslim etmek üzere verilerin şeklini uygun bir şekilde dönüştürme mantığı, uygulamanız için size uygun olacaktır. [Azure işlevleri](https://azure.microsoft.com/services/functions/) bu tür mantığı barındırmak için harika bir yer sunar.
+Veri görüntüleme ve dışarı aktarma istekleri için [Log Analytics sorgu API 'si](https://dev.loganalytics.io/) veya  [Application Insights sorgu API 'si](https://dev.applicationinsights.io/quickstart) kullanılmalıdır. Kullanıcılarınıza teslim etmek üzere verilerin şeklini uygun bir şekilde dönüştürme mantığı, uygulamanız için size uygun olacaktır. [Azure işlevleri](https://azure.microsoft.com/services/functions/) bu tür mantığı barındırmak için harika bir yer sunar.
 
 > [!IMPORTANT]
 >  Temizleme işlemlerinin büyük çoğunluğu SLA 'dan çok daha hızlı tamamlanabilir, ancak **Temizleme işlemlerinin tamamlanmasına yönelik RESMI SLA** , kullanılan veri platformunda ağır etkileri nedeniyle 30 gün içinde ayarlanır. Bu otomatikleştirilmiş bir işlemdir; bir işlemin daha hızlı işlenmesini istemek için bir yol yoktur.
@@ -102,7 +102,7 @@ Azure Resource Manager rolü atandıktan sonra iki yeni API yolu mevcuttur:
 #### <a name="log-data"></a>Günlük verileri
 
 * [Temizleme sonrası](/rest/api/loganalytics/workspacepurge/purge) -Silinecek verilerin parametrelerini belirten bir nesne alır ve bir başvuru GUID 'si döndürür 
-* Temizleme durumunu Al-Temizleme API 'sinin durumunu öğrenmek için çağırabileceğiniz bir URL 'YI içeren bir ' x-MS-Status-Location ' üst bilgisi döndürür. Örnek:
+* Temizleme durumunu Al-Temizleme API 'sinin durumunu öğrenmek için çağırabileceğiniz bir URL 'YI içeren bir ' x-MS-Status-Location ' üst bilgisi döndürür. Örneğin:
 
     ```
     x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.OperationalInsights/workspaces/[WorkspaceName]/operations/purge-[PurgeOperationId]?api-version=2015-03-20
@@ -114,7 +114,7 @@ Azure Resource Manager rolü atandıktan sonra iki yeni API yolu mevcuttur:
 #### <a name="application-data"></a>Uygulama verileri
 
 * [Temizleme sonrası](/rest/api/application-insights/components/purge) -Silinecek verilerin parametrelerini belirten bir nesne alır ve bir başvuru GUID 'si döndürür
-* Temizleme durumunu Al-Temizleme API 'sinin durumunu öğrenmek için çağırabileceğiniz bir URL 'YI içeren bir ' x-MS-Status-Location ' üst bilgisi döndürür. Örnek:
+* Temizleme durumunu Al-Temizleme API 'sinin durumunu öğrenmek için çağırabileceğiniz bir URL 'YI içeren bir ' x-MS-Status-Location ' üst bilgisi döndürür. Örneğin:
 
    ```
    x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/microsoft.insights/components/[ComponentName]/operations/purge-[PurgeOperationId]?api-version=2015-05-01

@@ -6,10 +6,10 @@ ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
 ms.openlocfilehash: 136a5da8d9956e034532c14b6fce011e4e7ce415
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87563900"
 ---
 # <a name="enable-update-management-from-the-azure-portal"></a>Azure portalından Güncelleştirme Yönetimi’ni etkinleştirme
@@ -21,7 +21,7 @@ VM 'lerinizi yönetmek için kullanabileceğiniz kaynak gruplarının sayısı [
 > [!NOTE]
 > Güncelleştirme Yönetimi etkinleştirilirken, bir Log Analytics çalışma alanını ve bir Otomasyon hesabını bağlamak için yalnızca belirli bölgeler desteklenir. Desteklenen eşleme çiftlerinin bir listesi için bkz. [Otomasyon hesabı ve Log Analytics çalışma alanı Için bölge eşleme](../how-to/region-mappings.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Henüz bir hesabınız yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)için kaydolabilirsiniz.
 * Makineleri yönetmek için [Otomasyon hesabı](../index.yml).

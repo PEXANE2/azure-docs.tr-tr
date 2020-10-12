@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: how-to
 ms.date: 07/30/2020
 ms.openlocfilehash: 5ba19978a797c2e885e2b1726baad07a87f5bcbc
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87512083"
 ---
 # <a name="how-to-delete-an-invitation-to-a-recipient-in-azure-data-share"></a>Azure veri paylaşımında bir alıcıya yapılan daveti silme
@@ -19,7 +19,7 @@ Bu makalede, bir alıcıya kabul etmeden önce yapılan bir davetin nasıl silin
 
 ## <a name="navigate-to-a-sent-data-share"></a>Gönderilen veri paylaşımında gezin
 
-Azure veri paylaşımında, gönderilen paylaşımınıza gidin ve **davetler** sekmesini seçin. burada listelenen bu veri paylaşımının tüm davetlerinin alıcıları aşağıda verilmiştir. Davetleri silmek istediğiniz alıcıların yanındaki kutulara tıklayın ve ardından **Sil**' e tıklayın.
+Azure veri paylaşımında, gönderdiğiniz paylaşıma gidin ve **davetler** sekmesini seçin. Bu veri paylaşımının davetlerinin hepsi burada listelenmiştir. Davetleri silmek istediğiniz alıcıların yanındaki kutulara tıklayın ve ardından **Sil**' e tıklayın.
 
 ![Daveti Sil](./media/how-to/how-to-delete-invitation/delete-invitation.png)
 

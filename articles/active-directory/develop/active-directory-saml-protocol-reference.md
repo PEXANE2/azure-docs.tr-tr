@@ -1,6 +1,6 @@
 ---
 title: Microsoft Identity platform SAML protokolünü nasıl kullanır?
-description: Bu makalede, Azure Active Directory ' deki çoklu oturum açma ve çoklu oturum kapatma SAML profillerine genel bakış sunulmaktadır.
+description: Bu makalede, Azure Active Directory tek Sign-On ve tek Sign-Out SAML profillerine genel bakış sunulmaktadır.
 services: active-directory
 author: kenwith
 manager: CelesteDG
@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
 ms.openlocfilehash: 06f80f94be25e42c9e8f0270e6cb15aca086ae18
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87552807"
 ---
 # <a name="how-microsoft-identity-platform-uses-the-saml-protocol"></a>Microsoft Identity platform SAML protokolünü nasıl kullanır?
@@ -31,7 +31,7 @@ Microsoft Identity platform, imzalama anahtarını ve oturum kapatma URI 'sini a
 
 Azure Active Directory, kiracıya özgü ve ortak (kiracıdan bağımsız) çoklu oturum açma ve çoklu oturum açma uç noktalarını kullanıma sunar. Bu URL 'Ler adreslenebilir konumları temsil eder; bu, yalnızca tanımlayıcılardır; bu nedenle meta verileri okumak için uç noktaya gidebilirsiniz.
 
-* Kiracıya özgü uç nokta konumunda bulunur `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml` . *\<TenantDomainName>* Yer tutucu, bir Azure AD kiracısının bir kayıtlı etki alanı adını veya Tenantıd 'sini temsil eder. Örneğin, contoso.com kiracının Federasyon meta verileri şu konumda:https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
+* Kiracıya özgü uç nokta konumunda bulunur `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml` . *\<TenantDomainName>* Yer tutucu, bir Azure AD kiracısının bir kayıtlı etki alanı adını veya Tenantıd 'sini temsil eder. Örneğin, contoso.com kiracının Federasyon meta verileri şu konumda: https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
 
 * Kiracıdan bağımsız uç nokta konumunda bulunur `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml` . Bu uç nokta adresinde, kiracı etki alanı adı veya KIMLIĞI yerine **yaygın** görüntülenir.
 

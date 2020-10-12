@@ -6,10 +6,10 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: a8a27a782d5e05b5febda659009284c22d3608c0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318989"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights Aracısı (eski adıyla Durum İzleyicisi v2): ayrıntılı yönergeler
@@ -167,7 +167,7 @@ PowerShell oturumları tarafından keşfedilecek şekilde, el ile indirilen Powe
 Daha fazla bilgi için bkz. [PowerShell modülünü yükleme](/powershell/scripting/developer/module/installing-a-powershell-module).
 
 
-#### <a name="unzip-nupkg-as-a-zip-file-by-using-expand-archive-v1010"></a>Expand-Arşivi (v 1.0.1.0) kullanarak zip dosyası olarak nupkg sıkıştırması
+#### <a name="unzip-nupkg-as-a-zip-file-by-using-expand-archive-v1010"></a>Expand-Archive kullanarak nupkg 'yi ZIP dosyası olarak sıkıştırmayı açın (v 1.0.1.0)
 
 - Açıklama: Microsoft. PowerShell. Archive (v 1.0.1.0) öğesinin temel sürümü nupkg dosyalarını sıkıştırmasını açamıyor. Dosyayı. zip uzantısıyla yeniden adlandırın.
 - Başvuru: [Expand-arşiv](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6).
@@ -181,9 +181,9 @@ Daha fazla bilgi için bkz. [PowerShell modülünü yükleme](/powershell/script
     Expand-Archive -LiteralPath $pathToZip -DestinationPath $pathInstalledModule
     ```
 
-#### <a name="unzip-nupkg-by-using-expand-archive-v1100"></a>Expand-Arşivi (v 1.1.0.0) kullanarak nupkg sıkıştırmasını açın
+#### <a name="unzip-nupkg-by-using-expand-archive-v1100"></a>Expand-Archive kullanarak nupkg sıkıştırmasını açın (v 1.1.0.0)
 
-- Açıklama: uzantıyı değiştirmeden nupkg dosyalarını açmak için Expand-Arşivi ' in güncel bir sürümünü kullanın.
+- Açıklama: uzantıyı değiştirmeden nupkg dosyalarını açmak için Expand-Archive güncel bir sürümünü kullanın.
 - Başvuru: [Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6) ve [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0).
 - Komutundaki
 

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/12/2020
 ms.openlocfilehash: 3874d3b2b0938b6fd0f763b42ef15f8250b42f1d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87529628"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Azure Data Factory kullanarak müşteri için SAP bulutlarından (C4C) veri kopyalama
@@ -50,16 +50,16 @@ Müşteri bağlantılı hizmeti için SAP bulutu için aşağıdaki özellikler 
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **Sapcloudforcustomer**olarak ayarlanmalıdır. | Yes |
-| url | SAP C4C OData hizmetinin URL 'SI. | Yes |
-| username | SAP C4C bağlanmak için Kullanıcı adını belirtin. | Yes |
-| password | Kullanıcı adı için belirttiğiniz kullanıcı hesabının parolasını belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
+| tür | Type özelliği: **Sapcloudforcustomer**olarak ayarlanmalıdır. | Evet |
+| url | SAP C4C OData hizmetinin URL 'SI. | Evet |
+| username | SAP C4C bağlanmak için Kullanıcı adını belirtin. | Evet |
+| password | Kullanıcı adı için belirttiğiniz kullanıcı hesabının parolasını belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
 | connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. | Kaynak için Hayır, havuz için Evet |
 
 >[!IMPORTANT]
 >Müşteri için SAP bulutuna veri kopyalamak için, müşteri için SAP bulutunuzun yakınında bir konum ile açık [bir Azure IR oluşturun](create-azure-integration-runtime.md#create-azure-ir) ve bağlı hizmette aşağıdaki örnekte ilişkilendirin:
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 {
@@ -90,10 +90,10 @@ Müşteri için SAP bulutundaki verileri kopyalamak için veri kümesinin Type �
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Veri kümesinin Type özelliği: **Sapcloudforcustomerresource** olarak ayarlanmalıdır |Yes |
-| path | SAP C4C OData varlığının yolunu belirtin. |Yes |
+| tür | Veri kümesinin Type özelliği: **Sapcloudforcustomerresource** olarak ayarlanmalıdır |Evet |
+| path | SAP C4C OData varlığının yolunu belirtin. |Evet |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 {
@@ -122,13 +122,13 @@ Müşteri için SAP buluttan veri kopyalamak için kopyalama etkinliğindeki kay
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **SapCloudForCustomerSource** olarak ayarlanmalıdır  | Yes |
-| sorgu | Verileri okumak için özel OData sorgusunu belirtin. | No |
-| httpRequestTimeout | HTTP isteğinin yanıt almak için zaman aşımı ( **TimeSpan** değeri). Bu değer, yanıt verilerinin okunması için zaman aşımı değil, yanıt almaya yönelik zaman aşımı değeridir. Belirtilmemişse, varsayılan değer **00:30:00** ' dir (30 dakika). | No |
+| tür | Type özelliği: **SapCloudForCustomerSource** olarak ayarlanmalıdır  | Evet |
+| sorgu | Verileri okumak için özel OData sorgusunu belirtin. | Hayır |
+| httpRequestTimeout | HTTP isteğinin yanıt almak için zaman aşımı ( **TimeSpan** değeri). Bu değer, yanıt verilerinin okunması için zaman aşımı değil, yanıt almaya yönelik zaman aşımı değeridir. Belirtilmemişse, varsayılan değer **00:30:00** ' dir (30 dakika). | Hayır |
 
-Belirli bir güne ait verileri almak için örnek sorgu:`"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
+Belirli bir güne ait verileri almak için örnek sorgu: `"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 "activities":[
@@ -166,11 +166,11 @@ Müşteri için SAP bulutuna veri kopyalamak için kopyalama etkinliğindeki hav
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **Sapcloudforcustomersink** olarak ayarlanmalıdır  | Yes |
+| tür | Type özelliği: **Sapcloudforcustomersink** olarak ayarlanmalıdır  | Evet |
 | writeBehavior | İşlemin yazma davranışı. "INSERT", "Update" olabilir. | Hayır. Varsayılan "Ekle". |
 | writeBatchSize | Yazma işleminin toplu iş boyutu. En iyi performansı elde etmek için toplu iş boyutu, farklı tablo veya sunucu için farklı olabilir. | Hayır. Varsayılan 10. |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 "activities":[

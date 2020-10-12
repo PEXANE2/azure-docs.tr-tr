@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 04/07/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: bb2fff699b31d8b3b311180c4b85e2bfd1da892c
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530162"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Visual Studio Code için Spark & Hive araçlarını kullanma
@@ -21,7 +21,7 @@ Visual Studio Code için Apache Spark & Hive araçlarını kullanmayı öğrenin
 
 Spark & Hive araçları, Visual Studio Code tarafından desteklenen platformlar üzerine yüklenebilir. Farklı platformlar için aşağıdaki önkoşullara göz önünde edin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki adımları tamamlamak için aşağıdaki öğeler gereklidir:
 

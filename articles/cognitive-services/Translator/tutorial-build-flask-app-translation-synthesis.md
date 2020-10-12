@@ -12,10 +12,10 @@ ms.date: 05/26/2020
 ms.author: swmachan
 ms.custom: devx-track-python, devx-track-js
 ms.openlocfilehash: 41d7fe8e22b39d8755f86e5ee490aa6e7dff97fc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330630"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Öğretici: Azure bilişsel hizmetler ile bir Flask uygulaması derleme
@@ -60,7 +60,7 @@ Bu öğretici için ihtiyacınız olan yazılım ve abonelik anahtarlarını gö
 ## <a name="create-an-account-and-subscribe-to-resources"></a>Hesap oluşturma ve kaynaklara abone olma
 
 Daha önce belirtildiği gibi, bu öğretici için üç abonelik anahtarına ihtiyacınız olacak. Bu, için Azure hesabınızda bir kaynak oluşturmanız gerektiği anlamına gelir:
-* Translator
+* Çevirmen
 * Metin Analizi
 * Konuşma Hizmetleri
 
@@ -183,7 +183,7 @@ Bu kod, bir Kullanıcı `http://your-web-app.com/about` `about.html` dosyanın i
 
 Bu örnekler, bir kullanıcı için HTML sayfalarının nasıl işleneceğini gösterir, ancak bir düğmeye basıldığında API 'Leri çağırmak için yollar kullanılabilir veya giriş sayfasından uzaklaşmak zorunda kalmadan istediğiniz sayıda eylem yapabilirsiniz. Çeviri, yaklaşım ve konuşma senkiyle ilgili yollar oluştururken bunu eylemde görürsünüz.
 
-### <a name="get-started"></a>Kullanmaya başlayın
+### <a name="get-started"></a>başlarken
 
 1. Projeyi IDE 'de açın, sonra çalışma dizininizin kökünde adlı bir dosya oluşturun `app.py` . Sonra, bu kodu içine kopyalayın `app.py` ve kaydedin:
 

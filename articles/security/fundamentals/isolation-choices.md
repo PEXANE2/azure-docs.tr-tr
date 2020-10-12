@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
 ms.openlocfilehash: 42582c9474647c4c203bd0cafae0be664398ba41
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87533912"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure genel bulutunda yalıtım
@@ -54,7 +54,7 @@ Bu dizindeki kullanıcılar, gruplar ve uygulamalar, Azure aboneliğindeki kayna
 
 - Azure AD kullanıcılarının fiziksel varlıklar veya konumlara erişimi yoktur ve bu nedenle, aşağıda belirtilen mantıksal RBAC ilke denetimlerini atlamak mümkün değildir.
 
-Tanılama ve bakım ihtiyaçları için, tam zamanında ayrıcalık yükseltme sistemini kullanan bir işlem modeli gereklidir ve kullanılır. Azure AD Privileged Identity Management (PıM) uygun bir yönetici kavramını tanıtır. [Uygun yöneticiler](../../active-directory/privileged-identity-management/pim-configure.md) , her gün değil, ayrıcalıklı erişime ihtiyacı olan kullanıcılar olmalıdır. Bu rol, kullanıcı erişime ihtiyaç duyana kadar devre dışıdır ancak kullanıcı bir etkinleştirme işlemini tamamladıktan sonra önceden belirlenen süre boyunca etkin bir yönetici olur.
+Tanılama ve bakım ihtiyaçları için, tam zamanında ayrıcalık yükseltme sistemini kullanan bir işlem modeli gereklidir ve kullanılır. Azure AD Privileged Identity Management (PıM) uygun bir yönetici kavramını tanıtır. [uygun yöneticiler](../../active-directory/privileged-identity-management/pim-configure.md) , her gün değil, daha önce ayrıcalıklı erişime ihtiyacı olan kullanıcılar olmalıdır. Bu rol, kullanıcı erişime ihtiyaç duyana kadar devre dışıdır ancak kullanıcı bir etkinleştirme işlemini tamamladıktan sonra önceden belirlenen süre boyunca etkin bir yönetici olur.
 
 ![Azure AD Privileged Identity Management](./media/isolation-choices/azure-isolation-fig2.png)
 

@@ -15,13 +15,13 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: b-juche
 ms.openlocfilehash: 95c1202fb56e882554d40926e9d5ecec7be49086
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90709050"
 ---
-# <a name="display-health-status-of-replication-relationship"></a>Çoğaltma ilişkisinin sistem durumunu görüntüle 
+# <a name="display-health-status-of-replication-relationship"></a>Çoğaltma ilişkisinin uygunluk durumunu görüntüleme 
 
 Çoğaltma durumunu kaynak birimde veya hedef birimde görüntüleyebilirsiniz.  
 
@@ -55,8 +55,8 @@ ms.locfileid: "90709050"
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
-* [Çapraz bölge çoğaltma](cross-region-replication-introduction.md)
+* [Bölgeler arası çoğaltma](cross-region-replication-introduction.md)
 * [Olağanüstü durum kurtarmayı yönetme](cross-region-replication-manage-disaster-recovery.md)
 * [Birim çoğaltma ölçümleri](azure-netapp-files-metrics.md#replication)
-* [Bölgeler arası çoğaltmanın sorunlarını giderme](troubleshoot-cross-region-replication.md)
+* [Bölgeler arası çoğaltma sorunlarını giderme](troubleshoot-cross-region-replication.md)
 

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.openlocfilehash: c8251eb2a89a7481ebc981f2b89668c363651b39
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91315025"
 ---
 # <a name="manage-scheduled-maintenance-settings-for-azure-database-for-mysql--flexible-server"></a>MySQL için Azure veritabanı – esnek sunucu için zamanlanmış bakım ayarlarını yönetme
@@ -20,7 +20,7 @@ Azure aboneliğinizdeki her esnek sunucu için bakım seçeneklerini belirtebili
 > [!IMPORTANT]
 > MySQL için Azure veritabanı-esnek sunucu önizlemededir.
  
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 - [MySQL Için Azure veritabanı-esnek sunucu](quickstart-create-server-portal.md)
  

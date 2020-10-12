@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.openlocfilehash: c8978504244fbf68875ca8cff7a92f042e8e988b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329610"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Öğretici: Akamai ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -36,7 +36,7 @@ Aşağıdaki görüntüde, Akamai EAA 'nın daha geniş karma güvenli erişim s
 
 ### <a name="key-authentication-scenarios"></a>Anahtar kimlik doğrulama senaryoları
 
-Açık KIMLIK Connect, SAML ve WS-Besde gibi modern kimlik doğrulama protokolleri için Azure Active Directory yerel tümleştirme desteğini kullanarak, Azure AD ile hem iç hem de dış erişim için eski tabanlı kimlik doğrulama uygulamalarına yönelik güvenli erişimi genişleterek bu uygulamalara modern senaryolar (örneğin, parola-daha az erişim) sağlar. Buna aşağıdakiler dahildir:
+Açık KIMLIK Connect, SAML ve WS-Besde gibi modern kimlik doğrulama protokolleri için Azure Active Directory yerel tümleştirme desteğini kullanarak, Azure AD ile hem iç hem de dış erişim için eski tabanlı kimlik doğrulama uygulamalarına yönelik güvenli erişimi genişleterek bu uygulamalara modern senaryolar (örneğin, parola-daha az erişim) sağlar. Şunları içerir:
 
 * Üst bilgi tabanlı kimlik doğrulama uygulamaları
 * Uzak Masaüstü
@@ -45,7 +45,7 @@ Açık KIMLIK Connect, SAML ve WS-Besde gibi modern kimlik doğrulama protokolle
 * VNC (sanal ağ bilgi Işlem)
 * Anonim kimlik doğrulama veya yerleşik kimlik doğrulaması uygulamaları
 * NTLM kimlik doğrulama uygulamaları (Kullanıcı için çift istemlerle koruma)
-* Form tabanlı uygulama (Kullanıcı için çift istemlerle koruma)
+* Forms-Based uygulaması (Kullanıcı için çift istemlerle koruma)
 
 ### <a name="integration-scenarios"></a>Tümleştirme senaryoları
 
@@ -313,7 +313,7 @@ Kaydet ' e tıklayın ve kimlik doğrulaması ' na gidin.
 
     ![Akamai EAA konsolunun dağıtım sekmesinin ekran görüntüsü: "uygulama başarıyla dağıtıldı".](./media/header-akamai-tutorial/configure15.png)
 
-1. Son Kullanıcı deneyimi.
+1. End-User deneyimi.
 
     ![Arka plan görüntüsü ve oturum açma iletişim kutusuyla myapps.microsoft.com için açılış ekranının ekran görüntüsü.](./media/header-akamai-tutorial/enduser01.png)
 
@@ -363,7 +363,7 @@ Kaydet ' e tıklayın ve kimlik doğrulaması ' na gidin.
 
     ![Sağ alt köşedeki ve dağıtıma Git düğmesine sahip SECRETRDPAPP için özel HTTP üstbilgileri ayarlarının Akamai EAA konsolunun ekran görüntüsü.](./media/header-akamai-tutorial/configure24.png)
 
-1. Son Kullanıcı deneyimi
+1. End-User deneyim
 
     ![Arka plan resmi ve oturum açma iletişim kutusuyla myapps.microsoft.com penceresinin ekran görüntüsü.](./media/header-akamai-tutorial/enduser03.png)
 
@@ -429,7 +429,7 @@ Kaydet ve dağıtıma git 'e tıklayın
 
     ![Uygulama dağıt düğmesini gösteren SSH-SECURE için Akamai EAA konsolunun dağıtım sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/configure32.png)
 
-1. Son Kullanıcı deneyimi
+1. End-User deneyim
 
     ![Myapps.microsoft.com penceresi oturum açma iletişim kutusunun ekran görüntüsü.](./media/header-akamai-tutorial/enduser03.png)
 

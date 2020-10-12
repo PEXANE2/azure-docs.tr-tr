@@ -13,10 +13,10 @@ ms.date: 09/28/2020
 ms.author: aahi
 keywords: Şirket içi, Docker, kapsayıcı, yaklaşım analizi, doğal dil işleme
 ms.openlocfilehash: 42b22c94f8f2eed0514906422fe9f1d5e7cd12e2
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91461504"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Metin Analizi kapsayıcılarını yükleme ve çalıştırma
@@ -34,7 +34,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 > [!IMPORTANT]
 > Ücretsiz hesap, ayda 5.000 işlem ile sınırlıdır ve kapsayıcılar için yalnızca **ücretsiz** ve **Standart** <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">fiyatlandırma katmanları <span class="docon docon-navigate-external x-hidden-focus"></span> </a> geçerlidir. İşlem isteği ücretleri hakkında daha fazla bilgi için bkz. [veri limitleri](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Metin Analizi kapsayıcılarından herhangi birini çalıştırmak için konak bilgisayar ve kapsayıcı ortamları olmalıdır.
 
@@ -147,7 +147,7 @@ Kapsayıcıyı bir çıkış [bağlaması](../text-analytics-resource-container-
 
 [!INCLUDE [Cognitive Services FAQ note](../../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Faturalama
+## <a name="billing"></a>Faturalandırma
 
 Metin Analizi kapsayıcıları Azure hesabınızdaki bir _metin analizi_ kaynak kullanarak faturalandırma bilgilerini Azure 'a gönderir. 
 

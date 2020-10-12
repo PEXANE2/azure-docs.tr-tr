@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
 ms.openlocfilehash: fd0c0158106a24ba12fec42e41df69f246e7f3f5
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530485"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware çözümü hakkında sık sorulan sorular

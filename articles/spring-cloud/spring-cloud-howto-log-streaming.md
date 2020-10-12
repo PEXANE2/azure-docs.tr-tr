@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/14/2019
 ms.custom: devx-track-java
 ms.openlocfilehash: eaf99f5e92cbb9277f2d4143e14070f1900cdbef
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90888490"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Azure Spring Cloud uygulama günlüklerini gerçek zamanlı olarak akışla aktarma
@@ -20,7 +20,7 @@ ms.locfileid: "90888490"
 
 Azure yay bulutu, sorun giderme amacıyla gerçek zamanlı uygulama konsolu günlüklerini almak için Azure CLı 'de günlük akışı sağlar. Ayrıca, [günlükleri ve ölçümleri tanılama ayarlarıyla çözümleyebilirsiniz](./diagnostic-services.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Yay bulutu için [Azure CLI uzantısı](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#install-the-azure-cli-extension) 'nı, en düşük sürüm 0.2.0 'yi yükler.
 * Çalışan bir uygulamayla **Azure Spring Cloud** örneği, örneğin [Spring Cloud App](./spring-cloud-quickstart.md).

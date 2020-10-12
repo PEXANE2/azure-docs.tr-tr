@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/18/2017
 ms.subservice: autoscale
 ms.openlocfilehash: 6d6b868f745803263339e6b27e2610aaca8f63fb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87317476"
 ---
 # <a name="understand-autoscale-settings"></a>Otomatik Ölçeklendirme ayarlarını anlama
@@ -103,7 +103,7 @@ Otomatik ölçeklendirme ayarı şemasını göstermek için aşağıdaki otomat
 | metricTrigger | zamandilimi | Ölçüm örnekleme süresi. Örneğin, **Timegrex "PT1M"** , ölçümlerin, istatistik öğesinde belirtilen toplama yöntemi kullanılarak 1 dakikada bir toplanması gerektiği anlamına gelir. |
 | metricTrigger | istatistik | Zaman çizgisi dönemi içindeki toplama yöntemi. Örneğin, **istatistik = "Average"** ve **TIMEGREN = "PT1M"** , ölçümlerin ortalama alınarak her 1 dakikada toplanmasının gerektiği anlamına gelir. Bu özellik, ölçümün nasıl örnekleneceğini belirler. |
 | metricTrigger | timeWindow | Ölçümler için geri aranacak zaman miktarı. Örneğin, **timeWindow = "PT10M"** , otomatik ölçeklendirme her çalıştığında, son 10 dakika için ölçümleri sorgular. Zaman penceresi, ölçümlerinizin normalleştirilmesine izin verir ve geçici ani artışlar için yeniden hareket etmenizi önler. |
-| metricTrigger | timeAggregation | Örneklenmiş ölçümleri toplamak için kullanılan toplama yöntemi. Örneğin, **timeaggregate = "Average"** , ortalama değeri alarak örneklenmiş ölçümleri toplamalıdır. Önceki durumda, 1 dakikalık örnekleri alın ve bunları ortalama yapın. |
+| metricTrigger | timeAggregation | Örneklenmiş ölçümleri toplamak için kullanılan toplama yöntemi. Örneğin, **timeaggregate = "Average"** , ortalama değeri alarak örneklenmiş ölçümleri toplamalıdır. Önceki durumda, 10 1 dakikalık örnekleri alın ve bunları ortalama yapın. |
 | kurallar | scaleAction | Kuralın metricTrigger değeri tetiklendiğinde gerçekleştirilecek eylem. |
 | scaleAction | yön | Ölçeği genişletmek için "Artır" veya "azalt".|
 | scaleAction | değer | Kaynağın kapasitesini ne kadar artırabilir veya azaltamazsınız. |

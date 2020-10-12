@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: cd81ef78ecc5ef9cea71adb387597681460d50c8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89261334"
 ---
 # <a name="output-metadata"></a>Çıkış meta verileri
@@ -57,7 +57,7 @@ XML örnek [XML örneği](#xml)bulabilirsiniz.
 ### <a name="child-elements"></a>Alt öğeleri
 | Ad | Açıklama |
 | --- | --- |
-| **Kaynaklar** |Bu Assetdosyasını üretmek için işlenen giriş/kaynak medya dosyalarının koleksiyonu. Daha fazla bilgi için bkz. kaynak öğesi. |
+| **Ğına** |Bu Assetdosyasını üretmek için işlenen giriş/kaynak medya dosyalarının koleksiyonu. Daha fazla bilgi için bkz. kaynak öğesi. |
 | **Videoizler**<br/><br/> minOccurs = "0" maxOccurs = "1" |Her fiziksel Assetdosyası bu dosyada sıfır veya daha fazla video ile ilgili bir kapsayıcı biçiminde araya eklenebilir. Daha fazla bilgi için bkz. Videoiz öğesi. |
 | **Ses Izleri**<br/><br/> minOccurs = "0" maxOccurs = "1" |Her fiziksel Assetdosyası bu dosyada sıfır veya daha fazla ses parçası ile uygun bir kapsayıcı biçimiyle bulunabilir. Bu, tüm ses izlemelerinin koleksiyonudur. Daha fazla bilgi için bkz. Audioiz öğesi. |
 
@@ -99,12 +99,12 @@ XML örnek [XML örneği](#xml)bulabilirsiniz.
 ### <a name="attributes"></a>Öznitelikler
 | Ad | Tür | Açıklama |
 | --- | --- | --- |
-| **Numarasını**<br/><br/> minInclusive = "0"<br/><br/> Gerekli |**xs: int** |Bu video izlemenin sıfır tabanlı dizini. **Note:**  Bu **kimliğin** bir MP4 dosyasında kullanılan TrackID olması gerekmez. |
+| **Id**<br/><br/> minInclusive = "0"<br/><br/> Gerekli |**xs: int** |Bu video izlemenin sıfır tabanlı dizini. **Note:**  Bu **kimliğin** bir MP4 dosyasında kullanılan TrackID olması gerekmez. |
 | **FourCC**<br/><br/> Gerekli |**xs: String** |Video codec FourCC kodu. |
 | **Profil** |**xs: String** |H264 profili (yalnızca H264 codec için geçerlidir). |
 | **Düzeyde** |**xs: String** |H264 düzeyi (yalnızca H264 codec için geçerlidir). |
-| **Width**<br/><br/> minInclusive = "0"<br/><br/> Gerekli |**xs: int** |Piksel cinsinden kodlanmış video genişliği. |
-| **Height**<br/><br/> minInclusive = "0"<br/><br/> Gerekli |**xs: int** |Piksel cinsinden kodlanmış video yüksekliği. |
+| **Genişlik**<br/><br/> minInclusive = "0"<br/><br/> Gerekli |**xs: int** |Piksel cinsinden kodlanmış video genişliği. |
+| **Yükseklik**<br/><br/> minInclusive = "0"<br/><br/> Gerekli |**xs: int** |Piksel cinsinden kodlanmış video yüksekliği. |
 | **DisplayAspectRatioNumerator**<br/><br/> minInclusive = "0"<br/><br/> Gerekli |**xs: Double** |Video görüntüleme en boy oranı payı. |
 | **Displayaspectratiopayda**<br/><br/> minInclusive = "0"<br/><br/> Gerekli |**xs: Double** |Video görüntüleme en boy oranı paydası. |
 | **Framerate**<br/><br/> minInclusive = "0"<br/><br/> Gerekli |**xs: Decimal** |.3F biçiminde ölçülen video kare hızı. |
@@ -131,7 +131,7 @@ XML örnek [XML örneği](#xml)bulabilirsiniz.
 ### <a name="attributes"></a>Öznitelikler
 | Ad | Tür | Açıklama |
 | --- | --- | --- |
-| **Numarasını**<br/><br/> minInclusive = "0"<br/><br/> Gerekli |**xs: int** |Bu ses parçasının sıfır tabanlı dizini. **Note:**  Bu, bir MP4 dosyasında kullanılan TrackID olması gerekmez. |
+| **Id**<br/><br/> minInclusive = "0"<br/><br/> Gerekli |**xs: int** |Bu ses parçasının sıfır tabanlı dizini. **Note:**  Bu, bir MP4 dosyasında kullanılan TrackID olması gerekmez. |
 | **Bileşeni** |**xs: String** |Ses izi codec bileşeni dizesi. |
 | **EncoderVersion** |**xs: String** |EAC3 için gerekli olan isteğe bağlı kodlayıcı sürüm dizesi. |
 | **Kanallar**<br/><br/> minInclusive = "0"<br/><br/> Gerekli |**xs: int** |Ses kanalı sayısı. |
@@ -609,5 +609,5 @@ Aşağıdaki XML, çıkış meta veri dosyasına bir örnektir.
 ## <a name="next-steps"></a>Sonraki adımlar
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

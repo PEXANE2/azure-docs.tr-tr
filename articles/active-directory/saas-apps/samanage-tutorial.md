@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.openlocfilehash: 8d4c19e1ce10ed618cda167cd6fa7efedf4111d0
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90707586"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-solarwinds-service-desk-previously-samanage"></a>Öğretici: SolarWinds Service Desk ile tümleştirme Azure Active Directory (daha önce Samanage)
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açmayı SolarWinds ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Solarwinds Service Desk çoklu oturum açmayı yapılandırın](#configure-solarwinds-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Solarwinds Service Desk çoklu oturum açmayı yapılandırın](#configure-solarwinds-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. **[Solarwinds Service Desk test kullanıcısı oluşturun](#create-solarwinds-test-user)** -kullanıcının Azure AD gösterimine bağlı olan Solarwinds Service Desk 'Te Britta Simon 'a sahip olmak için.
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı SolarWinds ile yapılandırmak için aşağıdak
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -108,7 +108,7 @@ Azure AD çoklu oturum açmayı SolarWinds ile yapılandırmak için aşağıdak
     > [!NOTE] 
     > Bu değerler gerçek değildir. Bu değerleri, Öğreticinin ilerleyen kısımlarında açıklanan gerçek oturum açma URL 'SI ve tanımlayıcı ile güncelleştirin. Daha fazla ayrıntı için [bkz. istemci desteği ekibine](https://www.samanage.com/support)başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+4. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -124,7 +124,7 @@ Azure AD çoklu oturum açmayı SolarWinds ile yapılandırmak için aşağıdak
 
 <a name="configure-solarwinds-single-sign-on"></a>
 
-### <a name="configure-solarwinds-service-desk-single-sign-on"></a>SolarWinds Service Desk çoklu oturum açmayı yapılandırma
+### <a name="configure-solarwinds-service-desk-single-sign-on"></a>SolarWinds Service Desk tek Sign-On yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, SolarWinds şirket sitenizde yönetici olarak oturum açın.
 
@@ -140,7 +140,7 @@ Azure AD çoklu oturum açmayı SolarWinds ile yapılandırmak için aşağıdak
    
     ![SAML kullanarak oturum açma](./media/samanage-tutorial/tutorial_samanage_003.png "SAML kullanarak oturum açma")
  
-    a. **SAML Ile çoklu oturum açmayı etkinleştir**' e tıklayın.  
+    a. **SAML Ile tek Sign-On etkinleştir**' e tıklayın.  
  
     b. **Kimlik sağlayıcısı URL 'si** metin kutusunda, Azure Portal kopyaladığınız **Azure AD tanımlayıcısının** değerini yapıştırın.    
  

@@ -14,10 +14,10 @@ ms.date: 11/25/2014
 ms.author: gwallace
 ms.custom: devx-track-java
 ms.openlocfilehash: 9a28677063c6f6dd7bb7bcf6746dbc541308891f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87305916"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>Azure 'da Java uygulamasında Twilio kullanarak telefon araması yapma
@@ -182,7 +182,7 @@ Uygulamanızı çalıştırmak için üst düzey adımlar aşağıda verilmişti
 Azure 'a dağıtmaya hazırsanız, buluta dağıtım için yeniden derleyin, Azure 'a dağıtın ve tarayıcıda http://*your_hosted_name*. cloudapp.net/TwilioCloud/callform.jsp 'yi çalıştırın ( *your_hosted_name*değerini değiştirin).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu kod, Azure 'da Java 'da Twilio kullanarak temel işlevselliği göstermek için verilmiştir. Üretim sırasında Azure 'a dağıtım yapmadan önce, daha fazla hata işleme veya diğer özellik eklemek isteyebilirsiniz. Örnek:
+Bu kod, Azure 'da Java 'da Twilio kullanarak temel işlevselliği göstermek için verilmiştir. Üretim sırasında Azure 'a dağıtım yapmadan önce, daha fazla hata işleme veya diğer özellik eklemek isteyebilirsiniz. Örneğin:
 
 * Bir Web formu kullanmak yerine, telefon numaralarını depolamak ve metin çağırmak için Azure Storage bloblarını veya SQL veritabanını kullanabilirsiniz. Java 'da Azure Storage bloblarını kullanma hakkında daha fazla bilgi için bkz. [Java 'Dan blob Storage hizmetini kullanma][howto_blob_storage_java]. 
 * Twilio hesap KIMLIĞI ve kimlik doğrulama belirtecini dağıtımınızın yapılandırma ayarlarından almak için, makecall.jsp içindeki değerleri sabit kodlamak yerine **Roleenvironment. getConfigurationSettings** kullanabilirsiniz. **Roleenvironment** sınıfı hakkında daha fazla bilgi için bkz. [JSP 'de Azure hizmeti çalışma zamanı kitaplığını kullanma][azure_runtime_jsp].

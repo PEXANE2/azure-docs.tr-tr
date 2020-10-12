@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: dd4f4ad7f84ebc1f5e254843e7afa4aa0f3f224f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87319142"
 ---
 # <a name="device-to-cloud-communications-guidance"></a>Cihazdan buluta iletişim Kılavuzu
@@ -39,7 +39,7 @@ Cihaz uygulamasından çözüm arka ucuna bilgi gönderirken IoT Hub üç seçen
 | Senaryo | Telemetri süresi serisi ve uyarıları. Örneğin, her 5 dakikada bir 256 KB 'lık algılayıcı veri toplu işi gönderilir. | Kullanılabilir yetenekler ve koşullar. Örneğin, hücresel veya WiFi gibi geçerli cihaz bağlantısı modu. Yapılandırma ve yazılım güncelleştirmeleri gibi uzun süre çalışan iş akışlarını eşitleme. | Medya dosyaları. Büyük (genellikle sıkıştırılmış) telemetri toplu işleri. |
 | Depolama ve alma | En fazla 7 güne kadar IoT Hub tarafından geçici olarak depolanır. Yalnızca sıralı okuma. | Cihaz ikizi IoT Hub tarafından depolanır. [IoT Hub sorgu dili](iot-hub-devguide-query-language.md)kullanılarak alınabilir. | Kullanıcı tarafından belirtilen Azure depolama hesabında depolanır. |
 | Boyut | En çok 256 KB ileti. | Raporlanan en fazla özellik boyutu 32 KB 'tır. | Azure Blob depolama tarafından desteklenen en büyük dosya boyutu. |
-| Sıklık | Yüksek. Daha fazla bilgi için bkz. [IoT Hub sınırları](iot-hub-devguide-quotas-throttling.md). | Orta. Daha fazla bilgi için bkz. [IoT Hub sınırları](iot-hub-devguide-quotas-throttling.md). | Düşük. Daha fazla bilgi için bkz. [IoT Hub sınırları](iot-hub-devguide-quotas-throttling.md). |
+| Frequency | Yüksek. Daha fazla bilgi için bkz. [IoT Hub sınırları](iot-hub-devguide-quotas-throttling.md). | Orta. Daha fazla bilgi için bkz. [IoT Hub sınırları](iot-hub-devguide-quotas-throttling.md). | Düşük. Daha fazla bilgi için bkz. [IoT Hub sınırları](iot-hub-devguide-quotas-throttling.md). |
 | Protokol | Tüm protokollerde kullanılabilir. | MQTT veya AMQP kullanılarak kullanılabilir. | Herhangi bir protokol kullanılırken kullanılabilir, ancak cihazda HTTPS gerekir. |
 
 Uygulamanın hem telemetri süresi serisi hem de uyarı olarak bilgi gönderebilmesi ve cihazı cihaz ikizi kullanılabilir hale getirmek gerekebilir. Bu senaryoda, aşağıdaki seçeneklerden birini belirleyebilirsiniz:
