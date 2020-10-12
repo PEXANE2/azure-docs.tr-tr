@@ -4,10 +4,10 @@ description: Azure Ilkesi 'nin sanal makineler içindeki ayarları denetlemek i�
 ms.date: 08/07/2020
 ms.topic: conceptual
 ms.openlocfilehash: 951960793ebda50fdb87d266c4dc8561f2fcd70f
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88756699"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi’nin Konuk Yapılandırmasını anlama
@@ -62,7 +62,7 @@ Konuk yapılandırması istemcisi, her 5 dakikada bir yeni içerik denetler. Kon
 Konuk yapılandırma ilkelerine yeni sürümler dahildir. Konuk yapılandırma Aracısı uyumlu değilse, Azure Marketi 'nde kullanılabilen işletim sistemlerinin daha eski sürümleri hariç tutulur.
 Aşağıdaki tabloda, Azure görüntülerinde desteklenen işletim sistemlerinin bir listesi gösterilmektedir:
 
-|Publisher|Ad|Sürümler|
+|Publisher|Adı|Sürümler|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 ve üzeri|
 |Credavtiv|Debian|8 ve üzeri|

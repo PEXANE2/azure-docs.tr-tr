@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/24/2019
 ms.author: ramamill
 ms.openlocfilehash: 01aef3aca4f6967b1681bff9598c7dd7a24739cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84692533"
 ---
 # <a name="manage-vmware-vcenter-server"></a>VMware vCenter Server Yönet
@@ -53,7 +53,7 @@ VMware VM 'lerinden Azure 'a olağanüstü durum kurtarma sırasında vCenter su
 1. **VCenter Ekle**' de, vSphere konağı veya vCenter sunucusu için bir kolay ad belirtin.
 1. Sunucunun IP adresini veya FQDN 'sini belirtin.
 1. VMware sunucularınız farklı bir bağlantı noktasındaki istekleri dinleyecek şekilde yapılandırılmadıkça bağlantı noktasını 443 olarak bırakın.
-1. VMware vCenter veya vSphere ESXi sunucusuna bağlanmak için kullanılan hesabı seçin. Ardından **Tamam**'a tıklayın.
+1. VMware vCenter veya vSphere ESXi sunucusuna bağlanmak için kullanılan hesabı seçin. Daha sonra, **Tamam**'a tıklayın.
 
 ## <a name="modify-credentials"></a>Kimlik bilgilerini değiştir
 

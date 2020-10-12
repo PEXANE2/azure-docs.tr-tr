@@ -14,15 +14,15 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8080d4cf4c3f0091f7837b3fccead5474c42db55
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84690787"
 ---
 # <a name="single-sign-on-with-msaljs"></a>MSAL.js ile çoklu oturum açma
 
-Çoklu oturum açma (SSO), kullanıcıların kimlik doğrulaması gerektirmeden birden çok uygulama arasında yeniden kullanılabilecek bir oturum oluşturmak ve oturum açması için kullanıcıların kimlik bilgilerini bir kez girmelerini sağlar. Bu, kullanıcıya sorunsuz bir deneyim sağlar ve kimlik bilgileri için yinelenen istekleri azaltır.
+Tek Sign-On (SSO), kullanıcıların kimlik doğrulaması gerektirmeden birden çok uygulama arasında yeniden kullanılabilecek bir oturum açmak ve oturum açması için kullanıcıların kimlik bilgilerini bir kez girmelerini sağlar. Bu, kullanıcıya sorunsuz bir deneyim sağlar ve kimlik bilgileri için yinelenen istekleri azaltır.
 
 Azure AD, Kullanıcı ilk kez kimlik doğrulaması gerçekleştirdiğinde bir oturum tanımlama bilgisi ayarlayarak uygulamalara SSO özellikleri sağlar. MSAL.js kitaplığı, uygulamaların bunu birkaç yolla kullanmasına izin verir.
 

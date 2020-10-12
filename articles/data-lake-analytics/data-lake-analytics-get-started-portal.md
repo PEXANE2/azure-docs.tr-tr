@@ -7,10 +7,10 @@ ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
 ms.topic: conceptual
 ms.date: 03/21/2017
 ms.openlocfilehash: d8f0a5697a128deb75537f3d48a3830dc7ba9df9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132543"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-the-azure-portal"></a>Azure portalı kullanarak Azure Data Lake Analytics ile çalışmaya başlama
@@ -31,7 +31,7 @@ Bu öğreticiye başlamadan önce bir **Azure aboneliğinizin**olması gerekir. 
 3. Aşağıdaki öğeler için değerleri seçin:
    * **Ad**: Data Lake Analytics hesabınızı adlandırın (Yalnızca küçük harf ve sayı kullanılabilir).
    * **Abonelik**: Analytics hesabı için kullanılan Azure aboneliğini seçin.
-   * **Kaynak grubu**. Var olan bir Azure Kaynak Grubu'nu seçin veya yeni bir grup oluşturun.
+   * **Kaynak Grubu**. Var olan bir Azure Kaynak Grubu'nu seçin veya yeni bir grup oluşturun.
    * **Konum**. Data Lake Analytics hesabı için bir Azure veri merkezi seçin.
    * **Data Lake Storage 1.**: yeni bir Data Lake Storage 1. hesabı oluşturmak için yönergeyi uygulayın veya var olan bir hesabı seçin. 
 4. İsteğe bağlı olarak Data Lake Analytics hesabınıza yönelik bir fiyatlandırma katmanı seçebilirsiniz.
@@ -61,7 +61,7 @@ OUTPUT @a
 2. Yukarıdaki U-SQL betiğinin metnine yapıştırın. İşin adı. 
 3. İşi başlatmak için **Gönder** düğmesini seçin.   
 4. İşin **Durumunu** izleyin ve iş durumu **Başarılı** olana kadar bekleyin.
-5. **Veri** sekmesini seçin, sonra **çıktılar** sekmesini seçin. adlı çıkış dosyasını seçin `data.csv` ve çıktı verilerini görüntüleyin.
+5. **Veri** sekmesini seçin ve ardından **çıktılar** sekmesini seçin. Adlı çıkış dosyasını seçin `data.csv` ve çıktı verilerini görüntüleyin.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

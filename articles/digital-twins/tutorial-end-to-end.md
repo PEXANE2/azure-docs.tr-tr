@@ -8,10 +8,10 @@ ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
 ms.openlocfilehash: 0db39884ef54310db849abcef1062adbaeb9f22e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91292741"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Öğretici: uçtan uca bir çözüm oluşturma
@@ -59,11 +59,11 @@ Yapı senaryosu *AdtSampleApp* örnek uygulaması tarafından uygulanan bileşen
 
 İlk olarak, örnek projeden *AdtSampleApp* çözümünü kullanarak uçtan uca senaryonun Azure dijital TWINS parçasını (**Bölüm A**) oluşturursunuz:
 
-:::image type="content" source="media/tutorial-end-to-end/building-scenario-a.png" alt-text="Azure dijital TWINS örneği olan, tam yapı senaryosu grafik vurgulama bölümünden bir alıntı":::
+:::image type="content" source="media/tutorial-end-to-end/building-scenario-a.png" alt-text="Tam bina senaryosunun grafiği. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışı IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid kadar (ok C)":::
 
 _**AdtE2ESample**_ projesinin açık olduğu Visual Studio pencerenizde, araç çubuğunda Bu düğmeyle projeyi çalıştırın:
 
-:::image type="content" source="media/tutorial-end-to-end/start-button-sample.png" alt-text="Visual Studio Başlangıç düğmesi (SampleClientApp Projesi)":::
+:::image type="content" source="media/tutorial-end-to-end/start-button-sample.png" alt-text="Tam bina senaryosunun grafiği. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışı IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid kadar (ok C)":::
 
 Bir konsol penceresi açılır, kimlik doğrulama işlemi gerçekleştirebilir ve bir komut için bekler. Bu konsolda, örnek Azure dijital TWINS çözümünü oluşturmak için bir sonraki komutu çalıştırın.
 
@@ -78,7 +78,7 @@ Bu komutun çıktısı, üç [**dijital TWINS**](concepts-twins-graph.md) 'Nin o
 
 İlişkiler aracılığıyla aşağıdaki [**ikizi grafiğine**](concepts-twins-graph.md)bağlanır. İkizi Graph, varlıkların ile nasıl etkileşime gireceğini ve birbirleriyle nasıl ilişkili olduğunu da kapsayan, ortamı bir bütün olarak temsil eder.
 
-:::image type="content" source="media/tutorial-end-to-end/building-scenario-graph.png" alt-text="Floor1 room21 ve room21 Contains thermostat67 içerdiğini gösteren bir grafik" border="false":::
+:::image type="content" source="media/tutorial-end-to-end/building-scenario-graph.png" alt-text="Tam bina senaryosunun grafiği. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışı IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid kadar (ok C)" border="false":::
 
 Aşağıdaki komutu çalıştırarak oluşturulan TWINS 'i doğrulayabilirsiniz, bu, içerdiği tüm dijital TWINS için bağlı Azure dijital TWINS örneğini sorgular:
 
@@ -114,52 +114,44 @@ Uygulamayı yayımlamadan önce, tüm dahil edilen paketlerin en son sürümüne
 
 *Çözüm Gezgini* bölmesinde *Samplefunctionsapp > bağımlılıklar*' ı genişletin. *Paketler* ' i sağ seçin ve *NuGet Paketlerini Yönet...* seçeneğini belirleyin.
 
-:::image type="content" source="media/tutorial-end-to-end/update-dependencies-1.png" alt-text="Visual Studio: SampleFunctionsApp projesi için NuGet paketlerini yönetme" border="false":::
+:::image type="content" source="media/tutorial-end-to-end/update-dependencies-1.png" alt-text="Tam bina senaryosunun grafiği. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışı IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid kadar (ok C)" border="false":::
 
 Bu, NuGet Paket Yöneticisi 'Ni açar. *Güncelleştirmeler* sekmesini seçin ve güncelleştirme yapılacak herhangi bir paket varsa, *tüm paketleri seçmek*için kutuyu işaretleyin. Ardından *Güncelleştir*' i ziyaret edin.
 
-:::image type="content" source="media/tutorial-end-to-end/update-dependencies-2.png" alt-text="Visual Studio: NuGet paket yöneticisinde tüm paketleri güncelleştirmek için seçme":::
+:::image type="content" source="media/tutorial-end-to-end/update-dependencies-2.png" alt-text="Tam bina senaryosunun grafiği. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışı IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid kadar (ok C)":::
 
 ### <a name="publish-the-app"></a>Uygulamayı yayımlama
 
 _**AdtE2ESample**_ projesinin açık olduğu Visual Studio pencerenizi geri döndüğünüzde, *Çözüm Gezgini* bölmesinden _**samplefunctionsapp**_ proje dosyasını sağ seçin ve **Yayınla**' yı tıklayın.
 
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-1.png" alt-text="Visual Studio: projeyi Yayımla":::
+:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-1.png" alt-text="Tam bina senaryosunun grafiği. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışı IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid kadar (ok C)":::
 
 Aşağıdaki *Yayımla* sayfasında, **Azure** varsayılan hedef seçimini bırakın ve *İleri*' yi ziyaret edin. 
 
 Belirli bir hedef için **Azure işlev uygulaması (Windows)** öğesini seçin ve *İleri*' yi tıklayın.
 
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-2.png" alt-text="Visual Studio 'da Azure işlevini yayımlama: belirli hedef":::
+:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-2.png" alt-text="Tam bina senaryosunun grafiği. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışı IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid kadar (ok C)":::
 
 *İşlevler örneği* sayfasında, aboneliğinizi seçin. Bu, aboneliğinizdeki *kaynak gruplarıyla* bir kutu doldurmalıdır.
 
 Örneğinizin kaynak grubunu seçin ve *+ Yeni bir Azure Işlevi oluştur...* seçeneğini tıklayın.
 
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-3.png" alt-text="Visual Studio 'da Azure işlevini yayımlama: Işlevler örneği (işlev uygulamasından önce)":::
+:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-3.png" alt-text="Tam bina senaryosunun grafiği. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışı IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid kadar (ok C)" düğmesine basın.
 
-*İşlev uygulaması (Windows)-yeni oluştur* penceresinde, alanları aşağıdaki gibi girin:
-* **Ad** , Azure 'un Azure işlevleri uygulamanızı barındırmak için kullanacağı tüketim planının adıdır. Bu aynı zamanda gerçek işlevinizi tutan işlev uygulamasının adı olur. Kendi benzersiz bir değer seçebilir veya varsayılan öneriyi bırakabilirsiniz.
-* **Aboneliğin** kullanmak istediğiniz abonelikle eşleştiğinden emin olun 
-* **Kaynak** grubunun kullanmak istediğiniz kaynak grubuna emin olun
-* **Plan türünü** *Tüketim* olarak bırakın
-* Kaynak grubunuzun konumuyla eşleşen **konumu** seçin
-* *Yeni...* bağlantısını kullanarak yeni bir **Azure depolama** kaynağı oluşturun. Konumu kaynak grubunuza uyacak şekilde ayarlayın, diğer varsayılan değerleri kullanın ve "Tamam" düğmesine basın.
-
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-4.png" alt-text="Visual Studio 'da Azure işlevini yayımlama: İşlev Uygulaması (Windows)-yeni oluştur":::
+:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-4.png" alt-text="Tam bina senaryosunun grafiği. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışı IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid kadar (ok C)":::
 
 Ardından **Oluştur**’u seçin.
 
 Bu, yeni işlev uygulamanızın artık kaynak grubunuzun altında göründüğünden, bunu *işlevler örneği* sayfasına geri getirmelidir. İsabet *sonu*.
 
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-5.png" alt-text="Visual Studio 'da Azure işlevini yayımlama: Işlevler örneği (işlev uygulamasından sonra)":::
+:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-5.png" alt-text="Tam bina senaryosunun grafiği. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışı IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid kadar (ok C)":::
 
 Ana Visual Studio penceresinde geri açılan *Yayımla* bölmesinde tüm bilgilerin doğru göründüğünden emin olun ve **Yayımla**' yı seçin.
 
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-6.png" alt-text="Visual Studio 'da Azure işlevini yayımlama: yayımlama":::
+:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-6.png" alt-text="Tam bina senaryosunun grafiği. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışı IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid kadar (ok C)":::
 
 > [!NOTE]
-> Şu şekilde bir açılan pencere görürseniz: :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="Visual Studio 'Da Azure Işlevini yayımlama: kimlik bilgilerini yayımlama" border="false":::
+> Şu şekilde bir açılan pencere görürseniz: :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="Tam bina senaryosunun grafiği. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışı IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid kadar (ok C)" border="false":::
 > **Azure 'dan kimlik bilgilerini alma** ve **kaydetme**girişimini seçin.
 >
 > *Azure 'Da işlev sürümünü yükseltmek* için bir uyarı görürseniz veya *işlevler çalışma zamanının sürümünün Azure 'da çalışan sürümle eşleşmemesi*durumunda:
@@ -198,7 +190,7 @@ Bu adımda, [IoT Hub](../iot-hub/about-iot-hub.md) kayıtlı bir sanal bir termo
 
 Bu, uçtan uca senaryonun bu bölümünde gerçekleşir (**ok B**):
 
-:::image type="content" source="media/tutorial-end-to-end/building-scenario-b.png" alt-text="Tam bina senaryosu grafik vurgulama oku B, Azure dijital TWINS 'den önceki öğeler: cihaz, IoT Hub ve ilk Azure işlevi":::
+:::image type="content" source="media/tutorial-end-to-end/building-scenario-b.png" alt-text="Tam bina senaryosunun grafiği. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışı IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid kadar (ok C)":::
 
 Bu cihaz bağlantısını kurmak için tamamlayacaksınız eylemler şunlardır:
 1. Sanal cihazı yönetecek bir IoT Hub 'ı oluşturma
@@ -229,18 +221,18 @@ Bunu yapmak için, Azure işleviyle bir uç nokta olarak IoT Hub bir **olay abon
 
 [Azure Portal](https://portal.azure.com/), en üstteki arama çubuğunda adını arayarak yeni oluşturduğunuz IoT Hub 'ınıza gidin. Hub menüsünden *olay* ' ı seçin ve *+ olay aboneliği*' ni seçin.
 
-:::image type="content" source="media/tutorial-end-to-end/event-subscription-1.png" alt-text="Azure portal: IoT Hub olay aboneliği":::
+:::image type="content" source="media/tutorial-end-to-end/event-subscription-1.png" alt-text="Tam bina senaryosunun grafiği. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışı IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid kadar (ok C)":::
 
 Bu işlem *olay aboneliği oluştur* sayfasını getirir.
 
-:::image type="content" source="media/tutorial-end-to-end/event-subscription-2.png" alt-text="Azure portal: olay aboneliği oluştur":::
+:::image type="content" source="media/tutorial-end-to-end/event-subscription-2.png" alt-text="Tam bina senaryosunun grafiği. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışı IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid kadar (ok C)":::
 
 Alanları aşağıda gösterildiği gibi (varsayılan olarak doldurulan alanlar bahsedilmez) girin:
 * *olay ABONELIĞI ayrıntıları*  >  **Ad**: olay aboneliğinize bir ad verin.
 * *konu ayrıntıları*  >  **Sistem konu adı**: sistem konusu için kullanılacak bir ad verin. 
 * *olay türleri*  >  **Olay türlerine filtrele**: menü seçeneklerinden *cihaz telemetrisi* ' ni seçin.
 * *uç nokta ayrıntıları*  >  **Uç nokta türü**: menü seçeneklerinden *Azure işlevi* ' ni seçin.
-* *uç nokta ayrıntıları*  >  **Uç nokta**: *uç nokta seçin* bağlantısına tıklayın. Bu işlem bir *Azure Işlevi Seç* penceresi açar: :::image type="content" source="media/tutorial-end-to-end/event-subscription-3.png" alt-text="olay aboneliği Azure Portal: Azure işlevi seçin" border="false":::
+* *uç nokta ayrıntıları*  >  **Uç nokta**: *uç nokta seçin* bağlantısına tıklayın. Bu işlem bir *Azure Işlevi Seç* penceresi açar: :::image type="content" source="media/tutorial-end-to-end/event-subscription-3.png" alt-text="Tam bina senaryosunun grafiği. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışı IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid kadar (ok C)" border="false":::
     - **Aboneliğiniz**, **kaynak grubunuz**, **işlev uygulaması** ve **işlevinizi** (*ProcessHubToDTEvents*) girin. Bunlardan bazıları abonelik seçildikten sonra otomatik olarak doldurulabilir.
     - **Seçimi Onayla**' ya basın.
 
@@ -292,11 +284,11 @@ Dosyayı kaydedin.
 
 Şimdi, ayarlamış olduğunuz veri benzetiminin sonuçlarını görmek için, araç çubuğunda Bu düğmeyle **Devicesimülatör** projesini çalıştırın:
 
-:::image type="content" source="media/tutorial-end-to-end/start-button-simulator.png" alt-text="Visual Studio Başlangıç düğmesi (Devicesimülatör Projesi)":::
+:::image type="content" source="media/tutorial-end-to-end/start-button-simulator.png" alt-text="Tam bina senaryosunun grafiği. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışı IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid kadar (ok C)":::
 
 Bir konsol penceresi açılır ve sanal sıcaklık telemetri iletilerini görüntüler. Bunlar IoT Hub gönderilir, burada Azure işlevi tarafından alınır ve işlenir.
 
-:::image type="content" source="media/tutorial-end-to-end/console-simulator-telemetry.png" alt-text="Gönderilen sıcaklık telemetrisini gösteren cihaz simülatörü konsol çıkışı":::
+:::image type="content" source="media/tutorial-end-to-end/console-simulator-telemetry.png" alt-text="Tam bina senaryosunun grafiği. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışı IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid kadar (ok C)":::
 
 Bu konsolda başka bir şey yapmanız gerekmez, ancak sonraki adımları tamamlayarak çalışır durumda bırakın.
 
@@ -314,7 +306,7 @@ ObserveProperties thermostat67 Temperature
 
 *Azure dijital TWINS örneğinden* , her 10 saniyede bir konsola kaydedilen canlı güncelleştirilmiş sıcaklıkları görmeniz gerekir.
 
-:::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry.png" alt-text="Dijital ikizi thermostat67 'ten sıcaklık iletilerinin günlüğünü gösteren konsol çıkışı":::
+:::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry.png" alt-text="Tam bina senaryosunun grafiği. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışı IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid kadar (ok C)":::
 
 Bu işlemi başarıyla çalıştığını doğruladıktan sonra, her iki projenin da çalıştırılmasını durdurabilirsiniz. Visual Studio pencerelerini öğreticinin geri kalanında kullanmaya devam edecek şekilde açık tutun.
 
@@ -324,7 +316,7 @@ Bu öğreticide, Azure Digital TWINS 'in dış cihaz verilerinden nasıl güncel
 
 Bunu yapmak için, bağlı *termostat* ikizi güncelleştirildiği zaman bir *Oda* Ikizi güncellemek üzere *processdtkabteddata* Azure işlevini kullanacaksınız. Bu, uçtan uca senaryonun bu bölümünde gerçekleşir (**ok C**):
 
-:::image type="content" source="media/tutorial-end-to-end/building-scenario-c.png" alt-text="Tam bina senaryosu grafik vurgulama ok C, Azure dijital TWINS 'den sonraki öğeler: Event Grid ve ikinci Azure işlevi":::
+:::image type="content" source="media/tutorial-end-to-end/building-scenario-c.png" alt-text="Tam bina senaryosunun grafiği. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışı IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid kadar (ok C)":::
 
 Bu veri akışını ayarlamak için tamamlayacaksınız eylemler şunlardır:
 1. Örneği Event Grid bağlayan bir Azure dijital TWINS uç noktası oluşturun
@@ -368,7 +360,7 @@ az dt endpoint show --dt-name <your-Azure-Digital-Twins-instance> --endpoint-nam
 
 `provisioningState`Çıktıda alanı bulun ve değerin "başarılı" olup olmadığını kontrol edin. Ayrıca "sağlama" da olabilir, yani uç noktanın oluşturulduğu anlamına gelir. Bu durumda, birkaç saniye bekleyin ve başarıyla tamamlandığını denetlemek için komutu yeniden çalıştırın.
 
-:::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="Uç nokta sorgusunun sonucu, bir provisioningState 'in başarılı olduğunu gösteriyor":::
+:::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="Tam bina senaryosunun grafiği. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışı IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid kadar (ok C)":::
 
 Olay Kılavuzu konuya ve Azure dijital TWINS uç noktanıza verdiğiniz adları kaydedin. Bunları daha sonra kullanacaksınız.
 
@@ -395,7 +387,7 @@ Bunu yapmak için, olay kılavuzunuzda, *Processdtkabteddata* Azure işlevinizde
 
 [Azure Portal](https://portal.azure.com/), en üstteki arama çubuğunda adını arayarak olay kılavuzunuza gidin. *+ Olay Aboneliği*'ni seçin.
 
-:::image type="content" source="media/tutorial-end-to-end/event-subscription-1b.png" alt-text="Azure portal: Event Grid olay aboneliği":::
+:::image type="content" source="media/tutorial-end-to-end/event-subscription-1b.png" alt-text="Tam bina senaryosunun grafiği. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışı IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid kadar (ok C)":::
 
 Bu olay aboneliğini oluşturma adımları, bu öğreticide daha önce IoT Hub ilk Azure işlevine abone olduğunuz zamana benzer. Bu kez, dinlenecek olay türü olarak *cihaz telemetrisini* belirtmeniz gerekmez ve farklı bir Azure işlevine bağlanırsınız.
 
@@ -414,7 +406,7 @@ Artık ayarladığınız yeni olay akışını çalıştırmak için cihaz simü
 
 Cihaz simülatörünü daha önce çalıştırdığınızda olduğu gibi, bir konsol penceresi açılır ve sanal sıcaklık telemetri iletilerini görüntüler. Bu olaylar, daha önce *thermostat67* ikizi ' ı güncellemek için ayarladığınız akışdan geçer ve ardından son zamanlarda, *room21* ikizi ile eşleşecek şekilde güncelleyeceksiniz.
 
-:::image type="content" source="media/tutorial-end-to-end/console-simulator-telemetry.png" alt-text="Gönderilen sıcaklık telemetrisini gösteren cihaz simülatörü konsol çıkışı":::
+:::image type="content" source="media/tutorial-end-to-end/console-simulator-telemetry.png" alt-text="Tam bina senaryosunun grafiği. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışı IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid kadar (ok C)":::
 
 Bu konsolda başka bir şey yapmanız gerekmez, ancak sonraki adımları tamamlayarak çalışır durumda bırakın.
 
@@ -428,7 +420,7 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 
 *Azure dijital TWINS örneğinden* , her 10 saniyede bir konsola kaydedilen canlı güncelleştirilmiş sıcaklıkları görmeniz gerekir. *Room21* için sıcaklık güncelleştirildiğinden güncelleştirmeler *thermostat67*ile eşleşecek şekilde güncellendiğine dikkat edin.
 
-:::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry-b.png" alt-text="Bir termostat ve odadan sıcaklık iletilerinin günlüğünü gösteren konsol çıkışı":::
+:::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry-b.png" alt-text="Tam bina senaryosunun grafiği. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışı IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid kadar (ok C)":::
 
 Bu işlemi başarıyla çalıştığını doğruladıktan sonra, her iki projenin da çalıştırılmasını durdurabilirsiniz. Öğretici artık tamamlanmış olduğundan Visual Studio pencerelerini de kapatabilirsiniz.
 

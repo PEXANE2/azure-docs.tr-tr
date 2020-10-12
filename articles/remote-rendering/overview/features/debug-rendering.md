@@ -7,10 +7,10 @@ ms.date: 06/15/2020
 ms.topic: article
 ms.custom: devx-track-csharp
 ms.openlocfilehash: ebde1be459078f4f3473ebc3042d8acebcce910a
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89613740"
 ---
 # <a name="debug-rendering"></a>İşleme Hatalarını Ayıklama
@@ -64,7 +64,7 @@ void EnableDebugRenderingEffects(ApiHandle<AzureSession> session, bool highlight
 > [!NOTE]
 > Tüm hata ayıklama işleme etkileri tüm çerçeveyi etkileyen genel ayarlardır.
 
-## <a name="use-cases"></a>Kullanım örnekleri
+## <a name="use-cases"></a>Uygulama alanları
 
 Hata ayıklama işleme API 'si, hizmet bağlantısının gerçekten doğru şekilde çalıştığını doğrulamak gibi basit hata ayıklama görevlerine yöneliktir. Metin işleme seçenekleri, doğrudan akışlı video çerçevelerini doğrudan etkiler. Bunları etkinleştirmek, yeni çerçevelerin alınıp doğru şekilde yeniden çözülerek doğrular.
 
