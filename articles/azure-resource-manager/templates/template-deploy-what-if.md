@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: tomfitz
 ms.openlocfilehash: 27efe1e03b8a0d373d566106a53a41007731973e
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87810080"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM şablonu dağıtımı ne-if işlemi (Önizleme)
@@ -110,17 +110,17 @@ Resource changes: 1 to modify.
 
 Bir şablonu dağıtımdan önce değişiklikleri önizlemek için [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) veya [New-azsubscriptiondeployment](/powershell/module/az.resources/new-azdeployment)komutunu kullanın. `-Whatif`Dağıtım komutuna anahtar parametresini ekleyin.
 
-* `New-AzResourceGroupDeployment -Whatif`kaynak grubu dağıtımları için
+* `New-AzResourceGroupDeployment -Whatif` kaynak grubu dağıtımları için
 * `New-AzSubscriptionDeployment -Whatif``New-AzDeployment -Whatif`abonelik düzeyinde dağıtımlar için
 
 `-Confirm`Değişiklikleri önizlemek ve dağıtıma devam etmek isteyip istemediğiniz sorulduğunda anahtar parametresini kullanabilirsiniz.
 
-* `New-AzResourceGroupDeployment -Confirm`kaynak grubu dağıtımları için
+* `New-AzResourceGroupDeployment -Confirm` kaynak grubu dağıtımları için
 * `New-AzSubscriptionDeployment -Confirm``New-AzDeployment -Confirm`abonelik düzeyinde dağıtımlar için
 
 Yukarıdaki komutlar el ile inceleyebilmeniz için bir metin Özeti döndürür. Program aracılığıyla değişiklikler için inceleyebileceğiniz bir nesne almak için [Get-Azresourcegroupdeploymentwhatıresult](/powershell/module/az.resources/get-azresourcegroupdeploymentwhatifresult) veya [Get-azsubscriptiondeploymentwhatıresult](/powershell/module/az.resources/get-azdeploymentwhatifresult)' ı kullanın.
 
-* `$results = Get-AzResourceGroupDeploymentWhatIfResult`kaynak grubu dağıtımları için
+* `$results = Get-AzResourceGroupDeploymentWhatIfResult` kaynak grubu dağıtımları için
 * `$results = Get-AzSubscriptionDeploymentWhatIfResult``$results = Get-AzDeploymentWhatIfResult`abonelik düzeyi dağıtımlar için veya
 
 ### <a name="azure-cli"></a>Azure CLI

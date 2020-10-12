@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Depolama için .NET ile istemci tarafı şifreleme | Microsoft Docs
+title: Microsoft Azure Depolama için .NET ile şifrelemeyi Client-Side | Microsoft Docs
 description: .NET için Azure Storage Istemci kitaplığı, istemci tarafı şifrelemeyi ve Azure depolama uygulamalarınızın en yüksek güvenliği için Azure Key Vault ile tümleştirmeyi destekler.
 services: storage
 author: tamram
@@ -11,13 +11,13 @@ ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f54b91ab1ea4521c17a3b40c88214f5637ab47a3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89021621"
 ---
-# <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Microsoft Azure Depolama için istemci tarafı şifreleme ve Azure Key Vault
+# <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Microsoft Azure Depolama için şifreleme ve Azure Key Vault Client-Side
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## <a name="overview"></a>Genel Bakış
@@ -128,7 +128,7 @@ Key Vault, yüksek değerli ana anahtarlar için tasarlanmıştır ve Key Vault 
 
 Key Vault kullanımı ile ilgili daha fazla bilgiyi [şifreleme kodu örneklerinde](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples)bulabilirsiniz.
 
-## <a name="best-practices"></a>En iyi uygulamalar
+## <a name="best-practices"></a>Önerilen uygulamalar
 Şifreleme desteği yalnızca .NET için depolama istemci kitaplığı 'nda kullanılabilir. Windows Phone ve Windows Çalışma Zamanı Şu anda şifrelemeyi desteklemiyor.
 
 > [!IMPORTANT]

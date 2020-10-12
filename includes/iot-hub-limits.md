@@ -5,10 +5,10 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 007c19a10db5e000770c8c80189453d4a80edec2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82204519"
 ---
 Aşağıdaki tabloda, S1, S2, S3 ve F1 farklı hizmet katmanları ile ilişkili sınırlar listelenmektedir. Her katmandaki her bir *birimin* maliyeti hakkında daha fazla bilgi için bkz. [Azure IoT Hub fiyatlandırması](https://azure.microsoft.com/pricing/details/iot-hub/).
@@ -30,7 +30,7 @@ Aşağıdaki tabloda IoT Hub kaynakları için uygulanan sınırlar listelenmekt
 | Azure aboneliği başına en fazla ücretli IoT hub’ı sayısı |50 |
 | Azure aboneliği başına en fazla ücretsiz IoT hub’ı sayısı |1 |
 | Bir cihaz KIMLIĞINDEKI en fazla karakter sayısı | 128 |
-| En fazla cihaz kimliği sayısı<br/> (tek bir çağrıda döndürülen) |1000 |
+| En fazla cihaz kimliği sayısı<br/> (tek bir çağrıda döndürülen) |1.000 |
 | Cihazdan buluta iletiler için IoT Hub en fazla ileti bekletme süresi |7 gün |
 | Cihazdan bulut iletinin en büyük boyutu |256 KB |
 | Cihazdan buluta toplu işin en büyük boyutu |Tüm Batch için AMQP ve HTTP: 256 KB <br/>Her ileti için MQTT: 256 KB |

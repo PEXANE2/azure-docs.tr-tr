@@ -11,10 +11,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: 81c5d410599edcbbb4e216b630709541be02c9fb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323018"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>IoT Hub modül TWINS 'i anlayın ve kullanın
@@ -116,7 +116,7 @@ Kök nesnede modül kimliği özellikleri ve `tags` hem de hem de özellikleri i
 
 ### <a name="desired-property-example"></a>İstenen özellik örneği
 
-Önceki örnekte, `telemetryConfig` Modül ikizi istenen ve bildirilen özellikler, Bu modülün telemetri yapılandırmasını eşitleyecek şekilde çözüm arka ucu ve modül uygulaması tarafından kullanılır. Örnek:
+Önceki örnekte, `telemetryConfig` Modül ikizi istenen ve bildirilen özellikler, Bu modülün telemetri yapılandırmasını eşitleyecek şekilde çözüm arka ucu ve modül uygulaması tarafından kullanılır. Örneğin:
 
 1. Çözüm arka ucu istenen özelliği istenen yapılandırma değeriyle ayarlar. Belge, istenen özellik kümesine sahip olan bölümüdür:
 
@@ -179,7 +179,7 @@ Kök nesnede modül kimliği özellikleri ve `tags` hem de hem de özellikleri i
 
   - Özellikler
 
-    | Ad | Değer |
+    | Name | Değer |
     | --- | --- |
     $content türü | uygulama/json |
     $iothub-enqueuedtime |  Bildirimin gönderildiği zaman |
@@ -300,7 +300,7 @@ IoT Hub, sınırın üzerinde bu belgelerin boyutunu arttırabilecek tüm işlem
 ## <a name="module-twin-metadata"></a>Module ikizi meta verileri
 
 IoT Hub, modüldeki her JSON nesnesi için son güncelleştirmenin zaman damgasını ikizi istenen ve bildirilen özellikleri tutar. Zaman damgaları UTC biçimindedir ve [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) biçiminde kodlanır `YYYY-MM-DDTHH:MM:SS.mmmZ` .
-Örnek:
+Örneğin:
 
 ```json
 {

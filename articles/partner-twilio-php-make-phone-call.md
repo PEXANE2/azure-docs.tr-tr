@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: e75b5a265ba85813581e39a548d897ea57a33da6
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88080567"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-php-application-on-azure"></a>Azure 'da PHP uygulamasında Twilio kullanarak telefon araması yapma
@@ -108,7 +108,7 @@ Bu çağrıyı yapmanın yanı sıra, aşağıdaki görüntüde gösterildiği g
 Bir sonraki adım, [uygulamanızı git Ile Azure Web Apps dağıtmaktır](app-service/quickstart-php.md) (Bununla birlikte, ilişkili tüm bilgiler olmasa da). 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu kod, Azure 'da PHP 'de Twilio kullanarak temel işlevselliği göstermek için verilmiştir. Üretim sırasında Azure 'a dağıtım yapmadan önce, daha fazla hata işleme veya diğer özellik eklemek isteyebilirsiniz. Örnek:
+Bu kod, Azure 'da PHP 'de Twilio kullanarak temel işlevselliği göstermek için verilmiştir. Üretim sırasında Azure 'a dağıtım yapmadan önce, daha fazla hata işleme veya diğer özellik eklemek isteyebilirsiniz. Örneğin:
 
 * Bir Web formu kullanmak yerine, telefon numaralarını depolamak ve metin çağırmak için Azure Storage bloblarını veya SQL veritabanını kullanabilirsiniz. PHP 'de Azure Storage bloblarını kullanma hakkında daha fazla bilgi için bkz. [php uygulamalarıyla Azure Storage kullanma][howto_blob_storage_php]. PHP 'de SQL veritabanı kullanma hakkında daha fazla bilgi için bkz. [php UYGULAMALARıYLA SQL Database kullanma][howto_sql_azure_php].
 * **MakeCall. php** kodu, [https://twimlets.com/message][twimlet_message_url] çağrıya nasıl devam edeceğine Twilio bildiren bir Twilio Işaretleme dili (twiml) yanıtı sağlamak için TWILIO tarafından sağlanmış URL () kullanır. Örneğin, döndürülen TwiML, `<Say>` metnin çağrı alıcısına konuşmasına neden olan bir fiil içerebilir. Twilio tarafından sağlanmış URL 'yi kullanmak yerine, Twilio 'ın isteğine yanıt vermek için kendi hizmetinizi oluşturabilirsiniz; daha fazla bilgi için bkz. [php 'de ses ve SMS özellikleri Için Twilio kullanma][howto_twilio_voice_sms_php]. TwiML hakkında daha fazla bilgi adresinde bulunabilir [https://www.twilio.com/docs/api/twiml][twiml] ve hakkında daha fazla bilgi `<Say>` ve diğer Twilio fiilleri hakkında daha fazla bilgi bulabilirsiniz [https://www.twilio.com/docs/api/twiml/say][twilio_say] .

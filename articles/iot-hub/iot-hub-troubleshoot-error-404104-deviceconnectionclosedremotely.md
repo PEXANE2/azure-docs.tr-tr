@@ -10,10 +10,10 @@ ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: mqtt
 ms.openlocfilehash: c8cb91aa0c7ce1610320d4107db282d3c34407ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81758732"
 ---
 # <a name="404104-deviceconnectionclosedremotely"></a>404104 DeviceConnectionClosedRemotely
@@ -58,17 +58,17 @@ IoT Hub geçici bir sorun yaşıyor olabilir. [IoT Hub iç sunucu hatası nedeni
 
 ## <a name="solutions"></a>Çözümler
 
-### <a name="solution-1"></a>Çözüm 1
+### <a name="solution-1"></a>1\. Çözüm
 
 Bkz. [401003 Iothubyetkilendirilmemiş çözüm 1](iot-hub-troubleshoot-error-401003-iothubunauthorized.md#solution-1)
 
-### <a name="solution-2"></a>Çözüm 2
+### <a name="solution-2"></a>2\. Çözüm
 
 - Cihazın [bağlantıyı test](tutorial-connectivity.md)ederek IoT Hub iyi bir bağlantı olduğundan emin olun. Ağ güvenilmez veya kesintili ise, algılama işleminin (örneğin, Azure Izleyici uyarıları aracılığıyla) daha uzun sürmesiyle sonuçlanabileceğinden, etkin tut değerinin arttırılmayı önermiyoruz. 
 
 - [IoT SDK](iot-hub-devguide-sdks.md)'larının en son sürümlerini kullanın.
 
-### <a name="solution-3"></a>Çözüm 3
+### <a name="solution-3"></a>3\. Çözüm
 
 [IoT Hub iç sunucu hatalarını giderme çözümlerine](iot-hub-troubleshoot-error-500xxx-internal-errors.md#solution)bakın.
 

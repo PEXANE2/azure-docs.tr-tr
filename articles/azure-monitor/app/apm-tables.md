@@ -6,10 +6,10 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/09/2020
 ms.openlocfilehash: 1d7275c928b4d25e200a3a8d3d690c7575c056e7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323188"
 ---
 # <a name="workspace-based-resource-changes-preview"></a>Çalışma alanı tabanlı kaynak değişiklikleri (Önizleme)
@@ -45,43 +45,43 @@ Eski tablo: kullanılabilirlik
 
 |ApplicationInsights|Tür|Günlüğe kaydetme Analizi|Tür|
 |:---|:---|:---|:---|
-|appId|dize|\_ResourceGUID|dize|
-|application_Version|dize|AppVersion|dize|
-|appName|dize|\_ResourceId|dize|
-|client_Browser|dize|ClientBrowser|dize|
-|client_City|dize|ClientCity|dize|
-|client_CountryOrRegion|dize|ClientCountryOrRegion|dize|
-|client_IP|dize|ClientIP|dize|
-|client_Model|dize|ClientModel|dize|
-|client_OS|dize|ClientOS|dize|
-|client_StateOrProvince|dize|Clientstateoril|dize|
-|client_Type|dize|ClientType|dize|
-|cloud_RoleInstance|dize|Approtaınstance|dize|
-|cloud_RoleName|dize|Approtaname|dize|
-|customDimensions|dinamik|Özellikler|Dinamik|
-|Customölçüler|dinamik|Ölçümler|Dinamik|
+|appId|string|\_ResourceGUID|string|
+|application_Version|string|AppVersion|string|
+|appName|string|\_ResourceId|string|
+|client_Browser|string|ClientBrowser|string|
+|client_City|string|ClientCity|string|
+|client_CountryOrRegion|string|ClientCountryOrRegion|string|
+|client_IP|string|ClientIP|string|
+|client_Model|string|ClientModel|string|
+|client_OS|string|ClientOS|string|
+|client_StateOrProvince|string|Clientstateoril|string|
+|client_Type|string|ClientType|string|
+|cloud_RoleInstance|string|Approtaınstance|string|
+|cloud_RoleName|string|Approtaname|string|
+|customDimensions|dynamic|Özellikler|Dinamik|
+|Customölçüler|dynamic|Ölçümler|Dinamik|
 |süre|real|DurationMs|real|
-|`id`|string|`Id`|dize|
-|iKey|dize|IKey|dize|
+|`id`|string|`Id`|string|
+|iKey|string|IKey|string|
 |ItemCount|int|ItemCount|int|
-|ID|dize|\_ID|dize|
-|ItemType|dize|Tür|Dize|
-|location|dize|Konum|dize|
-|message|dize|İleti|dize|
-|name|dize|Ad|dize|
-|operation_Id|dize|OperationId|dize|
-|operation_Name|dize|OperationName|dize|
-|operation_ParentId|dize|Operationparentıd|dize|
-|operation_SyntheticSource|dize|OperationSyntheticSource|dize|
-|performanceBucket|dize|PerformanceBucket|dize|
-|SDK sürümü|dize|SdkVersion|dize|
-|session_Id|dize|SessionId|dize|
-|size|real|Boyut|real|
-|başarılı|dize|Başarılı|Bool|
+|ID|string|\_ID|string|
+|ItemType|string|Tür|Dize|
+|location|string|Konum|string|
+|message|string|İleti|string|
+|name|string|Adı|string|
+|operation_Id|string|OperationId|string|
+|operation_Name|string|OperationName|string|
+|operation_ParentId|string|Operationparentıd|string|
+|operation_SyntheticSource|string|OperationSyntheticSource|string|
+|performanceBucket|string|PerformanceBucket|string|
+|SDK sürümü|string|SdkVersion|string|
+|session_Id|string|SessionId|string|
+|boyut|real|Boyut|real|
+|başarılı|string|Başarılı|Bool|
 |timestamp|datetime|TimeGenerated|datetime|
-|user_AccountId|dize|Useraccountıd|dize|
-|user_AuthenticatedId|dize|Userauthenticatedıd|dize|
-|user_Id|dize|UserId|dize|
+|user_AccountId|string|Useraccountıd|string|
+|user_AuthenticatedId|string|Userauthenticatedıd|string|
+|user_Id|string|UserId|string|
 
 ### <a name="appbrowsertimings"></a>Appbrowserzamanlamalar
 
@@ -89,43 +89,43 @@ Eski tablo: Browserzamanlamalar
 
 |ApplicationInsights|Tür|Günlüğe kaydetme Analizi|Tür|
 |:---|:---|:---|:---|
-|appId|dize|\_ResourceGUID|dize|
-|application_Version|dize|AppVersion|dize|
-|appName|dize|\_ResourceId|dize|
-|client_Browser|dize|ClientBrowser|dize|
-|client_City|dize|ClientCity|dize|
-|client_CountryOrRegion|dize|ClientCountryOrRegion|dize|
-|client_IP|dize|ClientIP|dize|
-|client_Model|dize|ClientModel|dize|
-|client_OS|dize|ClientOS|dize|
-|client_StateOrProvince|dize|Clientstateoril|dize|
-|client_Type|dize|ClientType|dize|
-|cloud_RoleInstance|dize|Approtaınstance|dize|
-|cloud_RoleName|dize|Approtaname|dize|
-|customDimensions|dinamik|Özellikler|Dinamik|
-|Customölçüler|dinamik|Ölçümler|Dinamik|
-|iKey|dize|IKey|dize|
+|appId|string|\_ResourceGUID|string|
+|application_Version|string|AppVersion|string|
+|appName|string|\_ResourceId|string|
+|client_Browser|string|ClientBrowser|string|
+|client_City|string|ClientCity|string|
+|client_CountryOrRegion|string|ClientCountryOrRegion|string|
+|client_IP|string|ClientIP|string|
+|client_Model|string|ClientModel|string|
+|client_OS|string|ClientOS|string|
+|client_StateOrProvince|string|Clientstateoril|string|
+|client_Type|string|ClientType|string|
+|cloud_RoleInstance|string|Approtaınstance|string|
+|cloud_RoleName|string|Approtaname|string|
+|customDimensions|dynamic|Özellikler|Dinamik|
+|Customölçüler|dynamic|Ölçümler|Dinamik|
+|iKey|string|IKey|string|
 |ItemCount|int|ItemCount|int|
-|ID|dize|\_ID|dize|
-|ItemType|dize|Tür|string|
-|name|dize|Ad|datetime|
+|ID|string|\_ID|string|
+|ItemType|string|Tür|string|
+|name|string|Adı|datetime|
 |networkDuration|real|NetworkDurationMs|real|
-|operation_Id|dize|OperationId|dize|
-|operation_Name|dize|OperationName|dize|
-|operation_ParentId|dize|Operationparentıd|dize|
-|operation_SyntheticSource|dize|OperationSyntheticSource|dize|
-|performanceBucket|dize|PerformanceBucket|dize|
+|operation_Id|string|OperationId|string|
+|operation_Name|string|OperationName|string|
+|operation_ParentId|string|Operationparentıd|string|
+|operation_SyntheticSource|string|OperationSyntheticSource|string|
+|performanceBucket|string|PerformanceBucket|string|
 |processingDuration|real|ProcessingDurationMs|real|
 |receiveDuration|real|ReceiveDurationMs|real|
-|SDK sürümü|dize|SdkVersion|dize|
+|SDK sürümü|string|SdkVersion|string|
 |sendDuration|real|SendDurationMs|real|
-|session_Id|dize|SessionId|dize|
+|session_Id|string|SessionId|string|
 |timestamp|datetime|TimeGenerated|datetime|
 |Toplam süre|real|TotalDurationMs|real|
-|url|dize|Url|dize|
-|user_AccountId|dize|Useraccountıd|dize|
-|user_AuthenticatedId|dize|Userauthenticatedıd|dize|
-|user_Id|dize|UserId|dize|
+|url|string|Url|string|
+|user_AccountId|string|Useraccountıd|string|
+|user_AuthenticatedId|string|Userauthenticatedıd|string|
+|user_Id|string|UserId|string|
 
 ### <a name="appdependencies"></a>AppDependencies
 
@@ -133,44 +133,44 @@ Eski tablo: bağımlılıklar
 
 |ApplicationInsights|Tür|Günlüğe kaydetme Analizi|Tür|
 |:---|:---|:---|:---|
-|appId|dize|\_ResourceGUID|dize|
-|application_Version|dize|AppVersion|dize|
-|appName|dize|\_ResourceId|dize|
-|client_Browser|dize|ClientBrowser|dize|
-|client_City|dize|ClientCity|dize|
-|client_CountryOrRegion|dize|ClientCountryOrRegion|dize|
-|client_IP|dize|ClientIP|dize|
-|client_Model|dize|ClientModel|dize|
-|client_OS|dize|ClientOS|dize|
-|client_StateOrProvince|dize|Clientstateoril|dize|
-|client_Type|dize|ClientType|dize|
-|cloud_RoleInstance|dize|Approtaınstance|dize|
-|cloud_RoleName|dize|Approtaname|dize|
-|customDimensions|dinamik|Özellikler|Dinamik|
-|Customölçüler|dinamik|Ölçümler|Dinamik|
-|veriler|dize|Veriler|dize|
+|appId|string|\_ResourceGUID|string|
+|application_Version|string|AppVersion|string|
+|appName|string|\_ResourceId|string|
+|client_Browser|string|ClientBrowser|string|
+|client_City|string|ClientCity|string|
+|client_CountryOrRegion|string|ClientCountryOrRegion|string|
+|client_IP|string|ClientIP|string|
+|client_Model|string|ClientModel|string|
+|client_OS|string|ClientOS|string|
+|client_StateOrProvince|string|Clientstateoril|string|
+|client_Type|string|ClientType|string|
+|cloud_RoleInstance|string|Approtaınstance|string|
+|cloud_RoleName|string|Approtaname|string|
+|customDimensions|dynamic|Özellikler|Dinamik|
+|Customölçüler|dynamic|Ölçümler|Dinamik|
+|veriler|string|Veriler|string|
 |süre|real|DurationMs|real|
-|`id`|string|`Id`|dize|
-|iKey|dize|IKey|dize|
+|`id`|string|`Id`|string|
+|iKey|string|IKey|string|
 |ItemCount|int|ItemCount|int|
-|ID|dize|\_ID|dize|
-|ItemType|dize|Tür|Dize|
-|name|dize|Ad|dize|
-|operation_Id|dize|OperationId|dize|
-|operation_Name|dize|OperationName|dize|
-|operation_ParentId|dize|Operationparentıd|dize|
-|operation_SyntheticSource|dize|OperationSyntheticSource|dize|
-|performanceBucket|dize|PerformanceBucket|dize|
-|resultCode|dize|ResultCode|dize|
-|SDK sürümü|dize|SdkVersion|dize|
-|session_Id|dize|SessionId|dize|
-|başarılı|dize|Başarılı|Bool|
-|hedef|dize|Hedef|dize|
+|ID|string|\_ID|string|
+|ItemType|string|Tür|Dize|
+|name|string|Adı|string|
+|operation_Id|string|OperationId|string|
+|operation_Name|string|OperationName|string|
+|operation_ParentId|string|Operationparentıd|string|
+|operation_SyntheticSource|string|OperationSyntheticSource|string|
+|performanceBucket|string|PerformanceBucket|string|
+|resultCode|string|ResultCode|string|
+|SDK sürümü|string|SdkVersion|string|
+|session_Id|string|SessionId|string|
+|başarılı|string|Başarılı|Bool|
+|hedef|string|Hedef|string|
 |timestamp|datetime|TimeGenerated|datetime|
-|tür|dize|DependencyType|dize|
-|user_AccountId|dize|Useraccountıd|dize|
-|user_AuthenticatedId|dize|Userauthenticatedıd|dize|
-|user_Id|dize|UserId|dize|
+|tür|string|DependencyType|string|
+|user_AccountId|string|Useraccountıd|string|
+|user_AuthenticatedId|string|Userauthenticatedıd|string|
+|user_Id|string|UserId|string|
 
 ### <a name="appevents"></a>AppEvents
 
@@ -178,36 +178,36 @@ Eski tablo: customEvents
 
 |ApplicationInsights|Tür|Günlüğe kaydetme Analizi|Tür|
 |:---|:---|:---|:---|
-|appId|dize|\_ResourceGUID|dize|
-|application_Version|dize|AppVersion|dize|
-|appName|dize|\_ResourceId|dize|
-|client_Browser|dize|ClientBrowser|dize|
-|client_City|dize|ClientCity|dize|
-|client_CountryOrRegion|dize|ClientCountryOrRegion|dize|
-|client_IP|dize|ClientIP|dize|
-|client_Model|dize|ClientModel|dize|
-|client_OS|dize|ClientOS|dize|
-|client_StateOrProvince|dize|Clientstateoril|dize|
-|client_Type|dize|ClientType|dize|
-|cloud_RoleInstance|dize|Approtaınstance|dize|
-|cloud_RoleName|dize|Approtaname|dize|
-|customDimensions|dinamik|Özellikler|Dinamik|
-|Customölçüler|dinamik|Ölçümler|Dinamik|
-|iKey|dize|IKey|dize|
+|appId|string|\_ResourceGUID|string|
+|application_Version|string|AppVersion|string|
+|appName|string|\_ResourceId|string|
+|client_Browser|string|ClientBrowser|string|
+|client_City|string|ClientCity|string|
+|client_CountryOrRegion|string|ClientCountryOrRegion|string|
+|client_IP|string|ClientIP|string|
+|client_Model|string|ClientModel|string|
+|client_OS|string|ClientOS|string|
+|client_StateOrProvince|string|Clientstateoril|string|
+|client_Type|string|ClientType|string|
+|cloud_RoleInstance|string|Approtaınstance|string|
+|cloud_RoleName|string|Approtaname|string|
+|customDimensions|dynamic|Özellikler|Dinamik|
+|Customölçüler|dynamic|Ölçümler|Dinamik|
+|iKey|string|IKey|string|
 |ItemCount|int|ItemCount|int|
-|ID|dize|\_ID|dize|
-|ItemType|dize|Tür|string|
-|name|dize|Ad|dize|
-|operation_Id|dize|OperationId|dize|
-|operation_Name|dize|OperationName|dize|
-|operation_ParentId|dize|Operationparentıd|dize|
-|operation_SyntheticSource|dize|OperationSyntheticSource|dize|
-|SDK sürümü|dize|SdkVersion|dize|
-|session_Id|dize|SessionId|dize|
+|ID|string|\_ID|string|
+|ItemType|string|Tür|string|
+|name|string|Adı|string|
+|operation_Id|string|OperationId|string|
+|operation_Name|string|OperationName|string|
+|operation_ParentId|string|Operationparentıd|string|
+|operation_SyntheticSource|string|OperationSyntheticSource|string|
+|SDK sürümü|string|SdkVersion|string|
+|session_Id|string|SessionId|string|
 |timestamp|datetime|TimeGenerated|datetime|
-|user_AccountId|dize|Useraccountıd|dize|
-|user_AuthenticatedId|dize|Userauthenticatedıd|dize|
-|user_Id|dize|UserId|dize|
+|user_AccountId|string|Useraccountıd|string|
+|user_AuthenticatedId|string|Userauthenticatedıd|string|
+|user_Id|string|UserId|string|
 
 ### <a name="appmetrics"></a>Appölçümler
 
@@ -215,34 +215,34 @@ Eski tablo: Customölçümler
 
 |ApplicationInsights|Tür|Günlüğe kaydetme Analizi|Tür|
 |:---|:---|:---|:---|
-|appId|dize|\_ResourceGUID|dize|
-|application_Version|dize|AppVersion|dize|
-|appName|dize|\_ResourceId|dize|
-|client_Browser|dize|ClientBrowser|dize|
-|client_City|dize|ClientCity|dize|
-|client_CountryOrRegion|dize|ClientCountryOrRegion|dize|
-|client_IP|dize|ClientIP|dize|
-|client_Model|dize|ClientModel|dize|
-|client_OS|dize|ClientOS|dize|
-|client_StateOrProvince|dize|Clientstateoril|dize|
-|client_Type|dize|ClientType|dize|
-|cloud_RoleInstance|dize|Approtaınstance|dize|
-|cloud_RoleName|dize|Approtaname|dize|
-|customDimensions|dinamik|Özellikler|Dinamik|
-|iKey|dize|IKey|dize|
-|ID|dize|\_ID|dize|
-|ItemType|dize|Tür|string|
-|name|dize|Ad|dize|
-|operation_Id|dize|OperationId|dize|
-|operation_Name|dize|OperationName|dize|
-|operation_ParentId|dize|Operationparentıd|dize|
-|operation_SyntheticSource|dize|OperationSyntheticSource|dize|
-|SDK sürümü|dize|SdkVersion|dize|
-|session_Id|dize|SessionId|dize|
+|appId|string|\_ResourceGUID|string|
+|application_Version|string|AppVersion|string|
+|appName|string|\_ResourceId|string|
+|client_Browser|string|ClientBrowser|string|
+|client_City|string|ClientCity|string|
+|client_CountryOrRegion|string|ClientCountryOrRegion|string|
+|client_IP|string|ClientIP|string|
+|client_Model|string|ClientModel|string|
+|client_OS|string|ClientOS|string|
+|client_StateOrProvince|string|Clientstateoril|string|
+|client_Type|string|ClientType|string|
+|cloud_RoleInstance|string|Approtaınstance|string|
+|cloud_RoleName|string|Approtaname|string|
+|customDimensions|dynamic|Özellikler|Dinamik|
+|iKey|string|IKey|string|
+|ID|string|\_ID|string|
+|ItemType|string|Tür|string|
+|name|string|Adı|string|
+|operation_Id|string|OperationId|string|
+|operation_Name|string|OperationName|string|
+|operation_ParentId|string|Operationparentıd|string|
+|operation_SyntheticSource|string|OperationSyntheticSource|string|
+|SDK sürümü|string|SdkVersion|string|
+|session_Id|string|SessionId|string|
 |timestamp|datetime|TimeGenerated|datetime|
-|user_AccountId|dize|Useraccountıd|dize|
-|user_AuthenticatedId|dize|Userauthenticatedıd|dize|
-|user_Id|dize|UserId|dize|
+|user_AccountId|string|Useraccountıd|string|
+|user_AuthenticatedId|string|Userauthenticatedıd|string|
+|user_Id|string|UserId|string|
 |değer|real|kaldırıldı||
 |valueCount|int|ValueCount|int|
 |valueMax|real|ValueMax|real|
@@ -256,40 +256,40 @@ Eski tablo: pageViews
 
 |ApplicationInsights|Tür|Günlüğe kaydetme Analizi|Tür|
 |:---|:---|:---|:---|
-|appId|dize|\_ResourceGUID|dize|
-|application_Version|dize|AppVersion|dize|
-|appName|dize|\_ResourceId|dize|
-|client_Browser|dize|ClientBrowser|dize|
-|client_City|dize|ClientCity|dize|
-|client_CountryOrRegion|dize|ClientCountryOrRegion|dize|
-|client_IP|dize|ClientIP|dize|
-|client_Model|dize|ClientModel|dize|
-|client_OS|dize|ClientOS|dize|
-|client_StateOrProvince|dize|Clientstateoril|dize|
-|client_Type|dize|ClientType|dize|
-|cloud_RoleInstance|dize|Approtaınstance|dize|
-|cloud_RoleName|dize|Approtaname|dize|
-|customDimensions|dinamik|Özellikler|Dinamik|
-|Customölçüler|dinamik|Ölçümler|Dinamik|
+|appId|string|\_ResourceGUID|string|
+|application_Version|string|AppVersion|string|
+|appName|string|\_ResourceId|string|
+|client_Browser|string|ClientBrowser|string|
+|client_City|string|ClientCity|string|
+|client_CountryOrRegion|string|ClientCountryOrRegion|string|
+|client_IP|string|ClientIP|string|
+|client_Model|string|ClientModel|string|
+|client_OS|string|ClientOS|string|
+|client_StateOrProvince|string|Clientstateoril|string|
+|client_Type|string|ClientType|string|
+|cloud_RoleInstance|string|Approtaınstance|string|
+|cloud_RoleName|string|Approtaname|string|
+|customDimensions|dynamic|Özellikler|Dinamik|
+|Customölçüler|dynamic|Ölçümler|Dinamik|
 |süre|real|DurationMs|real|
-|`id`|string|`Id`|dize|
-|iKey|dize|IKey|dize|
+|`id`|string|`Id`|string|
+|iKey|string|IKey|string|
 |ItemCount|int|ItemCount|int|
-|ID|dize|\_ID|dize|
-|ItemType|dize|Tür|Dize|
-|name|dize|Ad|dize|
-|operation_Id|dize|OperationId|dize|
-|operation_Name|dize|OperationName|dize|
-|operation_ParentId|dize|Operationparentıd|dize|
-|operation_SyntheticSource|dize|OperationSyntheticSource|dize|
-|performanceBucket|dize|PerformanceBucket|dize|
-|SDK sürümü|dize|SdkVersion|dize|
-|session_Id|dize|SessionId|dize|
+|ID|string|\_ID|string|
+|ItemType|string|Tür|Dize|
+|name|string|Adı|string|
+|operation_Id|string|OperationId|string|
+|operation_Name|string|OperationName|string|
+|operation_ParentId|string|Operationparentıd|string|
+|operation_SyntheticSource|string|OperationSyntheticSource|string|
+|performanceBucket|string|PerformanceBucket|string|
+|SDK sürümü|string|SdkVersion|string|
+|session_Id|string|SessionId|string|
 |timestamp|datetime|TimeGenerated|datetime|
-|url|dize|Url|dize|
-|user_AccountId|dize|Useraccountıd|dize|
-|user_AuthenticatedId|dize|Userauthenticatedıd|dize|
-|user_Id|dize|UserId|dize|
+|url|string|Url|string|
+|user_AccountId|string|Useraccountıd|string|
+|user_AuthenticatedId|string|Userauthenticatedıd|string|
+|user_Id|string|UserId|string|
 
 ### <a name="appperformancecounters"></a>AppPerformanceCounters
 
@@ -297,37 +297,37 @@ Eski tablo: performanceCounters
 
 |ApplicationInsights|Tür|Günlüğe kaydetme Analizi|Tür|
 |:---|:---|:---|:---|
-|appId|dize|\_ResourceGUID|dize|
-|application_Version|dize|AppVersion|dize|
-|appName|dize|\_ResourceId|dize|
-|category|dize|Kategori|dize|
-|client_Browser|dize|ClientBrowser|dize|
-|client_City|dize|ClientCity|dize|
-|client_CountryOrRegion|dize|ClientCountryOrRegion|dize|
-|client_IP|dize|ClientIP|dize|
-|client_Model|dize|ClientModel|dize|
-|client_OS|dize|ClientOS|dize|
-|client_StateOrProvince|dize|Clientstateoril|dize|
-|client_Type|dize|ClientType|dize|
-|cloud_RoleInstance|dize|Approtaınstance|dize|
-|cloud_RoleName|dize|Approtaname|dize|
-|counter|dize|kaldırıldı||
-|customDimensions|dinamik|Özellikler|Dinamik|
-|iKey|dize|IKey|dize|
-|örnek|dize|Örnek|dize|
-|ID|dize|\_ID|dize|
-|ItemType|dize|Tür|string|
-|name|dize|Ad|dize|
-|operation_Id|dize|OperationId|dize|
-|operation_Name|dize|OperationName|dize|
-|operation_ParentId|dize|Operationparentıd|dize|
-|operation_SyntheticSource|dize|OperationSyntheticSource|dize|
-|SDK sürümü|dize|SdkVersion|dize|
-|session_Id|dize|SessionId|dize|
+|appId|string|\_ResourceGUID|string|
+|application_Version|string|AppVersion|string|
+|appName|string|\_ResourceId|string|
+|category|string|Kategori|string|
+|client_Browser|string|ClientBrowser|string|
+|client_City|string|ClientCity|string|
+|client_CountryOrRegion|string|ClientCountryOrRegion|string|
+|client_IP|string|ClientIP|string|
+|client_Model|string|ClientModel|string|
+|client_OS|string|ClientOS|string|
+|client_StateOrProvince|string|Clientstateoril|string|
+|client_Type|string|ClientType|string|
+|cloud_RoleInstance|string|Approtaınstance|string|
+|cloud_RoleName|string|Approtaname|string|
+|counter|string|kaldırıldı||
+|customDimensions|dynamic|Özellikler|Dinamik|
+|iKey|string|IKey|string|
+|örnek|string|Örnek|string|
+|ID|string|\_ID|string|
+|ItemType|string|Tür|string|
+|name|string|Adı|string|
+|operation_Id|string|OperationId|string|
+|operation_Name|string|OperationName|string|
+|operation_ParentId|string|Operationparentıd|string|
+|operation_SyntheticSource|string|OperationSyntheticSource|string|
+|SDK sürümü|string|SdkVersion|string|
+|session_Id|string|SessionId|string|
 |timestamp|datetime|TimeGenerated|datetime|
-|user_AccountId|dize|Useraccountıd|dize|
-|user_AuthenticatedId|dize|Userauthenticatedıd|dize|
-|user_Id|dize|UserId|dize|
+|user_AccountId|string|Useraccountıd|string|
+|user_AuthenticatedId|string|Userauthenticatedıd|string|
+|user_Id|string|UserId|string|
 |değer|real|Değer|real|
 
 ### <a name="apprequests"></a>AppRequests
@@ -336,43 +336,43 @@ Eski tablo: istekler
 
 |ApplicationInsights|Tür|Günlüğe kaydetme Analizi|Tür|
 |:---|:---|:---|:---|
-|appId|dize|\_ResourceGUID|dize|
-|application_Version|dize|AppVersion|dize|
-|appName|dize|\_ResourceId|dize|
-|client_Browser|dize|ClientBrowser|dize|
-|client_City|dize|ClientCity|dize|
-|client_CountryOrRegion|dize|ClientCountryOrRegion|dize|
-|client_IP|dize|ClientIP|dize|
-|client_Model|dize|ClientModel|dize|
-|client_OS|dize|ClientOS|dize|
-|client_StateOrProvince|dize|Clientstateoril|dize|
-|client_Type|dize|ClientType|dize|
-|cloud_RoleInstance|dize|Approtaınstance|dize|
-|cloud_RoleName|dize|Approtaname|dize|
-|customDimensions|dinamik|Özellikler|Dinamik|
-|Customölçüler|dinamik|Ölçümler|Dinamik|
+|appId|string|\_ResourceGUID|string|
+|application_Version|string|AppVersion|string|
+|appName|string|\_ResourceId|string|
+|client_Browser|string|ClientBrowser|string|
+|client_City|string|ClientCity|string|
+|client_CountryOrRegion|string|ClientCountryOrRegion|string|
+|client_IP|string|ClientIP|string|
+|client_Model|string|ClientModel|string|
+|client_OS|string|ClientOS|string|
+|client_StateOrProvince|string|Clientstateoril|string|
+|client_Type|string|ClientType|string|
+|cloud_RoleInstance|string|Approtaınstance|string|
+|cloud_RoleName|string|Approtaname|string|
+|customDimensions|dynamic|Özellikler|Dinamik|
+|Customölçüler|dynamic|Ölçümler|Dinamik|
 |süre|real|DurationMs|Gerçek|
-|`id`|dize|`Id`|Dize|
-|iKey|dize|IKey|dize|
+|`id`|string|`Id`|Dize|
+|iKey|string|IKey|string|
 |ItemCount|int|ItemCount|int|
-|ID|dize|\_ID|dize|
-|ItemType|dize|Tür|Dize|
-|name|dize|Ad|Dize|
-|operation_Id|dize|OperationId|dize|
-|operation_Name|dize|OperationName|dize|
-|operation_ParentId|dize|Operationparentıd|dize|
-|operation_SyntheticSource|dize|OperationSyntheticSource|dize|
-|performanceBucket|dize|PerformanceBucket|Dize|
-|resultCode|dize|ResultCode|Dize|
-|SDK sürümü|dize|SdkVersion|dize|
-|session_Id|dize|SessionId|dize|
+|ID|string|\_ID|string|
+|ItemType|string|Tür|Dize|
+|name|string|Adı|Dize|
+|operation_Id|string|OperationId|string|
+|operation_Name|string|OperationName|string|
+|operation_ParentId|string|Operationparentıd|string|
+|operation_SyntheticSource|string|OperationSyntheticSource|string|
+|performanceBucket|string|PerformanceBucket|Dize|
+|resultCode|string|ResultCode|Dize|
+|SDK sürümü|string|SdkVersion|string|
+|session_Id|string|SessionId|string|
 |kaynak|dize|Kaynak|Dize|
-|başarılı|dize|Başarılı|Bool|
+|başarılı|string|Başarılı|Bool|
 |timestamp|datetime|TimeGenerated|datetime|
-|url|dize|Url|Dize|
-|user_AccountId|dize|Useraccountıd|dize|
-|user_AuthenticatedId|dize|Userauthenticatedıd|dize|
-|user_Id|dize|UserId|dize|
+|url|string|Url|Dize|
+|user_AccountId|string|Useraccountıd|string|
+|user_AuthenticatedId|string|Userauthenticatedıd|string|
+|user_Id|string|UserId|string|
 
 ### <a name="appsystemevents"></a>AppSystemEvents
 
@@ -380,51 +380,51 @@ Eski tablo: özel durumlar
 
 |ApplicationInsights|Tür|Günlüğe kaydetme Analizi|Tür|
 |:---|:---|:---|:---|
-|appId|dize|\_ResourceGUID|dize|
-|application_Version|dize|AppVersion|dize|
-|appName|dize|\_ResourceId|dize|
-|derleme|dize|Bütünleştirilmiş Kod|dize|
-|client_Browser|dize|ClientBrowser|dize|
-|client_City|dize|ClientCity|dize|
-|client_CountryOrRegion|dize|ClientCountryOrRegion|dize|
-|client_IP|dize|ClientIP|dize|
-|client_Model|dize|ClientModel|dize|
-|client_OS|dize|ClientOS|dize|
-|client_StateOrProvince|dize|Clientstateoril|dize|
-|client_Type|dize|ClientType|dize|
-|cloud_RoleInstance|dize|Approtaınstance|dize|
-|cloud_RoleName|dize|Approtaname|dize|
-|customDimensions|dinamik|Özellikler|dinamik|
-|Customölçüler|dinamik|Ölçümler|dinamik|
-|bilgileri|dinamik|Ayrıntılar|dinamik|
-|handledAt|dize|HandledAt|dize|
-|iKey|dize|IKey|dize|
-|ınnermostassembly|dize|Innermostassembly|dize|
-|ınnermostmessage|dize|Innermostmessage|dize|
-|ınnermostmethod|dize|Innermostmethod|dize|
-|ınnermosttype|dize|Innermosttype|dize|
+|appId|string|\_ResourceGUID|string|
+|application_Version|string|AppVersion|string|
+|appName|string|\_ResourceId|string|
+|derleme|string|Bütünleştirilmiş Kod|string|
+|client_Browser|string|ClientBrowser|string|
+|client_City|string|ClientCity|string|
+|client_CountryOrRegion|string|ClientCountryOrRegion|string|
+|client_IP|string|ClientIP|string|
+|client_Model|string|ClientModel|string|
+|client_OS|string|ClientOS|string|
+|client_StateOrProvince|string|Clientstateoril|string|
+|client_Type|string|ClientType|string|
+|cloud_RoleInstance|string|Approtaınstance|string|
+|cloud_RoleName|string|Approtaname|string|
+|customDimensions|dynamic|Özellikler|dynamic|
+|Customölçüler|dynamic|Ölçümler|dynamic|
+|bilgileri|dynamic|Ayrıntılar|dynamic|
+|handledAt|string|HandledAt|string|
+|iKey|string|IKey|string|
+|ınnermostassembly|string|Innermostassembly|string|
+|ınnermostmessage|string|Innermostmessage|string|
+|ınnermostmethod|string|Innermostmethod|string|
+|ınnermosttype|string|Innermosttype|string|
 |ItemCount|int|ItemCount|int|
-|ID|dize|\_ID|dize|
-|ItemType|dize|Tür|string|
-|message|dize|İleti|dize|
-|method|dize|Yöntem|dize|
-|operation_Id|dize|OperationId|dize|
-|operation_Name|dize|OperationName|dize|
-|operation_ParentId|dize|Operationparentıd|dize|
-|operation_SyntheticSource|dize|OperationSyntheticSource|dize|
-|outerAssembly|dize|OuterAssembly|dize|
-|outerMessage|dize|OuterMessage|dize|
-|outerMethod|dize|OuterMethod|dize|
-|outerType|dize|OuterType|dize|
-|problemId|dize|ProblemId|dize|
-|SDK sürümü|dize|SdkVersion|dize|
-|session_Id|dize|SessionId|dize|
+|ID|string|\_ID|string|
+|ItemType|string|Tür|string|
+|message|string|İleti|string|
+|method|string|Yöntem|string|
+|operation_Id|string|OperationId|string|
+|operation_Name|string|OperationName|string|
+|operation_ParentId|string|Operationparentıd|string|
+|operation_SyntheticSource|string|OperationSyntheticSource|string|
+|outerAssembly|string|OuterAssembly|string|
+|outerMessage|string|OuterMessage|string|
+|outerMethod|string|OuterMethod|string|
+|outerType|string|OuterType|string|
+|problemId|string|ProblemId|string|
+|SDK sürümü|string|SdkVersion|string|
+|session_Id|string|SessionId|string|
 |Severıtylevel|int|Severıtylevel|int|
 |timestamp|datetime|TimeGenerated|datetime|
-|tür|dize|Türü|dize|
-|user_AccountId|dize|Useraccountıd|dize|
-|user_AuthenticatedId|dize|Userauthenticatedıd|dize|
-|user_Id|dize|UserId|dize|
+|tür|string|Türü|string|
+|user_AccountId|string|Useraccountıd|string|
+|user_AuthenticatedId|string|Userauthenticatedıd|string|
+|user_Id|string|UserId|string|
 
 ### <a name="apptraces"></a>Appizlemeler
 
@@ -432,37 +432,37 @@ Eski tablo: izlemeler
 
 |ApplicationInsights|Tür|Günlüğe kaydetme Analizi|Tür|
 |:---|:---|:---|:---|
-|appId|dize|\_ResourceGUID|dize|
-|application_Version|dize|AppVersion|dize|
-|appName|dize|\_ResourceId|dize|
-|client_Browser|dize|ClientBrowser|dize|
-|client_City|dize|ClientCity|dize|
-|client_CountryOrRegion|dize|ClientCountryOrRegion|dize|
-|client_IP|dize|ClientIP|dize|
-|client_Model|dize|ClientModel|dize|
-|client_OS|dize|ClientOS|dize|
-|client_StateOrProvince|dize|Clientstateoril|dize|
-|client_Type|dize|ClientType|dize|
-|cloud_RoleInstance|dize|Approtaınstance|dize|
-|cloud_RoleName|dize|Approtaname|dize|
-|customDimensions|dinamik|Özellikler|dinamik|
-|Customölçüler|dinamik|Ölçümler|dinamik|
-|iKey|dize|IKey|dize|
+|appId|string|\_ResourceGUID|string|
+|application_Version|string|AppVersion|string|
+|appName|string|\_ResourceId|string|
+|client_Browser|string|ClientBrowser|string|
+|client_City|string|ClientCity|string|
+|client_CountryOrRegion|string|ClientCountryOrRegion|string|
+|client_IP|string|ClientIP|string|
+|client_Model|string|ClientModel|string|
+|client_OS|string|ClientOS|string|
+|client_StateOrProvince|string|Clientstateoril|string|
+|client_Type|string|ClientType|string|
+|cloud_RoleInstance|string|Approtaınstance|string|
+|cloud_RoleName|string|Approtaname|string|
+|customDimensions|dynamic|Özellikler|dynamic|
+|Customölçüler|dynamic|Ölçümler|dynamic|
+|iKey|string|IKey|string|
 |ItemCount|int|ItemCount|int|
-|ID|dize|\_ID|dize|
-|ItemType|dize|Tür|string|
-|message|dize|İleti|dize|
-|operation_Id|dize|OperationId|dize|
-|operation_Name|dize|OperationName|dize|
-|operation_ParentId|dize|Operationparentıd|dize|
-|operation_SyntheticSource|dize|OperationSyntheticSource|dize|
-|SDK sürümü|dize|SdkVersion|dize|
-|session_Id|dize|SessionId|dize|
+|ID|string|\_ID|string|
+|ItemType|string|Tür|string|
+|message|string|İleti|string|
+|operation_Id|string|OperationId|string|
+|operation_Name|string|OperationName|string|
+|operation_ParentId|string|Operationparentıd|string|
+|operation_SyntheticSource|string|OperationSyntheticSource|string|
+|SDK sürümü|string|SdkVersion|string|
+|session_Id|string|SessionId|string|
 |Severıtylevel|int|Severıtylevel|int|
 |timestamp|datetime|TimeGenerated|datetime|
-|user_AccountId|dize|Useraccountıd|dize|
-|user_AuthenticatedId|dize|Userauthenticatedıd|dize|
-|user_Id|dize|UserId|dize|
+|user_AccountId|string|Useraccountıd|string|
+|user_AuthenticatedId|string|Userauthenticatedıd|string|
+|user_Id|string|UserId|string|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

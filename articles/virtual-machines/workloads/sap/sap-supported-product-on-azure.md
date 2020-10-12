@@ -17,10 +17,10 @@ ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 217d5b060ca1b7d32cd334049db9b7c68b7949a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87065093"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Azure dağıtımları için hangi SAP yazılımı desteklenir?
@@ -117,7 +117,7 @@ Azure VM 'Leri için bu SAPS üretilen iş numaraları, [sap destek not#1928533]
 
 [Sap destek notuna #1928533](https://launchpad.support.sap.com/#/notes/1928533), aşağıdaki açıklamalar geçerlidir:
 
-- **D serisi Azure VM 'leri ve Mv2 serisi Azure VM 'Leri için, diğer Azure VM türleri için farklı en düşük işletim sistemi sürümleri geçerlidir**. Daha yeni işletim sistemi sürümlerinin gereksinimi, belirli Azure VM türlerinde çalışan işletim sistemlerini etkinleştirmek veya bu VM türlerindeki SAP iş yükünün performansını ve üretilen iş yükünü iyileştirmek için işletim sistemi sürümlerinde sağlamaları gereken farklı işletim sistemi satıcılarının değişikliklere dayalıdır
+- **D serisi Azure VM 'leri ve Azure VM 'leri Mv2-Series, diğer Azure VM türleri için farklı en düşük işletim sistemi sürümleri geçerlidir**. Daha yeni işletim sistemi sürümlerinin gereksinimi, belirli Azure VM türlerinde çalışan işletim sistemlerini etkinleştirmek veya bu VM türlerindeki SAP iş yükünün performansını ve üretilen iş yükünü iyileştirmek için işletim sistemi sürümlerinde sağlamaları gereken farklı işletim sistemi satıcılarının değişikliklere dayalıdır
 - Farklı VM türlerini belirten iki tablo vardır. İkinci tablo yalnızca Azure Standart depolama alanını destekleyen Azure sanal makine türleri için SAPS aktarım hızını belirtir. Notun ikinci tablosunda belirtilen birimlerde DBMS dağıtımı desteklenmez
 
 

@@ -4,10 +4,10 @@ description: C# ve .NET Core 2,0 kullanarak Service Fabric uygulaması oluşturm
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.openlocfilehash: 556d8dee4efd492fa98755f1ffd1cdc1c9887856
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82193658"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>İlk Azure Service Fabric uygulamanızı oluşturma
@@ -118,7 +118,7 @@ Actor projeleri kendi başına bir işlem yapamaz. Bunlar başka bir hizmet veya
 
 `yo` kullanılarak oluşturulmuş bir uygulamaya başka bir hizmet eklemek için aşağıdaki adımları uygulayın:
 1. Dizini mevcut uygulamanın kök dizinine değiştirin.  Örneğin Yeoman tarafından oluşturulan uygulama `MyApplication` ise `cd ~/YeomanSamples/MyApplication` olacaktır.
-2. `yo azuresfcsharp:AddService` öğesini çalıştırın
+2. `yo azuresfcsharp:AddService` komutunu çalıştırın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

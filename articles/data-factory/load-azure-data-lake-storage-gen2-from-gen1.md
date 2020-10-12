@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
 ms.openlocfilehash: 6655510a4cfdb88e98319c7fc26c7ae83255bb6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81415818"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Azure Data Lake Storage 1. verileri Azure Data Factory ile Gen2 'a kopyalama
@@ -52,10 +52,10 @@ Bu makalede veri kopyalama aracının Azure Data Lake Storage 1. verileri Azure 
     * **Ad**: Azure Data Factory 'niz için genel olarak benzersiz bir ad girin. "Data Factory Name \" loadadlsdemo \" kullanılamıyor" hatasını alırsanız Veri Fabrikası için farklı bir ad girin. Örneğin, _**adınız**_**ADFTutorialDataFactory** adını kullanın. Data Factory 'yi tekrar oluşturun. Data Factory yapıtlarını adlandırma kuralları için bkz. [Data Factory adlandırma kuralları](naming-rules.md).
     * **Abonelik**: veri fabrikasının oluşturulacağı Azure aboneliğinizi seçin. 
     * **Kaynak grubu**: açılan listeden var olan bir kaynak grubunu seçin. Ayrıca **Yeni oluştur** seçeneğini belirleyip bir kaynak grubunun adını girebilirsiniz. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md). 
-    * **Sürüm**: **v2**'yi seçin.
+    * **Sürüm**: **V2**'yi seçin.
     * **Konum**: veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan veri depoları başka konumlarda ve bölgelerde olabilir. 
 
-3. **Oluştur**'u seçin.
+3. **Oluştur**’u seçin.
 4. Oluşturma işlemi tamamlandıktan sonra, veri fabrikanıza gidin. Aşağıdaki görüntüde gösterildiği gibi **Data Factory** giriş sayfasını görürsünüz: 
    
    ![Data factory giriş sayfası](./media/load-azure-data-lake-storage-gen2-from-gen1/data-factory-home-page.png)
@@ -107,7 +107,7 @@ Bu makalede veri kopyalama aracının Azure Data Lake Storage 1. verileri Azure 
 
    a. **Depolama hesabı adı** açılır listesinden Data Lake Storage 2. özellikli hesabınızı seçin.
    
-   b. **Son**'u seçerek bağlantıyı oluşturun. Ardından **İleri**' yi seçin.
+   b. **Son**'u seçerek bağlantıyı oluşturun. Ardından **İleri**’yi seçin.
    
    ![Azure Data Lake Storage 2. hesabı belirtin](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-account.png)
 

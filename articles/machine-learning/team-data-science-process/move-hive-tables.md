@@ -12,22 +12,22 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 7cce0a927c2ffd69252a22ea4459f789d22721c2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86080746"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Azure Blob depolamadan Hive tabloları oluşturma ve veri yükleme
 
 Bu makalede Hive tabloları oluşturan ve Azure Blob depolamadan veri yükleyen genel Hive sorguları sunulmaktadır. Ayrıca, yığın tablolarına bölümlendirme ve sorgu performansını artırmak için Iyileştirilmiş satır sütunlu (ORC) biçimlendirme kullanılarak da bazı yönergeler sunulmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makalede sahip olduğunuz varsayılır:
 
 * Bir Azure depolama hesabı oluşturuldu. Yönergelere ihtiyacınız varsa bkz. [Azure depolama hesapları hakkında](../../storage/common/storage-introduction.md).
 * HDInsight hizmeti ile özelleştirilmiş bir Hadoop kümesi sağlandı.  Yönergelere ihtiyacınız varsa bkz. [HDInsight 'Ta kümeleri ayarlama](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md).
-* Kümeye uzaktan erişim etkinleştirildi, oturum açıldı ve Hadoop komut satırı konsolunu açtı. Yönergelere ihtiyacınız varsa bkz. [Apache Hadoop kümelerini yönetme](../../hdinsight/hdinsight-administer-use-portal-linux.md).
+* Kümeye uzaktan erişim etkinleştirildi, oturum açıldı ve Hadoop Command-Line konsolunu açtı. Yönergelere ihtiyacınız varsa bkz. [Apache Hadoop kümelerini yönetme](../../hdinsight/hdinsight-administer-use-portal-linux.md).
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Azure Blob depolama alanına veri yükleme
 [Gelişmiş analiz için bir Azure sanal makinesi ayarlama](../../machine-learning/data-science-virtual-machine/overview.md)bölümünde belirtilen yönergeleri izleyerek bir Azure sanal makinesi oluşturduysanız, bu betik dosyası sanal makinede *C: \\ Users \\ \<user name\> \\ belgeleri \\ veri bilimi betikleri* dizinine indirilmelidir. Bu Hive sorguları yalnızca, gönderim için hazırlamak üzere uygun alanlara bir veri şeması ve Azure Blob depolama yapılandırması sağlamanızı gerektirir.
@@ -86,7 +86,7 @@ hive -S -e "<Hive queries>"
 ```
 
 #### <a name="submit-hive-queries-in-hive-command-console"></a>Hive sorgularını Hive komut konsoluna gönderebilirsiniz.
-Ayrıca, Hadoop komut satırında komutunu çalıştırarak Hive komut konsolunu girip Hive `hive` sorgularını Hive komut konsoluna gönderebilirsiniz. Aşağıda bir örnek vardır. Bu örnekte, iki kırmızı kutu Hive komut konsolunu girmek için kullanılan komutları ve sırasıyla Hive komut konsolunda gönderilen Hive sorgusunu vurgular. Yeşil kutu, Hive sorgusunun çıktısını vurgular.
+Ayrıca, Hadoop komut satırında komutunu çalıştırarak Hive komut konsolunu girip Hive `hive` sorgularını Hive komut konsoluna gönderebilirsiniz. Aşağıda bir örnek verilmiştir. Bu örnekte, iki kırmızı kutu Hive komut konsolunu girmek için kullanılan komutları ve sırasıyla Hive komut konsolunda gönderilen Hive sorgusunu vurgular. Yeşil kutu, Hive sorgusunun çıktısını vurgular.
 
 ![Hive komut konsolunu açın ve komut girin, Hive sorgu çıkışını görüntüleyin](./media/move-hive-tables/run-hive-queries-2.png)
 
