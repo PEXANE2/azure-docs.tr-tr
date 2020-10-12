@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
 ms.openlocfilehash: 14928c8a3249cca172ad088f290b54a22a125ae7
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90109026"
 ---
 # <a name="tutorial-assess-aws-instances-for-migration-to-azure"></a>Öğretici: Azure 'a geçiş için AWS örneklerini değerlendirme
@@ -41,7 +41,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 **Değerlendirme** | **Ayrıntılar** | **Öneri**
 --- | --- | ---
-**Şirket içi olarak** | Makine yapılandırma verilerine/meta verilere göre değerlendirin.  | Önerilen Azure VM boyutu, şirket içi VM boyutunu temel alır.<br/><br> Önerilen Azure disk türü, değerlendirmede depolama türü ayarında neleri seçdiklerinizi temel alır.
+**Şirket içinde olduğu gibi** | Makine yapılandırma verilerine/meta verilere göre değerlendirin.  | Önerilen Azure VM boyutu, şirket içi VM boyutunu temel alır.<br/><br> Önerilen Azure disk türü, değerlendirmede depolama türü ayarında neleri seçdiklerinizi temel alır.
 **Performans tabanlı** | Toplanan dinamik performans verilerine göre değerlendirin. | Önerilen Azure VM boyutu, CPU ve bellek kullanımı verilerine göre belirlenir.<br/><br/> Önerilen disk türü, şirket içi disklerin ıOPS ve aktarım hızını temel alır.
 
 ## <a name="run-an-assessment"></a>Değerlendirme çalıştırma
@@ -117,12 +117,12 @@ Bir değerlendirme şunları açıklar:
 
 - **Azure hazırlığı**: VM 'lerin Azure 'a geçiş için uygun olup olmadığı.
 - **Aylık maliyet tahmini**: VM 'leri Azure 'da çalıştırmaya yönelik tahmini aylık işlem ve depolama maliyetleri.
-- **Aylık depolama maliyeti tahmini**: geçişten sonra disk depolaması için tahmini maliyetler.
+- **Aylık depolama maliyeti tahmini**: Geçiş sonrasında disk depolaması için tahmini maliyetler.
 
 Bir değerlendirmeyi görüntülemek için:
 
 1. **Sunucular**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde, **değerlendirmeler**' ın yanındaki sayıya tıklayın.
-2. **Değerlendirmede**, açmak için bir değerlendirme seçin. Örnek olarak (yalnızca Örneğin, tahminler ve maliyetler): 
+2. **Değerlendirmeler** sayfasında açmak istediğiniz değerlendirmeye tıklayın. Örnek olarak (yalnızca Örneğin, tahminler ve maliyetler): 
 
     ![Değerlendirme özeti](./media/tutorial-assess-aws/assessment-summary.png)
 
@@ -138,7 +138,7 @@ Bir değerlendirmeyi görüntülemek için:
     - **Azure için hazırlanma**: sorunları ve önerilen düzeltmeyi gösterir.
     - **Hazır olma durumu bilinmiyor**: veri kullanılabilirliği sorunları nedeniyle Azure geçişi hazırlığı değerlendiremediği zaman kullanılır.
 
-3. Bir **Azure hazırlık** durumu seçin. VM hazırlığı ayrıntıları ' nı görüntüleyebilirsiniz. Ayrıca, işlem, depolama ve ağ ayarları dahil olmak üzere VM ayrıntılarını görmek için ayrıntıya gidebilirsiniz.
+3. **Azure için hazır olma** durumlarından birini seçin. VM hazırlığı ayrıntıları ' nı görüntüleyebilirsiniz. Ayrıca, işlem, depolama ve ağ ayarları dahil olmak üzere VM ayrıntılarını görmek için ayrıntıya gidebilirsiniz.
 
 ### <a name="review-cost-estimates"></a>Tahmini maliyetleri gözden geçirme
 
@@ -147,7 +147,7 @@ Değerlendirme özeti, Azure 'da çalışan VM 'lerin tahmini işlem ve depolama
 1. Aylık toplam maliyetleri gözden geçirin. Ücretler, değerlendirilen gruptaki tüm VM 'Ler için toplanır.
 
     - Maliyet tahminleri, bir makine, diskleri ve özellikleri için boyut önerilerini temel alır.
-    - İşlem ve depolama için tahmini aylık maliyetler gösterilir.
+    - İşlem ve depolama için aylık tahmini maliyetler gösterilir.
     - Maliyet tahmini, Azure VM 'lerinde şirket içi VM 'Leri çalıştırmaya yöneliktir. Tahmin PaaS veya SaaS maliyetlerini göz önünde bulundurmaz.
 
 2. Aylık depolama maliyetlerini gözden geçirin. Görünüm, değerlendirilen grup için toplanan depolama maliyetlerini gösterir ve farklı türlerdeki depolama disklerinin üzerine bölünür. 

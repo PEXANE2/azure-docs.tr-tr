@@ -9,15 +9,15 @@ ms.date: 12/06/2019
 ms.author: duau
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: a731962f22985268093c547b09a8cd77c5b92660
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89395817"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>PowerShell kullanarak bir ExpressRoute devresine sanal ağ bağlama (klasik)
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Azure portalındaki](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
 > * [Video-Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
@@ -85,7 +85,7 @@ Devre sahibinin, her zaman yetkilendirmeleri değiştirme ve iptal etme gücü v
 
 **Yetkilendirme oluşturma**
 
-Devre sahibi, diğer aboneliklerin yöneticilerinin belirtilen devreyi kullanmasını yetkilendirebilirsiniz. Aşağıdaki örnekte, devrenin Yöneticisi (contoso It), başka bir aboneliğin yöneticisinin (geliştirme-test), devresine iki sanal ağa bağlantı kurma imkanı sağlar. Contoso BT Yöneticisi, geliştirme ve test Microsoft KIMLIĞINI belirterek bunu mümkün kılar. Cmdlet 'i belirtilen Microsoft KIMLIĞINE e-posta göndermez. Devre sahibinin, diğer abonelik sahibine yetkilendirme tamamlandığını açıkça bildirmesi gerekir.
+Devre sahibi, diğer aboneliklerin yöneticilerinin belirtilen devreyi kullanmasını yetkilendirebilirsiniz. Aşağıdaki örnekte, devrenin Yöneticisi (contoso It), başka bir aboneliğin yöneticisinin (geliştirme-test), devresine iki sanal ağa bağlantı kurma imkanı sağlar. Contoso BT yöneticisi bunu, Microsoft KIMLIĞI Dev-Test belirterek sunar. Cmdlet 'i belirtilen Microsoft KIMLIĞINE e-posta göndermez. Devre sahibinin, diğer abonelik sahibine yetkilendirme tamamlandığını açıkça bildirmesi gerekir.
 
 ```powershell
 New-AzureDedicatedCircuitLinkAuthorization -ServiceKey "**************************" -Description "Dev-Test Links" -Limit 2 -MicrosoftIds 'devtest@contoso.com'

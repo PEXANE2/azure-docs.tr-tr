@@ -9,13 +9,13 @@ author: sakash279
 ms.author: akshanka
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 05a469dbeb093c41b45be278aec42cc930223c72
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89002185"
 ---
-# <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure Tablo depolama tablosu Tasarım Kılavuzu: ölçeklenebilir ve performank tabloları
+# <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure Tablo Depolama tablo tasarım kılavuzu: Ölçeklenebilir ve yüksek performanslı tablolar
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
@@ -320,7 +320,7 @@ Bu örnekte ayrıca aynı bölümdeki bir departman varlığı ve ilgili çalı�
 
 Aşağıdaki örnekte gösterildiği gibi, verilerinizi benimseme ve yalnızca daha fazla çalışan departman verilerine sahip çalışan varlıklarını depolayan alternatif bir yaklaşım. Bu senaryoda, bir departman yöneticisinin ayrıntılarını değiştirebilmeniz için gerekli olan bu yaklaşım en iyi olmayabilir. Bunu yapmak için, departmandaki her çalışanı güncelleştirmeniz gerekir.  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE02.png" alt-text="Çalışan varlığı grafiği":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE02.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik":::
 
 Daha fazla bilgi için bu kılavuzun [ilerleyen kısımlarında daha sonra, bkz](#denormalization-pattern) ..  
 
@@ -397,18 +397,18 @@ Tablo depolamadaki ilişkileri modellemekle ilgili yollar vardır, ancak tablo d
 ### <a name="inheritance-relationships"></a>Devralma ilişkileri
 İstemci uygulamanız, iş varlıklarını temsil etmek üzere devralma ilişkisinin bir parçasını oluşturan bir sınıf kümesi kullanıyorsa, bu varlıkları tablo depolamadaki kolayca kalıcı hale getirebilirsiniz. Örneğin, istemci uygulamanızda tanımlanmış, soyut bir sınıf olan aşağıdaki sınıf kümesine sahip olabilirsiniz `Person` .
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE03.png" alt-text="Devralma ilişkilerinin diyagramı":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE03.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik":::
 
 Tek bir tablo kullanarak tablo depolamada iki somut sınıfın örneklerini kalıcı hale getirebilirsiniz `Person` . Aşağıdaki gibi görünen varlıkları kullanın:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE04.png" alt-text="Müşteri varlığı ve çalışan varlığını gösteren grafik":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE04.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik":::
 
 İstemci kodunda aynı tabloda birden fazla varlık türüyle çalışma hakkında daha fazla bilgi için bu kılavuzun ilerleyen kısımlarında bulunan [heterojen varlık türleriyle çalışma](#work-with-heterogeneous-entity-types) konusuna bakın. Bu, istemci kodundaki varlık türünün nasıl tanınacağını örnekler sağlar.  
 
 ## <a name="table-design-patterns"></a>Tablo tasarımı desenleri
 Önceki bölümlerde, sorgu kullanarak varlık verilerini almak ve varlık verilerini eklemek, güncelleştirmek ve silmek için tablo tasarımınızı nasıl iyileştirebileceğinizi öğrendiniz. Bu bölümde, tablo depolamayla kullanım için uygun bazı desenler açıklanmaktadır. Buna ek olarak, bu kılavuzda daha önce ortaya çıkan bazı sorunlar ve dengelemeler için nasıl çözüm kullanabileceğinizi göreceksiniz. Aşağıdaki diyagramda, farklı desenler arasındaki ilişkiler özetlenmektedir:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE05.png" alt-text="Tablo Tasarım desenlerinin diyagramı":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE05.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik":::
 
 Desen eşleme, bu kılavuzda belgelenen desenler (mavi) ve kenar desenleri (turuncu) arasındaki ilişkileri vurgular. Dikkate değer veren birçok farklı desen vardır. Örneğin, tablo depolaması için önemli senaryolardan biri, [komut sorgu sorumluluğu](https://msdn.microsoft.com/library/azure/jj554200.aspx) ayırma düzeninden [gerçekleştirilmiş görünüm deseninin](https://msdn.microsoft.com/library/azure/dn589782.aspx) kullanılması.  
 
@@ -418,14 +418,14 @@ Farklı `RowKey` değerler (aynı bölümde) kullanarak her varlığın birden �
 #### <a name="context-and-problem"></a>Bağlam ve sorun
 Tablo depolama, ve değerlerini kullanarak varlıkları otomatik olarak dizinler `PartitionKey` `RowKey` . Bu, bir istemci uygulamanın bu değerleri kullanarak bir varlığı etkin bir şekilde almasını sağlar. Örneğin, aşağıdaki tablo yapısını kullanarak, bir istemci uygulaması departman adını ve çalışan KIMLIĞINI ( `PartitionKey` ve değerlerini) kullanarak tek bir çalışan varlığını almak için bir nokta sorgusu kullanabilir `RowKey` . Ayrıca, bir istemci her bir departman içindeki çalışan KIMLIĞINE göre sıralanmış varlıkları alabilir.
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE06.png" alt-text="Çalışan varlığı grafiği":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE06.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik":::
 
 Ayrıca, e-posta adresi gibi başka bir özelliğin değerine göre bir çalışan varlığı bulmak istiyorsanız, bir eşleşme bulmak için daha az verimli bir bölüm taraması kullanmanız gerekir. Bunun nedeni tablo depolamanın ikincil dizinler sağlamadır. Ayrıca, bir çalışan listesini Order 'dan farklı bir sırada sıralanmış olarak isteme seçeneği yoktur `RowKey` .  
 
 #### <a name="solution"></a>Çözüm
 İkincil dizinlerin eksikliğine geçici bir çözüm bulmak için, her bir kopyanın farklı bir değer kullanarak her bir varlığın birden çok kopyasını saklayabilirsiniz `RowKey` . Aşağıdaki yapılarla bir varlık depoluysanız, e-posta adresini veya çalışan KIMLIĞINI temel alarak çalışan varlıklarını etkin bir şekilde alabilirsiniz. ,, Ve için ön ek değerleri, bir dizi `RowKey` `empid_` `email_` e-posta adresi veya çalışan kimliği kullanarak tek bir çalışan veya bir dizi çalışan için sorgulamanızı sağlar.  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE07.png" alt-text="Değişen RowKey değerleri olan çalışan varlığını gösteren grafik":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE07.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik":::
 
 Aşağıdaki iki filtre ölçütü (bir çalışan KIMLIĞI tarafından bir arama ve e-posta adresiyle arama) her ikisi de nokta sorguları belirler:  
 
@@ -449,7 +449,7 @@ Bu düzenin nasıl uygulanacağına karar verirken aşağıdaki noktaları göz 
 * İçindeki sayısal değerleri doldurma `RowKey` (örneğin, çalışan kimliği 000223), üst ve alt sınırlara göre doğru sıralamayı ve filtrelemeyi sunar.  
 * Varlığınızın tüm özelliklerini yinelememeniz gerekmez. Örneğin, varlıklarda e-posta adresini kullanarak varlıkları aramak için `RowKey` hiçbir zaman çalışan kullanım ömrü gerekmez, bu varlıklar aşağıdaki yapıya sahip olabilir:
 
-  :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE08.png" alt-text="Çalışan varlığı grafiği":::
+  :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE08.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik":::
 
 * Genellikle, yinelenen verileri depolamak ve bir varlık bulmak için tek bir sorgu kullanmanın yanı sıra gerekli verileri aramak için tek bir sorgu ile ihtiyacınız olan tüm verileri almanızı sağlamak daha iyidir.  
 
@@ -476,7 +476,7 @@ Ayrı bölümlerde veya ayrı tablolarda farklı değerler kullanarak her varlı
 #### <a name="context-and-problem"></a>Bağlam ve sorun
 Tablo depolama, ve değerlerini kullanarak varlıkları otomatik olarak dizinler `PartitionKey` `RowKey` . Bu, bir istemci uygulamanın bu değerleri kullanarak bir varlığı etkin bir şekilde almasını sağlar. Örneğin, aşağıdaki tablo yapısını kullanarak, bir istemci uygulaması departman adını ve çalışan KIMLIĞINI ( `PartitionKey` ve değerlerini) kullanarak tek bir çalışan varlığını almak için bir nokta sorgusu kullanabilir `RowKey` . Ayrıca, bir istemci her bir departman içindeki çalışan KIMLIĞINE göre sıralanmış varlıkları alabilir.  
 
-[9] :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE09.png" alt-text="çalışan varlığının grafiği":::
+[9] :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE09.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik":::
 
 Ayrıca, e-posta adresi gibi başka bir özelliğin değerine bağlı olarak bir çalışan varlığı bulabilmek istiyorsanız, bir eşleşme bulmak için daha az verimli bir bölüm taraması kullanmanız gerekir. Bunun nedeni tablo depolamanın ikincil dizinler sağlamadır. Ayrıca, bir çalışan listesini Order 'dan farklı bir sırada sıralanmış olarak isteme seçeneği yoktur `RowKey` .  
 
@@ -485,7 +485,7 @@ Bu varlıklara yönelik yüksek hacimli işlemlere benimsemeyi bekleme olursunuz
 #### <a name="solution"></a>Çözüm
 İkincil dizinlerin eksikliğine geçici bir çözüm bulmak için, her bir kopyanın farklı ve değerleri kullanarak her bir varlığın birden çok kopyasını `PartitionKey` saklayabilirsiniz `RowKey` . Aşağıdaki yapılarla bir varlık depoluysanız, e-posta adresini veya çalışan KIMLIĞINI temel alarak çalışan varlıklarını etkin bir şekilde alabilirsiniz. ,, Ve için önek değerleri, `PartitionKey` `empid_` `email_` bir sorgu için kullanmak istediğiniz dizini tanımlamanızı sağlar.  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE10.png" alt-text="Birincil dizin ve ikincil dizinli çalışan varlığı olan çalışan varlığını gösteren grafik":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE10.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik":::
 
 Aşağıdaki iki filtre ölçütü (bir çalışan KIMLIĞI tarafından bir arama ve e-posta adresiyle arama) her ikisi de nokta sorguları belirler:  
 
@@ -508,7 +508,7 @@ Bu düzenin nasıl uygulanacağına karar verirken aşağıdaki noktaları göz 
 * İçindeki sayısal değerleri doldurma `RowKey` (örneğin, çalışan kimliği 000223), üst ve alt sınırlara göre doğru sıralamayı ve filtrelemeyi sunar.  
 * Varlığınızın tüm özelliklerini yinelememeniz gerekmez. Örneğin, varlıklarda e-posta adresini kullanarak varlıkları aramak için `RowKey` hiçbir zaman çalışan kullanım ömrü gerekmez, bu varlıklar aşağıdaki yapıya sahip olabilir:
   
-  :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE11.png" alt-text="İkincil dizinli çalışan varlığını gösteren grafik":::
+  :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE11.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik":::
 
 * Genellikle, yinelenen verileri depolamak ve tek bir sorgu ile ihtiyacınız olan tüm verileri, ikincil dizini kullanarak bir varlığı bulmak için bir sorgu kullanmanın ve birincil dizinde gerekli verileri aramak için bir sorgu kullanmaktan emin olmak daha iyidir.  
 
@@ -548,7 +548,7 @@ Bu yaklaşımı göstermek için, eski çalışan varlıklarını arşivlemek i�
 
 Ancak bu iki işlemi gerçekleştirmek için EGT kullanamazsınız. Bir başarısızlığın bir varlığın her iki tabloda veya hiç tablo halinde görünmesine neden olması riskini önlemek için Arşiv işleminin sonunda tutarlı olması gerekir. Aşağıdaki sıra diyagramı bu işlemdeki adımları özetler.  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE12.png" alt-text="Nihai tutarlılık için çözüm diyagramı":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE12.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik":::
 
 İstemci, Azure kuyruğuna bir ileti yerleştirerek arşiv işlemini başlatır (Bu örnekte, çalışan #456 arşivlemek için). Bir çalışan rolü yeni iletiler için kuyruğu yoklar; bir tane bulduğunda iletiyi okur ve kuyrukta gizli bir kopya bırakır. Çalışan rolü, **geçerli** tablodaki varlığın bir kopyasını getirir, **Arşiv** tablosuna bir kopya ekler ve ardından **geçerli** tablodan orijinali siler. Son olarak, önceki adımlardan bir hata yoksa, çalışan rolü gizli iletiyi kuyruktan siler.  
 
@@ -588,7 +588,7 @@ Varlık listeleri döndüren etkili aramaları etkinleştirmek için Dizin varl�
 #### <a name="context-and-problem"></a>Bağlam ve sorun
 Tablo depolama, ve değerlerini kullanarak varlıkları otomatik olarak dizinler `PartitionKey` `RowKey` . Bu, bir istemci uygulamanın bir nokta sorgusu kullanarak bir varlığı etkin bir şekilde almasını sağlar. Örneğin, aşağıdaki tablo yapısını kullanarak, bir istemci uygulaması departman adını ve çalışan KIMLIĞINI (ve) kullanarak bireysel bir çalışan varlığını verimli bir şekilde alabilir `PartitionKey` `RowKey` .  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE13.png" alt-text="Çalışan varlığı grafiği":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE13.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik":::
 
 Ayrıca, soyadı gibi benzersiz olmayan başka bir özelliğin değerine göre çalışan varlıklarının bir listesini alabilmek istiyorsanız, daha az verimli bir bölüm taraması kullanmanız gerekir. Bu tarama, bunları doğrudan aramak için bir dizin kullanmak yerine eşleşmeleri bulur. Bunun nedeni tablo depolamanın ikincil dizinler sağlamadır.  
 
@@ -607,29 +607,13 @@ Her benzersiz soyadı için bir blob oluşturun ve her bir blob 'da, `PartitionK
 
 Aşağıdaki verileri depolayan Dizin varlıklarını kullanın:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE14.png" alt-text="Aynı soyadı taşıyan çalışan kimliklerinin bir listesini içeren bir dize içeren çalışan varlığı gösteren grafik":::
-
-`EmployeeIDs`Özelliği, içinde depolanan son ada sahip çalışanlar için çalışan kimliklerinin bir listesini içerir `RowKey` .  
-
-Aşağıdaki adımlarda, yeni bir çalışan eklerken izlemeniz gereken işlem ana hatlarıyla verilmiştir. Bu örnekte, satış departmanında 000152 KIMLIĞI ve soyadı Jones olan bir çalışan ekliyoruz:  
-
-1. `PartitionKey`"Sales" değerine ve `RowKey` "Jones" değerine sahip dizin varlığını alın. 2. adımda kullanmak üzere bu varlığın ETag öğesini kaydedin.  
-2. Yeni çalışan varlığını ("Sales" değeri ve "000152" değeri) ekleyen bir varlık grubu işlemi (bir toplu işlem) oluşturun `PartitionKey` `RowKey` ve Dizin varlığını (" `PartitionKey` Sales" değeri ve `RowKey` "can" değeri) güncelleştirir. EGT bunu, yeni çalışan KIMLIĞINI Employeıdds alanındaki listeye ekleyerek yapar. Yumurtalar hakkında daha fazla bilgi için bkz. [varlık grubu işlemleri](#entity-group-transactions).  
-3. EGT, iyimser bir eşzamanlılık hatası nedeniyle başarısız olursa (yani başka biri dizin varlığını değiştirmişse), 1. adımda baştan başlamanız gerekir.  
-
-İkinci seçeneği kullanıyorsanız, bir çalışanı silmek için benzer bir yaklaşım kullanabilirsiniz. Çalışanın soyadını değiştirme işlemi, üç varlığı güncelleştiren bir EGT çalıştırmanız gerektiğinden biraz daha karmaşıktır: çalışan varlığı, eski soyadı için Dizin varlığı ve yeni soyadı için Dizin varlığı. Daha sonra iyimser eşzamanlılık kullanarak güncelleştirmeleri gerçekleştirmek için kullanabileceğiniz ETag değerlerini almak için herhangi bir değişiklik yapmadan önce her bir varlığı almalısınız.  
-
-Aşağıdaki adımlarda, bir departmandaki belirli bir soyadı olan tüm çalışanları aramanız gerektiğinde izlemeniz gereken işlem ana hatlarıyla verilmiştir. Bu örnekte, satış departmanında en son adı Jones olan tüm çalışanları bakıyoruz:  
-
-1. `PartitionKey`"Sales" değerine ve `RowKey` "Jones" değerine sahip dizin varlığını alın.  
-2. Alandaki çalışan kimliklerinin listesini ayrıştırın `EmployeeIDs` .  
-3. Bu çalışanların (e-posta adresleri gibi) her biri hakkında ek bilgilere ihtiyacınız varsa, `PartitionKey` "Sales" değerini ve `RowKey` 2. adımda elde ettiğiniz çalışanların listesinden alınan değerleri kullanarak çalışan varlıklarının her birini alın.  
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE14.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik" değerini ve `RowKey` 2. adımda elde ettiğiniz çalışanların listesinden alınan değerleri kullanarak çalışan varlıklarının her birini alın.  
 
 Seçenek 3: ayrı bir bölümde veya tabloda Dizin varlıkları oluşturma  
 
 Bu seçenek için aşağıdaki verileri depolayan Dizin varlıklarını kullanın:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE15.png" alt-text="Aynı soyadı taşıyan çalışan kimliklerinin bir listesini içeren bir dize içeren çalışan varlığı gösteren grafik":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE15.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik":::
 
 `EmployeeIDs`Özelliği, ve içinde depolanan son ada sahip çalışanlar için çalışan kimliklerinin bir listesini içerir `RowKey` `PartitionKey` .  
 
@@ -661,12 +645,12 @@ Tek bir nokta sorgusuyla ihtiyacınız olan tüm verileri almanızı sağlamak i
 #### <a name="context-and-problem"></a>Bağlam ve sorun
 İlişkisel bir veritabanında, sorgular birden çok tablodan veri aldığında oluşan yinelemeyi kaldırmak için genellikle verileri normalleştirin. Verilerinizi Azure tablolarında normalleştirin, ilişkili verilerinizi almak için istemciden sunucuya birden çok gidiş dönüş yapmanız gerekir. Örneğin, aşağıdaki tablo yapısıyla, bir departmanın ayrıntılarını almak için iki gidiş dönüş gerekir. Bir seyahat, yöneticinin KIMLIĞINI içeren departman varlığını getirir ve ikinci seyahat, yöneticinin ayrıntılarını bir çalışan varlığında getirir.  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE16.png" alt-text="Departman varlığı ve çalışan varlığı grafiği":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE16.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik":::
 
 #### <a name="solution"></a>Çözüm
 Verileri iki ayrı varlıkta depolamak yerine, verileri yeniden oluşturup, Bölüm varlığındaki yöneticinin ayrıntılarının bir kopyasını saklayın. Örneğin:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE17.png" alt-text="Yoğun ve birleştirilmiş departman varlığının grafiği":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE17.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik":::
 
 Bu özelliklerle depolanan departman varlıkları sayesinde, bir nokta sorgusu kullanarak bir departmanla ilgili ihtiyaç duyduğunuz tüm ayrıntıları alabilirsiniz.  
 
@@ -694,18 +678,18 @@ Bu düzen uygulanırken aşağıdaki düzenler ve yönergeler de yararlı olabil
 
 Aşağıdaki yapıyı kullanarak, çalışan varlıklarını tablo depolamada depoladığını varsayın:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE18.png" alt-text="Çalışan varlığı grafiği":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE18.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik":::
 
 Ayrıca, çalışanın kuruluşunuz için çalıştığı her bir yıla ait incelemeler ve performansla ilgili geçmiş verileri depolamanız ve bu bilgilere yıla göre erişebilmek için ihtiyacınız vardır. Bir seçenek, aşağıdaki yapıyla varlıkları depolayan başka bir tablo oluşturmaktır:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE19.png" alt-text="Çalışan gözden geçirme varlığı grafiği":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE19.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik":::
 
 Bu yaklaşımda, verileri tek bir istekle almanızı sağlamak için yeni varlıktaki bazı bilgileri (örneğin, ilk adı ve soyadı) çoğaltmaya karar verebilirsiniz. Ancak, bu iki varlığı otomatik olarak güncelleştirmek için EGT 'yi kullanamadığından güçlü tutarlılığı koruyamıyorum.  
 
 #### <a name="solution"></a>Çözüm
 Aşağıdaki yapıyla varlıkları kullanarak özgün tablonuzda yeni bir varlık türü depolayın:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE20.png" alt-text="Bileşik anahtarla çalışan varlığının grafiği":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE20.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik":::
 
 Nasıl `RowKey` bir bileşik anahtar olduğunu, çalışan kimliği ve gözden geçirme verilerinin yılından nasıl yapıldığını fark edin. Bu, çalışanın performansını almanızı ve tek bir varlık için tek bir istekle verileri incelemenizi sağlar.  
 
@@ -777,7 +761,7 @@ Birçok uygulama, artık bir istemci uygulaması için kullanılabilir olmayan e
 
 Olası bir tasarım, oturum açma isteğinin tarih ve saatini ' de kullanmaktır `RowKey` :  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE21.png" alt-text="Oturum açma denemesi varlığı grafiği":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE21.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik":::
 
 Bu yaklaşım bölüm etkin noktalarını önler çünkü uygulama, her kullanıcı için ayrı bir bölümdeki oturum açma varlıklarını ekleyebilir ve silebilir. Ancak, çok sayıda varlık varsa bu yaklaşım maliyetli ve zaman alıcı olabilir. Öncelikle, silinecek tüm varlıkların tanımlanması için bir tablo taraması gerçekleştirmeniz ve ardından bir eski varlığı silmeniz gerekir. Birden çok Delete isteğini bölümlere ayırarak eski varlıkları silmek için gereken sunucuya gidiş dönüş sayısını azaltabilirsiniz.  
 
@@ -807,14 +791,14 @@ Yaptığınız istek sayısını en aza indirmek için, tüm veri serisini tek b
 #### <a name="context-and-problem"></a>Bağlam ve sorun
 Yaygın bir senaryo, bir uygulamanın, genellikle hepsini bir kez alması gereken veri serisini depolaması içindir. Örneğin, uygulamanız her bir çalışanın kaç tane ım iletisi göndereceğini kaydedebilir ve sonra bu bilgileri kullanarak her bir kullanıcının önceki 24 saat içinde kaç ileti gönderdiğini çizebilirsiniz. Tek bir tasarım, her çalışan için 24 varlık depolamak olabilir:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE22.png" alt-text="İleti istatistikleri varlığının grafiği":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE22.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik":::
 
 Bu tasarım sayesinde, uygulamanın ileti sayısı değerini güncelleştirmesi gerektiğinde her bir çalışana yönelik varlık için kolayca bulma ve güncelleştirme yapabilirsiniz. Bununla birlikte, önceki 24 saat için etkinliğin bir grafiğini çizmek üzere bilgileri almak için, 24 varlık almanız gerekir.  
 
 #### <a name="solution"></a>Çözüm
 Her saat için ileti sayısını depolamak üzere ayrı bir özellikle aşağıdaki tasarımı kullanın:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE23.png" alt-text="Ayrılmış özelliklerle ileti istatistikleri varlığını gösteren grafik":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE23.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik":::
 
 Bu tasarımla, bir çalışana ait ileti sayısını belirli bir saat için güncelleştirmek üzere bir birleştirme işlemi kullanabilirsiniz. Şimdi, tek bir varlık için bir istek kullanarak grafiği çizmek için ihtiyacınız olan tüm bilgileri alabilirsiniz.  
 
@@ -843,7 +827,7 @@ Tek bir varlık 252 'den fazla özelliğe sahip olabilir (zorunlu sistem özelli
 #### <a name="solution"></a>Çözüm
 Tablo Depolamayı kullanarak, birden fazla varlığı, 252 'den fazla özelliği olan tek bir büyük ölçekli bir iş nesnesini temsil etmek üzere saklayabilirsiniz. Örneğin, son 365 gün boyunca her bir çalışan tarafından gönderilen anlık ileti iletilerinin sayısını depolamak istiyorsanız, farklı şemalarla iki varlık kullanan aşağıdaki tasarımı kullanabilirsiniz:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE24.png" alt-text="Rowkey 01 ve Rowkey 02 ile ileti istatistikleri varlığı ile ileti istatistikleri varlığını gösteren grafik":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE24.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik":::
 
 Her iki varlığın de birbirleriyle eşitlenmiş halde tutulması için güncelleştirilmesi gereken bir değişiklik yapmanız gerekiyorsa, bir EGT kullanabilirsiniz. Aksi takdirde, belirli bir güne ait ileti sayısını güncelleştirmek için tek bir birleştirme işlemi kullanabilirsiniz. Tek bir çalışana ait tüm verileri almak için her iki varlığı de almalısınız. Bunu hem hem de bir değeri kullanan iki verimli istek ile yapabilirsiniz `PartitionKey` `RowKey` .  
 
@@ -870,7 +854,7 @@ Tek bir varlık, toplamda 1 MB 'tan fazla veri depolayamıyorum. Özelliklerden 
 #### <a name="solution"></a>Çözüm
 Bir veya daha fazla özellik büyük miktarda veri içerdiği için varlığınız 1 MB 'ı aşarsa, verileri BLOB depolama alanında saklayabilir ve sonra Blobun adresini varlıktaki bir özellikte saklayabilirsiniz. Örneğin, bir çalışanın fotoğrafını BLOB depolama alanında saklayabilir ve `Photo` çalışan varlığınızın özelliğinde fotoğrafın bağlantısını kaydedebilirsiniz:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE25.png" alt-text="Blob depolamaya işaret eden fotoğrafın bulunduğu çalışan varlığı gösteren grafik":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE25.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik":::
 
 #### <a name="issues-and-considerations"></a>Sorunlar ve dikkat edilmesi gerekenler
 Bu düzenin nasıl uygulanacağına karar verirken aşağıdaki noktaları göz önünde bulundurun:  
@@ -895,12 +879,12 @@ Bu düzen uygulanırken aşağıdaki düzenler ve yönergeler de yararlı olabil
 #### <a name="context-and-problem"></a>Bağlam ve sorun
 Depolanan varlıklarınıza ön bekliyor veya varlıklar eklemek, genellikle uygulamanın bölüm dizisinin ilk veya son bölümüne yeni varlıklar eklenmesine neden olur. Bu durumda, belirli bir zamanda tüm ekler aynı bölümde gerçekleşirken bir etkin nokta oluşturulur. Bu, tablo depolamanın yük dengelemeden birden çok düğüm arasında yer almasını önler ve büyük olasılıkla uygulamanızın bölüm için ölçeklenebilirlik hedeflerine ulaşmasına neden olur. Örneğin, çalışanlar tarafından ağ ve kaynak erişimini kaydeden bir uygulamanın durumunu göz önünde bulundurun. Aşağıdaki gibi bir varlık yapısı, işlem hacmi tek bir bölüm için ölçeklenebilirlik hedefine ulaşırsa, geçerli saatin bölümünün bir etkin noktaya dönüşmesine neden olabilir:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE26.png" alt-text="Çalışan varlığı grafiği":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE26.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik":::
 
 #### <a name="solution"></a>Çözüm
 Aşağıdaki alternatif varlık yapısı, uygulama olayları günlüğe kaydettiği için belirli bir bölümdeki etkin noktayı önler:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE27.png" alt-text="Yıl, ay, gün, saat ve olay KIMLIĞINI temel alan RowKey ile çalışan varlığı gösteren grafik":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE27.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik":::
 
 Bu örnekle, ve öğelerinin bileşik anahtarların nasıl olduğuna dikkat edin `PartitionKey` `RowKey` . , `PartitionKey` Günlüğü birden çok bölüme dağıtmak için hem departmanı hem de çalışan kimliğini kullanır.  
 
@@ -926,13 +910,13 @@ Genellikle, günlük verilerini depolamak için tablo depolaması yerine BLOB de
 #### <a name="context-and-problem"></a>Bağlam ve sorun
 Günlük verileri için genel kullanım örneği, belirli bir tarih/saat aralığı için günlük girişlerinin bir seçimini almadır. Örneğin, uygulamanızın 15:04 ile 15:06 arasında günlüğe kaydedildiği tüm hata ve kritik iletileri belirli bir tarihte bulmak istiyorsunuz. Günlük varlıklarının kaydedileceği bölümü öğrenmek için günlük iletisinin tarih ve saatini kullanmak istemezsiniz. Bu, belirli bir zamanda, tüm günlük varlıklarının aynı değeri paylaştığından bu, bir sıcak bölüm ile sonuçlanır `PartitionKey` (bkz. [Prepend/Append Anti-model](#prepend-append-anti-pattern)). Örneğin, bir günlük iletisi için aşağıdaki varlık şeması, etkin bir bölüme neden olur, çünkü uygulama tüm günlük iletilerini geçerli tarih ve saat için bölüme Yazar:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE28.png" alt-text="Günlük iletisi varlığının grafiği":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE28.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik":::
 
 Bu örnekte, `RowKey` günlük iletilerinin tarih/saat düzeninde sıralanmasını sağlamak üzere günlük iletisinin tarih ve saatini içerir. `RowKey`Ayrıca, birden çok günlük iletisinin aynı tarih ve saati paylaştığı durumlarda bir ILETI kimliği de içerir.  
 
 Farklı bir yaklaşım, `PartitionKey` uygulamanın iletileri bir dizi bölüme yazmalarını sağlayan bir kullanmaktır. Örneğin, günlük iletisinin kaynağı birçok bölüm arasında ileti dağıtmak için bir yol sağlıyorsa aşağıdaki varlık şemasını kullanabilirsiniz:  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE29.png" alt-text="Günlük iletisi varlığının grafiği":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE29.png" alt-text="Bir departman varlığını ve bir çalışan varlığını gösteren grafik":::
 
 Bununla birlikte, bu şemayla ilgili sorun belirli bir zaman aralığı için tüm günlük iletilerini almak için tablodaki her bölümde arama yapmanız gerekir.
 

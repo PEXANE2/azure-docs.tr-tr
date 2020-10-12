@@ -8,10 +8,10 @@ ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: b470fa72518f805c10403931280bdec96bda0fbe
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89226548"
 ---
 # <a name="azure-security-baseline-for-azure-application-gateway"></a>Azure Application Gateway için Azure Güvenlik temeli
@@ -983,7 +983,7 @@ Azure Application Gateway dağıtımlarınız için tanılama ayarlarını yapı
 
 **Kılavuz**: Azure Application Gateway müşteri verilerini depolamaz. Ancak, özel Azure ilke tanımları kullanıyorsanız, kodunuzu güvenli bir şekilde depolamak ve yönetmek için Azure DevOps veya Azure Repos kullanın.
 
-Azure DevOps Services, donanım hatası, hizmet kesintisi veya bölge olağanüstü durum durumunda veri kullanılabilirliği sağlamak için Azure depolama özelliklerinin çoğunun yararlanır. Ayrıca, Azure DevOps ekibi, verileri yanlışlıkla veya kötü amaçlı olarak silinmeye karşı korumak için prosedürleri izler.
+Azure DevOps Services donanım hatası, hizmet kesintisi veya bölge çapında olağanüstü durum gibi durumlarda verilerin kullanılabilir olmasını sağlamak için Azure depolama alanlarına özgü birçok farklı özellikten faydalanır. Azure DevOps ekibi ayrıca verileri yanlışlıkla veya kötü niyetli kişiler tarafından silinmeye karşı korumak için gerekli yordamları izler.
 
 * [Azure DevOps 'da veri kullanılabilirliğini anlama](https://docs.microsoft.com/azure/devops/organizations/security/data-protection?view=azure-devops#data-availability)
 

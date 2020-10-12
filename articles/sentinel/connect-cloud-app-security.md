@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
 ms.openlocfilehash: 5c67f517ffd3704644fbe8041f3ac1e7b0d1f09c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90904550"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Microsoft Cloud App Security verileri bağlama 
 
 [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) Bağlayıcısı, MCAS 'deki uyarıları ve [Cloud Discovery günlüklerini](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it) Azure Sentinel 'e aktarmanıza olanak tanır. Bu, bulut uygulamalarınıza ilişkin görünürlük elde etmeniz, siber tehditleri belirleyip öğrenme konusunda gelişmiş analizler elde etmeniz ve verilerinizin nasıl ele alınacağını denetlemenizi sağlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Kullanıcı çalışma alanında okuma ve yazma izinlerine sahip olmalıdır.
 - Kullanıcılarınızın, çalışma alanının kiracısında genel yönetici veya Güvenlik Yöneticisi izinlerine sahip olması gerekir.

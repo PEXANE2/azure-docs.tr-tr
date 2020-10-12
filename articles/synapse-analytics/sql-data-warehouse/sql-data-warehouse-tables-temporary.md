@@ -11,10 +11,10 @@ ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 61cc351470c0446b58d83d2d7f9c998d959c3649
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85414411"
 ---
 # <a name="temporary-tables-in-synapse-sql-pool"></a>SYNAPSE SQL havuzundaki geçici tablolar
@@ -98,7 +98,7 @@ GROUP BY
 ```
 
 > [!NOTE]
-> `CTAS`güçlü bir komuttur ve işlem günlüğü alanı kullanımıyla ilgili verimli bir avantajdır. 
+> `CTAS` güçlü bir komuttur ve işlem günlüğü alanı kullanımıyla ilgili verimli bir avantajdır. 
 > 
 > 
 

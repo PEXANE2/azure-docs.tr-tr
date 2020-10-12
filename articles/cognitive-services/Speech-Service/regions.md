@@ -12,10 +12,10 @@ ms.date: 08/20/2020
 ms.author: panosper
 ms.custom: seodec18
 ms.openlocfilehash: b0574c41042e172af78365bb273c81729ce204ab
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88749304"
 ---
 # <a name="speech-service-supported-regions"></a>Konuşma hizmeti tarafından desteklenen bölgeler
@@ -48,13 +48,13 @@ Konuşma hizmeti, **konuşma tanıma**, **metinden konuşmaya**ve **çeviri**iç
 
 Konuşma SDK 'Sı aracılığıyla **Amaç tanıma** için kullanılabilir bölgeler şunlardır:
 
-| Genel bölge | Region           | Bölge tanımlayıcısı |
+| Genel bölge | Bölge           | Bölge tanımlayıcısı |
 | ------------- | ---------------- | -------------------- |
-| Asia          | Doğu Asya        | `eastasia`           |
-| Asia          | Güneydoğu Asya   | `southeastasia`      |
+| Asya          | Doğu Asya        | `eastasia`           |
+| Asya          | Güneydoğu Asya   | `southeastasia`      |
 | Avustralya     | Doğu Avustralya   | `australiaeast`      |
-| Europe        | Kuzey Avrupa     | `northeurope`        |
-| Europe        | West Europe      | `westeurope`         |
+| Avrupa        | Kuzey Avrupa     | `northeurope`        |
+| Avrupa        | West Europe      | `westeurope`         |
 | Kuzey Amerika | Doğu ABD          | `eastus`             |
 | Kuzey Amerika | Doğu ABD 2        | `eastus2`            |
 | Kuzey Amerika | Orta Güney ABD | `southcentralus`     |
@@ -69,7 +69,7 @@ Bu, [Language Understanding hizmeti (Luo)](/azure/cognitive-services/luis/luis-r
 
 [Konuşma SDK 'sı](speech-sdk.md) bu bölgelerde **sesli yardımcı** yeteneklerini destekler:
 
-| Region         | Bölge tanımlayıcısı |
+| Bölge         | Bölge tanımlayıcısı |
 | -------------- | -------------------- |
 | Batı ABD        | `westus`             |
 | Batı ABD 2      | `westus2`            |

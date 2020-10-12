@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.openlocfilehash: 32e9da592d4c8f3997d5b1844065bf550d7d7d48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82207522"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmetinde (AKS) Azure diskleriyle bir birimi el ile oluşturma ve kullanma
@@ -59,7 +59,7 @@ Aşağıdaki örnek çıktıda gösterildiği gibi, komut başarıyla tamamland�
 
 ## <a name="mount-disk-as-volume"></a>Diski birim olarak bağla
 
-Azure diskini Pod uygulamanıza bağlamak için, kapsayıcıyı kapsayıcı belirtiminde yapılandırın. adlı yeni bir dosya oluşturun ve `azure-disk-pod.yaml` aşağıdaki içeriği ekleyin. `diskName`Önceki adımda oluşturulan diskin adıyla ve disk `diskURI` Oluştur komutunun çıktısında GÖSTERILEN disk kimliğiyle güncelleştirin. İsterseniz, `mountPath` Azure diskinin Pod 'a bağlı olduğu yol olan öğesini güncelleştirin. Windows Server kapsayıcıları için, Windows yol kuralını kullanarak *":"* gibi bir *bağlamayolu* belirtin.
+Azure diskini Pod uygulamanıza bağlamak için, birimi kapsayıcı belirtiminde yapılandırın. Aşağıdaki içerikle adlı yeni bir dosya oluşturun `azure-disk-pod.yaml` . `diskName`Önceki adımda oluşturulan diskin adıyla ve disk `diskURI` Oluştur komutunun çıktısında GÖSTERILEN disk kimliğiyle güncelleştirin. İsterseniz, `mountPath` Azure diskinin Pod 'a bağlı olduğu yol olan öğesini güncelleştirin. Windows Server kapsayıcıları için, Windows yol kuralını kullanarak *":"* gibi bir *bağlamayolu* belirtin.
 
 ```yaml
 apiVersion: v1

@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
 ms.openlocfilehash: 4816b597d66aea3bbe7f834004f924b5108de939
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87499764"
 ---
 # <a name="troubleshoot-the-process-server"></a>İşlem sunucusunda sorun giderme
@@ -51,7 +51,7 @@ Sorun gidermenin ilk adımı, işlem sunucusunun sistem durumunu ve durumunu den
 
 **Uyarı türü** | **Hata** | **Sorun giderme**
 --- | --- | --- 
-![Sağlam][green] | Hiçbiri  | İşlem sunucusu bağlandı ve sağlıklı.
+![Sağlam][green] | Yok  | İşlem sunucusu bağlandı ve sağlıklı.
 ![Uyarı][yellow] | Belirtilen hizmetler çalışmıyor. | 1. hizmetlerin çalıştığını denetleyin.<br/> 2. hizmetler beklendiği gibi çalışıyorsa, [bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.
 ![Uyarı][yellow]  | Son 15 dakika boyunca %80 > CPU kullanımı. | 1. yeni makine eklemeyin.<br/>2. işlem sunucusunu kullanan VM sayısının [tanımlı sınırlara](site-recovery-plan-capacity-vmware.md#capacity-considerations)göre hizalanacağını denetleyin ve [ek bir işlem sunucusu](vmware-azure-set-up-process-server-scale.md)ayarlamayı deneyin.<br/>3. [bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.
 ![Kritik][red] |  Son 15 dakika boyunca %95 > CPU kullanımı. | 1. yeni makine eklemeyin.<br/>2. işlem sunucusunu kullanan VM sayısının [tanımlı sınırlara](site-recovery-plan-capacity-vmware.md#capacity-considerations)göre hizalanacağını denetleyin ve [ek bir işlem sunucusu](vmware-azure-set-up-process-server-scale.md)ayarlamayı deneyin.<br/>3. [bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.<br/> 4. sorun devam ederse, VMware/fiziksel sunucu çoğaltması için [dağıtım planlayıcısı](https://aka.ms/asr-v2a-deployment-planner) çalıştırın.
@@ -230,7 +230,7 @@ Kaynak makinelerden işlem hizmetine engellenen veri karşıya yüklemelerle ilg
 
 ## <a name="step-12-verify-process-server-proxy-settings"></a>12. Adım: işlem sunucusu proxy ayarlarını doğrulama 
 
-1. Proxy sunucusu kullanıyorsanız, proxy sunucusu adının DNS sunucusu tarafından çözümlendiğinden emin olun. Configuration Server 'ı **HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Azure site Recovery\ProxySettings**kayıt defteri anahtarında ayarlarken verdiğiniz değeri denetleyin.
+1. Proxy sunucusu kullanıyorsanız, proxy sunucusu adının DNS sunucusu tarafından çözümlendiğinden emin olun. **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Site Recovery\ProxySettings**kayıt defteri anahtarında yapılandırma sunucusunu ayarlarken verdiğiniz değeri denetleyin.
 2. Verileri göndermek için Azure Site Recovery Aracısı tarafından aynı ayarların kullanıldığından emin olun.
 
     a) **Microsoft Azure Backup**için arama yapın.

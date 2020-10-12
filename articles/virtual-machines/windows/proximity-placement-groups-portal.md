@@ -1,5 +1,5 @@
 ---
-title: Portalı kullanarak bir yakınlık yerleşimi grubu oluşturma
+title: Portalı kullanarak yakın yerleştirilen bir grup oluşturma
 description: Azure portal kullanarak yakınlık yerleşimi grubu oluşturmayı öğrenin.
 author: cynthn
 ms.service: virtual-machines
@@ -8,13 +8,13 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: cynthn
 ms.openlocfilehash: 6a14e2bd7385430c3d0fbec06259a876af556e38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82190410"
 ---
-# <a name="create-a-proximity-placement-group-using-the-portal"></a>Portalı kullanarak bir yakınlık yerleşimi grubu oluşturma
+# <a name="create-a-proximity-placement-group-using-the-portal"></a>Portalı kullanarak yakın yerleştirilen bir grup oluşturma
 
 Olası en düşük gecikme süresini elde etmek üzere VM 'Leri olabildiğince yakın bir şekilde almak için, bunları bir [yakınlık yerleşimi grubu](co-location.md#proximity-placement-groups)içinde dağıtmanız gerekir.
 
@@ -58,7 +58,7 @@ VM, kullanılabilirlik kümesinin parçasıysa, VM 'Leri eklemeden önce kullan�
 1. [Portal](https://portal.azure.com) *kullanılabilirlik kümeleri* için arama yapın ve sonuçlardan kullanılabilirlik kümesi ' ni seçin.
 1. VM 'yi seçip VM 'nin sayfasında **Durdur** ' u seçerek ve ardından sanal makineyi durdurmak için **Tamam** ' ı seçerek KULLANıLABILIRLIK kümesindeki her bir VM 'yi serbest bırakın.
 1. Kullanılabilirlik kümesinin sayfasında, tüm VM 'Lerin **durumunun** **durduruldu (serbest bırakıldı)** olarak listelendiğinden emin olun.
-1. Sol menüde **yapılandırma**' yı seçin.
+1. Soldaki menüden **Yapılandırma**'yı seçin.
 1. **Yakınlık yerleşimi grubu**altında, açılır listeden bir yerleştirme grubu seçin ve ardından **Kaydet**' i seçin.
 1. VM 'lerin listesini yeniden görmek için sol menüden **Genel Bakış ' ı** seçin. 
 1. Kullanılabilirlik kümesindeki her bir VM 'yi seçin ve sonra her VM için sayfada **Başlat** ' ı seçin. 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: bfe24ff38446fa0d0ccea96799e6f42b561713bf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89002819"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>Azure Bilişsel Arama .NET SDK sürüm 10 ' a yükseltme
@@ -112,7 +112,7 @@ var webApiSkill = new WebApiSkill(
 
 Beceri başına mil, artık iç içe bağlamlardan giriş birleştirmeye izin verebilir. Bu değişikliği etkinleştirmek için, `InputFieldMappingEntry` yalnızca bir `Source` özellik veya hem de özellikleri belirtilerek, örnekleri oluşturulacak şekilde değiştirdik `SourceContext` `Inputs` .
 
-Büyük olasılıkla herhangi bir kod değişikliği yapmanız gerekmez; Ancak, bu iki birleşimden yalnızca birine izin verildiğini unutmayın. Bunun anlamı:
+Büyük olasılıkla herhangi bir kod değişikliği yapmanız gerekmez; Ancak, bu iki birleşimden yalnızca birine izin verildiğini unutmayın. Diğer bir deyişle:
 
 - `InputFieldMappingEntry`Yalnızca başlatılmış bir konum oluşturmak `Source` geçerlidir.
 - `InputFieldMappingEntry`Yalnızca ve başlatılmış bir WHERE oluşturulması `SourceContext` `Inputs` geçerlidir.

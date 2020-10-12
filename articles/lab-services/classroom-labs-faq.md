@@ -4,10 +4,10 @@ description: Bu makalede, Azure Lab Services içindeki sınıf laboratuvarları 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ca35d70bc1106e46df4e3c68889b03679fd54b86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85443307"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Azure Lab Services sınıf laboratuvarları — sık sorulan sorular (SSS)
@@ -19,7 +19,7 @@ Azure Lab Services ders laboratuvarları hakkında en sık sorulan soruların ya
 Laboratuvar için ayarladığınız kota, tüm laboratuvarın süresi boyunca her öğrenciye yöneliktir. Ve [VM 'lerin zamanlanan çalışma süresi](how-to-create-schedules.md) , bir kullanıcıya ayrılan kotaya göre sayılmaz. Kota, bir öğrencinin VM 'lerde harcadığı zamanlama saatleri dışında bir süredir.  Kotalar hakkında daha fazla bilgi için bkz. [kullanıcılar için kotaları ayarlama](how-to-configure-student-usage.md#set-quotas-for-users).
 
 ### <a name="if-educator-turns-on-a-student-vm-does-that-affect-the-student-quota"></a>Eğitimci bir öğrenci sanal makinesini kullanıyorsa, öğrenci kotasını da etkiler mi? 
-Hayır. Bunu yapmaz. Eğitimci, öğrenci sanal makinesini açtığında öğrenciye ayrılan kotayı etkilemez. 
+Hayır. Hiç rolü yoktur. Eğitimci, öğrenci sanal makinesini açtığında öğrenciye ayrılan kotayı etkilemez. 
 
 ## <a name="schedules"></a>Zamanlamalar
 

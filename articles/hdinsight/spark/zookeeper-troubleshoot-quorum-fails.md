@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 05/20/2020
 ms.openlocfilehash: 9038630a2623a8b20ddfcf98899ce9a89f16bdc1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84673369"
 ---
 # <a name="apache-zookeeper-server-fails-to-form-a-quorum-in-azure-hdinsight"></a>Apache ZooKeeper sunucusu Azure HDInsight 'ta çekirdek oluşturmuyor
@@ -57,7 +57,7 @@ Message
 
 * /Etc/hosts dosyasından veya ambarı kullanıcı arabiriminden Zookeeper sunucularını bulma
 * Aşağıdaki komutu çalıştırın
-  * `echo stat | nc <ZOOKEEPER_HOST_IP> 2181`(veya 2182)  
+  * `echo stat | nc <ZOOKEEPER_HOST_IP> 2181` (veya 2182)  
   * 2181 numaralı bağlantı noktası Apache Zookeeper örneğidir
   * 2182 numaralı bağlantı noktası, HDInsight Zookeeper tarafından kullanılır (yerel olarak HA olmayan hizmetler için HA sağlamak üzere)
   * Komutta hiçbir çıkış gösterilmediğinden, Zookeeper sunucularının çalışmadığı anlamına gelir.
@@ -105,12 +105,12 @@ Node count: 133212
 * Zookeepers, eski anlık görüntüleri otomatik olarak temizlemek için yapılandırılır
 * Varsayılan olarak, son 30 anlık görüntü korunur
 * Korunan anlık görüntü sayısı, yapılandırma anahtarı tarafından denetlenir `autopurge.snapRetainCount` . Bu özellik aşağıdaki dosyalarda bulunabilir:
-  * `/etc/zookeeper/conf/zoo.cfg`Hadoop Zookeeper için
-  * `/etc/hdinsight-zookeeper/conf/zoo.cfg`HDInsight için Zookeeper
+  * `/etc/zookeeper/conf/zoo.cfg` Hadoop Zookeeper için
+  * `/etc/hdinsight-zookeeper/conf/zoo.cfg` HDInsight için Zookeeper
 * `autopurge.snapRetainCount`3 değerine ayarlayın ve Zookeeper sunucularını yeniden başlatın
   * Hadoop Zookeeper yapılandırması güncelleştirilebilen ve hizmet, ambarı aracılığıyla yeniden başlatılabilir
   * HDInsight Zookeeper 'i el ile durdurun ve yeniden başlatın
-    * `sudo lsof -i :2182`Bu işlem KIMLIĞINI sonlandırmak için
+    * `sudo lsof -i :2182` Bu işlem KIMLIĞINI sonlandırmak için
     * `sudo python /opt/startup_scripts/startup_hdinsight_zookeeper.py`
 * Anlık görüntüleri el ile temizleme-anlık görüntülerin el ile silinmesi veri kaybına neden olabilir
 

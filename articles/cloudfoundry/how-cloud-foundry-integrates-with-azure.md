@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
 ms.openlocfilehash: f3b84ba1c3571e3660d1d71a0167a7489c6ec4ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82145122"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Cloud Foundry ile Azure’ı tümleştirme
@@ -40,7 +40,7 @@ Azure kullanılabilirlik bölgesi, 2 + veri merkezlerine bir VM kümesi yerleşt
 ## <a name="2-network-routing"></a>2. ağ yönlendirme
 Varsayılan olarak, Azure temel yük dengeleyici, gelen CF API/uygulama istekleri için kullanılır ve bunları Gorulara ileterek. Diego bey, MySQL, ERT gibi CF bileşenleri, HA trafiğini dengelemek için yük dengeleyiciyi de kullanabilir. Azure, tam olarak yönetilen bir Yük Dengeleme çözümleri kümesi de sağlar. TLS/SSL sonlandırmasını ("SSL boşaltması") veya HTTP/HTTPS isteği uygulama katmanı işleme için arıyorsanız, Application Gateway göz önünde bulundurun. Katman 4 ' te yüksek kullanılabilirlik ve ölçeklenebilirlik yük dengelemesi için standart yük dengeleyiciyi göz önünde bulundurun.
 ### <a name="azure-application-gateway-"></a>Azure Application Gateway *
-[Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) , SSL boşaltma, uçtan uca TLS, Web uygulaması güvenlik duvarı, tanımlama bilgisi tabanlı oturum benzeşimi ve daha fazlasını içeren çeşitli katman 7 yük dengeleme özellikleri sunar. [Açık kaynak Cloud Foundry Application Gateway yapılandırabilirsiniz](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/application-gateway). PCF için, POC testi için [pcf 2,1 sürüm notlarına](https://docs.pivotal.io/pivotalcf/2-1/pcf-release-notes/opsmanager-rn.html#azure-application-gateway) bakın.
+[Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) , SSL boşaltma, uçtan uca TLS, Web uygulaması güvenlik duvarı, tanımlama bilgisi tabanlı oturum benzeşimi ve daha fazlasını içeren çeşitli katman 7 yük dengeleme özellikleri sunar. [Açık kaynak Cloud Foundry Application Gateway yapılandırabilirsiniz](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/application-gateway). PCF için, POC testi için  [pcf 2,1 sürüm notlarına](https://docs.pivotal.io/pivotalcf/2-1/pcf-release-notes/opsmanager-rn.html#azure-application-gateway) bakın.
 
 ### <a name="azure-standard-load-balancer-"></a>Azure Standart Load Balancer *
 Azure Load Balancer katman 4 yük dengeleyicidir. Trafiği, yük dengeli bir küme içindeki hizmet örnekleri arasında dağıtmak için kullanılır. Standart sürüm, temel sürümün üstünde [Gelişmiş Özellikler](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) sağlar. Örneğin 1. Arka uç havuzu en yüksek sınırı 100 ' den 1000 VM 'ye yükseltilir.  2. Uç noktalar artık tek kullanılabilirlik kümesi yerine birden çok kullanılabilirlik kümesini destekler.  3. HA bağlantı noktaları, daha zengin izleme verileri vb. gibi ek özellikler. Azure kullanılabilirlik bölgesine taşındıysanız standart yük dengeleyici gereklidir. Yeni bir dağıtım için Azure Standart Load Balancer ile başlamanız önerilir. 
