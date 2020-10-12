@@ -7,17 +7,17 @@ ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: efe4c07a6231e0b2c95b049db056a4e5d055db98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77153001"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Azure App Service için yerel git dağıtımı
 
 Bu nasıl yapılır Kılavuzu, uygulamanızı yerel bilgisayarınızdaki bir git deposundan [Azure App Service](overview.md) için nasıl dağıtacağınızı gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzundaki adımları takip etmek için:
 
@@ -152,7 +152,7 @@ Azure 'da bir App Service uygulamasına yayımlamak için git kullandığınızd
 |`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`|Sırasında bir dal belirtmediniz veya ' `git push` `push.default` de değer ayarlamadıysanız `.gitconfig` .|`git push`Ana dalı belirterek yeniden çalıştırın: `git push azure master` .|
 |`src refspec [branchname] does not match any.`|' Azure ' uzak üzerinde ana öğe dışında bir dala gönderim girişiminde çalıştınız.|`git push`Ana dalı belirterek yeniden çalıştırın: `git push azure master` .|
 |`RPC failed; result=22, HTTP code = 5xx.`|HTTPS üzerinden büyük bir git deposu göndermeye çalışırsanız bu hata oluşabilir.|Daha büyük olması için yerel makinedeki git yapılandırmasını değiştirin `postBuffer` . Örneğin: `git config --global http.postBuffer 524288000`.|
-|`Error - Changes committed to remote repository but your web app not updated.`|Bir Node.js uygulamasını, ek gerekli modülleri belirten _package.js_ bir dosya ile dağıttınız.|Hatada `npm ERR!` daha fazla bağlam için bu hatadan önce hata iletilerini gözden geçirin. Aşağıda bu hatanın bilinen nedenleri ve ilgili `npm ERR!` iletiler verilmiştir:<br /><br />**Dosyada hatalı biçimlendirilmiş package.js**:`npm ERR! Couldn't read dependencies.`<br /><br />**Yerel modülün Windows için ikili bir dağıtımı yok**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />veya <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
+|`Error - Changes committed to remote repository but your web app not updated.`|Bir Node.js uygulamasını, ek gerekli modülleri belirten _package.js_ bir dosya ile dağıttınız.|Hatada `npm ERR!` daha fazla bağlam için bu hatadan önce hata iletilerini gözden geçirin. Aşağıda bu hatanın bilinen nedenleri ve ilgili `npm ERR!` iletiler verilmiştir:<br /><br />**Dosyada hatalı biçimlendirilmiş package.js**: `npm ERR! Couldn't read dependencies.`<br /><br />**Yerel modülün Windows için ikili bir dağıtımı yok**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />veya <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

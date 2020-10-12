@@ -12,17 +12,17 @@ ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: d5e06d0a6f7693ca9cc69f05f6b2318d6b60b5e3
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89070811"
 ---
 # <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect: ADConnectivityTools PowerShell Başvurusu
 
 Aşağıdaki belgeler Azure AD Connect eklenen ADConnectivityTools. psm1 PowerShell modülü için başvuru bilgileri sağlar.
 
-## <a name="confirm-dnsconnectivity"></a>Onayla-DnsConnectivity
+## <a name="confirm-dnsconnectivity"></a>Confirm-DnsConnectivity
 
 ### <a name="synopsis"></a>ÖZET
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
 Daha fazla bilgi için bkz. about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="confirm-forestexists"></a>Onayla-ForestExists
+## <a name="confirm-forestexists"></a>Confirm-ForestExists
 
 ### <a name="synopsis"></a>ÖZET
 
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
 Daha fazla bilgi için bkz. about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="confirm-functionallevel"></a>Onayla-FunctionalLevel
+## <a name="confirm-functionallevel"></a>Confirm-FunctionalLevel
 
 ### <a name="synopsis"></a>ÖZET
 
@@ -257,7 +257,7 @@ Accept wildcard characters: False
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
 Daha fazla bilgi için bkz. about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="confirm-networkconnectivity"></a>Onayla-NetworkConnectivity
+## <a name="confirm-networkconnectivity"></a>Confirm-NetworkConnectivity
 
 ### <a name="synopsis"></a>ÖZET
 
@@ -311,7 +311,7 @@ Accept wildcard characters: False
 #### <a name="-skipdnsport"></a>-SkipDnsPort
 
 Kullanıcı AD sitesi/oturum açma DC tarafından sunulan DNS hizmetlerini kullanmadıysa, bağlantı noktası 53 ' ı denetlemeyi atlamak isteyebilir.
-Kullanıcı yine de _. LDAP. _tcp çözümleyebilmelidir.\<forestfqdn\>
+Kullanıcı hala _.ldap._tcp çözümleyebilmelidir.\<forestfqdn\>
 Active Directory Bağlayıcısı yapılandırmasının başarılı olması için.
 
 ```yml
@@ -348,7 +348,7 @@ Accept wildcard characters: False
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
 Daha fazla bilgi için bkz. about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="confirm-targetsarereachable"></a>Onayla-TargetsAreReachable
+## <a name="confirm-targetsarereachable"></a>Confirm-TargetsAreReachable
 
 ### <a name="synopsis"></a>ÖZET
 
@@ -417,7 +417,7 @@ Accept wildcard characters: False
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
 Daha fazla bilgi için bkz. about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="confirm-validdomains"></a>Onaylama-ValidDomains
+## <a name="confirm-validdomains"></a>Confirm-ValidDomains
 
 ### <a name="synopsis"></a>ÖZET
 
@@ -517,7 +517,7 @@ Accept wildcard characters: False
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
 Daha fazla bilgi için bkz. about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="confirm-validenterpriseadmincredentials"></a>Onay-Valıdenterpriseadmincredentials
+## <a name="confirm-validenterpriseadmincredentials"></a>Confirm-ValidEnterpriseAdminCredentials
 
 ### <a name="synopsis"></a>ÖZET
 

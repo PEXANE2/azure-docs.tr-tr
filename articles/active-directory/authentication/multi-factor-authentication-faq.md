@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 57325363909664bb527c2e2101505641858c4285
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90706277"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication hakkında sık sorulan sorular
@@ -182,7 +182,7 @@ Hizmetin güvenilirliğini etkileyebilecek denetlenebilir faktörlerin bulunduğ
 
 Üçüncü taraf güvenlik uygulamaları, doğrulama kodu metin iletisini veya telefon aramasını de engelleyebilir. Üçüncü taraf güvenlik uygulaması kullanıyorsanız, korumayı devre dışı bırakıp daha sonra başka bir MFA doğrulama kodu gönderilmesini isteyin.
 
-Kullanıcılarınız genellikle SMS mesajları güvenilir bir şekilde alırken sorun yaşıyorsanız, bunun yerine Microsoft Authenticator uygulama veya telefon araması yöntemini kullanmasını söyleyin. Microsoft Authenticator, hem hücresel hem de Wi-Fi bağlantıları üzerinden bildirimler alabilir. Ayrıca, mobil uygulama, cihazın hiç sinyali olmadığında bile doğrulama kodları oluşturabilir. Microsoft Authenticator uygulaması [Android](https://go.microsoft.com/fwlink/?Linkid=825072), [iOS](https://go.microsoft.com/fwlink/?Linkid=825073) ve [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)'da kullanılabilir.
+Kullanıcılarınız genellikle SMS mesajları güvenilir bir şekilde alırken sorun yaşıyorsanız, bunun yerine Microsoft Authenticator uygulama veya telefon araması yöntemini kullanmasını söyleyin. Microsoft Authenticator, her ikisi de hücresel ve Wi-Fi bağlantı üzerinden bildirim alabilir. Ayrıca, mobil uygulama, cihazın hiç sinyali olmadığında bile doğrulama kodları oluşturabilir. Microsoft Authenticator uygulaması [Android](https://go.microsoft.com/fwlink/?Linkid=825072), [iOS](https://go.microsoft.com/fwlink/?Linkid=825073) ve [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)'da kullanılabilir.
 
 ### <a name="can-i-change-the-amount-of-time-my-users-have-to-enter-the-verification-code-from-a-text-message-before-the-system-times-out"></a>Sistem zaman aşımına uğramadan önce kullanıcılarınızın bir SMS iletisinden doğrulama kodunu girmesi gereken süre miktarını değiştirebilir miyim?
 

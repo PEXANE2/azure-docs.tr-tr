@@ -7,13 +7,13 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: sutalasi
 ms.openlocfilehash: a4140a0b22f7ca8164d50cf60fe57c861f826eb4
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86132513"
 ---
-# <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>PowerShell ve Azure Resource Manager kullanarak Hyper-V VM 'Leri için Azure 'da olağanüstü durum kurtarmayı ayarlama
+# <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>PowerShell ve Azure Resource Manager kullanarak Hyper-V VM'leri için Azure'a olağanüstü durum kurtarmayı ayarlama
 
 [Azure Site Recovery](site-recovery-overview.md) , Azure sanal makinelerini (VM) ve şirket Içi VM 'leri ve fiziksel sunucuları çoğaltma, yük devretme ve kurtarma işlemlerini düzenleyerek iş sürekliliği ve olağanüstü durum kurtarma (BCDR) stratejinize katkıda bulunur.
 
@@ -46,7 +46,7 @@ Ayrıca, bu makalede açıklanan belirli örnek aşağıdaki önkoşullara sahip
 
 1. Bir PowerShell konsolu açın ve Azure hesabınızda oturum açmak için bu komutu çalıştırın. Cmdlet 'i bir Web sayfası getirir, sizden hesap kimlik bilgilerinizi ister: `Connect-AzAccount` .
    - Alternatif olarak, `Connect-AzAccount` **kimlik bilgisi** parametresini kullanarak hesap kimlik bilgilerinizi cmdlet 'e parametre olarak ekleyebilirsiniz.
-   - Bir kiracı adına çalışan bir CSP iş ortağıysanız, istemci Tenantıd veya kiracı birincil etki alanı adını kullanarak müşteriyi kiracı olarak belirtin. Örneğin, `Connect-AzAccount -Tenant "fabrikam.com"`
+   - Bir kiracı adına çalışan bir CSP iş ortağıysanız, istemci Tenantıd veya kiracı birincil etki alanı adını kullanarak müşteriyi kiracı olarak belirtin. Örnek: `Connect-AzAccount -Tenant "fabrikam.com"`
 1. Hesap birden çok aboneliğe sahip olduğundan, hesapla birlikte kullanmak istediğiniz aboneliği ilişkilendirin:
 
    ```azurepowershell

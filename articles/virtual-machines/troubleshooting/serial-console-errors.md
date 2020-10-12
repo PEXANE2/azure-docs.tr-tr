@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
 ms.openlocfilehash: cad12a55332a6c7898f9709776c58d7dba8dd81a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86526444"
 ---
 # <a name="common-errors-within-the-azure-serial-console"></a>Azure seri konsolu 'nda sık karşılaşılan hatalar
@@ -34,7 +34,7 @@ Hata                             |   Risk azaltma
 Bu VM 'nin önyükleme tanılama depolama hesabına erişirken bir "yasak" yanıtıyla karşılaşıldı. | Önyükleme tanılamalarının bir hesap güvenlik duvarı olmadığından emin olun. Seri konsolunun çalışması için erişilebilir bir önyükleme tanılama depolama hesabı gereklidir. Seri konsol tasarıma göre, önyükleme tanılama depolama hesabında etkin olan depolama hesabı güvenlik duvarları ile birlikte çalışılamıyor.
 Bu VM 'yi seri konsol ile kullanmak için gerekli izinlere sahip değilsiniz. En az sanal makine katılımcısı rol izinlerine sahip olduğunuzdan emin olun.| Seri konsol erişimi, VM 'niz veya sanal makine ölçek kümesi üzerinde katkıda bulunan düzeyinde erişime sahip olmanızı gerektirir. Daha fazla bilgi için [genel bakış sayfasına](serial-console-overview.md)bakın.
 Bu VM 'de önyükleme tanılaması için kullanılan ' ' depolama hesabı bulunamadı. Bu VM için önyükleme tanılamaları 'nın etkinleştirildiğini, bu depolama hesabının silinmediğini ve bu depolama hesabına erişiminizin olduğunu doğrulayın. | VM 'niz veya sanal makine ölçek kümesi için önyükleme tanılama depolama hesabını silmediğinden emin olun
-VM 'ye yönelik seri konsol bağlantısı bir hata ile karşılaştı: ' hatalı Istek ' (400) | Önyükleme tanılama URI 'niz yanlışsa bu durum oluşabilir. Örneğin, "http://" yerine "https://" kullanılmıştır. Önyükleme tanılaması URI 'SI şu komutla düzeltilebilir:`az vm boot-diagnostics enable --name vmName --resource-group rgName --storage https://<storageAccountUri>.blob.core.windows.net/`
+VM 'ye yönelik seri konsol bağlantısı bir hata ile karşılaştı: ' hatalı Istek ' (400) | Önyükleme tanılama URI 'niz yanlışsa bu durum oluşabilir. Örneğin, "http://" yerine "https://" kullanılmıştır. Önyükleme tanılaması URI 'SI şu komutla düzeltilebilir: `az vm boot-diagnostics enable --name vmName --resource-group rgName --storage https://<storageAccountUri>.blob.core.windows.net/`
 Bu VM için önyükleme tanılama depolama hesabına yazmak için gerekli izinlere sahip değilsiniz. Lütfen en az sanal makine katılımcısı izninizin olduğundan emin olun | Seri konsol erişim, ön yükleme tanılama depolama hesabında katkıda bulunan düzeyinde erişim gerektirir. Daha fazla bilgi için [genel bakış sayfasına](serial-console-overview.md)bakın.
 Ön yükleme tanılama depolama hesabı * &lt; storageAccountName &gt; *için kaynak grubu belirlenemiyor. Bu VM için önyükleme tanılamaları 'nın etkinleştirildiğini ve bu depolama hesabına erişiminizin olduğunu doğrulayın. | Seri konsol erişim, ön yükleme tanılama depolama hesabında katkıda bulunan düzeyinde erişim gerektirir. Daha fazla bilgi için [genel bakış sayfasına](serial-console-overview.md)bakın.
 Bu VM için sağlama henüz başarılı değil. Lütfen VM 'nin tam olarak dağıtıldığından emin olun ve seri konsol bağlantısını yeniden deneyin. | VM 'niz veya sanal makine ölçek kümesi hala sağlanıyor olabilir. Bir süre bekleyip yeniden deneyin.

@@ -12,10 +12,10 @@ ms.date: 08/20/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: 718ccbaa57ffe9f4ebaf4e8df448b602ba8cc3fa
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89293168"
 ---
 # <a name="tutorial-for-configuring-whoiam-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile Whoıam yapılandırma öğreticisi
@@ -50,7 +50,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ![Whoıam ile Azure AD B2C tümleştirme mimarisinin diyagramı.](media/partner-whoiam/whoiam-architecture-diagram.png)
 
-|Adım | Description |
+|Adım | Açıklama |
 |:-----| :-----------|
 | 1. | Kullanıcı, kimlik sağlayıcısı olarak Azure AD B2C kullanan bir uygulamaya kaydolma veya oturum açma isteğini başlatmak için bir sayfaya ulaşır.
 | 2. | Kimlik doğrulamanın bir parçası olarak Kullanıcı, e-posta veya telefonunun sahipliğini doğrulamayı ister veya sesini bir biyometrik doğrulama faktörü olarak kullanır.  

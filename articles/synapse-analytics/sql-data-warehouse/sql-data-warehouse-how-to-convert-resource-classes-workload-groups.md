@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: fe65aa8c69bc4bd3837ea68bc48ffdbbeed87e0e
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89461383"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>Kaynak sınıflarını Iş yükü gruplarına Dönüştür
@@ -27,7 +27,7 @@ ms.locfileid: "89461383"
 
 ## <a name="understanding-the-existing-resource-class-configuration"></a>Mevcut kaynak sınıfı yapılandırmasını anlama
 
-İş yükü grupları `REQUEST_MIN_RESOURCE_GRANT_PERCENT` , istek başına ayrılan toplam sistem kaynakları yüzdesini belirten adlı bir parametre gerektirir.  Kaynak ayırma, eşzamanlılık yuvaları ayırarak [kaynak sınıfları](resource-classes-for-workload-management.md#what-are-resource-classes) için yapılır.  İçin belirtme değerini belirlemek için `REQUEST_MIN_RESOURCE_GRANT_PERCENT` , sys. dm_workload_management_workload_groups_stats <link tbd> DMV kullanın.  Örneğin, aşağıdaki sorgu sorgusu, `REQUEST_MIN_RESOURCE_GRANT_PERCENT` staticrc40 şuna benzer bir iş yükü grubu oluşturmak için parametresi için kullanılabilecek bir değer döndürür.
+İş yükü grupları `REQUEST_MIN_RESOURCE_GRANT_PERCENT` , istek başına ayrılan toplam sistem kaynakları yüzdesini belirten adlı bir parametre gerektirir.  Kaynak ayırma, eşzamanlılık yuvaları ayırarak [kaynak sınıfları](resource-classes-for-workload-management.md#what-are-resource-classes) için yapılır.  İçin belirtme değerini belirlemek için `REQUEST_MIN_RESOURCE_GRANT_PERCENT` , <link tbd> dmv sys.dm_workload_management_workload_groups_stats kullanın.  Örneğin, aşağıdaki sorgu sorgusu, `REQUEST_MIN_RESOURCE_GRANT_PERCENT` staticrc40 şuna benzer bir iş yükü grubu oluşturmak için parametresi için kullanılabilecek bir değer döndürür.
 
 ```sql
 SELECT Request_min_resource_grant_percent = Effective_request_min_resource_grant_percent

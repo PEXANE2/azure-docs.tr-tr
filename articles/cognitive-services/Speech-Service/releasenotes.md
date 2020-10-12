@@ -12,10 +12,10 @@ ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
 ms.openlocfilehash: 94947499452c7f1b8515fee56996b13120232f34
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462386"
 ---
 # <a name="speech-service-release-notes"></a>Konuşma hizmeti sürüm notları
@@ -57,7 +57,7 @@ ms.locfileid: "89462386"
     | `fr-CA` | Sylvie |
     | `fr-FR` | Denıse |
     | `ja-JP` | NANAMI |
-    | `ko-KR` | Paz-Hi |
+    | `ko-KR` | Sun-Hi |
 
 ### <a name="bug-fixes"></a>Hata düzeltmeleri
 
@@ -293,7 +293,7 @@ Sağlıklı olun!
  - DialogServiceConnector artık BotFrameworkConfig üzerinde isteğe bağlı "bot ID" parametresini destekliyor. Bu parametre, tek bir Azure konuşma kaynağı ile birden çok doğrudan hat konuşma 'nın kullanımına izin verir. Belirtilen parametre olmadan, varsayılan bot (doğrudan hat konuşma kanalı yapılandırma sayfası tarafından belirlendiği şekilde) kullanılacaktır.
  - DialogServiceConnector artık bir SpeechActivityTemplate özelliğine sahip. Bu JSON dizesinin içeriği, konuşma tanıma gibi olaylara yanıt olarak otomatik olarak oluşturulan etkinlikler dahil olmak üzere doğrudan hat konuşma bot 'a ulaşan tüm etkinliklerde desteklenen çok çeşitli alanları önceden doldurmak için kullanılır.
  - Şimdi TTS, kimlik doğrulaması için abonelik anahtarını kullanır, birleştirici oluşturulduktan sonra ilk sende ilk bayt gecikme süresini azaltır.
- - Ortalama% 18,6 bir sözcük hata oranı azalmasıyla ilgili 19 yerel ayar için konuşma tanıma modelleri güncelleştirildi (ES-ES, es-MX, fr-CA, fr-FR, It-IT, ja-JP, ko-KR, PT-BR, zh-CN, zh-HK,, NB-NO, Fi-FL, ru-RU, PL-PL, CA-ES, zh-TW, TH-, Yeni modeller, dikte etme, çağrı merkezi dökümü ve video dizin oluşturma senaryoları dahil olmak üzere birden çok etki alanı arasında önemli geliştirmeler getirir.
+ - Ortalama% 18,6 bir sözcük hata oranı azalmasıyla ilgili 19 yerel ayar için konuşma tanıma modelleri güncelleştirildi (ES-ES, es-MX, fr-CA, fr-FR, It-IT, ja-JP, ko-KR, PT-BR, zh-CN, zh-HK,, NB-NO, Fi-FL, ru-RU, PL-PL, CA-ES, zh-TW, TH-, Yeni modeller, dikte, Call-Center döküm ve video dizin oluşturma senaryoları dahil olmak üzere birden çok etki alanı arasında önemli geliştirmeler sunar.
 
 **Hata düzeltmeleri**
 

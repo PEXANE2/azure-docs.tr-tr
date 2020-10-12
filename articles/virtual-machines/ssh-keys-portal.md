@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2020
 ms.author: cynthn
 ms.openlocfilehash: abc9a2ae130d987c90ce87ffaecbf2bb44b06010
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88929456"
 ---
 # <a name="generate-and-store-ssh-keys-in-the-azure-portal"></a>Azure portal SSH anahtarları oluşturma ve depolama
@@ -48,7 +48,7 @@ Linux VM 'Leri ile SSH anahtarları oluşturma ve kullanma hakkında daha ayrın
 
 1. Ardından, için bir açılır pencere alacaksınız, **özel anahtarı indir ve kaynak oluştur**' u seçin. Bu işlem SSH anahtarını bir. pek dosyası olarak indirir.
 
-   :::image type="content" source="./media/ssh-keys/download-key.png" alt-text="Özel anahtarı bir. pek dosyası olarak indirin":::
+   :::image type="content" source="./media/ssh-keys/download-key.png" alt-text="Yeni bir kaynak grubu oluştur ve bir SSH anahtar çifti oluştur":::
 
 1. . Pek dosyası indirildikten sonra, bilgisayarınıza SSH istemcinizden kolayca işaret etmek için daha kolay bir yere taşımak isteyebilirsiniz.
 
@@ -74,7 +74,7 @@ Ayrıca, Azure 'da depolanacak ortak bir SSH anahtarını da yükleyebilirsiniz.
 
 1. **SSH anahtarı** sayfasında **Oluştur**' u seçin.
 
-   :::image type="content" source="./media/ssh-keys/upload.png" alt-text="Azure 'da depolanacak SSH ortak anahtarını karşıya yükleme":::
+   :::image type="content" source="./media/ssh-keys/upload.png" alt-text="Yeni bir kaynak grubu oluştur ve bir SSH anahtar çifti oluştur":::
 
 1. Anahtarlarınızın depolandığı yeni bir kaynak grubu oluşturmak için **kaynak grubu** ' nda **Yeni oluştur** ' u seçin. Kaynak grubunuz için bir ad yazın ve **Tamam**' ı seçin.
 
@@ -98,7 +98,7 @@ Portalda oluşturulan SSH anahtarları kaynak olarak depolanır, bu sayede kayna
 1. Filtrelerdeki **tür**' i seçin, listeyi temizlemek Için **Tümünü Seç** seçeneğinin seçimini kaldırın.
 1. Filtreye **SSH** yazın ve **SSH anahtarı**' nı seçin.
 
-   :::image type="content" source="./media/ssh-keys/filter.png" alt-text="Tüm SSH anahtarlarınızı görmek için listenin nasıl filtreleneceği ekran görüntüsü.":::
+   :::image type="content" source="./media/ssh-keys/filter.png" alt-text="Yeni bir kaynak grubu oluştur ve bir SSH anahtar çifti oluştur":::
 
 ## <a name="get-the-public-key"></a>Ortak anahtarı al
 

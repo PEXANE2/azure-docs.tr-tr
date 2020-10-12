@@ -10,10 +10,10 @@ ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: 512d05b245f1279a977ba61d5b4c4904fc0f6bf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77202131"
 ---
 Blob giriş bağlaması için aşağıdaki parametre türlerini kullanabilirsiniz:
@@ -29,7 +29,7 @@ Blob giriş bağlaması için aşağıdaki parametre türlerini kullanabilirsini
 * `CloudPageBlob`<sup>1</sup>
 * `CloudAppendBlob`<sup>1</sup>
 
-<sup>1</sup> `direction` , bir C# sınıf kitaplığındaki veya *üzerindefunction.js* "Inout" bağlamasını gerektirir `FileAccess.ReadWrite` .
+<sup>1</sup> `direction` , bir C# sınıf kitaplığındaki veya * üzerindefunction.js* "Inout" bağlamasını gerektirir `FileAccess.ReadWrite` .
 
 Depolama SDK türlerinden birini bağlamaya çalışırsanız ve bir hata iletisi alırsanız, [doğru depolama SDK sürümüne](../articles/azure-functions/functions-bindings-storage-blob.md#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: 3ea9d7baf427e70df349c926a0b6b8b72ba82293
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81416862"
 ---
 # <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>Azure Data Factory kullanarak Oracle Eloqua 'tan veri kopyalama (Önizleme)
@@ -49,13 +49,13 @@ Oracle Eloqua Linked Service için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **Eloqua** olarak ayarlanmalıdır | Yes |
-| endpoint | Eloqua sunucusunun uç noktası. Eloqua birden çok veri merkezini destekler, uç noktanızı tespit etmek için https://login.eloqua.com kimlik bilgilerinizi kullanarak oturum açın ve ardından, yeniden YÖNLENDIRILEN URL 'den **temel URL** bölümünü, düzeniyle kopyalayın `xxx.xxx.eloqua.com` . | Yes |
-| kullanıcı adı | Eloqua hesabınızın Site adı ve Kullanıcı adı şu biçimdedir: `SiteName\Username` ör `Eloqua\Alice` .  | Yes |
-| password | Kullanıcı adına karşılık gelen parola. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
-| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | No |
-| Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | No |
-| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | No |
+| tür | Type özelliği: **Eloqua** olarak ayarlanmalıdır | Evet |
+| endpoint | Eloqua sunucusunun uç noktası. Eloqua birden çok veri merkezini destekler, uç noktanızı tespit etmek için https://login.eloqua.com kimlik bilgilerinizi kullanarak oturum açın ve ardından, yeniden YÖNLENDIRILEN URL 'den **temel URL** bölümünü, düzeniyle kopyalayın `xxx.xxx.eloqua.com` . | Evet |
+| username | Eloqua hesabınızın Site adı ve Kullanıcı adı şu biçimdedir: `SiteName\Username` ör `Eloqua\Alice` .  | Evet |
+| password | Kullanıcı adına karşılık gelen parola. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
+| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | Hayır |
 
 **Örnek:**
 
@@ -84,7 +84,7 @@ Oracle Eloqua 'tan veri kopyalamak için, veri kümesinin Type özelliğini **El
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **Eloquaobject** | Yes |
+| tür | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **Eloquaobject** | Evet |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -114,7 +114,7 @@ Oracle Eloqua 'tan veri kopyalamak için kopyalama etkinliğindeki kaynak türü
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **Eloquasource** olarak ayarlanmalıdır | Yes |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **Eloquasource** olarak ayarlanmalıdır | Evet |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM Accounts"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
 **Örnek:**

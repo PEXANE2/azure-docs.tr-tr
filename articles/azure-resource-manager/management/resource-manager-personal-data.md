@@ -4,10 +4,10 @@ description: Azure Resource Manager işlemleriyle ilişkili kişisel verileri y�
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.openlocfilehash: 22cfc1b6096980f3d10db404a1c4e02f2de355d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75485266"
 ---
 # <a name="manage-personal-data-associated-with-azure-resource-manager"></a>Azure Resource Manager ilişkili kişisel verileri yönetme
@@ -30,7 +30,7 @@ Geçmişteki **dağıtımları** listelemek için şunu kullanın:
 
 **Dağıtım** geçmişinden silmek için şunu kullanın:
 
-* [Sil](/rest/api/resources/deployments/delete)
+* [Silme](/rest/api/resources/deployments/delete)
 * [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/Remove-AzResourceGroupDeployment)
 * [az Group Deployment Delete](/cli/azure/group/deployment#az-group-deployment-delete)
 
@@ -46,7 +46,7 @@ Kaynak grubunun adı, kaynak grubunu silene kadar devam ettirir. Adlarında kiş
 
 **Kaynak gruplarını**silmek için şunu kullanın:
 
-* [Sil](/rest/api/resources/resourcegroups/delete)
+* [Silme](/rest/api/resources/resourcegroups/delete)
 * [Remove-AzResourceGroup](/powershell/module/az.resources/Remove-AzResourceGroup)
 * [az group delete](/cli/azure/group#az-group-delete)
 
@@ -62,7 +62,7 @@ Etiket adları ve değerleri, etiketi silene veya değiştirene kadar kalır. Et
 
 **Etiketleri**silmek için şunu kullanın:
 
-* [Sil](/rest/api/resources/tags/delete)
+* [Silme](/rest/api/resources/tags/delete)
 * [Remove-AzTag](/powershell/module/az.resources/Remove-AzTag)
 * [az Tag Delete](/cli/azure/tag#az-tag-delete)
 

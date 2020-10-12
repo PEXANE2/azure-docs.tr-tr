@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.openlocfilehash: fb907e0b9c923a77c6956723f6df397fabd84da8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86523987"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Translator v2-v3 geçişine
@@ -30,7 +30,7 @@ Bu belgenin sonu, daha fazla bilgi edinmek için yararlı bağlantılar içerir.
 
 ## <a name="summary-of-features"></a>Özelliklerin özeti
 
-* Hiçbir Trace-of v3 No-Trace, Azure portal tüm fiyatlandırma katmanları için geçerlidir. Bu özellik, v3 API 'sine gönderilen metinlerin Microsoft tarafından kaydedileceği anlamına gelir.
+* Hiçbir Izleme v3 No-Trace, Azure portal tüm fiyatlandırma katmanlarına uygulanır. Bu özellik, v3 API 'sine gönderilen metinlerin Microsoft tarafından kaydedileceği anlamına gelir.
 * JSON-XML dosyası JSON ile değiştirilmiştir. Hizmete gönderilen ve hizmetten alınan tüm veriler JSON biçimindedir.
 * Tek bir istekte birden çok hedef dil-çevirme yöntemi, tek bir istekteki çeviri için birden fazla ' to ' dillerini kabul eder. Örneğin, tek bir istek ' Ingilizce ve '-' Almanca, Ispanyolca ve Japonca ya da başka bir dil grubu olabilir.
 * İki dilli sözlük-API 'ye iki dilli sözlük yöntemi eklenmiştir. Bu yöntem ' Lookup ' ve ' örnekler ' içerir.
@@ -118,8 +118,8 @@ V3 metin API 'SI ile sinir çevirisi, standart kategorilerin (SMT, konuşma, tek
 
 | Sürüm | Uç Noktası | GDPR Işlemci uyumluluğu | Çevirmen hub 'ı kullan | Özel çevirici kullan (Önizleme) |
 | :------ | :------- | :------------------------ | :----------------- | :------------------------------ |
-|Translator sürüm 2|    api.microsofttranslator.com|    Hayır    |Yes    |Hayır|
-|Translator sürümü 3|    api.cognitive.microsofttranslator.com|    Yes|    Hayır|    Yes|
+|Translator sürüm 2|    api.microsofttranslator.com|    Hayır    |Evet    |Hayır|
+|Translator sürümü 3|    api.cognitive.microsofttranslator.com|    Evet|    Hayır|    Evet|
 
 **Translator sürümü 3**
 * Genel olarak kullanılabilir ve tamamen desteklenir.
@@ -141,7 +141,7 @@ Api.cognitive.microsofttranslator.com uç noktasını kullanıyorsanız, çeviri
 
 * [Microsoft Gizlilik İlkesi](https://privacy.microsoft.com/privacystatement)
 * [Yasal bilgileri Microsoft Azure](https://azure.microsoft.com/support/legal)
-* [Çevrimiçi hizmet koşulları](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
+* [Çevrimiçi Hizmet Şartları](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,10 +7,10 @@ ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
 ms.openlocfilehash: 52a74593fcfbdc2c1e464077e4ae460f6a5a9c39
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87852404"
 ---
 # <a name="understand-migration-options-to-newer-alerts"></a>Geçiş seçeneklerini daha yeni uyarılara anlayın
@@ -123,7 +123,7 @@ Aşağıdaki bölümlerde, yeni sistemde farklı, eşdeğer bir ölçüme sahip 
 
 Blob, tablo, dosya ve kuyruk gibi depolama hesabı Hizmetleri için aşağıdaki ölçümler aşağıda gösterildiği gibi eşdeğer ölçümlere eşlenir:
 
-| Klasik uyarılarda ölçüm | Yeni uyarılardaki eşdeğer ölçüm | Açıklamalar|
+| Klasik uyarılarda ölçüm | Yeni uyarılardaki eşdeğer ölçüm | Yorumlar|
 |--------------------------|---------------------------------|---------|
 | AnonymousAuthorizationError| "ResponseType" = "AuthorizationError" ve "Authentication" = "Anonymous" boyutlarıyla işlem ölçümü| |
 | Anonymousclienentothererror | "ResponseType" = "Clienentothererror" ve "Authentication" = "Anonymous" boyutlarıyla işlem ölçümü | |
@@ -160,7 +160,7 @@ Blob, tablo, dosya ve kuyruk gibi depolama hesabı Hizmetleri için aşağıdaki
 
 Application Insights için, eşdeğer ölçümler aşağıda gösterildiği gibidir:
 
-| Klasik uyarılarda ölçüm | Yeni uyarılardaki eşdeğer ölçüm | Açıklamalar|
+| Klasik uyarılarda ölçüm | Yeni uyarılardaki eşdeğer ölçüm | Yorumlar|
 |--------------------------|---------------------------------|---------|
 | kullanılabilirlik. Kullanılabilirbilitymetric. değer | Kullanılabilirlik sonuçları/kullanılabilirliği yüzdesi|   |
 | AVAILABILITY. durationMetric. Value | Kullanılabilirlik sonuçları/süresi| Klasik ölçüm 'in birimleri Saniyeler içinde ve yeni bir tane için milisaniye cinsinden olan özgün eşiği 1000 ile çarpın.  |
@@ -171,16 +171,16 @@ Application Insights için, eşdeğer ölçümler aşağıda gösterildiği gibi
 | clientPerformance. receiveRequest. Value | Browserzamanlamalar/receiveDuration| Klasik ölçüm 'in birimleri Saniyeler içinde ve yeni bir tane için milisaniye cinsinden olan özgün eşiği 1000 ile çarpın.  |
 | clientPerformance. sendRequest. Value | Browserzamanlamalar/sendDuration| Klasik ölçüm 'in birimleri Saniyeler içinde ve yeni bir tane için milisaniye cinsinden olan özgün eşiği 1000 ile çarpın.  |
 | clientPerformance. Total. Value | Browserzamanlamalar/totalDuration| Klasik ölçüm 'in birimleri Saniyeler içinde ve yeni bir tane için milisaniye cinsinden olan özgün eşiği 1000 ile çarpın.  |
-| performanceCounter. available_bytes. değer | performanceCounters/memoryAvailableBytes|   |
-| performanceCounter. io_data_bytes_per_sec. değer | performanceCounters/Processıobitespersecond|   |
-| performanceCounter. number_of_exceps_thrown_per_sec. değer | performanceCounters/exceptionsPerSecond|   |
-| performanceCounter. percentage_processor_time_normalized. değer | performanceCounters/processCpuPercentage|   |
-| performanceCounter. percentage_processor_time. değer | performanceCounters/processCpuPercentage| Özgün ölçüm tüm çekirdekler genelinde olduğundan ve yeni ölçüm bir çekirdeğe normalleştirildikleri için eşiğin uygun şekilde değiştirilmesi gerekir. Geçiş Aracı eşikleri değiştirmez.  |
-| performanceCounter. percentage_processor_total. değer | performanceCounters/Processorcpuyüzdesi|   |
-| performanceCounter. process_private_bytes. değer | performanceCounters/processPrivateBytes|   |
-| performanceCounter. request_execution_time. değer | performanceCounters/requestExecutionTime|   |
-| performanceCounter. requests_in_application_queue. değer | performanceCounters/Requestsınqueue|   |
-| performanceCounter. requests_per_sec. değer | performanceCounters/requestsPerSecond|   |
+| performanceCounter.available_bytes. değer | performanceCounters/memoryAvailableBytes|   |
+| performanceCounter.io_data_bytes_per_sec. değer | performanceCounters/Processıobitespersecond|   |
+| performanceCounter.number_of_exceps_thrown_per_sec. değer | performanceCounters/exceptionsPerSecond|   |
+| performanceCounter.percentage_processor_time_normalized. değer | performanceCounters/processCpuPercentage|   |
+| performanceCounter.percentage_processor_time. değer | performanceCounters/processCpuPercentage| Özgün ölçüm tüm çekirdekler genelinde olduğundan ve yeni ölçüm bir çekirdeğe normalleştirildikleri için eşiğin uygun şekilde değiştirilmesi gerekir. Geçiş Aracı eşikleri değiştirmez.  |
+| performanceCounter.percentage_processor_total. değer | performanceCounters/Processorcpuyüzdesi|   |
+| performanceCounter.process_private_bytes. değer | performanceCounters/processPrivateBytes|   |
+| performanceCounter.request_execution_time. değer | performanceCounters/requestExecutionTime|   |
+| performanceCounter.requests_in_application_queue. değer | performanceCounters/Requestsınqueue|   |
+| performanceCounter.requests_per_sec. değer | performanceCounters/requestsPerSecond|   |
 | istek. Duration | istek/süre| Klasik ölçüm 'in birimleri Saniyeler içinde ve yeni bir tane için milisaniye cinsinden olan özgün eşiği 1000 ile çarpın.  |
 | istek. oran | istek/hız|   |
 | requestFailed. Count | istek/başarısız| ' `aggregationType` Sum ' yerine ' Count ' kullanın.   |
@@ -190,7 +190,7 @@ Application Insights için, eşdeğer ölçümler aşağıda gösterildiği gibi
 
 Cosmos DB için, eşdeğer ölçümler aşağıda gösterildiği gibidir:
 
-| Klasik uyarılarda ölçüm | Yeni uyarılardaki eşdeğer ölçüm | Açıklamalar|
+| Klasik uyarılarda ölçüm | Yeni uyarılardaki eşdeğer ölçüm | Yorumlar|
 |--------------------------|---------------------------------|---------|
 | AvailableStorage     |AvailableStorage|   |
 | Veri boyutu | Veri kullanımı| |

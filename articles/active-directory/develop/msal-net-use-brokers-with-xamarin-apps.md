@@ -13,10 +13,10 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 7fa13a328a55b0e9eaa546e70bf0711f4f011cf1
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89068551"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Xamarin uygulamalarında Microsoft Authenticator veya Intune Şirket Portalı kullanma
@@ -183,7 +183,7 @@ Yeniden yönlendirme URI 'sini [Azure Portal](https://portal.azure.com)uygulaman
 
 **Yeniden yönlendirme URI 'SI oluşturmak için:**
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. **Azure Active Directory**  >  Kayıtlı uygulamanızı > Azure Active Directory**uygulama kayıtları** seçin
 1. **Kimlik doğrulama**  >  **Platform Ekle**  >  **iOS/MacOS** seçin
 1. Paket KIMLIĞINIZI girin ve ardından **Yapılandır**' ı seçin.

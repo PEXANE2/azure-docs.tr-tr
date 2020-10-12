@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 83e9ae4aa68bc0c819d02a0cc6c39758549811cb
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88928862"
 ---
 # <a name="odata-expression-syntax-reference-for-azure-cognitive-search"></a>Azure Bilişsel Arama için OData ifadesi söz dizimi başvurusu
@@ -34,7 +34,7 @@ Bu makalede, bir biçimsel dilbilgisi kullanılarak bu OData ifadelerinin tüm b
 
 ## <a name="formal-grammar"></a>Biçimsel dilbilgisi
 
-Azure Bilişsel Arama tarafından desteklenen bir EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) dilbilgisi kullanarak desteklenen OData dilinin alt kümesini açıklayabilir. Kurallar, en karmaşık ifadelerle başlayarak "yukarıdan aşağı" listelenir ve bunları daha basit ifadelere bölmek için kullanılır. En üstte Azure Bilişsel Arama REST API özgü parametrelere karşılık gelen dilbilgisi kuralları:
+Azure Bilişsel Arama tarafından desteklenen bir EBNF ([genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) dilbilgisi kullanarak desteklenen OData dilinin alt kümesini açıklayabilir. Kurallar, en karmaşık ifadelerle başlayarak "yukarıdan aşağı" listelenir ve bunları daha basit ifadelere bölmek için kullanılır. En üstte Azure Bilişsel Arama REST API özgü parametrelere karşılık gelen dilbilgisi kuralları:
 
 - [`$filter`](search-query-odata-filter.md), kural tarafından tanımlanır `filter_expression` .
 - [`$orderby`](search-query-odata-orderby.md), kural tarafından tanımlanır `order_by_expression` .

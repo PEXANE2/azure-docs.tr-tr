@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.openlocfilehash: 959a58a38861075c6509fe57136d8991eeb98ce6
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88588204"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Geliştirme ve test için Azure depolama öykünücüsünü kullanma
@@ -182,7 +182,7 @@ Sürüm 3,0 ' den başlayarak, depolama öykünücüsünü başlattığınızda 
 
 Seçenek listesini görüntülemek için komut satırına `/help` yazın.
 
-| Seçenek | Açıklama | Komut | Arguments |
+| Seçenek | Açıklama | Komut | Bağımsız değişkenler |
 | --- | --- | --- | --- |
 | **Başlangıç** |Depolama öykünücüsünü başlatır. |`AzureStorageEmulator.exe start [-inprocess]` |*-Reprocess*: yeni bir işlem oluşturmak yerine öykünücüyü geçerli işlemde başlatın. |
 | **Durdur** |Depolama öykünücüsünü sonlandırır. |`AzureStorageEmulator.exe stop` | |
@@ -323,7 +323,7 @@ Depolama öykünücüsü yerel bir Öykünülmüş ortam olduğundan, öykünüc
 ### <a name="version-30"></a>Sürüm 3,0
 
 * Azure depolama öykünücüsü artık işlem öykünücüsü ile aynı pakette yer alınmaz.
-* Depolama öykünücüsü grafik kullanıcı arabirimi kullanım dışı bırakılmıştır. Bu, betik oluşturulmuş bir komut satırı arabirimi ile değiştirilmiştir. Komut satırı arabirimi hakkında daha fazla bilgi için bkz. depolama öykünücüsü komut satırı araç başvurusu. Grafik arabirimi sürüm 3,0 ' de mevcut olmaya devam edecektir, ancak yalnızca Işlem öykünücüsü, sistem tepsisi simgesine sağ tıklayıp depolama öykünücüsü Kullanıcı arabirimini göster ' i seçerek erişilebilir.
+* Depolama öykünücüsü grafik kullanıcı arabirimi kullanım dışı bırakılmıştır. Bu, betik oluşturulmuş bir komut satırı arabirimi ile değiştirilmiştir. Komut satırı arabirimi hakkında daha fazla bilgi için bkz. depolama öykünücüsü Command-Line araç başvurusu. Grafik arabirimi sürüm 3,0 ' de mevcut olmaya devam edecektir, ancak yalnızca Işlem öykünücüsü, sistem tepsisi simgesine sağ tıklayıp depolama öykünücüsü Kullanıcı arabirimini göster ' i seçerek erişilebilir.
 * Azure Depolama hizmetlerinin 2013-08-15 sürümü artık tam olarak desteklenmektedir. (Daha önce bu sürüm yalnızca depolama öykünücü sürümü 2.2.1 Preview tarafından desteklenmektedir.)
 
 ## <a name="next-steps"></a>Sonraki adımlar

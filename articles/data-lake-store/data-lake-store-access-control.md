@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 11629338a808ae0f83ac513b6475dce7a53814da
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88190167"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. Nesil'de erişim denetimi
@@ -124,7 +124,7 @@ Bir Data Lake Storage 1. hesabı için **sahip** rolünün parçası olan tüm k
 
 ### <a name="the-owning-group"></a>Sahip olan grup
 
-**Arka plan**
+**Arka Plan**
 
 POSIX ACL’lerinde her kullanıcı bir "birincil grup" ile ilişkilendirilir. Örneğin, "gamze" adlı kullanıcı "finans" grubuna ait olabilir. Gamze ayrıca birden fazla gruba ait olabilir, ancak bir grup her zaman birincil grubu olarak atanır. POSIX’te Gamze bir dosya oluşturduğunda o dosyanın sahibi olan grup birincil grubu olarak ayarlanır (bu örnekte "finans" grubudur). Aksi takdirde sahip olan grup, diğer kullanıcılar/gruplar için atanan izinlere benzer şekilde davranır.
 
@@ -222,8 +222,8 @@ Azure Data Lake Storage 1. için umask, 007 olarak ayarlanan sabit bir değerdir
 
 | umask bileşeni     | Sayısal biçim | Kısa biçim | Anlamı |
 |---------------------|--------------|------------|---------|
-| umask. owning_user   |    0         |   `---`      | Sahip olan kullanıcı için, üst öğenin varsayılan ACL 'sini alt öğenin erişim ACL 'sine kopyalayın | 
-| umask. owning_group  |    0         |   `---`      | Sahip olan grup için üst öğenin varsayılan ACL 'sini alt öğenin erişim ACL 'sine kopyalayın | 
+| umask.owning_user   |    0         |   `---`      | Sahip olan kullanıcı için, üst öğenin varsayılan ACL 'sini alt öğenin erişim ACL 'sine kopyalayın | 
+| umask.owning_group  |    0         |   `---`      | Sahip olan grup için üst öğenin varsayılan ACL 'sini alt öğenin erişim ACL 'sine kopyalayın | 
 | uımask. other         |    7         |   `RWX`      | Diğer bir deyişle, alt öğenin erişim ACL 'sindeki tüm izinleri kaldırın |
 
 Azure Data Lake Storage 1. tarafından kullanılan umask değeri, varsayılan ACL 'nin gösterdiği değerden bağımsız olarak, diğer alt klasörlerde hiçbir şekilde varsayılan olarak iletilmediği anlamına gelir. 

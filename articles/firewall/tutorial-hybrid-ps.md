@@ -9,10 +9,10 @@ ms.date: 08/28/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
 ms.openlocfilehash: a91d0e11c44657a2d4cdd267ffa6490ca89532a9
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89069417"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Azure PowerShell kullanarak hibrit bir ağda Azure Güvenlik Duvarı'nı dağıtma ve yapılandırma
@@ -46,7 +46,7 @@ Bu öğreticiyi tamamlayabilmeniz için Azure portal kullanmak istiyorsanız, bk
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makale, PowerShell 'i yerel olarak çalıştırmanızı gerektirir. Azure PowerShell modülünün yüklü olması gerekir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-Az-ps). PowerShell sürümünü doğruladıktan sonra, Azure ile bağlantı oluşturmak için `Login-AzAccount` komutunu çalıştırın.
 
@@ -282,7 +282,7 @@ New-AzVirtualNetworkGatewayConnection -Name $ConnectionNameHub -ResourceGroupNam
 -VirtualNetworkGateway1 $vnetHubgw -VirtualNetworkGateway2 $vnetOnpremgw -Location $Location1 `
 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
 ```
-Şirket içinden hub 'a sanal ağ bağlantısını oluşturun. Bu adım, VNet-Onpree ile VNet hub 'ına bağlantı oluşturmanız dışında öncekiyle benzerdir. Paylaşılan anahtarların eşleştiğinden emin olun. Bağlantı birkaç dakika içerisinde kurulacaktır.
+Şirket içinden hub 'a sanal ağ bağlantısını oluşturun. Bu adım öncekiyle benzerdir, çünkü VNet-Onprem sanal ağdan VNet hub 'ına bağlantı oluşturmanız gerekir. Paylaşılan anahtarların eşleştiğinden emin olun. Bağlantı birkaç dakika içerisinde kurulacaktır.
 
   ```azurepowershell
   New-AzVirtualNetworkGatewayConnection -Name $ConnectionNameOnprem -ResourceGroupName $RG1 `

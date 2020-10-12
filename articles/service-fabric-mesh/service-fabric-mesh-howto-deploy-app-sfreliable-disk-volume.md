@@ -7,10 +7,10 @@ ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter
 ms.openlocfilehash: f26fe70afe7d9e2872f06ac6da7143556278b1b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75497959"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>Yüksek oranda kullanılabilir Service Fabric Service Fabric bir kafes uygulamasında güvenilir disk tabanlı birim bağlama 
@@ -23,7 +23,7 @@ Bu örnekte, sayaç uygulamasının bir tarayıcıda sayaç değerini gösteren 
 
 `counterService`Düzenli aralıklarla bir dosyadaki sayaç değerini okur, artırır ve dosyaya geri yazar. Dosya, Service Fabric güvenilir disk tarafından desteklenen birimde takılı bir klasörde depolanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu görevi gerçekleştirmek için Azure Cloud Shell veya yerel bir Azure CLı yüklemesi kullanabilirsiniz. Azure CLı 'yi bu makaleyle birlikte kullanmak için, `az --version` en azından döndürdüğünden emin olun `azure-cli (2.0.43)` .  Bu [yönergeleri](service-fabric-mesh-howto-setup-cli.md)izleyerek Azure SERVICE fabrıc kafes CLI uzantısı modülünü yükler (veya güncelleştirir).
 
@@ -46,7 +46,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-Aşağıdaki komut, [şablonundakicounter.sfreliablevolume.linux.js](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.linux.json)kullanarak bir Linux uygulaması dağıtır. Bir Windows uygulamasını dağıtmak için [şablondacounter.sfreliablevolume.windows.js](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.windows.json)kullanın. Daha büyük kapsayıcı görüntülerinin dağıtmanın daha uzun sürebildiği farkında olun.
+Aşağıdaki komut, [ şablonundakicounter.sfreliablevolume.linux.js](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.linux.json)kullanarak bir Linux uygulaması dağıtır. Bir Windows uygulamasını dağıtmak için [ şablondacounter.sfreliablevolume.windows.js](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.windows.json)kullanın. Daha büyük kapsayıcı görüntülerinin dağıtmanın daha uzun sürebildiği farkında olun.
 
 ```azurecli-interactive
 az mesh deployment create --resource-group myResourceGroup --template-uri https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/counter/counter.sfreliablevolume.linux.json

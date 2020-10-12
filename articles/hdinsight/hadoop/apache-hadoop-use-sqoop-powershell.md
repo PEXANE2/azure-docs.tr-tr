@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
 ms.openlocfilehash: 3f8a5bdc9e1240303216df1dec31c78a560c55eb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87086503"
 ---
 # <a name="run-apache-sqoop-jobs-with-azure-powershell-in-hdinsight"></a>HDInsight 'ta Azure PowerShell Apache Sqoop işleri çalıştırma
@@ -277,7 +277,7 @@ Linux tabanlı HDInsight aşağıdaki sınırlamaları sunar:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Şimdi Sqoop 'yi nasıl kullanacağınızı öğrendiniz. Daha fazla bilgi için bkz:
+Şimdi Sqoop 'yi nasıl kullanacağınızı öğrendiniz. Daha fazla bilgi edinmek için şu makalelere bakın:
 
 * [HDInsight Ile Apache Oozie kullanma](../hdinsight-use-oozie-linux-mac.md): bir Oozie Iş akışında Sqoop eylemini kullanın.
 * [HDInsight 'a veri yükleme](../hdinsight-upload-data.md): HDInsight 'A veya Azure Blob depolamaya veri yüklemek için diğer yöntemleri bulun.

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 06/12/2020
 ms.author: apimpm
 ms.openlocfilehash: 8a7fa295bdc8881c0c1ba58c95872a9380231b81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85558028"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Azure API Management Yönetilen kimlikler kullanma
@@ -35,7 +35,7 @@ Azure portal yönetilen bir kimlik ayarlamak için, önce bir API Management ör
 
 1. Portalda genellikle yaptığınız gibi bir API Management örneği oluşturun. Portalda buna gidin.
 2. **Yönetilen kimlikler**' i seçin.
-3. **Sistem atandı** sekmesinde **durumu** **Açık**olarak değiştirin. **Kaydet**'i seçin.
+3. **Sistem atandı** sekmesinde **durumu** **Açık**olarak değiştirin. **Kaydet**’i seçin.
 
     :::image type="content" source="./media/api-management-msi/enable-system-msi.png" alt-text="Sistem tarafından atanan yönetilen kimliği etkinleştirme seçimleri" border="true":::
 
@@ -279,9 +279,9 @@ Portalda yönetilen bir kimlik ayarlamak için önce bir API Management örneği
 1. Portalda genellikle yaptığınız gibi bir API Management örneği oluşturun. Portalda buna gidin.
 2. **Yönetilen kimlikler**' i seçin.
 3. **Kullanıcı atandı** sekmesinde **Ekle**' yi seçin.
-4. Daha önce oluşturduğunuz kimliği arayın ve seçin. **Ekle**'yi seçin.
+4. Daha önce oluşturduğunuz kimliği arayın ve seçin. **Ekle**’yi seçin.
 
-   :::image type="content" source="./media/api-management-msi/enable-user-assigned-msi.png" alt-text="Kullanıcı tarafından atanan yönetilen kimliği etkinleştirme seçimleri" border="true":::
+   :::image type="content" source="./media/api-management-msi/enable-user-assigned-msi.png" alt-text="Sistem tarafından atanan yönetilen kimliği etkinleştirme seçimleri" border="true":::
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 

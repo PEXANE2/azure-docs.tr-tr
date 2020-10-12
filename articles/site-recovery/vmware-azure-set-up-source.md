@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
 ms.openlocfilehash: afd3979690b8952c915a49099ee04b3d416031fd
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88189741"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>VMware 'den Azure 'a çoğaltma için kaynak ortamı ayarlama
@@ -33,7 +33,7 @@ Makalesinde zaten sahip olduğunuz varsayılır:
 2. **Başlarken** bölümünde Site Recovery’yi seçin. Daha sonra **Altyapıyı Hazırlama**’yı seçin.
 3. Makinelerinizin bulunduğu **koruma hedefi**bölümünde  >  **Where are your machines located** **Şirket içi**' ı seçin.
 4. **Makinelerinizi nereye çoğaltmak istiyorsunuz** bölümünde **Azure’a** seçeneğini belirleyin.
-5. **Makineleriniz sanallaştırıldı mı** bölümünde **Evet, VMware vSphere Hypervisor ile** seçeneğini belirleyin. Ardından **Tamam**’ı seçin.
+5. **Makineleriniz sanallaştırıldı mı** bölümünde **Evet, VMware vSphere Hypervisor ile** seçeneğini belirleyin. Ardından **Tamam**'ı seçin.
 
 ## <a name="set-up-the-configuration-server"></a>Yapılandırma sunucusunu ayarlama
 

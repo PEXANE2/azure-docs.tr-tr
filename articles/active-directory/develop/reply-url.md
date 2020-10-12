@@ -12,10 +12,10 @@ ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.openlocfilehash: bd6f88db2b55a5f0f445659e4b5ef609d3e146e9
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90030319"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Yeniden yönlendirme URI 'SI (yanıt URL 'SI) kısıtlamaları ve sınırlamaları
@@ -32,7 +32,7 @@ Yeniden yönlendirme URI 'SI veya yanıt URL 'SI, uygulama başarıyla yetkilend
 
 Bu tablo, Microsoft Identity platformunda bir uygulama kaydına ekleyebileceğiniz en fazla yeniden yönlendirme URI sayısını gösterir.
 
-| Oturum açan hesaplar | Maksimum yeniden yönlendirme URI sayısı | Description |
+| Oturum açan hesaplar | Maksimum yeniden yönlendirme URI sayısı | Açıklama |
 |--------------------------|---------------------------------|-------------|
 | Herhangi bir kuruluşun Azure Active Directory (Azure AD) kiracısındaki Microsoft iş veya okul hesapları | 256 | `signInAudience`uygulama bildirimindeki alan *Azureadmyorg* ya da *Azureadmultipleorgs* olarak ayarlandı |
 | Kişisel Microsoft hesapları ve iş ve okul hesapları | 100 | `signInAudience`uygulama bildirimindeki alan *Azureadandpersonmicrosoftaccount* olarak ayarlandı |

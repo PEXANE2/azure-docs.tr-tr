@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 43006456142728287ddf4adba1fbb9b45f5ccc89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85211978"
 ---
 # <a name="manage-and-monitor-workload-importance-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te iş yükü önemini yönetme ve izleme
@@ -24,7 +24,7 @@ DMVs ve katalog görünümlerini kullanarak Azure SYNAPSE 'de SYNAPSE SQL istek 
 
 ## <a name="monitor-importance"></a>Önemli izleme
 
-[Sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dinamik yönetim görünümündeki yeni önem sütununu kullanarak önem derecesini izleyin.
+[Sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dinamik yönetim görünümündeki yeni önem sütununu kullanarak önem derecesini izleyin.
 Aşağıdaki izleme sorgusunda sorgular için gönderme zamanı ve başlangıç saati gösterilmektedir. Zamanlamanın planlanmasının nasıl yapıldığını görmek için önem derecesine sahip gönderme süresini ve başlangıç saatini gözden geçirin.
 
 ```sql
@@ -39,7 +39,7 @@ Sorguların zamanlamaya göre daha ayrıntılı bir şekilde bakmak için katalo
 
 ## <a name="manage-importance-with-catalog-views"></a>Katalog görünümleriyle önemi yönetme
 
-Sys. workload_management_workload_classifiers Katalog görünümü sınıflandırıcılerle ilgili bilgiler içerir. Kaynak sınıflarıyla eşlenen sistem tarafından tanımlanan sınıflandırıcıları dışlamak için aşağıdaki kodu yürütün:
+Sys.workload_management_workload_classifiers Katalog görünümü sınıflandırıcılerle ilgili bilgiler içerir. Kaynak sınıflarıyla eşlenen sistem tarafından tanımlanan sınıflandırıcıları dışlamak için aşağıdaki kodu yürütün:
 
 ```sql
 SELECT *
@@ -47,7 +47,7 @@ SELECT *
   WHERE classifier_id > 12
 ```
 
-[Sys. workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)Katalog görünümü sınıflandırıcının oluşturulmasında kullanılan parametrelerle ilgili bilgiler içerir.  Aşağıdaki sorgu, ExecReportsClassifier 'in ```membername``` Executıvereports değerleri için parametresinde oluşturulduğunu gösterir:
+[Sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)Katalog görünümü, sınıflandırıcının oluşturulmasında kullanılan parametrelerle ilgili bilgiler içerir.  Aşağıdaki sorgu, ExecReportsClassifier 'in ```membername``` Executıvereports değerleri için parametresinde oluşturulduğunu gösterir:
 
 ```sql
 SELECT c.name,cd.classifier_type, classifier_value

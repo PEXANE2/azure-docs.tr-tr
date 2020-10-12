@@ -20,19 +20,19 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 83ab2c6b97435ace0d2bc508cbf522600391b60b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88926839"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de OData $orderby söz dizimi
 
  Azure Bilişsel Arama arama sonuçları için özel bir sıralama düzeni uygulamak üzere [OData **$OrderBy** parametresini](query-odata-filter-orderby-syntax.md) kullanabilirsiniz. Bu makalede **$OrderBy** sözdizimi ayrıntılı olarak açıklanmaktadır. Arama sonuçlarını sunarken **$OrderBy** kullanma hakkında daha fazla genel bilgi için bkz. [Azure bilişsel arama arama sonuçlarıyla çalışma](search-pagination-page-layout.md).
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Sözdizimi
 
-**$OrderBy** parametresi, en fazla 32 **sıra ölçütü yan tümceleri**olan virgülle ayrılmış bir liste kabul eder. Order by yan tümcesinin sözdizimi aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) tarafından açıklanmıştır:
+**$OrderBy** parametresi, en fazla 32 **sıra ölçütü yan tümceleri**olan virgülle ayrılmış bir liste kabul eder. Order by yan tümcesinin sözdizimi aşağıdaki EBNF ([genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) tarafından açıklanmıştır:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 

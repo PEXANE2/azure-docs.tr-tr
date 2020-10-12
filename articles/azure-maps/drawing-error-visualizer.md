@@ -9,17 +9,17 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: b3f9451a5ffd13c67232107d8db1e2da4a3891ec
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86524752"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>Azure haritalar çizim hatası Görselleştiricisini Kullanma
 
 Çizim hatası görselleştiricisi çizim [paketi uyarılarını ve](drawing-conversion-error-codes.md) dönüştürme işlemi sırasında algılanan hataları görüntüleyen tek başına bir Web uygulamasıdır. Hata görselleştiricisi Web uygulaması, internet 'e bağlanmadan kullanabileceğiniz bir statik sayfadan oluşur.  Hata Görselleştiriciyi, [Çizim paketi gereksinimlerine](drawing-requirements.md)uygun olarak hataları ve uyarıları onarmak için kullanabilirsiniz. [Azure haritalar dönüştürme API 'si](https://docs.microsoft.com/rest/api/maps/conversion) yalnızca bir hata algılandığında yalnızca hata görselleştiricisi bağlantısı olan bir yanıt döndürür.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Çizim hatası Görselleştiricisini indirebilmeniz için önce şunları yapmanız gerekir:
 
@@ -80,13 +80,13 @@ _index.html_ dosyasını, ilgili sürüm numarasıyla aşağıdaki tarayıcılar
 
 :::image type="content" source="./media/drawing-errors-visualizer/start-page.png" alt-text="Hata görselleştiricisi uygulaması çizme-başlangıç sayfası":::
 
-Dosyadaki _ConversionWarningsAndErrors.js_ indirilen dizinin köküne yerleştirildi. _ConversionWarningsAndErrors.js_ yüklemek için dosyayı sürükleyerek & sürükleyip kutuya bırakabilir veya kutuya tıklayabilir, dosya Gezgini iletişim kutusunda dosyayı bulabilir ve sonra dosyayı karşıya yükleyebilirsiniz.
+Dosyadaki  _ConversionWarningsAndErrors.js_ indirilen dizinin köküne yerleştirildi. _ConversionWarningsAndErrors.js_ yüklemek için dosyayı sürükleyerek & sürükleyip kutuya bırakabilir veya kutuya tıklayabilir, dosya Gezgini iletişim kutusunda dosyayı bulabilir ve sonra dosyayı karşıya yükleyebilirsiniz.
 
-:::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="Hata görselleştiricisi uygulaması çizme-verileri yüklemek için sürükle ve bırak":::
+:::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="Hata görselleştiricisi uygulaması çizme-başlangıç sayfası":::
 
 Dosya _ConversionWarningsAndErrors.js_ yüklendikten sonra, çizim paketinizin hatalarının ve uyarılarının bir listesini görürsünüz. Her hata veya uyarı katman, düzey ve ayrıntılı bir ileti tarafından belirtilir. Bir hata veya uyarı hakkındaki ayrıntılı bilgileri görüntülemek için **Ayrıntılar** bağlantısına tıklayın. Daha sonra listenin altında bir ıntractable bölümü görüntülenir. Artık hatanın nasıl çözüleceği hakkında daha fazla bilgi edinmek için her bir hataya gidebilirsiniz.
 
-:::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="Hata görselleştiricisi uygulaması çizme-hatalar ve uyarılar":::
+:::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="Hata görselleştiricisi uygulaması çizme-başlangıç sayfası":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

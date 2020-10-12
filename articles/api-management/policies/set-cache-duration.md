@@ -1,7 +1,7 @@
 ---
 title: Örnek API yönetimi ilkesi-yanıt önbelleği süresini ayarlama
 titleSuffix: Azure API Management
-description: Azure API Management ilkesi örneği-yanıt önbelleği süresinin, arka uç tarafından gönderilen Cache-Control üstbilgisinde maxAge değeri kullanılarak nasıl ayarlanacağını gösterir.
+description: Azure API Management ilkesi örneği-arka uç tarafından gönderilen Cache-Control üst bilgisinde maxAge değeri kullanarak yanıt önbelleği süresinin nasıl ayarlanacağını gösterir.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: 3101c5695272e8fa6b577ad313897cbc1fa29629
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75442390"
 ---
 # <a name="set-response-cache-duration"></a>Yanıt önbellek süresini ayarlama
 
-Bu makalede, yanıt önbelleği süresinin, arka uç tarafından gönderilen Cache-Control üstbilgisinde maxAge değeri kullanılarak nasıl ayarlanacağı gösterilmektedir. Bir ilke kodu ayarlamak veya düzenlemek için, [Ilke ayarlama veya düzenleme](../set-edit-policies.md)bölümünde açıklanan adımları izleyin. Diğer örnekleri görmek için bkz. [ilke örnekleri](../policy-samples.md).
+Bu makalede, arka uç tarafından gönderilen Cache-Control üst bilgisinde maxAge değeri kullanarak yanıt önbelleği süresinin nasıl ayarlanacağını gösteren bir Azure API yönetim ilkesi örneği gösterilmektedir. Bir ilke kodu ayarlamak veya düzenlemek için, [Ilke ayarlama veya düzenleme](../set-edit-policies.md)bölümünde açıklanan adımları izleyin. Diğer örnekleri görmek için bkz. [ilke örnekleri](../policy-samples.md).
 
 ## <a name="policy"></a>İlke
 

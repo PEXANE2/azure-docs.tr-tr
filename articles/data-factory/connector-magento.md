@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
 ms.openlocfilehash: 2e27c54b6d5a95de92f77e61f5a1e11e1fd53ee5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81416913"
 ---
 # <a name="copy-data-from-magento-using-azure-data-factory-preview"></a>Azure Data Factory kullanarak Magento 'tan veri kopyalama (Önizleme)
@@ -49,12 +49,12 @@ Aşağıdaki özellikler Magento bağlı hizmeti için desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **Magento** olarak ayarlanmalıdır | Yes |
-| konak | Magento örneğinin URL 'SI. (yani, 192.168.222.110/magento3)  | Yes |
-| accessToken | Magento adresinden erişim belirteci. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
-| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | No |
-| Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | No |
-| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | No |
+| tür | Type özelliği: **Magento** olarak ayarlanmalıdır | Evet |
+| konak | Magento örneğinin URL 'SI. (yani, 192.168.222.110/magento3)  | Evet |
+| accessToken | Magento adresinden erişim belirteci. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
+| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | Hayır |
 
 **Örnek:**
 
@@ -85,7 +85,7 @@ Magento öğesinden veri kopyalamak için, veri kümesinin Type özelliğini **M
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | DataSet 'in Type özelliği: **MagentoObject** olarak ayarlanmalıdır | Yes |
+| tür | DataSet 'in Type özelliği: **MagentoObject** olarak ayarlanmalıdır | Evet |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -115,7 +115,7 @@ Magento adresinden veri kopyalamak için kopyalama etkinliğindeki kaynak türü
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **MagentoSource** olarak ayarlanmalıdır | Yes |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **MagentoSource** olarak ayarlanmalıdır | Evet |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM Customers"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
 **Örnek:**

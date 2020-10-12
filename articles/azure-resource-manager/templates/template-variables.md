@@ -4,17 +4,17 @@ description: Azure Resource Manager şablonunda değişkenlerin nasıl tanımlan
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.openlocfilehash: cf135959d30702ea58b7a1d4fdd82625a39245d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75483823"
 ---
-# <a name="variables-in-azure-resource-manager-template"></a>Azure Resource Manager şablondaki değişkenler
+# <a name="variables-in-azure-resource-manager-template"></a>Azure Resource Manager şablonundaki değişkenler
 
 Bu makalede Azure Resource Manager şablonunuzda değişkenlerin nasıl tanımlanacağı ve kullanılacağı açıklanmaktadır. Şablonunuzu basitleştirmek için değişkenler kullanırsınız. Şablonunuz genelinde karmaşık ifadeler yinelemek yerine, karmaşık ifadeyi içeren bir değişken tanımlarsınız. Daha sonra, bu değişkene şablonunuz için gereken şekilde başvurmanız gerekir.
 
-Kaynak Yöneticisi, dağıtım işlemlerini başlatmadan önce değişkenleri çözer. Değişkenin şablonda kullanıldığı her yerde, Kaynak Yöneticisi çözümlenme değeriyle değiştirilir.
+Kaynak Yöneticisi, dağıtım işlemlerini başlatmadan önce değişkenleri çözer. Değişken şablonun herhangi bir yerinde kullanıldığında Resource Manager bu değişkenin yerine çözümlenen değeri koyar.
 
 ## <a name="define-variable"></a>Değişken tanımla
 

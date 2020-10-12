@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
 ms.openlocfilehash: b483317960409fe1fbea181706f12375606fe659
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75445746"
 ---
 # <a name="recommendations-for-tagging-and-versioning-container-images"></a>Kapsayıcı görüntülerini etiketleme ve sürüm oluşturma önerileri
@@ -29,7 +29,7 @@ Kapsayıcı görüntüleri bir kapsayıcı kayıt defterine dağıtmaya ve sonra
 
 Bir çerçeve ekibi 1,0 sürümünü sevk eder. Bunlar, küçük güncelleştirmeler de dahil olmak üzere güncelleştirmeleri sevk edeceğiz. Belirli bir ana ve alt sürüm için kararlı etiketleri desteklemek üzere iki kararlı etiket kümesi vardır.
 
-* `:1`– Ana sürüm için kararlı bir etiket. `1`"en yeni" veya "en son" 1. * sürümünü temsil eder.
+* `:1` – Ana sürüm için kararlı bir etiket. `1` "en yeni" veya "en son" 1. * sürümünü temsil eder.
 * `:1.0`-sürüm 1,0 ' e yönelik kararlı bir etiket, bir geliştiricinin güncelleştirme 1,0 güncelleştirmelerine bağlamasını sağlar ve yayımlandığınızda 1,1 'e geri alınamaz.
 
 Takım Ayrıca, `:latest` geçerli ana sürümün ne olduğuna bakılmaksızın, en son kararlı etikete işaret eden etiketini kullanır.
@@ -49,7 +49,7 @@ Kararlı bir etiketi olan bir görüntü güncelleştirilirse, önceden etiketle
 Benzersiz etiketleme, bir kayıt defterine gönderilen her görüntünün benzersiz bir etiketi olduğu anlamına gelir. Etiketler yeniden kullanılmaz. Aşağıdakiler de dahil olmak üzere benzersiz Etiketler oluşturmak için izleyebileceğiniz çeşitli desenler vardır:
 
 * **Tarih-saat damgası** -bu yaklaşım oldukça yaygındır çünkü görüntünün ne zaman oluşturulduğunu açıkça anlayabilirsiniz. Ancak, derleme sisteminize nasıl geri bağıntılı? Aynı zamanda tamamlanan derlemeyi bulmanız gerekiyor mu? Hangi saat dilimini kullanıyorsunuz? Tüm derleme sistemleriniz UTC 'ye göre ayarlanmış mı?
-* **Git yürütmesi** – bu yaklaşım, temel görüntü güncelleştirmelerini desteklemeye başlamadan işe yarar. Bir temel görüntü güncelleştirmesi gerçekleşdiğinde, derleme sisteminiz önceki derleme ile aynı git yürütmesiyle birlikte çıkar. Ancak, temel görüntüde yeni içerik bulunur. Genel olarak, bir git yürütmesi *yarı*kararlı bir etiket sağlar.
+* **Git yürütmesi**  – bu yaklaşım, temel görüntü güncelleştirmelerini desteklemeye başlamadan işe yarar. Bir temel görüntü güncelleştirmesi gerçekleşdiğinde, derleme sisteminiz önceki derleme ile aynı git yürütmesiyle birlikte çıkar. Ancak, temel görüntüde yeni içerik bulunur. Genel olarak, bir git yürütmesi *yarı*kararlı bir etiket sağlar.
 * **Bildirim Özeti** -bir kapsayıcı kayıt defterine gönderilen her kapsayıcı görüntüsü, BENZERSIZ bir SHA-256 karması veya Özet tarafından tanımlanan bir bildirimle ilişkilendirilir. Benzersiz olsa da Özet, derleme ortamınızla bağıntılı, okunması ve bağıntısız bir biçimde yapılır.
 * **Derleme kimliği** -Bu seçenek büyük olasılıkla artımlı olduğundan en iyi şekilde olabilir ve tüm yapıtları ve günlükleri bulmak için belirli bir yapıya geri ilişki kurmanıza olanak tanır. Bununla birlikte, bir bildirim Özeti gibi, insanların okuması zor olabilir.
 

@@ -13,10 +13,10 @@ ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: mbaldwin
 ms.openlocfilehash: d0989c31611b2f42c0219324fa517adc5c216c6c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88586614"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Azure Ayrılmış HSM dağıtım mimarisi
@@ -69,8 +69,8 @@ Dağıtım mimarisi belirlendikten sonra, bu mimariyi uygulamak için gereken ya
 Hizmetin yüksek kullanılabilirlik ve güvenlik gibi tüm temel kavramlarının cihaz sağlama veya uygulama tasarımı ve dağıtımdan önce iyi anlaşıldığından emin olmanız önerilir.
 Daha fazla kavram düzeyi konuları:
 
-* [Yüksek kullanılabilirlik](high-availability.md)
-* [Fiziksel güvenlik](physical-security.md)
+* [Yüksek Kullanılabilirlik](high-availability.md)
+* [Fiziksel Güvenlik](physical-security.md)
 * [Ağ](networking.md)
 * [Desteklenebilirlik](supportability.md)
 * [İzleme](monitoring.md)

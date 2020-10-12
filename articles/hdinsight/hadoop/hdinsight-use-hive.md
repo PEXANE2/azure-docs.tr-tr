@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
 ms.openlocfilehash: 37fdf863d29015bba7015fcff1ae49a34aebd785
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462284"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache Hive ve HiveQL nedir?
@@ -23,7 +23,7 @@ Hive büyük ölçüde yapılandırılmamış veriler üzerinde proje yapısı o
 
 HDInsight, belirli iş yükleri için ayarlanmış çeşitli küme türleri sağlar. Aşağıdaki küme türleri genellikle Hive sorguları için kullanılır:
 
-|Küme türü |Description|
+|Küme türü |Açıklama|
 |---|---|
 |Interactive Query|Etkileşimli sorguların yanıt sürelerini geliştirmek için [düşük gecikme süreli analitik işleme (LLAP)](https://cwiki.apache.org/confluence/display/Hive/LLAP) işlevselliği sağlayan bir Hadoop kümesi. Daha fazla bilgi için bkz. [HDInsight 'Ta etkileşimli sorguya başlama](../interactive-query/apache-interactive-query-get-started.md) belgesi.|
 |Hadoop|Toplu işleme iş yükleri için ayarlanmış bir Hadoop kümesi. Daha fazla bilgi için bkz. [HDInsight 'ta Apache Hadoop kullanmaya başlama](../hadoop/apache-hadoop-linux-tutorial-get-started.md) belgesi.|

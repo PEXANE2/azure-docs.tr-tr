@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
 ms.openlocfilehash: 04b33c7e63efbd6ffabf978708e1b8ed81f1fc42
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90941894"
 ---
 # <a name="deploy-an-defender-for-iot-c-based-security-agent-for-windows"></a>Windows için IoT C# tabanlı güvenlik Aracısı için bir Defender dağıtma
@@ -33,7 +33,7 @@ Bu kılavuzda şunların nasıl yapıldığını öğrenirsiniz:
 > * Aracıyı kaldırın
 > * Sorun giderme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Diğer platformlar ve aracı türleri için bkz. [doğru güvenlik aracısını seçme](how-to-deploy-agent.md).
 
@@ -62,7 +62,7 @@ Güvenlik aracısını yüklemek için aşağıdaki iş akışını kullanın:
     .\InstallSecurityAgent.ps1 -Install -aui <authentication identity> -aum <authentication method> -f <file path> -hn <host name> -di <device id> -cl <certificate location kind>
     ```
 
-    Örnek:
+    Örneğin:
 
     ```
     .\InstallSecurityAgent.ps1 -Install -aui Device -aum SymmetricKey -f c:\Temp\Key.txt -hn MyIotHub.azure-devices.net -di Mydevice1 -cl store
@@ -79,7 +79,7 @@ Bu betik aşağıdaki eylemleri yapar:
 
 Ek Yardım için PowerShell 'de Get-Help komutunu kullanın.
 
-Get-Help örneği:    ```Get-Help .\InstallSecurityAgent.ps1```
+Get-Help örnek:    ```Get-Help .\InstallSecurityAgent.ps1```
 
 ### <a name="verify-deployment-status"></a>Dağıtım durumunu doğrula
 

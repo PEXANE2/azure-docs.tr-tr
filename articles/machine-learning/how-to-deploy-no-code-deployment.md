@@ -10,10 +10,10 @@ author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.openlocfilehash: 9d6e234e1f4c8ac5199b92a09eb12bf7aa41b01b
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88185494"
 ---
 # <a name="preview-no-code-model-deployment"></a>Önizle Kod olmayan model dağıtımı
@@ -133,7 +133,7 @@ print(output)
 * [Web hizmetlerini kullanmak için istemci uygulamaları oluşturma](how-to-consume-web-service.md)
 * [Web hizmetini güncelleştirme](how-to-deploy-update-web-service.md)
 * [Özel bir Docker görüntüsü kullanarak model dağıtma](how-to-deploy-custom-docker-image.md)
-* [Azure Machine Learning aracılığıyla bir Web hizmetinin güvenliğini sağlamak için TLS kullanma](how-to-secure-web-service.md)
+* [TLS kullanarak Azure Machine Learning aracılığıyla web hizmetinin güvenliğini sağlama](how-to-secure-web-service.md)
 * [Application Insights Azure Machine Learning modellerinizi izleyin](how-to-enable-app-insights.md)
 * [Üretimde modeller için veri toplama](how-to-enable-data-collection.md)
 * [Model dağıtımları için olay uyarıları ve Tetikleyicileri oluşturma](how-to-use-event-grid.md)

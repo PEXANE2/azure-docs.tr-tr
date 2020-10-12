@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/17/2018
 ms.openlocfilehash: 1b1b19814709451bdbbea97462c459149484e71f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81415857"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Data Lake Storage 1. verileri yükleme
@@ -57,10 +57,10 @@ Bu makalede, Data Factory Veri Kopyalama aracının, _Amazon S3 'ten Data Lake S
     * **Ad**: Azure Data Factory 'niz için genel olarak benzersiz bir ad girin. "Data Factory Name \" LoadADLSG1Demo \" kullanılamıyor" hatasını alırsanız Veri Fabrikası için farklı bir ad girin. Örneğin _**, Name**_**ADFTutorialDataFactory**adını kullanabilirsiniz. Data Factory 'yi yeniden oluşturmayı deneyin. Data Factory yapıtlarını adlandırma kuralları için bkz. [Data Factory adlandırma kuralları](naming-rules.md).
     * **Abonelik**: veri fabrikasının oluşturulacağı Azure aboneliğinizi seçin. 
     * **Kaynak grubu**: açılan listeden var olan bir kaynak grubunu seçin veya **Yeni oluştur** seçeneğini belirleyin ve bir kaynak grubunun adını girin. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
-    * **Sürüm**: **v2**'yi seçin.
+    * **Sürüm**: **V2**'yi seçin.
     * **Konum**: veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Data Factory tarafından kullanılan veri depoları diğer konumlarda ve bölgelerde olabilir. Bu veri depoları Azure Data Lake Storage 1., Azure depolama, Azure SQL veritabanı vb. içerir.
 
-3. **Oluştur**'u seçin.
+3. **Oluştur**’u seçin.
 4. Oluşturma işlemi tamamlandıktan sonra, veri fabrikanıza gidin. Aşağıdaki görüntüde gösterildiği gibi **Data Factory** giriş sayfasını görürsünüz: 
    
    ![Data factory giriş sayfası](./media/load-data-into-azure-data-lake-store/data-factory-home-page.png)
@@ -86,7 +86,7 @@ Bu makalede, Data Factory Veri Kopyalama aracının, _Amazon S3 'ten Data Lake S
 4. **Amazon S3 bağlantısını belirtin** sayfasında aşağıdaki adımları uygulayın: 
    1. **Erişim anahtarı kimlik** değerini belirtin.
    2. Gizli dizi **erişim anahtarı** değerini belirtin.
-   3. **Son**'u seçin.
+   3. **Son**’u seçin.
    
       ![Amazon S3 hesabını belirtin](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
    
