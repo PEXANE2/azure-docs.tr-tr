@@ -12,10 +12,10 @@ ms.author: moslake
 ms.reviewer: sstein
 ms.date: 9/17/2020
 ms.openlocfilehash: 2d317ac2543289aca3a0741b424f71a2e903c74d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321416"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL veritabanı sunucusuz
@@ -34,7 +34,7 @@ Azure SQL veritabanı 'ndaki tek veritabanlarına yönelik sunucusuz işlem katm
 - **Minimum sanal çekirdekler** ve **maksimum sanal çekirdekler** , veritabanı için kullanılabilir işlem kapasitesi aralığını tanımlayan yapılandırılabilir parametrelerdir. Bellek ve GÇ sınırları belirtilen vCore aralığıyla orantılıdır.  
 - Otomatik **duraklatma gecikmesi** , veritabanının otomatik olarak duraklatılmadan önce devre dışı olması gereken süreyi tanımlayan yapılandırılabilir bir parametredir. Sonraki oturum açma veya diğer etkinlik gerçekleştiğinde veritabanı otomatik olarak sürdürülür.  Alternatif olarak, oto duraklamayı devre dışı bırakılabilir.
 
-### <a name="cost"></a>Cost
+### <a name="cost"></a>Maliyet
 
 - Sunucusuz bir veritabanının maliyeti, işlem maliyeti ve depolama maliyetinin özetidir.
 - İşlem kullanımı, yapılandırılan minimum ve maksimum limitlerin arasında olduğunda, işlem maliyeti sanal çekirdeği ve kullanılan belleği temel alır.
@@ -128,7 +128,7 @@ Veritabanının çevrimiçi olmasını gerektiren bazı hizmet güncelleştirmel
 
 Aşağıdaki koşullardan herhangi biri herhangi bir zamanda doğruysa, oto yeniden sürdürme tetiklenir:
 
-|Öne çıkan özelliği|Oto özgeçmişi tetikleyicisi|
+|Özellik|Oto özgeçmişi tetikleyicisi|
 |---|---|
 |Kimlik doğrulaması ve yetkilendirme|Oturum aç|
 |Tehdit algılama|Veritabanı veya sunucu düzeyinde tehdit algılama ayarlarını etkinleştirme/devre dışı bırakma.<br>Tehdit algılama ayarlarını veritabanı veya sunucu düzeyinde değiştirme.|
@@ -148,7 +148,7 @@ Yukarıda listelenen işlemlerden herhangi birini gerçekleştirerek izleme, yö
 
 Ayrıca, veritabanının çevrimiçi olmasını gerektiren bazı hizmet güncelleştirmelerinin dağıtımı sırasında, oto devam etme işlemi tetiklenir.
 
-### <a name="connectivity"></a>Bağlanabilirlik
+### <a name="connectivity"></a>Bağlantı
 
 Sunucusuz bir veritabanı duraklatıldığında, ilk oturum açma işlemi veritabanını sürdürür ve 40613 hata koduyla veritabanının kullanılamadığını belirten bir hata döndürür. Veritabanı devam ettirdikten sonra, bağlantı kurmak için oturum açma yeniden denenmelidir. Bağlantı yeniden deneme mantığının bulunduğu veritabanı istemcilerinin değiştirilmesi gerekmez.
 
@@ -179,7 +179,7 @@ Yeni bir veritabanı oluşturmak veya var olan bir veritabanını sunucusuz bir 
 
 Aşağıdaki örnekler sunucusuz işlem katmanında yeni bir veritabanı oluşturur.
 
-#### <a name="use-the-azure-portal"></a>Azure portalı kullanma
+#### <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
 Bkz. [hızlı başlangıç: Azure SQL veritabanı 'nda Azure Portal kullanarak tek bir veritabanı oluşturma](single-database-create-quickstart.md).
 
@@ -252,7 +252,7 @@ Bir sunucusuz veritabanı, sağlanan bir işlem veritabanını sunucusuz bir iş
 
 Maksimum veya en düşük sanal çekirdekleri ve oto duraklatma gecikmesini değiştirmek,, ve bağımsız değişkenleri kullanılarak PowerShell 'deki [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) komutu kullanılarak gerçekleştirilir `MaxVcore` `MinVcore` `AutoPauseDelayInMinutes` .
 
-### <a name="use-the-azure-cli"></a>Azure CLI kullanma
+### <a name="use-the-azure-cli"></a>Azure CLI'yi kullanma
 
 Maksimum veya en düşük sanal çekirdekleri ve oto duraklatma gecikmesini değiştirmek,, ve bağımsız değişkenlerini kullanarak Azure CLı 'deki [az SQL DB Update](/cli/azure/sql/db#az-sql-db-update) komutu kullanılarak gerçekleştirilir `capacity` `min-capacity` `auto-pause-delay` .
 

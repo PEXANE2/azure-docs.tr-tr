@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 06/10/2020
 ms.openlocfilehash: 6567651f76ff19a8105158b243de7582256e0375
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320923"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure portal kullanarak Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak veri yükleme
@@ -201,7 +201,7 @@ Bu öğreticide tek işlem hattında zincirlenmiş iki Arama etkinliği, bir Kop
     3. Açılan listeden **veritabanınızın adını** seçin.
     4. **Kullanıcı adı**  &  **parolanızı**girin.
     5. SQL veritabanınızın bağlantısını test etmek için **Bağlantıyı Sına**' ya tıklayın.
-    6. **Son**'a tıklayın.
+    6. **Finish (Son)** düğmesine tıklayın.
     7. **Bağlı hizmet**Için **Azuressqldatabaselinkedservice** 'in seçili olduğunu onaylayın.
 
         ![Yeni bağlı hizmet penceresi](./media/tutorial-incremental-copy-portal/azure-sql-linked-service-settings.png)

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
 ms.openlocfilehash: ed3da649ba65484a79b42ba5bb45431839e123d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84711451"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-the-azure-portal"></a>Azure portal kullanarak bir Azure sanal ağını başka bir bölgeye taşıma
@@ -20,7 +20,7 @@ Mevcut bir Azure sanal ağını bir bölgeden diğerine taşımaya yönelik çe�
 Sanal ağı başka bir bölgeye taşımayı gerçekleştirmek için bir Azure Resource Manager şablonu kullanabilirsiniz. Bunu, sanal ağı bir şablona vererek, parametreleri hedef bölgeyle eşleşecek şekilde değiştirerek ve sonra şablonu yeni bölgeye dağıtarak yapabilirsiniz. Kaynak Yöneticisi şablonları hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure Portal kullanarak Azure Resource Manager şablonları oluşturma ve dağıtma](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Sanal ağınızın, taşımak istediğiniz Azure bölgesinde olduğundan emin olun.
 
@@ -194,13 +194,13 @@ Sanal ağı dışa aktarmak ve Azure portal kullanarak hedef sanal ağı dağıt
 
 ## <a name="delete-the-target-virtual-network"></a>Hedef sanal ağı silme
 
-Hedef sanal ağı atmak için, hedef sanal ağı içeren kaynak grubunu silersiniz. Bunu yapmak için:
+Hedef sanal ağı atmak için, hedef sanal ağı içeren kaynak grubunu silersiniz. Bunun için:
 1. Azure portal panosunda kaynak grubunu seçin.
 1. **Genel bakış** bölmesinin üst kısmında **Sil**' i seçin.
 
 ## <a name="clean-up"></a>Temizleme
 
-Değişiklikleri uygulamak ve sanal ağ taşımayı tamamlamak için kaynak sanal ağını veya kaynak grubunu silersiniz. Bunu yapmak için:
+Değişiklikleri uygulamak ve sanal ağ taşımayı tamamlamak için kaynak sanal ağını veya kaynak grubunu silersiniz. Bunun için:
 1. Azure portal panosunda, sanal ağ veya kaynak grubunu seçin.
 1. Her bölmenin üst kısmında **Sil**' i seçin.
 
@@ -209,5 +209,5 @@ Değişiklikleri uygulamak ve sanal ağ taşımayı tamamlamak için kaynak sana
 Bu öğreticide, bir Azure sanal ağını Azure portal kullanarak bir bölgeden diğerine taşımış sonra gereksiz kaynak kaynaklarını temizlülüsiniz. Azure 'da bölgeler ve olağanüstü durum kurtarma arasında kaynakları taşıma hakkında daha fazla bilgi edinmek için bkz.:
 
 
-- [Kaynakları yeni kaynak grubuna veya aboneliğe taşıma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
+- [Kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
 - [Azure sanal makinelerini başka bir bölgeye taşıma](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)

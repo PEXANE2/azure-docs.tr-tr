@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 8/11/2020
 ms.author: swmachan
 ms.openlocfilehash: 6b211dd8ca735ea9ee4a5209aa6030398cca472e
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88121026"
 ---
 # <a name="translator-v30"></a>Translator v 3.0
@@ -54,7 +54,7 @@ Azure bilişsel hizmetler 'de Translator veya bilişsel [Hizmetler çoklu hizmet
 
 Aboneliğinizin kimliğini doğrulamak için kullanabileceğiniz üç üst bilgi vardır. Bu tablo, her birinin nasıl kullanıldığını açıklar:
 
-|Üst Bilgiler|Açıklama|
+|Üst bilgiler|Açıklama|
 |:----|:----|
 |Ocp-Apim-Subscription-Key|*Gizli anahtarınızı geçirmektir bilişsel hizmetler aboneliğiyle kullanın*.<br/>Değer, Translator aboneliğiniz için Azure gizli anahtarı ' dır.|
 |Yetkilendirme|*Kimlik doğrulama belirteci geçirçalışıyorsanız bilişsel hizmetler aboneliğiyle kullanın.*<br/>Değer, taşıyıcı belirtecidir: `Bearer <token>` .|
@@ -67,7 +67,7 @@ Aboneliğinizin kimliğini doğrulamak için kullanabileceğiniz üç üst bilgi
 
 [Küresel bir çevirmen kaynağı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)kullandığınızda, çeviriciyi çağırmak için bir üst bilgi eklemeniz gerekir.
 
-|Üst Bilgiler|Açıklama|
+|Üst bilgiler|Açıklama|
 |:-----|:----|
 |Ocp-Apim-Subscription-Key| Değer, Translator aboneliğiniz için Azure gizli anahtarı ' dır.|
 
@@ -86,7 +86,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 [Bölgesel bir çevirmen kaynağı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)kullandığınızda.
 Çeviriciyi çağırmanız gereken 2 üst bilgi vardır.
 
-|Üst Bilgiler|Açıklama|
+|Üst bilgiler|Açıklama|
 |:-----|:----|
 |Ocp-Apim-Subscription-Key| Değer, Translator aboneliğiniz için Azure gizli anahtarı ' dır.|
 |OCP-apim-Subscription-Region| Değer, çevirmen kaynağının bölgesidir. |
@@ -108,7 +108,7 @@ Bilişsel hizmetin çoklu hizmet kaynağını kullandığınızda. Bu, birden ç
 
 Birden çok hizmet gizli anahtarı kullandığınızda, isteğinize iki kimlik doğrulama üst bilgisi eklemeniz gerekir. Çeviriciyi çağırmanız gereken 2 üst bilgi vardır.
 
-|Üst Bilgiler|Açıklama|
+|Üst bilgiler|Açıklama|
 |:-----|:----|
 |Ocp-Apim-Subscription-Key| Değer, çok hizmet kaynağınız için Azure gizli anahtarı ' dır.|
 |OCP-apim-Subscription-Region| Değer, çoklu hizmet kaynağının bölgesidir. |
@@ -153,10 +153,10 @@ Bu özelliği etkinleştirdikten sonra, çeviriciyi çağırmak için özel uç 
 
 Bir [çevirici kaynağı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) oluşturup seçili ağlardan ve özel uç noktalardan erişime izin verdikten sonra özel uç noktayı bulabilirsiniz.
 
-|Üst Bilgiler|Açıklama|
+|Üst bilgiler|Açıklama|
 |:-----|:----|
 |Ocp-Apim-Subscription-Key| Değer, Translator aboneliğiniz için Azure gizli anahtarı ' dır.|
-|OCP-apim-Subscription-Region| Değer, çevirmen kaynağının bölgesidir. Kaynak ise bu değer isteğe bağlıdır`global`|
+|OCP-apim-Subscription-Region| Değer, çevirmen kaynağının bölgesidir. Kaynak ise bu değer isteğe bağlıdır `global`|
 
 Özel uç nokta kullanarak çeviriciyi çağırmak için örnek bir istek aşağıda verilmiştir
 

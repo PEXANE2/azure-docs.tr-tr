@@ -7,10 +7,10 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.openlocfilehash: 3a11f77384c520bed9824841269be4ad998adba4
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056209"
 ---
 # <a name="react-plugin-for-application-insights-javascript-sdk"></a>JavaScript SDK 'Sı için Application Insights eklentisi
@@ -64,7 +64,7 @@ export default withAITracking(reactPlugin,appInsights, MyComponent);
 
 ## <a name="configuration"></a>Yapılandırma
 
-| Name    | Varsayılan | Description                                                                                                    |
+| Adı    | Varsayılan | Açıklama                                                                                                    |
 |---------|---------|----------------------------------------------------------------------------------------------------------------|
 | geçmiş | null    | Yönlendirici geçmişini tepki verin. Daha fazla bilgi için bkz. [tepki verme yönlendiricisi paketi belgeleri](https://reactrouter.com/web/api/history). Geçmiş nesnesine bileşenler dışında nasıl erişebileceğinizi öğrenmek için bkz. [tepki verme yönlendiricisi hakkında SSS](https://github.com/ReactTraining/react-router/blob/master/FAQ.md#how-do-i-access-the-history-object-outside-of-components)    |
 

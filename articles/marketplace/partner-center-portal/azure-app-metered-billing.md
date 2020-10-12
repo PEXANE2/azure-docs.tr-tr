@@ -8,10 +8,10 @@ ms.date: 04/22/2020
 ms.author: mingshen
 author: mingshen-ms
 ms.openlocfilehash: 07779769dae4c43148bbf4a8205feceea85ed363
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87320060"
 ---
 # <a name="managed-application-metered-billing"></a>Yönetilen uygulama ölçümlü faturalandırma 
@@ -67,7 +67,7 @@ Fatura boyutları, bir teklif için tüm planlar arasında paylaşılır. Bazı 
 Boyutun kendisini tanımlayan öznitelikler, bir teklif için tüm planlar arasında paylaşılır. Teklifi yayımlamadan önce, herhangi bir planın bağlamından bu özniteliklerde yapılan bir değişiklik, tüm planlar genelinde boyut tanımını etkiler. Teklifi yayımladıktan sonra bu öznitelikler artık düzenlenemeyecektir. Öznitelikler şunlardır:
 
 * Tanımlayıcı
-* Ad
+* Adı
 * Ölçü birimi
 
 Bir boyutun diğer öznitelikleri her plana özeldir ve plandan plana göre farklı değerlere sahip olabilir.  Planı yayımlamadan önce, bu değerleri düzenleyebilirsiniz ve yalnızca bu plan etkilenecektir. Planı yayımladıktan sonra bu öznitelikler artık düzenlenemeyecektir. Öznitelikler şunlardır:
@@ -93,7 +93,7 @@ Market ölçüm hizmeti ile kullanılan bir boyut, müşterinin hizmet için nas
 Bir teklif bir boyutla yayımlandıktan sonra, bu boyut için teklif düzeyi ayrıntıları artık değiştirilemez:
 
 * Tanımlayıcı
-* Ad
+* Adı
 * Ölçü birimi
 
 Bir plan yayımlandığında, plan düzeyi ayrıntıları artık değiştirilemez:
@@ -109,7 +109,7 @@ Bir plan yayımlandığında, plan düzeyi ayrıntıları artık değiştirileme
 
 Tek bir teklif için yapılandırılabilecek maksimum boyut sayısı 18 benzersiz boyutlardır.
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
 Aşağıdaki sorunlardan birine sahipseniz bir destek bileti açabilirsiniz.
 

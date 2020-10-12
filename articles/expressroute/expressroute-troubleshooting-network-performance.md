@@ -9,10 +9,10 @@ ms.date: 12/20/2017
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 6b9a951787df6775b5159433c7172e767ff955b2
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89566084"
 ---
 # <a name="troubleshooting-network-performance"></a>Ağ performansı sorunlarını giderme
@@ -80,7 +80,7 @@ Performans testi için bu araç takımını kullanmanın üç temel adımı vard
 
 3. Performans testini çalıştırma
 
-    İlk olarak, uzak ana bilgisayarda Iperf 'yi sunucu modunda yüklemeli ve çalıştırmanız gerekir. Ayrıca, uzak konağın 3389 (Windows için RDP) veya 22 (Linux için SSH) üzerinde dinleme yaptığını ve Iperf için bağlantı noktası 5201 ' de trafiğe izin vermesini sağlayın. Uzak ana bilgisayar Windows ise, AzureCT 'i yükleyip, Iperf 'yi ve sunucu modunda Iperf 'yi başlatmak için gereken güvenlik duvarı kurallarını ayarlamak için Install-LinkPerformance komutunu çalıştırın. 
+    İlk olarak, uzak ana bilgisayarda Iperf 'yi sunucu modunda yüklemeli ve çalıştırmanız gerekir. Ayrıca, uzak konağın 3389 (Windows için RDP) veya 22 (Linux için SSH) üzerinde dinleme yaptığını ve Iperf için bağlantı noktası 5201 ' de trafiğe izin vermesini sağlayın. Uzak ana bilgisayar Windows ise AzureCT 'i yükleyip Install-LinkPerformance komutunu çalıştırarak Iperf 'yi ve sunucu modunda Iperf 'yi başlatmak için gereken güvenlik duvarı kurallarını ayarlayın. 
     
     Uzak makine çalışmaya başladıktan sonra yerel makinede PowerShell 'i açın ve testi başlatın:
     ```powershell
@@ -128,8 +128,8 @@ Bulutun kenarının gerçekten olduğu konusunda emin değilseniz, Azure bileşe
 İki sanal ağ (diyagramdaki A ve B 'ler) **aynı** ExpressRoute devresine bağlıysa, sorunu Azure 'da yalıtmak için bir dizi test gerçekleştirebilirsiniz (veya Azure 'da olmadığını kanıtlayabilirsiniz)
  
 ### <a name="test-plan"></a>Test planı
-1. VM1 ve VM2 arasında Get-LinkPerformance testini çalıştırın. Bu test, sorunun yerel olup olmadığı konusunda öngörü sağlar. Bu sınama kabul edilebilir gecikme ve bant genişliği sonuçları üretirse, yerel VNet ağını iyi şekilde işaretleyebilirsiniz.
-2. Yerel VNet trafiğinin iyi olduğu varsayıldığında, VM1 ve VM3 arasında Get-LinkPerformance testini çalıştırın. Bu test, bağlantıyı Microsoft ağı üzerinden MSEE 'a ve Azure 'a yeniden sağlar. Bu sınama kabul edilebilir gecikme ve bant genişliği sonuçları üretirse, Azure ağını uygun şekilde işaretleyebilirsiniz.
+1. VM1 ve VM2 arasında test Get-LinkPerformance çalıştırın. Bu test, sorunun yerel olup olmadığı konusunda öngörü sağlar. Bu sınama kabul edilebilir gecikme ve bant genişliği sonuçları üretirse, yerel VNet ağını iyi şekilde işaretleyebilirsiniz.
+2. Yerel VNet trafiğinin iyi olduğu varsayıldığında, VM1 ve VM3 arasında test Get-LinkPerformance çalıştırın. Bu test, bağlantıyı Microsoft ağı üzerinden MSEE 'a ve Azure 'a yeniden sağlar. Bu sınama kabul edilebilir gecikme ve bant genişliği sonuçları üretirse, Azure ağını uygun şekilde işaretleyebilirsiniz.
 3. Azure kullanıma hazır değilse, kurumsal ağınızda benzer bir test dizisi gerçekleştirebilirsiniz. Ayrıca, bu da test eder, WAN bağlantınızı tanılamak için hizmet sağlayıcınız veya ISS 'niz ile çalışmanız zaman alabilir. Örnek: Bu testi iki şube ofisi arasında ya da masa ile bir veri merkezi sunucusu arasında çalıştırın. Test ettiğinize bağlı olarak, bu yolu uygulayabilir uç noktalar (sunucular, bilgisayarlar vb.) bulun.
 
 >[!IMPORTANT]

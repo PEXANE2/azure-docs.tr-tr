@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
 ms.openlocfilehash: 1b0abe998540c4fcc0a9b83f6d1175e18a560871
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84808148"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Application Gateway’deki hatalı ağ geçidi hataları ile ilgili sorunları giderme
@@ -85,9 +85,9 @@ Aşağıdaki tabloda, varsayılan sistem durumu araştırmasıyla ilişkili değ
 | Araştırma özelliği | Değer | Açıklama |
 | --- | --- | --- |
 | Araştırma URL 'SI |`http://127.0.0.1/` |URL yolu |
-| Interval |30 |Saniye cinsinden yoklama aralığı |
+| Aralık |30 |Saniye cinsinden yoklama aralığı |
 | Zaman aşımı |30 |Saniye cinsinden araştırma zaman aşımı |
-| Sağlıksız durum eşiği |3 |Araştırma yeniden deneme sayısı. Arka uç sunucusu, ardışık araştırma hatası sayısı uygun olmayan eşiğe ulaştığında aşağı olarak işaretlenir. |
+| İyi durumda olmayan durum eşiği |3 |Araştırma yeniden deneme sayısı. Arka uç sunucusu, ardışık araştırma hatası sayısı uygun olmayan eşiğe ulaştığında aşağı olarak işaretlenir. |
 
 ### <a name="solution"></a>Çözüm
 
@@ -108,13 +108,13 @@ Aşağıdaki ek özellikler eklenmiştir:
 
 | Araştırma özelliği | Açıklama |
 | --- | --- |
-| Name |Araştırmanın adı. Bu ad, arka uç HTTP ayarlarındaki araştırmayı ifade etmek için kullanılır. |
+| Ad |Araştırmanın adı. Bu ad, arka uç HTTP ayarlarındaki araştırmayı ifade etmek için kullanılır. |
 | Protokol |Araştırmayı göndermek için kullanılan protokol. Araştırma, arka uç HTTP ayarlarında tanımlanan protokolü kullanır |
 | Ana bilgisayar |Araştırmanın gönderileceği ana bilgisayar adı. Yalnızca uygulama ağ geçidinde birden çok site yapılandırıldığında geçerlidir. Bu, VM ana bilgisayar adından farklıdır. |
 | Yol |Araştırmanın göreli yolu. Geçerli yol '/' öğesinden başlar. Araştırma \<protocol\> ://: öğesine gönderiliyor \<host\>\<port\>\<path\> |
-| Interval |Saniye cinsinden yoklama aralığı. Bu iki ardışık yoklama arasındaki zaman aralığıdır. |
+| Aralık |Saniye cinsinden yoklama aralığı. Bu iki ardışık yoklama arasındaki zaman aralığıdır. |
 | Zaman aşımı |Saniye cinsinden araştırma zaman aşımı. Bu zaman aşımı süresi içinde geçerli bir yanıt alınmadıysa, araştırma başarısız olarak işaretlenir. |
-| Sağlıksız durum eşiği |Araştırma yeniden deneme sayısı. Arka uç sunucusu, ardışık araştırma hatası sayısı uygun olmayan eşiğe ulaştığında aşağı olarak işaretlenir. |
+| İyi durumda olmayan durum eşiği |Araştırma yeniden deneme sayısı. Arka uç sunucusu, ardışık araştırma hatası sayısı uygun olmayan eşiğe ulaştığında aşağı olarak işaretlenir. |
 
 ### <a name="solution"></a>Çözüm
 

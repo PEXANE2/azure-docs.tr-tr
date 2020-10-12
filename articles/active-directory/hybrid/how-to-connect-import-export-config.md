@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: da80af9fe598186fa25d59601c9fa4faccb4286a
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87447036"
 ---
 # <a name="import-and-export-azure-ad-connect-configuration-settings-public-preview"></a>Azure AD Connect yapılandırma ayarlarını içeri ve dışarı aktarma (Genel Önizleme)
@@ -40,7 +40,7 @@ Daha önce dışarı aktarılan ayarları içeri aktarmak için:
 1. **Azure AD Connect** yeni bir sunucuya yükler.
 1. **Hoş geldiniz** sayfasından sonra **Özelleştir** seçeneğini belirleyin.
 1. **Eşitleme ayarlarını Içeri aktar**' ı seçin. Daha önce aktarılmış JSON ayarları dosyasına gözatamazsınız.
-1. **Yükle**’yi seçin.
+1. **Yükle**'yi seçin.
 
    ![Gerekli bileşenleri yüklemeyi göster ekranını gösteren ekran görüntüsü](media/how-to-connect-import-export-config/import1.png)
 

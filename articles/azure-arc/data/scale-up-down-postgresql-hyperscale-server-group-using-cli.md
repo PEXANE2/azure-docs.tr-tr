@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: dc77b3c8bc357b63047d20afa9493bbaaff77113
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91285324"
 ---
 # <a name="scale-up-and-down-an-azure-database-for-postgresql-hyperscale-server-group-using-cli-azdata-or-kubectl"></a>CLı (azdata veya kubectl) kullanarak PostgreSQL için Azure veritabanı hiper ölçek sunucu grubu ölçeğini artırma ve azaltma
@@ -183,7 +183,7 @@ Sunucu grubunun ölçeğini genişletmek için aynı komutu yürütür, ancak ö
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [PostgreSQL için Azure veritabanı hiper ölçek sunucu grubu ölçeğini genişletme](scale-out-postgresql-hyperscale-server-group.md)
+- [PostgreSQL için Azure Veritabanı Hiper Ölçek sunucu grubunuzun ölçeğini genişletme](scale-out-postgresql-hyperscale-server-group.md)
 - [Depolama yapılandırması ve Kubernetes depolama kavramları](storage-configuration.md)
 - [Kalıcı birim taleplerini genişletme](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims)
 - [Kubernetes kaynak modeli](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)

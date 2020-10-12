@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 05/06/2020
 ms.author: arvinh
-ms.openlocfilehash: 6caaba06dcc2fdeaeb672b5381b240cb3f676ca9
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
-ms.translationtype: HT
+ms.openlocfilehash: 9df287e9070b84036be311c778f07d583251fd28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563101"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91286378"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Öğretici: Slack’i otomatik kullanıcı hazırlama için yapılandırma
 
@@ -73,11 +73,11 @@ Bu bölümde Azure AD ortamınızı Slack'in kullanıcı hesabı hazırlama API'
 
 3. **Hazırlama** sekmesini seçin.
 
-    ![Hazırlama sekmesi](common/provisioning.png)
+    ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
 4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
-    ![Hazırlama sekmesi](common/provisioning-automatic.png)
+    ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
 5. **Yönetici Kimlik Bilgileri** bölümünde **Yetki Ver**'e tıklayın. Bunu yaptığınızda yeni bir tarayıcı penceresinde Slack yetkilendirme iletişim kutusu açılır.
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/24/2020
 ms.custom: seodec18
 ms.openlocfilehash: 3bfc03dd7a04bea7e69aa1b62cef267a81b650f1
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86037622"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure Stream Analytics kullanmaya başlayın: gerçek zamanlı sahtekarlık algılama
@@ -31,13 +31,13 @@ Bu öğretici, telefon araması verilerine göre gerçek zamanlı sahtekarlık a
 
 Bir telekomünikasyon şirketi gelen çağrılar için büyük hacimde veri içerir. Şirket, müşterileri bilgilendirmek veya belirli bir numara için hizmeti kapatmak üzere sahte aramaları gerçek zamanlı olarak algılamak istiyor. Bir tür SIM dolandırıcılığı aynı kimliğin çevresindeki aynı kimliğe sahip birden fazla çağrı içerir, ancak coğrafi olarak farklı konumlarda. Bu tür dolandırıcılığın algılanması için şirketin gelen telefon kayıtlarını incelemesi ve belirli desenleri (Bu durumda, farklı ülkelerde/bölgelerde aynı zamanda yapılan çağrılar için) araması gerekir. Bu kategoriye giren tüm telefon kayıtları, sonraki analize yönelik depolama alanına yazılır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide, örnek telefon araması meta verileri üreten bir istemci uygulaması kullanarak telefon araması verilerinin benzetimini yapacaksınız. Uygulamanın ürettiği bazı kayıtlar, sahte çağrılar gibi görünüyor. 
 
 Başlamadan önce şunlara sahip olduğunuzdan emin olun:
 
-* Bir Azure hesabı.
+* Azure hesabı.
 * Microsoft Indirme merkezi 'nden indirilebilen, çağrı olayı Oluşturucu uygulaması [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip). Bu paketi bilgisayarınızdaki bir klasöre ayıklayın. Kaynak kodunu görmek ve uygulamayı bir hata ayıklayıcıda çalıştırmak istiyorsanız, uygulama kaynak kodunu [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator)' dan edinebilirsiniz. 
 
     >[!NOTE]
@@ -81,7 +81,7 @@ Bu yordamda, önce bir olay hub 'ı ad alanı oluşturun ve ardından bu ad alan
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
-9. **Oluştur**'a tıklayın.
+9. **Oluştur**’a tıklayın.
 
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>Olay hub’ına erişim verme ve bir bağlantı dizesi alma
 
@@ -98,7 +98,7 @@ Bir işlemin bir olay hub 'ına veri gönderebilmesi için, Olay Hub 'ının uyg
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
  
-4. **Oluştur**'a tıklayın.
+4. **Oluştur**’a tıklayın.
 
 5. İlke dağıtıldıktan sonra, paylaşılan erişim ilkeleri listesinde buna tıklayın.
 
@@ -186,7 +186,7 @@ Artık çağrı olaylarınızın bulunduğu bir akışa sahip olduğunuza göre 
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png" alt="Create Stream Analytics job in portal" width="300px"/>
 
-3. **Oluştur**'a tıklayın.
+3. **Oluştur**’a tıklayın.
 
     İş oluşturulur ve Portal iş ayrıntılarını görüntüler. Henüz hiçbir şey çalışmıyor; ancak başlamadan önce işi yapılandırmanız gerekir.
 
@@ -211,7 +211,7 @@ Artık çağrı olaylarınızın bulunduğu bir akışa sahip olduğunuza göre 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
 
-4. **Oluştur**'a tıklayın.
+4. **Oluştur**’a tıklayın.
 
 ## <a name="create-queries-to-transform-real-time-data"></a>Gerçek zamanlı verileri dönüştürmek için sorgular oluşturma
 
@@ -418,7 +418,7 @@ Ancak, işiniz bittiğinde ve oluşturduğunuz kaynaklara ihtiyacınız yoksa, g
 5. Olay Hub 'ını silin.
 6. Olay Hub 'ı ad alanını silin.
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
 Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)deneyin.
 

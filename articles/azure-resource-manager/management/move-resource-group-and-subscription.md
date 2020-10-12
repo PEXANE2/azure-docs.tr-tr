@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: cd05fe045532ee1b1f1fb88e502d786daabf9365
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319563"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma
@@ -178,11 +178,11 @@ Kaynak grubunu görüntülediğinizde, taşı seçeneği devre dışıdır.
 
 Taşıma seçeneğini etkinleştirmek için, taşımak istediğiniz kaynakları seçin. Tüm kaynakları seçmek için, listenin en üstündeki onay kutusunu seçin. Ya da kaynakları tek tek seçin. Kaynakları seçtikten sonra taşı seçeneği etkinleştirilir.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="kaynakları seçin":::
+:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="taşıma seçeneği devre dışı":::
 
 **Taşı** düğmesini seçin.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="taşıma seçenekleri":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="taşıma seçeneği devre dışı":::
 
 Bu düğme size üç seçenek sunar:
 
@@ -194,11 +194,11 @@ Kaynakları yeni bir kaynak grubuna mı yoksa yeni bir aboneliğe mi taşıdığ
 
 Hedef kaynak grubunu seçin. Bu kaynaklar için betikleri güncelleştirmeniz ve **Tamam**' ı seçmeniz gerektiğini kabul edin. Yeni bir aboneliğe taşımayı seçtiyseniz, hedef aboneliği de seçmeniz gerekir.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="hedef seçin":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="taşıma seçeneği devre dışı":::
 
 Kaynakların taşınabileceği doğrulandıktan sonra taşıma işleminin çalıştığını belirten bir bildirim görürsünüz.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="uyarıyı":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="taşıma seçeneği devre dışı":::
 
 Tamamlandığında, sonuç size bildirilir.
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 07da9316ea76e609948eed586f776be33c91b4bb
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87287265"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>IoT Edge'de Azure Blob Depolama ile verileri kenarda depolama
@@ -79,10 +79,10 @@ Bu ayarın adı `deviceToCloudUploadProperties` . IoT Edge simülatör kullanıy
 
 | Özellik | Olası Değerler | Açıklama |
 | ----- | ----- | ---- |
-| uploadOn | doğru, yanlış | `false`Varsayılan olarak olarak ayarlayın. Özelliği etkinleştirmek istiyorsanız, bu alanı olarak ayarlayın `true` . <br><br> Ortam değişkeni:`deviceToCloudUploadProperties__uploadOn={false,true}` |
-| uploadOrder | NewestFirst, OldestFirst | Verilerin Azure 'a kopyalandığı sırayı seçmenizi sağlar. `OldestFirst`Varsayılan olarak olarak ayarlayın. Sıra, blob 'un son değiştirilme zamanına göre belirlenir. <br><br> Ortam değişkeni:`deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
-| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"`, verilerinizin karşıya yüklenmesini istediğiniz depolama hesabını belirtmenizi sağlayan bir bağlantı dizesidir. `Azure Storage Account Name`, `Azure Storage Account Key` ,, Belirtin `End point suffix` . Verilerin karşıya yükleneceği Azure 'un uygun EndpointSuffix öğesini ekleyin; küresel Azure, kamu Azure ve Microsoft Azure Stack değişir. <br><br> Burada Azure Storage SAS bağlantı dizesini belirtmeyi seçebilirsiniz. Ancak bu özelliği süresi dolmuşsa güncelleştirmeniz gerekir. <br><br> Ortam değişkeni:`deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
-| storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Azure 'a yüklemek istediğiniz kapsayıcı adlarını belirtmenize olanak tanır. Bu modül hem kaynak hem de hedef kapsayıcı adlarını belirtmenize olanak tanır. Hedef kapsayıcı adını belirtmezseniz, kapsayıcı adını otomatik olarak olarak atayacaktır `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>` . Hedef kapsayıcı adı için şablon dizeleri oluşturabilir, olası değerler sütununa bakabilirsiniz. <br>*% h-> IoT Hub adı (3-50 karakter). <br>*% d-> IoT Edge cihaz KIMLIĞI (1-129 karakter). <br>*% d-> modül adı (1-64 karakter). <br>*% c-> kaynak kapsayıcısı adı (3 ile 63 karakter arasında). <br><br>Kapsayıcı adının en büyük boyutu 63 karakterdir, çünkü kapsayıcının boyutu 63 karakteri aşarsa, her bir bölümü (IoTHubName, ıotedgedeviceıd, ModuleName, SourceContainerName) 15 karaktere kırpacaktır. <br><br> Ortam değişkeni:`deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target=<targetName>` |
+| uploadOn | doğru, yanlış | `false`Varsayılan olarak olarak ayarlayın. Özelliği etkinleştirmek istiyorsanız, bu alanı olarak ayarlayın `true` . <br><br> Ortam değişkeni: `deviceToCloudUploadProperties__uploadOn={false,true}` |
+| uploadOrder | NewestFirst, OldestFirst | Verilerin Azure 'a kopyalandığı sırayı seçmenizi sağlar. `OldestFirst`Varsayılan olarak olarak ayarlayın. Sıra, blob 'un son değiştirilme zamanına göre belirlenir. <br><br> Ortam değişkeni: `deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
+| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` , verilerinizin karşıya yüklenmesini istediğiniz depolama hesabını belirtmenizi sağlayan bir bağlantı dizesidir. `Azure Storage Account Name`, `Azure Storage Account Key` ,, Belirtin `End point suffix` . Verilerin karşıya yükleneceği Azure 'un uygun EndpointSuffix öğesini ekleyin; küresel Azure, kamu Azure ve Microsoft Azure Stack değişir. <br><br> Burada Azure Storage SAS bağlantı dizesini belirtmeyi seçebilirsiniz. Ancak bu özelliği süresi dolmuşsa güncelleştirmeniz gerekir. <br><br> Ortam değişkeni: `deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
+| storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Azure 'a yüklemek istediğiniz kapsayıcı adlarını belirtmenize olanak tanır. Bu modül hem kaynak hem de hedef kapsayıcı adlarını belirtmenize olanak tanır. Hedef kapsayıcı adını belirtmezseniz, kapsayıcı adını otomatik olarak olarak atayacaktır `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>` . Hedef kapsayıcı adı için şablon dizeleri oluşturabilir, olası değerler sütununa bakabilirsiniz. <br>*% h-> IoT Hub adı (3-50 karakter). <br>*% d-> IoT Edge cihaz KIMLIĞI (1-129 karakter). <br>*% d-> modül adı (1-64 karakter). <br>*% c-> kaynak kapsayıcısı adı (3 ile 63 karakter arasında). <br><br>Kapsayıcı adının en büyük boyutu 63 karakterdir, çünkü kapsayıcının boyutu 63 karakteri aşarsa, her bir bölümü (IoTHubName, ıotedgedeviceıd, ModuleName, SourceContainerName) 15 karaktere kırpacaktır. <br><br> Ortam değişkeni: `deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target=<targetName>` |
 | deleteAfterUpload | doğru, yanlış | `false`Varsayılan olarak olarak ayarlayın. Olarak ayarlandığında `true` , bulut depolamaya yükleme tamamlandığında verileri otomatik olarak siler. <br><br> **Dikkat**: ekleme bloblarını kullanıyorsanız, bu ayar başarılı bir karşıya yükleme işleminden sonra ekleme bloblarını yerel depolamadan siler ve gelecekte bu bloblara yapılan tüm ekleme engelleme işlemleri başarısız olur. Bu ayarı dikkatli bir şekilde kullanın, uygulamanız sık sık ekleme işlemleri yaparsanız veya sürekli ekleme işlemlerini desteklemiyorsa bunu etkinleştirmeyin.<br><br> Ortam değişkeni: `deviceToCloudUploadProperties__deleteAfterUpload={false,true}` . |
 
 ### <a name="deviceautodeleteproperties"></a>Deviceoto Deleteproperties
@@ -91,9 +91,9 @@ Bu ayarın adı `deviceAutoDeleteProperties` . IoT Edge simülatör kullanıyors
 
 | Özellik | Olası Değerler | Açıklama |
 | ----- | ----- | ---- |
-| deleteOn | doğru, yanlış | `false`Varsayılan olarak olarak ayarlayın. Özelliği etkinleştirmek istiyorsanız, bu alanı olarak ayarlayın `true` . <br><br> Ortam değişkeni:`deviceAutoDeleteProperties__deleteOn={false,true}` |
-| deleteAfterMinutes | `<minutes>` | Süreyi dakika olarak belirtin. Bu değerin süresi dolarsa modül yerel depolamadan Blobları otomatik olarak siler. <br><br> Ortam değişkeni:`deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
-| retainWhileUploading | doğru, yanlış | Varsayılan olarak, olarak ayarlanır `true` ve Deleteafsonlandırutes süresi dolarsa blob 'u bulut depolamaya yüklerken korur. Bunu olarak ayarlayabilirsiniz `false` ve Deleteafsonlandırutes süresi dolduktan hemen sonra verileri siler. Note: Bu özelliğin iş için uploadOn, true olarak ayarlanmalıdır.  <br><br> **Dikkat**: ekleme bloblarını kullanıyorsanız, bu ayar, değerin süresi dolarsa yerel depolamadan ekleme bloblarını siler ve bu bloblara gelecekteki tüm ekleme engelleme işlemleri başarısız olur. Süre sonu değerinin, uygulamanız tarafından gerçekleştirilen ekleme işlemlerinin beklenen sıklığı için yeterince büyük olduğundan emin olmak isteyebilirsiniz.<br><br> Ortam değişkeni:`deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
+| deleteOn | doğru, yanlış | `false`Varsayılan olarak olarak ayarlayın. Özelliği etkinleştirmek istiyorsanız, bu alanı olarak ayarlayın `true` . <br><br> Ortam değişkeni: `deviceAutoDeleteProperties__deleteOn={false,true}` |
+| deleteAfterMinutes | `<minutes>` | Süreyi dakika olarak belirtin. Bu değerin süresi dolarsa modül yerel depolamadan Blobları otomatik olarak siler. <br><br> Ortam değişkeni: `deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
+| retainWhileUploading | doğru, yanlış | Varsayılan olarak, olarak ayarlanır `true` ve Deleteafsonlandırutes süresi dolarsa blob 'u bulut depolamaya yüklerken korur. Bunu olarak ayarlayabilirsiniz `false` ve Deleteafsonlandırutes süresi dolduktan hemen sonra verileri siler. Note: Bu özelliğin iş için uploadOn, true olarak ayarlanmalıdır.  <br><br> **Dikkat**: ekleme bloblarını kullanıyorsanız, bu ayar, değerin süresi dolarsa yerel depolamadan ekleme bloblarını siler ve bu bloblara gelecekteki tüm ekleme engelleme işlemleri başarısız olur. Süre sonu değerinin, uygulamanız tarafından gerçekleştirilen ekleme işlemlerinin beklenen sıklığı için yeterince büyük olduğundan emin olmak isteyebilirsiniz.<br><br> Ortam değişkeni: `deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
 
 ## <a name="using-smb-share-as-your-local-storage"></a>Yerel depolama alanı olarak SMB paylaşımının kullanımı
 
@@ -110,7 +110,7 @@ $creds = Get-Credential
 New-SmbGlobalMapping -RemotePath <remote SMB path> -Credential $creds -LocalPath <Any available drive letter>
 ```
 
-Örnek:
+Örneğin:
 
 ```powershell
 $creds = Get-Credential
@@ -136,7 +136,7 @@ sudo chown -R 11000:11000 <blob-dir>
 sudo chmod -R 700 <blob-dir>
 ```
 
-Örnek:
+Örneğin:
 
 ```terminal
 sudo chown -R 11000:11000 /srv/containerdata
@@ -185,7 +185,7 @@ Aşağıdaki hızlı başlangıç örnekleri, IoT Edge tarafından da desteklene
 
 * [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
 * [Python](../storage/blobs/storage-quickstart-blobs-python.md)
-  * Python SDK 'sının V 2.1 'den önceki sürümlerde, modülün blob oluşturma zamanını döndürmediği bilinen bir sorunu vardır. Bu sorun nedeniyle, liste Blobları gibi bazı yöntemler çalışmaz. Geçici bir çözüm olarak, blob istemcisinde API sürümünü açık olarak ' 2017-04-17 ' olarak ayarlayın. Örneğinde`block_blob_service._X_MS_VERSION = '2017-04-17'`
+  * Python SDK 'sının V 2.1 'den önceki sürümlerde, modülün blob oluşturma zamanını döndürmediği bilinen bir sorunu vardır. Bu sorun nedeniyle, liste Blobları gibi bazı yöntemler çalışmaz. Geçici bir çözüm olarak, blob istemcisinde API sürümünü açık olarak ' 2017-04-17 ' olarak ayarlayın. Örneğinde  `block_blob_service._X_MS_VERSION = '2017-04-17'`
   * [Blob örneği Ekle](https://github.com/Azure/azure-storage-python/blob/master/samples/blob/append_blob_usage.py)
 * [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-legacy.md)
 * [JS/HTML](../storage/blobs/storage-quickstart-blobs-javascript-client-libraries-legacy.md)
@@ -201,7 +201,7 @@ Aşağıdaki hızlı başlangıç örnekleri, IoT Edge tarafından da desteklene
 
 1. Bağlantı dizesi kullanarak Azure depolama 'ya bağlanma
 
-1. Bağlantı dizesi sağla:`DefaultEndpointsProtocol=http;BlobEndpoint=http://<host device name>:11002/<your local account name>;AccountName=<your local account name>;AccountKey=<your local account key>;`
+1. Bağlantı dizesi sağla: `DefaultEndpointsProtocol=http;BlobEndpoint=http://<host device name>:11002/<your local account name>;AccountName=<your local account name>;AccountKey=<your local account key>;`
 
 1. Bağlanmak için adımları izleyin.
 
@@ -298,7 +298,7 @@ Bu modül için [Docker Hub 'daki sürüm notları](https://hub.docker.com/_/mic
 
 Bu modülün ve özelliklerinin kullanışlı ve kullanımı kolay olması için geri bildiriminiz bizim için önemlidir. Lütfen geri bildiriminizi paylaşabilir ve nasıl iyileştirebileceğimizi bize bildirin.
 
-Bize şu adresten ulaşabilirsiniz:absiotfeedback@microsoft.com
+Bize şu adresten ulaşabilirsiniz: absiotfeedback@microsoft.com
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -4,10 +4,10 @@ description: Bu makalede, Azure Event Grid ' de olay işleyicilerine teslimin do
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: abe16c9598c8c10caa832150aafac997dd7f1624
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87460652"
 ---
 # <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a>Olay işleyicilerine olay teslimini doğrulama (Azure Event Grid)
@@ -16,7 +16,7 @@ Bu makalede olay işleyicilerine olay teslimini doğrulama hakkında bilgi sağl
 ## <a name="use-system-assigned-identities-for-event-delivery"></a>Olay teslimi için sistem tarafından atanan kimlikleri kullanma
 Bir konu veya etki alanı için sistem tarafından atanan yönetilen kimliği etkinleştirebilir ve olayları Service Bus kuyrukları ve konuları, Olay Hub 'ları ve depolama hesapları gibi desteklenen hedeflere iletmek için kimliğini kullanabilirsiniz.
 
-Adımlar şunlardır: 
+Adımlar aşağıdaki gibidir: 
 
 1. Bir sistem tarafından atanan kimliğe sahip bir konu veya etki alanı oluşturun ya da kimliği etkinleştirmek için mevcut bir konuyu veya etki alanını güncelleştirin. 
 1. Kimliği, hedef üzerinde (örneğin, bir Service Bus kuyruğu) uygun bir role (örneğin, Service Bus veri gönderici) ekleyin.

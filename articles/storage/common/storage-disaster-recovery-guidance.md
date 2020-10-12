@@ -1,5 +1,5 @@
 ---
-title: Olağanüstü durum kurtarma ve depolama hesabı yük devretme
+title: Olağanüstü durum kurtarma ve depolama hesabı yükünü devretme
 titleSuffix: Azure Storage
 description: Azure depolama, coğrafi olarak yedekli depolama hesapları için hesap yük devretmesini destekler. Hesap yük devretmeyle, birincil uç nokta kullanılamaz hale gelirse depolama hesabınız için yük devretme işlemini başlatabilirsiniz.
 services: storage
@@ -11,13 +11,13 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: e9bd2db8bcc427118a76f87e49ade422a74a11c1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87276933"
 ---
-# <a name="disaster-recovery-and-storage-account-failover"></a>Olağanüstü durum kurtarma ve depolama hesabı yük devretme
+# <a name="disaster-recovery-and-storage-account-failover"></a>Olağanüstü durum kurtarma ve depolama hesabı yükünü devretme
 
 Microsoft, Azure hizmetlerinin her zaman kullanılabilir olduğundan emin olmaya çalışır. Ancak, planlanmamış hizmet kesintileri meydana gelebilir. Uygulamanız dayanıklılık gerektiriyorsa, Microsoft, verilerinizin ikinci bir bölgeye kopyalanması için coğrafi olarak yedekli depolamayı kullanmanızı önerir. Ayrıca, müşterilerin bölgesel hizmet kesintisi için bir olağanüstü durum kurtarma planı olması gerekir. Olağanüstü durum kurtarma planının önemli bir kısmı, birincil uç noktanın kullanılamaz hale geldiği olaydaki ikincil uç noktaya yük devretmek için hazırlanmalıdır.
 

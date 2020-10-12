@@ -4,10 +4,10 @@ description: DOD etkisi düzeyi 5 şema örneğinin denetim eşlemesi. Her denet
 ms.date: 09/17/2020
 ms.topic: sample
 ms.openlocfilehash: 6cd92cba69367c611a0e3a3c435e41e973a80d73
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540549"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-5-blueprint-sample"></a>DOD etkisi düzeyi 5 şema örneğinin denetim eşlemesi
@@ -30,7 +30,7 @@ Bu şema, kuruluşunuzun hesap yönetimi gereksinimleriyle uyumlu olmayan hesapl
 - Okuma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir
 - Yazma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir
 
-## <a name="ac-2-7-account-management--role-based-schemes"></a>AC-2 (7) hesap yönetimi | Rol tabanlı şemalar
+## <a name="ac-2-7-account-management--role-based-schemes"></a>AC-2 (7) hesap yönetimi | Role-Based şemaları
 
 Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı olmak için [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../../../role-based-access-control/overview.md) uygular. Azure portal kullanarak, Azure kaynaklarına kimlerin erişebileceğini ve bunların izinlerini gözden geçirebilirsiniz. Bu şema Ayrıca, SQL Server ve Service Fabric için Azure Active Directory kimlik doğrulamasının kullanımını denetlemek üzere [Azure ilke](../../../policy/overview.md) tanımları atar. Azure Active Directory kimlik doğrulaması kullanmak, veritabanı kullanıcıları ve diğer Microsoft Hizmetleri için Basitleştirilmiş izin yönetimi ve merkezi kimlik yönetimine izin verebilir. Ayrıca, bu şema özel Azure RBAC kurallarının kullanımını denetlemek için bir Azure ilke tanımı atar. Özel Azure RBAC kurallarının nerede uygulandığını anlamak, özel Azure RBAC kuralları hata durumunda olduğundan, gereksinimi ve uygun uygulamayı doğrulamanıza yardımcı olabilir.
 
@@ -48,7 +48,7 @@ Tam zamanında (JıT) sanal makine erişimi, Azure sanal makinelerine giden traf
 
 Çapraz kaynak kaynak paylaşımı (CORS), App Services kaynaklarının bir dış etki alanından istenme izin verebilir. Microsoft, yalnızca gerekli etki alanlarının API, işleviniz ve Web uygulamalarınızla etkileşime geçmesini sağlar. Bu şema, Azure Güvenlik Merkezi 'ndeki CORS kaynakları erişim kısıtlamalarını izlemenize yardımcı olmak için bir [Azure ilke](../../../policy/overview.md) tanımı atar. CORS uygulamalarını anlamak, bilgi akışı denetimlerinin uygulandığını doğrulamanıza yardımcı olabilir.
 
-- CORS, her kaynağın Web Uygulamalarınıza erişmesine izin vermemelidir
+- CORS, her kaynağın Web uygulamalarınıza erişmesine izin vermemelidir
 
 ## <a name="ac-5-separation-of-duties"></a>AC-5 Görev ayrımı
 
@@ -145,7 +145,7 @@ Bu ilke tanımları Ayrıca Azure kaynakları içinde gerçekleştirilen işleml
 - Gelişmiş veri güvenliği SQL yönetilen örneği üzerinde etkinleştirilmelidir
 - Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir
 
-## <a name="au-12-01-audit-generation--system-wide--time-correlated-audit-trail"></a>AU-12 (01) denetim oluşturma | Sistem genelindeki/saat ile bağıntılı denetim Izi
+## <a name="au-12-01-audit-generation--system-wide--time-correlated-audit-trail"></a>AU-12 (01) denetim oluşturma | System-Wide/Time-Correlated denetim Izi
 
 Bu şema, Azure kaynaklarında günlük ayarlarını denetleyen [Azure ilke](../../../policy/overview.md) tanımları atanarak sistem olaylarının günlüğe kaydedildiğinden emin olmanıza yardımcı olur.
 Bu yerleşik ilke, tanılama ayarlarının etkin olup olmadığını denetlemek için bir kaynak türleri dizisi belirtmenizi gerektirir.
@@ -164,7 +164,7 @@ Azure Güvenlik Merkezi 'nde Uyarlamalı uygulama denetimi, belirli yazılımlar
 
 - Güvenli uygulamaları tanımlamaya yönelik Uyarlamalı uygulama denetimleri, makinelerinizde etkinleştirilmelidir
 
-## <a name="cm-11-user-installed-software"></a>CM-11 Kullanıcı tarafından yüklenen yazılım
+## <a name="cm-11-user-installed-software"></a>CM-11 User-Installed yazılım
 
 Azure Güvenlik Merkezi 'nde Uyarlamalı uygulama denetimi, belirli yazılımların sanal makinelerinizde çalıştırılmasını engelleyebilen veya engelleyebilecek, akıllı ve otomatikleştirilmiş bir uçtan uca uygulama izin verilenler listesi çözümüdür. Uygulama denetimi, yazılım kısıtlama ilkeleriyle uyumluluğu zorlamanıza ve izlemenize yardımcı olabilir. Bu şema, bir uygulama izin verilenler listesinin önerildiği ancak henüz yapılandırılmadığı sanal makineleri izlemenize yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
 
@@ -209,7 +209,7 @@ Bu şema, parola olmadan hesaplardan uzak bağlantılara izin veren ve/veya pass
 - Parolası olmayan hesaplara sahip Linux sanal makinelerini denetlemek için önkoşulları dağıtın
 - Ters çevrilebilir şifreleme kullanarak parolaları depolamamayan Windows sanal makinelerini denetlemek için önkoşulları dağıtın
 
-## <a name="ia-5-1-authenticator-management--password-based-authentication"></a>IA-5 (1) Authenticator yönetimi | Parola tabanlı kimlik doğrulaması
+## <a name="ia-5-1-authenticator-management--password-based-authentication"></a>IA-5 (1) Authenticator yönetimi | Password-Based kimlik doğrulaması
 
 Bu şema, en düşük güç ve diğer parola gereksinimlerini zorlayamama Windows sanal makinelerini denetleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak güçlü parolalar zorlamanıza yardımcı olur. Parola gücü ilkesini ihlal eden sanal makinelerin farkında olmak, tüm sanal makine Kullanıcı hesaplarının parolalarının kuruluşunuzun parola ilkesiyle uyumlu olmasını sağlamak için düzeltici eylemler almanıza yardımcı olur.
 
