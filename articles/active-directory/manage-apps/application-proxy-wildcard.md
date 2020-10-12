@@ -17,10 +17,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b566081459b0bab0aae9831e128ffbee0efaf4e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85367742"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory uygulama proxy 'sinde joker uygulamalar
@@ -51,7 +51,7 @@ Hem iç hem de dış URL 'Ler aşağıdaki biçimde olan joker karakterlerle uyg
 
 Joker bir uygulama oluşturmak, diğer tüm uygulamalar için kullanılabilir olan aynı [uygulama yayımlama akışını](application-proxy-add-on-premises-application.md) temel alır. Tek fark, URL 'Lere ve potansiyel olarak SSO yapılandırmasına bir joker karakter dahil etmeniz olabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için, bu gereksinimleri karşıladığınızdan emin olun.
 
@@ -68,13 +68,13 @@ Güvenlik nedenleriyle bu bir sabit gereksinimdir ve dış URL için özel bir e
 
 ### <a name="dns-updates"></a>DNS güncelleştirmeleri
 
-Özel etki alanları kullanırken, dış URL için CNAME kaydıyla bir DNS girişi oluşturmanız gerekir (örneğin, `*.adventure-works.com` ) uygulama proxy uç noktasının dış URL 'sini işaret eder. Joker uygulamalar için CNAME kaydının ilgili dış URL 'Leri göstermesi gerekir:
+Özel etki alanları kullanırken, dış URL için CNAME kaydıyla bir DNS girişi oluşturmanız gerekir (örneğin,  `*.adventure-works.com` ) uygulama proxy uç noktasının dış URL 'sini işaret eder. Joker uygulamalar için CNAME kaydının ilgili dış URL 'Leri göstermesi gerekir:
 
 > `<yourAADTenantId>.tenant.runtime.msappproxy.net`
 
 CNAME 'nizi doğru şekilde yapılandırdığınızdan emin olmak için, hedef uç noktalardan birinde [nslookup](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup) ' ı kullanabilirsiniz (örneğin,) `expenses.adventure-works.com` .  Yanıtınız zaten belirtilen diğer adı ( `<yourAADTenantId>.tenant.runtime.msappproxy.net` ) içermelidir.
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 Joker uygulamalar için dikkate almanız gereken bazı noktalar aşağıda verilmiştir.
 
@@ -84,7 +84,7 @@ Joker uygulamalar için **Iç URL** 'nin olarak biçimlendirilmesi gerekir `http
 
 ![İç URL için http (s)://* biçimini kullanın. \< etki alanı>](./media/application-proxy-wildcard/22.png)
 
-Bir **dış URL**yapılandırdığınızda, aşağıdaki biçimi kullanmanız gerekir:`https://*.<custom domain>`
+Bir **dış URL**yapılandırdığınızda, aşağıdaki biçimi kullanmanız gerekir: `https://*.<custom domain>`
 
 ![Dış URL için https://* biçimini kullanın. \< Özel etki alanı>](./media/application-proxy-wildcard/21.png)
 
@@ -132,7 +132,7 @@ Tüm üç uygulama:
 
 Joker uygulamayı [Azure AD uygulama ara sunucusu kullanarak uygulama yayımlama](application-proxy-add-on-premises-application.md)bölümünde özetlenen adımları kullanarak yayımlayabilirsiniz. Bu senaryo şunları varsayar:
 
-- Şu KIMLIĞE sahip bir kiracı:`000aa000-11b1-2ccc-d333-4444eee4444e`
+- Şu KIMLIĞE sahip bir kiracı: `000aa000-11b1-2ccc-d333-4444eee4444e`
 - Çağrılan doğrulanmış bir etki alanı `adventure-works.com` yapılandırıldı.
 - Öğesine **CNAME** işaret eden bir CNAME `*.adventure-works.com` girişi `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` oluşturuldu.
 
@@ -156,7 +156,7 @@ Yapılandırma aşağıdaki yapıyı uygular:
 
 ![Örnek yapılandırma tarafından uygulanan yapıyı gösterir](./media/application-proxy-wildcard/05.png)
 
-| Renk | Açıklama |
+| Color | Açıklama |
 | ---   | ---         |
 | Mavi  | Azure portal açıkça yayımlanmış ve görünür uygulamalar. |
 | Tonlamalı  | Üst uygulama aracılığıyla erişilebilen uygulamalar. |

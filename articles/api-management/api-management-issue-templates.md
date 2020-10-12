@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1dac90053797caf66af79e458b9dbb95b682cd17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85846854"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Azure API Management 'daki şablonları verme
@@ -34,7 +34,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="issue-list"></a><a name="IssueList"></a>Sorun listesi  
+##  <a name="issue-list"></a><a name="IssueList"></a> Sorun listesi  
  **Sorun listesi** şablonu, geliştirici portalındaki sorun listesi sayfasının gövdesini özelleştirmenizi sağlar.  
   
  ![Sorun listesi geliştirici portalı](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APıM sorun listesi geliştirici portalı")  
@@ -102,8 +102,8 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
 |--------------|----------|-----------------|  
 |`Issues`|[Sorun](api-management-template-data-model-reference.md#Issue) varlıkları koleksiyonu.|Geçerli kullanıcıya görünen sorunlar.|  
 |`Paging`|[Sayfalama](api-management-template-data-model-reference.md#Paging) varlığı.|Uygulamalar koleksiyonu için sayfalama bilgileri.|  
-|`IsAuthenticated`|boole|Geçerli kullanıcının Geliştirici Portalında oturum açmış olup olmadığı.|  
-|`CanReportIssues`|boole|Geçerli kullanıcının bir sorunu dosyaya verme izinleri olup olmadığı.|  
+|`IsAuthenticated`|boolean|Geçerli kullanıcının Geliştirici Portalında oturum açmış olup olmadığı.|  
+|`CanReportIssues`|boolean|Geçerli kullanıcının bir sorunu dosyaya verme izinleri olup olmadığı.|  
 |`Search`|string|Bu özellik kullanım dışıdır ve kullanılmamalıdır.|  
   
 ### <a name="sample-template-data"></a>Örnek şablon verileri  

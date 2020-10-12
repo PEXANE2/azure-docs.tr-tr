@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: ad0e0250b32f2bdef4944e6e148be3215f3822f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81390216"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight sanal ağ mimarisi
@@ -22,7 +22,7 @@ Bu makalede, bir HDInsight kümesini özel bir Azure sanal ağına dağıtırken
 
 Azure HDInsight kümelerinde farklı türlerde sanal makineler veya düğümler vardır. Her düğüm türü, sistem işleminde bir rol oynar. Aşağıdaki tabloda bu düğüm türleri ve bunların rolleri kümede özetlenmektedir.
 
-| Tür | Description |
+| Tür | Açıklama |
 | --- | --- |
 | Baş düğüm |  Apache Storm dışındaki tüm küme türleri için baş düğümler, dağıtılmış uygulamanın yürütülmesini yöneten süreçler barındırır. Baş düğüm aynı zamanda, SSH ve küme kaynakları genelinde çalışacak şekilde koordine ettiğiniz uygulamaları yürütebilmeniz için de düğümdür. Baş düğümlerin sayısı, tüm küme türleri için iki olarak düzeltilir. |
 | ZooKeeper düğümü | Zookeeper, veri işleme yapan düğümler arasındaki görevleri düzenler. Ayrıca baş düğümün öncü seçimi de yapar ve hangi baş düğümün belirli bir ana hizmetin çalıştığını izler. ZooKeeper düğümlerinin sayısı üç olarak düzeltilir. |
@@ -40,7 +40,7 @@ Bu FQDN 'Ler form olur `<node-type-prefix><instance-number>-<abbreviated-cluster
 
 , İş `<node-type-prefix>` düğümleri için *hn* , çalışan düğümleri için *WN* ve Zookeeper düğümleri için *Zn* olacaktır.
 
-Yalnızca ana bilgisayar adına ihtiyacınız varsa, FQDN 'nin yalnızca ilk kısmını kullanın:`<node-type-prefix><instance-number>-<abbreviated-clustername>`
+Yalnızca ana bilgisayar adına ihtiyacınız varsa, FQDN 'nin yalnızca ilk kısmını kullanın: `<node-type-prefix><instance-number>-<abbreviated-clustername>`
 
 ## <a name="basic-virtual-network-resources"></a>Temel sanal ağ kaynakları
 

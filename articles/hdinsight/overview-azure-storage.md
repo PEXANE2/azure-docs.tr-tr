@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: 1bdec284ccdfca9e13ca227fe1109afe28da14b0
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85851376"
 ---
 # <a name="azure-storage-overview-in-hdinsight"></a>HDInsight 'ta Azure depolama 'ya genel bakış
@@ -33,7 +33,7 @@ HDInsight, işlem düğümlerine yerel olarak bağlı olan dağıtılmış dosya
 
 `hdfs://<namenodehost>/<path>`
 
-HDInsight aracılığıyla Azure Storage 'daki verilere de erişebilirsiniz. Söz dizimi aşağıdaki gibidir:
+HDInsight aracılığıyla Azure Storage 'daki verilere de erişebilirsiniz. Söz dizimi şu şekildedir:
 
 `wasb://<containername>@<accountname>.blob.core.windows.net/<path>`
 
@@ -77,6 +77,6 @@ Belirli MapReduce işleri ve paketleri, Azure depolama 'da depolamak istemediği
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Data Lake Storage 2. giriş](../storage/blobs/data-lake-storage-introduction.md)
+* [Azure Data Lake Storage 2. Nesil'e giriş](../storage/blobs/data-lake-storage-introduction.md)
 * [Azure Depolama’ya giriş](../storage/common/storage-introduction.md)
 * [Azure Data Lake Storage 1. Nesil’e genel bakış](./overview-data-lake-storage-gen1.md)

@@ -4,10 +4,10 @@ description: Azure Batch Analytics için görev çalışma zamanı ortamı deği
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.openlocfilehash: 6b8ade312146802ede6e12181a082a8fcd3842fe
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85960920"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Çalışma zamanı ortam değişkenlerini Azure Batch
@@ -52,7 +52,7 @@ Bir ortam değişkeninin geçerli değerini almak için, `cmd.exe` bir Windows i
 | AZ_BATCH_NODE_ID                | Görevin atandığı düğümün KIMLIĞI. | Tüm görevler. | TVM-1219235766_3-20160919t172711z |
 | AZ_BATCH_NODE_IS_DEDICATED      | Varsa `true` , geçerli düğüm özel bir düğümdür. `false`Bu, [düşük öncelikli bir düğümdür](batch-low-pri-vms.md). | Tüm görevler. | `true` |
 | AZ_BATCH_NODE_LIST              | Biçimdeki [çok örnekli bir göreve][multi_instance] ayrılan düğümlerin listesi `nodeIP;nodeIP` . | Çok örnekli birincil ve alt görevler. | `10.0.0.4;10.0.0.5` |
-| AZ_BATCH_NODE_MOUNTS_DIR        | Tüm bağlama dizinlerinin bulunduğu düğüm düzeyi [dosya sistemi bağlama](virtual-file-mount.md) konumunun tam yolu. Windows dosya paylaşımları bir sürücü harfi kullanır, bu nedenle Windows için bağlama sürücüsü cihazların ve sürücülerin bir parçasıdır.  |  Başlangıç görevi dahil tüm görevlerin Kullanıcı erişimi vardır ve Kullanıcı, bağlı dizin için bağlama izinlerinden haberdar olur. | Ubuntu 'da, örneğin, konum:`/mnt/batch/tasks/fsmounts` |
+| AZ_BATCH_NODE_MOUNTS_DIR        | Tüm bağlama dizinlerinin bulunduğu düğüm düzeyi [dosya sistemi bağlama](virtual-file-mount.md) konumunun tam yolu. Windows dosya paylaşımları bir sürücü harfi kullanır, bu nedenle Windows için bağlama sürücüsü cihazların ve sürücülerin bir parçasıdır.  |  Başlangıç görevi dahil tüm görevlerin Kullanıcı erişimi vardır ve Kullanıcı, bağlı dizin için bağlama izinlerinden haberdar olur. | Ubuntu 'da, örneğin, konum: `/mnt/batch/tasks/fsmounts` |
 | AZ_BATCH_NODE_ROOT_DIR          | Düğümdeki tüm [Batch dizinleri][files_dirs] kökünün tam yolu. | Tüm görevler. | C:\user\tasks |
 | AZ_BATCH_NODE_SHARED_DIR        | Düğümdeki [Paylaşılan dizinin][files_dirs] tam yolu. Bir düğümde yürütülen tüm görevlerin bu dizine okuma/yazma erişimi vardır. Diğer düğümlerde yürütülen görevlerin bu dizine uzaktan erişimi yoktur ("paylaşılan" bir ağ dizini değildir). | Tüm görevler. | C:\user\tasks\shared |
 | AZ_BATCH_NODE_STARTUP_DIR       | Düğümdeki [Başlangıç görevi dizininin][files_dirs] tam yolu. | Tüm görevler. | C:\user\tasks\startup |
@@ -61,7 +61,7 @@ Bir ortam değişkeninin geçerli değerini almak için, `cmd.exe` bir Windows i
 | AZ_BATCH_TASK_ID                | Geçerli görevin kimliği. | Başlangıç görevi dışındaki tüm görevler. | task001 |
 | AZ_BATCH_TASK_SHARED_DIR | Birincil görev ve [çok örnekli bir görevin][multi_instance]her alt görevi için özdeş olan bir dizin yolu. Yol, çoklu örnek görevinin çalıştırıldığı her düğümde bulunur ve bu düğümde çalışan görev komutlarına okuma/yazma ( [koordinasyon komutu][coord_cmd] ve [uygulama komutu][app_cmd]) tarafından erişilebilir. Diğer düğümlerde yürütülen alt görevler veya birincil görevin bu dizine uzaktan erişimi yoktur ("paylaşılan" bir ağ dizini değildir). | Çok örnekli birincil ve alt görevler. | C:\user\tasks\workıtemk\multiınstancesamplejob\job-1\multiınstancesampletask |
 | AZ_BATCH_TASK_WORKING_DIR       | Düğümdeki [görev çalışma dizininin][files_dirs] tam yolu. Şu anda çalışan görevin bu dizine okuma/yazma erişimi vardır. | Tüm görevler. | C:\user\tasks\workıtem\batchjob001\job-1\task001\wd |
-| CCP_NODES                       | Bir [çok örnekli göreve][multi_instance]ayrılan düğümlerin ve düğüm başına çekirdek sayısının listesi. Düğümler ve çekirdekler şu biçimde listelenmiştir`numNodes<space>node1IP<space>node1Cores<space>`<br/>`node2IP<space>node2Cores<space> ...`, burada düğüm sayısının bir veya daha fazla düğüm IP adresi ve her biri için çekirdek sayısı gelir. |  Çok örnekli birincil ve alt görevler. |`2 10.0.0.4 1 10.0.0.5 1` |
+| CCP_NODES                       | Bir [çok örnekli göreve][multi_instance]ayrılan düğümlerin ve düğüm başına çekirdek sayısının listesi. Düğümler ve çekirdekler şu biçimde listelenmiştir `numNodes<space>node1IP<space>node1Cores<space>`<br/>`node2IP<space>node2Cores<space> ...`, burada düğüm sayısının bir veya daha fazla düğüm IP adresi ve her biri için çekirdek sayısı gelir. |  Çok örnekli birincil ve alt görevler. |`2 10.0.0.4 1 10.0.0.5 1` |
 
 [files_dirs]: ./files-and-directories.md
 [multi_instance]: ./batch-mpi.md

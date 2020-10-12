@@ -11,10 +11,10 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2a2126aceba8724b46de094d14db754d704500c6
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85850968"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect: ADSyncConfig PowerShell Başvurusu
@@ -42,7 +42,7 @@ Bu işlev, AD Bağlayıcısı hesabını gösteren bir tablo olan bağlantı par
 Get-ADSyncADConnectorAccount
 ```
 
-## <a name="get-adsyncobjectswithinheritancedisabled"></a>Get-Adsyncobjectswithınheritancedisabled
+## <a name="get-adsyncobjectswithinheritancedisabled"></a>Get-ADSyncObjectsWithInheritanceDisabled
 
 ### <a name="synopsis"></a>ÖZET
 İzin devralma ile AD nesnelerini alır devre dışı
@@ -616,7 +616,7 @@ Accept wildcard characters: False
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
 Daha fazla bilgi için bkz. about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="set-adsyncmsdsconsistencyguidpermissions"></a>Set-Adsyncmsdsımorguıdizinleri
+## <a name="set-adsyncmsdsconsistencyguidpermissions"></a>Set-ADSyncMsDsConsistencyGuidPermissions
 
 ### <a name="synopsis"></a>ÖZET
 Active Directory ormanınızı ve etki alanınızı, mS-DS-ımdsguıd özelliği için başlatın.
@@ -636,7 +636,7 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-Set-Adsyncmsdsımorguidpermissions Işlevi, AD eşitleme hesabına aşağıdakiler dahil olmak üzere gerekli izinleri verecektir:
+Set-ADSyncMsDsConsistencyGuidPermissions Işlevi, AD eşitleme hesabına aşağıdakiler dahil olmak üzere gerekli izinleri verecektir:
 1.
 Tüm alt Kullanıcı nesneleri için mS-DS-Imst GUID özniteliğinde okuma/yazma özelliği erişimi
 

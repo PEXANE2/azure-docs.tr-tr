@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: inhenkel
 ms.openlocfilehash: 9f17e8a09715ce9ff51715f17a449ec0a5b3f770
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89297204"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure Media Services akış uç noktaları (başlangıç)
@@ -51,7 +51,7 @@ En fazla akış birimi sınırı genellikle 10 ' dur. Hesabınız için limiti y
 
 Türler aşağıdaki tabloda açıklanmıştır:
 
-|Tür|Ölçek birimleri|Description|
+|Tür|Ölçek birimleri|Açıklama|
 |--------|--------|--------|  
 |**Standart**|0|Varsayılan akış uç noktası **Standart** bir türdür — ayarlanarak Premium türüne değiştirilebilir `scaleUnits` .|
 |**Premium**|>0|**Premium** Akış uç noktaları, gelişmiş iş yükleri için uygundur ve adanmış ve ölçeklenebilir bant genişliği kapasitesi sağlar. Bir **Premium** türüne `scaleUnits` (akış birimleri) ayarlayarak geçiş yapabilirsiniz. `scaleUnits` 200 Mbps 'lik artışlarla satın alınabilecek özel çıkış kapasitesi sağlar. **Premium** türü kullanılırken, etkinleştirilen her birim, uygulamaya ek bant genişliği kapasitesi sağlar. |
@@ -63,16 +63,16 @@ SLA bilgileri için bkz. [fiyatlandırma ve SLA](https://azure.microsoft.com/pri
 
 ## <a name="comparing-streaming-types"></a>Akış türlerini karşılaştırma
 
-Öne çıkan özelliği|Standart|Premium
+Özellik|Standart|Premium
 ---|---|---
 Aktarım hızı |600 Mbps 'e kadar, bir CDN kullanıldığında çok daha yüksek bir verimlilik sağlar.|akış birimi başına 200 Mbps (SU). , Bir CDN kullanıldığında daha yüksek etkili bir verimlilik sağlayabilir.
 CDN|Azure CDN, üçüncü taraf CDN veya CDN yok.|Azure CDN, üçüncü taraf CDN veya CDN yok.
 Faturalandırma eşit olarak dağıtılır| Günlük|Günlük
-Dinamik şifreleme|Yes|Yes
-Dinamik paketleme|Yes|Yes
+Dinamik şifreleme|Evet|Evet
+Dinamik paketleme|Evet|Evet
 Ölçek|Hedeflenen işleme kadar otomatik olarak ölçeklendirin.|Ek SUs
-IP filtreleme/G20/özel ana bilgisayar <sup>1</sup>|Yes|Yes
-Aşamalı indirme|Yes|Yes
+IP filtreleme/G20/özel ana bilgisayar <sup>1</sup>|Evet|Evet
+Aşamalı indirme|Evet|Evet
 Önerilen kullanım |Akış senaryolarının çoğunluğu için önerilir.|Profesyonel kullanım.
 
 <sup>1</sup> yalnızca CDN uç noktasında etkin olmadığında doğrudan akış uç noktasında kullanılır.<br/>

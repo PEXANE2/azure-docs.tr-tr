@@ -15,13 +15,13 @@ ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 04634a6efb6c17a823532a29ec273b088a4ad843
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91272420"
 ---
-# <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server yönelik güvenlik konuları
+# <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Azure Sanal Makineler üzerinde SQL Server için güvenlikle ilgili dikkat edilmesi gerekenler
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Bu konu, bir Azure sanal makinesindeki (VM) SQL Server örneklerine güvenli erişim sağlamaya yardımcı olan genel güvenlik yönergelerini içerir.
@@ -59,7 +59,7 @@ Son olarak, Azure sanal makinenizde SQL Server veritabanı altyapısının örne
 
 ## <a name="encryption"></a>Şifreleme
 
-Yönetilen diskler, sunucu tarafı şifreleme ve Azure disk şifrelemesi sunar. [Sunucu tarafı şifreleme](/azure/virtual-machines/windows/disk-encryption) , bekleyen şifreleme sağlar ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamak için verilerinizi korur. [Azure disk şifrelemesi](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) , BitLocker ya da dm-crypt teknolojisini kullanır ve hem işletim sistemini hem de veri disklerini şifrelemek için Azure Key Vault ile tümleşir. 
+Yönetilen diskler Server-Side şifreleme ve Azure disk şifrelemesi sunmaktadır. [Sunucu tarafı şifreleme](/azure/virtual-machines/windows/disk-encryption) , bekleyen şifreleme sağlar ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamak için verilerinizi korur. [Azure disk şifrelemesi](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) , Bitlocker veya DM-Crypt teknolojisini kullanır ve hem işletim sistemi hem de veri disklerini şifrelemek için Azure Key Vault ile tümleşir. 
 
 ## <a name="use-a-non-default-port"></a>Varsayılan olmayan bir bağlantı noktası kullan
 

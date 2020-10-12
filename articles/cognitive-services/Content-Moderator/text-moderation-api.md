@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: pafarley
 ms.openlocfilehash: fa292f0441369ed13f3f85035a2ec8cc3f5c6723
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85800100"
 ---
 # <a name="learn-text-moderation-concepts"></a>Metin denetleme kavramlarını öğrenin
@@ -74,11 +74,11 @@ JSON ayıklamada aşağıdaki ayıklama örnek bir çıktı gösterir:
 
 ### <a name="explanation"></a>Açıklama
 
-- `Category1`belirli durumlarda cinsel açık veya yetişkin olarak değerlendirilen dilin potansiyel olma durumunu ifade eder.
-- `Category2`, belirli durumlarda cinsel veya kötü bir şekilde düşünülmeyen dilin potansiyel olma durumunu gösterir.
-- `Category3`belirli durumlarda rahatsız edici olarak değerlendirilen dilin potansiyel olma durumunu ifade eder.
-- `Score`0 ile 1 arasındadır. Puan arttıkça, modelin daha yüksek olması kategorinin uygulanabilir olabileceğini tahmin edilir. Bu özellik el ile kodlanmış sonuçlar yerine istatistiksel bir model kullanır. Her kategorinin gereksinimlerinize göre nasıl hizalanacağını öğrenmek için kendi içeriklerinizi test etmenizi öneririz.
-- `ReviewRecommended`, iç puan eşiklerine bağlı olarak doğru ya da yanlış şeklindedir. Müşteriler, bu değerin kullanılıp kullanılmayacağını ya da içerik ilkelerine bağlı olarak özel eşiklere karar vermesini değerlendirmelidir.
+- `Category1` belirli durumlarda cinsel açık veya yetişkin olarak değerlendirilen dilin potansiyel olma durumunu ifade eder.
+- `Category2` , belirli durumlarda cinsel veya kötü bir şekilde düşünülmeyen dilin potansiyel olma durumunu gösterir.
+- `Category3` belirli durumlarda rahatsız edici olarak değerlendirilen dilin potansiyel olma durumunu ifade eder.
+- `Score` 0 ile 1 arasındadır. Puan arttıkça, modelin daha yüksek olması kategorinin uygulanabilir olabileceğini tahmin edilir. Bu özellik el ile kodlanmış sonuçlar yerine istatistiksel bir model kullanır. Her kategorinin gereksinimlerinize göre nasıl hizalanacağını öğrenmek için kendi içeriklerinizi test etmenizi öneririz.
+- `ReviewRecommended` , iç puan eşiklerine bağlı olarak doğru ya da yanlış şeklindedir. Müşteriler, bu değerin kullanılıp kullanılmayacağını ya da içerik ilkelerine bağlı olarak özel eşiklere karar vermesini değerlendirmelidir.
 
 ## <a name="personal-data"></a>Kişisel veriler
 

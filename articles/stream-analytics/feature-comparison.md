@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.openlocfilehash: 2ba7dc3b0f2bc4f62234c480da0af1061dea1f91
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90885574"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Azure Stream Analytics özelliği karşılaştırması
@@ -23,48 +23,48 @@ Azure Stream Analytics, bulutta ve IoT Edge [Azure Portal](stream-analytics-quic
 ## <a name="cloud-job-features"></a>Bulut işi özellikleri
 
 
-|Öne çıkan özelliği  |Portal  |Visual Studio  |Visual Studio Code  |
+|Özellik  |Portal  |Visual Studio  |Visual Studio Code  |
 |---------|---------|---------|---------|
 |Platformlar arası     |Mac</br>Linux</br>Windows         |Windows        |Mac</br>Linux</br>Windows          |
-|Betik yazma     |Yes         |Yes         |Yes         |
+|Betik yazma     |Evet         |Evet         |Evet         |
 |Betik IntelliSense     |Söz dizimi vurgulama         |Söz dizimi vurgulama</br>Kod tamamlama</br>Hata işaretçisi         |Söz dizimi vurgulama</br>Kod tamamlama</br>Hata işaretçisi         |
-|Tüm giriş, çıkış ve iş yapılandırması türlerini tanımlayın     |Yes         |Yes         |Yes         |
-|Kaynak denetimi     |Hayır         |Yes         |Yes         |
-|CI/CD desteği     |Kısmi         |Yes         |Yes         |
-|Birden çok sorgu arasında girişleri ve çıkışları paylaşma     |Hayır         |Yes         |Yes         |
-|Örnek dosya ile sorgu testi     |Yes         |Yes        |Yes         |
-|Canlı veri yerel testi     |Hayır         |Yes       |Yes      |
-|İşleri listeleme ve iş varlıklarını görüntüleme     |Yes         |Yes        |Yes         |
-|Yerel bir projeye bir işi dışarı aktarma     |Hayır         |Yes         |Yes         |
-|İşleri gönderme, başlatma ve durdurma     |Yes         |Yes         |Yes         |
-|İş ölçümlerini ve Diyagramı görüntüleme     |Yes         |Yes         |Portalda açma         |
-|İş çalışma zamanı hatalarını görüntüleme     |Yes         |Yes         |Hayır         |
-|Kaynak günlükleri     |Yes         |Hayır         |Hayır         |
-|Özel ileti özellikleri     |Yes         |Yes         |Hayır       |
-|C# özel kod işlevi ve seri hale getirici|Salt okunurdur modu|Yes|Hayır|
-|JavaScript UDF ve UDA     |Yes         |Yes         |Yalnızca Windows         |
-|Machine Learning Hizmeti     |Yes        |Yes         |Hayır         |
-|Machine Learning Studio     |Evet, ancak sorgu test edilemez        |Yes |Hayır         |
+|Tüm giriş, çıkış ve iş yapılandırması türlerini tanımlayın     |Evet         |Evet         |Evet         |
+|Kaynak denetimi     |Hayır         |Evet         |Evet         |
+|CI/CD desteği     |Kısmi         |Evet         |Evet         |
+|Birden çok sorgu arasında girişleri ve çıkışları paylaşma     |Hayır         |Evet         |Evet         |
+|Örnek dosya ile sorgu testi     |Evet         |Evet        |Evet         |
+|Canlı veri yerel testi     |Hayır         |Evet       |Evet      |
+|İşleri listeleme ve iş varlıklarını görüntüleme     |Evet         |Evet        |Evet         |
+|Yerel bir projeye bir işi dışarı aktarma     |Hayır         |Evet         |Evet         |
+|İşleri gönderme, başlatma ve durdurma     |Evet         |Evet         |Evet         |
+|İş ölçümlerini ve Diyagramı görüntüleme     |Evet         |Evet         |Portalda açma         |
+|İş çalışma zamanı hatalarını görüntüleme     |Evet         |Evet         |Hayır         |
+|Kaynak günlükleri     |Evet         |Hayır         |Hayır         |
+|Özel ileti özellikleri     |Evet         |Evet         |Hayır       |
+|C# özel kod işlevi ve seri hale getirici|Salt okunurdur modu|Evet|Hayır|
+|JavaScript UDF ve UDA     |Evet         |Evet         |Yalnızca Windows         |
+|Machine Learning Hizmeti     |Evet        |Evet         |Hayır         |
+|Machine Learning Studio     |Evet, ancak sorgu test edilemez        |Evet |Hayır         |
 |Uyumluluk düzeyi     |1.0</br>1.1</br>1,2 (varsayılan)         |1.0</br>1.1</br>1,2 (varsayılan)           |1.0</br>1.1</br>1,2 (varsayılan)           |
-|Yerleşik ML tabanlı anomali algılama işlevleri     |Yes         |Yes         |Yes         |
-|Yerleşik Jeo-uzamsal işlevler     |Yes         |Yes         |Yes         |
+|Yerleşik ML tabanlı anomali algılama işlevleri     |Evet         |Evet         |Evet         |
+|Yerleşik Jeo-uzamsal işlevler     |Evet         |Evet         |Evet         |
 
 
 
 ## <a name="iot-edge-job-features"></a>IoT Edge iş özellikleri
 
-|Öne çıkan özelliği  |Portal  |Visual Studio  |Visual Studio Code  |
+|Özellik  |Portal  |Visual Studio  |Visual Studio Code  |
 |---------|---------|---------|---------|
-|İş yazma     |Yes         |Yes         |Hayır         |
-|Kaynak denetimi     |Hayır         |Yes         |Hayır         |
-|Yerel bir projeye bir işi dışarı aktarma     |Hayır         |Yes         |Hayır         |
-|Örnek dosya ile sorgu testi     |Yes         |Yes         |Hayır         |
-|Birden çok sorgu arasında girişleri ve çıkışları paylaşma     |Hayır         |Yes         |Hayır         |
-|C# UDF     |Hayır         |Yes         |Hayır         |
-|İşleri gönder     |Yes         |Yes         |Hayır         |
-|İşleri listeleme ve iş varlıklarını görüntüleme     |Yes         |Yes         |Hayır         |
-|İş ölçümlerini ve Diyagramı görüntüleme     |Yes         |Kısmi         |Hayır         |
-|İş çalışma zamanı hatalarını görüntüleme     |Yes         |Kısmi         |Hayır         |
+|İş yazma     |Evet         |Evet         |Hayır         |
+|Kaynak denetimi     |Hayır         |Evet         |Hayır         |
+|Yerel bir projeye bir işi dışarı aktarma     |Hayır         |Evet         |Hayır         |
+|Örnek dosya ile sorgu testi     |Evet         |Evet         |Hayır         |
+|Birden çok sorgu arasında girişleri ve çıkışları paylaşma     |Hayır         |Evet         |Hayır         |
+|C# UDF     |Hayır         |Evet         |Hayır         |
+|İşleri gönder     |Evet         |Evet         |Hayır         |
+|İşleri listeleme ve iş varlıklarını görüntüleme     |Evet         |Evet         |Hayır         |
+|İş ölçümlerini ve Diyagramı görüntüleme     |Evet         |Kısmi         |Hayır         |
+|İş çalışma zamanı hatalarını görüntüleme     |Evet         |Kısmi         |Hayır         |
 |CI/CD desteği     |Hayır         |Hayır         |Hayır         |
 
 

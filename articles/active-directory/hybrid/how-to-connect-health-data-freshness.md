@@ -16,10 +16,10 @@ ms.date: 02/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 63d1d87d9b576a8e181b5b339052a6b6512f18a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85359237"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>Sistem sağlığı hizmeti verileri güncel değil uyarısı
@@ -43,12 +43,12 @@ Aşağıdaki tabloda, hizmet türleri ilgili gerekli veri türleriyle eşlenir:
 
 | Hizmet türü | Aracı (Windows hizmeti adı) | Amaç | Oluşturulan veri türü  |
 | --- | --- | --- | --- |  
-| Azure AD Connect (eşitleme) | Azure AD Connect Health Eşitleme Öngörü Hizmeti | AAD Connect 'e özgü bilgileri toplayın (bağlayıcılar, eşitleme kuralları vb.) | -AadSyncService-SynchronizationRules <br />  -AadSyncService-bağlayıcılar <br /> -AadSyncService-GlobalConfigurations  <br />  -AadSyncService-RunProfileResults <br /> -AadSyncService-ServiceConfigurations <br /> -AadSyncService-ServiceStatus   |
+| Azure AD Connect (eşitleme) | Azure AD Connect Health Eşitleme Öngörü Hizmeti | AAD Connect 'e özgü bilgileri toplayın (bağlayıcılar, eşitleme kuralları vb.) | -AadSyncService-SynchronizationRules <br />  -AadSyncService-Connectors <br /> -AadSyncService-GlobalConfigurations  <br />  -AadSyncService-RunProfileResults <br /> -AadSyncService-ServiceConfigurations <br /> -AadSyncService-ServiceStatus   |
 |  | Azure AD Connect Health Eşitleme İzleme Hizmeti | AAD Connect 'e özgü performans sayaçlarını, ETW izlemelerini, dosyaları toplayın | Performans sayacı |
 | AD DS | Azure AD Connect Health AD DS Insights Hizmeti | Yapay testler gerçekleştirme, topoloji bilgilerini toplama, çoğaltma meta verileri |  -Ekler-Topologyıınfo-JSON <br /> -Common-TestData-JSON (test sonuçlarını oluşturur)   | 
 |  | Azure AD Connect Health AD DS İzleme Hizmeti | EKLEMELERI özel performans sayaçlarını, ETW izlemelerini, dosyaları toplayın | -Performans sayacı  <br /> -Common-TestData-JSON (test sonuçlarını yükler)  |
 | AD FS | Azure AD Connect Health AD FS Tanılama Hizmeti | Yapay testler gerçekleştirme | TestResult (test sonuçlarını oluşturur) | 
-| | Azure AD Connect Health AD FS Öngörü Hizmeti  | ADFS kullanım ölçümlerini topla | ADFS Usage ölçümleri |
+| | Azure AD Connect Health AD FS Öngörü Hizmeti  | ADFS kullanım ölçümlerini topla | Adfs-UsageMetrics |
 | | Azure AD Connect Health AD FS İzleme Hizmeti | ADFS 'e özgü performans sayaçlarını, ETW izlemelerini, dosyaları toplayın | TestResult (test sonuçlarını yükler) |
 
 ## <a name="troubleshooting-steps"></a>Sorun giderme adımları 
@@ -58,8 +58,8 @@ Sorunu tanılamak için gereken adımlar aşağıda verilmiştir. İlki, tüm hi
 > [!IMPORTANT] 
 > Bu uyarı, durum [verilerini bekletme Ilkesi](reference-connect-health-user-privacy.md#data-retention-policy) bağlantısını izler
 
-* Aracıların en son sürümlerinin yüklü olduğundan emin olun. [Yayın geçmişini](reference-connect-health-version-history.md)görüntüleyin. 
-* Makinede Azure AD Connect Health Agents hizmetlerinin **çalıştığından** emin olun. Örneğin, AD FS için Connect Health üç hizmete sahip olmalıdır.
+* Aracıların en son sürümlerinin yüklü olduğundan emin olun. [Sürüm yayınlama geçmişini](reference-connect-health-version-history.md) görüntüleyin. 
+* Makinede Azure AD Connect Health Aracıları hizmetlerinin **çalıştığından** emin olun. Örneğin AD FS için Connect Health'in üç hizmeti olmalıdır.
   ![Azure AD Connect Health'i doğrulama](./media/how-to-connect-health-agent-install/install5.png)
 
 * [Gereksinimler bölümünü](how-to-connect-health-agent-install.md#requirements)ziyaret edin ve bunları karşıladığınızdan emin olun.

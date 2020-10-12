@@ -10,10 +10,10 @@ ms.date: 02/28/2020
 ms.reviewer: jushiman
 ms.custom: avverma
 ms.openlocfilehash: 45c316c1d1dd56f6d920423a725b2488df1a5032
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86527430"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümeleri için otomatik örnek onarımları
@@ -257,7 +257,7 @@ Otomatik onarımın durumunu ayarlamak için, bir sanal makine ölçek kümesind
 }
 ```
 
-### <a name="azure-cli"></a>Azure CLI’si 
+### <a name="azure-cli"></a>Azure CLI 
 
 Otomatik örnek onarımlarını için *ServiceState* 'i görüntülemek için [Get-Instance-View](/cli/azure/vmss?view=azure-cli-latest#az-vmss-get-instance-view) cmdlet 'ini kullanın. 
 
@@ -287,7 +287,7 @@ Get-AzVmss `
     -InstanceView
 ```
 
-Otomatik örnek onarımları için *ServiceState* 'i güncelleştirmek için set-AzVmssOrchestrationServiceState cmdlet 'ini kullanın. Ölçek kümesi otomatik onarma özelliğini kabul ettiğinde, ölçek kümesi için otomatik onarımları askıya almak veya yeniden başlatmak üzere bu cmdlet 'i kullanabilirsiniz.
+Otomatik örnek onarımları için *ServiceState* 'i güncelleştirmek üzere Set-AzVmssOrchestrationServiceState cmdlet 'ini kullanın. Ölçek kümesi otomatik onarma özelliğini kabul ettiğinde, ölçek kümesi için otomatik onarımları askıya almak veya yeniden başlatmak üzere bu cmdlet 'i kullanabilirsiniz.
 
 ```azurepowershell-interactive
 Set-AzVmssOrchestrationServiceState `

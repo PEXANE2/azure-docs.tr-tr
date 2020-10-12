@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 42f6107ff79d6262cdc0a35cf972cf65d3a9a802
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171389"
 ---
 # <a name="security-and-authentication"></a>Güvenlik ve kimlik doğrulaması
@@ -35,7 +35,7 @@ Aşağıdaki bölümlerde bu ayarların güvenliğinin nasıl sağlandığı ve 
 
 Event Grid modülü hem HTTP hem de HTTPS uç noktalarını barındırır. Her IoT Edge modüle IoT Edge güvenlik arka plan programı tarafından bir sunucu sertifikası atanır. Uç noktanın güvenliğini sağlamak için sunucu sertifikasını kullanıyoruz. Süre dolduğunda, modül IoT Edge güvenlik arka plan programından yeni bir sertifikayla otomatik olarak yenilenir.
 
-Varsayılan olarak, yalnızca HTTPS iletişimine izin verilir. Bu davranışı **inbound__serverAuth__tlsPolicy** yapılandırma aracılığıyla geçersiz kılabilirsiniz. Aşağıdaki tablo bu özelliğin olası değerlerini yakalar.
+Varsayılan olarak, yalnızca HTTPS iletişimine izin verilir. Bu davranışı  **inbound__serverAuth__tlsPolicy** yapılandırma aracılığıyla geçersiz kılabilirsiniz. Aşağıdaki tablo bu özelliğin olası değerlerini yakalar.
 
 | Olası değer(ler) | Açıklama |
 | ---------------- | ------------ |

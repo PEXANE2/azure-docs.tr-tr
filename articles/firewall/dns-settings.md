@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: 9c7182205df8d276bece4758d6d4430864883d32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85610651"
 ---
 # <a name="azure-firewall-dns-settings-preview"></a>Azure Güvenlik duvarı DNS ayarları (Önizleme)
@@ -30,7 +30,7 @@ DNS sunucusu, etki alanı adlarını IP adreslerine tutar ve çözümler. Azure 
 
 1. Azure Güvenlik Duvarı **ayarları**altında **DNS ayarları**' nı seçin.
 2. **DNS sunucuları**altında, sanal ağınızda daha önce BELIRTILEN mevcut DNS sunucularını yazabilir veya ekleyebilirsiniz.
-3. **Kaydet**'i seçin.
+3. **Kaydet**’i seçin.
 4. Güvenlik duvarı artık, DNS trafiğini ad çözümlemesi için belirtilen DNS sunucusuna yönlendirir.
 
 :::image type="content" source="media/dns-settings/dns-servers.png" alt-text="DNS sunucuları":::
@@ -56,7 +56,7 @@ DNS proxy 'yi yapılandırmak için, sanal ağ DNS sunucularınız ayarınızı 
 2. **Ayarlar**altında, **DNS sunucuları**' nı seçin.
 3. **DNS sunucuları**altında **özel** ' i seçin.
 4. Güvenlik duvarının özel IP adresini girin.
-5. **Kaydet**'i seçin.
+5. **Kaydet**’i seçin.
 
 #### <a name="enable-dns-proxy-preview"></a>DNS proxy 'yi etkinleştir (Önizleme)
 
@@ -64,9 +64,9 @@ DNS proxy 'yi yapılandırmak için, sanal ağ DNS sunucularınız ayarınızı 
 2. **Ayarlar**altında **DNS ayarları**' nı seçin.
 3. **DNS proxy** varsayılan olarak devre dışıdır. Etkinleştirildiğinde güvenlik duvarı, 53 numaralı bağlantı noktasını dinler ve DNS isteklerini yapılandırılmış DNS sunucularına iletir.
 4. Ayarların ortamınıza uygun olduğundan emin olmak için **DNS sunucularının** yapılandırmasını gözden geçirin.
-5. **Kaydet**'i seçin.
+5. **Kaydet**’i seçin.
 
-:::image type="content" source="media/dns-settings/dns-proxy.png" alt-text="DNS proxy 'si":::
+:::image type="content" source="media/dns-settings/dns-proxy.png" alt-text="DNS sunucuları":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

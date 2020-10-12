@@ -10,10 +10,10 @@ author: stevestein
 ms.author: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: 1ec9884dbb8c3d02caaa7d8621905a32e7b1e36a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84047548"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Azure SQL Veritabanı ile ölçek genişletme
@@ -22,7 +22,7 @@ ms.locfileid: "84047548"
 **Elastik veritabanı** araçlarını kullanarak Azure SQL veritabanı 'nda veritabanlarını kolayca ölçeklendirebilirsiniz. Bu araçlar ve özellikler, işlemsel iş yükleri ve özellikle hizmet olarak yazılım (SaaS) uygulamaları için çözümler oluşturmak üzere **Azure SQL veritabanı** 'nın veritabanı kaynaklarını kullanmanıza olanak sağlar. Elastik veritabanı özellikleri şunlardan oluşur:
 
 * [Elastik veritabanı istemci kitaplığı](elastic-database-client-library.md): istemci kitaplığı, parçalı veritabanları oluşturmanıza ve bakımını yapmanıza olanak tanıyan bir özelliktir.  Bkz. [elastik veritabanı araçlarını kullanmaya başlama](elastic-scale-get-started.md).
-* [Elastik veritabanı bölünmüş birleştirme aracı](elastic-scale-overview-split-and-merge.md): verileri parçalı veritabanları arasında taşıdı. Bu araç, verileri çok kiracılı bir veritabanından tek kiracılı bir veritabanına (veya tam tersi) taşımak için faydalıdır. Bkz. [elastik veritabanı bölünmüş birleştirme araç öğreticisi](elastic-scale-configure-deploy-split-and-merge.md).
+* [Elastik veritabanı bölünmüş birleştirme aracı](elastic-scale-overview-split-and-merge.md): verileri parçalı veritabanları arasında taşıdı. Bu araç, verileri çok kiracılı bir veritabanından tek kiracılı bir veritabanına (veya tam tersi) taşımak için faydalıdır. Bkz. [elastik veritabanı Split-Merge araç öğreticisi](elastic-scale-configure-deploy-split-and-merge.md).
 * [Elastik veritabanı işleri](elastic-jobs-overview.md): Azure SQL veritabanı 'nda çok sayıda veritabanını yönetmek için işleri kullanın. İşleri kullanarak şema değişiklikleri, kimlik bilgileri yönetimi, başvuru veri güncelleştirmeleri, performans verileri toplama veya kiracı (müşteri) telemetri koleksiyonu gibi yönetim işlemlerini kolayca gerçekleştirin.
 * [Elastik veritabanı sorgusu](elastic-query-overview.md) (Önizleme): birden çok veritabanına yayılan bir Transact-SQL sorgusu çalıştırmanızı sağlar. Bu, Excel, Power BI, Tableau vb. gibi raporlama araçlarına bağlantı sağlar.
 * [Elastik işlemler](elastic-transactions-overview.md): Bu özellik, birkaç veritabanına yayılan işlemleri çalıştırmanızı sağlar. Esnek veritabanı işlemleri, ADO .NET kullanan .NET uygulamalarında kullanılabilir ve [System. Transaction sınıflarını](https://msdn.microsoft.com/library/system.transactions.aspx)kullanarak tanıdık programlama deneyimiyle tümleştirilebilir.
@@ -67,7 +67,7 @@ Dikey ölçeklendirme, "ölçeği artırma" olarak da bilinen tek bir veritaban�
 
 ## <a name="sharding"></a>Parçalama
 
-*Parçalama*, aynı yapıya sahip büyük miktarlardaki verilerin bağımsız veritabanlarına dağıtılmasını kapsayan bir tekniktir. Özellikle, son müşteriler veya işletmeler için hizmet olarak yazılım (SAAS) teklifleri oluşturan bulut geliştiricileri ile yaygındır. Bu son müşteriler genellikle "kiracılar" olarak adlandırılır. Parçalama, herhangi bir sayıda nedenden dolayı gerekebilir:  
+Parçalama *, büyük* miktarlarda özdeş yapılandırılmış verileri bir dizi bağımsız veritabanına dağıtmaya yönelik bir tekniktir. Özellikle, son müşteriler veya işletmeler için hizmet olarak yazılım (SAAS) teklifleri oluşturan bulut geliştiricileri ile yaygındır. Bu son müşteriler genellikle "kiracılar" olarak adlandırılır. Parçalama, herhangi bir sayıda nedenden dolayı gerekebilir:  
 
 * Toplam veri miktarı tek bir veritabanının kısıtlamalarına sığmayacak kadar büyük
 * Genel iş yükünün işlem performansı tek bir veritabanının yeteneklerini aşıyor
