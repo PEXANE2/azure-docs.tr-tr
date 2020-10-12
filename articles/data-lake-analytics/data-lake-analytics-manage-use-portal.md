@@ -8,10 +8,10 @@ ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: how-to
 ms.date: 12/05/2016
 ms.openlocfilehash: cbce903bc7463cd917d48e341614afbe18536262
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87531229"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Azure Data Lake Analytics'i Azure portalını kullanarak yönetme
@@ -27,7 +27,7 @@ Bu makalede, Azure portal kullanılarak Azure Data Lake Analytics hesaplarının
 
 ### <a name="create-an-account"></a>Hesap oluşturma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. **Kaynak oluştur**  >  **Intelligence + Analytics**  >  **Data Lake Analytics**' a tıklayın.
 3. Aşağıdaki öğeler için değerleri seçin: 
    1. **Ad**: Data Lake Analytics hesabının adı.
@@ -53,7 +53,7 @@ Bir Data Lake Analytics hesabını silmeden önce varsayılan Data Lake Store he
 
 Data Lake Analytics aşağıdaki veri kaynaklarını destekler:
 
-* Data Lake Store
+* Data Lake Storage
 * Azure Storage
 
 Veri kaynaklarına gitmek ve temel dosya yönetimi işlemlerini gerçekleştirmek için Veri Gezgini kullanabilirsiniz. 
@@ -91,9 +91,9 @@ Yeni Data Lake kullanıcılarını kolayca sağlamak için **Kullanıcı ekleme 
 7. Seçtiğiniz tüm değişiklikleri gözden geçirin ve ardından **Çalıştır**' a tıklayın.
 8. Sihirbaz tamamlandığında **bitti**' ye tıklayın.
 
-## <a name="manage-role-based-access-control"></a>Rol tabanlı Access Control yönetme
+## <a name="manage-role-based-access-control"></a>Role-Based Access Control Yönet
 
-Diğer Azure hizmetleri gibi, kullanıcıların hizmetle nasıl etkileşime gireceğini denetlemek için rol tabanlı Access Control (RBAC) kullanabilirsiniz.
+Diğer Azure hizmetleri gibi, kullanıcıların hizmetle nasıl etkileşime gireceğini denetlemek için Role-Based Access Control (RBAC) kullanabilirsiniz.
 
 Standart Azure rolleri aşağıdaki yeteneklere sahiptir:
 * **Sahip**: işleri gönderebilir, işleri izleyebilir, herhangi bir kullanıcının işini iptal edebilir ve hesabı yapılandırabilir.

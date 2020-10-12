@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
 ms.openlocfilehash: 8ee6449f357a578b30809bb03723ac1556e4f459
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88816210"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>Mobility hizmeti anında yükleme sorunlarını giderme
@@ -226,7 +226,7 @@ Birden çok önyükleme diskine sahip bir sanal makine [desteklenen bir yapılan
 
 Genel Birleşik önyükleme yükleyicisi (GRUB) yapılandırma dosyaları (_/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/Boot/GRUB2/grub.cfg_veya _/etc/default/grub_), parametre **kökünün** değerini içerebilir ve evrensel benzersiz tanımlayıcı (UUID) yerine gerçek cihaz adları olarak **sürdürülür** . VM 'nin yeniden başlatılması sırasında cihaz adlarının değiştirebilmeleri için UUID 'nin yaklaşımını Site Recovery. Örneğin, VM, yük devretme sırasında aynı ada sahip ve sorunlara neden olan bir ad ile çevrimiçi olamıyor olabilir.
 
-Örnek:
+Örneğin:
 
 - Aşağıdaki satır, GRUB dosyası _/Boot/GRUB2/grub.cfg_:
 
@@ -245,7 +245,7 @@ Cihaz adları karşılık gelen UUID ile değiştirilmelidir.
 
 1. Komutu yürüterek cihazın UUID 'sini bulun `blkid \<device name>` .
 
-   Örnek:
+   Örneğin:
 
    ```shell
    blkid /dev/sda1

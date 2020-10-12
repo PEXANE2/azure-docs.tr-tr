@@ -4,10 +4,10 @@ description: Azure Event Grid iş ortağı konu türü olarak ekleme. İş orta�
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 36f2178b7c21af016f9074d6f973a01cedb873d7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87826798"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner"></a>Azure Event Grid iş ortağı olarak ekleme
@@ -59,7 +59,7 @@ Ortak bir Event Grid iş ortağı olmak istiyorsanız, [Bu formu](https://aka.ms
 Aşağıdaki kaynak modeli iş ortağı konuları içindir.
 
 ### <a name="partner-registrations"></a>İş ortağı kayıtları
-* Kaynak`partnerRegistrations`
+* Kaynak `partnerRegistrations`
 * Kullanan: Iş ortakları
 * Açıklama: hizmet olarak yazılım (SaaS) iş ortağının genel meta verilerini yakalar (örneğin, ad, görünen ad, açıklama, kurulum URI 'SI).
     
@@ -75,13 +75,13 @@ Aşağıdaki kaynak modeli iş ortağı konuları içindir.
 * Kapsam: iş ortağının aboneliğinde bulunur.
 
 ### <a name="event-channel"></a>Olay kanalı
-* Kaynak`partnerNamespaces/eventChannels`
+* Kaynak `partnerNamespaces/eventChannels`
 * Kullanan: Iş ortakları
 * Açıklama: olay tünelleri, müşterinin iş ortağı konusunun bir yansımasıdır. Bir olay tüneli oluşturarak ve müşterinin Azure aboneliğini ve kaynak grubunu meta verilerde belirterek, müşteri için bir iş ortağı konusu oluşturmak üzere Event Grid ' ı işaret edersiniz. Event Grid müşterinin aboneliğine karşılık gelen bir partneri konusu oluşturmak için ARM çağrısı yayınlar. İş ortağı konusu, bekleyen bir durumda oluşturulur. Her bir olay tüneli ve iş ortağı konusu arasında bire bir bağlantı vardır.
 * Kapsam: iş ortağının aboneliğinde bulunur.
 
 ### <a name="partner-topics"></a>İş ortağı konuları
-* Kaynak`partnerTopics`
+* Kaynak `partnerTopics`
 * Kullanan: müşteriler
 * Açıklama: Iş ortağı konuları Event Grid içindeki özel konulara ve sistem konularına benzer. Her iş ortağı konusu belirli bir kaynak (örneğin, `Contoso:myaccount` ) ve belirli bir iş ortağı konu türü (örneğin, Contoso) ile ilişkilendirilir. Müşteriler, olayları çeşitli olay işleyicilerine yönlendirmek için iş ortağı konusunda olay abonelikleri oluşturur.
 
@@ -89,9 +89,9 @@ Aşağıdaki kaynak modeli iş ortağı konuları içindir.
 * Kapsam: müşterinin aboneliğinde bulunur.
 
 ### <a name="partner-topic-types"></a>İş ortağı konu türleri
-* Kaynak`partnerTopicTypes`
+* Kaynak `partnerTopicTypes`
 * Kullanan: müşteriler
-* Açıklama: Iş ortağı konu türleri, müşterilerin onaylanan iş ortağı konu türleri listesini bulmasını sağlayan kiracı genelinde kaynak türleridir. URL şöyle görünürhttps://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes)
+* Açıklama: Iş ortağı konu türleri, müşterilerin onaylanan iş ortağı konu türleri listesini bulmasını sağlayan kiracı genelinde kaynak türleridir. URL şöyle görünür https://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes)
 * Kapsam: genel
 
 ## <a name="publish-events-to-event-grid"></a>Olayları Event Grid yayımlayın
@@ -105,7 +105,7 @@ CloudEvents 1,0 şemasını kullanarak olayları Azure Event Grid yayımlayın. 
 1.  Yayımlama hizmeti bir HTTP GÖNDERISINI `https://contoso.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01` .
 1.  İstekte, kimlik doğrulaması için bir anahtar içeren AEG-SAS-Key adlı bir başlık değeri ekleyin. Bu anahtar, iş ortağı ad alanının oluşturulması sırasında sağlanır. Örneğin, geçerli bir üst bilgi değeri AEG-SAS-Key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg = = olur.
 1.  Content-Type üstbilgisini "Application/cloudevents-Batch + JSON" olarak ayarlayın. charset = UTF-8A ".
-1.  Yayımlama URL 'sinde, bu bölgeye karşılık gelen bir olay toplu iş içeren bir HTTP POST işlemi gerçekleştirin. Örnek:
+1.  Yayımlama URL 'sinde, bu bölgeye karşılık gelen bir olay toplu iş içeren bir HTTP POST işlemi gerçekleştirin. Örneğin:
 
 ``` json
 [
@@ -150,7 +150,7 @@ PartnerNamespace uç noktasına gönderdikten sonra bir yanıt alırsınız. Yan
 | Geçersiz uç nokta                 | 404 Bulunamadı         |
 | Dizi veya olay boyut sınırlarını aşıyor | 413 yükü çok büyük |
 
-## <a name="references"></a>Referanslar
+## <a name="references"></a>Başvurular
 
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
   * [ARM şablonu](/azure/templates/microsoft.eventgrid/allversions)

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: kumud
 ms.openlocfilehash: 664e3851370be812cd7a0e58cf9beb1fddb5d991
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87291007"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Rota tablosu oluşturma, değiştirme veya silme
@@ -87,7 +87,7 @@ Ortak Azure ayarları hakkında daha fazla bilgi edinmek için aşağıdaki bilg
 
 - [Etkinlik günlüğü](../azure-monitor/platform/platform-logs-overview.md)
 - [Erişim denetimi (IAM)](../role-based-access-control/overview.md)
-- [Etiketler](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Lerimi](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Kilitler](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Otomasyon betiği](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -127,7 +127,7 @@ En yaygın değişiklikler, rotalar [eklemek](#create-a-route) , yönlendirmeler
 
 1. **Yol tablosu**' nda alt ağla ilişkilendirmek istediğiniz yol tablosunu seçin.
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 Sanal ağınız bir Azure VPN Gateway 'e bağlıysa, bir yol tablosunu *0.0.0.0/0*hedefine sahip bir yol içeren [ağ geçidi alt ağıyla](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) ilişkilendirmeyin. Bunun yapılması, ağ geçidinin düzgün çalışmasını engelleyebilir. Bir rotada *0.0.0.0/0* kullanma hakkında daha fazla bilgi için bkz. [sanal ağ trafiği yönlendirme](virtual-networks-udr-overview.md#default-route).
 
@@ -152,7 +152,7 @@ Bir alt ağdan yol tablosunun ilişkilendirmesini kaldırdığınızda, Azure tr
 
 1. **Yol tablosunda** **hiçbiri**' ni seçin.
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ### <a name="dissociate-a-route-table---commands"></a>Rota tablosunun ilişkilendirmesini kaldırma-komutlar
 
@@ -190,7 +190,7 @@ Yol tablosu başına her bir Azure konumu ve aboneliği için kaç yol oluştura
 
 1. Yol tablosu içindeki yol için benzersiz bir **yol adı** girin.
 
-1. Trafiği yönlendirmek istediğiniz, sınıfsız etki alanları arası yönlendirme (CıDR) gösteriminde **Adres önekini**girin. Ön ek, yol tablosu içinde birden fazla rotada çoğaltılamaz, ancak ön ek başka bir ön ek içinde olabilir. Örneğin, bir rotada önek olarak *10.0.0.0/16* tanımladıysanız, *10.0.0.0/22* adres ön ekine sahip başka bir yol tanımlayabilirsiniz. Azure, en uzun ön ek eşleşmesi temelinde trafik için bir yol seçer. Daha fazla bilgi için bkz. [Azure 'un bir yolu nasıl seçtiği](virtual-networks-udr-overview.md#how-azure-selects-a-route).
+1. Trafiği yönlendirmek istediğiniz, sınıfsız Inter-Domain yönlendirme (CıDR) gösteriminde **Adres önekini**girin. Ön ek, yol tablosu içinde birden fazla rotada çoğaltılamaz, ancak ön ek başka bir ön ek içinde olabilir. Örneğin, bir rotada önek olarak *10.0.0.0/16* tanımladıysanız, *10.0.0.0/22* adres ön ekine sahip başka bir yol tanımlayabilirsiniz. Azure, en uzun ön ek eşleşmesi temelinde trafik için bir yol seçer. Daha fazla bilgi için bkz. [Azure 'un bir yolu nasıl seçtiği](virtual-networks-udr-overview.md#how-azure-selects-a-route).
 
 1. **Sonraki atlama türünü**seçin. Sonraki atlama türleri hakkında daha fazla bilgi için bkz. [sanal ağ trafiği yönlendirme](virtual-networks-udr-overview.md).
 
@@ -333,7 +333,7 @@ Kısa bir bekleme sonrasında Azure, sonraki atlama türünü ve trafiği yönle
 
 Rota tablolarında ve rotalarındaki görevleri yapmak için, hesabınız [ağ katılımcısı rolüne](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) veya aşağıdaki tabloda listelenen uygun eylemlere atanmış özel bir [role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) atanmalıdır:
 
-| Eylem                                                          |   Ad                                                  |
+| Eylem                                                          |   Adı                                                  |
 |--------------------------------------------------------------   |   -------------------------------------------           |
 | Microsoft. Network/routeTables/Read                              |   Rota tablosu okuma                                    |
 | Microsoft. Network/routeTables/Write                             |   Rota tablosu oluşturma veya güncelleştirme                        |

@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 0c5abf345fda9db4cc5123360245e42ea0ef40e1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88115042"
 ---
 # <a name="whats-new-for-authentication"></a>Kimlik doğrulaması yenilikleri nelerdir?
@@ -69,7 +69,7 @@ Doğrudan Azure AD 'de oturum açmak için 256 karakterden daha uzun parolalara 
 
 Oturum açma günlüklerinde hata AADSTS 50052: ınvalidpasswordexceedsmaxlength olur
 
-İleti:`The password entered exceeds the maximum length of 256. Please reach out to your admin to reset the password.`
+İleti: `The password entered exceeds the maximum length of 256. Please reach out to your admin to reset the password.`
 
 Düzeltmesi
 
@@ -127,7 +127,7 @@ Bu sorunu çözmek için, kiracınızda istemci uygulama hizmeti sorumlusunu olu
 
 #### <a name="example-request"></a>Örnek istek
 
-`https://login.microsoftonline.com/contoso.com/oauth2/authorize?resource=https://gateway.contoso.com/api&response_type=token&client_id=14c88eee-b3e2-4bb0-9233-f5e3053b3a28&...`Bu örnekte, kaynak kiracısı (yetkili) contoso.com, kaynak uygulaması contoso kiracısı için çağrılan tek kiracılı bir uygulamadır `gateway.contoso.com/api` ve istemci uygulaması olur `14c88eee-b3e2-4bb0-9233-f5e3053b3a28` .  İstemci uygulamasının Contoso.com içinde bir hizmet sorumlusu varsa, bu istek devam edebilir.  Ancak yoksa, istek yukarıdaki hata ile başarısız olur.
+`https://login.microsoftonline.com/contoso.com/oauth2/authorize?resource=https://gateway.contoso.com/api&response_type=token&client_id=14c88eee-b3e2-4bb0-9233-f5e3053b3a28&...` Bu örnekte, kaynak kiracısı (yetkili) contoso.com, kaynak uygulaması contoso kiracısı için çağrılan tek kiracılı bir uygulamadır `gateway.contoso.com/api` ve istemci uygulaması olur `14c88eee-b3e2-4bb0-9233-f5e3053b3a28` .  İstemci uygulamasının Contoso.com içinde bir hizmet sorumlusu varsa, bu istek devam edebilir.  Ancak yoksa, istek yukarıdaki hata ile başarısız olur.
 
 Contoso Gateway uygulaması çok kiracılı bir uygulamatı, ancak, Contoso.com içinde hizmet sorumlusu olan istemci uygulamasına bakılmaksızın istek devam eder.
 

@@ -5,15 +5,15 @@ ms.topic: conceptual
 ms.date: 06/17/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: e76287c4524831a84a22fb23ddf8a5fdee8bc12b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87827291"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Beklenmeyen değişiklikleri önlemek için kaynakları kilitleme
 
-Bir yönetici olarak kuruluşunuzdaki diğer kullanıcıların kritik kaynakları yanlışlıkla silmesini veya değiştirmesini önlemek için bir aboneliği, kaynak grubunu veya kaynağı kilitlemeniz gerekebilir. Kilit düzeyini **CanNotDelete** veya **ReadOnly** olarak ayarlayabilirsiniz. Portalda, kilitler sırasıyla **silme** ve **salt okuma** olarak adlandırılır.
+Yönetici olarak kuruluşunuzdaki diğer kullanıcıların yanlışlıkla silmesini veya kritik kaynakları değiştirmesini önlemek için belirli bir aboneliği, kaynak grubunu veya kaynağı kilitlemeniz gerekebilir. Kilit düzeyini **CanNotDelete** veya **ReadOnly** olarak ayarlayabilirsiniz. Portalda, kilitler sırasıyla **silme** ve **salt okuma** olarak adlandırılır.
 
 * **Cannotdelete** , yetkili kullanıcıların bir kaynağı hala okuyabilecekleri ve değiştirebilecekleri anlamına gelir, ancak kaynakları silemez.
 * **ReadOnly** , yetkili kullanıcıların bir kaynağı okuyabilecekleri anlamına gelir, ancak kaynakları silemez veya güncelleştiremez. Bu kilidi uygulamak, tüm yetkili kullanıcıları **okuyucu** rolü tarafından verilen izinlerle kısıtlamak için benzerdir.
@@ -76,13 +76,13 @@ Kilidi dağıtmak için bir Kaynak Yöneticisi şablonu kullanırken, kilit kaps
 
 Bir **kaynağa**bir kilit uygularken aşağıdaki biçimleri kullanın:
 
-* ada`{resourceName}/Microsoft.Authorization/{lockName}`
-* türüyle`{resourceProviderNamespace}/{resourceType}/providers/locks`
+* ada `{resourceName}/Microsoft.Authorization/{lockName}`
+* türüyle `{resourceProviderNamespace}/{resourceType}/providers/locks`
 
 Bir **kaynak grubuna** veya **aboneliğe**bir kilit uygularken aşağıdaki biçimleri kullanın:
 
-* ada`{lockName}`
-* türüyle`Microsoft.Authorization/locks`
+* ada `{lockName}`
+* türüyle `Microsoft.Authorization/locks`
 
 Aşağıdaki örnek, Web sitesinde bir App Service planı, bir Web sitesi ve bir kilit oluşturan bir şablon gösterir. Kilidin kaynak türü, kilitlenecek kaynak ve **/providers/kilitleri**kaynak türüdür. Kilit adı, kaynak adı **/Microsoft.Authorization/** ile ve kilidin adı ile birleştirerek oluşturulur.
 

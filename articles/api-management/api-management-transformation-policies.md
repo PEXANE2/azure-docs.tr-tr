@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
 ms.openlocfilehash: 0182c3aa9095ad6f7bf3d8d86f115517e9efb020
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86249613"
 ---
 # <a name="api-management-transformation-policies"></a>API Management dönüştürme ilkeleri
 Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. İlke ekleme ve yapılandırma hakkında daha fazla bilgi için bkz. [API Management ilkeleri](https://go.microsoft.com/fwlink/?LinkID=398186).
 
-##  <a name="transformation-policies"></a><a name="TransformationPolicies"></a>Dönüştürme ilkeleri
+##  <a name="transformation-policies"></a><a name="TransformationPolicies"></a> Dönüştürme ilkeleri
 
 -   [JSON 'ı XML 'e Dönüştür](api-management-transformation-policies.md#ConvertJSONtoXML) -JSON 'dan XML 'e istek veya Yanıt gövdesini dönüştürür.
 
@@ -44,7 +44,7 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 
 -   [XSLT kullanarak XML dönüştürme](api-management-transformation-policies.md#XSLTransform) -istek veya yanıt gövdesinde XML 'e bir XSL dönüştürmesi uygular.
 
-##  <a name="convert-json-to-xml"></a><a name="ConvertJSONtoXML"></a>JSON 'ı XML 'e Dönüştür
+##  <a name="convert-json-to-xml"></a><a name="ConvertJSONtoXML"></a> JSON 'ı XML 'e Dönüştür
  `json-to-xml`İlke, JSON 'DAN XML 'e bir istek veya yanıt gövdesi dönüştürür.
 
 ### <a name="policy-statement"></a>İlke ekstresi
@@ -88,7 +88,7 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 
 -   **İlke kapsamları:** tüm kapsamlar
 
-##  <a name="convert-xml-to-json"></a><a name="ConvertXMLtoJSON"></a>XML 'i JSON 'ye Dönüştür
+##  <a name="convert-xml-to-json"></a><a name="ConvertXMLtoJSON"></a> XML 'i JSON 'ye Dönüştür
  `xml-to-json`İlke bir isteği veya Yanıt GÖVDESINI XML 'den JSON 'a dönüştürür. Bu ilke, yalnızca XML arka uç Web Hizmetleri tabanlı API 'Leri modernleştirin için kullanılabilir.
 
 ### <a name="policy-statement"></a>İlke ekstresi
@@ -132,7 +132,7 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 
 -   **İlke kapsamları:** tüm kapsamlar
 
-##  <a name="find-and-replace-string-in-body"></a><a name="Findandreplacestringinbody"></a>Gövdede dize bul ve Değiştir
+##  <a name="find-and-replace-string-in-body"></a><a name="Findandreplacestringinbody"></a> Gövdede dize bul ve Değiştir
  `find-and-replace`İlke bir istek veya Yanıt alt dizesi bulur ve farklı bir alt dizeyle değiştirir.
 
 ### <a name="policy-statement"></a>İlke ekstresi
@@ -158,7 +158,7 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 |Ad|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
 |Kaynak|Aranacak dize.|Evet|Yok|
-|-|Değişim dizesi. Arama dizesini kaldırmak için sıfır uzunluğunda bir değiştirme dizesi belirtin.|Evet|Yok|
+|şöyle değiştirin:|Değişim dizesi. Arama dizesini kaldırmak için sıfır uzunluğunda bir değiştirme dizesi belirtin.|Evet|Yok|
 
 ### <a name="usage"></a>Kullanım
  Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
@@ -167,7 +167,7 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 
 -   **İlke kapsamları:** tüm kapsamlar
 
-##  <a name="mask-urls-in-content"></a><a name="MaskURLSContent"></a>İçerikte maske URL 'Leri
+##  <a name="mask-urls-in-content"></a><a name="MaskURLSContent"></a> İçerikte maske URL 'Leri
  `redirect-content-urls`Ağ Geçidi aracılığıyla eşdeğer bağlantıyı işaret ettikleri için, yanıt gövdesindeki ilke yeniden yazma (maskeleri) bağlantıları. Yanıt gövdesi bağlantılarını, ağ geçidine işaret etmek üzere yeniden yazmak için çıkış bölümünde kullanın. Ters bir efekt için gelen bölümünde kullanın.
 
 > [!NOTE]
@@ -198,7 +198,7 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 
 -   **İlke kapsamları:** tüm kapsamlar
 
-##  <a name="set-backend-service"></a><a name="SetBackendService"></a>Arka uç hizmetini ayarla
+##  <a name="set-backend-service"></a><a name="SetBackendService"></a> Arka uç hizmetini ayarla
  `set-backend-service`Gelen bir isteği, bu işlem IÇIN API ayarlarında belirtilenden farklı bir arka uca yeniden yönlendirmek için ilkeyi kullanın. Bu ilke, gelen isteğin arka uç hizmeti taban URL 'sini ilkede belirtilen bir şekilde değiştirir.
 
 ### <a name="policy-statement"></a>İlke ekstresi
@@ -242,7 +242,7 @@ Başlangıçta arka uç hizmeti temel URL 'si API ayarlarından türetilir. Bu n
 
 <Select Policy deyimin [seçimi \> ](api-management-advanced-policies.md#choose) uygulandığında, arka uç hizmeti taban URL 'si, `http://contoso.com/api/8.2` `http://contoso.com/api/9.1` Sürüm isteği sorgu parametresinin değerine bağlı olarak ya da olarak yeniden değişebilir. Örneğin, değer `"2013-15"` son istek URL 'si ise olur `http://contoso.com/api/8.2/partners/15?version=2013-05&subscription-key=abcdef` .
 
-İsteğin daha fazla dönüşümü isteniyorsa, diğer [dönüştürme ilkeleri](api-management-transformation-policies.md#TransformationPolicies) de kullanılabilir. Örneğin, isteğin sürüme özgü bir arka uca yönlendirildiğini artık sürüm sorgu parametresini kaldırmak için, artık gereksiz sürüm özniteliğini kaldırmak üzere [sorgu dizesi ayarla parametresi](api-management-transformation-policies.md#SetQueryStringParameter) ilkesi kullanılabilir.
+İsteğin daha fazla dönüşümü isteniyorsa, diğer [dönüştürme ilkeleri](api-management-transformation-policies.md#TransformationPolicies) de kullanılabilir. Örneğin, isteğin sürüme özgü bir arka uca yönlendirildiğini artık sürüm sorgu parametresini kaldırmak için, artık gereksiz sürüm özniteliğini kaldırmak üzere  [sorgu dizesi ayarla parametresi](api-management-transformation-policies.md#SetQueryStringParameter) ilkesi kullanılabilir.
 
 ### <a name="example"></a>Örnek
 
@@ -283,7 +283,7 @@ Bu örnekte ilke, bir Service Fabric arka ucuna, bölüm anahtarı olarak UserID
 
 -   **İlke kapsamları:** tüm kapsamlar
 
-##  <a name="set-body"></a><a name="SetBody"></a>Gövde ayarla
+##  <a name="set-body"></a><a name="SetBody"></a> Gövde ayarla
  `set-body`Gelen ve giden istekler için ileti gövdesini ayarlamak üzere ilkesini kullanın. İleti gövdesine erişmek için, `context.Request.Body` `context.Response.Body` ilkenin gelen veya giden bölümünde olup olmadığına bağlı olarak özelliğini veya ' i kullanabilirsiniz.
 
 > [!IMPORTANT]
@@ -453,7 +453,7 @@ OriginalUrl.
 
 -   **İlke kapsamları:** tüm kapsamlar
 
-##  <a name="set-http-header"></a><a name="SetHTTPheader"></a>HTTP üstbilgisini ayarla
+##  <a name="set-http-header"></a><a name="SetHTTPheader"></a> HTTP üstbilgisini ayarla
  `set-header`İlke, var olan bir yanıt ve/veya istek üstbilgisine bir değer atar veya yeni bir yanıt ve/veya istek üst bilgisi ekler.
 
  Http üstbilgilerinin bir listesini bir HTTP iletisine ekler. Gelen bir işlem hattına yerleştirildiğinde, bu ilke hedef hizmete geçirilmekte olan isteğin HTTP üst bilgilerini ayarlar. Giden bir işlem hattına yerleştirildiğinde, bu ilke ağ geçidinin istemcisine gönderilen yanıtın HTTP üst bilgilerini ayarlar.
@@ -497,14 +497,14 @@ OriginalUrl.
  Daha fazla bilgi için bkz. [ilke ifadeleri](api-management-policy-expressions.md) ve [bağlam değişkeni](api-management-policy-expressions.md#ContextVariables).
 
 > [!NOTE]
-> Bir üstbilginin birden fazla değeri bir CSV dizesine birleştirilir, örneğin:`headerName: value1,value2,value3`
+> Bir üstbilginin birden fazla değeri bir CSV dizesine birleştirilir, örneğin: `headerName: value1,value2,value3`
 >
 > Özel durumlar standartlaştırılmış üst bilgiler, bu değerleri içerir:
 > - virgül ( `User-Agent` , `WWW-Authenticate` ,) içerebilir `Proxy-Authenticate` ,
 > - Tarih içerebilir ( `Cookie` , `Set-Cookie` , `Warning` ),
 > - Tarih ( `Date` ,,,, `Expires` `If-Modified-Since` `If-Unmodified-Since` `Last-Modified` ,) içerir `Retry-After` .
 >
-> Bu özel durumlar söz konusu olduğunda, birden çok üstbilgi değeri tek bir dizeye birleştirmeyecektir ve ayrı üstbilgiler olarak geçirilir, örneğin:`User-Agent: value1`
+> Bu özel durumlar söz konusu olduğunda, birden çok üstbilgi değeri tek bir dizeye birleştirmeyecektir ve ayrı üstbilgiler olarak geçirilir, örneğin: `User-Agent: value1`
 >`User-Agent: value2`
 >`User-Agent: value3`
 
@@ -529,7 +529,7 @@ OriginalUrl.
 
 -   **İlke kapsamları:** tüm kapsamlar
 
-##  <a name="set-query-string-parameter"></a><a name="SetQueryStringParameter"></a>Sorgu dizesi parametresini ayarla
+##  <a name="set-query-string-parameter"></a><a name="SetQueryStringParameter"></a> Sorgu dizesi parametresini ayarla
  `set-query-parameter`İlke, değer ekler veya siler veya istek sorgu dizesi parametresini siler. İsteğe bağlı olan veya istekte hiçbir şekilde bulunmayan arka uç hizmeti tarafından beklenen sorgu parametrelerini geçirmek için kullanılabilir.
 
 ### <a name="policy-statement"></a>İlke ekstresi
@@ -584,12 +584,12 @@ OriginalUrl.
 
 -   **İlke kapsamları:** tüm kapsamlar
 
-##  <a name="rewrite-url"></a><a name="RewriteURL"></a>Yeniden yazma URL 'SI
+##  <a name="rewrite-url"></a><a name="RewriteURL"></a> Yeniden yazma URL 'SI
  `rewrite-uri`İlke, aşağıdaki örnekte gösterildiği gibi, bir Istek URL 'sini ortak formdan Web hizmeti tarafından beklenen biçime dönüştürür.
 
-- Genel URL-`http://api.example.com/storenumber/ordernumber`
+- Genel URL- `http://api.example.com/storenumber/ordernumber`
 
-- İstek URL 'SI-`http://api.example.com/v2/US/hardware/storenumber&ordernumber?City&State`
+- İstek URL 'SI- `http://api.example.com/v2/US/hardware/storenumber&ordernumber?City&State`
 
   Bu ilke, bir insan ve/veya tarayıcı kullanımı kolay URL 'SI Web hizmeti tarafından beklenen URL biçimine dönüştürülebileceğinden kullanılabilir. Bu ilkenin yalnızca bir sorgu dizesi içermeyen ve bunun yerine yalnızca kaynağın yolunu (düzen ve yetkilinin ardından) içeren, temiz URL 'ler, yeniden oluşturma URL 'leri, Kullanıcı dostu URL 'ler veya SEO kullanımı kolay URL 'ler gibi alternatif bir URL biçimi kullanıma sunulduktan sonra uygulanması gerekir. Bu genellikle Aesthetic Characteristics, kullanılabilirlik veya arama motoru iyileştirme (SEO) amaçları için yapılır.
 
@@ -662,7 +662,7 @@ OriginalUrl.
 
 -   **İlke kapsamları:** tüm kapsamlar
 
-##  <a name="transform-xml-using-an-xslt"></a><a name="XSLTransform"></a>XSLT kullanarak XML dönüştürme
+##  <a name="transform-xml-using-an-xslt"></a><a name="XSLTransform"></a> XSLT kullanarak XML dönüştürme
  `Transform XML using an XSLT`İlke, istek veya Yanıt GÖVDESINDE XML 'e BIR XSL dönüştürmesi uygular.
 
 ### <a name="policy-statement"></a>İlke ekstresi

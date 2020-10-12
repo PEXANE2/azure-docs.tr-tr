@@ -15,13 +15,13 @@ ms.topic: troubleshooting
 ms.date: 09/16/2020
 ms.author: b-juche
 ms.openlocfilehash: 3aaa5d2bc6fdbda0d1db212539c719aa65cae61b
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90709171"
 ---
-# <a name="troubleshoot-cross-region-replication"></a>Bölgeler arası çoğaltmanın sorunlarını giderme
+# <a name="troubleshoot-cross-region-replication"></a>Bölgeler arası çoğaltma sorunlarını giderme
 
 Bu makalede, Azure NetApp Files için çapraz bölge çoğaltma sorunlarını gidermenize yardımcı olabilecek hata iletileri ve çözümleri açıklanmaktadır. 
 
@@ -66,9 +66,9 @@ Bu makalede, Azure NetApp Files için çapraz bölge çoğaltma sorunlarını gi
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
-* [Çapraz bölge çoğaltma](cross-region-replication-introduction.md)
+* [Bölgeler arası çoğaltma](cross-region-replication-introduction.md)
 * [Bölgeler arası çoğaltmayı kullanma gereksinimleri ve konuları](cross-region-replication-requirements-considerations.md)
-* [Çoğaltma eşlemesi oluştur](cross-region-replication-create-peering.md)
-* [Çoğaltma ilişkisinin sistem durumunu görüntüle](cross-region-replication-display-health-status.md)
+* [Çoğaltma eşlemesi oluşturma](cross-region-replication-create-peering.md)
+* [Çoğaltma ilişkisinin uygunluk durumunu görüntüleme](cross-region-replication-display-health-status.md)
 * [Olağanüstü durum kurtarmayı yönetme](cross-region-replication-manage-disaster-recovery.md)
-* [Bölgeler arası çoğaltmanın sorunlarını giderme](troubleshoot-cross-region-replication.md)
+* [Bölgeler arası çoğaltma sorunlarını giderme](troubleshoot-cross-region-replication.md)

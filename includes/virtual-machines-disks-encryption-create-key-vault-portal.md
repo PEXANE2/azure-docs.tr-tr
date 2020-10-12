@@ -9,17 +9,17 @@ ms.date: 03/23/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: a967777b65c06cf23239a47e8e691fb3a29231b4
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88815479"
 ---
 Diskleriniz için müşteri tarafından yönetilen anahtarların kurulması, ilk kez yapıyorsanız, belirli bir sırada kaynak oluşturmanızı gerektirir. İlk olarak, bir Azure Key Vault oluşturmanız ve ayarlamanız gerekecektir.
 
 ## <a name="set-up-your-azure-key-vault"></a>Azure Key Vault ayarlama
 
-1. [Azure portal](https://aka.ms/diskencryptionupdates) oturum açın.
+1. [Azure portalında](https://aka.ms/diskencryptionupdates) oturum açın.
 1. **Anahtar kasaları**arayın ve seçin.
 
     [![Arama iletişim kutusu genişletilmiş Azure portal ekran görüntüsü.](./media/virtual-machines-disk-encryption-portal/server-side-encryption-key-vault-portal-search.png)](./media/virtual-machines-disk-encryption-portal/sever-side-encryption-key-vault-portal-search-expanded.png#lightbox)
@@ -65,7 +65,7 @@ Diskleriniz için müşteri tarafından yönetilen anahtarların kurulması, ilk
 1. **Bir anahtar seçmek Için tıklayın ' ı**seçin.
 1. Daha önce oluşturduğunuz anahtar kasasını ve anahtarı ve sürümü seçin.
 1. **Seç**' e basın.
-1. **Gözden geçir + oluştur** ve sonra **Oluştur**' u seçin.
+1. **Gözden Geçir ve Oluştur**’u ve sonra **Oluştur**’u seçin.
 
     ![Disk şifrelemesi oluşturma dikey penceresinin ekran görüntüsü. Abonelik, kaynak grubu, disk şifreleme kümesi adı, bölge ve Anahtar Kasası + anahtar Seçicisi gösteriliyor.](./media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png)
 

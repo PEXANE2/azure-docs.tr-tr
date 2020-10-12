@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: makromer
 ms.openlocfilehash: 3d2ef6fb0cd7af444b9bff755eee4eee70d03d15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82691893"
 ---
-# <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>Normalleştirilmiş veritabanı şemasını Azure SQL veritabanından Azure CosmosDB denormallanmış kapsayıcısına geçirme
+# <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>Azure SQL Veritabanı'ndaki normalleştirilmiş veritabanı şemasını Azure Cosmos DB'deki normalleştirilmişlikten çıkarılmış kapsayıcıya geçirme
 
 Bu kılavuzda, Azure SQL veritabanı 'nda var olan bir normalleştirilmiş veritabanı şemasının nasıl ele alınacağını ve Azure CosmosDB 'ye yükleme için Azure CosmosDB Normalleştirilmemiş bir şemaya nasıl dönüştürüleceği açıklanmaktadır.
 
