@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
 ms.openlocfilehash: 235f4eb236e144d41ffb9958b09dab0cf5c269b6
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462437"
 ---
 # <a name="how-to-run-an-application-with-fortanix-enclave-manager"></a>Nasıl yapılır: Fortanx Enclave Manager ile uygulama çalıştırma 
@@ -28,7 +28,7 @@ Fortanx, Azure altyapısının üzerine inşa eden ürün ve hizmetlere sahip ü
 
 
 
-Bu öğreticide, uygulama görüntünüzü gizli işlem korumalı bir görüntüye nasıl dönüştürebileceğiniz gösterilmektedir. Bu ortam, Azure 'un DCsv2 serisi Intel SGX özellikli sanal makineler tarafından desteklenen [Fortanx](https://www.fortanix.com/) yazılımını kullanır. Bu çözüm, kimlik doğrulama ve veri erişim denetimi gibi kritik güvenlik ilkelerini düzenler.
+Bu öğreticide, uygulama görüntünüzü gizli işlem korumalı bir görüntüye nasıl dönüştürebileceğiniz gösterilmektedir. Bu ortam, Azure 'un DCsv2-Series Intel SGX özellikli sanal makineler tarafından desteklenen [Fortanx](https://www.fortanix.com/) yazılımını kullanır. Bu çözüm, kimlik doğrulama ve veri erişim denetimi gibi kritik güvenlik ilkelerini düzenler.
 
  Fortanix 'e özgü destek için [Fortanix bolluk topluluğuna](https://fortanix.com/community/) katılarak kanal #enclavemanager kullanın.
 
@@ -117,10 +117,10 @@ Bir Fortanx düğüm Aracısı oluşturmak, Azure Kaynak grubunuza bir sanal mak
      ![Market 'te ara](media/how-to-fortanix-enclave-manager/search-fortanix-marketplace.png)
 1. **Şimdi al**' ı seçin, gerekirse bilgilerinizi girin ve **devam**' ı seçin. Azure portal yönlendirilirsiniz. 
 1. Fortanix gizli bilgi Işlem düğüm Aracısı dağıtım sayfasını girmek için **Oluştur** ' u seçin.
-1. Bu sayfada, bir sanal makineyi dağıtmak için bilgi girersiniz. Özellikle, bu VM, Azure 'dan Fortanx düğüm Aracısı yazılımının yüklü olduğu DCsv2 serisi Intel SGX özellikli bir sanal makinedir. Düğüm Aracısı, dönüştürülmüş resminizin Azure 'da Intel SGX düğümlerinde güvenli şekilde çalışmasına izin verir.  Sanal makineyi ve ilişkili kaynakları dağıtmak istediğiniz **aboneliği** ve **kaynak grubunu** seçin. 
+1. Bu sayfada, bir sanal makineyi dağıtmak için bilgi girersiniz. Özellikle, bu VM, Azure 'dan Fortanx düğüm Aracısı yazılımının yüklü olduğu DCsv2-Series Intel SGX özellikli bir sanal makinedir. Düğüm Aracısı, dönüştürülmüş resminizin Azure 'da Intel SGX düğümlerinde güvenli şekilde çalışmasına izin verir.  Sanal makineyi ve ilişkili kaynakları dağıtmak istediğiniz **aboneliği** ve **kaynak grubunu** seçin. 
  
     > [!NOTE]
-    > Azure 'da DCsv2 serisi sanal makineler dağıtımı sırasında kısıtlamalar vardır. Ek çekirdek için kota istemeniz gerekebilir. Daha fazla bilgi için [Azure VM 'lerinde gizli bilgi işlem çözümleri](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solutions) hakkında bilgi edinin. 
+    > Azure 'da DCsv2-Series sanal makineler dağıtımı sırasında kısıtlamalar vardır. Ek çekirdek için kota istemeniz gerekebilir. Daha fazla bilgi için [Azure VM 'lerinde gizli bilgi işlem çözümleri](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solutions) hakkında bilgi edinin. 
 
 1. Kullanılabilir bir bölge seçin.
 1. **Düğüm adı** alanına sanal makineniz için bir ad girin. 

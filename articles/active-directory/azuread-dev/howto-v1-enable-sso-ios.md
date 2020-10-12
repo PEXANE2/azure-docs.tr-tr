@@ -16,10 +16,10 @@ ms.reviewer: brandwe
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 08b018082c753b9524cb12a72d637fe5458d9114
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85383708"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Nasıl yapılır: ADAL kullanarak iOS 'ta uygulamalar arası SSO 'yu etkinleştirme
@@ -39,7 +39,7 @@ Bu nasıl yapılır:
 * Azure Active Directory B2B
 * Koşullu erişim Azure Active Directory
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu şekilde nasıl yapılacağını bildiğiniz varsayılır:
 
@@ -175,11 +175,11 @@ Kimlik platformunun, uygulamalarınızda belirteçleri paylaşmasına izin veril
 
 Yeniden yönlendirme URI 'Leri, aynı uygulama KIMLIĞINI kullanıyorsa Microsoft Identity Service 'e farklı uygulamalar tanımlamanızı sağlar. Her uygulamanın, ekleme portalında kayıtlı birden çok yeniden yönlendirme URI 'si olabilir. Paketinizdeki her uygulamanın farklı bir yeniden yönlendirme URI 'SI olacaktır. Bunun nasıl görüneceğine ilişkin bir örnek:
 
-APP1 yeniden yönlendirme URI 'SI:`x-msauth-mytestiosapp://com.myapp.mytestapp`
+APP1 yeniden yönlendirme URI 'SI: `x-msauth-mytestiosapp://com.myapp.mytestapp`
 
-App2 yeniden yönlendirme URI 'SI:`x-msauth-mytestiosapp://com.myapp.mytestapp2`
+App2 yeniden yönlendirme URI 'SI: `x-msauth-mytestiosapp://com.myapp.mytestapp2`
 
-App3 yeniden yönlendirme URI 'SI:`x-msauth-mytestiosapp://com.myapp.mytestapp3`
+App3 yeniden yönlendirme URI 'SI: `x-msauth-mytestiosapp://com.myapp.mytestapp3`
 
 ....
 
@@ -239,7 +239,7 @@ defaultKeychainSharingGroup=@"com.myapp.mycache";
 > [!WARNING]
 > Uygulamalarınız genelinde bir anahtarlık paylaştığınızda, herhangi bir uygulama kullanıcıları silebilir veya uygulamanızdaki tüm belirteçleri daha kötü bir şekilde silebilir. Arka plan işlerini yapmak için belirteçlere güvenen uygulamalarınız varsa, bu özellikle felaket. Anahtarlık paylaşımı, kimlik SDK 'Ları aracılığıyla herhangi bir ve tüm kaldırma işlemlerine çok dikkatli olmanız gerektiği anlamına gelir.
 
-İşte bu kadar! SDK artık tüm uygulamalarınızda kimlik bilgilerini paylaşacaktır. Kullanıcı listesi ayrıca uygulama örnekleri arasında paylaşılır.
+Hepsi bu! SDK artık tüm uygulamalarınızda kimlik bilgilerini paylaşacaktır. Kullanıcı listesi ayrıca uygulama örnekleri arasında paylaşılır.
 
 ### <a name="turning-on-sso-for-broker-assisted-sso"></a>Aracı yardımlı SSO için SSO 'yu açma
 

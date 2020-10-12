@@ -9,10 +9,10 @@ ms.date: 03/03/2020
 ms.author: barbkess
 ms.custom: references_regions
 ms.openlocfilehash: b720d9dd824018d885ccc9860ee9fd8a90a46051
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84194330"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>İş sürekliliği ve olağanüstü durum kurtarma (BCDR): Eşleştirilmiş Azure Bölgeleri
@@ -49,10 +49,10 @@ Hayır. Müşteriler, Azure 'un bölgesel çiftlerine bağlı kalmadan dayanıkl
 
 | Coğrafya | Bölgesel çift A | Bölgesel çift B  |
 |:--- |:--- |:--- |
-| Asya-Pasifik |Doğu Asya (Hong Kong) | Güneydoğu Asya (Singapur) |
+| Asia-Pacific |Doğu Asya (Hong Kong) | Güneydoğu Asya (Singapur) |
 | Avustralya |Doğu Avustralya |Güneydoğu Avustralya |
 | Avustralya |Orta Avustralya |Orta Avustralya 2 |
-| Brezilya |Güney Brezilya |Orta Güney ABD |
+| Brezilya |Brezilya Güney |Orta Güney ABD |
 | Kanada |Orta Kanada |Doğu Kanada |
 | Çin |Kuzey Çin |Doğu Çin|
 | Çin |Çin Kuzey 2 |Çin Doğu 2|
@@ -64,7 +64,7 @@ Hayır. Müşteriler, Azure 'un bölgesel çiftlerine bağlı kalmadan dayanıkl
 | Japonya |Doğu Japonya |Batı Japonya |
 | Güney Kore |Güney Kore - Orta |Güney Kore - Güney |
 | Kuzey Amerika |Doğu ABD |Batı ABD |
-| Kuzey Amerika |Doğu ABD 2 |Orta ABD |
+| Kuzey Amerika |Doğu ABD 2 |Central US |
 | Kuzey Amerika |Orta Kuzey ABD |Orta Güney ABD |
 | Kuzey Amerika |Batı ABD 2 |Orta Batı ABD |
 | Norveç | Norveç Doğu | Norveç Batı |
@@ -104,7 +104,7 @@ Aşağıdaki görüntüde olağanüstü durum kurtarma için bölgesel çift kul
 
 5. **Fiziksel yalıtım** – mümkün olduğunda Azure, bölgesel çiftteki veri merkezleri arasında en az 300 mil ayırmayı tercih eder, ancak tüm coğrafi bölgelerde pratik veya mümkün değildir. Fiziksel veri merkezi ayrımı, her iki bölgeyi aynı anda etkileyen doğal felaketler, hukuki geri kalan, güç kesintileri veya fiziksel ağ kesintileri olasılığını azaltır. Yalıtım, coğrafya içindeki kısıtlamalara tabidir (Coğrafya boyutu, güç/ağ altyapısı kullanılabilirliği, yönetmelikler vb.).  
 
-6. **Platform tarafından sağlanmış çoğaltma** -coğrafi olarak yedekli depolama gibi bazı hizmetler, eşleştirilmiş bölgeye otomatik çoğaltma sağlar.
+6. **Platform tarafından sağlanmış çoğaltma** -Geo-Redundant depolama gibi bazı hizmetler, eşleştirilmiş bölgeye otomatik çoğaltma sağlar.
 
 7. **Bölge kurtarma sırası** – geniş bir kesinti durumunda, bir bölgenin kurtarılması her çiftin dışında bir önceliğe sahiptir. Eşleştirilmiş bölgelere dağıtılan uygulamalarda bölgelerden birinin öncelikli olarak kurtarılacağı garanti edilir. Bir uygulama eşlenmez bölgeler arasında dağıtılırsa kurtarma geciktirilebilir. en kötü durumda, seçilen bölgeler kurtarılacak son iki durumda olabilir.
 

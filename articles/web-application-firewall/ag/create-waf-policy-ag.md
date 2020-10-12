@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
 ms.openlocfilehash: 5705eedfb919c792c558384f6309325dcded4b43
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86146613"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Application Gateway için Web uygulaması güvenlik duvarı ilkeleri oluşturma
@@ -51,7 +51,7 @@ Tüm yeni Web uygulaması güvenlik duvarı WAF ayarları (özel kurallar, yöne
 
    > [!NOTE]
    > Zaten bir ilkeye sahip olan Application Gateway (veya dinleyiciye) ilke atarsanız, özgün ilkenin üzerine yazılır ve yeni ilke konur.
-4. **Gözden geçir + oluştur**' u seçin ve **Oluştur**' u seçin.
+4. **Gözden Geçir + oluştur**’u ve sonra da **Oluştur**’u seçin.
 
    ![WAF ilkesi temelleri](../media/create-waf-policy-ag/waf-policy-basics.png)
 

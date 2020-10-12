@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 560c9c177bfa693580979101e5b9343fcff7fe40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67188567"
 ---
 ### <a name="install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>Bakım modu güncelleştirmelerini StorSimple için Windows PowerShell aracılığıyla yüklensin
@@ -43,7 +43,7 @@ StorSimple cihaza bakım modu güncelleştirmeleri uyguladığınızda, tüm g/�
 
     `Get-HcsFirmwareVersion`
    
-    Beklenen disk üretici yazılımı sürümleri şunlardır:`XMGJ, XGEG, KZ50, F6C2, VR08, N003, 0107`
+    Beklenen disk üretici yazılımı sürümleri şunlardır:  `XMGJ, XGEG, KZ50, F6C2, VR08, N003, 0107`
 
 6. Bakım modundan çıkın. Her cihaz denetleyicisi için aşağıdaki komutu yazın:
 

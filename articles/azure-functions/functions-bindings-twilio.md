@@ -7,10 +7,10 @@ ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, H1Hack27Feb2017
 ms.openlocfilehash: 9a3ffeb4ff58cc4af2309268f1a95cd9d354de8b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88206622"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Azure Işlevleri için Twilio bağlama
@@ -329,12 +329,12 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 
 | Özellik üzerinde v1 function.js | özelliğindeki v2 function.js | Öznitelik özelliği |Açıklama|
 |---------|---------|---------|----------------------|
-|**tür**|**türüyle**| olarak ayarlanmalıdır `twilioSms` .|
+|**türüyle**|**türüyle**| olarak ayarlanmalıdır `twilioSms` .|
 |**Görünüm**|**Görünüm**| olarak ayarlanmalıdır `out` .|
 |**ada**|**ada**| Twilio SMS metin mesajı için işlev kodunda kullanılan değişken adı. |
 |**accountSid**|**Accountsıdsetting**| **AccountSidSetting**| Bu değer, Twilio hesabı SID 'nizi () tutan bir uygulama ayarının adına ayarlanmalıdır `TwilioAccountSid` . Ayarlanmamışsa, varsayılan uygulama ayarı adı "AzureWebJobsTwilioAccountSid" olur. |
 |**authToken**|**authTokenSetting**|**AuthTokenSetting**| Bu değer, Twilio kimlik doğrulama belirtecinizi () tutan bir uygulama ayarının adına ayarlanmalıdır `TwilioAccountAuthToken` . Ayarlanmamışsa, varsayılan uygulama ayarı adı "AzureWebJobsTwilioAuthToken" olur. |
-|**şöyle değiştirin:**| Yok-kodda belirt | **Hedef**| Bu değer, SMS metninin gönderildiği telefon numarası olarak ayarlanır.|
+|**Hedef**| Yok-kodda belirt | **Amaç**| Bu değer, SMS metninin gönderildiği telefon numarası olarak ayarlanır.|
 |**Kaynak**|**Kaynak** | **Kaynak**| Bu değer, SMS metninin gönderildiği telefon numarası olarak ayarlanır.|
 |**bölümü**|**bölümü** | **Gövde**| Bu değer, işlevinizin kodunda dinamik olarak ayarlamanız gerekmiyorsa SMS metin iletisini sabit koda almak için kullanılabilir. |  
 

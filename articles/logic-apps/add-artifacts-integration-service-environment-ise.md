@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.openlocfilehash: dc4798df05b760074ff06d95d9712204a3cf3e5a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91269752"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps tümleştirme hizmeti ortamınıza (ıSE) kaynak ekleme
@@ -44,10 +44,10 @@ Tümleştirme hizmeti ortamınızda (ıSE) çalışan Logic Apps oluşturmak iç
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Ad** | Yes | Oluşturulacak mantıksal uygulamanın adı |
-   | **Abonelik** | Yes | Kullanılacak Azure aboneliğinin adı |
-   | **Kaynak grubu** | Yes | Kullanılacak Azure Kaynak grubu (yeni veya var olan) için ad |
-   | **Konum** | Yes | **Tümleştirme hizmeti ortamları**altında, henüz seçilmemişse kullanılacak Ise 'yi seçin. <p><p> **Önemli**: mantıksal uygulamalarınızı bir tümleştirme hesabıyla birlikte kullanmak için, her ikisinin de aynı Ise kullanması gerekir. |
+   | **Ad** | Evet | Oluşturulacak mantıksal uygulamanın adı |
+   | **Abonelik** | Evet | Kullanılacak Azure aboneliğinin adı |
+   | **Kaynak grubu** | Evet | Kullanılacak Azure Kaynak grubu (yeni veya var olan) için ad |
+   | **Konum** | Evet | **Tümleştirme hizmeti ortamları**altında, henüz seçilmemişse kullanılacak Ise 'yi seçin. <p><p> **Önemli**: mantıksal uygulamalarınızı bir tümleştirme hesabıyla birlikte kullanmak için, her ikisinin de aynı Ise kullanması gerekir. |
    ||||
 
 1. İşiniz bittiğinde **Oluştur**'u seçin.
@@ -76,11 +76,11 @@ ISE kullanan bir tümleştirme hesabı oluşturmak için aşağıdaki adımları
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Ad** | Yes | Oluşturmak istediğiniz tümleştirme hesabının adı |
-   | **Abonelik** | Yes | Kullanmak istediğiniz Azure aboneliğinin adı |
-   | **Kaynak grubu** | Yes | Kullanılacak Azure Kaynak grubu (yeni veya var olan) için ad |
-   | **Fiyatlandırma katmanı** | Yes | Tümleştirme hesabı için kullanılacak Fiyatlandırma Katmanı |
-   | **Konum** | Yes | **Tümleştirme hizmeti ortamları**' nın altında, mantıksal uygulamalarınızın kullandığı Ise 'yi seçin, daha önce seçilmemişse. <p><p> **Önemli**: Tümleştirme hesabınızı Logic Apps ile birlikte kullanmak için, her ikisinin de aynı Ise kullanması gerekir. |
+   | **Ad** | Evet | Oluşturmak istediğiniz tümleştirme hesabının adı |
+   | **Abonelik** | Evet | Kullanmak istediğiniz Azure aboneliğinin adı |
+   | **Kaynak grubu** | Evet | Kullanılacak Azure Kaynak grubu (yeni veya var olan) için ad |
+   | **Fiyatlandırma katmanı** | Evet | Tümleştirme hesabı için kullanılacak Fiyatlandırma Katmanı |
+   | **Konum** | Evet | **Tümleştirme hizmeti ortamları**' nın altında, mantıksal uygulamalarınızın kullandığı Ise 'yi seçin, daha önce seçilmemişse. <p><p> **Önemli**: Tümleştirme hesabınızı Logic Apps ile birlikte kullanmak için, her ikisinin de aynı Ise kullanması gerekir. |
    ||||
 
 1. İşiniz bittiğinde **Oluştur**'u seçin.

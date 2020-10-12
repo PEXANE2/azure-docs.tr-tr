@@ -11,10 +11,10 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: b241220168a5cd81ce23be729944df387e87e567
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87844551"
 ---
 # <a name="how-to-deploy-an-encrypted-inferencing-web-service-preview"></a>Şifrelenmiş bir ınlebilme Web hizmeti dağıtma (Önizleme)
@@ -34,7 +34,7 @@ ACI, model dağıtımı iş akışını test etmek ve anlamak için harika bir �
 
 Bu örnekte kullanılan şifreleme yöntemi [homomorphic şifredir](https://github.com/Microsoft/SEAL#homomorphic-encryption). Homomorphic şifrelemesi, bir gizli dizi (şifre çözme) anahtarına erişmek gerekmeden, şifrelenmiş verilerde hesaplamalar yapılmasına izin verir. Hesaplamaların sonuçları şifrelenir ve yalnızca gizli anahtar sahibi tarafından açığa çıkarlenebilir. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu kılavuzda, Azure Machine Learning kayıtlı bir görüntü sınıflandırma modeliniz olduğunu varsaymaktadır. Aksi takdirde, modeli [önceden eğitilen bir model](https://github.com/Azure/MachineLearningNotebooks/raw/master/tutorials/image-classification-mnist-data/sklearn_mnist_model.pkl) kullanarak kaydedin veya [Azure Machine Learning öğreticisi ile görüntü sınıflandırma modeliyle eğitme](tutorial-train-models-with-aml.md)işlemini tamamlayarak kendinizinkini oluşturun.
 
@@ -60,7 +60,7 @@ Bir Jupyter not defterinde
     > [!NOTE]
     > `encrypted-inference`Paket şu anda önizleme aşamasındadır.
 
-    [`encrypted-inference`](https://pypi.org/project/encrypted-inference), [Microsoft mühürlemek](https://github.com/Microsoft/SEAL)tabanlı şifreli ınary bağlamaları içeren bir kitaplıktır.
+    [`encrypted-inference`](https://pypi.org/project/encrypted-inference) , [Microsoft mühürlemek](https://github.com/Microsoft/SEAL)tabanlı şifreli ınary bağlamaları içeren bir kitaplıktır.
 
     ```python
     !pip install encrypted-inference==0.9

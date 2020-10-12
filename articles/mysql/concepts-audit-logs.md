@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/24/2020
 ms.openlocfilehash: 8b12e1bd7bd67c3d22bdb62255b481d81976b969
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85362134"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda denetim günlükleri
@@ -31,7 +31,7 @@ Ayarlayabileceğiniz diğer parametreler şunlardır:
 - `audit_log_exclude_users`: MySQL kullanıcılarının günlüğe kaydetme dışında tutulması. Parametrenin uzunluk üst sınırı 512 karakterdir.
 
 > [!NOTE]
-> `audit_log_include_users`daha yüksek önceliğe sahiptir `audit_log_exclude_users` . Örneğin, ve ise `audit_log_include_users`  =  `demouser` `audit_log_exclude_users`  =  `demouser` , Kullanıcı `audit_log_include_users` daha yüksek önceliğe sahip olduğu için denetim günlüklerine dahil edilir.
+> `audit_log_include_users` daha yüksek önceliğe sahiptir `audit_log_exclude_users` . Örneğin, ve ise `audit_log_include_users`  =  `demouser` `audit_log_exclude_users`  =  `demouser` , Kullanıcı `audit_log_include_users` daha yüksek önceliğe sahip olduğu için denetim günlüklerine dahil edilir.
 
 | **Olay** | **Açıklama** |
 |---|---|
@@ -60,10 +60,10 @@ Aşağıdaki bölümlerde, olay türüne göre MySQL denetim günlükleri taraf�
 | `TenantId` | Kiracı KIMLIĞINIZ |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated [UTC]` | Günlük kaydedildiği zaman damgası (UTC) |
-| `Type` | Günlüğün türü. Her`AzureDiagnostics` |
+| `Type` | Günlüğün türü. Her `AzureDiagnostics` |
 | `SubscriptionId` | Sunucunun ait olduğu abonelik için GUID |
 | `ResourceGroup` | Sunucunun ait olduğu kaynak grubunun adı |
-| `ResourceProvider` | Kaynak sağlayıcının adı. Her`MICROSOFT.DBFORMYSQL` |
+| `ResourceProvider` | Kaynak sağlayıcının adı. Her `MICROSOFT.DBFORMYSQL` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Kaynak URI 'SI |
 | `Resource` | Sunucunun adı |
@@ -91,10 +91,10 @@ Aşağıdaki şema genel, DML_SELECT, DML_NONSELECT, DML, DDL, DCL ve yönetıc�
 | `TenantId` | Kiracı KIMLIĞINIZ |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated [UTC]` | Günlük kaydedildiği zaman damgası (UTC) |
-| `Type` | Günlüğün türü. Her`AzureDiagnostics` |
+| `Type` | Günlüğün türü. Her `AzureDiagnostics` |
 | `SubscriptionId` | Sunucunun ait olduğu abonelik için GUID |
 | `ResourceGroup` | Sunucunun ait olduğu kaynak grubunun adı |
-| `ResourceProvider` | Kaynak sağlayıcının adı. Her`MICROSOFT.DBFORMYSQL` |
+| `ResourceProvider` | Kaynak sağlayıcının adı. Her `MICROSOFT.DBFORMYSQL` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Kaynak URI 'SI |
 | `Resource` | Sunucunun adı |
@@ -104,7 +104,7 @@ Aşağıdaki şema genel, DML_SELECT, DML_NONSELECT, DML, DDL, DCL ve yönetıc�
 | `event_class_s` | `general_log` |
 | `event_subclass_s` | `LOG`, `ERROR` , `RESULT` (yalnızca MySQL 5,6 için kullanılabilir) |
 | `event_time` | UTC zaman damgasında sorgu başlangıç saati |
-| `error_code_d` | Sorgu başarısız olduysa hata kodu. `0`hata yok demektir |
+| `error_code_d` | Sorgu başarısız olduysa hata kodu. `0` hata yok demektir |
 | `thread_id_d` | Sorguyu yürüten iş parçacığının KIMLIĞI |
 | `host_s` | Boş |
 | `ip_s` | MySQL 'e bağlanan istemcinin IP adresi |
@@ -122,10 +122,10 @@ Aşağıdaki şema genel, DML_SELECT, DML_NONSELECT, DML, DDL, DCL ve yönetıc�
 | `TenantId` | Kiracı KIMLIĞINIZ |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated [UTC]` | Günlük kaydedildiği zaman damgası (UTC) |
-| `Type` | Günlüğün türü. Her`AzureDiagnostics` |
+| `Type` | Günlüğün türü. Her `AzureDiagnostics` |
 | `SubscriptionId` | Sunucunun ait olduğu abonelik için GUID |
 | `ResourceGroup` | Sunucunun ait olduğu kaynak grubunun adı |
-| `ResourceProvider` | Kaynak sağlayıcının adı. Her`MICROSOFT.DBFORMYSQL` |
+| `ResourceProvider` | Kaynak sağlayıcının adı. Her `MICROSOFT.DBFORMYSQL` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Kaynak URI 'SI |
 | `Resource` | Sunucunun adı |
@@ -133,7 +133,7 @@ Aşağıdaki şema genel, DML_SELECT, DML_NONSELECT, DML, DDL, DCL ve yönetıc�
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | Sunucunun adı |
 | `event_class_s` | `table_access_log` |
-| `event_subclass_s` | `READ`, `INSERT` , `UPDATE` veya`DELETE` |
+| `event_subclass_s` | `READ`, `INSERT` , `UPDATE` veya `DELETE` |
 | `connection_id_d` | MySQL tarafından oluşturulan benzersiz bağlantı KIMLIĞI |
 | `db_s` | Erişilen veritabanının adı |
 | `table_s` | Erişilen tablonun adı |

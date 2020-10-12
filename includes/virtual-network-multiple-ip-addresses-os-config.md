@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-network
 author: jimdial
 ms.service: virtual-network
@@ -9,10 +9,10 @@ ms.date: 05/10/2019
 ms.author: anavin
 ms.custom: include file
 ms.openlocfilehash: 93caf39216ef0479ec2799267a9ba8181f37f802
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84194211"
 ---
 ## <a name="add-ip-addresses-to-a-vm-operating-system"></a><a name="os-config"></a>Bir VM işletim sistemine IP adresleri ekleme
@@ -182,7 +182,7 @@ Ubuntu 18,04 ve üzeri `netplan` işletim sistemi ağ yönetimi için olarak de�
     ```
 
 > [!NOTE]
-> `netplan try`değişiklikleri geçici olarak uygular ve 120 saniye sonra değişiklikleri geri alınacaktır. Bağlantı kaybı varsa lütfen 120 saniye bekleyin ve sonra yeniden bağlanın. Bu sırada, değişiklikler geri alınacaktır.
+> `netplan try` değişiklikleri geçici olarak uygular ve 120 saniye sonra değişiklikleri geri alınacaktır. Bağlantı kaybı varsa lütfen 120 saniye bekleyin ve sonra yeniden bağlanın. Bu sırada, değişiklikler geri alınacaktır.
 
 7. Sorun olmadığı varsayıldığında `netplan try` , yapılandırma değişikliklerini uygulayın:
 

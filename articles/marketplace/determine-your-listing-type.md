@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 09/04/2020
 ms.openlocfilehash: 4acdd8bfd567a317b954d58629468fa8cd929669
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90032393"
 ---
 # <a name="determine-your-publishing-option"></a>Yayımlama seçeneğinizi belirleme
@@ -80,10 +80,10 @@ SaaS teklifleri, Azure Market veya AppSource 'ta yayımlanabilir. SaaS teklifini
 
 | Ölçülen faturalandırma | Ortak plan | Özel plan | Kullanılabilir: |
 |---|---|---|---|
-| Yes             | Yes         | Hayır           | Azure Marketi ve Azure portal |
-| Yes             | Yes         | Yes          | Azure Marketi ve Azure portal * |
-| Yes             | Hayır          | Yes          | Yalnızca Azure portal |
-| Hayır              | Hayır          | Yes          | Yalnızca Azure portal |
+| Evet             | Evet         | Hayır           | Azure Marketi ve Azure portal |
+| Evet             | Evet         | Evet          | Azure Marketi ve Azure portal * |
+| Evet             | Hayır          | Evet          | Yalnızca Azure portal |
+| Hayır              | Hayır          | Evet          | Yalnızca Azure portal |
 
 &#42; teklifin özel planı yalnızca Azure portal ile kullanılabilir
 

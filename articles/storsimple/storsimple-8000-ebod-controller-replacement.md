@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: bdafb4288bf818928aba43d09f15d4dd75092b24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85564235"
 ---
 # <a name="replace-an-ebod-controller-on-your-storsimple-device"></a>StorSimple cihazınızda bir EBOD denetleyicisini değiştirme
@@ -41,7 +41,7 @@ Başlamadan önce aşağıdaki bilgileri göz önünde bulundurun:
 StorSimple cihazınızda başarısız olan EBOD denetleyici modülünü değiştirmeden önce, diğer EBOD denetleyici modülünün etkin ve çalışır durumda olduğundan emin olun. Aşağıdaki yordam ve tablo, EBOD denetleyici modülünün nasıl kaldırılacağını açıklamaktadır.
 
 #### <a name="to-remove-an-ebod-module"></a>EBOD modülünü kaldırmak için
-1. Azure portalı açın.
+1. Azure portalını açın.
 2. Cihazınıza gidin ve **Ayarlar**  >  **donanım sistem durumu**' na gidin ve etkin ebod denetleyicisi modülü için LED durumunun yeşil olduğunu ve başarısız ebod denetleyici modülünün ışığını kırmızı olduğunu doğrulayın.
 3. Cihazın arkasında başarısız olan EBOD denetleyici modülünü bulun.
 4. Ebod denetleyicisi modülünü sistem dışına çıkarmadan önce, denetleyiciye bağlayan kabloları kaldırın.

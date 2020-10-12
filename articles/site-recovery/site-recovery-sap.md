@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
 ms.openlocfilehash: 7b4a622de142fd44b64015c8238f44dafc34ce72
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86133705"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Çok katmanlı SAP NetWeaver uygulama dağıtımı için olağanüstü durum kurtarmayı ayarlama
@@ -138,7 +138,7 @@ Uygulamalarınızın düzgün çalışması için, Azure sanal makinelerinde baz
 
 **Azure 'A dağıt**' a tıklayarak en çok kullanılan Site Recovery betikleri Azure Otomasyonu hesabınıza dağıtabilirsiniz. Yayımlanmış herhangi bir betiği kullandığınızda, betikteki yönergeleri izleyin.
 
-[![Azure’a dağıtma](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+[![Azure’a dağıtın](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 1. SQL Server kullanılabilirlik grubunun yükünü devretmek için Grup 1 ' e bir ön eylem betiği ekleyin. Örnek betiklerinizde yayınlanan ASR-SQL-FailoverAG betiğini kullanın. Betikteki yönergeleri izleyin ve betikte gerekli değişiklikleri uygun şekilde yapın.
 1. Web katmanının (Grup 1) yükü devredilen sanal makinelerine yük dengeleyici eklemek için bir eylem sonrası betiği ekleyin. Örnek betiklerinizde yayınlanan ASR-AddSingleLoadBalancer betiğini kullanın. Betikteki yönergeleri izleyin ve gerekli değişiklikleri betikte gerekli şekilde yapın.

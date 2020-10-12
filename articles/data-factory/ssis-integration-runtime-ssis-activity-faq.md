@@ -12,10 +12,10 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
 ms.openlocfilehash: 9b331ccee183ec101cf3449f12b4f656a1325819
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84118088"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>SSIS tümleştirme çalışma zamanı 'nda paket yürütmeye sorun giderme
@@ -76,8 +76,8 @@ Bu hata, yerel diskin SSIS tümleştirme çalışma zamanı düğümünde kullan
     * Azure dosyası kullanıyorsanız:
       * Dosya yolu \\ \\ \<storage account name\> . File.Core.Windows.NET ile başlamalıdır\\\<file share path\>
       * Etki alanı "Azure" olmalıdır
-      * Kullanıcı adı şu olmalıdır\<storage account name\>
-      * Parola şu şekilde olmalıdır\<storage access key\>
+      * Kullanıcı adı şu olmalıdır \<storage account name\>
+      * Parola şu şekilde olmalıdır \<storage access key\>
     * Şirket içi dosya kullanıyorsanız, Azure-SSIS tümleştirme çalışma zamanının şirket içi dosya paylaşımınıza erişebilmesi için lütfen VNet, paket erişimi kimlik bilgileri ve izninin doğru yapılandırılıp yapılandırılmadığını denetleyin.
 
 ### <a name="error-message-the-file-name--specified-in-the-connection-was-not-valid"></a>Hata iletisi: "dosya adı '... ' bağlantıda belirtilen geçerli değildi "
@@ -136,36 +136,36 @@ Olası bir neden, Aktarım Katmanı Güvenliği 'nin (TLS), OData kaynağınız 
 
 ### <a name="error-message-request-staging-task-with-operation-guid--fail-since-error-failed-to-dispatch-staging-operation-with-error-message-microsoftsqlserverintegrationservicesaisagentcoreaisagentexception-failed-to-load-data-proxy"></a>Hata iletisi: "işlem GUID 'si ile hazırlama görevi ıste... hata nedeniyle başarısız oldu: hazırlama işlemi şu hata iletisiyle gönderilemedi: Microsoft. SqlServer. IntegrationServices. AisAgentCore. AisAgentException: veri proxy 'si yüklenemedi. "
 
-Azure-SSIS tümleştirme çalışma zamanının kendi kendine barındırılan tümleştirme çalışma zamanı ile yapılandırıldığından emin olun. [ADF 'de Azure-SSIS IR Için otomatik olarak BARıNDıRıLAN IR 'yi proxy olarak yapılandırma bölümünde](self-hosted-integration-runtime-proxy-ssis.md)daha ayrıntılı bilgi bulabilirsiniz.
+Azure-SSIS tümleştirme çalışma zamanının Self-Hosted tümleştirme çalışma zamanı ile yapılandırıldığından emin olun. [ADF 'de Azure-SSIS IR için proxy olarak Self-Hosted IR yapılandırma bölümünde](self-hosted-integration-runtime-proxy-ssis.md)daha ayrıntılı bilgi bulabilirsiniz.
 
 ### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2010-errormessage-the-self-hosted-integration-runtime--is-offline"></a>Hata iletisi: "hazırlama görevi durumu: başarısız. Hazırlama görevi hatası: ErrorCode: 2010, ErrorMessage: şirket içinde barındırılan Integration Runtime... Çevrimdışı "
 
-Şirket içinde barındırılan tümleştirme çalışma zamanının yüklü ve başlatılmış olduğundan emin olun. [Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma ve yapılandırma](create-self-hosted-integration-runtime.md) hakkında daha ayrıntılı bilgi bulabilirsiniz
+Self-Hosted tümleştirme çalışma zamanının yüklü ve başlatılmış olduğundan emin olun. [Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma ve yapılandırma](create-self-hosted-integration-runtime.md) hakkında daha ayrıntılı bilgi bulabilirsiniz
 
 ### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-the-requested-ole-db-provider--is-not-registered-if-the-64-bit-driver-is-not-installed-run-the-package-in-32-bit-mode"></a>Hata iletisi: "hazırlama görevi hatası: ErrorCode: 2906, ErrorMessage: paket yürütülemedi., çıkış: {" OperationErrorMessages ":" hata: istenen OLE DB sağlayıcı... kayıtlı değil. 64 bitlik sürücü yüklü değilse, paketi 32 bit modda çalıştırın... "
 
-Paketinizdeki OLE DB bağlayıcılarınız tarafından kullanılan karşılık gelen sağlayıcının şirket içinde barındırılan tümleştirme çalışma zamanı makinesine doğru bir şekilde yüklendiğinden emin olun. [ADF 'de Azure-SSIS IR Için otomatik olarak BARıNDıRıLAN IR 'yi proxy olarak yapılandırma bölümünde](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir) daha ayrıntılı bilgi bulabilirsiniz
+Paketinizdeki OLE DB bağlayıcılarınız tarafından kullanılan karşılık gelen sağlayıcının Self-Hosted Integration Runtime makinesine doğru bir şekilde yüklendiğinden emin olun. [ADF 'de Azure-SSIS IR için ara sunucu olarak Self-Hosted IR yapılandırma bölümünde](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir) daha ayrıntılı bilgi bulabilirsiniz
 
 ### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>Hata iletisi: "hazırlama görevi hatası: HataKodu: 2906, ErrorMessage: paket yürütülemedi., çıkış: {" OperationErrorMessages ":" hata: System. ıO. FileLoadException: dosya veya derleme ' Microsoft. WindowsAzure. Storage, Version =..., Culture = neutral, PublicKeyToken = 31bf3856ad364e35 ' veya bağımlılıklarından biri yüklenemedi. Konumlandırılan derlemenin bildirim tanımı bütünleştirilmiş kod başvurusuyla eşleşmiyor. ' ..."
 
-Bunun olası nedenlerinden biri, şirket içinde barındırılan tümleştirme çalışma zamanının düzgün şekilde yüklenmediğini veya yükseltilmesidir. En son şirket içinde barındırılan tümleştirme çalışma zamanını indirip yeniden yüklemeyi önerin. [Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma ve yapılandırma](create-self-hosted-integration-runtime.md#installation-best-practices) hakkında daha ayrıntılı bilgi bulabilirsiniz
+Olası bir neden Self-Hosted tümleştirme çalışma zamanının düzgün şekilde yüklenmediğini veya yükseltilmesidir. En son şirket içinde barındırılan tümleştirme çalışma zamanını indirip yeniden yüklemeyi önerin. [Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma ve yapılandırma](create-self-hosted-integration-runtime.md#installation-best-practices) hakkında daha ayrıntılı bilgi bulabilirsiniz
 
 ### <a name="error-message-a-connection-is-required-when-requesting-metadata-if-you-are-working-offline-uncheck-work-offline-on-the-ssis-menu-to-enable-the-connection"></a>Hata iletisi: "meta veri istenirken bir bağlantı gereklidir. Çevrimdışı çalışıyorsanız, bağlantıyı etkinleştirmek için SSIS menüsünde Çevrimdışı çalış seçeneğinin işaretini kaldırın "
 
 * Olası neden ve önerilen eylem:
-  * Aynı zamanda bir uyarı mesajı varsa "Bileşen, yürütme günlüğünde" ConnectByProxy değeri ile bağlantı Yöneticisi 'ni kullanmayı desteklemez "olarak, bu, bir bağlantı yöneticisinin" ConnectByProxy "henüz desteklenmeyen bir bileşende kullanıldığı anlamına gelir. Desteklenen bileşenler, [ADF 'de Azure-SSIS IR Için otomatik olarak BARıNDıRıLAN IR 'yi proxy olarak yapılandırma bölümünde](self-hosted-integration-runtime-proxy-ssis.md#enable-ssis-packages-to-connect-by-proxy) bulunabilir
+  * Aynı zamanda bir uyarı mesajı varsa "Bileşen, yürütme günlüğünde" ConnectByProxy değeri ile bağlantı Yöneticisi 'ni kullanmayı desteklemez "olarak, bu, bir bağlantı yöneticisinin" ConnectByProxy "henüz desteklenmeyen bir bileşende kullanıldığı anlamına gelir. Desteklenen bileşenler, [ADF 'de Azure-SSIS IR için proxy olarak Self-Hosted IR yapılandırma bölümünde](self-hosted-integration-runtime-proxy-ssis.md#enable-ssis-packages-to-connect-by-proxy) bulunabilir
   * Yürütme günlüğü [SSMS raporunda](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017#reports) veya SSIS paketi yürütme etkinliğinde belirttiğiniz günlük klasöründe bulunabilir.
   * vNet, alternatif olarak şirket içi verilere erişmek için de kullanılabilir. [Azure-SSIS tümleştirme çalışma zamanına bir sanal ağa ekleme](join-azure-ssis-integration-runtime-virtual-network.md) konusunda daha ayrıntılı bilgi bulabilirsiniz
 
 ### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>Hata iletisi: "hazırlama görevi durumu: başarısız. Hazırlama görevi hatası: ErrorCode: 2906, ErrorMessage: paket yürütülemedi., çıkış: {"OperationErrorMessages": "SSIS yürütücüsü çıkış kodu:-1. \ n", "LogLocation": "... \\ SSISTelemetry \\ ExecutionLog \\ ... "," efekttiveıntegrationruntime ":"... "," ExecutionDuration ":...," durationInQueue ": {" ıntegrationruntimequeue ":...}}"
 
-Visual C++ çalışma zamanının şirket içinde barındırılan tümleştirme çalışma zamanı makinesinde yüklü olduğundan emin olun. [ADF 'de Azure-SSIS IR Için otomatik olarak BARıNDıRıLAN IR 'yi proxy olarak yapılandırma bölümünde](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir) daha ayrıntılı bilgi bulabilirsiniz
+Visual C++ çalışma zamanının Self-Hosted Integration Runtime makinesinde yüklü olduğundan emin olun. [ADF 'de Azure-SSIS IR için ara sunucu olarak Self-Hosted IR yapılandırma bölümünde](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir) daha ayrıntılı bilgi bulabilirsiniz
 
 ### <a name="multiple-package-executions-are-triggered-unexpectedly"></a>Birden çok paket yürütmesi beklenmedik şekilde tetikleniyor
 
 * Olası neden ve önerilen eylem:
   * ADF saklı yordam etkinliği veya arama etkinliği, SSIS paketi yürütmesini tetiklemek için kullanılır. T-SQL komutu geçici bir sorunla karşılaşabilir ve çoklu paket yürütmelerinin oluşmasına neden olacak şekilde yeniden çalıştırma tetikleyebilir.
-  * Kullanıcı yeniden deneme sayısını etkinlikte bir şekilde ayarlamadığınız takdirde paket yürütmenin yeniden çalıştırılmamasını sağlayan Executessıspackage etkinliğini kullanın. Ayrıntı şurada bulunabilir:[https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
+  * Kullanıcı yeniden deneme sayısını etkinlikte bir şekilde ayarlamadığınız takdirde paket yürütmenin yeniden çalıştırılmamasını sağlayan Executessıspackage etkinliğini kullanın. Ayrıntı şurada bulunabilir: [https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
   * Bir yürütmenin zaten tetiklenip tetiklenmeyeceğini denetleyerek, yeniden çalıştırmak için t-SQL komutunu daraltın
 
 ### <a name="package-execution-takes-too-long"></a>Paket yürütmesi çok uzun sürüyor

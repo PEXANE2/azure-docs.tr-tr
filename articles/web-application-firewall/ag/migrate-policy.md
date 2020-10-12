@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 04/16/2020
 ms.author: ant
 ms.openlocfilehash: eccd6b33353e071a66225279f1f1c150d4bdaafc
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86143861"
 ---
 # <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>Azure PowerShell kullanarak Web uygulaması güvenlik duvarı ilkelerini geçirme
@@ -27,7 +27,7 @@ Geçiş betiğini çalıştırmak için aşağıdaki adımları kullanın:
 1. Aşağıdaki Cloud Shell penceresini açın veya Portal içinden bir tane açın.
 2. Betiği Cloud Shell penceresine kopyalayın ve çalıştırın.
 3. Betik, abonelik KIMLIĞI, kaynak grubu adı, WAF yapılandırmasının ilişkilendirildiği Application Gateway adı ve oluşturulacak yeni WAF ilkesinin adını sorar. Bu girdileri girdikten sonra betik çalışır ve yeni WAF ilkenizi oluşturur
-4. Yeni WAF ilkesini uygulama ağ geçidiniz ile ilişkilendirin. Portalda WAF ilkesine gidin ve **Ilişkili uygulama ağ geçitleri** sekmesini seçin. **Application Gateway Ilişkilendir** ' i SEÇIN ve ardından waf ilkesini ilişkilendirmek için Application Gateway seçin.
+4. Yeni WAF ilkesini uygulama ağ geçidiniz ile ilişkilendirin. Portalda WAF ilkesine gidin ve **Ilişkili uygulama ağ geçitleri** sekmesini seçin. **Application Gateway ilişkilendir** ' i seçin ve ardından WAF ilkesi ile ilişkilendirilecek Application Gateway seçin.
 
 > [!NOTE]
 > Aşağıdaki koşullar mevcutsa betik bir geçişi tamamlamaz:

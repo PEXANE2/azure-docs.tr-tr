@@ -9,15 +9,15 @@ ms.date: 03/04/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c3c9dbca6a76bf0b10a83087fc31d9fa41c6bd03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78331299"
 ---
 1. [Azure Portal](https://portal.azure.com) menüsünde **kaynak oluştur**' u seçin. 
 
-   ![Azure portal bir kaynak oluşturun](./media/vpn-gateway-add-gw-rm-portal-include/azure-portal-create-resource.png)
+   ![Azure portalında kaynak oluşturma](./media/vpn-gateway-add-gw-rm-portal-include/azure-portal-create-resource.png)
 2. Market 'te **Ara** alanına ' sanal ağ geçidi ' yazın. Arama dönüşindeki **sanal ağ geçidini** bulun ve girişi seçin. **Sanal ağ geçidi** sayfasında **Oluştur**' u seçin. Bu işlem **Sanal ağ geçidi oluşturma** sayfasını açar.
 3. **Temel bilgiler** sekmesinde, sanal ağ geçidinizin değerlerini girin.
 

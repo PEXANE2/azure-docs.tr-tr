@@ -8,18 +8,18 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 64b8956c47cbdbf31bb8253dac0c1e1f12833bf7
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171780"
 ---
 # <a name="advanced-filtering"></a>Gelişmiş filtreleme
 Event Grid, JSON yükünde herhangi bir özellikte filtre belirtilmesine izin verir. Bu filtreler `AND` , her bir dış koşulun isteğe bağlı iç koşullara sahip olduğu koşullar kümesi olarak modellenir `OR` . Her `AND` koşul için aşağıdaki değerleri belirtirsiniz:
 
-* `OperatorType`-Karşılaştırma türü.
-* `Key`-Filtrenin uygulanacağı özelliğin JSON yolu.
-* `Value`-Filtrenin çalıştırıldığı başvuru değeri (veya) `Values` -filtrenin çalıştırıldığı başvuru değerleri kümesi.
+* `OperatorType` -Karşılaştırma türü.
+* `Key` -Filtrenin uygulanacağı özelliğin JSON yolu.
+* `Value` -Filtrenin çalıştırıldığı başvuru değeri (veya) `Values` -filtrenin çalıştırıldığı başvuru değerleri kümesi.
 
 ## <a name="json-syntax"></a>JSON sözdizimi
 
@@ -55,7 +55,7 @@ Birden çok değeri destekleyen işleçler (örneğin,, `NumberIn` `NumberNotIn`
 > [!CAUTION]
 > NOT işleci değildir `NumberNotIn` ve `StringNotIn` alanında verilen her bir değer için ve koşulları gibi davranır `Values` .
 >
-> Bunu yapmamaları, filtrenin bir kabul etme filtresi olmasını ve filtreleme amacını ertelemesini ister.
+> Bunu yapmamaları, filtre Accept-All filtre yapar ve filtreleme amacını erteleyerek olur.
 
 ## <a name="floating-point-rounding-behavior"></a>Kayan nokta yuvarlama davranışı
 

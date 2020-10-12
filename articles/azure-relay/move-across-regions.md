@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 60a182764639341fcda159356dd9fe6c65cfabd9
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89463928"
 ---
 # <a name="move-an-azure-relay-namespace-to-another-region"></a>Bir Azure Relay ad alanını başka bir bölgeye taşıma
@@ -39,7 +39,7 @@ Başlamak için Kaynak Yöneticisi şablonu dışarı aktarın. Bu şablon Azure
 1. Özelliği için arama `location` yapın ve değeri bölgenin yeni adıyla değiştirin. Konum kodlarını almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/). Bir bölgenin kodu, boşluk içermeyen bölge adıdır, örneğin, `West US` eşittir `westus` .
 1. **Dınamık WCF geçiş** kaynaklarının tanımlarını kaldırın (tür: `Microsoft.Relay/namespaces/WcfRelays` ). Dinamik WCF geçişleri, **geçişler** sayfasında **IsDynamic** özelliği **true** olarak ayarlanmış olan olanlardır. Aşağıdaki örnekte, **yankı hizmeti** dınamık bir WCF geçiştir ve tanımı şablondan kaldırılmalıdır. 
 
-    :::image type="content" source="./media/move-across-regions/dynamic-relays.png" alt-text="Dinamik geçişler":::
+    :::image type="content" source="./media/move-across-regions/dynamic-relays.png" alt-text="Kaynak Yöneticisi şablonu indir":::
 
 ## <a name="move"></a>Taşı
 Hedef bölgede bir geçiş ad alanı oluşturmak için şablonu dağıtın. 
@@ -47,36 +47,36 @@ Hedef bölgede bir geçiş ad alanı oluşturmak için şablonu dağıtın.
 1. Azure portal **kaynak oluştur**' u seçin.
 2. **Market 'Te arama**yapmak için, arama metni için **şablon dağıtımı** yazın, **şablon dağıtımı (özel şablonları kullanarak dağıtın)** öğesini seçin ve ardından **ENTER**tuşuna basın.
 
-    :::image type="content" source="./media/move-across-regions/new-template-deployment.png" alt-text="Yeni şablon dağıtımı":::    
+    :::image type="content" source="./media/move-across-regions/new-template-deployment.png" alt-text="Kaynak Yöneticisi şablonu indir":::    
 1. **Şablon dağıtımı** sayfasında **Oluştur**' u seçin.
 
-    :::image type="content" source="./media/move-across-regions/template-deployment-create-button.png" alt-text="Yeni şablon dağıtımı-oluştur düğmesi":::        
+    :::image type="content" source="./media/move-across-regions/template-deployment-create-button.png" alt-text="Kaynak Yöneticisi şablonu indir":::        
 1. **Özel dağıtım** sayfasında, **düzenleyicide kendi şablonunuzu oluştur**' u seçin.
 
-    :::image type="content" source="./media/move-across-regions/build-template-link.png" alt-text="Düzenleyicide kendi şablonunuzu oluşturun-bağlantı":::            
+    :::image type="content" source="./media/move-across-regions/build-template-link.png" alt-text="Kaynak Yöneticisi şablonu indir":::            
 1. **Şablonu Düzenle** sayfasında, araç çubuğunda **Dosya Yükle** ' yi seçin ve ardından son bölümde indirdiğiniz dosyanın **template.js** yüklemek için yönergeleri izleyin.
 
-    :::image type="content" source="./media/move-across-regions/select-template.png" alt-text="Şablon seç":::                
+    :::image type="content" source="./media/move-across-regions/select-template.png" alt-text="Kaynak Yöneticisi şablonu indir":::                
 1. Şablonu kaydetmek için **Kaydet** ' i seçin. 
 
-    :::image type="content" source="./media/move-across-regions/save-template.png" alt-text="Şablonu Kaydet":::                    
+    :::image type="content" source="./media/move-across-regions/save-template.png" alt-text="Kaynak Yöneticisi şablonu indir":::                    
 1. **Özel dağıtım** sayfasında, aşağıdaki adımları izleyin: 
     1. Bir Azure **aboneliği**seçin. 
     2. Var olan bir **kaynak grubunu** seçin veya bir kaynak grubu oluşturun. 
     3. Hedef **konumu** veya bölgeyi seçin. Var olan bir kaynak grubunu seçtiyseniz, bu ayar salt okunurdur. 
     4. **Ad alanı için**yeni bir ad girin.
-    1. **Gözden geçir + oluştur**’u seçin. 
+    1. **Gözden geçir ve oluştur**’u seçin. 
 
-        :::image type="content" source="./media/move-across-regions/deploy-template.png" alt-text="Kaynak Yöneticisi şablonu dağıtma":::
+        :::image type="content" source="./media/move-across-regions/deploy-template.png" alt-text="Kaynak Yöneticisi şablonu indir":::
     1. **Gözden geçir + oluştur** sayfasında sayfanın alt kısmında **Oluştur** ' u seçin. 
     
 ## <a name="verify"></a>Doğrulama
 1. Dağıtım başarılı olduktan sonra **kaynak grubuna git**' i seçin.
 
-    :::image type="content" source="./media/move-across-regions/resource-group-navigation-link.png" alt-text="Kaynak grubu bağlantısına git":::    
+    :::image type="content" source="./media/move-across-regions/resource-group-navigation-link.png" alt-text="Kaynak Yöneticisi şablonu indir":::    
 1. **Kaynak grubu** sayfasında Azure Relay ad alanını seçin. 
 
-    :::image type="content" source="./media/move-across-regions/select-namespace.png" alt-text="Azure Relay ad alanını seçin":::    
+    :::image type="content" source="./media/move-across-regions/select-namespace.png" alt-text="Kaynak Yöneticisi şablonu indir":::    
 1. **Azure Relay ad alanı** sayfasında, karma BAĞLANTıLARıN ve WCF geçişlerinin oluşturulduğunu doğrulamak için sol menüdeki **karma bağlantılar** veya **WCF geçişleri** ' ni seçin. Şablonu içeri aktarmadan önce dinamik WCF geçişleri için tanımları silmeyi unuttuysanız, bunları **WCF geçişleri** sayfasında silin. İstemciler geçiş ad alanına bağlandıklarında dinamik WCF geçişleri otomatik olarak oluşturulur. 
 
 ## <a name="discard-or-clean-up"></a>Atma veya temizleme

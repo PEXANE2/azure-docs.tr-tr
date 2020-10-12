@@ -7,10 +7,10 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.openlocfilehash: 41dc4e97e847e9e7d9863631cdb20b72d3f35d9b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91269378"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Tümleştirme hizmeti ortamınızı (ISE) Azure Logic Apps ile yönetme
@@ -23,7 +23,7 @@ Bu makalede, [tümleştirme hizmeti ortamınız (ıSE)](../logic-apps/connect-vi
 
 ## <a name="view-your-ise"></a>ISE 'nizi görüntüleme
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Portalın arama kutusuna "tümleştirme hizmeti ortamları" yazın ve ardından **tümleştirme hizmeti ortamları**' nı seçin.
 

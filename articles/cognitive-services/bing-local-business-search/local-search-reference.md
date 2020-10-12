@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
 ms.openlocfilehash: d5de1cc606f97655427c0c86aea0c5c722e1bab8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84171472"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Bing yerel Iş Arama API 'SI v7 başvurusu
@@ -33,7 +33,7 @@ Yanıtın içerdiği JSON nesneleri hakkında daha fazla bilgi için bkz. [Respo
 
 
   
-## <a name="endpoint"></a>Uç Nokta  
+## <a name="endpoint"></a>Uç Noktası  
 Yerel iş sonuçları istemek için şunu öğesine bir GET isteği gönderin: 
 
 ``` 
@@ -47,7 +47,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 > URL uzunluğu üst sınırı 2.048 karakterdir. URL uzunluğunun sınırı aşmadığından emin olmak için, sorgu parametrelerinizin en fazla uzunluğu 1.500 karakterden az olmalıdır. URL 2.048 karakteri aşarsa, sunucu 404 ' i döndürür.  
   
   
-## <a name="headers"></a>Üst Bilgiler  
+## <a name="headers"></a>Üst bilgiler  
 Bir istek ve yanıtın içerebilme üstbilgileri aşağıda verilmiştir.  
   
 |Üst bilgi|Açıklama|  
@@ -89,7 +89,7 @@ Aşağıda, yanıtın dahil olabileceği JSON yanıt nesneleri verilmiştir. İs
 
 |Nesne|Açıklama|  
 |------------|-----------------|  
-|[Yer](#place)|Restoran veya otel gibi yerel bir işletme hakkındaki bilgileri tanımlar.|  
+|[Koy](#place)|Restoran veya otel gibi yerel bir işletme hakkındaki bilgileri tanımlar.|  
 
   
 ### <a name="error"></a>Hata  
@@ -194,7 +194,7 @@ Görüntülenecek bir arama sonuç öğesi tanımlar.
 |Resultındex|Görüntülenecek cevap içindeki öğenin sıfır tabanlı dizini. Öğe bu alanı içermiyorsa, yanıtdaki tüm öğeleri görüntüleyin. Örneğin, haber yanıtında tüm haber makalelerini görüntüleyin.|Tamsayı|
 |answerType|Görüntülenecek öğeyi içeren yanıt. Örneğin, Haberler.<br /><br />SearchResponse nesnesinde yanıtı bulmak için türü kullanın. Tür, SearchResponse alanının adıdır.<br /><br /> Ancak, yanıt türünü yalnızca bu nesne değer alanını içeriyorsa kullanın; Aksi takdirde, yoksayabilirsiniz.|Dize|
 |Textualındex|Görüntülenecek textualAnswers içindeki yanıtın dizini.| İşaretsiz tamsayı|
-|value|Görüntülenecek yanıtı veya görüntülenecek yanıtın bir öğesini tanımlayan KIMLIK. KIMLIK bir yanıt tanımlarsa, yanıtın tüm öğelerini görüntüleyin.|Maya|
+|değer|Görüntülenecek yanıtı veya görüntülenecek yanıtın bir öğesini tanımlayan KIMLIK. KIMLIK bir yanıt tanımlarsa, yanıtın tüm öğelerini görüntüleyin.|Maya|
 
 ### <a name="rankingresponse"></a>RankingResponse  
 Arama sonuçları sayfasının içeriğini ve ne sırada yerleştirileceğini tanımlar.  
@@ -213,7 +213,7 @@ Hizmet bir hizmet reddi saldırısından şüpheleniyorsa, isteğin başarılı 
 |Name|Değer|Tür|  
 |----------|-----------|----------|  
 |_type|SearchResponse olarak ayarlanan tip ipucu.|Dize|  
-|yer|Arama sorgusuyla ilgili varlıkların listesi.|JSON nesnesi|  
+|verir|Arama sorgusuyla ilgili varlıkların listesi.|JSON nesnesi|  
 |queryContext|İstek için Bing tarafından kullanılan sorgu dizesini içeren bir nesne.<br /><br /> Bu nesne, Kullanıcı tarafından girildiği şekilde sorgu dizesini içerir. Sorgu dizesi yazım hatası içeriyorsa sorgu için kullanılan değiştirilmiş bir sorgu dizesi de içerebilir.|[QueryContext](#querycontext)|  
 
 

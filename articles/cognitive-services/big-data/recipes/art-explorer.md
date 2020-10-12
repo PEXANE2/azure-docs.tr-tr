@@ -12,17 +12,17 @@ ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
 ms.openlocfilehash: 0a94c66eb51298db226ceec5da5c86666576052a
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87850500"
 ---
 # <a name="recipe-intelligent-art-exploration-with-the-cognitive-services-for-big-data"></a>Tarif: büyük veriler için bilişsel hizmetler ile akıllı resim araştırması
 
 Bu örnekte, büyük veriler için bilişsel hizmetler 'i, metropol Museum 'nun (KARŞıLANDıĞıNDAN) açık erişim koleksiyonuna akıllı ek açıklamalar ekleyecek şekilde kullanacağız. Bu, el ile ek açıklama olmadan bile Azure Search kullanarak akıllı bir arama altyapısı oluşturmamızı sağlar. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Görüntü İşleme ve Bilişsel Arama için bir abonelik anahtarınız olması gerekir. Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin.
   > [!NOTE]

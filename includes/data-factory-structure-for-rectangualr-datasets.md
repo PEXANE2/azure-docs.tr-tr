@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67189041"
 ---
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Dikdörtgen veri kümeleri için yapı tanımı belirtme
@@ -39,7 +39,7 @@ Aşağıdaki örnek, UserID, Name ve LastLoginDate adlı üç sütunlu bir tablo
 * Veri şemasını depolayan **yapılandırılmış veri kaynakları** ve verilerin kendisiyle birlikte (SQL Server, Oracle, Azure tablosu vb. gibi), yalnızca belirli kaynak sütunlarının havuz içindeki belirli sütunlara eşlenmesini istiyorsanız ve adları aynı değilse, "yapı" bölümünü belirtmeniz gerekir (Aşağıdaki sütun eşleme bölümünde ayrıntılara bakın). 
   
     Yukarıda belirtildiği gibi, tür bilgileri "yapı" bölümünde isteğe bağlıdır. Yapılandırılmış kaynaklar için, tür bilgileri veri deposundaki veri kümesi tanımının bir parçası olarak zaten mevcut olduğundan, "yapı" bölümünü dahil ettiğinizde tür bilgilerini içermemelidir.
-* **Okuma veri kaynakları üzerindeki şema için (özellikle Azure blob)** verileri herhangi bir şema veya tür bilgilerini depolamadan depolamak zorunda kalmadan depolamayı tercih edebilirsiniz. Bu veri kaynağı türleri için aşağıdaki 2 durumda "Structure" eklemeniz gerekir:
+* **Okuma veri kaynakları üzerindeki şema için (özellikle Azure blob)**  verileri herhangi bir şema veya tür bilgilerini depolamadan depolamak zorunda kalmadan depolamayı tercih edebilirsiniz. Bu veri kaynağı türleri için aşağıdaki 2 durumda "Structure" eklemeniz gerekir:
   * Sütun eşlemesi yapmak istiyorsunuz.
   * Veri kümesi bir kopyalama etkinliğinde kaynak olduğunda, "Structure" içinde tür bilgilerini sağlayabilir ve Data Factory, bu tür bilgilerini havuzun yerel türlerine dönüştürmek için kullanır. Daha fazla bilgi için bkz. [Azure Blob 'a veri taşıma](../articles/data-factory/v1/data-factory-azure-blob-connector.md) makalesi.
 

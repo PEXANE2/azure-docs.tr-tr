@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
 ms.openlocfilehash: 71207509f20c80cf85311cba7b647aaca0a49e42
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88192813"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight ve Azure Data Lake Storage 1. için performans ayarlama Kılavuzu
@@ -89,7 +89,7 @@ G/ç yoğunluklu topolojilerde, her bir soıt iş parçacığının kendi dosyas
 
 Bu durumda, Spout, cıvam tarafından açıkça onaylanana kadar bir kayıt düzeni üzerinde tutulur. Bir tanımlama grubu, cıvam tarafından okunmadıysa ancak henüz onaylanmadıysa, Spout Data Lake Storage 1. arka uca kalıcı olmayabilir. Bir tanımlama grubu onaylandıktan sonra Spout, cıvatanın sürekliliği olabilir ve sonra kaynak verileri okuma kaynağı olan herhangi bir kaynaktan silebilir.  
 
-Data Lake Storage 1. en iyi performansı elde etmek için, cıvam arabelleği 4 MB 'lık kayıt verisi olmalıdır. Sonra Data Lake Storage 1. arka uca 4 MB yazma olarak yazın. Veriler depoya başarıyla yazıldıktan sonra (hflush () çağırarak, bu, verileri Spout 'e geri kabul edebilir. Burada sağlanan örnek bir sürgüsü aşağıda verilmiştir. Ayrıca, hflush () çağrısı yapılmadan ve tanımlama grupları onaylanmadan önce daha fazla sayıda tanımlama kümesini tutmak da kabul edilebilir. Bununla birlikte, bu, Spout 'ın tutması gereken Uçuş ve bu nedenle JVM başına gereken bellek miktarını artıran başlık sayısını artırır.
+Data Lake Storage 1. en iyi performansı elde etmek için, cıvam arabelleği 4 MB 'lık kayıt verisi olmalıdır. Ardından Data Lake Storage 1. arka ucuna 1 4 MB yazma olarak yazın. Veriler depoya başarıyla yazıldıktan sonra (hflush () çağırarak, bu, verileri Spout 'e geri kabul edebilir. Burada sağlanan örnek bir sürgüsü aşağıda verilmiştir. Ayrıca, hflush () çağrısı yapılmadan ve tanımlama grupları onaylanmadan önce daha fazla sayıda tanımlama kümesini tutmak da kabul edilebilir. Bununla birlikte, bu, Spout 'ın tutması gereken Uçuş ve bu nedenle JVM başına gereken bellek miktarını artıran başlık sayısını artırır.
 
 > [!NOTE]
 > Uygulamalar, diğer performans dışı nedenlerle, başlıkları daha sık (4 MB 'tan az veri boyutunda) kabul etmek için bir gereksinime sahip olabilir. Ancak bu, depolama arka ucunun g/ç verimini etkileyebilir. Bu zorunluluğunu getirir 'in, cıvatanın g/ç performansına karşı dikkatli bir şekilde karşılaştırın.
@@ -98,7 +98,7 @@ Tanımlama gruplarının gelen hızı yüksek değilse, 4 MB arabelleğin doldur
 * Cıvatların sayısını azaltarak, doldurmanız gereken daha az arabellek vardır.
 * Her x temizlemesi veya her y milisaniyesi için bir hflush () tetiklendiği zaman tabanlı veya sayı tabanlı bir ilkeye sahip olmak ve şimdiye kadar toplanan başlıkların geri kabul edildiği.
 
-Bu durumda üretilen iş hacmi daha düşüktür, ancak düşük bir olay oranıyla, en büyük verimlilik yine de en büyük amaç değildir. Bu azaltmaları, kayıt düzeni için gereken toplam süreyi, mağazaya akacak şekilde azaltmanıza yardımcı olur. Bu durum, düşük bir olay oranıyla bile gerçek zamanlı bir işlem hattı ister misiniz? Ayrıca, gelen kayıt tarifeniz düşükse, topoloji. Message. timeout_secs parametresini ayarlamanız gerektiğini unutmayın. bu nedenle, arabelleğe alınmış veya işlenen sırada tanımlama gruplarının zaman aşımına uğrar.
+Bu durumda üretilen iş hacmi daha düşüktür, ancak düşük bir olay oranıyla, en büyük verimlilik yine de en büyük amaç değildir. Bu azaltmaları, kayıt düzeni için gereken toplam süreyi, mağazaya akacak şekilde azaltmanıza yardımcı olur. Bu durum, düşük bir olay oranıyla bile gerçek zamanlı bir işlem hattı ister misiniz? Ayrıca, gelen tanımlama grubu oranınızı düşükse, topology.message.timeout_secs parametresini ayarlamanız gerektiğini unutmayın. bu nedenle, ara belleğe alınan veya işlenen sırada tanımlama gruplarının zaman aşımına uğrar.
 
 ## <a name="monitor-your-topology-in-storm"></a>Topolojinizi fırtınası içinde izleyin  
 Topolojiniz çalışırken, bunu fırtınası Kullanıcı arabiriminde izleyebilirsiniz. Bakılacak ana parametreler şunlardır:

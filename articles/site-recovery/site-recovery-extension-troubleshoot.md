@@ -6,13 +6,13 @@ manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.openlocfilehash: c1915d108bf9465d3e5b8d6a55053b583ee4f580
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88184627"
 ---
-# <a name="troubleshoot-azure-vm-extension-issues"></a>Azure VM Uzantısı sorunlarını giderme
+# <a name="troubleshoot-azure-vm-extension-issues"></a>Azure VM uzantısıyla ilgili sorunları giderme
 
 Bu makalede, VM Aracısı ve uzantısıyla ilgili Azure Site Recovery hatalarını çözmenize yardımcı olabilecek sorun giderme adımları sunulmaktadır.
 
@@ -84,12 +84,12 @@ Linux VM 'Leri için aracıyla ilgili veya uzantı ile ilgili çoğu başarısı
    > [!NOTE]
    > Aracıyı yalnızca bir dağıtım deposu aracılığıyla güncelleştirmenizi *önemle tavsiye* ederiz. Doğrudan GitHub 'dan aracı kodunu indirmenizi ve güncelleştirmeyi önermiyoruz. Dağıtım için en son aracı kullanılamıyorsa, nasıl yükleneceğine ilişkin yönergeler için dağıtım desteğiyle iletişim kurun. En son aracıyı denetlemek için GitHub deposundaki [Windows Azure Linux Aracısı](https://github.com/Azure/WALinuxAgent/releases) sayfasına gidin.
 
-1. Aşağıdaki komutu çalıştırarak Azure aracısının VM üzerinde çalıştığından emin olun:`ps -e`
+1. Aşağıdaki komutu çalıştırarak Azure aracısının VM üzerinde çalıştığından emin olun: `ps -e`
 
    İşlem çalışmıyorsa, aşağıdaki komutları kullanarak yeniden başlatın:
 
-   - Ubuntu için:`service walinuxagent start`
-   - Diğer dağıtımlar için:`service waagent start`
+   - Ubuntu için: `service walinuxagent start`
+   - Diğer dağıtımlar için: `service waagent start`
 
 1. [Otomatik yeniden başlatma aracısını yapılandırın](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
 1. Sanal makinenin korunmasını etkinleştirin.

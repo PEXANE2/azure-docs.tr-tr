@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
 ms.openlocfilehash: ed14d4cb79cb5794fa666f1bb96e062d69128d0f
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87337679"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>IoT DevKit cihazını uzaktan Izleme çözüm hızlandırıcısına bağlama
@@ -77,7 +77,7 @@ DevKit cihazına yüklediğiniz örnek uygulamanın çalıştığını doğrulam
 
 ### <a name="view-the-telemetry-sent-to-remote-monitoring-solution"></a>Uzaktan Izleme çözümüne gönderilen Telemetriyi görüntüleme
 
-Örnek uygulama çalıştığında, DevKit cihazı, ön algılayıcı verilerinden Wi-Fi üzerinden çözüm hızlandırıcısına telemetri gönderir. Telemetriyi görmek için:
+Örnek uygulama çalıştığında, DevKit cihazı Wi-Fi üzerindeki sensör verilerinden çözüm hızlandırıcısına telemetri gönderir. Telemetriyi görmek için:
 
 1. Çözüm panonuza gidin ve **Device Explorer**' ye tıklayın.
 

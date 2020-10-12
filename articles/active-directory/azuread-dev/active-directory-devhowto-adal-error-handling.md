@@ -13,10 +13,10 @@ ms.workload: identity
 ms.date: 02/27/2017
 ROBOTS: NOINDEX
 ms.openlocfilehash: ad5595f7eebc8feca2f00a6f95e10c547ded9529
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85383743"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Azure Active Directory kimlik doğrulaması kitaplığı (ADAL) istemcileri için en iyi yöntemler işlenirken hata oluştu
@@ -545,7 +545,7 @@ Belirli ADAL hatalarını araştırmak için, [Azure-ActiveDirectory-Library-for
 
 Kullanıcılar Web görünümlerini ve kimlik doğrulamanın yapısını kullanırken oturum açma sırasında iOS hataları ortaya çıkabilir. Bu durum TLS hataları, zaman aşımları veya ağ hataları gibi koşullardan kaynaklanabilir:
 
-- Yetkilendirme paylaşımı için, oturum açmalar kalıcı değildir ve önbellek boş görünür. Aşağıdaki kod satırını anahtarlığa ekleyerek çözebilirsiniz:`[[ADAuthenticationSettings sharedInstance] setSharedCacheKeychainGroup:nil];`
+- Yetkilendirme paylaşımı için, oturum açmalar kalıcı değildir ve önbellek boş görünür. Aşağıdaki kod satırını anahtarlığa ekleyerek çözebilirsiniz: `[[ADAuthenticationSettings sharedInstance] setSharedCacheKeychainGroup:nil];`
 - NsUrlDomain hata kümesi için eylem, uygulama mantığına göre değişir. İşlenebilen belirli örnekler için [Nsurlerrordomain başvuru belgelerine](https://developer.apple.com/documentation/foundation/nsurlerrordomain#declarations) bakın.
 - ADAL hedefi-C ekibi tarafından tutulan yaygın hataların listesi için [adal obj-c ortak sorunları](https://github.com/AzureAD/azure-activedirectory-library-for-objc#adauthenticationerror) bölümüne bakın.
 

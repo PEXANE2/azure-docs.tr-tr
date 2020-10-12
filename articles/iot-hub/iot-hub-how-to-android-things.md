@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: robinsh
 ms.openlocfilehash: a06583e9aab4b082517d47c1022f7bec5184b9bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78673390"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>Azure IoT SDK 'larını kullanarak Android öğeleri için geliştirme
@@ -20,7 +20,7 @@ ms.locfileid: "78673390"
 
 Bu öğreticide, Azure IoT Java SDK 'sını kullanarak Android öğeleri üzerinde bir cihaz tarafı uygulaması oluşturma adımları özetlenmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Android nesnelerin çalıştığı bir Android tarafından desteklenen donanımlar.  Android nesnelerin işletim sistemini Flash ile nasıl flabileceğinize ilişkin [Android öğeleri belgelerini](https://developer.android.com/things/get-started/kits#flash-at) izleyebilirsiniz.  Android öğeleri cihazınızın, klavye, ekran ve fare gibi temel çevresel cihazlarda internet 'e bağlı olduğundan emin olun.  Bu öğreticide Raspberry PI 3 kullanılmaktadır.
 
@@ -30,7 +30,7 @@ Bu öğreticide, Azure IoT Java SDK 'sını kullanarak Android öğeleri üzerin
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-an-iot-hub"></a>IoT hub oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -55,7 +55,7 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyAndroidThingsDevice --output table
     ```
 
-    Şu ifadeye benzer şekilde görünen cihaz bağlantı dizesini not edin:
+    Aşağıdakine benzeyen cihaz bağlantı dizenizi not alın:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyAndroidThingsDevice;SharedAccessKey={YourSharedAccessKey}`
 

@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 06/8/2020
 ms.author: chenyl
 ms.openlocfilehash: abe7503e7eb73d533ae901af21de001960173fb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85559409"
 ---
 # <a name="managed-identities-for-azure-signalr-service"></a>Azure SignalR hizmeti için Yönetilen kimlikler
@@ -28,7 +28,7 @@ Azure portal yönetilen bir kimlik ayarlamak için öncelikle bir Azure SignalR 
 
 2. **Kimlik**seçin.
 
-4. **Sistem atandı** sekmesinde **durumu** **Açık**olarak değiştirin. **Kaydet**'i seçin.
+4. **Sistem atandı** sekmesinde **durumu** **Açık**olarak değiştirin. **Kaydet**’i seçin.
 
     :::image type="content" source="media/signalr-howto-use-managed-identity/system-identity-portal.png" alt-text="Portala sistem tarafından atanan bir kimlik ekleme":::
 
@@ -44,9 +44,9 @@ Kullanıcı tarafından atanan bir kimlikle Azure SignalR hizmeti örneği oluş
 
 4. **Kullanıcı atandı** sekmesinde **Ekle**' yi seçin.
 
-5. Daha önce oluşturduğunuz kimliği arayın ve seçin. **Ekle**'yi seçin.
+5. Daha önce oluşturduğunuz kimliği arayın ve seçin. **Ekle**’yi seçin.
 
-    :::image type="content" source="media/signalr-howto-use-managed-identity/user-identity-portal.png" alt-text="Portalda Kullanıcı tarafından atanan bir kimlik ekleme":::
+    :::image type="content" source="media/signalr-howto-use-managed-identity/user-identity-portal.png" alt-text="Portala sistem tarafından atanan bir kimlik ekleme":::
 
 ## <a name="use-a-managed-identity-in-serverless-scenarios"></a>Sunucusuz senaryolarda yönetilen bir kimlik kullanma
 

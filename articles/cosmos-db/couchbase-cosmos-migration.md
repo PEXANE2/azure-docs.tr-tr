@@ -8,10 +8,10 @@ ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
 ms.openlocfilehash: b0c9ef99e4cbb0683273d613d3a85e7f6455a40d
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87366730"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Couşbase 'ten Azure Cosmos DB SQL API 'sine geçiş
@@ -187,7 +187,7 @@ N1QL sorguları, Couşbase 'de sorguları tanımlamanın yoludur.
 
 |N1QL sorgusu | Azure CosmosDB sorgusu|
 |-------------------|-------------------|
-|META ( `TravelDocument` ). ID as ID, `TravelDocument` . * from `TravelDocument` `_type` = "com. xx. xx. xx. xxx. xxx. xxxx" ve Country = ' Hindistan ' ve Vizas 'deki HERHANGI bir d 'yi karşılayan bir d. Type = = ' Multi-entry ' ve d. Country, ` Validity` DESC sınırına 25 fark 0   | C 'yi SEÇIN. c. Country = ' Hindistan ' ve c. _type = "com. xx. xx. xx. xxx. xxx. xxxx" ve c. Country = ' Hindistan ' ve m. Type = ' Multi-entry ' ve m. Country IN (' Hindistan ', ' Bhutan ') SıRASıYLA c. geçerlilik DESC KAYMASı 0 sınır 25 ' i r. |
+|META ( `TravelDocument` ). ID as ID, `TravelDocument` . * from `TravelDocument` `_type` = "com. xx. xx. xx. xxx. xxx. xxxx" ve Country = ' Hindistan ' ve Vizas 'deki HERHANGI bir d 'yi karşılayan bir d. Type = = ' Multi-entry ' ve d. Country, ` Validity` DESC sınırına 25 fark 0   | C. ID, c 'den c. Country = ' Hindistan ' konumundan c._type = "com. xx. xx. xx. xxx. xxx. xxxx" ve c. Country = ' Hindistan ' ve m. Type = ' Multi-entry ' ve m. Country IN (' Hindistan ', ' Bhutan ') olarak SıRASıYLA c. id, c ' yi SEÇIN. geçerlilik DESC KAYMASı 0 sınır |
 
 N1QL sorgularınızda aşağıdaki değişiklikleri görebilirsiniz:
 

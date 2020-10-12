@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 0196522618d4b61f615f7cc6faeacbe9a8c7c5b4
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171355"
 ---
 # <a name="common-issues"></a>Genel Sorunlar
@@ -100,7 +100,7 @@ Bunun tipik nedenleri şunlardır:
 
 * Event Grid modülünün dağıtıldığı VM 'de oturum açın ve günlüklerini görüntüleyin.
 
-* **Aracı: logDeliverySuccess = true** ayarlayarak ve Event Grid modülünü yeniden dağıtarak ve isteği yeniden denemeden teslim günlüğü başına ' yı açın. İşlem başına günlük tutmayı açmak, hata ayıklamanın yeniden dengeleyebilmesi için iş çıkarma ve gecikme süresini etkileyebilir **: logDeliverySuccess = false** ve Event Grid modülü yeniden dağıtılıyor.
+* **Aracı: logDeliverySuccess = true** ayarlayarak ve Event Grid modülünü yeniden dağıtarak ve isteği yeniden denemeden teslim günlüğü başına ' yı açın. İşlem başına günlük tutmayı açmak, hata ayıklamanın yeniden dengeleyebilmesi için iş çıkarma ve gecikme süresini etkileyebilir **: logDeliverySuccess = false**  ve Event Grid modülü yeniden dağıtılıyor.
 
 * Ölçümleri ayarlayarak ölçümleri açın **: reportertype = konsol** ve Event Grid modülünü yeniden dağıtın. Bundan sonra herhangi bir işlem, daha fazla hata ayıklamak için kullanılabilen Event Grid modülünün konsolunda, ölçümler günlüğe kaydediliyor. Ölçümleri yalnızca hata ayıklama için ve bir kez tamamladıktan sonra **ölçüm** ayarları yaparak devre dışı bırakmak için ' i etkinleştirmek ve Event Grid modülünü yeniden dağıtmak için önerimiz.
 
