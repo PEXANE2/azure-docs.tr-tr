@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.openlocfilehash: d94e589a19b29e68883c0217b62b883f9d026789
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90902737"
 ---
 # <a name="configuring-tls-settings-in-azure-database-for-mysql-using-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı 'nda TLS ayarlarını yapılandırma
@@ -19,7 +19,7 @@ Bu makalede, bir MySQL için Azure veritabanı sunucusunu, bağlantıların en d
 
 MySQL için Azure veritabanı 'na bağlanmak üzere TLS sürümü uygulayabilirsiniz. Müşteriler artık veritabanı sunucuları için en düşük TLS sürümünü ayarlamayı tercih etmektedir. Örneğin, bu en düşük TLS sürümünü 1,0 olarak ayarlamak, TLS 1.0, 1.1 ve 1,2 kullanarak bağlanan istemcilere izin vermeyeceğiniz anlamına gelir. Alternatif olarak, bunu 1,2 olarak ayarlamak yalnızca TLS 1.2 + kullanarak bağlanan istemcilere izin vermek ve TLS 1,0 ve TLS 1,1 ile gelen tüm bağlantıları reddedilecek anlamına gelir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 
@@ -41,7 +41,7 @@ MySQL Server en düşük TLS sürümünü ayarlamak için şu adımları izleyin
 
 1. Bildirim, bağlantı güvenliği ayarının başarıyla etkinleştirildiğini onaylanır.
 
-    :::image type="content" source="./media/howto-tls-configurations/setting-tls-value-success.png" alt-text="MySQL için Azure veritabanı TLS yapılandırması başarılı":::
+    :::image type="content" source="./media/howto-tls-configurations/setting-tls-value-success.png" alt-text="MySQL için Azure veritabanı TLS yapılandırması":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

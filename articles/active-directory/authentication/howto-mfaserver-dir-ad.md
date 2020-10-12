@@ -13,10 +13,10 @@ ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 866fa7333565a1875984aa5640d2028b6e399df1
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88949550"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA Sunucusu ile Active Directory arasında dizin tümleştirme
@@ -104,7 +104,7 @@ Belirli bir dizinin özniteliklerini gerektiği şekilde özelleştirebilirsini
 | Faks |Kullanıcı kaydındaki faks numarasını içeren özniteliğin öznitelik adını girin.  facsimileTelephoneNumber varsayılandır. |
 | IP telefonu |Kullanıcı kaydındaki IP telefonu numarasını içeren özniteliğin öznitelik adını girin.  ipPhone varsayılandır. |
 | Özel |Kullanıcı kaydında özel bir telefon numarası içeren özniteliğin öznitelik adını girin.  Varsayılan boştur. |
-| Uzantı |Kullanıcı kaydındaki telefon numarası dahili numarasını içeren özniteliğin öznitelik adını girin.  Dahili numara alanının değeri yalnızca birincil telefon numarası için dahili numara olarak kullanılır.  Varsayılan boştur. <br><br>Dahili numara özniteliği belirtilmezse, dahili numaralar telefon özniteliğinin parçası olarak eklenebilir. Bu durumda, uzantının düzgün ayrıştırılabilmesi için önüne 'x' ekleyin.  Örneğin, 555-123-4567 x890, telefon numarası olarak 555-123-4567 ve dahili numara olarak 890’ı ifade eder. |
+| Dahili numara |Kullanıcı kaydındaki telefon numarası dahili numarasını içeren özniteliğin öznitelik adını girin.  Dahili numara alanının değeri yalnızca birincil telefon numarası için dahili numara olarak kullanılır.  Varsayılan boştur. <br><br>Dahili numara özniteliği belirtilmezse, dahili numaralar telefon özniteliğinin parçası olarak eklenebilir. Bu durumda, uzantının düzgün ayrıştırılabilmesi için önüne 'x' ekleyin.  Örneğin, 555-123-4567 x890, telefon numarası olarak 555-123-4567 ve dahili numara olarak 890’ı ifade eder. |
 | Varsayılanları Geri Yükle düğmesi |Tüm öznitelikleri varsayılan değerlerine geri döndürmek için **Varsayılanları Geri Yükle**’ye tıklayın.  Varsayılanlar normal Active Directory ya da ADAM şemasıyla düzgün çalışmalıdır. |
 
 Öznitelikleri düzenlemek için, öznitelikler sekmesinde **Düzenle** ' ye tıklayın.  Bu, öznitelikleri düzenleyebileceğiniz bir pencere getirir. Herhangi bir özniteliğin yanındaki **...** simgesini seçerek hangi özelliklerin görüntüleneceğini seçebileceğiniz pencereyi açın.

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
 ms.openlocfilehash: ce7ff6ae134835de23a0d2670e8b4f44783654f8
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89079209"
 ---
 # <a name="translator-encryption-of-data-at-rest"></a>Bekleyen verilerin Translator şifrelemesi
@@ -37,7 +37,7 @@ Yalnızca Microsoft tarafından yönetilen şifreleme anahtarlarını destekleye
 Aboneliğiniz varsayılan olarak Microsoft tarafından yönetilen şifreleme anahtarlarını kullanır. Aboneliğinizi, müşteri tarafından yönetilen anahtarlar (CMK) adlı kendi anahtarlarınız ile yönetme seçeneği de vardır. CMK, erişim denetimlerini oluşturma, döndürme, devre dışı bırakma ve iptal etme için daha fazla esneklik sunar. Verilerinizi korumak için kullanılan şifreleme anahtarlarını da denetleyebilirsiniz. Aboneliğiniz için CMK yapılandırıldıysa, ikinci bir koruma katmanı sunan ve Azure Key Vault şifreleme anahtarını denetlemenizi sağlayan çift şifreleme sağlanır.
 
 > [!IMPORTANT]
-> Müşteri tarafından yönetilen anahtarlar, çevirmen hizmeti için tüm fiyatlandırma katmanlarında kullanılabilir. Müşteri tarafından yönetilen anahtarları kullanma olanağı istemek için [Translator müşteri tarafından yönetilen anahtar Isteği formunu](https://aka.ms/cogsvc-cmk) doldurun ve gönderebilirsiniz. Bu işlem, isteğinizin durumunu öğrenmek için yaklaşık 3-5 iş günü sürer. Talebe bağlı olarak, bir kuyruğa yerleştirilmiş ve alan kullanılabilir olduğunda onaylanmış olabilir. Translator hizmeti ile CMK kullanmaya onaylandıktan sonra yeni bir çevirmen kaynağı oluşturmanız gerekir. Çevirmen kaynağınız oluşturulduktan sonra, yönetilen kimliğinizi ayarlamak için Azure Key Vault kullanabilirsiniz.
+> Müşteri tarafından yönetilen anahtarlar, çevirmen hizmeti için tüm fiyatlandırma katmanlarında kullanılabilir. Müşteri tarafından yönetilen anahtarları kullanma olanağı istemek için, çeviriciyi doldurun ve [çeviri Customer-Managed anahtar Isteği formunu](https://aka.ms/cogsvc-cmk) gönderebilirsiniz. Bu işlem, isteğinizin durumunu öğrenmek için yaklaşık 3-5 iş günü sürer. Talebe bağlı olarak, bir kuyruğa yerleştirilmiş ve alan kullanılabilir olduğunda onaylanmış olabilir. Translator hizmeti ile CMK kullanmaya onaylandıktan sonra yeni bir çevirmen kaynağı oluşturmanız gerekir. Çevirmen kaynağınız oluşturulduktan sonra, yönetilen kimliğinizi ayarlamak için Azure Key Vault kullanabilirsiniz.
 
 Çevirmen için müşteri tarafından yönetilen anahtarları etkinleştirmek üzere aşağıdaki adımları izleyin:
 
@@ -47,7 +47,7 @@ Aboneliğiniz varsayılan olarak Microsoft tarafından yönetilen şifreleme ana
 
 ### <a name="enable-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları etkinleştir
 
-Müşteri tarafından yönetilen anahtarlarınızın depolanması için Azure Key Vault kullanmanız gerekir. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya Azure Key Vault API 'Lerini kullanarak anahtarlar oluşturabilirsiniz. Bilişsel hizmetler kaynağı ve Anahtar Kasası aynı bölgede ve aynı Azure Active Directory (Azure AD) kiracısında olmalıdır, ancak farklı aboneliklerde olabilir. Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
+Müşteri tarafından yönetilen anahtarlarınızı depolamak için Azure Key Vault’u kullanmanız gerekir. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya Azure Key Vault API 'Lerini kullanarak anahtarlar oluşturabilirsiniz. Bilişsel hizmetler kaynağı ve Anahtar Kasası aynı bölgede ve aynı Azure Active Directory (Azure AD) kiracısında olmalıdır, ancak farklı aboneliklerde olabilir. Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
 
 Yeni bir bilişsel hizmetler kaynağı, her zaman Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. Kaynağın oluşturulduğu sırada müşteri tarafından yönetilen anahtarların etkinleştirilmesi mümkün değildir. Müşteri tarafından yönetilen anahtarlar Azure Key Vault depolanır ve anahtar kasasının bilişsel hizmetler kaynağıyla ilişkili yönetilen kimliğe anahtar izinleri veren erişim ilkeleriyle sağlanması gerekir. Yönetilen kimlik, kaynak oluşturulduğu anda kullanılabilir.
 

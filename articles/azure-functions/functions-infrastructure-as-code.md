@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 56a68fca42bcab7642a5ebad953b59269a4d88a1
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89180652"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Işlevlerinde işlev uygulamanız için kaynak dağıtımını otomatikleştirme
@@ -137,7 +137,7 @@ Barındırma planının tanımı değişir ve aşağıdakilerden biri olabilir:
 
 Bir işlev uygulaması şu uygulama ayarlarını içermelidir:
 
-| Ayar adı                 | Description                                                                               | Örnek değerler                        |
+| Ayar adı                 | Açıklama                                                                               | Örnek değerler                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | Işlevlerin çalışma zamanının iç sıraya alma için kullandığı bir depolama hesabına yönelik bağlantı dizesi | [Depolama hesabını](#storage) gör       |
 | FUNCTIONS_EXTENSION_VERSION  | Azure Işlevleri çalışma zamanının sürümü                                                | `~2`                                  |
@@ -649,7 +649,7 @@ Bir işlev uygulamasının, dağıtımınızda kullanabileceğiniz uygulama ayar
 
 * [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
-* [Azure portal](../azure-resource-manager/templates/deploy-portal.md)
+* [Azure portalındaki](../azure-resource-manager/templates/deploy-portal.md)
 * [REST API](../azure-resource-manager/templates/deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>Azure'a Dağıt düğmesi

@@ -5,17 +5,17 @@ ms.topic: conceptual
 ms.date: 07/10/2020
 ms.author: azfuncdf
 ms.openlocfilehash: bb5c6ee15a5a445b4b762bd9eaf8919e1396f8ce
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081840"
 ---
 # <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler özel düzenleme durumu (Azure Işlevleri)
 
 Özel düzenleme durumu, Orchestrator işleviniz için özel bir durum değeri ayarlamanıza olanak sağlar. Bu durum [http GetStatus API 'si](durable-functions-http-api.md#get-instance-status) veya Orchestration istemcisindeki [ `GetStatusAsync` API](durable-functions-instance-management.md#query-instances) aracılığıyla sağlanır.
 
-## <a name="sample-use-cases"></a>Örnek kullanım örnekleri
+## <a name="sample-use-cases"></a>Kullanım örnekleri
 
 > [!NOTE]
 > Aşağıdaki örnekler C#, JavaScript ve Python 'da özel durum özelliğinin nasıl kullanılacağını göstermektedir. C# örnekleri Dayanıklı İşlevler 2. x için yazılmıştır ve Dayanıklı İşlevler 1. x ile uyumlu değildir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
@@ -53,7 +53,7 @@ public static string SayHello([ActivityTrigger] string name)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-`E1_HelloSequence`Orchestrator işlevi:
+`E1_HelloSequence` Orchestrator işlevi:
 
 ```javascript
 const df = require("durable-functions");
@@ -73,7 +73,7 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-`E1_SayHello`Etkinlik işlevi:
+`E1_SayHello` Etkinlik işlevi:
 
 ```javascript
 module.exports = async function(context, name) {
@@ -82,7 +82,7 @@ module.exports = async function(context, name) {
 ```
 # <a name="python"></a>[Python](#tab/python)
 
-### <a name="e1_hellosequence-orchestrator-function"></a>`E1_HelloSequence`Orchestrator işlevi
+### <a name="e1_hellosequence-orchestrator-function"></a>`E1_HelloSequence` Orchestrator işlevi
 ```python
 import azure.functions as func
 import azure.durable_functions as df
@@ -102,7 +102,7 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 main = df.Orchestrator.create(orchestrator_function)
 ```
 
-### <a name="e1_sayhello-activity-function"></a>`E1_SayHello`Activity işlevi
+### <a name="e1_sayhello-activity-function"></a>`E1_SayHello` Activity işlevi
 ```python
 def main(name: str) -> str:
     return f"Hello {name}!"
@@ -249,7 +249,7 @@ public static void Run(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-#### <a name="cityrecommender-orchestrator"></a>`CityRecommender`Orchestrator
+#### <a name="cityrecommender-orchestrator"></a>`CityRecommender` Orchestrator
 
 ```javascript
 const df = require("durable-functions");
@@ -284,7 +284,7 @@ module.exports = df.orchestrator(function*(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-#### <a name="cityrecommender-orchestrator"></a>`CityRecommender`Orchestrator
+#### <a name="cityrecommender-orchestrator"></a>`CityRecommender` Orchestrator
 
 ```python
 import azure.functions as func

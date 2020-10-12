@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: af5399be44d2946775622598c5c1db3d8355f7cd
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86257079"
 ---
 # <a name="sfctl-store"></a>sfctl store
@@ -19,7 +19,7 @@ Küme görüntü deposunda temel dosya düzeyi işlemleri gerçekleştirin.
 
 |Komut|Açıklama|
 | --- | --- |
-| silme | Mevcut görüntü deposu içeriğini siler. |
+| delete | Mevcut görüntü deposu içeriğini siler. |
 | kök-bilgi | Görüntü deposunun kökündeki içerik bilgilerini alır. |
 | istatistik | Görüntü deposu içerik bilgilerini alır. |
 
@@ -28,7 +28,7 @@ Mevcut görüntü deposu içeriğini siler.
 
 Verilen görüntü deposu göreli yolu içinde bulunan mevcut görüntü deposu içeriğini siler. Bu komut, yüklenen uygulama paketlerini sağlandıktan sonra silmek için kullanılabilir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -50,7 +50,7 @@ Görüntü deposunun kökündeki içerik bilgilerini alır.
 
 Görüntü deposunun kökündeki görüntü deposu içeriğiyle ilgili bilgileri döndürür.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -71,7 +71,7 @@ Görüntü deposu içerik bilgilerini alır.
 
 Belirtilen contentPath konumundaki görüntü deposu içeriğiyle ilgili bilgileri döndürür. ContentPath, görüntü deposunun köküne göredir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |

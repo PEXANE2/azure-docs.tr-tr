@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 899bc3fdc94b8232acd3edf3e0cbab3c481ff8f2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081857"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Dayanıklı İşlevler bağlamaları (Azure Işlevleri)
@@ -32,7 +32,7 @@ Komut dosyası dillerinde Orchestrator işlevleri yazdığınızda (örneğin, J
 }
 ```
 
-* `orchestration`, istemcilerin bu Orchestrator işlevinin yeni örneklerini başlatmak istediklerinde kullanması gereken Orchestration 'un adıdır. Bu özellik isteğe bağlıdır. Belirtilmemişse, işlevin adı kullanılır.
+* `orchestration` , istemcilerin bu Orchestrator işlevinin yeni örneklerini başlatmak istediklerinde kullanması gereken Orchestration 'un adıdır. Bu özellik isteğe bağlıdır. Belirtilmemişse, işlevin adı kullanılır.
 
 Dahili olarak bu tetikleyici bağlama, işlev uygulaması için varsayılan depolama hesabındaki bir dizi kuyruğu yoklar. Bu kuyruklar, uzantının iç uygulama ayrıntılardır ve bu nedenle bağlama özelliklerinde açıkça yapılandırılmazlar.
 
@@ -128,7 +128,7 @@ Etkinlik tetikleyicisi, [etkinlik işlevleri](durable-functions-types-features-o
 
 Visual Studio kullanıyorsanız, etkinlik tetikleyicisi `ActivityTriggerAttribute` .net özniteliği kullanılarak yapılandırılır.
 
-Geliştirme için VS Code veya Azure portal kullanıyorsanız, etkinlik tetikleyicisi `bindings` *üzerindefunction.js*dizisinde aşağıdaki JSON nesnesi tarafından tanımlanır:
+Geliştirme için VS Code veya Azure portal kullanıyorsanız, etkinlik tetikleyicisi `bindings` * üzerindefunction.js*dizisinde aşağıdaki JSON nesnesi tarafından tanımlanır:
 
 ```json
 {
@@ -139,7 +139,7 @@ Geliştirme için VS Code veya Azure portal kullanıyorsanız, etkinlik tetikley
 }
 ```
 
-* `activity`etkinliğin adıdır. Bu değer, Orchestrator işlevlerinin bu etkinlik işlevini çağırmak için kullandığı addır. Bu özellik isteğe bağlıdır. Belirtilmemişse, işlevin adı kullanılır.
+* `activity` etkinliğin adıdır. Bu değer, Orchestrator işlevlerinin bu etkinlik işlevini çağırmak için kullandığı addır. Bu özellik isteğe bağlıdır. Belirtilmemişse, işlevin adı kullanılır.
 
 Dahili olarak bu tetikleyici bağlama, işlev uygulaması için varsayılan depolama hesabındaki bir kuyruğu yoklar. Bu kuyruk, uzantının iç uygulama ayrıntısı olduğundan, bağlama özelliklerinde açıkça yapılandırılmamış olabilir.
 
@@ -249,7 +249,7 @@ Orchestration istemci bağlaması, Orchestrator işlevleriyle etkileşime geçen
 
 Visual Studio kullanıyorsanız, `OrchestrationClientAttribute` Dayanıklı İşlevler 1,0 için .net özniteliğini kullanarak Orchestration istemcisine bağlanabilirsiniz. Dayanıklı İşlevler 2,0 ' den başlayarak, .net özniteliğini kullanarak Orchestration istemcisine bağlanabilirsiniz `DurableClientAttribute` .
 
-Geliştirme için betik dilleri (örneğin, *. CSX* veya *. js* dosyaları) kullanıyorsanız, düzenleme tetikleyicisi `bindings` *üzerindefunction.js*dizisinde aşağıdaki JSON nesnesi tarafından tanımlanır:
+Geliştirme için betik dilleri (örneğin, *. CSX* veya *. js* dosyaları) kullanıyorsanız, düzenleme tetikleyicisi `bindings` * üzerindefunction.js*dizisinde aşağıdaki JSON nesnesi tarafından tanımlanır:
 
 ```json
 {
@@ -261,8 +261,8 @@ Geliştirme için betik dilleri (örneğin, *. CSX* veya *. js* dosyaları) kull
 }
 ```
 
-* `taskHub`-Birden çok işlevli uygulamanın aynı depolama hesabını paylaştığı ancak birbirinden yalıtılması gereken senaryolarda kullanılır. Belirtilmemişse, varsayılan değer `host.json` kullanılır. Bu değer, hedef Orchestrator işlevleri tarafından kullanılan değerle aynı olmalıdır.
-* `connectionName`-Depolama hesabı bağlantı dizesi içeren bir uygulama ayarının adı. Bu bağlantı dizesi tarafından temsil edilen depolama hesabı, hedef Orchestrator işlevlerinin kullandığı aynı olmalıdır. Belirtilmemişse, işlev uygulaması için varsayılan depolama hesabı bağlantı dizesi kullanılır.
+* `taskHub` -Birden çok işlevli uygulamanın aynı depolama hesabını paylaştığı ancak birbirinden yalıtılması gereken senaryolarda kullanılır. Belirtilmemişse, varsayılan değer `host.json` kullanılır. Bu değer, hedef Orchestrator işlevleri tarafından kullanılan değerle aynı olmalıdır.
+* `connectionName` -Depolama hesabı bağlantı dizesi içeren bir uygulama ayarının adı. Bu bağlantı dizesi tarafından temsil edilen depolama hesabı, hedef Orchestrator işlevlerinin kullandığı aynı olmalıdır. Belirtilmemişse, işlev uygulaması için varsayılan depolama hesabı bağlantı dizesi kullanılır.
 
 > [!NOTE]
 > Çoğu durumda, bu özellikleri atlamanızı ve varsayılan davranışa güvenmenizi öneririz.
@@ -511,7 +511,7 @@ Visual Studio kullanıyorsanız, .net özniteliğini kullanarak Entity Client 'a
 > [!NOTE]
 > `[DurableClientAttribute]` [Orchestration istemcisine](#orchestration-client)bağlamak için de kullanılabilir.
 
-Geliştirme için betik dilleri (örneğin, *. CSX* veya *. js* dosyaları) kullanıyorsanız, varlık tetikleyicisi, `bindings` *üzerindefunction.js*dizisinde aşağıdaki JSON nesnesi tarafından tanımlanır:
+Geliştirme için betik dilleri (örneğin, *. CSX* veya *. js* dosyaları) kullanıyorsanız, varlık tetikleyicisi, `bindings` * üzerindefunction.js*dizisinde aşağıdaki JSON nesnesi tarafından tanımlanır:
 
 ```json
 {
@@ -523,8 +523,8 @@ Geliştirme için betik dilleri (örneğin, *. CSX* veya *. js* dosyaları) kull
 }
 ```
 
-* `taskHub`-Birden çok işlevli uygulamanın aynı depolama hesabını paylaştığı ancak birbirinden yalıtılması gereken senaryolarda kullanılır. Belirtilmemişse, varsayılan değer `host.json` kullanılır. Bu değer, hedef varlık işlevleri tarafından kullanılan değerle eşleşmelidir.
-* `connectionName`-Depolama hesabı bağlantı dizesi içeren bir uygulama ayarının adı. Bu bağlantı dizesi tarafından temsil edilen depolama hesabı, hedef varlık işlevleri tarafından kullanılan bir aynı olmalıdır. Belirtilmemişse, işlev uygulaması için varsayılan depolama hesabı bağlantı dizesi kullanılır.
+* `taskHub` -Birden çok işlevli uygulamanın aynı depolama hesabını paylaştığı ancak birbirinden yalıtılması gereken senaryolarda kullanılır. Belirtilmemişse, varsayılan değer `host.json` kullanılır. Bu değer, hedef varlık işlevleri tarafından kullanılan değerle eşleşmelidir.
+* `connectionName` -Depolama hesabı bağlantı dizesi içeren bir uygulama ayarının adı. Bu bağlantı dizesi tarafından temsil edilen depolama hesabı, hedef varlık işlevleri tarafından kullanılan bir aynı olmalıdır. Belirtilmemişse, işlev uygulaması için varsayılan depolama hesabı bağlantı dizesi kullanılır.
 
 > [!NOTE]
 > Çoğu durumda, isteğe bağlı özellikleri atlamanızı ve varsayılan davranışa güvenmenizi öneririz.

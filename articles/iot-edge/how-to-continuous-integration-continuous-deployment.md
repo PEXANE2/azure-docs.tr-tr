@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: d29a5a6d0d4745655ce5b6d0cead3eaba77ed423
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91281635"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices"></a>Azure IoT Edge cihazlara sürekli tümleştirme ve sürekli dağıtım
@@ -38,7 +38,7 @@ Aksi belirtilmediği takdirde, bu makaledeki yordamlar görev parametreleri arac
 * [Ortam değişkenleri](https://docs.microsoft.com/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#environment-variables)
 * [Çıkış değişkenleri](https://docs.microsoft.com/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#use-output-variables-from-tasks)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir Azure Repos deposu. Bir tane yoksa, [projenizde yeni bir git deposu oluşturabilirsiniz](https://docs.microsoft.com/azure/devops/repos/git/create-new-repo?view=vsts&tabs=new-nav). Bu makalede, **ıotedgerepo**adlı bir depo oluşturduk.
 * IoT Edge bir çözüm kaydedilir ve deponuza gönderilir. Bu makaleyi test etmek için yeni bir örnek çözüm oluşturmak istiyorsanız, [Visual Studio Code 'de modül geliştirme ve hata ayıklama](how-to-vs-code-develop-module.md) veya [Visual Studio 'Da C# modüllerini geliştirme ve hata](how-to-visual-studio-develop-csharp-module.md)ayıklama işlemleri bölümündeki adımları uygulayın. Bu makalede, depomızda **filtermodule**adlı bir modülün kodunu içeren **IoTEdgeSolution**adlı bir çözüm oluşturduk.

@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 61c31b24b01b40da4d73a308a4f304f6ff242e41
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88691420"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Windows sanal masaüstü (klasik) Tanılama aracını dağıtma
@@ -32,7 +32,7 @@ Windows sanal masaüstü için tanılama aracı sizin için şunları yapabilir:
 - Belirli bir oturum ana bilgisayarındaki etkin kullanıcılara ileti gönderin.
 - Kullanıcıları oturum ana bilgisayarında imzalayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Araç için Azure Resource Manager şablonunu dağıtabilmeniz için önce bir Azure Active Directory uygulama kaydı ve Log Analytics çalışma alanı oluşturmanız gerekir. Bunun için yönetici bu izinlere gerek duyar:
 
@@ -162,17 +162,17 @@ VM 'lerin sistem durumunu görüntüleyebilmek için Log Analytics bağlantısı
 2. Log Analytics çalışma alanınıza gidin.
 3. Sol bölmede, çalışma alanı veri kaynakları altında **sanal makineler**' i seçin.
 4. Bağlanmak istediğiniz VM 'nin adını seçin.
-5. **Bağlan**’ı seçin.
+5. **Bağlan**'ı seçin.
 
 ## <a name="deploy-the-diagnostics-tool"></a>Tanılama aracını dağıtma
 
 Tanılama aracı için Azure Kaynak Yönetimi şablonunu dağıtmak için:
 
-1.  [GitHub Azure RDS-templates sayfasına](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy)gidin.
+1.  [GitHub Azure RDS-Templates sayfasına](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy)gidin.
 2.  Şablonu Azure 'a dağıtın ve şablondaki yönergeleri izleyin. Aşağıdaki bilgilerin kullanılabilir olduğundan emin olun:
 
-    -   İstemci kimliği
-    -   İstemci parolası
+    -   Client-Id
+    -   Client-Secret
     -   Log Analytics çalışma alanı kimliği
 
 3.  Giriş parametreleri sağlandığında, hüküm ve koşulları kabul edin ve ardından **satın al**' ı seçin.

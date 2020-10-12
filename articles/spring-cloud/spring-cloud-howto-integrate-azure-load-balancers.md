@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 02772f153cdda7e3f3c866c727d589e755e19033
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906929"
 ---
 # <a name="integrate-azure-spring-cloud-with-azure-load-balance-solutions"></a>Azure Spring Cloud’u Azure Load Balance Çözümleriyle tümleştirme
@@ -26,7 +26,7 @@ Azure zaten farklı Yük Dengeleme çözümleri sağlıyor. Azure yay bulutunu A
 2.  Azure yay bulutunu Azure uygulama ağ geçidi ile tümleştirme
 3.  Azure yay bulutunu Azure ön kapısına tümleştirme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure yay bulutu: [Azure yay bulut hizmeti oluşturma](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart)
 * Azure Traffic Manager: [Traffic Manager oluşturma](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile/)
@@ -41,7 +41,7 @@ Azure Spring Cloud 'ı Traffic Manager ile tümleştirmek için, genel uç nokta
 Traffic Manager 'da uç noktalar ekleme:
 1.  *Dış uç nokta*olacak **tür** belirtin.
 1.  Her Azure yay bulutu genel uç noktasının tam etki alanı adını (FQDN) girin.
-1. **Tamam**’a tıklayın.
+1. **Tamam**'a tıklayın.
 
     ![Traffic Manager 1 ](media/spring-cloud-load-balancers/traffic-manager-1.png) ![ Traffic Manager 2](media/spring-cloud-load-balancers/traffic-manager-2.png)
 

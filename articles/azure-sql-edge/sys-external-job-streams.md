@@ -1,7 +1,7 @@
 ---
-title: sys. external_job_streams (Transact-SQL)-Azure SQL Edge
-description: Azure SQL Edge 'de sys. external_job_streams kullanma hakkında bilgi edinin
-keywords: sys. external_job_streams, SQL Edge
+title: sys.external_job_streams (Transact-SQL)-Azure SQL Edge
+description: Azure SQL Edge 'de sys.external_job_streams kullanma hakkında bilgi edinin
+keywords: sys.external_job_streams, SQL Edge
 services: sql-edge
 ms.service: sql-edge
 ms.topic: reference
@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
 ms.openlocfilehash: 35010d3aba7f6d5ee3185291c917ff7726ba8bd7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90900363"
 ---
 # <a name="sysexternal_job_streams-transact-sql"></a>sys.external_job_streams (Transact-SQL)
@@ -22,8 +22,8 @@ Bir dış akış işiyle eşlenen giriş veya çıkış dış akış nesnesi iç
 
 |Sütun adı|Veri türü|Açıklama|  
 |-----------------|---------------|-----------------|
-|**job_id**|**'tir**| Akış işi nesnesi için nesne kimlik numarası. Bu sütun sys. external_streaming_jobs object_id sütunuyla eşlenir.|
-|**stream_id**|**'tir**| Stream nesnesi için nesne kimlik numarası. Bu sütun sys. external_streams object_id sütunuyla eşlenir. |
+|**job_id**|**int**| Akış işi nesnesi için nesne kimlik numarası. Bu sütun sys.external_streaming_jobs object_id sütunuyla eşlenir.|
+|**stream_id**|**int**| Stream nesnesi için nesne kimlik numarası. Bu sütun sys.external_streams object_id sütunuyla eşlenir. |
 |**is_input**|**bit**| 1 Stream nesnesi akış işi için bir giriş kullandıysanız, aksi takdirde 0.|
 |**is_output**|**bit**| 1 Stream nesnesi akış işi için bir çıktı kullandıysanız, aksi takdirde 0.|
 

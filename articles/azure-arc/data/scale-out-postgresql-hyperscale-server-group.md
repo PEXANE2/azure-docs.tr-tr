@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: df0620308fab2e813fe3802dc7effb9dc1ce226c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91285392"
 ---
 # <a name="scale-out-your-azure-arc-enabled-postgresql-hyperscale-server-group-by-adding-more-worker-nodes"></a>Daha fazla çalışan düğümü ekleyerek Azure Arc etkin PostgreSQL hiper ölçek sunucu grubunu ölçeklendirin
@@ -21,7 +21,7 @@ Bu belgede, Azure Arc etkin bir PostgreSQL hiper ölçek sunucu grubunun ölçe�
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 Azure Arc 'ın ölçeklendirme modeli olan PostgreSQL hiper ölçeğini veya PostgreSQL için Azure veritabanı hiper ölçeğini (Citus) zaten biliyorsanız, bu paragrafı atlayabilirsiniz. Bu işlemi yapmadıysanız, PostgreSQL için Azure veritabanı hiper ölçek (Citus) belge sayfasında Bu ölçeklendirme modeli hakkında bilgi okuyarak başlatmanız önerilir. PostgreSQL için Azure veritabanı hiper ölçek (Citus), Azure Arc etkin veri Hizmetleri 'nin bir parçası olarak sunulmadan Azure 'da bir hizmet olarak barındırılan (hizmet olarak platform da PAAS olarak da bilinir) aynı teknolojiden oluşur:
 - [Düğümler ve tablolar](../../postgresql/concepts-hyperscale-nodes.md)
 - [Uygulama türünü belirleme](../../postgresql/concepts-hyperscale-app-type.md)
@@ -152,7 +152,7 @@ azdata arc postgres server edit -n <server group name> -w <target number of work
 ```
 
 > [!CAUTION]
-> Önizleme sürümü geri ölçeği desteklemiyor. Örneğin, çalışan düğümlerinin sayısını azaltmak henüz mümkün değildir. Bunu yapmanız gerekirse, verileri ayıklamanız/yedeklemeniz, sunucu grubunu bırakmalısınız, daha az çalışan düğümleri olan yeni bir sunucu grubu oluşturmanız ve ardından verileri içeri aktarmanız gerekir.
+> Önizleme sürümü ölçeği geri almayı desteklemez. Örneğin çalışan düğümlerinin sayısını azaltmak henüz mümkün değildir. Bunu yapmanız gerekiyorsa, verileri ayıklamanız/yedeklemeniz, sunucu grubunu bırakmanız, daha az sayıda çalışan düğümü olan yeni bir sunucu grubu oluşturmanız ve verileri içeri aktarmanız gerekir.
 
 Bu örnekte, aşağıdaki komutu çalıştırarak çalışan düğümü sayısını 2 ' den 4 ' e artırdık:
 

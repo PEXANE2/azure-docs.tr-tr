@@ -7,10 +7,10 @@ ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 50706e1b525a3e3a39701ef2135d44c02c35077e
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89181145"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Işlevleri için Azure Tablo depolama bağlamaları
@@ -555,9 +555,9 @@ Kullanılacak depolama hesabı aşağıdaki sırayla belirlenir:
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Table` .
 
-|function.jsözelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**tür** | yok | Olarak ayarlanmalıdır `table` . Azure portal bağlama oluşturduğunuzda bu özellik otomatik olarak ayarlanır.|
+|**türüyle** | yok | Olarak ayarlanmalıdır `table` . Azure portal bağlama oluşturduğunuzda bu özellik otomatik olarak ayarlanır.|
 |**Görünüm** | yok | Olarak ayarlanmalıdır `in` . Azure portal bağlama oluşturduğunuzda bu özellik otomatik olarak ayarlanır. |
 |**ada** | yok | İşlev kodundaki tabloyu veya varlığı temsil eden değişkenin adı. | 
 |**tableName** | **TableName** | Tablonun adı.| 
@@ -942,7 +942,7 @@ Tam bir örnek için bkz. [output-C# örneği](#output).
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Table` .
 
-|function.jsözelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**türüyle** | yok | Olarak ayarlanmalıdır `table` . Azure portal bağlama oluşturduğunuzda bu özellik otomatik olarak ayarlanır.|
 |**Görünüm** | yok | Olarak ayarlanmalıdır `out` . Azure portal bağlama oluşturduğunuzda bu özellik otomatik olarak ayarlanır. |

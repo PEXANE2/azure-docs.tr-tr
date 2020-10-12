@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: eaf6b1825a258b11a2e345c771909822de73dfcf
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056498"
 ---
 # <a name="troubleshoot-an-operational-storsimple-device"></a>İşletimsel StorSimple cihazında sorun giderme
@@ -48,7 +48,7 @@ Aşağıdaki tabloda, işletimsel bir cihazda Kurulum Sihirbazı 'nı çalışt�
 | Hayır. | Hata iletisi veya koşulu | Olası nedenler | Önerilen eylem |
 |:--- |:--- |:--- |:--- |
 | 1 |Hata 350032: Bu cihaz zaten devre dışı bırakıldı. |Kurulum sihirbazını devre dışı bırakılmış bir cihazda çalıştırırsanız, bu hatayı görürsünüz. |Sonraki adımlar için [Microsoft desteği başvurun](storsimple-contact-microsoft-support.md) . Devre dışı bırakılmış bir cihaz hizmete geçirilemez. Cihazın yeniden etkinleştirilmesi için önce bir fabrika sıfırlaması gerekebilir. |
-| 2 |Invoke-HcsSetupWizard: ERROR_INVALID_FUNCTION (HRESULT özel durumu: 0x80070001) |DNS sunucusu güncelleştirmesi başarısız oldu. DNS ayarları genel ayarlardır ve etkinleştirilmiş tüm ağ arabirimlerine uygulanır. |Arabirimi etkinleştirin ve DNS ayarlarını yeniden uygulayın. Bu ayarlar genel olduğundan, bu durum ağı etkin arabirimler için kesintiye uğratabilir. |
+| 2 |Invoke-HcsSetupWizard: ERROR_INVALID_FUNCTION (HRESULT 'ten özel durum: 0x80070001) |DNS sunucusu güncelleştirmesi başarısız oldu. DNS ayarları genel ayarlardır ve etkinleştirilmiş tüm ağ arabirimlerine uygulanır. |Arabirimi etkinleştirin ve DNS ayarlarını yeniden uygulayın. Bu ayarlar genel olduğundan, bu durum ağı etkin arabirimler için kesintiye uğratabilir. |
 | 3 |Bu cihaz StorSimple Yöneticisi hizmet portalında çevrimiçi görünüyor, ancak en düşük kurulumu tamamlayıp yapılandırmayı kaydetmek istediğinizde işlem başarısız olur. |İlk kurulum sırasında, gerçek bir ara sunucu gerçekleşse bile Web proxy yapılandırılmadı. |Hatayı bulmak için [Test-HcsmConnection cmdlet 'ini][2] kullanın. Sorunu düzeltemezsiniz [Microsoft desteği başvurun](storsimple-contact-microsoft-support.md) . |
 | 4 |Invoke-HcsSetupWizard: değer beklenen Aralık içinde değil. |Yanlış bir alt ağ maskesi bu hatayı üretir. Olası nedenler şunlardır: <ul><li> Alt ağ maskesi eksik veya boş.</li><li>IPv6 önek biçimi yanlış.</li><li>Arabirim bulutu etkinleştirdi, ancak ağ geçidi eksik ya da yanlış.</li></ul>VERI 0 ' ın, Kurulum Sihirbazı aracılığıyla yapılandırıldıysa otomatik olarak bulut etkin olduğunu unutmayın. |Sorunu anlamak için 0.0.0.0 veya 256.256.256.256 alt ağını kullanın ve ardından çıkışa bakın. Gerektiğinde alt ağ maskesi, ağ geçidi ve IPv6 öneki için doğru değerleri girin. |
 
