@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 5bb6b61bb7d9392984bf5c308ce7ee039234461e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91295575"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>StorSimple Sanal diziniz üzerinde 1,0 güncelleştirmesini yükler
@@ -37,7 +37,7 @@ StorSimple Sanal dizinizi güncel tutmak için yazılım güncelleştirmelerini 
 >
 > - Güncelleştirme 1, yalnızca sanal dizi güncelleştirme 0,6 çalıştırıyorsa Azure portal kullanılabilir. Güncelleştirme öncesi 0,6 sürümlerini çalıştıran sanal diziler için, önce 0,6 güncelleştirme 'yi yüklemeli ve ardından güncelleştirme 1 ' i yüklemeniz gerekir.
 
-## <a name="use-the-azure-portal"></a>Azure portalı kullanma
+## <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
 Güncelleştirme 0,2 ve sonraki bir sürümü çalıştırıyorsanız, Azure portal aracılığıyla güncelleştirmeleri yüklemenizi öneririz. Portal yordamı, kullanıcının güncelleştirmeleri taramasını, indirmesini ve yüklemesini gerektirir. Sanal diziniz çalıştığı yazılım sürümüne bağlı olarak, Azure portal aracılığıyla güncelleştirme uygulamak farklıdır.
 

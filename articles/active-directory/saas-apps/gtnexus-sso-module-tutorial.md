@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/08/2019
 ms.author: jeedes
-ms.openlocfilehash: e0ea1d3f5c2676176e2f6e15077d13ec43e673af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b40a124c9cee05e8d06df3de6539c566bb2ac76a
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544324"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945176"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gtnexus-sso-system"></a>Öğretici: GTNexus SSO sistemiyle tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ GTNexus SSO sistemini Azure AD ile tümleştirmek aşağıdaki avantajları sağ
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini GTNexus SSO sistemiyle yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -101,11 +101,11 @@ Azure AD çoklu oturum açmayı GTNexus SSO sistemiyle yapılandırmak için aş
 
     a. **Meta veri dosyasını karşıya yükle**' ye tıklayın.
 
-    ![image](common/upload-metadata.png)
+    !["Meta veri dosyasını karşıya yükleme" eylemi seçiliyken "temel S A M L yapılandırma" sayfasını gösteren ekran görüntüsü.](common/upload-metadata.png)
 
     b. Meta veri dosyasını seçmek için **klasör logosu** ' na tıklayın ve **karşıya yükle**' ye tıklayın.
 
-    ![image](common/browse-upload-metadata.png)
+    !["Klasör" logosunu ve "karşıya yükle" düğmesinin seçili olduğu "Dosya Seç" alanını gösteren ekran görüntüsü.](common/browse-upload-metadata.png)
 
     c. Meta veri dosyası başarıyla karşıya yüklendikten sonra **tanımlayıcı** ve **yanıt URL** değerleri GTNexus SSO sistem bölümü metin kutusuna otomatik olarak doldurulur.
 
@@ -145,7 +145,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

@@ -4,10 +4,10 @@ description: DevTest Labs artık Azure savunma ile tümleşir, bu da laboratuvar
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 28a3c11f3df578265f9746a173fcb3029a132b26
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88870502"
 ---
 # <a name="enable-browser-connection-on-azure-devtest-labs-virtual-machines"></a>Azure DevTest Labs sanal makinelerde tarayıcı bağlantısını etkinleştir 
@@ -18,7 +18,7 @@ Bir laboratuvarın sahibi olarak, tüm Laboratuvar sanal makinelerine bir taray�
 
 Bu makalede, laboratuvar sanal makinelerinde tarayıcı bağlantısının nasıl etkinleştirileceği gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 - Mevcut laboratuvarınızın sanal ağında bir savunma ana bilgisayarı dağıtın **(veya)** laboratuvarınızı yapılandırılmış bir sanal ağla bağlayın.
 Bir savunma konağını sanal bir ağa dağıtmayı öğrenmek için bkz.  [Azure savunma Konağı oluşturma](../bastion/bastion-create-host-portal.md). Savunma konağını oluştururken, laboratuvarın sanal ağını seçin. 
 - Laboratuvar kullanıcısının, savunma ana bilgisayarında ve yapılandırılmış bir sanal ağda **okuyucu** rolüne sahip olması gerekir. 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: jeedes
-ms.openlocfilehash: ae8a1fa68e61e160ce08b93bf66776a050b45613
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e05a2a4ba12d5fc665090d5bf078da520000f43b
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554205"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945388"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-officespace-software"></a>Öğretici: Officesi yazılımıyla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -124,7 +124,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -150,11 +150,11 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Officesi yazıl�
 
 2. **Ayarlar** ' a gidin ve **Bağlayıcılar**' a tıklayın.
 
-    ![Uygulama tarafında tek Sign-On yapılandırma](./media/officespace-tutorial/tutorial_officespace_002.png)
+    !["Ayarlar" açılan görüntüsünü "Bağlayıcılar" seçiliyken gösteren ekran görüntüsü.](./media/officespace-tutorial/tutorial_officespace_002.png)
 
 3. **SAML kimlik doğrulaması**' na tıklayın.
 
-    ![Uygulama tarafında tek Sign-On yapılandırma](./media/officespace-tutorial/tutorial_officespace_003.png)
+    !["Kimlik doğrulama" bölümünü "S A M L Authentication" eylemi seçili olarak gösteren ekran görüntüsü.](./media/officespace-tutorial/tutorial_officespace_003.png)
 
 4. **SAML kimlik doğrulaması** bölümünde aşağıdaki adımları uygulayın:
 

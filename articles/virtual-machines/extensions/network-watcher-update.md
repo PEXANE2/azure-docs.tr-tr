@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: damendo
 ms.openlocfilehash: c386685d63894472623ffc4392a529541a91391c
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91410363"
 ---
 # <a name="how-to-update-the-network-watcher-extension-to-the-latest-the-version"></a>Ağ Izleyicisi uzantısını en son sürüme güncelleştirme 
@@ -25,7 +25,7 @@ ms.locfileid: "91410363"
 
 [Azure Ağ İzleyicisi](../../network-watcher/network-watcher-monitoring-overview.md) , Azure ağlarını izlemeye izin veren bir ağ performansı izleme, tanılama ve analiz hizmetidir. Ağ Izleyicisi Aracısı sanal makine uzantısı, istek üzerine ağ trafiği yakalama ve Azure sanal makinelerinde diğer gelişmiş işlevler için bir gereksinimdir. Ağ Izleyicisi uzantısı bağlantı Izleyici, bağlantı Izleyicisi (Önizleme), bağlantı sorunlarını giderme ve paket yakalama gibi özellikler tarafından kullanılır.   
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu belge, sanal makinenizde ağ Izleyicisi uzantısının yüklü olduğunu varsayar ve en son sürüme güncelleştirmek için yönergeler sağlar. 
 
 ## <a name="latest-version"></a>En son sürüm

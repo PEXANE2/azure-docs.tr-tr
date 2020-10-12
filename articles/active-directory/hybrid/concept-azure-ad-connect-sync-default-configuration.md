@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e55526e0a63a0c603e2b62ccb3ac0efed911cff
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91295235"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect Eşitleme: Varsayılan yapılandırmayı anlama
@@ -148,7 +148,7 @@ Bu kural hazır olmayan bir kural olduğundan, kuralı açtığınızda bir uyar
 
 Eşitleme kuralında dört yapılandırma bölümü vardır: Açıklama, kapsam filtresi, JOIN kuralları ve dönüşümler.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Açıklama
 İlk bölüm, ad ve açıklama gibi temel bilgileri sağlar.
 
 ![Eşitleme kuralı Düzenleyicisi 'ndeki Açıklama sekmesi](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)
@@ -186,7 +186,7 @@ Dönüştürme bölümü, nesneler katıldığında ve kapsam filtresi karşıla
 
 ![Eşitleme kuralı Düzenleyicisi 'ndeki dönüşümler sekmesi](./media/concept-azure-ad-connect-sync-default-configuration/syncruletransformations.png)
 
-Bu yapılandırmayı bağlam içine koymak için bir hesap-kaynak orman dağıtımında, hesap ormanında etkin bir hesap ve Exchange ve Lync ayarları ile kaynak ormanında devre dışı bırakılmış bir hesap bulunması beklenir. Aradığınız eşitleme kuralı, oturum açma için gereken öznitelikleri içerir ve bu özniteliklerin etkin bir hesabın olduğu ormandan akışı gerekir. Tüm bu öznitelik akışları tek bir eşitleme kuralında birlikte konur.
+Bu yapılandırmayı bağlama göre Account-Resource bir orman dağıtımında, hesap ormanında etkin bir hesabı ve Exchange ve Lync ayarlarına sahip kaynak ormanında devre dışı bırakılmış bir hesabı bulması beklenmektedir. Aradığınız eşitleme kuralı, oturum açma için gereken öznitelikleri içerir ve bu özniteliklerin etkin bir hesabın olduğu ormandan akışı gerekir. Tüm bu öznitelik akışları tek bir eşitleme kuralında birlikte konur.
 
 Bir dönüştürme farklı türlere sahip olabilir: sabit, doğrudan ve Ifade.
 
@@ -220,7 +220,7 @@ Eşitleme kuralları için öncelik, Yükleme Sihirbazı tarafından gruplar hal
 ### <a name="putting-it-all-together"></a>Hepsini bir araya getirme
 Artık yapılandırmanın farklı eşitleme kurallarıyla nasıl çalıştığını anlayabilmek için eşitleme kuralları hakkında yeterli bilgi veriyoruz. Meta veri deposuna katkıda bulunulan bir kullanıcıya ve özniteliklere bakarsanız, kurallar aşağıdaki sırayla uygulanır:
 
-| Name | Yorum |
+| Adı | Yorum |
 |:--- |:--- |
 | AD 'den içinde – kullanıcı katılımı |Bağlayıcı alanı nesnelerini metaverse ile birleştirme kuralı. |
 | AD 'den-kullanıcıhesabı etkin |Azure AD 'de oturum açma ve Microsoft 365 için gereken öznitelikler. Etkin hesaptan bu özniteliklerin olmasını istiyoruz. |

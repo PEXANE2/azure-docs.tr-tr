@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9f1d4c5b55dd2a24c1fb41540fdc5d3ae26849a2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91258685"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Koşullu Erişim dağıtımını planlama
@@ -52,7 +52,7 @@ Bkz. [koşullu erişim lisans gereksinimleri](overview.md).
 
 Ek özellikler gerekliyse, ilgili lisanslara de ihtiyacınız olabilir. Daha fazla bilgi için bkz. [Azure Active Directory fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory/).
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 * Azure AD Premium veya deneme lisansı etkin çalışan bir Azure AD kiracısı. Gerekirse, [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -493,7 +493,7 @@ Bilgileri topladıktan sonra, aşağıdaki kaynaklara bakın:
 
 * [Koşullu erişimle oturum açma sorunları](troubleshoot-conditional-access.md) – hata Iletilerini ve Azure AD oturum açma günlüğünü kullanarak koşullu erişimle ilgili beklenmedik oturum açma sonuçlarını anlayın.
 
-* [Ne tür aracının kullanılması](troubleshoot-conditional-access-what-if.md) -bir ilkenin belirli bir durumdaki bir kullanıcıya veya bir ilkenin bilinen bir durumda nasıl uygulanacağını anlayın.
+* [What-If aracını kullanarak](troubleshoot-conditional-access-what-if.md) , bir ilkenin belirli bir durumdaki bir kullanıcıya veya bir ilkenin bilinen bir durumda uygulanabileceğini anlayın.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

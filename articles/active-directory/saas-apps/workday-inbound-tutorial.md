@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
 ms.openlocfilehash: 53132cc21b8298f951f2daa979ed433103ad0ac0
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541297"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Workday yapılandırma
@@ -370,7 +370,7 @@ Bu bölümde, tümleştirmenizi kapsamındaki her bir Active Directory etki alan
    >[!div class="mx-imgBorder"]
    >![Çıkış ekranı](./media/workday-inbound-tutorial/pa_install_screen_9.png "Çıkış ekranı")
    
-1. Aracının yüklenmesini doğrulayın ve "Hizmetler" eklentisini açıp "Microsoft Azure AD Connect sağlama Aracısı" adlı hizmeti arayın ve çalıştığından emin olun.
+1. Aracının yüklenmesini doğrulayın ve "Hizmetler" Snap-In açarak çalıştığından emin olun ve "Microsoft Azure AD Connect sağlama Aracısı" adlı hizmeti arayın
 
    >[!div class="mx-imgBorder"]
    >![Hizmetler 'de çalışan Microsoft Azure AD Connect sağlama aracısının ekran görüntüsü.](./media/workday-inbound-tutorial/services.png)
@@ -392,7 +392,7 @@ Bu adımda, Workday ve Azure portal Active Directory ile bağlantı kuruyoruz.
      |------------|----------------------|------------------------|
      | https://####.workday.com/ccx/service/tenantName | v 21.1 | Hayır |
      | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Hayır |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Evet |
 
       > [!NOTE]
      > URL 'de sürüm bilgisi belirtilmemişse, uygulama Workday Web Hizmetleri (WWS) v 21.1 kullanır ve uygulamayla birlikte gelen varsayılan XPATH API ifadelerinde hiçbir değişiklik yapılması gerekmez. Belirli bir WWS API sürümünü kullanmak için, URL 'de sürüm numarasını belirtin <br>
@@ -478,7 +478,7 @@ Bu bölümde, Kullanıcı verilerinin Workday 'den Active Directory 'e nasıl ak
 
          * **Yalnızca oluşturma sırasında** -bu eşlemeyi yalnızca Kullanıcı oluşturma eylemlerinde Uygula
 
-1. Eşlemelerinizi kaydetmek için öznitelik eşleme bölümünün en üstündeki **Kaydet** ' e tıklayın.
+1. Eşlemelerinizi kaydetmek için Attribute-Mapping bölümünün en üstündeki **Kaydet** ' e tıklayın.
    >[!div class="mx-imgBorder"]
    >!["Kaydet" eyleminin seçildiği "öznitelik eşleme" sayfasını gösteren ekran görüntüsü.](./media/workday-inbound-tutorial/wd_2.png)
 
@@ -1126,7 +1126,7 @@ Bu değişikliği yapmak için, kullanmak istediğiniz öznitelikleri temsil ede
 
     ![Workday Studio](./media/workday-inbound-tutorial/wdstudio_aad2.png)
 
-11. Yukarıdaki **Kaydet** ' i ve ardından Iletişim kutusuna **Evet** ' i seçin. Hala açıksa öznitelik eşleme ekranını kapatın.
+11. Yukarıdaki **Kaydet** ' i ve ardından Iletişim kutusuna **Evet** ' i seçin. Hala açıksa Attribute-Mapping ekranını kapatın.
 
 12. Ana **sağlama** sekmesine döndüğünüzde, Iş **günü çalışanlarını şirket içi Active Directory** (veya **çalışanları Azure AD ile eşitlemeyi**) yeniden eşitlemeyi seçin.
 

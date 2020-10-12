@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 08/18/2020
 ms.openlocfilehash: 90267f2b75b7b9c1e77a45d7e3faa4b0bf6dd63a
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708552"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge modülleri
@@ -42,7 +42,7 @@ IoT Edge modülü teklif türü, bir IoT Edge cihazında çalışan belirli bir 
 
 IoT Edge modüller yalnızca Azure Marketi 'Nde yayımlanır; AppSource uygulanmaz. Çevrimiçi mağazaların farkları hakkında daha fazla bilgi için bkz. [Yayımlama seçeneğinizi belirleme](determine-your-listing-type.md).
 
-**Faturalandırma seçenekleri**
+**Faturalama seçenekleri**
 
 Market şu anda **ücretsiz** olarak destekler ve IoT Edge modüller Için **kendi LISANSıNı getir (KLG)** faturalandırma seçenekleridir.
 
@@ -54,7 +54,7 @@ Her durumda IoT Edge modüller **Transact** yayımlama seçeneğini seçmelidir.
 
 Microsoft Azure Market sözleşmelerinin ve ilkelerin tüm koşulları IoT Edge modül teklifleri için geçerlidir.  Ayrıca, IoT Edge modüller için önkoşulları ve teknik gereksinimleri vardır.  
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Azure Marketi 'Nde bir IoT Edge modülünü yayımlamak için aşağıdaki önkoşulları karşılamanız gerekir:
 

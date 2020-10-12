@@ -4,12 +4,12 @@ description: Linux için Azure Ilkesi Konuk yapılandırma ilkesi oluşturmayı 
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4f49732aa2be50b0d8be6f1f3af974121dc9f363
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ecf798a18f28c490d95b28c6ea8f02c6f22eee8
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89076370"
+ms.locfileid: "91893246"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Linux için Konuk Yapılandırma ilkelerini oluşturma
 
@@ -171,7 +171,7 @@ New-GuestConfigurationPackage `
   -ChefInSpecProfilePath './'
 ```
 
-Yapılandırma paketini oluşturduktan ve Azure 'a yayımlamadan önce, paketi iş istasyonunuzdan veya CI/CD ortamınızdan test edebilirsiniz. GuestConfiguration cmdlet 'i, `Test-GuestConfigurationPackage` Azure makinelerinde kullanıldığı gibi geliştirme ortamınızda aynı aracıyı içerir. Bu çözümü kullanarak, faturalandırılan bulut ortamlarına bırakmadan önce tümleştirme testini yerel olarak gerçekleştirebilirsiniz.
+Yapılandırma paketini oluşturduktan, ancak Azure 'a yayımlamadan önce, paketi iş istasyonunuzdan veya sürekli tümleştirme ve sürekli dağıtım (CI/CD) ortamınızdan test edebilirsiniz. GuestConfiguration cmdlet 'i, `Test-GuestConfigurationPackage` Azure makinelerinde kullanıldığı gibi geliştirme ortamınızda aynı aracıyı içerir. Bu çözümü kullanarak, faturalandırılan bulut ortamlarına bırakmadan önce tümleştirme testini yerel olarak gerçekleştirebilirsiniz.
 
 Aracı gerçekten yerel ortamı değerlendirdiğinden, çoğu durumda test-cmdlet 'ini, denetlemeyi planladığınız aynı işletim sistemi platformunda çalıştırmanız gerekir.
 
@@ -194,7 +194,7 @@ Cmdlet 'i PowerShell ardışık düzeninde girişi de destekler. Cmdlet 'inin ç
 New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/AuditFilePathExists.mof -ChefProfilePath './' | Test-GuestConfigurationPackage
 ```
 
-Sonraki adım, dosyayı blob depolamaya yayımlamaktır. Aşağıdaki komut dosyası, bu görevi otomatikleştirmek için kullanabileceğiniz bir işlevi içerir. İşlevinde kullanılan komutlar `publish` `Az.Storage` modülü gerektirir.
+Sonraki adım, dosyayı Azure Blob depolama alanına yayımlamaktır. Aşağıdaki komut dosyası, bu görevi otomatikleştirmek için kullanabileceğiniz bir işlevi içerir. İşlevinde kullanılan komutlar `publish` `Az.Storage` modülü gerektirir.
 
 ```azurepowershell-interactive
 function publish {

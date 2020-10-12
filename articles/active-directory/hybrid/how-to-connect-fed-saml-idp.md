@@ -15,20 +15,20 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2cd95d01c9b49bb6002c00c805dc82dcf30941e3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91295048"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Çoklu Oturum Açma için SAML 2.0 Kimlik Sağlayıcısı (IdP) Kullanma
 
-Bu belge, tercih edilen güvenlik belirteci hizmeti (STS)/kimlik sağlayıcısı olarak SAML 2,0 uyumlu bir SP-Lite profili tabanlı kimlik sağlayıcısı kullanmayla ilgili bilgiler içerir. Bu senaryo, şirket içinde SAML 2,0 kullanılarak erişilebilen bir kullanıcı dizini ve parola depoluuzda yararlıdır. Bu mevcut kullanıcı dizini, Microsoft 365 ve diğer Azure AD ile güvenli kaynaklarda oturum açmak için kullanılabilir. SAML 2,0 SP-Lite profili, bir oturum açma ve öznitelik değişim çerçevesi sağlamak için yaygın olarak kullanılan Security Assertion Markup Language (SAML) federal kimlik standardını temel alır.
+Bu belge, tercih edilen güvenlik belirteci hizmeti (STS)/kimlik sağlayıcısı olarak bir SAML 2,0 uyumlu SP-Lite profil tabanlı kimlik sağlayıcısı kullanmayla ilgili bilgiler içerir. Bu senaryo, şirket içinde SAML 2,0 kullanılarak erişilebilen bir kullanıcı dizini ve parola depoluuzda yararlıdır. Bu mevcut kullanıcı dizini, Microsoft 365 ve diğer Azure AD ile güvenli kaynaklarda oturum açmak için kullanılabilir. SAML 2,0 SP-Lite profili, oturum açma ve öznitelik bir Exchange çerçevesi sağlamak için yaygın olarak kullanılan Security Assertion Markup Language (SAML) federal kimlik standardını temel alır.
 
 >[!NOTE]
 >Azure AD ile kullanım için test edilmiş üçüncü taraf IDPs listesi için bkz. [Azure AD Federasyon uyumluluğu listesi](how-to-connect-fed-compatibility.md)
 
-Microsoft bu oturum açma deneyimini, Microsoft 365 gibi bir Microsoft bulut hizmeti tümleştirme olarak, doğru şekilde yapılandırılmış SAML 2,0 profil tabanlı IDP ile destekler. SAML 2,0 kimlik sağlayıcıları, üçüncü taraf ürünleridir ve bu nedenle Microsoft, bunlarla ilgili dağıtım, yapılandırma ve sorun giderme konusunda en iyi uygulamalar için destek sağlamaz. Düzgün yapılandırıldıktan sonra, SAML 2,0 kimlik sağlayıcısıyla tümleştirme, aşağıda daha ayrıntılı olarak açıklanan Microsoft bağlantı Çözümleyicisi Aracı kullanılarak uygun yapılandırma için test edilebilir. SAML 2,0 SP-Lite profil tabanlı kimlik sağlayıcınız hakkında daha fazla bilgi için, bunu sağlayan kuruluşa sorun.
+Microsoft bu oturum açma deneyimini, Microsoft 365 gibi bir Microsoft bulut hizmeti tümleştirme olarak, doğru şekilde yapılandırılmış SAML 2,0 profil tabanlı IDP ile destekler. SAML 2,0 kimlik sağlayıcıları, üçüncü taraf ürünleridir ve bu nedenle Microsoft, bunlarla ilgili dağıtım, yapılandırma ve sorun giderme konusunda en iyi uygulamalar için destek sağlamaz. Düzgün yapılandırıldıktan sonra, SAML 2,0 kimlik sağlayıcısıyla tümleştirme, aşağıda daha ayrıntılı olarak açıklanan Microsoft bağlantı Çözümleyicisi Aracı kullanılarak uygun yapılandırma için test edilebilir. SAML 2,0 SP-Lite profil tabanlı kimlik sağlayıcınız hakkında daha fazla bilgi için, BT tarafından sağlanmış olan kuruluşa sorun.
 
 > [!IMPORTANT]
 > Bu oturum açma senaryosunda SAML 2,0 kimlik sağlayıcılarıyla yalnızca sınırlı sayıda istemci mevcuttur, bu şunları içerir:
@@ -276,7 +276,7 @@ Bu yordam, Azure AD 'ye tek bir kullanıcının nasıl ekleneceğini gösterir.
 >"Userprenlname" değeri, SAML 2,0 talepinizdeki "ıdpemail" için göndereceğiniz değerle eşleşmelidir ve "ImmutableID" değeri "NameID" onayyıklarınızın gönderdiği değerle eşleşmelidir.
 
 ## <a name="verify-single-sign-on-with-your-saml-20-idp"></a>SAML 2,0 ıDP ile çoklu oturum açmayı doğrulama
-Yönetici olarak, tekli oturum açmayı doğruladıktan ve yönettiğinizde (Kimlik Federasyonu olarak da bilinir), SAML 2,0 SP-Lite tabanlı kimlik sağlayıcınızda çoklu oturum açmayı ayarlamak için bilgileri gözden geçirin ve aşağıdaki makalelerdeki adımları gerçekleştirin:
+Yönetici olarak, çoklu oturum açmayı doğruladıktan ve yönettiğinizde (Kimlik Federasyonu olarak da adlandırılır), bilgileri gözden geçirin ve SAML 2,0 SP-Lite tabanlı kimlik sağlayıcınızda çoklu oturum açmayı ayarlamak için aşağıdaki makalelerdeki adımları gerçekleştirin:
 
 
 1.  Azure AD SAML 2,0 protokol gereksinimlerini incelendi
@@ -286,7 +286,7 @@ Yönetici olarak, tekli oturum açmayı doğruladıktan ve yönettiğinizde (Kim
 5.  Windows PowerShell veya Azure AD Connect aracılığıyla Azure Active Directory (Microsoft 365) bilinen bir test kullanıcısı sorumlusu sağlandı.
 6.  [Azure AD Connect](whatis-hybrid-identity.md)kullanarak dizin eşitlemeyi yapılandırın.
 
-SAML 2,0 SP Lite tabanlı kimlik sağlayıcınızda çoklu oturum açmayı ayarladıktan sonra, doğru çalıştığını doğrulamanız gerekir.
+SAML 2,0 SP-Lite tabanlı kimlik sağlayıcınızda çoklu oturum açmayı ayarladıktan sonra, doğru çalıştığını doğrulamanız gerekir.
 
 >[!NOTE]
 >Bir etki alanını, bir tane eklemek yerine dönüştürdüyseniz, çoklu oturum açmayı ayarlamak 24 saate kadar sürebilir.

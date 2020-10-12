@@ -11,10 +11,10 @@ ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: 6221b36263b55f54faef18d6596f97c5b3798d3d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541722"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure Machine Learning ile pekiştirmeye dayalı öğrenme (Önizleme)
@@ -36,7 +36,7 @@ Bu makalede, şunları nasıl yapacağınızı öğreneceksiniz:
 
 Bu makale, Azure Machine Learning Not defteri [GitHub deposunda](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md)bulunan [Rllib Pong örneğini](https://aka.ms/azureml-rl-pong) temel alır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu kodu aşağıdaki ortamlardan birinde çalıştırın. En hızlı başlangıç deneyimi için Azure Machine Learning işlem örneğini denemenizi öneririz. Pekiştirmeye dayalı örnek Not defterleri, Azure Machine Learning işlem örneğinde hızlı bir şekilde klonlamak ve çalıştırmak için kullanılabilir.
 
@@ -326,7 +326,7 @@ rl_estimator = ReinforcementLearningEstimator(
 
 [Giriş betiği](https://aka.ms/azure-rl-pong-script) , `pong_rllib.py` [openaı Gym ortamını](https://github.com/openai/gym/) kullanarak bir sinir ağı eğititir `PongNoFrameSkip-v4` . Openaı Gmakları, klasik atari oyunlarında pekiştirmeye dayalı öğrenme algoritmalarını test etmek için standartlaştırılmış arabirimler sağlar.
 
-Bu örnek, [Impala](https://arxiv.org/abs/1802.01561) (önem ağırlıklı aktör-Learner mimarisi) olarak bilinen bir eğitim algoritması kullanır. IMPALA, her bireysel öğrenme aktörinin hız veya kararlılığı etkilemeden birçok işlem düğümü genelinde ölçeklendirilmesini sağlar.
+Bu örnek, [Impala](https://arxiv.org/abs/1802.01561) (önem ağırlıklı Actor-Learner mimarisi) olarak bilinen bir eğitim algoritması kullanır. IMPALA, her bireysel öğrenme aktörinin hız veya kararlılığı etkilemeden birçok işlem düğümü genelinde ölçeklendirilmesini sağlar.
 
 [Işın ayarlama](https://ray.readthedocs.io/en/latest/tune.html) Impala çalışan görevlerini düzenler.
 

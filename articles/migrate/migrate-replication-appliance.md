@@ -4,10 +4,10 @@ description: Aracı tabanlı VMWare geçişi için Azure geçişi çoğaltma ger
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.openlocfilehash: af9e45e47c2f0645d81a571161f15f7d69cfec61
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90532129"
 ---
 # <a name="replication-appliance"></a>Çoğaltma gereci
@@ -15,7 +15,7 @@ ms.locfileid: "90532129"
 Bu makalede, [Azure geçişi](migrate-services-overview.md#azure-migrate-server-migration-tool) tarafından kullanılan çoğaltma gereci açıklanmaktadır: VMware VM 'leri, fiziksel makineler ve özel/genel bulut VM 'lerini, aracı tabanlı geçiş kullanarak Azure 'a geçirme. 
 
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 
 VMware VM 'Leri veya fiziksel sunucuları için aracı tabanlı geçiş ayarladığınızda, çoğaltma gereci dağıtılır. VMware VM ya da fiziksel sunucu olarak tek bir şirket içi makine olarak dağıtılır. Çalışır:
 

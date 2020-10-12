@@ -14,10 +14,10 @@ ms.custom: ''
 ms.date: 07/24/2020
 ms.author: inhenkel
 ms.openlocfilehash: 9d784e1697dfbcbfec509c1a51c9b832b533c97b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87830759"
 ---
 # <a name="how-to-use-azure-portal-to-invoke-direct-methods"></a>Doğrudan yöntemleri çağırmak için Azure portal kullanma
@@ -26,7 +26,7 @@ IoT Hub, uç cihazlarda buluttan [doğrudan Yöntemler](../../iot-hub/iot-hub-de
 
 Bu makalede, Azure portal aracılığıyla bir IoT Edge modülü için canlı video analizinden doğrudan Yöntem çağrılarını çağırmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Uç cihazınızda çalışan IoT Edge modülde canlı video analizinden yararlanarak [hızlı başlangıç: canlı video analizi IoT Edge](./get-started-detect-motion-emit-events-quickstart.md) veya portalı kullanma ' da açıklanan yöntemleri kullanabilirsiniz [.](./deploy-iot-edge-device.md)
 

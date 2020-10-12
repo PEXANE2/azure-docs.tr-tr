@@ -4,10 +4,10 @@ description: Bu makalede, kapsayıcılar için Azure Izleyici 'den bellek ve CPU
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 8c02442fef9b174075065e7852b7a25233899c48
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91294555"
 ---
 # <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici 'den günlük uyarıları oluşturma
@@ -281,7 +281,7 @@ Bu bölümde, kapsayıcılar için Azure Izleyici 'den performans verilerini kul
 >Kapsayıcı kaynak kullanımı için bir uyarı kuralı oluşturmak için aşağıdaki yordam, [günlük uyarıları Için anahtar API tercihi](../platform/alerts-log-api-switch.md)bölümünde açıklandığı gibi yeni bir günlük uyarıları API 'sine geçmeniz gerekir.
 >
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Azure portal, **Log Analytics çalışma alanlarını**arayıp seçin.
 3. Log Analytics çalışma alanları listenizde, kapsayıcılar için Azure Izleyicisini destekleyen çalışma alanını seçin. 
 4. Sol taraftaki bölmede **Günlükler** ' i seçerek Azure izleyici günlükleri sayfasını açın. Azure günlük sorgularını yazmak ve yürütmek için bu sayfayı kullanın.

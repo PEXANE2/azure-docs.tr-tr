@@ -1,6 +1,6 @@
 ---
-title: 'Azure Active Directory Connect: sorunsuz çoklu oturum açma sorunlarını giderme | Microsoft Docs'
-description: Bu konuda, sorunsuz çoklu oturum açma Azure Active Directory nasıl giderileceği açıklanmaktadır
+title: 'Azure Active Directory Connect: tek Sign-On sorunsuz sorun giderme | Microsoft Docs'
+description: Bu konuda Azure Active Directory sorunsuz tek Sign-On nasıl giderebileceğiniz açıklanır
 services: active-directory
 author: billmath
 ms.reviewer: swkrish
@@ -14,15 +14,15 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 60f23efa4f46849e1fe8b0ebe05cdd83ec16f49e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91294827"
 ---
-# <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory sorunsuz çoklu oturum açma sorunlarını giderme
+# <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory sorunsuz tek Sign-On sorunlarını giderme
 
-Bu makale, Azure Active Directory (Azure AD) sorunsuz çoklu oturum açma (sorunsuz SSO) ile ilgili yaygın sorunlar hakkında sorun giderme bilgilerini bulmanıza yardımcı olur.
+Bu makale Azure Active Directory (Azure AD) sorunsuz tek Sign-On (sorunsuz SSO) ile ilgili yaygın sorunlar hakkında sorun giderme bilgilerini bulmanıza yardımcı olur.
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
