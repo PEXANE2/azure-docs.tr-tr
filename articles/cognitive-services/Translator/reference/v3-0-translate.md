@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 08/06/2020
 ms.author: swmachan
 ms.openlocfilehash: 59e064dc2b9d33bda966eb50544c8383b0394dd3
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89566611"
 ---
 # <a name="translator-30-translate"></a>Translator 3,0: çeviri
@@ -37,7 +37,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 
 <table width="100%">
   <th width="20%">Sorgu parametresi</th>
-  <th>Description</th>
+  <th>Açıklama</th>
   <tr>
     <td>api-sürümü</td>
     <td><em>Gerekli parametre</em>.<br/>İstemci tarafından istenen API 'nin sürümü. Değer olmalıdır <code>3.0</code> .</td>
@@ -52,7 +52,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 
 <table width="100%">
   <th width="20%">Sorgu parametresi</th>
-  <th>Description</th>
+  <th>Açıklama</th>
   <tr>
     <td>Kaynak</td>
     <td><em>Isteğe bağlı parametre</em>.<br/>Giriş metninin dilini belirtir. Kapsam kullanarak <a href="./v3-0-languages.md">desteklenen dilleri</a> arayarak hangi dillerin çevrilebileceği hakkında bilgi edinin <code>translation</code> . <code>from</code>Parametresi belirtilmemişse, kaynak dili saptamak için otomatik dil algılama uygulanır. <br/><br/><code>from</code> <a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">Dinamik sözlük</a> özelliğini kullanırken, parametresini, oto algılaması yerine kullanmanız gerekir.</td>
@@ -103,8 +103,8 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 İstek üstbilgileri şunları içerir:
 
 <table width="100%">
-  <th width="20%">Üst Bilgiler</th>
-  <th>Description</th>
+  <th width="20%">Üst bilgiler</th>
+  <th>Açıklama</th>
   <tr>
     <td>Kimlik doğrulama üst bilgisi</td>
     <td><em>Gerekli istek üst bilgisi</em>.<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulaması için kullanılabilen seçeneklere</a>bakın.</td>
@@ -181,8 +181,8 @@ Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren
 ## <a name="response-headers"></a>Yanıt üst bilgileri
 
 <table width="100%">
-  <th width="20%">Üst Bilgiler</th>
-  <th>Description</th>
+  <th width="20%">Üst bilgiler</th>
+  <th>Açıklama</th>
     <tr>
     <td>X-RequestId</td>
     <td>İsteği tanımlamak için hizmet tarafından oluşturulan değer. Sorun giderme amacıyla kullanılır.</td>
@@ -199,7 +199,7 @@ Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir.
 
 <table width="100%">
   <th width="20%">Durum Kodu</th>
-  <th>Description</th>
+  <th>Açıklama</th>
   <tr>
     <td>200</td>
     <td>Başarılı.</td>

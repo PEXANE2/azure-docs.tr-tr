@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 98f8554d6313147c03d4a0bec74e36043cdce342
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87285280"
 ---
 # <a name="azcopy-login"></a>azcopy oturum açma
@@ -95,7 +95,7 @@ azcopy login --service-principal --certificate-path /path/to/my/cert --applicati
 
 `/path/to/my/cert`Pek veya Pkcs12 dosyasının yolunu olarak değerlendirin. AzCopy, sertifikanızı almak için sistem sertifika deposuna ulaşmıyor.
 
-`--certificate-path`, sertifika tabanlı hizmet sorumlusu kimlik doğrulaması yapılırken zorunludur.
+`--certificate-path` , sertifika tabanlı hizmet sorumlusu kimlik doğrulaması yapılırken zorunludur.
 
 ## <a name="options"></a>Seçenekler
 
@@ -105,7 +105,7 @@ azcopy login --service-principal --certificate-path /path/to/my/cert --applicati
 
 **--** SPN kimlik doğrulaması için sertifika yolu dize yolu. Sertifika tabanlı hizmet sorumlusu kimlik doğrulaması için gereklidir.
 
-**--** komut yardımı Yardımı `azcopy login` .
+**--**   komut yardımı Yardımı `azcopy login` .
 
 **--kimlik**   Yönetilen hizmet kimliği (MSI) olarak da bilinen sanal makinenin kimliğini kullanarak oturum açın.
 
@@ -129,4 +129,4 @@ azcopy login --service-principal --certificate-path /path/to/my/cert --applicati
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [AzCopy](storage-ref-azcopy.md)
+- [azcopy](storage-ref-azcopy.md)

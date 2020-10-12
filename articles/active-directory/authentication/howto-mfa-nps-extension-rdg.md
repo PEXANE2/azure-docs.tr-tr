@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4a75b6be3796a21e3f765ad69eee0578d5f2e9d0
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88717855"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Ağ Ilkesi sunucusu (NPS) uzantısını ve Azure AD 'yi kullanarak Uzak Masaüstü Ağ Geçidi altyapınızı tümleştirin
@@ -51,15 +51,15 @@ Bir RD Ağ Geçidi, RD CAP 'leri için merkezi bir ilke deposu kullanacak şekil
 
 Azure için NPS Uzantısı NPS ve Uzak Masaüstü Ağ Geçidi tümleştirildiğinde, başarılı kimlik doğrulama akışı şu şekildedir:
 
-1. Uzak Masaüstü Ağ Geçidi sunucusu Uzak Masaüstü kullanıcıdan uzak masaüstü oturumu gibi bir kaynağa bağlanmak için bir kimlik doğrulama isteği alır. Bir RADIUS istemcisi görevi gören Uzak Masaüstü Ağ Geçidi sunucusu, isteği bir RADIUS Erişim-Istek iletisine dönüştürür ve iletiyi NPS uzantısının yüklendiği RADIUS (NPS) sunucusuna gönderir.
+1. Uzak Masaüstü Ağ Geçidi sunucusu Uzak Masaüstü kullanıcıdan uzak masaüstü oturumu gibi bir kaynağa bağlanmak için bir kimlik doğrulama isteği alır. Bir RADIUS istemcisi olarak davranan Uzak Masaüstü Ağ Geçidi sunucusu, isteği bir RADIUS Access-Request iletisine dönüştürür ve iletiyi NPS uzantısının yüklendiği RADIUS (NPS) sunucusuna gönderir.
 1. Kullanıcı adı ve parola birleşimi Active Directory doğrulanır ve kullanıcının kimliği doğrulanır.
 1. NPS bağlantı Isteğinde belirtilen tüm koşullar ve ağ Ilkeleri karşılanıyorsa (örneğin, günün saati veya grup üyeliği kısıtlamaları), NPS uzantısı, Azure MFA ile ikincil kimlik doğrulama isteğini tetikler.
 1. Azure MFA, Azure AD ile iletişim kurar, kullanıcının ayrıntılarını alır ve desteklenen yöntemleri kullanarak ikincil kimlik doğrulamasını gerçekleştirir.
 1. MFA Challenge başarısından sonra Azure MFA, sonucu NPS Uzantısı ile iletişim kurar.
-1. Uzantının yüklendiği NPS sunucusu, Uzak Masaüstü Ağ Geçidi sunucusuna RD CAP ilkesi için bir RADIUS Erişim-kabul iletisi gönderir.
+1. Uzantının yüklendiği NPS sunucusu, Uzak Masaüstü Ağ Geçidi sunucusuna RD CAP ilkesi için bir RADIUS Access-Accept iletisi gönderir.
 1. Kullanıcıya, RD Ağ Geçidi aracılığıyla istenen ağ kaynağına erişim verilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu bölümde, Azure MFA 'yı Uzak Masaüstü Ağ Geçidi tümleştirmadan önce gerekli Önkoşullar ayrıntılı olarak yer Başlamadan önce, aşağıdaki önkoşulların yerine gelmelidir.  
 
@@ -306,7 +306,7 @@ Azure MFA uzantılı NPS sunucusunun, bağlantı yetkilendirme Ilkesi (CAP) içi
 
    ![İsteğe bağlı olarak bağlantı koşullarını belirtin](./media/howto-mfa-nps-extension-rdg/image23.png)
 
-1. **Tamam** düğmesine tıklayın. İlgili yardım konusunu görüntülemeniz istendiğinde **Hayır**' a tıklayın.
+1. **Tamam**'a tıklayın. İlgili yardım konusunu görüntülemeniz istendiğinde **Hayır**' a tıklayın.
 1. Yeni ilkenizin listenin en üstünde olduğundan, ilkenin etkin olduğundan ve erişim izni verdiğinden emin olun.
 
    ![İlkenizi listenin en üstüne taşıyın](./media/howto-mfa-nps-extension-rdg/image24.png)

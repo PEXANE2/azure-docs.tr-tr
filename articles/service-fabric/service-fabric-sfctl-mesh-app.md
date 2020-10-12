@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 835369116b07b74c666fba271476f1cba5a708b8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86259944"
 ---
 # <a name="sfctl-mesh-app"></a>sfctl mesh app
@@ -19,7 +19,7 @@ Uygulama kaynaklarını alın ve silin.
 
 |Komut|Açıklama|
 | --- | --- |
-| silme | Uygulama kaynağını siler. |
+| delete | Uygulama kaynağını siler. |
 | list | Tüm uygulama kaynaklarını listeler. |
 | göster | Verilen ada sahip uygulama kaynağını alır. |
 
@@ -28,7 +28,7 @@ Uygulama kaynağını siler.
 
 Ad tarafından tanımlanan uygulama kaynağını siler.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -64,7 +64,7 @@ Verilen ada sahip uygulama kaynağını alır.
 
 Verilen ada sahip uygulama kaynağıyla ilgili bilgileri alır. Bilgiler, uygulamanın açıklamasını ve diğer özelliklerini içerir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |

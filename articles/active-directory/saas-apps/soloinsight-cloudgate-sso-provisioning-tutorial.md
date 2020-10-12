@@ -1,5 +1,5 @@
 ---
-title: "Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlaması için Soloinsight-CloudGate SSO 'yu yapılandırın | Microsoft Docs"
+title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Soloinsight-CloudGate SSO yapılandırma | Microsoft Docs'
 description: Soloinsight-CloudGate SSO 'ya Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
 author: zchia
@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 10/14/2019
 ms.author: Zhchia
 ms.openlocfilehash: aa9ed0954cbfa2d83eeed1c70f40beedcf4f44cd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91285984"
 ---
 # <a name="tutorial-configure-soloinsight-cloudgate-sso-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Soloinsight-CloudGate SSO 'yu yapılandırma
@@ -27,13 +27,13 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Soloin
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * Bir Azure AD kiracısı
-* [Bir Soloinsight-CloudGate SSO kiracısı](https://www.soloinsight.com/)
-* Yönetici izinlerine sahip Soloinsight-CloudGate SSO 'da bir kullanıcı hesabı.
+* [Soloinsight-CloudGate SSO kiracısı](https://www.soloinsight.com/)
+* Soloinsight-CloudGate SSO 'da yönetici izinleriyle bir kullanıcı hesabı.
 
 ## <a name="assigning-users-to-soloinsight-cloudgate-sso"></a>Soloinsight-CloudGate SSO 'ya Kullanıcı atama
 
@@ -46,7 +46,7 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 * Otomatik Kullanıcı sağlama yapılandırmasını test etmek için Soloinsight-CloudGate SSO 'ya tek bir Azure AD kullanıcısının atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
 
-* Bir kullanıcıyı Soloinsight-CloudGate SSO 'ya atarken atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
+* Bir kullanıcıyı Soloinsight-CloudGate SSO 'ya atarken, atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
 
 ## <a name="set-up-soloinsight-cloudgate-sso-for-provisioning"></a>Sağlama için Soloinsight-CloudGate SSO 'yu ayarlama
 
@@ -64,9 +64,9 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 ## <a name="add-soloinsight-cloudgate-sso-from-the-gallery"></a>Galeriden Soloinsight-CloudGate SSO 'SU ekleme
 
-Azure AD ile otomatik Kullanıcı sağlama için Soloinsight-CloudGate SSO 'yu yapılandırmadan önce, Azure AD uygulama galerisinden yönetilen SaaS uygulamaları listenize Soloinsight-CloudGate SSO 'SU eklemeniz gerekir.
+Azure AD ile otomatik Kullanıcı sağlama için Soloinsight-CloudGate SSO 'yu yapılandırmadan önce Azure AD uygulama galerisinden yönetilen SaaS uygulamaları listenize Soloinsight-CloudGate SSO eklemeniz gerekir.
 
-**Azure AD uygulama galerisinden Soloinsight-CloudGate SSO eklemek için aşağıdaki adımları uygulayın:**
+**Azure AD Uygulama Galerisi 'nden Soloinsight-CloudGate SSO eklemek için aşağıdaki adımları uygulayın:**
 
 1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
@@ -82,14 +82,14 @@ Azure AD ile otomatik Kullanıcı sağlama için Soloinsight-CloudGate SSO 'yu y
 
 4. Arama kutusuna **Soloinsight-CLOUDGATE SSO**yazın, sonuçlar panelinde **Soloinsight-cloudgate SSO** ' yı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-    ![Sonuç listesinde Soloinsight-CloudGate SSO 'SU](common/search-new-app.png)
+    ![Sonuç listesinde SSO Soloinsight-CloudGate](common/search-new-app.png)
 
 ## <a name="configuring-automatic-user-provisioning-to-soloinsight-cloudgate-sso"></a>Soloinsight-CloudGate SSO 'ya otomatik Kullanıcı sağlamayı yapılandırma 
 
-Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Soloinsight-CloudGate SSO içindeki kullanıcıları ve/veya grupları Azure AD 'de Kullanıcı ve/veya grup atamalarına göre oluşturma, güncelleştirme ve devre dışı bırakma adımları adım adım kılavuzluk eder.
+Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre Soloinsight-CloudGate SSO 'daki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD sağlama hizmetini yapılandırma adımlarında size kılavuzluk eder.
 
 > [!TIP]
-> [Soloinsight-CLOUDGATE SSO çoklu oturum açma öğreticisinde](https://docs.microsoft.com/azure/active-directory/saas-apps/soloinsight-cloudgate-sso-tutorial)sunulan yönergeleri izleyerek Soloinsight-cloudgate SSO için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilse de
+> [Soloinsight-CloudGate SSO çoklu oturum açma öğreticisinde](https://docs.microsoft.com/azure/active-directory/saas-apps/soloinsight-cloudgate-sso-tutorial)sunulan yönergeleri IZLEYEREK Soloinsight-CloudGate SSO için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilse de
 
 ### <a name="to-configure-automatic-user-provisioning-for-soloinsight-cloudgate-sso-in-azure-ad"></a>Azure AD 'de Soloinsight-CloudGate SSO için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
@@ -119,29 +119,29 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Soloinsight-CloudGate SSO
 
 7. **Kaydet**’e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Soloinsight-Cloudgate SSO ile eşitler**' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları SSO Soloinsight-CloudGate olarak eşitler**' ı seçin.
 
     ![Soloinsight-CloudGate SSO Kullanıcı eşlemeleri](media/soloinsight-cloudgate-sso-provisioning-tutorial/usermappings.png)
 
-9. **Öznitelik eşleme** bölümünde Azure AD 'den Soloinsight-CLOUDGATE SSO ile eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için Soloinsight-CLOUDGATE SSO 'daki Kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+9. **Öznitelik eşleme** bölümünde Azure AD 'den Soloinsight-CloudGate SSO 'ya eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri IÇIN Soloinsight-CloudGate SSO 'daki Kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
     ![Soloinsight-CloudGate SSO Kullanıcı öznitelikleri](media/soloinsight-cloudgate-sso-provisioning-tutorial/userattributes.png)
 
-10. **Eşlemeler** bölümünde **Azure Active Directory grupları Soloinsight-Cloudgate SSO olarak eşitler**' ı seçin.
+10. **Eşlemeler** bölümünde **Azure ACTIVE DIRECTORY gruplarını Soloinsight-CloudGate SSO ile eşitler**' ı seçin.
 
     ![Soloinsight-CloudGate SSO grubu eşlemeleri](media/soloinsight-cloudgate-sso-provisioning-tutorial/groupmappings.png)
 
-11. **Öznitelik eşleme** bölümünde Azure AD 'den Soloinsight-CLOUDGATE SSO ile eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için Soloinsight-CLOUDGATE SSO 'daki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+11. **Öznitelik eşleme** bölümünde Azure AD 'den Soloinsight-CloudGate SSO 'ya eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri IÇIN Soloinsight-CloudGate SSO 'daki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
     ![Soloinsight-CloudGate SSO grubu öznitelikleri](media/soloinsight-cloudgate-sso-provisioning-tutorial/groupattributes.png)
 
 12. Kapsam belirleme filtrelerini yapılandırmak için [Kapsam belirleme filtresi öğreticisi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) ile sunulan yönergeleri izleyin.
 
-13. Soloinsight-CloudGate SSO için Azure AD sağlama hizmeti 'ni etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
+13. Soloinsight-CloudGate SSO için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
     ![Hazırlama Durumu Açık](common/provisioning-toggle-on.png)
 
-14. **Ayarlar** bölümünde **kapsam** Içinde istenen değerleri seçerek SOLOINSIGHT-cloudgate SSO 'ya sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+14. **Ayarlar** bölümünde **kapsamda** Istenen değerleri seçerek Soloinsight-CloudGate SSO 'ya sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
@@ -149,7 +149,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Soloinsight-CloudGate SSO
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. Soloinsight-CloudGate SSO üzerinde Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan, ilerlemeyi izlemek ve sağlama etkinliği raporuna yönelik bağlantıları izlemek için **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
+Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerlemeyi izlemek ve Soloinsight-CloudGate SSO üzerinde Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan, sağlama etkinliği raporuna yönelik bağlantıları izlemek için **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
 
 Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
 

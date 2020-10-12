@@ -3,12 +3,12 @@ title: Azure Backup Sunucusu ile Azure VMware Çözüm VM 'lerini yedekleme
 description: Azure VMware Çözüm ortamınızı, Azure Backup Sunucusu kullanarak sanal makineleri yedekleyecek şekilde yapılandırın.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: a62bccb729cfa6aec89a3ce6de7283f5d9412428
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: b8b5236a8da165efbb8e479e25b58872c4a735ee
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91580639"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893025"
 ---
 # <a name="back-up-azure-vmware-solution-vms-with-azure-backup-server"></a>Azure Backup Sunucusu ile Azure VMware Çözüm VM 'lerini yedekleme
 
@@ -105,36 +105,6 @@ VMware 6,7 üzerinde iletişim kuralı olarak TLS etkinleştirilmiş.
 
 1. TLS öğesine sağ tıklayın. REG dosyasını seçin ve ayarları kayıt defterine eklemek için **Birleştir** veya **Aç** ' ı seçin.
 
-## <a name="add-the-provisioning-ip-address"></a>Sağlama IP adresini ekleme 
-
-Önizleme sırasında Azure VMware çözümü, sanal ağda dağıtılan sanal makineden ESX konağını çözmez. Konak dosyası girişini Azure Backup Sunucusu sanal makinesine eklemek için ek adımlar gerçekleştirmeniz gerekir.
-
-### <a name="identify-the-ip-address-for-esxi-hosts"></a>ESXi konakları için IP adresini tanımla
-
-1. Tarayıcıyı açın ve vCenter URL 'Lerinde oturum açın. 
-
-   > [!TIP]
-   > URL 'Leri, [özel bulutunuzun yerel vCenter 'A Bağlan](tutorial-access-private-cloud.md#connect-to-the-local-vcenter-of-your-private-cloud)bölümünde bulabilirsiniz.
-
-1. VSphere Istemcisinde, yedeklemeyi etkinleştirmeyi planladığınız kümeyi seçin.
-
-   :::image type="content" source="media/azure-vmware-solution-backup/vsphere-client-select-host.png" alt-text="vSphere Web Istemcisi":::
-
-1. **Configure**  >  **Ağ**  >  **vmkernel bağdaştırıcılarını**Yapılandır ' ı seçin. Cihaz listesi altında, **sağlama** rolü etkin olan ağ bağdaştırıcısını belirler. **IP adresini** ve ESXi ana bilgisayar adını bir yere getirin.
-
-   :::image type="content" source="media/azure-vmware-solution-backup/vmkernel-adapters-provisioning-enabled.png" alt-text="vSphere Web Istemcisi":::
-
-1. Yedeklemeyi etkinleştirmeyi planladığınız her bir ESXi ana bilgisayarı için önceki adımı tekrarlayın.
-
-### <a name="update-the-host-file-on-azure-backup-server"></a>Azure Backup Sunucusu ana bilgisayar dosyasını güncelleştirme
-
-1. Not defteri 'Ni yönetici olarak açın.
-
-1. **Dosya**  >  **Aç**' ı seçin ve c:\windows\system32\drivers\etc\hostyolunda arama yapın.
-
-1. Her bir ESXi konağının girişini, önceki bölümde tanımladığınız IP adresiyle birlikte ekleyin.
-
-1. Değişikliklerinizi kaydedin ve Not defteri 'Ni kapatın.
 
 ## <a name="add-the-account-on-azure-backup-server"></a>Hesabı Azure Backup Sunucusu ekleyin
 

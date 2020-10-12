@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
 ms.openlocfilehash: 3a585bc2bf3872a21bde9be036628922ee5743fa
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90087363"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Kapsayıcılar ve BLOB 'lar için anonim genel okuma erişimini yapılandırma
@@ -58,7 +58,7 @@ Bir depolama hesabı için genel erişime izin vermek veya bu erişimi engelleme
 >
 > **Allowblobpublicaccess** özelliği şu anda yalnızca Azure genel bulutundaki depolama hesapları için kullanılabilir.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
 
 Azure portal bir depolama hesabı için genel erişime izin vermek veya bu erişimi engellemek için şu adımları izleyin:
 
@@ -193,7 +193,7 @@ Bir depolama hesabı için genel erişime izin verildiğinde, bir kapsayıcıyı
 
 Tek bir blob için genel erişim düzeyini değiştiremezsiniz. Genel erişim düzeyi yalnızca kapsayıcı düzeyinde ayarlanır. Kapsayıcıyı oluştururken kapsayıcının ortak erişim düzeyini ayarlayabilir veya var olan bir kapsayıcıdaki ayarı güncelleştirebilirsiniz.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
 
 Azure portal bir veya daha fazla mevcut kapsayıcının genel erişim düzeyini güncelleştirmek için şu adımları izleyin:
 
@@ -207,7 +207,7 @@ Azure portal bir veya daha fazla mevcut kapsayıcının genel erişim düzeyini 
 
 Depolama hesabı için genel erişime izin verilmedikçe, kapsayıcının ortak erişim düzeyi ayarlanamaz. Kapsayıcının ortak erişim düzeyini ayarlamaya çalışırsanız, hesap için genel erişime izin verilmediğinden ayarın devre dışı bırakıldığını görürsünüz.
 
-:::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="Ortak erişime izin verilmediği zaman, Setting kapsayıcısının genel erişim düzeyinin engellendiğini gösteren ekran görüntüsü":::
+:::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="Hesap için blob genel erişimine izin verme veya bu erişimi engelleme ile ilgili ekran görüntüsü":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

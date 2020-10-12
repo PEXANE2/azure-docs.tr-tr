@@ -9,10 +9,10 @@ ms.date: 7/30/2020
 ms.author: rohink
 ms.topic: how-to
 ms.openlocfilehash: 8f17d7f32d774cac283ec335c372e8f68d50931f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87424231"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Azure CLI’yı kullanarak DNS bölge dosyasını içeri ve dışarı aktarma
@@ -69,9 +69,9 @@ az network dns zone import -g <resource group> -n <zone name> -f <zone file name
 
 Değerler:
 
-* `<resource group>`Azure DNS içindeki bölge için kaynak grubunun adıdır.
-* `<zone name>`, bölgenin adıdır.
-* `<zone file name>`İçeri aktarılacak bölge dosyasının yolu/adı.
+* `<resource group>` Azure DNS içindeki bölge için kaynak grubunun adıdır.
+* `<zone name>` , bölgenin adıdır.
+* `<zone file name>` İçeri aktarılacak bölge dosyasının yolu/adı.
 
 Kaynak grubunda bu ada sahip bir bölge yoksa, sizin için oluşturulur. Bölge zaten varsa, içeri aktarılan kayıt kümeleri varolan kayıt kümeleriyle birleştirilir. 
 
@@ -163,9 +163,9 @@ az network dns zone export -g <resource group> -n <zone name> -f <zone file name
 
 Değerler:
 
-* `<resource group>`Azure DNS içindeki bölge için kaynak grubunun adıdır.
-* `<zone name>`, bölgenin adıdır.
-* `<zone file name>`, aktarılacak bölge dosyasının yolu/adıdır.
+* `<resource group>` Azure DNS içindeki bölge için kaynak grubunun adıdır.
+* `<zone name>` , bölgenin adıdır.
+* `<zone file name>` , aktarılacak bölge dosyasının yolu/adıdır.
 
 Bölge içeri aktarırken olduğu gibi, önce oturum açmanız, aboneliğinizi seçmeniz ve Azure CLı 'yı Kaynak Yöneticisi modunu kullanacak şekilde yapılandırmanız gerekir.
 

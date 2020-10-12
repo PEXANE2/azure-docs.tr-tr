@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: reference
 keywords: Kinect, Azure, algılayıcı, SDK, derinlik, RGB, kayıt, kayıttan yürütme, Matroska, MKV
 ms.openlocfilehash: 3a78ed158c78df1c9a6eadcc0bfb2e40b22750bd
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87501789"
 ---
 # <a name="use-azure-kinect-sensor-sdk-to-record-file-format"></a>Dosya biçimini kaydetmek için Azure Kinect algılayıcı SDK 'sını kullanma
@@ -22,7 +22,7 @@ Algılayıcı verilerini kaydetmek için, birden çok izlemelerin çok sayıda c
 
 | Adı izle | Codec biçim                          |
 |------------|---------------------------------------|
-| Renk      | Moda bağımlı (MJPEG, NV12 veya YUY2) |
+| Renk      | Mode-Dependent (MJPEG, NV12 veya YUY2) |
 | DERINLIĞINI      | b16g (16 bit gri tonlamalı, büyük endian)   |
 | IR         | b16g (16 bit gri tonlamalı, büyük endian)   |
 | IMU        | Özel yapı, aşağıdaki [IMU örnek yapısına](record-file-format.md#imu-sample-structure) bakın. |

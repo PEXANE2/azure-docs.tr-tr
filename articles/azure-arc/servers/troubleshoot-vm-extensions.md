@@ -4,10 +4,10 @@ description: Bu makalede, Azure Arc etkin sunucularıyla oluşan Azure VM uzant�
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.openlocfilehash: ffd7db5ff7da3d7f60762117f80d7b9b5af6f646
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91347458"
 ---
 # <a name="troubleshoot-arc-enabled-servers-vm-extension-issues"></a>Yay etkin sunucu sanal makine uzantısı sorunlarını giderme

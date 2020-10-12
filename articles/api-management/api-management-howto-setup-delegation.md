@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/30/2020
 ms.author: apimpm
 ms.openlocfilehash: e7f2fb966aa323063220bc798706c8401745ba20
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87461009"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Kullanıcı kaydı ve ürün aboneliği temsilcisi seçme
@@ -72,7 +72,7 @@ Başlamak için ilk olarak istekleri, yetkilendirme uç noktanız aracılığıy
    * API Management ile [Çoklu oturum açma (SSO) belirteci isteme] REST API
    * Yukarıdaki API çağrısından aldığınız SSO URL 'sine bir returnUrl sorgu parametresi ekleyin:
      
-     > Örneğin,`https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url` 
+     > Örneğin, `https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url` 
      > 
      > 
    * kullanıcıyı yukarıda üretilen URL 'ye yönlendir

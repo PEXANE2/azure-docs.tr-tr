@@ -7,10 +7,10 @@ ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 583384d6f0ec71dc724868db61ee07ead7269607
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91287330"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Azure dosyaları ve AD DS bir profil kapsayıcısı oluşturun
@@ -19,7 +19,7 @@ Bu makalede, var olan bir Windows sanal masaüstü konak havuzunda bir etki alan
 
 Bu işlem, bir şirket içi dizin hizmeti olan Active Directory Domain Services (AD DS) kullanır. Azure AD DS ile FSLogix profil kapsayıcısı oluşturma hakkında bilgi arıyorsanız bkz. [Azure dosyaları Ile fslogix profil kapsayıcısı oluşturma](create-profile-container-adds.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, etki alanı denetleyicinizin Azure ile eşitlendiğinden ve oturum konaklarınızın bağlı olduğu Azure sanal ağı 'ndan (VNET) çözümleneceğinden emin olun.
 
@@ -212,7 +212,7 @@ Oturum konağı VM örneğinizde FSLogix'i yapılandırmak için:
 
 6. VM’yi yeniden başlatın.
 
-## <a name="testing"></a>Sınama
+## <a name="testing"></a>Test Etme
 
 FSLogix yükledikten ve yapılandırdıktan sonra, konak havuzundaki bir uygulama grubuna veya masaüstüne atanmış bir kullanıcı hesabıyla oturum açarak dağıtımınızı test edebilirsiniz. Oturum açmak için kullandığınız kullanıcı hesabının dosya paylaşımında izni olduğundan emin olun.
 

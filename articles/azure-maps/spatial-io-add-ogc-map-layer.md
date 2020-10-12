@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 6efc6b27090ecc7171bb66deb303a4764d9b6f04
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87128565"
 ---
 # <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>Open Geospatial Consortium eşleme katmanını ekleme (OGC)
@@ -23,7 +23,7 @@ Aşağıdaki bölümlerde, sınıfı tarafından desteklenen Web harita hizmeti 
 
 **Web harita hizmeti (WMS)**
 
-- Desteklenen sürümler: `1.0.0` , `1.1.0` , `1.1.1` ve`1.3.0`
+- Desteklenen sürümler: `1.0.0` , `1.1.0` , `1.1.1` ve `1.3.0`
 - Hizmet, `EPSG:3857` projeksiyon sistemini desteklemelidir veya yeniden projeksiyonları idare etmelidir.
 - Getfeatureınfo, hizmetin `EPSG:4326` yeniden tahminleri desteklemesini veya işlemesini gerektirir. 
 - Desteklenen işlemler:
@@ -36,9 +36,9 @@ Aşağıdaki bölümlerde, sınıfı tarafından desteklenen Web harita hizmeti 
 
 **Web Haritası kutucuk hizmeti (WMTS)**
 
-- Desteklenen sürümler:`1.0.0`
+- Desteklenen sürümler: `1.0.0`
 - Kutucuklar kare olmalıdır, örneğin `TileWidth == TileHeight` .
-- Desteklenen CCR 'ler: `EPSG:3857` veya`GoogleMapsCompatible` 
+- Desteklenen CCR 'ler: `EPSG:3857` veya `GoogleMapsCompatible` 
 - TileMatrix tanımlayıcısı, eşlemedeki yakınlaştırma düzeyine karşılık gelen bir tamsayı değeri olmalıdır. Azure haritasında yakınlaştırma düzeyi ve arasında bir değerdir `"0"` `"22"` . Bu nedenle `"0"` desteklenir, ancak `"00"` desteklenmez.
 - Desteklenen işlemler:
 
