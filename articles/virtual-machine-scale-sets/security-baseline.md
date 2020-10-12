@@ -8,10 +8,10 @@ ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: d55e53ba455a4b91b4f57ea08b250320a5467c2b
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89398456"
 ---
 # <a name="azure-security-baseline-for-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleri için Azure Güvenlik temeli
@@ -598,7 +598,7 @@ Microsoft, bulut hizmetleri ve müşteriler arasında seyahat edildiğinde veril
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: hassas bilgileri Rest 'te şifreleyin
 
-**Rehberlik**: sanal MAKINELERDE (VM) sanal diskler, sunucu tarafı şifreleme veya Azure disk ŞIFRELEMESI (ade) kullanılarak Rest 'te şifrelenir. Azure disk şifrelemesi, Konuk VM içindeki müşteri tarafından yönetilen anahtarlarla yönetilen diskleri şifrelemek için Linux 'un DM-Crypt özelliğini kullanır. Müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifreleme, depolama hizmetindeki verileri şifreleyerek VM 'niz için herhangi bir işletim sistemi türünü ve görüntüsünü kullanmanızı sağlayarak ADE 'yi geliştirir.
+**Rehberlik**: sanal MAKINELERDE (VM) sanal diskler, sunucu tarafı şifreleme veya Azure disk ŞIFRELEMESI (ade) kullanılarak Rest 'te şifrelenir. Azure disk şifrelemesi, Konuk VM içindeki müşteri tarafından yönetilen anahtarlarla yönetilen diskleri şifrelemek için Linux 'un DM-Crypt özelliğinden yararlanır. Müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifreleme, depolama hizmetindeki verileri şifreleyerek VM 'niz için herhangi bir işletim sistemi türünü ve görüntüsünü kullanmanızı sağlayarak ADE 'yi geliştirir.
 
 * [Sanal Makine Ölçek Kümeleri için Azure disk şifrelemesi](https://docs.microsoft.com/azure/virtual-machine-scale-sets/disk-encryption-overview)
 
@@ -1096,7 +1096,7 @@ Azure Disk Şifrelemesi kullanıyorsanız, sanal makine ölçek kümelerinizi di
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: yedeklemelerin ve müşteri tarafından yönetilen anahtarların korunmasını sağlayın
 
-**Rehberlik**: kilitleri kullanarak yönetilen disk için korumayı silme özelliğini etkinleştirin. Anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için Key Vault ' de geçici silme ve Temizleme korumasını etkinleştirin.
+**Rehberlik**: kilitleri kullanarak yönetilen disk için korumayı silme özelliğini etkinleştirin. Anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için Key Vault Soft-Delete ve Temizleme korumasını etkinleştirin.
 
 * [Beklenmeyen değişiklikleri önlemek için kaynakları kilitleme](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)
 

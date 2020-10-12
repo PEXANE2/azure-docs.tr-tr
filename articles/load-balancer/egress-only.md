@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/07/2020
 ms.author: allensu
 ms.openlocfilehash: b44f626546b313299701687157b37b7df021bd61
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88038307"
 ---
 # <a name="outbound-only-load-balancer-configuration"></a>Yalnızca giden yük dengeleyici yapılandırması
@@ -63,7 +63,7 @@ Yeni Sanal ağda bir sanal makine oluşturun.
 
 1. Azure portalında [oturum açın](https://portal.azure.com).
 
-2. Ekranın sol üst kısmında, **kaynak oluştur > ağ > sanal ağ** ' ı seçin veya arama kutusunda **sanal ağ** ara ' yı seçin.
+2. Ekranın sol üst kısmındaki **Kaynak oluştur > Ağ > Sanal ağ** seçeneğini belirleyin veya arama kutusuna **Sanal ağ** yazarak arama yapın.
 
 2. **Sanal ağ oluştur**' da, **temel** bilgiler sekmesinde bu bilgileri girin veya seçin:
 
@@ -73,7 +73,7 @@ Yeni Sanal ağda bir sanal makine oluşturun.
     | Abonelik     | Azure aboneliğinizi seçin                                  |
     | Kaynak Grubu   | **Yeni oluştur**’u seçin. </br> **Myresourcegrouplb**girin. </br> **Tamam**’ı seçin. |
     | **Örnek ayrıntıları** |                                                                 |
-    | Adı             | **Myvnet** girin                                    |
+    | Name             | **Myvnet** girin                                    |
     | Bölge           | **Doğu ABD 2** seçin |
 
 3. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Sonraki: IP adresleri** düğmesini seçin.
@@ -158,7 +158,7 @@ Yeni Sanal ağda bir sanal makine oluşturun.
     | **İzleme** |  |
     | Önyükleme tanılaması | Seçme **kapalı** |
    
-7. **İncele ve oluştur**’u seçin. 
+7. **Gözden geçir ve oluştur**’u seçin. 
   
 8. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
 
@@ -256,7 +256,7 @@ Oluşturulan VM 'nizi her birinin arka uç havuzuna ekleyin.  Daha sonra yalnız
 
 4. VM oluşturma sırasında girilen kullanıcı adını ve parolayı girin.
 
-5. **Bağlan**’ı seçin.
+5. **Bağlan**'ı seçin.
 
 6. Internet Explorer'ı açın.
 
@@ -281,7 +281,7 @@ Oluşturulan VM 'nizi her birinin arka uç havuzuna ekleyin.  Daha sonra yalnız
     | Arka uç havuzu | **Mypublicbackendpool**öğesini seçin.| |
     | Bağlantı noktası ayırma-> bağlantı noktası ayırma | **Varsayılan giden bağlantı noktası sayısını kullan** ' ı seçin |
 
-4. **Add (Ekle)** seçeneğini belirleyin.
+4. **Ekle**’yi seçin.
 
 ### <a name="test-connectivity-after-outbound-rule"></a>Giden kuraldan sonra Bağlantıyı Sına
 
@@ -291,7 +291,7 @@ Oluşturulan VM 'nizi her birinin arka uç havuzuna ekleyin.  Daha sonra yalnız
 
 4. VM oluşturma sırasında girilen kullanıcı adını ve parolayı girin.
 
-5. **Bağlan**’ı seçin.
+5. **Bağlan**'ı seçin.
 
 6. Internet Explorer'ı açın.
 

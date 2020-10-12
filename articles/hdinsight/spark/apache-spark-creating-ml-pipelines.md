@@ -9,15 +9,15 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 07/22/2019
 ms.openlocfilehash: c270e9865aff30184ea236f56ab20ede78c5d577
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86075459"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>Apache Spark makine öğrenimi işlem hattı oluşturma
 
-Apache Spark ölçeklenebilir makine öğrenme kitaplığı (MLlib), modelleme yeteneklerini dağıtılmış bir ortama getirir. Spark paketi, [`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html) veri çerçeveleri üzerinde oluşturulmuş bir üst düzey API kümesidir. Bu API 'Ler, pratik makine öğrenimi işlem hatlarını oluşturmanıza ve ayarlamanıza yardımcı olur.  *Spark Machine Learning* , eskı RDD tabanlı Işlem hattı API 'sini değil, bu Mllib DATAFRAME tabanlı API 'ye başvurur.
+Apache Spark ölçeklenebilir makine öğrenme kitaplığı (MLlib), modelleme yeteneklerini dağıtılmış bir ortama getirir. Spark paketi, [`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html) veri çerçeveleri üzerinde oluşturulmuş bir üst düzey API kümesidir. Bu API 'Ler, pratik makine öğrenimi işlem hatlarını oluşturmanıza ve ayarlamanıza yardımcı olur.  *Spark Machine Learning*  , eskı RDD tabanlı Işlem hattı API 'sini değil, bu Mllib DATAFRAME tabanlı API 'ye başvurur.
 
 Machine Learning (ML) işlem hattı, birden çok makine öğrenimi algoritmasını birlikte birleştiren bir iş akışıdır. Bir dizi algoritmanın yanı sıra verileri işlemek ve öğrenmek için gereken birçok adım olabilir. İşlem hatları, bir makine öğrenimi sürecinin aşamalarını ve sıralamasını tanımlar. MLlib içinde, bir işlem hattının aşamaları, her biri bir transformatör ve bir Estimator her bir görev gerçekleştirirken belirli bir PipelineStages dizisi tarafından temsil edilir.
 
@@ -29,7 +29,7 @@ Bir transformatör veya bir Estimator 'ın durum bilgisi olan her örneği, para
 
 ## <a name="pipeline-example"></a>İşlem hattı örneği
 
-ML işlem hattının pratik bir kullanımını göstermek için bu örnek, `HVAC.csv` HDInsight kümeniz Için Azure Storage veya Data Lake Storage varsayılan depolama alanında önceden yüklenmiş olarak gelen örnek veri dosyasını kullanır. Dosyanın içeriğini görüntülemek için `/HdiSamples/HdiSamples/SensorSampleData/hvac` dizine gidin. `HVAC.csv`çeşitli binalarda HVAC (*Isıtma, havalandırma ve hava*) sistemleri için hem hedef hem de gerçek sıcaklıklar içeren bir zaman kümesi içerir. Amaç, verileri veri üzerinde eğmektir ve belirli bir bina için bir tahmin sıcaklığını üretir.
+ML işlem hattının pratik bir kullanımını göstermek için bu örnek, `HVAC.csv` HDInsight kümeniz Için Azure Storage veya Data Lake Storage varsayılan depolama alanında önceden yüklenmiş olarak gelen örnek veri dosyasını kullanır. Dosyanın içeriğini görüntülemek için `/HdiSamples/HdiSamples/SensorSampleData/hvac` dizine gidin. `HVAC.csv` çeşitli binalarda HVAC (*Isıtma, havalandırma ve hava*) sistemleri için hem hedef hem de gerçek sıcaklıklar içeren bir zaman kümesi içerir. Amaç, verileri veri üzerinde eğmektir ve belirli bir bina için bir tahmin sıcaklığını üretir.
 
 Aşağıdaki kod:
 
@@ -81,7 +81,7 @@ training = documents.toDF()
 Bu örnek işlem hattının üç aşaması vardır: `Tokenizer` ve `HashingTF` (her iki dönüştürücüler) ve `Logistic Regression` (bir Estimator).  Veri çerçevesindeki ayıklanan ve ayrıştırılmış veriler, `training` çağrıldığında işlem hattı üzerinden akar `pipeline.fit(training)` .
 
 1. İlk aşamada, `Tokenizer` `SystemInfo` Giriş sütununu (sistem tanımlayıcısı ve yaş değerlerinden oluşan) `words` Çıkış sütununa böler. Bu yeni `words` sütun, DataFrame 'e eklenir. 
-2. İkinci aşama, `HashingTF` Yeni `words` sütunu Özellik vektörlerine dönüştürür. Bu yeni `features` sütun, DataFrame 'e eklenir. Bu ilk iki aşama dönüştürücüler ' dir. 
+2. İkinci aşama, `HashingTF` Yeni `words` sütunu Özellik vektörlerine dönüştürür. Bu yeni  `features` sütun, DataFrame 'e eklenir. Bu ilk iki aşama dönüştürücüler ' dir. 
 3. Üçüncü aşama `LogisticRegression` bir Estimator olur ve bu nedenle işlem hattı `LogisticRegression.fit()` bir üretmek için yöntemini çağırır `LogisticRegressionModel` . 
 
 ```python

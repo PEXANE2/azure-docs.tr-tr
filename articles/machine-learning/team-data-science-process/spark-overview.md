@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 3aa33efa9aa416ad1dfefd2fe957ce04b2b14432
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86027469"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Azure HDInsight 'ta Spark kullanarak veri bilimine genel bakış
@@ -50,9 +50,9 @@ Bu not defterleri, Jupyter Not defteri sunucusunun pySpark3 çekirdeğinde çal�
 > [!NOTE]
 > , Sınıflandırma algoritmalarının kullanımını daha iyi göstermek için Spark 2,0 not defterlerine hava yolu veri kümesi eklenmiştir. Uçak veri kümesi ve hava durumu veri kümesi hakkında bilgi edinmek için aşağıdaki bağlantılara bakın:
 > 
-> - Airline, zamanında ayrılma verileri:[https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
+> - Airline, zamanında ayrılma verileri: [https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
 > 
-> - Havaalanı hava durumu verileri:[https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/)
+> - Havaalanı hava durumu verileri: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/)
 
 <!-- -->
 
@@ -65,7 +65,7 @@ Bu not defterleri, Jupyter Not defteri sunucusunun pySpark3 çekirdeğinde çal�
 
 Bir Spark 2,0 modelinin ve Puanlama için model tüketiminin kullanıma hazır hale getirme hakkında rehberlik için, gerekli adımları bir örnek olarak göstermek üzere [Tüketim üzerinde Spark 1,6 belgesine](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) bakın. Bu örneği Spark 2,0 ' de kullanmak için Python kod dosyasını [Bu dosyayla](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py)değiştirin.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki yordamlar Spark 1,6 ile ilgilidir. Spark 2,0 sürümü için, yukarıda açıklanan ve daha önce bağlanılan not defterlerini kullanın.
 

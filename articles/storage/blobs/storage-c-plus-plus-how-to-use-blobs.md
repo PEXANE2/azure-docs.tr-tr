@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.openlocfilehash: 332d6da35af0eaae9d9d15258a152734f0a9eba6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88033640"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>C++ ' dan blob depolamayı kullanma
@@ -157,7 +157,7 @@ blob3.upload_text(U("other text"));
 Alternatif olarak, bir dosyayı blok blobuna yüklemek için **upload_from_file** yöntemini kullanabilirsiniz.
 
 ## <a name="how-to-list-the-blobs-in-a-container"></a>Nasıl yapılır: bir kapsayıcıdaki Blobları listeleme
-Blob’ları bir kapsayıcıda listelemek için ilk olarak bir kapsayıcı başvurusu edinin. Daha sonra kapsayıcının **list_blobs** yöntemini kullanarak Blobları ve/veya dizinleri elde edebilirsiniz. Döndürülen bir **list_blob_item**için zengin özellik ve yöntemlere erişmek üzere, bir **cloud_blob** nesnesi almak için **list_blob_item. as_blob** metodunu veya list_blob nesnesini almak için **as_directory. cloud_blob_directory** yöntemini çağırmanız gerekir. Aşağıdaki kod, **My-Sample-Container** kapsayıcısındaki her BIR öğenin URI 'sini nasıl alacağınızı ve çıktısını gösterir:
+Blob’ları bir kapsayıcıda listelemek için ilk olarak bir kapsayıcı başvurusu edinin. Daha sonra kapsayıcının **list_blobs** yöntemini kullanarak Blobları ve/veya dizinleri elde edebilirsiniz. Döndürülen bir **list_blob_item**için zengin özellik ve Yöntem kümesine erişmek için, bir **cloud_blob** nesnesi almak üzere **list_blob_item. as _blob** yöntemini veya bir cloud_blob_directory nesnesi almak için **list_blob. as _directory** yöntemini çağırmanız gerekir. Aşağıdaki kod, **My-Sample-Container** kapsayıcısındaki her BIR öğenin URI 'sini nasıl alacağınızı ve çıktısını gösterir:
 
 ```cpp
 // Retrieve storage account from connection string.

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.openlocfilehash: 9c84b35318637f5b89e6c88c0ebb3fd6616533fc
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86023134"
 ---
 # <a name="debug-errors-when-authoring-a-custom-commands-application"></a>Özel bir komut uygulaması yazarken hata ayıklama hataları
@@ -48,7 +48,7 @@ Kullanılırken bir parametreyi silmeye izin verilmiyor. Tüm konuşma yanıtlar
 Kullanılırken bir Web uç noktası silme izniniz yok. Web uç noktası kaldırılmadan önce bu Web uç noktasını kullanan tüm **çağrı Web uç noktası** eylemlerini kaldırın.
 
 ## <a name="errors-when-training-an-application"></a>Bir uygulamayı eğitmek için hatalar
-### <a name="built-in-intents"></a>Yerleşik amaçlar
+### <a name="built-in-intents"></a>Built-In amaçları
 LUIN yerleşik Evet/Hayır amacı vardır. Yalnızca "Yes", "Hayır" ile örnek cümleler olması eğitimin başarısız olmasına neden olur. 
 
 | Sözcükle | Farklılıklar | 

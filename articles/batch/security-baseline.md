@@ -8,10 +8,10 @@ ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 1eb24871817f365efe58b8e687563727df74493c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89400985"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Batch için Azure Güvenlik temeli
@@ -366,7 +366,7 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Sorumluluk**: müşteri
 
-### <a name="34-utilize-single-sign-on-sso-with-azure-active-directory"></a>3,4: Azure Active Directory ile çoklu oturum açma (SSO) kullanın
+### <a name="34-utilize-single-sign-on-sso-with-azure-active-directory"></a>3,4: Azure Active Directory ile tek Sign-On (SSO) kullanın
 
 **Rehberlik**: uygulanamaz, Azure Batch Azure AD kimlik doğrulamasını destekliyorsa, çoklu oturum açma desteklenmez.
 
@@ -1135,7 +1135,7 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: yedeklemelerin ve müşteri tarafından yönetilen anahtarların korunmasını sağlayın
 
-**Rehberlik**: Azure Key Vault Azure Batch havuz depolama hesaplarıyla ilgili herhangi bir anahtarı tutmak için kullanılıyorsa, anahtarları yanlışlıkla veya kötü amaçlı olarak silinmeye karşı korumak Için Azure Key Vault geçici silme özelliğini etkinleştirin.
+**Rehberlik**: Azure Key Vault Azure Batch havuz depolama hesaplarıyla ilgili herhangi bir anahtarı tutmak için kullanılıyorsa, anahtarları yanlışlıkla veya kötü amaçlı silme ile korumak için Azure Key Vault Soft-Delete etkinleştirin.
 
 Azure Key Vault 'da geçici silmeyi etkinleştirme:
 

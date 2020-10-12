@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ecab82e43bff6c0d1d83c9c1cdc38cafd809e277
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89236733"
 ---
 # <a name="troubleshooting-for-hybrid-deployments-of-fido2-security-keys-in-azure-ad-preview"></a>Azure AD 'de FIDO2 güvenlik anahtarlarının karma dağıtımları için sorun giderme (Önizleme)
@@ -46,7 +46,7 @@ FIDO2 güvenlik anahtarlarını ve şirket içi kaynaklara karma erişimi kullan
 
 Windows Hello yüz, bir kullanıcının kaydolduğu bir cihaz için tasarlanan en iyi deneyimdir. FIDO2 güvenlik anahtarları, Paylaşılan cihazlarda kullanılmak üzere veya Iş için Windows Hello kaydı bir engel olarak hazırlanmıştır.
 
-Windows Hello yüz, kullanıcıların FIDO2 güvenlik anahtarı oturum açma senaryosunu kaldırmasını engelliyorsa, **ayarlar > oturum açma seçenekleri**' nde yüz kaydını kaldırarak, Kullanıcı Hello 'yu devre dışı bırakabilirsiniz.
+Windows Hello yüz, kullanıcıların FIDO2 güvenlik anahtarı oturum açma senaryosunu kaldırmasını engelliyorsa, **ayarlar > Sign-In seçenekler**' de yüz kaydını kaldırarak, kullanıcılar Merhaba oturumu kapatabilir.
 
 ### <a name="users-arent-able-to-use-fido2-security-keys-immediately-after-they-create-a-hybrid-azure-ad-joined-machine"></a>Kullanıcılar, karma bir Azure AD 'ye katılmış makine oluşturduktan hemen sonra FIDO2 güvenlik anahtarlarını kullanamaz
 
@@ -86,9 +86,9 @@ Aşağıdaki olay günlükleri ve kayıt defteri anahtarı bilgileri toplanır:
 
 **Kayıt defteri anahtarları**
 
-* *HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Microsoft\FIDO [ \* ]*
-* *HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Microsoft\PasswordForWork \* [ \* ]*
-* *HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Policies\PasswordForWork \* [ \* ]*
+* *HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FIDO [ \* ]*
+* *HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PasswordForWork\* [ \* ]*
+* *HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Policies\PasswordForWork\* [ \* ]*
 
 **Tanılama bilgileri**
 

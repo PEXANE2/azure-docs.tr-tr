@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: 8ccd9120937148043590d30232acd6b556b09dc6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87015281"
 ---
 # <a name="manage-database-roles-and-users"></a>Veritabanı rollerini ve kullanıcılarını yönetme
@@ -45,7 +45,7 @@ Bir **güvenlik grubu**eklerken kullanın `obj:groupid@tenantid` .
     |İzin|Açıklama|  
     |----------------|-----------------|  
     |**Hiçbiri**|Üyeler model şemasını okuyamıyor veya değiştiremezler ve verileri sorgulayamaz.|  
-    |**Okuma**|Üyeler veri sorgulayabilir (satır filtrelerine göre), ancak model şemasını değiştiremezler.|  
+    |**Okuyamaz**|Üyeler veri sorgulayabilir (satır filtrelerine göre), ancak model şemasını değiştiremezler.|  
     |**Okuma ve Işleme**|Üyeler, verileri sorgulayabilir (satır düzeyi filtrelere göre) ve Işlemi çalıştırabilir ve tüm işlemleri Işleyebilir, ancak model şemasını değiştiremezler.|  
     |**İşleme**|Üyeler, Işlem çalıştırabilir ve tüm işlemleri Işleyebilir. Model şeması okunamıyor veya değiştirilemiyor ve veri sorgulanamıyor.|  
     |**Yönetici**|Üyeler model şemasını değiştirebilir ve tüm verileri sorgulayabilir.|   
@@ -75,11 +75,11 @@ Dağıtılan bir model veritabanına roller ve kullanıcılar eklemek için sunu
    |----------------|-----------------|  
    |**Tam denetim (yönetici)**|Üyeler model şemasını değiştirebilir, işleyebilir ve tüm verileri sorgulayabilir.| 
    |**İşlem veritabanı**|Üyeler, Işlem çalıştırabilir ve tüm işlemleri Işleyebilir. Model şeması değiştirilemiyor ve veri sorgulanamıyor.|  
-   |**Okuma**|Üyeler veri sorgulayabilir (satır filtrelerine göre), ancak model şemasını değiştiremezler.|  
+   |**Okuyamaz**|Üyeler veri sorgulayabilir (satır filtrelerine göre), ancak model şemasını değiştiremezler.|  
   
 4. **Üyelik**' e tıklayın, ardından kiracınızda Azure AD 'ye e-posta adresini girerek bir kullanıcı veya grup girin.
 
-     ![Kullanıcı ekle](./media/analysis-services-database-users/aas-roles-adduser-ssms.png)
+     ![Kullanıcı ekleme](./media/analysis-services-database-users/aas-roles-adduser-ssms.png)
 
 5. Oluşturmakta olduğunuz rolün okuma izni varsa, bir DAX formülü kullanarak satır filtresi ekleyebilirsiniz. **Satır filtreleri**' ne tıklayın, bir tablo seçin ve **DAX FILTRESI** alanına bir DAX formülü yazın. 
 
@@ -119,7 +119,7 @@ Bu örnekte, B2B dış kullanıcısı ve bir grubu, satış bı veritabanı içi
 
 ## <a name="to-add-roles-and-users-by-using-powershell"></a>PowerShell kullanarak rol ve Kullanıcı eklemek için
 
-[SqlServer](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) modülü, göreve özgü veritabanı yönetim cmdlet 'Leri ve tablosal model betik DILI (tmsl) sorgusu veya betiği kabul eden genel amaçlı Invoke-ASCmd cmdlet 'ini sağlar. Aşağıdaki cmdlet 'ler veritabanı rollerini ve kullanıcılarını yönetmek için kullanılır.
+[SqlServer](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) modülü, bir tablosal model betik DILI (tmsl) sorgusu veya betiği kabul eden, göreve özgü veritabanı yönetim cmdlet 'leri ve genel amaçlı Invoke-ASCmd cmdlet 'i sağlar. Aşağıdaki cmdlet 'ler veritabanı rollerini ve kullanıcılarını yönetmek için kullanılır.
   
 |Cmdlet|Açıklama|
 |------------|-----------------| 

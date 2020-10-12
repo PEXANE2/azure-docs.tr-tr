@@ -4,10 +4,10 @@ description: HTTPS uç noktalarını ayarlama dahil olmak üzere bir hizmet bild
 ms.topic: conceptual
 ms.date: 09/16/2020
 ms.openlocfilehash: c0c3c45c47447390901e5e0d60e77ab6b85a6a0d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91354768"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Hizmet bildiriminde kaynakları belirtme
@@ -220,7 +220,7 @@ Belirttiğiniz hizmet bildiriminde
 
 Uygulama parametreleri için PORT1 ve Protocol1 değerinin null ya da boş olduğunu varsayın. Bağlantı noktasına ServiceFabric tarafından karar verilir ve protokol TCP olur.
 
-Yanlış bir değer belirtdiğinizi varsayın. Bir int yerine "foo" dize değerini belirttiğiniz bağlantı noktası için söyleyin.  New-ServiceFabricApplication komutu bir hata vererek başarısız olur: `The override parameter with name 'ServiceEndpoint1' attribute 'Port1' in section 'ResourceOverrides' is invalid. The value specified is 'Foo' and required is 'int'.`
+Yanlış bir değer belirtdiğinizi varsayın. Bir int yerine "foo" dize değerini belirttiğiniz bağlantı noktası için söyleyin.  New-ServiceFabricApplication komut bir hata vererek başarısız olur: `The override parameter with name 'ServiceEndpoint1' attribute 'Port1' in section 'ResourceOverrides' is invalid. The value specified is 'Foo' and required is 'int'.`
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

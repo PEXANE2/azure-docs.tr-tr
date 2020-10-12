@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/10/2019
 ms.author: rohink
 ms.openlocfilehash: e7c4db7a2fc3ba931415e3b167f7fe72ee2b3980
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84710550"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Tepesinde bölgesinde yük dengeli Azure Web uygulamaları barındırın
@@ -26,7 +26,7 @@ Bu makalede, etki alanı tepesinde için bir diğer ad kaydı oluşturmayı ve W
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Birlikte test edilecek Azure DNS içinde barındırabileceğiniz bir etki alanı adınızın olması gerekir. Bu etki alanı üzerinde tam denetime sahip olmanız gerekir. Tam denetim, etki alanı için ad sunucusu (NS) kayıtlarını ayarlama olanağını kapsar.
 
@@ -45,8 +45,8 @@ Yapılandırma bilgileri için aşağıdaki tabloyu kullanarak kaynak grubunuzda
 
 |Name  |İşletim Sistemi  |Konum  |Fiyatlandırma Katmanı  |
 |---------|---------|---------|---------|
-|ASP-01     |Windows|Doğu ABD|Geliştirme/test D1-paylaşılan|
-|ASP-02     |Windows|Orta ABD|Geliştirme/test D1-paylaşılan|
+|ASP-01     |Windows|Doğu ABD|Geliştirme ve test D1-Shared|
+|ASP-02     |Windows|Central US|Geliştirme ve test D1-Shared|
 
 ## <a name="create-app-services"></a>Uygulama hizmetleri oluşturma
 
@@ -55,13 +55,13 @@ Her bir App Service planında bir tane olmak üzere iki Web uygulaması oluştur
 1. Azure portal sayfanın sol üst köşesinde **kaynak oluştur**' u seçin.
 2. Arama çubuğuna **Web uygulaması** yazın ve ENTER tuşuna basın.
 3. **Web uygulaması**' nı seçin.
-4. **Oluştur**'u seçin.
+4. **Oluştur**’u seçin.
 5. Varsayılan değerleri kabul edin ve iki Web uygulaması yapılandırmak için aşağıdaki tabloyu kullanın:
 
-   |Name<br>(. azurewebsites.net içinde benzersiz olmalıdır)|Kaynak Grubu |Çalışma zamanı yığını|Bölge|Plan/konum App Service
+   |Name<br>(. azurewebsites.net içinde benzersiz olmalıdır)|Kaynak Grubu |Çalışma zamanı yığını|Region|Plan/konum App Service
    |---------|---------|-|-|-------|
-   |Uygulama-01|Mevcut olanı kullan<br>Kaynak grubunuzu seçin|.NET Core 2.2|Doğu ABD|ASP-01 (D1)|
-   |Uygulama-02|Mevcut olanı kullan<br>Kaynak grubunuzu seçin|.NET Core 2.2|Orta ABD|ASP-02 (D1)|
+   |Uygulama-01|Var olanı kullan<br>Kaynak grubunuzu seçin|.NET Core 2.2|Doğu ABD|ASP-01 (D1)|
+   |Uygulama-02|Var olanı kullan<br>Kaynak grubunuzu seçin|.NET Core 2.2|Central US|ASP-02 (D1)|
 
 ### <a name="gather-some-details"></a>Bazı ayrıntılar toplayın
 
@@ -84,13 +84,13 @@ Artık iki Web uygulaması için uç noktalar oluşturabilirsiniz.
 
 1. Kaynak grubunuzu açın ve Traffic Manager profilinizi seçin.
 2. Sol sütunda **bitiş noktaları**' nı seçin.
-3. **Ekle**'yi seçin.
+3. **Ekle**’yi seçin.
 4. Uç noktaları yapılandırmak için aşağıdaki tabloyu kullanın:
 
    |Tür  |Name  |Hedef  |Konum  |Özel üstbilgi ayarları|
    |---------|---------|---------|---------|---------|
    |Dış uç nokta     |Son-01|Uygulama için kaydettiğiniz IP adresi-01|Doğu ABD|konağının\<the URL you recorded for App-01\><br>Örnek: **Host: App-01.azurewebsites.net**|
-   |Dış uç nokta     |End-02|App-02 için kaydettiğiniz IP adresi|Orta ABD|konağının\<the URL you recorded for App-02\><br>Örnek: **Host: App-02.azurewebsites.net**
+   |Dış uç nokta     |End-02|App-02 için kaydettiğiniz IP adresi|Central US|konağının\<the URL you recorded for App-02\><br>Örnek: **Host: App-02.azurewebsites.net**
 
 ## <a name="create-dns-zone"></a>DNS bölgesi oluştur
 
@@ -104,7 +104,7 @@ Web uygulamalarınıza özel bir ana bilgisayar adı eklediğinizde, etki alanı
 2. **Kayıt kümesi**’ni seçin.
 3. Aşağıdaki tabloyu kullanarak kayıt kümesini ekleyin. Değer için, daha önce kaydettiğiniz gerçek Web uygulaması URL 'sini kullanın:
 
-   |Name  |Tür  |Değer|
+   |Ad  |Tür  |Değer|
    |---------|---------|-|
    |@     |TXT|App-01.azurewebsites.net|
 
@@ -132,7 +132,7 @@ Her iki Web uygulaması için özel bir etki alanı ekleyin.
 2. **Kayıt kümesi**’ni seçin.
 3. Aşağıdaki tabloyu kullanarak kayıt kümesini ekleyin:
 
-   |Name  |Tür  |Diğer ad kayıt kümesi  |Diğer ad türü  |Azure kaynağı|
+   |Ad  |Tür  |Diğer ad kayıt kümesi  |Diğer ad türü  |Azure kaynağı|
    |---------|---------|---------|---------|-----|
    |@     |A|Evet|Azure kaynağı|Traffic Manager-profiliniz|
 

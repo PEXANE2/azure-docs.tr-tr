@@ -13,10 +13,10 @@ ms.date: 02/02/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: cefa0c15dd50f95780034dcb63f888a2e1c6b65e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84707370"
 ---
 # <a name="move-data-from-sybase-using-azure-data-factory"></a>Azure Data Factory kullanarak Sybase 'ten veri taşıma
@@ -31,7 +31,7 @@ Bu makalede, verileri şirket içi bir Sybase veritabanından taşımak için Az
 
 Şirket içi bir Sybase veri deposundan, desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliği tarafından havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tablosuna bakın. Data Factory Şu anda yalnızca bir Sybase veri deposundan diğer veri depolarına veri taşımayı destekler, ancak diğer veri depolarından verileri bir Sybase veri deposuna taşımamaktadır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Data Factory hizmeti, Veri Yönetimi ağ geçidini kullanarak şirket içi Sybase kaynaklarına bağlanmayı destekler. Veri Yönetimi ağ geçidini ayarlama hakkında bilgi edinmek ve ağ geçidini ayarlamaya yönelik adım adım yönergeler için bkz. [Şirket içi konumlar ve bulut makaleleri arasında veri taşıma](data-factory-move-data-between-onprem-and-cloud.md) .
 
 Sybase veritabanı bir Azure IaaS VM 'sinde barındırıldığında bile ağ geçidi gereklidir. Ağ geçidini, veri deposuyla aynı IaaS sanal makinesine veya ağ geçidinin veritabanına bağlanabildiği sürece farklı bir VM 'ye yükleyebilirsiniz.
@@ -68,9 +68,9 @@ Aşağıdaki tabloda, Sybase bağlantılı hizmetine özgü JSON öğeleri için
 | tür |Type özelliği: **OnPremisesSybase** olarak ayarlanmalıdır |Evet |
 | sunucu |Sybase sunucusunun adı. |Evet |
 | database |Sybase veritabanının adı. |Evet |
-| manızı |Veritabanındaki şemanın adı. |Hayır |
+| schema |Veritabanındaki şemanın adı. |Hayır |
 | authenticationType |Sybase veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: anonim, temel ve Windows. |Evet |
-| kullanıcı adı |Temel veya Windows kimlik doğrulamasını kullanıyorsanız Kullanıcı adını belirtin. |Hayır |
+| username |Temel veya Windows kimlik doğrulamasını kullanıyorsanız Kullanıcı adını belirtin. |Hayır |
 | password |Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. |Hayır |
 | gatewayName |Data Factory hizmetinin şirket içi Sybase veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Evet |
 

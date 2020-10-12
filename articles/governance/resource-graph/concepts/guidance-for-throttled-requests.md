@@ -5,10 +5,10 @@ ms.date: 08/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.openlocfilehash: c8576fe38433026a28a3fb09a03332b5dd756bab
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89006015"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Azure Kaynak grafiğinde kısıtlanmış isteklere yönelik kılavuz
@@ -118,7 +118,7 @@ Sorguları aboneliğe, kaynak grubuna veya tek tek kaynağa göre gruplandırma,
 
 ## <a name="staggering-queries"></a>Sorguları kademelendirme
 
-Kısıtlama zorlandığı için sorguların kademeli olmasını öneririz. Diğer bir deyişle, aynı anda 60 sorgu göndermek yerine sorguları dört saniyelik bir Windows 'a ayırır:
+Kısıtlama zorlandığı için sorguların kademeli olmasını öneririz. Diğer bir deyişle, aynı anda 60 sorgu göndermek yerine, sorguları 4 5 saniyelik pencereler halinde yeniden dağıtın:
 
 - Aşamalı olmayan sorgu zamanlaması
 

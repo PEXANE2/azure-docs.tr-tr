@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84710380"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Azure Logic Apps veri işlemlerini gerçekleştirme
@@ -35,7 +35,7 @@ Bu eylemler, dizilerde verilerle çalışmanıza yardımcı olur.
 | [**HTML tablosu oluştur**](#create-html-table-action) | Diziden bir HTML tablosu oluşturun. |
 | [**Diziyi filtrele**](#filter-array-action) | Belirtilen filtre veya koşula göre diziden bir dizi alt kümesi oluşturun. |
 | [**Birleştir**](#join-action) | Bir dizideki tüm öğelerden bir dize oluşturun ve her öğeyi belirtilen karakterle ayırın. |
-| [**Şunu seçin:**](#select-action) | Farklı bir dizideki tüm öğeler için belirtilen özelliklerden bir dizi oluşturun. |
+| [**Seç**](#select-action) | Farklı bir dizideki tüm öğeler için belirtilen özelliklerden bir dizi oluşturun. |
 ||| 
 
 **JSON eylemleri**
@@ -50,7 +50,7 @@ Bu eylemler JavaScript Nesne Gösterimi (JSON) biçimindeki verilerle çalışma
 
 Daha karmaşık JSON dönüştürmeleri oluşturmak için bkz. [sıvı şablonları ile GELIŞMIŞ JSON dönüştürmeleri gerçekleştirme](../logic-apps/logic-apps-enterprise-integration-liquid-transform.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 

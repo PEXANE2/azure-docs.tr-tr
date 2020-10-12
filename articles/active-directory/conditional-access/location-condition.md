@@ -13,10 +13,10 @@ ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
 ms.openlocfilehash: 08e236d798f700a3c48dd41ba61941bc0037d613
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88055386"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>Bir koşullu erişim ilkesinde konum koşulunu kullanma 
@@ -80,7 +80,7 @@ Güvenilen IP 'Ler yapılandırdıysanız, konum koşulunun Konum listesinde **M
 
 ### <a name="skipping-multi-factor-authentication"></a>Multi-Factor Authentication atlanıyor
 
-Multi-Factor Authentication hizmet ayarları sayfasında, intranetteki şirket içi **kullanıcılardan gelen istekler için Multi-Factor Authentication 'ı atla**' yı seçerek kurumsal intranet kullanıcılarını belirleyebilirsiniz. Bu ayar, AD FS tarafından verilen şirket içi ağ talebinin güvenilen ve Kullanıcı tarafından şirket ağı üzerinde olduğunu belirlemek için kullanılması gerektiğini belirtir. Daha fazla bilgi için bkz. [koşullu erişim kullanarak güvenilir IP 'ler özelliğini etkinleştirme](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access).
+Multi-Factor Authentication hizmet ayarları sayfasında, intranetteki şirket içi  **kullanıcılardan gelen istekler için Multi-Factor Authentication 'ı atla**' yı seçerek kurumsal intranet kullanıcılarını belirleyebilirsiniz. Bu ayar, AD FS tarafından verilen şirket içi ağ talebinin güvenilen ve Kullanıcı tarafından şirket ağı üzerinde olduğunu belirlemek için kullanılması gerektiğini belirtir. Daha fazla bilgi için bkz. [koşullu erişim kullanarak güvenilir IP 'ler özelliğini etkinleştirme](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access).
 
 Bu seçeneği denetledikten sonra, **MFA güvenilir IP 'leri** de dahil olmak üzere bu seçenek belirlenmiş olan her ilke için geçerlidir.
 

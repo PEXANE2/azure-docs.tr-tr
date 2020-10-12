@@ -10,10 +10,10 @@ ms.date: 01/30/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 3271041b9f4db100cd05588129c7d714d4478f10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83121040"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Sanal makine ölçek kümelerinde dizi uzantısı sağlama
@@ -23,7 +23,7 @@ Bir sanal makinede birden çok uzantı kullanırken, aynı işletim sistemi kayn
 
 Bu makalede, sanal makine ölçek kümelerinde VM örnekleri için yapılandırılacak uzantıları nasıl sıralarınızın ayrıntıları yer alabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makalede, hakkında bilgi sahibi olduğunuz varsayılmaktadır:
 -   Azure sanal makine [uzantıları](../virtual-machines/extensions/overview.md)
 -   Sanal makine ölçek kümelerini [değiştirme](virtual-machine-scale-sets-upgrade-scale-set.md)

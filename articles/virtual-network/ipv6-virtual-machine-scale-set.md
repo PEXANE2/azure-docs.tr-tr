@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: f969d7edc22c9c36481ca42449193af5f8c7b0d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84710006"
 ---
 # <a name="deploy-virtual-machine-scale-sets-with-ipv6-in-azure"></a>Azure 'da IPv6 ile sanal makine ölçek kümeleri dağıtma
@@ -27,7 +27,7 @@ Bu makalede, bir Azure sanal ağında çift yığın dış yük dengeleyiciye sa
 2.    Çift yığın yük dengeleyici oluşturun.  
 3.    Ağ güvenlik grubu (NSG) kuralları oluşturun.  
 
-Tek tek VM 'lerden farklı olan tek adım, sanal makine ölçek kümesi kaynağını kullanan ağ arabirimi (NIC) yapılandırmasını oluşturuyor: networkProfile/Networkınterfaceconfigurations. JSON yapısı, tek tek VM 'Ler için kullanılan Microsoft. Network/NetworkInterfaces nesnesine benzer ve aşağıdaki örnekte görüldüğü gibi, **"birincil": true** ÖZNITELIĞINI kullanarak NIC ve IPv4 IP 'lerinin birincil arabirim olarak ayarlanmasına ek olarak kullanılır:
+Tek tek VM 'lerden farklı olan tek adım, sanal makine ölçek kümesi kaynağını kullanan ağ arabirimi (NIC) yapılandırmasını oluşturuyor: networkProfile/Networkınterfaceconfigurations. JSON yapısı, tek tek VM 'Ler için kullanılan Microsoft. Network/NetworkInterfaces nesnesine benzer ve aşağıdaki örnekte görüldüğü gibi, **"birincil": true**  ÖZNITELIĞINI kullanarak NIC ve IPv4 IP 'lerinin birincil arabirim olarak ayarlanmasına ek olarak kullanılır:
 
 ```json
           "networkProfile": {

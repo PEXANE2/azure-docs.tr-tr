@@ -16,10 +16,10 @@ ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9991bae3d5c8487cc80cca0bf9a249e715b5c521
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89650703"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 'da SAP iş yükleri: planlama ve dağıtım denetim listesi
@@ -135,7 +135,7 @@ Bir pilot dağıtımı sırasında tam bir HADR çözümü ve güvenlik tasarım
             - Oracle Linux 7,5. RHCKL çekirdeğini kullanıyorsanız, 3.10.0-862.13.1. EL7 sürümü gerekir. Oracle UEK çekirdeğini kullanıyorsanız sürüm 5 gerekir.
         - Sap destek notlarına [#500235](https://launchpad.support.sap.com/#/notes/500235) ve [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)göre SAP uygulama KATMANı VM 'leri ve DBMS VM 'ler arasındaki ağ gecikmesini test edin ve değerlendirin. [Sap desteği not#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)ağ gecikmesi yönergelerine karşı sonuçları değerlendirin. Ağ gecikmesi orta veya iyi bir aralıkta olmalıdır. [Bu makalede](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)belgelendiği gibi, VM 'ler ve Hana büyük örnek birimleri arasındaki trafik için özel durumlar geçerlidir.
         - ILB dağıtımlarının doğrudan sunucu dönüşü kullanacak şekilde ayarlandığından emin olun. Bu ayar, DBMS katmanında yüksek kullanılabilirlik yapılandırmalarında Azure ılbs 'ler kullanıldığında gecikme süresini azaltır.
-        - Linux konuk işletim sistemleriyle birlikte Azure Load Balancer kullanıyorsanız, **net. IPv4. Tcp_timestamps** Linux ağ parametresinin **0**olarak ayarlandığını kontrol edin. Bu öneri, daha eski [SAP note #2382421](https://launchpad.support.sap.com/#/notes/2382421)sürümlerindeki önerilerle çakışıyor. SAP Note artık bu parametrenin Azure yük dengeleyiciler ile çalışması için **0** olarak ayarlanması gerektiğini belirten bir durum olarak güncelleştirilir.
+        - Linux konuk işletim sistemleriyle birlikte Azure Load Balancer kullanıyorsanız, Linux ağ parametresinin **net.ipv4.tcp_timestamps** **0**olarak ayarlandığından emin olun. Bu öneri, daha eski [SAP note #2382421](https://launchpad.support.sap.com/#/notes/2382421)sürümlerindeki önerilerle çakışıyor. SAP Note artık bu parametrenin Azure yük dengeleyiciler ile çalışması için **0** olarak ayarlanması gerektiğini belirten bir durum olarak güncelleştirilir.
         - En iyi ağ gecikmesini sağlamak için [Azure yakınlık yerleştirme gruplarını](../../linux/co-location.md) kullanmayı düşünün. Daha fazla bilgi için bkz. [SAP uygulamalarıyla en iyi ağ gecikmesi Için Azure yakınlık yerleşimi grupları](sap-proximity-placement-scenarios.md).
    4. Yüksek kullanılabilirlik ve olağanüstü durum kurtarma dağıtımları.
         - SAP uygulama katmanını belirli bir Azure kullanılabilirlik bölgesi belirtmeden dağıtırsanız, SAP iletişim kutusu örnekleri veya tek bir SAP sisteminin ara yazılım örneklerini çalıştıran tüm VM 'Lerin bir [kullanılabilirlik kümesinde](../../windows/manage-availability.md)dağıtıldığından emin olun.
@@ -161,7 +161,7 @@ Bir pilot dağıtımı sırasında tam bir HADR çözümü ve güvenlik tasarım
             -   [SAP destek notunun #2753418-süreölçer geri dönüşü nedeniyle olası performans düşüşü](https://launchpad.support.sap.com/#/notes/2753418)
             -   [SAP destek notuna #2791572-Azure 'da Hyper-V Için eksik VDSO desteği nedeniyle performans düşüşü](https://launchpad.support.sap.com/#/notes/2791572)
             -   [SAP destek notunun #2382421-ağ yapılandırmasını HANA ve işletim sistemi düzeyinde Iyileştirme](https://launchpad.support.sap.com/#/notes/2382421)
-            -   [SAP destek notunun #2694118-Azure 'da Red Hat Enterprise Linux HA eklentisi](https://launchpad.support.sap.com/#/notes/2694118)
+            -   [SAP destek notuna #2694118-Red Hat Enterprise Linux HA Add-On Azure 'da](https://launchpad.support.sap.com/#/notes/2694118)
             -   [SAP destek notu #1984787-SUSE LINUX Enterprise Server 12: yükleme notları](https://launchpad.support.sap.com/#/notes/1984787)
             -   [SAP destek notunun #2002167-Red Hat Enterprise Linux 7. x: yükleme ve yükseltme](https://launchpad.support.sap.com/#/notes/0002002167)
             -   [SAP destek notunun #2292690-SAP HANA DB: RHEL 7 için önerilen işletim sistemi ayarları](https://launchpad.support.sap.com/#/notes/0002292690)

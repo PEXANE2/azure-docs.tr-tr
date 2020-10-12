@@ -11,10 +11,10 @@ ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: b733fbc44deefe46e3496e288ebad525346ef005
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322317"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>REST kullanarak Azure ML kaynakları oluşturma, çalıştırma ve silme
@@ -33,7 +33,7 @@ Bu makalede şunları öğreneceksiniz:
 > * Kaynakları temizlemek için SILME isteklerini kullanma 
 > * Dağıtılan modellere puan vermek için anahtar tabanlı yetkilendirmeyi kullanma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Yönetici haklarına sahip olduğunuz bir **Azure aboneliği** . Bu tür bir aboneliğiniz yoksa [ücretsiz veya ücretli kişisel aboneliği](https://aka.ms/AMLFree) deneyin
 - Bir [Azure Machine Learning çalışma alanı](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)

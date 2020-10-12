@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: reference
 ms.openlocfilehash: fe684d15e2ce9b8d302db4eb6bd31dd1416abf21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83196540"
 ---
 # <a name="network-requirements"></a>Ağ gereksinimleri
@@ -21,11 +21,11 @@ Azure uzaktan Işlemede iyi bir kullanıcı deneyimi için, Azure veri merkezine
 Tam ağ gereksinimleri, uzaktan sahne grafiğinde yapılan değişikliklerin sayısı ve sıklığı ile işlenmiş görünümün karmaşıklığı gibi belirli bir kullanım örneğine bağlıdır, ancak deneyiminizin mümkün olduğunca iyi olduğundan emin olmak için çeşitli yönergeler vardır:
 
 * Internet bağlantınızın, ağda rekabet eden bir trafik olmadığı varsayılarak, Azure uzaktan oluşturma işleminin tek bir kullanıcı oturumunda en az **40 Mbps 'lik aşağı akış** ve **5 Mbps 'lik yukarı** akış desteklemesi gerekir. Daha iyi deneyimler için daha yüksek ücretler öneririz. Aynı ağda daha fazla kullanıcı varsa, bu gereksinimlerin ölçeği aynı şekilde ölçeklendirilir.
-* **5 GHz Wi-Fi bandı** kullanmak genellikle 2,4 GHz Wi-Fi bandından daha iyi sonuçlar üretir, ancak her ikisi de çalışır.
-* Yakında başka Wi-Fi ağları varsa, bu diğer ağlar tarafından kullanılan Wi-Fi kanallarını kullanmaktan kaçının. Wi-Fi ağınızın kullandığı kanalların, rekabet eden trafiğin ücretsizdir olup olmadığını doğrulamak için [WifiInfoView](https://www.nirsoft.net/utils/wifi_information_view.html) gibi ağ tarama araçlarını kullanabilirsiniz.
+* **5 ghz Wi-Fi bandı** kullanmak genellikle 2,4 GHz Wi-Fi bandından daha iyi sonuçlar üretir, ancak her ikisi de çalışır.
+* Yakında başka Wi-Fi ağları varsa, bu diğer ağlar tarafından kullanılan Wi-Fi kanalları kullanmaktan kaçının. Wi-Fi ağınızın kullandığı kanalların, rekabet eden trafiğin ücretsizdir olup olmadığını doğrulamak için [WifiInfoView](https://www.nirsoft.net/utils/wifi_information_view.html) gibi ağ tarama araçlarını kullanabilirsiniz.
 * **Wi-Fi repeaters** veya ağ üzerinden-Powerline iletmeyi kullanmaktan kesinlikle kaçının.
-* Aynı Wi-Fi ağında video veya oyun akışı gibi **rekabet bant genişliği güçlü trafiğinden kaçının** .
-* **Iyi Wi-Fi sinyal gücüne** sahip olmak önemlidir. Mümkünse, Wi-Fi erişim noktalarınıza yakın kalın ve istemci cihazınız ile erişim noktaları arasında engelleri önleyin.
+* Aynı Wi-Fi ağı üzerinde video veya oyun akışı gibi **rekabet bant genişliğine sahip trafikten kaçının** .
+* **Sinyal gücünün iyi Wi-Fi** olması önemlidir. Mümkünse, Wi-Fi erişim noktasına yakın kalın ve istemci cihazınız ile erişim noktaları arasında engelleri önleyin.
 * [Bölgeniz](regions.md)için her zaman **en yakın Azure veri merkezine** bağlandığınızdan emin olun. Veri merkezine yaklaşarak, hologram kararlılığı üzerinde büyük bir etkiye sahip olan ağ gecikmesi düşüktür.
 
 > [!NOTE]
@@ -33,7 +33,7 @@ Tam ağ gereksinimleri, uzaktan sahne grafiğinde yapılan değişikliklerin say
 
 ## <a name="network-performance-tests"></a>Ağ performans testleri
 
-Ağ bağlantınızın kalitesinin Azure uzaktan Işleme çalıştırmak için yeterli olup olmadığını anlamak istiyorsanız, kullanabileceğiniz mevcut çevrimiçi araçlar vardır. Azure uzaktan Işleme istemci uygulamanızı çalıştırmayı planladığınız cihazla, bu çevrimiçi araçların aynı Wi-Fi ' y e bağlı olan makul bir dizüstü bilgisayardan çalıştırılmasını önemle öneririz. Bir cep telefonunda veya HoloLens2 testlerin çalıştırılması sonucunda elde edilen sonuçlar, düşük güç destekli uç nokta cihazlarında önemli bir çeşitleme göstermek için kanıtlanmış bir şekilde daha az yararlıdır. Dizüstü bilgisayarı yerleştirdiğiniz konum kabaca, Azure uzaktan Işleme istemci uygulamanızı çalıştıran cihazı kullanmayı düşündüğünüz yerde kabaca olmalıdır.
+Ağ bağlantınızın kalitesinin Azure uzaktan Işleme çalıştırmak için yeterli olup olmadığını anlamak istiyorsanız, kullanabileceğiniz mevcut çevrimiçi araçlar vardır. Azure uzaktan Işleme istemci uygulamanızı çalıştırmayı planladığınız cihazla aynı Wi-Fi bağlı makul bir dizüstü bilgisayardan bu çevrimiçi araçların çalıştırılmasını önemle öneririz. Bir cep telefonunda veya HoloLens2 testlerin çalıştırılması sonucunda elde edilen sonuçlar, düşük güç destekli uç nokta cihazlarında önemli bir çeşitleme göstermek için kanıtlanmış bir şekilde daha az yararlıdır. Dizüstü bilgisayarı yerleştirdiğiniz konum kabaca, Azure uzaktan Işleme istemci uygulamanızı çalıştıran cihazı kullanmayı düşündüğünüz yerde kabaca olmalıdır.
 
 Ağ bağlantınızın hızlı bir testi için birkaç basit adım aşağıda verilmiştir:
 

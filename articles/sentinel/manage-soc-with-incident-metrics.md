@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/11/2020
 ms.author: yelevin
 ms.openlocfilehash: 9d8d0fc46a463bda31595988d807854ef146d333
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88761738"
 ---
 # <a name="manage-your-soc-better-with-incident-metrics"></a>Olay ölçümleriyle SOC’nizi daha iyi yönetme
@@ -82,9 +82,9 @@ SecurityIncident
 
 Bu yeni çalışma kitabı şablonunu Azure Sentinel gezinti menüsünden **çalışma kitapları** ' nı seçerek ve **Şablonlar** sekmesini seçerek bulabilirsiniz. Galeriden **güvenlik işlemleri verimliliği** ' nı seçin ve **kaydedilmiş çalışma kitabını görüntüle** ve **şablonu görüntüle** düğmelerinden birine tıklayın.
 
-:::image type="content" source="./media/manage-soc-with-incident-metrics/security-incidents-workbooks-gallery.png" alt-text="Güvenlik olayları çalışma kitabı Galerisi":::
+:::image type="content" source="./media/manage-soc-with-incident-metrics/security-incidents-workbooks-gallery.png" alt-text="Güvenlik olayları tablosu":::
 
-:::image type="content" source="./media/manage-soc-with-incident-metrics/security-operations-workbook-1.png" alt-text="Güvenlik olayları çalışma kitabı Tamam":::
+:::image type="content" source="./media/manage-soc-with-incident-metrics/security-operations-workbook-1.png" alt-text="Güvenlik olayları tablosu":::
 
 Özel gereksinimlerinize göre özel çalışma kitaplarınızı oluşturmak için şablonunu kullanabilirsiniz.
 

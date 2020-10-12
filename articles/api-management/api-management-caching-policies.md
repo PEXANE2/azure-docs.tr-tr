@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
 ms.openlocfilehash: f0aeef7bc67f5c59bb80d5ff24a97be737447a81
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88510190"
 ---
 # <a name="api-management-caching-policies"></a>API Management önbelleğe alma ilkeleri
@@ -102,7 +102,7 @@ Daha fazla bilgi için bkz. [ilke ifadeleri](api-management-policy-expressions.m
 
 |Ad|Açıklama|Gerekli|
 |----------|-----------------|--------------|
-|Cache-arama|Kök öğe.|Yes|
+|Cache-arama|Kök öğe.|Evet|
 |üst bilgiye göre değişiklik|Belirtilen üst bilgi başına, kabul etme, kabul-karakter, kabul-kodlama, kabul-dil, yetkilendirme, beklenen, kimden, ana bilgisayar, IF-Match gibi bir değer için önbelleğe alma yanıtı başlatın.|Hayır|
 |sorguya göre değişir-parametre|Belirtilen sorgu parametrelerinin değeri başına önbelleğe alma işlemini başlat. Tek veya birden çok parametre girin. Ayırıcı olarak noktalı virgül kullanın. Hiçbiri belirtilmemişse, tüm sorgu parametreleri kullanılır.|Hayır|
 
@@ -114,8 +114,8 @@ Daha fazla bilgi için bkz. [ilke ifadeleri](api-management-policy-expressions.m
 | önbelleğe alma türü               | Özniteliğin aşağıdaki değerleri arasında seçim yapın:<br />- `internal` yerleşik API Management önbelleğini kullanmak için<br />- `external` Dış önbelleği [azure API Management redsıs için dış Azure önbelleği kullanma](api-management-howto-cache-external.md)bölümünde açıklanan şekilde kullanmak için,<br />- `prefer-external` yapılandırılmışsa veya iç önbellekte değilse dış önbelleği kullanmak için. | Hayır       | `prefer-external` |
 | aşağı akış-önbelleğe alma türü        | Bu özniteliğin aşağıdaki değerlerden birine ayarlanması gerekir.<br /><br /> -None-aşağı akış önbelleğe almaya izin verilmez.<br />-Özel-aşağı akış özel önbelleğe almaya izin verilir.<br />-Genel-özel ve paylaşılan aşağı akış önbelleğe almaya izin verilir.                                                                                                          | Hayır       | yok              |
 | yeniden doğrulama gerekir                | Aşağı akış önbelleğe alma etkinleştirildiğinde bu öznitelik, `must-revalidate` ağ geçidi yanıtlarındaki önbellek denetimi yönergesini açar veya kapatır.                                                                                                                                                                                                                      | Hayır       | true              |
-| geliştirici göre farklılık gösterir              | `true`İsteğe dahil edilen [abonelik anahtarına](./api-management-subscriptions.md) sahip geliştirici hesabı başına önbelleğe yanıt yanıtı olarak ayarlanır.                                                                                                                                                                                                                                                                                                  | Yes      |         Yanlış          |
-| geliştirici gruplarına göre değişiklik       | `true` [Kullanıcı grubu](./api-management-howto-create-groups.md)başına önbelleğe yanıt olarak ayarlanır.                                                                                                                                                                                                                                                                                                             | Yes      |       Yanlış            |
+| geliştirici göre farklılık gösterir              | `true`İsteğe dahil edilen [abonelik anahtarına](./api-management-subscriptions.md) sahip geliştirici hesabı başına önbelleğe yanıt yanıtı olarak ayarlanır.                                                                                                                                                                                                                                                                                                  | Evet      |         Yanlış          |
+| geliştirici gruplarına göre değişiklik       | `true` [Kullanıcı grubu](./api-management-howto-create-groups.md)başına önbelleğe yanıt olarak ayarlanır.                                                                                                                                                                                                                                                                                                             | Evet      |       Yanlış            |
 
 ### <a name="usage"></a>Kullanım
 Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
@@ -181,13 +181,13 @@ Daha fazla bilgi için bkz. [ilke ifadeleri](api-management-policy-expressions.m
 
 |Ad|Açıklama|Gerekli|
 |----------|-----------------|--------------|
-|önbellek-mağaza|Kök öğe.|Yes|
+|önbellek-mağaza|Kök öğe.|Evet|
 
 ### <a name="attributes"></a>Öznitelikler
 
 | Ad             | Açıklama                                                                                                                                                                                                                                                                                                                                                 | Gerekli | Varsayılan           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| süre         | Önbellekte belirtilen, önbelleğe alınmış girişlerin yaşam süresi (saniye cinsinden).                                                                                                                                                                                                                                                                                                   | Yes      | Yok               |
+| süre         | Önbellekte belirtilen, önbelleğe alınmış girişlerin yaşam süresi (saniye cinsinden).                                                                                                                                                                                                                                                                                                   | Evet      | Yok               |
 
 ### <a name="usage"></a>Kullanım
 Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
@@ -224,7 +224,7 @@ Bu ilkenin daha fazla bilgi ve örnekleri için bkz. [Azure API Management 'Da �
 
 |Ad|Açıklama|Gerekli|
 |----------|-----------------|--------------|
-|Önbellek-arama-değer|Kök öğe.|Yes|
+|Önbellek-arama-değer|Kök öğe.|Evet|
 
 ### <a name="attributes"></a>Öznitelikler
 
@@ -232,8 +232,8 @@ Bu ilkenin daha fazla bilgi ve örnekleri için bkz. [Azure API Management 'Da �
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
 | önbelleğe alma türü | Özniteliğin aşağıdaki değerleri arasında seçim yapın:<br />- `internal` yerleşik API Management önbelleğini kullanmak için<br />- `external` Dış önbelleği [azure API Management redsıs için dış Azure önbelleği kullanma](api-management-howto-cache-external.md)bölümünde açıklanan şekilde kullanmak için,<br />- `prefer-external` yapılandırılmışsa veya iç önbellekte değilse dış önbelleği kullanmak için. | Hayır       | `prefer-external` |
 | Varsayılan değer    | Önbellek anahtarı arama bir isabetsizlik ile sonuçlanacaksa değişkene atanacak bir değer. Bu öznitelik belirtilmemişse, `null` atanır.                                                                                                                                                                                                           | Hayır       | `null`            |
-| anahtar              | Aramada kullanılacak önbellek anahtarı değeri.                                                                                                                                                                                                                                                                                                                       | Yes      | Yok               |
-| değişken adı    | Arama başarılı olursa, aranan değere atanacak [bağlam değişkeninin](api-management-policy-expressions.md#ContextVariables) adı. Arama, bir isabetsizlik ile sonuçlanırsa, değişkene öznitelik değeri atanır `default-value` veya `null` öznitelik atlanırsa bu değere atanır `default-value` .                                       | Yes      | Yok               |
+| anahtar              | Aramada kullanılacak önbellek anahtarı değeri.                                                                                                                                                                                                                                                                                                                       | Evet      | Yok               |
+| değişken adı    | Arama başarılı olursa, aranan değere atanacak [bağlam değişkeninin](api-management-policy-expressions.md#ContextVariables) adı. Arama, bir isabetsizlik ile sonuçlanırsa, değişkene öznitelik değeri atanır `default-value` veya `null` öznitelik atlanırsa bu değere atanır `default-value` .                                       | Evet      | Yok               |
 
 ### <a name="usage"></a>Kullanım
 Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
@@ -267,16 +267,16 @@ Bu ilkenin daha fazla bilgi ve örnekleri için bkz. [Azure API Management 'Da �
 
 |Ad|Açıklama|Gerekli|
 |----------|-----------------|--------------|
-|Cache-Store-değer|Kök öğe.|Yes|
+|Cache-Store-değer|Kök öğe.|Evet|
 
 ### <a name="attributes"></a>Öznitelikler
 
 | Ad             | Açıklama                                                                                                                                                                                                                                                                                                                                                 | Gerekli | Varsayılan           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
 | önbelleğe alma türü | Özniteliğin aşağıdaki değerleri arasında seçim yapın:<br />- `internal` yerleşik API Management önbelleğini kullanmak için<br />- `external` Dış önbelleği [azure API Management redsıs için dış Azure önbelleği kullanma](api-management-howto-cache-external.md)bölümünde açıklanan şekilde kullanmak için,<br />- `prefer-external` yapılandırılmışsa veya iç önbellekte değilse dış önbelleği kullanmak için. | Hayır       | `prefer-external` |
-| süre         | Değer, saniye cinsinden belirtilen Duration değeri için önbelleğe alınır.                                                                                                                                                                                                                                                                                 | Yes      | Yok               |
-| anahtar              | Önbellek anahtarı değer altında depolanır.                                                                                                                                                                                                                                                                                                                   | Yes      | Yok               |
-| değer            | Önbelleğe alınacak değer.                                                                                                                                                                                                                                                                                                                                     | Yes      | Yok               |
+| süre         | Değer, saniye cinsinden belirtilen Duration değeri için önbelleğe alınır.                                                                                                                                                                                                                                                                                 | Evet      | Yok               |
+| anahtar              | Önbellek anahtarı değer altında depolanır.                                                                                                                                                                                                                                                                                                                   | Evet      | Yok               |
+| değer            | Önbelleğe alınacak değer.                                                                                                                                                                                                                                                                                                                                     | Evet      | Yok               |
 ### <a name="usage"></a>Kullanım
 Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
@@ -306,14 +306,14 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#s
 
 |Ad|Açıklama|Gerekli|
 |----------|-----------------|--------------|
-|Cache-Remove-Value|Kök öğe.|Yes|
+|Cache-Remove-Value|Kök öğe.|Evet|
 
 #### <a name="attributes"></a>Öznitelikler
 
 | Ad             | Açıklama                                                                                                                                                                                                                                                                                                                                                 | Gerekli | Varsayılan           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
 | önbelleğe alma türü | Özniteliğin aşağıdaki değerleri arasında seçim yapın:<br />- `internal` yerleşik API Management önbelleğini kullanmak için<br />- `external` Dış önbelleği [azure API Management redsıs için dış Azure önbelleği kullanma](api-management-howto-cache-external.md)bölümünde açıklanan şekilde kullanmak için,<br />- `prefer-external` yapılandırılmışsa veya iç önbellekte değilse dış önbelleği kullanmak için. | Hayır       | `prefer-external` |
-| anahtar              | Önbellekten kaldırılacak daha önce önbelleğe alınmış değerin anahtarı.                                                                                                                                                                                                                                                                                        | Yes      | Yok               |
+| anahtar              | Önbellekten kaldırılacak daha önce önbelleğe alınmış değerin anahtarı.                                                                                                                                                                                                                                                                                        | Evet      | Yok               |
 
 #### <a name="usage"></a>Kullanım
 Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes) kullanılabilir.

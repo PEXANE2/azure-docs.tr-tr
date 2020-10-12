@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 4/11/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 271730e57a2d7ef8324420744b4bcd088b9809cc
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90530106"
 ---
 # <a name="azure-functions-networking-options"></a>Azure İşlevleri ağ seçenekleri
@@ -74,7 +74,7 @@ Daha fazla bilgi için bkz. [depolama hesabı gereksinimleri](./functions-create
 
 ## <a name="use-key-vault-references"></a>Key Vault başvurularını kullanma
 
-Kod değişikliği gerektirmeden Azure Işlevleri uygulamanızda Azure Key Vault gizli dizileri kullanmak için Azure Key Vault başvurularını kullanabilirsiniz. Azure Key Vault, erişim ilkeleri ve denetim geçmişi üzerinde tam denetim ile merkezi gizli dizi yönetimi sağlayan bir hizmettir.
+Kod değişikliği gerektirmeden Azure Işlevleri uygulamanızda Azure Key Vault gizli dizileri kullanmak için Azure Key Vault başvurularını kullanabilirsiniz. Azure Key Vault, erişim ilkeleri ve denetim geçmişi üzerinde tam kontrol sahibi olarak merkezi gizli dizi yönetimi sağlar.
 
 Şu anda, anahtar kasanızın hizmet uç noktalarıyla güvenliği varsa [Key Vault başvuruları](../app-service/app-service-key-vault-references.md) çalışmaz. Sanal ağ tümleştirmesini kullanarak bir anahtar kasasına bağlanmak için, uygulama kodunuzda Key Vault çağırmanız gerekir.
 

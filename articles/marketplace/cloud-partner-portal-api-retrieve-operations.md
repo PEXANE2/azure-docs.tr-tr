@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: cb44d977407a7e854603e6bbacf3591752b109c2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87271952"
 ---
 # <a name="retrieve-operations"></a>İşlemleri alma
@@ -33,7 +33,7 @@ Belirtilen operationId için teklif üzerindeki tüm işlemleri alır veya belir
 
 |  **Ad**          |      **Açıklama**                                                                                           | **Veri türü** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
-|  PublisherId       |  Yayımcı tanımlayıcı, örneğin`Contoso`                                                                   |  Dize       |
+|  PublisherId       |  Yayımcı tanımlayıcı, örneğin `Contoso`                                                                   |  Dize       |
 |  OfferId           |  Teklif tanımlayıcısı                                                                                              |  Dize       |
 |  operationId       |  Teklif üzerinde işlemi benzersiz bir şekilde tanımlayan GUID. OperationId bu API kullanılarak alınabilir ve ayrıca, [teklif](./cloud-partner-portal-api-publish-offer.md) API 'si gibi uzun süre çalışan herhangi bir işlem IÇIN yanıtın http üst bilgisinde döndürülür.  |   Guid   |
 |  api-sürümü       | En son API sürümü |    Tarih      |
@@ -172,7 +172,7 @@ Belirtilen operationId için teklif üzerindeki tüm işlemleri alır veya belir
 |  **Ad**                    |  **Açıklama**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 |  kimlik                          | İşlemi benzersiz bir şekilde tanımlayan GUID                                                       |
-|  submissionType              | Teklif için bildirilen işlem türünü tanımlar, örneğin`Publish/GoLive`      |
+|  submissionType              | Teklif için bildirilen işlem türünü tanımlar, örneğin `Publish/GoLive`      |
 |  Saati             | İşlem oluşturulduğunda UTC tarih saati                                                       |
 |  lastActionDateTime          | İşlemdeki son güncelleştirme tamamlandığında UTC tarih/saati                                       |
 |  durum                      | İşlemin durumu (ya da) `not started` \| `running` \| `failed` \| `completed` . Tek seferde yalnızca bir işlemin durumu olabilir `running` . |
@@ -196,8 +196,8 @@ Belirtilen operationId için teklif üzerindeki tüm işlemleri alır veya belir
 
 | **Kod**  |   **Açıklama**                                                                                  |
 |  -------- |   -------------------------------------------------------------------------------------------------|
-|  200      | `OK`-İstek başarıyla işlendi ve istenen işlem (ler) döndürüldü.        |
-|  400      | `Bad/Malformed request`-Hata yanıtı gövdesinde daha fazla bilgi bulunabilir.                    |
-|  403      | `Forbidden`-İstemcinin belirtilen ad alanına erişimi yok.                          |
-|  404      | `Not found`-Belirtilen varlık yok.                                                 |
+|  200      | `OK` -İstek başarıyla işlendi ve istenen işlem (ler) döndürüldü.        |
+|  400      | `Bad/Malformed request` -Hata yanıtı gövdesinde daha fazla bilgi bulunabilir.                    |
+|  403      | `Forbidden` -İstemcinin belirtilen ad alanına erişimi yok.                          |
+|  404      | `Not found` -Belirtilen varlık yok.                                                 |
 |  |  |
