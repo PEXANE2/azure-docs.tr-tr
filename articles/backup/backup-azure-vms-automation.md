@@ -4,10 +4,10 @@ description: PowerShell ile Azure Backup kullanarak Azure VM 'lerinin nasıl yed
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 87d655652d0207a50f8980f18d18e76fea0b1e21
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90975107"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell ile Azure VM 'lerini yedekleme ve geri yükleme
@@ -194,7 +194,7 @@ Bir yedekleme koruma ilkesi en az bir bekletme ilkesiyle ilişkilidir. Bir bekle
 * Varsayılan saklama ilkesini görüntülemek için [Get-AzRecoveryServicesBackupRetentionPolicyObject](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject) kullanın.
 * Benzer şekilde, varsayılan zamanlama ilkesini almak için [Get-AzRecoveryServicesBackupSchedulePolicyObject](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject) komutunu kullanabilirsiniz.
 * [New-AzRecoveryServicesBackupProtectionPolicy](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy) cmdlet 'i, yedekleme ilkesi bilgilerini tutan bir PowerShell nesnesi oluşturur.
-* Zamanlama ve bekletme ilkesi nesneleri, New-AzRecoveryServicesBackupProtectionPolicy cmdlet 'ine giriş olarak kullanılır.
+* Zamanlama ve bekletme ilkesi nesneleri New-AzRecoveryServicesBackupProtectionPolicy cmdlet 'ine giriş olarak kullanılır.
 
 Varsayılan olarak, bir başlangıç saati zamanlama Ilkesi nesnesinde tanımlanmıştır. Başlangıç saatini istenen başlangıç saatine dönüştürmek için aşağıdaki örneği kullanın. İstenen başlangıç saati UTC biçiminde de olmalıdır. Aşağıdaki örnek, günlük yedeklemeler için istenen başlangıç zamanının 01:00. UTC olduğunu varsayar.
 

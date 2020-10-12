@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 554079ddec3332ced2817d18ea55ce1260d68817
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87291615"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Telemetri, özellik ve komut yükleri
@@ -347,7 +347,7 @@ Bir DCM 'deki aşağıdaki kod parçacığında `Object` telemetri türünün ta
 }
 ```
 
-Bir cihaz istemcisi, aşağıdaki örneğe benzer şekilde Telemetriyi JSON olarak göndermelidir. `DateTime`türler ISO 8061 uyumlu olmalıdır. İçin olası değerler,, ve `Property3` `0` `1` IoT Central olarak, ve olarak görüntülenir `Item1` `Item2` `Item3` :
+Bir cihaz istemcisi, aşağıdaki örneğe benzer şekilde Telemetriyi JSON olarak göndermelidir. `DateTime` türler ISO 8061 uyumlu olmalıdır. İçin olası değerler,, ve `Property3` `0` `1` IoT Central olarak, ve olarak görüntülenir `Item1` `Item2` `Item3` :
 
 ```json
 {
@@ -531,7 +531,7 @@ Bir DCM 'deki aşağıdaki kod parçacığında bir özellik türünün tanımı
 }
 ```
 
-Bir cihaz istemcisi, cihaz ikizi bildirilen bir özellik gibi aşağıdaki örnek gibi görünen bir JSON yükü göndermelidir. `Date`türler ISO 8061 uyumlu olmalıdır:
+Bir cihaz istemcisi, cihaz ikizi bildirilen bir özellik gibi aşağıdaki örnek gibi görünen bir JSON yükü göndermelidir. `Date` türler ISO 8061 uyumlu olmalıdır:
 
 ```json
 { "DateProperty": "2020-05-17" }
@@ -766,18 +766,18 @@ Bu bölümde, bir cihazın IoT Central uygulamasından aldığı yazılabilir Ö
 
 IoT Central cihazdan yazılabilir Özellik güncelleştirmelerine yanıt bekliyor. Yanıt iletisi `ac` ve `av` alanlarını içermelidir. `ad` alanı isteğe bağlıdır. Örnekler için aşağıdaki kod parçacıklarına bakın.
 
-`ac`, aşağıdaki tablodaki değerleri kullanan sayısal bir alandır:
+`ac` , aşağıdaki tablodaki değerleri kullanan sayısal bir alandır:
 
 | Değer | Etiketle | Açıklama |
 | ----- | ----- | ----------- |
 | `'ac': 200` | Tamamlandı | Özellik değiştirme işlemi başarıyla tamamlandı. |
-| `'ac': 202`veya`'ac': 201` | Beklemede | Özellik değiştirme işlemi bekliyor veya devam ediyor |
+| `'ac': 202`  veya `'ac': 201` | Beklemede | Özellik değiştirme işlemi bekliyor veya devam ediyor |
 | `'ac': 4xx` | Hata | İstenen özellik değişikliği geçerli değil veya bir hata oluştu |
 | `'ac': 5xx` | Hata | Cihaz, istenen değişikliği işlerken beklenmeyen bir hatayla karşılaştı. |
 
-`av`cihaza gönderilen sürüm numarasıdır.
+`av` cihaza gönderilen sürüm numarasıdır.
 
-`ad`, bir seçenek dize açıklamasıdır.
+`ad` , bir seçenek dize açıklamasıdır.
 
 Bir DCM 'deki aşağıdaki kod parçacığında yazılabilir `string` özellik türünün tanımı gösterilmektedir:
 

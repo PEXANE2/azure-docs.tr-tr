@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 100a8ed1987b2edbc0aea1708c8a60b48bf391b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84737929"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>PowerShell kullanarak paket yakalamalarını Azure ağ Izleyicisi ile yönetme
@@ -52,7 +52,7 @@ Bu makalede aşağıdaki kaynaklara sahip olduğunuz varsayılır:
 
 ## <a name="install-vm-extension"></a>VM uzantıları yükleme
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>1. Adım
 
 ```powershell
 $VM = Get-AzVM -ResourceGroupName testrg -Name VM1
@@ -97,7 +97,7 @@ Aracının yüklü olduğundan emin olmak için `Get-AzVMExtension` cmdlet 'ini 
 Get-AzVMExtension -ResourceGroupName $VM.ResourceGroupName  -VMName $VM.Name -Name $ExtensionName
 ```
 
-Aşağıdaki örnek, çalıştırmanın yanıt örneğidir`Get-AzVMExtension`
+Aşağıdaki örnek, çalıştırmanın yanıt örneğidir `Get-AzVMExtension`
 
 ```
 ResourceGroupName       : testrg
@@ -123,7 +123,7 @@ ForceUpdateTag          :
 
 Yukarıdaki adımlar tamamlandıktan sonra, paket yakalama Aracısı sanal makineye yüklenir.
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>1. Adım
 
 Sonraki adım, ağ Izleyicisi örneğini almak için kullanılır. Bu değişken, `New-AzNetworkWatcherPacketCapture` Adım 4 ' teki cmdlet 'e geçirilir.
 
@@ -266,7 +266,7 @@ Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCapt
 
 ## <a name="download-a-packet-capture"></a>Paket yakalama indirin
 
-Paket yakalama oturumunuz tamamlandığında, yakalama dosyası blob depolamaya veya VM 'deki yerel bir dosyaya yüklenebilir. Paket yakalamanın depolama konumu, oturum oluşturulurken tanımlanmıştır. Bir depolama hesabına kaydedilmiş bu yakalama dosyalarına erişmek için uygun bir araç, buradan indirilebilen Microsoft Azure Depolama Gezgini.https://storageexplorer.com/
+Paket yakalama oturumunuz tamamlandığında, yakalama dosyası blob depolamaya veya VM 'deki yerel bir dosyaya yüklenebilir. Paket yakalamanın depolama konumu, oturum oluşturulurken tanımlanmıştır. Bir depolama hesabına kaydedilmiş bu yakalama dosyalarına erişmek için uygun bir araç, buradan indirilebilen Microsoft Azure Depolama Gezgini.  https://storageexplorer.com/
 
 Bir depolama hesabı belirtilmişse, paket yakalama dosyaları aşağıdaki konumdaki bir depolama hesabına kaydedilir:
 

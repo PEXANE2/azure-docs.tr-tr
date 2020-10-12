@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
 ms.openlocfilehash: c7dd916b27cd8005162c09f7e6a090293e336719
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83590647"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Bilişsel hizmetler için özel alt etki alanı adları
@@ -68,13 +68,13 @@ Evet. Bu, Azure bilişsel hizmetler kaynaklarıyla kullanabileceğiniz bölgesel
 > [!NOTE]
 > Translator hizmeti ve Bing Arama API'leri genel uç noktaları kullanır.
 
-| Uç nokta türü | Bölge | Uç Nokta |
+| Uç nokta türü | Region | Uç Noktası |
 |---------------|--------|----------|
 | Ortak | Genel (Translator & Bing) | `https://api.cognitive.microsoft.com` |
 | | Doğu Avustralya | `https://australiaeast.api.cognitive.microsoft.com` |
-| | Güney Brezilya | `https://brazilsouth.api.cognitive.microsoft.com` |
+| | Brezilya Güney | `https://brazilsouth.api.cognitive.microsoft.com` |
 | | Orta Kanada | `https://canadacentral.api.cognitive.microsoft.com` |
-| | Orta ABD | `https://centralus.api.cognitive.microsoft.com` |
+| | Central US | `https://centralus.api.cognitive.microsoft.com` |
 | | Doğu Asya | `https://eastasia.api.cognitive.microsoft.com` |
 | | Doğu ABD | `https://eastus.api.cognitive.microsoft.com` |
 | | Doğu ABD 2 | `https://eastus2.api.cognitive.microsoft.com` |
@@ -89,7 +89,7 @@ Evet. Bu, Azure bilişsel hizmetler kaynaklarıyla kullanabileceğiniz bölgesel
 | | Güneydoğu Asya | `https://southeastasia.api.cognitive.microsoft.com` |
 | | Güney Birleşik Krallık | `https://uksouth.api.cognitive.microsoft.com` |
 | | Orta Batı ABD | `https://westcentralus.api.cognitive.microsoft.com` |
-| | Batı Avrupa | `https://westeurope.api.cognitive.microsoft.com` |
+| | West Europe | `https://westeurope.api.cognitive.microsoft.com` |
 | | Batı ABD | `https://westus.api.cognitive.microsoft.com` |
 | | Batı ABD 2 | `https://westus2.api.cognitive.microsoft.com` |
 | US Gov | US Gov Virginia | `https://virginia.api.cognitive.microsoft.us` |

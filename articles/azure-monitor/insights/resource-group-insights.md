@@ -8,10 +8,10 @@ ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: bf8ea45f37e421d70a68c4a6e138f5203e92d78f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87045771"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Azure Izleyici ile kaynak gruplarını izleme (Önizleme)
@@ -20,7 +20,7 @@ Modern uygulamalar genellikle karmaşık ve yüksek oranda bir hizmet sunmak iç
 
 ## <a name="access-insights-for-resource-groups"></a>Kaynak grupları için Öngörüler 'e erişin
 
-1. Sol taraftaki Gezinti çubuğundan **kaynak grupları** ' nı seçin.
+1. Sol taraftaki Gezinti çubuğundan **kaynak grupları**  ' nı seçin.
 2. Araştırmak istediğiniz kaynak gruplarınızdan birini seçin. (Aboneliğe göre filtrelemeye göre çok sayıda kaynak grubunuz varsa bazen yararlı olabilir.)
 3. Bir kaynak grubuna yönelik Öngörüler 'e erişmek için herhangi bir kaynak grubunun sol taraftaki menüsünde **Öngörüler** ' e tıklayın.
 

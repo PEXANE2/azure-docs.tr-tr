@@ -17,10 +17,10 @@ ms.date: 11/15/2018
 ms.author: kumud
 ms.reviewer: anavin
 ms.openlocfilehash: 148d57da549e8364620c8417cbd61d975cea1498
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87046092"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>Sanal ağ eşlemesi oluşturma-farklı dağıtım modelleri, aynı abonelik
@@ -43,7 +43,7 @@ Bir sanal ağ eşlemesi oluşturmak için Azure portal, Azure [komut satırı ar
 
 ## <a name="create-peering---azure-portal"></a>Eşleme oluşturma-Azure portal
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. Oturum açarken kullandığınız hesabın, sanal ağ eşlemesi oluşturmak için gerekli izinlere sahip olması gerekir. İzinlerin listesi için bkz. [sanal ağ eşleme izinleri](virtual-network-manage-peering.md#requirements-and-constraints).
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. Oturum açarken kullandığınız hesabın, sanal ağ eşlemesi oluşturmak için gerekli izinlere sahip olması gerekir. İzinlerin listesi için bkz. [sanal ağ eşleme izinleri](virtual-network-manage-peering.md#requirements-and-constraints).
 2. **+ Yeni**' ye, **ağ**' a ve ardından **sanal ağ ' a**tıklayın.
 3. **Sanal ağ oluştur** dikey penceresinde, aşağıdaki ayarlara ait değerleri girin veya seçin ve ardından **Oluştur**' a tıklayın:
     - **Ad**: *myVnet1*
@@ -206,7 +206,7 @@ Azure klasik CLı ve Azure CLı 'yı kullanarak aşağıdaki adımları uygulay�
 9. **Isteğe bağlı**: sanal makinelerin oluşturulması bu öğreticide kapsanmamış olsa da, bağlantıyı doğrulamak için her bir sanal ağda bir sanal makine oluşturabilir ve bir sanal makineden diğerine bağlanabilirsiniz.
 10. **Isteğe bağlı**: Bu öğreticide oluşturduğunuz kaynakları silmek için, bu makaledeki [kaynakları silme](#delete-powershell) bölümündeki adımları uygulayın.
 
-## <a name="delete-resources"></a><a name="delete"></a>Kaynakları Sil
+## <a name="delete-resources"></a><a name="delete"></a>Kaynakları silme
 
 Bu öğreticiyi tamamladığınızda, öğreticide oluşturduğunuz kaynakları silmek isteyebilirsiniz, bu sayede kullanım ücretlerine tabi kalmazsınız. Kaynak grubunun silinmesi, kaynak grubundaki tüm kaynakları da siler.
 

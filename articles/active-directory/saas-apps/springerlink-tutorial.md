@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 2e3b2ee35352c2af4ae8196ba7c9699da761f83e
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91372536"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>Öğretici: Sprte bağlantısı ile Azure Active Directory tümleştirme
@@ -72,7 +72,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına bağlı olarak spr
 Azure AD çoklu oturum açma 'yı Sprte bağlantısı ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Sprte bağlantısını yapılandırma çoklu oturum](#configure-springer-link-single-sign-on)** açma, uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[Sprte bağlantısını yapılandırma çoklu oturum açma](#configure-springer-link-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
@@ -91,7 +91,7 @@ Azure AD çoklu oturum açmayı spru bağlantısıyla yapılandırmak için aşa
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -114,13 +114,13 @@ Azure AD çoklu oturum açmayı spru bağlantısıyla yapılandırmak için aşa
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://fsso.springer.com/saml/login?idp=<entityID>&targetUrl=https://link.springer.com`
 
     > [!NOTE]
-    > Oturum açma URL 'SI değeri gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. `<entityID>` Azure AD tanımlayıcısı, daha sonra öğretici ' de açıklanan **sprte ayarla bağlantı** bölümünden kopyalanır. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Oturum açma URL 'SI değeri gerçek değil. Değeri gerçek Sign-On URL 'siyle güncelleştirin. `<entityID>` Azure AD tanımlayıcısı, daha sonra öğretici ' de açıklanan **sprte ayarla bağlantı** bölümünden kopyalanır. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde Kopyala simgesine tıklayarak **uygulama Federasyon meta verileri URL 'sini** kopyalayın ve bilgisayarınıza kaydedin.
+6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde Kopyala simgesine tıklayarak **uygulama Federasyon meta verileri URL 'sini** kopyalayın ve bilgisayarınıza kaydedin.
 
     ![Meta veri indirme bağlantısı](common/copy_metadataurl.png)
 
-### <a name="configure-springer-link-single-sign-on"></a>Sprte bağlantısı çoklu oturum açmayı Yapılandır
+### <a name="configure-springer-link-single-sign-on"></a>Sprte bağlantısı tek Sign-On yapılandırma
 
 **Spru bağlantı** tarafında çoklu oturum açmayı yapılandırmak için, kopyalanmış **uygulama Federasyon meta veri URL 'Sini** [sprte bağlantısı destek ekibine](mailto:onlineservice@springernature.com)göndermeniz gerekir. Sprkli bağlantı desteği ekibi, SAML SSO bağlantısını her iki tarafta da düzgün bir şekilde ayarlamak için bu URL 'YI kullanır.
 

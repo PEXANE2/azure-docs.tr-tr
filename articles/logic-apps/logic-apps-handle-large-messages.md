@@ -8,10 +8,10 @@ ms.author: daberry
 ms.topic: article
 ms.date: 12/03/2019
 ms.openlocfilehash: 54828dded5196c86946d99a9cd8cec7a42533661
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83117572"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Azure Logic Apps parçalama ile büyük iletileri işleme
@@ -113,7 +113,7 @@ Bu adımlarda, mantıksal uygulamanızdan bir uç noktaya öbekli içerik yükle
 
 1. Mantıksal uygulamanız, boş bir ileti gövdesine sahip bir ilk HTTP POST veya PUT isteği gönderir. İstek üst bilgisi, mantıksal uygulamanızın parçalara yüklemek istediği içerikle ilgili şu bilgileri içerir:
 
-   | Logic Apps istek üst bilgisi alanı | Değer | Tür | Description |
+   | Logic Apps istek üst bilgisi alanı | Değer | Tür | Açıklama |
    |---------------------------------|-------|------|-------------|
    | **x-MS-Transfer-Mode** | öbekli | Dize | İçeriğin öbeklerde karşıya yüklendiğini belirtir |
    | **x-MS-Content-Length** | <*içerik uzunluğu*> | Tamsayı | Parçalama öncesinde tüm içerik boyutu bayt cinsinden |
@@ -133,7 +133,7 @@ Bu adımlarda, mantıksal uygulamanızdan bir uç noktaya öbekli içerik yükle
 
    * Bu üst bilgi, her bir düzeltme eki iletisinde gönderilen içerik öbeği hakkındaki ayrıntıları:
 
-     | Logic Apps istek üst bilgisi alanı | Değer | Tür | Description |
+     | Logic Apps istek üst bilgisi alanı | Değer | Tür | Açıklama |
      |---------------------------------|-------|------|-------------|
      | **İçerik aralığı** | <*aralığı*> | Dize | Başlangıç değeri, bitiş değeri ve toplam içerik boyutu dahil olmak üzere geçerli içerik öbeği için bayt aralığı, örneğin: "bytes = 0-1023/10100" |
      | **İçerik türü** | <*içerik türü*> | Dize | Öbekli içerik türü |
@@ -144,7 +144,7 @@ Bu adımlarda, mantıksal uygulamanızdan bir uç noktaya öbekli içerik yükle
 
    | Uç nokta yanıt üst bilgisi alanı | Tür | Gerekli | Açıklama |
    |--------------------------------|------|----------|-------------|
-   | **Aralığı** | Dize | Evet | Uç nokta tarafından alınan içerik için bayt aralığı, örneğin: "bytes = 0-1023" |   
+   | **Aralık** | Dize | Evet | Uç nokta tarafından alınan içerik için bayt aralığı, örneğin: "bytes = 0-1023" |   
    | **x-MS-öbek boyutu** | Tamsayı | Hayır | Önerilen öbek boyutu (bayt) |
    ||||
 

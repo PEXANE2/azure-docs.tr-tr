@@ -4,10 +4,10 @@ description: Yeni öneri için Azure Advisor uyarıları oluşturma
 ms.topic: article
 ms.date: 09/09/2019
 ms.openlocfilehash: 837f12a12e532902ee76e345afa430f758f79c10
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90973653"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations-using-the-azure-portal"></a>Azure portal kullanarak yeni önerilerle Azure Advisor uyarıları oluşturun 
@@ -187,11 +187,11 @@ Azure Advisor 'da, öneriler uyarılarınızı düzenleyebilir, silebilir veya d
 
 1. **Portalda** **Azure Danışmanı**' nı seçin.
 
-    :::image type="content" source="./media/advisor-alerts/create1.png" alt-text="Azure Advisor 'ın seçili olduğunu gösteren Azure portal menüsünün ekran görüntüsü.":::
+    :::image type="content" source="./media/advisor-alerts/create1.png" alt-text="Uyarı ayrıntıları bölümünün ekran görüntüsü.":::
 
 2. Sol menünün **izleme** bölümünde **Uyarılar**' ı seçin.
 
-    :::image type="content" source="./media/advisor-alerts/create2.png" alt-text="Seçili uyarıların gösterildiği Azure portal menüsünün ekran görüntüsü.":::
+    :::image type="content" source="./media/advisor-alerts/create2.png" alt-text="Uyarı ayrıntıları bölümünün ekran görüntüsü.":::
 
 3. Bir uyarıyı düzenlemek için uyarı adına tıklayarak uyarıyı açın ve düzenlemek istediğiniz alanları düzenleyin.
 

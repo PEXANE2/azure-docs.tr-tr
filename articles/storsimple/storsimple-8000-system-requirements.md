@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 3032585c6f0a5cc6143eee06b12b6def50cd7cd0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80297717"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000 serisi yazılım, yüksek kullanılabilirlik ve ağ gereksinimleri
@@ -41,7 +41,7 @@ Aşağıdaki yazılım gereksinimleri, StorSimple cihazınıza erişen depolama 
 
 | Desteklenen işletim sistemleri | Sürüm gerekli | Ek gereksinimler/notlar |
 | --- | --- | --- |
-| Windows Server |2008 R2 SP1, 2012, 2012 R2, 2016 |StorSimple Iscsı birimleri yalnızca aşağıdaki Windows disk türlerinde kullanılmak üzere desteklenir:<ul><li>Temel diskte basit birim</li><li>Dinamik diskte basit ve yansıtılmış birim</li></ul>Yalnızca işletim sisteminde yerel olarak bulunan yazılım Iscsı başlatıcıları desteklenir. Donanım Iscsı başlatıcıları desteklenmez.<br></br>Windows Server 2012 ve 2016 ölçülü kaynak sağlama ve ODX özellikleri, StorSimple Iscsı birimi kullanıyorsanız desteklenir.<br><br>StorSimple, ölçülü kaynak sağlanmış ve tam olarak sağlanan birimler oluşturabilir. Kısmen sağlanan birimler oluşturamaz.<br><br>Ölçülü kaynak sağlanmış bir birimi yeniden biçimlendirme uzun zaman alabilir. Birimi silmenizi ve sonra yeniden biçimlendirme yerine yeni bir tane oluşturmayı öneririz. Ancak, yine de bir birimi yeniden biçimlendirmeyi tercih ediyorsanız:<ul><li>Boşluk geri kazanma gecikmelerini önlemek için yeniden biçimlendirmeye başlamadan önce aşağıdaki komutu çalıştırın: <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>Biçimlendirme işlemi tamamlandıktan sonra, geri kazanma alanını yeniden etkinleştirmek için aşağıdaki komutu kullanın:<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>Windows Server 2012 düzeltmesini Windows Server bilgisayarınıza [bb 2878635](https://support.microsoft.com/kb/2870270) ' de açıklandığı gibi uygulayın.</li></ul></li></ul></ul> SharePoint için StorSimple Snapshot Manager veya StorSimple Bağdaştırıcısı yapılandırıyorsanız, [isteğe bağlı bileşenler Için yazılım gereksinimleri](#software-requirements-for-optional-components)' ne gidin. |
+| Windows Server |2008 R2 SP1, 2012, 2012 R2, 2016 |StorSimple Iscsı birimleri yalnızca aşağıdaki Windows disk türlerinde kullanılmak üzere desteklenir:<ul><li>Temel diskte basit birim</li><li>Dinamik diskte basit ve yansıtılmış birim</li></ul>Yalnızca işletim sisteminde yerel olarak bulunan yazılım Iscsı başlatıcıları desteklenir. Donanım Iscsı başlatıcıları desteklenmez.<br></br>Windows Server 2012 ve 2016 ölçülü kaynak sağlama ve ODX özellikleri, StorSimple Iscsı birimi kullanıyorsanız desteklenir.<br><br>StorSimple, ölçülü kaynak sağlanmış ve tam olarak sağlanan birimler oluşturabilir. Kısmen sağlanan birimler oluşturamaz.<br><br>Ölçülü kaynak kullanan birimin yeniden biçimlendirilmesi uzun zaman alabilir. Yeniden biçimlendirmek yerine birimi silmenizi ve sonra yeni bir birim oluşturmanızı öneririz. Bununla birlikte yine de birimi yeniden biçimlendirmeyi tercih ediyorsanız:<ul><li>Yer geri kazanma gecikmelerini önlemek için yeniden biçimlendirmeden önce aşağıdaki komutu çalıştırın:  <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>Yeniden biçimlendirme tamamlandıktan sonra yer geri kazanma özelliğini yeniden etkinleştirmek için aşağıdaki komutu kullanın: <br>`fsutil behavior set disabledeletenotify 0`</br></li><li>Windows Server 2012 düzeltmesini Windows Server bilgisayarınıza [bb 2878635](https://support.microsoft.com/kb/2870270) ' de açıklandığı gibi uygulayın.</li></ul></li></ul></ul> SharePoint için StorSimple Snapshot Manager veya StorSimple Bağdaştırıcısı yapılandırıyorsanız, [isteğe bağlı bileşenler Için yazılım gereksinimleri](#software-requirements-for-optional-components)' ne gidin. |
 | VMware ESX |5,5 ve 6,0 |Iscsı istemcisi olarak VMware vSphere desteklenir. VAAı-Block özelliği, StorSimple cihazlarında VMware vSphere desteklenir. |
 | Linux RHEL/CentOS |5, 6 ve 7 |Open-Iscsı Başlatıcısı sürüm 5, 6 ve 7 olan Linux Iscsı istemcileri için destek. |
 | Linux |SUSE Linux 11 | |
@@ -65,14 +65,14 @@ StorSimple cihazınız kilitli bir cihazdır. Ancak, Iscsı, bulut ve Yönetim t
 
 | Bağlantı noktası No.<sup>1, 2</sup> | Dışarı veya dışarı | Bağlantı noktası kapsamı | Gerekli | Notlar |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP)<sup>3</sup> |Out |WAN |No |<ul><li>Giden bağlantı noktası, güncelleştirmeleri almak için Internet erişimi için kullanılır.</li><li>Giden Web proxy 'si Kullanıcı tarafından yapılandırılabilir.</li><li>Sistem güncelleştirmelerine izin vermek için, bu bağlantı noktasının denetleyici sabit IP 'Leri için de açık olması gerekir.</li></ul> |
-| TCP 443 (HTTPS)<sup>3</sup> |Out |WAN |Yes |<ul><li>Giden bağlantı noktası, buluttaki verilere erişmek için kullanılır.</li><li>Giden Web proxy 'si Kullanıcı tarafından yapılandırılabilir.</li><li>Sistem güncelleştirmelerine izin vermek için, bu bağlantı noktasının denetleyici sabit IP 'Leri için de açık olması gerekir.</li><li>Bu bağlantı noktası, her iki çöp toplama denetleyicisinde de kullanılır.</li></ul> |
+| TCP 80 (HTTP)<sup>3</sup> |Out |WAN |Hayır |<ul><li>Giden bağlantı noktası, güncelleştirmeleri almak için Internet erişimi için kullanılır.</li><li>Giden Web proxy 'si Kullanıcı tarafından yapılandırılabilir.</li><li>Sistem güncelleştirmelerine izin vermek için, bu bağlantı noktasının denetleyici sabit IP 'Leri için de açık olması gerekir.</li></ul> |
+| TCP 443 (HTTPS)<sup>3</sup> |Out |WAN |Evet |<ul><li>Giden bağlantı noktası, buluttaki verilere erişmek için kullanılır.</li><li>Giden Web proxy 'si Kullanıcı tarafından yapılandırılabilir.</li><li>Sistem güncelleştirmelerine izin vermek için, bu bağlantı noktasının denetleyici sabit IP 'Leri için de açık olması gerekir.</li><li>Bu bağlantı noktası, her iki çöp toplama denetleyicisinde de kullanılır.</li></ul> |
 | UDP 53 (DNS) |Out |WAN |Bazı durumlarda; notlara bakın. |Bu bağlantı noktası yalnızca Internet tabanlı bir DNS sunucusu kullanıyorsanız gereklidir. |
 | UDP 123 (NTP) |Out |WAN |Bazı durumlarda; notlara bakın. |Bu bağlantı noktası yalnızca Internet tabanlı bir NTP sunucusu kullanıyorsanız gereklidir. |
-| TCP 9354 |Out |WAN |Yes |Giden bağlantı noktası StorSimple cihaz tarafından StorSimple Aygıt Yöneticisi hizmetiyle iletişim kurmak için kullanılır. |
-| 3260 (Iscsı) |İçinde |LAN |No |Bu bağlantı noktası, Iscsı üzerinden verilere erişmek için kullanılır. |
-| 5985 |İçinde |LAN |No |Gelen bağlantı noktası, StorSimple aygıtıyla iletişim kurmak için StorSimple Snapshot Manager tarafından kullanılır.<br>Bu bağlantı noktası, HTTP üzerinden StorSimple için Windows PowerShell uzaktan bağlandığınızda da kullanılır. |
-| 5986 |İçinde |LAN |No |Bu bağlantı noktası, HTTPS üzerinden StorSimple için Windows PowerShell uzaktan bağlandığınızda kullanılır. |
+| TCP 9354 |Out |WAN |Evet |Giden bağlantı noktası StorSimple cihaz tarafından StorSimple Aygıt Yöneticisi hizmetiyle iletişim kurmak için kullanılır. |
+| 3260 (Iscsı) |İçinde |LAN |Hayır |Bu bağlantı noktası, Iscsı üzerinden verilere erişmek için kullanılır. |
+| 5985 |İçinde |LAN |Hayır |Gelen bağlantı noktası, StorSimple aygıtıyla iletişim kurmak için StorSimple Snapshot Manager tarafından kullanılır.<br>Bu bağlantı noktası, HTTP üzerinden StorSimple için Windows PowerShell uzaktan bağlandığınızda da kullanılır. |
+| 5986 |İçinde |LAN |Hayır |Bu bağlantı noktası, HTTPS üzerinden StorSimple için Windows PowerShell uzaktan bağlandığınızda kullanılır. |
 
 <sup>1</sup> genel Internet üzerinde hiçbir gelen bağlantı noktasının açık olması gerekmez.
 
@@ -122,7 +122,7 @@ Ağ yöneticileri, genellikle gelen ve giden trafiği filtrelemek için URL dese
 
 Yönlendirme ölçümü, verileri belirtilen ağlara yönlendiren arabirimler ve ağ geçidi ile ilişkilendirilir. Yönlendirme ölçümü, birden çok yolun aynı hedefe varolduğunu öğrenirse, belirli bir hedefin en iyi yolunu hesaplamak için yönlendirme protokolü tarafından kullanılır. Yönlendirme ölçümü ne kadar düşükse tercih daha yüksektir.
 
-StorSimple bağlamında, birden çok ağ arabirimi ve ağ geçidi Kanal trafiği olarak yapılandırılırsa, arabirimlerin kullanılacağı göreli sırayı öğrenmek için yönlendirme ölçümleri yürütmeye gelir. Yönlendirme ölçümleri Kullanıcı tarafından değiştirilemez. Bununla birlikte, `Get-HcsRoutingTable` StorSimple cihazınızda yönlendirme tablosunu (ve ölçümleri) yazdırmak için cmdlet 'ini kullanabilirsiniz. [StorSimple dağıtımında sorun gidermeye](storsimple-troubleshoot-deployment.md)yönelik Get-HcsRoutingTable cmdlet 'i hakkında daha fazla bilgi.
+StorSimple bağlamında, birden çok ağ arabirimi ve ağ geçidi Kanal trafiği olarak yapılandırılırsa, arabirimlerin kullanılacağı göreli sırayı öğrenmek için yönlendirme ölçümleri yürütmeye gelir. Yönlendirme ölçümleri Kullanıcı tarafından değiştirilemez. Bununla birlikte, `Get-HcsRoutingTable` StorSimple cihazınızda yönlendirme tablosunu (ve ölçümleri) yazdırmak için cmdlet 'ini kullanabilirsiniz. [StorSimple dağıtımında sorun giderme](storsimple-troubleshoot-deployment.md)konusunda Get-HcsRoutingTable cmdlet 'i hakkında daha fazla bilgi.
 
 Güncelleştirme 2 ve sonraki sürümler için kullanılan yönlendirme ölçüm algoritması aşağıdaki gibi açıklanabilir.
 
@@ -203,7 +203,7 @@ StorSimple cihazları, yedekli, Hot-swapcontroller modülleri içerir. Denetleyi
 
 #### <a name="network-interfaces"></a>Ağ arabirimleri
 
-StorSimple cihaz denetleyicisi modüllerinin her biri dört adet 1 Gigabit ve 2 10 Gigabit Ethernet ağ arabirimine sahiptir.
+StorSimple cihaz denetleyicisi modüllerinin her biri 4 1 Gigabit ve 2 10 Gigabit Ethernet ağ arabirimine sahiptir.
 
 * Her iki denetleyici modülüne yönelik ağ bağlantılarının aynı olduğundan ve denetleyici modülü arabirimlerinin bağlandığı ağ arabirimlerinin aynı ağ yapılandırmasına sahip olduğundan emin olun.
 * Mümkün olduğunda, bir ağ aygıtı arızası durumunda hizmet kullanılabilirliğini sağlamak için ağ bağlantılarını farklı anahtarlar arasında dağıtın.

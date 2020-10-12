@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
 ms.openlocfilehash: 8b811c57eb163931c39a311418ac9f1513e9393a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83592262"
 ---
 # <a name="translator-30-transliterate"></a>Çevirici 3,0: alfabede
@@ -57,7 +57,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 İstek üstbilgileri şunları içerir:
 
 <table width="100%">
-  <th width="20%">Üst Bilgiler</th>
+  <th width="20%">Üst bilgiler</th>
   <th>Açıklama</th>
   <tr>
     <td>Kimlik doğrulama üst bilgisi</td>
@@ -114,7 +114,7 @@ Başarılı bir yanıt, Giriş dizisindeki her öğe için bir sonuç içeren bi
 ## <a name="response-headers"></a>Yanıt üst bilgileri
 
 <table width="100%">
-  <th width="20%">Üst Bilgiler</th>
+  <th width="20%">Üst bilgiler</th>
   <th>Açıklama</th>
   <tr>
     <td>X-RequestId</td>

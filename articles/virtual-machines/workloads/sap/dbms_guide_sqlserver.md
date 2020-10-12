@@ -16,10 +16,10 @@ ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 56a7b91327e84ca36e6ec6e4b15f594dbc61830e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274308"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineler DBMS dağıtımı SQL Server
@@ -404,7 +404,7 @@ Azure 'daki farklı SQL Server yedekleme olasılıklarına bakmak için [Azure s
 
 1. Doğrudan bağlı Azure disklerinde geleneksel SQL Server yedeklemeleri gerçekleştirme. Bu yöntem, yedeklemelerin sistem yenilemelerinde kullanılabilir olması ve mevcut SAP sistemlerinin kopyaları olarak yeni sistemlerin oluşturulması avantajına sahiptir.
 2.  SQL Server 2012 CU4 ve üzeri, veritabanlarını bir Azure Storage URL 'sine yedekleyebilir.
-3.  Azure Blob depolamada veritabanı dosyaları için dosya anlık görüntü yedeklemeleri. Bu yöntem yalnızca SQL Server verileriniz ve günlük dosyalarınız Azure Blob depolama alanında bulunuyorsa işe yarar.
+3.  Azure Blob depolamada veritabanı dosyaları için yedeklemeler File-Snapshot. Bu yöntem yalnızca SQL Server verileriniz ve günlük dosyalarınız Azure Blob depolama alanında bulunuyorsa işe yarar.
 
 İlk yöntem, şirket içi dünyada pek çok durumda iyi bilinirler ve uygulanır. Bununla birlikte, daha uzun vadeli yedekleme konumunu çözümlemek için görev sizi bırakır. Yerel olarak bağlı Azure depolamada yedeklemelerinizi 30 veya daha fazla güne karşı korumak istemediğiniz için, yedeklemeleriniz için erişim ve bekletme yönetimi içeren Azure Backup hizmetlerini veya başka bir üçüncü taraf yedekleme/kurtarma aracını kullanmanız gerekir. Ya da Windows depolama alanları kullanarak Azure 'da büyük bir dosya sunucusu oluşturabilirsiniz.
 
@@ -464,7 +464,7 @@ Latin1-General, binary code point comparison sort for Unicode Data, SQL Server S
 
 Sonuç farklıysa SAP dağıtımı durdurun ve kurulum komutunun neden beklendiği gibi çalışmadığına ilişkin araştırma yapın. Yukarıda bahsedilen farklı SQL Server codepages ile SQL Server örneğine SAP NetWeaver uygulamalarının **dağıtılması desteklenmez.**
 
-## <a name="sql-server-high-availability-for-sap-in-azure"></a>Azure 'da SAP için yüksek kullanılabilirlik SQL Server
+## <a name="sql-server-high-availability-for-sap-in-azure"></a>Azure 'da SAP için SQL Server High-Availability
 SAP için Azure IaaS dağıtımlarında SQL Server kullanarak, DBMS katmanını yüksek oranda kullanılabilir şekilde dağıtmak için çeşitli farklı olasılıklara sahip olursunuz. [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı](dbms_guide_general.md) 'nda açıklandığı gibi, Azure, tek bir VM ve bir Azure kullanılabilirlik kümesinde dağıtılan bir çift sanal makine için farklı bir zaman SLA 'lar sağlar. Varsayım, Azure kullanılabilirlik kümelerinde dağıtımı gerektiren üretim dağıtımlarınız için güncel SLA 'yı doğru şekilde sağlamayız. Böyle bir durumda, bu tür bir kullanılabilirlik kümesinde en az iki VM dağıtmanız gerekir. Bir VM, etkin SQL Server örneğini çalıştırır. Diğer VM pasif örneği çalıştıracak
 
 ### <a name="sql-server-clustering-using-windows-scale-out-file-server-or-azure-shared-disk"></a>Windows genişleme dosya sunucusu veya Azure Paylaşılan disk kullanarak kümeleme SQL Server
@@ -484,7 +484,7 @@ Azure 'da SQL Server günlük aktarma işlevselliği, tek bir Azure bölgesinde 
 ### <a name="database-mirroring"></a>Veritabanı Yansıtması
 SAP tarafından desteklenen veritabanı yansıtma (bkz. SAP Note [965908]) SAP bağlantı dizesinde yük devretme ortağı tanımlamayı kullanır. Şirketler arası durumlarda iki VM 'nin aynı etki alanında olduğunu ve iki SQL Server örneğinin Kullanıcı bağlamının bir etki alanı kullanıcısı altında çalıştığını ve söz konusu iki SQL Server örneğinde yeterli ayrıcalıklara sahip olduğunu varsaytık. Bu nedenle, Azure 'da veritabanı yansıtma kurulumu, tipik bir şirket içi kurulum/yapılandırma arasında farklılık gösterir.
 
-Yalnızca bulutta gerçekleştirilen dağıtımlarda, en kolay yöntem, Azure 'daki başka bir etki alanı kurulumunun, bu DBMS VM 'Leri (ve ideal SAP VM 'Leri) bir etki alanı içinde olmasını sağlar.
+Cloud-Only dağıtımlarda, en kolay yöntem, bir etki alanı içinde bu DBMS sanal makinelerini (ve ideal SAP VM 'Leri) sağlamak için Azure 'da başka bir etki alanı kurulumuna sahip olmanın bir yoludur.
 
 Bir etki alanı mümkün değilse, bir tane, burada açıklandığı gibi veritabanı yansıtma uç noktaları için sertifikalar da kullanabilir: <https://docs.microsoft.com/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql>
 

@@ -4,10 +4,10 @@ description: Bu makale, özel durum oluştuğunda gerçekleştirilecek Azure Ser
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 4813ad7386af3d9dd730b74e6b815ff173cfe809
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90885738"
 ---
 # <a name="service-bus-messaging-exceptions"></a>Service Bus mesajlaşma özel durumları
@@ -63,9 +63,9 @@ Message: The maximum entity size has been reached or exceeded for Topic: 'xxx-xx
 
 İleti, konunun boyut sınırını aştığını, bu durumda 1 GB (varsayılan boyut sınırı) olduğunu belirtir. 
 
-### <a name="namespaces"></a>Ad alanları
+### <a name="namespaces"></a>Ad Alanları
 
-Ad alanları için [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) , bir uygulamanın bir ad alanına yönelik en fazla bağlantı sayısını aştığını gösterebilir. Örnek:
+Ad alanları için [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) , bir uygulamanın bir ad alanına yönelik en fazla bağlantı sayısını aştığını gösterebilir. Örneğin:
 
 ```Output
 Microsoft.ServiceBus.Messaging.QuotaExceededException: ConnectionsQuotaExceeded for namespace xxx.

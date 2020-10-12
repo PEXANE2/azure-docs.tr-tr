@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
 ms.openlocfilehash: 736daa8a09a8f08721c7b7d9c20f012f274b384a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87045511"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure Izleyici günlüğü sorgu örnekleri
@@ -18,7 +18,7 @@ Bu makalede, Azure Izleyici 'den farklı günlük verisi türlerini almak için 
 
 Bu örneklerde kullanılan farklı anahtar sözcüklerle ilgili ayrıntılı bilgi için [kusto dil başvurusuna](/azure/kusto/query/) bakın. Azure Izleyici 'de yeni başladıysanız [sorgu oluşturma konusunda bir derste](get-started-queries.md) ilerleyin.
 
-## <a name="events"></a>Ekinlikler
+## <a name="events"></a>Olaylar
 
 ### <a name="search-application-level-events-described-as-cryptographic"></a>"Şifreleme" olarak açıklanan uygulama düzeyi olayları ara
 Bu örnek, **olay** tablosunda **EventLog** 'ın _uygulama_ ve **rendereddescription** 'un _şifreleme_içerdiği kayıtlar için arama yapar. Son 24 saat içindeki kayıtları içerir.
@@ -200,7 +200,7 @@ Perf
 ## <a name="protection-status"></a>Koruma durumu
 
 ### <a name="computers-with-non-reporting-protection-status-duration"></a>Raporlama dışı koruma durum süresi olan bilgisayarlar
-Bu örnekte, _Raporlama değil_ koruma durumuna sahip bilgisayarlar ve bu durumda oldukları süre listelenir.
+Bu örnekte, _Raporlama değil_  koruma durumuna sahip bilgisayarlar ve bu durumda oldukları süre listelenir.
 
 ```Kusto
 ProtectionStatus

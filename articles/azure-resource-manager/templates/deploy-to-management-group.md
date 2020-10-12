@@ -4,10 +4,10 @@ description: Azure Resource Manager şablonundaki yönetim grubu kapsamındaki k
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.openlocfilehash: 23f86d7d0b7e1f882cf3fb74adc484e0fe47db87
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91372434"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Yönetim grubu düzeyinde kaynaklar oluşturma
@@ -43,7 +43,7 @@ Abonelikler veya kaynak gruplarına dağıtan iç içe şablonlar için şunu ku
 
 Kaynaklarınızı yönetmek için şunu kullanın:
 
-* [lerimi](/azure/templates/microsoft.resources/tags)
+* [etiketler](/azure/templates/microsoft.resources/tags)
 
 ## <a name="schema"></a>Şema
 

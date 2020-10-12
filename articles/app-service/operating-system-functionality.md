@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
 ms.openlocfilehash: 11798db483f0ba370f73340489c17f38c87ede41
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88080207"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure App Service işletim sistemi işlevselliği
@@ -45,13 +45,13 @@ App Service içinde, yerel sürücüler ve ağ sürücüleri dahil çeşitli sü
 <a id="LocalDrives"></a>
 
 ### <a name="local-drives"></a>Yerel sürücüler
-App Service, Azure PaaS (hizmet olarak platform) altyapısının üstünde çalışan bir hizmettir. Sonuç olarak, bir sanal makineye "eklenmiş" olan yerel sürücüler, Azure 'da çalışan tüm çalışan rolleri için kullanılabilir olan sürücü türleridir. Buna aşağıdakiler dahildir:
+App Service, Azure PaaS (hizmet olarak platform) altyapısının üstünde çalışan bir hizmettir. Sonuç olarak, bir sanal makineye "eklenmiş" olan yerel sürücüler, Azure 'da çalışan tüm çalışan rolleri için kullanılabilir olan sürücü türleridir. Şunları içerir:
 
 - Bir işletim sistemi sürücüsü (D:\ sürücü
 - Yalnızca App Service (ve müşterilerle erişilemeyen) tarafından kullanılan Azure paketi cspkg dosyalarını içeren bir uygulama sürücüsü
 - "Kullanıcı" sürücüsü (C:\ sürücü), boyutu VM 'nin boyutuna bağlı olarak değişir. 
 
-Uygulamanız büyüdükçe disk kullanımınızı izlemeniz önemlidir. Disk kotasına ulaşıldığında, uygulamanız olumsuz etkileri olabilir. Örnek: 
+Uygulamanız büyüdükçe disk kullanımınızı izlemeniz önemlidir. Disk kotasına ulaşıldığında, uygulamanız olumsuz etkileri olabilir. Örneğin: 
 
 - Uygulama, diskte yeterli alan olmadığını belirten bir hata oluşturabilir.
 - Kudu konsoluna gözatarken disk hataları görebilirsiniz.

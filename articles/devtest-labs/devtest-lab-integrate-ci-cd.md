@@ -4,10 +4,10 @@ description: Azure DevTest Labs Azure Pipelines sürekli tümleştirme ve teslim
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 96f99d41d0a7ea07bf3854292f9c3bd6245414b3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87288935"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-pipelines-cicd-pipeline"></a>Azure DevTest Labs Azure Pipelines CI/CD işlem hattınızla tümleştirin
@@ -109,7 +109,7 @@ Değerler için değişken eklemek için:
    
 1. Her değişken için, **Ekle** ' yi seçin ve adı ve değeri girin:
    
-   |Ad|Değer|
+   |Name|Değer|
    |---|---|
    |*vmName*|Kaynak Yöneticisi şablonunda atadığınız VM adı|
    |*Nitelen*|VM 'ye erişim için Kullanıcı adı|

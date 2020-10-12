@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: c8a1d1c0f8de742bdafa130cce6927a472efd8f7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329355"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure dosya paylaşımını Windows'da kullanma
@@ -24,15 +24,15 @@ Azure VM üzerinde veya şirket içinde çalışan bir Windows yüklemesinde Azu
 
 | Windows sürümü        | SMB sürümü | Azure VM'de Bağlanabilir | Şirket içinde takılamaz |
 |------------------------|-------------|-----------------------|-----------------------|
-| Windows Server 2019 | SMB 3.0 | Yes | Yes |
-| Windows 10<sup>1</sup> | SMB 3.0 | Yes | Yes |
-| Windows Server yarı yıllık kanal<sup>2</sup> | SMB 3.0 | Yes | Yes |
-| Windows Server 2016 | SMB 3.0 | Yes | Yes |
-| Windows 8.1 | SMB 3.0 | Yes | Yes |
-| Windows Server 2012 R2 | SMB 3.0 | Yes | Yes |
-| Windows Server 2012 | SMB 3.0 | Yes | Yes |
-| Windows 7<sup>3</sup> | SMB 2.1 | Yes | Hayır |
-| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Yes | Hayır |
+| Windows Server 2019 | SMB 3.0 | Evet | Evet |
+| Windows 10<sup>1</sup> | SMB 3.0 | Evet | Evet |
+| Windows Server yarı yıllık kanal<sup>2</sup> | SMB 3.0 | Evet | Evet |
+| Windows Server 2016 | SMB 3.0 | Evet | Evet |
+| Windows 8.1 | SMB 3.0 | Evet | Evet |
+| Windows Server 2012 R2 | SMB 3.0 | Evet | Evet |
+| Windows Server 2012 | SMB 3.0 | Evet | Evet |
+| Windows 7<sup>3</sup> | SMB 2.1 | Evet | Hayır |
+| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Evet | Hayır |
 
 <sup>1</sup> Windows 10, sürüm 1507, 1607, 1803, 1809, 1903, 1909 ve 2004.  
 <sup>2</sup> Windows Server, sürüm 1809, 1903, 1909, 2004.  
@@ -41,7 +41,7 @@ Azure VM üzerinde veya şirket içinde çalışan bir Windows yüklemesinde Azu
 > [!Note]  
 > Her zaman Windows sürümünüz için en yeni KB’yi almanızı öneririz.
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 445 numaralı bağlantı noktasının açık olduğundan emin olun: SMB protokolü için 445 numaralı TCP bağlantı noktasının açık olması gerekir. 445 numaralı bağlantı noktasının açık olmaması halinde bağlantı gerçekleştirilemez. Güvenlik duvarınızın, cmdlet ile 445 bağlantı noktasını engelleyip engellemediğini kontrol edebilirsiniz `Test-NetConnection` . Engellenen 445 bağlantı noktasına geçici çözüm yolları hakkında bilgi edinmek için, Windows sorun giderme kılavuzumuzdan [1: bağlantı noktası 445 engellendi](storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked) bölümüne bakın.
 
@@ -58,21 +58,21 @@ Azure portal, dosya paylaşımınızı doğrudan bir konağa bağlamak için kul
 
 Bu betiği almak için:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Bağlamak istediğiniz dosya paylaşımının bulunduğu depolama hesabına gidin.
 1. **Dosya paylaşımları**’nı seçin.
 1. Bağlamak istediğiniz dosya payını seçin.
 
     :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="örneğinde":::
 
-1. **Bağlan**’ı seçin.
+1. **Bağlan**'ı seçin.
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="Dosya paylaşımınız için Bağlan simgesinin ekran görüntüsü.":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="örneğinde":::
 
 1. Paylaşımın bağlanması için sürücü harfini seçin.
 1. Belirtilen betiği kopyalayın.
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="Örnek metin":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="örneğinde":::
 
 1. Betiği, dosya paylaşımının üzerine bağlamak istediğiniz konaktaki bir kabuğa yapıştırın ve çalıştırın.
 

@@ -4,10 +4,10 @@ description: Bu makalede, Service Bus varlıkları (ad alanları, kuyruklar, kon
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: b6439deb2b86c2ea5b50fe3bdbad89a0875b2acc
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88065752"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>Service Bus kaynaklarını yönetmek için PowerShell 'i kullanma
@@ -18,7 +18,7 @@ Ayrıca, Azure Resource Manager şablonları kullanarak Service Bus varlıkları
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce aşağıdaki önkoşullara sahip olmanız gerekir:
 
@@ -34,11 +34,11 @@ Başlamadan önce aşağıdaki önkoşullara sahip olmanız gerekir:
 
 Service Bus ad alanlarıyla çalışırken, [Get-AzServiceBusNamespace](/powershell/module/az.servicebus/get-azservicebusnamespace), [New-azservicebusnamespace](/powershell/module/az.servicebus/new-azservicebusnamespace), [Remove-Azservicebusnamespace](/powershell/module/az.servicebus/remove-azservicebusnamespace)ve [set-azservicebusnamespace](/powershell/module/az.servicebus/set-azservicebusnamespace) cmdlet 'lerini kullanabilirsiniz.
 
-Bu örnek, betikte birkaç yerel değişken oluşturur; `$Namespace`ve `$Location` .
+Bu örnek, betikte birkaç yerel değişken oluşturur; `$Namespace` ve `$Location` .
 
-* `$Namespace`, çalışmak istediğimiz Service Bus ad alanının adıdır.
-* `$Location`ad alanını sağladığımız veri merkezini tanımlar.
-* `$CurrentNamespace`elde ettiğimiz başvuru ad alanını depolar (veya oluşturur).
+* `$Namespace` , çalışmak istediğimiz Service Bus ad alanının adıdır.
+* `$Location` ad alanını sağladığımız veri merkezini tanımlar.
+* `$CurrentNamespace` elde ettiğimiz başvuru ad alanını depolar (veya oluşturur).
 
 Gerçek bir betikte `$Namespace` ve `$Location` parametre olarak geçirilebilir.
 

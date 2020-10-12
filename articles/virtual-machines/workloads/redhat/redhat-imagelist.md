@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 04/16/2020
 ms.author: alsin
 ms.openlocfilehash: f4ebf433237193c0db7859b029bb224c72c92eae
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87291025"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Azure 'da bulunan Red Hat Enterprise Linux (RHEL) görüntüleri
@@ -51,7 +51,7 @@ RHEL          | 6.7      | Madde    | Linux Aracısı |
 |             | 76-Gen2  | Madde    | Linux Aracısı | Varsayılan olarak, EUS depolarına eklendi.
 |             | 7,7      | LVM    | Linux Aracısı | Varsayılan olarak, EUS depolarına eklendi.
 |             | 77-Gen2  | LVM    | Linux Aracısı | Varsayılan olarak, EUS depolarına eklendi.
-|             | 7,8      | LVM    | Linux Aracısı | Düzenli depolara ekli (RHEL 7,8 için kullanılamaz)
+|             | 7.8      | LVM    | Linux Aracısı | Düzenli depolara ekli (RHEL 7,8 için kullanılamaz)
 |             | 78-Gen2  | LVM    | Linux Aracısı | Düzenli depolara ekli (RHEL 7,8 için kullanılamaz)
 |             | 8-LVM    | LVM    | Linux Aracısı | RHEL 8. x resim ailesi. Düzenli depolara iliştirilir.
 |             | 8-LVM-Gen2| LVM    | Linux Aracısı | Hyper-V 2. nesil-RHEL 8. x resim ailesi. Düzenli depolara iliştirilir.

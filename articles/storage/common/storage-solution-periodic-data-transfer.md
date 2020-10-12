@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: alkohli
 ms.openlocfilehash: 9ffa35e158d34a1fc6945ee2730dcf136d13edb5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85504347"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>Düzenli aralıklarla veri aktarımına yönelik çözümler
@@ -59,7 +59,7 @@ Aşağıdaki tabloda, önemli özelliklerde farklılıklar özetlenmektedir.
 | İlk kurulum çabası                          | Düşük (<30 dakika)            | Orta (~ birkaç saat) | Büyük (~ gün)                                                 |
 | Veri biçimi                                   | Azure Blobları, Azure dosyaları   | Azure Blobları, Azure dosyaları | [Veri depoları ve biçimleri için 70 ' ten fazla veri Bağlayıcısı destekler](https://docs.microsoft.com/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)|
 | Verileri önceden işleme                           | Hayır                         | Evet, uç işlem ile    | Evet                                                           |
-| Yerel önbellek<br>(Şirket içi verileri depolamak için)    | Yes                        | Evet                      | Hayır                                                            |
+| Yerel önbellek<br>(Şirket içi verileri depolamak için)    | Evet                        | Evet                      | Hayır                                                            |
 | Diğer bulutlardan aktar                    | Hayır                         | Hayır                       | Evet                                                           |
 | Fiyatlandırma                                       | [Fiyatlandırma](https://azure.microsoft.com/pricing/details/storage/databox/gateway/)                    | [Fiyatlandırma](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                  | [Fiyatlandırma](https://azure.microsoft.com/pricing/details/data-factory/)                                                       |
 

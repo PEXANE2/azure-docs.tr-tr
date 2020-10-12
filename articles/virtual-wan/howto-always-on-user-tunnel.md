@@ -1,5 +1,5 @@
 ---
-title: Her zaman açık VPN Kullanıcı tüneli yapılandırma
+title: Always-On VPN Kullanıcı tüneli yapılandırma
 titleSuffix: Azure Virtual WAN
 description: Bu makalede, sanal WAN 'niz için Always on VPN Kullanıcı tünelinin nasıl yapılandırılacağı açıklanmaktadır
 services: virtual-wan
@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: e83ca64d2b0e50ec02007a3cd878e6bf034d0961
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91313595"
 ---
 # <a name="configure-an-always-on-vpn-user-tunnel-for-virtual-wan"></a>Sanal WAN için Always on VPN Kullanıcı tüneli yapılandırma
 
 [!INCLUDE [intro](../../includes/vpn-gateway-vwan-always-on-intro.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Noktadan siteye yapılandırma oluşturmanız ve sanal hub atamasını düzenlemeniz gerekir. Yönergeler için aşağıdaki bölümlere bakın:
 

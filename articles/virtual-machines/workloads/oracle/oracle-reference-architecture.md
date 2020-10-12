@@ -13,10 +13,10 @@ ms.date: 12/13/2019
 ms.author: kegorman
 ms.custom: ''
 ms.openlocfilehash: 2bbc78f9a5569c8446743980cdea153883c19d4d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274445"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 'da Oracle Database Enterprise Edition için başvuru mimarileri
@@ -71,7 +71,7 @@ Oracle Data Guard kullanırken, ikincil veritabanınızı salt okuma amacıyla d
 > Etkin veri koruma ek lisanslama gerektirir. Bu lisans, en çok eşitleme özelliğini kullanmak için de gereklidir. Lisanslama etkilerini tartışmak için lütfen Oracle temsilcinizle bağlantı sağlayın.
 
 #### <a name="oracle-data-guard-with-fsfo"></a>FSFO ile Oracle Data Guard
-Hızlı başlangıç yük devretmesi (FSFO) ile Oracle Data Guard, aracıyı ayrı bir makineye ayarlayarak ek dayanıklılık sağlayabilir. Data Guard Broker ve ikincil veritabanı, gözlemci çalıştırır ve kapalı kalma süresi için birincil veritabanını gözlemleyin. Bu, Data Guard gözlemci kurulumunda de artıklık sağlar. 
+Fast-Start yük devretme (FSFO) ile Oracle Data Guard, aracıyı ayrı bir makineye ayarlayarak ek dayanıklılık sağlayabilir. Data Guard Broker ve ikincil veritabanı, gözlemci çalıştırır ve kapalı kalma süresi için birincil veritabanını gözlemleyin. Bu, Data Guard gözlemci kurulumunda de artıklık sağlar. 
 
 Oracle Database sürüm 12,2 ve üzeri ile, tek bir Oracle Data Guard Broker yapılandırması ile birden çok Observer yapılandırmak da mümkündür. Bu kurulum, bir gözlemci ve ikincil veritabanı deneyimine kapalı kalma olasılığına karşı ek kullanılabilirlik sağlar. Data Guard Aracısı hafif ve görece küçük bir sanal makinede barındırılabilir. Data Guard Aracısı ve avantajları hakkında daha fazla bilgi edinmek için bu konudaki [Oracle belgelerini](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/oracle-data-guard-broker-concepts.html) ziyaret edin.
 
@@ -152,7 +152,7 @@ Oracle parçalama öncelikle aşağıdaki bileşenlerden oluşur. [Oracle parça
 
 - **Küresel hizmet** -genel hizmet normal veritabanı hizmetine benzerdir. Bir veritabanı hizmetinin tüm özelliklerine ek olarak, küresel bir hizmet, istemciler ile parça ve çoğaltma gecikmesi toleransı arasındaki bölge benzeşimi gibi parçalı veritabanları için özelliklere sahiptir. Parçalı bir veritabanına veri okumak/buradan veri yazmak için yalnızca bir genel hizmetin oluşturulması gerekir. Etkin Data Guard 'ı kullanırken ve parçaların salt okuma çoğaltmalarını ayarlarken, salt okuma iş yükleri için başka bir gGobal hizmeti oluşturabilirsiniz. İstemci bu genel Hizmetleri veritabanına bağlanmak için kullanabilir.
 
-- Parça **veritabanları-parça veritabanları Oracle** veritabanlarlarlardır. Her veritabanı, hızlı başlatma yük devretmesi (FSFO) etkin olan bir aracı yapılandırmasında Oracle Data Guard kullanılarak çoğaltılır. Her parçada Data Guard yük devretmesini ve çoğaltmasını ayarlamanız gerekmez. Bu, paylaşılan veritabanı oluşturulduğunda otomatik olarak yapılandırılır ve dağıtılır. Belirli bir parça başarısız olursa, Oracle paylaşımı birincil sunucudan bekleme moduna otomatik olarak yük devreder.
+- Parça **veritabanları-parça veritabanları Oracle** veritabanlarlarlardır. Her veritabanı, Fast-Start yük devretme (FSFO) etkin olan bir aracı yapılandırmasında Oracle Data Guard kullanılarak çoğaltılır. Her parçada Data Guard yük devretmesini ve çoğaltmasını ayarlamanız gerekmez. Bu, paylaşılan veritabanı oluşturulduğunda otomatik olarak yapılandırılır ve dağıtılır. Belirli bir parça başarısız olursa, Oracle paylaşımı birincil sunucudan bekleme moduna otomatik olarak yük devreder.
 
 Oracle parçalı veritabanlarını iki arabirim ile dağıtabilir ve yönetebilirsiniz: Oracle Enterprise Manager Cloud Control GUI ve/veya `GDSCTL` komut satırı yardımcı programı. Bulut denetimini kullanarak kullanılabilirlik ve performans için farklı parçaları da izleyebilirsiniz. Komut, parçaları `GDSCTL DEPLOY` ve ilgili dinleyicileri otomatik olarak oluşturur. Ayrıca, bu komut, yönetici tarafından belirtilen parça düzeyinde yüksek kullanılabilirlik için kullanılan çoğaltma yapılandırmasını otomatik olarak dağıtır.
 
@@ -232,6 +232,6 @@ Senaryonuza uygulanan aşağıdaki Oracle başvuru makalelerini gözden geçirin
 
 - [Oracle Data Guard 'a giriş](https://docs.oracle.com/en/database/oracle/oracle-database/18/sbydb/introduction-to-oracle-data-guard-concepts.html#GUID-5E73667D-4A56-445E-911F-1E99092DD8D7)
 - [Oracle Data Guard aracı kavramları](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/oracle-data-guard-broker-concepts.html)
-- [Oracle GoldenGate 'i etkin-etkin yüksek kullanılabilirlik için yapılandırma](https://docs.oracle.com/goldengate/1212/gg-winux/GWUAD/wu_bidirectional.htm#GWUAD282)
+- [Oracle GoldenGate 'i Active-Active yüksek kullanılabilirlik için yapılandırma](https://docs.oracle.com/goldengate/1212/gg-winux/GWUAD/wu_bidirectional.htm#GWUAD282)
 - [Oracle parçalara genel bakış](https://docs.oracle.com/en/database/oracle/oracle-database/19/shard/sharding-overview.html)
 - [Oracle etkin Data Guard her mesafede sıfır veri kaybı](https://www.oracle.com/technetwork/database/availability/farsync-2267608.pdf)

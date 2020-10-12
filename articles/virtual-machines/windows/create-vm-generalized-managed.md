@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/17/2018
 ms.author: cynthn
 ms.openlocfilehash: 2be48025bcf2be8cec63e2a251f034e72c803e88
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87289658"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Yönetilen bir görüntüden VM oluşturma
@@ -39,7 +39,7 @@ Bir yönetilen görüntü, en fazla 20 eşzamanlı dağıtımı destekler. Aynı
 
  
 
-[New-AzVm](/powershell/module/az.compute/new-azvm) için ayarlanan Basitleştirilmiş parametre yalnızca BIR görüntüden VM oluşturmak için bir ad, kaynak grubu ve görüntü adı sağlamanızı gerektirir. New-AzVm, otomatik olarak oluşturduğu tüm kaynakların adı olarak **-Name** parametresinin değerini kullanacaktır. Bu örnekte, her bir kaynak için daha ayrıntılı adlar sağlıyoruz, ancak cmdlet 'in onları otomatik olarak oluşturmasına izin veririz. Ayrıca, daha önce sanal ağ gibi kaynaklar oluşturabilir ve kaynak adını cmdlet 'e geçirebilirsiniz. Yeni-AzVm, adları adlarıyla bulabilmeleri durumunda mevcut kaynakları kullanacaktır.
+[New-AzVm](/powershell/module/az.compute/new-azvm) için ayarlanan Basitleştirilmiş parametre yalnızca BIR görüntüden VM oluşturmak için bir ad, kaynak grubu ve görüntü adı sağlamanızı gerektirir. New-AzVm, **-Name** parametresinin değerini otomatik olarak oluşturduğu tüm kaynakların adı olarak kullanacaktır. Bu örnekte, her bir kaynak için daha ayrıntılı adlar sağlıyoruz, ancak cmdlet 'in onları otomatik olarak oluşturmasına izin veririz. Ayrıca, daha önce sanal ağ gibi kaynaklar oluşturabilir ve kaynak adını cmdlet 'e geçirebilirsiniz. New-AzVm, adları adlarıyla bulabilmeleri durumunda mevcut kaynakları kullanacaktır.
 
 Aşağıdaki örnek, *Myresourcegroup* kaynak grubunda, *MyImage*adlı görüntüden *myvmfromımage*adlı bir VM oluşturur. 
 

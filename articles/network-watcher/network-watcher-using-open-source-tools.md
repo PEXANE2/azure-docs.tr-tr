@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 48501a2796f4d826a20af559058490a14785b53e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84738643"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>Açık kaynaklı araçlar kullanarak sanal makinelerinizden gelen ve giden ağ trafiği düzenlerini görselleştirin
@@ -36,7 +36,7 @@ Azure 'daki bir VM üzerinde dağıtılan basit bir Web uygulamanız varsa, akı
 ### <a name="install-capanalysis"></a>CapAnalysis 'i yükler
 
 Bir sanal makineye CapAnalysis yüklemek için buradaki resmi yönergelere bakabilirsiniz https://www.capanalysis.net/ca/how-to-install-capanalysis .
-Uzaktan erişim CapAnalysis için, yeni bir gelen güvenlik kuralı ekleyerek sanal makinenizde 9877 numaralı bağlantı noktasını açmanız gerekir. Ağ güvenlik gruplarında kural oluşturma hakkında daha fazla bilgi için, [mevcut BIR NSG 'de kurallar oluşturma](../virtual-network/manage-network-security-group.md#create-a-security-rule)bölümüne bakın. Kural başarıyla eklendikten sonra, CapAnalysis adresinden erişim sağlayabilmelisiniz`http://<PublicIP>:9877`
+Uzaktan erişim CapAnalysis için, yeni bir gelen güvenlik kuralı ekleyerek sanal makinenizde 9877 numaralı bağlantı noktasını açmanız gerekir. Ağ güvenlik gruplarında kural oluşturma hakkında daha fazla bilgi için, [mevcut BIR NSG 'de kurallar oluşturma](../virtual-network/manage-network-security-group.md#create-a-security-rule)bölümüne bakın. Kural başarıyla eklendikten sonra, CapAnalysis adresinden erişim sağlayabilmelisiniz `http://<PublicIP>:9877`
 
 ### <a name="use-azure-network-watcher-to-start-a-packet-capture-session"></a>Paket yakalama oturumu başlatmak için Azure ağ Izleyicisi 'ni kullanma
 
@@ -47,7 +47,7 @@ Ağ Izleyicisi, bir sanal makinede trafiği izlemek için paket yakalamanızı s
 
 CapAnalysis için bir bağlantı sağlarken, Depolama Blobu URL 'sine bir SAS belirteci eklemediğinizden emin olun.  Bunu yapmak için depolama hesabından paylaşılan erişim imzası ' na gidin, izin verilen izinleri belirleyin ve bir belirteç oluşturmak için SAS Oluştur düğmesine basın. Daha sonra, SAS belirtecini paket yakalama Depolama Blobu URL 'sine ekleyebilirsiniz.
 
-Elde edilen URL aşağıdaki URL 'ye benzer bir şekilde görünür:`http:\//storageaccount.blob.core.windows.net/container/location?addSASkeyhere`
+Elde edilen URL aşağıdaki URL 'ye benzer bir şekilde görünür: `http:\//storageaccount.blob.core.windows.net/container/location?addSASkeyhere`
 
 
 ### <a name="analyzing-packet-captures"></a>Paket yakalamaları çözümleniyor

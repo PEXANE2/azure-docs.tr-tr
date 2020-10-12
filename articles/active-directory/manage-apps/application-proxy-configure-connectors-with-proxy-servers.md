@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d177dce250d65b4f9d825c9d70916f70c4076d4b
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88077518"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Mevcut şirket içi proxy sunucularıyla çalışma
@@ -144,7 +144,7 @@ Arka uç uygulamasına yönelik iletişim için bir ilet proxy kullanmak bazı o
 Bunu etkinleştirmek için lütfen sonraki adımları izleyin:
 
 ### <a name="step-1-add-the-required-registry-value-to-the-server"></a>1. Adım: gerekli kayıt defteri değerini sunucuya ekleme
-1. Varsayılan proxy 'yi kullanmayı etkinleştirmek için aşağıdaki kayıt defteri değerini (DWORD) `UseDefaultProxyForBackendRequests = 1` "HKEY_LOCAL_MACHINE \Software\Microsoft\Microsoft AAD uygulama proxy Bağlayıcısı" konumunda bulunan bağlayıcı yapılandırması kayıt defteri anahtarına ekleyin.
+1. Varsayılan proxy 'yi kullanmayı etkinleştirmek için aşağıdaki kayıt defteri değerini (DWORD) `UseDefaultProxyForBackendRequests = 1` "HKEY_LOCAL_MACHINE\Software\Microsoft\Microsoft AAD App Proxy Connector" içinde bulunan bağlayıcı yapılandırması kayıt defteri anahtarına ekleyin.
 
 ### <a name="step-2-configure-the-proxy-server-manually-using-netsh-command"></a>2. Adım: netsh komutunu kullanarak proxy sunucusunu el ile yapılandırma
 1.  Grup ilkesini makine başına ara sunucu ayarları yapın ' i etkinleştirin. Bu içinde bulunur: Bilgisayar Yapılandırması \ Yönetim Şablonları \ Windows bileşenleri \ Internet Explorer Bu ilkenin Kullanıcı başına ayarlanmış olması yerine, bu ilkenin ayarlanması gerekir.

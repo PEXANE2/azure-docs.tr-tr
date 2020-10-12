@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.openlocfilehash: 165b7d00c3cf307e7996e84a35bb2a202f448cc0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86076887"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>HDInsight'ta Hadoop ile Apache Sqoop'u kullanma
@@ -52,7 +52,7 @@ HDInsight kümesi bazı örnek verilerle birlikte gelir. Aşağıdaki iki örne�
   | deviceplatform |string |
   | devicemake |string |
   | devicemodel |string |
-  | durum |string |
+  | state |string |
   | ülke |string |
   | querydwelltime |double |
   | kimliği |bigint |
@@ -118,7 +118,7 @@ HDInsight, çeşitli yöntemler kullanarak Sqoop işlerini çalıştırabilir. S
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Şimdi Sqoop 'yi nasıl kullanacağınızı öğrendiniz. Daha fazla bilgi için bkz:
+Şimdi Sqoop 'yi nasıl kullanacağınızı öğrendiniz. Daha fazla bilgi edinmek için şu makalelere bakın:
 
 * [HDInsight ile Apache Hive kullanma](../hdinsight-use-hive.md)
 * [HDInsight 'a veri yükleme](../hdinsight-upload-data.md): HDInsight/Azure Blob depolamaya veri yüklemek için diğer yöntemleri bulun.

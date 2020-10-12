@@ -6,10 +6,10 @@ ms.subservice: shared-capabilities
 ms.date: 09/10/2020
 ms.topic: conceptual
 ms.openlocfilehash: 844a45c9b596522b949443b6edc311308da7806c
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90004621"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Azure Otomasyonu 'nda zamanlamaları yönetme
@@ -26,7 +26,7 @@ Azure Otomasyonu 'nda bir runbook 'u belirli bir zamanda başlayacak şekilde za
 
 Aşağıdaki tablodaki cmdlet 'ler, PowerShell ile otomasyon zamanlamaları oluşturur ve yönetir. Bunlar [az modüllerin](modules.md#az-modules)bir parçası olarak sevk ederler.
 
-| Cmdlet’ler | Description |
+| Cmdlet’ler | Açıklama |
 |:--- |:--- |
 | [Get-AzAutomationSchedule](/powershell/module/Az.Automation/Get-AzAutomationSchedule) |Bir zamanlama alır. |
 | [Get-AzAutomationScheduledRunbook](/powershell/module/az.automation/get-azautomationscheduledrunbook) |Zamanlanan runbook 'ları alır. |

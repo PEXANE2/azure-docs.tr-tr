@@ -4,10 +4,10 @@ description: Bir Azure Resource Manager şablonu kullanarak bir görüntü oluş
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: 7ad40d2e925d5e1443af9bce4115d45b0e8c06e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82927777"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>Kaynak Yöneticisi şablonları kullanarak ACR görevlerini çalıştırma
@@ -26,7 +26,7 @@ Bir görev çalıştırmasını sıraya almak için Kaynak Yöneticisi şablonu 
 * Bir GitHub deposu gibi bir uzak bağlamı, görev çalıştırınızın [kaynak konumu](container-registry-tasks-overview.md#context-locations) olarak belirtmeniz gerekir. Yerel bir kaynak bağlamı kullanamazsınız.
 * Yönetilen bir kimlik kullanılarak görev çalıştırmaları için yalnızca *Kullanıcı tarafından atanan* yönetilen kimliğe izin verilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **GitHub hesabı** -henüz yoksa bir hesap oluşturun https://github.com . 
 * **Çatal örnek deposu** -burada gösterilen görev örnekleri için GitHub Kullanıcı arabirimini kullanarak aşağıdaki örnek depoyu GitHub hesabınıza çatalla: https://github.com/Azure-Samples/acr-build-helloworld-node . Bu depo, küçük kapsayıcı görüntüleri oluşturmak için örnek Dockerfiles ve kaynak kodu içerir.
@@ -73,7 +73,7 @@ az acr repository show-tags \
   --repository helloworld-node --output table
 ```
 
-Çıktı:
+Çıkış:
 
 ```console
 Result
@@ -221,7 +221,7 @@ az acr repository show-tags \
   --repository helloworld-node --output table
 ```
 
-Çıktı:
+Çıkış:
 
 ```console
 Result
