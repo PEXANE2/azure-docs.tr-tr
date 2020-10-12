@@ -11,10 +11,10 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
 ms.openlocfilehash: bc8fd73b18e197c42e4750612320c1b15a6db020
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83849221"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Azure Data Factory Spark etkinliğini kullanarak verileri dönüştürme
@@ -24,7 +24,7 @@ ms.locfileid: "83849221"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Bir [Data Factory işlem](concepts-pipelines-activities.md) hattındaki Spark etkinliği, [kendi](compute-linked-services.md#azure-hdinsight-linked-service) veya [isteğe](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) bağlı HDInsight kümeniz üzerinde bir Spark programı yürütür. Bu makale, veri dönüştürme ve desteklenen dönüştürme etkinliklerine genel bir bakış sunan [veri dönüştürme etkinlikleri](transform-data.md) makalesinde oluşturulur. İsteğe bağlı Spark bağlı hizmeti kullandığınızda Data Factory, verileri işlemek için tam zamanında bir Spark kümesi oluşturur ve işlem tamamlandıktan sonra kümeyi siler. 
+Bir [Data Factory işlem](concepts-pipelines-activities.md) hattındaki Spark etkinliği, [kendi](compute-linked-services.md#azure-hdinsight-linked-service) veya [isteğe](compute-linked-services.md#azure-hdinsight-on-demand-linked-service)  bağlı HDInsight kümeniz üzerinde bir Spark programı yürütür. Bu makale, veri dönüştürme ve desteklenen dönüştürme etkinliklerine genel bir bakış sunan [veri dönüştürme etkinlikleri](transform-data.md) makalesinde oluşturulur. İsteğe bağlı Spark bağlı hizmeti kullandığınızda Data Factory, verileri işlemek için tam zamanında bir Spark kümesi oluşturur ve işlem tamamlandıktan sonra kümeyi siler. 
 
 
 ## <a name="spark-activity-properties"></a>Spark etkinlik özellikleri
@@ -81,8 +81,8 @@ HDInsight bağlı hizmeti tarafından başvurulan Azure Blob depolama alanında 
 
 | Yol                  | Açıklama                              | Gerekli | Tür   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
-| `.`Asıl            | Depolama bağlı hizmetindeki Spark işinin kök yolu | Evet      | Klasör |
-| &lt;Kullanıcı tanımlı&gt; | Spark işinin giriş dosyasını işaret eden yol | Evet      | Dosya   |
+| `.` Asıl            | Depolama bağlı hizmetindeki Spark işinin kök yolu | Evet      | Klasör |
+| &lt;Kullanıcı tanımlı &gt; | Spark işinin giriş dosyasını işaret eden yol | Evet      | Dosya   |
 | ./jars                | Bu klasördeki tüm dosyalar, kümenin Java Sınıfyoluna yüklenir ve yerleştirilir | Hayır       | Klasör |
 | ./pyFiles             | Bu klasördeki tüm dosyalar, kümenin PYTHONPATH yüklenir ve bu klasöre yerleştirilir | Hayır       | Klasör |
 | ./Files               | Bu klasördeki tüm dosyalar, yürütücü çalışma dizinine yüklenir ve yerleştirilir | Hayır       | Klasör |

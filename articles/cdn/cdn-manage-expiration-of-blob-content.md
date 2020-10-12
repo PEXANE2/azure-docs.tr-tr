@@ -16,16 +16,16 @@ ms.topic: how-to
 ms.date: 02/1/2018
 ms.author: mazha
 ms.openlocfilehash: 49748b3d77d097e655ee6ec5777022c038841a6d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87073136"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Azure CDN Azure Blob Storage 'ın kullanım süresini yönetme
 > [!div class="op_single_selector"]
 > * [Azure web içeriği](cdn-manage-expiration-of-cloud-service-content.md)
-> * [Azure Blob depolama](cdn-manage-expiration-of-blob-content.md)
+> * [Azure Blob Depolama](cdn-manage-expiration-of-blob-content.md)
 > 
 > 
 
@@ -41,7 +41,7 @@ Ayrıca, CDN önbelleğe alma kurallarını ayarlayarak Azure portal önbellek a
 > Azure Blob depolama hakkında daha fazla bilgi için bkz. [BLOB depolamaya giriş](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction).
  
 
-## <a name="setting-cache-control-headers-by-using-cdn-caching-rules"></a>CDN önbelleğe alma kurallarını kullanarak Cache-Control üst bilgilerini ayarlama
+## <a name="setting-cache-control-headers-by-using-cdn-caching-rules"></a>CDN önbelleğe alma kurallarını kullanarak Cache-Control üst bilgileri ayarlama
 Blob üst bilgisini ayarlamak için tercih edilen yöntem `Cache-Control` Azure Portal önbelleğe alma kurallarını kullanmaktır. CDN önbelleğe alma kuralları hakkında daha fazla bilgi için bkz. [önbelleğe alma kurallarıyla denetim Azure CDN önbelleğe alma davranışı](cdn-caching-rules.md).
 
 > [!NOTE] 
@@ -60,7 +60,7 @@ Blob üst bilgisini ayarlamak için tercih edilen yöntem `Cache-Control` Azure 
    ![CDN önbelleğe alma sayfası](./media/cdn-manage-expiration-of-blob-content/cdn-caching-page.png)
 
 
-**BLOB depolama hizmetinin önbellek denetimi üst bilgilerini genel önbelleğe alma kurallarını kullanarak ayarlamak için:**
+**Genel önbelleğe alma kurallarını kullanarak bir BLOB depolama hizmetinin Cache-Control üst bilgilerini ayarlamak için:**
 
 1. **Genel önbelleğe alma kuralları**' nın altında sorgu **dizelerini yok say** ve **önbelleğe alma davranışını** **geçersiz kılmak**için **sorgu dizesi önbelleğe alma davranışını** ayarlayın.
       
@@ -70,7 +70,7 @@ Blob üst bilgisini ayarlamak için tercih edilen yöntem `Cache-Control` Azure 
 
    Bu genel önbelleğe alma kuralı bir saatin önbellek süresini ayarlar ve uç noktaya yapılan tüm istekleri etkiler. `Cache-Control` `Expires` Uç nokta tarafından belirtilen kaynak sunucu tarafından gönderilen tüm veya HTTP üstbilgilerini geçersiz kılar.   
 
-3. **Kaydet**'i seçin.
+3. **Kaydet**’i seçin.
  
 **Özel önbelleğe alma kurallarını kullanarak bir blob dosyasının Cache-Control üst bilgilerini ayarlamak için:**
 
@@ -84,10 +84,10 @@ Blob üst bilgisini ayarlamak için tercih edilen yöntem `Cache-Control` Azure 
 
     İlk özel önbelleğe alma kuralı, `/blobcontainer1` uç noktanız tarafından belirtilen kaynak sunucudaki klasördeki tüm blob dosyaları için dört saatlik bir önbellek süresi ayarlar. İkinci kural yalnızca blob dosyası için ilk kuralı geçersiz kılar `blob1.txt` ve kendisi için iki saatlik bir önbellek süresi ayarlar.
 
-2. **Kaydet**'i seçin.
+2. **Kaydet**’i seçin.
 
 
-## <a name="setting-cache-control-headers-by-using-azure-powershell"></a>Azure PowerShell kullanarak Cache-Control üst bilgilerini ayarlama
+## <a name="setting-cache-control-headers-by-using-azure-powershell"></a>Azure PowerShell kullanarak Cache-Control üst bilgileri ayarlama
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -114,7 +114,7 @@ $blob.ICloudBlob.SetProperties()
 > 
 >
 
-## <a name="setting-cache-control-headers-by-using-net"></a>.NET kullanarak Cache-Control üst bilgilerini ayarlama
+## <a name="setting-cache-control-headers-by-using-net"></a>.NET kullanarak Cache-Control üst bilgileri ayarlama
 .NET Code kullanarak bir Blobun üstbilgisini belirtmek için `Cache-Control` , [cloudblob. Properties. CacheControl](/dotnet/api/microsoft.azure.storage.blob.blobproperties.cachecontrol) özelliğini ayarlamak üzere [.net Için Azure depolama istemci kitaplığı](../storage/blobs/storage-dotnet-how-to-use-blobs.md) ' nı kullanın.
 
 Örneğin:
@@ -150,7 +150,7 @@ class Program
 > [.Net Için Azure Blob depolama örneklerinde](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/)daha fazla .NET kod örneği mevcuttur.
 > 
 
-## <a name="setting-cache-control-headers-by-using-other-methods"></a>Diğer yöntemleri kullanarak Cache-Control üst bilgilerini ayarlama
+## <a name="setting-cache-control-headers-by-using-other-methods"></a>Diğer yöntemleri kullanarak Cache-Control üst bilgileri ayarlama
 
 ### <a name="azure-storage-explorer"></a>Azure Depolama Gezgini
 [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)Ile, *CacheControl* özelliği gibi özellikler de dahil olmak üzere BLOB depolama kaynaklarınızı görüntüleyebilir ve düzenleyebilirsiniz. 
@@ -164,7 +164,7 @@ Blob 'un *CacheControl* özelliğini Azure Depolama Gezgini ile güncelleştirme
 ![Azure Depolama Gezgini özellikleri](./media/cdn-manage-expiration-of-blob-content/cdn-storage-explorer-properties.png)
 
 ### <a name="azure-command-line-interface"></a>Azure Komut Satırı Arabirimi
-[Azure komut satırı arabirimi](https://docs.microsoft.com/cli/azure) (CLI) ile Azure Blob kaynaklarını komut satırından yönetebilirsiniz. Azure CLı ile bir blob yüklediğinizde Cache-Control üst bilgisini ayarlamak için, anahtarını kullanarak *cacheControl* özelliğini ayarlayın `-p` . Aşağıdaki örnek, TTL 'nin bir saate nasıl ayarlanacağını gösterir (3600 saniye):
+[Azure Command-Line arabirimi](https://docs.microsoft.com/cli/azure) (CLI) ile Azure Blob kaynaklarını komut satırından yönetebilirsiniz. Azure CLı ile bir blob yüklediğinizde Cache-Control üst bilgisini ayarlamak için, anahtarını kullanarak *cacheControl* özelliğini ayarlayın `-p` . Aşağıdaki örnek, TTL 'nin bir saate nasıl ayarlanacağını gösterir (3600 saniye):
   
 ```azurecli
 azure storage blob upload -c <connectionstring> -p cacheControl="max-age=3600" .\<blob name> <container name> <blob name>

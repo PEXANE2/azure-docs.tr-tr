@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: f20302a4993da1754255254ce6d69c000750d4ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84806772"
 ---
 # <a name="how-to-upgrade-application-gateway-ingress-controller-using-helm"></a>Helm kullanarak Application Gateway Giriş Denetleyicisini yükseltme 
@@ -56,7 +56,7 @@ Yükseltme yordamına başlamadan önce, gerekli depoyu eklemiş olduğunuzdan e
     application-gateway-kubernetes-ingress/ingress-azure    0.6.0           0.6.0           Use Azure Application Gateway as the ingress for an Azure...
     ```
 
-    Yukarıdaki listeden kullanılabilir en son sürüm:`0.7.0-rc1`
+    Yukarıdaki listeden kullanılabilir en son sürüm: `0.7.0-rc1`
 
 1. Şu anda yüklü olan Held grafiklerini görüntüleyin:
 

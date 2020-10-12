@@ -12,10 +12,10 @@ ms.date: 04/02/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7f1939536e033d2cf964dd2f4ee562e4ee20061b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934761"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Tahmin API 'SI ile modelinizi kullanma
@@ -43,7 +43,7 @@ Modeliniz yayımlandıktan sonra, __tahmin URL 'sini__seçerek gerekli bilgileri
 
 ![Performans sekmesi, tahmin URL 'SI düğmesini çevreleyen kırmızı bir dikdörtgenle gösterilir.](./media/use-prediction-api/published-iteration-prediction-url.png)
 
-![Performans sekmesi, bir görüntü dosyası ve tahmin anahtarı değeri kullanımı için tahmin URL 'SI değerini çevreleyen kırmızı bir dikdörtgenle gösterilir.](./media/use-prediction-api/prediction-api-info.png)
+![Performans sekmesi, bir görüntü dosyası ve Prediction-Key değeri kullanmak için tahmin URL 'SI değerini çevreleyen kırmızı bir dikdörtgenle gösterilir.](./media/use-prediction-api/prediction-api-info.png)
 
 
 Bu kılavuzda, bir yerel görüntü kullanacaksınız, bu nedenle geçici bir konuma **bir görüntü dosyanız** varsa, URL 'yi kopyalayın. İlgili __tahmin anahtarı__ değerini de kopyalayın.

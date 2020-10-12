@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 3ed1ecca686471e052f07e945738ad1a49e68464
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260301"
 ---
 # <a name="sfctl-replica"></a>sfctl replica
@@ -33,7 +33,7 @@ Service Fabric düğümüne dağıtılan çoğaltmanın ayrıntılarını alır.
 
 Service Fabric düğümüne dağıtılan çoğaltmanın ayrıntılarını alır. Bu bilgiler hizmet türü, hizmet adı, geçerli hizmet işlemi, geçerli hizmet işlemi başlangıç tarihi saati, bölüm KIMLIĞI, çoğaltma/örnek KIMLIĞI, bildirilen yük ve diğer bilgileri içerir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -57,7 +57,7 @@ Bir Service Fabric düğümüne dağıtılan çoğaltmaların listesini alır.
 
 Bir Service Fabric düğümüne dağıtılan çoğaltmalar hakkındaki bilgileri içeren listeyi alır. Bilgi, bölüm KIMLIĞI, çoğaltma KIMLIĞI, çoğaltmanın durumu, hizmetin adı, hizmet türünün adı ve diğer bilgiler içerir. Bu parametreler için belirtilen değerlerle eşleşen dağıtılan çoğaltmalar hakkında bilgi döndürmek için PartitionID veya ServiceManifestName sorgu parametrelerini kullanın.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -82,7 +82,7 @@ Service Fabric durum bilgisi olan bir hizmet çoğaltmasının veya durum bilgis
 
 Service Fabric çoğaltmasının sistem durumunu alır. Sistem durumuna bağlı olarak çoğaltmada bildirilen sistem durumu olaylarının toplanmasını filtrelemek için EventsHealthStateFilter kullanın.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -106,7 +106,7 @@ Service Fabric bölümün bir yinelemesi hakkındaki bilgileri alır.
 
 Yanıt, KIMLIK, rol, durum, durum, düğüm adı, çalışma süresi ve çoğaltma hakkında diğer ayrıntıları içerir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -129,7 +129,7 @@ Service Fabric hizmet bölümünün çoğaltmaları hakkındaki bilgileri alır.
 
 Getçoğaltmalar uç noktası, belirtilen bölümün çoğaltmaları hakkında bilgi döndürür. Yanıt, KIMLIK, rol, durum, durum, düğüm adı, çalışma süresi ve çoğaltma hakkında diğer ayrıntıları içerir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -152,7 +152,7 @@ Düğüm üzerinde çalışan bir hizmet çoğaltmasını kaldırır.
 
 Bu API, bir çoğaltmayı Service Fabric kümeden kaldırarak Service Fabric çoğaltma hatasına benzetir. Kaldırma işlemi çoğaltmayı kapatır, çoğaltmayı None rolüne geçirir ve sonra çoğaltmanın tüm durum bilgilerini kümeden kaldırır. Bu API, çoğaltma durumu kaldırma yolunu sınar ve istemci API 'Leri aracılığıyla rapor hatası kalıcı yolunu benzetir. Uyarı-Bu API kullanıldığında gerçekleştirilen bir güvenlik denetimi yoktur. Bu API 'nin yanlış kullanımı, durum bilgisi olan hizmetler için veri kaybına neden olabilir. Buna ek olarak, forceRemove bayrağı aynı işlemde barındırılan tüm diğer çoğaltmaları etkiler.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -177,7 +177,7 @@ Service Fabric çoğaltmasında bir sistem durumu raporu gönderir.
 
 Belirtilen Service Fabric çoğaltmasının sistem durumunu raporlar. Rapor, sistem durumu raporunun ve rapor alındığı özelliğin kaynağı hakkında bilgi içermelidir. Rapor, sistem durumu deposuna ileten bir Service Fabric ağ geçidi çoğaltmasına gönderilir. Rapor, ağ geçidi tarafından kabul edilebilir, ancak ek doğrulamadan sonra sistem durumu deposu tarafından reddedildi. Örneğin, eski bir sıra numarası gibi geçersiz bir parametre nedeniyle sistem durumu deposu raporu reddedebilir. Raporun sistem durumu deposuna uygulanıp uygulanmadığını görmek için, çoğaltma durumunu Al ' ı çalıştırın ve raporun HealthEvents bölümünde görünüp görüntülenmediğini denetleyin.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -209,7 +209,7 @@ Bir düğümde çalışan kalıcı bir hizmetin hizmet çoğaltmasını yeniden 
 
 Bir düğümde çalışan kalıcı bir hizmetin hizmet çoğaltmasını yeniden başlatır. Uyarı-Bu API kullanıldığında gerçekleştirilen bir güvenlik denetimi yoktur. Bu API 'nin yanlış kullanımı, durum bilgisi olan hizmetler için kullanılabilirlik kaybına neden olabilir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |

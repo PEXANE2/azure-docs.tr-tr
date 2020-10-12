@@ -6,19 +6,19 @@ ms.subservice: process-automation
 ms.date: 07/15/2019
 ms.topic: conceptual
 ms.openlocfilehash: c01e329e4e4ab403c8966f096239abffee1c1fc5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86185866"
 ---
 # <a name="send-an-email-from-a-runbook"></a>Runbook’tan e-posta gönderme
 
 PowerShell kullanarak, [SendGrid](https://sendgrid.com/solutions) ile runbook 'tan bir e-posta gönderebilirsiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği. Henüz bir hesabınız yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)için kaydolabilirsiniz.
+* Azure aboneliği. Henüz bir hesabınız yoksa  [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)için kaydolabilirsiniz.
 * [SendGrid hesabı](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account).
 * **Az** modüllerle [Otomasyon hesabı](./index.yml) .
 * Runbook 'u depolamak ve yürütmek için [Farklı Çalıştır hesabı](./manage-runas-account.md) .

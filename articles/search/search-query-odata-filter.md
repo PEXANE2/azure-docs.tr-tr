@@ -20,19 +20,19 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 0f33b5a28d7c83be7e546c3f61bc517047c51312
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934863"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de OData $filter söz dizimi
 
 Azure Bilişsel Arama, tam metin arama terimlerinin yanı sıra bir arama sorgusuna ek ölçütler uygulamak için [OData Filtre ifadelerini](query-odata-filter-orderby-syntax.md) kullanır. Bu makalede, filtrelerin ayrıntılı sözdizimi ayrıntıları açıklanmıştır. Filtrelerin ne olduğu ve belirli sorgu senaryolarına yönelik olarak nasıl kullanılacağı hakkında daha fazla genel bilgi için bkz. [Azure bilişsel arama filtreleri](search-filters.md).
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Sözdizimi
 
-OData dilinde bir filtre, aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) tarafından gösterildiği gibi, bir Boolean ifadedir ve bu da birçok ifade türünden biri olabilir:
+OData dilinde bir filtre, aşağıdaki EBNF ([genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) tarafından gösterildiği gibi, birden çok ifade türünden biri olabilecek bir Boole deyimidir.
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -75,7 +75,7 @@ Boolean ifadelerinin türleri şunlardır:
 
 Alt ifadelerinin etrafında parantez olmadan bir filtre ifadesi yazarsanız Azure Bilişsel Arama, bunu bir işleç öncelik kuralları kümesine göre değerlendirir. Bu kurallar, alt ifadeleri birleştirmek için kullanılan işleçleri temel alır. Aşağıdaki tablo, işleç gruplarını en yüksekten en düşük önceliğe göre listeler:
 
-| Gruplama | İşleç (ler) |
+| Grup | İşleç (ler) |
 | --- | --- |
 | Mantıksal işleçler | `not` |
 | Karşılaştırma işleçleri | `eq`, `ne`, `gt`, `lt`, `ge`, `le` |

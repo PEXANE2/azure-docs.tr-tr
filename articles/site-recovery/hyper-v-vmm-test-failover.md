@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sideeksh
 ms.openlocfilehash: 569af28f5773d843f49dd9c8143b45e308ae142e
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87420422"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>İkincil siteye Hyper-V VM 'Leri için bir DR ayrıntısı çalıştırın
@@ -49,7 +49,7 @@ Yük devretme testi çalıştırdığınızda, tabloda özetlenen test çoğaltm
 | **Var olanı kullan** | Test VM 'si, çoğaltma sanal makinesinin bulunduğu konakta oluşturulur. Buluta eklenmez.<br/><br/>Üretim ağınızdan yalıtılmış bir VM ağı oluşturun.<br/><br/>VLAN tabanlı bir ağ kullanıyorsanız, bu amaçla VMM 'de ayrı bir mantıksal ağ (üretimde kullanılmamış) oluşturmanızı öneririz. Bu mantıksal ağ yük devretme testi için VM ağları oluşturmak için kullanılır.<br/><br/>Mantıksal ağ, sanal makineleri barındıran tüm Hyper-V sunucularının en az bir ağ bağdaştırıcısı ile ilişkilendirilmelidir.<br/><br/>VLAN mantıksal ağları için, mantıksal ağa eklediğiniz ağ siteleri yalıtılmalıdır.<br/><br/>Windows ağ sanallaştırma tabanlı bir mantıksal ağ kullanıyorsanız, Azure Site Recovery otomatik olarak yalıtılmış VM ağları oluşturur. | |
 | **Ağ oluşturma** | Geçici bir test ağı, **mantıksal ağda** ve ilgili ağ sitelerinde belirttiğiniz ayara göre otomatik olarak oluşturulur.<br/><br/> Yük devretme, VM 'Lerin oluşturulduğunu denetler.<br/><br/> Bir kurtarma planı birden fazla VM ağı kullanıyorsa bu seçeneği kullanmanız gerekir.<br/><br/> Windows ağ sanallaştırma ağlarını kullanıyorsanız, bu seçenek çoğaltma sanal makinesi ağındaki aynı ayarlarla (alt ağlar ve IP adresi havuzları) VM ağları otomatik olarak oluşturabilir. Bu VM ağları, sınama yük devretmesi tamamlandıktan sonra otomatik olarak temizlenir.<br/><br/> Test VM 'si, çoğaltma sanal makinesinin bulunduğu konakta oluşturulur. Buluta eklenmez.|
 
-### <a name="best-practices"></a>En iyi uygulamalar
+### <a name="best-practices"></a>Önerilen uygulamalar
 
 - Üretim ağının sınanması, üretim iş yükleri için kapalı kalma süresine neden olur. Olağanüstü durum kurtarma detayına devam edildiğinde kullanıcılarınızın ilgili uygulamaları kullanmamasını isteyin.
 

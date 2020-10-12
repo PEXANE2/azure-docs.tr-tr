@@ -17,10 +17,10 @@ ms.author: erikre
 ms.reviewer: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
 ms.custom: devx-track-java
 ms.openlocfilehash: 3957d7501634be01a978481787885ae13ad3273b
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88225963"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>Azure dağıtımında Java 'dan SendGrid kullanarak e-posta gönderme
@@ -217,7 +217,7 @@ E-postayı göndermenin yanı sıra, emailform.jsp Kullanıcı için bir sonuç 
 ## <a name="next-steps"></a>Sonraki adımlar
 Uygulamanızı işlem öykünücüsüne dağıtın emailform.jsp 'yi çalıştırın, forma değer girin, **Bu e-postayı Gönder ' e**tıklayın ve ardından sendemail.jsp 'de sonuçları görüntüleyin.
 
-Bu kod, Azure 'da Java 'da SendGrid 'in nasıl kullanılacağını göstermek için verilmiştir. Üretim sırasında Azure 'a dağıtım yapmadan önce, daha fazla hata işleme veya diğer özellik eklemek isteyebilirsiniz. Örnek: 
+Bu kod, Azure 'da Java 'da SendGrid 'in nasıl kullanılacağını göstermek için verilmiştir. Üretim sırasında Azure 'a dağıtım yapmadan önce, daha fazla hata işleme veya diğer özellik eklemek isteyebilirsiniz. Örneğin: 
 
 * Web formu kullanmak yerine e-posta adreslerini ve e-posta iletilerini depolamak için Azure Storage bloblarını veya SQL veritabanını kullanabilirsiniz. Java 'da Azure Storage bloblarını kullanma hakkında daha fazla bilgi için bkz. [Java 'Dan blob Storage hizmetini kullanma](https://azure.microsoft.com/develop/java/how-to-guides/blob-storage/). Java 'da SQL veritabanı kullanma hakkında daha fazla bilgi için bkz. [Java 'DA SQL veritabanı kullanma](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-java).
 * Java 'da SendGrid kullanma hakkında daha fazla bilgi için bkz. [Java 'Dan SendGrid kullanarak e-posta gönderme](store-sendgrid-java-how-to-send-email.md).

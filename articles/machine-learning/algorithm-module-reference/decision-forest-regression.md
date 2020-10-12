@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 7f9677bfd793e7ff21ff2c6c7e6760b630dc074b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90898534"
 ---
 # <a name="decision-forest-regression-module"></a>Karar ormanı gerileme modülü
@@ -38,7 +38,7 @@ Karar ağaçları şu avantajları sunar:
 
 Bu regresyon modeli, karar ağaçlarının bir listesini içerir. Regresyon kararı ormanındaki her bir ağaç, bir tahmin olarak bir Gauss dağılımı çıktı. Modeldeki tüm ağaçlar için Birleşik dağıtıma en yakın bir Gauss dağılımı bulmak üzere ağaçları bir toplama işlemi gerçekleştirilir.
 
-Bu algoritmanın ve uygulamanın teorik çerçevesi hakkında daha fazla bilgi için şu makaleye bakın: [karar verme ormanları: sınıflandırma, gerileme, yoğunluk tahmini, bildirim açısından eski öğrenme ve yarı denetimli öğrenme Için Birleşik bir çerçeve](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
+Bu algoritmanın ve uygulamasının teorik çerçevesi hakkında daha fazla bilgi için şu makaleye bakın: [karar verme ormanları: sınıflandırma, gerileme, yoğunluk tahmini, bildirim, eski öğrenme ve Semi-Supervised öğrenimi Için Birleşik bir çerçeve](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Karar ormanı regresyon modelini yapılandırma
 

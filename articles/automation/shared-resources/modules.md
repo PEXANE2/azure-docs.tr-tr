@@ -9,10 +9,10 @@ ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 2bf3dda6e3d99b5ed67298343f5238d304df7e2b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187379"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Azure Otomasyonu’nda modülleri yönetme
@@ -54,7 +54,7 @@ Otomasyon, kök az modülünü yeni veya mevcut Otomasyon hesaplarına otomatik 
 | AzureRM.Sql | 1.0.3 |
 | AzureRM.Storage | 1.0.3 |
 | ComputerManagementDsc | 5.0.0.0 |
-| GPRegistryPolicyParser | 0,2 |
+| GPRegistryPolicyParser | 0.2 |
 | Microsoft. PowerShell. Core | 0 |
 | Microsoft. PowerShell. Diagnostics |  |
 | Microsoft. PowerShell. Management |  |
@@ -88,7 +88,7 @@ Azure Otomasyonu, `Orchestrator.AssetManagement.Cmdlets` Varsayılan olarak yük
 |Get-AutomationVariable|`Get-AutomationVariable [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]`|
 |Set-AutomationVariable|`Set-AutomationVariable [-Name] <string> -Value <Object> [<CommonParameters>]` |
 |Start-AutomationRunbook|`Start-AutomationRunbook [-Name] <string> [-Parameters <IDictionary>] [-RunOn <string>] [-JobId <guid>] [<CommonParameters>]`|
-|Bekleme-AutomationJob|`Wait-AutomationJob -Id <guid[]> [-TimeoutInMinutes <int>] [-DelayInSeconds <int>] [-OutputJobsTransitionedToRunning] [<CommonParameters>]`|
+|Wait-AutomationJob|`Wait-AutomationJob -Id <guid[]> [-TimeoutInMinutes <int>] [-DelayInSeconds <int>] [-OutputJobsTransitionedToRunning] [<CommonParameters>]`|
 
 İç cmdlet 'lerin, az ve Azurermcmdlet 'lerini adlandırmada farklı olduğunu unutmayın. İç cmdlet adları, adında veya adında sözcükler içermez `Azure` `Az` , ancak Word 'ü kullanır `Automation` . Bir Azure korumalı alanı veya Windows karma runbook çalışanı üzerinde runbook yürütmesi sırasında az veya Azurerk cmdlet 'lerinin kullanılmasını öneririz. Daha az parametre gerektirir ve zaten çalışmakta olan işiniz bağlamında çalışır.
 
@@ -144,7 +144,7 @@ Azure portal az modülleri içeri aktarabilirsiniz. Tüm az. Automation modülü
 
     ![Otomasyon hesabınıza modülleri içeri aktarma ekran görüntüsü](../media/modules/import-module.png)
 
-Ayrıca, içeri aktarılacak modül için arama yaparak bu [PowerShell Galerisi](https://www.powershellgallery.com)aracılığıyla içeri aktarma yapabilirsiniz. Modülü bulduğunuzda, seçin ve **Azure Otomasyonu** sekmesini seçin. **Azure Otomasyonu 'na dağıt**' ı seçin.
+Ayrıca, içeri aktarılacak modül için arama yaparak bu [PowerShell Galerisi](https://www.powershellgallery.com)aracılığıyla içeri aktarma yapabilirsiniz. Modülü bulduğunuzda, seçin ve **Azure Otomasyonu** sekmesini seçin. **Azure Otomasyonu 'Na dağıt**' ı seçin.
 
 ![Modülleri doğrudan PowerShell Galerisi içeri aktarma ekran görüntüsü](../media/modules/import-gallery.png)
 
@@ -242,7 +242,7 @@ Bu davranışa daha kolay ve daha iyi bir yol, bağlantı nesnesini doğrudan cm
   }
   ```
 
-Yalnızca parametreler için bağlantı alanları yerine doğrudan bir parametre olarak bir bağlantı nesnesini kabul etmesine izin vererek cmdlet 'leriniz için benzer davranışı etkinleştirebilirsiniz. Genellikle her biri için bir parametre kümesi istediğinizde, Otomasyonu kullanmayan bir kullanıcının, bağlantı nesnesi olarak davranacak bir Hashtable oluşturmadan cmdlet 'lerinizi çağırabilmesi gerekir. Parametre kümesi, `UserAccount` bağlantı alanı özelliklerini geçirmek için kullanılır. `ConnectionObject`bağlantıyı doğrudan iletmenizi sağlar.
+Yalnızca parametreler için bağlantı alanları yerine doğrudan bir parametre olarak bir bağlantı nesnesini kabul etmesine izin vererek cmdlet 'leriniz için benzer davranışı etkinleştirebilirsiniz. Genellikle her biri için bir parametre kümesi istediğinizde, Otomasyonu kullanmayan bir kullanıcının, bağlantı nesnesi olarak davranacak bir Hashtable oluşturmadan cmdlet 'lerinizi çağırabilmesi gerekir. Parametre kümesi, `UserAccount` bağlantı alanı özelliklerini geçirmek için kullanılır. `ConnectionObject` bağlantıyı doğrudan iletmenizi sağlar.
 
 ### <a name="output-type"></a>Çıkış türü
 

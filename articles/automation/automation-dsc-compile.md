@@ -6,10 +6,10 @@ ms.subservice: dsc
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.openlocfilehash: 3bb42886c653afbdf8975b532bd2e1e1c3c63ce9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86186546"
 ---
 # <a name="compile-dsc-configurations-in-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırmasında DSC yapılandırmalarını derleme
@@ -47,7 +47,7 @@ Windows PowerShell ile derlemeyi başlatmak için [Start-AzAutomationDscCompilat
 Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
 ```
 
-`Start-AzAutomationDscCompilationJob`iş durumunu izlemek için kullanabileceğiniz bir derleme işi nesnesi döndürür. Ardından, derleme işinin durumunu öğrenmek için [Get-AzAutomationDscCompilationJob](/powershell/module/az.automation/get-azautomationdsccompilationjob) ile bu derleme işi nesnesini kullanabilir ve kendi akışlarını (çıkış) görüntülemek için [Get-Azautomationdsccompilationjoi put](/powershell/module/az.automation/get-azautomationdscconfiguration) ' i kullanabilirsiniz. Aşağıdaki örnek SampleConfig yapılandırmasının derlemesini başlatır, tamamlanana kadar bekler ve ardından akışlarını görüntüler.
+`Start-AzAutomationDscCompilationJob` iş durumunu izlemek için kullanabileceğiniz bir derleme işi nesnesi döndürür. Ardından, derleme işinin durumunu öğrenmek için [Get-AzAutomationDscCompilationJob](/powershell/module/az.automation/get-azautomationdsccompilationjob) ile bu derleme işi nesnesini kullanabilir ve kendi akışlarını (çıkış) görüntülemek için [Get-Azautomationdsccompilationjoi put](/powershell/module/az.automation/get-azautomationdscconfiguration) ' i kullanabilirsiniz. Aşağıdaki örnek SampleConfig yapılandırmasının derlemesini başlatır, tamamlanana kadar bekler ve ardından akışlarını görüntüler.
 
 ```powershell
 $CompilationJob = Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
@@ -127,7 +127,7 @@ Nesneleri parametre olarak geçirme hakkında daha fazla bilgi için `PSCredenti
 
 ### <a name="manage-configurationdata-when-compiling-configurations-in-azure-automation"></a>Azure Otomasyonu 'nda yapılandırma derlerken ConfigurationData yönetimi
 
-`ConfigurationData`, PowerShell DSC 'yi kullanırken herhangi bir ortama özgü yapılandırmadan yapısal yapılandırmayı ayırmanızı sağlayan yerleşik bir DSC parametresidir. Daha fazla bilgi için bkz. [POWERSHELL DSC 'de "Where" den "neleri" ayırma](https://devblogs.microsoft.com/powershell/separating-what-from-where-in-powershell-dsc/).
+`ConfigurationData` , PowerShell DSC 'yi kullanırken herhangi bir ortama özgü yapılandırmadan yapısal yapılandırmayı ayırmanızı sağlayan yerleşik bir DSC parametresidir. Daha fazla bilgi için bkz. [POWERSHELL DSC 'de "Where" den "neleri" ayırma](https://devblogs.microsoft.com/powershell/separating-what-from-where-in-powershell-dsc/).
 
 > [!NOTE]
 > Azure Otomasyonu durum yapılandırması 'nda derlerken, `ConfigurationData` Azure portal Azure PowerShell ancak kullanamazsınız.

@@ -6,10 +6,10 @@ ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: dabe914ffd4e84e8ded5c0e3b519036479fe33ec
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987600"
 ---
 # <a name="migrate-azure-monitor-logs-update-deployments-to-azure-portal"></a>Azure Izleyici günlüklerini güncelleştirme dağıtımlarını Azure portal 'ye geçirme
@@ -43,7 +43,7 @@ Operations Management Suite (OMS) portalı [kullanım dışı](../azure-monitor/
 
 OMS portalında oluşturulan tüm güncelleştirme dağıtımları, var olan güncelleştirme dağıtımıyla aynı ada sahip bir bilgisayar grubu olarak da bilinen [kayıtlı bir aramaya](../azure-monitor/platform/computer-groups.md) sahiptir. Kayıtlı arama, güncelleştirme dağıtımında zamanlanan makinelerin listesini içerir.
 
-:::image type="content" source="media/migrate-oms-update-deployments/oms-deployment.png" alt-text="Ad ve sunucular alanları vurgulanmış şekilde güncelleştirme dağıtımları sayfasının ekran görüntüsü.":::
+:::image type="content" source="media/migrate-oms-update-deployments/oms-deployment.png" alt-text="Güncelleştirme yönetimi sayfasının ekran görüntüsü.":::
 
 Kayıtlı olan bu aramayı kullanmak için şu adımları izleyin:
 

@@ -16,10 +16,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4e544d135883d0c936b3f23b3e50e385268c992c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87006305"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>StorSimple Sanal dizisi dağıtma-Azure portal aracılığıyla dosya sunucusu olarak ayarlama
@@ -113,7 +113,7 @@ StorSimple Sanal dizinizi ayarlamak ve yapılandırmak için aşağıdaki adım 
     3. **Kaydet**’e tıklayın. Bu işlem cihazı yeniden başlatacak. Cihaz başarıyla kaydedilmeden önce 2-3 dakika beklemeniz gerekebilir. Cihaz yeniden başlatıldıktan sonra oturum açma sayfasına yönlendirilirsiniz.
        
        ![Bulut ayarları sayfasının ekran görüntüsü. Kayıt anahtarı ve şifreleme anahtarı kutuları doldurulmuştur, ancak değerler redaksiyonu yapılır.](./media/storsimple-virtual-array-deploy3-fs-setup/image13.png)
-12. Azure portala dönün. **Tüm kaynaklara**gidin, storsimple Aygıt Yöneticisi hizmetinizi arayın.
+12. Azure portalına dönün. **Tüm kaynaklara**gidin, storsimple Aygıt Yöneticisi hizmetinizi arayın.
     
     ![Azure portal tüm kaynaklar sayfasının ekran görüntüsü. Bir Aygıt Yöneticisi hizmeti vurgulanır.](./media/storsimple-virtual-array-deploy3-fs-setup/searchdevicemanagerservice1.png) 
 13. Filtrelenmiş listede, StorSimple Aygıt Yöneticisi hizmetinizi seçin ve ardından **yönetim > cihazlar**' a gidin. **Cihazlar** dikey penceresinde, cihazın hizmete başarıyla bağlandığını ve durumu **ayarlamaya hazırlanıyor**olduğunu doğrulayın.
@@ -124,7 +124,7 @@ StorSimple Sanal dizinizi ayarlamak ve yapılandırmak için aşağıdaki adım 
 Gerekli cihaz kurulumunu tamamlamak için [Azure Portal](https://portal.azure.com/) aşağıdaki adımları gerçekleştirin.
 
 #### <a name="to-configure-the-device-as-file-server"></a>Cihazı dosya sunucusu olarak yapılandırmak için
-1. StorSimple Aygıt Yöneticisi hizmetinize gidin ve **yönetim > cihazlar**' a gidin. **Cihazlar** dikey penceresinde, yeni oluşturduğunuz cihazı seçin. Bu cihaz, **ayarlamaya hazırlanıyor**olarak görünür.
+1. StorSimple Aygıt Yöneticisi hizmetinize gidin ve  **yönetim > cihazlar**' a gidin. **Cihazlar** dikey penceresinde, yeni oluşturduğunuz cihazı seçin. Bu cihaz, **ayarlamaya hazırlanıyor**olarak görünür.
    
    ![Dosya sunucusunu yapılandırma](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png) 
 2. Cihaza tıklayın ve cihazın kuruluma hazırlandığını belirten bir başlık iletisi görürsünüz.
@@ -203,7 +203,7 @@ Paylaşım oluşturmak için [Azure portalında](https://portal.azure.com/) aşa
 Şimdi, önceki adımda oluşturduğunuz bir veya daha fazla paylaşımlara bağlanmanız gerekir. Bu adımları, StorSimple Sanal diziniz ile bağlantılı Windows Server konağında gerçekleştirin.
 
 #### <a name="to-connect-to-the-share"></a>Paylaşıma bağlanmak için
-1. :::image type="icon" source="./media/storsimple-virtual-array-deploy3-fs-setup/image22.png":::+ R tuşuna basın. Çalıştır penceresinde, dosya sunucusu *adını* dosya sunucunuza atadığınız cihaz adı ile değiştirerek yol olarak *&#92;&#92;&lt; dosya sunucusu adını &gt; * belirtin. **Tamam** düğmesine tıklayın.
+1. :::image type="icon" source="./media/storsimple-virtual-array-deploy3-fs-setup/image22.png":::+ R tuşuna basın. Çalıştır penceresinde, dosya sunucusu *adını* dosya sunucunuza atadığınız cihaz adı ile değiştirerek yol olarak *&#92;&#92;&lt; dosya sunucusu adını &gt; * belirtin. **Tamam**'a tıklayın.
    
    ![Çalıştır iletişim kutusunun ekran görüntüsü. Aç kutusu, dosya sunucusunun başında bir yol ile doldurulur.](./media/storsimple-virtual-array-deploy3-fs-setup/image23.png)
 2. Bu, dosya Gezgini 'ni açar. Artık oluşturduğunuz paylaşımları klasörler olarak görebiliyor olmalısınız. İçeriğini görmek için paylaşımı (klasörü) seçin ve çift tıklayın.

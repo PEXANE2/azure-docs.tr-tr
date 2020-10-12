@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: 58f1c2621165a7074c04752832c6560b2fd3e423
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935441"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>Örnek: form tanıyıcı özel yeteneği oluşturma
 
 Bu Azure Bilişsel Arama Beceri örneğinde, C# ve Visual Studio kullanarak form tanıyıcı özel becerisi oluşturmayı öğreneceksiniz. Form tanıyıcı, belgeleri analiz eder ve anahtar/değer çiftlerini ve tablo verilerini ayıklar. Form tanıyıcısını [özel beceri arabirimine](cognitive-search-custom-skill-interface.md)sarmalayarak, bu özelliği uçtan uca bir zenginleştirme ardışık düzeninde bir adım olarak ekleyebilirsiniz. İşlem hattı daha sonra belgeleri yükleyebilir ve diğer dönüştürmeleri gerçekleştirebilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (herhangi bir sürüm).
 - Aynı türde en az beş form. Bu kılavuzla birlikte sunulan örnek verileri kullanabilirsiniz.

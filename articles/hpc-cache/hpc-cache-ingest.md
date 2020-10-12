@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: v-erkel
 ms.openlocfilehash: 0da8a4fc1b59976c50cd96f2155715a4cb178cc9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87072765"
 ---
 # <a name="move-data-to-azure-blob-storage"></a>Verileri Azure Blob depolamaya taşıma
@@ -42,7 +42,7 @@ Ayrıntılı bilgiler, Azure HPC Cache ekibinin isteğiyle sunulan avere CLFSLoa
 İşleme genel bir bakış:
 
 1. Python sürüm 3,6 veya sonraki bir Linux sistemini (VM veya fiziksel) hazırlayın. Daha iyi performans için Python 3,7 önerilir.
-1. Linux sistemine avere-CLFSLoad yazılımını yükleyin.
+1. Avere-CLFSLoad yazılımını Linux sistemine yükler.
 1. Linux komut satırından aktarımı yürütün.
 
 Avere CLFSLoad yardımcı programı aşağıdaki bilgileri gerektirir:

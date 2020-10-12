@@ -7,10 +7,10 @@ ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: a194074b75a404e5a28e86015b0d0bcea2619fc2
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88002288"
 ---
 # <a name="security-best-practices"></a>En iyi güvenlik uygulamaları
@@ -29,12 +29,12 @@ Windows sanal masaüstü dağıtımınızda sorumlu olduğunuz güvenlik ihtiya�
 
 | Güvenlik gereksinimi | Müşteri bundan sorumlu mi? |
 |---------------|:-------------------------:|
-|Kimlik|Yes|
-|Kullanıcı cihazları (mobil ve bılgısayar)|Yes|
-|Uygulama güvenliği|Yes|
-|Oturum Ana Bilgisayarı işletim sistemi|Yes|
-|Dağıtım yapılandırması|Yes|
-|Ağ denetimleri|Yes|
+|Kimlik|Evet|
+|Kullanıcı cihazları (mobil ve bılgısayar)|Evet|
+|Uygulama güvenliği|Evet|
+|Oturum Ana Bilgisayarı işletim sistemi|Evet|
+|Dağıtım yapılandırması|Evet|
+|Ağ denetimleri|Evet|
 |Sanallaştırma denetim düzlemi|Hayır|
 |Fiziksel konaklar|Hayır|
 |Fiziksel ağ|Hayır|
@@ -42,7 +42,7 @@ Windows sanal masaüstü dağıtımınızda sorumlu olduğunuz güvenlik ihtiya�
 
 Müşterinin sorumlu olmadığı güvenlik ihtiyaçları Microsoft tarafından işlenir.
 
-## <a name="azure-security-best-practices"></a>Azure Güvenlik en iyi uygulamaları
+## <a name="azure-security-best-practices"></a>Azure güvenliğinde en iyi uygulamalar
 
 Windows sanal masaüstü, Azure 'un altındaki bir hizmettir. Windows sanal masaüstü dağıtımınızın güvenliğini en üst düzeye çıkarmak için, çevreleyen Azure altyapısının ve yönetim düzleminin da güvenli hale geldiğinden emin olmanız gerekir. Altyapınızın güvenliğini sağlamak için Windows sanal masaüstü 'Nün daha büyük Azure ekosisteminize nasıl uyduğunu göz önünde bulundurun. Azure ekosistemi hakkında daha fazla bilgi edinmek için bkz. [Azure Güvenlik en iyi uygulamaları ve desenleri](../security/fundamentals/best-practices-and-patterns.md).
 
@@ -80,7 +80,7 @@ Windows sanal masaüstündeki tüm kullanıcılar ve yöneticiler için Multi-Fa
 
 Denetim günlüğü toplamayı etkinleştirmek, Windows sanal masaüstü ile ilgili Kullanıcı ve yönetici etkinliğini görüntülemenize olanak sağlar. Anahtar denetim günlüklerine bazı örnekler şunlardır:
 
--   [Azure Etkinlik Günlüğü](../azure-monitor/platform/activity-log-collect.md)
+-   [Azure etkinlik günlüğü](../azure-monitor/platform/activity-log-collect.md)
 -   [Etkinlik günlüğünü Azure Active Directory](../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)
 -   [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
 -   [Oturum Konakları](../azure-monitor/platform/agent-windows.md)

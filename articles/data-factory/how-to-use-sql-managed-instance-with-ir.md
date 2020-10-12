@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
 ms.openlocfilehash: 2bdfdd31e2cc9bc964abc040d0631c4760fca283
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90984879"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Azure Data Factory Azure SQL yönetilen örneğini SQL Server Integration Services (SSIS) ile kullanın
@@ -32,7 +32,7 @@ Artık SQL Server Integration Services (SSIS) projelerinizi, paketleri ve iş y�
 
 ## <a name="provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği tarafından barındırılan SSSıSDB ile Azure-SSIS IR sağlama
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 1. Azure Active Directory kimlik doğrulaması seçerken [Azure SQL yönetilen örneği üzerinde Azure Active Directory (Azure AD) etkinleştirin](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance).
 
@@ -163,7 +163,7 @@ Azure-SSIS IR oluşturma hakkında daha fazla bilgi için, bkz. [Azure Data Fact
 
 ## <a name="clean-up-ssisdb-logs"></a>SSSıSDB günlüklerini temizle
 
-SSSıSDB günlükleri bekletme ilkesi, katalogdaki Özellikler altında tanımlanır [. catalog_properties](https://docs.microsoft.com/sql/integration-services/system-views/catalog-catalog-properties-ssisdb-database?view=sql-server-ver15):
+SSıSDB günlükleri bekletme ilkesi, [Catalog.catalog_properties](https://docs.microsoft.com/sql/integration-services/system-views/catalog-catalog-properties-ssisdb-database?view=sql-server-ver15)Özellikler altında aşağıda tanımlanır:
 
 - OPERATION_CLEANUP_ENABLED
 

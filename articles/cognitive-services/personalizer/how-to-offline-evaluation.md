@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.openlocfilehash: a473085f9c94ca42a75d01b342d60cc33836b096
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88244849"
 ---
 # <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>Çevrimdışı değerlendirmede öğrenme döngünüzü çözümleyin
@@ -23,7 +23,7 @@ ms.locfileid: "88244849"
 
 Daha fazla bilgi edinmek için [çevrimdışı değerlendirmeler](concepts-offline-evaluation.md) hakkında bölümünü okuyun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Yapılandırılmış bir kişiselleştirici döngüsü
 * Kişiselleştirme döngüsünün temsili bir veri miktarına sahip olması gerekir. bunun için, en az 50.000 olay üzerinde anlamlı değerlendirme sonuçları elde etmenizi öneririz. İsteğe bağlı olarak, aynı değerlendirmede karşılaştırmak ve test yapmak için daha önce de daha önce _öğrendiğiniz öğrenme ilkesi_ dosyalarını vermiş olabilirsiniz.

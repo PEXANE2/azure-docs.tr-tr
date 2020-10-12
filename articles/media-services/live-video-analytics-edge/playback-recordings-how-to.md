@@ -4,10 +4,10 @@ description: Sürekli video kaydı için IoT Edge, canlı video analizi 'ni kull
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.openlocfilehash: 6222d2c05b2fe05945d4bcbef6dbb0d64bd4726a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84261082"
 ---
 # <a name="playback-of-recordings"></a>Kayıtların kayıttan yürütülmesi 
@@ -18,7 +18,7 @@ ms.locfileid: "84261082"
 * [Sürekli video kaydı](continuous-video-recording-concept.md)
 * [Olay tabanlı video kaydı](event-based-video-recording-concept.md)
 
-## <a name="background"></a>Arka plan  
+## <a name="background"></a>Arka Plan  
 
 [Sürekli video kaydı](continuous-video-recording-concept.md) (CVR) için IoT Edge, canlı video analizlerini kullanarak haftalık veya aylık bir videoyu buluta kaydedebilirsiniz. Ayrıca kaydınızı, [olay tabanlı video kaydı](event-based-video-recording-concept.md) (EVR) aracılığıyla ilgilendiğiniz kliplerle sınırlayabilirsiniz. 
 
@@ -209,8 +209,8 @@ GET https://hostname/locatorId/content.ism/availableMedia?precision=day&startTim
 
 Yukarıda bahsedildiği gibi, bu filtreler, kayıttan yürütme için kaydınızın bölümlerini seçmenize yardımcı olur (örneğin, yeni yıllarca 00 ' a kadar gün). HLS aracılığıyla akış yaparken akış URL 'SI şöyle görünür `https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl).m3u8` . Kaydınızın bir kısmını seçmek için, şöyle bir startTime ve bir bitişsaati parametresi eklersiniz: `https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2019-12-21T08:00:00Z,endTime=2019-12-21T10:00:00Z).m3u8` . Bu nedenle, zaman aralığı filtreleri, akış bildiriminde yer alan kayıt zaman çizelgesinin bölümünü anlatmak için kullanılan URL değiştiricilerdir:
 
-* `starttime`, döndürülen bildirimde video zaman çizelgesinin istenen başlangıç saatini açıklayan bir ISO 8601 tarih saat damgası.
-* `endtime`, bildirimde döndürülen video zaman çizelgesinin istenen bitiş saatini açıklayan bir ISO 8601 tarih saat damgası.
+* `starttime` , döndürülen bildirimde video zaman çizelgesinin istenen başlangıç saatini açıklayan bir ISO 8601 tarih saat damgası.
+* `endtime` , bildirimde döndürülen video zaman çizelgesinin istenen bitiş saatini açıklayan bir ISO 8601 tarih saat damgası.
 
 Bu bildirimin en fazla uzunluğu (Time) 24 saati aşamaz.
 
@@ -294,7 +294,7 @@ Böyle bir kayıt ile:
     `GET https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2019-12-21T14:01:00.000Z,endTime=2019-12-21T03:00:00.000Z).m3u8`
 * StartTime ve bitişinin ortadaki "delik" içinde olduğu bir bildirim isteğinde bulunursa ve 00 ile 10:00'DA UTC arasında bir bildirim istemeniz durumunda hizmet, bir varlık filtresinin boş bir sonuçla sonuçlandığı şekilde aynı şekilde davranır.
 
-    [Bu, boş bir yanıt alan bir istedir]`GET https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2019-12-21T08:00:00.000Z,endTime=2019-12-21T10:00:00.000Z).m3u8`
+    [Bu, boş bir yanıt alan bir istedir] `GET https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2019-12-21T08:00:00.000Z,endTime=2019-12-21T10:00:00.000Z).m3u8`
 * Başlangıç veya Bitişden yalnızca birinin ' delik ' içinde olduğu bir bildirim isteğinde bulunursa, döndürülen bildirim yalnızca bu TimeSpan 'nin bir bölümünü içerir. StartTime veya bitişsaati değerini en yakın geçerli sınıra yasırdı. Örneğin, 10:00:00-1PM arası 3 saatlik bir akış sorulursa, yanıt 12 öğleden sonra 1PM 'e kadar 1-saatlik medya içermelidir
 
     `GET https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2019-12-21T10:00:00.000Z,endTime=2019-12-21T13:00:00.000Z).m3u8`
@@ -303,7 +303,7 @@ Böyle bir kayıt ile:
 
 ## <a name="recording-and-playback-latencies"></a>Kaydetme ve kayıttan yürütme gecikmeleri
 
-Bir varlığa kaydetmek için IoT Edge üzerinde canlı video analizi kullanırken, modüle, buluta kaydedilmeden önce en az bir video (saniye cinsinden) süresini toplamasını söyleyen bir segmentLength özelliği belirtirsiniz. Örneğin, segmentLength 300 olarak ayarlandıysa, modül 5 dakikalık "Öbek" karşıya yüklemeden önce 5 dakikalık bir videoyu biriktirir, ardından sonraki 5 dakika boyunca birikme moduna geçer ve yeniden karşıya yüklenir. SegmentLength 'in artırılması, okuma ve yazma sayısı her segmentLength saniyede bir kez daha sık olmadığı için Azure depolama işlem maliyetlerinizi azaltmaya yarar.
+Bir varlığa kaydetmek için IoT Edge üzerinde canlı video analizi kullanırken, modüle, buluta kaydedilmeden önce en az bir video (saniye cinsinden) süresini toplamasını söyleyen bir segmentLength özelliği belirtirsiniz. Örneğin, segmentLength 300 olarak ayarlanırsa modül, 1 5 dakika "Öbek" yüklemeden önce 5 dakikalık bir video birikmesini sağlar ve ardından sonraki 5 dakika boyunca birikme moduna geçer ve yeniden karşıya yükler. SegmentLength 'in artırılması, okuma ve yazma sayısı her segmentLength saniyede bir kez daha sık olmadığı için Azure depolama işlem maliyetlerinizi azaltmaya yarar.
 
 Sonuç olarak, Media Services videonun akışı en az bu kadar gecikecek. 
 

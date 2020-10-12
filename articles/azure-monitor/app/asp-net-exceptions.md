@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/11/2019
 ms.openlocfilehash: 36e916eabfca8e997fc3d46ff10f6201203457cd
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88936512"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Application Insights ile web uygulamalarınızda özel durumları tanılama
@@ -95,7 +95,7 @@ Bu olayları görmek için, sol menüden [Ara](./diagnostic-search.md) ' yı aç
 ## <a name="capturing-exceptions-and-related-diagnostic-data"></a><a name="exceptions"></a> Özel durumları ve ilgili tanılama verilerini yakalama
 İlk olarak, portalda hatalara neden olan tüm özel durumların portalda görmezsiniz. Herhangi bir tarayıcı özel durumu görürsünüz (Web sayfalarınızda [JavaScript SDK 'sını](./javascript.md) kullanıyorsanız). Ancak, çoğu sunucu özel durumu IIS tarafından yakalanır ve bunları görmek için bir kod yazmanız gerekir.
 
-Seçenekleriniz şunlardır:
+Şunları yapabilirsiniz:
 
 * Özel durumları raporlamak için özel durum işleyicilerinde kod ekleyerek **özel durumları açıkça günlüğe kaydedin** .
 * ASP.NET çerçevesini yapılandırarak **özel durumları otomatik olarak yakalayın** . Gerekli eklemeler farklı çerçeve türleri için farklıdır.
@@ -200,7 +200,7 @@ Ancak etkin yeniden yönlendirmelere sahipseniz, Global.asax.cs içindeki Applic
 ## <a name="mvc"></a>MVC
 Application Insights Web SDK 2,6 (Beta3 ve üzeri) sürümünden itibaren, Application Insights MVC 5 + denetleyiciler yöntemlerinde otomatik olarak oluşturulan işlenmeyen özel durumları toplar. Bu tür özel durumları izlemek için daha önce özel bir işleyici eklediyseniz (aşağıdaki örneklerde açıklandığı gibi), özel durumların çift izlemesini engellemek için bunu kaldırabilirsiniz.
 
-Özel durum filtrelerinden işleyememesi gereken birkaç durum vardır. Örnek:
+Özel durum filtrelerinden işleyememesi gereken birkaç durum vardır. Örneğin:
 
 * Denetleyici oluşturucularından gelen özel durumlar.
 * İleti işleyicilerinden oluşturulan özel durumlar.
@@ -292,7 +292,7 @@ AiHandleErrorAttribute 'ı FilterConfig.cs içinde genel bir filtre olarak Kayde
 ## <a name="web-api"></a>Web API
 Application Insights Web SDK 2,6 (Beta3 ve üzeri) sürümünden başlayarak, Application Insights, denetleyici yöntemlerinde otomatik olarak oluşturulan işlenmeyen özel durumları, WebAPI 2 + için otomatik olarak toplar. Bu tür özel durumları izlemek için daha önce özel bir işleyici eklediyseniz (aşağıdaki örneklerde açıklandığı gibi), özel durumların çift izlemesini engellemek için bunu kaldırabilirsiniz.
 
-Özel durum filtrelerinden işleyememesi gereken birkaç durum vardır. Örnek:
+Özel durum filtrelerinden işleyememesi gereken birkaç durum vardır. Örneğin:
 
 * Denetleyici oluşturucularından gelen özel durumlar.
 * İleti işleyicilerinden oluşturulan özel durumlar.

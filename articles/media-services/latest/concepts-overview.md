@@ -14,10 +14,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
 ms.openlocfilehash: dec0503ec369ae473fb592db958c0e30a27a4268
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89297442"
 ---
 # <a name="media-services-terminology-and-concepts"></a>Media Services terminoloji ve kavramlar
@@ -43,7 +43,7 @@ Bu konularda açıklanan temel kavramlar, geliştirmeye başlamadan önce incele
 
 ## <a name="media-services-v3-concepts"></a>Media Services v3 kavramları
 
-|Kavramlar|Description|Bağlantılar|
+|Kavramlar|Açıklama|Bağlantılar|
 |---|---|---|
 |Varlıklar ve karşıya içerik yükleme|Azure 'da medya içeriğini yönetmeye, şifrelemeye, kodlamaya, çözümlemeye ve akışla başlamak için bir Media Services hesabı oluşturmanız ve dijital dosyalarınızı **varlıklara**yüklemeniz gerekir.|[Bulutta karşıya yükleme ve depolama](storage-account-concept.md)<br/><br/>[Varlık kavramı](assets-concept.md)|
 |İçerik kodlama|Yüksek kaliteli dijital medya dosyalarınızı varlıklara yükledikten sonra, bunları çok çeşitli tarayıcılarda ve cihazlarda yürütülebilecek biçimlere kodlayabilirsiniz. <br/><br/>Media Services v3 ile kodlamak için **dönüşümler** ve **işler**oluşturmanız gerekir.|[Dönüşümler ve Işler](transforms-jobs-concept.md)<br/><br/>[Media Services kodlama](encoding-concept.md)|

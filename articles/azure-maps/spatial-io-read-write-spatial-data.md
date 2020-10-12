@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: dd4a02ffdc062ed1940d35ca64e02a5e0a88a248
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333333"
 ---
 # <a name="read-and-write-spatial-data"></a>Uzamsal verileri okuma ve yazma
@@ -29,7 +29,7 @@ Aşağıdaki tabloda, uzamsal GÇ modülü ile okuma ve yazma işlemleri için d
 | KML               | ✓  |  ✓  |
 | KMZ               | ✓  |  ✓  |
 | Uzamsal CSV       | ✓  |  ✓  |
-| İyi bilinen metin   | ✓  |  ✓  |
+| Well-Known metin   | ✓  |  ✓  |
 
 Bu sonraki bölümlerde, uzamsal GÇ modülünü kullanarak uzamsal verileri okumak ve yazmak için tüm farklı araçlar ana hatlarıyla verilmektedir.
 
@@ -41,7 +41,7 @@ Sıkıştırılmış bir dosyayı ZIP veya bir KMZ olarak okurken, dosyanın sı
 
 Read işlevinin sonucu bir `SpatialDataSet` nesnedir. Bu nesne GeoJSON FeatureCollection sınıfını genişletir. `DataSource`Özelliklerini bir haritada işlemek için kolayca olarak bir olarak geçirilebilir. `SpatialDataSet`Yalnızca özellik bilgilerini içermez, ancak aşağıdaki tabloda ÖZETLENEN KML zemin yer paylaşımlarını, işleme ölçümlerini ve diğer ayrıntıları da içerebilir.
 
-| Özellik adı | Tür | Description | 
+| Özellik adı | Tür | Açıklama | 
 |---------------|------|-------------|
 | `bbox` | `BoundingBox` | Veri kümesindeki tüm verilerin sınırlayıcı kutusu. |
 | `features` | `Feature[]` | Veri kümesi içindeki GeoJSON özellikleri. |
@@ -123,26 +123,26 @@ atlas.io.read(data, {
 );
 ```
 
-## <a name="read-and-write-well-known-text-wkt"></a>Iyi bilinen metin (WKT) okuma ve yazma
+## <a name="read-and-write-well-known-text-wkt"></a>Well-Known metin (WKT) okuma ve yazma
 
 [Iyi bilinen metin](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) (wkt), uzamsal geometrilerin metin olarak temsil edilmesi için bir Open Geospatial Consortium (ogc) standardıdır. Birçok Jeo uzamsal sistem PostGIS eklentisini kullanarak Azure SQL ve Azure PostgreSQL gibi WKT 'yi destekler. Çoğu OGC standartları gibi, koordinatlar "x y" kuralına uyum sağlamak için "Boylam Enlem" olarak biçimlendirilir. Örnek olarak, Boylam-110 ve Latitude 45 ' deki bir nokta, `POINT(-110 45)` WKT biçimi kullanılarak yazılabilir.
 
 İyi bilinen metin işlevini kullanarak okunabilir `atlas.io.ogc.WKT.read` ve işlevi kullanılarak yazılabilir `atlas.io.ogc.WKT.write` .
 
-## <a name="examples-of-reading-and-writing-well-known-text-wkt"></a>Iyi bilinen metin (WKT) okuma ve yazma örnekleri
+## <a name="examples-of-reading-and-writing-well-known-text-wkt"></a>Well-Known metin (WKT) okuma ve yazma örnekleri
 
 Aşağıdaki kod, iyi bilinen metin dizesinin nasıl okunacağını `POINT(-122.34009 47.60995)` ve bir kabarcık katmanı kullanarak haritada nasıl işleneceğini gösterir.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Iyi bilinen metni oku' src='//codepen.io/azuremaps/embed/XWbabLd/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen üzerinde Azure Maps () ile <a href='https://codepen.io/azuremaps/pen/XWbabLd/'>birlikte bilinen metin okuma</a> kalemine bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='500' scrolling='no' title='Well-Known metin oku' src='//codepen.io/azuremaps/embed/XWbabLd/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen üzerinde Azure Maps () tarafından <a href='https://codepen.io/azuremaps/pen/XWbabLd/'>okunan Well-Known metnini</a> görüntüleyin <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 Aşağıdaki kod, iyi bilinen metinleri okumayı ve okumayı ve geri yazmayı gösterir.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Iyi bilinen metni okuma ve yazma' src='//codepen.io/azuremaps/embed/JjdyYav/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen üzerinde Azure Maps () ile kalem <a href='https://codepen.io/azuremaps/pen/JjdyYav/'>okuma ve yazma Iyi bilinen metinler</a> bölümüne bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='700' scrolling='no' title='Well-Known metin oku ve yaz' src='//codepen.io/azuremaps/embed/JjdyYav/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen üzerinde Azure Maps () ile ilgili <a href='https://codepen.io/azuremaps/pen/JjdyYav/'>okuma ve yazma Well-Known metin</a> başlığına bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="read-and-write-gml"></a>GML oku ve yaz

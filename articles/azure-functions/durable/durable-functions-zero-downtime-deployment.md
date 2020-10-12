@@ -7,10 +7,10 @@ ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 11bbc30179cc27f4799b1fd2869cb312dfa34473
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87093077"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Dayanıklı İşlevler için sıfır kesinti süresi dağıtımı
@@ -54,7 +54,7 @@ Bu senaryoyu ayarlamak için aşağıdaki yordamı kullanın.
 
 1. Her yuva için, örneğin, yeni bir uygulama ayarı oluşturun `DurableManagementStorage` . Değerini farklı depolama hesaplarının bağlantı dizesine ayarlayın. Bu depolama hesapları, [güvenilir yürütme](./durable-functions-orchestrations.md)için dayanıklı işlevler uzantısı tarafından kullanılır. Her yuva için ayrı bir depolama hesabı kullanın. Bu ayarı bir dağıtım yuvası ayarı olarak işaretlemeyin.
 
-1. İşlev uygulamanızın [Dosya durableTask bölümündehost.js](durable-functions-bindings.md#hostjson-settings), `azureStorageConnectionStringName` Adım 3 ' te oluşturduğunuz uygulama ayarının adı olarak belirtin.
+1. İşlev uygulamanızın [ Dosya durableTask bölümündehost.js](durable-functions-bindings.md#hostjson-settings), `azureStorageConnectionStringName` Adım 3 ' te oluşturduğunuz uygulama ayarının adı olarak belirtin.
 
 Aşağıdaki diyagramda, dağıtım yuvaları ve depolama hesaplarının açıklanan yapılandırması gösterilmektedir. Bu potansiyel dağıtım senaryosunda, bir işlev uygulamasının 2. sürümü üretim yuvasında çalışmaktadır, 1. sürüm hazırlama yuvasında kalır.
 
