@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c0dfa06e2ece2ba4631c0d5681b066ab0134daba
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085676"
 ---
 # <a name="explore-data-in-hive-tables-with-hive-queries"></a>Hive sorguları ile Hive tablosundaki verileri keşfedin
@@ -24,7 +24,7 @@ Bu makalede, bir HDInsight Hadoop kümesindeki Hive tablolarındaki verileri ara
 
 Bu görev, [ekip veri bilimi işlemindeki](overview.md)bir adımdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makalede sahip olduğunuz varsayılır:
 
 * Bir Azure depolama hesabı oluşturuldu. Yönergelere ihtiyacınız varsa bkz. [Azure depolama hesabı oluşturma](../../storage/common/storage-account-create.md)
@@ -34,11 +34,11 @@ Bu makalede sahip olduğunuz varsayılır:
 * Hive sorgularının nasıl gönderileceği hakkında yönergeler gerekiyorsa bkz. [Hive sorguları gönderme](move-hive-tables.md#submit)
 
 ## <a name="example-hive-query-scripts-for-data-exploration"></a>Veri araştırması için örnek Hive sorgu betikleri
-1. Bölüm başına gözlemlerin sayısını Al`SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
-2. Gün başına gözlemlerin sayısını Al`SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
+1. Bölüm başına gözlemlerin sayısını Al  `SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
+2. Gün başına gözlemlerin sayısını Al  `SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
 3. Kategorik bir sütundaki düzeyleri al  
     `SELECT  distinct <column_name> from <databasename>.<tablename>`
-4. İki kategorik sütunun birleşimi içindeki düzeylerin sayısını Al`SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
+4. İki kategorik sütunun birleşimi içindeki düzeylerin sayısını Al  `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
 5. Sayısal sütunlara yönelik dağıtımı al  
     `SELECT <column_name>, count(*) from <databasename>.<tablename> group by <column_name>`
 6. İki tablonun birleştirilmesinden kayıtları Ayıkla

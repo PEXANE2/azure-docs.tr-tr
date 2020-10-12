@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/13/2018
 ms.author: routlaw
 ms.openlocfilehash: 925246eb2adae59ca74e363c4d4a6952f11c3744
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87292327"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>REST API kullanarak sanal makine kullanım ölçümlerini alın
@@ -45,7 +45,7 @@ Aşağıdaki üstbilgiler gereklidir:
 | subscriptionId | Bir Azure aboneliğini tanımlayan abonelik KIMLIĞI. Birden çok aboneliğiniz varsa bkz. [birden çok abonelikle çalışma](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
 | resourceGroupName | Kaynakla ilişkili Azure Kaynak grubunun adı. Bu değeri Azure Resource Manager API, CLı veya portaldan edinebilirsiniz. |
 | VMName | Azure sanal makinesinin adı. |
-| metricnames | Geçerli [Load Balancer ölçümlerinin](../../load-balancer/load-balancer-standard-diagnostics.md)virgülle ayrılmış listesi. |
+| metricnames | Geçerli  [Load Balancer ölçümlerinin](../../load-balancer/load-balancer-standard-diagnostics.md)virgülle ayrılmış listesi. |
 | api-sürümü | İstek için kullanılacak API sürümü.<br /><br /> Bu belge `2018-01-01` , yukarıdaki URL 'ye dahil edilen api sürümünü içerir.  |
 | timespan | `startDateTime_ISO/endDateTime_ISO`Döndürülen ölçümlerin zaman aralığını tanımlayan aşağıdaki biçimdeki dize. Bu isteğe bağlı parametre, örnekteki verilerin bir gününü döndürecek şekilde ayarlanır. |
 | &nbsp; | &nbsp; |

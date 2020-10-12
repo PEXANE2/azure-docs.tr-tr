@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: d5e867849d17a489fad37d09215905d23fb0ed6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514254"
 ---
 # <a name="contact-microsoft-support"></a>Microsoft Desteği’ne başvurma
@@ -57,7 +57,7 @@ Destek isteği oluşturmadan önce [StorSimple 8000 serisi destek SLA 'larını 
 
    1. **İletişim seçeneklerinde**tercih ettiğiniz iletişim yönteminizi (telefon veya e-posta) ve dili girin. Yanıt süresi, abonelik planınıza göre otomatik olarak seçilir.
    2. Iletişim bilgilerinde adınızı, e-postanızı, isteğe bağlı iletişim, ülke/bölge ' yi belirtin. **Gelecekteki destek istekleri için kişi değişikliklerini kaydet** onay kutusunu seçin.
-   3. **Oluştur**'a tıklayın.
+   3. **Oluştur**’a tıklayın.
    
        ![Yeni Portal aracılığıyla MS desteği ile iletişim kurun](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 

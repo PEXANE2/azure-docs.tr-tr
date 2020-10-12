@@ -9,17 +9,17 @@ services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1a7d29583636879698abc598e1935358796b6062
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90975994"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Power BI kullanarak uzaktan Izleme verilerini görselleştirin
 
 Bu öğreticide, CosmosDB 'den Power BI 'e uzaktan Izleme çözümü verilerinizi nasıl taktığınız açıklanmaktadır. Bu bağlantı kurulduunda, kendi özel panolarınızı oluşturabilir ve bunları uzaktan Izleme çözümü panonuza geri ekleyebilirsiniz. Bu iş akışı, daha fazla özelleşmiş grafiklerin oluşturulmasına izin verir. Daha sonra bu öğreticiyi kullanarak diğer veri akışlarıyla tümleştirebilir veya uzaktan Izleme çözümünüzün dışında tüketilen özel panolar oluşturabilirsiniz. Power BI panoları oluşturmak, belirli parçalar seçerken her bir paneli birbirleriyle etkileşime giremeyeceğiniz anlamına gelir. Örneğin, yalnızca sanal stoklarınızla ilgili bilgileri gösteren bir filtreniz olabilir ve panonuzun her parçası yalnızca sanal kamyon bilgilerini gösterecek şekilde etkileşime girebilir. Power BI dışında bir araç kullanmak istiyorsanız, bu adımları tercih ettiğiniz Görselleştirme aracını kullanmak için genişletebilir ve Cosmos veritabanına veya bir tane ayarladıysanız özel veritabanına bağlayabilirsiniz. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Şu anda çalışan bir uzaktan Izleme çözümünüz olması gerekir
 - IoT Hub ve çözümünün çalıştığı [Azure Portal](https://portal.azure.com) ve aboneliğiniz için erişiminizin olması gerekir

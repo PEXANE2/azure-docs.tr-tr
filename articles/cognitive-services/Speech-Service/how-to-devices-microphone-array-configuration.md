@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: wellsi
 ms.openlocfilehash: a2652bed6c8e7dec0a6fe8f9471793c3873646bf
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82781762"
 ---
-# <a name="how-to-configure-a-microphone-array"></a>Mikrofon dizisi yapılandırma
+# <a name="how-to-configure-a-microphone-array"></a>Mikrofon Dizisini yapılandırma
 
 Bu makalede, bir [mikrofon dizisinin](https://aka.ms/sdsdk-microphone)nasıl yapılandırılacağını öğreneceksiniz. Bu, çalışma açısını ayarlamayı ve konuşma cihazları SDK 'Sı için hangi mikrofonun kullanıldığını seçmenizi içerir.
 
@@ -36,20 +36,20 @@ V 1.11.0 'den konuşma cihazları SDK 'Sı Ayrıca bir [json dosyasından](https
 
 
 ## <a name="windows"></a>Windows
-Windows 'da, mikrofon dizisi geometrisi bilgileri, ses sürücüsünden otomatik olarak alınır. Bu nedenle, ve `DeviceGeometry` `MicArrayGeometryConfigFile` özellikleri `SelectedGeometry`isteğe bağlıdır. İçin kullanılarak `MicArrayGeometryConfigFile` sunulan [json dosyasını](https://aka.ms/sdsdk-micarray-json) yalnızca beamor aralığını almak için kullanırız.
+Windows 'da, mikrofon dizisi geometrisi bilgileri, ses sürücüsünden otomatik olarak alınır. Bu nedenle, `DeviceGeometry` ve özellikleri  `SelectedGeometry` `MicArrayGeometryConfigFile` isteğe bağlıdır. İçin kullanılarak sunulan [json dosyasını](https://aka.ms/sdsdk-micarray-json) `MicArrayGeometryConfigFile` yalnızca beamor aralığını almak için kullanırız.
 
-Kullanılarak `AudioConfig::FromMicrophoneInput`bir mikrofon dizisi belirtilirse, belirtilen mikrofonu kullanırız. Bir mikrofon belirtilmemişse veya `AudioConfig::FromDefaultMicrophoneInput` çağrılırsa, Windows üzerinde ses ayarları 'nda belirtilen varsayılan mikrofonu kullanırız.
+Kullanılarak bir mikrofon dizisi belirtilirse `AudioConfig::FromMicrophoneInput` , belirtilen mikrofonu kullanırız. Bir mikrofon belirtilmemişse veya `AudioConfig::FromDefaultMicrophoneInput` çağrılırsa, Windows üzerinde ses ayarları 'nda belirtilen varsayılan mikrofonu kullanırız.
 Konuşma cihazları SDK 'sında Microsoft ses yığını yalnızca 16 KHz 'ın tam sayı olan örnek ücretler için aşağı örneklemeyi destekler.
 
 ## <a name="linux"></a>Linux
-Linux 'ta, mikrofon geometrisi bilgisinin sağlanması gerekir. `DeviceGeometry` Ve `SelectedGeometry` kullanımı desteklenmeye devam eder. Ayrıca, `MicArrayGeometryConfigFile` ÖZELLIĞI kullanılarak JSON dosyası aracılığıyla da kullanılabilir. Windows 'a benzer şekilde, beamoluşturan aralığı JSON dosyası tarafından sağlanarak yapılabilir.
+Linux 'ta, mikrofon geometrisi bilgisinin sağlanması gerekir. `DeviceGeometry`Ve kullanımı `SelectedGeometry` desteklenmeye devam eder. Ayrıca, özelliği kullanılarak JSON dosyası aracılığıyla da kullanılabilir `MicArrayGeometryConfigFile` . Windows 'a benzer şekilde, beamoluşturan aralığı JSON dosyası tarafından sağlanarak yapılabilir.
 
-Kullanılarak `AudioConfig::FromMicrophoneInput`bir mikrofon dizisi belirtilirse, belirtilen mikrofonu kullanırız. Bir mikrofon belirtilmemişse veya `AudioConfig::FromDefaultMicrophoneInput` çağrılırsa, *varsayılan*adlı alsa cihazından kayıt yaptık. Varsayılan olarak, *varsayılan* olarak her zaman kart 0 cihaz 0 ' a işaret eder, ancak kullanıcılar bu `asound.conf` dosyayı dosyada değiştirebilir. 
+Kullanılarak bir mikrofon dizisi belirtilirse `AudioConfig::FromMicrophoneInput` , belirtilen mikrofonu kullanırız. Bir mikrofon belirtilmemişse veya `AudioConfig::FromDefaultMicrophoneInput` çağrılırsa, *varsayılan*adlı alsa cihazından kayıt yaptık. Varsayılan olarak, *varsayılan* olarak her zaman kart 0 cihaz 0 ' a işaret eder, ancak kullanıcılar bu `asound.conf` dosyayı dosyada değiştirebilir. 
 
 Konuşma cihazları SDK 'sında Microsoft ses yığını yalnızca 16 KHz 'ın tam sayı olan örnek ücretler için altörnekleme destekler. Ayrıca, aşağıdaki biçimler desteklenir: 32-bit IEEE little endian float, 32-bit little endian işaretli int, 24 bit little endian imzalı int, 16 bit little endian imzalı tamsayı ve 8 bit işaretli tamsayı.
 
 ## <a name="android"></a>Android
-Şu anda yalnızca [Roobo v1](speech-devices-sdk-android-quickstart.md) , konuşma cihazları SDK 'sı tarafından desteklenir. Bu davranış önceki sürümlerden farklıdır, çünkü Now `MicArrayGeometryConfigFile` özelliği, beamoluşturan ARALıĞı içeren JSON dosyasını belirtmek için kullanılabilir.
+Şu anda yalnızca [Roobo v1](speech-devices-sdk-android-quickstart.md) , konuşma cihazları SDK 'sı tarafından desteklenir. Bu davranış önceki sürümlerden farklıdır, çünkü Now `MicArrayGeometryConfigFile` özelliği, beamoluşturan aralığı IÇEREN json dosyasını belirtmek için kullanılabilir.
 
 ## <a name="microphone-array-configuration-json"></a>Mikrofon dizisi yapılandırma JSON
 

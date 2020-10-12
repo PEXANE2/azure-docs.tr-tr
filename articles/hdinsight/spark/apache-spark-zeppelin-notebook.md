@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: a692f4dd86d110f7f0a91a862a7b16ac28345de5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86084537"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight'ta Apache Spark kümesiyle Apache Zeppelin not defterlerini kullanma
@@ -159,7 +159,7 @@ Yukarıda belirtildiği gibi, `%sh` yorumlayıcı hdınsight 4,0 ve sonraki sür
 
 Ayrıcalıklı etki alanı kullanıcıları `Shiro.ini` yorumlayıcı Kullanıcı arabirimine erişimi denetlemek için bu dosyayı kullanabilir. Yalnızca bu kullanıcılar yeni `%sh` yorumlayıcılar oluşturabilir ve her yeni yorumlayıcı için izinleri ayarlayabilir `%sh` . Dosyayı kullanarak erişimi denetlemek için `shiro.ini` aşağıdaki adımları kullanın:
 
-1. Var olan bir etki alanı grubu adını kullanarak yeni bir rol tanımlayın. Aşağıdaki örnekte, `adminGroupName` AAD 'deki ayrıcalıklı kullanıcılar grubudur. Grup adında özel karakterler veya boşluk kullanmayın. `=`Bu rol için izinleri verme sonrasında karakterler. `*`grubun tam izinleri olduğu anlamına gelir.
+1. Var olan bir etki alanı grubu adını kullanarak yeni bir rol tanımlayın. Aşağıdaki örnekte, `adminGroupName` AAD 'deki ayrıcalıklı kullanıcılar grubudur. Grup adında özel karakterler veya boşluk kullanmayın. `=`Bu rol için izinleri verme sonrasında karakterler. `*` grubun tam izinleri olduğu anlamına gelir.
 
     ```
     [roles]
@@ -197,7 +197,7 @@ Hizmeti ambarı 'ndan doğrulamak için `https://CLUSTERNAME.azurehdinsight.net/
 
 Hizmeti bir komut satırından ve SSH 'den baş düğüme doğrulamak için. Kullanıcıyı kullanarak Zeppelin komutunu değiştirin `sudo su zeppelin` . Durum komutları:
 
-|Komut |Description |
+|Komut |Açıklama |
 |---|---|
 |`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh status`|Hizmet durumu.|
 |`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh --version`|Hizmet sürümü.|

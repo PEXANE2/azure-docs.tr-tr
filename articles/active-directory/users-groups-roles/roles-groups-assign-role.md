@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f45b5709369dfc2025b55bc3acec69e9328ce403
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513426"
 ---
 # <a name="assign-a-role-to-a-cloud-group-in-azure-active-directory"></a>Azure Active Directory bir bulut grubuna rol atama
@@ -40,7 +40,7 @@ Bir Azure AD rolüne Grup atamak, yalnızca rol atanabilir olan grupların kulla
 
     [![Yalnızca atanabilen gruplar yeni bir rol ataması için gösterilir.](media/roles-groups-assign-role/eligible-groups.png "Yalnızca atanabilen gruplar yeni bir rol ataması için gösterilir.")](media/roles-groups-assign-role/eligible-groups.png#lightbox)
 
-1. **Ekle**'yi seçin.
+1. **Ekle**’yi seçin.
 
 Rol izinleri atama hakkında daha fazla bilgi için bkz. [kullanıcılara yönetici ve yönetici olmayan roller atama](../fundamentals/active-directory-users-assign-role-azure-portal.md).
 
@@ -102,4 +102,4 @@ POST https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Rol atamalarını yönetmek için bulut gruplarını kullanma](roles-groups-concept.md)
-- [Bulut gruplarına atanan rol sorunlarını giderme](roles-groups-faq-troubleshooting.md)
+- [Bulut gruplarına atanan rollerle ilgili sorunları giderme](roles-groups-faq-troubleshooting.md)

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/29/2016
 ms.author: manuaery
 ms.openlocfilehash: 1ab72788c768568366f2627055015c74028330b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85515228"
 ---
 # <a name="use-the-device-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>StorSimple Sanal dizisine bağlı StorSimple Aygıt Yöneticisi için cihaz Özeti dikey penceresini kullanın
@@ -49,7 +49,7 @@ Essentials alanı, durum, model, yazılım sürümü ve dizinin **Web Kullanıc�
 
 * **Kullanım** grafiğinde, sanal diziniz genelinde kullanılan birincil depolamayı, son 7 gün içinde tüketilen bulut depolama alanını ve varsayılan zaman aralığını görüntüleyebilirsiniz. Farklı bir zaman ölçeği seçmek için grafiğin sağ üst köşesindeki **Düzenle** seçeneğini kullanın.
 
-* **Paylaşımlar** veya **birimler** kutucuğu, cihazınızdaki durum ile gruplanan paylaşımların veya birimlerin bir özetini sağlar. Kutucuğa tıklayarak **Paylaşımlar** veya **birimler** listesi dikey penceresini açın ve ardından tek bir paylaşıma veya birime tıklayarak özelliklerini görüntüleyin veya değiştirin. Daha fazla bilgi için bkz. [paylaşımları yönetme](storsimple-virtual-array-manage-shares.md) veya [birimleri yönetme](storsimple-virtual-array-manage-volumes.md).
+* **Paylaşımlar** veya **birimler** kutucuğu, cihazınızdaki durum ile gruplanan paylaşımların veya birimlerin bir özetini sağlar. Kutucuğa tıklayarak **Paylaşımlar**  veya **birimler** listesi dikey penceresini açın ve ardından tek bir paylaşıma veya birime tıklayarak özelliklerini görüntüleyin veya değiştirin. Daha fazla bilgi için bkz. [paylaşımları yönetme](storsimple-virtual-array-manage-shares.md) veya [birimleri yönetme](storsimple-virtual-array-manage-volumes.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Şunları nasıl yapacağınızı öğrenin:

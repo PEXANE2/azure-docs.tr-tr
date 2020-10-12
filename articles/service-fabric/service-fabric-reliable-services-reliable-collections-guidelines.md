@@ -4,10 +4,10 @@ description: Azure Service Fabric uygulamasında güvenilir Service Fabric kolek
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 63e6de436bdaceed7f1d2a78e8385dd14bfc0ed6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260918"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Azure Service Fabric güvenilir koleksiyonlar için yönergeler ve öneriler
@@ -40,17 +40,17 @@ Göz önünde bulundurmanız gereken bazı şeyler aşağıda verilmiştir:
   Bu, tek bir ikincil sunucudan okunan bir veri sürümünün yanlış ilerlemedi olabileceği anlamına gelir.
   Birincili okuma her zaman kararlı değildir: hiçbir zaman yanlış ilerlemedi olamaz.
 * Güvenilir bir koleksiyonda uygulamanız tarafından kalıcı olan verilerin güvenlik/gizliliği, sizin kararınız ve depolama yönetimi tarafından sağlanmış olan korumalardan tabidir; Yani. İşletim sistemi disk şifrelemesi, verilerinizi bekleyen bir şekilde korumak için kullanılabilir.
-* `ReliableDictionary`sabit listesi, anahtar tarafından sıralanan sıralanmış bir veri yapısını kullanır. Sabit Listesi verimli hale getirmek için, işlemeler geçici bir Hashtable 'a eklenir ve daha sonra ana sıralanmış veri yapısı gönderi denetim noktasına taşınır. Ekler/güncelleştirmeler/silmeler en iyi durum çalışma zamanına sahip (1) ve büyük/küçük harf çalışma zamanının (log n), doğrulama denetimi durumunda anahtar varlığını denetler. Son bir işlemeden mi, yoksa eski bir işlemeden mi okudığınıza bağlı olarak O (1) veya O (log n) olabilir.
+* `ReliableDictionary` sabit listesi, anahtar tarafından sıralanan sıralanmış bir veri yapısını kullanır. Sabit Listesi verimli hale getirmek için, işlemeler geçici bir Hashtable 'a eklenir ve daha sonra ana sıralanmış veri yapısı gönderi denetim noktasına taşınır. Ekler/güncelleştirmeler/silmeler en iyi durum çalışma zamanına sahip (1) ve büyük/küçük harf çalışma zamanının (log n), doğrulama denetimi durumunda anahtar varlığını denetler. Son bir işlemeden mi, yoksa eski bir işlemeden mi okudığınıza bağlı olarak O (1) veya O (log n) olabilir.
 
 ## <a name="volatile-reliable-collections"></a>Geçici güvenilir Koleksiyonlar
 Geçici güvenilir koleksiyonları kullanmaya karar verirken aşağıdakileri göz önünde bulundurun:
 
-* ```ReliableDictionary```geçici desteğe sahiptir
-* ```ReliableQueue```geçici desteğe sahiptir
-* ```ReliableConcurrentQueue```geçici desteğe sahip DEĞIL
+* ```ReliableDictionary``` geçici desteğe sahiptir
+* ```ReliableQueue``` geçici desteğe sahiptir
+* ```ReliableConcurrentQueue``` geçici desteğe sahip DEĞIL
 * Kalıcı hizmetler geçici yapılamaz. Bayrağını değiştirme, ```HasPersistedState``` ```false``` Tüm hizmetin sıfırdan yeniden oluşturulmasını gerektiriyor
 * Geçici hizmetler kalıcı yapılamıyor. Bayrağını değiştirme, ```HasPersistedState``` ```true``` Tüm hizmetin sıfırdan yeniden oluşturulmasını gerektiriyor
-* ```HasPersistedState```, bir hizmet düzeyi yapılandırması. Bu, **Tüm** koleksiyonların kalıcı ya da geçici olacağı anlamına gelir. Geçici ve kalıcı koleksiyonları karıştırılamaz
+* ```HasPersistedState``` , bir hizmet düzeyi yapılandırması. Bu, **Tüm** koleksiyonların kalıcı ya da geçici olacağı anlamına gelir. Geçici ve kalıcı koleksiyonları karıştırılamaz
 * Geçici bir bölümün çekirdek kaybı, veri kaybına neden olur
 * Yedekleme ve geri yükleme geçici hizmetler için kullanılamaz
 

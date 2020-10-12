@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 57efca87aefad346fda175b073409868d21564ae
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86245526"
 ---
 # <a name="sfctl-mesh-volume"></a>sfctl mesh volume
@@ -19,7 +19,7 @@ Birim kaynaklarını alın ve silin.
 
 |Komut|Açıklama|
 | --- | --- |
-| silme | Birim kaynağını siler. |
+| delete | Birim kaynağını siler. |
 | list | Tüm birim kaynaklarını listeler. |
 | göster | Verilen ada sahip birim kaynağını alır. |
 
@@ -28,7 +28,7 @@ Birim kaynağını siler.
 
 Ad tarafından tanımlanan birim kaynağını siler.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -64,7 +64,7 @@ Verilen ada sahip birim kaynağını alır.
 
 Verilen ada sahip birim kaynağıyla ilgili bilgileri alır. Bilgiler, birimin açıklaması ve diğer özelliklerini içerir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |

@@ -4,10 +4,10 @@ description: Mevcut bir uygulamayı Konuk yürütülebilir dosyası olarak paket
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.openlocfilehash: 72fde75e16341164106bb952d0bb66b83be744e1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86259258"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Service Fabric için mevcut bir yürütülebiliri paketleme ve dağıtma
@@ -29,9 +29,9 @@ Visual Studio, bir Service Fabric kümesine Konuk yürütülebilir dosyası dağ
    * *Program* hizmeti başlatmak için çalıştırılması gereken yürütülebilir dosyayı belirtir.
    * *Bağımsız değişkenler* çalıştırılabilire geçirilmesi gereken bağımsız değişkenleri belirtir. Bağımsız değişkenlere sahip parametrelerin listesi olabilir.
    * *WorkingFolder* , başlatılacak işlemin çalışma dizinini belirtir. Üç değer belirtebilirsiniz:
-     * `CodeBase`çalışma dizininin uygulama paketindeki ( `Code` önceki dosya yapısında gösterilen dizin) kod dizinine ayarlanacağım olduğunu belirtir.
-     * `CodePackage`çalışma dizininin uygulama paketinin köküne ayarlanacağım olduğunu belirtir ( `GuestService1Pkg` önceki dosya yapısında gösterilir).
-     * `Work`dosyaların iş adlı bir alt dizine yerleştirileceğini belirtir.
+     * `CodeBase` çalışma dizininin uygulama paketindeki ( `Code` önceki dosya yapısında gösterilen dizin) kod dizinine ayarlanacağım olduğunu belirtir.
+     * `CodePackage` çalışma dizininin uygulama paketinin köküne ayarlanacağım olduğunu belirtir ( `GuestService1Pkg` önceki dosya yapısında gösterilir).
+     * `Work` dosyaların iş adlı bir alt dizine yerleştirileceğini belirtir.
 4. Hizmetinize bir ad verin ve **Tamam**’a tıklayın.
 5. Hizmetiniz iletişim için bir uç nokta gerekiyorsa, artık ServiceManifest.xml dosyasına protokol, bağlantı noktası ve tür ekleyebilirsiniz. Örneğin: `<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" UriScheme="http" PathSuffix="myapp/" Type="Input" />`.
 6. Artık, Visual Studio 'da çözümü hata ayıklaması yaparak yerel kümenizde paket ve yayımlama eylemini kullanabilirsiniz. Hazırsa, uygulamayı uzak bir kümeye yayımlayabilir veya çözümü kaynak denetimine iade edebilirsiniz.
@@ -147,7 +147,7 @@ CodePackage öğesi, hizmet kodunun konumunu (ve sürümünü) belirtir.
 <CodePackage Name="Code" Version="1.0.0.0">
 ```
 
-`Name`Öğesi, hizmet kodunu içeren uygulama paketindeki dizinin adını belirtmek için kullanılır. `CodePackage`Ayrıca özniteliğine sahiptir `version` . Bu kod sürümünü belirtmek için kullanılabilir ve ayrıca, Service Fabric ' de uygulama yaşam döngüsü yönetim altyapısını kullanarak hizmetin kodunu yükseltmek için de kullanılabilir.
+`Name`Öğesi, hizmet kodunu içeren uygulama paketindeki dizinin adını belirtmek için kullanılır. `CodePackage` Ayrıca özniteliğine sahiptir `version` . Bu kod sürümünü belirtmek için kullanılabilir ve ayrıca, Service Fabric ' de uygulama yaşam döngüsü yönetim altyapısını kullanarak hizmetin kodunu yükseltmek için de kullanılabilir.
 
 #### <a name="optional-update-setupentrypoint"></a>İsteğe bağlı: SetupEntrypoint güncelleştirme
 
@@ -180,12 +180,12 @@ Hizmet `EntryPoint` bildirimi dosyasındaki öğesi, hizmeti nasıl başlatakull
 
 `ExeHost`Öğesi hizmeti başlatmak için kullanılması gereken yürütülebilir dosyayı (ve bağımsız değişkenleri) belirtir. İsteğe bağlı olarak, `IsExternalExecutable="true"` `ExeHost` programın kod paketinin dışında bir dış yürütülebilir dosya olduğunu göstermek için özniteliğini ekleyebilirsiniz. Örneğin, `<ExeHost IsExternalExecutable="true">`.
 
-* `Program`hizmeti başlatması gereken yürütülebilir dosyanın adını belirtir.
-* `Arguments`yürütülebilir dosyaya geçirilmesi gereken bağımsız değişkenleri belirtir. Bağımsız değişkenlere sahip parametrelerin listesi olabilir.
-* `WorkingFolder`başlatılacak işlemin çalışma dizinini belirtir. Üç değer belirtebilirsiniz:
-  * `CodeBase`çalışma dizininin uygulama paketindeki ( `Code` önceki dosya yapısındaki dizin) kod dizinine ayarlanacağım olduğunu belirtir.
-  * `CodePackage`çalışma dizininin uygulama paketinin köküne ayarlanacağım olduğunu belirtir ( `GuestService1Pkg` önceki dosya yapısında).
-    * `Work`dosyaların iş adlı bir alt dizine yerleştirileceğini belirtir.
+* `Program` hizmeti başlatması gereken yürütülebilir dosyanın adını belirtir.
+* `Arguments` yürütülebilir dosyaya geçirilmesi gereken bağımsız değişkenleri belirtir. Bağımsız değişkenlere sahip parametrelerin listesi olabilir.
+* `WorkingFolder` başlatılacak işlemin çalışma dizinini belirtir. Üç değer belirtebilirsiniz:
+  * `CodeBase` çalışma dizininin uygulama paketindeki ( `Code` önceki dosya yapısındaki dizin) kod dizinine ayarlanacağım olduğunu belirtir.
+  * `CodePackage` çalışma dizininin uygulama paketinin köküne ayarlanacağım olduğunu belirtir ( `GuestService1Pkg` önceki dosya yapısında).
+    * `Work` dosyaların iş adlı bir alt dizine yerleştirileceğini belirtir.
 
 WorkingFolder, göreli yolların uygulama veya başlatma betikleri tarafından kullanılabilmesi için doğru çalışma dizinini ayarlamak için yararlıdır.
 
@@ -201,7 +201,7 @@ WorkingFolder, göreli yolların uygulama veya başlatma betikleri tarafından k
 Yukarıdaki örnekte, `Endpoint` öğesi uygulamanın dinleyebileceği uç noktaları belirtir. Bu örnekte Node.js uygulaması, 3000 numaralı bağlantı noktasında http 'yi dinler.
 
 Ayrıca, diğer hizmetlerin bu hizmete yönelik uç nokta adresini bulabilmesi için bu uç noktayı Adlandırma Hizmeti yayımlamasını Service Fabric isteyebilirsiniz. Bu, Konuk yürütülebilir dosyaları olan hizmetler arasında iletişim kurabilmenizi sağlar.
-Yayınlanan bitiş noktası adresi formundadır `UriScheme://IPAddressOrFQDN:Port/PathSuffix` . `UriScheme`ve `PathSuffix` isteğe bağlı özniteliklerdir. `IPAddressOrFQDN`Bu yürütülebilir dosyanın yerleştirildiği düğümün IP adresi veya tam etki alanı adıdır ve sizin için hesaplanır.
+Yayınlanan bitiş noktası adresi formundadır `UriScheme://IPAddressOrFQDN:Port/PathSuffix` . `UriScheme` ve `PathSuffix` isteğe bağlı özniteliklerdir. `IPAddressOrFQDN` Bu yürütülebilir dosyanın yerleştirildiği düğümün IP adresi veya tam etki alanı adıdır ve sizin için hesaplanır.
 
 Aşağıdaki örnekte, hizmet dağıtıldıktan sonra, Service Fabric Explorer `http://10.1.4.92:3000/myapp/` hizmet örneği için yayımlananlara benzer bir uç nokta görürsünüz. Ya da yerel bir makinedir, bkz `http://localhost:3000/myapp/` ..
 
@@ -257,11 +257,11 @@ Konsol yeniden yönlendirme, `ServiceManifest.xml` dosyasında öğesi kullanıl
 </EntryPoint>
 ```
 
-`ConsoleRedirection`konsol çıkışını (STDOUT ve stderr) çalışma dizinine yeniden yönlendirmek için kullanılabilir. Bu, Service Fabric kümesinde uygulamanın kurulumu veya yürütülmesi sırasında hata olmadığını doğrulama olanağı sağlar.
+`ConsoleRedirection` konsol çıkışını (STDOUT ve stderr) çalışma dizinine yeniden yönlendirmek için kullanılabilir. Bu, Service Fabric kümesinde uygulamanın kurulumu veya yürütülmesi sırasında hata olmadığını doğrulama olanağı sağlar.
 
-`FileRetentionCount`çalışma dizinine kaç dosya kaydedildiğini belirler. Örneğin, 5 değeri, önceki beş yürütmeler için günlük dosyalarının çalışma dizininde depolandığı anlamına gelir.
+`FileRetentionCount` çalışma dizinine kaç dosya kaydedildiğini belirler. Örneğin, 5 değeri, önceki beş yürütmeler için günlük dosyalarının çalışma dizininde depolandığı anlamına gelir.
 
-`FileMaxSizeInKb`günlük dosyalarının en büyük boyutunu belirtir.
+`FileMaxSizeInKb` günlük dosyalarının en büyük boyutunu belirtir.
 
 Günlük dosyaları hizmetin çalışma dizinlerinin birine kaydedilir. Dosyaların nerede bulunduğunu öğrenmek için, hizmetin üzerinde çalıştığı düğümü ve hangi çalışma dizininin kullanıldığını öğrenmek için Service Fabric Explorer kullanın. Bu işlem, bu makalenin ilerleyen kısımlarında ele alınmıştır.
 

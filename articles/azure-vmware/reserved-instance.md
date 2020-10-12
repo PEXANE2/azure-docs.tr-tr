@@ -4,10 +4,10 @@ description: Azure VMware çözümü için ayrılmış bir örnek satın almayı
 ms.topic: how-to
 ms.date: 10/02/2020
 ms.openlocfilehash: a477b1730d70ec729a2be333b545b6faeb009998
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91492494"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Azure VMware çözümü ile maliyetleri kaydetme
@@ -54,9 +54,9 @@ Bu gereksinimler ayrılmış bir ayrılmış ana bilgisayar örneği satın alma
    | ------------ | ------------ |
    | Abonelik | Ayırma için ödeme yapmak üzere kullanılan abonelik. Rezervasyon maliyetleri, aboneliğin ödeme yöntemiyle ücretlendirilir. Abonelik türü bir kurumsal anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya Microsoft Müşteri Sözleşmesi ya da Kullandıkça Öde tarifesine sahip tek bir abonelik olmalıdır (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P). Ücretler, parasal taahhüt bakiyesinden düşülür veya varsa fazla kullanım olarak ücretlendirilir. Kullandıkça Öde tarifesine sahip bir abonelik için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır. |
    | Kapsam        | Ayırma kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz:<br><ul><li><b>Tek kaynak grubu kapsamı — yalnızca seçili kaynak grubundaki eşleşen kaynaklara rezervasyon iskontosunu uygular.</li><li><b>Tek abonelik kapsamı — seçili abonelikteki eşleşen kaynaklara rezervasyon iskontosunu uygular.</li><li><b>Paylaşılan kapsam — fatura bağlamındaki uygun aboneliklerde bulunan kaynaklara karşılık gelen rezervasyon iskontosunu uygular. EA müşterileri için, faturalandırma bağlamı kayıt olur. Kullandıkça öde fiyatlarına tabi bireysel abonelikler için faturalama kapsamı, hesap yöneticisi tarafından oluşturulan tüm uygun aboneliklerdir.</li></ul>       |
-   | Region       | Ayırma kapsamındaki Azure bölgesi.   |
+   | Bölge       | Ayırma kapsamındaki Azure bölgesi.   |
    | Ana bilgisayar boyutu    | AV36    |
-   | Terim         | Bir yıl veya üç yıl.  |
+   | Süre         | Bir yıl veya üç yıl.  |
    | Miktar     | Ayırma içinde satın alınan örneklerin sayısı. Bu miktar, fatura iskontosunu elde eden, çalışan Azure VMware Çözüm ana bilgisayarlarının sayısıdır.    |
 
 ## <a name="usage-data-and-reservation-utilization"></a>Kullanım verileri ve ayırma kullanımı

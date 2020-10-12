@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
 ms.openlocfilehash: 896caae2dfd79c4678ffb34c531fb56835e9bd66
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90886849"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
@@ -43,25 +43,25 @@ DATE_BUCKET (datePart, number, date, origin)
 |---|---|
 |**günündeki**|**dd**, **d**|  
 |**hafta**|**hafta**, **WW**|  
-|**saate**|**ss**|  
+|**saate**|**hh**|  
 |**dakikaya**|**mı**, **n**|  
 |**İkincisi**|**SS**, **s**|  
 |**milisaniy**|**SWM**|  
 
-*sayısından*
+*number*
 
 Değer, *datePart* bağımsız değişkeniyle birleştirilmiş olan demet genişliğine karar veren tamsayı numarası. Bu, kaynak zamandan itibaren veri bölümü demetlerinin genişliğini temsil eder. **`This argument cannot be a negative integer value`**. 
 
-*tarih*
+*güncel*
 
 Aşağıdaki değerlerden birine çözümleyebilecek bir ifade:
 
-+ **tarih**
++ **güncel**
 + **datetime**
 + **türünde**
 + **datetime2**
 + **girişin**
-+ **time**
++ **ışınızda**
 
 *Tarih*için, `DATE_BUCKET` yukarıda belirtilen veri türlerine çözümlendiklerinde bir sütun ifadesi, ifade veya Kullanıcı tanımlı değişken kabul eder.
 
@@ -69,12 +69,12 @@ Aşağıdaki değerlerden birine çözümleyebilecek bir ifade:
 
 Aşağıdaki değerlerden birine çözümleyebilecek isteğe bağlı bir ifade:
 
-+ **tarih**
++ **güncel**
 + **datetime**
 + **türünde**
 + **datetime2**
 + **girişin**
-+ **time**
++ **ışınızda**
 
 İçin veri türü, `Origin` parametrenin veri türüyle eşleşmelidir `Date` . 
 

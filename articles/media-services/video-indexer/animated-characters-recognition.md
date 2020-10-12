@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
 ms.openlocfilehash: 3b449f68b25fce19dc034d2a0db0ae5ce8a28ec7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87047484"
 ---
 # <a name="animated-character-detection-preview"></a>Animasyonlu karakter algılama (önizleme)
@@ -208,7 +208,7 @@ Oluşturulan JSON dosyasındaki animasyonlu karakterleri görüntüleyin.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* Şu anda, "animasyon kimliği" özelliği Doğu Asya bölgesinde desteklenmez.
+* Şu anda, "animasyon kimliği" özelliği East-Asia bölgede desteklenmez.
 * Videonun kalitesi zayıflarsa videoda küçük veya uzak görünen karakterler düzgün şekilde tanımlanmayabilir.
 * Öneri, her bir animasyon karakter kümesi için (örneğin, bir animasyon serisi) bir model kullanmaktır.
 
