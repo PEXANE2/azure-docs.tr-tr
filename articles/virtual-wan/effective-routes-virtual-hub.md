@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: ad487aa7492abcf02988c78ccfa2ba7cd4798249
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983651"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>Sanal merkezin geçerli yollarını görüntüleme
@@ -33,7 +33,7 @@ Sayfa çıktısı aşağıdaki alanları gösterir:
 * **Kaynak**: yönlendirme KAYNAĞıNıN kaynak kimliği.
 * **As yolu**: BGP özniteliği as (özerk sistem) yolu, yolun eklendiği öneki bulunduğu konuma ulaşmak için geçmesi gereken her türlü as sayısını listeler.
 
-### <a name="example"></a><a name="example"></a>Örnek
+### <a name="example"></a><a name="example"></a>Örneğinde
 
 Aşağıdaki örnek tablodaki değerler, sanal hub bağlantısı veya yol tablosunun 10.2.0.0/24 yolunu (bir dal öneki) öğrendiklerini göstermez. **Sonraki atlama** VPN Gateway kaynak kimliği Ile VPN_S2S_Gateway **VPN sonraki atlama türü** nedeniyle yolu öğrenmiştir. **Yol kaynağı** , kaynak VPN ağ geçidi/yol tablosu/BAĞLANTıSıNıN kaynak kimliğine işaret eder. **As yolu** , dalın as yolunu gösterir.
 

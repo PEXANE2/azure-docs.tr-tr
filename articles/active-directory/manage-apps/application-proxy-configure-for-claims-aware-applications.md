@@ -16,16 +16,16 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 97def0608251f65aa222e13760877d4287135d08
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87386988"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>Uygulama proxy 'sinde talep kullanan uygulamalarla çalışma
 [Talep kullanan uygulamalar](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) , güvenlik belirteci hizmeti 'NE (STS) yeniden yönlendirme gerçekleştirir. STS, bir belirteç için Exchange 'deki kullanıcıdan kimlik bilgilerini ister ve sonra kullanıcıyı uygulamaya yönlendirir. Uygulama proxy 'Sinin bu yeniden yönlendirmelere çalışması için birkaç yol vardır. Talep kullanan uygulamalar için dağıtımınızı yapılandırmak üzere bu makaleyi kullanın. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Talep kullanan uygulamanın yönlendirdiği STS 'nin şirket içi ağınızın dışında kullanılabilir olduğundan emin olun. Bir proxy aracılığıyla veya dış bağlantılara izin vererek, STS 'yi kullanılabilir hale getirebilirsiniz. 
 
 ## <a name="publish-your-application"></a>Uygulamanızı yayımlama

@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: e69b407bc7d58a83616daa44272ec008ccff9fad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85846650"
 ---
 # <a name="list-of-service-fabric-events"></a>Service Fabric olaylarının listesi 
@@ -133,7 +133,7 @@ Uygulama yükseltmeleri hakkında daha fazla ayrıntı için [burada](service-fa
 
 **Kapsayıcı yaşam döngüsü olayları** 
 
-| Even | Name | Açıklama |Kaynak (görev) | Düzey | Sürüm |
+| Even | Ad | Açıklama |Kaynak (görev) | Düzey | Sürüm |
 | --- | --- | ---| --- | --- | --- |
 | 23074 | ContainerActivated | Bir kapsayıcı başlatıldı | Hosting | Bilgilendirici | 1 |
 | 23075 | Containercode devre dışı | Bir kapsayıcı durdu | Hosting | Bilgilendirici | 1 |
@@ -144,26 +144,26 @@ Uygulama yükseltmeleri hakkında daha fazla ayrıntı için [burada](service-fa
 [Service Fabric sistem durumu modeli](service-fabric-health-introduction.md) , zengin, esnek ve genişletilebilir bir sistem durumu değerlendirmesi ve raporlama sağlar. Service Fabric sürüm 6,2 ' den başlayarak sistem durumu verileri, geçmiş durum kayıtlarının sağlanması için platform olayları olarak yazılır. Sistem durumu olaylarının hacminin düşük kalmasını sağlamak için, yalnızca aşağıdaki Service Fabric olaylar olarak yazılır:
 
 * Tüm `Error` veya `Warning` sistem durumu raporları
-* `Ok`geçişler sırasında durum raporları
+* `Ok` geçişler sırasında durum raporları
 * Bir `Error` veya `Warning` sistem durumu olayının süresi dolarsa. Bu, bir varlığın sağlıksız olduğu süreyi belirlemede kullanılabilir
 
 **Küme durumu raporu olayları**
 
-| Even | Name | Açıklama |Kaynak (görev) | Düzey | Sürüm |
+| Even | Ad | Açıklama |Kaynak (görev) | Düzey | Sürüm |
 | --- | --- | --- | --- | --- | --- |
 | 54428 | ClusterNewHealthReport | Yeni bir küme durumu raporu kullanılabilir | HM | Bilgilendirici | 1 |
 | 54437 | ClusterHealthReportExpired | Var olan bir küme durumu raporunun süresi doldu | HM | Bilgilendirici | 1 |
 
 **Düğüm durumu raporu olayları**
 
-| Even | Name | Açıklama |Kaynak (görev) | Düzey | Sürüm |
+| Even | Ad | Açıklama |Kaynak (görev) | Düzey | Sürüm |
 | --- | --- | ---| --- | --- | --- |
 | 54423 | NodeNewHealthReport | Yeni bir düğüm durumu raporu kullanılabilir | HM | Bilgilendirici | 1 |
 | 54432 | NodeHealthReportExpired | Mevcut bir düğüm durumu raporunun süresi doldu | HM | Bilgilendirici | 1 |
 
 **Uygulama durumu raporu olayları**
 
-| Even | Name | Açıklama |Kaynak (görev) | Düzey | Sürüm |
+| Even | Ad | Açıklama |Kaynak (görev) | Düzey | Sürüm |
 | --- | --- | ---| --- | --- | --- |
 | 54425 | ApplicationNewHealthReport | Yeni bir uygulama sistem durumu raporu oluşturuldu. Bu, dağıtılmamış uygulamalar içindir. | HM | Bilgilendirici | 1 |
 | 54426 | Deployedadnewhealthreport | Yeni bir dağıtılmış uygulama sistem durumu raporu oluşturuldu | HM | Bilgilendirici | 1 |
@@ -174,21 +174,21 @@ Uygulama yükseltmeleri hakkında daha fazla ayrıntı için [burada](service-fa
 
 **Hizmet durumu raporu olayları**
 
-| Even | Name | Açıklama |Kaynak (görev) | Düzey | Sürüm |
+| Even | Ad | Açıklama |Kaynak (görev) | Düzey | Sürüm |
 | --- | --- | ---| --- | --- | --- |
 | 54424 | ServiceNewHealthReport | Yeni bir hizmet sistem durumu raporu oluşturuldu | HM | Bilgilendirici | 1 |
 | 54433 | ServiceHealthReportExpired | Mevcut bir hizmet durumu raporunun süresi doldu | HM | Bilgilendirici | 1 |
 
 **Bölüm durumu raporu olayları**
 
-| Even | Name | Açıklama |Kaynak (görev) | Düzey | Sürüm |
+| Even | Ad | Açıklama |Kaynak (görev) | Düzey | Sürüm |
 | --- | --- | ---| --- | --- | --- |
 | 54422 | PartitionNewHealthReport | Yeni bir bölüm sistem durumu raporu oluşturuldu | HM | Bilgilendirici | 1 |
 | 54431 | PartitionHealthReportExpired | Mevcut bir bölüm sistem durumu raporunun süresi doldu | HM | Bilgilendirici | 1 |
 
 **Çoğaltma sistem durumu raporu olayları**
 
-| Even | Name | Açıklama |Kaynak (görev) | Düzey | Sürüm |
+| Even | Ad | Açıklama |Kaynak (görev) | Düzey | Sürüm |
 | --- | --- | ---| --- | --- | --- |
 | 54429 | StatefulReplicaNewHealthReport | Durum bilgisi olan bir çoğaltma sistem durumu raporu oluşturuldu | HM | Bilgilendirici | 1 |
 | 54430 | Statelessınstancenewhealthreport | Yeni bir durum bilgisi olmayan örnek sistem durumu raporu oluşturuldu | HM | Bilgilendirici | 1 |
@@ -199,28 +199,28 @@ Uygulama yükseltmeleri hakkında daha fazla ayrıntı için [burada](service-fa
 
 **Chaos oturum olayları**
 
-| Even | Name | Açıklama |Kaynak (görev) | Düzey | Sürüm |
+| Even | Ad | Açıklama |Kaynak (görev) | Düzey | Sürüm |
 | --- | --- | ---| --- | --- | --- |
 | 50021 | ChaosStarted | Bir Chaos test oturumu başlatıldı | Test edilebilirlik | Bilgilendirici | 1 |
 | 50023 | Chaosdurduruldu | Bir Chaos test oturumu durdu | Test edilebilirlik | Bilgilendirici | 1 |
 
 **Chaos düğüm olayları**
 
-| Even | Name | Açıklama |Kaynak (görev) | Düzey | Sürüm |
+| Even | Ad | Açıklama |Kaynak (görev) | Düzey | Sürüm |
 | --- | --- | ---| --- | --- | --- |
 | 50033 | Chaosnoderestartzamanlandı | Bir düğüm, bir Chaos test oturumunun bir parçası olarak yeniden başlatılacak şekilde zamanlandı | Test edilebilirlik | Bilgilendirici | 1 |
 | 50087 | ChaosNodeRestartCompleted | Bir düğümün bir Chaos test oturumunun parçası olarak yeniden başlatılması tamamlandı | Test edilebilirlik | Bilgilendirici | 1 |
 
 **Chaos uygulama olayları**
 
-| Even | Name | Açıklama |Kaynak (görev) | Düzey | Sürüm |
+| Even | Ad | Açıklama |Kaynak (görev) | Düzey | Sürüm |
 | --- | --- | ---| --- | --- | --- |
 | 50053 | Chaoscodepackagerestartzamanlandı | Bir Chaos test oturumu sırasında bir kod paketi yeniden başlatması zamanlandı | Test edilebilirlik | Bilgilendirici | 1 |
 | 50101 | ChaosCodePackageRestartCompleted | Bir Chaos test oturumu sırasında bir kod paketi yeniden başlatması tamamlandı | Test edilebilirlik | Bilgilendirici | 1 |
 
 **Chaos bölüm olayları**
 
-| Even | Name | Açıklama |Kaynak (görev) | Düzey | Sürüm |
+| Even | Ad | Açıklama |Kaynak (görev) | Düzey | Sürüm |
 | --- | --- | ---| --- | --- | --- |
 | 50069 | ChaosPartitionPrimaryMoveScheduled | Bir birincil bölüm, bir Chaos test oturumunun parçası olarak taşınmaya zamanlandı | Test edilebilirlik | Bilgilendirici | 1 |
 | 50077 | ChaosPartitionSecondaryMoveScheduled | Bir Chaos test oturumunun parçası olarak bir ikincil bölüm ilerlemek üzere zamanlandı | Test edilebilirlik | Bilgilendirici | 1 |
@@ -228,7 +228,7 @@ Uygulama yükseltmeleri hakkında daha fazla ayrıntı için [burada](service-fa
 
 **Chaos çoğaltma olayları**
 
-| Even | Name | Açıklama |Kaynak (görev) | Düzey | Sürüm |
+| Even | Ad | Açıklama |Kaynak (görev) | Düzey | Sürüm |
 | --- | --- | ---| --- | --- | --- |
 | 50047 | Chaosreplicarestartzamanlandı | Bir Chaos test oturumunun parçası olarak bir çoğaltma yeniden başlatması zamanlandı | Test edilebilirlik | Bilgilendirici | 1 |
 | 50051 | Chaosreplicaremovalzamanlandı | Bir çoğaltma kaldırma işlemi, bir Chaos test oturumunun parçası olarak zamanlandı | Test edilebilirlik | Bilgilendirici | 1 |
@@ -238,7 +238,7 @@ Uygulama yükseltmeleri hakkında daha fazla ayrıntı için [burada](service-fa
 
 **Bağıntı olayları**
 
-| Even | Name | Açıklama |Kaynak (görev) | Düzey | Sürüm |
+| Even | Ad | Açıklama |Kaynak (görev) | Düzey | Sürüm |
 | --- | --- | ---| --- | --- | --- |
 | 65011 | Correlationoperasyonel | Bağıntı algılandı | Test edilebilirlik | Bilgilendirici | 1 |
 

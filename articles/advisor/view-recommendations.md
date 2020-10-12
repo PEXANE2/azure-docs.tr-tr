@@ -4,10 +4,10 @@ description: Paraziti azaltmak için Azure Advisor önerilerini görüntüleyin 
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: 43bdaba7d774bba8857a6eb3ef296d7ab8e1c264
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90986865"
 ---
 # <a name="view-azure-advisor-recommendations-that-matter-to-you"></a>Size bağımsız olarak Azure Advisor önerilerini görüntüleyin
@@ -47,7 +47,7 @@ Azure Danışmanı, tek bir kaynaktaki önerileri kapatmanıza veya erteetmenize
 1. Öneriler listesinden bir öneri seçin
 1. Ertelemek veya kapatmak istediğiniz öneri için ertele veya Kapat ' ı seçin
 
-     :::image type="content" source="./media/view-recommendations/postpone-dismiss.png" alt-text="Seçim sütununu gösteren ve tek bir öneri vurgulanmış olarak eylemleri ertele ve Kapat için yönetilen diskleri kullan penceresinin ekran görüntüsü.":::
+     :::image type="content" source="./media/view-recommendations/postpone-dismiss.png" alt-text="Filtre seçeneklerini gösteren Azure Danışmanı ekran görüntüsü.":::
 
 ### <a name="postpone-or-dismiss-a-multiple-recommendations-in-the-azure-portal"></a>Azure portal birden çok öneriyi erteleyin veya kapatın
 
@@ -57,7 +57,7 @@ Azure Danışmanı, tek bir kaynaktaki önerileri kapatmanıza veya erteetmenize
 1. Öneriyi ertelemek veya kapatmak istediğiniz tüm kaynaklar için satırın solundaki onay kutusunu seçin.
 1. Tablonun sol üst kısmında **ertele** veya **Kapat** ' ı seçin.
 
-     :::image type="content" source="./media/view-recommendations/postpone-dismiss-multiple.png" alt-text="Seçim sütununu gösteren ve tablonun sol üst kısmındaki eylemleri ertele ve Kapat eylemlerini gösteren, yönetilen diskleri kullan penceresinin ekran görüntüsü.":::
+     :::image type="content" source="./media/view-recommendations/postpone-dismiss-multiple.png" alt-text="Filtre seçeneklerini gösteren Azure Danışmanı ekran görüntüsü.":::
 
 > [!NOTE]
 > Bir öneriyi kapatmak veya ertelemek için katkıda bulunan veya sahip izninizin olması gerekir. Azure Advisor izinleri hakkında daha fazla bilgi edinin.
@@ -73,7 +73,7 @@ Ertelenen veya kapatılan bir öneriyi etkinleştirebilirsiniz. Bu eylem Azure p
 
 1. Genel Bakış panelinde filtreyi **erteleyecek**şekilde değiştirin. Advisor daha sonra ertelenen veya kapatılan önerileri görüntüler.
 
-    :::image type="content" source="./media/view-recommendations/activate-postponed.png" alt-text="Seçili ertelenen açılan menüyü gösteren Azure Advisor penceresinin ekran görüntüsü.":::
+    :::image type="content" source="./media/view-recommendations/activate-postponed.png" alt-text="Filtre seçeneklerini gösteren Azure Danışmanı ekran görüntüsü.":::
 
 1. **Ertelenmiş** ve **Kapatılan** önerileri görmek için bir kategori seçin.
 
@@ -81,7 +81,7 @@ Ertelenen veya kapatılan bir öneriyi etkinleştirebilirsiniz. Bu eylem Azure p
 
 1. Satırın sonundaki **Etkinleştir** ' e tıklayın. Tıklandığında öneri bu kaynak için etkin olur ve bu nedenle bu tablodan kaldırılır. Öneri artık **etkin** sekmesinde görünür.
  
-     :::image type="content" source="./media/view-recommendations/activate-postponed-2.png" alt-text="Etkinleştir eylemi vurgulanmış şekilde ertelenen & kapatıldı sekmesini gösteren geçici silme penceresinin ekran görüntüsü.":::
+     :::image type="content" source="./media/view-recommendations/activate-postponed-2.png" alt-text="Filtre seçeneklerini gösteren Azure Danışmanı ekran görüntüsü.":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

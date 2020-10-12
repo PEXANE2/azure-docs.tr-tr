@@ -8,10 +8,10 @@ ms.date: 03/18/2020
 ms.author: sngun
 ms.reviewer: sngun
 ms.openlocfilehash: 32266695770f627f7044bce92e4505f45776fd28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83747358"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Azure Cosmos DB’de uyumluluk 
@@ -28,7 +28,7 @@ Azure Cosmos DB tüm Azure bölgelerinde kullanılabilir. Microsoft, müşterile
 
 * **Savunma Bakanlığı (DOD) Için Azure Kamu** , ABD savunma Bakanlığı Birleşik Devletler iki bölgede sunulmaktadır.
 
-Müşterilerin, dünya çapındaki sektörler ve pazarlar genelinde kendi uyumluluk yükümlülüklerini karşılamasına yardımcı olmak için, sektördeki en büyük uyumluluk portföyünü her iki kapsam (Toplam teklif sayısı) ve derinlik (değerlendirme kapsamındaki Müşteri Hizmetleri hizmeti sayısı) bakımından bir arada tutar.  Azure uyumluluk teklifleri, küresel olarak uygulanabilir, ABD Kamu, sektör özel ve bölge veya ülkeye/bölgeye özel dört kesimde gruplandırılır.  Uyumluluk teklifleri, bağımsız üçüncü taraf denetim firmaları ve Microsoft tarafından üretilen müşteri Kılavuzu belgeleri tarafından oluşturulan resmi sertifikalar, belirlediğimizi karşıladığımızı, doğrulamalar, yetkilendirmeler ve değerlendirmeler dahil olmak üzere çeşitli türlerde temel bilgiler alır.
+Müşterilerin, dünya çapındaki sektörler ve pazarlar genelinde kendi uyumluluk yükümlülüklerini karşılamasına yardımcı olmak için, sektördeki en büyük uyumluluk portföyünü her iki kapsam (Toplam teklif sayısı) ve derinlik (değerlendirme kapsamındaki Müşteri Hizmetleri hizmeti sayısı) bakımından bir arada tutar.  Azure uyumluluk teklifleri dört segmentte gruplandırılır: küresel olarak kullanılabilir, ABD Kamu, endüstriye özgü ve bölgeye veya ülkeye/bölgeye özgü.  Uyumluluk teklifleri bağımsız üçüncü taraf denetim firmaları tarafından üretilen resmi sertifikasyonlar, kanıtlamalar, doğrulamalar ve değerlendirmelerin yanı sıra Microsoft tarafından üretilen sözleşme ekleri, kendi kendine değerlendirmeler ve müşteri rehberliği belgeleri gibi çeşitli güvence türlerine dayanır.
 
 ## <a name="azure-cosmos-db-certifications"></a>Azure Cosmos DB sertifikaları  
 

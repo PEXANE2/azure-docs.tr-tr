@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 5806266955eafab8c3c8c99695ff82736de92e9b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187073"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>StorSimple cihaz dağıtımı sorunlarını giderme
@@ -135,11 +135,11 @@ Cihazı kaydetmek için Microsoft Azure çalıştıran StorSimple Aygıt Yöneti
 | 5 |Hata 350031: cihaz zaten kayıtlı. | |Herhangi bir işlem gerekli değil. |
 | 6 |Hata 350016: cihaz kaydı başarısız oldu. | |Lütfen kayıt anahtarının doğru olduğundan emin olun. |
 | 7 |Invoke-HcsSetupWizard: cihazınız kaydedilirken bir hata oluştu; Bunun nedeni yanlış IP adresi veya DNS adı olabilir. Lütfen ağ ayarlarınızı denetleyin ve yeniden deneyin. Sorun devam ederse [Microsoft desteği başvurun](storsimple-8000-contact-microsoft-support.md). (Hata 350050) |Cihazınızın dış ağa ping atabildiğini doğrulayın. Dış ağa bağlantınız yoksa kayıt bu hatayla başarısız olabilir. Bu hata aşağıdakilerden bir veya daha fazla bir bileşim olabilir:<ul><li>Yanlış IP</li><li>Yanlış alt ağ</li><li>Hatalı ağ geçidi</li><li>Yanlış DNS ayarları</li></ul> |Adım adım [sorun giderme örneğinde](#step-by-step-storsimple-troubleshooting-example)bulunan adımlara bakın. |
-| 8 |Invoke-HcsSetupWizard: geçerli işlem, bir iç hizmet hatası nedeniyle başarısız oldu [0x1FBE2]. Lütfen bir süre sonra işlemi yeniden deneyin. Sorun devam ederse lütfen Microsoft Desteği başvurun. |Bu, tüm Kullanıcı görünmeyen hatalar için hizmetten veya aracıdan oluşan genel bir hatadır. En yaygın neden, ACS kimlik doğrulamasının başarısız olması olabilir. Hatanın olası nedeni, NTP sunucusu yapılandırmasıyla ilgili sorunların ve cihazdaki saatin doğru ayarlanmamasına neden olur. |Süreyi düzeltin (sorunlar varsa) ve ardından kayıt işlemini yeniden deneyin. Saat dilimini ayarlamak için set-HcsSystem-TimeZone komutunu kullanırsanız, saat dilimindeki her bir sözcüğü (örneğin, "Pasifik Standart Saati") büyük harfle değiştirin.  Bu sorun devam ederse, sonraki adımlar için [Microsoft desteği başvurun](storsimple-8000-contact-microsoft-support.md) . |
+| 8 |Invoke-HcsSetupWizard: geçerli işlem, bir iç hizmet hatası nedeniyle başarısız oldu [0x1FBE2]. Lütfen bir süre sonra işlemi yeniden deneyin. Sorun devam ederse lütfen Microsoft Desteği başvurun. |Bu, tüm Kullanıcı görünmeyen hatalar için hizmetten veya aracıdan oluşan genel bir hatadır. En yaygın neden, ACS kimlik doğrulamasının başarısız olması olabilir. Hatanın olası nedeni, NTP sunucusu yapılandırmasıyla ilgili sorunların ve cihazdaki saatin doğru ayarlanmamasına neden olur. |Süreyi düzeltin (sorunlar varsa) ve ardından kayıt işlemini yeniden deneyin. Saat dilimini ayarlamak için Set-HcsSystem-TimeZone komutunu kullanırsanız, saat dilimindeki her bir sözcüğü (örneğin, "Pasifik Standart Saati") büyük harfle değiştirin.  Bu sorun devam ederse, sonraki adımlar için [Microsoft desteği başvurun](storsimple-8000-contact-microsoft-support.md) . |
 | 9 |Uyarı: cihaz etkinleştirilemedi. Cihaz yöneticiniz ve StorSimple Snapshot Manager parolalar değişmemiştir. |Kayıt başarısız olursa, Cihaz Yöneticisi ve StorSimple Snapshot Manager parolaları değiştirilmez. | |
 
 ## <a name="tools-for-troubleshooting-storsimple-deployments"></a>StorSimple dağıtımlarının sorunlarını gidermeye yönelik araçlar
-StorSimple, StorSimple çözümünüzün sorunlarını gidermek için kullanabileceğiniz çeşitli araçlar içerir. Bunlar:
+StorSimple, StorSimple çözümünüzün sorunlarını gidermek için kullanabileceğiniz çeşitli araçlar içerir. Bu modüller şunlardır:
 
 * Destek paketleri ve cihaz günlükleri.
 * Sorun giderme için özel olarak tasarlanan cmdlet 'ler.
@@ -173,11 +173,11 @@ Bağlantı hatalarını algılamak için aşağıdaki Windows PowerShell cmdlet 
 * `Test-Connection`: Ağın içindeki ve dışındaki ağ bağlantısını denetlemek için bu cmdlet 'i kullanın.
 * `Test-HcsmConnection`: Başarıyla kaydedilen bir cihazın bağlantısını denetlemek için bu cmdlet 'i kullanın.
 * `Sync-HcsTime`: Cihaz süresini göstermek ve NTP sunucusuyla zaman eşitlemeye zorlamak için bu cmdlet 'i kullanın.
-* `Enable-HcsPing`ve `Disable-HcsPing` : Bu cmdlet 'leri, ana bilgisayarların StorSimple cihazınızdaki ağ arabirimlerine ping yapmasına izin vermek için kullanın. Varsayılan olarak, StorSimple ağ arabirimleri, ping isteklerine yanıt vermez.
+* `Enable-HcsPing` ve `Disable-HcsPing` : Bu cmdlet 'leri, ana bilgisayarların StorSimple cihazınızdaki ağ arabirimlerine ping yapmasına izin vermek için kullanın. Varsayılan olarak, StorSimple ağ arabirimleri, ping isteklerine yanıt vermez.
 * `Trace-HcsRoute`: Bu cmdlet 'i yol izleme aracı olarak kullanın. Her yönlendiriciye bir süre içinde son hedefe yönelik paketleri gönderir ve ardından her bir atlamada döndürülen paketlere göre sonuçları hesaplar. Bu `Trace-HcsRoute` nedenle, belirli bir yönlendiricide veya bağlantıda paket kaybı derecesini gösterdiği için, hangi yönlendiricilerin veya bağlantıların ağ sorunlarına neden olabileceğini belirtebilirsiniz.
 * `Get-HcsRoutingTable`: Yerel IP yönlendirme tablosunu göstermek için bu cmdlet 'i kullanın.
 
-## <a name="troubleshoot-with-the-get-netadapter-cmdlet"></a>Get-NetAdapter cmdlet 'i ile sorun giderme
+## <a name="troubleshoot-with-the-get-netadapter-cmdlet"></a>Get-NetAdapter cmdlet ile sorun giderme
 Bir ilk kez cihaz dağıtımı için ağ arabirimlerini yapılandırdığınızda, cihaz henüz hizmete kayıtlı olmadığından StorSimple Aygıt Yöneticisi hizmeti kullanıcı arabiriminde donanım durumu kullanılamaz. Ayrıca, özellikle de hizmet eşitlemesini etkileyen sorunlar varsa, **donanım durumu** dikey penceresi cihazın durumunu her zaman doğru yansıtmayabilir. Bu durumlarda, `Get-NetAdapter` ağ arabirimlerinizin sistem durumunu ve durumunu öğrenmek için cmdlet 'ini kullanabilirsiniz.
 
 ### <a name="to-see-a-list-of-all-the-network-adapters-on-your-device"></a>Cihazınızdaki tüm ağ bağdaştırıcılarının listesini görmek için
@@ -238,7 +238,7 @@ DATA4                Intel(R) Gigabit ET Dual Port Serv...#2     17       NotPre
 ```
 
 
-## <a name="troubleshoot-with-the-test-connection-cmdlet"></a>Test-Connection cmdlet 'i ile sorun giderme
+## <a name="troubleshoot-with-the-test-connection-cmdlet"></a>Test-Connection cmdlet ile sorun giderme
 `Test-Connection`StorSimple cihazınızın dış ağa bağlanıp bağlanamamadığını öğrenmek için cmdlet 'ini kullanabilirsiniz. DNS dahil tüm ağ parametreleri Kurulum sihirbazında doğru yapılandırılmışsa, `Test-Connection` Outlook.com gibi ağ dışındaki bilinen bir adrese ping eklemek için cmdlet 'ini kullanabilirsiniz.
 
 Ping devre dışıysa bu cmdlet ile bağlantı sorunlarını gidermek için ping etkinleştirmelisiniz.
@@ -274,7 +274,7 @@ HCSNODE0      outlook.com     132.245.92.194
 HCSNODE0      outlook.com     132.245.92.194
 ```
 
-## <a name="troubleshoot-with-the-test-hcsmconnection-cmdlet"></a>Test-HcsmConnection cmdlet 'iyle sorun giderme
+## <a name="troubleshoot-with-the-test-hcsmconnection-cmdlet"></a>Test-HcsmConnection cmdlet ile sorun giderme
 `Test-HcsmConnection`StorSimple aygıt yöneticisi hizmetinize zaten bağlı ve kayıtlı olan bir cihaz için cmdlet 'ini kullanın. Bu cmdlet, kayıtlı bir cihaz ve ilgili StorSimple Aygıt Yöneticisi hizmeti arasındaki bağlantıyı doğrulamanıza yardımcı olur. Bu komutu StorSimple için Windows PowerShell üzerinde çalıştırabilirsiniz.
 
 ### <a name="to-run-the-test-hcsmconnection-cmdlet"></a>Test-HcsmConnection cmdlet 'ini çalıştırmak için
@@ -359,7 +359,7 @@ Checking connectivity from device to SaaS.. Failure
 
 Cihaz, geçerli Web proxy yapılandırmasını kullanarak bağlanamadı. Bu, Web proxy yapılandırması veya ağ bağlantısı sorunu ile ilgili bir sorun olabilir. Bu durumda, Web proxy ayarlarınızın doğru olduğundan ve Web proxy sunucularınızın çevrimiçi ve ulaşılabilir olduğundan emin olun.
 
-## <a name="troubleshoot-with-the-sync-hcstime-cmdlet"></a>Sync-HcsTime cmdlet 'iyle sorun giderme
+## <a name="troubleshoot-with-the-sync-hcstime-cmdlet"></a>Sync-HcsTime cmdlet ile sorun giderme
 Cihaz saatini göstermek için bu cmdlet 'i kullanın. Cihaz saati NTP sunucusuyla bir uzaklığa sahipse, bu cmdlet 'i kullanarak saati NTP sunucunuz ile eşitler.
 - Cihaz ile NTP sunucusu arasındaki fark 5 dakikadan fazlaysa bir uyarı görürsünüz. 
 - Fark 15 dakikayı aşarsa, cihaz çevrimdışı duruma geçer. Zaman eşitlemesini zorlamak için bu cmdlet 'i kullanmaya devam edebilirsiniz. 
@@ -376,7 +376,7 @@ Time difference between NTP server and appliance is 00.0824069 seconds. Do you w
 Controller0>
 ```
 
-## <a name="troubleshoot-with-the-enable-hcsping-and-disable-hcsping-cmdlets"></a>Enable-HcsPing ve Disable-HcsPing cmdlet 'leriyle sorun giderin
+## <a name="troubleshoot-with-the-enable-hcsping-and-disable-hcsping-cmdlets"></a>Enable-HcsPing ve Disable-HcsPing cmdlet 'leriyle sorun giderme
 Cihazınızdaki ağ arabirimlerinin ıCMP ping isteklerine yanıt vermesini sağlamak için bu cmdlet 'leri kullanın. Varsayılan olarak, StorSimple ağ arabirimleri, ping isteklerine yanıt vermez. Bu cmdlet 'in kullanılması, cihazınızın çevrimiçi ve erişilebilir olup olmadığını öğrenmenin en kolay yoludur.
 
 **Örnek çıkış – Enable-HcsPing ve Disable-HcsPing**
@@ -392,7 +392,7 @@ Successfully disabled ping.
 Controller0>
 ```
 
-## <a name="troubleshoot-with-the-trace-hcsroute-cmdlet"></a>Trace-HcsRoute cmdlet 'i ile sorun giderme
+## <a name="troubleshoot-with-the-trace-hcsroute-cmdlet"></a>Trace-HcsRoute cmdlet ile sorun giderme
 Bu cmdlet 'i yol izleme aracı olarak kullanın. Her yönlendiriciye bir süre içinde son hedefe yönelik paketleri gönderir ve ardından her bir atlamada döndürülen paketlere göre sonuçları hesaplar. Cmdlet 'i belirli bir yönlendiricide veya bağlantıda paket kaybı derecesini gösterdiği için, hangi yönlendiricilerin veya bağlantıların ağ sorunlarına neden olabileceğini belirtebilirsiniz.
 
 **Trace-HcsRoute ile bir paketin yolunu izlemeyi gösteren örnek çıktı**
@@ -416,7 +416,7 @@ Hop  RTT    Lost/Sent = Pct  Lost/Sent = Pct  Address
 Trace complete.
 ```
 
-## <a name="troubleshoot-with-the-get-hcsroutingtable-cmdlet"></a>Get-HcsRoutingTable cmdlet 'i ile sorun giderme
+## <a name="troubleshoot-with-the-get-hcsroutingtable-cmdlet"></a>Get-HcsRoutingTable cmdlet ile sorun giderme
 StorSimple cihazınız için yönlendirme tablosunu görüntülemek için bu cmdlet 'i kullanın. Yönlendirme tablosu, bir Internet Protokolü (IP) ağı üzerinden seyahat edilen veri paketlerinin nerede yönlendirilmeyeceğini belirlemede yardımcı olabilecek bir kurallar kümesidir.
 
 Yönlendirme tablosu, verileri belirtilen ağlara yönlendiren arabirimleri ve ağ geçidini gösterir. Ayrıca, belirli bir hedefe ulaşmak için alınan yol için karar Oluşturucu olan yönlendirme ölçüsünü de sağlar. Yönlendirme ölçümü ne kadar düşükse tercih daha yüksektir.
@@ -425,7 +425,7 @@ Yönlendirme tablosu, verileri belirtilen ağlara yönlendiren arabirimleri ve a
 
 StorSimple cihazınızda güncelleştirme 1 ' i çalıştırıyorsanız, VERI 0 ağ arabiriminiz, bulut trafiği için en yüksek tercihe sahiptir. Bu, diğer bulut özellikli arabirimler olsa da, bulut trafiğinin 0 VERI aracılığıyla yönlendirilmesi anlamına gelir.
 
-`Get-HcsRoutingTable`Cmdlet 'i herhangi bir parametre belirtmeden çalıştırırsanız (aşağıdaki örnekte gösterildiği gibi), cmdlet hem IPv4 hem de IPv6 yönlendirme tablolarının çıktısını görüntüler. Alternatif olarak, `Get-HcsRoutingTable -IPv4` ilgili yönlendirme tablosunu da belirtebilir veya seçebilirsiniz `Get-HcsRoutingTable -IPv6` .
+`Get-HcsRoutingTable`Cmdlet 'i herhangi bir parametre belirtmeden çalıştırırsanız (aşağıdaki örnekte gösterildiği gibi), cmdlet hem IPv4 hem de IPv6 yönlendirme tablolarının çıktısını görüntüler. Alternatif olarak, `Get-HcsRoutingTable -IPv4` ilgili yönlendirme tablosunu da belirtebilir veya seçebilirsiniz `Get-HcsRoutingTable -IPv6`  .
 
 ```output
 Controller0>
@@ -525,9 +525,9 @@ Hatanın nedeni aşağıdakilerden biri olabilir:
   
 3. Ağ arabiriminin sistem durumunu doğrulayın:
    
-   * VERI 0 için ağ arabirimlerinin sistem durumunu algılamak için Get-NetAdapter cmdlet 'ini kullanın. 
+   * VERI 0 için ağ arabirimlerinin sistem durumunu algılamak üzere Get-NetAdapter cmdlet 'ini kullanın. 
    * Bağlantı çalışmıyorsa, **ifındex** durumu arabirimin bittiğini gösterir. Daha sonra, bağlantı noktasının gerecine ve anahtara ağ bağlantısını denetlemeniz gerekir. Ayrıca, hatalı kablolar için de kural oluşturmanız gerekir. 
-   * Etkin denetleyicideki DATA 0 bağlantı noktasının başarısız olduğundan şüphelenirseniz, denetleyici 1 üzerindeki DATA 0 bağlantı noktasına bağlanarak bunu doğrulayabilirsiniz. Bunu onaylamak için, ağ kablosunu cihazın geri kaynağından denetleyici 0 ' dan sökün, kabloyu Controller 1 ' e bağlayın ve sonra Get-NetAdapter cmdlet 'ini yeniden çalıştırın.
+   * Etkin denetleyicideki DATA 0 bağlantı noktasının başarısız olduğundan şüphelenirseniz, denetleyici 1 üzerindeki DATA 0 bağlantı noktasına bağlanarak bunu doğrulayabilirsiniz. Bunu onaylamak için, ağ kablosunu cihazın geri bağlantısı olan denetleyici 0 ' dan sökün, kabloyu Controller 1 ' e bağlayın ve sonra Get-NetAdapter cmdlet 'ini yeniden çalıştırın.
      Bir denetleyicideki DATA 0 bağlantı noktası başarısız olursa, sonraki adımlar için [Microsoft desteği başvurun](storsimple-8000-contact-microsoft-support.md) . Sisteminizdeki denetleyiciyi değiştirmeniz gerekebilir.
 4. Anahtarla bağlantıyı doğrulayın:
    
@@ -543,7 +543,7 @@ Hatanın nedeni aşağıdakilerden biri olabilir:
      > Çalıştıran birden fazla hizmet varsa, cihazı kaydetmek için uygun hizmet kayıt anahtarının kullanıldığından emin olmanız gerekir. Yanlış StorSimple Aygıt Yöneticisi hizmetine sahip bir cihaz kaydettiniz, sonraki adımlar için [Microsoft desteği başvurmanız](storsimple-8000-contact-microsoft-support.md) gerekir. Cihazın fabrika sıfırlamasını (veri kaybına neden olabilir), daha sonra amaçlanan hizmete bağlayabilmeniz gerekebilir.
      > 
      > 
-6. Dış ağa bağlantınız olduğunu doğrulamak için Test-Connection cmdlet 'ini kullanın. Daha fazla bilgi için, [Test-Connection cmdlet 'iyle sorun giderme](#troubleshoot-with-the-test-connection-cmdlet)bölümüne gidin.
+6. Dış ağa bağlantınız olduğunu doğrulamak için Test-Connection cmdlet 'ini kullanın. Daha fazla bilgi için [Test-Connection cmdlet Ile sorun giderme](#troubleshoot-with-the-test-connection-cmdlet)bölümüne gidin.
 7. Güvenlik Duvarı girişim olup olmadığını denetleyin. Sanal IP (VIP), alt ağ, ağ geçidi ve DNS ayarlarının tümünün doğru olduğunu doğruladıysanız ve hala bağlantı sorunları görüyorsanız, güvenlik duvarınızın cihazınız ile dışarıdaki ağ arasındaki iletişimi engellemesi mümkündür. 80 ve 443 bağlantı noktalarının giden iletişim için StorSimple cihazınızda kullanılabilir olduğundan emin olmanız gerekir. Daha fazla bilgi için bkz. [StorSimple cihazınız Için ağ gereksinimleri](storsimple-8000-system-requirements.md#networking-requirements-for-your-storsimple-device).
 8. Günlüklere bakın. [Sorun giderme Için destek paketleri ve cihaz günlüklerine](#support-packages-and-device-logs-available-for-troubleshooting)gidin.
 9. Yukarıdaki adımlar sorunu çözmezse, yardım için [Microsoft desteği başvurun](storsimple-8000-contact-microsoft-support.md) .

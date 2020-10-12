@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/02/2020
 ms.author: guybo
 ms.openlocfilehash: f945c58b256c2a024a62b15a1bca1841483e1849
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91279442"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure 'da desteklenen Linux dağıtımları
@@ -50,14 +50,14 @@ Azure, onaylı Linux dağıtımlarının yayımcılarının, üç aylık veya da
 
 ## <a name="azure-tuned-kernels"></a>Azure tarafından ayarlanan çekirdekler
 
-Azure, Azure Market 'Te yayımladıkları görüntüleri iyileştirmek için, çeşitli desteklenen linux dağıtımlarıyla yakından birlikte çalışmaktadır. Bu işbirliğinin bir yönü, Azure platformu için optimize edilmiş ve Linux dağıtımının tamamen desteklenen bileşenleri olarak sunulan "ayarlanmış" Linux çekirdekleri geliştirmektedir. Azure tarafından ayarlanmış çekirdekler yeni özellikler ve performans iyileştirmeleri ve dağıtım tarafından kullanılabilen varsayılan ya da genel çekirdekler ile karşılaştırıldığında daha hızlı (genellikle üç ayda) temposunda.
+Azure, Azure Market 'Te yayımladıkları görüntüleri iyileştirmek için, çeşitli desteklenen linux dağıtımlarıyla yakından birlikte çalışmaktadır. Bu işbirliğinin bir yönü, Azure platformu için optimize edilmiş ve Linux dağıtımının tamamen desteklenen bileşenleri olarak sunulan "ayarlanmış" Linux çekirdekleri geliştirmektedir. Azure-Tuned Keri, yeni özellikleri ve performans geliştirmelerini ve dağıtım tarafından kullanılabilen varsayılan veya genel çekirdekler ile karşılaştırıldığında daha hızlı (genellikle üç ayda) temposunda.
 
-Çoğu durumda, bu çekirdekleri Azure Marketi 'ndeki varsayılan görüntülerde önceden yüklenmiş olarak bulacak ve müşteriler bu iyileştirilmiş çekirdekler için hemen faydalanacaktır. Azure tarafından ayarlanan bu çekirdekler hakkında daha fazla bilgi aşağıdaki bağlantılarda bulunabilir:
+Çoğu durumda, bu çekirdekleri Azure Marketi 'ndeki varsayılan görüntülerde önceden yüklenmiş olarak bulacak ve müşteriler bu iyileştirilmiş çekirdekler için hemen faydalanacaktır. Bu Azure-Tuned keryls hakkında daha fazla bilgi aşağıdaki bağlantılarda bulunabilir:
 
-- [CentOS Azure tarafından ayarlanmış çekirdek-CentOS sanallaştırma SıG ile kullanılabilir](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
+- [CentOS Azure-Tuned Kernel-CentOS sanallaştırma SıG ile kullanılabilir](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
 - [Bulut çekirdeğini devre dışı bırak-Azure 'da detem 10 ve detem 9 "backports" görüntüsü ile kullanılabilir](https://wiki.debian.org/Cloud/MicrosoftAzure)
-- [SLES Azure tarafından ayarlanan çekirdek](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
-- [Ubuntu Azure tarafından ayarlanan çekirdek](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
+- [SLES Azure-Tuned çekirdeği](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
+- [Ubuntu Azure-Tuned çekirdeği](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
 
 ## <a name="partners"></a>İş Ortakları
 

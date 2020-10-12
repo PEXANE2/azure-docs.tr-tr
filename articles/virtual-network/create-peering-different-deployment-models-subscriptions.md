@@ -14,10 +14,10 @@ ms.date: 06/25/2020
 ms.author: kumud
 ms.reviewer: anavin
 ms.openlocfilehash: 88e576231e0231a105cd9ec303f63307b5eaff89
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87051615"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Sanal ağ eşlemesi oluşturma-farklı dağıtım modelleri ve abonelikler
@@ -72,7 +72,7 @@ Bu öğretici her abonelik için farklı hesaplar kullanır. Her iki abonelik i�
     - **Konum**: *Doğu ABD*
 
 14. Portalın üst kısmındaki **kaynakları ara** kutusuna *Myvnetb*yazın. Arama sonuçlarında göründüğünde **Myvnetb** ' ye tıklayın. **Myvnetb** sanal ağı için bir dikey pencere görüntülenir.
-15. Görüntülenen **Myvnetb** dikey penceresinde dikey pencerenin sol tarafındaki Seçenekler ' in dikey listesinden **Özellikler** ' e tıklayın. Daha sonraki bir adımda kullanılan **kaynak kimliğini**kopyalayın. Kaynak KIMLIĞI aşağıdaki örneğe benzer:`/subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB`
+15. Görüntülenen **Myvnetb** dikey penceresinde dikey pencerenin sol tarafındaki Seçenekler ' in dikey listesinden **Özellikler** ' e tıklayın. Daha sonraki bir adımda kullanılan **kaynak kimliğini**kopyalayın. Kaynak KIMLIĞI aşağıdaki örneğe benzer: `/subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB`
 16. Adım 8 ' de **KullanıcıA** 'Yı girerek myVnetB için 5-9 adımlarını izleyin.
 17. Portaldan UserB olarak oturum açın ve UserA olarak oturum açın.
 18. Portalın üst kısmındaki **kaynakları ara** kutusuna *Myvneta*yazın. Arama sonuçlarında göründüğünde **Myvneta** ' ya tıklayın. **Myvnet** sanal ağı için bir dikey pencere görünür.
@@ -269,7 +269,7 @@ Bu öğretici her abonelik için farklı hesaplar kullanır. Her iki abonelik i�
 12. **Isteğe bağlı**: Bu öğreticide sanal makineler oluşturmak, her bir sanal ağ için bir sanal makine oluşturabilir ve bağlantıyı doğrulamak için bir sanal makineden diğerine bağlanabilirsiniz.
 13. **Isteğe bağlı**: Bu öğreticide oluşturduğunuz kaynakları silmek için, bu makaledeki [kaynakları silme](#delete-powershell) bölümündeki adımları uygulayın.
 
-## <a name="delete-resources"></a><a name="delete"></a>Kaynakları Sil
+## <a name="delete-resources"></a><a name="delete"></a>Kaynakları silme
 Bu öğreticiyi tamamladığınızda, öğreticide oluşturduğunuz kaynakları silmek isteyebilirsiniz, bu sayede kullanım ücretlerine tabi kalmazsınız. Kaynak grubunun silinmesi, kaynak grubundaki tüm kaynakları da siler.
 
 ### <a name="azure-portal"></a><a name="delete-portal"></a>Azure portal

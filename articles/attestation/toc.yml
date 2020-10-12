@@ -4,7 +4,7 @@
   items:
     - name: Microsoft Azure Doğrulama hakkında
       href: overview.md
-- name: Hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   items:
     - name: ARM şablonu
       href: quickstart-template.md

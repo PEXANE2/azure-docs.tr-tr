@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: allensu
 ms.openlocfilehash: 4154c6a1e739f935022271e7a101f39d3ee5c500
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84343029"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>X-EC-Azure CDN kuralları altyapısı için HTTP üstbilgilerini hata ayıkla
@@ -41,7 +41,7 @@ X-EC-hata ayıkla: x-EC-Check-önbelleklenebilir | [Önbelleğe alınabilir öğ
 X-EC-hata ayıkla: x-EC-Cache-Key | [Cache-Key](#cache-key-response-header)
 X-EC-hata ayıklama: x-EC-Cache-State | [Önbellek durumu](#cache-state-response-header)
 
-### <a name="syntax"></a>Syntax
+### <a name="syntax"></a>Sözdizimi
 
 Aşağıdaki üst bilgi ve istekte belirtilen yönergeler eklenerek hata ayıklama önbelleği yanıt üstbilgileri istenebilir:
 
@@ -70,7 +70,7 @@ X-EC-Debug üstbilgisi, önbellek durum kodu bilgilerini aşağıdaki biçimde b
 Yukarıdaki yanıt üst bilgisi sözdiziminde kullanılan terimler aşağıdaki gibi tanımlanır:
 - StatusCode: istenen içeriğin, bir önbellek durum kodu ile temsil edilen CDN tarafından nasıl işlendiğini gösterir.
     
-    Belirteç tabanlı kimlik doğrulaması nedeniyle yetkisiz bir istek reddedildiğinde, TCP_DENIED durum kodu NONE yerine bildirilebilir. Ancak, önbellek durum raporları veya ham günlük verileri görüntülenirken, NONE durum kodu çalışmaya devam edecektir.
+    Token-Based kimlik doğrulaması nedeniyle yetkisiz bir istek reddedildiğinde TCP_DENIED durum kodu NONE yerine bildirilebilir. Ancak, önbellek durum raporları veya ham günlük verileri görüntülenirken, NONE durum kodu çalışmaya devam edecektir.
 
 - Platform: içeriğin istendiği platformu gösterir. Bu alan için aşağıdaki kodlar geçerlidir:
 
@@ -106,7 +106,7 @@ Yukarıdaki yanıt üst bilgisi sözdiziminde kullanılan terim aşağıdaki gib
 Değer  | Açıklama
 -------| --------
 EVET    | İstenen içeriğin önbelleğe alma için uygun olduğunu gösterir.
-NO     | İstenen içeriğin önbelleğe alma için uygun olmadığını gösterir. Bu durumun nedeni aşağıdakilerden biri olabilir: <br /> -Müşteriye özgü yapılandırma: hesabınıza özgü bir yapılandırma, pop sunucularının bir varlığı önbelleğe almasını engelleyebilir. Örneğin, kural altyapısı, uygun istekler için önbelleği atlama özelliğini etkinleştirerek bir varlığın önbelleğe alınmasını önleyebilir.<br /> -Önbellek yanıtı üstbilgileri: istenen varlığın Cache-Control ve Expires üstbilgileri, POP sunucularının onu önbelleğe almasını önleyebilir.
+NO     | İstenen içeriğin önbelleğe alma için uygun olmadığını gösterir. Bu durumun nedeni aşağıdakilerden biri olabilir: <br /> -Customer-Specific Configuration: hesabınıza özgü bir yapılandırma, pop sunucularının bir varlığı önbelleğe almasını engelleyebilir. Örneğin, kural altyapısı, uygun istekler için önbelleği atlama özelliğini etkinleştirerek bir varlığın önbelleğe alınmasını önleyebilir.<br /> -Önbellek yanıtı üstbilgileri: istenen varlığın Cache-Control ve süre sonu başlıkları, POP sunucularının onu önbelleğe almasını önleyebilir.
 BILINMEYEN | Sunucuların istenen varlığın önbelleklenebilir olup olmadığını değerlendiremediğini belirtir. Bu durum genellikle, belirteç tabanlı kimlik doğrulaması nedeniyle istek reddedildiğinde oluşur.
 
 ### <a name="sample-response-header"></a>Örnek yanıt üst bilgisi
@@ -147,7 +147,7 @@ Aşağıdaki örnek yanıt üst bilgisi, istenen içerik için fiziksel önbelle
 
 Yukarıdaki yanıt üst bilgisi sözdiziminde kullanılan terimler aşağıdaki gibi tanımlanır:
 
-- MASeconds: istenen içeriğin Cache-Control üstbilgileri tarafından tanımlanan maksimum yaşı (saniye cinsinden) belirtir.
+- MASeconds: istenen içeriğin Cache-Control üst bilgileri tarafından tanımlanan maksimum yaşı (saniye cinsinden) belirtir.
 
 - MATimePeriod: maksimum yaş değerini (yani, Masaniye) daha büyük bir birimin (örneğin, günler) yaklaşık eşdeğerine dönüştürür. 
 

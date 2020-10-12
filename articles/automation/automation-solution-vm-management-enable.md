@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
 ms.openlocfilehash: dde2c3e4cf496bb15ca91c72d9a41936af7051c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83743751"
 ---
 # <a name="enable-startstop-vms-during-off-hours"></a>VM'leri çalışma saatleri dışında başlat/durdur özelliğini etkinleştirme
@@ -51,7 +51,7 @@ Kaynak oluşturulduğunda çözüm Ekle sayfası görüntülenir. Özelliği Oto
    - Yeni Log Analytics çalışma alanı için **Contosolaworkspace**gibi bir ad belirtin.
    - Varsayılan seçilen değer uygun değilse, açılan listeden seçerek bağlantı için bir **abonelik** seçin.
    - **Kaynak grubu**için, yeni bir kaynak grubu oluşturabilir veya var olan bir grup seçebilirsiniz.
-   - Bir **Konum** seçin.
+   - Bir **konum**seçin.
    - Bir **Fiyatlandırma katmanı** seçin. **GB başına (tek başına)** seçeneğini belirleyin. Azure Izleyici günlükleri güncelleştirilmiş [fiyatlandırmaya](https://azure.microsoft.com/pricing/details/log-analytics/) sahıptır ve GB başına katman tek seçenektir.
 
    > [!NOTE]
@@ -98,7 +98,7 @@ VM'leri çalışma saatleri dışında başlat/durdur, önceden tanımlanmış b
 
 1. Özelliği için gereken başlangıç ayarlarını yapılandırdıktan sonra, parametreler sayfasını kapatmak için **Tamam** ' ı tıklatın.
 
-2. **Oluştur**'a tıklayın. Tüm ayarlar doğrulandıktan sonra, özelliği aboneliğinize dağıtır. Bu işlemin tamamlanması birkaç saniye sürebilir ve ilerleme durumunu menüdeki **Bildirimler** ' in altından izleyebilirsiniz.
+2. **Oluştur**’a tıklayın. Tüm ayarlar doğrulandıktan sonra, özelliği aboneliğinize dağıtır. Bu işlemin tamamlanması birkaç saniye sürebilir ve ilerleme durumunu menüdeki **Bildirimler** ' in altından izleyebilirsiniz.
 
     > [!NOTE]
     > Azure bulut çözümü sağlayıcısı (Azure CSP) aboneliğiniz varsa, dağıtım tamamlandıktan sonra Otomasyon hesabınızda, **paylaşılan kaynaklar** altındaki **değişkenlere** gidin ve [External_EnableClassicVMs](automation-solution-vm-management.md#variables) değişkenini **false**olarak ayarlayın. Bu, çözümün klasik VM kaynaklarına bakmasını engeller.

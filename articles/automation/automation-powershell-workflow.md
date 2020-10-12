@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
 ms.openlocfilehash: f175e495af8e925c0d5a6c61669a5e2f44f73ae7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86186019"
 ---
 # <a name="learn-powershell-workflow-for-azure-automation"></a>Azure Otomasyonu için PowerShell Iş akışını öğrenin
@@ -76,7 +76,7 @@ $Service = Get-Service -Name MyService
 $Service.Stop()
 ```
 
-Bunu bir iş akışında çalıştırmayı denerseniz, şunu bildiren bir hata alırsınız`Method invocation is not supported in a Windows PowerShell Workflow.`
+Bunu bir iş akışında çalıştırmayı denerseniz, şunu bildiren bir hata alırsınız `Method invocation is not supported in a Windows PowerShell Workflow.`
 
 Bir seçenek, bu iki kod satırını bir [InlineScript](#use-inlinescript) bloğunda sarmalıdır. Bu durumda, `Service` blok içindeki bir hizmet nesnesini temsil eder.
 
@@ -261,7 +261,7 @@ Workflow Copy-Files
 }
 ```
 
-[Askıya alma Iş akışı](/powershell/module/psworkflow/about/about_suspend-workflow) etkinliğini veya son kontrol noktasından sonra Kullanıcı adı kimlik bilgileri kalıcı olmadığından, kimlik bilgilerini null olarak ayarlamanız ve ardından `Suspend-Workflow` veya denetim noktası çağrıldıktan sonra bunları varlık deposundan yeniden almanız gerekir.  Aksi takdirde, aşağıdaki hata iletisini alabilirsiniz:`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
+[Askıya alma Iş akışı](/powershell/module/psworkflow/about/about_suspend-workflow) etkinliğini veya son kontrol noktasından sonra Kullanıcı adı kimlik bilgileri kalıcı olmadığından, kimlik bilgilerini null olarak ayarlamanız ve ardından `Suspend-Workflow` veya denetim noktası çağrıldıktan sonra bunları varlık deposundan yeniden almanız gerekir.  Aksi takdirde, aşağıdaki hata iletisini alabilirsiniz: `The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
 
 Aşağıdaki aynı kodda PowerShell Iş akışı runbook 'larınızda bu durumun nasıl işleneceği gösterilmektedir.
 

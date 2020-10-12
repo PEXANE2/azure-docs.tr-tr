@@ -15,10 +15,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: has-adal-ref, devx-track-csharp
 ms.openlocfilehash: b9b72e8340722f8ddc97b3769ce22e607974a508
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89297408"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Media Services v3 API-.NET ' e bağlanın
@@ -48,7 +48,7 @@ Bu konudaki örnek uygulama, hedefler `netcoreapp2.0` . Kod, C# 7,1 ile başlaya
 1. Visual Studio 'da **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **NuGet Yönetici Konsolu**' nu seçin.
 2. **Paket Yöneticisi konsolu** penceresinde, `Install-Package` aşağıdaki NuGet paketlerini eklemek için komutunu kullanın. Örneğin, `Install-Package Microsoft.Azure.Management.Media`.
 
-|Paket|Description|
+|Paket|Açıklama|
 |---|---|
 |`Microsoft.Azure.Management.Media`|SDK Azure Media Services. <br/>En son Azure Media Services paketini kullandığınızdan emin olmak için [Microsoft. Azure. Management. Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media)' i kontrol edin.|
 |`Microsoft.Rest.ClientRuntime.Azure.Authentication`|NET için Azure SDK için ADAL kimlik doğrulaması kitaplığı|

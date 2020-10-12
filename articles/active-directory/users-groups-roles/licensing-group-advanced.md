@@ -16,10 +16,10 @@ ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c7cc4065297c35164f1e37b187c6280b3d3546ee
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91538849"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Azure Active Directory 'de lisanslamayı yönetmek için grupları kullanarak senaryolar, sınırlamalar ve bilinen sorunlar
@@ -132,7 +132,7 @@ Kullanıcıların doğrudan atanmış veya gruptan devralınan bir lisansa sahip
 
 2. `Get-MsolAccountSku` Azure AD kuruluşunda sağlanan tüm Ürün lisanslarını bulmaya yönelik kullanılabilir.
 
-   ![Get-Msolaccountsku cmdlet 'inin ekran görüntüsü](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
+   ![Get-Msolaccountsku cmdlet ekranının ekran görüntüsü](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 
 3. [Bu PowerShell betiği](licensing-ps-examples.md#check-if-user-license-is-assigned-directly-or-inherited-from-a-group)ile ilgilendiğiniz lisans Için *accountskuid* değerini kullanın. Bu, lisansın atanma şekli hakkında bilgi ile bu lisansa sahip kullanıcıların bir listesini oluşturur.
 
@@ -163,7 +163,7 @@ Ayrıntıları içeren son grup lisansı değişikliklerinin bir örneği aşağ
 
 Bir grup üzerinde bir lisans değiştiğinde Azure AD, değişiklikleri tüm kullanıcılara uygulamaya başlayacaktır.
 
-1. Grupların işlemeye ne zaman başlatıldığını görmek için, **etkinlik** filtresini *kullanıcılara grup tabanlı lisans uygulamaya başlayacak*şekilde ayarlayın. İşlemin aktör, Grup *tabanlı lisanslama Microsoft Azure AD* olduğunu ve tüm grup lisansı değişikliklerini yürütmek için kullanılan bir sistem hesabı olduğunu unutmayın.
+1. Grupların işlemeye ne zaman başlatıldığını görmek için, **etkinlik** filtresini *kullanıcılara grup tabanlı lisans uygulamaya başlayacak*şekilde ayarlayın. İşlemin aktörün *Microsoft Azure AD Group-Based lisanslama* -tüm grup lisansı değişikliklerini yürütmek için kullanılan bir sistem hesabı olduğunu unutmayın.
    >[!TIP]
    > *Değiştirilen özellikler* alanını görmek için listedeki bir öğeye tıklayın-işlenmek üzere çekilen lisans değişikliklerini gösterir. Bu, bir grupta birden fazla değişiklik yaptıysanız ve hangisinin işlendiğinden emin değilseniz yararlıdır.
 
@@ -179,7 +179,7 @@ Bir grup üzerinde bir lisans değiştiğinde Azure AD, değişiklikleri tüm ku
    > ```
 
 3. Tüm Kullanıcı değişiklikleri dahil olmak üzere bir grubun nasıl işlendiği hakkındaki günlüğün tamamını görmek için aşağıdaki filtreleri ayarlayın:
-   - **Başlatan (aktör)**: "grup tabanlı lisanslama Microsoft Azure AD"
+   - **Başlatan (aktör)**: "Microsoft Azure AD Group-Based lisanslama"
    - **Tarih aralığı** (isteğe bağlı): belirli bir grubun başlatıldığını ve tamamlandığını bilmeniz için özel Aralık
 
 Bu örnek çıktı, işleme başlangıcını, tüm ortaya çıkan Kullanıcı değişikliklerini ve işleme bitişini gösterir.

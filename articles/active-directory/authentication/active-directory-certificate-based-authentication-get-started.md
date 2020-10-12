@@ -13,10 +13,10 @@ ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 94955e27dcadb3acbea03926d6d1ed73e9c5c9ed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87051345"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory’de sertifika tabanlı kimlik doğrulamayı kullanmaya başlama
@@ -184,7 +184,7 @@ Aşağıdaki adımlar, **StsRefreshTokenValidFrom** alanını ayarlayarak yetkil
         Set-MsolUser -UserPrincipalName test@yourdomain.com -StsRefreshTokensValidFrom ("03/05/2016")
 ```
 
-Ayarladığınız tarih gelecekte olmalıdır. Tarih gelecekte değilse, **StsRefreshTokensValidFrom** özelliği ayarlı değildir. Tarih gelecekte ise, **StsRefreshTokensValidFrom** geçerli saate ayarlanır (set-MsolUser komutuyla gösterilen tarih değil).
+Ayarladığınız tarih gelecekte olmalıdır. Tarih gelecekte değilse, **StsRefreshTokensValidFrom** özelliği ayarlı değildir. Tarih gelecekte ise, **StsRefreshTokensValidFrom** geçerli saate ayarlanır (Set-MsolUser komutuyla gösterilen tarih değildir).
 
 ## <a name="step-4-test-your-configuration"></a>4. Adım: yapılandırmanızı test etme
 
