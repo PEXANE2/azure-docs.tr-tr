@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 0454ffc1ed68056b2aedc10a6e904a9a934ab223
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333519"
 ---
 # <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Zscaler Zscyüksek yapılandırma
@@ -102,7 +102,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup ata
 
     ![SAML penceresini Yapılandır](./media/zscaler-zscloud-provisioning-tutorial/secrettoken2.png)
 
-    **SCıM tabanlı sağlamayı etkinleştir** ' i seçin ve **temel URL 'Yi** ve **taşıyıcı belirtecini**kopyalayın ve ardından ayarları kaydedin. Azure portal, **temel URL** 'yi **kiracı URL 'Si** kutusuna ve **taşıyıcı belirtecini** **gizli belirteç** kutusuna yapıştırın.
+    **Sağlamayı SCIM-Based etkinleştir** ' i seçin ve **temel URL** 'yi ve **taşıyıcı belirtecini**kopyalayın ve ardından ayarları kaydedin. Azure portal, **temel URL** 'yi **kiracı URL 'Si** kutusuna ve **taşıyıcı belirtecini** **gizli belirteç** kutusuna yapıştırın.
 
 7. **Kiracı URL 'si** ve **gizli dizi belirteci** kutularına değerleri GIRDIKTEN sonra, Azure AD 'Nin Zscaler zscyüksek 'e bağlanabildiğinizden emin olmak için **Bağlantıyı Sına** ' yı seçin. Bağlantı başarısız olursa, Zscaler Zscı hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 

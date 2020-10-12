@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
 ms.openlocfilehash: 5ed6de28f1e1b0545ebd675c30249e2f2b4747e9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90890647"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell-script"></a>Azure PowerShell betiği aracılığıyla Azure Stack Edge Pro GPU cihazınızda VM 'Leri dağıtma
@@ -21,7 +21,7 @@ ms.locfileid: "90890647"
 
 Bu öğretici, bir Azure PowerShell betiği kullanarak Azure Stack Edge Pro cihazınızda bir sanal makinenin nasıl oluşturulduğunu ve yönetileceğini açıklar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu betiği kullanarak Azure Stack Edge Pro cihazınızda bir VM oluşturmaya ve yönetmeye başlamadan önce, aşağıdaki adımlarda listelenen önkoşulları tamamladığınızdan emin olmanız gerekir:
 

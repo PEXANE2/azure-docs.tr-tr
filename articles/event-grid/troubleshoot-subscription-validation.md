@@ -4,10 +4,10 @@ description: Bu makalede, abonelik doğrulamalarında nasıl sorun giderebilece�
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 48844859013507ab684ef8879b7b85dd6b6fe8cd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86118996"
 ---
 # <a name="troubleshoot-azure-event-grid-subscription-validations"></a>Azure Event Grid abonelik doğrulamaları sorunlarını giderme
@@ -72,7 +72,7 @@ Web kancası yanıt karşılığında 403 (yasak) döndürüyorsa, Web kancasın
   - 942430 (kısıtlanan SQL karakter anomali algılama (args): özel karakter sayısı aşıldı (12))
   - 920230 (birden çok URL kodlaması algılandı)
   - 942130 (SQL ekleme saldırısı: SQL tautology algılandı.)
-  - 931130 (olası uzaktan dosya ekleme (RFı) saldırısı = kapalı etki alanı başvurusu/bağlantı)
+  - 931130 (olası uzaktan dosya ekleme (RFı) saldırısı = Off-Domain başvuru/bağlantı)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Daha fazla yardıma ihtiyacınız varsa sorununuzu [Stack Overflow forumuna](https://stackoverflow.com/questions/tagged/azure-eventgrid) gönderin veya bir [destek bileti](https://azure.microsoft.com/support/options/)açın. 

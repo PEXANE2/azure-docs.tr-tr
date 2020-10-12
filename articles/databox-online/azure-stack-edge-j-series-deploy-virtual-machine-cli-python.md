@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: alkohli
 ms.openlocfilehash: c27f6ef47b8e4db83ceb63e308e318803800f8a5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90890718"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Azure CLı ve Python kullanarak Azure Stack Edge Pro GPU cihazınızda sanal makineler dağıtma
@@ -45,7 +45,7 @@ Dağıtım iş akışının üst düzey özeti aşağıdaki gibidir:
 
 İş akışı diyagramının ayrıntılı açıklaması için, bkz. [Azure PowerShell kullanarak Azure Stack Edge Pro cihazınızda VM dağıtma](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md). Azure Resource Manager bağlanma hakkında daha fazla bilgi için bkz. [Azure PowerShell kullanarak Azure Resource Manager bağlanma](azure-stack-edge-j-series-connect-resource-manager.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure CLı ve Python kullanarak Azure Stack Edge Pro cihazınızda bir VM oluşturmaya ve yönetmeye başlamadan önce, aşağıdaki adımlarda listelenen önkoşulları tamamladığınızdan emin olmanız gerekir:
 

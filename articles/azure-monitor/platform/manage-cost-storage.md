@@ -15,10 +15,10 @@ ms.date: 09/29/2020
 ms.author: bwren
 ms.subservice: ''
 ms.openlocfilehash: af168fe4c4dca71077464fdb9caf30f27c4b9fe2
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578266"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure İzleyici Günlükleri ile kullanımı ve maliyetleri yönetme    
@@ -124,7 +124,7 @@ Fiyatlandırma Katmanı sınırlamaları hakkında daha fazla ayrıntı için [A
 Eski fiyatlandırma katmanlarının hiçbirinde bölgesel tabanlı fiyatlandırma yoktur.  
 
 > [!NOTE]
-> System Center için OMS E1 Suite, OMS E2 Suite veya OMS eklentisi satın alma işleminden gelen yetkilendirmeleri kullanmak için *düğüm başına* fiyatlandırma katmanını Log Analytics seçin.
+> System Center için OMS E1 Suite, OMS E2 Suite veya OMS Add-On satın alma işleminden gelen yetkilendirmeleri kullanmak için, *düğüm başına* fiyatlandırma katmanını Log Analytics seçin.
 
 ## <a name="change-the-data-retention-period"></a>Veri saklama süresini değiştirme
 
@@ -567,7 +567,7 @@ union *
 Bu sorgu, kullanımın nasıl hesaplanmasının tam bir yinelemesi değildir, ancak çoğu durumda fiyatlandırma katmanı önerileri sağlamaya çalışır.  
 
 > [!NOTE]
-> System Center için OMS E1 Suite, OMS E2 Suite veya OMS eklentisi satın alma işleminden gelen yetkilendirmeleri kullanmak için *düğüm başına* fiyatlandırma katmanını Log Analytics seçin.
+> System Center için OMS E1 Suite, OMS E2 Suite veya OMS Add-On satın alma işleminden gelen yetkilendirmeleri kullanmak için, *düğüm başına* fiyatlandırma katmanını Log Analytics seçin.
 
 ## <a name="create-an-alert-when-data-collection-is-high"></a>Veri toplama işlemi yüksekse uyarı oluştur
 

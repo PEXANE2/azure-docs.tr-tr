@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: zarhoads
 ms.openlocfilehash: fab4943cad1a87bda70a4c4332ab6135ed99bf1b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89022284"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de Pod güvenliği için en iyi uygulamalar
@@ -97,7 +97,7 @@ Pod Identity projesi kullanılması, Azure hizmetlerini desteklemeye karşı kim
 
 Uygulamalar bir kimlik bilgisine ihtiyaç duyduklarında, dijital kasada iletişim kurar, en son gizli içeriği alır ve ardından gerekli hizmete bağlanır. Azure Key Vault bu dijital kasa olabilir. Pod tarafından yönetilen kimlikleri kullanarak Azure Key Vault bir kimlik bilgisi almaya yönelik Basitleştirilmiş iş akışı aşağıdaki diyagramda gösterilmiştir:
 
-:::image type="content" source="media/developer-best-practices-pod-security/basic-key-vault.svg" alt-text="Pod yönetilen kimliği kullanarak Key Vault kimlik bilgisini almak için Basitleştirilmiş iş akışı":::
+:::image type="content" source="media/developer-best-practices-pod-security/basic-key-vault.svg" alt-text="Azure 'da Pod yönetilen kimliği için Basitleştirilmiş iş akışı":::
 
 Key Vault ile kimlik bilgileri, depolama hesabı anahtarları veya sertifikalar gibi gizli dizileri depolar ve düzenli olarak döndürebilirsiniz. [Gizli dizi için Azure Key Vault sağlayıcısını](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage)kullanarak bir aks kümesiyle Azure Key Vault tümleştirebilirsiniz. Gizli dizileri deposunun CSı sürücüsü, AKS kümesinin gizli içeriği Key Vault 'tan yerel olarak almasını ve yalnızca istekte bulunan Pod 'e güvenli bir şekilde sağlamasını sağlar. Gizli dizileri, AKS çalışan düğümlerine bağlamak için küme işleçle birlikte çalışın. Key Vault erişim istemek ve gizli dizi depolama CSı sürücüsü aracılığıyla gereken gizli içeriği almak için pod tarafından yönetilen bir kimlik kullanabilirsiniz.
 

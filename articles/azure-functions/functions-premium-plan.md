@@ -9,10 +9,10 @@ ms.custom:
 - references_regions
 - fasttrack-edit
 ms.openlocfilehash: a037c903a72ba79b79c7e6b011fe025aefd7b51d
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578045"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Işlevleri Premium planı
@@ -141,7 +141,7 @@ Aşağıda, her bir bölgedeki ve işletim sistemi yapılandırmasındaki tek bi
 
 Işlevlerin tüm bölgesel kullanılabilirliğine buradan bakın: [Azure.com](https://azure.microsoft.com/global-infrastructure/services/?products=functions)
 
-|Region| Windows | Linux |
+|Bölge| Windows | Linux |
 |--| -- | -- |
 |Orta Avustralya| 100 | Kullanılamaz |
 |Orta Avustralya 2| 100 | Kullanılamaz |
@@ -149,7 +149,7 @@ Işlevlerin tüm bölgesel kullanılabilirliğine buradan bakın: [Azure.com](ht
 |Avustralya Güneydoğu | 100 | 20 |
 |Brezilya Güney| 100 | 20 |
 |Orta Kanada| 100 | 20 |
-|Orta ABD| 100 | 20 |
+|Central US| 100 | 20 |
 |Çin Doğu 2| 100 | 20 |
 |Çin Kuzey 2| 100 | 20 |
 |Doğu Asya| 100 | 20 |

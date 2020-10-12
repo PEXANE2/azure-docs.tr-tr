@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.openlocfilehash: 527d9e2e43a4003dd5300c26fc58b1e456186351
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87077403"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Red Hat Enterprise Linux Server üzerinde Azure VM’lerindeki IBM Db2 LUW’a yönelik yüksek kullanılabilirlik
@@ -41,7 +41,7 @@ Yüklemeye başlamadan önce, aşağıdaki SAP notları ve belgelerine bakın:
 | [2191498] | Azure ile Linux üzerinde SAP: Gelişmiş izleme |
 | [2243692] | Azure 'da Linux (IaaS) VM: SAP lisans sorunları |
 | [2002167] | Red Hat Enterprise Linux 7. x: yükleme ve yükseltme |
-| [2694118] | Azure 'da HA eklentisi Red Hat Enterprise Linux |
+| [2694118] | Azure 'da HA Add-On Red Hat Enterprise Linux |
 | [1999351] | SAP için gelişmiş Azure izleme sorunlarını giderme |
 | [2233094] | DB6: Azure 'da Linux, UNIX ve Windows için IBM DB2 kullanan SAP uygulamaları-ek bilgiler |
 | [1612105] | DB6: HADR ile DB2 üzerinde SSS |
@@ -54,11 +54,11 @@ Yüklemeye başlamadan önce, aşağıdaki SAP notları ve belgelerine bakın:
 | [Linux 'TA SAP Için Azure sanal makineleri dağıtımı][deployment-guide] (Bu makale) |
 | [Linux 'TA SAP Için Azure sanal makineler veritabanı yönetim sistemi (DBMS) dağıtımı][dbms-guide] |
 | [Azure planlama ve dağıtım denetim listesi üzerinde SAP iş yükü][azr-sap-plancheck] |
-| [Red Hat Enterprise Linux 7 için yüksek kullanılabilirlik eklentisi 'ne genel bakış][rhel-ha-addon] |
-| [Yüksek kullanılabilirlik eklentisi Yönetimi][rhel-ha-admin] |
-| [Yüksek kullanılabilirlik eklentisi başvurusu][rhel-ha-ref] |
+| [Red Hat Enterprise Linux 7 için yüksek kullanılabilirlik Add-On genel bakış][rhel-ha-addon] |
+| [Yüksek kullanılabilirlik Add-On yönetimi][rhel-ha-admin] |
+| [Yüksek kullanılabilirlik Add-On başvurusu][rhel-ha-ref] |
 | [RHEL yüksek kullanılabilirlik kümeleri için destek Ilkeleri-küme üyesi olarak Microsoft Azure Sanal Makineler][rhel-azr-supp]
-| [Microsoft Azure üzerinde Red Hat Enterprise Linux 7,4 (ve üzeri) yüksek kullanılabilirlik kümesi yükleme ve yapılandırma][rhel-azr-inst]
+| [Microsoft Azure Red Hat Enterprise Linux 7,4 (ve üzeri) High-Availability kümesini yükleme ve yapılandırma][rhel-azr-inst]
 | [SAP iş yükü için IBM Db2 Azure Sanal Makineler DBMS dağıtımı][dbms-db2] |
 | [IBM DB2 HADR 11,1][db2-hadr-11.1] |
 | [IBM DB2 HADR 10,5][db2-hadr-10.5] |

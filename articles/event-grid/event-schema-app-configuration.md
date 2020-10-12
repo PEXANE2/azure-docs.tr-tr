@@ -4,10 +4,10 @@ description: Bu makalede, Azure Uygulama yapılandırması 'nın Event Grid olay
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: bdd077c291bd1e1c441217740daf39c8bcaad732
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86117007"
 ---
 # <a name="azure-app-configuration-as-an-event-grid-source"></a>Event Grid kaynağı olarak Azure Uygulama yapılandırması
@@ -19,7 +19,7 @@ Bu makalede, Azure uygulama yapılandırma olayları için özellikler ve şema 
 
 Azure Uygulama yapılandırması aşağıdaki olay türlerini yayar:
 
-| Olay türü | Description |
+| Olay türü | Açıklama |
 | ---------- | ----------- |
 | Microsoft. AppConfiguration. KeyValueModified | Anahtar-değer oluşturulduğunda veya değiştirildiğinde tetiklenir. |
 | Microsoft. AppConfiguration. KeyValueDeleted | Anahtar-değer silindiğinde tetiklenir. |
@@ -68,20 +68,20 @@ Anahtar-değer Deleted olayının şeması benzerdir:
 
 Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
-| Konu | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
-| Türü | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| subject | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
+| eventType | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
 | eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
 | ID | string | Etkinliğin benzersiz tanımlayıcısı. |
-| veriler | nesne | Uygulama yapılandırma olay verileri. |
+| veriler | object | Uygulama yapılandırma olay verileri. |
 | dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
 | metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | anahtar | string | Değiştirilen veya silinen anahtar-değer anahtarı. |
 | etiket | string | Değiştirilen veya silinen anahtar-değer etiketi. |

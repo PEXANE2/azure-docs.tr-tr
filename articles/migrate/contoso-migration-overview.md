@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: raynew
 ms.openlocfilehash: f9f7b3b64cf91019ed4e40d5d52b859419b74836
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86107640"
 ---
 # <a name="contoso-migration-series"></a>Contoso geçiş serisi
@@ -26,7 +26,7 @@ Serideki makaleler aşağıdaki tabloda özetlenmiştir.
 - Her dağıtım senaryosunda, iş sürücüleri ve hedefleri, önerilen bir mimari, geçişi gerçekleştirmeye yönelik adımlar ve geçiş tamamlandıktan sonra temizlik ve sonraki adımlar için öneriler sağlıyoruz.
 
 
-**Makalenin** | **Ayrıntılar** 
+**Makale** | **Ayrıntılar** 
 --- | --- 
 [Makale 1: genel bakış](/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-overview) | Makale serisine, contoso 'nun geçiş stratejisine ve serideki kullanılan örnek uygulamalara genel bakış. 
 [Makale 2: Azure altyapısını dağıtma](/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-infrastructure) | Contoso, şirket içi altyapısını ve geçiş için Azure altyapısını hazırlar. Serideki tüm makaleler için aynı altyapı kullanılır. 

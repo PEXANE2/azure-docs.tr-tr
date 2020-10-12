@@ -16,10 +16,10 @@ ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: b459f44308827308c28687db3c3fc33df470ea8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84790200"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-rest-api"></a>REST API kullanarak Azure özel rolleri oluşturun veya güncelleştirin
@@ -100,7 +100,7 @@ Görünen adına göre özel bir rol hakkında bilgi almak için, [get REST API 
     > [!div class="mx-tableFixed"]
     > | Filtre | Açıklama |
     > | --- | --- |
-    > | `$filter=roleName+eq+'{roleDisplayName}'` | Rolün tam ekran adının URL kodlamalı formunu kullanın. Örneğin,`$filter=roleName+eq+'Virtual%20Machine%20Contributor'` |
+    > | `$filter=roleName+eq+'{roleDisplayName}'` | Rolün tam ekran adının URL kodlamalı formunu kullanın. Örneğin, `$filter=roleName+eq+'Virtual%20Machine%20Contributor'` |
 
 ## <a name="list-a-custom-role-definition-by-id"></a>KIMLIĞE göre özel bir rol tanımı listeleyin
 
@@ -132,7 +132,7 @@ Görünen adına göre özel bir rol hakkında bilgi almak için, [get REST API 
 
 1. Özel rolünüzün izinlerini oluşturmak için kullanılabilir [kaynak sağlayıcısı işlemlerinin](resource-provider-operations.md) listesini gözden geçirin.
 
-1. Özel rol tanımlayıcısı için kullanılacak benzersiz bir tanımlayıcı oluşturmak için bir GUID aracı kullanın. Tanımlayıcının biçimi vardır:`00000000-0000-0000-0000-000000000000`
+1. Özel rol tanımlayıcısı için kullanılacak benzersiz bir tanımlayıcı oluşturmak için bir GUID aracı kullanın. Tanımlayıcının biçimi vardır: `00000000-0000-0000-0000-000000000000`
 
 1. Aşağıdaki istek ve gövdeyi başlatın:
 
@@ -340,6 +340,6 @@ Görünen adına göre özel bir rol hakkında bilgi almak için, [get REST API 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure özel rolleri](custom-roles.md)
-- [REST API kullanarak Azure rol atamaları ekleme veya kaldırma](role-assignments-rest.md)
-- [Azure REST API başvurusu](/rest/api/azure/)
+- [Özel Azure rolleri](custom-roles.md)
+- [REST API kullanarak Azure rol atamalarını ekleme veya kaldırma](role-assignments-rest.md)
+- [Azure REST API Başvurusu](/rest/api/azure/)

@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/24/2017
 ms.openlocfilehash: 23c7112639a64097d95df29bde16636702837f9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83832988"
 ---
 # <a name="reference-architecture-real-time-event-processing-with-microsoft-azure-stream-analytics"></a>Başvuru Mimarisi: Microsoft Azure Stream Analytics ile gerçek zamanlı olay işleme
@@ -24,12 +24,12 @@ Microsoft Azure, farklı çözüm senaryoları ve gereksinimlerinin bir dizisini
 
 ## <a name="contents"></a>İçindekiler
 * Yönetici Özeti
-* Gerçek zamanlı Analize Giriş
-* Azure 'daki gerçek zamanlı verilerin değer teklifi
-* Gerçek zamanlı analiz için yaygın senaryolar
+* Real-Time Analytics 'e giriş
+* Azure 'da Real-Time verilerinin değer teklifi
+* Real-Time Analytics için genel senaryolar
 * Mimari ve bileşenler
   * Data Sources
-  * Veri tümleştirme katmanı
+  * Data-Integration katmanı
   * Gerçek zamanlı analiz katmanı
   * Veri depolama katmanı
   * Sunum/tüketim katmanı

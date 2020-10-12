@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: jeedes
 ms.openlocfilehash: 0bbfdc2463795770b52f5008fc633fe9e95244a0
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056583"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Öğretici: en güncel çalışma ile Azure Active Directory tümleştirme
@@ -30,7 +30,7 @@ En güncel çalışma masası 'nı Azure AD ile tümleştirmek aşağıdaki avan
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini en güncel çalışma ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -64,7 +64,7 @@ Azure AD SSO 'yu bir sonraki adıyla yapılandırmak ve test etmek için aşağ�
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
     1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, isteğe bağlı olarak **[Çoklu oturum açmayı yapılandırın](#configure-freshdesk-single-sign-on)** .
+1. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için, isteğe **[bağlı olarak çoklu oturum açmayı yapılandırın](#configure-freshdesk-single-sign-on)** .
     1. Kullanıcı için Azure AD gösterimine bağlı olan, en güncel bir masa 'daki Britta Simon 'a sahip olmak için, yalnızca bir **[kayıt testi kullanıcısı oluşturun](#create-freshdesk-test-user)** .
 1. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
@@ -91,7 +91,7 @@ Azure AD SSO 'yu bir sonraki adıyla yapılandırmak ve test etmek için aşağ�
 
     ![image](common/edit-attribute.png)
 
-1. SAML **Imzalama sertifikası** bölümünde, **SAML Ile çoklu oturum açmayı ayarla** sayfasında, **sertifikayı (base64)** , gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i, gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -157,7 +157,7 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak en güncel çal�
 
 7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-## <a name="configure-freshdesk-single-sign-on"></a>İsteğe bağlı olarak çoklu oturum açmayı Yapılandır
+## <a name="configure-freshdesk-single-sign-on"></a>Tek başına Sign-On yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, bir yönetici olarak iki adımda şirket sitenizde oturum açın.
 

@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 32ac78c6bc613daf04fc98c03044699f387f290d
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88140862"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>Özel bulutunuzda VMware sanal makineleri oluşturma
@@ -25,7 +25,7 @@ ms.locfileid: "88140862"
 
 ## <a name="access-the-cloudsimple-portal"></a>CloudSimple portalına erişim
 
-1. **Tüm Hizmetler**’i seçin.
+1. **Tüm hizmetler**’i seçin.
 2. **Cloudsimple Hizmetleri**için arama yapın.
 3. Özel bulutunuzu oluşturmak istediğiniz CloudSimple hizmetini seçin.
 4. **Genel bakış** sayfasından **Cloudsimple portalına git** ' e tıklayarak cloudsimple Portal için yeni bir tarayıcı sekmesi açın.  İstenirse, Azure oturum açma kimlik bilgilerinizle oturum açın.  

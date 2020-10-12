@@ -11,10 +11,10 @@ ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-java
 ms.openlocfilehash: 60d73f8b3eae21ab399853e8d05b67b7b431ee5f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87321063"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>SQL API hesaplarıyla Azure Cosmos DB zaman uyumsuz Java SDK v2 kullandığınızda oluşan sorunları giderme
@@ -73,7 +73,7 @@ Uygulamanız Azure sanal makinelerinde genel IP adresi olmadan dağıtılmışsa
 * Azure sanal makinenize genel IP atayın.
 
 ##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>Hizmete ulaşılamıyor-güvenlik duvarı
-``ConnectTimeoutException``SDK 'nın hizmete ulaşamayacağını gösterir.
+``ConnectTimeoutException`` SDK 'nın hizmete ulaşamayacağını gösterir.
 Doğrudan modunu kullanırken aşağıdakine benzer bir hata alabilirsiniz:
 ```
 GoneException{error=null, resourceAddress='https://cdb-ms-prod-westus-fd4.documents.azure.com:14940/apps/e41242a5-2d71-5acb-2e00-5e5f744b12de/services/d8aa21a5-340b-21d4-b1a2-4a5333e7ed8a/partitions/ed028254-b613-4c2a-bf3c-14bd5eb64500/replicas/131298754052060051p//', statusCode=410, message=Message: The requested resource is no longer available at the server., getCauseInfo=[class: class io.netty.channel.ConnectTimeoutException, message: connection timed out: cdb-ms-prod-westus-fd4.documents.azure.com/101.13.12.5:14940]
@@ -175,7 +175,7 @@ Kullanarak `observeOn(customScheduler)` , netty GÇ iş parçacığını serbest
 
 ### <a name="connection-pool-exhausted-issue"></a>Bağlantı havuzu tükendi sorunu
 
-`PoolExhaustedException`istemci tarafı bir hata. Bu hata, uygulama iş yükünüzün SDK bağlantı havuzunun hizmeti tarafından kullanılabileceği miktardan daha yüksek olduğunu gösterir. Bağlantı havuzu boyutunu artırın veya yükü birden çok uygulama üzerinde dağıtın.
+`PoolExhaustedException` istemci tarafı bir hata. Bu hata, uygulama iş yükünüzün SDK bağlantı havuzunun hizmeti tarafından kullanılabileceği miktardan daha yüksek olduğunu gösterir. Bağlantı havuzu boyutunu artırın veya yükü birden çok uygulama üzerinde dağıtın.
 
 ### <a name="request-rate-too-large"></a>İstek hızı çok büyük
 Bu hata, sunucu tarafı hatasıdır. Sağlanan aktarım hızını kullandınız olduğunu gösterir. Daha sonra yeniden deneyin. Bu hatayla sık sık karşılaşırsanız, koleksiyon aktarım hızı ' nda bir artış düşünün.

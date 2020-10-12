@@ -6,17 +6,17 @@ ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: cff2b8a8a0f6aefad43737aeb6fe63d40facac05
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89021672"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Service Bus kuyrukları ile çalışmaya başlama
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 Bu öğreticide, Service Bus kuyruğuna ileti göndermek ve ileti almak için .NET Core konsol uygulamaları oluşturacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Visual Studio 2019](https://www.visualstudio.com/vs).
 - [NET Core SDK](https://www.microsoft.com/net/download/windows), sürüm 2.0 veya sonraki sürümler.

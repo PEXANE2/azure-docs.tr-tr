@@ -12,10 +12,10 @@ manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 05/08/2019
 ms.openlocfilehash: 877c1719a76f23f8446164b641dc2dac84261e0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83849289"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>Azure Data Factory Hadoop Hive etkinliğini kullanarak verileri dönüştürme
@@ -26,11 +26,11 @@ ms.locfileid: "83849289"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Bir Data Factory işlem [hattının](concepts-pipelines-activities.md) HDInsight Hive etkinliği, [kendi kendinize](compute-linked-services.md#azure-hdinsight-linked-service) veya [isteğe](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) bağlı HDInsight kümenizde Hive sorguları yürütür. Bu makale, veri dönüştürme ve desteklenen dönüştürme etkinliklerine genel bir bakış sunan [veri dönüştürme etkinlikleri](transform-data.md) makalesinde oluşturulur.
+Bir Data Factory işlem [hattının](concepts-pipelines-activities.md) HDInsight Hive etkinliği, [kendi kendinize](compute-linked-services.md#azure-hdinsight-linked-service) veya [isteğe](compute-linked-services.md#azure-hdinsight-on-demand-linked-service)  bağlı HDInsight kümenizde Hive sorguları yürütür. Bu makale, veri dönüştürme ve desteklenen dönüştürme etkinliklerine genel bir bakış sunan [veri dönüştürme etkinlikleri](transform-data.md) makalesinde oluşturulur.
 
 Azure Data Factory yeni bir deyişle, [Azure Data Factory 'ye giriş](introduction.md) ile okuyun ve [öğreticiyi yapın:](tutorial-transform-data-spark-powershell.md) bu makaleyi okumadan önce verileri dönüştürün. 
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Sözdizimi
 
 ```json
 {

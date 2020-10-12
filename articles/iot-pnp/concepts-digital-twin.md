@@ -1,5 +1,5 @@
 ---
-title: IoT Tak ve Kullan dijital TWINS 'i anlama
+title: IoT Tak Çalıştır dijital ikizlerini anlama
 description: IoT Tak ve Kullan dijital TWINS 'i nasıl kullandığını anlayın
 author: prashmo
 ms.author: prashmo
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 5d5ffe4e7d92530f18e278382ab3637c3326e57c
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578062"
 ---
-# <a name="understand-iot-plug-and-play-digital-twins"></a>IoT Tak ve Kullan dijital TWINS 'i anlama
+# <a name="understand-iot-plug-and-play-digital-twins"></a>IoT Tak Çalıştır dijital ikizlerini anlama
 
 IoT Tak ve Kullan cihazı, [dijital TWINS tanım dili (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) şeması tarafından tanımlanan bir modeli uygular. Model, belirli bir cihazın sahip olduğu bileşenler, özellikler, komutlar ve telemetri iletileri kümesini açıklar. Bir IoT Hub 'ına ilk kez bağlantı Tak ve Kullan bir cihaz ikizi ve bir Digital ikizi başlatılır.
 
@@ -22,7 +22,7 @@ IoT Tak ve Kullan DTDL sürüm 2 kullanır. Bu sürüm hakkında daha fazla bilg
 
 DTDL, IoT Tak ve Kullan özel değildir. [Azure dijital TWINS](../digital-twins/overview.md)gibi diğer IoT Hizmetleri, binalar ve enerji ağları gibi tüm ortamları temsil etmek için bunu kullanır. Daha fazla bilgi için bkz. [Azure dijital TWINS 'de ikizi modellerini anlama](../digital-twins/concepts-models.md).
 
-Bu makalede, bileşenlerin ve özelliklerin bir cihaz ikizi *istenen* ve *bildirilen* bölümlerinde nasıl temsil edildiği açıklanmaktadır. Ayrıca, bu kavramların ilgili dijital ikizi nasıl eşlendiğini de açıklar.
+Bu makalede, bileşenlerin ve özelliklerin bir cihaz ikizi *istenen* ve *bildirilen* bölümlerinde nasıl temsil edildiği açıklanmaktadır. Ayrıca bu kavramların ilgili dijital ikizle nasıl eşlendiği de açıklanır.
 
 Bu makaledeki IoT bağlama ve yürütme aygıtı, [termostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) bileşeniyle [sıcaklık denetleyicisi modelini](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) uygular.
 
@@ -131,7 +131,7 @@ Aşağıdaki kod parçacığında, JSON nesnesi olarak biçimlendirilen dijital 
 
 #### <a name="read-only-property"></a>Salt okunurdur özelliği
 
-Şema:
+Manızı
 
 ```json
 {
@@ -309,9 +309,9 @@ Aşağıdaki kod parçacıkları, bileşenin yan yana JSON gösterimini gösteri
 
 Azure dijital TWINS, Device Digital ikizi 'yi yönetmek için **Digital ikizi**, **Update Digital Ikizi**, **Component komutunu çağır** ve **Invoke komutunu** kullanarak donatılmıştır. [REST API 'leri](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin) doğrudan ya da bir [hizmet SDK 'sı](../iot-pnp/libraries-sdks.md)aracılığıyla kullanabilirsiniz.
 
-## <a name="digital-twin-change-events"></a>Dijital ikizi değişiklik olayları
+## <a name="digital-twin-change-events"></a>Dijital ikiz değişiklik olayları
 
-Dijital ikizi değişiklik olayları etkinleştirildiğinde, bileşen veya özelliğin geçerli veya istenen değeri her değiştiğinde bir olay tetiklenir. Dijital ikizi değişiklik olayları [JSON Patch](http://jsonpatch.com/) biçiminde oluşturulur. İkizi değişiklik olayları etkinse, ilgili olaylar Device ikizi biçiminde oluşturulur.
+Dijital ikiz değişiklik olayları etkinleştirilirse, bileşenin veya özelliğin geçerli veya istenen değeri her değiştiğinde bir olay tetiklenir. Dijital ikizi değişiklik olayları [JSON Patch](http://jsonpatch.com/) biçiminde oluşturulur. İkizi değişiklik olayları etkinse, ilgili olaylar Device ikizi biçiminde oluşturulur.
 
 Cihaz ve dijital ikizi olayları için yönlendirmeyi nasıl etkinleştireceğinizi öğrenmek için bkz. [farklı uç noktalara cihazdan buluta iletiler göndermek için IoT Hub ileti yönlendirmeyi kullanma](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events). İleti biçimini anlamak için bkz. [IoT Hub Iletileri oluşturma ve okuma](../iot-hub/iot-hub-devguide-messages-construct.md).
 

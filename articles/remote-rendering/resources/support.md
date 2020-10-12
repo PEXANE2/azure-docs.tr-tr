@@ -6,10 +6,10 @@ ms.author: jakras
 ms.date: 04/22/2020
 ms.topic: troubleshooting
 ms.openlocfilehash: 082148ecfd4332abb42f96afcd94032d428069ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84782526"
 ---
 # <a name="azure-remote-rendering-support-options"></a>Azure uzaktan Işleme desteği seçenekleri
@@ -30,8 +30,8 @@ Azure uzaktan Işleme için Azure portal içinde bir teknik destek bileti açmak
 
 1. Alanları doldurun:
 
-    * **Sorun türü**:`Technical`
-    * **Hizmet**:`Remote Rendering`
+    * **Sorun türü**: `Technical`
+    * **Hizmet**: `Remote Rendering`
 
     ![Azure portal destek bileti alanları](media/portal-request.png)
 

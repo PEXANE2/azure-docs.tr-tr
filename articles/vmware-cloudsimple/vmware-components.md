@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: ff9aec1904be754990958869666e9d67038e4fb3
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88142511"
 ---
 # <a name="private-cloud-vmware-components"></a>Özel bulut VMware bileşenleri
@@ -33,7 +33,7 @@ ms.locfileid: "88142511"
 |-----------|---------|------------------|
 | ESXi | 6.7 U2 | Kurumsal Plus |
 | vCenter | 6.7 U2 | vCenter Standard |
-| vSAN | 6.7 | Enterprise |
+| vSAN | 6.7 | Kurumsal |
 | NSX veri merkezi | 2.4.1 | Gelişmiş |
 
 ## <a name="esxi"></a>ESXi
@@ -48,7 +48,7 @@ vCenter Server gereci (VCSA), CloudSimple tarafından VMware çözümü için ki
 
 ### <a name="vcenter-single-sign-on"></a>vCenter çoklu oturum açma
 
-VCSA 'daki katıştırılmış platform hizmetleri denetleyicisi bir **vCenter çoklu oturum açma etki alanıyla**ilişkilendirilir.  Etki alanı adı **cloudsimple. Local**' dir.  VCenter 'a erişmeniz için varsayılan bir Kullanıcı **CloudOwner@cloudsimple.com** oluşturulur.  VCenter için şirket içi/Azure Active Directory [kimlik kaynaklarınızı](set-vcenter-identity.md)ekleyebilirsiniz.
+VCSA 'daki katıştırılmış platform hizmetleri denetleyicisi bir **vCenter tek Sign-On etki alanı**ile ilişkilendirilir.  Etki alanı adı **cloudsimple. Local**' dir.  VCenter 'a erişmeniz için varsayılan bir Kullanıcı **CloudOwner@cloudsimple.com** oluşturulur.  VCenter için şirket içi/Azure Active Directory [kimlik kaynaklarınızı](set-vcenter-identity.md)ekleyebilirsiniz.
 
 ## <a name="vsan-storage"></a>vSAN depolaması
 

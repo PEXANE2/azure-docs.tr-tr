@@ -4,10 +4,10 @@ description: Azure Site Recovery ile Azure 'a diskleri çoğaltmanın dışında
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: 15989fbfd65f758eb777c5170c217aba8707e0be
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333673"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Diskleri olağanüstü durumdan kurtarma dışında tut
@@ -24,9 +24,9 @@ Bu makalede, şirket içinde [Azure Site Recovery](site-recovery-overview.md)ile
 
 Diskleri, tabloda özetlenen şekilde çoğaltmanın dışında bırakabilirsiniz.
 
-**Azure-Azure arası** | **Vmware’den Azure’a** | **Hyper-V-Azure arası** | **Fiziksel sunucudan Azure 'a**
+**Azure-Azure arası** | **Vmware’den Azure’a** | **Hyper-V’den Azure’a** | **Fiziksel sunucudan Azure 'a**
 --- | --- | --- | ---
-Yes | Yes | Yes | Yes
+Evet | Evet | Evet | Evet
 
 ## <a name="exclude-limitations"></a>Dışlama sınırlamaları
 
@@ -210,7 +210,7 @@ Kaynak VM 'deki disk belleği dosyası ayarları şu şekildedir:
 ![Disk belleği dosyası boyutu (MB) olan 3000-7000 ' i gösteren D: Drive [pagefile Volume] satırı ile sanal bellek iletişim kutusunun ekran görüntüsü.](./media/exclude-disks-replication/pagefile-d-drive-source-vm.png)
 
 1. VM için çoğaltmayı etkinleştirdik.
-2. DB-Disk1 ' i çoğaltmadan hariç tutuyoruz.
+2. DB-Disk1 çoğaltmadan hariç tutuyoruz.
 
 #### <a name="disks-after-failover"></a>Yük devretmeden sonra diskler
 
@@ -219,7 +219,7 @@ Yük devretmeden sonra Azure VM, tabloda özetlenen diskler içerir.
 **Disk adı** | **Konuk işletim sistemi disk no.** | **Sürücü harfi** | **Diskteki veri türü**
 --- | --- | --- | ---
 DB-Disk0-OS | Disk0 | C:\ | İşletim sistemi diski
-DB-Disk1 | Disk1 | D:\ | Geçici depolama/pagefile.sys <br/><br/> Çünkü DB-Disk1 (D:) çıkarıldı, D: kullanılabilir listedeki ilk sürücü harftir.<br/><br/> Azure, geçici depolama birimine D: harfini atar.<br/><br/> D: kullanılabilir olduğundan, VM disk belleği dosyası ayarı aynı kalır.
+DB-Disk1 | Disk1 | D:\ | Geçici depolama/pagefile.sys <br/><br/> DB-Disk1 (D:) çıkarıldı, D: kullanılabilir listedeki ilk sürücü harftir.<br/><br/> Azure, geçici depolama birimine D: harfini atar.<br/><br/> D: kullanılabilir olduğundan, VM disk belleği dosyası ayarı aynı kalır.
 DB-Disk2 | Disk2 | E:\ | Kullanıcı verileri 1
 DB-Disk3 | Disk3 | F:\ | Kullanıcı verileri 2
 
@@ -245,7 +245,7 @@ DB-Disk3 | Disk3 | F:\ | Kullanıcı verileri 2
 ![Şirket içi sanal makinedeki disk belleği dosyası ayarları](./media/exclude-disks-replication/pagefile-g-drive-source-vm.png)
 
 1. VM için çoğaltmayı etkinleştirdik.
-2. DB-Disk1 ' i çoğaltmadan hariç tutuyoruz.
+2. DB-Disk1 çoğaltmadan hariç tutuyoruz.
 
 #### <a name="disks-after-failover"></a>Yük devretmeden sonra diskler
 

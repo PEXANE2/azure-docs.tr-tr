@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.openlocfilehash: 4d10f06577738364e3f4a0ea40221d37ebfb31c0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86116293"
 ---
 # <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda toplu eklemeleri ve geçici verileri kullanma-tek sunucu 
@@ -19,7 +19,7 @@ Bu makalede, toplu ekleme işlemlerini en iyi hale getirebileceğinizi ve Postgr
 ## <a name="use-unlogged-tables"></a>Günlüğe ait olmayan tabloları kullanma
 Geçici verileri içeren veya büyük veri kümelerini toplu olarak ekleyen iş yükü işlemleriniz varsa, günlüğe kaydedilen tabloları kullanmayı göz önünde bulundurun.
 
-Günlüğe ait olmayan tablolar, toplu eklemeleri iyileştirmek için etkili bir şekilde kullanılabilecek bir PostgreSQL özelliğidir. PostgreSQL, yazma öncesi günlüğü (WAL) kullanır. Varsayılan olarak, kararlılık ve dayanıklılık sağlar. Atomicity, tutarlılık, yalıtım ve dayanıklılık ACID özelliklerini yapar. 
+Günlüğe ait olmayan tablolar, toplu eklemeleri iyileştirmek için etkili bir şekilde kullanılabilecek bir PostgreSQL özelliğidir. PostgreSQL Write-Ahead günlüğünü (WAL) kullanır. Varsayılan olarak, kararlılık ve dayanıklılık sağlar. Atomicity, tutarlılık, yalıtım ve dayanıklılık ACID özelliklerini yapar. 
 
 Günlüğe edilmemiş bir tabloya ekleme, PostgreSQL 'in bir g/ç işlemi olan işlem günlüğüne yazmadan eklediği anlamına gelir. Sonuç olarak, bu tablolar sıradan tablolardan önemli ölçüde daha hızlıdır.
 

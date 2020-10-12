@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d9510bd564ced2f458a9a78ff23200bb32358c3e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89268545"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Ayarlar ve veri dolaşımı hakkında SSS
@@ -66,7 +66,7 @@ Bağlı bir Microsoft hesabı ile Windows 8.1 çalıştıran Active Directory et
 Şirket cihazınızda herhangi bir kişisel veri depoladıysanız, Windows işletim sisteminin ve uygulama verilerinin Azure AD 'ye eşitlemeye başlayacağına dikkat etmeniz gerekir. Bu, aşağıdaki etkilere sahiptir:
 
 * Kişisel Microsoft hesabı ayarlarınız, iş veya okul Azure AD hesaplarınızın ayarlarından ayrı olacak. Bunun nedeni Microsoft hesabı ve Azure AD ayarları eşitlenebilmesi artık ayrı hesaplar kullanmaktır.
-* Wi-Fi parolaları, Web kimlik bilgileri ve daha önce bağlı bir Microsoft hesabı aracılığıyla eşitlenen Internet Explorer sık kullanılanları gibi kişisel veriler Azure AD aracılığıyla eşitlenir.
+* Wi-Fi parolaları, Web kimlik bilgileri ve daha önce bağlı bir Microsoft hesabı üzerinden eşitlenmiş Internet Explorer sık kullanılanları gibi kişisel veriler Azure AD aracılığıyla eşitlenir.
 
 ## <a name="how-do-microsoft-account-and-azure-ad-enterprise-state-roaming-interoperability-work"></a>Microsoft hesabı ve Azure AD Enterprise State Roaming birlikte çalışabilirliği nasıl çalışır?
 
@@ -77,7 +77,7 @@ Windows 10 ' un Kasım 2015 veya sonraki sürümlerinde Enterprise State Roaming
 Farklı Azure AD kiracılarından birden çok Azure AD hesabı aynı cihazdan olduğunda, her bir Azure AD kiracısı için Azure Rights Management hizmetiyle iletişim kurmak üzere cihazın kayıt defterini güncelleştirmeniz gerekir.  
 
 1. Her Azure AD kiracısı için GUID 'ı bulun. Azure portal açın ve bir Azure AD kiracısı seçin. Kiracının GUID 'SI, seçilen kiracının ( https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) **dizin kimliği**etiketli) özellikler sayfasıdır. 
-2. GUID 'ye sahip olduktan sonra, **HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC \<tenant ID GUID> **kayıt defteri anahtarını eklemeniz gerekecektir.
+2. GUID 'yi aldıktan sonra **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenant ID GUID> **kayıt defteri anahtarını eklemeniz gerekir.
    **KIRACı KIMLIĞI GUID** anahtarından, **Allowedrmsserverurls**adlı yeni bir çok dizeli değer (reg-Multi-SZ) oluşturun. Verileri için, cihazın eriştiği diğer Azure kiracılarının lisanslama dağıtım noktası URL 'Lerini belirtin.
 3. AADRM modülünden **Get-AadrmConfiguration** cmdlet 'ini çalıştırarak lisanslama dağıtım noktası URL 'lerini bulabilirsiniz. **Licensingıntranetdistributionpointurl** ve **LicensingExtranetDistributionPointUrl** değerleri farklıysa, her iki değeri de belirtin. Değerler aynıysa, değeri yalnızca bir kez belirtin.
 
