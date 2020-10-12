@@ -14,10 +14,10 @@ ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: ed3e9da628ab779ab47673fa2ce728c5c25539be
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88166442"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Kullanıcıları sosyal kimliklerle oturum açmak için MSAL.NET kullanma
@@ -31,11 +31,11 @@ Bu makale, MSAL.NET 3. x için geçerlidir. MSAL.NET 2. x için bkz. GitHub 'da 
 
 ## <a name="authority-for-an-azure-ad-b2c-tenant-and-policy"></a>Azure AD B2C kiracı ve ilke için yetki
 
-Azure AD B2C için yetki biçimi:`https://{azureADB2CHostname}/tfp/{tenant}/{policyName}`
+Azure AD B2C için yetki biçimi: `https://{azureADB2CHostname}/tfp/{tenant}/{policyName}`
 
-- `azureADB2CHostname`-Azure AD B2C kiracının ve ana bilgisayarın adı. Örneğin, *contosob2c.b2clogin.com*.
-- `tenant`-Azure AD B2C kiracının etki alanı adı veya dizin (kiracı) KIMLIĞI. Örneğin, sırasıyla *contosob2c.onmicrosoft.com* veya GUID.
-- `policyName`-Uygulanacak Kullanıcı akışı veya özel ilke adı. Örneğin, *b2c_1_susi*gibi bir kaydolma/oturum açma ilkesi.
+- `azureADB2CHostname` -Azure AD B2C kiracının ve ana bilgisayarın adı. Örneğin, *contosob2c.b2clogin.com*.
+- `tenant` -Azure AD B2C kiracının etki alanı adı veya dizin (kiracı) KIMLIĞI. Örneğin, sırasıyla *contosob2c.onmicrosoft.com* veya GUID.
+- `policyName` -Uygulanacak Kullanıcı akışı veya özel ilke adı. Örneğin, *b2c_1_susi*gibi bir kaydolma/oturum açma ilkesi.
 
 Azure AD B2C yetkilileri hakkında daha fazla bilgi için bkz. [yeniden yönlendirme URL 'lerini b2clogin.com 'A ayarlama](../../active-directory-b2c/b2clogin.md).
 
@@ -76,9 +76,9 @@ AuthenticationResult ar = await application.AcquireTokenInteractive(scopes)
 
 Önceki kod parçacığında:
 
-- `policy`, Azure AD B2C Kullanıcı akışınız veya özel ilkenizin adını (örneğin,) içeren bir dizedir `PolicySignUpSignIn` .
-- `ParentActivityOrWindow`Android (etkinlik) için gereklidir ve iOS 'ta Microsoft Windows ve UIViewController üzerinde Windows gibi üst Kullanıcı arabirimini destekleyen diğer platformlar için isteğe bağlıdır. UI iletişim kutusu hakkında daha fazla bilgi için bkz. [WithParentActivityOrWindow](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow) on msal wiki.
-- `GetAccountByPolicy(IEnumerable<IAccount>, string)`, belirli bir ilke için bir hesap bulan bir yöntemdir. Örnek:
+- `policy` , Azure AD B2C Kullanıcı akışınız veya özel ilkenizin adını (örneğin,) içeren bir dizedir `PolicySignUpSignIn` .
+- `ParentActivityOrWindow` Android (etkinlik) için gereklidir ve iOS 'ta Microsoft Windows ve UIViewController üzerinde Windows gibi üst Kullanıcı arabirimini destekleyen diğer platformlar için isteğe bağlıdır. UI iletişim kutusu hakkında daha fazla bilgi için bkz. [WithParentActivityOrWindow](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow) on msal wiki.
+- `GetAccountByPolicy(IEnumerable<IAccount>, string)` , belirli bir ilke için bir hesap bulan bir yöntemdir. Örneğin:
 
   ```csharp
   private IAccount GetAccountByPolicy(IEnumerable<IAccount> accounts, string policy)
@@ -136,7 +136,7 @@ Bir ROPC akışında Kullanıcı adı/parola kullanarak birkaç şeyi fesınız:
 
 Azure AD B2C kiracınızda yeni bir Kullanıcı akışı oluşturun ve ropc **kullanarak** Kullanıcı akışı için ropc 'yi etkinleştirin. Daha fazla bilgi için bkz. [kaynak sahibi parola kimlik bilgileri akışını yapılandırma](../../active-directory-b2c/configure-ropc.md).
 
-`IPublicClientApplication`yöntemi içerir `AcquireTokenByUsernamePassword` :
+`IPublicClientApplication` yöntemi içerir `AcquireTokenByUsernamePassword` :
 
 ```csharp
 AcquireTokenByUsernamePassword(
@@ -169,7 +169,7 @@ MSAL.NET, [belirteç önbelleğini](/dotnet/api/microsoft.identity.client.tokenc
 
 Şu anda MSAL.NET bir belirteç önbellek anahtarı oluşturmak için iki talebe ihtiyaç duyuyor:
 
-- `tid`(Azure AD kiracı KIMLIĞI)
+- `tid` (Azure AD kiracı KIMLIĞI)
 - `preferred_username`
 
 Tüm sosyal kimlik sağlayıcıları (Facebook, Google ve diğerleri), Azure AD B2C döndüren belirteçlerde döndürülmediğinden, bu taleplerin her ikisi de Azure AD B2C senaryolarında eksik olabilir.

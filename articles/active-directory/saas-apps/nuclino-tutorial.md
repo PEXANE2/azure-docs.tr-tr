@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 18814d23c634dc58148c26b67c2f669e22a136ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b84cbe57c40b12ae01952963b324b8bcfdcfd2e
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554303"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945490"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nuclino"></a>Öğretici: Nuclino ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -121,7 +121,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -155,15 +155,15 @@ Bu bölümde, Nuclino 'a erişim vererek, B. Simon 'u Azure çoklu oturum açma 
 
 4. **Simgeye**tıklayın.
 
-    ![Nuclino yapılandırması](./media/nuclino-tutorial/configure1.png)
+    !["Azure A D S S O" seçeneğinin yanında "menü" simgesinin seçili olduğunu gösteren ekran görüntüsü.](./media/nuclino-tutorial/configure1.png)
 
 5. **Azure AD SSO** ' ya tıklayın ve açılan listeden **ekip ayarları** ' nı seçin.
 
-    ![Nuclino yapılandırması](./media/nuclino-tutorial/configure2.png)
+    !["Takım ayarları" seçiliyken "Azure A D S S O" açılır listesini gösteren ekran görüntüsü.](./media/nuclino-tutorial/configure2.png)
 
 6. Sol gezinti bölmesinden **kimlik doğrulaması** ' nı seçin.
 
-    ![Nuclino yapılandırması](./media/nuclino-tutorial/configure3.png)
+    !["Kimlik doğrulaması" seçili gösteren ekran görüntüsü.](./media/nuclino-tutorial/configure3.png)
 
 7. **Kimlik doğrulama** bölümünde aşağıdaki adımları uygulayın:
 

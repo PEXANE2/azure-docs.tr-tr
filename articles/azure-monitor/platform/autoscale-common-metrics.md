@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
 ms.openlocfilehash: e1a77fc1b40faca0a339c5e1aaceb71dec8de8bd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327047"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Izleyici ortak ölçümleri otomatik ölçeklendirme
@@ -52,10 +52,10 @@ Aşağıdaki ölçümler için bir uyarı oluşturabilirsiniz:
 | \Processor(_Total)\% Processor Time |Yüzde |
 | \Processor (_Total) \% ayrıcalıklı süre |Yüzde |
 | \Processor (_Total) \% Kullanıcı saati |Yüzde |
-| \İşlemci bilgileri (_Total) \ işlemci sıklığı |Count |
-| \System\Processes |Count |
-| \Process (_Total) \ iş parçacığı sayısı |Count |
-| \Process (_Total) \Tanıtıcı sayısı |Count |
+| \İşlemci bilgileri (_Total) \ işlemci sıklığı |Sayı |
+| \System\Processes |Sayı |
+| \Process (_Total) \ iş parçacığı sayısı |Sayı |
+| \Process (_Total) \Tanıtıcı sayısı |Sayı |
 | \ \% Kullanılan bellek kaydedilmiş bayt sayısı |Yüzde |
 | \Memory\Available Bytes |Bayt |
 | \ Bellek \ kaydedilmiş baytlar |Bayt |
@@ -71,11 +71,11 @@ Aşağıdaki ölçümler için bir uyarı oluşturabilirsiniz:
 | \Fiziksel disk (_Total) \Disk bayt/sn |BytesPerSecond |
 | \Fiziksel disk (_Total) \Disk okuma bayt/sn |BytesPerSecond |
 | \Fiziksel disk (_Total) \Disk yazma bayt/sn |BytesPerSecond |
-| \Fizikselgb (_Total) \Avg. disk kuyruğu uzunluğu |Count |
-| \Fizikselgb (_Total) \Avg. disk okuma sırası uzunluğu |Count |
-| \Fizikselgb (_Total) \Avg. disk yazma sırası uzunluğu |Count |
+| \Fizikselgb (_Total) \Avg. disk kuyruğu uzunluğu |Sayı |
+| \Fizikselgb (_Total) \Avg. disk okuma sırası uzunluğu |Sayı |
+| \Fizikselgb (_Total) \Avg. disk yazma sırası uzunluğu |Sayı |
 | \LogicalDisk (_Total) \% boş alan |Yüzde |
-| \LogicalDisk (_Total) \ boş megabayt |Count |
+| \LogicalDisk (_Total) \ boş megabayt |Sayı |
 
 ### <a name="guest-os-metrics-linux-vms"></a>Konuk işletim sistemi ölçümleri Linux VM 'Leri
 Azure 'da bir VM oluşturduğunuzda, Tanılamalar, tanılama uzantısı kullanılarak varsayılan olarak etkinleştirilir.
@@ -119,15 +119,15 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \PhysicalDisk\AverageReadTime |Saniye |
 | \ Physicaldisk\averagewritetime |Saniye |
 | \PhysicalDisk\AverageTransferTime |Saniye |
-| \ Physicaldisk\averagediskqueuelength |Count |
+| \ Physicaldisk\averagediskqueuelength |Sayı |
 | \Networkınterface\bytestransmderlenen |Bayt |
 | \NetworkInterface\BytesReceived |Bayt |
-| \Networkınterface\packetstransmderlenen |Count |
-| \Networkınterface\packetsalındı |Count |
+| \Networkınterface\packetstransmderlenen |Sayı |
+| \Networkınterface\packetsalındı |Sayı |
 | \Networkınterface\bytestotal |Bayt |
-| \Networkınterface\totalrxerrors |Count |
-| \NetworkInterface\TotalTxErrors |Count |
-| \Networkınterface\totalçarpışmalar |Count |
+| \Networkınterface\totalrxerrors |Sayı |
+| \NetworkInterface\TotalTxErrors |Sayı |
+| \Networkınterface\totalçarpışmalar |Sayı |
 
 ## <a name="commonly-used-app-service-server-farm-metrics"></a>Yaygın olarak kullanılan App Service (sunucu grubu) ölçümleri
 Ayrıca, http kuyruğu uzunluğu gibi genel Web sunucusu ölçümlerine göre otomatik ölçeklendirme yapabilirsiniz. Ölçüm adı **Httpqueuelength**' dir.  Aşağıdaki bölümde, kullanılabilir sunucu grubu (App Service) ölçümleri listelenmektedir.
@@ -145,8 +145,8 @@ Bu ölçümler ile uyarı verebilir veya ölçeklendirebilirsiniz.
 | --- | --- |
 | Cpuyüzdesi |Yüzde |
 | MemoryPercentage |Yüzde |
-| DiskQueueLength |Count |
-| HttpQueueLength |Count |
+| DiskQueueLength |Sayı |
+| HttpQueueLength |Sayı |
 | BytesReceived |Bayt |
 | BytesSent |Bayt |
 

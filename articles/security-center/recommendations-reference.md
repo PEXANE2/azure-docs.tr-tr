@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 10/07/2020
 ms.author: memildin
 ms.openlocfilehash: 276368eaf54ea87dddd2b292b07084e09d97d5ec
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91850411"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Güvenlik önerileri-bir başvuru kılavuzu
@@ -194,7 +194,7 @@ Güvenli puanınız, tamamladığınız Güvenlik Merkezi önerilerinin sayısı
 |**Yazma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir**|İzlenmeyen erişimi engellemek için aboneliğinizden yazma ayrıcalıklarına sahip dış hesapları kaldırın.<br>(İlgili ilke: yazma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir)|Yüksek|H|Abonelik|
 |**MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir**|Hesapların veya kaynakların ihlal oluşmasını engellemek için sahip ayrıcalıklarına sahip tüm abonelik hesapları için Multi-Factor Authentication (MFA) özelliğini etkinleştirin.<br>(İlgili ilke: MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir)|Yüksek|H|Abonelik|
 |**MFA, aboneliğinizde okuma izinleri olan hesaplarda etkinleştirilmelidir**|Hesapların veya kaynakların ihlal oluşmasını engellemek için okuma ayrıcalıklarına sahip tüm abonelik hesapları için Multi-Factor Authentication (MFA) özelliğini etkinleştirin.<br>(İlgili ilke: MFA 'nın aboneliğinizdeki okuma izinlerine sahip hesaplarda etkinleştirilmesi gerekir)|Yüksek|H|Abonelik|
-|**MFA, aboneliğinizde yazma izinleri olan hesaplarda etkinleştirilmelidir**|Hesapların veya kaynakların ihlal oluşmasını engellemek için yazma ayrıcalıklarına sahip tüm abonelik hesapları için Multi-Factor Authentication (MFA) özelliğini etkinleştirin.<br>(İlgili ilke: MFA 'nın aboneliğinizdeki yazma izinlerine sahip hesaplarda etkinleştirilmesi gerekir)|Yüksek|H|Abonelik|
+|**Aboneliğinizdeki yazma izinleri olan hesaplarda MFA etkinleştirilmelidir**|Hesapların veya kaynakların ihlal oluşmasını engellemek için yazma ayrıcalıklarına sahip tüm abonelik hesapları için Multi-Factor Authentication (MFA) özelliğini etkinleştirin.<br>(İlgili ilke: MFA 'nın aboneliğinizdeki yazma izinlerine sahip hesaplarda etkinleştirilmesi gerekir)|Yüksek|H|Abonelik|
 |**Hizmet sorumluları, yönetim sertifikaları yerine aboneliklerinizi korumak için kullanılmalıdır**|Yönetim sertifikaları kendileriyle ilişkili oldukları abonelikleri yönetmek için bu kişilerle kimlik doğrulayan herkese izin verir. Abonelikleri daha güvenli bir şekilde yönetmek için, Kaynak Yöneticisi ile hizmet sorumlularını kullanmak, bir sertifika tehlikeye düşmesi durumunda bombyi sınırlamak için önerilir. Ayrıca kaynak yönetimini otomatikleştirir.|Orta|Hayır|Abonelik|
 |**Aboneliğinize birden fazla sahip atanmalıdır**|Yönetici erişiminin artıklığını sağlamak için birden fazla abonelik sahibi belirleyin.<br>(İlgili ilke: aboneliğinize birden fazla sahip atanmalıdır)|Yüksek|H|Abonelik|
 ||||||

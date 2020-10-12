@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
 ms.openlocfilehash: 52508a6820ce0cbbbe3a0341a99894f8b92b1645
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87831235"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>Azure'da sanal makineleri yönetirken sık karşılaşılan hata iletilerini anlama
@@ -79,7 +79,7 @@ Bu bölümde, VM 'Leri yönetirken karşılaşabileceğiniz yaygın hata iletile
 |  Diskblobalreadınusebyanotherdisk  |  Blob {0} , ' ' sanal makinesine ait başka bir disk tarafından zaten kullanılıyor {1} . Disk başvuru bilgileri için blob meta verilerini inceleyebilirsiniz.  |
 |  DiskBlobNotFound  |  {0}' ' Diski IÇIN URI Ile VHD blobu bulunamıyor {1} .  |
 |  DiskBlobNotFound  |  URI ile VHD blobu bulunamıyor {0} .  |
-|  DiskEncryptionKeySecretMissingTags  |  {0}gizli dizi etiketleri yok {1} . Lütfen gizli sürümü güncelleştirin, gerekli etiketleri ekleyin ve yeniden deneyin.  |
+|  DiskEncryptionKeySecretMissingTags  |  {0} gizli dizi etiketleri yok {1} . Lütfen gizli sürümü güncelleştirin, gerekli etiketleri ekleyin ve yeniden deneyin.  |
 |  DiskEncryptionKeySecretUnwrapFailed  |  {0}Anahtar kullanılarak parola değerinin sarmalaması geri {1} alınamadı.  |
 |  DiskImageNotReady  |  Disk görüntüsü {0} {1} durumunda. Görüntü hazırlanıyor, lütfen yeniden deneyin.  |
 |  DiskPreparationError  |  VM diskleri hazırlanırken bir veya daha fazla hata oluştu. Ayrıntılar için bkz. disk örneği görünümü.  |
@@ -91,7 +91,7 @@ Bu bölümde, VM 'Leri yönetirken karşılaşabileceğiniz yaygın hata iletile
 |  IncorrectImageBlobType  |  Disk blob 'ları yalnızca Sayfa Blobu türünde olabilir. {0}' ' Diski için blob {1} , Blok Blobu türünde.  |
 |  IncorrectImageBlobType  |  Disk blob 'ları yalnızca Sayfa Blobu türünde olabilir. Blob {0} ' {1} ' türünde.  |
 |  Internaloperationerror  |  Depolama hesabı çözümlenemedi {0} . Lütfen işlem kaynağıyla aynı konumdaki depolama kaynak sağlayıcısı üzerinden oluşturulduğundan emin olun.  |
-|  Internaloperationerror  |  {0}hedef arama görevi başarısız oldu.  |
+|  Internaloperationerror  |  {0} hedef arama görevi başarısız oldu.  |
 |  Internaloperationerror  |  ' ' Sanal makinesinin ağ profili doğrulanırken hata oluştu {0} .  |
 |  Invalidaccounttype  |  AccountType {0} geçersiz.  |
 |  Geçersiz parametre  |  Parametrenin değeri {0} geçersiz.  |
@@ -171,13 +171,13 @@ Bu bölümde, VM 'Leri yönetirken karşılaşabileceğiniz yaygın hata iletile
 |  OperationNotAllowed  |  İstenen boyut, {0} kullanılabilirlik kümesinin Şu anda ayrıldığı kümede KULLANıLAMADıĞıNDAN VM yeniden boyutlandırılamıyor. Kullanılabilir Boyutlar: {1} . Üzerinde VM yeniden boyutlandırma stratejisi hakkında daha fazla bilgi edinin https://aka.ms/azure-resizevm .  |
 |  OperationNotAllowed  |  İstenen boyut {0} VM 'nin şu anda ayrıldığı kümede KULLANıLAMADıĞıNDAN VM yeniden boyutlandırılamıyor. VM 'nizi yeniden boyutlandırmak için {1} (bu Azure Portal durdurma işlemi) ve yeniden boyutlandırma işlemini yeniden deneyin. Üzerinde VM yeniden boyutlandırma stratejisi hakkında daha fazla bilgi edinin https://aka.ms/azure-resizevm .  |
 |  OSProvisioningClientError  |  {0}Konuk işletim sistemi şu anda sağlanmakta olduğundan, ' ' sanal makinesi için işletim sistemi sağlama başarısız oldu.  |
-|  OSProvisioningClientError  |  ' ' Sanal makinesi için işletim sistemi sağlama {0} başarısız oldu. Hata ayrıntıları: {1} görüntünün düzgün hazırlanmış (Genelleştirilmiş) olduğundan emin olun. <ul><li>Windows için yönergeler:https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
-|  OSProvisioningClientError  |  SSH ana bilgisayar anahtarı oluşturulamadı. Hata ayrıntıları: {0} . Bu sorunu gidermek için, Linux aracısının düzgün ayarlanıp ayarlanmadığını doğrulayın. <ul><li>Yönergeleri şu adreste bulabilirsiniz:https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ </li></ul> |
+|  OSProvisioningClientError  |  ' ' Sanal makinesi için işletim sistemi sağlama {0} başarısız oldu. Hata ayrıntıları: {1} görüntünün düzgün hazırlanmış (Genelleştirilmiş) olduğundan emin olun. <ul><li>Windows için yönergeler: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
+|  OSProvisioningClientError  |  SSH ana bilgisayar anahtarı oluşturulamadı. Hata ayrıntıları: {0} . Bu sorunu gidermek için, Linux aracısının düzgün ayarlanıp ayarlanmadığını doğrulayın. <ul><li>Yönergeleri şu adreste bulabilirsiniz: https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ </li></ul> |
 |  OSProvisioningClientError  |  VM için belirtilen Kullanıcı adı bu Linux dağıtımı için geçersiz. Hata ayrıntıları: {0} .  |
 |  Osprovisioningınternalerror  |  Bir iç hata nedeniyle VM ' ' için işletim sistemi sağlama başarısız oldu {0} .  |
 |  Osprovisioningtime,  |  ' ' Sanal makinesi için işletim sistemi sağlama {0} , ayrılan sürede tamamlanmadı. VM sağlamayı başarıyla bitirirebilir. Lütfen sağlama durumunu daha sonra denetleyin.  |
 |  Osprovisioningtime,  |  ' ' Sanal makinesi için işletim sistemi sağlama {0} , ayrılan sürede tamamlanmadı. VM sağlamayı başarıyla bitirirebilir. Lütfen sağlama durumunu daha sonra denetleyin. Ayrıca, görüntünün düzgün hazırlanmış (Genelleştirilmiş) olduğundan emin olun.   <ul><li>[Windows]( ../windows/upload-generalized-managed.md)için yönergeler.</li><li> [Linux](../linux/capture-image.md) için yönergeler</li></ul>  |
-|  Osprovisioningtime,  |  ' ' Sanal makinesi için işletim sistemi sağlama {0} , ayrılan sürede tamamlanmadı. Ancak, VM Konuk Aracısı çalışıyor olarak algılandı. Bu, Konuk işletim sisteminin bir VM görüntüsü (CreateOption = FromImage) olarak kullanılmak üzere düzgün şekilde hazırlandığını önerir. Bu sorunu çözmek için, VHD 'yi CreateOption = Attach ile birlikte kullanın veya görüntü olarak kullanmak üzere doğru şekilde hazırlayın:   <ul><li>Windows için yönergeler:https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Linux için yönergeler:https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
+|  Osprovisioningtime,  |  ' ' Sanal makinesi için işletim sistemi sağlama {0} , ayrılan sürede tamamlanmadı. Ancak, VM Konuk Aracısı çalışıyor olarak algılandı. Bu, Konuk işletim sisteminin bir VM görüntüsü (CreateOption = FromImage) olarak kullanılmak üzere düzgün şekilde hazırlandığını önerir. Bu sorunu çözmek için, VHD 'yi CreateOption = Attach ile birlikte kullanın veya görüntü olarak kullanmak üzere doğru şekilde hazırlayın:   <ul><li>Windows için yönergeler: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Linux için yönergeler: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
 |  OverConstrainedAllocationRequest  |  Gerekli VM boyutu şu anda seçili konumda kullanılamıyor.  |
 |  ResourceUpdateBlockedOnPlatformUpdate  |  Devam eden platform güncelleştirmesi nedeniyle kaynak şu anda güncelleştirilemiyor. Lütfen daha sonra yeniden deneyin.  |
 |  Storageaccountsınırlamanın  |  ' ' Depolama hesabı, {0} disk oluşturmak için gerekli olan sayfa bloblarını desteklemiyor.  |

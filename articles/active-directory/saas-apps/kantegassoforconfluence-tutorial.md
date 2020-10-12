@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: bef0b2d0387b82140e9874f837d9464408d78090
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05fd1fc23afc72174f5454c805dd59a6eb2e9714
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546976"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946051"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-confluence"></a>Öğretici: Confluence için Kantega SSO ile tümleştirme Azure Active Directory
 
@@ -99,7 +99,7 @@ Yapılandırma için Kantega SSO ile Azure AD çoklu oturum açmayı yapılandı
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    ![Confluence etki alanı ve URL 'Ler çoklu oturum açma bilgileri için Kantega SSO](common/idp-intiated.png)
+    !["Tanımlayıcı" ve "Yanıt U R L" alanları vurgulanmış ve "Kaydet" düğmesi seçili olan "temel S A M L yapılandırma" bölümünü gösteren ekran görüntüsü.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
@@ -134,47 +134,47 @@ Yapılandırma için Kantega SSO ile Azure AD çoklu oturum açmayı yapılandı
 
 1. Dişli üzerine gelin ve **eklentilere**tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforconfluence-tutorial/addon1.png)
+    !["COG" menü simgesini ve "Eklentiler" seçili olduğunu gösteren ekran görüntüsü.](./media/kantegassoforconfluence-tutorial/addon1.png)
 
 1. **Atlasme marketi** sekmesinde **yeni eklentiler bul**' a tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforconfluence-tutorial/addon.png)
+    !["Yeni eklentiler bul" seçiliyken "ATTLASSIAN Market" sekmesini gösteren ekran görüntüsü.](./media/kantegassoforconfluence-tutorial/addon.png)
 
 1. **Confluence SAML Kerberos Için Kantega SSO** 'yu arayın ve yeni SAML **eklentisini yüklemek için Kaldır düğmesine tıklayın** .
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforconfluence-tutorial/addon2.png)
+    ![Arama kutusunda ve "Install" düğmesinin seçili olduğu "yeni eklenti bul" sayfasını, "bir M L-of Confluence s A M L Kerberos" ile gösteren ekran görüntüsü.](./media/kantegassoforconfluence-tutorial/addon2.png)
 
 1. Eklenti yüklemesi başlar.
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforconfluence-tutorial/addon3.png)
+    !["Yükleme" eklentisini gösteren ekran görüntüsü.](./media/kantegassoforconfluence-tutorial/addon3.png)
 
 1. Yükleme tamamlandıktan sonra. **Kapat**’a tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforconfluence-tutorial/addon33.png)
+    !["Kapat" eylemi seçiliyken "yüklenecek ve hazırlanmaya başla" ekranını gösteren ekran görüntüsü.](./media/kantegassoforconfluence-tutorial/addon33.png)
 
 1. **Yönet**'e tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforconfluence-tutorial/addon34.png)
+    !["Yönet" düğmesi seçiliyken "Kantega çoklu oturum açmayı Kerberos ve S A M L" eklentisine gösteren ekran görüntüsü.](./media/kantegassoforconfluence-tutorial/addon34.png)
 
 1. Yeni eklentiyi yapılandırmak için **Yapılandır** ' a tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforconfluence-tutorial/addon35.png)
+    !["Yapılandır" düğmesinin seçili olduğu "Kantega çoklu oturum açmayı Kerberos ve S A M L ile birlikte gösteren ekran görüntüsü" sayfası.](./media/kantegassoforconfluence-tutorial/addon35.png)
 
 1. Bu yeni eklenti Ayrıca, **kullanıcılar & güvenlik** sekmesi altında bulunabilir.
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforconfluence-tutorial/addon36.png)
+    !["Kantega çoklu oturum açma" eylemi seçiliyken "KULLANıCıLAR & GÜVENLIĞI" sekmesini gösteren ekran görüntüsü.](./media/kantegassoforconfluence-tutorial/addon36.png)
 
 1. **SAML** bölümünde. **Kimlik sağlayıcısı ekle** açılır listesinden **Azure ACTIVE DIRECTORY (Azure AD)** öğesini seçin.
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforconfluence-tutorial/addon4.png)
+    !["Kimlik sağlayıcısı ekle" ve "Azure Active Directory (Azure AD)" seçiliyken "S A M L" bölümünü gösteren ekran görüntüsü.](./media/kantegassoforconfluence-tutorial/addon4.png)
 
 1. Abonelik düzeyini **temel**olarak seçin.
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforconfluence-tutorial/addon5.png)
+    !["Temel" seçiliyken "Azure AD 'yi hazırlama" sayfasını gösteren ekran görüntüsü.](./media/kantegassoforconfluence-tutorial/addon5.png)
 
 1. **Uygulama özellikleri** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforconfluence-tutorial/addon6.png)
+    !["App ı D U R L" alanı ve "Kopyala" düğmesinin vurgulandığına ve "Ileri" düğmesine seçili "uygulama özellikleri" bölümünü gösteren ekran görüntüsü.](./media/kantegassoforconfluence-tutorial/addon6.png)
 
     a. **Uygulama KIMLIĞI URI** değerini kopyalayın ve Azure Portal IÇINDEKI **temel SAML yapılandırması** bölümünde **kimlik, yanıt URL 'si ve Sign-On URL 'si** olarak kullanın.
 
@@ -182,7 +182,7 @@ Yapılandırma için Kantega SSO ile Azure AD çoklu oturum açmayı yapılandı
 
 1. **Meta veri içeri aktarma** bölümünde aşağıdaki adımları gerçekleştirin: 
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforconfluence-tutorial/addon7.png)
+    !["Bilgisayarımdaki meta veri dosyası" bölümünün seçildiği "meta veri alma" bölümünü gösteren ekran görüntüsü.](./media/kantegassoforconfluence-tutorial/addon7.png)
 
     a. Bilgisayarımdaki **meta veri dosyasını**seçin ve Azure Portal 'ten indirdiğiniz meta veri dosyasını karşıya yükleyin.
 
@@ -190,7 +190,7 @@ Yapılandırma için Kantega SSO ile Azure AD çoklu oturum açmayı yapılandı
 
 1. **Ad ve SSO konumu** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforconfluence-tutorial/addon8.png)
+    !["Kimlik sağlayıcı adı" metin kutusu vurgulanmış ve "Ileri" düğmesi seçili olan "ad ve S S O konumunu" gösteren ekran görüntüsü.](./media/kantegassoforconfluence-tutorial/addon8.png)
 
     a. Kimlik sağlayıcısı **adı** metin kutusuna kimlik sağlayıcısının adını ekleyin (ör. Azure AD).
 
@@ -198,11 +198,11 @@ Yapılandırma için Kantega SSO ile Azure AD çoklu oturum açmayı yapılandı
 
 1. Imzalama sertifikasını doğrulayın ve **İleri**' ye tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforconfluence-tutorial/addon9.png)
+    !["Ileri" düğmesi seçili "Imza doğrulama" bölümünü gösteren ekran görüntüsü.](./media/kantegassoforconfluence-tutorial/addon9.png)
 
 1. **Confluence Kullanıcı hesapları** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforconfluence-tutorial/addon10.png)
+    !["Confluence 'in Iç dizininde kullanıcı oluştur" seçeneğine ve "Ileri" düğmesine seçili "," Confluence User Accounts "bölümünü gösteren ekran görüntüsü.](./media/kantegassoforconfluence-tutorial/addon10.png)
 
     a. **Gerekirse, Confluence 'ın Iç dizininde kullanıcı oluştur** ' u seçin ve Kullanıcı için grubun uygun adını girin (birden çok No olabilir. virgülle ayrılmış gruplar).
 
@@ -210,11 +210,11 @@ Yapılandırma için Kantega SSO ile Azure AD çoklu oturum açmayı yapılandı
 
 1. **Finish (Son)** düğmesine tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforconfluence-tutorial/addon11.png)
+    !["Son" düğmesinin seçili olduğu "Özet" sayfasının ekran görüntüsü.](./media/kantegassoforconfluence-tutorial/addon11.png)
 
 1. **Azure AD Için bilinen etki alanları** bölümünde aşağıdaki adımları uygulayın: 
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforconfluence-tutorial/addon12.png)
+    !["Bilinen etki alanları" metin kutusu vurgulanmış ve "Kaydet" düğmesi seçili olan "Azure AD için bilinen etki alanları" sayfasını gösteren ekran görüntüsü.](./media/kantegassoforconfluence-tutorial/addon12.png)
 
     a. Sayfanın sol panelinden **bilinen etki alanları ' nı** seçin.
 
@@ -245,7 +245,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -283,7 +283,7 @@ Azure AD kullanıcılarının, Confluence 'de oturum açmasını sağlamak için
 
 1. Dişli 'ye gelin ve **Kullanıcı yönetimine**tıklayın.
 
-    ![Çalışan Ekle](./media/kantegassoforconfluence-tutorial/user1.png)
+    !["COG" simgesini ve "Kullanıcı Yönetimi" ' nin seçili olduğunu gösteren ekran görüntüsü.](./media/kantegassoforconfluence-tutorial/user1.png)
 
 1. Kullanıcılar bölümünde, **Kullanıcı Ekle** sekmesini tıklatın. **Kullanıcı Ekle** iletişim sayfasında, aşağıdaki adımları uygulayın:
 

@@ -8,10 +8,10 @@ ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
 ms.openlocfilehash: 9ea98df4b6cd8572412e7082b451feac3736919c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327081"
 ---
 # <a name="application-insights-log-based-metrics"></a>Günlük tabanlı ölçümleri Application Insights
@@ -79,7 +79,7 @@ availabilityResults
 
 |Ölçü birimi|Desteklenen toplamalar|Desteklenen boyutlar|
 |---|---|---|---|---|---|
-|Count|Count|Çalıştırma konumu, test adı, test sonucu|
+|Sayı|Sayı|Çalıştırma konumu, test adı, test sonucu|
 
 ```Kusto
 availabilityResults
@@ -98,7 +98,7 @@ Tarayıcı ölçümleri, gerçek Son Kullanıcı tarayıcılarından Application
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Mayacak|Ortalama, en düşük, en fazla|Hiçbiri|
+|Mayacak|Ortalama, en düşük, en fazla|Yok|
 
 ```Kusto
 browserTimings
@@ -114,7 +114,7 @@ browserTimings
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Mayacak|Ortalama, en düşük, en fazla|Hiçbiri|
+|Mayacak|Ortalama, en düşük, en fazla|Yok|
 
 ```Kusto
 browserTimings
@@ -130,7 +130,7 @@ browserTimings
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Mayacak|Ortalama, en düşük, en fazla|Hiçbiri|
+|Mayacak|Ortalama, en düşük, en fazla|Yok|
 
 ```Kusto
 browserTimings
@@ -146,7 +146,7 @@ browserTimings
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Mayacak|Ortalama, en düşük, en fazla|Hiçbiri|
+|Mayacak|Ortalama, en düşük, en fazla|Yok|
 
 ```Kusto
 browserTimings
@@ -162,7 +162,7 @@ browserTimings
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Mayacak|Ortalama, en düşük, en fazla|Hiçbiri|
+|Mayacak|Ortalama, en düşük, en fazla|Yok|
 
 ```Kusto
 browserTimings
@@ -184,7 +184,7 @@ Bu ölçüm, tarayıcıda çalışan uygulama kodunuzda oluşan özel durum say�
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
-|Count|Count|Hiçbiri|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
+|Sayı|Sayı|Yok|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
 
 ```Kusto
 exceptions
@@ -199,7 +199,7 @@ Başarısız bağımlılık çağrılarının sayısı.
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
-|Count|Count|Hiçbiri|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
+|Sayı|Sayı|Yok|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
 
 ```Kusto
 dependencies
@@ -214,7 +214,7 @@ Application Insights için bir özel durum kaydettiğinizde, SDK 'nın [trackexc
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
-|Count|Count|Bulut rolü adı, bulut rolü örneği, cihaz türü|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
+|Sayı|Sayı|Bulut rolü adı, bulut rolü örneği, cihaz türü|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
 
 ```Kusto
 exceptions
@@ -228,7 +228,7 @@ exceptions
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
-|Count|Count|Bulut rolü örneği, bulut rolü adı, gerçek veya yapay trafik, Istek performansı, yanıt kodu|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
+|Sayı|Sayı|Bulut rolü örneği, bulut rolü adı, gerçek veya yapay trafik, Istek performansı, yanıt kodu|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
 
 ```Kusto
 requests
@@ -243,7 +243,7 @@ Bu ölçüm, sunucu özel durumlarının sayısını gösterir.
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
-|Count|Count|Bulut rolü adı, bulut rolü örneği|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
+|Sayı|Sayı|Bulut rolü adı, bulut rolü örneği|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
 
 ```Kusto
 exceptions
@@ -361,7 +361,7 @@ performanceCounters
 |Yüzde|Ortalama, en düşük, en fazla|Bulut rolü örneği
 
 >[!NOTE]
-> İşlemci zamanı ölçümü, Azure Uygulama Hizmetleri 'nde barındırılan uygulamalar için kullanılamaz. Uygulama hizmetlerinde barındırılan Web uygulamalarının CPU kullanımını izlemek için [Işlem CPU](#process-cpu-performancecountersprocesscpupercentage) ölçüsünü kullanın.
+> İşlemci zamanı ölçümü, Azure Uygulama Hizmetleri 'nde barındırılan uygulamalar için kullanılamaz. Uygulama hizmetlerinde barındırılan Web uygulamalarının CPU kullanımını izlemek için  [Işlem CPU](#process-cpu-performancecountersprocesscpupercentage) ölçüsünü kullanın.
 
 ```Kusto
 performanceCounters

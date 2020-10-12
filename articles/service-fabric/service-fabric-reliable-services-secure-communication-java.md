@@ -7,10 +7,10 @@ ms.date: 06/30/2017
 ms.custom: devx-track-java
 ms.author: pakunapa
 ms.openlocfilehash: 01a64fbcfef9f56abb0e1aa6cf7f5d821dd3763b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87325721"
 ---
 # <a name="secure-service-remoting-communications-in-a-java-service"></a>Java hizmetinde güvenli hizmet uzaktan iletişim iletişimleri
@@ -48,7 +48,7 @@ Java hizmetleri ile hizmet uzaktan iletişimini kullanırken bir hizmetin güven
     ```
 2. Dinleyici ayarlarını ve güvenlik kimlik bilgilerini ekleyin.
 
-    Hizmet iletişiminizin güvenli hale getirilmesine yardımcı olmak için kullanmak istediğiniz sertifikanın kümedeki tüm düğümlerde yüklü olduğundan emin olun. Linux üzerinde çalışan hizmetler için, sertifika pek-formmasıor dosyası olarak kullanılabilir olmalıdır; `.pem`sertifikayı ve özel anahtarı içeren bir dosya ya da `.crt` sertifikayı içeren bir dosya ve `.key` özel anahtarı içeren bir dosya. Daha fazla bilgi edinmek için bkz. [Linux düğümlerinde X. 509.440 sertifikalarının konumu ve biçimi](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes).
+    Hizmet iletişiminizin güvenli hale getirilmesine yardımcı olmak için kullanmak istediğiniz sertifikanın kümedeki tüm düğümlerde yüklü olduğundan emin olun. Linux üzerinde çalışan hizmetler için, sertifika pek-formmasıor dosyası olarak kullanılabilir olmalıdır; `.pem` sertifikayı ve özel anahtarı içeren bir dosya ya da `.crt` sertifikayı içeren bir dosya ve `.key` özel anahtarı içeren bir dosya. Daha fazla bilgi edinmek için bkz. [Linux düğümlerinde X. 509.440 sertifikalarının konumu ve biçimi](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes).
     
     Dinleyici ayarlarını ve güvenlik kimlik bilgilerini sağlayabilmeniz için iki yol vardır:
 

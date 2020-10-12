@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: b583e3d86ba193a92080f2da9cc0b16d07c5a993
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 46bb3b1e450312a2c02fec3f98e2b3d7381b53d2
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91447169"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946024"
 ---
 # <a name="quickstart-setting-up-azure-security-center"></a>Hızlı başlangıç: Azure Güvenlik Merkezi 'Ni ayarlama
 
@@ -33,7 +33,7 @@ Güvenlik Merkezi ile çalışmaya başlamak için Microsoft Azure aboneliğiniz
 Azure Defender 'ı bir abonelikte etkinleştirmek için abonelik sahibi, abonelik katılımcısı veya güvenlik yöneticisi rolüne sahip olmanız gerekir.
 
 
-## <a name="open-security-center-for-the-first-time"></a>Güvenlik Merkezi 'ni ilk kez açın
+## <a name="enable-security-center-on-your-azure-subscription"></a>Azure aboneliğinizde Güvenlik Merkezi 'ni etkinleştirme
 
 1. [Azure portalında](https://azure.microsoft.com/features/azure-portal/) oturum açın.
 
@@ -54,6 +54,8 @@ Güvenlik Merkezi’ni başlattıktan sonraki ilk birkaç dakika içinde şunlar
 
 Güvenlik Merkezi 'Nden tam olarak yararlanabilmek için, Azure Defender 'ı etkinleştirmek ve Log Analytics aracısını yüklemek üzere aşağıdaki adımları gerçekleştirmeniz gerekir.
 
+> [!TIP]
+> Yönetim grubu içindeki tüm aboneliklerde Güvenlik Merkezi 'ni etkinleştirmek için, bkz. [birden çok Azure aboneliği üzerinde güvenlik merkezini etkinleştirme](onboard-management-group.md).
 
 ## <a name="enable-azure-defender"></a>Azure Defender 'ı etkinleştir
 
@@ -80,7 +82,7 @@ Log Analytics aracısının otomatik sağlamasını etkinleştirmek için:
 1. Güvenlik Merkezi 'nin menüsünde **fiyatlandırma & ayarları**' nı seçin.
 1. Uygun aboneliği seçin.
 1. **Veri toplama** sayfasında, **otomatik sağlamayı** **Açık**olarak ayarlayın.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
     :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Güvenlik Merkezi 'ne Genel Bakış Panosu":::
 

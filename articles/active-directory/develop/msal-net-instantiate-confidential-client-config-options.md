@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 140385a26dbfd754438d632ce327c3c4a3ea1b61
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88166187"
 ---
 # <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>MSAL.NET kullanarak yapılandırma seçenekleriyle bir gizli istemci uygulaması örneği oluşturma
@@ -60,7 +60,7 @@ Bir ASP.NET Core uygulama yapılandırması, bir *appsettings.js* dosyasında a�
 
 MSAL.NET v3. x sürümünden başlayarak, gizli istemci uygulamanızı yapılandırma dosyasından yapılandırabilirsiniz.
 
-Uygulamanızı yapılandırmak ve örneklerinizi başlatmak istediğiniz sınıfta bir nesne bildirmeniz gerekir `ConfidentialClientApplicationOptions` .  Microsoft.Extensions.Configbir yöntemi kullanarak, kaynaktan okunan yapılandırmayı (dosyadaki appconfig.jsdosyası dahil) uygulama seçeneklerinin örneğine bağlayın `IConfigurationRoot.Bind()` [. Ciltçi NuGet paketi](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder):
+Uygulamanızı yapılandırmak ve örneklerinizi başlatmak istediğiniz sınıfta bir nesne bildirmeniz gerekir `ConfidentialClientApplicationOptions` .  Microsoft.Extensions.Configbir yöntemi kullanarak, kaynaktan okunan yapılandırmayı (dosyadaki appconfig.jsdosyası dahil) uygulama seçeneklerinin örneğine bağlayın `IConfigurationRoot.Bind()` [ . Ciltçi NuGet paketi](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder):
 
 ```csharp
 using Microsoft.Identity.Client;

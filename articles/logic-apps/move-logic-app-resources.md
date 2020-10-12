@@ -7,10 +7,10 @@ ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: aca2c51ff14b99ba41b159cf32e59dc861de7a53
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87826220"
 ---
 # <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>Mantıksal uygulama kaynaklarını diğer Azure Kaynak gruplarına, bölgelerine veya aboneliklerine taşıyın
@@ -27,7 +27,7 @@ Mantıksal uygulamanızı veya ilgili kaynaklarınızı başka bir Azure Kaynak 
 
 * Bir [tümleştirme hizmeti ortamını (ıSE)](connect-virtual-network-vnet-isolated-environment-overview.md) yalnızca aynı Azure bölgesinde veya Azure aboneliğinde bulunan başka bir kaynak grubuna taşıyabilirsiniz. ISE 'yi farklı bir Azure bölgesinde veya Azure aboneliğinde bulunan bir kaynak grubuna taşıyamazsınız. Ayrıca, bu tür bir taşıma işleminden sonra mantıksal uygulama iş akışlarınızda, tümleştirme hesaplarınızda, bağlantılarında ve bu durumda yer alan tüm başvuruları güncelleştirmeniz gerekir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Taşımak istediğiniz mantıksal uygulamayı veya tümleştirme hesabını oluşturmak için kullanılan aynı Azure aboneliği
 
