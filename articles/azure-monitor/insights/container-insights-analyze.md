@@ -4,10 +4,10 @@ description: Bu makalede, bir Kubernetes kümesinin, kapsayıcılar için Azure 
 ms.topic: conceptual
 ms.date: 03/26/2020
 ms.openlocfilehash: 888853f0e9e7634cafa5e480752371c501376158
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90988135"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile Kubernetes küme performansınızı izleyin
@@ -24,7 +24,7 @@ Bir Windows Server kümesini bir Linux kümesiyle karşılaştırılan kapsayıc
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="multi-cluster-view-from-azure-monitor"></a>Azure Izleyici 'den çok küme görünümü
 
@@ -34,8 +34,8 @@ Dağıtılan tüm Kubernetes kümelerinin sistem durumunu görüntülemek için 
 
 Kılavuzda gösterilen sonuçların kapsamını şu şekilde tanımlayabilirsiniz:
 
-* Azure Kubernetes hizmetinde barındırılan **Azure** -aks ve aks-Engine kümeleri
-* **Azure Stack (Önizleme)** -Azure Stack barındırılan aks-Engine kümeleri
+* **Azure-** aks ve AKS-Engine kümeleri Azure Kubernetes hizmetinde barındırılıyor
+* **Azure Stack (Önizleme)** -Azure Stack barındırılan AKS-Engine kümeler
 * **Azure dışı (Önizleme)** -şirket içinde barındırılan Kubernetes kümeleri
 * **Tümü** -Azure 'da barındırılan tüm Kubernetes kümelerini, Azure Stack ve kapsayıcılar Için Azure izleyicisine eklendi şirket içi ortamları görüntüleyin
 

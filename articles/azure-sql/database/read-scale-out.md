@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: sstein
 ms.date: 09/03/2020
 ms.openlocfilehash: bd393a897052dd0bd49851eee424c99ad1fcfb1f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319437"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>Salt okuma sorgusu iş yüklerini boşaltmak için salt okuma çoğaltmaları kullanın
@@ -85,18 +85,18 @@ Bir salt okuma çoğaltmasına bağlanıldığında, dinamik yönetim görünüm
 
 Yaygın olarak kullanılan görünümler şunlardır:
 
-| Name | Amaç |
+| Adı | Amaç |
 |:---|:---|
 |[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Son saat için CPU, veri GÇ ve hizmet hedefi sınırlarına göre günlük yazma kullanımı dahil olmak üzere kaynak kullanım ölçümleri sağlar.|
 |[sys.dm_os_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| Veritabanı altyapısı örneği için toplam bekleme istatistikleri sağlar. |
-|[sys. dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| Çoğaltma sistem durumu ve eşitleme istatistikleri sağlar. Sıra boyutunu Yinele ve yineleme oranı, salt okuma çoğaltmasında veri gecikmesi göstergesi olarak hizmeti sunar. |
-|[sys. dm_os_performance_counters](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql)| Veritabanı altyapısı performans sayaçlarını sağlar.|
+|[sys.dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| Çoğaltma sistem durumu ve eşitleme istatistikleri sağlar. Sıra boyutunu Yinele ve yineleme oranı, salt okuma çoğaltmasında veri gecikmesi göstergesi olarak hizmeti sunar. |
+|[sys.dm_os_performance_counters](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql)| Veritabanı altyapısı performans sayaçlarını sağlar.|
 |[sys.dm_exec_query_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql)| Yürütmeler sayısı, kullanılan CPU süresi vb. gibi sorgu başına yürütme istatistikleri sağlar.|
-|[sys. dm_exec_query_plan ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-transact-sql)| Önbelleğe alınmış sorgu planları sağlar. |
-|[sys. dm_exec_sql_text ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql)| Önbelleğe alınmış bir sorgu planı için sorgu metni sağlar.|
-|[sys. dm_exec_query_profiles](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| Sorgular yürütülürken gerçek zamanlı sorgu ilerleme durumu sağlar.|
-|[sys. dm_exec_query_plan_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| Bir sorgu için çalışma zamanı İstatistikleri dahil olmak üzere, bilinen son gerçek yürütme planını sağlar.|
-|[sys. dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)| Tüm veritabanı dosyaları için depolama ıOPS, aktarım hızı ve gecikme süresi istatistikleri sağlar. |
+|[sys.dm_exec_query_plan ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-transact-sql)| Önbelleğe alınmış sorgu planları sağlar. |
+|[sys.dm_exec_sql_text ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql)| Önbelleğe alınmış bir sorgu planı için sorgu metni sağlar.|
+|[sys.dm_exec_query_profiles](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| Sorgular yürütülürken gerçek zamanlı sorgu ilerleme durumu sağlar.|
+|[sys.dm_exec_query_plan_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| Bir sorgu için çalışma zamanı İstatistikleri dahil olmak üzere, bilinen son gerçek yürütme planını sağlar.|
+|[sys.dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)| Tüm veritabanı dosyaları için depolama ıOPS, aktarım hızı ve gecikme süresi istatistikleri sağlar. |
 
 > [!NOTE]
 > `sys.resource_stats` `sys.elastic_pool_resource_stats` Mantıksal ana veritabanındaki ve DMVs, birincil çoğaltmanın kaynak kullanım verilerini döndürür.
@@ -123,7 +123,7 @@ Salt okuma çoğaltması üzerinde uzun süre çalışan bir sorgu bu tür engel
 > Sorguları salt bir çoğaltmada çalıştırırken 3961 hatası veya 1219 hatası alırsanız, sorguyu yeniden deneyin.
 
 > [!TIP]
-> Premium ve İş Açısından Kritik hizmet katmanlarında, salt okunurdur, `redo_queue_size` `redo_rate` [sys. dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) DMV içindeki ve sütunları, salt okuma çoğaltmasında veri gecikmesi göstergeleri olarak hizmet veren veri eşitleme işlemini izlemek için kullanılabilir.
+> Premium ve İş Açısından Kritik hizmet katmanlarında, salt okunurdur bir kopyaya bağlanıldığında, `redo_queue_size` `redo_rate` [sys.dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) DMV içindeki ve sütunları, salt okuma çoğaltmasındaki veri gecikmesi göstergesi olarak hizmet veren veri eşitleme işlemini izlemek için kullanılabilir.
 > 
 
 ## <a name="enable-and-disable-read-scale-out"></a>Okuma ölçeğini etkinleştirme ve devre dışı bırakma

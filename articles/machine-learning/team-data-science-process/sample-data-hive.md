@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 339273c091a1bcfc4f2de66ef2f79ea8cebbc49b
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86026058"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Azure HDInsight Hive tablolarındaki örnek veriler
@@ -31,9 +31,9 @@ Bu makalede, Azure HDInsight Hive tablolarında depolanan verileri analiz için 
 Bu örnekleme görevi, [ekip veri bilimi işlemindeki (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)bir adımdır.
 
 ## <a name="how-to-submit-hive-queries"></a>Hive sorguları gönderme
-Hive sorguları Hadoop kümesinin baş düğümündeki Hadoop komut satırı konsolundan gönderilebilir.  Hadoop kümesinin baş düğümünde oturum açın, Hadoop komut satırı konsolunu açın ve Hive sorgularını buradan gönderebilirsiniz. Hadoop komut satırı konsolunda Hive sorguları gönderme yönergeleri için bkz. [Hive sorguları gönderme](move-hive-tables.md#submit).
+Hive sorguları Hadoop kümesinin baş düğümündeki Hadoop Command-Line konsolundan gönderilebilir.  Hadoop kümesinin baş düğümünde oturum açın, Hadoop Command-Line konsolunu açın ve Hive sorgularını buradan gönderebilirsiniz. Hadoop Command-Line konsolunda Hive sorguları gönderme yönergeleri için bkz. [Hive sorguları gönderme](move-hive-tables.md#submit).
 
-## <a name="uniform-random-sampling"></a><a name="uniform"></a>Tekdüzen rastgele örnekleme
+## <a name="uniform-random-sampling"></a><a name="uniform"></a> Tekdüzen rastgele örnekleme
 Tek biçimli rastgele örnekleme, veri kümesindeki her bir satırın örneklenme olasılığını eşit olduğu anlamına gelir. Bu, iç "Seç" sorgusunda veri kümesine bir ek alan S_SAYI_ÜRET () eklenerek ve "Seç" dıştaki bu rasgele alanda bu koşulu sorgulayarak uygulanabilir.
 
 Örnek bir sorgu aşağıda verilmiştir:
@@ -53,7 +53,7 @@ where samplekey<='${hiveconf:sampleRate}'
 
 Burada, `<sample rate, 0-1>` kullanıcıların örneklemek istediği kayıt oranını belirtir.
 
-## <a name="random-sampling-by-groups"></a><a name="group"></a>Gruplara göre rastgele örnekleme
+## <a name="random-sampling-by-groups"></a><a name="group"></a> Gruplara göre rastgele örnekleme
 Kategorik verileri örnekleme sırasında, kategorik değişkenin bir değeri için tüm örnekleri dahil etmek veya hariç tutmak isteyebilirsiniz. Bu örnekleme sıralaması "gruba göre örnekleme" olarak adlandırılır. Örneğin, NY, MA, CA, NJ ve PA gibi değerler içeren kategorik bir değişkeniniz "*durum*" ise, örneklenip örneklenmeseler her bir durum için kayıtların birlikte olmasını istersiniz.
 
 Gruba göre örnekleyerek örnek bir sorgu aşağıda verilmiştir:

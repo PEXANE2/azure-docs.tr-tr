@@ -10,10 +10,10 @@ ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 425a7ff0553ddeac502c59e240f5ab152d6e0d79
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87015162"
 ---
 # <a name="integrate-with-azure-monitor-logs"></a>Azure Izleyici günlükleriyle tümleştirme
@@ -100,7 +100,7 @@ En popüler müşteri isteklerimizden biri, bir DSC yapılandırmasıyla bir sor
 Uyarı kuralı oluşturmak için, uyarıyı çağırması gereken durum yapılandırma raporu kayıtları için bir günlük araması oluşturarak başlayın. Uyarı kuralını oluşturmak ve yapılandırmak için **Yeni uyarı kuralı** düğmesine tıklayın.
 
 1. Log Analytics çalışma alanına genel bakış sayfasında **Günlükler**' e tıklayın.
-1. Sorgu alanına aşağıdaki aramayı yazarak Uyarınız için bir günlük arama sorgusu oluşturun:`Type=AzureDiagnostics Category='DscNodeStatus' NodeName_s='DSCTEST1' OperationName='DscNodeStatusData' ResultType='Failed'`
+1. Sorgu alanına aşağıdaki aramayı yazarak Uyarınız için bir günlük arama sorgusu oluşturun:  `Type=AzureDiagnostics Category='DscNodeStatus' NodeName_s='DSCTEST1' OperationName='DscNodeStatusData' ResultType='Failed'`
 
    Çalışma alanınıza birden fazla otomasyon hesabından veya aboneliğine ait Günlükler ayarladıysanız, uyarılarınızı abonelik ve otomasyon hesabına göre gruplandırabilirsiniz. Otomasyon hesabı adını `Resource` kayıtları aramadaki alandan türetirsiniz `DscNodeStatusData` .
 1. **Kural oluştur** ekranını açmak için sayfanın üst kısmındaki **Yeni uyarı kuralı** ' na tıklayın. 
@@ -112,7 +112,7 @@ Uyarıyı yapılandırma seçenekleri hakkında daha fazla bilgi için bkz. [bir
 Azure Izleyici günlüklerini kullanmanın avantajlarından biri, düğümler genelinde başarısız denetimleri arayabilmenizi sağlayabilir. Başarısız olan DSC kaynaklarının tüm örneklerini bulmak için:
 
 1. Log Analytics çalışma alanına genel bakış sayfasında **Günlükler**' e tıklayın.
-1. Sorgu alanına aşağıdaki aramayı yazarak Uyarınız için bir günlük arama sorgusu oluşturun:`Type=AzureDiagnostics Category='DscNodeStatus' OperationName='DscResourceStatusData' ResultType='Failed'`
+1. Sorgu alanına aşağıdaki aramayı yazarak Uyarınız için bir günlük arama sorgusu oluşturun:  `Type=AzureDiagnostics Category='DscNodeStatus' OperationName='DscResourceStatusData' ResultType='Failed'`
 
 ### <a name="view-historical-dsc-node-status"></a>Geçmiş DSC düğümü durumunu görüntüle
 
@@ -154,8 +154,8 @@ Azure Otomasyonu tanılama, Azure Izleyici günlüklerinde iki kayıt kategorisi
 | SourceSystem | Azure Izleyici günlüklerinin verileri nasıl topladığını tanımlayan kaynak sistem. Her zaman `Azure` Azure Tanılama için. |
 | ResourceId |Azure Otomasyonu hesabının kaynak tanımlayıcısı. |
 | ResultDescription | Bu işlem için kaynak açıklaması. |
-| SubscriptionId | Otomasyon hesabı için Azure abonelik KIMLIĞI (GUID). |
-| ResourceGroup | Otomasyon hesabı için kaynak grubunun adı. |
+| kaynak grubundaki | Otomasyon hesabı için Azure abonelik KIMLIĞI (GUID). |
+| adlı yönetilen örnek, | Otomasyon hesabı için kaynak grubunun adı. |
 | ResourceProvider | MICROSOFT. Otomasyon. |
 | ResourceType | AUTOMATIONACCOUNTS. |
 | CorrelationId | Uyumluluk raporunun bağıntı tanımlayıcısı olan bir GUID. |
@@ -185,8 +185,8 @@ Azure Otomasyonu tanılama, Azure Izleyici günlüklerinde iki kayıt kategorisi
 | SourceSystem | Azure Izleyici günlükleri verileri nasıl topladı. Her zaman `Azure` Azure Tanılama için. |
 | ResourceId |Azure Otomasyonu hesabının tanımlayıcısı. |
 | ResultDescription | Bu işlemin açıklaması. |
-| SubscriptionId | Otomasyon hesabı için Azure abonelik KIMLIĞI (GUID). |
-| ResourceGroup | Otomasyon hesabı için kaynak grubunun adı. |
+| kaynak grubundaki | Otomasyon hesabı için Azure abonelik KIMLIĞI (GUID). |
+| adlı yönetilen örnek, | Otomasyon hesabı için kaynak grubunun adı. |
 | ResourceProvider | MICROSOFT. Otomasyon. |
 | ResourceType | AUTOMATIONACCOUNTS. |
 | CorrelationId |Uyumluluk raporunun bağıntı KIMLIĞI olan GUID. |

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cbcc2351b7ead3714cfd21aa30b031cec75074a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84463765"
 ---
 # <a name="simulating-risk-detections-in-identity-protection"></a>Kimlik korumasında risk algılamaları benzetimi yapma
@@ -49,7 +49,7 @@ Aşağıdaki yordamı tamamlamak için şunları kullanmanız gerekir:
 
 Oturum açma, kimlik koruması panosunda 10-15 dakika içinde görüntülenir. 
 
-## <a name="unfamiliar-sign-in-properties"></a>Bilmediğiniz oturum açma özellikleri
+## <a name="unfamiliar-sign-in-properties"></a>Bilinmeyen oturum açma özellikleri
 
 Tanıdık konumların benzetimini yapmak için, test hesabınızın öncesinde oturum açmadığı bir konumdan ve cihazdan oturum açmanız gerekir.
 
@@ -70,7 +70,7 @@ Aşağıdaki yordamı tamamlamak için şunları içeren bir kullanıcı hesabı
 
 Oturum açma, kimlik koruması panosunda 10-15 dakika içinde görüntülenir.
 
-## <a name="atypical-travel"></a>Atipik seyahat
+## <a name="atypical-travel"></a>Olağandışı yolculuk
 
 Algoritma makine öğrenimini taklit ettiğinden, algoritma tanıdık cihazlardan gelen tipik seyahat veya dizindeki diğer kullanıcılar tarafından kullanılan VPN 'lerden oturum açma gibi hatalı pozitif sonuçlar almak için Machine Learning 'i kullandığından, atipik seyahat koşulunun benzetimini yapmak zordur. Ayrıca, algoritma, risk algılamalarını oluşturmaya başlamadan önce 14 gün ve Kullanıcı için 10 oturum açma geçmişi gerektirir. Karmaşık makine öğrenimi modelleri ve yukarıdaki kurallar nedeniyle, aşağıdaki adımların bir risk algılamasına neden olmayacağı bir şansınız vardır. Bu algılamanın benzetimini yapmak için bu adımları birden çok Azure AD hesabı için çoğaltmak isteyebilirsiniz.
 
@@ -88,11 +88,11 @@ Oturum açma, kimlik koruması panosunda 2-4 saat içinde görüntülenir.
 
 Bu bölüm, makalede oluşturulan kullanıcı ve oturum açma risk ilkelerinin test edilmesine yönelik adımlar, [nasıl yapılır: risk Ilkeleri yapılandırma ve etkinleştirme](howto-identity-protection-configure-risk-policies.md)adımları sağlar.
 
-### <a name="user-risk-policy"></a>Kullanıcı risk ilkesi
+### <a name="user-risk-policy"></a>Kullanıcı riski ilkesi
 
 Bir Kullanıcı risk güvenlik ilkesini test etmek için aşağıdaki adımları gerçekleştirin:
 
-1. [Azure portalına](https://portal.azure.com) gidin.
+1. [Azure Portal](https://portal.azure.com)gidin.
 1. **Azure Active Directory**  >  **Güvenliğe**  >  **Genel Bakış ' a**göz atın.
 1. **Kullanıcı risk Ilkesini Yapılandır**' ı seçin.
    1. **Atamalar** altında
@@ -112,7 +112,7 @@ Bir Kullanıcı risk güvenlik ilkesini test etmek için aşağıdaki adımları
 
 Bir oturum açma risk ilkesini test etmek için aşağıdaki adımları gerçekleştirin:
 
-1. [Azure portalına](https://portal.azure.com) gidin.
+1. [Azure Portal](https://portal.azure.com)gidin.
 1. **Azure Active Directory**  >  **Güvenliğe**  >  **Genel Bakış ' a**göz atın.
 1. **Oturum açma risk Ilkesini Yapılandır**' ı seçin.
    1. **Atamalar** altında

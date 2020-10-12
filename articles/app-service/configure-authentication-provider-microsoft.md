@@ -8,10 +8,10 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: 68af882bf240b354bdad1afe322135c048576ed4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83772845"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-microsoft-account-login"></a>App Service veya Azure Işlevleri uygulamanızı Microsoft hesabı oturum açma bilgilerini kullanacak şekilde yapılandırma
@@ -30,7 +30,7 @@ Bu konu başlığı altında, kişisel Microsoft hesabı oturumlarını destekle
 1. **Desteklenen hesap türleri**altında **herhangi bir kuruluş dizininde (HERHANGI bir Azure ad dizini-çoklu kiracı) ve kişisel Microsoft hesaplarından (örn. Skype, Xbox) hesaplar** ' ı seçin
 1. **Yeniden yönlendirme URI 'lerinde**, **Web**' i seçin ve ardından girin `https://<app-domain-name>/.auth/login/aad/callback` . *\<app-domain-name>* Uygulamanızın etki alanı adıyla değiştirin.  Örneğin, `https://contoso.azurewebsites.net/.auth/login/aad/callback`. URL 'de HTTPS şemasını kullandığınızdan emin olun.
 
-1. **Kaydol**’u seçin.
+1. **Kaydet**’i seçin.
 1. **Uygulama (istemci) kimliğini**kopyalayın. Buna daha sonra ihtiyacınız olacak.
 1. Sol bölmeden **Sertifikalar**' ı  >  **yeni istemci gizli**& seçin. Bir açıklama girin, geçerlilik süresini seçin ve **Ekle**' yi seçin.
 1. **Sertifikalar & gizlilikler** sayfasında görüntülenen değeri kopyalayın. Sayfadan ayrıldıktan sonra yeniden görüntülenmezler.
@@ -52,7 +52,7 @@ Bu konu başlığı altında, kişisel Microsoft hesabı oturumlarını destekle
    > [!CAUTION]
    > Erişimin bu şekilde kısıtlanması, uygulamanıza yönelik tüm çağrılar için geçerlidir. Bu, birçok tek sayfalı uygulamalarda olduğu gibi, genel kullanıma açık bir giriş sayfasına sahip olan uygulamalar için istenmeyebilir. Bu tür uygulamalar için **anonim Isteklere Izin ver (eylem yok)** , uygulamanın kimlik doğrulamanın kendisini el ile başlattığı şekilde tercih edilebilir. Daha fazla bilgi için bkz. [kimlik doğrulama akışı](overview-authentication-authorization.md#authentication-flow).
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 Artık uygulamanızda kimlik doğrulaması için Microsoft hesabı 'nı kullanmaya hazırsınız.
 

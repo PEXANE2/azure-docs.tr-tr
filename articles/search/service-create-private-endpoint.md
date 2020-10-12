@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.openlocfilehash: 0cfa7b63d1ce9dd4d9b40cd0eedac247f9c56437
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935764"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Azure Bilişsel Arama güvenli bağlantısı için özel uç nokta oluşturma
@@ -46,7 +46,7 @@ Bu bölümde, arama hizmetinizin özel uç noktasına erişmek için kullanılac
     | ------- | ----- |
     | Abonelik | Aboneliğinizi seçin|
     | Kaynak grubu | **Yeni oluştur**' u seçin, *Myresourcegroup*yazın ve **Tamam** ' ı seçin. |
-    | Ad | *MyVirtualNetwork* girin |
+    | Adı | *MyVirtualNetwork* girin |
     | Bölge | İstediğiniz bölgeyi seçin |
     |||
 
@@ -64,7 +64,7 @@ Bu bölümde, özel bir uç nokta ile yeni bir Azure Bilişsel Arama hizmeti olu
     | ------- | ----- |
     | **PROJE AYRıNTıLARı** | |
     | Abonelik | Aboneliğinizi seçin. |
-    | Kaynak grubu | **Myresourcegroup**öğesini seçin. Bu, önceki bölümde oluşturdunuz.|
+    | Kaynak grubu | **myResourceGroup** öğesini seçin. Bu, önceki bölümde oluşturdunuz.|
     | **ÖRNEK AYRıNTıLARı** |  |
     | URL | Benzersiz bir ad girin. |
     | Konum | İstediğiniz bölgeyi seçin. |
@@ -84,23 +84,23 @@ Bu bölümde, özel bir uç nokta ile yeni bir Azure Bilişsel Arama hizmeti olu
     | Ayar | Değer |
     | ------- | ----- |
     | Abonelik | Aboneliğinizi seçin. |
-    | Kaynak grubu | **Myresourcegroup**öğesini seçin. Bu, önceki bölümde oluşturdunuz.|
+    | Kaynak grubu | **myResourceGroup** öğesini seçin. Bu, önceki bölümde oluşturdunuz.|
     | Konum | **Batı ABD**seçin.|
-    | Ad | *Myprivateendpoint*girin.  |
+    | Name | *myPrivateEndpoint* değerini girin.  |
     | Hedef alt kaynak | Varsayılan **SearchService**' i bırakın. |
-    | **IŞLEMLERI** |  |
+    | **AĞ** |  |
     | Sanal ağ  | *Myresourcegroup*kaynak grubundan *MyVirtualNetwork* öğesini seçin. |
     | Alt ağ | *Mysubnet*öğesini seçin. |
-    | **ÖZEL DNS TÜMLEŞTIRMESI** |  |
-    | Özel DNS bölgesiyle tümleştirin  | Varsayılan **Evet**' i bırakın. |
+    | **ÖZEL DNS TÜMLEŞTİRMESİ** |  |
+    | Özel DNS bölgesi ile tümleştirme  | Varsayılan **Evet**' i bırakın. |
     | Özel DNS bölgesi  | Varsayılan * * (yeni) privatelink.search.windows.net * * ' i bırakın. |
     |||
 
 1. **Tamam**’ı seçin. 
 
-1. **Gözden geçir ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz. 
+1. **Gözden geçir ve oluştur**’u seçin. Azure’ın yapılandırmanızı doğrulayacağı **Gözden geçir ve oluştur** sayfasına yönlendirilirsiniz. 
 
-1. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin. 
+1. **Doğrulama başarılı** iletisini gördüğünüzde **Oluştur**’u seçin. 
 
 1. Yeni hizmetinizin sağlanması tamamlandıktan sonra, az önce oluşturduğunuz kaynağa gidin.
 
@@ -118,27 +118,27 @@ Bu bölümde, özel bir uç nokta ile yeni bir Azure Bilişsel Arama hizmeti olu
     | ------- | ----- |
     | **PROJE AYRıNTıLARı** | |
     | Abonelik | Aboneliğinizi seçin. |
-    | Kaynak grubu | **Myresourcegroup**öğesini seçin. Bu, önceki bölümde oluşturdunuz.  |
+    | Kaynak grubu | **myResourceGroup** öğesini seçin. Bu, önceki bölümde oluşturdunuz.  |
     | **ÖRNEK AYRıNTıLARı** |  |
     | Sanal makine adı | *Myvm*' i girin. |
     | Bölge | **Batı ABD** veya kullandığınız bölgeyi seçin. |
     | Kullanılabilirlik seçenekleri | Varsayılan **altyapı yedekliliği gerekli değildir**. |
     | Görüntü | **Windows Server 2019 Datacenter**öğesini seçin. |
     | Boyut | Varsayılan **Standart DS1 v2**' i bırakın. |
-    | **YÖNETICI HESABı** |  |
+    | **YÖNETİCİ HESABI** |  |
     | Kullanıcı adı | Seçmekten bir Kullanıcı adı girin. |
-    | Parola | Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
+    | Parola | Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)karşılamalıdır.|
     | Parolayı Onayla | Parolayı yeniden girin. |
-    | **GELEN BAĞLANTı NOKTASı KURALLARı** |  |
+    | **GELEN BAĞLANTI NOKTASI KURALLARI** |  |
     | Genel gelen bağlantı noktaları | Varsayılan olarak **Seçili bağlantı noktalarına Izin ver**' i bırakın. |
     | Gelen bağlantı noktalarını seçin | Varsayılan RDP 'yi **(3389)** bırakın. |
-    | **TASARRUF EDIN** |  |
+    | **TASARRUF EDİN** |  |
     | Zaten bir Windows lisansınız var mı? | Varsayılan **Hayır**olarak bırakın. |
     |||
 
 1. **İleri ' yi seçin: diskler**.
 
-1. **Sanal makine oluşturma-diskler**' de, varsayılan değerleri bırakın ve **İleri ' yi seçin: ağ**.
+1. **Sanal makine oluştur - Diskler** bölümünde varsayılan değerleri değiştirmeyin ve **Sonraki: Ağ** seçeneğini belirleyin.
 
 1. **Sanal makine oluşturma-ağ oluşturma**bölümünde şu bilgileri seçin:
 
@@ -152,16 +152,16 @@ Bu bölümde, özel bir uç nokta ile yeni bir Azure Bilişsel Arama hizmeti olu
     | Gelen bağlantı noktalarını seçin | **Http** ve **RDP**' yi seçin.|
     ||
 
-1. **Gözden geçir ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz.
+1. **Gözden geçir ve oluştur**’u seçin. Azure’ın yapılandırmanızı doğrulayacağı **Gözden geçir ve oluştur** sayfasına yönlendirilirsiniz.
 
-1. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin. 
+1. **Doğrulama başarılı** iletisini gördüğünüzde **Oluştur**’u seçin. 
 
 
 ## <a name="connect-to-the-vm"></a>VM’ye bağlanma
 
 VM *myvm* ' yi indirip şu şekilde bağlayın:
 
-1. Portalın arama çubuğunda *Myvm*' i girin.
+1. Portalın arama çubuğuna *myVm* değerini girin.
 
 1. **Bağlan** düğmesini seçin. **Bağlan** düğmesini seçtikten sonra **sanal makineye bağlan** açılır.
 
@@ -178,7 +178,7 @@ VM *myvm* ' yi indirip şu şekilde bağlayın:
 
 1. **Tamam**’ı seçin.
 
-1. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bir sertifika uyarısı alırsanız **Evet** ' i veya **devam et**' i seçin.
+1. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bir sertifika uyarısı alırsanız **Evet**’i veya **Devam**’ı seçin.
 
 1. VM masaüstü seçildikten sonra, bunu yerel masaüstünüze geri dönmek için simge durumuna küçültün.  
 
@@ -193,7 +193,7 @@ Arama hizmeti uç noktası özel olduğunda, bazı Portal özellikleri devre dı
 
 1. ' Nslookup [arama hizmeti adı]. Search. Windows. net ' yazın
 
-    Şuna benzer bir ileti alacaksınız:
+    Şuna benzer bir ileti alırsınız:
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16

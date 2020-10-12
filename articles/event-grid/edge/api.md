@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 414487d460d897eff787b11915db560706b29eb4
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171763"
 ---
 # <a name="rest-api"></a>REST API
@@ -22,8 +22,8 @@ Bu makalede IoT Edge Azure Event Grid REST API 'Leri açıklanmaktadır
 ### <a name="base-url"></a>Temel URL
 IoT Edge Event Grid, HTTP (bağlantı noktası 5888) ve HTTPS (bağlantı noktası 4438) üzerinden sunulan aşağıdaki API 'Lere sahiptir.
 
-* HTTP için temel URL:http://eventgridmodule:5888
-* HTTPS için temel URL:https://eventgridmodule:4438
+* HTTP için temel URL: http://eventgridmodule:5888
+* HTTPS için temel URL: https://eventgridmodule:4438
 
 ### <a name="request-query-string"></a>Sorgu dizesi iste
 Tüm API istekleri aşağıdaki sorgu dizesi parametresini gerektirir:
@@ -72,7 +72,7 @@ Tüm API 'Ler aşağıdaki yük ile bir hata döndürüyor:
 
 ### <a name="put-topic-create--update"></a>Konuyu Yerleştir (oluştur/güncelleştir)
 
-**İstek**:``` PUT /topics/<topic_name>?api-version=2019-01-01-preview ```
+**İstek**: ``` PUT /topics/<topic_name>?api-version=2019-01-01-preview ```
 
 **Yük**:
 
@@ -105,7 +105,7 @@ Tüm API 'Ler aşağıdaki yük ile bir hata döndürüyor:
 
 ### <a name="get-topic"></a>Konuyu al
 
-**İstek**:``` GET /topics/<topic_name>?api-version=2019-01-01-preview ```
+**İstek**: ``` GET /topics/<topic_name>?api-version=2019-01-01-preview ```
 
 **Yanıt**: http 200
 
@@ -125,7 +125,7 @@ Tüm API 'Ler aşağıdaki yük ile bir hata döndürüyor:
 
 ### <a name="get-all-topics"></a>Tüm konuları al
 
-**İstek**:``` GET /topics?api-version=2019-01-01-preview ```
+**İstek**: ``` GET /topics?api-version=2019-01-01-preview ```
 
 **Yanıt**: http 200
 
@@ -157,7 +157,7 @@ Tüm API 'Ler aşağıdaki yük ile bir hata döndürüyor:
 
 ### <a name="delete-topic"></a>Konuyu sil
 
-**İstek**:``` DELETE /topics/<topic_name>?api-version=2019-01-01-preview ```
+**İstek**: ``` DELETE /topics/<topic_name>?api-version=2019-01-01-preview ```
 
 **Yanıt**: http 200, boş yük
 
@@ -166,7 +166,7 @@ Bu bölümdeki örnekler kullanın `EndpointType=Webhook;` . İçin JSON örnekl
 
 ### <a name="put-event-subscription-create--update"></a>Olay aboneliği koy (oluştur/güncelleştir)
 
-**İstek**:``` PUT /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
+**İstek**: ``` PUT /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
 **Yük**:
 ```json
@@ -371,7 +371,7 @@ Bu bölümdeki örnekler kullanın `EndpointType=Webhook;` . İçin JSON örnekl
 
 ### <a name="get-event-subscription"></a>Olay aboneliğini al
 
-**İstek**:``` GET /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
+**İstek**: ``` GET /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
 **Yanıt**: http 200
 
@@ -476,7 +476,7 @@ Bu bölümdeki örnekler kullanın `EndpointType=Webhook;` . İçin JSON örnekl
 
 ### <a name="get-event-subscriptions"></a>Olay abonelikleri al
 
-**İstek**:``` GET /topics/<topic_name>/eventSubscriptions?api-version=2019-01-01-preview ```
+**İstek**: ``` GET /topics/<topic_name>/eventSubscriptions?api-version=2019-01-01-preview ```
 
 **Yanıt**: http 200
 
@@ -494,7 +494,7 @@ Bu bölümdeki örnekler kullanın `EndpointType=Webhook;` . İçin JSON örnekl
 
 ### <a name="delete-event-subscription"></a>Olay aboneliğini Sil
 
-**İstek**:``` DELETE /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
+**İstek**: ``` DELETE /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
 **Yanıt**: http 200, yük yok
 
@@ -503,7 +503,7 @@ Bu bölümdeki örnekler kullanın `EndpointType=Webhook;` . İçin JSON örnekl
 
 ### <a name="send-batch-of-events-in-event-grid-schema"></a>Olay toplu işi gönderme (Event Grid şemasında)
 
-**İstek**:``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
+**İstek**: ``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
 
 ```json
 [
@@ -525,18 +525,18 @@ Bu bölümdeki örnekler kullanın `EndpointType=Webhook;` . İçin JSON örnekl
 
 
 **Yük alanı açıklamaları**
-- ```Id```zorunludur. Bu, çağıran tarafından doldurulan herhangi bir dize değeri olabilir. Event Grid, hiçbir yinelenen algılama yapmaz veya bu alanda hiçbir semantiğe zorlanır.
-- ```Topic```isteğe bağlıdır, ancak belirtilmişse istek URL 'sinden topic_name eşleşmelidir
-- ```Subject```zorunludur, herhangi bir dize değeri olabilir
-- ```EventType```zorunludur, herhangi bir dize değeri olabilir
-- ```EventTime```zorunludur, bu, doğrulanmadı ancak uygun bir tarih saat olması gerekir.
-- ```DataVersion```zorunludur
-- ```MetadataVersion```isteğe bağlı ise, belirtilen değere sahip bir dize olmalıdır```"1"```
-- ```Data```isteğe bağlıdır ve herhangi bir JSON belirteci (sayı, dize, Boolean, dizi, nesne) olabilir
+- ```Id``` zorunludur. Bu, çağıran tarafından doldurulan herhangi bir dize değeri olabilir. Event Grid, hiçbir yinelenen algılama yapmaz veya bu alanda hiçbir semantiğe zorlanır.
+- ```Topic``` isteğe bağlıdır, ancak belirtilmişse istek URL 'sinden topic_name eşleşmelidir
+- ```Subject``` zorunludur, herhangi bir dize değeri olabilir
+- ```EventType``` zorunludur, herhangi bir dize değeri olabilir
+- ```EventTime``` zorunludur, bu, doğrulanmadı ancak uygun bir tarih saat olması gerekir.
+- ```DataVersion``` zorunludur
+- ```MetadataVersion``` isteğe bağlı ise, belirtilen değere sahip bir dize olmalıdır ```"1"```
+- ```Data``` isteğe bağlıdır ve herhangi bir JSON belirteci (sayı, dize, Boolean, dizi, nesne) olabilir
 
 ### <a name="send-batch-of-events-in-custom-schema"></a>Olay toplu işlemini gönder (özel şemada)
 
-**İstek**:``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
+**İstek**: ``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
 
 ```json
 [
@@ -754,7 +754,7 @@ Service Bus bir konuya yayımlamak için, öğesini olarak ayarlayın `endpointT
 
 ## <a name="set-up-storage-queues-as-a-destination"></a>Depolama kuyruklarını hedef olarak ayarlama
 
-Bir depolama kuyruğuna yayımlamak için, öğesini olarak ayarlayın `endpointType` `storageQueue` ve şunları belirtin:
+Bir depolama kuyruğuna yayımlamak için, öğesini olarak ayarlayın  `endpointType` `storageQueue` ve şunları belirtin:
 
 * SıraAdı: yayımlamakta olduğunuz depolama kuyruğunun adı.
 * connectionString: depolama sırasının bulunduğu depolama hesabı için bağlantı dizesi.

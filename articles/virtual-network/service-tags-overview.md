@@ -14,10 +14,10 @@ ms.date: 05/18/2020
 ms.author: kumud
 ms.reviewer: kumud
 ms.openlocfilehash: fd6894ea90dc6cb3cc721438ba73a94b43c36a5b
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983696"
 ---
 # <a name="virtual-network-service-tags"></a>Sanal ağ hizmeti etiketleri
@@ -43,33 +43,33 @@ Varsayılan olarak, hizmet etiketleri tüm bulutun aralıklarını yansıtır. B
 | Etiket | Amaç | Gelen veya giden trafiği kullanabilir miyim? | Bölgesel olabilir mi? | Azure Güvenlik Duvarı ile kullanılabilir mi? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **ActionGroup** | Eylem grubu. | Inbound | Hayır | Hayır |
-| **ApiManagement** | Azure API Management adanmış dağıtımlar için yönetim trafiği. <br/><br/>*Note:* Bu etiket, bölge başına denetim düzlemi için Azure API Management hizmet uç noktasını temsil eder. Bu, müşterilerin API Management hizmetinde yapılandırılmış API 'Ler, Işlemler, Ilkeler, NamedValues üzerinde yönetim işlemleri gerçekleştirmesini sağlar.  | Inbound | Yes | Yes |
+| **ApiManagement** | Azure API Management adanmış dağıtımlar için yönetim trafiği. <br/><br/>*Note:* Bu etiket, bölge başına denetim düzlemi için Azure API Management hizmet uç noktasını temsil eder. Bu, müşterilerin API Management hizmetinde yapılandırılmış API 'Ler, Işlemler, Ilkeler, NamedValues üzerinde yönetim işlemleri gerçekleştirmesini sağlar.  | Inbound | Evet | Evet |
 | **Applicationınsi, Savailability** | Kullanılabilirliği Application Insights. | Inbound | Hayır | Hayır |
 | **AppConfiguration** | Uygulama yapılandırması. | Outbound | Hayır | Hayır |
-| **AppService**    | Azure App Service. Bu etiket, Web uygulaması ön uçları için giden güvenlik kuralları için önerilir. | Outbound | Yes | Yes |
-| **AppServiceManagement** | App Service Ortamı adanmış dağıtımlar için yönetim trafiği. | Her ikisi | Hayır | Yes |
-| **AzureActiveDirectory** | Azure Active Directory. | Outbound | Hayır | Yes |
-| **AzureActiveDirectoryDomainServices** | Azure Active Directory Domain Services adanmış dağıtımlar için yönetim trafiği. | Her ikisi | Hayır | Yes |
+| **AppService**    | Azure App Service. Bu etiket, Web uygulaması ön uçları için giden güvenlik kuralları için önerilir. | Outbound | Evet | Evet |
+| **AppServiceManagement** | App Service Ortamı adanmış dağıtımlar için yönetim trafiği. | Her ikisi | Hayır | Evet |
+| **AzureActiveDirectory** | Azure Active Directory. | Outbound | Hayır | Evet |
+| **AzureActiveDirectoryDomainServices** | Azure Active Directory Domain Services adanmış dağıtımlar için yönetim trafiği. | Her ikisi | Hayır | Evet |
 | **AzureAdvancedThreatProtection** | Azure Gelişmiş tehdit koruması. | Outbound | Hayır | Hayır |
-| **AzureBackup** |Azure Backup.<br/><br/>*Note:* Bu etiketin **depolama** ve **AzureActiveDirectory** etiketlerine bir bağımlılığı vardır. | Outbound | Hayır | Yes |
+| **AzureBackup** |Azure Backup.<br/><br/>*Note:* Bu etiketin **depolama** ve **AzureActiveDirectory** etiketlerine bir bağımlılığı vardır. | Outbound | Hayır | Evet |
 | **AzureBotService** | Azure bot hizmeti. | Outbound | Hayır | Hayır |
-| **AzureCloud** | Tüm [veri merkezi genel IP adresleri](https://www.microsoft.com/download/details.aspx?id=56519). | Outbound | Yes | Yes |
+| **AzureCloud** | Tüm [veri merkezi genel IP adresleri](https://www.microsoft.com/download/details.aspx?id=56519). | Outbound | Evet | Evet |
 | **Azurecognivesearch** | Azure Bilişsel Arama. <br/><br/>Bu etiket veya bu etiketin kapsadığı IP adresleri, dizin oluşturucularının veri kaynaklarına güvenli erişimini sağlamak için kullanılabilir. Daha fazla ayrıntı için [Dizin Oluşturucu bağlantı belgelerine](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors) bakın. <br/><br/> *Not*: Arama hizmetinin IP 'si, bu hizmet etıketı için IP aralıkları listesine dahil değildir ve ayrıca VERI kaynaklarının IP güvenlik duvarına **eklenmelidir** . | Inbound | Hayır | Hayır |
-| **AzureConnectors** | Araştırma/arka uç bağlantıları için bağlayıcılar Azure Logic Apps. | Inbound | Yes | Yes |
-| **AzureContainerRegistry** | Azure Container Registry. | Outbound | Yes | Yes |
-| **Azu, Smosdb** | Azure Cosmos DB. | Outbound | Yes | Yes |
+| **AzureConnectors** | Araştırma/arka uç bağlantıları için bağlayıcılar Azure Logic Apps. | Inbound | Evet | Evet |
+| **AzureContainerRegistry** | Azure Container Registry. | Outbound | Evet | Evet |
+| **Azu, Smosdb** | Azure Cosmos DB. | Outbound | Evet | Evet |
 | **AzureDatabricks** | Azure Databricks. | Her ikisi | Hayır | Hayır |
 | **AzureDataExplorerManagement** | Azure Veri Gezgini yönetimi. | Inbound | Hayır | Hayır |
-| **AzureDataLake** | Azure Data Lake Storage 1.. | Outbound | Hayır | Yes |
+| **AzureDataLake** | Azure Data Lake Storage 1.. | Outbound | Hayır | Evet |
 | **AzureDevSpaces** | Azure Dev Spaces. | Outbound | Hayır | Hayır |
 | **AzureEventGrid** | Azure Event Grid. | Her ikisi | Hayır | Hayır |
 | **Azurefrontkapısı. ön uç** <br/> **Azurefrontkapısı. arka uç** <br/> **Azurefrontkapısı. Firstpartisi**  | Azure ön kapısı. | Her ikisi | Hayır | Hayır |
 | **AzureInformationProtection** | Azure Information Protection.<br/><br/>*Note:* Bu etiketin **AzureActiveDirectory**, **Azurefrontkapı. ön uç** ve **Azurefrontkapısı. firstpartisi** etiketlerine bağımlılığı vardır. | Outbound | Hayır | Hayır |
 | **AzureIoTHub** | Azure IoT Hub. | Outbound | Hayır | Hayır |
-| **AzureKeyVault** | Azure Key Vault.<br/><br/>*Note:* Bu etiketin **AzureActiveDirectory** etiketine bağımlılığı vardır. | Outbound | Yes | Yes |
+| **AzureKeyVault** | Azure Key Vault.<br/><br/>*Note:* Bu etiketin **AzureActiveDirectory** etiketine bağımlılığı vardır. | Outbound | Evet | Evet |
 | **AzureLoadBalancer** | Azure altyapı yük dengeleyici. Etiketi, Azure sistem durumu araştırmalarının gerçekleştiği [konağın sanal IP adresine](security-overview.md#azure-platform-considerations) (168.63.129.16) çevirir. Bu, arka uç kaynağınızın gerçek trafiğini değil yalnızca araştırma trafiği içerir. Azure Load Balancer kullanmıyorsanız, bu kuralı geçersiz kılabilirsiniz. | Her ikisi | Hayır | Hayır |
-| **AzureMachineLearning** | Azure Machine Learning. | Her ikisi | Hayır | Yes |
-| **AzureMonitor** | Log Analytics, Application Insights, AzMon ve özel ölçümler (GB uç noktaları).<br/><br/>*Note:* Log Analytics için, bu etiketin **depolama** etiketine bağımlılığı vardır. | Outbound | Hayır | Yes |
+| **AzureMachineLearning** | Azure Machine Learning. | Her ikisi | Hayır | Evet |
+| **AzureMonitor** | Log Analytics, Application Insights, AzMon ve özel ölçümler (GB uç noktaları).<br/><br/>*Note:* Log Analytics için, bu etiketin **depolama** etiketine bağımlılığı vardır. | Outbound | Hayır | Evet |
 | **AzureOpenDatasets** | Azure veri kümelerini açın.<br/><br/>*Note:* Bu etiketin **Azurefrontkapısı. ön uç** ve **depolama** etiketine bağımlılığı vardır. | Outbound | Hayır | Hayır |
 | **AzurePlatformDNS** | Temel altyapı (varsayılan) DNS hizmeti.<br/><br>Varsayılan DNS 'yi devre dışı bırakmak için bu etiketi kullanabilirsiniz. Bu etiketi kullanırken dikkatli olun. [Azure platformu konularını](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)okumanızı öneririz. Ayrıca, bu etiketi kullanmadan önce test gerçekleştirmenizi öneririz. | Outbound | Hayır | Hayır |
 | **AzurePlatformIMDS** | Temel bir altyapı hizmeti olan Azure Instance Metadata Service (ıMDS).<br/><br/>Bu etiketi, varsayılan ıDS 'yi devre dışı bırakmak için kullanabilirsiniz. Bu etiketi kullanırken dikkatli olun. [Azure platformu konularını](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)okumanızı öneririz. Ayrıca, bu etiketi kullanmadan önce test gerçekleştirmenizi öneririz. | Outbound | Hayır | Hayır |
@@ -77,30 +77,30 @@ Varsayılan olarak, hizmet etiketleri tüm bulutun aralıklarını yansıtır. B
 | **AzureResourceManager** | Azure Resource Manager. | Outbound | Hayır | Hayır |
 | **AzureSignalR** | Azure SignalR. | Outbound | Hayır | Hayır |
 | **Azuresterecovery** | Azure Site Recovery.<br/><br/>*Note:* Bu etiketin **AzureActiveDirectory**, **AzureKeyVault**, **EventHub**,**Guestandhybridmanagement** ve **Storage** etiketlerine bir bağımlılığı vardır. | Outbound | Hayır | Hayır |
-| **AzureTrafficManager** | Azure Traffic Manager araştırması IP adresleri.<br/><br/>Traffic Manager araştırma IP adresleri hakkında daha fazla bilgi için bkz. [Azure TRAFFIC Manager SSS](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs). | Inbound | Hayır | Yes |  
-| **BatchNodeManagement** | Azure Batch adanmış dağıtımlar için yönetim trafiği. | Her ikisi | Hayır | Yes |
+| **AzureTrafficManager** | Azure Traffic Manager araştırması IP adresleri.<br/><br/>Traffic Manager araştırma IP adresleri hakkında daha fazla bilgi için bkz. [Azure TRAFFIC Manager SSS](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs). | Inbound | Hayır | Evet |  
+| **BatchNodeManagement** | Azure Batch adanmış dağıtımlar için yönetim trafiği. | Her ikisi | Hayır | Evet |
 | **Biliveservicesmanagement** | Azure bilişsel hizmetler için trafik için adres aralıkları. | Her ikisi | Hayır | Hayır |
 | **DataFactory**  | Azure Data Factory | Her ikisi | Hayır | Hayır |
 | **DataFactoryManagement** | Azure Data Factory için yönetim trafiği. | Outbound | Hayır | Hayır |
-| **Dynamics365ForMarketingEmail** | Dynamics 365 pazarlama e-posta hizmeti için adres aralıkları. | Outbound | Yes | Hayır |
+| **Dynamics365ForMarketingEmail** | Dynamics 365 pazarlama e-posta hizmeti için adres aralıkları. | Outbound | Evet | Hayır |
 | **ElasticAFD** | Elastik Azure ön kapısı. | Her ikisi | Hayır | Hayır |
-| **EventHub** | Azure Event Hubs. | Outbound | Yes | Yes |
+| **EventHub** | Azure Event Hubs. | Outbound | Evet | Evet |
 | **GatewayManager** | Azure VPN Gateway ve Application Gateway adanmış dağıtımlar için yönetim trafiği. | Inbound | Hayır | Hayır |
-| **GuestAndHybridManagement** | Azure Otomasyonu ve konuk yapılandırması. | Outbound | Hayır | Yes |
-| **HDInsight** | Azure HDInsight. | Inbound | Yes | Hayır |
+| **GuestAndHybridManagement** | Azure Otomasyonu ve konuk yapılandırması. | Outbound | Hayır | Evet |
+| **HDInsight** | Azure HDInsight. | Inbound | Evet | Hayır |
 | **İnternet** | Sanal ağın dışında olan ve genel İnternet tarafından erişilebilen IP adresi alanı.<br/><br/>Adres aralığı, [Azure 'a ait genel IP adresi alanını](https://www.microsoft.com/download/details.aspx?id=41653)içerir. | Her ikisi | Hayır | Hayır |
 | **LogicApps** | Logic Apps. | Her ikisi | Hayır | Hayır |
 | **LogicAppsManagement** | Logic Apps için yönetim trafiği. | Inbound | Hayır | Hayır |
 | **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security. | Outbound | Hayır | Hayır |
-| **MicrosoftContainerRegistry** | Microsoft Container görüntüleri için kapsayıcı kayıt defteri. <br/><br/>*Note:* Bu etiket, **Azurefrontkapısı. Firstpartisi** etiketine bir bağımlılığı vardır. | Outbound | Yes | Yes |
+| **MicrosoftContainerRegistry** | Microsoft Container görüntüleri için kapsayıcı kayıt defteri. <br/><br/>*Note:* Bu etiket, **Azurefrontkapısı. Firstpartisi** etiketine bir bağımlılığı vardır. | Outbound | Evet | Evet |
 | **PowerQueryOnline** | Çevrimiçi Power Query. | Her ikisi | Hayır | Hayır |
-| **ServiceBus** | Premium hizmet katmanını kullanan trafiği Azure Service Bus. | Outbound | Yes | Yes |
+| **ServiceBus** | Premium hizmet katmanını kullanan trafiği Azure Service Bus. | Outbound | Evet | Evet |
 | **ServiceFabric** | Azure Service Fabric.<br/><br/>*Note:* Bu etiket, bölge başına denetim düzlemi için Service Fabric hizmet uç noktasını temsil eder. Bu, müşterilerin VNET 'lerden Service Fabric kümeleri için yönetim işlemleri gerçekleştirmesini sağlar (uç nokta örn. https://westus.servicefabric.azure.com) | Her ikisi | Hayır | Hayır |
-| **SQL** | Azure SQL veritabanı, MySQL için Azure veritabanı, PostgreSQL için Azure veritabanı ve Azure SYNAPSE Analytics.<br/><br/>*Note:* Bu etiket hizmetin belirli örneklerini değil hizmeti temsil eder. Örneğin etiket belirli bir SQL veritabanını veya sunucusunu değil Azure SQL Veritabanı hizmetini temsil eder. Bu etiket SQL yönetilen örneği için uygulanmıyor. | Outbound | Yes | Yes |
-| **SqlManagement** | SQL adanmış dağıtımlar için yönetim trafiği. | Her ikisi | Hayır | Yes |
-| **Depolama** | Azure Depolama. <br/><br/>*Note:* Bu etiket hizmetin belirli örneklerini değil hizmeti temsil eder. Örneğin etiket belirli bir Azure Depolama hesabını değil Azure Depolama hizmetini temsil eder. | Outbound | Yes | Yes |
+| **SQL** | Azure SQL veritabanı, MySQL için Azure veritabanı, PostgreSQL için Azure veritabanı ve Azure SYNAPSE Analytics.<br/><br/>*Note:* Bu etiket hizmetin belirli örneklerini değil hizmeti temsil eder. Örneğin etiket belirli bir SQL veritabanını veya sunucusunu değil Azure SQL Veritabanı hizmetini temsil eder. Bu etiket SQL yönetilen örneği için uygulanmıyor. | Outbound | Evet | Evet |
+| **SqlManagement** | SQL adanmış dağıtımlar için yönetim trafiği. | Her ikisi | Hayır | Evet |
+| **Depolama** | Azure Depolama. <br/><br/>*Note:* Bu etiket hizmetin belirli örneklerini değil hizmeti temsil eder. Örneğin etiket belirli bir Azure Depolama hesabını değil Azure Depolama hizmetini temsil eder. | Outbound | Evet | Evet |
 | **StorageSyncService** | Depolama eşitleme hizmeti. | Her ikisi | Hayır | Hayır |
-| **WindowsVirtualDesktop** | Windows sanal masaüstü. | Her ikisi | Hayır | Yes |
+| **WindowsVirtualDesktop** | Windows sanal masaüstü. | Her ikisi | Hayır | Evet |
 | **VirtualNetwork** | Sanal ağ adres alanı (sanal ağ için tanımlanan tüm IP adresi aralıkları), bağlı olan tüm şirket içi adres [alanları, eşlenen sanal ağlar](virtual-network-peering-overview.md) , [sanal ağ geçidine](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json)bağlı sanal ağlar, [ana bilgisayarın sanal IP adresi](security-overview.md#azure-platform-considerations)ve [Kullanıcı tanımlı yollar](virtual-networks-udr-overview.md)üzerinde kullanılan adres önekleri. Bu etiket varsayılan yollar da içerebilir. | Her ikisi | Hayır | Hayır |
 
 >[!NOTE]

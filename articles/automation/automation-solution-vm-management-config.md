@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
 ms.openlocfilehash: b0bc23d515bebdd0d943bbad33c5ebba35a35605
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987209"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>VM'leri çalışma saatleri dışında başlat/durdur Yapılandır
@@ -143,13 +143,13 @@ VM'leri çalışma saatleri dışında başlat/durdur dağıtıldıktan sonra e-
 
 2. StartStop_VM_Notification **sayfasında Ayrıntılar ' ın**altındaki **Ayrıntıları Düzenle** ' ye tıklayın. Bu, e-posta/SMS/Push/ses sayfasını açar. E-posta adresini güncelleştirip **Tamam** ' a tıklayarak değişikliklerinizi kaydedin.
 
-    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="Güncelleştirilmiş örnek bir e-posta adresi gösteren e-posta/SMS/Push/ses sayfasının ekran görüntüsü.":::
+    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="Izleyici-eylem grupları sayfasının ekran görüntüsü.":::
 
     Alternatif olarak, eylem grubu hakkında daha fazla bilgi edinmek için eylem grubuna ek eylemler ekleyebilirsiniz, eylem [grupları](../azure-monitor/platform/action-groups.md) konusuna bakın
 
 Aşağıda, özelliği sanal makineleri kapattığında gönderilen örnek bir e-posta verilmiştir.
 
-:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="Özellik sanal makineleri kapattığında gönderilen örnek bir e-postanın ekran görüntüsü.":::
+:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="Izleyici-eylem grupları sayfasının ekran görüntüsü.":::
 
 ## <a name="add-or-exclude-vms"></a><a name="add-exclude-vms"></a>VM 'Leri ekleme veya dışlama
 

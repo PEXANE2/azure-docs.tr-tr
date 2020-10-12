@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: 3164de9c3e44001d58d46eab9f823041b440960b
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90984179"
 ---
 # <a name="create-a-storage-account-with-infrastructure-encryption-enabled-for-double-encryption-of-data"></a>Verilerin çift şifrelenmesi için altyapı şifrelemesi etkinleştirilmiş bir depolama hesabı oluşturma
@@ -29,7 +29,7 @@ Verilerinizi daha da şifrelemek için, önce altyapı şifrelemesi için yapıl
 
 Altyapı Şifrelemesi etkin olan bir depolama hesabı oluşturmak için, önce PowerShell veya Azure CLı kullanarak bu özelliği Azure ile kullanmak üzere kaydolmanız gerekir.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
 
 Yok
 
@@ -89,7 +89,7 @@ Bir depolama hesabını, hesabı oluşturduğunuz sırada altyapı şifrelemesin
 
 Hesap oluşturulduktan sonra altyapı şifrelemesi etkinleştirilemez veya devre dışı bırakılamaz.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
 
 PowerShell kullanarak altyapı Şifrelemesi etkin bir depolama hesabı oluşturmak için aşağıdaki adımları izleyin:
 
@@ -173,14 +173,14 @@ Aşağıdaki JSON örneği, Okuma Erişimli Coğrafi olarak yedekli depolama (RA
 
 ## <a name="verify-that-infrastructure-encryption-is-enabled"></a>Altyapı şifrelemesinin etkinleştirildiğini doğrulama
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
 
 Altyapı şifrelemesinin Azure portal bir depolama hesabı için etkinleştirildiğini doğrulamak için şu adımları izleyin:
 
 1. Azure portalda depolama hesabınıza gidin.
 1. **Ayarlar**altında **şifreleme**' yi seçin.
 
-    :::image type="content" source="media/infrastructure-encryption-enable/verify-infrastructure-encryption-portal.png" alt-text="Hesap için altyapı şifrelemesinin etkin olduğunu nasıl doğrulayabildiğinizi gösteren ekran görüntüsü":::
+    :::image type="content" source="media/infrastructure-encryption-enable/verify-infrastructure-encryption-portal.png" alt-text="Hesap oluştururken altyapı şifrelemesini etkinleştirmeyi gösteren ekran görüntüsü":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

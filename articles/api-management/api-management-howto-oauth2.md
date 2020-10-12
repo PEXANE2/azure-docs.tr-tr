@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 4a0e8c6eb87b053c0e3ee524c60435dc45d81ff3
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87902267"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Azure API Management 'de OAuth 2,0 kullanarak Geliştirici hesaplarını yetkilendirme
@@ -27,7 +27,7 @@ Birçok API, API 'YI güvenli hale getirmek ve yalnızca geçerli kullanıcılar
 > [!IMPORTANT]
 > OAuth 2,0 yetkilendirmesi, yeni geliştirici portalının etkileşimli konsolunda henüz kullanılamamaktadır.
 
-## <a name="prerequisites"></a><a name="prerequisites"> </a>Önkoşullar
+## <a name="prerequisites"></a><a name="prerequisites"> </a>Ön koşullar
 
 Bu kılavuzda, API Management hizmeti örneğinizi geliştirici hesapları için OAuth 2,0 yetkilendirmesi kullanacak şekilde nasıl yapılandırabileceğiniz, ancak bir OAuth 2,0 sağlayıcısının nasıl yapılandırılacağı gösterilmeyebilir. Her bir OAuth 2,0 sağlayıcısı için yapılandırma farklıdır, ancak adımlar benzerdir ve API Management hizmet Örneğinizde OAuth 2,0 ' i yapılandırmada kullanılan gerekli bilgi parçaları aynı olur. Bu konuda, OAuth 2,0 sağlayıcısı olarak Azure Active Directory kullanan örnekler gösterilmektedir.
 
@@ -68,7 +68,7 @@ Bu kılavuzda, API Management hizmeti örneğinizi geliştirici hesapları için
 
     ![OAuth 2,0 yeni sunucu](./media/api-management-howto-oauth2/oauth-03.png)
 
-    Azure Active Directory OAuth 2,0 sunucusu için, **belirteç uç noktası URL 'si** aşağıdaki biçimde olacaktır, burada `<TenantID>` biçimi vardır `yourapp.onmicrosoft.com` .
+    Azure Active Directory OAuth 2,0 sunucusu için, **belirteç uç noktası URL 'si** aşağıdaki biçimde olacaktır, burada `<TenantID>`  biçimi vardır `yourapp.onmicrosoft.com` .
 
     `https://login.microsoftonline.com/<TenantID>/oauth2/token`
 
@@ -78,8 +78,8 @@ Bu kılavuzda, API Management hizmeti örneğinizi geliştirici hesapları için
 
     Yeni geliştirici portalında URI son eki şu biçimdedir:
 
-    - `/signin-oauth/code/callback/{authServerName}`yetkilendirme kodu verme akışı için
-    - `/signin-oauth/implicit/callback`örtük verme akışı için
+    - `/signin-oauth/code/callback/{authServerName}` yetkilendirme kodu verme akışı için
+    - `/signin-oauth/implicit/callback` örtük verme akışı için
 
     ![OAuth 2,0 yeni sunucu](./media/api-management-howto-oauth2/oauth-04.png)
 
@@ -123,7 +123,7 @@ OAuth 2,0 yetkilendirme sunucunuzu yapılandırdıktan ve API 'nizi bu sunucuyu 
 > [!NOTE]
 > Açılır pencereleri devre dışı bırakırsanız, tarayıcı tarafından etkinleştirmeniz istenir. Bunları etkinleştirdikten sonra, **yetkilendirme kodu** ' nu yeniden seçin ve oturum açma formu görüntülenir.
 
-![Oturum açın][api-management-oauth2-signin]
+![Oturum aç][api-management-oauth2-signin]
 
 Oturum açtıktan sonra, **istek üstbilgileri** `Authorization : Bearer` isteği yetkilendiren bir üstbilgiyle doldurulur.
 

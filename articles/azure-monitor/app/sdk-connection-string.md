@@ -8,10 +8,10 @@ ms.date: 01/17/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.reviewer: mbullwin
 ms.openlocfilehash: f4227c28329233c7f414c6c45e4a3c1420bf47be
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335169"
 ---
 # <a name="connection-strings"></a>Bağlantı dizeleri
@@ -40,7 +40,7 @@ Bu, en etkili olduğunu görselleştirdiğimiz müşteri senaryolarında:
     Kullanıcılar, tanımlı bir [Azure Kamu bölgesine](../../azure-government/compare-azure-government-global-azure.md#application-insights)veri gönderebilir.
     Bağlantı dizeleri, intranet sunucularınız veya karma bulut ayarları için uç nokta ayarlarını tanımlamanızı sağlar. 
 
-## <a name="getting-started"></a>Kullanmaya başlama
+## <a name="getting-started"></a>Başlarken
 
 ### <a name="finding-my-connection-string"></a>Bağlantı dizim mi bulunuyor?
 
@@ -58,7 +58,7 @@ Bağlantı desteklenen en fazla 4096 karakter uzunluğunda.
 
 Bağlantı dizesi, noktalı virgülle ayrılmış anahtar-değer çiftleri olarak temsil edilen ayarların bir listesini içerir: `key1=value1;key2=value2;key3=value3`
 
-#### <a name="syntax"></a>Syntax
+#### <a name="syntax"></a>Sözdizimi
 
 - `InstrumentationKey` (örn: 00000000-0000-0000-0000-000000000000)  Bağlantı dizesi **gerekli** bir alandır.
 - `Authorization` (örn: Ikey) (Bugün yalnızca Ikey yetkilendirmesini desteklediğimiz için bu ayar isteğe bağlıdır.)

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
 ms.openlocfilehash: 10eec1527fb0ac5109822da398642613219771f6
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86039849"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services yönetilen bir etki alanında nesneleri ve kimlik bilgilerini eşitleme
@@ -80,7 +80,7 @@ Aşağıdaki tabloda, Azure AD 'deki Kullanıcı nesneleri için belirli öznite
 | postalCode |postalCode |
 | preferredLanguage |preferredLanguage |
 | proxyAddresses | proxyAddresses |
-| durum |st |
+| state |st |
 | streetAddress |streetAddress |
 | surname |sn |
 | telephoneNumber 'dır |telephoneNumber 'dır |

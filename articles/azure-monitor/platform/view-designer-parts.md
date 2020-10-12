@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
 ms.openlocfilehash: 1e674bf157d55c9b5f7cf49e8df5e17acb99ee3a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86539406"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Azure Izleyici 'de tasarımcı görselleştirme parçalarını görüntülemek için başvuru kılavuzu
@@ -24,7 +24,7 @@ Görünüm Tasarımcısı hakkında daha fazla bilgi için bkz.
 
 Kullanılabilir görünüm Tasarımcısı kutucuk türleri aşağıdaki tabloda açıklanmıştır:
 
-| Görünüm türü | Description |
+| Görünüm türü | Açıklama |
 |:--- |:--- |
 | [Sorgu listesi](#list-of-queries-part) |Günlük sorgularının bir listesini görüntüler. Sonuçlarını göstermek için her bir sorguyu seçebilirsiniz. |
 | [Sayı ve liste](#number-and-list-part) |Üst bilgi, bir günlük sorgusundan kayıt sayısını gösteren tek bir sayı görüntüler. Liste, bir sorgunun ilk on sonucunu, sayısal bir sütunun göreli değerini veya zaman içindeki değişikliğini gösteren bir grafiği görüntüler. |
@@ -77,11 +77,11 @@ Sorgu listesi bölümü, günlük sorgularının bir listesini görüntüler. So
 | Sorgu |Liste için çalıştırılacak sorgu. Sonuçlarda ilk on kaydın ilk iki özelliği görüntülenir. İlk özellik bir metin değeridir ve ikinci özellik sayısal bir değerdir. Çubuklar sayısal sütunun göreli değerine göre otomatik olarak oluşturulur.<br><br>`Sort`Listedeki kayıtları sıralamak için sorgudaki komutunu kullanın. Sorguyu çalıştırmak ve tüm kayıtları döndürmek için **Tümünü görüntüle**' yi seçebilirsiniz. |
 | Grafiği gizle |Sayısal sütunun sağ tarafındaki grafiği devre dışı bırakmak için bu bağlantıyı seçin. |
 | Mini grafikleri etkinleştir |Yatay çubuk yerine bir mini grafik göstermek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
-| Color (Renk) |Çubukların veya mini grafiklerin rengi. |
+| Color |Çubukların veya mini grafiklerin rengi. |
 | Ad ve değer ayırıcısı |Metin özelliğini birden çok değere ayrıştırmak için kullanılacak tek karakterlik sınırlayıcı. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
 | Tıklama gezintisi | Listedeki bir öğeye tıkladığınızda gerçekleştirilecek eylem.  Daha fazla bilgi için bkz. [ortak ayarlar](#click-through-navigation). |
 | **Liste** |**> sütun başlıkları** |
-| Name |İlk sütunun en üstünde görüntülenen metin. |
+| Adı |İlk sütunun en üstünde görüntülenen metin. |
 | Değer |İkinci sütunun en üstünde görüntülenen metin. |
 | **Liste** |**> eşikleri** |
 | Eşikleri etkinleştir |Eşikleri etkinleştirmek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#thresholds). |
@@ -107,12 +107,12 @@ Sorgu listesi bölümü, günlük sorgularının bir listesini görüntüler. So
 | Sorgu |Liste için çalıştırılacak sorgu. Sonuçlarda ilk on kaydın ilk iki özelliği görüntülenir. İlk özellik bir metin değeridir ve ikinci özellik sayısal bir değerdir. Çubuklar sayısal sütunun göreli değerine göre otomatik olarak oluşturulur.<br><br>`Sort`Listedeki kayıtları sıralamak için sorgudaki komutunu kullanın. Sorguyu çalıştırmak ve tüm kayıtları döndürmek için **Tümünü görüntüle**' yi seçebilirsiniz. |
 | Grafiği gizle |Sayısal sütunun sağ tarafındaki grafiği devre dışı bırakmak için bu bağlantıyı seçin. |
 | Mini grafikleri etkinleştir |Yatay çubuk yerine bir mini grafik göstermek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
-| Color (Renk) |Çubukların veya mini grafiklerin rengi. |
+| Color |Çubukların veya mini grafiklerin rengi. |
 | İşlem |Mini grafik için gerçekleştirilecek işlem. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
 | Ad ve değer ayırıcısı |Metin özelliğini birden çok değere ayrıştırmak için kullanılacak tek karakterlik sınırlayıcı. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
 | Tıklama gezintisi | Listedeki bir öğeye tıkladığınızda gerçekleştirilecek eylem.  Daha fazla bilgi için bkz. [ortak ayarlar](#click-through-navigation). |
 | **Liste** |**> sütun başlıkları** |
-| Name |İlk sütunun en üstünde görüntülenen metin. |
+| Adı |İlk sütunun en üstünde görüntülenen metin. |
 | Değer |İkinci sütunun en üstünde görüntülenen metin. |
 | **Liste** |**> eşikleri** |
 | Eşikleri etkinleştir |Eşikleri etkinleştirmek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#thresholds). |
@@ -143,17 +143,17 @@ Sorgu listesi bölümü, günlük sorgularının bir listesini görüntüler. So
 | Renk 1<br>Renk 2<br>Renk 3 |Halka içinde görüntülenen değerlerin her biri için rengi seçin. |
 | **Ek seçenekler** |**> gelişmiş renk eşleme** |
 | Alan değeri |Halka içerisine dahil olursa farklı bir renk olarak göstermek için bir alanın adını yazın. |
-| Color (Renk) |Benzersiz alanın rengini seçin. |
+| Color |Benzersiz alanın rengini seçin. |
 | **Liste** | |
 | Sorgu |Liste için çalıştırılacak sorgu. Sorgu tarafından döndürülen kayıtların sayısı görüntülenir. |
 | Grafiği gizle |Sayısal sütunun sağ tarafındaki grafiği devre dışı bırakmak için bu bağlantıyı seçin. |
 | Mini grafikleri etkinleştir |Yatay çubuk yerine bir mini grafik göstermek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
-| Color (Renk) |Çubukların veya mini grafiklerin rengi. |
+| Color |Çubukların veya mini grafiklerin rengi. |
 | İşlem |Mini grafik için gerçekleştirilecek işlem. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
 | Ad ve değer ayırıcısı |Metin özelliğini birden çok değere ayrıştırmak için kullanılacak tek karakterlik sınırlayıcı. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
 | Tıklama gezintisi | Listedeki bir öğeye tıkladığınızda gerçekleştirilecek eylem.  Daha fazla bilgi için bkz. [ortak ayarlar](#click-through-navigation). |
 | **Liste** |**> sütun başlıkları** |
-| Name |İlk sütunun en üstünde görüntülenen metin. |
+| Adı |İlk sütunun en üstünde görüntülenen metin. |
 | Değer |İkinci sütunun en üstünde görüntülenen metin. |
 | **Liste** |**> eşikleri** |
 | Eşikleri etkinleştir |Eşikleri etkinleştirmek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#thresholds). |
@@ -174,18 +174,18 @@ Sorgu listesi bölümü, günlük sorgularının bir listesini görüntüler. So
 | Tıklama gezintisi | Üst bilgiye tıkladığınızda gerçekleştirilecek eylem.  Daha fazla bilgi için bkz. [ortak ayarlar](#click-through-navigation). |
 | **Birinci grafik <br> ikinci grafik** | |
 | Gösterge |İlk serinin belirtme çizgisinin altında görüntülenen metin. |
-| Color (Renk) |Serideki sütunlar için kullanılacak renk. |
+| Color |Serideki sütunlar için kullanılacak renk. |
 | Sorgu |İlk seri için çalıştırılacak sorgu. Her zaman aralığı içindeki kayıt sayısı grafik sütunları tarafından temsil edilir. |
 | İşlem |Değer özelliğinde gerçekleştirilecek işlem, belirtme çizgisi için tek bir değer olarak özetleme.<ul><li>Sum: tüm kayıtlardaki değerlerin toplamı.</li><li>Average: tüm kayıtlardaki değerlerin ortalaması.</li><li>Son örnek: grafiğe dahil edilen son aralıktan değer.</li><li>İlk örnek: grafiğe dahil olan ilk aralıktan değer.</li><li>Sayı: sorgu tarafından döndürülen tüm kayıtların sayısı.</li></ul> |
 | **Liste** | |
 | Sorgu |Liste için çalıştırılacak sorgu. Sorgu tarafından döndürülen kayıtların sayısı görüntülenir. |
 | Grafiği gizle |Sayısal sütunun sağ tarafındaki grafiği devre dışı bırakmak için bu bağlantıyı seçin. |
 | Mini grafikleri etkinleştir |Yatay çubuk yerine bir mini grafik göstermek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
-| Color (Renk) |Çubukların veya mini grafiklerin rengi. |
+| Color |Çubukların veya mini grafiklerin rengi. |
 | İşlem |Mini grafik için gerçekleştirilecek işlem. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
 | Tıklama gezintisi | Listedeki bir öğeye tıkladığınızda gerçekleştirilecek eylem.  Daha fazla bilgi için bkz. [ortak ayarlar](#click-through-navigation). |
 | **Liste** |**> sütun başlıkları** |
-| Name |İlk sütunun en üstünde görüntülenen metin. |
+| Adı |İlk sütunun en üstünde görüntülenen metin. |
 | Değer |İkinci sütunun en üstünde görüntülenen metin. |
 | **Liste** |**> eşikleri** |
 | Eşikleri etkinleştir |Eşikleri etkinleştirmek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#thresholds). |
@@ -200,7 +200,7 @@ Sorgu listesi bölümü, günlük sorgularının bir listesini görüntüler. So
 | **Genel** | |
 | Grup başlığı |Kutucuğun en üstünde görüntülenen metin. |
 | Yeni Grup |Görünümde geçerli görünümden başlayarak yeni bir grup oluşturmak için bu bağlantıyı seçin. |
-| Color (Renk) |Üst bilgi için arka plan rengi. |
+| Color |Üst bilgi için arka plan rengi. |
 | **Üst bilgi** | |
 | Görüntü |Üst bilgide görüntülenen resim dosyası. |
 | Etiketle |Üst bilgide görüntülenen metin. |
@@ -241,12 +241,12 @@ Sorgu listesi bölümü, günlük sorgularının bir listesini görüntüler. So
 | Sorgu |Liste için çalıştırılacak sorgu. Sorgu tarafından döndürülen kayıtların sayısı görüntülenir. |
 | Grafiği gizle |Sayısal sütunun sağ tarafındaki grafiği devre dışı bırakmak için bu bağlantıyı seçin. |
 | Mini grafikleri etkinleştir |Yatay çubuk yerine bir mini grafik göstermek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
-| Color (Renk) |Çubukların veya mini grafiklerin rengi. |
+| Color |Çubukların veya mini grafiklerin rengi. |
 | İşlem |Mini grafik için gerçekleştirilecek işlem. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
 | Ad ve değer ayırıcısı |Metin özelliğini birden çok değere ayrıştırmak için kullanılacak tek karakterlik sınırlayıcı. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
 | Tıklama gezintisi | Listedeki bir öğeye tıkladığınızda gerçekleştirilecek eylem.  Daha fazla bilgi için bkz. [ortak ayarlar](#click-through-navigation). |
 | **Liste** |**> sütun başlıkları** |
-| Name |İlk sütunun en üstünde görüntülenen metin. |
+| Adı |İlk sütunun en üstünde görüntülenen metin. |
 | Değer |İkinci sütunun en üstünde görüntülenen metin. |
 | **Liste** |**> eşikleri** |
 | Eşikleri etkinleştir |Eşikleri etkinleştirmek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#thresholds). |
@@ -277,12 +277,12 @@ Sorgu listesi bölümü, günlük sorgularının bir listesini görüntüler. So
 | Sorgu |Liste için çalıştırılacak sorgu. Sorgu tarafından döndürülen kayıtların sayısı görüntülenir. |
 | Grafiği gizle |Sayısal sütunun sağ tarafındaki grafiği devre dışı bırakmak için bu bağlantıyı seçin. |
 | Mini grafikleri etkinleştir |Yatay çubuk yerine bir mini grafik göstermek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
-| Color (Renk) |Çubukların veya mini grafiklerin rengi. |
+| Color |Çubukların veya mini grafiklerin rengi. |
 | İşlem |Mini grafik için gerçekleştirilecek işlem. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
 | Ad ve değer ayırıcısı |Metin özelliğini birden çok değere ayrıştırmak için kullanılacak tek karakterlik sınırlayıcı. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
 | Tıklama gezintisi | Listedeki bir öğeye tıkladığınızda gerçekleştirilecek eylem.  Daha fazla bilgi için bkz. [ortak ayarlar](#click-through-navigation). |
 | **Liste** |**> sütun başlıkları** |
-| Name |İlk sütunun en üstünde görüntülenen metin. |
+| Adı |İlk sütunun en üstünde görüntülenen metin. |
 | Değer |İkinci sütunun en üstünde görüntülenen metin. |
 | **Liste** |**> eşikleri** |
 | Eşikleri etkinleştir |Eşikleri etkinleştirmek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#thresholds). |
@@ -352,9 +352,9 @@ Aşağıdaki tabloda eşiklerin ayarları açıklanmaktadır:
 | Ayar | Açıklama |
 |:--- |:--- |
 | Eşikleri etkinleştir |Her bir değerin solunda bir renk simgesi göstermek için bu bağlantıyı seçin. Simge, belirtilen eşiklere göre değerin sistem durumunu gösterir. |
-| Name |Eşik değerinin adı. |
+| Adı |Eşik değerinin adı. |
 | Eşik |Eşiğin değeri. Her bir liste öğesi için sistem durumu rengi, öğenin değeri tarafından aşılan en yüksek eşik değerinin rengine ayarlanır. Eşik değeri aşılmadığı takdirde, varsayılan bir renk kullanılır. |
-| Color (Renk) |Eşik değerini gösteren renk. |
+| Color |Eşik değerini gösteren renk. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Görselleştirme kısımlarındaki sorguları destekleyecek [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin.
