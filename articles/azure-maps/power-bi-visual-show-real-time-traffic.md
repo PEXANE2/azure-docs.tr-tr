@@ -10,13 +10,13 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: fe9e86f3c1d155a1f0b29f500de3954e360b4aa7
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86262108"
 ---
-# <a name="show-real-time-traffic"></a>Gerçek zamanlı trafiği göster
+# <a name="show-real-time-traffic"></a>Gerçek zamanlı trafiği gösterme
 
 Trafik katmanı özelliği, eşlemenin en üstündeki gerçek zamanlı trafik verilerinin üzerine yer alır. Bu özelliği etkinleştirmek için, **Biçim** bölmesindeki **trafik katmanı** kaydırıcısını **Açık** konumuna taşıyın. Bu, trafik akışı verilerinin renk kodlu yollar olarak yer kaplamasını sağlayacaktır.
 

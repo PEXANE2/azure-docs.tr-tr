@@ -4,10 +4,10 @@ description: Azure Event Grid Machine Learning Çalışma Alanı olaylar için b
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: fb8cd76829622962b642580bbda7f2a655604c2f
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87458051"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Event Grid kaynak olarak Azure Machine Learning
@@ -186,7 +186,7 @@ Bu bölüm, verilerin her olay için nasıl görüneceğine ilişkin bir örnek 
 
 Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
 | subject | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
@@ -201,7 +201,7 @@ Veri nesnesi, her olay türü için aşağıdaki özelliklere sahiptir:
 
 ### <a name="microsoftmachinelearningservicesmodelregistered"></a>Microsoft. MachineLearningServices. ModelRegistered
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | ModelName | string | Kayıtlı olan modelin adı. |
 | ModelVersion | string | Kaydedilen modelin sürümü. |
@@ -210,7 +210,7 @@ Veri nesnesi, her olay türü için aşağıdaki özelliklere sahiptir:
 
 ### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Microsoft. MachineLearningServices. Modeldağıtıldı
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | ServiceName | string | Dağıtılan hizmetin adı. |
 | ServiceComputeType | string | Dağıtılan hizmetin işlem türü (ör. ACI, AKS). |
@@ -220,7 +220,7 @@ Veri nesnesi, her olay türü için aşağıdaki özelliklere sahiptir:
 
 ### <a name="microsoftmachinelearningservicesruncompleted"></a>Microsoft. MachineLearningServices. RunCompleted
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | experimentId | string | Çalıştırmanın ait olduğu denemenin KIMLIĞI. |
 | experimentName | string | Çalıştırmanın ait olduğu denemenin adı. |
@@ -231,7 +231,7 @@ Veri nesnesi, her olay türü için aşağıdaki özelliklere sahiptir:
 
 ### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>Microsoft. MachineLearningServices. Datasetdriftalgılandı
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | Datadriftıd | string | Olayı tetikleyen veri Drın izleyicisinin KIMLIĞI. |
 | DataDriftName | string | Olayı tetikleyen veri Drın izleyicisinin adı. |
@@ -244,7 +244,7 @@ Veri nesnesi, her olay türü için aşağıdaki özelliklere sahiptir:
 
 ### <a name="microsoftmachinelearningservicesrunstatuschanged"></a>Microsoft. MachineLearningServices. RunStatusChanged
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | experimentId | string | Çalıştırmanın ait olduğu denemenin KIMLIĞI. |
 | experimentName | string | Çalıştırmanın ait olduğu denemenin adı. |

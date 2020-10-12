@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
 ms.openlocfilehash: 54014a0d76130b82788a1ae432e42baec28df2c2
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87448330"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Sabit depolamayla iş açısından kritik blob verilerini depolayın
@@ -108,7 +108,7 @@ Aşağıdaki tabloda, farklı sabit senaryolar için devre dışı bırakılmı�
 |---------|---------|---------|---------|
 |Blobdaki geçerli saklama süresi dolmadı ve/veya yasal tutma ayarlandı     |Sabit: hem silme hem de yazma korumalı         | Blob<sup>1</sup>, put bloğu<sup>1</sup>, yerleştirme, blok listesi<sup>1</sup>, kapsayıcıyı silme, blobu silme, blob meta verilerini ayarlama, yerleştirme sayfası, blob özelliklerini ayarlama, anlık görüntü blobu, artımlı kopya blobu, ekleme bloğu<sup>2</sup>         |Kapsayıcı silme reddedildi; Depolama hesabı silme reddedildi         |
 |Blobda etkin bekletme aralığının süresi doldu ve geçerli bir tutma ayarlanmadı    |Yalnızca yazma korumalı (silme işlemlerine izin verilir)         |Blob<sup>1</sup>, put bloğu<sup>1</sup>, yerleştirme, blok listesi<sup>1</sup>, blob meta verilerini ayarlama, yerleştirme sayfası, blob özelliklerini ayarlama, anlık görüntü blobu, artımlı kopya blobu, ekleme bloğu<sup>2</sup>         |Korumalı kapsayıcıda en az 1 blob varsa kapsayıcı silme reddedildi; Depolama hesabı silme yalnızca *kilitli* zaman tabanlı ilkeler için reddedildi         |
-|Hiçbir solucan ilkesi uygulanmadı (zaman tabanlı saklama ve geçerli saklama etiketi yok)     |Değiştirilebilir         |Hiçbiri         |Hiçbiri         |
+|Hiçbir solucan ilkesi uygulanmadı (zaman tabanlı saklama ve geçerli saklama etiketi yok)     |Değiştirilebilir         |Yok         |Yok         |
 
 <sup>1</sup> blob hizmeti bu işlemlerin bir kez yeni blob oluşturmasına izin verir. Sabit bir kapsayıcıda var olan bir blob yolundaki tüm sonraki üzerine yazma işlemlerine izin verilmez.
 

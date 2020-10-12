@@ -10,10 +10,10 @@ ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 8170cfcbbf200c6ba5030aff5716f46b537d8c97
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87080480"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure sanal makine ölçek kümeleri hakkında SSS
@@ -227,8 +227,8 @@ Linux VM oluştururken düz metin olarak SSH ortak anahtarlarını sağlayabilir
 linuxConfiguration öğe adı | Gerekli | Tür | Açıklama
 --- | --- | --- | ---
 SSH | Hayır | Koleksiyon | Linux işletim sistemi için SSH anahtarı yapılandırmasını belirtir
-path | Yes | Dize | SSH anahtarlarının veya sertifikasının bulunması gereken Linux dosya yolunu belirtir
-keyData | Yes | Dize | Base64 ile kodlanmış SSH ortak anahtarını belirtir
+path | Evet | Dize | SSH anahtarlarının veya sertifikasının bulunması gereken Linux dosya yolunu belirtir
+keyData | Evet | Dize | Base64 ile kodlanmış SSH ortak anahtarını belirtir
 
 Bir örnek için bkz. [101-VM-sshkey GitHub hızlı başlangıç şablonu](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json).
 

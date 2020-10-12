@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: charwen
 ms.openlocfilehash: a69aa8d8a6dc324d6fe28219316c36ac2ec816a5
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987697"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>NSG erişimiyle ve Azure ile çalışma
@@ -42,7 +42,7 @@ Azure savunma, özellikle ***AzureBastionSubnet***'e dağıtılır.
    * **Azure savunma denetim düzleminin giriş trafiği:** Denetim düzlemi bağlantısı için **Gatewaymanager** hizmet etiketinden gelen bağlantı noktası 443 ' yı etkinleştirin. Bu, denetim düzlemi, diğer bir deyişle, ağ geçidi yöneticisinin Azure ile iletişim kurabilmesine olanak sağlar.
 
 
-   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="Ekran görüntüsü, Azure savunma bağlantısı için gelen güvenlik kurallarını gösterir.":::
+   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="NSG":::
 
 * **Çıkış trafiği:**
 
@@ -50,7 +50,7 @@ Azure savunma, özellikle ***AzureBastionSubnet***'e dağıtılır.
    * **Azure 'da diğer genel uç noktalara giden trafik çıkışı:** Azure savunma 'nın Azure 'daki çeşitli genel uç noktalara bağlanabililmesi gerekir (örneğin, tanılama günlüklerini ve ölçüm günlüklerini depolamak için). Bu nedenle, Azure savunma 'nın 443 'e giden ve **Azurecı** hizmeti etiketi için çıkış yapması gerekir.
 
 
-   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="Ekran görüntüsü, Azure savunma bağlantısı için giden güvenlik kurallarını gösterir.":::
+   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="NSG":::
 
 ### <a name="target-vm-subnet"></a>Hedef VM alt ağı
 Bu, RDP/SSH yapmak istediğiniz hedef sanal makineyi içeren alt ağıdır.

@@ -7,10 +7,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/20/2017
 ms.openlocfilehash: 1c054dcfe12ad1d2098fc5352183839704e39330
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87127409"
 ---
 # <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>U-SQL betiklerini Azure Data Lake Analytics R Code ile genişletme
@@ -92,7 +92,7 @@ DECLARE @PartitionCount int = 10;
 
 * U-SQL ' den gelen dize ve sayısal sütunlar, R DataFrame ve U-SQL [desteklenen türler: `double` , `string` ,, `bool` `integer` , `byte` ] arasında olduğu gibi dönüştürülür.
 * `Factor`Veri türü U-SQL ' de desteklenmez.
-* `byte[]`Base64 kodlamalı olarak serileştirilmelidir `string` .
+* `byte[]` Base64 kodlamalı olarak serileştirilmelidir `string` .
 * U-SQL dizeleri r-SQL create R Input veri çerçevesini bir kez veya Reducer parametresini ayarlayarak R kodundaki faktörlere dönüştürülebilir `stringsAsFactors: true` .
 
 ### <a name="schemas"></a>Şemalar

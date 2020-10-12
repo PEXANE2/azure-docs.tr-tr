@@ -4,10 +4,10 @@ description: Azure DevTest Labs laboratuvar tarafından kullanılan Azure depola
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.openlocfilehash: 3c1d1531084deeabbe9a8d261e93554a2c691eb6
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87433598"
 ---
 # <a name="encrypt-azure-storage-used-by-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs 'da laboratuvar tarafından kullanılan Azure depolama alanını şifreleyin
@@ -28,10 +28,10 @@ Azure DevTest Labs ' de oluşturulan her laboratuvar, ilişkili bir Azure depola
     :::image type="content" source="./media/encrypt-storage/overview-resource-group-link.png" alt-text="Genel Bakış sayfasında kaynak grubu ' nu seçin":::
 1. Laboratuvarın Azure Storage hesabını seçin. Laboratuvar depolama hesabı için adlandırma kuralı: `a<labNameWithoutInvalidCharacters><4-digit number>` . Örneğin, laboratuvar adı ise `contosolab` , depolama hesabı adı olabilir `acontosolab7576` . 
 
-    :::image type="content" source="./media/encrypt-storage/select-storage-account.png" alt-text="Laboratuvarın kaynak grubunda depolama hesabı seçin":::
+    :::image type="content" source="./media/encrypt-storage/select-storage-account.png" alt-text="Genel Bakış sayfasında kaynak grubu ' nu seçin":::
 3. **Depolama hesabı** sayfasında, soldaki menüden **Depolama Gezgini (Önizleme)** öğesini seçin ve ardından laboratuarda ilgili Ilgili IÇERIĞI bulmak için **BLOB kapsayıcıları** ' nı seçin. 
 
-   :::image type="content" source="./media/encrypt-storage/storage-explorer.png" alt-text="Depolama Gezgini (Önizleme)" lightbox="./media/encrypt-storage/storage-explorer.png":::
+   :::image type="content" source="./media/encrypt-storage/storage-explorer.png" alt-text="Genel Bakış sayfasında kaynak grubu ' nu seçin" lightbox="./media/encrypt-storage/storage-explorer.png":::
 
 ## <a name="encrypt-the-lab-storage-account"></a>Laboratuvar depolama hesabını şifreleyin
 Azure depolama, bulutta kalıcı olduğunda verilerinizi otomatik olarak şifreler. Azure depolama şifrelemesi verilerinizi korur ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur. Daha fazla bilgi için bkz. [bekleyen veriler Için Azure depolama şifrelemesi](../storage/common/storage-service-encryption.md).

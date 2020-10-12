@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
@@ -9,15 +9,15 @@ ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
 ms.openlocfilehash: cc0dd5e76227c0814659b74afc2ac46c8ca4de73
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87103069"
 ---
 ## <a name="common-scenarios"></a>Genel senaryolar
 Aşağıdaki senaryolar büyük ölçüde patlanabilir:
-- **Önyükleme zamanlarını iyileştirme** : tekrarlaması sayesinde, örneğiniz önemli ölçüde daha hızlı bir hızda önyüklenecektir. Örneğin, Premium etkin VM 'Ler için varsayılan işletim sistemi diski, 120 ıOPS ve 25 MB/sn için sağlanan bir performans olan P4 disktir. Patlama ile P4, bir önyükleme süresinin 6X ile hızlanmasına izin veren 3500 ıOPS ve 170 MB/sn 'ye kadar sürebilir.
+- **Önyükleme zamanlarını iyileştirme**  : tekrarlaması sayesinde, örneğiniz önemli ölçüde daha hızlı bir hızda önyüklenecektir. Örneğin, Premium etkin VM 'Ler için varsayılan işletim sistemi diski, 120 ıOPS ve 25 MB/sn için sağlanan bir performans olan P4 disktir. Patlama ile P4, bir önyükleme süresinin 6X ile hızlanmasına izin veren 3500 ıOPS ve 170 MB/sn 'ye kadar sürebilir.
 - **Toplu Işleri işleme** – bazı uygulamaların iş yükleri doğası açısından döngüsel olur ve çoğu zaman için bir temel performans gerektirir ve kısa bir süre için daha yüksek performans gerektirir. Bu işlemin bir örneği, az miktarda disk trafiği gerektiren işlemleri günlük olarak işleyen bir muhasebe programıdır. Daha sonra ayın sonunda, çok daha yüksek miktarda disk trafiğine ihtiyacı olan raporların uzlaştırılıyor.
 - **Trafik ani artışları Için hazırlık** : Web sunucuları ve uygulamaları, her zaman trafik dalgalanmalarına karşılaşabilir. Web sunucunuz, patlama kullanılarak VM 'Ler veya diskler tarafından desteklenmişse, sunucular trafik artışlarını işlemek için daha iyi şekilde donatılmıştır. 
 

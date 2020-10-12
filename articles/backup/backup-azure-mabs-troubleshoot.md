@@ -5,10 +5,10 @@ ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.openlocfilehash: 09e5fe5da7e316257cbbdcb89074fe8a4bc692c0
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91403016"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Azure Backup Sunucusu sorunlarını giderme
@@ -77,7 +77,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | İşlem | Hata ayrıntıları | Geçici çözüm |
 | --- | --- | --- |
-| Backup | Çevrimiçi kurtarma noktası oluşturma başarısız oldu | **Hata iletisi**: Windows Azure Backup Aracısı seçili birimin anlık görüntüsünü oluşturamadı. <br> **Geçici çözüm**: çoğaltma ve kurtarma noktası birimindeki alanı artırmayı deneyin.<br> <br> **Hata iletisi**: Windows Azure Backup Aracısı obengine hizmetine bağlanamıyor <br> **Geçici çözüm**: obengine 'in bilgisayardaki çalışan hizmetler listesinde var olduğunu doğrulayın. OBEngine hizmeti çalışmıyorsa, OBEngine hizmetini başlatmak için "net start OBEngine" komutunu kullanın. <br> <br> **Hata iletisi**: Bu sunucunun şifreleme parolası ayarlanmadı. Lütfen bir şifreleme parolası yapılandırın. <br> **Geçici çözüm**: bir şifreleme parolası yapılandırmayı deneyin. Başarısız olursa, aşağıdaki adımları uygulayın: <br> <ol><li>Karalama konumunun mevcut olduğunu doğrulayın. Bu, **HKEY_LOCAL_MACHINE \Software\Microsoft\Windows Azure Backup\Config**kayıt defterinde belirtilen konumdur ve bu ad, **scratchlocation** adında olmalıdır.</li><li> Karalama konumu varsa, eski parolayı kullanarak yeniden kaydetmeyi deneyin. *Şifreleme parolasını yapılandırdığınızda, güvenli bir konuma kaydedin.*</li><ol>|
+| Backup | Çevrimiçi kurtarma noktası oluşturma başarısız oldu | **Hata iletisi**: Windows Azure Backup Aracısı seçili birimin anlık görüntüsünü oluşturamadı. <br> **Geçici çözüm**: çoğaltma ve kurtarma noktası birimindeki alanı artırmayı deneyin.<br> <br> **Hata iletisi**: Windows Azure Backup Aracısı obengine hizmetine bağlanamıyor <br> **Geçici çözüm**: obengine 'in bilgisayardaki çalışan hizmetler listesinde var olduğunu doğrulayın. OBEngine hizmeti çalışmıyorsa, OBEngine hizmetini başlatmak için "net start OBEngine" komutunu kullanın. <br> <br> **Hata iletisi**: Bu sunucunun şifreleme parolası ayarlanmadı. Lütfen bir şifreleme parolası yapılandırın. <br> **Geçici çözüm**: bir şifreleme parolası yapılandırmayı deneyin. Başarısız olursa, aşağıdaki adımları uygulayın: <br> <ol><li>Karalama konumunun mevcut olduğunu doğrulayın. Bu, kayıt defteri **HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Azure Backup\Config**bahsedilen, **scratchlocation** adında bir konum olmalıdır.</li><li> Karalama konumu varsa, eski parolayı kullanarak yeniden kaydetmeyi deneyin. *Şifreleme parolasını yapılandırdığınızda, güvenli bir konuma kaydedin.*</li><ol>|
 
 ## <a name="the-original-and-external-dpm-servers-must-be-registered-to-the-same-vault"></a>Orijinal ve dış DPM sunucularının aynı kasaya kayıtlı olması gerekir
 

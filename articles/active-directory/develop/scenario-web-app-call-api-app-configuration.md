@@ -13,10 +13,10 @@ ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
 ms.openlocfilehash: c8d68a17b3b991b88e02cf056dcb46da2debfa71
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91403203"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Web API 'Leri çağıran bir Web uygulaması: kod yapılandırması
@@ -32,7 +32,7 @@ Web uygulaması, kullanıcılar senaryosunda oturum [açan Web](scenario-web-app
 
 Microsoft kimlik doğrulama kitaplığı 'ndaki (MSAL) aşağıdaki kitaplıklar, Web Apps için yetkilendirme kod akışını destekler:
 
-| MSAL kitaplığı | Description |
+| MSAL kitaplığı | Açıklama |
 |--------------|-------------|
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | .NET Framework ve .NET Core platformları için destek. Desteklenmeyen Evrensel Windows Platformu (UWP), Xamarin. iOS ve Xamarin. Android, bu platformlar ortak istemci uygulamaları oluşturmak için kullanılır. <br/><br/>Web uygulamaları ve Web API 'Leri ASP.NET Core için MSAL.NET, [Microsoft. Identity. Web](https://aka.ms/ms-identity-web)adlı daha üst düzey bir kitaplıkta kapsüllenir. |
 | ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> Python için MSAL | Python web uygulamaları için destek. |

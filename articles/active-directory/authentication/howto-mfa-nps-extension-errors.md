@@ -13,10 +13,10 @@ ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: f991e38c184fe44f63af63809deb14eda22f8f4c
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88716733"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication için NPS uzantısından alınan hata iletilerini çözme
@@ -33,7 +33,7 @@ Azure Multi-Factor Authentication için NPS uzantısıyla ilgili hatalarla karş
 | **HTTPS_COMMUNICATION_ERROR** | NPS sunucusu, Azure MFA 'dan yanıt alamıyor. Güvenlik duvarlarınızın ve giden trafik için açık bir şekilde açık olduğunu doğrulayın https://adnotifications.windowsazure.com |
 | **HTTP_CONNECT_ERROR** | NPS uzantısını çalıştıran sunucuda, ve ' a ulaşabildiğinizi doğrulayın  `https://adnotifications.windowsazure.com` `https://login.microsoftonline.com/` . Bu siteler yüklenmezseniz, bu sunucu üzerinde bağlantı sorunlarını giderin. |
 | **Azure MFA için NPS uzantısı:** <br> Azure MFA için NPS uzantısı yalnızca AccessAccept durumundaki RADIUS istekleri için Ikincil kimlik doğrulaması gerçekleştirir. Yanıt durumu Accessred olan Kullanıcı Kullanıcı adı için istek alındı, istek yoksayılıyor. | Bu hata genellikle AD 'deki bir kimlik doğrulaması hatasını yansıtır veya NPS sunucusunun Azure AD 'den yanıt alamıyor olduğunu gösterir. Güvenlik duvarlarınızın, `https://adnotifications.windowsazure.com` `https://login.microsoftonline.com` 80 ve 443 bağlantı noktalarını kullanarak ve giden trafik için açık bir şekilde açık olduğunu doğrulayın. Ağ erişim Izinlerinin arama sekmesinde, ayarın "NPS ağ Ilkesi aracılığıyla erişimi denetle" olarak ayarlandığını denetlemek de önemlidir. Bu hata, kullanıcıya bir lisans atanmamışsa da tetiklenebilir. |
-| **REGISTRY_CONFIG_ERROR** | Uygulama için kayıt defterinde bir anahtar eksik, bu durum [PowerShell betiğinin](howto-mfa-nps-extension.md#install-the-nps-extension) yükleme sonrasında çalıştırılmamasının nedeni olabilir. Hata iletisi eksik anahtarı içermelidir. HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureMfa. altındaki anahtara sahip olduğunuzdan emin olun |
+| **REGISTRY_CONFIG_ERROR** | Uygulama için kayıt defterinde bir anahtar eksik, bu durum [PowerShell betiğinin](howto-mfa-nps-extension.md#install-the-nps-extension) yükleme sonrasında çalıştırılmamasının nedeni olabilir. Hata iletisi eksik anahtarı içermelidir. HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa altındaki anahtara sahip olduğunuzdan emin olun. |
 | **REQUEST_FORMAT_ERROR** <br> Radius Isteğinde zorunlu Radius Username\ıdentifier özniteliği eksik. NPS 'nin RADIUS isteklerini aldığını doğrulama | Bu hata genellikle bir yükleme sorununu yansıtır. NPS uzantısının, RADIUS isteklerini alabilen NPS sunucularına yüklenmesi gerekir. RDG ve RRAS gibi hizmetler için bağımlılıklar olarak yüklenen NPS sunucuları RADIUS istekleri almaz. NPS uzantısı, kimlik doğrulama isteğinden ayrıntıları okuyamadığından bu tür yüklemeler ve hatalar üzerine yüklendiğinde çalışmaz. |
 | **REQUEST_MISSING_CODE** | NPS ve NAS sunucuları arasındaki parola şifreleme protokolünün, kullanmakta olduğunuz ikincil kimlik doğrulama yöntemini desteklediğinden emin olun. **Pap** , BULUTTA Azure MFA 'nın tüm kimlik doğrulama yöntemlerini destekler: telefon araması, tek yönlü SMS mesajı, mobil uygulama bildirimi ve mobil uygulama doğrulama kodu. **CHAPv2** ve **EAP** desteği telefon araması ve mobil uygulama bildirimi. |
 | **USERNAME_CANONICALIZATION_ERROR** | Kullanıcının şirket içi Active Directory örneğinde mevcut olduğunu ve NPS hizmetinin dizine erişim izinleri olduğunu doğrulayın. Ormanlar arası güvenler kullanıyorsanız, daha fazla yardım için [desteğe başvurun](#contact-microsoft-support) . |
@@ -107,7 +107,7 @@ Ek yardıma ihtiyacınız varsa [Azure Multi-Factor Authentication sunucusu dest
 
 Destek Tanılama için hata ayıklama günlüklerini toplamak üzere NPS sunucusunda aşağıdaki adımları kullanın:
 
-1. Kayıt Defteri Düzenleyicisi 'ni açın ve HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureMfa set **VERBOSE_LOG** **true** olarak ayarlayın
+1. Kayıt Defteri Düzenleyicisi 'Ni açın ve **VERBOSE_LOG** **TRUE** olarak ayarlamak HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa gidin
 2. Bir yönetici komut istemi açın ve şu komutları çalıştırın:
 
    ```
@@ -131,5 +131,5 @@ Destek Tanılama için hata ayıklama günlüklerini toplamak üzere NPS sunucus
    Start .
    ```
 
-5. Kayıt Defteri Düzenleyicisi 'ni açın ve HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureMfa set **VERBOSE_LOG** **false** değerine gidin
+5. Kayıt Defteri Düzenleyicisi 'ni açın ve **VERBOSE_LOG** HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa için **false** olarak ayarlayın
 6. C:\NPS klasörünün içeriğini ZIP ve daraltılmış dosyayı destek örneğine iliştirin.

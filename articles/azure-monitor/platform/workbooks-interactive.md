@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: mbullwin
 ms.openlocfilehash: 33da3cd8a72bb4d93011c348db65c5b4d9e687ed
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87461554"
 ---
 # <a name="interactive-workbooks"></a>Etkileşimli Çalışma Kitapları
@@ -45,13 +45,13 @@ Bir çalışma kitabı kullanıcısı bir parametreyi güncelleştirdiğinde, pa
     | order by AllRequests desc
     ```
 
-5. `Run query`sonuçları görmek için
+5. `Run query` sonuçları görmek için
 6. Sorgu altbilgisinde _Gelişmiş ayarlar_ simgesini seçin (simge dişli gibi görünür). Bu, Gelişmiş ayarlar bölmesini açar.
 7. Ayarı denetleyin: `When an item is selected, export a parameter` .
 8. Seçtiğiniz ayar altında *parametre Ekle* ' yi seçin ve aşağıdaki bilgilerle doldurun.
-    1. Dışarı aktarılacak alan:`Request`
-    2. Parametre adı:`SelectedRequest`
-    3. Varsayılan değer:`All requests`
+    1. Dışarı aktarılacak alan: `Request`
+    2. Parametre adı: `SelectedRequest`
+    3. Varsayılan değer: `All requests`
 9. Kaydet'i seçme
 
     ![Alanları parametre olarak dışa aktarma ayarlarına sahip gelişmiş düzenleyiciyi gösteren ekran görüntüsü.](./media/workbooks-interactive/export-parameters-add.png)
@@ -64,7 +64,7 @@ Bir çalışma kitabı kullanıcısı bir parametreyi güncelleştirdiğinde, pa
     | where name == '{SelectedRequest}' or 'All Requests' == '{SelectedRequest}'
     | summarize ['{SelectedRequest}'] = count() by bin(timestamp, 1h)
     ```
-13. `Run query`sonuçları görmek için.
+13. `Run query` sonuçları görmek için.
 14. _Görselleştirmeyi_ olarak değiştirin `Area chart` .
 15. İlk kılavuzda seçilecek bir satır seçin. Aşağıdaki alan grafiğinin seçili istek için nasıl filtreleyeceğini aklınızda bulabilirsiniz.
 
@@ -99,12 +99,12 @@ Başvuran KQL denetiminde, `todynamic` JSON 'u ayrıştırmak ve ayrı sütunlar
     | order by Count desc
     ```
 
-5. `Run query`sonuçları görmek için
+5. `Run query` sonuçları görmek için
 6. _Sütun ayarlarını_ seçerek ayarlar bölmesini açın.
 7. _Sütunlar_ bölümünde, şunu ayarlayın:
-    1. _Örnek_ sütun Oluşturucu: `Link` , açılacak görünüm: `Cell Details` , bağlantı etiketi:`Sample`
-    2. _Count_ -Column işleyici: `Bar` , renk paleti: `Blue` , minimum değer:`0`
-    3. _İstek_ sütunu işleyici:`Automatic`
+    1. _Örnek_ sütun Oluşturucu: `Link` , açılacak görünüm: `Cell Details` , bağlantı etiketi: `Sample`
+    2. _Count_ -Column işleyici: `Bar` , renk paleti: `Blue` , minimum değer: `0`
+    3. _İstek_ sütunu işleyici: `Automatic`
     4. Değişiklikleri uygulamak için _Kaydet ve Kapat ' ı_ seçin
 
     ![Sütun ayarı sekmesinin ekran görüntüsü.](./media/workbooks-interactive/column-settings.png)
@@ -118,8 +118,8 @@ Başvuran KQL denetiminde, `todynamic` JSON 'u ayrıştırmak ve ayrı sütunlar
 | Bağlantı eylemi | Tıklama eylemi |
 |:------------- |:-------------|
 | `Generic Details` | Özellik Kılavuzu bağlam sekmesindeki satır değerlerini gösterir |
-| `Cell Details` | Bir özellik Kılavuzu bağlam sekmesinde hücre değerini gösterir. hücre, bilgileri içeren dinamik bir tür içerdiğinde (örneğin, konum, rol örneği vs. gibi istek özelliklerine sahip JSON) olduğunda faydalıdır. |
-| `Cell Details` | Bir özellik Kılavuzu bağlam sekmesinde hücre değerini gösterir. hücre, bilgileri içeren dinamik bir tür içerdiğinde (örneğin, konum, rol örneği vs. gibi istek özelliklerine sahip JSON) olduğunda faydalıdır. |
+| `Cell Details` | Bir özellik Kılavuzu bağlam sekmesinde hücre değerini gösterir. Hücre (örneğin, konum, rol örneği vs. gibi istek özelliklerine sahip JSON) içeren dinamik bir tür içerdiğinde yararlı olur. |
+| `Cell Details` | Bir özellik Kılavuzu bağlam sekmesinde hücre değerini gösterir. Hücre (örneğin, konum, rol örneği vs. gibi istek özelliklerine sahip JSON) içeren dinamik bir tür içerdiğinde yararlı olur. |
 | `Custom Event Details` | Hücrede özel olay KIMLIĞI () ile Application Insights arama ayrıntılarını açar `itemId` |
 | `* Details` | Bağımlılıklar, özel durumlar, sayfa görünümleri, istekler ve izlemeler dışında özel olay ayrıntılarına benzer. |
 | `Custom Event User Flows` | Hücredeki özel olay adında özetlenen Application Insights Kullanıcı Akışları deneyimini açar |
@@ -137,26 +137,26 @@ Başvuran KQL denetiminde, `todynamic` JSON 'u ayrıştırmak ve ayrı sütunlar
 1. [Kılavuz satırında etkileşimi ayarlama](#setting-up-interactivity-on-grid-row-click) bölümündeki adımları izleyerek iki etkileşimli denetim ayarlayın.
 2. En üste yeni bir parametre ekleyin:
     1. Ad: `ShowDetails`
-    2. Parametre türü:`Drop down`
-    3. Gerekli:`checked`
-    4. Veri al:`JSON`
-    5. JSON girişi:`["Yes", "No"]`
+    2. Parametre türü: `Drop down`
+    3. Gerekli: `checked`
+    4. Veri al: `JSON`
+    5. JSON girişi: `["Yes", "No"]`
     6. Değişiklikleri uygulamak için Kaydet.
 
     ![Parametre Ekle düğmesini seçtikten sonra parametre Düzenle bölmesi görüntülenir.](./media/workbooks-interactive/edit-parameter.png)
 
-3. Parametre değerini ayarla`Yes`
+3. Parametre değerini ayarla `Yes`
 
     ![Tamamlandı düzenlemesi düğmesinin üstünde, parametre değerini ayarlamanıza olanak tanıyan bir açılır](./media/workbooks-interactive/set-parameter.png)
 
 4. Alan grafiği ile sorgu denetiminde, _Gelişmiş ayarlar_ simgesini (dişli simgesi) seçin.
-5. Ayarı denetleyin`Make this item conditionally visible`
-    1. Bu öğe `ShowDetails` parametre değeri `equals` ise görünür`Yes`
+5. Ayarı denetleyin `Make this item conditionally visible`
+    1. Bu öğe `ShowDetails` parametre değeri `equals` ise görünür `Yes`
 6. Değişiklikleri uygulamak için _düzenlemeleri bitti_ ' yi seçin.
 7. Okuma moduna girmek için çalışma kitabı araç çubuğunda _Düzenle bitti_ ' yi seçin.
 8. Parametresinin değerini `ShowDetails` olarak değiştirin `No` . Aşağıdaki grafiğin kaybolduğuna dikkat edin.
 
-Aşağıdaki `ShowDetails` görüntüde olduğu gibi görünen durum gösterilmektedir`Yes`
+Aşağıdaki `ShowDetails` görüntüde olduğu gibi görünen durum gösterilmektedir `Yes`
 
 ![Grafiğin görünür olduğu koşullu görünürlüğü gösteren ekran görüntüsü](./media/workbooks-interactive/interactivity-conditional-visibility-visible.png)
 

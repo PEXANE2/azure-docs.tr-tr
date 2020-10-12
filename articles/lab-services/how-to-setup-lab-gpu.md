@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
 ms.openlocfilehash: abd182339719f19a521feed95f7cfbed6942b3e8
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91404791"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>GPU sanal makinelerle laboratuvar kurma
@@ -28,13 +28,13 @@ Bu işlemde, **görselleştirme** ya da **işlem** GPU 'ları seçme seçeneğin
 
 Aşağıdaki tabloda açıklandığı gibi, bilgi *işlem* GPU boyutu yoğun işlem gücü uygulamalarına yöneliktir.  Örneğin, [doğal dil işleme sınıfı türünde derin öğrenme](./class-type-deep-learning-natural-language-processing.md) **küçük GPU (işlem)** boyutunu kullanır.  Öğrenciler, büyük veri kümeleriyle derin öğrenme modellerini eğmek üzere [veri bilimi sanal makinesi görüntüsü](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) tarafından sunulan derin öğrenme çerçeveleri ve araçları kullandığından, bu tür bir sınıf için işlem GPU 'su uygundur.
 
-| Boyut | Çekirdekler | RAM | Description | 
+| Boyut | Çekirdekler | RAM | Açıklama | 
 | ---- | ----- | --- | ----------- | 
 | Küçük GPU (Işlem) | -&nbsp;6 &nbsp; çekirdek<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Bu boyut, yapay zeka (AI) ve derin öğrenme gibi yoğun işlem gücü olan uygulamalar için idealdir. |
 
 *Görselleştirme* GPU boyutları grafik yoğun uygulamalar için tasarlanmıştır.  Örneğin, [Solidçalışmamühendisliği sınıf türü](./class-type-solidworks.md) **küçük GPU (görselleştirme)** boyutunu kullanmayı gösterir.  Öğrenciler, düz nesnelerin modellenmesi ve görselleştirilmesi için SOLIDÇALıŞıYOR 3D bilgisayar destekli tasarım (CAD) ortamıyla etkileşimde bulunduğundan, bu tür bir sınıf için görselleştirme GPU 'SU uygundur.
 
-| Boyut | Çekirdekler | RAM | Description | 
+| Boyut | Çekirdekler | RAM | Açıklama | 
 | ---- | ----- | --- | ----------- | 
 | Küçük GPU (görselleştirme) | -&nbsp;6 &nbsp; çekirdek<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Bu boyut, OpenGL ve DirectX gibi çerçeveleri kullanan uzaktan görselleştirme, akış, oyun ve kodlama için idealdir. |
 | Orta ölçekli GPU (görselleştirme) | -&nbsp;12 &nbsp; çekirdek<br>-&nbsp;112 &nbsp; GB &nbsp; RAM  | [Standard_NV12](https://docs.microsoft.com/azure/virtual-machines/nv-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Bu boyut, OpenGL ve DirectX gibi çerçeveleri kullanan uzaktan görselleştirme, akış, oyun ve kodlama için idealdir. |

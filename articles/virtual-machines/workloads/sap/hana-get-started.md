@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: juergent
 ms.openlocfilehash: f2a62cb08fcce6597f02c080231f5e1808794054
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88509969"
 ---
 # <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>Azure sanal makinelerinde SAP HANA yüklemesi
@@ -61,7 +61,7 @@ Bu aşamada, sanal makineleri yüklemek için VM 'leri dağıtmaya yönelik adı
 3. VM dağıtıldıktan ve kaydedildikten sonra işletim sistemine en son düzeltme eklerini uygulayın. Kendi aboneliğiniz ile kaydedilir. Ya da işletim sistemi desteği içeren bir görüntü seçtiğinizde, sanal makinenin zaten bu düzeltme eklerine erişimi olması gerekir. 
 4. SAP HANA için gereken uyarlayan 'yi uygulayın. Bu tunlar, bu SAP destek notlarında listelenmiştir:
 
-    - [SAP destek notunun #2694118-Azure 'da Red Hat Enterprise Linux HA eklentisi](https://launchpad.support.sap.com/#/notes/2694118)
+    - [SAP destek notuna #2694118-Red Hat Enterprise Linux HA Add-On Azure 'da](https://launchpad.support.sap.com/#/notes/2694118)
     - [SAP destek notu #1984787-SUSE LINUX Enterprise Server 12: yükleme notları](https://launchpad.support.sap.com/#/notes/1984787) 
     - [SAP destek notunun #2578899-SUSE Linux Enterprise Server 15: yükleme notunun](https://launchpad.support.sap.com/#/notes/2578899)
     - [SAP destek notunun #2002167-Red Hat Enterprise Linux 7. x: yükleme ve yükseltme](https://launchpad.support.sap.com/#/notes/0002002167)
@@ -72,7 +72,7 @@ Bu aşamada, sanal makineleri yüklemek için VM 'leri dağıtmaya yönelik adı
     -  [SAP destek notunun #2382421-ağ yapılandırmasını HANA ve işletim sistemi düzeyinde Iyileştirme](https://launchpad.support.sap.com/#/notes/2382421)
 
 1. SAP HANA için Azure depolama türünü seçin. Bu adımda, SAP HANA yüklemesi için depolama düzenine karar vermeniz gerekir. Bağlı Azure disklerini ya da yerel Azure NFS paylaşımlarını kullanacaksınız. Azure depolama, kullanılabilir olan veya desteklenen farklı Azure Depolama türleri bileşimleri, [SAP HANA Azure sanal makine depolama yapılandırmalarında](./hana-vm-operations-storage.md)belgelenmiştir. Başlangıç noktası olarak belgelenen konfigürasyonları alın. Üretim dışı sistemler için, daha düşük aktarım hızı veya ıOPS yapılandırabilirsiniz. Üretim amacıyla, biraz daha fazla üretilen iş ve ıOPS yapılandırmanız gerekebilir.
-2. [Azure yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md) 'YI, DBMS işlem günlüklerini içeren birimleriniz için yapılandırdığınızdan emin olun veya M serisi veya Mv2 serisi VM kullanırken günlükleri yineleyin. Yazma Hızlandırıcısı açıklanan sınırlamalara göz önünde bulundurun.
+2. [Azure yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md) 'YI, DBMS işlem günlüklerini içeren birimleriniz için yapılandırdığınızdan emin olun veya M serisi ya da Mv2-Series VM 'leri kullanırken günlükleri yineleyin. Yazma Hızlandırıcısı açıklanan sınırlamalara göz önünde bulundurun.
 2. Dağıtılan VM 'ler üzerinde [Azure hızlandırılmış ağ oluşturma](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) özelliğinin etkinleştirilip etkinleştirilmediğini denetleyin.
 
 > [!NOTE]
