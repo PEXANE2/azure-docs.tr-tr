@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: 79d677caf0c57fb36d211333b28be0eaa6528948
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86044133"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-visual-studio"></a>Visual Studio ile Stream Analytics işlerini izleme ve yönetme
@@ -40,7 +40,7 @@ Bu makalede, Visual Studio 'da Stream Analytics işinizin nasıl izleneceği gö
 ![Visual Studio 'da Stream Analytics hataları](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-errors.png)
 
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)deneyin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar

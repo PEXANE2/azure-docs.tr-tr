@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84699133"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>StorSimple 8100 cihazınızın paketini açma, raf bağlama ve kablo oluşturma
@@ -153,7 +153,7 @@ Bir sonraki adım, cihazınızı güç, ağ ve seri erişim için kablolayın.
 ## <a name="cable-your-storsimple-8100-device"></a>StorSimple 8100 cihazınızın kablolarını bağlama
 Aşağıdaki yordamlarda, StorSimple 8100 cihazınızın güç, ağ ve seri bağlantılar için nasıl kablo olarak kullanılacağı açıklanmaktadır.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Cihazınızın kablolarını bağlamaya başlamadan önce şunlara ihtiyacınız olacaktır:
 
 * Depolama cihazınız, tamamen açılmış ve rafa takılı.
@@ -178,7 +178,7 @@ Cihazınız etkin bekleme bir yapılandırmadır: herhangi bir zamanda, bir dene
 Bu yedekli denetleyici yük devretmesini desteklemek için, aşağıdaki adımlarda açıklandığı gibi cihaz ağınızı kablosunu yapmanız gerekir.
 
 #### <a name="to-cable-for-network-connection"></a>Ağ bağlantısı için kablo
-1. Cihazınız her denetleyicide altı ağ arabirimine sahiptir: dört 1 Gbps ve 2 10 Gbps Ethernet bağlantı noktası. Cihazınızın arka düzleminde çeşitli veri bağlantı noktalarını belirler.
+1. Cihazınız her denetleyicide altı ağ arabirimine sahiptir: 4 1 Gbps ve 2 10 Gbps Ethernet bağlantı noktası. Cihazınızın arka düzleminde çeşitli veri bağlantı noktalarını belirler.
    
     ![8100 cihazının geri düzlemi](./media/storsimple-8100-hardware-installation/HCSBackplaneof2UDevicewithPortsLabeled.jpg)
    

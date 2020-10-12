@@ -7,10 +7,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 08/27/2020
 ms.openlocfilehash: 5032676848536f0b9498cf4beecf86277484a901
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89230815"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Azure Logic Apps ' de HTTPS uç noktalarını kullanarak Logic Apps 'i çağırma, tetikleme veya iç içe geçme
@@ -352,10 +352,10 @@ Yanıt gövdesinde, birden fazla üstbilgiyi ve herhangi bir içerik türünü d
 
 Yanıtlar şu özelliklere sahiptir:
 
-| Özellik (görüntüleme) | Özellik (JSON) | Description |
+| Özellik (görüntüleme) | Özellik (JSON) | Açıklama |
 |--------------------|-----------------|-------------|
 | **Durum kodu** | `statusCode` | Gelen istek için yanıtta kullanılacak HTTPS durum kodu. Bu kod, 2xx, 4xx veya 5xx ile başlayan geçerli bir durum kodu olabilir. Ancak, 3xx durum kodlarına izin verilmez. |
-| **Üst Bilgiler** | `headers` | Yanıta eklenecek bir veya daha fazla üst bilgi |
+| **Üst bilgiler** | `headers` | Yanıta eklenecek bir veya daha fazla üst bilgi |
 | **Gövde** | `body` | Bir dize, JSON nesnesi veya hatta önceki adımdan başvurulan ikili içerik olabilecek bir gövde nesnesi |
 ||||
 

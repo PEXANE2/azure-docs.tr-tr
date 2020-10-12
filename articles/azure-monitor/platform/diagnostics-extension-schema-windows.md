@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
 ms.openlocfilehash: d2b1afea746410e966b43bef01a039a8471d4ae7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87007937"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows Tanılama uzantısı şeması
@@ -39,7 +39,7 @@ Sürüm 1,3 ' ye eklenmiştir.
 
 Tanılama yapılandırma dosyasının en üst düzey öğesi.  
 
-**Öznitelik** xmlns-tanılama yapılandırma dosyası için XML ad alanı:  
+**Öznitelik**  xmlns-tanılama yapılandırma dosyası için XML ad alanı:  
 `http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration`
 
 
@@ -57,9 +57,9 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 |Alt Öğeler|Açıklama|  
 |--------------------|-----------------|  
 |**WadCfg**|Gereklidir. Bu sayfanın başka bir yerindeki açıklamaya bakın.|  
-|**StorageAccount**|Verilerin depolandığı Azure depolama hesabının adı. , Set-Azurezervicediagnokıkıtik cmdlet 'ini yürütürken de parametre olarak belirtilebilir.|  
+|**StorageAccount**|Verilerin depolandığı Azure depolama hesabının adı. Set-AzureServiceDiagnosticsExtension cmdlet 'i yürütürken de parametre olarak belirtilebilir.|  
 |**StorageType**|*Tablo*, *BLOB*veya *tableandblob*olabilir. Tablo varsayılandır. TableAndBlob seçildiğinde, her tür için bir kez, tanılama verileri iki kez yazılır.|  
-|**LocalResourceDirectory**|Izleme aracısının olay verilerini depoladığı sanal makinedeki dizin. Aksi takdirde, varsayılan dizin kullanılır:<br /><br /> Bir çalışan/Web rolü için:`C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Bir sanal makine için:`C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Gerekli öznitelikler şunlardır:<br /><br /> - **yol** -Azure tanılama tarafından kullanılacak sistem üzerindeki dizin.<br /><br /> - **Expandenvironment** -ortam değişkenlerinin yol adında genişletilip genişletilmediğini denetler.|  
+|**LocalResourceDirectory**|Izleme aracısının olay verilerini depoladığı sanal makinedeki dizin. Aksi takdirde, varsayılan dizin kullanılır:<br /><br /> Bir çalışan/Web rolü için: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Bir sanal makine için: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Gerekli öznitelikler şunlardır:<br /><br /> - **yol** -Azure tanılama tarafından kullanılacak sistem üzerindeki dizin.<br /><br /> - **Expandenvironment** -ortam değişkenlerinin yol adında genişletilip genişletilmediğini denetler.|  
 
 ## <a name="wadcfg-element"></a>WadCFG öğesi  
  *Ağaç: root-DiagnosticsConfiguration-PublicConfig-WadCFG*
@@ -85,7 +85,7 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 |--------------------|-----------------|  
 |**Formattaki**|Bu sayfanın başka bir yerindeki açıklamaya bakın.|  
 |**DiagnosticInfrastructureLogs**|Azure Tanılama tarafından oluşturulan günlüklerin toplanmasını etkinleştirin. Tanılama altyapısı günlükleri, tanılama sisteminin kendisi için sorun gidermeye yarar. İsteğe bağlı öznitelikler şunlardır:<br /><br /> - **Scheduledtransferloglevelfilter** -toplanan günlüklerin en düşük önem derecesi düzeyini yapılandırır.<br /><br /> - **Scheduledtransferperiod** -depolamaya en yakın dakikaya yuvarlayarak zamanlanan aktarımlar arasındaki Aralık. Değer bir [XML "Duration veri türüdür."](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
-|**Dizinler**|Bu sayfanın başka bir yerindeki açıklamaya bakın.|  
+|**Dizine**|Bu sayfanın başka bir yerindeki açıklamaya bakın.|  
 |**EtwProviders 'lar**|Bu sayfanın başka bir yerindeki açıklamaya bakın.|  
 |**Ölçümler**|Bu sayfanın başka bir yerindeki açıklamaya bakın.|  
 |**PerformanceCounters**|Bu sayfanın başka bir yerindeki açıklamaya bakın.|  
@@ -284,7 +284,7 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 
 |Öğe|Tür|Açıklama|  
 |-------------|----------|-----------------|  
-|**Kanalla**|string|Bu sayfanın başka bir yerindeki açıklamaya bakın.|  
+|**Kanal**|string|Bu sayfanın başka bir yerindeki açıklamaya bakın.|  
 
 ## <a name="channel-element"></a>Channel öğesi
  *Ağaç: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-Sink-Channels-Channel*

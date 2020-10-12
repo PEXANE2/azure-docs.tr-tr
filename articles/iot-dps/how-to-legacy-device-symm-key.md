@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotga
 ms.openlocfilehash: f67ed44fffe6bd690d6bd76fcefa19d9ee23e52b
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90529409"
 ---
 # <a name="how-to-provision-devices-using-symmetric-key-enrollment-groups"></a>Simetrik anahtar kayıt grupları kullanarak cihazları sağlama
@@ -32,7 +32,7 @@ Bu makale Windows tabanlı bir iş istasyonuna yöneliktir. Ancak yordamları Li
 > [!NOTE]
 > Bu makalede kullanılan örnek C dilinde yazılmıştır. Ayrıca bir [C# cihaz sağlama simetrik anahtar örneği](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample) de mevcuttur. Bu örneği kullanmak için, [Azure-IoT-Samples-CSharp](https://github.com/Azure-Samples/azure-iot-samples-csharp) deposunu indirin veya kopyalayın ve örnek kodda satır içi yönergeleri izleyin. Bu makaledeki yönergeleri izleyerek, portalı kullanarak bir simetrik anahtar kayıt grubu oluşturabilir ve örneği çalıştırmak için gereken KIMLIK kapsamını ve kayıt grubu birincil ve ikincil anahtarlarını bulabilirsiniz. Ayrıca, örneği kullanarak ayrı kayıtlar da oluşturabilirsiniz.
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 
 Her bir cihaz için, cihazı tanımlayan bilgileri temel alan benzersiz bir kayıt KIMLIĞI tanımlanır. Örneğin, MAC adresi veya seri numarası.
 
@@ -43,7 +43,7 @@ Bu makalede gösterilen cihaz kodu, [hızlı başlangıç: simetrik anahtarlarla
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [IoT Hub cihazı sağlama hizmetini Azure Portal](./quick-setup-auto-provision.md) hızlı başlangıç ile tamamlama.
 

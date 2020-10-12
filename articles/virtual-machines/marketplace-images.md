@@ -10,10 +10,10 @@ ms.date: 07/07/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 3de79e5cb3db2d0c52d13826900ec7160271edf9
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86225289"
 ---
 # <a name="supply-azure-marketplace-purchase-plan-information-when-creating-images"></a>Görüntü oluştururken Azure Marketi satın alma planı bilgilerini sağlama
@@ -51,7 +51,7 @@ $gallery = Get-AzGallery `
    -ResourceGroupName myGalleryRG
 ```
 
-, Ve parametrelerini kullanarak görüntü tanımını oluşturun `-PurchasePlanPublisher` `-PurchasePlanProduct` `-PurchasePlanName` .
+, Ve parametrelerini kullanarak görüntü tanımını oluşturun  `-PurchasePlanPublisher` `-PurchasePlanProduct` `-PurchasePlanName` .
 
 ```azurepowershell-interactive
  $imageDefinition = New-AzGalleryImageDefinition `

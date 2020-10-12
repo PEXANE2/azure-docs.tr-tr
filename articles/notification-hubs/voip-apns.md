@@ -7,21 +7,21 @@ ms.date: 3/23/2020
 ms.topic: how-to
 ms.service: notification-hubs
 ms.openlocfilehash: c99af881b8f93b75633741c2352dc5df17dd2963
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80146894"
 ---
 # <a name="use-apns-voip-through-notification-hubs-not-officially-supported"></a>APNS VOıP 'i Notification Hubs aracılığıyla kullanma (resmi olarak desteklenmez)
 
 APNS VOıP bildirimlerinin Azure Notification Hubs aracılığıyla kullanılması mümkündür; Ancak, bu senaryo için resmi bir destek yoktur.
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 Notification Hubs aracılığıyla APNS VOıP bildirimleri gönderilmesini hala seçerseniz, aşağıdaki sınırlamalara dikkat edin:
 
-- Bir VOıP bildirimi göndermek `apns-topic` için üst bilginin uygulama PAKETI Kimliği + sonek olarak ayarlanması gerekir `.voip` . Örneğin, paket KIMLIĞI olan bir örnek uygulama için `com.microsoft.nhubsample` `apns-topic` üst bilgi şu şekilde ayarlanmalıdır`com.microsoft.nhubsample.voip.`
+- Bir VOıP bildirimi göndermek `apns-topic` için üst bilginin uygulama PAKETI Kimliği + sonek olarak ayarlanması gerekir `.voip` . Örneğin, paket KIMLIĞI olan bir örnek uygulama için `com.microsoft.nhubsample` `apns-topic` üst bilgi şu şekilde ayarlanmalıdır `com.microsoft.nhubsample.voip.`
 
    Uygulamanın paket KIMLIĞI, hub 'ın APNS kimlik bilgilerinin bir parçası olarak yapılandırılması gerektiğinden ve değer değiştirilemediğinden, bu yöntem Azure Notification Hubs ile iyi çalışmaz. Ayrıca, Notification Hubs `apns-topic` çalışma zamanında üstbilgideki değerin geçersiz kılınmasına izin vermez.
 

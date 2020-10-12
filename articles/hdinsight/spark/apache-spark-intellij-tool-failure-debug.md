@@ -10,17 +10,17 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
 ms.openlocfilehash: 052b12817b788ff38f0fab72a5420896b062c732
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82857425"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Azure Toolkit for IntelliJ Spark iş hata ayıklaması başarısız oldu (Önizleme)
 
 Bu makalede **Spark hata ayıklama** uygulamalarını çalıştırmak için [Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij) 'de HDInsight araçlarının nasıl kullanılacağına ilişkin adım adım yönergeler sunulmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Oracle Java geliştirme seti](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Bu öğretici, Java sürüm 8.0.202 kullanır.
   
@@ -56,7 +56,7 @@ Hata ayıklamaya devam etmek için bir Spark 2.3.2 projesi oluşturun, bu belged
 
    c. **Spark sürümü** açılan listesinde **Spark 2.3.2 (Scala 2.11.8)** öğesini seçin.
 
-   d. **Son**'u seçin.
+   d. **Son**’u seçin.
 
 3. **src**  >  **main**  >  Kodunuzu projede açmak için src Main**Scala** ' yı seçin. Bu örnek **AgeMean_Div ()** betiğini kullanır.
 
@@ -72,7 +72,7 @@ Bir Spark Scala/Java uygulaması oluşturun ve ardından aşağıdaki adımları
 
    ![IntelliJ yeni yapılandırma Ekle](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png)
 
-3. Küme sekmesinde **Uzaktan Çalıştır** ' a geçiş yapın. **ad**, **Spark kümesi**ve **ana sınıf adı**bilgilerini girin. Araçlarımız **Yürüticiler**ile hata ayıklamayı destekler. **Numexectors**, varsayılan değer 5 ' tir ve 3 ' ten daha yüksek bir değere ayarlanmamalıdır. Çalışma süresini azaltmak için **spark. yarn. maxAppAttempts** 'Yi **iş yapılandırmalarına** ekleyebilir ve değeri 1 olarak ayarlayabilirsiniz. Yapılandırmayı kaydetmek için **Tamam** düğmesine tıklayın.
+3. Küme sekmesinde **Uzaktan Çalıştır '** a geçiş yapın. **Ad**, **Spark kümesi**ve **ana sınıf adı**bilgilerini girin. Araçlarımız **Yürüticiler**ile hata ayıklamayı destekler. **Numexectors**, varsayılan değer 5 ' tir ve 3 ' ten daha yüksek bir değere ayarlanmamalıdır. Çalışma süresini azaltmak için **spark. yarn. maxAppAttempts** 'Yi **iş yapılandırmalarına** ekleyebilir ve değeri 1 olarak ayarlayabilirsiniz. Yapılandırmayı kaydetmek için **Tamam** düğmesine tıklayın.
 
    ![IntelliJ hata ayıklama yapılandırmasını yeni Çalıştır](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png)
 

@@ -7,10 +7,10 @@ ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3cb22bc2cd032e51dcdb7429e2c0684c578b0870
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89005658"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Ölçümlerle Service Fabric kaynak tüketimini yönetme ve yükleme
@@ -29,7 +29,7 @@ Bellek, disk ve CPU kullanımı gibi şeyler, ölçüm örnekleridir. Bu ölçü
 | --- | --- | --- | --- | --- |
 | PrimaryCount |0 |0 |1 |Yüksek |
 | ReplicaCount |0 |1 |1 |Orta |
-| Count |1 |1 |1 |Düşük |
+| Sayı |1 |1 |1 |Düşük |
 
 
 Temel iş yükleri için varsayılan ölçümler, kümede işin daha iyi bir dağıtımını sağlar. Aşağıdaki örnekte, iki hizmet oluşturduğumuz ve dengeleme için varsayılan ölçümleri temel alarak ne olacağını görelim. İlk hizmet, üç bölümden oluşan ve üç bölümlü bir hedef çoğaltma kümesi boyutu ile durum bilgisi olan bir hizmettir. İkinci hizmet, bir bölüm ve örnek sayısı üç olan durum bilgisi olmayan bir hizmettir.

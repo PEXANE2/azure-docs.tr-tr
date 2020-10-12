@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/22/2020
 ms.openlocfilehash: 6d0a29d8ef8123eafd6a1616a24003c1e36e6e59
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90905927"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>İçeri ve dışarı aktarma kullanarak MySQL veritabanınızı geçirme
@@ -31,7 +31,7 @@ Bağlanmak için, MySQL için Azure veritabanı **'Na genel bakış** bölümün
 
 Bağlantı bilgilerini MySQL çalışma ekranına ekleyin.
 
-:::image type="content" source="./media/concepts-migrate-import-export/2_setup-new-connection.png" alt-text="MySQL çalışma ekranı bağlantı dizesi":::
+:::image type="content" source="./media/concepts-migrate-import-export/2_setup-new-connection.png" alt-text="Azure portal bağlantı bilgilerini bulun":::
 
 ## <a name="determine-when-to-use-import-and-export-techniques"></a>İçeri ve dışarı aktarma tekniklerini ne zaman kullanacağınızı belirleme
 
@@ -68,7 +68,7 @@ MySQL çalışma ekranına verileri dışarı ve içeri aktarmanın iki yolu var
 > - MySQL esnek sunucusu için ' ' kullanırsanız ' Kullanıcı adı ' kullanabilirsiniz username@servername , bağlantı başarısız olur.
 
 ### <a name="table-data-export-and-import-wizards-from-the-object-browsers-context-menu"></a>Nesne tarayıcısının bağlam menüsünden Tablo verilerini dışa aktarma ve içeri aktarma sihirbazları
-:::image type="content" source="./media/concepts-migrate-import-export/p1.png" alt-text="Nesne tarayıcısının bağlam menüsündeki MySQL çalışma ekranı sihirbazları":::
+:::image type="content" source="./media/concepts-migrate-import-export/p1.png" alt-text="Azure portal bağlantı bilgilerini bulun":::
 
 Tablo verilerine yönelik sihirbazlar CSV ve JSON dosyalarını kullanarak içeri ve dışarı aktarma işlemlerini destekler. Ayırıcılar, sütun seçimi ve kodlama seçimi gibi çeşitli yapılandırma seçeneklerini içerirler. Her Sihirbazı yerel veya uzaktan bağlanan MySQL sunucularında gerçekleştirebilirsiniz. İçeri aktarma eylemi tablo, sütun ve tür eşlemeyi içerir.
 
@@ -94,7 +94,7 @@ Aşağıdaki örnek, tabloyu bir CSV dosyasından içe aktarır:
 MySQL çalışma sunucusundan oluşturulan veya mysqldump komutundan oluşturulan SQL 'i içeri veya dışarı aktarmak için bir sihirbaz kullanın. Bu sihirbazlara **Gezgin** bölmesinden veya ana menüden **sunucu** ' yı seçerek erişin. Ardından **veri dışarı aktarma** veya **veri içeri aktarma**' yı seçin.
 
 #### <a name="data-export"></a>Verileri Dışarı Aktarma
-:::image type="content" source="./media/concepts-migrate-import-export/p2.png" alt-text="MySQL pencere verileri Gezgin bölmesini kullanarak dışarı aktarma":::
+:::image type="content" source="./media/concepts-migrate-import-export/p2.png" alt-text="Azure portal bağlantı bilgilerini bulun":::
 
 MySQL verilerinizi dışarı aktarmak için **veri dışa aktarma** sekmesini kullanabilirsiniz.
 1. Dışarı aktarmak istediğiniz her şemayı seçin, isteğe bağlı olarak her şemadan belirli şema nesneleri/tablolar ' ı seçin ve dışarı aktarmayı oluşturun. Yapılandırma seçenekleri bir proje klasörüne veya kendi içindeki SQL dosyasına dışarı aktarma, saklı yordamlar ve olayların dökümünü alma veya tablo verilerini atlama içerir.
@@ -107,7 +107,7 @@ MySQL verilerinizi dışarı aktarmak için **veri dışa aktarma** sekmesini ku
 
 
 #### <a name="data-import"></a>Veri Içeri aktarma
-:::image type="content" source="./media/concepts-migrate-import-export/p3.png" alt-text="MySQL çalışma ekranı verileri yönetim gezginini kullanarak Içeri aktarma":::
+:::image type="content" source="./media/concepts-migrate-import-export/p3.png" alt-text="Azure portal bağlantı bilgilerini bulun":::
 
 Dışarı aktarılan verileri veri dışa aktarma işleminden veya mysqldump komutundan içeri aktarmak veya geri yüklemek için **veri Içeri aktarma** sekmesini kullanabilirsiniz.
 1. Proje klasörünü veya kendi içinde kapsanan SQL dosyasını seçin, içine aktarılacak şemayı seçin veya yeni bir şema tanımlamak için **Yeni** ' yi seçin.

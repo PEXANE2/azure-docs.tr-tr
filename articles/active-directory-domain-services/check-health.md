@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: iainfou
 ms.openlocfilehash: 34f4ecfd4cc3432babbd26d65bd37ea4d1fb882c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86040427"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services yönetilen bir etki alanının durumunu denetleme
@@ -40,7 +40,7 @@ Sağ üst köşedeki durum, yönetilen etki alanının genel durumunu gösterir.
 
 | Durum | Simge | Açıklama |
 | --- | :----: | --- |
-| Çalışıyor | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15" alt="Green check mark for running"> | Yönetilen etki alanı doğru şekilde çalışıyor ve kritik veya uyarı uyarıları yok. Etki alanında bilgilendirici uyarılar olabilir. |
+| Çalışma | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15" alt="Green check mark for running"> | Yönetilen etki alanı doğru şekilde çalışıyor ve kritik veya uyarı uyarıları yok. Etki alanında bilgilendirici uyarılar olabilir. |
 | İlgilenilmesi gerekiyor (uyarı) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15" alt="Yellow exclamation mark for warning"> | Yönetilen etki alanında kritik uyarı yok, ancak giderilmesi gereken bir veya daha fazla uyarı uyarısı var. |
 | İlgilenilmesi gerekiyor (kritik) | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15" alt="Red exclamation mark for critical"> | Yönetilen etki alanında giderilmesi gereken bir veya daha fazla kritik uyarı vardır. Ayrıca uyarı ve/veya bilgilendirici uyarılarınız olabilir. |
 | Dağıtılmasını | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15" alt="Blue circular arrows for deploying"> | Yönetilen etki alanı dağıtılıyor. |

@@ -9,10 +9,10 @@ ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: fb908fe94f940073753ea8e1cde3da2b2a0c4b6b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88034779"
 ---
 # <a name="tune-performance-hive-hdinsight--azure-data-lake-storage-gen2"></a>Performansı ayarlama: Hive, HDInsight & Azure Data Lake Storage 2.
@@ -47,7 +47,7 @@ Gelişmiş Data Lake Storage 2. performansını ayarlamaya yönelik en önemli a
 
 **hive.exec. Reducer. bytes. per. Reducer** – Bu parametre her bir Reducer boyutunu ayarlar.  Varsayılan olarak, her Reducer 256 MB 'dir.  
 
-## <a name="guidance"></a>Yönerge
+## <a name="guidance"></a>Rehber
 
 **hive.exec. Reducer. bytes. per. Reducer** – varsayılan değer sıkıştırılmamış olduğunda iyi sonuç verir.  Sıkıştırılmış veriler için Reducer boyutunu azaltmanız gerekir.  
 
@@ -58,7 +58,7 @@ G/ç yoğunluklu iş yükleri, tez kapsayıcı boyutunu azaltarak daha paralelli
 Ya da paralellik çalıştıran, eşzamanlı görev sayısı toplam YARN bellekle sınırlı olacaktır.  YARN kapsayıcılarının sayısı, kaç tane eşzamanlı görevin çalıştırılacağını dikte eder.  Düğüm başına YARN belleği bulmak için, ambarı 'na gidebilirsiniz.  YARN 'ye gidin ve configs sekmesini görüntüleyin.  YARN belleği Bu pencerede görüntülenir.  
 
 - Toplam YARN bellek = düğüm * düğüm başına YARN bellek
-- \#YARN kapsayıcıları = toplam YARN bellek/tez kapsayıcı boyutu
+- \# YARN kapsayıcıları = toplam YARN bellek/tez kapsayıcı boyutu
 
 Data Lake Storage 2. kullanarak performansı iyileştirmeye yönelik anahtar, olabildiğince fazla eşzamanlılık artışı sağlar.  Tez, oluşturulması gereken görev sayısını otomatik olarak hesaplar, bu nedenle ayarlamanız gerekmez.   
 
@@ -68,7 +68,7 @@ Data Lake Storage 2. kullanarak performansı iyileştirmeye yönelik anahtar, ol
 
 - Toplam YARN bellek = düğüm * düğüm başına YARN bellek
 - Toplam YARN bellek = 8 düğüm * 96GB = 768GB
-- \#YARN kapsayıcıları = 768/3072MB = 256
+- \# YARN kapsayıcıları = 768/3072MB = 256
 
 ## <a name="further-information-on-hive-tuning"></a>Hive ayarlama hakkında daha fazla bilgi
 

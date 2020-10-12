@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
 ms.openlocfilehash: 3cd04c93d508bd06c4ddd2e05074084202b9fc60
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87014948"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler dış olayları işleme (Azure Işlevleri)
@@ -223,7 +223,7 @@ main = df.Orchestrator.create(orchestrator_function)
 
 ---
 
-`WaitForExternalEvent`Bazı girişler için süresiz olarak bekler.  İşlev uygulaması beklerken güvenli bir şekilde kaldırılabilir. Bu düzenleme örneğine bir olay ulaştığında, başlatılabilmesi uyandırılır otomatik olarak oluşturulur ve olayı anında işler.
+`WaitForExternalEvent` Bazı girişler için süresiz olarak bekler.  İşlev uygulaması beklerken güvenli bir şekilde kaldırılabilir. Bu düzenleme örneğine bir olay ulaştığında, başlatılabilmesi uyandırılır otomatik olarak oluşturulur ve olayı anında işler.
 
 > [!NOTE]
 > İşlev uygulamanız tüketim planını kullanıyorsa, bir Orchestrator işlevi bir görevi beklerken `WaitForExternalEvent` (.net), `waitForExternalEvent` (JavaScript) veya (Python), ne kadar bekleyeceğini bağımsız olarak hiçbir faturalandırma ücreti tahakkuk etmez `wait_for_external_event` .

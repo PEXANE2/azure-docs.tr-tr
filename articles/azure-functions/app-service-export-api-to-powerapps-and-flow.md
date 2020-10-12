@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/28/2020
 ms.reviewer: sunayv
 ms.openlocfilehash: 7d968c62afbfc92952f747e1e7627c98fe07436d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87015094"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Azure 'da barındırılan bir API 'yi PowerApps ve Microsoft Flow dışa aktarma
@@ -66,7 +66,7 @@ Dışarı aktarmayı **hızlı** modda gerçekleştirmek için şu adımları iz
  
     ![PowerApps ve Microsoft Flow Express dışa aktarma](media/app-service-export-api-to-powerapps-and-flow/export-express.png)
 
-3. **Tamam** düğmesine tıklayın. Özel bağlayıcı artık kurulmuştur ve belirlediğiniz ortama eklenir.
+3. **Tamam**'a tıklayın. Özel bağlayıcı artık kurulmuştur ve belirlediğiniz ortama eklenir.
 
 <a name="manual"></a>
 ## <a name="use-manual-export"></a>El ile dışarı aktarma kullan
