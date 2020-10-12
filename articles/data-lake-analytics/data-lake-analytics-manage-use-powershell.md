@@ -8,10 +8,10 @@ ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
 ms.topic: how-to
 ms.date: 06/29/2018
 ms.openlocfilehash: 70a251db6c08f353f9c50512c41551e7a909a059
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87125658"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Azure Data Lake Analytics'i Azure PowerShell'i kullanarak yönetme
@@ -205,7 +205,7 @@ Get-AdlJob -Account $adla
 
 ### <a name="list-the-top-n-jobs"></a>İlk N işi listeleyin
 
-Varsayılan olarak, iş listesi gönderme zamanında sıralanır. Yani en son gönderilen işler önce görüntülenir. Varsayılan olarak ADLA hesabı, işleri 180 gün süreyle anımsar, ancak get-AdlJob cmdlet 'i varsayılan olarak yalnızca ilk 500 ' i döndürür. Belirli sayıda işi listelemek için top parametresini kullanın.
+Varsayılan olarak, iş listesi gönderme zamanında sıralanır. Yani en son gönderilen işler önce görüntülenir. Varsayılan olarak ADLA hesabı, işleri 180 gün süreyle anımsar, ancak Get-AdlJob cmdlet 'i varsayılan olarak yalnızca ilk 500 ' i döndürür. Belirli sayıda işi listelemek için top parametresini kullanın.
 
 ```powershell
 $jobs = Get-AdlJob -Account $adla -Top 10

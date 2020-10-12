@@ -12,20 +12,20 @@ ms.author: jrasnick
 ms.reviewer: genemi
 ms.date: 01/25/2019
 ms.openlocfilehash: 2134cf1fda5f0f1699feb46582813d198304f92e
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91616389"
 ---
-# <a name="monitor-in-memory-oltp-storage-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde bellek Içi OLTP depolama alanını izleme
+# <a name="monitor-in-memory-oltp-storage-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde In-Memory OLTP depolama alanını izleme
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
-Bellek içi [OLTP](in-memory-oltp-overview.md)kullanılırken bellek için iyileştirilmiş tablolardaki ve tablo değişkenlerinin verileri bellek içi OLTP depolaması 'nda bulunur.
+[Bellek ıçı OLTP](in-memory-oltp-overview.md)kullanılırken, bellek için iyileştirilmiş tablolardaki ve tablo değişkenlerinin VERILERI In-Memory OLTP depolamada bulunur.
 
-## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>Verilerin bellek Içi OLTP depolama Cap içinde uygun olup olmadığını belirleme
+## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>Verilerin In-Memory OLTP depolama Cap içinde uygun olup olmadığını belirleme
 
-Farklı hizmet katmanlarının depolama büyük harflerini belirleme. Her Premium ve İş Açısından Kritik hizmet katmanının en fazla bellek Içi OLTP depolama boyutu vardır.
+Farklı hizmet katmanlarının depolama büyük harflerini belirleme. Her Premium ve İş Açısından Kritik hizmet katmanının en yüksek In-Memory OLTP depolama boyutu vardır.
 
 - [DTU tabanlı kaynak limitleri-tek veritabanı](database/resource-limits-dtu-single-databases.md)
 - [DTU tabanlı kaynak limitleri-elastik havuzlar](database/resource-limits-dtu-elastic-pools.md)
@@ -55,9 +55,9 @@ Ya da bellek Içi depolama kullanımını göstermek için aşağıdaki sorguyu 
 
 ## <a name="correct-out-of-in-memory-oltp-storage-situations---errors-41823-and-41840"></a>Bellek dışı OLTP depolama durumlarını düzeltme-hatalar 41823 ve 41840
 
-Veritabanınızdaki bellek Içi OLTP depolama Cap 'e ulaşarak, ekleme, GÜNCELLEŞTIRME, DEĞIŞTIRME ve oluşturma işlemlerinde hata iletisi 41823 (tek veritabanları için) veya 41840 (elastik havuzlar için) hatası ile başarısız olur. Her iki hata da etkin işlemin durmasına neden olur.
+Veritabanınızda In-Memory OLTP depolama Cap 'e vurarak, ekleme, GÜNCELLEŞTIRME, DEĞIŞTIRME ve oluşturma işlemlerinde hata iletisi 41823 (tek veritabanları için) veya 41840 hatası (elastik havuzlar için) ile sonuçlanır. Her iki hata da etkin işlemin durmasına neden olur.
 
-41823 ve 41840 hata iletileri, veritabanı veya havuzdaki bellek için iyileştirilmiş tabloların ve tablo değişkenlerinin maksimum bellek Içi OLTP depolama boyutuna ulaştığından emin olduğunu gösterir.
+41823 ve 41840 hata iletileri, veritabanı veya havuzdaki bellek için iyileştirilmiş tabloların ve tablo değişkenlerinin en büyük In-Memory OLTP depolama boyutuna ulaştığından emin olduğunu gösterir.
 
 Bu hatayı çözmek için şunlardan birini yapın:
 
@@ -65,7 +65,7 @@ Bu hatayı çözmek için şunlardan birini yapın:
 - Bellek için iyileştirilmiş tablolarda tutmanız gereken veriler için hizmet katmanını, bellek içi yeterli depolama alanı ile bir birine yükseltin.
 
 > [!NOTE]
-> Nadir durumlarda, 41823 ve 41840 hataları geçici olabilir, yani bellek Içi OLTP depolama alanı üzerinde yeterli kullanılabilir ve işlem başarılı bir şekilde yeniden denenmelidir. Bu nedenle, her iki bellek Içi OLTP depolama alanını izlemenizi ve ilk olarak 41823 veya 41840 hatası ile karşılaşıldığında yeniden denemeyi öneririz. Yeniden deneme mantığı hakkında daha fazla bilgi için bkz. [bellek ıçı OLTP Ile çakışma algılama ve yeniden deneme mantığı](https://docs.microsoft.com/sql/relational-databases/In-memory-oltp/transactions-with-memory-optimized-tables#conflict-detection-and-retry-logic).
+> Nadir durumlarda, 41823 ve 41840 hataları geçici olabilir, yani OLTP depolaması In-Memory kullanılabilir ve işlem başarılı bir şekilde yeniden denenmelidir. Bu nedenle, hem kullanılabilir In-Memory OLTP depolama alanını hem de ilk kez 41823 veya 41840 hatasıyla karşılaşıldığında yeniden denemek önerilir. Yeniden deneme mantığı hakkında daha fazla bilgi için bkz. [In-Memory OLTP Ile çakışma algılama ve yeniden deneme mantığı](https://docs.microsoft.com/sql/relational-databases/In-memory-oltp/transactions-with-memory-optimized-tables#conflict-detection-and-retry-logic).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

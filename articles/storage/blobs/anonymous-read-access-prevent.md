@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
 ms.openlocfilehash: 0ed8b04353c50bff53d074ebdb1efa2a286c8e59
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90086581"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Kapsayıcılara ve bloblara anonim genel okuma erişimini engelleyin
@@ -59,7 +59,7 @@ Anonim istekleri izleyen bir ölçüm oluşturmak için aşağıdaki adımları 
 
 Ölçümü yapılandırdıktan sonra, anonim istekler grafikte görünmeye başlar. Aşağıdaki görüntüde, son otuz dakika içinde toplanan anonim istekler gösterilmektedir.
 
-:::image type="content" source="media/anonymous-read-access-prevent/metric-anonymous-blob-requests.png" alt-text="Blob depolamaya yönelik toplanmış Anonim istekleri gösteren ekran görüntüsü":::
+:::image type="content" source="media/anonymous-read-access-prevent/metric-anonymous-blob-requests.png" alt-text="Blob işlemlerini toplamak için ölçümün nasıl yapılandırılacağını gösteren ekran görüntüsü":::
 
 Ayrıca, depolama hesabınızda belirli sayıda anonim istek yapıldığında size bildirimde bulunan bir uyarı kuralı yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Azure izleyici kullanarak ölçüm uyarıları oluşturma, görüntüleme ve yönetme](../../azure-monitor/platform/alerts-metric.md).
 
@@ -85,7 +85,7 @@ Azure depolama verilerini Azure Izleyici ile günlüğe kaydetmek ve Azure Log A
 1. **Kategori ayrıntıları**' nın altında, **günlük** bölümünde günlüğe kaydedilecek istek türlerini seçin. Tüm anonim istekler okuma istekleri olacak, bu nedenle Anonim istekleri yakalamak için **Storageread** öğesini seçin.
 1. **Hedef ayrıntıları**altında **Log Analytics gönder**' i seçin. Aşağıdaki görüntüde gösterildiği gibi aboneliğinizi ve daha önce oluşturduğunuz Log Analytics çalışma alanını seçin.
 
-    :::image type="content" source="media/anonymous-read-access-prevent/create-diagnostic-setting-logs.png" alt-text="İstekleri günlüğe kaydetmek için bir tanılama ayarı oluşturmayı gösteren ekran görüntüsü":::
+    :::image type="content" source="media/anonymous-read-access-prevent/create-diagnostic-setting-logs.png" alt-text="Blob işlemlerini toplamak için ölçümün nasıl yapılandırılacağını gösteren ekran görüntüsü":::
 
 Tanılama ayarını oluşturduktan sonra depolama hesabına yönelik istekler daha sonra bu ayara göre günlüğe kaydedilir. Daha fazla bilgi için bkz. [Azure 'da kaynak günlüklerini ve ölçümleri toplamak için tanılama ayarı oluşturma](../../azure-monitor/platform/diagnostic-settings.md).
 
@@ -241,7 +241,7 @@ Uyumluluk raporunu Azure portal görüntülemek için aşağıdaki adımları iz
 1. Önceki adımda oluşturduğunuz ilke atamasının adı için sonuçları filtreleyin. Rapor, ilkeyle ilgili olarak kaç kaynağın uyumsuz olduğunu gösterir.
 1. Uyumluluğa sahip olmayan depolama hesaplarının bir listesi de dahil olmak üzere ek ayrıntılar için raporda ayrıntıya gidebilirsiniz.
 
-    :::image type="content" source="media/anonymous-read-access-prevent/compliance-report-policy-portal.png" alt-text="Blob genel erişimi için denetim ilkesi uyumluluk raporunu gösteren ekran görüntüsü":::
+    :::image type="content" source="media/anonymous-read-access-prevent/compliance-report-policy-portal.png" alt-text="Blob işlemlerini toplamak için ölçümün nasıl yapılandırılacağını gösteren ekran görüntüsü":::
 
 ## <a name="use-azure-policy-to-enforce-authorized-access"></a>Yetkili erişimi zorlamak için Azure Ilkesini kullanma
 
@@ -277,7 +277,7 @@ Anonim isteklere izin veren bir genel erişim ayarı için reddetme etkisi olan 
 
 Aşağıdaki görüntüde, reddetme etkisi olan bir ilke ortak erişime izin verilmediğinde genel erişime izin veren (yeni bir hesap için varsayılan) bir depolama hesabı oluşturmaya çalıştığınızda oluşan hata gösterilmektedir.
 
-:::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="İlke ihlalinden bir depolama hesabı oluşturulurken oluşan hatayı gösteren ekran görüntüsü":::
+:::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="Blob işlemlerini toplamak için ölçümün nasıl yapılandırılacağını gösteren ekran görüntüsü":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

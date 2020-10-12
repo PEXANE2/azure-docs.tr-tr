@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 19c6bf058af62f830c825eef900bff712ba07181
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90085918"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Kullanım koşulları Azure Active Directory
@@ -52,7 +52,7 @@ Azure AD kullanım koşulları aşağıdaki yeteneklere sahiptir:
 - Uyumluluk ve denetim için kullanım koşulları etkinlik günlüğünü görüntüleyin.
 - [Microsoft Graph API 'leri](/graph/api/resources/agreement?view=graph-rest-beta) kullanarak kullanım koşulları oluşturun ve yönetin (Şu anda önizleme aşamasındadır).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD kullanım koşulları 'nı kullanmak ve yapılandırmak için şunları yapmanız gerekir:
 
@@ -225,7 +225,7 @@ Kullanım koşulları 'nın bazı ayrıntılarını düzenleyebilir, ancak var o
 
    ![Ad ve genişletme seçeneklerini gösteren kullanım koşulları bölmesini Düzenle](./media/terms-of-use/edit-tou.png)
 
-1. **Kaydet**’a tıklayarak değişikliklerinizi kaydedin.
+1. Değişikliklerinizi kaydetmek için **Kaydet**’e tıklayın.
 
    Değişikliklerinizi kaydettikten sonra, kullanıcılar bu düzenlemeleri yeniden kabul etmek zorunda olmayacaktır.
 
@@ -255,10 +255,10 @@ Desteklenen platformların ve yazılımların listesi aşağıda verilmiştir.
 > [!div class="mx-tableFixed"]
 > |  | iOS | Android | Windows 10 | Diğer |
 > | --- | --- | --- | --- | --- |
-> | **Yerel uygulama** | Yes | Yes | Yes |  |
-> | **Microsoft Edge** | Yes | Yes | Yes |  |
-> | **Internet Explorer** | Yes | Yes | Yes |  |
-> | **Chrome (uzantısıyla)** | Yes | Yes | Yes |  |
+> | **Yerel uygulama** | Evet | Evet | Evet |  |
+> | **Microsoft Edge** | Evet | Evet | Evet |  |
+> | **Internet Explorer** | Evet | Evet | Evet |  |
+> | **Chrome (uzantısıyla)** | Evet | Evet | Evet |  |
 
 Cihaz başına kullanım koşulları aşağıdaki kısıtlamalara sahiptir:
 

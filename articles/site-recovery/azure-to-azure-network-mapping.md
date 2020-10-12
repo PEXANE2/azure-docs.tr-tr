@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: harshacs
 ms.openlocfilehash: b5ae68dea228e834b2449152bd3ef357f2a74e83
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90069501"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Sanal ağlar için ağ eşlemesini ve IP adresini ayarlama
 
 Bu makalede, farklı Azure bölgelerinde bulunan iki Azure sanal ağı örneğinin (VNet 'ler) nasıl eşleneceğini ve ağlar arasında IP adreslemenin nasıl ayarlanacağı açıklanır. Ağ eşleme, çoğaltmayı etkinleştirme sırasında kaynak ağa göre hedef ağ seçimi için varsayılan bir davranış sağlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Ağları eşleştirmadan önce kaynak ve hedef Azure bölgelerinde [Azure sanal](../virtual-network/virtual-networks-overview.md) ağlarına sahip olmanız gerekir. 
 

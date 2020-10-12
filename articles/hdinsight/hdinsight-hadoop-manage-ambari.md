@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/16/2020
 ms.openlocfilehash: ce078a3dad645f592bb33ed55ce508f68ce8f30a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87281404"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>HDInsight kümelerini Apache Ambari Web arabiriminden yönetme
@@ -68,7 +68,7 @@ Sayfa açıldığında, üstteki çubuğun üzerine göz önünde yer. Bu çubuk
 Aşağıdaki liste, ambarı tarafından kullanılan ortak uyarı durumlarını içerir:
 
 * **Tamam**
-* **Uyarı**
+* **Warning**
 * **BAŞLATMA**
 * **BILINMEYEN**
 
@@ -163,7 +163,7 @@ Kullanıcılar, gruplar ve izinlerle çalışma desteklenir. Yerel Yönetim içi
     |Bakım modunu kapat|Ana bilgisayarı normal uyarı ' e döndürür.|
     |Durdur|Konakta Katanode veya Nodeyöneticileri sonlandırır.|
     |Başlangıç|Konakta Dadtanode veya Nodeyöneticileri başlatır.|
-    |Yeniden Başlatma|Konakta Dadtanode veya Nodeyöneticileri durdurup başlatır.|
+    |Yeniden başlat|Konakta Dadtanode veya Nodeyöneticileri durdurup başlatır.|
     |Açığa|Kümeden bir konağı kaldırır. **Bu eylemi HDInsight kümelerinde kullanmayın.**|
     |Yeniden komisyon|Önceden yetkisi alınmış bir konağı kümeye ekler. **Bu eylemi HDInsight kümelerinde kullanmayın.**|
 

@@ -17,10 +17,10 @@ ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 51d8b740ba1275b23bc17a58284141dce0d48fe0
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89300009"
 ---
 # <a name="security-frame-authorization--mitigations"></a>Güvenlik çerçevesi: yetkilendirme | Karşı 
@@ -36,7 +36,7 @@ ms.locfileid: "89300009"
 | **Service Fabric güven sınırı** | <ul><li>[RBAC kullanarak istemcinin küme işlemlerine erişimini kısıtlama](#cluster-rbac)</li></ul> |
 | **Dynamics CRM** | <ul><li>[Güvenlik modellemesini gerçekleştirin ve gereken yerlerde alan düzeyi güvenliği kullanın](#modeling-field)</li></ul> |
 | **Dynamics CRM portalı** | <ul><li>[Portalın güvenlik modelinin CRM 'nin geri kalanından farklı olduğunu aklınızda tutarak Portal hesaplarının güvenlik modellemesini gerçekleştirin](#portal-security)</li></ul> |
-| **Azure Depolama** | <ul><li>[Azure Tablo depolama alanındaki çeşitli varlıklar üzerinde hassas izinler verin](#permission-entities)</li><li>[Rol tabanlı Access Control (RBAC) Azure depolama hesabına Azure Resource Manager kullanarak etkinleştirin](#rbac-azure-manager)</li></ul> |
+| **Azure Depolama** | <ul><li>[Azure Tablo depolama alanındaki çeşitli varlıklar üzerinde hassas izinler verin](#permission-entities)</li><li>[Azure Resource Manager kullanarak Azure Storage hesabı 'nda Role-Based Access Control (RBAC) etkinleştirme](#rbac-azure-manager)</li></ul> |
 | **Mobil Istemci** | <ul><li>[Örtük jailbreak veya kök öğe algılamayı uygulama](#rooting-detection)</li></ul> |
 | **WCF** | <ul><li>[WCF 'de zayıf sınıf başvurusu](#weak-class-wcf)</li><li>[WCF-Yetkilendirme denetimini uygulama](#wcf-authz)</li></ul> |
 | **Web API** | <ul><li>[ASP.NET Web API 'sinde doğru yetkilendirme mekanizmasını uygulama](#authz-aspnet)</li></ul> |
@@ -81,7 +81,7 @@ ms.locfileid: "89300009"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -92,7 +92,7 @@ ms.locfileid: "89300009"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -103,18 +103,18 @@ ms.locfileid: "89300009"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
-| **Adımlar** | <p>Bu ilke, Kullanıcı hesabına yalnızca kullanıcıların çalışması için gerekli olan ayrıcalıkların verilmesi anlamına gelir. Örneğin, bir yedekleme kullanıcısının yazılım yüklemesi gerekmez: Bu nedenle, yedekleme kullanıcısının yalnızca yedekleme ve yedeklemeyle ilgili uygulamaları çalıştırma hakları vardır. Yeni yazılım yükleme gibi başka ayrıcalıklar engellenir. Bu ilke, genellikle normal bir kullanıcı hesabında çalışan bir kişisel bilgisayar kullanıcısına uygulanır ve ayrıcalıklı, parola korumalı bir hesabı (yani, Süper Kullanıcı) yalnızca durum size kesinlikle talep edildiğinde açar. </p><p>Bu ilke, Web uygulamalarınız için de uygulanabilir. Yalnızca oturumları kullanan rol tabanlı kimlik doğrulama yöntemlerine bağlı olarak, kullanıcılara bir veritabanı tabanlı kimlik doğrulama sistemi yoluyla ayrıcalık atamak istiyoruz. Kullanıcının doğru şekilde oturum açmış olup olmadığını belirlemek için oturumları hala kullandığımızda, bu kullanıcıyı belirli bir rol ile atamak yerine, sistem üzerinde hangi eylemlerin ayrıcalıklı olduğunu doğrulama ayrıcalıklarına sahip olduğunu belirlemek için de oturum kullanırız. Ayrıca, bu yöntemin büyük bir uzmanı olması, bir kullanıcıya daha az ayrıcalık atanması gerektiğinde değişiklikleriniz, aksi takdirde önce süresi dolacak olan oturuma bağlı olmadığından değişiklikler anında uygulanır.</p>|
+| **Adımlar** | <p>Bu ilke, Kullanıcı hesabına yalnızca kullanıcıların çalışması için gerekli olan ayrıcalıkların verilmesi anlamına gelir. Örneğin, bir yedekleme kullanıcısının yazılım yüklemesi gerekmez: Bu nedenle, yedekleme kullanıcısının yalnızca yedekleme ve yedeklemeyle ilgili uygulamaları çalıştırma hakları vardır. Yeni yazılım yükleme gibi başka ayrıcalıklar engellenir. Bu ilke, genellikle normal bir kullanıcı hesabında çalışan bir kişisel bilgisayar kullanıcısına uygulanır ve ayrıcalıklı, parola korumalı bir hesabı (yani, Süper Kullanıcı) yalnızca durum size kesinlikle talep edildiğinde açar. </p><p>Bu ilke, Web uygulamalarınız için de uygulanabilir. Yalnızca oturumları kullanan rol tabanlı kimlik doğrulama yöntemlerine bağlı olarak, kullanıcılara bir Database-Based kimlik doğrulama sistemi yoluyla ayrıcalık atamak istiyoruz. Kullanıcının doğru şekilde oturum açmış olup olmadığını belirlemek için oturumları hala kullandığımızda, bu kullanıcıyı belirli bir rol ile atamak yerine, sistem üzerinde hangi eylemlerin ayrıcalıklı olduğunu doğrulama ayrıcalıklarına sahip olduğunu belirlemek için de oturum kullanırız. Ayrıca, bu yöntemin büyük bir uzmanı olması, bir kullanıcıya daha az ayrıcalık atanması gerektiğinde değişiklikleriniz, aksi takdirde önce süresi dolacak olan oturuma bağlı olmadığından değişiklikler anında uygulanır.</p>|
 
 ## <a name="business-logic-and-resource-access-authorization-decisions-should-not-be-based-on-incoming-request-parameters"></a><a id="logic-request-parameters"></a>İş mantığı ve kaynak erişimi yetkilendirme kararları gelen istek parametrelerine dayanmamalıdır
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -133,7 +133,7 @@ Artık olası bir saldırgan, verileri alma tanımlayıcısı sunucu tarafında 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -144,7 +144,7 @@ Artık olası bir saldırgan, verileri alma tanımlayıcısı sunucu tarafında 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Veritabanı | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [SQL izinleri hiyerarşisi](https://docs.microsoft.com/sql/relational-databases/security/permissions-hierarchy-database-engine), [SQL securables](https://docs.microsoft.com/sql/relational-databases/security/securables) |
@@ -155,11 +155,11 @@ Artık olası bir saldırgan, verileri alma tanımlayıcısı sunucu tarafında 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Veritabanı | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | SQL Azure, Onprea |
 | **Öznitelikler**              | SQL sürümü-V12, SQL sürümü-MsSQL2016 |
-| **Başvurular**              | [Satır düzeyi güvenliği SQL Server (RLS)](https://msdn.microsoft.com/library/azure/dn765131.aspx) |
-| **Adımlar** | <p>Satır Düzeyi Güvenlik, müşterilerin bir veritabanı tablosundaki satırlara erişimi, sorguyu yürüten kullanıcının özelliklerine göre (grup üyeliği veya yürütme bağlamı) denetlemesini sağlar.</p><p>Satır düzeyi güvenlik (RLS), uygulamanızda güvenliğin tasarımını ve kodlamasını basitleştirir. RLS, veri satırı erişiminde kısıtlama uygulamanızı sağlar. Örneğin çalışanlar yalnızca kendi bölümleriyle ilgili veri satırlarına erişmesi veya müşterilerin yalnızca kendi şirketleriyle ilgili verilere ulaşması sağlanabilir.</p><p>Erişim kısıtlama mantığı, başka bir uygulama katmanındaki verilerden uzakta değil, veritabanı katmanında bulunur. Veritabanı sistemi, herhangi bir katmanda veri erişimi her denendiğinde erişim kısıtlamalarını uygular. Bu, güvenlik sisteminin yüzey alanını azaltarak güvenlik sisteminin daha güvenilir ve sağlam olmasını sağlar.</p><p>|
+| **Başvurular**              | [SQL Server Row-Level güvenliği (RLS)](https://msdn.microsoft.com/library/azure/dn765131.aspx) |
+| **Adımlar** | <p>Satır Düzeyi Güvenlik, müşterilerin bir veritabanı tablosundaki satırlara erişimi, sorguyu yürüten kullanıcının özelliklerine göre (grup üyeliği veya yürütme bağlamı) denetlemesini sağlar.</p><p>Row-Level güvenliği (RLS) uygulamanızda güvenliğin tasarımını ve kodlamasını basitleştirir. RLS, veri satırı erişiminde kısıtlama uygulamanızı sağlar. Örneğin çalışanlar yalnızca kendi bölümleriyle ilgili veri satırlarına erişmesi veya müşterilerin yalnızca kendi şirketleriyle ilgili verilere ulaşması sağlanabilir.</p><p>Erişim kısıtlama mantığı, başka bir uygulama katmanındaki verilerden uzakta değil, veritabanı katmanında bulunur. Veritabanı sistemi, herhangi bir katmanda veri erişimi her denendiğinde erişim kısıtlamalarını uygular. Bu, güvenlik sisteminin yüzey alanını azaltarak güvenlik sisteminin daha güvenilir ve sağlam olmasını sağlar.</p><p>|
 
 Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016, Azure SQL veritabanı ve SQL yönetilen örneği SQL Server için geçerli olduğunu unutmayın. Kullanıma hazır RLS özelliği uygulanmadığından, veri erişiminin görünümler ve yordamlar kullanılarak kısıtlanması gerekir
 
@@ -168,7 +168,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Veritabanı | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [SQL izinleri hiyerarşisi](https://docs.microsoft.com/sql/relational-databases/security/permissions-hierarchy-database-engine), [SQL securables](https://docs.microsoft.com/sql/relational-databases/security/securables) |
@@ -190,7 +190,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Azure Event Hub | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Event Hubs kimlik doğrulaması ve güvenlik modeline genel bakış](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
@@ -201,7 +201,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Azure Event Hub | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Event Hubs kimlik doğrulaması ve güvenlik modeline genel bakış](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
@@ -212,7 +212,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Azure Event Hub | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Event Hubs kimlik doğrulaması ve güvenlik modeline genel bakış](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
@@ -223,7 +223,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Azure belge DB | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -234,7 +234,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Azure Güven sınırı | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Azure abonelik kaynaklarınıza erişimi yönetmek için rol atamalarını kullanın](https://azure.microsoft.com/documentation/articles/role-based-access-control-configure/)  |
@@ -256,7 +256,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Dynamics CRM | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -267,7 +267,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Dynamics CRM portalı | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -278,21 +278,21 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Azure Storage | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | StorageType-Table |
 | **Başvurular**              | [SAS kullanarak Azure Depolama hesabınızdaki nesnelere erişim yetkisi verme](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_data-plane-security) |
 | **Adımlar** | Bazı iş senaryolarında, Azure Tablo depolaması, farklı taraflara göre hassas verileri depolamak için gerekli olabilir. Örneğin, farklı ülkeler/bölgelerle ilgili hassas veriler. Bu gibi durumlarda SAS imzaları, bir kullanıcının belirli bir ülkeye/bölgeye özgü verilere erişebileceği şekilde bölüm ve satır anahtar aralıkları belirtilerek oluşturulabilir.| 
 
-## <a name="enable-role-based-access-control-rbac-to-azure-storage-account-using-azure-resource-manager"></a><a id="rbac-azure-manager"></a>Rol tabanlı Access Control (RBAC) Azure depolama hesabına Azure Resource Manager kullanarak etkinleştirin
+## <a name="enable-role-based-access-control-rbac-to-azure-storage-account-using-azure-resource-manager"></a><a id="rbac-azure-manager"></a>Azure Resource Manager kullanarak Azure Storage hesabı 'nda Role-Based Access Control (RBAC) etkinleştirme
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Azure Storage | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
-| **Başvurular**              | [Rol tabanlı Access Control (RBAC) ile depolama hesabınızı güvenli hale getirme](https://azure.microsoft.com/documentation/articles/storage-security-guide/#management-plane-security) |
+| **Başvurular**              | [Role-Based Access Control (RBAC) ile depolama hesabınızın güvenliğini sağlama](https://azure.microsoft.com/documentation/articles/storage-security-guide/#management-plane-security) |
 | **Adımlar** | <p>Yeni bir depolama hesabı oluşturduğunuzda, klasik veya Azure Resource Manager dağıtım modelini seçersiniz. Azure 'da kaynak oluşturmak için klasik model, yalnızca aboneliğe hiçbir şey erişimi ve depolama hesabını sırayla sağlar.</p><p>Azure Resource Manager modeliyle, depolama hesabını bir kaynak grubuna yerleştirip, bu belirli depolama hesabının yönetim düzlemine erişimi Azure Active Directory kullanarak kontrol edersiniz. Örneğin, belirli kullanıcılara depolama hesabı anahtarlarına erişme özelliği verebilirsiniz, ancak diğer kullanıcılar depolama hesabı hakkındaki bilgileri görüntüleyebilir, ancak depolama hesabı anahtarlarına erişemez.</p>|
 
 ## <a name="implement-implicit-jailbreak-or-rooting-detection"></a><a id="rooting-detection"></a>Örtük jailbreak veya kök öğe algılamayı uygulama
@@ -300,7 +300,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Mobil Istemci | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -311,7 +311,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | WCF | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel, NET Framework 3 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [fortify Krallığı](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
@@ -348,7 +348,7 @@ Tam nitelikli (tanımlayıcı) adların kullanılması, bir türü benzersiz bir
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | WCF | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel, NET Framework 3 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [fortify Krallığı](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
@@ -396,7 +396,7 @@ return result;
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web API | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel, MVC5 |
 | **Öznitelikler**              | Yok, kimlik sağlayıcısı-ADFS, kimlik sağlayıcısı-Azure AD |
 | **Başvurular**              | [ASP.NET Web API 'sinde kimlik doğrulama ve yetkilendirme](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api) |
@@ -447,7 +447,7 @@ public class CustomController : ApiController
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | IoT cihazı | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -458,7 +458,7 @@ public class CustomController : ApiController
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | IoT alan ağ geçidi | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
