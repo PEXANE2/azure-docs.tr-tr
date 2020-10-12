@@ -9,13 +9,13 @@ ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviewer: mimckitt
 ms.openlocfilehash: fee57efb3517131049f986c743125f17573fdc34
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88816737"
 ---
-# <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux sanal makineleri için Zamanlanan Olaylar
+# <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux VM'ler için Zamanlanan Olaylar
 
 Zamanlanan Olaylar, sanal makine (VM) bakımına hazırlanmak için uygulamanızın süresini sağlayan bir Azure Metadata Service. Uygulamanızın onlara hazırlanabilmesi ve kesintiye uğramasını önlemek için yaklaşan bakım olayları (örneğin, yeniden başlatma) hakkında bilgi sağlar. Hem Windows hem de Linux 'ta PaaS ve IaaS dahil tüm Azure sanal makine türlerinde kullanılabilir. 
 
@@ -98,7 +98,7 @@ Bir VM 'yi yeniden başlatırsanız, türüne sahip bir olay `Reboot` zamanlanı
 
 ## <a name="use-the-api"></a>API’yi kullanma
 
-### <a name="headers"></a>Üst Bilgiler
+### <a name="headers"></a>Üst bilgiler
 Metadata Service sorgulayıp, `Metadata:true` isteğin istem dışı olarak yeniden yönlendirilmemesini sağlamak için üst bilgiyi sağlamanız gerekir. `Metadata:true`Üst bilgi tüm zamanlanmış olaylar istekleri için gereklidir. Üst bilgiyi istek içine ekleme hatası, Metadata Service ' den gelen bir "Hatalı Istek" yanıtı ile sonuçlanır.
 
 ### <a name="query-for-events"></a>Olayları sorgula

@@ -11,11 +11,11 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 914c3128805c9875249bb1998fcdb6e456e73b16
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 15ba0d4b77461d77a2d0b89ecc9e411a105d49d2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88799324"
 ---
 # <a name="table-statistics-in-synapse-sql-pool"></a>SYNAPSE SQL havuzundaki tablo istatistikleri
@@ -70,7 +70,7 @@ Bu deyimler istatistiklerin otomatik olarak oluşturulmasını tetikler:
 Ölçülebilir performans düşüşünü önlemek için, sistemin profilini oluşturmadan önce kıyaslama iş yükünü yürüterek öncelikle istatistik oluşturulduğundan emin olmanız gerekir.
 
 > [!NOTE]
-> İstatistik oluşturma, [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) farklı bir kullanıcı bağlamı altında günlüğe kaydedilir.
+> İstatistik oluşturma, farklı bir kullanıcı bağlamı altında [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) oturum açacaktır.
 
 Otomatik istatistik oluşturulduğunda, şu biçimi alır: _WA_Sys_<8 basamaklı sütun kimliği onaltılık>_<8 basamaklı tablo kimliği onaltılık>. [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) komutu çalıştırılarak daha önce oluşturulmuş olan istatistikleri görüntüleyebilirsiniz:
 
@@ -150,9 +150,6 @@ on objIdsWithStats.object_id = actualRowCounts.object_id
 
 ```
 
->[!TIP]
-> SYNAPSE SQL 'de geliştirilmiş performans için, kalıcı Kullanıcı tablolarında **sys. pdw_table_mappings** yerine **sys. pdw_permanent_table_mappings** kullanmayı düşünün. Daha fazla bilgi için bkz. **[sys. pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** .
-
 **Sorgu 2:** İstatistiklerin her tabloda ne zaman güncelleştirildiği son zamanı denetleyerek istatistiklerinizin yaşını öğrenin. 
 
 > [!NOTE]
@@ -223,7 +220,7 @@ Bu söz dizimi varsayılan seçeneklerin tümünü kullanır. Varsayılan olarak
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]);
 ```
 
-Örnek:
+Örneğin:
 
 ```sql
 CREATE STATISTICS col1_stats ON dbo.table1 (col1);
@@ -239,7 +236,7 @@ Tam tabloyu örneklemek için şu sözdizimini kullanın:
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]) WITH FULLSCAN;
 ```
 
-Örnek:
+Örneğin:
 
 ```sql
 CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH FULLSCAN;
@@ -440,7 +437,7 @@ Belirli bir istatistik nesnesini güncelleştirmek için aşağıdaki sözdizimi
 UPDATE STATISTICS [schema_name].[table_name]([stat_name]);
 ```
 
-Örnek:
+Örneğin:
 
 ```sql
 UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
@@ -456,7 +453,7 @@ Bir tablodaki tüm istatistik nesnelerini güncelleştirmek için basit bir yön
 UPDATE STATISTICS [schema_name].[table_name];
 ```
 
-Örnek:
+Örneğin:
 
 ```sql
 UPDATE STATISTICS dbo.table1;
@@ -485,9 +482,9 @@ Bu sistem görünümleri istatistikler hakkında bilgi sağlar:
 | [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Veritabanındaki her nesne için bir satır. |
 | [sys. schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Veritabanındaki her şema için bir satır. |
 | [sys. stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Her istatistik nesnesi için bir satır. |
-| [sys. stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |İstatistikler nesnesindeki her sütun için bir satır. Sys. Columns öğesine geri bağlantı. |
+| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |İstatistikler nesnesindeki her sütun için bir satır. Sys. Columns öğesine geri bağlantı. |
 | [sys. Tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Her tablo için bir satır (dış tabloları içerir). |
-| [sys. table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Her veri türü için bir satır. |
+| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Her veri türü için bir satır. |
 
 ### <a name="system-functions-for-statistics"></a>İstatistikler için sistem işlevleri
 
@@ -559,7 +556,7 @@ Bu basit örnek, bir istatistik nesnesinin üç parçasını gösterir:
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
 ```
 
-Örnek:
+Örneğin:
 
 ```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
@@ -573,7 +570,7 @@ Yalnızca belirli parçaları görüntülemek istiyorsanız, `WITH` yan tümcesi
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>) WITH stat_header, histogram, density_vector
 ```
 
-Örnek:
+Örneğin:
 
 ```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector

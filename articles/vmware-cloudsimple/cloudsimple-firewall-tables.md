@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 8c44c39f66a0a0161eea8a7e9656bbe0e3d1015c
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88140879"
 ---
 # <a name="firewall-tables-overview"></a>Güvenlik Duvarı tablolarına genel bakış
@@ -53,7 +53,7 @@ Trafik akışı için ters yönde ek kurallar gerekebilir.  Aşağıdaki noktala
 
 Aşağıdaki varsayılan kurallar her güvenlik duvarı tablosunda oluşturulur.
 
-|Öncelik|Name|Durum Izleme|Yön|Trafik türü|Protokol|Kaynak|Kaynak Bağlantı Noktası|Hedef|Hedef Bağlantı Noktası|Eylem|
+|Öncelik|Adı|Durum Izleme|Yön|Trafik türü|Protokol|Kaynak|Kaynak Bağlantı Noktası|Hedef|Hedef Bağlantı Noktası|Eylem|
 |--------|----|--------------|---------|------------|--------|------|-----------|-----------|----------------|------|
 |65000|Tüm-Internet 'e izin ver|Durum Bilgisi Olan|Outbound|Genel IP veya internet trafiği|Tümü|Herhangi biri|Herhangi biri|Herhangi biri|Herhangi biri|İzin Ver|
 |65001|Reddet-tümü-internet 'ten|Durum Bilgisi Olan|Inbound|Genel IP veya internet trafiği|Tümü|Herhangi biri|Herhangi biri|Herhangi biri|Herhangi biri|Reddet|

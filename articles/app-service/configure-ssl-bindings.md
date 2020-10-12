@@ -7,10 +7,10 @@ ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
 ms.openlocfilehash: f7301809b3befc41110a32062d6e478c412fa56e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90981124"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Azure App Service 'de TLS/SSL bağlaması ile özel bir DNS adının güvenliğini sağlama
@@ -108,9 +108,9 @@ Yapmanız gereken iki değişiklik olabilir:
 
 Çeşitli tarayıcılarda, `https://<your.custom.domain>` uygulamanızı hizmet ettiğini doğrulamak için öğesine gidin.
 
-:::image type="content" source="./media/configure-ssl-bindings/app-with-custom-ssl.png" alt-text="Contoso.com URL 'SI vurgulanmış şekilde özel etki alanına gözatmaya yönelik bir örnek gösteren ekran görüntüsü.":::
+:::image type="content" source="./media/configure-ssl-bindings/app-with-custom-ssl.png" alt-text="Contoso.com URL 'SI vurgulanmış şekilde özel etki alanına gözatmaya yönelik bir örnek gösteren ekran görüntüsü.&quot;:::
 
-Uygulama kodunuz, "x-appservice-proto" üst bilgisi aracılığıyla Protokolü inceleyebilir. Üst bilgi, veya değerine sahip olacaktır `http` `https` . 
+Uygulama kodunuz, &quot;x-appservice-proto" üst bilgisi aracılığıyla Protokolü inceleyebilir. Üst bilgi, veya değerine sahip olacaktır `http` `https` . 
 
 > [!NOTE]
 > Uygulamanız size sertifika doğrulama hataları veriyorsa, muhtemelen kendinden imzalı bir sertifika kullanıyorsunuz demektir.
@@ -133,7 +133,7 @@ Uygulama sayfanızda, sol gezinti bölmesinde **SSL ayarları**' nı seçin. Ard
 
 ![HTTPS'yi zorunlu tutma](./media/configure-ssl-bindings/enforce-https.png)
 
-İşlem tamamlandığında, uygulamanıza işaret eden HTTP URL'lerinden herhangi birine gidin. Örnek:
+İşlem tamamlandığında, uygulamanıza işaret eden HTTP URL'lerinden herhangi birine gidin. Örneğin:
 
 - `http://<app_name>.azurewebsites.net`
 - `http://contoso.com`

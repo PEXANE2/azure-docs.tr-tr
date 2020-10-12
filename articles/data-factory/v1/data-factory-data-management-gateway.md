@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 68459253114e97c5e113b863a075c210ef50bf2e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441128"
 ---
 # <a name="data-management-gateway"></a>Veri Yönetimi Ağ Geçidi
@@ -95,7 +95,7 @@ Veri yönetimi ağ geçidi aşağıdaki yollarla yüklenebilir:
 2. **İndir**' e tıklayın, **64 bit** sürümünü seçin (32 bit daha desteklenmez) ve **İleri**' ye tıklayın.
 3. **MSI** 'yi doğrudan çalıştırın veya sabit diskinize kaydedin ve çalıştırın.
 4. **Hoş geldiniz** sayfasında bir **dil** seçin, **İleri**' ye tıklayın.
-5. Son Kullanıcı Lisans sözleşmesini **kabul edin** ve **İleri**' ye tıklayın.
+5. End-User lisans sözleşmesini **kabul edin** ve **İleri**' ye tıklayın.
 6. Ağ geçidini yüklemek için **klasör** ' i seçin ve **İleri**' ye tıklayın.
 7. **Yüklenmeye hazır** sayfasında **Yükle**'ye tıklayın.
 8. Yüklemeyi tamamlamaya **son** ' a tıklayın.
@@ -140,7 +140,7 @@ Göz önünde bulundurmanız gereken iki güvenlik duvarı vardır: kuruluşun m
 
 Şirket güvenlik duvarı düzeyinde, aşağıdaki etki alanlarını ve giden bağlantı noktalarını yapılandırmanız gerekir:
 
-| Etki alanı adları | Bağlantı noktaları | Description |
+| Etki alanı adları | Bağlantı noktaları | Açıklama |
 | --- | --- | --- |
 | *.servicebus.windows.net |443 |Veri taşıma hizmeti arka ucu ile iletişim için kullanılır |
 | *.core.windows.net |443 |Azure Blob kullanılarak hazırlanan kopya için kullanılır (yapılandırıldıysa)|

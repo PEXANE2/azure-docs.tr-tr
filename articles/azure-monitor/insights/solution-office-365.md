@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
 ms.openlocfilehash: 14f7b5546d30d98adf4a14408882c972687a2d71
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86498806"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 'da Office 365 yönetim çözümü (Önizleme)
@@ -121,7 +121,7 @@ Office 365 yönetimi çözümü, Azure Izleyici 'de Office 365 ortamınızı izl
 - Kuruluşunuzun Office 365 etkinlik verilerinin en üstünde bulunan [günlük sorgularını](../log-query/log-query-overview.md) kullanarak işlem sorunlarını giderme işlemi gerçekleştirin.
 
 
-## <a name="uninstall"></a>Kaldırma
+## <a name="uninstall"></a>Kaldır
 
 [Yönetim çözümünü kaldırma](solutions.md#remove-a-monitoring-solution)' daki Işlemi kullanarak Office 365 Yönetim çözümünü kaldırabilirsiniz. Bu, Office 365 ' den toplanan verileri de Azure Izleyici 'ye durdurmayacak. Office 365 aboneliğinizi kaldırmak ve veri toplamayı durdurmak için aşağıdaki yordamı izleyin.
 
@@ -245,8 +245,8 @@ Pano aşağıdaki tabloda gösterilen sütunları içerir. Her sütunda, belirti
 
 | Sütun | Açıklama |
 |:--|:--|
-| Operations | Tüm izlenen Office 365 aboneliklerinizden etkin kullanıcılar hakkında bilgiler sağlar. Ayrıca, zaman içinde gerçekleşen etkinlik sayısını da görebileceksiniz.
-| Exchange | Posta kutusu ekleme Izni veya Set-Mailbox gibi Exchange Server etkinliklerinin dökümünü gösterir. |
+| İşlemler | Tüm izlenen Office 365 aboneliklerinizden etkin kullanıcılar hakkında bilgiler sağlar. Ayrıca, zaman içinde gerçekleşen etkinlik sayısını da görebileceksiniz.
+| Exchange | Add-Mailbox Izin veya Set-Mailbox gibi Exchange Server etkinliklerinin dökümünü gösterir. |
 | SharePoint | Kullanıcıların SharePoint belgelerinde gerçekleştirdiği en iyi etkinlikleri gösterir. Bu kutucuktan ayrıntıya indığınızda arama sayfasında, bu etkinliklerin hedef belge ve bu etkinliğin konumu gibi ayrıntıları gösterilir. Örneğin, dosya erişimli bir olay için, erişilen belgeye, ilişkili hesap adına ve IP adresine bakabilirsiniz. |
 | Azure Active Directory | Kullanıcı parolası ve oturum açma girişimlerini sıfırlama gibi ilk kullanıcı etkinliklerini içerir. Ayrıntıya gitmediğiniz zaman, bu etkinliklerin sonuç durumu gibi ayrıntılarını görebileceksiniz. Bu, genellikle Azure Active Directory şüpheli etkinlikleri izlemek istediğinizde yararlı olur. |
 
@@ -462,7 +462,7 @@ Bu kayıtlar, SharePoint 'teki dosya işlemlerine yanıt olarak oluşturulur.
 
 Aşağıdaki tabloda, bu çözüm tarafından toplanan güncelleştirme kayıtlarına yönelik örnek günlük sorguları verilmiştir.
 
-| Sorgu | Description |
+| Sorgu | Açıklama |
 | --- | --- |
 |Office 365 aboneliğinizdeki tüm işlemlerin sayısı |OfficeActivity &#124; Işleme göre Count () özetleme |
 |SharePoint sitelerinin kullanımı|OfficeActivity &#124; burada OfficeWorkload = ~ "SharePoint" &#124; Count () değerini \||

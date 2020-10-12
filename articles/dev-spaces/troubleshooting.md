@@ -6,10 +6,10 @@ ms.topic: troubleshooting
 description: Azure Dev Spaces etkinleştirirken ve kullanırken karşılaşılan yaygın sorunları giderme ve çözme hakkında bilgi edinin
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
 ms.openlocfilehash: d697a11f3087c31a49d9b88e99b18bab686a2b59
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90981061"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces sorunlarını giderme
@@ -50,13 +50,13 @@ az aks use-dev-spaces -g <resource group name> -n <cluster name>
 
 ### <a name="controller-create-failing-because-of-controller-name-length"></a>Denetleyici adı uzunluğu nedeniyle denetleyici oluşturma başarısız oldu
 
-Azure Dev Spaces denetleyicisinin adı 31 karakterden uzun olamaz. Bir AKS kümesinde dev alanlarını etkinleştirdiğinizde veya bir denetleyici oluşturduğunuzda denetleyicinin adı 31 karakteri aşarsa bir hata alırsınız. Örnek:
+Azure Dev Spaces denetleyicisinin adı 31 karakterden uzun olamaz. Bir AKS kümesinde dev alanlarını etkinleştirdiğinizde veya bir denetleyici oluşturduğunuzda denetleyicinin adı 31 karakteri aşarsa bir hata alırsınız. Örneğin:
 
 ```console
 Failed to create a Dev Spaces controller for cluster 'a-controller-name-that-is-way-too-long-aks-east-us': Azure Dev Spaces Controller name 'a-controller-name-that-is-way-too-long-aks-east-us' is invalid. Constraint(s) violated: Azure Dev Spaces Controller names can only be at most 31 characters long*
 ```
 
-Bu sorunu onarmak için alternatif ada sahip bir denetleyici oluşturun. Örnek:
+Bu sorunu onarmak için alternatif ada sahip bir denetleyici oluşturun. Örneğin:
 
 ```cmd
 azds controller create --name my-controller --target-name MyAKS --resource-group MyResourceGroup
@@ -160,7 +160,7 @@ Aynı AKS kümesinde hem HELI komutları hem de dev Spaces komutlarının kullan
 
 Azure Dev Spaces, projenizdeki belirli bir _Dockerfile_ 'ı işaret etmek için yapılandırılabilir. Kapsayıcınız derlemek istediğiniz _dockerfile_ ' ı Azure dev Spaces görünürse, hangi dockerfile 'ın kullanılacağını açıkça Azure dev Spaces söylemeniz gerekebilir. 
 
-Bu sorunu gidermeye yönelik Azure Dev Spaces, projenizde oluşturulan _azds. YAML_ dosyasını açın. Güncelleştirme *yapılandırması: geliştirme: oluşturma: dockerfile* kullanmak Istediğiniz dockerfile 'ı işaret etmek için. Örnek:
+Bu sorunu gidermeye yönelik Azure Dev Spaces, projenizde oluşturulan _azds. YAML_ dosyasını açın. Güncelleştirme *yapılandırması: geliştirme: oluşturma: dockerfile* kullanmak Istediğiniz dockerfile 'ı işaret etmek için. Örneğin:
 
 ```yaml
 ...
@@ -207,7 +207,7 @@ install:
 
 Hizmet kodunuz başlatılamıyorsa bu hatayla karşılaşabilirsiniz. Nedeni genellikle kullanıcı kodudur. Daha fazla tanılama bilgisi edinmek için, hizmetinizi başlatırken daha ayrıntılı günlük kaydını etkinleştirin.
 
-Komut satırından, `--verbose` daha ayrıntılı günlüğe kaydetmeyi etkinleştirmek için öğesini kullanın. Ayrıca, kullanarak bir çıktı biçimi de belirtebilirsiniz `--output` . Örnek:
+Komut satırından, `--verbose` daha ayrıntılı günlüğe kaydetmeyi etkinleştirmek için öğesini kullanın. Ayrıca, kullanarak bir çıktı biçimi de belirtebilirsiniz `--output` . Örneğin:
 
 ```cmd
 azds up --verbose --output json
@@ -268,7 +268,7 @@ Bu sorunu onarmak için, değiştirmeye çalıştığınız Kubernetes hizmetini
 * *BranchCache* ' e sağ tıklayın ve *Özellikler*' i seçin.
 * *Durdur*' a tıklayın.
 * İsteğe bağlı olarak, *Başlangıç türünü* *devre dışı*olarak ayarlayarak devre dışı bırakabilirsiniz.
-* *Tamam*’a tıklayın.
+* *Tamam*'a tıklayın.
 
 ### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>"Pod için Azureassignedıdentity bulunamadı: azds/AZD-Web kancası-Deployment- \<id\> , atanan durumunda"
 
@@ -318,7 +318,7 @@ Yönetilen kimliğin ayrıntılarını listelemek için, AKS kümeniz için aşa
 az aks show -g <resourcegroup> -n <cluster> -o json --query "{clientId: identityProfile.kubeletidentity.clientId, resourceId: identityProfile.kubeletidentity.resourceId}"
 ```
 
-Yukarıdaki komut, yönetilen kimliğin *ClientID* ve *RESOURCEID* değerini verir. Örnek:
+Yukarıdaki komut, yönetilen kimliğin *ClientID* ve *RESOURCEID* değerini verir. Örneğin:
 
 ```json
 {
@@ -359,7 +359,7 @@ kubectl apply -f clusteridentity.yaml
 kubectl apply -f clusteridentitybinding.yaml
 ```
 
-*AzureIdentity* ve *AzureIdentityBinding* nesnelerini dağıttıktan sonra, *aadpodidbinding: My-Label-Value* etiketli tüm iş yükleri kümenin yönetilen kimliğine erişebilir. Bu etiketi ekleyin ve herhangi bir geliştirme alanında çalışan tüm iş yüklerini yeniden dağıtın. Örnek:
+*AzureIdentity* ve *AzureIdentityBinding* nesnelerini dağıttıktan sonra, *aadpodidbinding: My-Label-Value* etiketli tüm iş yükleri kümenin yönetilen kimliğine erişebilir. Bu etiketi ekleyin ve herhangi bir geliştirme alanında çalışan tüm iş yüklerini yeniden dağıtın. Örneğin:
 
 ```yaml
 apiVersion: apps/v1
@@ -422,9 +422,9 @@ Bu sorunu onarmak için Visual Studio Code kapatıp yeniden açın. Hata ayıkla
 
 ### <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Bir Node.js uygulamasına hata ayıklama eklenirken "Iç izleme başarısız oldu: ' ENOSPC ' izleme
 
-Bu hata, bir hata ayıklayıcı ile eklemeye çalıştığınız Node.js uygulamayla Pod 'ı çalıştıran düğüm *FS. inotify. max_user_watches* değerini aştığında oluşur. Bazı durumlarda, [varsayılan *FS. inotify. max_user_watches* değeri bir hata ayıklayıcıyı doğrudan Pod 'a eklemeyi işlemek için çok küçük olabilir](https://github.com/Azure/AKS/issues/772).
+Bu hata, bir hata ayıklayıcı ile eklemeye çalıştığınız Node.js uygulamayla Pod 'ı çalıştıran düğüm *FS.inotify.max_user_watches* değerini aştığından oluşur. Bazı durumlarda, [bir hata ayıklayıcıyı doğrudan Pod 'a eklemeyi işlemek için *FS.inotify.max_user_watches* varsayılan değeri çok küçük olabilir](https://github.com/Azure/AKS/issues/772).
 
-Bu soruna yönelik geçici bir geçici çözüm, kümedeki her bir düğümde *FS. inotify. max_user_watches* değerini artırmanız ve değişikliklerin etkili olması için bu düğümü yeniden başlatvermektir.
+Bu sorun için geçici bir geçici çözüm, kümedeki her düğümdeki *FS.inotify.max_user_watches* değerini artırmanız ve değişikliklerin etkili olması için bu düğümü yeniden başlatvermektir.
 
 ## <a name="other-common-issues"></a>Diğer yaygın sorunları çözme
 
@@ -443,7 +443,7 @@ Bu sorunu düzeltmek için:
 
 ### <a name="authorization-error-microsoftdevspacesregisteraction"></a>Yetkilendirme hatası "Microsoft. DevSpaces/Register/Action"
 
-Azure Dev Spaces yönetmek için Azure aboneliğinizde *sahip* veya *katkıda bulunan* erişime ihtiyacınız vardır. Dev alanlarını yönetmeye çalışıyorsanız ve ilişkili Azure aboneliğine *sahip* veya *katkıda bulunan* erişiminiz yoksa bir yetkilendirme hatası görebilirsiniz. Örnek:
+Azure Dev Spaces yönetmek için Azure aboneliğinizde *sahip* veya *katkıda bulunan* erişime ihtiyacınız vardır. Dev alanlarını yönetmeye çalışıyorsanız ve ilişkili Azure aboneliğine *sahip* veya *katkıda bulunan* erişiminiz yoksa bir yetkilendirme hatası görebilirsiniz. Örneğin:
 
 ```output
 The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.

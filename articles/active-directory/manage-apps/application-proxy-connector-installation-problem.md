@@ -17,10 +17,10 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 602ca070bcaefd20585681e409ab85e9d455160a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764698"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Uygulama Ara Sunucusu Aracı Bağlayıcısı’nı yüklerken sorun oluşuyor
@@ -61,7 +61,7 @@ Bağlayıcının yüklemesi başarısız olduğunda, kök neden genellikle aşa�
 
 **Gerekli önkoşulları gözden geçirin:**
 
-1.  Makinenin TLS 1.2 'yi desteklediğini doğrulayın – 2012 R2 'den sonraki tüm Windows sürümleri TLS 1,2 ' i desteklemelidir. Bağlayıcı makineniz 2012 R2 veya daha önceki bir sürümden yüklüyse, şu KBs 'lerin makinede yüklü olduğundan emin olun:<https://support.microsoft.com/help/2973337/sha512-is-disabled-in-windows-when-you-use-tls-1.2>
+1.  Makinenin TLS 1.2 'yi desteklediğini doğrulayın – 2012 R2 'den sonraki tüm Windows sürümleri TLS 1,2 ' i desteklemelidir. Bağlayıcı makineniz 2012 R2 veya daha önceki bir sürümden yüklüyse, şu KBs 'lerin makinede yüklü olduğundan emin olun: <https://support.microsoft.com/help/2973337/sha512-is-disabled-in-windows-when-you-use-tls-1.2>
 
 2.  Ağ yöneticinize başvurun ve arka uç proxy 'sinin ve güvenlik duvarının giden trafik için SHA512 olur engellemediğinden emin olun.
 
@@ -103,7 +103,7 @@ Sertifikayı doğrulamak için aşağıdaki adımları izleyin:
 
 Bir bağlayıcı birkaç ay için hizmete bağlı değilse, sertifikaları güncel olmayabilir. Sertifika yenileme hatası, zaman aşımına uğradı bir sertifikaya yol açar. Bu, bağlayıcı hizmetinin çalışmayı durdurmasına neden olur. Olay 1000, bağlayıcının yönetim günlüğüne kaydedilir:
 
-"Bağlayıcı yeniden kaydı başarısız oldu: bağlayıcı güven sertifikasının geçerliliği bitti. Bağlayıcınızı yeniden kaydettirmek için bağlayıcının çalıştığı bilgisayarda PowerShell cmdlet 'i Register-AppProxyConnector komutunu çalıştırın. "
+"Bağlayıcı yeniden kaydı başarısız oldu: bağlayıcı güven sertifikasının geçerliliği bitti. Bağlayıcınızı yeniden kaydettirmek için bağlayıcının çalıştığı bilgisayarda Register-AppProxyConnector PowerShell cmdlet 'ini çalıştırın. "
 
 Bu durumda, kayıt tetiklemek için bağlayıcıyı kaldırın ve yeniden yükleyin veya aşağıdaki PowerShell komutlarını çalıştırın:
 

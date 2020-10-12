@@ -14,10 +14,10 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 5d91514af9aea3dd7ea13b94681fbb27c53772fe
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88120907"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>MSAL JS ve ADAL JS arasındaki farklar
@@ -44,7 +44,7 @@ Ancak, uygulamanızın daha önceki [Active Directory Federasyon Hizmetleri (AD 
 
 * Kullanıcıların ADAL.js olarak adlandırılmasını istemeden belirteçleri elde etmek ve yenilemek için yöntemi `acquireToken` . MSAL.js, bu yöntemin `acquireTokenSilent` Bu işlevselliğe daha açıklayıcı olması için adı verilir.
 
-### <a name="authority-value-common"></a>Yetkili değeri`common`
+### <a name="authority-value-common"></a>Yetkili değeri `common`
 
 V 1.0 'da, yetkiyi kullanmak `https://login.microsoftonline.com/common` kullanıcıların herhangi bir Azure AD hesabıyla oturum açmalarına olanak tanır (herhangi bir kuruluş için).
 
@@ -73,7 +73,7 @@ V 2.0 sürümünde, yetkiyi kullanarak `https://login.microsoftonline.com/common
 
 * Artımlı izin için dinamik kapsamlar.
 
-    V 1.0 kullanarak uygulama oluştururken, kullanıcının oturum açma sırasında izin vermesini sağlamak için uygulamanın gerektirdiği tüm izin (statik kapsamlar) kümesini kaydetmeniz gerekir. V 2.0 'da, izinleri istediğiniz zaman istemek için kapsam parametresini kullanabilirsiniz. Bunlara dinamik kapsamlar denir. Bu, kullanıcının kapsamlar için artımlı onay sağlamasına izin verir. Bu nedenle, yalnızca kullanıcının uygulamanızda oturum açmasını istiyor ve herhangi bir erişime ihtiyacınız yoksa, bunu yapabilirsiniz. Daha sonra kullanıcının takvimini okuma olanağına ihtiyacınız varsa, bu durumda acquireToken yöntemlerinde takvim kapsamını isteyebilir ve kullanıcının onay almasını sağlayabilirsiniz. Örnek:
+    V 1.0 kullanarak uygulama oluştururken, kullanıcının oturum açma sırasında izin vermesini sağlamak için uygulamanın gerektirdiği tüm izin (statik kapsamlar) kümesini kaydetmeniz gerekir. V 2.0 'da, izinleri istediğiniz zaman istemek için kapsam parametresini kullanabilirsiniz. Bunlara dinamik kapsamlar denir. Bu, kullanıcının kapsamlar için artımlı onay sağlamasına izin verir. Bu nedenle, yalnızca kullanıcının uygulamanızda oturum açmasını istiyor ve herhangi bir erişime ihtiyacınız yoksa, bunu yapabilirsiniz. Daha sonra kullanıcının takvimini okuma olanağına ihtiyacınız varsa, bu durumda acquireToken yöntemlerinde takvim kapsamını isteyebilir ve kullanıcının onay almasını sağlayabilirsiniz. Örneğin:
 
     ```javascript
     var request = {
@@ -85,7 +85,7 @@ V 2.0 sürümünde, yetkiyi kullanarak `https://login.microsoftonline.com/common
 
 * V 1.0 API 'Leri için kapsamlar
 
-    MSAL.js kullanarak V 1.0 API 'Leri için belirteçler alırken, API `.default` 'Nin uygulama KIMLIĞI URI 'sine kapsam olarak ekleyerek API 'de kayıtlı tüm statik kapsamları isteyebilirsiniz. Örnek:
+    MSAL.js kullanarak V 1.0 API 'Leri için belirteçler alırken, API `.default` 'Nin uygulama KIMLIĞI URI 'sine kapsam olarak ekleyerek API 'de kayıtlı tüm statik kapsamları isteyebilirsiniz. Örneğin:
 
     ```javascript
     var request = {

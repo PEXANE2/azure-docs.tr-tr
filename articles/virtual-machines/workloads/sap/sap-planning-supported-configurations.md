@@ -17,10 +17,10 @@ ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ad1567a3a6cba2c2fbc519ffe5d384aba25ab51d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88648998"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Azure sanal makinesi üzerinde SAP iş yüküne yönelik desteklenen senaryolar
@@ -102,7 +102,7 @@ Azure VM 'Ler için, aşağıdaki yüksek kullanılabilirlik yapılandırması D
 - SUSE ve Red hat üzerinde [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) kullanarak genişleme n + b yapılandırma SAP HANA. Ayrıntılar aşağıdaki makalelerde listelenmiştir:
     - [SUSE Linux Enterprise Server} üzerinde Azure NetApp Files kullanarak Azure VM 'lerinde bekleme düğümüne sahip bir SAP HANA genişleme sistemi dağıtma](./sap-hana-scale-out-standby-netapp-files-suse.md)
     - [Red Hat Enterprise Linux Azure NetApp Files kullanarak Azure VM 'lerinde bekleme düğümüne sahip bir SAP HANA genişleme sistemi dağıtma](./sap-hana-scale-out-standby-netapp-files-rhel.md)
-- Windows genişleme dosya hizmetleri 'ni temel alan yük devretme kümesi SQL Server. Üretim sistemlerine yönelik öneri, kümeleme yerine SQL Server her zaman açık olarak kullanmaktır. SQL Server her zaman açık, ayrı depolama kullanarak daha iyi kullanılabilirlik sağlar. Ayrıntılar Bu makalede açıklanmıştır: 
+- Windows Scale-Out Dosya Hizmetleri tabanlı yük devretme kümesi SQL Server. Üretim sistemlerine yönelik öneri, kümeleme yerine SQL Server her zaman açık olarak kullanmaktır. SQL Server her zaman açık, ayrı depolama kullanarak daha iyi kullanılabilirlik sağlar. Ayrıntılar Bu makalede açıklanmıştır: 
     - [Azure sanal makinelerinde SQL Server yük devretme kümesi örneği yapılandırma](../../../azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md)
 - SQL Server her zaman açık, Azure 'da SQL Server için Windows işletim sistemi ile desteklenir. Bu, Azure 'daki üretim SQL Server örnekleri için varsayılan önerimiz olur. Ayrıntılar aşağıdaki makalelerde açıklanmıştır:
     - [Azure sanal makinelerinde SQL Server Always on kullanılabilirlik grupları Ile tanışın](../../../azure-sql/virtual-machines/windows/availability-group-overview.md).
@@ -286,7 +286,7 @@ Azure mimarilerinde SAP iş yükü için desteklenmeyen bir senaryo listesi var.
 
 Desteklenmeyen diğer senaryolar şunlardır:
 
-- SAP uygulama katmanı ve SAP DBMS katmanı arasında NetWeaver, S/4HANA 'da gösterildiği gibi daha büyük bir ağ gecikmesi sunan dağıtım senaryoları ve `Hybris` örn. Buna aşağıdakiler dahildir:
+- SAP uygulama katmanı ve SAP DBMS katmanı arasında NetWeaver, S/4HANA 'da gösterildiği gibi daha büyük bir ağ gecikmesi sunan dağıtım senaryoları ve `Hybris` örn. Şunları içerir:
     - Şirket içi katmanlardan birini dağıtma, diğer katman Azure 'da dağıtılır
     - Farklı bir Azure bölgesindeki sistemin SAP uygulama katmanını DBMS katmanından dağıtma
     - Azure 'da ve bu tür bir mimari desenlerinin Azure yerel hizmeti tarafından sağlandığı durumlar dışında, Azure 'da birlikte bulunan veri merkezlerinde bir katmanı ve Azure 'daki diğer katmanı dağıtma

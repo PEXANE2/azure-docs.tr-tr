@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
 ms.openlocfilehash: a187b31657ec2a67c306d817a75150d19a5cf9b6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86497191"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. verilerin şifrelenmesi
@@ -56,7 +56,7 @@ MEK’leri yönetmek için kullanılan iki modun sağladığı özelliklerin kı
 | -------- | -------------------- | --------------------- |
 |Veriler nasıl depolanır?|Depolanmadan önce her zaman şifrelenir.|Depolanmadan önce her zaman şifrelenir.|
 |Ana Şifreleme Anahtarı nerede depolanır?|Key Vault|Key Vault|
-|Key Vault dışında açıkta saklanan şifreleme anahtarı var mı? |No|Hayır|
+|Key Vault dışında açıkta saklanan şifreleme anahtarı var mı? |Hayır|Hayır|
 |Key Vault’tan MEK alınabilir mi?|Hayır. MEK Key Vault’ta depolandıktan sonra yalnızca şifreleme ve şifre çözme amacıyla kullanılabilir.|Hayır. MEK Key Vault’ta depolandıktan sonra yalnızca şifreleme ve şifre çözme amacıyla kullanılabilir.|
 |Key Vault örneği ve MEK kime aittir?|Data Lake Storage 1. hizmeti|Kendi Azure aboneliğiniz kapsamında bulunan Key Vault örneği size aittir. Key Vault’taki MEK, yazılım veya donanım tarafından yönetilebilir.|
 |Data Lake Storage 1. hizmeti için MEK erişimini iptal edebilir misiniz?|Hayır|Evet. Key Vault erişim denetim listelerini yönetebilir ve Data Lake Storage 1. hizmeti için hizmet kimliğine erişim denetim girdilerini kaldırabilirsiniz.|
@@ -78,7 +78,7 @@ Veri şifreleme tasarımında kullanılan üç tür anahtar vardır. Aşağıdak
 |-----------------------|--------------|-----------------|----------------------------------------------|------------|---------------------------------------------------------------------------------------------------------|
 | Ana Şifreleme Anahtarı | MEK          | Data Lake Storage 1. hesabı | Key Vault                              | Asimetrik | Data Lake Storage 1. veya sizin için yönetilebilir.                                                              |
 | Veri Şifreleme Anahtarı   | DEK          | Data Lake Storage 1. hesabı | Kalıcı depolama, Data Lake Storage 1. hizmeti tarafından yönetiliyor | Simetrik  | DEK, MEK ile şifrelenir. Şifrelenmiş DEK, kalıcı medyada depolanır. |
-| Blok Şifreleme Anahtarı  | BEK          | Bir veri bloğu | Hiçbiri                                         | Simetrik  | BEK, DEK’ten ve veri bloğundan türetilir.                                                      |
+| Blok Şifreleme Anahtarı  | BEK          | Bir veri bloğu | Yok                                         | Simetrik  | BEK, DEK’ten ve veri bloğundan türetilir.                                                      |
 
 Aşağıdaki diyagram bu kavramları göstermektedir:
 
@@ -115,7 +115,7 @@ Data Lake Storage 1. hesabını ayarlarken kendi anahtarlarınızı kullanmayı 
 
 ### <a name="how-to-rotate-the-mek-in-data-lake-storage-gen1"></a>Data Lake Storage 1. içinde MEK döndürme
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. Data Lake Storage 1. hesabınızla ilişkili anahtarlarınızı depolayan Key Vault örneğine gidin. **Anahtarlar**’ı seçin.
 
     ![Key Vault ekran görüntüsü](./media/data-lake-store-encryption/keyvault.png)

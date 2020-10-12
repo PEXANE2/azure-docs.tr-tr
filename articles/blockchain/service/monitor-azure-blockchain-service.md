@@ -5,10 +5,10 @@ ms.date: 01/08/2020
 ms.topic: how-to
 ms.reviewer: v-umha
 ms.openlocfilehash: 7300a5dcfb0150e6182636dcb71bacfa68c787db
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87076917"
 ---
 # <a name="monitor-azure-blockchain-service-through-azure-monitor"></a>Azure Izleyici aracılığıyla Azure blok zinciri hizmetini izleme  
@@ -36,7 +36,7 @@ Bir tanılama ayarı oluşturduğunuzda hangi günlük kategorilerinin toplanaca
 
 **Blok zinciri proxy günlükleri** – NGNX proxy günlüklerini izlemek istiyorsanız kategoriyi seçin. Tüm müşteri işlemi ayrıntıları denetim ve hata ayıklama amacıyla kullanılabilir.  
 
-**Blok zinciri uygulama günlükleri** – yönetilen hizmet tarafından barındırılan blok zinciri uygulamasının günlüklerini almak için kategoriyi seçin. Örneğin, bir ABS-Quorum üyesi için bu Günlükler, Çekirdekte olan Günlükler olacaktır.  
+**Blok zinciri uygulama günlükleri** – yönetilen hizmet tarafından barındırılan blok zinciri uygulamasının günlüklerini almak için kategoriyi seçin. Örneğin, bir ABS-Quorum üyesi için, bu Günlükler çekirdekte Günlükler olur.  
 
 **Ölçüm istekleri**: Azure ölçümlerinde otomatik olarak toplanan tanılama ayarındaki hedeflere Azure Cosmos DB ölçüm verileri toplama seçeneğini belirleyin. Her iki veri türünü birlikte analiz etmek ve ölçüm verilerini Azure Izleyici dışında göndermek için kaynak günlükleriyle ölçüm verileri toplayın.
 
@@ -81,7 +81,7 @@ Aşağıdaki tabloda, Azure Izleyici günlüklerinde veya Azure Storage 'da topl
 
 | Özellik adı  | Açıklama |
 |:---|:---|
-| time | İşlem gerçekleştiği tarih ve saat (UTC). |
+| saat | İşlem gerçekleştiği tarih ve saat (UTC). |
 | RESOURCEID  | Günlüklerin etkinleştirildiği Azure blok zinciri hizmeti kaynağı.  |
 | category  |Azure blok zinciri hizmeti için, olası değerler **proxylogs** ve **applicationlogs**' lardır. |
 | operationName  | Bu olayla temsil edilen işlemin adı.   |
@@ -107,7 +107,7 @@ Aşağıdaki tabloda, Azure blok zinciri uygulama günlüklerinin özellikleri l
 
 | Özellik adı  | Açıklama |
 |:---|:---|
-| time | İşlem gerçekleştiği tarih ve saat (UTC). |
+| saat | İşlem gerçekleştiği tarih ve saat (UTC). |
 | RESOURCEID  | Günlüklerin etkinleştirildiği Azure blok zinciri hizmeti kaynağı.|
 | category  |Azure blok zinciri hizmeti için, mümkün olan değer **proxylogs** ve **applicationlogs**' lardır.  |
 | operationName  | Bu olayla temsil edilen işlemin adı.   |
@@ -133,10 +133,10 @@ Aşağıdaki tablo, Azure blok zinciri hizmeti üye kaynağı için toplanan blo
 
 | Ölçüm adı | Birim  |  Toplama türü| Açıklama   |
 |---|---|---|---|
-| Bekleyen Işlemler   | Count  |  Ortalama | Mined bekleniyor işlem sayısı.   |
-| İşlenen bloklar   | Count  | Toplam  |  Her zaman aralığında işlenen blokların sayısı. Şu anda blok boyutu 5 saniyedir, bu nedenle her düğüm 12 blok ve 60 blok 5 dakika içinde işlem görür.   |
-|İşlenen Işlemler    | Count  | Toplam  | Bir blokta işlenen işlem sayısı.    |
-|Kuyruğa alınmış Işlemler    |  Count | Ortalama  | Hemen küçük olmayan işlem sayısı. Bunun nedeni, sıra dışı geldiği ve gelecekte bir önceki işlemin gelmesini beklediği için olabilir. Ya da iki işlem yalnızca bir kez (nonce) ve aynı gaz değeri ile aynı olabilir, bu nedenle ikinci diğeri küçük olamaz.   |
+| Bekleyen Işlemler   | Sayı  |  Ortalama | Mined bekleniyor işlem sayısı.   |
+| İşlenen bloklar   | Sayı  | Sum  |  Her zaman aralığında işlenen blokların sayısı. Şu anda blok boyutu 5 saniyedir, bu nedenle her düğüm 12 blok ve 60 blok 5 dakika içinde işlem görür.   |
+|İşlenen Işlemler    | Sayı  | Sum  | Bir blokta işlenen işlem sayısı.    |
+|Kuyruğa alınmış Işlemler    |  Sayı | Ortalama  | Hemen küçük olmayan işlem sayısı. Bunun nedeni, sıra dışı geldiği ve gelecekte bir önceki işlemin gelmesini beklediği için olabilir. Ya da iki işlem yalnızca bir kez (nonce) ve aynı gaz değeri ile aynı olabilir, bu nedenle ikinci diğeri küçük olamaz.   |
 
 ### <a name="connection-metrics"></a>Bağlantı ölçümleri  
 
@@ -145,10 +145,10 @@ Aşağıdaki tabloda, Azure blok zinciri hizmeti üye kaynağı için toplanan f
 
 | Ölçüm adı | Birim  |  Toplama türü| Açıklama |
 |---|---|---|---|
-| Kabul edilen bağlantılar   | Count  |  Toplam | Kabul edilen istemci bağlantılarının toplam sayısı.   |
-| Etkin Bağlantılar  | Count  | Ortalama  |  Bekleyen bağlantılar dahil etkin istemci bağlantılarının geçerli sayısı.    |
-|İşlenmiş bağlantılar    | Count  | Toplam  | İşlenen bağlantıların toplam sayısı. Genellikle, bazı kaynak sınırlarına ulaşılmadığı sürece parametre değeri kabul edilen bağlantılarla aynıdır.     |
-|İşlenmiş Istekler     |  Count | Toplam  | İstemci isteklerinin toplam sayısı.  |
+| Kabul edilen bağlantılar   | Sayı  |  Sum | Kabul edilen istemci bağlantılarının toplam sayısı.   |
+| Etkin Bağlantılar  | Sayı  | Ortalama  |  Bekleyen bağlantılar dahil etkin istemci bağlantılarının geçerli sayısı.    |
+|İşlenmiş bağlantılar    | Sayı  | Sum  | İşlenen bağlantıların toplam sayısı. Genellikle, bazı kaynak sınırlarına ulaşılmadığı sürece parametre değeri kabul edilen bağlantılarla aynıdır.     |
+|İşlenmiş Istekler     |  Sayı | Sum  | İstemci isteklerinin toplam sayısı.  |
 
 
 ### <a name="performance-metrics"></a>Performans Ölçümleri
@@ -158,9 +158,9 @@ Aşağıdaki tabloda, Azure blok zinciri üye kaynağı düğümlerinin her biri
 
 | Ölçüm adı | Birim  |  Toplama türü| Açıklama   |
 |---|---|---|---|
-| CPU kullanım yüzdesi   | Yüzde  |  En yüksek değer | CPU kullanımının yüzdesi.     |
-| GÇ okuma baytları   | KB   | Toplam  |  Blok zinciri üye kaynağının tüm düğümlerinde GÇ okuma baytlarının toplamı.      |
-|GÇ Yazma baytları     | KB   | Toplam  | GÇ toplamı blok zinciri üye kaynağının tüm düğümlerinde baytları yazar.     |
+| CPU kullanım yüzdesi   | Yüzde  |  Max | CPU kullanımının yüzdesi.     |
+| GÇ okuma baytları   | KB   | Sum  |  Blok zinciri üye kaynağının tüm düğümlerinde GÇ okuma baytlarının toplamı.      |
+|GÇ Yazma baytları     | KB   | Sum  | GÇ toplamı blok zinciri üye kaynağının tüm düğümlerinde baytları yazar.     |
 |Bellek sınırı       |  Gigab   | Ortalama    | Düğüm başına blok zinciri işlemi için kullanılabilir maksimum bellek. |
 |Bellek Kullanımı     | Gigab  |  Ortalama | Tüm düğümlerde ortalama kullanılan bellek miktarı.  |
 | Bellek kullanım yüzdesi     | Yüzde   | Ortalama  |  Tüm düğümlerde ortalama kullanılan bellek yüzdesi.       |

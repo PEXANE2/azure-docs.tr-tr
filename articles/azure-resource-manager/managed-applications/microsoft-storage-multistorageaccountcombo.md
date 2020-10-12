@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: a8172b63039d2d247f30fca4099254cb8fca068e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87073397"
 ---
 # <a name="microsoftstoragemultistorageaccountcombo-ui-element"></a>Microsoft. Storage. MultiStorageAccountCombo UI öğesi
@@ -63,7 +63,7 @@ Ortak bir ön ekiyle başlayan adlara sahip birkaç depolama hesabı oluşturmay
 - İçin değeri, `defaultValue.prefix` depolama hesabı adları dizisini oluşturmak için bir veya daha fazla tamsayı ile birleştirilir. Örneğin, `defaultValue.prefix` **sa** ve `count` **2**ise, **SA1** ve **SA2** depolama hesabı adları oluşturulur. Oluşturulan depolama hesabı adları otomatik olarak benzersizlik için onaylanır.
 - Depolama hesabı adları, ile sözcüıgrafik tabanlı olarak oluşturulur `count` . Örneğin, 10 ise `count` , depolama hesabı adları iki basamaklı tamsayılarla biter (01, 02, 03).
 - İçin varsayılan değer `defaultValue.prefix` **null**ve için `defaultValue.type` **Premium_LRS**.
-- İçinde belirtilmeyen herhangi bir tür `constraints.allowedTypes` gizlidir ve içinde belirtilmeyen herhangi bir tür `constraints.excludedTypes` gösterilir. `constraints.allowedTypes`ve `constraints.excludedTypes` her ikisi de isteğe bağlıdır, ancak aynı anda kullanılamaz.
+- İçinde belirtilmeyen herhangi bir tür `constraints.allowedTypes` gizlidir ve içinde belirtilmeyen herhangi bir tür `constraints.excludedTypes` gösterilir. `constraints.allowedTypes` ve `constraints.excludedTypes` her ikisi de isteğe bağlıdır, ancak aynı anda kullanılamaz.
 - Depolama hesabı adları oluşturmanın yanı sıra, `count` öğesi için uygun çarpanı ayarlamak için kullanılır. **2**gibi bir statik değeri ya da gibi başka bir öğeden dinamik bir değeri destekler `[steps('step1').storageAccountCount]` . Varsayılan değer **1**' dir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

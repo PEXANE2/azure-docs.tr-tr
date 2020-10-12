@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
 ms.openlocfilehash: 6d61bd2c45cc1ba9cd9494750b793d7321288224
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87797755"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Azure 'da SUSE Linux Enterprise Server Paceyapıcısı ayarlama
@@ -419,7 +419,7 @@ Oluşturmak istediğiniz yeni kümenin düğümlerinde aşağıdaki komutları �
    </code></pre>
 
    >[!IMPORTANT]
-   > Paket **sınırı-aracıların** yüklü sürümü, bir küme düğümlerinin yeniden oluşturulması gerekiyorsa Azure sınır Aracısı ile daha hızlı yük devretme süreleriyle faydalanmak için en az **4.4.0** olmalıdır. Daha düşük bir sürüm çalıştırıyorsa paketi güncelleştirmenizi öneririz.  
+   > Paket **sınırı-aracıların** yüklü sürümü, bir küme düğümlerinin yeniden oluşturulması gerekiyorsa Azure sınır Aracısı ile daha hızlı yük devretme süreleriyle faydalanmak için en az **4.4.0**  olmalıdır. Daha düşük bir sürüm çalıştırıyorsa paketi güncelleştirmenizi öneririz.  
 
 
 1. **[A]** Azure Python SDK 'sını yüklemeyi 
@@ -679,7 +679,7 @@ sudo crm configure property maintenance-mode=false
 
    > [!NOTE]
    > Azure-Events Aracısı için pacemaker kaynaklarını yapılandırdıktan sonra, kümeyi bakım moduna aldığınızda veya bu moddan çıkarak, şu şekilde uyarı iletileri alabilirsiniz:  
-     Uyarı: CIB-Bootstrap-Options: bilinmeyen öznitelik ' hostName_ <strong>hostname</strong>'  
+     Uyarı: CIB-Bootstrap-Options: bilinmeyen öznitelik ' hostName_ <strong> hostname</strong>'  
      Uyarı: CIB-Bootstrap-Options: bilinmeyen öznitelik ' Azure-events_globalPullState '  
      Uyarı: CIB-Bootstrap-Options: bilinmeyen öznitelik ' hostName_ <strong>hostname</strong>'  
    > Bu uyarı iletileri yoksayılabilir.

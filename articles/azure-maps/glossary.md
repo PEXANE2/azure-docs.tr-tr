@@ -1,6 +1,6 @@
 ---
 title: Azure haritalar sözlüğü | Microsoft Docs
-description: Azure haritalar, konum tabanlı hizmetler ve GıS ile ilişkili yaygın olarak kullanılan koşulların bir sözlüğü.
+description: Azure haritalar, Location-Based Hizmetleri ve GıS ile ilişkili yaygın olarak kullanılan koşulların bir sözlüğü.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 09/18/2018
@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: 4c3e6216c172b0ba1273fea1690c030a05f4c456
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83742227"
 ---
 # <a name="glossary"></a>Sözlük

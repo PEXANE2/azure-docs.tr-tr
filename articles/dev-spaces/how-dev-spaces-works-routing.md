@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Güç Azure Dev Spaces ve yönlendirmenin nasıl çalıştığına ilişkin süreçler açıklanmaktadır
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
 ms.openlocfilehash: 6987bbaaebe342b571d5b19fe0e37bebd5b8b6e1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90981305"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>Yönlendirmenin nasıl çalıştığı Azure Dev Spaces
@@ -55,7 +55,7 @@ Ayrıca, başka bir geliştirme alanından türetilmiş yeni bir geliştirme ala
 
 Türetilmiş geliştirme alanı Ayrıca, kendi uygulamaları ve üst öğesinden paylaşılan uygulamalar arasında istekleri de akıllıca yönlendirir. Yönlendirme, istek türetilmiş geliştirme alanındaki bir uygulamaya yönlendirilmeye çalışarak ve üst geliştirme alanından paylaşılan uygulamaya geri dönerek yapılır. Uygulama üst alanda değilse, yönlendirme, ana alanda bulunan paylaşılan uygulamaya geri döner.
 
-Örnek:
+Örneğin:
 * Dev alanı *varsayılan* olarak, *Servicea* ve *serviceb*uygulamalarına sahiptir.
 * *Azureuser* dev Space, *varsayılan*olarak türetilir.
 * *Servicea* 'nın güncelleştirilmiş bir sürümü *azureuser*'e dağıtılır.

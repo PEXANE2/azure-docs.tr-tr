@@ -9,10 +9,10 @@ ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
 ms.openlocfilehash: 76e5ab49e354faac085be533fed1ff16c0315a5e
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88816839"
 ---
 # <a name="use-the-azure-cli-to-enable-double-encryption-at-rest-for-managed-disks"></a>Yönetilen diskler için REST 'te çift şifrelemeyi etkinleştirmek üzere Azure CLı 'yi kullanma
@@ -27,7 +27,7 @@ Azure Disk Depolama, yönetilen diskler için REST 'de çift şifrelemeyi destek
 
 En son [Azure CLI](/cli/azure/install-az-cli2) 'yı yükleyip, [az Login](/cli/azure/reference-index)ile bir Azure hesabında oturum açın.
 
-## <a name="getting-started"></a>Kullanmaya başlama
+## <a name="getting-started"></a>Başlarken
 
 1. Azure Key Vault ve şifreleme anahtarının bir örneğini oluşturun.
 

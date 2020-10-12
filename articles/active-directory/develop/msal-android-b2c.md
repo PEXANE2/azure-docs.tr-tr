@@ -14,10 +14,10 @@ ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
 ms.openlocfilehash: 0ad5fab685757d2efd91cd1df0e48a5f1258d17e
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88119887"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>B2C ile Android için MSAL kullanma
@@ -30,9 +30,9 @@ Android için MSAL ' de, B2C ilkeleri (Kullanıcı, neys) bireysel yetkililer ol
 
 İki ilkeye sahip olan B2C uygulaması verildi:
 - Kaydolma/oturum açma
-    * Çağırılır`B2C_1_SISOPolicy`
+    * Çağırılır `B2C_1_SISOPolicy`
 - Profili Düzenle
-    * Çağırılır`B2C_1_EditProfile`
+    * Çağırılır `B2C_1_EditProfile`
 
 Uygulamanın yapılandırma dosyası iki bildirmelidir `authorities` . Her ilke için bir tane. `type`Her bir yetkilinin özelliği `B2C` .
 
@@ -54,11 +54,11 @@ Uygulamanın yapılandırma dosyası iki bildirmelidir `authorities` . Her ilke 
 }
 ```
 
-, `redirect_uri` Uygulama yapılandırmasında kayıtlı olmalıdır ve `AndroidManifest.xml` [yetkilendirme kodu verme akışı](../../active-directory-b2c/authorization-code-flow.md)sırasında yeniden yönlendirmeyi desteklemek için içinde.
+, `redirect_uri` Uygulama yapılandırmasında kayıtlı olmalıdır ve  `AndroidManifest.xml` [yetkilendirme kodu verme akışı](../../active-directory-b2c/authorization-code-flow.md)sırasında yeniden yönlendirmeyi desteklemek için içinde.
 
 ## <a name="initialize-ipublicclientapplication"></a>Ipublicclientapplication 'ı Başlat
 
-`IPublicClientApplication`, uygulama yapılandırmasının zaman uyumsuz olarak ayrıştırılabilmesi için bir fabrika yöntemiyle oluşturulur.
+`IPublicClientApplication` , uygulama yapılandırmasının zaman uyumsuz olarak ayrıştırılabilmesi için bir fabrika yöntemiyle oluşturulur.
 
 ```java
 PublicClientApplication.createMultipleAccountPublicClientApplication(
@@ -139,7 +139,7 @@ pca.acquireTokenSilentAsync(parameters);
 
 ## <a name="specify-a-policy"></a>İlke belirtin
 
-B2C 'deki ilkeler ayrı yetkililer olarak temsil edildiğinden, veya parametreleri oluşturulurken bir yan tümce belirtilerek varsayılan dışında bir ilke çağırma elde edilir `fromAuthority` `acquireToken` `acquireTokenSilent` .  Örnek:
+B2C 'deki ilkeler ayrı yetkililer olarak temsil edildiğinden, veya parametreleri oluşturulurken bir yan tümce belirtilerek varsayılan dışında bir ilke çağırma elde edilir `fromAuthority` `acquireToken` `acquireTokenSilent` .  Örneğin:
 
 ```java
 AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
@@ -235,7 +235,7 @@ B2C her bir ilkeyi ayrı bir yetkili olarak değerlendirir. Bu nedenle, her ilke
 
 Her ilke `IAccount` , her kullanıcı için önbelleğe ekler. Bir Kullanıcı bir uygulamada oturum açarsa ve iki ilkeyi çağırlarsa iki `IAccount` s vardır. Bu kullanıcıyı önbellekten kaldırmak için her ilke için çağrı yapmanız gerekir `removeAccount()` .
 
-Bir ilke için belirteçleri yenilediğinizde `acquireTokenSilent` , `IAccount` ilkenin önceki etkinleştirilmelerinde döndürülen aynısını sağlayın `AcquireTokenSilentParameters` . Başka bir ilke tarafından döndürülen bir hesabın sağlanması hataya neden olur.
+Bir ilke için belirteçleri yenilediğinizde `acquireTokenSilent` , `IAccount` ilkenin önceki etkinleştirilmelerinde döndürülen aynısını sağlayın  `AcquireTokenSilentParameters` . Başka bir ilke tarafından döndürülen bir hesabın sağlanması hataya neden olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

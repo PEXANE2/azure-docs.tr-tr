@@ -10,10 +10,10 @@ ms.topic: troubleshooting
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: dba321d055e64d62ca91f95461c3299bee5f90d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83714228"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>Sorun giderme için bir tarayıcı izlemesi yakalama
@@ -24,7 +24,7 @@ Azure portal bir sorunla ilgili sorun yaşıyorsanız ve Microsoft destek 'e ba�
 
 Google Chrome ve Microsoft Edge (Kmıum), her ikisi de [kmıum açık kaynak projesine](https://www.chromium.org/Home)dayalıdır. Aşağıdaki adımlarda, iki tarayıcıda çok benzeyen Geliştirici araçlarının nasıl kullanılacağı gösterilmektedir. Daha fazla bilgi için bkz. [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) ve [Microsoft Edge (kmıum) geliştirici araçları](/microsoft-edge/devtools-guide-chromium).
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. İzlemeye _başlamadan önce_ , izlemenin, oturum açma ile ilgili hassas bilgiler içermediği şekilde oturum açması önemlidir. 
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. İzlemeye _başlamadan önce_ , izlemenin, oturum açma ile ilgili hassas bilgiler içermediği şekilde oturum açması önemlidir. 
 
 1. [Adımlar Kaydedicisi](https://support.microsoft.com/help/22878/windows-10-record-steps)'ni kullanarak portalda aldığınız adımları kaydetmeye başlayın.
 
@@ -60,7 +60,7 @@ Google Chrome ve Microsoft Edge (Kmıum), her ikisi de [kmıum açık kaynak pro
 
 1. Adımları kaydediciyi durdurun ve kaydı kaydedin.
 
-1. Tarayıcı geliştirici araçları bölmesine geri dönerek **konsol** sekmesini seçin. Iletilerden birine sağ tıklayın, ardından **Farklı Kaydet...** öğesini seçin ve konsol çıkışını bir metin dosyasına kaydedin.
+1. Tarayıcı geliştirici araçları bölmesine geri dönerek **konsol** sekmesini seçin. İletilerden birine sağ tıklayın, ardından **Farklı Kaydet...** öğesini seçin ve konsol çıkışını bir metin dosyasına kaydedin.
 
     ![Konsol çıktısının ekran görüntüsü](media/capture-browser-trace/chromium-console-select.png)
 
@@ -70,7 +70,7 @@ Google Chrome ve Microsoft Edge (Kmıum), her ikisi de [kmıum açık kaynak pro
 
 Aşağıdaki adımlarda, Microsoft Edge 'de (EdgeHTML) Geliştirici araçlarının nasıl kullanılacağı gösterilmektedir. Daha fazla bilgi için bkz. [Microsoft Edge (EdgeHTML) geliştirici araçları](/microsoft-edge/devtools-guide).
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. İzlemeye _başlamadan önce_ , izlemenin, oturum açma ile ilgili hassas bilgiler içermediği şekilde oturum açması önemlidir. 
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. İzlemeye _başlamadan önce_ , izlemenin, oturum açma ile ilgili hassas bilgiler içermediği şekilde oturum açması önemlidir. 
 
 1. [Adımlar Kaydedicisi](https://support.microsoft.com/help/22878/windows-10-record-steps)'ni kullanarak portalda aldığınız adımları kaydetmeye başlayın.
 
@@ -126,7 +126,7 @@ Aşağıdaki adımlarda, Apple Safari 'de Geliştirici araçlarının nasıl kul
 
         ![Safari gelişmiş tercihlerinin ekran görüntüsü](media/capture-browser-trace/safari-show-develop-menu.png)
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. İzlemeye _başlamadan önce_ , izlemenin, oturum açma ile ilgili hassas bilgiler içermediği şekilde oturum açması önemlidir. 
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. İzlemeye _başlamadan önce_ , izlemenin, oturum açma ile ilgili hassas bilgiler içermediği şekilde oturum açması önemlidir. 
 
 1. Portalda aldığınız adımları kaydetmeye başlayın. Daha fazla bilgi için bkz. [Mac 'inizde ekran kaydetme](https://support.apple.com/HT208721).
 
@@ -170,7 +170,7 @@ Aşağıdaki adımlarda, Apple Safari 'de Geliştirici araçlarının nasıl kul
 
 Aşağıdaki adımlarda, Firefox 'ta Geliştirici araçlarının nasıl kullanılacağı gösterilmektedir. Daha fazla bilgi için bkz. [Firefox geliştirici araçları](https://developer.mozilla.org/docs/Tools).
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. İzlemeye _başlamadan önce_ , izlemenin, oturum açma ile ilgili hassas bilgiler içermediği şekilde oturum açması önemlidir. 
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. İzlemeye _başlamadan önce_ , izlemenin, oturum açma ile ilgili hassas bilgiler içermediği şekilde oturum açması önemlidir. 
 
 1. Portalda aldığınız adımları kaydetmeye başlayın. Windows 'da [Adım Kaydedicisi](https://support.microsoft.com/help/22878/windows-10-record-steps) 'ni kullanın veya [Ekran Mac 'Inizde nasıl kaydedilecek hakkında bilgi için](https://support.apple.com/HT208721)bkz..
 
@@ -202,7 +202,7 @@ Aşağıdaki adımlarda, Firefox 'ta Geliştirici araçlarının nasıl kullanı
 
 1. Windows 'da veya Mac 'teki ekran kaydındaki adımları kaydediciden durdurun ve kaydı kaydedin.
 
-1. Tarayıcı geliştirici araçları bölmesine geri dönerek **konsol** sekmesini seçin. Iletilerden birine sağ tıklayın, ardından **görünür iletiyi dışarı aktar**' ı seçin ve konsol çıkışını bir metin dosyasına kaydedin.
+1. Tarayıcı geliştirici araçları bölmesine geri dönerek **konsol** sekmesini seçin. İletilerden birine sağ tıklayın, ardından **görünür Iletiyi gönder**' i seçin ve konsol çıkışını bir metin dosyasına kaydedin.
 
     ![Konsol çıktısının ekran görüntüsü](media/capture-browser-trace/firefox-console-select.png)
 

@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 876a96f579bff8d30e454e927054a951734f44ba
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441108"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure Dosya Eşitleme dağıtımı planlama
@@ -98,7 +98,7 @@ Aşağıdaki tabloda, ortalama dosya boyutu 512 KiB olduğunda, ad alanının bo
 |---------|---------|---------|---------|
 | 3        | 1.4     | 2        | 8 (ilk eşitleme)/2 (tipik dalgalanma)      |
 | 5        | 2.3     | 2        | 16 (ilk eşitleme)/4 (tipik dalgalanma)    |
-| 10       | 4,7     | 4        | 32 (ilk eşitleme)/8 (tipik dalgalanma)   |
+| 10       | 4.7     | 4        | 32 (ilk eşitleme)/8 (tipik dalgalanma)   |
 | 30       | 14,0    | 8        | 48 (ilk eşitleme)/16 (tipik dalgalanma)   |
 | 50       | 23,3    | 16       | 64 (ilk eşitleme)/32 (tipik dalgalanma)  |
 | 100 *     | 46,6    | 32       | 128 (ilk eşitleme)/32 (tipik dalgalanma)  |
@@ -147,7 +147,7 @@ Yalnızca NTFS birimleri desteklenir; ReFS, FAT, FAT32 ve diğer dosya sistemler
 
 Aşağıdaki tabloda NTFS dosya sistemi özelliklerinin birlikte çalışma durumu gösterilmektedir: 
 
-| Öne çıkan özelliği | Destek durumu | Notlar |
+| Özellik | Destek durumu | Notlar |
 |---------|----------------|-------|
 | Erişim denetim listeleri (ACL’ler) | Tam olarak destekleniyor | Windows stili isteğe bağlı erişim denetim listeleri Azure Dosya Eşitleme tarafından korunur ve sunucu uç noktalarında Windows Server tarafından zorlanır. Azure dosya paylaşımının doğrudan bağlanması sırasında ACL 'Ler de zorlanabilir, ancak bunun için ek yapılandırma gerekir. Daha fazla bilgi için [kimlik bölümüne](#identity) bakın. |
 | Sabit bağlantılar | Atlandı | |

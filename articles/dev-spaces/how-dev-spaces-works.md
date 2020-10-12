@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Güç Azure Dev Spaces olan süreçler açıklanmaktadır
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
 ms.openlocfilehash: 81408ed4bbe5322538d893b29c7397104c5b0844
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90981274"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Azure Dev Spaces nasıl çalışır?
@@ -22,7 +22,7 @@ Azure Dev Spaces, Kubernetes uygulamalarını hızla yinelemek ve hata ayıklama
 
 Azure Dev Spaces, Kubernetes uygulamanızı geliştirme, test etme ve AKS kümeniz bağlamında yineleme çabaları azaltır. Çabadaki Bu azalma, geliştiricilerin kendi uygulamalarının iş mantığına odaklanmasını ve hizmetlerini Kubernetes 'de çalışacak şekilde yapılandırmamasını sağlar.
 
-### <a name="bridge-to-kubernetes"></a>Kubernetes 'e köprü oluşturma
+### <a name="bridge-to-kubernetes"></a>Kubernetes Köprüsü
 
 Kubernetes Köprüsü sayesinde, geliştirme bilgisayarınızı Kubernetes kümenize bağlanarak, geliştirme bilgisayarınızda küme üzerinde çalışıyor gibi kod çalıştırmanıza ve hata ayıklamanıza olanak sağlayabilirsiniz. Kubernetes Köprüsü, kümenizde geliştirme bilgisayarınız ile küme arasında trafiği yeniden yönlendirmek için uzak bir aracı görevi gören bir pod çalıştırarak bağlı kümeniz arasında trafiği yeniden yönlendirir. Bu trafik yeniden yönlendirme, kümenizde çalışan geliştirme bilgisayarınızdaki ve hizmetinizdeki kodların aynı kümelemiş gibi iletişim kurmasına olanak tanır. Geliştirme bilgisayarınızı bir Kubernetes kümesine bağlama hakkında daha fazla bilgi için bkz. [Kubernetes Köprüsü nasıl kullanılır][how-it-works-bridge-to-kubernetes].
 

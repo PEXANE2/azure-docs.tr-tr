@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: a541e1b068ec3667120bbb31e65ca7bc35febadb
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89265924"
 ---
 # <a name="streaming-endpoints-overview"></a>Akış uç noktalarına genel bakış  
@@ -80,9 +80,9 @@ Ocak 10 2017 sürümünden önce AMS hesapları oluşturan kullanıcılar için,
 |Tür|Streammingendpointversion|Ölçek birimleri|CDN|Faturalandırma|
 |--------------|----------|-----------------|-----------------|-----------------|
 |Klasik|1.0|0|NA|Ücretsiz|
-|Standart akış uç noktası (Önizleme)|2.0|0|Yes|Ödenmemiş|
-|Premium Akış Birimleri|1.0|>0|Yes|Ödenmemiş|
-|Premium Akış Birimleri|2.0|>0|Yes|Ödenmemiş|
+|Standart akış uç noktası (Önizleme)|2.0|0|Evet|Ödenmemiş|
+|Premium Akış Birimleri|1.0|>0|Evet|Ödenmemiş|
+|Premium Akış Birimleri|2.0|>0|Evet|Ödenmemiş|
 
 ### <a name="features"></a>Özellikler
 
@@ -91,11 +91,11 @@ Ocak 10 2017 sürümünden önce AMS hesapları oluşturan kullanıcılar için,
 Aktarım hızı |600 Mbps 'e kadar, bir CDN kullanıldığında çok daha yüksek bir verimlilik sağlar.|akış birimi başına 200 Mbps (SU). , Bir CDN kullanıldığında daha yüksek etkili bir verimlilik sağlayabilir.
 CDN|Azure CDN, üçüncü taraf CDN veya CDN yok.|Azure CDN, üçüncü taraf CDN veya CDN yok.
 Faturalandırma eşit olarak dağıtılır| Günlük|Günlük
-Dinamik şifreleme|Yes|Yes
-Dinamik paketleme|Yes|Yes
+Dinamik şifreleme|Evet|Evet
+Dinamik paketleme|Evet|Evet
 Ölçek|Hedeflenen işleme kadar otomatik olarak ölçeklendirin.|Ek akış birimleri.
-IP filtreleme/G20/özel ana bilgisayar <sup>1</sup>|Yes|Yes
-Aşamalı indirme|Yes|Yes
+IP filtreleme/G20/özel ana bilgisayar <sup>1</sup>|Evet|Evet
+Aşamalı indirme|Evet|Evet
 Önerilen kullanım |Akış senaryolarının çoğunluğu için önerilir.|Profesyonel kullanım. 
 
 <sup>1</sup> yalnızca CDN bitiş noktasında etkin olmadığında doğrudan akış uç noktasında kullanılır.<br/>
@@ -122,5 +122,5 @@ Media Services öğrenme yollarını gözden geçirin.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

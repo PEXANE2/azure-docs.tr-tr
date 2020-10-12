@@ -8,10 +8,10 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
 ms.openlocfilehash: 65a88f309602462e77336181316c0d5bf19a8a1e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90980670"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Threat Modeling Tool özelliğe genel bakış
@@ -174,7 +174,7 @@ Diyagramınızı oluşturduktan sonra, **analiz** görünümüne geçmek için k
 
 Bir tehdit seçtiğinizde üç farklı işlev kullanabilirsiniz:
 
-| Öne çıkan özelliği                               | Bilgi      |
+| Özellik                               | Bilgi      |
 | --------------------------------------- | ------------ |
 | **Göstergeyi oku** | <p>Tehdit okundu olarak işaretlenir ve bu, gözden geçirdiğinizi planladığınız öğeleri izlemenize yardımcı olur.</p><p>![Okuma/okunmamış gösterge](./media/threat-modeling-tool-feature-overview/readmode.png)</p> |
 | **Etkileşim odağı** | <p>Bir tehdide ait olan diyagramdaki etkileşim vurgulanmıştır.</p><p>![Etkileşim odağı](./media/threat-modeling-tool-feature-overview/interactionfocus.png)</p> |

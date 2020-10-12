@@ -4,10 +4,10 @@ description: Azure Resource Manager şablonları yazmak için önerilen yaklaş�
 ms.topic: conceptual
 ms.date: 07/10/2020
 ms.openlocfilehash: 1121c66e0bcd7de39afd5bea85866fd9ad007ce4
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87809264"
 ---
 # <a name="arm-template-best-practices"></a>ARM şablonu en iyi uygulamaları
@@ -44,7 +44,7 @@ Bu bölümdeki bilgiler, [parametrelerle](template-parameters.md)çalışırken 
 
 * Parametre adları için ortası Case kullanın.
 
-* SKU, boyut veya kapasite gibi ortama göre farklılık gösteren ayarlar için parametreleri kullanın.
+* Ortama göre değişen SKU, boyut veya kapasite gibi ayarlar için parametreleri kullanın.
 
 * Kolay tanımlama için belirtmek istediğiniz kaynak adları için parametreleri kullanın.
 

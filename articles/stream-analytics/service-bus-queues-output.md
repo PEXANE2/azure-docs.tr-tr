@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: bad81e8929cd0c5c66c87fd9f6cc11dc746b3e5f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317810"
 ---
 # <a name="service-bus-queues-output-from-azure-stream-analytics"></a>Azure Stream Analytics Service Bus kuyruk çıktısı
@@ -24,7 +24,7 @@ ms.locfileid: "91317810"
 
 Aşağıdaki tabloda, bir kuyruk çıkışı oluşturmaya yönelik özellik adları ve açıklamaları listelenmektedir.
 
-| Özellik adı | Description |
+| Özellik adı | Açıklama |
 | --- | --- |
 | Çıktı diğer adı |Sorgu çıkışını bu Service Bus kuyruğuna yönlendirmek için sorgularda kullanılan kolay bir ad. |
 | Service Bus ad alanı |Bir mesajlaşma varlıkları kümesi için kapsayıcı. |
@@ -66,7 +66,7 @@ Aşağıdaki örnekte, alanları `DeviceId` ve `DeviceStatus` meta verilere ekle
 
 Aşağıdaki görüntü, [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer)kullanılarak EventHub ' de incelenen beklenen çıkış iletisi özellikleridir.
 
-:::image type="content" source="media/service-bus-queues-output/custom-properties.png" alt-text="Olay özel özellikleri":::
+:::image type="content" source="media/service-bus-queues-output/custom-properties.png" alt-text="Özellik sütunları":::
 
 ## <a name="system-properties"></a>Sistem özellikleri
 

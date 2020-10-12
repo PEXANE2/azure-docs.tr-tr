@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/19/2020
 ms.author: yelevin
 ms.openlocfilehash: 58936066abcbe4c3f9fcfad78bf914c74079aa95
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88141797"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Azure Sentinel müşteri tarafından yönetilen anahtarı ayarlama
@@ -28,7 +28,7 @@ Bu makalede, Azure Sentinel için müşteri tarafından yönetilen bir anahtar (
 
 > [!NOTE]
 > -   Azure Sentinel CMK özelliği yalnızca **Yeni** olan ve bu özelliğe erişim sağlayan müşteriler için Azure Özellik kaydı tarafından denetlenmektedir.İletişim kurarak erişim isteğinde bulunabilir azuresentinelCMK@microsoft.com ve kapasite kullanılabilir olduğunda bekleyen istekler onaylanır.
-> -   Azure Sentinel CMK özelliği yalnızca Doğu ABD, Batı ABD 2 ve Güney Orta ABD bölgelerinde kullanılabilir.
+> -   Azure Sentinel CMK özelliği yalnızca Doğu ABD, Batı ABD 2 ve South-Central ABD bölgelerinde kullanılabilir.
 > -   CMK özelliği yalnızca, günde 1 GB veya daha fazla TB gönderen müşteriler tarafından kullanılabilir. Azure aboneliğinizde CMK sağlamak üzere Microsoft 'a uyguladığınızda, ek fiyatlandırma hakkında bilgi alacaksınız. [Log Analytics fiyatlandırması](../azure-monitor/platform/manage-cost-storage.md#log-analytics-dedicated-clusters)hakkında daha fazla bilgi edinin.
 
 ## <a name="how-cmk-works"></a>CMK nasıl kullanılır? 
@@ -54,7 +54,7 @@ CMK sağlamak için şu adımları izleyin: 
 
 5.  Azure Sentinel 'de CMK 'yi etkinleştirin.
 
-6.  Azure Sentinel 'i etkinleştirin.
+6.  Azure Sentinel'i etkinleştirme.
 
 ### <a name="step-1-create-an-azure-key-vault-and-storing-key"></a>1. Adım: Azure Key Vault oluşturma ve anahtar depolama
 

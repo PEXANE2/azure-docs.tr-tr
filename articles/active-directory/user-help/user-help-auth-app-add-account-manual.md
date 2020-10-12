@@ -12,10 +12,10 @@ ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 3838234f9f65fcf91f8de33e3d7196aa13f2b903
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83741730"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>Uygulamaya el ile bir hesap ekleyin
@@ -93,12 +93,12 @@ Hesaplarınız için belirtilen kodlar, büyük/küçük harfe duyarlı değildi
 
 5. Bilgisayarınızda **bir yedekleme doğrulama yöntemi ekleme** sayfasında, Amazon hesabınız için yedekleme doğrulama yönteminiz tarafından belirtilen altı basamaklı doğrulama kodunu yazın ve ardından **kodu doğrula ve devam et**' i seçin.
 
-6. Neredeyse bitti sayfasında, bilgisayarınızı güvenilir bir cihaz yapıp yapmayacağınıza karar verin ve ardından alındı ' ı seçin **. Iki aşamalı doğrulamayı açın**.
+6. Neredeyse bitti sayfasında, bilgisayarınızı güvenilir bir cihaz yapıp yapmayacağınıza karar verin ve ardından alındı ' ı seçin **. Two-Step doğrulaması 'nı açın**.
 
     Güncelleştirilmiş iki öğeli doğrulama ayrıntılarınızın gösterildiği **Gelişmiş güvenlik ayarları** sayfası görüntülenir.
 
     >[!NOTE]
-    >İki öğeli doğrulama ve Amazon hesabınız hakkında daha fazla bilgi için bkz. iki adımlı doğrulama hakkında ve [Iki adımlı doğrulamayla oturum açma](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440) [hakkında](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) .    
+    >İki öğeli doğrulama ve Amazon hesabınız hakkında daha fazla bilgi için bkz. [Two-Step doğrulaması hakkında](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) ve [Two-Step doğrulaması ile oturum açma](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440).    
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
