@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: 49f944aa98bf0bf8090b10d2feeb50af4a2d42b2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85955497"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure Izleyici 'de Windows ve Linux performansı veri kaynakları
@@ -79,13 +79,13 @@ Bu öğedeki parametreler aşağıdaki tabloda açıklanmıştır.
 |:--|:--|
 | nesne \_ adı | Koleksiyonun nesne adı. |
 | örnek \_ Regex |  Toplanacak örnekleri tanımlayan bir *normal ifade* . Değer: `.*` tüm örnekleri belirtir. Yalnızca toplam örnek için işlemci ölçümlerini toplamak üzere \_ belirtebilirsiniz `_Total` . Yalnızca crond veya SSHD örnekleri için işlem ölçümlerini toplamak üzere şunları belirtebilirsiniz: `(crond\|sshd)` . |
-| Sayaç \_ adı \_ Regex | Hangi sayaçların (nesne için) toplanacağını tanımlayan bir *normal ifade* . Nesnenin tüm sayaçlarını toplamak için şunu belirtin: `.*` . Yalnızca bellek nesnesi için takas alanı sayaçlarını toplamak için, örneğin şunları belirtebilirsiniz:`.+Swap.+` |
+| Sayaç \_ adı \_ Regex | Hangi sayaçların (nesne için) toplanacağını tanımlayan bir *normal ifade* . Nesnenin tüm sayaçlarını toplamak için şunu belirtin: `.*` . Yalnızca bellek nesnesi için takas alanı sayaçlarını toplamak için, örneğin şunları belirtebilirsiniz: `.+Swap.+` |
 | interval | Nesnenin sayaçlarının toplandığı sıklık. |
 
 
 Aşağıdaki tabloda, yapılandırma dosyasında belirtebileceğiniz nesneler ve sayaçlar listelenmektedir.  [Azure izleyici 'de Linux uygulamaları için performans sayaçlarını toplama](data-sources-linux-applications.md)bölümünde açıklandığı gibi belirli uygulamalar için kullanılabilir ek sayaçlar vardır.
 
-| Nesne adı | Sayaç adı |
+| Nesne adı | Sayaç Adı |
 |:--|:--|
 | Mantıksal disk | % Boş ınomdes |
 | Mantıksal disk | % Boş alan |
@@ -138,7 +138,7 @@ Aşağıdaki tabloda, yapılandırma dosyasında belirtebileceğiniz nesneler ve
 | Sistem | Boş sanal bellek |
 | Sistem | İşlemler |
 | Sistem | Disk belleği dosyalarında depolanan boyut |
-| Sistem | Hizmet |
+| Sistem | Çalışma süresi |
 | Sistem | Kullanıcılar |
 
 

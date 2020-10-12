@@ -13,10 +13,10 @@ ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 54f5721ef606b6ea916f5a00031c58f5e2adeb0e
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87910272"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Azure Active Directory B2B en iyi uygulamaları
@@ -26,9 +26,9 @@ Bu makale, Azure Active Directory (Azure AD) ile işletmeler arası (B2B) işbir
    > Microsoft, **31 mart 2021**' den ıtıbaren, B2B işbirliği senaryoları Için YÖNETILMEYEN Azure AD hesapları ve kiracılar oluşturarak artık davetlerin kullanımını desteklememektedir. Hazırlık aşamasında, müşterilerin [e-posta bir kerelik geçiş kodu kimlik doğrulamasını](one-time-passcode.md)kabul etmelerini öneririz. Bu genel önizleme özelliğiyle ilgili geri bildirimlerinize hoş geldiniz ve işbirliği yapmak için daha fazla yol oluşturmak heyecanlıyız.
 
 ## <a name="b2b-recommendations"></a>B2B önerileri
-| Öneri | Açıklamalar |
+| Öneri | Yorumlar |
 | --- | --- |
-| En iyi oturum açma deneyimi için, kimlik sağlayıcılarıyla federasyona ayırın | Mümkün olduğunda, davet edilen kullanıcıların Microsoft hesapları (MSAs) veya Azure AD hesapları oluşturmaya gerek kalmadan paylaşılan uygulamalarınızda ve kaynaklarda oturum açmalarına izin vermek için doğrudan kimlik sağlayıcılarıyla federasyona ayırın. B2B Konuk kullanıcılarının Google hesaplarıyla oturum açmasını sağlamak için [Google Federation özelliğini](google-federation.md) kullanabilirsiniz. Ya da [doğrudan Federasyon (Önizleme) özelliğini](direct-federation.md) kullanarak, kimlik sağlayıcısı (ıDP) SAML 2,0 veya WS-beslenir protokolünü destekleyen herhangi bir kuruluşla doğrudan Federasyonu ayarlayabilirsiniz. |
+| En iyi oturum açma deneyimi için, kimlik sağlayıcılarıyla federasyona ayırın | Mümkün olduğunda, davet edilen kullanıcıların Microsoft hesapları (MSAs) veya Azure AD hesapları oluşturmaya gerek kalmadan paylaşılan uygulamalarınızda ve kaynaklarda oturum açmalarına izin vermek için doğrudan kimlik sağlayıcılarıyla federasyona ayırın. B2B Konuk kullanıcılarının Google hesaplarıyla oturum açmasını sağlamak için [Google Federation özelliğini](google-federation.md) kullanabilirsiniz. Ya da [doğrudan Federasyon (Önizleme) özelliğini](direct-federation.md) kullanarak, kimlik sağlayıcısı (IDP) SAML 2,0 veya WS-Fed protokolünü destekleyen herhangi bir kuruluşla doğrudan Federasyon oluşturabilirsiniz. |
 | Diğer yollarla kimlik doğrulaması yapamayan B2B konukları için e-posta bir kerelik geçiş kodu (Önizleme) özelliğini kullanın | [E-posta bir kerelik geçiş kodu (Önizleme)](one-time-passcode.md) özelliği, Azure AD, MICROSOFT HESABı (MSA) veya Google Federasyonu gibi diğer yollarla kimlik doğrulamasından GEÇIYORLARSA B2B Konuk kullanıcılarının kimliğini doğrular. Konuk Kullanıcı bir davetiyeyi bir davet edebilir veya paylaşılan bir kaynağa eriştiğinde, kendi e-posta adreslerine gönderilen geçici bir kod isteyebilir. Sonra oturum açmaya devam etmek için bu kodu girer. |
 | Oturum açma sayfanıza şirket markası ekleme | Çoklu oturum açma sayfanızı, B2B Konuk kullanıcılarınız için daha sezgisel olacak şekilde özelleştirebilirsiniz. Bkz. [oturum açma ve erişim paneli sayfalarına Şirket markası ekleme](../fundamentals/customize-branding.md). |
 | B2B Konuk Kullanıcı kullanım deneyimine Gizlilik Bildirimimizi ekleyin | Davet edilen bir kullanıcının devam etmek için Gizlilik koşullarınızı onaylaması gerekir diye, kuruluşunuzun gizlilik bildiriminin URL 'sini ilk kez davet kullanım sürecine ekleyebilirsiniz. Bkz. [nasıl yapılır: kuruluşunuzun gizlilik bilgilerini Azure Active Directory ekleme](https://aka.ms/adprivacystatement). |

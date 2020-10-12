@@ -12,10 +12,10 @@ ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: b90f86576928e44e00c548f4f3ad3c22c27b8bb3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85829450"
 ---
 # <a name="split-merge-security-configuration"></a>Bölünmüş birleştirme güvenlik yapılandırması
@@ -59,8 +59,8 @@ Bu seçenekler yoksa, **otomatik olarak imzalanan sertifikalar**oluşturabilirsi
 
 ### <a name="create-a-new-self-signed-certificate"></a>Otomatik olarak imzalanan yeni bir sertifika oluştur
 
-1. [Otomatik olarak Imzalanan sertifika oluşturma](#create-a-self-signed-certificate)
-2. [Otomatik olarak Imzalanan TLS/SSL sertifikası için PFX dosyası oluştur](#create-pfx-file-for-self-signed-tlsssl-certificate)
+1. [Self-Signed sertifikası oluşturma](#create-a-self-signed-certificate)
+2. [Self-Signed TLS/SSL sertifikası için PFX dosyası oluşturma](#create-pfx-file-for-self-signed-tlsssl-certificate)
 3. [TLS/SSL sertifikasını bulut hizmetine yükle](#upload-tlsssl-certificate-to-cloud-service)
 4. [Hizmet yapılandırma dosyasında TLS/SSL sertifikası Güncelleştir](#update-tlsssl-certificate-in-service-configuration-file)
 5. [TLS/SSL sertifika yetkilisini içeri aktarma](#import-tlsssl-certification-authority)
@@ -78,10 +78,10 @@ Bu seçenekler yoksa, **otomatik olarak imzalanan sertifikalar**oluşturabilirsi
 Hizmette isteklerin kimliğini doğrulamak için istemci sertifikaları gereklidir. Aşağıdaki üç senaryonun en uygun olanını seçin ve tüm adımlarını yürütün:
 
 ### <a name="turn-off-client-certificates"></a>İstemci sertifikalarını kapat
-1. [Istemci sertifikası tabanlı kimlik doğrulamasını kapat](#turn-off-client-certificate-based-authentication)
+1. [Istemci Certificate-Based kimlik doğrulamasını kapat](#turn-off-client-certificate-based-authentication)
 
 ### <a name="issue-new-self-signed-client-certificates"></a>Otomatik olarak imzalanan yeni istemci sertifikaları verme
-1. [Otomatik olarak Imzalanan sertifika yetkilisi oluşturma](#create-a-self-signed-certification-authority)
+1. [Self-Signed sertifika yetkilisi oluşturma](#create-a-self-signed-certification-authority)
 2. [CA sertifikasını bulut hizmetine yükle](#upload-ca-certificate-to-cloud-service)
 3. [Hizmet yapılandırma dosyasında CA sertifikasını Güncelleştir](#update-ca-certificate-in-service-configuration-file)
 4. [Istemci sertifikası verme](#issue-client-certificates)
@@ -105,8 +105,8 @@ Hizmet uç noktalarına erişim, belirli IP adresi aralıklarıyla kısıtlanabi
 Meta veri deposunda depolanan kimlik bilgilerini şifrelemek için bir sertifika gerekir. Aşağıdaki üç senaryonun en uygun olanını seçin ve tüm adımlarını yürütün:
 
 ### <a name="use-a-new-self-signed-certificate"></a>Otomatik olarak imzalanan yeni bir sertifika kullan
-1. [Otomatik olarak Imzalanan sertifika oluşturma](#create-a-self-signed-certificate)
-2. [Otomatik olarak Imzalanan şifreleme sertifikası için PFX dosyası oluştur](#create-pfx-file-for-self-signed-tlsssl-certificate)
+1. [Self-Signed sertifikası oluşturma](#create-a-self-signed-certificate)
+2. [Self-Signed şifreleme sertifikası için PFX dosyası oluştur](#create-pfx-file-for-self-signed-tlsssl-certificate)
 3. [Şifreleme sertifikasını bulut hizmetine yükle](#upload-encryption-certificate-to-cloud-service)
 4. [Hizmet yapılandırma dosyasında şifreleme sertifikasını Güncelleştir](#update-encryption-certificate-in-service-configuration-file)
 
@@ -437,14 +437,14 @@ Hizmet yapılandırma dosyasında, bulut hizmetine yüklenen sertifikanın parma
 * İstemci sertifikalarını yapılandırma
 
 ## <a name="find-certificate"></a>Sertifika bul
-Şu adımları uygulayın:
+Şu adımları izleyin:
 
 1. mmc.exe çalıştırın.
 2. Dosya-> ek bileşen Ekle/Kaldır...
 3. **Sertifikalar**' ı seçin.
 4. **Ekle**'ye tıklayın.
 5. Sertifika deposu konumunu seçin.
-6. **Son**'a tıklayın.
+6. **Finish (Son)** düğmesine tıklayın.
 7. **Tamam**'a tıklayın.
 8. **Sertifikalar**' ı genişletin.
 9. Sertifika depolama düğümünü genişletin.
@@ -464,7 +464,7 @@ Hizmet yapılandırma dosyasında, bulut hizmetine yüklenen sertifikanın parma
 8. **İleri**’ye tıklayın.
 9. Sertifikanın depolanacağı bir dosya adı yazın veya dosyaya gidin (bir kullanın. PFX uzantısı).
 10. **İleri**’ye tıklayın.
-11. **Son**'a tıklayın.
+11. **Finish (Son)** düğmesine tıklayın.
 12. **Tamam**'a tıklayın.
 
 ## <a name="import-certificate"></a>Sertifikayı içeri aktarma
@@ -482,13 +482,13 @@ Sertifika Içeri aktarma Sihirbazı 'nda:
 5. Aşağıdaki depoya "yerleştir" sertifikalarını seçin
 6. **Gözat**’a tıklayın.
 7. İstenen depoyu seçin.
-8. **Son**'a tıklayın.
+8. **Finish (Son)** düğmesine tıklayın.
    
    * Güvenilen kök sertifika yetkilisi deposu seçilmişse **Evet**' e tıklayın.
 9. Tüm iletişim kutusu pencereleri üzerinde **Tamam** ' ı tıklatın.
 
 ## <a name="upload-certificate"></a>Sertifikayı karşıya yükleme
-[Azure portalında](https://portal.azure.com/)
+[Azure Portal](https://portal.azure.com/)
 
 1. **Cloud Services**seçin.
 2. Bulut hizmetini seçin.

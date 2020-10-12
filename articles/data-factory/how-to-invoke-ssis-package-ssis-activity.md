@@ -15,10 +15,10 @@ manager: mflasko
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.date: 07/20/2020
 ms.openlocfilehash: 901693c512ddfcf5d3c4dafaec71b1606b5dc5f1
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89077858"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Data Factory'de SSIS Paketini Yürüt etkinliğiyle bir SSIS paketi çalıştırma
@@ -27,7 +27,7 @@ ms.locfileid: "89077858"
 
 Bu makalede, SSIS paketi yürütme etkinliğini kullanarak bir Azure Data Factory işlem hattında SQL Server Integration Services (SSIS) paketinin nasıl çalıştırılacağı açıklanmaktadır. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -251,7 +251,7 @@ SSIS paketi yürütme etkinliğinin **bağlantı yöneticileri** sekmesinde aşa
 
       Örneğin, SSDT 'de orijinal paketinizi değiştirmeden, çalışma zamanında var olan bağlantı yöneticilerinde bulunan **Connectbyproxy**, **ConnectionString**ve **Connectusingmanagedıdentity** özelliklerinin değerlerini geçersiz kılarak ADF 'de bulunan şirket içi ŞIRKET içi SQL Server veri akışları 'nı ADF 'de SSIS IR üzerinde çalışan şirket içi veri akışlarına dönüştürebilirsiniz.
       
-      Bu çalışma zamanı geçersiz kılma işlemleri, Şirket içindeki verilere erişirken SSIS IR için otomatik olarak barındırılan IR 'yi (Shar) bir ara sunucu olarak etkinleştirebilir. bkz. ksıs [IR için ara sunucu olarak](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)Ksıs 'yi yapılandırma ve Azure SQL veritabanı/yönetilen örnek BAĞLANTıLARı, ADF yönetilen kimliği ile Azure ACTIVE DIRECTORY (AAD) kimlik doğrulamasını sağlayan en son MSOLEDBSQL sürücüsünü kullanarak Azure SQL veritabanı/yönetilen örnek bağlantıları, bkz. [OLEDB için ADF yönetilen kimliğiyle AAD kimlik doğrulamasını yapılandırma](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication)
+      Bu çalışma zamanı geçersiz kılma işlemleri, Şirket içindeki verilere erişirken SSIS IR için proxy olarak Self-Hosted IR (SHıR) etkinleştirebilir. bkz. ksıs [IR için ara sunucu olarak](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)Ksıs 'yi yapılandırma ve Azure SQL veritabanı/yönetilen örnek BAĞLANTıLARı, ADF yönetilen kimliği ile Azure ACTIVE DIRECTORY (AAD) kimlik doğrulamasını sağlayan en son MSOLEDBSQL sürücüsünü kullanarak Azure SQL veritabanı/yönetilen örnek bağlantıları, bkz. [OLEDB için ADF yönetilen kimliğiyle AAD kimlik doğrulamasını yapılandırma](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication)
 
       ![Bağlantı yöneticileri sekmesinde SSDT 'den özellikler ayarlama](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers2.png)
    

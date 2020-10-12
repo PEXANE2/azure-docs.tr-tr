@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 714e4484c71b995bee186a2d94dc45c7ff82c50d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87910043"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>E-posta bir kerelik geçiş kodu kimlik doğrulaması (Önizleme)
@@ -71,7 +71,7 @@ Kabul etme eyleminin etkili olması birkaç dakika sürebilir. Bundan sonra, yal
 1.  [Azure Portal](https://portal.azure.com/) Azure AD Genel Yöneticisi olarak oturum açın.
 2.  Gezinti bölmesinde **Azure Active Directory**' yi seçin.
 3.  **Dış kimlikler**  >  **dış işbirliği ayarları**' nı seçin.
-5.  **Konuklar Için tek seferlik geçiş kodunu etkinleştir (Önizleme)** altında **Evet**' i seçin.
+5.  **Guests (Önizleme) Için e-posta One-Time geçiş kodu etkinleştir**altında **Evet**' i seçin.
  
 ### <a name="to-opt-in-using-powershell"></a>PowerShell 'i kullanmayı kabul etmek için
 
@@ -137,7 +137,7 @@ Geri çevirme eyleminin etkili olması birkaç dakika sürebilir. Önizlemeyi ka
 1.  [Azure Portal](https://portal.azure.com/) Azure AD Genel Yöneticisi olarak oturum açın.
 2.  Gezinti bölmesinde **Azure Active Directory**' yi seçin.
 3.  **Dış kimlikler**  >  **dış işbirliği ayarları**' nı seçin.
-5.  **Konuklar Için tek seferlik geçiş kodunu etkinleştir (Önizleme)** altında **Hayır**' ı seçin.
+5.  **Konuklar Için e-posta One-Time geçiş kodu etkinleştir (Önizleme)** altında **Hayır**' ı seçin.
 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>PowerShell 'i kullanarak önizlemeyi devre dışı bırakmak için
 Zaten yoksa en son AzureADPreview modülünü yükleyebilirsiniz (bkz. [Önkoşul: Yukarıdaki en son AzureADPreview modülünü Install](#prerequisite-install-the-latest-azureadpreview-module) ). Ardından, aşağıdakileri çalıştırarak tek seferlik geçiş kodu önizleme ilkesinin mevcut olduğunu doğrulayın:

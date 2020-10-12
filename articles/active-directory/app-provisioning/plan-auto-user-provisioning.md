@@ -12,10 +12,10 @@ ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
 ms.openlocfilehash: 24de1b2cfc5e0804039923f23b6a5cd9f6c6fb80
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88235715"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Otomatik kullanıcı sağlama dağıtımı planlama
@@ -75,7 +75,7 @@ Bu makale aşağıdaki terimleri kullanır:
 | Öğreticiler| [SaaS uygulamalarını Azure AD ile tümleştirme hakkında öğreticilerin listesine](../saas-apps/tutorial-list.md)bakın. |
 | SSS| Otomatik Kullanıcı sağlama hakkında [sık sorulan sorular](../app-provisioning/user-provisioning.md) |
 
-### <a name="solution-architectures"></a>Çözüm Mimarileri
+### <a name="solution-architectures"></a>Çözüm mimarileri
 
 Azure AD sağlama hizmeti, her bir uygulama satıcısı tarafından sağlanan kullanıcı yönetimi API uç noktalarına bağlanarak kullanıcıları ve diğer sistemleri SaaS uygulamaları sağlar. Bu Kullanıcı yönetimi API uç noktaları, Azure AD 'nin Kullanıcı aracılığıyla kullanıcıları oluşturmasına, güncelleştirmesine ve kaldırmasına izin verir.
 
@@ -207,7 +207,7 @@ Otomatik Kullanıcı sağlamayı uygulamak için, uygulama için gereken kullan�
 
 Azure AD, doğrudan öznitelik eşleme, sabit değerler sağlama veya [öznitelik eşlemeleri için ifadeler yazma](../app-provisioning/functions-for-customizing-application-data.md)tarafından desteklenir. Bu esneklik, hedeflenen sistemin özniteliğinde doldurulacak nelerin üzerinde ince denetim elde etmenizi sağlar. Kullanıcı hazırlama öznitelik eşlemelerinizi ve şemanızı bir JSON dosyasına aktarmak ve yeniden Azure AD 'ye aktarmak için [MICROSOFT Graph API](../app-provisioning/export-import-provisioning-configuration.md) ve Graf Gezginini kullanabilirsiniz.
 
-Daha fazla bilgi için bkz. [Azure Active Directory Içindeki SaaS uygulamaları Için Kullanıcı hazırlama özniteliğini özelleştirme-eşlemeler](../app-provisioning/customize-application-attributes.md).
+Daha fazla bilgi için bkz. [Azure Active Directory SaaS uygulamaları Için Kullanıcı hazırlama Attribute-Mappings özelleştirme](../app-provisioning/customize-application-attributes.md).
 
 ### <a name="special-considerations-for-user-provisioning"></a>Kullanıcı sağlamaya yönelik özel konular
 

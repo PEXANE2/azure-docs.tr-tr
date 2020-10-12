@@ -12,10 +12,10 @@ ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
 ms.openlocfilehash: ad2ac118908f1c1f77ea204ae2400913ac0807cb
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86147400"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>Bing Arama API'leri analiz ekleyin
@@ -90,7 +90,7 @@ Aşağıdakiler olası ölçümler ve uç nokta kısıtlamalardır.
 
 - **Yanıt kodu dağıtımı**: raporlama dönemi boyunca tüm çağrıların http durum kodları.
 
-- **Çağrı kaynağı dağıtımı**: kullanıcılar tarafından kullanılan tarayıcı türleri. Örneğin, Microsoft Edge, Chrome, Safari ve FireFox. Tarayıcı dışından yapılan çağrılar (botlar, Postman veya bir konsol uygulamasından kıvrımlı kullanılması) Kitaplıklar altında gruplandırılır. Kaynak, isteğin Kullanıcı Aracısı üstbilgi değeri kullanılarak belirlenir. İstek, Kullanıcı Aracısı üstbilgisini içermiyorsa, Bing kaynağı diğer sinyallerden türemeye çalışır.  
+- **Çağrı kaynağı dağıtımı**: kullanıcılar tarafından kullanılan tarayıcı türleri. Örneğin, Microsoft Edge, Chrome, Safari ve FireFox. Tarayıcı dışından yapılan çağrılar (botlar, Postman veya bir konsol uygulamasından kıvrımlı kullanılması) Kitaplıklar altında gruplandırılır. Kaynak, isteğin User-Agent üst bilgi değeri kullanılarak belirlenir. İstek User-Agent üst bilgisini içermiyorsa, Bing kaynağı diğer sinyallerden türemeye çalışır.  
 
 - **Güvenli arama dağıtımı**: Güvenli Arama değerlerinin dağılımı. Örneğin kapalı, orta veya katı. `safeSearch`Belirtilmişse, sorgu parametresi değerini içerir. Aksi halde, Bing değeri orta olarak belirler.  
 
@@ -98,7 +98,7 @@ Aşağıdakiler olası ölçümler ve uç nokta kısıtlamalardır.
 
 - **Döndürülen yanıt dağıtımı**: YANıTTA Web araması API 'nin döndürdüğü yanıtlar.
 
-- **Yanıt sunucusu dağıtımı**: API isteklerinizi sunan uygulama sunucusu. Olası değerler Bing.com (masaüstü ve dizüstü cihazlarından sunulan trafik için) ve Bing.com-Mobile (mobil cihazlardan sunulan trafik için). Sunucu, isteğin Kullanıcı Aracısı üstbilgi değeri kullanılarak belirlenir. İstek, Kullanıcı Aracısı üstbilgisini içermiyorsa, Bing sunucuyu diğer sinyallerden türemeye çalışır.
+- **Yanıt sunucusu dağıtımı**: API isteklerinizi sunan uygulama sunucusu. Olası değerler Bing.com (masaüstü ve dizüstü cihazlarından sunulan trafik için) ve Bing.com-Mobile (mobil cihazlardan sunulan trafik için). Sunucu, isteğin User-Agent üst bilgi değeri kullanılarak belirlenir. İstek User-Agent üst bilgisini içermiyorsa, Bing sunucuyu diğer sinyallerden türemeye çalışır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

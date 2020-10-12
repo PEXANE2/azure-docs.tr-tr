@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 5353fa70be4705b28dab9350fcdf7819b22faf54
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90985538"
 ---
 # <a name="core-reports-from-verizon"></a>Verizon Çekirdek Raporları
@@ -100,7 +100,7 @@ Süresi geçen önbellek isabetlerinin azaltmak için bir varlığın, `max-age`
 * TCP_MISS: Bu durum, istenen varlığın önbelleğe alınmış bir sürümünün istemciye en yakın POP üzerinde bulunamadığını gösterir. Varlık, bir kaynak sunucudan veya bir kaynak kalkan sunucusundan istendi. Kaynak sunucu veya kaynak kalkan sunucusu bir varlık döndürürse, istemciye sunulur ve hem istemcide hem de uç sunucuda önbelleğe alınır. Aksi takdirde, 200 olmayan bir durum kodu (örneğin, 403 yasaklanmış veya 404 bulunamadı) döndürülür.
 * TCP_EXPIRED_HIT: Bu durum, süresi geçen bir TTL ile bir varlık hedefleyen bir istek doğrudan POP 'tan istemciye sunulduğunda raporlanır. Örneğin, varlığın en fazla kullanım süresi dolduğunda. 
   
-   Vadesi geçen bir istek, genellikle kaynak sunucuya yeniden doğrulama isteğine neden olur. TCP_EXPIRED_HIT durumun gerçekleşmesi için, kaynak sunucu, varlığın daha yeni bir sürümünün mevcut olmadığını belirtmelidir. Bu durum genellikle varlığın Cache-Control ve Expires üst bilgilerinin güncelleştirilmesine neden olur.
+   Vadesi geçen bir istek, genellikle kaynak sunucuya yeniden doğrulama isteğine neden olur. TCP_EXPIRED_HIT durumun gerçekleşmesi için, kaynak sunucu, varlığın daha yeni bir sürümünün mevcut olmadığını belirtmelidir. Bu durum genellikle varlığın Cache-Control ve süre sonu başlıklarının güncelleştirilmesine neden olur.
 * TCP_EXPIRED_MISS: Bu durum, ön belleğe alınmış bir varlığın daha yeni bir sürümü POP 'tan istemciye sunulduğunda raporlanır. Bu durum, önbelleğe alınmış bir varlık için TTL süresinin dolması durumunda (örneğin, süresi dolum ömrü dolmuşsa) ve kaynak sunucu söz konusu varlığın daha yeni bir sürümünü döndürdüğünde oluşur. Varlığın bu yeni sürümü, önbelleğe alınmış sürüm yerine istemciye sunulur. Ayrıca, uç sunucu ve istemcide önbelleğe alınır.
 * CONFIG_NOCACHE: Bu durum, bir müşteriye özgü yapılandırmanın Edge POP 'un önbelleğe alınmasını engellediğini gösterir.
 * HIÇBIRI-bu durum, önbellek içerik yeniliği denetiminin gerçekleştirilmediğini belirtir.

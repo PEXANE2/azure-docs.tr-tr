@@ -16,10 +16,10 @@ ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ccec58f012dcd4b6371c15e79fa964600e775f54
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88654659"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure Sanal Makineler'de SAP Business One
@@ -31,7 +31,7 @@ Bu belge, Azure sanal makinelerinde SAP Business One dağıtımı için rehberli
 
 SQL Server, [SAP NetWeaver Için Azure sanal MAKINELER DBMS dağıtımı](./dbms_guide_general.md) 'nda belgelendiği gibi temel dağıtım konuları geçerlidir. SAP HANA için bu belgede dikkat edilecek noktalar bahsedilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu kılavuzu kullanmak için aşağıdaki Azure bileşenleriyle temel bilgilere ihtiyacınız vardır:
 
 - [Windows üzerinde Azure sanal makineleri](../../windows/tutorial-manage-vm.md)
@@ -58,7 +58,7 @@ Azure belgelerinin yanı sıra, Iş için SAP 'den bir veya iş için merkezi no
 - [2483583-SAP Business One 9,3 için merkezi](https://launchpad.support.sap.com/#/notes/2483583)
 - [2483615-yayın güncelleştirmeleri için SAP Business One 9,3](https://launchpad.support.sap.com/#/notes/2483615)
 - [2483595-SAP Business One 9,3 genel sorunlar için toplu Not](https://launchpad.support.sap.com/#/notes/2483595)
-- [2027458-SAP HANA Ilgili SAP Business One konuları için toplu danışmanlık, SAP HANA sürümü](https://launchpad.support.sap.com/#/notes/2027458)
+- [2027458-SAP HANA-Related SAP Business One, SAP HANA sürümü için toplu danışmanlık notuna bakın](https://launchpad.support.sap.com/#/notes/2027458)
 
 
 ## <a name="business-one-architecture"></a>İş One mimarisi

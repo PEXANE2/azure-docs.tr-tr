@@ -8,10 +8,10 @@ ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 1d090070dd7b2afe5ea1ece9b5da8b8b5b7b0780
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87438963"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Şirket içi veri ağ geçidini yükleme ve yapılandırma
@@ -20,7 +20,7 @@ Aynı bölgedeki bir veya daha fazla Azure Analysis Services sunucusu şirket i�
 
 Azure Analysis Services ağ geçidiyle nasıl çalıştığı hakkında daha fazla bilgi edinmek için bkz. [Şirket içi veri kaynaklarına bağlanma](analysis-services-gateway.md). Gelişmiş yükleme senaryoları ve ağ geçidi hakkında genel bilgi edinmek için bkz. Şirket [içi veri ağ geçitleri belgeleri](/data-integration/gateway/service-gateway-onprem).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 **Minimum gereksinimler:**
 
@@ -54,7 +54,7 @@ Azure Analysis Services ağ geçidiyle nasıl çalıştığı hakkında daha faz
 
 2. Şirket **içi veri ağ geçidini**seçin.
 
-   ![Şunu seçin:](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
+   ![Seç](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
 
 2. Bir konum seçin, koşulları kabul edin ve ardından **yükler**' i tıklatın.
 
@@ -62,7 +62,7 @@ Azure Analysis Services ağ geçidiyle nasıl çalıştığı hakkında daha faz
 
 3. Azure'da oturum açın. Hesabın kiracınızın Azure Active Directory olması gerekir. Bu hesap, Ağ Geçidi Yöneticisi için kullanılır. Ağ geçidini yüklerken ve kaydederken Azure B2B (konuk) hesapları desteklenmez.
 
-   ![Azure’da oturum açma](media/analysis-services-gateway-install/aas-gateway-installer-account.png)
+   ![Azure'da oturum açma](media/analysis-services-gateway-install/aas-gateway-installer-account.png)
 
    > [!NOTE]
    > Bir etki alanı hesabıyla oturum açarsanız, Azure AD 'de Kurumsal hesabınıza eşlenir. Kuruluş hesabınız ağ geçidi Yöneticisi olarak kullanılır.

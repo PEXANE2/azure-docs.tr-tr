@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/29/2020
 ms.openlocfilehash: dba47073a6676b17c091af048f583ca3e7712999
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87420235"
 ---
 # <a name="create-or-modify-an-offer"></a>Teklifi oluşturma veya değiştirme
@@ -27,7 +27,7 @@ Bu çağrı, yayımcı ad alanı içinde belirli bir teklifi güncelleştirir ve
 
 |  **Ad**         |  **Açıklama**                      |  **Veri türü**  |
 |  --------         |  ----------------                     |  -------------  |
-| PublisherId       |  Yayımcı tanımlayıcı, örneğin`contoso` |   Dize |
+| PublisherId       |  Yayımcı tanımlayıcı, örneğin `contoso` |   Dize |
 | OfferId           |  Teklif tanımlayıcısı                     |   Dize        |
 | api-sürümü       |  API 'nin en son sürümü            |   Tarih           |
 |  |  |  |
@@ -293,7 +293,7 @@ Bu kategoriler ve ilgili anahtarları Azure uygulamaları, sanal makineler, çek
 | Büyük Veri | büyük veri | bigData | büyük veri |
 | Tahmine Dayalı Analiz | tahmine dayalı analiz | tahmine dayalı analiz | tahmine dayalı analiz |
 | Gerçek zamanlı/Akış Analizi | gerçek zamanlı Akış Analizi | gerçek zamanlı Akış Analizi | gerçek zamanlı Akış Analizi |
-| Diğer | diğer | diğer analiz | diğer |
+| Diğer | other | diğer analiz | other |
 | ***Yapay Zeka ve Makine Öğrenmesi*** | ***ArtificialIntelligence*** | ***AI-Plus-makine öğrenimi*** | ***AI-Plus-makine öğrenimi*** |
 | Bot Hizmetleri | bot-hizmetler | bot-hizmetler | bot-hizmetler |
 | Bilişsel Hizmetler | bilişsel hizmetler | bilişsel hizmetler | bilişsel hizmetler |
@@ -304,90 +304,90 @@ Bu kategoriler ve ilgili anahtarları Azure uygulamaları, sanal makineler, çek
 | Veri Hazırlama | veri hazırlama | veri hazırlama | veri hazırlama |
 | Bilgi madenciliği | bilgi-araştırma | bilgi-araştırma | bilgi-araştırma |
 | ML Işlemleri | ml-işlemler | ml-işlemler | ml-işlemler |
-| Diğer | diğer-AI-Plus-makine öğrenimi | diğer | diğer |
+| Diğer | diğer-AI-Plus-makine öğrenimi | other | other |
 | ***Blok zinciri*** | ***blok zinciri*** | ***blok zinciri*** | ***blok zinciri*** |
 | Uygulama hızlandırıcıları | uygulama-Hızlandırıcılar | uygulama-Hızlandırıcılar | uygulama-Hızlandırıcılar |
 | Tek düğümlü defter | tek düğümlü-defter | tek düğümlü-defter | tek düğümlü-defter |
 | Çok düğümlü defter | çok düğümlü-defter | çok düğümlü-defter | çok düğümlü-defter |
 | Araçlar | araçlar | araçlar | araçlar |
-| Diğer | diğer | diğer | diğer |
+| Diğer | other | other | other |
 | ***İşlem*** | ***işlem-SaaS*** | ***işlem-Azure-uygulamalar*** | ***hesaplamasını*** |
 | Uygulama altyapısı | appInfra | Appınfrastructure | uygulama altyapısı |
 | İşletim Sistemleri | clientOS | clientOS | işletim sistemleri |
 | Önbellek | cache | cache | cache |
-| Diğer | diğer işlem | diğer işlem | diğer |
+| Diğer | diğer işlem | diğer işlem | other |
 | ***Kapsayıcılar*** | ***kapsayıcıları*** | ***kapsayıcıları*** | ***kapsayıcıları*** |
 | Kapsayıcı uygulamaları | kapsayıcı-uygulamalar | kapsayıcı-uygulamalar | kapsayıcı-uygulamalar |
 | Kapsayıcı görüntüleri | kapsayıcı-görüntüler | kapsayıcı-görüntüler | kapsayıcı-görüntüler |
 | Kapsayıcıları kullanmaya başlama | ile çalışmaya başlama-kapsayıcılar | ile çalışmaya başlama-kapsayıcılar | ile çalışmaya başlama-kapsayıcılar |
-| Diğer | diğer | diğer | diğer |
+| Diğer | other | other | other |
 | ***Veritabanları*** | ***veritabanları-SaaS*** | ***veritabanınızı*** | ***erişebileceğiniz*** |
 | NoSQL veritabanları | NoSQL veritabanları | NoSQL veritabanları | NoSQL veritabanları |
 | İlişkisel Veritabanları | ilişkisel veritabanları | ilişkisel veritabanları | ilişkisel veritabanları |
 | Muhasebe/blok zinciri veritabanları | muhasebe-blok zinciri-veritabanları | muhasebe-blok zinciri-veritabanları | muhasebe-blok zinciri-veritabanları |
 | Veri Lakes | veri-Lakes | veri-Lakes | veri-Lakes |
 | Veri Ambarı | veri ambarı | veri ambarı | veri ambarı |
-| Diğer | diğer veritabanları | diğer veritabanları | diğer |
+| Diğer | diğer veritabanları | diğer veritabanları | other |
 | ***Geliştirici Araçları*** | ***Geliştirici-Araçlar-SaaS*** | ***Geliştirici-Araçlar-Azure-uygulamalar*** | ***geliştirici araçları*** |
 | Araçlar | Araçlar-Geliştirici-Araçlar | Araçlar-Geliştirici-Araçlar | Araçlar-Geliştirici-Araçlar |
 | Betikler | betikler | betikler | betikler |
 | Geliştirici hizmeti | devService | devService | geliştirici-hizmet |
-| Diğer | Diğer geliştirici araçları | Diğer geliştirici araçları | diğer |
+| Diğer | Diğer geliştirici araçları | Diğer geliştirici araçları | other |
 | ***DevOps*** | ***DevOps*** | ***DevOps*** | ***DevOps*** |
-| Diğer | diğer | diğer | diğer |
+| Diğer | other | other | other |
 | ***Kimlik*** | ***IDENTITY*** | ***IDENTITY*** | ***IDENTITY*** |
 | Erişim yönetimi | erişim-yönetim | erişim-yönetim | erişim-yönetim |
-| Diğer | diğer | diğer | diğer |
+| Diğer | other | other | other |
 | ***Tümleştirme*** | ***Tümleştirme*** | ***Tümleştirme*** | ***Tümleştirme*** |
 | Mesajlaşma | gönderip | gönderip | gönderip |
-| Diğer | diğer | diğer | diğer |
+| Diğer | other | other | other |
 | ***Nesnelerin İnterneti*** | ***IoT*** | ***Nesnelerin İnterneti-Azure-Apps*** | ***Nesnelerin İnterneti*** |
 | IoT Çekirdek Hizmetleri | Yok | IoT-Çekirdek Hizmetleri | IoT-Çekirdek Hizmetleri |
 | IoT Edge modüller | Yok | IoT-Edge-modüller | IoT-Edge-modüller |
 | IoT çözümleri | IoT-çözümler | IoT-çözümler | IoT-çözümler |
 | Veri Analizi & görselleştirme | veri analizi ve görselleştirme | veri analizi ve görselleştirme | veri analizi ve görselleştirme |
 | IoT bağlantısı | IoT-bağlantı | IoT-bağlantı | IoT-bağlantı |
-| Diğer | diğer-çeşitli şeyler | diğer-çeşitli şeyler | diğer |
+| Diğer | diğer-çeşitli şeyler | diğer-çeşitli şeyler | other |
 | ***BT & yönetim araçları*** | ***ITandAdministration*** | ***BT-ve-yönetim-araçlar-Azure-uygulamalar*** | ***BT ve yönetim araçları*** |
 | Yönetim Çözümleri | Yönetim-çözümler | Yönetim-çözümler | Yönetim-çözümler |
 | İş Uygulamaları | businessApplication | businessApplication | iş uygulamaları |
-| Diğer | diğer BT yönetimi araçları | diğer BT yönetimi araçları | diğer |
+| Diğer | diğer BT yönetimi araçları | diğer BT yönetimi araçları | other |
 | ***& tanılamayı izleme*** | ***izleme ve tanılama*** | ***izleme ve tanılama*** | ***izleme ve tanılama*** |
-| Diğer | diğer | diğer | diğer |
+| Diğer | other | other | other |
 | ***Medya*** | ***medyasını*** | ***medyasını*** | ***medyasını*** |
 | Media Services | media-services | media-services | media-services |
 | Content Protection | içerik koruma | içerik koruma | içerik koruma |
 | Isteğe bağlı akış & canlı | canlı ve isteğe bağlı akış | canlı ve isteğe bağlı akış | canlı ve isteğe bağlı akış |
-| Diğer | diğer | diğer | diğer |
+| Diğer | other | other | other |
 | ***Geçiş*** | ***geçiş*** | ***geçiş*** | ***geçiş*** |
 | Veri Taşıma | veri geçişi | veri geçişi | veri geçişi |
-| Diğer | diğer | diğer | diğer |
+| Diğer | other | other | other |
 | ***Karma Gerçeklik*** | ***Karma Gerçeklik*** | ***Karma Gerçeklik*** | ***Karma Gerçeklik*** |
-| Diğer | diğer | diğer | diğer |
+| Diğer | other | other | other |
 | ***Ağ*** | ***işlemleri*** | ***işlemleri*** | ***işlemleri*** |
 | Gereç yöneticileri | Gereç-Yöneticiler | Gereç-Yöneticiler | Gereç-Yöneticiler |
 | Bağlantı | bağlantı | bağlantı | bağlantı |
 | Güvenlik duvarları | duvar | duvar | duvar |
 | Yük Dengeleyiciler | yük dengeleyiciler | yük dengeleyiciler | yük dengeleyiciler |
-| Diğer | diğer | diğer | diğer |
+| Diğer | other | other | other |
 | ***Güvenlik*** | ***güven*** | ***güven*** | ***güven*** |
 | Kimlik & erişim yönetimi | kimlik ve erişim yönetimi | kimlik ve erişim yönetimi | kimlik ve erişim yönetimi |
 | Tehdit Koruması | tehdit koruması | tehdit koruması | tehdit koruması |
 | Information Protection | bilgi koruma | bilgi koruma | bilgi koruma |
-| Diğer | diğer | diğer | diğer |
+| Diğer | other | other | other |
 | ***Depolama*** | ***depolama-SaaS*** | ***depolama-Azure-uygulamalar*** | ***Depo*** |
 | Yedekleme & kurtarma | yedekleme | yedekleme | Yedekleme ve kurtarma |
 | Kurumsal karma depolama | Kurumsal karma depolama | Kurumsal karma depolama | Kurumsal karma depolama |
 | Dosya paylaşımı | dosya paylaşımı | dosya paylaşımı | dosya paylaşımı |
 | Veri yaşam döngüsü yönetimi | veri yaşam döngüsü yönetimi | veri yaşam döngüsü yönetimi | veri yaşam döngüsü yönetimi |
-| Diğer | diğer depolama alanı | diğer depolama alanı | diğer |
+| Diğer | diğer depolama alanı | diğer depolama alanı | other |
 | ***Web*** | ***Web*** | ***Web*** | ***Web*** |
 | Web günlükleri & CMSs | Bloglar-ve-CMSS | Bloglar-ve-CMSS | Bloglar-ve-CMSS |
 | Başlangıç Web Apps | Starter-Web-Apps | Starter-Web-Apps | Starter-Web-Apps |
 | E-ticaret | e-ticaret | e-ticaret | e-ticaret |
 | Web Apps çerçeveler | Web uygulamaları-çerçeveler | Web uygulamaları-çerçeveler | Web uygulamaları-çerçeveler |
 | Web Apps | Web uygulamaları | Web uygulamaları | Web uygulamaları |
-| Diğer | diğer | diğer | diğer |
+| Diğer | other | other | other |
 ||||
 
 ### <a name="microsoft-appsource-categories"></a>Microsoft AppSource kategorileri
@@ -399,7 +399,7 @@ Bu kategoriler ve ilgili anahtarları SaaS, PowerBI uygulaması, Dynamics 365 İ
 | ***Analiz*** | ***analiz*** | ***Analiz*** | ***Analiz*** |
 | Gelişmiş Analiz | Gelişmiş-analiz | Gelişmiş-analiz | Gelişmiş-analiz |
 | Görselleştirme & raporlama | görselleştirme-raporlama | görselleştirme-raporlama | görselleştirme-raporlama |
-| Diğer | diğer | diğer analiz | diğer analiz |
+| Diğer | other | diğer analiz | diğer analiz |
 | ***Yapay Zeka ve Makine Öğrenmesi*** | ***ArtificialIntelligence*** | ***AI-Plus-Machine-Learning-Dynamics*** | ***AI-Plus-makine-öğrenme-appsource*** |
 | Iş için AI | iş için AI | iş için AI | iş için AI |
 | Bot uygulamaları | bot-uygulamalar | bot-uygulamalar | bot-uygulamalar |
@@ -410,33 +410,33 @@ Bu kategoriler ve ilgili anahtarları SaaS, PowerBI uygulaması, Dynamics 365 İ
 | Site tasarımı & yönetimi | Site-Tasarım-yönetim | Site-Tasarım-yönetim | site tasarımı ve yönetimi |
 | Görev & proje yönetimi | görev-proje-yönetim | görev-proje-yönetim | görev-ve-proje-yönetim |
 | Sesli & görüntülü konferans | ses video konferansı | ses video konferansı | Ses ve video konferansı |
-| Diğer | diğer işbirliği | diğer işbirliği | diğer |
+| Diğer | diğer işbirliği | diğer işbirliği | other |
 | ***Uyumluluk & yasal*** | ***Uyumluluk*** | ***Uyumluluk*** | ***Uyumluluk-ve-yasal*** |
 | Vergi & denetimi | Vergi-Denetim | Vergi-Denetim | vergi ve-denetim |
 | Yasal Bildirim | Yasal Bildirim | Yasal Bildirim | kanun |
 | Veri, Idare & gizliliği | veri yönetimi-Gizlilik | veri yönetimi-Gizlilik | veri yönetimi ve Gizlilik |
 | Sistem durumu & güvenliği | sistem durumu-güvenlik | sistem durumu-güvenlik | sistem durumu ve güvenlik |
-| Diğer | diğer-uyumluluk-yasal | diğer-uyumluluk-yasal | diğer |
+| Diğer | diğer-uyumluluk-yasal | diğer-uyumluluk-yasal | other |
 | ***Customer Service*** | ***CustomerService*** | ***CustomerService*** | ***müşteri-hizmet*** |
 | Kişi Merkezi | İletişim Merkezi | İletişim Merkezi | İletişim Merkezi |
 | Yüz yüze hizmet | yüz yüze hizmet | yüz yüze hizmet | yüz yüze hizmet |
 | Arka ofis & çalışan hizmeti | arka ofis-çalışan-hizmet | arka ofis-çalışan-hizmet | arka ofis-ve-Employee-Service |
 | Bilgi & durum yönetimi | bilgi talebi-yönetim | bilgi talebi-yönetim | bilgi ve durum yönetimi |
 | Sosyal medya & omnichannel katılımı | Sosyal medya-omnichannel-katılım | Sosyal medya-omnichannel-katılım | Sosyal medya-ve-omnichannel-katılım |
-| Diğer | diğer müşteri hizmetleri | diğer müşteri hizmetleri | diğer |
+| Diğer | diğer müşteri hizmetleri | diğer müşteri hizmetleri | other |
 | ***Finans*** | ***Finans*** | ***Finans*** | ***Vade*** |
 | Muhasebe | accounting (muhasebe) | accounting (muhasebe) | accounting (muhasebe) |
 | Varlık Yönetimi | varlık yönetimi | varlık yönetimi | varlık yönetimi |
 | Analiz, birleştirme & raporlama | Analiz-birleştirme-raporlama | Analiz-birleştirme-raporlama | Analiz-birleştirme-ve-raporlama |
 | & koleksiyonları kredi | Kredi-Koleksiyonlar | Kredi-Koleksiyonlar | kredi ve koleksiyonlar |
 | Uyumluluk & risk yönetimi | Uyumluluk-risk yönetimi | Uyumluluk-risk yönetimi | Uyumluluk ve risk yönetimi |
-| Diğer | diğer finans | diğer finans | diğer |
+| Diğer | diğer finans | diğer finans | other |
 | ***Human Resources*** | ***Insankaynakları*** | ***Insankaynakları*** | ***insan kaynakları*** |
 | Taödünme alma | taödünçi alma | taödünçi alma | taödünçi alma |
 | Taödünme yönetimi | taödünme yönetimi | taödünme yönetimi | taödünme yönetimi |
 | HR Işlemleri | HR-işlemler | HR-işlemler | HR-işlemler |
 | İş gücü planlama & Analizi | iş gücü-planlama-analiz | iş gücü-planlama-analiz | iş gücü-planlama ve analiz |
-| Diğer | diğer insan kaynakları | diğer insan kaynakları | diğer |
+| Diğer | diğer insan kaynakları | diğer insan kaynakları | other |
 | ***Nesnelerin İnterneti*** | ***IoT*** | ***Nesnelerin İnterneti-Dynamics*** | ***Nesnelerin İnterneti-appsource*** |
 | Varlık yönetimi & Işlemleri | varlık yönetimi-işlemler | varlık yönetimi-işlemler | varlık yönetimi-ve-işlemler |
 | Bağlı ürünler | bağlı-ürünler | bağlı-ürünler | bağlı-ürünler |
@@ -446,11 +446,11 @@ Bu kategoriler ve ilgili anahtarları SaaS, PowerBI uygulaması, Dynamics 365 İ
 | Güvenlik & güvenliği | Güvenlik-güvenlik | Güvenlik-güvenlik | Güvenlik ve güvenlik |
 | Akıllı altyapı & kaynakları | akıllı altyapı-kaynaklar | akıllı altyapı-kaynaklar | akıllı altyapı-ve-kaynaklar |
 | & hareket eden araçlar | Araçlar-taşınabilirlik | Araçlar-taşınabilirlik | Araçlar-ve-taşınabilirlik |
-| Diğer | diğer-çeşitli şeyler | diğer-çeşitli şeyler | diğer |
+| Diğer | diğer-çeşitli şeyler | diğer-çeşitli şeyler | other |
 | ***BT & yönetim araçları*** | ***ITandAdministration*** | ***ITandAdministration*** | ***BT ve yönetim araçları*** |
 | Yönetim Çözümleri | Yönetim-çözümler | Yönetim-çözümler | Yönetim-çözümler |
 | İş Uygulamaları | businessApplication | businessApplication | iş uygulamaları |
-| Diğer | diğer BT yönetimi araçları | diğer BT yönetimi araçları | diğer |
+| Diğer | diğer BT yönetimi araçları | diğer BT yönetimi araçları | other |
 | ***Pazarlama*** | ***Pazarlama*** | ***Pazarlama*** | ***lamadaki*** |
 | Bildir | bildir | bildir | bildir |
 | Analiz | analiz-pazarlama | analiz-pazarlama | analiz-pazarlama |
@@ -459,7 +459,7 @@ Bu kategoriler ve ilgili anahtarları SaaS, PowerBI uygulaması, Dynamics 365 İ
 | L2-Events & kaynak yönetimi | olaylar-kaynak yönetimi | olaylar-kaynak yönetimi | olaylar-ve-kaynak yönetimi |
 | Araştırma & Analizi | araştırma Analizi | araştırma Analizi | araştırma ve analiz |
 | Sosyal medya | Sosyal medya | Sosyal medya | Sosyal medya |
-| Diğer | diğer-pazarlama | diğer-pazarlama | diğer |
+| Diğer | diğer-pazarlama | diğer-pazarlama | other |
 | ***Operations & tedarik zinciri*** | ***Operationssupplyzincirde*** | ***Operationssupplyzincirde*** | ***işlemler ve tedarik zinciri*** |
 | Varlık & üretim yönetimi | varlık-üretim-yönetim | varlık-üretim-yönetim | varlık-ve-üretim-yönetim |
 | Talep Tahmini | talep tahmini | talep tahmini | talep tahmini |
@@ -468,14 +468,14 @@ Bu kategoriler ve ilgili anahtarları SaaS, PowerBI uygulaması, Dynamics 365 İ
 | Quality & hizmet yönetimi | kalite-hizmet yönetimi | kalite-hizmet yönetimi | kalite ve hizmet yönetimi |
 | Satış & sipariş yönetimi | Satış siparişi yönetimi | Satış siparişi yönetimi | Satış ve sipariş yönetimi |
 | Taşıma & ambarı yönetimi | taşıma-ambar-yönetim | taşıma-ambar-yönetim | taşıma ve ambar-yönetim |
-| Diğer | diğer işlemler-tedarik zinciri | diğer işlemler-tedarik zinciri | diğer |
+| Diğer | diğer işlemler-tedarik zinciri | diğer işlemler-tedarik zinciri | other |
 | ***Üretkenlik*** | ***Üretkenlik*** | ***Üretkenlik*** | ***kişilere*** |
 | İçerik oluşturma & yönetimi | içerik oluşturma-yönetim | içerik oluşturma-yönetim | içerik oluşturma ve yönetme |
 | Dil & çevirisi | dil çevirisi | dil çevirisi | dil ve çeviri |
 | Belge Yönetimi | belge yönetimi | belge yönetimi | belge yönetimi |
 | E-posta yönetimi | e-posta yönetimi | e-posta yönetimi | e-posta yönetimi |
 | & başvuru ara | arama başvurusu | arama başvurusu | Arama ve başvuru |
-| Diğer | diğer üretkenlik | diğer üretkenlik | diğer |
+| Diğer | diğer üretkenlik | diğer üretkenlik | other |
 | Oyunlaştırma | Oyunlaştırma | Oyunlaştırma | oyunlaştırma |
 | ***Sales*** | ***Sales*** | ***Sales*** | ***Sales*** |
 | Telesales | Telesales | Telesales | Telesales |
@@ -509,7 +509,7 @@ Bu endüstriler ve ilgili anahtarları SaaS, PowerBI uygulaması, Dynamics 365 �
 | Daha yüksek eğitim | HigherEducation | daha yüksek eğitim |
 | Birincil & Ikincil Eğitim/K-12 | PrimaryAndSecondaryEducationK12 | birincil-ve-ikincil-eğitim |
 | Kitaplıklar & Museums | Kütüphaneiesandmuseums | Kitaplıklar-ve-Museums |
-| ***Finansal Hizmetler*** | ***Mali hizmetler*** | ***Finans-hizmetler*** |
+| ***Finansal hizmetler*** | ***Mali hizmetler*** | ***Finans-hizmetler*** |
 | Bankacılık & büyük pazarlar | BankingAndCapitalMarkets | Bankacılık-ve-sermaye-pazarlar |
 | Eleri | Eleri | eleri |
 | ***Kamu*** | ***Kamu*** | ***Devlet*** |

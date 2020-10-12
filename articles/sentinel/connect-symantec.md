@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 67fc80b5f34cf3a98fd39ddc352cb2dd9a5e7151
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85564924"
 ---
 # <a name="connect-your-symantec-icdx-appliance"></a>Symantec ICDX gerecinizi bağlama 
@@ -50,7 +50,7 @@ Symantec IDX, günlükleri doğrudan Azure Sentinel 'e tümleştirebilir ve dı�
       > [!NOTE]
       > ICDX alıcı arşivleri, ada göre ayrı olarak listelenir. 
  
-    - **Filtre**: iletilecek olayların alt kümesini belirten bir filtre ekleyin. Şunlardan birini yapın:
+    - **Filtre**: iletilecek olayların alt kümesini belirten bir filtre ekleyin. Aşağıdakilerden birini yapın:
         - Bir filtre koşulu seçmek için, bir tür, öznitelik, Işleç ve değer ' e tıklayın. 
         - Filtre alanında, filtre koşullarınızı gözden geçirin. Bunu doğrudan alanda düzenleyebilir veya gerektiğinde silebilirsiniz.
         - Filtre koşullarınızı eklemek için ve veya ya tıklayın.

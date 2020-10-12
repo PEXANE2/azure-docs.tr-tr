@@ -9,10 +9,10 @@ ms.date: 02/14/2020
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 6e183a1e8cac8eec2806a35603c40a44aadac502
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84193500"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Büyük veri gereksinimleri için Azure Data Lake Storage 2. kullanma
@@ -41,7 +41,7 @@ Bu, büyük bir veri uygulamasını prototip yazmak için kullanılan daha küç
 
 İşte, geçici verileri almak için kullanabileceğiniz araçların listesi.
 
-| veri kaynağı | Şunu kullanarak Al |
+| Veri Kaynağı | Şunu kullanarak Al |
 | --- | --- |
 | Yerel bilgisayar |[Azure PowerShell](data-lake-storage-directory-file-acl-powershell.md)<br><br>[Azure CLI](data-lake-storage-directory-file-acl-cli.md)<br><br>[Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)<br><br>[AzCopy aracı](../common/storage-use-azcopy-v10.md)|
 | Azure Depolama Blobu |[Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md)<br><br>[AzCopy aracı](../common/storage-use-azcopy-v10.md)<br><br>[HDInsight kümesinde çalışan DistCp](data-lake-storage-use-distcp.md)|
@@ -97,7 +97,7 @@ HDInsight kümeleriyle ilişkili verileri almak için kullanabileceğiniz araçl
 
 Büyük miktarlarda veri, var olan Hadoop kümelerinde yerel olarak,,, işlem kullanan makinelerde depolanabilir. Hadoop kümeleri şirket içi bir dağıtımda olabilir veya Azure 'da bir IaaS kümesi içinde olabilir. Bu tür verileri tek kapalı bir yaklaşım veya yinelenen bir biçimde kopyalamak için Azure Data Lake Storage 2. gereksinimler olabilir. Bunu başarmak için kullanabileceğiniz çeşitli seçenekler vardır. Aşağıda, alternatifleri ve ilişkili ticaretin bir listesi verilmiştir.
 
-| Yaklaşım | Ayrıntılar | Yararları | Önemli noktalar |
+| Yaklaşım | Ayrıntılar | Avantajlar | Dikkat edilmesi gerekenler |
 | --- | --- | --- | --- |
 | Verileri doğrudan Hadoop kümelerinden Azure Data Lake Storage 2. kopyalamak için Azure Data Factory (ADF) kullanın |[ADF, bir veri kaynağı olarak mı 'yi destekler](../../data-factory/connector-hdfs.md) |ADF, ve ilk sınıf uçtan uca yönetim ve izleme için kullanıma hazır destek sağlar |Şirket içinde veya IaaS kümesinde dağıtılması için Veri Yönetimi ağ geçidi gerekir |
 | Hadoop 'tan Azure depolama 'ya veri kopyalamak için Distcp 'yi kullanın. Ardından uygun mekanizmayı kullanarak Azure depolama alanından Data Lake Storage 2. verileri kopyalayın. |Azure depolama 'dan Data Lake Storage 2. kullanarak veri kopyalayabilirsiniz: <ul><li>[Azure Data Factory](../../data-factory/copy-activity-overview.md)</li><li>[AzCopy aracı](../common/storage-use-azcopy-v10.md)</li><li>[HDInsight kümelerinde çalışan Apache DistCp](data-lake-storage-use-distcp.md)</li></ul> |Açık kaynak araçları 'nı kullanabilirsiniz. |Birden çok teknolojiyi kapsayan çok adımlı işlem |
@@ -125,7 +125,7 @@ Data Lake Storage 2. depolanan veriler üzerinde veri analizi işlerini çalış
 
 Data Lake Storage 2. depolanan verilerin görsel sunumlarını oluşturmak için Power BI bağlayıcısını kullanın. Bkz. [Power BI kullanarak Azure Data Lake Storage 2. verileri çözümleme](https://docs.microsoft.com/power-query/connectors/datalakestorage).
 
-## <a name="download-the-data"></a>Verileri indirin
+## <a name="download-the-data"></a>Verileri indirme
 
 Ayrıca, gibi senaryolar için Azure Data Lake Storage 2. verileri indirmek veya taşımak isteyebilirsiniz:
 
@@ -141,5 +141,5 @@ Data Lake Storage 2. verileri indirmek için kullanabileceğiniz araçların lis
 |---|--|
 |Azure Data Factory | [Azure Data Factory’de Kopyalama Etkinliği](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
 |Apache DistCp | [Azure depolama Blobları ve Azure Data Lake Storage 2. arasında veri kopyalamak için DistCp kullanma](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
-|Azure Depolama Gezgini|[Azure Data Lake Storage 2. içindeki dizinleri, dosyaları ve ACL 'Leri yönetmek için Azure Depolama Gezgini kullanın](data-lake-storage-explorer.md)|
+|Azure Depolama Gezgini|[Azure Data Lake Storage 2. Nesil’de dizinleri, dosyaları ve ACL’leri yönetmek için Azure Depolama Gezgini’ni kullanma](data-lake-storage-explorer.md)|
 |AzCopy aracı|[AzCopy ve BLOB Storage ile veri aktarma](../common/storage-use-azcopy-blobs.md)|

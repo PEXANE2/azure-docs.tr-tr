@@ -11,10 +11,10 @@ ms.date: 07/10/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 611d676f5f588ff32f981692456160e269642a43
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87428129"
 ---
 # <a name="localization-string-ids"></a>Yerelleştirme dizesi kimlikleri
@@ -45,7 +45,7 @@ KIMLIĞI olan bir içerik tanımı için aşağıdaki kimlikler kullanılır `ap
 | **createaccount_link** | Hemen kaydolun |
 | **divider_title** | VEYA |
 | **cancel_message** | Kullanıcı parolasını unutuldu |
-| **button_signin** | Oturum açın |
+| **button_signin** | Oturum aç |
 | **social_intro** | Sosyal hesabınızla oturum açın |
   **remember_me** |Oturumumu açık bırak|
 | **unknown_error** | Oturumunuzu açmada sorun yaşıyoruz. Lütfen daha sonra yeniden deneyin. |
@@ -54,7 +54,7 @@ Aşağıdaki örnek, kayıt veya oturum açma sayfasında bazı Kullanıcı arab
 
 ![Kaydolma veya oturum açma sayfası UX öğeleri](./media/localization-string-ids/localization-susi.png)
 
-Kimlik sağlayıcılarının KIMLIĞI, Kullanıcı yolculuğu **Claimsexchange** öğesinde yapılandırılır. Kimlik sağlayıcısının başlığını yerelleştirmek için, **ElementType** olarak ayarlanır `ClaimsProvider` , **strıngıd** , kimliğine ayarlanır `ClaimsExchange` .
+Kimlik sağlayıcılarının KIMLIĞI, Kullanıcı yolculuğu  **Claimsexchange** öğesinde yapılandırılır. Kimlik sağlayıcısının başlığını yerelleştirmek için, **ElementType** olarak ayarlanır `ClaimsProvider` , **strıngıd** , kimliğine ayarlanır `ClaimsExchange` .
 
 ```xml
 <OrchestrationStep Order="2" Type="ClaimsExchange">
@@ -102,7 +102,7 @@ Aşağıda, ve gibi bir içerik tanımının KIMLIĞI olan bir içerik tanımın
 | **cancel_message** | Kullanıcı kendi kendine onaylanan bilgileri girmeyi iptal etti |
 | **preloader_alt** | Lütfen bekleyin |
 | **ver_but_send** | Doğrulama kodu gönder |
-| **alert_yes** | Yes |
+| **alert_yes** | Evet |
 | **error_fieldIncorrect** | Bir veya daha fazla alan yanlış doldurulmuş. Lütfen girişlerinizi denetleyin ve yeniden deneyin. |
 | **yıl** | Yıl |
 | **verifying_blurb** | Bilgilerinizi işlerken lütfen bekleyin. |
@@ -110,7 +110,7 @@ Aşağıda, ve gibi bir içerik tanımının KIMLIĞI olan bir içerik tanımın
 | **ver_fail_no_retry** | Çok fazla hatalı deneme yaptınız. Lütfen daha sonra yeniden deneyin. |
 | **başından** | Ay |
 | **ver_success_msg** | E-posta adresi doğrulandı. Artık devam edebilirsiniz. |
-| **months** | Ocak, Şubat, Mart, Nisan, Mayıs, Haziran, Temmuz, Ağustos, Eylül, Ekim, Kasım, Aralık |
+| **aylar** | Ocak, Şubat, Mart, Nisan, Mayıs, Haziran, Temmuz, Ağustos, Eylül, Ekim, Kasım, Aralık |
 | **ver_fail_server** | E-posta adresinizi doğrularken sorun yaşıyoruz. Lütfen geçerli bir e-posta adresi girin ve yeniden deneyin. |
 | **error_requiredFieldMissing** | Gerekli bir alan eksik. Lütfen tüm gerekli alanları doldurun ve yeniden deneyin. |
 | **initial_intro** | Lütfen aşağıdaki ayrıntıları sağlayın. |
@@ -120,7 +120,7 @@ Aşağıda, ve gibi bir içerik tanımının KIMLIĞI olan bir içerik tanımın
 | **ver_incorrect_format** | Hatalı biçim. |
 | **ver_but_edit** | E-postayı değiştir |
 | **ver_but_verify** | Kodu doğrula |
-| **alert_no** | No |
+| **alert_no** | Hayır |
 | **ver_info_msg** | Doğrulama kodu gelen kutunuza gönderildi. Lütfen aşağıdaki giriş kutusuna kopyalayın. |
 | **günündeki** | Gün |
 | **ver_fail_throttled** | Bu e-posta adresini doğrulamak için çok fazla istek vardı. Lütfen bekleyin, sonra yeniden deneyin. |
@@ -137,11 +137,11 @@ Aşağıda, ve gibi bir içerik tanımının KIMLIĞI olan bir içerik tanımın
 | ID | Varsayılan değer |
 | -- | ------------- |
 | **Usermessageifclaimsprincıpalalreadyexists** | Belirtilen KIMLIĞE sahip bir kullanıcı zaten var. Lütfen farklı bir tane seçin. |
-| **Usermessageifclaimnotdoğrulandı** | Talep doğrulanmadı:{0} |
-| **UserMessageIfIncorrectPattern** | İçin yanlış desenler:{0} |
-| **UserMessageIfMissingRequiredElement** | Gerekli öğe eksik:{0} |
-| **UserMessageIfValidationError** | Doğrulamada hata:{0} |
-| **Usermessageifınvalidınput** | {0}geçersiz giriş içeriyor. |
+| **Usermessageifclaimnotdoğrulandı** | Talep doğrulanmadı: {0} |
+| **UserMessageIfIncorrectPattern** | İçin yanlış desenler: {0} |
+| **UserMessageIfMissingRequiredElement** | Gerekli öğe eksik: {0} |
+| **UserMessageIfValidationError** | Doğrulamada hata: {0} |
+| **Usermessageifınvalidınput** | {0} geçersiz giriş içeriyor. |
 | **Servicekısıtlanıyor** | Şu anda çok fazla istek var. Lütfen bir süre bekleyip yeniden deneyin. |
 
 Aşağıdaki örnek, kaydolma sayfasında bazı Kullanıcı arabirimi öğelerinin kullanımını gösterir:
@@ -239,10 +239,10 @@ Aşağıda, [Restvıservice teknik profili](restful-technical-profile.md) hata i
 
 | ID | Varsayılan değer |
 | -- | ------------- |
-|DefaultUserMessageIfRequestFailed | Yeniden hizmet uç noktası bağlantısı kurulamadı. Yeniden deneme hizmeti URL 'SI:{0} |
-|Usermessageifbir ıtopen | {0}Yeniden deneme hizmeti URL 'SI:{1} |
-|UserMessageIfDnsResolutionFailed | Yeniden deneme hizmeti uç noktasının ana bilgisayar adı çözümlenemedi. Yeniden deneme hizmeti URL 'SI:{0} |
-|UserMessageIfRequestTimeout | Zaman aşımı sınırı saniyesi içindeki hizmet uç noktası için bağlantı kurulamadı {0} . Yeniden deneme hizmeti URL 'SI:{1} |
+|DefaultUserMessageIfRequestFailed | Yeniden hizmet uç noktası bağlantısı kurulamadı. Yeniden deneme hizmeti URL 'SI: {0} |
+|Usermessageifbir ıtopen | {0} Yeniden deneme hizmeti URL 'SI: {1} |
+|UserMessageIfDnsResolutionFailed | Yeniden deneme hizmeti uç noktasının ana bilgisayar adı çözümlenemedi. Yeniden deneme hizmeti URL 'SI: {0} |
+|UserMessageIfRequestTimeout | Zaman aşımı sınırı saniyesi içindeki hizmet uç noktası için bağlantı kurulamadı {0} . Yeniden deneme hizmeti URL 'SI: {1} |
 
 
 ### <a name="example"></a>Örnek

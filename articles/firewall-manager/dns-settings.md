@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: bf189e4c9853d9f2ff6e8495423f4f36f14f41d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85611807"
 ---
 # <a name="azure-firewall-policy-dns-settings-preview"></a>Azure Güvenlik duvarı ilkesi DNS ayarları (Önizleme)
@@ -31,7 +31,7 @@ DNS sunucusu, etki alanı adlarını IP adreslerine tutar ve çözümler. Azure 
 1. Güvenlik Duvarı ilkenizi seçin.
 2. **Ayarlar**altında **DNS ayarları**' nı seçin.
 3. **DNS sunucuları**altında, sanal ağınızda daha önce BELIRTILEN mevcut DNS sunucularını yazabilir veya ekleyebilirsiniz.
-4. **Kaydet**'i seçin.
+4. **Kaydet**’i seçin.
 5. Güvenlik duvarı artık, DNS trafiğini ad çözümlemesi için belirtilen DNS sunucusuna yönlendirir.
 
 ## <a name="dns-proxy-preview"></a>DNS proxy (Önizleme)
@@ -55,7 +55,7 @@ DNS proxy 'yi yapılandırmak için, sanal ağ DNS sunucularınız ayarınızı 
 2. **Ayarlar**altında, **DNS sunucuları**' nı seçin.
 3. **DNS sunucuları**altında **özel** ' i seçin.
 4. Güvenlik duvarının özel IP adresini girin.
-5. **Kaydet**'i seçin.
+5. **Kaydet**’i seçin.
 
 #### <a name="enable-dns-proxy-preview"></a>DNS proxy 'yi etkinleştir (Önizleme)
 
@@ -63,7 +63,7 @@ DNS proxy 'yi yapılandırmak için, sanal ağ DNS sunucularınız ayarınızı 
 2. **Ayarlar**altında **DNS ayarları**' nı seçin.
 3. **DNS proxy** varsayılan olarak devre dışıdır. Etkinleştirildiğinde güvenlik duvarı, 53 numaralı bağlantı noktasını dinler ve DNS isteklerini yapılandırılmış DNS sunucularına iletir.
 4. Ayarların ortamınıza uygun olduğundan emin olmak için **DNS sunucularının** yapılandırmasını gözden geçirin.
-5. **Kaydet**'i seçin.
+5. **Kaydet**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

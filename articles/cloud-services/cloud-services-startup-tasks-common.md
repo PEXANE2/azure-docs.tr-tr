@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: beebe60d70b7e4908bd3e9348fe815036d6955c3
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85920063"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Ortak bulut hizmeti başlangıç görevleri
@@ -377,7 +377,7 @@ EXIT /B 0
 Web veya çalışan rolünüzün görevini yapılandırırken izlemeniz gereken bazı en iyi uygulamalar aşağıda verilmiştir.
 
 ### <a name="always-log-startup-activities"></a>Başlangıç etkinliklerini her zaman günlüğe kaydet
-Visual Studio, toplu iş dosyaları arasında adım adım bir hata ayıklayıcı sağlamaz, bu yüzden toplu iş dosyaları işleminde mümkün olduğunca çok veri almanız iyi bir işlemdir. **Stdout** ve **stderr**toplu iş dosyalarının çıkışını günlüğe kaydetmek, toplu iş dosyalarını ayıklamaya ve gidermeye çalışırken önemli bilgiler verebilir. **Stdout** ve **stderr** 'i **% Temp%** ortam değişkeni tarafından işaret edilen dizindeki StartupLog.txt dosyasına kaydetmek için, metni `>>  "%TEMP%\\StartupLog.txt" 2>&1` günlüğe kaydetmek istediğiniz belirli satırların sonuna ekleyin. Örneğin, **% PathToApp1Install%** dizininde setup.exe yürütmek için:`"%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1`
+Visual Studio, toplu iş dosyaları arasında adım adım bir hata ayıklayıcı sağlamaz, bu yüzden toplu iş dosyaları işleminde mümkün olduğunca çok veri almanız iyi bir işlemdir. **Stdout** ve **stderr**toplu iş dosyalarının çıkışını günlüğe kaydetmek, toplu iş dosyalarını ayıklamaya ve gidermeye çalışırken önemli bilgiler verebilir. **Stdout** ve **stderr** 'i **% Temp%** ortam değişkeni tarafından işaret edilen dizindeki StartupLog.txt dosyasına kaydetmek için, metni `>>  "%TEMP%\\StartupLog.txt" 2>&1` günlüğe kaydetmek istediğiniz belirli satırların sonuna ekleyin. Örneğin, **% PathToApp1Install%** dizininde setup.exe yürütmek için: `"%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1`
 
 XML 'nizi basitleştirmek için, tüm başlangıç görevlerinizi günlük kaydıyla birlikte çağıran bir sarmalayıcı *cmd* dosyası oluşturabilir ve her bir alt görevin aynı ortam değişkenlerini paylarını sağlayabilirsiniz.
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: tugup
 ms.openlocfilehash: a39aecf16d1c3303c0a590b389ba2aa69d4472f2
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87405135"
 ---
 # <a name="azure-service-fabric-hosting-lifecycle"></a>Azure Service Fabric barındırma yaşam döngüsü
@@ -58,7 +58,7 @@ Bir CodePackage kilitlenirse, Service Fabric yeniden başlatmak için bir geri d
 Geri alma değeri her zaman min (RetryTime, **Activationmaxretryınterval**) ve bu değer, **Activationretrybackoffüs ationbase** yapılandırmasına bağlı olarak sabit, doğrusal veya üstel olabilir.
 
 - Sabit: **Activationretrybackoffüs Ationbase** = = 0 Ise, RetryTime = **Activationretrybackoffınterval**;
-- Doğrusal: **Activationretrybackoffüs Ationbase** = = 0 Ise, RetryTime = ContinuousFailureCount * **Activationretrybackoffınterval** ; burada ContinousFailureCount, bir CodePackage 'in kaç kez çöktüğü veya etkinleştiremediği sayısıdır.
+- Doğrusal:  **Activationretrybackoffüs Ationbase** = = 0 Ise, RetryTime = ContinuousFailureCount * **Activationretrybackoffınterval** ; burada ContinousFailureCount, bir CodePackage 'in kaç kez çöktüğü veya etkinleştiremediği sayısıdır.
 - Üstel: RetryTime = (saniye cinsinden**Activationretrybackoffınterval** ) * (**Activationretrybackoffüs ationbase** ^ ContinuousFailureCount);
     
 Davranışı hızlı yeniden başlatmalar gibi istediğiniz şekilde denetleyebilirsiniz. Doğrusal olarak bahsedelim. Bu, bir CodePackage kilitlenirse, CodePackage devre dışı bırakılıncaya kadar başlangıç aralığının 10, 20, 30 40 saniye sonra olacağını gösterir. 
@@ -81,7 +81,7 @@ Service Fabric, indirme sırasında hatayla karşılaştığında her zaman doğ
 > [!NOTE]
 > Yapılandırmaları değiştirmeden önce göz önünde bulundurmanız gereken birkaç örnek aşağıda verilmiştir.
 
-* CodePackage kilitlenme ve geri alma işlemlerini devam ederse, ServiceType devre dışı bırakılır. Ancak etkinleştirmeler yapılandırması hızlı bir yeniden başlatmaya sahipse CodePackage 'in, ServiceType 'nın devre dışı bırakılacağını görebilmek için birkaç kez gelebilmesi mümkündür. For Ex: CodePackage 'in geldiğini varsayın, ServiceType Service Fabric kaydeder ve sonra çöker. Bu durumda, barındırma bir tür kaydı aldığında **ServiceTypeDisableGraceInterval** dönemi iptal edilir. Bu, CodePackage **ServiceTypeDisableGraceInterval** ' den büyük bir değere sahip olana kadar yineleyebilir ve ardından düğümde serviceType devre dışı bırakılır. Bu nedenle, bu bir süre içinde, ServiceType devre dışı bırakılmadan önce bir işlem olabilir.
+* CodePackage kilitlenme ve geri alma işlemlerini devam ederse, ServiceType devre dışı bırakılır. Ancak etkinleştirmeler yapılandırması hızlı bir yeniden başlatmaya sahipse CodePackage 'in, ServiceType 'nın devre dışı bırakılacağını görebilmek için birkaç kez gelebilmesi mümkündür. For Ex: CodePackage 'in geldiğini varsayın, ServiceType Service Fabric kaydeder ve sonra çöker. Bu durumda, barındırma bir tür kaydı aldığında **ServiceTypeDisableGraceInterval** dönemi iptal edilir. Bu, CodePackage  **ServiceTypeDisableGraceInterval** ' den büyük bir değere sahip olana kadar yineleyebilir ve ardından düğümde serviceType devre dışı bırakılır. Bu nedenle, bu bir süre içinde, ServiceType devre dışı bırakılmadan önce bir işlem olabilir.
 
 * Etkinleştirmeler söz konusu olduğunda, Service Fabric sisteminin bir düğüme bir çoğaltma eklemesi gerektiğinde RA (ReconfigurationAgent), uygulamayı etkinleştirmek ve etkinleştirme isteğini 15 saniyede bir (**Rapmessageretryıınterval**) yeniden denemeye yönelik alt sistemi ister. Service Fabric sistem 'in ServiceType devre dışı bırakıldığını bilmesini sağlamak için, barındırma içindeki etkinleştirme işleminin yeniden deneme aralığı ve **ServiceTypeDisableGraceInterval**kıyasla daha uzun bir süre için canlı olması gerekir. Örneğin: kümede yapılandırmalarını **activationmaxfailurecount** değerinin 5 olarak ayarlanmış olması ve **activationretrybackoffınterval** değerinin 1 sn olarak ayarlanmış olmasına izin verin. Bu, etkinleştirme işleminin daha sonra (0 + 1 + 2 + 3 + 4) = 10 sn (ilk yeniden deneme anında) ve bu barındırma yeniden denemeye başladıktan sonra verdiği anlamına gelir. Bu durumda, etkinleştirme işlemi tamamlanır ve 15 saniye sonra yeniden denenmeyecektir. Service Fabric, tüm yeniden denemeler 15 saniye içinde tükendiğinden gerçekleşti. Bu nedenle, ReconfigurationAgent 'tan her yeniden deneme, barındırma alt sisteminde yeni bir etkinleştirme işlemi oluşturur ve bu model yinelenen ve ServiceType, düğüm üzerinde hiçbir durumda devre dışı bırakılmayacaktır. ServiceType düğüm üzerinde devre dışı bırakılmadığından, SF sisteminin bileşen FM (FailoverManager) çoğaltmayı farklı bir düğüme taşımayacak.
 > 
@@ -128,23 +128,23 @@ Yapılandırma, etkinleştirme/decasyon 'yi etkileyen varsayılanlarla birlikte 
 
 ### <a name="servicetype"></a>ServiceType
 **Servicetypedisablefailurethreshold**: varsayılan 1. Bu düğümdeki hizmet türünü devre dışı bırakmak ve yerleştirme için farklı bir düğüm denemek üzere FM (FailoverManager) sonrasında oluşan hata sayısı eşiği.
-**ServiceTypeDisableGraceInterval**: varsayılan 30 sn. hizmet türünün devre dışı bırakılabileceği zaman aralığı.
+**ServiceTypeDisableGraceInterval**: varsayılan 30 sn. Hizmet türünün devre dışı bırakılabileceği zaman aralığı.
 **Servicetyperyumuristrationtimeout**: varsayılan 300 sn. ServiceType Service Fabric kayıt için zaman aşımı.
 
 ### <a name="activation"></a>Etkinleştirme
-**Activationretrybackoffınterval**: varsayılan 10 sn. her etkinleştirme hatasında geri alma aralığı.
+**Activationretrybackoffınterval**: varsayılan 10 sn. Her etkinleştirme hatasında geri alma aralığı.
 **Activationmaxfailurecount**: varsayılan 20. Sistemin başarısız olarak etkinleştirme işlemini gerçekleştirmeden önce yeniden denemesi gereken en fazla sayı. 
 **Activationretrybackoffüs Ationbase**: varsayılan 1,5.
-**Activationmaxretryınterval**: hatalarda etkinleştirme için varsayılan 3600 sn. Max geri.
+**Activationmaxretryınterval**: varsayılan 3600 sn. Hatalarda etkinleştirme için en fazla geri dönüş.
 **Codepackagecontinuousexitfailureresetınterval**: varsayılan 300 sn. CodePackage için sürekli çıkış hatası sayısını sıfırlama zaman aşımı.
 
 ### <a name="download"></a>İndir
 **Deploymentretrybackoffınterval**: varsayılan 10. Dağıtım hatası için geri dönüş aralığı.
-**Deploymentmaxretryınterval**: hatalarda dağıtım için varsayılan 3600 sn. Max geri dönüş.
+**Deploymentmaxretryınterval**: varsayılan 3600 sn. Hatalarda dağıtım için en fazla geri dönüş.
 **Deploymentmaxfailurecount**: varsayılan 20. Uygulama dağıtımı, bu uygulamanın düğümde dağıtılması başarısız olmadan önce DeploymentMaxFailureCount süreleri için yeniden denenecek.
 
 ### <a name="deactivation"></a>Bırakmayı
-**Deactivationscanınterval**: Varsayılan 600 sn. hiçbir çoğaltma barındırılmadıysa, bir çoğaltmayı barındırmak Için servicepackage 'e verilen en kısa süre ( kullanılmazsa.
+**Deactivationscanınterval**: Varsayılan 600 sn. Hiçbir çoğaltma barındırılmadıysa, bir çoğaltmayı barındırmak için ServicePackage 'e verilen en kısa süre ( kullanılmazsa.
 **DeactivationGraceInterval**: varsayılan 60 sn. Bir ServicePackage 'e, **paylaşılan** işlem modeli durumunda herhangi bir çoğaltma barındırıldıktan sonra yeniden barındırmak için verilen süre.
 **ExclusiveModeDeactivationGraceInterval**: varsayılan 1 sn. Bir ServicePackage 'e, **özel** işlem modeli durumunda herhangi bir çoğaltma barındırıldıktan sonra yeniden barındırmak için verilen süre.
 

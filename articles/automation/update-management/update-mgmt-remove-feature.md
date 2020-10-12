@@ -6,10 +6,10 @@ ms.date: 07/28/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: 4b4946da9f63299c7ba2b383d6c153673595a1ab
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87450388"
 ---
 # <a name="remove-update-management-from-automation-account"></a>Otomasyon hesabından Güncelleştirme Yönetimi kaldır
@@ -18,7 +18,7 @@ Azure Otomasyonu Güncelleştirme Yönetimi kullanarak sanal makinelerinizde gü
 
 ## <a name="sign-into-the-azure-portal"></a>Azure portalda oturum açma
 
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 ## <a name="remove-management-of-vms"></a>VM 'lerin yönetimini kaldırma
 
@@ -28,7 +28,7 @@ Güncelleştirme Yönetimi kaldırmadan önce, VM 'lerinizi yönetmeyi durdurman
 
 Otomasyon hesabının çalışma alanından bağlantısını kaldırabilmeniz için önce Güncelleştirme Yönetimi tamamen kaldırmak için aşağıdaki adımları izlemeniz gerekir. **Güncelleştirmeler** çözümünü çalışma alanından kaldıracaksınız.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 2. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, giriş listenize göre öneriler uygular. **Log Analytics**’i seçin.
 
@@ -65,7 +65,7 @@ Otomasyon hesabının bağlantısını kaldırmayı denediğinde, ilerleme durum
 Güncelleştirme Yönetimi, Azure SQL izlemenin önceki sürümlerini destekleyecek şekilde yapılandırıldıysa, özelliğin kurulumu, kaldırmanız gereken Otomasyon varlıklarını oluşturmuş olabilir. Güncelleştirme Yönetimi için, artık gerekli olmayan aşağıdaki öğeleri kaldırmak isteyebilirsiniz:
 
    * Zamanlamayı Güncelleştir-her birinin, oluşturduğunuz güncelleştirme dağıtımıyla eşleşen bir adı vardır.
-   * Güncelleştirme Yönetimi için oluşturulan karma çalışan grupları-her biri, *machine1. contoso. com_9ceb8108-26c9-4051-B6B3-227600d715c8*' e benzer şekilde adlandırılır.
+   * Güncelleştirme Yönetimi için oluşturulan karma çalışan grupları-her biri *machine1.contoso.com_9ceb8108-26c9-4051-B6B3-227600d715c8*' e benzer şekilde adlandırılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

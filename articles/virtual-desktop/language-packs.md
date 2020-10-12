@@ -7,10 +7,10 @@ ms.date: 08/21/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: fbc2aba21212a83bd73d5664f4fe288017954c0d
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90084218"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Windows 10 çoklu oturum görüntüsüne dil paketleri ekleme
@@ -24,7 +24,7 @@ Kullanıcılarınızın dil ihtiyaçlarını karşılamak için kullanabileceği
 
 İkinci yöntem daha verimli ve ekonomik maliyetli bir yoldur. Ancak, hangi yöntemin gereksinimlerinize en uygun olduğuna karar vermek sizin için önemlidir. Bu makalede, görüntüleriniz için dillerin nasıl özelleştirileceği gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Birden çok dil eklemek için Windows 10 Kurumsal Çoklu oturum görüntülerini özelleştirmek üzere aşağıdaki şeylere ihtiyacınız vardır:
 

@@ -17,13 +17,13 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 512aed93906968b14f7c6a13e08f74bbeb2f5f31
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87431087"
 ---
-# <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Uygulama proxy 'Si ve PingAccess ile çoklu oturum açma için üst bilgi tabanlı kimlik doğrulaması
+# <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Uygulama Ara Sunucusu ve PingAccess ile çoklu oturum açmak için üst bilgi tabanlı kimlik doğrulaması
 
 Azure Active Directory (Azure AD) uygulama proxy 'Si, Azure AD müşterilerinizin uygulamalarınıza daha fazlasına erişebilmeleri için PingAccess ile işbirliği yaptı. PingAccess, [mevcut uygulama proxy tekliflerini](application-proxy.md) , kimlik doğrulaması için üst bilgiler kullanan uygulamalara çoklu oturum açma erişimi içerecek şekilde genişletir.
 
@@ -96,7 +96,7 @@ Kendi şirket içi uygulamanızı yayımlamak için:
    > [!NOTE]
    > İlk uygulamanız bu ise, bağlantı noktası 3000 ' u kullanarak başlangıç yapın ve PingAccess yapılandırmanızı değiştirirseniz bu ayarı güncelleştirmek için geri dönün. Sonraki uygulamalarda, bağlantı noktasının PingAccess 'te yapılandırdığınız dinleyiciyle eşleşmesi gerekir. [PingAccess 'teki dinleyiciler](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=reference/ui/pa_c_Listeners.html)hakkında daha fazla bilgi edinin.
 
-1. **Ekle**'yi seçin. Yeni uygulama için genel bakış sayfası görüntülenir.
+1. **Ekle**’yi seçin. Yeni uygulama için genel bakış sayfası görüntülenir.
 
 Şimdi uygulama testi için bir Kullanıcı atayın ve üst bilgi tabanlı çoklu oturum açma seçeneğini belirleyin:
 
@@ -113,7 +113,7 @@ Kendi şirket içi uygulamanızı yayımlamak için:
 
    ![Üst bilgi tabanlı oturum açma ekranını ve PingAccess 'i gösterir](./media/application-proxy-configure-single-sign-on-with-ping-access/sso-header.png)
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 Yeniden yönlendirme URL 'nizin dış URL 'niz olarak ayarlandığından emin olun:
 
@@ -163,7 +163,7 @@ Bu bilgileri toplamak için:
 
 1. **Açıklama**' da yazın `PingAccess key` .
 1. **Süre sonu**altında, pingaccess tuşunun nasıl ayarlanacağını seçin: **1 yılda**, **2 yıl içinde**veya **hiçbir zaman**.
-1. **Ekle**'yi seçin. PingAccess tuşu, istemci gizli dizileri tablosunda, **değer** alanı ' nı tekrar dolduran rastgele bir dize ile görünür.
+1. **Ekle**’yi seçin. PingAccess tuşu, istemci gizli dizileri tablosunda, **değer** alanı ' nı tekrar dolduran rastgele bir dize ile görünür.
 1. PingAccess tuşunun **değer** alanının yanındaki **Panoya Kopyala** simgesini seçin, sonra kopyalayıp kaydedin. Bu değeri daha sonra PingAccess 'in istemci gizli anahtarı olarak belirtirsiniz.
 
 **Alanı güncelleştirin `acceptMappedClaims` :**
@@ -173,7 +173,7 @@ Bu bilgileri toplamak için:
 1. Uygulamanızı seçin.
 1. Uygulamanızın **uygulama kayıtları** sayfasının kenar çubuğundan **bildirim**' ı seçin. Uygulamanızın kaydı için bildirim JSON kodu görüntülenir.
 1. `acceptMappedClaims`Alanı arayın ve değerini olarak değiştirin `True` .
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ### <a name="use-of-optional-claims-optional"></a>İsteğe bağlı talepler kullanımı (isteğe bağlı)
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 tags: connectors
 ms.openlocfilehash: de85a61cbd699ec9ac2669f8abb6217254038de9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334591"
 ---
 # <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak Common Data Service kayıtları oluşturma ve yönetme
@@ -51,9 +51,9 @@ Bu örnek için yeni bir kayıt oluşturulduğunda harekete gelen Common Data Se
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Ortam** | Yes | İzlenecek ortam, örneğin, "Fabrikam Sales Production". Daha fazla bilgi için bkz. [Power platform-ortamlara genel bakış](/power-platform/admin/environments-overview). |
-   | **Varlık adı** | Yes | İzlenecek varlık, örneğin "müşteri adayları" |
-   | **Kapsam** | Yes | Yeni kaydı oluşturan kaynak (örneğin, iş biriminizdeki bir kullanıcı veya kuruluşunuzdaki herhangi bir Kullanıcı). Bu örnekte "Iş birimi" kullanılmaktadır. |
+   | **Ortam** | Evet | İzlenecek ortam, örneğin, "Fabrikam Sales Production". Daha fazla bilgi için bkz. [Power platform-ortamlara genel bakış](/power-platform/admin/environments-overview). |
+   | **Varlık adı** | Evet | İzlenecek varlık, örneğin "müşteri adayları" |
+   | **Kapsam** | Evet | Yeni kaydı oluşturan kaynak (örneğin, iş biriminizdeki bir kullanıcı veya kuruluşunuzdaki herhangi bir Kullanıcı). Bu örnekte "Iş birimi" kullanılmaktadır. |
    ||||
 
 ## <a name="add-common-data-service-action"></a>Common Data Service eylem Ekle
@@ -72,8 +72,8 @@ Bu örnek için yeni bir kayıt oluşturulduğunda harekete gelen Common Data Se
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Kuruluş Adı** | Yes | Kayıt oluşturmak istediğiniz, tetikleyicinizdeki aynı ortam olması gereken ancak bu örnekte "Fabrikam Sales Production" olması gereken ortam |
-   | **Varlık adı** | Yes | Kaydı oluşturmak istediğiniz varlık (örneğin, "görevler" |
+   | **Kuruluş Adı** | Evet | Kayıt oluşturmak istediğiniz, tetikleyicinizdeki aynı ortam olması gereken ancak bu örnekte "Fabrikam Sales Production" olması gereken ortam |
+   | **Varlık adı** | Evet | Kaydı oluşturmak istediğiniz varlık (örneğin, "görevler" |
    | **Konu** | Evet, bu örnekte seçilen varlığa göre | Bu görevin hedefi hakkında kısa bir açıklama |
    ||||
 
@@ -87,7 +87,7 @@ Bu örnek için yeni bir kayıt oluşturulduğunda harekete gelen Common Data Se
 
       ![Görev kaydında kullanmak için tetikleme çıkışlarını seçin](./media/connect-common-data-service/create-new-record-action-select-trigger-outputs.png)
 
-      | Çıkışı Tetikle | Description |
+      | Çıkışı Tetikle | Açıklama |
       |----------------|-------------|
       | **Ad** | Görev kaydında birincil kişi olarak kullanılacak müşteri adayı kaydından ilk ad |
       | **Soyadı** | Görev kaydında birincil kişi olarak kullanılacak müşteri adayı kaydından soyadı |
