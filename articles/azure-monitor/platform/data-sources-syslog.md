@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/22/2019
 ms.openlocfilehash: d9efdb11ffd30c68a0ac8ea8e8156fe707f188de
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87322321"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Azure İzleyici'de Syslog veri kaynakları
@@ -155,8 +155,8 @@ log { source(src); filter(f_user_oms); destination(d_oms); };
 ### <a name="collecting-data-from-additional-syslog-ports"></a>Ek Syslog bağlantı noktalarından veri toplama
 Log Analytics Aracısı, 25224 numaralı bağlantı noktasındaki yerel istemcide syslog iletilerini dinler.  Aracı yüklendiğinde, varsayılan Syslog yapılandırması uygulanır ve aşağıdaki konumda bulunur:
 
-* Rsyslog`/etc/rsyslog.d/95-omsagent.conf`
-* Syslog-NG:`/etc/syslog-ng/syslog-ng.conf`
+* Rsyslog `/etc/rsyslog.d/95-omsagent.conf`
+* Syslog-NG: `/etc/syslog-ng/syslog-ng.conf`
 
 İki yapılandırma dosyası oluşturarak bağlantı noktası numarasını değiştirebilirsiniz: yüklediğiniz Syslog Daemon öğesine bağlı olarak, bir Floentd yapılandırma dosyası ve bir rsyslog-veya-Syslog-ng dosyası.  
 

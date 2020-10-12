@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
 ms.openlocfilehash: f71a9fa1151a1df2ae04fe47afd6bf36861aa2e5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91273832"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rstudio-connect"></a>Öğretici: RStudio Connect ile Azure Active Directory tümleştirme
@@ -75,7 +75,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 RStudio Connect ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[RStudio Connect çoklu oturum açmayı yapılandırma](#configure-rstudio-connect-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[RStudio Connect çoklu oturum açmayı yapılandırma](#configure-rstudio-connect-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Rstudio Connect **[test kullanıcısı oluşturun](#create-rstudio-connect-test-user)** -rstudio Connect 'Te kullanıcının Azure AD gösterimine bağlanmış bir Britta Simon 'a sahip olma.
@@ -95,7 +95,7 @@ Azure AD çoklu oturum açmayı RStudio Connect ile yapılandırmak için aşağ
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -120,11 +120,11 @@ Azure AD çoklu oturum açmayı RStudio Connect ile yapılandırmak için aşağ
 
     ![image](common/edit-attribute.png)
 
-7. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
+7. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
     ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
-### <a name="configure-rstudio-connect-single-sign-on"></a>RStudio Connect çoklu oturum açmayı yapılandırma
+### <a name="configure-rstudio-connect-single-sign-on"></a>RStudio Connect Single Sign-On yapılandırma
 
 **Rstudio Connect**için çoklu oturum açma 'yı yapılandırmak için, yukarıda kullanılan **uygulama Federasyon meta veri URL 'Sini** ve **sunucu adresini** kullanmanız gerekir. Bu, adresindeki RStudio Connect yapılandırma dosyasında yapılır `/etc/rstudio-connect/rstudio-connect.gcfg` .
 

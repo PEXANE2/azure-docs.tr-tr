@@ -12,10 +12,10 @@ ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 08/01/2018
 ms.openlocfilehash: 4620ef5b6a72afbe86b0ace33328a769eab31e5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81418278"
 ---
 # <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory"></a>Azure Data Factory kullanarak Amazon Market Web hizmetinden veri kopyalama
@@ -47,16 +47,16 @@ Amazon Market Web hizmeti bağlı hizmeti için aşağıdaki özellikler destekl
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **AmazonMWS** olarak ayarlanmalıdır | Yes |
-| endpoint | Amazon MWS sunucusunun uç noktası (yani, mws.amazonservices.com)  | Yes |
-| Pazar Placeıd | Veri almak istediğiniz Amazon Market KIMLIĞI. Birden çok Market kimliği 'nden verileri almak için bunları virgülle ( `,` ) ayırın. (yani, A2EUQ1WTGCTBG2)  | Yes |
-| Sellerıd | Amazon satıcı KIMLIĞI.  | Yes |
-| mwsAuthToken | Amazon MWS kimlik doğrulama belirteci. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
-| Accesskeyıd | Verilere erişmek için kullanılan erişim anahtarı KIMLIĞI.  | Yes |
-| secretKey | Verilere erişmek için kullanılan gizli anahtar. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
-| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | No |
-| Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | No |
-| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | No |
+| tür | Type özelliği: **AmazonMWS** olarak ayarlanmalıdır | Evet |
+| endpoint | Amazon MWS sunucusunun uç noktası (yani, mws.amazonservices.com)  | Evet |
+| Pazar Placeıd | Veri almak istediğiniz Amazon Market KIMLIĞI. Birden çok Market kimliği 'nden verileri almak için bunları virgülle ( `,` ) ayırın. (yani, A2EUQ1WTGCTBG2)  | Evet |
+| Sellerıd | Amazon satıcı KIMLIĞI.  | Evet |
+| mwsAuthToken | Amazon MWS kimlik doğrulama belirteci. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
+| Accesskeyıd | Verilere erişmek için kullanılan erişim anahtarı KIMLIĞI.  | Evet |
+| secretKey | Verilere erişmek için kullanılan gizli anahtar. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
+| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | Hayır |
 
 **Örnek:**
 
@@ -91,7 +91,7 @@ Amazon Market Web hizmetinden veri kopyalamak için, veri kümesinin Type özell
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | DataSet 'in Type özelliği: **AmazonMWSObject** olarak ayarlanmalıdır | Yes |
+| tür | DataSet 'in Type özelliği: **AmazonMWSObject** olarak ayarlanmalıdır | Evet |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -122,7 +122,7 @@ Amazon Market Web hizmetinden veri kopyalamak için kopyalama etkinliğindeki ka
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **AmazonMWSSource** olarak ayarlanmalıdır | Yes |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **AmazonMWSSource** olarak ayarlanmalıdır | Evet |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
 **Örnek:**

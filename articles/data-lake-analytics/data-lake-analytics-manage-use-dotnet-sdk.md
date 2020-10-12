@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/18/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b06530488e74120f3cc511694d290840269db453
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89020074"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>.NET uygulaması ile Azure Data Lake Analytics’i yönetme
@@ -21,7 +21,7 @@ ms.locfileid: "89020074"
 
 Bu makalede, Azure .NET SDK kullanılarak yazılmış bir uygulamayı kullanarak Azure Data Lake Analytics hesaplarının, veri kaynaklarının, kullanıcıların ve işlerin nasıl yönetileceği açıklanmaktadır. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * **Visual Studio 2015, Visual Studio 2013 Güncelleştirme 4 veya Visual C++ Yüklü Visual Studio 2012**.
 * **.NET sürüm 2.5 veya üzeri için Microsoft Azure SDK**.  [Web platformu yükleyicisini](https://www.microsoft.com/web/downloads/platform.aspx) kullanarak yükleyin.

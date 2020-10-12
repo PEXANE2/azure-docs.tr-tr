@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/10/2020
 ms.openlocfilehash: 2736d0cfe514252e36ba6d7e0d71efe09da15aae
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86076309"
 ---
 # <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>HDInsight üzerinde Apache Hadoop MapReduce 'yi SSH ile kullanma
@@ -24,7 +24,7 @@ MapReduce işlerinin bir Secure Shell (SSH) bağlantısından HDInsight 'a nası
 > [!NOTE]
 > Linux tabanlı Apache Hadoop sunucuları kullanmayı zaten biliyorsanız, ancak HDInsight 'a yeni bir adım daha sahipseniz bkz. [Linux tabanlı HDInsight ipuçları](../hdinsight-hadoop-linux-information.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 HDInsight üzerinde bir Apache Hadoop kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md).
 

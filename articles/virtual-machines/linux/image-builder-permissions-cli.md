@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.openlocfilehash: 58bbe01c8de0bbe606f4fc428032cd213f05d386
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88068340"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>Azure CLı kullanarak Azure Image Builder hizmet izinlerini yapılandırma
@@ -234,7 +234,7 @@ Aşağıdaki yer tutucu ayarlarını değiştirin:
 | \<Storage account container\> | Depolama hesabı kapsayıcı adı |
 | \<Subscription ID\> | Azure aboneliği |
 
-Kullanıcı tarafından atanan yönetilen kimlik kullanarak daha fazla bilgi için bkz. Azure [Kullanıcı tarafından atanan bir yönetilen kimliği kullanacak özel görüntü oluşturma Azure Storage](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage#create-a-custom-image-that-will-use-an-azure-user-assigned-managed-identity-to-seemlessly-access-files-azure-storage). Hızlı başlangıç, bir depolama hesabına erişmek için Kullanıcı tarafından atanan yönetilen kimliğin nasıl oluşturulacağını ve yapılandırılacağını gösterir.
+Kullanıcı tarafından atanan yönetilen kimlik kullanarak daha fazla bilgi edinmek için Azure [User-Assigned yönetilen kimliği kullanacak özel görüntü oluşturma](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage#create-a-custom-image-that-will-use-an-azure-user-assigned-managed-identity-to-seemlessly-access-files-azure-storage)' ya bakın. Hızlı başlangıç, bir depolama hesabına erişmek için Kullanıcı tarafından atanan yönetilen kimliğin nasıl oluşturulacağını ve yapılandırılacağını gösterir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

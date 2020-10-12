@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
 ms.openlocfilehash: 7cf4be078a7bee0bedbeac4326acb9ca290cde88
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331990"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory-legacy"></a>Azure Data Factory kullanarak MongoDB 'den veri kopyalama (eski)
@@ -39,13 +39,13 @@ MongoDB veritabanından desteklenen herhangi bir havuz veri deposuna veri kopyal
 - MongoDB **sürümleri 2,4, 2,6, 3,0, 3,2, 3,4 ve 3,6**.
 - **Temel** veya **anonim** kimlik doğrulaması kullanarak verileri kopyalama.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 Integration Runtime, yerleşik bir MongoDB sürücüsü sağlar, bu nedenle MongoDB 'den veri kopyalarken herhangi bir sürücüyü el ile yüklemeniz gerekmez.
 
-## <a name="getting-started"></a>Kullanmaya başlama
+## <a name="getting-started"></a>Başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -57,17 +57,17 @@ MongoDB bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür |Type özelliği: **MongoDB** olarak ayarlanmalıdır |Yes |
-| sunucu |MongoDB sunucusunun IP adresi veya ana bilgisayar adı. |Yes |
+| tür |Type özelliği: **MongoDB** olarak ayarlanmalıdır |Evet |
+| sunucu |MongoDB sunucusunun IP adresi veya ana bilgisayar adı. |Evet |
 | port |MongoDB sunucusunun istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası. |Hayır (varsayılan değer 27017) |
-| Dosyasında |Erişmek istediğiniz MongoDB veritabanının adı. |Yes |
-| authenticationType | MongoDB veritabanına bağlanmak için kullanılan kimlik doğrulaması türü.<br/>İzin verilen değerler: **Basic**ve **Anonymous**. |Yes |
+| Dosyasında |Erişmek istediğiniz MongoDB veritabanının adı. |Evet |
+| authenticationType | MongoDB veritabanına bağlanmak için kullanılan kimlik doğrulaması türü.<br/>İzin verilen değerler: **Basic**ve **Anonymous**. |Evet |
 | username |MongoDB 'ye erişmek için Kullanıcı hesabı. |Evet (temel kimlik doğrulaması kullanılıyorsa). |
 | password |Kullanıcının parolası. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. |Evet (temel kimlik doğrulaması kullanılıyorsa). |
 | authSource |Kimlik doğrulaması için kimlik bilgilerinizi denetlemek üzere kullanmak istediğiniz MongoDB veritabanının adı. |Hayır. Temel kimlik doğrulaması için varsayılan olarak yönetici hesabı ve databaseName özelliği kullanılarak belirtilen veritabanı kullanılır. |
-| enableSsl | Sunucu bağlantılarının TLS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer false'tur.  | No |
-| allowSelfSignedServerCert | Sunucudan kendinden imzalı sertifikalara izin verilip verilmeyeceğini belirtir. Varsayılan değer false'tur.  | No |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |No |
+| enableSsl | Sunucu bağlantılarının TLS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer false'tur.  | Hayır |
+| allowSelfSignedServerCert | Sunucudan kendinden imzalı sertifikalara izin verilip verilmeyeceğini belirtir. Varsayılan değer false'tur.  | Hayır |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |Hayır |
 
 **Örnek:**
 
@@ -100,8 +100,8 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | DataSet 'in Type özelliği: **Mongodbcollection** olarak ayarlanmalıdır | Yes |
-| Ma |MongoDB veritabanındaki koleksiyonun adı. |Yes |
+| tür | DataSet 'in Type özelliği: **Mongodbcollection** olarak ayarlanmalıdır | Evet |
+| Ma |MongoDB veritabanındaki koleksiyonun adı. |Evet |
 
 **Örnek:**
 
@@ -131,7 +131,7 @@ Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde deste
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **Mongodbsource** olarak ayarlanmalıdır | Yes |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **Mongodbsource** olarak ayarlanmalıdır | Evet |
 | sorgu |Verileri okumak için özel SQL-92 sorgusunu kullanın. Örneğin: select * from MyTable. |Hayır (veri kümesinde "collectionName" belirtilmişse) |
 
 **Örnek:**

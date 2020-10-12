@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
 ms.openlocfilehash: 4b7fd2de0762de147ad3ceae0d562a1c78b33dc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81417466"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Azure Data Factory kullanarak Cassandra 'dan veri kopyalama
@@ -62,13 +62,13 @@ Cassandra bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür |Type özelliği: **Cassandra** olarak ayarlanmalıdır |Yes |
-| konak |Cassandra sunucularının bir veya daha fazla IP adresi veya ana bilgisayar adı.<br/>Aynı anda tüm sunuculara bağlanmak için IP adreslerinin veya ana bilgisayar adlarının virgülle ayrılmış bir listesini belirtin. |Yes |
+| tür |Type özelliği: **Cassandra** olarak ayarlanmalıdır |Evet |
+| konak |Cassandra sunucularının bir veya daha fazla IP adresi veya ana bilgisayar adı.<br/>Aynı anda tüm sunuculara bağlanmak için IP adreslerinin veya ana bilgisayar adlarının virgülle ayrılmış bir listesini belirtin. |Evet |
 | port |Cassandra sunucusunun istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası. |Hayır (varsayılan değer 9042) |
-| authenticationType | Cassandra veritabanına bağlanmak için kullanılan kimlik doğrulaması türü.<br/>İzin verilen değerler: **Basic**ve **Anonymous**. |Yes |
-| kullanıcı adı |Kullanıcı hesabı için Kullanıcı adını belirtin. |Evet, authenticationType temel olarak ayarlandıysa. |
+| authenticationType | Cassandra veritabanına bağlanmak için kullanılan kimlik doğrulaması türü.<br/>İzin verilen değerler: **Basic**ve **Anonymous**. |Evet |
+| username |Kullanıcı hesabı için Kullanıcı adını belirtin. |Evet, authenticationType temel olarak ayarlandıysa. |
 | password |Kullanıcı hesabı için parola belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. |Evet, authenticationType temel olarak ayarlandıysa. |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |No |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |Hayır |
 
 >[!NOTE]
 >Şu anda, TLS kullanarak Cassandra bağlantısı desteklenmiyor.
@@ -105,7 +105,7 @@ Cassandra 'dan veri kopyalamak için veri kümesinin Type özelliğini **Cassand
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Veri kümesinin Type özelliği: **Cassandratable** olarak ayarlanmalıdır | Yes |
+| tür | Veri kümesinin Type özelliği: **Cassandratable** olarak ayarlanmalıdır | Evet |
 | anahtar alanı |Cassandra veritabanında anahtar alanının veya şemanın adı. |Hayır ("CassandraSource" için "sorgu" belirtilmişse) |
 | tableName |Cassandra veritabanındaki tablonun adı. |Hayır ("CassandraSource" için "sorgu" belirtilmişse) |
 
@@ -140,7 +140,7 @@ Cassandra 'dan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü 
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **Cassandrasource** olarak ayarlanmalıdır | Yes |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **Cassandrasource** olarak ayarlanmalıdır | Evet |
 | sorgu |Verileri okumak için özel sorguyu kullanın. SQL-92 sorgusu veya CQL sorgusu. Bkz. [CQL başvurusu](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>SQL sorgusu kullanırken, sorgulamak istediğiniz tabloyu temsil etmek için **anahtar alanı Name. Table adını** belirtin. |Hayır (veri kümesinde "tableName" ve "keyspace" belirtilmişse). |
 | Bu düzey |Tutarlılık düzeyi, istemci uygulamasına veri döndürmeden önce bir okuma isteğine kaç yinelemenin yanıt vereceğini belirtir. Cassandra, okuma isteğini karşılamak üzere verilerin belirtilen sayıda çoğaltmasını denetler. Ayrıntılar için bkz. [veri tutarlılığını yapılandırma](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) .<br/><br/>İzin verilen değerler şunlardır: **bir**, **iki**, **üç**, **çekirdek**, **Tümü**, **LOCAL_QUORUM**, **EACH_QUORUM**ve **LOCAL_ONE**. |Hayır (varsayılan değer `ONE` ) |
 

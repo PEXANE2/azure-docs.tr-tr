@@ -11,10 +11,10 @@ ms.date: 08/13/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c1b51792c86cfce15fa718040dfcbcc13997ee26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85384966"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Özel ilkelerin ve kimlik deneyimi çerçevesinin Azure AD B2C sorunlarını giderme
@@ -39,18 +39,18 @@ XML ilke dosyasının doğrulanması, karşıya yükleme sırasında otomatik ol
 
 Yaygın doğrulama hataları şunları içerir:
 
-> Hata parçacığı:`...makes a reference to ClaimType with id "displayName" but neither the policy nor any of its base policies contain such an element`
+> Hata parçacığı: `...makes a reference to ClaimType with id "displayName" but neither the policy nor any of its base policies contain such an element`
 
 * ClaimType değeri yanlış yazılmış veya şemada yok olabilir.
 * ClaimType değerlerinin ilkedeki dosyalardan en az birinde tanımlanması gerekir.
-    Örneğin, `<ClaimType Id="issuerUserId">`
+    Örnek: `<ClaimType Id="issuerUserId">`
 * ClaimType, uzantılar dosyasında tanımlıysa, ancak temel dosyadaki bir teknisyen dosyasında kullanılıyorsa, temel dosyayı karşıya yüklemek bir hataya neden olur.
 
-> Hata parçacığı:`...makes a reference to a ClaimsTransformation with id...`
+> Hata parçacığı: `...makes a reference to a ClaimsTransformation with id...`
 
 * Bu hatanın nedenleri, ClaimType hatası ile aynı olabilir.
 
-> Hata parçacığı:`Reason: User is currently logged as a user of 'yourtenant.onmicrosoft.com' tenant. In order to manage 'yourtenant.onmicrosoft.com', please login as a user of 'yourtenant.onmicrosoft.com' tenant`
+> Hata parçacığı: `Reason: User is currently logged as a user of 'yourtenant.onmicrosoft.com' tenant. In order to manage 'yourtenant.onmicrosoft.com', please login as a user of 'yourtenant.onmicrosoft.com' tenant`
 
 * Ve öğelerindeki Tenantıd değerinin `<TrustFrameworkPolicy\>` `<BasePolicy\>` hedef Azure AD B2C kiracınızla eşleşip eşleştiğinden emin olun.
 

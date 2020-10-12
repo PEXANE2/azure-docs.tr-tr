@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.workload: big-data
 ms.date: 07/17/2018
 ms.openlocfilehash: a5c7b9fb6a3431534d743f1ebd0b21f1da9fab7b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91318713"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>SQL Server Integration Services kullanarak U-SQL işlerini zamanlama (SSIS)
 
 Bu belgede, SQL Server tümleştirme hizmeti 'ni (SSIS) kullanarak U-SQL işlerini nasıl düzenleyeceğinizi ve oluşturacağınızı öğreneceksiniz. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [Tümleştirme Hizmetleri Için Azure Özellik paketi](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud) , Azure Data Lake Analytics hizmetine bağlanmasına yardımcı olan [Azure Data Lake Analytics görevi](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017) ve [Azure Data Lake Analytics bağlantı yöneticisini](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017) sağlar. Bu görevi kullanmak için, ' yi yüklediğinizden emin olun:
 

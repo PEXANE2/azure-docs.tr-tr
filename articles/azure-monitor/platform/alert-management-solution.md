@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
 ms.openlocfilehash: bd30a840327eaf338aec89c12ff8eb5d87c60c56
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87322406"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics Uyarı Yönetimi çözümü
@@ -49,7 +49,7 @@ Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açı
 |:--- |:--- |:--- |
 | [Windows aracıları](agent-windows.md) | Hayır |Doğrudan Windows aracıları uyarı oluşturmaz.  Log Analytics uyarılar, Windows aracılarından toplanan olaylar ve performans verilerinden oluşturulabilir. |
 | [Linux aracıları](../learn/quick-collect-linux-computer.md) | Hayır |Doğrudan Linux aracıları uyarı oluşturmaz.  Log Analytics uyarılar, Linux aracılarından toplanan olaylar ve performans verilerinden oluşturulabilir.  Nagios ve Zabbix uyarıları, Linux Aracısı gerektiren sunuculardan toplanır. |
-| [System Center Operations Manager yönetim grubu](./om-agents.md) |Yes |Operations Manager aracılarında oluşturulan uyarılar yönetim grubuna teslim edilir ve sonra Log Analytics iletilir.<br><br>Operations Manager aracılarından Log Analytics doğrudan bir bağlantı gerekli değildir. Uyarı verileri yönetim grubundan Log Analytics deposuna iletilir. |
+| [System Center Operations Manager yönetim grubu](./om-agents.md) |Evet |Operations Manager aracılarında oluşturulan uyarılar yönetim grubuna teslim edilir ve sonra Log Analytics iletilir.<br><br>Operations Manager aracılarından Log Analytics doğrudan bir bağlantı gerekli değildir. Uyarı verileri yönetim grubundan Log Analytics deposuna iletilir. |
 
 
 ### <a name="collection-frequency"></a>Toplama sıklığı

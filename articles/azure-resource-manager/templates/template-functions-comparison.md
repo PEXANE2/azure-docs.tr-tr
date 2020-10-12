@@ -4,10 +4,10 @@ description: Değerleri karşılaştırmak için Azure Resource Manager şablond
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 01d66f43cf73dcc9228118db5a9b6149b19ee66d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84677840"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>ARM şablonları için karşılaştırma işlevleri
@@ -15,7 +15,7 @@ ms.locfileid: "84677840"
 Kaynak Yöneticisi, Azure Resource Manager (ARM) şablonlarınıza karşılaştırmalar yapmak için çeşitli işlevler sağlar.
 
 * [Coalesce](#coalesce)
-* [eşittir](#equals)
+* [equals](#equals)
 * [büyüktür](#greater)
 * [greaterOrEquals](#greaterorequals)
 * [büyüktür](#less)
@@ -88,15 +88,15 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | stringOutput | Dize | default |
 | ıntoutput | int | 1 |
 | objectOutput | Nesne | {"First": "varsayılan"} |
 | arrayOutput | Dizi |  [1] |
-| Emptızput | Bool | True |
+| Emptızput | Bool | Doğru |
 
-## <a name="equals"></a>eşittir
+## <a name="equals"></a>equals
 
 `equals(arg1, arg2)`
 
@@ -199,12 +199,12 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
-| Iadeler | Bool | True |
-| checkStrings | Bool | True |
-| Checkarışın | Bool | True |
-| checkObjects | Bool | True |
+| Iadeler | Bool | Doğru |
+| checkStrings | Bool | Doğru |
+| Checkarışın | Bool | Doğru |
+| checkObjects | Bool | Doğru |
 
 Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) , **eşittir**ile [değil](template-functions-logical.md#not) .
 
@@ -225,9 +225,9 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekteki çıktı:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
-| Checttequals | Bool | True |
+| Checttequals | Bool | Doğru |
 
 ## <a name="greater"></a>büyüktür
 
@@ -289,10 +289,10 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
-| Iadeler | Bool | False |
-| checkStrings | Bool | True |
+| Iadeler | Bool | Yanlış |
+| checkStrings | Bool | Doğru |
 
 ## <a name="greaterorequals"></a>greaterOrEquals
 
@@ -354,10 +354,10 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
-| Iadeler | Bool | False |
-| checkStrings | Bool | True |
+| Iadeler | Bool | Yanlış |
+| checkStrings | Bool | Doğru |
 
 ## <a name="less"></a>daha az
 
@@ -419,10 +419,10 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
-| Iadeler | Bool | True |
-| checkStrings | Bool | False |
+| Iadeler | Bool | Doğru |
+| checkStrings | Bool | Yanlış |
 
 ## <a name="lessorequals"></a>lessOrEquals
 
@@ -484,10 +484,10 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
-| Iadeler | Bool | True |
-| checkStrings | Bool | False |
+| Iadeler | Bool | Doğru |
+| checkStrings | Bool | Yanlış |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -4,10 +4,10 @@ description: Bu makalede, Azure Stack hub 'ında (Önizleme) Event Hubs bir dene
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: 1c876ed36be6aec9395a1acba3a1deb25a47de2c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87039234"
 ---
 # <a name="use-blob-storage-as-checkpoint-store---event-hubs-on-azure-stack-hub-preview"></a>Blob depolamayı denetim noktası deposu olarak kullanma-Azure Stack hub 'da Event Hubs (Önizleme)
@@ -15,7 +15,7 @@ Azure Blob depolama 'Yı, genellikle Azure 'da bulunan farklı bir Storage blob 
 
 - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)
 - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java). 
-- [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) veya [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts) 
+- [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) veya  [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts) 
 - Python- [zaman uyumlu](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py), [zaman uyumsuz](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)
 
 > [!IMPORTANT]
@@ -29,7 +29,7 @@ The value for one of the HTTP headers is not in the correct format
 
 
 ## <a name="sample-error-message-in-python"></a>Python 'da örnek hata iletisi
-Python için bir hata, `azure.core.exceptions.HttpResponseError` öğesinin hata işleyicisine geçirilir `on_error(partition_context, error)` `EventHubConsumerClient.receive()` . Ancak, yöntemi `receive()` özel durum oluşturmaz. `print(error)`Aşağıdaki özel durum bilgilerini yazdırır:
+Python için bir hata, `azure.core.exceptions.HttpResponseError` öğesinin hata işleyicisine geçirilir `on_error(partition_context, error)` `EventHubConsumerClient.receive()` . Ancak, yöntemi `receive()` özel durum oluşturmaz. `print(error)` Aşağıdaki özel durum bilgilerini yazdırır:
 
 ```bash
 The value for one of the HTTP headers is not in the correct format.

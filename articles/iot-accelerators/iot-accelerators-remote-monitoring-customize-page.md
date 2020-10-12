@@ -10,10 +10,10 @@ ms.date: 10/02/2018
 ms.topic: conceptual
 ms.custom: devx-track-js
 ms.openlocfilehash: e585bc52121943102522f8c44291a4f9453d6214
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91318407"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Uzaktan Izleme çözümü Hızlandırıcısı Web Kullanıcı arabirimine özel bir sayfa ekleme
@@ -25,7 +25,7 @@ Bu makalede, uzaktan Izleme çözümü Hızlandırıcısı Web Kullanıcı arabi
 
 Diğer nasıl yapılır kılavuzlarında, eklediğiniz sayfaya daha fazla özellik eklemek için bu senaryo genişletilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu nasıl yapılır kılavuzundaki adımları tamamlayabilmeniz için, yerel geliştirme makinenizde aşağıdaki yazılımların yüklü olması gerekir:
 

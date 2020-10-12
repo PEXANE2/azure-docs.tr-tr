@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: kegorman
 ms.openlocfilehash: 352c8c887899a2e15eed9736e8885c1b2cffec2b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331378"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure Oracle VM görüntüleri ve bunların dağıtımı
@@ -111,7 +111,7 @@ Azure NetApp Files, Azure yerel hizmeti olarak Azure veri merkezi ortamında ça
 
 ## <a name="licensing-oracle-database--software-on-azure"></a>Azure 'da & Yazılım Oracle Database lisanslama
 
-Microsoft Azure, Oracle Database çalıştırmaya yönelik yetkili bir bulut ortamıdır. Oracle Core Factor tablosu, bulutta Oracle veritabanları lisanslandığınızda geçerli değildir. Bunun yerine, Enterprise Edition veritabanları için etkinleştirilmiş hiper Iş parçacığı teknolojisine sahip VM 'Leri kullanırken, hiper iş parçacığı etkinse (ilke belgesinde belirtildiği gibi) iki vCPU 'yu bir Oracle Işlemci lisansına eşdeğer olarak Sayın. İlke ayrıntıları [burada](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf)bulunabilir.
+Microsoft Azure, Oracle Database çalıştırmaya yönelik yetkili bir bulut ortamıdır. Oracle Core Factor tablosu, bulutta Oracle veritabanları lisanslandığınızda geçerli değildir. Bunun yerine, Enterprise Edition veritabanları için etkinleştirilmiş Hyper-Threading teknolojisine sahip VM 'Leri kullanırken, hiper iş parçacığı etkinse (ilke belgesinde belirtildiği gibi) iki vCPU 'yu bir Oracle Işlemci lisansına eşdeğer olarak Sayın. İlke ayrıntıları [burada](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf)bulunabilir.
 Oracle veritabanları genellikle daha yüksek bellek ve GÇ gerektirir. Bu nedenle, bu iş yükleri için [bellek Için Iyileştirilmiş VM 'ler](../../sizes-memory.md) önerilir. İş yüklerinizi daha iyi bir şekilde iyileştirmek için, [kısıtlı çekirdek vCPU 'lar](../../constrained-vcpu.md) yüksek bellek, depolama ve g/ç bant genişliği gerektiren, yüksek çekirdek sayısı olmayan Oracle Database iş yükleri için önerilir.
 
 Oracle yazılımı ve iş yüklerini Şirket içinden Microsoft Azure 'e geçirirken Oracle, [Azure 'Da Oracle](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html) 'da belirtildiği gibi lisans taşınabilirliği sağlar
