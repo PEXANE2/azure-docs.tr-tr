@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
 ms.openlocfilehash: 1fe915fd58f60e4ad5b1e28b51911678ef2f866c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87085716"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Linux sanal makineleri ile Azure Özel Betik uzantısı sürüm 1 ' i kullanın
@@ -39,7 +39,7 @@ Bu makalede, Azure CLı 'deki özel betik uzantısının nasıl kullanılacağı
 
 Lütfen yeni ve mevcut dağıtımları yeni sürümü ([Microsoft. Azure. Extensions. CustomScript](custom-script-linux.md)) kullanmak üzere değiştirin. Yeni sürümün öncekinin yerine bırakılması hedeflenmiştir. Dolayısıyla geçiş işlemi adı ve sürümü değiştirmek kadar kolaydır; uzantı yapılandırmanızı değiştirmeniz gerekmez.
 
-### <a name="operating-system"></a>Operating System
+### <a name="operating-system"></a>İşletim Sistemi
 
 Desteklenen Linux dağıtımları:
 
@@ -70,7 +70,7 @@ Betiğiniz yerel bir sunucu üzerinde ise, hala ek güvenlik duvarı/ağ güvenl
 * Betiğin çalışması için izin verilen 90 dakika, daha uzun bir süre uzantının başarısız olmasına neden olur.
 * Yeniden başlatmalar betiğin içine yerleştirmeyin, bu, yüklenmekte olan diğer uzantılarla ilgili sorunlara neden olur ve yeniden başlatma sonrası, uzantı yeniden başlatmadan sonra devam etmez. 
 * Yeniden başlatmaya neden olacak bir betiğe sahipseniz, uygulamaları yükleyip komut dosyalarını çalıştır. Bir cron işi kullanarak ya da DSC veya Chef, Pupevcil hayvan uzantıları gibi araçları kullanarak yeniden başlatmayı zamanlamanız gerekir.
-* Uzantı yalnızca bir kez betik çalıştırır, her önyüklemede bir betik çalıştırmak istiyorsanız, [Cloud-init görüntüsünü](../linux/using-cloud-init.md) kullanabilir ve [önyükleme modülü başına betikleri](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) kullanabilirsiniz. Alternatif olarak, komut dosyasını bir systemd hizmet birimi oluşturmak için de kullanabilirsiniz.
+* Uzantı yalnızca bir kez betik çalıştırır, her önyüklemede bir betik çalıştırmak istiyorsanız, [Cloud-init görüntüsünü](../linux/using-cloud-init.md)  kullanabilir ve [önyükleme modülü başına betikleri](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) kullanabilirsiniz. Alternatif olarak, komut dosyasını bir systemd hizmet birimi oluşturmak için de kullanabilirsiniz.
 * Bir betiğin ne zaman çalışacağını zamanlamak isterseniz, bir cron işi oluşturmak için uzantısını kullanmanız gerekir.
 * Betik çalışırken Azure portalı veya CLI üzerinden uzantı durumunu yalnızca "geçiş durumunda" şeklinde görürsünüz. Çalışan bir betikte daha sık durum güncelleştirmeleri istiyorsanız kendi çözümünüzü oluşturmanız gerekir.
 * Özel Betik uzantısı, ara sunucuları yerel olarak desteklemez, ancak komut dosyanız içinde, *kıvrımlı*gibi proxy sunucularını destekleyen bir dosya aktarım aracı kullanabilirsiniz.
@@ -118,14 +118,14 @@ Bu öğeler gizli veriler olarak değerlendirilmeli ve uzantılar korumalı ayar
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Name | Değer/örnek | Veri Türü |
+| Adı | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | yayımcı | Microsoft. OSTCExtensions | string |
 | tür | CustomScriptForLinux | string |
 | typeHandlerVersion | 1,5 | int |
 | Dosya URI 'leri (ör.) | `https://github.com/MyProject/Archive/MyPythonScript.py` | array |
-| commandToExecute (ör.) | Python MyPythonScript.py\<my-param1\> | string |
+| commandToExecute (ör.) | Python MyPythonScript.py \<my-param1\> | string |
 | Enableınternaldnscheck | true | boolean |
 | storageAccountName (ör.) | örnek storageacct | string |
 | storageAccountKey (ör.) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | string |
@@ -295,7 +295,7 @@ Bazı noktalara işaret eder:
 
 1. Etkinleştirme, komutun çalışmaya başladığı zaman olur.
 1. İndirme, dosya URI 'lerinde belirtilen komut dosyalarını değil, Azure 'dan CustomScript uzantı paketinin indirileceği ile ilgilidir.
-1. Ayrıca, hangi günlük dosyasının yazıldığı hakkında bilgi alabilirsiniz.`/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log`
+1. Ayrıca, hangi günlük dosyasının yazıldığı hakkında bilgi alabilirsiniz. `/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log`
 
 Sonraki adım, günlük dosyasına göz atın ve şu biçimdedir:
 

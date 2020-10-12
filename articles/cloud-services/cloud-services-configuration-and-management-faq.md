@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
 ms.openlocfilehash: 477f38e18f1bee881e4a9df23dd37048f39549be
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87092754"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services için yapılandırma ve yönetim sorunları: sık sorulan sorular (SSS)
@@ -113,7 +113,7 @@ Bu görevi, bir başlangıç betiği (Batch/cmd/PowerShell) kullanarak otomatikl
 
 Bu sertifika, Azure Web rolleri üzerinde makine anahtarlarını şifrelemek için kullanılır. Daha fazla bilgi edinmek için [Bu danışma belgesine](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731)göz atın.
 
-Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+Daha fazla bilgi için aşağıdaki makalelere bakın:
 - [Bulut hizmeti için başlangıç görevlerini yapılandırma ve çalıştırma](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
 - [Ortak bulut hizmeti başlangıç görevleri](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common)
 
@@ -192,7 +192,7 @@ Microsoft, tehditleri algılamak için sunucuları, ağları ve uygulamaları s�
 Windows 10 ve Windows Server 2016 hem istemci hem de sunucu tarafında HTTP/2 desteğiyle birlikte gelir. İstemciniz (tarayıcı), TLS uzantıları aracılığıyla HTTP/2 ' yi görüşür ve TLS üzerinden IIS sunucusuna bağlanıyorsa, sunucu tarafında herhangi bir değişiklik yapmanız gerekmez. Bunun nedeni, TLS üzerinden HTTP/2 kullanımını belirten H2-14 üst bilgisi varsayılan olarak gönderilir. Diğer taraftan, istemciniz HTTP/2 ' ye yükseltmek için bir yükseltme üst bilgisi gönderiyorsa, yükseltmenin çalıştığından ve bir HTTP/2 bağlantısı ile sonlandırtığınızdan emin olmak için sunucu tarafında aşağıdaki değişikliği yapmanız gerekir. 
 
 1. regedit.exe çalıştırın.
-2. Kayıt defteri anahtarına göz atın: HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
+2. Kayıt defteri anahtarına gidin: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
 3. **Duoenabled**adlı yenı bir DWORD değeri oluşturun.
 4. Değerini 1 olarak ayarlayın.
 5. Sunucunuzu yeniden başlatın.

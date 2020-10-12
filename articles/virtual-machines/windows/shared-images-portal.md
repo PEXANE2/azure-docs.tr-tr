@@ -9,10 +9,10 @@ ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.openlocfilehash: e484cccb2dc15266fb7889c335a0acc981053e5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82792148"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>Portalı kullanarak Azure Paylaşılan görüntü galerisi oluşturma
@@ -48,7 +48,7 @@ Artık bir veya daha fazla yeni VM oluşturabilirsiniz. Bu örnek, *Doğu ABD* v
 1. **Kullanılabilirlik seçenekleri**için, varsayılan *altyapı yedekliliği gerekmez*' ı gerekli olarak bırakın.
 1. Görüntü **Image** `latest` tanımı için sayfadan başladıysanız görüntünün değeri otomatik olarak görüntü sürümü ile doldurulur.
 1. **Boyut**için kullanılabilir boyutlar LISTESINDEN bir VM boyutu seçin ve ardından **Seç**' i seçin.
-1. **Yönetici hesabı**altında, görüntü Genelleştirilmiş ise, *azureuser* ve parola gibi bir Kullanıcı adı sağlamanız gerekir. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](faq.md#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır. Görüntünüz özelleştirilise, kaynak VM 'nin Kullanıcı adı ve parolası kullanıldığı için Kullanıcı adı ve parola alanları gri kalır.
+1. **Yönetici hesabı**altında, görüntü Genelleştirilmiş ise, *azureuser* ve parola gibi bir Kullanıcı adı sağlamanız gerekir. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](faq.md#what-are-the-password-requirements-when-creating-a-vm)karşılamalıdır. Görüntünüz özelleştirilise, kaynak VM 'nin Kullanıcı adı ve parolası kullanıldığı için Kullanıcı adı ve parola alanları gri kalır.
 1. VM 'ye uzaktan erişime izin vermek istiyorsanız, **ortak gelen bağlantı noktaları**altında **Seçili bağlantı noktalarına izin ver** ' i seçin ve ardından açılır listeden **RDP (3389)** seçeneğini belirleyin. VM 'ye uzaktan erişime izin vermek istemiyorsanız, **Genel gelen bağlantı noktaları**için **hiçbirini** seçilmemiş bırakın.
 1. İşiniz bittiğinde sayfanın altındaki **gözden geçir + oluştur** düğmesini seçin.
 1. VM doğrulamayı geçtikten sonra, dağıtımı başlatmak için sayfanın alt kısmındaki **Oluştur** ' u seçin.

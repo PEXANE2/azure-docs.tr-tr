@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Azure Kubernetes hizmetlerinde Azure Dev Spaces çalıştırmaya yönelik ağ gereksinimlerini açıklar
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, CNı, kubenet, SDN, ağ
 ms.openlocfilehash: 0d9ebbec3e3c07a466acb58e88b67e6a32a20edb
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88214171"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Farklı ağ topolojilerinde Azure Dev Spaces için ağ yapılandırma
@@ -72,7 +72,7 @@ Azure Dev Spaces, AKS üzerinde çalışan hizmetlerinize yönelik uç noktalar�
 * *Özel* bir uç nokta, özel bir IP adresi olan bir giriş denetleyicisi dağıtır. Özel bir IP adresi ile, kümenizin yük dengeleyiciye yalnızca kümenin sanal ağı içinden erişilebilir. Yük dengeleyicinin özel IP adresi kümenin DNS 'sine kaydedilir, böylece kümenin sanal ağı içindeki hizmetlere bir URL kullanılarak erişilebilir. Kullanarak bu URL 'YI görebilirsiniz `azds list-uris` .
 * Uç nokta seçeneği için *hiçbiri* ayarı, giriş denetleyicisinin dağıtılmamasını sağlar. Giriş denetleyicisi dağıtılmadı, [Azure dev Spaces yönlendirme özellikleri][dev-spaces-routing] çalışmayacak. İsteğe bağlı olarak, [traefik][traefik-ingress] veya [NGINX][nginx-ingress]kullanarak kendi giriş denetleyicisi çözümünüzü uygulayabilir, bu da yönlendirme yeteneklerinin yeniden çalışmasına imkan sağlar.
 
-Uç nokta seçeneğinizi yapılandırmak için, kümenizde Azure Dev Spaces etkinleştirirken *-e* veya *--uç noktasını* kullanın. Örnek:
+Uç nokta seçeneğinizi yapılandırmak için, kümenizde Azure Dev Spaces etkinleştirirken *-e* veya *--uç noktasını* kullanın. Örneğin:
 
 > [!NOTE]
 > Uç nokta seçeneği için Azure CLı sürüm 2.2.0 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].

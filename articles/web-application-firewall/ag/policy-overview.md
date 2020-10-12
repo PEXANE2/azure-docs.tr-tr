@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 02/01/2020
 ms.author: victorh
 ms.openlocfilehash: 10a90a7f94633fac52086953697eb90a98d9509d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86143839"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Azure Web uygulaması güvenlik duvarı (WAF) ilkesine genel bakış
@@ -33,9 +33,9 @@ Tek bir ilkenin tüm sitelere uygulanmasını istiyorsanız, ilkeyi uygulama ağ
 
 ## <a name="per-site-waf-policy"></a>Site başına WAF ilkesi
 
-Site başına WAF ilkeleri ile, site başına ilkeleri kullanarak tek bir WAF 'nin arkasında farklı güvenlik gereksinimlerine sahip birden fazla siteyi koruyabilirsiniz. Örneğin, WAF 'nizin arkasındaki beş site varsa, dışlamaları, özel kuralları, yönetilen kural kümelerini ve her site için tüm diğer WAF ayarlarını özelleştirmek üzere beş ayrı WAF ilkesine (her dinleyici için bir tane) sahip olabilirsiniz.
+Site başına uygulanan WAF ilkeleri sayesinde site başına uygulanan ilkeleri kullanarak farklı güvenlik gereksinimlerine sahip olan siteleri tek bir WAF arkasında koruyabilirsiniz. Örneğin WAF örneğinizin arkasında beş site varsa her bir site için dışlamaları, özel kuralları, yönetilen kural kümelerini ve diğer tüm WAF ayarlarını özelleştirmek için beş ayrı WAF ilkesi (her dinleyici için bir tane) oluşturabilirsiniz.
 
-Application Gateway 'e uygulanan bir genel ilke olduğunu varsayalım. Daha sonra bu uygulama ağ geçidinde bir dinleyiciye farklı bir ilke uygularsınız. Dinleyicinin ilkesi artık yalnızca bu dinleyici için geçerli olur. Application Gateway 'in genel ilkesi, kendisine atanmış belirli bir ilke olmayan diğer tüm dinleyiciler ve yol tabanlı kurallara hala uygulanır.
+Uygulama ağ geçidinize genel ilke uyguladığınızı düşünelim. Sonrasında bu uygulama ağ geçidindeki bir dinleyiciye farklı bir ilke uygulayabilirsiniz. Dinleyiciye uyguladığınız ilke sadece o dinleyiciyi etkiler. Uygulama ağ geçidinin genel ilkesi, özel ilke atanmamış olan diğer tüm dinleyiciler ve yol tabanlı kurallar için geçerli olmaya devam eder.
 
 ## <a name="per-uri-policy"></a>URI başına ilke
 

@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 9e20b7a92d054a6664a00064fa7263b1150c3df9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91282587"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Azure Data Factory Pig etkinliğini kullanarak verileri dönüştürme
@@ -41,7 +41,7 @@ Bir [Data Factory işlem](data-factory-create-pipelines.md) hattındaki HDInsigh
 > [!NOTE] 
 > Azure Data Factory yeni kullanıyorsanız, [Azure Data Factory 'ye giriş](data-factory-introduction.md) ile okuyun ve öğreticiyi yapın: Bu makaleyi okumadan önce [ilk veri Işlem hattınızı oluşturun](data-factory-build-your-first-pipeline.md) . 
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Sözdizimi
 
 ```JSON
 {
@@ -84,15 +84,15 @@ Bir [Data Factory işlem](data-factory-create-pipelines.md) hattındaki HDInsigh
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| name |Etkinliğin adı |Yes |
-| açıklama |Etkinliğin ne için kullanıldığını açıklayan metin |No |
-| tür |HDinsightPig |Yes |
-| girişi |Pig etkinliği tarafından tüketilen bir veya daha fazla giriş |No |
-| çıkışı |Pig etkinliği tarafından üretilen bir veya daha fazla çıkış |Yes |
-| linkedServiceName |Data Factory bağlı hizmet olarak kaydedilen HDInsight kümesine başvuru |Yes |
-| betik |Pig betiğini satır içi olarak belirt |No |
-| scriptPath |Pig betiğini bir Azure Blob depolama alanına depolayın ve dosyanın yolunu sağlayın. ' Script ' veya ' scriptPath ' özelliğini kullanın. İkisi birlikte kullanılamaz. Dosya adı büyük/küçük harfe duyarlıdır. |No |
-| tanımlar |Pig betiği içinde başvurmak için parametreleri anahtar/değer çiftleri olarak belirtin |No |
+| name |Etkinliğin adı |Evet |
+| açıklama |Etkinliğin ne için kullanıldığını açıklayan metin |Hayır |
+| tür |HDinsightPig |Evet |
+| girişi |Pig etkinliği tarafından tüketilen bir veya daha fazla giriş |Hayır |
+| çıkışı |Pig etkinliği tarafından üretilen bir veya daha fazla çıkış |Evet |
+| linkedServiceName |Data Factory bağlı hizmet olarak kaydedilen HDInsight kümesine başvuru |Evet |
+| betik |Pig betiğini satır içi olarak belirt |Hayır |
+| scriptPath |Pig betiğini bir Azure Blob depolama alanına depolayın ve dosyanın yolunu sağlayın. ' Script ' veya ' scriptPath ' özelliğini kullanın. İkisi birlikte kullanılamaz. Dosya adı büyük/küçük harfe duyarlıdır. |Hayır |
+| tanımlar |Pig betiği içinde başvurmak için parametreleri anahtar/değer çiftleri olarak belirtin |Hayır |
 
 ## <a name="example"></a>Örnek
 Bir oyun günlüğü analizinin bir örneğini, şirketiniz tarafından başlatılan oyuncuların oynatılması için harcadığı süreyi belirlemek istediğiniz yere göz atalım.

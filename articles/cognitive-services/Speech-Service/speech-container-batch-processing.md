@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
 ms.openlocfilehash: 3cd6febfc774b214a8c1ae8553e6c127c4f452fa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319087"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>Konuşma kapsayıcıları için Batch işleme seti
@@ -118,7 +118,7 @@ Batch işleme seti, parametresini kullanarak üç mod sunar `--run-mode` .
 
 `ONESHOT` mod, tek bir ses dosyası toplu işi (bir giriş dizininden ve isteğe bağlı dosya listesinden) çıkış klasörüne dökümünü sağlar.
 
-:::image type="content" source="media/containers/batch-oneshot-mode.png" alt-text="Oneshot modundaki batch paketi kapsayıcısı işleme dosyalarını gösteren bir diyagram.":::
+:::image type="content" source="media/containers/batch-oneshot-mode.png" alt-text="Örnek Batch-Kit kapsayıcı iş akışını gösteren diyagram.":::
 
 1. Batch istemcisinin dosyada kullanacağı konuşma kapsayıcısı uç noktalarını tanımlayın `config.yaml` . 
 2. Giriş dizinine döküm için ses dosyalarını yerleştirin.  
@@ -133,7 +133,7 @@ Batch işleme seti, parametresini kullanarak üç mod sunar `--run-mode` .
 
 `DAEMON` mod, belirli bir klasöre var olan dosyaları yeniden bes ve yeni ses dosyalarını eklendikçe sürekli olarak yeniden ekledi.          
 
-:::image type="content" source="media/containers/batch-daemon-mode.png" alt-text="Daemon modundaki batch paketi kapsayıcısı işleme dosyalarını gösteren diyagram.":::
+:::image type="content" source="media/containers/batch-daemon-mode.png" alt-text="Örnek Batch-Kit kapsayıcı iş akışını gösteren diyagram.":::
 
 1. Batch istemcisinin dosyada kullanacağı konuşma kapsayıcısı uç noktalarını tanımlayın `config.yaml` . 
 2. Kapsayıcıyı bir giriş dizininde çağırın. Batch istemcisi, gelen dosyalar için dizini izlemeye başlayacaktır. 
@@ -146,7 +146,7 @@ Batch işleme seti, parametresini kullanarak üç mod sunar `--run-mode` .
 
 `REST` mod, ses dosyası toplu işlem gönderimi, durum denetimi ve uzun yoklama için temel bir HTTP uç noktası kümesi sağlayan bir API sunucu modudur. Ayrıca, bir Python modül uzantısı kullanılarak veya bir alt modül olarak içeri aktarırken programlı tüketim sunar.
 
-:::image type="content" source="media/containers/batch-rest-api-mode.png" alt-text="Daemon modundaki batch paketi kapsayıcısı işleme dosyalarını gösteren diyagram.":::
+:::image type="content" source="media/containers/batch-rest-api-mode.png" alt-text="Örnek Batch-Kit kapsayıcı iş akışını gösteren diyagram.":::
 
 1. Batch istemcisinin dosyada kullanacağı konuşma kapsayıcısı uç noktalarını tanımlayın `config.yaml` . 
 2. API sunucusunun uç noktalarından birine bir HTTP istek isteği gönderin. 

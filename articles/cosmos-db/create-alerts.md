@@ -9,10 +9,10 @@ ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 07/16/2020
 ms.openlocfilehash: 84c2ad3a24d944db6a55f3f21e8a2a0c4084d033
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87100564"
 ---
 # <a name="create-alerts-for-azure-cosmos-db-using-azure-monitor"></a>Azure Izleyici kullanarak Azure Cosmos DB uyarı oluşturma
@@ -83,7 +83,7 @@ Bu bölümde, istekler hız sınırlı olduğunda alınan 429 HTTP durum kodunu 
 
    * Eyleminiz için bir ad girin ve **eylem türü**olarak **e-posta/SMS iletisi/gönderim/ses** ' i seçin. Aşağıdaki ekran görüntüsünde eylem türünün ayrıntıları gösterilmektedir:
 
-     :::image type="content" source="./media/create-alerts/configure-alert-action-type.png" alt-text="Uyarı almak için e-posta bildirimi gibi eylem türünü yapılandırın":::
+     :::image type="content" source="./media/create-alerts/configure-alert-action-type.png" alt-text="Fiyat sınırlı/429 istekleri için uyarı almak üzere mantığı yapılandırma":::
 
 1. **Uyarı kuralı ayrıntıları** bölümünü doldurun:
 

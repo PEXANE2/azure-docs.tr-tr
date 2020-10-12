@@ -4,10 +4,10 @@ description: Azure Event Hubs Azure özel bağlantı hizmeti ile tümleştirmeyi
 ms.date: 08/22/2020
 ms.topic: article
 ms.openlocfilehash: 59167635cfc0d8c1123a47410c87d6b9151f6f62
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334251"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>Özel uç noktalar aracılığıyla Azure Event Hubs ad alanlarına erişime izin ver 
@@ -33,7 +33,7 @@ Daha fazla bilgi için bkz. [Azure özel bağlantısı nedir?](../private-link/p
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Azure portal kullanarak özel uç nokta ekleme
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Bir Event Hubs ad alanını Azure özel bağlantısıyla bütünleştirmek için aşağıdaki varlıklara veya izinlere ihtiyacınız olacaktır:
 
@@ -49,7 +49,7 @@ Bir Event Hubs ad alanını Azure özel bağlantısıyla bütünleştirmek için
 ### <a name="steps"></a>Adımlar
 Zaten bir Event Hubs ad alanınız varsa, aşağıdaki adımları izleyerek bir özel bağlantı bağlantısı oluşturabilirsiniz:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 2. Arama çubuğuna **Olay Hub 'ları**yazın.
 3. Listeden özel uç nokta eklemek istediğiniz **ad alanını** seçin.
 4. Sol menüdeki **Ayarlar** altında **ağ** ' ı seçin.
@@ -64,7 +64,7 @@ Zaten bir Event Hubs ad alanınız varsa, aşağıdaki adımları izleyerek bir 
 1. Sayfanın üst kısmındaki **Özel uç nokta bağlantıları** sekmesini seçin. 
 1. Sayfanın üst kısmındaki **+ Özel uç nokta** düğmesini seçin.
 
-    :::image type="content" source="./media/private-link-service/private-link-service-3.png" alt-text="Ağ sayfası-özel uç nokta bağlantıları sekmesi-özel uç nokta bağlantısı ekle":::
+    :::image type="content" source="./media/private-link-service/private-link-service-3.png" alt-text="Ağlar sekmesi-seçili ağlar seçeneği":::
 7. **Temel bilgiler** sayfasında, aşağıdaki adımları izleyin: 
     1. Özel uç noktasını oluşturmak istediğiniz **Azure aboneliğini** seçin. 
     2. Özel uç nokta kaynağı için **kaynak grubunu** seçin.
@@ -201,9 +201,9 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 Dört sağlama durumu vardır:
 
-| Hizmet eylemi | Hizmet tüketicisi özel uç nokta durumu | Description |
+| Hizmet eylemi | Hizmet tüketicisi özel uç nokta durumu | Açıklama |
 |--|--|--|
-| Yok | Beklemede | Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibinden onay bekliyor. |
+| Hiçbiri | Beklemede | Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibinden onay bekliyor. |
 | Onaylama | Onaylandı | Bağlantı otomatik olarak veya el ile onaylandı ve kullanılabilir hale gelmiştir. |
 | Reddet | Reddedildi | Bağlantı, özel bağlantı kaynağı sahibi tarafından reddedildi. |
 | Kaldır | Bağlantı kesildi | Bağlantı, özel bağlantı kaynağı sahibi tarafından kaldırıldı, Özel uç nokta bilgilendirici hale gelir ve temizlik için silinmelidir. |

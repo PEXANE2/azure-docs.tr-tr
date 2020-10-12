@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 09/10/2019
 ms.author: sngun
 ms.openlocfilehash: 7257246f618e3028534f3ebd60eaf6f94a3a4720
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87092516"
 ---
 # <a name="azure-cosmos-db-gremlin-compatibility"></a>Azure Cosmos DB Gremlin uyumluluğu
@@ -33,7 +33,7 @@ Azure Cosmos DB Graph Engine, [Apache TinkerPop](https://tinkerpop.apache.org/do
 
 * ***Dizi özelliklerine*** `order().by(<array property>)` göre sıralama desteklenmez. Yalnızca temel türlere göre sıralama desteklenir.
 
-* ***Ilkel olmayan JSON türleri*** desteklenmez. `string`, `number` Veya türlerini kullanın `true` / `false` . `null`değerler desteklenmez. 
+* ***Ilkel olmayan JSON türleri*** desteklenmez. `string`, `number` Veya türlerini kullanın `true` / `false` . `null` değerler desteklenmez. 
 
 * ***GraphSONv3*** seri hale getirici Şu anda desteklenmiyor. `GraphSONv2`Bağlantı yapılandırmasındaki serileştirici, okuyucu ve yazıcı sınıflarını kullanın. Azure Cosmos DB Gremlin API tarafından döndürülen sonuçlar GraphSON biçimiyle aynı biçimde değil. 
 

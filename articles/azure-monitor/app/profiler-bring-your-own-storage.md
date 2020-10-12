@@ -7,10 +7,10 @@ ms.author: regutier
 ms.date: 04/14/2020
 ms.reviewer: mbullwin
 ms.openlocfilehash: 719f0cfa0a1f80568acf3231ce3ffab441e5f6b7
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87117393"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>Application Insights Profiler ve Snapshot Debugger için kendi depolama alanınızı getir (BYOS) yapılandırma
@@ -23,7 +23,7 @@ Kendi depolama alanınızı getir ile, bu yapılar denetlediğiniz bir depolama 
 > [!NOTE]
 > Özel bağlantıyı etkinleştirirseniz, kendi depolama alanınızı getirin. Application Insights özel bağlantısı hakkında daha fazla bilgi için [belgelerine bakın.](../platform/private-link-security.md)
 >
-> Müşteri tarafından yönetilen anahtarları etkinleştirirseniz, kendi depolama alanınızı getirin. Application Insights için müşteri tarafından yönetilen anahtarlar hakkında daha fazla bilgi için [belgelerine bakın.](../platform/customer-managed-keys.md)
+> Customer-Managed anahtarlarını etkinleştirirseniz kendi depolama alanınızı getirin. Application Insights Customer-Managed anahtarları hakkında daha fazla bilgi için [belgelerine bakın.](../platform/customer-managed-keys.md)
 
 ## <a name="how-will-my-storage-account-be-accessed"></a>Depolama hesabımın erişim sıklığı nedir?
 1. Sanal makinelerinizde veya App Service çalışan aracılar, hesabınızdaki blob kapsayıcılarına yapıtları (profiller, anlık görüntüler ve semboller) karşıya yükleyecek. Bu işlem, depolama hesabınızda yeni bir blob 'a SAS (paylaşılan erişim Imzası) belirteci almak için Application Insights Profiler veya Snapshot Debugger hizmetine başvurmayı içerir.
@@ -231,7 +231,7 @@ KCG 'yi kod düzeyi tanılama (Profiler/Debugger) için yapılandırmak için ü
 
 ## <a name="troubleshooting"></a>Sorun giderme
 ### <a name="template-schema-schema_uri-isnt-supported"></a>' {Schema_uri} ' şablon şeması desteklenmiyor.
-* `$schema`Şablonun özelliğinin geçerli olduğundan emin olun. Aşağıdaki düzene uymalıdır:`https://schema.management.azure.com/schemas/{schema_version}/deploymentTemplate.json#`
+* `$schema`Şablonun özelliğinin geçerli olduğundan emin olun. Aşağıdaki düzene uymalıdır: `https://schema.management.azure.com/schemas/{schema_version}/deploymentTemplate.json#`
 * `schema_version`Şablonun geçerli değerler içinde olduğundan emin olun: `2014-04-01-preview, 2015-01-01, 2018-05-01, 2019-04-01, 2019-08-01` .
     Hata iletisi:
     ```powershell
@@ -280,13 +280,13 @@ Genel Snapshot Debugger sorun giderme için [Snapshot Debugger sorun giderme bel
 * Profil Oluşturucu veya anlık görüntü etkinse ve sonra BYOS 'yi etkinleştirdiğimde, verilerim depolama Hesabma geçirilecektir mi?
     _Hayır, bu değil._
 
-* BCG, bekleyen ve müşteri tarafından yönetilen anahtarlarla birlikte çalışır mı?
-    _Evet, doğru olması için, BYOS, profil oluşturucu/hata ayıklayıcı 'nın müşteri-yönetici anahtarlarıyla etkinleştirilmesini sağlar._
+* KCG, REST ve Customer-Managed anahtarındaki şifrelemeyle birlikte çalışır mı?
+    _Evet, kesin olması için, BYOS, Customer-Manager anahtarlarla profil oluşturucu/hata ayıklayıcı 'nın etkinleştirilmesi için bir önkoşuldur._
 
 * KCG, Internet 'ten yalıtılmış bir ortamda çalışır mı?
     _Yes. Aslında, BYOS yalıtılmış ağ senaryoları için bir gereksinimdir._
 
-* , Müşteri tarafından yönetilen anahtarlar ve özel bağlantı etkinleştirildiğinde BYOS işleri çalışır mı? 
+* Her ikisi de Customer-Managed anahtarlar ve özel bağlantı etkinleştirildiğinde BYOS işleri çalışır mı? 
     _Evet, mümkün olabilir._
 
 * KCG 'yi etkinleştirdiğimde, veri toplandığım verileri depolamak için tanılama hizmetleri depolama hesaplarını kullanarak geri dönebilir miyim? 

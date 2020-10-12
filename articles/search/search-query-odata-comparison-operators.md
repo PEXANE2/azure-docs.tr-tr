@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: fc5803f96c30ea1df362676aa8c4104bb0b69db3
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934880"
 ---
 # <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>Azure bilişsel arama- `eq` , `ne` ,, `gt` `lt` , `ge` ve içinde OData karşılaştırma işleçleri `le`
@@ -47,9 +47,9 @@ Bir alanın belirli bir değer aralığı içinde olup olmadığını test etmek
 > [!NOTE]
 > İsterseniz, sabit değeri işlecin sol tarafına ve alan adını sağ tarafta koyabilirsiniz. Aralık işleçleri için karşılaştırma anlamı tersine çevrilir. Örneğin, sabit değer Solsa, `gt` sabit değerinin alandan büyük olup olmadığını test edecektir. Karşılaştırma işleçlerini, gibi bir işlevin sonucunu karşılaştırmak için de kullanabilirsiniz `geo.distance` . Gibi Boole işlevleri için `search.ismatch` , sonucu veya ile karşılaştırma `true` `false` isteğe bağlıdır.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Sözdizimi
 
-Aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)), karşılaştırma işleçlerini kullanan bir OData ifadesinin dilbilgisini tanımlar.
+Aşağıdaki EBNF ([genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) karşılaştırma işleçleri kullanan bir OData ifadesinin dilbilgisini tanımlar.
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -100,7 +100,7 @@ Türündeki bir alanı ile karşılaştırma gibi izin verilmeyen karşılaştı
 
 Karşılaştırma işleçlerini kullanırken, Azure Bilişsel Arama tüm koleksiyon olmayan alanların potansiyel olarak olabileceğini unutmamak önemlidir `null` . Aşağıdaki tabloda her iki tarafın de bir karşılaştırma ifadesi için olası tüm sonuçlar gösterilmektedir `null` :
 
-| Operatör | Yalnızca alan veya değişken olduğunda sonuç `null` | Yalnızca sabit değer olduğunda sonuç `null` | Hem alan hem de değişken ve sabit olduğunda sonuç `null` |
+| İşleç | Yalnızca alan veya değişken olduğunda sonuç `null` | Yalnızca sabit değer olduğunda sonuç `null` | Hem alan hem de değişken ve sabit olduğunda sonuç `null` |
 | --- | --- | --- | --- |
 | `gt` | `false` | HTTP 400: Hatalı Istek hatası | HTTP 400: Hatalı Istek hatası |
 | `lt` | `false` | HTTP 400: Hatalı Istek hatası | HTTP 400: Hatalı Istek hatası |
@@ -113,7 +113,7 @@ Karşılaştırma işleçlerini kullanırken, Azure Bilişsel Arama tüm koleksi
 
 Dizininizdeki tür alanları varsa `Edm.Double` ve `NaN` Bu alanlara değerleri yüklerseniz, filtre yazarken bu hesaba hesap eklemeniz gerekir. Azure Bilişsel Arama, değerleri işlemek için IEEE 754 standardını uygular `NaN` ve bu tür değerlerle karşılaştırmalar, aşağıdaki tabloda gösterildiği gibi belirgin olmayan sonuçlar üretir.
 
-| Operatör | En az bir işlenen olduğunda sonuç `NaN` |
+| İşleç | En az bir işlenen olduğunda sonuç `NaN` |
 | --- | --- |
 | `gt` | `false` |
 | `lt` | `false` |

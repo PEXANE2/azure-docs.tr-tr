@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/27/2020
 ms.author: azfuncdf
 ms.openlocfilehash: 01c400f51cce85ef39e9d39bcad1221253c6942d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89071219"
 ---
 # <a name="disaster-recovery-and-geo-distribution-in-azure-durable-functions"></a>Azure Dayanıklı İşlevler olağanüstü durum kurtarma ve coğrafi dağıtım
@@ -20,10 +20,10 @@ Dayanıklı İşlevler, tüm durum Azure Storage 'da varsayılan olarak kalıcı
 
 Düzenlemeler ve varlıklar, kendileri HTTP aracılığıyla veya desteklenen diğer Azure Işlevleri tetikleyici türlerinden biri ile tetiklenen [istemci işlevleri](durable-functions-types-features-overview.md#client-functions) kullanılarak tetiklenebilir. Bunlar, [YERLEŞIK HTTP API 'leri](durable-functions-http-features.md#built-in-http-apis)kullanılarak da tetiklenebilir. Kolaylık olması için bu makale, Azure depolama ve HTTP tabanlı işlev Tetikleyicileri ve kullanılabilirliği artırma ve olağanüstü durum kurtarma etkinlikleri sırasında kapalı kalma süresini en aza indirme seçeneklerini kapsayan senaryolara odaklanacaktır. Service Bus veya Cosmos DB Tetikleyicileri gibi diğer tetikleyici türleri açıkça kapsanmaz.
 
-Aşağıdaki senaryolar, Azure Storage kullanımı tarafından sunulduğundan, etkin-Pasif yapılandırmalara dayalıdır. Bu model, farklı bir bölgeye yedek (pasif) işlev uygulaması dağıtmaktan oluşur. Traffic Manager, HTTP kullanılabilirliği için birincil (etkin) işlev uygulamasını izler. Birincil işlem başarısız olursa yedekleme işlevi uygulamasına yük devreder. Daha fazla bilgi için bkz. [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) [Öncelik trafiği-yönlendirme yöntemi.](../../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method)
+Aşağıdaki senaryolar, Azure Storage kullanımı tarafından sunulduğundan, Active-Passive yapılandırmalarına dayalıdır. Bu model, farklı bir bölgeye yedek (pasif) işlev uygulaması dağıtmaktan oluşur. Traffic Manager, HTTP kullanılabilirliği için birincil (etkin) işlev uygulamasını izler. Birincil işlem başarısız olursa yedekleme işlevi uygulamasına yük devreder. Daha fazla bilgi için bkz. [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) [Öncelik Traffic-Routing yöntemi.](../../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method)
 
 > [!NOTE]
-> - Önerilen etkin-Pasif yapılandırma, bir istemcinin HTTP aracılığıyla her zaman yeni düzenlemeleri tetikleyebilmesini sağlar. Ancak, iki işlevli uygulamanın depolama alanında aynı görev merkezini paylaştığı bir sonucu olarak, bazı arka plan depolama işlemleri aralarında her ikisi arasında dağıtılır. Bu nedenle bu yapılandırma, ikincil işlev uygulaması için bazı ek çıkış maliyetleri doğurur.
+> - Önerilen Active-Passive yapılandırması, bir istemcinin HTTP aracılığıyla her zaman yeni düzenlemeleri tetikleyebilmesini sağlar. Ancak, iki işlevli uygulamanın depolama alanında aynı görev merkezini paylaştığı bir sonucu olarak, bazı arka plan depolama işlemleri aralarında her ikisi arasında dağıtılır. Bu nedenle bu yapılandırma, ikincil işlev uygulaması için bazı ek çıkış maliyetleri doğurur.
 > - Temel alınan depolama hesabı ve görev hub 'ı birincil bölgede oluşturulur ve her iki işlev uygulaması tarafından paylaşılır.
 > - Redundantly dağıtılan tüm işlev uygulamaları, HTTP aracılığıyla etkinleştirilme durumunda aynı işlev erişim anahtarlarını paylaşmalıdır. Işlevler çalışma zamanı, tüketicilerin program aracılığıyla işlev anahtarlarını eklemesini, silmesini ve güncelleştirmesini sağlayan bir [Yönetim API 'si](https://github.com/Azure/azure-functions-host/wiki/Key-management-API) sunar. Anahtar yönetimi, [Azure Resource Manager API 'leri](https://www.markheath.net/post/managing-azure-functions-keys-2)kullanılarak da mümkündür.
 

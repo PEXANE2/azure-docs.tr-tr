@@ -8,13 +8,13 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: de25a3f9df04b09a7337dc889a688a171d98db28
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86129904"
 ---
-# <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>PowerShell ile Azure 'da VMware VM 'lerinin olağanüstü durum kurtarması ayarlama
+# <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>PowerShell ile VMware VM'lerinin Azure'a olağanüstü durum kurtarmayı ayarlama
 
 Bu makalede, Azure PowerShell kullanarak VMware sanal makinelerini Azure 'a nasıl çoğaltacağınızı ve yük devredecağınızı görürsünüz.
 
@@ -37,7 +37,7 @@ Başlamadan önce:
 
 - [Senaryo mimarisini ve bileşenlerini ](vmware-azure-architecture.md) anladığınızdan emin olun.
 - Tüm bileşenler için [destek gereksinimlerini](./vmware-physical-azure-support-matrix.md) gözden geçirin.
-- Azure PowerShell `Az` modüle sahipsiniz. Azure PowerShell yüklemeniz veya yükseltmeniz gerekiyorsa, [Azure PowerShell yüklemek ve yapılandırmak için bu kılavuzu](/powershell/azure/install-az-ps)izleyin.
+- Azure PowerShell `Az`  modüle sahipsiniz. Azure PowerShell yüklemeniz veya yükseltmeniz gerekiyorsa, [Azure PowerShell yüklemek ve yapılandırmak için bu kılavuzu](/powershell/azure/install-az-ps)izleyin.
 
 ## <a name="log-into-azure"></a>Azure'da oturum açın
 
@@ -46,7 +46,7 @@ Connect-AzAccount cmdlet 'ini kullanarak Azure aboneliğinizde oturum açın:
 ```azurepowershell
 Connect-AzAccount
 ```
-VMware sanal makinelerinizi çoğaltmak istediğiniz Azure aboneliğini seçin. Erişiminiz olan Azure aboneliklerinin listesini almak için Get-AzSubscription cmdlet 'ini kullanın. Select-AzSubscription cmdlet 'ini kullanarak çalışmak için Azure aboneliğini seçin.
+VMware sanal makinelerinizi çoğaltmak istediğiniz Azure aboneliğini seçin. Erişiminiz olan Azure aboneliklerinin listesini almak için Get-AzSubscription cmdlet 'ini kullanın. Select-AzSubscription cmdlet 'ini kullanarak birlikte çalışmak için Azure aboneliğini seçin.
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionName "ASR Test Subscription"
@@ -118,7 +118,7 @@ Aşağıdaki örnekte, $vault değişkeninden gelen kasa ayrıntıları, PowerSh
    VMwareDRToAzurePs VMwareDRToAzurePs Microsoft.RecoveryServices vaults
    ```
 
-Set-ASRVaultContext cmdlet 'ine alternatif olarak, bir diğeri de kasa bağlamını ayarlamak için Import-AzRecoveryServicesAsrVaultSettingsFile cmdlet 'ini kullanabilir. Içeri aktarma-AzRecoveryServicesAsrVaultSettingsFile cmdlet 'inin-path parametresi olarak kasa kayıt anahtarı dosyasının bulunduğu yolu belirtin. Örneğin:
+Set-ASRVaultContext cmdlet 'ine alternatif olarak, bir diğeri de kasa bağlamını ayarlamak için Import-AzRecoveryServicesAsrVaultSettingsFile cmdlet 'ini kullanabilir. Import-AzRecoveryServicesAsrVaultSettingsFile cmdlet 'inin-path parametresi olarak kasa kayıt anahtarı dosyasının bulunduğu yolu belirtin. Örneğin:
 
    ```azurepowershell
    Get-AzRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"
@@ -353,9 +353,9 @@ Bulunan bir sanal makineyi korumak için aşağıdaki ayrıntılara ihtiyacını
 
 |Sanal makine  |İşlem sunucusu        |Depolama Hesabı              |Günlük depolama hesabı  |İlke           |Mobility hizmeti yüklemesi için hesap|Hedef kaynak grubu  | Hedef sanal ağ  |Hedef alt ağ  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
-|CentOSVM1       |ConfigurationServer   |YOK| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-VNET                 |Alt ağ-1       |
-|Win2K12VM1       |Genişleme-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR-VNET                 |Alt ağ-1       |   
-|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| YOK                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-VNET                 |Alt ağ-1       |   
+|CentOSVM1       |ConfigurationServer   |Yok| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-VNET                 |Alt ağ-1       |
+|Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR-VNET                 |Alt ağ-1       |   
+|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| Yok                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-VNET                 |Alt ağ-1       |   
 
 
 ```azurepowershell
@@ -396,7 +396,7 @@ $Job_EnableReplication3 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMw
 
 Çoğaltma işini etkinleştirme işlemi başarıyla tamamlandıktan sonra, sanal makineler için ilk çoğaltma başlatılır. İlk çoğaltma, çoğaltılacak veri miktarına ve çoğaltma için kullanılabilir bant genişliğine bağlı olarak biraz zaman alabilir. İlk çoğaltma tamamlandıktan sonra, sanal makine korumalı duruma gider. Sanal makine korunan bir duruma ulaştığında, sanal makine için yük devretme testi gerçekleştirebilir, bunu kurtarma planlarına ekleyebilirsiniz.
 
-Get-Asrreplicationkorunabilir Dıdıtem cmdlet 'ini kullanarak sanal makinenin çoğaltma durumunu ve çoğaltma durumunu kontrol edebilirsiniz.
+Get-ASRReplicationProtectedItem cmdlet 'ini kullanarak sanal makinenin çoğaltma durumunu ve çoğaltma durumunu kontrol edebilirsiniz.
 
 ```azurepowershell
 Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $ProtectionContainer | Select FriendlyName, ProtectionState, ReplicationHealth
@@ -411,7 +411,7 @@ Win2K12VM1   Protected                       Normal
 
 ## <a name="configure-failover-settings"></a>Yük devretme ayarlarını yapılandırma
 
-Korumalı makineler için yük devretme ayarları, set-Asrreplicationkorunabilir Dıdıtem cmdlet 'i kullanılarak güncelleştirilemeyebilir. Bu cmdlet aracılığıyla güncelleştirilebilen ayarlardan bazıları şunlardır:
+Korunan makineler için yük devretme ayarları Set-ASRReplicationProtectedItem cmdlet 'i kullanılarak güncelleştirilebilen olabilir. Bu cmdlet aracılığıyla güncelleştirilebilen ayarlardan bazıları şunlardır:
 * Yük devretmede oluşturulacak sanal makinenin adı
 * Yük devretmede oluşturulacak sanal makinenin VM boyutu
 * Sanal makinenin NIC 'lerinin yük devretmeyle bağlantılı olması gereken Azure sanal ağı ve alt ağı

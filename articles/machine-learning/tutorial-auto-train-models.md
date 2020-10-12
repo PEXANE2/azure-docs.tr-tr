@@ -12,10 +12,10 @@ ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: cf6616dcc3935946ad4a7213263bb20281d25354
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90896791"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Öğretici: taksi Fares 'yi tahmin etmek için otomatik makine öğrenimi kullanma
@@ -136,13 +136,13 @@ green_taxi_df.describe()
 |Konağında VendorID|passengerCount|Üçlü mesafe|Pickupboylam|Pickupenlem|Açılan Boylam|Açılan Enlem|  totalAmount|month_num day_of_month|day_of_week|hour_of_day
 |----|----|---|---|----|---|---|---|---|---|---|---
 |count|48000,00|48000,00|48000,00|48000,00|48000,00|48000,00|48000,00|48000,00|48000,00|48000,00|48000,00|48000,00
-|mean|1,78|1.37|2.87|-73,83|40,69|-73,84|40,70|14,75|6,50|15,13|3,27|13,52
-|std|0,41|1.04|2,93|2,76|1,52|2,61|1,44|12,08|3,45|8,45|1,95|6,83
+|ortalama|1,78|1.37|2.87|-73,83|40,69|-73,84|40,70|14,75|6,50|15,13|3,27|13,52
+|std|0,41|1,04|2,93|2,76|1,52|2,61|1,44|12,08|3,45|8,45|1,95|6,83
 |dk|1,00|0.00|0.00|-74,66|0.00|-74,66|0.00|-300,00|1,00|1,00|0.00|0.00
-|25%|2.00|1,00|1.06|-73,96|40,70|-73,97|40,70|7.80|3,75|8,00|2.00|9,00
-|50%|2.00|1,00|1,90|-73,94|40,75|-73,94|40,75|11,30|6,50|15,00|3,00|15,00
-|75%|2.00|1,00|3,60|-73,92|40,80|-73,91|40,79|17,80|9,25|22,00|5.00|19,00
-|max|2.00|9,00|97,57|0.00|41,93|0.00|41,94|450,00|12,00|30,00|6,00|23,00
+|25%|2,00|1,00|1.06|-73,96|40,70|-73,97|40,70|7.80|3,75|8,00|2,00|9,00
+|50%|2,00|1,00|1,90|-73,94|40,75|-73,94|40,75|11,30|6,50|15,00|3,00|15,00
+|75%|2,00|1,00|3,60|-73,92|40,80|-73,91|40,79|17,80|9,25|22,00|5.00|19,00
+|max|2,00|9,00|97,57|0.00|41,93|0.00|41,94|450,00|12,00|30,00|6,00|23,00
 
 
 Özet istatistiklerinde, mantıksal veya daha fazla alan içeren birkaç alanın, model doğruluğunu azaltacak şekilde olduğunu görürsünüz. İlk olarak, Manhattan alanının sınırları dahilinde olacak şekilde Enlem/Long alanlarını filtreleyin. Bu, diğer özelliklerle ilişkisine göre, daha uzun bir süre içinde daha fazla vergilenme veya gezilerin filtreleneceği.

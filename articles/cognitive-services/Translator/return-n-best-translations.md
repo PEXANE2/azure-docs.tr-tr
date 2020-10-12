@@ -12,10 +12,10 @@ ms.date: 12/14/2017
 ms.author: swmachan
 ROBOTS: NOINDEX
 ms.openlocfilehash: 1fe370070aa97befb418d27def32725bf0a148b3
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83592687"
 ---
 # <a name="how-to-return-n-best-translations"></a>N-En Iyi çevirileri döndürme
@@ -28,7 +28,7 @@ Yöntemi, çevirmen altyapısının N En Iyi listesinden Delta 'un sağlandığ�
 
 İmza:
 
-**Söz dizimi**
+**Sözdizimi**
 
 | C# |
 |:---|
@@ -41,7 +41,7 @@ Yöntemi, çevirmen altyapısının N En Iyi listesinden Delta 'un sağlandığ�
 | appId | **Gerekli** Yetkilendirme üst bilgisi kullanılırsa, AppID alanını boş bırakın başka bir "taşıyıcı" + "" + erişim belirteci içeren bir dize belirtin.|
 | metin | **Gerekli** Çevrilecek metni temsil eden bir dize. Metnin boyutu 10000 karakteri aşmamalıdır.|
 | Kaynak | **Gerekli** Çevrilecek metnin dil kodunu temsil eden bir dize. |
-| - | **Gerekli** Metnin çevrilmesi için dil kodunu temsil eden bir dize. |
+| şöyle değiştirin: | **Gerekli** Metnin çevrilmesi için dil kodunu temsil eden bir dize. |
 | Maxçeviriler | **Gerekli** Döndürülecek en fazla çeviri sayısını temsil eden bir int. |
 | seçenekler | **Isteğe bağlı** Aşağıda listelenen değerleri içeren bir TranslateOptions nesnesi. Bunların tümü isteğe bağlıdır ve varsayılan olarak en yaygın ayarlara ayarlanır.
 

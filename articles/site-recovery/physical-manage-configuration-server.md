@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: ff612b7c052ead5658ea4bbfafd7aace51ba3c02
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86132492"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Fiziksel sunucu olağanüstü durum kurtarma için yapılandırma sunucusunu yönetme
@@ -39,7 +39,7 @@ Tablo, şirket içi yapılandırma sunucusu makinesini dağıtmaya yönelik önk
 | IIS | -Önceden var olan varsayılan Web sitesi yok <br> - [Anonim kimlik doğrulamasını](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) etkinleştir <br> - [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10)) ayarını etkinleştir  <br> -Var olan bir Web sitesi/uygulama dinleme 443 bağlantı noktasında dinleniyor<br>|
 | NIC türü | VMXNET3 (bir VMware sanal makinesi olarak dağıtıldığında) |
 | IP adresi türü | Statik |
-| İnternet erişimi | Sunucunun bu URL 'Lere erişmesi gerekir: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - `https://management.azure.com` <br> -*. services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi(genişleme Işlem sunucuları için gerekli değildir) <br> - time.nist.gov <br> - time.windows.com |
+| İnternet erişimi | Sunucunun bu URL 'Lere erişmesi gerekir: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - `https://management.azure.com` <br> -*. services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (genişleme Işlem sunucuları için gerekli değildir) <br> - time.nist.gov <br> - time.windows.com |
 | Bağlantı noktaları | 443 (Denetim kanalı düzenleme)<br>9443 (Veri aktarımı)|
 
 ## <a name="download-the-latest-installation-file"></a>En son yükleme dosyasını indirin
@@ -108,7 +108,7 @@ Yükleme dosyasını aşağıdaki gibi çalıştırın:
 
 ### <a name="parameters"></a>Parametreler
 
-|Parametre Adı| Tür | Description| Değerler|
+|Parametre Adı| Tür | Açıklama| Değerler|
 |-|-|-|-|
 | /ServerMode|Gerekli|Hem yapılandırma hem de işlem sunucusunun mu yoksa yalnızca işlem sunucusunun mu yükleneceğini belirtir|CS<br>PS|
 |/InstallLocation|Gerekli|Bileşenlerin yüklendiği klasör| Bilgisayardaki herhangi bir klasör|
@@ -288,7 +288,7 @@ Sunucuyu aşağıdaki gibi yükseltin:
     `Remove-AzSiteRecoveryFabric -Fabric $Fabric [-Force]`
 
 > [!NOTE]
-> Remove-AzSiteRecoveryFabric ' daki **-zorlama** seçeneği, yapılandırma sunucusunu kaldırmayı/silmeyi zorlamak için kullanılabilir.
+> Remove-AzSiteRecoveryFabric **-zorlama** seçeneği, yapılandırma sunucusunu kaldırma/silme işlemini zorlamak için kullanılabilir.
 
 ## <a name="renew-tlsssl-certificates"></a>TLS/SSL sertifikalarını yenileme
 Yapılandırma sunucusunda, Mobility hizmetinin, işlem sunucularının ve buna bağlı ana hedef sunucuların etkinliklerini düzenleyen bir yerleşik Web sunucusu vardır. Web sunucusu, istemcilerin kimliğini doğrulamak için bir TLS/SSL sertifikası kullanır. Sertifikanın süresi üç yıl sonra dolar ve herhangi bir zamanda yenilenebilir.
