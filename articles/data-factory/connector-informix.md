@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: jingwang
 ms.openlocfilehash: 93f484bd30de1ba0ca0f7aa5db263243bebc5b09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85508818"
 ---
 # <a name="copy-data-from-and-to-ibm-informix-using-azure-data-factory"></a>Azure Data Factory kullanarak ve IBM Informix arasında veri kopyalama
@@ -32,7 +32,7 @@ Bu Informix Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
 Informix kaynağından verileri desteklenen herhangi bir havuz veri deposuna kopyalayabilir veya desteklenen herhangi bir kaynak veri deposundan Informix havuzuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu Informix bağlayıcısını kullanmak için şunları yapmanız gerekir:
 

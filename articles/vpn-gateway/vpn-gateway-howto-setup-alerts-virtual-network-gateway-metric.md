@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
 ms.openlocfilehash: 05fbc5675d6ee3b6720d9db9e07e7010cf1d9172
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89435667"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>VPN Gateway ölçümlerinde uyarıları ayarlama
@@ -23,14 +23,14 @@ Bu makale, Azure VPN Gateway ölçümlerinde uyarı ayarlamanıza yardımcı olu
 |---       | ---        | ---       | ---            | ---       |
 |**AverageBandwidth**| Bayt/sn  | 5 dakika| Ağ geçidinde tüm siteden siteye bağlantıların ortalama Birleşik bant genişliği kullanımı.     |
 |**P2SBandwidth**| Bayt/sn  | 1 dakika  | Ağ geçidinde tüm Noktadan siteye bağlantıların ortalama Birleşik bant genişliği kullanımı.    |
-|**P2SConnectionCount**| Count  | 1 dakika  | Ağ geçidinde Noktadan siteye bağlantı sayısı.   |
+|**P2SConnectionCount**| Sayı  | 1 dakika  | Ağ geçidinde Noktadan siteye bağlantı sayısı.   |
 |**TunnelAverageBandwidth** | Bayt/sn    | 5 dakika  | Ağ geçidinde oluşturulan tünellerin ortalama bant genişliği kullanımı. |
 |**TunnelEgressBytes** | Bayt | 5 dakika | Ağ geçidinde oluşturulan tünellerde giden trafik.   |
-|**TunnelEgressPackets** | Count | 5 dakika | Ağ geçidinde oluşturulan Tünellerdeki giden paket sayısı.   |
-|**TunnelEgressPacketDropTSMismatch** | Count | 5 dakika | Trafik seçici uyumsuzluğu nedeniyle oluşan tünellerde bırakılan giden paket sayısı. |
+|**TunnelEgressPackets** | Sayı | 5 dakika | Ağ geçidinde oluşturulan Tünellerdeki giden paket sayısı.   |
+|**TunnelEgressPacketDropTSMismatch** | Sayı | 5 dakika | Trafik seçici uyumsuzluğu nedeniyle oluşan tünellerde bırakılan giden paket sayısı. |
 |**TunnelIngressBytes** | Bayt | 5 dakika | Ağ geçidinde oluşturulan tünellerde gelen trafik.   |
-|**TunnelIngressPackets** | Count | 5 dakika | Ağ geçidinde oluşturulan Tünellerdeki gelen paket sayısı.   |
-|**TunnelIngressPacketDropTSMismatch** | Count | 5 dakika | Trafik seçici uyumsuzluğu nedeniyle oluşan tünellerde bırakılan gelen paket sayısı. |
+|**TunnelIngressPackets** | Sayı | 5 dakika | Ağ geçidinde oluşturulan Tünellerdeki gelen paket sayısı.   |
+|**TunnelIngressPacketDropTSMismatch** | Sayı | 5 dakika | Trafik seçici uyumsuzluğu nedeniyle oluşan tünellerde bırakılan gelen paket sayısı. |
 
 
 ## <a name="set-up-azure-monitor-alerts-based-on-metrics-by-using-the-azure-portal"></a><a name="setup"></a>Azure portal kullanarak ölçümleri temel alarak Azure Izleyici uyarılarını ayarlayın
@@ -50,11 +50,11 @@ Aşağıdaki örnek adımlar, için bir ağ geçidinde uyarı oluşturur:
 
 2. Kaynak olarak VPN ağ geçidinizi seçin.
 
-   ![Kaynak listesinde Seç düğmesi ve VPN ağ geçidi](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert2.png "Şunu seçin:")
+   ![Kaynak listesinde Seç düğmesi ve VPN ağ geçidi](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert2.png "Seç")
 
 3. Uyarı için yapılandırılacak bir ölçüm seçin.
 
-   ![Ölçüm listesinde seçili ölçüm](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert3.png "Şunu seçin:")
+   ![Ölçüm listesinde seçili ölçüm](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert3.png "Seç")
 4. Sinyal mantığını yapılandırın. Bunun üç bileşeni vardır:
 
     a. **Boyutlar**: ölçümün boyutları varsa, uyarının yalnızca o boyuttaki verileri vermesini sağlamak için belirli boyut değerlerini seçebilirsiniz. Bunlar isteğe bağlıdır.
@@ -63,11 +63,11 @@ Aşağıdaki örnek adımlar, için bir ağ geçidinde uyarı oluşturur:
 
     c. **Zaman**: ölçüm verilerinin ayrıntı düzeyini ve uyarının değerlendirileceği süreyi belirtin.
 
-   ![Sinyal mantığını yapılandırmaya ilişkin ayrıntılar](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert4.png "Şunu seçin:")
+   ![Sinyal mantığını yapılandırmaya ilişkin ayrıntılar](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert4.png "Seç")
 
 5. Yapılandırılan kuralları görüntülemek için, **Uyarı kurallarını yönet**' i seçin.
 
-   ![Uyarı kurallarını yönetmek için düğme](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert8.png "Şunu seçin:")
+   ![Uyarı kurallarını yönetmek için düğme](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert8.png "Seç")
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

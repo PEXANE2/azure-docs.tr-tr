@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 530ae82720e6b4eb6a3e4d1021c0b37b9f4dbf5c
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90707450"
 ---
 # <a name="how-to-mount-an-nfs-file-share"></a>NFS dosya paylaşımından bağlama
@@ -27,7 +27,7 @@ ms.locfileid: "90707450"
 
 [!INCLUDE [files-nfs-regional-availability](../../../includes/files-nfs-regional-availability.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [BIR NFS paylaşma oluşturun](storage-files-how-to-create-nfs-shares.md).
 
@@ -55,7 +55,7 @@ ms.locfileid: "90707450"
 1. Kullanmak istediğiniz bağlama yolunu girip betiği kopyalayın.
 1. İstemcinizin bağlantısını yapın ve belirtilen bağlama betiğini kullanın.
 
-    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/mount-nfs-file-share-script.png" alt-text="Dosya paylaşma bağlantı dikey penceresinin ekran görüntüsü":::
+    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/mount-nfs-file-share-script.png" alt-text="Güvenli aktarım devre dışı olan depolama hesabı yapılandırma ekranının ekran görüntüsü.":::
 
 Şimdi NFS paylaşımınızı taktıysanız.
 

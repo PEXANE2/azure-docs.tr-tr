@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fa022f181e2061c6a7f3e08d1f2f501ddd9cac3
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84696720"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>Arama yanıtının içerdiği yanıtları filtreleme  
@@ -53,7 +53,7 @@ Bing tarafından döndürülen yanıtları filtrelemek için API 'yi çağırır
 
 Bir yanıtın virgülle ayrılmış listesi olan [Responsefilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) sorgu parametresini kullanarak, Bing 'in yanıt (örneğin, görüntüler, videolar ve Haberler) içerdiği yanıt türlerini filtreleyebilirsiniz. Bir yanıt, Bing buna ait ilgili içeriği bulursa yanıta dahil edilir. 
 
-Görüntüler gibi yanıtlardan belirli yanıtları dışlamak için, `-` Yanıt türüne bir karakter ekleyin. Örnek:
+Görüntüler gibi yanıtlardan belirli yanıtları dışlamak için, `-` Yanıt türüne bir karakter ekleyin. Örneğin:
 
 ```
 &responseFilter=-images,-videos
@@ -115,9 +115,9 @@ https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:con
 
 Web yanıt sonuçlarını, Bing 'in belirli bir dönemde bulduğu web sayfalarıyla sınırlamak için, [yenilik](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#freshness) sorgu parametresini şu büyük/küçük harf duyarsız değerlerden birine ayarlayın:
 
-* `Day`— Son 24 saat içinde Bing tarafından bulunan Web sayfalarını döndürün
-* `Week`— Son 7 gün içinde Bing tarafından bulunan Web sayfalarını döndürün
-* `Month`— Son 30 gün içinde bulunan Web sayfalarını geri döndür
+* `Day` — Son 24 saat içinde Bing tarafından bulunan Web sayfalarını döndürün
+* `Week` — Son 7 gün içinde Bing tarafından bulunan Web sayfalarını döndürün
+* `Month` — Son 30 gün içinde bulunan Web sayfalarını geri döndür
 
 Bu parametreyi Ayrıca formunda özel bir tarih aralığına da ayarlayabilirsiniz `YYYY-MM-DD..YYYY-MM-DD` . 
 

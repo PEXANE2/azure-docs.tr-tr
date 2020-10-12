@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/09/2020
 ms.author: amverma
 ms.openlocfilehash: 34e9ef3ab46f2ce11500aa87db9676635d3e9b4f
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90016291"
 ---
 # <a name="hb-series-virtual-machine-sizes"></a>HB Serisi sanal makine boyutları
@@ -22,7 +22,7 @@ HB Serisi boyutlarda çeşitli performans testleri çalıştırıldı. Bu perfor
 | İş Yükü                                        | HB                    |
 |-------------------------------------------------|-----------------------|
 | STREAM Triad                                    | 260 GB/sn (CCX başına 32-33 GB/sn)  |
-| Yüksek performanslı linpack (HPL)                  | 1.000 GigaFLOPS (Rtepe), 860 GigaFLOPS (Rmax) |
+| High-Performance linpack (HPL)                  | 1.000 GigaFLOPS (Rtepe), 860 GigaFLOPS (Rmax) |
 | RDMA gecikme & bant genişliği                        | 1,27 mikrosaniye, 99,1 GB/sn   |
 | Yerel NVMe SSD üzerinde FIO                           | 1,7 GB/sn okuma, 1,0 GB/sn yazma      |  
 | 4 * Azure Premium SSD (P30 yönetilen diskler, RAID0) * *  | 725 MB/s okuma, 780 MB/yazma   |
@@ -46,7 +46,7 @@ OSU mikro kıyaslama paketinden MPı bant genişliği sınaması çalıştırıl
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
 ```
 
-:::image type="content" source="./media/bandwidth-hb.png" alt-text="Azure HB üzerinde MPı bant genişliği.":::
+:::image type="content" source="./media/bandwidth-hb.png" alt-text="Azure HB üzerinde MPı gecikmesi.":::
 
 
 ## <a name="mellanox-perftest"></a>Mellanox Perftest

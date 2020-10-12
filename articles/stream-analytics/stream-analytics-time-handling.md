@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.openlocfilehash: 0830a8b552283b5b39fa78c505ed177d1959989f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83640029"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Azure Stream Analytics zaman işlemeyi anlama
@@ -130,7 +130,7 @@ Stream Analytics işlerin birkaç **olay sırası** seçeneği vardır. Azure po
 
 [Stream Analytics iş ölçümlerine](stream-analytics-monitoring.md)göre olay sıralaması zaman toleransı etkileri sayısını gözlemleyebilirsiniz. Aşağıdaki ölçümler geçerlidir:
 
-|Metric  | Açıklama  |
+|Ölçüm  | Açıklama  |
 |---------|---------|
 | **Sıra dışı olaylar** | Ayarlanmış olan veya ayarlanan bir zaman damgasına verilen, sıranın dışında alınan olay sayısını gösterir. Bu ölçüm, Azure portal işin **olay sıralaması** sayfasında **sıra dışı olaylar** ayarının yapılandırmasından doğrudan etkilenir. |
 | **Geç giriş olayları** | Kaynaktan geç ulaşan olay sayısını gösterir. Bu ölçüm, bırakılmış olan veya zaman damgası ayarlanmış olan olayları içerir. Bu ölçüm, Azure portal işin **olay sıralaması** sayfasında geç ayarına **ulaşan olayların** yapılandırmasından doğrudan etkilenir. |

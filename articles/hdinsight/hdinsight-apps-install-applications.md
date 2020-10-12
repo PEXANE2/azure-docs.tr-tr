@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/17/2019
 ms.author: hrasheed
 ms.openlocfilehash: e0d1f9ad99e1b64560321312a22f61f5a2ef3dea
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89016045"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight 'a üçüncü taraf Apache Hadoop uygulamaları yüklemeyin
@@ -31,19 +31,19 @@ Aşağıdaki listede yayımlanan uygulamalar gösterilmektedir:
 |[HDInsight üzerinde dataıku DSS](https://azuremarketplace.microsoft.com/marketplace/apps/dataiku.dss-on-hdi) |Hadoop, Spark |Veri bilimcilerinin ve veri analistlerinin yeni veri ürünlerini ve hizmetlerini daha verimli bir şekilde tasarlamak ve çalıştırmak ve ham verileri kesin tahmine dayalı tahmine dayalı olarak yürütmek üzere işbirliği yapmasına imkan tanıyan bir kurumsal veri bilimi platformunda dataiku DSS. |
 |[WANdisco Fusion HDI uygulaması](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/wandisco.wandisco-liveanalytics) |Hadoop, Spark, HBase, fırtınası, Kafka |Verilerin dağıtılmış bir ortamda tutarlı tutulması çok büyük bir veri işlemleri sınamadır. Kurumsal sınıf yazılım platformu olan WANdisco Fusion, hiçbir ortamda yapılandırılmamış veri tutarlılığını etkinleştirerek bu sorunu çözer. |
 |[HDInsight için H2O mini Susu](https://azuremarketplace.microsoft.com/marketplace/apps/h2o-ai.h2o-sparklingwater) |Spark |H2O Suze su aşağıdaki dağıtılmış algoritmaları destekler: GLM, Naïve Bayes, dağıtılmış rastgele orman, gradyan arttırma makinesi, derin sinir ağlar, derin öğrenme, K-anlamı, PCA, genelleştirilmiş düşük sıra modelleri, anomali algılama, oto kodlayıcılar. |
-|[HDInsight ile gerçek zamanlı veri tümleştirmesi için anlık ileti çabam](https://azuremarketplace.microsoft.com/marketplace/apps/striim.striimbyol) |Hadoop, HBase, fırtınası, Spark, Kafka |Anlık ileti ("Stream"), uçtan uca bir akış veri tümleştirmesi + zekası platformudur ve farklı veri akışlarının sürekli alımı, işlenmesi ve analizine olanak sağlar. |
-|[Jumbune kurumsal-hızlandırma BigData Analytics](https://azuremarketplace.microsoft.com/marketplace/apps/impetus-infotech-india-pvt-ltd.impetus_jumbune) |Hadoop, Spark |Yüksek düzeyde, Jumbe, kuruluşlara, 1 ' e yardımcı olur. Tez, MapReduce & Spark Engine tabanlı Hive, Java, Scala iş yükü performansı hızlandırıcı. 2. Proaktif Hadoop kümesi Izleme, 3. Dağıtılmış dosya sisteminde veri kalitesi yönetimi oluşturma. |
+|[HDInsight 'a Real-Time veri tümleştirmesi için anlık ileti çabam](https://azuremarketplace.microsoft.com/marketplace/apps/striim.striimbyol) |Hadoop, HBase, fırtınası, Spark, Kafka |Anlık ileti ("Stream"), uçtan uca bir akış veri tümleştirmesi + zekası platformudur ve farklı veri akışlarının sürekli alımı, işlenmesi ve analizine olanak sağlar. |
+|[Jumbune Enterprise-Accelerating BigData Analytics](https://azuremarketplace.microsoft.com/marketplace/apps/impetus-infotech-india-pvt-ltd.impetus_jumbune) |Hadoop, Spark |Yüksek düzeyde, Jumbe, kuruluşlara, 1 ' e yardımcı olur. Tez, MapReduce & Spark Engine tabanlı Hive, Java, Scala iş yükü performansı hızlandırıcı. 2. Proaktif Hadoop kümesi Izleme, 3. Dağıtılmış dosya sisteminde veri kalitesi yönetimi oluşturma. |
 |[Kyligence Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/kyligence.kyligence) |Hadoop, HBase, Spark |Apache Kylin tarafından desteklenen Kırgızca kurumsal, büyük veriler için bı sağlar. Hadoop 'ta kurumsal bir OLAP altyapısı olarak, Kırgızca kurumsal analistleri, sektör standardı veri ambarı ve bı metodolojisi ile Hadoop üzerinde bı 'ı mimariye kadar işletmelerini sağlar. |
 |[Yıldız yağmuru Azure HDInsight için](https://azuremarketplace.microsoft.com/marketplace/apps/starburstdatainc1579800938563.starburst-presto?tab=Overview) |Hadoop |Presto, hızlı ve ölçeklenebilir bir dağıtılmış SQL sorgu altyapısıdır. Depolama ve işlem ayrımı için tasarlanmış, Presto, Azure Data Lake Storage, Azure Blob Storage, SQL ve NoSQL veritabanları ve diğer veri kaynaklarında veri sorgulamak için mükemmeldir. |
 |[HDInsight bulutu için StreamSets veri toplayıcısı](https://azuremarketplace.microsoft.com/marketplace/apps/streamsets.streamsets-data-collector-hdinsight) |Hadoop, HBase, Spark, Kafka |StreamSets veri toplayıcısı, verileri gerçek zamanlı olarak akıp basit ve güçlü bir altyapıdır. Veri akışlarındaki verileri yönlendirmek ve işlemek için veri toplayıcıyı kullanın. 30 günlük deneme lisansı ile birlikte gelir. |
 |[Trifacta Wrangler kurumsal](https://azuremarketplace.microsoft.com/marketplace/apps/trifacta.trifacta-db?tab=Overview) |Hadoop, Spark, HBase |HDInsight için trifacta Wrangler Enterprise, herhangi bir veri ölçeği için kurumsal çapta veri wrangini destekler. Azure üzerinde Trifacta çalıştırmanın maliyeti, üç aylık abonelik maliyetlerinin yanı sıra sanal makineler için Azure altyapı maliyetlerinin bir birleşimidir. |
 |[Sınıfı olmayan veri platformu](https://unifisoftware.com/platform/) |Hadoop, HBase, fırtınası, Spark |Sınıfı olmayan veri platformu, iş kullanıcısına artımlı gelir sağlayan veri zorluklarını ortadan kaldırmak, maliyetleri azaltmak veya işlemsel karmaşıklığı düşürmek için tasarlanan, sorunsuz bir şekilde tümleştirilmiş self servis veri araçları paketidir. |
 |[Unkıveldata APM](https://azuremarketplace.microsoft.com/marketplace/apps/unravel-data.unravel-app) |Spark |HDInsight Spark kümesi için veri uygulamasını kaldırma. |
-|[Filigran AI temelli veri kataloğu](https://azuremarketplace.microsoft.com/marketplace/apps/waterline_data.waterline_data) |Spark |İş terimleriyle verileri otomatik olarak etiketlemek için AI kullanarak verileri düzenler, düzenler ve yönetir. Sulu boya iş literı kataloğu, self servis analiz, uyumluluk ve idare ve BT yönetimi girişimleri için kritik, başarılı bir bileşendir. |
+|[Su hattı AI-Driven Veri Kataloğu](https://azuremarketplace.microsoft.com/marketplace/apps/waterline_data.waterline_data) |Spark |İş terimleriyle verileri otomatik olarak etiketlemek için AI kullanarak verileri düzenler, düzenler ve yönetir. Sulu boya iş literı kataloğu, self servis analiz, uyumluluk ve idare ve BT yönetimi girişimleri için kritik, başarılı bir bileşendir. |
 
 Bu makalede verilen yönergeler Azure portalı kullanmaktadır. Ayrıca, portaldan Azure Resource Manager şablonunu dışarı aktarabilir veya satıcılardan Kaynak Yöneticisi şablonunun bir kopyasını alabilir ve şablonu dağıtmak için Azure PowerShell ve Azure klasik CLı kullanabilirsiniz.  Bkz. [Kaynak Yöneticisi şablonları kullanarak HDInsight 'ta Apache Hadoop kümeleri oluşturma](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 HDInsight uygulamalarını mevcut bir HDInsight kümesine yüklemek istiyorsanız bir HDInsight kümesine sahip olmanız gerekir. Küme oluşturmak için bkz. [Küme oluşturma](hadoop/apache-hadoop-linux-tutorial-get-started.md). HDInsight uygulamalarını ayrıca bir HDInsight kümesi oluştururken yükleyebilirsiniz.
 
 ## <a name="install-applications-to-existing-clusters"></a>Var olan kümelere uygulama yükleme

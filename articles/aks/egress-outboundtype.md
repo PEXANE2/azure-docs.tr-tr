@@ -7,19 +7,19 @@ ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
 ms.openlocfilehash: d8ae03d52691a6c30f78439a579e7e7c136dda76
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90975287"
 ---
-# <a name="customize-cluster-egress-with-a-user-defined-route"></a>Küme çıkış listesini Kullanıcı tanımlı bir yol ile özelleştirme
+# <a name="customize-cluster-egress-with-a-user-defined-route"></a>Küme çıkışı 'nı bir User-Defined rotası ile özelleştirme
 
 AKS kümesinden çıkış, belirli senaryolara uyacak şekilde özelleştirilebilir. Varsayılan olarak AKS, çıkış için ayarlanacak ve kullanılacak standart bir SKU Load Balancer sağlar. Ancak, genel IP 'Ler izin verilmedikçe veya çıkış için ek atlamalar gerekliyse, varsayılan kurulum tüm senaryoların gereksinimlerini karşılamayabilir.
 
 Bu makalede, genel IP 'Lere izin vermeyen ve kümenin bir ağ sanal gereci (NVA) arkasına oturmasının gerekli olduğu gibi özel ağ senaryolarını desteklemek için bir kümenin çıkış yolunun nasıl özelleştirileceği gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * Azure CLı sürüm 2.0.81 veya üzeri
 * `2020-01-01`Veya daha büyük API sürümü
 

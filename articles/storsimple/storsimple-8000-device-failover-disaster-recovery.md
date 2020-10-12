@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
 ms.openlocfilehash: dffa059b18e159d04b5e3bb8555dabf801ede692
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85511795"
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>StorSimple 8000 serisi cihazınız için yük devretme ve olağanüstü durum kurtarma
@@ -55,7 +55,7 @@ StorSimple 8000 serisinde yedekleme ilkeleri yedeklemelerle ilişkilendirilir. A
 
 Bu durumda, kilitlenme tutarlılığı için StorSimple önceliklendirir ve daha fazla birime sahip olan *Custompol* kullanır. Bu ilkeden en son yedekleme, verileri geri yüklemek için kullanılır. Yedekleme ilkeleri oluşturma ve yönetme hakkında daha fazla bilgi için, [yedekleme ilkelerini yönetmek üzere StorSimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-manage-backup-policies-u2.md)bölümüne gidin.
 
-## <a name="common-considerations-for-device-failover"></a>Cihaz yük devretmesi için genel hususlar
+## <a name="common-considerations-for-device-failover"></a>Cihaz yük devretmesi için dikkat edilmesi gereken yaygın noktalar
 
 Bir cihazın yükünü devretmek için aşağıdaki bilgileri gözden geçirin:
 

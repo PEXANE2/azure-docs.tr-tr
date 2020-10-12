@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
 ms.openlocfilehash: 84e2eaf71326f59102800428479768aeba9ef9ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87042152"
 ---
 # <a name="configure-runbook-input-parameters"></a>Runbook girdi parametrelerini yapılandırma
@@ -27,7 +27,7 @@ Azure Otomasyonu 'ndaki PowerShell ve PowerShell Iş akışı runbook 'ları, a�
 | **Özellik** | **Açıklama** |
 |:--- |:--- |
 | Tür |Gereklidir. Parametre değeri için beklenen veri türü. Herhangi bir .NET türü geçerlidir. |
-| Name |Gereklidir. Parametrenin adı. Bu ad runbook içinde benzersiz olmalıdır, bir harfle başlamalıdır ve yalnızca harf, sayı veya alt çizgi karakterlerini içerebilir. |
+| Adı |Gereklidir. Parametrenin adı. Bu ad runbook içinde benzersiz olmalıdır, bir harfle başlamalıdır ve yalnızca harf, sayı veya alt çizgi karakterlerini içerebilir. |
 | Zorunlu |İsteğe bağlı. Parametrenin bir değer gerektirip gerektirmediğini belirten Boole değeri. Bunu true olarak ayarlarsanız, runbook başlatıldığında bir değer sağlanmalıdır. Bunu yanlış olarak ayarlarsanız bir değer isteğe bağlıdır. Özelliği için bir değer belirtmezseniz `Mandatory` , PowerShell giriş parametresini varsayılan olarak isteğe bağlı olarak değerlendirir. |
 | Varsayılan değer |İsteğe bağlı. Runbook başladığında hiçbir giriş değeri geçirilmemişse, parametresi için kullanılan bir değer. Runbook herhangi bir parametre için varsayılan bir değer ayarlayabilir. |
 
@@ -201,7 +201,7 @@ Giriş kutusunun altındaki etikette, parametre özniteliklerini tanımlamak üz
     }
    ```
 
-   Bu yöntemi başlatmak için, runbook parametrelerini ve değerlerini depolamak için bir sözlük `VMName` oluşturun `resourceGroupName` . Ardından runbook 'u başlatın. Yukarıda tanımlanan yöntemi çağırmak için C# kod parçacığı aşağıda verilmiştir.
+   Bu yöntemi başlatmak için, runbook parametrelerini ve değerlerini depolamak için bir sözlük `VMName` oluşturun  `resourceGroupName` . Ardından runbook 'u başlatın. Yukarıda tanımlanan yöntemi çağırmak için C# kod parçacığı aşağıda verilmiştir.
 
    ```csharp
    IDictionary<string, string> RunbookParameters = new Dictionary<string, string>();
@@ -324,7 +324,7 @@ Artık Azure PowerShell kullanarak runbook 'u yerel makinenizden çağırabilirs
     >[!NOTE]
     >PowerShell runbook 'ları için `Add-AzAccount` ve `Add-AzureRMAccount` diğer adlardır `Connect-AzAccount` . Bu diğer adların grafik runbook 'lar için kullanılamaz olduğunu unutmayın. Grafik runbook 'u yalnızca kendisi kullanabilir `Connect-AzAccount` .
 
-1. Kaydedilen JSON dosyasının içeriğini alın ve bir dizeye dönüştürün. `JsonPath`JSON dosyasını kaydettiğiniz yolu gösterir.
+1. Kaydedilen JSON dosyasının içeriğini alın ve bir dizeye dönüştürün. `JsonPath` JSON dosyasını kaydettiğiniz yolu gösterir.
 
    ```powershell
    $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 59dc94e37dfa1ef8b0b079bf5d78d0504e0cb8c7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91313629"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect eşitleme: bildirime dayalı sağlamayı anlama
@@ -53,7 +53,7 @@ Bu resimdeki kapsam (departman = IT ve ülke = Danimarka) veya (ülke = Isveç) 
 
 Kapsam modülü aşağıdaki işlemleri destekler.
 
-| İşlem | Description |
+| İşlem | Açıklama |
 | --- | --- |
 | EŞITTIR, NOTEQUAL |Değerin öznitelikteki değere eşit olup olmadığını değerlendiren bir dize karşılaştırması. Birden çok değerli öznitelikler için bkz. ııN ve ıSNOTıN. |
 | LESSTHAN, LESSTHAN_OR_EQUAL |Değerin öznitelikteki değerden küçük olup olmadığını değerlendiren bir dize karşılaştırması. |

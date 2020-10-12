@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 05/14/2018
 ms.author: hrasheed
 ms.openlocfilehash: 2cee60a71f6f19e09194dc689f95999bb11faad3
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086475"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Azure Marketi 'nde HDInsight uygulaması yayımlama
@@ -25,7 +25,7 @@ Daha fazla bilgi için bkz. HDInsight uygulamasıyla ilgili bu makaleler:
 * [HDInsight uygulamalarını yükler](hdinsight-apps-install-applications.md). Kümelerinize HDInsight uygulaması yüklemeyi öğrenin.
 * [Özel HDInsight uygulamalarını yükler](hdinsight-apps-install-custom-applications.md). Özel HDInsight uygulamalarını yüklemeyi ve test yapmayı öğrenin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Özel uygulamanızı Market 'te göndermek için öncelikle [özel uygulamanızı oluşturun ve test](hdinsight-apps-install-custom-applications.md)edin.
 
 Geliştirici hesabınızı da kaydetmeniz gerekir. Daha fazla bilgi için bkz. [Azure Marketi 'nde teklif yayımlama](../marketplace/marketplace-publishers-guide.md) ve [bir Microsoft Geliştirici hesabı oluşturma](../marketplace/marketplace-publishers-guide.md).

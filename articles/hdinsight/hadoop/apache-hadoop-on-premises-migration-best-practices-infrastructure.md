@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: b9f7e93af61dbcf306f7d6eb105cb113412a423a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86083109"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme-altyapı en iyi yöntemleri
@@ -23,7 +23,7 @@ Bu makale, Azure HDInsight kümelerinin altyapısını yönetmeye yönelik öner
 
 HDInsight kümesi kapasite planlaması için yapılacak temel seçimler şunlardır:
 
-**Geli**  
+**Bölge**  
 Azure bölgesi, kümenin fiziksel olarak sağlandığını belirler. Okuma ve yazma gecikmesini en aza indirmek için, kümenin verilerle aynı bölgede olması gerekir.
 
 **Depolama konumu ve boyutu**  
@@ -101,7 +101,7 @@ HDInsight, HDInsight kümelerine aşağıdaki bileşenleri yüklemek için önce
 
 Betik eylemleri, Azure Marketi 'Nde de HDInsight uygulaması olarak yayımlanabilir.
 
-Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [HDInsight 'a üçüncü taraf Apache Hadoop uygulamalarını yükler](../hdinsight-apps-install-applications.md)
 - [Betik eylemlerini kullanarak HDInsight kümelerini özelleştirme](../hdinsight-hadoop-customize-cluster-linux.md)
@@ -172,7 +172,7 @@ HDInsight, yeni veya mevcut bir Azure sanal ağına eklenebilir. HDInsight var o
 > [!Note]  
 > HDInsight Şu anda zorlamalı tüneli desteklemiyor. Zorlamalı tünel, gelen Internet trafiğini İnceleme ve günlüğe kaydetme amacıyla bir cihaza zorlayan bir alt ağ ayarıdır. HDInsight 'ı bir alt ağa yüklemeden önce zorlamalı tüneli kaldırın veya HDInsight için yeni bir alt ağ oluşturun. HDInsight, giden ağ bağlantısının kısıtlanması de desteklemez.
 
-Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Azure sanal ağları-genel bakış](../../virtual-network/virtual-networks-overview.md)
 - [Azure Sanal Ağını kullanarak Azure HDInsight kapsamını genişletme](../hdinsight-plan-virtual-network-deployment.md)
@@ -181,7 +181,7 @@ Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 HDInsight, Azure Blob depolama, Azure Data Lake Storage 2., Cosmos DB ve SQL veritabanlarına güvenli bir şekilde bağlanmanıza olanak tanıyan [sanal ağ hizmet uç noktalarını](../../virtual-network/virtual-network-service-endpoints-overview.md)destekler. Azure HDInsight için bir hizmet uç noktası etkinleştirerek trafik, Azure veri merkezi içinden güvenli bir yol üzerinden akar. Ağ katmanında bu gelişmiş güvenlik düzeyiyle, büyük veri depolama hesaplarını belirtilen sanal ağlarına (VNet 'ler) kilitleyebilir ve bu verilere erişmek ve onları işlemek için HDInsight kümelerini sorunsuz bir şekilde kullanmaya devam edebilirsiniz.
 
-Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Sanal ağ hizmet uç noktaları](../../virtual-network/virtual-network-service-endpoints-overview.md)
 - [Hizmet uç noktaları ile HDInsight güvenliğini geliştirme](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)

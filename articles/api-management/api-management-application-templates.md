@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1452f380cec711fb224f532ccb02d11c5bbad697
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86255192"
 ---
 # <a name="application-templates-in-azure-api-management"></a>Azure API Management uygulama şablonları
@@ -36,7 +36,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="application-list"></a><a name="ProductList"></a>Uygulama listesi  
+##  <a name="application-list"></a><a name="ProductList"></a> Uygulama listesi  
  **Uygulama listesi** şablonu, geliştirici portalındaki uygulama listesi sayfasının gövdesini özelleştirmenizi sağlar.  
   
  ![Uygulama listesi sayfası geliştirici portalı şablonları](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APıM uygulama listesi sayfası geliştirici portalı şablonları")  
@@ -137,7 +137,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
 }  
 ```  
   
-##  <a name="application"></a><a name="Application"></a>Uygulamanızı  
+##  <a name="application"></a><a name="Application"></a> Uygulamanızı  
  **Uygulama** şablonu, geliştirici portalındaki uygulama sayfasının gövdesini özelleştirmenizi sağlar.  
   
  ![Uygulama sayfası geliştirici portalı şablonları](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APıM uygulama sayfası geliştirici portalı şablonları")  

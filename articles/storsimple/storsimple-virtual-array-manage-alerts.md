@@ -16,10 +16,10 @@ ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5f32ec82c2b4c6d8b902195782b286cca82befb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85507645"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>StorSimple Sanal dizisine yönelik uyarıları yönetmek için StorSimple Aygıt Yöneticisi kullanma
@@ -72,7 +72,7 @@ Bir sanal dizi için e-posta bildirimini etkinleştirdikten sonra, bildirim list
 
 StorSimple Sanal diziniz, çeşitli koşullara yanıt olarak uyarılar oluşturur. En yaygın uyarı koşulları türleri şunlardır:
 
-* **Bağlantı sorunları** : Bu uyarılar, verileri aktarma konusunda zorluk oluşması durumunda oluşur. Azure depolama hesabına veri aktarımı sırasında veya sanal cihazlarla StorSimple Aygıt Yöneticisi hizmeti arasında bağlantı olmaması nedeniyle iletişim sorunları oluşabilir. Çok sayıda hata noktası olduğundan, iletişim sorunları düzeltilemeyecek bir kısmı. Daha gelişmiş sorun giderme işlemlerine devam etmeden önce ağ bağlantısı ve Internet erişiminin kullanılabilir olduğunu her zaman ilk önce doğrulamanız gerekir. Bağlantı noktaları ve güvenlik duvarı ayarları hakkında bilgi için, [StorSimple Sanal dizi sistem gereksinimleri](storsimple-ova-system-requirements.md)' ne gidin. Sorun gidermeye yönelik yardım için, [Test-Connection cmdlet 'iyle sorun giderme](storsimple-troubleshoot-deployment.md)bölümüne gidin.
+* **Bağlantı sorunları** : Bu uyarılar, verileri aktarma konusunda zorluk oluşması durumunda oluşur. Azure depolama hesabına veri aktarımı sırasında veya sanal cihazlarla StorSimple Aygıt Yöneticisi hizmeti arasında bağlantı olmaması nedeniyle iletişim sorunları oluşabilir. Çok sayıda hata noktası olduğundan, iletişim sorunları düzeltilemeyecek bir kısmı. Daha gelişmiş sorun giderme işlemlerine devam etmeden önce ağ bağlantısı ve Internet erişiminin kullanılabilir olduğunu her zaman ilk önce doğrulamanız gerekir. Bağlantı noktaları ve güvenlik duvarı ayarları hakkında bilgi için, [StorSimple Sanal dizi sistem gereksinimleri](storsimple-ova-system-requirements.md)' ne gidin. Sorun giderme konusunda yardım için [Test-Connection cmdlet Ile sorun giderme](storsimple-troubleshoot-deployment.md)bölümüne gidin.
 * **Performans sorunları** : Bu uyarılar, sisteminiz ağır bir yük altında olduğunda olduğu gibi en iyi şekilde gerçekleştirimediğinde oluşur.
 
 Ayrıca, güvenlik, güncelleştirmeler veya iş hatalarıyla ilgili uyarıları görebilirsiniz.

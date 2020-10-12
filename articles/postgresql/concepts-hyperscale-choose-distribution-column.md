@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: f3c86f4b194e6d3935434b35cae958dfcf772986
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91314921"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda dağıtım sütunları seçin – hiper ölçek (Citus)
@@ -35,7 +35,7 @@ Aşağıdaki diyagramda, çok kiracılı veri modelindeki birlikte bulundurma g�
 Bu tasarımı kendi şemanızda uygulamak için, uygulamanızda ne tür bir kiracı oluşturduğunu belirlemek için bu tasarımı yapın. Şirket, hesap, kuruluş veya müşteri ortak örnekleri içerir. Sütun adı veya gibi bir şey olacaktır `company_id` `customer_id` . Sorgularınızın her birini inceleyin ve sizinle aynı kiracı KIMLIĞINE sahip satırlara dahil olan tüm tabloları kısıtlamak için ek WHERE yan tümceleri varsa işe çalışırdı.
 Çok kiracılı modeldeki sorgular bir kiracıya kapsamlıdır. Örneğin, satış veya envanterdeki sorgular belirli bir mağaza kapsamında kapsamlandırılır.
 
-#### <a name="best-practices"></a>En iyi uygulamalar
+#### <a name="best-practices"></a>Önerilen uygulamalar
 
 -   **Dağıtılmış tabloları ortak Kiracı \_ kimliği sütunuyla bölümleme.** Örneğin, kiracıların şirketler olduğu bir SaaS uygulamasında, kiracı \_ kimliğinin şirket kimliği olması olasıdır \_ .
 -   **Küçük bir çapraz kiracı tablolarını başvuru tablolarına dönüştürün.** Birden çok kiracı bir bilgi tablosunu paylaşıyorsa, onu başvuru tablosu olarak dağıtın.
@@ -51,7 +51,7 @@ Gerçek zamanlı modeldeki dağıtım sütunları için bir terim olarak "varlı
 
 Gerçek zamanlı sorgular genellikle tarih veya kategoriye göre gruplanmış sayısal toplamalar ister. Hiper ölçek (Citus), bu sorguları her parçaya kısmi sonuçlar için gönderir ve düzenleyici düğümündeki son yanıtı ayrıştırır. Çok sayıda düğüm mümkün olduğunca en hızlı şekilde çalışır ve tek bir düğümün orantısız iş miktarı olması gerekir.
 
-#### <a name="best-practices"></a>En iyi uygulamalar
+#### <a name="best-practices"></a>Önerilen uygulamalar
 
 -   **Dağıtım sütunu olarak yüksek kardinalite içeren bir sütun seçin.** Karşılaştırma için, sipariş tablosundaki yeni, ücretli ve sevk edilen değerlere sahip bir durum alanı, bir dağıtım sütunu yetersiz tercih edilir. Yalnızca, verileri tutan parça sayısını sınırlayan ve bunu işleyebilen düğümlerin sayısını sınırlayan yalnızca birkaç değeri kabul eder. Yüksek kardinalite içeren sütunlar arasında, genellikle Group by yan tümcelerinde veya JOIN anahtarları olarak kullanılan sütunları seçmek de iyi bir yoldur.
 -   **Eşit bir dağıtım içeren bir sütun seçin.** Belirli ortak değerlere eğilmiş bir sütunda bir tablo dağıtırsanız, tablodaki veriler belirli parçaların birikmesine eğilimindedir. Bu parçaları tutan düğümler diğer düğümlerden daha fazla çalışma yapıyor.
@@ -67,7 +67,7 @@ Bir zaman serisi iş yükünde, uygulamalar eski bilgileri arşivlarken son bilg
 
 Hiper ölçekte (Citus) zaman serisi bilgilerini modelleyen en yaygın hata, zaman damgasının kendisini bir dağıtım sütunu olarak kullanmaktır. Zaman aralıklarını temel alan bir karma dağıtım, parçaları parçalar halinde birlikte tutmak yerine farklı parçalara rastgele olarak dağıtır. Zaman genellikle başvuru aralıklarını (örneğin, en son veriler) içeren sorgular. Bu tür bir karma dağıtım, ağ ek yüküne neden olur.
 
-#### <a name="best-practices"></a>En iyi uygulamalar
+#### <a name="best-practices"></a>Önerilen uygulamalar
 
 -   **Dağıtım sütunu olarak zaman damgası seçmeyin.** Farklı bir dağıtım sütunu seçin. Çok kiracılı bir uygulamada, kiracı KIMLIĞINI kullanın veya gerçek zamanlı bir uygulamada varlık KIMLIĞINI kullanın.
 -   **Bunun yerine PostgreSQL tablo bölümlemesini kullanın.** Zaman içinde oluşan büyük bir veriyi, farklı zaman aralıkları içeren her tablo ile birden fazla devralınmış tabloya bölmek için tablo bölümleme kullanın. Hiper ölçekte (Citus) bir Postgres bölümlenmiş tablo dağıtmak, devralınan tablolar için parçalar oluşturur.

@@ -15,10 +15,10 @@ ms.custom:
 ms.topic: troubleshooting
 ms.date: 02/20/2020
 ms.openlocfilehash: 2d268c5ced0d427216ce4f6a7e9c97c6b5b8b0f4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330324"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>PostgreSQL ile PostgreSQL için Azure DB 'ye çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları
@@ -44,7 +44,7 @@ PostgreSQL 'e yönelik çevrimiçi geçişlerle ilgili bilinen sorunlar ve sın�
 
 - Kullanıcının, kaynak veritabanını barındıran sunucuda çoğaltma rolü olmalıdır.
 - Kaynak ve hedef veritabanı şemaları eşleşmelidir.
-- PostgreSQL için Azure veritabanı 'nın hedef şeması-tek sunucu yabancı anahtarlara sahip olmamalıdır. Yabancı anahtarları bırakmak için aşağıdaki sorguyu kullanın:
+- PostgreSQL-Single sunucusu için hedef Azure veritabanında bulunan şemanın yabancı anahtarları olmamalıdır. Yabancı anahtarları bırakmak için aşağıdaki sorguyu kullanın:
 
     ```
                                 SELECT Queries.tablename
@@ -75,7 +75,7 @@ PostgreSQL 'e yönelik çevrimiçi geçişlerle ilgili bilinen sorunlar ve sın�
 
     Sorgu sonucunda bırakma yabancı anahtarını (ikinci sütun) çalıştırın.
 
-- PostgreSQL için Azure veritabanı hedef şeması-tek sunucu, herhangi bir tetikleyici içermemelidir. Hedef veritabanında Tetikleyicileri devre dışı bırakmak için aşağıdakileri kullanın:
+- PostgreSQL-Single Server için hedef Azure veritabanı şemasında hiçbir tetikleyici olmamalıdır. Hedef veritabanında Tetikleyicileri devre dışı bırakmak için aşağıdakileri kullanın:
 
      ```
     SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';

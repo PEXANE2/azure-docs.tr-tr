@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 06/05/2020
 ms.author: kegorman
 ms.openlocfilehash: 8f20ad13953e3767e7693733d8c68f3d0aa2057c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274486"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure 'da Oracle uygulamalarına ve çözümlerine genel bakış
@@ -91,7 +91,7 @@ Azure 'da çalışan Oracle yazılımıyla birlikte Oracle Database Cloud Servic
 
 ## <a name="licensing"></a>Lisanslama
 
-Oracle uygulamalarının Azure 'da dağıtılması, "kendi lisansını getir" modelini temel alır. Oracle yazılımını kullanmak için doğru lisansa sahip olduğunuz ve Oracle ile geçerli bir destek sözleşmenizin olduğu varsayılır. Oracle 'ın Şirket içinden Azure 'a lisans taşınabilirlik garantisi vardır. Bkz. Oracle-Azure [SSS](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html).
+Oracle uygulamalarının Azure 'da dağıtılması, "kendi lisansını getir" modelini temel alır. Oracle yazılımını kullanmak için doğru lisansa sahip olduğunuz ve Oracle ile geçerli bir destek sözleşmenizin olduğu varsayılır. Oracle 'ın Şirket içinden Azure 'a lisans taşınabilirlik garantisi vardır. [Sss](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)Oracle-Azure bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

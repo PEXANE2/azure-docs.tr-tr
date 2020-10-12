@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
 ms.openlocfilehash: c2ddcd8ea3524b4afdfa7f70d21f0cba96975f72
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085370"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>HDInsight kümelerini izlemek için Azure Izleyici günlüklerini sorgulama
@@ -33,7 +33,7 @@ Azure Izleyici günlüklerini kullanmak için bir HDInsight kümesi yapılandır
 HDInsight kümeniz için belirli ölçümleri nasıl bakacağınızı öğrenin.
 
 1. HDInsight kümenizle ilişkili Log Analytics çalışma alanını Azure portal açın.
-1. **Genel**altında **Günlükler**' i seçin.
+1. **Genel** bölümünde **Günlükler**’i seçin.
 1. Azure Izleyici günlüklerini kullanacak şekilde yapılandırılmış tüm HDInsight kümeleri için tüm kullanılabilir ölçümler için tüm ölçümleri aramak üzere arama kutusuna aşağıdaki sorguyu yazın ve **Çalıştır**' ı seçin. Sonuçları gözden geçirin.
 
     ```kusto
@@ -94,7 +94,7 @@ search in (metrics_resourcemanager_queue_root_default_CL) *
 Uyarı oluşturmanın ilk adımı, uyarının tetiklendiği bir sorguya ulaşacak. Uyarı oluşturmak istediğiniz herhangi bir sorgu kullanabilirsiniz.
 
 1. HDInsight kümenizle ilişkili Log Analytics çalışma alanını Azure portal açın.
-1. **Genel**altında **Günlükler**' i seçin.
+1. **Genel** bölümünde **Günlükler**’i seçin.
 1. Üzerinde bir uyarı oluşturmak istediğiniz aşağıdaki sorguyu çalıştırın ve ardından **Çalıştır**' ı seçin.
 
     ```kusto
@@ -129,5 +129,5 @@ Daha fazla bilgi için bkz. [Azure izleyici kullanarak ölçüm uyarıları olu�
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Azure Izleyici 'de günlük sorgularını kullanmaya başlama](../azure-monitor/log-query/get-started-queries.md)
+* [Azure İzleyici’de günlük sorgularını kullanmaya başlama](../azure-monitor/log-query/get-started-queries.md)
 * [Azure Izleyici 'de Görünüm Tasarımcısı 'nı kullanarak özel görünümler oluşturma](../azure-monitor/platform/view-designer.md)

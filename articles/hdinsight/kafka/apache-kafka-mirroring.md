@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: 278fbdf7010fe7b14488bb021ab8a366393ad512
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087371"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>MirrorMaker kullanarak Apache Kafka konularını HDInsight üzerinde Kafka ile çoğaltma
@@ -65,7 +65,7 @@ Bu mimari, farklı kaynak gruplarındaki ve sanal ağlardaki iki kümeyi sunar: 
 
     |Kaynak Grubu | Konum |
     |---|---|
-    | Kafka-birincil-RG | Orta ABD |
+    | Kafka-birincil-RG | Central US |
     | Kafka-ikincil-RG | Orta Kuzey ABD |
 
 1. **Kafka-Primary-RG**içinde yeni bir sanal ağ **Kafka-Primary-VNET** oluşturun. Varsayılan ayarları bırakın.
@@ -81,7 +81,7 @@ Bu mimari, farklı kaynak gruplarındaki ve sanal ağlardaki iki kümeyi sunar: 
 1. Sanal ağ eşlemesi oluşturun. Bu adım iki eşleme oluşturur: biri **Kafka-Primary-VNET** 'ten **Kafka-ikincil-VNET** 'e, diğeri **Kafka-ikincil VNET** 'ten **Kafka-Primary-VNET**'e kadar bir geri.
     1. **Kafka-Primary-VNET** sanal ağını seçin.
     1. Ayarlar **altında eşlemeler** ' **Settings**i seçin.
-    1. **Ekle**'yi seçin.
+    1. **Ekle**’yi seçin.
     1. **Eşleme Ekle** ekranında, aşağıdaki ekran görüntüsünde gösterildiği gibi ayrıntıları girin.
 
         ![HDInsight Kafka VNET eşlemesi Ekle](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
@@ -92,7 +92,7 @@ Bir istemcinin etki alanı adları yerine aracı IP adreslerini kullanarak bağl
 
 1. Birincil kümenin ambarı panosuna gidin: `https://PRIMARYCLUSTERNAME.azurehdinsight.net` .
 1. **Hizmetler**  >  **Kafka**' ı seçin. **Configs** sekmesini Clienselectck.
-1. Aşağıdaki yapılandırma satırlarını alt **Kafka-env şablonu** bölümüne ekleyin. **Kaydet**'i seçin.
+1. Aşağıdaki yapılandırma satırlarını alt **Kafka-env şablonu** bölümüne ekleyin. **Kaydet**’i seçin.
 
     ```
     # Configure Kafka to advertise IP addresses instead of FQDN
@@ -112,7 +112,7 @@ Bir istemcinin etki alanı adları yerine aracı IP adreslerini kullanarak bağl
 ### <a name="configure-kafka-to-listen-on-all-network-interfaces"></a>Tüm ağ arabirimlerini dinlemek için Kafka yapılandırın.
     
 1. **Hizmetler**Kafka ' nin altındaki **configs** sekmesinde kalın  >  **Kafka**. **Kafka Broker** bölümünde **Listeners** özelliğini olarak ayarlayın `PLAINTEXT://0.0.0.0:9092` .
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 1. **Yeniden Başlat**' ı seçin ve **tümünün yeniden başlatılmasını onaylayın**.
 
 ### <a name="record-broker-ip-addresses-and-zookeeper-addresses-for-primary-cluster"></a>Birincil küme için Kayıt Aracısı IP adreslerini ve Zookeeper adreslerini kaydeder.

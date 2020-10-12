@@ -13,10 +13,10 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: a77a4808390f816bc3a6646520f4b542bee89d4c
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89438543"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Blob depolama alanına veya buradan veri kopyalama
@@ -83,11 +83,11 @@ Data Factory, Azure blob: Int16, Int32, Int64, Single, Double, Decimal, Byte [],
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| folderPath |BLOB depolama alanındaki kapsayıcının ve klasörün yolu. Örnek: myblobcontainer\myblobfolder\ |Yes |
-| fileName |Blobun adı. Dosya adı isteğe bağlıdır ve büyük/küçük harfe duyarlıdır.<br/><br/>Bir dosya adı belirtirseniz, etkinlik (kopyalama dahil) belirli bir Blobun üzerinde kullanılır.<br/><br/>Dosya adı belirtilmediğinde, Copy, giriş veri kümesi için folderPath içindeki tüm Blobları içerir.<br/><br/>Bir çıkış veri kümesi için **dosya adı** belirtilmediğinde ve etkinlik havuzunda **preservehierarchy** belirtilmemişse, oluşturulan dosyanın adı şu biçimde olacaktır: `Data.<Guid>.txt` (örneğin:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |No |
-| partitionedBy |partitionedBy, isteğe bağlı bir özelliktir. Bu uygulamayı, zaman serisi verileri için dinamik bir folderPath ve filename belirtmek üzere kullanabilirsiniz. Örneğin, folderPath her saat veri için parametreleştirilebilirler. Ayrıntılar ve örnekler için [partitionedBy özelliğini kullanma bölümüne](#using-partitionedby-property) bakın. |No |
-| biçim | Şu biçim türleri desteklenir: **TextFormat**, **jsonformat**, **avroformat**, **orcformat**, **parquetformat**. Biçim ' in altındaki **Type** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için bkz. [metin biçimi](data-factory-supported-file-and-compression-formats.md#text-format), [JSON biçimi](data-factory-supported-file-and-compression-formats.md#json-format), [avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [orc biçimi](data-factory-supported-file-and-compression-formats.md#orc-format)ve [Parquet biçim](data-factory-supported-file-and-compression-formats.md#parquet-format) bölümleri. <br><br> Dosyaları dosya tabanlı mağazalar (ikili kopya) arasında **olduğu gibi kopyalamak** istiyorsanız, hem giriş hem de çıkış veri kümesi tanımlarının biçim bölümünü atlayın. |No |
-| sıkıştırma | Verilerin türünü ve sıkıştırma düzeyini belirtin. Desteklenen türler şunlardır: **gzip**, **söndür**, **bzip2**ve **zipsöndür**. Desteklenen düzeyler şunlardır: **en iyi** ve **en hızlı**. Daha fazla bilgi için bkz. [Azure Data Factory dosya ve sıkıştırma biçimleri](data-factory-supported-file-and-compression-formats.md#compression-support). |No |
+| folderPath |BLOB depolama alanındaki kapsayıcının ve klasörün yolu. Örnek: myblobcontainer\myblobfolder\ |Evet |
+| fileName |Blobun adı. Dosya adı isteğe bağlıdır ve büyük/küçük harfe duyarlıdır.<br/><br/>Bir dosya adı belirtirseniz, etkinlik (kopyalama dahil) belirli bir Blobun üzerinde kullanılır.<br/><br/>Dosya adı belirtilmediğinde, Copy, giriş veri kümesi için folderPath içindeki tüm Blobları içerir.<br/><br/>Bir çıkış veri kümesi için **dosya adı** belirtilmediğinde ve etkinlik havuzunda **preservehierarchy** belirtilmemişse, oluşturulan dosyanın adı şu biçimde olacaktır: `Data.<Guid>.txt` (örneğin:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Hayır |
+| partitionedBy |partitionedBy, isteğe bağlı bir özelliktir. Bu uygulamayı, zaman serisi verileri için dinamik bir folderPath ve filename belirtmek üzere kullanabilirsiniz. Örneğin, folderPath her saat veri için parametreleştirilebilirler. Ayrıntılar ve örnekler için [partitionedBy özelliğini kullanma bölümüne](#using-partitionedby-property) bakın. |Hayır |
+| biçim | Şu biçim türleri desteklenir: **TextFormat**, **jsonformat**, **avroformat**, **orcformat**, **parquetformat**. Biçim ' in altındaki **Type** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için bkz. [metin biçimi](data-factory-supported-file-and-compression-formats.md#text-format), [JSON biçimi](data-factory-supported-file-and-compression-formats.md#json-format), [avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [orc biçimi](data-factory-supported-file-and-compression-formats.md#orc-format)ve [Parquet biçim](data-factory-supported-file-and-compression-formats.md#parquet-format) bölümleri. <br><br> Dosyaları dosya tabanlı mağazalar (ikili kopya) arasında **olduğu gibi kopyalamak** istiyorsanız, hem giriş hem de çıkış veri kümesi tanımlarının biçim bölümünü atlayın. |Hayır |
+| sıkıştırma | Verilerin türünü ve sıkıştırma düzeyini belirtin. Desteklenen türler şunlardır: **gzip**, **söndür**, **bzip2**ve **zipsöndür**. Desteklenen düzeyler şunlardır: **en iyi** ve **en hızlı**. Daha fazla bilgi için bkz. [Azure Data Factory dosya ve sıkıştırma biçimleri](data-factory-supported-file-and-compression-formats.md#compression-support). |Hayır |
 
 ### <a name="using-partitionedby-property"></a>PartitionedBy özelliğini kullanma
 Önceki bölümde belirtildiği gibi, **Partitionedby** özelliği, [Data Factory işlevleri ve sistem değişkenleri](data-factory-functions-variables.md)ile zaman serisi verileri için dinamik bir FolderPath ve filename belirtebilirsiniz.
@@ -129,13 +129,13 @@ Etkinlikleri tanımlamaya yönelik bölüm & özelliklerinin tam listesi için, 
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| öz |Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. |True (varsayılan değer), yanlış |No |
+| öz |Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. |True (varsayılan değer), yanlış |Hayır |
 
 **Blobsink** , aşağıdaki özellikleri **typeproperties** bölümünü destekler:
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| copyBehavior |Kaynak BlobSource veya FileSystem olduğunda kopyalama davranışını tanımlar. |<b>Preservehierarchy</b>: Hedef klasördeki dosya hiyerarşisini korur. Kaynak dosyanın kaynak klasöre göreli yolu hedef dosyanın hedef klasöre göreli yolu ile aynıdır.<br/><br/><b>DÜZEDEN hiyerarşi</b>: kaynak klasördeki tüm dosyalar hedef klasörün ilk düzeyindedir. Hedef dosyaların otomatik olarak üretilen adı var. <br/><br/><b>Mergefiles</b>: kaynak klasördeki tüm dosyaları tek bir dosya ile birleştirir. Dosya/BLOB adı belirtilmişse, birleştirilmiş dosya adı belirtilen ad olur; Aksi takdirde, otomatik olarak oluşturulan dosya adı olacaktır. |No |
+| copyBehavior |Kaynak BlobSource veya FileSystem olduğunda kopyalama davranışını tanımlar. |<b>Preservehierarchy</b>: Hedef klasördeki dosya hiyerarşisini korur. Kaynak dosyanın kaynak klasöre göreli yolu hedef dosyanın hedef klasöre göreli yolu ile aynıdır.<br/><br/><b>DÜZEDEN hiyerarşi</b>: kaynak klasördeki tüm dosyalar hedef klasörün ilk düzeyindedir. Hedef dosyaların otomatik olarak üretilen adı var. <br/><br/><b>Mergefiles</b>: kaynak klasördeki tüm dosyaları tek bir dosya ile birleştirir. Dosya/BLOB adı belirtilmişse, birleştirilmiş dosya adı belirtilen ad olur; Aksi takdirde, otomatik olarak oluşturulan dosya adı olacaktır. |Hayır |
 
 **Blobsource** Ayrıca geriye dönük uyumluluk için bu iki özelliği destekler.
 

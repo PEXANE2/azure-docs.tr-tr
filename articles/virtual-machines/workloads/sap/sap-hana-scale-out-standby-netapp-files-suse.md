@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: radeltch
 ms.openlocfilehash: 21d4af6985dbe246e60fe95f8f03de7f8aa0501b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91314071"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server Azure NetApp Files kullanarak Azure VM 'lerinde bekleme düğümüne sahip bir SAP HANA genişleme sistemi dağıtma 
@@ -635,8 +635,8 @@ Bu örnekte, Azure ile bekleme moduna sahip genişleme yapılandırmasında SAP 
 6. Temel Azure NetApp Files depolama SAP HANA iyileştirmek için aşağıdaki SAP HANA parametrelerini ayarlayın:
 
    - `max_parallel_io_requests` **128**
-   - `async_read_submit`**üzerinde**
-   - `async_write_submit_active`**üzerinde**
+   - `async_read_submit` **on**
+   - `async_write_submit_active` **on**
    - `async_write_submit_blocks`**Tümü**
 
    Daha fazla bilgi için [Azure NetApp Files kullanarak Microsoft Azure NetApp SAP uygulamaları][anf-sap-applications-azure]bölümüne bakın. 

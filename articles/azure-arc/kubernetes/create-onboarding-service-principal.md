@@ -9,10 +9,10 @@ ms.author: mlearned
 description: 'Azure Arc etkin bir ekleme hizmeti sorumlusu oluşturma '
 keywords: Kubernetes, yay, Azure, kapsayıcılar
 ms.openlocfilehash: 02689dba32c8cc91e4a4a4de4dee98bc990b4dd6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87050081"
 ---
 # <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>Azure Arc etkin bir ekleme hizmeti sorumlusu oluşturma (Önizleme)
@@ -54,7 +54,7 @@ Rol atarken uygun bağımsız değişkene geçerek izinler daha fazla sınırlı
 | Kaynak  | `scope` bağımsız değişkeni| Etki |
 | ------------- | ------------- | ------------- |
 | Abonelik | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | Hizmet sorumlusu, belirtilen abonelikte var olan bir kaynak grubuna herhangi bir kümeyi kaydedebilir |
-| Kaynak Grubu | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Hizmet sorumlusu __yalnızca__ kaynak grubundaki kümeleri kaydedebilir`myGroup` |
+| Kaynak Grubu | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Hizmet sorumlusu __yalnızca__ kaynak grubundaki kümeleri kaydedebilir `myGroup` |
 
 ```console
 az role assignment create \

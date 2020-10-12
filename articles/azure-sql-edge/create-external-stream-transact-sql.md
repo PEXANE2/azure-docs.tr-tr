@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
 ms.openlocfilehash: e28ce4cd46cb802241e02e4060441747389d3989
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90888160"
 ---
 # <a name="create-external-stream-transact-sql"></a>Dış AKıŞ oluşturma (Transact-SQL)
@@ -26,7 +26,7 @@ Azure SQL Edge Şu anda yalnızca akış girişleri ve çıkışları olarak aş
 
 | Veri kaynağı türü | Girdi | Çıktı | Açıklama |
 |------------------|-------|--------|------------------|
-| Azure IoT Edge hub 'ı | Y | Y | Bir Azure IoT Edge hub 'ına akış verilerini okumak ve yazmak için veri kaynağı. Daha fazla bilgi için bkz. [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).|
+| Azure IoT Edge hub 'ı | E | E | Bir Azure IoT Edge hub 'ına akış verilerini okumak ve yazmak için veri kaynağı. Daha fazla bilgi için bkz. [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).|
 | SQL Veritabanı | H | E | SQL veritabanına akış verileri yazmak için veri kaynağı bağlantısı. Veritabanı, Azure SQL Edge 'deki bir yerel veritabanı veya SQL Server ya da Azure SQL veritabanı 'ndaki uzak bir veritabanı olabilir.|
 | Kafka | E | H | Bir Kafka konusunun akış verilerini okumak için veri kaynağı. Kafka desteği, Azure SQL Edge 'in ARM64 sürümünde kullanılamaz.|
 
@@ -96,7 +96,7 @@ WITH  ( <with_options> )
 - [FILE_FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql/)
 - **Konum**: veri kaynağındaki gerçek verilerin veya konumun adını belirtir. 
    - Edge hub veya Kafka Stream nesneleri için konum, okuma veya yazma için uç hub veya Kafka konusunun adını belirtir.
-   - SQL Stream nesneleri için (SQL Server, Azure SQL veritabanı veya Azure SQL Edge) konumu, tablonun adını belirtir. Akış, hedef tabloyla aynı veritabanında ve şemada oluşturulduysa yalnızca tablo adı yeterli olur. Aksi halde tablo adını tam olarak nitelemeniz gerekir (<database_name. schema_name. table_name).
+   - SQL Stream nesneleri için (SQL Server, Azure SQL veritabanı veya Azure SQL Edge) konumu, tablonun adını belirtir. Akış, hedef tabloyla aynı veritabanında ve şemada oluşturulduysa yalnızca tablo adı yeterli olur. Aksi halde tablo adını tam olarak nitelemeniz gerekir (<veritabanı_adı. schema_name. table_name).
    - Azure Blob depolama akışı nesne konumu, blob kapsayıcısı içinde kullanılacak yol deseninin anlamına gelir. Bu özellik hakkında daha fazla bilgi için bkz. (/makalenles/Stream-Analtics/Stream-Analtics-define-Outputs.MD # blob-Storage-and-Azure-Data-Lake-Gen2)
 
 - **INPUT_OPTIONS**: Kafka gibi hizmetler için anahtar-değer çiftleri olarak seçenekleri belirtin, akış sorgularının girdileri olan IoT Edge hub

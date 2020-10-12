@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: e64de987bd82f6b93350cdd706fc1a243d2855b1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90977839"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>P2S OpenVPN protokolü bağlantıları için VPN istemcisi yapılandırma: Azure AD kimlik doğrulaması
@@ -252,7 +252,7 @@ Bu adımlar, bağlantınızı her zaman açık ile otomatik olarak bağlanacak �
 ```
 ### <a name="can-i-import-the-profile-from-a-command-line-prompt"></a>Profili bir komut satırı isteminden içeri aktarabilir miyim?
 
-İndirilen **azurevpnconfig.xml** dosyasını **%USERPROFILE%\appdata\local\packages\microsoft. AzureVpn_8wekyb3d8bbwe \localstate** klasörüne yerleştirerek ve aşağıdaki komutu çalıştırarak profili bir komut satırı isteminden içeri aktarabilirsiniz:
+İndirilen **azurevpnconfig.xml** dosyasını **%USERPROFILE%\appdata\local\packages\ Microsoft.AzureVpn_8wekyb3d8bbwe \localstate** klasörüne yerleştirerek ve aşağıdaki komutu çalıştırarak profili bir komut satırı isteminden içeri aktarabilirsiniz:
 
 ```
 azurevpn -i azurevpnconfig.xml 

@@ -8,10 +8,10 @@ ms.date: 09/01/2019
 ms.author: thweiss
 ms.custom: devx-track-js
 ms.openlocfilehash: 81660bee32cace458424c9975c74ca7980148e29
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91316197"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>İstek Birim ücreti Azure Cosmos DB bulun
@@ -22,11 +22,11 @@ Bu makalede, Azure Cosmos DB bir kapsayıcıya karşı yürütülen herhangi bir
 
 SQL API 'sini kullanıyorsanız, bir Azure Cosmos kapsayıcısına karşı bir işlemin RU tüketimini bulmak için birden çok seçeneğiniz vardır.
 
-### <a name="use-the-azure-portal"></a>Azure portalı kullanma
+### <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
 Şu anda, yalnızca bir SQL sorgusu için Azure portal istek ücreti bulabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-sql-api-dotnet.md#create-account) ve verilerle birlikte akışı yapın veya zaten veri içeren mevcut bir Azure Cosmos hesabı seçin.
 
@@ -172,11 +172,11 @@ Daha fazla bilgi için bkz. [hızlı başlangıç: Azure Cosmos db SQL API hesab
 
 RU ücreti adlı özel bir [veritabanı komutu](https://docs.mongodb.com/manual/reference/command/) tarafından sunulur `getLastRequestStatistics` . Komutu, yürütülen son işlemin adını, istek ücretine ve süresini içeren bir belge döndürür. MongoDB için Azure Cosmos DB API kullanıyorsanız, RU ücreti almak için birden çok seçeneğiniz vardır.
 
-### <a name="use-the-azure-portal"></a>Azure portalı kullanma
+### <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
 Şu anda yalnızca bir sorgu için Azure portal istek ücreti bulabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-mongodb-dotnet.md#create-a-database-account) ve verilerle birlikte akışı yapın veya zaten veri içeren mevcut bir hesabı seçin.
 
@@ -188,7 +188,7 @@ RU ücreti adlı özel bir [veritabanı komutu](https://docs.mongodb.com/manual/
 
 1. Yürüttüğünüz istek için gerçek istek ücreti göstermek üzere **sorgu istatistikleri** ' ni seçin.
 
-:::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Azure portal MongoDB sorgu isteği ücreti ekran görüntüsü":::
+:::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Azure portal bir SQL sorgu isteği ücreti ekran görüntüsü":::
 
 ### <a name="use-the-mongodb-net-driver"></a>MongoDB .NET sürücüsünü kullanma
 

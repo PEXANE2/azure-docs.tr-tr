@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.openlocfilehash: 5fce1a8e2f4dda8ea84cfd66aa9dc13768ab17e7
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86077094"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Visual Studio için Data Lake araçları 'nı kullanarak Azure HDInsight 'a bağlanma ve Apache Hive sorguları çalıştırma
@@ -26,7 +26,7 @@ Apache Storm bağlanma hakkında daha fazla bilgi için bkz. [Data Lake araçlar
 
 Visual Studio için Data Lake Araçlarını hem Azure Data Lake Analytics’e hem de HDInsight’a erişmek için kullanabilirsiniz. Data Lake Araçları hakkında bilgi için bkz. [Visual Studio için Data Lake Araçları'nı kullanarak U-SQL betikleri geliştirme](../../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlayıp Visual Studio için Data Lake araçları 'nı kullanmak için aşağıdaki öğeler gereklidir:
 
@@ -129,7 +129,7 @@ Bir HDInsight kümesini bağlamak için:
 
     ![Bir kümeyi bağlama, HDInsight, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-link-cluster-dialog.png)
 
-3. **Son**'u seçin. Küme bağlama başarılı olursa, küme **HDInsight** düğümü altında listelenir.
+3. **Son**’u seçin. Küme bağlama başarılı olursa, küme **HDInsight** düğümü altında listelenir.
 
 Bağlı bir kümeyi güncelleştirmek için kümeye sağ tıklayın ve **Düzenle**' yi seçin. Daha sonra küme bilgilerini güncelleştirebilirsiniz.
 
@@ -314,7 +314,7 @@ Hive işlerini görüntülemek için:
 
 2. **Başlangıç** penceresinde arama kutusunu seçin ve **Pig**girin. Sonra **Pig uygulamasını** seçin ve **İleri**' yi seçin.
 
-3. **Yeni projenizi yapılandırın** penceresinde bir **Proje adı**girin ve proje için bir **konum** seçin veya oluşturun. Ardından **Oluştur**'u seçin.
+3. **Yeni projenizi yapılandırın** penceresinde bir **Proje adı**girin ve proje için bir **konum** seçin veya oluşturun. Ardından **Oluştur**’u seçin.
 
 4. IDE **Çözüm Gezgini** bölmesinde, Script **. Pig** öğesine çift tıklayarak betiği açın.
 
