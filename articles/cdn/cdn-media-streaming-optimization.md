@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
 ms.openlocfilehash: c3ab722f182e32cf2f3aca6bb2f3d5a9598264af
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88192611"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>Azure CDN ile medya akışı iyileştirmesi 
@@ -103,7 +103,7 @@ Aşağıdaki tabloda, medya akışı iyileştirmesi için karşılanması için 
 Desteklenen akış türleri | Dosya uzantıları  
 --- | ---  
 Apple HLS | M3U8, M3U, m3ub, anahtar, TS, AAC
-Adobe HDS | f4m, F4X, drmmeta, Bootstrap, F4F,<br>SEG-Frag URL yapısı <br> (Regex ile eşleşen: ^ (/. *) SEQ (\d +)-Frag (\d +)
+Adobe HDS | f4m, F4X, drmmeta, Bootstrap, F4F,<br>Seg-Frag URL yapısı <br> (Regex ile eşleşen: ^ (/. *) SEQ (\d +)-Frag (\d +)
 TILDE | MPD, Dash, DivX, ismv, M4S, M4V, MP4, MP4V, <br> sıdx, WebM, MP4A, M4A, Wed
 Kesintisiz Akış | /manifest/,/QualityLevels/Fragments/
   

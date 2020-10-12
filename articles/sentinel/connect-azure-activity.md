@@ -16,17 +16,17 @@ ms.workload: na
 ms.date: 03/22/2020
 ms.author: yelevin
 ms.openlocfilehash: 88f363406ec40dfa439a52ad351501d1c64dce95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85564500"
 ---
 # <a name="connect-data-from-azure-activity-log"></a>Azure etkinlik günlüğünden veri bağlama
 
 Günlükleri [Azure etkinlik günlüğünden](../azure-monitor/platform/platform-logs-overview.md) Azure Sentinel 'e tek bir tıklama ile akışla aktarabilirsiniz. Etkinlik günlüğü, Azure 'da abonelik düzeyindeki olayları kaydeden ve hizmet durumu olaylarında güncelleştirmelere Azure Resource Manager işlem verilerinden görüntüleyen bir abonelik günlüğleridir. Etkinlik günlüğünü kullanarak, aboneliğinizdeki kaynaklarda gerçekleştirilen herhangi bir yazma işlemi için (PUT, POST, SIL) ' ne, kim ve ne zaman ' i belirleyebilirsiniz. Ayrıca, işlemin durumunu ve ilgili diğer özellikleri de öğrenebilirsiniz. Etkinlik günlüğü, klasik/"RDFE" modelini kullanan kaynaklara yönelik okuma (GET) işlemlerini veya işlemlerini içermez. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Kullanıcı Log Analytics çalışma alanına katkıda bulunan izinlerine sahip olmalıdır.
 - Kullanıcılarınızın Azure Sentinel 'e akışını sağlamak istediğiniz abonelikler için okuyucu izinlerine sahip olması gerekir.

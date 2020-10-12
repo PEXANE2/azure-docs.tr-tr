@@ -1,5 +1,5 @@
 ---
-title: Azure VM 'Leri sorunlarını gidermek için SLES ile genişleme HSR-pacemaker SAP HANA | Microsoft Docs
+title: Azure VM 'Leri sorunlarını gidermek için SLES ile genişleme HSR-Pacemaker SAP HANA | Microsoft Docs
 description: Azure sanal makineler 'de çalışan SLES 12 SP3 üzerinde SAP HANA sistem çoğaltması (HSR) ve Paceyapıcısı temelinde, karmaşık SAP HANA genişleme yüksek kullanılabilirlik yapılandırmasını denetleme ve sorunlarını giderme kılavuzu
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
 ms.openlocfilehash: 5c3a24bc9d754a15a0b372667fbcd689365a9aec
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87088317"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>SLES 12 SP3 üzerinde yüksek kullanılabilirliğe sahip ayarları SAP HANA doğrulama ve sorun giderme 
@@ -40,7 +40,7 @@ Bu makale, Azure sanal makinelerinde (VM 'Ler) çalışan SAP HANA ölçeğini g
 
 ## <a name="important-notes"></a>Önemli notlar
 
-SAP HANA sistem çoğaltma ve Paceyapıcısı ile birlikte SAP HANA genişleme için tüm testler yalnızca SAP HANA 2,0 ile gerçekleştirildi. İşletim sistemi sürümü, SAP uygulamaları için 12 SP3 SUSE Linux Enterprise Server. SUSE 'den en son RPM paketi olan SAPHanaSR-ScaleOut, pacemaker kümesini ayarlamak için kullanılmıştır.
+SAP HANA sistem çoğaltma ve Paceyapıcısı ile birlikte SAP HANA genişleme için tüm testler yalnızca SAP HANA 2,0 ile gerçekleştirildi. İşletim sistemi sürümü, SAP uygulamaları için 12 SP3 SUSE Linux Enterprise Server. SUSE 'tan SAPHanaSR-ScaleOut en son RPM paketi pacemaker kümesini ayarlamak için kullanılmıştır.
 SUSE [, bu performans için iyileştirilmiş kurulumun ayrıntılı bir açıklamasını][sles-hana-scale-out-ha-paper]yayımladı.
 
 SAP HANA genişleme için desteklenen sanal makine türleri için [SAP HANA sertifikalı IaaS dizinini][sap-hana-iaas-list]denetleyin.

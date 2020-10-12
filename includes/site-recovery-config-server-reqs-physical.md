@@ -10,10 +10,10 @@ ms.date: 09/03/2018
 ms.author: raynew
 ms.custom: include file
 ms.openlocfilehash: afeae4af9b41bf434b26833a3bd927118a4697ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67188597"
 ---
 **Fiziksel sunucu çoğaltması için yapılandırma/Işlem sunucusu gereksinimleri**
@@ -31,13 +31,13 @@ Boş disk alanı (bekletme diski) | 600 GB
 İşletim sistemi | Windows Server 2012 R2 <br> Windows Server 2016
 İşletim sistemi yerel ayarı | İngilizce (en-us)
 Windows Server rolleri | Bu rolleri etkinleştirmeyin: <br> - Active Directory Domain Services <br>- İnternet Bilgi Hizmetleri <br> - Hyper-V 
-Grup ilkeleri | Bu grup ilkelerini etkinleştirmeyin: <br> -Komut istemine erişimi engelleyin. <br> -Kayıt defteri düzenlemesi araçlarına erişimi engelleyin. <br> -Dosya ekleri için güven mantığı. <br> -Betik yürütmeyi açın. <br> [Daha fazla bilgi](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
+Grup ilkeleri | Bu grup ilkelerini etkinleştirmeyin: <br> -Komut istemine erişimi engelleyin. <br> -Kayıt defteri düzenlemesi araçlarına erişimi engelleyin. <br> -Dosya ekleri için güven mantığı. <br> -Betik yürütmeyi açın. <br> [Daha fazla bilgi edinin](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
 IIS | -Önceden varolan varsayılan Web sitesi yok <br> -Önceden tanımlı bir Web sitesi/uygulama, 443 bağlantı noktasında dinleniyor <br>- [Anonim kimlik doğrulamasını](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) etkinleştir <br> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ayarını etkinleştirin.
 IP adresi türü | Statik 
 | 
 **ERIŞIM AYARLARı** | 
 MYSQL | MySQL, yapılandırma sunucusunda yüklü olmalıdır. Uygulamasını el ile yükleyebilir veya Site Recovery dağıtım sırasında yükleyebilirsiniz. Yüklemek Site Recovery için makinenin ulaşabileceği denetleyin http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi .
-URL’ler | Yapılandırma sunucusunun bu URL 'Lere erişmesi gerekir (doğrudan veya proxy üzerinden):<br/><br/> Azure AD: `login.microsoftonline.com` ; `login.microsoftonline.us` ;`*.accesscontrol.windows.net`<br/><br/> Çoğaltma veri aktarımı: `*.backup.windowsazure.com` ;`*.backup.windowsazure.us`<br/><br/> Çoğaltma Yönetimi: `*.hypervrecoverymanager.windowsazure.com` ; `*.hypervrecoverymanager.windowsazure.us` ;; `https://management.azure.com``*.services.visualstudio.com`<br/><br/> Depolama erişimi: `*.blob.core.windows.net` ;`*.blob.core.usgovcloudapi.net`<br/><br/> Zaman eşitleme: `time.nist.gov` ;`time.windows.com`<br/><br/> Telemetri (isteğe bağlı):`dc.services.visualstudio.com`
+URL’ler | Yapılandırma sunucusunun bu URL 'Lere erişmesi gerekir (doğrudan veya proxy üzerinden):<br/><br/> Azure AD: `login.microsoftonline.com` ; `login.microsoftonline.us` ; `*.accesscontrol.windows.net`<br/><br/> Çoğaltma veri aktarımı: `*.backup.windowsazure.com` ; `*.backup.windowsazure.us`<br/><br/> Çoğaltma Yönetimi: `*.hypervrecoverymanager.windowsazure.com` ; `*.hypervrecoverymanager.windowsazure.us` ;; `https://management.azure.com``*.services.visualstudio.com`<br/><br/> Depolama erişimi: `*.blob.core.windows.net` ; `*.blob.core.usgovcloudapi.net`<br/><br/> Zaman eşitleme: `time.nist.gov` ; `time.windows.com`<br/><br/> Telemetri (isteğe bağlı): `dc.services.visualstudio.com`
 Güvenlik Duvarı | IP adresi tabanlı güvenlik duvarı kuralları, Azure URL 'Lerine iletişime izin verir. IP aralıklarını basitleştirmek ve sınırlamak için, URL filtrelemeyi kullanmanızı öneririz.<br/><br/>**Ticari IP 'Ler için:**<br/><br/>- [Azure veri MERKEZI IP aralıklarına](https://www.microsoft.com/download/confirmation.aspx?id=41653)ve HTTPS (443) bağlantı noktasına izin verin.<br/><br/> -Batı ABD için IP adresi aralıklarına izin verin (Access Control ve kimlik yönetimi için kullanılır).<br/><br/> -Aboneliğinizin Azure bölgesi için IP adresi aralıklarına izin verin; Azure Active Directory, yedekleme, çoğaltma ve depolama için gereken URL 'Leri destekler.<br/><br/> **Kamu IP 'Leri için:**<br/><br/> -Azure Kamu veri merkezi IP aralıklarına ve HTTPS (443) bağlantı noktasına izin verin.<br/><br/> -Tüm US Gov bölgeleri için IP adresi aralıklarına izin ver (Virginia, Texas, Arizona ve Iowa), Azure Active Directory, yedekleme, çoğaltma ve depolama için gereken URL 'Leri destekler.
 Bağlantı noktaları | İzin ver 443 (denetim kanalı düzenlemesi)<br/><br/> İzin ver 9443 (veri aktarımı) 
 

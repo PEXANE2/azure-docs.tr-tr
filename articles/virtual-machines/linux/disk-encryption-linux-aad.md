@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: fa01c4a595a08ffdba56d777128431946540eee5
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87372680"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Linux sanal makinelerinde Azure AD ile Azure disk şifrelemesini etkinleştirme (önceki sürüm)
@@ -25,7 +25,7 @@ Birçok disk şifreleme senaryosunu etkinleştirebilirsiniz ve adımlar senaryoy
 - [Ağ ve grup ilkesi](disk-encryption-overview-aad.md#networking-and-group-policy)
 - [Şifreleme anahtarı depolama gereksinimleri](disk-encryption-overview-aad.md#encryption-key-storage-requirements)
 
-Diskleri şifrelemeden önce bir [anlık görüntü](snapshot-copy-managed-disk.md)alın, yedekleme yapın veya her ikisini birden yapın. Yedeklemeler, şifreleme sırasında beklenmeyen bir hata oluşursa, kurtarma seçeneğinin mümkün olmasını güvence altına almanıza olanak tanır. Yönetilen disklere sahip VM 'Ler şifreleme gerçekleşmeden önce bir yedekleme gerektirir. Bir yedekleme yapıldıktan sonra,-skipVmBackup parametresini belirterek yönetilen diskleri şifrelemek için set-AzVMDiskEncryptionExtension cmdlet 'ini kullanabilirsiniz. Şifrelenmiş VM 'Leri yedekleme ve geri yükleme hakkında daha fazla bilgi için bkz. [Azure Backup](../../backup/backup-azure-vms-encryption.md). 
+Diskleri şifrelemeden önce bir [anlık görüntü](snapshot-copy-managed-disk.md)alın, yedekleme yapın veya her ikisini birden yapın. Yedeklemeler, şifreleme sırasında beklenmeyen bir hata oluşursa, kurtarma seçeneğinin mümkün olmasını güvence altına almanıza olanak tanır. Yönetilen disklere sahip VM 'Ler şifreleme gerçekleşmeden önce bir yedekleme gerektirir. Bir yedekleme yapıldıktan sonra,-skipVmBackup parametresini belirterek yönetilen diskleri şifrelemek için Set-AzVMDiskEncryptionExtension cmdlet 'ini kullanabilirsiniz. Şifrelenmiş VM 'Leri yedekleme ve geri yükleme hakkında daha fazla bilgi için bkz. [Azure Backup](../../backup/backup-azure-vms-encryption.md). 
 
 >[!WARNING]
  > - Bu VM 'yi şifrelemek için [Azure AD uygulaması Ile Azure disk şifrelemesi](disk-encryption-overview-aad.md) 'ni daha önce kullandıysanız, sanal makineyi şifrelemek için bu seçeneği kullanmaya devam etmeniz gerekir. Bu şifrelenmiş sanal makinede [Azure disk şifrelemesi](disk-encryption-overview.md) 'ni kullanamazsınız çünkü bu desteklenen bir senaryo olmadığından, bu şifrelenmiş VM IÇIN Azure AD uygulamasından geçiş henüz desteklenmez.
@@ -41,7 +41,7 @@ Diskleri şifrelemeden önce bir [anlık görüntü](snapshot-copy-managed-disk.
 Bu senaryoda, Azure Resource Manager şablonu, PowerShell cmdlet 'leri veya Azure CLı komutlarını kullanarak şifrelemeyi etkinleştirebilirsiniz. 
 
 >[!IMPORTANT]
- >Azure disk şifrelemesini etkinleştirmeden önce, bir anlık görüntü almak veya yönetilen disk tabanlı bir sanal makine örneğini yedeklemek zorunludur. Azure portal yönetilen diskin anlık görüntüsünü alabilirsiniz veya [Azure Backup](../../backup/backup-azure-vms-encryption.md)kullanabilirsiniz. Yedeklemeler, şifreleme sırasında beklenmeyen bir hata olması durumunda kurtarma seçeneğinin yapılabilmesini sağlamaktır. Bir yedekleme yapıldıktan sonra,-skipVmBackup parametresini belirterek yönetilen diskleri şifrelemek için set-AzVMDiskEncryptionExtension cmdlet 'ini kullanın. Set-AzVMDiskEncryptionExtension komutu, bir yedekleme yapılıncaya ve bu parametre belirtilene kadar yönetilen disk tabanlı VM 'Lere karşı başarısız olur. 
+ >Azure disk şifrelemesini etkinleştirmeden önce, bir anlık görüntü almak veya yönetilen disk tabanlı bir sanal makine örneğini yedeklemek zorunludur. Azure portal yönetilen diskin anlık görüntüsünü alabilirsiniz veya [Azure Backup](../../backup/backup-azure-vms-encryption.md)kullanabilirsiniz. Yedeklemeler, şifreleme sırasında beklenmeyen bir hata olması durumunda kurtarma seçeneğinin yapılabilmesini sağlamaktır. Bir yedekleme yapıldıktan sonra,-skipVmBackup parametresini belirterek yönetilen diskleri şifrelemek için Set-AzVMDiskEncryptionExtension cmdlet 'ini kullanın. Set-AzVMDiskEncryptionExtension komutu, bir yedekleme yapılıncaya ve bu parametre belirtilene kadar yönetilen disk tabanlı VM 'Lere karşı başarısız olur. 
 >
 >Şifrelemeyi şifrelemek veya devre dışı bırakmak, sanal makinenin yeniden başlatılmasına neden olabilir. 
 >
@@ -81,7 +81,7 @@ Azure 'da çalışan bir IaaS sanal makinesinde şifrelemeyi etkinleştirmek iç
 ### <a name="enable-encryption-on-an-existing-or-running-linux-vm-by-using-powershell"></a><a name="bkmk_RunningLinuxPSH"> </a> PowerShell kullanarak mevcut veya çalışan BIR Linux VM 'de şifrelemeyi etkinleştirme
 Azure 'da çalışan bir IaaS sanal makinesinde şifrelemeyi etkinleştirmek için [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) cmdlet 'ini kullanın. Diskler şifrelenmeden önce bir [anlık görüntü](snapshot-copy-managed-disk.md) alın veya [Azure Backup](../../backup/backup-azure-vms-encryption.md) VM yedeklemesi yapın. -SkipVmBackup parametresi, çalışan bir Linux sanal makinesini şifrelemek için PowerShell betiklerine zaten belirtildi.
 
-- **Çalışan bir VM 'yi bir istemci parolası kullanarak şifreleyin:** Aşağıdaki betik, değişkenlerinizi başlatır ve set-AzVMDiskEncryptionExtension cmdlet 'ini çalıştırır. Kaynak grubu, VM, Anahtar Kasası, Azure AD uygulaması ve istemci parolası zaten ön koşullar olarak oluşturulmuş olmalıdır. MyVirtualMachineResourceGroup, MyKeyVaultResourceGroup, MySecureVM, Mysecurekasası, My-AAD-Client-ID ve My-AAD-Client-Secret değerlerini değerlerinizle değiştirin. Hangi diskleri şifrelediğiniz belirlemek için-VolumeType parametresini değiştirin.
+- **Çalışan bir VM 'yi bir istemci parolası kullanarak şifreleyin:** Aşağıdaki betik, değişkenlerinizi başlatır ve Set-AzVMDiskEncryptionExtension cmdlet 'ini çalıştırır. Kaynak grubu, VM, Anahtar Kasası, Azure AD uygulaması ve istemci parolası zaten ön koşullar olarak oluşturulmuş olmalıdır. MyVirtualMachineResourceGroup, MyKeyVaultResourceGroup, MySecureVM, Mysecurekasası, My-AAD-Client-ID ve My-AAD-Client-Secret değerlerini değerlerinizle değiştirin. Hangi diskleri şifrelediğiniz belirlemek için-VolumeType parametresini değiştirin.
 
      ```azurepowershell
          $VMRGName = 'MyVirtualMachineResourceGroup';
@@ -187,7 +187,7 @@ EncryptFormatAll seçeneğini kullanmak için, bir Linux sanal makinesini şifre
 ### <a name="use-the-encryptformatall-parameter-with-a-powershell-cmdlet"></a><a name="bkmk_EFAPSH"> </a> Bir PowerShell cmdlet 'ı Ile EncryptFormatAll parametresini kullanma
 EncryptFormatAll parametresiyle [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) cmdlet 'ini kullanın.
 
-**Çalışan bir VM 'yi bir istemci gizli anahtarı ve EncryptFormatAll kullanarak şifreleyin:** Örnek olarak, aşağıdaki betik değişkenlerinizi başlatır ve set-AzVMDiskEncryptionExtension cmdlet 'ini EncryptFormatAll parametresiyle çalıştırır. Kaynak grubu, VM, Anahtar Kasası, Azure AD uygulaması ve istemci parolası zaten ön koşullar olarak oluşturulmuş olmalıdır. MyKeyVaultResourceGroup, MyVirtualMachineResourceGroup, MySecureVM, Mysecurekasası, My-AAD-Client-ID ve My-AAD-Client-Secret değerlerini değerlerinizle değiştirin.
+**Çalışan bir VM 'yi bir istemci gizli anahtarı ve EncryptFormatAll kullanarak şifreleyin:** Örnek olarak, aşağıdaki betik değişkenlerinizi başlatır ve Set-AzVMDiskEncryptionExtension cmdlet 'ini EncryptFormatAll parametresiyle çalıştırır. Kaynak grubu, VM, Anahtar Kasası, Azure AD uygulaması ve istemci parolası zaten ön koşullar olarak oluşturulmuş olmalıdır. MyKeyVaultResourceGroup, MyVirtualMachineResourceGroup, MySecureVM, Mysecurekasası, My-AAD-Client-ID ve My-AAD-Client-Secret değerlerini değerlerinizle değiştirin.
   
    ```azurepowershell
      $KVRGname = 'MyKeyVaultResourceGroup';
@@ -227,7 +227,7 @@ Bir LVM-şifreli kurulum önerilir. Aşağıdaki örneklerin tümü için, cihaz
         echo "/dev/disk/azure/scsi1/lun0 /mnt/mountpoint ext4 defaults,nofail 1 2" >> /etc/fstab
         ```
 
-    4. Bu diskleri şifrelemek için set-AzVMDiskEncryptionExtension PowerShell cmdlet 'ini-EncryptFormatAll ile çalıştırın.
+    4. Bu diskleri şifrelemek için-EncryptFormatAll ile Set-AzVMDiskEncryptionExtension PowerShell cmdlet 'ini çalıştırın.
 
        ```azurepowershell-interactive
         Set-AzVMDiskEncryptionExtension -ResourceGroupName "MySecureGroup" -VMName "MySecureVM" -DiskEncryptionKeyVaultUrl "https://mykeyvault.vault.azure.net/" -EncryptFormatAll
@@ -246,7 +246,7 @@ Azure 'da kullanılabilen önceden şifrelenmiş görüntüleri hazırlama ekind
 * [Önceden şifrelenen bir Linux VHD hazırlama](disk-encryption-sample-scripts.md)
 
 >[!IMPORTANT]
- >Azure disk şifrelemesini etkinleştirmeden önce, bir anlık görüntü almak veya yönetilen disk tabanlı bir sanal makine örneğini yedeklemek zorunludur. Portaldan yönetilen diskin anlık görüntüsünü alabilirsiniz veya [Azure Backup](../../backup/backup-azure-vms-encryption.md)kullanabilirsiniz. Yedeklemeler, şifreleme sırasında beklenmeyen bir hata olması durumunda kurtarma seçeneğinin yapılabilmesini sağlamaktır. Bir yedekleme yapıldıktan sonra,-skipVmBackup parametresini belirterek yönetilen diskleri şifrelemek için set-AzVMDiskEncryptionExtension cmdlet 'ini kullanın. Set-AzVMDiskEncryptionExtension komutu, bir yedekleme yapılıncaya ve bu parametre belirtilene kadar yönetilen disk tabanlı VM 'Lere karşı başarısız olur. 
+ >Azure disk şifrelemesini etkinleştirmeden önce, bir anlık görüntü almak veya yönetilen disk tabanlı bir sanal makine örneğini yedeklemek zorunludur. Portaldan yönetilen diskin anlık görüntüsünü alabilirsiniz veya [Azure Backup](../../backup/backup-azure-vms-encryption.md)kullanabilirsiniz. Yedeklemeler, şifreleme sırasında beklenmeyen bir hata olması durumunda kurtarma seçeneğinin yapılabilmesini sağlamaktır. Bir yedekleme yapıldıktan sonra,-skipVmBackup parametresini belirterek yönetilen diskleri şifrelemek için Set-AzVMDiskEncryptionExtension cmdlet 'ini kullanın. Set-AzVMDiskEncryptionExtension komutu, bir yedekleme yapılıncaya ve bu parametre belirtilene kadar yönetilen disk tabanlı VM 'Lere karşı başarısız olur. 
 >
 >Şifrelemeyi şifrelemek veya devre dışı bırakmak, sanal makinenin yeniden başlatılmasına neden olabilir.
 
@@ -285,7 +285,7 @@ PowerShell sözdiziminin aksine, şifrelemeyi etkinleştirdiğinizde CLı, benze
  Linux için yeni bir disk şifrelemek üzere PowerShell kullandığınızda yeni bir sıra sürümünün belirtilmesi gerekir. Sıra sürümü benzersiz olmalıdır. Aşağıdaki betik, dizi sürümü için bir GUID üretir. 
  
 
--  **Çalışan bir VM 'yi bir istemci parolası kullanarak şifreleyin:** Aşağıdaki betik, değişkenlerinizi başlatır ve set-AzVMDiskEncryptionExtension cmdlet 'ini çalıştırır. Kaynak grubu, VM, Anahtar Kasası, Azure AD uygulaması ve istemci parolası zaten ön koşullar olarak oluşturulmuş olmalıdır. MyVirtualMachineResourceGroup, MyKeyVaultResourceGroup, MySecureVM, Mysecurekasası, My-AAD-Client-ID ve My-AAD-Client-Secret değerlerini değerlerinizle değiştirin. -VolumeType parametresi, işletim sistemi diskine değil, veri disklerine ayarlanır. VM daha önce "OS" veya "All" birim türüyle şifrelendiyse, hem işletim sistemi hem de yeni veri diskinin dahil edilmesini sağlamak için-VolumeType parametresinin tümü olarak değiştirilmesi gerekir.
+-  **Çalışan bir VM 'yi bir istemci parolası kullanarak şifreleyin:** Aşağıdaki betik, değişkenlerinizi başlatır ve Set-AzVMDiskEncryptionExtension cmdlet 'ini çalıştırır. Kaynak grubu, VM, Anahtar Kasası, Azure AD uygulaması ve istemci parolası zaten ön koşullar olarak oluşturulmuş olmalıdır. MyVirtualMachineResourceGroup, MyKeyVaultResourceGroup, MySecureVM, Mysecurekasası, My-AAD-Client-ID ve My-AAD-Client-Secret değerlerini değerlerinizle değiştirin. -VolumeType parametresi, işletim sistemi diskine değil, veri disklerine ayarlanır. VM daha önce "OS" veya "All" birim türüyle şifrelendiyse, hem işletim sistemi hem de yeni veri diskinin dahil edilmesini sağlamak için-VolumeType parametresinin tümü olarak değiştirilmesi gerekir.
 
      ```azurepowershell
          $KVRGname = 'MyKeyVaultResourceGroup';

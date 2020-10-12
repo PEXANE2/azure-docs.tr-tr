@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: 8a459d1fba4353b4b3e092e83a759314cc455ead
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87087297"
 ---
 # <a name="azure-media-player-localization"></a>Azure Media Player yerelleştirme #
@@ -28,7 +28,7 @@ Azure Media Player şu anda ilgili dil kodlarıyla aşağıdaki dilleri destekle
 
 | Dil            | Kod | Dil                | Kod   | Dil                | Kod         |
 |---------------------|------|-------------------------|--------|-------------------------|--------------|
-| İngilizce {varsayılan}   | tr   | Hırvatça                | sa     | Rumence                | ro           |
+| İngilizce {varsayılan}   | en   | Hırvatça                | sa     | Rumence                | ro           |
 | Arapça              | Ar   | Macarca               | Hu     | Slovakça                  | sor           |
 | Bulgarca           | bg   | Endonezce              | kimlik     | Slovene                 | SL           |
 | Katalanca             | yetkilisini   | İzlandaca               | is     | Sırpça (Kiril)      | SR-Cyrl-CS   |
@@ -36,7 +36,7 @@ Azure Media Player şu anda ilgili dil kodlarıyla aşağıdaki dilleri destekle
 | Danca              | kapattığımda   | Japonca                | Sofya     | Rusça                 | ru           |
 | Almanca              | seçimini   | Kazakça                  | kk     | İsveççe                 | v           |
 | Yunanca               | seri   | Korece                  | dili     | Tayca                    | 11           |
-| İspanyolca             | es   | Litvanca              | lt     | Tagalog                 | TL           |
+| Spanish             | es   | Litvanca              | lt     | Tagalog                 | TL           |
 | Estonya Dili            | lale   | Letonca                 | aramasını     | Türkçe                 | tr           |
 | Baskça              | yapılan   | Malezya               | SWM     | Ukraynaca               | tr           |
 | Harfinin               | belirlediğiniz   | Norveççe-BokmÃ ¥ l     | NB     | Urduca                    | metninizi           |

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: c6f0f48df32db0beb9c0a57982d9bc87b26538d8
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86135137"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>VMware VM 'Leri ve fiziksel sunucuları ikincil bir siteye olağanüstü durum kurtarması için destek matrisi
@@ -66,16 +66,16 @@ Yalnızca aşağıdaki depolama alanına sahip Linux makineleri çoğaltılabili
 
 ## <a name="network-configuration---hostguest-vm"></a>Ağ yapılandırması-Konak/Konuk VM
 
-**Yapılandırma** | **Destek**  
+**Yapılandırma** | **Desteklenir**  
 --- | --- 
-Konak-NIC Grubu oluşturma | Yes 
-Konak-VLAN | Yes 
-Ana bilgisayar-IPv4 | Yes 
-Ana bilgisayar-IPv6 | No 
-Konuk VM-NIC ekibi oluşturma | No
-Konuk VM-IPv4 | Yes
-Konuk VM-IPv6 | No
-Konuk VM-Windows/Linux-statik IP adresi | Yes
+Konak-NIC Grubu oluşturma | Evet 
+Konak-VLAN | Evet 
+Ana bilgisayar-IPv4 | Evet 
+Ana bilgisayar-IPv6 | Hayır 
+Konuk VM-NIC ekibi oluşturma | Hayır
+Konuk VM-IPv4 | Evet
+Konuk VM-IPv6 | Hayır
+Konuk VM-Windows/Linux-statik IP adresi | Evet
 Konuk VM-çoklu NIC | Yes
 
 
@@ -83,45 +83,45 @@ Konuk VM-çoklu NIC | Yes
 
 ### <a name="host-storage"></a>Konak depolaması
 
-**Depolama (ana bilgisayar)** | **Destek** 
+**Depolama (ana bilgisayar)** | **Desteklenir** 
 --- | --- 
-NFS | Yes 
-SMB 3.0 | YOK 
-SAN (ISCSı) | Yes 
-Çoklu yol (MPIO) | Yes 
+NFS | Evet 
+SMB 3.0 | Yok 
+SAN (ISCSı) | Evet 
+Çoklu yol (MPIO) | Evet 
 
 ### <a name="guest-or-physical-server-storage"></a>Konuk veya fiziksel sunucu depolaması
 
-**Yapılandırma** | **Destek** 
+**Yapılandırma** | **Desteklenir** 
 --- | --- 
-VMDK | Yes 
-VHD/VHDX | YOK 
-Gen 2 VM | YOK 
-Paylaşılan küme diski | Yes 
-Şifrelenmiş disk | No 
-UEFı| Yes 
-NFS | No 
-SMB 3.0 | No 
-RDM | Yes 
-Disk > 1 TB | Yes 
-Dizili disk > 1 TB olan birim<br/><br/> LVM | Yes 
-Depolama Alanları | No 
-Dinamik disk Ekle/Kaldır | Yes 
-Diski hariç tutma | Yes 
-Çoklu yol (MPIO) | YOK 
+VMDK | Evet 
+VHD/VHDX | Yok 
+Gen 2 VM | Yok 
+Paylaşılan küme diski | Evet 
+Şifrelenmiş disk | Hayır 
+UEFı| Evet 
+NFS | Hayır 
+SMB 3.0 | Hayır 
+RDM | Evet 
+Disk > 1 TB | Evet 
+Dizili disk > 1 TB olan birim<br/><br/> LVM | Evet 
+Depolama Alanları | Hayır 
+Dinamik disk Ekle/Kaldır | Evet 
+Diski hariç tutma | Evet 
+Çoklu yol (MPIO) | Yok 
 
 ## <a name="vaults"></a>Kasalar
 
-**Eylem** | **Destek** 
+**Eylem** | **Desteklenir** 
 --- | --- 
-Kasalarını kaynak grupları arasında taşıma (veya abonelikler arasında) | No 
-Depolama, ağ ve Azure VM 'lerini kaynak grupları arasında taşıma (abonelikler içinde veya abonelikler arasında) | No 
+Kasalarını kaynak grupları arasında taşıma (veya abonelikler arasında) | Hayır 
+Depolama, ağ ve Azure VM 'lerini kaynak grupları arasında taşıma (abonelikler içinde veya abonelikler arasında) | Hayır 
 
 ## <a name="mobility-service-and-updates"></a>Mobility hizmeti ve güncelleştirmeleri
 
 Mobility hizmeti, şirket içi VMware sunucuları veya fiziksel sunucular ile ikincil site arasındaki çoğaltmayı koordine eder. Çoğaltmayı ayarlarken, Mobility hizmetinin en son sürümüne ve diğer bileşenlere sahip olduğunuzdan emin olun.
 
-| **Güncelleştir** | **Ayrıntılar** |
+| **Güncelleştirme** | **Ayrıntılar** |
 | --- | --- |
 |Scout güncelleştirmeleri | Scout güncelleştirmeleri birikimlidir. <br/><br/> En son Scout güncelleştirmelerini [öğrenin ve indirin](vmware-physical-secondary-disaster-recovery.md#updates) |
 |Bileşen güncelleştirmeleri | Scout güncelleştirmeleri, korumak istediğiniz RX sunucusu, yapılandırma sunucusu, işlem ve ana hedef sunucuları, vContinuum sunucuları ve kaynak sunucuları dahil olmak üzere tüm bileşenlere yönelik güncelleştirmeleri içerir.<br/><br/> [Daha fazla bilgi edinin](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).|

@@ -12,10 +12,10 @@ ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b01f1edd4305c09a874b177e4bca373991c9162e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85203818"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Koşullar ve Predicatedoğrulamaları
@@ -44,7 +44,7 @@ Aşağıdaki diyagramda öğeler arasındaki ilişki gösterilmektedir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Kimlik | Evet | Koşul için kullanılan bir tanımlayıcı. Diğer öğeler ilkede bu tanımlayıcıyı kullanabilir. |
+| Id | Evet | Koşul için kullanılan bir tanımlayıcı. Diğer öğeler ilkede bu tanımlayıcıyı kullanabilir. |
 | Yöntem | Evet | Doğrulama için kullanılacak yöntem türü. Olası değerler: [ılengthrange](#islengthrange), [matchesregex](#matchesregex), [ıncludescharacters](#includescharacters)veya [ıdadterange](#isdaterange).  |
 | HelpText | Hayır | Denetim başarısız olursa kullanıcılara yönelik bir hata iletisi. Bu dize, [dil özelleştirmesi](localization.md) kullanılarak yerelleştirilebilecek |
 
@@ -65,7 +65,7 @@ Aşağıdaki diyagramda öğeler arasındaki ilişki gösterilmektedir:
 
 | Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
-| Kimlik | 1:1 | Parametrenin tanımlayıcısı. |
+| Id | 1:1 | Parametrenin tanımlayıcısı. |
 
 ### <a name="predicate-methods"></a>Koşul yöntemleri
 
@@ -114,7 +114,7 @@ Includescharacters yöntemi, bir dize talep değerinin bir karakter kümesi içe
 
 | Parametre | Gerekli | Açıklama |
 | ------- | ----------- | ----------- |
-| CharacterSet | Evet | Girilebilecek karakter kümesi. Örneğin, küçük harfli karakterler `a-z` , büyük harfler `A-Z` , rakamlar `0-9` veya gibi semboller listesi `@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!` . |
+| CharacterSet | Evet | Girilebilecek karakter kümesi. Örneğin, küçük harfli karakterler  `a-z` , büyük harfler `A-Z` , rakamlar `0-9` veya gibi semboller listesi `@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!` . |
 
 Aşağıdaki örnek, `IncludesCharacters` parametresini `CharacterSet` belirten ve karakter kümesini belirten bir yöntemi gösterir:
 
@@ -180,7 +180,7 @@ Koşullar bir talep türüne karşı denetlenecek doğrulamayı tanımlalarken, 
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Kimlik | Evet | Koşul doğrulama için kullanılan bir tanımlayıcı. **ClaimType** öğesi bu tanımlayıcıyı ilkede kullanabilir. |
+| Id | Evet | Koşul doğrulama için kullanılan bir tanımlayıcı. **ClaimType** öğesi bu tanımlayıcıyı ilkede kullanabilir. |
 
 **Predicatevalidation** öğesi aşağıdaki öğeyi içerir:
 
@@ -198,7 +198,7 @@ Koşullar bir talep türüne karşı denetlenecek doğrulamayı tanımlalarken, 
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Kimlik | Evet | Koşul grubu için kullanılan bir tanımlayıcı.  |
+| Id | Evet | Koşul grubu için kullanılan bir tanımlayıcı.  |
 
 **Predicategroup** öğesi aşağıdaki öğeleri içerir:
 
@@ -223,7 +223,7 @@ Koşullar bir talep türüne karşı denetlenecek doğrulamayı tanımlalarken, 
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Kimlik | Evet | Koşul doğrulama için kullanılan bir tanımlayıcı.  |
+| Id | Evet | Koşul doğrulama için kullanılan bir tanımlayıcı.  |
 
 
 ## <a name="configure-password-complexity"></a>Parola karmaşıklığını yapılandırma

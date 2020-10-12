@@ -12,10 +12,10 @@ ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 4824b64236270c422f22809e9eeb191ee3be27fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85202577"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'da çoklu oturum açma oturumu yönetimi
@@ -28,7 +28,7 @@ Azure AD B2C, kullanılabilecek birkaç SSO oturum sağlayıcısı tanımladı:
 
 |Oturum sağlayıcısı  |Kapsam  |
 |---------|---------|
-|[NoopSSOSessionProvider](#noopssosessionprovider)     |  Hiçbiri       |       
+|[NoopSSOSessionProvider](#noopssosessionprovider)     |  Yok       |       
 |[DefaultSSOSessionProvider](#defaultssosessionprovider)    | Azure AD B2C iç oturum Yöneticisi.      |       
 |[ExternalLoginSSOSessionProvider](#externalloginssosessionprovider)     | Azure AD B2C ile OAuth1, OAuth2 veya OpenID Connect kimlik sağlayıcısı arasında.        |         |
 |[OAuthSSOSessionProvider](#oauthssosessionprovider)     | Bir OAuth2 veya OpenID Connect bağlı olan taraf uygulaması ve Azure AD B2C.        |        

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: syclebsc
 ms.openlocfilehash: f9b7b92fd21e12f1d86c5d5878e48c6ec6b0e748
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87088028"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Işlevleri F # geliştirici başvurusu
@@ -278,16 +278,16 @@ let mylog(log: ILogger, text: string) =
 
 Yollar, `#load` dosyanın konumuyla ilişkilidir `.fsx` .
 
-* `#load "logger.fsx"`işlev klasöründe bulunan bir dosyayı yükler.
-* `#load "package\logger.fsx"`işlev klasöründeki klasöründe bulunan bir dosyayı yükler `package` .
-* `#load "..\shared\mylogger.fsx"`klasörde bulunan bir dosyayı, `shared` işlev klasörüyle aynı düzeyde, diğer bir deyişle, doğrudan altında yükler `wwwroot` .
+* `#load "logger.fsx"` işlev klasöründe bulunan bir dosyayı yükler.
+* `#load "package\logger.fsx"` işlev klasöründeki klasöründe bulunan bir dosyayı yükler `package` .
+* `#load "..\shared\mylogger.fsx"` klasörde bulunan bir dosyayı, `shared` işlev klasörüyle aynı düzeyde, diğer bir deyişle, doğrudan altında yükler `wwwroot` .
 
 `#load`Yönerge yalnızca `.fsx` (F # betiği) dosyalarla birlikte çalışarak dosyalarla birlikte kullanılamaz `.fs` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
-* [F # Kılavuzu](/dotnet/articles/fsharp/index)
+* [F# Kılavuzu](/dotnet/articles/fsharp/index)
 * [Azure Işlevleri için en iyi uygulamalar](functions-best-practices.md)
 * [Azure İşlevleri geliştirici başvurusu](functions-reference.md)
 * [Azure Işlevleri Tetikleyicileri ve bağlamaları](functions-triggers-bindings.md)

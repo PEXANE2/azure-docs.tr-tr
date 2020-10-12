@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/18/2020
 ms.openlocfilehash: f1707c7f8d6324678c8bf5a470bbded1e58c719e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77470726"
 ---
 # <a name="debug-wasb-file-operations-in-azure-hdinsight"></a>Azure HDInsight 'ta işlem hatalarını ayıklama dosyası işlemleri
@@ -38,7 +38,7 @@ Azure depolama ile ilgili olan işlemleri hangi işlemlerin başlatıldığını
 
     Ekleyin `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG` .
 
-1. Değişiklikleri kaydedin.
+1. Değişiklikleri kaydet.
 
 ## <a name="additional-logging"></a>Ek günlükler
 

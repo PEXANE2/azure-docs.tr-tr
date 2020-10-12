@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
 ms.openlocfilehash: d333972ea5f74d1676e5e4b4e1417c6bf5d87b79
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86135347"
 ---
 # <a name="troubleshoot-vcenter-server-discovery-failures"></a>vCenter Server bulma hatalarıyla ilgili sorunları giderme
@@ -20,7 +20,7 @@ Bu makale, VMware vCenter bulma hataları nedeniyle oluşan sorunları gidermeni
 
 ## <a name="non-numeric-values-in-the-maxsnapshots-property"></a>MaxSnapShots özelliğindeki sayısal olmayan değerler
 
-9,20 ' den önceki sürümlerde vCenter, bir VM 'deki Özellik özelliği için sayısal olmayan bir değer aldığında bağlantı kesilir `snapshot.maxSnapShots` .
+9,20 ' den önceki sürümlerde vCenter, bir VM 'deki Özellik özelliği için sayısal olmayan bir değer aldığında bağlantı kesilir  `snapshot.maxSnapShots` .
 
 Bu sorun 95126 hata KIMLIĞIYLE tanımlanır.
 

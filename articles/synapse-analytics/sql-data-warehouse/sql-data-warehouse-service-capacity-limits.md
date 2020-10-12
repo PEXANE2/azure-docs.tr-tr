@@ -12,10 +12,10 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: c0fcbe59aa4393f1266c0840cf05c3dc7b1f6d90
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85204991"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) kapasite sınırları
@@ -31,7 +31,7 @@ ms.locfileid: "85204991"
 | Veritabanı bağlantısı |Maksimum eş zamanlı açık oturum |1024<br/><br/>Eş zamanlı açık oturumların sayısı, seçilen DWU 'ya göre değişiklik gösterecektir. DWU600c ve üzeri, en fazla 1024 açık oturumu destekler. DWU500c ve altı, en fazla eşzamanlı açık oturum sınırı olan 512 ' i destekler. Aynı anda yürütebileceğini sorgu sayısı için sınırlamalar olduğunu unutmayın. Eşzamanlılık sınırı aşıldığında, istek işlenmek üzere beklediği bir iç sıraya gider. |
 | Veritabanı bağlantısı |Hazırlanan deyimler için maksimum bellek |20 MB |
 | [İş yükü yönetimi](resource-classes-for-workload-management.md) |En fazla eşzamanlı sorgu |128<br/><br/>  En fazla 128 eşzamanlı sorgu yürütülecektir ve kalan sorgular sıraya alınacaktır.<br/><br/>Kullanıcılar daha yüksek kaynak sınıflarına atandığında veya [veri ambarı birimi](memory-concurrency-limits.md) ayarı düşürülen zaman eşzamanlı sorguların sayısı azalabilir. DMV sorguları gibi bazı sorguların çalışmasına her zaman izin verilir ve eşzamanlı sorgu sınırını etkilemez. Eşzamanlı sorgu yürütme hakkında daha fazla bilgi için bkz. [eşzamanlılık üst sınırları](memory-concurrency-limits.md) makalesi. |
-| ['nin](sql-data-warehouse-tables-temporary.md) |En fazla GB |DW100c başına 399 GB. DWU1000c adresinde tempdb 3,99 TB olarak boyutlandırılır. |
+| [tempdb](sql-data-warehouse-tables-temporary.md) |En fazla GB |DW100c başına 399 GB. DWU1000c adresinde tempdb 3,99 TB olarak boyutlandırılır. |
 ||||
 
 ## <a name="database-objects"></a>Veritabanı nesneleri
@@ -79,22 +79,22 @@ ms.locfileid: "85204991"
 | SELECT |Grup başına sütunlara göre bayt. |8060<br/><br/>GROUP BY yan tümcesindeki sütunlarda en fazla 8060 bayt olabilir. |
 | SELECT |Sütunlara göre SıRALAMA başına bayt sayısı |8060 bayt<br/><br/>ORDER BY yan tümcesindeki sütunlarda en fazla 8060 bayt olabilir |
 | İfade başına tanımlayıcılar |Başvurulan tanımlayıcıların sayısı |65.535<br/><br/> Sorgunun tek bir ifadesinde bulunabilecek tanımlayıcıların sayısı sınırlıdır. Bu sayının aşılması SQL Server hatası 8632 ile sonuçlanır. Daha fazla bilgi için bkz. [iç hata: bir ifade Hizmetleri sınırına ulaşıldı](https://support.microsoft.com/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a). |
-| Dize sabit değerleri | Deyimdeki dize sabit değerlerinin sayısı | 20.000 <br/><br/>Bir sorgunun tek bir ifadesindeki dize sabitleri sayısı sınırlıdır. Bu sayının aşılması SQL Server hatası 8632 ile sonuçlanır.|
+| Dize değişmez değerleri | Deyimdeki dize sabit değerlerinin sayısı | 20.000 <br/><br/>Bir sorgunun tek bir ifadesindeki dize sabitleri sayısı sınırlıdır. Bu sayının aşılması SQL Server hatası 8632 ile sonuçlanır.|
 ||||
 
 ## <a name="metadata"></a>Meta veri
 
 | Sistem görünümü | En fazla satır |
 |:--- |:--- |
-| sys. dm_pdw_component_health_alerts |10,000 |
-| sys. dm_pdw_dms_cores |100 |
+| sys.dm_pdw_component_health_alerts |10,000 |
+| sys.dm_pdw_dms_cores |100 |
 | sys.dm_pdw_dms_workers |En son 1000 SQL isteği için DMS çalışanlarının toplam sayısı. |
-| sys. dm_pdw_errors |10,000 |
+| sys.dm_pdw_errors |10,000 |
 | sys.dm_pdw_exec_requests |10,000 |
-| sys. dm_pdw_exec_sessions |10,000 |
-| sys.dm_pdw_request_steps |Sys. dm_pdw_exec_requests içinde depolanan en son 1000 SQL isteği için toplam adım sayısı. |
-| sys. dm_pdw_os_event_logs |10,000 |
-| sys.dm_pdw_sql_requests |Sys. dm_pdw_exec_requests içinde depolanan en son 1000 SQL isteği. |
+| sys.dm_pdw_exec_sessions |10,000 |
+| sys.dm_pdw_request_steps |Sys.dm_pdw_exec_requests depolanan en son 1000 SQL isteği için adımların toplam sayısı. |
+| sys.dm_pdw_os_event_logs |10,000 |
+| sys.dm_pdw_sql_requests |Sys.dm_pdw_exec_requests depolanan en son 1000 SQL isteği. |
 |||
 
 ## <a name="next-steps"></a>Sonraki adımlar

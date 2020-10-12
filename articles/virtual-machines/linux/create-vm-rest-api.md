@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/05/2018
 ms.author: cynthn
 ms.openlocfilehash: d6e5195f43991f4d40af57c1ab4b87aaca475b64
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87373411"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>REST API ile SSH kimlik doğrulaması kullanan bir Linux sanal makinesi oluşturma
@@ -54,10 +54,10 @@ REST API isteklerle çalışma hakkında genel bilgi için, bkz. [bir REST API i
 
 Aşağıdaki ortak tanımlar bir istek gövdesi oluşturmak için kullanılır:
 
-| Ad                       | Gerekli | Tür                                                                                | Description  |
+| Adı                       | Gerekli | Tür                                                                                | Açıklama  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True     | string                                                                              | Kaynak konumu. |
-| name                       |          | dize                                                                              | Sanal makinenin adı. |
+| name                       |          | string                                                                              | Sanal makinenin adı. |
 | Properties. hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Sanal makine için donanım ayarlarını belirtir. |
 | Properties. storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Sanal makine disklerinin depolama ayarlarını belirtir. |
 | Properties. osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Sanal makine için işletim sistemi ayarlarını belirtir. |
@@ -128,7 +128,7 @@ Bu HTTP isteğini göndermek için tercih ettiğiniz istemciyi kullanabilirsiniz
 
 Bir sanal makineyi oluşturma veya güncelleştirme işlemi için iki başarılı yanıt vardır:
 
-| Ad        | Tür                                                                              | Description |
+| Ad        | Tür                                                                              | Açıklama |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 TAMAM      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Tamam          |
 | 201 oluşturuldu | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Oluşturulan     |

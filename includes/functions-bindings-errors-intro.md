@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: 629de079f7cc7d95d10f8ff951a47b8b8fc62dad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77474124"
 ---
 Bir Azure Işlevlerinde oluşan hatalar aşağıdaki kaynaklardan herhangi birinden gelebilir:
@@ -20,7 +20,7 @@ Bir Azure Işlevlerinde oluşan hatalar aşağıdaki kaynaklardan herhangi birin
 
 Aşağıdaki katı hata işleme uygulamaları, veri kaybını veya eksik iletileri kaybetmemek için önemlidir. Önerilen hata işleme uygulamaları aşağıdaki eylemleri içerir:
 
-- [Application Insights'ı etkinleştirme](../articles/azure-functions/functions-monitoring.md)
+- [Application Insights’ı Etkinleştir](../articles/azure-functions/functions-monitoring.md)
 - [Yapılandırılmış hata işlemeyi kullan](#use-structured-error-handling)
 - [Idempotlik tasarımı](../articles/azure-functions/functions-idempotent.md)
 - [Yeniden deneme Ilkelerini Uygula](../articles/azure-functions/functions-reliable-event-processing.md) (uygun olduğunda)
@@ -34,7 +34,7 @@ Yakalama ve yayımlama hataları, uygulamanızın sistem durumunu izlemek için 
 Aşağıdaki Tetikleyiciler yerleşik yeniden deneme desteğine sahiptir:
 
 * [Azure Blob Depolama](../articles/azure-functions/functions-bindings-storage-blob.md)
-* [Azure kuyruk depolama](../articles/azure-functions/functions-bindings-storage-queue.md)
+* [Azure Kuyruk Depolama](../articles/azure-functions/functions-bindings-storage-queue.md)
 * [Azure Service Bus (kuyruk/konu)](../articles/azure-functions/functions-bindings-service-bus.md)
 
 Bu, varsayılan olarak, istekleri beş kata kadar yeniden dener. Beşinci yeniden denemeden sonra, hem Azure kuyruk depolaması hem de Azure Service Bus, bir [zarar kuyruğuna](..\articles\azure-functions\functions-bindings-storage-queue-trigger.md#poison-messages)ileti yazar.

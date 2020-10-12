@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
 ms.openlocfilehash: 7717c02fb460c41543ae810820ba01efb13a1ca7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91271197"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak REST uç noktalarını çağırma
@@ -42,7 +42,7 @@ ms.locfileid: "91271197"
 
 Bu yerleşik tetikleyici, bir REST API açıklayan ve bu dosyanın içeriğini içeren bir yanıt döndüren Swagger dosyası için bir URL 'ye HTTP isteği gönderir.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında boş mantıksal uygulamanızı açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında boş mantıksal uygulamanızı açın.
 
 1. Tasarımcıda arama kutusuna filtreniz olarak "Swagger" yazın. **Tetikleyiciler** listesinden **http + Swagger** tetikleyicisi ' ni seçin.
 
@@ -78,7 +78,7 @@ Bu yerleşik tetikleyici, bir REST API açıklayan ve bu dosyanın içeriğini i
 
 Bu yerleşik eylem, bir REST API açıklayan ve bu dosyanın içeriğini içeren bir yanıt döndüren Swagger dosyasının URL 'sine bir HTTP isteği oluşturur.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
 1. HTTP + Swagger eylemini eklemek istediğiniz adım altında **yeni adım**' ı seçin.
 
@@ -145,7 +145,7 @@ Bu dosyayı bir Azure depolama hesabındaki blob kapsayıcısına yükleyerek ve
 
 HTTP + Swagger tetikleyicisinden veya eylemden gelen çıktılar hakkında daha fazla bilgi bulabilirsiniz. HTTP + Swagger çağrısı şu bilgileri döndürür:
 
-| Özellik adı | Tür | Description |
+| Özellik adı | Tür | Açıklama |
 |---------------|------|-------------|
 | bilgisinde | object | İstekten gelen üstbilgiler |
 | body | object | JSON nesnesi | İstekten gelen gövde içeriğine sahip nesne |

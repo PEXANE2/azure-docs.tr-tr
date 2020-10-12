@@ -12,10 +12,10 @@ ms.date: 02/03/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 52831a1907d5ca8d13b0477c909d0d0358873973
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85202229"
 ---
 # <a name="general-claims-transformations"></a>Genel talep dönüştürmeleri
@@ -49,9 +49,9 @@ Bir dize veya sayısal talepten bir değeri başka bir talebe kopyalamak için b
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-    - **ınputclaim**:bob@contoso.com
+    - **ınputclaim**: bob@contoso.com
 - Çıkış talepleri:
-    - **Outputclaim**:bob@contoso.com
+    - **Outputclaim**: bob@contoso.com
 
 ## <a name="doesclaimexist"></a>Yok edilebilir
 
@@ -60,7 +60,7 @@ Bir dize veya sayısal talepten bir değeri başka bir talebe kopyalamak için b
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
 | Inputclaim | ınputclaim |Herhangi biri | Varlığının doğrulanması gereken giriş talebi. |
-| OutputClaim | outputClaim | boole | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. |
+| OutputClaim | outputClaim | boolean | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. |
 
 Bir talebin mevcut olup olmadığını veya herhangi bir değer içerip içerdiğini denetlemek için bu talep dönüşümünü kullanın. Dönüş değeri, talebin mevcut olup olmadığını gösteren bir Boole değeridir. Aşağıdaki örnek, e-posta adresinin mevcut olup olmadığını denetler.
 
@@ -78,7 +78,7 @@ Bir talebin mevcut olup olmadığını veya herhangi bir değer içerip içerdi�
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-  - **ınputclaim**:someone@contoso.com
+  - **ınputclaim**: someone@contoso.com
 - Çıkış talepleri:
   - **Outputclaim**: true
 
@@ -90,7 +90,7 @@ Anahtar ve gizli anahtar kullanarak, sağlanmış düz metni karma olarak kullan
 | ---- | ----------------------- | --------- | ----- |
 | Inputclaim | düz metin | string | Şifrelenecek giriş talebi |
 | Inputclaim | değerinin | string | Anahtar parametresi. Talep dönüştürmeyi kullanarak rastgele bir değer oluşturabilirsiniz `CreateRandomString` . |
-| InputParameter | randomizerSecret | string | Mevcut bir Azure AD B2C **ilkesi anahtarına**işaret eder. Yeni bir ilke anahtarı oluşturmak için: Azure AD B2C kiracınızda, **Yönet**altında **kimlik deneyimi çerçevesi**' ni seçin. Kiracınızda kullanılabilir olan anahtarları görüntülemek için **ilke anahtarlarını** seçin. **Ekle**'yi seçin. **Seçenekler**Için **el ile**' yi seçin. Bir ad belirtin ( *B2C_1A_* ön ek otomatik olarak eklenebilir.). **Gizli** metin kutusuna, kullanmak istediğiniz tüm gizli anahtarı (1234567890 gibi) girin. **Anahtar kullanımı**için **imza**' yı seçin. **Oluştur**'u seçin. |
+| InputParameter | randomizerSecret | string | Mevcut bir Azure AD B2C **ilkesi anahtarına**işaret eder. Yeni bir ilke anahtarı oluşturmak için: Azure AD B2C kiracınızda, **Yönet**altında **kimlik deneyimi çerçevesi**' ni seçin. Kiracınızda kullanılabilir olan anahtarları görüntülemek için **ilke anahtarlarını** seçin. **Ekle**’yi seçin. **Seçenekler**Için **el ile**' yi seçin. Bir ad belirtin ( *B2C_1A_* ön ek otomatik olarak eklenebilir.). **Gizli** metin kutusuna, kullanmak istediğiniz tüm gizli anahtarı (1234567890 gibi) girin. **Anahtar kullanımı**için **imza**' yı seçin. **Oluştur**’u seçin. |
 | OutputClaim | hash | string | Bu talep dönüştürmesinin ardından üretilen ClaimType çağırılır. Inputclaim 'de yapılandırılan talep `plaintext` . |
 
 ```xml
@@ -111,7 +111,7 @@ Anahtar ve gizli anahtar kullanarak, sağlanmış düz metni karma olarak kullan
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-  - **düz metin**:MyPass@word1
+  - **düz metin**: MyPass@word1
   - **anahtar**: 487624568
   - **randomizerSecret**: B2C_1A_AccountTransformSecret
 - Çıkış talepleri:

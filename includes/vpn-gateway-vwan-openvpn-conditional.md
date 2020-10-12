@@ -9,10 +9,10 @@ ms.date: 02/14/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 410570302eec418f1e4bcb75d6413936a96b5171
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77471585"
 ---
 Koşullu erişim, uygulama başına ayrıntılı erişim denetimi sağlar. Koşullu erişimi kullanabilmeniz için, koşullu erişim kurallarına tabi olacak kullanıcılara Azure AD Premium 1 veya daha büyük bir lisanslama uygulanmış olmalıdır.
@@ -34,12 +34,12 @@ Koşullu erişim, uygulama başına ayrıntılı erişim denetimi sağlar. Koşu
    - **Erişim ver**' e tıklayın.
    - **Multi-Factor Authentication gerektir**' e tıklayın.
    - **Seçili tüm denetimleri gerektir**' e tıklayın.
-   - **Seç**' e tıklayın.
+   - **Seç**’e tıklayın.
    
    ![Erişim verme-MFA](./media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa-ca-grant-mfa.png)
 4. **Ilkeyi etkinleştir** bölümünde:
 
    - **Açık**seçeneğini belirleyin.
-   - **Oluştur**'a tıklayın.
+   - **Oluştur**’a tıklayın.
 
    ![Ilkeyi etkinleştir](./media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa-ca-enable-policy.png)

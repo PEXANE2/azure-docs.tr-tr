@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 9303d84b2862b556a9ccc286ffa118bf1e52b715
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84047527"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Ölçeği genişletilen bulut veritabanları arasında veri taşıma
@@ -43,7 +43,7 @@ Bölünmüş birleştirme aracı bir Azure Web hizmeti olarak çalışır. Yöne
 
 ## <a name="why-use-the-split-merge-tool"></a>Ayırma-birleştirme aracını neden kullanmalısınız?
 
-- **Esneklik**
+- **Yapılandırmada**
 
   Uygulamaların Azure SQL veritabanı 'nda tek bir veritabanı sınırlarının ötesine esnek bir şekilde genişlemek gerekir. Bütünlüğü korurken verileri gerektiğinde yeni veritabanlarına taşımak için aracını kullanın.
 
@@ -53,7 +53,7 @@ Bölünmüş birleştirme aracı bir Azure Web hizmeti olarak çalışır. Yöne
 
 - **Küçültme ile Birleştir**
 
-  Bir işletmenin mevsimsel doğası nedeniyle kapasite 'nin küçültülmesi gerekir. Araç, iş yavaştığı sırada ölçeği daha az ölçek birimlerine ölçeklendirmenize imkan tanır. Elastik ölçek bölünmüş birleştirme hizmetindeki ' Merge ' özelliği bu gereksinimi kapsıyor.
+  Bir işletmenin mevsimsel doğası nedeniyle kapasite 'nin küçültülmesi gerekir. Araç, iş yavaştığı sırada ölçeği daha az ölçek birimlerine ölçeklendirmenize imkan tanır. Elastik ölçek Split-Merge hizmetindeki ' Merge ' özelliği bu gereksinimi kapsıyor.
 
 - **Parçalamayı taşıyarak etkin noktaları yönetme**
 
@@ -117,7 +117,7 @@ Bölünmüş birleştirme aracı bir Azure Web hizmeti olarak çalışır. Yöne
     smm.GetSchemaInfoCollection().Add(Configuration.ShardMapName, schemaInfo);
     ```
 
-    ' Region ' ve ' Nation ' tabloları başvuru tabloları olarak tanımlanır ve bölünmüş/birleştirme/taşıma işlemleri ile kopyalanır. sırasıyla ' Customer ' ve ' Orders ', parçalı tablolar olarak tanımlanmıştır. `C_CUSTKEY`ve parçalama `O_CUSTKEY` anahtarı olarak görev yapar.
+    ' Region ' ve ' Nation ' tabloları başvuru tabloları olarak tanımlanır ve bölünmüş/birleştirme/taşıma işlemleri ile kopyalanır. sırasıyla ' Customer ' ve ' Orders ', parçalı tablolar olarak tanımlanmıştır. `C_CUSTKEY` ve parçalama `O_CUSTKEY` anahtarı olarak görev yapar.
 
 - **Bilgi tutarlılığı**
 
@@ -187,7 +187,7 @@ Bölünmüş birleştirme hizmeti Microsoft Azure aboneliğinizde bir bulut hizm
 
 Bölünmüş birleştirme hizmeti, tamamlanan ve devam eden isteklerin izlenmesi için meta veri deposu veritabanında **RequestStatus** tablosu sağlar. Tablo, bölünmüş birleştirme hizmetinin bu örneğine gönderilen her bölünmüş birleştirme isteği için bir satır listeler. Her istek için aşağıdaki bilgileri verir:
 
-- **İlişkin**
+- **Zaman damgası**
 
   İsteğin başlatıldığı saat ve tarih.
 

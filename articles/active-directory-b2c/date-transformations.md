@@ -11,10 +11,10 @@ ms.date: 02/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: eaf58b964517162ee7f7eb925e1e64830eedc087
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85202560"
 ---
 # <a name="date-claims-transformations"></a>Tarih talebi dönüşümleri
@@ -31,8 +31,8 @@ Bir tarih ve saat talebinin (dize veri türü) ikinci bir tarih ve saat talebine
 | ---- | ----------------------- | --------- | ----- |
 | Inputclaim | leftOperand | string | İkinci talepten daha sonra olması gereken ilk talebin türü. |
 | Inputclaim | rightOperand | string | İkinci talebin türü, ilk talepten daha önce olmalıdır. |
-| InputParameter | Assertıequalto | boole | Sol işlenen sağ işlenene eşitse bu onay işaretinin geçmesi gerekip gerekmediğini belirtir. |
-| InputParameter | AssertIfRightOperandIsNotPresent | boole | Sağ işlenen eksik ise bu onay geçişinin geçmesi gerekip gerekmediğini belirtir. |
+| InputParameter | Assertıequalto | boolean | Sol işlenen sağ işlenene eşitse bu onay işaretinin geçmesi gerekip gerekmediğini belirtir. |
+| InputParameter | AssertIfRightOperandIsNotPresent | boolean | Sağ işlenen eksik ise bu onay geçişinin geçmesi gerekip gerekmediğini belirtir. |
 | InputParameter | TreatAsEqualIfWithinMillseconds | int | İki tarih ile aynı süreyi göz önünde bulundurmaya izin veren milisaniye sayısını belirtir (örneğin, saat eğme için hesaba). |
 
 **AssertDateTimeIsGreaterThan** talep dönüştürmesi, her zaman [otomatik olarak onaylanan bir teknik profille](self-asserted-technical-profile.md)çağrılan bir [doğrulama teknik profilinden](validation-technical-profile.md) yürütülür. **DateTimeGreaterThan** kendiliğinden onaylanan teknik profil meta verileri, teknik profilin kullanıcıya sunduğu hata iletisini denetler. Hata iletileri [yerelleştirilebilecek](localization-string-ids.md#claims-transformations-error-messages).
@@ -172,9 +172,9 @@ Bir tarih saat değerinin daha sonra, daha önce veya diğer bir değere eşit o
 | ---- | ----------------------- | --------- | ----- |
 | Inputclaim | firstDateTime | tarih saat | İkinci tarih saatten daha önce veya sonra olup olmadığını karşılaştırmak için ilk tarih saat. Null değer bir özel durum oluşturur. |
 | Inputclaim | secondDateTime | tarih saat | İlk tarih saatten daha önce veya sonra olup olmadığını karşılaştırmak için ikinci tarih saat. Null değer geçerli datetTime olarak değerlendirilir. |
-| InputParameter | operator | string | Şu değerlerden biri: aynı, daha sonra veya daha önceki bir sürüm. |
+| InputParameter | işleç | string | Şu değerlerden biri: aynı, daha sonra veya daha önceki bir sürüm. |
 | InputParameter | Timespanınseconds | int | TimeSpan öğesini ilk tarih/saate ekleyin. |
-| OutputClaim | sonuç | boole | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. |
+| OutputClaim | sonuç | boolean | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. |
 
 İki ClaimTypes 'ın eşit, daha sonra veya daha önceki bir sürümü olup olmadığını anlamak için bu talep dönüşümünü kullanın. Örneğin, bir kullanıcının hizmet koşullarınızı (TOS) en son kabul ettiği zamanı saklayabilirsiniz. 3 aydan sonra kullanıcıdan TOS 'a yeniden erişmesini isteyebilirsiniz.
 Talep dönüşümünü çalıştırmak için, ilk olarak geçerli tarih saat ve ayrıca Kullanıcı TOS 'ı kabul eden son zamanı almanız gerekir.

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 4430737814ef904e83b2bf3ce25edf3d44e2668d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90972037"
 ---
 # <a name="weather-services-in-azure-maps"></a>Azure haritalar 'da Hava durumu Hizmetleri
@@ -56,46 +56,46 @@ Bazı hava durumu hizmeti API 'Leri `iconCode` yanıt olarak ' i döndürür. , 
 
 | Simge numarası |Simge| Gün | Gerçekleştirilmiştir | Metin |
 |-------------|:----:|-----|-------|------|
-| 1           | :::image type="icon" source="./media/weather-services-concepts/sunny-i.png"::: | Yes |  Hayır    | Güneşli|
-| 2           | :::image type="icon" source="./media/weather-services-concepts/mostly-sunny.png"::: | Yes |  Hayır    | Çoğunlukla güneş|
-| 3           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny.png"::: | Yes |  Hayır    | Kısmi güneş|
-| 4           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds.png"::: | Yes |  Hayır    | Aralıklı bulutlar|
-| 5           | :::image type="icon" source="./media/weather-services-concepts/hazy-sunshine.png"::: | Yes |  Hayır    | Hazlu güneş ışığı |
-| 6           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy.png"::: | Yes |  Hayır    | Genellikle Cloudy|
-| 7           | :::image type="icon" source="./media/weather-services-concepts/cloudy-i.png"::: | Yes |  Yes   | Bulutlu |
-| 8           | :::image type="icon" source="./media/weather-services-concepts/dreary-overcast.png"::: | Yes |  Yes   | Dreary (fazla atama)|
-| 11           | :::image type="icon" source="./media/weather-services-concepts/fog-i.png"::: | Yes |  Yes   | Sis|
-| 12           | :::image type="icon" source="./media/weather-services-concepts/showers-i.png"::: | Yes |  Yes   | Gösteri|
-| 13           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers.png"::: | Yes |  Hayır    | Genellikle, showers ile Cloudy|
-| 14           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-showers.png"::: | Yes |  Hayır    | Showers ile kısmen güneş|
-| 15           | :::image type="icon" source="./media/weather-services-concepts/tstorms-i.png"::: | Yes |  Yes   | Thunderstorms|
-| 16           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms.png"::: | Yes |  Hayır    | Çoğunlukla Cloudy, thunderstorms ile|
-| 17           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-tstorms.png"::: | Yes |  Hayır    | Thunderstorms ile kısmen güneş|
-| 18           | :::image type="icon" source="./media/weather-services-concepts/rain-i.png"::: | Yes |  Yes   | Maktan|
-| 19           | :::image type="icon" source="./media/weather-services-concepts/flurries-i.png"::: | Yes |  Yes   | Flurrıes|
-| 20           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries.png"::: | Yes |  Hayır    | Genellikle Flurrıes ile Cloudy|
-| 21           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-flurries.png"::: | Yes |  Hayır    | Flurrıes ile kısmen güneş|
-| 22           | :::image type="icon" source="./media/weather-services-concepts/snow-i.png"::: | Yes |  Yes   | Kar|
-| 23           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | Yes |  Hayır    | Genellikle kar ile Cloudy|     
-| 24           | :::image type="icon" source="./media/weather-services-concepts/ice-i.png"::: | Yes |  Yes   | Ice |
-| 25           | :::image type="icon" source="./media/weather-services-concepts/sleet-i.png"::: | Yes |  Yes   | Uyun|
-| 26           | :::image type="icon" source="./media/weather-services-concepts/freezing-rain.png"::: | Yes |  Yes   | Yağmur dondurma|
-| 29           | :::image type="icon" source="./media/weather-services-concepts/rain-snow.png"::: | Yes |  Yes   | Yağmur ve kar|
-| 30           | :::image type="icon" source="./media/weather-services-concepts/hot-i.png"::: | Yes |  Yes   | Sık Erişimli|
-| 31           | :::image type="icon" source="./media/weather-services-concepts/cold-i.png"::: | Yes |  Yes   | Soğuk|
-| 32           | :::image type="icon" source="./media/weather-services-concepts/windy-i.png"::: | Yes |  Yes   | Rüzgarlı|
-| 33           | :::image type="icon" source="./media/weather-services-concepts/clear-night.png"::: | Hayır  |  Yes   | Temizle|
-| 34           | :::image type="icon" source="./media/weather-services-concepts/mostly-clear-night.png"::: | Hayır  |  Yes   | Çoğunlukla temizle|
-| 35           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-night.png"::: | Hayır  |  Yes   | Kısmi Cloudy|
-| 36           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds-Night.png"::: | Hayır  |  Yes   | Aralıklı bulutlar|
-| 37           | :::image type="icon" source="./media/weather-services-concepts/hazymoon-light.png"::: | Hayır  |  Yes   | Hazik ma ışığı|
-| 38           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-night.png"::: | Hayır  |  Yes   | Genellikle Cloudy|
-| 39           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-showers-night.png"::: | Hayır  |  Yes   | Showers ile kısmen Cloudy|
-| 40           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers-night.png"::: | Hayır  |  Yes   | Genellikle, showers ile Cloudy|
-| 41           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-tstorms-night.png"::: | Hayır  |  Yes   | Thunderstorms ile kısmen Cloudy|
-| 42           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms-night.png"::: | Hayır  |  Yes   | Çoğunlukla Cloudy, thunderstorms ile|
-| 43           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries-night.png"::: | Hayır  |  Yes   | Genellikle Flurrıes ile Cloudy|
-| 44           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | Hayır  |  Yes   | Genellikle kar ile Cloudy|
+| 1           | :::image type="icon" source="./media/weather-services-concepts/sunny-i.png"::: | Evet |  Hayır    | Güneşli|
+| 2           | :::image type="icon" source="./media/weather-services-concepts/mostly-sunny.png"::: | Evet |  Hayır    | Çoğunlukla güneş|
+| 3           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny.png"::: | Evet |  Hayır    | Kısmi güneş|
+| 4           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds.png"::: | Evet |  Hayır    | Aralıklı bulutlar|
+| 5           | :::image type="icon" source="./media/weather-services-concepts/hazy-sunshine.png"::: | Evet |  Hayır    | Hazlu güneş ışığı |
+| 6           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy.png"::: | Evet |  Hayır    | Genellikle Cloudy|
+| 7           | :::image type="icon" source="./media/weather-services-concepts/cloudy-i.png"::: | Evet |  Evet   | Bulutlu |
+| 8           | :::image type="icon" source="./media/weather-services-concepts/dreary-overcast.png"::: | Evet |  Evet   | Dreary (fazla atama)|
+| 11           | :::image type="icon" source="./media/weather-services-concepts/fog-i.png"::: | Evet |  Evet   | Sis|
+| 12           | :::image type="icon" source="./media/weather-services-concepts/showers-i.png"::: | Evet |  Evet   | Gösteri|
+| 13           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers.png"::: | Evet |  Hayır    | Genellikle, showers ile Cloudy|
+| 14           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-showers.png"::: | Evet |  Hayır    | Showers ile kısmen güneş|
+| 15           | :::image type="icon" source="./media/weather-services-concepts/tstorms-i.png"::: | Evet |  Evet   | Thunderstorms|
+| 16           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms.png"::: | Evet |  Hayır    | Çoğunlukla Cloudy, thunderstorms ile|
+| 17           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-tstorms.png"::: | Evet |  Hayır    | Thunderstorms ile kısmen güneş|
+| 18           | :::image type="icon" source="./media/weather-services-concepts/rain-i.png"::: | Evet |  Evet   | Maktan|
+| 19           | :::image type="icon" source="./media/weather-services-concepts/flurries-i.png"::: | Evet |  Evet   | Flurrıes|
+| 20           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries.png"::: | Evet |  Hayır    | Genellikle Flurrıes ile Cloudy|
+| 21           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-flurries.png"::: | Evet |  Hayır    | Flurrıes ile kısmen güneş|
+| 22           | :::image type="icon" source="./media/weather-services-concepts/snow-i.png"::: | Evet |  Evet   | Kar|
+| 23           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | Evet |  Hayır    | Genellikle kar ile Cloudy|     
+| 24           | :::image type="icon" source="./media/weather-services-concepts/ice-i.png"::: | Evet |  Evet   | Ice |
+| 25           | :::image type="icon" source="./media/weather-services-concepts/sleet-i.png"::: | Evet |  Evet   | Uyun|
+| 26           | :::image type="icon" source="./media/weather-services-concepts/freezing-rain.png"::: | Evet |  Evet   | Yağmur dondurma|
+| 29           | :::image type="icon" source="./media/weather-services-concepts/rain-snow.png"::: | Evet |  Evet   | Yağmur ve kar|
+| 30           | :::image type="icon" source="./media/weather-services-concepts/hot-i.png"::: | Evet |  Evet   | Sık Erişimli|
+| 31           | :::image type="icon" source="./media/weather-services-concepts/cold-i.png"::: | Evet |  Evet   | Soğuk|
+| 32           | :::image type="icon" source="./media/weather-services-concepts/windy-i.png"::: | Evet |  Evet   | Rüzgarlı|
+| 33           | :::image type="icon" source="./media/weather-services-concepts/clear-night.png"::: | Hayır  |  Evet   | Temizle|
+| 34           | :::image type="icon" source="./media/weather-services-concepts/mostly-clear-night.png"::: | Hayır  |  Evet   | Çoğunlukla temizle|
+| 35           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-night.png"::: | Hayır  |  Evet   | Kısmi Cloudy|
+| 36           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds-Night.png"::: | Hayır  |  Evet   | Aralıklı bulutlar|
+| 37           | :::image type="icon" source="./media/weather-services-concepts/hazymoon-light.png"::: | Hayır  |  Evet   | Hazik ma ışığı|
+| 38           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-night.png"::: | Hayır  |  Evet   | Genellikle Cloudy|
+| 39           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-showers-night.png"::: | Hayır  |  Evet   | Showers ile kısmen Cloudy|
+| 40           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers-night.png"::: | Hayır  |  Evet   | Genellikle, showers ile Cloudy|
+| 41           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-tstorms-night.png"::: | Hayır  |  Evet   | Thunderstorms ile kısmen Cloudy|
+| 42           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms-night.png"::: | Hayır  |  Evet   | Çoğunlukla Cloudy, thunderstorms ile|
+| 43           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries-night.png"::: | Hayır  |  Evet   | Genellikle Flurrıes ile Cloudy|
+| 44           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | Hayır  |  Evet   | Genellikle kar ile Cloudy|
 
 
 ## <a name="radar-and-satellite-imagery-color-scale"></a>Radar ve uydu Imagery renk ölçeği
@@ -108,22 +108,22 @@ Aşağıdaki tabloda, radar görüntülerini yorumlama ve radar kutucuk verileri
 
 | Onaltılı renk kodu | Renk örneği | Hava durumu koşulu |
 |----------------|--------------|-------------------|
-| #93c701        | ![Yağmur-Light rengi.](./media/weather-services-concepts/color-93c701.png) | Yağmur-hafif |
-| #ffd701        | ![Yağmur-orta rengi.](./media/weather-services-concepts/color-ffd701.png) | Yağmur-orta |
-| #f05514        | ![Yağmur için renk.](./media/weather-services-concepts/color-f05514.png) | Yağmur ağır |
-| #dc250e        | ![Yağmur için renk.](./media/weather-services-concepts/color-dc250e.png) | Yağmur-önemli |
-| #9ec8f2        | ![Kar ışığı rengi.](./media/weather-services-concepts/color-9ec8f2.png) | Kar ışığı |
-| #2a8fdb        | ![Kar orta rengi.](./media/weather-services-concepts/color-2a8fdb.png) | Orta derece orta |
-| #144bed        | ![Kar açısından ağır renk.](./media/weather-services-concepts/color-144bed.png) | Ağır kar |
-| #020096        | ![Kar açısından önemli renk.](./media/weather-services-concepts/color-020096.png) | Kar-önemli |
-| #e6a5c8        | ![Buz-ışığın rengi.](./media/weather-services-concepts/color-e6a5c8.png) | Buz-hafif |
-| #d24fa0        | ![Buz-orta rengi.](./media/weather-services-concepts/color-d24fa0.png) | Buz-orta |
-| #b71691        | ![Buz açısından önemli renkler.](./media/weather-services-concepts/color-b71691.png) | Buz-önemli |
-| #7a1570        | ![Buz-ağır için renk.](./media/weather-services-concepts/color-7a1570.png) | Buz-ağır |
-| #c196e6        | ![Karıştırma ışığı rengi.](./media/weather-services-concepts/color-c196e6.png) | Karışımı-hafif |
-| #ae6ee6        | ![Karışım-orta rengi.](./media/weather-services-concepts/color-ae6ee6.png) | Karışımı-orta |
-| #8a32d7        | ![Karma ağır renk.](./media/weather-services-concepts/color-8a32d7.png) | Karışık-ağır |
-| #6500ba        | ![Karışık için renk.](./media/weather-services-concepts/color-6500ba.png) | Karışık-önemli |
+| #93c701        | ![Yağmur-Light rengi.](./media/weather-services-concepts/color-93c701.png) | Rain-Light |
+| #ffd701        | ![Yağmur-orta rengi.](./media/weather-services-concepts/color-ffd701.png) | Rain-Moderate |
+| #f05514        | ![Yağmur için renk.](./media/weather-services-concepts/color-f05514.png) | Rain-Heavy |
+| #dc250e        | ![Yağmur için renk.](./media/weather-services-concepts/color-dc250e.png) | Rain-Severe |
+| #9ec8f2        | ![Kar ışığı rengi.](./media/weather-services-concepts/color-9ec8f2.png) | Snow-Light |
+| #2a8fdb        | ![Kar orta rengi.](./media/weather-services-concepts/color-2a8fdb.png) | Snow-Moderate |
+| #144bed        | ![Kar açısından ağır renk.](./media/weather-services-concepts/color-144bed.png) | Snow-Heavy |
+| #020096        | ![Kar açısından önemli renk.](./media/weather-services-concepts/color-020096.png) | Snow-Severe |
+| #e6a5c8        | ![Buz-ışığın rengi.](./media/weather-services-concepts/color-e6a5c8.png) | Ice-Light |
+| #d24fa0        | ![Buz-orta rengi.](./media/weather-services-concepts/color-d24fa0.png) | Ice-Moderate |
+| #b71691        | ![Buz açısından önemli renkler.](./media/weather-services-concepts/color-b71691.png) | Ice-Severe |
+| #7a1570        | ![Buz-ağır için renk.](./media/weather-services-concepts/color-7a1570.png) | Ice-Heavy |
+| #c196e6        | ![Karıştırma ışığı rengi.](./media/weather-services-concepts/color-c196e6.png) | Mix-Light |
+| #ae6ee6        | ![Karışım-orta rengi.](./media/weather-services-concepts/color-ae6ee6.png) | Mix-Moderate |
+| #8a32d7        | ![Karma ağır renk.](./media/weather-services-concepts/color-8a32d7.png) | Mix-Heavy |
+| #6500ba        | ![Karışık için renk.](./media/weather-services-concepts/color-6500ba.png) | Mix-Severe |
 
 Onaltılık renk kodlarına ve dBZ değerlerine sahip radar kutucukları için ayrıntılı renk paleti aşağıda gösterilmiştir. dBZ, hava durumu radar bölümünde yağış yoğunluğunu temsil eder. 
 
@@ -199,7 +199,7 @@ Aşağıdaki tabloda, bulutlarını sıcaklığa göre gösteren kızılötesi u
 
 | Onaltılı renk kodu | Renk örneği | Bulut sıcaklığı |
 |----------------|--------------|-------------------|
-| #b5b5b5        | ![#B5b5b5 için renk kutucuğu.](./media/weather-services-concepts/color-b5b5b5.png) | Sıcaklık-düşük | 
+| #b5b5b5        | ![#B5b5b5 için renk kutucuğu.](./media/weather-services-concepts/color-b5b5b5.png) | Temperature-Low | 
 | #d24fa0        | ![#D24fa0 için renk kutucuğu.](./media/weather-services-concepts/color-d24fa0.png) |  |
 | #8a32d7        | ![#8a32d7 için renk kutucuğu.](./media/weather-services-concepts/color-8a32d7.png) |  |
 | #144bed        | ![#144bed için renk kutucuğu.](./media/weather-services-concepts/color-144bed.png) |  |
@@ -210,7 +210,7 @@ Aşağıdaki tabloda, bulutlarını sıcaklığa göre gösteren kızılötesi u
 | #f05514        | ![#F05514 için renk kutucuğu.](./media/weather-services-concepts/color-f05514.png) |  |
 | #dc250e        | ![#Dc250e için renk kutucuğu.](./media/weather-services-concepts/color-dc250e.png) |  |
 | #ba0808        | ![#Ba0808 için renk kutucuğu.](./media/weather-services-concepts/color-ba0808.png) |  |
-| #1f1f1f        | ![#1f1f1f için renk kutucuğu.](./media/weather-services-concepts/color-1f1f1f.png) | Sıcaklık-yüksek |
+| #1f1f1f        | ![#1f1f1f için renk kutucuğu.](./media/weather-services-concepts/color-1f1f1f.png) | Temperature-High |
 
 
 Kızılötesi uydu kutucukları için ayrıntılı renk paleti aşağıda gösterilmiştir.
@@ -494,7 +494,7 @@ Aşağıda, kullanılabilir dizin kimlikleri, adları ve Aralık kümelerinin bi
   Toz & Dander              |18| [Düşük-Extreme 1](#low-extreme-1)
   Alan hazırlığı            |32| [Yetersiz mükemmel 1](#poor-excellent-1)
   Balıkçılık                    |13| [Yetersiz mükemmel 1](#poor-excellent-1)
-  Uçuş gecikmeleri              |-3|  [Çok düşüktür-çok büyük olasılıkla 2](#very-unlikely-very-likely-2)
+  Uçuş gecikmeleri              |-3|  [Çok büyük Unlikely-Very 2](#very-unlikely-very-likely-2)
   Grip                        |26|  [Faydalı-aşırı risk](#beneficial-at-extreme-risk)
   Uçan seyahat dizini        |31| [Harika-zayıf](#excellent-poor)
   Yakıt ekonomisi               |37| [Yetersiz mükemmel 1](#poor-excellent-1)
@@ -523,7 +523,7 @@ Aşağıda, kullanılabilir dizin kimlikleri, adları ve Aralık kümelerinin bi
   Sinus headache             |30|  [Faydalı-aşırı risk](#beneficial-at-extreme-risk)
   Skatevimi              | 7| [Yetersiz mükemmel 1](#poor-excellent-1)
   Kayak Hava durumu                | 15| [Yetersiz mükemmel 1](#poor-excellent-1)
-  Kar günü                  | 19| [Çok olası bir büyük olasılıkla](#very-unlikely-very-likely)
+  Kar günü                  | 19| [Büyük olasılıkla çok Unlikely-Very](#very-unlikely-very-likely)
   SOIL Moisture              | 34| [Yetersiz mükemmel 1](#poor-excellent-1)
   Başlatılıyor                 | 12| [Yetersiz mükemmel 1](#poor-excellent-1)
 
@@ -549,7 +549,7 @@ Kullanılabilir dizin gruplarının (ındexgroupıd) listesi aşağıda verilmi�
 
 [Günlük dizinler al API 'si](https://aka.ms/AzureMapsWeatherDailyIndices) , her BIR dizin kimliği için ranşlı değeri ve ilişkili kategori adını döndürür. Aralık kümeleri tüm dizinler için aynı değildir. Aşağıdaki tablolarda, [Dizin kimlikleri ve dizin grupları kimliklerinde](#index-ids-and-index-groups-ids)listelenen desteklenen dizinler tarafından kullanılan çeşitli Aralık kümeleri gösterilmektedir. Hangi dizinlerin hangi Aralık kümelerini kullanacağınızı öğrenmek için, bu belgenin [Dizin kimlikleri ve dizin grupları kimlikleri](#index-ids-and-index-groups-ids) bölümüne gidin.
 
-### <a name="poor-excellent-1"></a>Yetersiz mükemmel 1
+### <a name="poor-excellent-1"></a>Poor-Excellent 1
 
   | Kategori Adı | Başlangıç aralığı | Bitiş aralığı |
   ----------------|--------------|------------
@@ -559,7 +559,7 @@ Kullanılabilir dizin gruplarının (ındexgroupıd) listesi aşağıda verilmi�
   Çok iyi         |  7  |               8,99
   Mükemmel         |  9  |               10
 
-### <a name="poor-excellent-2"></a>Yetersiz mükemmel 2
+### <a name="poor-excellent-2"></a>Poor-Excellent 2
 
  | Kategori Adı | Başlangıç aralığı | Bitiş aralığı |
   ----------------|--------------|------------
@@ -569,7 +569,7 @@ Kullanılabilir dizin gruplarının (ındexgroupıd) listesi aşağıda verilmi�
   Çok iyi      |7,51           |  8,99
   Mükemmel      |9              |  10
 
-### <a name="excellent-poor"></a>Harika-zayıf
+### <a name="excellent-poor"></a>Excellent-Poor
 
  | Kategori Adı | Başlangıç aralığı | Bitiş aralığı |
   ----------------|--------------|------------
@@ -579,7 +579,7 @@ Kullanılabilir dizin gruplarının (ındexgroupıd) listesi aşağıda verilmi�
   Yeterli             |   5,01          |  7,00
   Kötü             |   7,01          |  10,00
 
-### <a name="low-extreme-1"></a>Düşük-Extreme 1
+### <a name="low-extreme-1"></a>Low-Extreme 1
 
    | Kategori Adı | Başlangıç aralığı | Bitiş aralığı |
   ----------------|--------------|------------
@@ -589,7 +589,7 @@ Kullanılabilir dizin gruplarının (ındexgroupıd) listesi aşağıda verilmi�
   Çok yüksek          |  6         |        7,99
   Üst Düzey            |  8         |        10
 
-### <a name="low-extreme-2"></a>Düşük-Extreme 2
+### <a name="low-extreme-2"></a>Low-Extreme 2
 
    | Kategori Adı | Başlangıç aralığı | Bitiş aralığı |
   ----------------|--------------|------------
@@ -599,7 +599,7 @@ Kullanılabilir dizin gruplarının (ındexgroupıd) listesi aşağıda verilmi�
   Çok yüksek          |  7            |      8,99
   Üst Düzey            |  9            |      10
 
-### <a name="very-unlikely-very-likely"></a>Çok olası bir büyük olasılıkla
+### <a name="very-unlikely-very-likely"></a>Büyük olasılıkla çok Unlikely-Very
 
  | Kategori Adı | Başlangıç aralığı | Bitiş aralığı |
   ----------------|--------------|------------
@@ -609,7 +609,7 @@ Kullanılabilir dizin gruplarının (ındexgroupıd) listesi aşağıda verilmi�
   Mesinden             | 6     |           7,99
   Büyük olasılıkla        | 8     |           10
 
-### <a name="very-unlikely-very-likely-2"></a>Çok düşüktür-çok büyük olasılıkla 2
+### <a name="very-unlikely-very-likely-2"></a>Çok büyük Unlikely-Very 2
 
  | Kategori Adı | Başlangıç aralığı | Bitiş aralığı |
   ----------------|--------------|------------
@@ -619,7 +619,7 @@ Kullanılabilir dizin gruplarının (ındexgroupıd) listesi aşağıda verilmi�
   Mesinden             |  5,01     |         7,00
   Büyük olasılıkla        |  7,01     |         10,00
 
-### <a name="unlikely-emergency"></a>Olası olmayan-acil durum
+### <a name="unlikely-emergency"></a>Unlikely-Emergency
 
 | Kategori Adı | Başlangıç aralığı | Bitiş aralığı |
   ----------------|--------------|------------
@@ -629,7 +629,7 @@ Kullanılabilir dizin gruplarının (ındexgroupıd) listesi aşağıda verilmi�
   Uyarı          |  7     |          8,99
   Durumlar        |  9     |          10
 
-### <a name="beneficial-at-extreme-risk"></a>Faydalı-aşırı risk
+### <a name="beneficial-at-extreme-risk"></a>Beneficial-At aşırı risk
 
 | Kategori Adı | Başlangıç aralığı | Bitiş aralığı |
   ----------------|--------------|------------

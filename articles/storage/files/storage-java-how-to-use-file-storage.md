@@ -9,10 +9,10 @@ ms.custom: devx-track-java
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 2c80d741ca1cf0b4d66bc18488af8ef1da44fd14
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462607"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Java ile Azure Dosyaları için geliştirme
@@ -231,5 +231,5 @@ Diğer Azure depolama API 'Leri hakkında daha fazla bilgi edinmek istiyorsanız
 * [Azure Depolama İstemcisi SDK Başvurusu](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
 * [Azure Storage Hizmetleri REST API’si](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Azure Depolama Ekibi Blogu](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
-* [AzCopy komut satırı yardımcı programıyla veri aktarma](../common/storage-use-azcopy.md)
+* [AzCopy Command-Line yardımcı programıyla veri aktarma](../common/storage-use-azcopy.md)
 * [Azure Dosyaları sorunlarını giderme - Windows](storage-troubleshoot-windows-file-connection-problems.md)

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: allensu
 ms.openlocfilehash: b8050b973027ac91ede0ba98f4d1c76831da9828
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81259944"
 ---
 # <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Azure CDN için standart kurallar altyapısından koşulları Eşleştir
@@ -36,7 +36,7 @@ Bir mobil cihazdan veya masaüstü cihazdan yapılan istekleri tanımlar.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Operatör | Desteklenen değerler
+İşleç | Desteklenen değerler
 ---------|----------------
 Eşittir, eşit değildir | Mobil, masaüstü
 
@@ -46,7 +46,7 @@ Eşittir, eşit değildir | Mobil, masaüstü
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Operatör | Desteklenen değerler
+İşleç | Desteklenen değerler
 ---------|----------------
 Eşittir, eşit değildir | 2,0, 1,1, 1,0, 0,9, All
 
@@ -56,7 +56,7 @@ Gelen istekteki tanımlama bilgisi bilgilerine göre istekleri tanımlar.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Tanımlama bilgisi adı | Operatör | Tanımlama bilgisi değeri | Örnek dönüştürme
+Tanımlama bilgisi adı | İşleç | Tanımlama bilgisi değeri | Örnek dönüştürme
 ------------|----------|--------------|---------------
 Dize | [Standart işleç listesi](#standard-operator-list) | String, Int | Dönüştürme yok, büyük harf, küçük harf
 
@@ -75,7 +75,7 @@ Dize | [Standart işleç listesi](#standard-operator-list) | String, Int | Dön�
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Bağımsız değişken adı | Operatör | Bağımsız değişken değeri | Örnek dönüştürme
+Bağımsız değişken adı | İşleç | Bağımsız değişken değeri | Örnek dönüştürme
 --------------|----------|----------------|---------------
 Dize | [Standart işleç listesi](#standard-operator-list) | String, Int | Dönüştürme yok, büyük harf, küçük harf
 
@@ -85,7 +85,7 @@ Belirli bir sorgu dizesi parametresi içeren istekleri tanımlar. Bu parametre, 
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Operatör | Sorgu dizesi | Örnek dönüştürme
+İşleç | Sorgu dizesi | Örnek dönüştürme
 ---------|--------------|---------------
 [Standart işleç listesi](#standard-operator-list) | String, Int | Dönüştürme yok, büyük harf, küçük harf
 
@@ -95,12 +95,12 @@ Operatör | Sorgu dizesi | Örnek dönüştürme
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Operatör | Desteklenen değerler
+İşleç | Desteklenen değerler
 ---------|-----------------
-Herhangi biri | YOK
+Herhangi biri | Yok
 Coğrafi eşleşme | Ülke kodu
 IP eşleşmesi | IP adresi (boşlukla ayrılmış)
-Hiçbirini değil | YOK
+Hiçbirini değil | Yok
 Coğrafi eşleşme değil | Ülke kodu
 IP eşleşmesi değil | IP adresi (boşlukla ayrılmış)
 
@@ -120,7 +120,7 @@ IP eşleşmesi değil | IP adresi (boşlukla ayrılmış)
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Operatör | İstek gövdesi | Örnek dönüştürme
+İşleç | İstek gövdesi | Örnek dönüştürme
 ---------|--------------|---------------
 [Standart işleç listesi](#standard-operator-list) | String, Int | Dönüştürme yok, büyük harf, küçük harf
 
@@ -130,7 +130,7 @@ Operatör | İstek gövdesi | Örnek dönüştürme
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Üst bilgi adı | Operatör | Üst bilgi değeri | Örnek dönüştürme
+Üst bilgi adı | İşleç | Üst bilgi değeri | Örnek dönüştürme
 ------------|----------|--------------|---------------
 Dize | [Standart işleç listesi](#standard-operator-list) | String, Int | Dönüştürme yok, büyük harf, küçük harf
 
@@ -140,7 +140,7 @@ Belirtilen istek yöntemini kullanan istekleri tanımlar.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Operatör | Desteklenen değerler
+İşleç | Desteklenen değerler
 ---------|----------------
 Eşittir, eşit değildir | AL, POSTALA, KOY, SIL, HEAD, SEÇENEKLER, IZLE
 
@@ -154,7 +154,7 @@ Kullanılan belirtilen protokolü kullanan istekleri tanımlar.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Operatör | Desteklenen değerler
+İşleç | Desteklenen değerler
 ---------|----------------
 Eşittir, eşit değildir | HTTP, HTTPS
 
@@ -164,7 +164,7 @@ Belirtilen URL ile eşleşen istekleri tanımlar.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Operatör | İstek URL’si | Örnek dönüştürme
+İşleç | İstek URL’si | Örnek dönüştürme
 ---------|-------------|---------------
 [Standart işleç listesi](#standard-operator-list) | String, Int | Dönüştürme yok, büyük harf, küçük harf
 
@@ -178,7 +178,7 @@ Operatör | İstek URL’si | Örnek dönüştürme
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Operatör | Dahili numara | Örnek dönüştürme
+İşleç | Dahili numara | Örnek dönüştürme
 ---------|-----------|---------------
 [Standart işleç listesi](#standard-operator-list) | String, Int | Dönüştürme yok, büyük harf, küçük harf
 
@@ -192,7 +192,7 @@ Operatör | Dahili numara | Örnek dönüştürme
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Operatör | Dosya adı | Örnek dönüştürme
+İşleç | Dosya adı | Örnek dönüştürme
 ---------|-----------|---------------
 [Standart işleç listesi](#standard-operator-list) | String, Int | Dönüştürme yok, büyük harf, küçük harf
 

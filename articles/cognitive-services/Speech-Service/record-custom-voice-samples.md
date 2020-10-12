@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: erhopf
 ms.openlocfilehash: 2897fe2e0cc8aeb929b0a33f5cdaba9c60f2a244
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81261593"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Özel bir ses oluşturmak için ses örneklerini kaydetme
@@ -108,7 +108,7 @@ Neyse ki, bu sorunlardan tamamen kaçınmak mümkündür. İzin veya lisans olma
 |-|-|
 |[CMU arctik yapı](http://festvox.org/cmu_arctic/)|Telif hakkı dışında çalışarak, özellikle konuşma seniş projelerinde kullanılmak üzere 1100 tümce hakkında. Harika bir başlangıç noktası.|
 |Artık işe yarar<br>Telif hakkı altında|Genellikle 1923 ' dan önce yayımlanır. Ingilizce için [Project Gutenberg](https://www.gutenberg.org/) , bu tür binlerce çalışma sunar. Dil modern Ingilizce 'ye yakın olacağı için daha yeni bir işe odaklanmak isteyebilirsiniz.|
-|Kamu&nbsp;çalışmaları|Kamu, Birleşik Devletler kamu tarafından oluşturulan çalışmalar Birleşik Devletler tarafından desteklenmiyor, ancak kamu, diğer ülkelerde/bölgelerde telif hakkı talep edebilir.|
+|Kamu &nbsp; çalışmaları|Kamu, Birleşik Devletler kamu tarafından oluşturulan çalışmalar Birleşik Devletler tarafından desteklenmiyor, ancak kamu, diğer ülkelerde/bölgelerde telif hakkı talep edebilir.|
 |Ortak etki alanı|Bu, açıkça veya genel etki alanı için ayrılmış olan bir telif hakkı için geçerlidir. Telif hakkını tamamen bazı dairede almak mümkün olmayabilir.|
 |Yüksek oranda lisanslanmış çalışmalar|Creative Commons veya GNU ücretsiz belge lisansı (GFDL) gibi bir lisans altında dağıtılır. Vikipedi, GFDL kullanır. Ancak bazı lisanslar, özel bir ses modelinin oluşturulmasını etkileyebilecek lisanslı içeriğin performansına ilişkin kısıtlamalar verebilir, bu nedenle lisansı dikkatle okuyun.|
 
