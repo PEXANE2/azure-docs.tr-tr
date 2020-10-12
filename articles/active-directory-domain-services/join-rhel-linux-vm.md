@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 07/13/2020
 ms.author: iainfou
 ms.openlocfilehash: f2a6cb422c1133f0ed53d2c1061501a47d9c92f1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87005098"
 ---
 # <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Red Hat Enterprise Linux bir sanal makineyi Azure Active Directory Domain Services yönetilen bir etki alanına katma
@@ -42,7 +42,7 @@ Azure 'da var olan bir RHEL Linux sanal makinesi varsa, SSH kullanarak buna bağ
 
 Bir RHEL Linux sanal makinesi oluşturmanız veya bu makaleyle kullanmak üzere bir test sanal makinesi oluşturmak istiyorsanız aşağıdaki yöntemlerden birini kullanabilirsiniz:
 
-* [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
+* [Azure portalındaki](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -225,7 +225,7 @@ Successfully enrolled machine in realm
 
 VM 'niz etki alanına ekleme işlemini başarıyla tamamlayamadıysanız, VM 'nin ağ güvenlik grubunun, TCP + UDP bağlantı noktası 464 üzerinde giden Kerberos trafiğine, yönetilen etki alanınıza ait sanal ağ alt ağına izin verdiğinden emin olun.
 
-Şu anda Kullanıcı AD bilgilerini kullanarak sorgulama yapabilir`getent`
+Şu anda Kullanıcı AD bilgilerini kullanarak sorgulama yapabilir `getent`
 
 ```console
 sudo getent passwd contosoadmin

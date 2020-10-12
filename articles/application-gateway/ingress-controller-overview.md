@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: caya
 ms.openlocfilehash: c1bd41587e4f56fb0a7f3eb8285d301751f558d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84668109"
 ---
 # <a name="what-is-application-gateway-ingress-controller"></a>Application Gateway giriş denetleyicisi nedir?
@@ -36,16 +36,16 @@ AGIC, hizmet ve dağıtımlar/pods ile birlikte Kubernetes giriş [kaynağı](ht
   - Ortak, özel ve karma Web siteleri için destek
   - Tümleşik Web uygulaması güvenlik duvarı
 
-## <a name="difference-between-helm-deployment-and-aks-add-on"></a>Helk dağıtım ve AKS eklentisi arasındaki fark
+## <a name="difference-between-helm-deployment-and-aks-add-on"></a>Helk dağıtım ve AKS Add-On arasındaki fark
 AKS kümeniz için AGIC dağıtmanın iki yolu vardır. İlk yöntem Held ile aynıdır; İkincisi, bir eklenti olarak AKS aracılığıyla yapılır. AGIC 'in bir AKS eklentisi olarak dağıtılmasının birincil avantajı, Held aracılığıyla dağıtmanın çok daha kolay olması. Yeni bir kurulum için, Azure CLı 'de tek bir satırda eklenti olarak etkinleştirilen yeni bir Application Gateway ve yeni bir AKS kümesi dağıtabilirsiniz. Eklenti Ayrıca, otomatik güncelleştirmeler ve artırılmış destek gibi ek avantajlar sağlayan, tam olarak yönetilen bir hizmettir. Held aracılığıyla dağıtılan AGC 'ler AKS tarafından desteklenmez, ancak aks eklentisi olarak dağıtılan AGIC 'ler AKS tarafından desteklenir. 
 
 AGIC eklentisi, müşterinin AKS kümesinde bir pod olarak dağıtılır, ancak helk dağıtım sürümü ve AGIC 'nin eklenti sürümü arasında birkaç farklılık vardır. İki sürüm arasındaki farklılıkların bir listesi aşağıda verilmiştir: 
   - Helk dağıtım değerleri AKS eklentisi üzerinde değiştirilemez:
-    - `verbosityLevel`Varsayılan olarak 5 olarak ayarlanacak
+    - `verbosityLevel` Varsayılan olarak 5 olarak ayarlanacak
     - `usePrivateIp`Varsayılan olarak false olarak ayarlanacak; Bu, [kullanım-özel-IP ek açıklaması](ingress-controller-annotations.md#use-private-ip) ile üzerine yazılabilir
-    - `shared`eklenti üzerinde desteklenmez 
-    - `reconcilePeriodSeconds`eklenti üzerinde desteklenmez
-    - `armAuth.type`eklenti üzerinde desteklenmez
+    - `shared` eklenti üzerinde desteklenmez 
+    - `reconcilePeriodSeconds` eklenti üzerinde desteklenmez
+    - `armAuth.type` eklenti üzerinde desteklenmez
   - Helk aracılığıyla dağıtılan AGIC, ProhibitedTargets 'i destekler, bu da AGIC, diğer mevcut arka uçları etkilemeden AKS kümelerinde özel olarak Application Gateway yapılandırabileceği anlamına gelir. AGIC eklentisi şu anda bunu desteklemiyor. 
   - AGIC eklentisi yönetilen bir hizmet olduğundan, müşteriler agic eklentisinin en son sürümüne otomatik olarak güncelleştirilecek, bu da müşteri 'nin AGC 'yi el ile güncelleştirmesi gereken helk 'ın aksine. 
 
@@ -69,12 +69,12 @@ Aşağıdaki tablolar, helk dağıtım sürümü ve AGIC 'nin AKS eklenti sürü
 ### <a name="helm-deployed-agic-2-aks-clusters"></a>Helk dağıtılan AGIC (2 + AKS kümeleri)
 |                  |1 Application Gateway |2 + uygulama ağ geçitleri |
 |------------------|---------|--------|
-|**1 AGC**|YOK |YOK |
-|**2 + Agcs**|Paylaşılan ProhibitedTarget işlevselliği kullanılmalıdır |YOK |
+|**1 AGC**|Yok |Yok |
+|**2 + Agcs**|Paylaşılan ProhibitedTarget işlevselliği kullanılmalıdır |Yok |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [**Aks Add-on Onfield dağıtımı**](tutorial-ingress-controller-add-on-new.md): boş tablet ALTYAPıSıNDAN agic eklenti, aks ve Application Gateway yükleme yönergeleri.
-- [**Aks eklentisi Gözatınalan dağıtımı**](tutorial-ingress-controller-add-on-existing.md): BIR aks kümesine mevcut bir Application Gateway sahip olan agic eklentisi.
+- [**Aks Add-On doğa alanı dağıtımı**](tutorial-ingress-controller-add-on-new.md): boş tablet ALTYAPıSıNDAN agic eklenti, aks ve Application Gateway yükleme yönergeleri.
+- [**Aks Add-On brownfield dağıtımı**](tutorial-ingress-controller-add-on-existing.md): BIR aks kümesine mevcut bir Application Gateway sahip olan agic eklentisini ekleyin.
 - [**Helk**](ingress-controller-install-new.md), yenı aks kümesi ve Blank-kurşun altyapısı üzerinde yeni Application Gateway.
 - [**Helk brownfield dağıtımı**](ingress-controller-install-existing.md): mevcut bir aks kümesinde Held aracılığıyla AGC 'yi dağıtın ve Application Gateway.
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/19/2020
 ms.author: allensu
 ms.openlocfilehash: 66eafb818b09d6d1cde6c1f3e2dbcdaf55352248
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87002990"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Metro tarafından Azure CDN kapsama 
@@ -36,9 +36,9 @@ Bu makalede, Azure Content Delivery Network (CDN) ürünleriyle ilgili varlık n
 > Her Azure CDN ürününde CDN altyapılarını oluşturmanın ayrı bir yolu olduğundan, Microsoft, hangi Azure CDN ürünün kullanılacağına karar vermek için POP konumlarının kullanılmasını önerir. Bunun yerine, özelliklerini ve Son Kullanıcı performansını göz önünde bulundurun. Kullanıcılarınız için doğru ürünü seçmek üzere her bir Azure CDN ürünüyle performansı test edin. 
 > 
 
-| Bölge | Microsoft | Verizon | Akamai |
+| Region | Microsoft | Verizon | Akamai |
 | --- | --- | --- | --- |
-| Kuzey Amerika | TORIN, Kanada<br />Vansu ver, Kanada<br />Montreal, Kanada<br />Querétaro, Meksika<br />San Juan, Porto Riko<br />Ashburn, VA, USA<br />Atlanta, GA, USA<br />Raleigh, NC, USA<br />Boston, MA, USA<br />Cheyenne, WY, ABD<br />Chicago, IL, ABD<br /> Dallas, TX, USA<br />Denver, CO, USA<br />Honolulu, HI, USA<br />Houston, TX, ABD<br />Las Vegas, NV, ABD<br />Los Angeles, CA, ABD<br />Miamı, FL, USA<br />New York, NY, USA<br />Newark, NJ, USA<br />Phoenix, AZ, USA<br />Portland veya, ABD<br />San Antonio, TX, USA<br />San Josa, CA, ABD<br />Seattle, WA, USA | Guadalajara, Meksika<br />Mexico City, Mexico<br />Puebla, Meksika<br />Querétaro, Meksika<br />Atlanta, GA, USA<br />Boston, MA, USA<br />Chicago, IL, ABD<br />Dallas, TX, USA<br />Denver, CO, USA<br />Detroit, MI, USA<br />Los Angeles, CA, ABD<br />Miamı, FL, USA<br />New York, NY, USA<br />Philaphia, PA, USA<br />San Josa, CA, ABD<br />Seattle, WA, USA<br />Washington, DC, USA <br /> Ashburn, VA, USA <br /> Phoenix, AZ, USA | Kanada<br />Meksika<br />USA |
+| Kuzey Amerika | TORIN, Kanada<br />Vansu ver, Kanada<br />Montreal, Kanada<br />Querétaro, Meksika<br />San Juan, Porto Riko<br />Ashburn, VA, USA<br />Atlanta, GA, USA<br />Raleigh, NC, USA<br />Boston, MA, USA<br />Cheyenne, WY, ABD<br />Chicago, IL, ABD<br /> Dallas, TX, USA<br />Denver, CO, USA<br />Honolulu, HI, USA<br />Houston, TX, ABD<br />Las Vegas, NV, ABD<br />Los Angeles, CA, ABD<br />Miamı, FL, USA<br />New York, NY, USA<br />Newark, NJ, USA<br />Phoenix, AZ, USA<br />Portland veya, ABD<br />San Antonio, TX, USA<br />San Josa, CA, ABD<br />Seattle, WA, USA | Guadalajara, Meksika<br />Mexico City, Mexico<br />Puebla, Meksika<br />Querétaro, Meksika<br />Atlanta, GA, USA<br />Boston, MA, USA<br />Chicago, IL, ABD<br />Dallas, TX, USA<br />Denver, CO, USA<br />Detroit, MI, USA<br />Los Angeles, CA, ABD<br />Miamı, FL, USA<br />New York, NY, USA<br />Philaphia, PA, USA<br />San Josa, CA, ABD<br />Seattle, WA, USA<br />Washington, DC, USA <br /> Ashburn, VA, USA <br /> Phoenix, AZ, USA | Kanada<br />Meksika<br />ABD |
 | Güney Amerika | Kaya, Brezilya<br />Rio de Janeiro, Brezilya<br />Sao Paulo, Brezilya<br />Santiago, Şili<br />Bogota, Kolombiya<br />Buenos Aonis, Arjantin | Buenos Aonis, Arjantin<br />Rio de Janeiro, Brezilya<br />Sao Paulo, Brezilya<br />Valparaíso, Şili<br />Bogota, Kolombiya<br />Barranquilla, Kolombiya<br />Medellin, Kolombiya<br />Tito, Ekvador<br />Lima, Peru | Arjantin<br />Brezilya<br />Şili<br />Kolumbiyası<br />Ekvador<br />Peru<br />Uruguay |
 | Avrupa | Viyana, Avusturya<br />Brüksel, Belçika<br />Sofia, Bulgaristan<br />Zagreb, Hırvatistan<br />Prag, Çek Cumhuriyeti<br />Kopenhag, Danimarka<br /> Helsinki, Finlandiya<br /> Oslo, Norveç<br />Marseille, Fransa<br />Paris, Fransa<br />Berlin, Almanya<br />Frankfurt, Almanya<br />Atina, Yunanistan<br />Budapeşte, Macaristan<br />Dublin, Irlanda<br />MILAN, Italya<br />Roma, Italya<br />Amsterdam, Hollanda<br />Varşova, Polonya<br />Lizbon, Portekiz<br />Bukreş, Romanya<br />Barcelona, Ispanya<br />Madrid, Ispanya<br />Stockholm, Isveç<br />Zurich, Isviçre<br />Geneva, Isviçre<br />Londra, UK<br />Manchester, UK | Viyana, Avusturya<br />Kopenhag, Danimarka<br />Helsinki, Finlandiya<br />Marseille, Fransa<br />Paris, Fransa<br />Frankfurt, Almanya<br />MILAN, Italya<br />Riga, Letonya<br />Amsterdam, Hollanda<br />Varşova, Polonya<br />Madrid, Ispanya<br />Stockholm, Isveç<br />Londra, UK <br /> Manchester, UK| Avusturya<br />Bulgaristan<br />Danimarka<br />Finlandiya<br />Fransa<br />Almanya<br />Yunanistan<br />İrlanda<br />İtalya<br />Hollanda<br />Polonya<br />Rusya<br />İspanya<br />İsveç<br />İsviçre<br />Birleşik Krallık |
 | Afrika | Cabo Town, Güney Afrika<br />Johannesburg, Güney Afrika<br />Lagos, Nijerya<br />Nairobi, Kenya | Johannesburg, Güney Afrika <br/> Nairobi, Kenya | Güney Afrika |

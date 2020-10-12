@@ -12,10 +12,10 @@ ms.date: 04/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d1a771cb13fcfa76449500ad71c67dcf7c446fa4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85388451"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir Amazon hesabı ile kaydolma ve oturum açma ayarlama
@@ -40,4 +40,4 @@ Azure Active Directory B2C (Azure AD B2C) ' de bir Amazon hesabını federal kim
 1. Bir **ad**girin. Örneğin, *Amazon*.
 1. **ISTEMCI kimliği**için, daha önce oluşturduğunuz Amazon UYGULAMASıNıN istemci kimliğini girin.
 1. **İstemci parolası**için, kaydettiğiniz istemci gizli anahtarını girin.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.

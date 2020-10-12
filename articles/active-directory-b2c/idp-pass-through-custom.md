@@ -12,10 +12,10 @@ ms.date: 08/17/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c434ad6a724ba513caf7923916997600097b43f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85387873"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Uygulamanıza özel bir ilke aracılığıyla bir erişim belirteci geçirin Azure Active Directory B2C
@@ -24,7 +24,7 @@ Azure Active Directory B2C (Azure AD B2C) içinde [özel bir ilke](custom-policy
 
 Azure AD B2C, [OAuth 2,0](authorization-code-flow.md) ve [OpenID Connect](openid-connect.md) kimlik sağlayıcılarının erişim belirtecinin geçirilmesini destekler. Diğer tüm kimlik sağlayıcıları için talep boş döndürülür.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Özel ilkeniz bir OAuth 2,0 veya OpenID Connect kimlik sağlayıcısı ile yapılandırılır.
 
@@ -84,13 +84,13 @@ Azure AD B2C ' de Uygulamalarınızı sınarken, `https://jwt.ms` içindeki tale
 
 ### <a name="upload-the-files"></a>Dosyaları karşıya yükleme
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. Üst menüdeki **Dizin + abonelik** filtresi ' ne tıklayarak ve kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. **Kimlik deneyimi çerçevesini**seçin.
 5. Özel Ilkeler sayfasında, **Ilkeyi karşıya yükle**' ye tıklayın.
 6. Varsa **Ilkenin üzerine yaz**' ı seçin ve ardından *TrustframeworkExtensions.xml* dosyasını arayıp seçin.
-7. **Karşıya Yükle**'yi seçin.
+7. **Karşıya Yükle**’yi seçin.
 8. *SignUpOrSignIn.xml*gibi bağlı olan taraf dosyası için 5 ile 7 arasındaki adımları yineleyin.
 
 ### <a name="run-the-policy"></a>İlkeyi çalıştırma

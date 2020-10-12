@@ -12,10 +12,10 @@ ms.date: 09/20/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 91a55782492c1b2612652b147e0aca37941bf4db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85388213"
 ---
 # <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanarak bir Google hesabı ile oturum açmayı ayarlama
@@ -24,7 +24,7 @@ ms.locfileid: "85388213"
 
 Bu makalede, Azure Active Directory B2C (Azure AD B2C) içinde [özel ilkeler](custom-policy-overview.md) kullanarak Google hesabı olan kullanıcılar için oturum açma 'nın nasıl etkinleştirileceği gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Active Directory B2C içindeki özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)adımlarını izleyin.
 - Zaten bir Google hesabınız yoksa, [Google hesabınızı oluşturma](https://accounts.google.com/SignUp)' da bir tane oluşturun.
@@ -41,14 +41,14 @@ Kullanıcıların bir Google hesabından oturum açmasını etkinleştirmek içi
 6. **Uygulama türü**altında **Web uygulaması**' nı seçin.
 7. Uygulamanız için bir **ad** girin.
 8. **Yetkili JavaScript kaynakları**' nda, `https://your-tenant-name.b2clogin.com` **Yetkilendirme yeniden yönlendirme URI 'leri**girin, girin `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Kiracı adınızı kiracınızın adıyla değiştirin. Kiracı, Azure AD B2C büyük harfle tanımlansa bile kiracı adınızı girerken tüm küçük harfleri kullanmanız gerekir.
-8. **Oluştur**'a tıklayın.
+8. **Oluştur**’a tıklayın.
 9. **ISTEMCI kimliği** ve **istemci parolası**değerlerini kopyalayın. Google 'ı kiracınızda bir kimlik sağlayıcısı olarak yapılandırmak için her ikisine de ihtiyacınız olacak. İstemci parolası önemli bir güvenlik kimlik bilgileridir.
 
 ## <a name="create-a-policy-key"></a>İlke anahtarı oluşturma
 
 Daha önce Azure AD B2C kiracınızda kaydettiğiniz istemci gizli anahtarını depolamanız gerekir.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve kiracınızı içeren dizini seçin.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. Genel Bakış sayfasında **kimlik deneyimi çerçevesi**' ni seçin.
@@ -57,7 +57,7 @@ Daha önce Azure AD B2C kiracınızda kaydettiğiniz istemci gizli anahtarını 
 7. İlke anahtarı için bir **ad** girin. Örneğin, `GoogleSecret`. Ön ek, `B2C_1A_` anahtarınızın adına otomatik olarak eklenir.
 8. **Gizli**, daha önce kaydettiğiniz istemci gizli anahtarını girin.
 9. **Anahtar kullanımı**için öğesini seçin `Signature` .
-10. **Oluştur**'a tıklayın.
+10. **Oluştur**’a tıklayın.
 
 ## <a name="add-a-claims-provider"></a>Talep sağlayıcısı ekleme
 

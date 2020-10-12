@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 06/25/2020
 ms.author: aahi
 ms.openlocfilehash: 12c09ad8e1db3914263fcc864c9c2d09069d63a6
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85412592"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Metin Analizi API'si sürüm 3. x ' e geçirin
@@ -94,7 +94,7 @@ Anahtar tümceciği ayıklama özelliği, uç nokta sürümü dışındaki v3 'd
 
 ### <a name="rest-api"></a>REST API
 
-Uygulamanız REST API kullanıyorsa, anahtar tümceciği ayıklama için istek uç noktasını v3 uç noktasına güncelleştirin. Örneğin, `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`
+Uygulamanız REST API kullanıyorsa, anahtar tümceciği ayıklama için istek uç noktasını v3 uç noktasına güncelleştirin. Örnek: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`
 
 ### <a name="client-libraries"></a>İstemci kitaplıkları
 

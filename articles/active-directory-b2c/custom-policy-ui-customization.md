@@ -12,10 +12,10 @@ ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: cb833ff35dae4fe1c0c27204ec66fa6b4cdb82c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85388893"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini özelleştirme
@@ -24,7 +24,7 @@ ms.locfileid: "85388893"
 
 Bu makaledeki adımları tamamlayarak, marka ve görünümünüzdeki bir kaydolma ve oturum açma özel ilkesi oluşturacaksınız. Azure Active Directory B2C (Azure AD B2C) sayesinde, kullanıcılara sunulan HTML ve CSS içeriğinin neredeyse tam denetimini alırsınız. Özel bir ilke kullandığınızda, Azure portal denetimleri kullanmak yerine, XML 'de UI özelleştirmesini yapılandırırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Özel ilkelerle çalışmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın. Kaydolma ve yerel hesaplarla oturum açma için çalışan bir özel ilkenize sahip olmanız gerekir.
 

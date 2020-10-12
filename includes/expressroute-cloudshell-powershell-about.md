@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -9,10 +9,10 @@ ms.date: 12/13/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 446a3b786686d96f68d2d0a09d00a75e176a7661
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86218048"
 ---
 Azure PowerShell veya CLı 'yi yerel olarak yüklemek yerine birçok PowerShell cmdlet 'ini ve CLı komutunu çalıştırmak için Azure Cloud Shell kullanabilirsiniz. Azure Cloud Shell, ortak Azure Araçları önceden yüklenmiş ve hesabınızla kullanılmak üzere yapılandırılmış, ücretsiz bir etkileşimli kabuktur.

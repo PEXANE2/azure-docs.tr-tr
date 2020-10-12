@@ -15,10 +15,10 @@ ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8f520141d36726e94dc8d49d7e5aa95bb35d5484
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85956245"
 ---
 # <a name="create-collections-on-the-my-apps-portal"></a>Uygulamalarım portalında koleksiyonlar oluşturma
@@ -57,15 +57,15 @@ Bir koleksiyon oluşturmak için bir Azure AD Premium P1 veya P2 lisansına sahi
 
    ![Yeni koleksiyon sayfası](media/acces-panel-collections/new-collection.png)
 
-5. **Uygulamalar** sekmesini seçin. **+ Uygulama Ekle**' yi seçin ve ardından uygulama **Ekle** sayfasında, koleksiyona eklemek istediğiniz tüm uygulamaları seçin ya da uygulamaları bulmak için **arama** kutusunu kullanın.
+5. **Uygulamalar** sekmesini seçin. **+ Uygulama**Ekle ' yi seçin ve ardından uygulama **Ekle** sayfasında, koleksiyona eklemek istediğiniz tüm uygulamaları seçin ya da uygulamaları bulmak için **arama** kutusunu kullanın.
 
    ![Koleksiyona uygulama ekleme](media/acces-panel-collections/add-applications.png)
 
 6. Uygulama ekleme işiniz bittiğinde **Ekle**' yi seçin. Seçilen uygulamaların listesi görüntülenir. Listedeki uygulamaların sırasını değiştirmek için yukarı oklarını kullanabilirsiniz. Bir uygulamayı aşağı taşımak veya koleksiyondan silmek için **diğer** menüyü (**...**) seçin.
 
-7. **Sahipler** sekmesini seçin. **+ Kullanıcı ve Grup Ekle**' yi seçin ve ardından **Kullanıcı ve Grup Ekle** sayfasında, sahipliği atamak istediğiniz kullanıcıları veya grupları seçin. Kullanıcılar ve gruplar seçimini tamamladıktan sonra **Seç**' i seçin.
+7. **Sahipler** sekmesini seçin. **+ Kullanıcı ve**Grup Ekle ' yi seçin ve ardından **Kullanıcı ve Grup Ekle** sayfasında, sahipliği atamak istediğiniz kullanıcıları veya grupları seçin. Kullanıcılar ve gruplar seçimini tamamladıktan sonra **Seç**' i seçin.
 
-9. **Kullanıcılar ve gruplar** sekmesini seçin. **+ Kullanıcı ve Grup Ekle**' yi seçin ve ardından **Kullanıcı ve Grup Ekle** sayfasında, koleksiyonu atamak istediğiniz kullanıcıları veya grupları seçin. Ya da kullanıcıları veya grupları bulmak için **arama** kutusunu kullanın. Kullanıcılar ve gruplar seçimini tamamladıktan sonra **Seç**' i seçin.
+9. **Kullanıcılar ve gruplar** sekmesini seçin. **+ Kullanıcı ve**Grup Ekle ' yi seçin ve ardından **Kullanıcı ve Grup Ekle** sayfasında, koleksiyonu atamak istediğiniz kullanıcıları veya grupları seçin. Ya da kullanıcıları veya grupları bulmak için **arama** kutusunu kullanın. Kullanıcılar ve gruplar seçimini tamamladıktan sonra **Seç**' i seçin.
 
    ![Kullanıcı ve Grup Ekle](media/acces-panel-collections/add-users-and-groups.png)
 

@@ -12,10 +12,10 @@ ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 72e4de1473766d50512453ae38b6033ff0c5b73d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85388043"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir Google hesabı ile kaydolma ve oturum açma ayarlama
@@ -33,7 +33,7 @@ Uygulamanız için bir **ad** girin. **Yetkili etki alanları** bölümüne *B2c
 1. Sol menüden **kimlik** bilgileri ' ni seçin ve **kimlik bilgileri oluştur**  >  **OAuth istemci kimliği**' ni seçin.
 1. **Uygulama türü**altında **Web uygulaması**' nı seçin.
 1. Uygulamanız için bir **ad** girin, `https://your-tenant-name.b2clogin.com` **yetkili JavaScript kaynakları**' na ve `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` **yetkili yeniden yönlendirme URI 'lerinde**girin. `your-tenant-name`Kiracınızın adıyla değiştirin. Kiracı, Azure AD B2C büyük harfle tanımlansa bile kiracı adınızı girerken tüm küçük harfleri kullanmanız gerekir.
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’a tıklayın.
 1. **ISTEMCI kimliği** ve **istemci parolası**değerlerini kopyalayın. Google 'ı kiracınızda bir kimlik sağlayıcısı olarak yapılandırmak için her ikisine de ihtiyacınız olacak. **İstemci parolası** önemli bir güvenlik kimlik bilgileridir.
 
 ## <a name="configure-a-google-account-as-an-identity-provider"></a>Bir Google hesabını kimlik sağlayıcısı olarak yapılandırma
@@ -45,4 +45,4 @@ Uygulamanız için bir **ad** girin. **Yetkili etki alanları** bölümüne *B2c
 1. Bir **ad**girin. Örneğin, *Google*.
 1. **ISTEMCI kimliği**için, daha önce oluşturduğunuz Google UYGULAMASıNıN istemci kimliğini girin.
 1. **İstemci parolası**için, kaydettiğiniz istemci gizli anahtarını girin.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.

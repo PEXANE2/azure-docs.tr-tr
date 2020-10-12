@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/06/2019
 ms.openlocfilehash: 5e32e269a36196d774bb1163a1c70c5d818ddcbb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89000626"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>HDInsight 'ta Apache Hadoop üzerinde Apache Hive ve Apache Pig ile C# Kullanıcı tanımlı işlevleri kullanma
@@ -24,7 +24,7 @@ HDInsight üzerinde [Apache Hive](https://hive.apache.org) ve [Apache Pig](https
 
 Hem Hive hem de Pig, işlenmek üzere dış uygulamalara veri geçirebilir. Bu işlem _akış_olarak bilinir. .NET uygulaması kullanılırken, veriler STDIN üzerindeki uygulamaya geçirilir ve uygulama STDOUT üzerinde sonuçları döndürür. STDıN ve STDOUT 'tan okumak ve yazmak için `Console.ReadLine()` `Console.WriteLine()` bir konsol uygulaması kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * .NET Framework 4,5 ' i hedefleyen C# kodu yazma ve oluşturma hakkında bir benzerlik.
 
@@ -56,7 +56,7 @@ Apache Hive UDF için C# projesi oluşturmak için:
 
 2. **Yeni proje oluştur**' u seçin.
 
-3. **Yeni proje oluştur** penceresinde **konsol uygulaması (.NET Framework)** şablonunu (C# sürümü) seçin. Ardından **İleri**’yi seçin.
+3. **Yeni proje oluştur** penceresinde **konsol uygulaması (.NET Framework)** şablonunu (C# sürümü) seçin. Sonra **İleri**’yi seçin.
 
 4. **Yeni projeyi yapılandırın** penceresinde, *hivecsharp*için bir **Proje adı** girin ve yeni projenin kaydedileceği bir konum oluşturun veya **konuma** gidin. Ardından **Oluştur**’u seçin.
 
@@ -123,7 +123,7 @@ Apache Hive UDF için C# projesi oluşturmak için:
 
 2. **Başlangıç** penceresinde **Yeni proje oluştur**' u seçin.
 
-3. **Yeni proje oluştur** penceresinde **konsol uygulaması (.NET Framework)** şablonunu (C# sürümü) seçin. Ardından **İleri**’yi seçin.
+3. **Yeni proje oluştur** penceresinde **konsol uygulaması (.NET Framework)** şablonunu (C# sürümü) seçin. Sonra **İleri**’yi seçin.
 
 4. **Yeni projeyi yapılandırın** penceresinde, *pigudf*için bir **Proje adı** girin ve yeni projenin kaydedileceği bir konum oluşturun veya **konuma** gidin. Ardından **Oluştur**’u seçin.
 

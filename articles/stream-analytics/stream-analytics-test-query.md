@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
 ms.openlocfilehash: deaa52494fce387bde2b105de7d34e8a4f0c5c2f
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89612149"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Portalda Azure Stream Analytics işi test etme
@@ -23,7 +23,7 @@ Azure Stream Analytics, işinizi başlatmadan veya durdurmaksızın sorgunuzu te
 
 Azure Stream Analytics akış girişlerinizin olaylarını otomatik olarak getirir. Varsayılan örnekteki sorguları çalıştırabilir veya örnek için belirli bir zaman çerçevesini ayarlayabilirsiniz.
 
-1. Azure portalında oturum açın.
+1. Azure Portal’da oturum açın.
 
 2. Mevcut Stream Analytics işinizi bulun ve seçin.
 
@@ -71,7 +71,7 @@ Azure Stream Analytics akış girişlerinizin olaylarını otomatik olarak getir
 
 Canlı verileri kullanmak yerine, Azure Stream Analytics sorgunuzu test etmek için yerel bir dosyadaki örnek verileri kullanabilirsiniz.
 
-1. Azure portalında oturum açın.
+1. Azure Portal’da oturum açın.
    
 2. Mevcut Stream Analytics işinizi bulun ve seçin.
 

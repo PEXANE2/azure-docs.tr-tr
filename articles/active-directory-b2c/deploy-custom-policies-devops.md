@@ -12,10 +12,10 @@ ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 411fa207323a9bff6cfcc3b17769203c444dd844
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85388689"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Azure Pipelines ile özel ilkeler dağıtma
@@ -31,7 +31,7 @@ Azure AD B2C içindeki özel ilkeleri yönetmek için Azure Pipelines etkinleşt
 > [!IMPORTANT]
 > Azure işlem hattı ile Azure AD B2C özel ilkeleri yönetmek Şu anda Microsoft Graph API uç noktasında kullanılabilen **Önizleme** işlemlerini kullanıyor `/beta` . Üretim uygulamalarında bu API 'lerin kullanılması desteklenmez. Daha fazla bilgi için [Microsoft Graph REST API Beta uç nokta başvurusuna](https://docs.microsoft.com/graph/api/overview?toc=./ref/toc.json&view=graph-rest-beta)bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [B2C ıEF Ilke Yöneticisi](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) rolüyle dizindeki bir kullanıcı için [Azure AD B2C kiracı](tutorial-create-tenant.md)ve kimlik bilgileri
 * Kiracınıza yüklenen [özel ilkeler](custom-policy-get-started.md)

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.openlocfilehash: 50dbbe3a6a1af1e73cdf1ee7f5bd3a63cf2f6a50
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87498812"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-import-order"></a>Azure Data Box ve Azure Data Box Heavy içeri aktarma siparişiniz için izleme ve olay günlüğü
@@ -297,7 +297,7 @@ NIST SP 800-88 düzeltme 1 yönergelerine göre Data Box disklerden veriler sili
 
 ### <a name="audit-logs"></a>Denetim günlükleri
 
-Denetim günlükleri Data Box veya Azure veri merkezi 'nin dışında olduğunda Data Box Heavy paylaşımlara erişme ve bunların nasıl çalıştığı hakkında bilgiler içerir. Bu Günlükler şurada bulunur:`storage-account/azuredatabox-chainofcustodylogs`
+Denetim günlükleri Data Box veya Azure veri merkezi 'nin dışında olduğunda Data Box Heavy paylaşımlara erişme ve bunların nasıl çalıştığı hakkında bilgiler içerir. Bu Günlükler şurada bulunur: `storage-account/azuredatabox-chainofcustodylogs`
 
 Data Box bir denetim günlüğü örneği aşağıda verilmiştir:
 

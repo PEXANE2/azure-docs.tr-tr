@@ -12,10 +12,10 @@ ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 06ba565de8ca24c8c0baa576b74e70035384be09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85388434"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içindeki özel ilkeleri kullanarak Azure Active Directory hesabı ile oturum açmayı ayarlama
@@ -24,7 +24,7 @@ ms.locfileid: "85388434"
 
 Bu makalede, Azure Active Directory B2C (Azure AD B2C) [özel ilkelerini](custom-policy-overview.md) kullanarak bir Azure Active Directory (Azure AD) kuruluştan kullanıcıların oturum açma özelliğini nasıl etkinleştireceğinizi gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Azure Active Directory B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın.
 
@@ -43,7 +43,7 @@ Azure AD B2C kiracınızda oluşturduğunuz uygulama anahtarını depolamanız g
 1. İlke anahtarı için bir **ad** girin. Örneğin, `ContosoAppSecret`.  Ön ek, `B2C_1A_` oluşturulduğu sırada anahtarınızın adına otomatik olarak eklenir, bu nedenle aşağıdaki BÖLÜMDEKI XML başvurusu *B2C_1A_ContosoAppSecret*.
 1. **Gizli**, daha önce kaydettiğiniz istemci gizli anahtarını girin.
 1. **Anahtar kullanımı**için öğesini seçin `Signature` .
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 ## <a name="add-a-claims-provider"></a>Talep sağlayıcısı ekleme
 

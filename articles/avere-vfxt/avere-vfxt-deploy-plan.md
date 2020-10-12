@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
 ms.openlocfilehash: e5c33144dcebe491757dfafb2879fe51545827ce
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88272799"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Avere vFXT sisteminizi planlama
@@ -75,8 +75,8 @@ Avere vFXT kümenizin ağ altyapısını planlarken aşağıdaki yönergeleri iz
   |----------|-----------|----------|
   | Kaynak grubu | Boşsa, Evet | Boş olmalıdır|
   | Depolama hesabı | Küme oluşturulduktan sonra var olan bir blob kapsayıcısını bağlıyorsanız **Evet** <br/>  Küme oluşturma sırasında yeni bir blob kapsayıcısı oluşturulmaksam **Hayır** | Mevcut blob kapsayıcısı boş olmalıdır <br/> &nbsp; |
-  | Sanal ağ | Yes | Yeni bir Azure Blob kapsayıcısı oluşturulana bir depolama hizmeti uç noktası içermelidir |
-  | Alt ağ | Yes | Diğer kaynakları içeremez |
+  | Sanal ağ | Evet | Yeni bir Azure Blob kapsayıcısı oluşturulana bir depolama hizmeti uç noktası içermelidir |
+  | Alt ağ | Evet | Diğer kaynakları içeremez |
 
 ## <a name="ip-address-requirements"></a>IP adresi gereksinimleri
 

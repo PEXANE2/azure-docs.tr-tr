@@ -12,10 +12,10 @@ ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 20cb5f70a5844cb2d56fc9ff357fcaf640a6c56b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85388587"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içindeki özel ilkeleri kullanarak ADFS 'yi SAML kimlik sağlayıcısı olarak ekleyin
@@ -24,7 +24,7 @@ ms.locfileid: "85388587"
 
 Bu makalede, Azure Active Directory B2C (Azure AD B2C) içinde [özel ilkeler](custom-policy-overview.md) kullanarak bir ADFS Kullanıcı hesabı için oturum açma 'nın nasıl etkinleştirileceği gösterilmektedir. Bir [SAML kimlik sağlayıcısı teknik profilini](saml-identity-provider-technical-profile.md) özel ilkeye ekleyerek oturum açmayı etkinleştirebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Azure Active Directory B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın.
 - Özel anahtarı olan bir Certificate. pfx dosyasına erişiminiz olduğundan emin olun. Kendi imzalı sertifikanızı oluşturup Azure AD B2C yükleyebilirsiniz. Azure AD B2C, SAML kimlik sağlayıcınıza gönderilen SAML isteğini imzalamak için bu sertifikayı kullanır.
@@ -34,7 +34,7 @@ Bu makalede, Azure Active Directory B2C (Azure AD B2C) içinde [özel ilkeler](c
 
 Sertifikanızı Azure AD B2C kiracınızda depolamanız gerekir.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve kiracınızı içeren dizini seçin.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. Genel Bakış sayfasında **kimlik deneyimi çerçevesi**' ni seçin.
@@ -42,7 +42,7 @@ Sertifikanızı Azure AD B2C kiracınızda depolamanız gerekir.
 6. **Seçenekler**için öğesini seçin `Upload` .
 7. İlke anahtarı için bir **ad** girin. Örneğin, `SamlCert`. Ön ek, `B2C_1A_` anahtarınızın adına otomatik olarak eklenir.
 8. Özel anahtarla Certificate. pfx dosyanıza gidin ve bu dosyayı seçin.
-9. **Oluştur**'a tıklayın.
+9. **Oluştur**’a tıklayın.
 
 ## <a name="add-a-claims-provider"></a>Talep sağlayıcısı ekleme
 
@@ -196,9 +196,9 @@ Bir tarayıcı açın ve URL 'ye gidin. Doğru URL 'YI yazdığınızdan ve XML 
     | -------------- | ------------------- |
     | Kullanıcı Asıl Adı | userPrincipalName |
     | Soyadı | family_name |
-    | Verilen-ad | given_name |
+    | Given-Name | given_name |
     | E-posta adresi | e-posta |
-    | Görünen ad | name |
+    | Display-Name | name |
 
     Bu adların, giden talep türü açılan listesinde görüntülemediğine unutmayın. Bunları el ile yazmanız gerekir. (Açılan menü aslında düzenlenebilir).
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 0a25301bac125cd95b975a5ba1fc0cce47b56abd
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85954103"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Azure Cosmos DB’ye MongoDB uygulaması bağlama
@@ -24,9 +24,9 @@ Bu öğreticide bağlantı dizesi bilgilerini almak için iki yol sağlanır:
 - .NET, Node.js, MongoDB kabuğu, Java ve Python sürücüleriyle kullanım için [hızlı başlangıç yöntemi](#get-the-mongodb-connection-string-by-using-the-quick-start)
 - Diğer sürücülerle kullanılmak üzere [özel bağlantı dizesi yöntemi](#get-the-mongodb-connection-string-to-customize)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- Bir Azure hesabı. Azure hesabınız yoksa, şimdi [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
+- Azure hesabı. Azure hesabınız yoksa, şimdi [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 - Cosmos hesabı. Yönergeler için bkz. [MongoDB ve .NET SDK için Azure Cosmos DB API 'sini kullanarak Web uygulaması oluşturma](create-mongodb-dotnet.md).
 
 ## <a name="get-the-mongodb-connection-string-by-using-the-quick-start"></a>Hızlı Başlangıç kullanarak MongoDB bağlantı dizesini alın
@@ -46,7 +46,7 @@ Bu öğreticide bağlantı dizesi bilgilerini almak için iki yol sağlanır:
 3. Hesap dikey penceresinin sol bölmesinde **bağlantı dizesi**' ne tıklayın.
 4. **Bağlantı dizesi** dikey penceresi açılır. Önceden oluşturulmuş bir bağlantı dizesi dahil olmak üzere MongoDB için bir sürücü kullanarak hesaba bağlanmak için gerekli tüm bilgilere sahiptir.
 
-   :::image type="content" source="./media/connect-mongodb-account/ConnectionStringBlade.png" alt-text="Bağlantı Dizesi dikey penceresi" lightbox= "./media/connect-mongodb-account/ConnectionStringBlade.png" :::
+   :::image type="content" source="./media/connect-mongodb-account/ConnectionStringBlade.png" alt-text="Hızlı başlangıç dikey penceresi" lightbox= "./media/connect-mongodb-account/ConnectionStringBlade.png" :::
 
 ## <a name="connection-string-requirements"></a>Bağlantı dizesi gereksinimleri
 

@@ -11,20 +11,20 @@ ms.topic: article
 ms.date: 12/16/2019
 ms.author: juliako
 ms.openlocfilehash: 5b9ec1c04dd90af9d9380a1f4d30386c8f9cc3ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79499660"
 ---
-# <a name="manage-a-video-indexer-account-connected-to-azure"></a>Azure 'a bağlı Video Indexer hesabını yönetme
+# <a name="manage-a-video-indexer-account-connected-to-azure"></a>Azure'a bağlı bir Video Indexer hesabını yönetme
 
 Bu makalede, Azure aboneliğinize ve bir Azure Media Services hesabına bağlı Video Indexer hesabının nasıl yönetileceği gösterilmektedir.
 
 > [!NOTE]
 > Bu konuda açıklanan hesap yapılandırma ayarlarını yapmak için Video Indexer hesap sahibi olmanız gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Azure 'A bağlı](connect-to-azure.md)olarak açıklandığı gibi video Indexer hesabınızı Azure 'a bağlayın.
 
@@ -50,7 +50,7 @@ Videolarınızın Dizin Oluşturucu hesabınız Azure 'a bağlıysa, aşağıdak
 
 Hesabınızın bazı ayarlamaları olması gerekiyorsa, **Ayarlar** sayfasında hesap yapılandırmanızla ilgili hataları ve uyarıları görürsünüz. İletiler, değişiklikler yapmanız gereken Azure portal tam konumlarına bağlantılar içerir. Daha fazla bilgi için aşağıdaki [hata ve uyarılar](#errors-and-warnings) bölümüne bakın.
 
-## <a name="repair-the-connection-to-azure"></a>Azure bağlantısını onarın
+## <a name="repair-the-connection-to-azure"></a>Azure bağlantısını onarma
 
 [Video Indexer](https://www.videoindexer.ai/) sayfanızın **Azure Media Services bağlantısını Güncelleştir** iletişim kutusunda, aşağıdaki ayarlar için değerler sağlamanız istenir:
 
@@ -61,7 +61,7 @@ Hesabınızın bazı ayarlamaları olması gerekiyorsa, **Ayarlar** sayfasında 
 |Uygulama Kimliği|Bu Video Indexer hesabı için oluşturduğunuz Azure AD uygulama KIMLIĞI (belirtilen Media Services hesabının izinleriyle). <br/><br/>Uygulama KIMLIĞINI almak için Azure portal gidin. Media Services hesap altında, hesabınızı seçin ve **API erişimi**' ne gidin. **Hizmet sorumlusu Azure AD uygulaması Media Services API 'sine Bağlan**' ı seçin  ->  **Azure AD App**. İlgili parametreleri kopyalayın.|
 |Uygulama anahtarı|Yukarıda belirttiğiniz Media Services hesabınızla ilişkili Azure AD uygulama anahtarı. <br/><br/>Uygulama anahtarını almak için Azure portal gidin. Media Services hesap altında, hesabınızı seçin ve **API erişimi**' ne gidin. **Hizmet sorumlusu ile Media Services API 'sine Bağlan**' ı seçerek  ->  gizli dizileri &**uygulama**  ->  **sertifikalarını**yönetin. İlgili parametreleri kopyalayın.|
 
-## <a name="autoscale-reserved-units"></a>Otomatik ölçeklendirme ayrılmış birimleri
+## <a name="autoscale-reserved-units"></a>Ayrılmış birimleri otomatik ölçeklendirme
 
 **Ayarlar** sayfası, medya ayrılmış BIRIMLERININ (ru) otomatik ölçeklendirilmesini ayarlamanıza olanak sağlar. Seçenek açık ise, en fazla ru sayısını ayırabilir ve Video Indexer ru **'yi**otomatik olarak durdurduğundan emin olabilirsiniz. Bu seçenekle, boş zamanlı olarak fazladan para ödemezsiniz, ancak dizin oluşturma yükü yüksek olduğunda dizin oluşturma işlerinin uzun bir süre tamamlanmasını bekleyemez.
 
