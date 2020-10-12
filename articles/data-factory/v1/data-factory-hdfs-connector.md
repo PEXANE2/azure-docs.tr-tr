@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e3f158bb4e8208d00fdfbc44b4afaf067183b6d2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087325"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Azure Data Factory kullanarak verileri Şirket içinden taşıma
@@ -120,7 +120,7 @@ Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi i�
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | folderPath |Klasörün yolu. Örnek: `myfolder`<br/><br/>Dizedeki özel karakterler için ' \ ' kaçış karakterini kullanın. Örneğin: folder\alt klasörü için klasör alt klasörü \\ \\ ve d:\samplefolder için d: \\ \\ samplefolder belirtin.<br/><br/>Bu özelliği, dilim başlangıç/bitiş tarihi-saati temelinde klasör yolları sağlamak için **Partitionby** ile birleştirebilirsiniz. |Evet |
-| fileName |Tablonun klasördeki belirli bir dosyaya başvurmasını istiyorsanız, **FolderPath** içindeki dosyanın adını belirtin. Bu özellik için herhangi bir değer belirtmezseniz tablo, klasördeki tüm dosyaları gösterir.<br/><br/>Bir çıkış veri kümesi için dosya adı belirtilmediğinde, oluşturulan dosyanın adı şu biçimde olacaktır: <br/><br/>`Data.<Guid>.txt`(örneğin:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Hayır |
+| fileName |Tablonun klasördeki belirli bir dosyaya başvurmasını istiyorsanız, **FolderPath** içindeki dosyanın adını belirtin. Bu özellik için herhangi bir değer belirtmezseniz tablo, klasördeki tüm dosyaları gösterir.<br/><br/>Bir çıkış veri kümesi için dosya adı belirtilmediğinde, oluşturulan dosyanın adı şu biçimde olacaktır: <br/><br/>`Data.<Guid>.txt` (örneğin:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Hayır |
 | partitionedBy |partitionedBy, zaman serisi verilerine yönelik bir dinamik folderPath, filename belirtmek için kullanılabilir. Örnek: her saat veri için folderPath parametreli parametrelenir. |Hayır |
 | biçim | Şu biçim türleri desteklenir: **TextFormat**, **jsonformat**, **avroformat**, **orcformat**, **parquetformat**. Biçim ' in altındaki **Type** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için bkz. [metin biçimi](data-factory-supported-file-and-compression-formats.md#text-format), [JSON biçimi](data-factory-supported-file-and-compression-formats.md#json-format), [avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [orc biçimi](data-factory-supported-file-and-compression-formats.md#orc-format)ve [Parquet biçim](data-factory-supported-file-and-compression-formats.md#parquet-format) bölümleri. <br><br> Dosyaları dosya tabanlı mağazalar (ikili kopya) arasında **olduğu gibi kopyalamak** istiyorsanız, hem giriş hem de çıkış veri kümesi tanımlarının biçim bölümünü atlayın. |Hayır |
 | sıkıştırma | Verilerin türünü ve sıkıştırma düzeyini belirtin. Desteklenen türler şunlardır: **gzip**, **söndür**, **bzip2**ve **zipsöndür**. Desteklenen düzeyler şunlardır: **en iyi** ve **en hızlı**. Daha fazla bilgi için bkz. [Azure Data Factory dosya ve sıkıştırma biçimleri](data-factory-supported-file-and-compression-formats.md#compression-support). |Hayır |
@@ -446,7 +446,7 @@ Bir şirket içi ortamı ayarlamak için, bu şekilde iki seçenek bulunur. Büy
    Kadmin> addprinc krbtgt/REALM.COM@AD.COM
    ```
 
-3. **Hadoop. Security. auth_to_local** bir hizmet yapılandırma dosyasında, ekleyin `RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//` .
+3. **Hadoop.Security.auth_to_local** , hizmet yapılandırma dosyasında, ekleyin `RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//` .
 
 **Etki alanı denetleyicisinde:**
 

@@ -11,10 +11,10 @@ ms.reviewer: sstein
 ms.date: 03/12/2019
 ms.custom: seoapril2019 sqldbrb=1
 ms.openlocfilehash: bd3917c42859d4240fbb3a75f951ff38a548e204
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330817"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>Azure SQL veritabanı 'nda elastik havuzları yönetme
@@ -63,7 +63,7 @@ SQL veritabanı elastik havuzları ve havuza alınmış veritabanlarını Azure 
 > [!TIP]
 > Elastik havuzda birçok veritabanının oluşturulması, her seferinde yalnızca tek bir veritabanı oluşturan portal veya PowerShell cmdlet 'leri kullanılarak yapıldığında zaman alabilir. Bir elastik havuzda oluşturma işlemini otomatik hale getirmek için bkz. [Createorupdateelahapoolandpopulate](https://gist.github.com/billgib/d80c7687b17355d3c2ec8042323819ae).
 
-## <a name="azure-cli"></a>Azure CLI’si
+## <a name="azure-cli"></a>Azure CLI
 
 [Azure CLI](/cli/azure)Ile SQL veritabanı elastik havuzları oluşturup yönetmek Için AŞAĞıDAKI [Azure CLI SQL veritabanı](/cli/azure/sql/db) komutlarını kullanın. CLI’yi tarayıcınızda çalıştırmak için [Cloud Shell](/azure/cloud-shell/overview) kullanın veya macOS, Linux ya da Windows’da [yükleyin](/cli/azure/install-azure-cli).
 
@@ -93,8 +93,8 @@ Mevcut elastik havuzlarda veritabanları oluşturup taşımak veya Transact-SQL 
 |[VERITABANı oluşturma (Azure SQL veritabanı)](/sql/t-sql/statements/create-database-azure-sql-database)|Mevcut bir havuzda veya tek bir veritabanı olarak yeni bir veritabanı oluşturur. Yeni bir veritabanı oluşturmak için ana veritabanına bağlı olmanız gerekir.|
 | [ALTER DATABASE (Azure SQL veritabanı)](/sql/t-sql/statements/alter-database-azure-sql-database) |Bir veritabanını elastik havuzlar içine veya dışına taşıyın.|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Bir veritabanını siler.|
-|[sys. elastic_pool_resource_stats (Azure SQL veritabanı)](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)|Bir sunucudaki tüm elastik havuzlar için kaynak kullanım istatistikleri döndürür. Her elastik havuz için, her 15 saniyelik raporlama penceresi için bir satır vardır (dakikada dört satır). Buna CPU, GÇ, günlük, depolama alanı tüketimi ve havuzdaki tüm veritabanları tarafından eşzamanlı istek/oturum kullanımı dahildir.|
-|[sys. database_service_objectives (Azure SQL veritabanı)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|SQL veritabanı veya Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) içindeki bir veritabanı için sürüm (hizmet katmanı), hizmet hedefi (Fiyatlandırma Katmanı) ve elastik havuz adı döndürür. Sunucuda ana veritabanında oturum açarsa, tüm veritabanlarına bilgi döndürür. Azure SYNAPSE Analytics için ana veritabanına bağlı olmanız gerekir.|
+|[sys.elastic_pool_resource_stats (Azure SQL veritabanı)](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)|Bir sunucudaki tüm elastik havuzlar için kaynak kullanım istatistikleri döndürür. Her elastik havuz için, her 15 saniyelik raporlama penceresi için bir satır vardır (dakikada dört satır). Buna CPU, GÇ, günlük, depolama alanı tüketimi ve havuzdaki tüm veritabanları tarafından eşzamanlı istek/oturum kullanımı dahildir.|
+|[sys.database_service_objectives (Azure SQL veritabanı)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|SQL veritabanı veya Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) içindeki bir veritabanı için sürüm (hizmet katmanı), hizmet hedefi (Fiyatlandırma Katmanı) ve elastik havuz adı döndürür. Sunucuda ana veritabanında oturum açarsa, tüm veritabanlarına bilgi döndürür. Azure SYNAPSE Analytics için ana veritabanına bağlı olmanız gerekir.|
 
 ## <a name="rest-api"></a>REST API
 

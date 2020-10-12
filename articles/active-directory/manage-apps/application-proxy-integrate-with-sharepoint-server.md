@@ -17,17 +17,17 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 42dd979f6e069addc1067d0018390c358e79a7b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764545"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile SharePoint’e uzaktan erişimi etkinleştirme
 
 Bu adım adım kılavuzda, şirket içi SharePoint grubunun Azure Active Directory (Azure AD) uygulama proxy 'Si ile nasıl tümleştirileceği açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Yapılandırmayı gerçekleştirmek için aşağıdaki kaynaklara ihtiyacınız vardır:
 - SharePoint 2013 grubu veya daha yeni bir sürüm.
@@ -47,9 +47,9 @@ SharePoint 'i uygulama proxy 'Si ile yapılandırmak için iki URL gerekir:
 > - Şirket etki alanı adı sistemi 'nde (DNS), bir diğer ad (CName) değil, SharePoint WFE 'yi (veya yük dengeleyiciyi) göstermek için bir konak (A) oluşturun.
 
 Bu makale aşağıdaki değerleri kullanır:
-- İç URL:`https://sharepoint`
-- Dış URL:`https://spsites-demo1984.msappproxy.net/`
-- SharePoint Web uygulaması için uygulama havuzu hesabı:`Contoso\spapppool`
+- İç URL: `https://sharepoint`
+- Dış URL: `https://spsites-demo1984.msappproxy.net/`
+- SharePoint Web uygulaması için uygulama havuzu hesabı: `Contoso\spapppool`
 
 ## <a name="step-1-configure-an-application-in-azure-ad-that-uses-application-proxy"></a>1. Adım: Azure AD 'de uygulama proxy 'Si kullanan bir uygulama yapılandırma
 

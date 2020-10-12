@@ -16,10 +16,10 @@ ms.author: kenwith
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1731d5ea5d8db9ea1c5855a32d2daca0387c0bf5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84763219"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Azure Active Directory 'da federe çoklu oturum açma için sertifikaları yönetme
@@ -59,12 +59,12 @@ Aşağıdaki iki bölüm, bu adımları gerçekleştirmenize yardımcı olur.
 1. Etkilenen uygulamayı seçin. Uygulama için bir genel bakış sayfası görüntülenir.
 1. Uygulamaya Genel Bakış sayfasının sol bölmesinde, **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seç** sayfası görünürse, **SAML**' yi seçin.
-1. **SAML-Preview Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** başlığını bulun ve **düzenleme** simgesini (bir kurşun kalem) seçin. Her sertifikanın durumunu (**etkin** veya **etkin değil**), sona erme tarihini ve parmak izini (bir karma dize) gösteren **SAML imzalama sertifikası** sayfası görüntülenir.
+1. **SAML-Preview Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** başlığını bulun ve **düzenleme** simgesini (bir kurşun kalem) seçin. Her sertifikanın durumunu (**etkin** veya **etkin değil**), sona erme tarihini ve parmak izini (bir karma dize) gösteren **SAML imzalama sertifikası** sayfası görüntülenir.
 1. **Yeni sertifika**' yı seçin. Sertifika listesinin altında, sona erme tarihi varsayılan olarak geçerli tarihten üç yıl sonra olacak şekilde yeni bir satır görüntülenir. (Değişiklikleriniz henüz kaydedilmedi, bu nedenle süre sonu tarihini değiştirebilirsiniz.)
 1. Yeni sertifika satırında, sona erme tarihi sütununun üzerine gelin ve **Tarih Seç** simgesini (Takvim) seçin. Yeni satırın geçerli sona erme tarihi için bir ayın günlerini görüntüleyen bir Takvim denetimi görünür.
 1. Takvim denetimini kullanarak yeni bir tarih ayarlayın. Geçerli tarih ile üç yıl arasında herhangi bir tarihi geçerli tarihten sonra ayarlayabilirsiniz.
-1. **Kaydet**'i seçin. Yeni sertifika artık **etkin değil**durumu, seçtiğiniz sona erme tarihi ve bir parmak izi ile birlikte görüntülenir.
-1. **SAML-Preview Ile çoklu oturum açmayı ayarlama** sayfasına dönmek için **X** işaretini seçin.
+1. **Kaydet**’i seçin. Yeni sertifika artık **etkin değil**durumu, seçtiğiniz sona erme tarihi ve bir parmak izi ile birlikte görüntülenir.
+1. **SAML-Preview Ile tek Sign-On ayarlama** sayfasına dönmek için **X** ' i seçin.
 
 ### <a name="upload-and-activate-a-certificate"></a>Sertifika yükleme ve etkinleştirme
 
@@ -88,7 +88,7 @@ Azure AD, SAML sertifikasının süresi dolmadan 60, 30 ve 7 gün önce bir e-po
 1. Son e-posta adresinin altına, sertifikanın süre sonu bildirimini alması gereken e-posta adresini yazın ve ardından ENTER tuşuna basın.
 1. Eklemek istediğiniz her e-posta adresi için önceki adımı tekrarlayın.
 1. Silmek istediğiniz her e-posta adresi için, e-posta adresinin yanındaki **Sil** simgesini (çöp kutusu) seçin.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 Bildirim e-postasını buradan alacaksınız aadnotification@microsoft.com . E-postaları istenmeyen posta konumunuza karşı önlemek için bu e-postayı kişilerinize ekleyin.
 

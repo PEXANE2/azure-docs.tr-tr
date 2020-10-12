@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: guybo
 ms.openlocfilehash: 73e07c612486d5f48b1ad3eca8044a561549092b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87292123"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Azure'da SLES veya openSUSE sanal makinesi hazırlama
@@ -133,11 +133,11 @@ Kendi VHD 'nizi oluşturmaya alternatif olarak, SUSE 'ler, [vmdepot 'u keşfedin
 2. Sanal makine penceresini açmak için **Bağlan** ' a tıklayın.
 3. Kabukta ' ' komutunu çalıştırın `zypper lr` . Bu komut aşağıdakine benzer bir çıktı döndürürse, depolar beklenen şekilde yapılandırılır; hiçbir ayarlama gerekmez (sürüm numaralarının değişebileceğini unutmayın):
 
-   | # | Diğer ad                 | Ad                  | Etkin | Yenile
+   | # | Diğer ad                 | Adı                  | Etkin | Yenile
    | - | :-------------------- | :-------------------- | :------ | :------
-   | 1 | Bulut: Tools_13.1      | Bulut: Tools_13.1      | Yes     | Yes
-   | 2 | openSUSE_13.1_OSS     | openSUSE_13.1_OSS     | Yes     | Yes
-   | 3 | openSUSE_13.1_Updates | openSUSE_13.1_Updates | Yes     | Yes
+   | 1 | Bulut: Tools_13.1      | Bulut: Tools_13.1      | Evet     | Evet
+   | 2 | openSUSE_13 openSUSE_13.1_OSS     | openSUSE_13 openSUSE_13.1_OSS     | Evet     | Evet
+   | 3 | openSUSE_13 openSUSE_13.1_Updates | openSUSE_13 openSUSE_13.1_Updates | Evet     | Evet
 
     Komut "tanımlı depo yok..." öğesini döndürürse daha sonra bu depoyu eklemek için aşağıdaki komutları kullanın:
 

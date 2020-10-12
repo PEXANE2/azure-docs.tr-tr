@@ -14,10 +14,10 @@ ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a2be5daf5bcad0f5b4530ba7a76986dae4833aa5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331276"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için IBM Db2 Azure Sanal Makineler DBMS dağıtımı
@@ -162,7 +162,7 @@ Microsoft Cluster Server (MSCS) desteklenmez.
 
 DB2 yüksek kullanılabilirliğe sahip olağanüstü durum kurtarma (HADR) desteklenir. HA yapılandırmasının sanal makinelerinde çalışma adı çözümlemesi varsa, Azure 'daki kurulum, şirket içinde gerçekleştirilen kurulumdan farklı değildir. Yalnızca IP çözümlemesi kullanılması önerilmez.
 
-Veritabanı disklerini depolayan depolama hesapları için coğrafi çoğaltma kullanmayın. Daha fazla bilgi için bkz. [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı hakkında belge konuları](dbms_guide_general.md). 
+Veritabanı disklerini depolayan depolama hesapları için Geo-Replication kullanmayın. Daha fazla bilgi için bkz. [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı hakkında belge konuları](dbms_guide_general.md). 
 
 ### <a name="accelerated-networking"></a>Hızlandırılmış Ağ
 Windows üzerinde DB2 dağıtımları için, [Azure hızlandırılmış ağ iletişimi](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)belgesinde açıklandığı gibi hızlandırılmış ağ hizmeti 'nin Azure işlevselliği kullanılması önemle önerilir. Ayrıca, [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı açısından dikkat edilmesi gereken](dbms_guide_general.md)öneriler de göz önünde bulundurun. 

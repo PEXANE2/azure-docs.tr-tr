@@ -8,10 +8,10 @@ ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.openlocfilehash: 5821a1d1f6713ef39d7475fb004164e7c0fd71ec
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87062053"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Dijital TWINS ve ikizi graflarını anlayın
@@ -21,7 +21,7 @@ Bir Azure dijital TWINS çözümünde ortamınızdaki varlıklar Azure **dijital
 > [!TIP]
 > "Azure dijital TWINS", bu Azure hizmetine bir bütün olarak başvurur. "Digital ikizi (s)" veya yalnızca "ikizi (s)", hizmet örneğinizin içindeki bireysel ikizi düğümlerine başvurur.
 
-## <a name="digital-twins"></a>Dijital TWINS
+## <a name="digital-twins"></a>Digital Twins
 
 Azure dijital TWINS Örneğinizde dijital bir ikizi oluşturabilmeniz için önce hizmete bir *modelin* yüklenmiş olması gerekir. Model, diğer şeyler arasında belirli bir ikizi sahip olduğu özellikler, telemetri iletileri ve ilişkiler kümesini açıklar. Bir modelde tanımlanan bilgi türleri için bkz. [*Kavramlar: özel modeller*](concepts-models.md).
 
@@ -116,11 +116,11 @@ JSON nesnesi olarak temsil edildiğinde, dijital bir ikizi aşağıdaki alanlar�
 | `$metadata.{propertyName}.desiredValue` | [Yalnızca yazılabilir özellikler için] Belirtilen özelliğin istenen değeri |
 | `$metadata.{propertyName}.desiredVersion` | [Yalnızca yazılabilir özellikler için] İstenen değerin sürümü |
 | `$metadata.{propertyName}.ackVersion` | Dijital ikizi uygulayan cihaz uygulaması tarafından kabul edilen sürüm |
-| `$metadata.{propertyName}.ackCode` | [Yalnızca yazılabilir özellikler için] `ack`Dijital ikizi uygulayan cihaz uygulaması tarafından döndürülen kod |
-| `$metadata.{propertyName}.ackDescription` | [Yalnızca yazılabilir özellikler için] `ack`Dijital ikizi uygulayan cihaz uygulaması tarafından döndürülen açıklama |
+| `$metadata.{propertyName}.ackCode` | [Yalnızca yazılabilir özellikler için] `ack` Dijital ikizi uygulayan cihaz uygulaması tarafından döndürülen kod |
+| `$metadata.{propertyName}.ackDescription` | [Yalnızca yazılabilir özellikler için] `ack` Dijital ikizi uygulayan cihaz uygulaması tarafından döndürülen açıklama |
 | `{componentName}` | Kök nesnesine benzer şekilde bileşenin özellik değerlerini ve meta verilerini içeren bir JSON nesnesi. Bileşenin özelliği olmasa bile bu nesne vardır. |
 | `{componentName}.{propertyName}` | JSON ( `string` , sayı türü veya nesne) içindeki bileşenin özelliğinin değeri |
-| `{componentName}.$metadata` | Bileşene ait meta veri bilgileri, kök düzeyine benzer`$metadata` |
+| `{componentName}.$metadata` | Bileşene ait meta veri bilgileri, kök düzeyine benzer `$metadata` |
 
 JSON nesnesi olarak biçimlendirilen bir dijital ikizi örneği aşağıda verilmiştir:
 

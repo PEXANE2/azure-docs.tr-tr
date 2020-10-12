@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 07/06/2020
 ms.author: yelevin
 ms.openlocfilehash: 5d73337c25c812363b7a542bf42372ca3baa10e8
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88605445"
 ---
-# <a name="tutorial-detect-threats-out-of-the-box"></a>Öğretici: kullanıma hazır tehditleri algılama
+# <a name="tutorial-detect-threats-out-of-the-box"></a>Öğretici: Hemen tehditleri algılayabilme
 
 
 > [!IMPORTANT]
@@ -65,7 +65,7 @@ Aşağıdaki şablon türleri kullanılabilir:
 
 1. Yerleşik bir şablon kullanmak için şablon adına tıklayın ve ardından Ayrıntılar bölmesindeki **kural oluştur** düğmesine tıklayarak bu şablonu temel alan yeni bir etkin kural oluşturun. Her şablonda gerekli veri kaynakları listesi bulunur. Şablonu açtığınızda, veri kaynakları otomatik olarak kullanılabilirlik için denetlenir. Bir kullanılabilirlik sorunu varsa, **kural oluştur** düğmesi devre dışı bırakılabilir veya bu etkiye bir uyarı görebilirsiniz.
   
-    :::image type="content" source="media/tutorial-detect-built-in/use-built-in-template.png" alt-text="Algılama kuralı Önizleme bölmesi":::
+    :::image type="content" source="media/tutorial-detect-built-in/use-built-in-template.png" alt-text="Azure Sentinel ile tehditleri bulmak için yerleşik algılamaları kullanın":::
  
 1. **Kural oluştur** düğmesine tıklamak, seçilen şablonu temel alan kural oluşturma Sihirbazı ' nı açar. Tüm ayrıntılar, yeniden doldurulur ve **zamanlanan** veya **Microsoft Güvenlik** şablonlarıyla, mantığın ve diğer kural ayarlarının özel gereksinimlerinize daha uygun olması için özelleştirebilirsiniz. Bu işlemi, yerleşik şablonu temel alan ek kurallar oluşturmak için yineleyebilirsiniz. Kural oluşturma sihirbazındaki adımları sona erdikten sonra, şablonu temel alan bir kural oluşturmayı bitirirsiniz. Yeni kurallar, **etkin kurallar** sekmesinde görünür.
 

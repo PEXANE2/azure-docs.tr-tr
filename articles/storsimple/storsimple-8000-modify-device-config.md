@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: d0e13f8e66e6035c22c9c2323b9653c5c4a81671
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514677"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>StorSimple cihaz yapılandırmanızı değiştirmek için StorSimple Aygıt Yöneticisi hizmetini kullanın
@@ -44,7 +44,7 @@ Azure portal kullanarak cihaz adını değiştirebilir ve seçtiğiniz benzersiz
 
 StorSimple Aygıt Yöneticisi hizmetine bağlı bir StorSimple cihazına varsayılan ad atanır. Varsayılan ad genellikle cihazın seri numarasını yansıtır. Örneğin, 8600-SHX0991003G44HT gibi 15 karakter uzunluğunda varsayılan bir cihaz adı şunları gösterir:
 
-* **8600** – cihaz modelini gösterir.
+* **8600**  – cihaz modelini gösterir.
 * **SHX** : üretim sitesini belirtir.
 * **0991003** -belirli bir ürünü gösterir.
 * **G44HT**-son 5 basamak, benzersiz seri numaraları oluşturmak için artırılır. Bu sıralı bir küme olmayabilir.

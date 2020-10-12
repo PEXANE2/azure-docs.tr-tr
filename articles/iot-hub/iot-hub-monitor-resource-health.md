@@ -13,10 +13,10 @@ ms.custom:
 - 'Role: Technical Support'
 - devx-track-csharp
 ms.openlocfilehash: 100f87b8a13fb424706c3b5ec13268cd3ba42bbe
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89438415"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Azure IoT Hub durumunu izleyin ve sorunları hızla tanılayın
@@ -352,7 +352,7 @@ IoT Hub, geçerli izleme özellikleri içeren bir ileti IoT Hub geldiğinde bu g
 
 Burada, `durationMs` IoT Hub saatinin cihaz saatiyle eşitlenmiş olmaması ve bu nedenle bir süre hesaplamasının yanıltıcı olması için hesaplanmaz. `properties`Cihazdan buluta gecikme süresini yakalamak için bölümündeki zaman damgalarını kullanarak mantık yazma öneririz.
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **messageSize** | Tamsayı | Cihazdan buluta iletinin bayt cinsinden boyutu |
 | **deviceId** | ASCII 7 bit alfasayısal karakter dizesi | Cihazın kimliği |
@@ -386,7 +386,7 @@ IoT Hub, geçerli izleme özellikleri içeren ileti iç veya yerleşik Olay Hub 
 
 `properties`Bölümünde, bu günlük ileti girişi hakkında ek bilgiler içerir.
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **isRoutingEnabled** | Dize | True veya false, IoT Hub ileti yönlendirmenin etkin olup olmadığını gösterir |
 | **Parentspanıd** | Dize | Bu durumda D2C ileti izlemesi olacak üst iletinin [yayılma kimliği](https://w3c.github.io/trace-context/#parent-id) |
@@ -418,7 +418,7 @@ IoT Hub [yönlendirme](iot-hub-devguide-messages-d2c.md) etkinken ve ileti bir [
 
 `properties`Bölümünde, bu günlük ileti girişi hakkında ek bilgiler içerir.
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **Uçnoktaadı** | Dize | Yönlendirme uç noktasının adı |
 | **endpointType** | Dize | Yönlendirme uç noktasının türü |

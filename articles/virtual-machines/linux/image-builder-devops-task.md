@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.openlocfilehash: 9f948fcc8ad36f8bef8b1ab6a1b74131faea9bd3
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88068363"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure görüntü Oluşturucu hizmeti DevOps görevi
@@ -26,7 +26,7 @@ Bu makalede, uygulamanızı ve işletim sistemini yükleyip yapılandırmak içi
 
 * [' Kararsız ' bir görev](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder-canary), bu, en son güncelleştirmeleri ve özellikleri koymamızı sağlar, bu sayede müşterilerin bunları ' kararlı ' göreve yükseltmeden önce test etmesine izin verir. Bildirilen bir sorun yoksa ve telemetrimiz bir sorun olmadığını gösteriyorsa, yaklaşık 1 hafta sonra görev kodunu ' Stable ' olarak yükseltecektir. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Visual Studio Market ' [den kararlı DevOps görevini](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder)yükler.
 * Bir VSTS DevOps hesabınız ve derleme işlem hattının oluşturulması gerekir
@@ -57,7 +57,7 @@ Bu makalede, uygulamanızı ve işletim sistemini yükleyip yapılandırmak içi
 
 **Yayın ardışık düzen**  >  **düzenlemesini** seçin
 
-Kullanıcı aracısında, Ekle ' *+* yi seçerek **Görüntü Oluşturucu**' yı arayın. **Add (Ekle)** seçeneğini belirleyin.
+Kullanıcı aracısında, Ekle ' *+* yi seçerek **Görüntü Oluşturucu**' yı arayın. **Ekle**’yi seçin.
 
 Aşağıdaki görev özelliklerini ayarlayın:
 
@@ -139,12 +139,12 @@ Görüntüye yerleştirilmesini istediğiniz yapı klasörünü seçmek için **
 
 Aşağıdaki örnek bunun nasıl çalıştığını açıklar:
 
-:::image type="content" source="./media/image-builder-devops-task/build-artifacts.png" alt-text="Hiyerarşiyi gösteren bir dizin yapısı.":::
+:::image type="content" source="./media/image-builder-devops-task/build-artifacts.png" alt-text="Yayın ardışık düzeninde yapıt Ekle ' ye seçme.":::
 
 
 * Windows-dosyaları içinde bulunur `C:\` . Dizinini içeren adlı bir dizin `buildArtifacts` oluşturulur `webapp` .
 
-* Linux dosyaları içinde bulunur `/tmp` . `webapp`Tüm dosyaları ve dizinleri içeren dizin oluşturulur. Dosyaları bu dizinden taşımanız gerekir. Aksi takdirde, bunlar geçici dizin olduğundan silinir.
+* Linux dosyaları içinde bulunur  `/tmp` . `webapp`Tüm dosyaları ve dizinleri içeren dizin oluşturulur. Dosyaları bu dizinden taşımanız gerekir. Aksi takdirde, bunlar geçici dizin olduğundan silinir.
 
 #### <a name="inline-customization-script"></a>Satır içi özelleştirme betiği
 
@@ -154,7 +154,7 @@ Aşağıdaki örnek bunun nasıl çalıştığını açıklar:
     & 'c:\buildArtifacts\webapp\webconfig.ps1'
     ```
 
-* Linux-Linux sistemlerinde derleme yapıtları `/tmp` dizine konur. Ancak, birçok Linux OSs 'de, bir yeniden başlatma işlemi için/tmp dizin içeriği silinir. Yapıtların görüntüde mevcut olmasını istiyorsanız, başka bir dizin oluşturmanız ve bunları üzerine kopyalamanız gerekir.  Örnek:
+* Linux-Linux sistemlerinde derleme yapıtları `/tmp` dizine konur. Ancak, birçok Linux OSs 'de, bir yeniden başlatma işlemi için/tmp dizin içeriği silinir. Yapıtların görüntüde mevcut olmasını istiyorsanız, başka bir dizin oluşturmanız ve bunları üzerine kopyalamanız gerekir.  Örneğin:
 
     ```bash
     sudo mkdir /lib/buildArtifacts
@@ -176,7 +176,7 @@ Aşağıdaki örnek bunun nasıl çalıştığını açıklar:
 > Image Builder, derleme yapıtlarını otomatik olarak kaldırmaz, derleme yapıtlarını kaldırmak için her zaman kodunuzun olması önemle önerilir.
 > 
 
-* Windows-Image Builder dosyaları `c:\buildArtifacts` dizine dağıtır. Dizin kalıcı olduğundan dizini kaldırmanız gerekir. Bunu, yürüttiğiniz betikte kaldırabilirsiniz. Örnek:
+* Windows-Image Builder dosyaları `c:\buildArtifacts` dizine dağıtır. Dizin kalıcı olduğundan dizini kaldırmanız gerekir. Bunu, yürüttiğiniz betikte kaldırabilirsiniz. Örneğin:
 
     ```PowerShell
     # Clean up buildArtifacts directory
@@ -186,7 +186,7 @@ Aşağıdaki örnek bunun nasıl çalıştığını açıklar:
     Remove-Item -Path "C:\buildArtifacts" -Force 
     ```
     
-* Linux-derleme yapıtları `/tmp` dizine konur. Ancak, birçok Linux OSs 'de, bir yeniden başlatma işlemi, `/tmp` Dizin içerikleri silinir. İçeriği kaldırmak için işletim sistemine bağlı olmayan ve içeriği kaldırmak için kodunuzun olması önerilir. Örnek:
+* Linux-derleme yapıtları `/tmp` dizine konur. Ancak, birçok Linux OSs 'de, bir yeniden başlatma işlemi, `/tmp` Dizin içerikleri silinir. İçeriği kaldırmak için işletim sistemine bağlı olmayan ve içeriği kaldırmak için kodunuzun olması önerilir. Örneğin:
 
     ```bash
     sudo rm -R "/tmp/AppsAndImageBuilderLinux"
@@ -312,9 +312,9 @@ Hayır. Benzersiz bir şablon adı kullanılır ve sonra silinir.
 
 Bir yapı hatası varsa, DevOps görevi hazırlama kaynak grubunu silmez. Yapı özelleştirme günlüğünü içeren hazırlama kaynak grubuna erişebilirsiniz.
 
-Sanal makine görüntüsü Oluşturucu görevi için DevOps günlüğünde bir hata görürsünüz ve özelleştirme. log konumunu görürsünüz. Örnek:
+Sanal makine görüntüsü Oluşturucu görevi için DevOps günlüğünde bir hata görürsünüz ve özelleştirme. log konumunu görürsünüz. Örneğin:
 
-:::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="Hata gösteren örnek DevOps görev hatası.":::
+:::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="Yayın ardışık düzeninde yapıt Ekle ' ye seçme.":::
 
 Sorun giderme hakkında daha fazla bilgi için bkz. [Azure Image Builder hizmetinde sorun giderme](image-builder-troubleshoot.md). 
 

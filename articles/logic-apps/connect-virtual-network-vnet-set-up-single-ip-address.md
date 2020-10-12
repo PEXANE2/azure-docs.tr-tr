@@ -7,10 +7,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.openlocfilehash: 9ee804f7bed01ca0c7f365a04e6108afd9598157
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87066400"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Azure Logic Apps bir veya daha fazla tümleştirme hizmeti ortamı için tek bir IP adresi ayarlayın
@@ -52,7 +52,7 @@ Bu konu başlığı altında, giden trafiğin bir Azure Güvenlik Duvarı üzeri
    | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
    | **Yol adı** | <*benzersiz-rota adı*> | Yol tablosundaki yol için benzersiz bir ad |
-   | **Adres ön eki** | <*Hedef adres*> | Giden trafiğin gitmesini istediğiniz hedef sisteminizin adres ön eki. Bu adres için [sınıfsız etki alanları arası yönlendirme (CIDR) gösterimi](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) kullandığınızdan emin olun. Bu örnekte, bu adres ön [Eki, bölümünde](#set-up-network-rule)açıklanan bir SFTP sunucusu içindir. |
+   | **Adres ön eki** | <*Hedef adres*> | Giden trafiğin gitmesini istediğiniz hedef sisteminizin adres ön eki. Bu adres için [sınıfsız Inter-Domain yönlendirme (CIDR) gösterimi](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) kullandığınızdan emin olun. Bu örnekte, bu adres ön [Eki, bölümünde](#set-up-network-rule)açıklanan bir SFTP sunucusu içindir. |
    | **Sonraki atlama türü** | **Sanal gereç** | Giden trafik tarafından kullanılan [atlama türü](../virtual-network/virtual-networks-udr-overview.md#next-hop-types-across-azure-tools) |
    | **Sonraki atlama adresi** | <*Güvenlik Duvarı-özel-IP-adres*> | Güvenlik duvarınızın özel IP adresi |
    |||
@@ -95,7 +95,7 @@ Bu konu başlığı altında, giden trafiğin bir Azure Güvenlik Duvarı üzeri
 
    * [Ağ kuralını yapılandırma](../firewall/tutorial-firewall-deploy-portal.md#configure-a-network-rule)
    * [Azure Güvenlik Duvarı kural işleme mantığı](../firewall/rule-processing.md#network-rules-and-applications-rules)
-   * [Azure Güvenlik Duvarı SSS](../firewall/firewall-faq.md)
+   * [Azure Güvenlik Duvarı hakkında SSS](../firewall/firewall-faq.md)
    * [Azure PowerShell: New-AzFirewallNetworkRule](/powershell/module/az.network/new-azfirewallnetworkrule)
    * [Azure CLı: az Network Firewall Network-Rule](/cli/azure/ext/azure-firewall/network/firewall/network-rule?view=azure-cli-latest#ext-azure-firewall-az-network-firewall-network-rule-create)
 
