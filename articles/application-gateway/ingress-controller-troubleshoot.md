@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 06/18/2020
 ms.author: caya
 ms.openlocfilehash: 0fdfa6265b81140fa6536082fe7ad4c5fa687fc4
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86207160"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>Giriş denetleyicisindeki yaygın soruların veya sorunların sorunlarını giderme
@@ -95,7 +95,7 @@ Giriş listesini alın: `kubectl get ingress` . ' Test-agic-App-ınress ' adlı 
 
 ![Pod](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-ingress.png)
 
-Ayırımların biri AGIC olacaktır. `kubectl get pods`, biri ' giriş-Azure ' ile başlayacak olan bir pods listesini gösterir. Başarılı bir dağıtımımız olduğunu doğrulamak için bu Pod 'un tüm günlüklerini ile birlikte alın `kubectl logs <name-of-ingress-controller-pod>` . Başarılı bir dağıtım şu satırları günlüğe ekledi:
+Ayırımların biri AGIC olacaktır. `kubectl get pods` , biri ' giriş-Azure ' ile başlayacak olan bir pods listesini gösterir. Başarılı bir dağıtımımız olduğunu doğrulamak için bu Pod 'un tüm günlüklerini ile birlikte alın `kubectl logs <name-of-ingress-controller-pod>` . Başarılı bir dağıtım şu satırları günlüğe ekledi:
 ```
 I0927 22:34:51.281437       1 process.go:156] Applied Application Gateway config in 20.461335266s
 I0927 22:34:51.281585       1 process.go:165] cache: Updated with latest applied config.
@@ -142,7 +142,7 @@ AGIC 'in beklenen şekilde çalışması için aşağıdakiler olması gerekir:
      ```
 
   2. Bir veya daha fazla **hizmet**, eşleşen Etiketler aracılığıyla yukarıdaki Pod 'ye başvuruyor `selector` .
-     Bunu ile [Cloud Shell](https://shell.azure.com/) doğrulama`kubectl get services -o wide`
+     Bunu ile [Cloud Shell](https://shell.azure.com/) doğrulama `kubectl get services -o wide`
      ```bash
      delyan@Azure:~$ kubectl get services -o wide --show-labels
 
@@ -199,9 +199,9 @@ AGIC 'in beklenen şekilde çalışması için aşağıdakiler olması gerekir:
 
 
 * AGIC Pod sağlam değilse ( `STATUS` yukarıdaki komuttan bir sütun değildir `Running` ):
-  - Nedenini anlamak için günlükleri alın:`kubectl logs <pod-name>`
-  - Pod 'un önceki örneği için:`kubectl logs <pod-name> --previous`
-  - daha fazla bağlam almak için pod 'ı açıkla:`kubectl describe pod <pod-name>`
+  - Nedenini anlamak için günlükleri alın: `kubectl logs <pod-name>`
+  - Pod 'un önceki örneği için: `kubectl logs <pod-name> --previous`
+  - daha fazla bağlam almak için pod 'ı açıkla: `kubectl describe pod <pod-name>`
 
 
 * Bir Kubernetes [hizmeti](https://kubernetes.io/docs/concepts/services-networking/service/) [ve giriş](https://kubernetes.io/docs/concepts/services-networking/ingress/) kaynağınız var mı?
@@ -224,7 +224,7 @@ AGIC 'in beklenen şekilde çalışması için aşağıdakiler olması gerekir:
 
 
 * AGIC, belirli kritik hatalara karşı Kubernetes olaylarını yayar. Bunları görüntüleyebilirsiniz:
-  - ile terminalinizde`kubectl get events --sort-by=.metadata.creationTimestamp`
+  - ile terminalinizde `kubectl get events --sort-by=.metadata.creationTimestamp`
   - [Kubernetes Web Kullanıcı arabirimini (Pano)](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) kullanarak tarayıcınızda
 
 
@@ -245,7 +245,7 @@ Kubernetes topluluğu, [kubectl](https://kubernetes.io/docs/reference/kubectl/ch
 
 Ayrıntı düzeyleri `verbosityLevel` [helmconfig. YAML](#sample-helm-config-file) dosyasındaki değişken aracılığıyla ayarlanabilir. `5` [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)'ye gönderilen JSON yapılandırmasını almak için ayrıntı düzeyini artırın:
   - `verbosityLevel: 5` [helmconfig. YAML](#sample-helm-config-file) içinde bir satıra göre ekleyin ve yeniden yükler
-  - ile günlükleri al`kubectl logs <pod-name>`
+  - ile günlükleri al `kubectl logs <pod-name>`
 
 ### <a name="sample-helm-config-file"></a>Örnek HELI yapılandırma dosyası
 ```yaml

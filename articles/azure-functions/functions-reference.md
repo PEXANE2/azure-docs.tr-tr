@@ -5,10 +5,10 @@ ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
 ms.openlocfilehash: 9a3c0643f4fc965ff64106758320aeb445aaf9ae
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85921740"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure İşlevleri geliştirici kılavuzu
@@ -65,7 +65,7 @@ Yukarıdaki, bir Işlev uygulaması için varsayılan (ve önerilen) klasör yap
 
 <!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --glenga -->
 
-## <a name="how-to-edit-functions-in-the-azure-portal"></a><a id="fileupdate"></a>Azure portal işlevleri düzenleme
+## <a name="how-to-edit-functions-in-the-azure-portal"></a><a id="fileupdate"></a> Azure portal işlevleri düzenleme
 Azure portal yerleşik Işlevler Düzenleyicisi kodunuzu ve *function.jsdosya üzerinde* doğrudan satır içi olarak güncelleştirmenizi sağlar. Bu yalnızca küçük değişiklikler veya kavram provaları için önerilir-en iyi yöntem, VS Code gibi bir yerel geliştirme aracı kullanmaktır.
 
 ## <a name="parallel-execution"></a>Paralel yürütme

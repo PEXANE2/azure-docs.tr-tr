@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
 ms.openlocfilehash: 5add9597924aa77ede875d0056e83eceb4f99598
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79220308"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Bing Video Arama API'si videoları arayın
@@ -120,10 +120,10 @@ Video hakkında öngörüler almak için [videoId](https://docs.microsoft.com/re
 
 Video Arama API'si varsayılan olarak sorguyla ilgili tüm videoları döndürür. Yalnızca ücretsiz videolar veya uzunluğu beş dakikayı aşmayan videolar istiyorsanız, aşağıdaki filtre sorgu parametrelerini kullanırsınız:
 
-- [pricing](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#pricing)&mdash;fiyatlandırmaya göre fiyatlandırma filtresi videoları (örneğin, ücretsiz olan veya için ödeme yapmanız gereken videolar)
-- [çözünürlükte](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#resolution)&mdash;videoları çözünürlüğe göre filtreleyin (örneğin, 720p veya daha yüksek çözünürlüklü videolar)
-- [videolength](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videolength)&mdash;videoları video uzunluğuna göre filtreleyin (örneğin, beş dakikadan kısa bir süre içinde olan videolar)
-- [yenilik](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#freshness)&mdash;videoları yaş (örneğin, son hafta içinde Bing tarafından bulunan videolar) ile filtreleyin
+- [fiyatlandırma](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#pricing) &mdash; Videoları fiyatlandırmaya göre filtreleyin (örneğin, ücretsiz olan veya için ödeme yapmanız gereken videolar)
+- [çözüm](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#resolution) &mdash; Videoları çözünürlüğe göre filtreleyin (örneğin, 720p veya daha yüksek çözünürlüklü videolar)
+- [Videouzunluğu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videolength) &mdash; Videoları video uzunluğuna göre filtreleyin (örneğin, beş dakikadan kısa bir süre içinde olan videolar)
+- [yenilik](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#freshness) &mdash; Videoları yaş (örneğin, son hafta içinde Bing tarafından bulunan videolar) olarak filtreleyin
 
 Belirli bir etki alanındaki videoları almak için sorgu dizesine [site:](https://msdn.microsoft.com/library/ff795613.aspx) dize işlecini ekleyin.
 

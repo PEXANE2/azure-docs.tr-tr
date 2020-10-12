@@ -10,17 +10,17 @@ ms.topic: how-to
 ms.date: 05/29/2019
 ms.author: hrasheed
 ms.openlocfilehash: de2a8e6377ababadc7d42f873a816a01a8f3b77e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86207467"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Sanal makinede öykünücü olan Apache Hadoop korumalı alan ile çalışmaya başlama
 
 Hadoop ekosistemi hakkında bilgi edinmek için bir sanal makinede Hortonçalışmalardan Apache Hadoop korumalı alanı yüklemeyi öğrenin. Korumalı alan, Hadoop, Hadoop Dağıtılmış Dosya Sistemi (bir) ve iş gönderimi hakkında bilgi edinmek için yerel bir geliştirme ortamı sağlar. Hadoop 'u tanıdıktan sonra HDInsight kümesi oluşturarak Azure 'da Hadoop kullanmaya başlayabilirsiniz. Kullanmaya başlama hakkında daha fazla bilgi için bkz. [HDInsight 'Ta Hadoop kullanmaya başlama](apache-hadoop-linux-tutorial-get-started.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Oracle VirtualBox](https://www.virtualbox.org/). [Buradan](https://www.virtualbox.org/wiki/Downloads)indirin ve yükleyin.
 

@@ -12,10 +12,10 @@ ms.date: 07/31/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5528607b0559dad246262748c83c9d359ee2144e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85385748"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>OWıN tabanlı bir Web API 'sini b2clogin.com 'e geçirme
@@ -29,7 +29,7 @@ Aşağıdaki bölümler, [Microsoft OWIN][katana] ara yazılım bileşenleri (Ka
 > [!NOTE]
 > Bu makale, şu anda dağıtılmış olan API 'Ler ve uygulama `login.microsoftonline.com` ve önerilen uç noktaya geçirmek isteyen uygulamalarla Azure AD B2C müşterilere yöneliktir `b2clogin.com` . Yeni bir uygulama ayarlıyorsanız, [b2clogin.com](b2clogin.md) kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımlarla devam etmeden önce aşağıdaki Azure AD B2C kaynaklara sahip olmanız gerekir:
 
@@ -107,7 +107,7 @@ Bu bölümde, her iki belirteç verenin bitiş noktalarının geçerli olduğunu
     };
     ```
 
-`TokenValidationParameters`, MSAL.NET tarafından sağlanır ve *Startup.auth.cs*içindeki kodun sonraki bölümünde owın ara yazılımı tarafından kullanılır. Birden çok geçerli veren belirtildiğinde, OWıN uygulama işlem hattı, her iki belirteç uç hattının de geçerli verenler olduğunu fark eder.
+`TokenValidationParameters` , MSAL.NET tarafından sağlanır ve *Startup.auth.cs*içindeki kodun sonraki bölümünde owın ara yazılımı tarafından kullanılır. Birden çok geçerli veren belirtildiğinde, OWıN uygulama işlem hattı, her iki belirteç uç hattının de geçerli verenler olduğunu fark eder.
 
 ```csharp
 app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions

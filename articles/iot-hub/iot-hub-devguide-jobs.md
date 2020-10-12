@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: mqtt
 ms.openlocfilehash: 5c14e8cfcbf8df86b0f71d6b12025594d2e648c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81730098"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Birden fazla cihazda işleri zamanlama
@@ -33,7 +33,7 @@ Bir cihaz kümesi üzerinde aşağıdaki etkinliklerden herhangi birini zamanlam
 İşler, çözüm arka ucu tarafından başlatılır ve IoT Hub tarafından sürdürülür. Hizmete yönelik bir URI () aracılığıyla bir işi başlatabilir ve bir `PUT https://<iot hub>/jobs/v2/<jobID>?api-version=2018-06-30` hizmet TEMELLI URI () aracılığıyla yürütülen iş üzerinde ilerleme durumunu sorgulayın `GET https://<iot hub>/jobs/v2/<jobID?api-version=2018-06-30` . İş başlatıldığında çalışan işlerin durumunu yenilemek için bir iş sorgusu çalıştırın.
 
 > [!NOTE]
-> Bir iş başlattığınızda, özellik adları ve değerleri yalnızca ABD-ASCII yazdırılabilir alfasayısal içerebilir (aşağıdaki küme dışında):`$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT`
+> Bir iş başlattığınızda, özellik adları ve değerleri yalnızca ABD-ASCII yazdırılabilir alfasayısal içerebilir (aşağıdaki küme dışında): `$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT`
 
 ## <a name="jobs-to-execute-direct-methods"></a>Doğrudan Yöntemler yürütülecek işler
 

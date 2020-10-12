@@ -16,10 +16,10 @@ ms.date: 04/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 58ecdfefa79716bcc0a69063293d5a1067693a78
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89182369"
 ---
 # <a name="user-privacy-and-azure-ad-connect-health"></a>Kullanıcı gizliliği ve Azure AD Connect Health 
@@ -32,7 +32,7 @@ ms.locfileid: "89182369"
 ## <a name="user-privacy-classification"></a>Kullanıcı Gizlilik sınıflandırması
 Azure AD Connect Health, GDPR sınıflandırmasının **veri işlemcisi** kategorisine denk gelir. Veri işlemcisi işlem hattı olarak hizmet, önemli iş ortaklarına ve son tüketicilere veri işleme hizmeti sağlar. Azure AD Connect Health, Kullanıcı verileri oluşturmaz ve kişisel verilerin toplandığı ve nasıl kullanıldığı üzerinde bağımsız bir denetime sahip değildir. Azure AD Connect Health veri alımı, toplama, analiz ve raporlama, mevcut şirket içi verileri temel alır. 
 
-## <a name="data-retention-policy"></a>Veri bekletme ilkesi
+## <a name="data-retention-policy"></a>Veri saklama ilkesi
 Azure AD Connect Health rapor oluşturmaz, analiz gerçekleştirmez veya öngörüleri 30 gün boyunca sağlar. Bu nedenle, Azure AD Connect Health 30 günden daha fazla veriyi depolamaz, işlemez veya korumaz. Bu tasarım, GDPR yönetmelikleri, Microsoft gizliliği uyumluluk düzenlemeleri ve Azure AD veri saklama ilkeleriyle uyumludur. 
 
 Etkin **sistem durumu hizmeti verileri olan sunucular, en** fazla 30 ardışık gün için **hata** uyarıları güncel değildir ve bu süre boyunca Connect Health 'e ulaşmadığını önerin. Bu sunucular, Connect Health portalında devre dışı bırakılacak ve gösterilmez. Sunucuları yeniden etkinleştirmek için [sistem durumu aracısını kaldırmanız ve yeniden yüklemeniz](how-to-connect-health-agent-install.md)gerekir. Bu, aynı uyarı türüne sahip **Uyarılar** için uygulanmadığını lütfen unutmayın. Uyarılar, uyarı aldığınız sunucuda kısmi verilerin eksik olduğunu gösterir. 

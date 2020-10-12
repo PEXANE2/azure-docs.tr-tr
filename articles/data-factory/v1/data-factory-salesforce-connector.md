@@ -13,10 +13,10 @@ ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8b94f6388d77cca2ef74c802aec7648091172775
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79281138"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Salesforce 'tan veri taşıma
@@ -34,7 +34,7 @@ Azure Data Factory Şu anda yalnızca Salesforce 'tan [desteklenen havuz veri de
 ## <a name="supported-versions"></a>Desteklenen sürümler
 Bu bağlayıcı, aşağıdaki Salesforce sürümlerini destekler: Developer Edition, Professional Edition, Enterprise Edition veya sınırsız sürüm. Ve Salesforce üretimden, korumalı alana ve özel etki alanından kopyalamayı destekler.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * API izninin etkinleştirilmesi gerekir. [Nasıl yaparım? izin kümesine göre Salesforce 'TA API erişimini etkinleştirmek](https://www.data2crm.com/migration/faqs/enable-api-access-salesforce-permission-set/) için bkz..
 * Salesforce 'tan şirket içi veri depolarına veri kopyalamak için, şirket içi ortamınızda en az Veri Yönetimi Gateway 2,0 yüklü olmalıdır.
 
@@ -70,7 +70,7 @@ Aşağıdaki tabloda, Salesforce bağlantılı hizmetine özgü JSON öğelerine
 | --- | --- | --- |
 | tür |Type özelliği: **Salesforce**olarak ayarlanmalıdır. |Evet |
 | environmentUrl | Salesforce örneğinin URL 'sini belirtin. <br><br> -Varsayılan: "https: \/ /login.Salesforce.com". <br> -Korumalı verileri veri kopyalamak için "" seçeneğini belirtin https://test.salesforce.com . <br> -Özel etki alanından veri kopyalamak için, örneğin "https://[Domain]. My. Salesforce. com" belirtin. |Hayır |
-| kullanıcı adı |Kullanıcı hesabı için bir Kullanıcı adı belirtin. |Evet |
+| username |Kullanıcı hesabı için bir Kullanıcı adı belirtin. |Evet |
 | password |Kullanıcı hesabı için bir parola belirtin. |Evet |
 | Belirtilmedi |Kullanıcı hesabı için bir güvenlik belirteci belirtin. Güvenlik belirtecini sıfırlama/alma hakkında yönergeler için bkz. [güvenlik belirteci alma](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) . Genel olarak güvenlik belirteçleri hakkında daha fazla bilgi edinmek için bkz. [güvenlik ve API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Evet |
 
@@ -108,7 +108,7 @@ Kopyalama etkinliğinde, kaynak **Relationalsource** türünde olduğunda (Sales
 ### <a name="retrieving-data-using-where-clause-on-datetime-column"></a>Tarih saat sütununda WHERE yan tümcesi kullanılarak veri alma
 SOQL veya SQL sorgusu belirttiğinizde, tarih saat biçimi farklılığı ile ilgilenyin. Örneğin:
 
-* **Soql örneği**:`$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
+* **Soql örneği**: `$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
 * **SQL örneği**:
     * **Sorguyu belirtmek için kopyalama Sihirbazı 'Nı kullanma:**`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)`
     * **Sorgu belirtmek IÇIN JSON düzenlemesini kullanma (doğru kaçış karakteri):**`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', WindowStart, WindowEnd)`
@@ -287,11 +287,11 @@ RelationalSource tarafından desteklenen özelliklerin listesi için bkz. [relat
 | --- | --- |
 | Otomatik sayı |Dize |
 | Onay kutusu |Boole |
-| Para birimi |Ondalık |
+| Para Birimi |Ondalık |
 | Tarih |DateTime |
 | Tarih/Saat |DateTime |
 | E-posta |Dize |
-| Kimlik |Dize |
+| Id |Dize |
 | Arama Ilişkisi |Dize |
 | Çoklu seçim listesi |Dize |
 | Sayı |Ondalık |

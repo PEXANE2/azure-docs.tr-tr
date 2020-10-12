@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
 ms.openlocfilehash: 80bca2dab1d07d9b99e75e283068bff99335fa18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79271947"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Azure HDInsight kullanarak Apache Spark sorunlarını giderme
@@ -37,7 +37,7 @@ Spark yapılandırma değerleri, Apache Spark bir uygulama özel durumuyla karş
 
 1. Değeri önerilen ayarı olarak ayarlayın. Bu ayar için **2048m** değeri önerilir.
 
-1. Değeri kaydedin ve sonra yapılandırmayı kaydedin. **Kaydet**'i seçin.
+1. Değeri kaydedin ve sonra yapılandırmayı kaydedin. **Kaydet**’i seçin.
 
     ![Değeri 20 48m olarak değiştir](./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png)
 

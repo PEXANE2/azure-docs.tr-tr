@@ -11,10 +11,10 @@ ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: a2f20a4521efe2806c4bc66e4612b99caf84382a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85385272"
 ---
 # <a name="configure-session-behavior-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanarak oturum davranışını yapılandırma
@@ -50,7 +50,7 @@ Oturum davranışlarını ve SSO yapılandırmasını değiştirmek için [Relyi
 
 Kullanıcıyı Azure AD B2C oturum kapatma uç noktasına yönlendirirsiniz (hem OAuth2 hem de SAML protokolleri için), Azure AD B2C kullanıcının oturumunu tarayıcıdan temizler.  [Çoklu oturum açma](session-overview.md#single-sign-out)izni vermek için `LogoutUrl` Azure Portal uygulamayı ayarlayın:
 
-1. [Azure portalına](https://portal.azure.com) gidin.
+1. [Azure Portal](https://portal.azure.com)gidin.
 1. Sayfanın sağ üst köşesindeki hesabınıza tıklayarak Azure AD B2C dizininizi seçin.
 1. Sol menüden **Azure AD B2C**öğesini seçin, **uygulama kayıtları**' i seçin ve ardından uygulamanızı seçin.
 1. **Ayarlar**' ı seçin, **Özellikler**' i seçin ve ardından **oturum kapatma URL 'si** metin kutusunu bulun. 
@@ -59,7 +59,7 @@ Kullanıcıyı Azure AD B2C oturum kapatma uç noktasına yönlendirirsiniz (hem
 
 Çoklu oturum açmayı desteklemek için, hem JWT hem de SAML için belirteç verenin teknik profillerinin şunları belirtmesi gerekir:
 
-- Protokol adı, örneğin`<Protocol Name="OpenIdConnect" />`
+- Protokol adı, örneğin `<Protocol Name="OpenIdConnect" />`
 - Oturum teknik profiline başvuru. Örneğin, `UseTechnicalProfileForSessionManagement ReferenceId="SM-OAuth-issuer" />` .
 
 Aşağıdaki örnekte, çoklu oturum açma işlemiyle birlikte JWT ve SAML belirteci verenler gösterilmektedir:

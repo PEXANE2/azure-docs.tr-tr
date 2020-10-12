@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
 ms.openlocfilehash: 122c96c95aea794fbba9cab8a9a5b867f9f34b48
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008976"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Redis için Azure Cache istemci tarafı sorunlarını giderme
@@ -30,7 +30,7 @@ Bu bölümde, uygulamanızın kullandığı Redsıs istemcisindeki bir koşul ne
 İstemci üzerindeki bellek basıncını algılamak için:
 
 - Kullanılabilir belleği aşmadığından emin olmak için makinedeki bellek kullanımını izleyin.
-- İstemcinin `Page Faults/Sec` performans sayacını izleyin. Normal işlem sırasında çoğu sistemde bazı sayfa hataları vardır. İstek zaman aşımları ile ilgili sayfa hatalarında ani artışlar, bellek basıncını gösterebilir.
+- İstemcinin `Page Faults/Sec` performans sayacını izleyin. Normal işlem sırasında çoğu sistemde bazı sayfa hataları vardır. İstek zaman aşımlarını ifade eden sayfa hatası artışları bellek baskısı olduğunu gösterebilir.
 
 İstemci üzerindeki yüksek bellek baskısı, birkaç farklı şekilde azaltılabilir:
 

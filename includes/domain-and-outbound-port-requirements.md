@@ -8,13 +8,13 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: abnarain
 ms.openlocfilehash: 0b2831321c9f4d855a19605c1ce5ace9fa11c88b
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89596132"
 ---
-| Etki alanı adları                  | Giden bağlantı noktaları | Description                              |
+| Etki alanı adları                  | Giden bağlantı noktaları | Açıklama                              |
 | ----------------------------- | -------------- | ---------------------------------------- |
 | `*.servicebus.windows.net`    | 443            | Şirket içinde barındırılan tümleştirme çalışma zamanının Azure Data Factory içindeki veri taşıma hizmetlerine bağlanması için gereklidir. |
 | `{datafactory}.{region}.datafactory.azure.net`<br> veya `*.frontend.clouddatahub.net` | 443            | Şirket içinde barındırılan tümleştirme çalışma zamanı tarafından Data Factory hizmetine bağlanmak için gereklidir. <br>Yeni oluşturulan Data Factory için, lütfen {DataFactory} biçiminde olan şirket içinde barındırılan Integration Runtime anahtarınızdan FQDN 'yi bulun. {Region}. DataFactory. Azure. net. Eski Veri Fabrikası için, FQDN 'yi şirket içinde barındırılan tümleştirme anahtarınıza görmüyorsanız lütfen bunun yerine *. frontend.clouddatahub.net kullanın. |

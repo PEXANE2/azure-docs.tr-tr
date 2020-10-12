@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.workload: big-data
 ms.date: 09/14/2018
 ms.openlocfilehash: 3517938ae0e08af62a6fcf0d3d0a43a5eaee48dd
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87496126"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics için CI/CD işlem hattı ayarlama  
@@ -355,7 +355,7 @@ Tablo değerli işlevler ve saklı yordamlar için test çalışmalarını doğr
 
 ## <a name="deploy-u-sql-database-through-azure-pipelines"></a>U-SQL veritabanını Azure Pipelines aracılığıyla dağıtma
 
-`PackageDeploymentTool.exe`U-SQL veritabanı dağıtım paketleri dağıtmaya yardımcı olan programlama ve komut satırı arabirimlerini sağlar **. ustabdbpack**. SDK, **derleme/çalışma zamanı/PackageDeploymentTool.exe**konumunda bulunan [U-SQL SDK NuGet paketine](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)dahildir. Kullanarak `PackageDeploymentTool.exe` u-SQL veritabanlarını hem Azure Data Lake Analytics hem de yerel hesaplara dağıtabilirsiniz.
+`PackageDeploymentTool.exe` U-SQL veritabanı dağıtım paketleri dağıtmaya yardımcı olan programlama ve komut satırı arabirimlerini sağlar **. ustabdbpack**. SDK, **derleme/çalışma zamanı/PackageDeploymentTool.exe**konumunda bulunan [U-SQL SDK NuGet paketine](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)dahildir. Kullanarak `PackageDeploymentTool.exe` u-SQL veritabanlarını hem Azure Data Lake Analytics hem de yerel hesaplara dağıtabilirsiniz.
 
 > [!NOTE]
 >
@@ -425,7 +425,7 @@ Azure Pipelines bir veritabanı dağıtım görevi ayarlamak için aşağıdaki 
     copy USQLSDK\build\runtime\*.* $DBDeploymentTool
     ```
 
-2. Bir derleme veya sürüm ardışık düzenine bir **komut satırı görevi** ekleyin ve çağırarak betiği girin `PackageDeploymentTool.exe` . `PackageDeploymentTool.exe`, tanımlı **$DBDeploymentTool** klasörünün altında bulunur. Örnek betik şu şekildedir: 
+2. Bir derleme veya sürüm ardışık düzenine bir **komut satırı görevi** ekleyin ve çağırarak betiği girin `PackageDeploymentTool.exe` . `PackageDeploymentTool.exe` , tanımlı **$DBDeploymentTool** klasörünün altında bulunur. Örnek betik şu şekildedir: 
 
     * U-SQL veritabanını yerel olarak dağıtma:
 
@@ -473,7 +473,7 @@ Azure Pipelines bir veritabanı dağıtım görevi ayarlamak için aşağıdaki 
 |Parametre|Açıklama|Varsayılan değer|Gerekli|
 |---------|-----------|-------------|--------|
 |Hesap|Hesap adına göre dağıtılacak Azure Data Lake Analytics hesabını belirtir.|null|true|
-|ResourceGroup|Azure Data Lake Analytics hesabının Azure Kaynak grubu adı.|null|true|
+|adlı yönetilen örnek,|Azure Data Lake Analytics hesabının Azure Kaynak grubu adı.|null|true|
 |kaynak grubundaki|Azure Data Lake Analytics hesabının Azure abonelik KIMLIĞI.|null|true|
 |Kiracı|Kiracı adı Azure Active Directory (Azure AD) etki alanı adıdır. Azure portal abonelik yönetimi sayfasında bulun.|null|true|
 |AzureSDKPath|Azure SDK 'da bağımlı derlemelerin aranacağı yol.|null|true|

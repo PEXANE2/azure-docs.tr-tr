@@ -7,15 +7,15 @@ ms.service: media-services
 ms.topic: error-reference
 ms.date: 04/20/2020
 ms.openlocfilehash: 13d804ec39c3d7753d4ee04962a88d4451fb04d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81727261"
 ---
 # <a name="error-codes"></a>Hata kodları #
 
-Kayıttan yürütme başlayamaz veya durdurulduğunda bir hata olayı tetiklenir ve `error()` uygulama geliştiricisinin daha fazla ayrıntı almasını sağlamak için işlev bir kod ve isteğe bağlı bir ileti döndürür. `error().message`kullanıcıya görüntülenmeyen ileti değildir.  Kullanıcıya gösterilecek ileti, `error().code` bıts 27-20 ' i temel alır, aşağıdaki tabloya bakın.
+Kayıttan yürütme başlayamaz veya durdurulduğunda bir hata olayı tetiklenir ve `error()` uygulama geliştiricisinin daha fazla ayrıntı almasını sağlamak için işlev bir kod ve isteğe bağlı bir ileti döndürür. `error().message` kullanıcıya görüntülenmeyen ileti değildir.  Kullanıcıya gösterilecek ileti, `error().code` bıts 27-20 ' i temel alır, aşağıdaki tabloya bakın.
 
 ```javascript
 

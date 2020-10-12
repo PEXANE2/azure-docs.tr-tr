@@ -7,10 +7,10 @@ ms.date: 11/02/2017
 ms.author: vturecek
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9d5859886dbd1211f929be1031237f7e7d9b1fc1
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89611715"
 ---
 # <a name="reliable-actors-state-management"></a>Reliable Actors durum yönetimi
@@ -106,7 +106,7 @@ Durum Yöneticisi, güvenilir sözlükte bulunanlara benzer şekilde durum yöne
 
 Aktör durumunu yönetme örnekleri, okuma [erişimi, kaydetme ve Reliable Actors durumu](service-fabric-reliable-actors-access-save-remove-state.md).
 
-## <a name="best-practices"></a>En iyi uygulamalar
+## <a name="best-practices"></a>Önerilen uygulamalar
 Aktör durumunu yönetmeye yönelik bazı önerilen uygulamalar ve sorun giderme ipuçları aşağıda verilmiştir.
 
 ### <a name="make-the-actor-state-as-granular-as-possible"></a>Aktör durumunu mümkün olduğunca ayrıntılı yapın

@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: f8e93cf34ac56344ff7e3d145ce8c7c3529767b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81678673"
 ---
 Aşağıdaki örnek, Seattle 'da Internet Exchange 'e eşitlenmiş bir Exchange bağlantısı oluşturmayı gösterir. Farklı bir sağlayıcı ve farklı ayarlar kullanıyorsanız isteğinizi yaparken bu bilgileri yerine koyun.

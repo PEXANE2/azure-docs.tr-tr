@@ -8,10 +8,10 @@ author: bmitchell287
 ms.date: 10/18/2019
 ms.custom: devx-track-java
 ms.openlocfilehash: 2f788452455bfbbc47f0a48689ccf3344515fdae
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90904245"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Hizmetiniz için bir Spring Cloud config Server örneği ayarlama
@@ -57,9 +57,9 @@ Genel Git deposunu kurmak için kullanılan yapılandırılabilir tüm özellikl
 > [!NOTE]
 > Sözcükleri ayırmak için kısa çizgi (-) kullanmak, şu anda desteklenen tek adlandırma kuralıdır. Örneğin, *defaultlabel*değil, *varsayılan etiketini*kullanabilirsiniz.
 
-| Özellik        | Gerekli | Öne çıkan özelliği                                                      |
+| Özellik        | Gerekli | Özellik                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
-| `uri`           | Yes    | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI *http://*, *https://*, *Git@* veya *SSH://* ile başlar. |
+| `uri`           | Evet    | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI *http://*, *https://*, *Git@* veya *SSH://* ile başlar. |
 | `default-label` | Hayır     | Git deposunun varsayılan etiketi, deponun *şube adı*, *etiket adı*veya *kayıt kimliği* olmalıdır. |
 | `search-paths`  | Hayır     | Git deposunun alt dizinlerinde arama yapmak için kullanılan bir dize dizisi. |
 
@@ -72,9 +72,9 @@ SSH ile özel Git deposunu kurmak için kullanılan yapılandırılabilir tüm �
 > [!NOTE]
 > Sözcükleri ayırmak için kısa çizgi (-) kullanmak, şu anda desteklenen tek adlandırma kuralıdır. Örneğin, *defaultlabel*değil, *varsayılan etiketini*kullanabilirsiniz.
 
-| Özellik                   | Gerekli | Öne çıkan özelliği                                                      |
+| Özellik                   | Gerekli | Özellik                                                      |
 | :------------------------- | -------- | ------------------------------------------------------------ |
-| `uri`                      | Yes    | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI, *http://*, *https://*, *Git@* veya *SSH://* ile başlatılmış olmalıdır. |
+| `uri`                      | Evet    | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI, *http://*, *https://*, *Git@* veya *SSH://* ile başlatılmış olmalıdır. |
 | `default-label`            | Hayır     | Git deposunun varsayılan etiketi, deponun *şube adı*, *etiket adı*veya *kayıt kimliği* olmalıdır. |
 | `search-paths`             | Hayır     | Git deposunun alt dizinlerinde arama yapmak için kullanılan bir dize dizisi. |
 | `private-key`              | Hayır     | Git deposuna erişmek için SSH özel anahtarı, URI *Git@* veya *SSH://* ile başladığı zaman _gereklidir_ . |
@@ -91,9 +91,9 @@ Temel kimlik doğrulaması ile özel Git deposunu kurmak için kullanılan tüm 
 > [!NOTE]
 > Sözcükleri ayırmak için kısa çizgi (-) kullanmak, şu anda desteklenen tek adlandırma kuralıdır. Örneğin, *defaultlabel*değil *varsayılan etiketini*kullanın.
 
-| Özellik        | Gerekli | Öne çıkan özelliği                                                      |
+| Özellik        | Gerekli | Özellik                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
-| `uri`           | Yes    | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI *http://*, *https://*, *Git@* veya *SSH://* ile başlatılmalıdır. |
+| `uri`           | Evet    | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI *http://*, *https://*, *Git@* veya *SSH://* ile başlatılmalıdır. |
 | `default-label` | Hayır     | Git deposunun varsayılan etiketi, deponun *şube adı*, *etiket adı*veya *kayıt kimliği* olmalıdır. |
 | `search-paths`  | Hayır     | Git deposunun alt dizinlerinde arama yapmak için kullanılan bir dize dizisi. |
 | `username`      | Hayır     | Git deposu sunucusu ' nu desteklediğinde _gereken_ , git deposu sunucusuna erişmek için kullanılan Kullanıcı adı `Http Basic Authentication` . |
@@ -109,7 +109,7 @@ Aşağıdaki şekilde Git depoları ayarlamak için kullanılan yapılandırıla
 > [!NOTE]
 > Sözcükleri ayırmak için kısa çizgi (-) kullanmak, şu anda desteklenen tek adlandırma kuralıdır. Örneğin, *defaultlabel*değil *varsayılan etiketini*kullanın.
 
-| Özellik                           | Gerekli         | Öne çıkan özelliği                                                      |
+| Özellik                           | Gerekli         | Özellik                                                      |
 | :--------------------------------- | ---------------- | ------------------------------------------------------------ |
 | `repos`                            | Hayır             | Verilen bir ada sahip git deposu ayarlarından oluşan bir harita. |
 | `repos."uri"`                      | Evet açık `repos` | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI *http://*, *https://*, *Git@* veya *SSH://* ile başlatılmalıdır. |
@@ -128,7 +128,7 @@ Aşağıdaki şekilde Git depoları ayarlamak için kullanılan yapılandırıla
 
 Yapılandırma dosyalarınız bir depoya kaydedildiğinden artık Azure Spring Cloud 'ı buna bağlamanız gerekir.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Azure yay bulutuna **genel bakış** sayfasına gidin.
 
@@ -212,7 +212,7 @@ Azure yay bulutu, genel olan, SSH ile güvenliği sağlanmış veya HTTP temel k
 
 ### <a name="configure-azure-spring-cloud-to-access-the-git-repository"></a>Git deposuna erişmek için Azure Spring Cloud’u yapılandırma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Azure yay bulutuna **genel bakış** sayfasına gidin.
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 4b2068c3944f9e7616b0666c7bafcafc68ee0cd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79471294"
 ---
 # <a name="how-to-install-iot-edge-on-kubernetes-preview"></a>Kubernetes 'e IoT Edge nasıl yüklenir (Önizleme)
@@ -25,7 +25,7 @@ IoT Edge, Kubernetes ile, dayanıklı ve yüksek oranda kullanılabilir bir alty
 >Bu tümleştirme için iyi bir işlem, Kubernetes 'in Linux ve Windows 'un yanı sıra IoT Edge uygulamalar üzerinde çalıştırılabilirler.
 
 ## <a name="architecture"></a>Mimari 
-Kubernetes 'de, IoT Edge Edge iş yükü dağıtımları için *özel kaynak tanımı* (CRD) sağlar. IoT Edge Aracısı, bulut tarafından yönetilen istenen durumu yerel küme durumuyla bağdaştıran bir *CRD denetleyicisinin* rolünü varsayar.
+Kubernetes 'de, IoT Edge Edge iş yükü dağıtımları için *özel kaynak tanımı* (CRD) sağlar. IoT Edge Aracısı, bulut tarafından yönetilen istenen durumu yerel küme durumuyla bağdaştıran bir  *CRD denetleyicisinin* rolünü varsayar.
 
 Modül ömrü, modül kullanılabilirliğini tutan ve yerleştirmesini seçen Kubernetes Zamanlayıcı tarafından yönetilir. IoT Edge, en üstte çalışan Edge uygulaması platformunu yönetir ve IoT Hub belirtilen istenen durumu, uç kümedeki durumuyla sürekli olarak mutabık kılma. Uygulama modeli, IoT Edge modüller ve rotalar temel alınarak tanıdık bir modeldir. IoT Edge aracısı denetleyicisi, *Otomatik* çeviri IoT Edge uygulama modelini pods, dağıtımlar, hizmetler vb. Kubernetes yerel yapılarına uygular.
 

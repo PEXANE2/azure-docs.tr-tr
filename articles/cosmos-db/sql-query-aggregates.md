@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: tisande
 ms.openlocfilehash: 24acd1e9c13320244ff4c27abd13abeda6f70b2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79464470"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Azure Cosmos DB içindeki toplama işlevleri
@@ -61,7 +61,7 @@ Sonuçlar:
 
 ## <a name="types-of-aggregate-functions"></a>Toplama işlevlerinin türleri
 
-SQL API aşağıdaki toplama işlevlerini destekler. `SUM`ve sayı `AVG` `COUNT` `MIN` `MAX` , dize, Boole değerleri ve null değerler üzerinde çalışır.
+SQL API aşağıdaki toplama işlevlerini destekler. `SUM` ve sayı `AVG` `COUNT` `MIN` `MAX` , dize, Boole değerleri ve null değerler üzerinde çalışır.
 
 | İşlev | Açıklama |
 |-------|-------------|
@@ -82,6 +82,6 @@ Bu toplama sistemi işlevleri, bir [Aralık dizininden](index-policy.md#includee
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Cosmos DB giriş](introduction.md)
+- [Azure Cosmos DB'ye giriş](introduction.md)
 - [Sistem işlevleri](sql-query-system-functions.md)
 - [Kullanıcı tanımlı işlevler](sql-query-udfs.md)

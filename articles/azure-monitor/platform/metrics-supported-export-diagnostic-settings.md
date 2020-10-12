@@ -6,13 +6,13 @@ ms.topic: reference
 ms.date: 07/22/2020
 ms.subservice: metrics
 ms.openlocfilehash: ca6acb97e52123a0663d988b3f217d305bce2c4b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87131693"
 ---
-# <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Azure Izleyici platformu ölçümleri, Tanılama ayarları aracılığıyla dışarı aktarılabilir
+# <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Tanılama Ayarları yoluyla dışarı aktarılabilir Azure İzleyici platform ölçümleri
 
 Azure Izleyici, varsayılan olarak hiçbir yapılandırma olmadan [Platform ölçümleri](data-platform-metrics.md) sağlar. Bu, portalda grafik oluşturma, REST API aracılığıyla erişme veya PowerShell veya CLı kullanarak sorgulama dahil olmak üzere platform ölçümleriyle etkileşimde bulunmak için çeşitli yollar sağlar. Bkz. [ölçümler-](metrics-supported.md) Azure izleyicisinin birleştirilmiş ölçüm işlem hattı ile Şu anda kullanılabilir olan platform ölçümlerinin tam listesi için desteklenir. Bu ölçümleri sorgulamak ve bunlara erişmek için lütfen [2018-01-01 api sürümünü](/rest/api/monitor/metricdefinitions)kullanın. Diğer ölçümler portalda veya eski API 'Ler kullanılarak kullanılabilir.
 
@@ -217,11 +217,11 @@ Davranışı değişmiş olan ölçümlerin bir listesi aşağıda verilmiştir.
 | Microsoft. Insights/bileşenler | performanceCounters/Requestsınqueue |  Uygulama kuyruğundaki HTTP istekleri  | 
 | Microsoft. Insights/bileşenler | performanceCounters/exceptionsPerSecond |  Özel durum oranı  | 
 | Microsoft. Insights/bileşenler | pageViews/Count |  Sayfa görünümleri  | 
-| Microsoft. Insights/bileşenler | özel durumlar/say |  Özel durumlar  | 
-| Microsoft. kusto/kümeler | StreamingIngestResults |  Akış alma sonucu  | 
-| Microsoft. kusto/kümeler | StreamingIngestDuration |  Akış alma süresi  | 
-| Microsoft. kusto/kümeler | StreamingIngestDataRate |  Akış alma verileri oranı  | 
-| Microsoft. kusto/kümeler | SteamingIngestRequestRate |  Akış alma Isteği oranı  | 
+| Microsoft. Insights/bileşenler | özel durumlar/say |  Özel Durumlar  | 
+| Microsoft. kusto/kümeler | StreamingIngestResults |  Akış Alma Sonucu  | 
+| Microsoft. kusto/kümeler | StreamingIngestDuration |  Akış Alma Süresi  | 
+| Microsoft. kusto/kümeler | StreamingIngestDataRate |  Akış Alma Veri Oranı  | 
+| Microsoft. kusto/kümeler | SteamingIngestRequestRate |  Akış Alma İstek Oranı  | 
 | Microsoft. kusto/kümeler | QueryDuration |  Sorgu süresi  | 
 | Microsoft. kusto/kümeler | Alı |  Canlı tut  | 
 | Microsoft. kusto/kümeler | Inestionvolumeınmb |  Alım birimi (MB)  | 
@@ -372,7 +372,7 @@ Davranışı değişmiş olan ölçümlerin bir listesi aşağıda verilmiştir.
 | Microsoft. SQL/ManagedInstances | avg_cpu_percent |  Ortalama CPU yüzdesi  | 
 | Microsoft. SQL/sunucuları | dtu_used |  Kullanılan DTU  | 
 | Microsoft. SQL/sunucuları | dtu_consumption_percent |  DTU yüzdesi  | 
-| Microsoft. SQL/Servers/veritabanları | xtp_storage_percent |  Bellek içi OLTP depolama yüzdesi  | 
+| Microsoft. SQL/Servers/veritabanları | xtp_storage_percent |  In-Memory OLTP depolama alanı yüzdesi  | 
 | Microsoft. SQL/Servers/veritabanları | workers_percent |  Çalışan yüzdesi  | 
 | Microsoft. SQL/Servers/veritabanları | sessions_percent |  Oturum yüzdesi  | 
 | Microsoft. SQL/Servers/veritabanları | physical_data_read_percent |  Veri G/Ç yüzdesi  | 
@@ -388,7 +388,7 @@ Davranışı değişmiş olan ölçümlerin bir listesi aşağıda verilmiştir.
 | Microsoft. SQL/Servers/veritabanları | connection_failed |  Başarısız Bağlantılar  | 
 | Microsoft. SQL/Servers/veritabanları | cache_hit_percent |  İsabetli önbellek okuması yüzdesi  | 
 | Microsoft. SQL/Servers/veritabanları | blocked_by_firewall |  Güvenlik duvarı tarafından engellendi  | 
-| Microsoft. SQL/Servers/Elaun havuzları | xtp_storage_percent |  Bellek içi OLTP depolama yüzdesi  | 
+| Microsoft. SQL/Servers/Elaun havuzları | xtp_storage_percent |  In-Memory OLTP depolama alanı yüzdesi  | 
 | Microsoft. SQL/Servers/Elaun havuzları | workers_percent |  Çalışan yüzdesi  | 
 | Microsoft. SQL/Servers/Elaun havuzları | sessions_percent |  Oturum yüzdesi  | 
 | Microsoft. SQL/Servers/Elaun havuzları | physical_data_read_percent |  Veri G/Ç yüzdesi  | 
@@ -520,7 +520,7 @@ Davranışı değişmiş olan ölçümlerin bir listesi aşağıda verilmiştir.
 | Microsoft. SQL/Servers/veritabanları | connection_failed | Başarısız Bağlantılar | 
 | Microsoft. SQL/Servers/veritabanları | blocked_by_firewall | Güvenlik duvarı tarafından engellendi | 
 | Microsoft. SQL/Servers/veritabanları | Çözül | Çık | 
-| Microsoft. SQL/Servers/veritabanları | xtp_storage_percent | Bellek içi OLTP depolama yüzdesi | 
+| Microsoft. SQL/Servers/veritabanları | xtp_storage_percent | In-Memory OLTP depolama alanı yüzdesi | 
 | Microsoft. SQL/Servers/veritabanları | workers_percent | Çalışan yüzdesi | 
 | Microsoft. SQL/Servers/veritabanları | sessions_percent | Oturum yüzdesi | 
 | Microsoft. SQL/Servers/veritabanları | dtu_used | Kullanılan DTU | 
@@ -545,7 +545,7 @@ Davranışı değişmiş olan ölçümlerin bir listesi aşağıda verilmiştir.
 | Microsoft. SQL/Servers/Elaun havuzları | workers_percent | Çalışan yüzdesi | 
 | Microsoft. SQL/Servers/Elaun havuzları | sessions_percent | Oturum yüzdesi | 
 | Microsoft. SQL/Servers/Elaun havuzları | eDTU_used | eDTU kullanıldı | 
-| Microsoft. SQL/Servers/Elaun havuzları | xtp_storage_percent | Bellek içi OLTP depolama yüzdesi | 
+| Microsoft. SQL/Servers/Elaun havuzları | xtp_storage_percent | In-Memory OLTP depolama alanı yüzdesi | 
 | Microsoft. SQL/sunucuları | dtu_consumption_percent | DTU yüzdesi | 
 | Microsoft. SQL/sunucuları | dtu_used | Kullanılan DTU | 
 | Microsoft. SQL/ManagedInstances | avg_cpu_percent | Ortalama CPU yüzdesi | 
