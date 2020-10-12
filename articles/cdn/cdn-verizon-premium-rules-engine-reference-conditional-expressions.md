@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: allensu
 ms.openlocfilehash: 25b3c1a011e39adea651a6daa1d4ab9aa3a9d186
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81253518"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-conditional-expressions"></a>Verizon Premium kural altyapısı koşullu ifadelerinden Azure CDN
@@ -30,7 +30,7 @@ AKSI TAKDIRDE| Bir ELSE IF ifadesi, bu başka bir durum deyimi gerçekleşmişse
 
  > [!TIP]
    > Sonraki bir kural, önceki bir kural tarafından belirtilen eylemleri geçersiz kılabilir.
-   > Örnek: bir catch-all kuralı, belirteç tabanlı kimlik doğrulama aracılığıyla tüm istekleri korur. Belirli istek türleri için bir özel durum oluşturmak üzere, doğrudan altında başka bir kural oluşturulabilir.
+   > Örnek: bir catch-all kuralı, tüm istekleri Token-Based kimlik doğrulaması üzerinden korur. Belirli istek türleri için bir özel durum oluşturmak üzere, doğrudan altında başka bir kural oluşturulabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

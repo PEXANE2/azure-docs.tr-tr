@@ -5,10 +5,10 @@ ms.date: 11/22/2019
 ms.topic: how-to
 ms.reviewer: janders
 ms.openlocfilehash: 337d01abc51d310d06aeea3427b770132be4824c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85208782"
 ---
 # <a name="how-to-configure-azure-active-directory-access-for-azure-blockchain-service"></a>Azure blok zinciri hizmeti için Azure Active Directory erişimi yapılandırma
@@ -17,7 +17,7 @@ Bu makalede, Azure Active Directory (Azure AD) Kullanıcı, Grup veya uygulama k
 
 Azure AD, bulut tabanlı kimlik yönetimi sağlar ve Azure 'daki tüm kurumsal ve erişim uygulamaları genelinde tek bir kimlik kullanmanıza olanak sağlar. Azure blok zinciri hizmeti, Azure AD ile tümleşiktir ve KIMLIK Federasyonu, çoklu oturum açma ve çok faktörlü kimlik doğrulaması gibi avantajlar sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure portal kullanarak bir blok zinciri üyesi oluşturma](create-member.md)
 
@@ -29,7 +29,7 @@ Hem üye düzeyinde hem de düğüm düzeyinde erişim verebilirsiniz. Üye düz
 
 Üye düzeyinde erişim izni vermek için.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. **Erişim denetimi (IAM) > > rol ataması Ekle**' ye gidin.
 1. **Blok zinciri üye düğümü erişimi (Önizleme)** rolünü seçin ve erişim vermek ISTEDIĞINIZ Azure AD kimlik nesnesini ekleyin. Azure AD KIMLIK nesnesi şu olabilir:
 
@@ -41,7 +41,7 @@ Hem üye düzeyinde hem de düğüm düzeyinde erişim verebilirsiniz. Üye düz
 
     ![Rol ataması ekle](./media/configure-aad/add-role-assignment.png)
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ### <a name="grant-node-level-access"></a>Düğüm düzeyinde erişim verme
 
@@ -89,7 +89,7 @@ connector.exe -remote <myBlockchainEndpoint>  -method aadclient -client-id <myCl
 
 | Parametre | Açıklama |
 |-----------|-------------|
-| Kiracı kimliği | Örneğin, Azure AD etki alanı`yourdomain.onmicrosoft.com`
+| Kiracı kimliği | Örneğin, Azure AD etki alanı `yourdomain.onmicrosoft.com`
 | istemci kimliği | Azure AD 'de kayıtlı uygulamanın istemci KIMLIĞI
 | istemci parolası | Azure AD 'de kayıtlı uygulamanın istemci gizli anahtarı
 

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 2a322de383194f131395629d33456d7561397eb9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91310994"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Azure haritalar arama hizmetlerini kullanarak bir konum arayın
@@ -26,7 +26,7 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 * Koordinat konumunu cadde adresine çevirmek için [ters adres araması](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) yapın.
 * Koordinat konumunu, [arama adresi geriye yönelik arama API 'sini](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet)kullanarak, bir insan genelindeki bir merkezden karşılıklı olarak çevirin.  Genellikle, bu, bir cihazdan veya varlıktan GPS akışı alan uygulamaları izlemek ve koordinat nerede bulunduğunu bildirmek için gereklidir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 1. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
 2. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account).
@@ -95,7 +95,7 @@ Bu örnekte, tüm dünyayı aramak için belirsiz arama kullanacağız `pizza` .
 
 4. Varsayılan davranış, büyük olasılıkla gereksiz sonuçlar döndüren dünyanın tamamında arama yapmak için kullanılır. Daha sonra, pizza yalnızca Birleşik Devletler arayacağız. `countrySet`Anahtarı **params** bölümüne ekleyin ve değerini olarak ayarlayın `US` . `countrySet`Anahtarın olarak ayarlanması, `US` sonuçları Birleşik Devletler ile bağlanacaktır.
 
-    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="Birleşik Devletler için pizza araması yapın":::
+    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="Adres ara":::
 
     Sonuçlar artık ülke kodu ile sınırlıdır ve sorgu Birleşik Devletler.
 
@@ -138,18 +138,18 @@ Bu örnekte, kullanılabilir isteğe bağlı parametrelerin birkaçını kullana
 
     | Anahtar | Değer | Döndürülenler
     |-----|------------|------|
-    | sayı | 1 |Yanıt, cadde (sol/sağ) yanı sıra sayı için de bir konum konumu içerebilir.|
+    | number | 1 |Yanıt, cadde (sol/sağ) yanı sıra sayı için de bir konum konumu içerebilir.|
     | returnSpeedLimit | true | Adresteki hız sınırını döndürür.|
     | returnRoadUse | true | Adreste yol kullanım türlerini döndürür. Tüm olası yol kullanım türleri için bkz. [yol kullanım türleri](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters).|
     | returnMatchType | true| Eşleşme türünü döndürür. Olası tüm değerler için bkz. [ters adres arama sonuçları](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#searchaddressreverseresult)
 
-   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="Ters arama.":::
+   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="Adres ara":::
 
 5. **Gönder**' e tıklayın ve yanıt gövdesini gözden geçirin.
 
 6. Sonra `entityType` anahtarı ekleyecek ve değerini olarak ayarlayacağız `Municipality` . `entityType`Bu anahtar, `returnMatchType` önceki adımda anahtarı geçersiz kılar. Ayrıca `returnSpeedLimit` `returnRoadUse` , municipsellik hakkında bilgi istediğimiz için de öğesini kaldırdık.  Tüm olası varlık türleri için bkz. [varlık türleri](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#entitytype).
 
-    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="Ters entityType 'ı arayın.":::
+    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="Adres ara":::
 
 7. **Gönder**’e tıklayın. Sonuçları 5. adımda döndürülen sonuçlarla karşılaştırın.  İstenen varlık türü artık olduğundan `municipality` , yanıt, sokak adresi bilgisini içermez. Ayrıca, döndürülen `geometryId` Azure haritaları aracılığıyla sınır poligon [arama Çokgen API 'sini](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)almak için de kullanılır.
 
@@ -168,7 +168,7 @@ Bu örnekte, bir adresin koordinatları temelinde bir çapraz cadde arayacağız
    https://atlas.microsoft.com/search/address/reverse/crossstreet/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=47.591180,-122.332700
     ```
 
-    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="Çapraz cadde ara.":::
+    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="Adres ara":::
   
 3. **Gönder**' e tıklayın ve yanıt gövdesini gözden geçirin. Yanıtın bir değeri içerdiğini fark edeceksiniz `crossStreet` `Occidental Avenue South` .
 

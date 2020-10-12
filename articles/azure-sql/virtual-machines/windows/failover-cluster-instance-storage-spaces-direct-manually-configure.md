@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
 ms.openlocfilehash: 3cc579615a69b659bc1a4736984f0b3dcd6edb6b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91272540"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>Depolama Alanları Doğrudan (Azure VM 'lerinde SQL Server) ile bir FCı oluşturma
@@ -50,7 +50,7 @@ Yukarıdaki diyagramda, aynı kaynak grubundaki aşağıdaki kaynaklar gösteril
    > Bu çözümün tamamını, bir şablondan Azure 'da oluşturabilirsiniz. GitHub [Azure hızlı başlangıç şablonları](https://github.com/MSBrett/azure-quickstart-templates/tree/master/sql-server-2016-fci-existing-vnet-and-ad) sayfasında bir şablon örneği bulunur. Bu örnek, belirli bir iş yükü için tasarlanmamıştır veya test edilmemiştir. Etki alanına bağlı Depolama Alanları Doğrudan depolama alanı ile bir SQL Server FCı oluşturmak için şablonu çalıştırabilirsiniz. Şablonu değerlendirebilir ve sizin amacınıza göre değiştirebilirsiniz.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki yönergeleri tamamlamadan önce Şu durumda olmalıdır:
 

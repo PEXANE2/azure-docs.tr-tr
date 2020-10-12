@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6e3118814eacc6cc63b5db59bd7f1877c1d347dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77025274"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>Şirket içinden CloudSimple VPN Gateway 'e yüksek kullanılabilirliğe sahip bir bağlantı yapılandırın
@@ -141,7 +141,7 @@ Aşama 1 çıkışı:
 
 ## <a name="configure-on-premises-palo-alto-networks-firewall"></a>Şirket içi Palo Alto Networks güvenlik duvarını yapılandırma
 
-Bu bölümdeki yönergeler, Palo Alto Networks sürüm 7,1 ve üzeri için geçerlidir. Bu yapılandırma örneğinde, Palo Alto Networks VM Serisi yazılım sürümü 8.1.0 dağıtılır ve IKEv1 modunda yapılandırılır.
+Bu bölümdeki yönergeler, Palo Alto Networks sürüm 7,1 ve üzeri için geçerlidir. Bu yapılandırma örneğinde, yazılım sürümü 8.1.0 VM-Series Palo Alto ağları, IKEv1 modunda dağıtılır ve yapılandırılır.
 
 Siteden siteye VPN 'nin çalışması için, şirket içi Palo Alto Networks ağ geçidinin dış arabirimindeki CloudSimple birincil ve ikincil genel IP 'den (eş IP) UDP 500/4500 ve ESP 'ye (IP protokolü 50) izin vermelisiniz.
 
@@ -243,7 +243,7 @@ IKEv1
 * Ada. Hata için öngörülü yeniden işlem için tünel izlemesi için kullanılacak Izleyici profilinin adını girin.
 * Ön. **Yük devret**' i seçin.
 * Aralığında. **3**değerini girin.
-* Eşik öğesini seçin. **7**değerini girin.
+* Eşiği. **7**değerini girin.
 
 ### <a name="7-set-up-primary-and-secondary-ipsec-tunnels"></a>7. birincil ve ikincil IPSec tünellerini ayarlayın.
 

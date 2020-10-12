@@ -12,10 +12,10 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
 ms.openlocfilehash: b2c1d08656ce9ef6b76e34a943f133859b78345a
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86172035"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Azure Data Factory 'de SSIS Integration Runtime yönetimi sorunlarını giderme
@@ -78,7 +78,7 @@ Diğer sorunlar için SQL Özel Durumu hata iletisini gözden geçirin ve hata a
 
 ### <a name="invalidcatalogdb"></a>InvalidCatalogDb
 
-Bu tür bir hata iletisi şöyle görünür: "geçersiz nesne adı ' kataloğu. catalog_properties '." Bu durumda, zaten SSSıSDB adlı bir veritabanınız var, ancak SSIS IR tarafından oluşturulmamış veya veritabanı, son SSIS IR sağlama hatalarından kaynaklanan geçersiz bir durumda. Var olan veritabanını SSSıSDB adıyla bırakabilir veya IR için yeni bir SQL veritabanı ya da SQL yönetilen örneği yapılandırabilirsiniz.
+Bu tür bir hata iletisi şöyle görünür: "geçersiz nesne adı ' catalog.catalog_properties '." Bu durumda, zaten SSSıSDB adlı bir veritabanınız var, ancak SSIS IR tarafından oluşturulmamış veya veritabanı, son SSIS IR sağlama hatalarından kaynaklanan geçersiz bir durumda. Var olan veritabanını SSSıSDB adıyla bırakabilir veya IR için yeni bir SQL veritabanı ya da SQL yönetilen örneği yapılandırabilirsiniz.
 
 ## <a name="custom-setup-issues"></a>Özel Kurulum sorunları
 
@@ -192,4 +192,4 @@ Azure-SSIS IR düzenli aralıklarla otomatik olarak güncelleştirilir. Yükselt
 
 ### <a name="publicipnotusableduringupgrade"></a>Publicıpnotusableduringupgrade
 
-Kendi statik genel IP adreslerinizi getirmek istediğinizde, iki genel IP adresi sağlanmalıdır. Bunlardan biri, IR düğümlerini hemen oluşturmak için kullanılır ve IR 'nin yükseltilmesi sırasında başka bir tane kullanılır. Bu hata, diğer genel IP adresi yükseltme sırasında kullanılabilir olmadığında ortaya çıkabilir. Olası nedenler için lütfen [ınvalidpublicıpbelirtilen](#InvalidPublicIPSpecified) bölümüne bakın.
+Kendi statik genel IP adreslerinizi getirmek istediğinizde, iki genel IP adresi sağlanmalıdır. Bunlardan biri, IR düğümlerini hemen oluşturmak için kullanılır ve IR 'nin yükseltilmesi sırasında başka bir tane kullanılır. Bu hata, diğer genel IP adresi yükseltme sırasında kullanılabilir olmadığında ortaya çıkabilir. Olası nedenler için lütfen  [ınvalidpublicıpbelirtilen](#InvalidPublicIPSpecified) bölümüne bakın.

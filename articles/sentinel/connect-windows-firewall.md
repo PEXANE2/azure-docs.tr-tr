@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/05/2020
 ms.author: yelevin
 ms.openlocfilehash: 5518da7d22d14de105c07e88b14e94d4b184269b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90883818"
 ---
 # <a name="connect-windows-defender-firewall-with-advanced-security-to-azure-sentinel"></a>Gelişmiş Güvenlik Özellikli Windows Defender güvenlik duvarı 'Nı Azure Sentinel 'e bağlama
@@ -33,7 +33,7 @@ ms.locfileid: "90883818"
 >
 > - Azure Güvenlik Merkezi 'nden Azure Defender uyarıları zaten Azure Sentinel çalışma alanına toplanmışsa, bu bağlayıcı aracılığıyla Windows Güvenlik Duvarı çözümünü etkinleştirmeniz gerekmez. Ancak, bunu etkinleştirirseniz yinelenen verilere neden olmaz. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - İzlemek istediğiniz makinelerin bağlı olduğu çalışma alanı üzerinde okuma ve yazma izinlerinizin olması gerekir.
 

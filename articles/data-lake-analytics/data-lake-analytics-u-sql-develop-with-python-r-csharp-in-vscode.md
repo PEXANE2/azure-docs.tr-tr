@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/22/2017
 ms.custom: devx-track-python
 ms.openlocfilehash: 673c8db0b7c6d3d8658d2d3b6cfd7e00f3d7d986
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87876215"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>Visual Studio Code Azure Data Lake Analytics Için Python, R ve C# ile U-SQL geliştirme
@@ -124,7 +124,7 @@ ADL hesabınız için Python ve R uzantıları derlemelerini kaydettirin.
 5. **Usql** dosyasına sağ tıklayın, **betiği derle** veya işi çalışan iş **Gönder** ' e tıklayabilirsiniz.
 
 ## <a name="develop-c-file"></a>C# dosyası geliştirme
-Arka plan kod dosyası, tek bir U-SQL betiği ile ilişkili bir C# dosyasıdır. Arka plan kod dosyasında UDO, UDA, UDT ve UDF için adanmış bir komut dosyası tanımlayabilirsiniz. UıDO, UDA, UDT ve UDF, önce derlemeyi kaydetmeden doğrudan betikte kullanılabilir. Arka plan kod dosyası, eşleme U-SQL betik dosyası ile aynı klasöre konur. Betik xxx. usql olarak adlandırılmışsa, arka plan kodu xxx.usql.cs olarak adlandırılır. Arka plan kod dosyasını el ile silerseniz, arka plan kod özelliği, ilişkili U-SQL betiği için devre dışıdır. U-SQL betiği için müşteri kodu yazma hakkında daha fazla bilgi için, bkz. [u-SQL Için özel kod yazma ve kullanma: Kullanıcı tanımlı işlevler]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/).
+Arka plan kod dosyası, tek bir U-SQL betiği ile ilişkili bir C# dosyasıdır. Arka plan kod dosyasında UDO, UDA, UDT ve UDF için adanmış bir komut dosyası tanımlayabilirsiniz. UıDO, UDA, UDT ve UDF, önce derlemeyi kaydetmeden doğrudan betikte kullanılabilir. Arka plan kod dosyası, eşleme U-SQL betik dosyası ile aynı klasöre konur. Betik xxx. usql olarak adlandırılmışsa, arka plan kodu xxx.usql.cs olarak adlandırılır. Arka plan kod dosyasını el ile silerseniz, arka plan kod özelliği, ilişkili U-SQL betiği için devre dışıdır. U-SQL betiği için müşteri kodu yazma hakkında daha fazla bilgi için, bkz. [u-SQL Için özel kod yazma ve kullanma: User-Defined işlevleri]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/).
 
 1. Çalışma alanınızdaki **yeni dosya** ' ya tıklayın.
 2. Kodunuzu U-SQL dosyasına yazın. Aşağıda bir kod örneği verilmiştir.

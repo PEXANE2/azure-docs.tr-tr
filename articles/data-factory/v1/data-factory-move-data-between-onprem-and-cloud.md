@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 7f07f08cd320d94495403b0f5ae65d60d8dc93b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84195990"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Veri Yönetimi ağ geçidi ile şirket içi kaynaklar ve bulut arasında veri taşıma
@@ -96,7 +96,7 @@ Bu adımda, **ADFTutorialOnPremDF**adlı bir Azure Data Factory örneği oluştu
    > [!NOTE]
    > Internet Explorer veya Microsoft ClickOnce uyumlu bir Web tarayıcısı kullanın.
    >
-   > Chrome kullanıyorsanız, [Chrome web mağazasına](https://chrome.google.com/webstore/) gidin, “ClickOnce” araması yapın, ClickOnce uzantılarından birini seçin ve yükleyin.
+   > Chrome kullanıyorsanız [Chrome Web deposuna](https://chrome.google.com/webstore/)gidin, "ClickOnce" anahtar sözcüğü ile arama yapın, ClickOnce uzantılarından birini seçin ve yükleyebilirsiniz.
    >
    > Firefox için aynısını yapın (eklenti yüklemesi). Araç çubuğunda **menüyü aç** düğmesine (sağ üst köşedeki**üç yatay çizgi** ) tıklayın, **Eklentiler**' e tıklayın, "ClickOnce" anahtar sözcüğü ile arama yapın, ClickOnce uzantılarından birini seçin ve yüklemeyi yapın.    
    >

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
 ms.openlocfilehash: 90d54a8ded99dd8ab43aed688036add6aede20ab
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86134831"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>çok katmanlı Citrix XenApp ve XenDesktop dağıtımı için olağanüstü durum kurtarmayı ayarlama
@@ -56,9 +56,9 @@ Bu makalenin amacı doğrultusunda, DR 'yi kurmak için vSphere 6,0/System Cente
 
 **Senaryo** | **İkincil siteye** | **Azure 'a**
 --- | --- | ---
-**Hyper-V** | Kapsamda değil | Yes
-**VMware** | Kapsamda değil | Yes
-**Fiziksel sunucu** | Kapsamda değil | Yes
+**Hyper-V** | Kapsamda değil | Evet
+**VMware** | Kapsamda değil | Evet
+**Fiziksel sunucu** | Kapsamda değil | Evet
 
 ### <a name="versions"></a>Sürümler
 Müşteriler, XenApp bileşenlerini Hyper-V veya VMware üzerinde çalışan sanal makineler olarak veya fiziksel sunucu olarak dağıtabilir. Azure Site Recovery, hem fiziksel hem de sanal dağıtımları Azure ile koruyabilir.

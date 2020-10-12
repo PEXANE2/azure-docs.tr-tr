@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 829a82cb94e5c2a7e7cbc9190047c368299612cd
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90052758"
 ---
 # <a name="features-and-licenses-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication yönelik özellikler ve lisanslar
@@ -41,7 +41,7 @@ Azure Multi-Factor Authentication, kuruluşunuzun ihtiyaçlarına bağlı olarak
 
 Aşağıdaki tabloda, çeşitli Azure Multi-Factor Authentication sürümlerinde kullanılabilen özelliklerin bir listesi verilmiştir. Kullanıcı kimlik doğrulamasının güvenliğini sağlamak için gereksinimlerinizi planlayın, ardından hangi yaklaşımın bu gereksinimleri karşıladığını saptayın. Örneğin, Azure AD Ücretsiz Azure Multi-Factor Authentication sağlayan güvenlik varsayılanlarını sağladığından, telefon araması veya SMS değil yalnızca mobil kimlik doğrulayıcı uygulaması kimlik doğrulama istemi için kullanılabilir. Mobil kimlik doğrulama uygulamasının bir kullanıcının kişisel cihazında yüklü olduğundan emin değilseniz bu yaklaşım bir sınırlama olabilir.
 
-| Öne çıkan özelliği | Azure AD Ücretsiz-güvenlik Varsayılanları | Azure AD Ücretsiz-Azure AD Genel yöneticileri | Microsoft 365 uygulamaları | Azure AD Premium P1 veya P2 |
+| Özellik | Azure AD Ücretsiz-güvenlik Varsayılanları | Azure AD Ücretsiz-Azure AD Genel yöneticileri | Microsoft 365 uygulamaları | Azure AD Premium P1 veya P2 |
 | --- |:---:|:---:|:---:|:---:|
 | MFA ile Azure AD kiracı yönetici hesaplarını koruma | ● | ● (Yalnızca*Azure AD Genel yönetici* hesapları) | ● | ● |
 | İkinci bir faktör olarak mobil uygulama | ● | ● | ● | ● |

@@ -16,10 +16,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 019327436eaf2186e23068a5b0a1ac4b21b9fbe7
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90055172"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Hesapları Azure AD ile paylaşma
@@ -69,7 +69,7 @@ Hesap paylaşımını etkinleştiren Azure AD özellikleri şunlardır:
 Bir hesabı paylaşmak üzere Azure AD 'yi kullanmak için şunları yapmanız gerekir:
 
 * Uygulama uygulaması [Galerisi](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory) veya [özel uygulama](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/) ekleme
-* Uygulamayı parola çoklu oturum açma (SSO) için yapılandırma
+* Uygulamayı parola tek Sign-On (SSO) için yapılandırma
 * [Grup tabanlı atamayı](groups-saasapps.md) kullanın ve paylaşılan bir kimlik bilgisi girme seçeneğini belirleyin
 
 Ayrıca, Multi-Factor Authentication (MFA) ile paylaşılan hesabınızı daha güvenli hale getirebilirsiniz ( [Azure AD ile uygulamaların güvenliğini sağlama](../authentication/concept-mfa-howitworks.md)hakkında daha fazla bilgi edinin) ve [Azure AD self servis](groups-self-service-management.md) Grup Yönetimi 'ni kullanarak uygulamaya kimlerin erişebileceğini yönetme yeteneği atayabilirsiniz.

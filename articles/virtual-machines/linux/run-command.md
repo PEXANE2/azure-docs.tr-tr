@@ -9,17 +9,17 @@ ms.date: 04/26/2019
 ms.topic: how-to
 manager: carmonm
 ms.openlocfilehash: 7e8ccc832cdf12176cd88cce0157c08d8bf92507
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87372595"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>Run komutunu kullanarak Linux sanal makinenizde kabuk betikleri çalıştırma
 
 Çalıştır komutu özelliği, bir Azure Linux VM 'de kabuk betikleri çalıştırmak için sanal makine (VM) aracısını kullanır. Bu betikleri, genel makine veya uygulama yönetimi için kullanabilirsiniz. VM erişimi ve ağ sorunlarını hızla tanılamanıza ve düzeltmenize ve VM 'yi iyi bir duruma almanıza yardımcı olabilirler.
 
-## <a name="benefits"></a>Avantajlar
+## <a name="benefits"></a>Yararları
 
 Sanal makinelerinize birden çok şekilde erişebilirsiniz. Çalıştır komutu, sanal makinelerinizde VM aracısını kullanarak uzaktan betikleri çalıştırabilir. Linux VM 'Leri için Azure portal, [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)veya [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) aracılığıyla Çalıştır komutunu kullanın.
 

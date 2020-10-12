@@ -12,10 +12,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
 ms.openlocfilehash: 3106e5a640ed66828558078e6986979ad7195450
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85386224"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure Izleyici ile Azure AD B2C izleme
@@ -30,7 +30,7 @@ Günlük olaylarını şu şekilde yönlendirebilirsiniz:
 
 ![Azure İzleyici](./media/azure-monitor/azure-monitor-flow.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için, Azure PowerShell modülünü kullanarak bir Azure Resource Manager şablonu dağıtırsınız.
 
@@ -84,8 +84,8 @@ Azure AD kiracınızı ( **Müşteri**) eklemek için aşağıdaki bilgilerle te
 
 Azure Resource Manager şablonu ve parametre dosyalarını indirin:
 
-- [ÜzerindergDelegatedResourceManagement.js](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
-- [ÜzerindergDelegatedResourceManagement.parameters.js](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
+- [ ÜzerindergDelegatedResourceManagement.js](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
+- [ ÜzerindergDelegatedResourceManagement.parameters.js](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
 
 Daha sonra, Parameters dosyasını daha önce kaydettiğiniz değerlerle güncelleştirin. Aşağıdaki JSON kod parçacığında bir Azure Resource Manager şablon parametreleri dosyası örneği gösterilmektedir. İçin `authorizations.value.roleDefinitionId` , *katkıda bulunan rolü*için [yerleşik rol](../role-based-access-control/built-in-roles.md) değerini kullanın `b24988ac-6180-42a0-ab88-20f7382dd24c` .
 
@@ -193,7 +193,7 @@ Parameters              :
 
 Şablonu dağıttıktan sonra, kaynak projeksiyonunun tamamlanması birkaç dakika sürebilir. Aboneliği seçmek için bir sonraki bölüme geçmeden önce birkaç dakika beklemeniz gerekebilir (genellikle beşten fazla olmayan).
 
-## <a name="select-your-subscription"></a>Aboneliğinizi seçme
+## <a name="select-your-subscription"></a>Aboneliğinizi seçin
 
 Şablonu dağıttıktan ve kaynak projeksiyonunun tamamlanmasını birkaç dakika beklemişseniz, aboneliğinizi aşağıdaki adımlarla Azure AD B2C dizininizle ilişkilendirin.
 
@@ -223,7 +223,7 @@ Azure portal [Tanılama ayarları oluşturmaya](../active-directory/reports-moni
 
 Azure AD B2C etkinlik günlüklerinin izleme ayarlarını yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. **Azure Active Directory** seçin
 1. **İzleme** bölümünde **Tanılama ayarları**'nı seçin.
@@ -241,7 +241,7 @@ Azure AD B2C etkinlik günlüklerinin izleme ayarlarını yapılandırmak için:
     | Log Analytics’e gönderme | Çalışma alanının adı. |
 
 1. **Auditlogs** ve **signınlogs**' u seçin.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

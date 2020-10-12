@@ -6,10 +6,10 @@ ms.date: 08/01/2019
 ms.topic: conceptual
 ms.custom: devx-track-java
 ms.openlocfilehash: 6a596eff70bfc20b5a6752ef47398bd14d527c97
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90973325"
 ---
 # <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>IntelliJ FIKRINI kullanarak ARM şablonları oluşturma ve dağıtma
@@ -22,7 +22,7 @@ IntelliJ FIKRINI kullanarak Azure 'a bir Azure Resource Manager (ARM) şablonu d
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 

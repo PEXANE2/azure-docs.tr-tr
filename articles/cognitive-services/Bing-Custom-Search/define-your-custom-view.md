@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.openlocfilehash: fa518900b05ba552cb066fbf55e4dbeaa6c681e2
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86183214"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Bing Özel Arama deneyiminizi yapılandırın
@@ -114,7 +114,7 @@ Görüntü ve video aramalarında süper artırma, artırma ve indirgeme kullan�
 
 ## <a name="pin-slices-to-the-top-of-search-results"></a>Dilimleri arama sonuçlarının en üstüne sabitle
 
-Portal Ayrıca, **sabitlenmiş** sekmeyi kullanarak belirli arama koşullarına ait URL 'leri arama sonuçlarının üst kısmına sabitlemenizi sağlar. en üstteki sonuç olarak görünecek Web sayfasını belirtmek IÇIN bir URL ve sorgu girin. Arama sorgusu başına en fazla bir Web sayfası sabitleyebilir ve aramalarda yalnızca dizinli Web sayfaları görüntülenecektir. Görüntü veya video aramaları için, sabitleme sonuçları kullanılamaz.
+Portal, **sabitlenmiş** sekmeyi kullanarak, belirli arama koşullarına ait URL 'leri arama sonuçlarının üst kısmına sabitlemenizi de sağlar. En üstteki sonuç olarak görünecek Web sayfasını belirtmek için bir URL ve sorgu girin. Arama sorgusu başına en fazla bir Web sayfası sabitleyebilir ve aramalarda yalnızca dizinli Web sayfaları görüntülenecektir. Görüntü veya video aramaları için, sabitleme sonuçları kullanılamaz.
 
 Bir Web sayfasını en üste iki şekilde sabitleyebilir:
 

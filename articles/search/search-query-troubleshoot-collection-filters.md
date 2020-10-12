@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 3050f701c11773207aa6054d4d08d908d87b2ce7
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88932075"
 ---
 # <a name="troubleshooting-odata-collection-filters-in-azure-cognitive-search"></a>Azure Bilişsel Arama OData koleksiyon filtreleri sorunlarını giderme
@@ -171,10 +171,10 @@ Ancak, bu tür karşılaştırma ifadelerinin lambda ifadesinin içinde daha kar
 
     Bu ifadeye izin verildiğinde, koşullar örtüştiğinden yararlı değildir:
     - `ratings/any(r: r ne 5 or r gt 7)`
-  - ,,, Veya içeren basit karşılaştırma ifadeleri `eq` `lt` `le` `gt` `ge` ile birleştirilebilir `and` / `or` . Örnek:
+  - ,,, Veya içeren basit karşılaştırma ifadeleri `eq` `lt` `le` `gt` `ge` ile birleştirilebilir `and` / `or` . Örneğin:
     - `ratings/any(r: r gt 2 and r le 5)`
     - `ratings/any(r: r le 5 or r gt 7)`
-  - İle birleştirilen Karşılaştırma ifadeleri `and` (yarışmalar) kullanılarak daha da birleştirilebilir `or` . Bu form, "ayırt edici[normal form](https://en.wikipedia.org/wiki/Disjunctive_normal_form)" (DNF) olarak Boole mantığındaki bilinmektedir. Örnek:
+  - İle birleştirilen Karşılaştırma ifadeleri `and` (yarışmalar) kullanılarak daha da birleştirilebilir `or` . Bu form, "ayırt edici[normal form](https://en.wikipedia.org/wiki/Disjunctive_normal_form)" (DNF) olarak Boole mantığındaki bilinmektedir. Örneğin:
     - `ratings/any(r: (r gt 2 and r le 5) or (r gt 7 and r lt 10))`
 - Kurallar `all` :
   - Basit eşitlik ifadeleri diğer ifadelerle tamamen birleştirilemez. Örneğin, bu ifadeye izin verilir:
@@ -185,10 +185,10 @@ Ancak, bu tür karşılaştırma ifadelerinin lambda ifadesinin içinde daha kar
 
     Bu ifadeye izin verildiğinde, koşullar örtüştiğinden yararlı değildir:
     - `ratings/all(r: r eq 5 and r le 7)`
-  - ,,, Veya içeren basit karşılaştırma ifadeleri `ne` `lt` `le` `gt` `ge` ile birleştirilebilir `and` / `or` . Örnek:
+  - ,,, Veya içeren basit karşılaştırma ifadeleri `ne` `lt` `le` `gt` `ge` ile birleştirilebilir `and` / `or` . Örneğin:
     - `ratings/all(r: r gt 2 and r le 5)`
     - `ratings/all(r: r le 5 or r gt 7)`
-  - İle birleştirilen Karşılaştırma ifadeleri `or` (ayırt edici), kullanılarak daha fazla birleştirilebilir `and` . Bu form, Boole mantığındaki "[Conjunnormal form](https://en.wikipedia.org/wiki/Conjunctive_normal_form)" (CNF) olarak bilinir. Örnek:
+  - İle birleştirilen Karşılaştırma ifadeleri `or` (ayırt edici), kullanılarak daha fazla birleştirilebilir `and` . Bu form, Boole mantığındaki "[Conjunnormal form](https://en.wikipedia.org/wiki/Conjunctive_normal_form)" (CNF) olarak bilinir. Örneğin:
     - `ratings/all(r: (r le 2 or gt 5) and (r lt 7 or r ge 10))`
 
 <a name="bkmk_complex"></a>

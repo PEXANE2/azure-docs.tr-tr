@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
 ms.openlocfilehash: 2961ffb21a1f34ca677e0aede5170689f4e38dca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84267966"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Tahmine dayalı bakım çözümleri için Azure AI Kılavuzu
@@ -43,7 +43,7 @@ BDM içeriği okuyucunun önceki bir veri bilimi bilgisine sahip olmasını bekl
 
 İşletmeler, büyük yatırımların geri dönmesini sağlamak üzere yoğun verimlilik ve kullanım açısından kritik bir ekipman gerektirir. Bu varlıklar uçak altyapılarından, türlerden, yükselmcilere veya endüstriyel chil'e kadar değişebilir. bu maliyet, milyonlarca aşağı doğru photobers, kahve makineleri veya su coolers gibi gündelik gereçilere kadar ücretlendirilir.
 - Varsayılan olarak, çoğu işletme, parçaların değiştirildiği ve başarısız olduğu durumlarda _Düzeltme bakımını_kullanır. Düzeltici bakım, parçaların tamamen kullanılmasını sağlar (Bu nedenle, bileşen ömrünü boşa almaya gerek kalmaz), ancak iş kapalı kalma süresi, işgücü ve zamanlanmamış bakım gereksinimleri (kapalı saatler veya uygun olmayan konumlar).
-- Bir sonraki düzeyde, işletmeler, bir bölüm için yararlı ömrü tespit ettikleri ve bir hatadan önce BT 'nin yerini alacak veya yerine geçecek şekilde _bakım_yapma alıştırması sağlar. Önleyici bakım zamanlanmamış ve çok önemli hatalardan kaçınır. Ancak, zamanlanan kapalı kalma süresi, bileşenin kullanım ömrü boyunca kullanılması ve işgücü hala devam etmektedir.
+- Bir sonraki düzeyde, işletmeler, bir bölüm için yararlı ömrü tespit ettikleri ve bir hatadan önce BT 'nin yerini alacak veya yerine geçecek şekilde  _bakım_yapma alıştırması sağlar. Önleyici bakım zamanlanmamış ve çok önemli hatalardan kaçınır. Ancak, zamanlanan kapalı kalma süresi, bileşenin kullanım ömrü boyunca kullanılması ve işgücü hala devam etmektedir.
 - Tahmine _dayalı bakımın_ hedefi, bileşenlerin _yalnızca yerinde_ değiştirilmesini etkinleştirerek, düzeltici ve önleyici bakım arasındaki dengeyi en uygun hale getirmektir. Bu yaklaşım yalnızca bir hataya yaklaştıklarında bu bileşenlerin yerini alır. Bileşen kullanım alanlarını genişleterek (önleyici bakım ile karşılaştırıldığında) ve zamanlanmamış bakım ve işgücü maliyetlerini azaltarak (düzeltici bakımda), işletmeler maliyet tasarrufu ve rekabet avantajları elde edebilir.
 
 ## <a name="business-problems-in-pdm"></a>PdM 'de iş sorunları
@@ -114,7 +114,7 @@ Tüm Öğrenlerin başarısı (a), ne kadar taöğretmekte olduğunu ve (b) öğ
 
 ### <a name="relevant-data"></a>İlgili veriler
 
-İlk olarak, verilerin _sorunla ilgili_olması gerekir. Yukarıda açıklanan _tekerlek hata_ kullanım durumunu göz önünde bulundurun. eğitim verileri, tekerlek işlemleriyle ilgili özellikler içermelidir. Sorun, _görmeyebilir sisteminin_başarısızlığını tahmin etmeye çalışıyorsa eğitim verilerinin, görmeyebilir sisteminin tüm farklı bileşenlerini kapsayacak olması gerekir. İlk durum belirli bir bileşeni hedefler, ikinci durum ise daha büyük bir alt sistem başarısızlığını hedefler. İkincisi daha fazla dağınık veriye sahip olduğundan, genel öneri, daha büyük alt sistemler yerine belirli bileşenler hakkında tahmin sistemleri tasarlayacaktır. Etki alanı uzmanı (tahmine [dayalı bakım Için uygun sorunları](#qualifying-problems-for-predictive-maintenance)gör) analizin için en ilgili veri alt kümelerini seçmeye yardımcı olmalıdır. İlgili veri kaynakları, tahmine [dayalı bakım Için veri hazırlama konusunda](#data-preparation-for-predictive-maintenance)daha ayrıntılı olarak ele alınmıştır.
+İlk olarak, verilerin _sorunla ilgili_olması gerekir. Yukarıda açıklanan _tekerlek hata_ kullanım durumunu göz önünde bulundurun. eğitim verileri, tekerlek işlemleriyle ilgili özellikler içermelidir. Sorun,  _görmeyebilir sisteminin_başarısızlığını tahmin etmeye çalışıyorsa eğitim verilerinin, görmeyebilir sisteminin tüm farklı bileşenlerini kapsayacak olması gerekir. İlk durum belirli bir bileşeni hedefler, ikinci durum ise daha büyük bir alt sistem başarısızlığını hedefler. İkincisi daha fazla dağınık veriye sahip olduğundan, genel öneri, daha büyük alt sistemler yerine belirli bileşenler hakkında tahmin sistemleri tasarlayacaktır. Etki alanı uzmanı (tahmine [dayalı bakım Için uygun sorunları](#qualifying-problems-for-predictive-maintenance)gör) analizin için en ilgili veri alt kümelerini seçmeye yardımcı olmalıdır. İlgili veri kaynakları, tahmine [dayalı bakım Için veri hazırlama konusunda](#data-preparation-for-predictive-maintenance)daha ayrıntılı olarak ele alınmıştır.
 
 ### <a name="sufficient-data"></a>Yeterli veri
 Genellikle hata geçmiş verileriyle ilgili olarak iki soru istenir: (1) "bir modeli eğitmek için kaç hata olayı gerekir?" (2) "kaç kayıt" yeterince "kabul edilir?" Kesin yanıt yoktur, ancak yalnızca Thumb kuralları. (1) için, daha fazla hata olayı sayısı, model daha iyidir. (2) için, hata olaylarının tam sayısı, çözülen sorunun verilerine ve içeriğine bağlıdır. Ancak çevir tarafında, bir makine çok sık başarısız olursa, iş bunu değiştirir ve bu da hata örneklerini azaltır. Burada, etki alanı uzmanından kılavuzluk önem taşımaktadır. Ancak, _nadir olay_sorunuyla ilgili olarak bu yöntemde olan yöntemler vardır. Bunlar, [imledengelenmiş verileri işleme](#handling-imbalanced-data)bölümünde ele alınmıştır.
@@ -153,7 +153,7 @@ Statik özellikler, ekipman hakkındaki meta verilerlerdir. Ekipman marka, model
 
 [Örnek PDM kullanım örnekleri](#sample-pdm-use-cases) için ilgili verilerin örnekleri aşağıda verilmiştir:
 
-| Kullanım örneği | İlgili verilerin örnekleri |
+| Kullanım Örneği | İlgili verilerin örnekleri |
 |:---------|---------------------------|
 |_Uçuş gecikmesi ve iptalleri_ | Uçuş ve sayfa günlükleri biçiminde uçuş rotası bilgileri. Uçuş BAI verileri, ayrılma/varış tarihi, zaman, Havaalanı, layovers vb. yönlendirme ayrıntılarını içerir. Sayfa günlüğü, bir dizi hata ve bir hata ve bakım kodu içerir.|
 |_Airi motoru bölüm hatası_ | Çeşitli parçaların koşulu hakkında bilgi sağlayan uçak içindeki sensörlerden toplanan veriler. Bakım kayıtları, bileşen hatalarının ne zaman oluştuğunu ve ne zaman değiştirildiğini belirlemesine yardımcı olur.|
@@ -231,7 +231,7 @@ Bir varlığın etiketlendiği her kayıt için, _w-<sub>k</sub> _ boyutundaki b
 
 Şimdiye kadar tartışılan veri hazırlama çabaları aşağıda gösterildiği gibi verilerin düzenlenmesine neden olmalıdır. Eğitim, test ve doğrulama verileri bu mantıksal şemaya sahip olmalıdır (Bu örnek gün cinsinden saati gösterir).
 
-| Varlık KIMLIĞI | Saat | \<Feature Columns> | Etiketle |
+| Varlık KIMLIĞI | Süre | \<Feature Columns> | Etiketle |
 | ---- | ---- | --- | --- |
 | A123 |Gün 1 | . . . | . |
 | A123 |Gün 2 | . . . | . |
@@ -362,7 +362,7 @@ Birçok PdM sorunu, bir sınıfın diğer sınıf veya sınıflarla karşılaşt
 
 Veride bir sınıf dengesizliği sayesinde, çoğu standart öğrenme algoritmalarının performansı tehlikeye atılırsa, bu da genel hata oranını en aza indirmektir. %99 negatif ve %1 pozitif örnek içeren bir veri kümesi için, bir model tüm örnekleri negatif olarak etiketleyerek %99 kesinliğini sağlamak üzere gösterilebilir. Ancak model tüm olumlu örnekleri yanlış sınıflandırır; doğruluk yüksek olsa da, algoritma kullanışlı bir yöntem değildir. Sonuç olarak, _hata oranına ilişkin genel doğruluk_ gibi geleneksel değerlendirme ölçümleri, imdengeli öğrenme için yetersizdir. İmdengeli veri kümeleriyle birlikte çalışırken model değerlendirmesi için diğer ölçümler kullanılır:
 - Duyarlık
-- Geri Çağırma
+- Geri çağırma
 - F1 puanları
 - Maliyet ayarlandı ROC (alıcı işletim özellikleri)
 
@@ -426,7 +426,7 @@ Bu kılavuzun son bölümü, Azure 'da uygulanan PdM çözüm şablonlarının, 
 | # | Başlık | Açıklama |
 |--:|:------|-------------|
 | 2 | [Azure tahmine dayalı bakım çözüm şablonu](https://github.com/Azure/AI-PredictiveMaintenance) | Azure ML modelleme ve IoT uzaktan izleme bağlamında tahmine dayalı bakım senaryolarını destekleyebilen tam bir Azure altyapısını gösteren açık kaynaklı bir çözüm şablonu. |
-| 3 | [Tahmine Dayalı Bakım için Derin Öğrenme](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | Tahmine dayalı bakım için LSTM (uzun kısa süreli bellek) ağları (yinelenen bir sinir Networks sınıfı) kullanarak Azure Not defteri 'nin [Bu örnekteki bir blog gönderisine](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance)sahip olması.|
+| 3 | [Tahmine Dayalı Bakım için Derin Öğrenme](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | [Bu örnekteki bir blog gönderisine](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance)sahip, tahmine dayalı bakım için Lstm (uzun Short-Term belleği) ağları (yinelenen sinir Networks sınıfı) kullanan bir demo çözümü olan Azure Not defteri.|
 | 4 | [Aerospace için Azure tahmine dayalı bakım](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | Airustmaintenance için Azure ML v 1.0 'ı temel alan ilk PdM çözüm şablonlarından biri. Bu kılavuz bu projeden kaynaklı. |
 | 5 | [IoT Edge için Azure AI araç seti](https://github.com/Azure/ai-toolkit-iot-edge) | TensorFlow kullanarak IoT Edge AI araç seti, Azure IoT Edge uyumlu Docker kapsayıcılarındaki derin öğrenme modellerini paketler ve bu modelleri REST API 'Ler olarak kullanıma sunar.
 | 6 | [Azure IoT tahmine dayalı bakım](https://github.com/Azure/azure-iot-predictive-maintenance) | Azure IoT Suite BILGISAYARLARı-önceden yapılandırılmış çözüm. IoT Suite ile airustmaintenance PdM şablonu. Aynı projeyle ilgili [başka bir belge](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-overview) ve [izlenecek yol](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-walkthrough) . |

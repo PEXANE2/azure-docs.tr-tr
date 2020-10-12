@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: 5d6273cbef1664984d466fb15c7f02ca505b18e2
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88184558"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>StorSimple Veri Yöneticisi hizmetini Azure portal yönetme
@@ -104,7 +104,7 @@ Bir iş tanımı oluşturmak için aşağıdaki adımları gerçekleştirin.
 
    4. Veri dönüştürme hizmeti yalnızca Azure 'a gönderilen verilerin en son anlık görüntüsünde çalışır.
 
-   5. **Tamam**’a tıklayın.
+   5. **Tamam**'a tıklayın.
 
       ![Kaynak veri deposu yapılandırma 2](./media/storsimple-data-manager-ui/create-job-definition-8.png)
 
@@ -121,7 +121,7 @@ Bir iş tanımı oluşturmak için aşağıdaki adımları gerçekleştirin.
     
     1. Hedef **Hesap adındaki**açılan listeden hedef olarak oluşturduğunuz depoyu seçin.
 
-    2. Depolama türünü blob 'lar veya dosyalar olarak seçin. Dönüştürülen verilerin bulunduğu depolama kapsayıcısının adını belirtin. **Tamam**’a tıklayın.
+    2. Depolama türünü blob 'lar veya dosyalar olarak seçin. Dönüştürülen verilerin bulunduğu depolama kapsayıcısının adını belirtin. **Tamam**'a tıklayın.
 
         ![Hedef veri deposu depolama hesabını yapılandırma](./media/storsimple-data-manager-ui/create-job-definition-16.png)
 

@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 05/28/2020
 ms.author: egeaney
 ms.openlocfilehash: 63cfe7968ec88ed75dfe23e8a3d34ac2649f6776
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84307852"
 ---
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>Azure Key Vault ile müşteri tarafından yönetilen anahtarlar
@@ -87,7 +87,7 @@ Anahtar kasasından bir anahtar belirtmek için öncelikle anahtar içeren bir a
 
 ## <a name="update-the-key-version"></a>Anahtar sürümünü güncelleştirme
 
-Bir anahtarın yeni bir sürümünü oluşturduğunuzda, bilişsel hizmetler kaynağını yeni sürümü kullanacak şekilde güncelleştirin. Şu adımları uygulayın:
+Bir anahtarın yeni bir sürümünü oluşturduğunuzda, bilişsel hizmetler kaynağını yeni sürümü kullanacak şekilde güncelleştirin. Şu adımları izleyin:
 
 1. Bilişsel hizmetler kaynağınız ' ne gidin ve **şifreleme** ayarlarını görüntüleyin.
 1. Yeni anahtar sürümünün URI 'sini girin. Alternatif olarak, sürümü güncelleştirmek için anahtar kasasını ve anahtarı yeniden seçebilirsiniz.

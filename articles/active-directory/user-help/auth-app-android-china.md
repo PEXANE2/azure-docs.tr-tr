@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 05/20/2020
 ms.author: curtand
 ms.openlocfilehash: 795c68fc063d98bdee6ccf59dba6ee718dc92d03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84323034"
 ---
 # <a name="microsoft-authenticator-for-android-in-the-public-cloud-in-china"></a>Çin 'de Genel bulutta Android için Microsoft Authenticator
@@ -44,18 +44,18 @@ Bir Kullanıcı, uygulamayı kullanarak telefon oturum açma veya Multi-Factor A
 
 ## <a name="multi-factor-authentication-workaround"></a>Multi-Factor Authentication geçici çözümü
 
-Kullanıcılar, Multi-Factor Authentication için anında iletme bildirimleri kullanmak yerine, kendi kendi cihazlarındaki kimliklerini doğrulamak için kullanabilecekleri kimlik [doğrulama kodlarını almak üzere kimlik doğrulayıcı uygulamasını ayarlayabilir](multi-factor-authentication-setup-auth-app.md#set-up-the-microsoft-authenticator-app-to-use-verification-codes) . Bu doğrulama kodları 30 saniye için geçerlidir ve bunları kullanmak için, yöneticilerin, kiracının zaman tabanlı bir kerelik parola (TOTP) doğrulama kodlarını kullanarak doğrulama gerçekleştirmesini etkinleştirmesi gerekir.
+Kullanıcılar, Multi-Factor Authentication için anında iletme bildirimleri kullanmak yerine, kendi kendi cihazlarındaki kimliklerini doğrulamak için kullanabilecekleri kimlik [doğrulama kodlarını almak üzere kimlik doğrulayıcı uygulamasını ayarlayabilir](multi-factor-authentication-setup-auth-app.md#set-up-the-microsoft-authenticator-app-to-use-verification-codes) . Bu doğrulama kodları 30 saniye için geçerlidir ve bunları kullanmak için, yöneticilerin, zaman tabanlı One-Time parola (TOTP) doğrulama kodlarını kullanarak kimlik doğrulaması gerçekleştirmesi gerekir.
 
 ## <a name="availability"></a>Kullanılabilirlik
 
 Microsoft Authenticator özelliği | Çin 'de kullanılabilirlik
 ------------------------------- | ---------------------
-Anında iletme bildirimlerini kullanarak MFA kaydı | No
-Önceden var olan MFA hesabı anında iletme bildirimleri kullanılarak kimlik doğrulanıyor | No
-Önceden var olan MFA hesabı, bildirimler için el ile denetim gerçekleştiriliyor | Yes
-Yalnızca TOTP/doğrulama kodlarını kullanarak MFA kaydı/kimlik doğrulaması | Yes
-Telefonla oturum açma kaydı | No
-Anında iletme bildirimlerini kullanarak mevcut telefonda oturum açma | No
+Anında iletme bildirimlerini kullanarak MFA kaydı | Hayır
+Önceden var olan MFA hesabı anında iletme bildirimleri kullanılarak kimlik doğrulanıyor | Hayır
+Önceden var olan MFA hesabı, bildirimler için el ile denetim gerçekleştiriliyor | Evet
+Yalnızca TOTP/doğrulama kodlarını kullanarak MFA kaydı/kimlik doğrulaması | Evet
+Telefonla oturum açma kaydı | Hayır
+Anında iletme bildirimlerini kullanarak mevcut telefonda oturum açma | Hayır
 Kimlik doğrulama istekleri için el ile denetim gerçekleştirerek mevcut telefon oturum açma doğrulaması | Evet
 
 ## <a name="next-steps"></a>Sonraki adımlar

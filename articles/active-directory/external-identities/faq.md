@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 158caf3a6c4cc0efc2f89e18d065a0112b481ee9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274053"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B işbirliği SSS
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) işletmeden işletmeye (B2B) işbirliğiyle il
 Kesinlikle! [Bu özellik hakkında blog gönderimize](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/)bakın. Kuruluşunuzun oturum açma sayfasını özelleştirme hakkında daha fazla bilgi için bkz. [oturum açma ve erişim paneli sayfalarına Şirket markası ekleme](../fundamentals/customize-branding.md).
 
 ### <a name="can-b2b-collaboration-users-access-sharepoint-online-and-onedrive"></a>B2B işbirliği kullanıcılarına SharePoint Online ve OneDrive erişimi verebilir mi?
-Evet. Ancak, kişiler seçiciyi kullanarak SharePoint Online 'da mevcut Konuk kullanıcıları arama özelliği varsayılan olarak **kapalıdır** . Mevcut Konuk kullanıcıları arama seçeneğini açmak için **ShowPeoplePickerSuggestionsForGuestUsers** **olarak ayarlayın.** Bu ayarı kiracı düzeyinde ya da site koleksiyonu düzeyinde açabilirsiniz. Bu ayarı, set-SPOTenant ve set-SPOSite cmdlet 'lerini kullanarak değiştirebilirsiniz. Bu cmdlet 'lerle, Üyeler dizindeki tüm mevcut Konuk kullanıcıları arayabilir. Kiracı kapsamındaki değişiklikler zaten sağlanmış olan SharePoint Online sitelerini etkilemez.
+Evet. Ancak, kişiler seçiciyi kullanarak SharePoint Online 'da mevcut Konuk kullanıcıları arama özelliği varsayılan olarak **kapalıdır** . Mevcut Konuk kullanıcıları arama seçeneğini açmak için **ShowPeoplePickerSuggestionsForGuestUsers** **olarak ayarlayın.** Bu ayarı kiracı düzeyinde ya da site koleksiyonu düzeyinde açabilirsiniz. Bu ayarı, Set-SPOTenant ve Set-SPOSite cmdlet 'lerini kullanarak değiştirebilirsiniz. Bu cmdlet 'lerle, Üyeler dizindeki tüm mevcut Konuk kullanıcıları arayabilir. Kiracı kapsamındaki değişiklikler zaten sağlanmış olan SharePoint Online sitelerini etkilemez.
 
 ### <a name="is-the-csv-upload-feature-still-supported"></a>CSV karşıya yükleme özelliği hala destekleniyor mu?
 Evet. . Csv dosyasını karşıya yükleme özelliğini kullanma hakkında daha fazla bilgi için [Bu PowerShell örneğine](code-samples.md)bakın.

@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 5/11/2020
 ms.openlocfilehash: 8aae9a0ff3ffdbd4f6bc93db5c6f15dcb938080e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84196434"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Stream Analytics aramalar için başvuru verilerini kullanma
@@ -39,7 +39,7 @@ Başvuru verileri, blob adında belirtilen tarih/saatin artan sırada bir blob d
 
 Başvuru verilerinizi yapılandırmak için önce **başvuru verileri**türünde bir giriş oluşturmanız gerekir. Aşağıdaki tabloda, başvuru veri girişini açıklaması ile oluştururken sağlamanız gereken her özellik açıklanmaktadır:
 
-|**Özellik Adı**  |**Açıklama**  |
+|**Özellik adı**  |**Açıklama**  |
 |---------|---------|
 |Girdi Diğer Adı   | Bu girişe başvurmak için iş sorgusunda kullanılacak kolay bir ad.   |
 |Depolama Hesabı   | Bloblarınızın bulunduğu depolama hesabının adı. Stream Analytics Işiniz ile aynı abonelikte yer alıyorsa, açılır listeden seçim yapabilirsiniz.   |
@@ -98,7 +98,7 @@ SQL veritabanı başvuru verilerinizi yapılandırmak için önce **başvuru ver
 
 [Azure SQL yönetilen örneğini](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) , başvuru veri girişi olarak kullanabilirsiniz. [SQL yönetilen örneği 'nde genel uç noktasını yapılandırmanız](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) ve ardından Azure Stream Analytics aşağıdaki ayarları el ile yapılandırmanız gerekir. SQL Server çalıştıran bir veritabanı ile birlikte çalışan Azure sanal makinesi, aşağıdaki ayarları el ile yapılandırarak de desteklenir.
 
-|**Özellik Adı**|**Açıklama**  |
+|**Özellik adı**|**Açıklama**  |
 |---------|---------|
 |Girdi diğer adı|Bu girişe başvurmak için iş sorgusunda kullanılacak kolay bir ad.|
 |Abonelik|Aboneliğinizi seçin|

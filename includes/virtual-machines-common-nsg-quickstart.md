@@ -9,10 +9,10 @@ ms.date: 09/12/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: ec6cbcbc93fe87634c87caeb0041b75ec916a22f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67188341"
 ---
 Bir alt ağda veya VM ağı arabiriminde ağ filtresi oluşturarak Azure 'da bir bağlantı noktası Açarsınız veya bir uç nokta oluşturursunuz. Hem gelen hem de giden trafiği denetleyen, trafiği alan kaynağa bağlı bir ağ güvenlik grubundaki bu filtreleri yerleştirebilirsiniz.
@@ -21,7 +21,7 @@ Bu makaledeki örnekte, standart TCP bağlantı noktası 80 ' i kullanan bir ağ
 
 Standart TCP bağlantı noktası 80 üzerinde Web istekleri sunacak şekilde yapılandırılmış bir VM oluşturduktan sonra şunları yapabilirsiniz:
 
-1. Ağ güvenlik grubu oluşturun.
+1. Ağ güvenlik grubu oluşturma.
 
 2. Trafiğe izin veren bir gelen güvenlik kuralı oluşturun ve aşağıdaki ayarlara değerler atayın:
 

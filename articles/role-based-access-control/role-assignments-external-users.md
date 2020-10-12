@@ -17,17 +17,17 @@ ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
 ms.openlocfilehash: 870c9c91e285988cdc1fb294b3fc9b3270de7483
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85361913"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Azure portal kullanarak dış Konuk kullanıcılar için Azure rol atamaları ekleme veya kaldırma
 
 [Azure rol tabanlı erişim denetimi (Azure RBAC)](overview.md) , büyük kuruluşlar için daha iyi güvenlik yönetimine olanak sağlar ve ortamınızda belirli kaynaklara erişmesi gereken, ancak tüm altyapıya ya da faturalandırma ile ilgili kapsamların olması gerekmeyen dış ortak, satıcı veya freelancers ile çalışan küçük ve orta ölçekli işletmeler için daha iyi güvenlik yönetimi sağlar. Dış Konuk kullanıcılarıyla işbirliği yapmak için [Azure ACTIVE DIRECTORY B2B](../active-directory/b2b/what-is-b2b.md) ' deki özellikleri kullanabilir ve yalnızca konuk kullanıcıların ortamınızda ihtiyaç duyduğu izinleri vermek IÇIN Azure RBAC 'yi kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Rol atamaları eklemek veya kaldırmak için şunları yapmanız gerekir:
 
@@ -79,7 +79,7 @@ Azure RBAC 'de, erişim izni vermek için bir rol atarsınız. Konuk kullanıcı
 
 1. **Erişim denetimi (IAM)** öğesine tıklayın.
 
-    Aşağıdaki ekran görüntüsünde, bir kaynak grubu için erişim denetimi (ıAM) dikey penceresi örneği gösterilmektedir. Burada herhangi bir erişim denetimi değişikliği yaparsanız, bu değişiklikler yalnızca kaynak grubuna uygulanır.
+    Aşağıdaki ekran görüntüsünde bir kaynak grubuna ait örnek Erişim denetimi (IAM) dikey penceresi gösterilmiştir. Burada herhangi bir erişim denetimi değişikliği yaparsanız, bu değişiklikler yalnızca kaynak grubuna uygulanır.
 
     ![Kaynak grubu için erişim denetimi (ıAM) dikey penceresi](./media/role-assignments-external-users/access-control-resource-group.png)
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/16/2016
 ms.author: mimckitt
 ms.openlocfilehash: ac6fad8995d409c14008b8345e9e576b2403c799
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86131694"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Azure Resource Manager 'de sanal makineler için WinRM erişimi ayarlanıyor
@@ -93,7 +93,7 @@ $secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name
 ```
 
 ## <a name="step-5-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>5. Adım: VM oluştururken otomatik olarak imzalanan sertifika URL 'nize başvurma
-#### <a name="azure-resource-manager-templates"></a>Azure Resource Manager şablonları
+#### <a name="azure-resource-manager-templates"></a>Azure Resource Manager Şablonları
 Şablonlar aracılığıyla bir VM oluştururken, sertifikaya gizli diziler bölümünde ve winRM bölümünde şu şekilde başvurulur:
 
 ```json
@@ -153,7 +153,7 @@ Enable-PSRemoting -Force
 ```
 
 > [!NOTE]
-> Yukarıdaki işlem çalışmazsa WinRM hizmetinin çalıştığından emin olmanız gerekebilir. Bunu kullanarak şunları yapabilirsiniz`Get-Service WinRM`
+> Yukarıdaki işlem çalışmazsa WinRM hizmetinin çalıştığından emin olmanız gerekebilir. Bunu kullanarak şunları yapabilirsiniz `Get-Service WinRM`
 > 
 > 
 

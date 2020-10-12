@@ -9,10 +9,10 @@ ms.date: 06/29/2020
 ms.author: magoedte
 ms.custom: include file
 ms.openlocfilehash: aa7b997fe112be5d974d0e82597e786fa219e1f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85570121"
 ---
 #### <a name="process-automation"></a>Süreç otomasyonu
@@ -28,7 +28,7 @@ ms.locfileid: "85570121"
 | İş çalışma süresi, ücretsiz katman |her takvim ayında abonelik başına 500 dakika ||
 | Sandbox<sup>1</sup> başına izin verilen maksimum disk alanı miktarı |1 GB |Yalnızca Azure korumalı alanlar için geçerlidir.|
 | Bir korumalı alan<sup>1</sup> ' e verilen maksimum bellek miktarı |400 MB |Yalnızca Azure korumalı alanlar için geçerlidir.|
-| Sandbox başına izin verilen en fazla ağ yuvası sayısı<sup>1</sup> |1000 |Yalnızca Azure korumalı alanlar için geçerlidir.|
+| Sandbox başına izin verilen en fazla ağ yuvası sayısı<sup>1</sup> |1.000 |Yalnızca Azure korumalı alanlar için geçerlidir.|
 | Runbook başına izin verilen en fazla çalışma zamanı<sup>1</sup> |3 saat |Yalnızca Azure korumalı alanlar için geçerlidir.|
 | Bir abonelikteki en fazla Otomasyon hesabı sayısı |Sınır yok ||
 | Otomasyon hesabı başına en fazla karma çalışan grubu sayısı|4.000||

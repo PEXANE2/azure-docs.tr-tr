@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
 ms.openlocfilehash: 4535e6bf11f8c2abf20b1b323925c3fc3299d362
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90971781"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Logic Apps dağıtımını otomatikleştirmek için Azure Resource Manager şablonu oluşturma
@@ -121,7 +121,7 @@ Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileN
 
 | Parametreler | Gerekli | Açıklama |
 |------------|----------|-------------|
-| TemplateFile | Yes | Şablon dosyanızın dosya yolu |
+| TemplateFile | Evet | Şablon dosyanızın dosya yolu |
 | KeyVault | Hayır | Olası Anahtar Kasası değerlerini nasıl işleyeceğinizi açıklayan bir sabit listesi. Varsayılan değer: `None`. |
 ||||
 

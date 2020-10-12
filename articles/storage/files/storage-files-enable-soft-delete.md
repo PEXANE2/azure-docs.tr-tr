@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 services: storage
 ms.openlocfilehash: 2d2a000879a95f86a6cdda3324add5b692476eee
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88590124"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Azure dosya paylaşımlarında geçici silme özelliğini etkinleştirme
@@ -25,7 +25,7 @@ Aşağıdaki bölümlerde, var olan bir depolama hesabında Azure dosya paylaş�
 
 ## <a name="getting-started"></a>Başlarken
 
-1. [Azure portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Depolama hesabınıza gidin ve **Dosya hizmeti**altında **geçici silme** ' yi seçin.
 1. **Dosya paylaşma geçici silme**için **etkin** ' i seçin.
 1. **Dosya paylaşma saklama süresini gün olarak** seçin ve seçtiğiniz bir sayıyı girin.
@@ -68,13 +68,13 @@ Geçici olarak silinen bir dosya paylaşımının geri yüklenmesi için:
 
     Bu, şu anda **Silinmiş** durumdaki tüm paylaşımları görüntüler.
 
-    :::image type="content" source="media/storage-how-to-recover-deleted-account/undelete-file-share.png" alt-text="Durum sütunu, Ad sütununun yanındaki sütun silindi olarak ayarlandıysa, dosya paylaşımınız geçici olarak silinmiş durumda olur. Ve, belirtilen saklama süresinden sonra kalıcı olarak silinir.":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/undelete-file-share.png" alt-text="Depolama hesabı geçici silme ayarları bölmesinin ekran görüntüsü. Dosya paylaşımları bölümünü vurgulama, geçişi etkinleştirme, bekletme süresi ayarlama ve kaydetme. Bu, Depolama hesabınızdaki tüm dosya paylaşımları için geçici silme olanağı sağlar.":::
 
 1. Paylaşıma ve **silmeyi geri al**' ı seçtiğinizde, bu, paylaşımın geri yükleneceği
 
     Durumu **etkin**olarak geçiş yaptığından paylaşımın geri yüklendiğini doğrulayabilirsiniz.
 
-    :::image type="content" source="media/storage-how-to-recover-deleted-account/restored-file-share.png" alt-text="Durum sütunu, Ad sütununun yanındaki sütun etkin olarak ayarlanırsa, dosya paylaşımınız geri yüklendi.":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/restored-file-share.png" alt-text="Depolama hesabı geçici silme ayarları bölmesinin ekran görüntüsü. Dosya paylaşımları bölümünü vurgulama, geçişi etkinleştirme, bekletme süresi ayarlama ve kaydetme. Bu, Depolama hesabınızdaki tüm dosya paylaşımları için geçici silme olanağı sağlar.":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -95,7 +95,7 @@ Geçici silme kullanmayı durdurmak istiyorsanız veya bir dosya paylaşımını
 1. Dosya **paylaşımları altında** **dosya paylaşımları Için geçici silme** **devre dışı** seçeneğini belirleyin.
 1. Veri saklama ayarlarınızı onaylamak için **Kaydet** ' i seçin.
 
-    :::image type="content" source="media/storage-how-to-recover-deleted-account/disable-soft-delete-files.png" alt-text="Geçici silme devre dışı bırakıldığında, Depolama hesabınızdaki tüm dosya paylaşımlarını boş olarak hemen ve kalıcı olarak silebilirsiniz.":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/disable-soft-delete-files.png" alt-text="Depolama hesabı geçici silme ayarları bölmesinin ekran görüntüsü. Dosya paylaşımları bölümünü vurgulama, geçişi etkinleştirme, bekletme süresi ayarlama ve kaydetme. Bu, Depolama hesabınızdaki tüm dosya paylaşımları için geçici silme olanağı sağlar.":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

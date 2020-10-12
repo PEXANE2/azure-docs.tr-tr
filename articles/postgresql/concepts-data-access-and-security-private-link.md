@@ -7,13 +7,13 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 84c68125ab7e8256b8ca949a0f4b49c5ccd5162f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90884644"
 ---
-# <a name="private-link-for-azure-database-for-postgresql-single-server"></a>PostgreSQL için Azure veritabanı için özel bağlantı-tek sunucu
+# <a name="private-link-for-azure-database-for-postgresql-single-server"></a>PostgreSQL-Single sunucusu için Azure veritabanı için özel bağlantı
 
 Özel bağlantı, PostgreSQL için Azure veritabanı-tek sunucu için özel uç noktalar oluşturmanızı sağlar ve bu nedenle Azure hizmetlerini özel sanal ağınız (VNet) içinde sunar. Özel uç nokta, veritabanı sunucunuza VNet 'teki diğer kaynaklar gibi bağlanmak için kullanabileceğiniz özel bir IP 'yi gösterir.
 
@@ -57,7 +57,7 @@ Bu kurulumun sonunda, Azure VM yalnızca Batı ABD bölgesindeki PostgreSQL içi
 
 Özel bağlantıları etkinleştirmek için özel uç noktalar gereklidir. Bu işlem, aşağıdaki nasıl yapılır kılavuzlarından yararlanarak yapılabilir.
 
-* [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal)
+* [Azure portalındaki](https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal)
 * [CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-cli)
 
 ### <a name="approval-process"></a>Onay Işlemi
@@ -72,21 +72,21 @@ Ağ Yöneticisi özel uç noktayı (PE) oluşturduktan sonra, PostgreSQL Yöneti
 
 * Listeden tek bir PEC seçin.
 
-:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link.png" alt-text="onay bekleyen özel uç noktayı seçin":::
+:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link.png" alt-text="Özel uç nokta portalını seçin":::
 
 * PostgreSQL Sunucu Yöneticisi bir PEC 'i onaylamayı veya reddetmeyi seçebilir ve isteğe bağlı olarak kısa bir metin yanıtı ekleyebilir.
 
-:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link-message.png" alt-text="Özel uç nokta iletisini seçin":::
+:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link-message.png" alt-text="Özel uç nokta portalını seçin":::
 
 * Onay veya reddetme sonrasında, liste, yanıt metniyle birlikte uygun durumu yansıtır
 
-:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-approved-connection.png" alt-text="Özel uç nokta son durumunu seçin":::
+:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-approved-connection.png" alt-text="Özel uç nokta portalını seçin":::
 
 ## <a name="use-cases-of-private-link-for-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı için özel bağlantı kullanım durumları
 
 İstemciler aynı VNet 'ten özel uç noktaya, aynı bölgedeki eşlenmiş VNet 'e veya bölgeler arasında VNet-VNet bağlantısı aracılığıyla bağlanabilir. Ayrıca, istemciler ExpressRoute, özel eşleme veya VPN tüneli kullanarak şirket içinden bağlanabilir. Aşağıda, yaygın kullanım durumlarını gösteren basitleştirilmiş bir diyagram bulunur.
 
-:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-overview.png" alt-text="Özel uç noktaya genel bakış ' ı seçin":::
+:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-overview.png" alt-text="Özel uç nokta portalını seçin":::
 
 ### <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>Eşlenen sanal ağdaki (VNet) bir Azure VM 'den bağlanma
 [VNET eşlemesini](https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-powershell) , PostgreSQL Için Azure veritabanı 'na bağlantı kuracak şekilde yapılandırın-eşlenmiş VNET 'Teki BIR Azure VM 'den tek bir sunucu.

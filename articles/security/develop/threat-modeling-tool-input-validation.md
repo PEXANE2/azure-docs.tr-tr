@@ -17,10 +17,10 @@ ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3bb944badfbdffd703672f9e78619c70a148aae2
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89293362"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>Güvenlik çerçevesi: giriş doğrulaması | Karşı 
@@ -37,7 +37,7 @@ ms.locfileid: "89293362"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [XSLT güvenliği](https://msdn.microsoft.com/library/ms763800(v=vs.85).aspx), [XsltSettings. EnableScript özelliği](https://msdn.microsoft.com/library/system.xml.xsl.xsltsettings.enablescript.aspx) |
@@ -69,11 +69,11 @@ doc.setProperty("AllowXsltScript", false); // CORRECT. Setting to false disables
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [IE8 güvenlik bölümü V-kapsamlı koruma](https://docs.microsoft.com/archive/blogs/ie/ie8-security-part-v-comprehensive-protection)  |
-| **Adımlar** | <p>Kullanıcı denetlenebilir içerik içerebilen her sayfa için HTTP üstbilgisini kullanmanız gerekir `X-Content-Type-Options:nosniff` . Bu gereksinimle uyum sağlamak için, yalnızca Kullanıcı tarafından denetlenebilir içerik içerebilen sayfalar için gerekli üst bilgi sayfasını sayfaya göre ayarlayabilir veya uygulamadaki tüm sayfalar için küresel olarak ayarlayabilirsiniz.</p><p>Bir Web sunucusundan alınan her dosya türü, içeriğin yapısını (yani, görüntü, metin, uygulama vb.) açıklayan ilişkili bir [MIME türüne](https://en.wikipedia.org/wiki/Mime_type) ( *içerik türü*de denir) sahiptir.</p><p>X-Content-Type-Options üst bilgisi, geliştiricilerin içeriklerinin MIME önlenmesini belirtmelerine izin veren bir HTTP başlığıdır. Bu üstbilgi, MIME algılaması saldırılarını azaltmak için tasarlanmıştır. Internet Explorer 8 ' de (ıE8) Bu üst bilgi için destek eklendi</p><p>X-Content-Type-Options, yalnızca Internet Explorer 8 (ıE8) kullanıcıları tarafından faydalanır. Internet Explorer 'ın önceki sürümleri, şu anda X-Content-Type-Options üst bilgisine uymaz</p><p>Internet Explorer 8 (ve üzeri), bir MIME algılaması geri çevirme özelliği uygulamak için tek büyük tarayıcılardır. Diğer büyük tarayıcılar (Firefox, Safari, Chrome) benzer özellikler uygulayacağından, bu öneri bu tarayıcıların söz dizimini da içerecek şekilde güncelleştirilecektir</p>|
+| **Adımlar** | <p>Kullanıcı denetlenebilir içerik içerebilen her sayfa için HTTP üstbilgisini kullanmanız gerekir `X-Content-Type-Options:nosniff` . Bu gereksinimle uyum sağlamak için, yalnızca Kullanıcı tarafından denetlenebilir içerik içerebilen sayfalar için gerekli üst bilgi sayfasını sayfaya göre ayarlayabilir veya uygulamadaki tüm sayfalar için küresel olarak ayarlayabilirsiniz.</p><p>Bir Web sunucusundan alınan her dosya türü, içeriğin yapısını (yani, görüntü, metin, uygulama vb.) açıklayan ilişkili bir [MIME türüne](https://en.wikipedia.org/wiki/Mime_type) ( *içerik türü*de denir) sahiptir.</p><p>X-Content-Type-Options üst bilgisi, geliştiricilerin içeriklerinin MIME önlenmesini belirtmelerine izin veren bir HTTP başlığıdır. Bu üstbilgi MIME-Sniffing saldırılarını azaltmak için tasarlanmıştır. Internet Explorer 8 ' de (ıE8) Bu üst bilgi için destek eklendi</p><p>X-Content-Type-Options, yalnızca Internet Explorer 8 (ıE8) kullanıcıları tarafından faydalanır. Internet Explorer 'ın önceki sürümleri, şu anda X-Content-Type-Options üst bilgisine uymaz</p><p>Internet Explorer 8 (ve üzeri), bir MIME algılaması geri çevirme özelliği uygulamak için tek büyük tarayıcılardır. Diğer büyük tarayıcılar (Firefox, Safari, Chrome) benzer özellikler uygulayacağından, bu öneri bu tarayıcıların söz dizimini da içerecek şekilde güncelleştirilecektir</p>|
 
 ### <a name="example"></a>Örnek
 Gerekli üst bilgiyi uygulamadaki tüm sayfalar için genel olarak etkinleştirmek üzere aşağıdakilerden birini yapabilirsiniz: 
@@ -138,7 +138,7 @@ this.Response.Headers[""X-Content-Type-Options""] = ""nosniff"";
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [XML varlık genişletmesi](https://capec.mitre.org/data/definitions/197.html), [XML hizmet reddi saldırıları ve savunmaları](https://msdn.microsoft.com/magazine/ee335713.aspx), [MSXML güvenliğine genel bakış](https://msdn.microsoft.com/library/ms754611(v=VS.85).aspx), [MSXML kodu güvenliğini sağlamaya yönelik En Iyi uygulamalar](https://msdn.microsoft.com/library/ms759188(VS.85).aspx), [nsxmlparserdelegate protokol başvurusu](https://developer.apple.com/library/ios/#documentation/cocoa/reference/NSXMLParserDelegate_Protocol/Reference/Reference.html), [dış başvuruları çözme](https://msdn.microsoft.com/library/5fcwybb2.aspx) |
@@ -200,7 +200,7 @@ MSXML6 'da, Probitdtd 'nin varsayılan olarak true (DTD işlemesini devre dış�
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -211,7 +211,7 @@ MSXML6 'da, Probitdtd 'nin varsayılan olarak true (DTD işlemesini devre dış�
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Kısıtlanmamış dosya yükleme](https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload), [Dosya imza tablosu](https://www.garykessler.net/library/file_sigs.html) |
@@ -327,7 +327,7 @@ Dosya biçimi imza doğrulamasında ilgili son nokta için, Ayrıntılar için a
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -357,7 +357,7 @@ Yukarıdaki kod örneğinde, giriş değeri 11 karakterden daha uzun olamaz. Ver
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | MVC5, MVC6 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Meta veri öznitelikleri](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.metadatatypeattribute), [ortak anahtar güvenlik açığı ve hafifletme](https://github.com/blog/1068-public-key-security-vulnerability-and-mitigation), [ASP.NET MVC 'de toplu ATAMAYA yönelik KAPSAMLı kılavuz](https://odetocode.com/Blogs/scott/archive/2012/03/11/complete-guide-to-mass-assignment-in-asp-net-mvc.aspx), [MVC kullanarak EF ile çalışmaya](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost) başlama |
@@ -368,7 +368,7 @@ Yukarıdaki kod örneğinde, giriş değeri 11 karakterden daha uzun olamaz. Ver
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel, Web Forms, MVC5, MVC6 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [ASP.net](https://msdn.microsoft.com/library/ms998274.aspx), siteler arası komut dosyası [oluşturma](https://cwe.mitre.org/data/definitions/79.html), [XSS (siteler arası betik oluşturma) engellemesini engelleme sayfası](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) |
@@ -393,7 +393,7 @@ Yukarıdaki kod örneğinde, giriş değeri 11 karakterden daha uzun olamaz. Ver
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Generic, MVC5, MVC6 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Doğrulama ekleme](https://www.asp.net/mvc/overview/getting-started/introduction/adding-validation), [bir MVC uygulamasındaki model verilerini](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx)doğrulama, [ASP.NET MVC uygulamalarınız için temel ilkeler](https://msdn.microsoft.com/magazine/dd942822.aspx) |
@@ -404,7 +404,7 @@ Yukarıdaki kod örneğinde, giriş değeri 11 karakterden daha uzun olamaz. Ver
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Güvenli olmayan girişi kodlama](https://msdn.microsoft.com/library/ff647397.aspx#paght000003_step3), [HTML temizleme](https://github.com/mganss/HtmlSanitizer) |
@@ -415,7 +415,7 @@ Yukarıdaki kod örneğinde, giriş değeri 11 karakterden daha uzun olamaz. Ver
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -437,7 +437,7 @@ Kullanmayın `innerHtml` ; bunun yerine kullanın `innerText` . Benzer şekilde,
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [OAuth 2,0 yetkilendirme çerçevesi-açık Redirectors](https://tools.ietf.org/html/rfc6749#section-10.15) |
@@ -448,7 +448,7 @@ Kullanmayın `innerHtml` ; bunun yerine kullanın `innerText` . Benzer şekilde,
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Generic, MVC5, MVC6 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [MVC uygulamasındaki model verilerini doğrulama](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [ASP.NET MVC uygulamalarınız için temel ilkeler](https://msdn.microsoft.com/magazine/dd942822.aspx) |
@@ -459,7 +459,7 @@ Kullanmayın `innerHtml` ; bunun yerine kullanın `innerText` . Benzer şekilde,
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel, Web Forms, MVC5, MVC6  |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [DefaultRegexMatchTimeout özelliği](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.defaultregexmatchtimeout.aspx) |
@@ -477,7 +477,7 @@ Kullanmayın `innerHtml` ; bunun yerine kullanın `innerText` . Benzer şekilde,
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | MVC5, MVC6 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -502,7 +502,7 @@ Aşağıdakiler güvenli olmayan bir örnektir:
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Veritabanı | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -562,7 +562,7 @@ AS
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web API | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | MVC5, MVC6 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [ASP.NET Web API 'de model doğrulaması](https://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
@@ -619,7 +619,7 @@ namespace MyApi.Controllers
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web API | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel, MVC 5, MVC 6 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [MVC uygulamasındaki model verilerini doğrulama](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [ASP.NET MVC uygulamalarınız için temel ilkeler](https://msdn.microsoft.com/magazine/dd942822.aspx) |
@@ -630,7 +630,7 @@ namespace MyApi.Controllers
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web API | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -660,7 +660,7 @@ Yukarıdaki kod örneğinde, giriş değeri 11 karakterden daha uzun olamaz. Ver
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Azure belge DB | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Azure Cosmos DB 'da SQL Parametreleştirme duyurusu](https://azure.microsoft.com/blog/announcing-sql-parameterization-in-documentdb/) |
@@ -671,7 +671,7 @@ Yukarıdaki kod örneğinde, giriş değeri 11 karakterden daha uzun olamaz. Ver
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | WCF | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel, NET Framework 3 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [MSDN](https://msdn.microsoft.com/library/ff647820.aspx) |
@@ -682,7 +682,7 @@ Yukarıdaki kod örneğinde, giriş değeri 11 karakterden daha uzun olamaz. Ver
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | WCF | 
-| **SDL aşaması**               | Oluşturma |  
+| **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel, NET Framework 3 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [MSDN](https://msdn.microsoft.com/library/ff647875.aspx) |

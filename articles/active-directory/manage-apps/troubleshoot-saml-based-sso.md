@@ -11,10 +11,10 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.openlocfilehash: 7f7f999c145903be5db3b20ab60bd0f5a18778ea
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89463897"
 ---
 # <a name="troubleshoot-saml-based-single-sign-on-in-azure-active-directory"></a>Azure Active Directory 'de SAML tabanlı çoklu oturum açma sorunlarını giderme
@@ -46,14 +46,14 @@ Uygulama için önceden yapılandırılmış desenleri bildirmek için:
     * desenler desteklenmiyorsa, metin kutusuna değer girmeye çalıştığınızda kırmızı bir ünlem işareti görürsünüz. Farenizi kırmızı ünlem işaretinin üzerine getirdiğinizde desteklenen desenleri görürsünüz.
     * Uygulamanın öğreticisinde, Desteklenen desenler hakkında da bilgi edinebilirsiniz. **Azure AD çoklu oturum açma yapılandırma** bölümünün altında. **Etki alanı ve URL 'ler** bölümünde değerleri yapılandırmak için adıma gidin.
 
-Değerler, Azure AD 'de önceden yapılandırılmış desenlerle eşleşmezse. Seçenekleriniz şunlardır:
+Değerler, Azure AD 'de önceden yapılandırılmış desenlerle eşleşmezse. Şunları yapabilirsiniz:
 -   Azure AD 'de önceden yapılandırılmış olan desenli eşleşen değerleri almak için uygulama satıcısıyla birlikte çalışın
 -   Ya da, <aadapprequest@microsoft.com> uygulama için desteklenen desenlerin güncelleştirilmesini istemek Için Azure AD ekibine başvurabilirsiniz veya öğreticide bir yorum bırakabilirsiniz
 
 ## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>EntityId (Kullanıcı tanımlayıcısı) biçimini nereden ayarlayabilirim?
 Azure AD 'nin Kullanıcı kimlik doğrulamasından sonra yanıtta uygulamaya gönderdiği EntityId (Kullanıcı tanımlayıcısı) biçimini seçemeyeceksiniz.
 
-Azure AD, seçilen değere veya SAML AuthRequest 'te uygulama tarafından istenen biçime göre NameID özniteliği (Kullanıcı tanımlayıcısı) biçimini seçin. Daha fazla bilgi için, Nameıdpolicy bölümünde [Çoklu oturum açma SAML Protokolü](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) makalesini ziyaret edin.
+Azure AD, seçilen değere veya SAML AuthRequest 'te uygulama tarafından istenen biçime göre NameID özniteliği (Kullanıcı tanımlayıcısı) biçimini seçin. Daha fazla bilgi için, Nameıdpolicy bölümünde [tek Sign-On SAML Protokolü](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) makalesini ziyaret edin,
 
 ## <a name="cant-find-the-azure-ad-metadata-to-complete-the-configuration-with-the-application"></a>Uygulama ile yapılandırmayı tamamlamaya yönelik Azure AD meta verileri bulunamıyor
 Azure AD 'den uygulama meta verilerini veya sertifikasını indirmek için şu adımları izleyin:

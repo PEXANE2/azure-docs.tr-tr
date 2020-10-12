@@ -12,10 +12,10 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 71040f831ed7a64f2bc7be7f3a75218976fc2559
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85385952"
 ---
 # <a name="define-an-azure-mfa-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C özel ilkesinde Azure MFA teknik profili tanımlama
@@ -76,7 +76,7 @@ Azure MFA protokol sağlayıcısı herhangi bir **Outputclaim**döndürmüyor, b
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Çalışma | Evet | **Onewaysms**olmalıdır.  |
+| İşlem | Evet | **Onewaysms**olmalıdır.  |
 
 #### <a name="ui-elements"></a>Kullanıcı arabirimi öğeleri
 
@@ -136,7 +136,7 @@ Azure MFA protokol sağlayıcısı herhangi bir **Outputclaim**döndürmüyor, b
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Çalışma | Evet | **Verify** olmalıdır |
+| İşlem | Evet | **Verify** olmalıdır |
 
 #### <a name="ui-elements"></a>Kullanıcı arabirimi öğeleri
 

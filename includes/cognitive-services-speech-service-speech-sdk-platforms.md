@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/26/2020
 ms.author: dapine
 ms.openlocfilehash: 85dfedc75807e273240066460a58b79380050e58
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80656720"
 ---
 | Programlama dili | Platform                                                                           | SDK başvurusu              |
@@ -16,11 +16,11 @@ ms.locfileid: "80656720"
 | C# <sup>1</sup>      | Windows, Linux, macOS, mono, Xamarin. iOS, Xamarin. Mac, Xamarin. Android, UWP, Unity | [.NET SDK][net-sdk]        |
 | C++                  | Windows, Linux, macOS                                                              | [C++ SDK][cpp-sdk]         |
 | Java <sup>2</sup>    | Android, Windows, Linux, macOS                                                     | [Java SDK][javasdk]        |
-| JavaScript           | Tarayıcı, Node. js                                                                   | [JavaScript SDK'sı][ecmasdk]  |
+| JavaScript           | Tarayıcı, Node.js                                                                   | [JavaScript SDK'sı][ecmasdk]  |
 | Amaç-C/Swift  | iOS, macOS                                                                         | [Amaç-C SDK][obj-sdk] |
 | Python               | Windows, Linux, macOS                                                              | [Python SDK'sı][pyt-sdk]      |
 
-<sup>1 .NET konuşma SDK 'Sı .NET Standard 2,0 tabanlıdır, bu nedenle birçok platformu destekler. Daha fazla bilgi için bkz. <a href="https://docs.microsoft.com/dotnet/standard/net-standard#net-implementation-support" target="_blank">.NET uygulama <span class="docon docon-navigate-external x-hidden-focus"> </span>desteği </a>.</sup>
+<sup>1 .NET konuşma SDK 'Sı .NET Standard 2,0 tabanlıdır, bu nedenle birçok platformu destekler. Daha fazla bilgi için bkz. <a href="https://docs.microsoft.com/dotnet/standard/net-standard#net-implementation-support" target="_blank">.NET uygulama <span class="docon docon-navigate-external x-hidden-focus"></span> desteği </a>.</sup>
 
 <sup>2 Java konuşma SDK 'Sı, [konuşma cihazları SDK 'sının](../articles/cognitive-services/speech-service/speech-devices-sdk.md)bir parçası olarak da kullanılabilir.</sup>
 

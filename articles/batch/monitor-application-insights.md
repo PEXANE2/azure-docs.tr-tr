@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 04/05/2018
 ms.openlocfilehash: d06e2b61725f05d025acd8a2995ea041f138ae4f
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88933571"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Application Insights ile Azure Batch .NET uygulamasında izleme ve hata ayıklama
@@ -23,7 +23,7 @@ Bu makaleye eşlik eden kod içeren örnek bir C# çözümü [GitHub](https://gi
 > Alternatif olarak, Batch çözümünüzü Batch Explorer VM performans sayaçları gibi Application Insights verileri görüntüleyecek şekilde yapılandırın. [Batch Explorer](https://github.com/Azure/BatchExplorer) , Azure Batch uygulamaları oluşturmaya, hata ayıklamanıza ve izlemenize yardımcı olan ücretsiz, zengin özellikli, tek başına bir istemci aracıdır. Mac, Linux veya Windows için [yükleme paketi](https://azure.github.io/BatchExplorer/) indirebilirsiniz. Batch Explorer Application Insights verileri etkinleştirmeye yönelik hızlı adımlar için [Batch-Insights](https://github.com/Azure/batch-insights) deposuna bakın. 
 >
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/vs)
 
 * [Batch hesabı ve bağlı depolama hesabı](batch-account-create-portal.md)
