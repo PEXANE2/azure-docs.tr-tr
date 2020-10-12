@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: eb94b67b026ed108f31f6cd802010577665ec0d8
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87286096"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Azure VM’leri arasında bağlantı sorunlarını giderme
@@ -41,7 +41,7 @@ Bir Azure VM, başka bir Azure VM 'ye bağlanamaz.
 6. [Klasik VM için trafiğin ACL 'Ler tarafından engellenip engellenmeyeceğini denetleyin](#step-6-check-whether-traffic-is-blocked-by-acls-for-the-classic-vm)
 7. [Uç noktanın klasik VM için oluşturulup oluşturulmayacağını denetleyin](#step-7-check-whether-the-endpoint-is-created-for-the-classic-vm)
 8. [Bir VM ağ paylaşımıyla bağlantı kurmak için deneyin](#step-8-try-to-connect-to-a-vm-network-share)
-9. [Sanal ağlar arası bağlantıyı denetle](#step-9-check-inter-vnet-connectivity)
+9. [Inter-Vnet bağlantısını denetle](#step-9-check-inter-vnet-connectivity)
 
 ## <a name="troubleshooting-steps"></a>Sorun giderme adımları
 
@@ -67,7 +67,7 @@ Daha fazla bilgi için bkz. [sanal makinelere ağ arabirimleri ekleme veya sanal
 
 ### <a name="step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr"></a>2. Adım: ağ trafiğinin NSG veya UDR tarafından engellenip engellenmeyeceğini denetleyin
 
-Trafik akışını engelleyen bir ağ güvenlik grubu (NSG) veya Kullanıcı tanımlı yol (UDR) olup olmadığını öğrenmek için [ağ IZLEYICISI IP akışı doğrulama](../network-watcher/network-watcher-ip-flow-verify-overview.md) ve [NSG akış günlüğünü](../network-watcher/network-watcher-nsg-flow-logging-overview.md) kullanın.
+Trafik akışını engelleyen bir ağ güvenlik grubu (NSG) veya User-Defined yolu (UDR) olup olmadığını öğrenmek için [ağ IZLEYICISI IP akışı doğrulama](../network-watcher/network-watcher-ip-flow-verify-overview.md) ve [NSG akış günlüğünü](../network-watcher/network-watcher-nsg-flow-logging-overview.md) kullanın.
 
 ### <a name="step-3-check-whether-network-traffic-is-blocked-by-vm-firewall"></a>3. Adım: ağ trafiğinin VM Güvenlik Duvarı tarafından engellenip engellenmeyeceğini denetleyin
 
@@ -109,9 +109,9 @@ Klasik dağıtım modelini kullanarak Azure 'da oluşturduğunuz tüm VM 'Ler, a
 
 Bir VM ağ paylaşımıyla bağlantı bağlanamazsanız, bu sorun VM 'de kullanılamayan NIC 'lerden kaynaklanıyor olabilir. Kullanılamayan NIC 'Leri silmek için bkz [. kullanılamayan NIC 'leri silme](../virtual-machines/troubleshooting/reset-network-interface.md#delete-the-unavailable-nics)
 
-### <a name="step-9-check-inter-vnet-connectivity"></a>9. Adım: Inter-VNET bağlantısını denetleme
+### <a name="step-9-check-inter-vnet-connectivity"></a>9. Adım: Inter-Vnet bağlantıyı denetleme
 
-Trafik akışını engelleyen bir NSG veya UDR olup olmadığını öğrenmek için [ağ IZLEYICISI IP akışı doğrulama](../network-watcher/network-watcher-ip-flow-verify-overview.md) ve [NSG akış günlüğünü](../network-watcher/network-watcher-nsg-flow-logging-overview.md) kullanın. Ayrıca, sanal ağ yapılandırmanızı [burada](https://support.microsoft.com/en-us/help/4032151/configuring-and-validating-vnet-or-vpn-connections)da doğrulayabilirsiniz.
+Trafik akışını engelleyen bir NSG veya UDR olup olmadığını öğrenmek için [ağ IZLEYICISI IP akışı doğrulama](../network-watcher/network-watcher-ip-flow-verify-overview.md) ve [NSG akış günlüğünü](../network-watcher/network-watcher-nsg-flow-logging-overview.md) kullanın. Inter-Vnet yapılandırmanızı [burada](https://support.microsoft.com/en-us/help/4032151/configuring-and-validating-vnet-or-vpn-connections)da doğrulayabilirsiniz.
 
 ### <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun.
 Yine de yardıma ihtiyacınız varsa sorununuzun hızla çözülmesini sağlamak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
 ms.openlocfilehash: 9060c00e1523db0671d9698465c8e8fcb6340785
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91842844"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Anahtar kasasına güvenli erişim
@@ -185,10 +185,10 @@ Aşağıdaki tabloda rollerimiz ve uygulamamız için erişim izinleri özetlenm
 | Rol | Yönetim düzlemi izinleri | Veri düzlemi izinleri-kasa erişim ilkeleri | Veri düzlemi izinleri-Azure RBAC (Önizleme)  |
 | --- | --- | --- | --- |
 | Güvenlik ekibi | [Katkıda bulunan Key Vault](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-contributor) | Sertifikalar: tüm işlemler <br> Anahtarlar: tüm işlemler <br> Gizlilikler: tüm işlemler | [Key Vault Yöneticisi (Önizleme)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-administrator-preview) |
-| Geliştiriciler ve &nbsp; işleçler | Key Vault dağıtma izni<br><br> **Note**: Bu izin, dağıtılan VM 'lerin bir anahtar kasasından gizli dizileri almasına izin verir. | Yok | Yok |
-| Denetçiler | Yok | Sertifikalar: liste <br> Anahtarlar: listeleme<br>Parolalar: listeleme<br><br> **Not**: Bu izin, denetçilerin, günlüklere yayılmayan anahtarlar ve gizli diziler için öznitelikleri (Etiketler, etkinleştirme tarihleri, sona erme tarihleri) incelemeye olanak sağlar. | [Key Vault okuyucu (Önizleme)]https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview |
-| Azure Depolama Hesabı | Yok | Anahtarlar: get, List, wrapKey, unwrapKey <br> | [Key Vault şifreleme hizmeti şifrelemesi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-crypto-service-encryption-preview) |
-| Uygulama | Yok | Gizlilikler: get, List <br> Sertifikalar: get, List | [Key Vault okuyucu (Önizleme)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview), [Key Vault gizli Kullanıcı (Önizleme)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-secrets-user-preview) |
+| Geliştiriciler ve &nbsp; işleçler | Key Vault dağıtma izni<br><br> **Note**: Bu izin, dağıtılan VM 'lerin bir anahtar kasasından gizli dizileri almasına izin verir. | Hiçbiri | Hiçbiri |
+| Denetçiler | Hiçbiri | Sertifikalar: liste <br> Anahtarlar: listeleme<br>Parolalar: listeleme<br><br> **Not**: Bu izin, denetçilerin, günlüklere yayılmayan anahtarlar ve gizli diziler için öznitelikleri (Etiketler, etkinleştirme tarihleri, sona erme tarihleri) incelemeye olanak sağlar. | [Key Vault okuyucu (Önizleme)]https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview |
+| Azure Depolama Hesabı | Hiçbiri | Anahtarlar: get, List, wrapKey, unwrapKey <br> | [Key Vault şifreleme hizmeti şifrelemesi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-crypto-service-encryption-preview) |
+| Uygulama | Hiçbiri | Gizlilikler: get, List <br> Sertifikalar: get, List | [Key Vault okuyucu (Önizleme)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview), [Key Vault gizli Kullanıcı (Önizleme)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-secrets-user-preview) |
 
 Üç takım rolünün, Key Vault izinlerle birlikte diğer kaynaklara erişmesi gerekir. VM 'Leri (veya Azure App Service Web Apps özelliğini) dağıtmak için, geliştiricilere ve operatörlere erişim dağıtımı gerekir. Denetçilerin Key Vault günlüklerinin depolandığı depolama hesabına okuma erişimi olması gerekir.
 

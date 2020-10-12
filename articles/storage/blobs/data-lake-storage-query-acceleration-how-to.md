@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: jamsbak
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 72602e1e74074f21c93950bdb779758e784ce171
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89659874"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>Azure Data Lake Storage sorgu hızlandırmasını kullanarak verileri filtreleme
@@ -32,7 +32,7 @@ Sorgu hızlandırma, uygulama ve analiz çerçevelerinin yalnızca belirli bir i
 
   ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-  Geçerli değil
+  Uygulanamaz
 
   ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -236,7 +236,7 @@ Bir Terminal penceresi açarak ve ardından aşağıdaki komutu yazarak JavaScri
 
 #### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Geçerli değil
+Uygulanamaz
 
 #### <a name="net"></a>[.NET](#tab/dotnet)
 

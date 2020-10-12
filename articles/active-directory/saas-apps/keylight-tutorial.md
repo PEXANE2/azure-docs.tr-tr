@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 82af00c091aedb56e0cad954e554094e75df0013
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0832fe9ba65ac0df5dbff60b01b7a5eb91a2c3a2
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88535892"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945252"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>Öğretici: LockPath Keylight ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ LockPath Keylight 'i Azure AD ile tümleştirmek aşağıdaki avantajları sağl
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini LockPath Keylight ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -133,15 +133,15 @@ Azure AD çoklu oturum açmayı LockPath Keylight ile yapılandırmak için aşa
 
     b. Üstteki menüde **kişi**' ye tıklayın ve **Keylight kurulum**' u seçin.
 
-    ![Tek Sign-On yapılandırma](./media/keylight-tutorial/401.png)
+    !["Kişi" simgesinin seçili olduğunu ve açılan listeden "Keylight kurulum" seçeneğini gösteren ekran görüntüsü.](./media/keylight-tutorial/401.png)
 
     c. Soldaki TreeView 'da **SAML**' ye tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/keylight-tutorial/402.png)
+    ![Ağaç görünümünde "S A M L" seçiliyken görüntülenen ekran görüntüsü.](./media/keylight-tutorial/402.png)
 
     d. **SAML ayarları** iletişim kutusunda, **Düzenle**' ye tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/keylight-tutorial/404.png)
+    !["Düzenle" düğmesinin seçili olduğu "S A M L ayarları" penceresini gösteren ekran görüntüsü.](./media/keylight-tutorial/404.png)
 
 1. **SAML ayarlarını Düzenle** iletişim sayfasında, aşağıdaki adımları uygulayın:
 
@@ -197,7 +197,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

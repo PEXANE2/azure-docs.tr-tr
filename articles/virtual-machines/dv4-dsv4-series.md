@@ -9,22 +9,22 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 59c00b06f1fef613b00ade13c7cacc0b88e61bf1
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 959906f25cbae0158dfb0baf0b7664b8f9b9b5d4
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91649555"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945677"
 ---
 # <a name="dv4-and-dsv4-series"></a>Dv4 ve Dsv4 serisi
 
-Dv4 ve Dsv4 serisi, &reg; &reg; bir hiper iş yükleri için daha iyi bir değer teklifi sağlayan, bir hiper iş parçacığı yapılandırmasındaki Intel Xeon Platinum 8272CL (Cascade Lake) işlemcilerde çalışır. Sürekli olarak 3,4 GHz 'nin tüm çekirdek Turbo saat hızına sahiptir. 
+Dv4 ve Dsv4 serisi, &reg; &reg; bir hiper iş yükleri için daha iyi bir değer teklifi sağlayan, bir hiper iş parçacığı yapılandırmasındaki Intel Xeon Platinum 8272CL (Cascade Lake) işlemcilerde çalışır. 3,4 GHz 'nin tüm çekirdek Turbo saat hızına sahiptir. 
 
 > [!NOTE]
 > Sık sorulan sorular için,  [Yerel geçici disk olmadan Azure VM boyutlarına](azure-vms-no-temp-disk.md)bakın.
 ## <a name="dv4-series"></a>Dv4 serisi
 
-Dv4 serisi boyutlar Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) üzerinde çalışır. Dv4 serisi boyutları, üretim iş yüklerinin çoğu için vCPU, bellek ve uzak depolama seçeneklerinin bir birleşimini sunar. Dv4 serisi VM 'Ler özelliği [Intel &reg; hiper Iş parçacığı teknolojisi](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html).
+Dv4 serisi boyutlar Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) üzerinde çalışır. Dv4 serisi boyutları, üretim iş yüklerinin çoğu için vCPU, bellek ve uzak depolama seçeneklerinin bir birleşimini sunar. Dv4 serisi VM 'Ler özelliği [ıntel &reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html).
 
 Uzak veri diski depolaması, sanal makinelerden ayrı olarak faturalandırılır. Premium Depolama disklerini kullanmak için Dsv4 boyutlarını kullanın. Dsv4 boyutları için fiyatlandırma ve faturalandırma ölçümleri dv4 serisi ile aynıdır.
 
@@ -48,7 +48,7 @@ Uzak veri diski depolaması, sanal makinelerden ayrı olarak faturalandırılır
 
 ## <a name="dsv4-series"></a>Dsv4 serisi
 
-Dsv4 serisi boyutlar Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) üzerinde çalışır. Dv4 serisi boyutları, üretim iş yüklerinin çoğu için vCPU, bellek ve uzak depolama seçeneklerinin bir birleşimini sunar. Dsv4 serisi VM 'Ler özelliği [Intel &reg; hiper Iş parçacığı teknolojisi](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html). Uzak veri diski depolaması, sanal makinelerden ayrı olarak faturalandırılır.
+Dsv4 serisi boyutlar Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) üzerinde çalışır. Dv4 serisi boyutları, üretim iş yüklerinin çoğu için vCPU, bellek ve uzak depolama seçeneklerinin bir birleşimini sunar. Dsv4 serisi VM 'Ler özelliği [ıntel &reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html). Uzak veri diski depolaması, sanal makinelerden ayrı olarak faturalandırılır.
 
 [Acu](acu.md): 195-210<br>
 [Premium Depolama](premium-storage-performance.md): desteklenir<br>

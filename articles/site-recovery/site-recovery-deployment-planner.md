@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: mayg
 ms.openlocfilehash: f930fbb9cad893363db2b1a6b9b6ea8acade5a54
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87083795"
 ---
-# <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>VMware 'den Azure 'a Azure Site Recovery Dağıtım Planlayıcısı hakkında
+# <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>VMware’den Azure’a senaryosu için Azure Site Recovery Dağıtım Planlayıcısı hakkında
 Bu makale, VMware’den Azure’a üretim dağıtımları için Azure Site Recovery Dağıtım Planlayıcısı kullanım kılavuzudur.
 
 ## <a name="overview"></a>Genel Bakış
@@ -62,9 +62,9 @@ Araç aşağıdaki bilgileri sağlar:
 
 ## <a name="support-matrix"></a>Destek matrisi
 
-| **Kategori** | **Vmware’den Azure’a** |**Hyper-V'den Azure'a**|**Azure-Azure arası**|**Hyper-V’den ikincil siteye**|**VMware’den ikincil siteye**
+| **Kategori** | **Vmware’den Azure’a** |**Hyper-V’den Azure’a**|**Azure-Azure arası**|**Hyper-V’den ikincil siteye**|**VMware’den ikincil siteye**
 --|--|--|--|--|--
-Desteklenen senaryolar |Yes|Yes|Hayır|Evet*|Hayır
+Desteklenen senaryolar |Evet|Evet|Hayır|Evet*|Hayır
 Desteklenen sürüm | vCenter 6,7, 6,5, 6,0 veya 5,5| Windows Server 2016, Windows Server 2012 R2 | NA |Windows Server 2016, Windows Server 2012 R2|NA
 Desteklenen yapılandırma|vCenter, ESXi| Hyper-V kümesi, Hyper-V konağı|NA|Hyper-V kümesi, Hyper-V konağı|NA|
 Çalışan Site Recovery Dağıtım Planlayıcısı örneği başına profili oluşturulabilecek sunucu sayısı |Tek (bir vCenter Server ve bir ESXi sunucusuna ait VM’lerin profili aynı anda oluşturulabilir)|Birden çok (birden çok konak veya konak kümesindeki sanal makinelerin profili tek seferde oluşturulabilir)| NA |Birden çok (birden çok konak veya konak kümesindeki sanal makinelerin profili tek seferde oluşturulabilir)| NA

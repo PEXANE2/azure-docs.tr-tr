@@ -14,10 +14,10 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: f5950347fff380fcfbaa89834407ff5f497a9719
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88854911"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft kimlik doğrulama Kitaplığı yapılandırma dosyası
@@ -32,8 +32,8 @@ Bu makale yapılandırma dosyasında çeşitli ayarları anlamanıza ve MSAL tab
 
 | Özellik | Veri Türü | Gerekli | Notlar |
 |-----------|------------|-------------|-------|
-| `client_id` | Dize | Yes | [Uygulama kayıt sayfasından](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) UYGULAMANıZıN istemci kimliği |
-| `redirect_uri`   | Dize | Yes | [Uygulama kayıt sayfasından](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) uygulamanızın yeniden yönlendirme URI 'si |
+| `client_id` | Dize | Evet | [Uygulama kayıt sayfasından](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) UYGULAMANıZıN istemci kimliği |
+| `redirect_uri`   | Dize | Evet | [Uygulama kayıt sayfasından](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) uygulamanızın yeniden yönlendirme URI 'si |
 | `authorities` | Listele\<Authority> | Hayır | Uygulamanızın ihtiyaç duyacağı yetkililer listesi |
 | `authorization_user_agent` | AuthorizationAgent (enum) | Hayır | Olası değerler: `DEFAULT` , `BROWSER` , `WEBVIEW` |
 | `http` | HttpConfiguration | Hayır | `HttpUrlConnection` `connect_timeout` Ve yapılandırın`read_timeout` |
@@ -103,17 +103,17 @@ Sizin tarafınızdan bilinen ve güvenilir olan yetkililer listesi. Burada liste
 
 | Özellik | Veri türü  | Gerekli | Notlar |
 |-----------|-------------|-----------|--------|
-| `type` | Dize | Yes | Uygulama hedeflerinizin kitlesini veya hesap türünü yansıtır. Olası değerler: `AAD` , `B2C` |
+| `type` | Dize | Evet | Uygulama hedeflerinizin kitlesini veya hesap türünü yansıtır. Olası değerler: `AAD` , `B2C` |
 | `audience` | Nesne | Hayır | Yalnızca Type = olduğunda geçerlidir `AAD` . Uygulamanızın hedeflediği kimliği belirtir. Uygulama kaydınızdan değeri kullanın |
-| `authority_url` | Dize | Yes | Yalnızca Type = olduğunda gereklidir `B2C` . Uygulamanızın kullanması gereken yetkili URL 'sini veya ilkeyi belirtir  |
-| `default` | boolean | Yes | `"default":true`Bir veya daha fazla sertifika belirtildiğinde tek bir tane gerekir. |
+| `authority_url` | Dize | Evet | Yalnızca Type = olduğunda gereklidir `B2C` . Uygulamanızın kullanması gereken yetkili URL 'sini veya ilkeyi belirtir  |
+| `default` | boolean | Evet | `"default":true`Bir veya daha fazla sertifika belirtildiğinde tek bir tane gerekir. |
 
 #### <a name="audience-properties"></a>Hedef kitle özellikleri
 
 | Özellik | Veri Türü  | Gerekli | Notlar |
 |-----------|-------------|------------|-------|
-| `type` | Dize | Yes | Uygulamanızın hedeflemek istediği izleyiciyi belirtir. Olası değerler: `AzureADandPersonalMicrosoftAccount` , `PersonalMicrosoftAccount` , `AzureADMultipleOrgs` , `AzureADMyOrg` |
-| `tenant_id` | Dize | Yes | Yalnızca olduğunda gereklidir `"type":"AzureADMyOrg"` . Diğer değerler için isteğe bağlıdır `type` . Bu, gibi bir kiracı etki alanı veya gibi bir `contoso.com` KIRACı kimliği olabilir `72f988bf-86f1-41af-91ab-2d7cd011db46` |
+| `type` | Dize | Evet | Uygulamanızın hedeflemek istediği izleyiciyi belirtir. Olası değerler: `AzureADandPersonalMicrosoftAccount` , `PersonalMicrosoftAccount` , `AzureADMultipleOrgs` , `AzureADMyOrg` |
+| `tenant_id` | Dize | Evet | Yalnızca olduğunda gereklidir `"type":"AzureADMyOrg"` . Diğer değerler için isteğe bağlıdır `type` . Bu, gibi bir kiracı etki alanı veya gibi bir `contoso.com` KIRACı kimliği olabilir `72f988bf-86f1-41af-91ab-2d7cd011db46` |
 
 ### <a name="authorization_user_agent"></a>authorization_user_agent
 

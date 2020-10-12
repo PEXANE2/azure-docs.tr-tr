@@ -13,10 +13,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 54d92da469625a3b81d0027558ec14166d916b80
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88163195"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanmaya başlama
@@ -90,9 +90,9 @@ Ardından, bir kapsam ekleyerek API 'YI kullanıma sunun:
 1. Sol taraftaki menüde, **Yönet**altında, **bir API 'yi kullanıma**sunma ' yı seçin.
 1. **Kapsam Ekle**' yi seçin, ardından **Kaydet** ' i SEÇIN ve varsayılan uygulama kimliği URI 'sini kabul edin.
 1. Azure AD B2C kiracınızda özel ilke yürütmeye izin veren bir kapsam oluşturmak için aşağıdaki değerleri girin:
-    * **Kapsam adı**:`user_impersonation`
-    * **Yönetici onayı görünen adı**:`Access IdentityExperienceFramework`
-    * **Yönetici onay açıklaması**:`Allow the application to access IdentityExperienceFramework on behalf of the signed-in user.`
+    * **Kapsam adı**: `user_impersonation`
+    * **Yönetici onayı görünen adı**: `Access IdentityExperienceFramework`
+    * **Yönetici onay açıklaması**: `Allow the application to access IdentityExperienceFramework on behalf of the signed-in user.`
 1. **Kapsam Ekle** ' yi seçin
 
 * * *

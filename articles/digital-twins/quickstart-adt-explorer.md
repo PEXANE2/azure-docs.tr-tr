@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: b8979691d03746634b6282b23b05723c35854e1f
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 565decb90a4d41024e94cb5225e58842763e75f4
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91841535"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946047"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Hızlı başlangıç-ADT Explorer kullanarak örnek bir Azure dijital TWINS senaryosunu araştırma
 
@@ -205,7 +205,7 @@ ADT Explorer, istenen TWINS ve aralarında ilişkiler oluşturmak için karşıy
     :::column-end:::
 :::row-end:::
 
-Grafik şimdi ADT Explorer 'a yüklendi. Grafiği görüntüle ' yi görmek için, *GRAFIK Gezgini* kutusundaki *sorgu Çalıştır* düğmesine basın, ADT Gezgini penceresinin en üstüne gidin. 
+Grafik şimdi ADT Explorer 'a yüklendi. Grafiği görmek için, *GRAFIK Gezgini* kutusundaki *sorgu Çalıştır* düğmesine, ADT gezgin penceresinin üst kısmına gidin. 
 
 :::image type="content" source="media/quickstart-adt-explorer/run-query.png" alt-text="Oklarla bağlı 4 dairesel düğüm oluşan bir grafik görünümü. ' Floor1 ' etiketli bir daire, ' Contains ' etiketli ve ' room1 ' etiketli bir daireye bağlandı; ' Floor0 ' etiketli bir daire, ' Contains ' etiketli bir okla ' Room0 ' etiketli bir daireye bağlanır. ' Floor1 ' ve ' Floor0 ' bağlı değil." lightbox="media/quickstart-adt-explorer/run-query.png":::
 

@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) kullanırken karşılaşılan yaygı
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 81adbfe7a5a04ffb8fcb3311ad3561135b77ab7b
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 930dae7ae163a04fb8b5fc5ae44b9170a7e3c6ce
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91614028"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893144"
 ---
 # <a name="aks-troubleshooting"></a>AKS sorunlarını giderme
 
@@ -86,7 +86,7 @@ AKS 'in hizmet düzeyi hedeflerini (SLOs) ve hizmet düzeyi sözleşmelerini (SL
 
 Bu zaman aşımları, engellenen düğümler arasındaki iç trafikle ilgili olabilir. Bu trafiğin, kümenizin düğümleri için alt ağdaki [ağ güvenlik grupları](concepts-security.md#azure-network-security-groups) gibi engellenmediğinden emin olun.
 
-## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>Var olan bir kümede rol tabanlı Access Control (RBAC) etkinleştirmeye çalışıyorum. Bunu nasıl yapabilirim?
+## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>Mevcut bir kümede Role-Based Access Control (RBAC) etkinleştirmeye çalışıyorum. Bunu nasıl yapabilirim?
 
 Mevcut kümelerde rol tabanlı erişim denetimi 'ni (RBAC) etkinleştirmek Şu anda desteklenmiyor, yeni kümeler oluşturulurken ayarlanmalıdır. Daha sonra CLı, portal veya API sürümü kullanılırken RBAC varsayılan olarak etkindir `2020-03-01` .
 
@@ -198,6 +198,23 @@ AKS kümesinden çıkış trafiği kısıtlandığında, [gerekli ve isteğe ba�
 
 Ayarlarınızın gerekli veya isteğe bağlı önerilen giden bağlantı noktaları/ağ kuralları ve FQDN/uygulama kurallarından hiçbiriyle çakışmadığını doğrulayın.
 
+## <a name="im-receiving-429---too-many-requests-errors"></a>"429-çok fazla Istek" hatası alıyorum 
+
+Azure 'daki bir Kubernetes kümesi (AKS veya No) sıklıkla bir ölçek artırma/azaltma veya küme otomatik olarak (CA) kullandığında, bu işlemler, atanan abonelik kotasının önde gelen hata olarak aşıldığı çok sayıda HTTP çağrısı oluşmasına neden olabilir. Hatalar şöyle görünür
+
+```
+Service returned an error. Status=429 Code=\"OperationNotAllowed\" Message=\"The server rejected the request because too many requests have been received for this subscription.\" Details=[{\"code\":\"TooManyRequests\",\"message\":\"{\\\"operationGroup\\\":\\\"HighCostGetVMScaleSet30Min\\\",\\\"startTime\\\":\\\"2020-09-20T07:13:55.2177346+00:00\\\",\\\"endTime\\\":\\\"2020-09-20T07:28:55.2177346+00:00\\\",\\\"allowedRequestCount\\\":1800,\\\"measuredRequestCount\\\":2208}\",\"target\":\"HighCostGetVMScaleSet30Min\"}] InnerError={\"internalErrorCode\":\"TooManyRequestsReceived\"}"}
+```
+
+Bu azaltma hataları [burada](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling) ve [burada](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshooting-throttling-errors) ayrıntılı olarak açıklanmaktadır
+
+AKS mühendislik ekibinin retıoni, en az 1.18. x sürümünü çalıştırıyor olduğunuzdan emin olmak için birçok geliştirme içerir. Bu geliştirmelerin [burada](https://github.com/Azure/AKS/issues/1413) ve [burada](https://github.com/kubernetes-sigs/cloud-provider-azure/issues/247)daha fazla ayrıntıya ulaşabilirsiniz.
+
+Bu azaltma hataları, abonelik düzeyinde ölçülerek, şu durumlarda yine de gerçekleşmeyebilirsiniz:
+- GET istekleri oluşturan üçüncü taraf uygulamalar vardır (örn. izleme uygulamaları, vs...). Öneri, bu çağrıların sıklığını azaltmaktır.
+- VMSS 'de çok sayıda AKS kümesi/nodepools vardır. Olağan önerisi, belirli bir abonelikte 20-30 ' den az kümeniz olmalıdır.
+
+
 ## <a name="azure-storage-and-aks-troubleshooting"></a>Azure depolama ve AKS sorunlarını giderme
 
 ### <a name="what-are-the-recommended-stable-versions-of-kubernetes-for-azure-disk"></a>Azure disk için, Kubernetes 'in önerilen kararlı sürümleri nelerdir? 
@@ -233,7 +250,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 |--|:--:|
 | 1.10 | 1.10.2 veya üzeri |
 | 1,11 | 1.11.0 veya üzeri |
-| 1,12 ve üzeri | YOK |
+| 1,12 ve üzeri | Yok |
 
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Azure diski için mountOptions 'da uid ve GID ayarlanırken hata oluştu
@@ -290,7 +307,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 | 1.12 | 1.12.9 veya üzeri |
 | 1.13 | 1.13.6 veya üzeri |
 | 1,14 | 1.14.2 veya üzeri |
-| 1,15 ve üzeri | YOK |
+| 1,15 ve üzeri | Yok |
 
 Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız ve düğümünüz eski bir disk listesine sahipse, mevcut olmayan tüm diskleri VM 'den toplu bir işlem olarak ayırarak azaltabilirsiniz. **Mevcut olmayan diskleri tek tek ayırmak başarısız olabilir.**
 
@@ -309,7 +326,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 | 1.12 | 1.12.10 veya üzeri |
 | 1.13 | 1.13.8 veya üzeri |
 | 1,14 | 1.14.4 veya üzeri |
-| 1,15 ve üzeri | YOK |
+| 1,15 ve üzeri | Yok |
 
 Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız ve düğümünüz hatalı durumdaysa, aşağıdakilerden birini kullanarak VM durumunu el ile güncelleştirerek azaltabilirsiniz:
 
@@ -418,7 +435,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 |--|:--:|
 | 1.12 | 1.12.6 veya üzeri |
 | 1.13 | 1.13.4 veya üzeri |
-| 1,14 ve üzeri | YOK |
+| 1,14 ve üzeri | Yok |
 
 ### <a name="azure-files-mount-fails-because-of-storage-account-key-changed"></a>Azure dosyaları bağlama, depolama hesabı anahtarı değiştiği için başarısız oluyor
 

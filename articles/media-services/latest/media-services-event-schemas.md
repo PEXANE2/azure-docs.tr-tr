@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 47ba1af15101ae68cf5311ed73f7078bf9fc7f35
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336437"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Media Services olaylar için Azure Event Grid şemaları
@@ -136,7 +136,7 @@ Aşağıdaki örnek, **Jobstatechange** olayının şemasını göstermektedir:
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | previousState | string | Olaydan önceki işin durumu. |
 | state | string | Bu olayda bildirim yapılacak işin yeni durumu. Örneğin, "zamanlandı: iş başlamaya hazırlanıyor" veya "tamamlandı: iş tamamlandı".|
@@ -206,7 +206,7 @@ Her son Iş durumu değişikliği için (örneğin, JobFinished, Jobiptal, Jobha
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | çıkışı | Dizi | Iş çıkışlarını alır.|
 
@@ -322,7 +322,7 @@ Aşağıdaki örnekte, **Liveeventconnectionreddedildi** olayının şeması gö
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | Streamıd | string | Akışın veya bağlantının tanımlayıcısı. Kodlayıcı veya müşteri, bu KIMLIĞI alma URL 'sine eklemekten sorumludur. |  
 | ingestUrl | string | Canlı olay tarafından sunulan alma URL 'SI. |  
@@ -358,7 +358,7 @@ Aşağıdaki örnekte, **Liveeventencoderconnected** olayının şeması göster
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | Streamıd | string | Akışın veya bağlantının tanımlayıcısı. Kodlayıcı veya müşteri, bu KIMLIĞI alma URL 'SI içinde sağlamaktan sorumludur. |
 | ingestUrl | string | Canlı olay tarafından sunulan alma URL 'SI. |
@@ -392,7 +392,7 @@ Aşağıdaki örnek **Liveeventencoderconnected** olayının şemasını göster
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | Streamıd | string | Akışın veya bağlantının tanımlayıcısı. Kodlayıcı veya müşteri, bu KIMLIĞI alma URL 'sine eklemekten sorumludur. |  
 | ingestUrl | string | Canlı olay tarafından sunulan alma URL 'SI. |  
@@ -404,7 +404,7 @@ Hata sonuç kodlarını [canlı olay hata kodlarında](live-event-error-codes.md
 
 Düzgün olmayan bağlantıyı kesme sonuç kodları şunlardır:
 
-| Sonuç kodu | Description |
+| Sonuç kodu | Açıklama |
 | ----------- | ----------- |
 | S_OK | Kodlayıcının bağlantısı başarıyla kesildi. |
 | MPE_CLIENT_TERMINATED_SESSION | Kodlayıcı bağlantısı kesildi (RTMP). |
@@ -442,7 +442,7 @@ Aşağıdaki örnek, **Liveeventincomingdatachunkbırakılan** olayının şemas
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | trackType | string | İzlemenin türü (ses/video). |
 | trackName | string | İzlemenin adı. |
@@ -482,7 +482,7 @@ Aşağıdaki örnekte, **Liveeventincomingstreamreceived** olayının şeması g
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | trackType | string | İzlemenin türü (ses/video). |
 | trackName | string | İzlemenin adı (kodlayıcı tarafından sağlandığı veya RTMP durumunda sunucu *TrackType_Bitrate* biçimde oluşturulur). |
@@ -521,7 +521,7 @@ Aşağıdaki örnekte, **Liveeventincomingstreamsoutofsync** olayının şeması
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | minLastTimestamp | string | Tüm parçalar arasındaki en az son zaman damgası (ses veya video). |
 | typeOfTrackWithMinLastTimestamp | string | En az son zaman damgasıyla izleme (ses veya video) türü. |
@@ -557,7 +557,7 @@ Aşağıdaki örnekte, **Liveeventincomingvideostreamsoutofsync** olayının şe
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | firstTimestamp | string | Video türünde parçalar/kalite seviyelerinin biri için zaman damgası alındı. |
 | firstDuration | string | İlk zaman damgasıyla veri öbeğinin süresi. |
@@ -599,7 +599,7 @@ Aşağıdaki örnek, **Liveeventingestheartma** olayının şemasını gösterme
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | trackType | string | İzlemenin türü (ses/video). |
 | trackName | string | İzlemenin adı (kodlayıcı tarafından sağlandığı veya RTMP durumunda sunucu *TrackType_Bitrate* biçimde oluşturulur). |
@@ -643,7 +643,7 @@ Aşağıdaki örnek, **Liveeventtrackdiscontinuityalgılanan** olayının şemas
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | trackType | string | İzlemenin türü (ses/video). |
 | trackName | string | İzlemenin adı (kodlayıcı tarafından sağlandığı veya RTMP durumunda sunucu *TrackType_Bitrate* biçimde oluşturulur). |
@@ -657,7 +657,7 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 
 Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | konu başlığı | string | EventGrid konusu. Bu özelliğin Media Services hesabının kaynak KIMLIĞI vardır. |
 | Konu | string | Media Services hesabının altındaki Media Services kanalının kaynak yolu. Konunun ve konunun bitiştirerek iş için kaynak KIMLIĞI verilmektedir. |

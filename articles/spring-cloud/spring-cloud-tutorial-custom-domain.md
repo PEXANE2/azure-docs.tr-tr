@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 5892fd732a1e66b2b7dd4c1031cabfcbcc768c6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fc20737ab371135a62d510d9d083e084b592fae
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326159"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945779"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Mevcut bir özel etki alanını Azure Spring Cloud ile eşleme
 
@@ -28,9 +28,53 @@ Sertifikalar Web trafiğini şifreler. Bu TLS/SSL sertifikaları, Azure Key Vaul
 * Bir üçüncü taraf sağlayıcıdan özel bir sertifika (otomatik olarak imzalanan sertifikanız). Sertifika, etki alanıyla aynı olmalıdır.
 * [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) dağıtılan bir örnek
 
-## <a name="import-certificate"></a>Sertifikayı içeri aktarma 
-Bir sertifikayı içeri aktarma yordamı, pek veya PFX kodlamalı dosyanın diskte olması gerekir ve özel anahtara sahip olmanız gerekir. 
+## <a name="import-certificate"></a>Sertifikayı içeri aktarma
+### <a name="prepare-your-certificate-file-in-pfx-optional"></a>Sertifika dosyanızı PFX 'de hazırlama (isteğe bağlı)
+PEK ve PFX biçiminde özel sertifika içeri aktarma desteği Azure Key Vault. Sertifika sağlayıcınızdan aldığınız ped dosyası aşağıdaki bölümde çalışmazsa: [sertifikayı Key Vault ' de kaydedin](#save-certificate-in-key-vault), Azure Key Vault için PFX oluşturmak üzere buradaki adımları izleyin.
 
+#### <a name="merge-intermediate-certificates"></a>Ara sertifikaları birleştirme
+
+Sertifika yetkiliniz size sertifika zincirinde birden çok sertifika verirse, sertifikaları sırayla birleştirmeniz gerekir.
+
+Bunu yapmak için, aldığınız her sertifikayı bir metin düzenleyicisinde açın.
+
+Birleştirilmiş sertifika için _mergedcertificate.crt_ adlı bir dosya oluşturun. Bir metin düzenleyicisinde her bir sertifikanın içeriğini bu dosyaya kopyalayın. Sertifikalarınızın sırası, sertifikanızla başlayıp kök sertifika ile sona ererek sertifika zincirindeki sırayla aynı olmalıdır. Aşağıdaki örneğe benzer şekilde görünür:
+
+```
+-----BEGIN CERTIFICATE-----
+<your entire Base64 encoded SSL certificate>
+-----END CERTIFICATE-----
+
+-----BEGIN CERTIFICATE-----
+<The entire Base64 encoded intermediate certificate 1>
+-----END CERTIFICATE-----
+
+-----BEGIN CERTIFICATE-----
+<The entire Base64 encoded intermediate certificate 2>
+-----END CERTIFICATE-----
+
+-----BEGIN CERTIFICATE-----
+<The entire Base64 encoded root certificate>
+-----END CERTIFICATE-----
+```
+
+#### <a name="export-certificate-to-pfx"></a>Sertifikayı PFX dosyasına aktarma
+
+Birleştirilmiş TLS/SSL sertifikanızı, Sertifika isteğinizin oluşturulduğu özel anahtarla dışarı aktarın.
+
+Sertifika isteğinizi OpenSSL kullanarak oluşturduysanız bir özel anahtar dosyası oluşturduğunuz anlamına gelir. Sertifikanızı PFX dosyasına aktarmak için aşağıdaki komutu çalıştırın. _ &lt; Özel anahtar dosyası>_ ve _ &lt; birleştirilmiş-sertifika-dosya>_ yer tutucuları özel anahtarınıza ve birleştirilmiş sertifika dosyanıza yönelik yollarla değiştirin.
+
+```bash
+openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>
+```
+
+Sorulduğunda bir dışarı aktarma parolası tanımlayın. Daha sonra Azure Key Vault için TLS/SSL sertifikanızı karşıya yüklerken bu parolayı kullanacaksınız.
+
+Sertifika isteğinizi oluşturmak için IIS veya _Certreq.exe_ kullandıysanız, sertifikayı yerel makinenize yükleyin ve sonra [sertifikayı PFX’e aktarın](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754329(v=ws.11)).
+
+### <a name="save-certificate-in-key-vault"></a>Sertifikayı Key Vault Kaydet
+Bir sertifikayı içeri aktarma yordamı, pek veya PFX kodlamalı dosyanın diskte olması gerekir ve özel anahtara sahip olmanız gerekir. 
+#### <a name="portal"></a>[Portal](#tab/Azure-portal)
 Sertifikanızı anahtar kasasına yüklemek için:
 1. Anahtar Kasası örneğinize gidin.
 1. Sol gezinti bölmesinde, **Sertifikalar**' a tıklayın.
@@ -38,11 +82,21 @@ Sertifikanızı anahtar kasasına yüklemek için:
 1. **Sertifika oluşturma yönteminin**altında **sertifika oluştur** iletişim kutusunda öğesini seçin `Import` .
 1. **Sertifika dosyasını karşıya yükle**altında, sertifika konumuna gidin ve seçin.
 1. **Parola**altında, sertifikanız için özel anahtarı girin.
-1. **Oluştur**’a tıklayın.
+1. **Oluştur**'a tıklayın.
 
     ![Sertifikayı içeri aktar 1](./media/custom-dns-tutorial/import-certificate-a.png)
 
-Sertifikayı içeri aktarmadan önce Azure Spring buluta, anahtar kasanıza erişim izni vermek için:
+#### <a name="cli"></a>[CLI](#tab/Azure-CLI)
+
+```azurecli
+az keyvault certificate import --file <path to .pfx file> --name <certificate name> --vault-name <key vault name> --password <export password>
+```
+---
+
+### <a name="grant-azure-spring-cloud-access-to-your-key-vault"></a>Anahtar kasanıza Azure Spring Cloud erişimi verme
+
+Sertifikayı içeri aktarmadan önce, anahtar kasanıza Azure Spring Cloud erişimi vermeniz gerekir:
+#### <a name="portal"></a>[Portal](#tab/Azure-portal)
 1. Anahtar Kasası örneğinize gidin.
 1. Sol gezinti bölmesinde, **erişim polie**' ye tıklayın.
 1. Üstteki menüde, **erişim Ilkesi Ekle**' ye tıklayın.
@@ -54,50 +108,41 @@ Sertifikayı içeri aktarmadan önce Azure Spring buluta, anahtar kasanıza eri�
 
 ![Sertifikayı içeri aktar 2](./media/custom-dns-tutorial/import-certificate-b.png)
 
-Ya da Azure 'da, Anahtar Kasası 'na Azure Spring Cloud erişimi sağlamak için Azure CLı 'yi kullanabilirsiniz.
+#### <a name="cli"></a>[CLI](#tab/Azure-CLI)
 
-Aşağıdaki komutla nesne kimliğini alın.
+Azure Spring Cloud 'ın Anahtar Kasası 'na okuma erişimi izni verin, `<key vault resource group>` aşağıdaki komutta ve ' yi değiştirin `<key vault name>` .
 ```
-az ad sp show --id <service principal id> --query objectId
-```
-
-Azure Spring Cloud 'ın Anahtar Kasası 'na okuma erişimine izin verin, aşağıdaki komutta nesne kimliğini değiştirin.
-```
-az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id <object id> --certificate-permissions get list
+az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id 938df8e2-2b9d-40b1-940c-c75c33494239 --certificate-permissions get list --secret-permissions get list
 ``` 
+---
 
-Sertifikayı Azure yay bulutuna aktarmak için:
+### <a name="import-certificate-to-azure-spring-cloud"></a>Sertifikayı Azure Spring Cloud 'a aktarma
+#### <a name="portal"></a>[Portal](#tab/Azure-portal)
 1. Hizmet örneğinize gidin. 
 1. Uygulamanızın sol gezinti bölmesinden **TLS/SSL ayarları**' nı seçin.
 1. **Key Vault sertifikayı Içeri aktar**' a tıklayın.
 
     ![Sertifikayı içeri aktarma](./media/custom-dns-tutorial/import-certificate.png)
 
-Veya sertifikayı içeri aktarmak için Azure CLı 'yi kullanabilirsiniz:
+1. Sertifikanızı başarıyla içeri aktardığınızda, **özel anahtar sertifikaları**listesinde bunu görürsünüz.
+
+    ![Özel anahtar sertifikası](./media/custom-dns-tutorial/key-certificates.png)
+
+#### <a name="cli"></a>[CLI](#tab/Azure-CLI)
 
 ```
 az spring-cloud certificate add --name <cert name> --vault-uri <key vault uri> --vault-certificate-name <key vault cert name>
 ```
 
-> [!IMPORTANT] 
-> Önceki sertifikayı içeri aktar komutunu yürütmeden önce, anahtar kasanıza Azure Spring Cloud erişimi verdiğinizden emin olun. Yapmadıysanız, erişim haklarını vermek için aşağıdaki komutu çalıştırabilirsiniz.
-
-```
-az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id 938df8e2-2b9d-40b1-940c-c75c33494239 --certificate-permissions get list
-``` 
-
-Sertifikanızı başarıyla içeri aktardığınızda, **özel anahtar sertifikaları**listesinde bunu görürsünüz.
-
-![Özel anahtar sertifikası](./media/custom-dns-tutorial/key-certificates.png)
-
-Veya, Azure CLı kullanarak sertifikaların bir listesini görüntüleyebilirsiniz:
+İçeri aktarılan sertifikaların listesini göstermek için:
 
 ```
 az spring-cloud certificate list --resource-group <resource group name> --service <service name>
 ```
+---
 
 > [!IMPORTANT] 
-> Özel bir etki alanını bu sertifikayla güvenli hale getirmek için yine de sertifikayı belirli bir etki alanına bağlamanız gerekir. Bu belgedeki adımları **SSL bağlaması Ekle**başlığı altında izleyin.
+> Özel bir etki alanını bu sertifikayla güvenli hale getirmek için yine de sertifikayı belirli bir etki alanına bağlamanız gerekir. Bu bölümdeki adımları izleyin: [SSL bağlaması Ekle](#add-ssl-binding).
 
 ## <a name="add-custom-domain"></a>Özel etki alanı Ekle
 Özel bir DNS adını Azure Spring Cloud ile eşlemek için bir CNAME kaydı kullanabilirsiniz. 
@@ -113,6 +158,7 @@ DNS sağlayıcınıza gidin ve etki alanınızı <service_name>. azuremicroservi
 ## <a name="map-your-custom-domain-to-azure-spring-cloud-app"></a>Özel etki alanınızı Azure Spring Cloud App 'e eşleyin
 Azure yay bulutu 'nda uygulamanız yoksa [hızlı başlangıç: Azure Portal kullanarak mevcut bir Azure yay bulutu uygulamasını başlatma](https://review.docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-portal?branch=master)' daki yönergeleri izleyin.
 
+#### <a name="portal"></a>[Portal](#tab/Azure-portal)
 Uygulama sayfasına gidin.
 
 1. **Özel etki alanı**' nı seçin.
@@ -126,34 +172,38 @@ Uygulama sayfasına gidin.
 
     ![Özel etki alanı Ekle](./media/custom-dns-tutorial/add-custom-domain.png)
 
-İsterseniz, özel bir etki alanı eklemek için Azure CLı 'yi de kullanabilirsiniz:
-```
-az spring-cloud app custom-domain bind --domain-name <domain name> --app <app name> --resource-group <resource group name> --service <service name>
-```
-
 Bir uygulamanın birden çok etki alanı olabilir, ancak bir etki alanı yalnızca bir uygulamayla eşleşbir şekilde yapılandırılabilir. Özel etki alanınızı uygulamaya başarıyla eşledikten sonra özel etki alanı tablosunda görürsünüz.
 
 ![Özel etki alanı tablosu](./media/custom-dns-tutorial/custom-domain-table.png)
 
-Ya da, özel etki alanlarının bir listesini göstermek için Azure CLı 'yi kullanabilirsiniz:
+#### <a name="cli"></a>[CLI](#tab/Azure-CLI)
+```
+az spring-cloud app custom-domain bind --domain-name <domain name> --app <app name> --resource-group <resource group name> --service <service name>
+```
+
+Özel etki alanlarının listesini göstermek için:
 ```
 az spring-cloud app custom-domain list --app <app name> --resource-group <resource group name> --service <service name>
 ```
+---
 
 > [!NOTE]
 > Özel etki alanınız için **güvenli olmayan** bir etiket, henüz bir SSL sertifikasına bağlanmamış anlamına gelir. Bir tarayıcıdan özel etki alanınızı HTTPS istekleri bir hata veya uyarı alır.
 
 ## <a name="add-ssl-binding"></a>SSL bağlaması Ekle
+
+#### <a name="portal"></a>[Portal](#tab/Azure-portal)
 Özel etki alanı tablosunda, önceki şekilde gösterildiği gibi **SSL bağlaması Ekle** ' yi seçin.  
 1. **Sertifikanızı** seçin veya içeri aktarın.
 1. **Kaydet**’e tıklayın.
 
     ![SSL bağlaması Ekle 1](./media/custom-dns-tutorial/add-ssl-binding.png)
 
-Ya da, **SSL bağlama eklemek**IÇIN Azure CLI 'yi kullanabilirsiniz:
+#### <a name="cli"></a>[CLI](#tab/Azure-CLI)
 ```
-az spring-cloud app custom-domain update --domain-name <domain name> --certificate <cert name> --app <app name> 
+az spring-cloud app custom-domain update --domain-name <domain name> --certificate <cert name> --app <app name> --resource-group <resource group name> --service <service name>
 ```
+---
 
 SSL bağlamasını başarıyla ekledikten sonra, etki alanı durumu güvenli olur: **sağlıklı**. 
 
@@ -161,16 +211,16 @@ SSL bağlamasını başarıyla ekledikten sonra, etki alanı durumu güvenli olu
 
 ## <a name="enforce-https"></a>HTTPS'yi zorunlu tutma
 Varsayılan olarak, HTTP kullanarak uygulamanıza erişmeye devam edebilir, ancak tüm HTTP isteklerini HTTPS bağlantı noktasına yeniden yönlendirebilirsiniz.
-
+#### <a name="portal"></a>[Portal](#tab/Azure-portal)
 Uygulama sayfanızda, sol gezinti bölmesinde **özel etki alanı**' nı seçin. Ardından, **yalnızca https**'Yi, *true*olarak ayarlayın.
 
 ![SSL bağlaması Ekle 3](./media/custom-dns-tutorial/enforce-http.png)
 
-Veya, HTTPS 'yi zorlamak için Azure CLı 'yi kullanabilirsiniz:
+#### <a name="cli"></a>[CLI](#tab/Azure-CLI)
 ```
-az spring-cloud app custom-domain update --domain-name <domain name> --certificate <cert name> --app <app name> --resource-group <resource group name> --service <service name>
+az spring-cloud app update -n <app name> --resource-group <resource group name> --service <service name> --https-only
 ```
-
+---
 İşlem tamamlandığında, uygulamanızı işaret eden HTTPS URL 'Lerinden herhangi birine gidin. HTTP URL 'Lerinin çalışmadığına unutmayın.
 
 ## <a name="see-also"></a>Ayrıca bkz.

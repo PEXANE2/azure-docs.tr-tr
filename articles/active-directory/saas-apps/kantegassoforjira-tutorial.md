@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 230613cc103cc851d1173f867b551af028ea898b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b22bb16c583c0385b31bde89f30763cd4fb478a
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546874"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945934"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-jira"></a>Öğretici: JIRA için Kantega SSO ile tümleştirme Azure Active Directory
 
@@ -99,7 +99,7 @@ JIRA için Kantega SSO 'SU ile Azure AD çoklu oturum açmayı yapılandırmak i
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    ![JIRA etki alanı ve URL 'Ler çoklu oturum açma bilgileri için Kantega SSO](common/idp-intiated.png)
+    !["Tanımlayıcı" ve "Yanıt U R L" metin kutusu vurgulanmış ve "Kaydet" düğmesi seçili olan "temel S A M L yapılandırmasını" gösteren ekran görüntüsü.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
@@ -134,39 +134,39 @@ JIRA için Kantega SSO 'SU ile Azure AD çoklu oturum açmayı yapılandırmak i
 
 1. Dişli üzerine gelin ve **eklentilere**tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforjira-tutorial/addon1.png)
+    !["COG" simgesinin seçili olduğunu ve açılan listeden "eklentileri" gösteren ekran görüntüsü.](./media/kantegassoforjira-tutorial/addon1.png)
 
 1. Eklentiler sekmesi bölümünde **yeni eklentiler bul**' a tıklayın. **JIRA (saml & Kerberos) Için Kantega SSO** 'yu arayın ve yeni SAML **eklentisini yüklemek için Kaldır düğmesine tıklayın** .
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforjira-tutorial/addon2.png)
+    ![Arama kutusuna ve "Install" düğmesine seçili "JIRA (S A M L & Kerberos) için" yeni eklentiler bul "bölümünü gösteren ekran görüntüsü.](./media/kantegassoforjira-tutorial/addon2.png)
 
 1. Eklenti yüklemesi başlar.
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforjira-tutorial/addon3.png)
+    ![Eklentiyi "yükleme" iletişim kutusunun gösterildiği ekran görüntüsü.](./media/kantegassoforjira-tutorial/addon3.png)
 
 1. Yükleme tamamlandıktan sonra. **Kapat**’a tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforjira-tutorial/addon33.png)
+    !["Yüklü ve hazırlanmaya başlamaya!" gösteren ekran görüntüsü "Kapat" eylemi seçili iletişim kutusu.](./media/kantegassoforjira-tutorial/addon33.png)
 
 1.  **Yönet**'e tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforjira-tutorial/addon34.png)
+    !["Yönet" düğmesi seçili "Kantega S S O" uygulama sayfasını gösteren ekran görüntüsü.](./media/kantegassoforjira-tutorial/addon34.png)
     
 1. Yeni eklenti **tümleştirmeler**altında listelenmiştir. Yeni eklentiyi yapılandırmak için **Yapılandır** ' a tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforjira-tutorial/addon35.png)
+    ![Sol taraftaki gezinti menüsünde "TÜMLEŞTIRMELER" ve "Eklentileri Yönet" bölümünde seçilen "Yapılandır" düğmesinin gösterildiği ekran görüntüsü.](./media/kantegassoforjira-tutorial/addon35.png)
 
 1. **SAML** bölümünde. **Kimlik sağlayıcısı ekle** açılır listesinden **Azure ACTIVE DIRECTORY (Azure AD)** öğesini seçin.
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforjira-tutorial/addon4.png)
+    !["Kimlik sağlayıcısı ekle" açılır listesini "Azure Active Directory (Azure A D)" seçiliyken gösteren ekran görüntüsü.](./media/kantegassoforjira-tutorial/addon4.png)
 
 1. Abonelik düzeyini **temel**olarak seçin.
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforjira-tutorial/addon5.png)       
+    !["Temel" seçiliyken "Azure A D 'yi hazırlama" bölümünü gösteren ekran görüntüsü.](./media/kantegassoforjira-tutorial/addon5.png)     
 
 1. **Uygulama özellikleri** bölümünde aşağıdaki adımları gerçekleştirin: 
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforjira-tutorial/addon6.png)
+    !["App ı D U R L" metin kutusu ve Kopyala düğmesi vurgulanmış ve "Ileri" düğmesi seçili "uygulama özellikleri" bölümünü gösteren ekran görüntüsü.](./media/kantegassoforjira-tutorial/addon6.png)
 
     a. **Uygulama KIMLIĞI URI** değerini kopyalayın ve Azure Portal IÇINDEKI **temel SAML yapılandırması** bölümünde **kimlik, yanıt URL 'si ve Sign-On URL 'si** olarak kullanın.
 
@@ -174,7 +174,7 @@ JIRA için Kantega SSO 'SU ile Azure AD çoklu oturum açmayı yapılandırmak i
 
 1. **Meta veri içeri aktarma** bölümünde aşağıdaki adımları gerçekleştirin: 
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforjira-tutorial/addon7.png)
+    !["Bilgisayarımdaki meta veri dosyası" bölümünün seçildiği "meta veri alma" bölümünü gösteren ekran görüntüsü.](./media/kantegassoforjira-tutorial/addon7.png)
 
     a. Bilgisayarımdaki **meta veri dosyasını**seçin ve Azure Portal 'ten indirdiğiniz meta veri dosyasını karşıya yükleyin.
 
@@ -182,7 +182,7 @@ JIRA için Kantega SSO 'SU ile Azure AD çoklu oturum açmayı yapılandırmak i
 
 1. **Ad ve SSO konumu** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforjira-tutorial/addon8.png)
+    !["Kimlik sağlayıcı adı" metin kutusu vurgulanmış ve "Ileri" düğmesi seçili olan "ad ve S S O konumunu" gösteren ekran görüntüsü.](./media/kantegassoforjira-tutorial/addon8.png)
 
     a. Kimlik sağlayıcısı **adı** metin kutusuna kimlik sağlayıcısının adını ekleyin (ör. Azure AD).
 
@@ -190,11 +190,11 @@ JIRA için Kantega SSO 'SU ile Azure AD çoklu oturum açmayı yapılandırmak i
 
 1. Imzalama sertifikasını doğrulayın ve **İleri**' ye tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforjira-tutorial/addon9.png)
+    !["Ileri" düğmesi seçili "Imza doğrulama" bölümünü gösteren ekran görüntüsü.](./media/kantegassoforjira-tutorial/addon9.png)
 
 1. **Jira Kullanıcı hesapları** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforjira-tutorial/addon10.png)
+    !["Jira 'nın dahili dizini 'nde Kullanıcı oluşturma" seçeneği vurgulanmış ve "Ileri" düğmesi seçili olan "JIRA Kullanıcı hesaplarını" gösteren ekran görüntüsü.](./media/kantegassoforjira-tutorial/addon10.png)
 
     a. **Gerekirse JIRA 'nın Iç dizininde kullanıcı oluştur** ' u seçin ve Kullanıcı için grubun uygun adını girin (birden çok No olabilir. virgülle ayrılmış gruplar).
 
@@ -202,7 +202,7 @@ JIRA için Kantega SSO 'SU ile Azure AD çoklu oturum açmayı yapılandırmak i
 
 1. **Finish (Son)** düğmesine tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforjira-tutorial/addon11.png)
+    !["Son" düğmesinin seçili olduğu "Özet" bölümünü gösteren ekran görüntüsü.](./media/kantegassoforjira-tutorial/addon11.png)
 
 1. **Azure AD Için bilinen etki alanları** bölümünde aşağıdaki adımları uygulayın:
 
@@ -236,7 +236,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -274,11 +274,11 @@ Azure AD kullanıcılarının JIRA 'da oturum açmasını sağlamak için, JIRA 
 
 1. Dişli 'ye gelin ve **Kullanıcı yönetimine**tıklayın.
 
-    ![Çalışan Ekle](./media/kantegassoforjira-tutorial/user1.png) 
+    !["COG" simgesinin seçili olduğunu ve açılan listeden "Kullanıcı Yönetimi" seçeneğini gösteren ekran görüntüsü.](./media/kantegassoforjira-tutorial/user1.png) 
 
 1. **Kullanıcı yönetimi** sekmesi bölümünde **Kullanıcı oluştur**' a tıklayın.
 
-    ![Çalışan Ekle](./media/kantegassoforjira-tutorial/user2.png) 
+    !["Kullanıcı oluşturma" düğmesinin seçili olduğu "Kullanıcı Yönetimi" bölümünü gösteren ekran görüntüsü.](./media/kantegassoforjira-tutorial/user2.png) 
 
 1. **"Yeni Kullanıcı Oluştur"** iletişim sayfasında, aşağıdaki adımları uygulayın:
 

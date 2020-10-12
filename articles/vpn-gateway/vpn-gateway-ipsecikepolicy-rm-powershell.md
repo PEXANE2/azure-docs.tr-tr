@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.openlocfilehash: 6039eeed2e1bcb348920be986e72089164c614ae
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89392659"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>S2S VPN veya VNet-VNet bağlantıları için IPsec/IKE ilkesi yapılandırma
@@ -83,8 +83,8 @@ Aşağıdaki tabloda, müşteriler tarafından yapılandırılabilen desteklenen
 > 3. Yukarıdaki tabloda:
 >    * Ikev2 ana moda veya 1 aşamasına karşılık gelir
 >    * IPSec, hızlı moda veya Aşama 2 ' ye karşılık gelir
->    * DH grubu ana modda veya 1. aşamada kullanılan Diffie-Hellmence grubunu belirtir
->    * PFS Grubu, Hızlı modda veya Aşama 2 ' de kullanılan Diffie-Hellmence grubunu belirtti
+>    * DH grubu, ana modda veya 1. aşamada kullanılan Diffie-Hellmen grubunu belirtir
+>    * PFS Grubu, Hızlı modda veya Aşama 2 ' de kullanılan Diffie-Hellmen grubunu belirtti
 > 4. Azure VPN ağ geçitlerinde IKEv2 Ana Modu SA yaşam süresi 28.800 saniye olarak sabitlenmiştir
 > 5. "UsePolicyBasedTrafficSelectors" bağlantısının bir bağlantıda $True olarak ayarlanması, Azure VPN ağ geçidini şirket içi ilke tabanlı VPN güvenlik duvarına bağlanacak şekilde yapılandırır. PolicyBasedTrafficSelectors ' ı etkinleştirirseniz, VPN cihazınızın, şirket içi ağ (yerel ağ geçidi) öneklerinizin tüm birleşimleri ile, Azure sanal ağ öneklerinden herhangi birine ve bunlardan herhangi birine kadar tanımlanmış olan eşleşen trafik seçicileri olduğundan emin olmanız gerekir. Örneğin, şirket içi ağınızın ön ekleri 10.1.0.0/16 ve 10.2.0.0/16; sanal ağınızın ön ekleriyse 192.168.0.0/16 ve 172.16.0.0/16 şeklindeyse, aşağıdaki trafik seçicileri belirtmeniz gerekir:
 >    * 10.1.0.0/16 <====> 192.168.0.0/16
@@ -94,7 +94,7 @@ Aşağıdaki tabloda, müşteriler tarafından yapılandırılabilen desteklenen
 
 İlke tabanlı trafik seçicileri hakkında daha fazla bilgi için bkz. [birden çok şirket içi ilke tabanlı VPN cihazlarını bağlama](vpn-gateway-connect-multiple-policybased-rm-ps.md).
 
-Aşağıdaki tabloda özel ilke tarafından desteklenen karşılık gelen Diffie-Hellman grupları listelenmektedir:
+Aşağıdaki tabloda, özel ilke tarafından desteklenen karşılık gelen Diffie-Hellman grupları listelenmektedir:
 
 | **Diffie-Hellman Grubu**  | **DHGroup**              | **PFSGroup** | **Anahtar uzunluğu** |
 | --- | --- | --- | --- |

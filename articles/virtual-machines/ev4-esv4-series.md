@@ -9,23 +9,23 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 97d3b87edad56394d42daca19cdb8dbf962fade9
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 2c6540513c46307e4bd51b163dd77984395006c5
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91649516"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945439"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4 ve Esv4 serisi
 
-Ev4 ve Esv4 serisi, &reg; &reg; hiper iş parçacıklı bir yapılandırmadaki Intel Xeon Platinum 8272CL (Cascade Lake) işlemcileri üzerinde çalışır, bellek açısından yoğun çeşitli kurumsal uygulamalar için Idealdir ve 50 GB 'A kadar RAM özelliğine sahiptir. Sürekli olarak 3,4 GHz 'nin tüm çekirdek Turbo saat hızına sahiptir.
+Ev4 ve Esv4 serisi, &reg; &reg; hiper iş parçacıklı bir yapılandırmadaki Intel Xeon Platinum 8272CL (Cascade Lake) işlemcileri üzerinde çalışır, bellek açısından yoğun çeşitli kurumsal uygulamalar için Idealdir ve 50 GB 'A kadar RAM özelliğine sahiptir. 3,4 GHz 'nin tüm çekirdek Turbo saat hızına sahiptir.
 
 > [!NOTE]
 > Sık sorulan sorular için,  [Yerel geçici disk olmadan Azure VM boyutlarına](azure-vms-no-temp-disk.md)bakın.
 
 ## <a name="ev4-series"></a>Ev4 serisi
 
-Ev4 serisi boyutlar Intel Xeon &reg; Platinum 8272CL (Cascade Lake) üzerinde çalışır. Ev4 serisi örnekler, bellek açısından yoğun kurumsal uygulamalar için idealdir. Ev4 serisi VM 'Ler özelliği Intel &reg; hiper Iş parçacığı teknolojisi.
+Ev4 serisi boyutlar Intel Xeon &reg; Platinum 8272CL (Cascade Lake) üzerinde çalışır. Ev4 serisi örnekler, bellek açısından yoğun kurumsal uygulamalar için idealdir. Ev4 serisi VM 'Ler özelliği Intel &reg; Hyper-Threading Technology.
 
 Uzak veri diski depolaması, sanal makinelerden ayrı olarak faturalandırılır. Premium Depolama disklerini kullanmak için Esv4 boyutlarını kullanın. Esv4 boyutları için fiyatlandırma ve faturalandırma ölçümleri Ev4 serisi ile aynıdır.
 
@@ -51,7 +51,7 @@ Uzak veri diski depolaması, sanal makinelerden ayrı olarak faturalandırılır
 
 ## <a name="esv4-series"></a>Esv4 serisi
 
-Esv4 serisi boyutlar Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) üzerinde çalışır. Esv4 serisi örnekler, bellek açısından yoğun kurumsal uygulamalar için idealdir. Evs4 serisi VM 'Ler özelliği Intel &reg; hiper Iş parçacığı teknolojisi. Uzak veri diski depolaması, sanal makinelerden ayrı olarak faturalandırılır.
+Esv4 serisi boyutlar Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) üzerinde çalışır. Esv4 serisi örnekler, bellek açısından yoğun kurumsal uygulamalar için idealdir. Evs4 serisi VM 'Ler özelliği Intel &reg; Hyper-Threading Technology. Uzak veri diski depolaması, sanal makinelerden ayrı olarak faturalandırılır.
 
 [Acu](acu.md): 195-210<br>
 [Premium Depolama](premium-storage-performance.md): desteklenir<br>

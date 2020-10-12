@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: 0a5a7ac7d830cb03b1370c31d7e854f3b2a5a2fc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86507191"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>REST API ile zaman uyumsuz yenileme
@@ -98,7 +98,7 @@ Gövde aşağıdakine benzeyebilir:
 
 Parametrelerin belirtilmesi gerekli değildir. Varsayılan değer uygulanır.
 
-| Ad             | Tür  | Description  |Varsayılan  |
+| Ad             | Tür  | Açıklama  |Varsayılan  |
 |------------------|-------|--------------|---------|
 | `Type`           | Sabit listesi  | Gerçekleştirilecek işleme türü. Türler TMSL [yenileme komut](https://docs.microsoft.com/analysis-services/tmsl/refresh-command-tmsl) türleriyle hizalanır: Full, clearvalues, Calculate, dataonly, Automatic ve birleştirme. Tür ekleme desteklenmiyor.      |   otomatik      |
 | `CommitMode`     | Sabit listesi  | Nesnelerin toplu işlemlere mi yoksa yalnızca tamamlandığında mi uygulanacağını belirler. Modlar şunlardır: Default, işlemsel, partialBatch.  |  işlem       |
@@ -113,7 +113,7 @@ CommitMode, partialBatch 'e eşittir. Saat süretabilecek büyük veri kümeleri
 
 ### <a name="status-values"></a>Durum değerleri
 
-|Durum değeri  |Description  |
+|Durum değeri  |Açıklama  |
 |---------|---------|
 |`notStarted`    |   İşlem henüz başlatılmadı.      |
 |`inProgress`     |   İşlem sürüyor.      |

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: 4dc28b51e33de6bf08995064404d2d4cc6ca9b58
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619585"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-databases"></a>Parçalı çok kiracılı veritabanları kullanan bir SaaS uygulamasında şemayı yönetme
@@ -41,7 +41,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Tüm kiracı veritabanlarındaki başvuru verilerini güncelleştirin.
 > * Tüm kiracı veritabanlarındaki bir tabloda bir dizin oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Wingtip biletleri çok kiracılı veritabanı uygulaması zaten dağıtılmalıdır:
     - Yönergeler için, Wingtip bilet SaaS çok kiracılı veritabanı uygulamasını tanıtan ilk öğreticiye bakın:<br />[Azure SQL veritabanı 'nı kullanan, parçalı bir çok kiracılı uygulamayı dağıtın ve araştırın](../../sql-database/saas-multitenantdb-get-started-deploy.md).

@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 9e6b8511164cd7e9a855a70d9edba4ce6492c3a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a25a1ec5f2d650501a7c5da8bb1c60f57ad549d
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91404750"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945796"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>Azure Data Factory için ORC biçimi
 
@@ -30,9 +30,9 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 
 | Özellik         | Açıklama                                                  | Gerekli |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| tür             | Veri kümesinin Type özelliği **orc**olarak ayarlanmalıdır. | Evet      |
-| location         | Dosya (ler) in konum ayarları. Her dosya tabanlı bağlayıcının, altında kendi konum türü ve desteklenen özellikleri vardır `location` . **Bağlayıcı makalesi-> veri kümesi özellikleri bölümünde ayrıntılara bakın**. | Evet      |
-| compressionCodec         | ORC dosyalarına yazarken kullanılacak sıkıştırma codec bileşeni. ORC dosyalarından okurken, veri fabrikaları dosya meta verilerini temel alarak sıkıştırma codec 'ini otomatik olarak belirlenir.<br>Desteklenen türler None, **zlib**, **Snappy** (varsayılan) ve **LZO** **'tur**. Not Şu anda Copy etkinliği Read/Write ORC dosyaları sırasında LZO 'yi desteklemez. | Hayır      |
+| tür             | Veri kümesinin Type özelliği **orc**olarak ayarlanmalıdır. | Yes      |
+| location         | Dosya (ler) in konum ayarları. Her dosya tabanlı bağlayıcının, altında kendi konum türü ve desteklenen özellikleri vardır `location` . **Bağlayıcı makalesi-> veri kümesi özellikleri bölümünde ayrıntılara bakın**. | Yes      |
+| compressionCodec         | ORC dosyalarına yazarken kullanılacak sıkıştırma codec bileşeni. ORC dosyalarından okurken, veri fabrikaları dosya meta verilerini temel alarak sıkıştırma codec 'ini otomatik olarak belirlenir.<br>Desteklenen türler None, **zlib**, **Snappy** (varsayılan) ve **LZO** **'tur**. Not Şu anda Copy etkinliği Read/Write ORC dosyaları sırasında LZO 'yi desteklemez. | No      |
 
 Azure Blob depolamada ORC veri kümesinin bir örneği aşağıda verilmiştir:
 
@@ -59,7 +59,7 @@ Azure Blob depolamada ORC veri kümesinin bir örneği aşağıda verilmiştir:
 
 Aşağıdaki noktalara dikkat edin:
 
-* Karmaşık veri türleri desteklenmez (STRUCT, MAP, LIST, UNION).
+* Karmaşık veri türleri (örn. MAP, LIST, STRUCT) Şu anda yalnızca veri akışlarında desteklenir, kopyalama etkinliğinde desteklenmez. Veri akışlarında karmaşık türleri kullanmak için, şema veri kümesinde boş bırakarak dosya şemasını veri kümesinde içeri aktarmayın. Ardından, kaynak dönüşümünde projeksiyonu içeri aktarın.
 * Sütun adında boşluk desteklenmiyor.
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
@@ -72,8 +72,8 @@ Aşağıdaki özellikler, etkinlik *** \* kaynağını \* *** kopyalama bölüm�
 
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
-| tür          | Kopyalama etkinliği kaynağının Type özelliği **Orcsource**olarak ayarlanmalıdır. | Evet      |
-| storeSettings | Veri deposundan veri okuma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının, altında kendi desteklenen okuma ayarları vardır `storeSettings` . **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | Hayır       |
+| tür          | Kopyalama etkinliği kaynağının Type özelliği **Orcsource**olarak ayarlanmalıdır. | Yes      |
+| storeSettings | Veri deposundan veri okuma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının, altında kendi desteklenen okuma ayarları vardır `storeSettings` . **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | No       |
 
 ### <a name="orc-as-sink"></a>Havuz olarak ORC
 
@@ -81,17 +81,17 @@ Aşağıdaki özellikler, etkinlik *** \* havuzunu \* *** Kopyala bölümünde d
 
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
-| tür          | Kopyalama etkinliği havuzunun Type özelliği **Orcsink**olarak ayarlanmalıdır. | Evet      |
-| formatSettings | Bir özellik grubu. Aşağıdaki **orc yazma ayarları** tablosuna bakın. |    Hayır      |
-| storeSettings | Veri deposuna veri yazma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının altında kendi desteklenen yazma ayarları vardır `storeSettings` . **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | Hayır       |
+| tür          | Kopyalama etkinliği havuzunun Type özelliği **Orcsink**olarak ayarlanmalıdır. | Yes      |
+| formatSettings | Bir özellik grubu. Aşağıdaki **orc yazma ayarları** tablosuna bakın. |    No      |
+| storeSettings | Veri deposuna veri yazma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının altında kendi desteklenen yazma ayarları vardır `storeSettings` . **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | No       |
 
 Altında desteklenen **orc yazma ayarları** `formatSettings` :
 
 | Özellik      | Açıklama                                                  | Gerekli                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| tür          | FormatSettings türü **Orcwritesettings**olarak ayarlanmalıdır. | Evet                                                   |
-| maxRowsPerFile | Bir klasöre veri yazarken, birden fazla dosyaya yazmayı ve dosya başına en fazla satırı belirtmeyi seçebilirsiniz.  | Hayır |
-| Dosyaadıöneki | Yapılandırıldığında geçerlidir `maxRowsPerFile` .<br> Birden çok dosyaya veri yazarken dosya adı önekini belirtin, bu düzende sonuçlandı: `<fileNamePrefix>_00000.<fileExtension>` . Belirtilmemişse, dosya adı ön eki otomatik olarak oluşturulur. Kaynak dosya tabanlı depo veya [bölüm seçeneği etkinleştirilmiş veri deposu](copy-activity-performance-features.md)olduğunda bu özellik uygulanmaz.  | Hayır |
+| tür          | FormatSettings türü **Orcwritesettings**olarak ayarlanmalıdır. | Yes                                                   |
+| maxRowsPerFile | Bir klasöre veri yazarken, birden fazla dosyaya yazmayı ve dosya başına en fazla satırı belirtmeyi seçebilirsiniz.  | No |
+| Dosyaadıöneki | Yapılandırıldığında geçerlidir `maxRowsPerFile` .<br> Birden çok dosyaya veri yazarken dosya adı önekini belirtin, bu düzende sonuçlandı: `<fileNamePrefix>_00000.<fileExtension>` . Belirtilmemişse, dosya adı ön eki otomatik olarak oluşturulur. Kaynak dosya tabanlı depo veya [bölüm seçeneği etkinleştirilmiş veri deposu](copy-activity-performance-features.md)olduğunda bu özellik uygulanmaz.  | No |
 
 ## <a name="mapping-data-flow-properties"></a>Veri akışı özelliklerini eşleme
 

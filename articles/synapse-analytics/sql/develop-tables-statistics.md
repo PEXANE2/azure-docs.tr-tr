@@ -12,10 +12,10 @@ ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
 ms.openlocfilehash: cefc6cc72ed8d74663464f4ac2d672369cd9d31c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91288673"
 ---
 # <a name="statistics-in-synapse-sql"></a>SYNAPSE SQL istatistikleri
@@ -72,7 +72,7 @@ Bu deyimler istatistiklerin otomatik olarak oluşturulmasını tetikler:
 Ölçülebilir performans düşüşünü önlemek için, sistemin profilini oluşturmadan önce kıyaslama iş yükünü yürüterek öncelikle istatistik oluşturulduğundan emin olmanız gerekir.
 
 > [!NOTE]
-> İstatistik oluşturma işlemi [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) farklı bir kullanıcı bağlamı altında günlüğe kaydedilir.
+> Farklı bir kullanıcı bağlamı altında [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) , istatistik oluşturma işlemi günlüğe kaydedilir.
 
 Otomatik istatistikler oluşturulduğunda şu biçimi alır: _WA_Sys_<8 basamaklı sütun kimliği onaltılık>_<8 basamaklı tablo kimliği onaltılık>. Zaten oluşturulmuş istatistikleri [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) komutunu çalıştırarak görüntüleyebilirsiniz:
 
@@ -443,21 +443,21 @@ Tam sözdizimi için bkz. [güncelleştirme istatistikleri](/sql/t-sql/statement
 
 Bu sistem görünümleri istatistikler hakkında bilgi sağlar:
 
-| Katalog görünümü | Description |
+| Katalog görünümü | Açıklama |
 |:--- |:--- |
 | [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Her sütun için bir satır. |
 | [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Veritabanındaki her nesne için bir satır. |
 | [sys. schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Veritabanındaki her şema için bir satır. |
 | [sys. stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Her istatistik nesnesi için bir satır. |
-| [sys. stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |İstatistikler nesnesindeki her sütun için bir satır. Sys. Columns öğesine geri bağlantı. |
+| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |İstatistikler nesnesindeki her sütun için bir satır. Sys. Columns öğesine geri bağlantı. |
 | [sys. Tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Her tablo için bir satır (dış tabloları içerir). |
-| [sys. table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Her veri türü için bir satır. |
+| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Her veri türü için bir satır. |
 
 #### <a name="system-functions-for-statistics"></a>İstatistikler için sistem işlevleri
 
 Bu sistem işlevleri, istatistiklerle çalışmak için faydalıdır:
 
-| Sistem işlevi | Description |
+| Sistem işlevi | Açıklama |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |İstatistik nesnesinin son güncelleştirilme tarihi. |
 | [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |İstatistik nesnesi tarafından anlaşıldıkça değerlerin dağılımı hakkında özet düzeyi ve ayrıntılı bilgiler. |

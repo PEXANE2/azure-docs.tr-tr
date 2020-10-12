@@ -4,10 +4,10 @@ description: SWIFT CSP-cscf V2020 şema örneğinin denetim eşlemesi. Her denet
 ms.date: 08/18/2020
 ms.topic: sample
 ms.openlocfilehash: 868971b0523e077f0f76c0340a87df550448913a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540821"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>SWIFT CSP-cscf V2020 şema örneğinin denetim eşlemesi
@@ -29,7 +29,7 @@ Bu şema, kuruluşunuzun hesap yönetimi gereksinimleriyle uyumlu olmayan hesapl
 - Okuma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir
 - Yazma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir
 
-## <a name="26-51-64-and-65a-account-management--role-based-schemes"></a>2,6, 5,1, 6,4 ve 6,5 hesap yönetimi | Rol tabanlı şemalar
+## <a name="26-51-64-and-65a-account-management--role-based-schemes"></a>2,6, 5,1, 6,4 ve 6,5 hesap yönetimi | Role-Based şemaları
 
 Azure 'da kaynaklara kimlerin erişebileceğini yönetmenize yardımcı olmak için [Azure rol tabanlı erişim denetimi](../../../../role-based-access-control/overview.md) (Azure RBAC). Azure portal kullanarak, Azure kaynaklarına kimlerin erişebileceğini ve bunların izinlerini gözden geçirebilirsiniz. Bu şema Ayrıca, SQL Server ve Service Fabric için Azure Active Directory kimlik doğrulamasının kullanımını denetlemek üzere [Azure ilke](../../../policy/overview.md) tanımları atar. Azure Active Directory kimlik doğrulaması kullanmak, veritabanı kullanıcıları ve diğer Microsoft Hizmetleri için Basitleştirilmiş izin yönetimi ve merkezi kimlik yönetimine izin verebilir. Ayrıca, bu şema özel Azure RBAC kurallarının kullanımını denetlemek için bir Azure ilke tanımı atar. Özel Azure RBAC kurallarının nerede uygulandığını anlamak, özel Azure RBAC kuralları hata durumunda olduğundan, gereksinimi ve uygun uygulamayı doğrulamanıza yardımcı olabilir.
 
@@ -131,7 +131,7 @@ Azure Güvenlik Merkezi 'nde Uyarlamalı uygulama denetimi, belirli yazılımlar
 
 - Güvenli uygulamaları tanımlamaya yönelik Uyarlamalı uygulama denetimleri, makinelerinizde etkinleştirilmelidir
 
-## <a name="11-user-installed-software"></a>1,1 Kullanıcı tarafından yüklenen yazılım
+## <a name="11-user-installed-software"></a>1,1 User-Installed yazılım
 
 Azure Güvenlik Merkezi 'nde Uyarlamalı uygulama denetimi, belirli yazılımların sanal makinelerinizde çalıştırılmasını engelleyebilen veya engelleyebilecek akıllı ve otomatik bir uçtan uca uygulama filtreleme çözümüdür. Uygulama denetimi, yazılım kısıtlama ilkeleriyle uyumluluğu zorlamanıza ve izlemenize yardımcı olabilir. Bu şema, bir uygulama izin verilenler listesinin önerildiği ancak henüz yapılandırılmadığı sanal makineleri izlemenize yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
 
@@ -143,7 +143,7 @@ Azure Güvenlik Merkezi 'nde Uyarlamalı uygulama denetimi, belirli yazılımlar
 Bu şema, çok faktörlü kimlik doğrulaması etkinleştirilmemiş olan sahip ve/veya yazma izinleri olan denetim hesaplarına [Azure ilke](../../../policy/overview.md) tanımları atayarak ayrıcalıklı erişimi kısıtlayıp denetlemenize yardımcı olur. Multi-Factor Authentication, bir dizi kimlik doğrulama bilgisinin tehlikeye düşmesi durumunda bile hesapların güvenli kalmasına yardımcı olur. Multi-Factor Authentication 'ı etkin olmayan hesapları izleyerek, tehlikeye geçmek daha olası olabilecek hesapları belirleyebilirsiniz.
 
 - MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir
-- MFA, aboneliğinizde yazma izinleri olan hesaplarda etkinleştirilmelidir
+- Aboneliğinizdeki yazma izinleri olan hesaplarda MFA etkinleştirilmelidir
 
 ## <a name="42-identification-and-authentication-organizational-users--network-access-to-non-privileged-accounts"></a>4,2 tanımlama ve kimlik doğrulaması (Kurumsal kullanıcılar) | Ayrıcalıklı olmayan hesaplara ağ erişimi
 
@@ -162,7 +162,7 @@ Bu şema, parola olmadan hesaplardan uzak bağlantılara izin veren ve/veya pass
 - Ters çevrilebilir şifreleme kullanarak parolaları depomayan Windows VM 'lerinden denetim sonuçlarını göster
 - Parolaları, ters çevrilebilir şifreleme kullanarak depomayan Windows VM 'Leri denetlemek için dağıtma
 
-## <a name="23-and-41-authenticator-management--password-based-authentication"></a>2,3 ve 4,1 Authenticator yönetimi | Parola tabanlı kimlik doğrulaması
+## <a name="23-and-41-authenticator-management--password-based-authentication"></a>2,3 ve 4,1 Authenticator yönetimi | Password-Based kimlik doğrulaması
 
 Bu şema, en düşük güç ve diğer parola gereksinimlerini zorlayamama Windows sanal makinelerini denetleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak güçlü parolalar zorlamanıza yardımcı olur. Parola gücü ilkesini ihlal eden sanal makinelerin farkında olmak, tüm sanal makine Kullanıcı hesaplarının parolalarının kuruluşunuzun parola ilkesiyle uyumlu olmasını sağlamak için düzeltici eylemler almanıza yardımcı olur.
 
