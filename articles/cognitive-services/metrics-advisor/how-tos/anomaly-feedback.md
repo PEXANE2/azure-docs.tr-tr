@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: aahi
 ms.openlocfilehash: 50d422edf1a4b45132d0b86eac9d4947cef5e5bf
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90941194"
 ---
 # <a name="adjust-anomaly-detection-using-feedback"></a>Geri bildirimi kullanarak anomali algılamayı ayarlama
@@ -37,19 +37,19 @@ Geri bildirim ek açıklaması modu etkinleştirildiğinde bir noktaya tıklayar
 
 **Yorum** metin kutusunda bir yorumu aynı anda bırakmayı düşünün ve geri bildiriminizi kaydetmek için **Kaydet** ' e tıklayın.
 
-:::image type="content" source="../media/feedback/feedback-menu.png" alt-text="Geri bildirim menüsü.":::
+:::image type="content" source="../media/feedback/feedback-menu.png" alt-text="Geri bildirim ek açıklaması modu.":::
 
 ## <a name="give-feedback-for-multiple-continuous-points"></a>Birden çok sürekli noktaya ilişkin geri bildirimde bulunun
 
 Bir seferde birden çok sürekli noktaya geri bildirimde bulunmak için aşağı tıklayıp farenizi Not eklemek istediğiniz noktalara sürükleyin. Yukarıdaki ile aynı geri bildirim menüsünü görürsünüz. Aynı geri bildirim, **Kaydet**' e tıkladıktan sonra seçili olan tüm noktalara uygulanır.
 
-:::image type="content" source="../media/feedback/continuous-points.png" alt-text="Birden çok noktayı seçin":::
+:::image type="content" source="../media/feedback/continuous-points.png" alt-text="Geri bildirim ek açıklaması modu.":::
 
 ## <a name="how-to-view-my-feedback"></a>Geri bildirimlerimi görüntüleme
 
 Bir noktanın anomali algılama işleminin değişip değişmediğini görmek için, noktanın üzerine gelin. Araç İpucu **geri bildirimle etkilendi:** algılama değiştirilmişse true. **Yanlış**görüntüleniyorsa, noktada geri bildirim hesaplaması yapılır, ancak anomali algılama sonucu değiştirilmedi.
 
-:::image type="content" source="../media/feedback/affected-point.png" alt-text="Nokta, geri bildirimden etkilendi":::
+:::image type="content" source="../media/feedback/affected-point.png" alt-text="Geri bildirim ek açıklaması modu.":::
 
 ## <a name="when-should-i-annotate-an-anomaly-as-normal"></a>"Normal" olarak bir anomali açıklama ekleme yapmam gerekir
 

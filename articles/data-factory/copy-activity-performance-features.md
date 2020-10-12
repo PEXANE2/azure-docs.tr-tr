@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/24/2020
 ms.openlocfilehash: 8e46e9b323657b747fd73bad3b25ed66390f3aa9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324340"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>Etkinlik performansını en iyi duruma getirme özelliklerini Kopyala
@@ -150,10 +150,10 @@ Hedef veri deposuna yüklemeden önce verilerin depolamada hazırlanması isteyi
 
 | Özellik | Açıklama | Varsayılan değer | Gerekli |
 | --- | --- | --- | --- |
-| Enablehazırlama |Verileri bir geçici hazırlama deposu aracılığıyla kopyalamak isteyip istemediğinizi belirtin. |Yanlış |No |
+| Enablehazırlama |Verileri bir geçici hazırlama deposu aracılığıyla kopyalamak isteyip istemediğinizi belirtin. |Yanlış |Hayır |
 | linkedServiceName |Bir [Azure Blob depolama](connector-azure-blob-storage.md#linked-service-properties) alanının veya [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#linked-service-properties) bağlı hizmetin, geçici hazırlama deposu olarak kullandığınız depolama örneğine başvuran bir adını belirtin. |Yok |Evet, **Enablehazırlama** true olarak ayarlandığında |
-| path |Hazırlanan verileri içermesini istediğiniz yolu belirtin. Bir yol sağlamazsanız, hizmet geçici verileri depolamak için bir kapsayıcı oluşturur. |Yok |No |
-| enableCompression |Verilerin hedefe kopyalanmadan önce sıkıştırılması gerekip gerekmediğini belirtir. Bu ayar, aktarılmakta olan verilerin hacmini azaltır. |Yanlış |No |
+| path |Hazırlanan verileri içermesini istediğiniz yolu belirtin. Bir yol sağlamazsanız, hizmet geçici verileri depolamak için bir kapsayıcı oluşturur. |Yok |Hayır |
+| enableCompression |Verilerin hedefe kopyalanmadan önce sıkıştırılması gerekip gerekmediğini belirtir. Bu ayar, aktarılmakta olan verilerin hacmini azaltır. |Yanlış |Hayır |
 
 >[!NOTE]
 > Hazırlanan bir kopyayı sıkıştırma etkinken kullanırsanız, hazırlama blobu bağlı hizmeti için hizmet sorumlusu veya MSI kimlik doğrulaması desteklenmez.

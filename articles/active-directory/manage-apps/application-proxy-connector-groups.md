@@ -15,10 +15,10 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: be3e99ca57957e1975313fed8609533f4a65b102
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764732"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Bağlayıcı gruplarını kullanarak ayrı ağlarda ve konumlarda uygulama yayımlama
@@ -32,7 +32,7 @@ Tüm uygulamalar bir bağlayıcı grubuna atanır. Grup oluşturmazsanız tüm u
 > [!TIP]
 > Büyük bir uygulama proxy dağıtımınız varsa, varsayılan bağlayıcı grubuna hiçbir uygulama atamayın. Bu şekilde, yeni bağlayıcılar bir etkin bağlayıcı grubuna atamaz kadar canlı trafik almaz. Bu yapılandırma ayrıca, kullanıcıları etkilemeden bakım yapabilmek için bağlayıcıları bir boşta moduna geri taşıyarak bunları bir boşta moduna koymanızı sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bağlayıcılarınızı gruplandırmak için [birden çok bağlayıcı yüklediğinizden](application-proxy-add-on-premises-application.md)emin olmanız gerekir. Yeni bir bağlayıcı yüklediğinizde, otomatik olarak **varsayılan** bağlayıcı grubuna katılır.
 
@@ -40,14 +40,14 @@ Bağlayıcılarınızı gruplandırmak için [birden çok bağlayıcı yükledi�
 
 İstediğiniz sayıda bağlayıcı grubu oluşturmak için bu adımları kullanın.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. **Azure Active Directory**  >  **Kurumsal uygulamalar**  >  **uygulama proxy 'si**' ni seçin.
 1. **Yeni bağlayıcı grubu**' nu seçin. Yeni bağlayıcı grubu dikey penceresi görünür.
 
    ![Yeni bir bağlayıcı grubu seçmek için ekranı gösterir](./media/application-proxy-connector-groups/new-group.png)
 
 1. Yeni bağlayıcı grubunuza bir ad verin ve ardından açılan menüyü kullanarak bu gruba ait olan bağlayıcıları seçin.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="assign-applications-to-your-connector-groups"></a>Bağlayıcı gruplarınızı uygulama atama
 

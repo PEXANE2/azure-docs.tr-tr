@@ -10,10 +10,10 @@ ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: mqtt, devx-track-js
 ms.openlocfilehash: 21d0587b951d909f0091eccf9a7f86a484bc5051
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324051"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>Yeni bir sanal cihaz oluşturma ve test etme
@@ -31,7 +31,7 @@ Bu nasıl yapılır kılavuzunda, cihaz benzetimi mikro hizmetini nasıl özelle
 
 *Özellikler*
 
-| Name                     | Değerler                      |
+| Adı                     | Değerler                      |
 | ------------------------ | --------------------------- |
 | Color                    | Beyaz, kırmızı, mavi            |
 | Parlaklık               | 0-100                    |
@@ -41,7 +41,7 @@ Bu nasıl yapılır kılavuzunda, cihaz benzetimi mikro hizmetini nasıl özelle
 
 Aşağıdaki tabloda, açık ampul 'in veri akışı olarak buluta rapor aldığı veriler gösterilmektedir:
 
-| Name   | Değerler      |
+| Adı   | Değerler      |
 | ------ | ----------- |
 | Durum | "açık", "kapalı" |
 | Sıcaklık | Derece F |
@@ -54,7 +54,7 @@ Aşağıdaki tabloda, açık ampul 'in veri akışı olarak buluta rapor aldığ
 
 Aşağıdaki tabloda yeni cihazın desteklediği eylemler gösterilmektedir:
 
-| Name        |
+| Adı        |
 | ----------- |
 | Geçiş yap   |
 | Geçiş kapalı  |
@@ -63,7 +63,7 @@ Aşağıdaki tabloda yeni cihazın desteklediği eylemler gösterilmektedir:
 
 Aşağıdaki tabloda cihazın ilk durumu gösterilmektedir:
 
-| Name                     | Değerler |
+| Adı                     | Değerler |
 | ------------------------ | -------|
 | İlk renk            | Beyaz  |
 | İlk parlaklık       | 75     |
@@ -77,7 +77,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu nasıl yapılır kılavuzunu izlemek için şunlar gerekir:
 
@@ -465,7 +465,7 @@ Postman 'yi ayarlamak için:
 
 1. **Dosya > Içeri aktar**' a tıklayın. Ardından **dosyaları seç**' e tıklayın.
 
-1. **Cihaz-simülasyon-DotNet-Master/docs/Postman** klasörüne gidin. **Azure IoT cihaz benzetimi Çözüm Hızlandırıcısı. postman_collection** ve **Azure IoT cihaz benzetimi çözüm Hızlandırıcısı. postman_environment** ' nı seçin ve **Aç**' a tıklayın.
+1. **Cihaz-simülasyon-DotNet-Master/docs/Postman** klasörüne gidin. **Azure IoT cihaz benzetimi çözümü Accelerator.postman_collection** ve **Azure IoT cihaz benzetimi çözüm Accelerator.postman_environment** seçin ve **Aç**' a tıklayın.
 
 1. **Azure IoT cihaz benzetimi çözüm hızlandırıcıyı** , gönderebileceğiniz isteklere genişletin.
 

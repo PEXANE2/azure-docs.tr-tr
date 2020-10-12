@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
 ms.openlocfilehash: 1725c3ff162e4f6b7ac3a5ea1ede6976c827b510
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328505"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Azure dijital TWINS örneğini farklı bir Azure bölgesine taşıma
@@ -30,7 +30,7 @@ Bu işlem aşağıdaki adımları içerir:
     - Bağlı kaynakları yeniden bağlayın.
 4. Kaynak kaynaklarını Temizleme: özgün örneği silin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure dijital TWINS örneğinizi yeniden oluşturmaya çalışmadan önce, özgün örneğinizin bileşenlerinin üzerine gidip, yeniden oluşturulması gereken tüm parçaların net bir fikrini edinmeniz iyi bir fikirdir.
 
@@ -88,7 +88,7 @@ Son olarak, ADT Gezginini çalıştırıp özgün Azure dijital TWINS örneğini
 
 Bağlantıyı doğrulamak için, *Graph Explorer* kutusundaki grafikteki tüm TWINS ve ilişkileri görüntüleyen varsayılan sorguyu çalıştırmak üzere *Sorguyu Çalıştır* düğmesine basabilirsiniz.
 
-:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Pencerenin üst kısmına yakın bir şekilde ' Run Query ' okuyan bir düğme vurgulandı" lightbox="media/how-to-move-regions/run-query.png":::
+:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Localhost: 3000 konumunda çalışan bir uygulamayı gösteren tarayıcı penceresi. Uygulama ADT Explorer olarak adlandırılır ve bir sorgu Gezgini, model görünümü, grafik görünümü ve Özellik Gezgini için kutular içerir. Henüz bir ekran verisi yok." lightbox="media/how-to-move-regions/run-query.png":::
 
 Bu öğeleri hedef bölgede yeni örneğinize yeniden yüklemek için ADT Gezgini 'ni çalışır durumda bırakabilirsiniz.
 
@@ -100,7 +100,7 @@ Bunların tümünü tek seferde indirmek için, önce grafiğin *GRAFIK görün�
  
 Sonra *GRAFIK görünümü* kutusunda *grafiği dışarı aktar* simgesine basın.
 
-:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="Grafik görünümü kutusunda bir simge vurgulanır. Bir bulutun dışına işaret eden bir ok gösterir." lightbox="media/how-to-move-regions/export-graph.png":::
+:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="Localhost: 3000 konumunda çalışan bir uygulamayı gösteren tarayıcı penceresi. Uygulama ADT Explorer olarak adlandırılır ve bir sorgu Gezgini, model görünümü, grafik görünümü ve Özellik Gezgini için kutular içerir. Henüz bir ekran verisi yok." lightbox="media/how-to-move-regions/export-graph.png":::
 
 Bu, *GRAFIK görünümünde*bir *indirme* bağlantısını etkinleştirir. Modelleriniz, TWINS ve ilişkiler dahil olmak üzere sorgu sonucunun JSON tabanlı temsilini indirmek için bunu seçin. Bu, makinenize bir *. JSON* dosyası indirmelidir.
 
@@ -136,7 +136,7 @@ Aksi takdirde, devam etmek için **ADT Gezginini** çalıştıran tarayıcı pen
 
 Şu anda ADT Gezgini özgün Azure dijital TWINS örneğinizle bağlantılı. Pencerenin üst kısmındaki *oturum aç* düğmesine vurarak bağlantıyı yeni örneğinizi işaret etmek üzere değiştirin. 
 
-:::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="Pencerenin üst kısmındaki oturum açma simgesini vurgulayan ADT Explorer. Simge, bir anahtarın silueti içeren bir kişinin basit silueti gösterir." lightbox="media/how-to-move-regions/sign-in.png":::
+:::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="Localhost: 3000 konumunda çalışan bir uygulamayı gösteren tarayıcı penceresi. Uygulama ADT Explorer olarak adlandırılır ve bir sorgu Gezgini, model görünümü, grafik görünümü ve Özellik Gezgini için kutular içerir. Henüz bir ekran verisi yok." lightbox="media/how-to-move-regions/sign-in.png":::
 
 Uygulama kaydını yeniden kullandığınız için yalnızca *ADT URL 'sini*değiştirmeniz gerekir. Bu değeri *https://{yeni örnek konak adı}* okuduğu şekilde değiştirin.
 
@@ -148,7 +148,7 @@ Ardından, daha önce indirdiğiniz çözüm bileşenlerini yeni örneğinize y�
 
 **Modellerinizi, TWINS 'i ve Graf**'yi karşıya yüklemek IÇIN grafik *görünümü* kutusunda *Graf al* simgesine basın. Bu seçenek, bu bileşenlerin üçünü aynı anda (hatta grafikte kullanılmayan modeller) karşıya yükler.
 
-:::image type="content" source="media/how-to-move-regions/import-graph.png" alt-text="Grafik görünümü kutusunda bir simge vurgulanır. Bir buluta işaret eden bir ok gösterir." lightbox="media/how-to-move-regions/import-graph.png":::
+:::image type="content" source="media/how-to-move-regions/import-graph.png" alt-text="Localhost: 3000 konumunda çalışan bir uygulamayı gösteren tarayıcı penceresi. Uygulama ADT Explorer olarak adlandırılır ve bir sorgu Gezgini, model görünümü, grafik görünümü ve Özellik Gezgini için kutular içerir. Henüz bir ekran verisi yok." lightbox="media/how-to-move-regions/import-graph.png":::
 
 Dosya Seçicisi kutusunda, indirdiğiniz grafiğinize gidin. Graph *. JSON* dosyasını seçin ve *Aç*' a tıklayın.
 
@@ -158,7 +158,7 @@ Grafik karşıya yüklemeyi onaylamak için, *GRAFIK görünümünün*sağ üst 
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-move-regions/graph-preview-save.png" alt-text="Grafik Önizleme bölmesindeki Kaydet simgesini vurgulama" lightbox="media/how-to-move-regions/graph-preview-save.png":::
+        :::image type="content" source="media/how-to-move-regions/graph-preview-save.png" alt-text="Localhost: 3000 konumunda çalışan bir uygulamayı gösteren tarayıcı penceresi. Uygulama ADT Explorer olarak adlandırılır ve bir sorgu Gezgini, model görünümü, grafik görünümü ve Özellik Gezgini için kutular içerir. Henüz bir ekran verisi yok." lightbox="media/how-to-move-regions/graph-preview-save.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -168,7 +168,7 @@ ADT Explorer artık modellerinizi ve Graf (TWINS ve ilişkiler dahil) yeni Azure
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-move-regions/import-success.png" alt-text="Graph import başarısını belirten iletişim kutusu. ' Içeri aktarma başarılı ' i okur. 2 model içeri aktarıldı. 4 TWINS içeri aktarıldı. 2 ilişki içeri aktarıldı. '" lightbox="media/how-to-move-regions/import-success.png":::
+        :::image type="content" source="media/how-to-move-regions/import-success.png" alt-text="Localhost: 3000 konumunda çalışan bir uygulamayı gösteren tarayıcı penceresi. Uygulama ADT Explorer olarak adlandırılır ve bir sorgu Gezgini, model görünümü, grafik görünümü ve Özellik Gezgini için kutular içerir. Henüz bir ekran verisi yok." lightbox="media/how-to-move-regions/import-success.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -178,11 +178,11 @@ ADT Explorer artık modellerinizi ve Graf (TWINS ve ilişkiler dahil) yeni Azure
 
 Her şeyin başarıyla karşıya yüklendiğini doğrulamak için Graph *Explorer* kutusundaki *sorgu Çalıştır* düğmesine basın ve grafikteki tüm TWINS ve ilişkileri görüntüleyen varsayılan sorguyu çalıştırın. Bu, *model görünümündeki*model listesini de yeniler.
 
-:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Pencerenin üst kısmına yakın bir şekilde, aynı ' çalıştırma sorgusu ' düğmesini etrafında Vurgula" lightbox="media/how-to-move-regions/run-query.png":::
+:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Localhost: 3000 konumunda çalışan bir uygulamayı gösteren tarayıcı penceresi. Uygulama ADT Explorer olarak adlandırılır ve bir sorgu Gezgini, model görünümü, grafik görünümü ve Özellik Gezgini için kutular içerir. Henüz bir ekran verisi yok." lightbox="media/how-to-move-regions/run-query.png":::
 
 Grafınızı *GRAFIK Gezgini* kutusunda görünen tüm TWINS ve ilişkilerle görmeniz gerekir. *Model görünümü* kutusunda modellerinizi de görmeniz gerekir.
 
-:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="' Model görünümü ' kutusunda vurgulanmış 2 model ve ' Graph Explorer ' kutusunda vurgulanmış bir grafik gösteren ADT Gezgini görünümü" lightbox="media/how-to-move-regions/post-upload.png":::
+:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="Localhost: 3000 konumunda çalışan bir uygulamayı gösteren tarayıcı penceresi. Uygulama ADT Explorer olarak adlandırılır ve bir sorgu Gezgini, model görünümü, grafik görünümü ve Özellik Gezgini için kutular içerir. Henüz bir ekran verisi yok." lightbox="media/how-to-move-regions/post-upload.png":::
 
 Bu, modellerinizin, TWINS 'in ve grafiğinin hedef bölgedeki yeni örneğe yeniden yüklendiğini onaylar.
 
@@ -234,4 +234,4 @@ Azure portal kullanarak örneği silmek için, portalı bir tarayıcı penceresi
 
 *Sil* düğmesine basın ve istemleri izleyerek silme işlemini tamamlayın.
 
-:::image type="content" source="media/how-to-move-regions/delete-instance.png" alt-text="Genel Bakış sekmesinde Azure portal Azure dijital TWINS örneği ayrıntılarının görünümü. Sil düğmesi vurgulanır":::
+:::image type="content" source="media/how-to-move-regions/delete-instance.png" alt-text="Localhost: 3000 konumunda çalışan bir uygulamayı gösteren tarayıcı penceresi. Uygulama ADT Explorer olarak adlandırılır ve bir sorgu Gezgini, model görünümü, grafik görünümü ve Özellik Gezgini için kutular içerir. Henüz bir ekran verisi yok.":::

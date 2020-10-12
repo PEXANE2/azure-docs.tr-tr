@@ -13,10 +13,10 @@ ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 09/21/2020
 ms.openlocfilehash: f0ebd511d0b706d1d2066ea87f45c89ae536da69
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321433"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Azure SQL veritabanı ve SQL yönetilen örnek güvenlik özelliklerine genel bakış
@@ -75,9 +75,9 @@ En iyi uygulama olarak, gerektiğinde özel roller oluşturun. Kullanıcıları,
 
 ### <a name="row-level-security"></a>Satır düzeyi güvenlik
 
-Satır düzeyi güvenlik, müşterilerin bir veritabanı tablosundaki satırlara erişimi, sorguyu yürüten kullanıcının özelliklerine göre denetlemesini sağlar (örneğin, Grup üyeliği veya yürütme bağlamı). Satır düzeyi güvenlik, özel etiket tabanlı güvenlik kavramlarını uygulamak için de kullanılabilir. Daha fazla bilgi için bkz. [satır düzeyi güvenlik](/sql/relational-databases/security/row-level-security).
+Row-Level güvenliği, müşterilerin bir veritabanı tablosundaki satırlara erişimi, sorguyu yürüten kullanıcının özelliklerine göre denetlemesini sağlar (örneğin, Grup üyeliği veya yürütme bağlamı). Row-Level güvenliği, özel etiket tabanlı güvenlik kavramlarını uygulamak için de kullanılabilir. Daha fazla bilgi için bkz. [satır düzeyi güvenlik](/sql/relational-databases/security/row-level-security).
 
-![Bir SQL veritabanı 'nın, bir istemci uygulaması aracılığıyla kullanıcılara erişimini gösteren satır düzeyi güvenlik kalkan tek satırlık bir diyagram.](./media/security-overview/azure-database-rls.png)
+![Bir SQL veritabanının bir istemci uygulaması aracılığıyla Row-Level Security kalkan bireysel satırlarının kullanıcılara erişmesini gösteren diyagram.](./media/security-overview/azure-database-rls.png)
 
 ## <a name="threat-protection"></a>Tehdit koruması
 

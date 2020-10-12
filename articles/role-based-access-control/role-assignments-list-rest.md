@@ -16,15 +16,15 @@ ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 634e1111c9374a1749e7dbb0666740ce2833a688
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84790985"
 ---
 # <a name="list-azure-role-assignments-using-the-rest-api"></a>REST API kullanarak Azure rol atamalarını listeleyin
 
-[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]Bu makalede, REST API kullanarak rol atamalarının nasıl listeleneceğini açıklanmaktadır.
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] Bu makalede, REST API kullanarak rol atamalarının nasıl listeleneceğini açıklanmaktadır.
 
 > [!NOTE]
 > Kuruluşunuzun, [Azure tarafından yetkilendirilen kaynak yönetimi](../lighthouse/concepts/azure-delegated-resource-management.md)kullanan bir hizmet sağlayıcısına dış kaynaklı yönetim işlevleri varsa, bu hizmet sağlayıcısı tarafından yetkilendirilen rol atamaları burada gösterilmez.
@@ -92,5 +92,5 @@ Aşağıda çıktının bir örneği gösterilmektedir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [REST API kullanarak Azure rol atamaları ekleme veya kaldırma](role-assignments-rest.md)
-- [Azure REST API başvurusu](/rest/api/azure/)
+- [REST API kullanarak Azure rol atamalarını ekleme veya kaldırma](role-assignments-rest.md)
+- [Azure REST API Başvurusu](/rest/api/azure/)

@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 9/16/2020
 ms.author: b-juche
 ms.openlocfilehash: 0ddb9998c1e1b9b70303aeb4608bc0b53bc103ae
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325496"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files için kaynak sınırları
@@ -31,23 +31,23 @@ Aşağıdaki tabloda Azure NetApp Files için kaynak sınırları açıklanmakta
 
 |  Kaynak  |  Varsayılan limit  |  Destek isteği aracılığıyla ayarlanabilir  |
 |----------------|---------------------|--------------------------------------|
-|  Azure bölgesi başına NetApp hesabı sayısı   |  10    |  Yes   |
-|  NetApp hesabı başına kapasite havuzlarının sayısı   |    25     |   Yes   |
-|  Abonelik başına birim sayısı   |    500     |   Yes   |
-|  Kapasite havuzu başına birim sayısı     |    500   |    Yes     |
-|  Birim başına anlık görüntü sayısı       |    255     |    No        |
-|  Azure sanal ağı başına Azure NetApp Files (Microsoft. NetApp/birimler) için temsilci seçilen alt ağ sayısı    |   1   |    No    |
-|  Bir VNet 'te kullanılan IP sayısı (anında eşlenen sanal ağlar dahil) Azure NetApp Files   |    1000   |    No   |
-|  Tek bir kapasite havuzunun en küçük boyutu   |  4 TiB     |    No  |
-|  Tek bir kapasite havuzunun en büyük boyutu    |  500 TiB   |   No   |
-|  Tek bir birimin en küçük boyutu    |    100 GiB    |    No    |
-|  Tek bir birimin en büyük boyutu     |    100 TiB    |    No    |
-|  Tek bir dosyanın en büyük boyutu     |    16 TiB    |    No    |    
-|  Tek bir dizindeki dizin meta verilerinin en büyük boyutu      |    320 MB    |    No    |    
-|  Birim başına en fazla dosya sayısı ([maxfiles](#maxfiles))     |    100.000.000    |    Yes    |    
-|  El ile QoS birimi için atanan en düşük aktarım hızı     |    1 MIB/sn   |    No    |    
-|  El ile QoS birimi için atanan en yüksek aktarım hızı     |    4.500 MIB/sn    |    No    |    
-|  Çapraz bölge çoğaltma verileri koruma birimlerinin sayısı (hedef birimler)     |    5    |    Yes    |     
+|  Azure bölgesi başına NetApp hesabı sayısı   |  10    |  Evet   |
+|  NetApp hesabı başına kapasite havuzlarının sayısı   |    25     |   Evet   |
+|  Abonelik başına birim sayısı   |    500     |   Evet   |
+|  Kapasite havuzu başına birim sayısı     |    500   |    Evet     |
+|  Birim başına anlık görüntü sayısı       |    255     |    Hayır        |
+|  Azure sanal ağı başına Azure NetApp Files (Microsoft. NetApp/birimler) için temsilci seçilen alt ağ sayısı    |   1   |    Hayır    |
+|  Bir VNet 'te kullanılan IP sayısı (anında eşlenen sanal ağlar dahil) Azure NetApp Files   |    1000   |    Hayır   |
+|  Tek bir kapasite havuzunun en küçük boyutu   |  4 TiB     |    Hayır  |
+|  Tek bir kapasite havuzunun en büyük boyutu    |  500 TiB   |   Hayır   |
+|  Tek bir birimin en küçük boyutu    |    100 GiB    |    Hayır    |
+|  Tek bir birimin en büyük boyutu     |    100 TiB    |    Hayır    |
+|  Tek bir dosyanın en büyük boyutu     |    16 TiB    |    Hayır    |    
+|  Tek bir dizindeki dizin meta verilerinin en büyük boyutu      |    320 MB    |    Hayır    |    
+|  Birim başına en fazla dosya sayısı ([maxfiles](#maxfiles))     |    100.000.000    |    Evet    |    
+|  El ile QoS birimi için atanan en düşük aktarım hızı     |    1 MIB/sn   |    Hayır    |    
+|  El ile QoS birimi için atanan en yüksek aktarım hızı     |    4.500 MIB/sn    |    Hayır    |    
+|  Çapraz bölge çoğaltma verileri koruma birimlerinin sayısı (hedef birimler)     |    5    |    Evet    |     
 
 Daha fazla bilgi için bkz. [Kapasite Yönetimi SSS](azure-netapp-files-faqs.md#capacity-management-faqs).
 

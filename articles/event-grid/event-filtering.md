@@ -4,10 +4,10 @@ description: Azure Event Grid aboneliği oluştururken olayların nasıl filtrel
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 837209d4197c271598155776b8d171a705e1f454
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86120101"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Event Grid abonelikleri için olay filtrelemeyi anlayın
@@ -57,7 +57,7 @@ Veri alanlarındaki değerlere göre filtrelemek ve karşılaştırma işlecini 
 * anahtar-filtreleme için kullanmakta olduğunuz olay verileri alanı. Bir sayı, Boolean veya dize olabilir.
 * Values-anahtarla karşılaştırılacak değer veya değerler.
 
-Birden çok değer içeren tek bir filtre belirtirseniz, **ya** da bir işlem gerçekleştirilir, bu nedenle anahtar alanının değeri bu değerlerden biri olmalıdır. Örnek aşağıda verilmiştir:
+Birden çok değer içeren tek bir filtre belirtirseniz, **ya** da bir işlem gerçekleştirilir, bu nedenle anahtar alanının değeri bu değerlerden biri olmalıdır. Aşağıda bir örnek verilmiştir:
 
 ```json
 "advancedFilters": [
@@ -72,7 +72,7 @@ Birden çok değer içeren tek bir filtre belirtirseniz, **ya** da bir işlem ge
 ]
 ```
 
-Birden çok farklı filtre belirtirseniz, **ve** bir işlem gerçekleştirilir, bu nedenle her filtre koşulu karşılanmalıdır. Örnek aşağıda verilmiştir: 
+Birden çok farklı filtre belirtirseniz, **ve** bir işlem gerçekleştirilir, bu nedenle her filtre koşulu karşılanmalıdır. Aşağıda bir örnek verilmiştir: 
 
 ```json
 "advancedFilters": [
@@ -122,8 +122,8 @@ Tüm dize karşılaştırmaları büyük/küçük harfe duyarlı **değildir** .
 Event Grid şemasındaki olaylar için, anahtar için aşağıdaki değerleri kullanın:
 
 * ID
-* Konu başlığı
-* Özne
+* Konu
+* Konu
 * Olay türü
 * Veri sürümü
 * Olay verileri (Data. KEY1 gibi)
@@ -142,9 +142,9 @@ Bulut olayları şemasındaki olaylar için, anahtar için aşağıdaki değerle
 
 Değerler şu şekilde olabilir:
 
-* sayı
+* number
 * string
-* boole
+* boolean
 * array
 
 ### <a name="limitations"></a>Sınırlamalar

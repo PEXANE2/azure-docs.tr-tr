@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: cherylmc
 ms.openlocfilehash: bdd27645045195016b7a563787470bf6f2187115
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84985474"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>VNet 'ten VNet 'e bağlantı yapılandırma (klasik)
@@ -73,7 +73,7 @@ Aşağıdaki tabloda, sanal ağlarınızı nasıl tanımlayacağınızı göster
 
 **Örnek**
 
-| Sanal Ağ | Adres Alanı | Bölge | Yerel ağ sitesine bağlanır |
+| Sanal Ağ | Adres Alanı | Region | Yerel ağ sitesine bağlanır |
 |:--- |:--- |:--- |:--- |
 | TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |Doğu ABD |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
 | TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |Batı ABD |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
@@ -135,7 +135,7 @@ Azure, sanal ağlar arasında trafiğin nasıl yönlendirileceğini anlamak içi
 
 Her VNet için yerel site diğer VNet 'dir. Yapılandırma için aşağıdaki örnek değerler kullanılır:
 
-| Sanal Ağ | Adres Alanı | Bölge | Yerel ağ sitesine bağlanır |
+| Sanal Ağ | Adres Alanı | Region | Yerel ağ sitesine bağlanır |
 |:--- |:--- |:--- |:--- |
 | TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |Doğu ABD |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
 | TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |Batı ABD |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |

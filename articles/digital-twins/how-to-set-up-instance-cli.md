@@ -8,10 +8,10 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: bb5ff0bf7347b87fdc3a103a03f9ff58279a367d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320787"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Azure dijital TWINS örneği ve kimlik doğrulaması (CLı) ayarlama
@@ -78,7 +78,7 @@ Bu komutun sonucu oluşturulan rol ataması hakkında bilgi verilir.
 >
 > Kullanıcı hesabını seçmek ve ayrıntılarını açmak için [Azure Active Directory kullanıcıların Azure Portal sayfasını](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) kullanın. Kullanıcının *ObjectID*'yi kopyalayın:
 >
-> :::image type="content" source="media/includes/user-id.png" alt-text="' Nesne KIMLIĞI ' alanındaki GUID 'YI vurgulamak Azure portal Kullanıcı sayfasının görünümü" lightbox="media/includes/user-id.png":::
+> :::image type="content" source="media/includes/user-id.png" alt-text="Kaynak grubu ve Azure dijital TWINS örneğinin başarıyla oluşturulmasıyla Komut penceresi" lightbox="media/includes/user-id.png":::
 >
 > Ardından, yukarıdaki parametresi için kullanıcının *nesne kimliğini* kullanarak rol atama listesi komutunu tekrarlayın `assignee` .
 
@@ -115,8 +115,7 @@ Bu dosyayı _**manifest.js**_ olarak kaydedin.
 
 Sonra bu dosyayı Cloud Shell karşıya yüklersiniz. Cloud Shell pencerenizde, "dosyaları karşıya yükle/Indir" simgesine tıklayın ve "karşıya yükle" yi seçin.
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Karşıya yükleme seçeneğinin seçimini gösteren Cloud Shell pencere":::
-Yeni oluşturduğunuz *manifest.js* gidin ve "Aç" düğmesine basın.
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Kaynak grubu ve Azure dijital TWINS örneğinin başarıyla oluşturulmasıyla Komut penceresi" düğmesine basın.
 
 Ardından, *genel istemci/yerel (mobil & Masaüstü)* yanıt URL 'si ile bir uygulama kaydı oluşturmak için aşağıdaki komutu çalıştırın `http://localhost` . Yer tutucuları gerektiği gibi değiştirin:
 
@@ -126,7 +125,7 @@ az ad app create --display-name <name-for-your-app-registration> --native-app --
 
 İşte oluşturduğunuz kayıt hakkındaki bilgileri gösteren bu komutun çıktısının bir alıntısı:
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/new-app-registration.png" alt-text="Yeni Azure AD uygulama kaydı Cloud Shell çıkışı":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/new-app-registration.png" alt-text="Kaynak grubu ve Azure dijital TWINS örneğinin başarıyla oluşturulmasıyla Komut penceresi":::
 
 ### <a name="verify-success"></a>Başarıyı doğrula
 
@@ -140,7 +139,7 @@ Sonra, karşıya yüklenen *manifest.js* ayarların kayıt üzerinde doğru şek
 
 Ardından, uygulama kaydının ayrıntılarını görmek için menü çubuğundan *genel bakış* ' ı seçin:
 
-:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Uygulama kaydı için önemli değerlerin Portal görünümü":::
+:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Kaynak grubu ve Azure dijital TWINS örneğinin başarıyla oluşturulmasıyla Komut penceresi":::
 
 **Sayfanızda gösterilen** *uygulama (istemci) kimliğini* ve *Dizin (kiracı) kimliğini* bir yere göz atın. Bu değerler daha sonra [Azure dijital TWINS API 'lerinde istemci uygulamasının kimliğini doğrulamak](how-to-authenticate-client.md)için gerekecektir. Bu tür uygulamalar için kod yazabileceksiniz, bu değerleri olacak kişiyle paylaşmanız gerekir.
 

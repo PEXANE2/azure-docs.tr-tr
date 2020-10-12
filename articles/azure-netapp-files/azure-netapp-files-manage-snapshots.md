@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: b-juche
 ms.openlocfilehash: e1be0879af02fac0f7ae926a02ea23fd6be84de4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325698"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Azure NetApp Files kullanarak anlık görüntüleri yönetme
@@ -221,6 +221,6 @@ Birimi oluştururken anlık görüntü yolunu gizle onay kutusunu seçtiyseniz, 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Anlık görüntü ilkelerine sorun giderme](troubleshoot-snapshot-policies.md)
+* [Anlık görüntü ilkelerinde sorun giderme](troubleshoot-snapshot-policies.md)
 * [Azure NetApp Files için kaynak sınırları](azure-netapp-files-resource-limits.md)
 * [Azure NetApp Files Snapshot 101 videosu](https://www.youtube.com/watch?v=uxbTXhtXCkw&feature=youtu.be)

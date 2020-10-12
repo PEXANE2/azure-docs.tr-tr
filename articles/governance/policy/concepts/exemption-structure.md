@@ -4,10 +4,10 @@ description: Kaynakları veya tanımları değerlendirmesinden muaf tutmak için
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: 1fd14d31824dc86dcd3788607030f28f978f5801
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90968044"
 ---
 # <a name="azure-policy-exemption-structure"></a>Azure Ilke muafiyet yapısı
@@ -86,7 +86,7 @@ Bir ilke muafiyeti oluşturmak için JSON kullanırsınız. İlke muafiyeti içi
 
 İlke muafiyetini tanımlamak ve belirli kaynakla kullanımı için bağlam sağlamak üzere **DisplayName** ve **Description** kullanın. **DisplayName** , en fazla _128_ karakter uzunluğunda ve en fazla _512_ karakter uzunluğunda bir **Açıklama** içeriyor.
 
-## <a name="metadata"></a>Meta Veriler
+## <a name="metadata"></a>Meta veri
 
 **Metadata** özelliği, ilgili bilgileri depolamak için gereken herhangi bir alt özelliği oluşturmaya izin verir. Yukarıdaki örnekte, **RequestedBy**, **approma by**, **approvedOn**ve **bilet başvurusu** özellikleri, istisnayı kimin ne zaman ve ne zaman onayladığı ve istek için bir iç izleme bileti sağlamak için müşteri değerleri içerir. Bu **meta veri** özellikleri örneklerdir, ancak gerekli değildir ve **meta veriler** bu alt özelliklerle sınırlı değildir.
 

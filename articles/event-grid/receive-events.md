@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 42cf237f0c2fbe091307625fde70613ab9173b0c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326482"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>HTTP uç noktasına olayları alma
@@ -18,7 +18,7 @@ Bu makalede bir olay aboneliğinden olayları almak ve sonra olayları almak ve 
 > [!NOTE]
 > Event Grid ile bir Azure Işlevi tetiklendiğinde [Event Grid tetikleyicisi](../azure-functions/functions-bindings-event-grid.md) kullanmanız **önemle** önerilir. Burada genel Web kancası tetikleyicisi kullanımı gösterim amaçlıdır ' dir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 HTTP ile tetiklenen bir işlev içeren bir işlev uygulamasına ihtiyacınız vardır.
 

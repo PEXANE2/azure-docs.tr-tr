@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 7/13/2020
 ms.openlocfilehash: 1dc7bc8e119de7c8fdcf09713286be2633457486
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90895862"
 ---
 # <a name="logs-in-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda Günlükler-hiper ölçek (Citus)
@@ -26,11 +26,11 @@ Hiper ölçek (Citus) Düzenleyicisi veya çalışan düğümü için PostgreSQL
 
 Seçili düğüm için **Tanılama ayarları**' nı açın ve **+ Tanılama ayarı Ekle**' ye tıklayın.
 
-:::image type="content" source="media/howto-hyperscale-logging/diagnostic-settings.png" alt-text="Tanılama Ayarları Ekle düğmesi":::
+:::image type="content" source="media/howto-hyperscale-logging/diagnostic-settings.png" alt-text="düğümlerin listesi":::
 
 Yeni Tanılama ayarları için bir ad seçin ve **Postgressqllogs** kutusunu işaretleyin.  Hangi hedefin günlükleri alacağını seçin.
 
-:::image type="content" source="media/howto-hyperscale-logging/diagnostic-create-setting.png" alt-text="PostgreSQL günlüklerini seçin":::
+:::image type="content" source="media/howto-hyperscale-logging/diagnostic-create-setting.png" alt-text="düğümlerin listesi":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: b-juche
 ms.openlocfilehash: 62bf154c1dbf1a0d3f12e2cef916b37059ce985b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325513"
 ---
 # <a name="resize-a-capacity-pool-or-a-volume"></a>Kapasitesi havuzunu veya birimi yeniden boyutlandırma
@@ -43,5 +43,5 @@ Bir birimin boyutunu gerektiği gibi değiştirebilirsiniz. Birimin kapasite kul
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Kapasite havuzunu ayarlama](azure-netapp-files-set-up-capacity-pool.md)
-- [El ile QoS kapasite havuzunu yönetme](manage-manual-qos-capacity-pool.md)
+- [El ile QoS kapasite havuzu yönetme](manage-manual-qos-capacity-pool.md)
 - [Birimin hizmet düzeyini dinamik olarak değiştirme](dynamic-change-volume-service-level.md) 

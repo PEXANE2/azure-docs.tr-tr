@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.openlocfilehash: e772701396f172eaab906f99463bd9019728b531
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90941192"
 ---
 # <a name="automate-builds-tests-and-deployments-of-an-azure-stream-analytics-job-using-cicd-tools"></a>CI/CD araçları kullanarak Azure Stream Analytics işin derlemelerini, testlerini ve dağıtımlarını otomatikleştirin
@@ -237,7 +237,7 @@ Tüm testler tamamlandığında, JSON biçimindeki test sonuçlarının bir öze
 }
 ```
 
-## <a name="deploy-to-azure"></a>Azure’a dağıtın
+## <a name="deploy-to-azure"></a>Azure’a dağıtma
 
 [Işinizi Azure 'a dağıtmak](../azure-resource-manager/templates/template-tutorial-use-parameter-file.md?tabs=azure-powershell#deploy-template)için derlemeden oluşturulan Azure Resource Manager şablonu ve parametre dosyalarını kullanabilirsiniz.
 

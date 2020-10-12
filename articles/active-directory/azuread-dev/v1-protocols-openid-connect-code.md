@@ -15,10 +15,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: b719e866852d2e865c16c62fddd8c549ae505b7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85551552"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>OpenID Connect ve Azure Active Directory kullanarak web uygulamalarına erişim yetkisi verme
@@ -32,7 +32,7 @@ OpenID Connect, sunucuda barındırılan ve bir tarayıcı aracılığıyla eri�
 ## <a name="register-your-application-with-your-ad-tenant"></a>Uygulamanızı AD kiracınıza kaydetme
 İlk olarak, Azure Active Directory (Azure AD) kiracınızı kullanarak uygulamanızı kaydedin. Bu, uygulamanıza bir Uygulama Kimliği verir ve uygulamanızın belirteçleri alabilmesini sağlar.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
    
 1. Sayfanın sağ üst köşesindeki hesabınızı seçerek Azure AD kiracınızı seçin ve ardından **Dizin gezintisini Değiştir** ' i seçip uygun kiracıyı seçin. 
    - Hesabınız kapsamında yalnızca bir Azure AD kiracınız varsa veya uygun Azure AD kiracısını zaten seçtiyseniz bu adımı atlayın.
@@ -117,8 +117,8 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | nonce |gerekli |Talep olarak ortaya çıkan, uygulama tarafından oluşturulan, istek içinde içerilen bir değer `id_token` . Daha sonra uygulama, belirteç yeniden yürütme saldırılarını azaltmak için bu değeri doğrulayabilirler. Değer genellikle, isteğin kaynağını belirlemek için kullanılabilecek rastgele bir, benzersiz dize veya GUID 'dir. |
 | redirect_uri | Önerilen |Uygulamanızın, kimlik doğrulama yanıtlarının sizin uygulamanız tarafından gönderilebileceği ve alınabileceği redirect_uri. Portalın, URL kodlamalı olması dışında, portalda kaydettiğiniz redirect_uris biriyle tam olarak eşleşmesi gerekir. Eksik ise, Kullanıcı Aracısı, rastgele bir uygulama için kaydedilen yeniden yönlendirme URI 'lerinden birine geri gönderilir. Maksimum uzunluk 255 bayttır |
 | response_mode |isteğe bağlı |Elde edilen authorization_code uygulamanıza geri göndermek için kullanılması gereken yöntemi belirtir. Desteklenen değerler `form_post` *http form gönderi* ve `fragment` *URL parçası*içindir. Web uygulamaları için, `response_mode=form_post` belirteçlerin uygulamanıza en güvenli şekilde aktarılmasını sağlamak üzere kullanmanızı öneririz. İd_token dahil olmak üzere herhangi bir akış için varsayılan değer `fragment` .|
-| durum |Önerilen |Belirteç yanıtında döndürülen isteğe eklenen bir değer. Bu, istediğiniz herhangi bir içerik dizesi olabilir. Rastgele oluşturulan benzersiz bir değer genellikle [siteler arası istek sahteciliği saldırılarını önlemek](https://tools.ietf.org/html/rfc6749#section-10.12)için kullanılır. Durum Ayrıca, kullanıcının uygulamadaki durumu hakkında bilgi kodlamak için kullanılır; Örneğin, bulunan sayfa veya görünüm gibi kimlik doğrulama isteği gerçekleştirilmeden önce. |
-| isteme |isteğe bağlı |Gerekli kullanıcı etkileşiminin türünü gösterir. Şu anda yalnızca geçerli değerler ' login', ' none ' ve ' onay ' değerleridir. `prompt=login`kullanıcıyı bu istek üzerine kimlik bilgilerini girmeye zorlar, tek oturum açma işlemini negatifler. `prompt=none`bunun tersidir, kullanıcının herhangi bir etkileşimli istem ile sunulmamasını sağlar. İstek, tek oturum açma yoluyla sessizce tamamlanamaz, uç nokta bir hata döndürür. `prompt=consent`Kullanıcı oturum açtıktan sonra, kullanıcıdan uygulamaya izin vermesini isteyen OAuth onay iletişim kutusunu tetikler. |
+| state |Önerilen |Belirteç yanıtında döndürülen isteğe eklenen bir değer. Bu, istediğiniz herhangi bir içerik dizesi olabilir. Rastgele oluşturulan benzersiz bir değer genellikle [siteler arası istek sahteciliği saldırılarını önlemek](https://tools.ietf.org/html/rfc6749#section-10.12)için kullanılır. Durum Ayrıca, kullanıcının uygulamadaki durumu hakkında bilgi kodlamak için kullanılır; Örneğin, bulunan sayfa veya görünüm gibi kimlik doğrulama isteği gerçekleştirilmeden önce. |
+| isteme |isteğe bağlı |Gerekli kullanıcı etkileşiminin türünü gösterir. Şu anda yalnızca geçerli değerler ' login', ' none ' ve ' onay ' değerleridir. `prompt=login` kullanıcıyı bu istek üzerine kimlik bilgilerini girmeye zorlar, tek oturum açma işlemini negatifler. `prompt=none` bunun tersidir, kullanıcının herhangi bir etkileşimli istem ile sunulmamasını sağlar. İstek, tek oturum açma yoluyla sessizce tamamlanamaz, uç nokta bir hata döndürür. `prompt=consent` Kullanıcı oturum açtıktan sonra, kullanıcıdan uygulamaya izin vermesini isteyen OAuth onay iletişim kutusunu tetikler. |
 | login_hint |isteğe bağlı |Kullanıcı adının bir süre önce bilinerek Kullanıcı için oturum açma sayfasının Kullanıcı adı/e-posta adresi alanını önceden doldurmanız için kullanılabilir. Genellikle uygulamalar bu parametreyi yeniden kimlik doğrulama sırasında kullanır ve Kullanıcı adını, talebi kullanarak önceki bir oturum açma işleminden zaten ayıklamış olur `preferred_username` . |
 
 Bu noktada, kullanıcıdan kimlik bilgilerini girmesi ve kimlik doğrulamasını tamamlaması istenir.
@@ -138,7 +138,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 | Parametre | Açıklama |
 | --- | --- |
 | id_token |`id_token`Uygulamanın istediği. `id_token`Kullanıcının kimliğini doğrulamak ve kullanıcıyla oturum başlatmak için öğesini kullanabilirsiniz. |
-| durum |İstekte bulunan, belirteç yanıtında de döndürülen bir değer. Rastgele oluşturulan benzersiz bir değer genellikle [siteler arası istek sahteciliği saldırılarını önlemek](https://tools.ietf.org/html/rfc6749#section-10.12)için kullanılır. Durum Ayrıca, kullanıcının uygulamadaki durumu hakkında bilgi kodlamak için kullanılır; Örneğin, bulunan sayfa veya görünüm gibi kimlik doğrulama isteği gerçekleştirilmeden önce. |
+| state |İstekte bulunan, belirteç yanıtında de döndürülen bir değer. Rastgele oluşturulan benzersiz bir değer genellikle [siteler arası istek sahteciliği saldırılarını önlemek](https://tools.ietf.org/html/rfc6749#section-10.12)için kullanılır. Durum Ayrıca, kullanıcının uygulamadaki durumu hakkında bilgi kodlamak için kullanılır; Örneğin, bulunan sayfa veya görünüm gibi kimlik doğrulama isteği gerçekleştirilmeden önce. |
 
 ### <a name="error-response"></a>Hata yanıtı
 
@@ -197,7 +197,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 ```
 
-| Parametre | Tür | Description |
+| Parametre | Tür | Açıklama |
 | --- | --- | --- |
 | post_logout_redirect_uri |Önerilen |Başarılı oturum kapatıldıktan sonra kullanıcının yeniden yönlendirilmesi gereken URL.  Bu URL, uygulama kayıt portalı 'nda uygulamanız için kayıtlı olan yeniden yönlendirme URI 'lerinden biriyle aynı olmalıdır.  *Post_logout_redirect_uri* dahil edilmezse, kullanıcıya genel bir ileti gösterilir. |
 
@@ -205,7 +205,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 Kullanıcıyı uygulamasına yönlendirirseniz `end_session_endpoint` , Azure AD kullanıcının oturumunu tarayıcıdan temizler. Ancak Kullanıcı, kimlik doğrulaması için Azure AD kullanan diğer uygulamalarda oturum açmış olabilir. Bu uygulamaların kullanıcıyı aynı anda imzalamasını sağlamak için Azure AD, `LogoutUrl` kullanıcının şu anda oturum açmış olduğu tüm uygulamalara kayıtlı BIR http get isteği gönderir. Uygulamalar, kullanıcıyı tanıtan ve yanıt döndüren tüm oturumları temizleyerek bu isteğe yanıt vermelidir `200` . Uygulamanızda çoklu oturum açmayı desteklemek istiyorsanız, uygulamanızın kodunda böyle bir tür uygulamanız gerekir `LogoutUrl` . Öğesini `LogoutUrl` Azure Portal ayarlayabilirsiniz:
 
-1. [Azure portalına](https://portal.azure.com) gidin.
+1. [Azure Portal](https://portal.azure.com)gidin.
 2. Sayfanın sağ üst köşesindeki hesabınıza tıklayarak Active Directory seçin.
 3. Sol taraftaki Gezinti panelinden **Azure Active Directory**' yi seçin ve sonra **uygulama kayıtları** ' i seçin ve uygulamanızı seçin.
 4. **Ayarlar**' a ve ardından **Özellikler** ' e tıklayın ve **oturum kapatma URL 'si** metin kutusunu bulun. 
@@ -248,7 +248,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 | --- | --- |
 | id_token |`id_token`Uygulamanın istediği. `id_token`Kullanıcının kimliğini doğrulamak ve kullanıcıyla oturum başlatmak için öğesini kullanabilirsiniz. |
 | kod |Uygulamanın istediği authorization_code. Uygulama, hedef kaynak için bir erişim belirteci istemek üzere yetkilendirme kodunu kullanabilir. Authorization_codes kısa ömürlü ve genellikle yaklaşık 10 dakika sonra sona erer. |
-| durum |İsteğe bir durum parametresi dahil edilir, yanıtta aynı değer görünmelidir. Uygulama, istek ve yanıtta durum değerlerinin özdeş olduğunu doğrulamalıdır. |
+| state |İsteğe bir durum parametresi dahil edilir, yanıtta aynı değer görünmelidir. Uygulama, istek ve yanıtta durum değerlerinin özdeş olduğunu doğrulamalıdır. |
 
 ### <a name="error-response"></a>Hata yanıtı
 

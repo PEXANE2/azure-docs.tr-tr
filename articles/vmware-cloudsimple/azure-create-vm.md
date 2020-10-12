@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: ee3029de9826aee17dc76d0e69f08b3c1068423b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85847166"
 ---
 # <a name="create-a-virtual-machine-in-azure-using-vm-templates-on-the-vmware-infrastructure"></a>VMware altyapısında VM şablonları kullanarak Azure 'da sanal makine oluşturma
@@ -21,11 +21,11 @@ CloudSimple yöneticinizin aboneliğiniz için etkinleştirildiği VMware altyap
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 ## <a name="create-cloudsimple-virtual-machine"></a>CloudSimple sanal makinesi oluştur
 
-1. **Tüm Hizmetler**’i seçin.
+1. **Tüm hizmetler**’i seçin.
 
 2. **Cloudsimple sanal makineleri**için arama yapın.
 
@@ -64,7 +64,7 @@ CloudSimple yöneticinizin aboneliğiniz için etkinleştirildiği VMware altyap
 
     | Denetim | Açıklama |
     | ------------ | ------------- |
-    | Name | Arabirimi tanımlamak için bir ad girin.  |
+    | Ad | Arabirimi tanımlamak için bir ad girin.  |
     | Ağ | Özel bulut vSphere 'unuzda yapılandırılmış dağıtılmış bağlantı noktası grubu listesinden seçin.  |
     | Bağdaştırıcı | VM için yapılandırılmış kullanılabilir türler listesinden bir vSphere bağdaştırıcısı seçin. Daha fazla bilgi için bkz. [sanal makineniz için bir ağ bağdaştırıcısı seçme](https://kb.vmware.com/s/article/1001805)VMware Bilgi Bankası makalesi. |
     | Önyüklemede açma | VM önyüklendiğinde NIC donanımını etkinleştirip etkinleştirmeyeceğinizi seçin. Varsayılan olarak **etkinleştirilir**. |
@@ -73,7 +73,7 @@ CloudSimple yöneticinizin aboneliğiniz için etkinleştirildiği VMware altyap
 
     | Öğe | Açıklama |
     | ------------ | ------------- |
-    | Name | Diski tanımlamak için bir ad girin.  |
+    | Ad | Diski tanımlamak için bir ad girin.  |
     | Boyut | Kullanılabilir boyutlardan birini seçin.  |
     | SCSI denetleyicisi | Disk için bir SCSI denetleyicisi seçin.  |
     | Mod | Diskin anlık görüntülere nasıl katıldığını belirler. Aşağıdaki seçeneklerden birini belirleyin: <br> -Bağımsız kalıcı: diske yazılan tüm veriler kalıcı olarak yazılmıştır.<br> -Bağımsız kalıcı olmayan: sanal makineyi kapatıp sıfırladığınızda diske yazılan değişiklikler atılır.  Bağımsız olarak kalıcı olmayan bağımsız mod, sanal makineyi her zaman aynı durumda yeniden başlatmanıza olanak tanır. Daha fazla bilgi için bkz. [VMware belgeleri](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html).
@@ -84,7 +84,7 @@ CloudSimple yöneticinizin aboneliğiniz için etkinleştirildiği VMware altyap
 
 ## <a name="view-list-of-cloudsimple-virtual-machines"></a>CloudSimple sanal makinelerinin listesini görüntüle
 
-1. **Tüm Hizmetler**’i seçin.
+1. **Tüm hizmetler**’i seçin.
 
 2. **Cloudsimple sanal makineleri**için arama yapın.
 

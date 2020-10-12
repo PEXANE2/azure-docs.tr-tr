@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
 ms.openlocfilehash: 888f8c96e8c1aa596c76cf09cd95a104821740ca
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320464"
 ---
 # <a name="system-tables-and-views"></a>Sistem tabloları ve görünümleri
@@ -33,7 +33,7 @@ Bu tabloları, düzenleyici düğümünde oturum açtıktan sonra SQL kullanarak
 
 PG \_ Dist \_ bölüm tablosu, veritabanındaki tabloların dağıtıldığı meta verileri depolar. Dağıtılmış her tablo için dağıtım yöntemiyle ilgili bilgileri ve dağıtım sütunuyla ilgili ayrıntılı bilgileri de depolar.
 
-| Ad         | Tür     | Description                                                                                                                                                                                                                                           |
+| Ad         | Tür     | Açıklama                                                                                                                                                                                                                                           |
 |--------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | logicalrelid | regclass | Bu satırın karşılık geldiği dağıtılmış tablo. Bu değer, pg_class Sistem kataloğu tablosundaki relfilenode sütununa başvurur.                                                                                                                   |
 | partmethod   | char     | Bölümlendirme/dağıtım için kullanılan yöntem. Bu sütunun farklı dağıtım yöntemlerine karşılık gelen değerleri ekleme: ' a ', karma: ' h ', başvuru tablosu: ' n '                                                                          |
@@ -54,7 +54,7 @@ SELECT * from pg_dist_partition;
 PG \_ Dist \_ parça tablosu, bir tablonun bireysel parçaları hakkındaki meta verileri depolar. Pg_dist_shard, hangi dağıtılmış tablo parçaları ve parçalara ait dağıtım sütunuyla ilgili istatistikler hakkında bilgiler içerir.
 Bu istatistikler, ekleme dağıtılan tablolar için dağıtım sütununun Min/Max değerlerine karşılık gelir. Karma Dağıtılmış tablolar için, bu parçaya atanan karma belirteç aralıkları vardır. Bu istatistikler, SELECT sorguları sırasında ilişkisiz parçaları ayıklamak için kullanılır.
 
-| Ad          | Tür     | Description                                                                                                                                                                                  |
+| Ad          | Tür     | Açıklama                                                                                                                                                                                  |
 |---------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | logicalrelid  | regclass | Bu satırın karşılık geldiği dağıtılmış tablo. Bu değer, pg_class Sistem kataloğu tablosundaki relfilenode sütununa başvurur.                                                          |
 | parça       | bigint   | Bu parçaya atanan genel benzersiz tanımlayıcı.                                                                                                                                           |
@@ -77,7 +77,7 @@ SELECT * from pg_dist_shard;
 
 PG ldakıard içindeki shardstorage sütunu, parça \_ \_ için kullanılan depolama türünü gösterir. Farklı parça depolama türlerine ve temsiline ilişkin kısa bir genel bakış aşağıda verilmiştir.
 
-| Depolama Türü | Shardstorage değeri | Description                                                                        |
+| Depolama Türü | Shardstorage değeri | Açıklama                                                                        |
 |--------------|--------------------|------------------------------------------------------------------------------------|
 | TABLOSUNDAN        | görüntülenemeyen                | Parçanın, düzenli olarak dağıtılan bir tabloya ait verileri depoladığı anlamına gelir.         |
 | SÜTUNLU     | Değiştir                | Parçanın sütunlu verileri depolayıp depoladığını gösterir. (Dağıtılmış cstore_fdw tabloları tarafından kullanılır) |
@@ -87,7 +87,7 @@ PG ldakıard içindeki shardstorage sütunu, parça \_ \_ için kullanılan depo
 
 PG \_ Dist \_ yerleştirme tablosu, çalışan düğümlerinde parça çoğaltmalarının konumunu izler. Belirli bir düğüme atanan bir parça kopyasının her çoğaltması parça yerleşimi olarak adlandırılır. Bu tablo, her parça yerleşiminin sistem durumu ve konumuyla ilgili bilgileri depolar.
 
-| Ad        | Tür   | Description                                                                                                                               |
+| Ad        | Tür   | Açıklama                                                                                                                               |
 |-------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------|
 | parça     | bigint | Bu yerleştirme ile ilişkili parça tanımlayıcısı. Bu değer, pg_dist_shard Catalog tablosundaki parçalama sütununa başvurur.             |
 | kıardstate  | int    | Bu yerleştirme durumunu açıklar. Aşağıdaki bölümde farklı parça durumları ele alınmıştır.                                         |
@@ -112,7 +112,7 @@ SELECT * from pg_dist_placement;
 
 Hiper ölçek (Citus), parça sistem durumunu yerleştirme temelinde yönetir. Bir yerleştirme sistemi tutarsız bir duruma geçirir, Citus otomatik olarak kullanılamaz olarak işaretler. Yerleştirme durumu, pg_dist_shard_placement tablosuna, shardstate sütununun içinde kaydedilir. Aşağıda, farklı parça yerleştirme durumlarına ilişkin kısa bir genel bakış verilmiştir:
 
-| Durum adı | Shardstate değeri | Description                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Durum adı | Shardstate değeri | Açıklama                                                                                                                                                                                                                                                                                                                                                                                                                         |
 |------------|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | KARAR  | 1                | Yeni parçaların oluşturulduğu durum içinde oluşturulur. Bu durumdaki parça yerleşimi güncel kabul edilir ve sorgu planlama ve yürütme işlemlerinde kullanılır.                                                                                                                                                                                                                                                                                 |
 | OLMADAN   | 3                | Bu durumdaki parça yerleşimi, aynı parçanın diğer çoğaltmalarıyla eşitlenmeyeceği için etkin değil olarak kabul edilir. Bu yerleştirme için bir Append, değiştirme (INSERT, UPDATE, DELETE) veya DDL işlemi başarısız olduğunda durum oluşabilir. Sorgu planlayıcısı, planlama ve yürütme sırasında bu durumda yer alacak yerleşimi yoksayacak. Kullanıcılar bu parçadaki verileri, bir arka plan etkinliği olarak son bir çoğaltmayla eşitleyebilir. |
@@ -122,7 +122,7 @@ Hiper ölçek (Citus), parça sistem durumunu yerleştirme temelinde yönetir. B
 
 PG \_ Dist \_ düğüm tablosu, kümedeki çalışan düğümleri hakkında bilgiler içerir.
 
-| Ad             | Tür    | Description                                                                                                                                                                                |
+| Ad             | Tür    | Açıklama                                                                                                                                                                                |
 |------------------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | NodeId           | int     | Tek bir düğüm için otomatik olarak tanımlayıcı tanımlayıcı.                                                                                                                                          |
 | ID          | int     | Akış çoğaltma modeli kullanıldığında bir birincil sunucu grubunu ve sıfır veya daha fazla ikincil sunucuyu belirtmek için kullanılan tanımlayıcı. Varsayılan olarak NodeId ile aynıdır.         |
@@ -149,7 +149,7 @@ SELECT * from pg_dist_node;
 
 Citus.pg \_ Dist \_ nesne tablosu, düzenleyici düğümünde oluşturulmuş ve çalışan düğümlerine yayılan türler ve işlevler gibi nesnelerin bir listesini içerir. Bir yönetici kümeye yeni çalışan düğümleri eklediğinde, hiper ölçek (Citus) otomatik olarak dağıtılmış nesnelerin kopyalarını yeni düğümlerde oluşturur (nesne bağımlılıklarını karşılamak için doğru sırada).
 
-| Ad                        | Tür    | Description                                          |
+| Ad                        | Tür    | Açıklama                                          |
 |-----------------------------|---------|------------------------------------------------------|
 | ClassID                     | id     | Dağıtılmış nesnenin sınıfı                      |
 | ObjId                       | id     | Dağıtılmış nesnenin nesne KIMLIĞI                  |
@@ -212,7 +212,7 @@ PG \_ Dist \_ birlikte bulundurma tablosu, parçaların hangi tabloları \' birl
 Aynı parçalı grup içinde iki tablo olduğunda, hiper ölçek (Citus) aynı bölüm değerlerine sahip parçaların aynı çalışan düğümlerine yerleştirilmelerini sağlar.
 Birlikte bulundurma, JOIN iyileştirmeleri, belirli dağıtılmış toplamalar ve yabancı anahtar desteği sunar. Parça sayıları, çoğaltma faktörleri ve bölüm sütun türleri iki tablo arasında eşleşme olduğunda parça birlikte bulundurma algılanır; Ancak, isterseniz, dağıtılmış tablo oluşturulurken özel bir birlikte bulundurma grubu belirtilebilir.
 
-| Ad                   | Tür | Description                                                                   |
+| Ad                   | Tür | Açıklama                                                                   |
 |------------------------|------|-------------------------------------------------------------------------------|
 | birlikte bulunan cationıd           | int  | Bu satırın karşılık geldiği birlikte bulundurma grubu için benzersiz tanımlayıcı.          |
 | shardcount             | int  | Bu birlikte bulundurma grubundaki tüm tablolar için parça sayısı                          |
@@ -231,7 +231,7 @@ SELECT * from pg_dist_colocation;
 
 Bu tablo, [rebalance_table_shards](reference-hyperscale-functions.md#rebalance_table_shards) parçaların nereye taşınacağını belirlemede kullanabileceği stratejileri tanımlar.
 
-| Ad                           | Tür    | Description                                                                                                                                       |
+| Ad                           | Tür    | Açıklama                                                                                                                                       |
 |--------------------------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------|
 | default_strategy               | boolean | Rebalance_table_shards varsayılan olarak bu stratejiyi seçip seçmemelidir. Bu sütunu güncelleştirmek için citus_set_default_rebalance_strategy kullanın             |
 | shard_cost_function            | regproc | Büyük/büyük tamsayı olarak bir parça olması gereken bir maliyet işlevi için tanımlayıcı, gerçek tür olarak bir maliyet kavramı döndürmelidir                                |
@@ -329,7 +329,7 @@ Hiper ölçek (Citus) `citus_stat_statements` , sorguların nasıl yürütüldü
 
 Bu görünüm, kiracı yalıtımının ne zaman karar vermeyeceğine yardımcı olan çok kiracılı bir uygulamadaki sorguları kaynak kiracılarına izleyebilir.
 
-| Ad          | Tür   | Description                                                                      |
+| Ad          | Tür   | Açıklama                                                                      |
 |---------------|--------|----------------------------------------------------------------------------------|
 | QueryId       | bigint | tanımlayıcı (pg_stat_statements birleştirmeler için iyi)                                   |
 | UserID        | id    | sorguyu çalıştıran Kullanıcı                                                           |
