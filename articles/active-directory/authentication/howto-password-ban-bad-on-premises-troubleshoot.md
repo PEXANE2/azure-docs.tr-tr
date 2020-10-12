@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 25199aeb7a3ed6332e74ad05835a8c4fca763c00
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88116470"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Sorun giderme: şirket içi Azure AD parola koruması
@@ -50,7 +50,7 @@ Bu sorunun ana belirtisi, DC Aracısı Yönetici olay günlüğündeki 30018 ola
 
 1. Ormanın ve tüm proxy sunucularının aynı Azure kiracısına karşı kaydedildiğinden emin olun.
 
-   Ve PowerShell cmdlet 'lerini çalıştırarak bu gereksinimi denetleyebilir `Get-AzureADPasswordProtectionProxy` ve `Get-AzureADPasswordProtectionDCAgent` ardından `AzureTenant` döndürülen her bir öğenin özelliğini karşılaştırabilirsiniz. Doğru işlem için, bildirilen kiracı adı tüm DC aracıları ve proxy sunucuları genelinde aynı olmalıdır.
+   Ve PowerShell cmdlet 'lerini çalıştırarak bu gereksinimi denetleyebilir  `Get-AzureADPasswordProtectionProxy` ve `Get-AzureADPasswordProtectionDCAgent` ardından `AzureTenant` döndürülen her bir öğenin özelliğini karşılaştırabilirsiniz. Doğru işlem için, bildirilen kiracı adı tüm DC aracıları ve proxy sunucuları genelinde aynı olmalıdır.
 
    Bir Azure kiracı kaydı uyuşmazlığı koşulu varsa, bu sorun `Register-AzureADPasswordProtectionProxy` ve/veya `Register-AzureADPasswordProtectionForest` PowerShell cmdlet 'leri gerektiği şekilde çalıştırılarak düzeltilebilir ve tüm kayıtlar Için aynı Azure kiracısındaki kimlik bilgilerini kullandığınızdan emin olabilirsiniz.
 

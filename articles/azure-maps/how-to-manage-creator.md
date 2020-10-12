@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 579294388dbcf9f785ef41e06505c14b6767565f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83677965"
 ---
 # <a name="manage-azure-maps-creator"></a>Azure haritalar oluşturucuyu yönetme
@@ -23,13 +23,13 @@ Bu makale, bir Azure haritalar hesabındaki bir Oluşturucu kaynağı oluşturma
 
 ## <a name="create-creator-resource"></a>Oluşturucu kaynağı oluştur
 
-1. [Azure Portal](https://portal.azure.com) oturum açın
+1. [Azure portalda](https://portal.azure.com) oturum açma
 
 2. Azure haritalar hesabınızı seçin. Azure haritalar hesabınızı **son kaynaklar**altında göremiyorsanız Azure Portal menüsüne gidin. **Tüm kaynaklar**’ı seçin. Azure haritalar hesabınızı bulun ve seçin.
 
     ![Azure haritalar Portalı giriş sayfası](./media/how-to-manage-creator/select-maps-account.png)
 
-3. Azure haritalar hesabı sayfasından sonra **Oluşturucu**altındaki **genel bakış** seçeneğine gidin. Azure haritalar Oluşturucu kaynağı oluşturmak için **Oluştur** ' a tıklayın.
+3. Azure haritalar hesabı sayfasından sonra **Oluşturucu**altındaki **genel bakış** seçeneğine gidin. Azure haritalar Oluşturucu kaynağı oluşturmak için  **Oluştur**  ' a tıklayın.
 
     ![Azure haritalar Oluşturucu oluşturma sayfası](./media/how-to-manage-creator/creator-blade-settings.png)
 
@@ -71,7 +71,7 @@ Creator, Azure Maps Access Control (ıAM) ayarlarını devralır. Veri erişimi 
 
 Oluşturucu kullanım verileri, Azure Haritalar kullanım grafiklerinize ve etkinlik günlüğüne eklenir.  Daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication).
 
-## <a name="access-to-creator-services"></a>Creator hizmetlerine erişim
+## <a name="access-to-creator-services"></a>Oluşturucu hizmetlerine erişim
 
 Oluşturucu Hizmetleri yalnızca oluşturma sırasında seçilen konumun içinden erişilebilir. Seçili konum dışından Oluşturucu Hizmetleri için çağrılar yapılırsa, bir kullanıcı hatası iletisi döndürülür. Seçilen konumun dışından çağrı yapmak için, hizmet URL 'SI Seçilen konumların coğrafi önekini içermelidir. Örneğin, Oluşturucu Birleşik Devletler oluşturulduysa, dönüştürme hizmetine yapılan tüm çağrılar ' a gönderilmelidir `us.atlas.microsoft.com/conversion/convert` .
 

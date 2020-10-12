@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: a5c7296a0e7b7f6ea33c1f4a669675efd90f9e9a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86262102"
 ---
 # <a name="understanding-layers-in-the-azure-maps-power-bi-visual"></a>Azure haritalar Power BI görselindeki katmanları anlama
@@ -87,7 +87,7 @@ Haritada verinin nasıl görüntülendiğini değiştirin:
 > [Baloncuk katmanı ekleme](power-bi-visual-add-bubble-layer.md)
 
 > [!div class="nextstepaction"]
-> [Çubuk grafik katmanı ekleme](power-bi-visual-add-bar-chart-layer.md)
+> [Çubuk grafiği katmanı ekleme](power-bi-visual-add-bar-chart-layer.md)
 
 Haritaya daha fazla bağlam ekleyin:
 
@@ -98,4 +98,4 @@ Haritaya daha fazla bağlam ekleyin:
 > [Kutucuk katmanı ekleme](power-bi-visual-add-tile-layer.md)
 
 > [!div class="nextstepaction"]
-> [Gerçek zamanlı trafiği göster](power-bi-visual-show-real-time-traffic.md)
+> [Gerçek zamanlı trafiği gösterme](power-bi-visual-show-real-time-traffic.md)

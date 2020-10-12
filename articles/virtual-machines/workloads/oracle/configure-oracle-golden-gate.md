@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.openlocfilehash: 24dfe52b7f08d93dfba70c7b63812eac53431d5c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274801"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Azure Linux VM 'de Oracle altın kapısı uygulama 
@@ -384,7 +384,7 @@ Oracle altın kapısı yazılımını indirmek ve hazırlamak için aşağıdaki
    ```
 
 ### <a name="prepare-the-client-and-vm-to-run-x11-for-windows-clients-only"></a>İstemciyi ve VM 'yi X11 çalıştıracak şekilde hazırlama (yalnızca Windows istemcileri için)
-Bu, isteğe bağlı bir adımdır. Linux istemcisi kullanıyorsanız veya zaten X11 kurulumuna sahipseniz, bu adımı atlayabilirsiniz.
+Bu isteğe bağlı bir adımdır. Linux istemcisi kullanıyorsanız veya zaten X11 kurulumuna sahipseniz, bu adımı atlayabilirsiniz.
 
 1. PuTTY ve Xsiteye Windows bilgisayarınıza indirin:
 

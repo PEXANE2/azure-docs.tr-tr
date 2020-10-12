@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 03/06/2020
 ms.author: juergent
 ms.openlocfilehash: 7d453fba37e62e8528ae7b4ea86d1604973b84a1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87051996"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>Pacemaker ile SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde IBM DB2 LUW 'ın yüksek kullanılabilirliği
@@ -327,7 +327,7 @@ Aşağıdaki öğelerin ön eki vardır:
 > - SLES 15/15 SP1 için sürüm en az Resource-Agents-4.3.0184.6 ee15eb2-4.13.1 olmalıdır.  
 >
 > Değişikliğin kısa kapalı kalma süresinin gerekli olacağını unutmayın.  
-> Mevcut pacemaker kümelerinde, yapılandırma zaten [Azure yük dengeleyici algılama sağlamlaştırma](https://www.suse.com/support/kb/doc/?id=7024128)bölümünde açıklandığı gibi socat kullanacak şekilde değiştirilmişse Azure-lb Resource Agent 'a hemen geçiş yapmak için bir gereksinim yoktur.
+> Mevcut pacemaker kümelerinde, yapılandırma [azure Load-Balancer algılama sağlamlaştırma](https://www.suse.com/support/kb/doc/?id=7024128)bölümünde açıklandığı gibi socat kullanmak üzere zaten değiştirilmişse, Azure-lb Resource Agent 'a hemen geçiş yapma gereksinimi yoktur.
 
 **[1]** IBM DB2 HADR 'e özgü Paceyapıcısı yapılandırması:
 <pre><code># Put Pacemaker into maintenance mode
@@ -478,7 +478,7 @@ DB2 HADR yapılandırmasını oluşturmadan önce yüklemeyi gerçekleştirdiyse
 
 JDBC URL 'sini denetlemek veya güncelleştirmek için J2EE yapılandırma aracını kullanın. J2EE yapılandırma aracı bir grafik araç olduğundan, X sunucusunun yüklü olması gerekir:
  
-1. J2EE örneğinin birincil uygulama sunucusunda oturum açın ve yürütün:`sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh`
+1. J2EE örneğinin birincil uygulama sunucusunda oturum açın ve yürütün:   `sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh`
 1. Sol çerçevede **Güvenlik deposu**' nu seçin.
 1. Sağ çerçevede, anahtar JDBC/havuz//URL ' yi seçin \<SAPSID> .
 1. JDBC URL 'sindeki ana bilgisayar adını sanal ana bilgisayar adıyla değiştirin.

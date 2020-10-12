@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.openlocfilehash: 6f0e688f3d483536e0d82186dd8e498cdadf97da
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87563560"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak Data Factory izleyin ve uyarır
@@ -137,23 +137,23 @@ Azure Data Factory sürüm 2 tarafından yayılan ölçülerden bazıları şunl
 
 | **Ölçüm**                           | **Ölçüm görünen adı**                  | **Birim** | **Toplama türü** | **Açıklama**                |
 |--------------------------------------|------------------------------------------|----------|----------------------|--------------------------------|
-| Activitycancelledçalıştırmaları                 | İptal edilen etkinlik ölçümleri çalıştırıyor           | Count    | Toplam                | Bir dakika penceresi içinde iptal edilen toplam etkinlik çalışması sayısı. |
-| Activityfailedçalıştırmaları                   | Başarısız etkinlik çalıştırma ölçümleri             | Count    | Toplam                | Bir dakika penceresi içinde başarısız olan etkinlik çalıştırmalarının toplam sayısı. |
-| ActivitySucceededRuns                | Başarılı etkinlik ölçümleri çalıştırıyor          | Count    | Toplam                | Bir dakika penceresi içinde başarılı olan etkinlik çalıştırmalarının toplam sayısı. |
-| Ardışık düzen ınecancelledçalıştırmaları                 | İptal edilen işlem hattı çalışma ölçümleri           | Count    | Toplam                | Bir dakika penceresi içinde iptal edilen toplam işlem hattı çalıştırması sayısıdır. |
-| Pipelinefailedçalıştırmaları                   | Başarısız işlem hattı çalıştırmaları ölçümleri             | Count    | Toplam                | Bir dakika penceresinde başarısız olan işlem hattı çalıştırmalarının toplam sayısı. |
-| Ardışık düzen Inesucceededçalıştırmaları                | Başarılı işlem hattı çalışma ölçümleri          | Count    | Toplam                | Bir dakika penceresi içinde başarılı olan işlem hattı çalıştırmalarının toplam sayısı. |
-| Triggercancelledçalıştırmaları                  | İptal edilen tetikleyici çalışan ölçümleri            | Count    | Toplam                | Bir dakika penceresi içinde iptal edilen tetikleyici çalıştırmalarının toplam sayısı. |
-| Triggerfailedçalıştırmaları                    | Başarısız tetikleyici çalıştırma ölçümleri              | Count    | Toplam                | Bir dakika penceresi içinde başarısız olan tetikleyici çalıştırmalarının toplam sayısı. |
-| TriggerSucceededRuns                 | Başarılı tetikleyici çalışan ölçümleri           | Count    | Toplam                | Bir dakika penceresi içinde başarılı olan tetikleyici çalıştırmalarının toplam sayısı. |
-| Ssisıntegrationruntimestartiptal edildi  | İptal edilen SSIS Integration Runtime başlangıç ölçümleri           | Count    | Toplam                | Bir dakika penceresi içinde iptal edilen SSIS tümleştirme çalışma zamanı 'nın toplam sayısı. |
-| Ssisıntegrationruntimestartfailed    | Başarısız SSIS Integration Runtime başlangıç ölçümleri             | Count    | Toplam                | Bir dakika penceresinde başarısız olan SSIS tümleştirme çalışma zamanı 'nın toplam sayısı. |
-| Ssisıntegrationruntimestartsucceeded | Başarılı SSIS Integration Runtime başlangıç ölçümleri          | Count    | Toplam                | SSIS tümleştirme çalışma zamanının toplam sayısı bir dakika penceresi içinde başarılı olur. |
-| Ssisıntegrationruntimestoptakılmış      | Takılmış SSIS tümleştirme çalışma zamanı ölçümleri durdur               | Count    | Toplam                | Bir dakika penceresi içinde takılmış olan SSIS tümleştirme çalışma zamanı duraklarının toplam sayısı. |
-| Ssisıntegrationruntimestopsucceeded  | Başarılı SSIS tümleştirme çalışma zamanı ölçümleri durdur           | Count    | Toplam                | Bir dakika penceresinde başarılı olan SSIS tümleştirme çalışma zamanının toplam sayısı. |
-| Ssispackageexecutioniptal edildi         | İptal edilen SSIS paketi yürütme ölçümleri  | Count    | Toplam                | Bir dakika penceresi içinde iptal edilen SSIS paket yürütmelerinin toplam sayısı. |
-| Ssıspackageexecutionfailed           | Başarısız SSIS paketi yürütme ölçümleri    | Count    | Toplam                | Bir dakikalık pencere içinde başarısız olan SSSıS paket yürütmelerinin toplam sayısı. |
-| Ssıspackageexecutionsucceeded        | Başarılı SSIS paketi yürütme ölçümleri | Count    | Toplam                | Bir dakika penceresinde başarılı olan SSIS paket yürütmelerinin toplam sayısı. |
+| Activitycancelledçalıştırmaları                 | İptal edilen etkinlik ölçümleri çalıştırıyor           | Sayı    | Toplam                | Bir dakika penceresi içinde iptal edilen toplam etkinlik çalışması sayısı. |
+| Activityfailedçalıştırmaları                   | Başarısız etkinlik çalıştırma ölçümleri             | Sayı    | Toplam                | Bir dakika penceresi içinde başarısız olan etkinlik çalıştırmalarının toplam sayısı. |
+| ActivitySucceededRuns                | Başarılı etkinlik ölçümleri çalıştırıyor          | Sayı    | Toplam                | Bir dakika penceresi içinde başarılı olan etkinlik çalıştırmalarının toplam sayısı. |
+| Ardışık düzen ınecancelledçalıştırmaları                 | İptal edilen işlem hattı çalışma ölçümleri           | Sayı    | Toplam                | Bir dakika penceresi içinde iptal edilen toplam işlem hattı çalıştırması sayısıdır. |
+| Pipelinefailedçalıştırmaları                   | Başarısız işlem hattı çalıştırmaları ölçümleri             | Sayı    | Toplam                | Bir dakika penceresinde başarısız olan işlem hattı çalıştırmalarının toplam sayısı. |
+| Ardışık düzen Inesucceededçalıştırmaları                | Başarılı işlem hattı çalışma ölçümleri          | Sayı    | Toplam                | Bir dakika penceresi içinde başarılı olan işlem hattı çalıştırmalarının toplam sayısı. |
+| Triggercancelledçalıştırmaları                  | İptal edilen tetikleyici çalışan ölçümleri            | Sayı    | Toplam                | Bir dakika penceresi içinde iptal edilen tetikleyici çalıştırmalarının toplam sayısı. |
+| Triggerfailedçalıştırmaları                    | Başarısız tetikleyici çalıştırma ölçümleri              | Sayı    | Toplam                | Bir dakika penceresi içinde başarısız olan tetikleyici çalıştırmalarının toplam sayısı. |
+| TriggerSucceededRuns                 | Başarılı tetikleyici çalışan ölçümleri           | Sayı    | Toplam                | Bir dakika penceresi içinde başarılı olan tetikleyici çalıştırmalarının toplam sayısı. |
+| Ssisıntegrationruntimestartiptal edildi  | İptal edilen SSIS Integration Runtime başlangıç ölçümleri           | Sayı    | Toplam                | Bir dakika penceresi içinde iptal edilen SSIS tümleştirme çalışma zamanı 'nın toplam sayısı. |
+| Ssisıntegrationruntimestartfailed    | Başarısız SSIS Integration Runtime başlangıç ölçümleri             | Sayı    | Toplam                | Bir dakika penceresinde başarısız olan SSIS tümleştirme çalışma zamanı 'nın toplam sayısı. |
+| Ssisıntegrationruntimestartsucceeded | Başarılı SSIS Integration Runtime başlangıç ölçümleri          | Sayı    | Toplam                | SSIS tümleştirme çalışma zamanının toplam sayısı bir dakika penceresi içinde başarılı olur. |
+| Ssisıntegrationruntimestoptakılmış      | Takılmış SSIS tümleştirme çalışma zamanı ölçümleri durdur               | Sayı    | Toplam                | Bir dakika penceresi içinde takılmış olan SSIS tümleştirme çalışma zamanı duraklarının toplam sayısı. |
+| Ssisıntegrationruntimestopsucceeded  | Başarılı SSIS tümleştirme çalışma zamanı ölçümleri durdur           | Sayı    | Toplam                | Bir dakika penceresinde başarılı olan SSIS tümleştirme çalışma zamanının toplam sayısı. |
+| Ssispackageexecutioniptal edildi         | İptal edilen SSIS paketi yürütme ölçümleri  | Sayı    | Toplam                | Bir dakika penceresi içinde iptal edilen SSIS paket yürütmelerinin toplam sayısı. |
+| Ssıspackageexecutionfailed           | Başarısız SSIS paketi yürütme ölçümleri    | Sayı    | Toplam                | Bir dakikalık pencere içinde başarısız olan SSSıS paket yürütmelerinin toplam sayısı. |
+| Ssıspackageexecutionsucceeded        | Başarılı SSIS paketi yürütme ölçümleri | Sayı    | Toplam                | Bir dakika penceresinde başarılı olan SSIS paket yürütmelerinin toplam sayısı. |
 
 Ölçümlere erişmek için [Azure izleyici veri platformundaki](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)yönergeleri doldurun.
 
@@ -221,7 +221,7 @@ PUT
 https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnosticSettings/service?api-version={api-version}
 ```
 
-##### <a name="headers"></a>Üst Bilgiler
+##### <a name="headers"></a>Üst bilgiler
 
 * `{api-version}` yerine `2016-09-01` yazın.
 * `{resource-id}`Tanılama ayarlarını düzenlemek istediğiniz KAYNAĞıN kimliğiyle değiştirin. Daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek Için kaynak gruplarını kullanma](../azure-resource-manager/management/manage-resource-groups-portal.md).
@@ -341,7 +341,7 @@ GET
 https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnosticSettings/service?api-version={api-version}
 ```
 
-##### <a name="headers"></a>Üst Bilgiler
+##### <a name="headers"></a>Üst bilgiler
 
 * `{api-version}` yerine `2016-09-01` yazın.
 * `{resource-id}`Tanılama ayarlarını düzenlemek istediğiniz KAYNAĞıN kimliğiyle değiştirin. Daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek Için kaynak gruplarını kullanma](../azure-resource-manager/management/manage-resource-groups-portal.md).
@@ -570,7 +570,7 @@ SSIS IR Başlat/Durdur/bakım işlemlerinin günlük öznitelikleri aşağıda v
 
 | Özellik                   | Tür   | Açıklama                                                   | Örnek                        |
 | -------------------------- | ------ | ------------------------------------------------------------- | ------------------------------ |
-| **ışınızda**                   | Dize | UTC biçiminde olay saati:`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+| **ışınızda**                   | Dize | UTC biçiminde olay saati: `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | Dize | SSIS IR işleminizi adı                            | `Start/Stop/Maintenance` |
 | **alan**               | Dize | Tanılama günlükleri kategorisi                               | `SSISIntegrationRuntimeLogs` |
 | **ID**          | Dize | Belirli bir işlemi izlemeye yönelik benzersiz KIMLIK             | `f13b159b-515f-4885-9dfa-a664e949f785Deprovision0059035558` |
@@ -610,15 +610,15 @@ SSIS IR 'niz üzerinde SSIS paket yürütmeleri tarafından oluşturulan olay il
 
 | Özellik                   | Tür   | Açıklama                                                          | Örnek                        |
 | -------------------------- | ------ | -------------------------------------------------------------------- | ------------------------------ |
-| **ışınızda**                   | Dize | UTC biçiminde olay saati:`YYYY-MM-DDTHH:MM:SS.00000Z`        | `2017-06-28T21:00:27.3534352Z` |
-| **operationName**          | Dize | Bu ayarı`YourSSISIRName-SSISPackageEventMessageContext`       | `mysqlmissisir-SSISPackageEventMessageContext` |
+| **ışınızda**                   | Dize | UTC biçiminde olay saati: `YYYY-MM-DDTHH:MM:SS.00000Z`        | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**          | Dize | Bu ayarı `YourSSISIRName-SSISPackageEventMessageContext`       | `mysqlmissisir-SSISPackageEventMessageContext` |
 | **alan**               | Dize | Tanılama günlükleri kategorisi                                      | `SSISPackageEventMessageContext` |
 | **ID**          | Dize | Belirli bir işlemi izlemeye yönelik benzersiz KIMLIK                    | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**        | Dize | ADF 'nizin adı                                                 | `MyADFv2` |
 | **ıntegrationruntimename** | Dize | SSIS IR 'nizin adı                                             | `MySSISIR` |
 | **düzey**                  | Dize | Tanılama günlüklerinin düzeyi                                         | `Informational` |
-| **operationId**            | Dize | SSSıSDB 'de belirli bir işlemi izlemeye yönelik benzersiz KIMLIK          | `1`(1 SSSıSDB 'de **depolanmayan** ve T-SQL aracılığıyla çağrılan paketlerle ilgili işlemleri belirtir) |
-| **contextDepth**           | Dize | Olay iletisi bağlamınızın derinliği                              | `0`(0 paket yürütme başlamadan önce bağlamı belirtir, 1 hata oluştuğunda bağlamı belirtir ve bağlam hatadan daha fazla olduğunda artar) |
+| **operationId**            | Dize | SSSıSDB 'de belirli bir işlemi izlemeye yönelik benzersiz KIMLIK          | `1` (1 SSSıSDB 'de **depolanmayan** ve T-SQL aracılığıyla çağrılan paketlerle ilgili işlemleri belirtir) |
+| **contextDepth**           | Dize | Olay iletisi bağlamınızın derinliği                              | `0` (0 paket yürütme başlamadan önce bağlamı belirtir, 1 hata oluştuğunda bağlamı belirtir ve bağlam hatadan daha fazla olduğunda artar) |
 | **packagePath**            | Dize | Olay iletisi bağlam kaynağınız olarak paket nesnesinin yolu      | `\Package` |
 | **contextType**            | Dize | Olay iletisi bağlam kaynağınız olarak paket nesnesi türü      | `60`( [daha fazla bağlam türü](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15#remarks)görüntüleyin) |
 | **contextSourceName**      | Dize | Olay iletisi bağlam kaynağınız olarak paket nesnesinin adı      | `MyPackage` |
@@ -660,14 +660,14 @@ SSIS IR 'niz üzerinde SSIS paket yürütmeleri tarafından oluşturulan olay il
 
 | Özellik                   | Tür   | Açıklama                                                        | Örnek                        |
 | -------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
-| **ışınızda**                   | Dize | UTC biçiminde olay saati:`YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
-| **operationName**          | Dize | Bu ayarı`YourSSISIRName-SSISPackageEventMessages`           | `mysqlmissisir-SSISPackageEventMessages` |
+| **ışınızda**                   | Dize | UTC biçiminde olay saati: `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**          | Dize | Bu ayarı `YourSSISIRName-SSISPackageEventMessages`           | `mysqlmissisir-SSISPackageEventMessages` |
 | **alan**               | Dize | Tanılama günlükleri kategorisi                                    | `SSISPackageEventMessages` |
 | **ID**          | Dize | Belirli bir işlemi izlemeye yönelik benzersiz KIMLIK                  | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**        | Dize | ADF 'nizin adı                                               | `MyADFv2` |
 | **ıntegrationruntimename** | Dize | SSIS IR 'nizin adı                                           | `MySSISIR` |
 | **düzey**                  | Dize | Tanılama günlüklerinin düzeyi                                       | `Informational` |
-| **operationId**            | Dize | SSSıSDB 'de belirli bir işlemi izlemeye yönelik benzersiz KIMLIK        | `1`(1 SSSıSDB 'de **depolanmayan** ve T-SQL aracılığıyla çağrılan paketlerle ilgili işlemleri belirtir) |
+| **operationId**            | Dize | SSSıSDB 'de belirli bir işlemi izlemeye yönelik benzersiz KIMLIK        | `1` (1 SSSıSDB 'de **depolanmayan** ve T-SQL aracılığıyla çağrılan paketlerle ilgili işlemleri belirtir) |
 | **messageTime**            | Dize | Olay iletinizin UTC biçiminde oluşturulduğu zaman          | `2017-06-28T21:00:27.3534352Z` |
 | **messageType**            | Dize | Olay iletinizin türü                                     | `70`( [daha fazla ileti türüne](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)bakın) |
 | **messageSourceType**      | Dize | Olay iletisi kaynağınızın türü                              | `20`( [daha fazla ileti kaynağı türü](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)görüntüleyin) |
@@ -678,7 +678,7 @@ SSIS IR 'niz üzerinde SSIS paket yürütmeleri tarafından oluşturulan olay il
 | **Iletiourceıd**        | Dize | Olay iletisi kaynağınız olarak paket bileşeninin benzersiz KIMLIĞI    | `{1a45a5a4-3df9-4f02-b818-ebf583829ad2}    ` |
 | **Alt ComponentName**       | Dize | Olay iletisi kaynağınız olarak veri akışı bileşeninin adı       | `SSIS.Pipeline` |
 | **packagePath**            | Dize | Olay iletisi kaynağınız olarak paket nesnesinin yolu            | `\Package\Data Flow Task` |
-| **executionPath**          | Dize | Ana paketten yürütülen bileşene tam yol            | `\Transformation\Data Flow Task`(Bu yol bileşen yinelemelerini de yakalar) |
+| **executionPath**          | Dize | Ana paketten yürütülen bileşene tam yol            | `\Transformation\Data Flow Task` (Bu yol bileşen yinelemelerini de yakalar) |
 | **ThreadID**               | Dize | Olay iletiniz günlüğe kaydedildiğinde yürütülen iş parçacığının benzersiz KIMLIĞI | `{1a45a5a4-3df9-4f02-b818-ebf583829ad2}    ` |
 
 #### <a name="ssis-executable-statistics-log-attributes"></a>SSIS çalıştırılabilir istatistik günlüğü öznitelikleri
@@ -709,19 +709,19 @@ SSIS IR 'niz üzerinde SSIS paket yürütmeleri tarafından oluşturulan olay il
 
 | Özellik                   | Tür   | Açıklama                                                      | Örnek                        |
 | -------------------------- | ------ | ---------------------------------------------------------------- | ------------------------------ |
-| **ışınızda**                   | Dize | UTC biçiminde olay saati:`YYYY-MM-DDTHH:MM:SS.00000Z`    | `2017-06-28T21:00:27.3534352Z` |
-| **operationName**          | Dize | Bu ayarı`YourSSISIRName-SSISPackageExecutableStatistics`  | `mysqlmissisir-SSISPackageExecutableStatistics` |
+| **ışınızda**                   | Dize | UTC biçiminde olay saati: `YYYY-MM-DDTHH:MM:SS.00000Z`    | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**          | Dize | Bu ayarı `YourSSISIRName-SSISPackageExecutableStatistics`  | `mysqlmissisir-SSISPackageExecutableStatistics` |
 | **alan**               | Dize | Tanılama günlükleri kategorisi                                  | `SSISPackageExecutableStatistics` |
 | **ID**          | Dize | Belirli bir işlemi izlemeye yönelik benzersiz KIMLIK                | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**        | Dize | ADF 'nizin adı                                             | `MyADFv2` |
 | **ıntegrationruntimename** | Dize | SSIS IR 'nizin adı                                         | `MySSISIR` |
 | **düzey**                  | Dize | Tanılama günlüklerinin düzeyi                                     | `Informational` |
-| **Yürütme**            | Dize | SSSıSDB 'de belirli bir yürütmeyi izlemeye yönelik benzersiz KIMLIK      | `1`(1 SSSıSDB 'de **depolanmayan** ve T-SQL aracılığıyla çağrılan paketlerle ilgili yürütmeleri belirtir) |
-| **executionPath**          | Dize | Ana paketten yürütülen bileşene tam yol          | `\Transformation\Data Flow Task`(Bu yol bileşen yinelemelerini de yakalar) |
+| **Yürütme**            | Dize | SSSıSDB 'de belirli bir yürütmeyi izlemeye yönelik benzersiz KIMLIK      | `1` (1 SSSıSDB 'de **depolanmayan** ve T-SQL aracılığıyla çağrılan paketlerle ilgili yürütmeleri belirtir) |
+| **executionPath**          | Dize | Ana paketten yürütülen bileşene tam yol          | `\Transformation\Data Flow Task` (Bu yol bileşen yinelemelerini de yakalar) |
 | **startTime**              | Dize | Yürütülebilir zaman, UTC biçiminde yürütme öncesi aşamasına giriyor  | `2017-06-28T21:00:27.3534352Z` |
 | **endTime**                | Dize | Yürütülebilir dosyanın UTC biçiminde yürütme sonrası aşamasına girdiğinde geçen süre | `2017-06-28T21:00:27.3534352Z` |
 | **executionDuration**      | Dize | Çalıştırmanın çalışma süresi (milisaniye)                   | `1,125` |
-| **executionResult**        | Dize | Yürütülebilir dosya çalıştırmanın sonucu                                 | `0`(0 başarıyı belirtir, 1 hata belirtir, 2 tamamlanmayı belirtir ve 3, iptal) |
+| **executionResult**        | Dize | Yürütülebilir dosya çalıştırmanın sonucu                                 | `0` (0 başarıyı belirtir, 1 hata belirtir, 2 tamamlanmayı belirtir ve 3, iptal) |
 | **executionValue**         | Dize | Yürütülebilir dosya çalıştırılarak döndürülen Kullanıcı tanımlı değer            | `1` |
 | **RESOURCEID**             | Dize | ADF kaynağınızın benzersiz KIMLIĞI                               | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
@@ -754,14 +754,14 @@ SSIS IR 'niz üzerinde SSIS paket yürütmeleri tarafından oluşturulan veri ak
 
 | Özellik                   | Tür   | Açıklama                                                         | Örnek                        |
 | -------------------------- | ------ | ------------------------------------------------------------------- | ------------------------------ |
-| **ışınızda**                   | Dize | UTC biçiminde olay saati:`YYYY-MM-DDTHH:MM:SS.00000Z`       | `2017-06-28T21:00:27.3534352Z` |
-| **operationName**          | Dize | Bu ayarı`YourSSISIRName-SSISPackageExecutionComponentPhases` | `mysqlmissisir-SSISPackageExecutionComponentPhases` |
+| **ışınızda**                   | Dize | UTC biçiminde olay saati: `YYYY-MM-DDTHH:MM:SS.00000Z`       | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**          | Dize | Bu ayarı `YourSSISIRName-SSISPackageExecutionComponentPhases` | `mysqlmissisir-SSISPackageExecutionComponentPhases` |
 | **alan**               | Dize | Tanılama günlükleri kategorisi                                     | `SSISPackageExecutionComponentPhases` |
 | **ID**          | Dize | Belirli bir işlemi izlemeye yönelik benzersiz KIMLIK                   | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**        | Dize | ADF 'nizin adı                                                | `MyADFv2` |
 | **ıntegrationruntimename** | Dize | SSIS IR 'nizin adı                                            | `MySSISIR` |
 | **düzey**                  | Dize | Tanılama günlüklerinin düzeyi                                        | `Informational` |
-| **Yürütme**            | Dize | SSSıSDB 'de belirli bir yürütmeyi izlemeye yönelik benzersiz KIMLIK         | `1`(1 SSSıSDB 'de **depolanmayan** ve T-SQL aracılığıyla çağrılan paketlerle ilgili yürütmeleri belirtir) |
+| **Yürütme**            | Dize | SSSıSDB 'de belirli bir yürütmeyi izlemeye yönelik benzersiz KIMLIK         | `1` (1 SSSıSDB 'de **depolanmayan** ve T-SQL aracılığıyla çağrılan paketlerle ilgili yürütmeleri belirtir) |
 | **PaketAdı**            | Dize | Yürütülen paket dosyanızın adı                              | `MyPackage.dtsx` |
 | **Silinecek**               | Dize | Yürütülen veri akışı görevinin adı                                 | `Data Flow Task` |
 | **Alt ComponentName**       | Dize | Veri akışı bileşeninin adı                                     | `Derived Column` |
@@ -802,14 +802,14 @@ Veri akışı işlem hatlarında, SSIS IR 'niz üzerinde SSIS paket yürütmeler
 
 | Özellik                     | Tür   | Açıklama                                                        | Örnek                        |
 | ---------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
-| **ışınızda**                     | Dize | UTC biçiminde olay saati:`YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
-| **operationName**            | Dize | Bu ayarı`YourSSISIRName-SSISPackageExecutionDataStatistics` | `mysqlmissisir-SSISPackageExecutionDataStatistics` |
+| **ışınızda**                     | Dize | UTC biçiminde olay saati: `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**            | Dize | Bu ayarı `YourSSISIRName-SSISPackageExecutionDataStatistics` | `mysqlmissisir-SSISPackageExecutionDataStatistics` |
 | **alan**                 | Dize | Tanılama günlükleri kategorisi                                    | `SSISPackageExecutionDataStatistics` |
 | **ID**            | Dize | Belirli bir işlemi izlemeye yönelik benzersiz KIMLIK                  | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**          | Dize | ADF 'nizin adı                                               | `MyADFv2` |
 | **ıntegrationruntimename**   | Dize | SSIS IR 'nizin adı                                           | `MySSISIR` |
 | **düzey**                    | Dize | Tanılama günlüklerinin düzeyi                                       | `Informational` |
-| **Yürütme**              | Dize | SSSıSDB 'de belirli bir yürütmeyi izlemeye yönelik benzersiz KIMLIK        | `1`(1 SSSıSDB 'de **depolanmayan** ve T-SQL aracılığıyla çağrılan paketlerle ilgili yürütmeleri belirtir) |
+| **Yürütme**              | Dize | SSSıSDB 'de belirli bir yürütmeyi izlemeye yönelik benzersiz KIMLIK        | `1` (1 SSSıSDB 'de **depolanmayan** ve T-SQL aracılığıyla çağrılan paketlerle ilgili yürütmeleri belirtir) |
 | **PaketAdı**              | Dize | Yürütülen paket dosyanızın adı                             | `MyPackage.dtsx` |
 | **Silinecek**                 | Dize | Yürütülen veri akışı görevinin adı                                | `Data Flow Task` |
 | **Dataflowpathıdstring**     | Dize | İzleme veri akışı yolunun benzersiz KIMLIĞI                          | `Paths[SQLDB Table3.ADO NET Source Output]` |
@@ -833,7 +833,7 @@ Log Analytics şemayı Izleyiciden aşağıdaki özel durumlarla devralır:
     | --- | --- | --- |
     | $. Properties. UserProperties | UserProperties | Dinamik |
     | $. Properties. Açıklamaları | Ek Açıklamalar | Dinamik |
-    | $. Properties. Girişinin | Girdi | Dinamik |
+    | $. Properties. Girişinin | Giriş | Dinamik |
     | $. Properties. Çıktıların | Çıktı | Dinamik |
     | $. Properties. Hata. errorCode | ErrorCode | int |
     | $. Properties. Hata. ileti | Hata | string |

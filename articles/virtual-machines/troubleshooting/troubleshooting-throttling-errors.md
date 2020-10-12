@@ -14,10 +14,10 @@ ms.date: 09/18/2018
 ms.author: changov
 ms.reviewer: vashan, rajraj
 ms.openlocfilehash: b1cc8a43423ecd33218948aaa001fc34877eac60
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87074288"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>API azaltma hatalarını giderme 
@@ -89,11 +89,11 @@ API çağrısı istatistikleri, bir aboneliğin istemcilerinin davranışına y�
 PowerShell cmdlet 'leri, doğrudan istemciler tarafından kolayca çağrılabilen (ancak henüz resmi olmayan destek olmadan) bir REST hizmeti API 'SI kullanıyor. HTTP istek biçimini görmek için cmdlet 'leri-hata ayıklama anahtarı veya gözetini Fiddler ile Yürütmeyle çalıştırın.
 
 
-## <a name="best-practices"></a>En iyi uygulamalar 
+## <a name="best-practices"></a>Önerilen uygulamalar 
 
 - Azure hizmeti API hatalarını koşulsuz ve/veya hemen tekrar denemeyin. Ortak bir oluşum, istemci kodunun yeniden denenmeyecek bir hatayla karşılaşıldığında hızlı bir yeniden deneme döngüsüne ulaşmak içindir. Yeniden denemeler, hedef işlemin grubu için izin verilen çağrı sınırını en sonunda ve aboneliğin diğer istemcilerine etkiler. 
 - Yüksek hacimli API Otomasyonu durumlarında, bir hedef işlem grubu için kullanılabilir çağrı sayısı düşük eşiğin altına düşerse, öngörülebilir istemci tarafı kendi kendine kısıtlama uygulamayı düşünün. 
-- Zaman uyumsuz işlemleri izlerken, yeniden deneme üst bilgisi ipuçlarına uyar. 
+- Zaman uyumsuz işlemleri izlerken Retry-After üst bilgi ipuçlarına saygı gösterin. 
 - İstemci kodunda belirli bir sanal makine hakkında bilgi gerekiyorsa, bu VM 'yi, kapsayan kaynak grubundaki tüm VM 'Leri veya tüm aboneliğin listesini, sonra da istemci tarafında gerekli VM 'yi seçerek doğrudan sorgulayın. 
 - İstemci kodu belirli bir Azure konumundan VM 'Lere, disklere ve anlık görüntülere ihtiyaç duyuyorsa, tüm abonelik sanal makinelerini sorgulamak ve sonra istemci tarafında konuma göre filtrelemek yerine sorgunun konum tabanlı formunu kullanın: `GET /subscriptions/<subId>/providers/Microsoft.Compute/locations/<location>/virtualMachines?api-version=2017-03-30` kaynak sağlayıcısı bölgesel uç noktalarını hesaplamak için sorgulayın. 
 -   Belirli VM 'Lerde ve sanal makine ölçek kümelerinde API kaynaklarını oluştururken veya güncelleştirirken, döndürülen zaman uyumsuz işlemi kaynak URL 'sinin kendisi üzerinde yoklama gerçekleştirenden (öğesine göre) izlemek çok daha etkilidir `provisioningState` .

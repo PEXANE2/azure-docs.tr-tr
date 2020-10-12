@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 07/24/2020
 ms.openlocfilehash: a6e304e5ffeab8f0a44cbdfe1566465f2b9bf34a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88607425"
 ---
 # <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>Ticari Market listelerinizi Azure Active Directory ile tümleştirin
@@ -35,10 +35,10 @@ Microsoft AppSource ve Azure Market müşterileri çevrimiçi mağaza listesi ka
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
 | Sanal Makine | Yok | Hayır | Hayır | Hayır |
 | Azure uygulamaları (çözüm şablonu)  | Yok | Yok | Yok | Yok |
-| Yönetilen uygulamalar  | Yok | Yok | Yok | No |
-| SaaS  | Hayır | Yes | Yes | Yes |
-| Kapsayıcılar  | Yok | Yok | Yok | No |
-| Danışmanlık Hizmetleri  | No | Yok | Yok | Yok |
+| Yönetilen uygulamalar  | Yok | Yok | Yok | Hayır |
+| SaaS  | Hayır | Evet | Evet | Evet |
+| Kapsayıcılar  | Yok | Yok | Yok | Hayır |
+| Danışmanlık Hizmetleri  | Hayır | Yok | Yok | Yok |
 
 SaaS teknik gereksinimleri hakkında daha fazla bilgi için bkz. [ticari Market 'Te Azure AD ve transactable SaaS teklifleri](./azure-ad-saas.md).
 

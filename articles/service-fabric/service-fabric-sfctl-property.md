@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 0a5ebd4822c5f0ff1735464bb4d5b42c436ee529
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260316"
 ---
 # <a name="sfctl-property"></a>sfctl property
@@ -19,7 +19,7 @@ Service Fabric adları altında mağaza ve sorgu özellikleri.
 
 |Komut|Açıklama|
 | --- | --- |
-| silme | Belirtilen Service Fabric özelliğini siler. |
+| delete | Belirtilen Service Fabric özelliğini siler. |
 | get | Belirtilen Service Fabric özelliğini alır. |
 | list | Verilen bir ad altındaki tüm Service Fabric özellikleriyle ilgili bilgileri alır. |
 | konur | Service Fabric özelliği oluşturur veya güncelleştirir. |
@@ -29,7 +29,7 @@ Belirtilen Service Fabric özelliğini siler.
 
 Verilen bir ad altında belirtilen Service Fabric özelliğini siler. Bir özelliğin silinebilmesi için önce oluşturulması gerekir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -52,7 +52,7 @@ Belirtilen Service Fabric özelliğini alır.
 
 Verilen bir ad altında belirtilen Service Fabric özelliğini alır. Bu, her zaman hem değeri hem de meta verileri döndürür.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -75,7 +75,7 @@ Verilen bir ad altındaki tüm Service Fabric özellikleriyle ilgili bilgileri a
 
 Bir Service Fabric ad, özel bilgileri depolayan bir veya daha fazla adlandırılmış özelliğe sahip olabilir. Bu işlem, bu özelliklerle ilgili bilgileri disk belleğine alınmış bir listede alır. Bilgiler, özelliklerin her biri hakkında ad, değer ve meta veriler içerir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -99,7 +99,7 @@ Service Fabric özelliği oluşturur veya güncelleştirir.
 
 Verilen bir ad altında belirtilen Service Fabric özelliğini oluşturur veya güncelleştirir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |

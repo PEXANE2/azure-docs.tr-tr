@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
 ms.openlocfilehash: 61ec96a35fac6a033fe6c8b65cff156ba63e5e58
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87563356"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Azure Static Web Apps Önizlemesinde özel etki alanı ayarlama
 
 Varsayılan olarak, Azure statik Web Apps otomatik olarak oluşturulan bir etki alanı adı sağlar. Bu makalede bir Azure statik Web Apps uygulamasına özel bir etki alanı adı eşleme gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Satın alınan etki alanı adı
 - Etki alanınız için DNS yapılandırma özelliklerine erişim
@@ -31,9 +31,9 @@ Bir uygulama için kullanılabilir birkaç farklı DNS yapılandırması türü 
 
 | İsterseniz                                 | Ardından                                                |
 | -----------------------------------------------| --------------------------------------------------- |
-| Destek `www.example.com` veya`blog.example.net`| [CNAME kaydını eşleme](#map-a-cname-record)           |
-| Support`example.com`                          | [Kök etki alanı yapılandırma](#configure-a-root-domain) |
-| Tüm alt etki alanlarını işaret edin`www.example.com`      | [Joker karakterle eşleme](#map-a-wildcard-domain)            |
+| Destek `www.example.com` veya `blog.example.net`| [CNAME kaydını eşleme](#map-a-cname-record)           |
+| Support `example.com`                          | [Kök etki alanı yapılandırma](#configure-a-root-domain) |
+| Tüm alt etki alanlarını işaret edin `www.example.com`      | [Joker karakterle eşleme](#map-a-wildcard-domain)            |
 
 ## <a name="map-a-cname-record"></a>CNAME kaydını eşleme
 
@@ -66,7 +66,7 @@ Bir CNAME kaydı bir etki alanını diğerine eşler. CNAME kaydını, `www.exam
     | Ayar             | Değer                     |
     | ------------------- | ------------------------- |
     | Tür                | CNAME                     |
-    | Konak                | www                       |
+    | Ana bilgisayar                | www                       |
     | Değer               | Panodan yapıştırma |
     | TTL (varsa) | Varsayılan değer olarak bırak    |
 
@@ -111,7 +111,7 @@ Bazen başka bir etki alanına yönlendirmek için bir alt etki alanına gönder
     | Ayar | Değer                  |
     | ------- | ---------------------- |
     | Tür    | CNAME                  |
-    | Konak    | \*                     |
+    | Ana bilgisayar    | \*                     |
     | Değer   | www.example.com        |
     | TTL     | Varsayılan değer olarak bırak |
 

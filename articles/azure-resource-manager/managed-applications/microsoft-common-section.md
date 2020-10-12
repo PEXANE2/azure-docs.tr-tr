@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: 924aff8f2ba3d796b65f52494845f3b10018065c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87063972"
 ---
 # <a name="microsoftcommonsection-ui-element"></a>Microsoft. Common. Section Kullanıcı arabirimi öğesi
@@ -45,7 +45,7 @@ Bir veya daha fazla öğeyi bir başlık altında gruplandıran bir denetim.
 
 ## <a name="remarks"></a>Açıklamalar
 
-- `elements`en az bir öğe içermeli ve hariç tüm öğe türlerine sahip olabilir `Microsoft.Common.Section` .
+- `elements` en az bir öğe içermeli ve hariç tüm öğe türlerine sahip olabilir `Microsoft.Common.Section` .
 - Bu öğe `toolTip` özelliği desteklemiyor.
 
 ## <a name="sample-output"></a>Örnek çıktı

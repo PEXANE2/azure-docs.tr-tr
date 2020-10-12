@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
 ms.openlocfilehash: 84e94a431efdc84ff6896de416bd222120784899
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89264292"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Media Services işlemler REST API genel bakış
@@ -80,7 +80,7 @@ Aşağıda, isteğe bağlı bir başlık kümesi verilmiştir:
 | --- | --- | --- |
 | Tarih |RFC 1123 tarihi |İsteğin zaman damgası |
 | Kabul Et |İçerik türü |Aşağıdaki gibi yanıt için istenen içerik türü:<p> -Application/JSON; OData = verbose<p> -Application/atom + XML<p> Yanıtlar, blob getirme gibi farklı bir içerik türüne sahip olabilir, burada başarılı bir yanıt yük olarak blob akışını içerir. |
-| Kabul etme-kodlama |Gzip, söndür |Uygun olduğunda GZIP ve söndür kodlaması. Note: büyük kaynaklar Için Media Services bu üstbilgiyi yoksayabilir ve sıkıştırılmış olmayan verileri döndürebilir. |
+| Accept-Encoding |Gzip, söndür |Uygun olduğunda GZIP ve söndür kodlaması. Note: büyük kaynaklar Için Media Services bu üstbilgiyi yoksayabilir ve sıkıştırılmış olmayan verileri döndürebilir. |
 | Accept-Language |"en", "es" vb. |Yanıt için tercih edilen dili belirtir. |
 | Accept-Charset |"UTF-8" gibi karakter kümesi türü |Varsayılan UTF-8 ' dir. |
 | X-HTTP-yöntemi |HTTP yöntemi |Bu yöntemleri kullanmak için PUT veya DELETE gibi HTTP yöntemlerini desteklemeyen istemcilerin veya güvenlik duvarlarının, bir GET çağrısıyla tünelde kullanılmasına izin verir. |
@@ -130,5 +130,5 @@ Azure AD kimlik doğrulamasını Media Services REST API ile nasıl kullanacağ�
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 4443b0f479079a4722a5d62fea40afcb4a58632d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86262156"
 ---
 # <a name="add-a-bubble-layer"></a>Baloncuk katmanı ekleme
@@ -49,7 +49,7 @@ Başlangıçta tüm kabarcıklar aynı Fill rengine sahiptir. **Alanlar** bölme
 |---------------------|--------------|
 | En küçük boyut            | Verileri ölçeklendirirken en küçük kabarcık boyutu.|
 | En büyük boyut            | Veriler ölçeklendirilirken en büyük kabarcık boyutu.|
-| Boyut ölçeklendirme yöntemi | Göreli kabarcık boyutunu belirlemede kullanılan ölçekleme algoritması.<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;• Doğrusal-daha erken ve en büyük boyuta eşlenen giriş verisi aralığı. (varsayılan)<br/>&nbsp;&nbsp;&nbsp;&nbsp;• Günlük veri aralığı, en düşük ve en büyük boyutla eşleştirilmiş olan giriş verisi logaritarak.<br/>&nbsp;&nbsp;&nbsp;&nbsp;• Üçüncü dereceden Bezier-özel bir ölçeklendirme yöntemi oluşturmak için, üçüncü dereceden Bezier eğrisinin x1, y1, X2, Y2 değerlerini belirtin. |
+| Boyut ölçeklendirme yöntemi | Göreli kabarcık boyutunu belirlemede kullanılan ölçekleme algoritması.<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;• Doğrusal-daha erken ve en büyük boyuta eşlenen giriş verisi aralığı. (varsayılan)<br/>&nbsp;&nbsp;&nbsp;&nbsp;• Günlük veri aralığı, en düşük ve en büyük boyutla eşleştirilmiş olan giriş verisi logaritarak.<br/>&nbsp;&nbsp;&nbsp;&nbsp;• Cubic-Bezier-özel ölçeklendirme yöntemi oluşturmak için Cubic-Bezier eğrisinin x1, y1, X2, Y2 değerlerini belirtin. |
 
 **Boyut ölçekleme yöntemi** **günlüğe yazılır**olarak ayarlandığında, aşağıdaki seçenekler kullanılabilir hale getirilir.
 
@@ -67,14 +67,14 @@ Başlangıçta tüm kabarcıklar aynı Fill rengine sahiptir. **Alanlar** bölme
 | Y2      | Üçüncü dereceden Bezier eğrisinin Y2 parametresi. |
 
 > [!TIP]
-> [https://cubic-bezier.com/](https://cubic-bezier.com/), üçüncü dereceden Bezier eğrilerine yönelik parametreleri oluşturmak için kullanışlı bir araçtır.
+> [https://cubic-bezier.com/](https://cubic-bezier.com/) Cubic-Bezier eğrilerine yönelik parametreler oluşturmak için kullanışlı bir araçtır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Haritada verinin nasıl görüntülendiğini değiştirin:
 
 > [!div class="nextstepaction"]
-> [Çubuk grafik katmanı ekleme](power-bi-visual-add-bar-chart-layer.md)
+> [Çubuk grafiği katmanı ekleme](power-bi-visual-add-bar-chart-layer.md)
 
 Haritaya daha fazla bağlam ekleyin:
 
@@ -85,7 +85,7 @@ Haritaya daha fazla bağlam ekleyin:
 > [Kutucuk katmanı ekleme](power-bi-visual-add-tile-layer.md)
 
 > [!div class="nextstepaction"]
-> [Gerçek zamanlı trafiği göster](power-bi-visual-show-real-time-traffic.md)
+> [Gerçek zamanlı trafiği gösterme](power-bi-visual-show-real-time-traffic.md)
 
 Görseli özelleştirin:
 

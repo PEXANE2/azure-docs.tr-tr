@@ -14,10 +14,10 @@ ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, n
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: c6e59ab0432ad2b7bdccb5ce9916e85eb6d95048
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88116402"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Neden Microsoft kimlik platformuna (v2.0) güncelleştirmelisiniz?
@@ -61,7 +61,7 @@ Bir kuruluş adına yapılan yönetici onayı, yine de uygulama için kayıtlı 
 
 V 1.0 uç noktasını kullanan uygulamalar için, bir uygulama **kaynak**veya belirteç alıcısı olarak davranabilir. Bir kaynak, anladığı sayıda **kapsam** veya **oAuth2Permissions** tanımlayabilir ve bu da istemci uygulamaların belirli bir kapsam kümesi için bu kaynaktan belirteç istemesine izin verir. Microsoft Graph API 'sini bir kaynak örneği olarak düşünün:
 
-* Kaynak tanımlayıcısı veya `AppID URI` :`https://graph.microsoft.com/`
+* Kaynak tanımlayıcısı veya `AppID URI` : `https://graph.microsoft.com/`
 * Kapsamlar veya `oAuth2Permissions` : `Directory.Read` , vb `Directory.Write` .
 
 Bu, Microsoft Identity platform uç noktası için doğru bir durum içerir. Bir uygulama yine de kaynak olarak davranabilir, kapsamları tanımlayabilir ve bir URI ile tanımlanabilir. İstemci uygulamaları yine de bu kapsamlara erişim isteğinde bulunabilir. Ancak, bir istemcinin bu izinleri istemesi yöntemi değişmiştir.

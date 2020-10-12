@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 06/12/2020
 ms.openlocfilehash: 4f6bbbdbbee6cf83a6bea463cf200be0cf671897
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317064"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Veritabanı performansını izlemek ve sorunlarını gidermek için AI kullanarak Akıllı İçgörüler (Önizleme)
@@ -73,10 +73,10 @@ Kullanılabilir Akıllı İçgörüler seçenekleri şunlardır:
 
 | Akıllı İçgörüler seçeneği | Azure SQL veritabanı desteği | Azure SQL Yönetilen Örneği desteği |
 | :----------------------------- | ----- | ----- |
-| **Akıllı içgörüler yapılandırma** -veritabanlarınız için akıllı içgörüler analizini yapılandırın. | Yes | Yes |
-| **Azure SQL Analytics** içgörüler için Azure SQL Analytics Stream Insights. | Yes | Yes |
-| Daha fazla özel Tümleştirmeler için Event Hubs **Azure Event Hubs** Stream öngörülerini edinin. | Yes | Yes |
-| **Azure depolama** hakkında bilgi edinin-daha fazla analiz ve uzun süreli arşivleme Için Azure depolama ile akış öngörüleri. | Yes | Yes |
+| **Akıllı içgörüler yapılandırma** -veritabanlarınız için akıllı içgörüler analizini yapılandırın. | Evet | Evet |
+| **Azure SQL Analytics** içgörüler için Azure SQL Analytics Stream Insights. | Evet | Evet |
+| Daha fazla özel Tümleştirmeler için Event Hubs **Azure Event Hubs** Stream öngörülerini edinin. | Evet | Evet |
+| **Azure depolama** hakkında bilgi edinin-daha fazla analiz ve uzun süreli arşivleme Için Azure depolama ile akış öngörüleri. | Evet | Evet |
 
 > [!NOTE]
 > Akıllı Öngörüler şu bölgelerde kullanılamayan bir önizleme özelliğidir: Batı Avrupa, Kuzey Avrupa, Batı ABD 1 ve Doğu ABD 1.
@@ -158,7 +158,7 @@ Oluşturulan Öngörüler, zaman aşımına uğrayan isteklerin sayısını ve z
 
 ## <a name="excessive-wait-times"></a>Aşırı bekleme süresi
 
-Aşırı bekleme süresi modeli, tek veritabanı sorgularını izler. Sistem tarafından yönetilen mutlak eşikleri engelleyen olağandışı yüksek sorgu bekleme istatistiklerini algılar. Aşağıdaki sorgu, çok fazla bekleme süresi ölçümlerinin kullanılarak gözlemlenir, [sorgu deposu bekleme istatistikleri (sys. query_store_wait_stats)](/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql):
+Aşırı bekleme süresi modeli, tek veritabanı sorgularını izler. Sistem tarafından yönetilen mutlak eşikleri engelleyen olağandışı yüksek sorgu bekleme istatistiklerini algılar. Aşağıdaki sorgu çok fazla bekleme süresi ölçümleri kullanılarak gözlemlenir, [sorgu deposu bekleme istatistikleri (sys.query_store_wait_stats)](/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql):
 
 - Kaynak sınırlarına ulaşma
 - Elastik havuz kaynağı sınırlarına ulaşma
