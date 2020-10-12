@@ -4,10 +4,10 @@ description: Bu makalede laboratuvar hesabı yöneticisinin laboratuvar oluştur
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 3b6c2d83414b1abc763755fbf15402b122c2186b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85444208"
 ---
 # <a name="allow-lab-creator-to-pick-location-for-the-lab-in-azure-lab-services"></a>Laboratuvar oluşturucusunun Azure Lab Services laboratuvar için konum seçmesine izin ver
@@ -57,7 +57,7 @@ Bir konum kısıtlanmamışsa, varsayılan olarak listede gösterilmez. Açılan
 
 ![Kullanılamayan konumları göster](./media/allow-lab-creator-pick-lab-location/show-unavailable-locations.png)
 
-## <a name="cost"></a>Maliyet
+## <a name="cost"></a>Cost
 Daha önce, fiyatlandırma, laboratuvar için seçtiğiniz VM boyutunu temel alır. Artık Fiyat, Işletim sistemi (OS), boyut ve konum birleşimini temel alır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar

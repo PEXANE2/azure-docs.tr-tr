@@ -4,19 +4,19 @@ description: Mantıksal değerleri belirleyebilmek için bir Azure Resource Mana
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 8fe1c00240fc24c3c1454b118f9e0d9a9d54fe4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84677398"
 ---
 # <a name="logical-functions-for-arm-templates"></a>ARM şablonları için mantıksal işlevler
 
 Kaynak Yöneticisi, Azure Resource Manager (ARM) şablonlarınıza karşılaştırmalar yapmak için çeşitli işlevler sağlar.
 
-* [ve](#and)
+* [and](#and)
 * [bool](#bool)
-* [kullandıysanız](#if)
+* [if](#if)
 * [başlatılmadı](#not)
 * [veya](#or)
 
@@ -30,9 +30,9 @@ Tüm parametre değerlerinin doğru olup olmadığını denetler.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |boole |Doğru olup olmadığını kontrol etmek için ilk değer. |
-| arg2 |Evet |boole |Doğru olup olmadığını kontrol etmek için ikinci değer. |
-| ek bağımsız değişkenler |Hayır |boole |Doğru olup olmadığını denetlemek için ek bağımsız değişkenler. |
+| arg1 |Evet |boolean |Doğru olup olmadığını kontrol etmek için ilk değer. |
+| arg2 |Evet |boolean |Doğru olup olmadığını kontrol etmek için ikinci değer. |
+| ek bağımsız değişkenler |Hayır |boolean |Doğru olup olmadığını denetlemek için ek bağımsız değişkenler. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -66,11 +66,11 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekteki çıktı:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
-| Andexamptaoutput | Bool | False |
-| Orexamptaoutput | Bool | True |
-| Notexamptaoutput | Bool | False |
+| Andexamptaoutput | Bool | Yanlış |
+| Orexamptaoutput | Bool | Doğru |
+| Notexamptaoutput | Bool | Yanlış |
 
 ## <a name="bool"></a>bool
 
@@ -119,12 +119,12 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
-| trueString | Bool | True |
-| Yanlışdize | Bool | False |
-| Trueınt | Bool | True |
-| Yanlışint | Bool | False |
+| trueString | Bool | Doğru |
+| Yanlışdize | Bool | Yanlış |
+| Trueınt | Bool | Doğru |
+| Yanlışint | Bool | Yanlış |
 
 ## <a name="if"></a>if
 
@@ -136,7 +136,7 @@ Bir koşulun doğru veya yanlış olduğunu temel alarak bir değer döndürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| koşul |Evet |boole |Doğru veya yanlış olduğunu denetlemek için değer. |
+| koşul |Evet |boolean |Doğru veya yanlış olduğunu denetlemek için değer. |
 | trueValue |Evet | dize, int, nesne veya dizi |Koşul doğru olduğunda döndürülecek değer. |
 | Yanlışdeğer |Evet | dize, int, nesne veya dizi |Koşul false olduğunda döndürülecek değer. |
 
@@ -177,7 +177,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekteki çıktı:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | yesOutput | Dize | evet |
 | noOutput | Dize | hayır |
@@ -241,7 +241,7 @@ Boole değerini ters değerine dönüştürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |boole |Dönüştürülecek değer. |
+| arg1 |Evet |boolean |Dönüştürülecek değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -275,11 +275,11 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekteki çıktı:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
-| Andexamptaoutput | Bool | False |
-| Orexamptaoutput | Bool | True |
-| Notexamptaoutput | Bool | False |
+| Andexamptaoutput | Bool | Yanlış |
+| Orexamptaoutput | Bool | Doğru |
+| Notexamptaoutput | Bool | Yanlış |
 
 Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) , [eşittir](template-functions-comparison.md#equals)ile **değil** .
 
@@ -300,9 +300,9 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekteki çıktı:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
-| Checttequals | Bool | True |
+| Checttequals | Bool | Doğru |
 
 ## <a name="or"></a>veya
 
@@ -314,9 +314,9 @@ Herhangi bir parametre değerinin doğru olup olmadığını denetler.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |boole |Doğru olup olmadığını kontrol etmek için ilk değer. |
-| arg2 |Evet |boole |Doğru olup olmadığını kontrol etmek için ikinci değer. |
-| ek bağımsız değişkenler |Hayır |boole |Doğru olup olmadığını denetlemek için ek bağımsız değişkenler. |
+| arg1 |Evet |boolean |Doğru olup olmadığını kontrol etmek için ilk değer. |
+| arg2 |Evet |boolean |Doğru olup olmadığını kontrol etmek için ikinci değer. |
+| ek bağımsız değişkenler |Hayır |boolean |Doğru olup olmadığını denetlemek için ek bağımsız değişkenler. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -350,11 +350,11 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekteki çıktı:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
-| Andexamptaoutput | Bool | False |
-| Orexamptaoutput | Bool | True |
-| Notexamptaoutput | Bool | False |
+| Andexamptaoutput | Bool | Yanlış |
+| Orexamptaoutput | Bool | Doğru |
+| Notexamptaoutput | Bool | Yanlış |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/03/2020
 ms.openlocfilehash: d283c2b2cdbbeb3ef4bc4e25f4288dfd95158552
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89003380"
 ---
 # <a name="install-log-analytics-agent-on-windows-computers"></a>Windows bilgisayarlarına Log Analytics Aracısı 'nı yükler
@@ -49,7 +49,7 @@ Bkz. Windows Aracısı için ağ gereksinimleri için [Log Analytics aracısına
 ## <a name="configure-agent-to-use-tls-12"></a>Aracıyı TLS 1,2 kullanacak şekilde yapılandırma
 [TLS 1,2](/windows-server/security/tls/tls-registry-settings#tls-12) protokolü, Windows aracısı ve Log Analytics hizmeti arasındaki iletişim için yoldaki verilerin güvenliğini güvence altına aldığından emin olun. [Varsayılan olarak tls 1,2 etkin olmayan bir işletim sistemine](data-security.md#sending-data-securely-using-tls-12)yüklüyorsanız, aşağıdaki ADıMLARı kullanarak TLS 1,2 ' yi yapılandırmanız gerekir.
 
-1. Şu kayıt defteri alt anahtarını bulun: **HKEY_LOCAL_MACHINE \System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
+1. Aşağıdaki kayıt defteri alt anahtarını bulun: **HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
 2. TLS 1,2 için **protokoller** altında bir alt anahtar oluşturma **Hklm\system\currentcontrolset\control\securityproviders\schannel\protocols\tls 1,2**
 3. Daha önce oluşturduğunuz TLS 1,2 protokol sürümü alt anahtarı altında bir **istemci** alt anahtarı oluşturun. Örneğin, **Hklm\system\currentcontrolset\control\securityproviders\schannel\protocols\tls 1.2 \ Client**.
 4. **Hklm\system\currentcontrolset\control\securityproviders\schannel\protocols\tls 1.2 \ Client**altında aşağıdaki DWORD değerlerini oluşturun:
@@ -59,9 +59,9 @@ Bkz. Windows Aracısı için ağ gereksinimleri için [Log Analytics aracısına
 
 Varsayılan olarak devre dışı olduğu gibi, .NET Framework 4,6 veya üstünü güvenli şifrelemeyi destekleyecek şekilde yapılandırın. [Güçlü şifreleme](/dotnet/framework/network-programming/tls#schusestrongcrypto) , TLS 1,2 gibi daha güvenli ağ protokolleri kullanır ve güvenli olmayan protokolleri engeller. 
 
-1. Aşağıdaki kayıt defteri alt anahtarını bulun: **HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft \\ . NETFramework\v4.0.30319**.  
+1. Aşağıdaki kayıt defteri alt anahtarını bulun: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\ . NETFramework\v4.0.30319**.  
 2. Bu alt anahtar altında **1**değeriyle **Schusestrongşifre** DWORD değeri oluşturun.  
-3. Şu kayıt defteri alt anahtarını bulun: **HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\Microsoft \\ . NETFramework\v4.0.30319**.  
+3. Aşağıdaki kayıt defteri alt anahtarını bulun: **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\ . NETFramework\v4.0.30319**.  
 4. Bu alt anahtar altında **1**değeriyle **Schusestrongşifre** DWORD değeri oluşturun. 
 5. Ayarların etkili olması için sistemi yeniden başlatın. 
 
@@ -202,7 +202,7 @@ Döndürülen arama sonuçlarında, bağlı olduğunu ve hizmete raporlanmasın�
 
 Log Analytics aracıdan alınan veriler, Azure Izleyici 'ye gönderilmeden önce *C:\Program Files\Microsoft Monitoring It T\tors T\sağlık hizmeti durumunda* yerel makinede önbelleğe alınır. Aracı 20 saniyede bir karşıya yüklemeye çalışır. Başarısız olursa, işlem başarılı olana kadar üstel olarak zaman uzunluğu artacaktır. İkinci denemeden önce 30 saniye, bir sonraki, 120 saniye öncesi ve bu şekilde yeniden bağlantı başarıyla bağlanana kadar yeniden denemeler arasında 8,5 en fazla 60 saat sürer. Bu bekleme süresi, tüm aracıların eşzamanlı olarak bağlantı kurmaya engel olmak için biraz rasgeledir. En büyük arabelleğe ulaşıldığında en eski veriler atılır.
 
-Varsayılan önbellek boyutu 50 MB 'tır, ancak en az 5 MB ve en fazla 1,5 GB arasında yapılandırılabilir. Kayıt defteri anahtarında depolanır *HKEY_LOCAL_MACHINE \System\currentcontrolset\services\healthservice\parameters\kalıcılık önbelleği en yüksek*. Değer, sayfa başına 8 KB ile sayfa sayısını temsil eder.
+Varsayılan önbellek boyutu 50 MB 'tır, ancak en az 5 MB ve en fazla 1,5 GB arasında yapılandırılabilir. *HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Persistence Cache Maximum*kayıt defteri anahtarında depolanır. Değer, sayfa başına 8 KB ile sayfa sayısını temsil eder.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

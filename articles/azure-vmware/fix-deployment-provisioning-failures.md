@@ -4,10 +4,10 @@ description: Azure VMware Çözüm dağıtımı veya sağlama hatalarıyla ilgil
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.openlocfilehash: 63d5440a9e2b15463e465e1d32762889508feca1
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88752227"
 ---
 # <a name="get-help-with-azure-vmware-solution-deployment-or-provisioning-failures"></a>Azure VMware Çözüm dağıtımı veya sağlama hatalarıyla ilgili yardım alın
@@ -37,7 +37,7 @@ Hata, ön doğrulama aşamasında oluşursa, özel bir bulut dağıtılmadan ön
 
 Hataların ayrıntıları, sorununuzun çözümünde de yararlı olabilir. Önceki ekrandan, **Ayrıntılar için buraya tıklayın** (vurgulanmış) ve hata Özeti aşağıdaki ekran görüntüsünde gösterildiği gibi açılır.
  
- :::image type="content" source="media/fix-deployment-provisioning-failures/summary-of-errors.png" alt-text="Hataların Özeti.":::
+ :::image type="content" source="media/fix-deployment-provisioning-failures/summary-of-errors.png" alt-text="Bağıntı KIMLIĞIYLE özel bulut dağıtımı başarısız oldu.":::
 
 Bu Özeti, SR 'ye dahil etmek için kopyalayıp kaydedin.
  
@@ -45,15 +45,15 @@ Bu Özeti, SR 'ye dahil etmek için kopyalayıp kaydedin.
 
 Bildirimler simgesini seçerek dağıtım etkinlik günlüğü ' nde arayarak, başarısız olanlar da dahil olmak üzere geçmiş dağıtımları alabilirsiniz.
 
-:::image type="content" source="media/fix-deployment-provisioning-failures/open-notifications.png" alt-text="Bildirimleri açın.":::
+:::image type="content" source="media/fix-deployment-provisioning-failures/open-notifications.png" alt-text="Bağıntı KIMLIĞIYLE özel bulut dağıtımı başarısız oldu.":::
 
 Bildirimler ' de, **etkinlik günlüğünde daha fazla olay**seçin.
 
-:::image type="content" source="media/fix-deployment-provisioning-failures/more-events-in-activity-log.png" alt-text="Bağlantı: etkinlik günlüğünde daha fazla olay.":::
+:::image type="content" source="media/fix-deployment-provisioning-failures/more-events-in-activity-log.png" alt-text="Bağıntı KIMLIĞIYLE özel bulut dağıtımı başarısız oldu.":::
 
 Ardından, başarısız dağıtımı ve onun bağıntı KIMLIĞINI bulmak için kaynak adını veya kaynağı oluştururken kullandığınız başka bir benzersiz bilgi parçasını arayın. Aşağıdaki örnek, bir özel bulut kaynağında (PC03) arama sonuçlarını gösterir.
  
-:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="Geçmiş Azure VMware Çözüm dağıtımlarını bulma işlemi başarısız oldu.":::
+:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="Bağıntı KIMLIĞIYLE özel bulut dağıtımı başarısız oldu.":::
  
 Başarısız dağıtımın işlem adını seçmek, ayrıntıları içeren bir pencere açar. JSON sekmesini seçin ve Bağıntıkimliği ' ı arayın. SR 'ye kopyalayın ve ekleyin. 
  
@@ -63,7 +63,7 @@ Belki de özel bir buluta sahipsiniz ve özel Cloud ExpressRoute bağlantı hatt
 
 Portalda özel bir bulutu görüntülerken **bağlantı > ExpressRoute** ' ı seçin ve **ExpressRoute kimliğini** panonuza kopyalayın.
  
-:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="ExpressRoute KIMLIĞINI panoya kopyalayın."::: 
+:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="Bağıntı KIMLIĞIYLE özel bulut dağıtımı başarısız oldu."::: 
  
 ExpressRoute KIMLIĞINI yeni destek isteğindeki ilgili alana yapıştırın. Daha fazla bilgi için aşağıdaki bölüme bakın, [destek Isteğinizi oluşturun](#create-your-support-request).
  
@@ -78,7 +78,7 @@ Azure VMware Çözüm dağıtımı veya sağlama hatalarıyla ilgili bir SR olu�
 
 1. **Yardım** simgesini ve ardından **+ Yeni destek isteği**' ni seçin.
 
-    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="SR 'niz için bir ExpressRoute KIMLIĞI toplayın.":::
+    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="Bağıntı KIMLIĞIYLE özel bulut dağıtımı başarısız oldu.":::
 
 2. Tüm gerekli alanları ve **temel bilgiler** sekmesinde doldurabilirsiniz:
 

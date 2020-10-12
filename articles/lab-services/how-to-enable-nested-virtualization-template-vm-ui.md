@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
 ms.openlocfilehash: ad92862c78260e7385168faf794c013e85f66b82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85445738"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services-manually"></a>Azure Lab Services bir şablon sanal makinesinde el ile iç içe sanallaştırmayı etkinleştirin
@@ -39,9 +39,9 @@ Aşağıdaki adımlarda, Sunucu Yöneticisi kullanarak Windows Server 'da Hyper-
 12. **Varsayılan mağazalar** sayfasında, Varsayılanları kabul edin ve **İleri**' ye tıklayın.
 13. **Yükleme seçimlerini Onayla** sayfasında, **gerekirse hedef sunucuyu otomatik olarak yeniden Başlat**' ı seçin.
 14. **Rol ve Özellik Ekleme Sihirbazı** açılır penceresi göründüğünde **Evet**' e tıklayın.
-15. **Install**'a tıklayın.
+15. **Yükle**'ye tıklayın.
 16. **Yükleme ilerleme durumu** sayfasını, Hyper-V rolünün tamamlandığını belirtecek şekilde bekleyin.  Makine, yükleme ortasında yeniden başlatılabilir.
-17. **Kapat**' a tıklayın.
+17. **Kapat**’a tıklayın.
 
 ## <a name="enable-dhcp-role"></a>DHCP rolünü etkinleştir
 
@@ -80,7 +80,7 @@ Oluşturulan Hyper-V istemci sanal makinelerinin, NAT ağında bir IP adresi olm
 12. **Rol hizmetlerini seçin** sayfasında, **İleri**’ye tıklayın.
 13. **Yükleme seçimlerini onaylayın** sayfasında, **Yükle**'ye tıklayın.
 14. **Yükleme ilerleme durumu** sayfasını, uzaktan erişim rolünün tamamlandığını belirtecek şekilde bekleyin.  
-15. **Kapat**' a tıklayın.
+15. **Kapat**’a tıklayın.
 
 ## <a name="create-virtual-nat-network"></a>Sanal NAT ağı oluştur
 

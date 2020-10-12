@@ -9,10 +9,10 @@ ms.date: 06/10/2020
 ms.author: victorh
 ms.reviewer: tyao
 ms.openlocfilehash: a995460793686d8293d77965e74e2cbf916925a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87005608"
 ---
 # <a name="configure-a-custom-response-for-azure-web-application-firewall-waf"></a>Azure Web uygulaması güvenlik duvarı (WAF) için özel bir yanıt yapılandırma
@@ -23,11 +23,13 @@ Varsayılan olarak, WAF eşleşen bir kural nedeniyle isteği engellediğinde, *
 
 WAF portalından "Ilke ayarları" altında özel yanıt durum kodunu ve gövdesini yapılandırabilirsiniz.
 
-:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response-settings.png" alt-text="WAF Ilke ayarları":::
+:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response-settings.png" alt-text="WAF Ilke ayarları&quot;:::
 
-Yukarıdaki örnekte, yanıt kodu 403 olarak tutulduk ve aşağıdaki görüntüde gösterildiği gibi kısa bir "lütfen bize başvurun" iletisi yapılandırdınız:
+Yukarıdaki örnekte, yanıt kodu 403 olarak tutulduk ve aşağıdaki görüntüde gösterildiği gibi kısa bir &quot;lütfen bize başvurun" iletisi yapılandırdınız:
 
-:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response.png" alt-text="Özel yanıt örneği":::
+:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response.png" alt-text="WAF Ilke ayarları&quot;:::
+
+Yukarıdaki örnekte, yanıt kodu 403 olarak tutulduk ve aşağıdaki görüntüde gösterildiği gibi kısa bir &quot;lütfen bize başvurun":::
 
 "{{Azure-ref}}", yanıt gövdesine benzersiz başvuru dizesi ekler. Değer, ve günlüklerindeki TrackingReference alanıyla eşleşir `FrontdoorAccessLog` `FrontdoorWebApplicationFirewallLog` .
 

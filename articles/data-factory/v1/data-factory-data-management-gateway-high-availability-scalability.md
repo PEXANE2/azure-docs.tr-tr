@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 4ee89f4bba70bb5e81eef21247d556f65a2a1f16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80065203"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Veri Yönetimi ağ geçidi-yüksek kullanılabilirlik ve ölçeklenebilirlik (Önizleme)
@@ -183,9 +183,9 @@ Azure portal, her düğümde (CPU, bellek, ağ (gelen/giden) ve ağ geçidi dü�
 
 Ağ **geçidi** sayfasında **Gelişmiş ayarları** etkinleştirerek **ağ**(ın/out) gibi gelişmiş ölçümleri, **rol & kimlik bilgisi durumunu**ve performans ayarlaması sırasında değiştirilebilen/değiştirilebilen **eşzamanlı işleri** (çalışıyor/limit) görebilirsiniz. Aşağıdaki tabloda **ağ geçidi düğümleri** listesindeki sütunların açıklamaları verilmiştir:  
 
-İzleme özelliği | Description
+İzleme özelliği | Açıklama
 :------------------ | :---------- 
-Name | Ağ geçidiyle ilişkili mantıksal ağ geçidinin ve düğümlerin adı.  
+Ad | Ağ geçidiyle ilişkili mantıksal ağ geçidinin ve düğümlerin adı.  
 Durum | Mantıksal ağ geçidinin ve ağ geçidi düğümlerinin durumu. Örnek: çevrimiçi/çevrimdışı/sınırlı/vb. Bu durumlar hakkında daha fazla bilgi için bkz. [ağ geçidi durumu](#gateway-status) bölümü. 
 Sürüm | Mantıksal ağ geçidi ve her ağ geçidi düğümünün sürümünü gösterir. Mantıksal ağ geçidinin sürümü, gruptaki düğümlerin çoğunluğu sürümüne göre belirlenir. Mantıksal ağ geçidi kurulumunda farklı sürümlere sahip düğümler varsa, yalnızca mantıksal ağ geçidi ile aynı sürüm numarasına sahip düğümler düzgün şekilde çalışır. Diğerleri sınırlı moddadır ve el ile güncelleştirilmesi gerekir (yalnızca büyük/küçük harfe otomatik güncelleştirme başarısız olur). 
 Kullanılabilir bellek | Bir ağ geçidi düğümündeki kullanılabilir bellek. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür. 

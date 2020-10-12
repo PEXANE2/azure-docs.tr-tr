@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
 ms.openlocfilehash: 416cf4f027b6f1e72641324be39ba0304301db37
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82614505"
 ---
 # <a name="frequently-asked-questions-about-the-gremlin-api-in-azure-cosmos-db"></a>Azure Cosmos DB 'da Gremlin API 'SI hakkında sık sorulan sorular
@@ -142,7 +142,7 @@ Bir WebSocket bağlantısı aracılığıyla Gremlin bağlantısı yapılır. We
 
 ### <a name="why-cant-i-use-fluent-api-calls-in-the-native-gremlin-drivers"></a>Yerel Gremlin sürücülerinde neden Fluent API çağrısı kullanmıyorum?
 
-Akıcı API çağrıları henüz Azure Cosmos DB Gremlin API 'SI tarafından desteklenmiyor. Akıcı API çağrıları, şu anda Azure Cosmos DB Gremlin API tarafından desteklenmeyen, bytecode desteği olarak bilinen bir iç biçimlendirme özelliği gerektirir. Aynı nedenden dolayı, en son Gremlin-JavaScript sürücüsü de şu anda desteklenmiyor.
+Akıcı API çağrıları henüz Azure Cosmos DB Gremlin API 'SI tarafından desteklenmiyor. Akıcı API çağrıları, şu anda Azure Cosmos DB Gremlin API tarafından desteklenmeyen, bytecode desteği olarak bilinen bir iç biçimlendirme özelliği gerektirir. Aynı nedenden dolayı, en son Gremlin-JavaScript sürücüsü de şu anda desteklenmemektedir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -4,10 +4,10 @@ description: Azure Site Recovery hizmeti ile olağanüstü durum kurtarma kullan
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.openlocfilehash: 2b901425a0020c0ccc7b834ee36d965910028018
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80062833"
 ---
 # <a name="about-disaster-recovery-for-on-premises-apps"></a>Şirket içi uygulamalar için olağanüstü durum kurtarma hakkında
@@ -40,17 +40,17 @@ Site Recovery, desteklenen bir makinede çalışan herhangi bir uygulamayı ço�
 
 | **İş yükü** |**Azure VM’lerini Azure’a çoğaltma** |**Hyper-V VM'lerini ikincil bir siteye çoğaltma** | **Hyper-V VM'lerini Azure'a çoğaltma** | **VMware VM'lerini ikincil bir siteye çoğaltma** | **VMware VM'lerini Azure'a çoğaltma** |
 | --- | --- | --- | --- | --- |---|
-| Active Directory, DNS |Yes |Yes |Yes |Yes |Yes|
-| Web uygulamaları (IIS, SQL) |Yes |Yes |Yes |Yes |Yes|
-| System Center Operations Manager |Yes |Yes |Yes |Yes |Yes|
-| SharePoint |Yes |Yes |Yes |Yes |Yes|
+| Active Directory, DNS |Evet |Evet |Evet |Evet |Evet|
+| Web uygulamaları (IIS, SQL) |Evet |Evet |Evet |Evet |Evet|
+| System Center Operations Manager |Evet |Evet |Evet |Evet |Evet|
+| SharePoint |Evet |Evet |Evet |Evet |Evet|
 | SAP<br/><br/>Küme olmayan seçenekler için SAP sitesini Azure'a çoğaltma |Evet (Microsoft tarafından test edilmiştir) |Evet (Microsoft tarafından test edilmiştir) |Evet (Microsoft tarafından test edilmiştir) |Evet (Microsoft tarafından test edilmiştir) |Evet (Microsoft tarafından test edilmiştir)|
-| Exchange (DAG olmayan) |Yes |Yes |Yes |Yes |Yes|
-| Uzak Masaüstü/VDI |Yes |Yes |Yes |Yes |Yes|
+| Exchange (DAG olmayan) |Evet |Evet |Evet |Evet |Evet|
+| Uzak Masaüstü/VDI |Evet |Evet |Evet |Evet |Evet|
 | Linux (işletim sistemi ve uygulamalar) |Evet (Microsoft tarafından test edilmiştir) |Evet (Microsoft tarafından test edilmiştir) |Evet (Microsoft tarafından test edilmiştir) |Evet (Microsoft tarafından test edilmiştir) |Evet (Microsoft tarafından test edilmiştir)|
-| Dynamics AX |Yes |Yes |Yes |Yes |Yes|
-| Windows Dosya Sunucusu |Yes |Yes |Yes |Yes |Yes|
-| Citrix XenApp ve XenDesktop |Yes|Yok |Yes |Yok |Yes |
+| Dynamics AX |Evet |Evet |Evet |Evet |Evet|
+| Windows Dosya Sunucusu |Evet |Evet |Evet |Evet |Evet|
+| Citrix XenApp ve XenDesktop |Evet|Yok |Evet |Yok |Evet |
 
 ## <a name="replicate-active-directory-and-dns"></a>Active Directory'yi ve DNS'yi çoğaltma
 
@@ -110,7 +110,7 @@ Aşağıdaki tabloda çoğaltma seçenekleri gösterilmektedir:
 |---| --- | --- | --- | --- | --- | --- | --- |
 | **Havuza Alınmış Sanal Masaüstü (yönetilmeyen)** |Hayır|Evet |Hayır |Evet |Hayır |Evet |Hayır |
 | **Havuza Alınmış Sanal Masaüstü (yönetilen ve UPD'siz)** |Hayır|Evet |Hayır |Evet |Hayır |Evet |Hayır |
-| **Uzak uygulamalar ve Masaüstü oturumları (UPD'siz)** |Yes|Yes |Yes |Yes |Yes |Yes |Yes |
+| **Uzak uygulamalar ve Masaüstü oturumları (UPD'siz)** |Evet|Evet |Evet |Evet |Evet |Evet |Evet |
 
 RDS için olağanüstü durum kurtarma hakkında [daha fazla bilgi edinin](/windows-server/remote/remote-desktop-services/rds-disaster-recovery-with-azure) .
 

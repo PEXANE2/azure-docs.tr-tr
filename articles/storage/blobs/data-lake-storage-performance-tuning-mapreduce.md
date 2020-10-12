@@ -9,10 +9,10 @@ ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: e9d638a7ed17d08b585c71b1dac4a0177f4a2939
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88030529"
 ---
 # <a name="tune-performance-mapreduce-hdinsight--azure-data-lake-storage-gen2"></a>Performansı ayarlama: MapReduce, HDInsight & Azure Data Lake Storage 2.
@@ -40,7 +40,7 @@ MapReduce işlerini çalıştırırken, Data Lake Storage 2. performansı artır
 
 **MapReduce. job. Maps/MapReduce. job. azaltıyor** Bu, oluşturulacak maksimum Map, veya azaltıcının sayısını belirleyecek.  Bölme sayısı, MapReduce işi için kaç tane eşleme oluşturulacağını saptacaktır.  Bu nedenle, istenen mapgt sayısından daha az bölme varsa, istenenden daha az mapto alabilirsiniz.       
 
-## <a name="guidance"></a>Yönerge
+## <a name="guidance"></a>Rehber
 
 > [!NOTE]
 > Bu belgedeki kılavuz, uygulamanızın kümenizde çalışan tek uygulama olduğunu varsayar.
@@ -65,7 +65,7 @@ Boş bir küme kullanıyorsanız, bellek kümeniz için toplam YARN bellek olabi
 
 YARN kapsayıcıları, iş için kullanılabilir eşzamanlılık miktarını belirler.  Toplam YARN belleği alıp MapReduce. Map. Memory ile ayırın.  
 
-\#YARN kapsayıcıları = toplam YARN bellek/MapReduce. Map. Memory
+\# YARN kapsayıcıları = toplam YARN bellek/MapReduce. Map. Memory
 
 **5. Adım: MapReduce. job. Maps/MapReduce. job. azaltımı ayarlayın**
 
@@ -93,7 +93,7 @@ Kümeden alınan toplam bellek, bir D14 = 768GB için 200 GB 'lık YARN bellek
 
 **4. Adım: YARN kapsayıcıları sayısını hesaplama**
 
-\#YARN kapsayıcıları = 768GB kullanılabilir bellek/3 GB bellek = 256
+\# YARN kapsayıcıları = 768GB kullanılabilir bellek/3 GB bellek = 256
 
 **5. Adım: MapReduce. job. Maps/MapReduce. job. azaltımı ayarlayın**
 

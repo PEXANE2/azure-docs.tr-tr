@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.openlocfilehash: 13ba529dd3067ae16167f0d9c14c8f72b982f52c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88010877"
 ---
 # <a name="azure-cache-for-redis-planning-faqs"></a>Red, planlama için Azure önbelleği SSS
@@ -43,7 +43,7 @@ Bu tablodan aşağıdaki ekibinizle çizebilirsiniz:
 | Fiyatlandırma katmanı | Boyut | CPU çekirdekleri | Kullanılabilir bant genişliği | 1 KB değer boyutu | 1 KB değer boyutu |
 | --- | --- | --- | --- | --- | --- |
 | **Standart önbellek boyutları** | | |**Megabit/sn (MB/sn)/megabayt/sn (MB/s)** |**Saniye başına istek (RPS) SSL olmayan** |**İstek/saniye (RPS) SSL** |
-| C0 | 250 MB | Paylaşılan | 100/12,5  |  15.000 |   7.500 |
+| C0 | 250 MB | Shared | 100/12,5  |  15.000 |   7.500 |
 | C1 |   1 GB | 1      | 500/62,5  |  38.000 |  20.720 |
 | C2 | 2,5 GB | 2      | 500/62,5  |  41.000 |  37.000 |
 | C3 |   6 GB | 4      | 1000/125  | 100.000 |  90,000 |
@@ -77,7 +77,7 @@ Evet, Redu için Azure önbelleği, Azure Kamu bulutu, Azure Çin 21Vianet bulut
 
 | Bulut   | Redsıs için DNS son eki            |
 |---------|---------------------------------|
-| Genel  | *. redis.cache.windows.net       |
+| Ortak  | *. redis.cache.windows.net       |
 | US Gov  | *. redis.cache.usgovcloudapi.net |
 | Almanya | *. redis.cache.cloudapi.de       |
 | Çin   | *. redis.cache.chinacloudapi.cn  |

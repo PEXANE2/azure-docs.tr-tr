@@ -7,10 +7,10 @@ ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 07eae73a36bf4051925547fa375f46963a162881
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88010115"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>Windows Sanal Masaüstü yük dengeleme yöntemini yapılandırma
@@ -20,7 +20,7 @@ Bir konak havuzu için yük dengeleme yöntemini yapılandırmak, Windows sanal 
 >[!NOTE]
 > Bu, kullanıcıların konak havuzundaki bir oturum ana bilgisayarına her zaman bir 1:1 eşlemesi olduğundan, kalıcı bir masaüstü konak havuzu için geçerlidir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, PowerShell modülünü indirip yüklemek ve Azure hesabınızda oturum açmak için [Windows sanal masaüstü PowerShell modülünü ayarlama](powershell-module.md) bölümündeki yönergeleri izlediğiniz varsayılmaktadır.
 
@@ -81,4 +81,4 @@ Yük dengelemeyi yapılandırmak için:
 4. Düzenlemek istediğiniz konak havuzunun adını seçin.
 5. **Özellikler**’i seçin.
 6. Alana **en fazla oturum sınırını** girin ve açılan menüde bu konak havuzu için istediğiniz **Yük Dengeleme algoritmasını** seçin.
-7. **Kaydet**'i seçin. Bu, yeni yük dengeleme ayarlarını uygular.
+7. **Kaydet**’i seçin. Bu, yeni yük dengeleme ayarlarını uygular.

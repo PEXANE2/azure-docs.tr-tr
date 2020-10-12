@@ -5,13 +5,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/11/2020
 ms.openlocfilehash: 235b7946fbcfc2322878428cce72e77ecceb9cfc
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88010963"
 ---
-## <a name="authenticate-with-azure-active-directory"></a>Azure Active Directory ile kimlik doğrulaması
+## <a name="authenticate-with-azure-active-directory"></a>Azure Active Directory ile kimlik doğrulama
 
 > [!IMPORTANT]
 > 1. Şu anda **yalnızca** Görüntü İşleme API'si, Yüz Tanıma API'si, metin Analizi API'si, modern okuyucu, form tanıyıcı, anomali algılayıcısı ve Bing Özel Arama, Azure ACTIVE DIRECTORY (AAD) kullanarak kimlik doğrulaması desteği hariç tüm Bing hizmetleri.

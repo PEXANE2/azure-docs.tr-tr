@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
 ms.openlocfilehash: af3d9e9fcf0dad6a5e51a3db87b63567d701970e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84687999"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-the-azure-portal"></a>Azure portal kullanarak bir VM için yönlendirme tercihini yapılandırma
@@ -37,7 +37,7 @@ Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature ProviderNa
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure portalında](https://preview.portal.azure.com/) oturum açın.
+[Azure Portal](https://preview.portal.azure.com/)’ında oturum açın.
 
 ## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
@@ -47,9 +47,9 @@ Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature ProviderNa
 
     |Ayar|Değer|
     |---|---|
-    |Adı|myVM|
+    |Ad|myVM|
     |Kullanıcı adı| Seçtiğiniz bir kullanıcı adını girin.|
-    |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
+    |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)karşılamalıdır.|
     |Abonelik| Aboneliğinizi seçin.|
     |Kaynak grubu| **Mevcut olanı kullan**’ı seçin ve **myResourceGroup** seçeneğini belirleyin.|
     |Konum| **Doğu ABD** seçin|

@@ -8,10 +8,10 @@ ms.date: 01/23/2017
 ms.author: yegu
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: db55ac4ce868f2e6ce2afbfbf014aac67653ce4a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87500513"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Azure klasik CLı kullanılarak Redsıs için Azure önbelleği oluşturma ve yönetme
@@ -42,7 +42,7 @@ Aşağıdaki özellikler, Redsıs örnekleri için Azure önbelleği oluşturma 
 | name |-n,--ad |Redsıs için Azure önbelleğinin adı. |
 | kaynak grubu |-g,--Resource-Group |Kaynak grubunun adı. |
 | location |-l,--konum |Önbellek oluşturma konumu. |
-| size |-z,--boyut |Redsıs için Azure önbelleğinin boyutu. Geçerli değerler: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
+| boyut |-z,--boyut |Redsıs için Azure önbelleğinin boyutu. Geçerli değerler: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
 | isteyin |-x,--SKU |Redis SKU. Şunlardan biri olmalıdır: [temel, standart, Premium] |
 | EnableNonSslPort |-e,--etkinleştir-SSL olmayan-bağlantı noktası |Redin için Azure önbelleğinin EnableNonSslPort özelliği. Önbelleğiniz için TLS olmayan/SSL bağlantı noktasını etkinleştirmek istiyorsanız bu bayrağı ekleyin |
 | Redsıs yapılandırması |-c,--redsıs-yapılandırma |Redsıs yapılandırması. Yapılandırma anahtarları ve değerleri için JSON biçimli bir dize girin. Biçim: "{" ":" "," ":" "}" |
@@ -50,9 +50,9 @@ Aşağıdaki özellikler, Redsıs örnekleri için Azure önbelleği oluşturma 
 | Parça sayısı |-r,--parça-sayısı |Kümeleme ile Premium küme önbelleğinde oluşturulacak parça sayısı. |
 | Sanal Ağ |-v,--sanal-ağ |Önbelleğinizi VNET 'te barındırırken, redin için Azure önbelleğini dağıtmak üzere sanal ağın tam ARM kaynak KIMLIĞINI belirtir. Örnek biçim:/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | anahtar türü |-t,--anahtar-tür |Yenilenecek anahtar türü. Geçerli değerler: [birincil, Ikincil] |
-| Staticıp |-p,--static-IP\<static-ip\> |Önbelleğinizi VNET 'te barındırırken, önbelleğin alt ağında benzersiz bir IP adresi belirtir. Sağlanmazsa, alt ağdan bir tane seçilir. |
-| Alt ağ |t,--alt ağ\<subnet\> |Önbelleğinizi VNET 'te barındırırken, önbelleğin dağıtılacağı alt ağın adını belirtir. |
-| VirtualNetwork |-v,--sanal-ağ\<virtual-network\> |Önbelleğinizi VNET 'te barındırırken, redin için Azure önbelleğini dağıtmak üzere sanal ağın tam ARM kaynak KIMLIĞINI belirtir. Örnek biçim:/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| Staticıp |-p,--static-IP \<static-ip\> |Önbelleğinizi VNET 'te barındırırken, önbelleğin alt ağında benzersiz bir IP adresi belirtir. Sağlanmazsa, alt ağdan bir tane seçilir. |
+| Alt ağ |t,--alt ağ \<subnet\> |Önbelleğinizi VNET 'te barındırırken, önbelleğin dağıtılacağı alt ağın adını belirtir. |
+| VirtualNetwork |-v,--sanal-ağ \<virtual-network\> |Önbelleğinizi VNET 'te barındırırken, redin için Azure önbelleğini dağıtmak üzere sanal ağın tam ARM kaynak KIMLIĞINI belirtir. Örnek biçim:/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | Abonelik |-s,--abonelik |Abonelik tanımlayıcısı. |
 
 ## <a name="see-all-azure-cache-for-redis-commands"></a>Redsıs komutları için tüm Azure önbelleğine bakın

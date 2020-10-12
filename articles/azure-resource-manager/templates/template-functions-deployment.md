@@ -4,10 +4,10 @@ description: Dağıtım bilgilerini almak için bir Azure Resource Manager şabl
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: e8240c05cba82d5563c4b327ecbc65a9c358720f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84677823"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>ARM şablonları için dağıtım işlevleri
@@ -15,7 +15,7 @@ ms.locfileid: "84677823"
 Kaynak Yöneticisi, Azure Resource Manager (ARM) şablonunuzun geçerli dağıtımıyla ilgili değerleri almak için aşağıdaki işlevleri sağlar:
 
 * [dağıtmak](#deployment)
-* [ortamınızın](#environment)
+* [environment (ortam)](#environment)
 * [parametrelere](#parameters)
 * [değişkenlerinin](#variables)
 
@@ -158,7 +158,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-## <a name="environment"></a>environment
+## <a name="environment"></a>ortam
 
 `environment()`
 
@@ -256,7 +256,7 @@ Yukarıdaki örnekte, genel Azure 'a dağıtıldığında aşağıdaki nesne dö
 }
 ```
 
-## <a name="parameters"></a>parametreler
+## <a name="parameters"></a>parameters
 
 `parameters(parameterName)`
 
@@ -351,7 +351,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | stringOutput | Dize | seçenek 1 |
 | ıntoutput | int | 1 |
@@ -443,7 +443,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | exampleOutput1 | Dize | myVariable & lt |
 | exampleOutput2 | Dizi | [1, 2, 3, 4] |

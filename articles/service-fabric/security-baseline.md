@@ -8,10 +8,10 @@ ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 9054fa72ee4204d7a09e6ce8de4fe6d4ed4dac81
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89227721"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Service Fabric için Azure Güvenlik temeli
@@ -1038,11 +1038,11 @@ Windows Defender kullanmıyorsanız yapılandırma kuralları için kötü amaç
 
 **Rehberlik**: Service Fabric yedekleme geri yükleme hizmetinden yedeklemeler, aboneliğinizde bir Azure depolama hesabı kullanır. Azure depolama, bekleyen bir depolama hesabındaki tüm verileri şifreler. Varsayılan olarak, veriler Microsoft tarafından yönetilen anahtarlarla şifrelenir. Şifreleme anahtarları üzerinde ek denetim için, depolama verilerinin şifrelenmesi için müşteri tarafından yönetilen anahtarlar sağlayabilirsiniz.
 
-Müşteri tarafından yönetilen anahtarlar kullanıyorsanız, Key Vault ' deki geçici silme özelliğinin yanlışlıkla veya kötü amaçlı silme ile karşı korunması için etkinleştirildiğinden emin olun.
+Müşteri tarafından yönetilen anahtarlar kullanıyorsanız, Key Vault içindeki Soft-Delete yanlışlıkla veya kötü amaçlı silmeye karşı anahtarları korumak için etkinleştirildiğinden emin olun.
 
 * [Azure Depolama bekleyen verileri şifreleme](../storage/common/storage-service-encryption.md)
 
-* [Key Vault 'da geçici silme özelliğini etkinleştirme](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+* [Key Vault Soft-Delete etkinleştirme](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 

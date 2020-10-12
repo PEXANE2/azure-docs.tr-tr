@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
 ms.openlocfilehash: 7b5be20bb8b5eb1d56c1214104037d5d824445b3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132356"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>U-SQL geliştiricileri için Apache Spark kodunu anlayın
@@ -160,14 +160,14 @@ U-SQL ' n i n temel dili, satır kümelerini dönüştürülüyor ve SQL tabanl�
 - `SELECT`/`FROM`/`WHERE`/`GROUP BY`+ Toplamalar +`HAVING`/`ORDER BY`+`FETCH`
 - `INNER`/`OUTER`/`CROSS`/`SEMI``JOIN`ifadeler
 - `CROSS`/`OUTER``APPLY`ifadeler
-- `PIVOT`/`UNPIVOT`ifadelerde
-- `VALUES`satır kümesi Oluşturucusu
+- `PIVOT`/`UNPIVOT` ifadelerde
+- `VALUES` satır kümesi Oluşturucusu
 
-- İfadeleri ayarla`UNION`/`OUTER UNION`/`INTERSECT`/`EXCEPT`
+- İfadeleri ayarla `UNION`/`OUTER UNION`/`INTERSECT`/`EXCEPT`
 
 Ayrıca, U-SQL gibi çeşitli SQL tabanlı skalar ifadeler sağlar
 
-- `OVER`Pencereleme ifadeleri
+- `OVER` Pencereleme ifadeleri
 - çeşitli yerleşik toplayıcısını değiştirme 'lar ve derecelendirme işlevleri ( `SUM` , `FIRST` vb.)
 - En tanıdık SQL skaler ifadelerinin bazıları: `CASE` , `LIKE` , ( `NOT` ) `IN` , `AND` , `OR` vb.
 

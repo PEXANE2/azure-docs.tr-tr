@@ -6,10 +6,10 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: a1fedb637bee9d98fb09d8fc3fa133b2992ce86e
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89613670"
 ---
 # <a name="pbr-materials"></a>PBR malzemeleri
@@ -76,7 +76,7 @@ Fiziksel olarak temel işlemenin temel fikri, çok çeşitli gerçek dünyada ma
 
 ## <a name="technical-details"></a>Teknik ayrıntılar
 
-Azure uzaktan Işleme, GGX NDF, Schlick Fresnel düşüşünü ve bir Lambx Smith bağıntılı görünürlük terimi olan Cook-Torrance Micro-model BRDF 'ı ve Lambert dağıtma terimiyle birlikte kullanır. Bu model, şu anda endüstri standardıdır. Daha ayrıntılı bilgi için şu makaleye bakın: [fiziksel tabanlı işleme-Cook Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx)
+Azure uzaktan Işleme, bir Lambert dağıtma terimiyle GGX NDF, Schlick Fresnel düşüşünü ve GGX Smith bağıntılı görünürlük terimi ile Micro-model BRDF Cook-Torrance kullanır. Bu model, şu anda endüstri standardıdır. Daha ayrıntılı bilgi için şu makaleye bakın: [fiziksel tabanlı işleme-Cook Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx)
 
  Azure uzaktan Işlemede kullanılan *Metalness-Kabghize* yönelik PBR modelinin bir alternatifi, *Yansımalı* bir ve daha fazla kullanım PBR modelidir. Bu model, daha geniş bir malzeme aralığını temsil edebilir. Ancak, daha pahalıdır ve genellikle gerçek zamanlı durumlarda iyi çalışmaz.
 ( *Basecolor, Metalness)* öğesine dönüştürülemeyen *(dağıtılmış, yansımalı)* değer çiftleri olduğu Için, *Yansımalı bir ışıldan* *Metalness-kabıya* dönüştürme her zaman mümkün değildir. Tüm *(Basecolor, Metalness)* çiftleri iyi tanımlanmış *(dağıtılmış, yansımalı)* çiftlerine karşılık geldiğinden, diğer yönde dönüştürme daha basit ve daha kesin bir hale gelir.

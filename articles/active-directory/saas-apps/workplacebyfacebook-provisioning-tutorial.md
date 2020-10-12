@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
 ms.openlocfilehash: c72ca7cb521c5c7e7ed33e9a0539de0df252ac92
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321911"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için çalışma alanını Facebook ile yapılandırma
@@ -30,7 +30,7 @@ Bu öğreticide, otomatik Kullanıcı sağlamayı yapılandırmak için Facebook
 
 >[!VIDEO https://www.youtube.com/embed/oF7I0jjCfrY]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -132,7 +132,7 @@ Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun öz
    |urn:scim:schemas:extension:enterprise:1.0.costCenter|Dize|
    |urn:scim:schemas:extension:enterprise:1.0.employeeNumber|Dize|
    |urn: Scim: schemas: uzantı: Facebook: auth_method: 1.0: auth_method|Dize|
-   |urn: Scim: schemas: uzantı: Facebook: Frontline: 1.0. is_frontline|Boole|
+   |urn: SCIM: schemas: uzantı: Facebook: Frontline: 1.0.is_frontline|Boole|
    |urn: Scim: schemas: uzantı: Facebook: starsımmtarihlere: 1.0. startDate|Tamsayı|
 
 

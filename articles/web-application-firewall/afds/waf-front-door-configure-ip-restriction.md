@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: tyao
 ms.openlocfilehash: f41dc688996b2431060a3cde209ca1ed4a21fe8c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87005625"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>Azure ön kapısı için Web uygulaması güvenlik duvarıyla bir IP kısıtlama kuralı yapılandırma
 
 Bu makalede, Azure ön kapısının Azure portal, Azure CLı, Azure PowerShell veya Azure Resource Manager şablonunu kullanarak bir Web uygulaması güvenlik duvarında (WAF) IP kısıtlama kurallarını yapılandırma işlemi gösterilmektedir.
 
-IP adresi tabanlı erişim denetimi kuralı, Web uygulamalarınıza erişimi denetlemenize olanak tanıyan özel bir WAF kuralıdır. Bu, sınıfsız etki alanları arası yönlendirme (CıDR) biçimindeki IP adresleri veya IP adresi aralıklarının bir listesini belirterek yapar.
+IP adresi tabanlı erişim denetimi kuralı, Web uygulamalarınıza erişimi denetlemenize olanak tanıyan özel bir WAF kuralıdır. Bu, sınıfsız Inter-Domain yönlendirme (CıDR) biçimindeki IP adresleri veya IP adresi aralıklarının bir listesini belirterek yapar.
 
 Varsayılan olarak, Web uygulamanıza Internet 'ten erişilebilir. İstemcilerle erişimi bilinen IP adresleri veya IP adresi aralıkları listesinden sınırlamak isterseniz, IP adreslerinin listesini eşleşen değerler olarak içeren bir IP eşleştirme kuralı oluşturabilir ve işleç "Not" (Negate true) olarak ayarlar ve **engellenecek**eylemi. Bir IP kısıtlama kuralı uygulandıktan sonra, bu izin verilen listenin dışındaki adreslerden kaynaklanan istekler 403 yasaklanmış bir yanıt alır.
 
@@ -30,7 +30,7 @@ Varsayılan olarak, Web uygulamanıza Internet 'ten erişilebilir. İstemcilerle
 
 ### <a name="create-a-waf-policy"></a>WAF ilkesi oluşturma
 
-1. Azure portal, **kaynak oluştur**' u seçin, arama kutusuna **Web uygulaması güvenlik duvarı** yazın ve ardından **Web uygulaması güvenlik duvarı (WAF)** seçeneğini belirleyin.
+1. Azure portal, **kaynak oluştur**' u seçin, arama kutusuna  **Web uygulaması güvenlik duvarı** yazın ve ardından **Web uygulaması güvenlik duvarı (WAF)** seçeneğini belirleyin.
 2. **Oluştur**’u seçin.
 3. **BIR WAF Ilkesi oluştur** sayfasında, **temel bilgiler** sekmesini gerçekleştirmek için aşağıdaki değerleri kullanın:
    
@@ -76,7 +76,7 @@ Varsayılan olarak, Web uygulamanıza Internet 'ten erişilebilir. İstemcilerle
 1. WAF ilkesi dağıtımınız tamamlandıktan sonra, ön kapı ön uç ana bilgisayar adınızı inceleyin.
 2. Özel blok iletinizi görmeniz gerekir.
 
-   :::image type="content" source="../media/waf-front-door-configure-ip-restriction/waf-rule-test.png" alt-text="WAF kural testi":::
+   :::image type="content" source="../media/waf-front-door-configure-ip-restriction/waf-rule-test.png" alt-text="Özel kural":::
 
    > [!NOTE]
    > Özel bir IP adresi, kuralın tetikleneceğini güvence altına almak için özel kuralda kasıtlı olarak kullanıldı. Gerçek bir dağıtımda, özel durumunuz için IP adreslerini kullanarak *izin ver* ve *Reddet* kuralları oluşturun.

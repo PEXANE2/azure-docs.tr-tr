@@ -4,10 +4,10 @@ description: Bu öğreticide, Azure CLı ile bir YAML dosyası kullanarak Azure 
 ms.topic: article
 ms.date: 07/01/2020
 ms.openlocfilehash: f6ba9152003c68192ddc0fdffa5652bc0b6daa86
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88750910"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>Öğretici: YAML dosyası kullanarak çok kapsayıcılı bir grup dağıtma
@@ -129,7 +129,7 @@ myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tut
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-app
 ```
 
-Çıktı:
+Çıkış:
 
 ```console
 listening on port 80
@@ -144,7 +144,7 @@ Sepet kapsayıcısının günlüklerini görmek için kapsayıcıyı belirten be
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-sidecar
 ```
 
-Çıktı:
+Çıkış:
 
 ```console
 Every 3s: curl -I http://localhost                          2020-07-02 20:36:41

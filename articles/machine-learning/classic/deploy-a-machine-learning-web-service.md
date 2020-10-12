@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
 ms.openlocfilehash: c9cfe05b6547cbdc61a1c8cc6223f08900cf09d9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91345051"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (klasik) Web hizmeti dağıtma
@@ -27,7 +27,7 @@ Machine Learning Studio (klasik) Web Hizmetleri, bir uygulama ile Machine Learni
 
 Azure Machine Learning Studio (klasik) iki tür Web hizmetine sahiptir:
 
-* İstek-yanıt hizmeti (RR): tek bir veri kaydına puan veren düşük gecikmeli, yüksek düzeyde ölçeklenebilir bir hizmet.
+* Request-Response Service (RR): tek bir veri kaydına puan veren düşük gecikmeli, yüksek düzeyde ölçeklenebilir bir hizmet.
 * Toplu yürütme hizmeti (BES): veri kayıtlarını toplu olarak alan bir zaman uyumsuz hizmettir.
 
 BES girişi, RRS’nin kullandığı veri girişi gibidir. Aralarındaki temel fark, BES'nin Azure Blob depolama, Azure Tablo depolama, Azure SQL Veritabanı, HDInsight (hive sorgusu) ve HTTP kaynakları gibi çeşitli kaynaklardan bir kayıt bloğunu okumasıdır.
@@ -160,7 +160,7 @@ Web hizmeti hızlı başlangıç sayfası, Web hizmeti oluşturduktan sonra ger�
 
 ### <a name="test-your-new-web-service"></a>Yeni Web hizmetinizi test etme
 
-Yeni Web hizmetinizi test etmek için ortak görevler altında **Web hizmeti testi** ' ne tıklayın. Test sayfasında, Web hizmetinizi bir Istek-yanıt hizmeti (RR) veya toplu yürütme hizmeti (BES) olarak test edebilirsiniz.
+Yeni Web hizmetinizi test etmek için ortak görevler altında **Web hizmeti testi** ' ne tıklayın. Test sayfasında, Web hizmetinizi bir Request-Response hizmeti (RR) veya toplu yürütme hizmeti (BES) olarak test edebilirsiniz.
 
 RR 'ler test sayfası, deneme için tanımladığınız girdileri, çıkışları ve genel parametreleri görüntüler. Web hizmetini test etmek için, girişler için uygun değerleri el ile girebilir veya test değerlerini içeren bir virgülle ayrılmış değer (CSV) biçimli dosya sağlayabilirsiniz.
 

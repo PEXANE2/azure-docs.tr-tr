@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 09/22/2020
 ms.author: apimpm
 ms.openlocfilehash: 4eb32243df219d721d7baae80984c45d0fc4cf25
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91345130"
 ---
 # <a name="debug-azure-api-management-policies-in-visual-studio-code"></a>Visual Studio Code Azure API Management ilkeleri hatalarını ayıklama
@@ -28,7 +28,7 @@ Bu makalede [Visual Studio Code Için Azure API Management uzantısı](https://m
 > [!NOTE]
 > Bu özellik genel önizleme aşamasındadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Önce bu [öğreticiyi](get-started-create-service-instance.md) Izleyerek API Management geliştirici katmanı örneği oluşturun.
 

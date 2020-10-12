@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: duau
 ms.openlocfilehash: 6f502b8ad8ac268cc937150f4effdf9edf8eef15
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91252638"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute izleme, ölçümler ve uyarılar
@@ -42,8 +42,8 @@ Bu makale, Azure Izleyici kullanarak ExpressRoute izlemeyi, ölçümleri ve uyar
 |GlobalReachBitsOutPerSecond|Trafik|<ui><li>Eşlenen devre Skey (hizmet anahtarı)</ui></li>|Global Reach|
 |AdminState|Fiziksel bağlantı|Bağlantı|ExpressRoute Direct|
 |LineProtocol|Fiziksel bağlantı|Bağlantı|ExpressRoute Direct|
-|RxLightLevel|Fiziksel bağlantı|<ui><li>Bağlantı</ui></li><ui><li>Ödül</ui></li>|ExpressRoute Direct|
-|TxLightLevel|Fiziksel bağlantı|<ui><li>Bağlantı</ui></li><ui><li>Ödül</ui></li>|ExpressRoute Direct|
+|RxLightLevel|Fiziksel bağlantı|<ui><li>Bağlantısının</ui></li><ui><li>Ödül</ui></li>|ExpressRoute Direct|
+|TxLightLevel|Fiziksel bağlantı|<ui><li>Bağlantısının</ui></li><ui><li>Ödül</ui></li>|ExpressRoute Direct|
 >[!NOTE]
 >*GlobalGlobalReachBitsInPerSecond* ve *GlobalGlobalReachBitsOutPerSecond* kullanımı yalnızca en az bir Global Reach bağlantısı kurulduysa görünür olur.
 >
@@ -60,19 +60,19 @@ Belirli bir ExpressRoute bağlantı hattındaki tüm eşlemelerde ölçümleri g
 
 Özel, genel ve Microsoft eşlemesi için ölçümleri bit/saniye cinsinden görüntüleyebilirsiniz.
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erpeeringmetrics.jpg" alt-text="eşleme başına ölçümler":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erpeeringmetrics.jpg" alt-text="devre ölçümleri":::
 
 ### <a name="bgp-availability---split-by-peer"></a>BGP kullanılabilirliği-eşe göre bölme  
 
 Eşleme ve eşler arasında BGP 'nin gerçek zamanlı kullanılabilirliğini (birincil ve Ikincil ExpressRoute yönlendiricileri) görüntüleyebilirsiniz. Bu panoda, özel eşleme için birincil BGP oturumu ve özel eşleme için Ikinci BGP oturumu gösterilmektedir. 
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erBgpAvailabilityMetrics.jpg" alt-text="Eş başına BGP kullanılabilirliği":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erBgpAvailabilityMetrics.jpg" alt-text="devre ölçümleri":::
 
 ### <a name="arp-availability---split-by-peering"></a>ARP kullanılabilirliği-eşlemeye göre bölme  
 
 Eşler arası ve eşlerde [ARP](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-arp-resource-manager) 'nin neredeyse gerçek zamanlı kullanılabilirliğini (birincil ve Ikincil ExpressRoute yönlendiricileri) görüntüleyebilirsiniz. Bu Pano, özel eşleme ARP oturumunu her iki eş arasında gösterir, ancak eşlemeler genelinde Microsoft eşlemesi için tamamlanmıştır. Varsayılan toplama (Ortalama) her iki eş üzerinde de kullanıldı.  
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erArpAvailabilityMetrics.jpg" alt-text="Her eş için ARP kullanılabilirliği":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erArpAvailabilityMetrics.jpg" alt-text="devre ölçümleri":::
 
 ## <a name="expressroute-direct-metrics"></a>ExpressRoute doğrudan ölçümleri
 
@@ -80,37 +80,37 @@ Eşler arası ve eşlerde [ARP](https://docs.microsoft.com/azure/expressroute/ex
 
 ExpressRoute doğrudan bağlantı noktası çiftinin her bir bağlantısı için yönetici durumunu görüntüleyebilirsiniz.
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/adminstate-per-link.jpg" alt-text="ER doğrudan yönetici durumu":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/adminstate-per-link.jpg" alt-text="devre ölçümleri":::
 
 ### <a name="bits-in-per-second---split-by-link"></a>Saniyedeki bit/saniye-bağlantıya göre Böl
 
 Her iki ExpressRoute doğrudan bağlantı noktası çiftinin bağlantılarında, saniye başına bit sayısını görüntüleyebilirsiniz.
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/bits-in-per-second-per-link.jpg" alt-text="Saniyedeki doğrudan bit/saniye":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/bits-in-per-second-per-link.jpg" alt-text="devre ölçümleri":::
 
 ### <a name="bits-out-per-second---split-by-link"></a>Saniye başına BITS-bağlantıya göre bölme
 
 Ayrıca, ExpressRoute doğrudan bağlantı noktası çiftinin her iki bağlantı için de saniyede BITS görüntüleyebilirsiniz.
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/bits-out-per-second-per-link.jpg" alt-text="ER saniye başına doğrudan BITS":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/bits-out-per-second-per-link.jpg" alt-text="devre ölçümleri":::
 
 ### <a name="line-protocol---split-by-link"></a>Satır Protokolü-bağlantıya göre Böl
 
 Her ExpressRoute doğrudan bağlantı noktası çiftinin bağlantı genelinde hat protokolünü görüntüleyebilirsiniz.
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/line-protocol-per-link.jpg" alt-text="ER doğrudan hat Protokolü":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/line-protocol-per-link.jpg" alt-text="devre ölçümleri":::
 
 ### <a name="rx-light-level---split-by-link"></a>RX hafif düzeyi-bağlantıya göre bölme
 
 Her bağlantı noktası için RX ışık düzeyini (ExpressRoute doğrudan bağlantı noktasının **aldığı**ışık düzeyi) görüntüleyebilirsiniz. Sağlıklı RX hafif düzeyler genellikle-10 ila 0 dBm aralığında yer almalıdır
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/rxlight-level-per-link.jpg" alt-text="ER doğrudan Line RX hafif düzeyi":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/rxlight-level-per-link.jpg" alt-text="devre ölçümleri":::
 
 ### <a name="tx-light-level---split-by-link"></a>TX hafif düzeyi-bağlantıya göre Böl
 
 Her bağlantı noktası için, TX ışık düzeyini (ExpressRoute doğrudan bağlantı noktasının **Iletmekte**olan ışık düzeyi) görüntüleyebilirsiniz. Sağlıklı TX hafif düzeyleri genellikle-10 ila 0 dBm aralığında yer almalıdır
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/txlight-level-per-link.jpg" alt-text="ER doğrudan hat TX hafif düzeyi":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/txlight-level-per-link.jpg" alt-text="devre ölçümleri":::
 
 ## <a name="expressroute-virtual-network-gateway-metrics"></a>ExpressRoute sanal ağ geçidi ölçümleri
 
@@ -118,42 +118,42 @@ Her bağlantı noktası için, TX ışık düzeyini (ExpressRoute doğrudan bağ
 
 Ağ Geçidi örneklerinin CPU kullanımını görüntüleyebilirsiniz.
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/cpu-split.jpg" alt-text="CPU bölünmüş":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/cpu-split.jpg" alt-text="devre ölçümleri":::
 
 ### <a name="packets-per-second---split-by-instance"></a>Saniyedeki paket sayısı-örneğe göre Böl
 
 Ağ geçidine geçiş yaparken paket sayısını görüntüleyebilirsiniz.
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/pps-split.jpg" alt-text="Saniyedeki paket sayısı-bölünmüş":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/pps-split.jpg" alt-text="devre ölçümleri":::
 
 ## <a name="expressroute-gateway-connections-in-bitsseconds"></a>Bit/saniye cinsinden ExpressRoute ağ geçidi bağlantıları
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erconnections.jpg" alt-text="Ağ Geçidi bağlantıları":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erconnections.jpg" alt-text="devre ölçümleri":::
 
 ## <a name="alerts-for-expressroute-gateway-connections"></a>ExpressRoute ağ geçidi bağlantıları için uyarılar
 
 1. Uyarıları yapılandırmak için **Azure İzleyicisi**' ne gidin ve ardından **Uyarılar**' ı seçin.
 
-   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/eralertshowto.jpg" alt-text="uyarılar":::
+   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/eralertshowto.jpg" alt-text="devre ölçümleri":::
 2. **+ Hedef Seç** ' e tıklayın ve ExpressRoute ağ geçidi bağlantı kaynağını seçin.
 
-   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg" alt-text="hedef":::
+   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg" alt-text="devre ölçümleri":::
 3. Uyarı ayrıntılarını tanımlayın.
 
-   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg" alt-text="eylem grubu":::
+   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg" alt-text="devre ölçümleri":::
 4. Eylem grubunu tanımlayın ve ekleyin.
 
-   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/actiongroup.png" alt-text="eylem grubu Ekle":::
+   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/actiongroup.png" alt-text="devre ölçümleri":::
 
 ## <a name="alerts-based-on-each-peering"></a>Her eşlemeye göre uyarılar
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/basedpeering.jpg" alt-text="Her eşleme":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/basedpeering.jpg" alt-text="devre ölçümleri":::
 
 ## <a name="configure-alerts-for-activity-logs-on-circuits"></a>Devrelere ilişkin etkinlik günlüklerine yönelik uyarıları yapılandırın
 
 **Uyarı ölçütlerinde**, sinyal türü Için **etkinlik günlüğü** ' nü seçebilir ve sinyali seçebilirsiniz.
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg" alt-text="etkinlik günlükleri":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg" alt-text="devre ölçümleri":::
 
 ## <a name="additional-metrics-in-log-analytics"></a>Log Analytics ek ölçümler
 
@@ -162,7 +162,7 @@ Ayrıca, ExpressRoute bağlantı hattı kaynağına giderek ve *Günlükler* sek
 |**Column**|**Tür**|**Açıklama**|
 | --- | --- | --- |
 |ZamanBirimi|string|PT1M (ölçüm değerleri her dakika gönderilir)|
-|Count|real|Genellikle 2 ' ye eşit (her MSEE her dakikada tek bir ölçüm değeri gönderir)|
+|Sayı|real|Genellikle 2 ' ye eşit (her MSEE her dakikada tek bir ölçüm değeri gönderir)|
 |Minimum|real|İki MSEE tarafından gönderilen iki ölçüm değeri en az|
 |Maksimum|real|İki MSEE tarafından gönderilen iki ölçüm değerinin sayısından 'ı|
 |Ortalama|real|Eşittir (en az + en fazla)/2|

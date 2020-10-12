@@ -7,10 +7,10 @@ ms.date: 9/13/2020
 ms.topic: article
 ms.service: api-management
 ms.openlocfilehash: d537040be4ed4cbf961a4621980d3d290e306359
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91345140"
 ---
 # <a name="api-management-dapr-integration-policies"></a>API Management Davpr tümleştirme ilkeleri
@@ -37,7 +37,7 @@ template:
 ```
 
 
-## <a name="distributed-application-runtime-dapr-integration-policies"></a>Dağıtılmış uygulama çalışma zamanı (Davpr) tümleştirme ilkeleri
+## <a name="distributed-application-runtime-dapr-integration-policies"></a>Distributed Application Runtime (Dapr) tümleştirme ilkeleri
 
 -  [Bir hizmete Istek gönder](api-management-dapr-policies.md#invoke): bir davpr mikro hizmetini bulmak ve güvenilir bir şekilde iletişim kurmak Için davpr çalışma zamanı 'nı kullanır. Davpr 'de hizmet çağrısı hakkında daha fazla bilgi edinmek için bu [Benioku](https://github.com/dapr/docs/blob/master/concepts/service-invocation/README.md#service-invocation) dosyasındaki açıklamaya bakın.
 -  Yayın [/alt konuya Ileti gönder](api-management-dapr-policies.md#pubsub): bir yayımla/abone ol konusuna ileti yayımlamak Için davpr çalışma zamanı kullanır. Davpr 'de yayımla/abone ol iletileri hakkında daha fazla bilgi edinmek için bu [Benioku](https://github.com/dapr/docs/blob/master/concepts/publish-subscribe-messaging/README.md) dosyasındaki açıklamaya bakın.
@@ -85,15 +85,15 @@ Aşağıdaki örnek, "Echo" adlı mikro hizmette "geri" adlı yöntemin çağrı
 
 | Öğe             | Açıklama  | Gerekli |
 |---------------------|--------------|----------|
-| küme arka uç hizmeti | Kök öğe | Yes      |
+| küme arka uç hizmeti | Kök öğe | Evet      |
 
 ### <a name="attributes"></a>Öznitelikler
 
 | Öznitelik        | Açıklama                     | Gerekli | Varsayılan |
 |------------------|---------------------------------|----------|---------|
-| arka uç kimliği       | "Dadpr" olarak ayarlanmalıdır           | Yes      | Yok     |
-| davpr-uygulama kimliği      | Hedef mikro hizmetin adı. Davpr içindeki [AppID](https://github.com/dapr/docs/blob/master/reference/api/service_invocation_api.md) parametresine eşlenir.| Yes | Yok |
-| davpr-yöntemi      | Hedef mikro hizmette çağrılacak yöntemin veya URL 'nin adı. , Davpr 'de [Yöntem-adı](https://github.com/dapr/docs/blob/master/reference/api/service_invocation_api.md) parametresiyle eşlenir.| Yes | Yok |
+| arka uç kimliği       | "Dadpr" olarak ayarlanmalıdır           | Evet      | Yok     |
+| davpr-uygulama kimliği      | Hedef mikro hizmetin adı. Davpr içindeki [AppID](https://github.com/dapr/docs/blob/master/reference/api/service_invocation_api.md) parametresine eşlenir.| Evet | Yok |
+| davpr-yöntemi      | Hedef mikro hizmette çağrılacak yöntemin veya URL 'nin adı. , Davpr 'de [Yöntem-adı](https://github.com/dapr/docs/blob/master/reference/api/service_invocation_api.md) parametresiyle eşlenir.| Evet | Yok |
 
 ### <a name="usage"></a>Kullanım
 
@@ -152,18 +152,18 @@ Eğer Davpr çalışma zamanı, hedef konuyu bulamıyorsa, örneğin ve bir hata
 
 | Öğe             | Açıklama  | Gerekli |
 |---------------------|--------------|----------|
-| Yayınla     | Kök öğe | Yes      |
+| Yayınla     | Kök öğe | Evet      |
 
 ### <a name="attributes"></a>Öznitelikler
 
 | Öznitelik        | Açıklama                     | Gerekli | Varsayılan |
 |------------------|---------------------------------|----------|---------|
-| konu başlığı            | Hedef konu adı               | Yes      | Yok     |
-| yoksayma-hata     | Ayarlanırsa `true` , ilke, ["hata üzerinde](api-management-error-handling-policies.md) " bölümünü, davpr çalışma zamanından hata aldıktan sonra tetiklemez şekilde bildirir | No | `false` |
-| Yanıt değişkeni-adı | Davpr çalışma zamanından yanıt depolamak için kullanılacak [değişkenlerin](api-management-policy-expressions.md#ContextVariables) koleksiyon girişinin adı | No | Yok |
-| timeout | Davpr çalışma zamanının yanıt vermesi için beklenecek süre (saniye cinsinden). 1 ile 240 saniye arasında değişebilir. | No | 5 |
-| şablon | İleti içeriğini dönüştürmek için kullanılacak şablon oluşturma altyapısı. "Sıvı" yalnızca desteklenen değerdir. | No | Yok |
-| içerik türü | İleti içeriğinin türü. "Application/JSON" desteklenen tek değerdir. | No | Yok |
+| konu başlığı            | Hedef konu adı               | Evet      | Yok     |
+| yoksayma-hata     | Ayarlanırsa `true` , ilke, ["hata üzerinde](api-management-error-handling-policies.md) " bölümünü, davpr çalışma zamanından hata aldıktan sonra tetiklemez şekilde bildirir | Hayır | `false` |
+| Yanıt değişkeni-adı | Davpr çalışma zamanından yanıt depolamak için kullanılacak [değişkenlerin](api-management-policy-expressions.md#ContextVariables) koleksiyon girişinin adı | Hayır | Yok |
+| timeout | Davpr çalışma zamanının yanıt vermesi için beklenecek süre (saniye cinsinden). 1 ile 240 saniye arasında değişebilir. | Hayır | 5 |
+| şablon | İleti içeriğini dönüştürmek için kullanılacak şablon oluşturma altyapısı. "Sıvı" yalnızca desteklenen değerdir. | Hayır | Yok |
+| içerik türü | İleti içeriğinin türü. "Application/JSON" desteklenen tek değerdir. | Hayır | Yok |
 
 ### <a name="usage"></a>Kullanım
 
@@ -234,22 +234,22 @@ Eğer bir nedenden dolayı Davpr çalışma zamanı başarısız olursa ve hata 
 
 | Öğe             | Açıklama  | Gerekli |
 |---------------------|--------------|----------|
-| Invoke-dadpr-bağlama | Kök öğe | Yes      |
-| meta veriler            | Belirli meta verileri anahtar/değer çiftleri biçiminde bağlama. Davpr içindeki [metadata](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#invoking-output-bindings) özelliği ile eşlenir. | No |
-| veriler            | İletinin içeriği. Davpr içindeki [Data](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#invoking-output-bindings) özelliği ile eşlenir. | No |
+| Invoke-dadpr-bağlama | Kök öğe | Evet      |
+| meta veriler            | Belirli meta verileri anahtar/değer çiftleri biçiminde bağlama. Davpr içindeki [metadata](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#invoking-output-bindings) özelliği ile eşlenir. | Hayır |
+| veriler            | İletinin içeriği. Davpr içindeki [Data](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#invoking-output-bindings) özelliği ile eşlenir. | Hayır |
 
 
 ### <a name="attributes"></a>Öznitelikler
 
 | Öznitelik        | Açıklama                     | Gerekli | Varsayılan |
 |------------------|---------------------------------|----------|---------|
-| name            | Hedef bağlama adı. , Davpr içinde [tanımlanan](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#bindings-structure) bağlamaların adıyla eşleşmelidir.           | Yes      | Yok     |
-| operation       | Hedef işlem adı (bağlamaya özgü). Davpr içindeki [Operation](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#invoking-output-bindings) özelliği ile eşlenir. | No | Yok |
-| yoksayma-hata     | Ayarlanırsa `true` , ilke, ["hata üzerinde](api-management-error-handling-policies.md) " bölümünü, davpr çalışma zamanından hata aldıktan sonra tetiklemez şekilde bildirir | No | `false` |
-| Yanıt değişkeni-adı | Davpr çalışma zamanından yanıt depolamak için kullanılacak [değişkenlerin](api-management-policy-expressions.md#ContextVariables) koleksiyon girişinin adı | No | Yok |
-| timeout | Davpr çalışma zamanının yanıt vermesi için beklenecek süre (saniye cinsinden). 1 ile 240 saniye arasında değişebilir. | No | 5 |
-| şablon | İleti içeriğini dönüştürmek için kullanılacak şablon oluşturma altyapısı. "Sıvı" yalnızca desteklenen değerdir. | No | Yok |
-| içerik türü | İleti içeriğinin türü. "Application/JSON" desteklenen tek değerdir. | No | Yok |
+| name            | Hedef bağlama adı. , Davpr içinde [tanımlanan](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#bindings-structure) bağlamaların adıyla eşleşmelidir.           | Evet      | Yok     |
+| operation       | Hedef işlem adı (bağlamaya özgü). Davpr içindeki [Operation](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#invoking-output-bindings) özelliği ile eşlenir. | Hayır | Yok |
+| yoksayma-hata     | Ayarlanırsa `true` , ilke, ["hata üzerinde](api-management-error-handling-policies.md) " bölümünü, davpr çalışma zamanından hata aldıktan sonra tetiklemez şekilde bildirir | Hayır | `false` |
+| Yanıt değişkeni-adı | Davpr çalışma zamanından yanıt depolamak için kullanılacak [değişkenlerin](api-management-policy-expressions.md#ContextVariables) koleksiyon girişinin adı | Hayır | Yok |
+| timeout | Davpr çalışma zamanının yanıt vermesi için beklenecek süre (saniye cinsinden). 1 ile 240 saniye arasında değişebilir. | Hayır | 5 |
+| şablon | İleti içeriğini dönüştürmek için kullanılacak şablon oluşturma altyapısı. "Sıvı" yalnızca desteklenen değerdir. | Hayır | Yok |
+| içerik türü | İleti içeriğinin türü. "Application/JSON" desteklenen tek değerdir. | Hayır | Yok |
 
 ### <a name="usage"></a>Kullanım
 

@@ -4,10 +4,10 @@ description: Azure Ilke tanımlarının uyumluluğun nasıl yönetildiğini ve r
 ms.date: 09/15/2020
 ms.topic: conceptual
 ms.openlocfilehash: b6622796ab0554f692a3b64e0b41d60f49c561b1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91252013"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Ilke efektlerini anlama
@@ -569,7 +569,7 @@ Değişiklik efektinin **Ayrıntılar** özelliği, düzeltme için gereken izin
 
 **Operation** özelliği aşağıdaki seçeneklere sahiptir:
 
-|İşlem |Description |
+|İşlem |Açıklama |
 |-|-|
 |addOrReplace |Özellik veya etiket farklı bir değerle zaten var olsa bile, tanımlı özelliği veya etiketi ve değeri kaynağa ekler. |
 |Ekle |Kaynağa tanımlı özelliği veya etiketi ve değeri ekler. |

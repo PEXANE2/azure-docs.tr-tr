@@ -4,17 +4,17 @@ description: Diziler ile çalışmak için bir Azure Resource Manager şablonund
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 4d4ee96888aee5421d88b5371ac25a69c0af4fd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84677857"
 ---
 # <a name="array-functions-for-arm-templates"></a>ARM şablonları için dizi işlevleri
 
 Kaynak Yöneticisi, Azure Resource Manager (ARM) şablonunuzda diziler ile çalışmak için çeşitli işlevler sağlar.
 
-* [dizide](#array)
+* [array](#array)
 * [Concat](#concat)
 * [vardır](#contains)
 * [createArray](#createarray)
@@ -22,12 +22,12 @@ Kaynak Yöneticisi, Azure Resource Manager (ARM) şablonunuzda diziler ile çal�
 * [adı](#first)
 * [imin](#intersection)
 * [soyadına](#last)
-* [uzunluklu](#length)
+* [length](#length)
 * [Biçimlendir](#max)
 * [Min](#min)
 * [aralığı](#range)
 * [Şimdilik](#skip)
-* [almanız](#take)
+* [take](#take)
 * [birleşim](#union)
 
 Bir değere göre ayrılmış dize değerleri dizisini almak için bkz. [split](template-functions-string.md#split).
@@ -91,7 +91,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | ıntoutput | Dizi |  [1] |
 | stringOutput | Dizi | ["EFGH"] |
@@ -155,7 +155,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | return | Dizi | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
@@ -183,11 +183,11 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | Içtoutput | Dize | önek-5yıj4yıjf5mbg72 |
 
-## <a name="contains"></a>şunu içerir
+## <a name="contains"></a>contains
 
 `contains(container, itemToFind)`
 
@@ -259,14 +259,14 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
-| stringTrue | Bool | True |
-| stringFalse | Bool | False |
-| objectTrue | Bool | True |
-| Objectfali | Bool | False |
-| arrayTrue | Bool | True |
-| arrayFalse | Bool | False |
+| stringTrue | Bool | Doğru |
+| stringFalse | Bool | Yanlış |
+| objectTrue | Bool | Doğru |
+| Objectfali | Bool | Yanlış |
+| arrayTrue | Bool | Doğru |
+| arrayFalse | Bool | Yanlış |
 
 ## <a name="createarray"></a>createarray
 
@@ -328,7 +328,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | stringArray | Dizi | ["a", "b", "c"] |
 | ıntarray | Dizi | [1, 2, 3] |
@@ -394,11 +394,11 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
-| arrayEmpty | Bool | True |
-| objectEmpty | Bool | True |
-| stringEmpty | Bool | True |
+| arrayEmpty | Bool | Doğru |
+| objectEmpty | Bool | Doğru |
+| stringEmpty | Bool | Doğru |
 
 ## <a name="first"></a>adı
 
@@ -447,7 +447,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | arrayOutput | Dize | bir |
 | stringOutput | Dize | O |
@@ -513,7 +513,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | objectOutput | Nesne | {"One": "a", "üç": "c"} |
 | arrayOutput | Dizi | ["iki", "üç"] |
@@ -565,7 +565,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | arrayOutput | Dize | Üç |
 | stringOutput | Dize | e |
@@ -640,7 +640,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | arrayLength | int | 3 |
 | stringLength | int | 13 |
@@ -703,7 +703,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | arrayOutput | int | 5 |
 | ıntoutput | int | 5 |
@@ -754,7 +754,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | arrayOutput | int | 0 |
 | ıntoutput | int | 0 |
@@ -806,7 +806,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | rangeOutput | Dizi | [5, 6, 7] |
 
@@ -873,12 +873,12 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | arrayOutput | Dizi | ["üç"] |
 | stringOutput | Dize | 2 3 |
 
-## <a name="take"></a>almanız
+## <a name="take"></a>take
 
 `take(originalValue, numberToTake)`
 
@@ -941,7 +941,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | arrayOutput | Dizi | ["bir", "iki"] |
 | stringOutput | Dize | on |
@@ -1007,7 +1007,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Name | Tür | Değer |
+| Ad | Tür | Değer |
 | ---- | ---- | ----- |
 | objectOutput | Nesne | {"One": "a", "iki": "b", "üç": "C2", "dört": "d", "beş": "e"} |
 | arrayOutput | Dizi | ["bir", "iki", "üç", "dört"] |

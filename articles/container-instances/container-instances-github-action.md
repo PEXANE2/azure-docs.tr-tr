@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 08/20/2020
 ms.custom: ''
 ms.openlocfilehash: 8da72d3911797e8e3a4551f2af100afb0d7ea0fb
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88755016"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>Kapsayıcı örneği oluşturmak için bir GitHub eylemi yapılandırma
@@ -31,7 +31,7 @@ Bu makalede, iş akışını kurmanın iki yolu gösterilmektedir:
 > [!IMPORTANT]
 > Azure Container Instances için GitHub eylemi şu anda önizlemededir. Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **GitHub hesabı** -henüz yoksa bir hesap oluşturun https://github.com .
 * **Azure CLI** -Azure CLI adımlarını tamamlayabilmeniz için Azure Cloud Shell veya yerel BIR Azure CLI yüklemesi kullanabilirsiniz. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
