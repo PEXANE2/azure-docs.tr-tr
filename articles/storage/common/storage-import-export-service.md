@@ -9,10 +9,10 @@ ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: b2918c5842d6470e634518ff9c12f6f04aefc920
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88185392"
 ---
 # <a name="what-is-azure-importexport-service"></a>Azure Içeri/dışarı aktarma hizmeti nedir?
@@ -120,7 +120,7 @@ Azure Içeri/dışarı aktarma hizmeti, tüm Azure depolama hesaplarına veri ko
 
 |Ülke/Bölge  |Ülke/Bölge  |Ülke/Bölge  |Ülke/Bölge  |
 |---------|---------|---------|---------|
-|Doğu ABD    | Kuzey Avrupa        | Central India        |US Gov Iowa         |
+|Doğu ABD    | Kuzey Avrupa        | Orta Hindistan        |US Gov Iowa         |
 |Batı ABD     |West Europe         | Güney Hindistan        | Doğu US DoD        |
 |Doğu ABD 2    | Doğu Asya        |  Batı Hindistan        | Orta US DoD        |
 |Batı ABD 2     | Güneydoğu Asya        | Orta Kanada        | Doğu Çin         |
@@ -130,7 +130,7 @@ Azure Içeri/dışarı aktarma hizmeti, tüm Azure depolama hesaplarına veri ko
 |Orta Batı ABD     |  Doğu Japonya       | US Gov Virginia        | Kuzeydoğu Almanya        |
 |Güney Afrika Batı   |  Güney Afrika Kuzey |
 
-## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
+## <a name="security-considerations"></a>Güvenlik konuları
 
 Sürücüdeki veriler, AES 256-bit BitLocker Sürücü Şifrelemesi kullanılarak şifrelenir. Bu şifreleme, aktarım sırasında verilerinizi korur.
 

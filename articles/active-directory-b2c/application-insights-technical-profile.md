@@ -12,10 +12,10 @@ ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 77bb53e2605913fcee6999284acb04616efc53af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85201421"
 ---
 # <a name="define-an-application-insights-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C özel ilkesinde Application Insights teknik profil tanımlama
@@ -34,7 +34,7 @@ Azure Active Directory B2C (Azure AD B2C), Azure AD B2C için sunulan izleme ana
 
 **Protokol** öğesinin **Name** özniteliğinin olarak ayarlanması gerekir `Proprietary` . **Handler** özniteliği, Application Insights için Azure AD B2C tarafından kullanılan protokol işleyici derlemesinin tam adını içermelidir:`Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 
-Aşağıdaki örnek, ortak Application Insights teknik profilini gösterir. Diğer Application Insights teknik profiller, yapılandırmasından yararlanmak için AzureInsights-Common ' i içerir.  
+Aşağıdaki örnek, ortak Application Insights teknik profilini gösterir. Diğer Application Insights teknik profiller, yapılandırmasından yararlanmak için AzureInsights-Common içerir.  
 
 ```xml
 <TechnicalProfile Id="AzureInsights-Common">

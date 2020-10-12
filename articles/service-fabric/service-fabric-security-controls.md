@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: a8bb49e20ec5812a4882966c6918cf2bd59f36a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75645438"
 ---
 # <a name="security-controls-for-azure-service-fabric"></a>Azure Service Fabric için güvenlik denetimleri
@@ -33,7 +33,7 @@ Bu makale, Azure Service Fabric yerleşik olarak bulunan güvenlik denetimlerini
 |---|---|--|
 | Azure izleme desteği (Log Analytics, App Insights vb.)| Evet | Azure izleme desteğini ve üçüncü taraf desteğini kullanma. |
 | Denetim ve yönetim düzlemi günlüğü ve denetimi| Evet | Tüm denetim düzlemi işlemleri, denetim ve onaylar için işlemler aracılığıyla çalışır. |
-| Veri düzlemi günlüğü ve denetimi| YOK | Müşteri, kümeye sahip.  |
+| Veri düzlemi günlüğü ve denetimi| Yok | Müşteri, kümeye sahip.  |
 
 ## <a name="identity"></a>Kimlik
 
@@ -48,8 +48,8 @@ Bu makale, Azure Service Fabric yerleşik olarak bulunan güvenlik denetimlerini
 |---|---|--|
 | Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar | Evet | Müşteri, kümeye ve kümenin oluşturulduğu sanal makine ölçek kümesine sahip. Azure disk şifrelemesi, sanal makine ölçek kümesi üzerinde etkinleştirilebilir. |
 | Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Evet | Müşteri, kümeye ve kümenin oluşturulduğu sanal makine ölçek kümesine sahip. Azure disk şifrelemesi, sanal makine ölçek kümesi üzerinde etkinleştirilebilir. |
-| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| YOK |  |
-| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet |  |
+| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Yok |  |
+| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifrelemesi ve VNet-VNet şifreleme gibi)| Evet |  |
 | Şifrelenmiş API çağrıları| Evet | Service Fabric API çağrıları Azure Resource Manager aracılığıyla yapılır. Geçerli bir JSON Web belirteci (JWT) gerekiyor. |
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi

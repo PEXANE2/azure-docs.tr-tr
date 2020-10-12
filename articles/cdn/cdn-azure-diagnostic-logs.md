@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
 ms.openlocfilehash: 164560fff27adc2d4e63cc8471a26d1d710b89a5
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88191289"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>Tanılama günlükleri-Azure Content Delivery Network
@@ -52,7 +52,7 @@ Azure CDN uç noktanıza yönelik günlüğü etkinleştirmek için şu adımlar
 
 3. **İzleme** bölümünde **tanılama günlükleri** ' ni seçin:
 
-    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="Tanılama günlükleri ' ni seçin." border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="CDN uç noktası seçin." border="true":::
 
 ### <a name="enable-logging-with-azure-storage"></a>Azure depolama ile günlüğe kaydetmeyi etkinleştirme
 
@@ -69,7 +69,7 @@ Günlükleri depolamak üzere bir depolama hesabı kullanmak için şu adımlar�
 
 4. Günlükler için abonelik ve depolama hesabı seçin.
 
-    :::image type="content" source="./media/cdn-diagnostics-log/04_diagnostics-logs-storage.png" alt-text="Tanılama günlükleri-depolama." border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/04_diagnostics-logs-storage.png" alt-text="CDN uç noktası seçin." border="true":::
 
 3. **Kaydet**’i seçin.
 
@@ -86,7 +86,7 @@ Günlükler için Log Analytics kullanmak için şu adımları izleyin:
 
 3. Günlükler için aboneliği ve Log Analytics çalışma alanını seçin.
 
-   :::image type="content" source="./media/cdn-diagnostics-log/05-la-workspace.png" alt-text="Tanılama günlükleri-Log Analytics." border="true":::
+   :::image type="content" source="./media/cdn-diagnostics-log/05-la-workspace.png" alt-text="CDN uç noktası seçin." border="true":::
 
 4. **Kaydet**’i seçin.
 
@@ -103,7 +103,7 @@ Günlükler için bir olay hub 'ı kullanmak için şu adımları izleyin:
 
 3. Günlükler için abonelik ve Olay Hub 'ı ad alanını seçin.
 
-   :::image type="content" source="./media/cdn-diagnostics-log/06-eventhub-namespace.png" alt-text="Tanılama günlükleri-Olay Hub 'ı." border="true":::
+   :::image type="content" source="./media/cdn-diagnostics-log/06-eventhub-namespace.png" alt-text="CDN uç noktası seçin." border="true":::
 
 4. **Kaydet**’i seçin.
 
@@ -207,7 +207,7 @@ Aracı indirmek için bkz. [Azure Depolama Gezgini](https://storageexplorer.com/
 |Değer|Açıklama|
 |-------|---------|
 |Abonelik Kimliği    |GUID biçiminde Azure aboneliğinin KIMLIĞI.|
-|Kaynak grubu adı |CDN kaynaklarının ait olduğu kaynak grubunun adı.|
+|Kaynak Grubu Adı |CDN kaynaklarının ait olduğu kaynak grubunun adı.|
 |Profil Adı |CDN profilinin adı|
 |Uç nokta adı |CDN uç noktasının adı|
 |Yıl|  Yılın dört basamaklı temsili, örneğin, 2017|
@@ -265,7 +265,7 @@ Tüm ölçümler tüm sağlayıcılardan kullanılamaz, ancak bu farklar en az d
 | RequestCountCacheHit | Önbellek okuması ile sonuçlanan tüm isteklerin sayısı. Varlık doğrudan POP 'tan istemciye sunulur. | Evet | Evet | Hayır  |
 | Requestcountcacheisabetsizlik | Önbellek isabetsizliği ile sonuçlanan tüm isteklerin sayısı. Bir önbellek isabetsizlik, varlığın istemciye en yakın POP üzerinde bulunamadığını ve kaynaktan alındığını gösterir. | Evet | Evet | Hayır |
 | RequestCountCacheNoCache | Bir varlık için, uçta Kullanıcı yapılandırması nedeniyle önbelleğe alınması engellenen tüm isteklerin sayısı. | Evet | Evet | Hayır |
-| RequestCountCacheUncacheable | Varlığın Cache-Control ve Expires üstbilgileri tarafından önbelleğe alınması engellenen varlıkların tüm isteklerinin sayısı. Bu sayı, bir POP veya HTTP istemcisi tarafından önbelleğe alınmaması gerektiğini gösterir. | Evet | Evet | Hayır |
+| RequestCountCacheUncacheable | Varlık Cache-Control ve süre sonu üstbilgileri tarafından önbelleğe alınması engellenen varlıkların tüm isteklerinin sayısı. Bu sayı, bir POP veya HTTP istemcisi tarafından önbelleğe alınmaması gerektiğini gösterir. | Evet | Evet | Hayır |
 | Requestcountcachediğerleri | Yukarıda yer almayan önbellek durumuna sahip tüm isteklerin sayısı. | Hayır | Evet | Hayır  |
 | Yumurresstotal | GB cinsinden giden veri aktarımı | Evet |Evet |Evet |
 | EgressHttpStatus2xx | GB cinsinden 2xx HTTP durum koduna sahip yanıtlar için giden veri aktarımı *. | Evet | Evet | Hayır  |
@@ -276,7 +276,7 @@ Tüm ölçümler tüm sağlayıcılardan kullanılamaz, ancak bu farklar en az d
 | Yumurresscachehit | CDN pop 'Ları/kenarları üzerindeki CDN önbelleğinden doğrudan teslim edilen yanıtlar için giden veri aktarımı. | Evet | Evet | Hayır |
 | Yumurresscacheisabetsizlik. | En yakın POP sunucusunda bulunmayan ve kaynak sunucudan alınan yanıtlar için giden veri aktarımı. | Evet | Evet | Hayır |
 | Yumurresscachenocache | Kenarda Kullanıcı yapılandırması nedeniyle önbelleğe alınması engellenen varlıkların giden veri aktarımı. | Evet | Evet | Hayır |
-| Yumurresscacheuncacheable | Varlığın Cache-Control ve veya Expires üstbilgileri tarafından önbelleğe alınması engellenen varlıkların giden veri aktarımı. Bir POP veya HTTP istemcisi tarafından önbelleğe alınmaması gerektiğini gösterir. | Evet | Evet | Hayır |
+| Yumurresscacheuncacheable | Varlığın Cache-Control ve veya süre sonu üstbilgileri tarafından önbelleğe alınması engellenen varlıkların giden veri aktarımı. Bir POP veya HTTP istemcisi tarafından önbelleğe alınmaması gerektiğini gösterir. | Evet | Evet | Hayır |
 | Yumurresscachediğerleri | Diğer önbellek senaryoları için giden veri aktarımları. | Hayır | Evet | Hayır |
 
 * Giden veri aktarımı, CDN POP sunucularından istemciye teslim edilen trafiğin anlamına gelir.

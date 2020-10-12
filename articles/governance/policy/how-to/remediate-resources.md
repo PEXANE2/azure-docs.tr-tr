@@ -4,10 +4,10 @@ description: Bu kılavuzda, Azure Ilkesindeki ilkelerle uyumlu olmayan kaynaklar
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 3b2d145322be8b70e096e49be892018952519cf0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91269854"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Azure Ilkesiyle uyumlu olmayan kaynakları düzelt
@@ -129,11 +129,11 @@ Bir **Düzeltme görevi**oluşturmak için aşağıdaki adımları izleyin:
 
 1. **Tüm hizmetler**' i seçip **ilke**arayıp ' yi seçerek Azure Portal Azure ilke hizmetini başlatın.
 
-   :::image type="content" source="../media/remediate-resources/search-policy.png" alt-text="Tüm hizmetlerde Ilke aramanın ekran görüntüsü." border="false":::
+   :::image type="content" source="../media/remediate-resources/search-policy.png" alt-text="Yönetilen kimlik üzerinde tanımlı bir izin eksik olan bir deployIfNotExists ilkesinin ekran görüntüsü." border="false":::
 
 1. Azure Ilkesi sayfasının sol tarafındaki **Düzeltme** ' yi seçin.
 
-   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text="Ilke sayfasındaki düzeltme düğümünün ekran görüntüsü." border="false":::
+   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text="Yönetilen kimlik üzerinde tanımlı bir izin eksik olan bir deployIfNotExists ilkesinin ekran görüntüsü." border="false":::
 
 1. Tüm **Deployifnotexists** ve uyumlu olmayan kaynaklarla ilke atamalarını **değiştirme** , sekme ve veri tablosunu düzeltme **ilkelerine** dahildir. Uyumlu olmayan kaynaklarla bir ilke seçin. **Yeni düzeltme görev** sayfası açılır.
 
@@ -142,17 +142,17 @@ Bir **Düzeltme görevi**oluşturmak için aşağıdaki adımları izleyin:
 
 1. **Yeni düzeltme görevi** sayfasında, ilkenin atandığı alt kaynakları (tek tek kaynak nesneleri dahil) seçmek için **kapsam** üç noktayı kullanarak düzeltmek üzere kaynakları filtreleyin. Ayrıca, kaynakları daha fazla filtrelemek için **konumlar açılan konumlarını** kullanın. Yalnızca tabloda listelenen kaynaklar düzeltilmeyecektir.
 
-   :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="Düzeltme düğümünün ve düzeltileceği kaynak kılavuzunun ekran görüntüsü." border="false":::
+   :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="Yönetilen kimlik üzerinde tanımlı bir izin eksik olan bir deployIfNotExists ilkesinin ekran görüntüsü." border="false":::
 
 1. Kaynaklar, düzeltme ' i seçerek filtrelendiğinde, düzeltme görevini başlatın **.** İlke uyumluluğu sayfası, görev ilerleme durumunun durumunu göstermek için **Düzeltme görevleri** sekmesinde açılır. Düzeltme görevi tarafından oluşturulan dağıtımlar hemen başlar.
 
-   :::image type="content" source="../media/remediate-resources/task-progress.png" alt-text="Düzeltme görevleri sekmesinin ve mevcut düzeltme görevlerinin ilerleme durumunun ekran görüntüsü." border="false":::
+   :::image type="content" source="../media/remediate-resources/task-progress.png" alt-text="Yönetilen kimlik üzerinde tanımlı bir izin eksik olan bir deployIfNotExists ilkesinin ekran görüntüsü." border="false":::
 
 1. İlerleme hakkındaki ayrıntıları almak için ilke uyumluluğu sayfasından **Düzeltme görevi** ' ni seçin. Görev için kullanılan filtreleme, düzeltilen kaynakların bir listesi ile birlikte gösterilir.
 
 1. Düzeltme **görevi** sayfasında, düzeltme görevinin dağıtımını ya da kaynağını görüntülemek için bir kaynağa sağ tıklayın. Bir hata iletisi gibi ayrıntıları görmek için satırın sonunda **ilgili olaylar** ' ı seçin.
 
-   :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text="Görevi Düzelt sekmesindeki bir kaynağın bağlam menüsünün ekran görüntüsü." border="false":::
+   :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text="Yönetilen kimlik üzerinde tanımlı bir izin eksik olan bir deployIfNotExists ilkesinin ekran görüntüsü." border="false":::
 
 Bir **Düzeltme görevi** aracılığıyla dağıtılan kaynaklar, ilke uyumluluğu sayfasındaki **dağıtılan kaynaklar** sekmesine eklenir.
 

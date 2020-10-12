@@ -7,10 +7,10 @@ ms.date: 03/10/2020
 ms.author: mathoma
 ms.reviewer: vanto
 ms.openlocfilehash: ad6e444f9672fbe521e9c6963649d250830154d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84046141"
 ---
 Bu adımda, bir [MANTıKSAL SQL Server](../database/logical-servers.md) ve AdventureWorksLT örnek verisi kullanan [tek bir veritabanı](../database/single-database-overview.md) oluşturursunuz. Azure portal menüleri ve ekranları kullanarak veya Azure Cloud Shell bir Azure CLı veya PowerShell betiği kullanarak veritabanı oluşturabilirsiniz.
@@ -28,7 +28,7 @@ Azure portal bir kaynak grubu, sunucu ve tek veritabanı oluşturmak için:
    ![Azure SQL 'e Ekle](./media/sql-database-create-single-database/sqldbportal.png)
 
 1. **SQL dağıtım seçeneğini belirleyin** sayfasında, **kaynak türü**altında **tek bir veritabanı** ile **SQL veritabanları** kutucuğunu seçin. **Ayrıntıları göster**' i seçerek farklı veritabanları hakkında daha fazla bilgi görüntüleyebilirsiniz.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
    ![Tek veritabanı oluşturma](./media/sql-database-create-single-database/create-single-database.png)
 
@@ -147,7 +147,7 @@ az sql db create \
 
 Yukarıdaki kod şu Azure CLı komutlarını kullanır:
 
-| Komut | Description |
+| Komut | Açıklama |
 |---|---|
 | [az Account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | Aboneliği geçerli etkin abonelik olacak şekilde ayarlar. |
 | [az group create](/cli/azure/group#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |

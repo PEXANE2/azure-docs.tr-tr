@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
 ms.openlocfilehash: dc14334668b76ee8cbb81e48abfe1eecf17fa138
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86130410"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Azure VM olağanüstü durum kurtarma 'da çoğaltma sorunlarını giderme
@@ -35,7 +35,7 @@ Olay **veri değişikliği oranını desteklenen limitlerin ötesinde**görmeniz
 
 Olayı seçerseniz, tam disk bilgilerini görmeniz gerekir:
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/data_change_event2.png" alt-text="Veri değişim oranı olay ayrıntılarını gösteren sayfa.":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/data_change_event2.png" alt-text="Çok yüksek veri değişim hızını gösteren Azure Site Recovery sayfası.":::
 
 ### <a name="azure-site-recovery-limits"></a>Azure Site Recovery limitleri
 
@@ -56,7 +56,7 @@ Premium P20 veya P30 veya P40 veya P50 disk | 16 KB veya daha büyük |20 MB/sn 
 
 Azure Site Recovery, disk türüne bağlı olarak veri değişikliği ücretleri üzerinde sınırlara sahiptir. Bu sorunun yinelenen veya geçici olup olmadığını görmek için etkilenen sanal makinenin veri değişikliği oranını bulun. Kaynak sanal makineye gidin, **izleme**bölümündeki ölçümleri bulun ve bu ekran görüntüsünde gösterildiği gibi ölçümleri ekleyin:
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/churn.png" alt-text="Veri değişikliği oranını bulmak için üç adımlı süreci gösteren sayfa.":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/churn.png" alt-text="Çok yüksek veri değişim hızını gösteren Azure Site Recovery sayfası.":::
 
 1. **Ölçüm Ekle**' yi seçin ve **Işletim sistemi diski yazma bayt/sn** ve **veri diski yazma bayt/sn**ekleyin.
 1. Ekran görüntüsünde gösterildiği gibi ani artış izleyin.
@@ -65,7 +65,7 @@ Azure Site Recovery, disk türüne bağlı olarak veri değişikliği ücretleri
 Veri değişikliği hızının bir ani artış, zaman zaman veri bloğu aracılığıyla gelebilir. Veri değişim hızı 10 MB/sn 'den (Premium için) veya 2 MB/sn 'den büyükse (Standart için) ve daha sonra geliyorsa çoğaltma gerçekleştirilir. Karmaşıklık, desteklenen sınırın ötesinde sürekli olarak iyi olursa, şu seçeneklerden birini göz önünde bulundurun:
 
 - Yüksek veri değişikliği hızına neden olan diski hariç tutun: Ilk olarak çoğaltmayı devre dışı bırakın. Daha sonra, [PowerShell](azure-to-azure-exclude-disks.md)kullanarak diski dışlayabilirsiniz.
-- Olağanüstü durum kurtarma depolama diskinin katmanını değiştirme: Bu seçenek yalnızca disk verileri karmaşıklığı 20 MB/sn 'den az olduğunda mümkündür. Örneğin, P10 diskine sahip bir VM, 8 MB/sn 'den büyük, ancak 10 MB/sn 'tan küçük bir veri dalgalanmasına sahiptir. Müşteri, koruma sırasında hedef depolama için bir P30 disk kullanıyorsa, sorun çözülebilir. Bu çözüm yalnızca Premium tarafından yönetilen diskleri kullanan makineler için mümkündür. Şu adımları uygulayın:
+- Olağanüstü durum kurtarma depolama diskinin katmanını değiştirme: Bu seçenek yalnızca disk verileri karmaşıklığı 20 MB/sn 'den az olduğunda mümkündür. Örneğin, P10 diskine sahip bir VM, 8 MB/sn 'den büyük, ancak 10 MB/sn 'tan küçük bir veri dalgalanmasına sahiptir. Müşteri, koruma sırasında hedef depolama için bir P30 disk kullanıyorsa, sorun çözülebilir. Bu çözüm yalnızca Premium-Managed diskleri kullanan makineler için mümkündür. Şu adımları izleyin:
 
   1. Etkilenen çoğaltılan makinenin **disklerine** gidin ve çoğaltma diski adını kopyalayın.
   1. Yönetilen diskin bu çoğaltmasına gidin.

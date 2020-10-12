@@ -9,10 +9,10 @@ ms.date: 08/28/2020
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 8f528c6be68258400cb3e29582943f1d657c557d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89069281"
 ---
 # <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak gelen Internet trafiğini Azure Güvenlik Duvarı ile filtreleme DNAT
@@ -56,7 +56,7 @@ Bu öğretici için eşlenen iki sanal ağ oluşturuyorsunuz:
 
 1. Azure portal giriş sayfasında, **tüm hizmetler**' i seçin.
 2. **Ağ**altında **sanal ağlar**' ı seçin.
-3. **Add (Ekle)** seçeneğini belirleyin.
+3. **Ekle**’yi seçin.
 4. **Ad** için **VN-Hub** yazın.
 5. **Adres alanı** için **10.0.0.0/16** yazın.
 6. **Abonelik** bölümünde aboneliğinizi seçin.
@@ -75,7 +75,7 @@ Bu öğretici için eşlenen iki sanal ağ oluşturuyorsunuz:
 
 1. Azure portal giriş sayfasında, **tüm hizmetler**' i seçin.
 2. **Ağ**altında **sanal ağlar**' ı seçin.
-3. **Add (Ekle)** seçeneğini belirleyin.
+3. **Ekle**’yi seçin.
 4. **Ad** için **VN-Spoke** yazın.
 5. **Adres alanı** için **192.168.0.0/16** yazın.
 6. **Abonelik** bölümünde aboneliğinizi seçin.
@@ -93,11 +93,11 @@ Bu öğretici için eşlenen iki sanal ağ oluşturuyorsunuz:
 
 1. **Vn hub** sanal ağını seçin.
 2. **Ayarlar**altında, eşlemeler ' **i seçin.**
-3. **Add (Ekle)** seçeneğini belirleyin.
-4. **Vn-hub ile VN-ışınsal arası eşleme adı**için **eşdüzey-hubbağlı bileşen** yazın.
+3. **Ekle**’yi seçin.
+4. **VN-Hub eşleme adının VN-ışınsal-kol adına** **eşdüzey-hubışınsal** yazın.
 5. Sanal ağ olarak **VN-Spoke**’u seçin.
-6. **VN-hub Ile vn hub 'a arasındaki eşleme adı**için **eşdüzey-spokehub** yazın.
-7. **VNET 'ten vn-hub ' a yönlendirilen trafiğe Izin ver** için **etkin**' i seçin.
+6. **VN-Spoke eşleme adı için, VN-hub ' a** **eş-spokehub** yazın.
+7. **VN-Spoke 'TEN vn hub 'a iletilen trafiğe Izin ver** için **etkin**' i seçin.
 8. **Tamam**’ı seçin.
 
 ## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
@@ -117,7 +117,7 @@ Bu öğretici için eşlenen iki sanal ağ oluşturuyorsunuz:
 1. **İleri ' yi seçin: diskler**.
 
 **Diskler**
-1. **İleri ' yi seçin: ağ**.
+1. **Sonraki: Ağ**’ı seçin.
 
 **Ağ**
 
@@ -167,7 +167,7 @@ Dağıtım bittikten sonra sanal makineyle ilişkili özel IP adresini not alın
 
 1. Azure portal giriş sayfasında, **tüm hizmetler**' i seçin.
 2. **Ağ**altında, **Rota tabloları**' nı seçin.
-3. **Add (Ekle)** seçeneğini belirleyin.
+3. **Ekle**’yi seçin.
 4. **Ad** için **RT-FWroute** yazın.
 5. **Abonelik** bölümünde aboneliğinizi seçin.
 6. **Kaynak grubu** için **Var olanı kullan**’ı ve **RG-DNAT-Test** girişini seçin.
@@ -201,7 +201,7 @@ Dağıtım bittikten sonra sanal makineyle ilişkili özel IP adresini not alın
 10. **Hedef bağlantı noktaları** için **3389** yazın. 
 11. **Çevrilmiş Adres** için Srv-Workload sanal makinesinin özel IP adresini yazın. 
 12. **Çevrilmiş bağlantı noktası** için **3389** yazın. 
-13. **Add (Ekle)** seçeneğini belirleyin. 
+13. **Ekle**’yi seçin. 
 
 ## <a name="test-the-firewall"></a>Güvenlik duvarını test etme
 

@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 04/19/2019
 ms.author: alkohli
 ms.openlocfilehash: b950f80ba8c2bdbaf7a515dc1ce127b934723177
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85558566"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-blob-storage"></a>Azure Data Box blob depolamayla ilgili sorunları giderme
@@ -26,7 +26,7 @@ Bu bölümde Data Box blob depolamayla Azure Depolama Gezgini kullanırken ortay
 |Hata iletisi  |Önerilen eylem |
 |---------|---------|
 |Alt kaynaklar alınamıyor. HTTP başlıklarındaki bir değer doğru biçimde değil.|**Düzenle** menüsünde **hedef Azure Stack API 'leri**' ni seçin. <br>Azure Depolama Gezgini yeniden başlatın.|
-|`getaddrinfo ENOTFOUND <accountname>.blob.<serialnumber>.microsoftdatabox.com` |Uç nokta adının `<accountname>.blob.<serialnumber>.microsoftdatabox.com` Bu yoldaki Hosts dosyasına eklendiğinden emin olun: <li>`C:\Windows\System32\drivers\etc\hosts`Windows veya </li><li> `/etc/hosts`Linux üzerinde.</li>|
+|`getaddrinfo ENOTFOUND <accountname>.blob.<serialnumber>.microsoftdatabox.com` |Uç nokta adının `<accountname>.blob.<serialnumber>.microsoftdatabox.com` Bu yoldaki Hosts dosyasına eklendiğinden emin olun: <li>`C:\Windows\System32\drivers\etc\hosts` Windows veya </li><li> `/etc/hosts` Linux üzerinde.</li>|
 |Alt kaynaklar alınamıyor. <br>Ayrıntılar: otomatik olarak imzalanan sertifika |Cihazınız için TLS/SSL sertifikasını Azure Depolama Gezgini içine aktarın: <li>Azure portal sertifikayı indirin. Daha fazla bilgi için [sertifikayı indirme](data-box-deploy-copy-data-via-rest.md#download-certificate)bölümüne gidin.</li><li>**Düzenle** menüsünde **SSL sertifikaları** ' nı seçin ve ardından **sertifikaları içeri aktar**' ı seçin.</li>|
 
 ## <a name="errors-seen-in-azcopy-for-windows"></a>Windows için AzCopy 'da görülen hatalar
@@ -35,7 +35,7 @@ Bu bölümde, Windows için AzCopy Data Box blob depolamayla kullanılırken ort
 
 |Hata iletisi  |Önerilen eylem |
 |---------|---------|
-|AzCopy komutu, bu hatayı görüntülemeden önce bir dakika boyunca yanıt vermeyi durdurmuş gibi görünüyor: <br>Dizin https://numaralandırılamadı... Uzak ad çözümlenemedi`<accountname>.blob.<serialnumber>.microsoftdatabox.com`|Uç nokta adının `<accountname>.blob.<serialnumber>.microsoftdatabox.com` Şu adreste bulunan Hosts dosyasına eklendiğinden emin olun: `C:\Windows\System32\drivers\etc\hosts` .|
+|AzCopy komutu, bu hatayı görüntülemeden önce bir dakika boyunca yanıt vermeyi durdurmuş gibi görünüyor: <br>Dizin https://numaralandırılamadı... Uzak ad çözümlenemedi `<accountname>.blob.<serialnumber>.microsoftdatabox.com`|Uç nokta adının `<accountname>.blob.<serialnumber>.microsoftdatabox.com` Şu adreste bulunan Hosts dosyasına eklendiğinden emin olun: `C:\Windows\System32\drivers\etc\hosts` .|
 |AzCopy komutu, bu hatayı görüntülemeden önce bir dakika boyunca yanıt vermeyi durdurmuş gibi görünüyor: <br>Kaynak konumu ayrıştırılırken hata oluştu. Temel alınan bağlantı kapatıldı: SSL/TLS güvenli kanalı için güven ilişkisi kurulamadı.|Cihazınızın TLS/SSL sertifikasını sistemin sertifika deposuna aktarın. Daha fazla bilgi için [sertifikayı indirme](data-box-deploy-copy-data-via-rest.md#download-certificate)bölümüne gidin.|
 
 

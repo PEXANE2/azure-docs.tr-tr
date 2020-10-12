@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: d000d8390375466232c7daac2a4a056ef424be79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77087133"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>CloudSimple özel bulutunuz için bir VPN bağlantısı yapılandırma
@@ -26,7 +26,7 @@ VPN ağ geçitleri, CloudSimple ağına şirket içi ağınızdan ve bir istemci
 
 Bir bölgede, bir siteden siteye VPN ağ geçidi ve bir noktadan siteye VPN ağ geçidi oluşturabilirsiniz.
 
-## <a name="point-to-site-vpn"></a>Noktadan Siteye VPN
+## <a name="point-to-site-vpn"></a>Noktadan siteye VPN
 
 Noktadan siteye VPN ağ geçidi oluşturmak için bkz. [noktadan sıteye VPN ağ geçidi oluşturma](vpn-gateway.md#create-point-to-site-vpn-gateway).
 
@@ -37,7 +37,7 @@ VPN istemcisi, bilgisayarınızdan CloudSimple 'a bağlanmak için gereklidir.  
 1. CloudSimple portalını başlatın ve **ağ**' ı seçin.
 2. **VPN Gateway**seçin.
 3. VPN ağ geçitleri listesinden Noktadan siteye VPN Gateway ' e tıklayın.
-4. **Kullanıcıları**seçin.
+4. **Kullanıcılar**’ı seçin.
 5. **VPN yapılandırması 'Nı indir** 'e tıklayın
 
     ![VPN yapılandırmasını indirme](media/download-p2s-vpn-configuration.png)

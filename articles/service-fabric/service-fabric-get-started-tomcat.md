@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 6/08/2018
 ms.author: pepogors
 ms.openlocfilehash: 1a699f3b35970270a9800162a6d8717682a168ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75614426"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Linux 'ta Apache Tomcat Server çalıştıran Service Fabric kapsayıcısı oluşturma
@@ -16,7 +16,7 @@ Apache Tomcat, Java Servlet ve Java sunucu teknolojilerinin popüler, açık kay
 
 Apache Tomcat hakkında daha fazla bilgi edinmek için bkz. [Apache Tomcat giriş sayfası](https://tomcat.apache.org/). 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Şunları çalıştıran bir geliştirme bilgisayarı:
   * [Service Fabric SDK’sı ve araçları](service-fabric-get-started-linux.md).
   * [Linux için Docker CE](https://docs.docker.com/engine/installation/#prior-releases). 
@@ -75,8 +75,8 @@ Apache Tomcat görüntüsünü ve basit bir Web uygulamasını temel alan bir Do
    docker run -itd --name tomcat-site -p 8080:8080 tomcattest.
    ```
    
-   * `--name`kapsayıcının KIMLIĞI yerine kolay bir ad kullanarak başvurabilmeniz için kapsayıcıyı adlandırır.
-   * `-p`kapsayıcı ve konak işletim sistemi arasındaki bağlantı noktası eşlemesini belirtir. 
+   * `--name` kapsayıcının KIMLIĞI yerine kolay bir ad kullanarak başvurabilmeniz için kapsayıcıyı adlandırır.
+   * `-p` kapsayıcı ve konak işletim sistemi arasındaki bağlantı noktası eşlemesini belirtir. 
 
    > [!Note]
    > Parametresiyle açtığınız bağlantı noktası, `-p` Tomcat uygulamanızın istekleri dinlediği bağlantı noktası olmalıdır. Geçerli örnekte, HTTP istekleri için 8080 numaralı bağlantı noktasında dinlemek üzere *ApacheTomcat/conf/server.xml* dosyasında yapılandırılmış bir bağlayıcı vardır. Bu bağlantı noktası konaktaki 8080 numaralı bağlantı noktasına eşlenir. 

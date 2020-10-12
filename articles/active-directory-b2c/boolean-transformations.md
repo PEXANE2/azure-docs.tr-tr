@@ -12,10 +12,10 @@ ms.date: 06/06/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 7c292f939339add06168c55236f8666651e4aace
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85201285"
 ---
 # <a name="boolean-claims-transformations"></a>Boole talep dönüştürmeleri
@@ -30,9 +30,9 @@ Bu makalede, Azure Active Directory B2C (Azure AD B2C) ' de kimlik deneyimi çer
 
 | Öğe  | Dönüştürme Tionclaimtype  | Veri Türü  | Notlar |
 |-------| ------------------------ | ---------- | ----- |
-| Inputclaim | inputClaim1 | boole | Değerlendirilecek ilk ClaimType. |
-| Inputclaim | inputClaim2  | boole | Değerlendirilecek ikinci ClaimType. |
-|OutputClaim | outputClaim | boole | Bu talep dönüştürmesinin ardından üretilecek olan ClaimTypes (true veya false). |
+| Inputclaim | inputClaim1 | boolean | Değerlendirilecek ilk ClaimType. |
+| Inputclaim | inputClaim2  | boolean | Değerlendirilecek ikinci ClaimType. |
+|OutputClaim | outputClaim | boolean | Bu talep dönüştürmesinin ardından üretilecek olan ClaimTypes (true veya false). |
 
 Aşağıdaki talep dönüşümünde, ve iki Boolean ClaimTypes gösterilmektedir: `isEmailNotExist` , ve `isSocialAccount` . `presentEmailSelfAsserted` `true` Giriş taleplerinin her ikisi de değeri ise, çıkış talebi olarak ayarlanır `true` . Bir düzenleme adımında, yalnızca sosyal hesap e-postası boş ise, otomatik olarak onaylanan bir sayfayı önceden ayarlamak için bir ön koşul kullanabilirsiniz.
 
@@ -63,8 +63,8 @@ Aşağıdaki talep dönüşümünde, ve iki Boolean ClaimTypes gösterilmektedir
 
 | Öğe | Dönüştürme Tionclaimtype  | Veri Türü  | Notlar |
 | ---- | ------------------------ | ---------- | ----- |
-| ınputclaim | ınputclaim | boole | Belirtilme ClaimType. |
-| InputParameter |valueToCompareTo | boole | Karşılaştırılacak değer (true veya false). |
+| ınputclaim | ınputclaim | boolean | Belirtilme ClaimType. |
+| InputParameter |valueToCompareTo | boolean | Karşılaştırılacak değer (true veya false). |
 
 **AssertBooleanClaimIsEqualToValue** talep dönüştürmesi, her zaman [otomatik olarak onaylanan bir teknik profille](self-asserted-technical-profile.md)çağrılan bir [doğrulama teknik profilinden](validation-technical-profile.md) yürütülür. **UserMessageIfClaimsTransformationBooleanValueIsNotEqual** kendiliğinden onaylanan teknik profil meta verileri, teknik profilin kullanıcıya sunduğu hata iletisini denetler. Hata iletileri [yerelleştirilebilecek](localization-string-ids.md#claims-transformations-error-messages).
 
@@ -121,9 +121,9 @@ Bir talebin Boole değerinin veya değerine eşit olduğunu denetler `true` `fal
 
 | Öğe | Dönüştürme Tionclaimtype  | Veri Türü  | Notlar |
 | ---- | ------------------------ | ---------- | ----- |
-| Inputclaim | ınputclaim | boole | Belirtilme ClaimType. |
-| InputParameter |valueToCompareTo | boole | Karşılaştırılacak değer (true veya false). |
-| OutputClaim | compareResult | boole | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. |
+| Inputclaim | ınputclaim | boolean | Belirtilme ClaimType. |
+| InputParameter |valueToCompareTo | boolean | Karşılaştırılacak değer (true veya false). |
+| OutputClaim | compareResult | boolean | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. |
 
 Aşağıdaki talep dönüşümünde, bir Boolean ClaimType değerinin bir değerle nasıl kontrol yapılacağı gösterilmektedir `true` . `IsAgeOver21Years`ClaimType değeri öğesine eşitse `true` , talep dönüştürmesi, `true` Aksi takdirde döndürür `false` .
 
@@ -156,8 +156,8 @@ Boolean ınputclaim ' in olmayan bir işlemini gerçekleştirir ve outputClaim '
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | ınputclaim | boole | İşletilen talep. |
-| OutputClaim | outputClaim | boole | Bu Claimstranssetting sonrasında üretilen ClaimTypes (true veya false) çağırılır. |
+| Inputclaim | ınputclaim | boolean | İşletilen talep. |
+| OutputClaim | outputClaim | boolean | Bu Claimstranssetting sonrasında üretilen ClaimTypes (true veya false) çağırılır. |
 
 Bir talep üzerinde mantıksal olumsuzlama gerçekleştirmek için bu talep dönüşümünü kullanın.
 
@@ -185,9 +185,9 @@ Bir talep üzerinde mantıksal olumsuzlama gerçekleştirmek için bu talep dön
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | inputClaim1 | boole | Değerlendirilecek ilk ClaimType. |
-| Inputclaim | inputClaim2 | boole | Değerlendirilecek ikinci ClaimType. |
-| OutputClaim | outputClaim | boole | Bu Claimstranssize çağrıldıktan sonra üretilecek olan ClaimTypes (true veya false). |
+| Inputclaim | inputClaim1 | boolean | Değerlendirilecek ilk ClaimType. |
+| Inputclaim | inputClaim2 | boolean | Değerlendirilecek ikinci ClaimType. |
+| OutputClaim | outputClaim | boolean | Bu Claimstranssize çağrıldıktan sonra üretilecek olan ClaimTypes (true veya false). |
 
 Aşağıdaki talep dönüşümünde `Or` iki Boolean ClaimTypes gösterilmektedir. Düzenleme adımında, taleplerden birinin değeri ise, otomatik olarak onaylanan bir sayfayı önceden ayarlamak için bir ön koşul kullanabilirsiniz `true` .
 

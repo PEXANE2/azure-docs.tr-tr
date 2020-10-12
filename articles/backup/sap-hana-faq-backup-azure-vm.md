@@ -4,10 +4,10 @@ description: Bu makalede, Azure Backup hizmetini kullanarak SAP HANA veritabanla
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.openlocfilehash: dcbf1bf6b39b2afa3fb5aaf2a7f18c5d0e8e4afb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86513515"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Sık sorulan sorular – Azure VM 'lerinde SAP HANA veritabanlarını yedekleyin
@@ -77,7 +77,7 @@ Sorun giderme kılavuzunun [Bu bölümüne](./backup-azure-sap-hana-database-tro
 
 Şu anda Azure Backup bir HSR kurulumunu anlama yeteneği yoktur. Bu, HSR 'nin birincil ve ikincil düğümlerinin iki bireysel, ilişkisiz VM olarak kabul edildiği anlamına gelir. Öncelikle birincil düğümde yedekleme 'yi yapılandırmanız gerekir. Yük devretme gerçekleştiğinde, ikincil düğümde (şimdi birincil düğüm haline gelir) yedeklemenin yapılandırılması gerekir. Diğer düğüme yedeklemenin otomatik olarak devredilme işlemi yapılmaz.
 
-Belirli bir zaman noktasında etkin (birincil) düğümden verileri yedeklemek için korumayı yük devretme sonrasında birincil olan ikincil düğüme **geçirebilirsiniz** .
+Belirli bir zaman noktasında etkin (birincil) düğümden verileri yedeklemek için korumayı yük devretme sonrasında birincil olan ikincil düğüme **geçirebilirsiniz**  .
 
 Bu **anahtar korumasını**gerçekleştirmek için şu adımları izleyin:
 

@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 9a32cd4db9a4c4dbd2b5f36c16feef4717790c3c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89291475"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Canlı etkinlikler ve canlı çıktılar Media Services
@@ -60,7 +60,7 @@ H.264/AVC veya H.265/HEVC video codec'leri ve AAC (AAC-LC, HE-AACv1 veya HE-AACv
 
 ![Media Services örnek diyagramı ile canlı kodlama](./media/live-streaming/live-encoding.svg)
 
-Media Services ile canlı kodlama kullanırken, şirket içi Live Encoder ' ı canlı olaya katkı akışı olarak tek bir bit hızlı video gönderecek şekilde yapılandırırsınız (RTMP veya parçalanmış-MP4 protokolünü kullanarak). Ardından, gelen tek bit hızı akışının [çoklu bit hızı video akışına](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)kodlanabilmesi ve ÇıKTıNıN, MPEG-Dash, hls ve kesintisiz akış gibi protokoller aracılığıyla cihazları oynamasına olanak sağlamak için canlı bir olay ayarlarsınız.
+Media Services ile canlı kodlama kullanırken, şirket içi Live Encoder ' ı canlı olaya katkı akışı olarak tek bir bit hızlı video gönderecek şekilde yapılandırırsınız (RTMP veya Fragmented-Mp4 protokolünü kullanarak). Ardından, gelen tek bit hızı akışının [çoklu bit hızı video akışına](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)kodlanabilmesi ve ÇıKTıNıN, MPEG-Dash, hls ve kesintisiz akış gibi protokoller aracılığıyla cihazları oynamasına olanak sağlamak için canlı bir olay ayarlarsınız.
 
 Canlı kodlama kullandığınızda, katkı akışını yalnızca, 30 kareden oluşan bir kare hızında (en fazla, H. ıAACv1, veya HE-AACv2) ses codec 'i ile en fazla 30 kare/saniye kare hızında gönderebilirsiniz. Geçişli canlı olayların 60 kare/saniye olan en fazla 4K çözünürlüğe kadar çözüm destekleyebileceğini unutmayın. Daha fazla bilgi için bkz. [canlı olay türleri karşılaştırması](live-event-types-comparison.md).
 

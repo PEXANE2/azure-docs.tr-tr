@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: a2115e9c1601c86cce8857c10baf12b91cc2b997
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75482575"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>SOIL Moisture heatmap oluştur
@@ -87,7 +87,7 @@ Aşağıdaki adımları kullanın:
 2. İş durumu **başarılı**olarak gösterildiği zaman menüdeki **haritalar** ' ı seçin.
 3. <Soil-moisture_MyFarm_YYYY-aa-gg> biçiminde oluşturulduğu güne göre haritada arama yapın.
 4. **Ad** sütununda bir harita seçin, seçilen haritanın önizlemesine sahip bir açılır pencere görüntülenir.
-5. **Download** (İndir) seçeneğini belirleyin. Eşleme indirilir ve bilgisayarınızın yerel klasörüne depolanır.
+5. **İndir**'i seçin. Eşleme indirilir ve bilgisayarınızın yerel klasörüne depolanır.
 
     ![Proje grubu ları](./media/get-sensor-data-from-sensor-partner/download-soil-moisture-map-1.png)
 

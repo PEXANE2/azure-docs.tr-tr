@@ -10,10 +10,10 @@ ms.workload: infrastructure
 ms.date: 04/05/2020
 ms.author: haroldw
 ms.openlocfilehash: 0c60fdfda0c18f5a8feb11c3d9c5a386025670cd
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87368158"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>Azure 'da OpenShift kapsayıcı platformu 3,11 dağıtma
@@ -278,12 +278,12 @@ Farklı yayınlar farklı parametrelere sahip olabilir, bu nedenle kullandığı
 | `aadClientId` | Hizmet sorumlusu için uygulama KIMLIĞI olarak da bilinen Azure Active Directory Istemci KIMLIĞI |  |  |
 | `domainName` | Kullanılacak özel etki alanı adının adı (varsa). Tam özel küme dağıtmadığı takdirde "none" olarak ayarlayın |  | yok |
 | `masterClusterDnsType` | OpenShift web konsolunun etki alanı türü. ' default ', ana Infra genel IP DNS etiketini kullanır. ' Custom ' kendi adınızı tanımlamanızı sağlar | default <br> özel | default |
-| `masterClusterDns` | İçin ' özel ' seçtiyseniz OpenShift web konsoluna erişmek için kullanılacak özel DNS adı`masterClusterDnsType` |  | console.contoso.com |
+| `masterClusterDns` | İçin ' özel ' seçtiyseniz OpenShift web konsoluna erişmek için kullanılacak özel DNS adı `masterClusterDnsType` |  | console.contoso.com |
 | `routingSubDomainType` | ' Nipio ' olarak ayarlanırsa, `routingSubDomain` Nip.io kullanır.  Yönlendirme için kullanmak istediğiniz kendi etki alanınız varsa ' Custom ' kullanın | nipio <br> özel | nipio |
-| `routingSubDomain` | İçin ' Custom ' seçtiyseniz, yönlendirme için kullanmak istediğiniz joker karakter DNS adı`routingSubDomainType` |  | apps.contoso.com |
+| `routingSubDomain` | İçin ' Custom ' seçtiyseniz, yönlendirme için kullanmak istediğiniz joker karakter DNS adı `routingSubDomainType` |  | apps.contoso.com |
 | `virtualNetworkNewOrExisting` | Mevcut bir sanal ağın kullanılıp kullanılmayacağını seçin veya yeni bir sanal ağ oluşturun | Mevcut <br> new | new |
-| `virtualNetworkResourceGroupName` | İçin ' yeni ' seçtiyseniz yeni sanal ağın kaynak grubunun adı`virtualNetworkNewOrExisting` |  | resourceGroup (). Name |
-| `virtualNetworkName` | İçin ' yeni ' seçtiyseniz oluşturulacak yeni sanal ağın adı`virtualNetworkNewOrExisting` |  | openshiftvnet |
+| `virtualNetworkResourceGroupName` | İçin ' yeni ' seçtiyseniz yeni sanal ağın kaynak grubunun adı `virtualNetworkNewOrExisting` |  | resourceGroup (). Name |
+| `virtualNetworkName` | İçin ' yeni ' seçtiyseniz oluşturulacak yeni sanal ağın adı `virtualNetworkNewOrExisting` |  | openshiftvnet |
 | `addressPrefixes` | Yeni sanal ağın adres ön eki |  | 10.0.0.0/14 |
 | `masterSubnetName` | Ana alt ağın adı |  | mastersubnet |
 | `masterSubnetPrefix` | Ana alt ağ için kullanılan CıDR, Addresspredüzeltmesini alt kümesi olmalıdır |  | 10.1.0.0/16 |
@@ -295,9 +295,9 @@ Farklı yayınlar farklı parametrelere sahip olabilir, bu nedenle kullandığı
 | `existingInfraSubnetReference` | Infra düğümleri için mevcut alt ağa tam başvuru. Yeni vNet/alt ağ oluşturulmadığında gerekli değildir |  |  |
 | `existingCnsSubnetReference` | CNS Nodes için mevcut alt ağa tam başvuru. Yeni vNet/alt ağ oluşturulmadığında gerekli değildir |  |  |
 | `existingNodeSubnetReference` | İşlem düğümleri için mevcut alt ağa tam başvuru. Yeni vNet/alt ağ oluşturulmadığında gerekli değildir |  |  |
-| `masterClusterType` | Kümenin özel veya ortak ana düğümler kullanıp kullanmadığını belirtin. Özel seçilirse, ana düğümler genel bir IP aracılığıyla Internet 'e gösterilmez. Bunun yerine, içinde belirtilen özel IP 'yi kullanır`masterPrivateClusterIp` | public <br> private | public |
+| `masterClusterType` | Kümenin özel veya ortak ana düğümler kullanıp kullanmadığını belirtin. Özel seçilirse, ana düğümler genel bir IP aracılığıyla Internet 'e gösterilmez. Bunun yerine, içinde belirtilen özel IP 'yi kullanır `masterPrivateClusterIp` | public <br> private | public |
 | `masterPrivateClusterIp` | Özel ana düğümler seçilirse, ana düğümlerin iç yük dengeleyici tarafından kullanılmak üzere özel bir IP adresinin belirtilmesi gerekir. Bu statik IP, ana alt ağ için CıDR bloğunda olmalıdır ve zaten kullanımda olmalıdır. Ortak ana düğümler seçilirse, bu değer kullanılmaz ancak yine de belirtilmesi gerekir |  | 10.1.0.200 |
-| `routerClusterType` | Kümenin özel veya genel Infra düğümleri kullanıp kullanmayacağını belirtin. Özel seçilirse, Infra düğümleri Internet 'e genel bir IP üzerinden gösterilmez. Bunun yerine, içinde belirtilen özel IP 'yi kullanır`routerPrivateClusterIp` | public <br> private | public |
+| `routerClusterType` | Kümenin özel veya genel Infra düğümleri kullanıp kullanmayacağını belirtin. Özel seçilirse, Infra düğümleri Internet 'e genel bir IP üzerinden gösterilmez. Bunun yerine, içinde belirtilen özel IP 'yi kullanır `routerPrivateClusterIp` | public <br> private | public |
 | `routerPrivateClusterIp` | Özel Infra düğümleri seçilirse, Infra düğümleri için iç yük dengeleyici tarafından kullanılmak üzere özel bir IP adresinin belirtilmesi gerekir. Bu statik IP, Infra alt ağı için CIDR bloğunda olmalıdır ve zaten kullanımda olmalıdır. Ortak Infra düğümleri seçilirse, bu değer kullanılmaz ancak yine de belirtilmesi gerekir |  | 10.2.0.200 |
 | `routingCertType` | Yönlendirme etki alanı veya varsayılan otomatik olarak imzalanan sertifika için özel sertifika kullan- **özel sertifikalar** bölümündeki yönergeleri izleyin | selfsigned <br> özel | selfsigned |
 | `masterCertType` | Ana etki alanı için özel sertifika veya varsayılan otomatik olarak imzalanan sertifika kullan- **özel sertifikalar** bölümündeki yönergeleri izleyin | selfsigned <br> özel | selfsigned |

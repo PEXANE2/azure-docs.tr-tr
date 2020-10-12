@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.openlocfilehash: f0c8fe6b8df5efef0cf3948c8d628d20c79502ff
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88928692"
 ---
 # <a name="set-azure-roles-for-administrative-access-to-azure-cognitive-search"></a>Azure 'a yönetici erişimi için Azure rolleri ayarlama Bilişsel Arama
@@ -54,4 +54,4 @@ Aşağıdaki tabloda, Azure Bilişsel Arama 'de izin verilen işlemler özetlenm
 
 + [PowerShell kullanarak yönetme](search-manage-powershell.md) 
 + [Azure Bilişsel Arama performans ve iyileştirme](search-performance-optimization.md)
-+ [Azure Portal rol tabanlı Access Control kullanmaya](../role-based-access-control/overview.md)başlayın.
++ [Azure portal Role-Based Access Control kullanmaya](../role-based-access-control/overview.md)başlayın.

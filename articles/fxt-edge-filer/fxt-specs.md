@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
 ms.openlocfilehash: 30af35075c06585b9c490495e9897c145e9974d9
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88184695"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Azure FXT Edge Filer özellikleri
@@ -96,7 +96,7 @@ Bu grafikler, yaygın olarak kullanılan voltaj sıklığı birleşimleri için 
 | Sıklık (Hz) | 60 | 60 | 60 | 50 | 50 |
 | Geçerli (A) | 5,02 | 4,16 |2,40 | 2,20 | 2,16 |
 | Görünen güç (VA) | 502 | 499 | 499 | 506 | 518|
-| Güç faktörü | 0.99 | 0.99 |0,98 | 0,98 | 0,98 |
+| Güç faktörü | 0.99 | 0.99 |0.98 | 0.98 | 0.98 |
 | Gerçek güç (W) | 497 |494 | 489 | 496 | 508 |
 | Sıcaklık dağılımı (BTU/saat) |1696 | 1686 | 1669 | 1692 | 1733 |
 
@@ -106,7 +106,7 @@ Bu grafikler, yaygın olarak kullanılan voltaj sıklığı birleşimleri için 
 | Sıklık (Hz) | 60 | 60 | 60 | 50 | 50 |
 | Geçerli (A) | 5,98 | 5,01 | 2,81 | 2.55 | 2,48 |
 | Görünen güç (VA) | 598 | 601 | 584 | 587 | 595 |
-| Güç faktörü | 0.99 | 0.99 | 0,98 | 0,98 | 0,98 |
+| Güç faktörü | 0.99 | 0.99 | 0.98 | 0.98 | 0.98 |
 | Gerçek güç (W) | 592 | 595 | 573 | 575 | 583 |
 | Sıcaklık dağılımı (BTU/saat) | 2020 |2031 | 1954 | 1961 | 1990 |
 
@@ -116,7 +116,7 @@ Bu grafikler, yaygın olarak kullanılan voltaj sıklığı birleşimleri için 
 | Sıklık (Hz) |60 | 60 | 60 | 50 | 50 |
 | Geçerli (A) | 4,63 | 3,86 | 2.24 | 2,04 | 1,94 |
 | Görünen güç (VA) | 463 | 463 | 466 | 469 | 466 |
-| Güç faktörü | 0.99 | 0.99 | 0,98 | 0,98 | 0,98 | 
+| Güç faktörü | 0.99 | 0.99 | 0.98 | 0.98 | 0.98 | 
 | Gerçek güç (W) | 458 | 459 | 457 | 460 | 456 |
 | Sıcaklık dağılımı (BTU/saat) | 1564 | 1565 | 1558 | 1569 | 1557 |
 
@@ -126,7 +126,7 @@ Bu grafikler, yaygın olarak kullanılan voltaj sıklığı birleşimleri için 
 | Sıklık (Hz) | 60 | 60 | 60 | 50 | 50 |
 | Geçerli (A) | 5,15 | 4,28 | 2,48 | 2,28 | 2,13 |
 | Görünen güç (VA) | 515 | 514 | 516 | 524 | 511 |
-| Güç faktörü | 0.99 | 0.99 | 0,98 | 0,98 | 0,98 |
+| Güç faktörü | 0.99 | 0.99 | 0.98 | 0.98 | 0.98 |
 | Gerçek güç (W) | 510 | 508 | 506 | 514 | 501 |
 | Sıcaklık dağılımı (BTU/saat) | 1740 | 1735 | 1725 | 1753 | 1709 |
 

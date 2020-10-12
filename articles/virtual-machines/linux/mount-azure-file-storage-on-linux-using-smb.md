@@ -8,10 +8,10 @@ ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
 ms.openlocfilehash: 6a5d4f388d9e5f47a13812687489525590c520c3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87085495"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>SMB kullanarak Linux VM 'lerinde Azure dosya depolamayı bağlama
@@ -110,4 +110,4 @@ Linux VM 'yi yeniden başlattığınızda, bağlı SMB paylaşımının kapalı 
 
 - [Oluşturma sırasında bir Linux sanal makinesini özelleştirmek için Cloud-init kullanma](using-cloud-init.md)
 - [Linux VM'ye disk ekleme](add-disk.md)
-- [Linux sanal makineleri için Azure disk şifrelemesi](disk-encryption-overview.md)
+- [Linux VM'leri için Azure Disk Şifrelemesi](disk-encryption-overview.md)

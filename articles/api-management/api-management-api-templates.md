@@ -15,10 +15,10 @@ ms.date: 11/04/2019
 ms.author: apimpm
 ms.custom: devx-track-python
 ms.openlocfilehash: b63f38609b4b61130e515dd118e8ced9f201defd
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87851723"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API Management API şablonları
@@ -46,7 +46,7 @@ Bu bölümdeki şablonlar, geliştirici portalındaki API sayfalarının içeri�
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-## <a name="api-list"></a><a name="APIList"></a>API listesi  
+## <a name="api-list"></a><a name="APIList"></a> API listesi  
  **API listesi** şablonu, GELIŞTIRICI portalındaki API listesi sayfasının gövdesini özelleştirmenizi sağlar.  
   
  ![Geliştirici portalı API listesi](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APıM geliştirici portalı şablonları API listesi")  
@@ -114,7 +114,7 @@ Bu bölümdeki şablonlar, geliştirici portalındaki API sayfalarının içeri�
 }  
 ```  
   
-## <a name="operation"></a><a name="Product"></a>Çalışmasını  
+## <a name="operation"></a><a name="Product"></a> Çalışmasını  
  **İşlem** şablonu, geliştirici portalındaki işlem sayfasının gövdesini özelleştirmenizi sağlar.  
   
  ![Geliştirici portalı Işlem sayfası](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "APıM Geliştirici Portalı şablon Işlemi sayfası")  
@@ -644,7 +644,7 @@ Bu bölümdeki şablonlar, geliştirici portalındaki API sayfalarının içeri�
 }  
 ```  
   
-## <a name="code-samples"></a><a name="CodeSamples"></a>Kod örnekleri  
+## <a name="code-samples"></a><a name="CodeSamples"></a> Kod örnekleri  
  Aşağıdaki şablonlar, işlem sayfasında bireysel kod örneklerinin gövdesini özelleştirmenizi sağlar.  
   
  ![Geliştirici Portalı şablon kodu örnekleri](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "APıM Geliştirici Portalı şablon kodu örnekleri")  
@@ -665,7 +665,7 @@ Bu bölümdeki şablonlar, geliştirici portalındaki API sayfalarının içeri�
   
 -   [Ruby](#Ruby)  
   
-### <a name="curl"></a><a name="Curl"></a>Kıvr  
+### <a name="curl"></a><a name="Curl"></a> Kıvr  
  **Belgetaörneklesme** şablonu, bu kod örneğini, işlem sayfasının kod örnekleri bölümünde özelleştirmenize olanak sağlar.  
   
 #### <a name="default-template"></a>Varsayılan şablon  
@@ -897,7 +897,7 @@ namespace CSHttpClientSample
 }  
 ```  
   
-### <a name="java"></a><a name="Stub"></a>Java  
+### <a name="java"></a><a name="Stub"></a> Java  
  **Belgetaörneklesjava** şablonu, bu kod örneğini, işlem sayfasının kod örnekleri bölümünde özelleştirmenize olanak sağlar.  
   
 #### <a name="default-template"></a>Varsayılan şablon  
@@ -993,7 +993,7 @@ public class JavaSample
 }  
 ```  
   
-### <a name="javascript"></a><a name="JavaScript"></a>JavaScript  
+### <a name="javascript"></a><a name="JavaScript"></a> JavaScript  
  **Belgetasamplesjs** şablonu, bu kod örneğini, işlem sayfasının kod örnekleri bölümünde özelleştirmenize olanak sağlar.  
   
 #### <a name="default-template"></a>Varsayılan şablon  
@@ -1082,7 +1082,7 @@ public class JavaSample
 }  
 ```  
   
-### <a name="objective-c"></a><a name="ObjectiveC"></a>Amaç C  
+### <a name="objective-c"></a><a name="ObjectiveC"></a> Amaç C  
  **Belgetasamplesobjc** şablonu, bu kod örneğini işlem sayfasının kod örnekleri bölümünde özelleştirmenize olanak sağlar.  
   
 #### <a name="default-template"></a>Varsayılan şablon  
@@ -1194,7 +1194,7 @@ int main(int argc, const char * argv[])
 }  
 ```  
   
-### <a name="php"></a><a name="PHP"></a>PHP  
+### <a name="php"></a><a name="PHP"></a> PHP  
  **Belgetasamplesphp** şablonu, bu kod örneğini, işlem sayfasının kod örnekleri bölümünde özelleştirmenize olanak sağlar.  
   
 #### <a name="default-template"></a>Varsayılan şablon  
@@ -1402,7 +1402,7 @@ except Exception as e:
 }  
 ```  
   
-### <a name="ruby"></a><a name="Ruby"></a>Söyleniş  
+### <a name="ruby"></a><a name="Ruby"></a> Söyleniş  
  **Belgeley,** Bu kod örneğini, işlem sayfasının kod örnekleri bölümünde özelleştirmenize olanak sağlar.  
   
 #### <a name="default-template"></a>Varsayılan şablon  

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 30b9b8393007033a7c2e6798cd57d9cf0128820d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75464709"
 ---
 # <a name="performance-metrics"></a>Performans ölçümleri
@@ -20,7 +20,7 @@ Kümenizin performansını ve üzerinde çalışan uygulamaları anlamak için �
 
 Kümenizdeki makineler için, her makinede yükü daha iyi anlamak ve uygun küme ölçekleme kararları almak için aşağıdaki performans sayaçlarını toplamayı göz önünde bulundurun.
 
-| Sayaç kategorisi | Sayaç adı |
+| Sayaç kategorisi | Sayaç Adı |
 | --- | --- |
 | Mantıksal disk | Mantıksal disk boş alanı |
 | FizikselDisk (disk başına) | Ortalama Disk okuma sırası uzunluğu |
@@ -54,7 +54,7 @@ Kümenizdeki makineler için, her makinede yükü daha iyi anlamak ve uygun küm
 
 Kümenize .NET Hizmetleri dağıtıyorsanız, aşağıdaki sayaçları toplayın. 
 
-| Sayaç kategorisi | Sayaç adı |
+| Sayaç kategorisi | Sayaç Adı |
 | --- | --- |
 | .NET CLR belleği (hizmet başına) | İşlem Kimliği |
 | .NET CLR belleği (hizmet başına) | Toplam kaydedilmiş bayt sayısı |

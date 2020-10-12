@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
 ms.openlocfilehash: e0e7089e7c674f324c2c3d293661c518b41731b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84021866"
 ---
 # <a name="azure-sql-database-security-features"></a>Azure SQL veritabanı güvenlik özellikleri    
@@ -40,14 +40,14 @@ Ağ geçidi güvenlik duvarı, müşterilerin ayrıntılı IP adresi aralıklar�
 Müşteriler bir yönetim portalını kullanarak veya Azure SQL veritabanı yönetim REST API kullanarak program aracılığıyla güvenlik duvarı yapılandırması elde edebilir. Azure SQL veritabanı ağ geçidi güvenlik duvarı varsayılan olarak Azure SQL veritabanı 'na tüm müşteri TDS erişimini engeller. Müşteriler, Azure SQL veritabanı bağlantılarına kaynak ve hedef Internet adresleri, protokoller ve bağlantı noktası numaralarıyla izin vermek için erişim denetimi listelerini (ACL 'Ler) kullanarak erişimi yapılandırmalıdır.
 
 ### <a name="dosguard"></a>DoSGuard
-Hizmet reddi (DoS) saldırıları, DoSGuard adlı bir SQL veritabanı ağ geçidi hizmeti tarafından azaltılır. DoSGuard IP adreslerinden gelen başarısız oturum açma işlemlerini etkin bir şekilde izler. Belirli bir IP adresinden belirli bir süre içinde birden çok başarısız oturum açma işlemi varsa, IP adresinin önceden tanımlanmış bir dönem için hizmetteki kaynaklara erişimi engellenir.
+Hizmet reddi (DoS) saldırıları, DoSGuard adı verilen SQL Veritabanı ağ geçidi hizmeti tarafından azaltılır. DoSGuard, IP adreslerinden gelen başarısız oturum açma girişimlerini etkin bir şekilde izler. Belirli bir IP adresinden belirli bir süre içinde birden çok başarısız oturum açma işlemi varsa, IP adresinin önceden tanımlanmış bir dönem için hizmetteki kaynaklara erişimi engellenir.
 
 Ayrıca, Azure SQL veritabanı ağ geçidi şunları yapar:
 
 - TDS FIPS 140-2 tarafından veritabanı sunucularına bağlanırken doğrulanan şifreli bağlantıları uygulamaya yönelik güvenli kanal yetenek anlaşmaları.
 - İstemcilerden gelen bağlantıları kabul ederken durum bilgisi olan TDS paket incelemesi. Ağ Geçidi bağlantı bilgilerini doğrular ve TDS paketlerinde bağlantı dizesinde belirtilen veritabanı adına göre uygun fiziksel sunucuya geçirilir.
 
-Azure SQL veritabanı sunumunun ağ güvenliği için aşırı kullanılabilir ilke, yalnızca hizmetin çalışmasına izin vermek için gerekli olan bağlantı ve iletişime izin verdir. Diğer tüm bağlantı noktaları, protokoller ve bağlantılar varsayılan olarak engellenir. Sanal yerel alan ağları (VLAN 'Lar) ve ACL 'Ler, ağ iletişimini kaynak ve hedef ağlar, protokoller ve bağlantı noktası numaralarıyla kısıtlamak için kullanılır.
+Azure SQL Veritabanı teklifinin ağ güvenliği için kullanılan temel ilke, yalnızca hizmetin çalışması için gerekli olan bağlantı ve iletişime izin verilmesini sağlar. Diğer tüm bağlantı noktaları, protokoller ve bağlantılar varsayılan olarak engellenir. Sanal yerel alan ağları (VLAN 'Lar) ve ACL 'Ler, ağ iletişimini kaynak ve hedef ağlar, protokoller ve bağlantı noktası numaralarıyla kısıtlamak için kullanılır.
 
 Ağ tabanlı ACL 'Ler uygulamak için onaylanan mekanizmalar, yönlendiricilerde ve yük dengeleyiciler üzerinde ACL 'Ler içerir. Bu mekanizmalar Azure ağı, Konuk VM Güvenlik Duvarı ve müşteri tarafından yapılandırılan Azure SQL veritabanı ağ geçidi güvenlik kuralları tarafından yönetilir.
 
