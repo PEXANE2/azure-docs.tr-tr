@@ -10,15 +10,15 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: d876862d8f41ab8df646bef051629fd45c4d4601
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90941758"
 ---
 # <a name="view-logs-and-metrics-using-kibana-and-grafana"></a>Kibana ve Grafana kullanarak günlükleri ve ölçümleri görüntüleme
 
-Kibana ve Grafana Web panoları, Azure Arc etkin veri Hizmetleri tarafından kullanılan Kubernetes ad alanlarına öngörü ve açıklık getirmek için sağlanır.
+Kibana ve Grafana web panoları, Azure Arc özellikli veri hizmetleri tarafından kullanılan Kubernetes ad alanlarına içgörü ve netlik getirmek için sağlanır.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -64,7 +64,7 @@ Bunun bir Azure VM için nasıl yapılacağını gösteren bir örnek aşağıda
 
 Aşağıdaki adımlarda, kibana ve Grafana uç noktaları için NSG kuralının nasıl oluşturulacağı vurgulanacak:
 
-### <a name="find-the-name-of-the-nsg"></a>NSG 'nin adını bulma
+### <a name="find-the-name-of-the-nsg"></a>NSG'nin adını bulma
 
 ```console
 az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table

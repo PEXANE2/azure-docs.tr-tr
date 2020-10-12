@@ -14,10 +14,10 @@ ms.date: 02/19/2015
 ms.author: gwallace
 ms.custom: devx-track-python
 ms.openlocfilehash: ba93591ade730c4e9c9bdb6a42232e71e10d6469
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87850160"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Python 'da ses ve SMS özellikleri için Twilio kullanma
@@ -216,7 +216,7 @@ print(str(response))
 
 TwiML hakkında daha fazla bilgi için bkz [https://www.twilio.com/docs/api/twiml][twiml_reference] ..
 
-Python uygulamanızı TwiML yanıtları sağlamak üzere ayarladıktan sonra, yönteme geçirilen URL olarak uygulamanın URL 'sini kullanın `client.calls.create` . Örneğin, Azure 'da barındırılan bir hizmete dağıtılan **Mytwiml** adlı bir Web uygulamanız varsa, aşağıdaki örnekte gösterildiği gibi URL 'sini Web kancası olarak kullanabilirsiniz:
+Python uygulamanızı TwiML yanıtları sağlamak üzere ayarladıktan sonra, yönteme geçirilen URL olarak uygulamanın URL 'sini kullanın `client.calls.create`  . Örneğin, Azure 'da barındırılan bir hizmete dağıtılan **Mytwiml** adlı bir Web uygulamanız varsa, aşağıdaki örnekte gösterildiği gibi URL 'sini Web kancası olarak kullanabilirsiniz:
 
 ```python
 from twilio.rest import TwilioRestClient

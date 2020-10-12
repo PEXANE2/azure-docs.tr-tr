@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2020
 ms.author: radeltch
 ms.openlocfilehash: d522d66642abf55e478cea7579e36bdc64a8cf79
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87085172"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde NFS için yüksek kullanılabilirlik
@@ -216,7 +216,7 @@ Tüm gerekli kaynakları dağıtmak için GitHub 'daki hızlı başlangıç şab
 > Ortak IP adresleri olmayan VM 'Ler, iç (genel IP adresi olmayan) standart Azure yük dengeleyicisine yerleştirildiğinde, genel uç noktalara yönlendirmeye izin vermek için ek yapılandırma gerçekleştirilmediği takdirde giden internet bağlantısı olmaz. Giden bağlantıyı elde etme hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer kullanan sanal makineler Için genel uç nokta BAĞLANTıSı SAP yüksek kullanılabilirlik senaryolarında](./high-availability-guide-standard-load-balancer-outbound-connections.md).  
 
 > [!IMPORTANT]
-> Azure Load Balancer arkasına yerleştirilmiş Azure VM 'lerinde TCP zaman damgalarını etkinleştirmeyin. TCP zaman damgalarını etkinleştirmek, sistem durumu araştırmalarının başarısız olmasına neden olur. **Net. IPv4. tcp_timestamps** parametresini **0**olarak ayarlayın. Ayrıntılar için bkz. [Load Balancer sistem durumu araştırmaları](../../../load-balancer/load-balancer-custom-probe-overview.md).
+> Azure Load Balancer arkasına yerleştirilmiş Azure VM 'lerinde TCP zaman damgalarını etkinleştirmeyin. TCP zaman damgalarını etkinleştirmek, sistem durumu araştırmalarının başarısız olmasına neden olur. Parametre **net.ipv4.tcp_timestamps** **0**olarak ayarlayın. Ayrıntılar için bkz. [Load Balancer sistem durumu araştırmaları](../../../load-balancer/load-balancer-custom-probe-overview.md).
 
 ### <a name="create-pacemaker-cluster"></a>Pacemaker kümesi oluşturma
 
@@ -479,7 +479,7 @@ Bu NFS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [Azur
    > - SLES 15/15 SP1 için sürüm en az Resource-Agents-4.3.0184.6 ee15eb2-4.13.1 olmalıdır.  
    >
    > Değişikliğin kısa kapalı kalma süresinin gerekli olacağını unutmayın.  
-   > Mevcut pacemaker kümelerinde, yapılandırma zaten [Azure yük dengeleyici algılama sağlamlaştırma](https://www.suse.com/support/kb/doc/?id=7024128)bölümünde açıklandığı gibi socat kullanacak şekilde değiştirilmişse Azure-lb Resource Agent 'a hemen geçiş yapmak için bir gereksinim yoktur.
+   > Mevcut pacemaker kümelerinde, yapılandırma [azure Load-Balancer algılama sağlamlaştırma](https://www.suse.com/support/kb/doc/?id=7024128)bölümünde açıklandığı gibi socat kullanmak üzere zaten değiştirilmişse, Azure-lb Resource Agent 'a hemen geçiş yapma gereksinimi yoktur.
 
    <pre><code>sudo crm configure rsc_defaults resource-stickiness="200"
 

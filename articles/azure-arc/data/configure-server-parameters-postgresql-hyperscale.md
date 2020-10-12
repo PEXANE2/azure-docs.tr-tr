@@ -11,15 +11,15 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 4e8813647211e0adbfe43a45ae0d19dc12a4a165
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90941595"
 ---
-# <a name="set-the-database-engine-settings-for-azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc etkin PostgreSQL hiper ölçek için veritabanı altyapısı ayarlarını belirleme
+# <a name="set-the-database-engine-settings-for-azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc özellikli PostgreSQL Hiper Ölçek için veritabanı altyapısı ayarlarını belirleme
 
-Bu belgede, PostgreSQL hiper ölçek sunucu grubunuzun veritabanı altyapısı ayarlarını özel (varsayılan olmayan) değerlere ayarlama adımları açıklanmaktadır. Hangi veritabanı motoru parametrelerinin ayarlanabileceği ve varsayılan değerinin ne olduğu ile ilgili ayrıntılar için [buradaki](https://www.postgresql.org/docs/current/runtime-config.html)PostgreSQL belgelerine bakın.
+Bu belgede PostgreSQL Hiper Ölçek sunucu grubunuzun veritabanı altyapısı ayarlarını özel (varsayılan olmayan) değerlere ayarlama adımları açıklanır. Hangi veritabanı motoru parametrelerinin ayarlanabileceği ve varsayılan değerinin ne olduğu ile ilgili ayrıntılar için [buradaki](https://www.postgresql.org/docs/current/runtime-config.html)PostgreSQL belgelerine bakın.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -53,7 +53,7 @@ azdata arc postgres server edit -n <server group name>, [{--engine-settings, -e}
 azdata arc postgres server show -n <server group name>
 ```
 
-Örnek:
+Örneğin:
 
 ```console
 azdata arc postgres server show -n postgres01
@@ -86,7 +86,7 @@ Aşağıdaki adımları izleyin.
 azdata arc postgres server show -n <server group name>
 ```
 
-Örnek:
+Örneğin:
 
 ```console
 azdata arc postgres server show -n postgres01
@@ -115,13 +115,13 @@ Komutun genel biçimi:
 kubectl describe <kind of the custom resource> <server group name> -n <namespace name>
 ```
 
-Örnek:
+Örneğin:
 
 ```console
 kubectl describe postgresql-12 postgres01
 ```
 
-Altyapı ayarları için ayarlanmış özel değerler varsa, bu ayarlar döndürülür. Örnek:
+Altyapı ayarları için ayarlanmış özel değerler varsa, bu ayarlar döndürülür. Örneğin:
 
 ```console
 Engine:
@@ -150,7 +150,7 @@ Aşağıdaki komutlar, düzenleyici düğümünün ve PostgreSQL hiper ölçekle
 azdata arc server edit -n <server group name> -e <parameter name>=<parameter value>
 ```
 
-Örnek:
+Örneğin:
 
 ```console
 azdata arc postgres server edit -n postgres01 -e shared_buffers=8MB
@@ -162,7 +162,7 @@ azdata arc postgres server edit -n postgres01 -e shared_buffers=8MB
 azdata arc postgres server edit -n <server group name> -e '<parameter name>=<parameter value>, <parameter name>=<parameter value>,...'
 ```
 
-Örnek:
+Örneğin:
 
 ```console
 azdata arc postgres server edit -n postgres01 -e 'shared_buffers=8MB, max_connections=50'
@@ -172,7 +172,7 @@ azdata arc postgres server edit -n postgres01 -e 'shared_buffers=8MB, max_connec
 
 Bir parametreyi varsayılan değerine sıfırlamak için değeri bir değer belirtmeden ayarlayın. 
 
-Örnek:
+Örneğin:
 
 ```console
 azdata arc postgres server edit -n postgres01 -e shared_buffers=
@@ -184,7 +184,7 @@ azdata arc postgres server edit -n postgres01 -e shared_buffers=
 azdata arc postgres server edit -n <server group name> -e '' -re
 ```
 
-Örnek:
+Örneğin:
 
 ```console
 azdata arc postgres server edit -n postgres01 -e '' -re
@@ -198,7 +198,7 @@ azdata arc postgres server edit -n postgres01 -e '' -re
 azdata arc postgres server edit -n <server group name> -e '<parameter name>="<parameter value>"'
 ```
 
-Örnek:
+Örneğin:
 
 ```console
 azdata arc postgres server edit -n postgres01 -e 'custom_variable_classes = "plpgsql,plperl"'
@@ -208,7 +208,7 @@ azdata arc postgres server edit -n postgres01 -e 'custom_variable_classes = "plp
 
 Ortam değişkeni, ayarlamadan önce çözümlenmemesi için "' '" içine sarmalanmış olmalıdır.
 
-Örnek: 
+Örneğin: 
 
 ```console
 azdata arc postgres server edit -n postgres01 -e 'search_path = "$user"'

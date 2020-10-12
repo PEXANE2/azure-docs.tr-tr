@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 30c2da4ac750375c66b92cdca552e1a51a8dbc40
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90942015"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı sınırları-esnek sunucu
@@ -75,7 +75,7 @@ Bir PostgreSQL bağlantısı bile boşta, yaklaşık 10 MB bellek içerebilir. A
 
 ### <a name="high-availability"></a>Yüksek kullanılabilirlik
 
-- Bölge yedekli HA Şu anda Burstable sunucular için desteklenmiyor.
+- Zone-Redundant HA Şu anda Burstable sunucular için desteklenmiyor.
 - Sunucunuz HA bekleme moduna çağrıldığında veritabanı sunucusu IP adresi değişir. Sunucu IP adresi yerine DNS kaydını kullandığınızdan emin olun.
 
 ### <a name="availability-zones"></a>Kullanılabilirlik alanları

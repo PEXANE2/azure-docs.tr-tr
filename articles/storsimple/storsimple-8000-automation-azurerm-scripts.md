@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 10/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 4a53dd803b22899b7dd15db0aa1ff411641a11dc
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88183267"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>StorSimple cihazlarını yönetmek için Azure Resource Manager SDK tabanlı betikleri kullanma
@@ -49,7 +49,7 @@ Aşağıdaki örnek betikler çeşitli StorSimple işlerini otomatikleştirmek i
 
 Bu bölüm örnek bir betiği alır ve betiği çalıştırmak için gereken çeşitli adımlara ilişkin ayrıntılar sağlar.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, şunları kullandığınızdan emin olun:
 

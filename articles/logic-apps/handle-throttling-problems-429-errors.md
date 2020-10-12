@@ -7,10 +7,10 @@ ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.openlocfilehash: 495847d31682aff64fed3c81b1d5d68cf67dfd38
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87086450"
 ---
 # <a name="handle-throttling-problems-429---too-many-requests-errors-in-azure-logic-apps"></a>Azure Logic Apps kısıtlama sorunlarını giderme (429-"çok fazla istek" hata)
@@ -22,7 +22,7 @@ ms.locfileid: "87086450"
 Mantıksal uygulamanızın deneyimolabileceği bazı yaygın azaltma türleri şunlardır:
 
 * [Mantıksal uygulama](#logic-app-throttling)
-* [Bağlayıcı](#connector-throttling)
+* [Bağlayıcısı](#connector-throttling)
 * [Hedef hizmet veya sistem](#destination-throttling)
 
 <a name="logic-app-throttling"></a>
@@ -164,7 +164,7 @@ Bu düzeyde azaltmayı işlemek için şu seçeneklere sahipsiniz:
 
 * Yoklama sürümleri yerine Tetikleyiciler ve eylemler için Web kancası sürümlerini kullanın.
 
-  Neden mi? Bir yoklama tetikleyicisi, hedef hizmeti veya sistemi belirli aralıklarla denetlemeye devam eder. Her saniye gibi çok sık kullanılan bir Aralık, kısıtlama sorunları oluşturabilir. Ancak, [http Web kancası](../connectors/connectors-native-webhook.md)gibi bir Web kancası tetikleyicisi veya eylemi, yalnızca hedef hizmet veya sisteme tek bir çağrı oluşturur; Bu, abonelik zamanında gerçekleşir ve hedefin yalnızca bir olay gerçekleştiğinde tetikleyiciyi veya eyleme bildirimde bulunduğunu bildirir. Bu şekilde, tetikleyici veya eylemin hedefi sürekli denetlemek zorunda değildir.
+  Neden? Bir yoklama tetikleyicisi, hedef hizmeti veya sistemi belirli aralıklarla denetlemeye devam eder. Her saniye gibi çok sık kullanılan bir Aralık, kısıtlama sorunları oluşturabilir. Ancak, [http Web kancası](../connectors/connectors-native-webhook.md)gibi bir Web kancası tetikleyicisi veya eylemi, yalnızca hedef hizmet veya sisteme tek bir çağrı oluşturur; Bu, abonelik zamanında gerçekleşir ve hedefin yalnızca bir olay gerçekleştiğinde tetikleyiciyi veya eyleme bildirimde bulunduğunu bildirir. Bu şekilde, tetikleyici veya eylemin hedefi sürekli denetlemek zorunda değildir.
   
   Bu nedenle, hedef hizmet veya sistem Web kancalarını destekliyorsa veya Web kancası sürümüne sahip bir bağlayıcı sağlıyorsa, bu seçenek yoklama sürümünü kullanmaktan daha iyidir. Web kancası Tetikleyicileri ve eylemlerini belirlemek için, bu `ApiConnectionWebhook` tür olduğunu veya bir yinelenme belirtmemenizi gerektirdiklerini doğrulayın. Daha fazla bilgi için bkz. [Apiconnectionweb kancası tetikleyicisi](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) ve [apiconnectionweb kancası eylemi](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-action).
 

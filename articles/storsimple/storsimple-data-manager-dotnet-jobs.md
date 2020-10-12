@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: e34701640de24a4c3c13f8d10073b4392af2f28a
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88183658"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>Veri dönüşümü başlatmak için .NET SDK'sını kullanma
@@ -26,7 +26,7 @@ Bir veri dönüştürme işini iki şekilde başlatabilirsiniz:
  
   Bu makalede, bir veri dönüştürme işi başlatmak ve sonra tamamlamak üzere izlemek için örnek bir .NET konsol uygulaması oluşturma işlemi açıklanır. Otomasyon aracılığıyla veri dönüştürmeyi başlatma hakkında daha fazla bilgi edinmek için [Azure Otomasyonu runbook 'U kullanarak veri dönüştürme işlerini tetiklemeniz](storsimple-data-manager-job-using-automation.md)bölümüne gidin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, şunları kullandığınızdan emin olun:
 *   Çalıştıran bir bilgisayar:
@@ -36,7 +36,7 @@ Başlamadan önce, şunları kullandığınızdan emin olun:
     - Azure PowerShell. [Azure PowerShell 'ı indirin](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
 *   Kaynak grubu içinde StorSimple Veri Yöneticisi doğru şekilde yapılandırılmış bir iş tanımı.
 *   Tüm gerekli dll 'ler. Bu dll 'leri [GitHub deposundan](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls)indirin.
-*   [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1)GitHub deposundan betiği.
+*   [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1) GitHub deposundan betiği.
 
 ## <a name="step-by-step-procedure"></a>Adım adım yordam
 

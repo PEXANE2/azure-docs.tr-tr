@@ -7,10 +7,10 @@ ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: devx-track-python
 ms.openlocfilehash: abfd5e104bd4854781a0d3c9d08544506279518a
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87850092"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>OpenCensus Python ile bağımlılıkları izleme
@@ -172,7 +172,7 @@ config_integration.trace_integrations(['sqlalchemy'])
 
 * [Uygulama Eşlemesi](./app-map.md)
 * [Kullanılabilirlik](./monitor-web-app-availability.md)
-* [Search](./diagnostic-search.md)
+* [Ara](./diagnostic-search.md)
 * [Log (Analytics) sorgusu](../log-query/log-query-overview.md)
 * [İşlem tanılamaları](./transaction-diagnostics.md)
 

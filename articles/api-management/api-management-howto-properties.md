@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
 ms.openlocfilehash: 3f317276ae92e6121d519553b7883677dab89705
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87852200"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Azure API Management ilkelerinde adlandırılmış değerleri kullanma
@@ -36,7 +36,7 @@ Her bir API Management hizmet örneği, hizmet örneği için genel olan adland�
 
 Adlandırılmış değerler, sabit dizeler ve [ilke ifadeleri](./api-management-policy-expressions.md)içerebilir. Örneğin, değeri `Expression` geçerli tarih ve saati içeren bir dize döndüren bir ilke deyimidir. Adlandırılmış değer `Credential` gizli olarak işaretlenir, bu nedenle değeri varsayılan olarak görüntülenmez.
 
-| Ad       | Değer                      | Gizli dizi | Etiketler          |
+| Name       | Değer                      | Gizli dizi | Etiketler          |
 | ---------- | -------------------------- | ------ | ------------- |
 | Değer      | 42                         | Yanlış  | önemli sayılar |
 | Kimlik Bilgisi | ••••••••••••••••••••••     | Doğru   | güvenlik      |
@@ -84,7 +84,7 @@ Bir ilkede adlandırılmış bir değer kullanmak için, adını `{{ContosoHeade
 
 Bu örnekte, `ContosoHeader` bir ilkedeki üst bilgi adı olarak kullanılır `set-header` ve bu `ContosoHeaderValue` üstbilginin değeri olarak kullanılır. Bu ilke bir istek veya API Management ağ geçidine yanıt sırasında değerlendirildiğinde `{{ContosoHeader}}` ve `{{ContosoHeaderValue}}` ilgili değerleriyle değiştirilmiştir.
 
-Adlandırılmış değerler, önceki örnekte gösterildiği gibi, tüm öznitelik veya öğe değerleri olarak kullanılabilir, ancak aşağıdaki örnekte gösterildiği gibi, değişmez değer metin ifadesinin bir bölümüne eklenebilir veya birleştirilebilir:`<set-header name = "CustomHeader{{ContosoHeader}}" ...>`
+Adlandırılmış değerler, önceki örnekte gösterildiği gibi, tüm öznitelik veya öğe değerleri olarak kullanılabilir, ancak aşağıdaki örnekte gösterildiği gibi, değişmez değer metin ifadesinin bir bölümüne eklenebilir veya birleştirilebilir: `<set-header name = "CustomHeader{{ContosoHeader}}" ...>`
 
 Adlandırılmış değerler, ilke ifadeleri de içerebilir. Aşağıdaki örnekte, `ExpressionProperty` kullanılır.
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
 ms.openlocfilehash: 83ff710804b43837657ea0da7c8f44c245017c7e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90941926"
 ---
 # <a name="how-to-onboard-your-metric-data-to-metrics-advisor"></a>Nasıl yapılır: ölçüm verileri ölçüm Danışmanı 'na ekleme
@@ -74,9 +74,9 @@ Bir veri noktasının zaman damgası atlanırsa, ölçüm Danışmanı veri nokt
 
 |Seçim  |Açıklama  |Notlar  |
 |---------|---------|---------|
-| **Görünen Ad** | Özgün sütun adı yerine çalışma alanınızda görüntülenecek ad. | |
+| **Görünen ad** | Özgün sütun adı yerine çalışma alanınızda görüntülenecek ad. | |
 |**Zaman damgası**     | Bir veri noktasının zaman damgası. Atlanırsa, ölçüm Danışmanı veri noktasının yerine kullanıldığı zaman damgasını kullanır. Her veri akışı için zaman damgası olarak en fazla bir sütun belirtebilirsiniz.        | İsteğe bağlı. En fazla bir sütun ile belirtilmelidir. Bir **sütunu alırsanız zaman damgası hatası olarak belirtilemez** , yinelenen zaman damgaları için sorgunuzu veya veri kaynağınızı denetleyin.      |
-|**Measure (Ölçü)**      |  Veri akışındaki sayısal değerler. Her veri akışı için birden çok ölçü belirtebilirsiniz, ancak en az bir sütun ölçü olarak seçilmelidir.        | En az bir sütunla belirtilmelidir.        |
+|**Measure**     |  Veri akışındaki sayısal değerler. Her veri akışı için birden çok ölçü belirtebilirsiniz, ancak en az bir sütun ölçü olarak seçilmelidir.        | En az bir sütunla belirtilmelidir.        |
 |**Boyut**     | Kategorik değerler. Farklı değerlerin bir birleşimi belirli bir tek boyutlu zaman serisini tanımlar, örneğin: ülke, dil, kiracı. Boyut olarak sıfır veya daha fazla sütun seçebilirsiniz. Note: dize olmayan bir sütunu boyut olarak seçerken dikkatli olun. | İsteğe bağlı.        |
 |**Yoksay**     | Seçili sütunu yoksayın.        | İsteğe bağlı. Aşağıdaki metni inceleyin.       |
 
@@ -99,7 +99,7 @@ Sütunları yoksaymak istiyorsanız, sorgunuzu veya veri kaynağınızı bu süt
 
 Ölçüm Danışmanı, alma sırasında her boyutta otomatik olarak toplama işlemi gerçekleştirebilir (örneğin SUM, MAX, MIN), ardından kök örnek olay çözümlemede ve diğer tanılama özelliklerinde kullanılacak bir hiyerarşi oluşturur. 
 
-Aşağıdaki senaryoları inceleyin:
+Aşağıdaki senaryoları göz önünde bulundurun:
 
 * *Verilerim için toplama analizini içermesi gerekmiyor.*
 
@@ -123,7 +123,7 @@ Aşağıdaki senaryoları inceleyin:
     Örneğin, boyut (ülke, bölge) ile satış ölçümlerini temsil eden bir zaman serisi kümesi olduğunu varsayalım. Belirli bir zaman damgası için aşağıdaki gibi görünebilir:
 
 
-    | Ülke       | Region           | Sales |
+    | Ülke       | Bölge           | Sales |
     |---------------|------------------|-------|
     | Kanada        | Alberta          | 100   |
     | Kanada        | British Columbia | 500   |
@@ -132,7 +132,7 @@ Aşağıdaki senaryoları inceleyin:
 
     *Sum*Ile otomatik toplamayı etkinleştirdikten sonra, ölçüm Danışmanı boyut birleşimlerini hesaplar ve veri alımı sırasında ölçümleri toplayın. Sonuç şu olabilir:
 
-    | Ülke       | Region           | Sales |
+    | Ülke       | Bölge           | Sales |
     | ------------ | --------------- | ---- |
     | Kanada        | Alberta          | 100   |
     | NULL          | Alberta          | 100   |
@@ -188,7 +188,7 @@ Alma hatası ayrıntılarını denetlemek için:
 2. **Durum** ' a tıkladıktan sonra **başarısız** veya **hata**' ı seçin.
 3. Başarısız bir alımı üzerine gelin ve görüntülenen Ayrıntılar iletisini görüntüleyin.
 
-:::image type="content" source="../media/datafeeds/check-failed-ingestion.png" alt-text="Başarısız alımı denetle":::
+:::image type="content" source="../media/datafeeds/check-failed-ingestion.png" alt-text="Alma ilerleme çubuğu":::
 
 *Hatalı* durum, bu veri kaynağı için alma işleminin daha sonra yeniden deneneceği anlamına gelir.
 Bir *hata* durumu, ölçüm Danışmanı 'nın veri kaynağı için yeniden denenmeyeceğini gösterir. Verileri yeniden yüklemek için el ile doldurma/yeniden yükleme tetiklemeniz gerekir.

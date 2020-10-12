@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines
 author: ayshakeen
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
 ms.openlocfilehash: 4f6a6dd28662c98c89dad39da3fd5c967f227dc3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87084067"
 ---
 Azure Işlem, belirli bir donanım türüne yalıtılmış ve tek bir müşteriye adanmış sanal makine boyutları sunar. Yalıtılmış boyutlar canlı ve belirli donanım nesli üzerinde çalışır ve donanım oluşturma kullanımdan kaldırıldığında kullanım dışı kalır.
@@ -41,7 +41,7 @@ Yalıtılmış VM boyutları, donanım bağlantılı boyutlardır, Azure, boyutl
 | Standard_DS15_v2<sup>1</sup> | 15 Mayıs 2020 |
 | Standard_D15_v2<sup>1</sup>  | 15 Mayıs 2020 |
 
-<sup>1</sup> Standard_DS15_v2 ve Standard_D15_v2 yalıtımı devre dışı bırakma programı hakkında ayrıntılar için bkz. SSS
+<sup>1</sup>  Standard_DS15_v2 ve Standard_D15_v2 yalıtımı devre dışı bırakma programı hakkında ayrıntılar için bkz. SSS
 
 
 ## <a name="faq"></a>SSS

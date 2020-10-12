@@ -7,10 +7,10 @@ ms.date: 07/29/2020
 ms.author: hazeng
 ms.custom: devx-track-python
 ms.openlocfilehash: 9b9f5d389eda5d74e7e78cfcfa9a46fba7276cbd
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87846046"
 ---
 # <a name="troubleshoot-python-errors-in-azure-functions"></a>Azure Işlevlerinde Python hatalarında sorun giderme
@@ -165,9 +165,9 @@ X64 işletim sisteminde çalıştırıyorsanız, lütfen Python 3,6, 3,7 veya 3,
 
 Aşağıdaki komutlarla Python yorumlayıcı bit durumunu kontrol edebilirsiniz:
 
-PowerShell 'de Windows 'ta:`py -c 'import platform; print(platform.architecture()[0])'`
+PowerShell 'de Windows 'ta: `py -c 'import platform; print(platform.architecture()[0])'`
 
-UNIX benzeri kabukta:`python3 -c 'import platform; print(platform.architecture()[0])'`
+UNIX benzeri kabukta: `python3 -c 'import platform; print(platform.architecture()[0])'`
 
 Python yorumlayıcı bit kullanımı ve işletim sistemi mimarisi arasında uyuşmazlık varsa, lütfen [Python Software Foundation](https://python.org/downloads/release)'dan uygun bir Python yorumlayıcı indirin.
 

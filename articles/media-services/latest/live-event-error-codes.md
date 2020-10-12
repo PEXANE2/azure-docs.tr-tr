@@ -14,10 +14,10 @@ ms.topic: error-reference
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 13277c3d46d5b68aa5705699f45a2bf9e97a78d8
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89291549"
 ---
 # <a name="media-services-live-event-error-codes"></a>Media Services canlı olay hata kodları
@@ -30,7 +30,7 @@ Bu bölümdeki tablolarda, [canlı olay](live-events-outputs-concept.md) hata ko
 
 Canlı bir olay için [Event Grid](../../event-grid/index.yml) olaylarına abone olduğunuzda, [Liveeventconnectionreddedildi](media-services-event-schemas.md#liveeventconnectionrejected)  olayından aşağıdaki hatalardan birini görebilirsiniz.
 
-| Sonuç kodu | Description |
+| Sonuç kodu | Açıklama |
 | ----------- | ----------- |
 | MPE_RTMP_APPID_AUTH_FAILURE | Hatalı alma URL 'SI |
 | MPE_INGEST_ENCODER_CONNECTION_DENIED | IP izin verilenler listesinde kodlayıcı IP 'si yok |
@@ -48,7 +48,7 @@ Canlı bir olay için [Event Grid](../../event-grid/index.yml) olaylarına abone
 
 [Liveeventencoderconnected](media-services-event-schemas.md#liveeventencoderdisconnected) olayında aşağıdaki hatalardan birini görebilirsiniz.
 
-|Sonuç kodu|Description|
+|Sonuç kodu|Açıklama|
 |---|---|
 |MPE_RTMP_SESSION_IDLE_TIMEOUT|RTMP oturumu izin verilen süre sınırı boyunca boşta kaldıktan sonra zaman aşımına uğradı.|
 |MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID|Video veya ses FLVTag zaman damgası, RTMP kodlayıcısından geçersizdir.|

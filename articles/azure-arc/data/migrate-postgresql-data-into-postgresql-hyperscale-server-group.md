@@ -11,10 +11,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 521fd61f18d6673e21c23dbca4cfc12d2ee4bf0b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90941763"
 ---
 # <a name="migrate-postgresql-database-to-azure-arc-enabled-postgresql-hyperscale-server-group"></a>PostgreSQL veritabanını Azure Arc etkin PostgreSQL hiper ölçek sunucu grubuna geçirme
@@ -36,7 +36,7 @@ Yapmanız gerekenler:
 - sunucu parametrelerini sıfırlayın
 - güvenlik bağlamlarını sıfırlayın: kullanıcıları, rolleri ve sıfırlama izinlerini yeniden oluşturun...
 
-Bu yedekleme/geri yükleme işlemini yapmak için, Postgres için yedekleme/geri yükleme yapabilen herhangi bir aracı kullanabilirsiniz. Örnek:
+Bu yedekleme/geri yükleme işlemini yapmak için, Postgres için yedekleme/geri yükleme yapabilen herhangi bir aracı kullanabilirsiniz. Örneğin:
 - Azure Data Studio ve Postgres uzantısı
 - `pgcli`
 - `pgAdmin`
@@ -53,20 +53,20 @@ Aşağıdaki kurulumu göz önünde bulundurun:
 
 - **Hedefine**  
     Azure Arc ortamında çalışan ve postgres01 adlı bir Postgres sunucusu. 12. sürümdür. Standart Postgres veritabanı dışında hiçbir veritabanı yoktur.  
-    :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination.jpg" alt-text="Geçiş hedefi":::
+    :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination.jpg" alt-text="geçiş kaynağı":::
 
 
 ### <a name="take-a-backup-of-the-source-database-on-premises"></a>Kaynak veritabanının bir yedeğini şirket içinde al
 
-:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup.jpg" alt-text="Geçiş-kaynak-yedekleme":::
+:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup.jpg" alt-text="geçiş kaynağı":::
 
 Yapılandırın:
 1. Bu dosyaya bir dosya adı verin: **Mysourcebackup**
 2. Biçimi **özel** 
- :::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup2.jpg" alt-text="geçiş-kaynak-yedekleme-yapılandırma"::: olarak ayarlayın
+ :::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup2.jpg" alt-text="geçiş kaynağı"::: olarak ayarlayın
 
 Yedekleme başarıyla tamamlandı:  
-:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup3.jpg" alt-text="Geçiş-kaynak-Yedekleme-tamamlandı":::
+:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup3.jpg" alt-text="geçiş kaynağı":::
 
 ### <a name="create-an-empty-database-on-the-destination-system-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc etkin PostgreSQL hiper ölçek sunucu grubundaki hedef sistemde boş bir veritabanı oluşturma
 
@@ -98,17 +98,17 @@ Hedef veritabanını **RESTORED_MyOnPremPostgresDB** adını verlim
 :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbcreate.jpg" alt-text="Geçir-hedef-DB-oluştur"lightbox="media/postgres-hyperscale/migrate-pg-destination-dbcreate.jpg":::
 
 ### <a name="restore-the-database-in-your-arc-setup"></a>Yay kuruluminizdeki veritabanını geri yükleme
-:::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore.jpg" alt-text="Migratre-DB-geri yükleme":::
+:::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore.jpg" alt-text="geçiş kaynağı":::
 
 Geri yüklemeyi yapılandırın:
 1. Geri yüklenecek yedeği içeren dosyanın üzerine gelin: **Mysourcebackup**
 2. Biçimi **Custom veya tar** 
-    :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore2.jpg" alt-text="Migrate-DB-restore-configure"::: olarak ayarlayın
+    :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore2.jpg" alt-text="geçiş kaynağı"::: olarak ayarlayın
 
 3. **Geri yükle**' ye tıklayın.  
 
    Geri yükleme başarılı.  
-   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore3.jpg" alt-text="Geçiş-DB-geri yükleme-tamamlandı":::
+   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore3.jpg" alt-text="geçiş kaynağı":::
 
 ### <a name="verify-that-the-database-was-successfully-restored-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc etkin PostgreSQL hiper ölçek sunucu grubuna veritabanının başarıyla geri yüklendiğini doğrulama
 
@@ -118,20 +118,7 @@ Aşağıdaki yöntemlerden birini kullanın:
 
 Azure Arc kuruluminizde barındırılan Postgres örneğini genişletin. Tabloyu, geri yüklediğiniz veritabanında görürsünüz ve verileri seçtiğinizde şirket içi örnekte olduğu gibi aynı satırı gösterir:.
 
-   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestoreverif.jpg" alt-text="Geçiş-DB-geri yükleme-doğrulama":::
-
-**`psql`Azure Arc kurulumlarınızın içinden:**  
-
-Arc kurulumlarınızın içinde, `psql` Postgres örneğinize bağlanmak için kullanabilirsiniz, veritabanı bağlamını verileri olarak ayarlayabilir `RESTORED_MyOnPremPostgresDB` ve sorgular:
-
-1. Bağlantı dizinizden yardım almak için uç noktaları listeleyin `psql` :
-
-   ```console
-   azdata arc postgres endpoint list -n postgres01
-   [
-     {
-       "Description": "PostgreSQL Instance",
-       "Endpoint": "postgresql://postgres:<replace with password>@12.345.123.456:1234"
+   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestoreverif.jpg" alt-text="geçiş kaynağı"
      },
      {
        "Description": "Log Search Dashboard",
@@ -194,4 +181,4 @@ Arc kurulumlarınızın içinde, `psql` Postgres örneğinize bağlanmak için k
 
 > * Bu belgelerde, **Azure Portal oturum açma**bölümlerini atlayın ve **Postgres-hyperscale Için bir Azure veritabanı oluşturun (Citus)**. Azure Arc dağıtımınızda kalan adımları uygulayın. Bu bölümler, Azure bulutunda PaaS hizmeti olarak sunulan PostgreSQL için Azure veritabanı 'na (Citus) özgüdür, ancak belgelerin diğer kısımları doğrudan Azure Arc etkin PostgreSQL hiper ölçeklendirmenize uygulanabilir.
 
-- [PostgreSQL için Azure veritabanı hiper ölçek sunucu grubu ölçeğini genişletme](scale-out-postgresql-hyperscale-server-group.md)
+- [PostgreSQL için Azure Veritabanı Hiper Ölçek sunucu grubunuzun ölçeğini genişletme](scale-out-postgresql-hyperscale-server-group.md)

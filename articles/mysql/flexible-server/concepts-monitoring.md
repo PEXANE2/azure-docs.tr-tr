@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
 ms.openlocfilehash: f3a58a6766c42385dd6611c2014ba36fd1078710
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90941630"
 ---
 # <a name="monitor-azure-database-for-mysql-flexible-servers-with-built-in-metrics"></a>Yerleşik ölçümler ile MySQL için Azure veritabanı esnek sunucularını izleme
@@ -37,16 +37,16 @@ MySQL için Azure veritabanı 'nda bu ölçümler mevcuttur:
 |Konak ağı |network_bytes_ingress|Bayt|Hem müşteri veritabanından gelen trafik hem de çoğaltma, izleme, Günlükler gibi Azure MySQL özellikleri dahil olmak üzere, sunucudaki gelen ağ trafiği.|
 |Ana bilgisayar Ağdan giden|network_bytes_egress|Bayt|Hem müşteri veritabanından gelen trafik hem de çoğaltma, izleme, Günlükler vb. gibi Azure MySQL özellikleri dahil olmak üzere, sunucudaki giden ağ trafiği.|
 |Çoğaltma gecikmesi|replication_lag|Saniye|Son yeniden yürütülmüş işlemden bu yana geçen süre. Bu ölçüm yalnızca çoğaltma sunucuları için kullanılabilir.|
-|Etkin Bağlantılar|active_connection|Count|Sunucuya etkin bağlantı sayısı.|
+|Etkin Bağlantılar|active_connection|Sayı|Sunucuya etkin bağlantı sayısı.|
 |Kullanılan yedekleme depolama alanı|backup_storage_used|Bayt|Kullanılan yedekleme depolama alanı miktarı.|
 |GÇ yüzdesi|io_consumption_percent|Yüzde|Kullanımdaki GÇ yüzdesi.|
 |Ana bilgisayar belleği yüzdesi|memory_percent|Yüzde|Hem müşteri iş yüklerinden hem de Azure MySQL işlemlerinden bellek kullanımı da dahil olmak üzere, sunucuda kullanılan belleğin yüzdesi|
 |Depolama sınırı|storage_limit|Bayt|Bu sunucu için en fazla depolama alanı.|
 |Depolama alanı yüzdesi|storage_percent|Yüzde|Sunucunun en yüksek sınırının dışında kullanılan depolama alanı yüzdesi.|
 |Kullanılan depolama alanı|storage_used|Bayt|Kullanımdaki depolama miktarı. Hizmet tarafından kullanılan depolama alanı, veritabanı dosyalarını, işlem günlüklerini ve sunucu günlüklerini içerebilir.|
-|Toplam bağlantı sayısı|total_connections|Count|Sunucuya toplam bağlantı sayısı|
-|Durdurulan Bağlantılar|aborted_connections|Count|MySQL 'e bağlanmak için başarısız girişim sayısı, örneğin hatalı kimlik bilgileri nedeniyle bağlantı başarısız oldu.|
-|Sorgular|lardır|Count|Saniye başına sorgu sayısı|
+|Toplam bağlantı sayısı|total_connections|Sayı|Sunucuya toplam bağlantı sayısı|
+|Durdurulan Bağlantılar|aborted_connections|Sayı|MySQL 'e bağlanmak için başarısız girişim sayısı, örneğin hatalı kimlik bilgileri nedeniyle bağlantı başarısız oldu.|
+|Sorgular|lardır|Sayı|Saniye başına sorgu sayısı|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Bir ölçüm üzerinde uyarı oluşturma konusunda rehberlik için [uyarıları ayarlama](./how-to-alert-on-metric.md) bölümüne bakın.

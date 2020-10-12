@@ -9,10 +9,10 @@ ms.author: cavoeg
 author: CaitlinV39
 ms.date: 11/22/2019
 ms.openlocfilehash: 5de1d99442f307fc7850114915851f994258b537
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87845910"
 ---
 # <a name="additional-settings-for-azure-api-for-fhir"></a>FHıR için Azure API için ek ayarlar
@@ -40,7 +40,7 @@ Hizmetinizi izleyebilmek ve uyumluluk amaçlarıyla doğru şekilde raporlanmas�
 ## <a name="use-custom-headers-to-add-data-to-audit-logs"></a>Denetim günlüklerine veri eklemek için özel üst bilgileri kullanma
 FHıR için Azure API 'sinde, arama sisteminden gelen günlüklere ek bilgi eklemek isteyebilirsiniz. Bu bilgileri dahil etmek için özel üst bilgileri kullanabilirsiniz.
 
-Çeşitli bilgi türlerini yakalamak için özel üst bilgileri kullanabilirsiniz. Örnek:
+Çeşitli bilgi türlerini yakalamak için özel üst bilgileri kullanabilirsiniz. Örneğin:
 
 * Kimlik veya yetkilendirme bilgileri
 * Çağıranın kaynağı

@@ -9,10 +9,10 @@ ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: f3cc8495f673c8b428aa9e6ace2747a70c5b0847
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88556360"
 ---
 # <a name="msix-app-attach-glossary"></a>MSIX uygulama iliştirme sözlüğü
@@ -106,7 +106,7 @@ Kaldırma işlemi, işletim sistemini, şu anda çalışmayan bir MALTıYA da uy
 
 . CıM, bileşik görüntü dosyaları sistemi (CimFS) ile ilişkili yeni bir dosya uzantısıdır. CıM dosyalarının bağlanması ve kaldırılması, VHD dosyalarının daha hızlıdır. CıM aynı zamanda VHD 'den daha az CPU ve bellek kullanır.
 
-Aşağıdaki tablo, VHD ve CimFS arasında bir performans karşılaştırmasına sahiptir. Bu sayılar, bir DSv4 makinesinde çalıştırılan her biçimdeki 800 MB dosya içeren bir test çalıştırmasının sonucudur.
+Aşağıdaki tablo, VHD ve CimFS arasında bir performans karşılaştırmasına sahiptir. Bu sayılar, bir DSv4 makinesinde çalıştırılan her biçimdeki 500 300 MB dosya içeren bir test çalıştırmasının sonucudur.
 
 |  Özellikler                          | VHD                    | CimFS   |
 |---------------------------------|--------------------------|-----------|

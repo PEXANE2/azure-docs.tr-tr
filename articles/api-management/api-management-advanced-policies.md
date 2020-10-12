@@ -13,17 +13,17 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: 6ac3457a22128f313084ab070a5a61c2d26d4b85
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87851690"
 ---
 # <a name="api-management-advanced-policies"></a>API Management gelişmiş ilkeleri
 
 Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. İlke ekleme ve yapılandırma hakkında daha fazla bilgi için bkz. [API Management ilkeleri](https://go.microsoft.com/fwlink/?LinkID=398186).
 
-## <a name="advanced-policies"></a><a name="AdvancedPolicies"></a>Gelişmiş İlkeler
+## <a name="advanced-policies"></a><a name="AdvancedPolicies"></a> Gelişmiş İlkeler
 
 -   [Denetim akışı](api-management-advanced-policies.md#choose) -koşullu [ifadeler](api-management-policy-expressions.md)değerlendirmesinin sonuçlarına göre koşullu olarak ilke deyimlerini uygular.
 -   [İlet isteği](#ForwardRequest) -isteği arka uç hizmetine iletir.
@@ -41,11 +41,11 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 -   [Trace](#Trace) - [API denetçisi](./api-management-howto-api-inspector.md) çıktısına, Application Insights Telemetriler ve kaynak günlüklerine özel izlemeler ekler.
 -   [Bekleme](#Wait) -devam etmeden önce, kapalı [gönderme isteği](api-management-advanced-policies.md#SendRequest), [önbellekten değer alma](api-management-caching-policies.md#GetFromCacheByKey)veya [Denetim akışı](api-management-advanced-policies.md#choose) ilkelerinin tamamlanmasını bekler.
 
-## <a name="control-flow"></a><a name="choose"></a>Denetim akışı
+## <a name="control-flow"></a><a name="choose"></a> Denetim akışı
 
 `choose`İlke, bir bir if-then-else veya bir programlama dilinde Switch yapısına benzer şekilde, Boolean ifadelerin değerlendirilme sonucuna bağlı olarak, kapalı ilke deyimlerini uygular.
 
-### <a name="policy-statement"></a><a name="ChoosePolicyStatement"></a>İlke ekstresi
+### <a name="policy-statement"></a><a name="ChoosePolicyStatement"></a> İlke ekstresi
 
 ```xml
 <choose>
@@ -65,7 +65,7 @@ Denetim akışı ilkesi en az bir `<when/>` öğe içermelidir. `<otherwise/>`Ö
 
 ### <a name="examples"></a>Örnekler
 
-#### <a name="example"></a><a name="ChooseExample"></a>Örneğinde
+#### <a name="example"></a><a name="ChooseExample"></a> Örneğinde
 
 Aşağıdaki örnek, bir [set değişkenli](api-management-advanced-policies.md#set-variable) ilke ve iki denetim akışı ilkesini gösterir.
 
@@ -138,7 +138,7 @@ Bu örnek, ürünü kullanırken arka uç hizmetinden alınan yanıttan veri ö�
 | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- | -------- |
 | Condition = "Boole ifadesi &#124; Boolean sabiti" | İçeren ilke deyimi değerlendirildiğinde değerlendirilen Boole ifadesi veya sabiti `when` . | Evet      |
 
-### <a name="usage"></a><a name="ChooseUsage"></a>Kullanımıyla
+### <a name="usage"></a><a name="ChooseUsage"></a> Kullanımıyla
 
 Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
@@ -146,7 +146,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#s
 
 -   **İlke kapsamları:** tüm kapsamlar
 
-## <a name="forward-request"></a><a name="ForwardRequest"></a>İletme isteği
+## <a name="forward-request"></a><a name="ForwardRequest"></a> İletme isteği
 
 `forward-request`İlke, gelen isteği istek [bağlamında](api-management-policy-expressions.md#ContextVariables)belirtilen arka uç hizmetine iletir. Arka uç hizmeti URL 'SI, API [ayarlarında](./import-and-publish.md) belirtilir ve [arka uç hizmet ilkesi ayarlama](api-management-transformation-policies.md) kullanılarak değiştirilebilir.
 
@@ -264,11 +264,11 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#s
 -   **İlke bölümleri:** arka uç
 -   **İlke kapsamları:** tüm kapsamlar
 
-## <a name="limit-concurrency"></a><a name="LimitConcurrency"></a>Eşzamanlılık sınırı
+## <a name="limit-concurrency"></a><a name="LimitConcurrency"></a> Eşzamanlılık sınırı
 
 `limit-concurrency`İlke, belirli bir zamanda belirtilen sayıda istekten daha fazlasını gerçekleştirerek, eklenen ilkelerin yürütülmesini önler. Bu sayıyı aştıktan sonra, yeni istekler 429 çok fazla Istek durum koduyla hemen başarısız olur.
 
-### <a name="policy-statement"></a><a name="LimitConcurrencyStatement"></a>İlke ekstresi
+### <a name="policy-statement"></a><a name="LimitConcurrencyStatement"></a> İlke ekstresi
 
 ```xml
 <limit-concurrency key="expression" max-count="number">
@@ -304,7 +304,7 @@ Aşağıdaki örnek, bir arka uca iletilen isteklerin sayısının bir bağlam d
 
 | Öznitelik | Açıklama                                                                                        | Gerekli | Varsayılan |
 | --------- | -------------------------------------------------------------------------------------------------- | -------- | ------- |
-| key       | Bir dize. İzin verilen ifade. Eşzamanlılık kapsamını belirtir. Birden çok ilke tarafından paylaşılabilir. | Evet      | Yok     |
+| anahtar       | Bir dize. İzin verilen ifade. Eşzamanlılık kapsamını belirtir. Birden çok ilke tarafından paylaşılabilir. | Evet      | Yok     |
 | en yüksek sayı | Bir tamsayı. İlkeye girmesine izin verilen en fazla istek sayısını belirtir.           | Evet      | Yok     |
 
 ### <a name="usage"></a>Kullanım
@@ -315,7 +315,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#s
 
 -   **İlke kapsamları:** tüm kapsamlar
 
-## <a name="log-to-event-hub"></a><a name="log-to-eventhub"></a>Olay Hub 'ında günlüğe kaydet
+## <a name="log-to-event-hub"></a><a name="log-to-eventhub"></a> Olay Hub 'ında günlüğe kaydet
 
 `log-to-eventhub`İlke, belirtilen biçimdeki iletileri bir günlükçü varlığı tarafından tanımlanan bir olay hub 'ına gönderir. Adından da anlaşılacağı gibi, ilke, çevrimiçi veya çevrimdışı analize yönelik seçili istek veya Yanıt bağlamı bilgilerini kaydetmek için kullanılır.
 
@@ -369,7 +369,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#s
 
 -   **İlke kapsamları:** tüm kapsamlar
 
-## <a name="mock-response"></a><a name="mock-response"></a>Sahte yanıt
+## <a name="mock-response"></a><a name="mock-response"></a> Sahte yanıt
 
 , `mock-response` Adın gösterdiği gibi, API 'leri ve işlemleri de anladığı gibi kullanılır. Normal işlem hattı yürütmesini iptal eder ve çağırana bir yanıt döndürür. İlke, her zaman en yüksek uygunlukta yanıtları döndürmeye çalışır. Her kullanılabilir olduğunda yanıt içerik örneklerini tercih eder. Şemalar sağlandığında ve örnekler olmadığında, şemalardan örnek yanıtlar oluşturur. Hiçbir örnek veya şema bulunmazsa, içerik olmayan yanıtlar döndürülmez.
 
@@ -413,7 +413,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#s
 
 -   **İlke kapsamları:** tüm kapsamlar
 
-## <a name="retry"></a><a name="Retry"></a>Retry
+## <a name="retry"></a><a name="Retry"></a> Retry
 
 `retry`İlke, alt ilkelerini bir kez yürütür ve sonra yeniden deneme `condition` `false` veya yeniden deneme bitinceye kadar yürütmeyi yeniden dener `count` .
 
@@ -465,7 +465,7 @@ Aşağıdaki örnekte, istek iletimi bir üstel yeniden deneme algoritması kull
 | count            | Denemek için en fazla yeniden deneme sayısını belirten pozitif bir sayı.                                                                                | Evet      | Yok     |
 | interval         | Yeniden deneme girişimleri arasındaki bekleme aralığını belirten saniye cinsinden pozitif bir sayı.                                                                 | Evet      | Yok     |
 | Maksimum Aralık     | Yeniden deneme girişimleri arasındaki en fazla bekleme aralığını belirten saniye cinsinden pozitif bir sayı. Üstel yeniden deneme algoritması uygulamak için kullanılır. | Hayır       | Yok     |
-| tamamlanması            | Bekleme aralığı artışını belirten saniye cinsinden pozitif bir sayı. Doğrusal ve üstel yeniden deneme algoritmalarının uygulanması için kullanılır.             | Hayır       | Yok     |
+| delta            | Bekleme aralığı artışını belirten saniye cinsinden pozitif bir sayı. Doğrusal ve üstel yeniden deneme algoritmalarının uygulanması için kullanılır.             | Hayır       | Yok     |
 | ilk hızlı yeniden deneme | Olarak ayarlanırsa `true` , ilk yeniden deneme denemesi hemen gerçekleştirilir.                                                                                  | Hayır       | `false` |
 
 > [!NOTE]
@@ -481,7 +481,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#s
 
 -   **İlke kapsamları:** tüm kapsamlar
 
-## <a name="return-response"></a><a name="ReturnResponse"></a>Dönüş yanıtı
+## <a name="return-response"></a><a name="ReturnResponse"></a> Dönüş yanıtı
 
 İlke, işlem `return-response` hattı yürütmesini iptal eder ve çağırana varsayılan ya da özel bir yanıt döndürür. Varsayılan yanıt `200 OK` gövde yok. Özel yanıt, bir bağlam değişkeni veya ilke deyimleri ile belirtilebilir. Her ikisi de sağlandığında, bağlam değişkeni içinde yer alan yanıt, çağırana döndürülmeden önce ilke deyimleri tarafından değiştirilir.
 
@@ -531,7 +531,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#s
 
 -   **İlke kapsamları:** tüm kapsamlar
 
-## <a name="send-one-way-request"></a><a name="SendOneWayRequest"></a>Tek yönlü istek gönder
+## <a name="send-one-way-request"></a><a name="SendOneWayRequest"></a> Tek yönlü istek gönder
 
 `send-one-way-request`İlke, sağlanmış isteği, yanıt beklemeden BELIRTILEN URL 'ye gönderir.
 
@@ -605,7 +605,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#s
 
 -   **İlke kapsamları:** tüm kapsamlar
 
-## <a name="send-request"></a><a name="SendRequest"></a>İstek Gönder
+## <a name="send-request"></a><a name="SendRequest"></a> İstek Gönder
 
 `send-request`İlke BELIRTILEN URL 'ye belirtilen isteği gönderiyor, ancak ayarlanan zaman aşımı değerinden daha uzun süre beklemekte.
 
@@ -692,7 +692,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#s
 
 -   **İlke kapsamları:** tüm kapsamlar
 
-## <a name="set-http-proxy"></a><a name="SetHttpProxy"></a>HTTP proxy 'yi ayarla
+## <a name="set-http-proxy"></a><a name="SetHttpProxy"></a> HTTP proxy 'yi ayarla
 
 İlke, arka `proxy` uçlara iletilen istekleri BIR http proxy 'si aracılığıyla yönlendirmenize olanak tanır. Ağ geçidi ve proxy arasında yalnızca HTTP (HTTPS değil) desteklenir. Yalnızca temel ve NTLM kimlik doğrulaması.
 
@@ -734,7 +734,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#s
 
 -   **İlke kapsamları:** tüm kapsamlar
 
-## <a name="set-request-method"></a><a name="SetRequestMethod"></a>İstek yöntemini ayarla
+## <a name="set-request-method"></a><a name="SetRequestMethod"></a> İstek yöntemini ayarla
 
 `set-method`İlke, istek IÇIN http istek yöntemini değiştirmenize izin verir.
 
@@ -789,7 +789,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#s
 
 -   **İlke kapsamları:** tüm kapsamlar
 
-## <a name="set-status-code"></a><a name="SetStatus"></a>Durum kodunu ayarla
+## <a name="set-status-code"></a><a name="SetStatus"></a> Durum kodunu ayarla
 
 `set-status`İlke, http durum kodunu belirtilen değere ayarlar.
 
@@ -838,17 +838,17 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#s
 -   **İlke bölümleri:** giden, arka uç, hata durumunda
 -   **İlke kapsamları:** tüm kapsamlar
 
-## <a name="set-variable"></a><a name="set-variable"></a>Değişken ayarla
+## <a name="set-variable"></a><a name="set-variable"></a> Değişken ayarla
 
 `set-variable`İlke bir [bağlam](api-management-policy-expressions.md#ContextVariables) değişkeni bildirir ve bu değere bir [ifade](api-management-policy-expressions.md) veya dize sabiti aracılığıyla belirtilen bir değer atar. ifade bir değişmez değer içeriyorsa, bir dizeye dönüştürülür ve değerin türü olacaktır `System.String` .
 
-### <a name="policy-statement"></a><a name="set-variablePolicyStatement"></a>İlke ekstresi
+### <a name="policy-statement"></a><a name="set-variablePolicyStatement"></a> İlke ekstresi
 
 ```xml
 <set-variable name="variable name" value="Expression | String literal" />
 ```
 
-### <a name="example"></a><a name="set-variableExample"></a>Örneğinde
+### <a name="example"></a><a name="set-variableExample"></a> Örneğinde
 
 Aşağıdaki örnek, gelen bölümündeki bir değişken kümesi ilkesini gösterir. Bu set değişken ilkesi `isMobile` [context](api-management-policy-expressions.md#ContextVariables) , `User-Agent` istek üst bilgisi metin içeriyorsa true olarak ayarlanmış bir Boole bağlam değişkeni oluşturur `iPad` `iPhone` .
 
@@ -876,7 +876,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#s
 -   **İlke bölümleri:** gelen, giden, arka uç, hata durumunda
 -   **İlke kapsamları:** tüm kapsamlar
 
-### <a name="allowed-types"></a><a name="set-variableAllowedTypes"></a>İzin verilen türler
+### <a name="allowed-types"></a><a name="set-variableAllowedTypes"></a> İzin verilen türler
 
 İlkede kullanılan ifadelerin `set-variable` aşağıdaki temel türlerden birini döndürmesi gerekir.
 
@@ -912,7 +912,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#s
 -   System. Char?
 -   System. DateTime
 
-## <a name="trace"></a><a name="Trace"></a>İzlemesinin
+## <a name="trace"></a><a name="Trace"></a> İzlemesinin
 
 `trace`İlke, API denetçisi çıktısına, Application Insights Telemetriler ve/veya kaynak günlüklerine özel bir izleme ekler.
 
@@ -931,7 +931,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#s
 
 ```
 
-### <a name="example"></a><a name="traceExample"></a>Örneğinde
+### <a name="example"></a><a name="traceExample"></a> Örneğinde
 
 ```xml
 <trace source="PetStore API" severity="verbose">
@@ -965,7 +965,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#s
 
 -   **İlke kapsamları:** tüm kapsamlar
 
-## <a name="wait"></a><a name="Wait"></a>Bekleneceğini
+## <a name="wait"></a><a name="Wait"></a> Bekleneceğini
 
 `wait`İlke, anlık alt ilkelerini paralel olarak yürütür ve tamamlanmadan önce tüm veya ilk alt ilkelerinden birinin tamamlanmasını bekler. Bekleme ilkesi, anlık alt ilkelerine [Istek gönderme](api-management-advanced-policies.md#SendRequest), [önbellekten değer alma](api-management-caching-policies.md#GetFromCacheByKey)ve [akış ilkelerini denetim](api-management-advanced-policies.md#choose) altına alabilir.
 
@@ -1025,7 +1025,7 @@ Aşağıdaki örnekte, `choose` ilkenin en hızlı alt ilkelerine sahip iki ilke
 
 | Öznitelik | Açıklama                                                                                                                                                                                                                                                                                                                                                                                                            | Gerekli | Varsayılan |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| for       | `wait`İlkenin tüm hızlı alt ilkelerin tamamlanmasını mi yoksa yalnızca bir tane mi bekleyeceğini belirler. İzin verilen değerler şunlardır:<br /><br /> - `all`-Tüm ilk alt ilkelerin tamamlanmasını bekle<br />-herhangi bir anlık alt ilkenin tamamlanmasını bekleyin. İlk acil alt öğe ilkesi tamamlandıktan sonra, `wait` ilke tamamlanır ve diğer tüm anlık alt ilkelerin yürütülmesi sonlandırılır. | Hayır       | tümü     |
+| for       | `wait`İlkenin tüm hızlı alt ilkelerin tamamlanmasını mi yoksa yalnızca bir tane mi bekleyeceğini belirler. İzin verilen değerler şunlardır:<br /><br /> - `all` -Tüm ilk alt ilkelerin tamamlanmasını bekle<br />-herhangi bir anlık alt ilkenin tamamlanmasını bekleyin. İlk acil alt öğe ilkesi tamamlandıktan sonra, `wait` ilke tamamlanır ve diğer tüm anlık alt ilkelerin yürütülmesi sonlandırılır. | Hayır       | tümü     |
 
 ### <a name="usage"></a>Kullanım
 

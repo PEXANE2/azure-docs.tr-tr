@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: mayg
 ms.openlocfilehash: 528a24bb64aa8d323b5d63a27af0a52ccdf1abb6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86132322"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Active Directory ve DNS için olağanüstü durum kurtarmayı ayarlama
@@ -79,7 +79,7 @@ Ardından, sanal ağın DNS sunucusunu Azure 'da DNS sunucusunu kullanacak şeki
 1. Yalıtılmış ağ oluşturun. Azure 'da oluşturduğunuz herhangi bir sanal ağ, varsayılan olarak diğer ağlardan yalıtılmıştır. Üretim ağınızda kullandığınız bu ağ için aynı IP adresi aralığını kullanmanızı öneririz. Bu ağda siteden siteye bağlantıyı etkinleştirmeyin.
 1. Yalıtılmış ağda bir DNS IP adresi sağlayın. DNS sanal makinesinin almasını beklediğinizi belirten IP adresini kullanın. Azure 'a çoğaltma yapıyorsanız, yük devretmede kullanılan sanal makinenin IP adresini belirtin. IP adresini girmek için, çoğaltılan sanal makinede, **işlem ve ağ** ayarları ' nda **hedef IP** ayarlarını seçin.
 
-   :::image type="content" source="./media/site-recovery-active-directory/azure-test-network.png" alt-text="Azure test ağı":::
+   :::image type="content" source="./media/site-recovery-active-directory/azure-test-network.png" alt-text="Azure Ağı":::
 
    > [!TIP]
    > Site Recovery, aynı ada sahip bir alt ağda ve sanal makinenin **işlem ve ağ** AYARLARıNDA belirtilen IP adresini kullanarak test sanal makineleri oluşturmaya çalışır. Yük devretme testi için sağlanan Azure sanal ağında aynı ada sahip bir alt ağ yoksa, test sanal makinesi alfabetik olarak ilk alt ağda oluşturulur.
@@ -118,21 +118,21 @@ Bir test yük devretmesinin ardından sanallaştırma korumaları tetikleniyorsa
 
 - **GenerationID** değeri değişir:
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event2170.png" alt-text="Oluşturma KIMLIĞI değişikliği":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event2170.png" alt-text="Azure Ağı":::
 
 - **Invocationıd** değeri değişir:
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event1109.png" alt-text="Çağırma KIMLIĞI değişikliği":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event1109.png" alt-text="Azure Ağı":::
 
-- `SYSVOL`klasör ve `NETLOGON` Paylaşımlar kullanılamıyor.
+- `SYSVOL` klasör ve `NETLOGON` Paylaşımlar kullanılamıyor.
 
-  :::image type="content" source="./media/site-recovery-active-directory/sysvolshare.png" alt-text="SYSVOL klasörü paylaşma":::
+  :::image type="content" source="./media/site-recovery-active-directory/sysvolshare.png" alt-text="Azure Ağı":::
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event13565.png" alt-text="NtFrs SYSVOL klasörü":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event13565.png" alt-text="Azure Ağı":::
 
 - DFSR veritabanları silinir.
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event2208.png" alt-text="DFSR veritabanları silindi":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event2208.png" alt-text="Azure Ağı":::
 
 ### <a name="troubleshoot-domain-controller-issues-during-test-failover"></a>Yük devretme testi sırasında etki alanı denetleyicisi sorunlarını giderme
 

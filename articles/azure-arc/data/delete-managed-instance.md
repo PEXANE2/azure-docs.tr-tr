@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: e531349e8f404380d9f0601caa3b66557c297062
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90942166"
 ---
 # <a name="delete-azure-arc-enabled-sql-managed-instance"></a>Azure Arc etkin SQL yönetilen örneğini silme
@@ -52,7 +52,7 @@ Deleted demo-mi from namespace arc
 
 ## <a name="reclaim-the-kubernetes-persistent-volume-claims-pvcs"></a>Kubernetes kalıcı birim taleplerini geri kazanma (PVC)
 
-Bir SQL yönetilen örneğinin silinmesi ilişkili [PVC](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)'yi kaldırmaz. Bu tasarım gereğidir. Amaç, örneğin silinmesinin yanlışlıkla olması durumunda kullanıcının veritabanı dosyalarına erişmesine yardımcı olur. PVC 'Lerin silinmesi zorunlu değildir. Ancak önerilir. Bu PVC 'yi geri kazanmıyorsanız, Kubernetes kümeniz disk alanının dışında, sonunda hatalarla karşılaşırsınız. PVC 'leri geri kazanmak için aşağıdaki adımları uygulayın:
+Bir SQL yönetilen örneğinin silinmesi ilişkili [PVC](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)'yi kaldırmaz. Bu tasarım gereğidir. Amacı, örneğin yanlışlıkla silinmesi durumunda kullanıcının veritabanı dosyalarına erişmesine yardımcı olmaktır. PVC’lerin silinmesi zorunlu değildir. Ancak bunun yapılması önerilir. Bu PVC 'yi geri kazanmıyorsanız, Kubernetes kümeniz disk alanının dışında, sonunda hatalarla karşılaşırsınız. PVC'leri geri kazanmak için aşağıdaki adımları izleyin:
 
 ### <a name="1-list-the-pvcs-for-the-server-group-you-deleted"></a>1. sildiğiniz sunucu grubu için PVC 'leri listeleyin
 PVC 'leri listelemek için aşağıdaki komutu çalıştırın:
@@ -76,13 +76,13 @@ Bu komutun genel biçimi:
 kubectl delete pvc <name of pvc>
 ```
 
-Örnek:
+Örneğin:
 ```console
 kubectl delete pvc data-demo-mi-0 -n arc
 kubectl delete pvc logs-demo-mi-0 -n arc
 ```
 
-Bu kubectl komutlarının her biri, PVC 'nin başarıyla silinmesini doğrulayacaktır. Örnek:
+Bu kubectl komutlarının her biri, PVC 'nin başarıyla silinmesini doğrulayacaktır. Örneğin:
 ```console
 persistentvolumeclaim "data-demo-mi-0" deleted
 persistentvolumeclaim "logs-demo-mi-0" deleted

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
 ms.openlocfilehash: af7baf413c9054ef3e5bf527851ac06c113cdce7
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86131161"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Hyper-V VM’lerinin ikincil bir siteye olağanüstü durum kurtarmasını gerçekleştirmeye yönelik destek matrisi
@@ -51,16 +51,16 @@ Yalnızca aşağıdaki depolama alanına sahip Linux makineleri çoğaltılabili
 
 ## <a name="network-configuration---hostguest-vm"></a>Ağ yapılandırması-Konak/Konuk VM
 
-**Yapılandırma** | **Destek**  
+**Yapılandırma** | **Desteklenir**  
 --- | --- 
-Konak-NIC Grubu oluşturma | Yes 
-Konak-VLAN | Yes 
-Ana bilgisayar-IPv4 | Yes 
-Ana bilgisayar-IPv6 | No 
-Konuk VM-NIC ekibi oluşturma | No
-Konuk VM-IPv4 | Yes
-Konuk VM-IPv6 | No
-Konuk VM-Windows/Linux-statik IP adresi | Yes
+Konak-NIC Grubu oluşturma | Evet 
+Konak-VLAN | Evet 
+Ana bilgisayar-IPv4 | Evet 
+Ana bilgisayar-IPv6 | Hayır 
+Konuk VM-NIC ekibi oluşturma | Hayır
+Konuk VM-IPv4 | Evet
+Konuk VM-IPv6 | Hayır
+Konuk VM-Windows/Linux-statik IP adresi | Evet
 Konuk VM-çoklu NIC | Yes
 
 
@@ -68,39 +68,39 @@ Konuk VM-çoklu NIC | Yes
 
 ### <a name="host-storage"></a>Konak depolaması
 
-**Depolama (ana bilgisayar)** | **Destek**
+**Depolama (ana bilgisayar)** | **Desteklenir**
 --- | --- 
-NFS | YOK
-SMB 3.0 |  Yes
-SAN (ISCSı) | Yes
-Çoklu yol (MPIO) | Yes
+NFS | Yok
+SMB 3.0 |  Evet
+SAN (ISCSı) | Evet
+Çoklu yol (MPIO) | Evet
 
 ### <a name="guest-or-physical-server-storage"></a>Konuk veya fiziksel sunucu depolaması
 
-**Yapılandırma** | **Destek**
+**Yapılandırma** | **Desteklenir**
 --- | --- | 
-VMDK |  YOK
+VMDK |  Yok
 VHD/VHDX | Evet (16 diske kadar)
-Gen 2 VM | Yes
-Paylaşılan küme diski | No
-Şifrelenmiş disk | No
-UEFı| YOK
-NFS | No
-SMB 3.0 | No
-RDM | YOK
-Disk > 1 TB | Yes
-Dizili disk > 1 TB olan birim<br/><br/> LVM | Yes
-Depolama Alanları | Yes
-Dinamik disk Ekle/Kaldır | No
-Diski hariç tutma | Yes
-Çoklu yol (MPIO) | Yes
+Gen 2 VM | Evet
+Paylaşılan küme diski | Hayır
+Şifrelenmiş disk | Hayır
+UEFı| Yok
+NFS | Hayır
+SMB 3.0 | Hayır
+RDM | Yok
+Disk > 1 TB | Evet
+Dizili disk > 1 TB olan birim<br/><br/> LVM | Evet
+Depolama Alanları | Evet
+Dinamik disk Ekle/Kaldır | Hayır
+Diski hariç tutma | Evet
+Çoklu yol (MPIO) | Evet
 
 ## <a name="vaults"></a>Kasalar
 
-**Eylem** | **Destek**
+**Eylem** | **Desteklenir**
 --- | --- 
-Kasalarını kaynak grupları arasında taşıma (veya abonelikler arasında) |  No
-Depolama, ağ ve Azure VM 'lerini kaynak grupları arasında taşıma (abonelikler içinde veya abonelikler arasında) | No
+Kasalarını kaynak grupları arasında taşıma (veya abonelikler arasında) |  Hayır
+Depolama, ağ ve Azure VM 'lerini kaynak grupları arasında taşıma (abonelikler içinde veya abonelikler arasında) | Hayır
 
 ## <a name="azure-site-recovery-provider"></a>Azure Site Recovery sağlayıcı
 

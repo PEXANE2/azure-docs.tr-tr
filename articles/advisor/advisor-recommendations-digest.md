@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 03/16/2020
 ms.author: sagupt
 ms.openlocfilehash: e446fca11e029e28e44ada884efd071f3142514c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86518088"
 ---
 # <a name="configure-periodic-summary-for-recommendations"></a>Öneriler için düzenli Özet yapılandırma
@@ -54,7 +54,7 @@ Danışman **önerisi** öngörüleri, farklı kategorilerde etkin önerileriniz
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Danışman önerileri hakkında daha fazla bilgi için bkz.
-* [Azure Advisor 'a giriş](advisor-overview.md)
+* [Azure Danışmanı’na Giriş](advisor-overview.md)
 * [Danışman'ı kullanmaya başlama](advisor-get-started.md)
 * [Danışman maliyet önerileri](advisor-cost-recommendations.md)
 * [Advisor performans önerileri](advisor-performance-recommendations.md)

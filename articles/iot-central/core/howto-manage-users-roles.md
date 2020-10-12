@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: corywink
 ms.openlocfilehash: c00f9d8baa55ef0d0cf6322ee71f22e739e6acdc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80365499"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application"></a>IoT Central uygulamanızdaki kullanıcıları ve rolleri yönetme
@@ -25,7 +25,7 @@ Bu makalede, yönetici olarak Azure IoT Central uygulamanızda Kullanıcı eklem
 
 Azure IoT Central uygulamasına oturum açabilmeniz ve bu uygulamaya erişebilmek için her kullanıcının bir kullanıcı hesabı olması gerekir. Microsoft hesapları ve Azure Active Directory hesapları Azure IoT Central 'da desteklenmektedir. Azure Active Directory gruplar Şu anda Azure IoT Central 'da desteklenmemektedir.
 
-Daha fazla bilgi için bkz. [Microsoft hesabı yardım](https://support.microsoft.com/products/microsoft-account?category=manage-account) ve [hızlı başlangıç: Azure Active Directory yeni kullanıcı ekleme](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory).
+Daha fazla bilgi için bkz. [Microsoft hesabı yardım](https://support.microsoft.com/products/microsoft-account?category=manage-account) ve  [hızlı başlangıç: Azure Active Directory yeni kullanıcı ekleme](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory).
 
 1. Bir IoT Central uygulamasına kullanıcı eklemek için **Yönetim** bölümündeki **Kullanıcılar** sayfasına gidin.
     
@@ -72,7 +72,7 @@ Bir uygulamayı oluşturan kullanıcı otomatik olarak **yönetici** rolüne ata
 
 **Oluşturucu** rolündeki kullanıcılar uygulamanın her bölümünü yönetebilir, ancak yönetim veya sürekli veri dışa aktarma sekmelerinde değişiklik yapamaz.
 
-### <a name="operator"></a>Operatör
+### <a name="operator"></a>İşleç
 
 **Operatör** rolündeki kullanıcılar, cihaz sistem durumunu ve durumunu izleyebilir. Cihaz şablonlarında değişiklik yapmasına veya uygulamayı yönetmeye izin verilmez. İşleçler cihaz ekleyip silebilir, cihaz kümelerini yönetebilir ve analiz ve işleri çalıştırabilir. 
 
@@ -93,18 +93,18 @@ Kullanıcıları, yerleşik bir role eklediğiniz şekilde özel rolünüze ekle
 
 **Cihaz şablonu izinleri**
 
-| Name | Bağımlılıklar |
+| Adı | Bağımlılıklar |
 | ---- | -------- |
-| Görüntüle | Hiçbiri     |
+| Görüntüle | Yok     |
 | Yönetme | Görüntüle <br/> Diğer bağımlılıklar: cihaz örneklerini görüntüle  |
 | Tam Denetim | Görüntüleme, yönetme <br/> Diğer bağımlılıklar: cihaz örneklerini görüntüle |
 
 **Cihaz örneği izinleri**
 
-| Name | Bağımlılıklar |
+| Adı | Bağımlılıklar |
 | ---- | -------- |
-| Görüntüle | Hiçbiri <br/> Diğer bağımlılıklar: cihaz şablonlarını ve cihaz gruplarını görüntüleme |
-| Güncelleştirme | Görüntüle <br/> Diğer bağımlılıklar: cihaz şablonlarını ve cihaz gruplarını görüntüleme  |
+| Görüntüle | Yok <br/> Diğer bağımlılıklar: cihaz şablonlarını ve cihaz gruplarını görüntüleme |
+| Güncelleştir | Görüntüle <br/> Diğer bağımlılıklar: cihaz şablonlarını ve cihaz gruplarını görüntüleme  |
 | Oluştur | Görüntüle <br/> Diğer bağımlılıklar: cihaz şablonlarını ve cihaz gruplarını görüntüleme  |
 | Sil | Görüntüle <br/> Diğer bağımlılıklar: cihaz şablonlarını ve cihaz gruplarını görüntüleme  |
 | Yürütme komutları | Güncelleştirme, görüntüleme <br/> Diğer bağımlılıklar: cihaz şablonlarını ve cihaz gruplarını görüntüleme  |
@@ -112,30 +112,30 @@ Kullanıcıları, yerleşik bir role eklediğiniz şekilde özel rolünüze ekle
 
 **Cihaz grupları izinleri**
 
-| Name | Bağımlılıklar |
+| Adı | Bağımlılıklar |
 | ---- | -------- |
-| Görüntüle | Hiçbiri <br/> Diğer bağımlılıklar: cihaz şablonlarını ve cihaz örneklerini görüntüleme |
-| Güncelleştirme | Görüntüle <br/> Diğer bağımlılıklar: cihaz şablonlarını ve cihaz örneklerini görüntüleme   |
+| Görüntüle | Yok <br/> Diğer bağımlılıklar: cihaz şablonlarını ve cihaz örneklerini görüntüleme |
+| Güncelleştir | Görüntüle <br/> Diğer bağımlılıklar: cihaz şablonlarını ve cihaz örneklerini görüntüleme   |
 | Oluştur | Görüntüle, Güncelleştir <br/> Diğer bağımlılıklar: cihaz şablonlarını ve cihaz örneklerini görüntüleme   |
 | Sil | Görüntüle <br/> Diğer bağımlılıklar: cihaz şablonlarını ve cihaz örneklerini görüntüleme   |
 | Tam Denetim | Görüntüleme, güncelleştirme, oluşturma, silme <br/> Diğer bağımlılıklar: cihaz şablonlarını ve cihaz örneklerini görüntüleme |
 
 **Cihaz bağlantısı yönetimi izinleri**
 
-| Name | Bağımlılıklar |
+| Adı | Bağımlılıklar |
 | ---- | -------- |
-| Örneği oku | Hiçbiri <br/> Diğer bağımlılıklar: cihaz şablonlarını, cihaz gruplarını, cihaz örneklerini görüntüleme |
-| Örneği Yönet | Hiçbiri |
-| Küresel oku | Hiçbiri   |
+| Örneği oku | Yok <br/> Diğer bağımlılıklar: cihaz şablonlarını, cihaz gruplarını, cihaz örneklerini görüntüleme |
+| Örneği Yönet | Yok |
+| Küresel oku | Yok   |
 | Küresel yönetme | Küresel oku |
 | Tam Denetim | Örneği oku, örneği Yönet, genel oku, genel Yönet. <br/> Diğer bağımlılıklar: cihaz şablonlarını, cihaz gruplarını, cihaz örneklerini görüntüleme |
 
 **İşler izinleri**
 
-| Name | Bağımlılıklar |
+| Adı | Bağımlılıklar |
 | ---- | -------- |
-| Görüntüle | Hiçbiri <br/> Diğer bağımlılıklar: cihaz şablonlarını, cihaz örneklerini ve cihaz gruplarını görüntüleme |
-| Güncelleştirme | Görüntüle <br/> Diğer bağımlılıklar: cihaz şablonlarını, cihaz örneklerini ve cihaz gruplarını görüntüleme |
+| Görüntüle | Yok <br/> Diğer bağımlılıklar: cihaz şablonlarını, cihaz örneklerini ve cihaz gruplarını görüntüleme |
+| Güncelleştir | Görüntüle <br/> Diğer bağımlılıklar: cihaz şablonlarını, cihaz örneklerini ve cihaz gruplarını görüntüleme |
 | Oluştur | Görüntüle, Güncelleştir <br/> Diğer bağımlılıklar: cihaz şablonlarını, cihaz örneklerini ve cihaz gruplarını görüntüleme |
 | Sil | Görüntüle <br/> Diğer bağımlılıklar: cihaz şablonlarını, cihaz örneklerini ve cihaz gruplarını görüntüleme |
 | Yürütme | Görüntüle <br/> Diğer bağımlılıklar: cihaz şablonlarını, cihaz örneklerini ve cihaz gruplarını görüntüleyin; Cihaz örneklerini güncelleştirme; Cihaz örneklerinde komutları yürütme |
@@ -143,10 +143,10 @@ Kullanıcıları, yerleşik bir role eklediğiniz şekilde özel rolünüze ekle
 
 **Kurallar izinleri**
 
-| Name | Bağımlılıklar |
+| Adı | Bağımlılıklar |
 | ---- | -------- |
-| Görüntüle | Hiçbiri <br/> Diğer bağımlılıklar: cihaz şablonlarını görüntüleme |
-| Güncelleştirme | Görüntüle <br/> Diğer bağımlılıklar: cihaz şablonlarını görüntüleme |
+| Görüntüle | Yok <br/> Diğer bağımlılıklar: cihaz şablonlarını görüntüleme |
+| Güncelleştir | Görüntüle <br/> Diğer bağımlılıklar: cihaz şablonlarını görüntüleme |
 | Oluştur | Görüntüle, Güncelleştir <br/> Diğer bağımlılıklar: cihaz şablonlarını görüntüleme |
 | Sil | Görüntüle <br/> Diğer bağımlılıklar: cihaz şablonlarını görüntüleme |
 | Tam Denetim | Görüntüleme, güncelleştirme, oluşturma, silme <br/> Diğer bağımlılıklar: cihaz şablonlarını görüntüleme |
@@ -155,46 +155,46 @@ Kullanıcıları, yerleşik bir role eklediğiniz şekilde özel rolünüze ekle
 
 **Uygulama ayarları izinleri**
 
-| Name | Bağımlılıklar |
+| Adı | Bağımlılıklar |
 | ---- | -------- |
-| Görüntüle | Hiçbiri     |
-| Güncelleştirme | Görüntüle   |
+| Görüntüle | Yok     |
+| Güncelleştir | Görüntüle   |
 | Kopyala | Görüntüle <br/> Diğer bağımlılıklar: cihaz şablonlarını, cihaz örneklerini, cihaz gruplarını, panoları, veri vermeyi, marka, yardım bağlantılarını, özel rolleri, kuralları görüntüle |
 | Sil | Görüntüle   |
 | Tam Denetim | Görüntüleme, güncelleştirme, kopyalama, silme <br/> Diğer bağımlılıklar: cihaz şablonlarını, cihaz gruplarını, uygulama panoları, veri dışarı aktarma, marka, yardım bağlantıları, özel roller, kurallar |
 
 **Uygulama şablonu dışarı aktarma izinleri**
 
-| Name | Bağımlılıklar |
+| Adı | Bağımlılıklar |
 | ---- | -------- |
-| Görüntüle | Hiçbiri     |
+| Görüntüle | Yok     |
 | Dışarı Aktarma | Görüntüle <br/> Diğer bağımlılıklar: cihaz şablonlarını, cihaz örneklerini, cihaz gruplarını, panoları, veri vermeyi, marka, yardım bağlantılarını, özel rolleri, kuralları görüntüle |
 | Tam Denetim | Görüntüle, dışarı aktar <br/> Diğer bağımlılıklar: cihaz şablonlarını, cihaz gruplarını, uygulama panoları, veri dışarı aktarma, marka, yardım bağlantıları, özel roller, kurallar |
 
 **Faturalandırma izinleri**
 
-| Name | Bağımlılıklar |
+| Adı | Bağımlılıklar |
 | ---- | -------- |
-| Yönetme | Hiçbiri     |
+| Yönetme | Yok     |
 | Tam Denetim | Yönetme |
 
 #### <a name="managing-users-and-roles"></a>Kullanıcıları ve rolleri yönetme
 
 **Özel rol izinleri**
 
-| Name | Bağımlılıklar |
+| Adı | Bağımlılıklar |
 | ---- | -------- |
-| Görüntüle | Hiçbiri |
-| Güncelleştirme | Görüntüle |
+| Görüntüle | Yok |
+| Güncelleştir | Görüntüle |
 | Oluştur | Görüntüle, Güncelleştir |
 | Sil | Görüntüle |
 | Tam Denetim | Görüntüleme, güncelleştirme, oluşturma, silme |
 
 **Kullanıcı yönetimi izinleri**
 
-| Name | Bağımlılıklar |
+| Adı | Bağımlılıklar |
 | ---- | -------- |
-| Görüntüle | Hiçbiri <br/> Diğer bağımlılıklar: özel rolleri görüntüleme |
+| Görüntüle | Yok <br/> Diğer bağımlılıklar: özel rolleri görüntüleme |
 | Ekle | Görüntüle <br/> Diğer bağımlılıklar: özel rolleri görüntüleme |
 | Sil | Görüntüle <br/> Diğer bağımlılıklar: özel rolleri görüntüleme |
 | Tam Denetim | Görüntüleme, ekleme, silme <br/> Diğer bağımlılıklar: özel rolleri görüntüleme |
@@ -206,57 +206,57 @@ Kullanıcıları, yerleşik bir role eklediğiniz şekilde özel rolünüze ekle
 
 **Uygulama panosu izinleri**
 
-| Name | Bağımlılıklar |
+| Adı | Bağımlılıklar |
 | ---- | -------- |
-| Görüntüle | Hiçbiri     |
-| Güncelleştirme | Görüntüle   |
+| Görüntüle | Yok     |
+| Güncelleştir | Görüntüle   |
 | Oluştur | Görüntüle, Güncelleştir |
 | Sil | Görüntüle   |
 | Tam Denetim | Görüntüleme, güncelleştirme, oluşturma, silme |
 
 **Kişisel panolar izinleri**
 
-| Name | Bağımlılıklar |
+| Adı | Bağımlılıklar |
 | ---- | -------- |
-| Görüntüle | Hiçbiri     |
-| Güncelleştirme | Görüntüle   |
+| Görüntüle | Yok     |
+| Güncelleştir | Görüntüle   |
 | Oluştur | Görüntüle, Güncelleştir   |
 | Sil | Görüntüle   |
 | Tam Denetim | Görüntüleme, güncelleştirme, oluşturma, silme |
 
 **Marka, ayrıcalıklı simge ve renkler izinleri**
 
-| Name | Bağımlılıklar |
+| Adı | Bağımlılıklar |
 | ---- | -------- |
-| Görüntüle | Hiçbiri     |
-| Güncelleştirme | Görüntüle   |
+| Görüntüle | Yok     |
+| Güncelleştir | Görüntüle   |
 | Tam Denetim | Görüntüle, Güncelleştir |
 
 **Yardım bağlantıları izinleri**
 
-| Name | Bağımlılıklar |
+| Adı | Bağımlılıklar |
 | ---- | -------- |
-| Görüntüle | Hiçbiri     |
-| Güncelleştirme | Görüntüle   |
+| Görüntüle | Yok     |
+| Güncelleştir | Görüntüle   |
 | Tam Denetim | Görüntüle, Güncelleştir |
 
 #### <a name="extending-the-app"></a>Uygulamayı genişletme
 
 **Veri dışarı aktarma izinleri**
 
-| Name | Bağımlılıklar |
+| Adı | Bağımlılıklar |
 | ---- | -------- |
-| Görüntüle | Hiçbiri     |
-| Güncelleştirme | Görüntüle   |
+| Görüntüle | Yok     |
+| Güncelleştir | Görüntüle   |
 | Oluştur | Görüntüle, Güncelleştir  |
 | Sil | Görüntüle   |
 | Tam Denetim | Görüntüleme, güncelleştirme, oluşturma, silme |
 
 **API belirteci izinleri**
 
-| Name | Bağımlılıklar |
+| Adı | Bağımlılıklar |
 | ---- | -------- |
-| Görüntüle | Hiçbiri     |
+| Görüntüle | Yok     |
 | Oluştur | Görüntüle   |
 | Sil | Görüntüle   |
 | Tam Denetim | Görüntüleme, oluşturma, silme |

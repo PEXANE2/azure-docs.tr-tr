@@ -10,10 +10,10 @@ ms.date: 03/17/2020
 ms.author: robinsh
 ms.custom: devx-track-python
 ms.openlocfilehash: 733e3be21a1a1305b5c7947de1ae54ddce5e0d2f
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87876691"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>İşleri zamanlama ve yayınlama (Python)
@@ -54,11 +54,11 @@ Bu öğreticinin sonunda iki Python uygulamanız vardır:
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [iot-hub-include-python-v2-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
-## <a name="create-an-iot-hub"></a>IoT hub oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 

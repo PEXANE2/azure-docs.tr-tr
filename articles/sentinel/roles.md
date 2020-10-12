@@ -16,13 +16,13 @@ ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
 ms.openlocfilehash: b48ff1043ae8128a5cbfdcbba0548d89b5af2624
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88565851"
 ---
-# <a name="permissions-in-azure-sentinel"></a>Azure Sentinel izinleri
+# <a name="permissions-in-azure-sentinel"></a>Azure Sentinel'de izinler
 
 Azure Sentinel, Azure 'daki kullanıcılara, gruplara ve hizmetlere atanabilecek [yerleşik roller](../role-based-access-control/built-in-roles.md)sağlamak için [Azure rol tabanlı erişim denetimi 'NI (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) kullanır   .
 
@@ -30,7 +30,7 @@ Azure Sentinel 'e uygun erişim sağlamak için güvenlik işlemleri ekibiniz da
 
 ## <a name="roles-for-working-in-azure-sentinel"></a>Azure Sentinel 'de çalışmak için roller
 
-### <a name="azure-sentinel-specific-roles"></a>Azure Sentinel 'e özgü roller
+### <a name="azure-sentinel-specific-roles"></a>Azure Sentinel'e özgü roller
 
 Üç adanmış yerleşik Azure Sentinel rolü vardır.
 
@@ -78,9 +78,9 @@ Azure Sentinel 'e özgü Azure rolleri atarken, diğer amaçlar için kullanıc�
 
 ## <a name="roles-and-allowed-actions"></a>Roller ve izin verilen eylemler
 
-Aşağıdaki tabloda, Azure Sentinel 'de roller ve izin verilen eylemler özetlenmektedir. 
+Aşağıdaki tabloda Azure Sentinel'deki roller ve izin verilen eylemler özetlenmiştir. 
 
-| Rol | PlayBook 'lar oluşturma ve çalıştırma| Çalışma kitaplarını, analitik kuralları ve diğer Azure Sentinel kaynaklarını oluşturma ve düzenleme | Olayları yönetme (Kapat, ata, vb.) | Verileri, olayları, çalışma kitaplarını ve diğer Azure Sentinel kaynaklarını görüntüleyin |
+| Rol | Playbook'ları oluşturma ve çalıştırma| Çalışma kitaplarını, analiz kurallarını ve diğer Azure Sentinel kaynaklarını oluşturma ve düzenleme | Olayları yönetme (Kapat, ata, vb.) | Verileri, olayları, çalışma kitaplarını ve diğer Azure Sentinel kaynaklarını görüntüleyin |
 |---|---|---|---|---|
 | Azure Sentinel Okuyucusu | -- | -- | -- | &#10003; |
 | Azure Sentinel Yanıtlayıcısı | -- | -- | &#10003; | &#10003; |

@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
 ms.openlocfilehash: 0c6129a24e6ed083114971df5f254eca54924400
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90941819"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Azure Sentinel 'te normalleştirme
@@ -97,7 +97,7 @@ Kullanılabilir sorgu süresi ayrıştırıcıları, Azure Sentinel [resmi GitHu
 
     1. **Kategori**: varolan bir kategoriyi seçebilir veya yeni kategori ( *Normalizednetworksessionspariler*gibi) oluşturabilirsiniz
     
-        :::image type="content" source="./media/normalization/save-new-parser.png" alt-text="Ayrıştırıcısı Kaydet":::
+        :::image type="content" source="./media/normalization/save-new-parser.png" alt-text="Yeni bir Ayrıştırıcı yükler":::
 
 Çözümleyicileri doğru bir şekilde kullanabilmek için, boş ağ şeması ayrıştırıcısının (tüm ağ oturumları şeması alanlarının boş bir tablosal görünümü oluşturan) ve ağ meta ayrıştırıcısının (ağ şemasında çeşitli kaynaklardan gelen verilerin tek bir görünümünü oluşturmak için tüm etkin Çözümleyicileri birlikte bulunan) de yüklenmesi gerekir. Bu iki ayrıştırıcıları yüklemek, belirtilen adımlara benzer bir şekilde yapılır.
 
@@ -107,15 +107,13 @@ Sorgu işlevini kaydettikten sonra, sorgu Gezginini kapatıp yeni işlevin yans�
 
 Etkinleştirildikten sonra, şu anda etkinleştirilmiş olan tüm çözümleyiciler üzerinde Birleşik bir görünümü sorgulamak için meta ayrıştırıcısı kullanabilirsiniz. Bunu yapmak için, Sentinel Günlükler sayfasına gidin ve meta ayrıştırıcısı sorgulayın:
 
-:::image type="content" source="./media/normalization/query-parser.png" alt-text="Ayrıştırıcısı sorgulama":::
+:::image type="content" source="./media/normalization/query-parser.png" alt-text="Yeni bir Ayrıştırıcı yükler":::
  
 Ayrıca, ' sorgu Gezgini ' ' ne tıklayarak Sentinel günlükleri sayfasında sorgu Gezgini ' ni kullanarak meta ayrıştırıcıya da tek tek ayrıştırıcıya erişebilirsiniz:
 
-:::image type="content" source="./media/normalization/query-explorer.png" alt-text="Sorgu Gezgini":::
+:::image type="content" source="./media/normalization/query-explorer.png" alt-text="Yeni bir Ayrıştırıcı yükler" bölümünü genişletin ve ' Normalizednetworkayrıştırıcıları ' klasörünü (veya Çözümleyicileri oluştururken seçtiğiniz kategori adını) bulun:
 
-Sağdaki bölmede, "kayıtlı sorgular" bölümünü genişletin ve ' Normalizednetworkayrıştırıcıları ' klasörünü (veya Çözümleyicileri oluştururken seçtiğiniz kategori adını) bulun:
-
-:::image type="content" source="./media/normalization/find-parser.png" alt-text="Ayrıştırıcılarınızı bulun":::
+:::image type="content" source="./media/normalization/find-parser.png" alt-text="Yeni bir Ayrıştırıcı yükler":::
 
 Her bir ayrıştırıcıya tıklayıp kullandığı temel işlevi görebilir ve bunu çalıştırabilir (veya yukarıda açıklandığı şekilde, diğer adıyla doğrudan erişebilirsiniz). Bazı ayrıştırıcıların, özgün alanları kolay bir şekilde normalleştirilmek üzere normalleştirilmiş alanlara korumasını sağlayabilirsiniz. Bu, ayrıştırıcının sorgusunda kolayca düzenlenebilir.
 
@@ -124,11 +122,9 @@ Her bir ayrıştırıcıya tıklayıp kullandığı temel işlevi görebilir ve 
 Yukarıdaki adımları tekrarlayabilirsiniz (sorgu Gezgini 'nde ayrıştırıcısı bulma), ilgili ayrıştırıcıya tıklayıp işlev uygulamasını görebilirsiniz.
 Örneğin, bağımsız ayrıştırıcıları eklemek/kaldırmak için meta ayrıştırıcısı düzenlemeye karar verebilirsiniz.
 
-:::image type="content" source="./media/normalization/customize-parser.png" alt-text="Ayrıştırıcılarınızı özelleştirme":::
- 
-İşlev değiştirildikten sonra, "Kaydet" e tıklayın ve aynı adı, diğer adı ve kategoriyi kullanın. Bir geçersiz kılma iletişim kutusu açılır. "Tamam" düğmesine basın:
+:::image type="content" source="./media/normalization/customize-parser.png" alt-text="Yeni bir Ayrıştırıcı yükler" düğmesine basın:
 
-:::image type="content" source="./media/normalization/are-you-sure.png" alt-text="Emin misiniz":::
+:::image type="content" source="./media/normalization/are-you-sure.png" alt-text="Yeni bir Ayrıştırıcı yükler":::
 
 #### <a name="additional-information"></a>Ek bilgiler
 

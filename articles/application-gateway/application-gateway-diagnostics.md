@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
 ms.openlocfilehash: f752604b86634948954dd670d0b7f4edb5b3e2be
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86517884"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway için arka uç sistem durumu ve tanılama günlükleri
@@ -173,7 +173,7 @@ Erişim günlüğü, yalnızca, önceki adımlarda açıklandığı şekilde, he
 |httpVersion     | İsteğin HTTP sürümü.        |
 |Alınma baytları     | Bayt cinsinden alınan paket boyutu.        |
 |sentBytes| Bayt cinsinden gönderilen paket boyutu.|
-|timeTaken| Bir isteğin işlenmesi için gereken süre (milisaniye cinsinden) ve yanıtının gönderilmesi için gereken süre (milisaniye cinsinden). Bu, yanıt gönderme işleminin bittiği zaman Application Gateway bir HTTP isteğinin ilk baytını aldığında zaman aralığı olarak hesaplanır. Zaman alan alanın genellikle istek ve Yanıt paketlerinin ağ üzerinden seyahat süresini içerdiğine dikkat edin. |
+|timeTaken| Bir isteğin işlenmesi için gereken süre (milisaniye cinsinden) ve yanıtının gönderilmesi için gereken süre (milisaniye cinsinden). Bu, yanıt gönderme işleminin bittiği zaman Application Gateway bir HTTP isteğinin ilk baytını aldığında zaman aralığı olarak hesaplanır. Time-Taken alanın genellikle istek ve Yanıt paketlerinin ağ üzerinden seyahat süresini içerdiğine dikkat edin. |
 |sslEnabled| Arka uç havuzlarıyla iletişimin TLS/SSL kullanıp kullanmadığını belirtir. Geçerli değerler açık ve kapalı.|
 |konak| İsteğin arka uç sunucusuna gönderildiği ana bilgisayar adı. Arka uç ana bilgisayar adı geçersiz kılınırsa, bu ad bu adı yansıtır.|
 |originalHost| İstemciden Application Gateway tarafından isteğin alındığı ana bilgisayar adı.|
@@ -216,7 +216,7 @@ Erişim günlüğü, yalnızca, önceki adımlarda açıklandığı şekilde, he
 |httpVersion     | İsteğin HTTP sürümü.        |
 |Alınma baytları     | Bayt cinsinden alınan paket boyutu.        |
 |sentBytes| Bayt cinsinden gönderilen paket boyutu.|
-|timeTaken| Bir isteğin işlenmesi için geçen sürenin süresi ( **saniye**cinsinden) ve Yanıt gönderilmesi. Bu, yanıt gönderme işleminin bittiği zaman Application Gateway bir HTTP isteğinin ilk baytını aldığında zaman aralığı olarak hesaplanır. Zaman alan alanın genellikle istek ve Yanıt paketlerinin ağ üzerinden seyahat süresini içerdiğine dikkat edin. |
+|timeTaken| Bir isteğin işlenmesi için geçen sürenin süresi ( **saniye**cinsinden) ve Yanıt gönderilmesi. Bu, yanıt gönderme işleminin bittiği zaman Application Gateway bir HTTP isteğinin ilk baytını aldığında zaman aralığı olarak hesaplanır. Time-Taken alanın genellikle istek ve Yanıt paketlerinin ağ üzerinden seyahat süresini içerdiğine dikkat edin. |
 |sslEnabled| Arka uç havuzlarıyla iletişimin TLS kullanıp kullanmadığını belirtir. Geçerli değerler açık ve kapalı.|
 |sslCipher| TLS iletişimi için kullanılan şifre paketi (TLS etkinse).|
 |sslProtocol| Kullanılan SSL/TLS Protokolü (TLS etkinse).|

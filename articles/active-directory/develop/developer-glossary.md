@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.openlocfilehash: b02329d624eda440230fb99e02e08c841c5580f2
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90706005"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft Identity Platform geliştirici sözlüğü
@@ -54,7 +54,7 @@ Daha fazla bilgi için bkz. [uygulama ve hizmet sorumlusu nesneleri][AAD-App-SP-
 
 Bir uygulamanın kimlik ve erişim yönetimi işlevlerini Azure AD 'ye tümleştirmesini ve temsilciliğini sağlamak için bir Azure AD [kiracısıyla](#tenant)kayıtlı olması gerekir. Uygulamanızı Azure AD 'ye kaydettiğinizde, uygulamanız için bir kimlik yapılandırması sağladığınızda, Azure AD ile tümleştirilmesine ve şu gibi özellikler kullanmasına izin verilir:
 
-* Azure AD kimlik yönetimi ve [OpenID Connect][OpenIDConnect] protokol uygulamasını kullanarak çoklu oturum açma 'nın güçlü yönetimi
+* Azure AD kimlik yönetimi ve [OpenID Connect][OpenIDConnect] protokol uygulamasını kullanarak tek Sign-On sağlam yönetimi
 * [İstemci uygulamalarına](#client-application)yönelik, OAuth 2,0 [yetkilendirme sunucusu](#authorization-server) aracılığıyla [korumalı kaynaklara](#resource-server) aracılı erişim
 * Kaynak sahibi yetkilendirmesi temelinde korumalı kaynaklara istemci erişimini yönetmeye yönelik [onay çerçevesi](#consent) .
 

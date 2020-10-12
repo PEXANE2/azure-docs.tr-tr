@@ -8,10 +8,10 @@ ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: a5dce5b53df817bd365d4ce9670ffd556ce365f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84015511"
 ---
 # <a name="manage-analysis-services"></a>Analysis Services’ı yönetme
@@ -56,7 +56,7 @@ En son özellikleri ve Azure Analysis Services sunucunuza bağlanırken en iyi d
     ![SSMS'de bağlanma](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 
 ## <a name="server-administrators-and-database-users"></a>Sunucu yöneticileri ve veritabanı kullanıcıları
-Azure Analysis Services, iki tür Kullanıcı, Sunucu Yöneticisi ve veritabanı kullanıcısı vardır. Her iki tür Kullanıcı Azure Active Directory olmalıdır ve kurumsal e-posta adresi veya UPN tarafından belirtilmelidir. Daha fazla bilgi edinmek için bkz. [Kimlik doğrulaması ve kullanıcı izinleri](analysis-services-manage-users.md).
+Azure Analysis Services, iki tür Kullanıcı, Sunucu Yöneticisi ve veritabanı kullanıcısı vardır. Her iki tür Kullanıcı Azure Active Directory olmalıdır ve kurumsal e-posta adresi veya UPN tarafından belirtilmelidir. Daha fazla bilgi için bkz. [Kimlik doğrulaması ve izinler](analysis-services-manage-users.md).
 
 
 ## <a name="troubleshooting-connection-problems"></a>Bağlantı sorunlarını giderme

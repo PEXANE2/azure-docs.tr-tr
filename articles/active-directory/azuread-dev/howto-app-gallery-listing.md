@@ -14,10 +14,10 @@ ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 40d299049a0a1bbff81c412a5beb84f28e64ff46
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90706311"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Azure Active Directory uygulama galerisinde uygulamanızı listeleme
@@ -35,7 +35,7 @@ Bu makalede, Azure Active Directory (Azure AD) uygulama galerisinde bir uygulama
 - Karşılıklı müşteriler, adım adım bir yapılandırma öğreticisini alır.
 - Etki alanları arası kimlik yönetimi ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) için sistemi kullanan müşteriler aynı uygulama için sağlama kullanabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Federasyon uygulamaları (açık KIMLIK ve SAML/WS-beslenir) için, uygulamanın Azure AD uygulama galerisinde listelenen hizmet olarak yazılım (SaaS) modelini desteklemesi gerekir. Kurumsal Galeri uygulamaları, belirli bir müşteriyi değil birden çok müşteri yapılandırmasını desteklemelidir.
 - Açık KIMLIK bağlantısı için, uygulamanın çok kiracılı olması ve [Azure AD onay çerçevesinin](../develop/consent-framework.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) uygulama için uygun şekilde uygulanması gerekir. Kullanıcı, herhangi bir müşterinin uygulamaya onay sağlayabilmesi için, oturum açma isteğini ortak bir uç noktaya gönderebilir. Kullanıcı erişimini, kiracı KIMLIĞINE ve Kullanıcı belirtecine göre belirteçte alınan UPN 'yi kontrol edebilirsiniz.
@@ -101,7 +101,7 @@ Azure AD uygulama galerisinde bir uygulamayı listelemek için, önce Azure AD t
 
 - **Saml 2,0** veya **WS-BESLENIR**: uygulamanız SAML 2,0 ' yi destekliyorsa, [özel bir uygulama ekleme YÖNERGELERINI](../manage-apps/view-applications-portal.md)izleyerek doğrudan bir Azure AD kiracısı ile tümleştirebilirsiniz.
 
-  ![Bir SAML 2,0 veya WS-beslenir uygulamasını galeride listeleme](./media/howto-app-gallery-listing/saml.png)
+  ![Bir SAML 2,0 veya WS-Fed uygulamasını galeride listeleme](./media/howto-app-gallery-listing/saml.png)
 
   * **Saml 2,0** veya **WS-besu**kullanarak uygulamanızı Galeriye eklemek Istiyorsanız, gösterildiği gıbı **SAML 2.0/WS-beslenir** ' i seçin.
 
@@ -146,7 +146,7 @@ Müşteri tarafından istenen uygulamaların akışı aşağıda verilmiştir.
 
 ## <a name="timelines"></a>Zaman çizelgeleri
 
-Galerideki bir SAML 2,0 veya WS-Besme uygulamasını listeleme işleminin zaman çizelgesi 7 ila 10 iş gününe kadar olur.
+Galerideki bir SAML 2,0 veya WS-Fed uygulamasını listeleme işleminin zaman çizelgesi 7 ila 10 iş gündür.
 
   ![Galerideki bir SAML uygulamasını listelemek için zaman çizelgesi](./media/howto-app-gallery-listing/timeline.png)
 
