@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 35f79702b7aad51b764ce2edb37c3c76d1fe98e8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89261521"
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard şeması
@@ -99,8 +99,8 @@ Varsayılan olarak, yalnızca ses içeren ve video içermeyen kodlayıcıya bir 
 | **Bit hızı**<br/><br/> minOccurs = "0" |**xs: int** |Bu video katmanı için kullanılan bit hızı, Kbps olarak belirtilir. |
 | **Maxbit hızı**<br/><br/> minOccurs = "0" |**xs: int** |Bu video katmanı için kullanılan, Kbps olarak belirtilen maksimum bit hızı. |
 | **BufferWindow**<br/><br/> minOccurs = "0"<br/><br/> Varsayılan = "00:00:05" |**xs: Saat** |Video arabelleğinin uzunluğu. |
-| **Width**<br/><br/> minOccurs = "0" |**xs: int** |Çıkış video çerçevesinin piksel cinsinden genişliği.<br/><br/> Şu anda, hem genişlik hem de yükseklik belirtmeniz gerekir. Genişlik ve yüksekliğin çift sayı olması gerekir. |
-| **Height**<br/><br/> minOccurs = "0" |**xs: int** |Çıkış video çerçevesinin piksel cinsinden yüksekliği.<br/><br/> Şu anda, hem genişlik hem de yükseklik belirtmeniz gerekir. Genişlik ve yüksekliğin çift sayı olması gerekir.|
+| **Genişlik**<br/><br/> minOccurs = "0" |**xs: int** |Çıkış video çerçevesinin piksel cinsinden genişliği.<br/><br/> Şu anda, hem genişlik hem de yükseklik belirtmeniz gerekir. Genişlik ve yüksekliğin çift sayı olması gerekir. |
+| **Yükseklik**<br/><br/> minOccurs = "0" |**xs: int** |Çıkış video çerçevesinin piksel cinsinden yüksekliği.<br/><br/> Şu anda, hem genişlik hem de yükseklik belirtmeniz gerekir. Genişlik ve yüksekliğin çift sayı olması gerekir.|
 | **BFrames 'ler**<br/><br/> minOccurs = "0" |**xs: int** |Başvuru çerçeveleri arasındaki B kare sayısı. |
 | **ReferenceFrames**<br/><br/> minOccurs = "0"<br/><br/> Varsayılan = "3" |**xs: int** |Bir GOP içindeki başvuru çerçevelerinin sayısı. |
 | **EntropyMode**<br/><br/> minOccurs = "0"<br/><br/> Varsayılan = "Katzü" |**xs: String** |Şu değerlerden biri olabilir: **Catzb** ve **CAVLC**. |
@@ -185,7 +185,7 @@ Ses codec bileşeni|Ayrıntılar
 | --- | --- | --- |
 | **Başlangıç** |**xs: String** | |
 | **Adım** |**xs: String** | |
-| **Aralığı** |**xs: String** | |
+| **Aralık** |**xs: String** | |
 | **PreserveResolutionAfterRotation** |**xs: Boolean** |Ayrıntılı açıklama için şu bölüme bakın: [Preserveresolutionafterrotation](media-services-mes-schema.md#PreserveResolutionAfterRotation) |
 
 ### <a name="preserveresolutionafterrotation"></a><a name="PreserveResolutionAfterRotation"></a> PreserveResolutionAfterRotation
@@ -217,8 +217,8 @@ Alternatif olarak, **Preserveresolutionafterrotation** bayrağını kullanabilir
 
 | Ad | Tür | Açıklama |
 | --- | --- | --- |
-| **Width**<br/><br/> minOccurs = "0" |**xs: int** | |
-| **Height**<br/><br/> minOccurs = "0" |**xs: int** | |
+| **Genişlik**<br/><br/> minOccurs = "0" |**xs: int** | |
+| **Yükseklik**<br/><br/> minOccurs = "0" |**xs: int** | |
 
 ### <a name="attributes"></a>Öznitelikler
 
@@ -231,8 +231,8 @@ Alternatif olarak, **Preserveresolutionafterrotation** bayrağını kullanabilir
 
 | Ad | Tür | Açıklama |
 | --- | --- | --- |
-| **Width**<br/><br/> minOccurs = "0" |**xs: int** | |
-| **Height**<br/><br/> minOccurs = "0" |**xs: int** | |
+| **Genişlik**<br/><br/> minOccurs = "0" |**xs: int** | |
+| **Yükseklik**<br/><br/> minOccurs = "0" |**xs: int** | |
 
 ### <a name="attributes"></a>Öznitelikler
 
@@ -245,8 +245,8 @@ Alternatif olarak, **Preserveresolutionafterrotation** bayrağını kullanabilir
 
 | Ad | Tür | Açıklama |
 | --- | --- | --- |
-| **Width**<br/><br/> minOccurs = "0" |**xs: int** | |
-| **Height**<br/><br/> minOccurs = "0" |**xs: int** | |
+| **Genişlik**<br/><br/> minOccurs = "0" |**xs: int** | |
+| **Yükseklik**<br/><br/> minOccurs = "0" |**xs: int** | |
 | **Kalite**<br/><br/> minOccurs = "0" |**xs: int** |Geçerli değerler: 1 (en kötü)-100 (en iyi) |
 
 ### <a name="attributes"></a>Öznitelikler
@@ -303,6 +303,6 @@ Bu şemaya göre oluşturulan XML önayarlarının örneklerine bakın, bkz. [me
 ## <a name="next-steps"></a>Sonraki adımlar
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: e4255f0d42e28a72ad55d9b7f81d0dc49b2950cb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87040988"
 ---
 # <a name="createuidefinition-functions"></a>Createuıdefinition işlevleri
@@ -45,13 +45,13 @@ Bu işlevler, JSON dizeleri, diziler ve nesneler gibi koleksiyonlarla birlikte k
 * [filtreyle](create-ui-definition-collection-functions.md#filter)
 * [adı](create-ui-definition-collection-functions.md#first)
 * [soyadına](create-ui-definition-collection-functions.md#last)
-* [uzunluklu](create-ui-definition-collection-functions.md#length)
+* [length](create-ui-definition-collection-functions.md#length)
 * [harita](create-ui-definition-collection-functions.md#map)
 * [Şimdilik](create-ui-definition-collection-functions.md#skip)
 * [ayırmayı](create-ui-definition-collection-functions.md#split)
 * [take](create-ui-definition-collection-functions.md#take)
 
-## <a name="conversion-functions"></a>Dönüştürme işlevleri
+## <a name="conversion-functions"></a>Dönüşüm işlevleri
 
 Bu işlevler, JSON veri türleri ve kodlamaları arasındaki değerleri dönüştürmek için kullanılabilir.
 
@@ -76,25 +76,25 @@ Bu işlevler, JSON veri türleri ve kodlamaları arasındaki değerleri dönüş
 
 Bu işlevler, conditionals içinde kullanılabilir. Bazı işlevler tüm JSON veri türlerini desteklemiyor olabilir.
 
-* [ve](create-ui-definition-logical-functions.md#and)
+* [and](create-ui-definition-logical-functions.md#and)
 * [Coalesce](create-ui-definition-logical-functions.md#coalesce)
-* [eşittir](create-ui-definition-logical-functions.md#equals)
+* [equals](create-ui-definition-logical-functions.md#equals)
 * [büyüktür](create-ui-definition-logical-functions.md#greater)
 * [greaterOrEquals](create-ui-definition-logical-functions.md#greaterorequals)
 * [if](create-ui-definition-logical-functions.md#if)
 * [büyüktür](create-ui-definition-logical-functions.md#less)
 * [lessOrEquals](create-ui-definition-logical-functions.md#lessorequals)
-* [not](create-ui-definition-logical-functions.md#not)
+* [başlatılmadı](create-ui-definition-logical-functions.md#not)
 * [veya](create-ui-definition-logical-functions.md#or)
 
-## <a name="math-functions"></a>Matematik İşlevleri
+## <a name="math-functions"></a>Matematik işlevleri
 
 * [add](create-ui-definition-math-functions.md#add)
 * [Ceil](create-ui-definition-math-functions.md#ceil)
 * [div](create-ui-definition-math-functions.md#div)
 * [sını](create-ui-definition-math-functions.md#floor)
 * [Biçimlendir](create-ui-definition-math-functions.md#max)
-* [dk](create-ui-definition-math-functions.md#min)
+* [Min](create-ui-definition-math-functions.md#min)
 * [alma](create-ui-definition-math-functions.md#mod)
 * [MUL](create-ui-definition-math-functions.md#mul)
 * [ran](create-ui-definition-math-functions.md#rand)

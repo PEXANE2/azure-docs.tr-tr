@@ -4,10 +4,10 @@ description: Bu makalede, git deposunda (Azure DevTest Labs) bulunan örnek beti
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 14c8338d6a5ae21847da3a9c774ea6dcdac33ae4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85482080"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Azure DevTest Labs özel görüntü fabrikası oluşturma
@@ -18,7 +18,7 @@ Görüntü fabrikası, istenen tüm yapılandırmalara göre düzenli olarak gö
 
 Geliştirici masaüstlerini DevTest Labs 'de hazırlama durumuna getirmek için önemli Hızlandırıcı, özel görüntüler kullanmaktır. Özel görüntülerin downi, laboratuvarda devam etmek için ek bir şeydir. Örneğin, ürünlerin deneme sürümleri zaman içinde sona erer (veya) yeni yayınlanan güvenlik güncelleştirmeleri uygulanmaz ve bu, özel görüntüyü düzenli aralıklarla yenilemeye zorlar. Bir görüntü fabrikası ile, kaynak kodu denetimine iade edilen görüntünün bir tanımına sahip olursunuz ve tanımı temel alan özel görüntüler oluşturmak için otomatik bir işlemdir.
 
-Çözüm, diğer devam eden bakım maliyetlerini ortadan kaldırarak özel görüntülerden sanal makine oluşturma hızını sunar. Bu çözümle, otomatik olarak özel görüntüler oluşturabilir, bunları diğer DevTest Labs 'e dağıtabilir ve eski görüntüleri devre dışı bırakabilirsiniz. Aşağıdaki videoda, görüntü fabrikası ve DevTest Labs ile nasıl uygulandığı hakkında bilgi edineceksiniz.  Tüm Azure PowerShell betikleri serbestçe kullanılabilir ve burada bulunabilir: [https://aka.ms/dtlimagefactory](https://aka.ms/dtlimagefactory) .
+Çözüm, diğer devam eden bakım maliyetlerini ortadan kaldırarak özel görüntülerden sanal makine oluşturma hızını sunar. Bu çözümle, otomatik olarak özel görüntüler oluşturabilir, bunları diğer DevTest Labs 'e dağıtabilir ve eski görüntüleri devre dışı bırakabilirsiniz. Aşağıdaki videoda, görüntü fabrikası ve DevTest Labs ile nasıl uygulandığı hakkında bilgi edineceksiniz.  Tüm Azure PowerShell betikleri serbestçe kullanılabilir ve burada bulunabilir:  [https://aka.ms/dtlimagefactory](https://aka.ms/dtlimagefactory) .
 
 <br/>
 

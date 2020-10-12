@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
 ms.openlocfilehash: e5ed8fd2eba175a170c12c032e7c6ecf6a926b64
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86084622"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>HDInsight Spark kümesine uzak işleri göndermek için Apache Spark REST API’sini kullanma
@@ -97,7 +97,7 @@ Bu bölümde, toplu işi göndermek, işin ilerlemesini izlemek ve sonra silmek 
 * Uygulama jar üzerinden kümeyle ilişkili depolama hesabına zaten kopyaladınız.
 * Bu adımları denediğiniz bilgisayarda yüklü olan bilgisayara Kıvyorsunuz.
 
-Aşağıdaki adımları uygulayın:
+Aşağıdaki adımları gerçekleştirin:
 
 1. Kullanım kolaylığı için ortam değişkenlerini ayarlayın. Bu örnek, bir Windows ortamını temel alır, ortamınız için gerektiğinde değişkenleri gözden geçirin. `CLUSTERNAME`Ve `PASSWORD` değerlerini uygun değerlerle değiştirin.
 

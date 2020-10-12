@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 03/26/2018
 ms.author: alkohli
 ms.openlocfilehash: cc88d5b7a458c3666cdb4469d7021917d27115f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514327"
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>StorSimple cihazınız için çok yollu g/ç yapılandırma
@@ -66,7 +66,7 @@ Bu özelliği Windows Server konağa yüklemek için aşağıdaki yordamı izley
    5. **Özellikleri Seç** sayfasında **çok yollu g/ç**' yi seçin ve **İleri**' ye tıklayın.
    
        ![Rol ve Özellik Ekleme Sihirbazı 5](./media/storsimple-configure-mpio-windows-server/IC741000.png)
-   6. **Yükleme seçimlerini Onayla** sayfasında, seçimi onaylayın ve **gerekirse hedef sunucuyu otomatik olarak yeniden Başlat**' ı seçin. **Install**'a tıklayın.
+   6. **Yükleme seçimlerini Onayla** sayfasında, seçimi onaylayın ve **gerekirse hedef sunucuyu otomatik olarak yeniden Başlat**' ı seçin. **Yükle**'ye tıklayın.
    
        ![Rol ve Özellik Ekleme Sihirbazı 8](./media/storsimple-configure-mpio-windows-server/IC741001.png)
    7. Yükleme tamamlandığında size bildirilir. Sihirbazı kapatmak için **Kapat**'a tıklayın.

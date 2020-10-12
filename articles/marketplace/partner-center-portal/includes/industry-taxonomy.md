@@ -10,10 +10,10 @@ ms.custom: include file
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: 3b18bba04d313091cb579498febb3f383f018bff
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88604634"
 ---
 İsteğe bağlı olarak, her bir sektör altında en fazla iki sektör ve iki ifade seçin. Bu kategoriler, arama filtrelerinde sektör ve ifade kullanıldığında ve çevrimiçi mağazada uygulandığında teklifinizi görüntülemek için kullanılır. Teklifiniz belirli bir sektör ve/veya dikey hedefleniyorsa, teklifinizin teklif açıklamasında seçili sektörleri veya açıklamaları nasıl desteklediğini açıklayın. Aksi takdirde, teklifiniz sektöre özgü değilse, bir seçim yapmayın ve bu bölümü boş bırakın.

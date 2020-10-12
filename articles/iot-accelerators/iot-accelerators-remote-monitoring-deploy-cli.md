@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: 501ca51a9542229a14e98a56679837950a82891e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80258303"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>CLı kullanarak uzaktan Izleme çözüm Hızlandırıcısını dağıtma
@@ -27,7 +27,7 @@ Hesabınız yoksa yalnızca birkaç dakika içinde ücretsiz bir deneme sürüm�
 
 CLı 'yı çalıştırmak için yerel makinenizde yüklü [Node.js](https://nodejs.org/) gerekir.
 
-## <a name="install-the-cli"></a>CLI'yi yükleme
+## <a name="install-the-cli"></a>CLI’yı yükleme
 
 CLı 'yı yüklemek için komut satırı ortamınızda aşağıdaki komutu çalıştırın:
 
@@ -49,7 +49,7 @@ Oturum açma işlemini gerçekleştirmek için ekrandaki yönergeleri izleyin.
 
 Çözüm hızlandırıcıyı dağıtırken, dağıtım işlemini yapılandıran çeşitli seçenekler vardır:
 
-| Seçenek | Değerler | Description |
+| Seçenek | Değerler | Açıklama |
 | ------ | ------ | ----------- |
 | SKU    | `basic`, `standard`, `local` | _Temel_ bir dağıtım test ve gösteriler için tasarlanan tüm mikro hizmetleri tek bir sanal makineye dağıtır. _Standart_ bir dağıtım üretime yöneliktir, mikro hizmetleri birkaç sanal makineye dağıtır. _Yerel_ bir dağıtım, bir Docker kapsayıcısını yerel makinenizde mikro hizmetleri çalıştıracak şekilde yapılandırır ve depolama ve Cosmos DB gibi Azure bulut hizmetlerini kullanır. |
 | Çalışma Zamanı | `dotnet`, `java` | Mikro hizmetlerin dil uygulamasını seçer. |

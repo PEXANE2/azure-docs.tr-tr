@@ -4,10 +4,10 @@ description: Bu makalede, Microsoft Azure Backup sunucusu (MABS) kullanarak iş 
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: 6fe03260cc1759929e7ff9886b1b232a37056866
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90975508"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Sunucusu yükleyip yükseltin
@@ -95,7 +95,7 @@ Depolama çoğaltma ayarını düzenlemek için:
 
 ### <a name="downloading-the-software-package"></a>Yazılım paketi indiriliyor
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Zaten açık bir kurtarma hizmetleri Kasası varsa adım 3 ' e geçin. Kurtarma Hizmetleri Kasası açık değilse, ancak Azure portal, ana menüde, **Araştır**' ı seçin.
 
    * Kaynak listesinde **Kurtarma Hizmetleri** yazın.
@@ -210,7 +210,7 @@ Ayıklama işlemi tamamlandıktan sonra, Microsoft Azure Backup sunucusunu yükl
    >
    >
 
-    ![Microsoft Update kabul etme](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
+    ![Microsoft Update Opt-In](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
 7. *Ayarların özetini* gözden geçirin ve **yüklemeyi**seçin.
 
     ![Ayarların Özeti](./media/backup-azure-microsoft-azure-backup/summary-screen.png)

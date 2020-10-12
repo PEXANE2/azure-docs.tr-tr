@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 68ea876d9951b49a6683cc74df8b9107fd942e51
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86245679"
 ---
 # <a name="sfctl-mesh-service"></a>sfctl mesh service
@@ -27,7 +27,7 @@ Tüm hizmet kaynaklarını listeler.
 
 Bir uygulama kaynağının tüm hizmetleriyle ilgili bilgileri alır. Bilgiler, hizmetin açıklamasını ve diğer özelliklerini içerir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -48,7 +48,7 @@ Verilen ada sahip hizmet kaynağını alır.
 
 Verilen ada sahip hizmet kaynağıyla ilgili bilgileri alır. Bilgiler, hizmetin açıklamasını ve diğer özelliklerini içerir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |

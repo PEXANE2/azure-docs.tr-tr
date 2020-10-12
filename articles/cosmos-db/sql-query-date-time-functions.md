@@ -8,10 +8,10 @@ ms.date: 08/18/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 1ea838224f9d91b000100d5fa9308289619fd963
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88605185"
 ---
 # <a name="date-and-time-functions-azure-cosmos-db"></a>Tarih ve saat işlevleri (Azure Cosmos DB)
@@ -31,7 +31,7 @@ Aşağıdaki skaler işlevler üç biçimde geçerli UTC Tarih ve saatini alman�
 Aşağıdaki işlevler, DateTime, timestamp ve Tick değerlerini kolayca yönetmenize olanak sağlar:
 
 * [DateTimeAdd](sql-query-datetimeadd.md)
-* [DateTimeDiff](sql-query-datetimediff.md)
+* [Tarih TimeDiff](sql-query-datetimediff.md)
 * [DateTimeFromParts](sql-query-datetimefromparts.md)
 * [DateTimePart](sql-query-datetimepart.md)
 * [DateTimeToTicks](sql-query-datetimetoticks.md)
@@ -42,6 +42,6 @@ Aşağıdaki işlevler, DateTime, timestamp ve Tick değerlerini kolayca yönetm
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
+- [Azure Cosmos DB'ye giriş](introduction.md)
 - [Kullanıcı tanımlı Işlevler](sql-query-udfs.md)
-- [Toplamalar](sql-query-aggregates.md)
+- [Toplamlar](sql-query-aggregates.md)

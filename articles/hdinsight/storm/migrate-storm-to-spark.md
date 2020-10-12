@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/16/2019
 ms.openlocfilehash: e1262a4699bc42cb5b9a4398be2254854c5d5ff2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86081205"
 ---
 # <a name="migrate-azure-hdinsight-36-apache-storm-to-hdinsight-40-apache-spark"></a>Azure HDInsight 3,6 Apache Storm HDInsight 4,0 Apache Spark geçirin
@@ -33,20 +33,20 @@ Bu belge, Apache Storm Spark akışına ve Spark yapılandırılmış akışa ge
 
 ## <a name="comparison-between-apache-storm-and-spark-streaming-spark-structured-streaming"></a>Apache Storm ile Spark akışı, Spark yapılandırılmış akışı arasında karşılaştırma
 
-Apache Storm farklı düzeylerde garantili ileti işleme sağlayabilir. Örneğin, temel bir fırtınası uygulaması en az bir kez işlemeyi garanti edebilir ve [Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) tam bir kez işlemeyi garanti edebilir. Spark akışı ve Spark yapılandırılmış akış, bir düğüm hatası gerçekleşse bile herhangi bir giriş olayının tam olarak bir kez işlenmesini güvence altına almaz. Fırtınası her bir olayı işleyen bir modele sahiptir ve mikro Batch modelini Trident ile de kullanabilirsiniz. Spark akışı ve Spark yapılandırılmış akışı, mikro Batch işleme modeli sağlar.
+Apache Storm farklı düzeylerde garantili ileti işleme sağlayabilir. Örneğin, temel bir fırtınası uygulaması en az bir kez işlemeyi garanti edebilir ve [Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) tam bir kez işlemeyi garanti edebilir. Spark akışı ve Spark yapılandırılmış akış, bir düğüm hatası gerçekleşse bile herhangi bir giriş olayının tam olarak bir kez işlenmesini güvence altına almaz. Fırtınası her bir olayı işleyen bir modele sahiptir ve mikro Batch modelini Trident ile de kullanabilirsiniz. Spark akışı ve Spark yapılandırılmış akış Micro-Batch işleme modeli sağlar.
 
 |  |Storm |Spark Streaming | Spark yapılandırılmış akışı|
 |---|---|---|---|
 |**Olay işleme garantisi**|En az bir kez <br> Tek bir kez (Trident) |[Tam olarak bir kez](https://spark.apache.org/docs/latest/streaming-programming-guide.html)|[Tam olarak bir kez](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
 |**İşlem modeli**|Gerçek zamanlı <br> Mikro Batch (Trident) |Mikro Batch |Mikro Batch |
-|**Olay saati desteği**|[Evet](https://storm.apache.org/releases/2.0.0/Windowing.html)|No|[Evet](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
+|**Olay saati desteği**|[Evet](https://storm.apache.org/releases/2.0.0/Windowing.html)|Hayır|[Evet](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
 |**Diller**|Java, vb.|Scala, Java, Python|Python, R, Scala, Java, SQL|
 
 ### <a name="spark-streaming-vs-spark-structured-streaming"></a>Spark akışı ile Spark yapılandırılmış akışı
 
 Spark yapısal akışı Spark akışını (DStreams) değiştiriyor. Yapılandırılmış akış geliştirmeler ve bakım almaya devam eder, ancak DStreams yalnızca bakım modunda olur. **Note: Bu noktayı vurgulamak için bağlantılara ihtiyacınız vardır**. Yapılandırılmış akış, kaynak ve havuzları için DStreams kadar birçok özelliğe sahip değildir ve bu nedenle, uygun Spark akış işleme seçeneğini belirlemek için gereksinimlerinizi değerlendirin.
 
-## <a name="streaming-single-event-processing-vs-micro-batch-processing"></a>Akış (tek olay) işleme vs mikro Batch işleme
+## <a name="streaming-single-event-processing-vs-micro-batch-processing"></a>Akış (tek olay) işleme ve Micro-Batch işleme karşılaştırması
 
 Fırtınası, tek bir olayı işleyen bir model sağlar. Bu, tüm gelen kayıtların geldikçe hemen işleneceği anlamına gelir. Spark akış uygulamaları, bu toplu işi işlenmek üzere göndermeden önce her bir mikro-toplu olay toplamanız gerekir. Buna karşılık, olay temelli bir uygulama her olayı hemen işler. Spark akış gecikmesi genellikle birkaç saniye altında. Mikro Batch yaklaşımının avantajları daha verimli veri işleme ve daha basit toplu hesaplamalardır.
 
@@ -57,7 +57,7 @@ Fırtınası, tek bir olayı işleyen bir model sağlar. Bu, tüm gelen kayıtla
 
 Storm topolojileri döngüsel olmayan yönlü grafikte (DAG) düzenlenmiş birden fazla bileşenden oluşur. Veriler grafikteki bileşenler arasında akar. Her bileşen bir veya daha fazla veri akışı kullanır ve isteğe bağlı olarak bir veya daha fazla akış yayar.
 
-|Bileşen |Description |
+|Bileşen |Açıklama |
 |---|---|
 |Spout|Verileri bir topolojiye getirir. Bu bileşenler topolojiye bir veya daha fazla akış yayar.|
 |Sü|Spout veya diğer cıvatlardan yayılan akışları kullanır. Boltlar topolojiye isteğe bağlı olarak akışlar yayabilir. Boltlar ayrıca HDFS, Kafka veya HBase gibi dış hizmetlere veya depolama alanlarına veri yazmaktan sorumludur.|
@@ -67,7 +67,7 @@ Storm topolojileri döngüsel olmayan yönlü grafikte (DAG) düzenlenmiş birde
 
 Fırtınası, fırtınası kümesinin çalışmasını tutan aşağıdaki üç Daemon 'ları oluşur.
 
-|İnin |Description |
+|İnin |Açıklama |
 |---|---|
 |Nimbus|Hadoop JobTracker 'e benzer şekilde, kodu kümeye dağıtmaktan ve makinelere görevler atamaya ve hatalara yönelik izlemeye karşı sorumludur.|
 |Zookeeper|Küme düzenlemesi için kullanılır.|

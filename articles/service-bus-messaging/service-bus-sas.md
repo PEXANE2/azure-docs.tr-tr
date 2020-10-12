@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 07/30/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: fb90b2ae290752753b58b5e96c6c8a8b23f4c168
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89012084"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Paylaşılan erişim Imzaları ile erişim denetimi Service Bus
@@ -20,7 +20,7 @@ SAS koruyucuları, yetkilendirme kurallarına göre Service Bus erişimi sağlar
 > [!NOTE]
 > Azure Service Bus, Azure Active Directory (Azure AD) kullanarak bir Service Bus ad alanına ve varlıklarına erişim yetkisi verme desteği sağlar. Azure AD tarafından döndürülen OAuth 2,0 belirtecini kullanarak kullanıcıları veya uygulamaları yetkilendirmek, paylaşılan erişim imzaları (SAS) üzerinde üstün güvenlik ve kullanım kolaylığı sağlar. Azure AD ile, belirteçlerin kodunuzda depolanması ve olası güvenlik açıklarına karşı risk altında olması gerekmez.
 >
-> Microsoft, mümkün olduğunda Azure Service Bus uygulamalarınızın Azure AD 'yi kullanmasını önerir. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+> Microsoft, mümkün olduğunda Azure Service Bus uygulamalarınızın Azure AD 'yi kullanmasını önerir. Daha fazla bilgi için aşağıdaki makalelere bakın:
 > - [Azure Service Bus varlıklara erişmek için Azure Active Directory ile bir uygulamanın kimliğini doğrulama ve yetkilendirme](authenticate-application.md).
 > - [Azure Service Bus kaynaklara erişmek için Azure Active Directory ile yönetilen bir kimliğin kimliğini doğrulama](service-bus-managed-service-identity.md)
 
@@ -181,7 +181,7 @@ Bir göndereni veya istemciye bir SAS belirteci verirseniz, bu anahtara doğruda
 
 ## <a name="use-the-shared-access-signature-at-amqp-level"></a>Paylaşılan erişim Imzasını kullanın (AMQP düzeyinde)
 
-Önceki bölümde, Service Bus veri göndermek için bir HTTP POST isteğiyle SAS belirtecini nasıl kullanacağınızı gördünüz. Bildiğiniz gibi, birçok senaryoda performans nedenleriyle kullanılacak tercih edilen protokol olan Gelişmiş İleti Sıraya Alma Protokolü (AMQP) kullanarak Service Bus erişebilirsiniz. AMQP ile SAS belirteci kullanımı, 2013 tarihinden bu yana çalışan taslak, ancak bugün Azure tarafından desteklenen belge [AMQP talep tabanlı güvenlik sürüm 1,0](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc) ' de açıklanmaktadır.
+Önceki bölümde, Service Bus veri göndermek için bir HTTP POST isteğiyle SAS belirtecini nasıl kullanacağınızı gördünüz. Bildiğiniz gibi, birçok senaryoda performans nedenleriyle kullanılacak tercih edilen protokol olan Gelişmiş İleti Sıraya Alma Protokolü (AMQP) kullanarak Service Bus erişebilirsiniz. AMQP ile SAS belirteci kullanımı, 1,0 2013 sonrasında çalışan taslak, ancak bugün Azure tarafından desteklenen belge [amqp Claim-Based güvenlik sürümü](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc) ' de açıklanmaktadır.
 
 Service Bus verileri gönderilmeye başlamadan önce, Yayımcı, bir AMQP iletisinin içindeki SAS belirtecini **$CBS** adlı iyi tanımlanmış bir AMQP düğümüne göndermelidir (tüm SAS belirteçlerini almak ve doğrulamak üzere hizmet tarafından kullanılan bir "özel" kuyruğu olarak görebilirsiniz). Yayımcının AMQP iletisi içinde **ReplyTo** alanını belirtmesi gerekir; Bu, hizmetin, bir yayımcının belirteç doğrulama sonucuyla (yayımcı ve hizmet arasında basit bir istek/yanıt düzeniyle) yanıt veren düğümüdür. Bu yanıt düğümü, AMQP 1,0 belirtiminde açıklanan "anında" uzak düğüm oluşturma "hakkında konuşuyor. SAS belirtecinin geçerli olup olmadığını kontrol ettikten sonra yayımcı, hizmete veri gönderilmeye başlayabilir ve çalışmaya başlayabilir.
 
@@ -277,7 +277,7 @@ Aşağıdaki tabloda Service Bus kaynakları üzerinde çeşitli işlemler için
 | İleti kuyruğu oturumuyla ilişkili durumu alma |Dinle |Geçerli bir sıra adresi |
 | İleti kuyruğu oturumuyla ilişkili durumu ayarlama |Dinle |Geçerli bir sıra adresi |
 | Daha sonra teslim için bir ileti zamanlayın; Örneğin, [Schedulemessageasync ()](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) |Dinle | Geçerli bir sıra adresi
-| **İlerde** | | |
+| **Konu** | | |
 | Konu başlığı oluşturma |Yönetme |Herhangi bir ad alanı adresi |
 | Konuyu silme |Yönetme |Herhangi bir geçerli konu adresi |
 | Konuları listeleme |Yönetme |/$Resources/konular |

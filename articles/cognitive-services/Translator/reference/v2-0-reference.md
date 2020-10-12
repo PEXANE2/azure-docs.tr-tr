@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 05/15/2018
 ms.author: swmachan
 ms.openlocfilehash: 7fa148579e7525933d388b8a93c9a3476f473cb6
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83588624"
 ---
 # <a name="translator-v20"></a>Translator v 2.0
@@ -52,7 +52,7 @@ Kaynak metinde olsa bile küfür 'ın çeviride oluşmasını engellemek isterse
 |ProfanityAction    |Eylem |Örnek kaynak (Japonca)  |Örnek çeviri (Ingilizce)  |
 |:--|:--|:--|:--|
 |NoAction   |Varsayılan. Seçeneği ayarlamaya benzer. Küfür kaynaktan hedefe geçirilecek.        |彼はジャッカスです.     |Bu bir Jackass.   |
-|İm     |Küfürlü kelimeler, XML etiketleri \< küfür> ve \< /küfür> çevrelenebilir.       |彼はジャッカスです. |\<Jackass \< /küfür> bir küfür>.  |
+|İm     |Küfürlü kelimeler, XML etiketleri \<profanity> ve ile çevrelenebilir \</profanity> .       |彼はジャッカスです. |Bu bir \<profanity> Jackass \</profanity> .  |
 |Silindi    |Küfürlü sözcükler, değişiklik yapılmadan çıkışta kaldırılacak.     |彼はジャッカスです. |Bir.   |
 
     
@@ -88,16 +88,16 @@ Yanıt içerik türü: Application/XML
 |AppID  |olmamalıdır    |Gereklidir. `Authorization`Veya `Ocp-Apim-Subscription-Key` üstbilgisi kullanılıyorsa, `appid` alanı boş bırakın. Aksi takdirde, içeren bir dize ekleyin `"Bearer" + " " + "access_token"` .|sorgu|string|
 |metin|olmamalıdır   |Gereklidir. Çevrilecek metni temsil eden bir dize. Metin 10.000 karakterden fazlasını içeremez.|sorgu|string|
 |Kaynak|olmamalıdır   |İsteğe bağlı. Çevrilen metnin dil kodunu temsil eden bir dize. Örneğin, Ingilizce için en.|sorgu|string|
-|-|olmamalıdır |Gereklidir. Metni çevirecek dilin kodunu temsil eden bir dize.|sorgu|string|
-|contentType|olmamalıdır    |İsteğe bağlı. Çevrilen metnin biçimi. Desteklenen biçimler `text/plain` (varsayılan) ve `text/html` . Herhangi bir HTML öğesinin düzgün biçimlendirilmiş, tam öğeler olması gerekir.|sorgu|string|
+|şöyle değiştirin:|olmamalıdır |Gereklidir. Metni çevirecek dilin kodunu temsil eden bir dize.|sorgu|string|
+|contentType|olmamalıdır    |İsteğe bağlı. Çevrilen metnin biçimi. Desteklenen biçimler `text/plain` (varsayılan) ve  `text/html` . Herhangi bir HTML öğesinin düzgün biçimlendirilmiş, tam öğeler olması gerekir.|sorgu|string|
 |category|olmamalıdır   |İsteğe bağlı. Çevirinin kategorisini (etki alanı) içeren bir dize. Varsayılan değer: `general`.|sorgu|string|
-|Yetkilendirme|olmamalıdır  |Hem `appid` alan hem de `Ocp-Apim-Subscription-Key` üst bilgi boş bırakılırsa gereklidir. Yetkilendirme belirteci: `"Bearer" + " " + "access_token"` .|üst bilgi|string|
+|Yetkilendirme|olmamalıdır  |Hem `appid` alan hem de `Ocp-Apim-Subscription-Key` üst bilgi boş bırakılırsa gereklidir. Yetkilendirme belirteci:  `"Bearer" + " " + "access_token"` .|üst bilgi|string|
 |Ocp-Apim-Subscription-Key|olmamalıdır  |Hem `appid` alan hem de `Authorization` üst bilgi boş bırakılırsa gereklidir.|üst bilgi|string|
 
 
 ### <a name="response-messages"></a>Yanıt iletileri
 
-|HTTP durum kodu|Nedeni|
+|HTTP durum kodu|Neden|
 |:--|:--|
 |400    |Hatalı istek. Giriş parametrelerini ve ayrıntılı hata yanıtını denetleyin.|
 |401    |Geçersiz kimlik bilgileri.|
@@ -190,12 +190,12 @@ Yanıt içerik türü: Application/XML
 
 |Parametre|Değer|Açıklama|Parametre türü|Veri türü|
 |:--|:--|:--|:--|:--|
-|Yetkilendirme|olmamalıdır  |Hem `appid` alan hem de `Ocp-Apim-Subscription-Key` üst bilgi boş bırakılırsa gereklidir. Yetkilendirme belirteci: `"Bearer" + " " + "access_token"` .|üst bilgi|string|
+|Yetkilendirme|olmamalıdır  |Hem `appid` alan hem de `Ocp-Apim-Subscription-Key` üst bilgi boş bırakılırsa gereklidir. Yetkilendirme belirteci:  `"Bearer" + " " + "access_token"` .|üst bilgi|string|
 |Ocp-Apim-Subscription-Key|olmamalıdır|Hem `appid` alan hem de `Authorization` üst bilgi boş bırakılırsa gereklidir.|üst bilgi|string|
 
 ### <a name="response-messages"></a>Yanıt iletileri
 
-|HTTP durum kodu   |Nedeni|
+|HTTP durum kodu   |Neden|
 |:--|:--|
 |400    |Hatalı istek. Giriş parametrelerini ve ayrıntılı hata yanıtını denetleyin. Yaygın hatalar şunlardır: <ul><li>Dizi öğesi boş olamaz.</li><li>Geçersiz kategori.</li><li>Dil, geçersiz.</li><li>Dil geçersiz.</li><li>İstek çok fazla öğe içeriyor.</li><li>Kimden dili desteklenmiyor.</li><li>To dili desteklenmiyor.</li><li>Çeviri Isteğinde çok fazla veri yok.</li><li>HTML doğru biçimde değil.</li><li>Çeviri Isteğine çok fazla sayıda dize geçirildi.</li></ul>|
 |401    |Geçersiz kimlik bilgileri.|
@@ -209,7 +209,7 @@ Geçirilen dile yerelleştirilmiş, parametresi olarak geçirilen dillerin kolay
 
 İstek URI 'SI `https://api.microsofttranslator.com/V2/Http.svc/GetLanguageNames` .
 
-İstek gövdesi, kolay adların alınacağı ISO 639-1 dil kodlarını temsil eden bir dize dizisi içerir. İşte bir örnek:
+İstek gövdesi, kolay adların alınacağı ISO 639-1 dil kodlarını temsil eden bir dize dizisi içerir. Aşağıda bir örnek verilmiştir:
 
 ```
 <ArrayOfstring xmlns:i="https://www.w3.org/2001/XMLSchema-instance"  xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
@@ -233,12 +233,12 @@ Yanıt içerik türü: Application/XML
 |:--|:--|:--|:--|:--|
 |AppID|olmamalıdır|Gereklidir. `Authorization`Veya `Ocp-Apim-Subscription-Key` üstbilgisi kullanılıyorsa, `appid` alanı boş bırakın. Aksi takdirde, içeren bir dize ekleyin `"Bearer" + " " + "access_token"` .|sorgu|string|
 |locale|olmamalıdır |Gereklidir. Dil adlarını yerelleştirmek için kullanılan aşağıdakilerden birini temsil eden bir dize: <ul><li>ISO 639 2-bir dille ilişkili küçük harfli bir kültür kodu ve ISO 3166 2-Letter büyük harf alt kültür kodu birleşimi. <li>Bir ISO 639 küçük harfli kültür kodu.|sorgu|string|
-|Yetkilendirme|olmamalıdır  |Hem `appid` alan hem de `Ocp-Apim-Subscription-Key` üst bilgi boş bırakılırsa gereklidir. Yetkilendirme belirteci: `"Bearer" + " " + "access_token"` .|üst bilgi|string|
+|Yetkilendirme|olmamalıdır  |Hem `appid` alan hem de `Ocp-Apim-Subscription-Key` üst bilgi boş bırakılırsa gereklidir. Yetkilendirme belirteci:  `"Bearer" + " " + "access_token"` .|üst bilgi|string|
 |Ocp-Apim-Subscription-Key|olmamalıdır  |Hem `appid` alan hem de `Authorization` üst bilgi boş bırakılırsa gereklidir.|üst bilgi|string|
 
 ### <a name="response-messages"></a>Yanıt iletileri
 
-|HTTP durum kodu|Nedeni|
+|HTTP durum kodu|Neden|
 |:--|:--|
 |400    |Hatalı istek. Giriş parametrelerini ve ayrıntılı hata yanıtını denetleyin.|
 |401    |Geçersiz kimlik bilgileri.|
@@ -248,7 +248,7 @@ Yanıt içerik türü: Application/XML
 ## <a name="get-getlanguagesfortranslate"></a>/GetLanguagesForTranslate al
 
 ### <a name="implementation-notes"></a>Uygulama notları
-Çeviri hizmeti tarafından desteklenen dilleri temsil eden dil kodlarının bir listesini alır.  `Translate`ve `TranslateArray` Bu dillerin ikisi arasında çeviri yapabilir.
+Çeviri hizmeti tarafından desteklenen dilleri temsil eden dil kodlarının bir listesini alır.  `Translate` ve `TranslateArray` Bu dillerin ikisi arasında çeviri yapabilir.
 
 İstek URI 'SI `https://api.microsofttranslator.com/V2/Http.svc/GetLanguagesForTranslate` .
 
@@ -266,12 +266,12 @@ Yanıt içerik türü: Application/XML
 |Parametre|Değer|Açıklama|Parametre türü|Veri türü|
 |:--|:--|:--|:--|:--|
 |AppID|olmamalıdır|Gereklidir. `Authorization`Veya `Ocp-Apim-Subscription-Key` üstbilgisi kullanılıyorsa, `appid` alanı boş bırakın. Aksi takdirde, içeren bir dize ekleyin `"Bearer" + " " + "access_token"` .|sorgu|string|
-|Yetkilendirme|olmamalıdır  |Hem `appid` alan hem de `Ocp-Apim-Subscription-Key` üst bilgi boş bırakılırsa gereklidir. Yetkilendirme belirteci: `"Bearer" + " " + "access_token"` .|üst bilgi|string|
+|Yetkilendirme|olmamalıdır  |Hem `appid` alan hem de `Ocp-Apim-Subscription-Key` üst bilgi boş bırakılırsa gereklidir. Yetkilendirme belirteci:  `"Bearer" + " " + "access_token"` .|üst bilgi|string|
 |Ocp-Apim-Subscription-Key|olmamalıdır|Hem `appid` alan hem de `Authorization` üst bilgi boş bırakılırsa gereklidir.|üst bilgi|string|
 
 ### <a name="response-messages"></a>Yanıt iletileri
 
-|HTTP durum kodu|Nedeni|
+|HTTP durum kodu|Neden|
 |:--|:--|
 |400    |Hatalı istek. Giriş parametrelerini ve ayrıntılı hata yanıtını denetleyin.|
 |401    |Geçersiz kimlik bilgileri.|
@@ -299,12 +299,12 @@ Yanıt içerik türü: Application/XML
 |Parametre|Değer|Açıklama|Parametre türü|Veri türü|
 |:--|:--|:--|:--|:--|
 |AppID|olmamalıdır|Gereklidir. `Authorization`Veya `Ocp-Apim-Subscription-Key` üstbilgisi kullanılıyorsa, `appid` alanı boş bırakın. Aksi takdirde, içeren bir dize ekleyin `"Bearer" + " " + "access_token"` .|sorgu|string|
-|Yetkilendirme|olmamalıdır|Hem `appid` alan hem de `Ocp-Apim-Subscription-Key` üst bilgi boş bırakılırsa gereklidir. Yetkilendirme belirteci: `"Bearer" + " " + "access_token"` .|üst bilgi|string|
+|Yetkilendirme|olmamalıdır|Hem `appid` alan hem de `Ocp-Apim-Subscription-Key` üst bilgi boş bırakılırsa gereklidir. Yetkilendirme belirteci:  `"Bearer" + " " + "access_token"` .|üst bilgi|string|
 |Ocp-Apim-Subscription-Key|olmamalıdır|Hem `appid` alan hem de `Authorization` üst bilgi boş bırakılırsa gereklidir.|üst bilgi|string|
  
 ### <a name="response-messages"></a>Yanıt iletileri
 
-|HTTP durum kodu|Nedeni|
+|HTTP durum kodu|Neden|
 |:--|:--|
 |400|Hatalı istek. Giriş parametrelerini ve ayrıntılı hata yanıtını denetleyin.|
 |401|Geçersiz kimlik bilgileri.|
@@ -333,14 +333,14 @@ Yanıt içerik türü: Application/XML
 |AppID|olmamalıdır|Gereklidir. `Authorization`Veya `Ocp-Apim-Subscription-Key` üstbilgisi kullanılıyorsa, `appid` alanı boş bırakın. Aksi takdirde, içeren bir dize ekleyin `"Bearer" + " " + "access_token"` .|sorgu|string|
 |metin|olmamalıdır   |Gereklidir. Belirtilen dilde akış için söylenen bir veya daha fazla cümle içeren bir dize. Metnin 2.000 karakteri aşmaması gerekir.|sorgu|string|
 |language|olmamalıdır   |Gereklidir. Metnin konuşmasını istediğiniz dilin desteklenen dil kodunu temsil eden bir dize. Kod, yöntemi tarafından döndürülen kodlardan biri olmalıdır `GetLanguagesForSpeak` .|sorgu|string|
-|biçim|olmamalıdır|İsteğe bağlı. Content-Type KIMLIĞINI belirten bir dize. Şu anda `audio/wav` ve `audio/mp3` kullanılabilir. Varsayılan değer: `audio/wav`.|sorgu|string|
-|seçenekler|olmamalıdır    |İsteğe bağlı. Sentezlenmiş konuşmanın özelliklerini belirten bir dize:<ul><li>`MaxQuality`ve `MinSize` ses sinyalinin kalitesini belirtin. `MaxQuality`en yüksek kaliteyi sağlar. `MinSize`en küçük dosya boyutunu sağlar. Varsayılan değer `MinSize` .</li><li>`female`ve `male` sesin istenen cinsiyetini belirtin. Varsayılan değer: `female`. <code>\|</code>Birden çok seçenek dahil etmek için dikey çubuğu () kullanın. Örneğin, `MaxQuality|Male`.</li></li></ul>  |sorgu|string|
-|Yetkilendirme|olmamalıdır|Hem `appid` alan hem de `Ocp-Apim-Subscription-Key` üst bilgi boş bırakılırsa gereklidir. Yetkilendirme belirteci: `"Bearer" + " " + "access_token"` .|üst bilgi|string|
+|biçim|olmamalıdır|İsteğe bağlı. Content-Type KIMLIĞINI belirten bir dize. Şu anda  `audio/wav` ve `audio/mp3` kullanılabilir. Varsayılan değer: `audio/wav`.|sorgu|string|
+|seçenekler|olmamalıdır    |İsteğe bağlı. Sentezlenmiş konuşmanın özelliklerini belirten bir dize:<ul><li>`MaxQuality` ve `MinSize` ses sinyalinin kalitesini belirtin. `MaxQuality` en yüksek kaliteyi sağlar. `MinSize` en küçük dosya boyutunu sağlar. Varsayılan değer  `MinSize` .</li><li>`female` ve `male` sesin istenen cinsiyetini belirtin. Varsayılan değer: `female`. <code>\|</code>Birden çok seçenek dahil etmek için dikey çubuğu () kullanın. Örneğin, `MaxQuality|Male`.</li></li></ul>  |sorgu|string|
+|Yetkilendirme|olmamalıdır|Hem `appid` alan hem de `Ocp-Apim-Subscription-Key` üst bilgi boş bırakılırsa gereklidir. Yetkilendirme belirteci:  `"Bearer" + " " + "access_token"` .|üst bilgi|string|
 |Ocp-Apim-Subscription-Key|olmamalıdır  |Hem `appid` alan hem de `Authorization` üst bilgi boş bırakılırsa gereklidir.|üst bilgi|string|
 
 ### <a name="response-messages"></a>Yanıt iletileri
 
-|HTTP durum kodu|Nedeni|
+|HTTP durum kodu|Neden|
 |:--|:--|
 |400    |Hatalı istek. Giriş parametrelerini ve ayrıntılı hata yanıtını denetleyin.|
 |401    |Geçersiz kimlik bilgileri.|
@@ -368,12 +368,12 @@ Yanıt içerik türü: Application/XML
 |:--|:--|:--|:--|:--|
 |AppID|olmamalıdır  |Gereklidir. `Authorization`Veya `Ocp-Apim-Subscription-Key` üstbilgisi kullanılıyorsa, `appid` alanı boş bırakın. Aksi takdirde, içeren bir dize ekleyin `"Bearer" + " " + "access_token"` .|sorgu|string|
 |metin|olmamalıdır|Gereklidir. Dili tanımlanabilecek metni içeren bir dize. Metnin 10.000 karakteri aşmaması gerekir.|sorgu|  string|
-|Yetkilendirme|olmamalıdır|Hem `appid` alan hem de `Ocp-Apim-Subscription-Key` üst bilgi boş bırakılırsa gereklidir. Yetkilendirme belirteci: `"Bearer" + " " + "access_token"` .|üst bilgi|string|
+|Yetkilendirme|olmamalıdır|Hem `appid` alan hem de `Ocp-Apim-Subscription-Key` üst bilgi boş bırakılırsa gereklidir. Yetkilendirme belirteci:  `"Bearer" + " " + "access_token"` .|üst bilgi|string|
 |Ocp-Apim-Subscription-Key  |olmamalıdır    |Hem `appid` alan hem de `Authorization` üst bilgi boş bırakılırsa gereklidir.|üst bilgi|string|
 
 ### <a name="response-messages"></a>Yanıt iletileri
 
-|HTTP durum kodu|Nedeni|
+|HTTP durum kodu|Neden|
 |:--|:--|
 |400|Hatalı istek. Giriş parametrelerini ve ayrıntılı hata yanıtını denetleyin.|
 |401    |Geçersiz kimlik bilgileri.|
@@ -412,7 +412,7 @@ Metin 10.000 karakterden uzun olamaz.
 ```
 
 ### <a name="response-class-status-200"></a>Response sınıfı (durum 200)
-`DetectArray`başarılı oldu. Giriş dizisinin her satırı için iki karakterli bir dil kodu içeren bir dize dizisi döndürür.
+`DetectArray` başarılı oldu. Giriş dizisinin her satırı için iki karakterli bir dil kodu içeren bir dize dizisi döndürür.
 
 string
 
@@ -423,12 +423,12 @@ Yanıt içerik türü: Application/XML
 |Parametre|Değer|Açıklama|Parametre türü|Veri türü|
 |:--|:--|:--|:--|:--|
 |AppID|olmamalıdır|Gereklidir. `Authorization`Veya `Ocp-Apim-Subscription-Key` üstbilgisi kullanılıyorsa, `appid` alanı boş bırakın. Aksi takdirde, içeren bir dize ekleyin `"Bearer" + " " + "access_token"` .|sorgu|string|
-|Yetkilendirme|olmamalıdır|Hem `appid` alan hem de `Ocp-Apim-Subscription-Key` üst bilgi boş bırakılırsa gereklidir.  Yetkilendirme belirteci: `"Bearer" + " " + "access_token"` .|üst bilgi|string|
+|Yetkilendirme|olmamalıdır|Hem `appid` alan hem de `Ocp-Apim-Subscription-Key` üst bilgi boş bırakılırsa gereklidir.  Yetkilendirme belirteci:  `"Bearer" + " " + "access_token"` .|üst bilgi|string|
 |Ocp-Apim-Subscription-Key|olmamalıdır|Hem `appid` alan hem de `Authorization` üst bilgi boş bırakılırsa gereklidir.|üst bilgi|string|
 
 ### <a name="response-messages"></a>Yanıt iletileri
 
-|HTTP durum kodu|Nedeni|
+|HTTP durum kodu|Neden|
 |:--|:--|
 |400    |Hatalı istek. Giriş parametrelerini ve ayrıntılı hata yanıtını denetleyin.|
 |401    |Geçersiz kimlik bilgileri.|
@@ -460,22 +460,22 @@ Yanıt içerik türü: uygulama: XML
 |originalText|olmamalıdır|Gereklidir. Çevrilecek metni içeren bir dize. Dizenin uzunluk üst sınırı 1.000 karakterdir.|sorgu|string|
 |translatedText|olmamalıdır |Gereklidir. Hedef dile çevrilmiş metin içeren bir dize. Dizenin uzunluk üst sınırı 2.000 karakterdir.|sorgu|string|
 |Kaynak|olmamalıdır   |Gereklidir. Metnin özgün dilinin dil kodunu temsil eden bir dize. Örneğin, en Ingilizce ve Almanca için de.|sorgu|string|
-|-|olmamalıdır|Gereklidir. Metni çevirecek dilin dil kodunu temsil eden bir dize.|sorgu|string|
-|rating|olmamalıdır |İsteğe bağlı. Dize için kalite derecesini temsil eden bir tamsayı. Değer-10 ile 10 arasındadır. Varsayılan değer 1'dir.|sorgu|integer|
+|şöyle değiştirin:|olmamalıdır|Gereklidir. Metni çevirecek dilin dil kodunu temsil eden bir dize.|sorgu|string|
+|rating|olmamalıdır |İsteğe bağlı. Dize için kalite derecesini temsil eden bir tamsayı. Değer-10 ile 10 arasındadır. Varsayılan değer 1'dir.|sorgu|tamsayı|
 |contentType|olmamalıdır    |İsteğe bağlı. Çevrilen metnin biçimi. Desteklenen biçimler `text/plain` ve ' dir `text/html` . Herhangi bir HTML öğesinin düzgün biçimlendirilmiş, tam öğeler olması gerekir.    |sorgu|string|
 |category|olmamalıdır|İsteğe bağlı. Çevirinin kategorisini (etki alanı) içeren bir dize. Varsayılan değer: `general`.|sorgu|string|
 |kullanıcı|olmamalıdır|Gereklidir. Gönderimi kaynağını izlemek için kullanılan bir dize.|sorgu|string|
 |kullanılmamışsa|olmamalıdır|İsteğe bağlı. Çevirinin içerik konumunu içeren bir dize.|sorgu|string|
-|Yetkilendirme|olmamalıdır|Hem `appid` alan hem de `Ocp-Apim-Subscription-Key` üst bilgi boş bırakılırsa gereklidir.  Yetkilendirme belirteci: `"Bearer" + " " + "access_token"` .  |üst bilgi|string|
+|Yetkilendirme|olmamalıdır|Hem `appid` alan hem de `Ocp-Apim-Subscription-Key` üst bilgi boş bırakılırsa gereklidir.  Yetkilendirme belirteci:  `"Bearer" + " " + "access_token"` .  |üst bilgi|string|
 |Ocp-Apim-Subscription-Key|olmamalıdır|Hem `appid` alan hem de `Authorization` üst bilgi boş bırakılırsa gereklidir.|üst bilgi|string|
 
 ### <a name="response-messages"></a>Yanıt iletileri
 
-|HTTP durum kodu|Nedeni|
+|HTTP durum kodu|Neden|
 |:--|:--|
 |400    |Hatalı istek. Giriş parametrelerini ve ayrıntılı hata yanıtını denetleyin.|
 |401    |Geçersiz kimlik bilgileri.|
-|410|`AddTranslation`artık desteklenmiyor.|
+|410|`AddTranslation` artık desteklenmiyor.|
 |500    |Sunucu hatası. Hata devam ederse, bize bilgi verin. Lütfen isteğin yaklaşık Tarih & zamanını ve yanıt üstbilgisine dahil edilen istek KIMLIĞI ile bize bildirin `X-MS-Trans-Info` .|
 |503    |Hizmet geçici olarak kullanılamıyor. Lütfen yeniden deneyin ve hatanın devam edip etmediğini bize bildirin.|
 
@@ -523,7 +523,7 @@ Bu öğeler şunlardır `AddtranslationsRequest` :
 * `Options`İstenir. ,, Ve dahil olmak üzere seçenekler kümesi `Category` `ContentType` `Uri` `User` . `User` gereklidir. `Category`, `ContentType` ve `Uri` isteğe bağlıdır. Belirtilen öğelerin alfabetik sırada listelenmesi gerekir.
 
 ### <a name="response-class-status-200"></a>Response sınıfı (durum 200)
-`AddTranslationArray`Yöntem başarılı oldu. 
+`AddTranslationArray` Yöntem başarılı oldu. 
 
 31 Ocak 2018 ' den sonra cümle gönderimleri kabul edilmez. Hizmet 410 hata koduyla yanıt verir.
 
@@ -535,16 +535,16 @@ Yanıt içerik türü: Application/XML
 
 |Parametre|Değer|Açıklama|Parametre türü|Veri türü|
 |:--|:--|:--|:--|:--|
-|Yetkilendirme|olmamalıdır|Hem `appid` alan hem de `Ocp-Apim-Subscription-Key` üst bilgi boş bırakılırsa gereklidir.  Yetkilendirme belirteci: `"Bearer" + " " + "access_token"` .|üst bilgi|string|
+|Yetkilendirme|olmamalıdır|Hem `appid` alan hem de `Ocp-Apim-Subscription-Key` üst bilgi boş bırakılırsa gereklidir.  Yetkilendirme belirteci:  `"Bearer" + " " + "access_token"` .|üst bilgi|string|
 |Ocp-Apim-Subscription-Key|olmamalıdır|Hem `appid` alan hem de `Authorization` üst bilgi boş bırakılırsa gereklidir.|üst bilgi|string|
 
 ### <a name="response-messages"></a>Yanıt iletileri
 
-|HTTP durum kodu|Nedeni|
+|HTTP durum kodu|Neden|
 |:--|:--|
 |400    |Hatalı istek. Giriş parametrelerini ve ayrıntılı hata yanıtını denetleyin.|
 |401    |Geçersiz kimlik bilgileri.|
-|410    |`AddTranslation`artık desteklenmiyor.|
+|410    |`AddTranslation` artık desteklenmiyor.|
 |500    |Sunucu hatası. Hata devam ederse, bize bilgi verin. Lütfen isteğin yaklaşık Tarih & zamanını ve yanıt üstbilgisine dahil edilen istek KIMLIĞI ile bize bildirin `X-MS-Trans-Info` .|
 |503|Hizmet geçici olarak kullanılamıyor. Lütfen yeniden deneyin ve hatanın devam edip etmediğini bize bildirin.|
 
@@ -560,7 +560,7 @@ Metnin bir bölümünü cümlelere böler ve her tümcenin uzunluklarını içer
 ### <a name="response-class-status-200"></a>Response sınıfı (durum 200)
 Tümcelerin uzunluklarının temsil eden tamsayılar dizisi. Dizinin uzunluğu, Tümcelerin sayısını temsil eder. Değerler her tümcenin uzunluğunu temsil eder.
 
-integer
+tamsayı
 
 Yanıt içerik türü: Application/XML
 
@@ -571,12 +571,12 @@ Yanıt içerik türü: Application/XML
 |AppID|olmamalıdır  |Gereklidir. `Authorization`Veya `Ocp-Apim-Subscription-Key` üstbilgisi kullanılıyorsa, `appid` alanı boş bırakın. Aksi takdirde, içeren bir dize ekleyin `"Bearer" + " " + "access_token"` .|sorgu| string|
 |metin|olmamalıdır   |Gereklidir. Cümlelere bölünecek metni temsil eden bir dize. Metnin en büyük boyutu 10.000 karakterdir.|sorgu|string|
 |language   |olmamalıdır    |Gereklidir. Giriş metninin dil kodunu temsil eden bir dize.|sorgu|string|
-|Yetkilendirme|olmamalıdır|Hem `appid` alan hem de `Ocp-Apim-Subscription-Key` üst bilgi boş bırakılırsa gereklidir. Yetkilendirme belirteci: `"Bearer" + " " + "access_token"` .   |üst bilgi|string|
+|Yetkilendirme|olmamalıdır|Hem `appid` alan hem de `Ocp-Apim-Subscription-Key` üst bilgi boş bırakılırsa gereklidir. Yetkilendirme belirteci:  `"Bearer" + " " + "access_token"` .   |üst bilgi|string|
 |Ocp-Apim-Subscription-Key|olmamalıdır|Hem `appid` alan hem de `Authorization` üst bilgi boş bırakılırsa gereklidir.|üst bilgi|string|
 
 ### <a name="response-messages"></a>Yanıt iletileri
 
-|HTTP durum kodu|Nedeni|
+|HTTP durum kodu|Neden|
 |:--|:--|
 |400|Hatalı istek. Giriş parametrelerini ve ayrıntılı hata yanıtını denetleyin.|
 |401|Geçersiz kimlik bilgileri.|
@@ -668,14 +668,14 @@ Yanıt içerik türü: Application/XML
 |AppID|olmamalıdır|Gereklidir. `Authorization`Veya `Ocp-Apim-Subscription-Key` üstbilgisi kullanılıyorsa, `appid` alanı boş bırakın. Aksi takdirde, içeren bir dize ekleyin `"Bearer" + " " + "access_token"` .|sorgu|string|
 |metin|olmamalıdır|Gereklidir. Çevrilecek metni temsil eden bir dize. Metnin en büyük boyutu 10.000 karakterdir.|sorgu|string|
 |Kaynak|olmamalıdır|Gereklidir. Çevrilen metnin dil kodunu temsil eden bir dize.|sorgu|string|
-|- |olmamalıdır    |Gereklidir. Metni çevirecek dilin dil kodunu temsil eden bir dize.|sorgu|string|
-|Maxçeviriler|olmamalıdır|Gereklidir. Döndürülecek en fazla çeviri sayısını temsil eden bir tamsayı.|sorgu|integer|
-|Yetkilendirme| olmamalıdır|Hem `appid` alan hem de `Ocp-Apim-Subscription-Key` üst bilgi boş bırakılırsa gereklidir. Yetkilendirme belirteci: `"Bearer" + " " + "access_token"` .|string|  üst bilgi|
+|şöyle değiştirin: |olmamalıdır    |Gereklidir. Metni çevirecek dilin dil kodunu temsil eden bir dize.|sorgu|string|
+|Maxçeviriler|olmamalıdır|Gereklidir. Döndürülecek en fazla çeviri sayısını temsil eden bir tamsayı.|sorgu|tamsayı|
+|Yetkilendirme| olmamalıdır|Hem `appid` alan hem de `Ocp-Apim-Subscription-Key` üst bilgi boş bırakılırsa gereklidir. Yetkilendirme belirteci:  `"Bearer" + " " + "access_token"` .|string|  üst bilgi|
 |Ocp-Apim-Subscription-Key|olmamalıdır  |Hem `appid` alan hem de `Authorization` üst bilgi boş bırakılırsa gereklidir.|üst bilgi|string|
 
 ### <a name="response-messages"></a>Yanıt iletileri
 
-|HTTP durum kodu|Nedeni|
+|HTTP durum kodu|Neden|
 |:--|:--|
 |400    |Hatalı istek. Giriş parametrelerini ve ayrıntılı hata yanıtını denetleyin.|
 |401    |Geçersiz kimlik bilgileri.|
@@ -711,7 +711,7 @@ Birden çok kaynak metin için birden çok çeviri adayları alır.
 </GetTranslationsArrayRequest>
 ```
 
-`GetTranslationsArrayRequest`Şu öğeleri içerir:
+`GetTranslationsArrayRequest` Şu öğeleri içerir:
 
 * `AppId`İstenir. `Authorization`Üst bilgi kullanılırsa, `AppId` alanı boş bırakın. Aksi takdirde, içeren bir dize ekleyin `"Bearer" + " " + "access_token"` .
 * `From`İstenir. Çevrilen metnin dil kodunu temsil eden bir dize.
@@ -788,16 +788,16 @@ Yanıt içerik türü: Application/XML
 
 |Parametre|Değer|Açıklama|Parametre türü|Veri türü|
 |:--|:--|:--|:--|:--|
-|Yetkilendirme  |olmamalıdır    |Hem `appid` alan hem de `Ocp-Apim-Subscription-Key` üst bilgi boş bırakılırsa gereklidir.  Yetkilendirme belirteci: `"Bearer" + " " + "access_token"` .|üst bilgi|string|
+|Yetkilendirme  |olmamalıdır    |Hem `appid` alan hem de `Ocp-Apim-Subscription-Key` üst bilgi boş bırakılırsa gereklidir.  Yetkilendirme belirteci:  `"Bearer" + " " + "access_token"` .|üst bilgi|string|
 |Ocp-Apim-Subscription-Key|olmamalıdır  |Hem `appid` alan hem de `Authorization` üst bilgi boş bırakılırsa gereklidir.|üst bilgi|string|
 
 ### <a name="response-messages"></a>Yanıt iletileri
 
-|HTTP durum kodu|Nedeni|
+|HTTP durum kodu|Neden|
 |:--|:--|
 |400    |Hatalı istek. Giriş parametrelerini ve ayrıntılı hata yanıtını denetleyin.|
 |401    |Geçersiz kimlik bilgileri.|
-|500    |Sunucu hatası. Hata devam ederse, bize bilgi verin. Lütfen isteğin yaklaşık Tarih & zamanını ve yanıt üstbilgisine dahil edilen istek KIMLIĞI ile bize bildirin `X-MS-Trans-Info` .|
+|500    |Sunucu hatası. Hata devam ederse, bize bilgi verin. Lütfen isteğin yaklaşık Tarih & zamanını ve yanıt üstbilgisine dahil edilen istek KIMLIĞI ile bize bildirin  `X-MS-Trans-Info` .|
 |503    |Hizmet geçici olarak kullanılamıyor. Lütfen yeniden deneyin ve hatanın devam edip etmediğini bize bildirin.|
 
 ## <a name="next-steps"></a>Sonraki adımlar

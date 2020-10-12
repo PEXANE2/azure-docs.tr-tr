@@ -16,10 +16,10 @@ ms.date: 08/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 187903bfbf75ada45b9a539acd1157dfe730747a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331136"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>Öğretici: FortiGate SSL VPN ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -77,11 +77,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com/), **FORTIGATE SSL VPN** uygulama tümleştirmesi sayfasında, **Yönet** bölümünde **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem düğmesini seçin:
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem düğmesini seçin:
 
    ![Temel SAML yapılandırmasını düzenlemenin kalem düğmesini gösteren ekran görüntüsü.](common/edit-urls.png)
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki değerleri girin:
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, aşağıdaki değerleri girin:
 
     a. **Oturum açma URL 'si** kutusuna, modele bir URL girin `https://<FQDN>/remote/login` .
 
@@ -118,7 +118,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
    1. **Ad**için **Grup**girin.
    1. **Kaydet**’i seçin.   
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, sertifikayı Indirip bilgisayarınıza kaydetmek için **sertifika (base64)** yanındaki **indirme** bağlantısını seçin:
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, sertifikayı Indirip bilgisayarınıza kaydetmek için **sertifika (base64)** yanındaki **indirme** bağlantısını seçin:
 
     ![Sertifika indirme bağlantısını gösteren ekran görüntüsü.](common/certificatebase64.png)
 

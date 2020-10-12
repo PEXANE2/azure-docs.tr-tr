@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/26/2017
 ms.author: manuaery
 ms.openlocfilehash: 483fa81b409e1bd740af85b431a86b6c814831e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85511513"
 ---
 # <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>StorSimple yerel olarak sabitlenmiş birimler: sık sorulan sorular (SSS)
@@ -178,7 +178,7 @@ Bu adımların her ikisi de, dönüştürülen birimin boyutuna, cihazdaki veril
 
 **Ç.** Yerel olarak sabitlenmiş bir birimi kopyalayabilir miyim?
 
-**A.** Evet, bunu yapabilirsiniz. Ancak, yerel olarak sabitlenmiş birim varsayılan olarak katmanlı bir birim olarak kopyalanır. [Yerel olarak sabitlenmiş bir birimi kopyalama](storsimple-8000-clone-volume-u2.md) hakkında daha fazla bilgi
+**A.** Evet, yazabilirsiniz. Ancak, yerel olarak sabitlenmiş birim varsayılan olarak katmanlı bir birim olarak kopyalanır. [Yerel olarak sabitlenmiş bir birimi kopyalama](storsimple-8000-clone-volume-u2.md) hakkında daha fazla bilgi
 
 ## <a name="questions-about-failing-over-a-locally-pinned-volume"></a>Yerel olarak sabitlenmiş bir birimin yük devretme hakkında sorular
 **Ç.** Cihazımın yükünü başka bir fiziksel cihaza devreder. Yerel olarak sabitlenmiş birimlerimin yerel olarak sabitlenmiş veya katmanlı olarak yük devretme yapılsın mı?
@@ -201,5 +201,5 @@ Bu adımların her ikisi de, dönüştürülen birimin boyutuna, cihazdaki veril
 
 **Ç.** Bulut gerecine yerel olarak sabitlenmiş birimler içeren bir birim kapsayıcısının yükünü devreder miyim?
 
-**A.** Evet, bunu yapabilirsiniz. Yerel olarak sabitlenmiş birimler katmanlı birimler olarak yük devretmez. [Sürümler arasında yerel olarak sabitlenmiş birimlerin yük devretmesi ve Dr](storsimple-8000-device-failover-disaster-recovery.md#common-considerations-for-device-failover) hakkında daha fazla bilgi
+**A.** Evet, yazabilirsiniz. Yerel olarak sabitlenmiş birimler katmanlı birimler olarak yük devretmez. [Sürümler arasında yerel olarak sabitlenmiş birimlerin yük devretmesi ve Dr](storsimple-8000-device-failover-disaster-recovery.md#common-considerations-for-device-failover) hakkında daha fazla bilgi
 

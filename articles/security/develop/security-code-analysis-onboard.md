@@ -13,10 +13,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 5366da1048e7c6d9612ad8b6b1f1694068bb35fb
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543036"
 ---
 # <a name="onboarding-and-installing"></a>Ekleme ve yükleme
@@ -48,9 +48,9 @@ Yukarıdaki nitelikleri karşıladıysanız, Microsoft Güvenlik kodu analizi uz
 
 >**Ortaklarınıza**
 
-- Bölgeler – Iletişim ayrıntıları:cloudsupport@zones.com
-- Worsöyleyin – Iletişim ayrıntıları:info@wortell.nl
-- Logicalsıs – Iletişim ayrıntıları:logicalisleads@us.logicalis.com
+- Bölgeler – Iletişim ayrıntıları: cloudsupport@zones.com
+- Worsöyleyin – Iletişim ayrıntıları: info@wortell.nl
+- Logicalsıs – Iletişim ayrıntıları: logicalisleads@us.logicalis.com
 
 ### <a name="become-a-partner"></a>İş Ortağı Olun
 
@@ -63,7 +63,7 @@ Microsoft Güvenlik kodu çözümleme ekibi, iş ortakları için bir Premier De
 1. **Paylaşılan**' ı seçin.
 1. Microsoft Güvenlik kodu analiz uzantısı ' nı seçin, ardından **Install**' ı seçin.
 1. Açılan listeden, uzantıyı yüklemek için Azure DevOps organizasyonunu seçin.
-1. **Yükle**’yi seçin. Yükleme tamamlandıktan sonra, uzantısını kullanmaya başlayabilirsiniz.
+1. **Yükle**'yi seçin. Yükleme tamamlandıktan sonra, uzantısını kullanmaya başlayabilirsiniz.
 
 >[!NOTE]
 > Uzantıyı yükleme erişiminiz olmasa bile, yükleme adımlarıyla devam edin. Yükleme işlemi sırasında Azure DevOps kuruluş yöneticinizden erişim isteğinde bulabilirsiniz.
@@ -78,7 +78,7 @@ Uzantıyı yükledikten sonra, güvenli geliştirme derleme görevleri görünü
    - Yeni işlem hattı: **Yeni** ' yi seçin ve yeni bir işlem hattı oluşturmak için ayrıntılı adımları izleyin.
    - İşlem hattını Düzenle: mevcut bir işlem hattını seçin ve ardından işlem hattını düzenlemeye başlamak için **Düzenle** ' yi seçin.
 1. ' İ seçin **+** ve **Görevler Ekle** bölmesine gidin.
-1. Listeden ya da arama kutusunu kullanarak eklemek istediğiniz derleme görevini bulun. **Add (Ekle)** seçeneğini belirleyin.
+1. Listeden ya da arama kutusunu kullanarak eklemek istediğiniz derleme görevini bulun. **Ekle**’yi seçin.
 1. Görev için gereken parametreleri belirtin.
 1. Yeni bir derlemeyi kuyruğa al.
    >[!NOTE]
