@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71fd33388cb1bdf7c87c44fb3273c6850122a0cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74847858"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Azure AD parola koruma Aracısı sürümü geçmişi
@@ -56,10 +56,10 @@ Değişikliklerine
 
 * DC Aracısı ve proxy hizmeti artık sunucu çekirdeğinde destekleniyor. En düşük işletim sistemi gereksinimleri, daha önce değiştirilmeden önce: DC aracıları için Windows Server 2012 ve proxy 'ler için Windows Server 2012 R2.
 * Register-AzureADPasswordProtectionProxy ve Register-AzureADPasswordProtectionForest cmdlet 'leri artık cihaz kodu tabanlı Azure kimlik doğrulama modlarını desteklemektedir.
-* Get-AzureADPasswordProtectionDCAgent cmdlet 'i karışmış ve/veya geçersiz hizmet bağlantı noktalarını yoksayacak. Bu, etki alanı denetleyicilerinin çıktıda bazen birden çok kez göstereceği hatayı düzeltir.
-* Get-AzureADPasswordProtectionSummaryReport cmdlet, karışmış ve/veya geçersiz hizmet bağlantı noktalarını yoksayar. Bu, etki alanı denetleyicilerinin çıktıda bazen birden çok kez göstereceği hatayı düzeltir.
+* Get-AzureADPasswordProtectionDCAgent cmdlet 'i karıştırılmış ve/veya geçersiz hizmet bağlantı noktalarını yoksayacak. Bu, etki alanı denetleyicilerinin çıktıda bazen birden çok kez göstereceği hatayı düzeltir.
+* Get-AzureADPasswordProtectionSummaryReport cmdlet 'i karıştırılmış ve/veya geçersiz hizmet bağlantı noktalarını yoksayacak. Bu, etki alanı denetleyicilerinin çıktıda bazen birden çok kez göstereceği hatayı düzeltir.
 * Proxy PowerShell modülü artık%ProgramFiles%\WindowsPowerShell\Modules. adresinden kaydedilir Makinenin PSModulePath ortam değişkeni artık değiştirilmez.
-* Bir ormanda veya etki alanında kayıtlı proxy 'leri bulmaya yardımcı olmak için yeni bir get-AzureADPasswordProtectionProxy cmdlet 'i eklenmiştir.
+* Bir ormanda veya etki alanında kayıtlı proxy 'leri bulmaya yardımcı olmak için yeni bir Get-AzureADPasswordProtectionProxy cmdlet 'i eklenmiştir.
 * DC Aracısı, parola ilkelerini ve diğer dosyaları çoğaltmak için SYSVOL paylaşımında yeni bir klasör kullanır.
 
    Eski klasör konumu:
@@ -111,7 +111,7 @@ Yayın tarihi: 8/17/2018
 Düzeltilen
 
 * Register-AzureADPasswordProtectionProxy ve Register-AzureADPasswordProtectionForest artık Multi-Factor Authentication 'ı destekliyor
-* Register-AzureADPasswordProtectionProxy, şifreleme hatalarını önlemek için etki alanında bir WS2012 veya üzeri etki alanı denetleyicisi gerektirir.
+* Register-AzureADPasswordProtectionProxy, şifreleme hatalarını önlemek için etki alanında WS2012 veya üzeri bir etki alanı denetleyicisi gerektirir.
 * DC Aracısı hizmeti, başlangıçta Azure 'dan yeni bir parola ilkesi istemek üzere daha güvenilirdir.
 * DC Aracısı hizmeti, gerektiğinde Azure 'dan her saat yeni bir parola ilkesi isteyecek, ancak şimdi rastgele seçilen bir başlangıç zamanında bunu yapacaktır.
 * DC Aracısı hizmeti, çoğaltma olarak yükseltilmesinden önce bir sunucuya yüklendiğinde yeni DC tanıtımına yönelik sınırsız gecikmeye neden olmaz.

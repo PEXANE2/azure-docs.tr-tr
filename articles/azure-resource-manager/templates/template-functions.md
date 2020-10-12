@@ -4,10 +4,10 @@ description: Değerleri almak, dizeler ve sayı ile çalışmak ve dağıtım bi
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.openlocfilehash: c78e9481e6f2ba1f17389992aab2712719fc4c3b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89378415"
 ---
 # <a name="arm-template-functions"></a>ARM şablon işlevleri
@@ -40,7 +40,7 @@ Kaynak Yöneticisi diziler ile çalışmak için çeşitli işlevler sağlar.
 
 * [array](template-functions-array.md#array)
 * [Concat](template-functions-array.md#concat)
-* [contains](template-functions-array.md#contains)
+* [vardır](template-functions-array.md#contains)
 * [createArray](template-functions-array.md#createarray)
 * [empty](template-functions-array.md#empty)
 * [adı](template-functions-array.md#first)
@@ -140,7 +140,7 @@ Kaynak Yöneticisi, tamsayılarla çalışmak için aşağıdaki işlevleri sağ
 
 Kaynak Yöneticisi nesneleriyle çalışmak için çeşitli işlevler sağlar.
 
-* [contains](template-functions-object.md#contains)
+* [vardır](template-functions-object.md#contains)
 * [empty](template-functions-object.md#empty)
 * [imin](template-functions-object.md#intersection)
 * [nesnesinde](template-functions-object.md#json)
@@ -215,7 +215,7 @@ Kaynak Yöneticisi dizelerle çalışmak için aşağıdaki işlevleri sağlar:
 * [base64ToJson](template-functions-string.md#base64tojson)
 * [base64ToString](template-functions-string.md#base64tostring)
 * [Concat](template-functions-string.md#concat)
-* [contains](template-functions-string.md#contains)
+* [vardır](template-functions-string.md#contains)
 * [dataUri](template-functions-string.md#datauri)
 * [dataUriToString](template-functions-string.md#datauritostring)
 * [empty](template-functions-string.md#empty)
@@ -233,7 +233,7 @@ Kaynak Yöneticisi dizelerle çalışmak için aşağıdaki işlevleri sağlar:
 * [Şimdilik](template-functions-string.md#skip)
 * [ayırmayı](template-functions-string.md#split)
 * [startsWith](template-functions-string.md#startswith)
-* [string](template-functions-string.md#string)
+* [dizisinde](template-functions-string.md#string)
 * [dizeden](template-functions-string.md#substring)
 * [take](template-functions-string.md#take)
 * [toLower](template-functions-string.md#tolower)

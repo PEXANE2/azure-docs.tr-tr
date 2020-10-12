@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/30/2020
 ms.author: mblythe
 ms.openlocfilehash: f3b4806bf46750d74a54f68bd2ab58e402e75091
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85852381"
 ---
 # <a name="manage-an-azure-support-request"></a>Azure destek isteğini yönetme
@@ -45,17 +45,17 @@ Bu sayfada, destek isteklerini arayabilir, filtreleyip sıralayabilirsiniz. Öne
 
 1. **Destek isteği** sayfasında **Değiştir**' i seçin.
 
-    :::image type="content" source="media/how-to-manage-azure-support-request/change-severity.png" alt-text="Destek isteği önem derecesini Değiştir":::
+    :::image type="content" source="media/how-to-manage-azure-support-request/change-severity.png" alt-text="Tüm destek istekleri":::
 
 1. Azure portal, isteğinizin zaten bir destek mühendisine atanmış olmasına bağlı olarak iki ekranın birini gösterir:
 
     - İsteğiniz atanmamışsa aşağıdakine benzer bir ekran görürsünüz. Yeni bir önem düzeyi seçin ve ardından **Değiştir**' i seçin.
 
-        :::image type="content" source="media/how-to-manage-azure-support-request/unassigned-can-change-severity.png" alt-text="Yeni bir önem düzeyi seçin":::
+        :::image type="content" source="media/how-to-manage-azure-support-request/unassigned-can-change-severity.png" alt-text="Tüm destek istekleri":::
 
     - İsteğiniz atanmışsa, aşağıdakine benzer bir ekran görürsünüz. **Tamam**' ı seçin, sonra önem düzeyinde bir değişiklik istemek için [Yeni bir ileti](#send-a-message) oluşturun.
 
-        :::image type="content" source="media/how-to-manage-azure-support-request/assigned-cant-change-severity.png" alt-text="Yeni bir önem derecesi düzeyi seçemezsiniz":::
+        :::image type="content" source="media/how-to-manage-azure-support-request/assigned-cant-change-severity.png" alt-text="Tüm destek istekleri":::
 
 ## <a name="share-diagnostic-information-with-azure-support"></a>Tanılama bilgilerini Azure desteği ile paylaşma
 
@@ -69,7 +69,7 @@ Bir destek isteği oluşturduğunuzda, varsayılan olarak **Tanılama bilgilerin
     
     1. **Destek isteği** sayfasında **izin ver**' i seçin ve ardından **Evet** ve **Tamam**' ı seçin.
     
-        :::image type="content" source="media/how-to-manage-azure-support-request/grant-permission-manage.png" alt-text="Tanılama bilgileri için izinleri verme":::
+        :::image type="content" source="media/how-to-manage-azure-support-request/grant-permission-manage.png" alt-text="Tüm destek istekleri":::
 
 ## <a name="upload-files"></a>Dosyaları karşıya yükleme
 
@@ -79,7 +79,7 @@ Dosya yükleme seçeneğini kullanarak, tanılama dosyalarını veya bir destek 
 
 1. **Destek isteği** sayfasında dosyanızı bulun ve **karşıya yükle**' yi seçin. Birden çok dosya varsa, işlemi tekrarlayın.
 
-    :::image type="content" source="media/how-to-manage-azure-support-request/file-upload.png" alt-text="Dosya yükleme":::
+    :::image type="content" source="media/how-to-manage-azure-support-request/file-upload.png" alt-text="Tüm destek istekleri":::
 
 ### <a name="file-upload-guidelines"></a>Karşıya dosya yükleme yönergeleri
 
@@ -96,24 +96,24 @@ Karşıya dosya yükleme seçeneğini kullandığınızda aşağıdaki yönergel
 | .7z         | .dat  | . HWL        | . ODX  | . rar     | . tdb       | .xlam   |
 | . a          | . db   | . ics        | . oft  | . rdl     | . tdf       | . XLR    |
 | . abc        | . DMP  | dosyasında        | . Old  | . rdlc    | . metin      | .xls    |
-| . adm        | . do_  | .java       | . One  | . re_     | .thmx      | .xlsb   |
+| . adm        | .do_  | .java       | . One  | .re_     | .thmx      | .xlsb   |
 | .aspx       | .doc  | .jpg        | .osd  | . reg     | .tif       | .xlsm   |
 | . ATF        | .docm | . LDF        | . DıŞı  | . Kaldır  | . trc       | .xlsx   |
 | . b          | .docx | . antetli | . P1   | . Ren     | . TTD       | .xlt    |
-| . ba_        | .dotm | . lnk        | . pcap | . yeniden adlandır  | . tx_       | .xltx   |
-| . bak        | .dotx | . lo_        | . pdb  | . rft     | .txt       | .xml    |
+| .ba_        | .dotm | . lnk        | . pcap | . yeniden adlandır  | .tx_       | .xltx   |
+| . bak        | .dotx | .lo_        | . pdb  | . rft     | .txt       | .xml    |
 | .bat        | . dtsx | günlük        | .pdf  | . rpt     | .uccapilog | . xmla   |
 | . blg        | . EDS  | . lpk        | . Piz  | . rte     | . uccplog   | .xps    |
-| . CA_        | . EMF  | . manifest   | . pmls | .rtf     | . udcx      | . xsd    |
-| . KABINI        | . eml  | . Master     | .png  | . Run     | . vb_       | . xsn    |
-| . Cap        | . emz  | . mdmp       | .potx | . saz     | . vbs_      | . xxx    |
-| . CATX       | . err  | . mof        | .ppt  | .sql     | . vcf       | . z_     |
+| .CA_        | . EMF  | . manifest   | . pmls | .rtf     | . udcx      | . xsd    |
+| . KABINI        | . eml  | . Master     | .png  | . Run     | .vb_       | . xsn    |
+| . Cap        | . emz  | . mdmp       | .potx | . saz     | .vbs_      | . xxx    |
+| . CATX       | . err  | . mof        | .ppt  | .sql     | . vcf       | .z_     |
 | . SATıRıNDA        | . etl  | .mp3        | .pptm | . sqlplan | . VSD       | .z01    |
 | . sıkıştırılmış | . evt  | .mpg        | .pptx | . STP     | . wdb       | .z02    |
-| . Kurulumunun     | . evtx | . ms_        | . prn  | . svclog  | . WKS       | . Zi     |
-| . CPK        | . DEĞERINE   | . msg        | . psf  |   -       | .wma       | . zi_    |
-| . cpp        | . ex_  | .msi        | . pst  |  -        | .wmv       | .zip    |
-| .cs         | .ex0  | . mso        | . pub  | -         | . wmz       | . zip_   |
+| . Kurulumunun     | . evtx | .ms_        | . prn  | . svclog  | . WKS       | . Zi     |
+| . CPK        | . DEĞERINE   | . msg        | . psf  |   -       | .wma       | .zi_    |
+| . cpp        | .ex_  | .msi        | . pst  |  -        | .wmv       | .zip    |
+| .cs         | .ex0  | . mso        | . pub  | -         | . wmz       | .zip_   |
 | . CSV        | . FRD  | . msu        | -      |-          | . WPS       | . Zipp   |
 | . CVR        | .gif  | . nfo        | -      |-          | . WPT       | . zip 'lenmiş |
 | -            | . Guid | -            | -      | -         | . wsdl      | . zipkopyala  |

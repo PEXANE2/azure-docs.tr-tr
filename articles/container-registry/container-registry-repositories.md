@@ -4,17 +4,17 @@ description: Docker kapsayıcı görüntülerini ve desteklenen diğer yapılar�
 ms.topic: article
 ms.date: 01/05/2018
 ms.openlocfilehash: 1da72706d2554610a685f71199ab14af5e30ce1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74456285"
 ---
 # <a name="view-container-registry-repositories-in-the-azure-portal"></a>Azure portal kapsayıcı kayıt defteri depolarını Görüntüleme
 
 Azure Container Registry, Docker kapsayıcı görüntülerini depolarda depolamanıza olanak tanır. Görüntüleri depolarda depolayarak, yalıtılmış ortamlarda görüntü gruplarını (veya görüntülerin sürümlerini) saklayabilirsiniz. Kayıt defterinize görüntü gönderdiğinizde bu depoları belirtebilir ve Azure portal içeriğini görüntüleyebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Kapsayıcı kayıt defteri**: Azure aboneliğinizde bir kapsayıcı kayıt defteri oluşturun. Örneğin, [Azure Portal](container-registry-get-started-portal.md) veya [Azure CLI](container-registry-get-started-azure-cli.md)'yi kullanın.
 * **DOCKER CLI**: size Docker komut satırı arabirimi sağlayan yerel makinenize [Docker][docker-install] 'yi yükler.
@@ -34,7 +34,7 @@ docker push myregistry.azurecr.io/samples/nginx
 
 Bir depoyu görüntülemek için:
 
-1. [Azure Portal][portal] oturum açın
+1. [Azure portalda][portal] oturum açma
 1. NGINX görüntüsünü gönderdiğiniz **Azure Container Registry** seçin
 1. Kayıt defterindeki görüntüleri içeren depoların bir listesini görmek için **depolar** ' ı seçin
 1. Bu depodaki görüntü etiketlerini görmek için bir depo seçin

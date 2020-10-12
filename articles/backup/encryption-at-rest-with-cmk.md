@@ -4,10 +4,10 @@ description: Azure Backup, müşteri tarafından yönetilen anahtarları (CMK) k
 ms.topic: conceptual
 ms.date: 07/08/2020
 ms.openlocfilehash: 5c0bddc6cdb8ec150a031541ced1abf1ebfb6f0f
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89378296"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerinin şifrelenmesi
@@ -31,7 +31,7 @@ Bu makalede aşağıdakiler ele alınmaktadır:
 
 - Bu özellik şu anda **Mars Aracısı 'nı kullanarak yedeklemeyi desteklemiyor**ve aynı şekilde CMK şifreli bir kasa kullanmayabilir. MARS Aracısı Kullanıcı parolası tabanlı bir şifreleme kullanır. Bu özellik, klasik VM 'lerin yedeklenmesini de desteklemez.
 
-- Bu özellik, bir sanal makinenin BitLocker (Windows için) ve DM-crypt (Linux için) kullanarak VM disklerinin Konuk tabanlı şifrelemesini kullanan [Azure disk şifrelemesi](../security/fundamentals/azure-disk-encryption-vms-vmss.md)ile ilgili değildir
+- Bu özellik [Azure disk şifrelemesi](../security/fundamentals/azure-disk-encryption-vms-vmss.md)ile ilgili değildir ve BitLocker (Windows için) ve DM-Crypt (Linux için) kullanarak bir VM disklerinin Konuk tabanlı şifrelemesini kullanır
 
 - Kurtarma Hizmetleri Kasası, yalnızca **aynı bölgede**bulunan bir Azure Key Vault depolanan anahtarlarla şifrelenebilir. Ayrıca anahtarlar yalnızca **RSA 2048 anahtar** olmalıdır ve **etkin** durumda olmalıdır.
 

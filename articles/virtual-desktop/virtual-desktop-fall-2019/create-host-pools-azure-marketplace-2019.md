@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 04184a658ae1efd03afd3e920818eb5317bc7553
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008602"
 ---
 # <a name="tutorial-create-a-host-pool-in-windows-virtual-desktop-classic"></a>Öğretici: Windows sanal masaüstü 'nde bir konak havuzu oluşturma (klasik)
@@ -31,7 +31,7 @@ Bu öğreticideki görevler şunları içerir:
 > * VM 'Leri Active Directory etki alanına katın.
 > * VM 'Leri Windows sanal masaüstü ile kaydedin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Sanal masaüstündeki kiracı. Önceki [öğreticide](tenant-setup-azure-active-directory.md) kiracı oluşturulur.
 * [Windows sanal masaüstü PowerShell modülü](/powershell/windows-virtual-desktop/overview/).
@@ -56,7 +56,7 @@ Yeni bir konak havuzu sağlamak için Azure Marketi teklifini çalıştırmak i�
 
 Bundan sonra, uygun sekmelerin bilgilerini girmek için sonraki bölümde yer alan yönergeleri izleyin.
 
-### <a name="basics"></a>Temel bilgiler
+### <a name="basics"></a>Temel Bilgiler
 
 **Temel kavramlar** sekmesi için şunları yapın:
 
@@ -65,7 +65,7 @@ Bundan sonra, uygun sekmelerin bilgilerini girmek için sonraki bölümde yer al
 1. Bir **bölge**seçin.
 1. Windows sanal masaüstü kiracısı içinde benzersiz olan konak havuzu için bir ad girin.
 1. **Masaüstü türünü**seçin. **Kişisel**' i seçerseniz, bu konak havuzuna bağlanan her bir Kullanıcı, bir sanal makineye kalıcı olarak atanır.
-1. Windows sanal masaüstü istemcilerinde oturum açabilen ve bir masaüstüne erişebilen kullanıcıları girin. Virgülle ayrılmış bir liste kullanın. Örneğin, atamak `user1@contoso.com` ve `user2@contoso.com` erişmek istiyorsanız, şunu girin*`user1@contoso.com,user2@contoso.com`*
+1. Windows sanal masaüstü istemcilerinde oturum açabilen ve bir masaüstüne erişebilen kullanıcıları girin. Virgülle ayrılmış bir liste kullanın. Örneğin, atamak `user1@contoso.com` ve `user2@contoso.com` erişmek istiyorsanız, şunu girin *`user1@contoso.com,user2@contoso.com`*
 1. **Hizmet meta verileri konumu**için, Active Directory sunucusuyla bağlantısı olan sanal ağla aynı konumu seçin.
 
    >[!IMPORTANT]

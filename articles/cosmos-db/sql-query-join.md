@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
 ms.openlocfilehash: 38e80f1597a08b8db7cbfa852d1bcf38ac768b1f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74871151"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Azure Cosmos DB birleşimler
@@ -19,11 +19,11 @@ ms.locfileid: "74871151"
 
 İç birleşimler, birleşime katılan kümelerden oluşan tüm çapraz ürünlere yol açabilir. N-Way JOIN 'in sonucu, kayıt kümesindeki her bir değerin birleşime katılan diğer ad kümesiyle ilişkilendirildiği ve diğer yan tümcelerde bu diğer ada başvuruda bulunarak erişilebilen N-element tanımlama gruplarının bir kümesidir.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Sözdizimi
 
 Dil söz dizimini destekler `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>` . Bu sorgu, değerleri olan bir başlık kümesi döndürür `N` . Her tanımlama grubu, tüm kapsayıcı diğer adlarını ilgili kümeleri üzerinde yineleerek oluşturulan değerlere sahiptir. 
 
-Aşağıdaki FROM yan tümcesine göz atalım:`<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
+Aşağıdaki FROM yan tümcesine göz atalım: `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
   
  Her bir kaynağın tanımlamasına izin verin `input_alias1, input_alias2, …, input_aliasN` . Bu FROM yan tümcesi bir N-tanımlama grubu kümesi döndürür (N değeri olan tanımlama grubu). Her tanımlama grubu, tüm kapsayıcı diğer adlarını ilgili kümeleri üzerinde yineleerek oluşturulan değerlere sahiptir.  
   
@@ -33,11 +33,11 @@ Aşağıdaki FROM yan tümcesine göz atalım:`<from_source1> JOIN <from_source2
   
 - `<from_source2>`Belge kapsamlı başvuru input_alias1 ve kümeleri temsil edelim:  
   
-    için {1, 2}`input_alias1 = A,`  
+    için {1, 2} `input_alias1 = A,`  
   
-    {3}bekleniyor`input_alias1 = B,`  
+    {3} bekleniyor `input_alias1 = B,`  
   
-    için {4, 5}`input_alias1 = C,`  
+    için {4, 5} `input_alias1 = C,`  
   
 - FROM yan tümcesi `<from_source1> JOIN <from_source2>` aşağıdaki başlıkların oluşmasına neden olur:  
   
@@ -51,17 +51,17 @@ Aşağıdaki FROM yan tümcesine göz atalım:`<from_source1> JOIN <from_source2
   
 - `<from_source2>`Belge kapsamlı başvuru `input_alias1` ve kümeleri temsil etmenize izin ver:  
   
-    için {1, 2}`input_alias1 = A,`  
+    için {1, 2} `input_alias1 = A,`  
   
-    {3}bekleniyor`input_alias1 = B,`  
+    {3} bekleniyor `input_alias1 = B,`  
   
-    için {4, 5}`input_alias1 = C,`  
+    için {4, 5} `input_alias1 = C,`  
   
 - `<from_source3>`Belge kapsamlı başvuru `input_alias2` ve kümeleri temsil etmenize izin ver:  
   
-    için {100, 200}`input_alias2 = 1,`  
+    için {100, 200} `input_alias2 = 1,`  
   
-    {300}bekleniyor`input_alias2 = 3,`  
+    {300} bekleniyor `input_alias2 = 3,`  
   
 - FROM yan tümcesi `<from_source1> JOIN <from_source2> JOIN <from_source3>` aşağıdaki başlıkların oluşmasına neden olur:  
   
@@ -80,17 +80,17 @@ Aşağıdaki FROM yan tümcesine göz atalım:`<from_source1> JOIN <from_source2
   
 - <from_source2> belge kapsamlı başvuru input_alias1 ve kümeleri temsil etmesini sağlar:  
   
-    için {1, 2}`input_alias1 = A,`  
+    için {1, 2} `input_alias1 = A,`  
   
-    {3}bekleniyor`input_alias1 = B,`  
+    {3} bekleniyor `input_alias1 = B,`  
   
-    için {4, 5}`input_alias1 = C,`  
+    için {4, 5} `input_alias1 = C,`  
   
 - `<from_source3>`Kapsamlandırılmalıdır `input_alias1` ve kümeleri temsil edelim:  
   
-    için {100, 200}`input_alias2 = A,`  
+    için {100, 200} `input_alias2 = A,`  
   
-    {300}bekleniyor`input_alias2 = C,`  
+    {300} bekleniyor `input_alias2 = C,`  
   
 - FROM yan tümcesi `<from_source1> JOIN <from_source2> JOIN <from_source3>` aşağıdaki başlıkların oluşmasına neden olur:  
   
@@ -224,7 +224,7 @@ Sonuçlar:
     }
 ```
 
-`AndersenFamily`tek bir evcil hayvan içeren bir alt öğesi vardır; bu nedenle, çapraz ürün \* Bu aileden bir satır (1 1 1 \* ) verir. `WakefieldFamily`iki alt öğeye sahiptir ve bunlardan yalnızca biri pets 'e sahiptir, ancak bu alt öğe iki Evcil hayvan 'a sahiptir. Bu aile için çapraz ürün 1 \* 1 \* 2 = 2 satır verir.
+`AndersenFamily` tek bir evcil hayvan içeren bir alt öğesi vardır; bu nedenle, çapraz ürün \* Bu aileden bir satır (1 1 1 \* ) verir. `WakefieldFamily` iki alt öğeye sahiptir ve bunlardan yalnızca biri pets 'e sahiptir, ancak bu alt öğe iki Evcil hayvan 'a sahiptir. Bu aile için çapraz ürün 1 \* 1 \* 2 = 2 satır verir.
 
 Sonraki örnekte, `pet` Evcil hayvan adının olmadığı tüm başlıkları dışlayan ek bir filtre vardır `Shadow` . Dizilerden tanımlama grupları oluşturabilir, kayıt düzeni öğelerinin herhangi birine filtre uygulayabilir ve öğelerin herhangi bir birleşimini proje aracılığıyla yapabilirsiniz.
 

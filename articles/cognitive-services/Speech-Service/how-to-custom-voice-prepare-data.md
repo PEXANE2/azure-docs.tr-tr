@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
 ms.openlocfilehash: 5427e9f996fb77d455aa8064fc7cb1c65e1fcf7e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74805986"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>Özel bir ses oluşturmak için verileri hazırlama
@@ -53,7 +53,7 @@ Tek tek dıklarınızın ve eşleşen döküm dosyalarının kayıtlarını iki 
 
 ### <a name="audio-files"></a>Ses dosyaları
 
-Her ses dosyası, 15 saniyeden az uzunlukta tek bir söylenişi (tek bir cümle veya bir iletişim sisteminin tek bir kümesi) içermelidir. Tüm dosyalar aynı konuşulan dilde olmalıdır. Çok dilli özel metin okuma sesleri, Çince-Ingilizce bı-dil dışında, desteklenmez. Her ses dosyası,. wav dosya adı uzantısına sahip benzersiz bir sayısal dosya adına sahip olmalıdır.
+Her ses dosyası, 15 saniyeden az uzunlukta tek bir söylenişi (tek bir cümle veya bir iletişim sisteminin tek bir kümesi) içermelidir. Tüm dosyalar aynı konuşulan dilde olmalıdır. Çok dilli özel metin okuma sesleri, Chinese-English bı-dilli dışında, desteklenmez. Her ses dosyası,. wav dosya adı uzantısına sahip benzersiz bir sayısal dosya adına sahip olmalıdır.
 
 Ses hazırlanırken bu yönergeleri izleyin.
 
@@ -61,7 +61,7 @@ Ses hazırlanırken bu yönergeleri izleyin.
 | -------- | ----- |
 | Dosya biçimi | Bir. zip dosyasında gruplandırılan RIFF (. wav) |
 | Örnekleme oranı | En az 16.000 Hz |
-| Örnek biçim | PCM, 16 bit |
+| Örnek biçimi | PCM, 16 bit |
 | Dosya adı | . Wav uzantısıyla sayısal. Yinelenen dosya adlarına izin verilmez. |
 | Ses uzunluğu | 15 saniyeden kısa |
 | Arşiv biçimi | .zip |
@@ -112,7 +112,7 @@ Bu yönergeleri izleyerek ses segmentlemeye hazırlanırken izleyin.
 | Arşiv biçimi | .zip |
 | Maksimum Arşiv boyutu | 2048 MB |
 
-Tüm ses dosyaları bir ZIP dosyasında gruplandırılmalıdır. . Wav dosyalarını ve. mp3 dosyalarını tek bir ses zip dosyasına yerleştirmek tamam. Örneğin, ' kingöykü. wav ', 45-ikinci-uzun ve ' queenöykü. mp3 ', 200-Second-Long adlı bir ses dosyasını içeren bir zip dosyasını karşıya yükleyebilirsiniz. Tüm. mp3 dosyaları işlendikten sonra. WAV biçimine dönüştürülür.
+Tüm ses dosyaları bir ZIP dosyasında gruplandırılmalıdır. . Wav dosyalarını ve. mp3 dosyalarını tek bir ses zip dosyasına yerleştirmek tamam. Örneğin, ' kingöykü. wav ', 45-ikinci-uzun ve ' queenstory.mp3 ', 200-ikinci-Long adlı bir ses dosyası içeren bir zip dosyasını karşıya yükleyebilirsiniz. Tüm. mp3 dosyaları işlendikten sonra. WAV biçimine dönüştürülür.
 
 ### <a name="transcripts"></a>Dökümleri
 
@@ -126,7 +126,7 @@ Transcripts bu tabloda listelenen belirtimlerle hazırlanmalıdır. Her ses dosy
 | Satır başına konuşma sayısı | Sınır yok |
 | En büyük dosya boyutu | 2048 MB |
 
-Bu veri türündeki tüm döküm dosyaları bir ZIP dosyasında gruplandırılmalıdır. Örneğin, ' kingöykü. wav ', 45 saniye uzunluğunda ve ' queenöykü. mp3 ', 200 saniye uzunluğunda bir ses dosyası içeren bir zip dosyası yüklediniz. Biri ' kingöykü. txt ', diğeri diğeri de ' queenöykü. txt ' adlı iki dökümü içeren başka bir ZIP dosyasını karşıya yüklemeniz gerekir. Her düz metin dosyasında, eşleşen ses için tam doğru dökümü sağlarsınız.
+Bu veri türündeki tüm döküm dosyaları bir ZIP dosyasında gruplandırılmalıdır. Örneğin, ' kingöykü. wav ' adlı bir ses dosyası, 45 saniye uzunluğunda ve ' queenstory.mp3 ', 200 saniye uzunluğunda başka bir dosya içeren bir zip dosyası yüklediniz. Biri ' kingstory.txt ', diğeri de ' queenstory.txt ' olan iki dökümü içeren başka bir ZIP dosyasını karşıya yüklemeniz gerekir. Her düz metin dosyasında, eşleşen ses için tam doğru dökümü sağlarsınız.
 
 Veri kümeniz başarıyla karşıya yüklendikten sonra, sağlanan dökümü temel alarak ses dosyasını el ile segmentlere ayırmanıza yardımcı olacak. Veri kümesini indirerek, kesimli ve eşleşen dökümü kontrol edebilirsiniz. Benzersiz kimlikler otomatik olarak kesimli şekilde atanır. Sağladığınız dökümlerin %100 doğru olduğundan emin olmanız önemlidir. Döküm dosyalarındaki hatalar, ses kesimlemesi sırasında doğruluğu azaltabilir ve daha sonra eğitim aşamasında daha fazla kalite kaybı ortaya çıkarabilir.
 

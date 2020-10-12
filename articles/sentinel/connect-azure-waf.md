@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: yelevin
 ms.openlocfilehash: 8f21b415ef36442d6ac1aac518cd1327f70b8927
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88264074"
 ---
 # <a name="connect-data-from-azure-web-application-firewall-waf"></a>Azure Web uygulaması güvenlik duvarı 'ndan (WAF) veri bağlama
@@ -21,7 +21,7 @@ ms.locfileid: "88264074"
 Web uygulamaları, yaygın olarak bilinen güvenlik açıklarından yararlanan kötü amaçlı saldırılara karşı giderek daha da yöneliktir. Azure Web uygulaması güvenlik duvarı (WAF), Web uygulamalarınızın kod ekleme ve siteler arası betik oluşturma gibi yaygın güvenlik açıklarından ve tehditlerden merkezi bir şekilde korunmasını sağlar. Azure WAF, Azure [Application Gateway](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview) hizmeti, [Azure ön kapı](https://docs.microsoft.com/azure/web-application-firewall/afds/afds-overview) hizmeti ve [Azure Content Delivery Network (CDN)](https://docs.microsoft.com/azure/web-application-firewall/cdn/cdn-overview) WAF ilkesi aracılığıyla (Şu anda genel önizleme aşamasında) dağıtılabilir.
 Azure WAF günlüklerini Azure Sentinel 'e bağlanarak, çalışma kitaplarında günlük verilerini görüntülemenize, özel uyarılar oluşturmak için bu uygulamayı kullanmanıza ve araştırmanızı iyileştirebilecek şekilde katabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure Sentinel çalışma alanında okuma ve yazma izinlerine sahip olmanız gerekir.
 

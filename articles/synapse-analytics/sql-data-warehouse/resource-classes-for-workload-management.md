@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: a557d4045b18b5c0ff71b3e47f0c189028702863
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91289540"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te kaynak sınıflarıyla iş yükü yönetimi
@@ -72,7 +72,7 @@ Her kaynak sınıfı için bellek ayırma aşağıdaki gibidir.
 | DW100c         | 25%               | 25%                    | 25%                    | %70                    |
 | DW200c         | % 12,5             | % 12,5                  | #c16                    | %70                    |
 | DW300c         | %8                | %10                    | #c16                    | %70                    |
-| DW400c         | % 6,25             | %10                    | #c16                    | %70                    |
+| DW400c         | %6,25             | %10                    | #c16                    | %70                    |
 | DW500c'yi seçin         | %5                | %10                    | #c16                    | %70                    |
 | DW1000c<br> DW30000c | %3       | %10                    | #c16                    | %70                    |
 

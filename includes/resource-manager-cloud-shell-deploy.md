@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 01/30/2019
 ms.author: tomfitz
 ms.openlocfilehash: aac2f3ea2b52ac0319f96279deed13c1145749bd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74451513"
 ---
 ## <a name="deploy-template-from-cloud-shell"></a>Cloud Shell'den şablon dağıtma
@@ -41,7 +41,7 @@ ms.locfileid: "74451513"
 
    ![Yeni kapsayıcı Seç](./media/resource-manager-cloud-shell-deploy/select-container.png)
 
-1. **Karşıya Yükle**'yi seçin.
+1. **Karşıya Yükle**’yi seçin.
 
    ![Blobu karşıya yükle](./media/resource-manager-cloud-shell-deploy/upload-blob.png)
 

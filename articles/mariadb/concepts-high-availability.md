@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 7/7/2020
 ms.openlocfilehash: bea32b3b60c9013ea223513c95629092b9ab231b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86203323"
 ---
 # <a name="high-availability-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda yüksek kullanılabilirlik
@@ -60,8 +60,8 @@ Kurtarmak için Kullanıcı eylemi gerektiren bazı hata senaryoları şunlardı
 
 | **Senaryo** | **Kurtarma planı** |
 | ---------- | ---------- |
-| <b>Bölge hatası | Bölge arızası nadir bir olaydır. Ancak, bir bölge hatasından korumaya ihtiyacınız varsa, diğer bölgelerde olağanüstü durum kurtarma (DR) için bir veya daha fazla okuma çoğaltması yapılandırabilirsiniz. (Ayrıntılar için okuma çoğaltmaları oluşturma ve yönetme ile ilgili [Bu makaleye](howto-read-replicas-portal.md) bakın). Bölge düzeyinde bir hata olması durumunda, diğer bölgede yapılandırılan okuma çoğaltmasını üretim veritabanı sunucunuz olacak şekilde el ile yükseltebilirsiniz. |
-| <b>Mantıksal/Kullanıcı hataları | Yanlışlıkla bırakılan tablolar veya yanlış güncelleştirilmiş veriler gibi Kullanıcı hatalarından kurtarma, hata oluşmadan hemen önce geçen zamana kadar verileri geri yükleyerek ve kurtararak bir [zaman içinde kurtarma](concepts-backup.md) (sür) gerçekleştirmeyi içerir.<br> <br>  Veritabanı sunucusundaki tüm veritabanları yerine veritabanlarının yalnızca bir alt kümesini veya belirli tabloları geri yüklemek isterseniz, veritabanı sunucusunu yeni bir örneğe geri yükleyebilir, tabloları [mysqldump](howto-migrate-dump-restore.md)aracılığıyla dışarı aktarabilir ve ardından [geri yükleme](howto-migrate-dump-restore.md#restore-your-mariadb-database) kullanarak bu tabloları veritabanınıza geri yükleyebilirsiniz. |
+| <b> Bölge hatası | Bölge arızası nadir bir olaydır. Ancak, bir bölge hatasından korumaya ihtiyacınız varsa, diğer bölgelerde olağanüstü durum kurtarma (DR) için bir veya daha fazla okuma çoğaltması yapılandırabilirsiniz. (Ayrıntılar için okuma çoğaltmaları oluşturma ve yönetme ile ilgili [Bu makaleye](howto-read-replicas-portal.md) bakın). Bölge düzeyinde bir hata olması durumunda, diğer bölgede yapılandırılan okuma çoğaltmasını üretim veritabanı sunucunuz olacak şekilde el ile yükseltebilirsiniz. |
+| <b> Mantıksal/Kullanıcı hataları | Yanlışlıkla bırakılan tablolar veya yanlış güncelleştirilmiş veriler gibi Kullanıcı hatalarından kurtarma, hata oluşmadan hemen önce geçen zamana kadar verileri geri yükleyerek ve kurtararak bir [zaman içinde kurtarma](concepts-backup.md) (sür) gerçekleştirmeyi içerir.<br> <br>  Veritabanı sunucusundaki tüm veritabanları yerine veritabanlarının yalnızca bir alt kümesini veya belirli tabloları geri yüklemek isterseniz, veritabanı sunucusunu yeni bir örneğe geri yükleyebilir, tabloları [mysqldump](howto-migrate-dump-restore.md)aracılığıyla dışarı aktarabilir ve ardından [geri yükleme](howto-migrate-dump-restore.md#restore-your-mariadb-database) kullanarak bu tabloları veritabanınıza geri yükleyebilirsiniz. |
 
 
 

@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/28/2020
 ms.openlocfilehash: eb6029b206e7d47789371ee81e75c4e05c69ee65
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89087202"
 ---
 # <a name="move-azure-event-grid-system-topics-to-another-region"></a>Azure Event Grid sistem konularını başka bir bölgeye taşıyın
@@ -22,35 +22,20 @@ Bu makalede ele alınan üst düzey adımlar aşağıda verilmiştir:
 - **Dağıtımı doğrulayın**. Hedef bölgedeki blob depolamaya bir dosya yüklerken Web kancasının çağrılmasını doğrulayın. 
 - **Taşıma işleminin tamamlanabilmesi**için kaynak bölgeden kaynakları (olay kaynağı ve sistem konusu) silin. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 - [Hızlı başlangıç: Blob Depolama olaylarını, kaynak bölgesindeki Azure Portal Web uç noktasına yönlendirin](blob-event-quickstart-portal.md) . Bu adım **isteğe bağlıdır**. Bu makaledeki adımları test etmek için bunu yapın. Depolama hesabını App Service ve App Service planı 'ndan ayrı bir kaynak grubunda saklayın. 
 - Event Grid hizmetinin hedef bölgede kullanılabildiğinden emin olun. [Bölgeye göre kullanılabilen ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all)görüntüleyin.
 
 ## <a name="prepare"></a>Hazırlama
 Başlamak için, sistem olay kaynağını (Azure depolama hesabı) ve ilişkili sistem konusunu içeren kaynak grubu için bir Kaynak Yöneticisi şablonu dışarı aktarın. 
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol menüdeki **kaynak grupları** ' nı seçin. Ardından, sistem konusunun oluşturulduğu olay kaynağını içeren kaynak grubunu seçin. Aşağıdaki örnekte, **Azure Storage** hesabıdır. Kaynak grubu, depolama hesabını ve onunla ilişkili sistem konusunu içerir. 
 
     :::image type="content" source="./media/move-system-topics-across-regions/resource-group-page.png" alt-text="Kaynak grubu sayfası":::        
 3. Sol taraftaki menüde, **Ayarlar**altında **şablonu dışarı aktar** ' ı seçin ve ardından araç çubuğunda **İndir** ' i seçin. 
 
-    :::image type="content" source="./media/move-system-topics-across-regions/export-template-menu.png" alt-text="Stroage hesabı-şablonu dışarı aktarma sayfası":::        
-5. Portaldan indirdiğiniz **. zip** dosyasını bulun ve bu dosyayı seçtiğiniz bir klasöre ayıklayın. Bu ZIP dosyası Template ve Parameters JSON dosyalarını içerir. 
-1. **template.js** seçtiğiniz bir düzenleyicide açın. 
-1. Web kancası URL 'SI şablona aktarılmaz. Bu nedenle, aşağıdaki adımları uygulayın:
-    1. Şablon dosyasında **Web kancası**için arama yapın. 
-    1. **Özellikler** bölümünde, son satırın sonuna bir virgül ( `,` ) karakteri ekleyin. Bu örnekte, `"preferredBatchSizeInKilobytes": 64` . 
-    1. `endpointUrl`Aşağıdaki örnekte gösterildiği gibi, özelliği Web kancası URL 'sine ayarlanmış olacak şekilde ekleyin. 
-
-        ```json
-        "destination": {
-            "properties": {
-                "maxEventsPerBatch": 1,
-                "preferredBatchSizeInKilobytes": 64,
-                "endpointUrl": "https://mysite.azurewebsites.net/api/updates"
-            },
-            "endpointType": "WebHook"
+    :::image type="content" source="./media/move-system-topics-across-regions/export-template-menu.png" alt-text="Kaynak grubu sayfası"
         }
         ```
 
@@ -91,7 +76,7 @@ Hedef bölgedeki depolama hesabı için bir depolama hesabı ve bir sistem konus
     1. **Sistem konu adı**için, depolama hesabıyla ilişkilendirilecek sistem konusu için bir ad girin.  
     1. **Depolama hesabı adı**için, hedef bölgede oluşturulacak depolama hesabı için bir ad girin. 
 
-        :::image type="content" source="./media/move-system-topics-across-regions/deploy-template.png" alt-text="Kaynak Yöneticisi şablonu dağıtma":::
+        :::image type="content" source="./media/move-system-topics-across-regions/deploy-template.png" alt-text="Kaynak grubu sayfası":::
     5. Sayfanın alt kısmındaki **gözden geçir + oluştur** ' u seçin. 
     1. **Gözden geçir + oluştur** sayfasında ayarları gözden geçirin ve **Oluştur**' u seçin. 
 
@@ -110,7 +95,7 @@ Azure portal kullanarak bir kaynak grubunu (kaynak veya hedef) silmek için:
 1. Azure portal en üstündeki ara penceresinde, **kaynak grupları**yazın ve arama sonuçlarından **kaynak grupları** ' nı seçin. 
 2. Silinecek kaynak grubunu seçin ve araç çubuğundan **Sil** ' i seçin. 
 
-    :::image type="content" source="./media/move-system-topics-across-regions/delete-resource-group-button.png" alt-text="Kaynak grubunu silme":::
+    :::image type="content" source="./media/move-system-topics-across-regions/delete-resource-group-button.png" alt-text="Kaynak grubu sayfası":::
 3. Onay sayfasında, kaynak grubunun adını girin ve **Sil**' i seçin.  
 
 ## <a name="next-steps"></a>Sonraki adımlar

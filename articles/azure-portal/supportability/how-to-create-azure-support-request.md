@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mblythe
 ms.openlocfilehash: d8a480481e47995f9f819122a3e8cc0b0a21a254
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85851875"
 ---
 # <a name="create-an-azure-support-request"></a>Azure destek isteği oluşturma
@@ -23,9 +23,9 @@ Azure, destek bileti olarak da bilinen destek istekleri oluşturmanıza ve yöne
 > [!NOTE]
 > Azure portal URL 'SI, kuruluşunuzun dağıtıldığı Azure bulutuna özgüdür.
 >
->* Ticari kullanım için Azure portal:[https://portal.azure.com](https://portal.azure.com)
->* Almanya için Azure portal:[https://portal.microsoftazure.de](https://portal.microsoftazure.de)
->* Birleşik Devletler kamu Azure portal:[https://portal.azure.us](https://portal.azure.us)
+>* Ticari kullanım için Azure portal: [https://portal.azure.com](https://portal.azure.com)
+>* Almanya için Azure portal: [https://portal.microsoftazure.de](https://portal.microsoftazure.de)
+>* Birleşik Devletler kamu Azure portal: [https://portal.azure.us](https://portal.azure.us)
 
 Destek isteği deneyimi üç ana hedefle odaklanır:
 
@@ -47,7 +47,7 @@ Bir destek isteği oluşturmak için, abonelik düzeyindeki [destek Isteği kat�
 
 Azure portal her yerden bir destek talebi başlatmak için:
 
-1. Power BI hizmetinde **?** Genel üst bilgisinde. **Yardım + Destek**' i seçin.
+1. Seçin **?** Genel üst bilgisinde. **Yardım + Destek**' i seçin.
 
    ![Yardım ve Destek](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 
@@ -95,7 +95,7 @@ Daha sonra, sorunla ilgili ek ayrıntıları topladık. Bu adımda kapsamlı ve 
 
 1. Ardından, sizinle nasıl iletişim kurabileceğinizi bilmemiz için **iletişim bilgileri** bölümünü doldurun.
 
-### <a name="review--create"></a>Gözden geçir + oluştur
+### <a name="review--create"></a>Gözden geçirme ve oluşturma
 
 Her sekme için gerekli tüm bilgileri doldurun ve ardından **gözden geçir + oluştur**' u seçin. Destek için göndereceğiniz ayrıntıları denetleyin. Gerekirse değişiklik yapmak için herhangi bir sekmeye dönün. Destek isteği tamamlandıktan memnun olduğunuzda **Oluştur**' u seçin.
 
