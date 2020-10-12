@@ -5,10 +5,10 @@ services: automation
 ms.date: 08/10/2020
 ms.topic: article
 ms.openlocfilehash: 8767687f0b72d3469bef570770ac81fa8300097f
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88055946"
 ---
 # <a name="monitor-runbooks-with-metric-alerts"></a>Ölçüm uyarıları ile runbook’ları izleme
@@ -46,7 +46,7 @@ Uyarılar, izlemek için bir koşul ve bu koşul karşılandığında gerçekle�
 
 3. **Uyarı mantığı**altında, uyarınızın koşulunu ve eşiğini tanımlayın. Tanımlanmış koşullarınızın önizlemesi aşağıda gösterilmiştir.
 
-4. **Temelinde değerlendirilen**altında sorgu için TimeSpan değerini ve bu sorgunun ne sıklıkta çalıştırılmasını istediğinizi seçin. Örneğin, **Dönem**için **son 5 dakika boyunca** ve **Sıklık**için **1 dakikada** bir seçerseniz, uyarı son 5 dakika içinde ölçütlerinizi karşılayan runbook sayısını arar. Bu sorgu her dakikada çalıştırılır ve tanımladığınız uyarı ölçütleri 5 dakikalık bir pencerede artık bulunamazsa, uyarı kendisini çözer. Tamamladığınızda **Bitti**’ye tıklayın.
+4. **Temelinde değerlendirilen**altında sorgu için TimeSpan değerini ve bu sorgunun ne sıklıkta çalıştırılmasını istediğinizi seçin. Örneğin, **Dönem**için **son 5 dakika boyunca** ve **Sıklık**için **1 dakikada** bir seçerseniz, uyarı son 5 dakika içinde ölçütlerinizi karşılayan runbook sayısını arar. Bu sorgu her dakikada çalıştırılır ve tanımladığınız uyarı ölçütleri 5 dakikalık bir pencerede artık bulunamazsa, uyarı kendisini çözer. İşiniz bittiğinde **bitti**' ye tıklayın.
 
    ![Uyarı için bir kaynak seçin](./media/automation-alert-activity-log/configure-signal-logic.png)
 

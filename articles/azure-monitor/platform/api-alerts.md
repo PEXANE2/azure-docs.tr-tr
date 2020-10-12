@@ -5,10 +5,10 @@ ms.subservice: logs
 ms.topic: conceptual
 ms.date: 07/29/2018
 ms.openlocfilehash: dce340db90c1528c46c1be0bc172751a04feaf31
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91294084"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>REST API ile Log Analytics uyarı kuralları oluşturma ve yönetme 
@@ -20,7 +20,7 @@ Log Analytics uyarı REST API Log Analytics uyarı oluşturmanıza ve yönetmeni
 
 Log Analytics arama REST API yeniden yapılır ve Azure Resource Manager REST API aracılığıyla erişilebilir. Bu belgede, API 'nin, Azure Resource Manager API 'yi çağırmayı kolaylaştıran açık kaynaklı bir komut satırı aracı olan  [Armclient](https://github.com/projectkudu/ARMClient)kullanarak bir PowerShell komut satırından erişildiği örnekleri bulacaksınız. ARMClient ve PowerShell kullanımı, Log Analytics arama API 'sine erişmek için birçok seçenekten biridir. Bu araçlarla, Log Analytics çalışma alanlarına çağrılar yapmak ve bunlar içinde arama komutları gerçekleştirmek için RestleAzure Resource Manager API 'sinden yararlanabilirsiniz. API, arama sonuçlarını size JSON biçiminde çıktı olarak, arama sonuçlarını programlama yoluyla birçok farklı şekilde kullanmanıza olanak sağlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Şu anda, uyarılar yalnızca Log Analytics bir kayıtlı aramayla oluşturulabilir.  Daha fazla bilgi için [günlük aramasına REST API](../log-query/log-query-overview.md) bakabilirsiniz.
 
 ## <a name="schedules"></a>Zamanlamalar
@@ -136,7 +136,7 @@ armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupN
 ### <a name="alert-actions"></a>Uyarı eylemleri
 Zamanlamanın bir ve yalnızca bir uyarı eylemi olması gerekir.  Uyarı eylemleri aşağıdaki tabloda yer aldığı bir veya daha fazla bölümden oluşur.  Her biri aşağıda daha ayrıntılı olarak açıklanmıştır.
 
-| Section | Description | Kullanım |
+| Section | Açıklama | Kullanım |
 |:--- |:--- |:--- |
 | Eşik |Eylemin çalıştırılacağı ölçüt.| Her uyarı için, Azure 'a genişletildikleri tarihten önce veya sonra gereklidir. |
 | Önem Derecesi |Tetiklendikten sonra uyarıyı sınıflandırmak için kullanılan etiket.| Her uyarı için, Azure 'a genişletildikleri tarihten önce veya sonra gereklidir. |

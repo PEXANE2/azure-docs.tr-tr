@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.openlocfilehash: 95cbb509beba82a14b9f8f8a11c603a6d7b8689d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87280809"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure Data Factory Web etkinliği
@@ -25,7 +25,7 @@ ms.locfileid: "87280809"
 Web Etkinliği bir Data Factory işlem hattından özel bir REST uç noktasını çağırmak için kullanılabilir. Etkinlik tarafından kullanılacak ve erişilecek veri kümelerini ve bağlı hizmetleri geçirebilirsiniz.
 
 > [!NOTE]
-> Web etkinliği, özel bir sanal ağda barındırılan URL 'Leri çağırmak ve şirket içinde barındırılan tümleştirme çalışma zamanından yararlanmak için desteklenir. Tümleştirme çalışma zamanı, URL uç noktasına bir görüş satırı içermelidir. 
+> Web Etkinliği hem özel sanal ağda barındırılan URL'leri çağırmak için hem de şirket içinde barındırılan tümleştirme çalışma zamanı tarafından desteklenir. Tümleştirme çalışma zamanının URL uç noktasında bir görüş alanı olmalıdır. 
 
 ## <a name="syntax"></a>Sözdizimi
 
@@ -72,19 +72,19 @@ Web Etkinliği bir Data Factory işlem hattından özel bir REST uç noktasını
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-name | Web etkinliğinin adı | Dize | Yes
-tür | **Webactivity**olarak ayarlanmalıdır. | Dize | Yes
-method | Hedef uç nokta için REST API yöntemi. | Dize. <br/><br/>Desteklenen türler: "GET", "POST", "PUT" | Yes
-url | Hedef uç nokta ve yol | Dize (veya dize resultType 'ı olan ifade). Bitiş noktasından yanıt almadıysanız etkinlik, bir hatayla 1 dakika sonra zaman aşımına uğrayacaktır. | Yes
+name | Web etkinliğinin adı | Dize | Evet
+tür | **Webactivity**olarak ayarlanmalıdır. | Dize | Evet
+method | Hedef uç nokta için REST API yöntemi. | Dize. <br/><br/>Desteklenen türler: "GET", "POST", "PUT" | Evet
+url | Hedef uç nokta ve yol | Dize (veya dize resultType 'ı olan ifade). Etkinlik uç noktadan yanıt almazsa, 1 dakikanın sonunda zaman aşımına uğrar ve hata verir. | Evet
 bilgisinde | İsteğe gönderilen üst bilgiler. Örneğin, bir istek için dili ve türü ayarlamak için: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` . | Dize (veya dize resultType 'ı olan ifade) | Evet, Content-Type üst bilgisi gereklidir. `"headers":{ "Content-Type":"application/json"}`
 body | Uç noktaya gönderilen yükü temsil eder.  | Dize (veya dize resultType 'ı olan ifade). <br/><br/>İstek [yükü şeması](#request-payload-schema) 'nda istek yükü şeması bölümüne bakın. | POST/PUT yöntemleri için gereklidir.
 kimlik doğrulaması | Uç noktayı çağırmak için kullanılan kimlik doğrulama yöntemi. Desteklenen türler "Basic, or ClientCertificate" dir. Daha fazla bilgi için bkz. [kimlik doğrulama](#authentication) bölümü. Kimlik doğrulaması gerekmiyorsa, bu özelliği dışlayın. | Dize (veya dize resultType 'ı olan ifade) | Hayır
-veri kümeleri | Uç noktaya geçirilen veri kümelerinin listesi. | Veri kümesi başvuruları dizisi. Boş bir dizi olabilir. | Yes
-linkedServices | Uç noktaya geçirilen bağlı hizmetlerin listesi. | Bağlı hizmet başvuruları dizisi. Boş bir dizi olabilir. | Yes
+veri kümeleri | Uç noktaya geçirilen veri kümelerinin listesi. | Veri kümesi başvuruları dizisi. Boş bir dizi olabilir. | Evet
+linkedServices | Uç noktaya geçirilen bağlı hizmetlerin listesi. | Bağlı hizmet başvuruları dizisi. Boş bir dizi olabilir. | Evet
 connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime) . Azure tümleştirme çalışma zamanını veya şirket içinde barındırılan tümleştirme çalışma zamanını (veri depolduğunuz özel bir ağda olması halinde) kullanabilirsiniz. Bu özellik belirtilmezse, hizmet varsayılan Azure tümleştirme çalışma zamanını kullanır. | Integration Runtime başvurusu. | Hayır 
 
 > [!NOTE]
-> Web etkinliğinin çağırdığı REST uç noktaları JSON türünde bir yanıt döndürmelidir. Bitiş noktasından yanıt almadıysanız etkinlik, bir hatayla 1 dakika sonra zaman aşımına uğrayacaktır.
+> Web etkinliğinin çağırdığı REST uç noktaları JSON türünde bir yanıt döndürmelidir. Etkinlik uç noktadan yanıt almazsa, 1 dakikanın sonunda zaman aşımına uğrar ve hata verir.
 
 Aşağıdaki tabloda JSON içeriği için gereksinimler gösterilmektedir:
 
@@ -100,7 +100,7 @@ Aşağıdaki tabloda JSON içeriği için gereksinimler gösterilmektedir:
 
 Aşağıda, Web etkinliğinde desteklenen kimlik doğrulama türleri verilmiştir.
 
-### <a name="none"></a>Hiçbiri
+### <a name="none"></a>Yok
 
 Kimlik doğrulaması gerekmiyorsa, "Authentication" özelliğini eklemeyin.
 

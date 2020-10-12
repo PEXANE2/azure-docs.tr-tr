@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
 ms.openlocfilehash: ba872f221f3bde29f0bb48b04dc2259d3ab4938a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906274"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Azure Sentinel 'de gelişmiş çok aşamalı saldırı algılama
@@ -40,7 +40,7 @@ Bu algılama, Azure Sentinel 'de varsayılan olarak etkinleştirilmiştir. Durum
 
 1. **Etkin kurallar**' ı seçin ve ardından **Fusion** kural türü Için listeyi filtreleyerek **ad** sütununda **Gelişmiş çok aşamalı saldırı algılamayı** bulun. Bu algılamanın etkin veya devre dışı olduğunu doğrulamak için **durum** sütununu kontrol edin.
 
-    :::image type="content" source="./media/fusion/selecting-fusion-rule-type.png" alt-text="{alt-metin}":::
+    :::image type="content" source="./media/fusion/selecting-fusion-rule-type.png" alt-text="{alternatif-metin}":::
 
 1. Durumu değiştirmek için bu girişi seçin ve **Gelişmiş çok aşamalı saldırı algılama** dikey penceresinde **Düzenle**' yi seçin.
 
@@ -422,7 +422,7 @@ Bu senaryo şu anda **genel önizlemededir**.
 
 **Mitre ATT&CK tactika:** İlk erişim, yürütme, yan yana taşıma, ayrıcalık yükseltme
 
-**Mitre ATT&CK teknikleri:** Genel kullanıma yönelik uygulama (T1190), Istemci yürütme (T1203), uzak hizmetlerden yararlanma (T1210), ayrıcalık yükseltme (T1068) ile yararlanılarak,
+**Mitre ATT&CK teknikleri:** Public-Facing uygulama (T1190), Istemci yürütme (T1203) ile yararlanma, uzak hizmetlerden yararlanma (T1210), ayrıcalık yükseltme (T1068) için yararlanılması
 
 **Veri Bağlayıcısı kaynakları:** Uç nokta (eskiden MDADTP) için Microsoft Defender, Palo Alto Networks 
 

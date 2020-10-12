@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: f7dca7352a49e668231f64632371a445985e4de3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83634615"
 ---
 # <a name="create-and-manage-multiple-dashboards"></a>Birden çok pano oluşturma ve yönetme
@@ -38,7 +38,7 @@ Uygulamanın yöneticisiyseniz, kişisel **admin** düzey pano veya uygulama dü
 > [!div class="mx-imgBorder"]
 > ![Sıcaklık ayrıntıları ile cihaz ayrıntılarını yapılandırma "formu](media/howto-create-personal-dashboards/device-details.png)
 
-Örneğin, cihazın geçerli sıcaklığını için bir **telemetri** kutucuğu ekleyebilirsiniz. Bunu yapmak için:
+Örneğin, cihazın geçerli sıcaklığını için bir **telemetri** kutucuğu ekleyebilirsiniz. Bunun için:
 
 1. Bir **cihaz şablonu** seçin
 1. Bir pano kutucuğunda görmek istediğiniz cihaz için **cihazlardan** bir cihaz seçin. Daha sonra, kutucukta kullanılabilecek cihaz özelliklerinin bir listesini görürsünüz.

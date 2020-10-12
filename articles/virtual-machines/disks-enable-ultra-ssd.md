@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
 ms.openlocfilehash: e57317dce64b58e5c92684152d840955a30df660
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91441197"
 ---
 # <a name="using-azure-ultra-disks"></a>Azure Ultra disklerini kullanma
@@ -241,7 +241,7 @@ Alternatif olarak, mevcut sanal makinenizin Ultra diskler kullanabilen bir bölg
 
 ![Ultra disk uyumluluğunu etkinleştirme ekran görüntüsü.](media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png)
 
-- **Kaydet**'i seçin.
+- **Kaydet**’i seçin.
 - **Veri diski Ekle** ' yi seçin ve ardından **ad** açılan menüsünde **disk oluştur**' u seçin.
 
 ![Yeni bir disk ekleyen disk dikey penceresinin ekran görüntüsü.](media/virtual-machines-disks-getting-started-ultra-ssd/create-and-attach-new-ultra-disk.png)
@@ -378,7 +378,7 @@ Ultra diskler, performansını ayarlamanıza olanak tanıyan benzersiz bir özel
 ![VM 'nizin diskler dikey penceresinin ekran görüntüsü, Ultra disk vurgulanır.](media/virtual-machines-disks-getting-started-ultra-ssd/selecting-ultra-disk-to-modify.png)
 
 - **Yapılandırma** ' yı seçin ve ardından değişikliklerinizi yapın.
-- **Kaydet**'i seçin.
+- **Kaydet**’i seçin.
 
 ![Ultra diskinizdeki yapılandırma dikey penceresinin ekran görüntüsü, disk boyutu, IOPS ve aktarım hızı vurgulanmıştır, kaydetme vurgulanır.](media/virtual-machines-disks-getting-started-ultra-ssd/configuring-ultra-disk-performance-and-size.png)
 

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 219e2b77a0f6f30307c43f006fcdd3828d3c8fbf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87021384"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Azure’da StorSimple Cloud Appliance dağıtma ve yönetme (StorSimple Güncelleştirme 3 ve üstü)
@@ -66,7 +66,7 @@ Aşağıdaki tabloda StorSimple Cloud Appliance ile StorSimple fiziksel cihazı 
 | --- | --- | --- |
 | **Konum** |Veri merkezinde yer alır. |Azure üzerinde çalışır. |
 | **Ağ arabirimleri** |Altı ağ arabirimi bulunur: VERİ 0’dan VERİ 5’e. |Yalnızca bir ağ arabirimi bulunur: VERİ 0 |
-| **Kayıt** |İlk yapılandırma adımı sırasında kaydedilir. |Kayıt ayrı bir görevdir. |
+| **Kaydını** |İlk yapılandırma adımı sırasında kaydedilir. |Kayıt ayrı bir görevdir. |
 | **Hizmet verileri şifreleme anahtarı** |Fiziksel cihazda yeniden üretin ve ardından yeni anahtarla bulut gerecini güncelleştirin. |Bulut gerecinden yeniden üretemezsiniz. |
 | **Desteklenen birim türleri** |Hem yerel olarak sabitlenmiş hem de katmanlı birimleri destekler. |Yalnızca katmanlı birimleri destekler. |
 

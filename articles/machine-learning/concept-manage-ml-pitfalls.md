@@ -11,10 +11,10 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
 ms.openlocfilehash: 77b5b52153c552008406b4b85083bcba5542cebe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87012731"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Otomatik makine öğrenimi ile fazla sığdırma ve ıdengeli verileri önleme
@@ -27,7 +27,7 @@ Makine öğreniminde fazla sığdırma, bir model eğitim verilerine çok uygun 
 
 Aşağıdaki eğitilen modelleri ve bunlara karşılık gelen tren ve test accuracies göz önünde bulundurun.
 
-| Modelleme | Tren doğruluğu | Test doğruluğu |
+| Model | Tren doğruluğu | Test doğruluğu |
 |-------|----------------|---------------|
 | A | %99,9 | %95 |
 | B | %87 | %87 |

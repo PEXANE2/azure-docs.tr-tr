@@ -15,10 +15,10 @@ ms.date: 11/15/2017
 ms.author: tarcher
 ms.custom: devx-track-terraform
 ms.openlocfilehash: e13e6d9ac2f4600e41f221efd23997f712dffc54
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87032094"
 ---
 # <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>Azure Cloud Shell Bash 'ten Terrayform ile dağıtma
@@ -35,7 +35,7 @@ Terrayform, ayarlanan varsayılan Azure CLı aboneliğini kullanır. Varsayılan
 az account set --subscription mySubscriptionName
 ```
 
-## <a name="walkthrough"></a>İzlenecek yol
+## <a name="walkthrough"></a>Kılavuz
 ### <a name="launch-bash-in-cloud-shell"></a>Cloud Shell 'da Bash 'i başlatın
 1. Tercih ettiğiniz konumdan Cloud Shell başlatın
 2. Tercih ettiğiniz aboneliğin ayarlandığını doğrulayın

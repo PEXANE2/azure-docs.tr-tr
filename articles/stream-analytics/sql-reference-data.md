@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/29/2019
 ms.openlocfilehash: e00ab059c68d7a3f2288d94894199773cab63ac5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86039305"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Azure Stream Analytics işi için bir SQL veritabanındaki başvuru verilerini kullanma
@@ -119,7 +119,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 ### <a name="specify-storage-account"></a>Depolama hesabı belirtin
 
-SQL başvuru anlık görüntülerini depolamaya yönelik depolama hesabını belirtmek için **üzerindeJobConfig.js** açın.
+SQL başvuru anlık görüntülerini depolamaya yönelik depolama hesabını belirtmek için ** üzerindeJobConfig.js** açın.
 
    ![Visual Studio 'da Stream Analytics iş yapılandırması](./media/sql-reference-data/stream-analytics-job-config.png)
 

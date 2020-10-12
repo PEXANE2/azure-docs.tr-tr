@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: allensu
 ms.openlocfilehash: 265ed0f4cb58a321bde78714f36123bf197d42f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84711009"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Azure ağ arabirimleri için IP adresi ekleme, değiştirme veya kaldırma
@@ -76,7 +76,7 @@ Bir IPv4 adresinin atama yöntemini değiştirmeniz, statik IPv4 adresini deği�
 3. **Ayarlar**altında **IP yapılandırması**' nı seçin.
 4. Listeden değiştirmek istediğiniz IP yapılandırmasını seçin.
 5. [IP yapılandırması ekleme](#add-ip-addresses)' nin 5. adımında bulunan ayarlarla ilgili bilgileri kullanarak ayarları istediğiniz şekilde değiştirin.
-6. **Kaydet**'i seçin.
+6. **Kaydet**’i seçin.
 
 >[!NOTE]
 >Birincil ağ arabiriminin birden çok IP yapılandırması varsa ve birincil IP yapılandırmasının özel IP adresini değiştirirseniz, birincil ve ikincil IP adreslerini Windows içindeki ağ arabirimine el ile yeniden atamanız gerekir (Linux için gerekli değildir). IP adreslerini bir işletim sistemi içindeki bir ağ arabirimine el ile atamak için bkz. [sanal makinelere birden çok IP adresi atama](virtual-network-multiple-ip-addresses-portal.md#os-config). IP adreslerini bir sanal makine işletim sistemine el ile eklemeden önce özel göz önünde bulundurulması gereken [özel IP adresleri bölümüne bakın](#private) . Sanal makine işletim sistemine genel IP adresleri eklemeyin.

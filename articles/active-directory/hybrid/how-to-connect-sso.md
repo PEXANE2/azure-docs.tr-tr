@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: sorunsuz çoklu oturum açma | Microsoft Docs'
-description: Bu konuda, Azure Active Directory (Azure AD) sorunsuz çoklu oturum açma ve Şirket ağınızdaki kurumsal masaüstü kullanıcıları için isteğe bağlı çoklu oturum açma sağlamanıza nasıl izin verdiği açıklanmaktadır.
+title: 'Azure AD Connect: kesintisiz tek Sign-On | Microsoft Docs'
+description: Bu konuda, Azure Active Directory (Azure AD) sorunsuz tek Sign-On ve şirket ağınız içindeki kurumsal masaüstü kullanıcıları için nasıl doğru bir çoklu oturum açma sağlayabileceğinizi açıklanmaktadır.
 services: active-directory
 keywords: Azure AD Connect nedir, yükler Active Directory, Azure AD, SSO, çoklu oturum açma için gerekli bileşenler
 documentationcenter: ''
@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1708b3b8777b32aac7c160a1084235ba1b2eda13
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89658351"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on"></a>Kesintisiz çoklu oturum açma Azure Active Directory
+# <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory Sorunsuz Çoklu Oturum Açma
 
 ## <a name="what-is-azure-active-directory-seamless-single-sign-on"></a>Sorunsuz çoklu oturum açma Azure Active Directory nedir?
 
@@ -33,7 +33,7 @@ Azure Active Directory Sorunsuz Çoklu Oturum Açma (Azure AD Sorunsuz SSO) öze
 
 Kesintisiz SSO, [Parola karması eşitlemesi](how-to-connect-password-hash-synchronization.md) veya [geçişli kimlik doğrulaması](how-to-connect-pta.md) oturum açma yöntemleriyle birleştirilebilir. Sorunsuz SSO Active Directory Federasyon Hizmetleri (AD FS) (ADFS) için geçerli _değildir_ .
 
-![Kesintisiz çoklu oturum açma](./media/how-to-connect-sso/sso1.png)
+![Kesintisiz tek Sign-On](./media/how-to-connect-sso/sso1.png)
 
 >[!IMPORTANT]
 >Sorunsuz SSO Kullanıcı cihazının yalnızca **etki alanına katılmış** olmasını gerektirir, ancak [Azure AD 'ye katılmış](../devices/concept-azure-ad-join.md) veya [hibrit Azure AD 'ye katılmış](../devices/concept-azure-ad-join-hybrid.md) cihazlarda kullanılmaz. Azure AD 'ye katılmış, hibrit Azure AD 'ye katılmış ve Azure AD 'ye kayıtlı cihazlarda SSO, [birincil yenileme belirtecine](../devices/concept-primary-refresh-token.md)göre çalışmaktadır.
@@ -63,11 +63,11 @@ Kesintisiz SSO, [Parola karması eşitlemesi](how-to-connect-password-hash-synch
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Evet\*|Yes|Yes|Evet\*\*\*|Yok
-|Windows 8.1|Yes\*|Yok|Yes|Evet\*\*\*|Yok
-|Windows 8|Yes\*|Yok|Yes|Evet\*\*\*|Yok
-|Windows 7|Evet\*|Yok|Yes|Evet\*\*\*|Yok
-|Windows Server 2012 R2 veya üzeri|Yes\*\*|Yok|Yes|Evet\*\*\*|Yok
+|Windows 10|Evet\*|Evet|Evet|Evet\*\*\*|Yok
+|Windows 8.1|Evet\*|Yok|Evet|Evet\*\*\*|Yok
+|Windows 8|Evet\*|Yok|Evet|Evet\*\*\*|Yok
+|Windows 7|Evet\*|Yok|Evet|Evet\*\*\*|Yok
+|Windows Server 2012 R2 veya üzeri|Yes\*\*|Yok|Evet|Evet\*\*\*|Yok
 |Mac OS X|Yok|Yok|Evet\*\*\*|Evet\*\*\*|Evet\*\*\*
 
 

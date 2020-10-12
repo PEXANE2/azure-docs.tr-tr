@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
 ms.openlocfilehash: f078ab217a5c4911fbd132338883504897db899f
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86044609"
 ---
 # <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Azure Stream Analytics işinizi durdurma veya silme
@@ -26,7 +26,7 @@ Azure Stream Analytics işleri Azure portal, Azure PowerShell, .NET için Azure 
 
 Bir işi durdurduğunuzda, kaynakların sağlanması kaldırılır ve olayları işlemeyi durdurur. Bu işle ilgili ücretler de durdurulur. Ancak tüm yapılandırmanız korunur ve işi daha sonra yeniden başlatabilirsiniz 
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
 
 2. Çalışan Stream Analytics işinizi bulun ve seçin.
 

@@ -5,10 +5,10 @@ ms.date: 11/21/2019
 ms.topic: conceptual
 ms.reviewer: zeyadr
 ms.openlocfilehash: 7b8885ba08d35db20d1eb7e75141cb173913b386
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84712539"
 ---
 # <a name="azure-blockchain-service-consortium"></a>Azure blok zinciri hizmeti Consortium
@@ -33,12 +33,12 @@ Bir konsorsiyumun katılımcıları bireyler veya kuruluşlar olabilir ve bir ku
 
 | Eylem | Kullanıcı rolü | Yönetici rolü
 |--------|:----:|:------------:|
-| Yeni üye Oluştur | Evet | Yes |
+| Yeni üye Oluştur | Evet | Evet |
 | Yeni üyeler davet et | Hayır | Evet |
 | Üye katılımcı rolünü ayarlama veya değiştirme | Hayır | Evet |
 | Üye görünen adını değiştir | Yalnızca kendi üyesi için | Yalnızca kendi üyesi için |
 | Üyeleri kaldırma | Yalnızca kendi üyesi için | Evet |
-| Blok zinciri işlemlerine katılın | Evet | Yes |
+| Blok zinciri işlemlerine katılın | Evet | Evet |
 
 ### <a name="user-role"></a>Kullanıcı rolü
 

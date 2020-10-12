@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines
 author: tanmaygore
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
 ms.openlocfilehash: b874cefc2521089da02b90b9241be93e80836d6e
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87507302"
 ---
 Bu makalede, bir hizmet olarak altyapı (IaaS) kaynaklarını klasik 'dan Kaynak Yöneticisi dağıtım modelleriyle geçirme ve sanal ağ siteden siteye ağ geçitleri kullanılarak aboneliğinizde bulunan iki dağıtım modelinden kaynakları bağlama ayrıntıları açıklanmaktadır. [Azure Resource Manager özellikleri ve avantajları](../articles/azure-resource-manager/management/overview.md)hakkında daha fazla bilgi edinebilirsiniz. 
@@ -120,7 +120,7 @@ Aşağıdaki yapılandırma Şu anda desteklenmiyor.
 
 | Hizmet | Yapılandırma | Öneri |
 | --- | --- | --- |
-| Resource Manager |Klasik kaynaklar için rol tabanlı Access Control (RBAC) |Kaynak URI 'SI geçişten sonra değiştirildiğinden, geçişten sonra gerçekleşmesi gereken RBAC ilke güncelleştirmelerini planlamanız önerilir. |
+| Resource Manager |Klasik kaynaklar için Role-Based Access Control (RBAC) |Kaynak URI 'SI geçişten sonra değiştirildiğinden, geçişten sonra gerçekleşmesi gereken RBAC ilke güncelleştirmelerini planlamanız önerilir. |
 | İşlem |Bir VM ile ilişkili birden çok alt ağ |Alt ağ yapılandırmasını yalnızca bir alt ağa başvuracak şekilde güncelleştirin. Bu, VM 'den bir ikincil NIC (başka bir alt ağa başvuran) kaldırmanızı ve geçiş tamamlandıktan sonra yeniden iliştirmesini gerektirebilir. |
 | İşlem |Bir sanal ağa ait olan ancak açık bir alt ağa sahip olmayan sanal makineler |İsteğe bağlı olarak VM 'yi silebilirsiniz. |
 | İşlem |Uyarıları olan sanal makineler, otomatik ölçeklendirme ilkeleri |Geçiş aşamasından geçer ve bu ayarlar bırakılır. Geçiş yapmadan önce ortamınızı değerlendirmeniz kesinlikle önerilir. Alternatif olarak, geçiş tamamlandıktan sonra uyarı ayarlarını yeniden yapılandırabilirsiniz. |

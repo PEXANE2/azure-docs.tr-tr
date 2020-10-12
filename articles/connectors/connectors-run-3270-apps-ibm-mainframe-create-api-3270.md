@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
 ms.openlocfilehash: 41e3f1ff430293ebc7b3828a0fd7090923fc209c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87281489"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Azure Logic Apps ve IBM 3270 bağlayıcısını kullanarak IBM ana bilgisayarlarındaki 3270 ekran temelli uygulamaları Azure ile tümleştirme
@@ -290,7 +290,7 @@ Bu modda, gezinti planınızla ilişkili bir yöntemi tanımlarsınız. Her yön
 
    | Özellik adı | Olası değerler | 
    |---------------|-----------------|
-   | **Veri Türü** | Byte, tarih saat, Decimal, INT, Long, Short, String |
+   | **Veri türü** | Byte, tarih saat, Decimal, INT, Long, Short, String |
    | **Alan dolgusu tekniği** | Parametreler, gerekirse boşluklar ile doldurarak bu doldurma türlerini destekler: <p><p>- **Yazın**: alana sırayla karakterleri girin. <p>- **Fill**: alanın içeriğini, gerekirse boşluklar ile doldurarak karakterler ile değiştirin. <p>- **Silinebilir. OfType**: alanı temizleyin ve ardından alana sırayla karakterler girin. |
    | **Biçim dizesi** | Bazı parametre veri türleri bir biçim dizesi kullanır ve bu, 3270 bağlayıcısından metni ekrandan bir .NET veri türüne nasıl dönüştürmeye bildirir: <p><p>- **DateTime**: DateTime biçim dizesi, [.NET özel tarih ve saat biçimi dizelerini](/dotnet/standard/base-types/custom-date-and-time-format-strings)izler. Örneğin, Tarih `06/30/2019` biçim dizesini kullanır `MM/dd/yyyy` . <p>- **Decimal**: Decimal biçim dizesi [COBOL Picture yan tümcesini](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html)kullanır. Örneğin, sayı `100.35` biçim dizesini kullanır `999V99` . |
    |||
@@ -360,10 +360,10 @@ Tüm bu adımları tamamladığınızda, IBM ana bilgisayarınıza bağlanmak i�
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Bağlantı adı** | Yes | <*bağlantı adı*> | Bağlantınızın adı |
-   | **Tümleştirme hesabı KIMLIĞI** | Yes | <*Tümleştirme-hesap-adı*> | Tümleştirme hesabınızın adı |
-   | **Tümleştirme hesabı SAS URL 'SI** | Yes | <*Tümleştirme-hesap-SAS-URL*> | Tümleştirme hesabınızın Azure portal, tümleştirme hesabınızın ayarlarından oluşturabileceğiniz paylaşılan erişim Imzası (SAS) URL 'SI. <p>1. tümleştirme hesabınız menüsünde, **Ayarlar**altında **geri çağırma URL 'si**' ni seçin. <br>2. sağ bölmedeki **oluşturulan geri çağırma URL 'si** değerini kopyalayın. |
-   | **Sunucu** | Yes | <*TN3270-sunucu adı*> | TN3270 hizmetinizin sunucu adı |
+   | **Bağlantı adı** | Evet | <*bağlantı adı*> | Bağlantınızın adı |
+   | **Tümleştirme hesabı KIMLIĞI** | Evet | <*Tümleştirme-hesap-adı*> | Tümleştirme hesabınızın adı |
+   | **Tümleştirme hesabı SAS URL 'SI** | Evet | <*Tümleştirme-hesap-SAS-URL*> | Tümleştirme hesabınızın Azure portal, tümleştirme hesabınızın ayarlarından oluşturabileceğiniz paylaşılan erişim Imzası (SAS) URL 'SI. <p>1. tümleştirme hesabınız menüsünde, **Ayarlar**altında **geri çağırma URL 'si**' ni seçin. <br>2. sağ bölmedeki **oluşturulan geri çağırma URL 'si** değerini kopyalayın. |
+   | **Sunucu** | Evet | <*TN3270-sunucu adı*> | TN3270 hizmetinizin sunucu adı |
    | **Bağlantı noktası** | Hayır | <*TN3270-sunucu bağlantı noktası*> | TN3270 sunucunuz tarafından kullanılan bağlantı noktası. Boş bırakılırsa, bağlayıcı `23` varsayılan değer olarak kullanılır. |
    | **Cihaz Türü** | Hayır | <*IBM-Terminal-model*> | Benzetimi yapılacak IBM terminalinin model adı veya numarası. Boş bırakılırsa, bağlayıcı varsayılan değerleri kullanır. |
    | **Kod Sayfası** | Hayır | <*kod-sayfa numarası*> | Ana bilgisayar için kod sayfası numarası. Boş bırakılırsa, bağlayıcı `37` varsayılan değer olarak kullanılır. |
@@ -372,7 +372,7 @@ Tüm bu adımları tamamladığınızda, IBM ana bilgisayarınıza bağlanmak i�
    | **Ana bilgisayar SSL sertifikası mı doğrula?** | Hayır | Açık veya kapalı | Sunucunun sertifikası için doğrulamayı açın veya devre dışı bırakın. |
    ||||
 
-   Örnek:
+   Örneğin:
 
    ![Bağlantı özellikleri](./media/connectors-create-api-3270/connection-properties.png)
 
@@ -380,11 +380,11 @@ Tüm bu adımları tamamladığınızda, IBM ana bilgisayarınıza bağlanmak i�
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Hidx adı** | Yes | <*HIDX-dosya adı*> | Kullanmak istediğiniz 3270 HIDX dosyasını seçin. |
-   | **Yöntem adı** | Yes | <*Yöntem-adı*> | Kullanmak istediğiniz HIDX dosyasındaki yöntemi seçin. Bir yöntemi seçtikten sonra, bu yöntemle kullanılacak parametreleri seçebilmeniz için **yeni parametre Ekle** listesi görüntülenir. |
+   | **Hidx adı** | Evet | <*HIDX-dosya adı*> | Kullanmak istediğiniz 3270 HIDX dosyasını seçin. |
+   | **Yöntem adı** | Evet | <*Yöntem-adı*> | Kullanmak istediğiniz HIDX dosyasındaki yöntemi seçin. Bir yöntemi seçtikten sonra, bu yöntemle kullanılacak parametreleri seçebilmeniz için **yeni parametre Ekle** listesi görüntülenir. |
    ||||
 
-   Örnek:
+   Örneğin:
 
    **HIDX dosyasını seçin**
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.openlocfilehash: 844ef8c09f10e1df888ef4990db22be8705d5c01
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90530208"
 ---
 # <a name="language-support-for-computer-vision"></a>Görüntü İşleme için dil desteği
@@ -58,7 +58,7 @@ Görüntü İşleme OCR API 'Leri çeşitli dilleri destekler. Bir dil kodu beli
 
 [Analyze-Image](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 'sindeki bazı eylemler, sorgu parametresiyle belirtilen diğer dillerde sonuç döndürebilir `language` . Diğer Eylemler, belirtilen dilin ne olduğuna bakmaksızın sonuçları Ingilizce olarak döndürür ve bazıları desteklenmeyen diller için bir özel durum oluşturur. Eylemler `visualFeatures` ve sorgu parametreleriyle birlikte belirtilir `details` ; görüntü analizine sahip yapabileceğiniz tüm eylemlerin bir listesi için bkz. [genel bakış](overview.md) .
 
-|Dil | Dil kodu | Kategoriler | Etiketler | Açıklama | Yetişkin | Markalar | Renk | Yüzler | ImageType | Nesneler | Ünlü Kişiler | Bölümler |
+|Dil | Dil kodu | Kategoriler | Etiketler | Açıklama | Yetişkin | Markalar | Color | Yüzler | ImageType | Nesneler | Ünlü Kişiler | Bölümler |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Çince | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |İngilizce | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|

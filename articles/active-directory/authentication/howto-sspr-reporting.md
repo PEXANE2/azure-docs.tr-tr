@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9118a99f285dedfe0b76e890db001627e4f85969
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89657139"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD parola yönetimi için raporlama seçenekleri
@@ -72,7 +72,7 @@ Aşağıdaki tabloda, Azure portal her bir sütun için ayarlayabileceğiniz far
 | --- | --- |
 | Kayıtlı veriler |**Alternatif e-posta**: Kullanıcı, kimlik doğrulamak için alternatif bir e-posta veya kimlik doğrulama e<p><p>**Ofis telefonu**: Kullanıcı, kimlik doğrulamak için bir Office telefonu kullandık.<p>**Cep telefonu**: Kullanıcı, kimlik doğrulamak için bir cep telefonu veya kimlik doğrulama telefonu kullandık.<p>**Güvenlik soruları**: Kullanıcı, kimlik doğrulaması için güvenlik soruları kullandı.<p>**Önceki yöntemlerin herhangi bir birleşimi (örneğin, alternatif e-posta + cep telefonu**), iki geçit bir ilke belirtildiğinde oluşur ve kullanıcının parola sıfırlama isteğinde kimlik doğrulaması için kullandığı iki yöntemi gösterir. |
 
-## <a name="self-service-password-management-activity-types"></a>Self servis parola yönetimi etkinlik türleri
+## <a name="self-service-password-management-activity-types"></a>Self-Service parola yönetimi etkinlik türleri
 
 Aşağıdaki etkinlik türleri **self servis parola yönetimi** denetim olay kategorisinde görünür:
 

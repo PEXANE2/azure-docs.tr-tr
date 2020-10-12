@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 ms.openlocfilehash: 114b8b32d4abb1fd9b7e641625cd1b132470bafd
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87281455"
 ---
 # <a name="migrate-logic-apps-to-latest-schema-version"></a>Logic Apps 'i en son şema sürümüne geçirme
@@ -28,7 +28,7 @@ Mevcut mantıksal uygulamalarınızı en yeni şemaya taşımak için şu adıml
 
    Şemayı Güncelleştir sayfası görünür ve yeni şemadaki geliştirmeleri açıklayan bir belgenin bağlantısını gösterir.
 
-## <a name="best-practices"></a>En iyi uygulamalar
+## <a name="best-practices"></a>Önerilen uygulamalar
 
 Aşağıda, mantıksal uygulamalarınızı en son şema sürümüne geçirmeye yönelik bazı en iyi yöntemler verilmiştir:
 

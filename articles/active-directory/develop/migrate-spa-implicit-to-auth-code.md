@@ -13,10 +13,10 @@ ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev
 ms.openlocfilehash: b7316756aab7875dce50a3783cb95ca42676b970
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87027096"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>Bir JavaScript tek sayfalı uygulamayı örtük kimlik doğrulama kod akışına geçirme
@@ -48,11 +48,11 @@ Uygulamalarınız için mevcut uygulama kaydınızı kullanmaya devam etmek isti
     :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-01-implicit-warning-banner.png" alt-text="Azure portal web uygulaması kutucuğunda örtük akış uyarı başlığı":::
 1. *Yalnızca* uygulamaları 2. x MSAL.js kullanacağı yeniden yönlendirme URI 'lerini seçin ve ardından **Yapılandır**' ı seçin.
 
-    :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-02-select-redirect-uri.png" alt-text="Azure portal içindeki SPA bölmesinde URI bölmesini yeniden yönlendir bölmesini seçin":::
+    :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-02-select-redirect-uri.png" alt-text="Azure portal web uygulaması kutucuğunda örtük akış uyarı başlığı":::
 
 Bu yeniden yönlendirme URI 'Leri artık **tek sayfalı uygulama** platformu kutucuğunda görünmeli ve bu URI 'ler için yetkilendirme kodu akışında CORS desteğinin etkin olduğunu gösterir.
 
-:::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-03-spa-redirect-uri-tile.png" alt-text="Azure portal 'de uygulama kaydında tek sayfalı uygulama kutucuğu":::
+:::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-03-spa-redirect-uri-tile.png" alt-text="Azure portal web uygulaması kutucuğunda örtük akış uyarı başlığı":::
 
 Ayrıca, var olan kaydlarınızın yeniden yönlendirme URI 'Lerini güncelleştirmek yerine [Yeni bir uygulama kaydı da oluşturabilirsiniz](scenario-spa-app-registration.md) .
 

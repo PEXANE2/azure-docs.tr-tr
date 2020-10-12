@@ -5,10 +5,10 @@ ms.date: 03/30/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.openlocfilehash: f067f4413f6ad8541cd36a7581f9243bed4e195f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87023747"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>CLI kullanarak Blok Zinciri Veri Yöneticisi'ni yapılandırma
@@ -23,7 +23,7 @@ Bir blok zinciri Veri Yöneticisi örneği yapılandırmak için şunları yapı
 * Blok zinciri uygulaması ekleme
 * Örnek başlatma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * En son [Azure CLI](/cli/azure/install-azure-cli) 'yı yükleyip kullanarak oturum açın `az login` .
 * [Hızlı başlangıç: Azure blok zinciri hizmeti Consortium ağına bağlanmak için Visual Studio Code kullanın](connect-vscode.md). Blok zinciri Veri Yöneticisi kullanılırken Azure blok zinciri hizmeti *Standart* katmanı önerilir.

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
 ms.openlocfilehash: 71d230c9fea25edfbf0ca4ea40f15b69779ad060
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84711910"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Şirket içi VMware sanal makinelerinde veya fiziksel sunucularda ikincil siteye olağanüstü durum kurtarmayı ayarlama
@@ -50,14 +50,14 @@ o fiziksel makineler Için bu [öğreticiyi](./physical-azure-disaster-recovery.
 --|--|--
 **Gerekli bileşenler** |Çoğaltılan makinelerde Mobility hizmeti. Şirket içi yapılandırma sunucusu, işlem sunucusu, ana hedef sunucusu. Yeniden çalışma için Azure 'da geçici işlem sunucusu.|Mobility hizmeti, Işlem sunucusu, yapılandırma sunucusu ve ana hedef
 **Yapılandırma ve düzenleme** |Azure portal kurtarma hizmetleri Kasası | VContinuum kullanma 
-**Çoğaltılmış** |Disk (Windows ve Linux) |Birim-Windows<br> Disk-Linux
-**Paylaşılan disk kümesi** |Desteklenmiyor|Destekleniyor
-**Veri dalgalanma sınırları (Ortalama)** |disk başına 10 MB/s veri<br> VM başına 250 MB/s veri<br> [Daha fazla bilgi](./site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) | Disk başına 10 MB/s veri >  <br> VM başına 25 MB/s veri >
+**Çoğaltılmış** |Disk (Windows ve Linux) |Volume-Windows<br> Disk-Linux
+**Paylaşılan disk kümesi** |Desteklenmez|Desteklenir
+**Veri dalgalanma sınırları (Ortalama)** |disk başına 10 MB/s veri<br> VM başına 250 MB/s veri<br> [Daha fazla bilgi edinin](./site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) | Disk başına 10 MB/s veri >  <br> VM başına 25 MB/s veri >
 **İzleme** |Azure portal 'den|CX (yapılandırma sunucusu)
 **Destek matrisi** | [Ayrıntılar için buraya tıklayın](./vmware-physical-azure-support-matrix.md)|[ASR Scout uyumlu matrisi indir](https://aka.ms/asr-scout-cm)
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticiyi tamamlamak için:
 
 - Tüm bileşenler için destek gereksinimlerini [gözden geçirin](vmware-physical-secondary-support-matrix.md) .
@@ -81,51 +81,51 @@ Güncelleştirmeleri şu şekilde yükler:
 >Tüm Scout bileşenlerinin dosya güncelleştirme sürümü Update. zip dosyasında aynı olmayabilir. Eski sürüm, bu güncelleştirme için önceki güncelleştirmeden bu yana bileşende değişiklik olmadığını gösterir.
 
 [Update](https://aka.ms/asr-scout-update7) . zip dosyasını ve [MySQL ve php yükseltme](https://aka.ms/asr-scout-u7-mysql-php-manualupgrade) yapılandırma dosyalarını indirin. Update. zip dosyası, aşağıdaki bileşenlerin tüm temel ikililerini ve toplu yükseltme ikili dosyalarını içerir: 
-- InMage_ScoutCloud_RX_8.0.1.0_RHEL6-64_GA_02Mar2015. tar. gz
-- RX_8.0.7.0_GA_Update_7_2965621_28Dec18. tar. gz
+- InMage_ScoutCloud_RX_8 InMage_ScoutCloud_RX_8.0.1.0_RHEL6-64_GA_02Mar2015. tar. gz
+- RX_8 RX_8.0.7.0_GA_Update_7_2965621_28Dec18. tar. gz
 - InMage_CX_8.0.1.0_Windows_GA_26Feb2015_release.exe
 - InMage_CX_TP_8.0.1.0_Windows_GA_26Feb2015_release.exe
 - CX_Windows_8.0.7.0_GA_Update_7_2965621_28Dec18.exe
 - InMage_PI_8.0.1.0_Windows_GA_26Feb2015_release.exe
 - InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe
 - InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe
-- InMage_UA_8.0.7.0_OL5-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_8.0.7.0_OL5-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_8.0.7.0_OL6-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_8.0.7.0_OL6-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_8.0.7.0_RHEL5-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_8.0.7.0_RHEL5-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_8.0.7.0_RHEL6-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_8.0.7.0_RHEL7-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_8.0.7.0_SLES10-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_8.0.7.0_SLES10-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_8.0.7.0_SLES10-SP1-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_8.0.7.0_SLES10-SP1-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_8.0.7.0_SLES10-SP2-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_8.0.7.0_SLES10-SP2-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_8.0.7.0_SLES10-SP3-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_8.0.7.0_SLES10-SP3-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_8.0.7.0_SLES10-SP4-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_8.0.7.0_SLES10-SP4-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_8.0.7.0_SLES11-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_8.0.7.0_SLES11-64_GA_04Dec2018_release. tar. gz
-- InMage_UA_8.0.7.0_SLES11-SP1-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_8.0.7.0_SLES11-SP1-64_GA_04Dec2018_release. tar. gz
-- InMage_UA_8.0.7.0_SLES11-SP2-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_8.0.7.0_SLES11-SP2-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_8.0.7.0_SLES11-SP3-32_GA_03Dec2018_release. tar. gz
-- InMage_UA_8.0.7.0_SLES11-SP3-64_GA_03Dec2018_release. tar. gz
-- InMage_UA_8.0.7.0_SLES11-SP4-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_8 InMage_UA_8.0.7.0_OL5-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_8 InMage_UA_8.0.7.0_OL5-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_8 InMage_UA_8.0.7.0_OL6-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_8 InMage_UA_8.0.7.0_OL6-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_8 InMage_UA_8.0.7.0_RHEL5-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_8 InMage_UA_8.0.7.0_RHEL5-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_8 InMage_UA_8.0.7.0_RHEL6-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_8 InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_8 InMage_UA_8.0.7.0_RHEL7-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_8 InMage_UA_8.0.7.0_SLES10-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_8 InMage_UA_8.0.7.0_SLES10-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_8 InMage_UA_8.0.7.0_SLES10-SP1-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_8 InMage_UA_8.0.7.0_SLES10-SP1-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_8 InMage_UA_8.0.7.0_SLES10-SP2-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_8 InMage_UA_8.0.7.0_SLES10-SP2-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_8 InMage_UA_8.0.7.0_SLES10-SP3-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_8 InMage_UA_8.0.7.0_SLES10-SP3-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_8 InMage_UA_8.0.7.0_SLES10-SP4-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_8 InMage_UA_8.0.7.0_SLES10-SP4-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_8 InMage_UA_8.0.7.0_SLES11-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_8 InMage_UA_8.0.7.0_SLES11-64_GA_04Dec2018_release. tar. gz
+- InMage_UA_8 InMage_UA_8.0.7.0_SLES11-SP1-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_8 InMage_UA_8.0.7.0_SLES11-SP1-64_GA_04Dec2018_release. tar. gz
+- InMage_UA_8 InMage_UA_8.0.7.0_SLES11-SP2-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_8 InMage_UA_8.0.7.0_SLES11-SP2-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_8 InMage_UA_8.0.7.0_SLES11-SP3-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_8 InMage_UA_8.0.7.0_SLES11-SP3-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_8 InMage_UA_8.0.7.0_SLES11-SP4-64_GA_03Dec2018_release. tar. gz
   1. . Zip dosyalarını ayıklayın.
   2. **RX sunucusu**: **RX_8.0.7.0_GA_Update_7_2965621_28Dec18. tar. gz** dosyasını RX sunucusuna kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.
   3. **Yapılandırma sunucusu ve işlem sunucusu**: **CX_Windows_8.0.7.0_GA_Update_7_2965621_28Dec18.exe** yapılandırma sunucusuna ve işlem sunucusuna kopyalayın. Çalıştırmak için çift tıklayın.<br>
   4. **Windows ana hedef sunucusu**: Birleşik aracıyı güncelleştirmek için **InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe** sunucuya kopyalayın. Çalıştırmak için çift tıklayın. Aynı dosya aynı zamanda yeni yükleme için de kullanılabilir. Aynı Birleşik aracı güncelleştirmesi aynı zamanda kaynak sunucu için de geçerlidir.
-  Güncelleştirme, en son değişikliklerle yeni bir GA yükleyicidir olduğundan, güncelleştirmenin **InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe** hazırlanan ana hedefe uygulanması gerekmez.
+  Güncelleştirme, en son değişikliklerle yeni bir GA yükleyicidir olduğundan, güncelleştirmenin **InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe**  hazırlanan ana hedefe uygulanması gerekmez.
   5. **Vcontinuum sunucusu**: **InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe** sunucuya kopyalayın.  VContinuum Sihirbazı 'nı kapattığınızdan emin olun. Dosyayı çalıştırmak için çift tıklayın.
   6. **Linux ana hedef sunucusu**: Birleşik aracıyı güncelleştirmek için **InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release. tar. gz** öğesini Linux ana hedef sunucusuna kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.
   7. **Windows kaynak sunucusu**: Birleşik aracıyı güncelleştirmek için **InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe** kaynak sunucuya kopyalayın. Dosyayı çalıştırmak için çift tıklayın. 
-  8. **Linux kaynak sunucusu**: Birleşik aracıyı güncelleştirmek için, Birleşik aracı dosyasının Ilgili sürümünü Linux sunucusuna kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.  Örnek: RHEL 6,7 64-bit sunucu Için **InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release. tar. gz** dosyasını sunucuya kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.
+  8. **Linux kaynak sunucusu**: Birleşik aracıyı güncelleştirmek için, Birleşik aracı dosyasının Ilgili sürümünü Linux sunucusuna kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.  Örnek: RHEL 6,7 64-bit sunucu Için, **InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release. tar. gz** dosyasını sunucuya kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.
   9. Yapılandırma sunucusunu, Işlem sunucusunu ve RX sunucusunu yukarıda bahsedilen yükleyicilerle yükselttikten sonra, PHP ve MySQL kitaplıklarının [hızlı yükleme kılavuzunun](https://aka.ms/asr-scout-quick-install-guide)7,4 bölümünde bahsedilen adımlarla el ile yükseltilmesi gerekir.
 
 ## <a name="enable-replication"></a>Çoğaltmayı etkinleştirme
@@ -183,23 +183,23 @@ Güncelleştirmeleri şu şekilde yükler:
 >Tüm Scout bileşenlerinin dosya güncelleştirme sürümü Update. zip dosyasında aynı olmayabilir. Eski sürüm, bu güncelleştirme için önceki güncelleştirmeden bu yana bileşende değişiklik olmadığını gösterir.
 
 [Update](https://aka.ms/asr-scout-update6) . zip dosyasını indirin. Dosya aşağıdaki bileşenleri içerir: 
-- RX_8.0,4.0_GA_Update_4_8725872_16Sep16. tar. gz
+- RX_8 RX_8.0.4.0_GA_Update_4_8725872_16Sep16. tar. gz
 - CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe
 - UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe
-- UA_RHEL6 -64 _ 8.0.4.0_GA_Update_4_9035261_26Sep16. tar. gz
+- UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16. tar. gz
 - vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe
-- RHEL5, OL5, OL6, SUSE 10, SUSE 11: UA_ \<Linux OS> _ 8.0.4.0_GA_Update_4_9035261_26Sep16. tar. gz IÇIN UA Update4 bitleri
+- RHEL5, OL5, OL6, SUSE 10, SUSE 11: UA_ \<Linux OS> _8.0.4.0_GA_Update_4_9035261_26Sep16. tar. gz IÇIN UA Update4 bitleri
   1. . Zip dosyalarını ayıklayın.
-  2. **RX sunucusu**: **RX_8.0,4.0_GA_Update_4_8725872_16Sep16. tar. gz** dosyasını RX sunucusuna kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.
+  2. **RX sunucusu**: **RX_8.0.4.0_GA_Update_4_8725872_16Sep16. tar. gz** dosyasını RX sunucusuna kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.
   3. **Yapılandırma sunucusu ve işlem sunucusu**: **CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe** yapılandırma sunucusuna ve işlem sunucusuna kopyalayın. Çalıştırmak için çift tıklayın.<br>
   4. **Windows ana hedef sunucusu**: Birleşik aracıyı güncelleştirmek için **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** sunucuya kopyalayın. Çalıştırmak için çift tıklayın. Aynı Birleşik aracı güncelleştirmesi aynı zamanda kaynak sunucu için de geçerlidir. Kaynak güncelleştirme 4 ' e güncellenmemişse, Birleşik aracıyı güncelleştirmeniz gerekir.
-  Güncelleştirme, en son değişikliklerle yeni bir GA yükleyicidir olduğundan, güncelleştirmenin **InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe** hazırlanan ana hedefe uygulanması gerekmez.
+  Güncelleştirme, en son değişikliklerle yeni bir GA yükleyicidir olduğundan, güncelleştirmenin **InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe**  hazırlanan ana hedefe uygulanması gerekmez.
   5. **Vcontinuum sunucusu**: **vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe** sunucuya kopyalayın.  VContinuum Sihirbazı 'nı kapattığınızdan emin olun. Dosyayı çalıştırmak için çift tıklayın.
   Güncelleştirme, en son değişikliklerle yeni bir GA yükleyicidir olduğundan, güncelleştirmenin **InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe** hazırlanan ana hedefe uygulanması gerekmez.
-  6. **Linux ana hedef sunucusu**: Birleşik aracıyı güncelleştirmek için **UA_RHEL6 -64 _ 8.0.4.0_GA_Update_4_9035261_26Sep16. tar. gz** dosyasını ana hedef sunucuya kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.
+  6. **Linux ana hedef sunucusu**: Birleşik aracıyı güncelleştirmek için **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16. tar. gz** dosyasını ana hedef sunucuya kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.
   7. **Windows kaynak sunucusu**: Birleşik aracıyı güncelleştirmek için **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** kaynak sunucuya kopyalayın. Dosyayı çalıştırmak için çift tıklayın. 
   Güncelleştirme 5 aracısını güncelleştirme 4 ' e zaten güncelleştirilmiş veya kaynak Aracısı en son temel yükleyici **InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe**yüklüyse kaynak sunucuya yüklemeniz gerekmez.
-  8. **Linux kaynak sunucusu**: Birleşik aracıyı güncelleştirmek için, Birleşik aracı dosyasının Ilgili sürümünü Linux sunucusuna kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.  Örnek: RHEL 6,7 64-bit sunucu Için, **UA_RHEL6 -64 _ 8.0.4.0_GA_Update_4_9035261_26Sep16. tar. gz** sunucusuna kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.
+  8. **Linux kaynak sunucusu**: Birleşik aracıyı güncelleştirmek için, Birleşik aracı dosyasının Ilgili sürümünü Linux sunucusuna kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.  Örnek: RHEL 6,7 64-bit sunucu Için **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16. tar. gz** dosyasını sunucuya kopyalayın ve ayıklayın. Ayıklanan klasörde, **/install**' i çalıştırın.
 
 
 > [!NOTE]
@@ -218,7 +218,7 @@ Scout güncelleştirme 5, toplu bir güncelleştirmedir. Güncelleştirme 1 ' de
 
 #### <a name="new-platform-support"></a>Yeni platform desteği
 * SUSE Linux Enterprise Server 11 Service Pack 4 (SP4)
-* SLES 11 SP4 64 bit **InMage_UA_8.0.1.0_SLES11-SP4-64_GA_13Apr2017_release. tar. gz** , taban Scout GA paketiyle (**InMage_Scout_Standard_8.0.1 GA.zip**) paketlenir. Kasa oluşturma bölümünde açıklandığı gibi, portaldan GA paketini indirin.
+* SLES 11 SP4 64 bit  **InMage_UA_8.0.1.0_SLES11-SP4-64_GA_13Apr2017_release. tar. gz** , taban Scout GA paketiyle (**InMage_Scout_Standard_8.0.1 GA.zip**) paketlenir. Kasa oluşturma bölümünde açıklandığı gibi, portaldan GA paketini indirin.
 
 
 #### <a name="bug-fixes-and-enhancements"></a>Hata düzeltmeleri ve geliştirmeleri
@@ -252,7 +252,7 @@ Scout Update 4, toplu bir güncelleştirmedir. Güncelleştirme 1 ' den güncell
   * CentOS 6,8
 
 > [!NOTE]
-> RHEL/CentOS 7 64 bit **InMage_UA_8.0.1.0_RHEL7-64_GA_06Oct2016_release. tar. gz** taban Scout GA paketi **InMage_Scout_Standard_8.0.1 GA.zip**ile paketlenmiştir. Kasa oluşturma bölümünde açıklandığı şekilde portaldan Scout GA paketini indirin.
+> RHEL/CentOS 7 64 bit  **InMage_UA_8.0.1.0_RHEL7-64_GA_06Oct2016_release. tar. gz** , temel Scout GA paketi **InMage_Scout_Standard_8.0.1 GA.zip**paketlenmiştir. Kasa oluşturma bölümünde açıklandığı şekilde portaldan Scout GA paketini indirin.
 
 #### <a name="bug-fixes-and-enhancements"></a>Hata düzeltmeleri ve geliştirmeleri
 
@@ -327,7 +327,7 @@ Güncelleştirme 1 aşağıdaki hata düzeltmelerini ve yeni özellikleri içeri
 * sunucu örneği başına 31 günlük ücretsiz koruma. Bu, işlevselliği test etmenizi veya kavram kanıtı ayarlamanıza olanak sağlar.
 * Sunucu üzerindeki tüm işlemler, yük devretme ve yeniden çalışma dahil, ilk 31 gün boyunca ücretsizdir. Süre, bir sunucu ilk olarak Site Recovery Scout ile korunduğunda başlar. Her korunan sunucu, bir müşterinin sahip olduğu bir siteye Site Recovery koruma için standart örnek fiyatı üzerinden ücretlendirilir.
 * Herhangi bir zamanda, şu anda ücretlendirilen korumalı sunucu sayısı kasadaki **panoda** kullanılabilir.
-* VSphere komut satırı arabirimi (Vclı) 5,5 güncelleştirme 2 için destek eklendi.
+* VSphere Command-Line Interface (Vclı) 5,5 güncelleştirme 2 için destek eklendi.
 * Kaynak sunucuda bu Linux işletim sistemleri için destek eklendi:
     * RHEL 6 güncelleştirme 6
     * RHEL 5 güncelleştirme 11

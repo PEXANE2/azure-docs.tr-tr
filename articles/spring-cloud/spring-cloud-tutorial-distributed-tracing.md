@@ -9,10 +9,10 @@ ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: 97926d5bdf3123ae50714d36ad0234872f67aa96
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90908296"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Azure Spring Cloud ile dağıtılmış izleme kullanma
@@ -22,7 +22,7 @@ Azure Spring Cloud 'daki dağıtılmış izleme araçlarıyla, karmaşık sorunl
 ::: zone pivot="programming-language-csharp"
 Bu makalede, bir .NET Core Steeltoe uygulamasının dağıtılmış izlemeyi kullanmak üzere nasıl etkinleştirileceğini öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu yordamları izlemek için, [Azure Spring Cloud 'a dağıtım için hazırlanmış](spring-cloud-tutorial-prepare-app-deployment.md)bir Steeltoe uygulamasına ihtiyacınız vardır.
 
@@ -84,7 +84,7 @@ Bu makalede şunları öğreneceksiniz:
 > * Mikro hizmet uygulamalarınız için bağımlılık haritalarını görüntüleyin.
 > * Farklı filtrelerle izleme verilerinde arama yapın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu yordamları izlemek için, zaten sağlanmış ve çalışan bir Azure yay bulut hizmetine ihtiyacınız vardır. Azure yay bulut hizmeti sağlamak ve çalıştırmak için [Ilk Azure yay bulutu uygulaması](spring-cloud-quickstart.md) hızlı başlangıç adımlarını gerçekleştirin.
 

@@ -8,10 +8,10 @@ ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 7726a0f1acb8f7fde2b491979d478badeca1b384
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89400390"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Windows Sanal Makineleri için Azure Güvenlik temeli
@@ -969,7 +969,7 @@ Yazılım uygulamalarının izlenmesi için Değişiklik İzleme kullanmanın ya
 
 **Rehberlik**: bulut uygulamalarınız için gizli yönetimi basitleştirmek ve güvenli hale getirmek için Azure Key Vault ile birlikte yönetilen hizmet kimliği kullanın.
 
-* [Azure tarafından yönetilen kimliklerle tümleştirme](../../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
+* [Azure-Managed kimliklerle tümleştirme](../../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
 * [Key Vault oluşturma](../../key-vault/secrets/quick-create-portal.md)
 
@@ -1089,7 +1089,7 @@ Azure Disk Şifrelemesi kullanıyorsanız, Azure VM 'yi disk şifreleme anahtarl
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: yedeklemelerin ve müşteri tarafından yönetilen anahtarların korunmasını sağlayın
 
-**Kılavuz**: Azure tarafından yönetilen diskleri Azure Backup yedeklediyseniz, vm 'ler depolama HIZMETI ŞIFRELEMESI (SSE) ile geri kalanıyla şifrelenir. Azure Backup, Azure disk şifrelemesi kullanılarak şifrelenmiş Azure VM 'Leri de yedekleyebilir. Azure disk şifrelemesi, bir anahtar kasasında gizli dizi olarak korunmuş olan BitLocker şifreleme anahtarları (BEKs) ile tümleşir. Azure disk şifrelemesi Ayrıca Azure Key Vault anahtar şifreleme anahtarları (KEKs) ile tümleşir. Anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için Key Vault geçici silme özelliğini etkinleştirin.
+**Kılavuz**: Azure tarafından yönetilen diskleri Azure Backup yedeklediyseniz, vm 'ler depolama HIZMETI ŞIFRELEMESI (SSE) ile geri kalanıyla şifrelenir. Azure Backup, Azure disk şifrelemesi kullanılarak şifrelenmiş Azure VM 'Leri de yedekleyebilir. Azure disk şifrelemesi, bir anahtar kasasında gizli dizi olarak korunmuş olan BitLocker şifreleme anahtarları (BEKs) ile tümleşir. Azure disk şifrelemesi Ayrıca Azure Key Vault anahtar şifreleme anahtarları (KEKs) ile tümleşir. Anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için Key Vault Soft-Delete etkinleştirin.
 
 * [VM 'Ler için geçici silme](../../backup/soft-delete-virtual-machines.md)
 

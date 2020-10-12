@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: bcdda8d1bd08a26dcdbec294be88fd4540670596
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90531432"
 ---
-# <a name="how-to-provision-for-multitenancy"></a>Çoklu kiracı için sağlama 
+# <a name="how-to-provision-for-multitenancy"></a>Çok kiracı için sağlama 
 
 Bu makalede, bir [ayırma ilkesi](concepts-service.md#allocation-policy)kullanılarak bir IoT Hub 'ı grubuna birden çok simetrik anahtar cihazı güvenli bir şekilde sağlama gösterilmektedir. Sağlama hizmeti tarafından tanımlanan ayırma ilkeleri, çeşitli ayırma senaryolarını destekler. İki yaygın senaryo şunlardır:
 
@@ -36,7 +36,7 @@ Bu makalede, bölgeler arasında çok kiracılı bir senaryoda cihazların nası
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [IoT Hub cihazı sağlama hizmetini Azure Portal](./quick-setup-auto-provision.md) hızlı başlangıç ile tamamlama.
 
