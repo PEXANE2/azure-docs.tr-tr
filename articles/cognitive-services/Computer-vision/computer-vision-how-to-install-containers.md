@@ -13,10 +13,10 @@ ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: Şirket içi, OCR, Docker, kapsayıcı
 ms.openlocfilehash: acf6a391965dcba20a2dabc18648076b88c5e7c5
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536384"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Okuma OCR Docker kapsayıcılarını (Önizleme) yükler 
@@ -47,7 +47,7 @@ Okuma 3,1-Önizleme kapsayıcısı, ek özelliklerle v 3.0-Preview ile aynı ava
 
 Hangi kapsayıcı sürümünün kullanılacağını değerlendirirken, v 3.1-Önizleme 'nin daha önceki bir önizleme durumunda olduğunu unutmayın. Bugün okuma 2,0 kapsayıcıları kullanıyorsanız, yeni sürümlerdeki değişiklikler hakkında bilgi edinmek için [geçiş kılavuzuna](read-container-migration-guide.md) bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Kapsayıcıları kullanmadan önce aşağıdaki önkoşulları karşılamanız gerekir:
 
@@ -485,7 +485,7 @@ Kapsayıcıyı bir çıkış [bağlaması](./computer-vision-resource-container-
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Faturalama
+## <a name="billing"></a>Faturalandırma
 
 Bilişsel hizmetler kapsayıcıları, Azure hesabınızdaki ilgili kaynağı kullanarak faturalandırma bilgilerini Azure 'a gönderir.
 

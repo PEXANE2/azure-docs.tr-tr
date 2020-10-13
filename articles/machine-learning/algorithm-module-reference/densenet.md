@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
 ms.openlocfilehash: 2351012738f4cf5697fb29891c9459e4cc86cd3a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536639"
 ---
 # <a name="densenet"></a>DenseNet
@@ -54,13 +54,13 @@ DenseNet hakkında daha fazla bilgi için bkz. Araştırma sayfası, daha [seyre
 
 ###  <a name="module-parameters"></a>Modül parametreleri  
 
-| Name             | Aralık | Tür    | Varsayılan     | Açıklama                              |
+| Adı             | Aralık | Tür    | Varsayılan     | Açıklama                              |
 | ---------------- | ----- | ------- | ----------- | ---------------------------------------- |
 | Model adı       | Herhangi biri   | Mod    | densenet201 | Belirli bir DenseNet yapısının adı     |
 | Önceden eğitilen       | Herhangi biri   | Boole | Doğru        | Imagenet üzerinde önceden eğitilen bir modelin kullanılıp kullanılmayacağını belirtir |
 | Bellek etkin | Herhangi biri   | Boole | Yanlış       | Çok daha fazla bellek ve daha yavaş olan checkişaret kullanılıp kullanılmayacağını belirtir |
 
-###  <a name="output"></a>Çıkış  
+###  <a name="output"></a>Çıktı  
 
 | Ad            | Tür                    | Açıklama                              |
 | --------------- | ----------------------- | ---------------------------------------- |

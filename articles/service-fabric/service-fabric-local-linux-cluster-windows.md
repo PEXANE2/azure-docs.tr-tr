@@ -4,17 +4,17 @@ description: Bu makalede, Windows geliştirme makinelerinde çalışan Linux kü
 ms.topic: conceptual
 ms.date: 11/20/2017
 ms.openlocfilehash: 83d494d777a4a1e1586707c8848056ca8fe9780a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91537081"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Windows Geliştirici makinenizde Linux Service Fabric kümesi ayarlama
 
 Bu belgede, Windows geliştirme makinelerinde yerel bir Linux Service Fabric ayarlama ele alınmaktadır. Yerel bir Linux kümesi ayarlamak, Linux kümelerine hedeflenmiş ancak bir Windows makinesinde geliştirilen uygulamaları hızlı bir şekilde test etmek için kullanışlıdır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Linux tabanlı Service Fabric kümeleri Windows üzerinde yerel olarak çalışmaz. Yerel bir Service Fabric kümesini çalıştırmak için önceden yapılandırılmış bir Docker kapsayıcı görüntüsü sağlanır. Başlamadan önce şunlar gereklidir:
 
 * En az 4 GB RAM
