@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: 39d07751c708d5555799ecbb3b3bc66d3f44f43a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87271969"
 ---
 # <a name="retrieve-offers"></a>Teklifleri alma
@@ -27,7 +27,7 @@ Bir yayımcı ad alanı altındaki tekliflerin özetlenen listesini alır.
 
 | **Ad**         |  **Açıklama**                         |  **Veri türü** |
 | -------------    |  ------------------------------------    |  -----------   |
-|  PublisherId     | Yayımcı tanımlayıcı, örneğin`contoso` |   Dize    |
+|  PublisherId     | Yayımcı tanımlayıcı, örneğin `contoso` |   Dize    |
 |  api-sürümü     | En son API sürümü                    |    Tarih        |
 |  |  |
 
@@ -77,10 +77,10 @@ Bir yayımcı ad alanı altındaki tekliflerin özetlenen listesini alır.
 
 | **Kod**  |  **Açıklama**                                                                                                   |
 | -------   |  ----------------------------------------------------------------------------------------------------------------- |
-|  200      | `OK`-İstek başarıyla işlendi ve yayımcının altındaki tüm teklifler istemciye geri döndü.  |
-|  400      | `Bad/Malformed request`-Hata yanıtı gövdesinde daha fazla bilgi bulunabilir.                                    |
-|  403      | `Forbidden`-İstemcinin belirtilen ad alanına erişimi yok.                                          |
-|  404      | `Not found`-Belirtilen varlık yok.                                                                 |
+|  200      | `OK` -İstek başarıyla işlendi ve yayımcının altındaki tüm teklifler istemciye geri döndü.  |
+|  400      | `Bad/Malformed request` -Hata yanıtı gövdesinde daha fazla bilgi bulunabilir.                                    |
+|  403      | `Forbidden` -İstemcinin belirtilen ad alanına erişimi yok.                                          |
+|  404      | `Not found` -Belirtilen varlık yok.                                                                 |
 |  |  |
 
 ### <a name="offer-status"></a>Teklif durumu
@@ -90,7 +90,7 @@ Bir yayımcı ad alanı altındaki tekliflerin özetlenen listesini alır.
 |  Neveryayınlandı              | Teklif hiç yayımlanmadı.                  |
 |  NotStarted                  | Teklif yenidir ancak başlatılmamış.                 |
 |  WaitingForPublisherReview   | Teklif, yayımcı onayını bekliyor.         |
-|  Çalışıyor                     | Teklif gönderimi işleniyor.             |
+|  Çalışma                     | Teklif gönderimi işleniyor.             |
 |  Başarılı                   | Teklif gönderimi işlemeyi tamamladı.       |
 |  İptal edildi                    | Teklif Gönderimi iptal edildi.                   |
 |  Başarısız                      | Teklif gönderimi başarısız oldu.                         |

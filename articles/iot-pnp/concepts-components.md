@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: e7b24dd9cdbd11b56545f85ac233665f8fa4adfe
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91574288"
 ---
-# <a name="iot-plug-and-play-components-in-models"></a>Modellerdeki IoT Tak ve Kullan bileşenleri
+# <a name="iot-plug-and-play-components-in-models"></a>Modellerdeki IoT Tak Çalıştır bileşenleri
 
-IoT Tak ve Kullan kuralları 'nda bir cihaz IoT Hub 'ına bağlanırken dijital TWINS tanım dili (DTDL) modeli KIMLIĞINI sunuyorsa IoT Tak ve Kullan cihazsudur.
+IoT Tak Çalıştır kurallarında, bir cihaz IoT hub'ına bağlandığında dijital ikizler tanım dili (DTDL) model kimliğini gösteriyorsa bir IoT Tak Çalıştır cihazıdır.
 
-Aşağıdaki kod parçacığında bazı örnek model kimlikleri gösterilmektedir:
+Aşağıdaki kod parçacığında bazı örnek model kimlikleri gösterilir:
 
 ```json
  "@id": "dtmi:com:example:TemperatureController;1"

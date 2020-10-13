@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: daperlov
 ms.openlocfilehash: 483e26cf4044b909c8d7923cfd74bd6fcf871e2a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87905314"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Azure Data Factory ortak veri modeli biçimi
@@ -37,7 +37,7 @@ Aşağıdaki tabloda bir CDM kaynağı tarafından desteklenen özellikler liste
 
 | Ad | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Biçim | Biçim olmalıdır`cdm` | evet | `cdm` | biçim |
+| Biçimlendir | Biçim olmalıdır `cdm` | evet | `cdm` | biçim |
 | Meta veri biçimi | Verilerin Varlık başvurusunun bulunduğu yer. CDM sürüm 1,0 kullanıyorsanız, bildirim ' ı seçin. 1,0 öncesi bir CDM sürümü kullanıyorsanız, üzerinde model.js' yi seçin. | Evet | `'manifest'` veya `'model'` | manifestType |
 | Kök konumu: kapsayıcı | CDM klasörünün kapsayıcı adı | evet | Dize | Biçimlendiri |
 | Kök konumu: klasör yolu | CDM klasörünün kök klasör konumu | evet | Dize | folderPath |
@@ -114,7 +114,7 @@ Aşağıdaki tabloda bir CDM havuzu tarafından desteklenen özellikler listelen
 
 | Ad | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Biçim | Biçim olmalıdır`cdm` | evet | `cdm` | biçim |
+| Biçimlendir | Biçim olmalıdır `cdm` | evet | `cdm` | biçim |
 | Kök konumu: kapsayıcı | CDM klasörünün kapsayıcı adı | evet | Dize | Biçimlendiri |
 | Kök konumu: klasör yolu | CDM klasörünün kök klasör konumu | evet | Dize | folderPath |
 | Bildirim dosyası: varlık yolu | Kök klasör içindeki varlığın klasör yolu | hayır | Dize | entityPath |
@@ -127,7 +127,7 @@ Aşağıdaki tabloda bir CDM havuzu tarafından desteklenen özellikler listelen
 | Corpus varlığı | Varlık başvurusunun yolu | evet | Dize | varlık |
 | Bölüm yolu | Bölümün yazılacağı konum | hayır | Dize | partitionPath |
 | Klasörü temizle | Hedef klasör, yazma işleminden önce silinirse | hayır | `true` veya `false` | kesilemedi |
-| Biçim türü | Parquet biçimini belirtmeyi seçin | hayır | `parquet`belirtilmişse | alt biçim |
+| Biçim türü | Parquet biçimini belirtmeyi seçin | hayır | `parquet` belirtilmişse | alt biçim |
 | Sütun sınırlayıcısı | DelimitedText 'e yazıyorsanız sütunları sınırlandırmak | Evet, DelimitedText 'e yazıyorsanız | Dize | columnDelimiter |
 | Üst bilgi olarak ilk satır | DelimitedText kullanılıyorsa, sütun adlarının üst bilgi olarak eklenip eklenmeyeceğini belirtir | hayır | `true` veya `false` | columnNamesAsHeader |
 

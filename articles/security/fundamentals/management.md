@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
 ms.openlocfilehash: 73d82efed438d447c7af3bfc54d5c3fc22cdd819
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87921937"
 ---
 # <a name="security-management-in-azure"></a>Azure’da Güvenlik Yönetimi
@@ -168,7 +168,7 @@ Sistem Yönetimi ve diğer günlük iş görevleri için bir iş istasyonu kulla
 
 Kurumsal PC sanal makinesi korumalı alanda çalışır ve kullanıcı uygulamaları sağlar. Ana bilgisayar "temiz kaynak" olarak kalır ve kök işletim sisteminde katı ağ ilkeleri uygular (örneğin, sanal makineden RDP erişimini engelleme).
 
-## <a name="best-practices"></a>En iyi uygulamalar
+## <a name="best-practices"></a>Önerilen uygulamalar
 Azure’da uygulama ve veri yönetirken aşağıdaki ek yönergeleri dikkate alın.
 
 ### <a name="dos-and-donts"></a>Yapılması gerekenler ve yapılmaması gerekenler

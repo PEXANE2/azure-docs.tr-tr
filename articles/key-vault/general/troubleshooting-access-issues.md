@@ -8,10 +8,10 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.openlocfilehash: d77cc4cc65eb73aa85a1d54202627cd18d5747b3
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89595997"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Azure Anahtar Kasası erişim ilkesi sorunlarını giderme
@@ -45,7 +45,7 @@ Key Vault için bulut tabanlı bir uygulamanın kimlik doğrulamasının en kola
 
 ### <a name="how-can-i-give-the-ad-group-access-to-the-key-vault"></a>AD grubuna Anahtar Kasası erişimine nasıl izin veririm?
 
-Azure CLı `az keyvault set-policy` komutunu veya Azure PowerShell set-AzKeyVaultAccessPolicy cmdlet 'ini kullanarak anahtar kasanıza ad grubu izinleri verin. Bkz. [erişim Ilkesi atama-CLI](assign-access-policy-cli.md) ve [erişim Ilkesi atama-PowerShell](assign-access-policy-powershell.md).
+Azure CLı `az keyvault set-policy` komutunu veya Azure PowerShell Set-AzKeyVaultAccessPolicy cmdlet 'ini kullanarak anahtar kasanıza ad grubu izinleri verin. Bkz. [erişim Ilkesi atama-CLI](assign-access-policy-cli.md) ve [erişim Ilkesi atama-PowerShell](assign-access-policy-powershell.md).
 
 Uygulamanın Ayrıca anahtar kasasına atanmış en az bir kimlik ve erişim yönetimi (ıAM) rolü olması gerekir. Aksi takdirde, oturum açamayacak ve aboneliğe erişmek için yetersiz haklarla başarısız olacak. Yönetilen kimlikleri olan Azure AD grupları belirteçleri yenilemek için sekiz saate kadar sürebilir ve geçerli hale gelir.
 

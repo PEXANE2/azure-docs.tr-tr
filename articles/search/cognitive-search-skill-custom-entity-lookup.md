@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: 5511551f240fe4fdd2f2aa3bc8a3a2615505f35f
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88936121"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Özel varlık arama Bilişsel Beceri (Önizleme)
@@ -69,7 +69,7 @@ Tanım satır içi olarak sağlanmışsa, *ınlineentitiesdefinition* yetenek pa
 
 ### <a name="csv-format"></a>CSV biçimi
 
-Bir virgülle ayrılmış değer (CSV) dosyasında aranacak özel varlıkların tanımını, dosyanın yolunu sağlayarak ve *Entitiesdefinitionuri*  yetenek parametresinde ayarlayarak sağlayabilirsiniz. Yol, https konumunda olmalıdır. Tanım dosyası boyutu en fazla 10 MB olabilir.
+Dosya yolunu sağlayarak ve *Entitiesdefinitionuri*  yetenek parametresinde ayarlayarak bir Comma-Separated value (CSV) dosyasında aranacak özel varlıkların tanımını sağlayabilirsiniz. Yol, https konumunda olmalıdır. Tanım dosyası boyutu en fazla 10 MB olabilir.
 
 CSV biçimi basittir. Her satır, aşağıda gösterildiği gibi benzersiz bir varlığı temsil eder:
 

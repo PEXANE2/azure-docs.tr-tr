@@ -4,10 +4,10 @@ description: PowerShell kullanarak Data Protection Manager (DPM) için Azure Bac
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.openlocfilehash: 176cbffe5152462055c4ffdb2367cf9c0ab97c1f
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90968306"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>PowerShell kullanarak Data Protection Manager (DPM) sunucuları için Azure’a yedekleme dağıtma ve yönetme
@@ -340,7 +340,7 @@ Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
 
 ### <a name="changing-the-size-of-dpm-replica--recovery-point-volume"></a>DPM çoğaltma & kurtarma noktası biriminin boyutunu değiştirme
 
-Aşağıdaki örnekte olduğu gibi [set-DPMDatasourceDiskAllocation](/powershell/module/dataprotectionmanager/set-dpmdatasourcediskallocation) cmdlet 'INI kullanarak DPM çoğaltma birimi ve gölge kopya biriminin boyutunu da değiştirebilirsiniz: Get-DatasourceDiskAllocation-DataSource $DS set-DatasourceDiskAllocation-DataSource $DS-protectiongroup $MPG-Manual-replicaarea (2GB)-ShadowCopyArea (2 GB)
+Aşağıdaki örnekte olduğu gibi [set-DPMDatasourceDiskAllocation](/powershell/module/dataprotectionmanager/set-dpmdatasourcediskallocation) cmdlet 'INI kullanarak DPM çoğaltma birimi ve gölge kopya biriminin boyutunu da değiştirebilirsiniz: Get-DatasourceDiskAllocation-datasource $DS Set-DatasourceDiskAllocation-DataSource $DS-protectiongroup $MPG-Manual-replicaarea (2GB)-ShadowCopyArea (2 GB)
 
 ### <a name="committing-the-changes-to-the-protection-group"></a>Değişiklikler koruma grubuna uygulanıyor
 

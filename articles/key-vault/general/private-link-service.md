@@ -9,10 +9,10 @@ ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: d67d6301137a90d287148131fb4b1be7731e15bb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88585840"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Key Vault'u Azure Özel Bağlantı ile tümleştirme
@@ -23,7 +23,7 @@ Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen bir 
 
 Daha fazla bilgi için bkz. [Azure özel bağlantısı nedir?](../../private-link/private-link-overview.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir anahtar kasasını Azure özel bağlantısıyla bütünleştirmek için şunlar gerekir:
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: c98aeaff3ba39a28fad68454d76f6f4d33f44e5d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836743"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Uygulamaları geçirmeden önce Cloud Services ve Service Fabric arasındaki farklar hakkında bilgi edinin.
@@ -91,7 +91,7 @@ Aynı iletişim modeli Service Fabric kullanılabilir. Bu, mevcut bir Cloud Serv
 | Roleınstance. GetUpgradeDomain | FabricClient. QueryManager. GetNodeList | Düğüye filtre uygulayın ve yükseltme özelliğini kullanın |
 | Roleınstance. Getınstanceendpoints | FabricRuntime. GetActivationContext veya Naming (ResolveService) | Hem FabricRuntime. GetActivationContext hem de ' de Serviceınitializationparameters. CodePackageActivationContext aracılığıyla bulunan çoğaltmalar içinde sunulan CodePackageActivationContext. Öbek |
 | RoleEnvironment. GetRoles | FabricClient. QueryManager. GetNodeList | Türe göre aynı filtreleme sıralamasını yapmak istiyorsanız, FabricClient. ClusterManager. GetClusterManifest aracılığıyla küme bildiriminden düğüm türleri listesini alabilir ve buradan rol/düğüm türlerini alabilirsiniz. |
-| RoleEnvironment. Getısavailable | Connect-WindowsFabricCluster veya belirli bir düğüme işaret eden bir FabricRuntime oluşturun | * |
+| RoleEnvironment. Getısavailable | Belirli bir düğüme işaret eden bir FabricRuntime Connect-WindowsFabricCluster veya oluşturun | * |
 | RoleEnvironment. GetLocalResource | CodePackageActivationContext. log/Temp/Work | * |
 | RoleEnvironment. Getcurrentrotaınstance | CodePackageActivationContext. log/Temp/Work | * |
 | LocalResource. GetRootPath | CodePackageActivationContext. log/Temp/Work | * |

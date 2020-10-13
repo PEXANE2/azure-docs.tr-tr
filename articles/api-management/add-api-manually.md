@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
 ms.openlocfilehash: 39a3b9d7dd9efbda93de0b5d7c5f9938922d0012
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91631299"
 ---
 # <a name="add-an-api-manually"></a>El ile API ekleme
@@ -57,7 +57,7 @@ Bu bölümde, arka uçtaki "http://httpbin.org/get" işlemiyle eşlemek üzere n
 2. **+ İşlem Ekle**’ye tıklayın.
 3. **URL** bölümünde **GET** seçeneğini belirleyip kaynak bölümüne "*/get*" değerini girin.
 4. **Görünen ad** alanına "*FetchData*" değerini girin.
-5. **Kaydet**'i seçin.
+5. **Kaydet**’i seçin.
 
 ### <a name="test-an-operation"></a>İşlemleri test etme
 
@@ -79,7 +79,7 @@ Bu bölümde, nasıl parametre alan bir işlem ekleneceği gösterilir. Bu durum
 2. **+ İşlem Ekle**’ye tıklayın.
 3. **URL** bölümünde **GET** seçeneğini belirleyip kaynak bölümüne "*/status/{code}*" değerini girin. İsteğe bağlı olarak, bu parametre ile ilişkili bazı bilgiler sağlayabilirsiniz. Örneğin, **TYPE** alanına "*Number*" değerini, **VALUES** alanına "*200*" (varsayılan) değerini girin.
 4. **Görünen ad** alanına "GetStatus" değerini girin.
-5. **Kaydet**'i seçin.
+5. **Kaydet**’i seçin.
 
 ### <a name="test-the-operation"></a>İşlemi test etme 
 

@@ -13,10 +13,10 @@ ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
 ms.openlocfilehash: 4e17af8289c68ded282a9c4a9ca2d400d31ca30d
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90602678"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Müşteri tarafından yönetilen anahtarla Azure SQL Saydam Veri Şifrelemesi
@@ -187,11 +187,11 @@ Günlük dosyaları için ek dikkat: yedeklenen günlük dosyaları, döndürül
 
 Sunucu için yapılandırılmış coğrafi yedeklilik olmadığında bile, sunucuyu aynı anahtar malzemesine sahip iki farklı bölgede iki farklı Anahtar Kasası kullanacak şekilde yapılandırmak kesinlikle önerilir. Sunucu ile aynı bölgede yer alan birincil anahtar kasası ile bir TDE koruyucu oluşturularak ve anahtarı farklı bir Azure bölgesindeki bir anahtar kasasına kopyalayarak, sunucunun ikinci bir anahtar kasasına erişimi olması ve veritabanının çalışır durumda olduğundan birincil anahtar kasası 'nın bir kesinti olması gerekir.
 
-Anahtarı birincil anahtar kasasından şifrelenmiş biçimde almak için Backup-AzKeyVaultKey cmdlet 'ini kullanın ve ardından restore-AzKeyVaultKey cmdlet 'ini kullanın ve anahtarı klonlamak için ikinci bölgede bir Anahtar Kasası belirtin. Alternatif olarak, anahtarı yedeklemek ve geri yüklemek için Azure portal kullanın. Diğer bölgedeki ikincil anahtar kasasındaki anahtar, TDE koruyucusu olarak işaretlenmemelidir ve buna izin verilmemiştir.
+Anahtarı birincil anahtar kasasından şifrelenmiş biçimde almak için Backup-AzKeyVaultKey cmdlet 'ini kullanın ve ardından Restore-AzKeyVaultKey cmdlet 'ini kullanarak anahtarı klonlamak için ikinci bölgede bir Anahtar Kasası belirleyin. Alternatif olarak, anahtarı yedeklemek ve geri yüklemek için Azure portal kullanın. Diğer bölgedeki ikincil anahtar kasasındaki anahtar, TDE koruyucusu olarak işaretlenmemelidir ve buna izin verilmemiştir.
 
 Birincil anahtar kasasını etkileyen bir kesinti varsa ve bu durumda, sistem varsa ikincil anahtar kasasında aynı parmak izine sahip diğer bağlantılı anahtara otomatik olarak geçiş yapar. Bu anahtar, iptal edilen erişim haklarından dolayı TDE koruyucusu erişilemediğinde veya anahtar ya da Anahtar Kasası silindiği için, müşterinin bir sunucunun anahtara erişimini kasıtlı olarak kısıtlayabileceğinden bu anahtarın gerçekleşmeyeceğini unutmayın.
 
-![Tek sunuculu HA](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-ha.png)
+![Single-Server HA](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-ha.png)
 
 ## <a name="geo-dr-and-customer-managed-tde"></a>Coğrafi-DR ve müşteri tarafından yönetilen TDE
 

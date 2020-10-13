@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 09/18/2020
 ms.author: sajaya
 ms.openlocfilehash: 499ef509fc9f8d9365d8db3f7058d12352db9bb2
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91570519"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry hakkında sık sorulan sorular
@@ -434,7 +434,7 @@ Microsoft Edge/IE tarayıcısı kullanıyorsanız, en fazla 100 depo veya etiket
 Tarayıcı, sunucuya depo veya etiket getirme isteğini gönderemeyebilir. Şöyle çeşitli nedenlerle şunlar olabilir:
 
 * Ağ bağlantısı olmaması
-* Güvenlik duvarı
+* Güvenlik Duvarı
 * Ad engelleyiciler
 * DNS hataları
 
@@ -456,7 +456,7 @@ Tüm depo adlandırma kuralları için bkz. [kapsayıcı girişim dağıtım bel
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Windows 'da http izlemeleri Nasıl yaparım? mi toplıyorsunuz?
 
-#### <a name="prerequisites"></a>Önkoşullar
+#### <a name="prerequisites"></a>Ön koşullar
 
 - Fiddler 'da https şifresini çözmeyi etkinleştir:  <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
 - Docker Kullanıcı arabirimi aracılığıyla bir proxy kullanmak için Docker 'ı etkinleştirin: <https://docs.docker.com/docker-for-windows/#proxies>

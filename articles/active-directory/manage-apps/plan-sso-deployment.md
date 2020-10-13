@@ -14,10 +14,10 @@ ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 87d455a77096a2ae9339c578f3405c629d79fa76
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90603348"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Çoklu oturum açma dağıtımını planlama
@@ -158,8 +158,8 @@ Aşağıdaki bölümde, gerekli ortamlar, uç noktalar, talep eşleme, gerekli �
 Önceden tümleştirilmiş tüm SaaS uygulamaları için Microsoft bir öğretici sağlar ve bu bilgilere gerek kalmaz. Uygulama Market marketi/galerimizde yoksa, aşağıdaki veri parçalarını toplamanız gerekebilir:
 
 - **Geçerli kimlik sağlayıcısı uygulama, uygunsa SSO için kullanılır** ; örneğin: AD FS, PingFederate, okta
-- **Hedef uygulama tarafından desteklenen protokoller** -ÖRNEĞIN, SAML 2,0, OpenID Connect, OAuth, form tabanlı kimlik doğrulaması, WS-BESLENIR, WS-Trust
-- **Azure AD ile yapılandırılan protokol** -ÖRNEĞIN, SAML 2,0 veya 1,1, OpenID Connect, OAuth, Forms tabanlı, WS-beslenir
+- **Hedef uygulama tarafından desteklenen protokoller** -ÖRNEĞIN, SAML 2,0, OpenID Connect, OAuth, Forms-Based auth, WS-beslenir WS-Trust
+- **Azure AD ile yapılandırılan protokol** -ÖRNEĞIN, SAML 2,0 veya 1,1, OpenID Connect, OAuth, Forms tabanlı, WS-Fed
 
 ### <a name="attribute-requirements"></a>Öznitelik gereksinimleri
 
@@ -313,7 +313,7 @@ Aşağıdaki bağlantılar sorun giderme senaryolarını sunar. Destek personeli
 
 [Çoklu oturum açma SAML Protokolü](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference)
 
-[Çoklu oturum kapatma SAML Protokolü](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-out-protocol-reference)
+[Tek Sign-Out SAML Protokolü](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-out-protocol-reference)
 
 [Azure AD B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) (iş ortakları ve satıcılar gibi dış kullanıcılar için)
 

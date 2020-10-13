@@ -17,10 +17,10 @@ ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
 ms.custom: devx-track-java
 ms.openlocfilehash: 9ff006b74b6202b02a2767aee4d853b1206ce60d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87304489"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>Java 'dan SendGrid kullanarak e-posta gönderme
@@ -202,9 +202,9 @@ SendGrid, Azure uygulamanızdan ek SendGrid işlevlerinden yararlanmak için kul
 SendGrid e-posta hizmetinin temellerini öğrendiğinize göre, daha fazla bilgi edinmek için bu bağlantıları izleyin.
 
 * Azure dağıtımında SendGrid kullanmayı gösteren örnek: [Azure dağıtımında Java 'Dan SendGrid kullanarak e-posta gönderme](store-sendgrid-java-how-to-send-email-example.md)
-* SendGrid Java SDK 'Sı:<https://sendgrid.com/docs/Code_Examples/java.html>
-* SendGrid API belgeleri:<https://sendgrid.com/docs/API_Reference/index.html>
-* Azure müşterileri için SendGrid özel teklifi:<https://sendgrid.com/windowsazure.html>
+* SendGrid Java SDK 'Sı: <https://sendgrid.com/docs/Code_Examples/java.html>
+* SendGrid API belgeleri: <https://sendgrid.com/docs/API_Reference/index.html>
+* Azure müşterileri için SendGrid özel teklifi: <https://sendgrid.com/windowsazure.html>
 
 [https://sendgrid.com]: https://sendgrid.com
 [https://sendgrid.com/pricing.html]: https://sendgrid.com/pricing.html

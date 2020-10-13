@@ -7,10 +7,10 @@ ms.date: 01/13/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
 ms.openlocfilehash: 39085aa7967ffeac3416b61f32146ac023b46dfe
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86186665"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Azure Otomasyonu 'nda bağlantıları yönetme
@@ -31,9 +31,9 @@ Bir bağlantı oluşturduğunuzda bir bağlantı türü belirtmeniz gerekir. Ba�
 
 Azure Otomasyonu aşağıdaki yerleşik bağlantı türlerini kullanılabilir hale getirir:
 
-* `Azure`-Klasik kaynakları yönetmek için kullanılan bir bağlantıyı temsil eder.
-* `AzureServicePrincipal`-Azure farklı çalıştır hesabı tarafından kullanılan bir bağlantıyı temsil eder.
-* `AzureClassicCertificate`-Klasik Azure farklı çalıştır hesabı tarafından kullanılan bir bağlantıyı temsil eder.
+* `Azure` -Klasik kaynakları yönetmek için kullanılan bir bağlantıyı temsil eder.
+* `AzureServicePrincipal` -Azure farklı çalıştır hesabı tarafından kullanılan bir bağlantıyı temsil eder.
+* `AzureClassicCertificate` -Klasik Azure farklı çalıştır hesabı tarafından kullanılan bir bağlantıyı temsil eder.
 
 Çoğu durumda, bir [Farklı Çalıştır hesabı](manage-runas-account.md)oluşturduğunuzda oluşturulduğundan bir bağlantı kaynağı oluşturmanız gerekmez.
 

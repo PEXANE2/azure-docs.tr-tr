@@ -10,10 +10,10 @@ ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 8043369ebfef23ed84ccff8e7428fbd2048e10b0
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187226"
 ---
 # <a name="troubleshoot-azure-automation-state-configuration-issues"></a>Azure Otomasyonu durum yapılandırması sorunlarını giderme
@@ -153,7 +153,7 @@ If (($certs.Count) -gt 0)
 
 1. Azure Portal, **ana**  >  **Otomasyon hesapları** > (Otomasyon hesabınız) > **Durum Yapılandırması (DSC)** bölümüne gidin.
 1. **Düğüm**seçin.
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 1. Hatalı düğümü seçin.
 1. **Bağlan**' ı seçin ve istediğiniz seçenekleri belirleyin.
 
