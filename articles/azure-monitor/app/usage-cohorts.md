@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0c552e8f3e732c49da02b2f5704fb9cf312fb3e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d12244bce117d6a631fdb67dc460af18bc77028c
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77671095"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995748"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights cohortaları
 
@@ -49,7 +49,7 @@ Takımınız, belirli bir ayda uygulamanızı beş veya daha fazla kez kullanan 
 
     Artık bu kohortu, geçmiş 28 ' de 5 ayrı gün içinde herhangi bir özel olay veya sayfa görünümüyle gönderilen tüm Kullanıcı kimliklerini temsil eder.
 
-5. **Kaydet**’i seçin.
+5. **Kaydet**'i seçin.
 
    > [!TIP]
    > "Bağlı kullanıcılar (5 + gün)" gibi kohortu bir ad verin. Bu Application Insights kaynağına erişimi olan diğer kişilerin bu kohortu görmesini isteyip istemediğinize bağlı olarak, bu dosyayı "Raporlarım" veya "paylaşılan Raporlar" olarak kaydedin.
@@ -129,9 +129,9 @@ Cohortalar ve filtreler farklıdır. Birleşik Krallık 'tan (önceki örnekte o
 * Kohortu sürümü, geçerli zaman aralığında Birleşik Krallık 'tan bir veya daha fazla olay gönderen kullanıcılardan gelen tüm olayları gösterir. Ülke veya bölgeye göre böldüğünüz takdirde, büyük olasılıkla birçok ülke ve bölge görürsünüz.
 * Filtreler sürümü yalnızca Birleşik Krallık 'un olaylarını gösterir. Ancak ülke veya bölgeye göre böldüğünüz takdirde yalnızca Birleşik Krallık ' u görürsünüz.
 
-## <a name="learn-more"></a>Daha fazlasını öğrenin
+## <a name="learn-more"></a>Daha fazla bilgi edinin
 
-* [Analytics sorgu dili](https://go.microsoft.com/fwlink/?linkid=856587)
+* [Analytics sorgu dili](../log-query/get-started-portal.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
 * [Kullanıcılar, oturumlar, olaylar](usage-segmentation.md)
 * [Kullanıcı akışları](usage-flows.md)
 * [Kullanıma genel bakış](usage-overview.md)

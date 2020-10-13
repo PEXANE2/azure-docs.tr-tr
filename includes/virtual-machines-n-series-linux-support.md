@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 99c8ee79c51205c33d14328530f527ad8e3ff7b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86f687bd4fd8be93efbf77c883c723046c2c96d8
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87085478"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91997936"
 ---
 ## <a name="supported-distributions-and-drivers"></a>Desteklenen dağıtımlar ve sürücüler
 
@@ -33,7 +33,7 @@ Azure tarafından yeniden dağıtılan KıLAVUZ sürücüleri, NC, NCv2, NCv3, N
 
 | Dağıtım | Sürücü |
 | --- | -- |
-|Ubuntu 18,04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>7,6 Red Hat Enterprise Linux 7,8, 8,0, 8,1<br/><br/>CentOS tabanlı 7,6, 7,7, 8,0, 8 (1911)<br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVıDıA GRID 11, sürücü dalı R450|
+|Ubuntu 18,04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>7,6 Red Hat Enterprise Linux 7,8, 8,0, 8,1<br/><br/>CentOS tabanlı 7,6, 7,7, 8,0, 8 (1911)<br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVıDıA GRID 11,1, sürücü dalı [R450](https://go.microsoft.com/fwlink/?linkid=874272)(. exe)|
 
 > [!WARNING] 
 > Red Hat ürünlerine üçüncü taraf yazılım yüklenmesi Red Hat destek koşullarını etkileyebilir. Bkz. [Red Hat Bilgi Bankası makalesi](https://access.redhat.com/articles/1067).

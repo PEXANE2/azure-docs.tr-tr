@@ -61,9 +61,11 @@
     - name: VM'ler için olağanüstü durum kurtarmayı dağıtma
       href: disaster-recovery-for-virtual-machines.md
     - name: İçerik kitaplığı aracılığıyla VM dağıtma
-      href: tutorial-deploy-vm-content-library.md
+      href: ./deploy-vm-content-library.md
     - name: GitHub Enterprise Server’ı ayarlama
       href: github-enterprise-server.md
+    - name: IPSec tüneli oluşturma
+      href: create-ipsec-tunnel.md
     - name: Azure’da yerel tümleştirme
       items:
         - name: API Management

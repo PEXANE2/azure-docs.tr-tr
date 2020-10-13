@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: ca0bfcb0c90142924285215c427a7071297be730
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f808cff5bddf6566276df2f707232bde1ecca8a
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553929"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995084"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>Öğretici: Periscope verileriyle tümleştirme Azure Active Directory
 
@@ -123,7 +123,7 @@ Azure AD çoklu oturum açmayı Periscope verileriyle yapılandırmak için aşa
 
 2. Sol alt taraftaki dişli menüsünü açın ve **faturalandırma**  >  **güvenlik** menüsünü açın ve aşağıdaki adımları gerçekleştirin. Bu ayarlara yalnızca yöneticiler erişebilir.
 
-    ![Periscope verileri yapılandırma bilgileri](./media/periscope-data-tutorial/configure01.png)
+    ![Seçili ayarlarla "güvenlik" iletişim kutusunu gösteren ekran görüntüsü.](./media/periscope-data-tutorial/configure01.png)
 
     a. #5 **SAML Imzalama sertifikasından** **uygulama Federasyon meta veri URL 'sini** kopyalayın ve bir tarayıcıda açın. Bu, bir XML belgesi açar.
 
@@ -143,7 +143,7 @@ Azure AD çoklu oturum açmayı Periscope verileriyle yapılandırmak için aşa
 
     i. Son olarak **Kaydet** ' e tıklayın ve **oturum kapatma**yazarak SSO ayarları değişikliğini **onaylayın** .
 
-    ![Periscope verileri yapılandırma bilgileri](./media/periscope-data-tutorial/configure02.png)
+    ![Metin kutusunda "oturum kapatma" ve "Onayla" düğmesinin seçili olduğu "güncelleştirme S S O yapılandırması" iletişim kutusunu gösteren ekran görüntüsü.](./media/periscope-data-tutorial/configure02.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
@@ -168,7 +168,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -206,7 +206,7 @@ Azure AD kullanıcılarının Periscope verilerinde oturum açmasını sağlamak
 
 2. Menünün sol alt kısmındaki **Ayarlar** simgesine tıklayın ve **izinler**' e gidin.
 
-    ![Periscope verileri yapılandırma bilgileri](./media/periscope-data-tutorial/configure03.png)
+    !["Izinler" seçiliyken "Ayarlar" menüsünü gösteren ekran görüntüsü.](./media/periscope-data-tutorial/configure03.png)
 
 3. **Kullanıcı Ekle** ' ye tıklayın ve aşağıdaki adımları uygulayın:
 

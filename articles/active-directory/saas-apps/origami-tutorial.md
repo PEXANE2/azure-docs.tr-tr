@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 0fe7e0d43050120daa017669a96e90f96b873530
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39f2f592601f60f060cce8ded2b5303dc6b10e8a
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543797"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995819"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-origami"></a>Öğretici: origami ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Origami Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini origami ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -126,11 +126,11 @@ Azure AD çoklu oturum açmayı origami ile yapılandırmak için aşağıdaki a
 
 2. Üstteki menüden **yönetici**' ye tıklayın.
    
-    ![Tek Sign-On yapılandırma](./media/origami-tutorial/tutorial_origami_51.png)
+    !["Admin" seçiliyken origami ana sayfasını gösteren ekran görüntüsü.](./media/origami-tutorial/tutorial_origami_51.png)
 
 3. Çoklu oturum açma Kurulumu iletişim sayfasında, aşağıdaki adımları uygulayın:
    
-    ![Tek Sign-On yapılandırma](./media/origami-tutorial/tutorial_origami_531.png)
+    !["Çoklu oturum açmayı etkinleştir" sayfasının seçili olduğu ve metin kutularının vurgulandığı "çoklu oturum açma kurulumu" sayfasını gösteren ekran görüntüsü.](./media/origami-tutorial/tutorial_origami_531.png)
 
     a. **Çoklu oturum açmayı etkinleştir '** i seçin.
 
@@ -165,7 +165,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -201,19 +201,19 @@ Bu bölümde, origami içinde Britta Simon adlı bir Kullanıcı oluşturacaksı
 
 2. Üstteki menüden **yönetici**' ye tıklayın.
    
-    ![Tek Sign-On yapılandırma](./media/origami-tutorial/tutorial_origami_51.png)
+    !["Admin" seçiliyken origami hesabı giriş sayfasını gösteren ekran görüntüsü.](./media/origami-tutorial/tutorial_origami_51.png)
 
 3. **Kullanıcılar ve güvenlik** Iletişim kutusunda **Kullanıcılar**' a tıklayın.
    
-    ![Tek Sign-On yapılandırma](./media/origami-tutorial/tutorial_origami_54.png)
+    !["Kullanıcılar" seçiliyken "kullanıcılar ve güvenlik" iletişim kutusunu gösteren ekran görüntüsü.](./media/origami-tutorial/tutorial_origami_54.png)
 
 4. **Yeni Kullanıcı Ekle**' ye tıklayın.
    
-    ![Tek Sign-On yapılandırma](./media/origami-tutorial/tutorial_origami_55.png)
+    !["Yeni Kullanıcı Ekle" düğmesinin seçili olduğunu gösteren ekran görüntüsü.](./media/origami-tutorial/tutorial_origami_55.png)
 
 5. Yeni Kullanıcı Ekle iletişim kutusunda aşağıdaki adımları gerçekleştirin:
    
-    ![Tek Sign-On yapılandırma](./media/origami-tutorial/tutorial_origami_56.png)
+    !["Kullanıcı adı", "ad" ve "soyadı" metin kutuları vurgulanmış "Yeni Kullanıcı Ekle" iletişim kutusunun gösterildiği ekran görüntüsü.](./media/origami-tutorial/tutorial_origami_56.png)
 
     a. **Kullanıcı adı** metin kutusuna, **brittasıon \@ contoso.com**gibi kullanıcının e-postasını girin.
 
@@ -227,7 +227,7 @@ Bu bölümde, origami içinde Britta Simon adlı bir Kullanıcı oluşturacaksı
 
     f. **Kaydet**’e tıklayın.
    
-    ![Tek Sign-On yapılandırma](./media/origami-tutorial/tutorial_origami_57.png)
+    !["Kaydet" düğmesinin seçili olduğunu gösteren ekran görüntüsü.](./media/origami-tutorial/tutorial_origami_57.png)
 
 6. Kullanıcıya **Kullanıcı rolleri** ve **istemci erişimi** atayın. 
    

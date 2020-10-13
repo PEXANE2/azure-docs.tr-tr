@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/30/2020
 ms.author: allensu
-ms.openlocfilehash: 6b9f454c75a10644e86931dc86ebd9514e5431d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fcd0315afcbf38af2b8175deda748522cb335ec
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91649805"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996852"
 ---
 # <a name="outbound-connections"></a>Giden bağlantılar
 
@@ -67,7 +67,7 @@ Bu bağlamda, SNAT için kullanılan kısa ömürlü bağlantı noktaları SNAT 
 
 | İçermektedir | Yöntem | IP protokolleri |
 | ------------ | ------ | ------------ |
-|Hiçbiri </br> Temel yük dengeleyici | Bağlantı noktası geçici olarak [SNAT](#snat) [(Pat)](#pat)| TCP </br> UDP | 
+|Yok </br> Temel yük dengeleyici | Bağlantı noktası geçici olarak [SNAT](#snat) [(Pat)](#pat)| TCP </br> UDP | 
 
 #### <a name="description"></a>Açıklama
 
@@ -136,7 +136,7 @@ Giden kuralları denetlemenize izin verir:
 - Hangi sanal makinelerin genel IP adreslerine çevrilmesi gerekir.
 - Giden [SNAT](#snat) bağlantı noktaları nasıl verilmelidir.
 - İçin giden çeviri sağlayacak olan protokoller.
-- Giden bağlantı boşta kalma zaman aşımı (4-120 dakika) için kullanılacak süre.
+- Giden bağlantı boşta kalma zaman aşımı (4-100 dakika) için kullanılacak süre.
 - Boşta kalma zaman aşımı durumunda TCP sıfırlaması gönderileceğini belirtir
 - Tek bir kuralla hem TCP hem de UDP aktarım protokolleri
 
@@ -375,7 +375,7 @@ Her akış için herhangi bir hedef IP adresi ve bağlantı noktası için bir S
 
 | Uygulanabilir protokoller |
 |------------------------|
-| Yok |
+| YOK |
 
 #### <a name="details"></a>Ayrıntılar
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/21/2020
-ms.openlocfilehash: 75f68a4de2db0c4c9102a58da12d80cc273a6e80
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: b986832e5febbb2a0f88b65213f9acf0dd4c5ab5
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931181"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996888"
 ---
 # <a name="automatic-registration-with-sql-vm-resource-provider"></a>SQL VM kaynak sağlayıcısı ile otomatik kayıt
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -31,7 +31,7 @@ Otomatik kayıt özelliği, müşterilerin Azure aboneliğindeki tüm geçerli v
 
 Otomatik kayıt SQL Server sanal makinelerinizi hafif modda kaydeder. Tam özellikler kümesinden yararlanmak için yine de [tam yönetilebilirlik moduna el ile yükseltmeniz](sql-vm-resource-provider-register.md#upgrade-to-full) gerekir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 SQL Server VM kaynak sağlayıcısına kaydetmek için şunlar gerekir: 
 
@@ -77,6 +77,25 @@ Unregister-AzProviderFeature -FeatureName BulkRegistration -ProviderNamespace Mi
 
 ---
 
+## <a name="enable-for-multiple-subscriptions"></a>Birden çok abonelik için etkinleştir
+
+PowerShell kullanarak, birden çok Azure aboneliği için otomatik kayıt özelliğini etkinleştirebilirsiniz. 
+
+Bunu yapmak için aşağıdaki adımları izleyin:
+
+1. [Bu betiği](https://github.com/microsoft/tigertoolbox/blob/master/AzureSQLVM/RegisterSubscriptionsToSqlVmAutomaticRegistration.ps1) , gibi bir `.ps1` dosyaya kaydedin `EnableBySubscription.ps1` . 
+1. Bir yönetim komut Istemi veya PowerShell penceresi kullanarak betiği kaydettiğiniz yere gidin. 
+1. Azure 'a ( `az login` ) bağlanın.
+1. Komut dosyasını yürütün ve abonelik kimliklerini şu şekilde parametreler olarak geçirerek   
+   `.\EnableBySubscription.ps1 -SubscriptionList SubscriptionId1,SubscriptionId2`
+
+   Örnek: 
+
+   ```console
+   .\EnableBySubscription.ps1 -SubscriptionList a1a1a-aa11-11aa-a1a1-a11a111a1,b2b2b2-bb22-22bb-b2b2-b2b2b2bb
+   ```
+
+Başarısız kayıt hataları, `RegistrationErrors.csv` komut dosyasını kaydettiğiniz ve yürüttüğünüz dizinde depolanır `.ps1` . 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

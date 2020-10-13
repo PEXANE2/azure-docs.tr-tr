@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: keli19
 author: likebupt
 ms.reviewer: peterlu
-ms.date: 09/04/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 95b41723d3cb398caad3a0cf388b7810deda78dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00b689e4546d1f639f76ccbdf45348c43a678066
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941346"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996278"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>Tasarımcı 'da eğitilen modelleri dağıtmak için Studio 'yu kullanma
 
@@ -26,17 +26,25 @@ Studio 'da dağıtım aşağıdaki adımlardan oluşur:
 
 1. Eğitilen modeli kaydedin.
 1. Model için giriş betiği ve Conda Dependencies dosyalarını indirin.
+1. Seçim Giriş betiğini yapılandırın.
 1. Modeli bir işlem hedefine dağıtın.
 
 Model kaydı ve dosya indirme adımlarını atlamak için modelleri doğrudan tasarımcıda da dağıtabilirsiniz. Bu, hızlı dağıtım için yararlı olabilir. Daha fazla bilgi için bkz. [Tasarımcı ile model dağıtma](tutorial-designer-automobile-price-deploy.md).
 
 Tasarımcıda eğitilen modeller ayrıca SDK veya komut satırı arabirimi (CLı) aracılığıyla da dağıtılabilir. Daha fazla bilgi için bkz. [mevcut modelinizi Azure Machine Learning dağıtma](how-to-deploy-existing-model.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md)
 
-* Eğitim [modeli modülünü](./algorithm-module-reference/train-model.md) içeren tamamlanmış bir eğitim işlem hattı
+* Aşağıdaki modüllerden birini içeren tamamlanmış bir eğitim işlem hattı:
+    - [Model modülünü eğitme](./algorithm-module-reference/train-model.md)
+    - [Anomali algılama modeli modülünü eğitme](./algorithm-module-reference/train-anomaly-detection-model.md)
+    - [Kümeleme modeli modülünü eğitme](./algorithm-module-reference/train-clustering-model.md)
+    - [Pytorch model modülünü eğitme](./algorithm-module-reference/train-pytorch-model.md)
+    - [SVD öneren modülünü eğitme](./algorithm-module-reference/train-svd-recommender.md)
+    - [Vowpal Wabbit model modülünü eğitme](./algorithm-module-reference/train-vowpal-wabbit-model.md)
+    - [Geniş kapsamlı & modeli modülünü eğitme](./algorithm-module-reference/train-wide-and-deep-recommender.md)
 
 ## <a name="register-the-model"></a>Modeli Kaydet
 
@@ -136,9 +144,67 @@ score_result = service.run(json.dumps(sample_data))
 print(f'Inference result = {score_result}')
 ```
 
+### <a name="consume-computer-vision-related-real-time-endpoints"></a>Bilgisayar görme ilgili gerçek zamanlı uç noktaları kullanın
+
+Bilgisayar görme ilgili gerçek zamanlı uç noktaları kullanırken, Web hizmeti yalnızca giriş olarak dizeyi kabul ettiğinden görüntüleri bayta dönüştürmeniz gerekir. Örnek kod aşağıda verilmiştir:
+
+```python
+import base64
+import json
+from copy import deepcopy
+from pathlib import Path
+from azureml.studio.core.io.image_directory import (IMG_EXTS, image_from_file, image_to_bytes)
+from azureml.studio.core.io.transformation_directory import ImageTransformationDirectory
+
+# image path
+image_path = Path('YOUR_IMAGE_FILE_PATH')
+
+# provide the same parameter setting as in the training pipeline. Just an example here.
+image_transform = [
+    # format: (op, args). {} means using default parameter values of torchvision.transforms.
+    # See https://pytorch.org/docs/stable/torchvision/transforms.html
+    ('Resize', 256),
+    ('CenterCrop', 224),
+    # ('Pad', 0),
+    # ('ColorJitter', {}),
+    # ('Grayscale', {}),
+    # ('RandomResizedCrop', 256),
+    # ('RandomCrop', 224),
+    # ('RandomHorizontalFlip', {}),
+    # ('RandomVerticalFlip', {}),
+    # ('RandomRotation', 0),
+    # ('RandomAffine', 0),
+    # ('RandomGrayscale', {}),
+    # ('RandomPerspective', {}),
+]
+transform = ImageTransformationDirectory.create(transforms=image_transform).torch_transform
+
+# download _samples.json file under Outputs+logs tab in the right pane of Train Pytorch Model module
+sample_file_path = '_samples.json'
+with open(sample_file_path, 'r') as f:
+    sample_data = json.load(f)
+
+# use first sample item as the default value
+default_data = sample_data[0]
+data_list = []
+for p in image_path.iterdir():
+    if p.suffix.lower() in IMG_EXTS:
+        data = deepcopy(default_data)
+        # convert image to bytes
+        data['image'] = base64.b64encode(image_to_bytes(transform(image_from_file(p)))).decode()
+        data_list.append(data)
+
+# use data.json as input of consuming the endpoint
+data_file_path = 'data.json'
+with open(data_file_path, 'w') as f:
+    json.dump(data_list, f)
+```
+
 ## <a name="configure-the-entry-script"></a>Giriş betiğini yapılandırma
 
-Tasarımcıda [SVD öneren puanı](./algorithm-module-reference/score-svd-recommender.md), [geniş kapsamlı ve derin öneren puan](./algorithm-module-reference/score-wide-and-deep-recommender.md)ve [Vowpal Wabbit modelinin](./algorithm-module-reference/score-vowpal-wabbit-model.md) Puanlama gibi bazı modüller, farklı Puanlama modları için parametrelere sahiptir. Bu bölümde, giriş betiği dosyasında bu parametrelerin nasıl güncelleştireceğinizi öğreneceksiniz.
+Tasarımcıda [SVD öneren puanı](./algorithm-module-reference/score-svd-recommender.md), [geniş kapsamlı ve derin öneren puan](./algorithm-module-reference/score-wide-and-deep-recommender.md)ve [Vowpal Wabbit modelinin](./algorithm-module-reference/score-vowpal-wabbit-model.md) Puanlama gibi bazı modüller, farklı Puanlama modları için parametrelere sahiptir. 
+
+Bu bölümde, giriş betiği dosyasında bu parametrelerin nasıl güncelleştireceğinizi öğreneceksiniz.
 
 Aşağıdaki örnek, eğitilen **geniş bir & derin öneren** modeli için varsayılan davranışı günceller. Varsayılan olarak, `score.py` Dosya Web hizmetine kullanıcılar ve öğeler arasında derecelendirmeleri tahmin etmek üzere bildirir. 
 

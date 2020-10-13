@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 32a8214a5bd6844c9177c7af159a453bc3673efc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed3a8909bc0d5ac135023b55178cec606344353b
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87450481"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996775"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Ön betikleri ve son betikleri yönetme
 
@@ -137,7 +137,7 @@ foreach($summary in $finalStatus)
 
 ## <a name="interact-with-machines"></a>Makinelerle etkileşim kurma
 
-Ön betikler ve son görevler, doğrudan dağıtımınızdaki makinelerde değil, Otomasyon hesabınızda runbook 'lar olarak çalışır. Ön görevler ve görevler, Azure bağlamında da çalışır ve Azure olmayan makinelere erişemez. Aşağıdaki bölümlerde, Azure VM 'Leri veya Azure dışı makineler olsun, makinelerle doğrudan nasıl etkileşim kurabileceği gösterilmektedir.
+Ön betiklerin ve son betiklerin, doğrudan dağıtımınızdaki makinelere değil, Otomasyon hesabınızda runbook 'lar olarak çalışır. Ön görevler ve görevler, Azure bağlamında da çalışır ve Azure olmayan makinelere erişemez. Aşağıdaki bölümlerde, Azure VM 'Leri veya Azure dışı makineler olsun, makinelerle doğrudan nasıl etkileşim kurabileceği gösterilmektedir.
 
 ### <a name="interact-with-azure-machines"></a>Azure makinelerle etkileşim kurma
 

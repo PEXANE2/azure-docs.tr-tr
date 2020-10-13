@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.custom: has-adal-ref
-ms.openlocfilehash: f36c80b9d08f2fde07483c1dde3afe99ec9f92d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce4cccba678a934780dc987f1441ea658a70f8eb
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705631"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996618"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Azure AD uygulama galerisinden bir OpenID/OAuth uygulaması yapılandırma
 
@@ -99,19 +99,19 @@ Aşağıdaki adımlarda, uygulama geliştiricisi ve Kullanıcı için onay deney
 
     a. Menünün sol tarafındaki **uygulama kayıtları** tıklayın ve uygulama adını arama kutusuna yazarak uygulamanızı açın.
 
-    ![Graph API](./media/openidoauth-tutorial/application.png)
+    ![Sol taraftaki menüden "Uygulama kayıtları" seçilen ve "uygulama g D" arama kutusunun vurgulandığı ekran görüntüsü.](./media/openidoauth-tutorial/application.png)
 
     b. **API Izinlerini görüntüle**' ye tıklayın.
 
-    ![Graph API](./media/openidoauth-tutorial/api-permission.png)
+    !["P i Izinleri görüntüle" düğmesinin seçili olduğu "bir P I çağrısı" sayfasını gösteren ekran görüntüsü.](./media/openidoauth-tutorial/api-permission.png)
 
     c. **Izin Ekle**' ye tıklayın.
 
-    ![Graph API](./media/openidoauth-tutorial/add-permission.png)
+    !["İzin Ekle" düğmesinin seçili olduğu "bir P I izinleri" bölümünü gösteren ekran görüntüsü.](./media/openidoauth-tutorial/add-permission.png)
 
     d. **Microsoft Graph**' ye tıklayın.
 
-    ![Graph API](./media/openidoauth-tutorial/microsoft-graph.png)
+    !["Microsoft A P I" sekmesi ve "Microsoft Graph" kutucuğu seçiliyken "P I izinleri ıste" sayfasını gösteren ekran görüntüsü.](./media/openidoauth-tutorial/microsoft-graph.png)
 
     e. **Temsilci izinleri** ve **uygulama izinlerinden**gerekli seçenekleri belirleyin.
 

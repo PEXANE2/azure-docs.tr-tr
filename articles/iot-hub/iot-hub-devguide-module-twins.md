@@ -1,21 +1,21 @@
 ---
 title: Azure IoT Hub modül TWINS 'i anlayın | Microsoft Docs
 description: Geliştirici Kılavuzu-IoT Hub ve cihazlarınız arasında durum ve yapılandırma verilerini eşzamanlı hale getirmek için modül TWINS kullanın
-author: ash2017
+author: nehsin
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 06/29/2020
-ms.author: asrastog
+ms.date: 09/29/2020
+ms.author: nehsin
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 81c5d410599edcbbb4e216b630709541be02c9fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e728eaf8335a102e38a3b4b07ab5e504d452294
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323018"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996459"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>IoT Hub modül TWINS 'i anlayın ve kullanın
 
@@ -116,7 +116,7 @@ Kök nesnede modül kimliği özellikleri ve `tags` hem de hem de özellikleri i
 
 ### <a name="desired-property-example"></a>İstenen özellik örneği
 
-Önceki örnekte, `telemetryConfig` Modül ikizi istenen ve bildirilen özellikler, Bu modülün telemetri yapılandırmasını eşitleyecek şekilde çözüm arka ucu ve modül uygulaması tarafından kullanılır. Örneğin:
+Önceki örnekte, `telemetryConfig` Modül ikizi istenen ve bildirilen özellikler, Bu modülün telemetri yapılandırmasını eşitleyecek şekilde çözüm arka ucu ve modül uygulaması tarafından kullanılır. Örnek:
 
 1. Çözüm arka ucu istenen özelliği istenen yapılandırma değeriyle ayarlar. Belge, istenen özellik kümesine sahip olan bölümüdür:
 
@@ -241,7 +241,7 @@ Etiketler, istenen özellikler ve bildirilen özellikler, JSON nesneleridir ve a
 
 * **Anahtarlar**: JSON nesnelerindeki tüm anahtarlar UTF-8 kodlamalı, büyük/küçük harfe duyarlıdır ve uzunluğu 1 KB 'tır. İzin verilen karakterler UNICODE denetim karakterlerini (C0 ve C1 kesimleri),, `.` ve SP 'yi hariç tutar `$` .
 
-* **Değerler**: JSON nesnelerindeki tüm değerler şu JSON türlerine sahip olabilir: Boolean, Number, String, Object. Dizilere izin verilmiyor.
+* **Değerler**: JSON nesnelerindeki tüm değerler şu JSON türlerine sahip olabilir: Boolean, Number, String, Object. Diziler de desteklenir.
 
     * Tamsayılar en az-4503599627370496 ve en yüksek değer olan 4503599627370495 değerine sahip olabilir.
 
@@ -300,7 +300,7 @@ IoT Hub, sınırın üzerinde bu belgelerin boyutunu arttırabilecek tüm işlem
 ## <a name="module-twin-metadata"></a>Module ikizi meta verileri
 
 IoT Hub, modüldeki her JSON nesnesi için son güncelleştirmenin zaman damgasını ikizi istenen ve bildirilen özellikleri tutar. Zaman damgaları UTC biçimindedir ve [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) biçiminde kodlanır `YYYY-MM-DDTHH:MM:SS.mmmZ` .
-Örneğin:
+Örnek:
 
 ```json
 {

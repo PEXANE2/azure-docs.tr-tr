@@ -3,12 +3,12 @@ title: CAF Foundation şema örneğine genel bakış
 description: Azure Foundation şema örneği için Bulut Benimseme Çerçevesi’ne (CAF) genel bakış ve mimari.
 ms.date: 09/14/2020
 ms.topic: sample
-ms.openlocfilehash: cce5ea001b32ae92542f38f8f11427e85075cee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3e2a5bcbb68ef0b51cf02ebb7a7e34913e2a1e6
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531704"
+ms.locfileid: "91929617"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Azure Foundation şema örneği için Microsoft Bulutu Benimseme çerçevesine genel bakış
 
@@ -27,17 +27,18 @@ Bu uygulama, güvenli, tam olarak izlenen, kurumsal kullanıma hazır bir temel 
 - Paylaşılan hizmetler ortamına dağıtılmış VM'lerin gizli dizilerini barındırmak için kullanılan [Azure Key Vault](../../../../key-vault/general/overview.md) örneği
 - [Depolama Hesapları](../../../../storage/common/storage-introduction.md)’na güvenli dağıtımınıza başladığınız andan itibaren tüm eylemlerin ve hizmetlerin tanılama günlüğüne kaydedilmesi için merkezi bir konumda günlüğe kaydedildiğinden emin olmak amacıyla dağıtılan [Log Analytics](../../../../azure-monitor/overview.md) dağıtımı
 - Geçirilen iş yüklerinize yönelik tehdit koruması sağlayan [Azure Güvenlik Merkezi](../../../../security-center/security-center-intro.md) (standart sürüm) dağıtımı
-- Şema ayrıca, şunlar için [Azure İlkeleri](../../../policy/overview.md)’ni tanımlar ve dağıtır: 
-  - Kaynak gruplarına uygulanan etiketleme (CostCenter)
-  - Kaynak grubuna kaynakları CostCenter Etiketiyle ekleme
-  - Kaynaklar ve Kaynak Grupları için izin verilen Azure Bölgesi
-  - İzin verilen Depolama Hesabı SKU’ları (dağıtırken seçin)
-  - İzin verilen Azure VM SKU’ları (dağıtırken seçin)
-  - Ağ İzleyicisi’nin dağıtılmasını gerektirme 
-  - Azure Depolama Hesabı Güvenli aktarım Şifrelemesi gerektirme
-  - Kaynak türlerini reddetme (dağıtırken seçin)  
-- Girişimler
-  - Azure Güvenlik Merkezi’nde İzleme’yi etkinleştirme (100’den fazla ilke tanımı)
+- Şema ayrıca şunlar için [Azure İlkesi](../../../policy/overview.md) tanımlarını belirler ve dağıtır:
+  - İlke tanımları:
+    - Kaynak gruplarına uygulanan etiketleme (CostCenter)
+    - Kaynak grubuna kaynakları CostCenter Etiketiyle ekleme
+    - Kaynaklar ve Kaynak Grupları için izin verilen Azure Bölgesi
+    - İzin verilen Depolama Hesabı SKU’ları (dağıtırken seçin)
+    - İzin verilen Azure VM SKU’ları (dağıtırken seçin)
+    - Ağ İzleyicisi’nin dağıtılmasını gerektirme 
+    - Azure Depolama Hesabı Güvenli aktarım Şifrelemesi gerektirme
+    - Kaynak türlerini reddetme (dağıtırken seçin)  
+  - İlke girişimleri:
+    - Azure Güvenlik Merkezi’nde İzleme’yi etkinleştirme (100’den fazla ilke tanımı)
 
 Tam bu öğeler [Azure Mimari Merkezi - Referans Mimarileri](/azure/architecture/reference-architectures/)'nde yayımlanan kanıtlanmış uygulamalara dayanır.
 

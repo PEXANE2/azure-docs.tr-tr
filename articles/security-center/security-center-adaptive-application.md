@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: 12140b71f8ef720a9e48b486a43e683b5766d102
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3f3aad08266337756038dfa6ac6ff0c9afe093c
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439011"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996824"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Makinelerinizin saldırı yüzeylerini azaltmak için uyarlamalı uygulama denetimleri kullanma
 
@@ -54,7 +54,7 @@ Bilinen güvenli uygulamalar listesini tanımlayarak ve başka bir şey yürüt�
 |Fiyat|[Sunucular Için Azure Defender](defender-for-servers-introduction.md) gerekir|
 |Desteklenen makineler:|![Evet ](./media/icons/yes-icon.png) Azure ve Windows ve Linux çalıştıran Azure dışı makineler<br>![Evet ](./media/icons/yes-icon.png) [Azure yay](https://docs.microsoft.com/azure/azure-arc/) makineleri|
 |Gerekli roller ve izinler:|**Güvenlik okuyucu** ve **okuyucu** rolleri hem grupları hem de bilinen güvenli uygulamaların listesini görüntüleyebilir<br>**Katkıda bulunan** ve **Güvenlik yönetici** rolleri, grupları ve bilinen güvenli uygulamaların listesini düzenleyebilir|
-|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Evet](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 
@@ -149,6 +149,23 @@ Bir makine grubunun kurallarını düzenlemek için:
 
 1. Değişiklikleri uygulamak için **Kaydet**' i seçin.
 
+
+## <a name="review-and-edit-a-groups-settings"></a>Grubun ayarlarını gözden geçirme ve düzenleme
+
+1. Grubunuzun ayrıntılarını ve ayarlarını görüntülemek için **Grup ayarları** ' nı seçin.
+
+    Bu bölmede grubun adı (değiştirilebilir), işletim sistemi türü, konum ve ilgili diğer ayrıntılar gösterilir.
+
+    :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="Azure panosundan Uyarlamalı uygulama denetimleri açma" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
+
+    > [!IMPORTANT]
+    > Dosya türü koruma modu ayarlarındaki **zorla** seçeneği tüm senaryolarda gri renkte bulunur. Şu anda hiçbir zorlama seçeneği yok. 
+    >
+    > :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-modes.png" alt-text="Azure panosundan Uyarlamalı uygulama denetimleri açma":::
+
+1. İsteğe bağlı olarak, grubun adını veya dosya türü koruma modlarını değiştirin.
+
+1. **Uygula** ve **Kaydet**' i seçin.
 
 
 

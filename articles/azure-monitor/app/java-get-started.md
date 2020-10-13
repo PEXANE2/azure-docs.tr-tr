@@ -6,24 +6,24 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: f0583af05ae7d8e365b50610bfb812ac7764f223
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12497d3ac86888ed861e8d5f655f45c8cbe4b6e3
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602474"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996162"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Hızlı başlangıç: Java Web projesinde Application Insights ile çalışmaya başlama
 
 
 > [!IMPORTANT]
-> Java uygulamalarını izlemek için önerilen yaklaşım, kodu değiştirmeden otomatik izleme kullanmaktır. Lütfen [Application Insights Java 3,0 Aracısı](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)için yönergeleri izleyin.
+> Java uygulamalarını izlemek için önerilen yaklaşım, kodu değiştirmeden otomatik izleme kullanmaktır. Lütfen [Application Insights Java 3,0 Aracısı](./java-in-process-agent.md)için yönergeleri izleyin.
 
 Bu hızlı başlangıçta, isteği işaretlemek, bağımlılıkları izlemek ve performans sayaçlarını toplamak, performans sorunlarını ve özel durumları tanılamak ve uygulamanızdaki kullanıcıların neler yaptığını izlemek için kod yazmak üzere Application Insights SDK 'sını kullanırsınız.
 
 Application Insights, web geliştiricileri için canlı uygulamanızın performansını ve kullanımını anlamanıza yardımcı olan genişletilebilir bir analiz hizmetidir. Application Insights; Linux, Unix veya Windows üzerinde çalışan Java uygulamalarını destekler.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * Çalışan bir Java uygulaması.
@@ -199,7 +199,7 @@ Artık uygulamanızı sunucuya yayımlayın, herkesin kullanmasını sağlayın 
 
 ## <a name="azure-app-service-aks-vms-config"></a>Azure App Service, AKS, VM yapılandırması
 
-Azure Kaynak sağlayıcılarının hiçbirinde çalışan uygulamalarınızı izlemek için en iyi ve en kolay yaklaşım, [Java 3,0 Aracısı](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)aracılığıyla Application Insights otomatik izleme kullanmaktır.
+Azure Kaynak sağlayıcılarının hiçbirinde çalışan uygulamalarınızı izlemek için en iyi ve en kolay yaklaşım, [Java 3,0 Aracısı](./java-in-process-agent.md)aracılığıyla Application Insights otomatik izleme kullanmaktır.
 
 
 ## <a name="exceptions-and-request-failures"></a>Özel durumlar ve istek hataları
@@ -313,4 +313,3 @@ Kullanıma hazır ve düzgün yanıt verdiğini denetlemek için Application Ins
 [javalogs]: java-trace-logs.md
 [metrics]: ../platform/metrics-charts.md
 [usage]: javascript.md
-

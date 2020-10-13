@@ -5,14 +5,14 @@ author: Rodrigossz
 ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 0e02f0bf1bb9646a644a40279a8bae930de34c0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b36f4e292eb4bcae424d463f76e8a69eefd2968
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568004"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995538"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Cosmos DB (Önizleme) için Azure SYNAPSE bağlantısı nedir?
 
@@ -104,7 +104,7 @@ Azure Cosmos DB için Azure SYNAPSE Analytics çalışma zamanı desteği hakkı
 
 SYNAPSE bağlantısı aşağıdaki durumlarda önerilir:
 
-* Azure Cosmos DB müşterisiyseniz ve işletimsel verileriniz üzerinde analiz, bı ve makine öğrenimi çalıştırmak istiyorsanız. Bu gibi durumlarda, SYNAPSE link, işlem mağazalarınızın sağlanan verimini etkilemeden daha tümleşik bir analiz deneyimi sağlar. Örneğin:
+* Azure Cosmos DB müşterisiyseniz ve işletimsel verileriniz üzerinde analiz, bı ve makine öğrenimi çalıştırmak istiyorsanız. Bu gibi durumlarda, SYNAPSE link, işlem mağazalarınızın sağlanan verimini etkilemeden daha tümleşik bir analiz deneyimi sağlar. Örnek:
 
   * Azure Cosmos DB işletimsel verilerinize doğrudan ayrı bağlayıcılar kullanarak analiz veya bı çalıştırıyorsanız veya
 
@@ -116,7 +116,7 @@ Yüksek eşzamanlılık, iş yükü yönetimi ve birden çok veri kaynağında t
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* Azure SYNAPSE link, Azure Cosmos DB SQL (Core) API 'SI ve Azure Cosmos DB MongoDB API 'SI için desteklenir.
+* Azure Cosmos DB için bugün Azure SYNAPSE bağlantısı, MongoDB için SQL API ve Azure Cosmos DB API 'SI için desteklenir. Gremlin API ve Tablo API'si için desteklenmez. Cassandra API için destek özel önizlemede, daha fazla bilgi için lütfen adresinde Azure SYNAPSE bağlantı ekibine başvurun cosmosdbsynapselink@microsoft.com .  
 
 * Şu anda analitik depo yalnızca yeni kapsayıcılar için etkinleştirilebilir. Mevcut kapsayıcılar için analitik depolama kullanmak için, [Azure Cosmos DB geçiş araçlarını](cosmosdb-migrationchoices.md)kullanarak mevcut kapsayıcılarınızdaki verileri yeni kapsayıcılara geçirin. Yeni ve mevcut Azure Cosmos DB hesaplarında SYNAPSE bağlantısı sağlayabilirsiniz.
 

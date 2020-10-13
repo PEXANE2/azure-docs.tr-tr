@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: deb64aa0c344e818b5fd85ca1a161293fd35d6f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be9f2163813d1dc52a593c110fa4cef9b561614e
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554024"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995419"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>Öğretici: Percogeç ile tümleştirme Azure Active Directory
 
@@ -103,7 +103,7 @@ Azure AD çoklu oturum açmayı Percogeç olarak yapılandırmak için şu adım
 
 5. Uygulamayı SP tarafından başlatılan modda yapılandırmak istiyorsanız **ek URL 'Ler ayarla** ' yı seçin ve **oturum açma URL 'si** kutusuna şunu girin **https://percolate.com/app/login** :
 
-   ![Percogeç etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
+   !["Ek U r ls 'yi ayarla" seçeneğinin seçili olduğunu gösteren ekran görüntüsü](common/metadata-upload-additional-signon.png)
 6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini**kopyalamak için **Kopyala** simgesini seçin. Bu URL 'YI kaydedin.
 
     ![Uygulama Federasyon meta veri URL 'sini Kopyala](common/copy-metadataurl.png)
@@ -144,7 +144,7 @@ Azure AD çoklu oturum açmayı Percogeç olarak yapılandırmak için şu adım
 
     1. **SSO otomatik sağlamayı etkinleştir** listesinde **Hayır**' ı seçin.
 
-    1. **Kaydet**’i seçin.
+    1. **Kaydet**'i seçin.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
@@ -184,7 +184,7 @@ Bu bölümde, Percogeç 'e erişimi vererek Azure AD çoklu oturum açma özelli
 
 3. Sol bölmede **Kullanıcılar ve gruplar**' ı seçin:
 
-    ![Kullanıcı ve gruplar'ı seçin](common/users-groups-blade.png)
+    ![Sol bölmeden seçili "kullanıcılar ve gruplar" i gösteren ekran görüntüsü.](common/users-groups-blade.png)
 
 4. **Kullanıcı Ekle**' yi seçin ve sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 

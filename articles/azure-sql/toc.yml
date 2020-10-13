@@ -90,6 +90,8 @@
                   href: database/transparent-data-encryption-tde-overview.md
                 - name: Kendi Anahtarını Getir (KAG)
                   href: database/transparent-data-encryption-byok-overview.md
+            - name: Dağıtılmış işlemler
+              href: database/elastic-transactions-overview.md
         - name: İş sürekliliği
           displayName: 'Backup, back up, restore, recovery'
           items:
@@ -862,6 +864,8 @@
               href: managed-instance/public-endpoint-overview.md
             - name: Denetim
               href: managed-instance/auditing-configure.md
+            - name: Sunucu güveni grupları
+              href: managed-instance/server-trust-group-overview.md
     - name: Nasıl yapılır
       items:
         - name: Genel Bakış

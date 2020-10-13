@@ -284,6 +284,8 @@
           href: backup-azure-alternate-dpm-server.md
         - name: VMware VM’lerini Azure Backup Sunucusu ile geri yükleme
           href: restore-azure-backup-server-vmware.md
+        - name: MABS sunucusunu yedekleme
+          href: backup-the-mabs-server.md
     - name: Azure Stack üzerinde Azure Backup Sunucusu
       items:
         - name: Azure Backup Sunucusu’nu yükleme
