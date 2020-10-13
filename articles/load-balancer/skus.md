@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 05/01/2020
 ms.author: allensu
 ms.openlocfilehash: 8eb8be3307cf5e1df987f636be5c01cecaf4ae45
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91631452"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure Load Balancer SKU 'Ları
@@ -46,7 +46,7 @@ Tek başına VM'ler, kullanılabilirlik kümeleri ve sanal makine ölçek kümel
 | **Boşta durumunda TCP sıfırlaması** | [Herhangi bir kuralda kullanılabilir](./load-balancer-tcp-reset.md) | Kullanılamaz |
 | **[Birden çok ön uç](./load-balancer-multivip-overview.md)** | Gelen ve [giden](./load-balancer-outbound-connections.md) | Yalnızca gelen |
 | **Yönetim Işlemleri** | Çoğu işlem 30 saniye < | 60-90 + saniye tipik |
-| **SLA** | [%99,99](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Kullanılamaz | 
+| **SLA** | [% 99,99](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Kullanılamaz | 
 
 Daha fazla bilgi için bkz. [yük dengeleyici sınırları](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer). Standart Load Balancer hakkında ayrıntılı bilgi için bkz. [genel bakış](load-balancer-standard-overview.md), [fiyatlandırma](https://aka.ms/lbpricing) ve [SLA](https://aka.ms/lbsla).
 

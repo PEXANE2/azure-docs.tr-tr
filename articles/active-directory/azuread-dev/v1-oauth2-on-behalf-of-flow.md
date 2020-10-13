@@ -15,10 +15,10 @@ ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: f746cc654934464d907c6ad669eb7470e4dcaeeb
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88117745"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Şirket adına temsilci Kullanıcı kimliği kullanan hizmetten hizmete çağrılar
@@ -144,8 +144,8 @@ Bir sertifikaya sahip hizmetten hizmete erişim belirteci isteği aşağıdaki p
 | grant_type |gerekli | Belirteç isteğinin türü. OBO isteği bir JWT erişim belirteci kullanır, bu yüzden değer **urn: IETF: params: OAuth: Grant-Type: JWT-taşıyıcı**olmalıdır. |
 | onay |gerekli | İstekte kullanılan belirtecin değeri. |
 | client_id |gerekli | Azure AD 'ye kayıt sırasında çağıran hizmete atanan uygulama KIMLIĞI. Azure portal uygulama KIMLIĞINI bulmak için **Active Directory**' i seçin, dizini seçin ve ardından uygulama adını seçin. |
-| client_assertion_type |gerekli |Değer şu şekilde olmalıdır`urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |gerekli | Uygulamanız için kimlik bilgileri olarak kaydettiğiniz sertifikayla oluşturduğunuz ve oturum açarken kullanabileceğiniz bir JSON Web Token. Onaylama biçimi ve sertifikanızın nasıl kaydedileceği hakkında bilgi edinmek için bkz. [sertifika kimlik bilgileri](../develop/active-directory-certificate-credentials.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) .|
+| client_assertion_type |gerekli |Değer şu şekilde olmalıdır `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion |gerekli | Uygulamanız için kimlik bilgileri olarak kaydettiğiniz sertifikayla oluşturduğunuz ve oturum açarken kullanabileceğiniz bir JSON Web Token. Onaylama biçimi ve sertifikanızın nasıl kaydedileceği hakkında bilgi edinmek için bkz.  [sertifika kimlik bilgileri](../develop/active-directory-certificate-credentials.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) .|
 | kaynak |gerekli | Alıcı hizmetin uygulama KIMLIĞI URI 'SI (güvenli kaynak). Azure portal uygulama KIMLIĞI URI 'sini bulmak için **Active Directory** ' i seçin ve dizini seçin. Uygulama adı ' nı seçin, **Tüm ayarlar**' ı seçin ve ardından **Özellikler**' i seçin. |
 | requested_token_use |gerekli | İsteğin nasıl işleneceğini belirtir. Şirket adına, değerin **on_behalf_of**olması gerekir. |
 | scope |gerekli | Belirteç isteği için bir alan ayrılmış kapsam listesi. OpenID Connect için, **OpenID** kapsamı belirtilmelidir.|
@@ -282,10 +282,10 @@ Yanıt, UTF8 ve Base64url içinde kodlanmış bir SAML belirteci içeriyor.
 - expires_in: 3296
 - ext_expires_in: 0
 - expires_on: 1529627844
-- Kaynak`https://api.contoso.com`
-- access_token:\<SAML assertion\>
+- Kaynak `https://api.contoso.com`
+- access_token: \<SAML assertion\>
 - issued_token_type: urn: IETF: params: OAuth: Token-Type: SAML2
-- refresh_token:\<Refresh token\>
+- refresh_token: \<Refresh token\>
 
 ## <a name="client-limitations"></a>İstemci sınırlamaları
 

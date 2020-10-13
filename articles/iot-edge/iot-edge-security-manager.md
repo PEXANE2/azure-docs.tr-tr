@@ -10,10 +10,10 @@ ms.date: 08/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
 ms.openlocfilehash: d5cfa16196a8815b711fd5277a80f6eb67d3a388
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76548705"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge Güvenlik Yöneticisi
@@ -103,7 +103,7 @@ Microsoft, [GitHub üzerinde IoT Edge güvenlik arka plan programı](https://git
 
 IoT Edge güvenlik arka plan programının yüklenmesi ve güncelleştirmeleri, işletim sisteminin paket yönetim sistemi üzerinden yönetilir. Donanım köküne sahip IoT Edge cihazlar, güvenli önyükleme ve güncelleştirme yönetimi sistemleri aracılığıyla yaşam döngüsünü yöneterek arka plan 'un bütünlüğünden daha fazla sağlamlaştırma sağlamalıdır. Cihaz üreticileri bu avenilgili cihaz özelliklerine göre araştırmalıdır.
 
-#### <a name="versioning"></a>Sürüm Oluşturma
+#### <a name="versioning"></a>Sürüm oluşturma
 
 IoT Edge Runtime, IoT Edge güvenlik arka plan programının sürümünü izler ve raporlar. Sürüm, IoT Edge Agent modülünün bildirdiği özelliğin *Runtime. platform. Version* özniteliği olarak bildirilir.
 
