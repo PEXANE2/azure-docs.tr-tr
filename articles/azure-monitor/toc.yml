@@ -658,6 +658,8 @@
                       href: app/javascript-react-plugin.md
                     - name: React Native eklentisi
                       href: app/javascript-react-native-plugin.md
+                    - name: Angular eklentisi
+                      href: app/javascript-angular-plugin.md
                 - name: Sorun giderme
                   items:
                     - name: SDK yükleme hatası

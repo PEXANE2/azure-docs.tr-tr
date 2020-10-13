@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 1/8/2019
 ms.openlocfilehash: 3d23ee6119b625e11ce44bb9ad11ce4b3ee0280d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91295745"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda Kullanıcı oluşturma-hiper ölçek (Citus)
@@ -52,7 +52,7 @@ Belirtildiği gibi, `citus` yönetici hesabının ek Kullanıcı oluşturma izni
 
 2. Rol adını ve parolayı girin. **Kaydet**’e tıklayın.
 
-   :::image type="content" source="media/howto-hyperscale-create-users/2-add-user-fields.png" alt-text="Rol Ekle":::
+   :::image type="content" source="media/howto-hyperscale-create-users/2-add-user-fields.png" alt-text="Roller sayfası":::
 
 Kullanıcı, sunucu grubunun düzenleyici düğümünde oluşturulacak ve tüm çalışan düğümlerine yayılacaktır. Azure portal aracılığıyla oluşturulan roller `LOGIN` özniteliği vardır ve bu, veritabanında oturum açabilen doğru Kullanıcı oldukları anlamına gelir.
 
@@ -77,7 +77,7 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;
 
 Bir kullanıcıyı güncelleştirmek için, Hyperscale (Citus) sunucu grubunuzun **Roller** sayfasını ziyaret edin ve kullanıcının yanındaki üç nokta **...** seçeneğine tıklayın. Üç nokta, kullanıcıyı silmek veya parolasını sıfırlamak için bir menü açar.
 
-   :::image type="content" source="media/howto-hyperscale-create-users/edit-role.png" alt-text="Rol düzenleme":::
+   :::image type="content" source="media/howto-hyperscale-create-users/edit-role.png" alt-text="Roller sayfası":::
 
 `citus`Rol ayrıcalıklı ve silinemez.
 

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: radeltch
 ms.openlocfilehash: 4c444cb84f215ba4f42c14eb64f1d2f441e4280d
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91598294"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Azure 'da Red Hat Enterprise Linux Paceyapıcısı ayarlama
@@ -59,13 +59,13 @@ ms.locfileid: "91598294"
 * [Linux üzerinde SAP için Azure sanal makineleri DBMS dağıtımı][dbms-guide]
 * [Pacemaker kümesinde sistem çoğaltmasını SAP HANA](https://access.redhat.com/articles/3004101)
 * Genel RHEL belgeleri
-  * [Yüksek kullanılabilirlik eklentisi genel bakış](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
-  * [Yüksek kullanılabilirlik eklentisi Yönetimi](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-  * [Yüksek kullanılabilirlik eklentisi başvurusu](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+  * [Yüksek kullanılabilirlik Add-On genel bakış](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+  * [Yüksek kullanılabilirlik Add-On yönetimi](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+  * [Yüksek kullanılabilirlik Add-On başvurusu](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
   * [RHEL yüksek kullanılabilirlik kümeleri için destek Ilkeleri-SBD ve fence_sbd](https://access.redhat.com/articles/2800691)
 * Azure 'a özgü RHEL belgeleri:
   * [RHEL yüksek kullanılabilirlik kümeleri için destek Ilkeleri-küme üyesi olarak Microsoft Azure Sanal Makineler](https://access.redhat.com/articles/3131341)
-  * [Microsoft Azure üzerinde Red Hat Enterprise Linux 7,4 (ve üzeri) yüksek kullanılabilirlik kümesi yükleme ve yapılandırma](https://access.redhat.com/articles/3252491)
+  * [Microsoft Azure Red Hat Enterprise Linux 7,4 (ve üzeri) High-Availability kümesini yükleme ve yapılandırma](https://access.redhat.com/articles/3252491)
   * [RHEL 8 ' i benimseme ile ilgili konular-yüksek kullanılabilirlik ve kümeler](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/considerations_in_adopting_rhel_8/high-availability-and-clusters_considerations-in-adopting-rhel-8)
   * [RHEL 7,6 üzerinde pacemaker 'da tek başına sıraya alma sunucu 2 (ENSA2) ile SAP S/4HANA yoks/ERS yapılandırma](https://access.redhat.com/articles/3974941)
 
@@ -102,7 +102,7 @@ ms.locfileid: "91598294"
    sudo subscription-manager repos --enable=rhel-ha-for-rhel-7-server-eus-rpms
    </code></pre>
 
-1. **[A]** RHEL ha eklentisini Install
+1. **[A]** RHEL ha Add-On yüklemesi
 
    <pre><code>sudo yum install -y pcs pacemaker fence-agents-azure-arm nmap-ncat
    </code></pre>
@@ -110,9 +110,9 @@ ms.locfileid: "91598294"
    > [!IMPORTANT]
    > Müşterilerin daha hızlı bir yük devretme zamanından faydalanmasını sağlamak için aşağıdaki Azure sınır Aracısı (veya üzeri) sürümlerini öneririz. bir kaynak durmazsa veya küme düğümleri bundan böyle iletişim kuramadıysanız:  
    > RHEL 7,7 veya üzeri, sınır aracıları paketinin kullanılabilir en son sürümünü kullanır  
-   > RHEL 7,6: çit-Agents-4.2.1-11. el7_6.8  
-   > RHEL 7,5: çit-Agents-4.0.11-86. el7_5.8  
-   > RHEL 7,4: çit-Agents-4.0.11-66. el7_4.12  
+   > RHEL 7,6: çit-Agents-4.2.1-11.el7_6.8  
+   > RHEL 7,5: çit-Agents-4.0.11-86.el7_5.8  
+   > RHEL 7,4: çit-Agents-4.0.11-66.el7_4.12  
    > Daha fazla bilgi için, bkz. [Azure VM 'nin BIR RHEL yüksek kullanılabilirlik kümesi üyesi olarak çalışıyor olması çok uzun zaman alır veya VM kapatılmadan önce başarısız/zaman aşımına](https://access.redhat.com/solutions/3408711)uğrar.
 
    Azure çit aracısının sürümünü denetleyin. Gerekirse, yukarıda belirtilen değere eşit veya ondan daha yeni bir sürüme güncelleştirin.

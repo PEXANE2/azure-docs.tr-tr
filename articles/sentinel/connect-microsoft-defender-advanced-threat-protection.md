@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
 ms.openlocfilehash: d1de9270534a3550d8db043fdd6bcfe56ec31bda
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90895589"
 ---
 # <a name="connect-alerts-from-microsoft-defender-for-endpoint-formerly-microsoft-defender-atp"></a>Uç nokta için Microsoft Defender 'daki uyarıları bağlama (eski adıyla Microsoft Defender ATP)
@@ -39,7 +39,7 @@ ms.locfileid: "90895589"
 >
 > Uç noktanın [Gelişmiş](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/advanced-hunting-overview)arama Için Microsoft Defender 'daki yeni ham veri günlüklerini almak için, Microsoft 365 Defender için yeni bağlayıcıyı kullanın (eski adıyla Microsoft tehdit koruması, [bkz. belgeler](./connect-microsoft-365-defender.md)).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Uç nokta [dağıtımı Için Microsoft Defender 'ı ayarlama](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/licensing)bölümünde açıklandığı gibi, uç nokta Için Microsoft Defender için geçerli bir lisansa sahip olmanız gerekir. 
 

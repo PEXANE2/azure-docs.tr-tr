@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.date: 05/15/2020
 ms.author: jingwang
 ms.openlocfilehash: 953dae3c264e76b1e40f0dc07ccea0c00a7464c8
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90024426"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>Özel uç noktaları kullanarak verileri Azure Blob depolamadan bir SQL veritabanına güvenli bir şekilde kopyalama
@@ -34,7 +34,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 * Kopyalama etkinliğiyle işlem hattı oluşturma.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 * **Azure depolama hesabı**. Blob depolama alanını *kaynak* veri deposu olarak kullanabilirsiniz. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal). *Depolama hesabının yalnızca seçili ağlardan erişime izin verdiğinden emin olun.* 
 * **Azure SQL veritabanı**. Veritabanını *havuz* veri deposu olarak kullanabilirsiniz. Azure SQL veritabanınız yoksa, oluşturma adımları için bkz. [SQL veritabanı oluşturma](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal) . *SQL veritabanı hesabının yalnızca seçili ağlardan erişime izin verdiğinden emin olun.* 

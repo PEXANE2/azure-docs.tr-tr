@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
 ms.openlocfilehash: 59bbca9461ff174ebe2451a6c01d84dee404cf56
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91398315"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Azure-Azure VM ağ bağlantısı sorunlarını giderme
@@ -74,14 +74,11 @@ Bu örnek, bir VM 'nin yinelenmesi için NSG kurallarının nasıl yapılandır�
 
 1. Aşağıdaki ekran görüntüsünde gösterildiği gibi NSG için bir HTTPS giden güvenlik kuralı oluşturun. Bu örnek, **hedef hizmet etiketini**kullanır: _Storage. EastUS_ ve **hedef bağlantı noktası aralıkları**: _443_.
 
-     :::image type="content" source="./media/azure-to-azure-about-networking/storage-tag.png" alt-text="Ekran görüntüsü, depolama noktası Doğu U S için bir güvenlik kuralına giden güvenlik kuralı ekle bölmesini gösterir.":::
+     :::image type="content" source="./media/azure-to-azure-about-networking/storage-tag.png" alt-text="com-hata":::
 
 1. Aşağıdaki ekran görüntüsünde gösterildiği gibi NSG için bir HTTPS giden güvenlik kuralı oluşturun. Bu örnek, **hedef hizmet etiketini**kullanır: _AzureActiveDirectory_ ve **hedef bağlantı noktası aralıkları**: _443_.
 
-     :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="Ekran görüntüsünde Azure Active Directory için bir güvenlik kuralına giden güvenlik kuralı ekle bölmesi görüntülenir.":::
-
-1. Yukarıdaki güvenlik kurallarına benzer şekilde, hedef konuma karşılık gelen NSG 'de "EventHub. Merkezileştirus" için giden HTTPS (443) güvenlik kuralı oluşturun. Bu, Site Recovery izlemeye erişim sağlar.
-1. NSG 'de "Azuresterecovery" için giden bir HTTPS (443) güvenlik kuralı oluşturun. Bu, herhangi bir bölgedeki Site Recovery hizmetine erişim sağlar.
+     :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="com-hata" için giden bir HTTPS (443) güvenlik kuralı oluşturun. Bu, herhangi bir bölgedeki Site Recovery hizmetine erişim sağlar.
 
 #### <a name="nsg-rules---central-us"></a>NSG kuralları-Orta ABD
 

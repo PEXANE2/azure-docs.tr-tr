@@ -9,10 +9,10 @@ ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
 ms.openlocfilehash: 6649a8d470a75922aac423bf0b411163bdd79f71
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449091"
 ---
 # <a name="introduction-to-azure-defender-for-key-vault"></a>Key Vault için Azure Defender 'a giriş
@@ -27,7 +27,7 @@ Azure yerel için **Key Vault Için Azure Defender** 'ı etkinleştirin ve Azure
 |----|:----|
 |Yayın durumu:|Genel olarak kullanılabilir (GA)|
 |Fiyat|**Key Vault Için Azure Defender** , [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-key-vault"></a>Key Vault için Azure Defender 'ın avantajları nelerdir?

@@ -11,10 +11,10 @@ ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
 ms.openlocfilehash: 21dad66670da7a538039ae795d6be87cc4dbce96
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90883088"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısını kullanarak toplu tahminleri Çalıştır
@@ -31,7 +31,7 @@ Bu nasıl yapılır, aşağıdaki görevleri yapmayı öğrenirsiniz:
 
 SDK 'yı kullanarak Batch Puanlama hizmetlerini ayarlamayı öğrenmek için bkz. [ile ilgili nasıl yapılır](how-to-run-batch-predictions.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu nasıl yapılır, zaten bir eğitim ardışık düzenine sahip olduğunuzu varsayar. Tasarımcıya yönelik Kılavuzlu giriş için [Tasarımcı öğreticisinin birinci kısmını](tutorial-designer-automobile-price-train-score.md)doldurun. 
 

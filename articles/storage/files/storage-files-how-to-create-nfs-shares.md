@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 2a848cb77336fc89172d55a6204d66b9e5be5976
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90705240"
 ---
 # <a name="how-to-create-an-nfs-share"></a>NFS paylaşma oluşturma
@@ -27,7 +27,7 @@ Azure dosya paylaşımları, bulutta yaşayan tamamen yönetilen dosya paylaşı
 
 [!INCLUDE [files-nfs-regional-availability](../../../includes/files-nfs-regional-availability.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Bir [dosya depolama hesabı](storage-how-to-create-premium-fileshare.md)oluşturun.
 
@@ -80,7 +80,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNfs
 az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscription <yourSubscriptionIDHere>
 ```
 
-## <a name="create-an-nfs-share"></a>NFS paylaşma oluşturma
+## <a name="create-an-nfs-share"></a>NFS paylaşımı oluşturma
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

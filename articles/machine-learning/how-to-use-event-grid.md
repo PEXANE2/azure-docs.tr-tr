@@ -12,10 +12,10 @@ author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
 ms.openlocfilehash: e033f00f7657f7f4e5e63509672e924979ce03e7
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362525"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Uygulama, işlem veya CI/CD iş akışlarını Azure Machine Learning olaylara göre tetikleyin (Önizleme)
@@ -33,7 +33,7 @@ Olay odaklı eylemler için Event Grid ne zaman kullanılır:
 > [!NOTE] 
 > Şu anda runStatusChanged olayları yalnızca çalıştırma durumu **başarısız** olduğunda tetiklenir
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Event Grid kullanmak için, olaylarını oluşturacağınız Azure Machine Learning çalışma alanına katkıda bulunan veya Owner erişiminizin olması gerekir.
 
 ## <a name="the-event-model--types"></a>Olay modeli & türleri

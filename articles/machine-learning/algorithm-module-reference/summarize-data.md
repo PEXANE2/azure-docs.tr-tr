@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 01/27/2020
 ms.openlocfilehash: 5206565b85d1551e5e551f1dfe75d28c93bc53f0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90898208"
 ---
 # <a name="summarize-data"></a>Verileri Özetleme
@@ -54,13 +54,13 @@ Modülden rapor aşağıdaki istatistikleri içerebilir.
 |**Eksik değer sayısı**|Sütundaki benzersiz değer sayısı|
 |**Min**|Sütundaki en düşük değer|  
 |**Biçimlendir**|Sütundaki en yüksek değer|
-|**Ortalama**|Tüm sütun değerlerinin ortalaması|
+|**Ortası**|Tüm sütun değerlerinin ortalaması|
 |**Ortalama sapma**|Sütun değerlerinin ortalama sapması|
 |**1. DÖRTTEBİRLİK**|İlk dörttebir değer|
 |**Ortanca**|Ortanca sütun değeri|
 |**3. DÖRTTEBİRLİK**|Üçüncü dörttebir değer|
 |**Mod**|Sütun değerlerinin modu|
-|**Aralığı**|Maksimum ve minimum değerler arasındaki değer sayısını temsil eden tamsayı|
+|**Aralık**|Maksimum ve minimum değerler arasındaki değer sayısını temsil eden tamsayı|
 |**Örnek varyans**|Sütun varyansı; bkz. nota|
 |**Örnek standart sapması**|Sütun için standart sapma; bkz. nota|
 |**Örnek çarpıklığı**|Sütun için çarpıklık; bkz. nota|

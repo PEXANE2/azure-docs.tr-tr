@@ -9,10 +9,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
 ms.openlocfilehash: 014339b02167a1bb4cba11cc10c9740b8fa53f2c
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91773255"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Azure sanal WAN hub 'ında ağ sanal gereci oluşturma (Önizleme)
@@ -90,7 +90,7 @@ Bu adımda, hub 'da bir ağ sanal gereci oluşturacaksınız. Her NVA 'nın yord
    * **NVA altyapı birimleri** -bu NVA 'yı dağıtmak istediğiniz NVA altyapı birimi sayısını belirtin. Bu NVA aracılığıyla bu hub 'a Bağlanılacak tüm dal sitelerinde sağlamak istediğiniz toplam bant genişliği kapasitesini seçin.
    * **Token** -barkcuda, kendinizi bu ürünün kayıtlı kullanıcısı olarak tanımlamak için burada bir kimlik doğrulama belirteci sağlamanızı gerektirir. Bunu Barçcuda 'dan edinmeniz gerekir.
 1. Devam etmek için **gözden geçir ve oluştur** düğmesini seçin.
-1. Bu sayfada, ortak yönetici erişim sözleşmesi koşullarını kabul etmeniz istenir. Bu, yayımcının bu dağıtımdaki bazı kaynaklara erişebileceği yönetilen uygulamalarla standart bir standarttır. **Yukarıdaki hüküm ve koşulları kabul ediyorum** kutusunu işaretleyin ve ardından **Oluştur**' u seçin.
+1. Bu sayfada, Co-Admin erişim sözleşmesinin koşullarını kabul etmeniz istenir. Bu, yayımcının bu dağıtımdaki bazı kaynaklara erişebileceği yönetilen uygulamalarla standart bir standarttır. **Yukarıdaki hüküm ve koşulları kabul ediyorum** kutusunu işaretleyin ve ardından **Oluştur**' u seçin.
 
 ## <a name="connect-the-vnet-to-the-hub"></a><a name="vnet"></a>VNet 'i hub 'a bağlama
 

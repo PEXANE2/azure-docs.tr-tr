@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: rogarana
 ms.openlocfilehash: 03b569422b6ce9e74f77637a514c1c0b28011bed
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761150"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Üçüncü kısım: SMB üzerinden dizin ve dosya düzeyi izinleri yapılandırma 
@@ -104,7 +104,7 @@ Kök dizin dahil olmak üzere dosya paylaşımındaki tüm dizinlere ve dosyalar
 1. Yeni Kullanıcı eklemek için istem penceresinde, **Seçilecek nesne adlarını girin** kutusuna izin vermek istediğiniz hedef Kullanıcı adını girin ve hedef kullanıcının tam UPN adını bulmak Için **adları denetle** ' yi seçin.
 1.    **Tamam**’ı seçin.
 1.    **Güvenlik** sekmesinde, yeni kullanıcıya vermek istediğiniz tüm izinleri seçin.
-1.    **Apply** (Uygula) seçeneğini belirleyin.
+1.    **Uygula**’yı seçin.
 
 ### <a name="configure-windows-acls-with-icacls"></a>Windows ACL 'lerini Icacls ile yapılandırma
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 6036ff86c430422556ed4f7e1bc80fe122ed0a30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9eee16c1ba207eb35633d7ec1a7167300d40d662
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552577"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941050"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>Öğretici: N2F-harcama raporlarıyla tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ N2F-gider raporlarını Azure AD ile tümleştirmek aşağıdaki avantajları sa
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini N2F-harcama raporlarıyla yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -99,11 +99,11 @@ Azure AD çoklu oturum açmayı N2F-harcama raporlarıyla yapılandırmak için 
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak Istiyorsanız, uygulama zaten Azure ile önceden tümleştirildiği için Kullanıcı herhangi bir adım gerçekleştirmek zorunda değildir.
 
-    ![N2F-gider raporları etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/preintegrated.png)
+    ![Ekran görüntüsünde, temel SAML yapılandırması olan SAML tabanlı oturum açma sayfası gösterilir.](common/preintegrated.png)
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    ![N2F-gider raporları etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
+    ![Ekran görüntüsü, Azure 'da D çoklu oturum açma ekleyebileceğiniz tümleştirme sayfasını gösterir.](common/metadata-upload-additional-signon.png)
 
     **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://www.n2f.com/app/`
 
@@ -127,23 +127,23 @@ Azure AD çoklu oturum açmayı N2F-harcama raporlarıyla yapılandırmak için 
 
 2. **Ayarlar** ' a tıklayın ve ardından açılan listeden **Gelişmiş ayarlar** ' ı seçin.
 
-    ![N2F-harcama raporları yapılandırması](./media/n2f-expensereports-tutorial/configure1.png)
+    ![Ekran görüntüsü, seçili Gelişmiş ayarları gösterir.](./media/n2f-expensereports-tutorial/configure1.png)
 
 3. **Hesap ayarları** sekmesini seçin.
 
-    ![N2F-harcama raporları yapılandırması](./media/n2f-expensereports-tutorial/configure2.png)
+    ![Ekran görüntüsü, seçili hesap ayarlarını gösterir.](./media/n2f-expensereports-tutorial/configure2.png)
 
 4. **Kimlik doğrulaması** ' nı seçin ve **+ kimlik doğrulama yöntemi ekle** sekmesini seçin.
 
-    ![N2F-harcama raporları yapılandırması](./media/n2f-expensereports-tutorial/configure3.png)
+    ![Ekran görüntüsü, kimlik doğrulama yöntemi ekleyebileceğiniz hesap ayarı kimlik doğrulamasını gösterir.](./media/n2f-expensereports-tutorial/configure3.png)
 
 5. Kimlik doğrulama yöntemi olarak **SAML Microsoft Office 365** ' u seçin.
 
-    ![N2F-harcama raporları yapılandırması](./media/n2f-expensereports-tutorial/configure4.png)
+    ![Ekran görüntüsü SAML Microsoft Office 365 seçili olan kimlik doğrulama yöntemini gösterir.](./media/n2f-expensereports-tutorial/configure4.png)
 
 6. **Kimlik doğrulama yöntemi** bölümünde aşağıdaki adımları uygulayın:
 
-    ![N2F-harcama raporları yapılandırması](./media/n2f-expensereports-tutorial/configure5.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz kimlik doğrulama yöntemini gösterir.](./media/n2f-expensereports-tutorial/configure5.png)
 
     a. **VARLıK kimliği** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcı** değerini yapıştırın.
 
@@ -212,19 +212,19 @@ Azure AD kullanıcılarının N2F-harcama raporlarında oturum açmasını sağl
 
 2. **Ayarlar** ' a tıklayın ve ardından açılan listeden **Gelişmiş ayarlar** ' ı seçin.
 
-    ![N2F-harcama Kullanıcı ekleme](./media/n2f-expensereports-tutorial/configure1.png)
+    ![Ekran görüntüsü, seçili Gelişmiş ayarları gösterir.](./media/n2f-expensereports-tutorial/configure1.png)
 
 3. Sol Gezinti panelinden **Kullanıcılar** sekmesini seçin.
 
-    ![N2F-harcama raporları yapılandırması](./media/n2f-expensereports-tutorial/user1.png)
+    ![Ekran görüntüsü kullanıcıların seçili olduğunu gösterir.](./media/n2f-expensereports-tutorial/user1.png)
 
 4. **+ Yeni Kullanıcı** sekmesini seçin.
 
-    ![N2F-harcama raporları yapılandırması](./media/n2f-expensereports-tutorial/user2.png)
+    ![Ekran görüntüsü Yeni Kullanıcı seçeneğini gösterir.](./media/n2f-expensereports-tutorial/user2.png)
 
 5. **Kullanıcı** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![N2F-harcama raporları yapılandırması](./media/n2f-expensereports-tutorial/user3.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz bölümünü gösterir.](./media/n2f-expensereports-tutorial/user3.png)
 
     a. **E-posta adresi** metin kutusuna, **brittasıon \@ contoso.com**gibi kullanıcının e-posta adresini girin.
 

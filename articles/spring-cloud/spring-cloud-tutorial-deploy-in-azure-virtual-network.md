@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 979ecf77fe53238dfd377c5fd2baf394de985c2f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90892886"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Öğretici: Azure sanal ağ 'da Azure yay bulutu dağıtma (VNet ekleme)
@@ -57,7 +57,7 @@ Azure yay bulut hizmeti örneğini barındıracak bir sanal ağınız zaten vars
     |-----------------|--------------------------------------------------|
     |Abonelik     |Aboneliğinizi seçin.                         |
     |Kaynak grubu   |Kaynak grubunuzu seçin veya yeni bir tane oluşturun.  |
-    |Ad             |*Azure-Spring-Cloud-VNET* girin                   |
+    |Name             |*Azure-Spring-Cloud-VNET* girin                   |
     |Konum         |**Doğu ABD** seçin                                |
 
 1. Ileri ' ye tıklayın **: IP adresleri >**. 
@@ -83,7 +83,7 @@ Daha önce oluşturduğunuz sanal ağı *Azure-Spring-Cloud-VNET* ' i seçin.
     |Ayar  |Değer                                             |
     |---------|--------------------------------------------------|
     |Rol     |**Sahip** seçin                                  |
-    |Şunu seçin:   |*Azure Spring Cloud kaynak sağlayıcısı* 'nı girin      |
+    |Seç   |*Azure Spring Cloud kaynak sağlayıcısı* 'nı girin      |
 
     Ardından *Azure yay bulut kaynak sağlayıcısı*' nı seçin ve **Kaydet**' e tıklayın.
 

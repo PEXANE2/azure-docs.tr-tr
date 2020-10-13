@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 00ddd61209af6e0d16b7f7579a6e8729cde0cdf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be48e4bb4f8364e9fafff69e2dc9eb6aa8db223c
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552484"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941032"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-namely"></a>Öğretici: Bu şekilde Azure Active Directory tümleştirme
 
@@ -30,7 +30,7 @@ Burada Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini bu şekilde yapılandırmak için, aşağıdaki öğeler gereklidir:
 
@@ -128,19 +128,19 @@ Azure AD çoklu oturum açmayı bu şekilde yapılandırmak için aşağıdaki a
 
 2. Üstteki araç çubuğunda **Şirket**' e tıklayın.
    
-    ![Tek Sign-On yapılandırma](./media/namely-tutorial/tutorial_namely_06.png) 
+    ![Ekran görüntüsünde, seçilen şirket değeri gösterilir.](./media/namely-tutorial/tutorial_namely_06.png) 
 
 3. **Ayarlar** sekmesine tıklayın.
    
-    ![Tek Sign-On yapılandırma](./media/namely-tutorial/tutorial_namely_07.png) 
+    ![Ekran görüntüsü şirket ayarları sekmesinin seçili olduğunu gösterir.](./media/namely-tutorial/tutorial_namely_07.png) 
 
 4. **SAML**' ye tıklayın.
    
-    ![Tek Sign-On yapılandırma](./media/namely-tutorial/tutorial_namely_08.png) 
+    ![Ekran görüntüsü SAML seçili olduğunu gösterir.](./media/namely-tutorial/tutorial_namely_08.png) 
 
 5. **SAML ayarları** sayfasında, aşağıdaki adımları gerçekleştirin:
    
-    ![Tek Sign-On yapılandırma](./media/namely-tutorial/tutorial_namely_09.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz SAML ayarlarını gösterir.](./media/namely-tutorial/tutorial_namely_09.png)
  
     a. **SAML etkinleştir**' e tıklayın. 
 
@@ -211,15 +211,15 @@ Bu bölümün amacı, ' de Britta Simon adlı bir Kullanıcı oluşturmaktır.
 
 2. Üstteki araç çubuğunda **kişiler**' e tıklayın.
    
-    ![Tek Sign-On yapılandırma](./media/namely-tutorial/tutorial_namely_10.png) 
+    ![Ekran görüntüsü seçili kişiler değerini gösterir.](./media/namely-tutorial/tutorial_namely_10.png) 
 
 3. **Dizin** sekmesine tıklayın.
    
-    ![Tek Sign-On yapılandırma](./media/namely-tutorial/tutorial_namely_11.png) 
+    ![Ekran görüntüsü kişiler Dizin sekmesinin seçili olduğunu gösterir.](./media/namely-tutorial/tutorial_namely_11.png) 
 
 4. **Yeni kişi ekle**' ye tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/namely-tutorial/tutorial_namely_12.png)
+    ![Ekran görüntüsü yeni kişi ekle seçeneğini gösterir.](./media/namely-tutorial/tutorial_namely_12.png)
 
 5. **Yeni kişi ekle** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
 

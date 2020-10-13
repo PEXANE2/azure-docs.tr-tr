@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: 857d49fa579e7ea1a6e2c14ae8198cd8ac4fe228
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04b70e593e8b1bee8beb72ac88bc8441bc38bb9a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90090644"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963253"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure sanal makineleri için performans tanılamaları
 
@@ -61,7 +61,7 @@ Performans tanılamayı doğrudan Azure portal, çeşitli günlüklerde, zengin 
 
 ## <a name="install-and-run-performance-diagnostics-on-your-vm"></a>VM 'nize performans tanılamayı yükleyip çalıştırın
 
-Performans Tanılama, Perfinsıghts adlı bir tanılama aracı çalıştıran bir VM Uzantısı yüklüyor. Perfinsıghts, hem [Windows](https://aka.ms/perfinsights) hem de [Linux](https://aka.ms/perfinsightslinux)için kullanılabilir. Performans tanılamayı yüklemek ve çalıştırmak için aşağıdaki adımları izleyin:
+Performans Tanılama, Perfinsıghts adlı bir tanılama aracı çalıştıran bir VM Uzantısı yüklüyor. Perfinsıghts, hem [Windows](./how-to-use-perfinsights.md) hem de [Linux](./how-to-use-perfinsights-linux.md)için kullanılabilir. Performans tanılamayı yüklemek ve çalıştırmak için aşağıdaki adımları izleyin:
 
 1. Komutların sol sütununda **sanal makineler**' i seçin.
 1. VM adları listesinden, tanılamayı çalıştırmak istediğiniz VM 'yi seçin.
@@ -91,16 +91,16 @@ Performans Tanılama, Perfinsıghts adlı bir tanılama aracı çalıştıran bi
 Aşağıdaki analiz senaryoları Azure portal kullanılabilir. Sahip olduğunuz performans sorununa bağlı olarak bir analiz seçin. Analiz için gereken süre ve izleme seçeneklerini belirleyin.
 
 * **Hızlı performans analizi**  
-    Bilinen sorunları denetler, en iyi yöntemleri analiz eder ve tanılama verilerini toplar. Bu çözümlemenin çalıştırılması birkaç dakika sürer. Daha fazla [Windows](https://aka.ms/perfinsights/quick) veya [Linux](https://aka.ms/perfinsightslinux/quick) öğrenin
+    Bilinen sorunları denetler, en iyi yöntemleri analiz eder ve tanılama verilerini toplar. Bu çözümlemenin çalıştırılması birkaç dakika sürer. Daha fazla [Windows](./how-to-use-perfinsights.md) veya [Linux](./how-to-use-perfinsights-linux.md) öğrenin
 
 * **Performans Analizi**  
-    Hızlı performans analizinde tüm denetimleri içerir ve yüksek kaynak tüketimini izler. Yüksek CPU, bellek ve disk kullanımı gibi genel performans sorunlarını gidermek için bu sürümü kullanın. Bu analiz, seçilen süreye bağlı olarak 30 saniye ila 15 dakika sürer. Daha fazla [Windows](https://aka.ms/perfinsights/vmslow) veya [Linux](https://aka.ms/perfinsightslinux/vmslow) öğrenin
+    Hızlı performans analizinde tüm denetimleri içerir ve yüksek kaynak tüketimini izler. Yüksek CPU, bellek ve disk kullanımı gibi genel performans sorunlarını gidermek için bu sürümü kullanın. Bu analiz, seçilen süreye bağlı olarak 30 saniye ila 15 dakika sürer. Daha fazla [Windows](./how-to-use-perfinsights.md) veya [Linux](./how-to-use-perfinsights-linux.md) öğrenin
 
 * **Gelişmiş performans analizi**`*`  
-    , Performans analizinde tüm denetimleri içerir ve aşağıdaki bölümlerde listelendiği gibi izlemeleri bir veya daha fazla toplar. Ek izlemeler gerektiren karmaşık sorunları gidermek için bu senaryoyu kullanın. Bu senaryonun uzun süreler için çalıştırılması, sanal makinenin boyutuna ve seçilen izleme seçeneklerine bağlı olarak tanılama çıktısının genel boyutunu artıracaktır. Bu çözümlemenin çalıştırılması, seçilen süreye bağlı olarak 30 saniye ila 15 dakika sürer. [Daha fazla bilgi edinin](https://aka.ms/perfinsights/advanced)
+    , Performans analizinde tüm denetimleri içerir ve aşağıdaki bölümlerde listelendiği gibi izlemeleri bir veya daha fazla toplar. Ek izlemeler gerektiren karmaşık sorunları gidermek için bu senaryoyu kullanın. Bu senaryonun uzun süreler için çalıştırılması, sanal makinenin boyutuna ve seçilen izleme seçeneklerine bağlı olarak tanılama çıktısının genel boyutunu artıracaktır. Bu çözümlemenin çalıştırılması, seçilen süreye bağlı olarak 30 saniye ila 15 dakika sürer. [Daha fazla bilgi edinin](./how-to-use-perfinsights.md)
 
 * **Azure dosyaları Analizi**`*`  
-    Performans analizinde tüm denetimleri içerir ve bir ağ izleme ve SMB sayaçlarını yakalar. Azure dosyalarının performansı sorunlarını gidermek için bu senaryoyu kullanın. Bu çözümlemenin çalıştırılması, seçilen süreye bağlı olarak 30 saniye ila 15 dakika sürer. [Daha fazla bilgi edinin](https://aka.ms/perfinsights/azurefiles)
+    Performans analizinde tüm denetimleri içerir ve bir ağ izleme ve SMB sayaçlarını yakalar. Azure dosyalarının performansı sorunlarını gidermek için bu senaryoyu kullanın. Bu çözümlemenin çalıştırılması, seçilen süreye bağlı olarak 30 saniye ila 15 dakika sürer. [Daha fazla bilgi edinin](./how-to-use-perfinsights.md)
 
 >[!Note]
 >[ `*` ] Bu analiz senaryoları yalnızca Windows 'da desteklenir.

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
 ms.openlocfilehash: 5cf406dc0577f477858dd8a6570f7975747112e0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90891256"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro cihazınızda Azure Resource Manager bağlanma
@@ -57,7 +57,7 @@ Azure Resource Manager kullanarak cihazın yerel API 'Lerine bağlanma işlemi a
 
 Aşağıdaki bölümler Azure Resource Manager bağlanmada yukarıdaki adımların her birini ayrıntılandırır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, Azure Resource Manager aracılığıyla cihaza bağlanmak için kullanılan istemcinin TLS 1,2 kullanmasını sağlayın. Daha fazla bilgi için [Windows ISTEMCISINDE TLS 1,2 yapılandırma Azure Stack Edge Pro cihazına erişme](azure-stack-edge-j-series-configure-tls-settings.md)bölümüne gidin.
 

@@ -13,10 +13,10 @@ ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
 ms.openlocfilehash: 3753004b2bd9c18399655cffd594392b63c14264
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325173"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>Azure SQL yönetilen örnek Havuzu (Önizleme) nedir?
@@ -24,7 +24,7 @@ ms.locfileid: "91325173"
 
 Azure SQL yönetilen örneğindeki örnek havuzlar, daha küçük SQL Server örnekleri buluta uygun ölçekte geçirmek için kullanışlı ve ekonomik bir yol sağlar.
 
-Örnek havuzları toplam geçiş gereksinimlerinize göre işlem kaynaklarını önceden sağlamanıza olanak tanır. Ardından, önceden sağlanan işlem düzeyinize ulaşana kadar tek tek yönetilen örnekleri dağıtabilirsiniz. Örneğin, 8 sanal çekirdekleri önceden sağlarsanız iki 2 sanal çekirdek ve bir 4-vCore örneği dağıtabilir ve ardından veritabanlarını bu örneklere geçirebilirsiniz. Örnek havuzlarından önce, daha küçük ve daha az işlem yoğunluklu iş yükleri, buluta geçiş yaparken genellikle daha büyük bir yönetilen örneğe birleştirilmelidir. Veritabanı gruplarının büyük bir örneğe geçirilmesi gerekir, genellikle dikkatli kapasite planlama ve kaynak İdaresi, ek güvenlik konuları ve bazı ek veri birleştirme örnek düzeyinde çalışır.
+Örnek havuzları toplam geçiş gereksinimlerinize göre işlem kaynaklarını önceden sağlamanıza olanak tanır. Ardından, önceden sağlanan işlem düzeyinize ulaşana kadar tek tek yönetilen örnekleri dağıtabilirsiniz. Örneğin, 8 sanal çekirdekleri önceden sağlarsanız, 2 2-vCore ve 1 4-vCore örneğini dağıtabilir ve ardından veritabanlarını bu örneklere geçirebilirsiniz. Örnek havuzlarından önce, daha küçük ve daha az işlem yoğunluklu iş yükleri, buluta geçiş yaparken genellikle daha büyük bir yönetilen örneğe birleştirilmelidir. Veritabanı gruplarının büyük bir örneğe geçirilmesi gerekir, genellikle dikkatli kapasite planlama ve kaynak İdaresi, ek güvenlik konuları ve bazı ek veri birleştirme örnek düzeyinde çalışır.
 
 Ayrıca, örnek havuzlar aynı alt ağda birden çok örnek havuzu ve birden çok tek örneği dağıtabilmeniz için yerel VNet tümleştirmesini destekler.
 

@@ -13,10 +13,10 @@ ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
 ms.openlocfilehash: 4ec999cc35e7d18287679c74c6d45a5aa2ecb9e7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90998132"
 ---
 # <a name="canceling-azure-sql-managed-instance-management-operations"></a>Azure SQL yönetilen örnek yönetimi işlemlerini iptal etme
@@ -38,12 +38,12 @@ Aşağıdaki tabloda yönetim işlemleri özetlenir, bunlar iptal edilip edilmey
 
 Kategori  |İşlem  |İptal edilebilir  |Tahmini iptal süresi  |
 |---------|---------|---------|---------|
-|Dağıtım |Örnek oluşturma |Yes |İşlem %90, 5 dakika içinde tamamlanır. |
+|Dağıtım |Örnek oluşturma |Evet |İşlem %90, 5 dakika içinde tamamlanır. |
 |Güncelleştir |Örnek depolama ölçeği artırma/azaltma (Genel Amaçlı) |Hayır |  |
-|Güncelleştir |Örnek depolama ölçeği artırma/azaltma (İş Açısından Kritik) |Yes |İşlem %90, 5 dakika içinde tamamlanır. |
-|Güncelleştir |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (Genel Amaçlı) |Yes |İşlem %90, 5 dakika içinde tamamlanır. |
-|Güncelleştir |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (İş Açısından Kritik) |Yes |İşlem %90, 5 dakika içinde tamamlanır. |
-|Güncelleştir |Örnek hizmeti katmanı değişikliği (İş Açısından Kritik Genel Amaçlı ve tam tersi) |Yes |İşlem %90, 5 dakika içinde tamamlanır. |
+|Güncelleştir |Örnek depolama ölçeği artırma/azaltma (İş Açısından Kritik) |Evet |İşlem %90, 5 dakika içinde tamamlanır. |
+|Güncelleştir |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (Genel Amaçlı) |Evet |İşlem %90, 5 dakika içinde tamamlanır. |
+|Güncelleştir |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (İş Açısından Kritik) |Evet |İşlem %90, 5 dakika içinde tamamlanır. |
+|Güncelleştir |Örnek hizmeti katmanı değişikliği (İş Açısından Kritik Genel Amaçlı ve tam tersi) |Evet |İşlem %90, 5 dakika içinde tamamlanır. |
 |Sil |Örnek silme |Hayır |  |
 |Sil |Sanal küme silme (Kullanıcı tarafından başlatılan işlem olarak) |Hayır |  |
 
@@ -61,7 +61,7 @@ Azure portal kullanarak yönetim işlemlerini iptal etmek için şu adımları i
 
 1. Sayfanın alt kısmındaki **Işlemi Iptal et** ' i seçin. 
 
-   :::image type="content" source="media/management-operations-cancel/cancel-operation.png" alt-text="İşlemi iptal etmek için iptal 'i seçin.":::
+   :::image type="content" source="media/management-operations-cancel/cancel-operation.png" alt-text="Devam eden işlem sayfasını açmak için devam eden işlem kutusunu seçin.":::
 
 1. İşlemi iptal etmek istediğinizi onaylayın. 
 

@@ -4,10 +4,10 @@ description: Bu makalede, Azure Service Bus verilerine erişmek için portal tab
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: e5e97c6860c2cc01048f4f7caf9f40f9e07592d0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91295609"
 ---
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>Service Bus üzerinde veri işlemleri gerçekleştirmek için Service Bus Gezginini Kullanma (Önizleme)
@@ -28,7 +28,7 @@ Azure Service Bus Gezgini, yönetim işlemlerinin ötesinde, abonelik, konu baş
 > Azure Service Bus Explorer aracı, topluluğa ait olan OSS aracı [Service Bus gezgin](https://github.com/paolosalvatori/ServiceBusExplorer) ***değildir*** .
 >
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Service Bus Explorer aracını kullanmak için bir Azure Service Bus ad alanı sağlamanız gerekir. 
 
@@ -51,7 +51,7 @@ Bir sıraya karşı işlemler gerçekleştirmek istiyorsanız, gezinti menüsün
 
 Sol gezinti menüsünden **' Service Bus Gezgini 'ni (Önizleme) '** seçin
 
-:::image type="content" source="./media/service-bus-explorer/left-navigation-menu-selected.png" alt-text="SB Gezgini sol gezinti menüsü":::
+:::image type="content" source="./media/service-bus-explorer/left-navigation-menu-selected.png" alt-text="Varlık seçimi":::
 
 ### <a name="sending-a-message-to-a-queue-or-topic"></a>Kuyruğa veya konuya ileti gönderme
 
@@ -66,17 +66,17 @@ Burada bir ileti oluşturmak için
 
 İleti oluşturulduktan sonra Gönder ' i ziyaret edin.
 
-:::image type="content" source="./media/service-bus-explorer/send-experience.png" alt-text="Ileti oluştur":::
+:::image type="content" source="./media/service-bus-explorer/send-experience.png" alt-text="Varlık seçimi":::
 
 Gönderme işlemi başarıyla tamamlandığında, 
 
 * Sıraya gönderiyorsanız, **etkin iletiler** ölçüm sayacı artacaktır.
 
-    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="Queueaftersendölçümleri":::
+    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="Varlık seçimi":::
 
 * Konuya gönderim yaparsanız, **etkin iletiler** ölçüm sayacı Iletinin yönlendirildiği abonelikte artacaktır.
 
-    :::image type="content" source="./media/service-bus-explorer/topic-after-send-metrics.png" alt-text="Topicaftersendölçümlerini":::
+    :::image type="content" source="./media/service-bus-explorer/topic-after-send-metrics.png" alt-text="Varlık seçimi":::
 
 ### <a name="receiving-a-message-from-a-queue"></a>Kuyruktan ileti alma
 
@@ -93,18 +93,18 @@ Kuyruktan (veya sahipsiz alt sıradan) ileti almak için
 1. Service Bus Gezgini 'ndeki ***Al*** sekmesine tıklayın.
 2. **Etkin mesajlar** veya alma Için **atılacak iletiler** olup olmadığını görmek için ölçümleri denetleyin.
 
-    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="Queueaftersendölçümleri":::
+    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="Varlık seçimi":::
 
 3. ***Kuyruk*** veya ***sahipsiz*** alt sıra arasında seçim yapın.
 
-    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="Varlık seçimi":::
 
 4. ***Al*** düğmesine ve ardından ' al ve Sil ' işlemini onaylamak için ***Evet*** ' e tıklayın.
 
 
 Alma işlemi başarılı olduğunda ileti ayrıntıları kılavuzda aşağıda gösterildiği gibi görüntülenir. Ayrıntılarını göstermek için kılavuzdan iletiyi seçebilirsiniz.
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="Kuyrukta seçili bir ileti için görüntülenen ileti ayrıntılarıyla birlikte Azure Service Bus Gezgini 'ndeki kuyruklar penceresinin ekran görüntüsü.":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="Varlık seçimi":::
 
 
 ### <a name="peeking-a-message-from-a-queue"></a>Kuyruktaki bir iletiye göz atma
@@ -113,21 +113,21 @@ Göz atma işleviyle, Service Bus gezginini kullanarak bir kuyruktaki en üsttek
 
 1. Kuyruktaki iletiye gözatmak için Service Bus Gezgini ' nde ***Peek*** sekmesine tıklayın.
 
-    :::image type="content" source="./media/service-bus-explorer/peek-tab-selected.png" alt-text="PeekTab":::
+    :::image type="content" source="./media/service-bus-explorer/peek-tab-selected.png" alt-text="Varlık seçimi":::
 
 2. Gözatmak üzere **etkin mesajlar** veya **atılacak iletiler** olup olmadığını görmek için ölçümleri denetleyin.
 
-    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="Queueaftersendölçümleri":::
+    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="Varlık seçimi":::
 
 3. Ardından ***kuyruk*** veya ***sahipsiz*** alt sıra arasında seçim yapın.
 
-    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="Varlık seçimi":::
 
 4. ***Göz at*** düğmesine tıklayın. 
 
 Göz atma işlemi tamamlandıktan sonra, en fazla 32 ileti, kılavuzda aşağıda gösterildiği gibi görünecektir. Belirli bir iletinin ayrıntılarını görüntülemek için kılavuzdan seçin. 
 
-:::image type="content" source="./media/service-bus-explorer/peek-message-from-queue-2.png" alt-text="PeekMessageFromQueue":::
+:::image type="content" source="./media/service-bus-explorer/peek-message-from-queue-2.png" alt-text="Varlık seçimi":::
 
 > [!NOTE]
 >
@@ -146,17 +146,17 @@ Bir kuyrukla tıpkı, ***alma*** işlemi bir abonelik (veya sahipsiz varlık) i�
 
 1. ***Al*** sekmesine tıklayın ve açılan seçicideki belirli bir ***aboneliği*** seçin.
 
-    :::image type="content" source="./media/service-bus-explorer/receive-subscription-tab-selected.png" alt-text="ReceiveTabSelected":::
+    :::image type="content" source="./media/service-bus-explorer/receive-subscription-tab-selected.png" alt-text="Varlık seçimi":::
 
 2. ***Abonelik*** veya ***sahipsiz*** alt varlık arasında seçim yapın.
 
-    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="Abonelik Orden büyük harf":::
+    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="Varlık seçimi":::
 
 3. ***Al*** düğmesine ve ardından ' al ve Sil ' işlemini onaylamak için ***Evet*** ' e tıklayın.
 
 Alma işlemi başarılı olduğunda, alınan ileti aşağıda gösterildiği gibi kılavuzda görüntülenecektir. İleti ayrıntılarını görüntülemek için iletiye tıklayın.
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="Azure Service Bus Gezgini 'ndeki al sekmesinin, alınmış etkin bir ileti için ileti ayrıntılarıyla görüntülenen ekran görüntüsü.":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="Varlık seçimi":::
 
 ### <a name="peeking-a-message-from-a-subscription"></a>Bir abonelikten bir iletiye göz atma
 
@@ -164,17 +164,17 @@ Bir abonelikteki iletilere veya sahipsiz alt varlığına gözatmak için, abone
 
 1. ***Göz at*** sekmesine tıklayın ve açılan seçicideki belirli bir ***aboneliği*** seçin.
 
-    :::image type="content" source="./media/service-bus-explorer/peek-subscription-tab-selected.png" alt-text="PeekTabSelected":::
+    :::image type="content" source="./media/service-bus-explorer/peek-subscription-tab-selected.png" alt-text="Varlık seçimi":::
 
 2. ***Abonelik*** veya ***sahipsiz*** alt varlık arasında seçim yapın.
 
-    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="Abonelik Orden büyük harf":::
+    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="Varlık seçimi":::
 
 3. ***Göz at*** düğmesine tıklayın.
 
 Göz atma işlemi tamamlandıktan sonra, en fazla 32 ileti, kılavuzda aşağıda gösterildiği gibi görünecektir. Belirli bir iletinin ayrıntılarını görüntülemek için kılavuzdan seçin. 
 
-:::image type="content" source="./media/service-bus-explorer/peek-message-from-subscription.png" alt-text="PeekMessageFromSubscription":::
+:::image type="content" source="./media/service-bus-explorer/peek-message-from-subscription.png" alt-text="Varlık seçimi":::
 
 > [!NOTE]
 >

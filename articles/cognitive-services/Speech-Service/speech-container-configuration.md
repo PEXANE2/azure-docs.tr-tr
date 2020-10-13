@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: aahi
 ms.openlocfilehash: e65bb7c7d8fc04baec6b50a53519e689e748fbe1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90900285"
 ---
 # <a name="configure-speech-service-containers"></a>Konuşma hizmeti kapsayıcılarını yapılandırma
@@ -50,7 +50,7 @@ Bu ayar aşağıdaki yerde bulunabilir:
 
 - Azure portal: **konuşmaya** genel bakış, etiketli `Endpoint`
 
-| Gerekli | Ad | Veri türü | Açıklama |
+| Gerekli | Adı | Veri türü | Açıklama |
 | -------- | ---- | --------- | ----------- |
 | Evet | `Billing` | Dize | Faturalama uç noktası URI 'SI. Faturalandırma URI 'sini alma hakkında daha fazla bilgi için bkz. [gerekli parametreleri toplama](speech-container-howto.md#gathering-required-parameters). Daha fazla bilgi ve bölgesel uç noktaların tamamen listesi için bkz. bilişsel [Hizmetler Için özel alt etki alanı adları](../cognitive-services-custom-subdomains.md). |
 
@@ -78,7 +78,7 @@ Standart konuşma kapsayıcıları, eğitim veya hizmet verilerini depolamak iç
 
 Konak bağlama konumunun tam sözdizimi, ana bilgisayar işletim sistemine bağlı olarak değişir. Ayrıca, Docker hizmeti hesabı ve konak bağlama konumu izinleri tarafından kullanılan izinler arasındaki bir çakışma nedeniyle [ana bilgisayarın](speech-container-howto.md#the-host-computer)bağlama konumu erişilebilir olmayabilir.
 
-| İsteğe Bağlı | Ad | Veri türü | Açıklama |
+| İsteğe Bağlı | Adı | Veri türü | Açıklama |
 | -------- | ---- | --------- | ----------- |
 | İzin verilmiyor | `Input` | Dize | Standart konuşma kapsayıcıları bunu kullanmaz. Özel konuşma kapsayıcıları, [birim bağlama](#volume-mount-settings)kullanır.                                                                                    |
 | İsteğe Bağlı | `Output` | Dize | Çıkış bağlama hedefi. Varsayılan değer: `/output`. Bu, günlüklerin konumudur. Bu, kapsayıcı günlüklerini içerir. <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output` |

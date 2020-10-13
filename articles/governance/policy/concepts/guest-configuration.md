@@ -3,12 +3,12 @@ title: Sanal makinelerin içeriğini denetleme hakkında bilgi edinin
 description: Azure Ilkesi 'nin sanal makineler içindeki ayarları denetlemek için konuk yapılandırma aracısını nasıl kullandığını öğrenin.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 951960793ebda50fdb87d266c4dc8561f2fcd70f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d396403f23df1e0c48ea66e0c2a23866f790d3c5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88756699"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974728"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi’nin Konuk Yapılandırmasını anlama
 
@@ -62,7 +62,7 @@ Konuk yapılandırması istemcisi, her 5 dakikada bir yeni içerik denetler. Kon
 Konuk yapılandırma ilkelerine yeni sürümler dahildir. Konuk yapılandırma Aracısı uyumlu değilse, Azure Marketi 'nde kullanılabilen işletim sistemlerinin daha eski sürümleri hariç tutulur.
 Aşağıdaki tabloda, Azure görüntülerinde desteklenen işletim sistemlerinin bir listesi gösterilmektedir:
 
-|Publisher|Adı|Sürümler|
+|Publisher|Name|Sürümler|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 ve üzeri|
 |Credavtiv|Debian|8 ve üzeri|
@@ -116,9 +116,7 @@ Konuk yapılandırma ilkeleri **Auditınotexists** efektini kullanır. Tanım at
 Tüm gereksinimler makinede karşılanana kadar **Auditınotexists** ilkeleri uyumluluk sonuçlarını döndürmez. [Gereksinimler, Azure sanal makineleri için bölüm dağıtma gereksinimleri](#deploy-requirements-for-azure-virtual-machines) bölümünde açıklanmaktadır
 
 > [!IMPORTANT]
-> Konuk yapılandırmasının önceki bir sürümünde, **Deployifnot Exists** ve **Auditınotexists** tanımlarını birleştirmek için bir girişim gerekiyordu. **Deployifnotexists** tanımları artık gerekli değildir. Tanımlar ve önler etiketlidir `[Deprecated]` ancak var olan atamalar çalışmaya devam edecektir.
->
-> El ile bir adım gereklidir. İlke girişimlerini daha önce kategoride atadıysanız `Guest Configuration` , ilke atamasını silin ve yeni tanımı atayın. Konuk yapılandırma ilkeleri aşağıdaki gibi bir ad düzenine sahiptir: `Audit <Windows/Linux> machines that <non-compliant condition>`
+> Konuk yapılandırmasının önceki bir sürümünde, **Deployifnot Exists** ve **Auditınotexists** tanımlarını birleştirmek için bir girişim gerekiyordu. **Deployifnotexists** tanımları artık gerekli değildir. Tanımlar ve önler etiketlidir `[Deprecated]` ancak var olan atamalar çalışmaya devam edecektir. Bilgi için blog gönderisine bakın: [Konuk yapılandırma denetim ilkeleri Için önemli değişiklik yayınlandı](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
 
 Azure Ilkesi, **Uyumluluk** düğümündeki uyumluluğu raporlamak Için Konuk yapılandırma kaynak sağlayıcısı **karmaşıkancestatus** özelliğini kullanır. Daha fazla bilgi için bkz. [uyumluluk verilerini alma](../how-to/get-compliance-data.md).
 

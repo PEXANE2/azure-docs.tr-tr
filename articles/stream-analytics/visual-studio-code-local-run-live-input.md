@@ -7,17 +7,17 @@ ms.author: sujie
 ms.date: 11/14/2019
 ms.topic: how-to
 ms.openlocfilehash: 944c1a8cc4606c5e614f17cd0590331826527a7c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90892113"
 ---
 # <a name="test-stream-analytics-queries-locally-against-live-stream-input-by-using-visual-studio-code"></a>Visual Studio Code kullanarak canlı akış girişine göre Stream Analytics sorguları yerel olarak test edin
 
 Stream Analytics işlerinizi canlı akış girişine karşı yerel olarak test etmek için Visual Studio Code Azure Stream Analytics araçları kullanabilirsiniz. Giriş, Azure Event Hubs veya Azure IoT Hub gibi bir kaynaktan gelebilir. Çıktı sonuçları, projenizdeki **Localrunçıktılar**adlı BIR klasöre JSON dosyaları olarak gönderilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [.NET Core SDK](https://dotnet.microsoft.com/download) yükleyip Visual Studio Code yeniden başlatın.
 

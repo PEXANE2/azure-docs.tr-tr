@@ -11,10 +11,10 @@ ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 09/30/2020
 ms.openlocfilehash: 44dafd1b0043c2daa7065069f571f13529303a73
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91614436"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Sanal çekirdek modeline genel bakış-Azure SQL veritabanı ve Azure SQL yönetilen örneği 
@@ -111,7 +111,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 |Fsv2 serisi     |-Intel® 8168 (ufuk Gölü) işlemcileri<br>-Sürekli olarak 3,4 GHz 'nin tüm Core Turbo saat hızına ve en fazla 3,7 GHz bir adet tek çekirdekli Turbo saat hızına sahiptir.<br>-En fazla 72 sanal çekirdek sağlama (1 sanal çekirdek = 1 hiper iş parçacığı)|-vCore başına 1,9 GB<br>-136 GB 'a kadar sağlama|
 |M serisi     |-Intel® E7-8890 v3 2,5 GHz ve Intel® 8280D 2,7 GHz (Cascade Lake) işlemcileri<br>-En fazla 128 sanal çekirdek sağlama (1 sanal çekirdek = 1 hiper iş parçacığı)|-vCore başına 29 GB<br>-3,7 TB 'a kadar sağlama|
 
-\*[Sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) dinamik yönetim görünümünde, ıNTEL® SP-8160 (ufuk Gölü) işlemcileri kullanan veritabanları için donanım oluşturma, Gen6 olarak görünür, ancak ıNTEL® 8272CL (Cascade Lake) kullanan veritabanları için donanım oluşturma, Gen7 olarak görünür. Tüm 5. nesil veritabanlarının kaynak sınırları, işlemci türünden (çok Iyi, ufuk Gölü veya Cascade Lake) bağımsız olarak aynıdır.
+\*[Sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) dinamik yönetim görünümünde, ıNTEL® SP-8160 (ufuk Gölü) işlemcileri kullanan veritabanları için donanım oluşturma Gen6 olarak görünür, ancak ıNTEL® 8272CL (Cascade Lake) kullanan veritabanları için donanım oluşturma, Gen7 olarak görünür. Tüm 5. nesil veritabanlarının kaynak sınırları, işlemci türünden (çok Iyi, ufuk Gölü veya Cascade Lake) bağımsız olarak aynıdır.
 
 Kaynak limitleri hakkında daha fazla bilgi için bkz. [tek veritabanları (sanal çekirdek) Için kaynak limitleri](resource-limits-vcore-single-databases.md)veya [elastik havuzlar (Vcore) için kaynak sınırları](resource-limits-vcore-elastic-pools.md).
 

@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
 ms.openlocfilehash: 7b5881651312e69ed840eb50388d497258ddeb27
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362461"
 ---
 # <a name="define-custom-r-modules-for-machine-learning-studio-classic"></a>Machine Learning Studio için özel R modülleri tanımlama (klasik)
@@ -236,7 +236,7 @@ CustomAddRows <- function(dataset1, dataset2, swap=FALSE) {
 * **Output** öğesinin **name** özniteliğinin değeri 64 karakterden daha uzun olmamalıdır.
 * **Output** öğesinin **Type** özniteliğinin değeri *görselleştirme*olmalıdır.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 Ek veriler, **arguments** öğesinde tanımlanan modül parametreleri aracılığıyla R işlevine geçirilebilir. Bu parametreler, modül seçildiğinde Machine Learning kullanıcı arabiriminin en sağdaki Özellikler bölmesinde görünür. Bağımsız değişkenler desteklenen türlerden herhangi biri olabilir veya gerektiğinde özel bir numaralandırma oluşturabilirsiniz. **Bağlantı noktaları** öğelerine benzer şekilde, **bağımsız değişkenler** öğeleri, fareyi parametre adının üzerine getirdiğinizde görüntülenen metni belirten isteğe bağlı bir **Description** öğesine sahip olabilir.
 Bir modül için defaultValue, minValue ve maxValue gibi isteğe bağlı özellikler bir **Özellikler** öğesine öznitelik olarak herhangi bir bağımsız değişkene eklenebilir. **Properties** öğesi için geçerli özellikler bağımsız değişken türüne bağlıdır ve sonraki bölümde desteklenen bağımsız değişken türleriyle açıklanır. **IsOptional** özelliği **"true"** olarak ayarlanan bağımsız değişkenler kullanıcının bir değer girmesini gerektirmez. Bağımsız değişkene bir değer sağlanmazsa, bağımsız değişken giriş noktası işlevine geçirilmez. İsteğe bağlı olarak, giriş noktası işlev tanımında NULL değeri atanmış olan giriş noktası işlevinin bağımsız değişkenleri. İsteğe bağlı bir bağımsız değişken, Kullanıcı tarafından bir değer sağlanmışsa, Örneğin Min veya Max gibi diğer bağımsız değişken kısıtlamalarını uygular.
 Giriş ve çıkışlarla birlikte, her parametrenin kendileriyle ilişkili benzersiz KIMLIK değerleri olması önemlidir. Hızlı başlangıç örneğimizde ilişkili kimlik/parametre *takas*edildi.
@@ -306,8 +306,8 @@ Modül parametresi, XML tanım dosyasının **arguments** bölümünün **arg** 
     * Boole
     * Kategorik
     * Dize
-    * Etiket
-    * Öne çıkan özelliği
+    * Etiketle
+    * Özellik
     * Puan
     * Tümü
   * **varsayılan** -sütun seçici için geçerli varsayılan seçimler şunları içerir: 

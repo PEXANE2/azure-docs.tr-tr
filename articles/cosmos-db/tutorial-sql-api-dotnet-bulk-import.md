@@ -9,10 +9,10 @@ ms.date: 09/21/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
 ms.openlocfilehash: cfab8ba88c7da84efb3f6aed6f95bb100507f8da
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90981922"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>.NET SDK kullanarak verileri Azure Cosmos DB SQL API hesabına toplu olarak içeri aktarma
@@ -82,7 +82,7 @@ Hala uygulama dizininde, DotNet Add Package komutunu kullanarak .NET Core için 
 
 Örnek uygulamanın Azure Cosmos hesabınızda kimlik doğrulaması yapması gerekir. Kimlik doğrulaması yapmak için Azure Cosmos hesabı kimlik bilgilerini uygulamaya geçirmeniz gerekir. Aşağıdaki adımları izleyerek Azure Cosmos hesabı kimlik bilgilerinizi alın:
 
-1.  [Azure Portal](https://portal.azure.com/) oturum açın.
+1.  [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 1.  Azure Cosmos hesabınıza gidin.
 1.  **Anahtarlar** bölmesini açın ve hesabınızın **URI** ve **birincil anahtarını** kopyalayın.
 

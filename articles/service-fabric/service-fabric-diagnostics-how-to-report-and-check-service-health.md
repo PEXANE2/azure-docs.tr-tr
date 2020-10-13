@@ -7,10 +7,10 @@ ms.date: 02/25/2019
 ms.author: srrengar
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 59c8202b03bf1be2be5a68b75a1d7c7404b2213d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89020210"
 ---
 # <a name="report-and-check-service-health"></a>Hizmet durumunu raporlama ve denetleme
@@ -26,7 +26,7 @@ Hizmetten sistem durumunu bildirebilmeniz için üç yol vardır:
 
 Bu makalede, hizmet kodundan sistem durumunu raporlayan bir örnek adım adım açıklanmaktadır. Örnek ayrıca, Service Fabric tarafından belirtilen araçların sistem durumunu denetlemek için nasıl kullanılabileceğini gösterir. Bu makale, Service Fabric sistem durumu izleme yeteneklerine hızlı bir giriş yapmak için tasarlanmıştır. Daha ayrıntılı bilgi için, bu makalenin sonundaki bağlantıyla başlayan sistem durumu hakkında ayrıntılı makalelerin serisini okuyabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Aşağıdakilerin yüklü olması gerekir:
 
 * Visual Studio 2015 veya Visual Studio 2019

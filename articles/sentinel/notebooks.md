@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
 ms.openlocfilehash: ded332813a840892f640aa6f6e48debbfe381b4b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90889240"
 ---
 # <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Güvenlik tehditleri aramak için Jupyıter not defterlerini kullanma
@@ -66,7 +66,7 @@ Not defterlerini kullanmak için, önce bir Azure Machine Learning (ML) çalış
     |Abonelik|Kullanmak istediğiniz Azure aboneliğini seçin.|
     |Kaynak grubu|Aboneliğinizde mevcut kaynak gruplarından birini seçin veya bir ad girerek yeni bir kaynak grubu oluşturun. Kaynak grubu, bir Azure çözümü için ilgili kaynakları barındırır. Bu örnekte, **AzureMLRG**kullanacağız.|
     |Çalışma alanı adı|Çalışma alanınızı tanımlayan benzersiz bir ad girin. Bu örnekte, **testworkspace1**kullanacağız. Adlar, kaynak grubu genelinde benzersiz olmalıdır. Başkaları tarafından oluşturulan çalışma alanlarını birbirinden ayırmak ve geri çekmek için kolay bir ad kullanın.|
-    |Region|Çalışma alanınızı oluşturmak için kullanıcılarınıza en yakın konumu ve veri kaynaklarını seçin.|
+    |Bölge|Çalışma alanınızı oluşturmak için kullanıcılarınıza en yakın konumu ve veri kaynaklarını seçin.|
     |Çalışma alanı sürümü|Bu örnekte, çalışma alanı türü olarak **temel** ' yı seçin. Çalışma alanı türü (temel & kurumsal), erişim ve fiyatlandırmaya sahip olduğunuz özellikleri belirler.|
 
     > [!div class="mx-imgBorder"]
