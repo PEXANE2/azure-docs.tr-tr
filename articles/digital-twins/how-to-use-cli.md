@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/25/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2c642b2441d1f30c31e707a237732e028f548ac5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65462937db4711066bdb8b31cc22de508321d701
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89298190"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950916"
 ---
 # <a name="use-the-azure-digital-twins-cli"></a>Azure Digital Twins CLI’sini kullanma
 
@@ -35,13 +35,13 @@ Genellikle örneğinizi yönetmeye ek olarak, CLı de dağıtım ve doğrulama i
 
 ## <a name="get-the-extension"></a>Uzantıyı al
 
-Azure dijital TWINS komutları Azure [CLI Için Azure IoT uzantısının](https://github.com/Azure/azure-iot-cli-extension)bir parçasıdır. Bu komutlar için başvuru belgelerini komut kümesinin bir parçası olarak görüntüleyebilirsiniz `az iot` : [az DT](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest).
+Azure dijital TWINS komutları Azure [CLI Için Azure IoT uzantısının](https://github.com/Azure/azure-iot-cli-extension)bir parçasıdır. Komut kümesi için başvuru belgelerinin bir parçası olarak komutların ve kullanımlarınızın tam listesini görebilirsiniz `az iot` : [ *az DT* komut Reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true).
 
-Bu adımlarla uzantının en son sürümüne sahip olduğunuzdan emin olabilirsiniz. Bu komutları [Azure Cloud Shell](../cloud-shell/overview.md) veya [yerel bir Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)' de çalıştırabilirsiniz.
+Bu adımlarla uzantının en son sürümüne sahip olduğunuzdan emin olabilirsiniz. Bu komutları [Azure Cloud Shell](../cloud-shell/overview.md) veya [yerel bir Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)' de çalıştırabilirsiniz.
 
 [!INCLUDE [digital-twins-cloud-shell-extensions.md](../../includes/digital-twins-cloud-shell-extensions.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-CLı komutlarına bir alternatif için, bkz. API 'Leri ve SDK 'Ları kullanarak Azure dijital TWINS örneğini yönetme:
-* [*Nasıl yapılır: Azure dijital TWINS API 'Leri ve SDK 'Larını kullanma*](how-to-use-apis-sdks.md)
+Başvuru belgeleri aracılığıyla CLı ve tam komut kümesini gezin:
+* [*az DT* komut başvurusu](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true)

@@ -1,18 +1,25 @@
 ---
 title: Kubernetes Köprüsü’ne geçiş
 services: azure-dev-spaces
-ms.date: 09/21/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
 description: Güç Azure Dev Spaces olan süreçler açıklanmaktadır
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Kubernetes ile Köprü oluşturma
-ms.openlocfilehash: b585ee20efb7b377a041152996ef41d8c59c539e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc7f4f095a0306beffc0e224d7e813f7f02455da
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90998120"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962862"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Kubernetes Köprüsü’ne geçiş
+
+> [!IMPORTANT]
+> Azure Dev Spaces 31 Ekim 2023 ' de kullanımdan kaldırılacaktır. Geliştiriciler, bir istemci Geliştirici Aracı olan Kubernetes için köprü kullanarak geçiş yapılmalıdır.
+>
+> Azure Dev Spaces amacı, Kubernetes üzerinde geliştirme geliştiricileri geliştiricilerin geliştirilmesi ile ilgilidir. Azure Dev Spaces yaklaşımında önemli bir zorunluluğunu getirir, Docker ve Kubernetes yapılandırmalarının yanı sıra Kubernetes dağıtım kavramlarını anlamak için geliştiricilere ek yük koyuyor. Zaman içinde, Azure Dev Spaces yaklaşımın Kubernetes üzerindeki iç döngü geliştirmenin hızını etkili bir şekilde düşürmediği de net hale geldi. Kubernetes Köprüsü, iç döngü geliştirmenin hızını etkili bir şekilde düşürür ve geliştiricilerle ilgili gereksiz yükü önler.
+>
+> Temel görev değişmeden kalır: daha büyük uygulama bağlamında mikro hizmet kodu geliştirmek, test etmek ve hatalarını ayıklamak için en iyi geliştirici deneyimleri oluşturun.
 
 Kubernetes Köprüsü, Azure Dev Spaces ile çalışan çoğu geliştirme senaryosunda daha hafif bir alternatif sağlar. Kubernetes Köprüsü, [Visual Studio][vs]   ve [Visual Studio Code][vsc]uzantıları kullanılarak yalnızca istemci tarafı bir deneyimdir.  
 
@@ -39,26 +46,26 @@ Kubernetes 'in Azure Dev Spaces ve Köprüsü benzer özelliklere sahiptir ve ay
 | Azure Kubernetes Service | 15 Azure bölgesinde | Herhangi bir AKS hizmet bölgesi    |
 | **Güvenlik** |
 | Kümenizde güvenlik erişimi gerekiyor  | AKS kümesi Katılımcısı  | Kubernetes RBAC-dağıtım güncelleştirmesi   |
-| Geliştirme bilgisayarınızda güvenlik erişimi gerekli  | Yok  | Yerel yönetici/sudo   |
+| Geliştirme bilgisayarınızda güvenlik erişimi gerekli  | YOK  | Yerel yönetici/sudo   |
 | **Stillerin** |
-| Kubernetes ve Docker yapılarından bağımsız  | Hayır  | Evet   |
-| Değişiklikleri otomatik geri alma, hata ayıklama sonrası  | Hayır  | Evet   |
+| Kubernetes ve Docker yapılarından bağımsız  | Hayır  | Yes   |
+| Değişiklikleri otomatik geri alma, hata ayıklama sonrası  | Hayır  | Yes   |
 | **Ortamlar** |
-| Visual Studio 2019 ile birlikte çalışma  | Evet  | Evet   |
-| Visual Studio Code ile birlikte çalışma  | Evet  | Evet   |
-| CLı ile birlikte çalışma  | Evet  | Hayır   |
+| Visual Studio 2019 ile birlikte çalışma  | Yes  | Yes   |
+| Visual Studio Code ile birlikte çalışma  | Yes  | Yes   |
+| CLı ile birlikte çalışma  | Yes  | Hayır   |
 | **İşletim sistemi uyumluluğu** |
-| Windows 10 ' da geçerlidir  | Evet  | Evet  |
-| Linux üzerinde çalışma  | Evet  | Evet  |
-| MacOS 'ta çalışma  | Evet  | Evet  |
+| Windows 10 ' da geçerlidir  | Yes  | Yes  |
+| Linux üzerinde çalışma  | Yes  | Yes  |
+| MacOS 'ta çalışma  | Yes  | Yes  |
 | **Özellikler** |
-| Geliştirici yalıtımı veya takım geliştirme  | Evet  | Evet  |
-| Ortam değişkenlerinin seçmeli olarak üzerine yaz  | Hayır  | Evet  |
-| Dockerfile ve Held grafiğinin oluşturulması  | Evet  | Hayır  |
-| Kubernetes 'e kalıcı kod dağıtımı  | Evet  | Hayır  |
-| Bir Kubernetes Pod 'da uzaktan hata ayıklama  | Evet  | Hayır  |
-| Yerel hata ayıklama, Kubernetes 'e bağlanıldı  | Hayır  | Evet  |
-| Aynı iş istasyonunda aynı anda birden fazla hizmetin hatalarını ayıklama  | Evet  | Evet  |
+| Geliştirici yalıtımı veya takım geliştirme  | Yes  | Yes  |
+| Ortam değişkenlerinin seçmeli olarak üzerine yaz  | Hayır  | Yes  |
+| Dockerfile ve Held grafiğinin oluşturulması  | Yes  | Hayır  |
+| Kubernetes 'e kalıcı kod dağıtımı  | Yes  | Hayır  |
+| Bir Kubernetes Pod 'da uzaktan hata ayıklama  | Yes  | Hayır  |
+| Yerel hata ayıklama, Kubernetes 'e bağlanıldı  | Hayır  | Yes  |
+| Aynı iş istasyonunda aynı anda birden fazla hizmetin hatalarını ayıklama  | Yes  | Yes  |
 
 ## <a name="kubernetes-inner-loop-development"></a>Kubernetes iç döngüsü geliştirme
 

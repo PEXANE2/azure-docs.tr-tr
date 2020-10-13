@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: ec1e74c6a029ab0f8defc3ae783c9e974f387289
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a13f78b6aa4fc3cb6f6777c76bc762ec565624fc
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88922982"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951324"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Azure Bilişsel Arama Dizin oluşturucudan Azure sanal makinesinde SQL Server bağlantı yapılandırma
 
@@ -63,7 +63,7 @@ Azure VM 'nizi diğer taraflarca erişilebilir hale getirmek için NSG ve ilgili
 Aşağıdaki bağlantılar, VM dağıtımları için NSG yapılandırması hakkında yönergeler sağlar. Bu yönergeleri, IP adresini temel alarak bir Azure Bilişsel Arama uç noktası ACL 'sine yönelik olarak kullanın.
 
 > [!NOTE]
-> Arka plan için bkz. [ağ güvenlik grubu nedir?](../virtual-network/security-overview.md)
+> Arka plan için bkz. [ağ güvenlik grubu nedir?](../virtual-network/network-security-groups-overview.md)
 > 
 > 
 

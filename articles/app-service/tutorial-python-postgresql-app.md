@@ -3,7 +3,7 @@ title: 'Öğretici: Postgres ile Python Docgo uygulaması dağıtma'
 description: PostgreSQL veritabanı ile bir Python web uygulaması oluşturun ve Azure 'a dağıtın. Öğretici Docgo çerçevesini kullanır ve uygulama Linux üzerinde Azure App Service barındırılır.
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 09/22/2020
+ms.date: 10/09/2020
 ms.custom:
 - mvc
 - seodec18
@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 023d5e13efc19fdf097ac06d61c3300805d3b28e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfc4341e4b3f0c894f9440b4910c3f8bec7326d1
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842657"
+ms.locfileid: "91929787"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Öğretici: Azure App Service içindeki PostgreSQL ile Docgo Web uygulaması dağıtma
 
@@ -137,7 +137,7 @@ Ardından şu komutla Azure 'da Postgres veritabanını oluşturun [`az postgres
 az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --sku-name B_Gen5_1 --server-name <postgres-server-name> --database-name pollsdb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
 ```
 
-- *\<postgres-server-name>* Tüm Azure genelinde benzersiz bir adla değiştirin (sunucu uç noktası `https://<postgres-server-name>.postgres.database.azure.com` ). İyi bir model, şirketinizin adı ve başka bir benzersiz değer birleşimini kullanmaktır.
+- *\<postgres-server-name>* Tüm Azure genelinde benzersiz olan bir adla değiştirin (sunucu uç noktası olur `https://<postgres-server-name>.postgres.database.azure.com` ). İyi bir model, şirketinizin adı ve başka bir benzersiz değer birleşimini kullanmaktır.
 - *\<admin-username>* Ve için *\<admin-password>* , bu Postgres sunucusu için bir yönetici kullanıcı oluşturmak üzere kimlik bilgilerini belirtin.
 - Burada kullanılan B_Gen5_1 (Basic, 5. nesil, 1 çekirdek) [fiyatlandırma katmanı](../postgresql/concepts-pricing-tiers.md) en düşük maliyetli bir işlemdir. Üretim veritabanları için, `--sku-name` bunun yerine GP_Gen5_2 (genel amaçlı, Gen 5, 2 çekirdek) katmanını kullanmak için bağımsız değişkenini atlayın.
 
@@ -203,29 +203,19 @@ Dağıtım başarılı olduğunda, komut aşağıdaki örnekte olduğu gibi JSON
 
 Kod artık App Service dağıtılır ve sonraki adım, uygulamayı Azure 'daki Postgres veritabanına bağlayabilmektedir.
 
-Uygulama kodu, çeşitli ortam değişkenlerinde veritabanı bilgilerini bulmayı bekler. App Service ortam değişkenlerini ayarlamak için, [az WebApp config appSettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) komutuyla "uygulama ayarları" oluşturursunuz.
+Uygulama kodu,,, ve adlı dört ortam değişkeni içinde veritabanı bilgilerini bulmayı bekler `DBHOST` `DBNAME` `DBUSER` `DBPASS` . Üretim ayarlarını kullanmak için, Ayrıca, `DJANGO_ENV` ortam değişkeninin olarak ayarlanmış olması gerekir `production` .
+
+App Service ortam değişkenlerini ayarlamak için, aşağıdaki [az WebApp config appSettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) komutuyla "uygulama ayarları" oluşturun.
 
 ```azurecli
-az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<postgres-server-name>.postgres.database.azure.com" DBNAME="pollsdb" DBUSER="<username>@<postgres-server-name>" DBPASS="<password>"
+az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<postgres-server-name>" DBNAME="pollsdb" DBUSER="<username>" DBPASS="<password>"
 ```
 
-- *\<postgres-server-name>* Daha önce komutuyla kullandığınız adla değiştirin `az postgres up` .
-- *\<username>* Ve ' i *\<password>* Önceki komutla kullandığınız yönetici kimlik bilgileriyle `az postgres up` (veya `az postgres up` sizin için oluşturulan) değiştirin. `DBUSER`Bağımsız değişken biçimde olmalıdır `<username>@<postgres-server-name>` .
-- Kaynak grubu ve uygulama adı, *. Azure/config* dosyasındaki önbelleğe alınmış değerlerden çizilir.
-- Komut `DJANGO_ENV` , `DBHOST` `DBNAME` `DBUSER` `DBPASS` uygulama kodu tarafından beklenen,,, ve adlı ayarları oluşturur.
-- Python kodunuzda bu ayarlara, gibi deyimlerle ortam değişkenleri olarak erişirsiniz `os.environ.get('DJANGO_ENV')` . Daha fazla bilgi için bkz. [ortam değişkenlerine erişin](configure-language-python.md#access-environment-variables).
+- *\<postgres-server-name>* Daha önce komutuyla kullandığınız adla değiştirin `az postgres up` . *Azuresite/Production.* kay içindeki kod, `.postgres.database.azure.com` tam Postgres sunucu URL 'sini oluşturmak için otomatik olarak ekler.
+- *\<username>* Ve *\<password>* ' yi önceki komutla kullandığınız yönetici kimlik bilgileriyle `az postgres up` veya `az postgres up` sizin için oluşturulan yöneticilerle değiştirin. *Azuresite/Production.* kay içindeki kod, ve ' den tam Postgres Kullanıcı adını otomatik olarak oluşturur `DBUSER` `DBHOST` .
+- Kaynak grubu ve uygulama adları, *. Azure/config* dosyasındaki önbelleğe alınmış değerlerden çizilir.
 
-#### <a name="verify-the-dbuser-setting"></a>DBUSER ayarını doğrulama
-
-`DBUSER`Ayarın formun olması önemlidir `<username>@<postgres-server-name>` .
-
-Ayarı doğrulamak için, çalıştırın `az webapp config app settings list` ve `DBUSER` sonuçlarda değeri inceleyin:
-
-```azurecli
-az webapp config app settings list
-```
-
-Değeri düzeltmeniz gerekiyorsa, `az webapp config appsettings set --settings DBUSER="<username>@<postgres-server-name>"` uygun adlarla değiştirerek komutunu çalıştırın `<username>@<postgres-server-name>` .
+Python kodunuzda bu ayarlara, gibi deyimlerle ortam değişkenleri olarak erişirsiniz `os.environ.get('DJANGO_ENV')` . Daha fazla bilgi için bkz. [ortam değişkenlerine erişin](configure-language-python.md#access-environment-variables).
 
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/DjangoCLITutorialHelp)
 
@@ -264,8 +254,6 @@ Docgo veritabanı geçişleri, Azure veritabanı 'ndaki PostgreSQL içindeki şe
     python manage.py createsuperuser
     ```
 
-1. "Kullanıcı adının biçimde olması gerekir <username@hostname> ." hatasını görürseniz veritabanı geçişlerini çalıştırırken bkz. [DBUSER ayarını doğrulama](#verify-the-dbuser-setting).
-
 1. Bu `createsuperuser` komut sizden süper kullanıcı kimlik bilgilerini ister. Bu öğreticinin amaçları doğrultusunda, varsayılan kullanıcı adını kullanın `root` , e-posta adresi Için **ENTER** tuşuna basarak boş bırakın ve `Pollsdb1` parola girin.
 
 1. Veritabanının kilitlendiğini belirten bir hata görürseniz, `az webapp settings` önceki bölümde komutunu çalıştırdığınızdan emin olun. Bu ayarlar olmadan, geçiş komutu veritabanıyla iletişim kuramaz ve hataya neden olur.
@@ -276,9 +264,7 @@ Docgo veritabanı geçişleri, Azure veritabanı 'ndaki PostgreSQL içindeki şe
 
 1. Bir tarayıcıda URL 'YI açın `http://<app-name>.azurewebsites.net` . Veritabanında henüz belirli bir yoklama olmadığından, uygulamanın "hiçbir yoklama yok" iletisini görüntülemesi gerekir.
 
-    "Uygulama hatası" görüyorsanız, önceki adımda gerekli ayarları oluşturmadıysanız, [veritabanını bağlamak için ortam değişkenlerini yapılandırmanız](#configure-environment-variables-to-connect-the-database)muhtemeldir. `az webapp config appsettings list`Ayarları denetlemek için komutunu çalıştırın. Uygulama başlatma sırasında belirli hataları görmek için [tanılama günlüklerini de denetleyebilirsiniz](#stream-diagnostic-logs) . Örneğin, ayarları oluşturmadıysanız günlüklerde hata gösterilir `KeyError: 'DBNAME'` .
-
-    Hata görürseniz, "Geçersiz Kullanıcı adı belirtildi. Lütfen Kullanıcı adını denetleyin ve bağlantıyı yeniden deneyin. Kullanıcı adı <username@hostname> . "biçiminde olmalıdır. bkz. [dbuser ayarını doğrulama](#verify-the-dbuser-setting).
+    "Uygulama hatası" görürseniz, önceki adımda gerekli ayarları oluşturmadınız, [veritabanı bağlamak için ortam değişkenlerini yapılandırmadan](#configure-environment-variables-to-connect-the-database)veya bu değerde hata içereceksinizdir olabilir. `az webapp config appsettings list`Ayarları denetlemek için komutunu çalıştırın. Uygulama başlatma sırasında belirli hataları görmek için [tanılama günlüklerini de denetleyebilirsiniz](#stream-diagnostic-logs) . Örneğin, ayarları oluşturmadıysanız günlüklerde hata gösterilir `KeyError: 'DBNAME'` .
 
     Hataları düzeltmek için ayarları güncelleştirdikten sonra, uygulamayı yeniden başlatmak için bir dakika verin ve ardından Tarayıcıyı yenileyin.
 
@@ -468,7 +454,7 @@ Varsayılan olarak, portal genel bir performans görünümü sağlayan uygulaman
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Uygulamayı sürdürmek veya sonraki öğreticiye devam etmek isterseniz, [sonraki adımlara](#next-steps)atlayın. Aksi takdirde, devam eden ücretleri önlemek için bu öğreticide kaynak grubu oluştur ' u silebilirsiniz:
+Uygulamayı sürdürmek veya ek öğreticilere devam etmek isterseniz, [sonraki adımlara](#next-steps)atlayın. Aksi takdirde, devam eden ücretleri önlemek için bu öğreticide kaynak grubu oluştur ' u silebilirsiniz:
 
 ```azurecli
 az group delete --no-wait

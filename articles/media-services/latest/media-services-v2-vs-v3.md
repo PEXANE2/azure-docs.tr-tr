@@ -16,10 +16,10 @@ ms.workload: media
 ms.date: 10/01/2020
 ms.author: inhenkel
 ms.openlocfilehash: 515379a4207a582b441d132b1c28ff11bc83c714
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91651761"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services V2 ve v3 karşılaştırması
@@ -119,7 +119,7 @@ Varlıkları bekleyen bir şekilde korumak için, varlıkların depolama tarafı
 |---|---|---|---|
 |Media Services depolama şifrelemesi|AES-256 şifrelemesi, anahtar Media Services tarafından yönetiliyor.|Desteklenen<sup>(1)</sup>|Desteklenmiyor<sup>(2)</sup>|
 |[Bekleyen veriler için Depolama Hizmeti Şifrelemesi](../../storage/common/storage-service-encryption.md)|Azure depolama tarafından sunulan ve Azure tarafından yönetilen veya müşteri tarafından yönetilen sunucu tarafı şifrelemesi.|Desteklenir|Desteklenir|
-|[Depolama Istemci tarafı şifrelemesi](../../storage/common/storage-client-side-encryption.md)|Azure depolama tarafından sunulan ve Key Vault ' de müşteri tarafından yönetilen anahtar olan istemci tarafı şifreleme.|Desteklenmez|Desteklenmez|
+|[Depolama Client-Side şifrelemesi](../../storage/common/storage-client-side-encryption.md)|Azure depolama tarafından sunulan ve Key Vault ' de müşteri tarafından yönetilen anahtar olan istemci tarafı şifreleme.|Desteklenmez|Desteklenmez|
 
 <sup>1</sup> Media Services hiçbir şifreleme formu olmadan açık/olmayan içerik işlemeyi desteklese de, bunu yapmanız önerilmez.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 2a64e595f0ea07510f416be56a54a3c74294b95d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa33106f200b2edb3b710c6b0e08208bd4da8ace
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653630"
+ms.locfileid: "91932269"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files hakkında SSS
 
@@ -31,13 +31,13 @@ Bu makalede Azure NetApp Files hakkında sık sorulan sorular (SSS) yanıtlanmak
 
 Hayır. NFS veri yolu, Internet üzerinden geçmiyor. Azure NetApp Files, hizmetin kullanılabilir olduğu Azure sanal ağına (VNet) dağıtılan bir Azure yerel hizmetidir. Azure NetApp Files, temsilcili bir alt ağ kullanır ve doğrudan VNet üzerinde bir ağ arabirimi sağlar. 
 
-Ayrıntılar için [Azure NetApp Files ağ planlaması kılavuzlarına](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) bakın.  
+Ayrıntılar için [Azure NetApp Files ağ planlaması kılavuzlarına](./azure-netapp-files-network-topologies.md) bakın.  
 
 ### <a name="can-i-connect-a-vnet-that-i-already-created-to-the-azure-netapp-files-service"></a>Zaten oluşturduğum bir VNet 'i Azure NetApp Files hizmetine bağlanabilir miyim?
 
 Evet, oluşturduğunuz VNET 'leri hizmete bağlayabilirsiniz. 
 
-Ayrıntılar için [Azure NetApp Files ağ planlaması kılavuzlarına](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) bakın.  
+Ayrıntılar için [Azure NetApp Files ağ planlaması kılavuzlarına](./azure-netapp-files-network-topologies.md) bakın.  
 
 ### <a name="can-i-mount-an-nfs-volume-of-azure-netapp-files-using-dns-fqdn-name"></a>Azure NetApp Files NFS birimini DNS FQDN adı kullanarak bağlayabilir miyim?
 
@@ -146,7 +146,7 @@ Azure NetApp Files, SMB 2,1 ve SMB 3,1 (SMB 3,0 desteğini içerir) desteği sun
 
 ### <a name="is-an-active-directory-connection-required-for-smb-access"></a>SMB erişimi için bir Active Directory bağlantısı gerekiyor mu? 
 
-Evet, bir SMB birimini dağıtabilmeniz için önce bir Active Directory bağlantısı oluşturmanız gerekir. Başarılı bir bağlantı için, belirtilen etki alanı denetleyicilerine Azure NetApp Files Temsilcili alt ağı tarafından erişilebilir olmalıdır.  Ayrıntılar için bkz. [SMB birimi oluşturma](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb) . 
+Evet, bir SMB birimini dağıtabilmeniz için önce bir Active Directory bağlantısı oluşturmanız gerekir. Başarılı bir bağlantı için, belirtilen etki alanı denetleyicilerine Azure NetApp Files Temsilcili alt ağı tarafından erişilebilir olmalıdır.  Ayrıntılar için bkz. [SMB birimi oluşturma](./azure-netapp-files-create-volumes-smb.md) . 
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>Kaç Active Directory bağlantı destekleniyor?
 
@@ -156,7 +156,7 @@ NetApp hesabı başına bir AD bağlantısı yapılandırılır; AD bağlantıs�
 
 ### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Azure NetApp Files Azure Active Directory destekliyor mu? 
 
-[Azure Active Directory (ad) etki alanı Hizmetleri](https://docs.microsoft.com/azure/active-directory-domain-services/overview) ve [Active Directory Domain Services (AD DS)](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) desteklenir. Mevcut Active Directory etki alanı denetleyicilerini Azure NetApp Files ile birlikte kullanabilirsiniz. Etki alanı denetleyicileri, Azure 'da sanal makineler veya ExpressRoute ya da S2S VPN aracılığıyla şirket içi olarak bulunabilir. Azure NetApp Files Şu anda [Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/) için ad katılmayı desteklemez.
+[Azure Active Directory (ad) etki alanı Hizmetleri](../active-directory-domain-services/overview.md) ve [Active Directory Domain Services (AD DS)](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) desteklenir. Mevcut Active Directory etki alanı denetleyicilerini Azure NetApp Files ile birlikte kullanabilirsiniz. Etki alanı denetleyicileri, Azure 'da sanal makineler veya ExpressRoute ya da S2S VPN aracılığıyla şirket içi olarak bulunabilir. Azure NetApp Files Şu anda [Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/) için ad katılmayı desteklemez.
 
 Azure Active Directory Domain Services ile Azure NetApp Files kullanıyorsanız, kuruluş birimi yolu, `OU=AADDC Computers` NetApp hesabınız için Active Directory yapılandırdığınızda olur.
 
@@ -171,7 +171,7 @@ SMB istemcisi tarafından bildirilen birim boyutu, Azure NetApp Files biriminin 
 <!--
 ### Does Azure NetApp Files support LDAP signing? 
 
-Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](https://docs.microsoft.com/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
+Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
 --> 
 
 ## <a name="dual-protocol-faqs"></a>Çift protokol SSS
@@ -224,7 +224,7 @@ Azure NetApp Files NFS ve SMB birimleri sağlar.  Hizmete veri geçirmek için h
 
 NetApp, SaaS tabanlı bir çözüm sunar, [NetApp bulut eşitlemesi](https://cloud.netapp.com/cloud-sync-service).  Çözüm, NFS veya SMB verilerini Azure NetApp Files NFS dışarı aktarmaları veya SMB paylaşımlarına çoğaltmanıza olanak sağlar. 
 
-Ayrıca, verileri kopyalamak için geniş bir ücretsiz araç dizisi de kullanabilirsiniz. NFS için, [rsync](https://rsync.samba.org/examples.html) gibi iş yükü araçlarını kullanarak kaynak verileri Azure NetApp Files bir birimde kopyalayabilir ve eşitleyebilirsiniz. SMB için iş yükleri [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) 'ni aynı şekilde kullanabilirsiniz.  Bu araçlar, dosya veya klasör izinlerini de çoğaltabilir. 
+Ayrıca, verileri kopyalamak için geniş bir ücretsiz araç dizisi de kullanabilirsiniz. NFS için, [rsync](https://rsync.samba.org/examples.html) gibi iş yükü araçlarını kullanarak kaynak verileri Azure NetApp Files bir birimde kopyalayabilir ve eşitleyebilirsiniz. SMB için iş yükleri [Robocopy](/windows-server/administration/windows-commands/robocopy) 'ni aynı şekilde kullanabilirsiniz.  Bu araçlar, dosya veya klasör izinlerini de çoğaltabilir. 
 
 Şirket içinden Azure NetApp Files veri geçişi gereksinimleri aşağıdaki gibidir: 
 
@@ -239,7 +239,7 @@ Azure NetApp Files NFS ve SMB birimleri sağlar.  Tüm dosya tabanlı kopyalama 
 
 NetApp, SaaS tabanlı bir çözüm sunar, [NetApp bulut eşitlemesi](https://cloud.netapp.com/cloud-sync-service).  Çözüm, NFS veya SMB verilerini Azure NetApp Files NFS dışarı aktarmaları veya SMB paylaşımlarına çoğaltmanıza olanak sağlar. 
 
-Ayrıca, verileri kopyalamak için geniş bir ücretsiz araç dizisi de kullanabilirsiniz. NFS için, [rsync](https://rsync.samba.org/examples.html) gibi iş yükü araçlarını kullanarak kaynak verileri Azure NetApp Files bir birimde kopyalayabilir ve eşitleyebilirsiniz. SMB için iş yükleri [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) 'ni aynı şekilde kullanabilirsiniz.  Bu araçlar, dosya veya klasör izinlerini de çoğaltabilir. 
+Ayrıca, verileri kopyalamak için geniş bir ücretsiz araç dizisi de kullanabilirsiniz. NFS için, [rsync](https://rsync.samba.org/examples.html) gibi iş yükü araçlarını kullanarak kaynak verileri Azure NetApp Files bir birimde kopyalayabilir ve eşitleyebilirsiniz. SMB için iş yükleri [Robocopy](/windows-server/administration/windows-commands/robocopy) 'ni aynı şekilde kullanabilirsiniz.  Bu araçlar, dosya veya klasör izinlerini de çoğaltabilir. 
 
 Azure NetApp Files bir birimi başka bir Azure bölgesine çoğaltmak için gerekenler şunlardır: 
 - Hedef Azure bölgesinde Azure NetApp Files kullanılabildiğinden emin olun.
@@ -257,8 +257,8 @@ Hayır. Azure Içeri/dışarı aktarma hizmeti şu anda Azure NetApp Files deste
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
-- [Microsoft Azure ExpressRoute SSS](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)
-- [Microsoft Azure Sanal Ağ SSS](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq)
-- [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)
-- [Azure Data Box](https://docs.microsoft.com/azure/databox)
+- [Microsoft Azure ExpressRoute SSS](../expressroute/expressroute-faqs.md)
+- [Microsoft Azure Sanal Ağ SSS](../virtual-network/virtual-networks-faq.md)
+- [Azure destek isteği oluşturma](../azure-portal/supportability/how-to-create-azure-support-request.md)
+- [Azure Data Box](../databox/index.yml)
 - [Azure NetApp Files için SMB performansı hakkında SSS](azure-netapp-files-smb-performance.md)

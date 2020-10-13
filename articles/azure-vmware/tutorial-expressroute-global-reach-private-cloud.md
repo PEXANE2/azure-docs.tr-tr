@@ -4,10 +4,10 @@ description: Azure VMware çözümünde özel buluta ExpressRoute Global Reach e
 ms.topic: tutorial
 ms.date: 09/21/2020
 ms.openlocfilehash: 07b7e1c2636f3754eda56af574586a1027403d3e
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91576736"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Öğretici: şirket içi ortamlar için özel bir buluta
@@ -109,7 +109,7 @@ Bu öğreticide, özel bulut ExpressRoute bağlantı hattı için ikinci bir yet
 Azure VMware çözümünüz özel bulutunuz için VMware HCX çözümünü dağıtma ve yapılandırma hakkında bilgi edinmek için sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [VMware HCX 'i dağıtma ve yapılandırma](tutorial-deploy-vmware-hcx.md)
+> [VMware HCX’i dağıtma ve yapılandırma](tutorial-deploy-vmware-hcx.md)
 
 
 <!-- LINKS - external-->

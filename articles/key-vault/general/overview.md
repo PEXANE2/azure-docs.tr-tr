@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a9886b005c5459456e005273dd11e2c3c183176f
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 856c5f106f164a98b60fdb3eeda31d6099d5b7bd
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91744245"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932014"
 ---
 # <a name="about-azure-key-vault"></a>Azure Key Vault hakkında
 
@@ -25,7 +25,7 @@ Azure Key Vault aşağıdaki sorunları çözmeye yardımcı olur:
 - **Anahtar Yönetimi**: Azure Key Vault, Anahtar Yönetimi çözümü olarak da kullanılabilir. Azure Key Vault, verilerinizi şifrelemek için kullanılan şifreleme anahtarlarını oluşturmayı ve denetlemeyi kolaylaştırır. 
 - **Sertifika yönetimi** -Azure Key Vault Ayrıca Azure ve iç bağlı kaynaklarınız ile kullanmak üzere genel ve özel aktarım katmanı güvenlik/GÜVENLI yuva KATMANı (TLS/SSL) sertifikalarını kolayca sağlamanıza, yönetmenize ve dağıtmanıza olanak tanıyan bir hizmettir.
 
-Azure Key Vault iki hizmet katmanına sahiptir: bir yazılım anahtarıyla şifreleyen standart ve HSM korumalı anahtarlar içeren Premium katman. Standart ve Premium Katmanlar arasındaki karşılaştırmayı görmek için [Azure Key Vault fiyatlandırma sayfasına](/pricing/details/key-vault)bakın.
+Azure Key Vault iki hizmet katmanına sahiptir: bir yazılım anahtarıyla şifreleyen standart ve HSM korumalı anahtarlar içeren Premium katman. Standart ve Premium Katmanlar arasındaki karşılaştırmayı görmek için [Azure Key Vault fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/key-vault/)bakın.
 
 ## <a name="why-use-azure-key-vault"></a>Neden Azure Key Vault kullanmalıyım?
 

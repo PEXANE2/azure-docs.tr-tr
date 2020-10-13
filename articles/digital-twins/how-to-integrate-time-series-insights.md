@@ -8,10 +8,10 @@ ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 636332c52ea71c7f84cca2f7ef526bc31200e11c
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91822170"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Azure dijital TWINS 'i Azure Time Series Insights ile tümleştirme
@@ -20,7 +20,7 @@ Bu makalede, Azure dijital TWINS 'i [Azure Time Series Insights (TSI)](../time-s
 
 Bu makalede açıklanan çözüm, IoT çözümünüz hakkında geçmiş verileri toplayıp analiz etmenize olanak sağlayacak. Azure dijital TWINS, verileri Time Series Insights, birden çok veri akışı ile ilişkilendirmenize ve bilgilerinizi Time Series Insights göndermeden önce standartlaştırmasını sağlayan harika bir şekilde bir uyum sağlar. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Time Series Insights bir ilişki ayarlayabilmeniz için önce bir **Azure dijital TWINS örneğine**sahip olmanız gerekir. Bu örnek, verileri temel alarak dijital ikizi bilgilerini güncelleştirme özelliği ile ayarlanmalıdır, çünkü bu verileri Time Series Insights ' de izlenen şekilde görmek için ikizi bilgilerini birkaç kez güncelleştirmeniz gerekir. 
 

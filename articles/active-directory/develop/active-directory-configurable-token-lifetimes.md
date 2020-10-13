@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.author: ryanwi
-ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1
+ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperfq1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 8697676abe5af77c8c7795ae4e2ec6480cb99e91
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 1410af4d3c1fb9974818e5c4ebc469eee03a314c
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91819434"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948632"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft Identity platformunda yapılandırılabilir belirteç yaşam süreleri (Önizleme)
 
@@ -89,9 +89,9 @@ Belirteç ömür ilkesi, belirteç ömrü kurallarını içeren bir ilke nesnesi
 | --- | --- | --- | --- | --- | --- |
 | Erişim belirteci ömrü |AccessTokenLifetime<sup>2</sup> |Erişim belirteçleri, KIMLIK belirteçleri, SAML2 belirteçleri |1 saat |10 dakika |1 gün |
 | Yenileme belirteci en fazla etkin olmayan süre |Maxınactivetime |Belirteçleri Yenile |90 gün |10 dakika |90 gün |
-| Tek faktörlü yenileme belirtecinin en fazla yaşı |Maxagesinglefaktör |Belirteçleri Yenile (tüm kullanıcılar için) |İptal edilene kadar |10 dakika |Until-iptal edildi<sup>1</sup> |
+| Single-Factor yenileme belirtecinin en fazla yaşı |Maxagesinglefaktör |Belirteçleri Yenile (tüm kullanıcılar için) |İptal edilene kadar |10 dakika |Until-iptal edildi<sup>1</sup> |
 | Multi-Factor Refresh belirtecinin en fazla yaşı |MaxAgeMultiFactor |Belirteçleri Yenile (tüm kullanıcılar için) | 180 gün |10 dakika |180 gün<sup>1</sup> |
-| Tek faktörlü oturum belirteci maksimum yaşı |Maxagesessionsinglefaktör |Oturum belirteçleri (kalıcı ve kalıcı olmayan) |İptal edilene kadar |10 dakika |Until-iptal edildi<sup>1</sup> |
+| Single-Factor oturum belirtecinin maksimum yaşı |Maxagesessionsinglefaktör |Oturum belirteçleri (kalıcı ve kalıcı olmayan) |İptal edilene kadar |10 dakika |Until-iptal edildi<sup>1</sup> |
 | Multi-Factor Session belirtecinin en fazla yaşı |MaxAgeSessionMultiFactor |Oturum belirteçleri (kalıcı ve kalıcı olmayan) | 180 gün |10 dakika | 180 gün<sup>1</sup> |
 
 * <sup>1</sup>365 gün, bu öznitelikler için ayarlanoluşturulabilecek maksimum açık uzunluktadır.
@@ -160,11 +160,11 @@ Bir örnek için bkz. [Web oturumu için Ilke oluşturma](configure-token-lifeti
 
 Bu ilke, istemcileri üzerinde etkin olmayan kullanıcıları yeni bir yenileme belirteci almak için yeniden kimlik doğrulaması yapmak üzere zorlar.
 
-Yenileme belirteci en fazla etkin olmayan süre özelliği, tek faktörlü belirteç en yüksek yaş ve Multi-Factor Refresh belirtecinin en fazla yaş özelliklerinden daha düşük bir değere ayarlanmalıdır.
+Yenileme belirteci en fazla etkin olmayan süre özelliği, Single-Factor belirteç en fazla geçerlilik süresi ve çok faktörlü yenileme belirteci en fazla yaş özelliklerinden daha düşük bir değere ayarlanmalıdır.
 
 Bir örnek için bkz. [bir Web API 'si çağıran yerel uygulama için Ilke oluşturma](configure-token-lifetimes.md#create-a-policy-for-a-native-app-that-calls-a-web-api).
 
-### <a name="single-factor-refresh-token-max-age"></a>Tek faktörlü yenileme belirtecinin en fazla yaşı
+### <a name="single-factor-refresh-token-max-age"></a>Single-Factor yenileme belirtecinin en fazla yaşı
 **Dize:** Maxagesinglefaktör
 
 **Şunları etkiler:** Belirteçleri Yenile
@@ -182,11 +182,11 @@ Bir örnek için bkz. [bir Web API 'si çağıran yerel uygulama için Ilke olu�
 
 **Özet:** Bu ilke, bir kullanıcının birden çok faktör kullanarak başarıyla kimlik doğrulamasından sonra yeni erişim/yenileme belirteci eşleştirmesi için yenileme belirtecini ne kadar süreyle kullandığını denetler. Kullanıcı kimlik doğrulamasından geçtikten ve yeni bir yenileme belirteci aldıktan sonra, Kullanıcı belirli bir süre için yenileme belirteci akışını kullanabilir. (Geçerli yenileme belirteci iptal edilmediği ve etkin olmayan süreden uzun süre kullanılmamış olduğu sürece bu doğru olur.) Bu noktada, kullanıcılar yeni yenileme belirteci almak için yeniden kimlik doğrulaması yapmak üzere zorlanır.
 
-Maksimum yaşı azaltmak, kullanıcıların daha sık kimlik doğrulamasından geçmesini zorlar. Tek faktörlü kimlik doğrulamasının Multi-Factor Authentication 'dan daha az güvenli olduğu kabul edildiğinden, bu özelliği tek faktörlü yenileme belirteci en yüksek yaş özelliğinden eşit veya ondan daha büyük bir değere ayarlamanızı öneririz.
+Maksimum yaşı azaltmak, kullanıcıların daha sık kimlik doğrulamasından geçmesini zorlar. Tek faktörlü kimlik doğrulamasının Multi-Factor Authentication 'dan daha az güvenli olduğu kabul edildiğinden, bu özelliği Single-Factor yenileme belirtecinin en yüksek yaş özelliğinden eşit veya ondan büyük bir değere ayarlamanızı öneririz.
 
 Bir örnek için bkz. [bir Web API 'si çağıran yerel uygulama için Ilke oluşturma](configure-token-lifetimes.md#create-a-policy-for-a-native-app-that-calls-a-web-api).
 
-### <a name="single-factor-session-token-max-age"></a>Tek faktörlü oturum belirteci maksimum yaşı
+### <a name="single-factor-session-token-max-age"></a>Single-Factor oturum belirtecinin maksimum yaşı
 **Dize:** Maxagesessionsinglefaktör
 
 **Şunları etkiler:** Oturum belirteçleri (kalıcı ve kalıcı olmayan)
@@ -204,7 +204,7 @@ Bir örnek için bkz. [Web oturumu için Ilke oluşturma](configure-token-lifeti
 
 **Özet:** Bu ilke, bir kullanıcının birden çok faktör kullanarak başarıyla kimlik doğrulamasından geçtikten sonra yeni bir KIMLIK ve oturum belirteci almak için oturum belirtecini ne kadar süreyle kullanabileceğinizi denetler. Kullanıcı kimlik doğrulamasından ve yeni bir oturum belirtecini aldıktan sonra, Kullanıcı, belirtilen süre boyunca oturum belirteci akışını kullanabilir. (Geçerli oturum belirteci iptal edilmediği ve süresi dolmamış olduğu sürece bu doğrudur.) Belirtilen süre geçtikten sonra, Kullanıcı yeni bir oturum belirteci almak için yeniden kimlik doğrulaması yapmak üzere zorlanır.
 
-Maksimum yaşı azaltmak, kullanıcıların daha sık kimlik doğrulamasından geçmesini zorlar. Tek faktörlü kimlik doğrulamasının Multi-Factor Authentication 'dan daha az güvenli olduğu kabul edildiğinden, bu özelliği tek faktörlü oturum belirteci en fazla Age özelliğinden eşit veya ondan daha büyük bir değere ayarlamanızı öneririz.
+Maksimum yaşı azaltmak, kullanıcıların daha sık kimlik doğrulamasından geçmesini zorlar. Tek faktörlü kimlik doğrulaması Multi-Factor Authentication 'dan daha az güvenli kabul edildiğinden, bu özelliği Single-Factor oturum belirteci en yüksek yaş özelliğinden eşit veya ondan daha büyük bir değere ayarlamanızı öneririz.
 
 ## <a name="cmdlet-reference"></a>Cmdlet başvurusu
 

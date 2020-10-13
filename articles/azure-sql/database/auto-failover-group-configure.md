@@ -13,10 +13,10 @@ ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 08/14/2019
 ms.openlocfilehash: ab057e1328efbff294faa1d68f2a27c5a1f03ade
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91577518"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Azure SQL veritabanı için bir yük devretme grubu yapılandırma
@@ -28,7 +28,7 @@ Bu konu, Azure SQL veritabanı ve Azure SQL yönetilen örneği için bir [otoma
 
 Yük devretme grubunu oluşturun ve Azure portal veya PowerShell kullanarak buna tek bir veritabanı ekleyin.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki önkoşulları göz önünde bulundurun:
 
@@ -196,7 +196,7 @@ Yük devretme grubunu birincil sunucuya geri çevir:
 
 Yük devretme grubunu oluşturun ve Azure portal veya PowerShell kullanarak buna bir elastik havuz ekleyin.  
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki önkoşulları göz önünde bulundurun:
 
@@ -350,7 +350,7 @@ Azure portal veya PowerShell 'i kullanarak Azure SQL yönetilen örneği 'nde ik
 
 Performans nedenleriyle, [eşleştirilmiş bölgelere](../../best-practices-availability-paired-regions.md) her iki yönetilen örneği de dağıtın. Coğrafi olarak eşleştirilmiş bölgelerde bulunan yönetilen örneklerin eşleştirildiği bölgelere kıyasla çok daha iyi bir performansı vardır. 
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki önkoşulları göz önünde bulundurun:
 

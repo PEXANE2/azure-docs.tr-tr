@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c570c43560ad865b8bcc5161cbd0c6731ea4a237
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16af8b8c1258ef7945e88a7af42e86a7bba2003b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90090661"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963270"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Windows için Azure Performans Tanılama VM Uzantısı
 
-Azure Performans Tanılama VM uzantısı, Windows VM 'lerinden Performans Tanılama verilerinin toplanmasını sağlar. Uzantı analiz gerçekleştirir ve sanal makinede performans sorunlarını belirlemek ve çözmek için bulgular ve öneriler hakkında bir rapor sağlar. Bu uzantı, [Perfinsıghts](https://aka.ms/perfinsights)adlı bir sorun giderme aracı yüklüyor.
+Azure Performans Tanılama VM uzantısı, Windows VM 'lerinden Performans Tanılama verilerinin toplanmasını sağlar. Uzantı analiz gerçekleştirir ve sanal makinede performans sorunlarını belirlemek ve çözmek için bulgular ve öneriler hakkında bir rapor sağlar. Bu uzantı, [Perfinsıghts](./how-to-use-perfinsights.md)adlı bir sorun giderme aracı yüklüyor.
 
 > [!NOTE]
 > Klasik olmayan VM 'Ler için Azure portal sanal makinelerinizdeki tanılamayı çalıştırmak istiyorsanız, yeni deneyim kullanılması önerilir. Daha fazla bilgi için bkz. [Azure sanal makineler Için Performans Tanılama](performance-diagnostics.md) 
@@ -237,7 +237,7 @@ Set-AzVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
 ```
 
 ## <a name="information-on-the-data-captured"></a>Yakalanan veriler hakkında bilgi
-Perfinsıghts Aracı, seçilen senaryoya bağlı olarak çeşitli günlükleri, yapılandırmaları ve tanılama verilerini toplar. Daha fazla bilgi için bkz. [Perfinsıghts belgeleri](https://aka.ms/perfinsights).
+Perfinsıghts Aracı, seçilen senaryoya bağlı olarak çeşitli günlükleri, yapılandırmaları ve tanılama verilerini toplar. Daha fazla bilgi için bkz. [Perfinsıghts belgeleri](./how-to-use-perfinsights.md).
 
 ## <a name="view-and-share-the-results"></a>Sonuçları görüntüleme ve paylaşma
 

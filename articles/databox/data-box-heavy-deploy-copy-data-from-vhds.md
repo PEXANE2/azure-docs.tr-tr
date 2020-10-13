@@ -9,18 +9,18 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 01031159d1894c7cb5f36b48f268186dff21fd22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 755d0077abcba71d705a14643f5c2b28001bfa13
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77471338"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951443"
 ---
 # <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>Öğretici: Azure 'da verileri yönetilen diskler olarak içeri aktarmak için Data Box Heavy kullanma
 
 Bu öğreticide, şirket içi VHD 'leri Azure 'da yönetilen disklere geçirmek için Azure Data Box Heavy nasıl kullanılacağı açıklanmaktadır. Şirket içi VM 'lerden VHD 'Ler, sayfa Blobları olarak Data Box Heavy kopyalanır ve yönetilen diskler olarak Azure 'a yüklenir. Bu yönetilen diskler daha sonra Azure VM 'lerine iliştirilebilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Önkoşulları inceleyin
@@ -75,11 +75,11 @@ Windows Server ana bilgisayarı kullanıyorsanız Data Box Heavy'ye bağlanmak i
     > [!NOTE]
     > Yönetilen disklerin tüm paylaşımlarının kimlik bilgileri aynıdır.
 
-    ![Paylaşım kimlik bilgilerini alma 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
+    ![Paylaşım kimlik bilgilerini alma](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
-2. Erişim paylaşma ve verileri kopyalama iletişim kutusunda, paylaşımın **Kullanıcı adını** ve **parolasını** kopyalayın. **Tamam** düğmesine tıklayın.
+2. Erişim paylaşma ve verileri kopyalama iletişim kutusunda, paylaşımın **Kullanıcı adını** ve **parolasını** kopyalayın. **Tamam**'a tıklayın.
     
-    ![Paylaşım kimlik bilgilerini alma 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
+    ![Paylaşım kimlik bilgilerini alma 2](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
 3. Ana bilgisayarınızdaki kaynakla ilişkili paylaşımlara (aşağıdaki örnekte*mydbmdrg1* ) erişmek için bir komut penceresi açın. Komut istemine şunları yazın:
 
@@ -101,7 +101,7 @@ Windows Server ana bilgisayarı kullanıyorsanız Data Box Heavy'ye bağlanmak i
 
 4. Windows + R tuşlarına basın. **Çalıştır** penceresinde `\\<device IP address>\<ShareName>` değerini belirtin. Dosya Gezgini'ni açmak için **Tamam**’a tıklayın.
     
-    ![Paylaşıma Dosya Gezgini ile bağlanma 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
+    ![Dosya Gezgini aracılığıyla paylaşıma bağlanma](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
 
     Artık her bir paylaşımda aşağıdaki daha önceden düzenlenen klasörleri görmeniz gerekir.
     
@@ -114,7 +114,7 @@ Bir Linux ana bilgisayar kullanıyorsanız, cihazınızı NFS istemcilerine eri�
 
 1. Paylaşıma erişmesine izin verilen istemcilerin IP adreslerini sağlayın. Yerel web arabiriminde **Bağlan ve kopyala** sayfasına gidin. **NFS ayarları** bölümünde **NFS istemci erişimi**'ne tıklayın.
 
-    ![NFS istemci erişimini yapılandırma 1](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
+    ![NFS istemci erişimini yapılandırma](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
 
 2. NFS istemcisinin IP adresini girin ve **Ekle**'ye tıklayın. Bu adımı tekrarlayarak birden fazla NFS istemcisi için erişim sağlayabilirsiniz. **Tamam**'a tıklayın.
 

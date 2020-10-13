@@ -13,12 +13,12 @@ ms.date: 10/09/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 4d915cee962546e355ee9d53c683581730bbbf36
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 77cb3b0c13a6bfe41c6f7a1a5a0f9d7278aea1db
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91778873"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930161"
 ---
 # <a name="microsoft-identity-web-authentication-library"></a>Microsoft Identity Web kimlik doğrulaması kitaplığı
 
@@ -28,7 +28,7 @@ Microsoft Identity Web, Microsoft Identity platformu ile tümleştirerek Web uyg
 
 ASP.NET Core Web uygulamaları veya Web API 'Leri oluşturuyorsanız ve kimlik ve erişim yönetimi (ıAM) için Azure Active Directory (Azure AD) veya Azure AD B2C kullanmak istiyorsanız, bu senaryoların tümünde Microsoft Identity Web kullanmanızı öneririz:
 
-- [Kullanıcılar için oturum açan web uygulaması](scenario-web-app-sign-user-overview.md)
+- [Kullanıcıların oturum açtığı web uygulaması](scenario-web-app-sign-user-overview.md)
 - [Kullanıcılara oturum açan ve kendi adına bir Web API 'SI çağıran Web uygulaması](scenario-web-app-call-api-overview.md)
 - [Yalnızca kimliği doğrulanmış kullanıcıların erişebileceği korumalı Web API 'SI](scenario-protected-web-api-overview.md)
 - [Oturum açmış kullanıcı adına başka bir (aşağı akış) Web API 'SI çağıran korumalı Web API 'SI](scenario-web-api-call-api-overview.md)
@@ -44,6 +44,7 @@ Microsoft Identity Web,, uygulamanızın ihtiyaçlarını temel alan modüler i�
 - [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) -ana paket. Microsoft Identity Web kullanan tüm uygulamalar için gereklidir.
 - [Microsoft. Identity. Web. UI](https://www.nuget.org/packages/Microsoft.Identity.Web.UI) -isteğe bağlı. Kullanıcı oturum açma ve oturum kapatma için kullanıcı ARABIRIMI ve Web uygulamaları için ilişkili bir denetleyici ekler.
 - [Microsoft. Identity. Web. MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) -isteğe bağlı. Microsoft Graph API ile basitleştirilmiş etkileşim sağlar.
+- [Microsoft. Identity. Web. MicrosoftGraphBeta](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraphBeta) -isteğe bağlı. Microsoft Graph API [Beta uç noktasıyla](/graph/api/overview?view=graph-rest-beta&preserve-view=true)Basitleştirilmiş etkileşim sağlar.
 
 #### <a name="project-templates"></a>Proje şablonları
 
@@ -69,7 +70,7 @@ dotnet new blazorserver2 --auth SingleOrg --calls-graph --client-id &quot;000000
 
 #### <a name="github"></a>GitHub
 
-Microsoft Identity Web, GitHub: [Azuread/Microsoft-Identity-Web](https://github.com/AzureAD/microsoft-identity-web?azure-portal=true) üzerinde barındırılan açık kaynaklı bir projem
+Microsoft Identity Web, GitHub: <a href="https://github.com/AzureAD/microsoft-identity-web" target="_blank">Azuread/Microsoft-Identity-Web <span class="docon docon-navigate-external x-hidden-focus"></span> </a> üzerinde barındırılan açık kaynaklı bir projem
 
 [Depo wiki](https://github.com/AzureAD/microsoft-identity-web/wiki) ek belgeler içerir ve yardıma ihtiyacınız varsa veya bir hatayı buldıysanız [bir sorun](https://github.com/AzureAD/microsoft-identity-web/issues)oluşturabilirsiniz.
 
@@ -98,8 +99,8 @@ Microsoft Identity Web 'i çalışır durumda görmek için Blazor sunucu Öğre
 
 GitHub 'daki Microsoft Identity Web wiki, kitaplığın çeşitli yönleri için kapsamlı başvuru belgeleri içerir. Örneğin, sertifika kullanımı, artımlı izin ve koşullu erişim başvurusu şurada bulunabilir:
 
-- [Sertifikaları Microsoft. Identity. Web](https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates?azure-portal=true) (GitHub) ile kullanma
-- [Artımlı izin ve koşullu erişim](https://github.com/AzureAD/microsoft-identity-web/wiki/Managing-incremental-consent-and-conditional-access?azure-portal=true) (GitHub)
+- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates" target="_blank">Microsoft. Identity. Web <span class="docon docon-navigate-external x-hidden-focus"></span> Ile sertifikaları kullanma</a> GitHub
+- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Managing-incremental-consent-and-conditional-access" target="_blank">Artımlı izin ve koşullu erişim <span class="docon docon-navigate-external x-hidden-focus"></span> </a> GitHub
 
 <!-- LINKS -->
 <!--  [miw-certs]: microsoft-identity-web-certificates.md  -->

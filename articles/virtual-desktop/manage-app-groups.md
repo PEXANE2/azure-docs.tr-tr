@@ -3,15 +3,15 @@ title: Windows sanal masaüstü portalı için uygulama gruplarını yönetme-Az
 description: Azure portal ile Windows sanal masaüstü uygulama gruplarını yönetme.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 09/04/2020
+ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: beac9f64b12a07d2fc900099ee1f107e4981f17e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec26f021ffa581b0713973904c97349df83a08ef
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320226"
+ms.locfileid: "91930280"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>Öğretici: Azure portal ile uygulama gruplarını yönetme
 
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 Azure portal veya PowerShell 'i kullanarak bir konak havuzu ve oturum ana bilgisayar VM 'Leri zaten oluşturduysanız, Azure portal uygulama gruplarını aşağıdaki işlemle ekleyebilirsiniz:
 
-1.  [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1.  [Azure portalında](https://portal.azure.com/) oturum açın.
    
     >[!NOTE]
     > US Gov portalında oturum açıyorsanız, [https://portal.azure.us/](https://portal.azure.us/) bunun yerine öğesine gidin.
@@ -124,7 +124,7 @@ Dağıtım işlemi sizin için aşağıdaki işlemleri yapar:
 - Daha sonra indirileceği ve kaydedebileceğiniz yapılandırmanıza göre Azure Resource Manager şablonuna yönelik bir bağlantı oluşturun.
 
 >[!IMPORTANT]
->Her Azure Active Directory kiracı için yalnızca 50 uygulama grubu oluşturabilirsiniz. Kullanıcılarımıza ait akışların alınması için hizmet sınırlamaları nedeniyle bu limiti ekledik. Bu sınır, Windows sanal masaüstü 'nde (klasik) oluşturulan uygulama grupları için geçerlidir.
+>Her Azure Active Directory kiracı için yalnızca 200 uygulama grubu oluşturabilirsiniz. Kullanıcılarımıza ait akışların alınması için hizmet sınırlamaları nedeniyle bu limiti ekledik. Bu sınır, Windows sanal masaüstü 'nde (klasik) oluşturulan uygulama grupları için geçerlidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

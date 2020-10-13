@@ -3,12 +3,12 @@ title: Azure VMware çözümünde Web uygulamalarınızı korumak için Azure Ap
 description: Azure VMware çözümünde çalışan Web uygulamalarınızı güvenli bir şekilde sunmak için Azure Application Gateway 'i yapılandırın.
 ms.topic: how-to
 ms.date: 07/31/2020
-ms.openlocfilehash: ad7cd36d77da41d75ea9dcc18a51d0ffc5540d2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b63b7348419500504cb45917d741cc17e2b8a622
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91580567"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951460"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Azure VMware çözümünde Web uygulamalarınızı korumak için Azure Application Gateway kullanma
 
@@ -146,4 +146,4 @@ Azure Application Gateway, URL yolu tabanlı yönlendirme kurallarını yapılan
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Daha fazla yapılandırma örneği için [Azure Application Gateway belgelerini](https://docs.microsoft.com/azure/application-gateway/) gözden geçirin.
+Daha fazla yapılandırma örneği için [Azure Application Gateway belgelerini](../application-gateway/index.yml) gözden geçirin.

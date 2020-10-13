@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4ac3a43776ee71716e618d7a1698aa1915d3d1b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c0158e4bdaff5400404b290e27837bfb3b95419
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331361"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974830"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için Azure sanal makineler DBMS dağıtımına yönelik konular
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -273,7 +273,7 @@ Başka artıklık yöntemleri vardır. Daha fazla bilgi için bkz. [Azure Storag
 
 
 ## <a name="vm-node-resiliency"></a>VM düğümü dayanıklılığı
-Azure, VM 'Ler için çeşitli farklı SLA 'Lar sunar. Daha fazla bilgi için bkz. [sanal makineler Için SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)'nın en son sürümü. DBMS katmanı bir SAP sisteminde kullanılabilirlik açısından kritik olduğundan, kullanılabilirlik kümelerini, Kullanılabilirlik Alanları ve bakım olaylarını anlamanız gerekir. Bu kavramlar hakkında daha fazla bilgi için bkz. Azure ['Da Windows sanal makinelerinin kullanılabilirliğini yönetme](../../windows/manage-availability.md) ve [Linux sanal makinelerinin kullanılabilirliğini yönetme](../../linux/manage-availability.md).
+Azure, VM 'Ler için çeşitli farklı SLA 'Lar sunar. Daha fazla bilgi için bkz. [sanal makineler Için SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)'nın en son sürümü. DBMS katmanı bir SAP sisteminde kullanılabilirlik açısından kritik olduğundan, kullanılabilirlik kümelerini, Kullanılabilirlik Alanları ve bakım olaylarını anlamanız gerekir. Bu kavramlar hakkında daha fazla bilgi için bkz. Azure ['Da Windows sanal makinelerinin kullanılabilirliğini yönetme](../../manage-availability.md) ve [Linux sanal makinelerinin kullanılabilirliğini yönetme](../../manage-availability.md).
 
 SAP iş yüküne sahip üretim DBMS senaryolarının en düşük önerisi şunlardır:
 
@@ -295,7 +295,7 @@ Bu en iyi uygulamalar yüzlerce müşteri dağıtımı sonucudur:
 - SAP uygulamasının dağıtıldığı sanal ağlar internet erişimi yok.
 - Veritabanı VM 'Leri, uygulama katmanıyla aynı sanal ağda çalışır ve SAP uygulama katmanından farklı bir alt ağda ayrılır.
 - Sanal ağ içindeki VM 'Ler, özel IP adresinin statik bir ayırmasını vardır. Daha fazla bilgi için bkz. [Azure 'Da IP adresi türleri ve ayırma yöntemleri](../../../virtual-network/public-ip-addresses.md).
-- DBMS VM 'lerine ve bu kaynaklardan yönlendirme kısıtlamaları, yerel DBMS sanal makinelerinde yüklü olan güvenlik duvarları ile *birlikte ayarlanmamış.* Bunun yerine, trafik yönlendirme [ağ güvenlik grupları (NSG 'ler)](../../../virtual-network/security-overview.md)ile tanımlanır.
+- DBMS VM 'lerine ve bu kaynaklardan yönlendirme kısıtlamaları, yerel DBMS sanal makinelerinde yüklü olan güvenlik duvarları ile *birlikte ayarlanmamış.* Bunun yerine, trafik yönlendirme [ağ güvenlik grupları (NSG 'ler)](../../../virtual-network/network-security-groups-overview.md)ile tanımlanır.
 - Trafiği DBMS VM 'ye ayırmak ve yalıtmak için VM 'ye farklı NIC 'ler atayın. Her NIC farklı bir IP adresi alır ve her NIC farklı bir sanal ağ alt ağına atanır. Her alt ağın farklı NSG kuralları vardır. Ağ trafiğinin yalıtımı veya ayrımı, yönlendirme için bir ölçüdür. Ağ işleme kotalarını ayarlamak için kullanılmaz.
 
 > [!NOTE]
@@ -304,7 +304,7 @@ Bu en iyi uygulamalar yüzlerce müşteri dağıtımı sonucudur:
 
 
 > [!WARNING]
-> SAP uygulaması ile SAP NetWeaver-, Hybru-veya S/4HANA tabanlı SAP sisteminin DBMS katmanı arasındaki iletişim yolundaki [ağ sanal gereçlerini](https://azure.microsoft.com/solutions/network-appliances/) yapılandırma desteklenmez. Bu kısıtlama, işlevsellik ve performans nedenleriyle yapılır. SAP uygulama katmanı ve DBMS katmanı arasındaki iletişim yolu doğrudan bir tane olmalıdır. Kısıtlama, bu ASG ve NSG kuralları doğrudan iletişim yoluna izin veriyorsa, [uygulama güvenlik grubu (ASG) ve NSG kurallarını](../../../virtual-network/security-overview.md) içermez. 
+> SAP uygulaması ile SAP NetWeaver-, Hybru-veya S/4HANA tabanlı SAP sisteminin DBMS katmanı arasındaki iletişim yolundaki [ağ sanal gereçlerini](https://azure.microsoft.com/solutions/network-appliances/) yapılandırma desteklenmez. Bu kısıtlama, işlevsellik ve performans nedenleriyle yapılır. SAP uygulama katmanı ve DBMS katmanı arasındaki iletişim yolu doğrudan bir tane olmalıdır. Kısıtlama, bu ASG ve NSG kuralları doğrudan iletişim yoluna izin veriyorsa, [uygulama güvenlik grubu (ASG) ve NSG kurallarını](../../../virtual-network/network-security-groups-overview.md) içermez. 
 >
 > Ağ sanal gereçlerinin desteklenmeyen diğer senaryolar şunlardır:
 >
@@ -333,7 +333,7 @@ Veritabanı düğümünün yük devretmesi varsa, SAP uygulamasının yeniden ya
 
 Azure iki farklı [yük dengeleyici SKU](../../../load-balancer/load-balancer-overview.md)'su sunar: temel bir SKU ve standart SKU. Kurulum ve işlevsellik avantajlarına bağlı olarak, Azure Yük dengeleyicinin standart SKU 'sunu kullanmanız gerekir. Yük dengeleyicinin standart sürümünün büyük avantajlarından biri, veri trafiğinin yük dengeleyici üzerinden yönlendirilmesidir.
 
-Bir iç yük dengeleyiciyi nasıl yapılandırabileceğiniz hakkında örnek olarak, [Azure sanal makinelerindeki SQL Server kullanılabilirlik grubunu el Ile yapılandırma](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/availability-group-manually-configure-tutorial#create-an-azure-load-balancer) makalesine ulaşabilirsiniz.
+Bir iç yük dengeleyiciyi nasıl yapılandırabileceğiniz hakkında örnek olarak, [Azure sanal makinelerindeki SQL Server kullanılabilirlik grubunu el Ile yapılandırma](../../../azure-sql/virtual-machines/windows/availability-group-manually-configure-tutorial.md#create-an-azure-load-balancer) makalesine ulaşabilirsiniz.
 
 > [!NOTE]
 > Genel IP adreslerinin erişimiyle ilgili temel ve standart SKU 'nun davranışında farklılıklar vardır. Genel IP adreslerine erişmek için standart SKU 'nun kısıtlamalarına geçici çözüm olarak nasıl çalışılacağı, [SAP yüksek kullanılabilirlik senaryolarında Azure Standart Load Balancer kullanan sanal makineler Için genel uç nokta bağlantısı](./high-availability-guide-standard-load-balancer-outbound-connections.md) belgesinde açıklanmaktadır
