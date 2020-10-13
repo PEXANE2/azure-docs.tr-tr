@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: dfd0929ea03cd99033482f71579e91aaf6fc131c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 531c423e42338b72b41c54466d5bfe8a89cd3c45
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88068345"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969646"
 ---
 # <a name="azure-image-builder-service-networking-options"></a>Azure görüntü Oluşturucu hizmeti ağ seçenekleri
 
@@ -33,7 +33,7 @@ Daha fazla bilgi için aşağıdaki örneklerden birine bakın:
 
 ### <a name="what-is-azure-private-link"></a>Azure Özel Bağlantı nedir?
 
-Azure özel bağlantısı, bir sanal ağdan bir hizmet olarak Azure platformu (PaaS), müşteriye ait veya Microsoft iş ortağı hizmetleri arasında özel bağlantı sağlar. Ağ mimarisini basitleştirir ve genel İnternet 'teki verileri açığa kaldırarak Azure 'daki uç noktalar arasındaki bağlantıyı korur. Daha fazla bilgi için bkz. [özel bağlantı belgeleri](https://docs.microsoft.com/azure/private-link).
+Azure özel bağlantısı, bir sanal ağdan bir hizmet olarak Azure platformu (PaaS), müşteriye ait veya Microsoft iş ortağı hizmetleri arasında özel bağlantı sağlar. Ağ mimarisini basitleştirir ve genel İnternet 'teki verileri açığa kaldırarak Azure 'daki uç noktalar arasındaki bağlantıyı korur. Daha fazla bilgi için bkz. [özel bağlantı belgeleri](../../private-link/index.yml).
 
 ### <a name="required-permissions-for-an-existing-vnet"></a>Mevcut bir VNET için gerekli izinler
 
@@ -68,7 +68,7 @@ Dağıtılan proxy VM boyutu, yapı VM 'ye ek olarak standart A1_v2. Proxy VM, A
 | subnetName | Belirtilen sanal ağ içindeki alt ağın adı. Yalnızca *ad* belirtilmişse belirtilmesi gerekir. |
 | resourceGroupName | Belirtilen sanal ağı içeren kaynak grubunun adı. Yalnızca *ad* belirtilmişse belirtilmesi gerekir. |
 
-Özel bağlantı hizmeti, belirtilen VNET ve alt ağdan bir IP gerektirir. Şu anda Azure bu IP 'lerde ağ Ilkelerini desteklemez. Bu nedenle, ağ ilkelerinin alt ağda devre dışı bırakılması gerekir. Daha fazla bilgi için bkz. [özel bağlantı belgeleri](https://docs.microsoft.com/azure/private-link).
+Özel bağlantı hizmeti, belirtilen VNET ve alt ağdan bir IP gerektirir. Şu anda Azure bu IP 'lerde ağ Ilkelerini desteklemez. Bu nedenle, ağ ilkelerinin alt ağda devre dışı bırakılması gerekir. Daha fazla bilgi için bkz. [özel bağlantı belgeleri](../../private-link/index.yml).
 
 ### <a name="checklist-for-using-your-vnet"></a>VNET 'iniz kullanmaya yönelik denetim listesi
 

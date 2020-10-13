@@ -11,10 +11,10 @@ ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
 ms.openlocfilehash: dba43c9e9b214a1ad077a2a15bdf014e057bb04e
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88869890"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Azure bilişsel hizmetler için doğal dil desteği
@@ -39,7 +39,7 @@ Bu bilişsel hizmetler dilden bağımsızdır ve insan diline göre sınırlamal
 
 * [Tam Ekran Okuyucu](./immersive-reader/language-support.md)
 * [Language Understanding (LUIS)](./luis/luis-supported-languages.md)
-* [Soru-Cevap Oluşturucu](./qnamaker/overview/languages-supported.md)
+* [Soru-Cevap Oluşturma](./qnamaker/overview/languages-supported.md)
 * [Metin Analizi](./text-analytics/text-analytics-supported-languages.md)
 * [Çevirmen](./translator/languages.md)
 
@@ -49,7 +49,7 @@ Bu bilişsel hizmetler dilden bağımsızdır ve insan diline göre sınırlamal
 * [Konuşma hizmeti: metinden konuşmaya](./speech-service/supported-languages.md#text-to-speech)
 * [Konuşma hizmeti: konuşma çevirisi](./speech-service/supported-languages.md#speech-translation)
 
-## <a name="search"></a>Arayın
+## <a name="search"></a>Search
 
 * [Bing Özel Arama](./bing-custom-search/supported-countries-markets.md)
 * [Bing Resim Arama](./bing-image-search/supported-countries-markets.md)

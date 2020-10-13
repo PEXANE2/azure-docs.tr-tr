@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eb7d7d6296432146e6e4390b0df62964ffe6f8da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4a21300872e98a35ea27835385b4045921f4657
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758107"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969577"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -45,7 +45,7 @@ Belirli sorularınız varsa, başlangıç sayfasının bu bölümündeki belirli
     - [HANA büyük örneği için desteklenen senaryolar](./hana-supported-scenario.md)
 - Azure Hizmetleri, Azure VM türleri ve Azure Depolama Hizmetleri farklı Azure bölgelerinde kullanılabilir, [bölgeye göre kullanılabilir site ürünlerini](https://azure.microsoft.com/global-infrastructure/services/) kontrol edin 
 - Windows ve Paceyapıcısı 'nin desteklenme yanı sıra üçüncü taraf HA çerçevesi çalışıyor mu? [Sap destek notunun](https://launchpad.support.sap.com/#/notes/1928533) alt kısmına bakın #1928533
-- Senaryoum için en iyi Azure depolama alanı nedir? [SAP iş yükü Için Azure depolama türlerini](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) okuyun
+- Senaryoum için en iyi Azure depolama alanı nedir? [SAP iş yükü Için Azure depolama türlerini](./planning-guide-storage.md) okuyun
 
  
 ## <a name="sap-hana-on-azure-large-instances"></a>Azure’da SAP HANA (Büyük Örnekler)
@@ -84,23 +84,23 @@ Bu bölümde, SAP SaaS ve PaaS hizmetleri, NetWeaver ve Fiori ' nin birçoğu il
 
 - 10/05/2020: [RHEL yapılandırma kılavuzunda Azure VM 'Lerinde pacemaker ile SAP HANA genişleme HSR](./sap-hana-high-availability-scale-out-hsr-rhel.md) sürümü
 - 09/30/2020: [RHEL üzerinde Azure VM 'lerinde SAP HANA yüksek kullanılabilirlik](./sap-hana-high-availability-rhel.md), ha, RHEL [üzerinde anf ile SAP HANA ölçeği artırma](./sap-hana-high-availability-netapp-files-red-hat.md) ve RHEL 8,1 yönergelerini uyarlamak için [Azure 'Da RHEL üzerinde paceyapıcısı ayarlama](./high-availability-guide-rhel-pacemaker.md)
-- 09/29/2020: [SAP uygulamalarıyla en iyi ağ gecikme süresi Için Azure yakınlık yerleşimi grupları](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) makalesindeki PPG kullanımı etrafında kısıtlamalar ve öneriler yapılıyor 
-- 09/28/2020: [SAP HANA için Azure NetApp Files belge NFS v 4.1 birimleri](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp) ile Azure NetApp Files kullanarak SAP HANA için yeni bir depolama işlemi Kılavuzu ekleniyor
-- 09/23/2020: [hLi Için kullanılabilir SKU 'larda](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus) hLi için yeni sertifikalı SKU 'lar ekleyin 
-- 09/20/2020: belgelerde yapılan değişiklikler [SAP iş yükü](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)için Azure sanal makineleri dbms dağıtımı [SQL Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sqlserver), SAP NetWeaver IÇIN Azure sanal makineler DBMS dağıtımı, [Azure sanal makineler for SAP Iş yükü için Azure sanal makineleri, Azure sanal makineler, SAP Iş yüküne](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_oracle)yönelik [IBM DB2 Azure sanal makineler](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm) ve SAP ikililerini farklı Azure disklerine ayırmayı sağlayan yeni yapılandırma önerisine uyum sağlar. Ayrıca, farklı kılavuzlara Ultra disk önerileri de ekleniyor.
+- 09/29/2020: [SAP uygulamalarıyla en iyi ağ gecikme süresi Için Azure yakınlık yerleşimi grupları](./sap-proximity-placement-scenarios.md) makalesindeki PPG kullanımı etrafında kısıtlamalar ve öneriler yapılıyor 
+- 09/28/2020: [SAP HANA için Azure NetApp Files belge NFS v 4.1 birimleri](./hana-vm-operations-netapp.md) ile Azure NetApp Files kullanarak SAP HANA için yeni bir depolama işlemi Kılavuzu ekleniyor
+- 09/23/2020: [hLi Için kullanılabilir SKU 'larda](./hana-available-skus.md) hLi için yeni sertifikalı SKU 'lar ekleyin 
+- 09/20/2020: belgelerde yapılan değişiklikler [SAP iş yükü](./dbms_guide_general.md)için Azure sanal makineleri dbms dağıtımı [SQL Server](./dbms_guide_sqlserver.md), SAP NetWeaver IÇIN Azure sanal makineler DBMS dağıtımı, [Azure sanal makineler for SAP Iş yükü için Azure sanal makineleri, Azure sanal makineler, SAP Iş yüküne](./dbms_guide_oracle.md)yönelik [IBM DB2 Azure sanal makineler](./dbms_guide_ibm.md) ve SAP ikililerini farklı Azure disklerine ayırmayı sağlayan yeni yapılandırma önerisine uyum sağlar. Ayrıca, farklı kılavuzlara Ultra disk önerileri de ekleniyor.
 - 09/08/2020: stonıth tanımlarını netleştirmek için [SLES 'teki Azure VM 'lerinde SAP HANA yüksek kullanılabilirlik](./sap-hana-high-availability.md) olarak değiştirin
-- 09/03/2020: [SAP HANA Azure sanal makine depolama yapılandırmalarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) , Ultra disk Ile 1 GB 'lik kapasite başına en az 2 IOPS olacak şekilde değiştirin
-- 09/02/2020: [HLI Için kullanılabilir SKU](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus) 'LARDA, Hana sertifikalı SKU 'lar daha fazla saydam olacak şekilde değiştirin
+- 09/03/2020: [SAP HANA Azure sanal makine depolama yapılandırmalarında](./hana-vm-operations-storage.md) , Ultra disk Ile 1 GB 'lik kapasite başına en az 2 IOPS olacak şekilde değiştirin
+- 09/02/2020: [HLI Için kullanılabilir SKU](./hana-available-skus.md) 'LARDA, Hana sertifikalı SKU 'lar daha fazla saydam olacak şekilde değiştirin
 - 08/28/2020: mımpo 'yi onarmak için [ANF Ile SLES 'Teki Azure VM 'LERINDE SAP NW Için ha](./high-availability-guide-suse-netapp-files.md) 'de değiştirin
 - 08/25/2020: [wsfc ve paylaşılan disk Ile SAP ascs/SCS Için ha kılavuzunda](./sap-high-availability-guide-wsfc-shared-disk.md)değişiklik yaparken, wsfc ve paylaşılan DISK [Ile SAP ascs/SCS için Azure altyapısını hazırlayın](./sap-high-availability-infrastructure-wsfc-shared-disk.md) ve Azure PAYLAŞıLAN DISK ve belge SAP ERS2 mimarisini kullanma seçeneğini göstermek için [wsfc ve PAYLAŞıLAN disk Ile SAP NW ha 'yı yükledikten](./sap-high-availability-guide-wsfc-shared-disk.md) sonra
 - 08/25/2020: [wsfc ve Azure Paylaşılan disk Ile SAP yoks/SCS için çok DÜZEYLI ha kılavuzunun](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md) yayını
 - 08/25/2020: [wsfc ve Azure NetApp Files (SMB) Ile SAP ASCS/SCS Için ha kılavuzunda](./high-availability-guide-windows-netapp-files-smb.md)değiştirme wsfc ve [dosya paylaşımıyla](./sap-high-availability-infrastructure-wsfc-file-share.md)SAP yoks/SCS, wsfc ve [paylaşılan disk](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md) ile SAP yoks/SCS için çok düzeyli ha Kılavuzu, wsfc ve paylaşılan disk ile SAP yoks/SCS IÇIN çok [düzeyli ha Kılavuzu ve WFC](./sap-ascs-ha-multi-sid-wsfc-file-share.md) ve paylaşılan disk ile SAP 
-- 08/21/2020: I ve II türünde HLı birimler için kullanılabilir işletim sistemi olarak, [Hana büyük örnekleri Için uyumlu Işletim sistemlerine](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance) yeni işletim sistemi sürümü ekleniyor
+- 08/21/2020: I ve II türünde HLı birimler için kullanılabilir işletim sistemi olarak, [Hana büyük örnekleri Için uyumlu Işletim sistemlerine](./os-compatibility-matrix-hana-large-instance.md) yeni işletim sistemi sürümü ekleniyor
 - 08/18/2020: [RHEL üzerinde ANF ile SAP HANA ölçeği Için ha](./sap-hana-high-availability-netapp-files-red-hat.md) sürümü
 - 08/17/2020: SAP NetWeaver sistemlerini Şirket içinden Azure 'a taşımak için Azure Site Recovery kullanma hakkında bilgi ekleyin. [Azure sanal makineler planlama ve uygulama için, SAP NetWeaver](./planning-guide.md)
-- 08/14/2020: [IBM DB2 Azure sanal makineleri için disk yapılandırma önerisi, SAP Için Azure sanal MAKINELER DBMS dağıtımı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm)
-- 08/11/2020: RHEL 7,6, [Hana büyük örnekleri Için uyumlu Işletim sistemlerine](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance) , ı türünde HLI birimler için kullanılabilir işletim sistemi olarak ekleniyor
-- 08/10/2020: [Azure sanal makine depolama yapılandırmalarında SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) SAP HANA depolama yapılandırması ve [Azure 'da SAP iş yükleri için bazı güncelleştirmeler yapma: planlama ve dağıtım denetim listesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
+- 08/14/2020: [IBM DB2 Azure sanal makineleri için disk yapılandırma önerisi, SAP Için Azure sanal MAKINELER DBMS dağıtımı](./dbms_guide_ibm.md)
+- 08/11/2020: RHEL 7,6, [Hana büyük örnekleri Için uyumlu Işletim sistemlerine](./os-compatibility-matrix-hana-large-instance.md) , ı türünde HLI birimler için kullanılabilir işletim sistemi olarak ekleniyor
+- 08/10/2020: [Azure sanal makine depolama yapılandırmalarında SAP HANA](./hana-vm-operations-storage.md) SAP HANA depolama yapılandırması ve [Azure 'da SAP iş yükleri için bazı güncelleştirmeler yapma: planlama ve dağıtım denetim listesi](./sap-deployment-checklist.md)
 - 08/04/2020: [Azure 'DA SLES 'de pacemaker 'ı ayarlama](./high-availability-guide-suse-pacemaker.md) ve [Azure 'daki RHEL 'de pacemaker](./high-availability-guide-rhel-pacemaker.md) 'ı ayarlama sırasında değişiklik yaparken, paceoluşturucu kümeleri için güvenilir ad çözümlemesinin önemini vurgulayın
 - 08/04/2020: [SAP NW ha Ile WFCS 'de, dosya paylaşımıyla](./sap-high-availability-installation-wsfc-file-share.md)değiştirin, [paylaşılan disk ile wfcs 'de SAP NW ha](./sap-high-availability-installation-wsfc-shared-disk.md), [Azure VM](./high-availability-guide.md)'lerinde SAP NW için ha, [SLES](./high-availability-guide-suse.md)üzerinde SAP NW için ha, SLES 'deki [Azure VM 'Lerinde](./high-availability-guide-suse-netapp-files.md)SAP [SLES Multi-SID KıLAVUZUNDAKI Azure VM 'lerinde SAP NW Için ha](./high-availability-guide-suse-multi-sid.md), RHEL 'de Azure VM 'lerinde SAP [NetWeaver için yüksek kullanılabilirlik](./high-availability-guide-rhel.md), Azure VM 'lerinde RHEL 'de SAP [için,](./high-availability-guide-rhel-netapp-files.md) RHEL [Çoklu SID](./high-availability-guide-rhel-multi-sid.md) 'de Azure VM 'lerinde for SAP NW `enque/encni/set_so_keepalive`
 - 23 Temmuz 2020: SAP HANA Büyük Örnekleri ayırmayı satın almadan önce bilmeniz gerekenleri açıklayan [bir Azure rezervasyon ile SAP HANA büyük örnekleri kaydetme](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md) ve satın alma işlemi yapma
@@ -176,4 +176,4 @@ Bu bölümde, SAP SaaS ve PaaS hizmetleri, NetWeaver ve Fiori ' nin birçoğu il
 - 12 Kasım 2019: [Windows 'ta Azure NetApp Files (SMB) Ile SAP NetWeaver Için yüksek kullanılabilirlik](high-availability-guide-windows-netapp-files-smb.md) yayını
 - 8 Kasım 2019: [SUSE Linux Enterprise Server Azure VM 'Lerinde yüksek kullanılabilirlik SAP HANA](sap-hana-high-availability.md)değişiklikler, [Azure sanal makinelerinde (VM) SAP HANA sistem çoğaltması ayarlama](sap-hana-high-availability-rhel.md), Azure [sanal makineler for SAP NETWEAVER için yüksek kullanılabilirlik, SAP uygulamaları için SUSE Linux Enterprise Server](high-availability-guide-suse.md)Azure [sanal makineler SUSE Linux Enterprise Server on Azure NetApp Files ile SAP NetWeaver için yüksek kullanılabilirlik](high-availability-guide-suse-netapp-files.md), [Azure sanal makineler for SAP NetWeaver for Red Hat ENTERPRISE LINUX](high-availability-guide-rhel.md), Azure [sanal makineleri Azure NetApp Files Ile Red Hat Enterprise Linux üzerinde SAP NetWeaver için](high-availability-guide-rhel-netapp-files.md)yüksek [kullanılabilirlik, Azure](high-availability-guide-suse-nfs.md)sanal makineler SUSE Linux Enterprise Server [için Red Hat Enterprise Linux](high-availability-guide-rhel-glusterfs.md)  
 - 8 Kasım 2019: şifreleme önerisini netleştirmek için [SAP iş yükü planlama ve dağıtım denetim listesi](sap-deployment-checklist.md) değişiklikleri  
-- 4 Kasım 2019: [Azure 'daki SUSE Linux Enterprise Server Paceyapıcısı ayarlama](high-availability-guide-suse-pacemaker.md) içindeki değişiklikler, tek noktaya yayın yapılandırmasıyla doğrudan küme oluşturmak için  
+- 4 Kasım 2019: [Azure 'daki SUSE Linux Enterprise Server Paceyapıcısı ayarlama](high-availability-guide-suse-pacemaker.md) içindeki değişiklikler, tek noktaya yayın yapılandırmasıyla doğrudan küme oluşturmak için

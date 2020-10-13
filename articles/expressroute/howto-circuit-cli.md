@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: eebb2693d3bc0f65059c6c3c377f1afb7ae7eccd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1d50c3f8f94fbfd7dbcb9b25e051b7f2951c518
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757614"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969101"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak bir ExpressRoute bağlantı hattı oluşturma ve değiştirme
 
@@ -112,7 +112,7 @@ Yanıt aşağıdaki örneğe benzer:
 
 Bağlantı sağlayıcınızın listelenip listelenmediğini görmek için yanıtı denetleyin. Bir devre oluşturduğunuzda ihtiyacınız olacak aşağıdaki bilgileri unutmayın:
 
-* Adı
+* Name
 * PeeringLocations
 * BandwidthsOffered
 
@@ -347,7 +347,7 @@ Bir ExpressRoute devresini sağlamayı ve silmeyi kaldırmak için aşağıdaki 
 * ExpressRoute bağlantı hattı hizmeti sağlayıcısı sağlama **durumu sağlandıysa veya** sağlanmışsa **Provisioned** , devre dışı bırakmak için hizmet sağlayıcınızla birlikte çalışmanız gerekir. Hizmet sağlayıcısı, devre sağlamasını kaldırmayı ve bize haber verene kadar, kaynakları ayırmaya ve sizi faturalandırmaya devam ediyoruz.
 * Hizmet sağlayıcı, hizmet sağlayıcısı sağlama durumunun **sağlanmamış**olarak ayarlandığı anlamına gelen devre sağlamasını kaldırdıysa, devreyi silebilirsiniz. Devre için faturalandırma daha sonra durur.
 
-## <a name="clean-up-resources"></a><a name="cleanup"></a>Kaynakları temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Aşağıdaki komutu çalıştırarak ExpressRoute devrenizi silebilirsiniz:
 
