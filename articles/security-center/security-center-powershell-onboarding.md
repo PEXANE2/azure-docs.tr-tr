@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
 ms.openlocfilehash: c805b35b2c05600f96983da42ea7206a09e2e3e8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91447391"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>PowerShell kullanarak Azure Güvenlik Merkezi 'Ni otomatik olarak ekleme
@@ -41,7 +41,7 @@ Bu örnekte, KIMLIĞI: d07c0080-170c-4c24-861d-9c817742786c olan bir abonelikte 
 
 6. Güvenlik Merkezi 'nin [varsayılan güvenlik ilkelerini](tutorial-security-policy.md)atayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Güvenlik Merkezi cmdlet 'lerini çalıştırmadan önce Bu adımlar gerçekleştirilmelidir:
 

@@ -4,10 +4,10 @@ description: Bu makaleler, Azure Relay değerlendirmek için yerleşik güvenlik
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 64abee031bb20e2bdb10bf1cc3cd77e135713550
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85316617"
 ---
 # <a name="security-controls-for-azure-relay"></a>Azure Relay için güvenlik denetimleri
@@ -22,7 +22,7 @@ Bu makalede, Azure Relay yerleşik olarak bulunan güvenlik denetimleri Belgelen
 |---|---|--|--|
 | Hizmet uç noktası desteği| Hayır |  |   |
 | Ağ yalıtımı ve güvenlik duvarı desteği| Hayır |  |   |
-| Zorlamalı tünel desteği| YOK | Geçiş, TLS tünelidir  |   |
+| Zorlamalı tünel desteği| Yok | Geçiş, TLS tünelidir  |   |
 
 ## <a name="monitoring--logging"></a>& günlüğü izleme
 
@@ -43,10 +43,10 @@ Bu makalede, Azure Relay yerleşik olarak bulunan güvenlik denetimleri Belgelen
 
 | Güvenlik denetimi | Evet/Hayır | Notlar | Belgeler |
 |---|---|--|--|
-| Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar |  YOK | Geçiş bir Web soketi ve verileri kalıcı yapmaz. |   |
+| Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar |  Yok | Geçiş bir Web soketi ve verileri kalıcı yapmaz. |   |
 | Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Hayır | Yalnızca Microsoft TLS sertifikalarını kullanır.  |   |
-| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| YOK | |   |
-| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | Hizmet için TLS gerekiyor. |   |
+| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Yok | |   |
+| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifrelemesi ve VNet-VNet şifreleme gibi)| Evet | Hizmet için TLS gerekiyor. |   |
 | Şifrelenmiş API çağrıları| Evet | 'Dir. |
 
 

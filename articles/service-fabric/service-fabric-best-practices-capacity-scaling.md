@@ -7,10 +7,10 @@ ms.date: 04/25/2019
 ms.author: pepogors
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 96cd460ddfea863eb27a1087ff59f3b87acf65d8
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90531313"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric için kapasite planlama ve ölçeklendirme
@@ -42,7 +42,7 @@ Sanal Makine Ölçek Kümeleri aracılığıyla otomatik ölçeklendirmeyi kulla
 
 ## <a name="vertical-scaling-considerations"></a>Dikey ölçeklendirme konuları
 
-Azure Service Fabric bir düğüm türünün [Dikey ölçeklendirilmesi](./virtual-machine-scale-set-scale-node-type-scale-out.md) için birkaç adım ve dikkat edilmesi gerekir. Örnek:
+Azure Service Fabric bir düğüm türünün [Dikey ölçeklendirilmesi](./virtual-machine-scale-set-scale-node-type-scale-out.md) için birkaç adım ve dikkat edilmesi gerekir. Örneğin:
 
 * Ölçeklendirmeden önce kümenin sağlıklı olması gerekir. Aksi takdirde, kümeyi daha fazla sabitleyebileceksiniz.
 * Durum bilgisi olmayan hizmetleri barındıran tüm Service Fabric küme düğümü türleri için gümüş dayanıklılık düzeyi veya daha yüksek bir değer gereklidir.
@@ -127,7 +127,7 @@ El ile ölçeklendirmek için, istenen [sanal makine ölçek kümesi](/rest/api/
 }
 ```
 
-Programlı olarak ölçeklendirmek için düğümü kapanmaya hazırlamanız gerekir. Kaldırılacak düğümü (en yüksek örnekli düğüm) bulun. Örnek:
+Programlı olarak ölçeklendirmek için düğümü kapanmaya hazırlamanız gerekir. Kaldırılacak düğümü (en yüksek örnekli düğüm) bulun. Örneğin:
 
 ```csharp
 using (var client = new FabricClient())
@@ -170,7 +170,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 ```
 
 > [!NOTE]
-> Bir kümede ölçeklendirirseniz, kaldırılan düğümü/VM örneğini Service Fabric Explorer uygun olmayan bir durumda görürsünüz. Bu davranışın açıklaması için, [Service Fabric Explorer gözlemleyebileceğiniz davranışlar](./service-fabric-cluster-scale-in-out.md#behaviors-you-may-observe-in-service-fabric-explorer)bölümüne bakın. Seçenekleriniz şunlardır:
+> Bir kümede ölçeklendirirseniz, kaldırılan düğümü/VM örneğini Service Fabric Explorer uygun olmayan bir durumda görürsünüz. Bu davranışın açıklaması için, [Service Fabric Explorer gözlemleyebileceğiniz davranışlar](./service-fabric-cluster-scale-in-out.md#behaviors-you-may-observe-in-service-fabric-explorer)bölümüne bakın. Şunları yapabilirsiniz:
 > * [Remove-ServiceFabricNodeState komutunu](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps&preserve-view=true) uygun düğüm adıyla çağırın.
 > * [Service Fabric otomatik ölçeklendirme yardımcısı uygulamasını](https://github.com/Azure/service-fabric-autoscale-helper/) kümenize dağıtın. Bu uygulama, ölçeklenmiş düğümlerin Service Fabric Explorer temizlenmesini sağlar.
 

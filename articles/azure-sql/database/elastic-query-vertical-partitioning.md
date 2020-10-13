@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: daa1bbbace55281f81e04c4639b083b3e934b9f8
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443085"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Farklı şemalarla bulut veritabanları genelinde sorgulama (Önizleme)
@@ -25,7 +25,7 @@ ms.locfileid: "91443085"
 
 Dikey olarak bölümlenmiş veritabanları, farklı veritabanlarındaki farklı tablo kümelerini kullanır. Diğer bir deyişle, şema farklı veritabanlarında farklı olur. Örneğin, tüm envanter tabloları, tüm muhasebe ile ilgili tablolar ikinci bir veritabanı üzerinde olduğunda tek bir veritabanıdır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Kullanıcı herhangi bir dış VERI kaynağı iznine sahip olmalıdır. Bu izin ALTER DATABASE iznine dahildir.
 * Temel alınan veri kaynağına başvurmak için herhangi bir dış VERI kaynağı izinlerini DEĞIŞTIRME gerekir.
@@ -137,7 +137,7 @@ DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]
 
 **Dış tablo oluşturma/bırakma izinleri**: Ayrıca, temel alınan veri kaynağına başvurmak için gereken dış tablo DDL için HERHANGI BIR dış veri kaynağı izinlerini değiştirme gerekir.  
 
-## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
+## <a name="security-considerations"></a>Güvenlik konuları
 
 Dış tabloya erişimi olan kullanıcılar, dış veri kaynağı tanımında verilen kimlik bilgileri altındaki temeldeki uzak tablolara otomatik olarak erişim elde edebilir. Dış veri kaynağının kimlik bilgisi aracılığıyla ayrıcalıkların istenmeyen olarak yükseltilmesini önlemek için dış tabloya erişimi dikkatle yönetmeniz gerekir. Normal SQL izinleri, bir dış tabloya normal bir tablo gibi erişim vermek veya erişimi Iptal etmek için kullanılabilir.  
 
@@ -184,7 +184,7 @@ SP \_ Execute \_ Remote, uzak veritabanında verilen T-SQL ifadesini yürütmek 
 
 Bı ve veri tümleştirme araçlarınızı, elastik sorgu özellikli ve dış tablolar tanımlanmış sunucuda veritabanlarına bağlamak için normal SQL Server bağlantı dizelerini kullanabilirsiniz. SQL Server, aracınız için bir veri kaynağı olarak desteklendiğinden emin olun. Daha sonra, diğer tüm SQL Server veritabanıyla aynı şekilde, bu şekilde elastik sorgu veritabanına ve dış tablolarına başvurun.
 
-## <a name="best-practices"></a>En iyi uygulamalar
+## <a name="best-practices"></a>Önerilen uygulamalar
 
 * Azure SQL veritabanı güvenlik duvarı yapılandırmasındaki Azure hizmetlerine erişimi etkinleştirerek elastik sorgu uç noktası veritabanına uzak veritabanına erişim verildiğinden emin olun. Ayrıca, dış veri kaynağı tanımında belirtilen kimlik bilgisinin uzak veritabanında başarıyla oturum açabildiğinden ve uzak tabloya erişim izinlerine sahip olduğundan emin olun.  
 * Elastik sorgu en iyi şekilde, hesaplama işlemlerinin büyük bir kısmının uzak veritabanlarında yapılabildiği sorgular için geçerlidir. Genellikle uzak veritabanlarında veya yalnızca uzak veritabanında gerçekleştirilebilecek birleşimlerde değerlendirilebilecek seçmeli filtre koşullarına sahip en iyi sorgu performansını elde edersiniz. Diğer sorgu desenlerinin, uzak veritabanından büyük miktarlarda veri yüklemesi gerekebilir ve kötü bir şekilde çalışabilir.

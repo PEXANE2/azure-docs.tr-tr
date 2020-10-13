@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 67d6fb1f3cc359288ed942d915e186542a62b0fc
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91803951"
 ---
 # <a name="fail-over-to-a-storsimple-8000-series-physical-device"></a>StorSimple 8000 serisi fiziksel cihazına yük devretme
@@ -32,7 +32,7 @@ Cihaz yük devretmesi ve bir olağanüstü durumdan kurtarmak için nasıl kulla
 StorSimple fiziksel cihazını bir StorSimple Cloud Appliance yük devretmek için, [StorSimple Cloud Appliance yük devretme](storsimple-8000-device-failover-cloud-appliance.md)sayfasına gidin. Fiziksel bir cihazın üzerine yük devretmek için [aynı StorSimple fiziksel cihazına yük devretmek](storsimple-8000-device-failover-same-device.md)üzere gidin.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Cihaz yük devretmesi ile ilgili dikkat edilmesi gereken noktaları gözden geçirdiğinizden emin olun. Daha fazla bilgi için [cihaz yük devretmesi Için sık karşılaşılan hususlar](storsimple-8000-device-failover-disaster-recovery.md)bölümüne bakın.
 

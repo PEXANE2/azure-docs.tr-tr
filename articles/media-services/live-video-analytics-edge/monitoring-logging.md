@@ -4,10 +4,10 @@ description: Bu makalede, IoT Edge izleme ve günlüğe kaydetme hakkında canl�
 ms.topic: reference
 ms.date: 04/27/2020
 ms.openlocfilehash: ef00517fc61ac532bdd99c1e887dfd93d56a8c4f
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89567563"
 ---
 # <a name="monitoring-and-logging"></a>İzleme ve günlüğe kaydetme
@@ -21,7 +21,7 @@ Ayrıca, modülün oluşturduğu günlükleri nasıl denetleyebileceğinizi de �
 IoT Edge canlı video analizi, olayları veya telemetri verilerini aşağıdaki sınıflandırmaya göre yayar.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="Olayların taksonomisi":::
+> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="Olayların taksonomisi&quot;:::
 
 * İşletimsel: bir kullanıcı tarafından alınan eylemlerin bir parçası olarak veya bir [medya grafiğinin](media-graph-concept.md)yürütülmesi sırasında oluşturulan olaylar.
    
@@ -32,16 +32,16 @@ IoT Edge canlı video analizi, olayları veya telemetri verilerini aşağıdaki 
       
       ```
       {
-        "body": {
-          "outputType": "assetName",
-          "outputLocation": "sampleAssetFromEVR-LVAEdge-20200512T233309Z"
+        &quot;body&quot;: {
+          &quot;outputType&quot;: &quot;assetName&quot;,
+          &quot;outputLocation&quot;: &quot;sampleAssetFromEVR-LVAEdge-20200512T233309Z&quot;
         },
-        "applicationProperties": {
-          "topic": "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/<my-resource-group>/providers/microsoft.media/mediaservices/<ams-account-name>",
-          "subject": "/graphInstances/Sample-Graph-2/sinks/assetSink",
-          "eventType": "Microsoft.Media.Graph.Operational.RecordingStarted",
-          "eventTime": "2020-05-12T23:33:10.392Z",
-          "dataVersion": "1.0"
+        &quot;applicationProperties&quot;: {
+          &quot;topic&quot;: &quot;/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/<my-resource-group>/providers/microsoft.media/mediaservices/<ams-account-name>&quot;,
+          &quot;subject&quot;: &quot;/graphInstances/Sample-Graph-2/sinks/assetSink&quot;,
+          &quot;eventType&quot;: &quot;Microsoft.Media.Graph.Operational.RecordingStarted&quot;,
+          &quot;eventTime&quot;: &quot;2020-05-12T23:33:10.392Z&quot;,
+          &quot;dataVersion&quot;: &quot;1.0"
         }
       }
       ```
@@ -205,7 +205,7 @@ Olay türleri bir ad alanına aşağıdaki şemaya göre atanır:
 
 #### <a name="event-classes"></a>Olay sınıfları
 
-|Sınıf Adı|Description|
+|Sınıf Adı|Açıklama|
 |---|---|
 |Analiz  |İçerik analizinin bir parçası olarak oluşturulan olaylar.|
 |Tanılama    |Sorunların ve performansın tanılanmasına yardımcı olan olaylar.|

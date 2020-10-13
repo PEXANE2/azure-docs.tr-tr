@@ -12,10 +12,10 @@ ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4
 ms.openlocfilehash: 4e5634633aacb56e7c7744b3afdb3aec0fe2b70f
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91629599"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Azure Machine Learning sahip kaynaklara yönelik kotaları yönetme & artırma
@@ -69,11 +69,11 @@ Kullanılabilir kaynaklar:
 | Düğüm başına maksimum GPU MPı işlemi | 1-4 |
 | Düğüm başına maksimum GPU çalışanı | 1-4 |
 | En yüksek iş ömrü | 21 gün<sup>1</sup> |
-| Düşük öncelikli bir düğümdeki maksimum iş ömrü | 7 gün<sup>2</sup> |
+| Low-Priority düğümünde en fazla iş ömrü | 7 gün<sup>2</sup> |
 | Düğüm başına en fazla parametre sunucusu | 1 |
 
 <sup>1</sup> en fazla yaşam süresi, bir çalıştırmanın başlayacağı ve bittiği zaman için geçen süreyi ifade eder. Tamamlanan çalıştırmalar süresiz olarak devam ederse; Maksimum yaşam süresi içinde tamamlanmayan çalışma verilerine erişilemiyor.
-<sup>2</sup> düşük öncelikli bir düğümdeki işler bir kapasite kısıtlaması olduğunda bu şekilde geçersiz hale gelebilir. İşinize işaret eden bir işaret uygulamanızı uygulamanızı öneririz.
+bir Low-Priority düğümündeki <sup>2</sup> iş her zaman bir kapasite kısıtlaması olduğunda geçersiz olabilir. İşinize işaret eden bir işaret uygulamanızı uygulamanızı öneririz.
 
 ### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning işlem hatları
 [Azure Machine Learning Işlem hatları](concept-ml-pipelines.md)için, bir işlem hattındaki adım sayısı ve bir abonelikte bölge başına yayınlanan işlem hattı sayısı için bir kota sınırı vardır.

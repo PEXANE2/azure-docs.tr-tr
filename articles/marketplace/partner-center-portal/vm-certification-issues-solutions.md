@@ -8,10 +8,10 @@ author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
 ms.openlocfilehash: d724ef463d7c7ad237b5fd023e9c15f50de96f04
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91803475"
 ---
 # <a name="common-issues-when-certifying-virtual-machine-images-for-azure-marketplace"></a>Azure Marketi için sanal makine görüntülerini sertifikalarken karşılaşılan yaygın sorunlar
@@ -338,7 +338,7 @@ Komut: "Cat/dev/null > ~/.bash_history && History-c" ![ Bash geçmiş komutu Azu
 
 4. Adım: VM 'yi genelleştirin, görüntü VHD 'sini alın ve VM 'yi durdurun.
 
-5. Adım.     Genelleştirilmiş görüntüyü yeniden gönderebilirsiniz.
+5. Adım.     Genelleştirilmiş görüntüyü Re-Submit.
 
 ## <a name="requesting-exceptions-custom-templates-on-vm-images-for-selective-tests"></a>Seçmeli testler için VM görüntülerinde özel durumlar (özel şablonlar) isteme
 

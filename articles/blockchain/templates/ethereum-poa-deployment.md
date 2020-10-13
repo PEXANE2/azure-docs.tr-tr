@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: devx-track-js
 ms.openlocfilehash: d1d3ad94957e791b2178b6c60d4c7debdec2b391
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91283437"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Azure 'da Ethereum yetki kanıtlama Konsorsiyumu çözüm şablonu dağıtma
@@ -561,7 +561,7 @@ Akıllı sözleşmeleri derlemek, dağıtmak ve test etmek için, Ethereum geli�
 
 Aşağıdaki örnekte basit bir akıllı sözleşme oluşturursunuz. Akıllı sözleşmeyi derlemek ve blok zinciri ağınıza dağıtmak için Truffle kullanırsınız. Dağıtıldıktan sonra bir işlem aracılığıyla akıllı sözleşme işlevini çağırabilirsiniz.
 
-#### <a name="prerequisites"></a>Önkoşullar
+#### <a name="prerequisites"></a>Ön koşullar
 
 * [Python 2.7.15](https://www.python.org/downloads/release/python-2715/)'i yükler. Truffle ve Web3 için Python gereklidir. Yolunuza Python eklemek için Install seçeneğini seçin.
 * Truffle v 5.0.5 'i yükler `npm install -g truffle@v5.0.5` . Truffle, [Node.js](https://nodejs.org), [Git](https://git-scm.com/)gibi çeşitli araçların yüklenmesini gerektirir. Daha fazla bilgi için bkz. [Truffle belgeleri](https://github.com/trufflesuite/truffle).
@@ -685,7 +685,7 @@ Akıllı sözleşmeniz dağıtıldığına göre, bir işlevi çağırmak için 
 
 ## <a name="webassembly-wasm-support"></a>WebAssembly (ıSSTREAM) desteği
 
-WebAssembly desteği yeni dağıtılan PoA ağlarında zaten etkin. Web derlemesine (Rust, C, C++) transpiles olan herhangi bir dilde akıllı anlaşma geliştirmesi sağlar. Daha fazla bilgi için bkz.. [Weelsembly 'e eşlik genel bakış](https://wiki.parity.io/WebAssembly-Home) [Tutorial from Parity Tech](https://github.com/paritytech/pwasm-tutorial)
+WebAssembly desteği yeni dağıtılan PoA ağlarında zaten etkin. Bu, transpiles (Rust, C, C++) tarafından Web-Assembly bir dilde akıllı anlaşma geliştirmesini sağlar. Daha fazla bilgi için bkz.. [Weelsembly 'e eşlik genel bakış](https://wiki.parity.io/WebAssembly-Home) [Tutorial from Parity Tech](https://github.com/paritytech/pwasm-tutorial)
 
 ## <a name="faq"></a>SSS
 

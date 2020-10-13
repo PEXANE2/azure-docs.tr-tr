@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
 ms.openlocfilehash: 0f93c7b185b292f8d9792a11807b7c99ad846d37
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89565846"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Akıllı algılama-hata bozuklukları
@@ -60,7 +60,7 @@ Uyarılar, özel makine öğrenimi algoritmız tarafından tetiklenir, bu nedenl
 * Sorun artık 8-24 saat için algılanmadıysa, tetiklenen uyarı İzleyicisi koşulunu otomatik olarak çözebilecek mantık vardır.
   Note: geçerli tasarımda. Akıllı algılama uyarısı çözümlendiğinde bir bildirim veya eylem gönderilmez. Azure portal bir akıllı algılama uyarısının çözümlenmiş olup olmadığını kontrol edebilirsiniz.
 
-## <a name="configure-alerts"></a>Uyarı yapılandırma
+## <a name="configure-alerts"></a>Uyarıları yapılandırma
 
 Portaldan veya Azure Resource Manager kullanarak akıllı algılama uyarı kuralını devre dışı bırakabilirsiniz ([bkz. şablon örneği](./proactive-arm-config.md)).
 
@@ -73,11 +73,11 @@ Bu uyarı kuralı, e-posta ve Web kancası eylemleri içeren "Application Insigh
 
 Uyarılar sayfasını açın. Hata bozuklukları uyarı kuralları, el ile ayarladığınız uyarılarla birlikte eklenir ve şu anda uyarı durumunda olup olmadığını görebilirsiniz.
 
-:::image type="content" source="./media/proactive-failure-diagnostics/021.png" alt-text="Kaynak Application Insights sayfasında, uyarılar Kutucuğu ' na ve ardından uyarı kurallarını yönet ' e tıklayın." lightbox="./media/proactive-failure-diagnostics/021.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/021.png" alt-text="Hata etrafında küme analizini gösteren örnek akıllı algılama uyarısı." lightbox="./media/proactive-failure-diagnostics/021.png":::
 
 Yapılandırmak için uyarıya tıklayın.
 
-:::image type="content" source="./media/proactive-failure-diagnostics/032.png" alt-text="Kural yapılandırma ekranı." lightbox="./media/proactive-failure-diagnostics/032.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/032.png" alt-text="Hata etrafında küme analizini gösteren örnek akıllı algılama uyarısı." lightbox="./media/proactive-failure-diagnostics/032.png":::
 
 Hata anomali uyarı kuralını devre dışı bırakabildiğinize veya silebildiğinize, ancak aynı Application Insights kaynağında başka bir tane oluşturamazsınız.
 
@@ -299,7 +299,7 @@ Ayrıca, [Azure Portal](https://portal.azure.com)açabilir, uygulamanız için A
 
 ' Hata Tanıla 'yı tıklatmak, daha fazla ayrıntı almanıza ve sorunu çözmenize yardımcı olur.
 
-:::image type="content" source="./media/proactive-failure-diagnostics/051.png" alt-text="Tanılama araması." lightbox="./media/proactive-failure-diagnostics/051.png#lightbox":::
+:::image type="content" source="./media/proactive-failure-diagnostics/051.png" alt-text="Hata etrafında küme analizini gösteren örnek akıllı algılama uyarısı." lightbox="./media/proactive-failure-diagnostics/051.png#lightbox":::
 
 İsteklerin yüzdesinden ve etkilenen kullanıcı sayısına göre, sorunun ne kadar acil olduğuna karar verebilirsiniz. Yukarıdaki örnekte,% 78,5 hata oranı normal% 2,2 oranında karşılaştırıldığı için kötü bir şeyin olduğunu gösterir. Öte yandan yalnızca 46 Kullanıcı etkilendi. Uygulamanız ise, ne kadar ciddi olduğunu değerlendirebileceksiniz.
 
@@ -307,13 +307,13 @@ Ayrıca, [Azure Portal](https://portal.azure.com)açabilir, uygulamanız için A
 
 Bu örnekte, istek sınırına ulaşıldığından SQL veritabanından bir özel durum oluştu.
 
-:::image type="content" source="./media/proactive-failure-diagnostics/052.png" alt-text="Başarısız istek ayrıntıları." lightbox="./media/proactive-failure-diagnostics/052.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/052.png" alt-text="Hata etrafında küme analizini gösteren örnek akıllı algılama uyarısı." lightbox="./media/proactive-failure-diagnostics/052.png":::
 
 ## <a name="review-recent-alerts"></a>Son uyarıları gözden geçir
 
 En son tetiklenen uyarılara ulaşmak için Application Insights kaynak sayfasındaki **Uyarılar** ' a tıklayın:
 
-:::image type="content" source="./media/proactive-failure-diagnostics/070.png" alt-text="Uyarı Özeti." lightbox="./media/proactive-failure-diagnostics/070.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/070.png" alt-text="Hata etrafında küme analizini gösteren örnek akıllı algılama uyarısı." lightbox="./media/proactive-failure-diagnostics/070.png":::
 
 ## <a name="whats-the-difference-"></a>Fark nedir?..
 Hata anomali algılama, Application Insights benzer ancak farklı özellikleri tamamlar.

@@ -12,10 +12,10 @@ ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: 46eee878ba8cf1d12edf262241d5df8ef8ccc82f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91442928"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Elastik veritabanı araçlarını kullanmaya başlama
@@ -25,7 +25,7 @@ Bu belgede, örnek bir uygulama çalıştırmanıza yardımcı olarak [elastik v
 
 ## <a name="elastic-database-tools-for-java"></a>Java için elastik veritabanı araçları
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 * Java geliştirici seti (JDK), sürüm 1,8 veya üzeri
 * [Maven](https://maven.apache.org/download.cgi)
@@ -72,7 +72,7 @@ Tebrikler! Azure SQL veritabanı 'nda elastik veritabanı araçlarını kullanar
 
 ## <a name="elastic-database-tools-for-net"></a>.NET için elastik veritabanı araçları
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 * C# ile Visual Studio 2012 veya üzeri. [Visual Studio Indirmelerinde](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)ücretsiz bir sürüm indirin.
 * NuGet 2,7 veya üzeri. En son sürümü almak için bkz. [NuGet 'ı yükleme](https://docs.nuget.org/docs/start-here/installing-nuget).
@@ -116,7 +116,7 @@ Tebrikler! SQL veritabanı 'nda elastik veritabanı araçlarını kullanarak ilk
 
 * **Mevcut parçaları birleştirme: parça**birleştirmesi, bölünmüş birleştirme aracı kullanılarak da gerçekleştirilir. Daha fazla bilgi için bkz. [ölçekli bulut veritabanları arasında veri taşıma](elastic-scale-overview-split-and-merge.md).
 
-## <a name="cost"></a>Cost
+## <a name="cost"></a>Maliyet
 
 Elastik veritabanı araçları kitaplığı ücretsizdir. Elastik veritabanı araçları 'nı kullandığınızda, Azure kullanımınızın maliyetinin ötesinde ek ücret ödemeniz gerekmez.
 

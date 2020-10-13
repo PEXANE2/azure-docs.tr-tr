@@ -13,10 +13,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 4fc25edb873a2dfe84f6ca716a71cf028c74cb2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85383946"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C denetim günlüklerine erişme
@@ -57,15 +57,15 @@ Etkinlik ayrıntıları paneli aşağıdaki ilgili bilgileri içerir:
 | Başlatan (aktör) | ObjectId | Kullanıcının oturum açtığı B2C uygulamasının **nesne kimliği** . Bu tanımlayıcı Azure portal görünmez, ancak Microsoft Graph API 'SI aracılığıyla erişilebilir. |
 | Başlatan (aktör) | SPN | Kullanıcının oturum açtığı B2C uygulamasının **uygulama kimliği** . |
 | Hedefler | ObjectId | Oturum açan kullanıcının **nesne kimliği** . |
-| Ek Ayrıntılar | TenantId | Azure AD B2C kiracının **KIRACı kimliği** . |
-| Ek Ayrıntılar | PolicyId | Kullanıcının oturumu açmak için kullanılan Kullanıcı akışının (ilke) **Ilke kimliği** . |
-| Ek Ayrıntılar | ApplicationID | Kullanıcının oturum açtığı B2C uygulamasının **uygulama kimliği** . |
+| Ek ayrıntılar | TenantId | Azure AD B2C kiracının **KIRACı kimliği** . |
+| Ek ayrıntılar | PolicyId | Kullanıcının oturumu açmak için kullanılan Kullanıcı akışının (ilke) **Ilke kimliği** . |
+| Ek ayrıntılar | ApplicationID | Kullanıcının oturum açtığı B2C uygulamasının **uygulama kimliği** . |
 
 ## <a name="view-audit-logs-in-the-azure-portal"></a>Azure portal denetim günlüklerini görüntüleme
 
 Azure portal, Azure AD B2C kiracınızdaki denetim günlüğü olaylarına erişim sağlar.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın
+1. [Azure portalda](https://portal.azure.com) oturum açma
 1. Azure AD B2C kiracınızı içeren dizine geçin ve **Azure AD B2C**gidin.
 1. Sol menüdeki **Etkinlikler** ' in altında, **Denetim günlükleri**' ni seçin.
 
@@ -98,7 +98,7 @@ Gerekli izinlere sahip bir uygulamayı kaydetmek için aşağıdaki makaledeki a
 
 Uygun izinlerle bir uygulamayı kaydettikten sonra, bir komut dosyası ile etkinlik olaylarını nasıl alabileceğiniz hakkında bir örnek için bu makalenin ilerleyen kısımlarında bulunan PowerShell betiği bölümüne bakın.
 
-### <a name="access-the-api"></a>API 'ye erişme
+### <a name="access-the-api"></a>API'ye erişme
 
 API aracılığıyla Azure AD B2C denetim günlüğü olaylarını indirmek için, kategorideki günlüklere filtre uygulayın `B2C` . Kategoriye göre filtrelemek için, `filter` Azure AD Raporlama API uç noktasını çağırdığınızda sorgu dizesi parametresini kullanın.
 

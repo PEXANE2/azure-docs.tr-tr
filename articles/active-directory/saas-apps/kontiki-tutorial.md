@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: cb652cfdae0ce785d6a076b8b1592d9f700b3383
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88549986"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>Öğretici: Kontiki ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Kontiki 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
 Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory uygulamalarda çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Kontiki ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -50,7 +50,7 @@ Kontiki aşağıdaki özellikleri destekler:
 
 Kontiki 'yı Azure AD ile bütünleştirmek için, yönetilen SaaS uygulamaları listenize Kontiki eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. Sol menüden **Azure Active Directory**' yi seçin.
 
@@ -95,7 +95,7 @@ Bu bölümde Azure AD çoklu oturum açma 'yı Azure portal Kontiki ile yapılan
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-1. **SAML Ile çoklu oturum açmayı ayarla** bölmesinde, **temel SAML yapılandırması** bölmesini açmak için **Düzenle** ' yi (kurşun kalem simgesi) seçin.
+1. **SAML Ile tek Sign-On ayarla** bölmesinde, **temel SAML yapılandırması** bölmesini açmak için **Düzenle** ' yi (kurşun kalem simgesi) seçin.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -106,7 +106,7 @@ Bu bölümde Azure AD çoklu oturum açma 'yı Azure portal Kontiki ile yapılan
     > [!NOTE]
     > Kullanılacak doğru değeri almak için [Kontiki istemci destek ekibine](https://customersupport.kontiki.com/enterprise/contactsupport.html) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. **SAML Ile çoklu oturum açmayı ayarla** bölmesinde, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML**' nün yanındaki **İndir** ' i seçin. Gereksinimlerinize göre bir indirme seçeneği belirleyin. Sertifikayı bilgisayarınıza kaydedin.
+1. **SAML Ile tek Sign-On ayarla** bölmesinde, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML**' nun yanındaki **İndir** ' i seçin. Gereksinimlerinize göre bir indirme seçeneği belirleyin. Sertifikayı bilgisayarınıza kaydedin.
 
     ![Federasyon meta verileri XML sertifikası indirme seçeneği](common/metadataxml.png)
 

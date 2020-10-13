@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: 627f511bb12c16c8f54935d1f782cb7c2c962163
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132764"
 ---
 # <a name="offline-evaluation"></a>Çevrimdışı değerlendirme
@@ -53,7 +53,7 @@ Değerlendirmede yer alan geçerli ilkeler:
 | Öğrenme ayarları | Amaç|
 |--|--|
 |**Çevrimiçi Ilke**| Kişiselleştirici içinde kullanılan geçerli öğrenme Ilkesi |
-|**Çizgisi**|Uygulamanın varsayılan (derece çağrılarında gönderilen ilk eylem tarafından belirlendiği şekilde)|
+|**Taban çizgisi**|Uygulamanın varsayılan (derece çağrılarında gönderilen ilk eylem tarafından belirlendiği şekilde)|
 |**Rastgele Ilke**|Her zaman sağlanan Işlemlerden rastgele eylem seçimi döndüren sanal bir sıra davranışı.|
 |**Özel Ilkeler**|Değerlendirme başlatılırken ek öğrenme Ilkeleri karşıya yüklendi.|
 |**İyileştirilmiş Ilke**|Değerlendirme, iyileştirilmiş bir ilkeyi bulma seçeneği ile başlatıldıysa, bu da karşılaştırılır ve bunu indirebilir veya çevrimiçi öğrenme ilkesi haline getirmek için geçerli olanı değiştirin.|

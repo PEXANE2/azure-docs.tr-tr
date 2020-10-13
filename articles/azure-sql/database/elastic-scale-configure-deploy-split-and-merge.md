@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 02ec24677519902c299babb72e089f75dcf8b34b
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443046"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Parçalı veritabanları arasında veri taşımak için bölünmüş birleştirme hizmeti dağıtma
@@ -23,21 +23,21 @@ ms.locfileid: "91443046"
 
 Bölünmüş birleştirme aracı, verileri parçalı veritabanları arasında taşımanızı sağlar. Bkz. [ölçekli bulut veritabanları arasında veri taşıma](elastic-scale-overview-split-and-merge.md)
 
-## <a name="download-the-split-merge-packages"></a>Bölünmüş birleştirme paketlerini indirme
+## <a name="download-the-split-merge-packages"></a>Split-Merge paketlerini indirin
 
 1. [NuGet](https://docs.nuget.org/docs/start-here/installing-nuget)'den en son NuGet sürümünü indirin.
 
 1. Bir komut istemi açın ve nuget.exe indirdiğiniz dizine gidin. İndirme, PowerShell komutlarını içerir.
 
-1. En son bölünmüş birleştirme paketini şu komutla güncel dizine indirin:
+1. En son Split-Merge paketini aşağıdaki komutla güncel dizine indirin:
 
    ```cmd
    nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge
    ```  
 
-Dosyalar, **Microsoft. Azure. SQLDatabase. Elalapscale. Service. SplitMerge. x. x. xxx. x** adlı bir dizine yerleştirilir; burada *x. x. xxx.* x sürüm numarasını yansıtır. Content\splitmerge\service alt dizinindeki bölünmüş **content\splitmerge\service** birleştirme hizmeti dosyalarını ve, **content\splitmerge\powershell** alt dizinindeki bölünmüş birleştirme PowerShell betiklerini (ve gerekli istemci dll 'leri) bulun.
+Dosyalar, **Microsoft. Azure. SQLDatabase. Elalapscale. Service. SplitMerge. x. x. xxx. x** adlı bir dizine yerleştirilir; burada *x. x. xxx.* x sürüm numarasını yansıtır. **Content\splitmerge\service** alt dizinindeki bölünmüş birleştirme hizmeti dosyalarını ve **content\splitmerge\powershell** alt dizinindeki Split-Merge PowerShell betiklerini (ve gerekli istemci dll 'leri) bulun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 1. Bölünmüş birleştirme durum veritabanı olarak kullanılacak bir Azure SQL veritabanı veritabanı oluşturun. [Azure portalına](https://portal.azure.com) gidin. Yeni bir **SQL veritabanı**oluşturun. Veritabanına bir ad verin ve yeni bir yönetici ve parola oluşturun. Daha sonra kullanmak üzere adı ve parolayı kaydettiğinizden emin olun.
 
@@ -45,17 +45,17 @@ Dosyalar, **Microsoft. Azure. SQLDatabase. Elalapscale. Service. SplitMerge. x. 
 
 1. Tanılama çıktısı için bir Azure depolama hesabı oluşturun.
 
-1. Bölünmüş birleştirme hizmetiniz için bir Azure bulut hizmeti oluşturun.
+1. Split-Merge hizmetiniz için bir Azure bulut hizmeti oluşturun.
 
-## <a name="configure-your-split-merge-service"></a>Bölünmüş birleştirme hizmetinizi yapılandırma
+## <a name="configure-your-split-merge-service"></a>Split-Merge hizmetinizi yapılandırma
 
-### <a name="split-merge-service-configuration"></a>Bölünmüş birleştirme hizmeti yapılandırması
+### <a name="split-merge-service-configuration"></a>Split-Merge hizmeti yapılandırması
 
-1. Bölünmüş birleştirme derlemelerini indirdiğiniz klasörde, *Splitmergeservice. cspkg* ile birlikte gelen *ServiceConfiguration. Template. cscfg* dosyasının bir kopyasını oluşturun ve *ServiceConfiguration. cscfg*olarak yeniden adlandırın.
+1. Split-Merge derlemelerini indirdiğiniz klasörde, *Splitmergeservice. cspkg* ile birlikte gelen *ServiceConfiguration. Template. cscfg* dosyasının bir kopyasını oluşturun ve *ServiceConfiguration. cscfg*olarak yeniden adlandırın.
 
 1. Visual Studio gibi bir metin düzenleyicisinde *ServiceConfiguration. cscfg* ' i açarak sertifika parmak izlerinin biçimi gibi girdileri doğrular.
 
-1. Yeni bir veritabanı oluşturun veya bölünmüş birleştirme işlemlerine yönelik durum veritabanı olarak kullanılacak mevcut bir veritabanını seçin ve bu veritabanının bağlantı dizesini alın.
+1. Yeni bir veritabanı oluşturun veya Split-Merge işlemler için durum veritabanı olarak kullanılacak mevcut bir veritabanını seçin ve bu veritabanının bağlantı dizesini alın.
 
    > [!IMPORTANT]
    > Şu anda, durum veritabanının Latin harmanlaması (SQL \_ Latin1 \_ General \_ CP1 \_ CI \_ as) kullanması gerekir. Daha fazla bilgi için bkz. [Windows harmanlama adı (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx).
@@ -168,7 +168,7 @@ Web rolünüzün çevrimiçi olması başarısız olursa, güvenlik yapılandır
 
 ### <a name="connect-with-a-web-browser"></a>Bir Web tarayıcısı ile bağlanma
 
-Bölünmüş birleştirme hizmetinizin Web uç noktasını belirleme. Bunu portalda, bulut hizmetinize **genel bakış** bölümüne giderek ve sağ taraftaki **site URL 'sini** arayarak bulabilirsiniz. Varsayılan güvenlik ayarları HTTP uç noktasını devre dışı bıraktıktan sonra **http://** değerini **https://** ile değiştirin. Bu URL için sayfayı tarayıcınıza yükleyin.
+Split-Merge hizmetinizin Web uç noktasını belirleme. Bunu portalda, bulut hizmetinize **genel bakış** bölümüne giderek ve sağ taraftaki **site URL 'sini** arayarak bulabilirsiniz. Varsayılan güvenlik ayarları HTTP uç noktasını devre dışı bıraktıktan sonra **http://** değerini **https://** ile değiştirin. Bu URL için sayfayı tarayıcınıza yükleyin.
 
 ### <a name="test-with-powershell-scripts"></a>PowerShell betikleri ile test etme
 
@@ -214,13 +214,13 @@ Dahil edilen betik dosyaları şunlardır:
      </tr>
    <tr>
        <th rowspan="4">ExecuteSampleSplitMerge.ps1 </th>
-       <td>1. Bölünmüş birleştirme hizmeti Web ön ucu için bölünmüş bir istek gönderir ve bu, verileri ilk parçadan ikinci parçaya böler.</td>
+       <td>1. İlk parçadan ikinci parçaya kadar verileri ayıran Split-Merge Service Web ön ucunda bir bölme isteği gönderir.</td>
      </tr>
      <tr>
        <td>2. Bölünen istek durumu için Web ön uç öğesini yoklar ve istek tamamlanana kadar bekler.</td>
      </tr>
      <tr>
-       <td>3. Bölünmüş birleştirme hizmeti Web ön ucu için birleştirme isteği gönderir ve bu, verileri ikinci parçadan ilk parçaya geri kaydırır.</td>
+       <td>3. Verileri ikinci parçadan ilk parçaya geri taşınan Split-Merge hizmeti Web ön ucunda bir birleştirme isteği gönderir.</td>
      </tr>
      <tr>
        <td>4. Birleştirme isteği durumu için Web ön uç öğesini yoklar ve istek tamamlanana kadar bekler.</td>
@@ -229,14 +229,14 @@ Dahil edilen betik dosyaları şunlardır:
 
 ## <a name="use-powershell-to-verify-your-deployment"></a>Dağıtımınızı doğrulamak için PowerShell 'i kullanma
 
-1. Yeni bir PowerShell penceresi açın ve bölünmüş birleştirme paketini indirdiğiniz dizine gidin ve "PowerShell" dizinine gidin.
+1. Yeni bir PowerShell penceresi açın ve Split-Merge paketini indirdiğiniz dizine gidin ve ardından "PowerShell" dizinine gidin.
 
 2. Parça eşleme Yöneticisi ve parçaları oluşturulacak bir sunucu (veya var olan bir sunucu seçin) oluşturun.
 
    > [!NOTE]
-   > *SetupSampleSplitMergeEnvironment.ps1* betiği, betiği basit tutmak için bu veritabanlarını varsayılan olarak aynı sunucuda oluşturur. Bu, bölünmüş birleştirme hizmetinin kendisi için bir kısıtlamadır.
+   > *SetupSampleSplitMergeEnvironment.ps1* betiği, betiği basit tutmak için bu veritabanlarını varsayılan olarak aynı sunucuda oluşturur. Bu, Split-Merge hizmetin kendisinin bir kısıtlaması değildir.
 
-   Bölünmüş birleştirme hizmetinin verileri taşıması ve parça haritasını güncelleştirmesi için, DBs 'ye okuma/yazma erişimiyle birlikte bir SQL kimlik doğrulaması oturum açma gerekir. Bölünmüş birleştirme hizmeti bulutta çalıştığından, bu, şu anda tümleşik kimlik doğrulamasını desteklememektedir.
+   Split-Merge hizmetinin verileri taşıması ve parça haritasını güncelleştirmesi için, DBs 'ye okuma/yazma erişimiyle birlikte bir SQL kimlik doğrulaması oturum açma gerekecektir. Split-Merge hizmeti bulutta çalıştığından, bu, şu anda tümleşik kimlik doğrulamasını desteklememektedir.
 
    Sunucunun, bu betikleri çalıştıran makinenin IP adresinden erişime izin verecek şekilde yapılandırıldığından emin olun. Bu ayarı, SQL Server/güvenlik duvarları ve sanal ağlar/Istemci IP adresleri altında bulabilirsiniz.
 
@@ -329,7 +329,7 @@ Bölünmüş birleştirme işlemi gerçekleştirmek için, taşınmasını isted
 
 SetupSampleSplitMergeEnvironment.ps1 betiğiyle Bu örnek görünebilir.
 
-Bölünmüş birleştirme hizmeti, sizin için hedef veritabanını (veya veritabanındaki herhangi bir tablo için şemayı) oluşturmaz. Hizmete bir istek gönderilmeden önce bunların önceden oluşturulması gerekir.
+Split-Merge hizmeti, sizin için hedef veritabanını (veya veritabanındaki herhangi bir tablo için şemayı) oluşturmaz. Hizmete bir istek gönderilmeden önce bunların önceden oluşturulması gerekir.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 

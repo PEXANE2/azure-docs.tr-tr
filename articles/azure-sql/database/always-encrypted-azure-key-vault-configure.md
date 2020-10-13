@@ -13,10 +13,10 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 04/23/2020
 ms.openlocfilehash: 98ba8c54b1754d6384dfcedb86e6c4889e52cb4f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91444838"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>Azure Key Vault kullanarak Always Encrypted yapılandırma 
@@ -37,7 +37,7 @@ Bu makaledeki adımları izleyin ve Azure SQL veritabanı veya SQL yönetilen ö
 - Veritabanı tablosu oluşturun ve sütunları şifreleyin.
 - Şifrelenmiş sütunlardan veri ekleyen, seçen ve görüntüleyen bir uygulama oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 
 - Bir Azure hesabı ve aboneliği Bir hesabınız yoksa, [ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/)için kaydolun.
