@@ -3,12 +3,12 @@ title: Azure VMware çözümünüz özel bulutunuzda GitHub Enterprise Server '�
 description: Azure VMware Çözüm özel bulutunuzda GitHub Enterprise Server 'ı ayarlamayı öğrenin.
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 53e5264eed761909217c2e3a902c9fee9faaffaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afce212416c7c12631a7f8d388dc991ed957736f
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91345181"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949318"
 ---
 # <a name="set-up-github-enterprise-server-on-your-azure-vmware-solution-private-cloud"></a>Azure VMware çözümünüz özel bulutunuzda GitHub Enterprise Server 'ı ayarlama
 
@@ -74,7 +74,7 @@ Ayarlarınızı uygulayın.  Örnek yeniden başlatıldıktan sonra, bir sonraki
 > [!NOTE]
 > GitHub eylemleri, [GitHub Enterprise Server sürüm 2,22 ' de şu anda sınırlı bir beta olarak sunulmaktadır](https://docs.github.com/en/enterprise/admin/github-actions).
 
-GitHub Enterprise Server 'da GitHub eylemlerini etkinleştirmek için dış BLOB depolama alanı gereklidir (Şu anda bir "Beta" özelliği olarak kullanılabilir). Bu dış BLOB depolama, yapıtları ve günlükleri depolamak için eylemler tarafından kullanılır. GitHub Enterprise Server 'daki eylemler, [Azure Blob depolamayı bir depolama sağlayıcısı](https://docs.github.com/en/enterprise/admin/github-actions/enabling-github-actions-and-configuring-storage#about-external-storage-requirements) (ve diğerlerinin bazıları) olarak destekler. Bu nedenle, BlobStorage [depolama hesabı türüne](https://docs.microsoft.com/azure/storage/common/storage-account-overview?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#types-of-storage-accounts) sahip yeni bir Azure depolama hesabı sağlayacağız:
+GitHub Enterprise Server 'da GitHub eylemlerini etkinleştirmek için dış BLOB depolama alanı gereklidir (Şu anda bir "Beta" özelliği olarak kullanılabilir). Bu dış BLOB depolama, yapıtları ve günlükleri depolamak için eylemler tarafından kullanılır. GitHub Enterprise Server 'daki eylemler, [Azure Blob depolamayı bir depolama sağlayıcısı](https://docs.github.com/en/enterprise/admin/github-actions/enabling-github-actions-and-configuring-storage#about-external-storage-requirements) (ve diğerlerinin bazıları) olarak destekler. Bu nedenle, BlobStorage [depolama hesabı türüne](../storage/common/storage-account-overview.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#types-of-storage-accounts) sahip yeni bir Azure depolama hesabı sağlayacağız:
 
 :::image type="content" source="media/github-enterprise-server/storage-account.png" alt-text="GitHub 'ı şirket içinde veya bulutta çalıştırmayı seçin.":::
 

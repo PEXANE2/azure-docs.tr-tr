@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: f9134b57d8a3e76417283e5d863724651b4f6a6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2fc174147b99b7b952c6d10084cfc969dacf5a6
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87921172"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949148"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Öğretici: REST API 'Leri aracılığıyla Azure Data Box blob depolamaya veri kopyalama  
 
@@ -122,11 +122,11 @@ Bazı uygulamalar için belirli bilgiler bu bölümde belirtilmiştir. Diğer uy
 
 3.  **Tüm sertifikaları aşağıdaki depolama alanına yerleştir**' i seçin ve ardından **görüntüle**' ye tıklayın. Uzak konağın kök deposuna gidin ve ardından **İleri**' ye tıklayın.
 
-    ![PowerShell kullanarak sertifikayı içeri aktarma](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
+    ![PowerShell 2 kullanarak sertifikayı içeri aktarma](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
 4.  **Finish (Son)** düğmesine tıklayın. İçeri aktarmanın başarılı olduğunu belirten bir ileti görüntülenir.
 
-    ![PowerShell kullanarak sertifikayı içeri aktarma](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
+    ![PowerShell 3 kullanarak sertifikayı içeri aktarma](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
 #### <a name="use-a-linux-system"></a>Linux sistemi kullanma
 

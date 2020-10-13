@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
 ms.openlocfilehash: 786947a03440cc837f9d104d43e8061c80a0844c
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91803101"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure bölgeleri arasında Azure sanal makinesi olağanüstü durum kurtarma için destek matrisi
@@ -188,7 +188,7 @@ Azure galeri görüntüleri-üçüncü taraf yayımlandı | Desteklenir | VM des
 Özel görüntüler-üçüncü taraf yayımlandı | Desteklenir | VM desteklenen bir işletim sisteminde çalışıyorsa desteklenir.
 Site Recovery kullanılarak geçirilen VM 'Ler | Desteklenir | Site Recovery kullanılarak Azure 'a bir VMware VM veya fiziksel makine geçirilirse, makinede çalışan Mobility hizmetinin eski sürümünü kaldırmanız ve makineyi başka bir Azure bölgesine çoğaltmadan önce yeniden başlatmanız gerekir.
 RBAC ilkeleri | Desteklenmez | VM 'lerde rol tabanlı erişim denetimi (RBAC) ilkeleri hedef bölgedeki yük devretme VM 'sine çoğaltılmaz.
-Uzantılar | Desteklenmez | Uzantılar, hedef bölgedeki yük devretme VM 'sine çoğaltılmaz. Yük devretmenin ardından el ile yüklenmesi gerekir.
+Uzantıları | Desteklenmez | Uzantılar, hedef bölgedeki yük devretme VM 'sine çoğaltılmaz. Yük devretmenin ardından el ile yüklenmesi gerekir.
 Yakınlık yerleştirme grupları | Desteklenir | Bir yakınlık yerleşimi grubunda bulunan sanal makineler, Site Recovery kullanılarak korunabilir.
 
 

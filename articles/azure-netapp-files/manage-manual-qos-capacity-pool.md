@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: b-juche
-ms.openlocfilehash: d2abb66684738e97ade2a2e67309a4e7b53c4734
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e44c2cfc81256a8715c7c625648b6ec25bcd319
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442093"
+ms.locfileid: "91929226"
 ---
 # <a name="manage-a-manual-qos-capacity-pool"></a>El ile QoS kapasite havuzu yönetme
 
@@ -44,7 +44,7 @@ El ile QoS türü özelliği şu anda önizlemededir. Bu özelliği ilk kez kull
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFFlexPool
     ```
-Ayrıca, [Azure CLI komutlarını](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) kullanarak `az feature register` `az feature show` özelliği kaydedebilir ve kayıt durumunu görüntüleyebilirsiniz. 
+Ayrıca, [Azure CLI komutlarını](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) kullanarak `az feature register` `az feature show` özelliği kaydedebilir ve kayıt durumunu görüntüleyebilirsiniz. 
 
 ## <a name="set-up-a-new-manual-qos-capacity-pool"></a>Yeni bir el ile QoS kapasite havuzu ayarlama 
 
@@ -97,5 +97,3 @@ Bir birim el ile QoS kapasite havuzunda yer alıyorsa, ayrılan birim aktarım h
 * [NFS birimi oluşturma](azure-netapp-files-create-volumes.md)
 * [SMB birimi oluşturma](azure-netapp-files-create-volumes-smb.md)
 * [Çift protokollü birim oluşturma](create-volumes-dual-protocol.md)
-
-

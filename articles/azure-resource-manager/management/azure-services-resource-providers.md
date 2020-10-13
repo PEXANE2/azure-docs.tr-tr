@@ -3,12 +3,12 @@ title: Azure hizmetlerine göre kaynak sağlayıcıları
 description: Azure Resource Manager için tüm kaynak sağlayıcısı ad alanlarını listeler ve bu ad alanı için Azure hizmetini gösterir.
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: b740c8ee7c28bfeeaecc42121d0c7ce4a323ab3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9e31f902d36cf84fc559337f3c69529cf1c014b
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330834"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949131"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure hizmetleri için kaynak sağlayıcıları
 
@@ -53,15 +53,15 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. ClassicNetwork | Klasik dağıtım modeli sanal ağı |
 | Microsoft. ClassicStorage | Klasik dağıtım modeli depolaması |
 | Microsoft. ClassicSubscription<sup>1</sup> | Klasik dağıtım modeli |
-| Microsoft. Biliveservices | [Bilişsel hizmetler](../../cognitive-services/index.yml) |
+| Microsoft. Biliveservices | [Bilişsel Hizmetler](../../cognitive-services/index.yml) |
 | Microsoft. Commerce<sup>1</sup> | çekirdeğin |
-| Microsoft.Compute | [Sanal makineler](../../virtual-machines/index.yml)<br />[Sanal Makine Ölçek Kümeleri](../../virtual-machine-scale-sets/index.yml) |
-| Microsoft. tüketim<sup>1</sup> | [Maliyet yönetimi](/azure/cost-management/) |
+| Microsoft.Compute | [Sanal Makineler](../../virtual-machines/index.yml)<br />[Sanal Makine Ölçek Kümeleri](../../virtual-machine-scale-sets/index.yml) |
+| Microsoft. tüketim<sup>1</sup> | [Maliyet Yönetimi](/azure/cost-management/) |
 | Microsoft. Containerınstance | [Container Instances](../../container-instances/index.yml) |
-| Microsoft. ContainerRegistry | [Container Kayıt Defteri](../../container-registry/index.yml) |
+| Microsoft. ContainerRegistry | [Container Registry](../../container-registry/index.yml) |
 | Microsoft. ContainerService | [Azure Kubernetes Service (AKS)](../../aks/index.yml) |
-| Microsoft. CostManagement<sup>1</sup> | [Maliyet yönetimi](/azure/cost-management/) |
-| Microsoft. CostManagementExports | [Maliyet yönetimi](/azure/cost-management/) |
+| Microsoft. CostManagement<sup>1</sup> | [Maliyet Yönetimi](/azure/cost-management/) |
+| Microsoft. CostManagementExports | [Maliyet Yönetimi](/azure/cost-management/) |
 | Microsoft. Customerkasası | [Microsoft Azure için Müşteri Kasası](../../security/fundamentals/customer-lockbox-overview.md) |
 | Microsoft. CustomProviders | [Azure Özel Sağlayıcılar](../custom-providers/overview.md) |
 | Microsoft. DataBox | [Azure Data Box](../../databox/index.yml) |
@@ -110,7 +110,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft.Kusto | [Azure Veri Gezgini](/azure/data-explorer/) |
 | Microsoft. LabServices | [Azure Lab Services](../../lab-services/index.yml) |
 | Microsoft. Logic | [Logic Apps](../../logic-apps/index.yml) |
-| Microsoft. Machinöğrenim | [Machine Learning Studio](../../machine-learning/studio/index.yml) |
+| Microsoft. Machinöğrenim | [Machine Learning Studio](../../machine-learning/classic/index.yml) |
 | Microsoft.MachineLearningServices | [Azure Machine Learning](../../machine-learning/index.yml) |
 | Microsoft. Maintenance | [Azure Bakımı](../../virtual-machines/maintenance-control-cli.md) |
 | Microsoft. Managedıdentity | [Azure kaynakları için yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/index.yml) |
@@ -126,7 +126,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. Migrate | [Azure Geçişi](../../migrate/migrate-services-overview.md) |
 | Microsoft. MixedReality | [Azure Spatial Anchors](../../spatial-anchors/index.yml) |
 | Microsoft. NetApp | [Azure NetApp Files](../../azure-netapp-files/index.yml) |
-| Microsoft.Network | [Application Gateway](../../application-gateway/index.yml)<br />[Azure Bastion](../../bastion/index.yml)<br />[Azure DDoS Koruması](../../virtual-network/ddos-protection-overview.md)<br />[Azure DNS](../../dns/index.yml)<br />[Azure ExpressRoute](../../expressroute/index.yml)<br />[Azure Güvenlik Duvarı](../../firewall/index.yml)<br />[Azure Front Door Hizmeti](../../frontdoor/index.yml)<br />[Azure Özel Bağlantı](../../private-link/index.yml)<br />[Load Balancer](../../load-balancer/index.yml)<br />[Ağ İzleyicisi](../../network-watcher/index.yml)<br />[Traffic Manager](../../traffic-manager/index.yml)<br />[Sanal ağ](../../virtual-network/index.yml)<br />[Sanal WAN](../../virtual-wan/index.yml)<br />[VPN Gateway](../../vpn-gateway/index.yml)<br /> |
+| Microsoft.Network | [Application Gateway](../../application-gateway/index.yml)<br />[Azure Bastion](../../bastion/index.yml)<br />[Azure DDoS Koruması](../../virtual-network/ddos-protection-overview.md)<br />[Azure DNS](../../dns/index.yml)<br />[Azure ExpressRoute](../../expressroute/index.yml)<br />[Azure Güvenlik Duvarı](../../firewall/index.yml)<br />[Azure Front Door Hizmeti](../../frontdoor/index.yml)<br />[Azure Özel Bağlantı](../../private-link/index.yml)<br />[Load Balancer](../../load-balancer/index.yml)<br />[Ağ İzleyicisi](../../network-watcher/index.yml)<br />[Traffic Manager](../../traffic-manager/index.yml)<br />[Sanal Ağ](../../virtual-network/index.yml)<br />[Sanal WAN](../../virtual-wan/index.yml)<br />[VPN Gateway](../../vpn-gateway/index.yml)<br /> |
 | Microsoft. Not defterleri | [Azure Notebooks](https://notebooks.azure.com/help/introduction) |
 | Microsoft. Notificationhub 'Lar | [Notification Hubs](../../notification-hubs/index.yml) |
 | Microsoft. ObjectStore | Nesne deposu |
@@ -135,7 +135,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. OperationsManagement | [Azure İzleyici](../../azure-monitor/index.yml) |
 | Microsoft. eşleme | [Azure Eşleme Hizmeti](../../peering-service/index.yml) |
 | Microsoft. Poliyelei | [Azure İlkesi](../../governance/policy/index.yml) |
-| Microsoft. Portal<sup>1</sup> | [Azure portalındaki](../../azure-portal/index.yml) |
+| Microsoft. Portal<sup>1</sup> | [Azure portalı](../../azure-portal/index.yml) |
 | Microsoft. PowerBI | [Power BI](/power-bi/power-bi-overview) |
 | Microsoft. Powerbiadanmış | [Power BI Embedded](/azure/power-bi-embedded/) |
 | Microsoft. PowerPlatform | [Power Platform](/power-platform/) |
@@ -143,7 +143,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. hisse | [Azure hisse](https://azure.microsoft.com/services/quantum/) |
 | Microsoft. RecoveryServices | [Azure Site Recovery](../../site-recovery/index.yml) |
 | Microsoft. RedHatOpenShift | [Azure Red Hat OpenShift](../../virtual-machines/linux/openshift-get-started.md) |
-| Microsoft. Relay | [Azure Relay](../../azure-relay/relay-what-is-it.md) |
+| Microsoft. Relay | [Azure Geçişi](../../azure-relay/relay-what-is-it.md) |
 | Microsoft. ResourceGraph<sup>1</sup> | [Azure Kaynak Grafiği](../../governance/resource-graph/index.yml) |
 | Microsoft. ResourceHealth | [Azure Hizmet Durumu](../../service-health/index.yml) |
 | Microsoft. Resources<sup>1</sup> | [Azure Resource Manager](../index.yml) |

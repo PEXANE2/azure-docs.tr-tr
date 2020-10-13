@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: b-juche
-ms.openlocfilehash: 6a7bf07359344e26280021a6a55eecc5b96b7a86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a07c6ae48cdca68a95db7770d90076eb8f10f95
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653698"
+ms.locfileid: "91929465"
 ---
 # <a name="faqs-about-smb-performance-for-azure-netapp-files"></a>Azure NetApp Files için SMB performansı hakkında SSS
 
@@ -39,7 +39,7 @@ SMB çok kanallı özelliği etkinken, bir SMB3 istemcisi, tek RSS özellikli bi
 
 ## <a name="which-windows-versions-support-smb-multichannel"></a>Hangi Windows sürümleri çok kanallı SMB 'yi destekliyor?
 
-En iyi performansı etkinleştirmek için Windows 2012 ' den itibaren çok kanallı SMB 'yi destekliyordu.  Ayrıntılar için bkz. SMB [çok kanallı ve çok KANALLı SMB temelleri](https://blogs.technet.microsoft.com/josebda/2012/06/28/the-basics-of-smb-multichannel-a-feature-of-windows-server-2012-and-smb-3-0/) [dağıtma](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn610980(v%3Dws.11)) . 
+En iyi performansı etkinleştirmek için Windows 2012 ' den itibaren çok kanallı SMB 'yi destekliyordu.  Ayrıntılar için bkz. SMB [çok kanallı ve çok KANALLı SMB temelleri](/archive/blogs/josebda/the-basics-of-smb-multichannel-a-feature-of-windows-server-2012-and-smb-3-0) [dağıtma](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn610980(v%3Dws.11)) . 
 
 
 ## <a name="does-my-azure-virtual-machine-support-rss"></a>Azure Sanal makinem RSS 'yi destekliyor mu?
@@ -132,7 +132,7 @@ Birimlerinizde veri trafiği çalışmaya başladıktan sonra, bağdaştırıcı
 
 ## <a name="is-accelerated-networking-recommended"></a>Hızlandırılmış ağ önerilir mi?
 
-En yüksek performans için mümkün olan yerlerde [hızlandırılmış ağ](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell) yapılandırmanız önerilir. Aşağıdaki noktaları göz önünde bulundurun:  
+En yüksek performans için mümkün olan yerlerde [hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-powershell.md) yapılandırmanız önerilir. Aşağıdaki noktaları göz önünde bulundurun:  
 
 * Azure portal, bu özelliği destekleyen sanal makineler için varsayılan olarak hızlandırılmış ağa izin verebilir.  Ancak, anormal ve benzer yapılandırma araçları gibi diğer dağıtım yöntemleri de olmayabilir.  Hızlandırılmış ağı etkinleştirme hatası, makinenin performansını hobble sağlayabilir.  
 * Bir sanal makinenin ağ arabiriminde hızlandırılmış ağ etkinleştirilmemişse, örnek türü veya boyutu için destek olmaması gerekir, daha büyük örnek türleriyle devre dışı kalır. Bu durumlarda el ile müdahale etmeniz gerekir.

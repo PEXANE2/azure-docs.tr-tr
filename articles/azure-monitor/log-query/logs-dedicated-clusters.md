@@ -7,10 +7,10 @@ author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
 ms.openlocfilehash: 714a43ec197ac150488d4443c1eb6fe1be1da232
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91575529"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Izleyici, ayrılmış kümeleri günlüğe kaydeder
@@ -116,7 +116,7 @@ Content-type: application/json
 
 Log Analytics kümesinin sağlanması bir süre sürer. Sağlama durumunu çeşitli yollarla kontrol edebilirsiniz:
 
-- Get-Azoperationalınsightscluster PowerShell komutunu kaynak grubu adıyla çalıştırın ve ProvisioningState özelliğini denetleyin. Bu değer, sağlama sırasında *Provisioningaccount* ve tamamlandığında *başarılı* olur.
+- Get-AzOperationalInsightsCluster PowerShell komutunu kaynak grubu adıyla çalıştırın ve ProvisioningState özelliğini denetleyin. Bu değer, sağlama sırasında *Provisioningaccount* ve tamamlandığında *başarılı* olur.
   ```powershell
   New-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} 
   ```

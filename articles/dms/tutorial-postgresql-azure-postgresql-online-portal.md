@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: 1f8f7c4ea051ff583b3e8f88e0331642cdf9f19a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e424d41a7b4c1d9394e789c60b60a6fa86a69c5
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291549"
+ms.locfileid: "91893790"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-portal"></a>Öğretici: Azure portal aracılığıyla DMS kullanarak PostgreSQL için PostgreSQL için Azure DB 'ye geçiş yapma
 
@@ -39,7 +39,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!IMPORTANT]
 > En iyi geçiş deneyimi için, Microsoft, hedef veritabanıyla aynı Azure bölgesinde Azure veritabanı geçiş hizmeti örneği oluşturulmasını önerir. Verileri bölgeler veya coğrafyalar arasında taşımak, geçiş sürecini yavaşlatabilir ve hatalara neden olabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
@@ -281,7 +281,7 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
 
     ![Tam geçişi ekranını doldurun](media/tutorial-postgresql-to-azure-postgresql-online-portal/dms-complete-cutover.png)
 
-3. Veritabanı geçiş durumu **tamamlandı**olarak görüntülendiğinde, uygulamalarınızı PostgreSQL Için Azure veritabanı 'nın yeni hedef örneğine bağlayın.
+3. Veritabanı geçiş durumu **tamamlandı**olarak görüntülendiğinde, [dizileri yeniden oluşturun](https://wiki.postgresql.org/wiki/Fixing_Sequences) (varsa) ve uygulamalarınızı PostgreSQL için Azure veritabanı 'nın yeni hedef örneğine bağlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

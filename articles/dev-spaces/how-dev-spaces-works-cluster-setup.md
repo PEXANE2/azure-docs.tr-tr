@@ -5,14 +5,16 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Azure Dev Spaces çalışması için bir Azure Kubernetes hizmet kümesi ayarlamayı açıklar
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: 41b955fac7abcc700d73d8ace601f80982b2253d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 841e67b96e95aa251fa5bf1ef469b68de30f54d9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207949"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972688"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Azure Dev Spaces için küme ayarlama çalışması
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Azure Dev Spaces, Kubernetes uygulamalarının hızla yinelenemez ve hata ayıklamanın yanı sıra Azure Kubernetes hizmeti (AKS) kümesinde ekibinizle işbirliği yapmak için birden çok yol sağlar. Tek yönlü, [Hizmetleri doğrudan kümenizde çalıştırabilmeniz][how-it-works-up] ve [ek ağ ve yönlendirme özellikleri][how-it-works-routing]kullanabilmeniz için aks kümenizde Azure dev Spaces etkinleştirmektir. Bu makalede, kümenizi hazırlarken ve Azure Dev Spaces etkinleştirdiğinizde ne olacağı açıklanır.
 

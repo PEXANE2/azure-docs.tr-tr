@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 92d445991aa8b90a343ad7d015787cff35ddf183
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d4a455458812bef1d79aba583a6317c08b65863
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85340928"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948383"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi için GitHub eylemleri iş akışları
 
@@ -138,7 +138,7 @@ with:
 
 | Özellik | Açıklama | Gerekli |
 |---|---|---|
-| `app_location` | Uygulama kodunuzun konumu.<br><br>Örneğin, `/` uygulamanızın kaynak kodu deponun kökünde veya `/app` uygulama kodunuz adlı bir dizinde ise girin `app` . | Evet |
+| `app_location` | Uygulama kodunuzun konumu.<br><br>Örneğin, `/` uygulamanızın kaynak kodu deponun kökünde veya `/app` uygulama kodunuz adlı bir dizinde ise girin `app` . | Yes |
 | `api_location` | Azure Işlevleri kodunuzun konumu.<br><br>Örneğin, `/api` uygulama kodunuz adlı bir klasörde ise yazın `api` . Klasörde hiçbir Azure Işlevleri uygulaması algılanmazsa, derleme başarısız olmaz, iş akışı bir API istemediğinizi varsayar. | Hayır |
 | `app_artifact_location` | Derleme çıkış dizininin öğesine göre konumu `app_location` .<br><br>Örneğin, uygulama kaynak kodunuz adresinde bulunuyorsa `/app` ve derleme betiği dosyaları klasörüne çıktıdaysa `/app/build` `build` değer olarak ayarlanır `app_artifact_location` . | Hayır |
 
@@ -152,7 +152,7 @@ Dağıtım her zaman `npm install` özel bir komuttan önce çağırır.
 
 | Komut            | Açıklama |
 |---------------------|-------------|
-| `app_build_command` | Statik içerik uygulamasının dağıtımı sırasında çalışacak özel bir komut tanımlar.<br><br>Örneğin, angular uygulaması için bir üretim yapısını yapılandırmak için, girin `ng build --prod` . Boş bırakılırsa, iş akışı `npm run build` veya komutlarını çalıştırmayı dener `npm run build:Azure` .  |
+| `app_build_command` | Statik içerik uygulamasının dağıtımı sırasında çalışacak özel bir komut tanımlar.<br><br>Örneğin, angular uygulamasına yönelik bir üretim yapısını yapılandırmak için, çalıştırmak üzere adlı bir NPM betiği oluşturun `build-prod` `ng build --prod` ve `npm run build-prod` özel komut olarak girin. Boş bırakılırsa, iş akışı `npm run build` veya komutlarını çalıştırmayı dener `npm run build:Azure` .  |
 | `api_build_command` | Azure Işlevleri API uygulaması dağıtımı sırasında çalışacak özel bir komut tanımlar. |
 
 ## <a name="route-file-location"></a>Yol dosyası konumu

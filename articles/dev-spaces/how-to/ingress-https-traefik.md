@@ -6,14 +6,16 @@ ms.topic: conceptual
 description: Azure Dev Spaces özel bir traefik ingınress denetleyicisi kullanmak ve bu giriş denetleyicisini kullanarak HTTPS 'yi yapılandırmak için nasıl yapılandırılacağını öğrenin
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 ms.custom: devx-track-js
-ms.openlocfilehash: cb638658eb6f01b5dc4455ee8f797f03478a995d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a30dae3b65a7e877dc20b4d6fae8de338024d3c7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331922"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973062"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Özel bir traefik giriş denetleyicisi kullanma ve https 'yi yapılandırma
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 Bu makalede, Azure Dev Spaces özel bir traefik ingınress denetleyicisi kullanmak üzere nasıl yapılandırılacağı gösterilmektedir. Bu makalede ayrıca, bu özel giriş denetleyicisinin HTTPS kullanmak üzere nasıl yapılandırılacağı gösterilmektedir.
 
@@ -304,13 +306,13 @@ helm upgrade bikesharingsampleapp . --namespace dev --atomic
 > [!IMPORTANT]
 > DNS değişikliklerinin tamamlanması ve örnek uygulamanızın erişilebilir olması 30 dakika veya daha uzun sürebilir.
 
-Ayrıca sayfanın yüklendiğine, ancak tarayıcıda bazı hataların gösterildiğine dikkat edin. Tarayıcı konsolu 'nu açmak, HTTP kaynaklarını yüklemeye çalışan bir HTTPS sayfasıyla ilgili hatayı gösterir. Örneğin:
+Ayrıca sayfanın yüklendiğine, ancak tarayıcıda bazı hataların gösterildiğine dikkat edin. Tarayıcı konsolu 'nu açmak, HTTP kaynaklarını yüklemeye çalışan bir HTTPS sayfasıyla ilgili hatayı gösterir. Örnek:
 
 ```console
 Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/devsignin' was loaded over HTTPS, but requested an insecure resource 'http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/api/user/allUsers'. This request has been blocked; the content must be served over HTTPS.
 ```
 
-Bu hatayı onarmak için [Bıkesharingweb/azds. YAML][azds-yaml] 'yi, *Kubernetes.io/ingress.Class* için *Traefik* ve *$ (hostsuffix)* özel etki alanınızı kullanacak şekilde güncelleştirin. Örneğin:
+Bu hatayı onarmak için [Bıkesharingweb/azds. YAML][azds-yaml] 'yi, *Kubernetes.io/ingress.Class* için *Traefik* ve *$ (hostsuffix)* özel etki alanınızı kullanacak şekilde güncelleştirin. Örnek:
 
 ```yaml
 ...

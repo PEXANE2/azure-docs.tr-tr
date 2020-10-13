@@ -4,10 +4,10 @@ description: Azure Kamu 'da Azure geçiş gereci ayarlamayı öğrenin
 ms.topic: article
 ms.date: 04/16/2020
 ms.openlocfilehash: 1060bda13cc593980850bc6563555cf5dd4b7fd9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91450025"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>Azure Kamu 'da gereç ayarlama 
@@ -19,7 +19,7 @@ Bir Azure Kamu bulutundaki VMware VM 'Leri, Hyper-V VM 'Leri ve fiziksel sunucul
 > Şablonu kullanarak bir gereci dağıtma seçeneği (VMware VM 'Leri ve Hyper-V VM 'Leri için) Azure Kamu 'da desteklenmez.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Betik, mevcut bir fiziksel makineye veya VM 'ye Azure geçişi gereci ayarlar.
 

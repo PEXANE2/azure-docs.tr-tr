@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
 ms.openlocfilehash: fc3ca5fdde464ba63671512a6ebecd2c314cb192
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91570835"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Power BI bağlayıcısını kullanarak Azure Cosmos DB verilerini görselleştirme
@@ -25,7 +25,7 @@ Bu makalede Azure Cosmos DB hesabını Power BI Desktop'a bağlamak için gereke
 > [!NOTE]
 > Power BI Bağlayıcısı ile Azure Cosmos DB bağlantı şu anda yalnızca Azure Cosmos DB SQL API ve Gremlin API hesapları için desteklenmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu Power BI öğreticideki yönergeleri takip etmeden önce aşağıdaki kaynaklara erişiminizin olduğundan emin olun:
 
 * [En son Power BI Desktop sürümünü indirin](https://powerbi.microsoft.com/desktop).

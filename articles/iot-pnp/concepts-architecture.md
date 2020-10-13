@@ -10,13 +10,13 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
 ms.openlocfilehash: 32e67bd7f30fecee3449935a35235844a047957b
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91574339"
 ---
-# <a name="iot-plug-and-play-architecture"></a>IoT Tak ve Kullan mimarisi
+# <a name="iot-plug-and-play-architecture"></a>IoT Tak Çalıştır mimarisi
 
 IoT Tak ve Kullan, çözüm oluşturucuların akıllı cihazları el ile herhangi bir yapılandırma olmadan çözümleriyle tümleştirmelerini sağlar. IoT Tak ve Kullan 'ın temel tarafında, IoT Tak ve Kullan özellikli bir uygulama için bir cihazın yeteneklerini açıklayan bir cihaz _modelidir_ . Bu model, şunları tanımlayan bir arabirimler kümesi olarak yapılandırılmıştır:
 
@@ -28,7 +28,7 @@ Her model ve arabirimin benzersiz bir KIMLIĞI vardır.
 
 Aşağıdaki diyagramda IoT Tak ve Kullan çözümünün temel öğeleri gösterilmektedir:
 
-:::image type="content" source="media/concepts-architecture/pnp-architecture.png" alt-text="IoT Tak ve Kullan mimarisi":::
+:::image type="content" source="media/concepts-architecture/pnp-architecture.png" alt-text="IoT Tak Çalıştır mimarisi":::
 
 ## <a name="model-repository"></a>Model deposu
 

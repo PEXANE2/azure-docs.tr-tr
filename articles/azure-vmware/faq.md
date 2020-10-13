@@ -4,12 +4,12 @@ description: Azure VMware çözümüyle ilgili bazı yaygın soruların yanıtla
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: fd0c0158106a24ba12fec42e41df69f246e7f3f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3e50a6a34a6588ecce8b9ecc3c6b358fddc38b7
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530485"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948723"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware çözümü hakkında sık sorulan sorular
 
@@ -101,6 +101,10 @@ Evet, tüm vSAN verileri, Azure Key Vault depolanan anahtarlar kullanılarak var
 
 Bu yedekleme çözümleri müşteriler tarafından yüklenip yönetildiğinden, destek için ilgili ISV 'ye ulaşabilirler. 
 
+#### <a name="what-is-the-correct-storage-policy-for-the-dedup-set-up"></a>Yinelenenleri kaldırma ayarı için doğru depolama ilkesi nedir?
+
+VM şablonunuz için *thin_provision* depolama ilkesini kullanın.  Varsayılan değer *thick_provision*.
+
 ## <a name="hosts-clusters-and-private-clouds"></a>Konaklar, kümeler ve özel bulutlar
 
 #### <a name="is-the-underlying-infrastructure-shared"></a>Temel alınan altyapı paylaşılıyor mu?
@@ -174,6 +178,8 @@ Hayır. İnternet 'ten özel bulutlara doğrudan gelen ağ trafiğine izin veril
 
 Evet. İnternet 'e yönelik VM erişimini kısıtlayan bir güvenlik duvarı oluşturmak için NSX-T Yöneticisi ' ni kullanmanız gerekir.
 
+
+
 ## <a name="accounts-and-privileges"></a>Hesaplar ve ayrıcalıklar
 
 #### <a name="what-accounts-and-privileges-will-i-get-with-my-new-azure-vmware-solution-private-cloud"></a>Yeni Azure VMware çözümü özel bulutum ile hangi hesapları ve ayrıcalıkları alabilirim?
@@ -211,7 +217,7 @@ Azure aboneliğinde bir Azure hesabınızın olması gerekir.
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Nasıl yaparım? Azure VMware çözümü için bir konak kotası artışı ister misiniz?
 
-* Microsoft ile bir [Azure Kurumsal Anlaşma (EA)](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-agreements) gerekir.
+* Microsoft ile bir [Azure Kurumsal Anlaşma (EA)](../cost-management-billing/manage/ea-portal-agreements.md) gerekir.
 * Azure aboneliğinde bir Azure hesabınızın olması gerekir.
 
 Azure VMware Çözüm kaynağını oluşturmadan önce, düğümlerinizin ayrılması için bir destek bileti göndermeniz gerekir. Destek ekibi isteğinizi aldıktan sonra, isteğinizi doğrulamak ve düğümlerinizi ayırmak için beş iş günü sürer. Mevcut bir Azure VMware çözümü özel bulutunuz varsa ve daha fazla düğüm ayırdıysanız, aynı işleme gidebilirsiniz.

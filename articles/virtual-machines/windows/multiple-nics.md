@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: ed1c5b749b778ef8334ea3b31ef17d3bf106484f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66a135cd1629aa2befcd4c56d835473791d62ce8
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87835553"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974014"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Birden çok NIC içeren bir Windows sanal makinesi oluşturma ve yönetme
 Azure 'daki sanal makinelere (VM 'Ler), birden çok sanal ağ arabirim kartı (NIC) eklenmiş olabilir. Yaygın bir senaryo, ön uç ve arka uç bağlantısı için farklı alt ağlara sahip olur. Bir VM 'de birden çok NIC 'yi birden çok alt ağa ilişkilendirebilirsiniz, ancak bu alt ağların hepsi aynı sanal ağda (vNet) bulunmalıdır. Bu makalede, birden fazla NIC 'ye eklenmiş bir VM oluşturma işlemi açıklanır. Ayrıca, mevcut bir VM 'ye NIC ekleme veya kaldırma hakkında bilgi edinebilirsiniz. Farklı [VM boyutları](../sizes.md) değişen sayıda NIC destekler, bu nedenle VM 'nizi uygun şekilde boyutlandırın.
@@ -70,7 +70,7 @@ $myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
     -SubnetId $backEnd.Id
 ```
 
-Genellikle, ağ trafiğini VM 'ye filtreleyecek bir [ağ güvenlik grubu](../../virtual-network/security-overview.md) ve trafiği birden çok VM arasında dağıtmak için bir [yük dengeleyici](../../load-balancer/load-balancer-overview.md) de oluşturursunuz.
+Genellikle, ağ trafiğini VM 'ye filtreleyecek bir [ağ güvenlik grubu](../../virtual-network/network-security-groups-overview.md) ve trafiği birden çok VM arasında dağıtmak için bir [yük dengeleyici](../../load-balancer/load-balancer-overview.md) de oluşturursunuz.
 
 ### <a name="create-the-virtual-machine"></a>Sanal makineyi oluşturma
 Şimdi VM yapılandırmanızı oluşturmaya başlayın. Her VM boyutunun, bir VM 'ye ekleyebileceğiniz toplam NIC sayısı sınırı vardır. Daha fazla bilgi için bkz. [WINDOWS VM boyutları](../sizes.md).
@@ -288,4 +288,4 @@ Azure, sanal makineye bağlı ilk (birincil) ağ arabirimine bir varsayılan ağ
     **Ağ geçidi**altında *192.168.1.1* ile listelenen yol, birincil ağ arabirimi için varsayılan olarak bulunan yoldur. **Ağ geçidi**altında *192.168.2.1* içeren yol, eklediğiniz yoldur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Birden çok NIC içeren bir VM oluşturmaya çalışırken [WINDOWS VM boyutlarını](../sizes.md) gözden geçirin. Her VM boyutunun desteklediği en fazla NIC sayısına dikkat edin. 
+Birden çok NIC içeren bir VM oluşturmaya çalışırken [WINDOWS VM boyutlarını](../sizes.md) gözden geçirin. Her VM boyutunun desteklediği en fazla NIC sayısına dikkat edin.
