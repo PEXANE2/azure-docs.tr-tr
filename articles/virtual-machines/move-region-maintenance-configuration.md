@@ -8,10 +8,10 @@ ms.tgt_pltfrm: vm
 ms.date: 03/04/2020
 ms.author: shants
 ms.openlocfilehash: 4cff7eb4a69005f2e74747b6e58447f100c69b60
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86501611"
 ---
 # <a name="move-a-maintenance-control-configuration-to-another-region"></a>Bakım denetim yapılandırmasını başka bir bölgeye taşıma
@@ -24,7 +24,7 @@ Bakım denetimi, özelleştirilmiş bakım yapılandırmalarında, platform gün
 - Bir bakım yapılandırmasıyla ilişkili kaynakları taşımak, ancak yapılandırmanın kendisi için [Bu yönergeleri](move-region-maintenance-configuration-resources.md)izleyin.
 - Hem bakım yapılandırmasını hem de onunla ilişkili kaynakları taşımak için, önce bu makaledeki yönergeleri izleyin. Ardından, [Bu yönergeleri](move-region-maintenance-configuration-resources.md)izleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir bakım denetim yapılandırmasını taşımaya başlamadan önce:
 
@@ -43,7 +43,7 @@ Bir bakım denetim yapılandırmasını taşımaya başlamadan önce:
     ```
     az maintenance configuration list --subscription $subId --query "[*].{Name:name, Location:location, ResGroup:resourceGroup}" --output table
     ```
-2. Abonelik içindeki yapılandırma kayıtlarının döndürülen tablo listesini gözden geçirin. Bir örneği aşağıda verilmiştir. Listeniz, belirli ortamınızın değerlerini içerir.
+2. Abonelik içindeki yapılandırma kayıtlarının döndürülen tablo listesini gözden geçirin. Aşağıda bir örnek verilmiştir. Listeniz, belirli ortamınızın değerlerini içerir.
 
     **Ad** | **Konum** | **Kaynak grubu**
     --- | --- | ---

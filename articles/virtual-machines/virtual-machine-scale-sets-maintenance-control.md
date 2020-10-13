@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 09/11/2020
 ms.author: jushiman
 ms.openlocfilehash: 55cbc5db534dd1b05f91a24e0104b1f2dc110547
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90532704"
 ---
 # <a name="preview-maintenance-control-for-azure-virtual-machine-scale-sets"></a>Önizleme: Azure sanal makine ölçek kümeleri için bakım denetimi 
@@ -22,7 +22,7 @@ Bakım denetimi, sanal makine ölçek kümelerinizdeki işletim sistemi diskleri
 
 Bakım yapılandırması abonelikler ve kaynak grupları arasında çalışır.
 
-Tüm iş akışı aşağıdaki adımlara gelir: 
+İş akışının tamamı şu adımlardan oluşur: 
 - Bakım yapılandırması oluşturun.
 - Bir sanal makine ölçek kümesini bakım yapılandırması ile ilişkilendirin.
 - Otomatik işletim sistemi yükseltmelerini etkinleştirin.

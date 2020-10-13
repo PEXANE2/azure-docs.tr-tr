@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/02/2020
 ms.author: sideeksh
 ms.openlocfilehash: 53c5dc4920b6c50ee3c900db9626f4d283f7b846
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89426427"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure 'dan Azure 'a çoğaltma için Mobility hizmetini otomatik güncelleştirme
@@ -63,7 +63,7 @@ VM veya [Kurtarma Hizmetleri kasasından](azure-to-azure-how-to-enable-replicati
 
 1. **Kaydet**’i seçin.
 
-:::image type="content" source="./media/azure-to-azure-autoupdate/vault-toggle.png" alt-text="Uzantı güncelleştirme ayarları":::
+:::image type="content" source="./media/azure-to-azure-autoupdate/vault-toggle.png" alt-text="Uzantı ayarları":::
 
 > [!IMPORTANT]
 > **Yönetilecek Site Recovery Izin ver**' i seçtiğinizde, bu ayar kasadaki tüm sanal makinelere uygulanır.
@@ -460,12 +460,12 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
 1. Sanal makinelerinize yüklü Mobility hizmeti için yeni güncelleştirmeler varsa, aşağıdaki bildirimi görürsünüz: **yeni Site Recovery çoğaltma Aracısı güncelleştirmesi var. Yüklemek için tıklayın.**
 
-   :::image type="content" source="./media/vmware-azure-install-mobility-service/replicated-item-notif.png" alt-text="Çoğaltılan Öğeler penceresi":::
+   :::image type="content" source="./media/vmware-azure-install-mobility-service/replicated-item-notif.png" alt-text="Uzantı ayarları":::
 
 1. VM seçim sayfasını açmak için bildirimi seçin.
 1. Yükseltmek istediğiniz VM 'Leri seçin ve ardından **Tamam**' ı seçin. Mobility hizmetini Güncelleştir seçili her VM için başlatılır.
 
-   :::image type="content" source="./media/vmware-azure-install-mobility-service/update-okpng.png" alt-text="Çoğaltılan öğeler VM listesi":::
+   :::image type="content" source="./media/vmware-azure-install-mobility-service/update-okpng.png" alt-text="Uzantı ayarları":::
 
 ## <a name="common-issues-and-troubleshooting"></a>Yaygın sorunlar ve sorun giderme
 
@@ -479,7 +479,7 @@ Otomatik güncelleştirmeleri etkinleştiremediğimiz takdirde aşağıdaki yayg
 
   Otomatik güncelleştirmeleri etkinleştirdikten sonra birçok sorunu gidermek için, **Onar**' ı seçin. Onar düğmesi kullanılamıyorsa, uzantı güncelleştirme ayarları bölmesinde hata iletisine bakın.
 
-  :::image type="content" source="./media/azure-to-azure-autoupdate/repair.png" alt-text="Uzantı güncelleştirme ayarlarındaki Site Recovery hizmeti onarma düğmesi":::
+  :::image type="content" source="./media/azure-to-azure-autoupdate/repair.png" alt-text="Uzantı ayarları":::
 
 - **Hata**: farklı çalıştır hesabının kurtarma hizmetleri kaynağına erişim izni yok.
 
@@ -495,7 +495,7 @@ Otomatik güncelleştirmeleri etkinleştiremediğimiz takdirde aşağıdaki yayg
 
   **Önerilen eylem**: Bu sorunu çözmek için **Onar** ve **Sertifikayı Yenile**' yi seçin.
 
-  :::image type="content" source="./media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG" alt-text="Yenile-CERT":::
+  :::image type="content" source="./media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG" alt-text="Uzantı ayarları":::
 
   > [!NOTE]
   > Sertifikayı yeniledikten sonra, geçerli durumu göstermek için sayfayı yenileyin.

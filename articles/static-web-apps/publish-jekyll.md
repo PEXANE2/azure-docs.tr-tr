@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: cshoe
 ms.openlocfilehash: bf1664a35562b888f9dd7aacd3b1112058bed664
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88797709"
 ---
 # <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps-preview"></a>Öğretici: bir Jekyll sitesini Azure statik Web Apps önizleme 'ye yayımlama
 
 Bu makalede, bir [Jekyıll](https://jekyllrb.com/) Web uygulamasının nasıl oluşturulacağı ve [azure Azure statik Web Apps](overview.md)nasıl dağıtılacağı gösterilmektedir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -118,7 +118,7 @@ Aşağıdaki adımlarda, yeni bir statik site uygulamasının nasıl oluşturula
 
 1. _Dal_ için **ana öğe**seçin.
 
-    :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="Tamamlanan GitHub bilgileri":::
+    :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="Ayrıntılar dolduruldu":::
 
 ### <a name="build"></a>Yapı
 
@@ -174,7 +174,7 @@ Daha sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapıla
 
 1. Azure portal _genel bakış_ penceresinde, dağıtılan uygulamanızı açmak için _URL_ bağlantısına tıklayın.
 
-   :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="Dağıtılan uygulama":::
+   :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="Ayrıntılar dolduruldu":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

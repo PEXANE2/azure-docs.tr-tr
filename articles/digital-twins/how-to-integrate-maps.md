@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
 ms.openlocfilehash: 8f739982ac9193c80cae23d91b77091f75c3fd13
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90564377"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure haritalar ınkapısının haritasını güncelleştirmek için Azure dijital TWINS kullanma
@@ -25,7 +25,7 @@ Bu şekilde nasıl ele alınacaktır:
 2. Azure Maps ınkapılı haritalar Özellik stateset 'i güncelleştirmek için bir Azure işlevi oluşturma.
 3. Haritalar KIMLIĞINIZI ve özellik stateset KIMLIĞINIZI Azure dijital TWINS grafiğinde depolama.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 * Azure dijital TWINS [*öğreticisini izleyin: uçtan uca çözümü bağlama*](./tutorial-end-to-end.md).
     * Bu ikizi ek bir uç nokta ve rotayla genişletiyorsunuz. Ayrıca, bu öğreticiden işlev uygulamanıza başka bir işlev da eklersiniz. 
@@ -152,7 +152,7 @@ Canlı güncelleştirme sıcaklığını görmek için aşağıdaki adımları i
 
 Her iki örnek de sıcaklığın uyumlu bir aralığa gönderilmesini sağlamak için, her 30 saniyede bir haritada oda 121 güncelleştirme rengini görmeniz gerekir.
 
-:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="Oda 121 renkli turuncu gösteren bir Office Haritası":::
+:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="Uçtan uca bir senaryoda Azure hizmetlerinin bir görünümü olan, ınkapıharitaları tümleştirme parçasını vurgulama":::
 
 ## <a name="store-your-maps-information-in-azure-digital-twins"></a>Haritalar bilgilerinizi Azure dijital TWINS 'te depolayın
 

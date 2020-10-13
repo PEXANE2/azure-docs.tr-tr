@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 7e9ce523efd12ce372d7bfef6c653e95f6689415
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eae7a44d77d63641ba9ad062c504aaf624582668
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856968"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969237"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Hızlı başlangıç: ilk IoT Edge modülünüzü sanal bir Windows cihazına dağıtma
 
@@ -78,7 +78,7 @@ IoT Edge cihazı:
 >
 > Bu hızlı başlangıçta basitlik için bir Windows Masaüstü sanal makinesi kullanılmaktadır. Üretim senaryolarında genel olarak hangi Windows işletim sistemlerinin kullanılabildiği hakkında bilgi için bkz. [Azure IoT Edge desteklenen sistemler](support.md).
 >
-> IoT Core çalıştıran cihazlar da dahil olmak üzere kendi Windows cihazınızı IoT Edge yapılandırmaya hazırsanız, [Windows 'a Azure IoT Edge çalışma zamanını yüklemek](how-to-install-iot-edge-windows.md)içindeki adımları izleyin.
+> Kendi Windows cihazınızı IoT Edge için yapılandırmak istiyorsanız, [Azure IoT Edge çalışma zamanını yüklemek](how-to-install-iot-edge.md)içindeki adımları izleyin.
 
 ## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
 
@@ -142,9 +142,7 @@ Bu bölümdeki adımlar IoT Edge cihazınızda gerçekleşirken, bu sanal makine
 
 PowerShell'i kullanarak IoT Edge çalışma zamanını indirin ve yükleyin. Cihazınızı yapılandırmak için IoT Hub'dan aldığınız cihaz bağlantı dizesini kullanın.
 
-1. Henüz yapmadıysanız, [Yeni bir Azure IoT Edge cihaz kaydetme](how-to-register-device.md) bölümündeki adımları izleyerek cihazınızı kaydedin ve cihaz bağlantı dizesini alın.
-
-2. Sanal makinede, PowerShell 'i yönetici olarak çalıştırın.
+1. Sanal makinede, PowerShell 'i yönetici olarak çalıştırın.
 
    >[!NOTE]
    >PowerShell (x86) değil IoT Edge yüklemek için PowerShell 'in AMD64 oturumunu kullanın. Hangi oturum türünü kullandığınızdan emin değilseniz, aşağıdaki komutu çalıştırın:
@@ -153,25 +151,25 @@ PowerShell'i kullanarak IoT Edge çalışma zamanını indirin ve yükleyin. Cih
    >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
    >```
 
-3. **Deploy-ıotedge** komutu, Windows makinenizin desteklenen bir sürümde olup olmadığını denetler, kapsayıcılar özelliğini etkinleştirir, Moby çalışma zamanını indirir ve sonra IoT Edge çalışma zamanını indirir.
+2. **Deploy-ıotedge** komutu, Windows makinenizin desteklenen bir sürümde olup olmadığını denetler, kapsayıcılar özelliğini etkinleştirir, Moby çalışma zamanını indirir ve sonra IoT Edge çalışma zamanını indirir.
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
    Deploy-IoTEdge -ContainerOs Windows
    ```
 
-4. Makineniz otomatik olarak yeniden başlatılabilir. Yeniden başlatmak için Deploy-IoTEdge komutu tarafından istenirse, şimdi bunu yapın.
+3. Makineniz otomatik olarak yeniden başlatılabilir. Yeniden başlatmak için Deploy-IoTEdge komutu tarafından istenirse, şimdi bunu yapın.
 
-5. PowerShell 'i yönetici olarak yeniden çalıştırın.
+4. PowerShell 'i yönetici olarak yeniden çalıştırın.
 
-6. **Initialize-ıotedge** komutu, makinenizde IoT Edge çalışma zamanını yapılandırır. Komut, Windows kapsayıcıları ile el ile sağlamayı varsayılan olarak belirler.
+5. **Initialize-ıotedge** komutu, makinenizde IoT Edge çalışma zamanını yapılandırır. Komut, Windows kapsayıcıları ile el ile sağlamayı varsayılan olarak belirler.
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
    Initialize-IoTEdge -ContainerOs Windows
    ```
 
-7. **DeviceConnectionString** istendiğinde önceki bölümde kopyaladığınız dizeyi iletin. Bağlantı dizesinin etrafındaki tırnak işaretlerini dahil etmeyin.
+6. **DeviceConnectionString** istendiğinde önceki bölümde kopyaladığınız dizeyi iletin. Bağlantı dizesinin etrafındaki tırnak işaretlerini dahil etmeyin.
 
 ### <a name="view-the-iot-edge-runtime-status"></a>IoT Edge çalışma zamanı durumunu görüntüleme
 

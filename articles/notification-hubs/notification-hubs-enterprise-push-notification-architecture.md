@@ -18,10 +18,10 @@ ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 018315b7ed468e24fb922337848d14703ffdcd4d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89003635"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Kurumsal gönderim mimari kılavuzu
@@ -52,14 +52,14 @@ Bu mimari diyagramdaki anahtar parçası Azure Service Bus konular/abonelikler p
 1. Mobile Uygulama
    * Bildirim alır ve görüntüler
 
-### <a name="benefits"></a>Avantajlar
+### <a name="benefits"></a>Yararları
 
 1. Alıcı (Bildirim Hub 'ı aracılığıyla mobil uygulama/hizmet) ve gönderici (arka uç sistemleri) arasındaki ayırma, ek arka uç sistemlerinin en az değişiklik ile tümleştirilebilmesine izin verebilir.
 1. Ayrıca, birden çok mobil uygulama senaryosunun bir veya daha fazla arka uç sisteminden olay alabilmesini sağlar.  
 
 ## <a name="sample"></a>Örnek
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Kavramların yanı sıra ortak oluşturma & yapılandırma adımları hakkında bilgi edinmek için aşağıdaki öğreticilerini doldurun:
 
@@ -233,11 +233,11 @@ Tam örnek kod, [Bildirim Hub 'ı örneklerinde]kullanılabilir. Üç bileşene 
 
     f. Yayımlama profilinizi seçin ve henüz yoksa yeni bir Azure Web sitesi oluşturun, bu WebJob 'u barındırır ve Web sitesi yayımlandıktan sonra **yayımlayın**.
 
-    :::image type="complex" source="./media/notification-hubs-enterprise-push-architecture/PublishAsWebJob.png" alt-text="Azure 'da bir site oluşturmak için iş akışını gösteren ekran görüntüsü.":::
+    :::image type="complex" source="./media/notification-hubs-enterprise-push-architecture/PublishAsWebJob.png" alt-text="Azure 'da bir site oluşturmak için iş akışını gösteren ekran görüntüsü.&quot;:::
     Web 'i Microsoft Azure Web siteleri seçeneği seçiliyken, var olan Web sitesini Seç iletişim kutusunu işaret eden, kırmızı renkle belirtilen yeni seçeneği içeren yeşil bir ok ve site adı ile ana Microsoft Azure Site Oluştur iletişim kutusuna işaret eden yeşil bir ok ve kırmızı renkte özetlenen seçenekleri içeren ekran görüntüsü.
     :::image-end:::
 
-    örneğin: İşi "sürekli Çalıştır" olacak şekilde yapılandırın, böylece [Azure Portal] oturum açtığınızda aşağıdakine benzer bir şey görmeniz gerekir:
+    örneğin: İşi &quot;sürekli Çalıştır" olacak şekilde yapılandırın, böylece [Azure Portal] oturum açtığınızda aşağıdakine benzer bir şey görmeniz gerekir:
 
     ![Kurumsal anında iletme Web işlerinin gösterildiği Azure portalının ekran görüntüsü ve kırmızı renkle özetlenen ad, zamanlama ve Günlükler değerleri.][4]
 
@@ -294,4 +294,4 @@ Tam örnek kod, [Bildirim Hub 'ı örneklerinde]kullanılabilir. Üç bileşene 
 [Service Bus pub/Sub programlama]: ../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md
 [Azure WebJob]: ../app-service/webjobs-create.md
 [Notification Hubs-Windows Universal öğreticisi]: ./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
-[Azure Portal]: https://portal.azure.com/
+[Azure portalındaki]: https://portal.azure.com/

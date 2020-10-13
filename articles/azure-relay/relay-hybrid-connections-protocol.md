@@ -4,10 +4,10 @@ description: Bu makalede, dinleyici ve gönderici rollerinde istemcileri bağlam
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 893092124961ffa9df2535ca6de75def2930b797
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91531454"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay Karma Bağlantılar Protokolü
@@ -136,8 +136,8 @@ Sorgu dizesi parametre seçenekleri aşağıdaki gibidir.
 | Parametre        | Gerekli | Açıklama
 | ---------------- | -------- | -------------------------------------------
 | `sb-hc-action`   | Evet      | Dinleyici rolü için parametre **SB-HC-Action = dinleme** olmalıdır
-| `{path}`         | Yes      | Bu dinleyiciyi kaydettirmek için önceden yapılandırılmış karma bağlantının URL kodlu ad alanı yolu. Bu ifade, sabit `$hc/` yol kısmına eklenir.
-| `sb-hc-token`    | Yes\*    | Dinleyici, **dinleme** hakkını karşılayan ad alanı veya karma bağlantı için GEÇERLI, URL kodlamalı Service Bus paylaşılan erişim belirteci sağlamalıdır.
+| `{path}`         | Evet      | Bu dinleyiciyi kaydettirmek için önceden yapılandırılmış karma bağlantının URL kodlu ad alanı yolu. Bu ifade, sabit `$hc/` yol kısmına eklenir.
+| `sb-hc-token`    | Evet\*    | Dinleyici, **dinleme** hakkını karşılayan ad alanı veya karma bağlantı için GEÇERLI, URL kodlamalı Service Bus paylaşılan erişim belirteci sağlamalıdır.
 | `sb-hc-id`       | Hayır       | Bu istemci tarafından sağlanan isteğe bağlı KIMLIK, uçtan uca tanılama izlemesini sağlar.
 
 WebSocket bağlantısı, karma bağlantı yolunun kaydedilmediği veya geçersiz ya da eksik bir belirteç ya da başka bir hata nedeniyle başarısız olursa, normal HTTP 1,1 durum geri bildirim modeli kullanılarak hata geri bildirimi sağlanır. Durum açıklaması, Azure destek personeline iletilebiliyor bir hata izleme kimliği içeriyor:
@@ -196,7 +196,7 @@ Kabul etme yuvasını oluşturmak için URL 'nin olduğu gibi kullanılması ger
 | Parametre      | Gerekli | Açıklama
 | -------------- | -------- | -------------------------------------------------------------------
 | `sb-hc-action` | Evet      | Bir yuvayı kabul etmek için parametresi olmalıdır `sb-hc-action=accept`
-| `{path}`       | Yes      | (aşağıdaki paragrafa bakın)
+| `{path}`       | Evet      | (aşağıdaki paragrafa bakın)
 | `sb-hc-id`     | Hayır       | Önceki **kimlik**açıklamasına bakın.
 
 `{path}` , bu dinleyicinin kaydedileceği önceden yapılandırılmış karma bağlantının URL kodlu ad alanı yoludur. Bu ifade, sabit `$hc/` yol kısmına eklenir.
@@ -232,8 +232,8 @@ Bir hata varsa hizmet aşağıdaki gibi yanıt verebilir:
 
 | Param                   | Gerekli | Açıklama                              |
 | ----------------------- | -------- | ---------------------------------------- |
-| SB-HC-statusCode        | Yes      | Sayısal HTTP durum kodu.                |
-| SB-HC-statusDescription | Yes      | Red için insan tarafından okunabilen neden. |
+| SB-HC-statusCode        | Evet      | Sayısal HTTP durum kodu.                |
+| SB-HC-statusDescription | Evet      | Red için insan tarafından okunabilen neden. |
 
 Sonuç URI 'SI daha sonra bir WebSocket bağlantısı kurmak için kullanılır.
 
@@ -426,8 +426,8 @@ Sorgu dizesi parametre seçenekleri aşağıdaki gibidir:
 | Param          | Gerekli mi? | Açıklama
 | -------------- | --------- | -------------------------- |
 | `sb-hc-action` | Evet       | Gönderen rolü için parametresi olmalıdır `sb-hc-action=connect` .
-| `{path}`       | Yes       | (aşağıdaki paragrafa bakın)
-| `sb-hc-token`  | Yes\*     | Dinleyici, **Gönder** hakkını karşılayan ad alanı veya karma bağlantı için GEÇERLI, URL kodlamalı Service Bus paylaşılan erişim belirteci sağlamalıdır.
+| `{path}`       | Evet       | (aşağıdaki paragrafa bakın)
+| `sb-hc-token`  | Evet\*     | Dinleyici, **Gönder** hakkını karşılayan ad alanı veya karma bağlantı için GEÇERLI, URL kodlamalı Service Bus paylaşılan erişim belirteci sağlamalıdır.
 | `sb-hc-id`     | Hayır        | Uçtan uca tanılama izlemeyi sağlayan ve kabul etme el sıkışması sırasında dinleyici için kullanılabilir hale getirilen isteğe bağlı bir KIMLIK.
 
  , `{path}` Bu dinleyicinin kaydedileceği önceden yapılandırılmış karma BAĞLANTıNıN URL kodlamalı ad alanı yoludur. `path`İfade, daha fazla iletişim kurmak için bir sonek ve sorgu dizesi ifadesiyle genişletilebilir. Karma bağlantı yolun altına kayıtlıysa `hyco` , `path` ifadeye `hyco/suffix?param=value&...` sonra burada tanımlanan sorgu dizesi parametreleri gelebilir. Ardından, bir bütün ifade aşağıdaki gibi olabilir:

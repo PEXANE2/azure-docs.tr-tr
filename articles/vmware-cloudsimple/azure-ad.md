@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 93922986dfe0b2b4e8ba0923931df601cc12428b
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90532537"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>CloudSimple özel bulutu 'nda vCenter için kimlik sağlayıcısı olarak Azure AD kullanma
@@ -98,7 +98,7 @@ Başlamadan önce, genel yönetici ayrıcalıklarıyla Azure aboneliğinize eri�
 
 3. Ayrıcalıkların ilerletiden sonra özel bulut vCenter 'unuzda oturum açın.
 4. Azure Active Directory bir kimlik kaynağı olarak ayarlamak için önceki adımdaki değerleri kullanarak [vCenter 'da kimlik kaynağı ekleme](set-vcenter-identity.md#add-an-identity-source-on-vcenter) bölümündeki yönergeleri izleyin.
-5. [Bir vCenter çoklu oturum açma grubuna üye ekleme](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)VMware konusunda açıklandığı gibi, Azure AD 'den vCenter gruplarına kullanıcı/grup ekleyin.
+5. [Bir vCenter tek Sign-On grubuna üye ekleme](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)VMware konusunda açıklandığı gibi, Azure AD 'den vCenter gruplarına kullanıcı/grup ekleyin.
 
 > [!CAUTION]
 > Yeni kullanıcılar yalnızca *bulut sahibi grubu*, *bulut-genel-küme-yönetici-grubu*, *bulut-genel-depolama-yönetici-grubu*, bulut-genel- *Ağ-Yönetici-Grup* veya *bulut-genel-VM-yönetici grubu*için eklenmelidir.  *Yöneticiler* grubuna eklenen kullanıcılar otomatik olarak kaldırılacaktır.  Yalnızca hizmet hesaplarının *Yöneticiler* grubuna eklenmesi gerekir.

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 7a534f794f7ab5323ad46ebc555e42b2514e94e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ec89b897b4ea2e802188e3aefe9b830d7ff1cf8
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542351"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969186"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 'larınızı güncelleştirin 
 
@@ -34,13 +34,13 @@ Bu adımların her biri aşağıdaki bölümlerde açıklanmıştır.
 
 1. Yerel Web Kullanıcı arabiriminde, **yapılandırma**  >  **güncelleştirme sunucusu**' na gidin. 
    
-    ![Güncelleştirmeleri Yapılandır](./media/azure-stack-edge-gpu-install-update/configure-update-server-1.png)
+    ![Güncelleştirmeleri Yapılandır 1](./media/azure-stack-edge-gpu-install-update/configure-update-server-1.png)
 
 2. **Güncelleştirme sunucu türünü seç**' de, açılan listeden Microsoft Update sunucusu (varsayılan) veya Windows Server Update Services seçeneklerinden birini belirleyin.  
    
     Windows Server Update Services 'den güncelleştirme yapıyorsanız, sunucu URI 'sini belirtin. Bu URI 'deki sunucu, güncelleştirmeleri bu sunucuya bağlı tüm cihazlara dağıtır.
 
-    ![Güncelleştirmeleri Yapılandır](./media/azure-stack-edge-gpu-install-update/configure-update-server-2.png)
+    ![Güncelleştirmeleri Yapılandır 2](./media/azure-stack-edge-gpu-install-update/configure-update-server-2.png)
     
     WSUS sunucusu, güncelleştirmeleri bir yönetim konsolu aracılığıyla yönetmek ve dağıtmak için kullanılır. WSUS sunucusu, kuruluştaki diğer WSUS sunucuları için güncelleştirme kaynağı da olabilir. Bir güncelleştirme kaynağı görevi gören WSUS sunucusu yukarı akış sunucusu şeklinde adlandırılır. Bir WSUS uygulamasında, ağınızdaki en az bir WSUS sunucusu kullanılabilir güncelleştirme bilgilerini almak için Microsoft Update bağlanabilmelidir. Yönetici olarak, ağ güvenliğine ve yapılandırmaya göre (diğer WSUS sunucularının kaç tane Microsoft Update doğrudan bağlanmadığını belirleyebilirsiniz.
     
@@ -61,48 +61,48 @@ Azure portal aracılığıyla güncelleştirmeleri yüklemenizi öneririz. Cihaz
 
     Güncelleştirmeleri **indirip yüklemeyi** veya yalnızca güncelleştirmeleri **indirmeyi** seçebilirsiniz. Daha sonra da bu güncelleştirmeleri yükleyebilirsiniz.
 
-    ![Güncelleştirmeden sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-2a.png)    
+    ![Güncelleştirme 2 ' den sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-2a.png)    
 
     Güncelleştirmeleri indirmek ve yüklemek isterseniz, yükleme tamamlandıktan sonra güncelleştirmelerin otomatik olarak yüklenmesi seçeneğini işaretleyin.
 
-    ![Güncelleştirmeden sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-2b.png)
+    ![Güncelleştirme 3 ' den sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-2b.png)
 
 3. Güncelleştirmelerin indirilmesi başlar. İndirmenin devam ettiğini belirten bir bildirim görürsünüz.
 
-    ![Güncelleştirmeden sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-3.png)
+    ![Güncelleştirme 4 ' den sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-3.png)
 
     Azure portal bir bildirim başlığı da görüntülenir. Bu, indirme ilerleme durumunu gösterir. 
 
-    ![Güncelleştirmeden sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-4.png)
+    ![Güncelleştirme 5 ' den sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-4.png)
 
     Bu bildirimi seçebilir veya güncelleştirmenin ayrıntılı durumunu görmek için **cihazı Güncelleştir** ' i seçebilirsiniz.
 
-    ![Güncelleştirmeden sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-5.png)   
+    ![Güncelleştirme 6 ' dan sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-5.png)   
 
 
 4. İndirme işlemi tamamlandıktan sonra, tamamlanma olduğunu göstermek için bildirim başlığı güncellenir. Güncelleştirmeleri indirip yüklemeyi seçerseniz, yükleme otomatik olarak başlatılır.
 
-    ![Güncelleştirmeden sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-6.png)
+    ![Güncelleştirme 7 ' den sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-6.png)
 
     Yalnızca güncelleştirmeleri indirmeyi seçerseniz, **cihaz güncelleştirmeleri** dikey penceresini açmak için bildirimi seçin. **Yükle**'yi seçin.
   
-    ![Güncelleştirmeden sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-7.png)
+    ![Güncelleştirme 8 ' den sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-7.png)
 
 5. Yüklemenin devam ettiğini belirten bir bildirim görürsünüz.
 
-    ![Güncelleştirmeden sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-8.png)
+    ![Güncelleştirme 9 ' dan sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-8.png)
 
     Portal ayrıca yüklemenin devam ettiğini göstermek için bir bilgilendirme uyarısı görüntüler. Cihaz çevrimdışı ve bakım modunda.
     
-    ![Güncelleştirmeden sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-9.png)
+    ![Güncelleştirme 10 ' dan sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-9.png)
 
 6. Bu 1 düğümlü bir cihaz olduğundan, güncelleştirmeler yüklendikten sonra cihaz yeniden başlatılır. Yeniden başlatma işlemi sırasında kritik uyarı, cihaz sinyalinin kaybolduğunu gösterir.
 
-    ![Güncelleştirmeden sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-10.png)
+    ![Güncelleştirme 11 ' den sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-10.png)
 
     İlgili cihaz olayını görmek için uyarıyı seçin.
     
-    ![Güncelleştirmeden sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-11.png)
+    ![Güncelleştirme 12 ' den sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-11.png)
 
 
 7. Yeniden başlatmadan sonra cihaz yeniden bakım moduna konur ve bunu göstermek için bir bilgi uyarısı görüntülenir.
@@ -111,27 +111,27 @@ Azure portal aracılığıyla güncelleştirmeleri yüklemenizi öneririz. Cihaz
 
 8. Güncelleştirmeler yüklendikten sonra cihaz durumu **çevrimiçi** olarak güncelleştirilir. 
 
-    ![Güncelleştirmeden sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-14.png)
+    ![Güncelleştirme 13 ' den sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-14.png)
 
     Üstteki komut çubuğundan **cihaz güncelleştirmeleri**' ni seçin. Güncelleştirmenin başarıyla yüklendiğini ve cihaz yazılımı sürümünün bu işlemi yansıttığını doğrulayın.
 
-    ![Güncelleştirmeden sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-15.png)
+    ![Güncelleştirme 14 ' den sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-15.png)
 
 9. Güncelleştirmelerin kullanılabilir olduğunu bir bildirim görürsünüz. Bunlar Kubernetes güncelleştirmeleridir. Bildirimi seçin veya üstteki komut çubuğundan **cihazı Güncelleştir** ' i seçin.
 
-    ![Güncelleştirmeden sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-16.png)
+    ![Güncelleştirme 15 ' den sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-16.png)
 
 10. Kubernetes güncelleştirmelerini indirin. Önceki güncelleştirme paketiyle karşılaştırıldığında paket boyutunun farklı olduğunu görebilirsiniz.
 
-    ![Güncelleştirmeden sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-17.png)
+    ![Güncelleştirme 16 ' dan sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-17.png)
 
     Yükleme işlemi, cihaz güncelleştirmeleriyle aynıdır. Önce güncelleştirmeler indirilir.
 
-    ![Güncelleştirmeden sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-18.png)    
+    ![Güncelleştirme 17 ' den sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-18.png)    
     
 11. Güncelleştirmeler indirildikten sonra güncelleştirmeleri yükleyebilirsiniz. 
 
-    ![Güncelleştirmeden sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-19.png)
+    ![Güncelleştirme 18 ' den sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-19.png)
 
     Güncelleştirmeler yüklendiği sürece cihaz, bakım moduna alınır. Cihaz, Kubernetes güncelleştirmeleri için yeniden başlamıyor. 
 
@@ -165,7 +165,7 @@ Microsoft Update kataloğundan güncelleştirmeyi indirmek için aşağıdaki ad
    
     Güncelleştirme listesi **Azure Stack Edge Pro 2006**olarak görüntülenir.
    
-    ![Katalogda arama](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)
+    ![Katalog ara 2](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)
 
 4. **İndir**'i seçin. *SoftwareUpdatePackage.exe* ile indirilecek iki dosya vardır ve sırasıyla cihaz yazılım güncelleştirmelerine ve Kubernetes güncelleştirmelerine karşılık gelen *Kubernetes_Package.exe* sonekleri vardır. Dosyaları yerel sistemdeki bir klasöre indirin. Ayrıca, klasörü cihazdan erişilebilen bir ağ paylaşımında da kopyalayabilirsiniz.
 
@@ -182,33 +182,33 @@ Bu yordamın tamamlandığı 20 dakika sürer. Güncelleştirmeyi veya düzeltme
 
 1. Yerel Web Kullanıcı arabiriminde **bakım**  >  **yazılım güncelleştirmesi**' ne gidin. Çalıştırdığınız yazılım sürümünü bir yere unutmayın. 
    
-   ![cihaz güncelleştirme](./media/azure-stack-edge-gpu-install-update/local-ui-update-2.png)
+   ![cihaz güncelleştirme 2](./media/azure-stack-edge-gpu-install-update/local-ui-update-2.png)
 
 2. Güncelleştirme dosyasının yolunu belirtin. Ayrıca, bir ağ paylaşımında yer alıyorsa güncelleştirme yükleme dosyasına da gidebilirsiniz. *SoftwareUpdatePackage.exe* sonekine sahip yazılım güncelleştirme dosyasını seçin.
 
-   ![cihaz güncelleştirme](./media/azure-stack-edge-gpu-install-update/local-ui-update-3a.png)
+   ![cihaz güncelleştirme 3](./media/azure-stack-edge-gpu-install-update/local-ui-update-3a.png)
 
-3. **Uygula**’yı seçin. 
+3. **Apply** (Uygula) seçeneğini belirleyin. 
 
-   ![cihaz güncelleştirme](./media/azure-stack-edge-gpu-install-update/local-ui-update-4.png)
+   ![güncelleştirme aygıtı 4](./media/azure-stack-edge-gpu-install-update/local-ui-update-4.png)
 
 4. Onaylamanız istendiğinde, devam etmek için **Evet** ' i seçin. Cihaz tek düğümlü bir cihaz olduğundan, güncelleştirme uygulandıktan sonra cihaz yeniden başlatılır ve kapalı kalma süresi vardır. 
    
-   ![cihaz güncelleştirme](./media/azure-stack-edge-gpu-install-update/local-ui-update-5.png)
+   ![güncelleştirme aygıtı 5](./media/azure-stack-edge-gpu-install-update/local-ui-update-5.png)
 
 5. Güncelleştirme başlar. Cihaz başarıyla güncelleştirildikten sonra yeniden başlatılır. Yerel Kullanıcı arabirimine bu süre içinde erişilemiyor.
    
 6. Yeniden başlatma işlemi tamamlandıktan sonra **oturum açma** sayfasına yönlendirilirsiniz. Cihaz yazılımının güncelleştirildiğini doğrulamak için, yerel Web Kullanıcı arabiriminde **bakım**  >  **yazılım güncelleştirmesi**' ne gidin. Bu örnekteki görüntülenmiş yazılım sürümü **2.0.1257.1591**' dir.
 
-   ![cihaz güncelleştirme](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png) 
+   ![güncelleştirme cihazı 6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png) 
 
 7. Şimdi Kubernetes yazılım sürümünü güncelleştecaksınız. Yukarıdaki adımları tekrarlayın. *Kubernetes_Package.exe* sonekine sahip Kubernetes güncelleştirme dosyasına bir yol sağlayın.  
 
    <!--![update device](./media/azure-stack-edge-gpu-install-update/local-ui-update-7.png)--> 
 
-8. **Uygula**’yı seçin. 
+8. **Apply** (Uygula) seçeneğini belirleyin. 
 
-   ![cihaz güncelleştirme](./media/azure-stack-edge-gpu-install-update/local-ui-update-8.png)
+   ![cihaz güncelleştirme 7](./media/azure-stack-edge-gpu-install-update/local-ui-update-8.png)
 
 9. Onaylamanız istendiğinde, devam etmek için **Evet** ' i seçin. 
 

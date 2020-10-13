@@ -15,10 +15,10 @@ ms.date: 05/07/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
 ms.openlocfilehash: abedbd60a82f280bcd983c05a43685524a3a24e7
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91598154"
 ---
 # <a name="media-services-v3-with-widevine-license-template-overview"></a>Wıdevine lisans şablonuna genel bakış ile Media Services v3
@@ -67,10 +67,10 @@ Widevine lisans isteği JSON iletisi olarak biçimlendirilir.
 
 ## <a name="json-message"></a>JSON iletisi
 
-| Ad | Değer | Açıklama |
+| Name | Değer | Açıklama |
 | --- | --- | --- |
 | yük |Base64 ile kodlanmış dize |İstemci tarafından gönderilen lisans isteği. |
-| content_id |Base64 ile kodlanmış dize |Her bir content_key_specs için anahtar KIMLIĞINI ve içerik anahtarını türetmede kullanılan tanımlayıcı. track_type. |
+| content_id |Base64 ile kodlanmış dize |Her content_key_specs. track_type için anahtar KIMLIĞINI ve içerik anahtarını türetmede kullanılan tanımlayıcı. |
 | sağlayıcısını |string |İçerik anahtarları ve ilkeleri aramak için kullanılır. Widevine lisans teslimi için Microsoft anahtar teslimi kullanılıyorsa, bu parametre yoksayılır. |
 | policy_name |string |Daha önce kaydedilen bir ilkenin adı. İsteğe bağlı. |
 | allowed_track_types |enum |SD_ONLY veya SD_HD. Bir lisansa hangi içerik anahtarlarının dahil edileceğini denetler. |
@@ -85,16 +85,16 @@ Widevine lisans isteği JSON iletisi olarak biçimlendirilir.
 
 Her bir content_key_specs değeri, use_policy_overrides_exclusively seçeneğinden bağımsız olarak tüm parçalar için belirtilmelidir. 
 
-| Ad | Değer | Açıklama |
+| Name | Değer | Açıklama |
 | --- | --- | --- |
 | content_key_specs. track_type |string |Bir izleme türü adı. Lisans isteğinde content_key_specs belirtilmişse, tüm izleme türlerini açık olarak belirttiğinizden emin olun. Bunun yapılmaması, son 10 saniye içinde oynatılmasına neden olur. |
 | content_key_specs  <br/> security_level |Int32 |Kayıttan yürütme için istemci sağlamlık gereksinimlerini tanımlar. <br/> -Yazılım tabanlı beyaz kutu şifrelemesi gereklidir. <br/> -Yazılım şifrelemesi ve karıştırılmış bir kod çözücü gereklidir. <br/> -Anahtar malzeme ve şifreleme işlemlerinin, donanım ile desteklenen bir güvenilir yürütme ortamında gerçekleştirilmesi gerekir. <br/> -İçerik şifrelemesi ve kodunun çözülmesi, donanım tarafından desteklenen bir güvenilir yürütme ortamında gerçekleştirilmelidir.  <br/> -Şifreleme, kod çözme ve medyanın tüm işlenmesi (sıkıştırılmış ve sıkıştırılmamış), donanım tarafından desteklenen bir güvenilir yürütme ortamında işlenmelidir. |
 | content_key_specs <br/> required_output_protection. HDC |dize, biri HDCP_NONE, HDCP_V1 HDCP_V2 |HDCP gerekip gerekmediğini gösterir. |
 | content_key_specs <br/>anahtar |Biçiminde<br/>kodlanmış dize |Bu izleme için kullanılacak içerik anahtarı. Belirtilmişse track_type veya key_id gereklidir. İçerik sağlayıcısı, Widevine lisans sunucusunun bir anahtar oluşturmasını veya arama yapmasına izin vermek yerine bu izleme için içerik anahtarını eklemek için bu seçeneği kullanabilir. |
-| content_key_specs. key_id |Base64 kodlamalı dize ikili, 16 bayt |Anahtar için benzersiz tanımlayıcı. |
+| content_key_specs content_key_specs.key_id |Base64 kodlamalı dize ikili, 16 bayt |Anahtar için benzersiz tanımlayıcı. |
 
 ## <a name="policy-overrides"></a>İlke geçersiz kılmaları
-| Ad | Değer | Açıklama |
+| Name | Değer | Açıklama |
 | --- | --- | --- |
 | policy_overrides&#46;can_play |Boolean, true veya false |İçeriğin kayıttan yürütmeye izin verildiğini belirtir. Varsayılan değer false’tur. |
 | policy_overrides&#46;can_persist |Boolean, true veya false |Çevrimdışı kullanım için lisansın kalıcı depolamaya kalıcı olabileceğini belirtir. Varsayılan değer false’tur. |
@@ -109,7 +109,7 @@ Her bir content_key_specs değeri, use_policy_overrides_exclusively seçeneğind
 | policy_overrides&#46;renew_with_usage |Boolean, true veya false |Kullanım başladığında lisansın yenileme için gönderileceğini belirtir. Bu alan yalnızca can_renew true ise kullanılır. |
 
 ## <a name="session-initialization"></a>Oturum başlatma
-| Ad | Değer | Açıklama |
+| Name | Değer | Açıklama |
 | --- | --- | --- |
 | provider_session_token |Base64 ile kodlanmış dize |Bu oturum belirteci lisansa geri geçirilir ve sonraki yenilemelerde bulunur. Oturum belirteci oturumlardan daha fazla kalıcı yapmaz. |
 | provider_client_token |Base64 ile kodlanmış dize |Lisans yanıtına geri göndermek için istemci belirteci. Lisans isteği bir istemci belirteci içeriyorsa, bu değer yoksayılır. İstemci belirteci, lisans oturumlarının ötesinde devam ettirir. |

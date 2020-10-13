@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
 ms.openlocfilehash: ef95ca7b9f94690b607e37fbf5d9378c2f2bcfda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85847278"
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>StorSimple 8000 serisi güncelleştirme 4 sürüm notları
@@ -68,12 +68,12 @@ Aşağıdaki tabloda güncelleştirme 4 ' te düzeltilen sorunların özeti veri
 
 | Hayır | Özellik | Sorun | Fiziksel cihaz için geçerlidir | Sanal cihaz için geçerlidir |
 | --- | --- | --- | --- | --- |
-| 1 |Yük devretme |Önceki sürümde, yük devretmeden sonra müşteri sitesinde gözlemlenen Temizleme ile ilgili bir sorun oluştu. Bu sorun bu sürümde düzeltilmiştir. |Yes |Evet |
+| 1 |Yük devretme |Önceki sürümde, yük devretmeden sonra müşteri sitesinde gözlemlenen Temizleme ile ilgili bir sorun oluştu. Bu sorun bu sürümde düzeltilmiştir. |Evet |Evet |
 | 2 |Yerel olarak sabitlenmiş birimler |Önceki sürümde, birim oluşturma hatalarıyla sonuçlanacağından yerel olarak sabitlenmiş birimler için ilgili birim oluşturma konusunda bir sorun oluştu. Bu sorun köklenmiştir ve bu sürümde düzeltildi. |Evet |Hayır |
-| 3 |Destek paketi |Önceki sürümde, destek paketi ile ilgili, destek paketi oluşturma hatasına yol açacak bir sistem. OutOfMemory özel durumu veya diğer hatalara neden olacak sorunlar oluştu. Bu hatalar bu sürümde düzeltilmiştir. |Yes |Evet |
-| 4 |İzleme |Önceki sürümde, yerel olarak sabitlenmiş birimlerde tüketimin, EB 'de gösterilmekte olan grafiklerle ilgili bir sorun var. Bu hata bu sürümde çözüldü. |Yes |Evet |
-| 5 |Geçiş |Önceki sürümde, 5000-7000 serisinden 8000 serisi cihazlara geçişin güvenilirliğiyle ilgili birkaç sorun oluştu. Bu sorunlar bu sürümde ele alındı. |Yes |Evet |
-| 6 |Güncelleştir |Önceki sürümlerde, bir güncelleştirme hatası oluşursa, denetleyiciler kurtarma moduna geçer ve bu nedenle Kullanıcı güncelleştirmeye devam edemeyebilir ve Microsoft Desteği iletişim kurabilmesi gerekir. <br> Bu davranış bu sürümde değiştirilmiştir. Her iki denetleyici de aynı sürümü (güncelleştirme 4) çalıştırdıktan sonra kullanıcının bir güncelleştirme hatası varsa, denetleyiciler kurtarma moduna geçmez. Kullanıcı bu hatayla karşılaşırsa, bir bit beklemeniz ve sonra güncelleştirmeyi yeniden denemeniz önerilir. Yeniden deneme başarılı olabilir. Yeniden deneme başarısız olursa, Microsoft Desteği ile bağlantı kurmanız gerekir. |Yes |Evet |
+| 3 |Destek paketi |Önceki sürümde, destek paketi ile ilgili, destek paketi oluşturma hatasına yol açacak bir sistem. OutOfMemory özel durumu veya diğer hatalara neden olacak sorunlar oluştu. Bu hatalar bu sürümde düzeltilmiştir. |Evet |Evet |
+| 4 |İzleme |Önceki sürümde, yerel olarak sabitlenmiş birimlerde tüketimin, EB 'de gösterilmekte olan grafiklerle ilgili bir sorun var. Bu hata bu sürümde çözüldü. |Evet |Evet |
+| 5 |Geçiş |Önceki sürümde, 5000-7000 serisinden 8000 serisi cihazlara geçişin güvenilirliğiyle ilgili birkaç sorun oluştu. Bu sorunlar bu sürümde ele alındı. |Evet |Evet |
+| 6 |Güncelleştir |Önceki sürümlerde, bir güncelleştirme hatası oluşursa, denetleyiciler kurtarma moduna geçer ve bu nedenle Kullanıcı güncelleştirmeye devam edemeyebilir ve Microsoft Desteği iletişim kurabilmesi gerekir. <br> Bu davranış bu sürümde değiştirilmiştir. Her iki denetleyici de aynı sürümü (güncelleştirme 4) çalıştırdıktan sonra kullanıcının bir güncelleştirme hatası varsa, denetleyiciler kurtarma moduna geçmez. Kullanıcı bu hatayla karşılaşırsa, bir bit beklemeniz ve sonra güncelleştirmeyi yeniden denemeniz önerilir. Yeniden deneme başarılı olabilir. Yeniden deneme başarısız olursa, Microsoft Desteği ile bağlantı kurmanız gerekir. |Evet |Evet |
 
 
 ## <a name="known-issues-in-update-4-from-previous-releases"></a>Önceki sürümlerden güncelleştirme 4 ' te bilinen sorunlar

@@ -10,10 +10,10 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 02/29/2020
 ms.openlocfilehash: 5d161b287f9706473c96d25684fa23a2c94b8c3e
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91532162"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure Scheduler işlerini Azure Logic Apps’e geçirme
@@ -220,7 +220,7 @@ Y **: her**Scheduler işi benzersizdir, bu nedenle tek boyutlu bir-All aracı yo
 **S**: Zamanlayıcı işlerinizin geçirilmesi için nereden destek alabilirim? <br>
 Y: destek almanın bazı yolları aşağıda **verilmiştir:**
 
-**Azure Portal**
+**Azure portalındaki**
 
 Azure aboneliğinizin ücretli bir destek planı varsa Azure portal bir teknik destek isteği oluşturabilirsiniz. Aksi takdirde, farklı bir destek seçeneği belirleyebilirsiniz.
 
@@ -237,7 +237,7 @@ Azure aboneliğinizin ücretli bir destek planı varsa Azure portal bir teknik d
 
 1. İstediğiniz destek seçeneğini belirleyin. Ücretli bir destek planınız varsa **İleri**' yi seçin.
 
-**Topluluğundan**
+**Topluluk**
 
 * [Microsoft Q&Azure Logic Apps için soru sayfası](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-scheduler)

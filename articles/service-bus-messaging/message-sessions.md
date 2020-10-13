@@ -4,10 +4,10 @@ description: Bu makalede, sınırsız sayıda ilişkili ileti dizisinin Birleşi
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 05efc550e119186a2925c13d3fcfed11bec17251
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86511305"
 ---
 # <a name="message-sessions"></a>İleti oturumları
@@ -78,8 +78,8 @@ Oturum bağlamındaki ileti başına teslim sayısı tanımı, oturum yokluğund
 
 | Senaryo | İletinin teslim sayısı arttırılır |
 |----------|---------------------------------------------|
-| Oturum kabul edildi, ancak oturum kilidinin süresi dolduğunda (zaman aşımı nedeniyle) | Yes |
-| Oturum kabul edildi, oturumdaki iletiler (kilitli olsalar bile) tamamlanmaz ve oturum kapalı | No |
+| Oturum kabul edildi, ancak oturum kilidinin süresi dolduğunda (zaman aşımı nedeniyle) | Evet |
+| Oturum kabul edildi, oturumdaki iletiler (kilitli olsalar bile) tamamlanmaz ve oturum kapalı | Hayır |
 | Oturum kabul edildi, iletiler tamamlandı, sonra oturum açık olarak kapalı | Yok (Standart akışdır. Buradan iletiler oturumdan kaldırılır) |
 
 ## <a name="request-response-pattern"></a>İstek-yanıt deseninin
@@ -88,7 +88,7 @@ Oturum bağlamındaki ileti başına teslim sayısı tanımı, oturum yokluğund
 Birden çok uygulama, kendi isteklerini tek bir istek kuyruğuna gönderebilir ve belirli bir üst bilgi parametresi, gönderen uygulamasını benzersiz şekilde tanımlamak üzere ayarlanır. Alıcı uygulaması kuyruktaki istekleri işleyebilir ve oturum etkinleştirme kuyruğuna yanıt gönderebilir ve oturum KIMLIĞINI gönderenin istek iletisine gönderdiği benzersiz tanımlayıcıya ayarlar. İsteği gönderen uygulama daha sonra belirli oturum KIMLIĞINDE iletiler alabilir ve yanıtları doğru şekilde işleyebilir.
 
 > [!NOTE]
-> İlk istekleri gönderen uygulama, oturum KIMLIĞI hakkında bilgi almalıdır ve `SessionClient.AcceptMessageSession(SessionID)` yanıtı beklediği oturumu kilitlemek için kullanır. Uygulamanın örneğini bir oturum kimliği olarak benzersiz bir şekilde tanımlayan GUID kullanmak iyi bir fikirdir. `AcceptMessageSession(timeout)`Yanıtların belirli alıcılar tarafından kilitlenmek ve işlenmek üzere kullanılabilir olduğundan emin olmak için herhangi bir oturum işleyicisi veya kuyrukta olmaması gerekir.
+> İlk istekleri gönderen uygulama, oturum KIMLIĞI hakkında bilgi almalıdır ve `SessionClient.AcceptMessageSession(SessionID)` yanıtı beklediği oturumu kilitlemek için kullanır. Uygulamanın örneğini bir oturum kimliği olarak benzersiz bir şekilde tanımlayan GUID kullanmak iyi bir fikirdir. `AcceptMessageSession(timeout)` Yanıtların belirli alıcılar tarafından kilitlenmek ve işlenmek üzere kullanılabilir olduğundan emin olmak için herhangi bir oturum işleyicisi veya kuyrukta olmaması gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

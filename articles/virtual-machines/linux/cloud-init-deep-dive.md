@@ -9,10 +9,10 @@ ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
 ms.openlocfilehash: f5028abadbe5600058c83a144d0095aee1278fe6
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86042092"
 ---
 # <a name="diving-deeper-into-cloud-init"></a>Cloud-init ' i daha ayrıntılı hale döndürme
@@ -21,7 +21,7 @@ ms.locfileid: "86042092"
 Cloud-init, genelleştirilmiş bir görüntüye dahil edildiğinde ve bu görüntüden bir VM oluşturulduğunda, bu, konfigürasyonları işler ve ilk önyükleme sırasında 5 aşamadan sonra çalışır. Bu aşamalar, bulut-init ' in hangi noktada yapılandırmaların uygulanacağını gösterir. 
 
 
-## <a name="understand-cloud-init-configuration"></a>Cloud-Init yapılandırmasını anlama
+## <a name="understand-cloud-init-configuration"></a>Cloud-Init yapılandırmayı anlama
 Bir sanal makineyi bir platformda çalışacak şekilde yapılandırmak, Cloud-Init ' in bir görüntü tüketicisi olarak birden çok yapılandırmayı uygulaması için, `User data` (CustomData), birden çok biçimi destekleyen ana yapılandırmaların, [burada](https://cloudinit.readthedocs.io/en/latest/topics/format.html#user-data-formats)belgelendiği anlamına gelir. Ek yapılandırma için komut dosyaları ekleme ve çalıştırma (/var/lib/Cloud/Scripts) özelliğine sahip olursunuz, aşağıda bunun daha ayrıntılı bir şekilde açıklanmaktadır.
 
 Bazı konfigürasyonlar, Cloud-init ile birlikte gelen Azure Marketi görüntülerine zaten bakmış, örneğin:
@@ -71,9 +71,9 @@ Cloud-init ile sağlandığınızda,, yapılandırmayı işleyen ve günlüklerd
 5. [Cloud-Init son aşaması](https://cloudinit.readthedocs.io/en/latest/topics/boot.html#final): Bu son aşamada, `cloud_final_modules` /etc/Cloud/Cloud.exe ' de listelenen modüller çalıştırılır. Burada, paket yüklemeleri ve çalıştırma betikleri gibi önyükleme işlemi çalıştırmasında geç çalıştırılması gereken modüller. 
 
    -   Bu aşamada, komut dosyalarını aşağıdaki dizinlere yerleştirerek çalıştırabilirsiniz `/var/lib/cloud/scripts` :
-   - `per-boot`-Bu dizin içindeki betikler, her yeniden başlatmada çalıştırılır
-   - `per-instance`-Yeni bir örnek ilk kez önyüklendiğinde bu dizin içindeki betikler çalıştırılır
-   - `per-once`-Bu dizin içindeki betikler yalnızca bir kez çalıştırılır
+   - `per-boot` -Bu dizin içindeki betikler, her yeniden başlatmada çalıştırılır
+   - `per-instance` -Yeni bir örnek ilk kez önyüklendiğinde bu dizin içindeki betikler çalıştırılır
+   - `per-once` -Bu dizin içindeki betikler yalnızca bir kez çalıştırılır
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
