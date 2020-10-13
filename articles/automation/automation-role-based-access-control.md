@@ -7,15 +7,15 @@ ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
 ms.openlocfilehash: efdb195ad41b036f7f470884b3a441de1db7f7f4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91716154"
 ---
 # <a name="manage-role-permissions-and-security"></a>Rol izinlerini ve güvenliği yönetme
 
-Azure rol tabanlı erişim denetimi (Azure RBAC), Azure kaynakları için erişim yönetimine izin vermez. [Azure RBAC](../role-based-access-control/overview.md)'yi kullanarak ekipinizdeki görevleri ayırabilirsiniz ve yalnızca işlerini gerçekleştirmek için ihtiyaç duydukları kullanıcılara, gruplara ve uygulamalara erişim miktarını verebilirsiniz. Azure portal, Azure komut satırı araçları veya Azure Yönetim API 'Lerini kullanarak kullanıcılara rol tabanlı erişim izni verebilirsiniz.
+Azure rol tabanlı erişim denetimi (Azure RBAC), Azure kaynakları için erişim yönetimine izin vermez. [Azure RBAC](../role-based-access-control/overview.md)'yi kullanarak ekipinizdeki görevleri ayırabilirsiniz ve yalnızca işlerini gerçekleştirmek için ihtiyaç duydukları kullanıcılara, gruplara ve uygulamalara erişim miktarını verebilirsiniz. Azure portal, Azure Command-Line araçları veya Azure Yönetim API 'Lerini kullanarak kullanıcılara rol tabanlı erişim izni verebilirsiniz.
 
 ## <a name="roles-in-automation-accounts"></a>Otomasyon hesaplarındaki roller
 

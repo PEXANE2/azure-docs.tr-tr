@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
 ms.openlocfilehash: be50deb836082354db899e84ef24d75c4d403432
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91450407"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Izleyici 'de VMware İzleme (kullanım dışı) çözümü
@@ -42,7 +42,7 @@ ESXi konaklarından tüm Syslog verilerini almak için bir Linux işletim sistem
 ### <a name="configure-syslog-collection"></a>Syslog koleksiyonunu yapılandırma
 1. VSphere için Syslog iletmeyi ayarlayın. Syslog iletmeyi ayarlamaya yardımcı olacak ayrıntılı bilgiler için, bkz. [ESXi 5,0 ve üzeri için Syslog yapılandırma (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322). **ESXi ana bilgisayar yapılandırması**  >  **yazılım**  >  **Gelişmiş ayarlar**  >  **Syslog**' a gidin.
    ![vspburconfig](./media/vmware/vsphere1.png)  
-1. *Syslog. Global. logHost* alanında, Linux sunucunuzu ve *1514*numaralı bağlantı noktasını ekleyin. Örneğin `tcp://hostname:1514` veya `tcp://123.456.789.101:1514`
+1. *Syslog. Global. logHost* alanında, Linux sunucunuzu ve *1514*numaralı bağlantı noktasını ekleyin. Örneğin `tcp://hostname:1514` veya `tcp://123.456.789.101:1514` olabilir.
 1. Syslog için ESXi ana bilgisayar güvenlik duvarını açın. **ESXi ana bilgisayar yapılandırması**  >  **Yazılım**  >  **Güvenlik profili**  >  **Güvenlik duvarı** ve açık **Özellikler**.  
 
     ![vsizefw](./media/vmware/vsphere2.png)  

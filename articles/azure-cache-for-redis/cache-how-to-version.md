@@ -7,16 +7,16 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.openlocfilehash: ed0f486afe466d31388fa99b4ce5f5754210533f
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91571536"
 ---
 # <a name="set-redis-version-for-azure-cache-for-redis-preview"></a>Redsıs için Azure önbelleği için Redsıs sürümünü ayarla (Önizleme)
 Bu makalede, önbellek örneğinizle birlikte kullanılacak Redsıs yazılım sürümünü nasıl yapılandıracağınızı öğreneceksiniz. Redsıs için Azure önbelleği, Redsıs 'in en son ana sürümünü ve en az bir önceki sürümü sunmaktadır. Daha yeni Redthe Software piyasaya sürültüğünüz için bu sürümler düzenli olarak güncelleştirilecek. Kullanılabilir iki sürüm arasından seçim yapabilirsiniz. Kullanmakta olduğunuz sürüm artık desteklenmiyorsa önbelleğinizin sonraki sürüme otomatik olarak yükseltildiğini aklınızda bulundurun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 
 > [!NOTE]

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
 ms.openlocfilehash: 36e41db6e1a3cff13f31f0abf2e83e872dfd7c49
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91742341"
 ---
 # <a name="network-monitoring-solutions"></a>Ağ izleme çözümleri 
@@ -70,7 +70,7 @@ ExpressRoute için NPM, Azure özel eşleme ve Microsoft eşleme bağlantıları
 
 ![Bölge genelinde trafiği gösteren coğrafi eşleme](./media/network-monitoring-overview/expressroute-topology-map.png) 
 
-Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 * [ExpressRoute için Ağ Performansı İzleyicisi’ni Yapılandırma](../expressroute/how-to-npm.md)
 * [Blog gönderisi](https://aka.ms/NPMExRmonitorGA)
@@ -86,7 +86,7 @@ Hizmet bağlantısı izleme ile artık uygulamaların erişilebilirliği test ed
 * Ağdaki etkin noktaları belirleme, bu durum kötü uygulama performansına neden olabilir
 * Microsoft 365, Dynamics 365, Skype Kurumsal ve diğer Microsoft Hizmetleri için yerleşik testler kullanarak Microsoft 365 uygulamalara yönelik erişilebilirliği izleyin
 
-Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 * [İzleme hizmeti uç noktaları için Ağ Performansı İzleyicisi yapılandırma](../azure-monitor/insights/network-performance-monitor-service-connectivity.md#configuration)
 * [Blog gönderisi](https://aka.ms/svcendptmonitor)

@@ -5,12 +5,12 @@ author: jjbfour
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: b6984bfdf7ec078d02999bccf77f3592cfbcab27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e11e08d861538ddf395f522495798546e04ca7c
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75649991"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948961"
 ---
 # <a name="set-up-azure-functions-for-azure-custom-providers"></a>Azure özel sağlayıcıları için Azure Işlevleri ayarlama
 
@@ -51,7 +51,7 @@ Azure işlevini, özel sağlayıcı yeniden deneme isteği yöntemlerini içerec
 > [!NOTE]
 > C# proje dosyanız proje dizininde eksikse, el ile ekleyebilirsiniz. Ya da Microsoft. Azure. WebJobs. Extensions. Storage uzantısı işlev uygulamasında yüklendikten sonra görüntülenir.
 
-Sonra, C# proje dosyasını yardımcı NuGet kitaplıklarını içerecek şekilde güncelleştirin. Bu kitaplıklar, özel sağlayıcılardan gelen istekleri ayrıştırmayı kolaylaştırır. [Portaldan uzantı eklemek](../../azure-functions/install-update-binding-extensions-manual.md) ve C# proje dosyasını aşağıdaki paket başvurularını içerecek şekilde güncelleştirmek için adımları izleyin:
+Sonra, C# proje dosyasını yardımcı NuGet kitaplıklarını içerecek şekilde güncelleştirin. Bu kitaplıklar, özel sağlayıcılardan gelen istekleri ayrıştırmayı kolaylaştırır. [Portaldan uzantı eklemek](../../azure-functions/functions-bindings-register.md) ve C# proje dosyasını aşağıdaki paket başvurularını içerecek şekilde güncelleştirmek için adımları izleyin:
 
 ```xml
 <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="3.0.4" />
@@ -80,4 +80,3 @@ Aşağıdaki XML öğesi örnek bir C# proje dosyasıdır:
 Bu öğreticide, bir Azure işlevi uygulamasını Azure özel sağlayıcı uç noktası olarak çalışacak şekilde ayarlarsınız.
 
 Yeniden bir özel sağlayıcı uç noktasının nasıl yazıldığını öğrenmek için bkz. [öğretici: yeniden bir özel sağlayıcı uç noktası yazma](./tutorial-custom-providers-function-authoring.md).
-

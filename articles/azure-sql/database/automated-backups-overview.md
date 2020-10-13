@@ -12,10 +12,10 @@ ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
 ms.date: 10/05/2020
 ms.openlocfilehash: 43551ca17180cbb3614c670490a19aeaae6c7701
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91728667"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Otomatik yedeklemeler-SQL yönetilen örnek & Azure SQL veritabanı
@@ -72,10 +72,10 @@ Aşağıdaki örnekleri kullanarak yedekleme yapılandırma ve geri yükleme iş
 
 | İşlem | Azure portal | Azure PowerShell |
 |---|---|---|
-| **Yedekleme bekletmesini değiştirme** | [SQL Veritabanı](automated-backups-overview.md?tabs=single-database#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [SQL Yönetilen Örnek](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [SQL Veritabanı](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[SQL Yönetilen Örnek](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
-| **Uzun süreli yedekleme bekletmesini değiştirme** | [SQL Veritabanı](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>SQL yönetilen örneği-yok  | [SQL Veritabanı](long-term-backup-retention-configure.md)<br/>[SQL Yönetilen Örnek](../managed-instance/long-term-backup-retention-configure.md)  |
-| **Bir veritabanından bir zaman noktasından geri yükleme** | [SQL Veritabanı](recovery-using-backups.md#point-in-time-restore)<br>[SQL Yönetilen Örnek](../managed-instance/point-in-time-restore.md) | [SQL Veritabanı](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [SQL Yönetilen Örnek](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
-| **Silinen veritabanını geri yükleme** | [SQL Veritabanı](recovery-using-backups.md)<br>[SQL Yönetilen Örnek](../managed-instance/point-in-time-restore.md#restore-a-deleted-database) | [SQL Veritabanı](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [SQL Yönetilen Örnek](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
+| **Yedekleme bekletmesini değiştirme** | [SQL Database](automated-backups-overview.md?tabs=single-database#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [SQL Yönetilen Örnek](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [SQL Database](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[SQL Yönetilen Örnek](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| **Uzun süreli yedekleme bekletmesini değiştirme** | [SQL Database](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>SQL yönetilen örneği-yok  | [SQL Database](long-term-backup-retention-configure.md)<br/>[SQL Yönetilen Örnek](../managed-instance/long-term-backup-retention-configure.md)  |
+| **Bir veritabanından bir zaman noktasından geri yükleme** | [SQL Database](recovery-using-backups.md#point-in-time-restore)<br>[SQL Yönetilen Örnek](../managed-instance/point-in-time-restore.md) | [SQL Database](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [SQL Yönetilen Örnek](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
+| **Silinen veritabanını geri yükleme** | [SQL Database](recovery-using-backups.md)<br>[SQL Yönetilen Örnek](../managed-instance/point-in-time-restore.md#restore-a-deleted-database) | [SQL Database](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [SQL Yönetilen Örnek](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
 | **Azure Blob depolamadan bir veritabanını geri yükleme** | SQL veritabanı-yok <br/>SQL yönetilen örneği-yok  | SQL veritabanı-yok <br/>[SQL Yönetilen Örnek](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
 
 ## <a name="backup-scheduling"></a>Yedekleme zamanlaması
@@ -231,7 +231,7 @@ Varsayılan yedek saklama süresini Azure portal, PowerShell veya REST API kulla
 
 Azure portal kullanarak etkin veritabanlarının ara yedek saklama süresini değiştirmek için, saklama süresini değiştirmek istediğiniz veritabanlarında sunucuya veya yönetilen örneğe gidin. 
 
-#### <a name="sql-database"></a>[SQL Veritabanı](#tab/single-database)
+#### <a name="sql-database"></a>[SQL Database](#tab/single-database)
 
 SQL veritabanı için yedek saklama ile ilgili değişiklikler, portaldaki sunucu sayfasında yapılır. Bir sunucudaki veritabanları için veri saklama süresini değiştirmek için sunucuya genel bakış dikey penceresine gidin. Sol bölmedeki **Yedeklemeleri Yönet** ' i seçin, değişiklerinizin kapsamındaki veritabanlarını seçin ve ardından ekranın en üstünde **bekletme Yapılandır** ' ı seçin:
 
@@ -251,7 +251,7 @@ SQL yönetilen örneği için yedek saklama ile ilgili değişiklikler, tek bir 
 > [!IMPORTANT]
 > PowerShell Azurerd modülü, SQL veritabanı ve SQL yönetilen örneği tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Daha fazla bilgi için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module içindeki komutlar için bağımsız değişkenler Azurerd modüllerindekilerle oldukça benzerdir.
 
-#### <a name="sql-database"></a>[SQL Veritabanı](#tab/single-database)
+#### <a name="sql-database"></a>[SQL Database](#tab/single-database)
 
 Etkin Azure SQL veritabanları için yedek yedekleme bekletmesini değiştirmek için aşağıdaki PowerShell örneğini kullanın.
 
@@ -377,7 +377,7 @@ Yönetilen bir örnek için yedek depolama yedekliği yalnızca örnek oluşturm
 
 ### <a name="configure-backup-storage-redundancy-by-using-the-azure-portal"></a>Azure portal kullanarak yedek depolama yedekliliği yapılandırma
 
-#### <a name="sql-database"></a>[SQL Veritabanı](#tab/single-database)
+#### <a name="sql-database"></a>[SQL Database](#tab/single-database)
 
 Azure portal, **SQL veritabanı oluştur** dikey penceresinde yedek depolama yedekliği yapılandırabilirsiniz. Bu seçenek, yedekleme depolama artıklığı bölümünde bulunur. 
 ![SQL veritabanı oluştur dikey penceresini aç](./media/automated-backups-overview/sql-database-backup-storage-redundancy.png)
@@ -394,7 +394,7 @@ Azure portal, yedekleme depolama yedekliliği değiştirme seçeneği, SQL yöne
 
 ### <a name="configure-backup-storage-redundancy-by-using-powershell"></a>PowerShell kullanarak yedek depolama yedekliliği yapılandırma
 
-#### <a name="sql-database"></a>[SQL Veritabanı](#tab/single-database)
+#### <a name="sql-database"></a>[SQL Database](#tab/single-database)
 
 Yeni bir veritabanı oluştururken yedek depolama yedekliliği yapılandırmak için-BackupStoageRedundancy parametresini belirtebilirsiniz. Olası değerler coğrafi, bölge ve yerel ' dir. Varsayılan olarak, tüm SQL veritabanları yedeklemeler için coğrafi olarak yedekli depolama kullanır. Yerel veya bölge yedekli yedekleme depolama alanı ile bir veritabanı oluşturulduysa coğrafi geri yükleme devre dışı bırakılır. 
 

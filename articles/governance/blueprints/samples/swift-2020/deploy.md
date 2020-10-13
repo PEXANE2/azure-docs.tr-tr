@@ -3,12 +3,12 @@ title: SWIFT CSP-cscf V2020 şema örneği dağıtma
 description: Şema yapıt parametresi ayrıntıları dahil olmak üzere SWIFT CSP-cscf V2020 şema örneği için adımları dağıtın.
 ms.date: 08/18/2020
 ms.topic: sample
-ms.openlocfilehash: b65dc9cdd601f9fd2d7972b74435702a00244e8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 973cd0076ae03fd32db5fc9be262b2c5300fdf16
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88612733"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949420"
 ---
 # <a name="deploy-the-swift-csp-cscf-v2020-blueprint-sample"></a>SWIFT CSP-cscf V2020 şema örneğini dağıtma
 
@@ -93,7 +93,7 @@ Aşağıdaki tabloda, şema yapıtı parametrelerinin bir listesi verilmiştir:
 
 |Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
 |-|-|-|-|
-|\[Önizleme \] : denetim gereksinimlerini desteklemek IÇIN SWIFT CSP-CSCF V2020 denetimlerini denetleme ve belırlı VM uzantılarını dağıtma|İlke ataması|Tanılama günlükleri etkinleştirilmiş olması gereken kaynak türlerinin listesi|Tanılama günlüğü ayarı etkinleştirilmemişse denetlenecek kaynak türleri listesi. Kabul edilebilir değerler, [Azure izleyici tanılama günlükleri şemalarında](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)bulunabilir.|
+|\[Önizleme \] : denetim gereksinimlerini desteklemek IÇIN SWIFT CSP-CSCF V2020 denetimlerini denetleme ve belırlı VM uzantılarını dağıtma|İlke ataması|Tanılama günlükleri etkinleştirilmiş olması gereken kaynak türlerinin listesi|Tanılama günlüğü ayarı etkinleştirilmemişse denetlenecek kaynak türleri listesi. Kabul edilebilir değerler, [Azure izleyici kaynak günlükleri kategorilerinde](../../../../azure-monitor/platform/resource-logs-categories.md#supported-log-categories-per-resource-type)bulunabilir.|
 |\[Önizleme \] : denetim gereksinimlerini desteklemek IÇIN SWIFT CSP-CSCF V2020 denetimlerini denetleme ve belırlı VM uzantılarını dağıtma|İlke ataması|Bağlı çalışma alanı kimlikleri|Log Analytics aracısının bağlanması gereken çalışma alanı kimliklerinin noktalı virgülle ayrılmış listesi|
 |\[Önizleme \] : denetim gereksinimlerini desteklemek IÇIN SWIFT CSP-CSCF V2020 denetimlerini denetleme ve belırlı VM uzantılarını dağıtma|İlke ataması|Windows VM yöneticileri grubuna dahil edilecek kullanıcıların listesi|Yöneticiler yerel grubuna dahil edilecek üyelerin noktalı virgülle ayrılmış listesi. Ex: yönetici; myUser1; myUser2|
 |\[Önizleme \] : denetim gereksinimlerini desteklemek IÇIN SWIFT CSP-CSCF V2020 denetimlerini denetleme ve belırlı VM uzantılarını dağıtma|İlke ataması|Etki alanı adı (FQDN)|Windows VM 'lerinin katılması gereken tam etki alanı adı (FQDN)|
