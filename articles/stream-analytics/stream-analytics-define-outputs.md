@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/2/2020
 ms.openlocfilehash: 5f109ad719ada9728938f6e37d4ec854d3950a24
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708444"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Azure Stream Analytics çıkış çıkışları
@@ -25,17 +25,17 @@ Bazı çıkış türleri [bölümleme](#partitioning)destekler ve [Çıkış top
 
 | Çıkış türü | Bölümleme | Güvenlik | 
 |-------------|--------------|----------|
-|[Azure Data Lake Storage 1. Nesil](azure-data-lake-storage-gen1-output.md)|Yes|Azure Active Directory Kullanıcı </br> MSI|
+|[Azure Data Lake Storage 1. Nesil](azure-data-lake-storage-gen1-output.md)|Evet|Azure Active Directory Kullanıcı </br> MSI|
 |[Azure SQL Veritabanı](sql-database-output.md)|Evet, isteğe bağlı.|SQL kullanıcı kimlik doğrulaması </br> MSI (Önizleme)|
-|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Yes|SQL kullanıcı kimlik doğrulaması|
-|[BLOB depolama ve Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Yes|MSI </br> Erişim anahtarı|
+|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Evet|SQL kullanıcı kimlik doğrulaması|
+|[BLOB depolama ve Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Evet|MSI </br> Erişim anahtarı|
 |[Azure Event Hubs](event-hubs-output.md)|Evet, çıkış yapılandırmasında bölüm anahtarı sütununu ayarlamanız gerekir.|Erişim anahtarı|
 |[Power BI](power-bi-output.md)|Hayır|Azure Active Directory Kullanıcı </br> MSI|
-|[Azure Tablo Depolama](table-storage-output.md)|Yes|Hesap anahtarı|
-|[Azure Service Bus kuyrukları](service-bus-queues-output.md)|Yes|Erişim anahtarı|
-|[Azure Service Bus konuları](service-bus-topics-output.md)|Yes|Erişim anahtarı|
-|[Azure Cosmos DB](azure-cosmos-db-output.md)|Yes|Erişim anahtarı|
-|[Azure İşlevleri](azure-functions-output.md)|Yes|Erişim anahtarı|
+|[Azure Tablo Depolama](table-storage-output.md)|Evet|Hesap anahtarı|
+|[Azure Service Bus kuyrukları](service-bus-queues-output.md)|Evet|Erişim anahtarı|
+|[Azure Service Bus konuları](service-bus-topics-output.md)|Evet|Erişim anahtarı|
+|[Azure Cosmos DB](azure-cosmos-db-output.md)|Evet|Erişim anahtarı|
+|[Azure İşlevleri](azure-functions-output.md)|Evet|Erişim anahtarı|
 
 ## <a name="partitioning"></a>Bölümleme
 

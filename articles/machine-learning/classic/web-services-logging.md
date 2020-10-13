@@ -11,10 +11,10 @@ ms.subservice: studio
 ms.topic: how-to
 ms.date: 06/15/2017
 ms.openlocfilehash: b30cd926f6908c26c6f71c1513a8c68c8a46bf43
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91359772"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>Azure Machine Learning Studio (klasik) Web Hizmetleri için günlüğe kaydetmeyi etkinleştirme
@@ -71,9 +71,9 @@ Günlükler, bir Azure Depolama hesabını araştırmak için kullanılabilen ç
 ## <a name="log-blob-detail-information"></a>Blob ayrıntısı bilgilerini günlüğe kaydet
 Kapsayıcıdaki her blob, aşağıdaki eylemlerden tam olarak biri için tanılama bilgilerini barındırır:
 
-* Toplu yürütme yönteminin yürütülmesi  
-* Istek-yanıt yönteminin yürütülmesi  
-* Istek-yanıt kapsayıcısını başlatma
+* Batch-Execution yönteminin yürütülmesi  
+* Request-Response yönteminin yürütülmesi  
+* Request-Response kapsayıcısı başlatma
 
 Her Blobun adı aşağıdaki formun bir ön ekine sahiptir: 
 

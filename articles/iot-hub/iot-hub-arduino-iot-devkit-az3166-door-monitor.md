@@ -9,10 +9,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
 ms.openlocfilehash: d4f77cec793e13ff943c173d88948eb5b5de0957
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91356256"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Kapı Izleyicisi--Azure Işlevleri ve SendGrid kullanarak bir kapı açıldığında e-posta gönderin           
@@ -34,7 +34,7 @@ Bu projede şunları öğrenirsiniz:
 
 [Başlarken Kılavuzunu](iot-hub-arduino-iot-devkit-az3166-get-started.md) şu şekilde sona erdirin:
 
-* DevKit 'in Wi-Fi ' e bağlanmasını sağlama
+* DevKit 'in Wi-Fi bağlı olmasını sağlama
 * Geliştirme ortamını hazırlama
 
 Etkin bir Azure aboneliği. Bir tane yoksa, aşağıdaki yöntemlerden birini kullanarak kaydedebilirsiniz:

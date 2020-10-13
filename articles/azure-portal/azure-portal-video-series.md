@@ -9,12 +9,12 @@ ms.date: 08/17/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 3c34fd198164d7e3ae0851749cf51809df31ca19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42d9c418ee6feae7a763b1a2cc76d8edb2fec6ce
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88522955"
+ms.locfileid: "91873719"
 ---
 # <a name="azure-portal-how-to-video-series"></a>Azure portalı nasıl yapılır video serisi
 
@@ -22,18 +22,17 @@ Azure portal nasıl yapılır video serisi, Azure portal Azure hizmetleriyle nas
 
 ## <a name="featured-video"></a>Öne çıkan video
 
-Bu öne çıkan videoda, Azure statik bir Web uygulamasının nasıl dağıtılacağı gösterilmektedir.
+Bu öne çıkan videoda, bir App Service etki alanı oluşturma ve yönetme hakkında gösterilmektedir.
 
-> [!VIDEO https://www.youtube.com/embed/H2MPsgujpNk]
+> [!VIDEO https://www.youtube.com/embed/b1kDT8-6a3g]
 
-[Azure statik Web uygulaması dağıtma](https://www.youtube.com/watch?v=H2MPsgujpNk)
+[App Service etki alanı oluşturma ve yönetme](https://www.youtube.com/watch?v=b1kDT8-6a3g)
 
 Kaçırılmış olan bu son videoları yakalayın:
 
-| [Azure Işlevlerini izleme](https://www.youtube.com/watch?v=eVDZz8h0s00)  | [Blob sürümü oluşturma kullanma](https://www.youtube.com/watch?v=b2oyxbSbLPA)  | [Azure özel bağlantısını kullanarak bir depolama hesabına bağlanma](https://www.youtube.com/watch?v=m7e9h1gedWQ)  |
+| [App Service Web uygulamanıza özel bir etki alanı ekleme ve güvenliğini sağlama](https://www.youtube.com/watch?v=bXP6IvNYISw)  | [Linux sanal makine deneyimine yönelik geliştirmeler](https://www.youtube.com/watch?v=obg6Fq2T898)  | [Blob sürümü oluşturma kullanma](https://www.youtube.com/watch?v=m7e9h1gedWQ)  |
 | ------| ------ | ------ |
-| [![Azure Işlevlerinin nasıl izleneceği hakkında YouTube videosunun görüntüsü](https://i.ytimg.com/vi/eVDZz8h0s00/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=eVDZz8h0s00) | [![Blob sürümü oluşturma hakkında YouTube videosunun görüntüsü](https://i.ytimg.com/vi/m7e9h1gedWQ/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=m7e9h1gedWQ) | [![Azure özel bağlantısını kullanarak bir depolama hesabına bağlanma hakkında YouTube videosunun görüntüsü](https://i.ytimg.com/vi/vM7yDwHSc_o/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](https://www.youtube.com/watch?v=vM7yDwHSc_o) |
-
+| [![App Service Web uygulamanızda özel bir etki alanını ekleme ve güvenli hale getirme hakkında YouTube videosunun görüntüsü](https://i.ytimg.com/vi/bXP6IvNYISw/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=bXP6IvNYISw) | [![Linux sanal makine deneyimine yönelik iyileştirmeler hakkında YouTube videosunun görüntüsü](https://i.ytimg.com/vi/obg6Fq2T898/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](https://www.youtube.com/watch?obg6Fq2T898) | [![Blob sürümü oluşturma hakkında YouTube videosunun görüntüsü](https://i.ytimg.com/vi/m7e9h1gedWQ/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=m7e9h1gedWQ) |
 
 ## <a name="video-playlist"></a>Video çalma listesi
 

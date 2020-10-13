@@ -12,10 +12,10 @@ ms.date: 04/24/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: e847f62c2ae3d1d68c39685a38b67e1d0ada8c2f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91251023"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Machine Learning hizmeti çalışma alanı verilerinizi dışarı veya silme
@@ -50,7 +50,7 @@ Bu kaynaklar listeden seçip **Sil** ' i seçerek silinebilir.
 
 Kişisel Kullanıcı bilgilerini içerebilen çalışma geçmişi belgeleri, alt klasörlerinde BLOB depolama alanındaki depolama hesabında depolanır `/azureml` . Portaldan verileri indirebilir ve silebilirsiniz.
 
-:::image type="content" source="media/how-to-export-delete-data/storage-account-folders.png" alt-text="Portal içinde depolama hesabındaki azureml dizininin ekran görüntüsü":::
+:::image type="content" source="media/how-to-export-delete-data/storage-account-folders.png" alt-text="Silme simgesi vurgulanmış şekilde portalın ekran görüntüsü":::
 
 ## <a name="export-and-delete-machine-learning-resources-using-azure-machine-learning-studio"></a>Azure Machine Learning Studio kullanarak makine öğrenimi kaynaklarını dışarı ve silme
 
@@ -62,7 +62,7 @@ Studio 'Yu kullanarak deneysel çalışmalardan eğitim yapıtları indirebilirs
 
 İstenen **modele** gidip **İndir**' i seçerek kayıtlı bir modeli indirebilirsiniz. 
 
-:::image type="contents" source="media/how-to-export-delete-data/model-download.png" alt-text="İndirme seçeneğinin vurgulandığı Studio model sayfasının ekran görüntüsü":::
+:::image type="contents" source="media/how-to-export-delete-data/model-download.png" alt-text="Silme simgesi vurgulanmış şekilde portalın ekran görüntüsü":::
 
 ## <a name="export-and-delete-resources-using-the-python-sdk"></a>Python SDK 'sını kullanarak kaynakları dışarı ve silme
 

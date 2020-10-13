@@ -1,5 +1,5 @@
 ---
-title: Active Directory Azure Active Directory karşılaştırın
+title: Active Directory ile Azure Active Directory karşılaştırması
 description: Bu belge Active Directory Domain Services (ekler) Azure Active Directory (AD) ile karşılaştırır. Her iki kimlik çözümünden de temel kavramları özetler ve bunların nasıl farklı olduğunu veya benzer olduğunu açıklar.
 services: active-directory
 author: martincoetzer
@@ -12,13 +12,13 @@ ms.subservice: fundamentals
 ms.date: 02/26/2020
 ms.author: martinco
 ms.openlocfilehash: e71ed9655c7b195fea8a2eeeaa76d8a28717637f
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89318565"
 ---
-# <a name="compare-active-directory-to-azure-active-directory"></a>Active Directory Azure Active Directory karşılaştırın
+# <a name="compare-active-directory-to-azure-active-directory"></a>Active Directory ile Azure Active Directory karşılaştırması
 
 Azure Active Directory, bulut için kimlik ve erişim yönetimi çözümlerinin bir sonraki gelişmidir. Microsoft, kuruluşların Kullanıcı başına tek bir kimlik kullanarak birden çok şirket içi altyapı bileşenini ve sistemini yönetmesine olanak tanımak için Windows 2000 ' de Active Directory Domain Services sunmuştur.
 
@@ -36,12 +36,12 @@ Azure AD, kuruluşların bulut ve şirket genelinde tüm uygulamalarına yöneli
 | Kimlik bilgisi yönetimi| Active Directory kimlik bilgileri, parolaları, sertifika kimlik doğrulamasını ve akıllı kart kimlik doğrulamasını temel alır. Parolalar, parola uzunluğu, süre sonu ve karmaşıklık temelinde parola ilkeleri kullanılarak yönetilir.|Azure AD, bulut ve şirket içi için akıllı [parola koruması](../authentication/concept-password-ban-bad.md) kullanır. Koruma, akıllı kilitleme ile ortak ve özel parola tümceciklerini ve alternatifleri engellemeyi içerir. </br>Azure AD, [çok faktörlü kimlik doğrulaması](../authentication/concept-mfa-howitworks.md) ve FIDO2 gibi [parolasız](../authentication/concept-authentication-passwordless.md) teknolojiler aracılığıyla güvenliği önemli ölçüde artırır. </br>Azure AD, kullanıcılara bir [self servis parola sıfırlama](../authentication/concept-sspr-howitworks.md) sistemi sağlayarak destek maliyetlerini azaltır. |
 | **Uygulamalar**|||
 | Altyapı uygulamaları|Active Directory, Örneğin DNS, DHCP, IPSec, WiFi, NPS ve VPN erişimi gibi birçok altyapı şirket içi bileşeninin temelini oluşturur|Azure AD, yeni bir bulut dünyasında ağ denetimlerine bağlı olarak uygulamalara erişmek için yeni denetim düzledir. Kullanıcılar kimlik doğrulaması yaparken[, koşullu erişim (CA)](../conditional-access/overview.md), hangi kullanıcıların gerekli koşullar altında hangi uygulamalara erişebileceğini denetler.|
-| Geleneksel ve eski uygulamalar| Çoğu şirket içi uygulama, kullanıcılara erişimi denetlemek için LDAP, Windows ile tümleşik kimlik doğrulaması (NTLM ve Kerberos) veya üst bilgi tabanlı kimlik doğrulaması kullanır.| Azure AD, şirket içi çalışan [Azure AD uygulama proxy](../manage-apps/application-proxy.md) aracılarını kullanarak bu tür şirket içi uygulamalara erişim sağlayabilir. Bu yöntemi kullanarak Azure AD, geçiş yaparken veya eski uygulamalarla birlikte bir arada olması gerektiğinde, şirket içi kullanıcıların Active Directory kimlik doğrulaması yapabilir. |
+| Geleneksel ve eski uygulamalar| Çoğu şirket içi uygulama, kullanıcılara erişimi denetlemek için LDAP, Windows-Integrated kimlik doğrulaması (NTLM ve Kerberos) veya üst bilgi tabanlı kimlik doğrulaması kullanır.| Azure AD, şirket içi çalışan [Azure AD uygulama proxy](../manage-apps/application-proxy.md) aracılarını kullanarak bu tür şirket içi uygulamalara erişim sağlayabilir. Bu yöntemi kullanarak Azure AD, geçiş yaparken veya eski uygulamalarla birlikte bir arada olması gerektiğinde, şirket içi kullanıcıların Active Directory kimlik doğrulaması yapabilir. |
 | SaaS uygulamaları|Active Directory, SaaS uygulamalarını yerel olarak desteklemez ve AD FS gibi Federasyon sistemi gerektirir.|OAuth2, SAML ve WS kimlik doğrulamasını destekleyen SaaS uygulamaları, \* kimlik doğrulaması Için Azure AD kullanacak şekilde tümleştirilebilir. |
 | Modern kimlik doğrulaması ile iş kolu (LOB) uygulamaları|Kuruluşlar, modern kimlik doğrulaması gerektiren LOB uygulamalarını desteklemek için Active Directory AD FS kullanabilir.| Modern kimlik doğrulaması gerektiren LOB uygulamaları, kimlik doğrulaması için Azure AD kullanacak şekilde yapılandırılabilir. |
 | Orta katman/Daemon Hizmetleri|Şirket içi ortamlarda çalışan hizmetler normalde, çalıştırılacak AD hizmet hesaplarını veya grup yönetilen hizmet hesaplarını (gMSA) kullanır. Bu uygulamalar daha sonra hizmet hesabının izinlerini devralacak.| Azure AD, bulutta diğer iş yüklerini çalıştırmak için [Yönetilen kimlikler](../managed-identities-azure-resources/index.yml) sağlar. Bu kimliklerin yaşam döngüsü Azure AD tarafından yönetilir ve kaynak sağlayıcısına bağlı olan, biriktirme listesi erişimi sağlamak için başka amaçlar için kullanılamaz.|
 | **Cihazlar**|||
-| Mobil|Active Directory, üçüncü taraf çözümler olmadan mobil cihazları yerel olarak desteklemez.| Microsoft 'un mobil cihaz yönetimi çözümü, Microsoft Intune Azure AD ile tümleşiktir. Microsoft Intune kimlik doğrulaması sırasında değerlendirilecek kimlik sistemine cihaz durum bilgilerini sağlar. |
+| Cep telefonu|Active Directory, üçüncü taraf çözümler olmadan mobil cihazları yerel olarak desteklemez.| Microsoft 'un mobil cihaz yönetimi çözümü, Microsoft Intune Azure AD ile tümleşiktir. Microsoft Intune kimlik doğrulaması sırasında değerlendirilecek kimlik sistemine cihaz durum bilgilerini sağlar. |
 | Windows masaüstleri|Active Directory, Windows cihazlarını grup ilkesi, System Center Configuration Manager veya diğer üçüncü taraf çözümlerini kullanarak yönetmek için etki alanına ekleme olanağı sunar.|Windows cihazları [Azure AD 'ye katılabilir](../devices/index.yml). Koşullu erişim, bir cihazın kimlik doğrulama işleminin bir parçası olarak Azure AD 'ye katılıp katılmadığını denetleyebilir. Windows cihazları, [Microsoft Intune](/intune/what-is-intune)ile de yönetilebilir. Bu durumda, koşullu erişim, uygulamalara erişim izni vermeden önce cihazın uyumlu olup olmadığını (örneğin, güncel güvenlik düzeltme ekleri ve virüs imzaları) göz önünde bulunduracaktır.|
 | Windows sunucuları| Active Directory, şirket içi Windows Server 'lar için grup ilkesi veya diğer yönetim çözümlerini kullanarak güçlü yönetim özellikleri sağlar.| Azure 'daki Windows Server sanal makineleri, [Azure AD Domain Services](../../active-directory-domain-services/index.yml)ile yönetilebilir. [Yönetilen kimlikler](../managed-identities-azure-resources/index.yml) , VM 'lerin kimlik sistemi dizinine veya kaynaklarına erişmesi gerektiğinde kullanılabilir.|
 | Linux/Unix iş yükleri|Active Directory, üçüncü taraf çözümleri olmayan Windows dışı bir şekilde desteklemez, ancak Linux makineleri Kerberos bölgesi olarak Active Directory kimlik doğrulaması yapacak şekilde yapılandırılabilirler.|Linux/UNIX VM 'Leri, kimlik sistemine veya kaynaklara erişmek için [Yönetilen kimlikler](../managed-identities-azure-resources/index.yml) kullanabilir. Bazı kuruluşlar, bu iş yüklerini bulut kapsayıcısı teknolojilerine geçirin ve bu da yönetilen kimlikleri de kullanabilir.|

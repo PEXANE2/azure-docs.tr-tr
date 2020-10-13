@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a04435b1e2feb537231bb80d2777b9ea2599c241
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 6564804b7003b5e1c166868dae1bfaac7bd28fa5
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812412"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940474"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault Geliştirici Kılavuzu
 
@@ -52,17 +52,27 @@ Key Vault yönetim düzlemi hakkında daha fazla bilgi için bkz. [Key Vault yö
 Key Vault, Azure AD kimlik doğrulamasını kullanarak erişim izni vermesini gerektirir. Azure AD güvenlik sorumlusu, bir Kullanıcı, bir uygulama hizmeti sorumlusu, [Azure kaynakları için yönetilen bir kimlik](../../active-directory/managed-identities-azure-resources/overview.md)veya herhangi bir güvenlik sorumlusu türü olabilir.
 
 ### <a name="authentication-best-practices"></a>En iyi kimlik doğrulama uygulamaları
+
 Azure 'a dağıtılan uygulamalar için yönetilen kimlik kullanılması önerilir. Yönetilen kimliği desteklemeyen veya şirket içinde dağıtılan uygulamalar için Azure hizmetlerini kullanıyorsanız, [sertifikaya sahip hizmet sorumlusu](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) olası bir alternatiftir. Bu senaryoda, sertifika Key Vault depolanmalıdır ve genellikle döndürülmelidir. Gizli hizmet sorumlusu, geliştirme ve test ortamları için ve yerel olarak veya Cloud Shell Kullanıcı sorumlusu kullanılarak kullanılması önerilir.
 
-Yukarıdaki kimlik doğrulama senaryoları, Azure Identity istemci kitaplığı tarafından desteklenir ve Key Vault SDK 'lar ile tümleşiktir. Azure kimlik kitaplığı, kodunuzu değiştirmeden farklı ortamlar ve platformlar arasında kullanılabilir. Azure Identity Ayrıca Azure CLı, Visual Studio, Visual Studio Code ve diğer kişilerle Azure User 'a oturum açmış olan kimlik doğrulama belirtecini otomatik olarak alır. 
+Ortam başına önerilen güvenlik sorumluları:
+- **Üretim ortamı**:
+  - Bir sertifikayla yönetilen kimlik veya hizmet sorumlusu
+- **Test ve geliştirme ortamları**:
+  - Yönetilen kimlik, sertifika veya gizli hizmet sorumlusu olan hizmet sorumlusu
+- **Yerel geliştirme**:
+  - Gizli anahtar içeren Kullanıcı sorumlusu veya hizmet sorumlusu
 
-Daha fazla bilgi için bkz. 
+Yukarıdaki kimlik doğrulama senaryoları, **Azure Identity istemci kitaplığı** tarafından desteklenir ve Key Vault SDK 'lar ile tümleşiktir. Azure kimlik kitaplığı, kodunuzu değiştirmeden farklı ortamlar ve platformlar arasında kullanılabilir. Azure Identity Ayrıca Azure CLı, Visual Studio, Visual Studio Code ve diğer kişilerle Azure User 'a oturum açmış olan kimlik doğrulama belirtecini otomatik olarak alır. 
 
+Azure Identity Client Libarary hakkında daha fazla bilgi için bkz.:
+
+### <a name="azure-identity-client-libraries"></a>Azure Identity istemci kitaplıkları
 | .NET | Python | Java | JavaScript |
 |--|--|--|--|
 |[Azure Identity SDK .NET](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme)|[Azure Identity SDK Python](https://docs.microsoft.com/python/api/overview/azure/identity-readme)|[Azure Identity SDK 'Sı Java](https://docs.microsoft.com/java/api/overview/azure/identity-readme)|[Azure Identity SDK JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)|     
 
-Uygulamalarda Key Vault kimlik doğrulama:
+Uygulamalarda Key Vault kimlik doğrulaması hakkında öğreticiler için bkz.:
 - [.NET 'te VM 'de barındırılan uygulamada Key Vault kimlik doğrulaması](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-virtual-machine)
 - [Python 'da VM 'de barındırılan uygulamada Key Vault kimlik doğrulaması](https://docs.microsoft.com/azure/key-vault/general/tutorial-python-virtual-machine)
 - [App Service Key Vault için kimlik doğrulama](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app)

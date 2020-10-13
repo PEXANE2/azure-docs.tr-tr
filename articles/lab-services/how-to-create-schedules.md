@@ -4,10 +4,10 @@ description: Laboratuvardaki VM 'Lerin belirli bir zamanda başlamasını ve kap
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 4eb4e2459069b61990f51f8d8de76522b736723e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326448"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Azure Lab Services sınıf laboratuvarları için zamanlamalar oluşturma ve yönetme 
@@ -38,7 +38,7 @@ Laboratuvardaki VM 'Lerin belirli zamanlarda otomatik olarak başlatılması/dur
     4. VM 'Lerin **başlamasını istediğiniz başlangıç saatini** belirtin.
     5. VM 'Lerin kapatıldığı **bitiş saatini** belirtin. 
     6. Belirttiğiniz başlangıç ve durdurma zamanları için **saat dilimini** belirtin. 
-    2. Zamanlamanın etkili olmasını istediğiniz günleri seçin. Aşağıdaki örnekte Pazartesi-Perşembe seçilidir. 
+    2. Zamanlamanın etkili olmasını istediğiniz günleri seçin. Aşağıdaki örnekte Monday-Thursday seçilidir. 
     8. **Kaydet**’i seçin. 
 
         ![Yineleme zamanlaması ayarla](./media/how-to-create-schedules/set-repeat-schedule.png)

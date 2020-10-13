@@ -9,10 +9,10 @@ ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
 ms.openlocfilehash: b1de0fa2e6601e4350b52caea32f8bc379909f85
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91356375"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Gerçek zamanlı veri analizlerini görselleştirmek için Azure Cosmos DB değişiklik akışını kullanın
@@ -54,7 +54,7 @@ Aşağıdaki diyagram, çözüme dahil olan veri akışını ve bileşenlerini t
 
 7. **Power BI:** Power BI, Azure Stream Analytics tarafından gönderilen verileri görselleştirmek için kullanılır. Ölçümlerin gerçek zamanlı olarak nasıl değişmediklerini görmek için bir pano oluşturabilirsiniz.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Microsoft .NET Framework 4.7.1 veya üzeri
 
@@ -170,7 +170,7 @@ Değişiklik akışı 'nın bir e-ticaret sitesinde yeni eylemleri nasıl işley
 
 3. **Koleksiyonu** ve **veritabanı** adlarını ekleyin. (Bu **Adların, farklı** bir şekilde ad olarak isimsiz olarak isimsiz olarak isimsiz olarak **isimsiz olarak** isimsiz olarak isimsiz bir şekilde
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/update-connection-string.png" alt-text="Bağlantı dizelerini Güncelleştir":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/update-connection-string.png" alt-text="Proje görseli":::
  
 4. Değişiklikleri düzenlenen tüm dosyalar üzerinde kaydedin.  
 
@@ -180,7 +180,7 @@ Değişiklik akışı 'nın bir e-ticaret sitesinde yeni eylemleri nasıl işley
 
 7. [Azure Portal](https://portal.azure.com/) ' a ve ardından kaynak grubunuzdaki Cosmos DB hesaba giderek **Veri Gezgini**istiyorsanız, değişiklik yaptığınız rastgele verileri **changefeedlabcollection** içinde görürsünüz.
  
-   :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="Portalda oluşturulan veriler":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="Proje görseli":::
 
 ## <a name="set-up-a-stream-analytics-job"></a>Stream Analytics işini ayarlama
 
@@ -190,7 +190,7 @@ Azure Stream Analytics, akış verilerinin gerçek zamanlı işlemesi için tam 
 
 2. Aşağıda gösterildiği gibi **girdileri** seçin.  
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="Giriş oluştur":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="Proje görseli":::
 
 3. **+ Akış girişi Ekle**' yi seçin. Ardından açılan menüden **Olay Hub 'ını** seçin.  
 
@@ -222,20 +222,7 @@ Azure Stream Analytics, akış verilerinin gerçek zamanlı işlemesi için tam 
 
 8. Ardından **streamjob1** adresine dönün ve **Sorguyu Düzenle**' yi seçin.
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="Sorguyu Düzenle":::
- 
-9. Sorgu penceresine aşağıdaki sorguyu yapıştırın. **Ortalama fiyat** sorgusu, kullanıcılar tarafından görüntülenen tüm öğelerin ortalama fiyatını, kullanıcıların HTS öğelerine eklenen tüm öğelerin ortalama fiyatını ve kullanıcılar tarafından satın alınan tüm öğelerin ortalama fiyatını hesaplar. Bu ölçüm, e-ticaret şirketlerinin, ne kadar madde satacağına ve hangi envanterde yatırmaya karar vermesine yardımcı olabilir. Örneğin, görüntülenen öğelerin ortalama fiyatı satın alınan öğelerin ortalama fiyatından çok daha yüksekse, bir şirket envanterine daha ucuz öğeler eklemeyi tercih edebilir.
-
-   ```sql
-   /*AVERAGE PRICE*/      
-   SELECT System.TimeStamp AS Time, Action, AVG(Price)  
-    INTO averagePriceOutput  
-    FROM input  
-    GROUP BY Action, TumblingWindow(second,5) 
-   ```
-10. Sonra sol üst köşedeki **Kaydet** ' i seçin.  
-
-11. Şimdi **streamjob1** sayfasına dönüp sayfanın üst kısmındaki **Başlat** düğmesini seçin. Azure Stream Analytics başlatılması birkaç dakika sürebilir, ancak sonunda "başlangıç" iken "çalışıyor" olarak değiştirilir.
+   :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="Proje görseli" olarak değiştirilir.
 
 ## <a name="connect-to-power-bi"></a>Power BI'a bağlanma
 
@@ -315,7 +302,7 @@ Power BI, veri çözümlemek ve öngörü paylaşmak için kullanılan iş anali
 
    Örnek Pano şu grafiklerle nasıl görünür:
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="Ekran görüntüsünde, eylem, benzersiz ziyaretçi, gelir ve satın alınan En Iyi 5 öğeden oluşan ortalama öğe fiyatı adlı grafiklerle birlikte örnek bir pano gösterilir.":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="Proje görseli":::
 
 ## <a name="optional-visualize-with-an-e-commerce-site"></a>İsteğe bağlı: bir E-ticaret sitesiyle görselleştirin
 
@@ -329,13 +316,13 @@ Artık gerçek bir e-ticaret sitesiyle bağlantı kurmak için yeni veri analizi
 
 2. TopItems **topItems** koleksiyonunu seçin ve **ölçek ve ayarlar** ' ın **altında,** TopItems her **30 saniyede bir** güncelleştirilir.
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="Yaşam süresi":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="Proje görseli":::
 
 3. **TopItems** koleksiyonunu en sık satın alınan öğelerle doldurmak için, **streamjob1** adresine gidin ve yeni bir **Çıkış**ekleyin. **Cosmos DB**seçin.
 
 4. Gerekli alanları aşağıda gösterildiği gibi girin.
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/cosmos-output.png" alt-text="Cosmos çıkışı":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/cosmos-output.png" alt-text="Proje görseli":::
  
 5. Laboratuvarın önceki bölümünde isteğe bağlı Ilk 5 sorgu eklediyseniz, 5A bölümüne ilerleyin. Aksi takdirde, bölüm 5b ' e geçin.
 
