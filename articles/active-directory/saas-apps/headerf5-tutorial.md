@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.openlocfilehash: d85e6bbaf85ebb84d3664d90e3d645f61b2cb60a
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91817358"
 ---
 # <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>Öğretici: Azure Active Directory ile F5 arasında çoklu oturum açma (SSO) yapılandırma
@@ -245,7 +245,7 @@ Bu bölümde, F5 'e erişim vererek Azure çoklu oturum açma özelliğini kulla
 
     ![Ekran görüntüsü havuz özellikleri sayfasını gösterir.](./media/headerf5-tutorial/configure06.png)
 
-1. Çoklu oturum açma ayarları ekranında **Çoklu oturum açmayı etkinleştir**' i seçin. Seçili çoklu oturum açma türü altında **http üst bilgi tabanlı**seçeneğini belirleyin. Username. **SAML. Last. Identity** ' i **session.saml.last.attr.name.Identity** (Azure AD 'de talep eşlemesi kullanarak ayarlanan bu değişken) Kullanıcı adı kaynak (Bu değişken). SSO üstbilgileri altında.
+1. Tek Sign-On ayarları ekranında **Çoklu oturum açmayı etkinleştir**' i seçin. Seçili tek Sign-On türü altında **http üst bilgi tabanlı**' yı seçin. Username. **SAML. Last. Identity** ' i **session.saml.last.attr.name.Identity** (Azure AD 'de talep eşlemesi kullanarak ayarlanan bu değişken) Kullanıcı adı kaynak (Bu değişken). SSO üstbilgileri altında.
 
     * **HeaderName: Myauthorleştirme**
 
@@ -258,7 +258,7 @@ Bu bölümde, F5 'e erişim vererek Azure çoklu oturum açma özelliğini kulla
     >[!NOTE]
     >Hesap adı F5 temsilcisini oluşturma hesabıdır (F5 belgelerini kontrol edin).
 
-    ![Ekran görüntüsü, çoklu oturum açma ayarları sayfasını gösterir.](./media/headerf5-tutorial/configure07.png) 
+    ![Ekran görüntüsü tek Sign-On ayarları sayfasını gösterir.](./media/headerf5-tutorial/configure07.png) 
 
 1. Bu kılavuzun amaçları doğrultusunda Endpoint denetimlerini atlayacağız.  Ayrıntılar için F5 belgelerine bakın. **& Kaydet İleri ' yi**seçin.
 

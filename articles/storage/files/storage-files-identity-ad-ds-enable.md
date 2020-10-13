@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
 ms.openlocfilehash: b125ae506a9811b8e80a9114e31effc1933c114d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91821203"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Birinci kısım: Azure dosya paylaşımlarınız için AD DS kimlik doğrulamasını etkinleştirme 
@@ -32,7 +32,7 @@ AzFilesHybrid PowerShell modülündeki cmdlet 'ler gerekli değişiklikleri yapa
 - Bir hizmet oturum açma hesabı veya hedef AD 'de bilgisayar hesabı oluşturma izinlerine sahip AD DS kimlik bilgileri ile şirket içi AD DS etki alanına katılmış bir cihaza modül yükleyip yürütün.
 -  Azure AD 'niz ile eşitlenen şirket içi AD DS kimlik bilgilerini kullanarak betiği çalıştırın. Şirket içi AD DS kimlik bilgisinin depolama hesabı sahibi ya da katkıda bulunan Azure rolü izinleri olmalıdır.
 
-### <a name="run-join-azstorageaccountforauth"></a>JOIN-AzStorageAccountForAuth komutunu çalıştırın
+### <a name="run-join-azstorageaccountforauth"></a>Join-AzStorageAccountForAuth Çalıştır
 
 `Join-AzStorageAccountForAuth`Cmdlet 'i, belirtilen depolama hesabı adına bir çevrimdışı etki alanına birleştirmenin eşdeğerini gerçekleştirir. Betik, AD etki alanında bir [bilgisayar hesabı](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) oluşturmak için cmdlet 'ini kullanır. Herhangi bir nedenle bir bilgisayar hesabını kullanmıyorsanız, bunun yerine bir [hizmet oturum açma hesabı](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) oluşturmak için betiği değiştirebilirsiniz. Komutu el ile çalıştırmayı seçerseniz, ortamınız için en uygun hesabı seçmeniz gerekir.
 

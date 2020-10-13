@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
 ms.openlocfilehash: 6c4b53e3c3673b913e4afbfb65801d83f0640bd3
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89651834"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services (AWS) sanal makinelerini bulma, değerlendirme ve Azure’a geçirme
@@ -77,16 +77,16 @@ Azure geçişi: sunucu geçiş aracı ile geçiş için Azure 'u hazırlayın.
 
 **Görev** | **Ayrıntılar**
 --- | ---
-**Azure geçişi projesi oluşturma** | Azure hesabınızın bir proje oluşturmak için katılımcısı veya sahip izinlerine ihtiyacı vardır.
+**Azure Geçişi projesi oluşturma** | Azure hesabınızın bir proje oluşturmak için katılımcısı veya sahip izinlerine ihtiyacı vardır.
 **Azure hesabınız için izinleri doğrulama** | Azure hesabınızın bir VM oluşturmak ve Azure yönetilen diskine yazmak için izinleri olması gerekir.
 
 ### <a name="assign-permissions-to-create-project"></a>Proje oluşturmak için izin atama
 
-1. Azure portal aboneliğini açın ve **erişim denetimi (IAM)** seçeneğini belirleyin.
+1. Azure portalında ilgili aboneliği açın ve **Erişim denetimi (IAM)** öğesini seçin.
 2. **Erişimi denetle**' de ilgili hesabı bulun ve izinleri görüntülemek için tıklatın.
 3. **Katkıda bulunan** veya **sahip** izinlerinizin olması gerekir.
-    - Henüz ücretsiz bir Azure hesabı oluşturduysanız, aboneliğinizin sahibi olursunuz.
-    - Abonelik sahibi değilseniz, rolü atamak için sahip ile çalışın.
+    - Ücretsiz Azure hesabı oluşturduysanız aboneliğinizin sahibi siz olursunuz.
+    - Aboneliğin sahibi siz değilseniz sahibiyle iletişime geçerek gerekli rolün atanmasını sağlayın.
 
 ### <a name="assign-azure-account-permissions"></a>Azure hesabı izinleri atama
 
@@ -143,7 +143,7 @@ Bir Azure geçişi projesi ayarlayın ve ardından sunucu geçiş aracını buna
     - Proje Coğrafya yalnızca AWS makinelerinden toplanan meta verileri depolamak için kullanılır.
     - Bir geçiş çalıştırdığınızda herhangi bir hedef bölgeyi seçebilirsiniz.
 
-    ![Azure geçişi projesi oluşturma](./media/tutorial-migrate-physical-virtual-machines/migrate-project.png)
+    ![Azure Geçişi projesi oluşturma](./media/tutorial-migrate-physical-virtual-machines/migrate-project.png)
 
 8. **Değerlendirme seçme aracı**’nda **Değerlendirme aracı eklemeyi şimdilik atla** > **İleri**’yi seçin.
 9. **Geçiş aracı seçin** bölümünde **Azure Geçişi: Sunucu Geçişi** > **İleri**.

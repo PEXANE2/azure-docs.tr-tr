@@ -14,10 +14,10 @@ ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
 ms.openlocfilehash: 05e966d3f4631e3c344bd97c0faec99cc3c6dd66
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819903"
 ---
 # <a name="microsoft-global-network"></a>Microsoft küresel ağı
@@ -36,7 +36,7 @@ Microsoft Cloud kullandığınızda [mümkün olan en iyi deneyim](https://www.s
  
 Londra 'dan Tokyo 'ya veya Washington DC 'den Los Angeles 'a bağlanıp, ağ performansının gecikmesi ve gecikme süresi, değişim, paket kaybı ve aktarım hızı gibi şeyler tarafından etkilendi.  Microsoft 'ta, aktarım bağlantıları 'nın aksine doğrudan bağlantılar tercih ediyoruz ve kullanırız, bu, Yanıt trafiği simetrik olarak tutar ve sıçramalar ve yolların olabildiğince kısa ve basit olmasını sağlar. 
 
-Örneğin, Londra 'daki bir Kullanıcı Tokyo 'daki bir hizmete erişmeye çalışırsa, Internet trafiği Londra 'daki kenarlarımızın birini, Fransa 'dan Microsoft WAN 'dan, Avrupa ve Hindistan arasındaki Trans-Arabistan yollarımızla, sonra da hizmetin barındırıldığı yerde Japonya 'dan geçer. Yanıt trafiği simetrik. Bu bazen [soğuk Potato yönlendirme](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) olarak adlandırılır. Bu, trafiğin, kapatmadan önce mümkün olduğunca uzun süre Microsoft ağ üzerinde kalması anlamına gelir.  
+Örneğin, Londra 'daki bir Kullanıcı Tokyo 'daki bir hizmete erişmeye çalışırsa, Internet trafiği Londra 'daki kenarlarımızın birini, Avrupa ve Hindistan arasındaki Trans-Arabia yollarımızı ve sonra da hizmetin barındırıldığı Japonya ' ı arar. Yanıt trafiği simetrik. Bu bazen [soğuk Potato yönlendirme](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) olarak adlandırılır. Bu, trafiğin, kapatmadan önce mümkün olduğunca uzun süre Microsoft ağ üzerinde kalması anlamına gelir.  
   
 Bu nedenle, Microsoft hizmetlerini kullanırken herhangi bir ve tüm trafik anlamına gelir. Evet, Microsoft Azure veya sanal makineler, Microsoft 365, XBox, SQL DBs, depolama ve sanal ağlar gibi Microsoft Hizmetleri arasındaki herhangi bir trafik, en iyi performans ve bütünlüğü sağlamak için genel ağımızda ve hiçbir şekilde genel Internet üzerinden yönlendirilir.  
  

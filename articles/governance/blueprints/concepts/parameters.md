@@ -4,10 +4,10 @@ description: Statik ve dinamik parametreler hakkında bilgi edinin ve bunların 
 ms.date: 08/27/2020
 ms.topic: conceptual
 ms.openlocfilehash: b6cefe7ec75ec622cb341d8f12edfd9c0cfa66e6
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89651956"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Parametreler aracılığıyla dinamik planlar oluşturma
@@ -51,7 +51,7 @@ Azure Key Vault hakkında daha fazla bilgi için bkz. [Key Vault genel bakış](
 
 #### <a name="setting-static-parameters-in-the-portal"></a>Portalda statik parametreleri ayarlama
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
 1. Soldaki sayfadan **Blueprint tanımlarını** seçin.
 
@@ -65,7 +65,7 @@ Azure Key Vault hakkında daha fazla bilgi için bkz. [Key Vault genel bakış](
 
 1. **Yapıtı Düzenle** sayfası, seçilen yapıya uygun değer seçeneklerini görüntüler. Yapıtın üzerindeki her parametrenin bir başlığı, bir değer kutusu ve bir onay kutusu vardır. Bir **statik parametre**yapmak için kutuyu işaretsiz olarak ayarlayın. Aşağıdaki örnekte, yalnızca _konum_ işaretlenmemiştir ve _kaynak grubu adı_ denetlendiğinden bir **statik parametredir** .
 
-   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="Bir şema yapıtı üzerindeki statik parametrelerin ekran görüntüsü." border="false":::
+   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="Bir şema tanımının ekran görüntüsü ve ' X/Y parametrelerinin doldurulmuş ' vurgulanacaktır." border="false":::
 
 #### <a name="setting-static-parameters-from-rest-api"></a>REST API statik parametreleri ayarlama
 
@@ -168,7 +168,7 @@ Statik parametrenin tersi, **dinamik bir parametredir**. Bu parametre Blueprint 
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>Portalda dinamik parametreleri ayarlama
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
 1. Soldaki sayfadan **Blueprint tanımlarını** seçin.
 
@@ -176,7 +176,7 @@ Statik parametrenin tersi, **dinamik bir parametredir**. Bu parametre Blueprint 
 
 1. **Şeması ata** sayfasında, **yapıt parametreleri** bölümünü bulun. En az bir **dinamik parametresi** olan her yapıt yapıt ve yapılandırma seçeneklerini görüntüler. Blueprint 'i atamadan önce parametrelere gerekli değerler sağlayın. Aşağıdaki örnekte _ad_ , şema atamasını tamamlayacak şekilde tanımlanması gereken **dinamik bir parametredir** .
 
-   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="Şema ataması sırasında dinamik parametreleri ayarlamanın ekran görüntüsü." border="false":::
+   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="Bir şema tanımının ekran görüntüsü ve ' X/Y parametrelerinin doldurulmuş ' vurgulanacaktır." border="false":::
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>REST API dinamik parametreleri ayarlama
 
