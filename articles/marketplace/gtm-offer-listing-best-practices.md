@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
 ms.openlocfilehash: 33198f95ef0309cada6f5f11c809811f23d7f826
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708654"
 ---
 # <a name="offer-listing-best-practices"></a>En iyi teklif listeleme deneyimleri
@@ -94,7 +94,7 @@ Sektör seçimi yalnızca Azure Marketi 'nde yayınlanan AppSource ve danışman
 | **Otomotiv** | |
 | **Dağıtım** | Toplu <br> Paket Gönderimi & paket dağıtımı |  
 | **Eğitim** | Daha yüksek eğitim <br> Birincil & Ikincil edu/K-12 <br> Kitaplıklar & Museums |
-| **Finansal Hizmetler** | Bankacılık & büyük pazarlar <br> Eleri | 
+| **Finansal hizmetler** | Bankacılık & büyük pazarlar <br> Eleri | 
 | **Kamu** |  Savunma & zekası <br> Cıvilian kamu <br> Genel güvenlik & de |
 | **Sağlık Hizmetleri** | Sistem durumu ödemi veya <br> Sistem durumu sağlayıcısı <br> Pharmaceuticals | 
 | **& yolculuğu seyahat** | Seyahat & ulaşım <br> Oteller & boş <br> Restoran hizmetleri & Restoranlar | 

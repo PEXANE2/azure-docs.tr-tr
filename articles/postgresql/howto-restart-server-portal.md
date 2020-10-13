@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.openlocfilehash: d25c8908b46608ac64bcf135404a070740413fe0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907377"
 ---
 # <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>PostgreSQL için Azure veritabanı 'nı yeniden başlatın-Azure portal kullanarak tek bir sunucu
@@ -20,7 +20,7 @@ Hizmet meşgulse sunucu yeniden başlatması engellenir. Örneğin, hizmet, sana
  
 Yeniden başlatmayı tamamlaması için gereken süre, PostgreSQL kurtarma işlemine bağlıdır. Yeniden başlatma süresini azaltmak için, yeniden başlatmadan önce sunucuda gerçekleşen etkinlik miktarını en aza indirmenizi öneririz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 - [PostgreSQL Için Azure veritabanı sunucusu](quickstart-create-server-database-portal.md)
 
@@ -36,15 +36,13 @@ Aşağıdaki adımlar PostgreSQL sunucusunu yeniden başlatır:
 
 3. Sunucuyu yeniden başlatmayı onaylamak için **Evet** ' e tıklayın.
 
-   :::image type="content" source="./media/howto-restart-server-portal/3-restart-confirm.png" alt-text="PostgreSQL için Azure veritabanı-yeniden başlatma Onayla":::
+   :::image type="content" source="./media/howto-restart-server-portal/3-restart-confirm.png" alt-text="PostgreSQL için Azure veritabanı-genel bakış-yeniden Başlat düğmesi" olarak değiştiğini gözlemleyin.
 
-4. Sunucu durumunun "yeniden başlatılıyor" olarak değiştiğini gözlemleyin.
-
-   :::image type="content" source="./media/howto-restart-server-portal/4-restarting-status.png" alt-text="PostgreSQL için Azure veritabanı-yeniden başlatma durumu":::
+   :::image type="content" source="./media/howto-restart-server-portal/4-restarting-status.png" alt-text="PostgreSQL için Azure veritabanı-genel bakış-yeniden Başlat düğmesi":::
 
 5. Sunucu yeniden başlatma işleminin başarılı olduğunu onaylayın.
 
-   :::image type="content" source="./media/howto-restart-server-portal/5-restart-success.png" alt-text="PostgreSQL için Azure veritabanı-yeniden başlatma başarılı":::
+   :::image type="content" source="./media/howto-restart-server-portal/5-restart-success.png" alt-text="PostgreSQL için Azure veritabanı-genel bakış-yeniden Başlat düğmesi":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

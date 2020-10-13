@@ -12,10 +12,10 @@ ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.openlocfilehash: 46a5f4036be2d670689f7e936a31dc63e0690ddc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91302392"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>Makine öğrenimi işlem hatlarını yayımlama ve izleme
@@ -26,7 +26,7 @@ Bu makalede, bir makine öğrenimi işlem hattının iş arkadaşlarınızla vey
 
 Machine Learning işlem hatları, Machine Learning görevleri için yeniden kullanılabilir iş akışlarıdır. İşlem hatlarından bir avantajı daha fazla işbirliği. Ayrıca, yeni bir sürümde çalışırken müşterilerin geçerli modeli kullanmasına izin vererek işlem hatlarını de kullanabilirsiniz. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Tüm işlem hattı kaynaklarınızın tutulacağı bir [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md) oluşturun
 
@@ -87,7 +87,7 @@ response = requests.post(published_pipeline1.endpoint,
 
 `json`POST isteğinin bağımsız değişkeni, anahtar için işlem `ParameterAssignments` hattı parametrelerini ve değerlerini içeren bir sözlüğü içermelidir. Ayrıca `json` bağımsız değişken aşağıdaki anahtarları içerebilir:
 
-| Anahtar | Description |
+| Anahtar | Açıklama |
 | --- | --- | 
 | `ExperimentName` | Bu uç noktayla ilişkili denemenin adı |
 | `Description` | Uç noktayı açıklayan serbest biçimli metin | 
