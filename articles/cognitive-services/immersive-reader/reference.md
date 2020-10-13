@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
 ms.openlocfilehash: dbd5724797fdaf44d147d2f29362b1e5092728dd
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761558"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>Modern okuyucu JavaScript SDK başvurusu (v 1.1)
@@ -54,7 +54,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 `Promise<LaunchResponse>`Derinlikli okuyucu yüklendiğinde çözümlenen bir döndürür. `Promise`Bir nesne olarak çözümlenir [`LaunchResponse`](#launchresponse) .
 
-#### <a name="exceptions"></a>Özel durumlar
+#### <a name="exceptions"></a>Özel Durumlar
 
 `Promise` [`Error`](#error) Tam ekran okuyucu yüklenemezse, döndürülen bir nesne ile reddedilir. Daha fazla bilgi için bkz. [hata kodları](#error-codes).
 
@@ -526,7 +526,7 @@ Biçimlendirme etkinleştirildiğinde, aşağıdaki içerik tam ekran okuyucu 'd
 | --------- | ----------- |
 | Yazı tipi stilleri | Kalın, Italik, altı çizili, kod, üstü çizili, üst simge, alt simge |
 | Sırasız listeler | Disk, daire, kare |
-| Sıralı listeler | Ondalık, büyük Alfa, alt Alfa, büyük Latin, alt roman |
+| Sıralı listeler | Ondalık, büyük Alfa, alt Alfa, büyük Latin, Lower-Roman |
 
 Desteklenmeyen Etiketler comparably işlenecek. Görüntüler ve tablolar şu anda desteklenmiyor.
 

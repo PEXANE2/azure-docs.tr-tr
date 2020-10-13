@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
 ms.openlocfilehash: c4ac9e182a7504ea96f73f2ab95d50fb9d859e47
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91665268"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-elium"></a>Öğretici: Elium ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -153,15 +153,15 @@ Bu bölümde, elim 'ye erişim vererek B. Simon 'u Azure çoklu oturum açma öz
 
 1. Sağ üst köşedeki **Kullanıcı profiline** tıklayın ve ardından **Ayarlar**' ı seçin.
 
-    ![Çoklu oturum açmayı yapılandırma 01](./media/elium-tutorial/elium-01.png)
+    ![Tek Sign-On Elium 01 yapılandırma](./media/elium-tutorial/elium-01.png)
 
 1. **Gelişmiş**' ın altında **güvenlik** ' i seçin.
 
-    ![Çoklu oturum açmayı yapılandırma 02](./media/elium-tutorial/elium-02.png)
+    ![Tek Sign-On Elium 02 yapılandırma](./media/elium-tutorial/elium-02.png)
 
 1. ' İ **Çoklu oturum açma (SSO)** bölümüne kaydırın ve aşağıdaki adımları gerçekleştirin:
 
-    ![Çoklu oturum açma, Elium 03 yapılandırma](./media/elium-tutorial/elium-03.png)
+    ![Tek Sign-On Elium 03 yapılandırma](./media/elium-tutorial/elium-03.png)
 
     a. **SAML2 kimlik doğrulamasının hesabınız için çalıştığını doğrulayın** ve Azure Portal bu değeri, **temel SAML yapılandırması** bölümünde bulunan **oturum açma URL 'si** metin kutusuna yapıştırın.
 
@@ -176,11 +176,11 @@ Bu bölümde, elim 'ye erişim vererek B. Simon 'u Azure çoklu oturum açma öz
 
     e. **SP meta veri** dosyasında **EntityId** 'Yi arayın, **entityıd** değerini kopyalayın ve Azure Portal **temel SAML yapılandırması** bölümündeki **tanımlayıcı** metin kutusuna yapıştırın. 
 
-    ![Çoklu oturum açma, Elium 04 'Yi yapılandırma](./media/elium-tutorial/elium-04.png)
+    ![Tek Sign-On Elium 04 yapılandırma](./media/elium-tutorial/elium-04.png)
 
     f. Azure portal bkz. **The The The** The **The The The** The The The The The The, **SP Metadata** **Reply URL** **Basic SAML Configuration**
 
-    ![Çoklu oturum açmayı yapılandırma 05](./media/elium-tutorial/elium-05.png)
+    ![Tek Sign-On Elium 05 ' i yapılandırma](./media/elium-tutorial/elium-05.png)
 
     örneğin: Azure portal indirilen meta veri dosyasını Not defteri 'nde açın, içeriği kopyalayın ve **IDP meta verileri** metin kutusuna yapıştırın.
 

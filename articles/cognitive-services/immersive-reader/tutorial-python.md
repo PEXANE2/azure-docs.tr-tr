@@ -12,10 +12,10 @@ ms.date: 09/11/2020
 ms.author: dylankil
 ms.custom: devx-track-python
 ms.openlocfilehash: 81d4135671d8ab3e2a8854b855ca285107faaa86
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90979358"
 ---
 # <a name="tutorial-start-the-immersive-reader-using-the-python-sample-project"></a>Öğretici: Python örnek projesini kullanarak modern okuyucu başlatma
@@ -217,7 +217,7 @@ sudo nano /etc/paths
 - Dosyanın sonuna gidin ve listenin son öğesi olarak eklemek istediğiniz yolu girin, örneğin `PATH=$PATH:/usr/local/bin` .
 - Çıkmak için **CTRL + X** ' i seçin.
 - Değiştirilen arabelleği kaydetmek için **Y** girin.
-- İşte bu kadar! Bunu test etmek için yeni bir Terminal penceresinde girin `echo $PATH` .
+- Hepsi bu! Bunu test etmek için yeni bir Terminal penceresinde girin `echo $PATH` .
 
 Flask 'yi yükler.
 

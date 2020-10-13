@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 09/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: a0622c7556896b7ae7201ffa3a7ecac8de1106a4
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: fcdc5d0e7254b8e491285baae6c2a1bc6979e437
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053550"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766306"
 ---
 ::: zone target="docs"
 
@@ -72,11 +72,11 @@ Windows Server ana bilgisayarı kullanıyorsanız Data Box'a bağlanmak için a�
 
 1. İlk adım kimlik doğrulamasından geçmek ve oturum başlatmaktır. **Bağlan ve kopyala**'ya gidin. Depolama hesabınızla ilişkilendirilmiş paylaşımların erişim kimlik bilgilerini almak için **SMB**’yi seçin. 
 
-    ![Paylaşım kimlik bilgilerini alma 1](media/data-box-deploy-copy-data/get-share-credentials1.png)
+    ![SMB paylaşımları için paylaşım kimlik bilgilerini alma](media/data-box-deploy-copy-data/get-share-credentials1.png)
 
 2. Paylaşıma erişme ve veri kopyalama iletişim kutusunda paylaşıma karşılık gelen **Kullanıcı adı** ve **Parola** değerlerini kopyalayın. **Tamam**’ı seçin.
     
-    ![Paylaşım kimlik bilgilerini alma 1](media/data-box-deploy-copy-data/get-share-credentials2.png)
+    ![Bir paylaşım için kullanıcı adı ve parola alma](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
 3. Ana bilgisayarınızdan depolama hesabınızla (aşağıdaki örnekte *utsac1*) ilişkili paylaşımlara erişmek için bir komut penceresi açın. Komut istemine şunları yazın:
 
@@ -97,11 +97,11 @@ Windows Server ana bilgisayarı kullanıyorsanız Data Box'a bağlanmak için a�
 
 4. Windows + R tuşlarına basın. **Çalıştır** penceresinde `\\<device IP address>` değerini belirtin. Dosya Gezgini’ni açmak için **Tamam**’ı seçin.
     
-    ![Paylaşıma Dosya Gezgini ile bağlanma 2](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
+    ![Dosya Gezgini aracılığıyla paylaşıma bağlanma](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
 
     Artık paylaşımları klasörler olarak görebilirsiniz.
     
-    ![Paylaşıma Dosya Gezgini ile bağlanma 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
+    ![Dosya Gezgini’nde gösterilen paylaşımlar](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
 
     **Her zaman kopyalamayı düşündüğünüz dosyalar için paylaşımda bir klasör oluşturun ve ardından dosyaları bu klasöre kopyalayın**. Blok blobu ve sayfa blobu paylaşımları altında oluşturulan klasör, verilerin blob olarak karşıya yüklendiği kapsayıcıyı temsil eder. Dosyaları depolama hesabındaki *root* klasörüne doğrudan kopyalayamazsınız.
     
@@ -116,7 +116,7 @@ sudo mount -t nfs -o vers=2.1 10.126.76.138:/utSAC1_202006051000_BlockBlob /home
 Data Box paylaşımlarına bağlandıktan sonra veri kopyalamaya başlayabilirsiniz. Verileri kopyalamaya başlamadan önce aşağıdaki konuları gözden geçirin:
 
 * Verilerin uygun dosya biçimine karşılık gelen paylaşımlara kopyalandığından emin olun. Örneğin blok blobu verilerinin blok blobu paylaşımına kopyalanması gerekir. VHD'leri sayfa blobuna kopyalayın. Veri biçimi uygun paylaşım türüyle eşleşmiyorsa verilerin Azure'a yüklenmesi başarısız olur.
-* Veri kopyalama sırasında veri boyutunun [Azure depolama ve Data Box sınırları](data-box-limits.md) içinde belirtilen boyut sınırlarına uygun olduğundan emin olun.
+* Veri kopyalama sırasında veri boyutunun [Azure depolama hesabı boyut sınırları](data-box-limits.md#azure-storage-account-size-limits) içinde belirtilen boyut sınırlarına uygun olduğundan emin olun.
 * Data Box tarafından yüklenen verilerin Data Box haricinde başka bir uygulama tarafından da yüklenmesi durumunda yükleme işinde hata oluşabilir ve veri bozulması yaşanabilir.
 * Şunları öneririz:
   * SMB ve NFS'yi aynı anda kullanmayın.
@@ -225,15 +225,15 @@ Robocopy komutu hakkında daha fazla bilgi için bkz. [Robocopy ve birkaç örne
 
 Kopyalama işlemi sırasında hatalarla karşılaşırsanız bir bildirim görürsünüz.
 
-![Bağlan ve kopyala adımındaki hataları indirip görüntüleme](media/data-box-deploy-copy-data/view-errors-1.png)
+![Bağlan ve kopyala adımında bir kopyalama hatası bildirimi](media/data-box-deploy-copy-data/view-errors-1.png)
 
 **Sorun listesini indir**’i seçin.
 
-![Bağlan ve kopyala adımındaki hataları indirip görüntüleme](media/data-box-deploy-copy-data/view-errors-2.png)
+![Bağlan ve kopyala adımındaki hataları indirip görüntüleme 2](media/data-box-deploy-copy-data/view-errors-2.png)
 
 Hatanın ayrıntılarını görüntülemek için listeyi açın ve önerilen çözümü görüntülemek için çözüm URL’sini seçin.
 
-![Bağlan ve kopyala adımındaki hataları indirip görüntüleme](media/data-box-deploy-copy-data/view-errors-3.png)
+![Bağlan ve kopyala adımındaki hataları indirip görüntüleme 3](media/data-box-deploy-copy-data/view-errors-3.png)
 
 Daha fazla bilgi için bkz. [Data Box’a veri kopyalama sırasında hata günlüklerini görüntüleme](data-box-logs.md#view-error-log-during-data-copy). Veri kopyalama sırasında karşılaşılan hataların ayrıntılı bir listesi için bkz. [Data Box sorunlarını giderme](data-box-troubleshoot.md).
 

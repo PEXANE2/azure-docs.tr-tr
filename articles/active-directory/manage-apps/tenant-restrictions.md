@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1cce42cdb63fcfcb9a5841f2f2199daf2bb92304
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604181"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>SaaS bulut uygulamalarına erişimi yönetmek için kiracı kısıtlamalarını kullanın
@@ -57,7 +57,7 @@ Kiracı kısıtlamalarını kullanmak için, istemcilerinizin kimlik doğrulamas
 
 Proxy altyapınız aracılığıyla kiracı kısıtlamalarını etkinleştirmek için aşağıdaki yapılandırma gereklidir. Bu kılavuz geneldir, bu nedenle belirli uygulama adımları için proxy satıcınızın belgelerine başvurmalısınız.
 
-#### <a name="prerequisites"></a>Önkoşullar
+#### <a name="prerequisites"></a>Ön koşullar
 
 - Ara sunucu, FQDN/URL 'Leri kullanarak TLS yakasını, HTTP üst bilgisi eklemeyi ve filtre hedeflerini gerçekleştirebilmelidir.
 
@@ -123,7 +123,7 @@ Azure portal diğer raporlar gibi, raporunuzun kapsamını belirtmek için filtr
 - **MFA auth yöntemi** (çok faktörlü kimlik doğrulama yöntemi)
 - **MFA auth ayrıntısı** (çok faktörlü kimlik doğrulama ayrıntısı)
 - **MFA sonucu**
-- **IP adresi**
+- **IP Adresi**
 - **İstemci**
 - **Kullanıcı adı**
 - **Konum**
@@ -144,7 +144,7 @@ Modern kimlik doğrulamasını destekleyen Outlook ve Skype Kurumsal istemcileri
 
 Müşteriler Windows üzerinde Outlook için, son kullanıcıların profillerine onaylanmamış posta hesapları eklemesini engelleyen kısıtlamalar uygulamayı seçebilirler. Örneğin, [varsayılan olmayan Exchange hesaplarını eklemeyi engelle](https://gpsearch.azurewebsites.net/default.aspx?ref=1) Grup İlkesi ayarını inceleyin.
 
-## <a name="testing"></a>Sınama
+## <a name="testing"></a>Test Etme
 
 Kiracı kısıtlamalarını tüm kuruluşunuz için uygulamadan önce denemek istiyorsanız, iki seçeneğiniz vardır: Fiddler gibi bir araç kullanan ana bilgisayar tabanlı bir yaklaşım veya bir ara sunucu ayarları sunumu.
 
@@ -174,7 +174,7 @@ Fiddler, http üst bilgilerini ekleme de dahil olmak üzere HTTP/HTTPS trafiğin
       }
       ```
 
-      Birden çok kiracıya izin vermeniz gerekiyorsa, kiracı adlarını ayırmak için virgül kullanın. Örnek:
+      Birden çok kiracıya izin vermeniz gerekiyorsa, kiracı adlarını ayırmak için virgül kullanın. Örneğin:
 
       `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
 

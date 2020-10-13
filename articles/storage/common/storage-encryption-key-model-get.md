@@ -12,10 +12,10 @@ ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: f59e4238c983cdb336500a68c52730ae5346b1c7
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91612430"
 ---
 # <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>Depolama hesabı için hangi Azure depolama şifreleme anahtarı modelinin kullanımda olduğunu belirleme
@@ -33,7 +33,7 @@ Ayrıca, bazı BLOB depolama işlemleri için tek bir istek düzeyinde bir şifr
 
 Bir depolama hesabının şifreleme için Microsoft tarafından yönetilen anahtarları veya müşteri tarafından yönetilen anahtarları kullanıp kullanmadığını öğrenmek için aşağıdaki yaklaşımlardan birini kullanın.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
 
 Azure portal kullanarak depolama hesabının şifreleme modelini denetlemek için şu adımları izleyin:
 

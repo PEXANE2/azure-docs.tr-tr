@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 672918280a988771431dccc81f042226addf029d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91265944"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Erişim Denetimi ile kimlik doğrulama oturum yönetimini yapılandırma
@@ -80,8 +80,8 @@ Azure AD 'ye katılmış, hibrit Azure AD 'ye katılmış veya Azure AD kayıtl�
 
 Kalıcı bir tarayıcı oturumu, kullanıcıların tarayıcı pencerelerini kapatıp yeniden açtıktan sonra oturum açmasına olanak tanır.
 
-Tarayıcı oturumu kalıcılığı için Azure AD varsayılan değeri, kişisel cihazlardaki kullanıcıların "oturum açık kal mı?" göstererek oturumu kalıcı olarak belirleyip kapatmayacağını seçmesine olanak sağlar. başarılı kimlik doğrulamasından sonra sor. Tarayıcı kalıcılığı AD FS ' de [Çoklu oturum açma ayarları AD FS](/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
-)makaledeki yönergeler kullanılarak yapılandırılmışsa, bu ilkeye uyum sağlayacak ve Azure AD oturumunun de kalıcı hale getirilecektir. Ayrıca kiracınızdaki kullanıcıların "oturum açmış durumda kal?" i görmesini da yapılandırabilirsiniz. [Azure AD oturum açma sayfanızı özelleştirme](../fundamentals/customize-branding.md)makalesindeki kılavuzu kullanarak Azure Portal içindeki şirket markası bölmesinde uygun ayarı değiştirerek istemde bulun.
+Tarayıcı oturumu kalıcılığı için Azure AD varsayılan değeri, kişisel cihazlardaki kullanıcıların "oturum açık kal mı?" göstererek oturumu kalıcı olarak belirleyip kapatmayacağını seçmesine olanak sağlar. başarılı kimlik doğrulamasından sonra sor. Tarayıcı kalıcılığı AD FS, [tek Sign-On ayarları AD FS](/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
+)makalesindeki kılavuz kullanılarak yapılandırılmışsa, bu ilkeye uyum sağlayacak ve Azure AD oturumunun de kalıcı hale getirilecektir. Ayrıca kiracınızdaki kullanıcıların "oturum açmış durumda kal?" i görmesini da yapılandırabilirsiniz. [Azure AD oturum açma sayfanızı özelleştirme](../fundamentals/customize-branding.md)makalesindeki kılavuzu kullanarak Azure Portal içindeki şirket markası bölmesinde uygun ayarı değiştirerek istemde bulun.
 
 ## <a name="configuring-authentication-session-controls"></a>Kimlik doğrulama oturumu denetimlerini yapılandırma
 
@@ -128,7 +128,7 @@ Azure AD kayıtlı Windows cihazlarında cihazda oturum açın bir istem olarak 
 
 ## <a name="validation"></a>Doğrulama
 
-İlkeyi nasıl yapılandırdığınıza bağlı olarak kullanıcıdan hedef uygulamaya ve diğer koşullara bir oturum açma benzetimi yapmak için ne yapılır aracını kullanın. Kimlik doğrulama oturumu yönetimi denetimleri, aracın sonucuna göre görünür.
+İlkeyi nasıl yapılandırdığınıza bağlı olarak kullanıcıdan hedef uygulamaya ve diğer koşullara bir oturumun benzetimini yapmak için What-If aracını kullanın. Kimlik doğrulama oturumu yönetimi denetimleri, aracın sonucuna göre görünür.
 
 ![Koşullu erişim What If araç sonuçları](media/howto-conditional-access-session-lifetime/conditional-access-what-if-tool-result.png)
 

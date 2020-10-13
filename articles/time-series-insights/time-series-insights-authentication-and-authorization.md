@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18, has-adal-ref
 ms.openlocfilehash: 7408e3fb279536f61dd2e5cf1858476da57219d4
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91665828"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API’si için kimlik doğrulaması ve yetkilendirme
@@ -157,7 +157,7 @@ Gerekli URL sorgu dizesi parametreleri API sürümüne bağımlıdır.
 
 | İsteğe bağlı sorgu parametresi | Açıklama | Sürüm |
 | --- |  --- | --- |
-| `timeout=<timeout>` | HTTP istek yürütmesi için sunucu tarafı zaman aşımı. Yalnızca [ortam olaylarını al](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/getavailability) ve [ortam toplamlarını al](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api) API 'leri için geçerlidir. Zaman aşımı değeri ISO 8601 Duration biçiminde olmalıdır, örneğin, `"PT20S"` aralığında olmalıdır `1-30 s` . Varsayılan değer `30 s` . | Gen1 |
+| `timeout=<timeout>` | HTTP istek yürütmesi için sunucu tarafı zaman aşımı. Yalnızca [ortam olaylarını al](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/getavailability) ve [ortam toplamlarını al](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api) API 'leri için geçerlidir. Zaman aşımı değeri ISO 8601 Duration biçiminde olmalıdır, örneğin, `"PT20S"` aralığında olmalıdır `1-30 s` . Varsayılan değer `30 s` olarak belirlenmiştir. | Gen1 |
 | `storeType=<storeType>` | Isınma mağazasının etkinleştirildiği Gen2 ortamları için, veya üzerinde sorgu çalıştırılabilir `WarmStore` `ColdStore` . Sorgudaki bu parametre, sorgunun hangi depoda yürütülmesi gerektiğini tanımlar. Tanımlı değilse, sorgu soğuk depoda yürütülür. Isınma mağazasını sorgulamak için, **Stoyeniden yazma** 'nın olarak ayarlanması gerekir `WarmStore` . Tanımlı değilse, sorgu soğuk depoya karşı yürütülür. | Gen2 |
 
 ## <a name="next-steps"></a>Sonraki adımlar

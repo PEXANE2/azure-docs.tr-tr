@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 2e6efc08cb7d38a856098395aff363d9d7ec2bab
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91442995"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-an-appropriate-database"></a>Bir sorguyu uygun bir veritabanına yönlendirmek için veriye bağımlı yönlendirmeyi kullanma
@@ -25,7 +25,7 @@ ms.locfileid: "91442995"
 
 Uygulamanın, parçalı ortamdaki farklı veri dilimleriyle ilişkili çeşitli bağlantı dizelerini veya DB konumlarını izlemesi gerekmez. Bunun yerine, parça [eşleme Yöneticisi](elastic-scale-shard-map-management.md) , verileri, parça haritadaki verilere ve uygulama isteğinin hedefi olan parçalı anahtar değerine göre gerektiğinde doğru veritabanlarına açar. Anahtar genellikle *customer_id*, *tenant_id*, *date_key*veya veritabanı isteğinin temel bir parametresi olan başka bir özel tanımlayıcı olur.
 
-Daha fazla bilgi için bkz. [veri bağımlı yönlendirme ile SQL Server genişletme](https://technet.microsoft.com/library/cc966448.aspx).
+Daha fazla bilgi için bkz. [Data-Dependent yönlendirme ile SQL Server genişletme](https://technet.microsoft.com/library/cc966448.aspx).
 
 ## <a name="download-the-client-library"></a>İstemci kitaplığını indirin
 
@@ -118,7 +118,7 @@ using (SqlConnection conn = customerShardMap.OpenConnectionForKey(customerId, Co
 
 Bulutta veri erişimi uygulamaları geliştirmedeki en iyi yöntem, geçici hataların uygulama tarafından yakalanıp bir hata oluşturmadan önce işlemlerin birkaç kez yeniden denenmemesini sağlamaktır. Bulut uygulamaları için geçici hata işleme, geçici hata Işlemede ([Java](/java/api/com.microsoft.azure.elasticdb.core.commons.transientfaulthandling), [.net](https://docs.microsoft.com/previous-versions/msp-n-p/dn440719(v=pandp.60))) ele alınmıştır.
 
-Geçici hata işleme, verilere bağımlı yönlendirme düzeniyle doğal olarak bir arada bulunabilir. Temel gereksinim, verilere bağımlı yönlendirme bağlantısını elde eden **using** bloğu dahil tüm veri erişim isteğini yeniden denemelidir. Yukarıdaki örnek aşağıdaki şekilde yeniden yazılabilir.
+Geçici hata işleme Data-Dependent yönlendirme düzeniyle doğal olarak birlikte bulunabilir. Temel gereksinim, verilere bağımlı yönlendirme bağlantısını elde eden **using** bloğu dahil tüm veri erişim isteğini yeniden denemelidir. Yukarıdaki örnek aşağıdaki şekilde yeniden yazılabilir.
 
 ### <a name="example---data-dependent-routing-with-transient-fault-handling"></a>Örnek-geçici hata işleme ile verilere bağımlı yönlendirme
 

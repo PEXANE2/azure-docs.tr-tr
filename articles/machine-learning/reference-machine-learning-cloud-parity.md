@@ -12,10 +12,10 @@ author: Anurzeuii
 ms.date: 08/24/2020
 ms.custom: references_regions
 ms.openlocfilehash: 4a6f09fdff82b8e86c7fe75018c5267dba3c1b4a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90892986"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Azure Machine Learning sogeign bulut eşliği
@@ -34,7 +34,7 @@ Genel bulutumuz ve bağımsız Bölgelerimiz arasında maksimum eşlik sağlamam
 
 ## <a name="azure-government"></a>Azure Kamu 
 
-| Öne çıkan özelliği | Genel bulut durumu  | ABD-Virginia | ABD-Arizona| 
+| Özellik | Genel bulut durumu  | US-Virginia | US-Arizona| 
 |----------------------------------------------------------------------------|:----------------------:|:--------------------:|:-------------:|
 | **Otomatik makine öğrenimi** | | | |
 | Not defterlerinde denemeleri oluşturma ve çalıştırma                                    | GA                   | EVET                | EVET         |
@@ -112,7 +112,7 @@ Genel bulutumuz ve bağımsız Bölgelerimiz arasında maksimum eşlik sağlamam
 
 ### <a name="azure-government-scenarios"></a>Azure Kamu senaryoları
 
-| Senaryo                                                    | ABD-Virginia | ABD-Arizona| Sınırlamalar  |
+| Senaryo                                                    | US-Virginia | US-Arizona| Sınırlamalar  |
 |----------------------------------------------------------------------------|:----------------------:|:--------------------:|-------------|
 | **Genel güvenlik kurulumu** |   | | |
 | Hizmetler arasındaki özel ağ iletişimi                                     | NO | NO | Şu anda özel bağlantı yok | 
@@ -122,7 +122,7 @@ Genel bulutumuz ve bağımsız Bölgelerimiz arasında maksimum eşlik sağlamam
 | İşlem kaynaklarına kök ve SSH erişimi.                                          | EVET | EVET |  |
 | Endpoint Protection, düzeltme eki uygulama ve günlüğe kaydetme dahil dağıtılan sistemlerin (örnekler, uç noktalar vb.) güvenliğini sağlama |  KıSMI|  KıSMI |VNet ve özel uç noktanın arkasındaki ACI Şu anda kullanılamıyor |                                  
 | ACı/AKS tümleştirmesinin kullanımını denetleme (devre dışı bırakma/sınırlama/kısıtlama)                    | KıSMI| KıSMI |VNet ve özel uç noktanın arkasındaki ACI Şu anda kullanılamıyor|
-| Rol tabanlı Access Control (RBAC)-özel rol oluşturma                           | EVET | EVET |  |
+| Role-Based Access Control (RBAC)-özel rol oluşturma                           | EVET | EVET |  |
 | ML hizmeti tarafından kullanılan ACR görüntülerine erişimi denetleme (Azure tarafından sağlanan/korunan/özel)  |KıSMI|  KıSMI | Azure Kamu 'da desteklenmeyen özel uç nokta ve VNet 'in arkasında ACR |
 | **Genel Machine Learning hizmeti kullanımı** |  | | |
 | Bir model oluşturmak, bu modeli eğmek, bir uç nokta olarak barındırmak ve bir WebApp aracılığıyla kullanmak için bir geliştirme ortamı kullanabilme     | EVET | EVET |  |
@@ -147,7 +147,7 @@ Genel bulutumuz ve bağımsız Bölgelerimiz arasında maksimum eşlik sağlamam
 
 ## <a name="azure-china-21vianet"></a>Azure China 21Vianet 
 
-| Öne çıkan özelliği                                       | Genel bulut durumu | CH-Doğu-2 | CH-Kuzey-3 |
+| Özellik                                       | Genel bulut durumu | CH-Doğu-2 | CH-Kuzey-3 |
 |----------------------------------------------------------------------------|:------------------:|:--------------------:|:-------------:|
 | **Otomatik makine öğrenimi** |    | | |
 | Not defterlerinde denemeleri oluşturma ve çalıştırma                                    | GA               | EVET       | Yok        |
@@ -229,7 +229,7 @@ Genel bulutumuz ve bağımsız Bölgelerimiz arasında maksimum eşlik sağlamam
 * Azure Çin 'de, özellikle GPU SKU 'SU için sınırlı VM SKU 'SU vardır. Yalnızca NCv3 ailesi vardır (v100).
 * REST API uç noktaları küresel Azure 'dan farklıdır. Azure Çin bölgeleri için REST API uç noktasını bulmak için aşağıdaki tabloyu kullanın:
 
-    | REST uç noktası                 | Küresel Azure                                 | Çin-kamu                           |
+    | REST uç noktası                 | Küresel Azure                                 | China-Government                           |
     |------------------|--------------------------------------------|--------------------------------------------|
     | Yönetim düzlemi | `https://management.azure.com/`              | `https://management.chinacloudapi.cn/`       |
     | Veri düzlemi       | `https://{location}.experiments.azureml.net` | `https://{location}.experiments.ml.azure.cn` |

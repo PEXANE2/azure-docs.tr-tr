@@ -15,10 +15,10 @@ ms.date: 09/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 6911128cfbaa87229a09bcea0d655c6110c2d208
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259790"
 ---
 # <a name="available-skus-for-hana-large-instances"></a>HANA büyük örnekleri için kullanılabilir SKU 'Lar
@@ -48,7 +48,7 @@ Aşağıdakiler gibi sunulan kullanılabilir Azure büyük örneklerinin listesi
 
 
 
-| SAP HANA sertifikalı | Modelleme | Toplam bellek | Bellek DRAM | Bellek Optane | Depolama | Kullanılabilirlik |
+| SAP HANA sertifikalı | Model | Toplam bellek | Bellek DRAM | Bellek Optane | Depolama | Kullanılabilirlik |
 | --- | --- | --- | --- | --- | --- | --- |
 | EVET <br />[OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2185), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2265) | Azure S96 üzerinde SAP HANA<br /> – 2 x Intel® Xeon® Işlemci E7-8890 v4 <br /> 48 CPU çekirdeği ve 96 CPU iş parçacığı |  768 GB | 768 GB | --- | 3,0 TB | Kullanılabilir |
 | EVET <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2186), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2269) | Azure S224 üzerinde SAP HANA<br /> – 4 x Intel® Xeon® Platinum 8276 işlemcisi <br /> 112 CPU çekirdeği ve 224 CPU iş parçacığı |  3,0 TB | 3,0 TB | --- | 6,3 TB | Kullanılabilir |
@@ -86,8 +86,8 @@ Aşağıdakiler gibi sunulan kullanılabilir Azure büyük örneklerinin listesi
 
 
 - CPU çekirdekleri = sunucu biriminin işlemcilerin toplamının hiper iş parçacıklı olmayan CPU çekirdekleri toplamı.
-- CPU iş parçacıkları = sunucu biriminin işlemcilerin toplamının hiper iş parçacıklı CPU çekirdekleri tarafından sunulan işlem iş parçacıklarının toplamı. Çoğu birim, varsayılan olarak hiper Iş parçacığı teknolojisini kullanacak şekilde yapılandırılır.
-- Üretici S768m, S768xm ve S960m temel alınarak SAP HANA çalıştırmak için hiper Iş parçacığı kullanacak şekilde yapılandırılmamıştır.
+- CPU iş parçacıkları = sunucu biriminin işlemcilerin toplamının hiper iş parçacıklı CPU çekirdekleri tarafından sunulan işlem iş parçacıklarının toplamı. Çoğu birim, Hyper-Threading teknolojisini kullanmak için varsayılan olarak yapılandırılır.
+- S768m, S768xm ve S960m tedarikçilere göre, SAP HANA çalıştırmak için Hyper-Threading kullanacak şekilde yapılandırılmamıştır.
 
 
 > [!IMPORTANT]

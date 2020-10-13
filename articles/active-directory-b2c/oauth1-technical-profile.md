@@ -12,10 +12,10 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 6b54cff85da02415bbc9dfa9ead037ced48cb58f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259450"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde bir OAuth1 teknik profili tanımlama
@@ -70,13 +70,13 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de 
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| client_id | Yes | Kimlik sağlayıcısının uygulama tanımlayıcısı. |
-| Adı | No | Kimlik sağlayıcısının adı. |
-| request_token_endpoint | Yes | RFC 5849 başına istek belirteci uç noktasının URL 'SI. |
-| authorization_endpoint | Yes | RFC 5849 başına yetkilendirme uç noktasının URL 'SI. |
-| access_token_endpoint | Yes | RFC 5849 başına belirteç uç noktasının URL 'SI. |
-| ClaimsEndpoint | No | Kullanıcı bilgisi uç noktasının URL 'SI. |
-| ClaimsResponseFormat | No | Talep yanıtı biçimi.|
+| client_id | Evet | Kimlik sağlayıcısının uygulama tanımlayıcısı. |
+| Adı | Hayır | Kimlik sağlayıcısının adı. |
+| request_token_endpoint | Evet | RFC 5849 başına istek belirteci uç noktasının URL 'SI. |
+| authorization_endpoint | Evet | RFC 5849 başına yetkilendirme uç noktasının URL 'SI. |
+| access_token_endpoint | Evet | RFC 5849 başına belirteç uç noktasının URL 'SI. |
+| ClaimsEndpoint | Hayır | Kullanıcı bilgisi uç noktasının URL 'SI. |
+| ClaimsResponseFormat | Hayır | Talep yanıtı biçimi.|
 
 ## <a name="cryptographic-keys"></a>Şifreleme anahtarları
 
@@ -84,7 +84,7 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de 
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| client_secret | Yes | Kimlik sağlayıcısı uygulamasının istemci gizli anahtarı.   |
+| client_secret | Evet | Kimlik sağlayıcısı uygulamasının istemci gizli anahtarı.   |
 
 ## <a name="redirect-uri"></a>Yeniden Yönlendirme URI'si
 

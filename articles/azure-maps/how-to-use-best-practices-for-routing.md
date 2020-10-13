@@ -8,27 +8,26 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1c108c79cafb591dced6f6be0dd5c1b353ddac45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13c7178b4a0866066dc74e409f8f4bfcd21a23f4
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "90086411"
+ms.locfileid: "91874603"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Azure Maps Route hizmeti için en iyi yöntemler
 
 Azure haritalar 'daki yol yönleri ve yol Matrisi API 'Leri [yönlendirme hizmeti](https://docs.microsoft.com/rest/api/maps/route) , istenen her bir rota için tahmini varış zamanlarını (Etas) hesaplamak üzere kullanılabilir. Yönlendirme API 'Leri, gerçek zamanlı trafik bilgileri ve geçmiş trafik verileri gibi faktörleri, haftanın istenen günü ve günün saati için tipik yol hızları gibi düşünün. API 'Ler, zaman veya mesafeden başlayarak, tek seferde birden çok hedefe veya en iyi duruma getirilmiş sıraya göre sunulan en kısa veya en hızlı yolları döndürür. Kullanıcılar ayrıca, waltlar, bıyıva ve kamyonlar gibi ticari araçlar için özel yollar ve Ayrıntılar isteyebilir. Bu makalede, Azure haritalar [yönlendirme hizmeti](https://docs.microsoft.com/rest/api/maps/route)çağırmak için en iyi yöntemleri paylaşacağız ve nasıl yapılacağını öğreneceksiniz:
 
-> [!div class="checklist"]
-> * Yol yönleri API 'Leri ve matris yönlendirme API 'SI arasında seçim yapın
-> * Gerçek zamanlı ve geçmiş trafik verileri temelinde geçmişe ait ve tahmin edilebilir seyahat zamanları isteme
-> * Yolun tamamı ve yolun her bir BAI için zaman ve uzaklık gibi yol ayrıntılarını iste
-> * Kamyon gibi ticari bir araç için istek rotası
-> * Trafik bilgilerini, sıkışıklıklarının ve ücretli bilgiler gibi bir yol üzerinde isteyin
-> * Bir veya daha fazla durdurulduğunda (waypoints) oluşan bir rota isteyin
-> * Her bir durdurmayı (Waypoint) ziyaret etmek için en iyi sırayı elde etmek üzere bir veya daha fazla durak yolunu en iyi hale getirin
-> * Destekleyici noktaları kullanarak alternatif yolları iyileştirin. Örneğin, elektrik araç doldurma istasyonunu geçiren alternatif yollar sunun.
-> * Azure Maps web SDK ile [yönlendirme hizmeti](https://docs.microsoft.com/rest/api/maps/route) kullanma
+ * Yol yönleri API 'Leri ve matris yönlendirme API 'SI arasında seçim yapın
+ * Gerçek zamanlı ve geçmiş trafik verileri temelinde geçmişe ait ve tahmin edilebilir seyahat zamanları isteme
+ * Yolun tamamı ve yolun her bir BAI için zaman ve uzaklık gibi yol ayrıntılarını iste
+ * Kamyon gibi ticari bir araç için istek rotası
+ * Trafik bilgilerini, sıkışıklıklarının ve ücretli bilgiler gibi bir yol üzerinde isteyin
+ * Bir veya daha fazla durdurulduğunda (waypoints) oluşan bir rota isteyin
+ * Her bir durdurmayı (Waypoint) ziyaret etmek için en iyi sırayı elde etmek üzere bir veya daha fazla durak yolunu en iyi hale getirin
+ * Destekleyici noktaları kullanarak alternatif yolları iyileştirin. Örneğin, elektrik araç doldurma istasyonunu geçiren alternatif yollar sunun.
+ * Azure Maps web SDK ile [yönlendirme hizmeti](https://docs.microsoft.com/rest/api/maps/route) kullanma
 
 ## <a name="prerequisites"></a>Ön koşullar
 
