@@ -3,12 +3,12 @@ title: CAF Foundation şema örneğine genel bakış
 description: Azure Foundation şema örneği için Bulut Benimseme Çerçevesi’ne (CAF) genel bakış ve mimari.
 ms.date: 09/14/2020
 ms.topic: sample
-ms.openlocfilehash: a3e2a5bcbb68ef0b51cf02ebb7a7e34913e2a1e6
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 77e8b79ec7cf217161099808cee4364e31c6d6dd
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91929617"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950287"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Azure Foundation şema örneği için Microsoft Bulutu Benimseme çerçevesine genel bakış
 
@@ -26,7 +26,7 @@ Bu uygulama, güvenli, tam olarak izlenen, kurumsal kullanıma hazır bir temel 
 
 - Paylaşılan hizmetler ortamına dağıtılmış VM'lerin gizli dizilerini barındırmak için kullanılan [Azure Key Vault](../../../../key-vault/general/overview.md) örneği
 - [Depolama Hesapları](../../../../storage/common/storage-introduction.md)’na güvenli dağıtımınıza başladığınız andan itibaren tüm eylemlerin ve hizmetlerin tanılama günlüğüne kaydedilmesi için merkezi bir konumda günlüğe kaydedildiğinden emin olmak amacıyla dağıtılan [Log Analytics](../../../../azure-monitor/overview.md) dağıtımı
-- Geçirilen iş yüklerinize yönelik tehdit koruması sağlayan [Azure Güvenlik Merkezi](../../../../security-center/security-center-intro.md) (standart sürüm) dağıtımı
+- Geçirilen iş yüklerinize yönelik tehdit koruması sağlayan [Azure Güvenlik Merkezi](../../../../security-center/security-center-introduction.md) (standart sürüm) dağıtımı
 - Şema ayrıca şunlar için [Azure İlkesi](../../../policy/overview.md) tanımlarını belirler ve dağıtır:
   - İlke tanımları:
     - Kaynak gruplarına uygulanan etiketleme (CostCenter)

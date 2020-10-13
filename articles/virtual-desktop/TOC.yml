@@ -36,6 +36,8 @@
           href: connect-ios.md
         - name: Microsoft Store istemcisiyle bağlanma
           href: connect-microsoft-store.md
+    - name: Cihaz yeniden yönlendirmelerini yapılandırma
+      href: configure-device-redirections.md
     - name: PowerShell modülünü ayarlama
       href: powershell-module.md
     - name: Konak havuzu ve oturum konakları oluşturma
@@ -102,6 +104,8 @@
       href: azure-advisor.md
     - name: Önerileri çözümleme
       href: azure-advisor-recommendations.md
+    - name: Olağanüstü durum kurtarma planını ayarlama
+      href: disaster-recovery.md
 - name: Kavramlar
   items:
     - name: Kimlik Doğrulaması

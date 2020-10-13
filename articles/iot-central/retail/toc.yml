@@ -35,7 +35,11 @@
         - name: 0 - Nesne ve hareket algılama uygulamasını dağıtma
           href: tutorial-video-analytics-deploy.md
         - name: 1 - Video analizi uygulaması oluşturma
-          href: tutorial-video-analytics-create-app.md
+          items:
+            - name: Nesne ve hareket algılama (YOLO v3)
+              href: tutorial-video-analytics-create-app-yolo-v3.md
+            - name: Nesne ve hareket algılama (OpenVINO)
+              href: tutorial-video-analytics-create-app-openvino.md
         - name: 2 - IoT Edge cihazını yapılandırma
           items:
             - name: Uçta video analizi cihazı oluşturma (Linux VM)

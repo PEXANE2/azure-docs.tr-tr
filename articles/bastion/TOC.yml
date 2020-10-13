@@ -6,8 +6,12 @@
       href: bastion-overview.md
 - name: Hızlı Başlangıçlar
   items:
-    - name: VM ayarlarından güçlendirilmiş erişim konağı oluşturma
+    - name: VM ayarlarını kullanarak konak oluşturma
       href: quickstart-host-portal.md
+- name: Öğreticiler
+  items:
+    - name: Konak oluşturma ve Windows VM'ye bağlama
+      href: tutorial-create-host-portal.md
 - name: Kavramlar
   items:
     - name: Uzaktan çalışmaya yönelik destek
@@ -16,7 +20,7 @@
       href: work-remotely-support.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Bastion konağı oluşturma
+    - name: Konak oluşturma
       items:
         - name: Azure portal
           href: bastion-create-host-portal.md
