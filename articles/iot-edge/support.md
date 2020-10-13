@@ -4,16 +4,16 @@ description: Hangi işletim sistemlerinin Azure IoT Edge Daemon ve çalışma za
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 09/10/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 27d078bc1dc61079d44110999b70c5195c9c8a2a
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: f8bd0d0d6fccedf2bd9c4fe94f3ef13dbd82dc8b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874229"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971090"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Desteklenen sistemleri Azure IoT Edge
 
@@ -65,12 +65,11 @@ Aşağıdaki tabloda listelenen sistemler Microsoft tarafından desteklenir, gen
 | Raspbian Stretch |  | ![Raspbian uzat + ARM32v7](./media/tutorial-c-module/green-check.png) |  |
 | [Ubuntu Server 16.04](https://wiki.ubuntu.com/XenialXerus/ReleaseNotes) | ![Ubuntu Server 16,04 + AMD64](./media/tutorial-c-module/green-check.png) |  | Genel Önizleme  |
 | [Ubuntu Server 18.04](https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes) | ![Ubuntu Server 18,04 + AMD64](./media/tutorial-c-module/green-check.png) |  | Genel Önizleme |
-| [Windows 10 IoT Core](https://docs.microsoft.com/windows/iot-core/windows-iot-core), derleme 17763 | ![Windows IoT Core + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 | [Windows 10 IoT Enterprise](https://docs.microsoft.com/windows/iot-core/windows-iot-enterprise), derleme 17763 | ![Windows 10 IoT Enterprise + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 | [Windows Server 2019](https://docs.microsoft.com/windows-server/get-started-19/rel-notes-19), derleme 17763 | ![Windows Server 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 | [Windows Server ıot 2019](https://docs.microsoft.com/windows/iot-core/windows-server), derleme 17763 | ![Windows Server IoT 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 
-Yukarıda listelenen Windows işletim sistemleri, üretim için desteklenen tek yapılandırma olan Windows kapsayıcıları çalıştıran cihazlara yönelik gereksinimlerdir. Windows için Azure IoT Edge yükleme paketleri Windows üzerinde Linux kapsayıcılarının kullanılmasına izin verir; Ancak, bu yapılandırma yalnızca geliştirme ve test içindir. Daha fazla bilgi için bkz. [Linux kapsayıcılarını çalıştırmak Için Windows 'ta IoT Edge kullanma](how-to-install-iot-edge-windows-with-linux.md).
+Yukarıda listelenen Windows işletim sistemleri, üretim için desteklenen tek yapılandırma olan Windows kapsayıcıları çalıştıran cihazlara yönelik gereksinimlerdir. Windows için Azure IoT Edge yükleme paketleri Windows üzerinde Linux kapsayıcılarının kullanılmasına izin verir; Ancak, bu yapılandırma yalnızca geliştirme ve test içindir. 
 
 ### <a name="tier-2"></a>Katman 2
 
@@ -108,14 +107,16 @@ IoT Edge bileşenleri tek tek yüklenebilir ve güncelleştirilmiş olabilir ve 
 
 | Yayınla | Güvenlik cini | Edge hub 'ı<br>Edge Aracısı | Libiothsm | Moby |
 |--|--|--|--|--|
+| **1.0.10** | 1.0.10 | 1.0.10 | 1.0.10 |  |
 | **1.0.9** | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 |  |
 | **1.0.8** | 1.0.8 | 1.0.8.5<br>1.0.8.4<br>1.0.8.3<br>1.0.8.2<br>1.0.8.1<br>1.0.8 | 1.0.8 | 3.0.6 |
 | **1.0.7** | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 3.0.5<br>3.0.4 (ARMv7hl, CentOS) |
 | **1.0.6** | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 |  |
 | **1.0.5** | 1.0.5 | 1.0.5 | 1.0.5 | 3.0.2 |
 
-IoT Edge, Microsoft. Azure. Device. Client SDK 'sını kullanır. Daha fazla bilgi için bkz. [Azure ıOT C# SDK GitHub deposu](https://github.com/Azure/azure-iot-sdk-csharp) veya [.NET için Azure SDK başvuru içeriği](/dotnet/api/overview/azure/iot/client). Aşağıdaki listede, her sürümün test ettiği istemci SDK sürümü gösterilmektedir:
+IoT Edge, Microsoft. Azure. Devices. Client SDK 'sını kullanır. Daha fazla bilgi için bkz. [Azure ıOT C# SDK GitHub deposu](https://github.com/Azure/azure-iot-sdk-csharp) veya [.NET için Azure SDK başvuru içeriği](/dotnet/api/overview/azure/iot/client). Aşağıdaki listede, her sürümün test ettiği istemci SDK sürümü gösterilmektedir:
 
+* **IoT Edge 1.0.10**: istemci SDK 'sı 1.28.0
 * **IoT Edge 1.0.9**: istemci SDK 'sı 1.21.1
 * **IoT Edge 1.0.8**: istemci SDK 'sı 1.20.3
 * **IoT Edge 1.0.7**: istemci SDK 'sı 1.20.1

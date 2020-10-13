@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: efdfc1c12191977c0422cda6c52eb9b73c95c55f
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91651199"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 sürüm notları
@@ -94,7 +94,7 @@ Media Services şu Azure Kamu bölgelerinde: *Usgov Arizona* ve *Usgov Texas*.
 
 ## <a name="december-2019"></a>Aralık 2019
 
-Canlı ve video isteğe bağlı akış için *kaynak yardımı önceden getirme* ÜSTBILGILERI için CDN desteği eklendi; Akamai CDN ile doğrudan sözleşme sahibi olan müşteriler için kullanılabilir. Kaynak-yardım CDN-önceden getirme özelliği, Akamai CDN ve Azure Media Services Origin arasındaki aşağıdaki HTTP üst bilgi alışverişlerini içerir:
+Canlı ve video isteğe bağlı akış için *kaynak yardımı önceden getirme* ÜSTBILGILERI için CDN desteği eklendi; Akamai CDN ile doğrudan sözleşme sahibi olan müşteriler için kullanılabilir. Origin-Assist CDN-Prefetch özelliği, Akamai CDN ile Azure Media Services kaynağı arasında aşağıdaki HTTP üst bilgi alışverişlerini içerir:
 
 |HTTP üstbilgisi|Değerler|Gönderen|Alıcı|Amaç|
 | ---- | ---- | ---- | ---- | ----- |
@@ -337,7 +337,7 @@ Yeni **dönüşüm** nesnesi kodlama modelini basitleştirir. Yeni nesne, kodlam
 
 #### <a name="azure-active-directory-authentication-and-rbac"></a>Azure Active Directory kimlik doğrulaması ve RBAC
 
-Azure AD kimlik doğrulaması ve rol tabanlı Access Control (RBAC), Azure AD 'de role veya kullanıcılara göre güvenli dönüşümler, canlı olaylar, Içerik anahtar Ilkeleri veya varlıklar sağlar.
+Azure AD kimlik doğrulaması ve Role-Based Access Control (RBAC), Azure AD 'de role veya kullanıcılara göre güvenli dönüşümler, canlı olaylar, Içerik anahtar Ilkeleri veya varlıklar sağlar.
 
 #### <a name="client-sdks"></a>İstemci SDK'ları  
 

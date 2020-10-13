@@ -8,10 +8,10 @@ ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: e5ca792c6dbc3c08847315b916913e8c38909a7a
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91637387"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>Azure Kubernetes hizmeti için Azure Güvenlik temeli
@@ -1237,7 +1237,7 @@ PowerShell komutlarıyla Key Vault sertifikaların, anahtarların, yönetilen de
 
 Örneğin:
 
-Backup-AzKeyVaultCertificate yedekleme-AzKeyVaultKey Backup-AzKeyVaultManagedStorageAccount yedekleme-AzKeyVaultSecret
+Backup-AzKeyVaultCertificate Backup-AzKeyVaultKey Backup-AzKeyVaultManagedStorageAccount Backup-AzKeyVaultSecret
 
 - [Key Vault sertifikalarını yedekleme](/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate)
 
@@ -1261,7 +1261,7 @@ PowerShell komutlarıyla Key Vault sertifikaların, anahtarların, yönetilen de
 
 Örneğin:
 
-Restore-AzKeyVaultCertificate restore-AzKeyVaultKey geri yükleme-AzKeyVaultManagedStorageAccount geri yükleme-AzKeyVaultSecret
+Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAccount Restore-AzKeyVaultSecret
 
 - [Key Vault sertifikalarını geri yükleme](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0)
 
@@ -1281,11 +1281,11 @@ Restore-AzKeyVaultCertificate restore-AzKeyVaultKey geri yükleme-AzKeyVaultMana
 
 **Kılavuz**: Velero gibi depolama türü için uygun bir aracı kullanarak verilerinizi yedekleyin. Bu, ek küme kaynakları ve yapılandırmalarının yanı sıra kalıcı birimleri yedeklebilirler. 
 
-Azure Kubernetes Service (AKS) dağıtımları için Azure Key Vault kullanılıyorsa, anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için Key Vault geçici silme özelliğini etkinleştirin.
+Azure Kubernetes Service (AKS) dağıtımları için ile birlikte kullanılıyorsa, anahtarları yanlışlıkla veya kötü amaçlı Azure Key Vault silmeye karşı korumak için Key Vault Soft-Delete etkinleştirin.
 
 - [Azure Depolama Hizmeti Şifrelemesi anlama](../storage/common/storage-service-encryption.md)
 
-- [Key Vault 'da geçici silme özelliğini etkinleştirme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Key Vault Soft-Delete etkinleştirme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 

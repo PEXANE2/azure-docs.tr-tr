@@ -12,10 +12,10 @@ ms.date: 10/05/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: 1d215c9564d89e5bd410e68839807f5c2c752356
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91828635"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Özel bir DNS sunucusu ile çalışma alanınızı kullanma
@@ -25,7 +25,7 @@ Bir sanal ağla Azure Machine Learning kullanırken, [DNS ad çözümlemesini i�
 > [!IMPORTANT]
 > Bu makalede, bu girdilerin yalnızca tam etki alanı adını (FQDN) ve IP adreslerini bulmak için DNS kayıtlarını yapılandırma hakkında bilgi sağlamayan bilgiler yer alır. Kayıt ekleme hakkında bilgi edinmek için DNS yazılımınızın belgelerine bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Kendı DNS sunucunuzu](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)kullanan bir Azure sanal ağı.
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: a1e77b5f669d1b492f2d71063a6c77bec1178696
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: d533b8fed47b1790cc35429613179f440f1fac51
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449269"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961757"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Azure ön kapılarında ölçümleri ve günlükleri izleme
 
@@ -31,14 +31,14 @@ Azure ön kapısını kullanarak kaynakları aşağıdaki yollarla izleyebilirsi
 
 | Ölçüm | Ölçüm görünen adı | Birim | Boyutlar | Açıklama |
 | --- | --- | --- | --- | --- |
-| Istek sayısı | İstek Sayısı | Count | Http durumu</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Ön kapı tarafından sunulan istemci isteklerinin sayısı.  |
+| Istek sayısı | İstek Sayısı | Sayı | Http durumu</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Ön kapı tarafından sunulan istemci isteklerinin sayısı.  |
 | RequestSize | İstek boyutu | Bayt | Http durumu</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | İstemcilerden ön kapıya istek olarak gönderilen bayt sayısı. |
 | Yanıt boyutu | Yanıt boyutu | Bayt | Http durumu</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Ön kapıdan istemcilere yanıt olarak gönderilen bayt sayısı. |
-| TotalLatency | Toplam gecikme süresi | Mayacak | Http durumu</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | İstemci, ön kapıdan gelen son yanıt baytını kabul edene kadar ön kapıdan alınan istemci isteğinden hesaplanan süredir. |
-| BackendRequestCount | Arka uç Istek sayısı | Count | Http durumu</br>HttpStatusGroup</br>Arka uç | Ön kapıdan arka uçlara gönderilen isteklerin sayısı. |
+| TotalLatency | Toplam gecikme süresi | Mayacak | Http durumu</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | AFD 'dan istemciye gönderilen Son Yanıt baytı kadar, ön kapıdan alınan istemci isteğinden geçen toplam süre. |
+| BackendRequestCount | Arka uç Istek sayısı | Sayı | Http durumu</br>HttpStatusGroup</br>Arka uç | Ön kapıdan arka uçlara gönderilen isteklerin sayısı. |
 | BackendRequestLatency | Arka uç Isteği gecikmesi | Mayacak | Arka uç | Ön kapı arka uca Son Yanıt baytı aldığından, isteğin ön uca gönderildiği süre. |
 | BackendHealthPercentage | Arka uç sistem durumu yüzdesi | Yüzde | Arka uç</br>BackendPool | Ön kapıdan arka uçlara yapılan başarılı sistem durumu araştırmalarının yüzdesi. |
-| WebApplicationFirewallRequestCount | Web uygulaması güvenlik duvarı Istek sayısı | Count | PolicyName</br>RuleName</br>Eylem | Ön kapısının uygulama katmanı güvenliği tarafından işlenen istemci isteklerinin sayısı. |
+| WebApplicationFirewallRequestCount | Web uygulaması güvenlik duvarı Istek sayısı | Sayı | PolicyName</br>RuleName</br>Eylem | Ön kapısının uygulama katmanı güvenliği tarafından işlenen istemci isteklerinin sayısı. |
 
 ## <a name="activity-logs"></a><a name="activity-log"></a>Etkinlik günlükleri
 
@@ -75,7 +75,7 @@ Etkinlik günlükleri, Azure kaynakları üzerinde gerçekleştirilen işlemlere
 
 | Özellik  | Açıklama |
 | ------------- | ------------- |
-| BackendHostname | İstek bir arka uca iletilirse Bu alan, arka ucun ana bilgisayar adını temsil eder. Bu alan, istek yeniden yönlendirildiyse veya bir bölgesel önbelleğe iletilirse (yönlendirme kuralı için önbelleğe alma etkinleştirildiğinde) boş olur. |
+| BackendHostname | İstek bir arka uca iletilirse Bu alan, arka ucun ana bilgisayar adını temsil eder. İstek yeniden yönlendirilirse veya bir bölgesel önbelleğe iletilirse (yönlendirme kuralı için önbelleğe alma etkinleştirildiğinde) Bu alan boş olur. |
 | CacheStatus | Önbelleğe alma senaryolarında bu alan, POP 'ta önbelleğin isabet/isabetsizlik sını tanımlar |
 | ClientIp | İsteği yapan istemcinin IP adresi. İstekte bir X-Iletilmiş-for üstbilgisi varsa, Istemci IP 'si aynı üzerinden çekilir. |
 | Istemci bağlantı noktası | İsteği yapan istemcinin IP bağlantı noktası. |
@@ -90,19 +90,49 @@ Etkinlik günlükleri, Azure kaynakları üzerinde gerçekleştirilen işlemlere
 | RoutingRuleName | İsteğin eşleştiği yönlendirme kuralının adı. |
 | RulesEngineMatchNames | İsteğin eşleştiği kuralların adları. |
 | SecurityProtocol | İstek tarafından kullanılan TLS/SSL protokol sürümü veya şifreleme yoksa null. |
-| SentToOriginShield | İlk ortamda bir önbellek isabetsizlik olup olmadığını ve isteğin bölgesel önbelleğe gönderilip gönderilmediğini temsil eden Boole alanı. Yönlendirme kuralı bir yeniden yönlendirme veya ne zaman önbelleğe alma etkin değilse bu alanı yoksayın. |
+| SentToOriginShield </br> (kullanım dışı) * **aşağıdaki bölümde kullanımdan kaldırılması için notlara bakın.**| True ise, isteğin kenar pop 'u yerine kaynak kalkan önbelleğinden yanıtlandığını gösterir. Kaynak kalkan, önbellek isabet oranını artırmak için kullanılan bir üst önbelleğidir. |
+| ıreceived Fromclient | Doğru ise, isteğin istemciden geldiği anlamına gelir. Yanlış ise, istek kenarda (alt POP) bir isabetsizlik olur ve kaynak kalkanı (üst POP) ile yanıt verilir. 
 | TimeTaken | İsteğin ilk baytının, saniye cinsinden son bayta geçen bayt olan sürenin uzunluğu. |
 | TrackingReference | Ön kapıya yönelik olarak sunulan ve istemciye X-Azure-ref üst bilgisi olarak gönderilen bir isteği tanımlayan benzersiz başvuru dizesi. Belirli bir istek için erişim günlüklerindeki ayrıntıları aramak için gereklidir. |
 | Kullanıcı | İstemcinin kullandığı tarayıcı türü. |
 
-**Note:** Çeşitli yönlendirme yapılandırmalarının ve trafik davranışları için backendHostname, cacheStatus, sentToOriginShield ve POP alanı gibi bazı alanlar farklı değerlerle yanıt verebilir. Aşağıdaki tabloda farklı değerler açıklanmakta, bu alanlar çeşitli senaryolar için olacaktır:
+### <a name="sent-to-origin-shield-deprecation"></a>Kaynak kalkan kullanım dışı bırakılmasıyla gönderildi
+Ham günlük özelliği **ısenttooriginshield** kullanım dışıdır ve yeni bir alan tarafından alınmış bir **fromclient**tarafından değiştirildi. Zaten kullanım dışı olan alanı kullanıyorsanız, yeni alanı kullanın. 
 
-| Senaryolar | Günlük girişi sayısı | POP | BackendHostname | SentToOriginShield | CacheStatus |
+Ham günlüklerde hem CDN Edge (alt POP) hem de kaynak kalkanı tarafından oluşturulan Günlükler bulunur. Kaynak kalkan, dünya genelinde stratejik olarak bulunan üst düğümlere başvurur. Bu düğümler, kaynak sunucularıyla iletişim kurar ve kaynak yükünü kaynak olarak azaltır. 
+
+Kaynak Shield 'a giden her istek için 2 günlük girişi vardır:
+
+* Kenar düğümleri için bir tane
+* Kaynak kalkan için bir tane. 
+
+Uç düğümlerinden ve kaynak kalanlardan çıkış ya da yanıtları ayırt etmek için, uygun verileri almak üzere **ıreceived Fromclient** alanını kullanabilirsiniz. 
+
+Değer false ise, isteğin kaynak Shield 'dan kenar düğümlerine yanıt verdiği anlamına gelir. Bu yaklaşım, ham günlükleri faturalandırma verileriyle karşılaştırmak için geçerlidir. Ücret, çıkış durumundan kenar düğümlerine çıkış için tahakkuk etmemektedir. Ücretler, uç düğümlerinden istemcilere çıkış için ücretlendirilir. 
+
+**Log Analytics kaynak kalkanı üzerinde oluşturulan günlüklerin hariç tutulmasını sağlamak için sorgu örneği kusto.**
+
+`AzureDiagnostics 
+| where Category == "FrontdoorAccessLog" and isReceivedFromClient_b == true`
+
+> [!NOTE]
+> Çeşitli yönlendirme yapılandırmalarına ve trafik davranışlarına yönelik olarak backendHostname, cacheStatus, ıreceived Fromclient ve POP alanı gibi bazı alanlar farklı değerlerle yanıt verebilir. Aşağıdaki tabloda, bu alanların çeşitli senaryolar için sahip olacağı farklı değerler açıklanmaktadır:
+
+| Senaryolar | Günlük girişi sayısı | POP | BackendHostname | ıreceived Fromclient | CacheStatus |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Önbelleğe alma etkin olmayan yönlendirme kuralı | 1 | Edge POP kodu | İsteğin iletildiği arka uç | Yanlış | CONFIG_NOCACHE |
-| Önbelleğe alma özelliği etkin yönlendirme kuralı. Uç POP 'ta isabetli önbellek okuması | 1 | Edge POP kodu | Olmamalıdır | Yanlış | SıNAMASıNA |
-| Önbelleğe alma özelliği etkin yönlendirme kuralı. Uç POP 'ta önbellek isabetsizlik, ancak üst önbellek AÇıSıNı önbellekte isabet | 2 | 1. Edge POP kodu</br>2. üst önbellek POP kodu | 1. üst önbellek POP ana bilgisayar adı</br>2. boş | 1. doğru</br>2. yanlış | 1. ISABETSIZLIK</br>2. PARTIAL_HIT |
-| Önbelleğe alma özelliği etkin yönlendirme kuralı. Hem kenar hem de üst önbellek AÇıSıNı önbellekte isabetsiz önbellek | 2 | 1. Edge POP kodu</br>2. üst önbellek POP kodu | 1. üst önbellek POP ana bilgisayar adı</br>2. önbelleğin doldurulmaya yardımcı olan arka uç | 1. doğru</br>2. yanlış | 1. ISABETSIZLIK</br>2. ISABETSIZLIK |
+| Önbelleğe alma etkin olmayan yönlendirme kuralı | 1 | Edge POP kodu | İsteğin iletildiği arka uç | Doğru | CONFIG_NOCACHE |
+| Önbelleğe alma özelliği etkin yönlendirme kuralı. Uç POP 'ta isabetli önbellek okuması | 1 | Edge POP kodu | Olmamalıdır | Doğru | SıNAMASıNA |
+| Önbelleğe alma özelliği etkin yönlendirme kuralı. Uç POP 'ta önbellek isabetsizlik, ancak üst önbellek AÇıSıNı önbellekte isabet | 2 | 1. Edge POP kodu</br>2. üst önbellek POP kodu | 1. üst önbellek POP ana bilgisayar adı</br>2. boş | 1. doğru</br>2. yanlış | 1. ISABETSIZLIK</br>2. ISABET |
+| Önbelleğe alma özelliği etkin yönlendirme kuralı. Uç POP 'ta önbellek isabetsizlik, ancak üst önbellek AÇıSıNı kısmı önbellek okuması | 2 | 1. Edge POP kodu</br>2. üst önbellek POP kodu | 1. üst önbellek POP ana bilgisayar adı</br>2. önbelleğin doldurulmaya yardımcı olan arka uç | 1. doğru</br>2. yanlış | 1. ISABETSIZLIK</br>2. PARTIAL_HIT |
+| Önbelleğe alma özelliği etkin yönlendirme kuralı. Önbellek PARTIAL_HIT uç açılır, ancak üst önbellek AÇıSıNDA önbellek okuması | 2 | 1. Edge POP kodu</br>2. üst önbellek POP kodu | 1. Edge POP kodu</br>2. üst önbellek POP kodu | 1. doğru</br>2. yanlış | 1. PARTIAL_HIT</br>2. ISABET |
+| Önbelleğe alma özelliği etkin yönlendirme kuralı. Hem Edge hem de üst önbellekteki önbellek isabetsizliği | 2 | 1. Edge POP kodu</br>2. üst önbellek POP kodu | 1. Edge POP kodu</br>2. üst önbellek POP kodu | 1. doğru</br>2. yanlış | 1. ISABETSIZLIK</br>2. ISABETSIZLIK |
+
+> [!NOTE]
+> Önbelleğe alma senaryolarında, bir isteğin bazı baytları ön kapı kenarından veya kaynak kalkan önbelleğinden sunulduğunda, bazı baytlar büyük nesneler için kaynaktan sunulduğunda, önbellek durumu değeri partial_hit olur.
+
+Ön kapı, nesne parçalama adlı bir teknik kullanır. Büyük bir dosya istendiğinde, ön kapı dosyanın kaynaktan daha küçük parçalarını alır. Ön kapı POP sunucusu, istenen dosyanın tam veya bayt aralıklarını aldıktan sonra, ön kapı uç sunucusu, dosyayı sıfırdan 8 MB 'lık öbeklerdeki kaynaktan ister.
+
+Öbek, ön kapılı bir kenara ulaştıktan sonra önbelleğe alınır ve anında kullanıcıya sunulur. Ön kapı daha sonra bir sonraki öbeği paralel olarak önceden getirir. Bu önceden getirme, içeriğin kullanıcının önüne bir öbek kalmasını sağlar ve gecikme süresini azaltır. Bu işlem, dosyanın tamamı indirilene kadar devam eder (isteniyorsa), tüm bayt aralıkları kullanılabilir (isteniyorsa) veya istemci bağlantıyı kapatır. Bayt aralığı isteği hakkında daha fazla bilgi için bkz. RFC 7233. Ön kapı, alındıkları tüm öbekleri önbelleğe alır. Tüm dosyanın ön kapı önbelleğinde önbelleğe alınması gerekmez. Dosya veya bayt aralıklarına yönelik istekleri, ön kapı önbelleğinden sunulur. Tüm parçalar ön kapıda önbelleğe alınmamışsa, kaynaktan öbekleri istemek için önceden getirme kullanılır. Bu iyileştirme, kaynak sunucunun, bayt aralığı isteklerini destekleme özelliğine bağlıdır. Kaynak sunucu, bayt aralığı isteklerini desteklemiyorsa, bu iyileştirme etkili olmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

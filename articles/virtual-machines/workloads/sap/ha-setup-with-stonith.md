@@ -14,10 +14,10 @@ ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 0967c5e354c3b0e433753cf89d830dc2101741af
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91363129"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>STONITH kullanarak SUSE’de yüksek kullanılabilirlik ayarlama
@@ -75,7 +75,7 @@ Microsoft hizmet yönetimi bu dizeyi sağlar. Her **iki** düğümdeki dosyayı 
 
 ![Ekran görüntüsü bir düğüm için ınitiatorname değerlerini içeren bir ınitiatorname dosyası gösterir.](media/HowToHLI/HASetupWithStonith/initiatorname.png)
 
-1,2 düğümünü Değiştir */SCC SID.conf*: *Node. Session. timeo. replacement_timeout = 5* ve *Node. Startup = Automatic*olarak ayarlayın. **Her iki** düğümdeki dosyayı değiştirin.
+1,2 */etc/IDL/SCC SID.conf*değiştirme: set *Node.Session.Timeo.replacement_timeout = 5* ve *Node. Startup = Automatic*. **Her iki** düğümdeki dosyayı değiştirin.
 
 1,3 bulma komutunu yürütür, dört oturum gösterir. Her iki düğümde de çalıştırın.
 

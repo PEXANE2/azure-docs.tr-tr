@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 6282e159a537eb3b9bf5d9a44c7498f3f1db0019
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 032f35fcf5ff661f5a0bfb59be191ffae93272a0
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88550733"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944519"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-happyfox"></a>Öğretici: Sonuçişareti ile tümleştirme Azure Active Directory
 
@@ -132,19 +132,19 @@ Azure AD ile çoklu oturum açmayı, bir Diyfox ile yapılandırmak için aşağ
 
 2. **Yönet**' e gidin, **tümleştirmeler** sekmesine tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/happyfox-tutorial/header.png) 
+    !["Tümleştirmeler" sekmesi seçiliyken "Yönet" sayfasını gösteren ekran görüntüsü.](./media/happyfox-tutorial/header.png) 
 
 3. Tümleştirme sekmesinde, **SAML tümleştirme** altında **Yapılandır** ' a tıklayarak çoklu oturum açma ayarlarını açın.
 
-    ![Tek Sign-On yapılandırma](./media/happyfox-tutorial/configure.png)
+    !["Yapılandır" eylemi seçiliyken "S A M L tümleştirmesi" ayarını gösteren ekran görüntüsü.](./media/happyfox-tutorial/configure.png)
 
 4. SAML yapılandırması bölümünde, Azure portal ' den **SSO hedef URL** metin kutusuna kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    ![Tek Sign-On yapılandırma](./media/happyfox-tutorial/targeturl.png)
+    !["S S O Target U R L" metin kutusu vurgulanmış şekilde "S A M L yapılandırma" bölümünü gösteren ekran görüntüsü.](./media/happyfox-tutorial/targeturl.png)
 
 5. Not defteri 'nde Azure portal indirilen sertifikayı açın ve içerik **IDP Signature** bölümüne yapıştırın.
 
-    ![Tek Sign-On yapılandırma](./media/happyfox-tutorial/cert.png)
+    !["I d P Imzası" bölümünün vurgulandığını gösteren ekran görüntüsü.](./media/happyfox-tutorial/cert.png)
 
 6. **Ayarları Kaydet** düğmesine tıklayın.
 
@@ -173,7 +173,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

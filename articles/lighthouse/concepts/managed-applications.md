@@ -3,12 +3,12 @@ title: Azure Lighthouse ve Azure yönetilen uygulamaları
 description: Azure 'un birlikte kullanımı ve Azure tarafından yönetilen uygulamaların farklı senaryolara nasıl yardımcı olduğunu ve bunların birlikte nasıl kullanılabileceğini anlayın.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7fd8801fc714a0f0c245d27462e368602dc41eb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 078361ba3cff80a5fff03e3d9ca767afcc3ca029
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89483856"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970767"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse ve Azure yönetilen uygulamaları
 
@@ -35,7 +35,7 @@ Yönetilen bir uygulamada, uygulama tarafından kullanılan kaynaklar birlikte p
 
 Yönetilen uygulamalar [özelleştirilmiş Azure Portal deneyimlerini](../../azure-resource-manager/managed-applications/concepts-view-definition.md) ve [özel sağlayıcılarla tümleştirmeyi](../../azure-resource-manager/managed-applications/tutorial-create-managed-app-with-custom-provider.md)destekler. Bu seçenekler daha özelleştirilmiş ve tümleşik bir deneyim sunmak için kullanılabilir ve müşterilerin bazı yönetim görevlerini gerçekleştirmesini kolaylaştırır.
 
-Yönetilen uygulamalar, belirli bir müşterinin kullanımı için özel bir teklif olarak veya birden fazla müşterinin satın abileceği kamu teklifleri olarak [Azure Marketi 'nde yayımlanabilir](../../azure-resource-manager/managed-applications/publish-marketplace-app.md). Ayrıca, [yönetilen uygulamaları hizmet kataloğunuza yayımlayarak](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md)kuruluşunuzdaki kullanıcılara da teslim edilebilir. Hem hizmet kataloğunu hem de Market örneklerini, [Müşteri kullanımı atışlarını](../../marketplace/azure-partner-customer-usage-attribution.md)Izlemek Için ticari Market ortağının benzersiz tanımlayıcısını içerebilen ARM şablonları kullanarak dağıtabilirsiniz.
+Yönetilen uygulamalar, belirli bir müşterinin kullanımı için özel bir teklif olarak veya birden fazla müşterinin satın abileceği kamu teklifleri olarak [Azure Marketi 'nde yayımlanabilir](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md). Ayrıca, [yönetilen uygulamaları hizmet kataloğunuza yayımlayarak](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md)kuruluşunuzdaki kullanıcılara da teslim edilebilir. Hem hizmet kataloğunu hem de Market örneklerini, [Müşteri kullanımı atışlarını](../../marketplace/azure-partner-customer-usage-attribution.md)Izlemek Için ticari Market ortağının benzersiz tanımlayıcısını içerebilen ARM şablonları kullanarak dağıtabilirsiniz.
 
 Azure yönetilen uygulamalar genellikle, hizmet sağlayıcısı tarafından tam olarak yönetilen bir anahtar çözümü aracılığıyla elde edilelebilecek belirli bir müşteri ihtiyacı için kullanılır.
 

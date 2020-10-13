@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
 ms.openlocfilehash: 52404aa1514dc3189305117181408e25e233fce8
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362410"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio (klasik) Web Hizmetleri: dağıtım ve tüketim
@@ -89,7 +89,7 @@ Ek ayrıntılar için aşağıdaki makalelere ve örnek koda bakın:
 
 ### <a name="from-the-azure-machine-learning-web-services-ui-testing"></a>Azure Machine Learning Web Hizmetleri kullanıcı arabiriminden (test)
 
-Web hizmetinizi Azure Machine Learning Web Hizmetleri portalından test edebilirsiniz. Bu, Istek-yanıt hizmeti (RR) ve toplu yürütme hizmeti (BES) arabirimlerinin test edilmesini içerir.
+Web hizmetinizi Azure Machine Learning Web Hizmetleri portalından test edebilirsiniz. Bu, Request-Response hizmeti (RR) ve toplu yürütme hizmeti (BES) arabirimlerinin test edilmesini içerir.
 
 * [Yeni bir web hizmeti dağıtma](deploy-a-machine-learning-web-service.md)
 * [Azure Machine Learning web hizmeti dağıtma](deploy-a-machine-learning-web-service.md)
