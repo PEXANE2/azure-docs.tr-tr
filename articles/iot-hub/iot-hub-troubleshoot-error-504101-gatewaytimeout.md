@@ -10,10 +10,10 @@ ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: amqp
 ms.openlocfilehash: 373acc30ed652a7f540e840dfad5eeeda65ca179
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81759560"
 ---
 # <a name="504101-gatewaytimeout"></a>504101 GatewayTimeout
@@ -36,10 +36,10 @@ Azure IoT C# SDK 'SıNıN (<1.19.0) önceki bir sürümünü kullanırken, bir h
 
 ## <a name="solution"></a>Çözüm
 
-### <a name="solution-1"></a>Çözüm 1
+### <a name="solution-1"></a>1\. Çözüm
 
 Yeniden deneme sorunu.
 
-### <a name="solution-2"></a>Çözüm 2
+### <a name="solution-2"></a>2\. Çözüm
 
 Azure ıOT C# SDK 'SıNıN en son sürümüne yükseltin.

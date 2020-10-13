@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: a81eff1dcf48996c319933aa4dd46170043b943b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83664938"
 ---
 # <a name="interactive-query-cluster-sizing-guide-in-azure-hdinsight"></a>Azure HDInsight 'ta etkileşimli sorgu kümesi boyutlandırma Kılavuzu
@@ -75,13 +75,13 @@ Varsayılan HDInsight kümesinde dört çalışan düğümünde çalışan dört
 
 ### <a name="tezamresourcememorymb-hivetezcontainersize"></a>Tez. har. Resource. Memory. MB, Hive. tez. Container. size
 
-`tez.am.resource.memory.mb`Tez uygulama ana boyutunu tanımlar.  
+`tez.am.resource.memory.mb` Tez uygulama ana boyutunu tanımlar.  
 Önerilen değer **4096 MB**'dir.
 
-`hive.tez.container.size`Tez kapsayıcısı için verilen bellek miktarını tanımlar. Bu değer, YARN en az kapsayıcı boyutu ( `yarn.scheduler.minimum-allocation-mb` ) Ile Yarn maksimum kapsayıcı boyutu () arasında ayarlanmalıdır `yarn.scheduler.maximum-allocation-mb` .  
+`hive.tez.container.size` Tez kapsayıcısı için verilen bellek miktarını tanımlar. Bu değer, YARN en az kapsayıcı boyutu ( `yarn.scheduler.minimum-allocation-mb` ) Ile Yarn maksimum kapsayıcı boyutu () arasında ayarlanmalıdır `yarn.scheduler.maximum-allocation-mb` .  
 **4096 MB**olarak ayarlanması önerilir.  
 
-Genel bir kural, her kapsayıcı için bir işlemciyi göz önünde bulundurarak, işlemci başına bellek miktarından daha az tutulacağız. `Rreserve`LLAP Daemon için bellek vermeden önce bir düğümdeki tez AMs sayısı için bellek. Örneğin, düğüm başına iki adet tez AMs (her biri 4 GB) kullanıyorsanız, iki tez AMs için, LLAP arka plan programı 8 GB için 82 GB 'ye 90 GB verin.
+Genel bir kural, her kapsayıcı için bir işlemciyi göz önünde bulundurarak, işlemci başına bellek miktarından daha az tutulacağız. `Rreserve` LLAP Daemon için bellek vermeden önce bir düğümdeki tez AMs sayısı için bellek. Örneğin, düğüm başına iki adet tez AMs (her biri 4 GB) kullanıyorsanız, iki tez AMs için, LLAP arka plan programı 8 GB için 82 GB 'ye 90 GB verin.
 
 ### <a name="yarnschedulercapacityrootllapcapacity"></a>Yarn. Scheduler. Capacity. root. LLAP. Capacity
 

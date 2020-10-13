@@ -10,10 +10,10 @@ ms.date: 08/29/2017
 ms.author: robinsh
 ms.custom: amqp
 ms.openlocfilehash: 91527b5f2159a336e8339c6a128e8d61965292a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81732611"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>C için Azure IoT cihaz SDK 'Sı – IoTHubClient hakkında daha fazla bilgi
@@ -256,7 +256,7 @@ Bu daha ayrıntılı başlatma yöntemi yerine **Iothubclient \_ createfromconne
 
 ## <a name="configuration-options"></a>Yapılandırma seçenekleri
 
-Şimdiye kadar, **Iothubclient** kitaplığı 'nın çalışma şekli hakkında açıklanan her şey, varsayılan davranışını yansıtır. Ancak, kitaplığın çalışma biçimini değiştirmek için ayarlayabileceğiniz birkaç seçenek vardır. Bu, **ıothubclient \_ ll \_ SetOption** API 'sinden yararlanarak gerçekleştirilir. Şu örneği göz önünde bulundurun:
+Şimdiye kadar, **Iothubclient** kitaplığı 'nın çalışma şekli hakkında açıklanan her şey, varsayılan davranışını yansıtır. Ancak, kitaplığın çalışma biçimini değiştirmek için ayarlayabileceğiniz birkaç seçenek vardır. Bu, **ıothubclient \_ ll \_ SetOption** API 'sinden yararlanarak gerçekleştirilir. Bu örneği ele alalım:
 
 ```C
 unsigned int timeout = 30000;

@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
 ms.openlocfilehash: 80f0d29de6b3013ad02ed1a5d34bebdf81a8766b
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91628222"
 ---
 # <a name="spatial-analysis-operations"></a>Uzamsal analiz işlemleri
 
-Uzamsal analiz, kamera cihazlarından gerçek zamanlı akış videosunun analizine izin vermez. Yapılandırdığınız her kamera cihazında, uzamsal analize yönelik işlemler, Azure IoT Hub örneğinizle gönderilen JSON iletilerinin çıktı akışını oluşturacaktır. 
+Uzamsal analiz kamera cihazlarından gelen gerçek zamanlı akış videosunun analizine olanak sağlar. Yapılandırdığınız her kamera cihazı için, uzamsal analize yönelik tüm operasyonlar Azure IoT Hub örneğinize gönderilen JSON iletilerinden oluşan bir çıkış akışı oluşturur. 
 
 Uzamsal analiz kapsayıcısı aşağıdaki işlemleri uygular:
 
@@ -328,7 +328,7 @@ Bu işlem tarafından bir olay çıkışı için örnek JSON.
 | SourceInfo alan adı | Tür| Description|
 |---------|---------|---------|
 | `id` | dize| Kamera KIMLIĞI|
-| `timestamp` | tarih| JSON yükünün ne zaman yayıldığını UTC tarihi|
+| `timestamp` | date| JSON yükünün ne zaman yayıldığını UTC tarihi|
 | `width` | int | Video çerçevesi genişliği|
 | `height` | int | Video çerçeve yüksekliği|
 | `frameId` | int | Çerçeve tanımlayıcısı|
@@ -341,7 +341,7 @@ Bu işlem tarafından bir olay çıkışı için örnek JSON.
 | SourceInfo alan adı | Tür| Description|
 |---------|---------|---------|
 | `id` | dize| Kamera KIMLIĞI|
-| `timestamp` | tarih| JSON yükünün ne zaman yayıldığını UTC tarihi|
+| `timestamp` | date| JSON yükünün ne zaman yayıldığını UTC tarihi|
 | `width` | int | Video çerçevesi genişliği|
 | `height` | int | Video çerçeve yüksekliği|
 | `frameId` | int | Çerçeve tanımlayıcısı|
@@ -421,7 +421,7 @@ Bu işlem tarafından algılanan algılamalar için örnek JSON.
 | SourceInfo alan adı | Tür| Description|
 |---------|---------|---------|
 | `id` | dize| Kamera KIMLIĞI|
-| `timestamp` | tarih| JSON yükünün ne zaman yayıldığını UTC tarihi|
+| `timestamp` | date| JSON yükünün ne zaman yayıldığını UTC tarihi|
 | `width` | int | Video çerçevesi genişliği|
 | `height` | int | Video çerçeve yüksekliği|
 | `frameId` | int | Çerçeve tanımlayıcısı|
@@ -623,7 +623,7 @@ Bu işlem tarafından algılanan algılamalar için örnek JSON.
 | SourceInfo alan adı | Tür| Description|
 |---------|---------|---------|
 | `id` | dize| Kamera KIMLIĞI|
-| `timestamp` | tarih| JSON yükünün ne zaman yayıldığını UTC tarihi|
+| `timestamp` | date| JSON yükünün ne zaman yayıldığını UTC tarihi|
 | `width` | int | Video çerçevesi genişliği|
 | `height` | int | Video çerçeve yüksekliği|
 | `frameId` | int | Çerçeve tanımlayıcısı|
