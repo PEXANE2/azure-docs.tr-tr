@@ -7,13 +7,13 @@ author: derek1ee
 ms.author: deli
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 10/08/2020
-ms.openlocfilehash: 4715d7173dd959d12350229e457717c908a83756
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.date: 01/13/2019
+ms.openlocfilehash: 65b6b1f783dbabc9ad2e1a4bf79008240d1b2726
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873243"
+ms.locfileid: "89659917"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Azure Logic Apps ile şirket içi dosya sistemlerine bağlanma
 
@@ -22,9 +22,6 @@ Azure Logic Apps ve dosya sistemi Bağlayıcısı ile, bir şirket içi dosya pa
 - Dosyaları oluşturun, alın, ekleyin, güncelleştirin ve silin.
 - Klasörlerdeki dosyaları veya kök klasörleri listeleyin.
 - Dosya içeriğini ve meta verileri alın.
-
-  > [!IMPORTANT]
-  > Dosya sistemi Bağlayıcısı Şu anda yalnızca Windows işletim sistemlerindeki Windows dosya sistemlerini desteklemektedir.  
 
 Bu makalede, bir şirket içi dosya sistemine bu örnek senaryo tarafından açıklandığı şekilde nasıl bağlanabilmeniz gösterilmektedir: Dropbox 'a yüklenen bir dosyayı bir dosya paylaşımında kopyalama ve sonra bir e-posta gönderme. Mantıksal uygulamalar, şirket içi sistemlere güvenli bir şekilde bağlanmak ve erişmek için şirket [içi veri ağ geçidini](../logic-apps/logic-apps-gateway-connection.md)kullanır. Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps? ne olduğunu](../logic-apps/logic-apps-overview.md)gözden geçirin. Bağlayıcıya özgü teknik bilgiler için, bkz. [dosya sistemi Bağlayıcısı başvurusu](/connectors/filesystem/).
 

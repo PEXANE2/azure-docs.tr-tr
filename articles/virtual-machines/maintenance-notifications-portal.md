@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
 ms.openlocfilehash: 09693a09e35503a2a221f8de1903b4218b8766f4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87082452"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>Portalı kullanarak planlı bakım bildirimlerini işleme
@@ -22,7 +22,7 @@ Planlı bir [bakım](maintenance-notifications.md) dalgası zamanlandıktan sonr
 
 Azure portal kullanabilir ve bakım için zamanlanmış VM 'Ler için arama yapabilirsiniz.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 2. Sol gezinti bölmesinde, **sanal makineler**' e tıklayın.
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 49e6df417190071e06582be400575e1880f2543a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82692295"
 ---
 # <a name="authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Active Directory kullanarak Azure Data Lake Storage 1. kimlik doğrulaması
@@ -40,7 +40,7 @@ Aşağıdaki tabloda, son kullanıcı ve hizmetten hizmete kimlik doğrulama mek
 <i>* <b>✔ \* </b> Simgesine tıklayın. Bu bir bağlantıdır.</i><br>
 <i>* * MFA Multi-Factor Authentication 'ı temsil eder</i>
 
-Kimlik doğrulaması için Azure Active Directory kullanma hakkında daha fazla bilgi için bkz. [Azure Active Directory Için kimlik doğrulama senaryoları](../active-directory/develop/authentication-scenarios.md) .
+Kimlik doğrulaması için Azure Active Directory kullanma hakkında daha fazla bilgi için bkz.  [Azure Active Directory Için kimlik doğrulama senaryoları](../active-directory/develop/authentication-scenarios.md) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

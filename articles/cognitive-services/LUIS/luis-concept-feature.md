@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 08ab71375171d4bb4167c725bc7118bec2e1ebfa
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91372033"
 ---
 # <a name="machine-learning-features"></a>Makine öğrenimi özellikleri
@@ -174,7 +174,7 @@ Bir [liste varlığı](reference-entity-list.md) , kendi eş anlamlılarıyla bi
 
 |Kurallı ad|Eş anlamlılar|
 |--|--|
-|Birleşik Devletler|ABD<br>U. S. A<br>ABD<br>USA<br>0|
+|Birleşik Devletler|ABD<br>U. S. A<br>ABD<br>ABD<br>0|
 
 Sohbet bot gibi bir istemci uygulaması, yardım almak için bir takip sorusu isteyebilir. Bu, müşterinin ülke/bölge seçiminin sınırlı ve *gerekli*olduğunu anlamalarına yardımcı olur.
 
@@ -226,7 +226,7 @@ Makine öğrenimi varlığı oluşturduktan sonra, bir amaca örnek eklemek ve a
 
 Bilet kayıt örneği için, örnekteki örnekleri `TicketBooking` varlıkla ve metinde bulunan tüm alt varlıklarla birlikte etiketleyin.
 
-:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity.png" alt-text="Etiket örnek utbotları":::
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity.png" alt-text="Bilet kayıt varlığı şeması":::
 
 ### <a name="example-pizza-ordering-app"></a>Örnek: Pizza sıralama uygulaması
 
@@ -234,18 +234,18 @@ Bilet kayıt örneği için, örnekteki örnekleri `TicketBooking` varlıkla ve 
 
 Bu örnekteki makine öğrenimi varlığı, iç içe geçmiş alt varlıklar, tümcecik listeleri, önceden oluşturulmuş varlıklar ve özel varlıklarla daha karmaşıktır.
 
-:::image type="content" source="media/luis-concept-features/pizza-order-entity.png" alt-text="Pizza sırası varlık şeması":::
+:::image type="content" source="media/luis-concept-features/pizza-order-entity.png" alt-text="Bilet kayıt varlığı şeması":::
 
 Bu örnek, alt varlık düzeyinde ve alt varlık düzeyinin alt kısmındaki özellikleri kullanır. Bu düzey, özellik olarak hangi tür ifade listesi veya model, varlık tasarımınızın önemli bir parçasıdır.
 
 Alt varlıklarda varlığı algılamaya yardımcı olan özellikler olarak birçok ifade listesi bulunabilir, ancak her alt varlık bir özellik olarak yalnızca bir model içerir. Bu [pizza](https://github.com/Azure/pizza_luis_bot/blob/master/CognitiveModels/MicrosoftPizza.json)uygulamasında bu modeller birincil olarak listeler.
 
-:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity-pizza.png" alt-text="Etiketlenmiş örnek utbotları ile pizza sırası amacı":::
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity-pizza.png" alt-text="Bilet kayıt varlığı şeması":::
 
 Doğru etiketlenmiş örnek, varlıkların iç içe geçmiş olduğunu göstermek için bir şekilde görüntülenir. 
 
 
-## <a name="best-practices"></a>En iyi uygulamalar
+## <a name="best-practices"></a>Önerilen uygulamalar
 
 [En iyi yöntemleri](luis-concept-best-practices.md)öğrenin.
 

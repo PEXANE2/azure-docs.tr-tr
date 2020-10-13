@@ -12,10 +12,10 @@ ms.date: 07/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: c0d36ec5020f595d8a61899ddc8f8b9c282bad19
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328420"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>Mevcut modelinize Azure Machine Learning dağıtın
@@ -25,7 +25,7 @@ Bu makalede, Azure Machine Learning dışında eğitilen bir makine öğrenimi m
 
 Bu makaledeki kavramlar ve terimler hakkında daha fazla bilgi için bkz. [Machine Learning modellerini yönetme, dağıtma ve izleme](concept-model-management-and-deployment.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md)
   + Python örnekleri, `ws` değişkenin Azure Machine Learning çalışma alanınıza ayarlandığını varsayar. Çalışma alanına bağlanma hakkında daha fazla bilgi için lütfen [Python için Azure MACHINE LEARNING SDK belgelerine](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true#&preserve-view=trueworkspace)başvurun.
@@ -100,7 +100,7 @@ inference_config = InferenceConfig(entry_script="score.py",
                                    environment=myenv)
 ```
 
-Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 + [Ortamları kullanma](how-to-use-environments.md).
 + [Inenceconfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py&preserve-view=true) başvurusu.
@@ -220,7 +220,7 @@ Giriş betikleri hakkında daha fazla bilgi için bkz. [Azure Machine Learning m
 
 ## <a name="define-deployment"></a>Dağıtımı tanımla
 
-[WebService](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice?view=azure-ml-py&preserve-view=true) paketi, dağıtım için kullanılan sınıfları içerir. Kullandığınız sınıf, modelin dağıtıldığı yeri belirler. Örneğin, Azure Kubernetes hizmetinde bir Web hizmeti olarak dağıtmak için, dağıtım yapılandırmasını oluşturmak üzere [Akswebservice. deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) kullanın.
+[WebService](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice?view=azure-ml-py&preserve-view=true) paketi, dağıtım için kullanılan sınıfları içerir. Kullandığınız sınıf, modelin dağıtıldığı yeri belirler. Örneğin, Azure Kubernetes hizmetinde bir Web hizmeti olarak dağıtmak için, dağıtım yapılandırmasını oluşturmak üzere [AksWebService.deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) kullanın.
 
 Aşağıdaki Python kodu bir yerel dağıtım için dağıtım yapılandırmasını tanımlar. Bu yapılandırma, modeli yerel bilgisayarınıza bir Web hizmeti olarak dağıtır.
 
@@ -233,7 +233,7 @@ from azureml.core.webservice import LocalWebservice
 deployment_config = LocalWebservice.deploy_configuration()
 ```
 
-Daha fazla bilgi için bkz. [Localwebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.localwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-port-none-) başvurusu.
+Daha fazla bilgi için [LocalWebservice.deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.localwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-port-none-) başvurusuna bakın.
 
 CLı, dağıtım yapılandırmasını bir YAML dosyasından yükler:
 

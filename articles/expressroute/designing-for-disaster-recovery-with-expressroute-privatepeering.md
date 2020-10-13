@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/25/2019
 ms.author: duau
 ms.openlocfilehash: 0c85272989a362da77b01af7bb1fe968516e53b6
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89398011"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>ExpressRoute özel eşlemesi ile olağanüstü durum kurtarma için tasarlama
@@ -68,7 +68,7 @@ Aşağıdaki tekniklerden birini kullanarak bir ExpressRoute devresini tercih et
 
 Aşağıdaki diyagramda, daha belirgin yol tanıtımı kullanılarak ExpressRoute yol seçiminin etkili bir şekilde kullanılması gösterilmektedir. Gösterilen örnekte, contoso şirket içi/24 IP aralığı, tercih edilen yol (ExpressRoute 1) aracılığıyla iki/25 adres aralığı ve tek yönlü yol (ExpressRoute 2) aracılığıyla/24 olarak tanıtıldığında.
 
-[![2]][2]
+[![iki]][2]
 
 /25,/24 ile karşılaştırıldığında daha belirgin olduğundan, Azure, 10.1.11.0/24 ' e gidecek trafiği normal durumda ExpressRoute 1 üzerinden gönderir. ExpressRoute 1 bağlantılarının her ikisi de kapalıysa, VNet 10.1.11.0/24 yol tanıtımını yalnızca ExpressRoute 2 aracılığıyla görebilir; Bu nedenle, bu hata durumunda bekleme devresi kullanılır.
 
@@ -76,7 +76,7 @@ Aşağıdaki diyagramda, daha belirgin yol tanıtımı kullanılarak ExpressRout
 
 Aşağıdaki ekran görüntüsünde, Azure portal aracılığıyla bir ExpressRoute bağlantısının ağırlığını yapılandırma gösterilmektedir.
 
-[![3]][3]
+[![03]][3]
 
 Aşağıdaki diyagramda bağlantı ağırlığı kullanılarak ExpressRoute yol seçiminin etkili bir şekilde kullanılması gösterilmektedir. Varsayılan bağlantı ağırlığı 0 ' dır. Aşağıdaki örnekte, ExpressRoute 1 bağlantısının ağırlığı 100 olarak yapılandırılır. VNet birden fazla ExpressRoute bağlantı hattı üzerinden tanıtılan bir rota önekini aldığında, VNet en yüksek ağırlığa sahip bağlantıyı tercih eder.
 
@@ -124,7 +124,7 @@ Aşağıdaki diyagramda Senaryo 1 gösterilmektedir. Diyagramda yeşil çizgiler
 
 Senaryo 2 aşağıdaki diyagramda gösterilmiştir. Diyagramda yeşil çizgiler, VNet1 ve şirket içi ağlar arasındaki trafik akışı için yolları gösterir. Mavi çizgiler, VNet2 ve şirket içi ağlar arasındaki trafik akışı için yolları gösterir. Düzenli durumda (diyagramdaki düz satırlarda), sanal ağlar ve şirket içi konumlar arasındaki tüm trafik, en bölüm için Microsoft omurga aracılığıyla akar ve şirket içi konumlar arasındaki bağlantı, yalnızca hata durumunda (diyagramdaki noktalı çizgiler) bir ExpressRoute üzerinden akar.
 
-[![9]][9]
+[![tuşlarına]][9]
 
 Çözüm aşağıdaki diyagramda gösterilmiştir. Gösterildiği gibi, VNET yol seçimini etkilemek için, daha belirgin yol (seçenek 1) veya as-Path önüne (seçenek 2) kullanarak senaryoyu mimARDA dağıtabilirsiniz. Azure bağlı trafiği için şirket içi ağ yolu seçimini etkilemek için, şirket içi konum arasındaki iç yönü daha az tercih edilen şekilde yapılandırmanız gerekir. Bağlı olan bağlantıyı, şirket içi ağ içinde kullanılan yönlendirme protokolüne bağlı olarak tercih ettiğiniz şekilde yapılandırırsınız. Yerel tercihi IOP veya ölçümle (OSPF veya SIS) ile birlikte kullanabilirsiniz.
 

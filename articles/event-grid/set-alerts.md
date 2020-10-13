@@ -4,10 +4,10 @@ description: Bu makalede, Azure Event Grid ölçümleri ve etkinlik günlüğü 
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 615ebef749be49822a09470eb0d47d8eb31b9a5a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86119149"
 ---
 # <a name="set-alerts-on-azure-event-grid-metrics-and-activity-logs"></a>Azure Event Grid ölçümleri ve etkinlik günlüklerinde uyarı ayarlama
@@ -21,23 +21,23 @@ Aşağıdaki yordamda, özel bir konu için **kullanılmayan olaylar** ölçüm�
     :::image type="content" source="./media/monitor-event-delivery/new-alert-button.png" alt-text="Uyarılar sayfası-yeni uyarı kuralı düğmesi":::
 2. **Uyarı kuralı oluştur** sayfasında, konunun kaynak için seçildiğini doğrulayın. Sonra **Koşul Seç**' e tıklayın. 
 
-    :::image type="content" source="./media/monitor-event-delivery/alert-select-condition.png" alt-text="Uyarılar sayfası-koşul Seç":::    
+    :::image type="content" source="./media/monitor-event-delivery/alert-select-condition.png" alt-text="Uyarılar sayfası-yeni uyarı kuralı düğmesi":::    
 3. **Sinyal mantığını Yapılandır** sayfasında, aşağıdaki adımları izleyin:
     1. Bir ölçüm veya etkinlik günlüğü girişi seçin. Bu örnekte, **atılacak olaylar** seçilidir. 
 
-        :::image type="content" source="./media/monitor-event-delivery/select-dead-lettered-events.png" alt-text="Kullanılmayan olayları seçin":::        
+        :::image type="content" source="./media/monitor-event-delivery/select-dead-lettered-events.png" alt-text="Uyarılar sayfası-yeni uyarı kuralı düğmesi":::        
     2. Boyutları seçin (isteğe bağlı). 
         
-        :::image type="content" source="./media/monitor-event-delivery/configure-signal-logic.png" alt-text="Sinyal mantığını yapılandırma":::        
+        :::image type="content" source="./media/monitor-event-delivery/configure-signal-logic.png" alt-text="Uyarılar sayfası-yeni uyarı kuralı düğmesi":::        
 
         > [!NOTE]
         > **+** Olayları filtrelemek için bir olay abonelik adı belirtmek üzere **eventsubscriptionname** düğmesini seçebilirsiniz. 
     3. Aşağı kaydırın. **Uyarı mantığı** bölümünde bir **operatör**, **toplama türü**seçin ve bir **eşik değeri**girin ve **bitti**' yi seçin. Bu örnekte, toplam ölü olay sayısı 10 ' dan büyük olduğunda bir uyarı tetiklenir. 
     
-        :::image type="content" source="./media/monitor-event-delivery/alert-logic.png" alt-text="Uyarı mantığı":::                
+        :::image type="content" source="./media/monitor-event-delivery/alert-logic.png" alt-text="Uyarılar sayfası-yeni uyarı kuralı düğmesi":::                
 4. **Uyarı kuralı oluştur** sayfasında, **eylem grubu seç**' e tıklayın.
 
-    :::image type="content" source="./media/monitor-event-delivery/select-action-group-button.png" alt-text="Eylem grubu Seç düğmesi":::
+    :::image type="content" source="./media/monitor-event-delivery/select-action-group-button.png" alt-text="Uyarılar sayfası-yeni uyarı kuralı düğmesi":::
 5. Yeni bir eylem grubu oluşturmak için araç çubuğunda **eylem grubu oluştur** ' u seçin. Ayrıca var olan bir eylem grubunu seçebilirsiniz.        
 6. **Eylem grubu Ekle** sayfasında, şu adımları izleyin:
     1. **Eylem grubu için bir ad**girin.
@@ -48,26 +48,26 @@ Aşağıdaki yordamda, özel bir konu için **kullanılmayan olaylar** ölçüm�
     1. **Eylem türünü**seçin. Bu örnekte, **e-posta Azure Resource Manager rolü** , özellikle **sahipler** rolü seçilidir. 
     1. Sayfayı kapatmak için **Tamam ' ı** seçin. 
     
-        :::image type="content" source="./media/monitor-event-delivery/add-action-group-page.png" alt-text="Eylem grubu Ekle sayfası":::                   
+        :::image type="content" source="./media/monitor-event-delivery/add-action-group-page.png" alt-text="Uyarılar sayfası-yeni uyarı kuralı düğmesi":::                   
 7. **Uyarı kuralı oluştur** sayfasına dönün, uyarı kuralı için bir ad girin ve ardından **Uyarı kuralı oluştur**' u seçin.
 
-    :::image type="content" source="./media/monitor-event-delivery/alert-rule-name.png" alt-text="Uyarı kuralı adı":::  
+    :::image type="content" source="./media/monitor-event-delivery/alert-rule-name.png" alt-text="Uyarılar sayfası-yeni uyarı kuralı düğmesi":::  
 8. Artık, konunun **Uyarılar** sayfasında uyarı kurallarını yönetmek için henüz uyarı yoksa bir bağlantı görürsünüz. Uyarılar varsa, araç çubuğunda **Yönetici uyarı kuralları** ' nı seçin.  
 
-    :::image type="content" source="./media/monitor-event-delivery/manage-alert-rules.png" alt-text="Uyarıları yönetme":::
+    :::image type="content" source="./media/monitor-event-delivery/manage-alert-rules.png" alt-text="Uyarılar sayfası-yeni uyarı kuralı düğmesi":::
 
 ## <a name="create-alerts-on-other-metrics-or-activity-log-operations"></a>Diğer ölçümler veya etkinlik günlüğü işlemlerinde uyarı oluşturma
 Önceki bölümde, kullanılmayan olaylarda uyarı oluşturma konusu gösterilmektedir. Diğer ölçümler veya etkinlik günlüğü işlemlerinde uyarı oluşturma adımları benzerdir. 
 
 Örneğin, bir teslim hatası olayında uyarı oluşturmak için **sinyal mantığını Yapılandır** sayfasında **teslim başarısız olaylar** ' ı seçin. 
 
-:::image type="content" source="./media/set-alerts/delivery-failed-events.png" alt-text="Teslim başarısız olayları seçin":::
+:::image type="content" source="./media/set-alerts/delivery-failed-events.png" alt-text="Uyarılar sayfası-yeni uyarı kuralı düğmesi":::
 
 
 ## <a name="create-alerts-using-the-metrics-page"></a>Ölçümler sayfasını kullanarak uyarı oluşturma
 Ayrıca **ölçümler** sayfasını kullanarak da uyarılar oluşturabilirsiniz. Adımlar benzerdir. Sistem konuları için, **Uyarılar** sayfası kullanılabilir olmadığından yalnızca uyarılar oluşturmak üzere **ölçümler** sayfasını kullanabilirsiniz. 
 
-:::image type="content" source="./media/monitor-event-delivery/metric-page-create-alert-button.png" alt-text="Ölçümler sayfası-uyarı oluştur düğmesi":::   
+:::image type="content" source="./media/monitor-event-delivery/metric-page-create-alert-button.png" alt-text="Uyarılar sayfası-yeni uyarı kuralı düğmesi":::   
     
 
 > [!NOTE]

@@ -8,10 +8,10 @@ ms.date: 08/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: b99ac957c9c5030b484b244223847be4aa53a39d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88749093"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services’ta desteklenen veri kaynakları
@@ -23,12 +23,12 @@ Visual Studio 'da Analysis Services projelerine sahip veri veya tablo Içeri akt
 |Veri kaynağı  |Bellek içi  |DirectQuery  |Notlar |
 |---------|---------|---------|---------|
 |Azure SQL Veritabanı      |   Evet      |    Evet      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
-|Azure SYNAPSE Analytics (SQL DW)      |   Evet      |   Evet       |<sup>[2](#azprovider)</sup>|
+|Azure Synapse Analytics (SQL DW)      |   Evet      |   Evet       |<sup>[iki](#azprovider)</sup>|
 |Azure Blob Depolama Alanı      |   Evet       |    Hayır      | <sup>[1](#tab1400a)</sup> |
 |Azure Tablo Depolama     |   Evet       |    Hayır      | <sup>[1](#tab1400a)</sup>|
 |Azure Cosmos DB     |  Evet        |  Hayır        |<sup>[1](#tab1400a)</sup> |
-|Azure Data Lake Store Gen1      |   Evet       |    Hayır      |<sup>[1](#tab1400a)</sup> |
-|Azure Data Lake Store Gen2       |   Evet       |    Hayır      |<sup>[1](#tab1400a)</sup>, <sup> [5](#gen2)</sup>|
+|Azure Data Lake Storage 1. Nesil      |   Evet       |    Hayır      |<sup>[1](#tab1400a)</sup> |
+|Azure Data Lake Storage 2. Nesil       |   Evet       |    Hayır      |<sup>[1](#tab1400a)</sup>, <sup> [5](#gen2)</sup>|
 |Azure HDInsight.    |     Evet     |   Hayır       |<sup>[1](#tab1400a)</sup> |
 |Azure HDInsight Spark     |   Evet       |   Hayır       |<sup>[1](#tab1400a)</sup>, <sup> [4](#databricks)</sup>|
 ||||
@@ -61,7 +61,7 @@ yalnızca <a name="tab1400a">1</a> tablolu 1400 ve daha yüksek modeller.
 |OData Akışı      |  Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
 |ODBC sorgusu     | Evet | Hayır |  |
 |OLE DB     |   Evet | Hayır |  |
-|Oracle  | Evet  |Evet  | <sup>[9](#oracle)</sup> |
+|Oracle  | Evet  |Evet  | <sup>[tuşlarına](#oracle)</sup> |
 |PostgreSQL Veritabanı   | Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
 |Salesforce Nesneleri|  Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
 |Salesforce Raporları |Evet | Hayır | <sup>[inç](#tab1400b)</sup> |

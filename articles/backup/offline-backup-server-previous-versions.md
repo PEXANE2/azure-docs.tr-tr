@@ -4,10 +4,10 @@ description: Azure Backup, Azure Içeri/dışarı aktarma hizmetini kullanarak a
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.openlocfilehash: b747fd3c682dc1caf7312ba7279470a1e6b38bd5
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88890102"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme iş akışı (önceki sürümler)
@@ -87,7 +87,7 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
 * *AzureOfflineBackupCertGen.exe* aracı bir *OfflineApplicationParams.xml* dosyası oluşturur. Bu dosyayı MABS veya DPM ile sunucuya kopyalayın.
 * DPM örneğine veya Azure Backup sunucusuna [en son Mars aracısını](https://aka.ms/azurebackup_agent) yükler.
 * Sunucuyu Azure 'a kaydedin.
-* Aşağıdaki komutu çalıştırın:
+* Şu komutu çalıştırın:
 
     ```cmd
     AzureOfflineBackupCertGen.exe AddRegistryEntries SubscriptionId:<subscriptionid> xmlfilepath:<path of the OfflineApplicationParams.xml file>  storageaccountname:<storageaccountname to be used for offline backup>
@@ -99,7 +99,7 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
 
 Çevrimdışı yedekleme sertifikasını çevrimdışı yedekleme için daha önce oluşturulmuş bir Azure Active Directory uygulamasına el ile yüklemek için aşağıdaki adımları izleyin.
 
-1. Azure portalında oturum açın.
+1. Azure Portal’da oturum açın.
 1. **Azure Active Directory**  >  **uygulama kayıtları**gidin.
 1. Sahip olan **uygulamalar** sekmesinde görünen ad biçimiyle bir uygulama bulun `AzureOfflineBackup _<Azure User Id` .
 
@@ -115,7 +115,7 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
     ![Sertifikayı güncelleştirin](./media/offline-backup-dpm-mabs-previous-versions/upload-certificate.png)
 
 1. Sunucusunda, Çalıştır penceresine **Regedit** ' i girerek kayıt defterini açın.
-1. *\ HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider*kayıt defteri giriş bilgisayarına gidin.
+1. *Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider*kayıt defteri girişine gidin.
 1. **CloudBackupProvider**' a sağ tıklayın ve adıyla yeni bir dize değeri ekleyin `AzureADAppCertThumbprint_<Azure User Id>` .
 
     >[!NOTE]
@@ -124,7 +124,7 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
     >* Azure bağlı PowerShell 'den `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as appears in the portal"` komutunu çalıştırın.
     >* Kayıt defteri yoluna gidin `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup; Name: CurrentUserId;` .
 
-1. Önceki adımda eklenen dizeye sağ tıklayın ve **Değiştir**' i seçin. Değerde, 7. adımda verdiğiniz sertifikanın parmak izini girin. Ardından **Tamam**’ı seçin.
+1. Önceki adımda eklenen dizeye sağ tıklayın ve **Değiştir**' i seçin. Değerde, 7. adımda verdiğiniz sertifikanın parmak izini girin. Ardından **Tamam**'ı seçin.
 1. Parmak izi değerini almak için, sertifikaya çift tıklayın. **Ayrıntılar** sekmesini seçin ve parmak izi alanını görene kadar aşağı kaydırın. **Parmak izi**' ni seçin ve değeri kopyalayın.
 
     ![Parmak izi alanından değeri Kopyala](./media/offline-backup-dpm-mabs-previous-versions/thumbprint-field.png)
@@ -183,7 +183,7 @@ En yakın Azure veri merkezine gönderilen SATA sürücüleri hazırlamak için 
      > [!IMPORTANT]
      > Kaynak bilgisayar bir sanal makinedir, kopya bilgisayar olarak farklı bir fiziksel sunucu veya istemci makine kullanılması zorunludur.
 
-1. Geçerli dizin olarak *AzureOfflineBackupDiskPrep* yardımcı program dizini ile kopyalama bilgisayarında yükseltilmiş bir komut istemi açın. Aşağıdaki komutu çalıştırın:
+1. Geçerli dizin olarak *AzureOfflineBackupDiskPrep* yardımcı program dizini ile kopyalama bilgisayarında yükseltilmiş bir komut istemi açın. Şu komutu çalıştırın:
 
     `*.\AzureOfflineBackupDiskPrep.exe*   s:<*Staging Location Path*>   [p:<*Path to AzurePublishSettingsFile*>]`
 

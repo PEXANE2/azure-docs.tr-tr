@@ -1,6 +1,6 @@
 ---
-title: Windows kapsayıcısında kendiliğinden konak Integration Runtime çalıştırma
-description: Windows kapsayıcısında kendiliğinden konak Integration Runtime çalıştırma hakkında bilgi edinin.
+title: Windows kapsayıcısında Self-Hosted Integration Runtime çalıştırma
+description: Windows kapsayıcısında Self-Hosted Integration Runtime çalıştırma hakkında bilgi edinin.
 services: data-factory
 ms.author: abnarain
 author: nabhishek
@@ -12,23 +12,23 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/05/2020
 ms.openlocfilehash: d6f292ff89a70de90e6b86f19f73de26963d997f
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87927584"
 ---
-# <a name="how-to-run-self-hosted-integration-runtime-in-windows-container"></a>Windows kapsayıcısında kendiliğinden konak Integration Runtime çalıştırma
+# <a name="how-to-run-self-hosted-integration-runtime-in-windows-container"></a>Windows kapsayıcısında Self-Hosted Integration Runtime çalıştırma
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-xxx-md.md)]
 
-Bu makalede, Windows kapsayıcısında kendiliğinden konak Integration Runtime çalıştırma açıklanmaktadır.
-Azure Data Factory, şirket içinde barındırılan Integration Runtime resmi Windows kapsayıcı desteğini teslim ediyor. Docker Build kaynak kodunu indirebilir ve oluşturma ve çalıştırma sürecini kendi sürekli teslim işlem hattınızda birleştirebilirsiniz. 
+Bu makalede, Windows kapsayıcısında Self-Hosted Integration Runtime nasıl çalıştırılacağı açıklanmaktadır.
+Azure Data Factory, Self-Hosted Integration Runtime resmi Windows kapsayıcı desteğini teslim ediyor. Docker Build kaynak kodunu indirebilir ve oluşturma ve çalıştırma sürecini kendi sürekli teslim işlem hattınızda birleştirebilirsiniz. 
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 - [Windows kapsayıcı gereksinimleri](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/system-requirements)
 - Docker sürüm 2,3 ve üzeri 
-- Şirket içinde barındırılan Integration Runtime sürüm 4.11.7512.1 ve üzeri 
+- Self-Hosted Integration Runtime sürüm 4.11.7512.1 ve üzeri 
 ## <a name="get-started"></a>başlarken 
 1.  Docker 'ı yükleyip Windows kapsayıcısını etkinleştir 
 2.  Kaynak kodu https://github.com/Azure/Azure-Data-Factory-Integration-Runtime-in-Windows-Container adresinden indirin
@@ -53,7 +53,7 @@ docker run -d -e NODE_NAME="irNodeName" -e AUTH_KEY="IR_AUTHENTICATI
 120 saniye başlangıç süresinden sonra, sistem durumu denetleyicisi 30 saniyede bir düzenli olarak çalışır. , Kapsayıcı altyapısına IR sistem durumu sağlar. 
 
 ## <a name="limitations"></a>Sınırlamalar
-Şu anda, Windows kapsayıcısında şirket içinde barındırılan Integration Runtime çalıştırırken şu özellikleri desteklemiyoruz:
+Şu anda Self-Hosted Integration Runtime Windows kapsayıcısında çalıştırırken aşağıdaki özellikleri desteklemiyoruz:
 - HTTP proxy 'si 
 - TLS/SSL sertifikasıyla şifrelenmiş düğüm düğümü iletişimi 
 - Yedekleme oluşturma ve içeri aktarma 

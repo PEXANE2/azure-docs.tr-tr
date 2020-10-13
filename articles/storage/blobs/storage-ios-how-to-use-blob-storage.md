@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.openlocfilehash: 378c21a6904acad16847bb32955e4bc091e587df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84465499"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>İOS 'dan blob depolamayı kullanma
@@ -216,7 +216,7 @@ https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblo
 
 Bir NSString 'ten bir Blok Blobu yüklemeye ek olarak, NSData, NSInputStream veya yerel bir dosya için benzer yöntemler bulunur.
 
-## <a name="list-the-blobs-in-a-container"></a>Blob’ları bir kapsayıcıda listeleme
+## <a name="list-the-blobs-in-a-container"></a>Kapsayıcıdaki blobları listeleme
 
 Aşağıdaki örnek, bir kapsayıcıdaki tüm Blobların nasıl ekleneceğini gösterir. Bu işlemi gerçekleştirirken aşağıdaki parametrelerin azının olması gerekir:
 
@@ -286,7 +286,7 @@ Bu örnekte bir yardımcı yöntem, bir devamlılık belirteci döndürüldüğ�
 }
 ```
 
-## <a name="download-a-blob"></a>Blob indirme
+## <a name="download-a-blob"></a>Blobu indirme
 
 Aşağıdaki örnek bir blob 'un NSString nesnesine nasıl indirileceği gösterilmektedir.
 
@@ -322,7 +322,7 @@ Aşağıdaki örnek bir blob 'un NSString nesnesine nasıl indirileceği göster
 }
 ```
 
-## <a name="delete-a-blob"></a>Blob silme
+## <a name="delete-a-blob"></a>Blobu silme
 
 Aşağıdaki örnek, bir Blobun nasıl silineceğini gösterir.
 

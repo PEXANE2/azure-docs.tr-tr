@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: 7fb72b9a7d0d655f99d1e5cf194f7c6f26976a37
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86508058"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Azure 'da Micro Focus Enterprise Developer 4,0 için Micro Focus CICS BankDemo ayarlama
@@ -185,7 +185,7 @@ Sorgu hata olmadan çalıştırılmalıdır. Bu tamamlandığında, BankDemo uyg
 
      ![Bölge-bölge adı tanımlama: BANKDEMO](media/08-demo-cics.png)
 
-7. **Son**'a tıklayın.
+7. **Finish (Son)** düğmesine tıklayın.
 
 ## <a name="create-xa-resource-definitions"></a>XA kaynak tanımları oluşturma
 

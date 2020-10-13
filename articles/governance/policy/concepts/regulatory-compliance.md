@@ -4,10 +4,10 @@ description: Access Control, yapılandırma yönetimi ve diğerleri gibi yasal e
 ms.date: 08/17/2020
 ms.topic: conceptual
 ms.openlocfilehash: 15b03b5a40cba1290859b02883df70e3df54c5cf
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89645526"
 ---
 # <a name="regulatory-compliance-in-azure-policy"></a>Azure Ilkesinde mevzuata uyumluluğu
@@ -40,11 +40,11 @@ Bir **Denetim** seçildiğinde, bu denetimle ilgili ayrıntıların bir sayfası
 > [!NOTE]
 > Bir [statik](./definition-structure.md#type) ilke tanımı için **Microsoft tarafından yönetilen** bir değerlendirme türü kullanılır `type` .
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="NıST SP 800-53 R4 yerleşik tanımının sınır koruma denetimi için mevzuat uyumluluk ayrıntılarının ekran görüntüsü.":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="NıST SP 800-53 R4, uyumlu ve uyumlu olmayan denetimleri gösteren bir yerleşik tanım için mevzuat uyumluluğuna genel bakış ekran görüntüsü.":::
 
 Aynı **Denetim** sayfasından, **kaynak uyumluluğu** sekmesine geçiş yapmak, bu **denetimin**ilke tanımlarının dahil olduğu tüm kaynakları gösterir. Ad, KIMLIK, uyumluluk durumu, kaynak türü ve konum için filtreler kullanılabilir.
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="NıST SP 800-53 R4 yerleşik tanımının sınır koruma denetimine kaynak uyumluluğuna ilişkin ekran görüntüsü.":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="NıST SP 800-53 R4, uyumlu ve uyumlu olmayan denetimleri gösteren bir yerleşik tanım için mevzuat uyumluluğuna genel bakış ekran görüntüsü.":::
 
 ## <a name="regulatory-compliance-in-sdk"></a>SDK 'da mevzuata uyumluluğu
 
