@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: c9c4cef07bf1de64bcb14bc4487e0f56d2a40dfc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bdeec23b6b0a0ef2884fa35bd0a576ef57bb7853
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88518653"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938513"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>Öğretici: Mozy Enterprise ile Azure Active Directory tümleştirme
 
@@ -126,11 +126,11 @@ Azure AD çoklu oturum açmayı Mozy Enterprise ile birlikte yapılandırmak iç
 
 2. **Yapılandırma** bölümünde **kimlik doğrulama ilkesi**' ne tıklayın.
    
-    ![Kimlik doğrulama ilkesi](./media/mozy-enterprise-tutorial/ic777314.png "Kimlik doğrulama ilkesi")
+    ![Ekran görüntüsü yapılandırmadan seçilen kimlik doğrulama Ilkesini gösterir.](./media/mozy-enterprise-tutorial/ic777314.png "Kimlik doğrulama ilkesi")
 
 3. **Kimlik doğrulama ilkesi** bölümünde aşağıdaki adımları uygulayın:
    
-    ![Kimlik doğrulama ilkesi](./media/mozy-enterprise-tutorial/ic777315.png "Kimlik doğrulama ilkesi")
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz kimlik doğrulama Ilkesi bölümünü gösterir.](./media/mozy-enterprise-tutorial/ic777315.png "Kimlik doğrulama ilkesi")
    
     a. **Sağlayıcı**olarak **Dizin hizmeti** seçin.
    

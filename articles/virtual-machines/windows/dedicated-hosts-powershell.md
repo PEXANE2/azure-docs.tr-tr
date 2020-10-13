@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: ac915aa3baba910895e10d21148b899347e8ae4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 884a9e82dacb2a0dfc6763809a2ccfd2b886df1a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91370496"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974184"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Azure PowerShell kullanarak VM 'Leri adanmış konaklara dağıtma
 
-Bu makalede, sanal makinelerinizi (VM 'Ler) barındırmak için Azure [adanmış ana bilgisayar](dedicated-hosts.md) oluşturma konusunda size kılavuzluk eder. 
+Bu makalede, sanal makinelerinizi (VM 'Ler) barındırmak için Azure [adanmış ana bilgisayar](../dedicated-hosts.md) oluşturma konusunda size kılavuzluk eder. 
 
 Azure PowerShell sürüm 2.8.0 veya üstünü yüklediğinizden ve ' de bir Azure hesabında oturum açtığınızdan emin olun `Connect-AzAccount` . 
 
@@ -278,4 +278,4 @@ Remove-AzResourceGroup -Name $rgName
 
 - [Burada](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md), bir bölgedeki maksimum dayanıklılık için hem bölge hem de hata etki alanı kullanan örnek şablon vardır.
 
-- Ayrıca, [Azure Portal](dedicated-hosts-portal.md)kullanarak adanmış konaklar da dağıtabilirsiniz.
+- Ayrıca, [Azure Portal](../dedicated-hosts-portal.md)kullanarak adanmış konaklar da dağıtabilirsiniz.

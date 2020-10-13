@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: ebcec3907e40a8ba58aab841cd788c58ec7a94fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f03f98a1a1f36900d65e132a3420ac037214aaff
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "90017923"
+ms.locfileid: "91893552"
 ---
 # <a name="analyze-with-apache-spark"></a>Apache Spark ile Çözümle
 
@@ -22,7 +22,7 @@ ms.locfileid: "90017923"
 
 Bu öğreticide, Azure SYNAPSE için Apache Spark verileri yüklemek ve analiz etmek için temel adımları öğreneceksiniz.
 
-1. **Bağlı**' ın altındaki **veri** hub 'ında Azure Blob Storage ' a sağ tıklayıp **> örnek veri kümeleri > Nyc_tlc_yellow** ve **Yeni Not defteri Seç** ' i seçin.
+1. **Veri** hub 'ında **Yeni Kaynak Ekle**' ye tıklayın (Ayrıca, **bağlı**düğme)  >> **örneklere gözatamazsınız**. **NYC taxı & Limousine Komisyonu bulun-sarı TAXI seyahat kayıtları** bulun ve üzerine tıklayın. Sayfanın alt kısmındaki **devam** ' a ve ardından **veri kümesi Ekle**' ye basın. Şimdi **veri** hub 'ında **bağlantılı** seç altında **Azure Blob depolama >> örnek veri kümeleri >> nyc_tlc_yellow** ' na sağ tıklayın ve **Yeni Not defteri** ' ni seçin.
 1. Bu, aşağıdaki kod ile yeni bir not defteri oluşturur:
     ```
     from azureml.opendatasets import NycTlcYellow
@@ -119,6 +119,6 @@ df.write.sqlanalytics("SQLDB1.dbo.PassengerCountStats", Constants.INTERNAL )
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Depolamadaki verileri analiz etme](get-started-analyze-storage.md)
+> [İsteğe bağlı SQL ile verileri analiz etme](get-started-analyze-sql-on-demand.md)
 
 

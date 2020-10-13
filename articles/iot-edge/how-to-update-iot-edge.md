@@ -9,12 +9,12 @@ ms.date: 06/22/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ee00425da89391e5228f2d48b49ca85426066f1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e16e7fa5ecc2fb947f9f82c1cdd27af6758d6bda
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85299016"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971758"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>IoT Edge güvenlik daemon'ını ve çalışma zamanını güncelleştirme
 
@@ -108,7 +108,7 @@ Windows cihazlarında güvenlik cini 'nı güncelleştirmek için PowerShell bet
 
 Update-IoTEdge komutunun çalıştırılması, iki çalışma zamanı kapsayıcı görüntüsü ile birlikte cihazınızdan güvenlik arka plan programını kaldırır ve güncelleştirir. Config. YAML dosyası cihazda, ayrıca Moby kapsayıcı altyapısından (Windows kapsayıcıları kullanıyorsanız) veriler tutulur. Yapılandırma bilgilerinin tutulması, güncelleştirme işlemi sırasında cihazınız için bağlantı dizesini veya cihaz sağlama hizmeti bilgilerini yeniden sağlamanız gerekmediği anlamına gelir.
 
-Güvenlik arka plan programının belirli bir sürümüne güncelleştirmek istiyorsanız, [IoT Edge sürümlerden](https://github.com/Azure/azure-iotedge/releases)hedeflemek istediğiniz sürümü bulun. Bu sürümde, **Microsoft-Azure-IoTEdge.cab** dosyasını indirin. Ardından, `-OfflineInstallationPath` yerel dosya konumunu işaret etmek için parametresini kullanın. Örneğin:
+Güvenlik arka plan programının belirli bir sürümüne güncelleştirmek istiyorsanız, [IoT Edge sürümlerden](https://github.com/Azure/azure-iotedge/releases)hedeflemek istediğiniz sürümü bulun. Bu sürümde, **Microsoft-Azure-IoTEdge.cab** dosyasını indirin. Ardından, `-OfflineInstallationPath` yerel dosya konumunu işaret etmek için parametresini kullanın. Örnek:
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux> -OfflineInstallationPath <absolute path to directory>
@@ -117,7 +117,7 @@ Güvenlik arka plan programının belirli bir sürümüne güncelleştirmek isti
 >[!NOTE]
 >`-OfflineInstallationPath`Parametresi, belirtilen dizinde **Microsoft-Azure-IoTEdge.cab** adlı bir dosya arar. IoT Edge Version 1.0.9-RC4 ile başlayarak, biri AMD64 cihaz ve diğeri ARM32 için kullanılabilecek iki. cab dosyası vardır. Cihazınız için doğru dosyayı indirin ve ardından mimari sonekini kaldırmak için dosyayı yeniden adlandırın.
 
-Güncelleştirme seçenekleri hakkında daha fazla bilgi için komutunu kullanın `Get-Help Update-IoTEdge -full` veya [tüm yükleme parametrelerine](how-to-install-iot-edge-windows.md#all-installation-parameters)başvurun.
+Güncelleştirme seçenekleri hakkında daha fazla bilgi için komutunu kullanın `Get-Help Update-IoTEdge -full` veya [Windows üzerinde IoT Edge için PowerShell betiği](reference-windows-scripts.md)bölümüne başvurun.
 
 ## <a name="update-the-runtime-containers"></a>Çalışma zamanı kapsayıcılarını güncelleştirme
 
@@ -168,7 +168,7 @@ Dağıtımınızda belirli Etiketler kullanırsanız (örneğin, mcr.microsoft.c
 
    ![Edge hub Agent sürümünü Güncelleştir](./media/how-to-update-iot-edge/runtime-settings-edgeagent.png)
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 1. **Gözden geçir + oluştur**' u seçin, dağıtımı gözden geçirin ve **Oluştur**' u seçin.
 
@@ -213,10 +213,7 @@ IoT Edge Aracısı ve hub modülleri aynı kurala göre etiketlenmiş RC sürüm
 
 Bir IoT Edge cihazını güvenlik arka plan veya çalışma zamanı modüllerinin belirli bir sürümüne güncelleştirme hakkında bilgi edinmek için bu makaledeki bölümleri kullanın.
 
-Yeni bir makineye IoT Edge yüklüyorsanız, cihaz işletim sisteminize bağlı olarak belirli bir sürümü yükleme hakkında bilgi edinmek için aşağıdaki bağlantıları kullanın:
-
-* [Linux](how-to-install-iot-edge-linux.md#install-runtime-using-release-assets)
-* [Windows](how-to-install-iot-edge-windows.md#offline-or-specific-version-installation)
+IoT Edge yüklüyorsanız, var olan bir yüklemeyi yükseltmek yerine [çevrimdışı veya belirli bir sürüm yüklemesinde](how-to-install-iot-edge.md#offline-or-specific-version-installation)bulunan adımları kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

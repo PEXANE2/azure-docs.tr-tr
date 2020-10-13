@@ -8,14 +8,16 @@ ms.topic: conceptual
 manager: gwallace
 description: Azure Dev Spaces ile Azure DevOps kullanarak sürekli tümleştirme/sürekli dağıtım ayarlamayı öğrenin
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kapsayıcılar
-ms.openlocfilehash: c7b3eba0bea85082dbb4e39d108af9471d5dc45e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de409aa060034c9ba0faaaa56ce21f904b02cdac
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88080275"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960397"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Azure Dev Spaces ile CI/CD kullanma
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 Bu makalede, geliştirme alanları etkinken Azure Kubernetes Service (AKS) ile sürekli tümleştirme/sürekli dağıtım (CI/CD) ayarlama sırasında size kılavuzluk eder. AKS 'e CI/CD, her kaydedilmiş kod kaynak deponuza gönderildiğinde uygulama güncelleştirmelerinin otomatik olarak dağıtılmasını sağlar. CI/CD 'nin bir geliştirme alanları etkinleştirilmiş kümeyle birlikte kullanılması faydalı olur çünkü ekibin bir taban çizgisini takımın birlikte çalışması için güncel tutar.
 
@@ -119,7 +121,7 @@ Artık GitHub çatalınızın _azds_updates_ dalına gönderilen herhangi bir g�
 1. Sağ üst köşedeki **Kaydet** ' e tıklayıp **Tamam**' a tıklayın.
 1. **+ Release** (Kaydet düğmesinin yanında) seçeneğine tıklayın ve **bir yayın oluşturun**.
 1. **Yapıtlar**bölümünde, derleme işlem hattınızdan en son derlemeyi doğrulayın.
-1. **Oluştur**’a tıklayın.
+1. **Oluştur**'a tıklayın.
 
 Otomatik bir yayın işlemi başlar, şimdi _geliştirme_ üst düzey alanında *mywebapi* ve *Webön uç* grafiklerini Kubernetes kümenize dağıtacaksınız. Azure DevOps web portalında, yayınınızın ilerlemesini izleyebilirsiniz:
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: e375ce88b8e5bd96e19dc4f5da2143c3f9de53a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a762cfd1ecb4e290417b5d24b0ae75f6e10baf1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575869"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973713"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM diskleri ile yönetilen ve yönetilmeyen premium diskler hakkında sık sorulan sorular
 
@@ -136,7 +136,7 @@ Yönetilen diskler için bunları yeniden adlandıramazsınız. Ancak, şu anda 
 
 1. nesil görüntüler, işletim sistemi disklerinde değil yalnızca veri disklerinde GPT bölümlendirme kullanabilir. İşletim sistemi disklerinin MBR bölümleme stilini kullanması gerekir.
 
-[2. nesil görüntüler](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2) , işletim sistemi diskinde ve VERI disklerinde GPT bölümlendirme kullanabilir.
+[2. nesil görüntüler](./generation-2.md) , işletim sistemi diskinde ve VERI disklerinde GPT bölümlendirme kullanabilir.
 
 **Hangi disk türleri anlık görüntüleri destekliyor?**
 
@@ -241,7 +241,7 @@ Hayır, karşıya yükleme yalnızca **Readytoupload** durumuna sahip yeni bir b
 
 **Nasıl yaparım? yönetilen bir diske mı yüklenecek?**
 
-[Creationdata](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#creationdata) 'ın [Createoption](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#diskcreateoption) özelliği "karşıya yükle" olarak ayarlanmış bir yönetilen disk oluşturun, ardından verileri karşıya yükleyebilirsiniz.
+[Creationdata](/rest/api/compute/disks/createorupdate#creationdata) 'ın [Createoption](/rest/api/compute/disks/createorupdate#diskcreateoption) özelliği "karşıya yükle" olarak ayarlanmış bir yönetilen disk oluşturun, ardından verileri karşıya yükleyebilirsiniz.
 
 **Karşıya yükleme durumundayken bir diski bir VM 'ye ekleyebilir miyim?**
 
@@ -304,7 +304,7 @@ Hayır. Yönetilen disklere sahip VM 'Ler için Azure 'dan Azure 'a koruma Azure
 
 **VM 'Leri, yönetilen disklere daha önce şifrelenmiş olan veya daha önce şifrelenen depolama hesaplarında bulunan yönetilmeyen disklere geçirebilir miyim?**
 
-Evet
+Yes
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Yönetilen diskler ve Depolama Hizmeti Şifrelemesi
 
@@ -342,7 +342,7 @@ Evet. Tüm yönetilen anlık görüntüler ve görüntüler otomatik olarak şif
 
 **VM 'Leri daha önce yönetilen disklere şifrelenmiş depolama hesaplarında bulunan yönetilmeyen disklere dönüştürebilir miyim?**
 
-Evet
+Yes
 
 **Yönetilen bir diskten ya da bir anlık görüntüden dışarıya aktarılmış bir VHD mi olacak?**
 
@@ -427,7 +427,7 @@ Azure 'un desteklediği en büyük Sayfa Blobu boyutu 8 TiB 'dir (8.191 GiB). Bi
 
 **P4 ve P6 disk boyutları yönetilmeyen diskler veya sayfa Blobları için destekleniyor mu?**
 
-P4 (32 GiB) ve P6 (64 GiB) disk boyutları, yönetilmeyen diskler ve sayfa Blobları için varsayılan disk katmanları olarak desteklenmez. Diskinizin Bu katmanlarla eşleştirilmesini sağlamak için [BLOB katmanını](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) P4 ve P6 olarak ayarlamanız gerekir. Disk boyutu veya disk uzunluğu 32 GiB 'den az olan bir yönetilmeyen disk veya Sayfa Blobu dağıtırsanız ya da blob katmanını ayarlamadan 32 GiB ile 64 GiB arasında devam ederseniz, P10 'de 500 ıOPS ve 100 MIB/s ve eşlenmiş fiyatlandırma katmanı ile çalışmaya devam edersiniz.
+P4 (32 GiB) ve P6 (64 GiB) disk boyutları, yönetilmeyen diskler ve sayfa Blobları için varsayılan disk katmanları olarak desteklenmez. Diskinizin Bu katmanlarla eşleştirilmesini sağlamak için [BLOB katmanını](/rest/api/storageservices/set-blob-tier) P4 ve P6 olarak ayarlamanız gerekir. Disk boyutu veya disk uzunluğu 32 GiB 'den az olan bir yönetilmeyen disk veya Sayfa Blobu dağıtırsanız ya da blob katmanını ayarlamadan 32 GiB ile 64 GiB arasında devam ederseniz, P10 'de 500 ıOPS ve 100 MIB/s ve eşlenmiş fiyatlandırma katmanı ile çalışmaya devam edersiniz.
 
 **Küçük disk etkinleştirilmeden (15 Haziran 2017 ' de olmak üzere), mevcut Premium yönetilen diskim daha az 64 GiB tarafından oluşturulduysa, nasıl faturalandırılır?**
 
@@ -497,6 +497,6 @@ Hayır.
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Sorum burada yanıtlanmazsa ne olacak?
 
-Sorunuz burada listelenmiyorsa, bize bilgi verin ve bir yanıt bulmanıza yardımcı olabiliriz. Açıklamalarda Bu makalenin sonuna bir soru gönderebilirsiniz. Azure depolama ekibi ve bu makaleyle ilgili diğer topluluk üyeleriyle birlikte çalışmak için, [Azure depolama Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/products/azure?product=storage)kullanın.
+Sorunuz burada listelenmiyorsa, bize bilgi verin ve bir yanıt bulmanıza yardımcı olabiliriz. Açıklamalarda Bu makalenin sonuna bir soru gönderebilirsiniz. Azure depolama ekibi ve bu makaleyle ilgili diğer topluluk üyeleriyle birlikte çalışmak için, [Azure depolama Için Microsoft Q&soru sayfasını](/answers/products/azure?product=storage)kullanın.
 
 Özellik istemek için isteklerinizi ve fikirlerinizi [Azure Storage geri bildirim forumuna](https://feedback.azure.com/forums/217298-storage)gönderin.

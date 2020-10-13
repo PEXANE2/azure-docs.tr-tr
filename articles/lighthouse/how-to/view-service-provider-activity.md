@@ -1,21 +1,21 @@
 ---
 title: Hizmet sağlayıcısı etkinliğini görüntüleme
 description: Müşteriler, Azure tarafından atanan kaynak yönetimi aracılığıyla hizmet sağlayıcıları tarafından gerçekleştirilen eylemleri görmek için günlüğe kaydedilen etkinliği görüntüleyebilir.
-ms.date: 07/07/2020
+ms.date: 10/12/2020
 ms.topic: how-to
-ms.openlocfilehash: 0c92fc9b45d17e37fb3721d9cf087c5e7a62f6d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ec9d49de953a0fed3a5afc669e9297148aadf32
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86131464"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974320"
 ---
 # <a name="view-service-provider-activity"></a>Hizmet sağlayıcısı etkinliğini görüntüleme
 
 Azure açık bir [kullanım](../overview.md) için abonelikleri temsilci seçen müşteriler, gerçekleştirilen tüm eylemleri görmek Için [Azure etkinlik günlüğü verilerini görüntüleyebilir](../../azure-monitor/platform/platform-logs-overview.md) . Bu, müşterilere hizmet sağlayıcılarının [Azure tarafından atanan kaynak yönetimi](../concepts/azure-delegated-resource-management.md)aracılığıyla yaptığı ve müşterinin kendi Azure Active Directory (Azure AD) kiracısındaki kullanıcılar tarafından gerçekleştirilen işlemlerle birlikte tam görünürlük sağlar.
 
 > [!TIP]
-> Ayrıca, bir yönetim kiracısına kapsamları temsilciliğini denetlemek için bir Azure Ilkesi yerleşik ilke tanımı sunuyoruz. Daha fazla bilgi için bkz. [ortamınızdaki denetim temsilcileri](view-manage-service-providers.md#audit-delegations-in-your-environment).
+> Ayrıca, [temsilciliğini yönetmek](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Lighthouse/AllowCertainManagingTenantIds_Deny.json) ve [kapsamları yöneten bir kiracıya Yetkilendirmeyi denetlemek](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json)için Azure ilkesi yerleşik ilke tanımları sunuyoruz. Daha fazla bilgi için bkz. [ortamınızdaki denetim temsilcileri](view-manage-service-providers.md#audit-delegations-in-your-environment).
 
 ## <a name="view-activity-log-data"></a>Etkinlik günlüğü verilerini görüntüleme
 

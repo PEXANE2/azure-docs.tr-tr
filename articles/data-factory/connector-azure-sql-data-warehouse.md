@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/23/2020
-ms.openlocfilehash: d0c6de2fdf0720e671090e8a817b00e25c5f3d42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: 408f58b44bbe1ff8be7498b33a1209f4488c2ccc
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332160"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951987"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SYNAPSE Analytics 'te (eski adıyla SQL veri ambarı) veri kopyalama ve dönüştürme
 
@@ -63,8 +63,8 @@ Aşağıdaki özellikler bir Azure SYNAPSE Analytics bağlı hizmeti için deste
 
 | Özellik            | Açıklama                                                  | Gerekli                                                     |
 | :------------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| tür                | Type özelliği **Azuresqldw**olarak ayarlanmalıdır.             | Evet                                                          |
-| Dizisi    | **ConnectionString** özelliği Için Azure SYNAPSE Analytics örneğine bağlanmak için gereken bilgileri belirtin. <br/>Bu alanı, Data Factory güvenli bir şekilde depolamak için SecureString olarak işaretleyin. Ayrıca, parola/hizmet sorumlusu anahtarını Azure Key Vault de koyabilirsiniz ve SQL kimlik doğrulaması ise `password` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için tablonun altındaki JSON örneğine bakın ve [kimlik bilgilerini Azure Key Vault makalesine saklayın](store-credentials-in-key-vault.md) . | Evet                                                          |
+| tür                | Type özelliği **Azuresqldw**olarak ayarlanmalıdır.             | Yes                                                          |
+| Dizisi    | **ConnectionString** özelliği Için Azure SYNAPSE Analytics örneğine bağlanmak için gereken bilgileri belirtin. <br/>Bu alanı, Data Factory güvenli bir şekilde depolamak için SecureString olarak işaretleyin. Ayrıca, parola/hizmet sorumlusu anahtarını Azure Key Vault de koyabilirsiniz ve SQL kimlik doğrulaması ise `password` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için tablonun altındaki JSON örneğine bakın ve [kimlik bilgilerini Azure Key Vault makalesine saklayın](store-credentials-in-key-vault.md) . | Yes                                                          |
 | Serviceprincipalıd  | Uygulamanın istemci KIMLIĞINI belirtin.                         | Evet, Azure AD kimlik doğrulamasını bir hizmet sorumlusu ile kullandığınızda. |
 | Servicesprincipalkey | Uygulamanın anahtarını belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet, Azure AD kimlik doğrulamasını bir hizmet sorumlusu ile kullandığınızda. |
 | Kiracı              | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alabilirsiniz. | Evet, Azure AD kimlik doğrulamasını bir hizmet sorumlusu ile kullandığınızda. |
@@ -224,7 +224,7 @@ Aşağıdaki özellikler Azure SYNAPSE Analytics veri kümesi için desteklenir:
 
 | Özellik  | Açıklama                                                  | Gerekli                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
-| tür      | Veri kümesinin **Type** özelliği **Azuresqldwtable**olarak ayarlanmalıdır. | Evet                         |
+| tür      | Veri kümesinin **Type** özelliği **Azuresqldwtable**olarak ayarlanmalıdır. | Yes                         |
 | schema | Şemanın adı. |Kaynak için Hayır, havuz için Evet  |
 | tablo | Tablo/görünüm adı. |Kaynak için Hayır, havuz için Evet  |
 | tableName | Şema ile tablonun/görünümün adı. Bu özellik geriye dönük uyumluluk için desteklenir. Yeni iş yükü için `schema` ve kullanın `table` . | Kaynak için Hayır, havuz için Evet |
@@ -263,7 +263,7 @@ Azure SYNAPSE Analytics 'ten veri kopyalamak için kopyalama etkinliği kaynağ�
 
 | Özellik                     | Açıklama                                                  | Gerekli |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
-| tür                         | Kopyalama etkinliği kaynağının **Type** özelliği **sqldwsource**olarak ayarlanmalıdır. | Evet      |
+| tür                         | Kopyalama etkinliği kaynağının **Type** özelliği **sqldwsource**olarak ayarlanmalıdır. | Yes      |
 | sqlReaderQuery               | Verileri okumak için özel SQL sorgusunu kullanın. Örnek: `select * from MyTable`. | Hayır       |
 | sqlReaderStoredProcedureName | Kaynak tablodaki verileri okuyan saklı yordamın adı. Son SQL ifadesinin saklı yordamda bir SELECT ifadesinin olması gerekir. | Hayır       |
 | storedProcedureParameters    | Saklı yordamın parametreleri.<br/>İzin verilen değerler ad veya değer çiftleridir. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük küçük harfleriyle aynı olmalıdır. | Hayır       |
@@ -378,7 +378,7 @@ Verileri Azure SYNAPSE Analytics 'e kopyalamak için kopyalama etkinliğindeki h
 
 | Özellik          | Açıklama                                                  | Gerekli                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| tür              | Kopyalama etkinliği havuzunun **Type** özelliği **sqldwsink**olarak ayarlanmalıdır. | Evet                                           |
+| tür              | Kopyalama etkinliği havuzunun **Type** özelliği **sqldwsink**olarak ayarlanmalıdır. | Yes                                           |
 | allowPolyBase     | Azure SYNAPSE Analytics 'e veri yüklemek için PolyBase kullanılıp kullanılmayacağını belirtir. `allowCopyCommand` ve `allowPolyBase` her ikisi de true olamaz. <br/><br/>Kısıtlamalar ve Ayrıntılar için bkz. [Azure SYNAPSE Analytics 'e veri yüklemek Için PolyBase kullanma](#use-polybase-to-load-data-into-azure-synapse-analytics) .<br/><br/>İzin verilen değerler **true** ve **false** (varsayılan) şeklindedir. | Hayır.<br/>PolyBase kullanırken uygulayın.     |
 | polyBaseSettings  | `allowPolybase`Özelliği **true**olarak ayarlandığında belirtilenebilir bir özellik grubu. | Hayır.<br/>PolyBase kullanırken uygulayın. |
 | allowCopyCommand | Azure SYNAPSE Analytics 'e veri yüklemek için [kopyalama ifadesinin](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql) (Önizleme) kullanılıp kullanılmayacağını gösterir. `allowCopyCommand` ve `allowPolyBase` her ikisi de true olamaz. <br/><br/>Kısıtlamalar ve Ayrıntılar için bkz. [Copy deyimlerini kullanarak Azure SYNAPSE Analytics 'e veri yükleme](#use-copy-statement) bölümüne bakın.<br/><br/>İzin verilen değerler **true** ve **false** (varsayılan) şeklindedir. | Hayır.<br>KOPYALAMA kullanırken uygulayın. |
@@ -564,7 +564,7 @@ Gereksinimler karşılanmazsa, Azure Data Factory ayarları denetler ve veri ta�
 
 Kaynak verileriniz PolyBase ile yerel olarak uyumlu değilse, geçici hazırlama Azure Blob 'U veya Azure Data Lake Storage 2. (Azure Premium Depolama olamaz) aracılığıyla veri kopyalamayı etkinleştirin. Bu durumda Azure Data Factory, verileri, PolyBase 'in veri biçimi gereksinimlerini karşılayacak şekilde otomatik olarak dönüştürür. Daha sonra, Azure SYNAPSE Analytics 'e veri yüklemek için PolyBase 'i çağırır. Son olarak, depolama alanından geçici verilerinizi temizler. Hazırlama yoluyla veri kopyalama hakkındaki ayrıntılar için bkz. [aşamalı kopya](copy-activity-performance-features.md#staged-copy) .
 
-Bu özelliği kullanmak için, Azure [BLOB depolama bağlı hizmeti](connector-azure-blob-storage.md#linked-service-properties) veya Azure depolama hesabına, ara depolama ile başvuran [bağlı hizmet Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#linked-service-properties) oluşturun. Ardından, `enableStaging` `stagingSettings` aşağıdaki kodda gösterildiği gibi kopyalama etkinliğinin ve özelliklerini belirtin.
+Bu özelliği kullanmak için, Azure [BLOB depolama bağlı hizmeti](connector-azure-blob-storage.md#linked-service-properties) oluşturun veya hesap anahtarı ya da ara depolama alanı olarak Azure depolama hesabına başvuran **yönetilen kimlik kimlik doğrulamasıyla** [Azure Data Lake Storage 2. bağlı hizmeti](connector-azure-data-lake-storage.md#linked-service-properties) oluşturun.
 
 >[!IMPORTANT]
 >Hazırlama Azure depolama alanı sanal ağ hizmeti uç noktası ile yapılandırıldıysa, yönetilen kimlik kimlik doğrulaması kullanmanız gerekir- [VNET hizmet uç noktalarını Azure depolama ile kullanmanın etkileri](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)için başvurun. [Azure Blob tarafından yönetilen kimlik doğrulama](connector-azure-blob-storage.md#managed-identity) ve [Azure Data Lake Storage 2. yönetilen kimlik kimlik doğrulamasından](connector-azure-data-lake-storage.md#managed-identity)Data Factory için gereken konfigürasyonları öğrenin.

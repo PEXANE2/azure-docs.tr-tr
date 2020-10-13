@@ -8,14 +8,16 @@ ms.topic: conceptual
 description: Azure dev alanında özel bir Held deposu kullanın.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kapsayıcılar, Held
 manager: gwallace
-ms.openlocfilehash: c8f0e463bc78d278d8162f8389664dbb46a83301
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c5f28595df2e552fd48033b44e4e1f0ea4ec306
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80240463"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960346"
 ---
 # <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>Azure Dev Spaces bir özel Held deposu kullanın
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 [Held][helm] , Kubernetes için bir paket yöneticisidir. Held bağımlılıkları paketlemek için bir [grafik][helm-chart] biçimi kullanır. HELI grafikleri, genel veya özel olabilen bir depoda depolanır. Azure Dev Spaces, uygulamanızı çalıştırırken yalnızca ortak depolardan hele grafikleri alır. HELI deposunun özel veya Azure Dev Spaces erişemez durumda, bu depodan doğrudan uygulamanıza bir grafik ekleyebilirsiniz. Grafiği doğrudan eklemek Azure Dev Spaces özel Helu deposuna erişmek zorunda kalmadan uygulamanızı çalıştırmaya izin verir.
 

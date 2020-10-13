@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: shants
-ms.openlocfilehash: 5dcf4ad7acb3becd2ca04407bc8e5b3ac45701f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cf126caaaa0c518574418aca194ebd82cc4d6b9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86501713"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972076"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Azure’da sanal makineler için bakım
 
@@ -23,7 +23,7 @@ Güncelleştirmeler barındırılan VM 'Leri nadiren etkiler. Güncelleştirmele
 - Güncelleştirme için bir yeniden başlatma gerektirmiyorsa, konak güncelleştirilirken VM duraklatılır veya VM canlı olarak zaten güncelleştirilmiş bir konağa geçirilir. 
 - Bakım için yeniden başlatma gerekiyorsa, planlı bakım hakkında bilgilendirilirsiniz. Azure aynı zamanda, sizin için uygun bir zamanda bakımı kendiniz başlatabileceğinizi bir zaman penceresi sağlar. Bakım acil değilse, kendi kendine bakım penceresi genellikle 35 gün olur. Azure, planlı platform bakımının VM 'Lerin yeniden başlatılmasını gerektirdiği durum sayısını azaltmak için teknolojiden yatırım yapıyor. Planlı bakım yönetimi hakkında yönergeler için bkz. Azure [CLI](maintenance-notifications-cli.md), [PowerShell](maintenance-notifications-powershell.md) veya [Portal](maintenance-notifications-portal.md)kullanarak planlı bakım bildirimlerini işleme.
 
-Bu sayfa, Azure 'un her iki türde bakım gerçekleştirmesini açıklar. Planlanmamış Olaylar (kesintiler) hakkında daha fazla bilgi için bkz. [Windows Için VM 'lerin kullanılabilirliğini yönetme](./windows/manage-availability.md) veya [Linux](./linux/manage-availability.md)için ilgili makale.
+Bu sayfa, Azure 'un her iki türde bakım gerçekleştirmesini açıklar. Planlanmamış Olaylar (kesintiler) hakkında daha fazla bilgi için bkz. [Windows Için VM 'lerin kullanılabilirliğini yönetme](./manage-availability.md) veya [Linux](./manage-availability.md)için ilgili makale.
 
 Bir VM içinde, Windows veya [Linux](./linux/scheduled-events.md)için [zamanlanan olaylar kullanarak](./windows/scheduled-events.md) yaklaşan bakım hakkında bildirim alabilirsiniz.
 
@@ -41,7 +41,7 @@ Yeniden başlatma gerektirmeyen bu bakım işlemleri, tek seferde bir hata etki 
 
 Bu tür güncelleştirmeler bazı uygulamaları etkileyebilir. SANAL makine dinamik olarak farklı bir konağa geçirildiğinde, bazı hassas iş yükleri VM duraklatmaya en az birkaç dakika sonunda küçük bir performans düşüşü gösterebilir. VM bakımına hazırlanmak ve Azure Bakımı sırasında etkileri azaltmak için, bu tür uygulamalar için Windows veya [Linux](./linux/scheduled-events.md) [için zamanlanan olaylar kullanmayı](./windows/scheduled-events.md) deneyin. 
 
-Sıfır etki ve yeniden bootupdates gibi tüm bakım etkinliklerinin üzerinde daha fazla denetim için bakım denetim özelliğini kullanabilirsiniz. [Azure ayrılmış Konakları](./linux/dedicated-hosts.md) ya da [yalıtılmış bir VM](../security/fundamentals/isolation-choices.md)kullanıyor olmanız gerekir. Bakım denetimi, tüm platform güncelleştirmelerini atlama ve güncelleştirme işlemini 35 günlük bir bir pencere içinde dilediğiniz zaman uygulamak için kullanabileceğiniz bir seçenek sunar. Daha fazla bilgi için bkz. [bakım denetimi ve Azure CLI ile güncelleştirmeleri denetleme](maintenance-control.md).
+Sıfır etki ve yeniden bootupdates gibi tüm bakım etkinliklerinin üzerinde daha fazla denetim için bakım denetim özelliğini kullanabilirsiniz. [Azure ayrılmış Konakları](./dedicated-hosts.md) ya da [yalıtılmış bir VM](../security/fundamentals/isolation-choices.md)kullanıyor olmanız gerekir. Bakım denetimi, tüm platform güncelleştirmelerini atlama ve güncelleştirme işlemini 35 günlük bir bir pencere içinde dilediğiniz zaman uygulamak için kullanabileceğiniz bir seçenek sunar. Daha fazla bilgi için bkz. [bakım denetimi ve Azure CLI ile güncelleştirmeleri denetleme](maintenance-control.md).
 
 
 ### <a name="live-migration"></a>Canlı geçiş
@@ -87,7 +87,7 @@ Bir kullanılabilirlik kümesi içinde, tek tek VM 'Ler 20 güncelleştirme etki
 
 Sanal makine *Ölçek Kümeleri* , aynı VM 'lerin bir kümesini tek bir kaynak olarak dağıtmak ve yönetmek için kullanabileceğiniz bir Azure işlem kaynağıdır. Ölçek kümesi, bir kullanılabilirlik kümesindeki VM 'Ler gibi UDs 'lerde otomatik olarak dağıtılır. Kullanılabilirlik kümelerinde olduğu gibi, ölçek kümeleri kullandığınızda, zamanlanan bakım sırasında belirli bir zamanda yalnızca bir UD güncelleştirilir.
 
-Sanal makinelerinizi yüksek kullanılabilirlik için ayarlama hakkında daha fazla bilgi için bkz. [Windows Için sanal makinelerinizin kullanılabilirliğini yönetme](./windows/manage-availability.md) veya [Linux](./linux/manage-availability.md)için ilgili makale.
+Sanal makinelerinizi yüksek kullanılabilirlik için ayarlama hakkında daha fazla bilgi için bkz. [Windows Için sanal makinelerinizin kullanılabilirliğini yönetme](./manage-availability.md) veya [Linux](./manage-availability.md)için ilgili makale.
 
 #### <a name="availability-zones"></a>Kullanılabilirlik alanları
 
@@ -99,4 +99,4 @@ Her altyapı güncelleştirmesi bölge dilimini bölgeye göre, tek bir bölge i
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 
-Planlı Bakımı yönetmek için [Azure CLI](maintenance-notifications-cli.md), [Azure PowerShell](maintenance-notifications-powershell.md) veya [portalını](maintenance-notifications-portal.md) kullanabilirsiniz. 
+Planlı Bakımı yönetmek için [Azure CLI](maintenance-notifications-cli.md), [Azure PowerShell](maintenance-notifications-powershell.md) veya [portalını](maintenance-notifications-portal.md) kullanabilirsiniz.

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: aae05c89cd56ffa16994cb5696054457f1d32bc3
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 7680c7ad4b2c5c8b8c1c13fb2344575659eda140
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876150"
+ms.locfileid: "91892830"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Azure portalını (klasik) kullanarak Siteden Siteye bağlantı oluşturma
 
@@ -109,11 +109,11 @@ Bir şirket içi ağı ile Siteden Siteye bağlantılar için VPN cihazı gereki
 
 ## <a name="create-the-connection"></a><a name="CreateConnection"></a>Bağlantıyı oluşturma
 
-Bu adımda, önceki adımlardan alınan değerleri kullanarak, paylaşılan anahtarı ayarlar ve bağlantıyı oluşturursunuz. Ayarladığınız anahtar, VPN cihazı yapılandırmasında kullanılan anahtarla aynı olmalıdır.
-
 > [!NOTE]
 > Klasik dağıtım modeli için bu adım Azure portal veya Azure Cloud Shell aracılığıyla kullanılamaz. Azure PowerShell cmdlet 'lerinin hizmet yönetimi (SM) sürümünü masaüstünüzden yerel olarak kullanmanız gerekir.
 >
+
+Bu adımda, önceki adımlardan alınan değerleri kullanarak, paylaşılan anahtarı ayarlar ve bağlantıyı oluşturursunuz. Ayarladığınız anahtar, VPN cihazı yapılandırmasında kullanılan anahtarla aynı olmalıdır.
 
 1. Paylaşılan anahtarı ayarlayıp bağlantıyı oluşturun.
 

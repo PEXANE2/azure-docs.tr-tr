@@ -4,48 +4,52 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 12/13/2018
 ms.author: crtreasu
-ms.openlocfilehash: b2b3ca886359a0b4c906b89ed76f57486fc2c368
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b83951cd743afc7e249e3ee37182007bbe40cb5c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83638982"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971392"
 ---
 ## <a name="create-a-spatial-anchors-resource"></a>Uzamsal bağlayıcı kaynağı oluşturma
 
 <a href="https://portal.azure.com" target="_blank">Azure portalına</a> gidin.
 
-Azure portal sol gezinti bölmesinde **kaynak oluştur**' u seçin.
+Sol bölmede **kaynak oluştur**' u seçin.
 
 **Uzamsal bağlantıları**aramak için arama kutusunu kullanın.
 
-   ![Uzamsal bağlayıcıları ara](./media/spatial-anchors-get-started-create-resource/portal-search.png)
+![Uzamsal Tutturucuların aramasının sonuçlarını gösteren ekran görüntüsü.](./media/spatial-anchors-get-started-create-resource/portal-search.png)
 
-**Uzamsal bağlantıları**seçin. İletişim kutusunda **Oluştur**' u seçin.
+**Uzamsal bağlayıcıları**seçin ve ardından **Oluştur**' u seçin.
 
-**Uzamsal bağlayıcı hesabı** iletişim kutusunda:
+**Uzamsal bağlayıcı hesabı** bölmesinde şunları yapın:
 
-- Normal alfasayısal karakterleri kullanarak benzersiz bir kaynak adı girin.
-- Kaynağı iliştirmek istediğiniz aboneliği seçin.
-- **Yeni oluştur**seçeneğini belirleyerek bir kaynak grubu oluşturun. **Myresourcegroup** olarak adlandırın ve **Tamam**' ı seçin.
-      [!INCLUDE [resource group intro text](resource-group.md)]
-- Kaynağın yerleştirileceği bir konum (bölge) seçin.
-- Kaynağı oluşturmaya başlamak için **Yeni** ' yi seçin.
+* Normal alfasayısal karakterleri kullanarak benzersiz bir kaynak adı girin.  
+* Kaynağı iliştirmek istediğiniz aboneliği seçin.  
+* **Yeni oluştur**seçeneğini belirleyerek bir kaynak grubu oluşturun. **Myresourcegroup**olarak adlandırın ve ardından **Tamam**' ı seçin.  
 
-   ![Kaynak oluşturma](./media/spatial-anchors-get-started-create-resource/create-resource-form.png)
+  [!INCLUDE [resource group intro text](resource-group.md)]
+  
+* Kaynağın yerleştirileceği bir konum (bölge) seçin.  
+* Kaynağı oluşturmaya başlamak için **Yeni** ' yi seçin.
 
-Kaynak oluşturulduktan sonra Azure Portal, dağıtımınızın tamamlandığını gösterir. **Kaynağa git**'e tıklayın.
+![Kaynak oluşturmak için uzamsal bağlayıcı bölmesinin ekran görüntüsü.](./media/spatial-anchors-get-started-create-resource/create-resource-form.png)
 
-![Dağıtım tamamlandı](./media/spatial-anchors-get-started-create-resource/deployment-complete.png)
+Kaynak oluşturulduktan sonra, Azure portal dağıtımınızın tamamlandığını gösterir. 
+   
+![Kaynak dağıtımının tamamlandığını gösteren ekran görüntüsü.](./media/spatial-anchors-get-started-create-resource/deployment-complete.png)
 
-Daha sonra kaynak özelliklerini görüntüleyebilirsiniz. Daha sonra ihtiyacınız olacak şekilde, kaynağın **hesap kimliği** değerini bir metin düzenleyicisine kopyalayın.
+**Kaynağa git**’i seçin. Artık kaynak özelliklerini görüntüleyebilirsiniz. 
+   
+Kaynağın **hesap kimliği** değerini daha sonra kullanmak üzere bir metin düzenleyicisine kopyalayın.
 
-   ![Kaynak özellikleri](./media/spatial-anchors-get-started-create-resource/view-resource-properties.png)
+![Kaynak özellikleri bölmesinin ekran görüntüsü.](./media/spatial-anchors-get-started-create-resource/view-resource-properties.png)
 
-Ayrıca, daha sonra ihtiyacınız olacak şekilde kaynağın **hesap etki alanı** değerini bir metin düzenleyicisine kopyalayın.
+Ayrıca, kaynağın **hesap etki alanı** değerini daha sonra kullanmak üzere bir metin düzenleyicisine kopyalayın.
 
-   ![Hesap etki alanı](./media/spatial-anchors-get-started-create-resource/view-resource-domain.png)
+![Kaynağın hesap etki alanı değerini gösteren ekran görüntüsü.](./media/spatial-anchors-get-started-create-resource/view-resource-domain.png)
 
-**Ayarlar**altında **anahtar**' ı seçin. **Birincil anahtar** değerini bir metin düzenleyicisine kopyalayın. Bu değer, `Account Key` . Buna daha sonra ihtiyacınız olacak.
+**Ayarlar**altında **anahtar**' ı seçin. **Birincil anahtar** değerini, **hesap anahtarını**daha sonra kullanmak üzere bir metin düzenleyicisine kopyalayın.
 
-   ![Hesap anahtarı](./media/spatial-anchors-get-started-create-resource/view-account-key.png)
+![Hesap için anahtarlar bölmesinin ekran görüntüsü.](./media/spatial-anchors-get-started-create-resource/view-account-key.png)

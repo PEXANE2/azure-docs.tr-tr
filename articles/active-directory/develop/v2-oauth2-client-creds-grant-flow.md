@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 7/27/2020
+ms.date: 10/2/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e5fe8e751077bc04850879d27827c197767a81c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89a4c62044e3be849650de703d2daa9ca3e2a975
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87759079"
+ms.locfileid: "91932592"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity platformu ve OAuth 2,0 istemci kimlik bilgileri akışı
 
@@ -52,8 +52,11 @@ Yaygın kullanım durumu, bir Web uygulaması veya Web API 'SI için testler ça
 
 Bu tür bir yetkilendirme, kişisel Microsoft hesapları olan tüketici kullanıcılarının sahip olduğu verilere erişmesi gereken Daemon 'ları ve hizmet hesapları için ortaktır. Kuruluşlara ait veriler için, uygulama izinleri aracılığıyla gerekli yetkilendirmeyi almanızı öneririz.
 
-> [!NOTE]
-> Bu ACL tabanlı yetkilendirme modelini etkinleştirmek için Azure AD, uygulamaların başka bir uygulama için belirteçleri almak üzere yetkilendirilmesini gerektirmez. bu nedenle yalnızca uygulama belirteçleri talep olmadan verilebilir `roles` . API 'Leri kullanıma sunan uygulamaların belirteçleri kabul etmek için izin denetimleri uygulaması gerekir.
+#### <a name="controlling-tokens-without-the-roles-claim"></a>Belirteçleri talep olmadan denetleme `roles`
+
+Bu ACL tabanlı yetkilendirme modelini etkinleştirmek için Azure AD, uygulamaların başka bir uygulama için belirteçleri almak üzere yetkilendirilmesini gerektirmez. Bu nedenle, yalnızca uygulama belirteçleri talep olmadan verilebilir `roles` . API 'Leri kullanıma sunan uygulamaların belirteçleri kabul etmek için izin denetimleri uygulaması gerekir.
+
+Uygulamaların uygulamanıza yönelik salt uygulama erişim belirteçlerini almasını engellemek isterseniz, uygulamanız [için kullanıcı atama gereksinimlerinin etkinleştirildiğinden emin olun](../manage-apps/assign-user-or-group-access-portal.md#configure-an-application-to-require-user-assignment). Bu, atanmış rolleri olmayan kullanıcıların ve uygulamaların bu uygulama için bir belirteç alabilmesi engellenecek. 
 
 ### <a name="application-permissions"></a>Uygulama izinleri
 

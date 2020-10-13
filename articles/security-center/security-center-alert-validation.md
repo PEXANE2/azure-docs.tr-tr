@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik Merkezi 'nde uyarı doğrulaması (EICAR test dosyası) | Microsoft Docs
-description: Bu belge, Azure Güvenlik Merkezi'nde güvenlik uyarılarını doğrulamanıza yardımcı olur.
+title: Azure Güvenlik Merkezi 'nde uyarı doğrulaması | Microsoft Docs
+description: Azure Güvenlik Merkezi 'nde güvenlik uyarılarınızın doğru şekilde yapılandırıldığını nasıl doğrulayacağınızı öğrenin
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 0c777c2461047f21e8fb413faec6d5f1140fc75f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 764a2263587a477eb506edec1e0f661d0ca7ae31
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91438806"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971617"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde uyarı doğrulama
 Bu belge, sisteminizin Azure Güvenlik Merkezi uyarıları için doğru yapılandırılıp yapılandırılmadığını doğrulamayı öğrenmenize yardımcı olur.
@@ -26,12 +26,6 @@ Bu belge, sisteminizin Azure Güvenlik Merkezi uyarıları için doğru yapılan
 ## <a name="what-are-security-alerts"></a>Güvenlik uyarıları nedir?
 Uyarılar, Güvenlik Merkezi’nin kaynaklarınızda tehditler algıladığında oluşturduğu bildirimlerdir. Sorunu hızlı bir şekilde araştırmak için gereken bilgilerle birlikte uyarıları önceliklendirir ve listeler. Güvenlik Merkezi ayrıca bir saldırıyı nasıl düzeltebileceğiniz konusunda öneriler sağlar.
 Daha fazla bilgi için bkz. Güvenlik [Merkezi 'Nde güvenlik uyarıları](security-center-alerts-overview.md) ve [güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md)
-
-## <a name="alert-validation"></a>Uyarı doğrulaması
-
-* [Windows](#validate-windows)
-* [Linux](#validate-linux)
-* [Kubernetes](#validate-kubernetes)
 
 ## <a name="validate-alerts-on-windows-vms"></a>Windows VM 'lerinde uyarıları doğrulama <a name="validate-windows"></a>
 

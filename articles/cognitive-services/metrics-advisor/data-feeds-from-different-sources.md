@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 09/04/2020
+ms.date: 10/12/2020
 ms.author: aahi
-ms.openlocfilehash: 343db078880f55701730e096c3da85a6a7e5428a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11b75bcadc6292c17ef7e1e0f482d0c53bd9f8f5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324476"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971957"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Farklı veri kaynaklarından ölçüm Danışmanı 'na veri akışları ekleme
 
@@ -43,7 +43,7 @@ Farklı türlerde veri kaynaklarını ölçüm Danışmanı 'na bağlamaya yöne
 |[**Azure Veri Gezgini (Kusto)**](#kusto) | Temel<br>Managedıdentity kimliğine|
 |[**Azure Data Lake Storage Gen2**](#adl) | Temel<br>DataLakeGen2SharedKey<br>Hizmet sorumlusu<br>Anahtar kasasından hizmet sorumlusu<br> |
 |[**Azure SQL veritabanı/SQL Server**](#sql) | Temel<br>Managedıdentity kimliğine<br>Hizmet sorumlusu<br>Anahtar kasasından hizmet sorumlusu<br>Azuressqlconnectionstring
-|[**Azure Table Storage**](#table) | Temel | 
+|[**Azure Tablo depolama**](#table) | Temel | 
 |[**ElasticSearch**](#es) | Temel |
 |[**Http isteği**](#http) | Temel | 
 |[**Etkileyen (etkileyen XQL)**](#influxdb) | Temel |
@@ -93,7 +93,7 @@ Bir **kimlik bilgisi varlığı** oluşturun ve veri kaynaklarınızda kimlik do
   
   * v1 (varsayılan değer)
 
-      Yalnızca ölçüm *adı* ve *değeri* kabul edilir. Örneğin:
+      Yalnızca ölçüm *adı* ve *değeri* kabul edilir. Örnek:
     
       ``` JSON
       {"count":11, "revenue":1.23}
@@ -101,7 +101,7 @@ Bir **kimlik bilgisi varlığı** oluşturun ve veri kaynaklarınızda kimlik do
 
   * v2
 
-      Ölçüm *boyutları* ve *zaman damgası* da kabul edilir. Örneğin:
+      Ölçüm *boyutları* ve *zaman damgası* da kabul edilir. Örnek:
       
       ``` JSON
       [
@@ -133,7 +133,7 @@ JSON dosyası başına yalnızca bir zaman damgasına izin verilir.
 
 ## <a name="span-idkustoazure-data-explorer-kustospan"></a><span id="kusto">Azure Veri Gezgini (Kusto)</span>
 
-* **Bağlantı dizesi**: Azure Veri Gezgini bağlantı dizesi alma hakkında bilgi için bkz. [bağlantı dizesini görüntüleme ve kopyalama](https://docs.microsoft.com/azure/data-explorer/kusto/api/connection-strings/kusto) (kusto).
+* **Bağlantı dizesi**: ölçüm Danışmanı, Azure AD uygulama kimlik doğrulamasını kullanarak Azure Veri Gezgini (kusto) erişimi destekler. Bir Azure AD uygulaması oluşturup kaydetmeniz ve Azure Veri Gezgini veritabanına erişmek için bu uygulamayı yetkilendirmeniz gerekecektir. Bağlantı dizenizi almak için bkz. [Azure Veri Gezgini](https://docs.microsoft.com/azure/data-explorer/provision-azure-ad-app) belgeleri.
 
 * **Sorgu**: çok boyutlu zaman serisi verilerine veri almak ve bunları düzenlemek için bkz. [kusto Query Language](https://docs.microsoft.com/azure/data-explorer/kusto/query) . `@StartTime` `@EndTime` Sorgunuzdaki ve değişkenlerini kullanabilirsiniz. Bunların biçimlendirilmesi gerekir: `yyyy-MM-dd HH:mm:ss` .
 
@@ -159,7 +159,7 @@ JSON dosyası başına yalnızca bir zaman damgasına izin verilir.
   * `%h` saat olarak biçimlendirilir `HH`
   * `%M` dakika olarak biçimlendirilir `mm`
 
-Şu anda ölçüm Danışmanı, JSON dosyalarındaki veri şemasını aşağıda gösterildiği gibi destekler. Örneğin:
+Şu anda ölçüm Danışmanı, JSON dosyalarındaki veri şemasını aşağıda gösterildiği gibi destekler. Örnek:
 
 ``` JSON
 [
@@ -210,7 +210,7 @@ The timestamp field must match one of these two formats:
     select StartDate, JobStatusId, COUNT(*) AS JobNumber from IngestionJobs WHERE and StartDate = '2019-12-12 00:00:00'
     ```
 
-## <a name="span-idtableazure-table-storagespan"></a><span id="table">Azure Table Storage</span>
+## <a name="span-idtableazure-table-storagespan"></a><span id="table">Azure Tablo depolama</span>
 
 * **Bağlantı dizesi**: Azure Tablo depolamadan bağlantı dizesinin nasıl alınacağını öğrenmek için lütfen [bir bağlantı dizesini görüntüleme ve kopyalama](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage?toc=%2Fazure%2Fstorage%2Ftables%2Ftoc.json&tabs=azure-portal#view-account-access-keys) bölümüne bakın.
 

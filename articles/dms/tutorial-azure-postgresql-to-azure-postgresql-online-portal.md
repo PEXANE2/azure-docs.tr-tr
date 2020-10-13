@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: 3f7b45e88eeb1e391ec86fa230a87e9f5194cd60
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: ef840abdfdb51e2472615ffabf0b49545b6fef3f
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893807"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938432"
 ---
 # <a name="tutorial-migrate-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>Öğretici: PostgreSQL için Azure DB-tek sunuculu Azure DB 'yi PostgreSQL için Azure DB 'ye geçirme-Azure portal aracılığıyla DMS kullanarak tek sunuculu bir çevrimiçi
 
-Azure veritabanı geçiş hizmeti 'ni, bir [PostgreSQL Için Azure veritabanı-tek sunuculu](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) bir örnek, en az kapalı kalma süresine sahip [PostgreSQL için Azure veritabanı-tek sunuculu bir sunucu](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) örneği ile geçirmek için kullanabilirsiniz. Bu öğreticide, Azure veritabanı geçiş hizmeti 'ndeki çevrimiçi geçiş etkinliğini kullanarak PostgreSQL için Azure veritabanı ile v10 arasındaki ' dan PostgreSQL için Azure veritabanı 'na (tek sunucu) ait **DVD Kiralama** örneği veritabanını geçireceğiniz.
+Azure veritabanı geçiş hizmeti 'ni, [PostgreSQL Için Azure veritabanı-tek sunuculu](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) bir SQL örneğinden, PostgreSQL için Azure veritabanı 'nın aynı veya farklı bir sürümüne, örneğin, PostgreSQL için Azure veritabanı 'na (en az kapalı kalma süresi Ile) esnek sunucuya geçirmek için kullanabilirsiniz. Bu öğreticide, Azure veritabanı geçiş hizmeti 'ndeki çevrimiçi geçiş etkinliğini kullanarak PostgreSQL için Azure veritabanı ile v10 arasındaki ' dan PostgreSQL için Azure veritabanı 'na (tek sunucu) ait **DVD Kiralama** örneği veritabanını geçireceğiniz.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
@@ -286,6 +286,9 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
     ![Tam geçişi ekranını doldurun](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-complete-cutover.png)
 
 3. Veritabanı geçiş durumu **tamamlandı**olarak görüntülendiğinde, [dizileri yeniden oluşturun](https://wiki.postgresql.org/wiki/Fixing_Sequences) (varsa) ve uygulamalarınızı PostgreSQL için Azure veritabanı 'nın yeni hedef örneğine bağlayın.
+ 
+> [!NOTE]
+> Azure veritabanı geçiş hizmeti, PostgreSQL için Azure veritabanı-tek sunucu 'da azaltılmış kapalı kalma süresiyle büyük sürüm yükseltmeleri gerçekleştirmek için kullanılabilir. İlk olarak, istenen daha fazla PostgreSQL sürümü, ağ ayarları ve parametreleri ile bir hedef veritabanı yapılandırırsınız. Daha sonra, yukarıda açıklanan yordamı kullanarak hedef veritabanlarına geçişi başlatabilirsiniz. Hedef veritabanı sunucusuna geçiş yaptıktan sonra, uygulama Bağlantı dizenizi hedef veritabanı sunucusuna işaret etmek üzere güncelleştirebilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

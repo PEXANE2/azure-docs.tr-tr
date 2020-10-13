@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 920f7f2fa6fb6e80b060f0308b124a3a1214cb3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8fcadb8bdd4862dd95625228e3c190e5fe19a9a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86204463"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961689"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Birimleri yönetmek için StorSimple Aygıt Yöneticisi hizmetini kullanın (güncelleştirme 3 veya üzeri)
 
@@ -57,8 +57,8 @@ Her cihaz ve birim türü için sağlanan maksimum kapasite için aşağıdaki t
 | 8100 |64 TB |8 TB |
 | 8600 |64 TB |20 TB |
 | **Sanal cihazlar** | | |
-| 8010 |30 TB |Yok |
-| 8020 |64 TB |Yok |
+| 8010 |30 TB |YOK |
+| 8020 |64 TB |YOK |
 
 ## <a name="the-volumes-blade"></a>Birimler dikey penceresi
 
@@ -112,7 +112,7 @@ StorSimple 8000 serisi cihazınızın dağıtımı sırasında [bir birim oluşt
       
        8100 cihazınızda 8,5 TB boyutunda (izin verilen en yüksek boyut) yerel olarak sabitlenmiş bir birim sağlarsanız, cihazdaki kullanılabilir yerel alanın tümünü kullanmış olursunuz. Katmanlı birimin çalışan kümesinin barındıracak cihazda yerel alan olmadığından, bu noktadan sonra herhangi bir katmanlı birim oluşturamazsınız. Var olan katmanlı birimler kullanılabilir alanı de etkiler. Örneğin, zaten 106 TB boyutunda katmanlı birimlerin bulunduğu bir 8100 cihazınız varsa, yerel olarak sabitlenmiş birimlerin kullanabileceği yalnızca 4 TB’lık alan kalır.
 
-    6. **Bağlı konaklar** alanında oka tıklayın. **Bağlı konaklar** dikey penceresinde, var olan bir ACR seçin veya yeni bir ACR ekleyin. Yeni bir ACR seçerseniz, ACR 'niz için bir **ad** sağlayın, Windows ana bilgisayarınız Için **iSCSI tam adını** (IQN) sağlayın. IQN’niz yoksa Windows Server konağının IQN’sini al’a gidin. **Oluştur**’a tıklayın. Belirtilen ayarlarla bir birim oluşturulur.
+    6. **Bağlı konaklar** alanında oka tıklayın. **Bağlı konaklar** dikey penceresinde, var olan bir ACR seçin veya yeni bir ACR ekleyin. Yeni bir ACR seçerseniz, ACR 'niz için bir **ad** sağlayın, Windows ana bilgisayarınız Için **iSCSI tam adını** (IQN) sağlayın. IQN’niz yoksa Windows Server konağının IQN’sini al’a gidin. **Oluştur**'a tıklayın. Belirtilen ayarlarla bir birim oluşturulur.
 
         ![Oluştur’a tıklayın](./media/storsimple-8000-manage-volumes-u2/step5createvol3.png)
 
@@ -155,11 +155,11 @@ Bir birimi genişletmeniz veya birime erişen Konakları değiştirmeniz gerekti
    3. **Sağlanan kapasiteyi**artırın. **Sağlanan kapasite** yalnızca artırılabilir. Oluşturulduktan sonra bir birimi daraltamazsınız.
    4. **Bağlı konaklar**' ın altında ACR 'yi değiştirebilirsiniz. Bir ACR 'yi değiştirmek için birimin çevrimdışı olması gerekir.
 
-       ![Birimi çevrimdışına alma etkisini gözden geçirin](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
+       ![Birimi çevrimdışı duruma getirme etkisini gözden geçirme 2](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 
 5. Değişikliklerinizi kaydetmek için **Kaydet**’e tıklayın. Onayınız istendiğinde **Evet**’e tıklayın. Azure portal güncelleştirme birimi iletisi görüntülenir. Birim başarıyla güncelleştirildiği zaman başarılı bir ileti görüntülenir.
 
-    ![Birimi çevrimdışına alma etkisini gözden geçirin](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![Birimi çevrimdışı duruma getirme etkisini gözden geçirme 3](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
 
 7. Bir birimi genişletiğiniz takdirde, Windows ana bilgisayarınızda aşağıdaki adımları uygulayın:
    
@@ -215,7 +215,7 @@ Diğer birimleri sağlamak için ek alana ihtiyaç duyuyorsanız, yerel olarak s
 
 1. StorSimple Cihaz Yöneticisi hizmetinize gidin ve **Cihazlar**’a tıklayın. Cihazların tablolu listesinden, değiştirmek istediğiniz birimin bulunduğu cihazı seçin. **Ayarlar > birimler**' e tıklayın.
 
-    ![Birimler dikey penceresine git](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+    ![Birimlere git dikey penceresi 2](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
 3. Birimlerin tablolu listesinden birim ' i seçin ve bağlam menüsünü çağırmak için sağ tıklayın. **Değiştir**'i seçin.
 
@@ -249,7 +249,7 @@ Birimi değiştirmeyi veya silmeyi planlarken bir birimi çevrimdışına alman�
    
     1. StorSimple Cihaz Yöneticisi hizmetinize gidin ve **Cihazlar**’a tıklayın. Cihazların tablolu listesinden, değiştirmek istediğiniz birimin bulunduğu cihazı seçin. **Ayarlar > birimler**' e tıklayın.
 
-        ![Birimler dikey penceresine git](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+        ![Birimler dikey penceresine git 3](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
     2. Birimlerin tablolu listesinden birim ' i seçin ve bağlam menüsünü çağırmak için sağ tıklayın. Çevrimdışı olarak değiştireceğiniz birimi çevrimdışına **Al** ' ı seçin.
 
@@ -257,7 +257,7 @@ Birimi değiştirmeyi veya silmeyi planlarken bir birimi çevrimdışına alman�
 
 3. **Çevrimdışına Al** dikey penceresinde, birimi çevrimdışı duruma getirmenin etkilerini gözden geçirin ve ilgili onay kutusunu seçin. **Çevrimdışına Al**' a tıklayın. 
 
-    ![Birimi çevrimdışına alma etkisini gözden geçirin](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![Birimi çevrimdışı duruma getirme etkisini gözden geçirme 4](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
       
       Birim çevrimdışıyken bilgilendirilirsiniz. Birim durumu da çevrimdışı olarak güncelleştirilir.
       
@@ -277,7 +277,7 @@ Bir birimi silmek için aşağıdaki adımları izleyin.
 
 1. StorSimple Cihaz Yöneticisi hizmetinize gidin ve **Cihazlar**’a tıklayın. Cihazların tablolu listesinden, değiştirmek istediğiniz birimin bulunduğu cihazı seçin. **Ayarlar > birimler**' e tıklayın.
 
-    ![Birimler dikey penceresine git](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+    ![Birimler dikey penceresine git 4](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
 3. Silmek istediğiniz birimin durumunu denetleyin. Silmek istediğiniz birim çevrimdışı değilse, önce çevrimdışına alın. [Birimi çevrimdışına alma](#take-a-volume-offline)bölümündeki adımları izleyin.
 4. Birim çevrimdışı olduktan sonra, birimi seçin, bağlam menüsünü çağırmak için sağ tıklayın ve **Sil**' i seçin.

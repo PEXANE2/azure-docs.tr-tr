@@ -1,6 +1,6 @@
 - name: SQL Edge Belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: SQL Edge nedir?
       href: overview.md
@@ -142,3 +142,9 @@
   items:
     - name: Transact-SQL (T-SQL) Başvurusu
       href: 'https://docs.microsoft.com/sql/t-sql/language-reference'
+- name: Kaynaklar
+  items:
+    - name: İş Ortakları
+      items:
+        - name: Güvenlik
+          href: resources-partners-security.md

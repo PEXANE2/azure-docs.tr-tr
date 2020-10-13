@@ -3,12 +3,12 @@ title: İş ortağı KIMLIĞINIZI, temsilcili kaynaklar üzerinde ortağın kaza
 description: İş ortağı KIMLIĞINIZI, Azure açık Thouse aracılığıyla yönettiğiniz müşteri kaynaklarında iş ortağı kazanılan kredisi (PEC) alacak şekilde ilişkilendirmeyi öğrenin.
 ms.date: 10/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 5caa205ce74152c7ec047952f66c1bf9188ddf02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9d80a94e52f6f6a8aef5f5284659750084b0b5e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776179"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974456"
 ---
 # <a name="link-your-partner-id-to-enable-partner-earned-credit-on-delegated-resources"></a>İş ortağı KIMLIĞINIZI, temsilcili kaynaklar üzerinde ortağın kazanıldığını etkinleştirmek için bağlayın
 
@@ -22,17 +22,17 @@ ms.locfileid: "91776179"
 
 Azure Resource Manager şablonlar (ARM şablonları) aracılığıyla müşterileri eklerken, iş ortağı KIMLIĞINIZI bağlamak ve iş ortağı kazanılmış krediyi etkinleştirmek için aşağıdaki işlemi kullanın. Bu adımları tamamlayabilmeniz için [MPN iş ortağı kimliğinizi](/partner-center/partner-center-account-setup#locate-your-mpn-id) bilmeniz gerekir. İş ortağı profilinizde gösterilen **İlişkili MPN kimliğini** kullandığınızdan emin olun.
 
-Kolaylık olması için kiracınızda bir hizmet sorumlusu hesabı oluşturmanızı, **ilişkili MPN Kimliğinizle**bağlamayı ve ardından, sahip olduğunuz her MÜŞTERIYE, [PEC için uygun olan bir Azure yerleşik rolüyle](https://docs.microsoft.com/partner-center/azure-roles-perms-pec)birlikte erişim vermeyi öneririz.
+Kolaylık olması için kiracınızda bir hizmet sorumlusu hesabı oluşturmanızı, **ilişkili MPN Kimliğinizle**bağlamayı ve ardından, sahip olduğunuz her MÜŞTERIYE, [PEC için uygun olan bir Azure yerleşik rolüyle](/partner-center/azure-roles-perms-pec)birlikte erişim vermeyi öneririz.
 
 1. Yönettiğiniz kiracınızda [bir hizmet sorumlusu hesabı oluşturun](../../active-directory/develop/howto-authenticate-service-principal-powershell.md) . Bu örnek için, bu hizmet sorumlusu PEC Automation hesabını adı vereceğiz.
 1. Bu hizmet sorumlusu hesabını kullanarak, yönetim kiracınızdaki [ilişkili MPN Kimliğinizle bağlantı](../../cost-management-billing/manage/link-partner-id.md#link-to-a-partner-id) yapın. Bunu yalnızca bir kez yapmanız gerekir.
-1. [ARM şablonları kullanarak bir müşteriyi](onboard-customer.md)eklediğinizde, PEC [Için uygun olan Azure yerleşik rolüne](https://docs.microsoft.com/partner-center/azure-roles-perms-pec)sahıp bir kullanıcı olarak PEC Automation hesabını içeren bir yetkilendirme eklediğinizden emin olun.
+1. [ARM şablonları kullanarak bir müşteriyi](onboard-customer.md)eklediğinizde, PEC [Için uygun olan Azure yerleşik rolüne](/partner-center/azure-roles-perms-pec)sahıp bir kullanıcı olarak PEC Automation hesabını içeren bir yetkilendirme eklediğinizden emin olun.
 
 Bu adımları izleyerek, yönettiğiniz her müşteri kiracısı iş ortağı KIMLIĞINIZLE ilişkilendirilecektir ve bu müşteriler için PEC almanızı sağlar. PEC Automation hesabının, müşteri kiracısında herhangi bir eylem doğrulaması yapması veya herhangi bir işlem yapması gerekmez.
 
 ## <a name="add-your-partner-id-to-previously-onboarded-customers"></a>İş ortağı KIMLIĞINIZI daha önce eklendi müşterilerine ekleyin
 
-Zaten bir müşteriyi eklendi, PEC Automation hesabı hizmet sorumlunuzu eklemek için başka bir dağıtım yapmak istemeyebilirsiniz. Bunun yerine, **ilişkili MPN kimliğinizi** bu müşterinin kiracısında çalışmaya erişimi olan bir kullanıcı hesabıyla bağlayabilirsiniz. Hesaba [PEC için uygun bir Azure yerleşik rolü](https://docs.microsoft.com/partner-center/azure-roles-perms-pec)verildiğinden emin olun.
+Zaten bir müşteriyi eklendi, PEC Automation hesabı hizmet sorumlunuzu eklemek için başka bir dağıtım yapmak istemeyebilirsiniz. Bunun yerine, **ilişkili MPN kimliğinizi** bu müşterinin kiracısında çalışmaya erişimi olan bir kullanıcı hesabıyla bağlayabilirsiniz. Hesaba [PEC için uygun bir Azure yerleşik rolü](/partner-center/azure-roles-perms-pec)verildiğinden emin olun.
 
 Hesap, yönetim kiracınızda [ilişkili MPN Kimliğinizle bağlantı](../../cost-management-billing/manage/link-partner-id.md#link-to-a-partner-id) kurulduktan sonra, bu MÜŞTERI için PEC elde edersiniz.
 

@@ -1,20 +1,20 @@
 ---
 title: Öğretici-özelleştirilmiş Azure Active Directory Domain Services yönetilen etki alanı oluşturma | Microsoft Docs
 description: Bu öğreticide, özelleştirilmiş Azure Active Directory Domain Services yönetilen bir etki alanı oluşturma ve yapılandırma ve Azure portal kullanarak gelişmiş yapılandırma seçeneklerini belirtme hakkında bilgi edineceksiniz.
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 8b48cfa29555cf0ca15428758208df27a52a84f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 23c15bca8c3385a8e115cd0a85d2e5b4f1553007
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87491146"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967351"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain-with-advanced-configuration-options"></a>Öğretici: Gelişmiş yapılandırma seçenekleriyle Azure Active Directory Domain Services yönetilen bir etki alanı oluşturma ve yapılandırma
 
@@ -22,7 +22,7 @@ Azure Active Directory Domain Services (Azure AD DS), Windows Server Active Dire
 
 Ağ ve eşitleme için [varsayılan yapılandırma seçeneklerini kullanarak yönetilen bir etki alanı oluşturabilir][tutorial-create-instance] veya bu ayarları el ile tanımlayabilirsiniz. Bu öğreticide, Azure portal kullanarak Azure AD DS yönetilen bir etki alanı oluşturmak ve yapılandırmak için bu gelişmiş yapılandırma seçeneklerini nasıl tanımlayacağınızı gösterilmektedir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Yönetilen bir etki alanı için DNS ve sanal ağ ayarlarını yapılandırma
@@ -165,7 +165,7 @@ Azure AD DS, Azure AD 'de bulunan *Tüm* kullanıcıları ve grupları ya da yal
 
     ![Azure AD 'den Kullanıcı ve grupların tam eşitlemesini gerçekleştirme](./media/tutorial-create-instance-advanced/sync-all.png)
 
-1. **Gözden geçir ve oluştur**’u seçin.
+1. **Gözden geçir + oluştur**’u seçin.
 
 ## <a name="deploy-the-managed-domain"></a>Yönetilen etki alanını dağıtma
 

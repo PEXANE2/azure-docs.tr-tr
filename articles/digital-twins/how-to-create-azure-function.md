@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 11034a585db6ef3a3e1e445bbed8a1e51f83948d
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: bf2894cc30873e3cbf7f379e22078dbb863ac179
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949795"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970444"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Verileri işlemek için Azure Işlevleri uygulamalarına bağlanma
 
@@ -232,18 +232,18 @@ Ayrıca, _kimlik_ sayfasında GÖSTERILEN **nesne kimliğini** bir sonraki böl�
 
 ### <a name="assign-access-roles-using-azure-portal"></a>Azure portal kullanarak erişim rolleri atama
 
-Azure _rol atamaları ' nı seçin,_ Azure rol atamaları sayfasına kadar açılır. Ardından _+ rol ataması Ekle (Önizleme)_ seçeneğini belirleyin.
+Azure *rol atamaları sayfasını açmak* için _Azure rol atamaları_ düğmesini seçin. Ardından _+ rol ataması Ekle (Önizleme)_ seçeneğini belirleyin.
 
 :::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
-Açılan _rol ataması Ekle (Önizleme)_ penceresinde şunları seçin:
+Açılan _rol ataması Ekle (Önizleme)_ sayfasında şunları seçin:
 
 * _Kapsam_: Kaynak grubu
 * _Abonelik_: Azure aboneliğinizi seçin
 * _Kaynak grubu_: açılan listeden kaynak grubunuzu seçin
 * _Rol_: açılan listeden _Azure dijital TWINS sahibini (Önizleme)_ seçin
 
-_Kaydet_ düğmesini seçerek ayrıntılarınızı kaydedin.
+Sonra, _Kaydet_ düğmesine basarak ayrıntılarınızı kaydedin.
 
 :::image type="content" source="media/how-to-create-azure-function/add-role-assignment.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 

@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 09/24/2020
+ms.date: 10/12/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 784a0acf139aa05179fd92afb4eab299c2669590
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 806505e5ac9c9b3dcf53624a1151961b0db45ef9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630857"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972518"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Sanal ağlarla Azure Machine Learning ınvenli bir ortamın güvenliğini sağlama
 
@@ -81,11 +81,17 @@ Bir sanal ağdaki AKS 'leri çalışma alanınıza eklemek için aşağıdaki ad
 
    ![Azure Machine Learning: Machine Learning İşlem sanal ağ ayarları](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
 
-1. Sanal ağı denetleyen NSG grubunun, sanal ağ dışından çağrılabilmesi için Puanlama uç noktası için etkin bir gelen güvenlik kuralına sahip olduğundan emin olun.
+1. Bir modeli bir Web hizmeti olarak AKS 'e dağıttığınızda, ikinci dereceden sınırlama isteklerini işlemek için bir Puanlama uç noktası oluşturulur. Sanal ağı denetleyen NSG grubunun, sanal ağın dışından çağırmak istiyorsanız, Puanlama uç noktasının IP adresi için etkinleştirilmiş bir gelen güvenlik kuralına sahip olduğundan emin olun.
+
+    Puanlama uç noktasının IP adresini bulmak için, dağıtılan hizmetin Puanlama URI 'sine bakın. Puanlama URI 'sini görüntüleme hakkında daha fazla bilgi için bkz. [Web hizmeti olarak dağıtılan bir modeli](how-to-consume-web-service.md#connection-information)kullanma.
+
    > [!IMPORTANT]
    > NSG için varsayılan giden kuralları saklayın. Daha fazla bilgi için bkz. [güvenlik gruplarında](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules)varsayılan güvenlik kuralları.
 
    [![Bir gelen güvenlik kuralı](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png#lightbox)
+
+    > [!IMPORTANT]
+    > Puanlama uç noktası için görüntüde gösterilen IP adresi dağıtımlarınız için farklı olacaktır. Aynı IP bir AKS kümesine yönelik tüm dağıtımlar tarafından paylaşıldığında, her bir AKS kümesi farklı bir IP adresine sahip olur.
 
 Azure Kubernetes hizmetini bir sanal ağa eklemek için Azure Machine Learning SDK 'sını de kullanabilirsiniz. Bir sanal ağda zaten bir AKS kümeniz varsa, bunları [aks 'e dağıtma](how-to-deploy-and-where.md)bölümünde açıklandığı gibi çalışma alanına ekleyin. Aşağıdaki kod, `default` adlı bir sanal ağın alt ağında yeni BIR AKS örneği oluşturur `mynetwork` :
 
