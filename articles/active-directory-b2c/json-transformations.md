@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/12/2020
+ms.date: 10/13/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 676b6abb28abf58287bfc9036ca907ae6a1ee192
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 20480a252d7aedfd48a59bc05166f645e02e37e9
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961298"
+ms.locfileid: "91998427"
 ---
 # <a name="json-claims-transformations"></a>JSON talep dönüştürmeleri
 
@@ -112,7 +112,7 @@ Aşağıdaki örnek, talep değerlerinin yanı sıra sabit dizeler temelinde bir
 </ClaimsTransformation>
 ```
 
-Aşağıdaki talep dönüştürmesi, bir REST API gönderilen isteğin gövdesi olacak bir JSON dize talebi verir. JSON nesnesinin yapısı, InputParameters 'ın nokta gösteriminde ve ınputclaim 'nin dönüştürme Tionclaimtypes öğesindeki kimlikler tarafından tanımlanır. Nokta gösterimindeki sayılar dizileri kapsıyor. Değerler Inputclaim değerlerinin ve InputParameters ' "Value" özelliklerinden gelir.
+Aşağıdaki talep dönüştürmesi, bir REST API gönderilen isteğin gövdesi olacak bir JSON dize talebi verir. JSON nesnesinin yapısı, InputParameters 'ın nokta gösteriminde ve ınputclaim 'nin dönüştürme Tionclaimtypes öğesindeki kimlikler tarafından tanımlanır. Değerler Inputclaim değerlerinin ve InputParameters ' "Value" özelliklerinden gelir.
 
 - Giriş talepleri:
   - **e-posta**, dönüşüm talep türü  **müştervarlığı. e-posta**: " john.s@contoso.com "

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 8a387adde6c74b8eb1ff950c5e6b5183e43d1f4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 500131121640026fd3fda5be9eecb376d2db8f0e
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448665"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999325"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Kubernetes iş yüklerinizi koruma
 
@@ -38,8 +38,8 @@ Güvenlik Merkezi, Azure Defender 'ı etkinleştirirseniz daha fazla kapsayıcı
 |Yayın durumu:|Önizleme|
 |Fiyat|Ücretsiz|
 |Gerekli roller ve izinler:|Bir atamayı düzenlemek için **sahip** veya **Güvenlik Yöneticisi**<br>Önerileri görüntülemek için **okuyucu**|
-|Desteklenen kümeler|Kubernetes v 1.14 (veya üzeri) gereklidir<br>Kümelerde Pod SecurityPolicy kaynağı (eski PSP modeli) yok<br>Windows düğümleri desteklenmez|
-|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Desteklenen kümeler:|Kubernetes v 1.14 (veya üzeri) gereklidir<br>Kümelerde Pod SecurityPolicy kaynağı (eski PSP modeli) yok<br>Windows düğümleri desteklenmez|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 
@@ -61,7 +61,7 @@ Azure Güvenlik Merkezi, **Kubernetes Için Azure ilke eklentisini**yüklediğin
         :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes-details.png" alt-text="Öneri * * Kubernetes için Azure Ilke eklentisi 'nin kümelerinizde yüklü ve etkin olması gerekir * *" öğesini seçin.
     1. **Parametreler** sekmesini açın ve değerleri gerektiği gibi değiştirin.
     1. **Gözden geçir + kaydet**' i seçin.
-    1. **Kaydet**’i seçin.
+    1. **Kaydet**'i seçin.
 
 
 1. Önerilerden herhangi birini zorlamak için, 

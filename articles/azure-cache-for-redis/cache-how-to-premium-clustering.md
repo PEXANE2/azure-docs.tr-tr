@@ -5,13 +5,13 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.date: 06/13/2018
-ms.openlocfilehash: d37aa275a07586738bf7416cee6611bdc8284df3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/09/2020
+ms.openlocfilehash: 9545dd1480b9d16285d936787cf37fc087e882e1
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88004767"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92000048"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Redsıs için Premium bir Azure önbelleği için Redsıs Kümelemesi yapılandırma
 Redin için Azure önbelleğinde, kümeleme, kalıcılık ve sanal ağ desteği gibi Premium katman özellikleri de dahil olmak üzere, önbellek boyutu ve özellikleri seçimine esneklik sağlayan farklı önbellek teklifleri vardır. Bu makalede, Redsıs örneği için Premium Azure önbelleğinde kümelemenin nasıl yapılandırılacağı açıklanır.
@@ -31,19 +31,51 @@ Azure 'da reddo kümesi, her parçanın Redsıs hizmeti için Azure Cache taraf�
 ## <a name="clustering"></a>Kümeleme
 Kümeleme, önbellek oluşturma sırasında **redsıs dikey penceresinde yeni Azure önbelleğinde** etkinleştirilir. 
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
+1. Premium önbellek oluşturmak için [Azure Portal](https://portal.azure.com) oturum açın ve **kaynak oluştur**' u seçin. Önbellekleri Azure portalında oluşturabileceğiniz gibi, Resource Manager şablonlarını, PowerShell'i veya Azure CLI'sini kullanarak da oluşturabilirsiniz. Redu için Azure önbelleği oluşturma hakkında daha fazla bilgi için bkz. [önbellek oluşturma](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
 
-Kümeleme, **Redsıs kümesi** dikey penceresinde yapılandırılır.
+    :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="Kaynak oluştur.":::
+   
+2. **Yeni** sayfada **veritabanları** ' nı seçin ve ardından **redsıs için Azure önbelleği**' ni seçin.
 
-![Kümeleme][redis-cache-clustering]
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Kaynak oluştur.":::
 
-Kümede en fazla 10 parça olabilir. **Etkin** ' e tıklayın ve kaydırıcıyı kaydırın veya parça **sayısı** için 1 ile 10 arasında bir sayı yazın ve **Tamam**' a tıklayın.
+3. **Yeni Redis Cache** sayfasında, yeni Premium önbelleğiniz için ayarları yapılandırın.
+   
+   | Ayar      | Önerilen değer  | Açıklama |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **DNS adı** | Genel olarak benzersiz bir ad girin. | Önbellek adı, yalnızca rakam, harf veya kısa çizgi içeren 1 ile 63 karakter arasında bir dize olmalıdır. Ad bir sayı veya harfle başlamalı ve bitmeli ve ardışık kısa çizgi içeremez. Önbellek örneğinizin *ana bilgisayar adı* * \<DNS name> . Redis.cache.Windows.net*olacaktır. | 
+   | **Abonelik** | Açılır ve aboneliğinizi seçin. | Redsıs örneği için bu yeni Azure önbelleğinin oluşturulacağı abonelik. | 
+   | **Kaynak grubu** | Açılır ve bir kaynak grubu seçin veya **Yeni oluştur** ' u seçin ve yeni bir kaynak grubu adı girin. | Önbelleğinizin ve diğer kaynaklarınızın oluşturulacağı kaynak grubunun adı. Tüm uygulama kaynaklarınızı tek bir kaynak grubuna yerleştirerek, bunları birlikte kolayca yönetebilir veya silebilirsiniz. | 
+   | **Konum** | Açılır ve bir konum seçin. | Önbelleğinizi kullanacak diğer hizmetlerin yakınında bir [bölge](https://azure.microsoft.com/regions/) seçin. |
+   | **Önbellek türü** | Açılır ve Premium özellikleri yapılandırmak için Premium önbellek seçin. Ayrıntılar için bkz. [redsıs fiyatlandırması Için Azure önbelleği](https://azure.microsoft.com/pricing/details/cache/). |  Fiyatlandırma katmanı önbellek için kullanılabilen boyut, performans ve özellikleri belirler. Daha fazla bilgi için bkz. [redsıs Için Azure önbelleği 'Ne genel bakış](cache-overview.md). |
 
-Her parça Azure tarafından yönetilen birincil/çoğaltma önbelleği çiftidir ve önbelleğin toplam boyutu, parça sayısı fiyatlandırma katmanında seçilen önbellek boyutuyla çarpılarak hesaplanır. 
+4. **Ağ** sekmesini seçin veya sayfanın altındaki **ağ** düğmesine tıklayın.
 
-![Kümeleme][redis-cache-clustering-selected]
+5. **Ağ** sekmesinde, bağlantı yönteminizi seçin. Premium önbellek örnekleri için genel IP adresleri veya hizmet uç noktaları aracılığıyla ya da özel bir uç nokta kullanarak özel olarak bağlanabilir.
 
-Önbellek oluşturulduktan sonra bu sunucuya bağlanır ve bunu kümelenmemiş bir önbellekte olduğu gibi kullanırsınız ve Redit verileri önbellek parçaları genelinde dağıtır. Tanılama [etkinleştirilmişse](cache-how-to-monitor.md#enable-cache-diagnostics), ölçümler her parça için ayrı olarak yakalanır ve reddo dikey penceresinde Azure önbelleğinde [görüntülenebilir](cache-how-to-monitor.md) . 
+6. **İleri: Gelişmiş** sekmesini seçin veya sayfanın altındaki **İleri: Gelişmiş** düğmesine tıklayın.
+
+7. Premium önbellek örneğinin **Gelişmiş** SEKMESINDE, TLS olmayan bağlantı noktası, kümeleme ve veri kalıcılığı için ayarları yapılandırın. Kümelendirmeyi etkinleştirmek için **Etkinleştir**' e tıklayın.
+
+    :::image type="content" source="media/cache-how-to-premium-clustering/redis-cache-clustering.png" alt-text="Kaynak oluştur.":::
+
+    Kümede en fazla 10 parça olabilir. **Etkinleştir**'e tıkladıktan sonra kaydırıcıyı kaydırın veya parça **sayısı** için 1 ile 10 arasında bir sayı yazın ve **Tamam 'a**tıklayın.
+
+    Her parça Azure tarafından yönetilen birincil/çoğaltma önbelleği çiftidir ve önbelleğin toplam boyutu, parça sayısı fiyatlandırma katmanında seçilen önbellek boyutuyla çarpılarak hesaplanır.
+
+    :::image type="content" source="media/cache-how-to-premium-clustering/redis-cache-clustering-selected.png" alt-text="Kaynak oluştur.":::
+
+    Önbellek oluşturulduktan sonra bu sunucuya bağlanır ve bunu kümelenmemiş bir önbellekte olduğu gibi kullanırsınız ve Redit verileri önbellek parçaları genelinde dağıtır. Tanılama [etkinleştirilmişse](cache-how-to-monitor.md#enable-cache-diagnostics), ölçümler her parça için ayrı olarak yakalanır ve reddo dikey penceresinde Azure önbelleğinde [görüntülenebilir](cache-how-to-monitor.md) . 
+
+8. **Sonraki: Etiketler** sekmesini seçin veya sayfanın altındaki **Sonraki: Etiketler** düğmesine tıklayın.
+
+9. İsteğe bağlı olarak, **Etiketler** sekmesinde, kaynağı sınıflandırmak istiyorsanız ad ve değeri girin. 
+
+10.  **Gözden geçir + oluştur**' u seçin. Azure 'un yapılandırmanızı doğruladığı, gözden geçir + Oluştur sekmesine götürülürsünüz.
+
+11. Yeşil doğrulama başarılı iletisi göründüğünde **Oluştur**' u seçin.
+
+Önbelleğin oluşturulması biraz zaman alır. Redsıs **genel bakış**   sayfasında ilerlemeyi izleyebilirsiniz.  **Durum**    **çalışıyor**olarak görüntülendiğinde, önbellek kullanıma hazırdır. 
 
 > [!NOTE]
 > 

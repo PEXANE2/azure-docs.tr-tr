@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Central sohbeti göster/gizle | Microsoft Docs
 description: Bu makalede IoT Central uygulamanızda sohbet gösterme ve gizleme açıklanır. Teknik desteğe erişmek için canlı sohbet kullanabilirsiniz.
-author: v-krghan
-ms.author: v-krghan
+author: dominicbetts
+ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: a8e93ea12f176a4b28f14f5878cc580873d3c7c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f290395f4bd7afccace5067a97e63dda553f183c
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80157713"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999719"
 ---
 # <a name="toggle-live-chat"></a>Canlı sohbeti açma/kapatma
 

@@ -10,13 +10,13 @@ author: gvashishtha
 ms.reviewer: larryfr
 ms.date: 09/17/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a9b8a2c2454c135c72d39a587e84220e8916e54b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: how-to, devx-track-python, deploy
+ms.openlocfilehash: 40d8d4596e7d93b589e44f2dde2d1cb453566d71
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91315448"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999232"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning ile modelleri dağıtma
 
@@ -316,8 +316,8 @@ Aşağıdaki tabloda farklı hizmet durumları açıklanmaktadır:
 | Kta | Hizmet, dağıtım sürecinde. | Hayır |
 | Uygun Değil | Hizmet dağıtıldı, ancak şu anda ulaşılamaz durumda.  | Hayır |
 | Unschedulable | Kaynak eksikliği nedeniyle hizmet şu anda dağıtılamıyor. | Hayır |
-| Başarısız | Hizmet bir hata veya kilitlenme nedeniyle dağıtılamadı. | Evet |
-| Sağlam | Hizmet sağlıklı ve uç nokta kullanılabilir. | Evet |
+| Başarısız | Hizmet bir hata veya kilitlenme nedeniyle dağıtılamadı. | Yes |
+| Sağlam | Hizmet sağlıklı ve uç nokta kullanılabilir. | Yes |
 
 
 ### <a name="batch-inference"></a><a id="azuremlcompute"></a> Toplu çıkarım

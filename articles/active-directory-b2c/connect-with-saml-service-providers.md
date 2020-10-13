@@ -12,12 +12,12 @@ ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2df2cf2a9d0a89f72078cd0da36272781e89e338
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 18afa6b2e974c605b18d4e38b82061234619e9ff
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961332"
+ms.locfileid: "91998117"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Azure AD B2C bir SAML uygulaması kaydetme
 
@@ -454,7 +454,7 @@ SAML belirteci, başarılı bir oturum açma işleminden sonra Azure AD B2C tara
 |`<Response>` `<Assertion>` `<Subject>` `<Conditions>` |`NotBefore` |Belirtecin geçerli hale geldiği zaman. Zaman değeri UTC olarak kodlanır. Uygulamanızın belirteç ömrünün geçerliliğini doğrulamak için bu talebi kullanması gerekir. Belirteç kullanım ömürleri üzerindeki ayarları değiştirmek için, `TokenNotBeforeSkewInSeconds` SAML belirteci sorunu teknik profili ' nin [meta verilerini](saml-issuer-technical-profile.md#metadata) ayarlayın. |
 |`<Response>` `<Assertion>` `<Subject>` `<Conditions>` | `NotOnOrAfter` | Belirtecin geçersiz hale geldiği zaman. Uygulamanızın belirteç ömrünün geçerliliğini doğrulamak için bu talebi kullanması gerekir. Değer, 15 dakika sonrasında `NotBefore` ve değiştirilemez.|
 |`<Response>` `<Assertion>` `<Conditions>` `<AudienceRestriction>` `<Audience>` | |Hedeflenen bir izleyiciyi tanımlayan bir URI başvurusu. Belirtecin amaçlanan alıcısını tanımlar. Değer SAML isteğiyle özdeştir `AssertionConsumerServiceURL` .|
-|`<Response>``<Assertion>` `<saml:AttributeStatement>` koleksiyonu`<Attribute>` | | [Bağlı olan taraf teknik profil](relyingparty.md#technicalprofile) çıktı taleplerde yapılandırıldığı şekilde onaylar koleksiyonu (talepler). Onay adını, çıkış talebinin ayarını ayarlayarak yapılandırabilirsiniz `PartnerClaimType` . |
+|`<Response>``<Assertion>` `<AttributeStatement>` koleksiyonu`<Attribute>` | | [Bağlı olan taraf teknik profil](relyingparty.md#technicalprofile) çıktı taleplerde yapılandırıldığı şekilde onaylar koleksiyonu (talepler). Onay adını, çıkış talebinin ayarını ayarlayarak yapılandırabilirsiniz `PartnerClaimType` . |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

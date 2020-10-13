@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 14f7b5546d30d98adf4a14408882c972687a2d71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb20bf4164cb2153f6786dbec04f79453554fa25
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86498806"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999736"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 'da Office 365 yönetim çözümü (Önizleme)
 
@@ -104,9 +104,9 @@ ms.locfileid: "86498806"
 > 
 > ###    <a name="q-what-will-happen-on-october-31-do-i-need-to-offboard-beforehand"></a>S: 31 Ekim 'de ne olur? Önceden Pano yapmam gerekir mi?
 > 
-> - **Office365** çözümünden veri alamazsınız. Bu çözüm Market 'te artık kullanılamayacak
+> - **Office365** çözümünden veri alamazsınız. Çözüm, çalışma alanınızdan kaldırılacak ve artık Market 'te kullanılamayacak.
 > - Azure Sentinel müşterileri için, Azure Sentinel **Securityınsights** çözümüne Log Analytics çalışma alanı çözümü **Office365** eklenecektir.
-> - Çözümünüzü el ile boşaltmıyorsanız, verileriniz 31 Ekim 'e göre otomatik olarak kesilir.
+> - Çözümünüzü 31 Ekim 'e kadar el ile boşaltmıyorsanız, verilerinizin bağlantısı otomatik olarak kesilir ve **Officeactivity** tablosu kaldırılır. Yine de, aşağıda açıklandığı gibi, Azure Sentinel 'de Office 365 bağlayıcısını etkinleştirdiğinizde tabloyu geri yükleyebilirsiniz.
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>S: veri, yeni çözüme aktarılsın mı?
 > Evet. **Office 365** çözümünü çalışma alanınızdan kaldırdığınızda, şema kaldırıldığı için verileri geçici olarak kullanılamıyor olacaktır. Yeni **Office 365** bağlayıcısını Sentinel 'de etkinleştirdiğinizde, şema çalışma alanına geri yüklenir ve önceden toplanan tüm veriler kullanılabilir hale gelir. 
@@ -245,7 +245,7 @@ Pano aşağıdaki tabloda gösterilen sütunları içerir. Her sütunda, belirti
 
 | Sütun | Açıklama |
 |:--|:--|
-| İşlemler | Tüm izlenen Office 365 aboneliklerinizden etkin kullanıcılar hakkında bilgiler sağlar. Ayrıca, zaman içinde gerçekleşen etkinlik sayısını da görebileceksiniz.
+| Operations | Tüm izlenen Office 365 aboneliklerinizden etkin kullanıcılar hakkında bilgiler sağlar. Ayrıca, zaman içinde gerçekleşen etkinlik sayısını da görebileceksiniz.
 | Exchange | Add-Mailbox Izin veya Set-Mailbox gibi Exchange Server etkinliklerinin dökümünü gösterir. |
 | SharePoint | Kullanıcıların SharePoint belgelerinde gerçekleştirdiği en iyi etkinlikleri gösterir. Bu kutucuktan ayrıntıya indığınızda arama sayfasında, bu etkinliklerin hedef belge ve bu etkinliğin konumu gibi ayrıntıları gösterilir. Örneğin, dosya erişimli bir olay için, erişilen belgeye, ilişkili hesap adına ve IP adresine bakabilirsiniz. |
 | Azure Active Directory | Kullanıcı parolası ve oturum açma girişimlerini sıfırlama gibi ilk kullanıcı etkinliklerini içerir. Ayrıntıya gitmediğiniz zaman, bu etkinliklerin sonuç durumu gibi ayrıntılarını görebileceksiniz. Bu, genellikle Azure Active Directory şüpheli etkinlikleri izlemek istediğinizde yararlı olur. |

@@ -9,12 +9,12 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: 3f74c593cd44470efd231578fddcf53715a3979a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 984977d7cef1a923bf7f17de0c503bddeeebcd82
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91575104"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998390"
 ---
 # <a name="what-is-iot-plug-and-play"></a>IoT Tak Çalıştır nedir?
 
@@ -67,10 +67,6 @@ Bir cihaz Oluşturucu olarak IoT Tak ve Kullan destekleyen bir IoT donanım ür�
 ## <a name="device-certification"></a>Cihaz sertifikasyonu
 
 [Iot Tak ve kullan Cihaz Sertifikası programı](howto-certify-device.md) , bir cihazın IoT Tak ve kullan sertifika gereksinimlerini karşıladığını doğrular. [Azure IoT cihaz kataloğuna yönelik ortak sertifikalı](https://aka.ms/devicecatalog)sertifikalı bir cihaz ekleyebilirsiniz.
-
-## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
-
-Bu IoT Tak ve Kullan yenileme, Orta ABD, Kuzey Avrupa ve Doğu Japonya bölgelerinde oluşturulan IoT Hub 'larında kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

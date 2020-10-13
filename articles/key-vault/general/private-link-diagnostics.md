@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 52ac5b89a0c7173b9b2585f84b5f34361b4b136c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 156edbeda225b5457d6f5e7d29482e393b510736
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744228"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998397"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>Azure Key Vault özel bağlantı yapılandırma sorunlarını tanılayın
 
@@ -34,7 +34,7 @@ Bu özelliğe yeni bir özelliktir, bkz. [Azure özel bağlantısı ile Key Vaul
 ### <a name="problems-not-covered-by-this-article"></a>Bu makalede kapsanmayan sorunlar
 
 - Aralıklı bir bağlantı sorunu var. Belirli bir istemcide, çalışan bazı istekler ve bazıları çalışmıyor görürsünüz. *Aralıklı sorunlar genellikle özel bağlantı yapılandırmasındaki bir sorundan kaynaklanmamalıdır; Bunlar ağ veya istemci aşırı yüklemesi için bir imzalardır.*
-- BYOK (Kendi Anahtarını Getir) veya CMK (müşteri tarafından yönetilen anahtarlar) destekleyen bir Azure ürünü kullanıyorsunuz ve bu ürün anahtar kasanıza erişemez. *Diğer ürün belgelerine bakın. Güvenlik Duvarı etkin olan anahtar kasaları için açık bir şekilde destek belirttiğinizden emin olun. Gerekirse, söz konusu ürün için ürün desteğine başvurun.*
+- BYOK (Kendi Anahtarını Getir), CMK (müşteri tarafından yönetilen anahtarlar) veya Anahtar Kasası 'nda depolanan gizli dizileri erişimi destekleyen bir Azure ürünü kullanıyorsunuz. Anahtar Kasası ayarlarında güvenlik duvarını etkinleştirdiğinizde, bu ürün anahtar kasanıza erişemez. *Ürüne özgü belgelere bakın. Güvenlik Duvarı etkin olan anahtar kasaları için açık bir şekilde destek belirttiğinizden emin olun. Gerekirse, söz konusu ürün için desteğe başvurun.*
 
 ### <a name="how-to-read-this-article"></a>Bu makaleyi okuma
 
@@ -46,9 +46,11 @@ Haydi başlayalım!
 
 ### <a name="confirm-that-your-client-runs-at-the-virtual-network"></a>İstemcinizin sanal ağda çalıştığını onaylayın
 
-Bu kılavuz, uygulama kodundan kaynaklanan anahtar kasasındaki bağlantıları düzeltgetirmenize yardımcı olmaya yöneliktir. Azure sanal makineler, Azure Service Fabric kümeleri, Azure App Service, Azure Kubernetes hizmeti (AKS) ve benzeri diğer uygulamalarda yürütülen uygulamalar ve betikler aşağıda verilmiştir.
+Bu kılavuz, uygulama kodundan kaynaklanan anahtar kasasındaki bağlantıları düzeltgetirmenize yardımcı olmaya yöneliktir. Azure sanal makineler, Azure Service Fabric kümeleri, Azure App Service, Azure Kubernetes hizmeti (AKS) ve benzeri diğer uygulamalarda yürütülen uygulamalar ve betikler aşağıda verilmiştir. Bu kılavuz, tarayıcının anahtar kasanıza doğrudan eriştiği Azure portal web tabanlı kullanıcı arabiriminde gerçekleştirilen erişimler için de geçerlidir.
 
-Özel bağlantıların tanımına göre, uygulama veya betiğin [Özel uç nokta kaynağının](../../private-link/private-endpoint-overview.md) dağıtıldığı sanal ağa bağlı makine, küme veya ortamda çalışıyor olması gerekir. Uygulama rastgele Internet 'e bağlı bir ağda çalışıyorsa, bu kılavuz geçerli DEĞILDIR ve olası özel bağlantılar kullanılamaz.
+Özel bağlantıların tanımına göre, uygulama, betik veya portalın, [Özel uç nokta kaynağının](../../private-link/private-endpoint-overview.md) dağıtıldığı sanal ağa bağlı makine, küme veya ortamda çalışıyor olması gerekir.
+
+Uygulama, komut dosyası veya Portal rastgele Internet 'e bağlı bir ağda çalışıyorsa, bu kılavuz geçerli DEĞILDIR ve olası özel bağlantılar kullanılamaz. Bu sınırlama, kullanıcı tarayıcısı yerine isteğe bağlı olarak sunulan uzak bir Azure makinesinde çalıştırıldıklarından, Azure Cloud Shell yürütülen komutlara da uygulanabilir.
 
 ### <a name="if-you-use-a-managed-solution-refer-to-specific-documentation"></a>Yönetilen bir çözüm kullanıyorsanız, belirli belgelere bakın
 
@@ -74,7 +76,7 @@ Aşağıdaki adımlar özel uç nokta bağlantısının onaylandığını ve ba�
 >[!IMPORTANT]
 > Güvenlik Duvarı ayarlarının değiştirilmesi, hala özel bağlantıları kullanmayan meşru istemcilerden erişimi kaldırabilir. Güvenlik Duvarı yapılandırmasındaki her bir değişikliğin etkilerini anladığınızdan emin olun.
 
-Önemli bir kavram, Özel bağlantıların yalnızca anahtar kasanıza erişim *izni verdiği* bir kavramdır. Var olan erişimi *kaldırmaz* . Genel Internet 'ten gelen erişimleri etkin bir şekilde engellemek için, Anahtar Kasası güvenlik duvarını açıkça etkinleştirmeniz gerekir:
+Önemli bir kavram, özel bağlantılar özelliğinin yalnızca veri alımını engellemek için kapalı bir sanal ağda anahtar kasanıza erişim *izni verdiği* bir kavramdır. Var olan erişimi *kaldırmaz* . Genel Internet 'ten gelen erişimleri etkin bir şekilde engellemek için, Anahtar Kasası güvenlik duvarını açıkça etkinleştirmeniz gerekir:
 
 1. Azure portal açın ve Anahtar Kasası kaynağınızı açın.
 2. Sol menüde **ağ**' ı seçin.
@@ -229,11 +231,11 @@ Azure aboneliğinizin bu tam adı taşıyan bir [özel DNS bölge](../../dns/pri
 
 Portalda abonelik sayfasına giderek ve Sol menüdeki "kaynaklar" seçeneğini belirleyerek bu kaynağın varolup olmadığını kontrol edebilirsiniz. Kaynak adı olmalıdır `privatelink.vaultcore.azure.net` ve kaynak türü **özel DNS bölge**olmalıdır.
 
-Normalde bu kaynak, tipik bir yöntemi kullanarak özel bir uç nokta oluşturduğunuzda otomatik olarak oluşturulur. Ancak bu kaynağın otomatik olarak oluşturulabileceği durumlar vardır ve bunu el ile yapmanız gerekir. Bu kaynak yanlışlıkla da silinmiş olabilir.
+Normalde bu kaynak, ortak bir yordam kullanarak özel bir uç nokta oluşturduğunuzda otomatik olarak oluşturulur. Ancak bu kaynağın otomatik olarak oluşturulabileceği durumlar vardır ve bunu el ile yapmanız gerekir. Bu kaynak yanlışlıkla da silinmiş olabilir.
 
 Bu kaynağınız yoksa aboneliğinizde yeni bir Özel DNS bölge kaynağı oluşturun. Adın `privatelink.vaultcore.azure.net` , boşluk veya ek noktalar olmadan tam olarak olması gerektiğini unutmayın. Yanlış adı belirtirseniz, bu makalede açıklanan ad çözümlemesi çalışmaz. Bu kaynağı oluşturma hakkında daha fazla bilgi için, bkz. [Azure Portal kullanarak Azure özel DNS bölgesi oluşturma](../../dns/private-dns-getstarted-portal.md). Bu sayfayı izlerseniz, bu noktada zaten bir tane olması gerektiğinden, sanal ağ oluşturma işlemini atlayabilirsiniz. Ayrıca, sanal makinelerle doğrulama yordamlarını atlayabilirsiniz.
 
-### <a name="confirm-that-the-private-dns-zone-must-be-linked-to-the-virtual-network"></a>Özel DNS bölgesinin sanal ağla bağlantılı olması gerektiğini onaylayın
+### <a name="confirm-that-the-private-dns-zone-is-linked-to-the-virtual-network"></a>Özel DNS bölgesinin sanal ağa bağlı olduğunu onaylayın
 
 Özel DNS bölgenin olması yeterli değildir. Ayrıca, Özel uç noktasını içeren sanal ağa bağlanmalıdır. Özel DNS bölgesi doğru sanal ağa bağlı değilse, bu sanal ağdan gelen herhangi bir DNS çözümlemesi Özel DNS bölgesini yoksayar.
 
@@ -250,7 +252,7 @@ Portalı kullanarak Özel DNS bölgeyi adıyla açın `privatelink.vaultcore.azu
 
 Anahtar Kasası adı çözümlemenin çalışması için, `A` sonek veya noktalar içermeyen basit kasa adına sahip bir kayıt olmalıdır. Örneğin, ana bilgisayar adı ise, `fabrikam.vault.azure.net` `A` `fabrikam` herhangi bir sonek veya nokta olmadan adında bir kayıt olmalıdır.
 
-Ayrıca, `A` kaydın değeri (IP adresi) [anahtar KASASı özel IP adresi](#find-the-key-vault-private-ip-address-in-the-virtual-network)olmalıdır. Kaydı buldıysanız, `A` ancak yanlış IP adresini içeriyorsa, yanlış IP adresini kaldırmalı ve yeni bir tane eklemeniz gerekir. Kaydın tamamını kaldırmalı `A` ve yeni bir tane eklemeniz önerilir.
+Ayrıca, `A` kaydın değeri (IP adresi) [anahtar KASASı özel IP adresi](#find-the-key-vault-private-ip-address-in-the-virtual-network)olmalıdır. `A`Kaydı bulursanız Ancak yanlış IP adresini içeriyorsa, yanlış IP adresini kaldırmalı ve yeni bir tane eklemeniz gerekir. Kaydın tamamını kaldırmalı `A` ve yeni bir tane eklemeniz önerilir.
 
 >[!NOTE]
 > Bir kaydı kaldırdığınızda veya değiştirdiğinizde `A` , TTL (yaşam süresi) değeri henüz kullanım süresinin dolamadığı için makine ESKI IP adresine çözümlenmeye devam edebilir. Her zaman 60 saniyeden (bir dakika) daha küçük bir TTL değeri belirtmeniz ve 600 saniyeden (10 dakika) daha büyük olmaması önerilir. Çok büyük bir değer belirtirseniz, istemcileriniz kesintileri kurtarmak çok uzun sürebilir.
@@ -259,9 +261,9 @@ Ayrıca, `A` kaydın değeri (IP adresi) [anahtar KASASı özel IP adresi](#find
 
 Birden çok sanal ağ varsa ve her birinin aynı anahtar kasasına başvuran kendi özel uç noktası kaynağı varsa, Anahtar Kasası ana bilgisayar adının ağa bağlı olarak farklı bir özel IP adresine çözümlenmesi gerekir. Bu, her biri farklı bir sanal ağa bağlanan ve kayıttaki farklı bir IP adresi kullanan birden çok Özel DNS bölgesinin da gerekli olduğu anlamına gelir `A` .
 
-Daha Gelişmiş senaryolarda, eşleme etkin birden çok sanal ağ vardır. Bu durumda, yalnızca bir sanal ağın özel uç nokta kaynağına ihtiyacı vardır, ancak her ikisinin de Özel DNS bölge kaynağıyla bağlantılı olması gerekebilir. Bu senaryo bu belge tarafından doğrudan ele alınmıyor.
+Daha Gelişmiş senaryolarda, sanal ağlarda eşleme etkinleştirilmiş olabilir. Bu durumda, yalnızca bir sanal ağın özel uç nokta kaynağına ihtiyacı vardır, ancak her ikisinin de Özel DNS bölge kaynağıyla bağlantılı olması gerekebilir. Bu senaryo bu belge tarafından doğrudan ele alınmıyor.
 
-### <a name="fact-you-have-control-over-dns-resolution"></a>Olgu: DNS çözümlemesi üzerinde denetiminiz var
+### <a name="understand-that-you-have-control-over-dns-resolution"></a>DNS çözümlemesi üzerinde denetiminiz olduğunu anlayın
 
 [Önceki bölümde](#key-vault-with-private-link-resolving-from-arbitrary-internet-machine)açıklandığı gibi, özel bağlantıları olan bir Anahtar Kasası `{vaultname}.privatelink.vaultcore.azure.net` *ortak* kaydında diğer ada sahiptir. Sanal ağ tarafından kullanılan DNS sunucusu ortak kaydı kullanır, ancak *özel* bir kayıt için her bir diğer adı denetler ve bir tane bulunursa, genel kayıtta tanımlanan diğer adları durdurur.
 
@@ -324,9 +326,9 @@ Yanıt üst bilgisi içermelidir `x-ms-keyvault-network-info` :
 ### <a name="query-the-key-vault-ip-address-directly"></a>Anahtar Kasası IP adresini doğrudan sorgulama
 
 >[!IMPORTANT]
-> HTTPS sertifika doğrulaması olmadan anahtar kasasına erişilmesi tehlikelidir ve yalnızca öğrenme amacıyla kullanılabilir. Üretim kodu, bu istemci tarafı doğrulaması olmadan anahtar kasasına HIÇBIR şekilde erişmelidir. Sorunları tanısanız bile, Anahtar Kasası isteklerinizin her zaman HTTPS sertifika doğrulamasını devre dışı bıraktığınızda, ortaya çıkarmayacak devam eden bir müdahale girişimi söz konusu olabilir.
+> HTTPS sertifika doğrulaması olmadan anahtar kasasına erişilmesi tehlikelidir ve yalnızca öğrenme amacıyla kullanılabilir. Üretim kodu, bu istemci tarafı doğrulaması olmadan anahtar kasasına HIÇBIR şekilde erişmelidir. Yalnızca sorunları tanısanız bile, Anahtar Kasası istekleriniz için genellikle HTTPS sertifika doğrulamasını devre dışı bıraktığınızda, ortaya çıkarmayacak olan değişikliklere tabi olabilirsiniz.
 
-PowerShell 'in son sürümlerini yüklediyseniz, `-SkipCertificateCheck` HTTPS sertifika denetimlerini atlamak için kullanabilirsiniz, ardından [Anahtar Kasası IP adresini](#find-the-key-vault-private-ip-address-in-the-virtual-network) doğrudan hedefleyebilirsiniz:
+Yeni bir PowerShell sürümü yüklediyseniz, `-SkipCertificateCheck` HTTPS sertifika denetimlerini atlamak için kullanabilirsiniz, ardından [Anahtar Kasası IP adresini](#find-the-key-vault-private-ip-address-in-the-virtual-network) doğrudan hedefleyebilirsiniz:
 
     PS C:\> $(Invoke-WebRequest -SkipCertificateCheck -Uri https://10.1.2.3/healthstatus).Headers
 
@@ -334,7 +336,7 @@ Kullanıyorsanız `curl` , bağımsız değişkenle aynı şekilde yapabilirsini
 
     joe@MyUbuntu:~$ curl -i -k https://10.1.2.3/healthstatus
 
-Yanıtlar önceki bölümden aynı olmalıdır, yani `x-ms-keyvault-network-info` aynı değere sahip üstbilgiyi içermesi gerekir. `/healthstatus`Anahtar Kasası ana bilgisayar adını veya IP adresini kullanıyorsanız, uç nokta dikkate almaz.
+Yanıtların önceki bölümden aynı olması gerekir, yani `x-ms-keyvault-network-info` aynı değere sahip üstbilgiyi içermesi gerekir. `/healthstatus`Anahtar Kasası ana bilgisayar adını veya IP adresini kullanıyorsanız, uç nokta dikkate almaz.
 
 `x-ms-keyvault-network-info`Anahtar Kasası ana bilgisayar adını kullanarak istek için bir değer döndürmeyi ve IP adresini kullanarak istek için başka bir değer döndürdüğünü görürseniz her istek farklı bir uç noktayı hedefler. Bir `addr` önceki bölümdeki alanın açıklamasına başvurarak `x-ms-keyvault-network-info` , hangi durumun yanlış olduğunu ve düzeltilmesi gerektiğini belirleyin.
 
@@ -354,7 +356,7 @@ Birçok işletim sistemi, genellikle dosyayı değiştirerek ana bilgisayar baş
 
 ### <a name="promiscuous-proxies-fiddler-etc"></a>Karışık proxy 'ler (Fiddler, vb.)
 
-Açıkça belirtilmedikçe, bu makaledeki tanılama seçenekleri yalnızca ortamda bir karma proxy yoksa çalışır. Bu proxy 'ler genellikle Tanılanmakta olan makineye (Fiddler en yaygın örnek olarak) yüklenirken, Gelişmiş yöneticiler kök sertifika yetkililerinin (CA 'Lar) üzerine yazabilir ve ağda birden fazla makineye hizmeti sunan ağ geçidi cihazlarında bir karma proxy yükleyemez. Bu proxy 'ler, güvenlik ve güvenilirliği önemli ölçüde etkileyebilir. Microsoft bu tür ürünleri kullanan konfigürasyonları desteklemez.
+Açıkça belirtilmediği sürece, bu makaledeki tanılama seçenekleri yalnızca ortamda bir karma proxy yoksa çalışır. Bu proxy 'ler genellikle Tanılanmakta olan makineye (Fiddler en yaygın örnek olarak) yüklenirken, Gelişmiş yöneticiler kök sertifika yetkililerinin (CA 'Lar) üzerine yazabilir ve ağda birden fazla makineye hizmeti sunan ağ geçidi cihazlarında bir karma proxy yükleyemez. Bu proxy 'ler, güvenlik ve güvenilirliği önemli ölçüde etkileyebilir. Microsoft bu tür ürünleri kullanan konfigürasyonları desteklemez.
 
 ### <a name="other-things-that-may-affect-connectivity"></a>Bağlantıyı etkileyebilecek diğer şeyler
 

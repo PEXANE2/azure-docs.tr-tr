@@ -3,12 +3,12 @@ title: Sık karşılaşılan hataları giderme
 description: İlke tanımları, çeşitli SDK ve Kubernetes için eklenti oluşturma sorunlarını giderme hakkında bilgi edinin.
 ms.date: 10/05/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 6026dc75187c8a70203a2484380eed70d519599d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98b5f1658a7d3fc7c4a7db7145b92bb6065befc5
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743446"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999888"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Azure Ilkesini kullanarak hatalarda sorun giderme
 
@@ -68,7 +68,7 @@ Kaynak, ilke atamasının doğru kapsamında değil veya ilke tanımı istenen �
 
 1. İlk olarak, bir değerlendirmenin tamamlanmasını ve uyumluluk sonuçlarının Azure portal veya SDK 'da kullanılabilir hale gelmesi için uygun süreyi bekleyin. Azure PowerShell veya REST API ile yeni bir değerlendirme taraması başlatmak için bkz. [isteğe bağlı değerlendirme taraması](../how-to/get-compliance-data.md#on-demand-evaluation-scan).
 1. Atama parametrelerinin ve atama kapsamının doğru şekilde ayarlandığından emin olun.
-1. [İlke tanımı modunu](../concepts/definition-structure.md#mode)denetleyin:
+1. [İlke tanımı modunu](../concepts/definition-structure.md#mode) denetleyin:
    - Tüm kaynak türleri için ' All ' modu.
    - İlke tanımı etiketleri veya konumu denetlediğinde ' dizinli ' modu.
 1. Kaynak kapsamının [dışlandığından](../concepts/assignment-structure.md#excluded-scopes) veya [muaf](../concepts/exemption-structure.md)olmadığından emin olun.
@@ -96,11 +96,11 @@ Azure Ilkesi tarafından işlem yapılması beklenen bir kaynak değildir ve [Az
 
 1. İlk olarak, bir değerlendirmenin tamamlanmasını ve uyumluluk sonuçlarının Azure portal veya SDK 'da kullanılabilir hale gelmesi için uygun süreyi bekleyin. Azure PowerShell veya REST API ile yeni bir değerlendirme taraması başlatmak için bkz. [isteğe bağlı değerlendirme taraması](../how-to/get-compliance-data.md#on-demand-evaluation-scan).
 1. Atama parametrelerinin ve atama kapsamının doğru ayarlandığından ve **Enforcementmode** 'un _etkin_olduğundan emin olun. 
-1. [İlke tanımı modunu](../concepts/definition-structure.md#mode)denetleyin:
+1. [İlke tanımı modunu](../concepts/definition-structure.md#mode) denetleyin:
    - Tüm kaynak türleri için ' All ' modu.
    - İlke tanımı etiketleri veya konumu denetlediğinde ' dizinli ' modu.
 1. Kaynak kapsamının [dışlandığından](../concepts/assignment-structure.md#excluded-scopes) veya [muaf](../concepts/exemption-structure.md)olmadığından emin olun.
-1. Kaynak yükünün ilke mantığını eşleştirdiğini doğrulayın. Bu işlem, [BIR har izlemesi yakalanarak](../../../azure-portal/capture-browser-trace.md) veya ARM şablon özelliklerini inceleyerek yapılabilir.
+1. Kaynak yükünün ilke mantığıyla eşleştiğini doğrulayın. Bu işlem, [BIR har izlemesi yakalanarak](../../../azure-portal/capture-browser-trace.md) veya ARM şablon özelliklerini inceleyerek yapılabilir.
 1. Sorun gidermeyi denetle: diğer yaygın sorunlar ve çözümler için [Uyumluluk beklendiği gibi değil](#scenario-compliance-not-as-expected) .
 
 Yinelenen ve özelleştirilmiş yerleşik ilke tanımı veya özel tanımınızda sorun yaşıyorsanız, sorunu doğru bir şekilde yönlendirmek için **Ilke yazma** altında bir destek bileti oluşturun.
@@ -169,6 +169,24 @@ Ada sahip Held grafiği `azure-policy-addon` zaten yüklenmiş veya kısmen yük
 #### <a name="resolution"></a>Çözüm
 
 [Kubernetes eklentisinin Azure ilkesini kaldırmak](../concepts/policy-for-kubernetes.md#remove-the-add-on)için yönergeleri izleyin, sonra komutu yeniden çalıştırın `helm install azure-policy-addon` .
+
+### <a name="scenario-azure-virtual-machine-user-assigned-identities-are-replaced-by-system-assigned-managed-identities"></a>Senaryo: Azure sanal makinesi Kullanıcı tarafından atanan kimlikler, sistem tarafından atanan Yönetilen kimlikler ile değiştirilmiştir
+
+#### <a name="issue"></a>Sorun
+
+Konuk yapılandırma ilkesi girişimlerini makineler içindeki denetim ayarlarına atadıktan sonra, makineye atanan kullanıcı tarafından atanan Yönetilen kimlikler artık atanmaz. Yalnızca sistem tarafından atanan yönetilen kimlik atanır.
+
+#### <a name="cause"></a>Nedeni
+
+Konuk yapılandırma DeployIfNotExists tanımlarında daha önce kullanılan ilke tanımları, sistem tarafından atanan kimliğin makineye atandığını, ancak kullanıcı tarafından atanan kimlik atamalarını da kaldırmış olduğunu ister.
+
+#### <a name="resolution"></a>Çözüm
+
+Daha önce Bu soruna neden olan tanımlar \[ kullanım dışı olarak görünür \] ve Kullanıcı tarafından atanan yönetilen kimlik kaldırılmadan önkoşulları yöneten ilke tanımlarına göre değiştirilmiştir. El ile bir adım gereklidir. Kullanım dışı olarak işaretlenen tüm mevcut ilke atamalarını \[ silin \] ve bunları orijinalle aynı ada sahip güncelleştirilmiş önkoşul ilkesi girişimi ve ilke tanımlarıyla değiştirin.
+
+Ayrıntılı bir anlatım için aşağıdaki blog gönderisine bakın:
+
+[Konuk yapılandırma denetim ilkeleri için önemli değişiklik yayınlandı](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,13 +10,13 @@ author: likebupt
 ms.reviewer: peterlu
 ms.date: 10/12/2020
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: 00b689e4546d1f639f76ccbdf45348c43a678066
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.custom: how-to, deploy, studio
+ms.openlocfilehash: e2f3e0b596847000af62aa6e23da5b137ee9de33
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996278"
+ms.locfileid: "91999005"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>Tasarımcı 'da eğitilen modelleri dağıtmak için Studio 'yu kullanma
 
@@ -33,7 +33,7 @@ Model kaydı ve dosya indirme adımlarını atlamak için modelleri doğrudan ta
 
 Tasarımcıda eğitilen modeller ayrıca SDK veya komut satırı arabirimi (CLı) aracılığıyla da dağıtılabilir. Daha fazla bilgi için bkz. [mevcut modelinizi Azure Machine Learning dağıtma](how-to-deploy-existing-model.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md)
 
