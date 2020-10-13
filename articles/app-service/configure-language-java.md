@@ -10,12 +10,12 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 0b6d4ebd199e1db9e5b325df5ea08eaede8e581b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 736d80c4bcfe31a499b84bb24c1c377e69e84218
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311895"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976020"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Azure App Service için bir Java uygulaması yapılandırma
 
@@ -29,8 +29,6 @@ Bu kılavuz, App Service kullanarak Java geliştiricileri için temel kavramlar 
 
 Aksi takdirde, dağıtım yönteminiz arşiv türüne bağlı olacaktır:
 
-::: zone pivot="platform-windows"  
-
 ### <a name="java-se"></a>Java SE
 
 . Jar dosyalarını Java mak 'a dağıtmak için `/api/zipdeploy/` kudu sitesinin uç noktasını kullanın. Bu API hakkında daha fazla bilgi için lütfen [Bu belgelere](./deploy-zip.md#rest)bakın.
@@ -39,7 +37,6 @@ Aksi takdirde, dağıtım yönteminiz arşiv türüne bağlı olacaktır:
 
 . War dosyalarını Tomcat 'e dağıtmak için, arka `/api/wardeploy/` uç noktasını kullanarak arşiv DOSYANıZı gönderin. Bu API hakkında daha fazla bilgi için lütfen [Bu belgelere](./deploy-zip.md#deploy-war-file)bakın.
 
-::: zone-end
 ::: zone pivot="platform-linux"
 
 ### <a name="jboss-eap"></a>JBoss EAP

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: v-miegge
-ms.openlocfilehash: 53e1daca47a2917a19cbc30db5348e4fcc06b325
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f181a6dee7ed182150bd0cad2b51690b6c77d7a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90039156"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963134"
 ---
 # <a name="vm-is-unresponsive-while-applying-default-domain-controllers-policy"></a>Varsayılan etki alanı denetleyicisi ilkesi uygulanırken VM yanıt vermiyor
 
@@ -28,7 +28,7 @@ Bu makalede, varsayılan etki alanı denetleyicileri Ilkesinin bir Azure sanal m
 
 ## <a name="symptom"></a>Belirti
 
-VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) kullandığınızda, ekran görüntüsünün **varsayılan etki alanı denetleyicileri ilkesiyle**önyükleme sırasında işletim sisteminin yanıt vermemeye karşı bir şekilde görüntülediğini görürsünüz.
+VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](./boot-diagnostics.md) kullandığınızda, ekran görüntüsünün **varsayılan etki alanı denetleyicileri ilkesiyle**önyükleme sırasında işletim sisteminin yanıt vermemeye karşı bir şekilde görüntülediğini görürsünüz.
 
   ![Şekil 1 ' varsayılan etki alanı denetleyicileri Ilkesi ' iletisiyle takılmış işletim sistemini görüntüler](./media/vm-unresponsive-domain-controllers-policy/1-default-domain-controllers-policy.png)
 
@@ -46,7 +46,7 @@ Bu sorunu çözmek için öncelikle kilitlenme için bellek dökümü dosyasın�
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>İşletim sistemi diskini yeni bir onarım VM 'sine iliştirme
 
-1. Bir onarım VM 'si hazırlamak için [VM onarım komutlarının](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 1-3 adımlarını kullanın.
+1. Bir onarım VM 'si hazırlamak için [VM onarım komutlarının](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 1-3 adımlarını kullanın.
 
 1. Uzak Masaüstü Bağlantısı kullanarak, onarım VM 'ye bağlanın.
 
@@ -56,4 +56,4 @@ Bu sorunu çözmek için öncelikle kilitlenme için bellek dökümü dosyasın�
 
 1. Memory. dmp dosyasını bulun ve ardından bellek dökümü dosyası ile [bir destek bileti gönderebilirsiniz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .
 
-1. Memory. dmp dosyasını bulmada sorun yaşıyorsanız, bunun yerine, [seri konsolundaki maskelenemeyen kesme (NMI) çağrılarını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows#use-the-serial-console-for-nmi-calls) kullanmak isteyebilirsiniz. [NMI çağrılarını kullanarak kilitlenme bilgi döküm dosyası oluşturma](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump)kılavuzunu izleyin.
+1. Memory. dmp dosyasını bulmada sorun yaşıyorsanız, bunun yerine, [seri konsolundaki maskelenemeyen kesme (NMI) çağrılarını](./serial-console-windows.md#use-the-serial-console-for-nmi-calls) kullanmak isteyebilirsiniz. [NMI çağrılarını kullanarak kilitlenme bilgi döküm dosyası oluşturma](/windows/client-management/generate-kernel-or-complete-crash-dump)kılavuzunu izleyin.

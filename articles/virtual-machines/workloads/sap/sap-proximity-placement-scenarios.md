@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5b6e15ef1b9bf488ac18e41dc09eb71e6ea3da39
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 7b48e4223e4e5fc5100de250d85441fcb96d50a3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569797"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977247"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>SAP uygulamalarıyla en iyi ağ gecikmesi için Azure yakınlık yerleştirme grupları
 SAP NetWeaver veya SAP S/4HANA mimarisine dayanan SAP uygulamaları, SAP uygulama katmanı ve SAP veritabanı katmanı arasındaki ağ gecikmesinden duyarlıdır. Bu duyarlılık, uygulama katmanında çalışan iş mantığının büyük bir sonucudur. SAP uygulama katmanı iş mantığını çalıştırdığı için, bir saniyede binlerce veya onlarca binlerce veya on binde bir hızda veritabanı katmanına sorgu verir. Çoğu durumda, bu sorguların doğası basittir. Bunlar, genellikle 500 mikrosaniye veya daha az bir veritabanı katmanında çalıştırılabilir.
@@ -33,7 +33,7 @@ Ağ gecikmesini en uygun hale getirmenize olanak tanımak için Azure, [yakınl�
 
 - Tüm Azure sanal makine türlerinin her ve tüm Azure veri merkezlerinde kullanılabilir olduğunu varsayamaz. Sonuç olarak, bir yakınlık yerleşimi grubu içindeki farklı VM türlerinin birleşimi kısıtlanabilir. Bu kısıtlamalar, belirli bir VM türünü çalıştırmak için gereken konak donanımının, yerleştirme grubunun dağıtıldığı veri merkezinde mevcut olmaması nedeniyle oluşur
 - Bir yakınlık yerleşimi grubundaki sanal makinelerin parçalarını yeniden boyutlandırdıkça, her durumda yeni sanal makine türünün, yakınlık yerleşimi grubunun parçası olan diğer VM 'Lerle aynı veri merkezinde kullanılabilir olduğunu otomatik olarak kabul edilemez.
-- Azure, donanımı borçlandırmaya karşı bir yakınlık yerleşimi grubunun belirli sanal makinelerini başka bir Azure veri merkezine zorlayabilir. Bu durumu kapsayan Ayrıntılar için, [iyileştirilmiş gecikme süresi için belgeyi birlikte bulma kaynaklarını](https://docs.microsoft.com/azure/virtual-machines/linux/co-location#planned-maintenance-and-proximity-placement-groups) okuyun  
+- Azure, donanımı borçlandırmaya karşı bir yakınlık yerleşimi grubunun belirli sanal makinelerini başka bir Azure veri merkezine zorlayabilir. Bu durumu kapsayan Ayrıntılar için, [iyileştirilmiş gecikme süresi için belgeyi birlikte bulma kaynaklarını](../../linux/co-location.md#planned-maintenance-and-proximity-placement-groups) okuyun  
 
 > [!IMPORTANT]
 > Olası kısıtlamaların bir sonucu olarak, yakınlık yerleşimi gruplarının kullanılması gerekir:

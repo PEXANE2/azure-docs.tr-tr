@@ -4,10 +4,10 @@ description: Bu makalede, Azure 'da depolanan verileri Microsoft Azure Kurtarma 
 ms.topic: conceptual
 ms.date: 09/07/2018
 ms.openlocfilehash: 79a4d32d6dbca5ca5be5d46c6b44a07ef42de061
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91813262"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>MARS Aracısı 'nı kullanarak dosyaları Windows Server 'a geri yükleme
@@ -109,7 +109,7 @@ Bu adımlar aşağıdaki terminolojiyi içerir:
 
     Kasa kimlik bilgileri dosyası geçersiz (veya dolmuşsa), Azure portal [örnek kasasından yeni bir kasa kimlik bilgileri dosyası indirin](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file) . Geçerli bir kasa kimlik bilgisi belirledikten sonra, karşılık gelen yedekleme kasasının adı görüntülenir.
 
-6. **Yedekleme sunucusunu seçin** sayfasında, görünen makineler listesinden kaynak makineyi seçin ve parolayı girin. Ardından **İleri**’yi seçin.
+6. **Yedekleme sunucusunu seçin** sayfasında, görünen makineler listesinden kaynak makineyi seçin ve parolayı girin. Sonra **İleri**’yi seçin.
 
     ![Veri kurtarma sihirbazının ekran görüntüsü yedekleme sunucusunu seçin sayfası (alternatif makineye geri yükle)](./media/backup-azure-restore-windows-server/alternatemachine_selectmachine_instantrestore.png)
 

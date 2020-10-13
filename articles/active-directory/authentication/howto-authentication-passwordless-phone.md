@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b4792e73f6326bb9ac67ce3aabe10b8314bb826
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 053a489993c31344b96e83253c88eed93b27b145
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91568224"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964834"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Microsoft Authenticator uygulamasıyla passwordless oturum açmayı etkinleştirme (Önizleme)
 
@@ -26,7 +26,7 @@ Microsoft Authenticator uygulaması, herhangi bir Azure AD hesabında parola kul
 
 Kullanıcı adı girdikten sonra parola istemi görmek yerine, Microsoft Authenticator uygulamadan telefonla oturum açmayı etkinleştiren bir kişi, uygulamalarından bir sayıya dokunmasını isteyen bir ileti görür. Uygulamada oturum açma işlemini tamamlaması için, kullanıcının sayıyla eşleşmesi, **Onayla**' yı seçmesi, sonra PIN veya biyometri sağlaması gerekir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Microsoft Authenticator uygulamasıyla passwordless telefon oturum açma 'yı kullanmak için aşağıdaki önkoşulların karşılanması gerekir:
 

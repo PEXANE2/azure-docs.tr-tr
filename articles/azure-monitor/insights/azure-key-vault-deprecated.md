@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: f6d8929c8fd59836ff297f226851890892c10acc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71eb49c84b8ab92c9ba2ad8e05e8d74054bd4ee7
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445130"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938840"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Izleyici 'de Azure Key Vault Analytics çözümü
 
@@ -75,7 +75,7 @@ Aşağıdaki tabloda, verilerin Azure Key Vault için nasıl toplandığı hakk�
 | Azure |  |  |&#8226; |  |  | varış noktasında |
 
 ## <a name="use-azure-key-vault"></a>Azure Key Vault kullanma
-[Çözümü yükledikten](https://azuremarketplace.microsoft.com/en-usrketplace/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview)sonra, Azure Izleyici **genel bakış** sayfasında **Key Vault Analytics** kutucuğuna tıklayarak Key Vault verileri görüntüleyin. **Öngörüler** bölümünün altında **daha fazla** ' ya tıklayarak bu sayfayı **Azure izleyici** menüsünden açın. 
+[Çözümü yükledikten](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?source=intercept.nl&tab=Overview)sonra, Azure Izleyici **genel bakış** sayfasında **Key Vault Analytics** kutucuğuna tıklayarak Key Vault verileri görüntüleyin. **Öngörüler** bölümünün altında **daha fazla** ' ya tıklayarak bu sayfayı **Azure izleyici** menüsünden açın. 
 
 ![Zamana göre Anahtar Kasası işlem hacmi grafiğini gösteren Azure Izleyici Genel Bakış sayfasında Key Vault Analytics kutucuğunun ekran görüntüsü.](media/azure-key-vault/log-analytics-keyvault-tile.png)
 

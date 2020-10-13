@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: quickstart
 ms.date: 09/30/2020
 ms.author: aahi
-ms.openlocfilehash: 004685a50e2413c29528ad3aca08a0150843a8aa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 65542ca88d055af2c537907d7ae801250943ed0b
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91631401"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930382"
 ---
 # <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>Hızlı başlangıç: Web portalını kullanarak ilk ölçümünüzün Izlenmesi
 
@@ -27,7 +27,7 @@ Bir ölçüm Danışmanı örneği sağladığınızda, hizmetle çalışmak iç
 * Tanılama öngörülerini keşfet
 * Anomali uyarıları oluşturun ve bunlara abone olun
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * Azure aboneliğiniz olduktan sonra, ölçüm Danışmanı <a href="https://go.microsoft.com/fwlink/?linkid=2142156"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> örneğinizi dağıtmak için Azure Portal ölçüm Danışmanı kaynağı oluşturun.  
@@ -41,7 +41,7 @@ Bu belge, ilk monitörünüzü oluşturmak için örnek olarak bir SQL veritaban
 
 ## <a name="sign-in-to-your-workspace"></a>Çalışma alanınızda oturum açın
 
-Kaynağınız dağıtıldıktan sonra, [ölçüm Danışmanı portalında](https://go.microsoft.com/fwlink/?linkid=2143774)oturum açın. Ölçümlerinizi izlemeye başlamak için çalışma alanınızı seçin. 
+Kaynağınız oluşturulduktan sonra, [ölçüm Danışmanı portalında](https://go.microsoft.com/fwlink/?linkid=2143774)oturum açın. Ölçümlerinizi izlemeye başlamak için çalışma alanınızı seçin. 
  
 Şu anda, kullanılabilir her bölgede bir ölçüm Danışmanı kaynağı oluşturabilirsiniz. Ölçüm Danışmanı portalındaki çalışma alanlarını dilediğiniz zaman değiştirebilirsiniz.
 

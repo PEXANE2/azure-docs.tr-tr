@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2a72e22b600f7dd7737a877e2fdf5d34c4dd4b4c
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: ac7fc5af21f11699331d41a074e88ae757170664
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876116"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976003"
 ---
 # <a name="tutorial-configure-route-filters-for-microsoft-peering-azure-cli"></a>Öğretici: Microsoft eşlemesi için rota filtrelerini yapılandırma: Azure CLı
 
@@ -27,13 +27,13 @@ Rota filtreleri, desteklenen servislerin bir alt kümesini Microsoft eşlemesi a
 
 Exchange Online, SharePoint Online ve Skype Kurumsal gibi Microsoft 365 hizmetlere Microsoft eşlemesi aracılığıyla erişilebilir. ExpressRoute bağlantı hattındaki Microsoft eşlemesi yapılandırıldığında, bu hizmetlerle ilgili tüm önekler, oluşturulan BGP oturumları aracılığıyla tanıtıldığında. Ön ek aracılığıyla sunulan hizmeti tanımlamak için her ön eke BGP topluluk değeri eklenir. BGP topluluk değerlerinin ve eşlendikleri hizmetlerin listesi için bkz. [BGP toplulukları](expressroute-routing.md#bgp).
 
-Tüm Azure ve Microsoft 365 hizmetlerine yönelik bağlantı, BGP aracılığıyla çok sayıda önek tanıtılmasına neden olur. Büyük sayıda önek, ağınızdaki yönlendiriciler tarafından tutulan yol tablolarının boyutunu önemli ölçüde artırır. Yalnızca Microsoft eşlemesi üzerinden sunulan hizmetlerin bir alt kümesini kullanmak istiyorsanız, yol tablolarınızın boyutunu iki şekilde azaltabilirsiniz. Şunları yapabilirsiniz:
+Tüm Azure ve Microsoft 365 hizmetlerine yönelik bağlantı, BGP aracılığıyla çok sayıda önek tanıtılmasına neden olur. Büyük sayıda önek, ağınızdaki yönlendiriciler tarafından tutulan yol tablolarının boyutunu önemli ölçüde artırır. Yalnızca Microsoft eşlemesi üzerinden sunulan hizmetlerin bir alt kümesini kullanmak istiyorsanız, yol tablolarınızın boyutunu iki şekilde azaltabilirsiniz. Seçenekleriniz şunlardır:
 
 * BGP topluluklarına rota filtreleri uygulayarak istenmeyen önekleri filtreleyin. Yol filtreleme standart bir ağ uygulamasıdır ve çoğu ağ içinde yaygın olarak kullanılır.
 
 * Rota filtrelerini tanımlayın ve bunları ExpressRoute devrenizi ile uygulayın. Yol filtresi, Microsoft eşlemesi aracılığıyla tüketmek üzere planladığınız hizmetlerin listesini seçmenize olanak sağlayan yeni bir kaynaktır. ExpressRoute yönlendiricileri yalnızca yol filtresinde tanımlanan hizmetlere ait olan ön eklerin listesini gönderir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > - BGP topluluk değerlerini al.
 > - Rota filtresi ve filtre kuralı oluşturma.
@@ -51,7 +51,7 @@ Yönlendirme filtrelerini Microsoft 365 hizmetleriyle birlikte eklemek için, Ex
 > 1 Ağustos 2017 ' den önce yapılandırılmış ExpressRoute bağlantı hattı Microsoft eşlemesi, yol filtreleri tanımlanmasa bile Microsoft eşlemesi aracılığıyla tanıtılan tüm hizmet öneklerini alacak. 1 Ağustos 2017 ' de veya sonrasında yapılandırılan ExpressRoute devrelerinin Microsoft eşlemesi, bir yol filtresi devresine iliştirilene kadar tanıtılan öneklere sahip olmayacaktır.
 > 
 
-## <a name="prerequisites"></a><a name="workflow"></a>Ön koşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Microsoft eşlemesi aracılığıyla hizmetlere başarıyla bağlanmak için aşağıdaki yapılandırma adımlarını gerçekleştirmeniz gerekir:
 
@@ -143,7 +143,7 @@ Yol filtresi ExpressRoute bağlantı hattı 'ndan ayrıldıktan sonra BGP oturum
 az network express-route peering update --circuit-name MyCircuit -g ExpressRouteResourceGroupName --name MicrosoftPeering --remove routeFilter
 ```
 
-## <a name="clean-up-resources"></a><a name="delete"></a>Kaynakları temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bir yol filtresini yalnızca herhangi bir devreye iliştirilmemişse silebilirsiniz. Yol filtresinin silmeyi denemeden önce herhangi bir devreye bağlı olmadığından emin olun. Aşağıdaki komutu kullanarak bir yol filtresini silebilirsiniz:
 

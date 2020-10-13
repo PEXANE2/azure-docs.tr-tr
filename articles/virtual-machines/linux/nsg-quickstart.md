@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4c57ec2edf43bf0a710f3c15f30836f751c4d52b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a96c0f7c6fb767b96be273a615149143043e8bc1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500172"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975136"
 ---
 # <a name="open-ports-and-endpoints-to-a-vm-with-the-azure-cli"></a>Azure CLı ile bir VM 'ye bağlantı noktalarını ve uç noktaları açma
 
@@ -89,4 +89,4 @@ Yüksek oranda kullanılabilir Web uygulamaları için sanal makinelerinizi bir 
 Bu örnekte, HTTP trafiğine izin vermek için basit bir kural oluşturdunuz. Aşağıdaki makalelerde daha ayrıntılı ortamlar oluşturma hakkında bilgi edinebilirsiniz:
 
 * [Azure Resource Manager genel bakış](../../azure-resource-manager/management/overview.md)
-* [Ağ Güvenlik Grubu (NSG) Nedir?](../../virtual-network/security-overview.md)
+* [Ağ Güvenlik Grubu (NSG) Nedir?](../../virtual-network/network-security-groups-overview.md)

@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: alkohli
 ms.openlocfilehash: 17fa361fa4cef194d910d08d4a0afe075b119109
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91742528"
 ---
 # <a name="tutorial-use-rest-apis-to-copy-data-to-azure-data-box-blob-storage"></a>Öğretici: Azure Data Box blob depolamaya veri kopyalamak için REST API 'Lerini kullanma  
@@ -117,7 +117,7 @@ Bazı uygulamalar için belirli bilgiler bu bölümde belirtilmiştir. Diğer uy
 
     ![PowerShell 2 kullanarak sertifikayı içeri aktarma](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
-4. **Son**'a tıklayın. İçeri aktarmanın başarılı olduğunu belirten bir ileti görüntülenir.
+4. **Finish (Son)** düğmesine tıklayın. İçeri aktarmanın başarılı olduğunu belirten bir ileti görüntülenir.
 
     ![PowerShell 3 kullanarak sertifikayı içeri aktarma](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
@@ -133,7 +133,7 @@ Ubuntu ve deni gibi birkaç tane `update-ca-certificates` komutunu kullanın.
 RHEL, Fedora ve CentOS 'ın son sürümleri `update-ca-trust` komutunu kullanır.
 
 * Sertifika dosyasını `/etc/pki/ca-trust/source/anchors` dizine kopyalayın.
-* `update-ca-trust` öğesini çalıştırın.
+* `update-ca-trust` komutunu çalıştırın.
 
 Ayrıntılar için dağıtıma özgü belgelere başvurun.
 

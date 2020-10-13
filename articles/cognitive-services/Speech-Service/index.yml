@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: 2d1d1057d522d082b3a5a3c757d1fe988bc24ba1
-  ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+  ms.openlocfilehash: 2d00466672318ef05218fce392797df215b6bb5f
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 10/02/2020
-  ms.locfileid: "91667461"
+  ms.lasthandoff: 10/09/2020
+  ms.locfileid: "91857002"
 highlightedContent:
   items:
   - title: Konuşma tanıma hizmeti nedir?
@@ -88,34 +88,6 @@ conceptualContent:
     footerLink:
       text: Daha fazla
       url: index-intent-recognition.yml
-  - title: Konuşma senaryoları
-    links:
-    - itemType: overview
-      text: Konuşma Transkripsiyonu hakkında (toplantılar)
-      url: conversation-transcription.md
-    - itemType: overview
-      text: Çok cihazlı konuşmalar hakkında (toplantılar)
-      url: multi-device-conversation.md
-    - itemType: how-to-guide
-      text: Çağrı merkezi transkripsiyonu
-      url: call-center-transcription.md
-    footerLink:
-      text: Daha fazla
-      url: index-conversation-scenarios.yml
-  - title: Ses yardımcıları
-    links:
-    - itemType: overview
-      text: Ses Yardımcıları hakkında
-      url: voice-assistants.md
-    - itemType: quickstart
-      text: Özel Komutlar kullanarak ses yardımcısı oluşturma
-      url: custom-commands.md
-    - itemType: get-started
-      text: Bot Framework kullanarak ses yardımcısı oluşturma
-      url: direct-line-speech.md
-    footerLink:
-      text: Daha fazla
-      url: index-voice-assistants.yml
   - title: Konuşmacı Tanıma
     links:
     - itemType: overview
@@ -135,6 +107,26 @@ conceptualContent:
     - itemType: quickstart
       text: Özel Anahtar Sözcük ile çalışmaya başlama
       url: custom-keyword-basics.md
+  - title: Senaryoya derinlemesine bakışlar
+    links:
+    - itemType: overview
+      text: Konuşma Transkripsiyonu hakkında (toplantılar)
+      url: conversation-transcription.md
+    - itemType: overview
+      text: Çok cihazlı konuşmalar hakkında (toplantılar)
+      url: multi-device-conversation.md
+    - itemType: overview
+      text: Ses Yardımcıları hakkında
+      url: voice-assistants.md
+    - itemType: quickstart
+      text: Özel Komutlar kullanarak ses yardımcısı oluşturma
+      url: custom-commands.md
+    - itemType: quickstart
+      text: Bot Framework kullanarak ses yardımcısı oluşturma
+      url: direct-line-speech.md
+    - itemType: how-to-guide
+      text: Çağrı merkezi transkripsiyonunu etkinleştirme
+      url: call-center-transcription.md
   - title: Araçlar
     links:
     - itemType: overview

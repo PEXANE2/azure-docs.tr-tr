@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/10/2017
 ms.author: alkohli
-ms.openlocfilehash: fa5524525aa76279cdcceaf0f5fd2a74753786ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a992e432a6111b5da02187bcf6592587c4d31bf
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91300608"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977519"
 ---
 # <a name="install-update-05-on-your-storsimple-virtual-array"></a>StorSimple Sanal diziniz üzerinde 0,5 güncelleştirmesini yükler
 
@@ -92,26 +92,26 @@ Bu yöntemi, GA çalıştıran bir cihaza güncelleştirme yüklemek veya 0,1 ya
 
 1. Yerel Web Kullanıcı arabiriminde **bakım**  >  **yazılım güncelleştirmesi**' ne gidin.
    
-    ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-05/update1m.png)
+    ![cihazı Güncelleştir 1](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
 2. **Güncelleştirme dosyası yolu**' nda, güncelleştirme veya düzeltme için dosya adını girin. Bir ağ paylaşımında yer alıyorsa güncelleştirme veya düzeltme yükleme dosyasına da gidebilirsiniz. **Uygula**’ya tıklayın.
    
-    ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-05/update2m.png)
+    ![cihaz güncelleştirme 2](./media/storsimple-virtual-array-install-update-05/update2m.png)
 
 3. Bir uyarı görüntülenir. Bu tek düğümlü bir cihaz olduğundan, güncelleştirme uygulandıktan sonra cihaz yeniden başlatılır ve kapalı kalma süresi vardır. Onay simgesine tıklayın.
    
-   ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-05/update3m.png)
+   ![cihaz güncelleştirme 3](./media/storsimple-virtual-array-install-update-05/update3m.png)
 
 4. Güncelleştirme başlar. Cihaz başarıyla güncelleştirildikten sonra yeniden başlatılır. Yerel Kullanıcı arabirimine bu süre içinde erişilemiyor.
    
-    ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-05/update5m.png)
+    ![güncelleştirme aygıtı 4](./media/storsimple-virtual-array-install-update-05/update5m.png)
 
 5. Yeniden başlatma işlemi tamamlandıktan sonra **oturum açma** sayfasına yönlendirilirsiniz. Cihaz yazılımının güncelleştirildiğini doğrulamak için, yerel Web Kullanıcı arabiriminde **bakım**  >  **yazılım güncelleştirmesi**' ne gidin. Güncelleştirme 0,5 için, görüntülenmiş yazılım sürümü **10.0.0.0.0.10290.0** olmalıdır.
    
    > [!NOTE]
    > Yazılım sürümlerini yerel Web Kullanıcı arabiriminde ve Azure portal biraz farklı bir şekilde raporlarız. Örneğin, yerel Web Kullanıcı arabirimi raporları **10.0.0.0.0.10290** ve aynı sürüm için **10.0.10290.0** raporlar Azure Portal.
    
-    ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-05/update6m.png)
+    ![güncelleştirme aygıtı 5](./media/storsimple-virtual-array-install-update-05/update6m.png)
 
 6. Sonraki adım, MDS aracısını güncelleştirmedir. **Yazılım güncelleştirme** sayfasında, **güncelleştirme dosyası yoluna** gidin ve `GenevaMonitoringAgentPackageInstaller.msi` dosyaya gidin. 2-4 adımlarını yineleyin. Sanal dizi yeniden başlatıldıktan sonra, yerel Web Kullanıcı arabiriminde oturum açın.
 

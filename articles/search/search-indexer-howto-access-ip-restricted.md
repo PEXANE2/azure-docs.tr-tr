@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: c80462707d3dccbb8fccff244017053c25ad46e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f485569caef285601d1dce7acd116f13675da83a
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89463920"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950202"
 ---
 # <a name="setting-up-ip-firewall-rules-to-enable-indexer-access"></a>Dizin Oluşturucu erişimini etkinleştirmek için IP güvenlik duvarı kuralları ayarlama
 
@@ -89,6 +89,6 @@ Güvenlik duvarı kuralları, depolama hesabındaki verilere erişebilecek dizin
 
 Dizinlerin erişimine izin vermek için iki IP adresi kümesini nasıl alacağınız bilineceğimize göre, bazı ortak veri kaynakları için IP güvenlik duvarı kurallarını güncelleştirmek üzere aşağıdaki bağlantıları kullanın.
 
-- [Azure Storage güvenlik duvarlarını yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-network-security)
-- [CosmosDB için IP güvenlik duvarını yapılandırma](https://docs.microsoft.com/azure/cosmos-db/firewall-support)
-- [Azure SQL Server için IP güvenlik duvarını yapılandırma](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)
+- [Azure Storage güvenlik duvarlarını yapılandırma](../storage/common/storage-network-security.md)
+- [CosmosDB için IP güvenlik duvarını yapılandırma](../cosmos-db/firewall-support.md)
+- [Azure SQL Server için IP güvenlik duvarını yapılandırma](../azure-sql/database/firewall-configure.md)

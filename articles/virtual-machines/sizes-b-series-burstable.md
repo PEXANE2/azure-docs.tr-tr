@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: 43e19df24de2f2c4e8e5334010ee788129cee68b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 506336ad80c1f30b937bc71724ca39cee24bb2fd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666645"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968931"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B serisi Burstable sanal makine boyutları
 
@@ -21,7 +21,7 @@ B serisi VM 'Ler, Web sunucuları, kavram kanıtı, küçük veritabanları ve g
 
 B serisi aşağıdaki VM boyutlarında gelir:
 
-[Azure Işlem birimi (ACU)](https://docs.microsoft.com/azure/virtual-machines/acu?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json): farklılık gösterir *<br>
+[Azure Işlem birimi (ACU)](./acu.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json): farklılık gösterir *<br>
 [Premium Depolama](premium-storage-performance.md): desteklenir<br>
 [Premium depolama önbelleği](premium-storage-performance.md): desteklenmiyor<br>
 [Dinamik geçiş](maintenance-and-updates.md): destekleniyor<br>
@@ -59,7 +59,7 @@ Taban çizgisi: %270
 
 ![Saatlik trafik verileri grafiği](./media/b-series-burstable/office-workload.png)
 
-| Senaryo | Süre | CPU kullanımı (%) | Birikmiş jenerik<sup>1</sup> | Kredi var |
+| Senaryo | Saat | CPU kullanımı (%) | Birikmiş jenerik<sup>1</sup> | Kredi var |
 | --- | --- | --- | --- | --- |
 | B16ms dağıtımı | Dağıtım | Dağıtım  | 480 (ilk krediler) | 480 |
 | Trafik yok | 0:00 | 0 | 162 | 642 |

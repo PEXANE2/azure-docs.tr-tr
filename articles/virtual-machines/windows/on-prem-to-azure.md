@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1f363b8fc2fec659ee1b101c13d1ba6ac629f29d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32cbfbcc8feeff66101ab5e2c95f476a4a4215e9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87835502"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973912"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Azure 'da Amazon Web Services (AWS) ve diğer platformlardan yönetilen disklere geçirme
 
@@ -41,7 +41,7 @@ Genelleştirilmiş ve özelleştirilmiş VHD 'leri karşıya yükleyebilirsiniz.
 ## <a name="overview-of-managed-disks"></a>Yönetilen disklere genel bakış
 
 Azure yönetilen diskler, depolama hesaplarını yönetme gereksinimini ortadan kaldırarak VM yönetimini basitleştirir. Yönetilen diskler, bir kullanılabilirlik kümesindeki VM 'lerin daha iyi güvenilirliğinden de yararlanır. Tek bir başarısızlık noktasını önlemek için, bir kullanılabilirlik kümesindeki farklı VM 'Lerin disklerinin birbirinden yeterince yalıtılmasını sağlar. Farklı sanal makinelerin disklerini, farklı depolama ölçek birimlerindeki (damgalar), donanım ve yazılım hatalarından kaynaklanan tek bir depolama ölçek birimi hatalarının etkisini sınırlayan bir kullanılabilirlik kümesine otomatik olarak koyar.
-Gereksinimlerinize göre dört tür depolama seçeneği arasından seçim yapabilirsiniz. Kullanılabilir disk türleri hakkında bilgi edinmek için bkz. makalemiz [bir disk türü seçin](disks-types.md).
+Gereksinimlerinize göre dört tür depolama seçeneği arasından seçim yapabilirsiniz. Kullanılabilir disk türleri hakkında bilgi edinmek için bkz. makalemiz [bir disk türü seçin](../disks-types.md).
 
 ## <a name="plan-for-the-migration-to-managed-disks"></a>Yönetilen disklere geçişi planlayın
 

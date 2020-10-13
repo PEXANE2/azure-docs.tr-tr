@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2017
 ms.author: alkohli
-ms.openlocfilehash: 917af7ea1789394ddba5d349d631018e2b620216
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 33563d12ac31679eb3b658e7625d95581988536d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91295694"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977485"
 ---
 # <a name="install-update-06-on-your-storsimple-virtual-array"></a>StorSimple Sanal diziniz üzerinde 0,6 güncelleştirmesini yükler
 
@@ -37,7 +37,7 @@ Bir güncelleştirmeyi uygulamadan önce, önce konakta ve sonra da cihazda bulu
 >
 > - Güncelleştirme veya düzeltme yüklendiğinde cihazınızın yeniden başlatıldığını aklınızda bulundurun. StorSimple Sanal dizisi tek düğümlü bir cihaz olduğu için, devam eden g/ç işlemi bozulur ve cihazınız kesinti yaşar.
 
-## <a name="use-the-azure-portal"></a>Azure portalı kullanma
+## <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
 Güncelleştirme 0,2 ve sonraki bir sürümü çalıştırıyorsanız, Azure portal aracılığıyla güncelleştirmeleri yüklemenizi öneririz. Portal yordamı, kullanıcının güncelleştirmeleri taramasını, indirmesini ve yüklemesini gerektirir. Bu yordamın tamamlanmasıyla yaklaşık 7 dakika sürer. Güncelleştirmeyi veya düzeltmeyi yüklemek için aşağıdaki adımları gerçekleştirin.
 
@@ -97,26 +97,26 @@ Bu yöntemi, GA çalıştıran bir cihaza güncelleştirme yüklemek veya 0,1 ya
 
 1. Yerel Web Kullanıcı arabiriminde **bakım**  >  **yazılım güncelleştirmesi**' ne gidin. Çalıştırdığınız yazılım sürümünü bir yere unutmayın. **10.0.10290.0**çalıştırıyorsanız, adım 6 ' da MDS aracısını güncelleştirmeniz gerekmez.
    
-    ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-05/update1m.png)
+    ![cihazı Güncelleştir 1](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
 2. **Güncelleştirme dosyası yolu**' nda, güncelleştirme veya düzeltme için dosya adını girin. Bir ağ paylaşımında yer alıyorsa güncelleştirme veya düzeltme yükleme dosyasına da gidebilirsiniz. **Uygula**’ya tıklayın.
    
-    ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-05/update2m.png)
+    ![cihaz güncelleştirme 2](./media/storsimple-virtual-array-install-update-05/update2m.png)
 
 3. Bir uyarı görüntülenir. Sanal dizi tek düğümlü bir cihaz olduğundan, güncelleştirme uygulandıktan sonra cihaz yeniden başlatılır ve kapalı kalma süresi vardır. Onay simgesine tıklayın.
    
-   ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-05/update3m.png)
+   ![cihaz güncelleştirme 3](./media/storsimple-virtual-array-install-update-05/update3m.png)
 
 4. Güncelleştirme başlar. Cihaz başarıyla güncelleştirildikten sonra yeniden başlatılır. Yerel Kullanıcı arabirimine bu süre içinde erişilemiyor.
    
-    ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-05/update5m.png)
+    ![güncelleştirme aygıtı 4](./media/storsimple-virtual-array-install-update-05/update5m.png)
 
 5. Yeniden başlatma işlemi tamamlandıktan sonra **oturum açma** sayfasına yönlendirilirsiniz. Cihaz yazılımının güncelleştirildiğini doğrulamak için, yerel Web Kullanıcı arabiriminde **bakım**  >  **yazılım güncelleştirmesi**' ne gidin. Güncelleştirme 0,6 için, görüntülenmiş yazılım sürümü **10.0.0.0.0.10293** olmalıdır.
    
    > [!NOTE]
    > Yazılım sürümlerini yerel Web Kullanıcı arabiriminde ve Azure portal biraz farklı bir şekilde raporlarız. Örneğin, yerel Web Kullanıcı arabirimi raporları **10.0.0.0.0.10293** ve aynı sürüm için **10.0.10293.0** raporlar Azure Portal.
    
-    ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-06/update6m.png)
+    ![güncelleştirme aygıtı 5](./media/storsimple-virtual-array-install-update-06/update6m.png)
 
 6. Bu güncelleştirmeyi uygulamadan önce StorSimple Sanal dizisi güncelleştirme 0,5 ' i (**10.0.10290.0**) çalıştırıyorsanız bu adımı atlayın. Güncelleştirme işlemine başlamadan önce adım 1 ' de yazılım sürümünü bir yere görürsünüz. Güncelleştirme 0,5 ' yi çalıştırıyorsanız, MDS aracınız zaten güncel.
 

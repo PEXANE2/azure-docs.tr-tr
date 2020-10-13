@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: dc23a0a68471b82c990d5d8a3086e2e71e88d0c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc630021cbf93074119d4feedcb3a09fae1453e3
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513926"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949437"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>İşleri görüntülemek ve yönetmek için StorSimple Aygıt Yöneticisi hizmetini kullanın (güncelleştirme 3 ve üstü)
 
@@ -59,11 +59,11 @@ Herhangi bir işin ayrıntılarını görüntülemek için aşağıdaki adımlar
 
 2. **İşler** dikey penceresinde ilgilendiğiniz iş (ler) i uygun filtrelerle bir sorgu çalıştırarak görüntüleyin. Tamamlanmış, çalışan veya iptal edilmiş işleri arayabilirsiniz.
 
-    ![İş dikey penceresi](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
+    ![İş dikey penceresi 2](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
 
 2. Bir işi seçin ve tıklayın.
 
-    ![İş dikey penceresi](./media/storsimple-8000-manage-jobs-u2/jobs3.png)
+    ![İş dikey penceresi 3](./media/storsimple-8000-manage-jobs-u2/jobs3.png)
 
 3. İş ayrıntıları dikey penceresinde durumu, ayrıntıları, zaman istatistiklerini ve veri istatistiklerini görüntüleyebilirsiniz.
    
@@ -81,7 +81,7 @@ Herhangi bir işin ayrıntılarını görüntülemek için aşağıdaki adımlar
 
 2. Seçili işe sağ tıklayıp bağlam menüsünü çağırın ve **iptal**' e tıklayın.
 
-    ![İş ayrıntıları](./media/storsimple-8000-manage-jobs-u2/jobs2.png)
+    ![İş ayrıntıları 2](./media/storsimple-8000-manage-jobs-u2/jobs2.png)
 
 3. Onayınız istendiğinde **Evet**’e tıklayın. Bu iş iptal edildi.
 

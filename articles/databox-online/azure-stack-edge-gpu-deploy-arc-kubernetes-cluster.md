@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 423345739ca5c078fbff4f267e1e8a118abf107c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c38b0b1d3a2e71502ac86bf46771ecfb637ba15d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903203"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952225"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazındaki Kubernetes kümesinde Azure yayı 'yi etkinleştirme
 
@@ -68,11 +68,11 @@ Kubernetes kümesinde Azure Arc 'ı etkinleştirmeden önce, aboneliğinizi etki
 
 1. Bir kaynak sağlayıcı seçin ve komut çubuğunun üstünden **Kaydet**' i seçin. Kayıt birkaç dakika sürer. 
 
-    ![Kubernetes kaynak sağlayıcılarını Kaydet](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-2.png)
+    ![Kubernetes kaynak sağlayıcılarını kaydet 2](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-2.png)
 
 1. Kaynak sağlayıcının kayıtlı olduğunu görene kadar Kullanıcı arabirimini yenileyin. Her iki kaynak sağlayıcısı için işlemi yineleyin.
     
-    ![Kubernetes kaynak sağlayıcılarını Kaydet](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-4.png)
+    ![Kubernetes kaynak sağlayıcılarını Kaydet 3](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-4.png)
 
 Ayrıca, kaynak sağlayıcılarını ile de kaydedebilirsiniz `az cli` . Daha fazla bilgi için bkz. [Azure Arc etkin Kubernetes için iki sağlayıcıyı kaydetme](../azure-arc/kubernetes/connect-cluster.md#register-the-two-providers-for-azure-arc-enabled-kubernetes)
 
