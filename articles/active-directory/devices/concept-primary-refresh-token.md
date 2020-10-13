@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 000bc150b1a4addb4b68bd86b8d72524ec1015fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 457910f30830db06f148282a32551a400255f7e1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450424"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965922"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Birincil Yenileme Belirteci nedir?
 
-Birincil yenileme belirteci (PRT), Windows 10, iOS ve Android cihazlarda Azure AD kimlik doğrulamasının temel yapıtıdır. Bu cihazlarda kullanılan uygulamalarda çoklu oturum açma (SSO) özelliğini etkinleştirmek için, Microsoft ilk taraf belirteç aracılarına özel olarak verilen bir JSON Web Token (JWT). Bu makalede, Windows 10 cihazlarında bir PRT 'nin nasıl verildiği, kullanıldığı ve korunduğu hakkında ayrıntılı bilgi sağlıyoruz.
+Birincil yenileme belirteci (PRT), Windows 10, Windows Server 2016 ve sonraki sürümlerde, iOS ve Android cihazlarda Azure AD kimlik doğrulamasının temel yapıtıdır. Bu cihazlarda kullanılan uygulamalarda çoklu oturum açma (SSO) özelliğini etkinleştirmek için, Microsoft ilk taraf belirteç aracılarına özel olarak verilen bir JSON Web Token (JWT). Bu makalede, Windows 10 cihazlarında bir PRT 'nin nasıl verildiği, kullanıldığı ve korunduğu hakkında ayrıntılı bilgi sağlıyoruz.
 
 Bu makalede, Azure AD 'de mevcut olan farklı cihaz durumlarını ve çoklu oturum açma 'nın Windows 10 ' da nasıl çalıştığını anladığınızı varsaymaktadır. Azure AD 'deki cihazlar hakkında daha fazla bilgi için [Azure Active Directory cihaz yönetimi](overview.md) nedir makalesine bakın.
 

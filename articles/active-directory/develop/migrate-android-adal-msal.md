@@ -13,12 +13,12 @@ ms.date: 09/6/2019
 ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: 21866bb7dab3d5a093ffc4655161b80853eadfc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2a6722cfff392a18629c8bb47fad0ad5ac1a95b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77084061"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966007"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>Android için ADAL MSAL geçiş kılavuzu
 
@@ -146,7 +146,7 @@ Bir banka hesabı değerlendirin. Birden fazla mali kurum üzerinde birden fazla
 
 Benzerleme vurguladı tarafından finansal bir kurumdaki hesaplar gibi, Microsoft Identity platformunda hesaplara kimlik bilgileri kullanılarak erişilir. Bu kimlik bilgileri, Microsoft tarafından kaydedilir veya tarafından verilir. Ya da bir kuruluş adına Microsoft tarafından.
 
-Microsoft Identity platformunun bir mali kuruluştan farklı olduğu durumlarda, bu benzerleme vurguladı Microsoft Identity platformunun, bir kullanıcının birden çok kişiye ve kuruluşa ait kaynaklara erişmek için bir hesap ve ilgili kimlik bilgilerini kullanmasına izin veren bir çerçeve sunmasına olanak tanır. Bu, henüz başka bir mali kurumda bir banka tarafından verilen kartı kullanabiliyor gibidir. Bu, söz konusu tüm kuruluşların, bir hesabın birden çok kuruluşta kullanılmasına izin veren Microsoft Identity platformunu kullandığından, bu işe yarar. Aşağıda bir örnek verilmiştir:
+Microsoft Identity platformunun bir mali kuruluştan farklı olduğu durumlarda, bu benzerleme vurguladı Microsoft Identity platformunun, bir kullanıcının birden çok kişiye ve kuruluşa ait kaynaklara erişmek için bir hesap ve ilgili kimlik bilgilerini kullanmasına izin veren bir çerçeve sunmasına olanak tanır. Bu, henüz başka bir mali kurumda bir banka tarafından verilen kartı kullanabiliyor gibidir. Bu, söz konusu tüm kuruluşların, bir hesabın birden çok kuruluşta kullanılmasına izin veren Microsoft Identity platformunu kullandığından, bu işe yarar. İşte bir örnek:
 
 Sam, Contoso.com için geçerlidir ancak Fabrikam.com 'e ait olan Azure sanal makinelerini yönetir. Sam 'nin fabrikam 'ın sanal makinelerini yönetmesi için onlara erişim yetkisi olması gerekir. Bu erişim, Sam hesabı Fabrikam.com 'ye eklenerek ve hesabına sanal makinelerle çalışmasına izin veren bir rol verilerek verilebilir. Bu işlem Azure portal yapılır.
 
@@ -238,19 +238,16 @@ public interface SilentAuthenticationCallback {
 ADAL içinde, `AuthenticationException` sabit listesi değerini alma yöntemi içeren bir tür özel durum vardır `ADALError` .
 MSAL ' de, özel durumların bir hiyerarşisi vardır ve her biri kendi ilişkili özel hata kodları kümesine sahiptir.
 
-MSAL özel durumlarının listesi
-
-|Özel durum  | Açıklama  |
-|---------|---------|
-| `MsalException`     | MSAL tarafından oluşturulan varsayılan özel durum.  |
-| `MsalClientException`     | Hata istemci tarafı ise oluşturulur. |
-| `MsalArgumentException`     | Bir veya daha fazla giriş bağımsız değişkeni geçersiz ise oluşturulur. |
-| `MsalClientException`     | Hata istemci tarafı ise oluşturulur. |
-| `MsalServiceException`     | Hata sunucu tarafında ise oluşturulur. |
-| `MsalUserCancelException`     | Kullanıcı kimlik doğrulama akışını iptal edildiyse oluşturulur.  |
-| `MsalUiRequiredException`     | Belirteç sessizce yenilenmezse oluşturulur.  |
-| `MsalDeclinedScopeException`     | Bir veya daha fazla istenen kapsam sunucu tarafından reddedildiyse oluşturulur.  |
-| `MsalIntuneAppProtectionPolicyRequiredException` | Kaynakta MAMCA koruma ilkesi etkinse oluşturulur. |
+| Özel durum                                        | Açıklama                                                         |
+|--------------------------------------------------|---------------------------------------------------------------------|
+| `MsalException`                                  | MSAL tarafından oluşturulan varsayılan özel durum.                           |
+| `MsalClientException`                            | Hata istemci tarafı ise oluşturulur.                                 |
+| `MsalArgumentException`                          | Bir veya daha fazla giriş bağımsız değişkeni geçersiz ise oluşturulur.                 |
+| `MsalServiceException`                           | Hata sunucu tarafında ise oluşturulur.                                 |
+| `MsalUserCancelException`                        | Kullanıcı kimlik doğrulama akışını iptal edildiyse oluşturulur.                |
+| `MsalUiRequiredException`                        | Belirteç sessizce yenilenmezse oluşturulur.                    |
+| `MsalDeclinedScopeException`                     | Bir veya daha fazla istenen kapsam sunucu tarafından reddedildiyse oluşturulur. |
+| `MsalIntuneAppProtectionPolicyRequiredException` | Kaynakta MAMCA koruma ilkesi etkinse oluşturulur.         |
 
 ### <a name="adalerror-to-msalexception-errorcode"></a>MsalException hata kodu ile ADALError
 

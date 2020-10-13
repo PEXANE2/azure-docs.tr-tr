@@ -170,9 +170,11 @@
             - name: Canlı sohbeti açma/kapatma
               href: howto-show-hide-chat.md
     - name: Sorun giderme
-      items: null
-      '-name': Device connections
-      href: troubleshoot-connection.md
+      items:
+        - name: Cihaz bağlantıları
+          href: troubleshoot-connection.md
+    - name: SSS
+      href: howto-faq.md
 - name: Başvuru
   items:
     - name: Azure CLI
