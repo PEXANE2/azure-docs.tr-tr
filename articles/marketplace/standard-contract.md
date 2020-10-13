@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 05/20/2020
 ms.openlocfilehash: 3487b5a069b1862ec302a979318ea78722b1433c
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361696"
 ---
 # <a name="standard-contract-for-microsoft-commercial-marketplace"></a>Microsoft ticari Market için standart sözleşme
@@ -50,4 +50,4 @@ Azure portal satın alma işlemi sırasında müşteriler, Microsoft ticari Mark
 
 ## <a name="api"></a>API
 
-Müşteriler, bir teklifin şartlarını almak ve kabul etmek için Get-Azurermmarket Placeterms ' i kullanabilir. Standart Sözleşme ve ilişkili değişiklik, cmdlet 'in çıkışında döndürülür.
+Müşteriler bir teklif şartlarını almak ve kabul etmek için Get-AzureRmMarketplaceTerms kullanabilir. Standart Sözleşme ve ilişkili değişiklik, cmdlet 'in çıkışında döndürülür.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
-ms.openlocfilehash: ae504a7dcd6f598c13b5fabffaca4ec6ec067e4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7cb6a9691e1b3186e6493b4ae0b62857fb03f38c
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88549942"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944062"
 ---
 # <a name="tutorial-integrate-kiteworks-with-azure-active-directory"></a>Öğretici: Kiteçalışmalarla Azure Active Directory tümleştirme
 
@@ -100,11 +100,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Üstteki araç çubuğunda, **Ayarlar**' a tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/kiteworks-tutorial/tutorial_kiteworks_06.png)
+    ![Seçilen araç çubuğunda "Ayarlar" simgesini gösteren ekran görüntüsü.](./media/kiteworks-tutorial/tutorial_kiteworks_06.png)
 
 1. **Kimlik doğrulama ve yetkilendirme** bölümünde, **SSO kurulumu**' na tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/kiteworks-tutorial/tutorial_kiteworks_07.png)
+    !["Kimlik doğrulaması ve yetkilendirme" bölümünde seçilen "S S O kurulumu" nu gösteren ekran görüntüsü.](./media/kiteworks-tutorial/tutorial_kiteworks_07.png)
 
 1. SSO kurulum sayfasında, aşağıdaki adımları uygulayın:
 
@@ -134,7 +134,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

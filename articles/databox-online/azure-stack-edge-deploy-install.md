@@ -10,10 +10,10 @@ ms.date: 01/17/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
 ms.openlocfilehash: 9aa02521d91d41380b1bdac3efe50ab3d196a856
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90894201"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro"></a>Öğretici: Azure Stack Edge Pro 'Yu yükler
@@ -181,7 +181,7 @@ Azure Stack Edge Pro cihazınızda:
 - Arka düzlem, yedekli güç kaynağı birimleri (PSUs) içerir.
 - Arka düzlemi altı ağ arabirimine sahiptir:
 
-    - İki adet Gbps arabirimi.
+    - 2 1 Gbps arabirimler.
     - 10 Gbps arabirim olarak da kullanılabilen 4 25 Gbps arabirim.
     - Bir temel kart yönetim denetleyicisi (BMC).
 

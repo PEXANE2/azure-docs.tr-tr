@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: e6a9560cfe0daf158dad03a3171047669a19eade
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13dd930842cb724d12711ac9e7704fd9af4e29d8
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88547973"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944538"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oneteam"></a>Öğretici: Oneteam ile Azure Active Directory tümleştirme
 
@@ -101,7 +101,7 @@ Azure AD çoklu oturum açmayı Oneteam ile yapılandırmak için aşağıdaki a
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    ![Oneteam etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
+    !["Tanımlayıcı" ve "Yanıt U R L" metin kutuları vurgulanmış ve "Kaydet" düğmesi seçili olan "temel S A M L yapılandırma" bölümünü gösteren ekran görüntüsü.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://api.one-team.io/teams/<team name>`
 
@@ -157,7 +157,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
