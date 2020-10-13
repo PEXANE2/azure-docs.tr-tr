@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: c3ce12a91a0cf13bda000f7f729f6249fd04600c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: a6b72c9e6cc366d04937598f653f8ba887ce1b85
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90894049"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952191"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>Öğretici: Azure Stack Edge Pro için ağı GPU ile yapılandırma
 
@@ -26,13 +26,13 @@ Bu öğreticide şunları öğrenirsiniz:
 
 > [!div class="checklist"]
 >
-> * Önkoşullar
+> * Ön koşullar
 > * Ağı yapılandırma
 > * İşlem ağını etkinleştir
 > * Web proxy yapılandırma
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Stack Edge Pro cihazınızı GPU ile yapılandırmadan ve ayarlamadan önce şunları yaptığınızdan emin olun:
 
@@ -78,7 +78,7 @@ Cihazınızın ağını yapılandırmak için bu adımları izleyin.
 
     Cihaz ağı yapılandırıldıktan sonra, sayfa aşağıda gösterildiği gibi güncellenir.
 
-    ![Yerel Web Kullanıcı arabirimi "ağ ayarları" sayfası](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-2.png)
+    ![Yerel Web Kullanıcı arabirimi "ağ ayarları" sayfa 2](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-2.png)
 
 
      >[!NOTE]
@@ -115,7 +115,7 @@ Cihazınızın ağını yapılandırmak için bu adımları izleyin.
     > [!IMPORTANT]
     > İşlem modüllerine erişmek için Azure Stack Edge Pro hub hizmeti için en az 1 IP adresi belirtmenizi önemle tavsiye ederiz. Daha sonra isteğe bağlı olarak, küme dışından erişilmesi gereken diğer hizmetler/IoT Edge modülleri (hizmet/modül başına 1) için ek IP adresleri belirtebilirsiniz. Hizmet IP adresleri daha sonra güncelleştirilebilen olabilir. 
     
-1. **Uygula**’yı seçin.
+1. **Apply** (Uygula) seçeneğini belirleyin.
 
     ![Yerel Kullanıcı arabirimi 3 ' te işlem sayfası](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-3.png)
 
@@ -149,7 +149,7 @@ Bu, isteğe bağlı bir yapılandırmadır.
 
     4. Yapılandırılmış Web proxy ayarlarını doğrulamak ve uygulamak için **Uygula**' yı seçin.
     
-   ![Yerel Web Kullanıcı arabirimi "Web proxy ayarları" sayfası](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/web-proxy-2.png)
+   ![Yerel Web Kullanıcı arabirimi "Web proxy ayarları" sayfa 2](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/web-proxy-2.png)
 
 2. Ayarlar uygulandıktan sonra **İleri: cihaz**' ı seçin.
 
@@ -159,7 +159,7 @@ Bu, isteğe bağlı bir yapılandırmadır.
 Bu öğreticide hakkında bilgi edindiniz:
 
 > [!div class="checklist"]
-> * Önkoşullar
+> * Ön koşullar
 > * Ağı yapılandırma
 > * İşlem ağını etkinleştir
 > * Web proxy yapılandırma

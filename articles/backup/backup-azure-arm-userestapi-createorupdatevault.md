@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
 ms.openlocfilehash: a37808548ec58977b7d6af16c75b94b7b5efe446
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91271605"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>REST API kullanarak Azure kurtarma hizmetleri Kasası oluşturma
@@ -38,7 +38,7 @@ Aşağıdaki üstbilgiler gereklidir:
 
 Aşağıdaki ortak tanımlar bir istek gövdesi oluşturmak için kullanılır:
 
-|Name  |Gerekli  |Tür  |Description  |
+|Adı  |Gerekli  |Tür  |Açıklama  |
 |---------|---------|---------|---------|
 |Özelliği     |         |   Dize      |  İsteğe bağlı eTag       |
 |location     |  true       |Dize         |   Kaynak konumu      |
@@ -66,7 +66,7 @@ Aşağıdaki örnek gövde, "Batı ABD" içinde bir kasa oluşturmak için kulla
 
 Bir kurtarma hizmetleri Kasası oluşturma veya güncelleştirme işlemi için iki başarılı yanıt vardır:
 
-|Ad  |Tür  |Description  |
+|Ad  |Tür  |Açıklama  |
 |---------|---------|---------|
 |200 TAMAM     |   [Kasa](/rest/api/recoveryservices/vaults/createorupdate#vault)      | Tamam        |
 |201 oluşturuldu     | [Kasa](/rest/api/recoveryservices/vaults/createorupdate#vault)        |   Oluşturulan      |

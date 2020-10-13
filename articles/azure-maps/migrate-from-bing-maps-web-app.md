@@ -1,6 +1,6 @@
 ---
 title: "Öğretici: Bing Haritalar 'dan bir Web uygulaması geçirme | Microsoft Azure haritaları"
-description: Bir Web uygulamasını Bing Haritalar 'dan Microsoft Azure Maps 'a geçirmeye yönelik öğretici.
+description: Bir Web uygulamasını Bing Haritalar 'dan Microsoft Azure Maps 'a geçirme.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 9/10/2020
@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 42ba92a0134ae1e8da91bbe7513668fa24c4718f
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
-ms.translationtype: MT
+ms.openlocfilehash: 469565385ce4b3ee4b1589f105216213d584c8c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876524"
+ms.locfileid: "91319750"
 ---
-# <a name="tutorial---migrate-a-web-app-from-bing-maps"></a>Öğretici-Bing Haritalar 'dan bir Web uygulaması geçirme
+# <a name="migrate-a-web-app-from-bing-maps"></a>Bing Haritalar 'dan bir Web uygulaması geçirme
 
 Bing Haritalar kullanan Web uygulamaları genellikle Bing Haritalar V8 JavaScript SDK 'sını kullanır. Azure Haritalar Web SDK 'Sı, geçirilecek Azure tabanlı uygun SDK 'dir. Azure Haritalar Web SDK 'Sı, etkileşimli haritaları, Web veya mobil uygulamalarınızda görüntülenmek üzere kendi içeriklerinizi ve Imagery 'yi özelleştirmenize olanak tanır. Bu denetimde büyük veri kümelerini yüksek performansla oluşturmanızı sağlayan WebGL bileşeni kullanılmaktadır. JavaScript veya TypeScript kullanarak bu SDK ile geliştirin.
 

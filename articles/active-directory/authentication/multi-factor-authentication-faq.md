@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/14/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57325363909664bb527c2e2101505641858c4285
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de86bc7d083fbf1890ed90c588b5bdb2e8479dfb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706277"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963984"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication hakkında sık sorulan sorular
 
@@ -76,7 +76,7 @@ Aynı numarayla tutarlı SMS veya ses tabanlı Multi-Factor Authentication istem
 
 Birleşik Devletler ve Kanada yanı sıra ülkeler ve bölgeler için kısa kodları desteklemiyoruz.
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Faturalama
 
 Çoğu faturalandırma sorusu, [Multi-Factor Authentication fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) ya da [Azure Multi-Factor Authentication sürümleri ve tüketim planlarına](concept-mfa-licensing.md)yönelik belgelere başvurarak yanıtlanır.
 

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d8216bb8c30448e7e91ec9a1bcc531b720eca30c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 44365dec247b9f3135a090cee397cad32598fd29
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91665200"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977876"
 ---
 # <a name="calling-client-library-overview"></a>Arama istemci kitaplığına genel bakış
 
@@ -34,7 +34,8 @@ Aşağıdaki liste, şu anda istemci kitaplıklarını çağıran Azure Iletişi
 |                   | İkiden fazla kullanıcısı olan bir grup çağrısı Yerleştir (en fazla 350 Kullanıcı)                                                       | ✔️   | ✔️            | ✔️ 
 |                   | İki kullanıcıyla daha fazla kullanıcı içeren bir grup çağrısında bir tek-bir çağrıyı yükseltin                                 | ✔️   | ✔️            | ✔️ 
 |                   | Başlatıldıktan sonra bir grup çağrısına katılır                                                                              | ✔️   | ✔️            | ✔️ 
-|                   | Başka bir VoIP katılımcısını devam eden bir grup çağrısına katılmaya davet etme                                                       | ✔️   | ✔️            | ✔️ 
+|                   | Başka bir VoIP katılımcısını devam eden bir grup çağrısına katılmaya davet etme                                                       | ✔️   | ✔️            | ✔️
+|                   | Videonuzu açma/kapatma                                                         | ✔️   | ✔️            | ✔️ 
 |                   | Mikrofonu sustur/aç                                                                                                     | ✔️   | ✔️            | ✔️         
 |                   | Kameralar arasında geçiş yapma                                                                                              | ✔️   | ✔️            | ✔️           
 |                   | Yerel saklama/tutma                                                                                                  | ✔️   | ✔️            | ✔️           

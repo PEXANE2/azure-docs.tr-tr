@@ -8,18 +8,20 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 6671b8aa60690bc1915e297bc31b19299be2b1da
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: f39fb5766965e3881068bd6d2fd3a8142f9eb2ac
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629089"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975918"
 ---
 # <a name="register-a-public-client-application-in-azure-active-directory"></a>Ortak istemci uygulamasını Azure Active Directory kaydetme
 
 Bu makalede, Azure Active Directory bir ortak uygulamayı nasıl kaydedeceğinizi öğreneceksiniz.  
 
 İstemci uygulama kayıtları, kimlik doğrulayabilecek ve Kullanıcı adına API izinleri sorabileceğiniz uygulamaların Azure Active Directory temsilleridir. Ortak istemciler, gizli dizileri gizli tutabilecek mobil uygulamalar ve tek sayfalı JavaScript uygulamaları gibi uygulamalardır. Yordam, [gizli bir istemciyi kaydetmeye](register-confidential-azure-ad-client-app.md)benzerdir, ancak ortak istemcilerin uygulama gizli dizisi tutmak için güvenilir olmaması gerektiğinden, bir tane eklemeniz gerekmez.
+
+Hızlı başlangıç, [Microsoft Identity platformu ile bir uygulamanın nasıl kaydedileceği](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)hakkında genel bilgiler sağlar.
 
 ## <a name="app-registrations-in-azure-portal"></a>Azure portal Uygulama kayıtları
 
@@ -38,6 +40,18 @@ Bu makalede, Azure Active Directory bir ortak uygulamayı nasıl kaydedeceğiniz
 2. Yanıt URL 'SI girin. Yanıt URL 'SI, kimlik doğrulama kodlarının istemci uygulamasına dönecektir. Daha sonra, daha fazla yanıt URL 'Si ekleyebilir ve var olanları düzenleyebilirsiniz.
 
     ![Azure portal. Yeni genel uygulama kaydı.](media/how-to-aad/portal-aad-register-new-app-registration-PUB-CLIENT-NAME.png)
+
+
+[Masaüstü](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration), [Mobil](https://docs.microsoft.com/azure/active-directory/develop/scenario-mobile-app-registration) veya [tek sayfalı](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration) uygulamanızı ortak uygulama olarak yapılandırmak için:
+
+1. [Azure Portal](https://portal.azure.com), **uygulama kayıtları**' de Uygulamanızı seçin ve **kimlik doğrulaması**' nı seçin.
+
+2. **Gelişmiş ayarlar**  >  **varsayılan istemci türü**' nü seçin. **Uygulamayı ortak istemci olarak değerlendir**için **Evet**' i seçin.
+
+3. Tek sayfalı bir uygulama için, örtük akışı etkinleştirmek üzere belirteçleri ve **kimlik belirteçlerini** **erişim** ' i seçin.
+
+   - Uygulamanız kullanıcıların oturumunu açarsa, **Kimlik belirteçleri**' ni seçin.
+   - Uygulamanızın de korumalı bir Web API 'SI çağırması gerekiyorsa, **erişim belirteçleri**' ni seçin.
 
 ## <a name="api-permissions"></a>API izinleri
 

@@ -11,18 +11,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/15/2020
 ms.author: genli
-ms.openlocfilehash: 597ea6e7ff7dbcfcb8a99d4e4de3c1b82915ee07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 738c2a240ad6c88186357e69b02d33b40d366d7f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90561270"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977074"
 ---
 # <a name="troubleshooting-windows-azure-guest-agent"></a>Windows Azure Konuk Aracısı sorunlarını giderme
 
-Windows Azure Konuk Aracısı, bir sanal makine (VM) aracısıdır. Bu, sanal makinenin 168.63.129.16 IP adresinde doku denetleyicisi (VM 'nin barındırıldığı temeldeki fiziksel sunucu) ile iletişim kurmasını sağlar. Bu, iletişimi kolaylaştıran bir sanal genel IP adresidir. Daha fazla bilgi için bkz. [IP adresi 168.63.129.16 nedir](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16).
+Windows Azure Konuk Aracısı, bir sanal makine (VM) aracısıdır. Bu, sanal makinenin 168.63.129.16 IP adresinde doku denetleyicisi (VM 'nin barındırıldığı temeldeki fiziksel sunucu) ile iletişim kurmasını sağlar. Bu, iletişimi kolaylaştıran bir sanal genel IP adresidir. Daha fazla bilgi için bkz. [IP adresi 168.63.129.16 nedir](../../virtual-network/what-is-ip-address-168-63-129-16.md).
 
- Şirket içinden Azure 'a geçirilmiş veya özelleştirilmiş bir görüntü kullanılarak oluşturulan VM 'de Windows Azure Konuk Aracısı yüklü değil. Bu senaryolarda, VM aracısını el ile yüklemelisiniz. VM aracısının nasıl yükleneceği hakkında daha fazla bilgi için bkz. [Azure sanal makine aracısına genel bakış](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows).
+ Şirket içinden Azure 'a geçirilmiş veya özelleştirilmiş bir görüntü kullanılarak oluşturulan VM 'de Windows Azure Konuk Aracısı yüklü değil. Bu senaryolarda, VM aracısını el ile yüklemelisiniz. VM aracısının nasıl yükleneceği hakkında daha fazla bilgi için bkz. [Azure sanal makine aracısına genel bakış](../extensions/agent-windows.md).
 
 Windows Azure Konuk Aracısı başarıyla yüklendikten sonra, VM 'de Services. msc dosyasında listelenen aşağıdaki hizmetleri görebilirsiniz:
  
@@ -74,7 +74,7 @@ Azure portal ' de VM özellikleri sayfasına gidin ve **aracı durumunu**kontrol
 
     Denetim Masası 'nda, Windows Azure Konuk Aracısı hizmetinin yüklenip yüklenmediğini öğrenmek için **Programlar ve Özellikler** ' e gidin.
 
-Çalıştıran bir paket, hizmet ve işlem bulamazsanız ve Windows Azure Konuk Aracısı 'nın programlar ve Özellikler altında yüklü olduğunu görmezseniz, [Microsoft Azure Konuk Aracısı hizmetini yüklemeyi](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)deneyin. Konuk Aracısı düzgün bir şekilde yüklenmiyorsa, [VM aracısını çevrimdışı yükleyebilirsiniz](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline).
+Çalıştıran bir paket, hizmet ve işlem bulamazsanız ve Windows Azure Konuk Aracısı 'nın programlar ve Özellikler altında yüklü olduğunu görmezseniz, [Microsoft Azure Konuk Aracısı hizmetini yüklemeyi](../extensions/agent-windows.md)deneyin. Konuk Aracısı düzgün bir şekilde yüklenmiyorsa, [VM aracısını çevrimdışı yükleyebilirsiniz](./install-vm-agent-offline.md).
 
 Hizmetleri görebilir ve çalışıyorsa, sorunun çözümlenip çözümlenmediğini görmek için hizmeti yeniden başlatın. Hizmetler durdurulmuşsa, bunları başlatın ve birkaç dakika bekleyin. Ardından, **Aracı durumunun** **hazırlık**olarak raporlanıp raporlanmadığını kontrol edin. Bu hizmetlerin kilitlendiğini görürseniz, bazı üçüncü taraf süreçler bu hizmetlerin kilitlenmesine neden olabilir. Bu sorunların daha fazla giderilmesi için [Microsoft desteği](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)başvurun.
 
@@ -111,7 +111,7 @@ Windows Azure Konuk aracısının otomatik güncelleştirme özelliği vardır. 
     ```
     Ardından Konuk Aracısı hizmetlerinin doğru şekilde başlayıp başlamamadığını denetleyin.
  
-    Konuk aracısının doğru şekilde yüklenebileceği nadir durumlarda, [VM aracısını çevrimdışı yükleyebilirsiniz](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline).
+    Konuk aracısının doğru şekilde yüklenebileceği nadir durumlarda, [VM aracısını çevrimdışı yükleyebilirsiniz](./install-vm-agent-offline.md).
     
 
 ### <a name="step-3-check-whether-the-vm-can-connect-to-the-fabric-controller"></a>3. adım VM 'nin doku denetleyicisine bağlanıp bağlanamamadığını denetleyin
@@ -189,7 +189,7 @@ VM, kablolu sunucu ana bilgisayar sunucusuna ulaşamıyor.
 1. Adım 1 ' deki URL 'ye ulaşırsanız, DHCP 'nin etkin olup olmadığını ve DNS 'nin olduğunu öğrenmek için ağ arabirimini kontrol edin. Ağ arabiriminin DHCP durumunu denetlemek için şu komutu çalıştırın:  `netsh interface ip show config` .
 1. DHCP devre dışıysa, sarı olan değeri arabiriminiz adına değiştirdiğinizden emin olmak için aşağıdaki işlemi çalıştırın: `netsh interface ip set address name="Name of the interface" source=dhcp` .
 1. 168.63.129.16 IP adresine erişimi engelleyebilecek bir güvenlik duvarı, ara sunucu veya başka bir kaynaktan kaynaklanmış olabilecek herhangi bir sorun olup olmadığını denetleyin.
-1. Windows güvenlik duvarı veya bir üçüncü taraf güvenlik duvarının 80, 443 ve 32526 bağlantı noktalarına erişimi engelleyip engellemediğini denetleyin. Bu adresin neden engellenmediği hakkında daha fazla bilgi için bkz. [IP adresi nedir 168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16).
+1. Windows güvenlik duvarı veya bir üçüncü taraf güvenlik duvarının 80, 443 ve 32526 bağlantı noktalarına erişimi engelleyip engellemediğini denetleyin. Bu adresin neden engellenmediği hakkında daha fazla bilgi için bkz. [IP adresi nedir 168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md).
 
 ### <a name="guest-agent-is-stuck-stopping"></a>Konuk Aracısı "durduruluyor" olarak takılmış  
 

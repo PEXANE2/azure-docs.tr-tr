@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: e08150f5998b71523a986eac1f8a9be993125f5a
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619161"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Veritabanı coğrafi çoğaltma kullanarak çok kiracılı SaaS uygulaması için olağanüstü durum kurtarma
@@ -142,7 +142,7 @@ Bu noktada, uygulama normal olarak özgün bölgede çalışıyor ve şimdi coğ
 
 2. Kurtarma kaynak grubundaki kaynakları keşfet.  
 
-3. _Tenants1-DPT- &lt; user &gt; -Recovery_ sunucusunda contoso Concert salonu veritabanına tıklayın.  Sol tarafta coğrafi çoğaltma ' ya tıklayın. 
+3. _Tenants1-DPT- &lt; user &gt; -Recovery_ sunucusunda contoso Concert salonu veritabanına tıklayın.  Sol tarafta Geo-Replication ' a tıklayın. 
 
     ![Contoso Concert coğrafi çoğaltma bağlantısı](./media/saas-dbpertenant-dr-geo-replication/contoso-geo-replication.png) 
 
@@ -245,7 +245,7 @@ Kurtarma işlemi tamamlandığında, uygulama ve tüm kiracılar kurtarma bölge
     
 4. _Tenants2-DPT- &lt; user &gt; -Recovery_ SQL Server 'ı açın.  _Hawthornhall_ veritabanı ve elastik havuz, _Pool1_içerdiğini unutmayın.  _Hawthornhall_ veritabanı, _Pool1_ elastik havuzda esnek veritabanı olarak yapılandırılır.
 
-5. Kaynak grubuna geri gidin ve _tenants1-DPT- &lt; user &gt; -Recovery_ sunucusunda contoso Concert salonu veritabanına tıklayın. Sol tarafta coğrafi çoğaltma ' ya tıklayın.
+5. Kaynak grubuna geri gidin ve _tenants1-DPT- &lt; user &gt; -Recovery_ sunucusunda contoso Concert salonu veritabanına tıklayın. Sol tarafta Geo-Replication ' a tıklayın.
     
     ![Yük devretmeden sonra contoso veritabanı](./media/saas-dbpertenant-dr-geo-replication/contoso-geo-replication-after-failover.png)
 

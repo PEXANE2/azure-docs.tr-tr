@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 71862bedc009d560adc8131eacc37c0afba25d81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fab49c4242afc2e4f2d0595e2aa95f19f3d976f8
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761728"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951588"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Azure Bilişsel Arama API sürümleri
 
@@ -41,7 +41,7 @@ Ayrıca, Azure Bilişsel Arama .NET SDK 'nın [**3.0.0-RC**](https://www.nuget.o
 
 Bu tarihten sonra, kullanımdan kaldırılan REST API veya SDK sürümlerinden herhangi birini kullanan uygulamalar artık çalışmaz ve yükseltilmesi gerekir. Bu türde herhangi bir değişiklik yaparken, 12 aylık bir bildirim sunuyoruz, bu nedenle ayarlamak için yeterli zaman vardır.
 
-Azure Bilişsel Arama 'yi kullanmaya devam etmek için lütfen [REST API](search-api-migration.md) hedefleyen mevcut kodu [REST API 2020-06-30 sürümünü](https://docs.microsoft.com/rest/api/searchservice/) veya daha yeni bir SDK 'yı 15 Ekim 2020 ' e geçirin.  En son sürüme güncelleştirme hakkında sorularınız varsa, azuresearch_contact@microsoft.com kodunuzu güncelleştirmek için yeterli zamana sahip olduğunuzdan emin olmak için lütfen 15 mayıs 2020 ' e kadar posta gönderin.
+Azure Bilişsel Arama 'yi kullanmaya devam etmek için lütfen [REST API](search-api-migration.md) hedefleyen mevcut kodu [REST API 2020-06-30 sürümünü](/rest/api/searchservice/) veya daha yeni bir SDK 'yı 15 Ekim 2020 ' e geçirin.  En son sürüme güncelleştirme hakkında sorularınız varsa, azuresearch_contact@microsoft.com kodunuzu güncelleştirmek için yeterli zamana sahip olduğunuzdan emin olmak için lütfen 15 mayıs 2020 ' e kadar posta gönderin.
 
 ## <a name="rest-apis"></a>REST API'leri
 
@@ -74,8 +74,8 @@ Bir arama hizmeti oluşturup yapılandırın ve API anahtarlarını yönetin.
 
 | Sürüm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | Durum | Açıklama |
 |-------------------------|--------|------------------------------|
-| [Yönetim 2020-08-01](https://docs.microsoft.com/rest/api/searchmanagement/) | Dengeli | Yönetim REST API 'lerinin en yeni kararlı sürümü. Önizleme sürümünde belirtilenler hariç tüm giden erişilen kaynaklar için genel kullanıma açık paylaşılan özel bağlantı kaynağı desteğini ekler |
-| [Yönetim 2020-08-01-Önizleme](https://docs.microsoft.com/rest/api/searchmanagement/index-preview) | Önizleme  | Şu anda önizlemede: Azure Işlevleri için paylaşılan özel bağlantı kaynağı ve MySQL için Azure veritabanı desteği. |
+| [Yönetim 2020-08-01](/rest/api/searchmanagement/) | Dengeli | Yönetim REST API 'lerinin en yeni kararlı sürümü. Önizleme sürümünde belirtilenler hariç tüm giden erişilen kaynaklar için genel kullanıma açık paylaşılan özel bağlantı kaynağı desteğini ekler |
+| [Yönetim 2020-08-01-Önizleme](/rest/api/searchmanagement/index-preview) | Önizleme  | Şu anda önizlemede: Azure Işlevleri için paylaşılan özel bağlantı kaynağı ve MySQL için Azure veritabanı desteği. |
 | Yönetim 13.03.2020  | Dengeli | Özel bağlantı aracılığıyla özel [uç nokta](service-create-private-endpoint.md) ve yeni hizmetler IÇIN [ağ IP kuralları](service-configure-firewall.md) ekler. Daha fazla bilgi için bu [Swagger belirtimine](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2020-08-01)bakın. |
 | Yönetim 2019-10-01-Preview | Önizleme  | Bu listede tanıtılan önizleme özelliği yoktu. Bu önizleme, işlevsel olarak 2020-03-13 ile eşdeğerdir. Daha fazla bilgi için bu [Swagger belirtimine](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/preview/2019-10-01-preview)bakın. |
 | Yönetim 2015-08-19  | Dengeli | Yönetim REST API 'lerinin ilk genel olarak kullanılabilir sürümü. Hizmet sağlama, ölçek artırma ve API anahtar yönetimi sağlar. Daha fazla bilgi için bu [Swagger belirtimine](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19)bakın. |

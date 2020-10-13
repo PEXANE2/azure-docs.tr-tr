@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: cc09912bb0c9ab553d180ff5cc06fc52c4c5cc0c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91261077"
 ---
 # <a name="service-bus-topics-output-from-azure-stream-analytics"></a>Azure Stream Analytics çıkış Service Bus konuları
@@ -20,7 +20,7 @@ Service Bus kuyruklar, gönderenden alıcıya bire bir iletişim yöntemi sağla
 
 Aşağıdaki tabloda, Service Bus konu çıkışı oluşturmaya yönelik özellik adları ve açıklamaları listelenmektedir.
 
-| Özellik adı | Description |
+| Özellik adı | Açıklama |
 | --- | --- |
 | Çıktı diğer adı |Sorgu çıkışını bu Service Bus konusuna yönlendirmek için sorgularda kullanılan kolay bir ad. |
 | Service Bus ad alanı |Bir mesajlaşma varlıkları kümesi için kapsayıcı. Yeni bir olay hub 'ı oluşturduğunuzda bir Service Bus ad alanı da oluşturmuş olursunuz. |
@@ -61,7 +61,7 @@ Aşağıdaki örnekte, alanları `DeviceId` ve `DeviceStatus` meta verilere ekle
 
 Aşağıdaki görüntü, [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer)kullanılarak EventHub ' de incelenen beklenen çıkış iletisi özellikleridir.
 
-:::image type="content" source="media/service-bus-topics-output/custom-properties.png" alt-text="Olay özel özellikleri":::
+:::image type="content" source="media/service-bus-topics-output/custom-properties.png" alt-text="Özellik sütunları":::
 
 ## <a name="system-properties"></a>Sistem özellikleri
 
