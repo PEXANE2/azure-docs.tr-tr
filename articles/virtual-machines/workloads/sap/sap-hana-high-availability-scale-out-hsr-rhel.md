@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 10/02/2020
 ms.author: radeltch
 ms.openlocfilehash: edca4b44bd9e7aa9f100db3cea0bc69880a4c533
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91744977"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux üzerinde SAP HANA genişleme sisteminin yüksek kullanılabilirliği 
@@ -80,14 +80,14 @@ Başlamadan önce, aşağıdaki SAP notları ve incelemeleri inceleyin:
 * [Linux üzerinde SAP için Azure sanal makineleri DBMS dağıtımı][dbms-guide]
 * [SAP HANA ağ gereksinimleri](https://www.sap.com/documents/2016/08/1cd2c2fb-807c-0010-82c7-eda71af511fa.html)
 * Genel RHEL belgeleri
-  * [Yüksek kullanılabilirlik eklentisi genel bakış](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
-  * [Yüksek kullanılabilirlik eklentisi Yönetimi](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-  * [Yüksek kullanılabilirlik eklentisi başvurusu](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+  * [Yüksek kullanılabilirlik Add-On genel bakış](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+  * [Yüksek kullanılabilirlik Add-On yönetimi](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+  * [Yüksek kullanılabilirlik Add-On başvurusu](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
   * [Red Hat Enterprise Linux Ağ Kılavuzu](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide)
-  * [NFS paylaşımlarında HANA dosya sistemleriyle bir Paceoluşturucu kümesinde SAP HANA genişleme sistem çoğaltmasını yapılandırma Nasıl yaparım?](https://access.redhat.com/solutions/5423971)
+  * [NFS paylaşımlarında HANA dosya sistemleriyle bir pacemaker kümesinde SAP HANA Scale-Out sistem çoğaltmasını yapılandırma Nasıl yaparım?](https://access.redhat.com/solutions/5423971)
 * Azure 'a özgü RHEL belgeleri:
   * [Microsoft Azure kullanım için Red Hat Enterprise Linux SAP HANA yüklemesi](https://access.redhat.com/public-cloud/microsoft-azure)
-  * [SAP HANA genişleme ve sistem çoğaltma için Red Hat Enterprise Linux çözümü](https://access.redhat.com/solutions/4386601)
+  * [SAP HANA Scale-Out ve sistem çoğaltması için Red Hat Enterprise Linux çözümü](https://access.redhat.com/solutions/4386601)
 * [Microsoft Azure Azure NetApp Files kullanarak NetApp SAP uygulamaları][anf-sap-applications-azure]
 * [Azure NetApp Files belgeleri][anf-azure-doc] 
 
@@ -836,7 +836,7 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
     ```
 
    > [!TIP]
-   > Yapılandırmanız,/, NFS 'nin bağlı olduğu diğer dosya sistemlerini de içeriyorsa, `hana/shared` `sequential=false` dosya sistemleri arasında bir sıralama bağımlılığı olmaması için seçeneği dahil edin. Tüm NFS bağlı dosya sistemleri, karşılık gelen öznitelik kaynağıyla önce başlamalı, ancak birbirleriyle ilgili herhangi bir sırada başlaması gerekmez. Daha fazla bilgi için bkz. [Hana dosya SISTEMLERI NFS paylaşımları olduğunda bir paceoluşturucu kümesinde SAP HANA genişleme HSR nasıl yaparım? yapılandırma](https://access.redhat.com/solutions/5423971).  
+   > Yapılandırmanız,/, NFS 'nin bağlı olduğu diğer dosya sistemlerini de içeriyorsa, `hana/shared` `sequential=false` dosya sistemleri arasında bir sıralama bağımlılığı olmaması için seçeneği dahil edin. Tüm NFS bağlı dosya sistemleri, karşılık gelen öznitelik kaynağıyla önce başlamalı, ancak birbirleriyle ilgili herhangi bir sırada başlaması gerekmez. Daha fazla bilgi için [, Hana dosya SISTEMLERI NFS paylaşımları olduğunda bir paceoluşturucu kümesinde Nasıl yaparım? SAP HANA Scale-Out HSR yapılandırma](https://access.redhat.com/solutions/5423971)konusuna bakın.  
 
 8. **[1]** Hana küme kaynaklarının oluşturulmasına yönelik hazırlık bölümünde paceyapıcısı bakım moduna yerleştirirken.  
     ```

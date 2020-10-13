@@ -1,24 +1,24 @@
 ---
-title: Bireysel Azure faturanızı gözden geçirme
-description: Bireysel Azure aboneliğinize ait faturanızı ve kaynak kullanımınızı anlama ve ücretleri doğrulama konusunda bilgi edinin.
+title: Bireysel Azure aboneliği faturanızı inceleme
+description: Kullandıkça öde planı dahil olmak üzere bireysel Azure aboneliğinize ait faturanızı ve kaynak kullanımınızı anlama ve ücretleri doğrulama konusunda bilgi edinin.
 author: bandersmsft
 ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: tutorial
-ms.date: 08/20/2020
+ms.date: 10/01/2020
 ms.author: banders
-ms.openlocfilehash: 0c93375abd57ff5e96906ef7befbbb546a3a1caf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 95af762e0ff1986f9d1395e787c73b3a886a7a2e
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270534"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653290"
 ---
-# <a name="tutorial-review-your-individual-azure-bill"></a>Öğretici: Bireysel Azure faturanızı gözden geçirme
+# <a name="tutorial-review-your-individual-azure-subscription-bill"></a>Öğretici: Bireysel Azure aboneliği faturanızı inceleme
 
-Bu makale, Azure faturanızı anlamanıza ve gözden geçirmenize yardımcı olur. Her faturalama döneminde e-posta ile bir fatura gönderilir. Faturanız Azure ücretlerinizin gösterimidir. Faturadaki maliyet bilgileri Azure portalında da mevcuttur. Bu öğreticide Azure portalında faturanızı ayrıntılı günlük kullanım dosyası ve maliyet analizi ile karşılaştıracaksınız.
+Bu makale, kullandıkça öde ve Visual Studio dahil olmak üzere kullandıkça öde ya da Visual Studio Azure aboneliğinize yönelik faturanızı anlamanıza ve incelemenize yardımcı olur. Her faturalama döneminde e-posta ile bir fatura gönderilir. Faturanız Azure ücretlerinizin gösterimidir. Faturadaki maliyet bilgileri Azure portalında da mevcuttur. Bu öğreticide Azure portalında faturanızı ayrıntılı günlük kullanım dosyası ve maliyet analizi ile karşılaştıracaksınız.
 
 Bu öğretici yalnızca bireysel aboneliğe sahip olan Azure müşterileri için geçerlidir. Bireysel abonelikler genellikle doğrudan Azure web sitesinden satın alınan ve kullandıkça öde ücretlerini kullanan aboneliklerdir.
 
@@ -42,7 +42,7 @@ Azure'a abone olmanızın üzerinden en az 30 gün geçmiş olmalıdır. Azure s
 
 - [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
-## <a name="compare-invoiced-charges-with-usage-file"></a>Faturadaki ücretleri kullanım dosyasıyla karşılaştırma
+## <a name="compare-billed-charges-with-your-usage-file"></a>Faturaya yansıtılan ücretleri kullanım dosyanızla karşılaştırma
 
 <a name="charges"></a>
 
@@ -109,7 +109,7 @@ CSV kullanım bilgileri dosyanıza *MeterName* filtresi uygulayarak faturanızda
 
 Daha fazla bilgi için bkz. [Azure faturanızı anlama](understand-invoice.md) ve [Azure ayrıntılı kullanımınızı anlama](understand-usage.md).
 
-## <a name="compare-charges-and-usage-in-cost-analysis"></a>Ücretleri ve kullanımı maliyet analiziyle karşılaştırma
+## <a name="compare-billed-charges-and-usage-in-cost-analysis"></a>Faturaya yansıtılan ücretleri ve maliyet analizindeki kullanımı karşılaştırma
 
 Azure portalındaki maliyet analizi de ücretlerinizi doğrulamanıza yardımcı olabilir. Faturaya yansıtılan kullanım ve ücretlerle ilgili genel bakış için Azure portalındaki [Abonelikler sayfasından](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) aboneliğinizi seçin. Ardından **Maliyet analizi**'ne ve daha sonra görünüm listesinde **Fatura ayrıntıları**'na tıklayın.
 
@@ -123,13 +123,15 @@ Maliyet analizinde gösterilen maliyetler, faturanıza yansıtılan tek kaynağ�
 
 ![Fatura kullanım ücretleri](./media/review-individual-bill/invoice-usage-charges.png)
 
-## <a name="external-services-billed-separately"></a><a name="external"></a>Dış hizmetler ayrı faturalanır
+## <a name="external-marketplace-services-are-billed-separately"></a>Dış Market hizmetleri ayrı faturalandırılır
+
+<a name="external"></a>
 
 Dış hizmetler veya market ücretleri, üçüncü taraf yazılımı satıcıları tarafından oluşturulan kaynaklar için geçerlidir. Bu kaynakları Azure Market’ten sağlayabilirsiniz. Örneğin Barracuda Güvenlik Duvarı, üçüncü tarafın kullanıma sunduğu bir Azure Market kaynağıdır. Güvenlik duvarının tüm ücretleri ve bunlara karşılık gelen ölçümler dış hizmet ücretleri olarak görünür.
 
 Dış hizmetlerin ücretleri ayrı faturalanır. Ücretler Azure faturanızda gösterilmez. Daha fazla bilgi edinmek için bkz. [Azure dış hizmet ücretlerinizi anlama](understand-azure-marketplace-charges.md).
 
-### <a name="resources-billed-by-usage-meters"></a>Kullanım ölçümleri tarafından faturalanan kaynaklar
+### <a name="resources-are-billed-by-usage-meters"></a>Kaynaklar, kullanım ölçümlerine göre faturalandırılır
 
 Azure doğrudan kaynak maliyetine göre faturalama yapmaz. Kaynağın ücretleri bir veya birden fazla ölçüm kullanılarak hesaplanır. Ölçümler, kaynağın yaşam süresi boyunca tüketilen kaynak kullanımını izlemek için kullanılır. Bu ölçümler daha sonra faturayı hesaplamak için kullanılır.
 
@@ -152,7 +154,9 @@ VM oluşturulduğunda her ölçüm kullanım kayıtları üretmeye başlar. Bu k
 
 Önceki örnekte olduğu gibi, CSV biçimindeki kullanım dosyanızda faturanızın hesaplanması için kullanılan ölçümleri görebilirsiniz.
 
-## <a name="pay-your-bill"></a><a name="payment"></a>Faturanızı ödeme
+## <a name="pay-your-bill"></a>Faturanızı ödeme
+
+<a name="payment"></a>
 
 Ödeme yönteminiz olarak bir kredi kartı ayarladıysanız ödeme faturalama döneminin bitişinden sonraki 10 gün içinde otomatik olarak ücretlendirilir. Kredi kartı hesap özetinizde satır öğesi **MSFT Azure** olarak görünür.
 

@@ -4,10 +4,10 @@ description: Yönetim grubu hiyerarşinizi görüntülemeyi, bakımını yapmay�
 ms.date: 08/10/2020
 ms.topic: conceptual
 ms.openlocfilehash: 82eeb2520815ddac69d27ddccd58c842c3e33deb
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91531047"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Kaynakları yönetim gruplarıyla yönetme
@@ -43,7 +43,7 @@ Portal, PowerShell veya Azure CLı kullanarak yönetim grubunun adını değişt
 
    :::image type="content" source="./media/rename_context.png" alt-text="Yönetim grubu sayfasında Eylem çubuğunun ve ' grubu yeniden adlandır ' düğmesinin ekran görüntüsü." border="false":::
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ### <a name="change-the-name-in-powershell"></a>PowerShell 'de adı değiştirme
 
@@ -91,7 +91,7 @@ Bir yönetim grubunu silmek için aşağıdaki gereksinimlerin karşılanması g
 
    :::image type="content" source="./media/delete_confirm.png" alt-text="Yönetim grubu sayfasında Eylem çubuğunun ve ' grubu yeniden adlandır ' düğmesinin ekran görüntüsü." border="false":::
 
-1. **Evet** seçeneğini belirleyin.
+1. **Evet**’i seçin.
 
 ### <a name="delete-in-powershell"></a>PowerShell 'de Sil
 
@@ -251,7 +251,7 @@ Azure portal hangi izinlere sahip olduğunu görmek için, yönetim grubunu seç
 
    :::image type="content" source="./media/move_small_context.png" alt-text="Yönetim grubu sayfasında Eylem çubuğunun ve ' grubu yeniden adlandır ' düğmesinin ekran görüntüsü." border="false":::
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ### <a name="move-subscriptions-in-powershell"></a>Abonelikleri PowerShell 'e taşıma
 
@@ -300,11 +300,11 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
    :::image type="content" source="./media/add_context_MG.png" alt-text="Yönetim grubu sayfasında Eylem çubuğunun ve ' grubu yeniden adlandır ' düğmesinin ekran görüntüsü." border="false":::
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ### <a name="move-management-groups-in-powershell"></a>Yönetim gruplarını PowerShell 'de taşıma
 
-Yönetim grubunu farklı bir grup altında taşımak için PowerShell 'de Update-AzManagementGroup komutunu kullanın.
+Yönetim grubunu farklı bir grup altında taşımak için PowerShell 'deki Update-AzManagementGroup komutunu kullanın.
 
 ```azurepowershell-interactive
 $parentGroup = Get-AzManagementGroup -GroupName ContosoIT

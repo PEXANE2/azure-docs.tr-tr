@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: dba058dce09e958a2ae769d927a5569fb3e42113
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87324565"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularında gelişmiş toplamalar
@@ -38,7 +38,7 @@ Event
 | BİLGİSAYAR2 | [326.105.302.301.300.102] |
 | ... | ... |
 
-`makelist`verilerin kendisine geçirildiği sırada bir liste oluşturur. Olayları en eskiden en eskiye sıralamak için `asc` yerine Order ifadesinde kullanın `desc` . 
+`makelist` verilerin kendisine geçirildiği sırada bir liste oluşturur. Olayları en eskiden en eskiye sıralamak için `asc` yerine Order ifadesinde kullanın `desc` . 
 
 Yalnızca benzersiz değerlerin bir listesini oluşturmak da yararlıdır. Bu bir _küme_ olarak adlandırılır ve şu şekilde oluşturulabilir `makeset` :
 
@@ -163,7 +163,7 @@ Heartbeat
 
 
 
-## <a name="narrowing-results-to-a-set-of-elements-let-makeset-toscalar-in"></a>Sonuçları bir dizi öğe için daraltma: `let` , `makeset` , `toscalar` ,`in`
+## <a name="narrowing-results-to-a-set-of-elements-let-makeset-toscalar-in"></a>Sonuçları bir dizi öğe için daraltma: `let` , `makeset` , `toscalar` , `in`
 Yaygın bir senaryo, bazı belirli varlıkların adlarını bir dizi ölçüte göre seçmek ve sonra farklı bir veri kümesini bu varlık kümesine göre filtrelemenize olanak sağlar. Örneğin, eksik güncelleştirmeleri olduğunu bildiğiniz ve bu bilgisayarların şu şekilde çağırdığı IP 'Leri tanımlayan bilgisayarları bulabilirsiniz:
 
 

@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
 ms.openlocfilehash: 8c76bddc0fae024b0dd2bdd27d6b1e10d71dec71
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90017481"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>Öğretici: Azure AD 'den Workday 'ye öznitelik geri yazmayı yapılandırma
@@ -133,7 +133,7 @@ Bu bölümde, geri yazma özniteliklerinin Azure AD 'den Workday 'e nasıl akabi
      Replace([mobile], , "[()\\s-]+", , "", , )
      ```
 
-6. Eşlemelerinizi kaydetmek için öznitelik eşleme bölümünün en üstündeki **Kaydet** ' e tıklayın.
+6. Eşlemelerinizi kaydetmek için Attribute-Mapping bölümünün en üstündeki **Kaydet** ' e tıklayın.
 
 ## <a name="enable-and-launch-user-provisioning"></a>Kullanıcı sağlamayı etkinleştirme ve başlatma
 
@@ -157,7 +157,7 @@ Workday sağlama uygulama yapılandırması tamamlandıktan sonra, Azure portal 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Hazırlama etkinliği günlüklerini incelemeyi ve rapor oluşturmayı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
 * [Workday ve Azure Active Directory arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin](workday-tutorial.md)
 * [Diğer SaaS uygulamalarını Azure Active Directory ile tümleştirmeyi öğrenin](tutorial-list.md)
 * [Sağlama yapılandırmalarınızı dışarı ve içeri aktarma hakkında bilgi edinin](../app-provisioning/export-import-provisioning-configuration.md)

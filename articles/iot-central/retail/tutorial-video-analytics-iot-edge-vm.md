@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 0b39ec9c8cb70adac1474b2647ac1c9591b9d5cd
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: db3d4bb7f4b32c07e75487764acc5e7ba7d05915
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526400"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873287"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>Öğretici: video analizi için IoT Edge örneği oluşturma (Linux VM)
 
@@ -32,9 +32,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Azure IoT Edge çalışma zamanı yüklü bir Azure VM oluşturma
 > * Canlı video analizi modülünü barındırmak ve IoT Central bağlanmak için IoT Edge yüklemesini hazırlayın
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce, Azure IoT Central öğreticide önceki [bir video analizi oluşturma uygulamasını](./tutorial-video-analytics-create-app.md) tamamlamalısınız.
+Başlamadan önce, Azure IoT Central bir önceki [video analizi uygulaması oluşturma](./tutorial-video-analytics-create-app-yolo-v3.md) veya [Azure IoT Central (openvino &trade; ) öğreticisinde bir video analizi oluşturma](tutorial-video-analytics-create-app-openvino.md) işlemini tamamlamalısınız.
 
 Ayrıca bir Azure aboneliğine de ihtiyacınız vardır. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)ücretsiz olarak bir tane oluşturabilirsiniz.
 

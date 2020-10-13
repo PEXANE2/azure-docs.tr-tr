@@ -4,10 +4,10 @@ description: Bu makalede, Azure portal kullanılarak Azure Blob depolama gibi de
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: e80e2243c93ab38187646256f567d6ab73c40100
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91308512"
 ---
 # <a name="subscribe-to-events-through-portal"></a>Portala etkinliklere abone olma

@@ -8,10 +8,10 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 09/18/2020
 ms.openlocfilehash: 312457a6220920d550f05e3a1cd1dc5ec2f4449a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91327875"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Güncelleştirme Yönetimi’ni etkinleştirme
@@ -325,7 +325,7 @@ Azure Otomasyonu ve Azure Izleyici 'de yeni başladıysanız aşağıdaki yapıl
 
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. Azure portal oluşturduğunuz Otomasyon hesabını açın.
 

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: alkohli
 ms.openlocfilehash: a33e01d68a31585e216faa51ac8af193d86c6123
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90053285"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>SharePoint için StorSimple bağdaştırıcısını yükleyip yapılandırma
@@ -140,7 +140,7 @@ SharePoint sunucu grubunuzun doğru yapılandırıldığından emin olun, aşağ
   3. Sol bölmede **yerel sunucu**' ya tıklayın.
   4. Sağ bölmedeki **IE artırılmış güvenlik yapılandırması**' nın yanındaki **Açık**' a tıklayın.
   5. **Yöneticiler**altında **kapalı**' ya tıklayın.
-  6. **Tamam**’a tıklayın.
+  6. **Tamam**'a tıklayın.
 
 ## <a name="remote-blob-storage-rbs-prerequisites"></a>Uzak BLOB depolama (KÇY) önkoşulları
 SQL Server desteklenen bir sürümünü kullandığınızdan emin olun. Yalnızca aşağıdaki sürümler desteklenir ve KÇY 'yi kullanabilir:

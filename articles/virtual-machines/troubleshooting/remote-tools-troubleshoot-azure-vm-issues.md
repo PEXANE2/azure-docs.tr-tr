@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
 ms.openlocfilehash: 5abb509f1753c65554bd74ababe9acca4103c15a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86509095"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Azure VM sorunlarını gidermek için uzak araçları kullanma
@@ -251,7 +251,7 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- ENTER-PSSession cmdlet 'i hakkında daha fazla bilgi için bkz. [-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession?view=powershell-5.1).
+- Enter-PSSession cmdlet 'i hakkında daha fazla bilgi için bkz. [PSSession](/powershell/module/microsoft.powershell.core/enter-pssession?view=powershell-5.1).
 - Klasik dağıtım modelini kullanarak Windows için özel Betik uzantısı hakkında daha fazla bilgi için bkz. [Windows Için özel Betik uzantısı](../extensions/custom-script-windows.md).
 - PsExec, [Padstools paketinin](https://download.sysinternals.com/files/PSTools.zip)bir parçasıdır.
 - Padstools Suite hakkında daha fazla bilgi için bkz. [padstools](/sysinternals/downloads/pstools).

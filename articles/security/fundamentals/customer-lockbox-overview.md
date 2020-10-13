@@ -9,10 +9,10 @@ ms.author: terrylan
 manager: rkarlin
 ms.date: 09/15/2020
 ms.openlocfilehash: 52cb5ac5423aac0599ba2827667ee670dde286a5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331667"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure için Müşteri Kasası
@@ -20,11 +20,11 @@ ms.locfileid: "91331667"
 > [!NOTE]
 > Bu özelliği kullanmak için, kuruluşunuzda en az **Geliştirici**düzeyi olan bir [Azure Destek planına](https://azure.microsoft.com/support/plans/) sahip olmanız gerekir.
 
-Microsoft Azure için Müşteri Kasası, müşterilerin müşteri verileri erişim isteklerini gözden geçirmesi ve onaylaması veya reddetmesi için bir arabirim sağlar. Bir Microsoft mühendisinin bir destek isteği sırasında müşteri verilerine erişmesi gereken durumlarda kullanılır.
+Microsoft Azure için Müşteri Kasası müşterilerin, müşteri verilerine yönelik erişim isteklerini gözden geçirmesi ve onaylaması için arabirim sağlar. Bu arabirim Microsoft mühendisinin destek isteği sırasında müşterinin verilerine erişmesi gerektiğinde kullanılır.
 
 Bu makalede, Müşteri Kasası isteklerinin nasıl başlatıldığı, izlendiği ve daha sonraki gözden geçirmeleri ve denetimleri için depolandığı ele alınmaktadır.
 
-Müşteri Kasası artık genel olarak kullanılabilir ve sanal makinelere uzak masaüstü erişimi için şu anda etkin durumda.
+Müşteri Kasası artık genel kullanıma sunulmuştur ve şu anda sanal makinelere uzaktan masaüstü erişimi için etkinleştirilmiştir.
 
 ## <a name="supported-services-and-scenarios-in-preview"></a>Önizlemede desteklenen hizmetler ve senaryolar
 
@@ -33,7 +33,7 @@ Aşağıdaki hizmetler şu anda Müşteri Kasası için önizleme aşamasındad�
 - API Management
 - Azure App Service
 - Bilişsel Hizmetler
-- Container Registry
+- Container Kayıt Defteri
 - MySQL için Azure Veritabanı
 - Azure Databricks
 - Azure Data Box
@@ -48,7 +48,7 @@ Aşağıdaki hizmetler şu anda Müşteri Kasası için önizleme aşamasındad�
 - Azure SQL DB
 - Azure abonelik aktarımları
 - Azure Synapse Analytics
-- Sanal makineler (artık bellek dökümlerinin ve yönetilen disklerin erişimini de kapsayan)
+- Sanal makineler (şimdi bellek dökümlerine ve yönetilen disklere erişimi de kapsar)
 
 Kuruluşunuzun bu önizleme teklifleri için Müşteri Kasası etkinleştirmek üzere [Azure genel önizlemesi için müşteri kasası](https://aka.ms/customerlockbox/insiderprogram)kaydolun.
 
@@ -58,17 +58,17 @@ Aşağıdaki hizmetler ve senaryolar Şu anda Müşteri Kasası için genel kull
 
 ### <a name="remote-desktop-access-to-virtual-machines"></a>Sanal makinelere uzak masaüstü erişimi
 
-Müşteri Kasası Şu anda sanal makinelere uzak masaüstü erişim istekleri için etkinleştirilmiştir. Aşağıdaki iş yükleri desteklenir:
-- Hizmet olarak platform (PaaS)-Azure Cloud Services (Web rolü ve çalışan rolü)
-- Hizmet olarak altyapı (IaaS)-Windows ve Linux (yalnızca Azure Resource Manager)
-- Sanal makine ölçek kümesi-Windows ve Linux
+Müşteri Kasası şu anda sanal makinelere uzaktan masaüstü erişimi istekleri için etkinleştirilmiştir. Aşağıdaki iş yükleri desteklenir:
+- Hizmet olarak platform (PaaS) - Azure Cloud Services (web rolü ve çalışan rolü)
+- Hizmet olarak altyapı (IaaS) - Windows ve Linux (yalnızca Azure Resource Manager)
+- Sanal makine ölçek kümesi - Windows ve Linux
 
 > [!NOTE]
-> IaaS klasik örnekleri Müşteri Kasası tarafından desteklenmez. IaaS klasik örneklerinde çalışan iş yükleriniz varsa, bunları klasik 'dan Kaynak Yöneticisi dağıtım modellerine geçirmeniz önerilir. Yönergeler için bkz. [Klasik 'dan Azure Resource Manager IaaS kaynaklarının platform tarafından desteklenen geçişi](../../virtual-machines/windows/migration-classic-resource-manager-overview.md).
+> IaaS klasik örnekleri Müşteri Kasası tarafından desteklenmez. IaaS klasik örneklerinde çalışan iş yükleriniz varsa, bunları klasik 'dan Kaynak Yöneticisi dağıtım modellerine geçirmeniz önerilir. Yönergeler için bkz. [IaaS kaynaklarının klasik modelden Azure Resource Manager’a platform destekli geçişi](../../virtual-machines/windows/migration-classic-resource-manager-overview.md).
 
 #### <a name="detailed-audit-logs"></a>Ayrıntılı denetim günlükleri
 
-Uzak Masaüstü erişimi içeren senaryolar için, Microsoft mühendis tarafından gerçekleştirilen eylemleri gözden geçirmek üzere Windows olay günlüklerini kullanabilirsiniz. Azure Güvenlik Merkezi 'ni kullanarak Olay günlüklerinizi toplayın ve analiz için verileri çalışma alanınıza kopyalayın. Daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'Nde veri toplama](../../security-center/security-center-enable-data-collection.md).
+Uzaktan masaüstü erişimi içeren senaryolarda Microsoft mühendisinin gerçekleştirdiği eylemleri gözden geçirmek için Windows olay günlüklerini kullanabilirsiniz. Olay günlüklerinizi toplamak ve verileri analiz etmek üzere çalışma alanınıza kopyalamak için Azure Güvenlik Merkezi'ni kullanmayı düşünebilirsiniz. Daha fazla bilgi için bkz. [Azure Güvenlik Merkezi’nde veri toplama](../../security-center/security-center-enable-data-collection.md).
 
 ## <a name="workflow"></a>İş akışı
 
@@ -125,27 +125,27 @@ Denetim amaçlarıyla, bu iş akışında gerçekleştirilen eylemler [müşteri
 
 ## <a name="auditing-logs"></a>Denetim günlükleri
 
-Müşteri Kasası Günlükler etkinlik günlüklerine depolanır. Azure portal, Müşteri Kasası isteklerle ilgili denetim bilgilerini görüntülemek için **etkinlik günlükleri** ' ni seçin. Belirli eylemler için filtre uygulayabilirsiniz, örneğin:
-- **Kasa Isteğini Reddet**
-- **Kasa Isteği oluştur**
-- **Kasa Isteğini Onayla**
+Müşteri Kasası günlükleri etkinlik günlüklerine depolanır. Azure portal, Müşteri Kasası isteklerle ilgili denetim bilgilerini görüntülemek için **etkinlik günlükleri** ' ni seçin. Belirli eylemler için filtreleyebilirsiniz, örneğin:
+- **Kasa İsteğini Reddetme**
+- **Kasa İsteği Oluşturma**
+- **Kasa İsteğini Onaylama**
 - **Kasa Isteği süre sonu**
 
 Örneğin:
 
 ![Azure Müşteri Kasası-etkinlik günlükleri](./media/customer-lockbox-overview/customer-lockbox-activitylogs.png)
 
-## <a name="customer-lockbox-integration-with-azure-security-benchmark"></a>Azure Güvenlik kıyaslaması ile Müşteri Kasası tümleştirme
+## <a name="customer-lockbox-integration-with-azure-security-benchmark"></a>Azure Güvenlik Karşılaştırması ile Müşteri Kasası tümleştirmesi
 
 Azure Güvenlik kıyaslaması 'nda Müşteri Kasası uygulanabilirliğini içeren yeni bir temel denetim ([3,13](../benchmarks/security-control-identity-access-control.md#313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios)) sunuyoruz. Müşteriler artık bir hizmetin Müşteri Kasası uygulanabilirliğini gözden geçirmek için kıyaslamaya yararlanabilir.
 
 ## <a name="exclusions"></a>Dışlamalar
 
-Müşteri Kasası istekleri aşağıdaki mühendislik desteği senaryolarında tetiklenmez:
+Aşağıdaki mühendislik desteği senaryolarında Müşteri Kasası istekleri tetiklenmez:
 
-- Microsoft mühendisinin standart işletim yordamları dışında kalan bir etkinlik yapması gerekir. Örneğin, beklenmeyen veya öngörülemeyen senaryolarda Hizmetleri kurtarmak veya geri yüklemek için.
+- Microsoft mühendisinin standart çalışma yordamlarının dışında kalan bir eylem gerçekleştirmesi gerekiyor. Örneğin beklenmeyen veya öngörülemeyen senaryolarda hizmetleri kurtarmak veya geri yüklemek için olabilir.
 
-- Microsoft mühendis, sorun gidermenin bir parçası olarak Azure platformuna erişir ve yanlışlıkla müşteri verilerine erişebilir. Örneğin, Azure ağ ekibi, bir ağ cihazında paket yakalamaya neden olan sorun gidermeyi gerçekleştirir. Ancak, müşteri verileri aktarım sırasında şifrelediyse, mühendis verileri okuyamaz.
+- Microsoft mühendisi sorun giderme işlemi kapsamında Azure platformuna erişiyor ve yanlışlıkla müşteri verilere erişiyor. Örneğin Azure Ağ Ekibi sorun giderme işlemi yapıyor ve bu işlem sonucunda ağ cihazında bir paket yakalanıyor olabilir. Öte yandan müşteri aktarımdaki verileri şifrelediyse, mühendis verileri okuyamaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

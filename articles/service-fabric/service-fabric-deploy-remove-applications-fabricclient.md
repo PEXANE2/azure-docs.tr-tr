@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 565e6b8f23f159a5c231295694830917217a3d19
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89009310"
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>FabricClient kullanarak uygulama dağıtma ve kaldırma
@@ -91,7 +91,7 @@ Bir uygulama örneğine artık gerek kalmadığında, [Deleteapplicationasync](/
 Uygulama türünün belirli bir sürümüne artık ihtiyaç duyulmadığında, [kayıt silme-ServiceFabricApplicationType](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.unprovisionapplicationasync) API 'sini kullanarak uygulama türünün belirli bir sürümünün kaydını kaldırmanız gerekir. Uygulama türlerinin kullanılmayan sürümlerinin kaydı, görüntü deposu tarafından kullanılan depolama alanını yayınlar. Uygulama türü sürümüne göre hiçbir uygulama örneklenmedikçe, uygulama türünün bir sürümü kaydı silinir. Ayrıca, uygulama türünde bekleyen uygulama yükseltmeleri, uygulama türü sürümüne başvurmamaktadır.
 
 ## <a name="troubleshooting"></a>Sorun giderme
-### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage, ımatoreconnectionstring ister
+### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage ımatoreconnectionstring için sorar
 Service Fabric SDK ortamında doğru varsayılanlar ayarlanmış olmalıdır. Ancak gerekirse, tüm komutlar için ımatoreconnectionstring, Service Fabric kümesinin kullandığı değerle eşleşmelidir. Imabtoreconnectionstring ' i küme bildiriminde bulabilirsiniz, [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) ve Get-ImageStoreConnectionStringFromClusterManifest komutlarını kullanarak elde edebilirsiniz:
 
 ```powershell

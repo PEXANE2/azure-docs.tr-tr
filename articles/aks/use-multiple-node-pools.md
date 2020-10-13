@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 04/08/2020
 ms.openlocfilehash: 128b8d07a3fb18ecd70f6ce5a37f41ad0fdd3db1
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87563186"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ile bir küme için birden çok düğüm havuzu oluşturma ve yönetme

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: f8daa25239b935a9e0092c6bf2e388c7cc3c6789
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89264768"
 ---
 # <a name="task-preset-for-azure-media-indexer"></a>Azure Media Indexer için görev önayarı
@@ -32,7 +32,7 @@ Bu konuda, dizin oluşturma işinize geçirmeniz gereken görev ön ayarı açı
 
 Aşağıdaki tabloda, yapılandırma XML öğelerinin ve öznitelikleri açıklanmaktadır.
 
-|Name|Gerektirme|Açıklama|
+|Adı|Gerektirme|Açıklama|
 |---|---|---|
 |Giriş|true|Dizin eklemek istediğiniz varlık dosyaları.<br/>Azure Media Indexer, şu medya dosyası biçimlerini destekler: MP4, MOV, WMV, MP3, M4A, WMA, AAC, WAV. <br/><br/>Dosya adlarını **giriş** öğesinin **ad** veya **liste** özniteliğinde (aşağıda gösterildiği gibi) belirtebilirsiniz. Hangi varlık dosyasının dizine alınmayı belirtmezseniz, birincil dosya çekilir. Birincil varlık dosyası ayarlanmamışsa, giriş varlığının ilk dosyası dizine alınır.<br/><br/>Varlık dosya adını açıkça belirtmek için şunu yapın:<br/>```<input name="TestFile.wmv" />```<br/><br/>Aynı zamanda birden çok varlık dosyasını aynı anda dizinde (en fazla 10 dosya). Bunu yapmak için:<br/>-Bir metin dosyası (bildirim dosyası) oluşturun ve bir. lst uzantısı verin.<br/>-Bu bildirim dosyasına giriş varlığınızın tüm varlık dosya adlarının listesini ekleyin.<br/>-Bildirim dosyasını varlığa ekleyin (karşıya yükleyin).<br/>-Girişin liste özniteliğinde bildirim dosyasının adını belirtin.<br/>```<input list="input.lst">```<br/><br/>**Note:** Bildirim dosyasına 10 ' dan fazla dosya eklerseniz, dizin oluşturma işi 2006 hata koduyla başarısız olur.|
 |meta veriler|yanlış|Belirtilen varlık dosyalarının meta verileri.<br/>```<metadata key="..." value="..." />```<br/><br/>Önceden tanımlanmış anahtarlar için değerler sağlayabilirsiniz. <br/><br/>Şu anda aşağıdaki anahtarlar desteklenir:<br/><br/>**başlık** ve **Açıklama** -konuşma tanıma doğruluğunu artırmak için dil modelini güncelleştirmek üzere kullanılır.<br/>```<metadata key="title" value="[Title of the media file]" /><metadata key="description" value="[Description of the media file]" />```<br/><br/>**Kullanıcı adı** ve **parola** -http veya HTTPS aracılığıyla Internet dosyaları indirirken kimlik doğrulaması için kullanılır.<br/>```<metadata key="username" value="[UserName]" /><metadata key="password" value="[Password]" />```<br/>Kullanıcı adı ve parola değerleri, giriş bildirimindeki tüm medya URL 'Leri için geçerlidir.|

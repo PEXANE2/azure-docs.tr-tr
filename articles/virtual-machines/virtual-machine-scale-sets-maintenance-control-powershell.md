@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 09/11/2020
 ms.author: jushiman
 ms.openlocfilehash: 62b2fd0554c218b733501805779745049d3b8c92
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90532715"
 ---
 # <a name="preview-maintenance-control-for-os-image-upgrades-on-azure-virtual-machine-scale-sets-using-powershell"></a>Önizleme: PowerShell kullanarak Azure sanal makine ölçek kümelerinde işletim sistemi görüntüsü yükseltmeleri için bakım denetimi
@@ -56,7 +56,7 @@ $location="eastus2"
 $vmss="myMaintenanceVMSS"
 ```
 
-## <a name="create-a-maintenance-configuration"></a>Bakım yapılandırması oluşturma
+## <a name="create-a-maintenance-configuration"></a>Bakım yapılandırması oluşturun
 
 Yapılandırmanız için kapsayıcı olarak bir kaynak grubu oluşturun. Bu örnekte, *eastus2*içinde *myMaintenanceRG* adlı bir kaynak grubu oluşturulur. Kullanmak istediğiniz bir kaynak grubunuz zaten varsa, bu bölümü atlayabilirsiniz. Örneklerin geri kalanında kaynak grubu adını kendi adınızla değiştirmeniz yeterlidir.
 

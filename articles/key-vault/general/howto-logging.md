@@ -10,17 +10,17 @@ ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 8a975673bec3b3579eaa699f873fe8c4b1481d38
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91744989"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>Key Vault günlüğü etkinleştirme
 
 Bir veya daha fazla Anahtar Kasası oluşturduktan sonra muhtemelen anahtar kasalarınızın nasıl ve ne zaman erişildiğini ve kim tarafından yapılacağını izlemek isteyeceksiniz. Özelliği hakkında tam Ayrıntılar için bkz. [Key Vault Logging](logging.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakilere sahip olmanız gerekir:
 
@@ -183,7 +183,7 @@ $blobs = Get-AzStorageBlob -Container $container -Context $sa.Context | Get-AzSt
 
 Bu ikinci cmdlet 'i PowerShell 'de çalıştırdığınızda, **/** BLOB adlarındaki sınırlayıcı hedef klasör altında tam bir klasör yapısı oluşturur. Bu yapıyı blob 'ları dosya olarak indirmek ve depolamak için kullanacaksınız.
 
-Blobları seçmeli olarak indirmek için jokerleri kullanın. Örnek:
+Blobları seçmeli olarak indirmek için jokerleri kullanın. Örneğin:
 
 * Birden çok anahtar kasanız varsa ve yalnızca CONTOSOKEYVAULT3 adlı bir anahtar kasası için günlük indirmek isterseniz:
 

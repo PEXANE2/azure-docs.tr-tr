@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 5755e14e53d359fd8b322939bf1325d21536d593
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89020193"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Örnek: Bing Varlık Arama API'si kullanarak özel bir yetenek oluşturma
 
 Bu örnekte, bir Web API 'SI özel yeteneği oluşturmayı öğrenin. Bu beceri konumları, genel rakamları ve kuruluşları kabul eder ve bunların açıklamalarını döndürür. Örnek, [Bing varlık arama API'si](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) özel beceri arabirimini uygulayan şekilde kaydırmak Için bir [Azure işlevi](https://azure.microsoft.com/services/functions/) kullanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 + Özel bir yeteneğin uygulaması gereken giriş/çıkış arabirimini bilmiyorsanız [özel beceri arabirimi](cognitive-search-custom-skill-interface.md) makalesi hakkında bilgi edinin.
 

@@ -7,10 +7,10 @@ ms.date: 10/12/2018
 ms.author: vturecek
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 69423e7545178fd74ad44f5cab7b37b6f24b3577
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89022199"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>Azure Service Fabric ASP.NET Core Reliable Services
@@ -475,7 +475,7 @@ Kestrel, dış, internet 'e yönelik HTTP uç noktalarını kullanıma sunan ön
 | ---- | -------------- | ----- |
 | Web sunucusu | Kestrel | Kestrel, Windows ve Linux genelinde desteklendiğinden tercih edilen Web sunucusudur. |
 | Bağlantı noktası yapılandırması | static | ServiceManifest.xml yapılandırmasında iyi bilinen bir statik bağlantı noktası `Endpoints` , https için 80, http veya 443 için gibi yapılandırılmalıdır. |
-| Servicefabricıntegrationoptions | Hiçbiri | `ServiceFabricIntegrationOptions.None`Hizmetin, benzersiz bir tanımlayıcı için gelen istekleri doğrulamaya kalkışmasını sağlamak üzere Service Fabric tümleştirme ara yazılımını yapılandırırken bu seçeneği kullanın. Uygulamanızın dış kullanıcıları, ara yazılım tarafından kullanılan benzersiz tanımlama bilgilerini bilmez. |
+| Servicefabricıntegrationoptions | Yok | `ServiceFabricIntegrationOptions.None`Hizmetin, benzersiz bir tanımlayıcı için gelen istekleri doğrulamaya kalkışmasını sağlamak üzere Service Fabric tümleştirme ara yazılımını yapılandırırken bu seçeneği kullanın. Uygulamanızın dış kullanıcıları, ara yazılım tarafından kullanılan benzersiz tanımlama bilgilerini bilmez. |
 | Örnek Sayısı | -1 | Tipik kullanım durumlarında, örnek sayısı ayarı *-1*olarak ayarlanmalıdır. Bu, bir yük dengeleyiciden trafik alan tüm düğümlerde bir örnek kullanılabilmesi için yapılır. |
 
 Birden fazla dışarıdan sunulan hizmet aynı düğüm kümesini paylaşıyorsa, benzersiz ancak kararlı bir URL yoluyla HTTP.sys kullanabilirsiniz. Bunu, ıwebhost yapılandırılırken belirtilen URL 'YI değiştirerek gerçekleştirebilirsiniz. Bunun yalnızca HTTP.sys için geçerli olduğunu unutmayın.

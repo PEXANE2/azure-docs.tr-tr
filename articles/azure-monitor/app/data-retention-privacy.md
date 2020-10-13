@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 2205ab1115a66092ae6dd6d75ee7004ab281eec7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91263921"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights'da veri toplama, saklama ve depolama
@@ -254,14 +254,14 @@ SDK 'lar platformlar arasında farklılık gösterir ve yükleyebileceğiniz bir
 
 | Eyleminizi | Toplanan veri sınıfları (sonraki tabloya bakın) |
 | --- | --- |
-| [.NET Web projesine Application Insights SDK ekleme][greenbrown] |Sunucubağlamı<br/>Temsilc<br/>Performans sayaçları<br/>İstekler<br/>**Özel durumlar**<br/>Oturum<br/>kullanıcılar |
+| [.NET Web projesine Application Insights SDK ekleme][greenbrown] |Sunucubağlamı<br/>Temsilc<br/>Performans sayaçları<br/>İstekler<br/>**Özel Durumlar**<br/>Oturum<br/>kullanıcılar |
 | [Durum İzleyicisi IIS 'ye yükler][redfield] |Bağımlılıklar<br/>Sunucubağlamı<br/>Temsilc<br/>Performans sayaçları |
 | [Java Web uygulamasına Application Insights SDK 'Sı ekleme][java] |Sunucubağlamı<br/>Temsilc<br/>İstek<br/>Oturum<br/>kullanıcılar |
 | [Web sayfasına JavaScript SDK 'Sı ekleme][client] |ClientContext <br/>Temsilc<br/>Sayfa<br/>ClientPerf<br/>Ajax |
 | [Varsayılan özellikleri tanımlama][apiproperties] |Tüm standart ve özel olaylardaki **Özellikler** |
 | [TrackMetric çağrısı yapın][api] |Sayısal değerler<br/>**Özellikler** |
 | [Çağrıyı Izle *][api] |Olay adı<br/>**Özellikler** |
-| [TrackException çağrısı][api] |**Özel durumlar**<br/>Yığın dökümü<br/>**Özellikler** |
+| [TrackException çağrısı][api] |**Özel Durumlar**<br/>Yığın dökümü<br/>**Özellikler** |
 | SDK veri toplayamıyor. Örneğin: <br/> -performans sayaçlarına erişilemiyor<br/> -Telemetri başlatıcısında özel durum |SDK tanılaması |
 
 [Diğer platformların SDK 'ları][platforms]için belgelerine bakın.
@@ -277,13 +277,13 @@ SDK 'lar platformlar arasında farklılık gösterir ve yükleyebileceğiniz bir
 | Sunucubağlamı |Makine adı, yerel ayar, işletim sistemi, cihaz, Kullanıcı oturumu, Kullanıcı bağlamı, işlem |
 | Temsilc |IP adresi, zaman damgası, işletim sistemi, tarayıcıdan coğrafi konum |
 | Ölçümler |Ölçüm adı ve değeri |
-| Ekinlikler |Olay adı ve değeri |
+| Olaylar |Olay adı ve değeri |
 | PageViews |URL ve sayfa adı ya da ekran adı |
 | İstemci perf |URL/sayfa adı, tarayıcı yükleme süresi |
 | Ajax |Web sayfasından sunucusuna HTTP çağrıları |
 | İstekler |URL, süre, yanıt kodu |
 | Bağımlılıklar |Tür (SQL, HTTP,...), bağlantı dizesi veya URI, Sync/Async, Duration, Success, SQL deyimleri (Durum İzleyicisi ile) |
-| **Özel durumlar** |Tür, **ileti**, çağrı yığınları, kaynak dosya, satır numarası, `thread id` |
+| **Özel Durumlar** |Tür, **ileti**, çağrı yığınları, kaynak dosya, satır numarası, `thread id` |
 | Çökme |`Process id`, `parent process id` ,, `crash thread id` Uygulama Düzeltme Eki, `id` , derleme;  özel durum türü, adres, neden; karıştırılmış semboller ve Yazmaçları, ikili başlangıç ve bitiş adresleri, ikili ad ve yol, CPU türü |
 | İzleme |**İleti** ve önem düzeyi |
 | Performans sayaçları |İşlemci süresi, kullanılabilir bellek, istek hızı, özel durum oranı, işlem özel baytları, GÇ oranı, istek süresi, istek kuyruğu uzunluğu |

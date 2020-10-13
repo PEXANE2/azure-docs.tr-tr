@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/14/2020
 ms.openlocfilehash: 2e90a8779322cf8967ca9a194c6cc760f7c8b8f5
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90532090"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>Eşleme veri akışında türetilmiş sütun dönüşümü
@@ -66,7 +66,7 @@ Türetilmiş bir sütunda bir yerel öğeye başvurmak için, **ifade öğeleri*
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
-### <a name="syntax"></a>Syntax
+### <a name="syntax"></a>Sözdizimi
 
 ```
 <incomingStream>

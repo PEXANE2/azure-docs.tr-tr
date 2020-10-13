@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
 ms.openlocfilehash: 24968511d038b2cea41a59187c0a361684c6720e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86511900"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Azure HDInsight 'ta Hive ambarı Bağlayıcısı ile Apache Spark ve Apache Hive tümleştirme
@@ -78,7 +78,7 @@ Hive ambarı Bağlayıcısı Spark ve etkileşimli sorgu iş yükleri için ayr�
     |`spark.datasource.hive.warehouse.load.staging.dir`|`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp`. <br> Uygun bir ile uyumlu hazırlama dizinine ayarlayın. İki farklı kümeniz varsa, HiveServer2 erişimi olması için, hazırlama dizini LLAP kümesinin depolama hesabının hazırlama dizininde bir klasör olmalıdır.  `STORAGE_ACCOUNT_NAME`Küme tarafından kullanılan depolama hesabının adıyla ve `STORAGE_CONTAINER_NAME` depolama kapsayıcısının adıyla değiştirin. |
     |`spark.sql.hive.hiveserver2.jdbc.url`| **HiveServer2 ıNTERACTIVE JDBC URL** 'sinden daha önce edindiğiniz değer |
     |`spark.datasource.hive.warehouse.metastoreUri`| Daha önce **Hive. metaser. Uri**'lerden edindiğiniz değer. |
-    |`spark.security.credentials.hiveserver2.enabled`|`true`YARN küme modu ve `false` Yarn istemci modu için. |
+    |`spark.security.credentials.hiveserver2.enabled`|`true` YARN küme modu ve `false` Yarn istemci modu için. |
     |`spark.hadoop.hive.zookeeper.quorum`| Daha önce **Hive. Zookeeper. Quorum**öğesinden edindiğiniz değer. |
     |`spark.hadoop.hive.llap.daemon.service.hosts`| Daha önce **Hive. LLAP. Daemon. Service. konaklarından**edindiğiniz değer. |
 

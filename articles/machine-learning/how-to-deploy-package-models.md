@@ -10,17 +10,17 @@ author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.openlocfilehash: d5fb2539d79c31de5a5e0196a7a4814c02a84602
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87544654"
 ---
 # <a name="how-to-package-a-registered-model-with-docker"></a>Docker ile kayıtlı bir modeli paketleme
 
 Bu makalede, kayıtlı bir Azure Machine Learning modelinin Docker ile nasıl paketlenecek gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, Machine Learning çalışma alanınızda zaten bir modeli eğitidiğinizi ve kaydettiğiniz varsayılmaktadır. Bir scikit-öğrenme modelini eğitme ve kaydetme hakkında bilgi edinmek için [Bu öğreticiyi izleyin](how-to-train-scikit-learn.md).
 
@@ -163,9 +163,9 @@ docker kill mycontainer
 * [Başarısız bir dağıtımda sorun giderme](how-to-troubleshoot-deployment.md)
 * [Azure Kubernetes Service’e dağıtma](how-to-deploy-azure-kubernetes-service.md)
 * [Web hizmetlerini kullanmak için istemci uygulamaları oluşturma](how-to-consume-web-service.md)
-* [Web hizmetini Güncelleştir](how-to-deploy-update-web-service.md)
+* [Web hizmetini güncelleştirme](how-to-deploy-update-web-service.md)
 * [Özel bir Docker görüntüsü kullanarak model dağıtma](how-to-deploy-custom-docker-image.md)
-* [Azure Machine Learning aracılığıyla bir Web hizmetinin güvenliğini sağlamak için TLS kullanma](how-to-secure-web-service.md)
+* [TLS kullanarak Azure Machine Learning aracılığıyla web hizmetinin güvenliğini sağlama](how-to-secure-web-service.md)
 * [Application Insights Azure Machine Learning modellerinizi izleyin](how-to-enable-app-insights.md)
 * [Üretimde modeller için veri toplama](how-to-enable-data-collection.md)
 * [Model dağıtımları için olay uyarıları ve Tetikleyicileri oluşturma](how-to-use-event-grid.md)
