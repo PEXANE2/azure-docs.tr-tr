@@ -4,10 +4,10 @@ description: Farklı bölgelerde birden fazla uç nokta arasında uygulama iş y
 ms.topic: how-to
 ms.date: 08/14/2020
 ms.openlocfilehash: d461cc444c60e1907a34a08c68139446301c133c
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91580583"
 ---
 # <a name="deploy-traffic-manager-to-balance-azure-vmware-solution-avs-workloads"></a>Azure VMware Solution (AVS) iş yüklerini dengelemek için Traffic Manager dağıtma
@@ -32,7 +32,7 @@ Azure Traffic Manager, aşağıdaki şekilde gösterildiği gibi, bölgesel uç 
 
 ![AVS ile tümleştirme Traffic Manager](media/traffic-manager/traffic-manager-topology.png)
  
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Farklı AVS bölgelerinde çalışan Microsoft IIS sunucuları olarak yapılandırılmış üç sanal makine: Batı ABD, Batı Avrupa ve şirket içi. 
 
@@ -99,7 +99,7 @@ Senaryolarımızda, bir NSX-T segmenti, arka uç havuzu üyesi sanal makinenin e
 
 1. Arama sonuçları bölmesinden Traffic Manager profilini seçin, **uç noktalar** ' ı ve sonra **+ Ekle**' yi seçin.
 
-2. Gerekli ayrıntıları girin: tür, ad, tam etki alanı adı (FQDN) veya IP ve ağırlık (Bu senaryoda, her bir uç noktaya 1 ağırlık atacağız). **Add (Ekle)** seçeneğini belirleyin.
+2. Gerekli ayrıntıları girin: tür, ad, tam etki alanı adı (FQDN) veya IP ve ağırlık (Bu senaryoda, her bir uç noktaya 1 ağırlık atacağız). **Ekle**’yi seçin.
 
    :::image type="content" source="media/traffic-manager/traffic-manager-profile.png" alt-text="Uygulama ağ geçitlerinin listesi.":::  
  

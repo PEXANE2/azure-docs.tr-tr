@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotga
 ms.openlocfilehash: 52c0dcf4bd9f7b2ca8928eab5272a6500cbb379d
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90533098"
 ---
 # <a name="roles-and-operations"></a>Roller ve işlemler
@@ -27,7 +27,7 @@ Sol taraftaki içindekiler tablosunda, uygulamalı deneyim aracılığıyla otom
 |------| --------- | ------------|
 | Üretici | Kimliği ve kayıt URL 'sini kodla | Kullanılan kanıtlama mekanizmasına bağlı olarak, üretici cihaz kimliği bilgilerini ve cihaz sağlama hizmeti kayıt URL 'sini kodlamadan sorumludur.<br><br>**Hızlı başlangıç**: cihaz benzetildiğinden üretici rolü yoktur. Örnek bir kayıt uygulaması kodlamak için kullanılan bu bilgileri nasıl alacağınız hakkında ayrıntılar için geliştirici rolüne bakın. |
 | | Cihaz kimliği sağlama | Cihaz kimliği bilgisinin kaynağı olarak, üretici onu işleçle (veya belirlenen bir aracı) iletmekten veya API aracılığıyla cihaz sağlama hizmetine doğrudan kaydetmekten sorumludur.<br><br>**Hızlı başlangıç**: cihaz benzetildiğinden üretici rolü yoktur. Cihaz kimliğini nasıl alacağınız hakkındaki ayrıntılar için bkz. operatör rolü, cihaz sağlama hizmeti Örneğinizde sanal bir cihazı kaydetmek için kullanılır. |
-| Operatör | Otomatik sağlamayı yapılandırma | Bu işlem, otomatik sağlama işleminin ilk aşamasına karşılık gelir.<br><br>**Hızlı başlangıç**: Azure aboneliğinizdeki cihaz sağlama hizmetini ve IoT Hub örneklerini yapılandırarak operatör rolünü gerçekleştirirsiniz. |
+| İşleç | Otomatik sağlamayı yapılandırma | Bu işlem, otomatik sağlama işleminin ilk aşamasına karşılık gelir.<br><br>**Hızlı başlangıç**: Azure aboneliğinizdeki cihaz sağlama hizmetini ve IoT Hub örneklerini yapılandırarak operatör rolünü gerçekleştirirsiniz. |
 |  | Cihaz kimliğini kaydet | Bu işlem, otomatik sağlamanın ikinci aşamasına karşılık gelir.<br><br>**Hızlı başlangıç**: sanal cihazınızı cihaz sağlama hizmeti Örneğinizde kaydederek operatör rolünü gerçekleştirirsiniz. Cihaz kimliği, hızlı başlangıçta (TPM veya X. 509.440) benzetilen kanıtlama yöntemi tarafından belirlenir. Kanıtlama ayrıntıları için geliştirici rolüne bakın. |
 | Cihaz sağlama hizmeti,<br>IoT Hub | \<all operations\> | Fiziksel cihazlarla bir üretim uygulamasında ve sanal cihazlarla hızlı başlangıçlarda, bu roller Azure aboneliğinizde yapılandırdığınız IoT Hizmetleri aracılığıyla yerine getirilir. IoT Hizmetleri fiziksel ve sanal cihazların sağlanmasından farklı olduğu için roller/işlemler tamamen aynı şekilde çalışır. |
 | Geliştirici | Kayıt yazılımı oluşturma/dağıtma | Bu işlem, otomatik sağlamanın üçüncü aşamasına karşılık gelir. Geliştirici, uygun SDK 'yı kullanarak, kayıt yazılımını cihaza oluşturmaktan ve dağıtmaktan sorumludur.<br><br>**Hızlı başlangıç**: oluşturduğunuz örnek kayıt uygulaması, iş istasyonunuzda çalışan seçtiğiniz platform/diliniz için gerçek bir cihaza benzetir (fiziksel bir cihaza dağıtmak yerine). Kayıt uygulaması, fiziksel bir cihaza dağıtılan bir işlem ile aynı işlemleri gerçekleştirir. Kanıtlama yöntemini (TPM veya X. 509.440 sertifikası), Ayrıca cihaz sağlama hizmeti örneğinizin kayıt URL 'sini ve "KIMLIK kapsamını" belirtirsiniz. Cihaz kimliği, belirttiğiniz yönteme göre çalışma zamanında SDK kanıtlama mantığı tarafından belirlenir: <ul><li>**TPM kanıtlama** -geliştirme iş istasyonunuz bir [TPM simülatörü uygulaması](how-to-use-sdk-tools.md#trusted-platform-module-tpm-simulator)çalıştırır. Bir kez çalışmaya başladıktan sonra, TPM 'nin "onay anahtarını" ve "kayıt KIMLIĞI" ni kullanarak cihaz kimliğini kaydetme için ayrı bir uygulama kullanılır. SDK kanıtlama mantığı, kimlik doğrulama ve kayıt doğrulama için imzalı bir SAS belirteci sunmak üzere kayıt sırasında simülatörü de kullanır.</li><li>**X509 kanıtlama** - [bir sertifikayı oluşturmak](how-to-use-sdk-tools.md#x509-certificate-generator)için bir araç kullanın. Oluşturulduktan sonra, kayıt sırasında kullanım için gereken sertifika dosyasını oluşturursunuz. SDK kanıtlama mantığı, kayıt sırasında, kimlik doğrulaması ve kayıt doğrulaması için de sertifikayı kullanır.</li></ul> |

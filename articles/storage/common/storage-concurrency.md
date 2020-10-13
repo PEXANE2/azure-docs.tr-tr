@@ -12,10 +12,10 @@ ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2732781d32e92c8ec03116988e33ec4fbe0b2330
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89021570"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Microsoft Azure Depolamada Eşzamanlılığı Yönetme
@@ -243,7 +243,7 @@ customer.ETag = "*";
 
 Aşağıdaki tablo, tablo varlığı işlemlerinin ETag değerlerini nasıl kullandığını özetler:
 
-| İşlem | ETag değerini döndürür | IF-Match istek üst bilgisi gerektirir |
+| İşlem | ETag değerini döndürür | If-Match istek üst bilgisi gerektiriyor |
 |:--- |:--- |:--- |
 | Sorgu varlıkları |Evet |Hayır |
 | Varlık Ekle |Evet |Hayır |

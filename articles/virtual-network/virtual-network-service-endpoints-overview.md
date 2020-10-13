@@ -14,10 +14,10 @@ ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
 ms.openlocfilehash: 7d937542201792c0d1c0be69df9bd1c2b34edea3
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89434478"
 ---
 # <a name="virtual-network-service-endpoints"></a>Sanal Ağ hizmet uç noktaları
@@ -62,7 +62,7 @@ Hizmet uç noktaları aşağıdaki avantajları sağlar:
 
 - Bu özellik yalnızca Azure Resource Manager dağıtım modeli üzerinden dağıtılmış olan sanal ağlarda kullanılabilir.
 - Uç noktalar Azure sanal ağlarında yapılandırılmış olan alt ağlarda etkindir. Uç noktalar, şirket içi Azure hizmetlerine giden trafik için kullanılamaz. Daha fazla bilgi için bkz. [Şirket Içinden Azure hizmeti erişimini güvenli hale getirme](#secure-azure-services-to-virtual-networks)
-- Azure SQL için, hizmet uç noktası yalnızca sanal ağ ile aynı bölgedeki Azure hizmeti trafiği için geçerlidir. Azure depolama için uç noktalar Ayrıca, Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) ve coğrafi olarak yedekli depolama (GRS) trafiğini desteklemek üzere sanal ağı dağıttığınız eşleştirilmiş bölgeleri içerecek şekilde genişletilir. Daha fazla bilgi için bkz. [Azure eşlenmiş bölgeler](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
+- Azure SQL için, hizmet uç noktası yalnızca sanal ağ ile aynı bölgedeki Azure hizmeti trafiği için geçerlidir. Azure depolama için uç noktalar Ayrıca, sanal ağı Read-Access Geo-Redundant depolama (RA-GRS) ve Geo-Redundant depolama (GRS) trafiğini desteklemek üzere dağıttığınız eşleştirilmiş bölgeleri içerecek şekilde de genişletilir. Daha fazla bilgi için bkz. [Azure eşlenmiş bölgeler](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
 - Azure Data Lake Storage (ADLS) Gen 1 için, VNet tümleştirme özelliği yalnızca aynı bölgedeki sanal ağlarda kullanılabilir. Ayrıca, ADLS 1. için sanal ağ tümleştirmesinin, erişim belirtecinde ek güvenlik talepleri oluşturmak için sanal ağınız ve Azure Active Directory (Azure AD) arasında sanal ağ hizmeti uç noktası güvenliğini kullandığını unutmayın. Ardından bu talepler sanal ağınız için Data Lake Storage 1. Nesil hesabınızda kimlik doğrulaması gerçekleştirme ve erişim izni verme amacıyla kullanılır. Hizmet uç noktalarını destekleme hizmetleri altında listelenen *Microsoft. AzureActiveDirectory* etiketi, yalnızca ADLS Gen 1 ' e hizmet uç noktalarını desteklemek için kullanılır. Azure AD, hizmet uç noktalarını yerel olarak desteklemez. Azure Data Lake Store Gen 1 VNet tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Data Lake Storage 1. ağ güvenliği](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="secure-azure-services-to-virtual-networks"></a>Azure hizmetlerini sanal ağlara güvenli hale getirme

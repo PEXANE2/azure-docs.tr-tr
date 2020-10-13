@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
 ms.openlocfilehash: ab3597ddba3e41e88c8b2b575ed5857aca01e610
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397972"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Azure’dan Azure’a VM çoğaltma hatalarını giderme
@@ -281,14 +281,14 @@ VM 'nin çoğaltma durumunu yeniden sağlıklı hale getirmek için, diskleri ko
 1. **Çoğaltılan öğeler**  >  _VM adı_  >  **disklere**gidin.
 1. Korumasız disk ' i seçin ve ardından **çoğaltmayı etkinleştir**' i seçin:
 
-   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/add-disk.png" alt-text="VM disklerinde çoğaltmayı etkinleştirin.":::
+   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/add-disk.png" alt-text="com-hata.":::
 
 #### <a name="to-dismiss-the-warning"></a>Uyarıyı kapatmak için
 
 1. **Çoğaltılan öğeler**  >  _sanal makine adına_gidin.
 1. **Genel bakış** bölümünde uyarıyı seçin ve ardından **Tamam**' ı seçin.
 
-   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png" alt-text="Yeni disk uyarısını kapat.":::
+   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png" alt-text="com-hata.":::
 
 ## <a name="vm-removed-from-vault-completed-with-information-error-code-150225"></a>Kasadan kaldırılan VM, bilgilerle tamamlandı (hata kodu 150225)
 
@@ -309,7 +309,7 @@ Bu sanal makineyi yeniden korumayı hiç düşünmüyorsanız, bu uyarıyı yoks
 
 1. Kilidi VM veya VM kaynak grubundan kaldırın. Örneğin, aşağıdaki görüntüde adlı VM 'deki kaynak kilidi `MoveDemo` silinmelidir:
 
-   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="Sanal makineyi kilitle 'yi kaldırın.":::
+   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com-hata.":::
 
 1. [Eski bir Site Recovery yapılandırmasını kaldırmak](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)için betiği indirin.
 1. _Cleanup-stale-asr-config-Azure-VM.ps1_betiği çalıştırın. **ABONELIK kimliği**, **VM kaynak grubu**ve **VM adını** parametre olarak belirtin.
@@ -334,7 +334,7 @@ Azure VM için Site Recovery kullanarak çoğaltmayı etkinleştirdiyseniz, eski
 
 1. Kilidi VM veya VM kaynak grubundan kaldırın. Örneğin, aşağıdaki görüntüde adlı VM 'deki kaynak kilidi `MoveDemo` silinmelidir:
 
-   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="Sanal makineyi kilitle 'yi kaldırın.":::
+   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com-hata.":::
 
 1. [Eski bir Site Recovery yapılandırmasını kaldırmak](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)için betiği indirin.
 1. _Cleanup-stale-asr-config-Azure-VM.ps1_betiği çalıştırın. **ABONELIK kimliği**, **VM kaynak grubu**ve **VM adını** parametre olarak belirtin.
@@ -367,7 +367,7 @@ Azure VM 'de eski bir Site Recovery yapılandırması varsa, çoğaltma için et
 
 1. Varsa kilidi VM veya VM kaynak grubundan kaldırın. Örneğin, aşağıdaki görüntüde adlı VM 'deki kaynak kilidi `MoveDemo` silinmelidir:
 
-   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="Sanal makineyi kilitle 'yi kaldırın.":::
+   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com-hata.":::
 
 1. [Eski bir Site Recovery yapılandırmasını kaldırmak](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)için betiği indirin.
 1. _Cleanup-stale-asr-config-Azure-VM.ps1_betiği çalıştırın. **ABONELIK kimliği**, **VM kaynak grubu**ve **VM adını** parametre olarak belirtin.
@@ -404,17 +404,17 @@ VM 'de çoğaltmayı etkinleştirmek için, sağlama durumunun **başarılı**ol
 
 Olağanüstü durum kurtarma yapılandırması sırasında, kaynak VM bir sanal ağın parçasıysa ve aynı sanal ağdaki başka bir VM, hedef kaynak grubundaki bir ağla zaten eşlenmişse, varsayılan olarak ağ seçimi açılır liste kutusu kullanılamaz (soluk görünür).
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png" alt-text="Ağ seçim listesi kullanılamıyor.":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png" alt-text="com-hata.":::
 
 ### <a name="issue-2-you-previously-protected-the-vm-and-then-you-disabled-the-replication"></a>Sorun 2: daha önce VM 'yi koruduktan sonra çoğaltmayı devre dışı bırakmış olursunuz
 
 VM çoğaltmasını devre dışı bırakmak Ağ eşlemesini silmez. Eşleme, VM 'nin korunduğu kurtarma hizmetleri kasasından silinmelidir. **Kurtarma Hizmetleri kasasını** seçin ve **Manage**  >  **Site Recovery Infrastructure**  >  **Azure sanal makineler**  >  **ağ eşlemesi**için Site Recovery altyapısını Yönet ' e gidin.
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png" alt-text="Ağ eşlemesini silin.":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png" alt-text="com-hata.":::
 
 Olağanüstü durum kurtarma kurulumu sırasında yapılandırılan hedef ağ, İlk kurulumdan sonra ve VM korunduktan sonra değiştirilebilir. **Ağ eşlemesini değiştirmek** için ağ adını seçin:
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png" alt-text="Ağ eşlemesini değiştir.":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png" alt-text="com-hata.":::
 
 
 ## <a name="com-or-vss-error-code-151025"></a>COM+ veya VSS (hata kodu 151025)
@@ -437,7 +437,7 @@ COM+ sistem uygulamasını ve Birim Gölge Kopyası Hizmeti otomatik veya el ile
 1. Windows 'da Hizmetler konsolunu açın.
 1. COM+ sistem uygulamasının ve Birim Gölge Kopyası Hizmeti, **Başlangıç türü**olarak **devre dışı** olarak ayarlanmamış olduğundan emin olun.
 
-   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/com-error.png" alt-text="COM ve sistem uygulamasının başlangıç türünü ve Birim Gölge Kopyası Hizmeti denetleyin.":::
+   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/com-error.png" alt-text="com-hata.":::
 
 ## <a name="unsupported-managed-disk-size-error-code-150172"></a>Desteklenmeyen yönetilen disk boyutu (hata kodu 150172)
 

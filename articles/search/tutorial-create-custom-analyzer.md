@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/25/2020
 ms.openlocfilehash: ac7cee2c1d72b4102fb397aa8093c2d38686fc88
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397275"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>Öğretici: telefon numaraları için özel çözümleyici oluşturma
@@ -160,7 +160,7 @@ POST https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basi
 
 Dizindeki verilerle aramaya başlamak için hazırız.
 
-### <a name="search"></a>Arayın
+### <a name="search"></a>Search
 
 Aramayı sezgisel hale getirmek için, kullanıcıların sorguları belirli bir şekilde biçimlendirmeniz beklenmez. Bir Kullanıcı `(425) 555-0100` yukarıda gösterilen biçimlerden herhangi birinde arama yapmak için sonuçlar döndürülmeye devam edecektir. Bu adımda, nasıl çalıştığını görmek için birkaç örnek sorgu test edeceğiz.
 
@@ -239,11 +239,11 @@ Bu arama sonuçlarını anlamak için, çözümleyicilerin nasıl çalıştığ�
 
 Aşağıdaki diyagramda, bu üç bileşenin bir tümceyi simgeleştirmek için birlikte nasıl çalıştığını görebilirsiniz:
 
-  :::image type="content" source="media/tutorial-create-custom-analyzer/analyzers-explained.png" alt-text="Bir tümceyi simgeleştirme için çözümleyici işleminin diyagramı":::
+  :::image type="content" source="media/tutorial-create-custom-analyzer/analyzers-explained.png" alt-text="Postman istek URL 'SI ve üstbilgisi":::
 
 Bu belirteçler daha sonra, hızlı, tam metin aramalarına izin veren ters bir dizinde depolanır.  Ters bir dizin, sözcük temelli analiz sırasında ayıklanan tüm benzersiz terimleri, bulundukları belgelere eşleyerek tam metin aramasını sağlar. Aşağıdaki diyagramda bir örnek görebilirsiniz:
 
-  :::image type="content" source="media/tutorial-create-custom-analyzer/inverted-index-explained.png" alt-text="Örnek tersine çevrilmiş Dizin":::
+  :::image type="content" source="media/tutorial-create-custom-analyzer/inverted-index-explained.png" alt-text="Postman istek URL 'SI ve üstbilgisi":::
 
 Tüm arama, ters çevrilen dizinde depolanan terimleri aramaya yönelik olarak gelir. Bir Kullanıcı bir sorgu yayınlar:
 
@@ -251,7 +251,7 @@ Tüm arama, ters çevrilen dizinde depolanan terimleri aramaya yönelik olarak g
 1. Tersine çevrilmiş Dizin, eşleşen koşullara sahip belgeler için taranır.
 1. Son olarak, alınan belgeler [benzerlik algoritmasına](index-ranking-similarity.md)göre sıralanır.
 
-  :::image type="content" source="media/tutorial-create-custom-analyzer/query-architecture-explained.png" alt-text="Çözümleyici işlem derecelendirmesi benzerliği diyagramı":::
+  :::image type="content" source="media/tutorial-create-custom-analyzer/query-architecture-explained.png" alt-text="Postman istek URL 'SI ve üstbilgisi":::
 
 Sorgu terimleri, ters dizininizdeki koşullara eşleşmezse sonuçlar döndürülmez. Sorguların nasıl çalıştığı hakkında daha fazla bilgi edinmek için [tam metin aramasında](search-lucene-query-architecture.md)bu makaleye bakın.
 

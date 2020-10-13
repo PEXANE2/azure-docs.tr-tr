@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
 ms.openlocfilehash: 4494af89ac35a391f7dc6097b14d135a911d99dd
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91359622"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineler dağıtımı
@@ -324,7 +324,7 @@ Azure sanal makineleri, işlem ve depolama kaynakları, en kısa sürede ve uzun
 
 Bu makalede, farklı dağıtım seçenekleri ve sorun giderme dahil olmak üzere Azure 'daki sanal makinelerde (VM) SAP uygulamaları dağıtma adımları ele alınmaktadır. Bu makalede, [SAP NetWeaver için planlama ve uygulama Için Azure sanal makineler][planning-guide]'de bilgi oluşturulur. Ayrıca SAP yazılım yükleme ve dağıtmaya yönelik birincil kaynaklar olan SAP yükleme belgelerini ve SAP notlarını da tamamlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
@@ -506,7 +506,7 @@ Azure portal, şablon için aşağıdaki parametreleri girin:
    * **Yönetici Kullanıcı adı** ve **yönetici parolası**: bir Kullanıcı adı ve parola.
      Sanal makinede oturum açmak için yeni bir Kullanıcı oluşturulur.
    * **Yeni veya mevcut alt ağ**: yeni bir sanal ağın ve alt ağın oluşturulup oluşturulmayacağını veya var olan bir alt ağın kullanılıp kullanılmadığını belirler. Şirket içi ağınıza bağlı bir sanal ağınız zaten varsa, **mevcut**' ı seçin.
-   * **Alt ağ kimliği**: VM 'yi tanımlanmış bir alt ağa sahip olduğunuz mevcut bir VNET 'e dağıtmak istiyorsanız, söz konusu alt ağın kimliğini adlandırın. KIMLIK genellikle şuna benzer:/Subscriptions/ &lt; abonelik kimliği>/resourceGroups/ &lt; kaynak grubu adı>/Providers/Microsoft.Network/virtualnetworks/ &lt; sanal ağ adı>/Subnets/ &lt; alt ağ adı>
+   * **Alt ağ kimliği**: VM 'yi tanımlanmış bir alt ağa sahip olduğunuz mevcut bir VNET 'e dağıtmak istiyorsanız, söz konusu alt ağın kimliğini adlandırın. KIMLIK genellikle şuna benzer:/Subscriptions/ &lt; abonelik kimliği>/resourceGroups/ &lt; kaynak grubu adı>/Providers/Microsoft.Network/virtualNetworks/ &lt; sanal ağ adı>/Subnets/ &lt; alt ağ adı>
 
 1. **Hüküm ve koşullar**:  
     Yasal koşulları gözden geçirin ve kabul edin.
@@ -646,7 +646,7 @@ Azure portal, şablon için aşağıdaki parametreleri girin:
 
      Sanal makinede oturum açmak için yeni bir Kullanıcı oluşturulur.
    * **Yeni veya mevcut alt ağ**: yeni bir sanal ağın ve alt ağın oluşturulup oluşturulmayacağını veya var olan bir alt ağın kullanılıp kullanılmadığını belirler. Şirket içi ağınıza bağlı bir sanal ağınız zaten varsa, **mevcut**' ı seçin.
-   * **Alt ağ kimliği**: VM 'yi tanımlanmış bir alt ağa sahip olduğunuz mevcut bir VNET 'e dağıtmak istiyorsanız, söz konusu alt ağın kimliğini adlandırın. KIMLIK genellikle şuna benzer:/Subscriptions/ &lt; abonelik kimliği>/resourceGroups/ &lt; kaynak grubu adı>/Providers/Microsoft.Network/virtualnetworks/ &lt; sanal ağ adı>/Subnets/ &lt; alt ağ adı>
+   * **Alt ağ kimliği**: VM 'yi tanımlanmış bir alt ağa sahip olduğunuz mevcut bir VNET 'e dağıtmak istiyorsanız, söz konusu alt ağın kimliğini adlandırın. KIMLIK genellikle şuna benzer:/Subscriptions/ &lt; abonelik kimliği>/resourceGroups/ &lt; kaynak grubu adı>/Providers/Microsoft.Network/virtualNetworks/ &lt; sanal ağ adı>/Subnets/ &lt; alt ağ adı>
 
 1. **Hüküm ve koşullar**:  
     Yasal koşulları gözden geçirin ve kabul edin.
@@ -734,7 +734,7 @@ Azure portal, şablon için aşağıdaki parametreleri girin:
    * **Işletim sistemi DISKI VHD URI 'si** (yalnızca yönetilmeyen disk şablonu): özel işletim sistemi diskinin URI 'si (örneğin, https:// &lt; accountname>. blob.Core.Windows.net/VHDs/OSDisk.vhd).
    * **Işletim sistemi diski yönetilen DISK kimliği** (yalnızca yönetilen disk şablonu): yönetilen disk işletim SISTEMI diskinin kimliği,/Subscriptions/92d102f7-81a5-4df7-9877-54987ba97dd9/resourceGroups/Group/Providers/Microsoft.COMPUTE/Disks/WIN
    * **Yeni veya mevcut alt ağ**: yeni bir sanal ağ ve alt ağ oluşturulup oluşturulmayacağını veya var olan bir alt ağın kullanılıp kullanılmadığını belirler. Şirket içi ağınıza bağlı bir sanal ağınız zaten varsa, **mevcut**' ı seçin.
-   * **Alt ağ kimliği**: VM 'yi tanımlanmış bir alt ağa sahip olduğunuz mevcut bir VNET 'e dağıtmak istiyorsanız, söz konusu alt ağın kimliğini adlandırın. KIMLIK genellikle şuna benzer:/Subscriptions/ &lt; abonelik kimliği>/resourceGroups/ &lt; kaynak grubu adı>/Providers/Microsoft.Network/virtualnetworks/ &lt; sanal ağ adı>/Subnets/ &lt; alt ağ adı>
+   * **Alt ağ kimliği**: VM 'yi tanımlanmış bir alt ağa sahip olduğunuz mevcut bir VNET 'e dağıtmak istiyorsanız, söz konusu alt ağın kimliğini adlandırın. KIMLIK genellikle şuna benzer:/Subscriptions/ &lt; abonelik kimliği>/resourceGroups/ &lt; kaynak grubu adı>/Providers/Microsoft.Network/virtualNetworks/ &lt; sanal ağ adı>/Subnets/ &lt; alt ağ adı>
 
 1. **Hüküm ve koşullar**:  
     Yasal koşulları gözden geçirin ve kabul edin.
@@ -828,7 +828,7 @@ Azure Marketi 'nden bir VM dağıtırsanız, bu adım gerekli değildir. Azure M
 
 Azure VM aracısını güncelleştirmek için Kullanıcı etkileşimi gerekmez. VM Aracısı otomatik olarak güncelleştirilir ve VM 'nin yeniden başlatılmasını gerektirmez.
 
-#### <a name="linux"></a><a name="6889ff12-eaaf-4f3c-97e1-7c9edc7f7542"></a>Linux
+#### <a name="linux"></a><a name="6889ff12-eaaf-4f3c-97e1-7c9edc7f7542"></a>'Un
 
 Linux için VM aracısını yüklemek üzere aşağıdaki komutları kullanın:
 
@@ -946,7 +946,7 @@ PowerShell kullanarak SAP için Azure uzantısı 'nı yüklemek için:
 Hesap verilerinizi girdikten sonra betik gerekli uzantıları dağıtır ve gerekli özellikleri sunar. Bu işlem birkaç dakika sürebilir.
 Hakkında daha fazla bilgi için `Set-AzVMAEMExtension` bkz. [set-AzVMAEMExtension][msdn-set-Azvmaemextension].
 
-![SAP 'ye özgü Azure cmdlet kümesi 'nin başarılı yürütülmesi-AzVMAEMExtension][deployment-guide-figure-900]
+![SAP 'ye özgü Azure cmdlet 'inin başarıyla yürütülmesi Set-AzVMAEMExtension][deployment-guide-figure-900]
 
 `Set-AzVMAEMExtension`Yapılandırma, SAP için konak verileri toplamayı yapılandırmak için tüm adımları yapar.
 
@@ -1057,7 +1057,7 @@ SAP için yeni VM uzantısı, VM 'nin izleme ve yapılandırma verilerine erişm
    az login
    ```
 
-1. VM 'de sistem tarafından atanan yönetilen bir kimliği etkinleştirmek için Azure [CLI kullanarak Azure VM 'de Azure için yönetilen kimlikleri yapılandırma][qs-configure-cli-windows-vm] makalesindeki adımları izleyin. Kullanıcı tarafından atanan Yönetilen kimlikler, SAP için VM uzantısı tarafından desteklenmez. Ancak, sistem tarafından atanan ve Kullanıcı tarafından atanan bir kimlik olmak üzere her ikisini de etkinleştirebilirsiniz.
+1. VM 'de System-Assigned yönetilen bir kimliği etkinleştirmek için Azure [CLI kullanarak Azure VM 'de Azure için yönetilen kimlikleri yapılandırma][qs-configure-cli-windows-vm] makalesindeki adımları izleyin. User-Assigned Yönetilen kimlikler, SAP için VM uzantısı tarafından desteklenmez. Ancak, sistem tarafından atanan ve Kullanıcı tarafından atanan bir kimlik olmak üzere her ikisini de etkinleştirebilirsiniz.
 
    Örnek:
    ```azurecli
@@ -1370,11 +1370,11 @@ Var olan \\ \\ LIB \\ WAAGENT dizininde \\ SAP için Azure uzantısı için bir 
 
 Uzantı yüklü değil. Bunun bir ara sunucu sorunu olup olmadığını (daha önce açıklandığı gibi) öğrenin. Makineyi yeniden başlatmanız ve/veya yapılandırma betiğini yeniden çalıştırmanız gerekebilir `Set-AzVMAEMExtension` .
 
-##### <a name="the-execution-of-set-azvmaemextension-and-test-azvmaemextension-show-warning-messages-stating-that-standard-managed-disks-are-not-supported"></a>Set-AzVMAEMExtension ve test-AzVMAEMExtension yürütme, Standart yönetilen disklerin desteklenmediğini belirten uyarı iletilerini gösterir
+##### <a name="the-execution-of-set-azvmaemextension-and-test-azvmaemextension-show-warning-messages-stating-that-standard-managed-disks-are-not-supported"></a>Set-AzVMAEMExtension ve Test-AzVMAEMExtension yürütmesi, Standart yönetilen disklerin desteklenmediğini belirten uyarı iletilerini gösterir
 
 ###### <a name="issue"></a>Sorun
 
-Set-AzVMAEMExtension veya test-AzVMAEMExtension iletileri çalıştırıldığında bunlar gösterilmektedir:
+Set-AzVMAEMExtension yürütürken veya Test-AzVMAEMExtension gibi iletiler gösterildiğinde:
 
 <pre><code>
 WARNING: [WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.
@@ -1495,7 +1495,7 @@ Uzantıyı yeniden yüklemek için bu kılavuzdaki [SAP Için Azure uzantısın�
 
 Hatalar kaybdeğilse, [desteğe başvurun][deployment-guide-contact-support].
 
-#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Desteğe başvurun
+#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Destek birimine başvurma
 
 Beklenmeyen bir hata veya bilinen bir çözüm yok. C:\Packages\Plugins\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler \\ \<version\> \Drop (Windows) veya/var/log/Azure/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux (Linux) klasöründe bulunan AzureEnhancedMonitoring_service. log dosyasını toplayın ve daha fazla yardım için sap desteği ile iletişime geçin.
 

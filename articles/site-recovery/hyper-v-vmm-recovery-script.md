@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sharrai
 ms.openlocfilehash: 3217c30737a133c1c1092fc4a8a8caaa0338e980
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89425883"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>Kurtarma planına VMM betiği ekleme
@@ -43,7 +43,7 @@ Kurtarma planlarınızda PowerShell betikleri kullanabilirsiniz. Kurtarma planı
 
   Kitaplık paylaşım yolunuz uzak ise (veya yerel ise ve MSCVMMLibrary ile paylaşılmışsa), \\ libserver2. contoso. com\share\ kullanarak bir örnek olarak, aşağıdaki gibi bir paylaşım yapılandırın:
   
-  1. Kayıt defteri düzenleyicisini açın ve **HKEY_LOCAL_MACHINE \SOFTWARE\MICROSOFT\Azure site Recovery\Registration**adresine gidin.
+  1. Kayıt defteri düzenleyicisini açın ve ardından **HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\Azure Site Recovery\Registration**gidin.
 
   1. **Scriptlibrarypath** için değeri ** \\ \libserver2.contoso.com\share \\ **olarak değiştirin. Tam FQDN 'yi belirtin. Paylaşma konumuna izin verin. Bu, paylaşımın kök düğümüdür. Kök düğümü denetlemek için, VMM 'de, kitaplıktaki kök düğüme gidin. Açılan yol yolun köküdür. Bu, değişkeninde kullanmanız gereken yoldur.
 
@@ -51,7 +51,7 @@ Kurtarma planlarınızda PowerShell betikleri kullanabilirsiniz. Kurtarma planı
 
      a. Yönetici olarak **64-bit Windows PowerShell** konsolunu açın.
      
-     b. **Set-executionpolicy bypass**girin. Daha fazla bilgi için bkz. [set-ExecutionPolicy cmdlet 'Ini kullanma](/previous-versions/windows/it-pro/windows-powershell-1.0/ee176961(v=technet.10)).
+     b. **Set-executionpolicy bypass**girin. Daha fazla bilgi için [Set-ExecutionPolicy cmdlet 'Ini kullanma](/previous-versions/windows/it-pro/windows-powershell-1.0/ee176961(v=technet.10))konusuna bakın.
 
      > [!IMPORTANT]
      > **Set-executionpolicy bypass** yalnızca 64-bit PowerShell konsolunda ayarlanır. Bunu 32-bit PowerShell konsolu için ayarlarsanız betikler çalıştırılmaz.

@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
 ms.openlocfilehash: efd35cfe2660f4597ec0c95dc29bcb4b839da680
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91306948"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Bakım denetimi ve Azure PowerShell güncelleştirmeleri denetleme
@@ -37,7 +37,7 @@ Yerel olarak yüklüyorsanız, PowerShell komut dosyanızı yönetici olarak aç
 Ayrıca, *Güvenilmeyen bir depodan*yüklemek istediğinizi onaylamanız istenebilir. `Y`Modülünü yüklemek için yazın veya **Evet** ' i seçin.
 
 
-## <a name="create-a-maintenance-configuration"></a>Bakım yapılandırması oluşturma
+## <a name="create-a-maintenance-configuration"></a>Bakım yapılandırması oluşturun
 
 Yapılandırmanız için kapsayıcı olarak bir kaynak grubu oluşturun. Bu örnekte, *eastus*içinde *myMaintenanceRG* adlı bir kaynak grubu oluşturulur. Kullanmak istediğiniz bir kaynak grubunuz zaten varsa, bu bölümü atlayabilir ve örneklerin geri kalanında kaynak grubu adını sahipsiz olarak değiştirebilirsiniz.
 
@@ -75,7 +75,7 @@ Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 > Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
 > Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Azure 'un kaynaklarınıza güncelleştirmeleri uygulayabilmesi durumunda, zamanlanmış bir pencereyle bakım yapılandırması oluşturmak için New-AzMaintenanceConfiguration kullanın. Bu örnek, her ayın dördüncü Pazartesi günü 5 saatlik zamanlanan bir pencere ile myConfig adlı bir bakım yapılandırması oluşturur. Zamanlanmış bir pencere oluşturduktan sonra güncelleştirmeleri el ile uygulamanız gerekmez.
+Azure 'un kaynaklarınıza güncelleştirmeleri uygulayabilmesi durumunda zamanlanmış bir pencereyle bakım yapılandırması oluşturmak için New-AzMaintenanceConfiguration kullanın. Bu örnek, her ayın dördüncü Pazartesi günü 5 saatlik zamanlanan bir pencere ile myConfig adlı bir bakım yapılandırması oluşturur. Zamanlanmış bir pencere oluşturduktan sonra güncelleştirmeleri el ile uygulamanız gerekmez.
 
 ```azurepowershell-interactive
 $config = New-AzMaintenanceConfiguration `

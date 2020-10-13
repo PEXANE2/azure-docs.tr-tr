@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 0b7b09696cbbe12a57d066e452b4c8ea7a7b8f27
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90941451"
 ---
 # <a name="configure-and-access-logs-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı 'nda günlükleri yapılandırma ve erişme-esnek sunucu
@@ -36,7 +36,7 @@ Azure portal kullanarak kaynak günlüklerini etkinleştirmek için:
 4. Tercih ettiğiniz uç noktayı (depolama hesabı, Olay Hub 'ı, Log Analytics) seçin. 
 
 5. **Postgressqllogs**günlük türünü seçin.
-   :::image type="content" source="media/howto-logging/diagnostic-create-setting.png" alt-text="PostgreSQL günlüklerini seçin":::
+   :::image type="content" source="media/howto-logging/diagnostic-create-setting.png" alt-text="Tanılama Ayarları Ekle düğmesi":::
 
 7. Ayarınızı kaydedin.
 

@@ -9,10 +9,10 @@ ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 31031462d9904e3554c19f47bc82f87746443693
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91371773"
 ---
 Aşağıdaki tablolarda [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)'a özgü kotalar ve sınırlamalar sağlanmaktadır. Event Hubs fiyatlandırması hakkında daha fazla bilgi için bkz. [Event Hubs fiyatlandırması](https://azure.microsoft.com/pricing/details/event-hubs/).
@@ -47,10 +47,10 @@ Aşağıdaki tabloda, temel ve Standart katmanlar için farklı olabilecek sın�
 ### <a name="dedicated-tier"></a>Adanmış katman
 Event Hubs Ayrılmış teklif, en az 4 saatlik kullanım ile sabit bir aylık fiyatla faturalandırılır. Adanmış katman, standart planın tüm özelliklerini sunar, ancak yoğun iş yükleri olan müşterilere yönelik kurumsal ölçekli kapasite ve sınırlara sahiptir. 
 
-| Öne çıkan özelliği | Sınırlar |
+| Özellik | Sınırlar |
 | --- | ---|
 | Bant genişliği |  20 cu düzeyinde kapsanır |
-| Ad alanları | CU başına 50 |
+| Ad Alanları | CU başına 50 |
 | Event Hubs |  ad alanı başına 1000 |
 | İleti boyutu | 1 MB |
 | Bölümler | CU başına 2000 |
@@ -64,7 +64,7 @@ Event Hubs Ayrılmış teklif, en az 4 saatlik kullanım ile sabit bir aylık fi
 ### <a name="schema-registry-limitations"></a>Şema kayıt defteri sınırlamaları
 
 #### <a name="limits-that-are-the-same-for-standard-and-dedicated-tiers"></a>**Standart** ve **ayrılmış** katmanlar için aynı olan sınırlar 
-| Öne çıkan özelliği | Sınır | 
+| Özellik | Sınır | 
 | --- |  --- | -- |
 | Şema grubu adının maksimum uzunluğu | 50 |  
 | En fazla şema adı uzunluğu | 100 |    

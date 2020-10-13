@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: cf7147ca1295c9f2cef5d89c232f2c266075e362
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88167411"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>IoT Edge cihazını saydam ağ geçidi olarak davranacak şekilde yapılandırma
@@ -73,14 +73,14 @@ Aşağıdaki dosyaları hazırlayın:
       * `<path>/certs/azure-iot-test-only.root.ca.cert.pem`.
 
    2. [IoT Edge CIHAZ CA sertifikası oluşturun](how-to-create-test-certificates.md#create-iot-edge-device-ca-certificates). Bu yönergelerin sonunda, bir cihaz CA sertifikası ve onun özel anahtarı olmak üzere iki dosya olacaktır:
-      * `<path>/certs/iot-edge-device-<cert name>-full-chain.cert.pem`'
+      * `<path>/certs/iot-edge-device-<cert name>-full-chain.cert.pem` '
       * `<path>/private/iot-edge-device-<cert name>.key.pem`
 
 2. Bu dosyaları farklı bir makinede oluşturduysanız, IoT Edge cihazınıza kopyalayın.
 
 3. IoT Edge cihazınızda güvenlik Daemon yapılandırma dosyasını açın.
-   * Pencerelerin`C:\ProgramData\iotedge\config.yaml`
-   * 'Un`/etc/iotedge/config.yaml`
+   * Pencerelerin `C:\ProgramData\iotedge\config.yaml`
+   * 'Un `/etc/iotedge/config.yaml`
 
 4. Dosyanın **Sertifikalar** bölümünü bulun ve aşağıdaki özellikler için değer olarak dosya URI 'lerini üç dosyaya sağlayın:
    * **device_ca_cert**: cihaz CA sertifikası
@@ -90,8 +90,8 @@ Aşağıdaki dosyaları hazırlayın:
 5. Dosyayı kaydedin ve kapatın.
 
 6. IoT Edge yeniden başlatın.
-   * Pencerelerin`Restart-Service iotedge`
-   * 'Un`sudo systemctl restart iotedge`
+   * Pencerelerin `Restart-Service iotedge`
+   * 'Un `sudo systemctl restart iotedge`
 
 ## <a name="deploy-edgehub-and-route-messages"></a>EdgeHub ve yönlendirme iletileri dağıtma
 
@@ -117,15 +117,15 @@ IoT Edge hub modülünü dağıtmak ve gelen iletileri aşağı akış cihazlar�
 
 5. **İleri: rotalar**' ı seçin.
 
-6. **Rotalar** sayfasında, aşağı akış aygıtlarından gelen iletileri işlemek için bir yol olduğundan emin olun. Örnek:
+6. **Rotalar** sayfasında, aşağı akış aygıtlarından gelen iletileri işlemek için bir yol olduğundan emin olun. Örneğin:
 
    * Bir modülden veya bir aşağı akış cihazdan IoT Hub için tüm iletileri gönderen bir yol:
-       * **Ad**:`allMessagesToHub`
-       * **Değer**:`FROM /messages/* INTO $upstream`
+       * **Ad**: `allMessagesToHub`
+       * **Değer**: `FROM /messages/* INTO $upstream`
 
    * Tüm aşağı akış cihazlarındaki tüm iletileri IoT Hub 'e gönderen bir yol:
-      * **Ad**:`allDownstreamToHub`
-      * **Değer**:`FROM /messages/* WHERE NOT IS_DEFINED ($connectionModuleId) INTO $upstream`
+      * **Ad**: `allDownstreamToHub`
+      * **Değer**: `FROM /messages/* WHERE NOT IS_DEFINED ($connectionModuleId) INTO $upstream`
 
       Bu yol, IoT Edge modüllerinden gelen iletilerden farklı olarak, aşağı akış cihazlarındaki iletilerin bu kendileriyle ilişkili bir modül KIMLIĞI olmadığından dolayı işe yarar. Yolun **WHERE** yan tümcesinin kullanılması, bu sistem özelliğine sahip tüm iletileri filtreleyebileceğimizi sağlar.
 

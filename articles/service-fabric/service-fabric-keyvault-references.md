@@ -4,10 +4,10 @@ description: Bu makalede, uygulama gizli dizileri için Service Fabric KeyVaultR
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: c4de6ae17ae728e1dbadbd6d6e2d94c0e1471112
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91261150"
 ---
 # <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric uygulamalar için KeyVaultReference desteği (Önizleme)
@@ -20,7 +20,7 @@ Bulut uygulamaları derlerken, uygulamanız için gereken gizli dizileri güvenl
 > [!NOTE]
 > Keykasası başvuru önizleme özelliği yalnızca [Sürümlenmiş](https://docs.microsoft.com/azure/key-vault/general/about-keys-secrets-certificates#objects-identifiers-and-versioning) gizli dizileri destekler. Sürümsuz gizlilikler desteklenmez.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Uygulama için yönetilen kimlik (MıT)
     

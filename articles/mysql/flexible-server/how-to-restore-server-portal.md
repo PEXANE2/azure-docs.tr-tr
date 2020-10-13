@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
 ms.openlocfilehash: 1c81ddad8a11cbad361ff84caf6f7200a0c010d5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90941067"
 ---
 # <a name="point-in-time-restore-of-a-azure-database-for-mysql---flexible-server-preview"></a>MySQL için Azure veritabanı-esnek sunucu (Önizleme) için bir noktadan noktaya geri yükleme
@@ -21,7 +21,7 @@ ms.locfileid: "90941067"
 
 Bu makalede, yedeklemeleri kullanarak esnek sunucu 'da zaman içinde kurtarma gerçekleştirmek için adım adım yordamlar sunulmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 
@@ -48,7 +48,7 @@ En eski mevcut yedeği kullanarak esnek sunucunuzu geri yüklemek için bu adım
 
     :::image type="content" source="./media/concept-backup-restore/restore-blade-latest.png" alt-text="En erken geri yükleme süresi":::
 
-8.  **Tamam**’a tıklayın.
+8.  **Tamam**'a tıklayın.
 
 9.  Geri yükleme işleminin başlatıldığı bir bildirim gösterilir.
 
@@ -72,9 +72,9 @@ En eski mevcut yedeği kullanarak esnek sunucunuzu geri yüklemek için bu adım
 
 6.  **Yeni sunucuya geri yükle** alanına yeni bir sunucu adı sağlayın. 
    
-    :::image type="content" source="./media/concept-backup-restore/restore-blade-custom.png" alt-text="genel bakışı görüntüle":::
+    :::image type="content" source="./media/concept-backup-restore/restore-blade-custom.png" alt-text="En erken geri yükleme süresi":::
  
-7.  **Tamam**’a tıklayın.
+7.  **Tamam**'a tıklayın.
 
 8.  Geri yükleme işleminin başlatıldığı bir bildirim gösterilir.
 

@@ -4,10 +4,10 @@ description: Bu makalede, Azure Stack Kenarunuzda canlı video analizlerini dağ
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.openlocfilehash: b13bb779a5a780b21f2d5d96ed8831ef5c26564d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90941139"
 ---
 # <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>Azure Stack Edge üzerinde canlı video analizi dağıtma
@@ -19,7 +19,7 @@ Canlı video analizi için IoT Hub aracılığıyla dağıtılacak, ancak Azure 
 > [!TIP]
 > Özel dağıtım için Kubernetes (K8s) API 'sinin kullanılması, gelişmiş bir durumdur. Müşterinin Edge modülleri oluşturması ve Kubernetes API 'sini kullanmak yerine her Azure Stack Edge kaynağına IoT Hub aracılığıyla dağıtılması önerilir. Bu makalede, IoT Hub kullanarak canlı video analizi modülünü dağıtma adımları gösterilecektir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Sahip olduğunuz ayrıcalıklara](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)sahip olduğunuz Azure aboneliği.
 * [Azure Stack Edge](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-deploy-prep) kaynağı
@@ -55,14 +55,14 @@ Azure Stack Edge, ağ veri aktarımı özelliklerine sahip bir hizmet olarak don
     | Alan|Değer|
     |---|---|
     |IoT Hub|Yeni veya mevcut seçeneklerinden birini belirleyin.<br/>Varsayılan olarak IoT kaynağı oluşturulurken Standart katmanı (S1) kullanılır. Bir ücretsiz katman IoT kaynağı kullanmak için kaynağı oluşturun ve sonra da mevcut kaynağı seçin.<br/>Her durumda IoT Hub kaynak, Azure Stack Edge kaynağı kullanılan aynı abonelik ve kaynak grubunu kullanır.|
-    |Ad|IoT Hub kaynağınız için bir ad girin.|
+    |Adı|IoT Hub kaynağınız için bir ad girin.|
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-get-started.png" alt-text="Azure Stack Edge kullanmaya başlayın":::
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-get-started.png" alt-text="Azure Stack Edge":::
 1. **Oluştur**’u seçin. IoT Hub kaynak oluşturma birkaç dakika sürer. IoT Hub kaynağı oluşturulduktan sonra, işlem yapılandırmasını göstermek için işlem kutucuğunu **Yapılandır** ' ı güncelleştirir. Edge işlem rolünün yapılandırıldığını doğrulamak için, **Işlem yapılandırma** kutucuğunda işlemi **görüntüle** ' yi seçin.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/edge-compute-config.png" alt-text="IoT Hub kaynak oluşturma":::
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/edge-compute-config.png" alt-text="Azure Stack Edge":::
 
     > [!NOTE]
     > IoT Hub Azure Stack Edge kaynağıyla ilişkilendirilmeden önce Işlem Yapılandır iletişim kutusu kapatılırsa IoT Hub oluşturulur ancak işlem yapılandırmasında gösterilmez. Birkaç dakika sonra sayfayı yeniden yükleyin ve göründüğünü görüntüleyin.
@@ -72,7 +72,7 @@ Azure Stack Edge, ağ veri aktarımı özelliklerine sahip bir hizmet olarak don
     Tüm bilgiler doldurulduktan sonra Edge işlem kartını yapılandırma aşağıdakine benzer şekilde görünür:
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/configure-edge-compute.png" alt-text="Edge işlem kartını yapılandırma ":::
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/configure-edge-compute.png" alt-text="Azure Stack Edge":::
  
 ### <a name="enable-compute-prerequisites-on-the-azure-stack-edge-local-ui"></a>Azure Stack Edge Yerel Kullanıcı arabiriminde Işlem önkoşullarını etkinleştirme
 
@@ -89,7 +89,7 @@ Devam etmeden önce şunları yaptığınızdan emin olun:
         * Uygula ' yı seçin-Bu işlem yaklaşık 2 dakika sürer.
         
         > [!div class="mx-imgBorder"]
-        > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-commercial.png" alt-text=" Azure Stack Edge Yerel Kullanıcı arabiriminde işlem önkoşulları":::
+        > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-commercial.png" alt-text="Azure Stack Edge":::
 
         * DNS, Kubernetes API 'SI ve Azure Stack Edge kaynağı için yapılandırılmamışsa, pencerenizin ana bilgisayar dosyasını güncelleştirebilirsiniz.
         
@@ -185,7 +185,7 @@ Bu adımlar, bir ağ geçidi kullanıcısı oluşturmayı ve canlı video analiz
     1. **Oluştur**'a tıklayın.
         
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/local-share.png" alt-text="Yerel paylaşma":::
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/local-share.png" alt-text="Azure Stack Edge":::
     
 1. Dosya eşitleme depolaması için bir uzak paylaşma oluşturun.
 
@@ -203,36 +203,7 @@ Bu adımlar, bir ağ geçidi kullanıcısı oluşturmayı ve canlı video analiz
     1. **Oluştur**'a tıklayın.    
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/remote-share.png" alt-text="Uzak paylaşma":::
-    
-    > [!TIP]
-    > Azure Stack ucuna bağlı Windows istemcinizi kullanarak, [Bu belgede bahsedilen](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-add-shares#connect-to-an-smb-share)ADıMLARı izleyerek SMB paylaşımlarına bağlanın.
-    
-1. Canlı video analizi kenar modülünün kapsayıcı oluşturma seçeneklerini (bkz. [Modül Ekle belgesinde](deploy-iot-edge-device.md#add-modules)nokta 4) kullanarak birim bağlamayı kullanın.
-
-   ```json
-    // Original (Bind Mounts)
-    "createOptions": {
-        "HostConfig": {
-            "Binds": [
-                "/var/lib/azuremediaservices:/var/lib/azuremediaservices",
-                "/var/media:/var/media"
-            ]
-        }
-    }
-    // Updated (Volume Mounts)
-    "createOptions": {
-        "HostConfig": {
-            "Mounts": [
-            {
-                "Target": "/var/lib/azuremediaservices",
-                "Source": "lva",
-                "Type": "volume"
-            },
-            {
-                "Target": "/var/media",
-                "Source": "media",
-                "Type": "volume"
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/remote-share.png" alt-text="Azure Stack Edge"
             }]
         }
     }
@@ -248,7 +219,7 @@ Modülün çalıştığını doğrulamak için aşağıdakileri yapın:
 1. Modüller kutucuğunu seçin. Bu sizi modüller dikey penceresine götürür. Modüller listesinde, dağıttığınız modülü ayırt edin. Eklediğiniz modülün çalışma zamanı durumu çalışıyor olmalıdır.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/iot-edge-custom-module.png" alt-text="Özel modül":::
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/iot-edge-custom-module.png" alt-text="Azure Stack Edge":::
 
 ### <a name="configure-the-azure-iot-tools-extension"></a>Azure IoT araçları uzantısını yapılandırma
 
