@@ -5,14 +5,16 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 description: Azure Kubernetes hizmetlerinde Azure Dev Spaces çalıştırmaya yönelik ağ gereksinimlerini açıklar
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, CNı, kubenet, SDN, ağ
-ms.openlocfilehash: 0d9ebbec3e3c07a466acb58e88b67e6a32a20edb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09114ab13555cbf9ef42b37c86ffb76a8fe3ab3f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88214171"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970347"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Farklı ağ topolojilerinde Azure Dev Spaces için ağ yapılandırma
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Azure Dev Spaces, varsayılan ağ yapılandırmasıyla Azure Kubernetes Service (AKS) kümelerinde çalışır. Kümeyi bir güvenlik duvarının arkasına yerleştirme, ağ güvenlik gruplarını kullanma veya ağ ilkeleri kullanma gibi AKS kümenizin ağ yapılandırmasını değiştirmek istiyorsanız, Azure Dev Spaces çalıştırmak için ek hususlar eklemeniz gerekir.
 
@@ -72,7 +74,7 @@ Azure Dev Spaces, AKS üzerinde çalışan hizmetlerinize yönelik uç noktalar�
 * *Özel* bir uç nokta, özel bir IP adresi olan bir giriş denetleyicisi dağıtır. Özel bir IP adresi ile, kümenizin yük dengeleyiciye yalnızca kümenin sanal ağı içinden erişilebilir. Yük dengeleyicinin özel IP adresi kümenin DNS 'sine kaydedilir, böylece kümenin sanal ağı içindeki hizmetlere bir URL kullanılarak erişilebilir. Kullanarak bu URL 'YI görebilirsiniz `azds list-uris` .
 * Uç nokta seçeneği için *hiçbiri* ayarı, giriş denetleyicisinin dağıtılmamasını sağlar. Giriş denetleyicisi dağıtılmadı, [Azure dev Spaces yönlendirme özellikleri][dev-spaces-routing] çalışmayacak. İsteğe bağlı olarak, [traefik][traefik-ingress] veya [NGINX][nginx-ingress]kullanarak kendi giriş denetleyicisi çözümünüzü uygulayabilir, bu da yönlendirme yeteneklerinin yeniden çalışmasına imkan sağlar.
 
-Uç nokta seçeneğinizi yapılandırmak için, kümenizde Azure Dev Spaces etkinleştirirken *-e* veya *--uç noktasını* kullanın. Örneğin:
+Uç nokta seçeneğinizi yapılandırmak için, kümenizde Azure Dev Spaces etkinleştirirken *-e* veya *--uç noktasını* kullanın. Örnek:
 
 > [!NOTE]
 > Uç nokta seçeneği için Azure CLı sürüm 2.2.0 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].

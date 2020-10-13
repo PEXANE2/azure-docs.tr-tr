@@ -7,12 +7,12 @@ ms.date: 01/28/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 62ea64f6f0ccf3a9f4ceabc64a97e1e5570b92b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ef41516d516ce6498fc8c502a229084acdebfa1
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88586078"
+ms.locfileid: "91875554"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>Azure Key Vault’u Azure İlkesiyle tümleştirme
 
@@ -148,7 +148,10 @@ Düzgün şekilde izlenmeyen bir sertifika, süresi dolmadan önce döndürülme
 Bir "reddetme" efektiyle ilke atanması, uyumlu olmayan kaynakların oluşturulmasını reddetmek için 30 dakika (ortalama Case) ve 1 saat (en kötü durum) gerektirebilir. Bir kasadaki mevcut bileşenlerin ilke değerlendirmesi, uyumluluk sonuçlarının Portal Kullanıcı arabiriminde görüntülenebilmesi için 1 saat (ortalama büyük/küçük harf) ve 2 saat (en kötü durum) kadar sürebilir. Uyumluluk sonuçları "başlatılmamış" olarak görünmüyorsa, bunun nedeni aşağıdakilerden biri olabilir:
 - İlke değerlemesi henüz tamamlanmadı. İlk değerlendirme gecikmesi en kötü durum senaryosunda 2 saate kadar sürebilir. 
 - İlke atamasının kapsamında herhangi bir anahtar kasası yok.
-- İlke atamasının kapsamında sertifikalara sahip bir anahtar kasası yok. 
+- İlke atamasının kapsamında sertifikalara sahip bir anahtar kasası yok.
+
+> [!NOTE]
+> Azure Key Vault gibi Azure Ilke [kaynağı sağlayıcı modları](../../governance/policy/concepts/definition-structure.md#resource-provider-modes), [bileşen uyumluluğu](../../governance/policy/how-to/get-compliance-data.md#component-compliance) sayfasında uyumluluk hakkında bilgi sağlar.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

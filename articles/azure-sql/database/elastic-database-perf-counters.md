@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/07/2019
 ms.openlocfilehash: 6038ec1d83957f20ca6e2759eeb5a88e66c2f77f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443411"
 ---
 # <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>Parça eşleme Yöneticisi 'nin performansını izlemek için performans sayaçları oluşturma
@@ -28,7 +28,7 @@ Performans sayaçları, [veri bağımlı yönlendirme](elastic-scale-data-depend
 
 **En son sürüm için:** [Microsoft. Azure. SQLDatabase. Elayapışscale. Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)öğesine gidin. Ayrıca bkz. [bir uygulamayı en son elastik veritabanı istemci kitaplığını kullanacak şekilde yükseltme](elastic-scale-upgrade-client-library.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Performans kategorisi ve sayaçlarını oluşturmak için Kullanıcı, uygulamayı barındıran makinede yerel **Yöneticiler** grubunun bir parçası olmalıdır.  
 * Bir performans sayacı örneği oluşturmak ve sayaçları güncelleştirmek için, kullanıcının **Yöneticiler** veya **Performans İzleyicisi Kullanıcı** grubunun üyesi olması gerekir.
@@ -61,7 +61,7 @@ Aşağıdaki olaylar, performans sayaçlarının oluşturulmasını tetikler:
 
 Performans sayaçları, parça haritasında ve eşlemelerde gerçekleştirilen tüm önbellek işlemleri tarafından güncelleştirilir. DeleteShardMap () kullanılarak parça haritasının başarıyla kaldırılması, performans sayaçları örneğinin silinmesine neden olur.  
 
-## <a name="best-practices"></a>En iyi uygulamalar
+## <a name="best-practices"></a>Önerilen uygulamalar
 
 * ShardMapManager nesnesinin oluşturulmasından önce, performans kategorisi ve sayaçlarının oluşturulması yalnızca bir kez gerçekleştirilmelidir. CreatePerformanceCategoryAndCounters () komutunun her yürütülmesi önceki sayaçları temizler (tüm örnekler tarafından bildirilen verileri kaybetmektedir) ve yenilerini oluşturur.  
 * Performans sayacı örnekleri işlem başına oluşturulur. Önbellekten bir parça eşlemesinin herhangi bir uygulama kilitlenmesi veya kaldırılması, performans sayaçları örneklerinin silinmesine neden olur.  

@@ -8,17 +8,17 @@ ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
 ms.openlocfilehash: b174e2631131e6bf26d7b1cb62442c8a99102e2e
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397292"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-portal"></a>Bakım denetimi ve Azure portal güncelleştirmelerini denetleme
 
 Bakım denetimi, yalıtılmış sanal makinelerinize ve Azure adanmış ana bilgisayarlara güncelleştirmelerin ne zaman uygulanacağına karar vermenizi sağlar. Bu konu, bakım denetimi için Azure portal seçeneklerini içerir. Bakım denetimini, sınırlamalarını ve diğer yönetim seçeneklerini kullanmanın avantajları hakkında daha fazla bilgi için bkz. [Platform güncelleştirmelerini bakım denetimiyle yönetme](maintenance-control.md).
 
-## <a name="create-a-maintenance-configuration"></a>Bakım yapılandırması oluşturma
+## <a name="create-a-maintenance-configuration"></a>Bakım yapılandırması oluşturun
 
 1. Azure Portal’da oturum açın.
 

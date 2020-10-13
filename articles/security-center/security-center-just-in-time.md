@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
 ms.openlocfilehash: 4a709527c0de2e092bcca2bbd9bc596aa0eb4cc0
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91440721"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Tam zamanında erişimli yönetim bağlantı noktalarınızı güvenli hale getirin
@@ -37,7 +37,7 @@ Bu sayfa, güvenlik programınıza JıT ekleme hakkında öğretir. Şunları ö
 |Fiyat|[Sunucular Için Azure Defender](defender-for-servers-introduction.md) gerekir|
 |Desteklenen VM 'Ler:|![](./media/icons/yes-icon.png)Azure Resource Manager aracılığıyla dağıtılan Evet VM 'leri.<br>![](./media/icons/no-icon.png)Klasik dağıtım modelleriyle dağıtılan VM yok. [Bu dağıtım modelleri hakkında daha fazla bilgi edinin](../azure-resource-manager/management/deployment-models.md).<br>![Azure ](./media/icons/no-icon.png) [güvenlik duvarı Yöneticisi](https://docs.microsoft.com/azure/firewall-manager/overview) tarafından denetlenen Azure Güvenlik duvarları tarafından korunan VM yok|
 |Gerekli roller ve izinler:|**Reader** ve **securityreader** ROLLERININ her ikisi de JIT durumunu ve parametrelerini görüntüleyebilir.<br>JıT ile çalışan özel Roller oluşturmak için bkz. JıT 'i [yapılandırmak ve kullanmak Için hangi izinler gereklidir?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit).<br>Bir VM 'ye JıT erişimi istemesi ve başka bir JıT işlemi gerçekleştirihtiyacı olmayan kullanıcılar için en az ayrıcalıklı bir rol oluşturmak üzere, güvenlik merkezi GitHub topluluk sayfalarından [set-Jleastprivilegedrole betiğini](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) kullanın.|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Evet](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 

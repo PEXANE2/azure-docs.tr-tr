@@ -8,10 +8,10 @@ ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 8549fba2071ce98b206b3babe073137817aa3145
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91252842"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Azure dijital TWINS 'te uç noktaları ve yolları yönetme (portal)
@@ -24,7 +24,7 @@ Bu makalede, [Azure Portal](https://portal.azure.com)kullanarak uç noktalar ve 
 
 Ayrıca, [Eventroutes API 'leri](how-to-use-apis-sdks.md), [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)veya [Azure dijital TWINS CLI](how-to-use-cli.md)ile uç noktaları ve yolları da yönetebilirsiniz. Bu makalenin Portal yerine bu mekanizmaların kullanıldığı bir sürümü için bkz. [*nasıl yapılır: uç noktaları ve yolları yönetme (API 'ler ve CLI)*](how-to-manage-routes-apis-cli.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir **Azure hesabınızın** olması gerekir ( [buradan](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)birini ücretsiz olarak ayarlayabilirsiniz)
 * Azure aboneliğinizde bir **Azure dijital TWINS örneği** gerekir. Zaten bir örneğiniz yoksa, [*nasıl yapılır: örnek ve kimlik doğrulaması ayarlama*](how-to-set-up-instance-portal.md)bölümündeki adımları kullanarak bir tane oluşturabilirsiniz. Bu makalede daha sonra kullanmak için kurulum 'un aşağıdaki değerlerini kullanın:
@@ -37,7 +37,7 @@ Bu ayrıntıları, örneğinizi ayarladıktan sonra [Azure Portal](https://porta
 
 Örneğinizin Ayrıntılar sayfasını görmek için sonuçlardan örneğinizi seçin:
 
-:::image type="content" source="media/how-to-manage-routes-portal/instance-details.png" alt-text="ADT örnek ayrıntılarının ekran görüntüsü." border="false":::
+:::image type="content" source="media/how-to-manage-routes-portal/instance-details.png" alt-text="Azure portal arama çubuğunun ekran görüntüsü." border="false":::
 
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>Azure dijital TWINS için uç nokta oluşturma
 
@@ -62,11 +62,11 @@ Açılan *bir uç nokta oluştur* sayfasında, ilgili radyo düğmesini seçerek
 
 Sonra, _Kaydet_' i vurarak uç noktanızı oluşturun.
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-grid.png" alt-text="Event Grid türünde bir uç nokta oluşturma ekran görüntüsü.":::
+:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-grid.png" alt-text="Azure portal arama çubuğunun ekran görüntüsü.":::
 
 Üstteki Azure portal çubuğundaki bildirim simgesini denetleyerek uç noktanın başarıyla oluşturulduğunu doğrulayabilirsiniz: 
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-notifications.png" alt-text="Uç nokta oluşturulmasını doğrulama bildiriminin ekran görüntüsü." border="false":::
+:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-notifications.png" alt-text="Azure portal arama çubuğunun ekran görüntüsü." border="false":::
 
 Ayrıca, Azure dijital TWINS örneğiniz için *uç noktalar* sayfasında, geri oluşturulan uç noktayı görüntüleyebilirsiniz.
 
@@ -88,7 +88,7 @@ Açılan *bir uç nokta oluştur* sayfasında, ilgili radyo düğmesini seçerek
 
 Sonra, _Kaydet_' i vurarak uç noktanızı oluşturun.
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-hub.png" alt-text="Event Hubs türünde bir uç nokta oluşturma ekran görüntüsü.":::
+:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-hub.png" alt-text="Azure portal arama çubuğunun ekran görüntüsü.":::
 
 Üstteki Azure portal çubuğundaki bildirim simgesini denetleyerek uç noktanın başarıyla oluşturulduğunu doğrulayabilirsiniz. 
 
@@ -110,7 +110,7 @@ Açılan *bir uç nokta oluştur* sayfasında, ilgili radyo düğmesini seçerek
 
 Sonra, _Kaydet_' i vurarak uç noktanızı oluşturun.
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-service-bus.png" alt-text="Service Bus türünde bir uç nokta oluşturma ekran görüntüsü.":::
+:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-service-bus.png" alt-text="Azure portal arama çubuğunun ekran görüntüsü.":::
 
 Üstteki Azure portal çubuğundaki bildirim simgesini denetleyerek uç noktanın başarıyla oluşturulduğunu doğrulayabilirsiniz. 
 
@@ -149,7 +149,7 @@ Açılan *bir olay yolu oluştur* sayfasında en az ' ı seçin:
 
 Yolun etkinleştirilmesi için, en azından **bir olay yönlendirme filtresi de eklemeniz** gerekir `true` . (Varsayılan değerinin bırakılması `false` yolu oluşturur, ancak buna hiçbir olay gönderilmez.) Bunu yapmak için, _Gelişmiş düzenleyicinin_ anahtarını etkinleştirmek üzere değiştirin ve `true` *filtre* kutusuna yazın.
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="Örneğiniz için olay yolu oluşturma ekranının ekran görüntüsü." lightbox="media/how-to-manage-routes-portal/create-event-route-no-filter.png":::
+:::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="Azure portal arama çubuğunun ekran görüntüsü." lightbox="media/how-to-manage-routes-portal/create-event-route-no-filter.png":::
 
 İşiniz bittiğinde, olay rotasını oluşturmak için _Kaydet_ düğmesine basın.
 
@@ -175,7 +175,7 @@ Temel filtreleri kullanmak için, _olay türleri_ seçeneğini genişletin ve u�
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-1.png" alt-text="Temel filtreye sahip bir olay yolu oluşturma ekran görüntüsü. Olayların onay kutularını seçme.":::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-1.png" alt-text="Azure portal arama çubuğunun ekran görüntüsü.":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -185,7 +185,7 @@ Bu, filtre metin kutusunu seçtiğiniz filtrenin metniyle otomatik olarak doldur
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-2.png" alt-text="Temel filtreye sahip bir olay yolu oluşturma ekran görüntüsü. Olaylar seçildikten sonra otomatik doldurulmuş filtre metni gösteriliyor.":::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-2.png" alt-text="Azure portal arama çubuğunun ekran görüntüsü.":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -199,7 +199,7 @@ Gelişmiş filtre seçenekleriyle bir olay yolu oluşturmak için, _Gelişmiş d
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-advanced.png" alt-text="Gelişmiş bir filtreye sahip bir olay yolu oluşturma ekranının ekran görüntüsü.":::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-advanced.png" alt-text="Azure portal arama çubuğunun ekran görüntüsü.":::
     :::column-end:::
     :::column:::
     :::column-end:::

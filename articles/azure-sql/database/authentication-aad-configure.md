@@ -13,10 +13,10 @@ ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
 ms.openlocfilehash: d7b0f2bb479154fa10a18cd07a65b9f7287fc97c
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91444484"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure SQL ile Azure AD kimlik doğrulamasını yapılandırma ve yönetme
@@ -412,7 +412,7 @@ Bir veritabanı kullanıcısı oluşturduğunuzda, bu kullanıcı **bağlantı**
 Yönetilen bir etki alanına dış Kullanıcı olarak içeri aktarılan bir Federasyon etki alanı kullanıcı hesabı, yönetilen etki alanı kimliğini kullanmalıdır.
 
 > [!NOTE]
-> Azure AD kullanıcıları, E (EXTERNAL_USER) türü ve X (EXTERNAL_GROUPS) türündeki gruplar için veritabanı meta verilerinde işaretlenir. Daha fazla bilgi için bkz. [sys. database_principals](https://msdn.microsoft.com/library/ms187328.aspx).
+> Azure AD kullanıcıları, E (EXTERNAL_USER) türü ve X (EXTERNAL_GROUPS) türündeki gruplar için veritabanı meta verilerinde işaretlenir. Daha fazla bilgi için bkz. [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx).
 
 ## <a name="connect-to-the-database-using-ssms-or-ssdt"></a>SSMS veya SSDT kullanarak veritabanına bağlanma  
 

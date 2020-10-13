@@ -12,10 +12,10 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
 ms.openlocfilehash: dbc00d37b912ce7efb250aade0ea6790a1a227eb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91296765"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Depolama hesabı erişim anahtarlarını yeniden oluştur
@@ -28,7 +28,7 @@ Güvenlik nedeniyle, bir Azure depolama hesabının erişim anahtarlarını değ
 > [!IMPORTANT]
 > Datamağazalarla birlikte kayıt defteri kaydı, çalışma alanıyla ilişkili Azure Key Vault kaydedilir. Key Vault için [geçici silme](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview) etkinse, kimlik bilgilerini güncelleştirmek için bu makaleyi izlediğinizden emin olun. Veri deposunun kaydını silme ve aynı ada göre yeniden kaydetme başarısız olur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için [çalışma alanı oluşturma](how-to-manage-workspace.md) makalesine bakın.
 

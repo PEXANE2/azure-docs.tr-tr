@@ -1,14 +1,14 @@
 ---
 title: Kiracılar arası yönetim deneyimleri
 description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim deneyimi sunar.
-ms.date: 09/30/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 60eab197e38c7b6ef3b7f2d9442a0b7583f66d09
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 7b2476d58cdfe057a94c52b40af7694abc7b263f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91739740"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970648"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -35,10 +35,12 @@ Temsilcili kaynaklar üzerinde doğrudan portalda veya API 'Ler ile yönetim ara
 
 [Get-AzSubscription cmdlet 'i](/powershell/module/Az.Accounts/Get-AzSubscription) , `HomeTenantId` `ManagedByTenantIds` her abonelik için ve özniteliklerini gösterir. Bu, döndürülen bir aboneliğin yönetilen bir kiracıya veya yönetim kiracınıza ait olduğunu tanımlamanızı sağlar. Azure PowerShell
 
-Benzer şekilde, [az Account List](/cli/azure/account#az-account-list) gıbı Azure CLI komutları `homeTenantId` ve özniteliklerini gösterir `managedByTenants` .
+Benzer şekilde, [az Account List](/cli/azure/account#az-account-list) gıbı Azure CLI komutları `homeTenantId` ve özniteliklerini gösterir `managedByTenants` . Azure CLı kullanırken bu değerleri görmüyorsanız, arkasından ' i çalıştırarak Önbelleğinizi temizlemeyi deneyin `az account clear` `az login --identity` .
 
-> [!TIP]
-> Azure CLı kullanırken bu değerleri görmüyorsanız, arkasından ' i çalıştırarak Önbelleğinizi temizlemeyi deneyin `az account clear` `az login --identity` .
+Azure REST API, [abonelikler-Get](/rest/api/resources/subscriptions/get) ve [abonelikler-liste](/rest/api/resources/subscriptions/list) komutları şunları içerir `ManagedByTenant` .
+
+> [!NOTE]
+> Azure mathouse ile ilgili kiracı bilgilerine ek olarak, bu API 'Ler tarafından gösterilen kiracılar, Azure Databricks veya Azure tarafından yönetilen uygulamalar için iş ortağı kiracılarını da yansıtabilir.
 
 Ayrıca, Azure Use görevlerini gerçekleştirmeye özgü API 'Ler sunuyoruz. Daha fazla bilgi için **başvuru** bölümüne bakın.
 

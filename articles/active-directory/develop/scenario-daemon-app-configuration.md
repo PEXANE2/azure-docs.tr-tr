@@ -12,10 +12,10 @@ ms.date: 09/19/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
 ms.openlocfilehash: 8e065651a5527c0ab425614197ce128325454942
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91257682"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Web API 'Lerini çağıran Daemon uygulaması-kod yapılandırması
@@ -26,7 +26,7 @@ Web API 'Lerini çağıran Daemon uygulamanız için kodu yapılandırmayı öğ
 
 Bu Microsoft kitaplıkları, Daemon uygulamalarını destekler:
 
-  MSAL kitaplığı | Description
+  MSAL kitaplığı | Açıklama
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | .NET Framework ve .NET Core platformları, Daemon uygulamalarının oluşturulması için desteklenir. (UWP, Xamarin. iOS ve Xamarin. Android desteklenmez çünkü bu platformlar ortak istemci uygulamaları oluşturmak için kullanılır.)
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Python 'da Daemon uygulamaları için destek.

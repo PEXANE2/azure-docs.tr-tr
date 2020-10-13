@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 71e930898f1f86622357f9e02da69be7bf2f8088
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91256594"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity platform ve OpenID Connect Protokolü
@@ -172,7 +172,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 Aşağıdaki tabloda hata yanıtının parametresinde döndürülebilecek hata kodları açıklanmaktadır `error` :
 
-| Hata kodu | Description | İstemci eylemi |
+| Hata kodu | Açıklama | İstemci eylemi |
 | --- | --- | --- |
 | `invalid_request` | Eksik, gerekli bir parametre gibi protokol hatası. |İsteği onarın ve yeniden gönderin. Bu, genellikle ilk sınama sırasında yakalanan bir geliştirme hatasıdır. |
 | `unauthorized_client` | İstemci uygulaması bir yetkilendirme kodu isteğinde bulunamıyor. |Bu durum genellikle istemci uygulaması Azure AD 'de kayıtlı olmadığında veya kullanıcının Azure AD kiracısına eklenmediğinde oluşur. Uygulama kullanıcıya uygulamayı yüklemek ve Azure AD 'ye eklemek için yönergeler isteyebilir. |
@@ -292,7 +292,7 @@ GET https://login.microsoftonline.com/common/oauth2/v2.0/logout?
 post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 ```
 
-| Parametre | Koşul | Description |
+| Parametre | Koşul | Açıklama |
 | ----------------------- | ------------------------------- | ------------ |
 | `post_logout_redirect_uri` | Önerilen | Başarıyla oturum kapatıldıktan sonra kullanıcının yeniden yönlendirildiği URL. Parametresi dahil edilmemişse, kullanıcıya Microsoft Identity platform uç noktası tarafından oluşturulan genel bir ileti gösterilir. Bu URL, uygulama kayıt portalı 'nda uygulamanız için kayıtlı olan yeniden yönlendirme URI 'lerinden biriyle aynı olmalıdır. |
 

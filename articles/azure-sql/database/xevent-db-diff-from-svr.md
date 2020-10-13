@@ -12,10 +12,10 @@ ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
 ms.openlocfilehash: c8f73c0789cd0211deeb66af5c7300a81d7b1be0
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619823"
 ---
 # <a name="extended-events-in-azure-sql-database"></a>Azure SQL veritabanı 'nda genişletilmiş olaylar 
@@ -32,7 +32,7 @@ Genişletilmiş olaylar hakkında ek bilgilere şu adresten ulaşılabilir:
 - [Hızlı başlangıç: SQL Server genişletilmiş olaylar](/sql/relational-databases/extended-events/quick-start-extended-events-in-sql-server)
 - [Genişletilmiş olaylar](/sql/relational-databases/extended-events/extended-events)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu konu başlığı altında zaten bir bilginiz olduğunu varsaymaktadır:
 
@@ -75,13 +75,13 @@ Genişletilmiş olaylar özelliği, çeşitli [Katalog görünümleri](https://m
 
 | Adı<br/>Katalog görünümü | Açıklama |
 |:--- |:--- |
-| **sys. database_event_session_actions** |Olay oturumunun her bir olayında her eylem için bir satır döndürür. |
-| **sys. database_event_session_events** |Olay oturumundaki her olay için bir satır döndürür. |
-| **sys. database_event_session_fields** |Olaylar ve hedeflerde açıkça ayarlanmış olan her özelleştirme özellikli sütun için bir satır döndürür. |
-| **sys. database_event_session_targets** |Olay oturumu için her olay hedefi için bir satır döndürür. |
-| **sys. database_event_sessions** |Veritabanındaki her olay oturumu için bir satır döndürür. |
+| **sys.database_event_session_actions** |Olay oturumunun her bir olayında her eylem için bir satır döndürür. |
+| **sys.database_event_session_events** |Olay oturumundaki her olay için bir satır döndürür. |
+| **sys.database_event_session_fields** |Olaylar ve hedeflerde açıkça ayarlanmış olan her özelleştirme özellikli sütun için bir satır döndürür. |
+| **sys.database_event_session_targets** |Olay oturumu için her olay hedefi için bir satır döndürür. |
+| **sys.database_event_sessions** |Veritabanındaki her olay oturumu için bir satır döndürür. |
 
-Microsoft SQL Server, benzer katalog görünümlerinde. * \_ Database*yerine *. Server \_ * adı yer alır. Ad deseninin **sys. server_event_%** olduğu görülüyor.
+Microsoft SQL Server, benzer katalog görünümlerinde. * \_ Database*yerine *. Server \_ * adı yer alır. Ad deseninin **sys.server_event_%** olduğu görülüyor.
 
 ## <a name="new-dynamic-management-views-dmvs"></a>Yeni dinamik yönetim görünümleri [(DMVs)](https://msdn.microsoft.com/library/ms188754.aspx)
 
@@ -89,24 +89,24 @@ Azure SQL veritabanı, genişletilmiş olayları destekleyen [dinamik yönetim g
 
 | DMV adı | Açıklama |
 |:--- |:--- |
-| **sys. dm_xe_database_session_event_actions** |Olay oturumu eylemleri hakkında bilgi döndürür. |
-| **sys. dm_xe_database_session_events** |Oturum olayları hakkında bilgi döndürür. |
-| **sys. dm_xe_database_session_object_columns** |Bir oturuma bağlanan nesneler için yapılandırma değerlerini gösterir. |
-| **sys. dm_xe_database_session_targets** |Oturum hedefleri hakkında bilgi döndürür. |
-| **sys. dm_xe_database_sessions** |Geçerli veritabanı kapsamındaki her olay oturumu için bir satır döndürür. |
+| **sys.dm_xe_database_session_event_actions** |Olay oturumu eylemleri hakkında bilgi döndürür. |
+| **sys.dm_xe_database_session_events** |Oturum olayları hakkında bilgi döndürür. |
+| **sys.dm_xe_database_session_object_columns** |Bir oturuma bağlanan nesneler için yapılandırma değerlerini gösterir. |
+| **sys.dm_xe_database_session_targets** |Oturum hedefleri hakkında bilgi döndürür. |
+| **sys.dm_xe_database_sessions** |Geçerli veritabanı kapsamındaki her olay oturumu için bir satır döndürür. |
 
 Microsoft SQL Server, benzer Katalog görünümleri adın * \_ veritabanı* bölümü olmadan adlandırılır, örneğin:
 
-- **sys. dm_xe_sessions**, ad yerine<br/>**sys. dm_xe_database_sessions**.
+- ad yerine **sys.dm_xe_sessions**<br/>**sys.dm_xe_database_sessions**.
 
 ### <a name="dmvs-common-to-both"></a>Her ikisine de genel olarak DMVs
 
 Genişletilmiş olaylar için Azure SQL veritabanı, Azure SQL yönetilen örneği ve Microsoft SQL Server için ortak olan ek DMVs 'ler vardır:
 
-- **sys. dm_xe_map_values**
-- **sys. dm_xe_object_columns**
-- **sys. dm_xe_objects**
-- **sys. dm_xe_packages**
+- **sys.dm_xe_map_values**
+- **sys.dm_xe_object_columns**
+- **sys.dm_xe_objects**
+- **sys.dm_xe_packages**
 
 <a name="sqlfindseventsactionstargets" id="sqlfindseventsactionstargets"></a>
 

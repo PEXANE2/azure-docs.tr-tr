@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 595977635937ec5dcf4a45a1d57524c1d3f41a6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3be17c672eb918c715602c7576c7d682badd925
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554388"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941043"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nimblex"></a>Öğretici: Nimblex ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Nimblex Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini Nimblex ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -132,19 +132,19 @@ Azure AD çoklu oturum açmayı Nimblex ile yapılandırmak için aşağıdaki a
 
 2. Sayfanın sağ üst kısmında **Ayarlar** logosu ' na tıklayın.
 
-    ![Nimblex ayarları](./media/nimblex-tutorial/tutorial_nimblex_settings.png)
+    ![Ekran görüntüsü ayarlar simgesini gösterir.](./media/nimblex-tutorial/tutorial_nimblex_settings.png)
 
 3. **Denetim Masası** sayfasında, **güvenlik** bölümünde **Çoklu oturum açma**' ya tıklayın.
 
-    ![Nimblex ayarları](./media/nimblex-tutorial/tutorial_nimblex_single.png)
+    ![Ekran görüntüsü, Güvenlik menüsünden çoklu oturum açma seçili olduğunu gösterir.](./media/nimblex-tutorial/tutorial_nimblex_single.png)
 
 4. **Çoklu oturum açmayı Yönet** sayfasında, örnek adınızı seçin ve **Düzenle**' ye tıklayın.
 
-    ![Nimblex SAML](./media/nimblex-tutorial/tutorial_nimblex_saml.png)
+    ![Ekran görüntüsünde, Düzenle ' yi seçebileceğiniz tek Sign-On yönetme gösterilir.](./media/nimblex-tutorial/tutorial_nimblex_saml.png)
 
 5. **SSO sağlayıcısını Düzenle** sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Nimblex SAML](./media/nimblex-tutorial/tutorial_nimblex_sso.png)
+    ![Ekran görüntüsü, tanımlanan değerleri girebileceğiniz şekilde Düzenle s O sağlayıcısını gösterir.](./media/nimblex-tutorial/tutorial_nimblex_sso.png)
 
     a. **Açıklama** metin kutusuna örnek adınızı yazın.
 

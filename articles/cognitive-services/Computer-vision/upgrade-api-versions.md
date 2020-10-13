@@ -12,10 +12,10 @@ ms.date: 08/11/2020
 ms.author: pafarley
 ROBOTS: NOINDEX
 ms.openlocfilehash: 5910c40729d07d5a759b2e5cc7b7a4272524c150
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91253862"
 ---
 # <a name="upgrade-from-read-v2x-to-read-v3x"></a>V2. x okuma sürümünden v3. x ' e yükseltme
@@ -311,4 +311,4 @@ V3. x içinde ayarlandı:
 
 |2,0 okuyun |3. x oku  |
 |----------|-----------|
-|https://{Endpoint}/vizyon/**v 2.0/okuma/çekirdek/analiz**     |https://{Endpoint}/Vision/<**sürüm dizesi**>/Read/syncanalyze [? Language]|
+|https://{Endpoint}/vizyon/**v 2.0/okuma/çekirdek/analiz**     |https://{Endpoint}/Vision/<**sürüm dizesi**>/Read/syncAnalyze [? Language]|

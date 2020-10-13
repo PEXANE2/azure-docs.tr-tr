@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: contperfq1
 ms.date: 09/14/2020
 ms.openlocfilehash: 385e910befb79daafa532fa816b96d50a46b7d8c
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91620095"
 ---
 # <a name="autoscale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini otomatik ölçeklendirme
@@ -74,10 +74,10 @@ Aşağıdaki tablo, otomatik ölçeklendirme özelliğiyle uyumlu küme türleri
 
 | Sürüm | Spark | Hive | Interactive Query | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| ESP olmadan HDInsight 3,6 | Yes | Yes | Yes | Evet* | Hayır | Hayır | Hayır |
-| ESP olmadan HDInsight 4,0 | Yes | Yes | Yes | Evet* | Hayır | Hayır | Hayır |
-| HDInsight 3,6, ESP ile | Yes | Yes | Yes | Evet* | Hayır | Hayır | Hayır |
-| HDInsight 4,0, ESP ile | Yes | Yes | Yes | Evet* | Hayır | Hayır | Hayır |
+| ESP olmadan HDInsight 3,6 | Evet | Evet | Evet | Evet* | Hayır | Hayır | Hayır |
+| ESP olmadan HDInsight 4,0 | Evet | Evet | Evet | Evet* | Hayır | Hayır | Hayır |
+| HDInsight 3,6, ESP ile | Evet | Evet | Evet | Evet* | Hayır | Hayır | Hayır |
+| HDInsight 4,0, ESP ile | Evet | Evet | Evet | Evet* | Hayır | Hayır | Hayır |
 
 \* HBase kümeleri, yük tabanlı değil yalnızca zamanlama tabanlı ölçeklendirme için yapılandırılabilir.
 

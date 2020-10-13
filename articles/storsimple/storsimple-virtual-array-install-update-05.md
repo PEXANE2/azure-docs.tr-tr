@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/10/2017
 ms.author: alkohli
 ms.openlocfilehash: fa5524525aa76279cdcceaf0f5fd2a74753786ea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91300608"
 ---
 # <a name="install-update-05-on-your-storsimple-virtual-array"></a>StorSimple Sanal diziniz üzerinde 0,5 güncelleştirmesini yükler
@@ -36,7 +36,7 @@ Bir güncelleştirmeyi uygulamadan önce, önce konakta ve sonra da cihazda bulu
 >
 > - Güncelleştirme veya düzeltme yüklendiğinde cihazınızın yeniden başlatıldığını aklınızda bulundurun. StorSimple Sanal dizisi tek düğümlü bir cihaz olduğu için, devam eden g/ç işlemi bozulur ve cihazınız kesinti yaşar.
 
-## <a name="use-the-azure-portal"></a>Azure portalı kullanma
+## <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
 Güncelleştirme 0,2 ve sonraki bir sürümü çalıştırıyorsanız, Azure portal aracılığıyla güncelleştirmeleri yüklemenizi öneririz. Portal yordamı, kullanıcının güncelleştirmeleri taramasını, indirmesini ve yüklemesini gerektirir. Bu yordamın tamamlanmasıyla yaklaşık 7 dakika sürer. Güncelleştirmeyi veya düzeltmeyi yüklemek için aşağıdaki adımları gerçekleştirin.
 

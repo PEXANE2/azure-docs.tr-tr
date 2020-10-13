@@ -13,10 +13,10 @@ ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
 ms.openlocfilehash: 29187ef99ce6628359819739ab5e4b34213eeb8a
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91441625"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication ayarlarını yapılandırma
@@ -287,7 +287,7 @@ Koşullu erişim ilkelerini kullanarak güvenilen IP 'Leri etkinleştirmek için
       * Tek bir IP adresi için **xxx.xxx.xxx.xxx/32**gibi bir gösterim kullanın.
       * En fazla 50 IP adresi aralığı girin. Bu IP adreslerinden oturum açan kullanıcılar Multi-Factor Authentication 'ı atlar.
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>Hizmet ayarlarını kullanarak güvenilir IP 'Leri özelliğini etkinleştirme
 
@@ -307,7 +307,7 @@ Güvenilen IP 'Leri etkinleştirmek için koşullu erişim ilkeleri kullanmak is
       * Tek bir IP adresi için **xxx.xxx.xxx.xxx/32**gibi bir gösterim kullanın.
       * En fazla 50 IP adresi aralığı girin. Bu IP adreslerinden oturum açan kullanıcılar Multi-Factor Authentication 'ı atlar.
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="verification-methods"></a>Doğrulama yöntemleri
 
@@ -368,7 +368,7 @@ Kullanıcıların MFA durumunu hatırlamaları ve istemleri atlaması için seç
 1. Multi-Factor Authentication altında **hizmet ayarları**' nı seçin.
 1. **Hizmet ayarları** sayfasında, **Multi-Factor Authentication 'ı anımsa**altında, **kullanıcıların güvendikleri cihazlarda Multi-Factor Authentication 'ı anımsamasını izin ver** seçeneğini belirleyin.
 1. Güvenilen cihazların Multi-Factor Authentication 'ı atlamasına izin verilecek gün sayısını ayarlayın. En iyi kullanıcı deneyimi için süreyi *90* veya daha fazla gün uzatın.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ### <a name="mark-a-device-as-trusted"></a>Bir cihazı güvenilir olarak işaretle
 

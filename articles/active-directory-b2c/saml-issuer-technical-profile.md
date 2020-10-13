@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/17/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bb5383ee7930cb3d54593f71a709c033d3850889
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f52111fbbbd90f3d2f39f538c4bf1a2672cd504b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88521221"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961247"
 ---
 # <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde SAML belirteci veren için teknik profil tanımlama
 
@@ -37,6 +37,7 @@ Aşağıdaki örnek, için bir teknik profil göstermektedir `Saml2AssertionIssu
   <OutputTokenFormat>SAML2</OutputTokenFormat>
   <Metadata>
     <Item Key="IssuerUri">https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/B2C_1A_signup_signin_SAML</Item>
+    <Item Key="TokenNotBeforeSkewInSeconds">600</Item>
   </Metadata>
   <CryptographicKeys>
     <Key Id="MetadataSigning" StorageReferenceId="B2C_1A_SamlIdpCert"/>
@@ -58,6 +59,7 @@ Aşağıdaki örnek, için bir teknik profil göstermektedir `Saml2AssertionIssu
 | --------- | -------- | ----------- |
 | Issueruri | Hayır | SAML yanıtında görünen veren adı. Değer, bağlı olan taraf uygulamasında yapılandırılan adla aynı olmalıdır. |
 | XmlSignatureAlgorithm | Hayır | Azure AD B2C SAML onayını imzalamak için kullanılan yöntem. Olası değerler: `Sha256` , `Sha384` , `Sha512` veya `Sha1` . Aynı değere sahip her iki tarafta de imza algoritmasını yapılandırdığınızdan emin olun. Yalnızca sertifikanızın desteklediği algoritmayı kullanın. SAML yanıtını yapılandırmak için bkz. [bağlı olan taraf SAML meta verileri](relyingparty.md#metadata)|
+|Tokennotbeforeskewınseconds| Hayır| Geçerlilik döneminin başlangıcını işaretleyen zaman damgası için eğriliği, bir tamsayı olarak belirtir. Bu sayı ne kadar yüksekse, geçerlilik süresi, bağlı olan taraf için taleplerin verildiği zamana göre başlar. Örneğin, Tokennotbeforeskewınseconds 60 saniyeye ayarlandığında, belirteç 13:05:10 UTC 'de verildiyse, belirteç 13:04:10 UTC 'den geçerli olur. Varsayılan değer 0’dır. En büyük değer 3600 ' dir (bir saat). |
 
 ## <a name="cryptographic-keys"></a>Şifreleme anahtarları
 
@@ -65,8 +67,8 @@ CryptographicKeys öğesi aşağıdaki öznitelikleri içerir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| MetadataSigning | Evet | SAML meta verilerini imzalamak için kullanılacak x509 sertifikası (RSA anahtar kümesi). Azure AD B2C meta verileri imzalamak için bu anahtarı kullanır. |
-| SamlMessageSigning| Evet| SAML iletilerini imzalamak için kullanılacak x509 sertifikasını (RSA anahtar kümesi) belirtin. Azure AD B2C, `<samlp:Response>` bağlı olan tarafa gönderilen yanıtı imzalamak için bu anahtarı kullanır.|
+| MetadataSigning | Yes | SAML meta verilerini imzalamak için kullanılacak x509 sertifikası (RSA anahtar kümesi). Azure AD B2C meta verileri imzalamak için bu anahtarı kullanır. |
+| SamlMessageSigning| Yes| SAML iletilerini imzalamak için kullanılacak x509 sertifikasını (RSA anahtar kümesi) belirtin. Azure AD B2C, `<samlp:Response>` bağlı olan tarafa gönderilen yanıtı imzalamak için bu anahtarı kullanır.|
 
 ## <a name="session-management"></a>Oturum yönetimi
 

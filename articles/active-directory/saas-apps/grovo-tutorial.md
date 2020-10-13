@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: jeedes
-ms.openlocfilehash: c43a50dbbd2276573a80b866ee673e4391d9736b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a503f93895d0e1377f8037818b68ea42178363c2
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88551420"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944997"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grovo"></a>Öğretici: Grovo ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -111,7 +111,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -137,11 +137,11 @@ Bu bölümde, Grovo 'e erişim vererek Azure çoklu oturum açma özelliğini ku
 
 2. **Yönetici**  >  **tümleştirmelerine**gidin.
  
-    ![Grovo yapılandırması](./media/grovo-tutorial/tutorial_grovo_admin.png) 
+    !["Tümleştirmeler" seçiliyken "Yönetici" menüsünü gösteren ekran görüntüsü.](./media/grovo-tutorial/tutorial_grovo_admin.png) 
 
 3. **SP tarafından BAŞLATıLAN SAML 2,0** bölümünde **Ayarla** ' ya tıklayın.
 
-    ![Grovo yapılandırması](./media/grovo-tutorial/tutorial_grovo_setup.png)
+    !["S P tarafından başlatılan A M L 2,0" bölümünün "ayarla" düğmesinin seçili olduğunu gösteren ekran görüntüsü.](./media/grovo-tutorial/tutorial_grovo_setup.png)
 
 4. **SP tarafından BAŞLATıLAN SAML 2,0** açılır penceresinde aşağıdaki adımları uygulayın:
 

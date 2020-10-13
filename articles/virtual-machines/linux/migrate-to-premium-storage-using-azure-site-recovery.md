@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 0cb7d1fa8dc9171c4baba09136d3a3c28d6c901c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c767edca46696bc7d04a1cf101e2bd183f5cf7f9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86510659"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970852"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Azure Site Recovery kullanarak Premium depolamaya geçiş
 
-[Azure Premium SSD](disks-types.md) 'ler, g/ç yoğunluklu iş yüklerini çalıştıran sanal makineler (VM) için yüksek performanslı ve düşük gecikmeli disk desteği sunar. Bu kılavuz, [Azure Site Recovery](../../site-recovery/site-recovery-overview.md)kullanarak, sanal makine disklerinizi standart bir depolama hesabından Premium depolama hesabına geçirmenize yardımcı olur.
+[Azure Premium SSD](../disks-types.md) 'ler, g/ç yoğunluklu iş yüklerini çalıştıran sanal makineler (VM) için yüksek performanslı ve düşük gecikmeli disk desteği sunar. Bu kılavuz, [Azure Site Recovery](../../site-recovery/site-recovery-overview.md)kullanarak, sanal makine disklerinizi standart bir depolama hesabından Premium depolama hesabına geçirmenize yardımcı olur.
 
 Site Recovery, şirket içi fiziksel sunucuların ve sanal makinelerin buluta (Azure) veya ikincil bir veri merkezine çoğaltılmasını düzenleyerek iş sürekliliği ve olağanüstü durum kurtarma stratejinize katkıda bulunan bir Azure hizmetidir. Birincil konumunuzda kesintiler meydana geldiğinde, uygulamaları ve iş yüklerini kullanılabilir durumda tutmak için ikincil konuma yük devreder. Normal bir işleme döndüğünde birincil konumunuza geri dönebilirsiniz. 
 
@@ -62,7 +62,7 @@ Bunlar, bu geçiş senaryosuna yönelik Azure gereksinimleridir:
 * Yük devretmede oluşturulduklarında VM 'Lerin bağlanacağı bir Azure sanal ağı. Azure sanal ağı, Site Recovery çalıştığı ile aynı bölgede olmalıdır.
 * Çoğaltma günlüklerini depolamak için bir Azure Standart depolama hesabı. Bu, geçirilmekte olan VM diskleri için aynı depolama hesabı olabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Yukarıdaki bölümde ilgili geçiş senaryosu bileşenlerini anlayın.
 * [Site Recovery 'de yük devretme](../../site-recovery/site-recovery-failover.md)hakkında bilgi edinmek için kapalı kalma süresini planlayın.
@@ -165,7 +165,7 @@ Yapılandırma sunucunuzun oluşturduğunuz çoğaltma ilkesiyle başarıyla ili
 
    ![Kaynak seçiliyken çoğaltma bölmesini etkinleştir][13]
 
-Azure Storage ortamınızı tasarlarken, bir kullanılabilirlik kümesindeki her VM için ayrı depolama hesapları kullanmanızı öneririz. [Her kullanılabilirlik kümesi için birden çok depolama hesabı kullanmak](../linux/manage-availability.md)üzere depolama katmanındaki en iyi uygulamayı izlemenizi öneririz. VM disklerini birden çok depolama hesabına dağıtmak, depolama kullanılabilirliğinin artırılmasına ve g/ç 'yi Azure Storage altyapısına dağıtmanıza yardımcı olur.
+Azure Storage ortamınızı tasarlarken, bir kullanılabilirlik kümesindeki her VM için ayrı depolama hesapları kullanmanızı öneririz. [Her kullanılabilirlik kümesi için birden çok depolama hesabı kullanmak](../manage-availability.md)üzere depolama katmanındaki en iyi uygulamayı izlemenizi öneririz. VM disklerini birden çok depolama hesabına dağıtmak, depolama kullanılabilirliğinin artırılmasına ve g/ç 'yi Azure Storage altyapısına dağıtmanıza yardımcı olur.
 
 Sanal makinelerleriniz, tüm VM 'lerin disklerini tek bir depolama hesabında çoğaltmak yerine bir kullanılabilirlik kümesinde ise, birden çok VM 'yi birden çok kez geçirmeyi kesinlikle öneririz. Bu şekilde, aynı Kullanılabilirlik kümesindeki VM 'Ler tek bir depolama hesabını paylaşmaz. Her VM için tek seferde bir hedef depolama hesabı ayarlamak için **çoğaltmayı etkinleştir** bölmesini kullanın.
  
@@ -217,7 +217,7 @@ Ayrıca, Azure depolama ve Azure sanal makineleri hakkında daha fazla bilgi edi
 
 * [Azure Depolama](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure Sanal Makineler](https://azure.microsoft.com/documentation/services/virtual-machines/)
-* [IaaS VM’leri için disk türü seçme](disks-types.md)
+* [IaaS VM’leri için disk türü seçme](../disks-types.md)
 
 [1]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-1.png
 [2]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-2.png
