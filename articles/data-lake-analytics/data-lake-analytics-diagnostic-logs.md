@@ -6,10 +6,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 02/12/2018
 ms.openlocfilehash: f1f4320f0bfb924883eb7ae4807dcb714cd89983
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331939"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics’te tanılama günlüklerine erişim
@@ -126,9 +126,9 @@ JSON biçimli istek günlüğünde örnek bir giriş aşağıda verilmiştir. He
 
 #### <a name="request-log-schema"></a>İstek günlüğü şeması
 
-| Ad | Tür | Description |
+| Ad | Tür | Açıklama |
 | --- | --- | --- |
-| time |Dize |Günlüğün zaman damgası (UTC) |
+| saat |Dize |Günlüğün zaman damgası (UTC) |
 | resourceId |Dize |İşlemin gerçekleştiği kaynağın tanımlayıcısı |
 | category |Dize |Günlük kategorisi. Örneğin, **istekler**. |
 | operationName |Dize |Günlüğe kaydedilen işlemin adı. Örneğin, Getaggregısjobhistory. |
@@ -140,7 +140,7 @@ JSON biçimli istek günlüğünde örnek bir giriş aşağıda verilmiştir. He
 
 #### <a name="request-log-properties-schema"></a>İstek günlüğü özellikleri şeması
 
-| Ad | Tür | Description |
+| Ad | Tür | Açıklama |
 | --- | --- | --- |
 | HttpMethod |Dize |İşlem için kullanılan HTTP yöntemi. Örneğin, GET. |
 | Yol |Dize |İşlemin gerçekleştirildiği yol |
@@ -176,9 +176,9 @@ JSON biçimli denetim günlüğünde örnek bir giriş aşağıda verilmiştir. 
 
 #### <a name="audit-log-schema"></a>Denetim günlüğü şeması
 
-| Ad | Tür | Description |
+| Ad | Tür | Açıklama |
 | --- | --- | --- |
-| time |Dize |Günlüğün zaman damgası (UTC) |
+| saat |Dize |Günlüğün zaman damgası (UTC) |
 | resourceId |Dize |İşlemin gerçekleştiği kaynağın tanımlayıcısı |
 | category |Dize |Günlük kategorisi. Örneğin, **Denetim**. |
 | operationName |Dize |Günlüğe kaydedilen işlemin adı. Örneğin, Jobgönderildi. |
@@ -194,7 +194,7 @@ JSON biçimli denetim günlüğünde örnek bir giriş aşağıda verilmiştir. 
 
 #### <a name="audit-log-properties-schema"></a>Denetim günlüğü özellikleri şeması
 
-| Ad | Tür | Description |
+| Ad | Tür | Açıklama |
 | --- | --- | --- |
 | JobId |Dize |İşe atanan KIMLIK |
 | JobName |Dize |İş için belirtilen ad |

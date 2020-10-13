@@ -6,12 +6,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/31/2017
 ms.author: cynthn
-ms.openlocfilehash: 3c87c234e376cc8380afbb26edf63e1969243475
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d659f0bc65d3dbe7cbb656d505275a52a9742eb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87831150"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976632"
 ---
 # <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>Azure hizmet kesintisi, Azure sanal makinelerini etkiler
 Microsoft 'ta, hizmetlerimizin ihtiyacınız olduğunda her zaman sizin için kullanılabilir olduğundan emin olmak için çok çalıştık. Denetiimizin ötesine geçmeye, planlanmamış hizmet kesintilerine neden olacak şekilde bizi etkilemekte yarar vardır.
@@ -25,7 +25,7 @@ Bu makalede, bir bütün bölge ana doğal olağanüstü durum veya geniş çapl
 Bu nadir oluşumları işleyebilmeniz için, Azure sanal makine uygulamanızın dağıtıldığı bölgenin tamamına yönelik bir hizmet kesintisi olması durumunda Azure sanal makineleri için aşağıdaki kılavuza sağlıyoruz.
 
 ## <a name="option-1-initiate-a-failover-by-using-azure-site-recovery"></a>Seçenek 1: Azure Site Recovery kullanarak yük devretme başlatma
-Uygulamanızı birkaç dakika içinde tek bir tıklama ile kurtarabilmeniz için sanal makinelerinize yönelik Azure Site Recovery yapılandırabilirsiniz. Tercih ettiğiniz Azure bölgesine çoğaltabilir ve eşleştirilmiş bölgelerle sınırlı değildir. [Sanal makinelerinizi çoğaltarak](https://aka.ms/a2a-getting-started)çalışmaya başlamanızı sağlayabilirsiniz. Uygulamanız için tüm yük devretme sürecini otomatikleştirebilmek üzere [bir kurtarma planı oluşturabilirsiniz](../site-recovery/site-recovery-create-recovery-plans.md) . Üretim uygulamasını veya devam eden Çoğaltmayı etkilemeden yük devretmeleri önceden [Test](../site-recovery/site-recovery-test-failover-to-azure.md) edebilirsiniz. Birincil bölge kesintisi durumunda, yalnızca [bir yük devretme başlatın](../site-recovery/site-recovery-failover.md) ve uygulamanızı hedef bölgeye getirin.
+Uygulamanızı birkaç dakika içinde tek bir tıklama ile kurtarabilmeniz için sanal makinelerinize yönelik Azure Site Recovery yapılandırabilirsiniz. Tercih ettiğiniz Azure bölgesine çoğaltabilir ve eşleştirilmiş bölgelerle sınırlı değildir. [Sanal makinelerinizi çoğaltarak](../site-recovery/azure-to-azure-quickstart.md)çalışmaya başlamanızı sağlayabilirsiniz. Uygulamanız için tüm yük devretme sürecini otomatikleştirebilmek üzere [bir kurtarma planı oluşturabilirsiniz](../site-recovery/site-recovery-create-recovery-plans.md) . Üretim uygulamasını veya devam eden Çoğaltmayı etkilemeden yük devretmeleri önceden [Test](../site-recovery/site-recovery-test-failover-to-azure.md) edebilirsiniz. Birincil bölge kesintisi durumunda, yalnızca [bir yük devretme başlatın](../site-recovery/site-recovery-failover.md) ve uygulamanızı hedef bölgeye getirin.
 
 
 ## <a name="option-2-wait-for-recovery"></a>Seçenek 2: kurtarma için bekle
@@ -41,7 +41,7 @@ Bu, kesintiye uğramadan önce Azure Site Recovery, Okuma Erişimli Coğrafi ola
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure Site Recovery kullanarak [Azure sanal makinelerinde çalışan uygulamalarınızı korumaya](https://aka.ms/a2a-getting-started) başlayın
+- Azure Site Recovery kullanarak [Azure sanal makinelerinde çalışan uygulamalarınızı korumaya](../site-recovery/azure-to-azure-quickstart.md) başlayın
 
 - Olağanüstü durum kurtarma ve yüksek kullanılabilirlik stratejisi uygulama hakkında daha fazla bilgi edinmek için bkz. [Azure uygulamaları Için olağanüstü durum kurtarma ve yüksek kullanılabilirlik](/azure/architecture/framework/resiliency/backup-and-recovery).
 

@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
 ms.openlocfilehash: ff408f114784fa3f0b8fab49521b5ec7ec2be102
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88797726"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Öğretici: Azure statik Web Apps önizleme 'ye bir Hugo sitesi yayımlama
 
 Bu makalede, [Azure statik Web Apps](overview.md)bir [Hugo](https://gohugo.io/) Web uygulaması oluşturma ve dağıtma gösterilmektedir. Nihai sonuç, uygulamanın nasıl oluşturulduğunu ve yayımlanabileceğini denetlemenize olanak tanıyan, ilişkili GitHub eylemlerine sahip yeni bir Azure statik Web uygulamasıdır.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -115,7 +115,7 @@ Aşağıdaki adımlarda, yeni bir statik site uygulamasının nasıl oluşturula
 
 1. _SKU_için **ücretsiz**' i seçin.
 
-   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="Ayrıntılar dolduruldu":::
+   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="Portalda Azure statik Web Apps kaynağı oluşturma":::
 
 1. **GitHub Ile oturum aç** düğmesine tıklayın.
 
@@ -125,7 +125,7 @@ Aşağıdaki adımlarda, yeni bir statik site uygulamasının nasıl oluşturula
 
 1. _Dal_ için **ana öğe**seçin.
 
-   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="Tamamlanan GitHub bilgileri":::
+   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="Portalda Azure statik Web Apps kaynağı oluşturma":::
 
 ### <a name="build"></a>Yapı
 
@@ -149,7 +149,7 @@ Daha sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapıla
 
 1. Yeni oluşturulan Azure statik Web Apps kaynağının Azure portal _genel bakış_ penceresinde, dağıtılan uygulamanızı açmak için _URL_ bağlantısına tıklayın.
 
-   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="Dağıtılan uygulama":::
+   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="Portalda Azure statik Web Apps kaynağı oluşturma":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

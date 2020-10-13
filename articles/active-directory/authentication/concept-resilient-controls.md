@@ -13,10 +13,10 @@ ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f58e5a07348dfde4e4618eb58746f08016c55ed6
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89049579"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Azure Active Directory ile dayanıklı bir erişim denetimi yönetim stratejisi oluşturma
@@ -119,7 +119,7 @@ Bir yedek koşullu erişim ilkesi, Azure MFA, üçüncü taraf MFA, risk tabanl�
 
 * Bir kimlik bilgisi türü veya bir erişim denetimi mekanizmasının uygulamalarınıza erişimi etkilediği bir geri dönüş ilkeleri kümesi yapılandırın. Yalnızca rapor olarak etki alanına katılmayı gerektiren bir ilke yapılandırma olarak, bir üçüncü taraf MFA sağlayıcısı gerektiren etkin bir ilke için yedekleme olarak.
 * [Parola Kılavuzu](https://aka.ms/passwordguidance) teknik incelemesindeki UYGULAMALARı izleyerek MFA gerekli olmadığında, kötü aktör tahmin parolalarının riskini azaltın.
-* Kullanıcıların, bir ortak parola ve daha çok tercih ettiğiniz koşulları kullanmayın olduğundan emin olmak için [Azure AD self servis parola sıfırlama (SSPR)](./tutorial-enable-sspr.md) ve [Azure AD parola korumasını](./howto-password-ban-bad-on-premises-deploy.md) dağıtın.
+* Kullanıcıların, bir ortak parola ve daha çok tercih ettiğiniz koşulları kullanmayın olduğundan emin olmak için [Azure ad Self-Service parola sıfırlama (SSPR)](./tutorial-enable-sspr.md) ve [Azure AD parola korumasını](./howto-password-ban-bad-on-premises-deploy.md) dağıtın.
 * Belirli bir kimlik doğrulama düzeyi yalnızca tam erişime geri düşmeniz yerine, uygulamalar içindeki erişimi kısıtlayan ilkeler kullanın. Örneğin:
   * Exchange ve SharePoint 'e kısıtlı oturum talebi gönderen bir yedekleme ilkesi yapılandırın.
   * Kuruluşunuz Microsoft Cloud App Security kullanıyorsa, MCAS 'nin bulunduğu ilkeye geri dönerek MCAS, salt okuma erişimine Izin verir ancak karşıya yüklemelerden yararlanır.
@@ -215,13 +215,13 @@ VPN ve Uzak Masaüstü Ağ Geçidi gibi şirket içi kaynakları korumak için A
 Bu durumda, NPS uzantısını devre dışı bırakabilirsiniz, sonuç olarak NPS sunucusu yalnızca birincil kimlik doğrulamasını doğrular ve kullanıcılara MFA 'yı zorlamayacaktır.
 
 NPS uzantısını devre dışı bırak: 
--   \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters kayıt defteri anahtarını bir yedekleme olarak dışarı HKEY_LOCAL_MACHINE aktarın. 
+-   HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters kayıt defteri anahtarını bir yedekleme olarak dışarı aktarın. 
 -   "AuthorizationDLLs" ve "ExtensionDLLs" kayıt defteri değerlerini parametreler anahtarından silin. 
 -   Değişikliklerin etkili olması için ağ Ilkesi hizmeti (IAS) hizmetini yeniden başlatın 
 -   VPN için birincil kimlik doğrulamanın başarılı olup olmadığını belirleme.
 
 Hizmet kurtarıldıktan sonra kullanıcılarınıza MFA 'yı zorlamak için yeniden hazırsanız NPS uzantısını etkinleştirin: 
--   Kayıt defteri anahtarını yedekten içeri aktarma HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 
+-   Kayıt defteri anahtarını yedekten içeri aktarma HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 
 -   Değişikliklerin etkili olması için ağ Ilkesi hizmeti (IAS) hizmetini yeniden başlatın 
 -   VPN için ikincil kimlik doğrulamasının yanı sıra birincil kimlik doğrulamanın başarılı olup olmadığını belirleme.
 -   Acil durum penceresi sırasında hangi kullanıcıların oturum açdığını öğrenmek için NPS sunucusunu ve VPN günlüğünü gözden geçirin.

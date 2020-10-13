@@ -12,13 +12,13 @@ ms.topic: reference
 ms.date: 07/17/2020
 ms.custom: contperfq4
 ms.openlocfilehash: 10b3c06acb3f33dd60e9849faac33cfeef1adb0f
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89075299"
 ---
-# <a name="what-tools-are-included-on-the-azure-data-science-virtual-machine"></a>Azure Veri Bilimi Sanal Makinesi hangi araçlar dahildir?
+# <a name="what-tools-are-included-on-the-azure-data-science-virtual-machine"></a>Azure Veri Bilimi Sanal Makinesi'ne dahil olan araçlar hangileridir?
 
 Veri Bilimi Sanal Makinesi, verileri araştırmanın ve bulutta makine öğrenmesinin kolay bir yoludur. Veri bilimi sanal makineleri, tam işletim sistemiyle, güvenlik düzeltme ekleriyle, sürücülerle ve popüler veri bilimi ve geliştirme yazılımıyla önceden yapılandırılmıştır. Daha düşük maliyetli CPU merkezli makinelerden, birden fazla GPU, NVMe depolama ve büyük miktarda bellek içeren çok güçlü makinelere kadar, donanım ortamını seçebilirsiniz. GPU 'lara sahip makinelerde tüm sürücüler yüklenir, tüm makine öğrenimi çerçeveleri GPU uyumluluğu için sürüm ile eşleştirilir ve GPU 'ları destekleyen tüm uygulama yazılımlarında hızlandırma etkinleştirilir.
 
