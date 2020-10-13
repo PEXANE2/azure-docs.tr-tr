@@ -14,10 +14,10 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
 ms.openlocfilehash: 5042bfad2cfe06c7c368c6b476aa1b02d67bcc9c
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91760763"
 ---
 # <a name="brokered-authentication-in-android"></a>Android 'de aracılı kimlik doğrulaması
@@ -55,7 +55,7 @@ Bir cihazda zaten yüklü bir aracı uygulaması yoksa, MSAL, uygulamanın bir b
 
 Bir aracı bir cihaza yüklendiğinde, sonraki tüm etkileşimli Belirteç istekleri (öğesine çağrılar `acquireToken()` ), msal tarafından yerel olarak değil, aracı tarafından işlenir. Daha önce MSAL için kullanılabilir olan tüm SSO durumları, aracıda kullanılamaz. Sonuç olarak, kullanıcının yeniden kimlik doğrulaması yapması veya cihaz tarafından bilinen mevcut hesapların listesinden bir hesap seçmeniz gerekir.
 
-Bir aracı yüklemek için kullanıcının yeniden oturum açması gerekmez. Yalnızca kullanıcının bir sorunu çözmesi gerektiğinde, bir `MsalUiRequiredException` sonraki istek aracıya gider. `MsalUiRequiredException` çeşitli nedenlerle oluşturulabilir ve etkileşimli olarak çözülmesi gerekir. Örnek:
+Bir aracı yüklemek için kullanıcının yeniden oturum açması gerekmez. Yalnızca kullanıcının bir sorunu çözmesi gerektiğinde, bir `MsalUiRequiredException` sonraki istek aracıya gider. `MsalUiRequiredException` çeşitli nedenlerle oluşturulabilir ve etkileşimli olarak çözülmesi gerekir. Örneğin:
 
 - Kullanıcı, hesabıyla ilişkili parolayı değiştirdi.
 - Kullanıcının hesabı artık bir koşullu erişim ilkesini karşılamamaktadır.

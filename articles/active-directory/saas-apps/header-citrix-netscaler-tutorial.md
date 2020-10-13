@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 48fedf7f3a73ce7fde60a1df80d971a5d7f88dd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73eb6938f4b43c204ab8bc91217e4828454e222d
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88540652"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944239"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-header-based-authentication"></a>Öğretici: Citrix NetScaler ile çoklu oturum açma tümleştirmesi Azure Active Directory (üst bilgi tabanlı kimlik doğrulaması)
 
@@ -28,7 +28,7 @@ Bu öğreticide, Citrix NetScaler 'ı Azure Active Directory (Azure AD) ile tüm
 
 Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -117,7 +117,7 @@ Azure AD SSO 'yu Azure portal kullanarak etkinleştirmek için şu adımları uy
 
 1. Citrix NetScaler uygulaması, SAML yanıtına daha fazla özniteliğin geri geçirilmesini de bekler. **Kullanıcı öznitelikleri** iletişim kutusunda, **Kullanıcı talepleri**' ın altında, SAML belirteci özniteliklerini tabloda gösterildiği gibi eklemek için aşağıdaki adımları izleyin:
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ---------------| --------------- |
     | Mysecretıd  | User. UserPrincipalName |
     
@@ -193,7 +193,7 @@ Bir sanal sunucu oluşturmak için:
 
 1. **Trafik yönetimi**  >  **Yük Dengeleme**  >  **Hizmetleri**' ni seçin.
     
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 
     ![Citrix NetScaler yapılandırma-hizmetler bölmesi](./media/header-citrix-netscaler-tutorial/web01.png)
 
@@ -212,7 +212,7 @@ Yük dengeleyiciyi yapılandırmak için:
 
 1. **Trafik yönetimi**  >  **Yük Dengeleme**  >  **sanal sunucularına**gidin.
 
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 
 1. Aşağıdaki değerleri aşağıdaki ekran görüntüsünde açıklandığı gibi ayarlayın:
 
@@ -259,7 +259,7 @@ Kimlik doğrulama ilkesi oluşturmak için:
 
 1. **Güvenlik**  >  **aaa – uygulama trafik**  >  **ilkeleri**  >  **kimlik**doğrulama  >  **ilkeleri**' ne gidin.
 
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 
 1. **Kimlik doğrulama Ilkesi oluştur** bölmesinde, aşağıdaki değerleri girin veya seçin:
 
@@ -392,7 +392,7 @@ GUI kullanarak bir yeniden yazma ilkesini bir sanal sunucuya bağlamak için:
 
 1. **Yük Dengeleme sanal sunucusu** bölmesinde, **Gelişmiş ayarlar**altında **ilkeler**' i seçin. NetScaler örneğiniz için yapılandırılmış tüm ilkeler listede görüntülenir.
  
-    ![Citrix NetScaler yapılandırması-sanal sunucu bölmesini yükle](./media/header-citrix-netscaler-tutorial/header05.png)
+    !["Ad", "eylem" ve "Ifade" alanları vurgulanmış ve "Oluştur" düğmesi seçili olan "yapılandırma" sekmesini gösteren ekran görüntüsü.](./media/header-citrix-netscaler-tutorial/header05.png)
 
     ![Citrix NetScaler yapılandırması-sanal sunucu bölmesini yükle](./media/header-citrix-netscaler-tutorial/header06.png)
 

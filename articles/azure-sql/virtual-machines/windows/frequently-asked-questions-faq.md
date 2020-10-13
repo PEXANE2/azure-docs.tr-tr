@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
 ms.openlocfilehash: e1d1ffbf198a4e4c2574f93919ef98e36a90004a
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91567001"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Azure VM 'lerinde SQL Server için sık sorulan sorular
@@ -56,7 +56,7 @@ Bu makalede, [Windows Azure sanal makinelerinde (VM) SQL Server](https://azure.m
 
 1. **Azure VM 'de generalize SQL Server Nasıl yaparım? ve yeni VM 'Leri dağıtmak için kullanın mi?**
 
-   Bir Windows Server VM 'si (üzerinde SQL Server yüklü olmadan) dağıtabilir ve [SQL Sysprep](/sql/database-engine/install-windows/install-sql-server-using-sysprep) Işlemini kullanarak Azure VM 'de SQL Server genelleştirin (Windows) SQL Server yükleme medyasını kullanabilirsiniz. [Yazılım güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3) sahibi olan müşteriler, yükleme medyasını [toplu lisanslama merkezinden](https://www.microsoft.com/Licensing/servicecenter/default.aspx)elde edebilir. Yazılım Güvencesi sahibi olmayan müşteriler, istenen sürüme sahip bir Azure Marketi SQL Server VM görüntüsünden kurulum medyasını kullanabilir.
+   Bir Windows Server VM 'si (üzerinde SQL Server yüklü olmadan) dağıtabilir ve [SQL Sysprep](/sql/database-engine/install-windows/install-sql-server-using-sysprep) Işlemini kullanarak Azure VM 'de SQL Server genelleştirin (Windows) SQL Server yükleme medyasını kullanabilirsiniz. [Yazılım Güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3)'ne sahip olan müşteriler, yükleme medyasını [Toplu Lisanslama Merkezi](https://www.microsoft.com/Licensing/servicecenter/default.aspx)'nden alabilir. Yazılım Güvencesi sahibi olmayan müşteriler, istenen sürüme sahip bir Azure Marketi SQL Server VM görüntüsünden kurulum medyasını kullanabilir.
 
    Alternatif olarak, Azure VM 'de SQL Server genelleştirmek için Azure Marketi 'ndeki SQL Server görüntülerden birini kullanın. Kendi görüntünüzü oluşturmadan önce kaynak görüntüde aşağıdaki kayıt defteri anahtarını silmeniz gerektiğini unutmayın. Bunun yapılmaması, SQL Server Kurulum önyükleme klasörü ve/veya SQL IaaS uzantısının başarısız durumuna atılamasından kaynaklanabilir.
 
@@ -202,7 +202,7 @@ Bu makalede, [Windows Azure sanal makinelerinde (VM) SQL Server](https://azure.m
 
 1. **SQL Server sürümünü değiştirmek için kurulum medyasını nereden edinebilirim?**
 
-   [Yazılım güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) sahibi olan müşteriler, yükleme medyasını [toplu lisanslama merkezinden](https://www.microsoft.com/Licensing/servicecenter/default.aspx)elde edebilir. Yazılım güvencesi olmayan müşteriler, istenen sürümü olan bir Azure Marketi SQL Server VM görüntüsünden kurulum medyasını kullanabilir.
+   [Yazılım Güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)'ne sahip olan müşteriler, yükleme medyasını [Toplu Lisanslama Merkezi](https://www.microsoft.com/Licensing/servicecenter/default.aspx)'nden alabilir. Yazılım güvencesi olmayan müşteriler, istenen sürümü olan bir Azure Marketi SQL Server VM görüntüsünden kurulum medyasını kullanabilir.
    
 1. **Güncelleştirmeler ve hizmet paketleri SQL Server VM'sine nasıl uygulanır?**
 

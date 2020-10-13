@@ -11,10 +11,10 @@ ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: 8239d037d6bd68638998cbb36c47c7dac4bce30d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91537625"
 ---
 # <a name="train-a-model-using-a-custom-docker-image"></a>Özel bir Docker görüntüsü kullanarak bir modeli eğitme
@@ -25,7 +25,7 @@ Bu makaledeki örnek betikler, bir evsel sinir ağı oluşturarak Evcil hayvan g
 
 Azure Machine Learning varsayılan bir Docker temel görüntüsü sağlarken, korunan [Azure ML taban görüntülerinin](https://github.com/Azure/AzureML-Containers) veya kendi [özel görüntünüzün](how-to-deploy-custom-docker-image.md#create-a-custom-base-image)bir kümesi gibi belirli bir temel görüntü belirtmek için Azure Machine Learning ortamlarını de kullanabilirsiniz. Özel temel görüntüler, kendi bağımlılıklarınızı yakından yönetmenize ve eğitim işleri yürütürken bileşen sürümleri üzerinde daha sıkı bir denetim sürdürmenize imkan tanır. 
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 Bu kodu şu ortamlardan birinde çalıştırın:
 * Azure Machine Learning işlem örneği-indirme veya yükleme gerekli değil
     * Öğreticiyi doldurun: SDK ve örnek depoyla önceden yüklenmiş adanmış bir not defteri sunucusu oluşturmak için [ortamı ve çalışma alanını kurma](tutorial-1st-experiment-sdk-setup.md) .

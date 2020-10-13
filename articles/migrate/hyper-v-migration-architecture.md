@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
 ms.openlocfilehash: 390a8a49e9a47ee5e6845d85fe4fe02f514708e8
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362206"
 ---
 # <a name="how-does-hyper-v-replication-work"></a>Hyper-V çoğaltma nasıl çalışır?
@@ -80,7 +80,7 @@ I
 Çoğaltma için yedek bant genişliğiniz varsa ve karşıya yüklemeleri artırmak istiyorsanız karşıya yükleme görevi için ayrılan iş parçacığı sayısını aşağıdaki gibi artırabilirsiniz:
 
 1. Regedit ile kayıt defterini açın.
-2. Anahtar HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM 'e gidin
+2. Anahtar HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM git
 3. Her bir çoğaltma sanal makinesi için veri yüklemesi için kullanılan iş parçacığı sayısı değerini artırın. Varsayılan değer 4 ' dir ve en büyük değer 32 ' dir. 
 
 

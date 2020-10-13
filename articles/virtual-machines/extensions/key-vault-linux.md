@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 720c5190bfc1b4b6a6c3e86052cfc329233c5ed2
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: bdab132d4d22dced97273e9d1d051f155f9d69b6
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91802489"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970733"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Linux için sanal makine uzantısı Key Vault
 
@@ -32,6 +32,11 @@ Key Vault VM Uzantısı şu Linux dağıtımlarını destekler:
 
 - PKCS #12
 - PEM
+
+## <a name="prerequisities"></a>Ön koşullarını sağlarken
+  - Sertifikayı içeren Key Vault örneği. Bkz. [Key Vault oluşturma](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal)
+  - VM/VMSS 'nin [yönetilen kimliği](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) atanmış olması gerekir
+  - Key Vault erişim Ilkesi, parolaların `get` `list` sertifikanın bir bölümünü almak için VM/VMSS yönetilen kimlik ile gizli dizi ve izinle ayarlanmalıdır. [Key Vault Için kimlik doğrulama](/azure/key-vault/general/authentication) ve [Key Vault erişim ilkesi atama](/azure/key-vault/general/assign-access-policy-cli)konusuna bakın.
 
 ## <a name="extension-schema"></a>Uzantı şeması
 
@@ -80,20 +85,20 @@ Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı kor
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Adı | Değer/örnek | Veri Türü |
+| Name | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| yayımcı | Microsoft.Azure.KeyVault | string |
-| tür | KeyVaultForLinux | string |
+| yayımcı | Microsoft.Azure.KeyVault | dize |
+| tür | KeyVaultForLinux | dize |
 | typeHandlerVersion | 1.0 | int |
-| Pollingınterinterval bileşenleri | 3600 | string |
-| certificateStoreName | Linux üzerinde yok sayılır | string |
+| Pollingınterinterval bileşenleri | 3600 | dize |
+| certificateStoreName | Linux üzerinde yok sayılır | dize |
 | Linkonyenilemeye | yanlış | boolean |
-| certificateStoreLocation  | /var/lib/waagent/Microsoft.Azure.KeyVault | string |
+| certificateStoreLocation  | /var/lib/waagent/Microsoft.Azure.KeyVault | dize |
 | requiredInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | dize dizisi
-| Msıendpoint | http://169.254.169.254/metadata/identity | string |
-| msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | string |
+| Msıendpoint | http://169.254.169.254/metadata/identity | dize |
+| msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | dize |
 
 
 ## <a name="template-deployment"></a>Şablon dağıtımı
@@ -202,12 +207,10 @@ Azure CLı, Key Vault VM uzantısını var olan bir sanal makineye veya sanal ma
         --vm-name "<vmName>" `
         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCerts> \"] }}'
     ```
-
 Lütfen aşağıdaki kısıtlamalara/gereksinimlere dikkat edin:
 - Key Vault kısıtlamaları:
   - Dağıtım sırasında var olmalıdır 
-  - Key Vault erişim Ilkesi, yönetilen bir kimlik kullanılarak VM/VMSS kimliği için ayarlanmalıdır. [Key Vault Için kimlik doğrulama](/azure/key-vault/general/authentication) ve [Key Vault erişim ilkesi atama](/azure/key-vault/general/assign-access-policy-cli)konusuna bakın.
-
+  - Key Vault erişim Ilkesi, yönetilen bir kimlik kullanılarak VM/VMSS kimliği için ayarlanmalıdır. [Key Vault Için kimlik doğrulama](../../key-vault/general/authentication.md) ve [Key Vault erişim ilkesi atama](../../key-vault/general/assign-access-policy-cli.md)konusuna bakın.
 
 ## <a name="troubleshoot-and-support"></a>Sorun giderme ve destek
 

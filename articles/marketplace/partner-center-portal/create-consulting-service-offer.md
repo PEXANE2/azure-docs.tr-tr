@@ -8,10 +8,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 06/17/2020
 ms.openlocfilehash: 464e75e55bc67ce619134be01ba00f2606a271a4
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91709079"
 ---
 # <a name="create-a-consulting-service-offer"></a>Danışmanlık hizmeti teklifi oluşturma
@@ -101,7 +101,7 @@ Bu sayfa, danışmanlık hizmetinizin en iyi şekilde kapsaabileceği birincil �
     - Analiz
     - Uygulama modernleştirme
     - Arşiv
-    - Yapay Zeka + Makine Öğrenmesi
+    - Yapay Zeka ve Makine Öğrenmesi
     - Backup
     - Büyük Veri
     - Veri platformu
@@ -160,7 +160,7 @@ Teklif bilgilerinin Azure Marketi 'nde nasıl göründüğünü gösteren bir ö
 8. Ekran görüntüleri/videolar
 9. Belgeler
 
-### <a name="name"></a>Name
+### <a name="name"></a>Adı
 
 Buraya girdiğiniz ad, teklifinizin başlığı olarak görüntülenir. Bu alan, teklifi oluştururken **teklif diğer adı** kutusuna girdiğiniz metin ile önceden doldurulur. Bu adı daha sonra değiştirebilirsiniz.
 

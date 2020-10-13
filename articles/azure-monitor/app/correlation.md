@@ -8,10 +8,10 @@ ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
 ms.openlocfilehash: 53ce3764d074388213a3a4be08502b09743e28cb
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91827616"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights telemetri bağıntısı
@@ -62,7 +62,7 @@ Application Insights, şunu tanımlayan [W3C Trace-Context](https://w3c.github.i
 - `traceparent`: Genel benzersiz işlem KIMLIĞI ve çağrının benzersiz tanımlayıcısını taşır.
 - `tracestate`: Sisteme özgü izleme bağlamını taşır.
 
-Application Insights SDK 'sının en son sürümü, Trace-Context protokolünü destekler, ancak bunu kabul etmeniz gerekebilir. (Application Insights SDK tarafından desteklenen önceki Bağıntı protokolü ile geriye dönük uyumluluk korunur.)
+Application Insights SDK 'sının en son sürümü Trace-Context protokolünü destekler, ancak bunu kabul etmeniz gerekebilir. (Application Insights SDK tarafından desteklenen önceki Bağıntı protokolü ile geriye dönük uyumluluk korunur.)
 
 [Istek kimliği olarak da bilinen BAĞıNTı http Protokolü](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)kullanım dışı bırakılıyor. Bu protokol iki üstbilgiyi tanımlar:
 
@@ -84,7 +84,7 @@ Daha fazla bilgi için bkz. [telemetri veri modeli Application Insights](../../a
 
 ### <a name="enable-w3c-distributed-tracing-support-for-net-apps"></a>.NET uygulamaları için W3C dağıtılmış izleme desteğini etkinleştir
 
-W3C TraceContext tabanlı dağıtılmış izleme, eski Istek kimliği protokolüyle geriye dönük uyumlulukla birlikte, tüm son .NET Framework/. NET Core SDK 'lerinde varsayılan olarak etkindir.
+W3C TraceContext tabanlı dağıtılmış izleme, eski Request-Id protokolle geriye dönük uyumluluk ile birlikte, tüm son .NET Framework/. NET Core SDK 'lerinde varsayılan olarak etkindir.
 
 ### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>Java uygulamaları için W3C dağıtılmış izleme desteğini etkinleştir
 
@@ -170,7 +170,7 @@ Başvuru olarak, OpenCensus veri modeli [burada](https://github.com/census-instr
 
 ### <a name="incoming-request-correlation"></a>Gelen istek bağıntısı
 
-OpenCensus Python, W3C Trace-Context üst bilgilerini gelen isteklerden, isteklerden oluşturulan yayılmaya göre ilişkilendirir. OpenCensus, bu popüler web uygulaması çerçeveleri için tümleştirmelerle otomatik olarak yapılır: Flask, Docgo ve piramit. Yalnızca W3C Trace-Context üst bilgilerini [doğru biçimle](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format) doldurmanız ve istekle birlikte göndermeniz gerekir. Bunu gösteren örnek bir Flask uygulaması aşağıda verilmiştir:
+OpenCensus Python 'da W3C Trace-Context gelen isteklerden gelen üst bilgileri, isteklerden oluşturulan yayılmaya ilişkilendirir. OpenCensus, bu popüler web uygulaması çerçeveleri için tümleştirmelerle otomatik olarak yapılır: Flask, Docgo ve piramit. Yalnızca W3C Trace-Context üst bilgilerini [doğru biçimde](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format) doldurmanız ve istekle birlikte göndermeniz gerekir. Bunu gösteren örnek bir Flask uygulaması aşağıda verilmiştir:
 
 ```python
 from flask import Flask

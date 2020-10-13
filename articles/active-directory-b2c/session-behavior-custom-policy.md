@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a2f20a4521efe2806c4bc66e4612b99caf84382a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31257d795dbd06da65e3d07e18a16d9bdf7e782a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85385272"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961111"
 ---
 # <a name="configure-session-behavior-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanarak oturum davranışını yapılandırma
 
@@ -26,9 +26,9 @@ Azure Active Directory B2C (Azure AD B2C) içindeki [Çoklu oturum açma (SSO) o
 Web uygulaması oturumlarını yönetmek için aşağıdaki özellikleri kullanabilirsiniz:
 
 - **Web uygulaması oturumu ömrü (dakika)** -başarılı kimlik doğrulaması sırasında kullanıcının tarayıcısında depolanan Azure AD B2C's oturum tanımlama bilgisinin ömrü.
-    - Varsayılan = 86400 saniye (1440 dakika).
-    - En düşük (kapsamlı) = 900 saniye (15 dakika).
-    - Maksimum (kapsamlı) = 86400 saniye (1440 dakika).
+  - Varsayılan = 86400 saniye (1440 dakika).
+  - En düşük (kapsamlı) = 900 saniye (15 dakika).
+  - Maksimum (kapsamlı) = 86400 saniye (1440 dakika).
 - **Web uygulaması oturumu zaman aşımı** - [oturum süre sonu türü](session-overview.md#session-expiry-type), *yuvarlama*veya *mutlak*. 
 - **Çoklu oturum açma yapılandırması** -çoklu oturum açma (SSO) davranışının, Azure AD B2C kiracınızdaki birden çok uygulama ve Kullanıcı akışı üzerindeki [oturum kapsamı](session-overview.md#session-scope) . 
 
@@ -44,18 +44,42 @@ Oturum davranışlarını ve SSO yapılandırmasını değiştirmek için [Relyi
 </UserJourneyBehaviors>
 ```
 
-## <a name="single-sign-out"></a>Çoklu oturum kapatma
+## <a name="configure-sign-out-behavior"></a>Oturum kapatma davranışını yapılandırma
 
-### <a name="configure-the-applications"></a>Uygulamaları yapılandırma
+### <a name="secure-your-logout-redirect"></a>Logout yeniden yönlendirmenizi güvenli hale getirin
+
+Oturum kapatıldıktan sonra, `post_logout_redirect_uri` uygulama için belirtilen yanıt URL 'lerinden bağımsız olarak, Kullanıcı parametresinde BELIRTILEN URI 'ye yönlendirilir. Ancak, geçerli bir `id_token_hint` değer geçirilirse ve **oturum kapatma Isteklerinde kimlik belirteci iste** açıksa Azure AD B2C, öğesinin `post_logout_redirect_uri` yeniden yönlendirmeyi gerçekleştirmeden önce uygulamanın yapılandırılmış yeniden yönlendirme URI 'lerinden biriyle eşleştiğini doğrular. Uygulama için eşleşen bir yanıt URL 'SI yapılandırılmamışsa, bir hata iletisi görüntülenir ve Kullanıcı yeniden yönlendirilmez. 
+
+Oturum kapatma isteklerinde bir KIMLIK belirteci istemek için, [RelyingParty](relyingparty.md) öğesinin Içine bir **Useran neondavranışlar** öğesi ekleyin. Ardından, **SingleSignon** öğesinin **Enforceıdtokenhintonlogout** değerini olarak ayarlayın `true` . **Kullanıcıbağlantısı Neydavranışlar** öğesi şu örnekteki gibi görünmelidir:
+
+```xml
+<UserJourneyBehaviors>
+  <SingleSignOn Scope="Tenant" EnforceIdTokenHintOnLogout="true"/>
+</UserJourneyBehaviors>
+```
+
+Uygulama oturum kapatma URL 'nizi yapılandırmak için:
+
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Üst menüdeki **Dizin + abonelik** filtresini seçip Azure AD B2C kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
+1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
+1. **Uygulama kayıtları**' yi seçin ve ardından uygulamanızı seçin.
+1. **Kimlik Doğrulaması**'nı seçin.
+1. **Logout URL 'si** metin kutusunda, post Logout yeniden yönlendirme URI 'sini yazın ve ardından **Kaydet**' i seçin.
+
+### <a name="single-sign-out"></a>Çoklu oturum kapatma
+
+#### <a name="configure-the-applications"></a>Uygulamaları yapılandırma
 
 Kullanıcıyı Azure AD B2C oturum kapatma uç noktasına yönlendirirsiniz (hem OAuth2 hem de SAML protokolleri için), Azure AD B2C kullanıcının oturumunu tarayıcıdan temizler.  [Çoklu oturum açma](session-overview.md#single-sign-out)izni vermek için `LogoutUrl` Azure Portal uygulamayı ayarlayın:
 
 1. [Azure Portal](https://portal.azure.com)gidin.
 1. Sayfanın sağ üst köşesindeki hesabınıza tıklayarak Azure AD B2C dizininizi seçin.
 1. Sol menüden **Azure AD B2C**öğesini seçin, **uygulama kayıtları**' i seçin ve ardından uygulamanızı seçin.
-1. **Ayarlar**' ı seçin, **Özellikler**' i seçin ve ardından **oturum kapatma URL 'si** metin kutusunu bulun. 
+1. **Kimlik Doğrulaması**'nı seçin.
+1. **Logout URL 'si** metin kutusunda, post Logout yeniden yönlendirme URI 'sini yazın ve ardından **Kaydet**' i seçin.
 
-### <a name="configure-the-token-issuer"></a>Belirteç vereni yapılandırma 
+#### <a name="configure-the-token-issuer"></a>Belirteç vereni yapılandırma 
 
 Çoklu oturum açmayı desteklemek için, hem JWT hem de SAML için belirteç verenin teknik profillerinin şunları belirtmesi gerekir:
 

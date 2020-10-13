@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4856b2578a007f72aeeec64588ac7f9c58158de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8116f3e00d13c0bd1e5f075a7fbe3264f337079
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88861299"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970410"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-azure-shared-disk"></a>Windows Server Yük Devretme Kümelemesi ve Azure Paylaşılan disk ile SAP ASCS/SCS örneği çoklu SID yüksek kullanılabilirliği
 
@@ -34,13 +34,13 @@ Bu makalede, Azure Paylaşılan disk ile var olan bir Windows Server Yük Devret
 
 Şu anda Azure Premium SSD disklerini SAP ASCS/SCS örneği için Azure Paylaşılan diski olarak kullanabilirsiniz. Aşağıdaki sınırlamalar geçerlidir:
 
--  [Azure Ultra disk](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk) , SAP iş yükleri Için Azure Paylaşılan diski olarak desteklenmez. Şu anda Azure sanal makinelerini, kullanılabilirlik kümesi 'nde Azure Ultra disk kullanarak yerleştirmek mümkün değildir
--  Premium SSD disklere sahip [Azure Paylaşılan disk](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared) yalnızca kullanılabilirlik kümesindeki VM 'ler ile desteklenir. Kullanılabilirlik Alanları dağıtımında desteklenmez. 
--  Azure Paylaşılan disk değeri [MAXSHARES](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared-enable?tabs=azure-cli#disk-sizes) , kaç küme düğümünün paylaşılan diski kullanabileceğinizi belirler. Genellikle SAP ASCS/SCS örneği için Windows Yük devretme kümesinde iki düğüm yapılandıracaksınız, bu nedenle değerinin `maxShares` iki olarak ayarlanması gerekir.
--  Tüm SAP yoks/SCS kümesi VM 'lerinin aynı [Azure yakınlık yerleşimi grubuna](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups)dağıtılması gerekir.   
+-  [Azure Ultra disk](../../disks-types.md#ultra-disk) , SAP iş yükleri Için Azure Paylaşılan diski olarak desteklenmez. Şu anda Azure sanal makinelerini, kullanılabilirlik kümesi 'nde Azure Ultra disk kullanarak yerleştirmek mümkün değildir
+-  Premium SSD disklere sahip [Azure Paylaşılan disk](../../windows/disks-shared.md) yalnızca kullanılabilirlik kümesindeki VM 'ler ile desteklenir. Kullanılabilirlik Alanları dağıtımında desteklenmez. 
+-  Azure Paylaşılan disk değeri [MAXSHARES](../../disks-shared-enable.md?tabs=azure-cli#disk-sizes) , kaç küme düğümünün paylaşılan diski kullanabileceğinizi belirler. Genellikle SAP ASCS/SCS örneği için Windows Yük devretme kümesinde iki düğüm yapılandıracaksınız, bu nedenle değerinin `maxShares` iki olarak ayarlanması gerekir.
+-  Tüm SAP yoks/SCS kümesi VM 'lerinin aynı [Azure yakınlık yerleşimi grubuna](../../windows/proximity-placement-groups.md)dağıtılması gerekir.   
    PPG olmadan Azure Paylaşılan disk ile kullanılabilirlik kümesinde Windows küme VM 'Leri dağıtabilseniz de PPG, Azure Paylaşılan disklerinin ve küme VM 'lerinin fiziksel yakınlığını, bu nedenle VM 'Ler ve depolama katmanı arasında daha düşük gecikme süresine neden olur.    
 
-Azure Paylaşılan disk sınırlamaları hakkında daha fazla bilgi için, Azure Paylaşılan disk belgelerinin [sınırlamalar](https://docs.microsoft.com/azure/virtual-machines/linux/disks-shared#limitations) bölümünü dikkatle inceleyin.  
+Azure Paylaşılan disk sınırlamaları hakkında daha fazla bilgi için, Azure Paylaşılan disk belgelerinin [sınırlamalar](../../linux/disks-shared.md#limitations) bölümünü dikkatle inceleyin.  
 
 > [!IMPORTANT]
 > SAP ASCS/SCS Windows Yük devretme kümesini Azure Paylaşılan disk ile dağıttığınızda, dağıtımınızın tek bir depolama kümesinde tek bir paylaşılan diskle birlikte çalışır durumda olacağını unutmayın. SAP ASCS/SCS Örneğinizde, Azure Paylaşılan diskinin dağıtıldığı depolama kümesiyle ilgili sorunlar söz konusu olduğunda bu örnek etkilenecektir.  
@@ -111,7 +111,7 @@ Birden çok SID yapılandırmasında hem sıraya alma çoğaltma sunucusu 1 (ERS
 
 ### <a name="create-azure-internal-load-balancer"></a>Azure iç yük dengeleyici oluşturma
 
-SAP ASCS, SAP SCS ve yeni SAP ERS2, sanal konak adı ve sanal IP adresleri kullanın. Azure 'da bir sanal IP adresi kullanmak için bir [yük dengeleyici](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) gereklidir. [Standart yük dengeleyiciyi](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)kullanmanızı kesinlikle öneririz. 
+SAP ASCS, SAP SCS ve yeni SAP ERS2, sanal konak adı ve sanal IP adresleri kullanın. Azure 'da bir sanal IP adresi kullanmak için bir [yük dengeleyici](../../../load-balancer/load-balancer-overview.md) gereklidir. [Standart yük dengeleyiciyi](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md)kullanmanızı kesinlikle öneririz. 
 
 İkinci SAP SID yoks/SCS/ERS örneği **PR2**için mevcut yük dengeleyiciye yapılandırma eklemeniz gerekir. İlk SAP SID **PR1** yapılandırması zaten yerinde olmalıdır.  
 
