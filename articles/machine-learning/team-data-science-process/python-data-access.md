@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 6c8e6fee2b9f01b8d7ab48990760aa4c4d6e11b2
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361509"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Azure Machine Learning Python istemci kitaplığını kullanarak Python ile veri kümelerine erişim
@@ -28,7 +28,7 @@ Bu konuda aşağıdakiler hakkında yönergeler sağlanmaktadır:
 * denemeleri 'deki ara veri kümelerine erişme
 * veri kümelerini numaralandırmak, meta verilere erişmek, bir veri kümesinin içeriğini okumak, yeni veri kümeleri oluşturmak ve mevcut veri kümelerini güncelleştirmek için Python istemci kitaplığını kullanın
 
-## <a name="prerequisites"></a><a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a><a name="prerequisites"></a>Ön koşullar
 Python istemci kitaplığı, aşağıdaki ortamlar altında test edilmiştir:
 
 * Windows, Mac ve Linux

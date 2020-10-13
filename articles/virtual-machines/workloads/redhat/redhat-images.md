@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 9aa0ca41f63da94e2dedaffe65ea518b8adff0dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07444e32d1808f928de418dd898aa1fa30703c90
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87439481"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977638"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux görüntülerine genel bakış
 
@@ -108,7 +108,7 @@ RHEL 8 görüntü türleri için Ayrıntılar aşağıda verilmiştir.
 |Publisher | Sunduğu | SKU değeri | Sürüm | Ayrıntılar
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | 8 | RHEL Minor sürümünün birleştirilmiş değerleri ve Yayımlanma tarihi (örneğin, 8.0.20191023) | Bu görüntüler, standart Red Hat depolarına bağlı olan RHEL 8 LVM bölümlenmiş görüntüleridir.
-|RedHat | RHEL | 8-Gen2 | RHEL Minor sürümünün birleştirilmiş değerleri ve Yayımlanma tarihi (örneğin, 8.0.20191024) | Bu görüntüler, standart Red Hat depolarına bağlı Hyper-V oluşturma 2 RHEL 8 LVM bölümlenmiş görüntüleridir. Azure 'da 2. nesil VM 'Ler hakkında daha fazla bilgi için bkz. [2. nesil sanal makineler Için destek](../../linux/generation-2.md).
+|RedHat | RHEL | 8-Gen2 | RHEL Minor sürümünün birleştirilmiş değerleri ve Yayımlanma tarihi (örneğin, 8.0.20191024) | Bu görüntüler, standart Red Hat depolarına bağlı Hyper-V oluşturma 2 RHEL 8 LVM bölümlenmiş görüntüleridir. Azure 'da 2. nesil VM 'Ler hakkında daha fazla bilgi için bkz. [2. nesil sanal makineler Için destek](../../generation-2.md).
 
 ## <a name="rhel-longer-support-add-ons"></a>RHEL eklentileri daha uzun destekler
 
@@ -116,7 +116,7 @@ RHEL 8 görüntü türleri için Ayrıntılar aşağıda verilmiştir.
 
 2019 Nisan itibariyle, RHEL görüntüleri varsayılan olarak, EUS depolarına eklenmiş olarak mevcuttur. RHEL EUS hakkında daha fazla bilgi, [Red Hat 'in belgelerinde](https://access.redhat.com/articles/rhel-eus)bulunabilir.
 
-EUS depolarında geçiş yapılabilir ve desteklenir. VM 'nizi EUS 'e nasıl taşıyacağınız ve EUS desteği yaşam sonu tarihleri hakkında daha fazla bilgi için bkz. [RHEL EUS ve sürüm KILITLEME RHEL VM 'leri](https://aka.ms/rhui-update#rhel-eus-and-version-locking-rhel-vms).
+EUS depolarında geçiş yapılabilir ve desteklenir. VM 'nizi EUS 'e nasıl taşıyacağınız ve EUS desteği yaşam sonu tarihleri hakkında daha fazla bilgi için bkz. [RHEL EUS ve sürüm KILITLEME RHEL VM 'leri](./redhat-rhui.md#rhel-eus-and-version-locking-rhel-vms).
 
 >[!NOTE]
 > RHEL ek özellikleri üzerinde EUS desteklenmez. Bu, genellikle RHEL ek özellikler kanalında kullanılabilen bir paketi yüklerseniz, duyurken bunu yapamayacağız. Red Hat ek özellikleri ürün yaşam döngüsü hakkında daha fazla bilgi için bkz. [Red Hat Enterprise Linux ek özellikler yaşam döngüsü](https://access.redhat.com/support/policy/updates/extras/).
@@ -150,7 +150,7 @@ Aşağıdaki tabloda yer alan bilgiler, EUS depolarına bağlı RHEL görüntül
 RHEL 7,4      |RedHat: RHEL: 7.4:7.4.2019041718 | 2019 Nisan ve üzeri yayımlanan görüntüler varsayılan olarak EUS ' dir.|
 RHEL 7.5      |RedHat: RHEL: 7.5:7.5.2019060305 | 2019 Haziran ve üzeri yayımlanan görüntüler varsayılan olarak EUS ' dir. |
 RHEL 7,6      |RedHat: RHEL: 7.6:7.6.2019052206 | 2019 ve sonraki sürümlerde yayınlanan görüntüler varsayılan olarak EUS olabilir. |
-RHEL 8,0      |Yok                            | Red Hat tarafından kullanılabilir EUS yok.                               |
+RHEL 8,0      |YOK                            | Red Hat tarafından kullanılabilir EUS yok.                               |
 
 ### <a name="update-services-for-sap"></a>SAP için Güncelleştirme Hizmetleri
 
@@ -183,6 +183,6 @@ Geçerli ilke, önceden yayımlanmış tüm görüntüleri tutmak için kullanı
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Azure 'daki RHEL görüntülerinin tam listesini görüntülemek için bkz. [Azure 'da kullanılabilen Red Hat Enterprise Linux (RHEL) görüntüleri](./redhat-imagelist.md).
-* Azure Red Hat güncelleştirme altyapısı hakkında daha fazla bilgi edinmek için bkz. [Azure 'da isteğe bağlı RHEL VM 'ler Için Red Hat güncelleştirme altyapısı](https://aka.ms/rhui-update).
+* Azure Red Hat güncelleştirme altyapısı hakkında daha fazla bilgi edinmek için bkz. [Azure 'da isteğe bağlı RHEL VM 'ler Için Red Hat güncelleştirme altyapısı](./redhat-rhui.md).
 * RHEL BYOS teklifi hakkında daha fazla bilgi edinmek için bkz. [Azure 'da kendi aboneliğinizi getir Gold görüntülerini Red Hat Enterprise Linux](./byos.md).
 * Tüm RHEL sürümleri için Red Hat destek ilkeleri hakkında daha fazla bilgi için, [Red Hat Enterprise Linux yaşam döngüsü](https://access.redhat.com/support/policy/updates/errata)' ne bakın.

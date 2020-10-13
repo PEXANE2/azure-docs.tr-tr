@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/30/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4e7c5f3f4bf84b7a267cb883df5f375f2a8cf981
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89017150"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db"></a>Azure Cosmos DB veritabanında veya kapsayıcıda otomatik ölçeklendirme üretilen işi sağlama
@@ -47,7 +47,7 @@ Paylaşılan aktarım hızı veritabanında otomatik ölçeklendirme sağlamak i
 
 1. **Ölçek**altında, **Otomatik ölçeklendirme** seçeneğini belirleyin ve **kaydedin**.
 
-   :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="Varolan bir kapsayıcıda otomatik ölçeklendirmeyi etkinleştirme":::
+   :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="Kapsayıcı oluşturma ve otomatik ölçeklendirme sağlanan verimini yapılandırma":::
 
 > [!NOTE]
 > Varolan bir veritabanı veya kapsayıcıda otomatik ölçeklendirmeyi etkinleştirdiğinizde, en fazla RU/sn için başlangıç değeri sistem tarafından belirlenir ve geçerli el ile sağlanan aktarım hızı ayarları ve depolama alanınızı temel alır. İşlem tamamlandıktan sonra gerekirse en fazla RU/sn 'yi değiştirebilirsiniz. [Daha fazla bilgi edinin.](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 

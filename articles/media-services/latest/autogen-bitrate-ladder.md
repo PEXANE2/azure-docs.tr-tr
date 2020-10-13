@@ -15,10 +15,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
 ms.openlocfilehash: 05accd69f1868b8b0e0f6dbd4fb5c21ee843ec5e
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89297734"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>Otomatik olarak üretilen bit hızı el ile kodla
@@ -35,7 +35,7 @@ Bu makalede, giriş ve bit hızını temel alarak bir giriş videosunu otomatik 
 
 Bu önayarın nasıl kullanıldığına ilişkin bir örnek görmek için bkz. [akış a dosyası](stream-files-dotnet-quickstart.md).
 
-## <a name="output"></a>Çıkış
+## <a name="output"></a>Çıktı
 
 Bu bölümde, Media Services Kodlayıcısı tarafından, **uyarlamalı akış** ön ayarıyla kodlama sonucu olarak üretilen çıkış video katmanlarının üç örneği gösterilmektedir. Her durumda, çıktı 128 Kbps hızında, stereo ses kodlamalı bir salt ses MP4 dosyası içerir.
 

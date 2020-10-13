@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 09/12/2020
+ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: 185a6a26350f7803d109e26d8985510380b8cc16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed2a5b4688965f790567018bc11051b77c494e7a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056600"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977740"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Metin Analizi API'si v3 dil desteği 
 
@@ -36,6 +36,7 @@ ms.locfileid: "90056600"
 | Fransızca                |     `fr`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | Almanca                |     `de`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | Yunanca                 |     `el`      |     ✓      |            |                            |                    |
+| Hintçe                 |     `hi`      |           |      ✓      |          2020-04-01                  |                    |
 | İtalyanca               |     `it`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | Japonca              |     `ja`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | Korece                |     `ko`      |            |     ✓      |         2019-10-01         |                    |
@@ -86,7 +87,7 @@ ms.locfileid: "90056600"
 | İsveççe               |     `sv`      |     ✓      |            |                                 |                    |
 | Türkçe               |     `tr`      |     ✓      |            |                                 |                    |
 
-#### <a name="key-phrase-extraction"></a>[Anahtar tümceciği ayıklama](#tab/key-phrase-extraction)
+#### <a name="key-phrase-extraction"></a>[Anahtar ifade ayıklama](#tab/key-phrase-extraction)
 
 > [!NOTE]
 > 2020-07-01 ' den önceki Anahtar İfade Ayıklama model sürümlerinin 64 karakter sınırı vardır. Bu sınır sonraki model sürümlerinde yok.

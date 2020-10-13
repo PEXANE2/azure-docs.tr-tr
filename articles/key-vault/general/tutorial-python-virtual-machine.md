@@ -10,10 +10,10 @@ ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-python
 ms.openlocfilehash: 8980505ac34e32a29403060a7cf3cfaec077d8af
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336709"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>Öğretici: Python 'da bir sanal makine ile Azure Key Vault kullanma
@@ -64,7 +64,7 @@ Aşağıdaki yöntemlerden birini kullanarak **myvm** ADLı bir VM oluşturun:
 |--|--|
 | [Azure CLI](../../virtual-machines/linux/quick-create-cli.md) | [Azure CLI](../../virtual-machines/windows/quick-create-cli.md) |
 | [PowerShell](../../virtual-machines/linux/quick-create-powershell.md) | [PowerShell](../../virtual-machines/windows/quick-create-powershell.md) |
-| [Azure Portal](../../virtual-machines/linux/quick-create-portal.md) | [Azure portal](../../virtual-machines/windows/quick-create-portal.md) |
+| [Azure portalındaki](../../virtual-machines/linux/quick-create-portal.md) | [Azure portal](../../virtual-machines/windows/quick-create-portal.md) |
 
 Azure CLı kullanarak bir Linux VM oluşturmak için [az VM Create](/cli/azure/vm) komutunu kullanın.  Aşağıdaki örnek, *azureuser*adlı bir kullanıcı hesabı ekler. `--generate-ssh-keys`Parametresi, otomatik olarak BIR SSH anahtarı oluşturmak ve varsayılan anahtar konumuna (*~/PST*) koymak için kullanılır. 
 

@@ -9,10 +9,10 @@ ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
 ms.openlocfilehash: 4411bd490ab72aa27fbf16a8598a9ff0dae7a5b5
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91358993"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Öğretici: Azure 'da RHEL sanal makinelerinde SQL Server için kullanılabilirlik grupları yapılandırma 
@@ -532,7 +532,7 @@ Rolü eklemek için aşağıdaki komutu çalıştırın:
 az role definition create --role-definition "<filename>.json"
 ```
 
-Aşağıdaki çıktıyı görmeniz gerekir:
+Aşağıdaki çıkışı görmeniz gerekir:
 
 ```output
 {
@@ -669,7 +669,7 @@ Yapılandırma ile işiniz bittiğinde, SQL Server durumunu denetleyebilir ve ç
 systemctl status mssql-server --no-pager
 ```
 
-Aşağıdaki çıktıyı görmeniz gerekir:
+Aşağıdaki çıkışı görmeniz gerekir:
 
 ```output
 ● mssql-server.service - Microsoft SQL Server Database Engine
@@ -969,7 +969,7 @@ SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.d
     sudo pcs resource
     ```
 
-    Aşağıdaki çıktıyı görmeniz gerekir:
+    Aşağıdaki çıkışı görmeniz gerekir:
     
     **RHEL 7** 
     
@@ -1051,7 +1051,7 @@ SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.d
     sudo pcs constraint list --full
     ```
 
-    Aşağıdaki çıktıyı görmeniz gerekir:
+    Aşağıdaki çıkışı görmeniz gerekir:
     
     **RHEL 7**
 

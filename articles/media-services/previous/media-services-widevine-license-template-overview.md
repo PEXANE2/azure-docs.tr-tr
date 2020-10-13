@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 7bdffa607a1cbe47b940590d19f6140238d31bf0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89266502"
 ---
 # <a name="widevine-license-template-overview"></a>Widevine lisans şablonuna genel bakış
@@ -67,7 +67,7 @@ Widevine lisans isteği JSON iletisi olarak biçimlendirilir.
 | Name | Değer | Açıklama |
 | --- | --- | --- |
 | yük |Base64 ile kodlanmış dize |İstemci tarafından gönderilen lisans isteği. |
-| content_id |Base64 ile kodlanmış dize |Her bir content_key_specs için anahtar KIMLIĞINI ve içerik anahtarını türetmede kullanılan tanımlayıcı. track_type. |
+| content_id |Base64 ile kodlanmış dize |Her content_key_specs. track_type için anahtar KIMLIĞINI ve içerik anahtarını türetmede kullanılan tanımlayıcı. |
 | sağlayıcısını |string |İçerik anahtarları ve ilkeleri aramak için kullanılır. Widevine lisans teslimi için Microsoft anahtar teslimi kullanılıyorsa, bu parametre yoksayılır. |
 | policy_name |string |Daha önce kaydedilen bir ilkenin adı. İsteğe bağlı. |
 | allowed_track_types |enum |SD_ONLY veya SD_HD. Bir lisansa hangi içerik anahtarlarının dahil edileceğini denetler. |
@@ -88,7 +88,7 @@ Her bir content_key_specs değeri, use_policy_overrides_exclusively seçeneğind
 | content_key_specs  <br/> security_level |Int32 |Kayıttan yürütme için istemci sağlamlık gereksinimlerini tanımlar. <br/> -Yazılım tabanlı beyaz kutu şifrelemesi gereklidir. <br/> -Yazılım şifrelemesi ve karıştırılmış bir kod çözücü gereklidir. <br/> -Anahtar malzeme ve şifreleme işlemlerinin, donanım ile desteklenen bir güvenilir yürütme ortamında gerçekleştirilmesi gerekir. <br/> -İçerik şifrelemesi ve kodunun çözülmesi, donanım tarafından desteklenen bir güvenilir yürütme ortamında gerçekleştirilmelidir.  <br/> -Şifreleme, kod çözme ve medyanın tüm işlenmesi (sıkıştırılmış ve sıkıştırılmamış), donanım tarafından desteklenen bir güvenilir yürütme ortamında işlenmelidir. |
 | content_key_specs <br/> required_output_protection. HDC |dize, biri HDCP_NONE, HDCP_V1 HDCP_V2 |HDCP gerekip gerekmediğini gösterir. |
 | content_key_specs <br/>anahtar |Biçiminde<br/>kodlanmış dize |Bu izleme için kullanılacak içerik anahtarı. Belirtilmişse track_type veya key_id gereklidir. İçerik sağlayıcısı, Widevine lisans sunucusunun bir anahtar oluşturmasını veya arama yapmasına izin vermek yerine bu izleme için içerik anahtarını eklemek için bu seçeneği kullanabilir. |
-| content_key_specs. key_id |Base64 kodlamalı dize ikili, 16 bayt |Anahtar için benzersiz tanımlayıcı. |
+| content_key_specs content_key_specs.key_id |Base64 kodlamalı dize ikili, 16 bayt |Anahtar için benzersiz tanımlayıcı. |
 
 ## <a name="policy-overrides"></a>İlke geçersiz kılmaları
 | Name | Değer | Açıklama |
@@ -205,7 +205,7 @@ private static string ConfigureWidevineLicenseTemplate()
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Ayrıca bkz.

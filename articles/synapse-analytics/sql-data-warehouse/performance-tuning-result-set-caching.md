@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
 ms.openlocfilehash: aeeca38afb82e2dcd86e111d1ae5dcb2e7499f42
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362274"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Sonuç kümesini önbelleğe ile performans ayarlama
@@ -70,7 +70,7 @@ Aşağıdaki gereksinimlerin hepsi karşılanıyorsa, önbelleğe alınmış son
 - Yeni sorgu ile sonuç kümesi önbelleğini oluşturan önceki sorgu arasında tam eşleşme vardır.
 - Önbelleğe alınmış sonuç kümesinin oluşturulduğu tablolarda veri veya şema değişikliği yoktur.
 
-Bir sorgunun sonuç önbelleği isabeti veya isabetsizlik ile yürütülüp yürütüldüğünden emin olmak için bu komutu çalıştırın. Result_cache_hit sütunu, önbellek okuması için 1, önbellek isabetsizliği için 0 ve sonuç kümesi önbelleğe almanın neden kullanılmasının nedeni için negatif değerler döndürür. Ayrıntılar için [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) denetleyin.
+Bir sorgunun sonuç önbelleği isabeti veya isabetsizlik ile yürütülüp yürütüldüğünden emin olmak için bu komutu çalıştırın. Result_cache_hit sütunu, önbellek okuması için 1, önbellek isabetsizliği için 0 ve sonuç kümesi önbelleğe almanın neden kullanılmasının nedeni için negatif değerler döndürür. Ayrıntılar için [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) denetleyin.
 
 ```sql
 SELECT request_id, command, result_cache_hit FROM sys.dm_pdw_exec_requests

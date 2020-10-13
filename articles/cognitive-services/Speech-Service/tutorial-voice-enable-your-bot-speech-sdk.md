@@ -12,10 +12,10 @@ ms.date: 02/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3b0c85f2c9ba04ac999911e534b906c634d457b8
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360965"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Öğretici: konuşma SDK 'sını kullanarak bot uygulamanızı etkinleştirin
@@ -54,7 +54,7 @@ Bu öğreticinin şu şekilde ele alınmaktadır:
 > * Özel anahtar sözcük etkinleştirme Ekle
 > * Tanınan ve konuşulan konuşma dilini değiştirmeyi öğrenin
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için gerekenler aşağıda verilmiştir:
 
@@ -109,7 +109,7 @@ Bu noktada, kaynak grubunuzun (**SpeechEchoBotTutorial-ResourceGroup**) bir konu
 
 | Ad | Tür  | Konum |
 |------|-------|----------|
-| SpeechEchoBotTutorial-konuşma | Bilişsel Hizmetler | Batı ABD |
+| SpeechEchoBotTutorial-Speech | Bilişsel Hizmetler | Batı ABD |
 
 ### <a name="create-an-azure-app-service-plan"></a>Azure App Service planı oluşturma
 
@@ -131,7 +131,7 @@ Bu noktada, kaynak grubunuz (**SpeechEchoBotTutorial-ResourceGroup**) iki kaynak
 | Ad | Tür  | Konum |
 |------|-------|----------|
 | SpeechEchoBotTutorial-AppServicePlan | App Service Planı | Batı ABD |
-| SpeechEchoBotTutorial-konuşma | Bilişsel Hizmetler | Batı ABD |
+| SpeechEchoBotTutorial-Speech | Bilişsel Hizmetler | Batı ABD |
 
 ## <a name="build-an-echo-bot"></a>Yankı bot oluştur
 
@@ -217,7 +217,7 @@ Sonraki adım, yankı bot 'ı Azure 'a dağıtmaktır. Bir bot dağıtmanın bir
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | Batı ABD |
 | SpeechEchoBotTutorial-AppServicePlan | App Service planı | Batı ABD |
-| SpeechEchoBotTutorial-konuşma | Bilişsel Hizmetler | Batı ABD |
+| SpeechEchoBotTutorial-Speech | Bilişsel Hizmetler | Batı ABD |
 
 ## <a name="enable-web-sockets"></a>Web yuvalarını etkinleştir
 
@@ -255,7 +255,7 @@ Bu noktada, Azure portal kaynak grubunuzu **SpeechEchoBotTutorial-ResourceGroup*
 | EchoBot20190805125647 | App Service | Batı ABD |
 | SpeechEchoBotTutorial-AppServicePlan | App Service planı | Batı ABD |
 | SpeechEchoBotTutorial-BotRegistration-8726 | Bot kanalları kaydı | Genel |
-| SpeechEchoBotTutorial-konuşma | Bilişsel Hizmetler | Batı ABD |
+| SpeechEchoBotTutorial-Speech | Bilişsel Hizmetler | Batı ABD |
 
 > [!IMPORTANT]
 > Batı ABD seçmiş olsanız da, bot kanalları kayıt kaynağı genel bölgeyi gösterir. Bu beklenen bir durumdur.

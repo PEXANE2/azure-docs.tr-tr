@@ -3,12 +3,12 @@ title: Öğretici-VMware HCX 'i dağıtma ve yapılandırma
 description: Azure VMware çözümünüz özel bulutunuz için VMware HCX çözümünü dağıtmayı ve yapılandırmayı öğrenin.
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 69832d1537f0f1be95d3283f543ef6e54187b58d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 341de74c8034eb60c5738720f730ab6b0f0f127f
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91583440"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948604"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>VMware HCX’i dağıtma ve yapılandırma
 
@@ -37,6 +37,7 @@ Ardından, aşağıdakileri yapmak için gereken tüm yordamları inceleyeceğiz
 * İsteğe bağlı olarak [VMware HCX dağıtım konularını](https://docs.vmware.com/en/VMware-HCX/services/install-checklist/GUID-C0A0E820-D5D0-4A3D-AD8E-EEAA3229F325.html)gözden geçirin.
 * HCX üzerinde VMware vSphere [blog serisi](https://blogs.vmware.com/vsphere/2019/10/cloud-migration-series-part-2.html) gibi, isteğe bağlı olarak HCX üzerinde ilgili VMware malzemeleri gözden geçirin. 
 * İsteğe bağlı olarak Azure VMware Çözüm desteği kanalları aracılığıyla bir Azure VMware çözümü HCX Kurumsal etkinleştirme isteyin.
+* İsteğe bağlı olarak [HCX için gereken ağ bağlantı noktalarını gözden geçirin](https://ports.vmware.com/home/VMware-HCX).
 * WAN Interconnect gerecini dağıtmak için `\22` özel bulut oluşturma için belirtilen müşteriden belırlı CIDR aralıkları zaten ayrıldı.
 
 İşlem ve depolama kaynaklarına karşı iş yüklerini boyutlandırma, önemli bir planlama adımıdır. İlk özel bulut ortamı planlamasının parçası olarak boyutlandırma adımını ele edin. 
@@ -54,7 +55,7 @@ Altyapı bileşenleri, gerekli en düşük sürümü çalıştırıyor olmalıd�
 | NSX    | Kaynaktaki mantıksal anahtarların HCX ağ uzantısı için: NSXv 6.2 + veya NSX-T 2.4 +   | NSXv 6.2 + veya NSX-T 2,4 +<br/><br/>HCX yakınlık yönlendirmesi için: NSXv 6.4 + (yakınlık yönlendirme NSX-T ile desteklenmez) |
 | vCloud Direktörü   | Gerekli değildir-kaynak sitede vCloud Director ile birlikte çalışabilirlik yok | Hedef ortamı vCloud Director ile tümleştirdiğinizde, en az 9.1.0.2 olur.  |
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="network-and-ports"></a>Ağ ve bağlantı noktaları
 
