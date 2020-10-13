@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: cb1c2d8daa74d1224ad07ef7a2fb5a74f4773338
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89000325"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>HDInsight üzerinde Apache Storm ile Azure Event Hubs olayları işleme (C#)
@@ -97,7 +97,7 @@ topologyBuilder.SetJavaBolt(
 
 Bu makalede oluşturulan projenin tüm sürümünü [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub)'dan indirebilirsiniz. Ancak, bu makaledeki adımları izleyerek yapılandırma ayarlarını yine de sağlamanız gerekir.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 * HDInsight üzerinde bir Apache Storm kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü**için **fırtınası** seçme.
 
@@ -124,7 +124,7 @@ Event Hubs Bu örnek için veri kaynağıdır. [Event Hubs kullanmaya başlama](
 
 1. Olay Hub 'ı oluşturulduktan sonra, Azure portal **EventHub** ayarlarını görüntüleyin ve **paylaşılan erişim ilkeleri**' ni seçin. Aşağıdaki ilkeleri oluşturmak için **+ Ekle** ' yi seçin:
 
-   | Ad | İzinler |
+   | Adı | İzinler |
    | --- | --- |
    | yazarı |Gönder |
    | okuyucu |Dinle |

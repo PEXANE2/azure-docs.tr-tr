@@ -4,10 +4,10 @@ description: Bir kapsayıcı kayıt defterinde özel bir uç nokta ayarlayın ve
 ms.topic: article
 ms.date: 10/01/2020
 ms.openlocfilehash: 793003edea853922f78b36f0dc1a6e35205cdadb
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743650"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Azure özel bağlantısını kullanarak bir Azure Container Registry 'ye özel olarak bağlanma
@@ -21,11 +21,11 @@ Bu özellik **Premium** kapsayıcı kayıt defteri hizmet katmanında kullanıla
 
 [!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bu makalede Azure CLı adımlarını kullanmak için, Azure CLı sürüm 2.6.0 veya sonraki bir sürümü önerilir. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli]. Veya [Azure Cloud Shell](../cloud-shell/quickstart.md)içinde çalıştırın.
 * Zaten bir kapsayıcı kayıt defteriniz yoksa, bir tane oluşturun (Premium katman gereklidir) ve Docker Hub 'dan gibi örnek bir görüntüyü [içeri aktarın](container-registry-import-images.md) `hello-world` . Örneğin, [Azure Portal][quickstart-portal] veya [Azure CLI][quickstart-cli] kullanarak bir kayıt defteri oluşturun.
-* Farklı bir Azure aboneliğinde özel bir bağlantı kullanarak kayıt defteri erişimini yapılandırmak için bu abonelikte Azure Container Registry kaynak sağlayıcısını kaydetmeniz gerekir. Örnek:
+* Farklı bir Azure aboneliğinde özel bir bağlantı kullanarak kayıt defteri erişimini yapılandırmak için bu abonelikte Azure Container Registry kaynak sağlayıcısını kaydetmeniz gerekir. Örneğin:
 
   ```azurecli
   az account set --subscription <Name or ID of subscription of private link>
@@ -213,13 +213,13 @@ Bir kayıt defteri oluşturduğunuzda özel bir bağlantı kurun veya var olan b
     | ------- | ----- |
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | Mevcut bir grubun adını girin veya yeni bir grup oluşturun.|
-    | Name | Benzersiz bir ad girin. |
+    | Adı | Benzersiz bir ad girin. |
     | Alt kaynak |**Kayıt defteri** seçin|
     | **Ağ** | |
     | Sanal ağ| Sanal makinenizin dağıtıldığı sanal ağı ( *Mydockervmvnet*gibi) seçin. |
     | Alt ağ | Sanal makinenizin dağıtıldığı *Mydockervmsubnet* gibi bir alt ağ seçin. |
     |**Özel DNS tümleştirme**||
-    |Özel DNS bölgesi ile tümleştirme |**Evet** seçeneğini belirleyin. |
+    |Özel DNS bölgesi ile tümleştirme |**Evet**’i seçin. |
     |Özel DNS Bölgesi |Seç *(yeni) Privatelink.azurecr.io* |
     |||
 1. Kalan kayıt defteri ayarlarını yapılandırın ve ardından **gözden geçir + oluştur**' u seçin.
@@ -240,7 +240,7 @@ Bir kayıt defteri oluşturduğunuzda özel bir bağlantı kurun veya var olan b
     | Kaynak grubu | Mevcut bir grubun adını girin veya yeni bir grup oluşturun.|
     | **Örnek ayrıntıları** |  |
     | Name | Bir ad girin. |
-    |Region|Bir bölge seçin.|
+    |Bölge|Bir bölge seçin.|
     |||
 5. **Sonraki: kaynak**' ı seçin.
 6. Aşağıdaki bilgileri girin veya seçin:
@@ -262,7 +262,7 @@ Bir kayıt defteri oluşturduğunuzda özel bir bağlantı kurun veya var olan b
     | Sanal ağ| Sanal makinenizin dağıtıldığı sanal ağı ( *Mydockervmvnet*gibi) seçin. |
     | Alt ağ | Sanal makinenizin dağıtıldığı *Mydockervmsubnet* gibi bir alt ağ seçin. |
     |**Özel DNS tümleştirme**||
-    |Özel DNS bölgesi ile tümleştirme |**Evet** seçeneğini belirleyin. |
+    |Özel DNS bölgesi ile tümleştirme |**Evet**’i seçin. |
     |Özel DNS Bölgesi |Seç *(yeni) Privatelink.azurecr.io* |
     |||
 
@@ -306,7 +306,7 @@ az acr update --name $REGISTRY_NAME --public-network-enabled false
 
 Özel bağlantı bağlantısını doğrulamak için sanal ağda ayarladığınız sanal makineye SSH.
 
-`nslookup` `dig` Özel bağlantı üzerinden kayıt defterinizin IP adresini aramak için veya gibi bir yardımcı program çalıştırın. Örnek:
+`nslookup` `dig` Özel bağlantı üzerinden kayıt defterinizin IP adresini aramak için veya gibi bir yardımcı program çalıştırın. Örneğin:
 
 ```bash
 dig $REGISTRY_NAME.azurecr.io
@@ -368,7 +368,7 @@ Docker görüntüyü sanal makineye başarıyla çeker.
 
 Azure portal kullanarak veya [az ACR Private-Endpoint-Connection][az-acr-private-endpoint-connection] komut grubundaki komutları kullanarak bir kayıt defterinin özel uç nokta bağlantılarını yönetin. İşlemler, bir kayıt defterinin özel uç nokta bağlantılarının onaylama, silme, listeleme, reddetme veya ayrıntılarını içerir.
 
-Örneğin, bir kayıt defterinin özel uç nokta bağlantılarını listelemek için [az ACR Private-Endpoint-Connection List][az-acr-private-endpoint-connection-list] komutunu çalıştırın. Örnek:
+Örneğin, bir kayıt defterinin özel uç nokta bağlantılarını listelemek için [az ACR Private-Endpoint-Connection List][az-acr-private-endpoint-connection-list] komutunu çalıştırın. Örneğin:
 
 ```azurecli
 az acr private-endpoint-connection list \

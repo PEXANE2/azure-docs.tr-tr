@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
 ms.openlocfilehash: 62c052f2293c670b43f1c77363c8bbbcc03d0de2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514283"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>StorSimple cihazınız için Web proxy 'yi yapılandırma
@@ -143,7 +143,7 @@ Web proxy ayarları yanlış yapılandırılmışsa, StorSimple için Windows Po
 |:--- |:--- |:--- |:--- |
 | 1. |0x80070001 |Komut pasif denetleyiciden çalıştırılır ve etkin denetleyici ile iletişim kuramaz. |Etkin denetleyicide komutunu çalıştırın. Bu komutu pasif denetleyiciden çalıştırmak için pasif bilgisayardan etkin denetleyiciye olan bağlantıyı çözmeniz gerekir. Bu bağlantı bozulur Microsoft Desteği uygulamanız gerekir. |
 | 2. |0x800710dd-işlem tanımlayıcısı geçerli değil |Proxy ayarları StorSimple Cloud Appliance desteklenmez. |Proxy ayarları StorSimple Cloud Appliance desteklenmez. Bunlar yalnızca bir StorSimple fiziksel cihazında yapılandırılabilir. |
-| 3. |0x80070057-geçersiz parametre |Proxy ayarları için belirtilen parametrelerden biri geçerli değil. |URI doğru biçimde sağlanmadı. Aşağıdaki biçimi kullanın:`http://<IP address or FQDN of the web proxy server>:<TCP port number>` |
+| 3. |0x80070057-geçersiz parametre |Proxy ayarları için belirtilen parametrelerden biri geçerli değil. |URI doğru biçimde sağlanmadı. Aşağıdaki biçimi kullanın: `http://<IP address or FQDN of the web proxy server>:<TCP port number>` |
 | 4. |0x800706ba-RPC sunucusu kullanılamıyor |Kök nedeni aşağıdakilerden biridir:</br></br>Küme yok. </br></br>DataPath hizmeti çalışmıyor.</br></br>Komut pasif denetleyiciden çalıştırılır ve etkin denetleyici ile iletişim kuramaz. |Kümenin yukarı ve DataPath hizmetinin çalıştığından emin olmak için Microsoft Desteği çalışır.</br></br>Etkin denetleyicideki komutu çalıştırın. Komutu pasif denetleyicisinden çalıştırmak istiyorsanız, pasif denetleyicinin etkin denetleyici ile iletişim kurabildiğinden emin olmanız gerekir. Bu bağlantı bozulur Microsoft Desteği uygulamanız gerekir. |
 | 5. |0x800706in-RPC çağrısı başarısız oldu |Küme çalışmıyor. |Kümenin çalıştığından emin olmak için Microsoft Desteği çalışır. |
 | 6. |0x8007138f-küme kaynağı bulunamadı |Platform hizmeti küme kaynağı bulunamadı. Yükleme düzgün olmadığında bu durum oluşabilir. |Cihazınızda fabrika sıfırlaması yapmanız gerekebilir. Bir platform kaynağı oluşturmanız gerekebilir. Sonraki adımlar için Microsoft Desteği'ne başvurun. |

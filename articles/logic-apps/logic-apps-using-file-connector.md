@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
 ms.openlocfilehash: 65b6b1f783dbabc9ad2e1a4bf79008240d1b2726
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89659917"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Azure Logic Apps ile şirket içi dosya sistemlerine bağlanma
@@ -70,12 +70,12 @@ Bu makalede, bir şirket içi dosya sistemine bu örnek senaryo tarafından aç�
 
    | Özellik | Gerekli | Değer | Açıklama |
    | -------- | -------- | ----- | ----------- |
-   | **Bağlantı adı** | Yes | <*bağlantı adı*> | Bağlantınız için istediğiniz ad |
-   | **Kök klasör** | Yes | <*kök klasörü-adı*> | Dosya sisteminiz için kök klasör; Örneğin, şirket içi veri ağ geçidinin yüklü olduğu bilgisayarda yerel bir klasör gibi şirket içi veri ağ geçidinizi veya bilgisayarın erişebileceği bir ağ paylaşımının klasörünü yüklediyseniz. <p>Örnek: `\\PublicShare\\DropboxFiles` <p>Kök klasör, tüm dosya ile ilgili eylemler için göreli yollar için kullanılan ana üst klasördür. |
-   | **Kimlik doğrulama türü** | No | <*kimlik doğrulama türü*> | Dosya sisteminizin kullandığı kimlik doğrulaması türü: **Windows** |
-   | **Kullanıcı adı** | Yes | <*etki* > \\ alanı < *Kullanıcı adı*> <p>-veya- <p><*Yerel* > \\ bilgisayar < *Kullanıcı adı*> | Dosya sistemi klasörünüzün bulunduğu bilgisayarın Kullanıcı adı. <p>Dosya sistemi klasörünüz şirket içi veri ağ geçidiyle aynı bilgisayarda varsa, <*Yerel bilgisayar* > \\ < *Kullanıcı adı*> kullanabilirsiniz. |
-   | **Parola** | Yes | <*Parolanız*> | Dosya sisteminizin bulunduğu bilgisayarın parolası |
-   | **geçidinde** | Yes | <*yüklü-ağ geçidi-adı*> | Daha önce yüklenen ağ geçidinizin adı |
+   | **Bağlantı adı** | Evet | <*bağlantı adı*> | Bağlantınız için istediğiniz ad |
+   | **Kök klasör** | Evet | <*kök klasörü-adı*> | Dosya sisteminiz için kök klasör; Örneğin, şirket içi veri ağ geçidinin yüklü olduğu bilgisayarda yerel bir klasör gibi şirket içi veri ağ geçidinizi veya bilgisayarın erişebileceği bir ağ paylaşımının klasörünü yüklediyseniz. <p>Örnek: `\\PublicShare\\DropboxFiles` <p>Kök klasör, tüm dosya ile ilgili eylemler için göreli yollar için kullanılan ana üst klasördür. |
+   | **Kimlik doğrulama türü** | Hayır | <*kimlik doğrulama türü*> | Dosya sisteminizin kullandığı kimlik doğrulaması türü: **Windows** |
+   | **Kullanıcı adı** | Evet | <*etki* > \\ alanı < *Kullanıcı adı*> <p>-veya- <p><*Yerel* > \\ bilgisayar < *Kullanıcı adı*> | Dosya sistemi klasörünüzün bulunduğu bilgisayarın Kullanıcı adı. <p>Dosya sistemi klasörünüz şirket içi veri ağ geçidiyle aynı bilgisayarda varsa, <*Yerel bilgisayar* > \\ < *Kullanıcı adı*> kullanabilirsiniz. |
+   | **Parola** | Evet | <*Parolanız*> | Dosya sisteminizin bulunduğu bilgisayarın parolası |
+   | **geçidinde** | Evet | <*yüklü-ağ geçidi-adı*> | Daha önce yüklenen ağ geçidinizin adı |
    |||||
 
 1. İşiniz bittiğinde **Oluştur**’u seçin.

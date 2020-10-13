@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 3452641b336308ddf46349064345b154e55aa53c
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88649168"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Algılayıcı iş ortaklarından algılayıcı verileri al
@@ -124,7 +124,7 @@ Grubunuza yönelik cihazları ve algılayıcıları görüntülemek için aşağ
 - **Düğüm**: bir veya daha fazla sensörün eklendiği cihaz.
 - **Ağ geçidi**: bir veya daha fazla düğümün eklendiği cihaz.
 
-Şu adımları uygulayın:
+Şu adımları izleyin:
 
 1. Giriş sayfasında, menüden **cihazlar** ' ı seçin.
   **Cihazlar** sayfası cihaz türünü, modeli, durumu, yerleştirildiği grubu ve meta verilerin son güncelleştirilme tarihini görüntüler. Varsayılan olarak, Grup sütunu *null*olarak ayarlanır. Bir gruba bir cihaz atamayı seçebilirsiniz. Daha fazla bilgi için bkz. [cihaz atama](#assign-devices).
@@ -134,7 +134,7 @@ Grubunuza yönelik cihazları ve algılayıcıları görüntülemek için aşağ
 
 ### <a name="view-sensors"></a>Algılayıcıları görüntüle
 
-Şu adımları uygulayın:
+Şu adımları izleyin:
 
 1. Giriş sayfasında, menüden **Algılayıcılar** ' ı seçin.
   **Algılayıcılar** sayfasında, algılayıcı türü, bağlandığı grup, ana cihaz, bağlantı noktası adı, bağlantı noktası türü ve son güncel durum hakkındaki ayrıntılar gösterilir.
@@ -163,7 +163,7 @@ Algılayıcı verileri akışını gerçekleştirdikten sonra, algılayıcıyı 
 
 ### <a name="visualize-sensor-data"></a>Algılayıcı verilerini görselleştirme
 
-Şu adımları uygulayın:
+Şu adımları izleyin:
 
 1. Giriş sayfasında, **gruplar** sayfasını görüntülemek Için menüden **gruplar** ' ı seçin.
 2. Algılayıcı verilerini görmek istediğiniz **grubu** seçin.
@@ -173,7 +173,7 @@ Algılayıcı verileri akışını gerçekleştirdikten sonra, algılayıcıyı 
 
 ## <a name="delete-a-sensor"></a>Algılayıcıyı silme
 
-Şu adımları uygulayın:
+Şu adımları izleyin:
 
 1. Giriş sayfasında, **sensör** sayfasını görüntülemek Için menüden **Algılayıcılar** ' ı seçin.
 2. Silmek istediğiniz cihazı seçin ve onay penceresinde **Sil** ' i seçin.
@@ -184,7 +184,7 @@ Bir onay iletisi, sensör başarıyla silindiğini gösterir.
 
 ## <a name="delete-devices"></a>Cihazları Sil
 
-Şu adımları uygulayın:
+Şu adımları izleyin:
 
 1. Giriş sayfasında, **cihazlar** sayfasını görüntülemek Için menüdeki **cihazlar** ' ı seçin.
 2. Silmek istediğiniz cihazı seçin ve onay penceresinde **Sil** ' i seçin.

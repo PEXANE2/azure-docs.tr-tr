@@ -13,10 +13,10 @@ ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
 ms.openlocfilehash: 9cf65b2fdeb7faa03b950593db86dd32a4ef91a7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86495851"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Azure Machine Learning ile veri çözümleme
@@ -90,9 +90,9 @@ Sonra, tasarımcı yapılandırması için aşağıdaki adımları izleyin:
 
 1. Daha önce oluşturduğunuz veri kümesini tuvale sürükleyin.
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/import-dataset.png" alt-text="Tuval üzerindeki veri kümesi modülünün ekran görüntüsü.":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/import-dataset.png" alt-text="Azure Machine Learning arabiriminin sol bölmesinin ekran görüntüsü":::
 
-## <a name="clean-the-data"></a>Verileri temizleyin
+## <a name="clean-the-data"></a>Verileri temizleme
 
 Verileri temizlemek için, modeliyle ilgili olmayan sütunları bırakın. Aşağıdaki adımları izleyin:
 
@@ -100,13 +100,13 @@ Verileri temizlemek için, modeliyle ilgili olmayan sütunları bırakın. Aşa�
 
 1. **Veri dönüştürme <** altındaki **sütun Seç** modülünü tuvale sürükleyin. Bu modülü **veri kümesi** modülüne bağlayın.
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/select-columns-zoomed-in.png" alt-text="Tuvalde sütun seçimi modülünün ekran görüntüsü." lightbox="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/select-columns-zoomed-out.png":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/select-columns-zoomed-in.png" alt-text="Azure Machine Learning arabiriminin sol bölmesinin ekran görüntüsü" lightbox="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/select-columns-zoomed-out.png":::
 
 1. Özellikler bölmesini açmak için modüle tıklayın. Hangi sütunları bırakmak istediğinizi belirtmek için sütunu Düzenle ' ye tıklayın.
 
 1. Şu iki sütunu dışlayın: CustomerAlternateKey ve GeographyKey. **Kaydet**’e tıklayın
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/drop-columns.png" alt-text="Bırakılan sütunları gösteren ekran görüntüsü.":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/drop-columns.png" alt-text="Azure Machine Learning arabiriminin sol bölmesinin ekran görüntüsü":::
 
 ## <a name="build-the-model"></a>Modeli oluşturma
 
@@ -116,7 +116,7 @@ Veriler makine öğrenimi modelini eğitmek için% 80-20:80 ' ü ve modeli test 
 
 1. Özellikler bölmesinde, **ilk çıkış veri kümesindeki satır kesiri**için 0,8 girin.
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/split-data.png" alt-text="0,8 bölme oranını gösteren ekran görüntüsü.":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/split-data.png" alt-text="Azure Machine Learning arabiriminin sol bölmesinin ekran görüntüsü":::
 
 1. **Two-Class Boosted Decision Tree (İki Sınıflı Gelişmiş Karar Ağacı)** modülünü tuvale sürükleyin.
 
@@ -124,9 +124,9 @@ Veriler makine öğrenimi modelini eğitmek için% 80-20:80 ' ü ve modeli test 
 
 1. Model modeli eğitimi için, Özellikler bölmesinde **etiket sütunu** seçeneğinde sütunu Düzenle ' yi seçin. Tahmin edilecek sütun olarak **Bikesatınalmacı** sütununu seçin ve **Kaydet**' i seçin.
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/label-column.png" alt-text="Bikesatınalmacı etiket sütununu gösteren ekran görüntüsü.":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/label-column.png" alt-text="Azure Machine Learning arabiriminin sol bölmesinin ekran görüntüsü":::
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/train-model.png" alt-text="Iki sınıf artırılmış karar ağacına bağlı eğitim modeli modülünü gösteren ve veri modüllerine bölünmüş ekran görüntüsü.":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/train-model.png" alt-text="Azure Machine Learning arabiriminin sol bölmesinin ekran görüntüsü":::
 
 ## <a name="score-the-model"></a>Modeli puanlama
 
@@ -134,7 +134,7 @@ Veriler makine öğrenimi modelini eğitmek için% 80-20:80 ' ü ve modeli test 
 
 1. **Puanlama modeli** modülünü tuvale sürükleyin ve **modeli eğmek** ve **veri modüllerini bölmek** için bağlayın.
 
-1. **Iki sınıf Bayes ortalama Perceptron** ' i deneme tuvaline sürükleyin. Bu algoritmanın, Iki sınıf önceden artırılmış karar ağacına kıyasla nasıl gerçekleştiğini karşılaştırırsınız.
+1. **Iki sınıf Bayes ortalama Perceptron** ' i deneme tuvaline sürükleyin. Bu algoritmanın Two-Class, artırılmış karar ağacına kıyasla nasıl gerçekleştiğini karşılaştırırsınız.
 
 1. Modülleri kopyalayıp yapıştırın modeli **eğitme** model ve **Puanlama modeli** .
 
@@ -142,11 +142,11 @@ Veriler makine öğrenimi modelini eğitmek için% 80-20:80 ' ü ve modeli test 
 
 1. İşlem hattı çalıştırmasını ayarlamak için **Gönder** ' e tıklayın.
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/algo-comparison-zoomed-in.png" alt-text="Tuvaldeki diğer tüm modüllerin ekran görüntüsü." lightbox="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/algo-comparison-zoomed-out.png":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/algo-comparison-zoomed-in.png" alt-text="Azure Machine Learning arabiriminin sol bölmesinin ekran görüntüsü" lightbox="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/algo-comparison-zoomed-out.png":::
 
 1. Çalıştırma tamamlandığında **modeli değerlendir** modülünü sağ tıklatın ve **değerlendirme sonuçlarını görselleştirin**' i tıklatın.
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/result-visualize-zoomed-out.png" alt-text="Sonuçların ekran görüntüsü.":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/result-visualize-zoomed-out.png" alt-text="Azure Machine Learning arabiriminin sol bölmesinin ekran görüntüsü":::
 
 Belirtilen ölçümler ROC eğrisi, duyarlık geri çağırma diyagramı ve yükseltme eğrisi. Birinci modelin ikinciden daha iyi gerçekleştirildiğini görmek için bu ölçümlere bakın. İlk modelin tahmin edilen bölümüne bakmak için, puan modeli modülüne sağ tıklayın ve tahmin edilen sonuçları görmek için puanlanmış veri kümesini Görselleştir ' e tıklayın.
 

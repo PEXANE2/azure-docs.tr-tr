@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 8/10/2017
 ms.author: maburlik
 ms.openlocfilehash: fb9a52510788a275bdeea67cd5c1fdd2e894738d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261016"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Windows Server için tek başına Service Fabric paketi içeriği
@@ -29,7 +29,7 @@ ms.locfileid: "86261016"
 | Readme.txt |Sürüm notlarına ve temel yükleme yönergelerine bir bağlantı. Bu belgedeki yönergelerin bir alt kümesidir. |
 | Üçüncü taraf bildirimi. rtf |Pakette olan üçüncü taraf yazılımlara dikkat edin. |
 | Tools\Microsoft.Azure.ServiceFabric.WindowsServer.SupportPackage.zip |Destek amacıyla izleme günlüklerini toplamak ve Microsoft 'a yüklemek için isteğe bağlı olarak çalıştırılan StandaloneLogCollector.exe. |
-| Tools\ServiceFabricUpdateService.zip |İnternet erişimi olmayan kümeler için otomatik kod yükseltmesini etkinleştirmek üzere kullanılan bir araç. Daha fazla ayrıntı [burada](service-fabric-cluster-upgrade-windows-server.md) bulunabilir|
+| Tools\ServiceFabricUpdateService.zip |İnternet erişimi olmayan kümeler için otomatik kod yükseltmesini etkinleştirmek üzere kullanılan bir araç. Daha fazla bilgiyi [burada](service-fabric-cluster-upgrade-windows-server.md) bulabilirsiniz|
 
 **Şablonlar** 
 

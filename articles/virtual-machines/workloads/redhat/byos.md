@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 06/10/2020
 ms.author: alsin
 ms.openlocfilehash: 54d703b8a493610174f00844cd0736f65f3ee541
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87052157"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Azure 'da kendi aboneliğinizi getir Gold görüntülerini Red Hat Enterprise Linux
@@ -34,7 +34,7 @@ Red Hat Enterprise Linux (RHEL) görüntüleri, Kullandıkça Öde veya kendi ab
 - Görüntüler, [Azure 'da Red Hat Enterprise Linux görüntülerde](./redhat-images.md)açıklanan geçerli ilkeleri izler.
 - Bu görüntülerden oluşturulan VM 'lere standart destek ilkeleri uygulanır.
 - Red Hat Gold görüntülerinden sağlanan VM 'Ler, RHEL Kullandıkça Öde görüntüleriyle ilişkili RHEL ücretleri taşımaz.
-- Görüntülerin yetkileri yok. Red Hat abonelik-Manager ' i kullanarak, Red Hat 'ten güncelleştirmeleri doğrudan almak için VM 'Leri kaydedebilir ve abone olabilirsiniz.
+- Görüntülerin yetkileri yok. Red Hat Subscription-Manager kullanarak doğrudan Red Hat 'ten güncelleştirmeleri almak için bu VM 'Leri kaydedebilir ve abone olabilirsiniz.
 - Linux görüntüleri için KCG ve kullandıkça öde faturalandırma modelleri arasında dinamik olarak geçiş yapmak mümkün değildir. Faturalandırma modelini değiştirmek için, VM 'yi ilgili görüntüden yeniden dağıtmanız gerekir.
 
 >[!NOTE]
@@ -120,7 +120,7 @@ Aşağıdaki yönergeler, Azure CLı kullanarak bir RHEL VM için ilk dağıtım
     az vm create -n rhel-byos-vm -g rhel-byos-group --image redhat:rhel-byos:rhel-lvm8:latest
     ```
 
-1. Sanal makinenize SSH ekleyin ve ilgili olmayan bir görüntünüz olduğunu doğrulayın. Bu adımı yapmak için öğesini çalıştırın `sudo yum repolist` . RHEL 8 için kullanın `sudo dnf repolist` . Çıktı, VM 'yi Red Hat ile kaydetmek için abonelik Yöneticisi 'ni kullanmanızı ister.
+1. Sanal makinenize SSH ekleyin ve ilgili olmayan bir görüntünüz olduğunu doğrulayın. Bu adımı yapmak için öğesini çalıştırın `sudo yum repolist` . RHEL 8 için kullanın `sudo dnf repolist` . Çıktı, sanal makineyi Red Hat ile kaydetmek için Subscription-Manager kullanmanızı ister.
 
 >[!NOTE]
 >, RHEL 8 üzerinde `dnf` ve bu `yum` değiştirilebilir. Daha fazla bilgi için bkz. [RHEL 8 Yönetici Kılavuzu](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/packaging_and_distributing_software/index).

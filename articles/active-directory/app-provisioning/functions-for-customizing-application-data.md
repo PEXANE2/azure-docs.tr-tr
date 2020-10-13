@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: kenwith
 ms.openlocfilehash: d454ab3ad382c6237ab9f8c215473801285ba3c9
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88235681"
 ---
 # <a name="how-to-write-expressions-for-attribute-mappings-in-azure-ad"></a>Nasıl yapılır: Azure AD 'de öznitelik eşlemeleri için ifadeler yazma
@@ -27,7 +27,7 @@ Sağlamayı bir SaaS uygulamasına yapılandırdığınızda, belirtebileceğini
 
 * İfadenin tamamı, parantez içindeki bağımsız değişkenlerin ardında yer aldığı bir addan oluşan işlevler bakımından tanımlanmalıdır: <br>
   *Fonksiyonadı ( `<<argument 1>>` , `<<argument N>>` )*
-* İşlevleri birbirlerine iç içe yerleştirebilirsiniz. Örnek: <br> *FunctionOne (FunctionTwo ( `<<argument1>>` ))*
+* İşlevleri birbirlerine iç içe yerleştirebilirsiniz. Örneğin: <br> *FunctionOne (FunctionTwo ( `<<argument1>>` ))*
 * İşlevlere üç farklı türde bağımsız değişken geçirebilirsiniz:
   
   1. Köşeli ayraçlar içine alınması gereken öznitelikler. Örneğin: [attributeName]
@@ -41,7 +41,7 @@ Sağlamayı bir SaaS uygulamasına yapılandırdığınızda, belirtebileceğini
 [Sona](#append) &nbsp; &nbsp; Ekle &nbsp; &nbsp; [BitAnd](#bitand) &nbsp; &nbsp; Bitand &nbsp; &nbsp; [CBool](#cbool) &nbsp; &nbsp; CBool &nbsp; &nbsp; [Coalesce](#coalesce) &nbsp; &nbsp; Birleşim &nbsp; &nbsp; [ConvertToBase64](#converttobase64) &nbsp; &nbsp; ConvertToBase64 &nbsp; &nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp; &nbsp; ConvertToUTF8Hex &nbsp; &nbsp; [Count](#count) &nbsp; &nbsp; Sayı &nbsp; &nbsp; [CStr](#cstr) &nbsp; &nbsp; CStr &nbsp; &nbsp; [Tarih Fromnum](#datefromnum) &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; FormatDateTime &nbsp; &nbsp; [Guid](#guid) &nbsp; &nbsp; GUID &nbsp; &nbsp; [IIF](#iif) &nbsp; &nbsp; IIf &nbsp; &nbsp; [InStr](#instr) &nbsp; &nbsp; InStr &nbsp; &nbsp; [IsNull](#isnull) &nbsp; &nbsp; IsNull &nbsp; &nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp; &nbsp; IsNullOrEmpty &nbsp; &nbsp; [IsPresent](#ispresent) &nbsp; &nbsp; İssun &nbsp; &nbsp; [IsString](#isstring) &nbsp; &nbsp; İsstrıng &nbsp; &nbsp; [Item](#item) &nbsp; &nbsp; Öğe &nbsp; &nbsp; [Join](#join) &nbsp; &nbsp; Katılırsanız &nbsp; &nbsp; [Left](#left) &nbsp; &nbsp; Sol &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) Removeyinelemelerini [desteklemeyen](#not) PARÇAAL, &nbsp; &nbsp; &nbsp; &nbsp; [RemoveDuplicates](#removeduplicates) &nbsp; &nbsp; &nbsp; &nbsp; [Replace](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [selectuniquevalue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [singleapprotaatama](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [split](#split) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Switch](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper) &nbsp; &nbsp; &nbsp; &nbsp; [Word 'ü](#word) Değiştir
 
 ---
-### <a name="append"></a>Ekle
+### <a name="append"></a>Ekleme
 
 **Çalışmayacaktır**<br> Append (kaynak, sonek)
 
@@ -49,7 +49,7 @@ Sağlamayı bir SaaS uygulamasına yapılandırdığınızda, belirtebileceğini
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
 | **önekini** |Gerekli |Dize |Kaynak değerin sonuna eklemek istediğiniz dize. |
@@ -67,7 +67,7 @@ Diğer bir deyişle, her iki parametrenin de karşılık gelen bitlerinin 1 oldu
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **value1** |Gerekli |sayı |Değer2 ile birlikte olması gereken sayısal değer|
 | **value2** |Gerekli |sayı |Değer1 ile birlikte olması gereken sayısal değer|
@@ -84,9 +84,9 @@ BitAnd (&HF, &HF7)
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
-| **ifadesini** |Gerekli | ifade | Herhangi bir geçerli ifade |
+| **expression** |Gerekli | ifade | Herhangi bir geçerli ifade |
 
 **Örnek:**<br>
 CBool ([Attribute1] = [attribute2])                                                                    
@@ -100,7 +100,7 @@ Her iki öznitelik de aynı değere sahip olduğunda true döndürür.
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **source1 ... Kaynakcen** | Gerekli | Dize |Gerekli, değişken sayısı. Genellikle kaynak nesneden özniteliğin adı. |
 | **Değerinin** | İsteğe Bağlı | Dize | Tüm kaynak değerleri NULL olduğunda kullanılacak varsayılan değer. Boş dize ("") olabilir.
@@ -113,7 +113,7 @@ Her iki öznitelik de aynı değere sahip olduğunda true döndürür.
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |64 tabanına dönüştürülecek dize|
 
@@ -129,7 +129,7 @@ ConvertToBase64 ("Hello World!")
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |UTF8 onaltılı olarak dönüştürülecek dize|
 
@@ -138,14 +138,14 @@ ConvertToUTF8Hex ("Hello World!")
 48656C6C6F20776F726C6421 döndürür
 
 ---
-### <a name="count"></a>Count
+### <a name="count"></a>Sayı
 **Çalışmayacaktır**<br> Count (öznitelik)
 
 **Açıklama:**<br> Count işlevi, birden çok değerli bir öznitelikteki öğelerin sayısını döndürür
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **özniteliğe** |Gerekli |özniteliği |Sayılacak öğeleri olan çok değerli öznitelik|
 
@@ -157,9 +157,9 @@ ConvertToUTF8Hex ("Hello World!")
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
-| **deeri** |Gerekli | sayısal, başvuru veya Boole | Sayısal bir değer, başvuru özniteliği veya Boole olabilir. |
+| **değer** |Gerekli | sayısal, başvuru veya Boole | Sayısal bir değer, başvuru özniteliği veya Boole olabilir. |
 
 **Örnek:**<br>
 CStr ([DN])                                                            
@@ -173,9 +173,9 @@ CStr ([DN])
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
-| **deeri** |Gerekli | Tarih | Tarih saat türüne dönüştürülecek AD tarihi |
+| **değer** |Gerekli | Tarih | Tarih saat türüne dönüştürülecek AD tarihi |
 
 **Örnek:**<br>
 DateFromNum ([lastLogonTimestamp])                                                                                                   
@@ -190,7 +190,7 @@ DateFromNum (129699324000000000)
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
 | **InPutFormat** |Gerekli |Dize |Kaynak değerinin biçimi bekleniyordu. Desteklenen biçimler için bkz. [/DotNet/Standard/Base-Types/Custom-Date-and-Time-Format-Strings](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
@@ -210,7 +210,7 @@ DateFromNum (129699324000000000)
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **koşul** |Gerekli |Değişken veya Ifade |Doğru veya yanlış olarak değerlendirilebilen herhangi bir değer veya ifade. |
 | **valueIfTrue** |Gerekli |Değişken veya dize | Koşul true olarak değerlendirilirse döndürülen değer. |
@@ -227,11 +227,11 @@ IıF ([Country] = "USA", [Ülke], [departman])
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **value1** |Gerekli |Dize |Aranacak dize |
 | **value2** |Gerekli |Dize |Bulunan dize |
-| **başından** |İsteğe Bağlı |Tamsayı |Alt dizeyi bulmak için başlangıç konumu|
+| **start** |İsteğe Bağlı |Tamsayı |Alt dizeyi bulmak için başlangıç konumu|
 | **compareType** |İsteğe Bağlı |Sabit listesi |VbTextCompare veya vbBinaryCompare olabilir |
 
 **Örnek:**<br>
@@ -249,9 +249,9 @@ InStr ("yineleniyor", "e", 3, vbBinaryCompare)
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
-| **ifadesini** |Gerekli |ifade |Değerlendirilecek ifade |
+| **expression** |Gerekli |ifade |Değerlendirilecek ifade |
 
 **Örnek:**<br>
 IsNull ([displayName])                                                                                                
@@ -266,9 +266,9 @@ Bu işlevin tersi ısun olarak adlandırılmıştır.
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
-| **ifadesini** |Gerekli |ifade |Değerlendirilecek ifade |
+| **expression** |Gerekli |ifade |Değerlendirilecek ifade |
 
 **Örnek:**<br>
 IsNullOrEmpty ([displayName])                                               
@@ -282,9 +282,9 @@ IsNullOrEmpty ([displayName])
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
-| **ifadesini** |Gerekli |ifade |Değerlendirilecek ifade |
+| **expression** |Gerekli |ifade |Değerlendirilecek ifade |
 
 **Örnek:**<br>
 Anahtar (ısunu ([directManager]), [directManager], ısun ([skiplevelManager]), [skiplevelManager], ıssun ([Yönetmen]), [Yönetmen])
@@ -297,9 +297,9 @@ Anahtar (ısunu ([directManager]), [directManager], ısun ([skiplevelManager]), 
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
-| **ifadesini** |Gerekli |ifade |Değerlendirilecek ifade |
+| **expression** |Gerekli |ifade |Değerlendirilecek ifade |
 
 ---
 ### <a name="item"></a>Öğe
@@ -309,7 +309,7 @@ Anahtar (ısunu ([directManager]), [directManager], ısun ([skiplevelManager]), 
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **özniteliğe** |Gerekli |Öznitelik |Aranacak çok değerli öznitelik |
 | **indeks** |Gerekli |Tamsayı | Çoklu değerli dizedeki bir öğenin dizini|
@@ -327,7 +327,7 @@ Kaynak değerlerinden biri çok değerli bir öznitelik ise, bu öznitelikteki h
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **ayırıcı** |Gerekli |Dize |Tek bir dizede bitiştirildiği zaman kaynak değerlerini ayırmak için kullanılan dize. Hiçbir ayırıcı gerekmiyorsa "" olabilir. |
 | **source1 ... Kaynakcen** |Gerekli, değişken sayısı |Dize |Birlikte birleştirilecek dize değerleri. |
@@ -343,7 +343,7 @@ Dize Numchar 'lar içinde belirtilen sayıdan daha az karakter içeriyorsa, dize
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **Dize** |Gerekli |Öznitelik | Karakterlerin döndürdüğü dize |
 | **NumChars** |Gerekli |Tamsayı | Dizenin başından (solda) döndürülecek karakter sayısını tanımlayan sayı|
@@ -360,11 +360,11 @@ Sol ("John tikan", 3)
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Genellikle özniteliğin adı. |
-| **başından** |Gerekli |integer |Alt dizenin başlaması gereken **kaynak** dizedeki dizin. Dizedeki ilk karakter 1 dizinine sahip olacak, ikinci karakter dizin 2 ' ye sahip olur ve bu şekilde devam eder. |
-| **uzunluklu** |Gerekli |integer |Alt dizenin uzunluğu. Uzunluk **kaynak** dizenin dışında biterse, işlev **Başlangıç** dizininden **kaynak** dizenin sonuna kadar alt dize döndürür. |
+| **start** |Gerekli |tamsayı |Alt dizenin başlaması gereken **kaynak** dizedeki dizin. Dizedeki ilk karakter 1 dizinine sahip olacak, ikinci karakter dizin 2 ' ye sahip olur ve bu şekilde devam eder. |
+| **length** |Gerekli |tamsayı |Alt dizenin uzunluğu. Uzunluk **kaynak** dizenin dışında biterse, işlev **Başlangıç** dizininden **kaynak** dizenin sonuna kadar alt dize döndürür. |
 
 ---
 ### <a name="normalizediacritics"></a>Normalizediacritika
@@ -374,7 +374,7 @@ Sol ("John tikan", 3)
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize | Genellikle ad veya soyadı özniteliği. |
 
@@ -386,7 +386,7 @@ Sol ("John tikan", 3)
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Boole dizesi |Beklenen **kaynak** değerleri "true" veya "false" şeklindedir. |
 
@@ -398,9 +398,9 @@ Sol ("John tikan", 3)
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
-| **deeri** |Gerekli | Dize | Desteklenen biçimdeki tarih saat dizesi. Desteklenen biçimler için bkz https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx .. |
+| **değer** |Gerekli | Dize | Desteklenen biçimdeki tarih saat dizesi. Desteklenen biçimler için bkz https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx .. |
 
 **Örnek:**<br>
 * Workday örneği <br>
@@ -420,7 +420,7 @@ Sol ("John tikan", 3)
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **özniteliğe** |Gerekli |Çoklu değerli öznitelik |Yinelenen öğeleri kaldırılacak birden çok değerli öznitelik|
 
@@ -454,7 +454,7 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Genellikle **kaynak** nesneden özniteliğin adı. |
 | **oldValue** |İsteğe Bağlı |Dize |**Kaynak** veya **şablonda**değiştirilmekte olan değer. |
@@ -479,7 +479,7 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **uniqueValueRule1 ... uniqueValueRuleN** |En az 2 gerekir, üst sınır yoktur |Dize | Değerlendirilecek benzersiz değer oluşturma kurallarının listesi. |
 
@@ -492,7 +492,7 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **AppRoleAssignments** |Gerekli |Dize |**[Approtaatamalar]** nesnesi. |
 
@@ -504,10 +504,10 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Güncelleştirilecek **kaynak** değeri. |
-| **ayırıcı** |Gerekli |Dize |Dizeyi ayırmak için kullanılacak karakteri belirtir (örneğin: ",") |
+| **sınırlayıcı** |Gerekli |Dize |Dizeyi ayırmak için kullanılacak karakteri belirtir (örneğin: ",") |
 
 ---
 ### <a name="stripspaces"></a>StripSpaces
@@ -517,7 +517,7 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Güncelleştirilecek **kaynak** değeri. |
 
@@ -529,12 +529,12 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Güncelleştirilecek **kaynak** değeri. |
 | **Değerinin** |İsteğe Bağlı |Dize |Kaynak herhangi bir anahtara eşleşmezse kullanılacak varsayılan değer. Boş dize ("") olabilir. |
 | **anahtar** |Gerekli |Dize |**Kaynak** değeri Karşılaştırılacak **anahtar** . |
-| **deeri** |Gerekli |Dize |Anahtarla eşleşen **kaynak** için değiştirme değeri. |
+| **değer** |Gerekli |Dize |Anahtarla eşleşen **kaynak** için değiştirme değeri. |
 
 ---
 ### <a name="tolower"></a>ToLower
@@ -544,7 +544,7 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı |
 | **ayarı** |İsteğe Bağlı |Dize |RFC 4646 ' i temel alan kültür adı biçimi *languagecode2-Country/regioncode2*, burada *languagecode2* iki harfli dil kodu ve *Ülke/regioncode2* ise iki harfli alt kültür kodudur. Japonca (Japonya) için ja-JP ve Ingilizce (Birleşik Devletler) için en-US sayılabilir. İki harfli dil kodunun kullanılamadığı durumlarda ISO 639-2 ' den türetilen üç harfli bir kod kullanılır.|
@@ -557,7 +557,7 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
 | **ayarı** |İsteğe Bağlı |Dize |RFC 4646 ' i temel alan kültür adı biçimi *languagecode2-Country/regioncode2*, burada *languagecode2* iki harfli dil kodu ve *Ülke/regioncode2* ise iki harfli alt kültür kodudur. Japonca (Japonya) için ja-JP ve Ingilizce (Birleşik Devletler) için en-US sayılabilir. İki harfli dil kodunun kullanılamadığı durumlarda ISO 639-2 ' den türetilen üç harfli bir kod kullanılır.|
@@ -574,7 +574,7 @@ Dize sayı olan sözcüklerden daha az sözcük içeriyorsa veya dize sınırlay
 
 **Parametrelere**<br> 
 
-| Name | Gerekli/yinelenen | Tür | Notlar |
+| Adı | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **Dize** |Gerekli |Çoklu değerli öznitelik |Bir sözcüğün döndürdüğü dize.|
 | **WordNumber** |Gerekli | Tamsayı | Hangi sözcük sayısının dönmesi gerektiğini tanımlayan sayı|

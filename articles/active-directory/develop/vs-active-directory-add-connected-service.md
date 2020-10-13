@@ -11,15 +11,15 @@ ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.openlocfilehash: a1ba7db72743ac122a697bf271e783ec64e041e8
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88165490"
 ---
 # <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Visual Studio 'da bağlı hizmetleri kullanarak Azure Active Directory ekleme
 
-Azure Active Directory (Azure AD) kullanarak, ASP.NET MVC web uygulamaları için çoklu oturum açma (SSO) veya Web API hizmetlerinde Active Directory kimlik doğrulama desteği sağlayabilirsiniz. Azure AD kimlik doğrulaması ile kullanıcılarınız, Web uygulamalarınıza bağlanmak için Azure Active Directory hesaplarını kullanabilir. Web API 'si ile Azure AD kimlik doğrulamasının avantajları, bir Web uygulamasından API 'YI kullanıma sunmadan gelişmiş veri güvenliği içerir. Azure AD ile ayrı bir kimlik doğrulama sistemini kendi hesabı ve Kullanıcı yönetimi ile yönetmeniz gerekmez.
+Azure Active Directory (Azure AD) kullanarak, ASP.NET MVC web uygulamaları için tek Sign-On (SSO) veya Web API hizmetlerinde Active Directory kimlik doğrulaması destekleyebilirsiniz. Azure AD kimlik doğrulaması ile kullanıcılarınız, Web uygulamalarınıza bağlanmak için Azure Active Directory hesaplarını kullanabilir. Web API 'si ile Azure AD kimlik doğrulamasının avantajları, bir Web uygulamasından API 'YI kullanıma sunmadan gelişmiş veri güvenliği içerir. Azure AD ile ayrı bir kimlik doğrulama sistemini kendi hesabı ve Kullanıcı yönetimi ile yönetmeniz gerekmez.
 
 Bu makale ve yardımcı makaleler, Active Directory için Visual Studio bağlı hizmet özelliğini kullanma hakkında ayrıntılı bilgi sağlar. Özelliği Visual Studio 2015 ve üzeri sürümlerde kullanılabilir.
 
@@ -32,7 +32,7 @@ Active Directory bağlı hizmet, ASP.NET Core uygulamalarını desteklemez.
 
 ### <a name="connect-to-azure-active-directory-using-the-connected-services-dialog"></a>Bağlı hizmetler iletişim kutusunu kullanarak Azure Active Directory bağlanma
 
-1. Visual Studio 'da bir ASP.NET MVC projesi veya bir ASP.NET Web API projesi oluşturun veya açın. MVC, Web API, tek sayfalı uygulama, Azure API uygulaması, Azure mobil uygulaması ve Azure mobil hizmet şablonlarını kullanabilirsiniz.
+1. Visual Studio 'da bir ASP.NET MVC projesi veya bir ASP.NET Web API projesi oluşturun veya açın. MVC, Web API, Single-Page uygulaması, Azure API uygulaması, Azure mobil uygulaması ve Azure mobil hizmet şablonları kullanabilirsiniz.
 
 1. **Project > bağlı hizmet ekle...** menü komutunu seçin veya Çözüm Gezgini içindeki proje altında bulunan **bağlı hizmetler** düğümüne çift tıklayın.
 

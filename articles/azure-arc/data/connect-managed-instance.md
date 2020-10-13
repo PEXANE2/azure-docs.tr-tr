@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 3277dc4d9c4485b117bfcfd1d6e130e7370cd8c2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90941591"
 ---
 # <a name="connect-to-azure-arc-enabled-sql-managed-instance"></a>Azure Arc etkin SQL yönetilen örneğine bağlanma
@@ -49,7 +49,7 @@ Azure Data Studio, SQL Server Management Studio veya SQLCMD ile bağlanma
 
 Azure Data Studio açın ve yukarıdaki dış uç nokta IP adresini ve bağlantı noktası numarasını kullanarak örneğinize bağlanın. Azure VM kullanıyorsanız, [Azure sanal makine dağıtımları hakkında özel notlardan](#special-note-about-azure-virtual-machine-deployments)yararlanarak _genel_ IP adresi gerekir.
 
-Örnek:
+Örneğin:
 
 - Sunucu: 52.229.9.30, 30913
 - Kullanıcı adı: SA
@@ -82,7 +82,7 @@ Bir kural ayarlamak için aşağıdaki komutu kullanarak bulabileceğiniz NSG 'n
 az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 ```
 
-NSG 'nin adını aldıktan sonra, aşağıdaki komutu kullanarak bir güvenlik duvarı kuralı ekleyebilirsiniz. Burada örnek değerler, 30913 numaralı bağlantı noktası için bir NSG kuralı oluşturur ve **herhangi** BIR kaynak IP adresinden bağlantıya izin verir.  Bu en iyi güvenlik uygulaması değildir!  İstemci IP adresine özgü bir-kaynak-adres ön eki değeri ya da takımınızın veya kuruluşun IP adreslerini içeren bir IP adresi aralığı belirterek, işlemleri daha iyi bir şekilde kilitleyebilir.
+NSG 'nin adını aldıktan sonra, aşağıdaki komutu kullanarak bir güvenlik duvarı kuralı ekleyebilirsiniz. Burada örnek değerler, 30913 numaralı bağlantı noktası için bir NSG kuralı oluşturur ve **herhangi** BIR kaynak IP adresinden bağlantıya izin verir.  Bu en iyi güvenlik uygulaması değildir!  İstemci IP adresinize ya da ekibinizin veya kuruluşunuzun IP adreslerini kapsayan bir IP adresi aralığına özgü bir -source-address-prefixes değeri belirterek öğeleri daha iyi bir şekilde kilitleyebilirsiniz.
 
 `--destination-port-ranges`Aşağıdaki parametresinin değerini yukarıdaki F komutundan aldığınız bağlantı noktası numarasıyla değiştirin `azdata sql instance list` .
 

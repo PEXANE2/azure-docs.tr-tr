@@ -12,19 +12,19 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.reviewer: celested
 ms.openlocfilehash: 11e0606568fdaad20f996a7ae20a622576acea15
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88549475"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Asana yapılandırma
 
 Bu öğreticinin amacı, Azure AD 'den Asana 'ya Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için, Asana ve Azure Active Directory (Azure AD) içinde gerçekleştirmeniz gereken adımları gösteriyoruz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu varsayar:
+Bu öğreticide anlatılan senaryoda aşağıdakilere sahip olduğunuz kabul edilmiştir:
 
 * Bir Azure AD kiracısı
 * [Kurumsal](https://www.asana.com/pricing) plana sahip bir Asana kiracı veya daha iyi etkin

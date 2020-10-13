@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 92c798ea798dac49dd74e7fb86aeb78fc2941502
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6445199ee30c52cc426ddce0016a34df5d1e0112
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87853118"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960498"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-python"></a>Hızlı başlangıç: Görüntü İşleme REST API ve Python kullanarak yerel bir görüntüyü çözümleme
 
@@ -26,7 +26,7 @@ Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak görsel özel
 
 [![Bağlayıcısı](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Python](https://www.python.org/downloads/) ve aşağıdaki paketler:
@@ -68,7 +68,7 @@ else:
 if 'COMPUTER_VISION_ENDPOINT' in os.environ:
     endpoint = os.environ['COMPUTER_VISION_ENDPOINT']
 
-analyze_url = endpoint + "vision/v3.0/analyze"
+analyze_url = endpoint + "vision/v3.1/analyze"
 
 # Set image_path to the local path of an image that you want to analyze.
 # Sample images are here, if needed:

@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: bfe150a45c70bc5bed18f8e929c9567905cd38f5
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171610"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>Öğretici: olayları Event Grid buluta Iletme
@@ -36,8 +36,8 @@ Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
 
 Örneğin, Batı ABD adında bir konu oluşturduysanız `testegcloudtopic` , değerler şöyle görünür:
 
-* **Topicurl**:`https://testegcloudtopic.westus2-1.eventgrid.azure.net/api/events`
-* **TopicName**:`testegcloudtopic`
+* **Topicurl**: `https://testegcloudtopic.westus2-1.eventgrid.azure.net/api/events`
+* **TopicName**: `testegcloudtopic`
 * **Saskey**: konunun **AccessKey** altında bulunabilir. **KEY1**kullanın.
 
 ## <a name="create-event-grid-topic-at-the-edge"></a>Kenarda olay kılavuzu oluşturma konusu
@@ -103,7 +103,7 @@ Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
    >[!NOTE]
    > **EndpointUrl** , bulutta Event Grid konusunun URL 'sini belirtir. **Saskey** Event Grid bulut konusunun anahtarına başvurur. **TopicName** içindeki değer tüm giden olayları Event Grid için damgalamak üzere kullanılacaktır. Bu, bir Event Grid etki alanı konusuna naklederken yararlı olabilir. Event Grid etki alanı konusu hakkında daha fazla bilgi için bkz. [olay etki alanları](../event-domains.md)
 
-    Örneğin:
+    Örneğin,
   
     ```json
         {

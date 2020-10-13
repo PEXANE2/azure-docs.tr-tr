@@ -8,10 +8,10 @@ ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: dddcdd52709c634f0dcf67cb982804f5556e88b9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88548344"
 ---
 # <a name="register-a-saas-application"></a>SaaS uygulaması kaydetme
@@ -26,7 +26,7 @@ Azure AD (Active Directory) hakkında daha fazla bilgi için bkz. [kimlik doğru
 
 Azure AD'nin özelliklerini kullanmak isteyen her uygulama önce bir Azure AD kiracısı olarak kaydedilmelidir. Bu kayıt işlemi, uygulamanız hakkında Azure AD bazı ayrıntıları vermeyi içerir. Azure portal kullanarak yeni bir uygulama kaydetmek için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Hesabınız birden fazla erişim veriyorsa, sağ üst köşedeki hesabınıza tıklayın ve Portal oturumunuzu istenen Azure AD kiracısı olarak ayarlayın.
 3. Sol taraftaki Gezinti bölmesinde **Azure Active Directory** hizmetine tıklayın, **uygulama kayıtları**' a tıklayın ve **Yeni uygulama kaydı**' na tıklayın.
 
@@ -62,7 +62,7 @@ Bu belirteçler hakkında daha fazla bilgi için bkz. [Azure Active Directory er
 
 Gönderi<br>
 
-##### <a name="request-url"></a>*İstek URL’si* 
+##### <a name="request-url"></a>*İstek URL 'SI* 
 
 `https://login.microsoftonline.com/*{tenantId}*/oauth2/token`
 

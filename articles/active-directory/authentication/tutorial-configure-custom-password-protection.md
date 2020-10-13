@@ -11,10 +11,10 @@ author: iainfoulds
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 24e0cfa4227ba5d7c38449d3cf1304add5ae5c1f
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88718892"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>Öğretici: Azure Active Directory parola koruması için özel yasaklanmış parolaları yapılandırma
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Özel yasaklanmış parola listesine giriş ekleme
 > * Parola değişikliklerini yasaklanmış parolayla sına
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -108,7 +108,7 @@ Karma bir ortamda [Azure AD parola korumasını şirket içi bir ortama da dağ�
 
 Bu öğreticinin bir parçası olarak yapılandırdığınız özel yasaklanmış parola listesini artık kullanmak istemiyorsanız, aşağıdaki adımları izleyin:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. **Azure Active Directory**bulun ve seçin ve ardından sol taraftaki menüden **güvenlik** ' i seçin.
 1. **Yönet** menü üst bilgisi altında **kimlik doğrulama yöntemleri**' ni ve ardından **parola koruması**' nı seçin.
 1. **Özel liste Uygula** seçeneğini *Hayır*olarak ayarlayın.

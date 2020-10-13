@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/25/2020
 ms.custom: mvc
 ms.openlocfilehash: 46d3ad6afb1761ca9503676ad2176482b7e4530e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260749"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Azure Container Instances'taki sık karşılaşılan sorunları giderme
@@ -45,7 +45,7 @@ Azure Container Instances desteklemediği bir görüntü belirtirseniz bir `OsVe
 }
 ```
 
-Bu hata en sık, yarı yıllık kanal sürümü 1709 veya 1803 tabanlı Windows görüntülerini dağıtmada desteklenmez ve bu durum desteklenmez. Azure Container Instances sürümünde desteklenen Windows görüntüleri için bkz. [sık sorulan sorular](container-instances-faq.md#what-windows-base-os-images-are-supported).
+Bu hata genellikle, desteklenmeyen Semi-Annual kanal sürümü 1709 veya 1803 temel alınarak Windows görüntülerini dağıtmaya çalışırken karşılaşılan bir hatadır. Azure Container Instances sürümünde desteklenen Windows görüntüleri için bkz. [sık sorulan sorular](container-instances-faq.md#what-windows-base-os-images-are-supported).
 
 ### <a name="unable-to-pull-image"></a>Görüntü çekilemiyor
 
@@ -204,7 +204,7 @@ Azure Container Instances, kapsayıcı gruplarını barındıran temeldeki altya
 
 Azure Container Instances, normal Docker yapılandırmasıyla benzer bağlantı noktası eşlemeyi henüz desteklememektedir. Bir kapsayıcı grubunun IP adresini, olması gerektiğine inanıyorsanız erişilebilir değilse, kapsayıcı grubunuza özelliği ile birlikte kullanıma sunabileceğiniz aynı bağlantı noktalarını dinlemek için kapsayıcı görüntünüzü yapılandırdığınızdan emin olun `ports` .
 
-Azure Container Instances, kapsayıcı görüntnınızda yapılandırdığınız bağlantı noktasında dinleyebildiğini doğrulamak istiyorsanız, bu `aci-helloworld` bağlantı noktasını kullanıma sunan görüntünün bir dağıtımını test edin. Ayrıca, `aci-helloworld` bağlantı noktasında dinleyeceği şekilde uygulamayı çalıştırın. `aci-helloworld`, `PORT` dinlediği varsayılan bağlantı noktası 80 ' ü geçersiz kılmak için isteğe bağlı bir ortam değişkenini kabul eder. Örneğin, 9000 bağlantı noktasını test etmek için, kapsayıcı grubunu oluştururken [ortam değişkenini](container-instances-environment-variables.md) ayarlayın:
+Azure Container Instances, kapsayıcı görüntnınızda yapılandırdığınız bağlantı noktasında dinleyebildiğini doğrulamak istiyorsanız, bu `aci-helloworld` bağlantı noktasını kullanıma sunan görüntünün bir dağıtımını test edin. Ayrıca, `aci-helloworld` bağlantı noktasında dinleyeceği şekilde uygulamayı çalıştırın. `aci-helloworld` , `PORT` dinlediği varsayılan bağlantı noktası 80 ' ü geçersiz kılmak için isteğe bağlı bir ortam değişkenini kabul eder. Örneğin, 9000 bağlantı noktasını test etmek için, kapsayıcı grubunu oluştururken [ortam değişkenini](container-instances-environment-variables.md) ayarlayın:
 
 1. 9000 numaralı bağlantı noktasını kullanıma sunmak için kapsayıcı grubunu ayarlayın ve bağlantı noktası numarasını ortam değişkeninin değeri olarak geçirin. Örnek bash kabuğu için biçimlendirilir. PowerShell veya komut Istemi gibi başka bir kabuğu tercih ediyorsanız, değişken atamasını uygun şekilde ayarlamanız gerekir.
     ```azurecli

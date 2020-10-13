@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
 ms.openlocfilehash: 650164556223a73a722bc91ecb31491ee98cb8a5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91307110"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-linux-virtual-machines"></a>Lsv2-Series Linux sanal makinelerinde performansı iyileştirin
@@ -97,7 +97,7 @@ Yerel depolamada verileri yedekleme seçenekleri hakkında daha fazla bilgi edin
    Rq_affinity ayar, saniye başına en fazla giriş/çıkış işlemi (ıOPS) kullanılırken küçük bir ayarlamadır. Diğer her şey iyi çalışır duruma getirildikten sonra, fark olup olmadığını görmek için rq_affinity 0 olarak ayarlamayı deneyin.
 
 * **Blk_mq ayarlarını değiştirmem gerekiyor mu?**  
-   RHEL/CentOS 7. x, NVMe cihazları için otomatik olarak blk-MQ kullanır. Yapılandırma değişikliği veya ayarları gerekli değildir. Scsi_mod. use_blk_mq ayarı yalnızca SCSI içindir ve NVMe cihazları Konuk VM 'lerde SCSI cihazları olarak göründüğünden, Lsv2 Preview sırasında kullanılmıştır. Şu anda NVMe cihazları NVMe cihazları olarak görülebilir, bu nedenle SCSI blk-MQ ayarı ilgisiz olur.
+   RHEL/CentOS 7. x, NVMe cihazları için otomatik olarak blk-MQ kullanır. Yapılandırma değişikliği veya ayarları gerekli değildir. Scsi_mod. Use _blk_mq ayarı yalnızca SCSI içindir ve NVMe cihazları, Konuk VM 'lerde SCSI cihazları olarak göründüğünden, Lsv2 Preview sırasında kullanılır. Şu anda NVMe cihazları NVMe cihazları olarak görülebilir, bu nedenle SCSI blk-MQ ayarı ilgisiz olur.
 
 * **"Fio" öğesini değiştirmem gerekiyor mu?**  
    L64v2 ve L80v2 VM boyutlarında ' Fio ' gibi bir performans ölçme aracıyla maksimum ıOPS 'yi almak için, her bir NVMe cihazında "rq_affinity" öğesini 0 olarak ayarlayın.  Örneğin, bu komut satırı, bir L80v2 VM 'deki tüm 10 NVMe cihazları için "rq_affinity" değerini sıfıra ayarlar:

@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
 ms.openlocfilehash: 4650df71acb088fafc1280d31d9abfb398e06741
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87284498"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Windows VM 'Leri için Azure disk şifrelemesi 
@@ -86,7 +86,7 @@ Aşağıdaki tabloda, Azure disk şifrelemesi belgelerinde kullanılan bazı yay
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Hızlı başlangıç-Azure CLı ile Windows VM oluşturma ve şifreleme](disk-encryption-cli-quickstart.md)
+- [Hızlı başlangıç-Azure CLı ile Windows VM oluşturma ve şifreleme ](disk-encryption-cli-quickstart.md)
 - [Hızlı başlangıç-Azure PowerShell ile Windows VM oluşturma ve şifreleme](disk-encryption-powershell-quickstart.md)
 - [Windows VM'lerinde Azure Disk Şifrelemesi senaryoları](disk-encryption-windows.md)
 - [Azure disk şifrelemesi önkoşulları CLı betiği](https://github.com/ejarvi/ade-cli-getting-started)

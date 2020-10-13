@@ -8,10 +8,10 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 83741f5bc55eb222b379a274ef403f766553b21f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328657"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure dijital TWINS örneği ve kimlik doğrulaması (komut dosyası) ayarlama
@@ -49,13 +49,13 @@ Dağıtım betiğini Cloud Shell ' de çalıştırma adımları aşağıda veril
  
 2. Cloud Shell simge çubuğunda, Cloud Shell PowerShell sürümünü çalıştıracak şekilde ayarlandığından emin olun.
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-powershell.png" alt-text="PowerShell sürümünün seçimini gösteren pencere Cloud Shell":::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-powershell.png" alt-text="PowerShell sürümünün seçimini gösteren pencere Cloud Shell&quot;:::
 
-1. "Dosyaları karşıya yükle/Indir" simgesini seçin ve "karşıya yükle" yi seçin.
+1. &quot;Dosyaları karşıya yükle/Indir&quot; simgesini seçin ve &quot;karşıya yükle" yi seçin.
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Karşıya yükleme simgesinin seçimini gösteren Cloud Shell pencere":::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="PowerShell sürümünün seçimini gösteren pencere Cloud Shell&quot;:::
 
-    Makinenizde _**deploy.ps1**_ dosyasına gidin ( _Azure_Digital_Twins_samples > betikler > **deploy.ps1** _) ve "Aç" düğmesine basın. Bu işlem, dosyayı Cloud Shell penceresinde çalıştırabilmeniz için Cloud Shell dosyasına yükler.
+1. &quot;Dosyaları karşıya yükle/Indir&quot; simgesini seçin ve &quot;karşıya yükle" düğmesine basın. Bu işlem, dosyayı Cloud Shell penceresinde çalıştırabilmeniz için Cloud Shell dosyasına yükler.
 
 4. Komutu Cloud Shell penceresine göndererek betiği çalıştırın `./deploy.ps1` . (Cloud Shell yapıştırılacağını geri çek, Windows ve Linux 'ta **CTRL + SHIFT + v** veya MacOS 'ta **cmd + SHIFT + v** kullanabilirsiniz. Sağ tıklama menüsünü de kullanabilirsiniz.)
 
@@ -82,7 +82,9 @@ Betik bir Azure dijital TWINS örneği oluşturur, Azure kullanıcısını örne
 
 Betikten çıktı günlüğü alıntısı aşağıda verilmiştir:
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="Dağıtım betiği çalıştırıldığında giriş ve çıkış günlüğünü gösteren Cloud Shell pencere" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="PowerShell sürümünün seçimini gösteren pencere Cloud Shell&quot;:::
+
+1. &quot;Dosyaları karşıya yükle/Indir&quot; simgesini seçin ve &quot;karşıya yükle" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
 
 Betik başarılı bir şekilde tamamlanırsa, nihai çıktıyı görürsünüz `Deployment completed successfully` . Aksi takdirde, hata iletisini adreslayın ve betiği yeniden çalıştırın. Bu işlem, önceden tamamladığınız adımları atlar ve kaldığınız yerden yeniden giriş istemeye başlar.
 
@@ -103,7 +105,9 @@ Diğer kullanıcılar örnekle programlama yapacaktır, bu değerleri bunlarla d
 
 Bunu seçtiğinizde, örneğin *genel bakış* sayfası açılır. *Adına*, *kaynak grubuna*ve *ana bilgisayar adına göz önünde barının*. Daha sonra örneğinizi belirleyip daha sonra bu örneğe bağlanmanız gerekebilir.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Örneğin genel bakış sayfasından önemli değerleri vurgulama":::
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="PowerShell sürümünün seçimini gösteren pencere Cloud Shell&quot;:::
+
+1. &quot;Dosyaları karşıya yükle/Indir&quot; simgesini seçin ve &quot;karşıya yükle":::
 
 ### <a name="collect-app-registration-values"></a>Uygulama kayıt değerlerini topla 
 
@@ -113,7 +117,9 @@ Bunları bulmak için Azure portal Azure AD uygulama kaydına genel bakış sayf
 
 Bu listede yeni oluşturduğunuz uygulama kaydını görmeniz gerekir. Ayrıntılarını açmak için seçin:
 
-:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Uygulama kaydı için önemli değerlerin Portal görünümü":::
+:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="PowerShell sürümünün seçimini gösteren pencere Cloud Shell&quot;:::
+
+1. &quot;Dosyaları karşıya yükle/Indir&quot; simgesini seçin ve &quot;karşıya yükle":::
 
 **Sayfanızda gösterilen** *uygulama (istemci) kimliğini* ve *Dizin (kiracı) kimliğini* bir yere göz atın. İstemci uygulamaları için kod yazmak üzere bir kişi değilseniz, bu değerleri olacak kişiyle paylaşmanız gerekir.
 

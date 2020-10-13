@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: e9dc6acf33208de44eec2b5b9706b9f0b176f0d7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87284481"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Şifrelemesi örnek betikleri 
@@ -86,7 +86,7 @@ Windows Server 2008 R2 için aşağıdaki komutu kullanın:
 ServerManagerCmd -install BitLockers
 ```
 
-### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>Kullanarak BitLocker için işletim sistemi birimini hazırlama`bdehdcfg`
+### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>Kullanarak BitLocker için işletim sistemi birimini hazırlama `bdehdcfg`
 İşletim sistemi bölümünü sıkıştırmak ve makineyi BitLocker 'a hazırlamak için gerekirse [BdeHdCfg](/windows/security/information-protection/bitlocker/bitlocker-basic-deployment) ' yi yürütün:
 
 ```console
@@ -105,7 +105,7 @@ reboot
 > BitLocker 'ı kullanarak dış anahtarı almak için VM 'yi ayrı bir veri/kaynak VHD ile hazırlayın.
 
 ## <a name="upload-encrypted-vhd-to-an-azure-storage-account"></a>Şifrelenmiş VHD 'YI bir Azure depolama hesabına yükleme
-DM-Crypt şifrelemesi etkinleştirildikten sonra, yerel şifreli VHD 'nin depolama hesabınıza yüklenmesi gerekir.
+DM-Crypt şifreleme etkinleştirildikten sonra, yerel şifreli VHD 'nin depolama hesabınıza yüklenmesi gerekir.
 ```powershell
     Add-AzVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo> [[-NumberOfUploaderThreads] <Int32> ] [[-BaseImageUriToPatch] <Uri> ] [[-OverWrite]] [ <CommonParameters>]
 ```

@@ -10,10 +10,10 @@ ms.date: 09/09/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 2db281f1b3278e37deca8486971a7f7a83f85ccf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86503090"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Visual Studio ile sanal makine ölçek kümesi oluşturma
@@ -24,7 +24,7 @@ Bu makalede, bir Visual Studio kaynak grubu dağıtımı kullanarak bir Azure sa
 
 Azure Kaynak grubu dağıtımları, bir dizi ilgili Azure kaynağını tek bir dağıtım işleminde gruplamak ve yayımlamak için bir yoldur. Daha fazla bilgi için bkz. [Visual Studio aracılığıyla Azure Kaynak grupları oluşturma ve dağıtma](../azure-resource-manager/templates/create-visual-studio-deployment-project.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Visual Studio 'da sanal makine ölçek kümelerini dağıtmaya başlamak için aşağıdaki önkoşullara sahip olmanız gerekir:
 
@@ -34,7 +34,7 @@ Visual Studio 'da sanal makine ölçek kümelerini dağıtmaya başlamak için a
 >[!NOTE]
 >Bu makalede, [Azure SDK 2,8](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/)Ile Visual Studio 2019 kullanılmaktadır.
 
-## <a name="create-a-project"></a>Proje oluşturma<a name="creating-a-project"></a> 
+## <a name="create-a-project"></a>Proje oluşturma <a name="creating-a-project"></a> 
 
 1. Visual Studio 'Yu açın ve **Yeni proje oluştur**' u seçin.
 
@@ -82,7 +82,7 @@ Sanal makine ölçek kümesi kaynağını oluşturmak için Azure Resource Manag
 
    ![Çıktı sonuçları gösterir](media/virtual-machine-scale-sets-vs-create/deployment-output.png)
 
-## <a name="explore-your-virtual-machine-scale-set"></a>Sanal makine ölçek kümesini keşfet<a name="exploring-your-virtual-machine-scale-set"></a>
+## <a name="explore-your-virtual-machine-scale-set"></a>Sanal makine ölçek kümesini keşfet <a name="exploring-your-virtual-machine-scale-set"></a>
 
 **View**  >  Yeni sanal makine ölçek kümesini görüntülemek için**bulut Gezginini** görüntüle ' yi seçin. Gerekirse **Tümünü Yenile**seçeneğini kullanın.
 

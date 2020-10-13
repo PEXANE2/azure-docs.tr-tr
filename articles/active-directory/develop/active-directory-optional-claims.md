@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
 ms.openlocfilehash: 2d895a6703123d8725a375e29e2e26b64b621f23
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89436859"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Nasıl yapılır: uygulamanıza isteğe bağlı talepler sağlama
@@ -93,7 +93,7 @@ Bu talepler her zaman v 1.0 Azure AD belirteçlerine dahil edilmiştir, ancak is
 
 **Tablo 4: isteğe bağlı talepler yapılandırma değerleri**
 
-| Özellik adı  | Ek özellik adı | Description |
+| Özellik adı  | Ek özellik adı | Açıklama |
 |----------------|--------------------------|-------------|
 | `upn`          |                          | Hem SAML hem de JWT yanıtları için ve v 1.0 ve v 2.0 belirteçleri için kullanılabilir. |
 |                | `include_externally_authenticated_upn`  | , Kaynak kiracısında depolanan Konuk UPN 'sini içerir. Örneğin, `foo_hometenant.com#EXT#@resourcetenant.com` |
@@ -182,7 +182,7 @@ Bir uygulama tarafından istenen isteğe bağlı talepleri bildirir. Bir uygulam
 
 **Tablo 5: Optionalclaim türü özellikleri**
 
-| Ad          | Tür                       | Description                                           |
+| Ad          | Tür                       | Açıklama                                           |
 |---------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Koleksiyon (OptionalClaim) | JWT KIMLIK belirtecinde döndürülen isteğe bağlı talepler.     |
 | `accessToken` | Koleksiyon (OptionalClaim) | JWT erişim belirtecinde döndürülen isteğe bağlı talepler. |
@@ -195,7 +195,7 @@ Belirli bir talep tarafından destekleniyorsa, Additionalclaim 'nin davranışı
 
 **Tablo 6: OptionalClaim türü özellikleri**
 
-| Ad                   | Tür                    | Description                                                                                                                                                                                                                                                                                                   |
+| Ad                   | Tür                    | Açıklama                                                                                                                                                                                                                                                                                                   |
 |------------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | İsteğe bağlı talebin adı.                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | Talebin kaynağı (Dizin nesnesi). Uzantı özelliklerinden önceden tanımlı talepler ve Kullanıcı tanımlı talepler vardır. Kaynak değeri null ise, talep önceden tanımlanmış isteğe bağlı bir talep olur. Kaynak değeri kullanıcı ise, ad özelliğindeki değer kullanıcı nesnesinden uzantı özelliğidir. |
@@ -206,7 +206,7 @@ Belirli bir talep tarafından destekleniyorsa, Additionalclaim 'nin davranışı
 
 Standart isteğe bağlı talepler kümesine ek olarak, belirteçleri uzantıları içerecek şekilde de yapılandırabilirsiniz. Daha fazla bilgi için [Microsoft Graph extensionProperty belgelerine](/graph/api/resources/extensionproperty?view=graph-rest-1.0)bakın.
 
-Şema ve açık uzantılar isteğe bağlı talepler, yalnızca AAD grafik stili Dizin uzantıları tarafından desteklenmez. Bu özellik, uygulamanızın kullanabileceği ek kullanıcı bilgilerini eklemek için yararlıdır; Örneğin, kullanıcının ayarlamış olduğu ek bir tanımlayıcı veya önemli bir yapılandırma seçeneği. Bir örnek için bu sayfanın en altına bakın.
+Şema ve açık uzantılar isteğe bağlı talepler tarafından desteklenmez; yalnızca AAD-Graph Style Dizin uzantıları. Bu özellik, uygulamanızın kullanabileceği ek kullanıcı bilgilerini eklemek için yararlıdır; Örneğin, kullanıcının ayarlamış olduğu ek bir tanımlayıcı veya önemli bir yapılandırma seçeneği. Bir örnek için bu sayfanın en altına bakın.
 
 > [!NOTE]
 > Dizin şeması uzantıları yalnızca Azure AD özellikli bir özelliktir. Uygulama bildiriminiz bir özel uzantı isterse ve bir MSA kullanıcısı uygulamanızda oturum açarsa, bu uzantılar döndürülmez.

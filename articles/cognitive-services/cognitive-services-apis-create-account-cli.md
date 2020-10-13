@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
 ms.openlocfilehash: 41dc99c206fb66aa87ccca6e40d6e9488f801a22
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91262442"
 ---
-# <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Hızlı başlangıç: Azure komut satırı arabirimi 'ni (CLı) kullanarak bilişsel hizmetler kaynağı oluşturma
+# <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Hızlı başlangıç: Azure Command-Line arabirimini (CLı) kullanarak bilişsel hizmetler kaynağı oluşturma
 
 Azure [komut satırı arabirimi 'ni (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)kullanarak Azure bilişsel hizmetler 'i kullanmaya başlamak için bu hızlı başlangıcı kullanın.
 
@@ -29,7 +29,7 @@ Bu hızlı başlangıçta, Azure [komut satırı arabirimi 'ni (CLI)](https://do
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Geçerli bir Azure aboneliği-ücretsiz olarak [bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services) .
 * [Azure komut satırı arabirimi (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
@@ -88,7 +88,7 @@ Yeni bir kaynak oluştururken, kullanmak istediğiniz hizmetin "tür" i ve isted
 > [!NOTE]
 > Aşağıdaki bilişsel hizmetler 'in çoğunda hizmeti denemek için kullanabileceğiniz ücretsiz bir katman vardır. Ücretsiz katmanı kullanmak için, `F0` kaynağınız için SKU olarak kullanın.
 
-### <a name="vision"></a>Vision
+### <a name="vision"></a>Görsel
 
 | Hizmet                    | Tür                      |
 |----------------------------|---------------------------|
@@ -99,7 +99,7 @@ Yeni bir kaynak oluştururken, kullanmak istediğiniz hizmetin "tür" i ve isted
 | Form Tanıma            | `FormRecognizer`          |
 | Mürekkep Tanıma             | `InkRecognizer`           |
 
-### <a name="search"></a>Arayın
+### <a name="search"></a>Search
 
 | Hizmet            | Tür                  |
 |--------------------|-----------------------|
@@ -160,7 +160,7 @@ az cognitiveservices account create \
 
 ## <a name="get-the-keys-for-your-resource"></a>Kaynağınızın anahtarlarını alın
 
-Komut satırı arabirimi (CLı) yerel yüklemenizde oturum açmak için [az Login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) komutunu kullanın.
+Command-Line arabirimi (CLı) yerel yüklemenizde oturum açmak için [az Login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) komutunu kullanın.
 
 ```azurecli-interactive
 az login

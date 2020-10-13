@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 10/09/2020
 ms.author: b-juche
-ms.openlocfilehash: f6e38585e86dd962bc5f94a7c2a8a67c55f2a8fd
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 0818d113b5475e847c009f979345e103d6e089bb
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91595896"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938874"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Azure NetApp Files kullanan çözüm mimarileri
 Bu makalede, Azure NetApp Files kullanmaya yönelik çözüm mimarilerini anlamanıza yardımcı olabilecek en iyi yöntemlere başvurular sağlanmaktadır.  
@@ -34,9 +34,9 @@ Bu bölüm, Linux OSS uygulamalarına ve veritabanlarına yönelik çözümler i
 
 ### <a name="oracle"></a>Oracle
 
-* [Tek birimlerde Azure NetApp Files Oracle veritabanı performansı](performance-oracle-single-volumes.md)
+* [Azure NetApp Files tek birimlerinde Oracle veritabanı performansı](performance-oracle-single-volumes.md)
 * [Azure dağıtım Azure NetApp Files kullanarak en iyi Yöntem Kılavuzu](https://www.netapp.com/us/media/tr-4780.pdf)
-* [Oracle VM görüntüleri ve bunların Microsoft Azure dağıtımı: paylaşılan depolama yapılandırma seçenekleri](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-vm-solutions#shared-storage-configuration-options)
+* [Oracle VM görüntüleri ve bunların Microsoft Azure dağıtımı: paylaşılan depolama yapılandırma seçenekleri](../virtual-machines/workloads/oracle/oracle-vm-solutions.md#shared-storage-configuration-options)
 * [Oracle Database ile Azure NetApp Files kullanmanın avantajları](solutions-benefits-azure-netapp-files-oracle-database.md)
 
 ## <a name="windows-apps-and-sql-server-solutions"></a>Windows Uygulamaları ve SQL Server çözümleri
@@ -61,17 +61,20 @@ Bu bölümde, Azure çözümlerinde SAP başvuruları sağlanmaktadır.
 ### <a name="generic-sap-and-sap-netweaver"></a>Genel SAP ve SAP NetWeaver 
 
 * [Azure NetApp Files kullanarak Microsoft Azure SAP uygulamaları](https://www.netapp.com/us/media/tr-4746.pdf)
-* [SAP uygulamaları için Azure NetApp Files SUSE Linux Enterprise Server üzerindeki Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
-* [SAP uygulamaları için Azure NetApp Files Red Hat Enterprise Linux üzerindeki Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
-* [SAP uygulamaları için Azure NetApp Files (SMB) ile Windows üzerinde Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)
-* [SAP NetWeaver için Red Hat Enterprise Linux Azure VM 'lerde yüksek kullanılabilirlik çoklu SID Kılavuzu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
+* [SAP uygulamaları için Azure NetApp Files SUSE Linux Enterprise Server üzerindeki Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik](../virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files.md)
+* [SAP uygulamaları için Azure NetApp Files Red Hat Enterprise Linux üzerindeki Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik](../virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files.md)
+* [SAP uygulamaları için Azure NetApp Files (SMB) ile Windows üzerinde Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik](../virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb.md)
+* [SAP NetWeaver için Red Hat Enterprise Linux Azure VM 'lerde yüksek kullanılabilirlik çoklu SID Kılavuzu](../virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid.md)
 
 ### <a name="sap-hana"></a>SAP HANA 
 
-* [SAP HANA Azure sanal makine depolama alanı yapılandırmaları](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
-* [Red Hat Enterprise Linux Azure NetApp Files ile SAP HANA ölçeği yüksek kullanılabilirliği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-netapp-files-red-hat)
-* [SUSE Linux Enterprise Server Azure NetApp Files ile Azure VM 'lerinde bekleme düğümüyle genişleme SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
-* [Red Hat Enterprise Linux Azure NetApp Files ile Azure VM 'lerinde bekleme düğümüyle genişleme SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
+* [SAP HANA Azure sanal makine depolama alanı yapılandırmaları](../virtual-machines/workloads/sap/hana-vm-operations-storage.md)
+* [Red Hat Enterprise Linux Azure NetApp Files ile SAP HANA ölçeği yüksek kullanılabilirliği](../virtual-machines/workloads/sap/sap-hana-high-availability-netapp-files-red-hat.md)
+* [SUSE Linux Enterprise Server Azure NetApp Files ile Azure VM 'lerinde bekleme düğümüyle genişleme SAP HANA](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse.md)
+* [Red Hat Enterprise Linux Azure NetApp Files ile Azure VM 'lerinde bekleme düğümüyle genişleme SAP HANA](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel.md)
+
+### <a name="sap-iq-nls"></a>SAP ıQ-NLS
+*   [SUSE Linux Enterprise Server Azure NetApp Files kullanarak SAP IQ-NLS HA çözümünü dağıtma](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/deploy-sap-iq-nls-ha-solution-using-azure-netapp-files-on-suse/ba-p/1651172#.X2tDfpNzBh4.linkedin)
 
 ### <a name="sap-tech-community-and-blog-posts"></a>SAP teknoloji topluluğu ve blog gönderileri 
 
@@ -88,9 +91,10 @@ Bu bölüm, sanal masaüstü altyapısı çözümlerine yönelik başvurular sa�
 ### <a name="windows-virtual-desktop"></a>Windows Sanal Masaüstü
 
 * [Windows Sanal Masaüstü ile Azure NetApp Files kullanmanın avantajları](solutions-windows-virtual-desktop.md)
-* [Windows sanal masaüstündeki FSLogix profil kapsayıcıları için depolama seçenekleri](https://docs.microsoft.com/azure/virtual-desktop/store-fslogix-profile#azure-platform-details)
-* [Azure NetApp Files kullanarak bir konak havuzu için FSLogix profil kapsayıcısı oluşturma](https://docs.microsoft.com/azure/virtual-desktop/create-fslogix-profile-container)
-* [Kurumsal ölçekte Windows Sanal Masaüstü](https://docs.microsoft.com/azure/architecture/example-scenario/wvd/windows-virtual-desktop)
+* [Windows sanal masaüstündeki FSLogix profil kapsayıcıları için depolama seçenekleri](../virtual-desktop/store-fslogix-profile.md#azure-platform-details)
+* [Azure NetApp Files kullanarak bir konak havuzu için FSLogix profil kapsayıcısı oluşturma](../virtual-desktop/create-fslogix-profile-container.md)
+* [Kurumsal ölçekte Windows Sanal Masaüstü](/azure/architecture/example-scenario/wvd/windows-virtual-desktop)
+* [Kurumsal Azure NetApp Files en iyi uygulamalar için Microsoft FSLogix](/azure/architecture/example-scenario/wvd/windows-virtual-desktop-fslogix#azure-netapp-files-best-practices)
 
 ## <a name="hpc-solutions"></a>HPC çözümleri
 
@@ -100,17 +104,18 @@ Bu bölümde, yüksek performanslı bilgi Işlem (HPC) çözümleri için başvu
 
 * [Azure NetApp Files: bulut depolamalarınızdan en iyi şekilde yararlanmak](https://cloud.netapp.com/hubfs/Resources/ANF%20PERFORMANCE%20TESTING%20IN%20TEMPLATE.pdf)
 * [Azure Batch ve Azure NetApp Files MPı iş yüklerini çalıştırma](https://azure.microsoft.com/resources/run-mpi-workloads-with-azure-batch-and-azure-netapp-files/)
-* [Azure Cycle Cloud: Azure NetApp Files CycleCloud HPC ortamları](https://docs.microsoft.com/azure/cyclecloud/overview)
+* [Azure Cycle Cloud: Azure NetApp Files CycleCloud HPC ortamları](/azure/cyclecloud/overview)
 
 ### <a name="oil-and-gas"></a>Petrol ve gaz
 
 * [Yüksek performanslı bilgi işlem (HPC): Azure 'da yağ ve gaz](https://techcommunity.microsoft.com/t5/azure-global/high-performance-computing-hpc-oil-and-gas-in-azure/ba-p/824926)
-* [Azure 'da rezervoır benzetim yazılımını çalıştırma](https://docs.microsoft.com/azure/architecture/example-scenario/infrastructure/reservoir-simulation)
+* [Azure 'da rezervoır benzetim yazılımını çalıştırma](/azure/architecture/example-scenario/infrastructure/reservoir-simulation)
 
 ### <a name="electronic-design-automation-eda"></a>Elektronik tasarım otomasyonu (EDA)
 
 * [Elektronik tasarım otomasyonu için Azure NetApp Files kullanmanın avantajları](solutions-benefits-azure-netapp-files-electronic-design-automation.md)
 * [Azure CycleCloud: Azure NetApp Files ile EDA HPC Laboratuvarı](https://github.com/Azure/cyclecloud-hands-on-labs/blob/master/EDA/README.md)
+* [Yarı iletken sektör için Azure](https://azurecomcdn.azureedge.net/cvt-f40f39cd9de2d875ab0c198a8d7b186350cf0bca161e80d7896941389685d012/mediahandler/files/resourcefiles/azure-for-the-semiconductor-industry/Azure_for_the_Semiconductor_Industry.pdf)
 
 ### <a name="analytics"></a>Analiz
 
@@ -123,11 +128,10 @@ Bu bölüm, Azure platform hizmetleri için çözümler sağlar.
 
 ### <a name="azure-kubernetes-services-and-kubernetes"></a>Azure Kubernetes Hizmetleri ve Kubernetes
 
-* [Azure NetApp Files Azure Kubernetes hizmeti ile tümleştirme](https://docs.microsoft.com/azure/aks/azure-netapp-files)
+* [Azure NetApp Files Azure Kubernetes hizmeti ile tümleştirme](../aks/azure-netapp-files.md)
 * [Azure NetApp Files ile Azure 'da bu dünya dışı Kubernetes performansı](https://cloud.netapp.com/blog/ma-anf-blg-configure-kubernetes-openshift)
 * [Trident-kapsayıcılar için depolama Orchestrator](https://netapp-trident.readthedocs.io/en/stable-v20.04/kubernetes/operations/tasks/backends/anf.html)
 
 ### <a name="azure-batch"></a>Azure Batch
 
 * [Azure Batch ve Azure NetApp Files MPı iş yüklerini çalıştırma](https://azure.microsoft.com/resources/run-mpi-workloads-with-azure-batch-and-azure-netapp-files/)
- 
