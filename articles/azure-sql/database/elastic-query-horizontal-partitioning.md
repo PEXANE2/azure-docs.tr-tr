@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
 ms.openlocfilehash: ced546f8f4375433d9fcd59f7ce46f9604f72921
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443124"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Ölçekli bulut veritabanları genelinde raporlama (Önizleme)
@@ -29,7 +29,7 @@ Hızlı başlangıç için bkz. [ölçekli bulut veritabanları genelinde raporl
 
 Parçalı olmayan veritabanları için bkz. [farklı şemalarla bulut veritabanları genelinde sorgulama](elastic-query-vertical-partitioning.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Elastik veritabanı istemci kitaplığını kullanarak bir parça haritası oluşturun. bkz. parça [eşleme yönetimi](elastic-scale-shard-map-management.md). Ya da [elastik veritabanı araçlarını kullanmaya başlama](elastic-scale-get-started.md)bölümünde örnek uygulamayı kullanın.
 * Alternatif olarak, bkz. [var olan veritabanlarını ölçekli veritabanlarına geçirme](elastic-convert-to-use-elastic-tools.md).
@@ -165,7 +165,7 @@ DAĞıTıM yan tümcesi, bu tablo için kullanılan veri dağılımını belirti
 
 **Veri katmanı başvurusu**: dış tablo DDL, bir dış veri kaynağını ifade eder. Dış veri kaynağı, dış tabloya, veri katmanınızda tüm veritabanlarını bulmak için gereken bilgileri sağlayan bir parça Haritası belirtir.
 
-### <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
+### <a name="security-considerations"></a>Güvenlik konuları
 
 Dış tabloya erişimi olan kullanıcılar, dış veri kaynağı tanımında verilen kimlik bilgileri altındaki temeldeki uzak tablolara otomatik olarak erişim elde edebilir. Dış veri kaynağının kimlik bilgileri aracılığıyla, ayrıcalıkların istenmeyen ayrıcalıklarından kaçının. Bir dış tablo için, normal bir tablo olmasına rağmen ızın verme veya Iptal etme kullanın.  
 
@@ -215,7 +215,7 @@ SP \_ Execute \_ Remote, uzak veritabanlarında verilen T-SQL ifadesini yürütm
 
 Uygulamanızı, bı ve veri tümleştirme araçlarınızı, dış tablo tanımlarınızla veritabanına bağlamak için normal SQL Server bağlantı dizelerini kullanın. SQL Server, aracınız için bir veri kaynağı olarak desteklendiğinden emin olun. Ardından, araçla bağlantılı diğer SQL Server veritabanları gibi elastik sorgu veritabanına başvurun ve araç veya uygulamanızdaki dış tabloları yerel tablolar gibi kullanın.
 
-## <a name="best-practices"></a>En iyi uygulamalar
+## <a name="best-practices"></a>Önerilen uygulamalar
 
 * Elastik sorgu uç noktası veritabanına, shardmap veritabanına ve SQL veritabanı güvenlik duvarları üzerinden tüm parçalara erişim verildiğinden emin olun.  
 * Dış tablo tarafından tanımlanan veri dağıtımını doğrulayın veya zorunlu tutun. Gerçek veri dağıtım tablonuz, tablo tanımınızda belirtilen dağıtıma farklıysa, sorgunuz beklenmedik sonuçlara neden olabilir.

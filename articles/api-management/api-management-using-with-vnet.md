@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/22/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: 5b96ac9cf43782764e88039d736ba61454d65911
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67b855beae4ea36bf4ef7e6bb396c6b7ae1d89e3
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539223"
+ms.locfileid: "91874348"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Sanal ağlar ile Azure API Management’ı kullanma
 Azure Sanal Ağları (VNET’ler) Azure kaynaklarınızdan herhangi birini, erişimini denetlediğiniz İnternet tabanlı olmayan ve yönlendirilebilir bir ağa yerleştirmenizi sağlar. Bu ağlar daha sonra, çeşitli VPN teknolojileri kullanılarak şirket içi ağlarınıza bağlanabilir. Azure sanal ağları hakkında daha fazla bilgi edinmek için buradaki bilgilerle başlayın: [Azure sanal ağına genel bakış](../virtual-network/virtual-networks-overview.md).
@@ -223,6 +223,7 @@ IP adresleri **Azure ortamı**tarafından bölünür. Gelen isteklere izin veril
 | Azure Genel| Doğu Kanada| 52.139.80.117|
 | Azure Genel| BAE Kuzey| 20.46.144.85|
 | Azure Genel| Brezilya Güney| 191.233.24.179|
+| Azure Genel| Brezilya Güneydoğu| 191.232.18.181|
 | Azure Genel| Güneydoğu Asya| 40.90.185.46|
 | Azure Genel| Güney Afrika Kuzey| 102.133.130.197|
 | Azure Genel| Orta Kanada| 52.139.20.34|

@@ -9,15 +9,15 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 7227813f607ca18ee50f503a30b290414f333e21
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91310178"
 ---
 # <a name="supported-data-format-details"></a>Desteklenen veri biçimi ayrıntıları
 
-Bu makalede, tüm XML etiketleri ve Iyi bilinen metin geometrisi türleri için okuma ve yazma desteği hakkında bilgiler sağlanmaktadır. Ayrıca, sınırlı uzamsal verilerin uzamsal GÇ modülünde nasıl ayrıştırıladığına da ilişkin ayrıntılar sağlanır.
+Bu makalede, tüm XML etiketleri ve Well-Known metin geometrisi türleri için okuma ve yazma desteği hakkında bilgiler sağlanmaktadır. Ayrıca, sınırlı uzamsal verilerin uzamsal GÇ modülünde nasıl ayrıştırıladığına da ilişkin ayrıntılar sağlanır.
 
 ## <a name="supported-xml-namespaces"></a>Desteklenen XML ad alanları
 
@@ -304,7 +304,7 @@ Yazarken;
 - Çoklu noktaları, tek tek yol noktalarına bölünür.
 - Çokgenler ve MultiPolygon, iz olarak yazılır. 
   
-## <a name="supported-well-known-text-geometry-types"></a>Desteklenen Iyi bilinen metin geometrisi türleri
+## <a name="supported-well-known-text-geometry-types"></a>Desteklenen Well-Known metin geometrisi türleri
 
 | Geometri türü | Okuma | Yazma |
 |--------------|:----:|:-----:|
@@ -343,7 +343,7 @@ Yazarken;
 
 ## <a name="delimited-spatial-data-support"></a>Sınırlandırılmış uzamsal veri desteği
 
-Virgülle ayrılmış değer dosyaları (CSV) gibi ayrılmış uzamsal veriler genellikle uzamsal verileri içeren sütunlara sahiptir. Örneğin, enlem ve boylam bilgilerini içeren sütunlar olabilir. Iyi bilinen metin biçiminde, uzamsal geometri verisi içeren bir sütun olabilir.
+Virgülle ayrılmış değer dosyaları (CSV) gibi ayrılmış uzamsal veriler genellikle uzamsal verileri içeren sütunlara sahiptir. Örneğin, enlem ve boylam bilgilerini içeren sütunlar olabilir. Well-Known metin biçiminde, uzamsal geometri verisi içeren bir sütun olabilir.
 
 ### <a name="spatial-data-column-detection"></a>Uzamsal veri sütunu algılama
 
@@ -385,7 +385,7 @@ Uzamsal verileri içeren ayrılmış bir dosyayı okurken, hangi sütunların ko
 
 #### <a name="geography"></a>Coğrafya
 
-İlk veri satırı, Iyi bilinen metin biçimindeki dizeler için taranır. 
+İlk veri satırı Well-Known metin biçimindeki dizeler için taranır. 
 
 ### <a name="delimited-data-column-types"></a>Sınırlandırılmış veri sütunu türleri
 
@@ -399,7 +399,7 @@ Uzamsal verileri içeren ayrılmış bir dosyayı okurken, hangi sütunların ko
 - EDM. Double
 - float
 - double
-- sayı
+- number
 
 #### <a name="booleans"></a>Boolean
 
@@ -410,7 +410,7 @@ Uzamsal verileri içeren ayrılmış bir dosyayı okurken, hangi sütunların ko
 #### <a name="dates"></a>Tarihler
 
 - EDM. DateTime
-- tarih
+- date
 - datetime
 
 #### <a name="geography"></a>Coğrafya

@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2eb656e46ce5e26fca5ae5c094f9b8bb85819caa
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89275785"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect Sync: Kullanıcısertifikası özniteliği nedeniyle LargeObject hatalarını Işleme
@@ -117,8 +117,8 @@ Yeni eşitleme kuralı, mevcut eşitleme kuralına göre aynı **kapsam filtresi
 
     | Öznitelik | Değer | Ayrıntılar |
     | --- | --- | --- |
-    | Name | *Bir ad belirtin* | Örneğin, *"AAD 'Den dışarı-userCertificate Için özel geçersiz kılma"* |
-    | Description | *Bir açıklama girin* | Örneğin, *"userCertificate özniteliğinde 15 ' ten fazla değer varsa, verileri dışarı aktarın."* |
+    | Adı | *Bir ad belirtin* | Örneğin, *"AAD 'Den dışarı-userCertificate Için özel geçersiz kılma"* |
+    | Açıklama | *Bir açıklama girin* | Örneğin, *"userCertificate özniteliğinde 15 ' ten fazla değer varsa, verileri dışarı aktarın."* |
     | Bağlı sistem | *Azure AD bağlayıcısını seçin* |
     | Bağlı sistem nesne türü | **kullanıcısını** | |
     | Meta veri deposu nesne türü | **kişiler** | |

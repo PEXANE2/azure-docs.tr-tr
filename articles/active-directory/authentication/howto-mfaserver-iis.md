@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5c072298bf5cce4e22fe50d2474c7abe6b915f74
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88919514"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>IIS web uygulamaları için Azure Multi-Factor Authentication Sunucusu
@@ -40,7 +40,7 @@ Form tabanlı kimlik doğrulaması kullanan bir IIS web uygulamasını güvenli 
 1. Azure Multi-Factor Authentication Sunucusu’nun soldaki menüsünde IIS Kimlik Doğrulaması simgesine tıklayın.
 2. **Form Tabanlı** sekmesine tıklayın.
 3. **Ekle**'ye tıklayın.
-4. Kullanıcı adı, parola ve etki alanı değişkenlerini otomatik olarak algılamak için, `https://localhost/contoso/auth/login.aspx` otomatik yapılandırma form tabanlı Web sitesi iletişim kutusuna oturum açma URL 'sini (gibi) girin ve **Tamam**' a tıklayın.
+4. Kullanıcı adı, parola ve etki alanı değişkenlerini otomatik olarak algılamak için, `https://localhost/contoso/auth/login.aspx` otomatik yapılandırma Form-Based Web sitesi iletişim kutusuna oturum açma URL 'sini (gibi) girin ve **Tamam**' a tıklayın.
 5. Tüm kullanıcılar sunucuya aktarılmışsa veya sunucuya aktarılacaksa ve Multi-Factor Authentication 'a tabi olursa **Kullanıcı eşleştirme Multi-Factor Authentication iste** kutusunu işaretleyin. Çok sayıda kullanıcı Sunucu’ya henüz aktarılmadı ve/veya multi-factor authentication’da muaf tutulacaksa, kutunun işaretini kaldırın.
 6. Sayfa değişkenleri otomatik olarak algılanamıyorsa Otomatik Yapılandırma Form Tabanlı Web Sitesi iletişim kutusunda **Elle Belirt**’e tıklayın.
 7. Otomatik Yapılandırma Form Tabanlı Web Sitesi iletişim kutusunda, URL Gönder alanına oturum açma sayfası URL’sini girin ve Uygulama adı girin (isteğe bağlı). Uygulama adı Azure Multi-Factor Authentication raporlarında görünür ve SMS veya Mobil Uygulama kimlik doğrulama iletilerinde görüntülenebilir.
@@ -54,7 +54,7 @@ Form tabanlı kimlik doğrulaması kullanan bir IIS web uygulamasını güvenli 
     - Birincil kimlik bilgilerinin bir Windows Etki Alanı, LDAP dizinine göre mi yoksa RADIUS sunucusuna göre mi doğrulanacağını belirtin.
 
 12. Form Tabanlı Web Sitesi Ekle iletişim kutusuna dönmek için **Tamam**’a tıklayın.
-13. **Tamam** düğmesine tıklayın.
+13. **Tamam**'a tıklayın.
 14. URL ve sayfa değişkenleri algılandığında veya girildiğinde, web sitesi verileri Form Tabanlı panelde görüntülenir.
 
 ## <a name="using-integrated-windows-authentication-with-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Sunucusu ile Tümleşik Windows Kimlik Doğrulaması kullanma
@@ -68,14 +68,14 @@ Tümleşik Windows HTTP kimlik doğrulaması kullanan bir IIS web uygulamasını
 5. Varsayılan yeterli değilse, Boşta kalma zaman aşımı ve Maksimum oturum sürelerini ayarlayın.
 6. Tüm kullanıcılar sunucuya aktarılmışsa veya sunucuya aktarılacaksa ve Multi-Factor Authentication 'a tabi olursa **Kullanıcı eşleştirme Multi-Factor Authentication iste** kutusunu işaretleyin. Çok sayıda kullanıcı Sunucu’ya henüz aktarılmadı ve/veya multi-factor authentication’da muaf tutulacaksa, kutunun işaretini kaldırın.
 7. İsterseniz **tanımlama bilgisi önbelleği** kutusunu işaretleyin.
-8. **Tamam** düğmesine tıklayın.
+8. **Tamam**'a tıklayın.
 
 ## <a name="enable-iis-plug-ins-for-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Sunucusu için IIS Eklentilerini Etkinleştirme
 
 Form Tabanlı ya da HTTP kimlik doğrulaması URL’lerini ve ayarlarını yapılandırdıktan sonra, Azure Multi-Factor Authentication IIS eklentilerinin IIS’de yüklenmesi ve etkinleştirilmesi gereken konumları seçin. Aşağıdaki yordamı kullanın:
 
-1. IIS 6 ' da çalışıyorsa, **ISAPI** sekmesine tıklayın. bu site için Azure Multi-Factor Authentication ISAPI filtresi eklentisini etkinleştirmek üzere Web uygulamasının altında çalıştığı Web sitesini (örneğin, varsayılan Web sitesi) seçin.
-2. IIS 7 veya üzeri sürümlerde çalışıyorsa, **yerel modül** sekmesine tıklayın. IIS eklentisini istenen düzeylerde etkinleştirmek için sunucu, Web siteleri veya uygulamalar ' ı seçin.
+1. IIS 6 ' da çalışıyorsa, **ISAPI** sekmesine tıklayın. Bu site için Azure Multi-Factor Authentication ISAPI filtresi eklentisini etkinleştirmek üzere Web uygulamasının altında çalıştığı Web sitesini (örneğin, varsayılan Web sitesi) seçin.
+2. IIS 7 veya üzeri sürümlerde çalışıyorsa **yerel modül** sekmesine tıklayın. İstenen düzeylerde IIS eklentisini etkinleştirmek için sunucu, Web siteleri veya uygulamalar ' ı seçin.
 3. Ekranın üst kısmındaki **IIS kimlik doğrulamasını etkinleştir** kutusuna tıklayın. Azure Multi-Factor Authentication artık seçilen IIS uygulamasını güvenli hale getirir. Kullanıcıların sunucuya aktarıldığından emin olun.
 
 ## <a name="trusted-ips"></a>Güvenilen IP'ler

@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: d36c0ab78f9f96a051e6cb0a53b756c7409ca142
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ab94af9ec172a3e88d523024c1e00d3a0d944798
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893403"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873090"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanına erişimi yönetme
 
@@ -141,7 +141,7 @@ Aşağıdaki tabloda Azure Machine Learning etkinliklerin Özeti ve bunları en 
 | Ardışık düzen uç noktası yayımlama | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar: `"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
 | AKS/ACI kaynağına kayıtlı model dağıtma | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar: `"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
 | Dağıtılan bir AKS uç noktasına göre Puanlama | Gerekli değil | Gerekli değil | Sahip, katkıda bulunan veya özel rol: `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` (Azure Active Directory kimlik doğrulaması kullanmadığınız zaman) veya `"/workspaces/read"` (belirteç kimlik doğrulamasını kullanırken) |
-| Etkileşimli not defterleri kullanarak depolamaya erişme | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar: `"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*"` |
+| Etkileşimli not defterleri kullanarak depolamaya erişme | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar: `"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*", "/workspaces/listKeys/action"` |
 | Yeni özel rol oluştur | Sahip, katkıda bulunan veya özel rol `Microsoft.Authorization/roleDefinitions/write` | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar: `/workspaces/computes/write` |
 
 > [!TIP]

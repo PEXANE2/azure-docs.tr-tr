@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 841bc3ae4fbddb376ea4da8141bf4df3f895c4dc
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89269565"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>Güvenli, Azure tarafından yönetilen bir iş istasyonu dağıtma
@@ -31,18 +31,18 @@ Artık [güvenli iş istasyonlarını anladığınıza](concept-azure-managed-wo
 
 | Profil | Düşük | Gelişmiş | Yüksek | Özelleştirilmiş | Korunmalıdır | Yalıtılmış |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Azure AD 'de Kullanıcı | Yes | Yes | Yes | Yes | Yes | Yes |
-| Intune tarafından yönetilen | Yes | Yes | Yes | Yes | Yes | Yes |
-| Cihaz-Azure AD kayıtlı | Yes |  |  |  |  | |   |
-| Cihaz-Azure AD 'ye katılmış |   | Yes | Yes | Yes | Yes | Yes |
-| Intune güvenlik temeli uygulandı |   | Yes <br> Leştirilmiş | Yes <br> (HighSecurity) | Yes <br> (NCSC) | Yes <br> Korunmalıdır | NA |
-| Donanım, güvenli Windows 10 standartlarına karşılıyor |   | Yes | Yes | Yes | Yes | Yes |
-| Microsoft Defender ATP etkin |   | Yes  | Yes | Yes | Yes | Yes |
-| Yönetici haklarının kaldırılması |   |   | Yes  | Yes | Yes | Yes |
-| Microsoft Autopilot kullanarak dağıtım |   |   | Yes  | Yes | Yes | Yes |
-| Yalnızca Intune tarafından yüklenen uygulamalar |   |   |   | Yes | Yes |Yes |
-| Onaylanan listeyle kısıtlanan URL 'Ler |   |   |   | Yes | Yes |Yes |
-| Internet engellendi (gelen/giden) |   |   |   |  |  |Yes |
+| Azure AD 'de Kullanıcı | Evet | Evet | Evet | Evet | Evet | Evet |
+| Intune tarafından yönetilen | Evet | Evet | Evet | Evet | Evet | Evet |
+| Cihaz-Azure AD kayıtlı | Evet |  |  |  |  | |   |
+| Cihaz-Azure AD 'ye katılmış |   | Evet | Evet | Evet | Evet | Evet |
+| Intune güvenlik temeli uygulandı |   | Evet <br> Leştirilmiş | Evet <br> (HighSecurity) | Evet <br> (NCSC) | Evet <br> Korunmalıdır | NA |
+| Donanım, güvenli Windows 10 standartlarına karşılıyor |   | Evet | Evet | Evet | Evet | Evet |
+| Microsoft Defender ATP etkin |   | Evet  | Evet | Evet | Evet | Evet |
+| Yönetici haklarının kaldırılması |   |   | Evet  | Evet | Evet | Evet |
+| Microsoft Autopilot kullanarak dağıtım |   |   | Evet  | Evet | Evet | Evet |
+| Yalnızca Intune tarafından yüklenen uygulamalar |   |   |   | Evet | Evet |Evet |
+| Onaylanan listeyle kısıtlanan URL 'Ler |   |   |   | Evet | Evet |Evet |
+| Internet engellendi (gelen/giden) |   |   |   |  |  |Evet |
 
 > [!NOTE]
 > Güvenli iş istasyonu Kılavuzu **cihazlarında** profiller ve ilkeler atanır. Kullanıcılara doğrudan ilke uygulanmayacak, cihaz paylaşımının (paylaşılan cihazlar) etkin olmasını sağlar. Güvenli bir iş istasyonu dağıtımınızda paylaşılmadığı veya ayrı kullanıcı ilkeleri gerekliyse, Kullanıcı ilkesi profillerinin atanması Kullanıcı ve cihaza atanabilir. 
@@ -291,7 +291,7 @@ Bazı durumlarda, Google Chrome tarayıcısı gibi uygulamalar, güvenli iş ist
 1. **Uygulama türü**' nün altında **iş kolu**' yi seçin.
 1. **Uygulama paketi dosyası**altında `GoogleChromeStandaloneEnterprise64.msi` ayıklanan konumdan dosyayı seçin ve **Tamam**' ı seçin.
 1. **Uygulama bilgileri**altında bir açıklama ve yayımcı sağlayın. **Tamam**’ı seçin.
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 1. **Atamalar** sekmesinde, **atama türü**altında **Kayıtlı cihazlar için kullanılabilir** ' ı seçin.
 1. **Dahil edilen gruplar**' ın altında, **güvenli iş istasyonları** grubunu ekleyin.
 1. **Tamam**' ı ve ardından **Kaydet**' i seçin.

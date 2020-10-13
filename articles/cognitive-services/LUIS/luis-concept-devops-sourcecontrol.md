@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/28/2020
 ms.openlocfilehash: 25f2c4f4698785326f80c24d3749e7585e85d5bb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91309515"
 ---
 # <a name="devops-practices-for-luis"></a>LUSıS için DevOps uygulamaları
@@ -34,7 +34,7 @@ Bu belgede açıklanan kavramları ve yönergeleri kullanarak, bir kaynak deneti
   - Yeniden temellendirme veya Merge aracılığıyla bir daldaki bir dalla yapılan değişiklikleri bir dalla bütünleştirmek mümkündür.
   - Geliştiriciler bir PR 'yi üst dala birleştirebilirler.
 
-- **Sürüm oluşturma**
+- **Sürüm Oluşturma**
   - Büyük bir uygulamadaki her bileşeni bağımsız olarak sürümlenmiş olmalıdır, böylece geliştiricilerin sürüm numarasına bakarak yalnızca önemli değişiklikleri veya güncelleştirmeleri algılamasına izin verir.
 
 - **Kod Incelemeleri**
@@ -181,7 +181,7 @@ LUO DevOps için test etme hakkında daha fazla bilgi için bkz. [Lufor DevOps I
 
 Luu biçimindeki bir LUO uygulaması, gözden geçirime uygun bir PR 'deki değişikliklerin iletişimini destekleyen insandır. Birim test dosyaları da Luaşağı biçiminde yazılır ve ayrıca bir PR 'de kolayca yeniden görüntülenebilir.
 
-## <a name="versioning"></a>Sürüm oluşturma
+## <a name="versioning"></a>Sürüm Oluşturma
 
 Bir uygulama, [Azure bot hizmetinde](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)çalışan bir bot, [soru-cevap oluşturma](https://www.qnamaker.ai/), [Azure konuşma hizmeti](https://docs.microsoft.com/azure/cognitive-services/speech-service/overview)ve daha fazlası gibi işlemleri içerebilen birden çok bileşenden oluşur. Gevşek olarak bağlanmış uygulamaların amacını elde etmek için, bir uygulamanın her bileşeninin bağımsız olarak sürümü oluşturulmuş olması için [Sürüm denetimini](https://docs.microsoft.com/azure/devops/learn/git/what-is-version-control) kullanın, böylece geliştiricilerin sürüm numarasına bakarak, önemli değişiklikleri veya güncelleştirmeleri algılamasına izin vermiş olur. LUSıS uygulamanızı kendi depolarından korumak için diğer bileşenlerden bağımsız olarak kolayca yükleyebilirsiniz.
 

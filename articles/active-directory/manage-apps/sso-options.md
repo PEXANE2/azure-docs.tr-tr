@@ -12,10 +12,10 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.openlocfilehash: 5c02733167db5071b1f2a9c5e04dc05a069fda3c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604215"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Azure AD 'de çoklu oturum açma seçenekleri
@@ -74,7 +74,7 @@ SAML tabanlı çoklu oturum açma, bu protokollerden herhangi birini kullanan uy
 
 SAML tabanlı çoklu oturum açma için bir SaaS uygulaması yapılandırmak üzere bkz. [SAML tabanlı çoklu oturum açmayı yapılandırma](configure-saml-single-sign-on.md). Ayrıca, hizmet olarak yazılım (SaaS) uygulamalarında, SAML tabanlı çoklu oturum açma yapılandırmasında size adım adım kılavuzluk eden [uygulamaya özgü bir öğretici](../saas-apps/tutorial-list.md) vardır.
 
-Bir uygulamayı WS-Federation için yapılandırmak üzere, uygulamayı SAML tabanlı çoklu oturum açma için yapılandırmak üzere aynı kılavuzu izleyin. Uygulamayı Azure AD kullanacak şekilde yapılandırma adımında, WS-Federation uç noktası için Azure AD oturum açma URL 'sini değiştirmeniz gerekir `https://login.microsoftonline.com/<tenant-ID>/wsfed` .
+Bir uygulamayı WS-Federation için yapılandırmak üzere, uygulamayı SAML tabanlı çoklu oturum açma için yapılandırmak üzere aynı kılavuzu izleyin. Uygulamayı Azure AD kullanacak şekilde yapılandırma adımında WS-Federation uç noktası için Azure AD oturum açma URL 'sini değiştirmeniz gerekir `https://login.microsoftonline.com/<tenant-ID>/wsfed` .
 
 SAML tabanlı çoklu oturum açma için şirket içi bir uygulamayı yapılandırmak için, bkz. [uygulama proxy 'si ile şirket içi uygulamalar Için SAML çoklu oturum açma](application-proxy-configure-single-sign-on-on-premises-apps.md).
 

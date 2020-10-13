@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 037598212773ca75abbdd086fe0577e0660f2218
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91398587"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>Azure IoT Central uygulamanızı diğer bulut hizmetleriyle bütünleştirmek için iş akışlarını kullanma
@@ -25,7 +25,7 @@ Power otomatikleştirmek ve Azure Logic Apps için Azure IoT Central v3 Bağlay�
 - Azure IoT Central uygulamanızda bir kural tetiklendiğinde, Power otomatikleştirin veya Azure Logic Apps içinde bir iş akışı tetiklenebilir. Bu iş akışları, Microsoft 365 veya üçüncü taraf bir hizmet gibi diğer bulut hizmetlerinde eylemler çalıştırabilir.
 - Microsoft 365 gibi başka bir bulut hizmetindeki bir olay, Power otomatikleştirebileceğiniz veya Azure Logic Apps bir iş akışını tetikleyebilir. Bu iş akışları, IoT Central uygulamanızdaki eylemleri çalıştırabilir veya veri alabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu nasıl yapılır kılavuzundaki adımları tamamlayabilmeniz için etkin bir Azure aboneliğine ihtiyacınız vardır. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -75,7 +75,7 @@ IoT Central bir uygulamada eylemleri, Power otomatikleştirin ve Azure Logic App
 1. Eylemler listesinde, kullanmak istediğiniz IoT Central eylemi seçin.
 1. Eylem adımında, seçtiğiniz eylem için yapılandırmayı doldurun. Ardından **Kaydet**’i seçin.
 
-:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Azure IoT Central v3 bağlayıcısını bulun ve bir eylem seçin":::
+:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Azure IoT Central-Preview bağlayıcısını bulun ve tetikleyiciyi seçin":::
 
 ## <a name="list-of-actions"></a>Eylemler listesi
 

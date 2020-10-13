@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 7c647ba9a89fedf0d43bd8b10460fed101d166b9
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 1ce0368bb86134bd52473b80eabbfaf87e36148d
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91801404"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939656"
 ---
 # <a name="what-is-azure-private-link"></a>Azure Özel Bağlantı nedir? 
 Azure özel bağlantısı, Azure PaaS hizmetlerine (örneğin, Azure depolama ve SQL veritabanı) ve Azure 'da barındırılan, müşteriye ait/iş ortağı hizmetlerine sanal ağınızdaki özel bir [uç nokta](private-endpoint-overview.md) üzerinden erişmenizi sağlar.
@@ -62,7 +62,7 @@ Azure özel bağlantısı aşağıdaki avantajları sağlar:
 |Azure Service Bus | Tüm ortak bölgeler<br/>Tüm kamu bölgeleri  | Azure Service Bus Premium katmanıyla desteklenir. [Katmanlar için seçin](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-premium-messaging) | GA   <br/> [Azure Service Bus için özel uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/service-bus-messaging/private-link-service)    |
 |Azure Geçişi | Tüm ortak bölgeler      |  | Önizleme <br/> [Azure Relay için özel uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/azure-relay/private-link-service)  |
 |Azure Event Grid| Tüm ortak bölgeler<br/> Tüm kamu bölgeleri       |  | GA   <br/> [Azure Event Grid için özel uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/event-grid/network-security) |
-|Azure Web Apps | Tüm ortak bölgeler      | PremiumV2 Windows ve Linux ve elastik Premium Işlevleriyle desteklenir  | Önizleme   <br/> [Azure Web Apps için özel bir uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/private-link/create-private-endpoint-webapp-portal)   |
+|Azure Web Apps | Tüm ortak bölgeler      | PremiumV2, PremiumV3 veya Function Premium planıyla desteklenir  | GA   <br/> [Azure Web Apps için özel bir uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/private-link/create-private-endpoint-webapp-portal)   |
 |Azure Machine Learning | Tüm ortak bölgeler    |  | GA   <br/> [Azure Machine Learning için özel uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
 | Azure Otomasyonu  | Tüm ortak bölgeler |  | Önizleme </br> [Azure Otomasyonu için özel bir uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/automation/how-to/private-link-security)| |
 | Azure IoT Hub | Tüm ortak bölgeler    |  | GA   <br/> [Azure IoT Hub için özel bir uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/26/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: df13042656aa077b30bf144aab0a47d9fc0a0662
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91263938"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights 'de bağımlılık Izleme 
@@ -216,7 +216,7 @@ Her Application Insights SDK gibi bağımlılık koleksiyonu modülü de açık 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Özel durumlar](./asp-net-exceptions.md)
+* [Özel Durumlar](./asp-net-exceptions.md)
 * [Kullanıcı & sayfası verileri](./javascript.md)
 * [Kullanılabilirlik](./monitor-web-app-availability.md)
 

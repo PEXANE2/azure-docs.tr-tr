@@ -5,32 +5,18 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 10/09/2020
 ms.author: allensu
-ms.openlocfilehash: 25b3c1a011e39adea651a6daa1d4ab9aa3a9d186
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c498a3d69b24fd104d24a3627a8e9d88b495c053
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "81253518"
+ms.locfileid: "91873974"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-conditional-expressions"></a>Verizon Premium kural altyapısı koşullu ifadelerinden Azure CDN
 
-Bu makalede, Azure Content Delivery Network (CDN) [kuralları motorunun](cdn-verizon-premium-rules-engine.md)koşullu ifadelerin ayrıntılı açıklamaları listelenmektedir.
-
-Kuralın ilk bölümü koşullu Ifadedir.
-
-Koşullu Ifade | Açıklama
------------------------|-------------
-IF | Bir If ifadesi her zaman kuraldaki ilk deyimin bir parçasıdır. Diğer tüm koşullu ifadeler gibi, bu IF deyimi bir eşleşme ile ilişkilendirilmelidir. Ek Koşullu ifadeler tanımlanmazsa, bu eşleşme bir istek için bir dizi özellik uygulanmadan önce karşılanması gereken ölçütü belirler.
-VE ISE | Bir ve If ifadesi yalnızca aşağıdaki koşullu ifade türlerinden sonra eklenebilir: Ise ve. İlk IF ifadesinde karşılanması gereken başka bir koşul olduğunu gösterir.
-AKSI TAKDIRDE| Bir ELSE IF ifadesi, bu başka bir durum deyimi gerçekleşmişse, bu özelliğe özgü bir özellik kümesinden önce karşılanması gereken alternatif bir koşulu belirtir. Bir ELSE IF ifadesinin var olması, önceki deyimin sonunu gösterir. Bir ELSE IF deyimi daha sonra yerleştirilebilecek tek koşullu ifade başka bir IF deyimi ise. Bu, başka bir IF ifadesinin yalnızca yerine getirilmesi gereken tek bir ek koşul belirtmek için kullanılabilir olması anlamına gelir.
-
-**Örnek**: ![ CDN eşleşme koşulu](./media/cdn-rules-engine-reference/cdn-rules-engine-conditional-expression.png)
-
- > [!TIP]
-   > Sonraki bir kural, önceki bir kural tarafından belirtilen eylemleri geçersiz kılabilir.
-   > Örnek: bir catch-all kuralı, tüm istekleri Token-Based kimlik doğrulaması üzerinden korur. Belirli istek türleri için bir özel durum oluşturmak üzere, doğrudan altında başka bir kural oluşturulabilir.
+Verizon Premium kuralları altyapı ifadeleri hakkında daha fazla bilgi için bkz. [bağımsız Koşullu ifadeler](https://docs.vdms.com/cdn/index.html#Whats_New/Whats-New-RE.htm#RuleSetup).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

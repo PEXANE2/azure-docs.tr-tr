@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1414859d0735e75e2139dd79aab7dbba5b1e2f13
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 909ea33ed96225c75a2d093f5bf2f4878ea51d2e
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710209"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939193"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure SYNAPSE Analytics Business Intelligence iş ortakları
 
@@ -27,7 +27,6 @@ Veri ambarı çözümünüzü oluşturmak için çeşitli sektör lideri araçla
 | ------- | ----------- | -------------------- |
 | ![AtScale](./media/sql-data-warehouse-partner-business-intelligence/atscale-logo.png) |**AtScale**<br>AtScale, dağıtılmış veriler için tek, güvenli ve yönetilen bir çalışma alanı sağlar. AtScale 'nin bulut OLAP, özerk veri Mühendisliği™ ve evrensel anlamsal katman™ daha hızlı, daha doğru iş kararları elde etmek için iş zekası sonuçlarını güçlendirir. |[Ürün sayfası](https://www.atscale.com/partners/microsoft/)<br> |
 | ![Birde](./media/sql-data-warehouse-partner-business-intelligence/birst_logo.png) |**Birde**<br>Bira, paylaşılan bir ortak analitik dokusunun en üstünde bulunan bir Interwoven sanallaştırılmış bı örnekleri ağı aracılığıyla kuruluşun tamamını bağlar|[Ürün sayfası](https://www.birst.com/)<br> |
-| ![Clearöykü verileri](./media/sql-data-warehouse-partner-business-intelligence/clearstory_data_logo.png) |**Clearöykü verileri (sürekli Iş öngörüleri)**<br>Clearöykü verileri, SYNAPSE SQL havuzunda depolanan farklı veriler arasında hızlı bir şekilde analizine izin verebilir. Clearöykü 'in tümleşik Spark tabanlı platform ve analiz uygulaması, farklı veri kümelerinin veri erişimini ve uyumunu hızlandırmayı hızlandırır. Bunlar, iş kullanıcılarını hızlı öngörüler elde etmek üzere kendi kendine bağlı hale getiren hızlı, işbirliğine dayalı araştırmayı etkinleştirir. |[Ürün sayfası](https://www.clearstorydata.com/product/continuous-insights/)<br> |
 | ![Dremio](./media/sql-data-warehouse-partner-business-intelligence/dremio-logo.png) |**Dremio**<br> Analistler ve veri bilimcileri, Dremio 'in sezgisel kullanıcı arabirimini kullanarak, idare ve güvenlik sağlarken verileri bulabilir, bulabilir ve görüntüleyebilir. Dremio, IP 'LERI BLOB depolama, Azure SQL veritabanı, Azure SYNAPSE SQL, HDInsight ve daha fazlası ile katılmayı kolaylaştırır. Dremio, Power BI analistleri, ADLS 'de depolanan yeni Power BI veri kümelerini arayabilir, bu verilere hiçbir hazırlık yapmadan, görselleştirmeler oluşturabilir ve gerçek zamanlı olarak raporları yineleyerek yeniden geliştirebilir. Ve analistler, ADLS ve diğer veritabanları arasında verileri birleştiren yeni raporlar oluşturabilir. |[Ürün sayfası](https://www.dremio.com/azure/)<br>[Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/dremiocorporation.dremio_ce)<br> |
 | ![Dundas](./media/sql-data-warehouse-partner-business-intelligence/dundas_software_logo.png) |**Dundas bı**<br>Dundas veri görselleştirme, Iş zekası ve veri görselleştirme yazılımının önde gelen, genel bir sağlayıcıdır.  Dundas panolar, raporlama ve Visual Data Analytics, iş uygulamalarına sorunsuz tümleştirme sağlayarak daha iyi kararlar ve daha hızlı öngörüler sağlar.|[Ürün sayfası](https://www.dundas.com/dundas-bi)<br>[Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/dundas.dundas-bi)<br> |
 | ![IBM Cogno 'Lar](./media/sql-data-warehouse-partner-business-intelligence/cognos_analytics_logo.png) |**IBM Cogno 'Ları Analizi**<br>Cogno 'lar Analytics, büyük bir tedarik zinciri veya bir kampanyayı en iyi duruma getirme konusunda deneyimli bir iş analisti mi olduğunu basit, net ve kullanımı kolay hale getirir. Cogno 'lar Analytics, veri araştırmasını rehberlik etmek için AI ve diğer özellikleri kullanır. Kullanıcıların ihtiyaç duydukları yanıtları almasını kolaylaştırır|[Ürün sayfası](https://www.ibm.com/products/cognos-analytics)<br>|

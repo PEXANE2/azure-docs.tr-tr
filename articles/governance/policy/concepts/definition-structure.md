@@ -1,14 +1,14 @@
 ---
 title: İlke tanımı yapısının ayrıntıları
 description: Kuruluşunuzda Azure kaynakları için kural oluşturmak üzere ilke tanımlarının nasıl kullanıldığını açıklar.
-ms.date: 09/22/2020
+ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: f9b64255723c6e53a6d8fe945bf19506ba30644e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2db91bd1968f816eb2a9320ee81019aeec5d2449
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330290"
+ms.locfileid: "91874008"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
 
@@ -104,7 +104,7 @@ Azure Ilkesi yerleşik bileşenleri ve desenleri [Azure ilke örnekleri](../samp
 
 ### <a name="resource-provider-modes"></a>Kaynak sağlayıcısı modları
 
-Aşağıdaki kaynak sağlayıcısı düğümü tam olarak desteklenmektedir:
+Aşağıdaki kaynak sağlayıcısı modu tam olarak desteklenmektedir:
 
 - `Microsoft.Kubernetes.Data` Kubernetes kümelerinizi Azure üzerinde veya kapalı olarak yönetmek için. Bu kaynak sağlayıcısı modunu kullanan tanımlar, etkileri _Denetim_, _reddetme_ve _devre dışı_bırakma kullanır. [Enforceopaconstraint](./effects.md#enforceopaconstraint) efektinin kullanımı _kullanım dışıdır_.
 
@@ -226,7 +226,7 @@ Daha fazla bilgi için bkz. [Azure ilkesinde kapsamı anlama](./scope.md#definit
         <condition> | <logical operator>
     },
     "then": {
-        "effect": "deny | audit | append | auditIfNotExists | deployIfNotExists | disabled"
+        "effect": "deny | audit | modify | append | auditIfNotExists | deployIfNotExists | disabled"
     }
 }
 ```

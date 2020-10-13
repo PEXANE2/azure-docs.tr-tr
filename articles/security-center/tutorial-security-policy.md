@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: db1b73e36a4917f1a10754424b472284094b563e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90894578"
 ---
 # <a name="working-with-security-policies"></a>Güvenlik ilkeleriyle çalışma
@@ -86,7 +86,7 @@ Güvenlik Merkezi'nde güvenlik ilkelerinizi görüntüleme:
 
 Azure Ilke portalından, REST API aracılığıyla veya Windows PowerShell kullanarak güvenlik ilkelerini düzenleyebilirsiniz.
 
-Güvenlik Merkezi, Azure kullanıcılarına, gruplarına ve hizmetlerine atayabileceğiniz yerleşik roller sağlayan rol tabanlı Access Control (RBAC) kullanır. Kullanıcılar Güvenlik Merkezi 'ni açtıklarında yalnızca erişebildikleri kaynaklarla ilgili bilgileri görürler. Kullanıcılara, kaynağın aboneliğine *sahip*, *katkıda bulunan*veya *okuyucu* rolünün atandığı anlamına gelir. Ayrıca iki özel güvenlik merkezi rolü de vardır:
+Güvenlik Merkezi, Azure kullanıcılarına, gruplarına ve hizmetlerine atayabileceğiniz yerleşik roller sağlayan Role-Based Access Control (RBAC) kullanır. Kullanıcılar Güvenlik Merkezi 'ni açtıklarında yalnızca erişebildikleri kaynaklarla ilgili bilgileri görürler. Kullanıcılara, kaynağın aboneliğine *sahip*, *katkıda bulunan*veya *okuyucu* rolünün atandığı anlamına gelir. Ayrıca iki özel güvenlik merkezi rolü de vardır:
 
 - **Güvenlik okuyucusu**: öneriler, uyarılar, ilke ve sistem durumu gibi güvenlik merkezi öğelerini görüntüleme haklarına sahiptir. Değişiklik yapılamıyor.
 - **Güvenlik Yöneticisi**: *güvenlik okuyucusu*ile aynı görünüm haklarına sahiptir. Ayrıca güvenlik ilkesini güncelleştirebilir ve uyarıları kapatabilir.

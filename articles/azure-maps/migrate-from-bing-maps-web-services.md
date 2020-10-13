@@ -1,6 +1,6 @@
 ---
 title: "Öğretici: Bing Haritalar 'dan Web hizmetlerini geçirme | Microsoft Azure haritaları"
-description: Web hizmetlerini Bing Haritalar 'dan Microsoft Azure Maps 'a geçirme.
+description: Web hizmetlerini Bing Haritalar 'dan Microsoft Azure Maps 'a geçirmeye yönelik öğretici.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 9/10/2020
@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 14e0998b75e0e5bd3ae996f5f5010ecc50180f14
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 462befd505333902bd4560f8f1dafeecceffd27f
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91741678"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873787"
 ---
-# <a name="migrate-web-service-from-bing-maps"></a>Web hizmetini Bing Haritalar 'dan geçirme
+# <a name="tutorial---migrate-web-service-from-bing-maps"></a>Öğretici-Bing Haritalar 'dan Web hizmeti geçirme
 
 Hem Azure hem de Bing Haritalar REST Web Hizmetleri aracılığıyla uzamsal API 'lere erişim sağlar. Bu platformların API arabirimleri benzer işlevler gerçekleştirir, ancak farklı adlandırma kuralları ve yanıt nesneleri kullanır.
 

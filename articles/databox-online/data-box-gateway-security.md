@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
 ms.openlocfilehash: 45506b87bf13b44e035655dbdf0fac03ea50612c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90893866"
 ---
 # <a name="azure-data-box-gateway-security-and-data-protection"></a>Azure Data Box Gateway Güvenlik ve veri koruması
@@ -55,7 +55,7 @@ Daha fazla bilgi için bkz. [etkinleştirme anahtarı edinme](data-box-gateway-d
 
 Parolalar yalnızca yetkili kullanıcıların verilerinize erişebilmesini güvence altına alabilir. Data Box Gateway cihazların kilitli durumda olması.
 
-Seçenekleriniz şunlardır:
+Şunları yapabilirsiniz:
 
 - Cihazın yerel Web Kullanıcı arabirimine bir tarayıcı aracılığıyla bağlanın ve ardından cihazda oturum açmak için bir parola sağlayın.
 - HTTP üzerinden cihazın PowerShell arabirimine uzaktan bağlanın. Uzaktan yönetim varsayılan olarak açıktır. Daha sonra cihazda oturum açmak için cihaz parolasını sağlayabilirsiniz. Daha fazla bilgi için bkz. [Data Box Gateway cihazınıza uzaktan bağlanma](data-box-gateway-connect-powershell-interface.md#connect-to-the-powershell-interface).

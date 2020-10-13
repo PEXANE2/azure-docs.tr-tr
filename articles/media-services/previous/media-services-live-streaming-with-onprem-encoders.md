@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 746fe9132dcb06678e2a0a975c8eed0aba6c3fad
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89269633"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Şirket içi kodlayıcılardan çoklu bit hızlı canlı akış alan kanallar ile çalışma
@@ -189,7 +189,7 @@ Aşağıdaki tabloda, kanal durumlarının faturalandırma moduna nasıl eşlenm
 | Kanal durumu | Portal Kullanıcı arabirimi göstergeleri | IP? |
 | --- | --- | --- |
 | **Başlatılıyor** |**Başlatılıyor** |Hayır (geçici durum) |
-| **Çalışıyor** |**Ready** (çalışan program yok)<p><p>veya<p>**Akış** (en az bir çalışan program) |Yes |
+| **Çalışma** |**Ready** (çalışan program yok)<p><p>veya<p>**Akış** (en az bir çalışan program) |Evet |
 | **Durduruluyor** |**Durduruluyor** |Hayır (geçici durum) |
 | **Durduruldu** |**Durduruldu** |Hayır |
 

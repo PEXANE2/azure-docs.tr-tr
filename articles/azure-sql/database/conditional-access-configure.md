@@ -13,10 +13,10 @@ ms.custom: sqldbrb=1
 ms.date: 04/28/2020
 tag: azure-synpase
 ms.openlocfilehash: ad80f68c1ab3b3583c5a22de49b77211571f345e
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443978"
 ---
 # <a name="conditional-access-with-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics ile koşullu erişim
@@ -27,7 +27,7 @@ Azure [SQL veritabanı](sql-database-paas-overview.md), [Azure SQL yönetilen ö
 
 Aşağıdaki adımlarda, koşullu erişim (CA) ilkesini zorlamak için Azure SQL veritabanı, SQL yönetilen örneği veya Azure SYNAPSE 'in nasıl yapılandırılacağı gösterilmektedir.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure SQL veritabanı, Azure SQL yönetilen örneği veya Azure SQL havuzunu Azure Active Directory (Azure AD) kimlik doğrulamasını destekleyecek şekilde yapılandırmanız gerekir. Belirli adımlar için bkz. [SQL veritabanı veya Azure SYNAPSE ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme](authentication-aad-configure.md).  
 - Multi-Factor Authentication etkinleştirildiğinde, en son SQL Server Management Studio (SSMS) gibi desteklenen bir araçla bağlanmanız gerekir. Daha fazla bilgi için bkz. [SQL Server Management Studio Için Azure SQL veritabanı Multi-Factor Authentication 'ı yapılandırma](authentication-mfa-ssms-configure.md).  

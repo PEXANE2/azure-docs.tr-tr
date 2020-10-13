@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
 ms.openlocfilehash: 10be0fc28b53d114a8ff87f01980513ce1759dec
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443313"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Ölçekli bulut veritabanları arasında rapor (Önizleme)
@@ -27,7 +27,7 @@ Var olan bir veritabanınız varsa, bkz. [var olan veritabanlarını ölçekli v
 
 Sorgulamak için gereken SQL nesnelerini anlamak için bkz. [yatay bölümlenmiş veritabanlarında sorgulama](elastic-query-horizontal-partitioning.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [Esnek veritabanı araçları](elastic-scale-get-started.md)'nı kullanmaya başlama örneğini indirip çalıştırın.
 
@@ -133,7 +133,7 @@ Sorgunun tüm parçalardan sonuçları topladığına ve aşağıdaki çıktıy�
 
 Artık Excel 'in güçlü veri görselleştirme işlevlerini kullanabilirsiniz. Bı ve veri tümleştirme araçlarınızı elastik sorgu veritabanına bağlamak için sunucu adı, veritabanı adı ve kimlik bilgilerinizle bağlantı dizesini kullanabilirsiniz. SQL Server, aracınız için bir veri kaynağı olarak desteklendiğinden emin olun. Daha esnek sorgu veritabanına ve dış tablolara, tıpkı diğer tüm SQL Server veritabanları ve araç ile bağlandığınız SQL Server tabloları gibi başvurabilirsiniz.
 
-### <a name="cost"></a>Cost
+### <a name="cost"></a>Maliyet
 Elastik veritabanı sorgu özelliğinin kullanılması için ek ücret alınmaz.
 
 Fiyatlandırma bilgileri için bkz. [SQL Veritabanı Fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/sql-database/).

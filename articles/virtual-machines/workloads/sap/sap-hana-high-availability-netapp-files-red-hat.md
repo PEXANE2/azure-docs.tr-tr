@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 09/30/2020
 ms.author: radeltch
 ms.openlocfilehash: 3a5238ec9e9bc30da330be206eb559acc3c2ec07
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91598077"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux Azure NetApp Files ile SAP HANA ölçeği yüksek kullanılabilirliği
@@ -80,18 +80,18 @@ Bu belgedeki adımlar aşağıdaki öneklerle işaretlendiğinde, anlamı aşağ
 - [Linux üzerinde SAP için Azure sanal makineleri DBMS dağıtımı][dbms-guide]
 - [Pacemaker kümesinde sistem çoğaltmasını SAP HANA.](https://access.redhat.com/articles/3004101)
 - Genel RHEL belgeleri
-    - [Yüksek kullanılabilirlik eklentisi genel bakış](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
-    - [Yüksek kullanılabilirlik eklentisi Yönetimi.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-    - [Yüksek kullanılabilirlik eklentisi başvurusu.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
-    - [HANA dosya sistemleri NFS paylaşımlardaytığında, bir pacemaker kümesinde ölçek artırma SAP HANA sistem çoğaltmasını yapılandırma](https://access.redhat.com/solutions/5156571)
+    - [Yüksek kullanılabilirlik Add-On genel bakış](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+    - [Yüksek kullanılabilirlik Add-On yönetimi.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+    - [Yüksek kullanılabilirlik Add-On başvurusu.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+    - [HANA dosya sistemleri NFS paylaşımlarındaytığında, bir pacemaker kümesinde Scale-Up SAP HANA sistem çoğaltmasını yapılandırma](https://access.redhat.com/solutions/5156571)
 - Azure 'a özgü RHEL belgeleri:
     - [RHEL yüksek kullanılabilirlik kümeleri için destek Ilkeleri-küme üyesi olarak Microsoft Azure Sanal Makineler.](https://access.redhat.com/articles/3131341)
-    - [Microsoft Azure üzerinde Red Hat Enterprise Linux 7,4 (ve üzeri) yüksek kullanılabilirlik kümesi yükleme ve yapılandırma.](https://access.redhat.com/articles/3252491)
+    - [Microsoft Azure Red Hat Enterprise Linux 7,4 (ve üzeri) High-Availability kümesini yükleme ve yapılandırma.](https://access.redhat.com/articles/3252491)
     - [Microsoft Azure kullanım için Red Hat Enterprise Linux SAP HANA yüklemesi.](https://access.redhat.com/solutions/3193782)
     - [HANA dosya sistemleri NFS paylaşımlarındaytığında, genişleme sistem çoğaltmasını yukarı Paceoluşturucu kümesi SAP HANA yapılandırma](https://access.redhat.com/solutions/5156571)
 - [Microsoft Azure Azure NetApp Files kullanarak NetApp SAP uygulamaları](https://www.netapp.com/us/media/tr-4746.pdf)
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 
 Geleneksel olarak, ölçek artırma ortamında, SAP HANA için tüm dosya sistemleri yerel depolamadan bağlanır. Red Hat Enterprise Linux üzerinde SAP HANA sistem çoğaltmasının yüksek kullanılabilirliğini ayarlama, [RHEL üzerinde sistem çoğaltmasını SAP HANA ayarlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel) bölümünde yayımlanır
 
@@ -240,7 +240,7 @@ Birim kotasının 1 TiB başına [Azure NetApp Files verimlilik limitleri](https
         1.  **Sanal makine Ekle**' yi seçin.
         1.  * * Sanal makine * * öğesini seçin.
         1.  SAP HANA kümesinin sanal makinelerini ve IP adreslerini seçin.
-        1.  **Add (Ekle)** seçeneğini belirleyin.
+        1.  **Ekle**’yi seçin.
     1.  Sonra, bir sistem durumu araştırması oluşturun:
         1.  Yük dengeleyiciyi açın, **sistem durumu araştırmaları**' nı seçin ve **Ekle**' yi seçin.
         1.  Yeni sistem durumu araştırmasının adını girin (örneğin, **Hana-HP**).
@@ -308,7 +308,7 @@ Birim kotasının 1 TiB başına [Azure NetApp Files verimlilik limitleri](https
 SAP HANA için gereken bağlantı noktaları hakkında daha fazla bilgi için, [SAP HANA kiracı veritabanları](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) Kılavuzu veya SAP Note [2388694](https://launchpad.support.sap.com/#/notes/2388694)' de [kiracı veritabanlarına yönelik bölüm bağlantılarını](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) okuyun.
 
 > [!IMPORTANT]
-> Azure Load Balancer arkasına yerleştirilmiş Azure VM 'lerinde TCP zaman damgalarını etkinleştirmeyin. TCP zaman damgalarını etkinleştirmek, sistem durumu araştırmalarının başarısız olmasına neden olur. **Net. IPv4. tcp_timestamps** parametresini **0**olarak ayarlayın. Ayrıntılar için bkz. [Load Balancer sistem durumu araştırmaları](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview). Ayrıca bkz. SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421).
+> Azure Load Balancer arkasına yerleştirilmiş Azure VM 'lerinde TCP zaman damgalarını etkinleştirmeyin. TCP zaman damgalarını etkinleştirmek, sistem durumu araştırmalarının başarısız olmasına neden olur. Parametre **net.ipv4.tcp_timestamps** **0**olarak ayarlayın. Ayrıntılar için bkz. [Load Balancer sistem durumu araştırmaları](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview). Ayrıca bkz. SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421).
 
 ## <a name="mount-the-azure-netapp-files-volume"></a>Azure NetApp Files birimini bağlama
 
@@ -536,7 +536,7 @@ Bu örnekte her küme düğümünün kendi HANA NFS dosya sistemleri/Hana/Shared
     ```
 
    > [!TIP]
-   > Yapılandırmanız, grubun dışında dosya sistemleri içeriyorsa, `hanadb1_nfs` `hanadb2_nfs` `sequential=false` dosya sistemleri arasında sıralama bağımlılığı kalmayacak şekilde seçeneğini ekleyin. Tüm dosya sistemleri önce başlamalıdır `hana_nfs1_active` , ancak birbirleriyle ilgili herhangi bir sırada başlaması gerekmez. Daha fazla ayrıntı için bkz [. Hana dosya SISTEMLERI NFS paylaşımlardaytığında bir Paceoluşturucu kümesinde SAP HANA sistem çoğaltmasını yapılandırma nasıl yaparım?](https://access.redhat.com/solutions/5156571)
+   > Yapılandırmanız, grubun dışında dosya sistemleri içeriyorsa, `hanadb1_nfs` `hanadb2_nfs` `sequential=false` dosya sistemleri arasında sıralama bağımlılığı kalmayacak şekilde seçeneğini ekleyin. Tüm dosya sistemleri önce başlamalıdır `hana_nfs1_active` , ancak birbirleriyle ilgili herhangi bir sırada başlaması gerekmez. Daha fazla ayrıntı için bkz [. Hana dosya SISTEMLERI NFS paylaşımlardaytığında, bir Paceoluşturucu kümesinde Scale-Up SAP HANA sistem çoğaltmasını yapılandırma nasıl yaparım?](https://access.redhat.com/solutions/5156571)
 
 ### <a name="configure-sap-hana-cluster-resources"></a>SAP HANA küme kaynaklarını yapılandırma
 

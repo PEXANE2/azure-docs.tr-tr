@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: kenwith
 ms.openlocfilehash: d9dd03ec349daf2312b7d803e16e3c5fb41ecf0c
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604113"
 ---
 # <a name="managing-access-to-apps"></a>Uygulamalara erişimi yönetme
 
-Devam eden erişim yönetimi, kullanım değerlendirmesi ve raporlama, bir uygulama kuruluşunuzun kimlik sistemiyle tümleştirildiğinde bir zorluk yapmaya devam eder. Çoğu durumda BT yöneticileri veya yardım masası, uygulamalarınıza erişimi yönetirken devam eden bir etkin rol almak zorunda olur. Bazen, atama genel veya bir BT ekibi tarafından gerçekleştirilir. Genellikle, atama kararı iş kararı Oluşturucu için temsilci olarak atanmak üzere tasarlanmıştır ve atamayı yapmadan önce onayını gerekli hale getirir.  Diğer kuruluşlar, rol tabanlı Access Control (RBAC) veya öznitelik tabanlı Access Control (ATZM) gibi mevcut bir otomatik kimlik ve erişim yönetimi sistemiyle tümleştirmeyi yatırım yapar. Tümleştirme ve kural geliştirmenin her ikisi de özel ve pahalı olma eğilimindedir. Yönetim yaklaşımına göre izleme veya raporlama kendi ayrı, maliyetli ve karmaşık yatırımdır.
+Devam eden erişim yönetimi, kullanım değerlendirmesi ve raporlama, bir uygulama kuruluşunuzun kimlik sistemiyle tümleştirildiğinde bir zorluk yapmaya devam eder. Çoğu durumda BT yöneticileri veya yardım masası, uygulamalarınıza erişimi yönetirken devam eden bir etkin rol almak zorunda olur. Bazen, atama genel veya bir BT ekibi tarafından gerçekleştirilir. Genellikle, atama kararı iş kararı Oluşturucu için temsilci olarak atanmak üzere tasarlanmıştır ve atamayı yapmadan önce onayını gerekli hale getirir.  Diğer kuruluşlar, Role-Based Access Control (RBAC) veya Attribute-Based Access Control (ATZB) gibi mevcut bir otomatik kimlik ve erişim yönetimi sistemiyle tümleştirmeyi yatırım yapar. Tümleştirme ve kural geliştirmenin her ikisi de özel ve pahalı olma eğilimindedir. Yönetim yaklaşımına göre izleme veya raporlama kendi ayrı, maliyetli ve karmaşık yatırımdır.
 
 ## <a name="how-does-azure-active-directory-help"></a>Nasıl yardım Azure Active Directory?
 
