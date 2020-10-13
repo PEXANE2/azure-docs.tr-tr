@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
 ms.openlocfilehash: 8f92501bdb8261a67d3dc2b8aefbe1fb1498ef1e
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91445892"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric kümenizdeki Windows işletim sistemini düzeltme eki uygulama
@@ -63,7 +63,7 @@ POA aşağıdaki alt bileşenleri oluşur:
 > [!NOTE]
 > POA, düğümü devre dışı bırakmak veya etkinleştirmek ve sistem durumu denetimleri gerçekleştirmek için Service Fabric Onarım Yöneticisi hizmetini kullanır. POA tarafından oluşturulan onarım görevi her düğüm için Windows Update ilerlemesini izler.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 > [!NOTE]
 > Gerekli en düşük .NET Framework sürümü 4,6 ' dir.
@@ -166,7 +166,7 @@ Gereksinimlerinizi karşılamak için POA davranışını yapılandırabilirsini
 | WURescheduleCount     | int <br> (Varsayılan: *5*)                  | Bir işlemin kalıcı olarak başarısız olması halinde hizmetin Windows Update müşteri sizinle randevusunu en fazla kaç kez başarısız olduğunu.          |
 | WURescheduleTimeInMinutes | int <br>(Varsayılan: *30*) | Hata devam ederse hizmetin Windows güncelleştirmelerini müşteri sizinle randevusunu zaman aralığı. |
 | WUFrequency           | Virgülle ayrılmış dize (varsayılan: *haftalık, Çarşamba, 7:00:00*)     | Windows güncelleştirmelerini yükleme sıklığı. Biçim ve olası değerler şunlardır: <br>-Aylık, gg, ss: DD: SS (örnek: *aylık, 5, 12:22:32*). Alan _gg_ (gün) için izin verilen değerler 1 ile 28 arasında ve _son_sayılardır. <br>-Haftalık, gün, ss: DD: SS (örnek: *haftalık, Salı, 12:22:32*)  <br>-Günlük, ss: DD: SS (örnek: *günlük, 12:22:32*)  <br>-Hafta, gün, ss: DD: SS (örnek: *2, Cuma, 21:00:00* her ayın 2. haftası ÜZERINDE 9:00 PM UTC 'yi gösterir) <br>- *Hiçbiri* Windows güncelleştirmelerinin yapılmayacağını gösterir.  <br><br> Süreler UTC olarak.|
-| AcceptWindowsUpdateEula | Boole <br>(Varsayılan: *true*) | Bu bayrak ayarlanarak uygulama, makinenin sahibi adına Windows Update için Son Kullanıcı Lisans sözleşmesini kabul eder.              |
+| AcceptWindowsUpdateEula | Boole <br>(Varsayılan: *true*) | Bu bayrak ayarlanarak uygulama, makinenin sahibi adına Windows Update için End-User lisans anlaşmasını kabul eder.              |
 
 > [!TIP]
 > Windows güncelleştirmelerinin hemen gerçekleşmesini istiyorsanız `WUFrequency` uygulama dağıtım zamanına göre ayarlayın. Örneğin, beş düğümlü bir test kümeniz olduğunu ve uygulamayı 5:00 PM UTC 'de dağıtmayı planladığınızı varsayalım. Uygulama yükseltme veya dağıtımın en fazla 30 dakika sürdüğünü varsaydıysanız, WUFrequency *'Yi günlük, 17:30:00*olarak ayarlayın.
@@ -242,8 +242,8 @@ ResultCode | OperationResult ile aynı | Bu alan, tek bir güncelleştirme için
 OperationType | 1-yükleme<br> 0-arama ve Indirme| Varsayılan olarak, yükleme sonuçlarında gösterilen tek OperationType ' dır.
 WindowsUpdateQuery | Varsayılan değer "IsInstalled = 0" | Güncelleştirme aramak için kullanılan sorgu Windows Update. Daha fazla bilgi için bkz. [Wuquery](/windows/win32/api/wuapi/nf-wuapi-iupdatesearcher-search).
 RebootRequired | doğru-yeniden başlatma gerekiyordu<br> false-yeniden başlatma gerekli değil | Güncelleştirmelerin yüklenmesinin tamamlanabilmesi için yeniden başlatma gerekip gerekmediğini gösterir.
-OperationStartTime | Tarih-Saat | İşlemin (Indirme/yükleme) başladığı süreyi belirtir.
-OperationTime | Tarih-Saat | İşlemin (Indirme/yükleme) tamamlandığı süreyi belirtir.
+OperationStartTime | DateTime | İşlemin (Indirme/yükleme) başladığı süreyi belirtir.
+OperationTime | DateTime | İşlemin (Indirme/yükleme) tamamlandığı süreyi belirtir.
 HResult | 0-başarılı<br> diğer hata| UpdateID ile Windows Update hatasının nedeni "7392acaf-6a85-427c-8a8d-058c25beb0d6" olduğunu gösterir.
 
 Henüz bir güncelleştirme zamanlanmamışsa, JSON sonucu boştur.
@@ -439,7 +439,7 @@ Y: POA, güncelleştirme düğümleri için onarım görevleri oluşturmak üzer
 
 ## <a name="disclaimers"></a>Bildirimler
 
-- POA, Kullanıcı adına Windows Update için son kullanıcı lisans anlaşmasını kabul eder. İsteğe bağlı olarak, ayar uygulamanın yapılandırmasında kapatılabilir.
+- POA, Kullanıcı adına Windows Update için End-User lisans anlaşmasını kabul eder. İsteğe bağlı olarak, ayar uygulamanın yapılandırmasında kapatılabilir.
 
 - POA, kullanımı ve performansı izlemek için telemetri toplar. Uygulamanın telemetrisi, Service Fabric çalışma zamanının telemetri ayarı ayarını izler (varsayılan olarak açık).
 

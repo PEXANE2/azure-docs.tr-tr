@@ -8,10 +8,10 @@ ms.custom:
 - devx-track-csharp
 - contperfq1
 ms.openlocfilehash: 1bacb0c71c05aeb983bfa9ebf71873a22fea39a1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91277708"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch uygulama paketleriyle işlem düğümlerine uygulama dağıtma
@@ -77,7 +77,7 @@ Batch hizmeti, uygulama paketlerinizi blok blob 'ları olarak depolamak için Az
 
 Batch hesabınızdaki uygulamaları görüntülemek için sol gezinti menüsünde **uygulamalar** ' ı seçin.
 
-:::image type="content" source="media/batch-application-packages/app_pkg_02.png" alt-text="Azure portal uygulamalar menü öğesinin ekran görüntüsü.":::
+:::image type="content" source="media/batch-application-packages/app_pkg_02.png" alt-text="Uygulamaların ve uygulama paketlerinin üst düzey görünümünü gösteren diyagram.":::
 
 Bu menü seçeneği belirlendiğinde **uygulamalar** penceresi açılır. Bu pencere, hesabınızdaki her uygulamanın KIMLIĞINI ve aşağıdaki özellikleri görüntüler:
 
@@ -101,7 +101,7 @@ Yeni bir uygulama oluşturmak için, bir uygulama paketi ekleyin ve benzersiz bi
 
 Batch hesabınızda, **uygulamalar** ' ı seçin ve ardından **Ekle**' yi seçin.
 
-:::image type="content" source="media/batch-application-packages/app_pkg_05.png" alt-text="Azure portal yeni uygulama oluşturma işleminin ekran görüntüsü.":::
+:::image type="content" source="media/batch-application-packages/app_pkg_05.png" alt-text="Uygulamaların ve uygulama paketlerinin üst düzey görünümünü gösteren diyagram.":::
 
 Aşağıdaki bilgileri girin:
 
@@ -128,7 +128,7 @@ Yeni uygulama için yaptığınız gibi, yeni paketinizin **sürümünü** belir
 
 Var olan bir uygulama paketini güncelleştirmek veya silmek için Batch hesabınızın **uygulamalar** bölümünde uygulamayı seçin. Değiştirmek istediğiniz uygulama paketinin satırındaki üç noktayı seçin ve ardından gerçekleştirmek istediğiniz eylemi seçin.
 
-:::image type="content" source="media/batch-application-packages/app_pkg_07.png" alt-text="Azure portal uygulama paketleri için güncelleştirme ve silme seçeneklerini gösteren ekran görüntüsü.":::
+:::image type="content" source="media/batch-application-packages/app_pkg_07.png" alt-text="Uygulamaların ve uygulama paketlerinin üst düzey görünümünü gösteren diyagram.":::
 
 **Güncelleştir**' i seçerseniz, yeni bir. zip dosyasını karşıya yükleyebilirsiniz. Bu, bu sürüm için karşıya yüklediğiniz önceki. zip dosyasının yerini alır.
 
@@ -243,7 +243,7 @@ CloudTask blenderTask = new CloudTask(taskId, commandLine);
 
 ## <a name="update-a-pools-application-packages"></a>Bir havuzun uygulama paketlerini güncelleştirme
 
-Mevcut bir havuz zaten bir uygulama paketiyle yapılandırıldıysa, havuz için yeni bir paket belirtebilirsiniz. Bunun anlamı:
+Mevcut bir havuz zaten bir uygulama paketiyle yapılandırıldıysa, havuz için yeni bir paket belirtebilirsiniz. Diğer bir deyişle:
 
 - Batch hizmeti, yeni belirtilen paketi havuza ve yeniden başlatılan veya yeniden görüntü oluşturulan tüm mevcut düğümlerde birleştirir.
 - Paket başvurularını güncelleştirdiğinizde zaten havuzda olan işlem düğümleri yeni uygulama paketini otomatik olarak yüklemez. Yeni paketi almak için bu işlem düğümlerinin yeniden başlatılması veya yeniden oluşturulması gerekir.

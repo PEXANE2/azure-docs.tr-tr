@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
 ms.openlocfilehash: caaf8e25cdf43602fda8fc72caf7d16b7b56c06a
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361900"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Azure Machine Learning Studio (klasik) Web Hizmetleri portalını kullanarak bir Web hizmetini yönetme
@@ -73,8 +73,8 @@ Bir Web hizmetine tıkladığınızda, Web hizmeti hızlı başlangıç sayfası
 Panodan, Web hizmetinizin genel kullanımını bir süre içinde görüntüleyebilirsiniz. Kullanım grafiklerinin sağ üst köşesindeki dönem açılan menüsünden görüntülenecek dönemi seçebilirsiniz. Panoda aşağıdaki bilgiler gösterilmektedir:
 
 * **Zaman Içindeki istekler** , seçilen dönemdeki istek sayısının adım grafiğini görüntüler. Kullanımda ani artışlar yaşadığınızı belirlemenize yardımcı olabilir.
-* **İstek-yanıt istekleri** , hizmetin seçilen süre boyunca aldığı ve kaç tane başarısız olduğu istek yanıtı çağrılarının toplam sayısını görüntüler.
-* **Ortalama istek-yanıt Işlem süresi** , alınan isteklerin yürütülmesi için gereken sürenin ortalamasını görüntüler.
+* **İstek-yanıt istekleri** , hizmetin seçilen süre boyunca aldığı toplam Request-Response çağrısı sayısını ve bunların kaç tane başarısız olduğunu gösterir.
+* **Ortalama Request-Response Işlem süresi** , alınan isteklerin yürütülmesi için gereken sürenin ortalamasını görüntüler.
 * **Batch istekleri** , hizmetin seçilen süre boyunca aldığı ve kaç tane başarısız olduğunu gösteren toplu işlem isteklerinin toplam sayısını görüntüler.
 * **Ortalama Iş gecikmesi** , alınan isteklerin yürütülmesi için gereken sürenin ortalamasını görüntüler.
 * **Hatalar** , Web hizmeti çağrılarında oluşan toplam hata sayısını görüntüler.
@@ -89,7 +89,7 @@ Aşağıdaki özellikleri güncelleştirebilirsiniz:
 * **Başlık** , Web hizmeti için bir başlık girmenizi sağlar
 * **Anahtarlar** , birincil ve ikincil API anahtarlarınızı döndürmenize olanak tanır.
 * **Depolama hesabı anahtarı** , Web hizmeti değişiklikleriyle ilişkili depolama hesabının anahtarını güncelleştirmenize olanak tanır. 
-* **Örnek verileri etkinleştirme** , Istek-yanıt hizmetini test etmek için kullanabileceğiniz örnek veriler sağlamanıza olanak tanır. Web hizmetini Machine Learning Studio (klasik) ' de oluşturduysanız, örnek veriler modelinize eğitebilmeniz için kullandığınız verilerden alınır. Hizmeti programlı olarak oluşturduysanız, veriler JSON paketinin bir parçası olarak verdiğiniz örnek verilerden alınır.
+* **Örnek verileri etkinleştirme** , Request-Response hizmetini test etmek için kullanabileceğiniz örnek veriler sağlamanıza olanak tanır. Web hizmetini Machine Learning Studio (klasik) ' de oluşturduysanız, örnek veriler modelinize eğitebilmeniz için kullandığınız verilerden alınır. Hizmeti programlı olarak oluşturduysanız, veriler JSON paketinin bir parçası olarak verdiğiniz örnek verilerden alınır.
 
 ### <a name="managing-billing-plans"></a>Faturalandırma planlarını yönetme
 Web hizmetleri hızlı başlangıç sayfasından **planlar** menü seçeneğine tıklayın. Ayrıca, bu planı yönetmek için belirli bir Web hizmetiyle ilişkili plana tıklayabilirsiniz.
@@ -140,8 +140,8 @@ Web hizmeti hızlı başlangıç sayfasını açmak için uç noktalardan birine
 Panodan, Web hizmetinizin genel kullanımını bir süre içinde görüntüleyebilirsiniz. Kullanım grafiklerinin sağ üst köşesindeki dönem açılan menüsünden görüntülenecek dönemi seçebilirsiniz. Panoda aşağıdaki bilgiler gösterilmektedir:
 
 * **Zaman Içindeki istekler** , seçilen dönemdeki istek sayısının adım grafiğini görüntüler. Kullanımda ani artışlar yaşadığınızı belirlemenize yardımcı olabilir.
-* **İstek-yanıt istekleri** , hizmetin seçilen süre boyunca aldığı ve kaç tane başarısız olduğu istek yanıtı çağrılarının toplam sayısını görüntüler.
-* **Ortalama istek-yanıt Işlem süresi** , alınan isteklerin yürütülmesi için gereken sürenin ortalamasını görüntüler.
+* **İstek-yanıt istekleri** , hizmetin seçilen süre boyunca aldığı toplam Request-Response çağrısı sayısını ve bunların kaç tane başarısız olduğunu gösterir.
+* **Ortalama Request-Response Işlem süresi** , alınan isteklerin yürütülmesi için gereken sürenin ortalamasını görüntüler.
 * **Batch istekleri** , hizmetin seçilen süre boyunca aldığı ve kaç tane başarısız olduğunu gösteren toplu işlem isteklerinin toplam sayısını görüntüler.
 * **Ortalama Iş gecikmesi** , alınan isteklerin yürütülmesi için gereken sürenin ortalamasını görüntüler.
 * **Hatalar** , Web hizmeti çağrılarında oluşan toplam hata sayısını görüntüler.
@@ -154,6 +154,6 @@ Aşağıdaki özellikleri güncelleştirebilirsiniz:
 
 * **Açıklama** , Web hizmeti için bir açıklama girmenize olanak sağlar. Açıklama gerekli bir alandır.
 * **Günlüğe kaydetme** , uç noktada hata günlüğü etkinleştirmenizi veya devre dışı bırakmanızı sağlar. Günlüğe kaydetme hakkında daha fazla bilgi için bkz. [Machine Learning Web Hizmetleri için günlüğü](web-services-logging.md)etkinleştirme.
-* **Örnek verileri etkinleştirme** , Istek-yanıt hizmetini test etmek için kullanabileceğiniz örnek veriler sağlamanıza olanak tanır. Web hizmetini Machine Learning Studio (klasik) ' de oluşturduysanız, örnek veriler modelinize eğitebilmeniz için kullandığınız verilerden alınır. Hizmeti programlı olarak oluşturduysanız, veriler JSON paketinin bir parçası olarak verdiğiniz örnek verilerden alınır.
+* **Örnek verileri etkinleştirme** , Request-Response hizmetini test etmek için kullanabileceğiniz örnek veriler sağlamanıza olanak tanır. Web hizmetini Machine Learning Studio (klasik) ' de oluşturduysanız, örnek veriler modelinize eğitebilmeniz için kullandığınız verilerden alınır. Hizmeti programlı olarak oluşturduysanız, veriler JSON paketinin bir parçası olarak verdiğiniz örnek verilerden alınır.
 
 

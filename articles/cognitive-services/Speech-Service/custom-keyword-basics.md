@@ -12,17 +12,17 @@ ms.date: 10/02/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f2f333cd01057ff5f6f904924880f88b0685c72f
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91667702"
 ---
-# <a name="get-started-with-custom-keyword"></a>Özel anahtar sözcükle çalışmaya başlama
+# <a name="get-started-with-custom-keyword"></a>Özel Anahtar Sözcük ile çalışmaya başlama
 
 Bu hızlı başlangıçta, konuşma Studio ve konuşma SDK 'sını kullanarak özel anahtar sözcüklerle çalışmanın temellerini öğreneceksiniz. Anahtar sözcüğü, ürününüzün ses özellikli olmasını sağlayan bir kelime veya kısa bir tümceciktir. Anahtar sözcük modellerini, konuşma Studio 'da oluşturursunuz ve ardından, uygulamalarınızda konuşma SDK 'Sı ile kullandığınız bir model dosyasını dışarı aktarabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki adımlarda bir konuşma aboneliği ve konuşma SDK 'Sı gerekir. Henüz bir aboneliğiniz yoksa [konuşma hizmetini ücretsiz deneyin](overview.md#try-the-speech-service-for-free). SDK 'yı almak için platformunuzun [Install Guide](quickstarts/setup-platform.md) bölümüne bakın.
 

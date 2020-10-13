@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: dea009d6d246d68f0686c3dc85f3518ccb13705c
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 1c1ddeb8cafd8aa7584da48a715139c5d12eeb10
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575206"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874807"
 ---
 # <a name="tutorial-monitor-and-manage-a-video-analytics---object-and-motion-detection-application"></a>Öğretici: bir video analizini Izleme ve yönetme-nesne ve hareket algılama uygulaması
 
@@ -22,11 +22,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * IoT Central uygulamanıza nesne ve hareket algılama kameraları ekleyin.
 > * Video akışlarınızı yönetin ve ilginç olaylar algılandığında yürütün.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce şunları tamamlamalısınız:
 
-* [Azure 'da canlı video analizi uygulaması oluşturma IoT Central](./tutorial-video-analytics-create-app.md) öğreticisi.
+* [Azure 'da canlı bir video analizi uygulaması oluşturun IoT Central](./tutorial-video-analytics-create-app-yolo-v3.md) veya [Azure IoT Central (openvino &trade; ) öğreticilerinde bir video analizi oluşturun](tutorial-video-analytics-create-app-openvino.md) .
 * Önceki bir sürümü, [canlı video analizi (LINUX VM) için bir IoT Edge örneği oluşturun](tutorial-video-analytics-iot-edge-vm.md) veya [canlı video analizi (Intel nuc) öğreticileri için bir IoT Edge örneği oluşturun](tutorial-video-analytics-iot-edge-nuc.md) .
 
 Video görüntüleyici uygulamasını çalıştırmak için yerel makinenizde [Docker](https://www.docker.com/products/docker-desktop) yüklü olmalıdır.
@@ -94,7 +94,7 @@ Varsayılan değerleri kullanın veya cihaz özelliklerini özelleştirmeniz ger
 | Güvenilirlik eşiği | Nesne algılamanın geçerli olup olmadığını belirleme yüzdesi nitelendirme | 70 |
 | Çıkarım çerçevesi örnek hızı (fps) | [Buraya Açıklama] | 2 |
 
-**Kaydet**'i seçin.
+**Kaydet**’i seçin.
 
 Birkaç saniye sonra, her ayar için **kabul edilen** onay iletisini görürsünüz:
 
@@ -178,7 +178,7 @@ Uygulama panoları başlangıçta IoT Central sanal cihazlardan oluşturulan tel
     1. **Güven%** `AI Inference Interface/Inference/entity/tag/confidence` bilinen son değeri kullanır.
     1. **Anlık görüntü** , `AI Inference Interface/Inference Image` görüntü olarak gösterilen kullanımlar.
     1. **Çıkarım olayı videosu** `AI Inference Interface/Inference Event Video` bağlantı olarak gösterilir.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 **Gerçek kamera İzleyicisi** panosu artık gerçek kamera cihazınızdan değerleri gösterir:
 

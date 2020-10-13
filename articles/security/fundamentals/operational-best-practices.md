@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 7c429ad04a4c1e881c84c3af9dfa9ee553963917
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 5696bd167010ae81249eeac3134b79d3d5307288
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629803"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91943875"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure operasyonel güvenlik en iyi uygulamaları
 Bu makalede, Azure 'daki verilerinizi, uygulamalarınızı ve diğer varlıkları korumaya yönelik işlemsel en iyi uygulamalar sağlanır.
@@ -116,7 +116,7 @@ Internet güvenliği (CIS) denetimlerinin merkezini temel alan güvenli puan, ku
 **Ayrıntı**: Güvenlik Merkezi 'ndeki [güvenlik önerilerini](../../security-center/security-center-recommendations.md) , en yüksek öncelikli öğelerle başlayarak izleyin.
 
 **En iyi yöntem**: Güvenlik Merkezi uyarılarını güvenlik bilgileriniz ve olay yönetimi (SIEM) çözümünüz ile tümleştirin.   
-**Ayrıntı**: BIR SIEM olan kuruluşların çoğu, bir analist yanıtı gerektiren güvenlik uyarıları için merkezi bir Clearinghouse olarak kullanır. Güvenlik Merkezi tarafından üretilen işlenen olaylar, Azure Izleyici aracılığıyla kullanılabilen günlüklerden biri olan Azure etkinlik günlüğünde yayımlanır. Azure Izleyici, izleme verilerinizin herhangi birini SıEM aracında yönlendirmek için birleştirilmiş bir işlem hattı sunar. Yönergeler için bkz. [güvenlik uyarılarını ve önerilerini dışarı aktarma](../../security-center/continuous-export.md#configure-siem-integration-via-azure-event-hubs) . Azure Sentinel kullanıyorsanız bkz. [Azure Güvenlik Merkezi 'Ni bağlama](../../sentinel/connect-azure-security-center.md).
+**Ayrıntı**: BIR SIEM olan kuruluşların çoğu, bir analist yanıtı gerektiren güvenlik uyarıları için merkezi bir Clearinghouse olarak kullanır. Güvenlik Merkezi tarafından üretilen işlenen olaylar, Azure Izleyici aracılığıyla kullanılabilen günlüklerden biri olan Azure etkinlik günlüğünde yayımlanır. Azure Izleyici, izleme verilerinizin herhangi birini SıEM aracında yönlendirmek için birleştirilmiş bir işlem hattı sunar. Yönergeler için bkz. [BIR SıEM, SOAR veya BT hizmet yönetimi çözümüne akış uyarıları](../../security-center/export-to-siem.md) . Azure Sentinel kullanıyorsanız bkz. [Azure Güvenlik Merkezi 'Ni bağlama](../../sentinel/connect-azure-security-center.md).
 
 **En iyi yöntem**: Azure günlüklerini SIEM 'inizle tümleştirin.   
 **Ayrıntı**: [Azure izleyici 'yi kullanarak veri toplayın ve dışarı aktarın](/azure/azure-monitor/overview#integrate-and-export-data). Bu uygulama, güvenlik olay araştırmasını etkinleştirmek için önemlidir ve çevrimiçi günlük tutma sınırlı olur. Azure Sentinel kullanıyorsanız, bkz. [veri kaynaklarını bağlama](../../sentinel/connect-data-sources.md).

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f9f68d3734cd7de83a2ddd376caefa410c619d61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90db861a4ef4fc951844d3ae82a51d20cf9dc8c5
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291118"
+ms.locfileid: "91875113"
 ---
 # <a name="safe-url-list"></a>Güvenli URL listesi
 
@@ -19,17 +19,19 @@ Windows sanal masaüstü dağıtımınızın düzgün çalışması için bazı 
 
 ## <a name="virtual-machines"></a>Sanal makineler
 
-Windows sanal masaüstü için oluşturduğunuz Azure sanal makinelerinin aşağıdaki URL 'Lere erişimi olmalıdır:
+Windows sanal masaüstü için oluşturduğunuz Azure sanal makineleri, Azure ticari bulutundaki aşağıdaki URL 'Lere erişebilmelidir:
 
 |Adres|Giden TCP bağlantı noktası|Amaç|Hizmet etiketi|
 |---|---|---|---|
 |*. wvd.microsoft.com|443|Hizmet trafiği|WindowsVirtualDesktop|
-|mrsglobalsteus2prod.blob.core.windows.net|443|Aracı ve SXS yığın güncelleştirmeleri|AzureCloud|
-|*.core.windows.net|443|Aracı trafiği|AzureCloud|
-|*.servicebus.windows.net|443|Aracı trafiği|AzureCloud|
 |gcs.prod.monitoring.core.windows.net|443|Aracı trafiği|AzureCloud|
+|production.diagnostics.monitoring.core.windows.net|443|Aracı trafiği|AzureCloud|
+|* xt.blob.core.windows.net|443|Aracı trafiği|AzureCloud|
+|* eh.servicebus.windows.net|443|Aracı trafiği|AzureCloud|
+|* xt.table.core.windows.net|443|Aracı trafiği|AzureCloud|
 |catalogartifact.azureedge.net|443|Azure Market|AzureCloud|
 |kms.core.windows.net|1688|Windows etkinleştirme|İnternet|
+|mrsglobalsteus2prod.blob.core.windows.net|443|Aracı ve SXS yığın güncelleştirmeleri|AzureCloud|
 |wvdportalstorageblob.blob.core.windows.net|443|Azure portal desteği|AzureCloud|
 | 169.254.169.254 | 80 | [Azure örnek meta veri hizmeti uç noktası](../virtual-machines/windows/instance-metadata-service.md) | Yok |
 | 168.63.129.16 | 80 | [Oturum konak durumu izleme](../virtual-network/security-overview.md#azure-platform-considerations) | Yok |
@@ -39,17 +41,34 @@ Windows sanal masaüstü için oluşturduğunuz Azure sanal makinelerinin aşağ
 >
 >Hizmet sorunlarını engellemek için URL 'Ler yerine FQDN etiketleri veya hizmet etiketleri kullanmanızı öneririz. Listelenen URL 'Ler ve Etiketler yalnızca Windows sanal masaüstü siteleri ve kaynaklarına karşılık gelir. Azure Active Directory gibi diğer hizmetlere yönelik URL 'Ler dahil değildir.
 
-Aşağıdaki tabloda, Azure sanal makinelerinizin erişebileceği isteğe bağlı URL 'Ler listelenmektedir:
+Windows sanal masaüstü için oluşturduğunuz Azure sanal makineleri, Azure Kamu Bulutu 'nda aşağıdaki URL 'Lere erişebilmelidir:
 
 |Adres|Giden TCP bağlantı noktası|Amaç|Hizmet etiketi|
 |---|---|---|---|
-|*.microsoftonline.com|443|Microsoft Online Services kimlik doğrulaması|Yok|
-|*. events.data.microsoft.com|443|Telemetri hizmeti|Yok|
-|www.msftconnecttest.com|443|İşletim sisteminin Internet 'e bağlı olup olmadığını algılar|Yok|
-|*. prod.do.dsp.mp.microsoft.com|443|Windows Update|Yok|
-|login.windows.net|443|Microsoft Online Services 'da oturum açın Microsoft 365|Yok|
-|*. sfx.ms|443|OneDrive istemci yazılımı güncelleştirmeleri|Yok|
-|*. digicert.com|443|Sertifika iptal denetimi|Yok|
+|*. wvd.microsoft.us|443|Hizmet trafiği|WindowsVirtualDesktop|
+|gcs.monitoring.core.usgovcloudapi.net|443|Aracı trafiği|AzureCloud|
+|monitoring.core.usgovcloudapi.net|443|Aracı trafiği|AzureCloud|
+|fairfax.warmpath.usgovcloudapi.net|443|Aracı trafiği|AzureCloud|
+|* xt.blob.core.usgovcloudapi.net|443|Aracı trafiği|AzureCloud|
+|*. servicebus.usgovcloudapi.net|443|Aracı trafiği|AzureCloud|
+|* xt.table.core.usgovcloudapi.net|443|Aracı trafiği|AzureCloud|
+|Kms.core.usgovcloudapi.net|1688|Windows etkinleştirme|İnternet|
+|mrsglobalstugviffx.core.usgovcloudapi.net|443|Aracı ve SXS yığın güncelleştirmeleri|AzureCloud|
+|wvdportalstorageblob.blob.core.usgovcloudapi.net|443|Azure portal desteği|AzureCloud|
+| 169.254.169.254 | 80 | [Azure örnek meta veri hizmeti uç noktası](../virtual-machines/windows/instance-metadata-service.md) | Yok |
+| 168.63.129.16 | 80 | [Oturum konak durumu izleme](../virtual-network/security-overview.md#azure-platform-considerations) | Yok |
+
+Aşağıdaki tabloda, Azure sanal makinelerinizin erişebileceği isteğe bağlı URL 'Ler listelenmektedir:
+
+|Adres|Giden TCP bağlantı noktası|Amaç|Azure gov|
+|---|---|---|---|
+|*.microsoftonline.com|443|Microsoft Online Services kimlik doğrulaması|login.microsoftonline.us|
+|*. events.data.microsoft.com|443|Telemetri hizmeti|Hiçbiri|
+|www.msftconnecttest.com|443|İşletim sisteminin Internet 'e bağlı olup olmadığını algılar|Hiçbiri|
+|*. prod.do.dsp.mp.microsoft.com|443|Windows Update|Hiçbiri|
+|login.windows.net|443|Microsoft Online Services 'da oturum açın Microsoft 365|login.microsoftonline.us|
+|*. sfx.ms|443|OneDrive istemci yazılımı güncelleştirmeleri|oneclient.sfx.ms|
+|*. digicert.com|443|Sertifika iptal denetimi|Hiçbiri|
 
 >[!NOTE]
 >Windows sanal masaüstü 'nde, ağ trafiğine izin vermek için engelbir IP adresi aralığı listesi yoktur. Şu anda yalnızca belirli URL 'Lerin engellenmesini destekliyoruz.
@@ -66,15 +85,15 @@ Aşağıdaki tabloda, Azure sanal makinelerinizin erişebileceği isteğe bağl�
 
 Kullandığınız herhangi bir uzak masaüstü istemcisinin aşağıdaki URL 'Lere erişimi olmalıdır:
 
-|Adres|Giden TCP bağlantı noktası|Amaç|İstemci (ler)|
-|---|---|---|---|
-|*. wvd.microsoft.com|443|Hizmet trafiği|Tümü|
-|*.servicebus.windows.net|443|Sorun giderme verileri|Tümü|
-|go.microsoft.com|443|Microsoft FWLinks|Tümü|
-|aka.ms|443|Microsoft URL kısaltalayıcı|Tümü|
-|docs.microsoft.com|443|Belgeler|Tümü|
-|privacy.microsoft.com|443|Gizlilik bildirimi|Tümü|
-|query.prod.cms.rt.microsoft.com|443|İstemci güncelleştirmeleri|Windows Masaüstü|
+|Adres|Giden TCP bağlantı noktası|Amaç|İstemci (ler)|Azure gov|
+|---|---|---|---|---|
+|*. wvd.microsoft.com|443|Hizmet trafiği|Tümü|*. wvd.microsoft.us|
+|*.servicebus.windows.net|443|Sorun giderme verileri|Tümü|*. servicebus.usgovcloudapi.net|
+|go.microsoft.com|443|Microsoft FWLinks|Tümü|Hiçbiri|
+|aka.ms|443|Microsoft URL kısaltalayıcı|Tümü|Hiçbiri|
+|docs.microsoft.com|443|Belgeler|Tümü|Hiçbiri|
+|privacy.microsoft.com|443|Gizlilik bildirimi|Tümü|Hiçbiri|
+|query.prod.cms.rt.microsoft.com|443|İstemci güncelleştirmeleri|Windows Masaüstü|Hiçbiri|
 
 >[!IMPORTANT]
 >Bu URL 'Leri açmak, güvenilir bir istemci deneyimi için gereklidir. Bu URL 'lere erişimin engellenmesi desteklenmez ve hizmet işlevlerini etkiler.

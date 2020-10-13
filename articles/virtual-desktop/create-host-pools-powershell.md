@@ -7,10 +7,10 @@ ms.date: 10/02/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: a47126a48ea63efd4e49097428679b85b7a95a61
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91667172"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>PowerShell ile Windows sanal masaüstü konak havuzu oluşturma
@@ -20,7 +20,7 @@ ms.locfileid: "91667172"
 
 Konak havuzları, Windows sanal masaüstü kiracı ortamlarında bir veya daha fazla özdeş sanal makine koleksiyonudur. Her konak havuzu birden çok RemoteApp grubuyla, bir masaüstü uygulama grubuyla ve birden çok oturum ana bilgisayarıyla ilişkilendirilebilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, [PowerShell modülünü ayarlama](powershell-module.md)bölümündeki yönergeleri zaten takip ettiğiniz varsayılmaktadır.
 
@@ -140,8 +140,8 @@ Aracıyı güncelleştirmek için:
    Bu dosyaları kaldırmak için, her bir dosya adına sağ tıklayın ve ardından **Kaldır**' ı seçin.
 5. İsteğe bağlı olarak, aşağıdaki kayıt defteri ayarlarını da kaldırabilirsiniz:
      
-     - Bilgisayar \ HKEY_LOCAL_MACHINE \Software\microsoft\rdınfraagent
-     - Bilgisayar \ HKEY_LOCAL_MACHINE \Software\microsoft\rdadgentönyükleme yükleyicisi
+     - Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\RDInfraAgent
+     - Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\RDAgentBootLoader
 
 6. Bu öğeleri kaldırdıktan sonra, eski ana bilgisayar havuzuyla tüm ilişkilendirmeleri kaldırması gerekir. Bu Konağı hizmete yeniden kaydettirmek isterseniz, [sanal makineleri Windows sanal masaüstü ana bilgisayar havuzuna kaydetme](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)bölümündeki yönergeleri izleyin.
 

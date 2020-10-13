@@ -11,10 +11,10 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 4a0c2813a45fab497173d0101f87b30288e93884
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91568919"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Azure Data Factory'deki tümleştirme çalışma zamanını izleme
@@ -65,7 +65,7 @@ Aşağıdaki tabloda bir Azure tümleştirme çalışma zamanının olası durum
 
 ## <a name="self-hosted-integration-runtime"></a>Kendinden konak tümleştirme çalışma zamanı
 
-Bu bölüm Get-AzDataFactoryV2IntegrationRuntime cmdlet 'i tarafından döndürülen özelliklerle ilgili açıklamalar sağlar. 
+Bu bölümde Get-AzDataFactoryV2IntegrationRuntime cmdlet 'i tarafından döndürülen özellikler için açıklamalar sağlanmaktadır. 
 
 > [!NOTE] 
 > Döndürülen özellikler ve durum, genel olarak barındırılan tümleştirme çalışma zamanı ve çalışma zamanındaki her düğüm hakkında bilgi içerir.  
@@ -196,7 +196,7 @@ Aşağıdaki tabloda, bir Azure-SSIS IR için yukarıdaki cmdlet tarafından dö
 | Tür                         | Azure-SSIS IR IR türü (yönetilen/kendiliğinden konak). |
 | ResourceGroupName            | ADF ve Azure-SSIS IR oluşturulduğu Azure Kaynak grubunuzun adı. |
 | DataFactoryName              | ADF 'nizin adı. |
-| Ad                         | Azure-SSIS IR adı. |
+| Adı                         | Azure-SSIS IR adı. |
 | Açıklama                  | Azure-SSIS IR açıklaması. |
   
 #### <a name="status-per-azure-ssis-ir-node"></a>Durum (Azure-SSIS IR düğüm başına)
@@ -246,7 +246,7 @@ Paketlerin Azure SQL veritabanı sunucunuz veya yönetilen örneğiniz tarafınd
 
 #### <a name="proxy--staging-tile"></a>PROXY/HAZıRLAMA kutucuğu
 
-Şirket içinde verilere erişmek üzere Azure-SSIS IR için bir ara sunucu olarak şirket içinde barındırılan IR 'yi (Shar) indirip yapılandırırsanız, **Proxy/hazırlama** kutucuğunu Azure-SSIS IR izleme sayfanızda görürsünüz (bkz. [Azure-SSIS IR için ara sunucu olarak shır yapılandırma](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)). Bu kutucukta, KııR 'nizi tanımlayarak izleme sayfasını açmak için bir bağlantı seçebilirsiniz. Ayrıca, bağlı hizmetini yeniden yapılandırmak için Azure Blob depolama alanınızı hazırlama için tanımlayarak başka bir bağlantı seçebilirsiniz.
+Şirket içindeki verilere erişim için Azure-SSIS IR bir proxy olarak Self-Hosted IR (SHıR) indirip yapılandırırsanız, Azure-SSIS IR izleme sayfanızda **Proxy/hazırlama** kutucuğunu görürsünüz (bkz. [Azure-SSIS IR için bir ara sunucu olarak shır yapılandırma](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)). Bu kutucukta, KııR 'nizi tanımlayarak izleme sayfasını açmak için bir bağlantı seçebilirsiniz. Ayrıca, bağlı hizmetini yeniden yapılandırmak için Azure Blob depolama alanınızı hazırlama için tanımlayarak başka bir bağlantı seçebilirsiniz.
 
 #### <a name="validate-vnet--subnet-tile"></a>VNET/alt ağ kutucuğunu doğrula
 

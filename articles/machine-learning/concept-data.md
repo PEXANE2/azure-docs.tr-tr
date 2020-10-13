@@ -12,10 +12,10 @@ ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: a36c7076de0c4db64b67f4eba38de4daf4213bca
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91446701"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning 'da güvenli veri erişimi
@@ -38,7 +38,7 @@ Bulut tabanlı depolama çözümünüzdeki verileri kullanmaya hazırsanız, aş
 3. Machine Learning denemenize bu veri kümesini kullanmak için şunlardan birini yapabilirsiniz
     1. Model eğitimi için deneme işlem hedefine bağlayın.
 
-        **VEYA** 
+        **OR** 
 
     1. Otomatik makine öğrenimi (otomatik ML) deneme çalıştırmaları, makine öğrenimi ardışık düzenleri veya [Azure Machine Learning Tasarımcısı](concept-designer.md)gibi Azure Machine Learning çözümlerinde doğrudan kullanın.
 

@@ -3,12 +3,12 @@ title: Şablon işlevleri-dize
 description: Dizelerle çalışmak için bir Azure Resource Manager şablonunda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 42df0317658971b9e9bf3fb805c9a5ff44efaf45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0733ffc790854c60dca46da3f763738b7820215
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "85962076"
+ms.locfileid: "91874722"
 ---
 # <a name="string-functions-for-arm-templates"></a>ARM şablonları için dize işlevleri
 
@@ -27,6 +27,7 @@ Kaynak Yöneticisi, Azure Resource Manager (ARM) şablonlarınızın dizeleri il
 * [formatını](#format)
 * [guid](#guid)
 * [IndexOf](#indexof)
+* [nesnesinde](#json)
 * [soyadına](#last)
 * [LastIndexOf](#lastindexof)
 * [length](#length)
@@ -894,6 +895,12 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 | firstString | int | 2 |
 | lastString | int | 0 |
 | Bulunamadı | int | -1 |
+
+## <a name="json"></a>json
+
+`json(arg1)`
+
+Geçerli bir JSON dizesini JSON veri türüne dönüştürür. Daha fazla bilgi için bkz. [JSON işlevi](template-functions-object.md#json).
 
 ## <a name="last"></a>Son
 
