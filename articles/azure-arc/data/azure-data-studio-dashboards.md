@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: aa13baf7c6fc6d3bb66b97e533da29e4a1a6e73c
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 608f984b3e3a3020863e0c28b0aa2ad504531e3b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876252"
+ms.locfileid: "91273232"
 ---
 # <a name="azure-data-studio-dashboards"></a>Azure Data Studio panoları
 
@@ -57,7 +57,7 @@ Yük dengeleyici türü kullanıyorsanız, dış IP adresini ve bağlantı nokta
 https://<ip address>:<port>
 
 Example:
-https://52.154.152.24:30080
+https://52.;154.152.24:30080
 ```
 
 Bir sonraki adımda kullanacağınız için IP adresinizi göz önünde bulabilirsiniz.

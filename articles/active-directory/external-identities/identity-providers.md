@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a61eca3340985886ef782b28a59a1283c5f473ce
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91265723"
 ---
 # <a name="identity-providers-for-external-identities"></a>Dış kimlikler için kimlik sağlayıcıları
@@ -30,7 +30,7 @@ Bununla birlikte, kullanıcıların çeşitli kimlik sağlayıcılarıyla oturum
 
 - **Facebook**: bir uygulama oluştururken, self servis kaydolma 'yı yapılandırabilir ve Facebook Federasyonu 'ni etkinleştirerek kullanıcıların kendi Facebook hesaplarını kullanarak uygulamanıza kaydolmasını sağlayabilirsiniz. Facebook yalnızca self servis kaydolma Kullanıcı akışları için kullanılabilir ve kullanıcılar sizi davet etmek için bir oturum açma seçeneği olarak kullanılamaz.
 
-- **Doğrudan Federasyon**: SAML veya WS-beslikli protokolleri destekleyen herhangi bir dış kimlik sağlayıcısı ile doğrudan Federasyonu de ayarlayabilirsiniz. Doğrudan Federasyon, dış kullanıcıların uygulamalarınızı mevcut sosyal veya kurumsal hesaplarıyla oturum açarak sizin tarafınızdan davet etmesine olanak tanır. 
+- **Doğrudan Federasyon**: SAML veya WS-Fed protokollerini destekleyen herhangi bir dış kimlik sağlayıcısıyla doğrudan Federasyonu de ayarlayabilirsiniz. Doğrudan Federasyon, dış kullanıcıların uygulamalarınızı mevcut sosyal veya kurumsal hesaplarıyla oturum açarak sizin tarafınızdan davet etmesine olanak tanır. 
    > [!NOTE]
    > Self Servis kaydolma Kullanıcı akışlarınızda doğrudan Federasyon kimlik sağlayıcıları kullanılamaz.
 
@@ -59,4 +59,4 @@ Uygulamalarınıza oturum açma için kimlik sağlayıcıları eklemeyi öğrenm
 
 - Sosyal kimlik sağlayıcıları listenize [Google ekleyin](google-federation.md)
 - Sosyal kimlik sağlayıcıları listenize [Facebook ekleyin](facebook-federation.md)
-- Kimlik sağlayıcısı SAML 2,0 veya WS-beslenir protokolünü destekleyen herhangi bir kuruluşla [doğrudan Federasyon ayarlayın](direct-federation.md) . Doğrudan Federasyonun self servis kaydolma Kullanıcı akışları için bir seçenek olmadığına unutmayın.
+- Kimlik sağlayıcısı SAML 2,0 veya WS-Fed protokolünü destekleyen herhangi bir kuruluşla [doğrudan Federasyon ayarlayın](direct-federation.md) . Doğrudan Federasyonun self servis kaydolma Kullanıcı akışları için bir seçenek olmadığına unutmayın.

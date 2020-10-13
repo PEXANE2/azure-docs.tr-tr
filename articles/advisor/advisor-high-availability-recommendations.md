@@ -4,10 +4,10 @@ description: İş açısından kritik Azure dağıtımlarınızda güvenilirliğ
 ms.topic: article
 ms.date: 09/27/2020
 ms.openlocfilehash: 1e256d99f8d78ddff318f963dcb21e9b4537f110
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91405199"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak uygulamanızın güvenilirliğini geliştirme
@@ -112,8 +112,8 @@ Başka bir bölgeye çoğaltma özelliği etkinleştirilmemiş sanal makineler, 
 ## <a name="upgrade-to-the-latest-version-of-the-azure-connected-machine-agent"></a>Azure Connected Machine aracısının en son sürümüne yükseltme
 [Azure bağlı makine Aracısı](https://docs.microsoft.com/azure/azure-arc/servers/manage-agent) , hata düzeltmeleri, kararlılık iyileştirmeleri ve yeni işlevlerle düzenli olarak güncelleştirilir. Makine aracısının en son sürümünde çalışmayan kaynakları belirledik ve bu danışman önerisi, en iyi Azure Arc deneyimi için aracınızı en son sürüme yükseltmenizi öneriyor.
 
-## <a name="do-not-override-hostname-to-ensure-website-integrity"></a>Web sitesi bütünlüğünü sağlamak için konak adını geçersiz kılma
-Advisor, Application Gateway yapılandırılırken ana bilgisayar adının geçersiz kılınmasından kaçınmanızı öneririz. Arka uca erişmek için kullanılan Application Gateway ön ucu üzerinde farklı bir etki alanı olması, tanımlama bilgilerine veya yeniden yönlendirme URL 'lerinin bozulmasına yol açabilir. Bu, tüm durumlarda bu durum söz konusu olmayabilir ve genel olarak tüm arka uçların (REST API gibi) belirli kategorilerinin buna daha az duyarlı olduğunu unutmayın. Lütfen arka ucun bu sorunu karşılayamaz veya Application Gateway yapılandırmayı güncelleştirip ana bilgisayar adının arka uca doğru bir şekilde üzerine yazılmasına gerek kalmaz. App Service ile kullanıldığında, Web uygulamasına özel bir etki alanı adı ekleyin ve *arka uca doğru. azurewebsites.NET ana bilgisayar adını* kullanmaktan kaçının. [Özel etki alanı hakkında daha fazla bilgi edinin](https://aka.ms/appgw-advisor-usecustomdomain).
+## <a name="do-not-override-hostname-to-ensure-website-integrity"></a>Web sitesi bütünlüğünü sağlamak için konak adını geçersiz kılmayın
+Advisor, Application Gateway yapılandırılırken ana bilgisayar adının geçersiz kılınmasından kaçınmanızı öneririz. Application Gateway'in ön ucundaki etki alanının arka uca erişim için kullanılan etki alanından farklı olması, tanımlama bilgilerinin veya yeniden yönlendirme URL'lerinin bozulmasına yol açabilir. Bunun her durumda söz konusu olmayabileceğini ve genelde bazı arka uç kategorilerinin (REST API'ler gibi) buna daha az duyarlı olduğunu aklınızda bulundurun. Arka ucun bu durumla başa çıkabileceğinden emin olun veya Application Gateway yapılandırmasını güncelleştirerek konak adının arka ucun üzerine yazılması gereğini ortadan kaldırın. App Service ile kullanıldığında, Web uygulamasına özel bir etki alanı adı ekleyin ve *arka uca doğru. azurewebsites.NET ana bilgisayar adını* kullanmaktan kaçının. [Özel etki alanı hakkında daha fazla bilgi edinin](https://aka.ms/appgw-advisor-usecustomdomain).
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Danışman 'de yüksek kullanılabilirlik önerilerine erişme
 

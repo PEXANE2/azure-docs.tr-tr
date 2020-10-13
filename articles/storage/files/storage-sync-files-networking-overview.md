@@ -8,10 +8,10 @@ ms.date: 06/03/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: b291bd45b4003dd2241f40c810ed9d78af9f8bc9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91267797"
 ---
 # <a name="azure-file-sync-networking-considerations"></a>Azure Dosya Eşitleme ağ değerlendirmeleri
@@ -171,5 +171,5 @@ Azure Dosya Eşitleme aracıdan Azure dosya paylaşımınıza veya depolama eşi
 Aktarım sırasında şifreleme hakkında daha fazla bilgi için bkz. [Azure depolama 'da güvenli aktarım gerektirme](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 ## <a name="see-also"></a>Ayrıca bkz.
-- [Azure Dosya Eşitleme dağıtımını planlama](storage-sync-files-planning.md)
+- [Azure Dosya Eşitleme dağıtımı planlama](storage-sync-files-planning.md)
 - [Azure Dosya Eşitleme’yi dağıtma](storage-sync-files-deployment-guide.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Arc etkin PostgreSQL hiper ölçek sunucu grubu için güvenliği yapılandırma
-description: Azure Arc etkin PostgreSQL hiper ölçek sunucu grubu için güvenliği yapılandırma
+title: Azure Arc özellikli PostgreSQL Hiper Ölçek sunucu grubunuz için güvenliği yapılandırma
+description: Azure Arc özellikli PostgreSQL Hiper Ölçek sunucu grubunuz için güvenliği yapılandırma
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -10,13 +10,13 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 4f89ace7130e95ba109edcf6becca1e15c8d32c1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91273209"
 ---
-# <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc etkin PostgreSQL hiper ölçek sunucu grubu için güvenliği yapılandırma
+# <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc özellikli PostgreSQL Hiper Ölçek sunucu grubunuz için güvenliği yapılandırma
 
 Bu belgede, sunucu grubunuzun güvenliği ile ilgili çeşitli yönleri açıklanmaktadır:
 - Bekleme sırasında şifreleme
@@ -124,7 +124,7 @@ Uygulamam ile bağlandığımda ve bir parola geçirdiğimde, bu, `mysecrets` ta
    select USERname from mysecrets where (USERpassword = crypt('WrongPassword', USERpassword));
    ```
 
-   Çıkış 
+   Çıktı 
 
    ```returns
     USERname
@@ -150,7 +150,7 @@ Bu küçük örnek, Postgres uzantısını kullanarak, Azure Arc etkin PostgreSQ
 
 ## <a name="user-management"></a>Kullanıcı yönetimi
 ### <a name="general-perspectives"></a>Genel Perspektifler
-Kullanıcıları veya rolleri oluşturmak için standart Postgres yolunu kullanabilirsiniz. Ancak bunu yaparsanız, bu yapıtlar yalnızca Düzenleyici rolünde kullanılabilir. Önizleme süresince, bu kullanıcılar/roller henüz düzenleyici düğümünün dışında ve sunucu grubunuzun çalışan düğümlerinde dağıtılan verilere erişemez. Bunun nedeni, önizleme aşamasında Kullanıcı tanımının çalışan düğümlerine çoğaltılmamıştır.
+Kullanıcıları veya rolleri oluşturmak için standart Postgres yolunu kullanabilirsiniz. Ama bunu yaparsanız, bu yapıtlar yalnızca koordinatör rolünde kullanılabilir. Önizleme süresince bu kullanıcılar/roller henüz Koordinatör düğümü dışına ve sunucu grubunuzun Çalışan düğümlerine dağıtılan verilere erişemez. Bunun nedeni önizlemede kullanıcı tanımının Çalışan düğümlerine çoğaltılmamasıdır.
 
 ### <a name="change-the-password-of-the-_postgres_-administrative-user"></a>_Postgres_ yönetici kullanıcısının parolasını değiştirme
 Azure Arc etkin PostgreSQL hiper ölçek, sunucu grubunuzu oluştururken parolayı ayarladığınız standart Postgres Yönetici Kullanıcı _Postgres_ ile birlikte gelir.

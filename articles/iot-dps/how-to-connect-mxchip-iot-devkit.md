@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.openlocfilehash: 2a030d9ca5422e12856dcb81b29f8327e684c97e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90528662"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Mxyonga IoT DevKit 'i IoT Hub kaydetmek için Azure IoT Hub cihaz sağlama hizmeti 'ni otomatik sağlama
@@ -30,7 +30,7 @@ Bu makalede, Azure IoT Hub cihaz sağlama hizmeti 'nin bir Azure IoT Hub Mxyonga
 
 Bu öğreticideki adımları tamamlayabilmeniz için önce aşağıdaki görevleri yapın:
 
-* DevKit 'in Wi-Fi 'nizi yapılandırın ve [IoT DEVKIT AZ3166 'ı Bulutta Azure IoT Hub bağlama](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started#prepare-the-development-environment)bölümündeki "geliştirme ortamını hazırlama" bölümündeki adımları izleyerek geliştirme ortamınızı hazırlayın.
+* DevKit 'in Wi-Fi yapılandırın ve geliştirme ortamınızı buluta hazırlayın. IoT DevKit AZ3166 ' deki "geliştirme ortamını hazırlama" bölümündeki adımları [Bulutta Azure IoT Hub bağlayın](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started#prepare-the-development-environment).
 * [Güncelleştirme DevKit bellenim](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/) öğreticisi ile en son üretici yazılımına (1.3.0 veya üzeri) yükseltin.
 * [IoT Hub cihaz sağlama hizmeti 'ni Azure Portal ayarlama](/azure/iot-dps/quick-setup-auto-provision)bölümündeki adımları Izleyerek bir cihaz sağlama hizmeti örneği ile bir IoT Hub oluşturun ve bağlayın.
 

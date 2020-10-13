@@ -16,10 +16,10 @@ ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
 ms.openlocfilehash: 67b635f09cb9407279e89b5f7b8526dab3c08946
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87068518"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Azure VM 'Leri için TCP/IP performans ayarı
@@ -60,7 +60,7 @@ Parçalanma negatif bir işlem olarak görülebilir, ancak internet üzerinden f
 
 Genel anlamda, MTU 'YU artırarak daha verimli bir ağ oluşturabilirsiniz. Aktarılan her paketin, özgün pakete eklenen üst bilgi bilgileri vardır. Parçalama daha fazla paket oluşturduğunda, daha fazla başlık yükü vardır ve bu da ağın daha az etkili olmasını sağlar.
 
-Bir örneği aşağıda verilmiştir. Ethernet üst bilgi boyutu, çerçeve tutarlılığı sağlamak için 14 bayt ve 4 baytlık bir çerçeve denetim sırasıdır. 1 2.000 baytlık paket gönderilirse, ağa 18 baytlık Ethernet ek yükü eklenir. Paket, 1.500 baytlık bir pakette ve 500 baytlık bir pakette parçalanmışsa, her pakette 18 baytlık Ethernet üstbilgisi ve toplam 36 bayt vardır.
+Aşağıda bir örnek verilmiştir. Ethernet üst bilgi boyutu, çerçeve tutarlılığı sağlamak için 14 bayt ve 4 baytlık bir çerçeve denetim sırasıdır. 1 2.000 baytlık paket gönderilirse, ağa 18 baytlık Ethernet ek yükü eklenir. Paket, 1.500 baytlık bir pakette ve 500 baytlık bir pakette parçalanmışsa, her pakette 18 baytlık Ethernet üstbilgisi ve toplam 36 bayt vardır.
 
 MTU değerinin artırılması daha verimli bir ağ oluşturmayacağınızı unutmayın. Bir uygulama yalnızca 500 baytlık paketler gönderirse, MTU 'nun 1.500 bayt veya 9.000 bayt olmasına bakılmaksızın aynı üstbilgi ek yükü mevcut olacaktır. Ağ, yalnızca MTU 'dan etkilenen daha büyük paket boyutları kullanıyorsa daha etkili olur.
 
@@ -125,7 +125,7 @@ Azure için TCP/üst sınırı 1.350 bayt ve tünel arabirimi MTU değerini 1.40
 
 Ağ gecikmesi, fiber optik bir ağ üzerinden ışık hızına tabidir. TCP 'nin ağ aktarım hızı, iki ağ aygıtı arasındaki gidiş dönüş süresi (RTT) ile de etkili bir şekilde yönetilir.
 
-| Yol | Uzaklık | Tek yönlü saat | RTT |
+| Yol | Mesafe | Tek yönlü saat | RTT |
 | ----- | -------- | ------------ | --- |
 |New York-San Francisco|4.148 km|21 MS|42 ms|
 |New York-Londra|5.585 km|28 MS|56 MS|
@@ -198,7 +198,7 @@ Aşağıda, bir pencere ölçek faktörü 3 ve pencere boyutu 65.535 için bir h
 
 #### <a name="support-for-tcp-window-scaling"></a>TCP pencere ölçeklendirmesi için destek
 
-Windows, farklı bağlantı türleri için farklı ölçekleme faktörleri ayarlayabilir. (Bağlantı sınıfları veri merkezi, internet vb.) `Get-NetTCPConnection`Pencere ölçeklendirme bağlantı türünü görüntülemek için PowerShell komutunu kullanın:
+Windows, farklı bağlantı türleri için farklı ölçekleme faktörleri ayarlayabilir. (Bağlantı sınıfları veri merkezi, internet vb.) `Get-NetTCPConnection` Pencere ölçeklendirme bağlantı türünü görüntülemek için PowerShell komutunu kullanın:
 
 ```powershell
 Get-NetTCPConnection
@@ -210,7 +210,7 @@ Get-NetTCPConnection
 Get-NetTCPSetting
 ```
 
-Windows 'daki ilk TCP pencere boyutunu ve TCP ölçeklendirme faktörünü `Set-NetTCPSetting` PowerShell komutunu kullanarak ayarlayabilirsiniz. Daha fazla bilgi için bkz. [set-NetTCPSetting](https://docs.microsoft.com/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps).
+Windows 'daki ilk TCP pencere boyutunu ve TCP ölçeklendirme faktörünü `Set-NetTCPSetting` PowerShell komutunu kullanarak ayarlayabilirsiniz. Daha fazla bilgi için bkz.  [set-NetTCPSetting](https://docs.microsoft.com/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps).
 
 ```powershell
 Set-NetTCPSetting

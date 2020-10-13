@@ -4,10 +4,10 @@ description: Şirket içinde veya herhangi bir bulutta olsun, Windows Server ça
 ms.topic: conceptual
 ms.date: 2/21/2019
 ms.openlocfilehash: 36883f2c8b09fa3f8f013e0267dafa2a8220e5d2
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91843201"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Windows Server üzerinde çalıştırılan bir tek başına küme oluşturma
@@ -124,7 +124,7 @@ Güvenli olmayan bir kümeye bağlanmak için aşağıdaki PowerShell komutunu �
 Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client connection end point port>
 ```
 
-Örnek:
+Örneğin:
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.234:19000
 ```

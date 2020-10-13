@@ -11,10 +11,10 @@ ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: e22a6028f5b7fa8cf81ddf0e3e2a550859aad0ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259603"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>İzlenecek yol: Azure Active Directory B2C içindeki özel ilkelere REST API talep alışverişi ekleme
@@ -27,7 +27,7 @@ Bu senaryoda, kullanıcının belirteç verilerini kurumsal iş kolu iş akış�
 
 Etkileşimi bir doğrulama teknik profili olarak da tasarlayabilirsiniz. Bu, REST API ekranda verileri doğrularken ve talepler döndüren durumlarda uygundur. Daha fazla bilgi için bkz. [Izlenecek yol: Kullanıcı girişini doğrulamak için Azure AD B2C Kullanıcı yolculuğunda REST API talep Değişimlerinizi tümleştirme](custom-policy-rest-api-claims-validation.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Özel ilkelerle çalışmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın. Kaydolma ve yerel hesaplarla oturum açma için çalışan bir özel ilkenize sahip olmanız gerekir.
 - [Azure AD B2C özel ilkenizde REST API talep değişimlerinin nasıl tümleştirileceğini](custom-policy-rest-api-intro.md)öğrenin.
@@ -177,7 +177,7 @@ Değiştirdiğiniz dosyaları kaydedin: *TrustFrameworkBase.xml*ve *TrustFramewo
 
 ## <a name="test-the-custom-policy"></a>Özel ilkeyi test etme
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresini SEÇIP Azure AD kiracınızı içeren dizini seçerek Azure AD kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **uygulama kayıtları**' i arayıp seçin.
 1. **Kimlik deneyimi çerçevesini**seçin.

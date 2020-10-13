@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: v-erkel
 ms.openlocfilehash: 9159807f55ae52393b8fccec339fcc94c3e4ebb0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87061385"
 ---
 # <a name="use-multiple-caches-for-regional-failover-recovery"></a>Bölgesel yük devretme kurtarması için birden çok önbellek kullanma
@@ -55,6 +55,6 @@ Doğu ABD bölge genelinde hata durumunda Batı ABD 2 bölgesinde hazırladığ�
 
 İstemcilerin bölge kesintisinden etkilenmemesi durumunda bile, tüm istemcilerin yeni önbelleği takmasına gerek olacaktır. Yeni önbelleğin eskileri 'den farklı bağlama adresleri vardır.
 
-## <a name="learn-more"></a>Daha fazla bilgi edinin
+## <a name="learn-more"></a>Daha fazlasını öğrenin
 
 Azure Uygulama Mimarisi Kılavuzu, [bölge genelinde hizmet kesintisini nasıl kurtarabileceğiniz](<https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region>)hakkında daha fazla bilgi içerir.
