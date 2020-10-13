@@ -11,10 +11,10 @@ ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 06/03/2020
 ms.openlocfilehash: 49e885862a49bb3bbea718566ee5389e6b08e860
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91444605"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL veritabanı denetim günlüğü biçimi
@@ -49,30 +49,30 @@ Denetim olayları, denetim yapılandırması sırasında tanımlanan Log Analyti
 | Ad (blob) | Ad (Event Hubs/Log Analytics) | Açıklama | Blob türü | Event Hubs/Log Analytics türü |
 |-------------|---------------------------------|-------------|-----------|-------------------------------|
 | action_id | action_id_s | Eylemin KIMLIĞI | varchar (4) | string |
-| action_name | action_name_s | Eylemin adı | YOK | string |
+| action_name | action_name_s | Eylemin adı | Yok | string |
 | additional_information | additional_information_s | XML olarak depolanan olayla ilgili ek bilgiler | nvarchar (4000) | string |
 | affected_rows | affected_rows_d | Sorgudan etkilenen satır sayısı | bigint | int |
 | application_name | application_name_s| İstemci uygulamasının adı | nvarchar (128) | string |
 | audit_schema_version | audit_schema_version_d | Always 1 | int | int |
 | class_type | class_type_s | Denetim üzerinde gerçekleştiği denetlenebilir varlık türü | varchar (2) | string |
-| class_type_desc | class_type_description_s | Denetim üzerinde gerçekleştiği denetlenebilir varlığın açıklaması | YOK | string |
+| class_type_desc | class_type_description_s | Denetim üzerinde gerçekleştiği denetlenebilir varlığın açıklaması | Yok | string |
 | client_ip | client_ip_s | İstemci uygulamasının kaynak IP 'si | nvarchar (128) | string |
-| connection_id | YOK | Sunucudaki bağlantının KIMLIĞI | GUID | YOK |
+| connection_id | Yok | Sunucudaki bağlantının KIMLIĞI | GUID | Yok |
 | data_sensitivity_information | data_sensitivity_information_s | Veritabanındaki sınıflandırılan sütunlara göre denetlenen sorgu tarafından döndürülen bilgi türleri ve duyarlılık etiketleri. [Azure SQL veritabanı veri bulma ve sınıflandırma](data-discovery-and-classification-overview.md) hakkında daha fazla bilgi edinin | nvarchar (4000) | string |
 | database_name | database_name_s | Eylemin gerçekleştiği veritabanı bağlamı | döndürmeli | string |
 | database_principal_id | database_principal_id_d | İşlemin gerçekleştirildiği veritabanı kullanıcı bağlamının KIMLIĞI | int | int |
 | database_principal_name | database_principal_name_s | Eylemin gerçekleştirildiği veritabanı kullanıcı bağlamının adı | döndürmeli | string |
 | duration_milliseconds | duration_milliseconds_d | Milisaniye cinsinden sorgu yürütme süresi | bigint | int |
 | event_time | event_time_t | Denetlenebilir eylemin harekete geçirildiğinde tarih ve saat | datetime2 | datetime |
-| host_name | YOK | İstemci konak adı | string | YOK |
+| host_name | Yok | İstemci konak adı | string | Yok |
 | is_column_permission | is_column_permission_s | Bu sütun düzeyi izninin olup olmadığını belirten bayrak. 1 = true, 0 = false | bit | string |
-| YOK | is_server_level_audit_s | Bu denetimin sunucu düzeyinde olup olmadığını belirten bayrak | YOK | string |
+| Yok | is_server_level_audit_s | Bu denetimin sunucu düzeyinde olup olmadığını belirten bayrak | Yok | string |
 | object_ kimliği | object_id_d | Üzerinde denetim gerçekleştiği varlığın KIMLIĞI. Buna: sunucu nesneleri, veritabanları, veritabanı nesneleri ve şema nesneleri dahildir. varlık sunucunun kendisi ise veya denetim bir nesne düzeyinde gerçekleştirildiyse 0 | int | int |
 | object_name | object_name_s | Üzerinde denetim gerçekleştiği varlığın adı. Buna: sunucu nesneleri, veritabanları, veritabanı nesneleri ve şema nesneleri dahildir. varlık sunucunun kendisi ise veya denetim bir nesne düzeyinde gerçekleştirildiyse 0 | döndürmeli | string |
 | permission_bitmask | permission_bitmask_s | Uygun olduğunda, verilen, reddedilen veya iptal edilen izinleri gösterir | varbinary (16) | string |
 | response_rows | response_rows_d | Sonuç kümesinde döndürülen satır sayısı | bigint | int |
 | schema_name | schema_name_s | Eylemin gerçekleştiği şema bağlamı. Şema dışında gerçekleşen denetimler için NULL | döndürmeli | string |
-| YOK | securable_class_type_s | Denetlenen class_type eşleyen güvenli kılınabilir nesne | YOK | string |
+| Yok | securable_class_type_s | Denetlenen class_type eşleyen güvenli kılınabilir nesne | Yok | string |
 | sequence_group_id | sequence_group_id_g | Benzersiz tanımlayıcı | ikili | GUID |
 | sequence_number | sequence_number_d | Denetimler için yazma arabelleğine sığamayacak kadar büyük olan tek bir denetim kaydı içindeki kayıt sırasını izler | int | int |
 | server_instance_name | server_instance_name_s | Denetim gerçekleştiği sunucu örneğinin adı | döndürmeli | string |

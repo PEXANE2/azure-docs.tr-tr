@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 05/15/2020
 ms.author: Zhchia
 ms.openlocfilehash: 850db53cbf88968a413d72527d76463e17aa8f5d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361713"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için 8x8 yapılandırma
@@ -29,7 +29,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem 8x8 Co
 > * Kullanıcı özniteliklerinin Azure AD ve 8x8 arasında eşitlenmiş kalmasını sağlama
 > * 8x8 [' e çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/8x8virtualoffice-tutorial) (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -37,7 +37,7 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 * Azure AD'de hazırlama [iznine](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) sahip bir kullanıcı hesabı (Uygulama Yöneticisi, Bulut Uygulaması Yöneticisi, Uygulama Sahibi veya Genel Yönetici).
 * Herhangi bir düzeyin bir 8x8 X serisi aboneliği.
 * [Configuration Manager](https://vo-cm.8x8.com)üzerinde yönetici iznine sahip bir 8x8 Kullanıcı hesabı.
-* [Azure AD Ile çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/8x8virtualoffice-tutorial) zaten yapılandırılmış.
+* [Azure AD Ile tek Sign-On](https://docs.microsoft.com/azure/active-directory/saas-apps/8x8virtualoffice-tutorial) zaten yapılandırılmış.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Adım 1. Hazırlama dağıtımınızı planlama
 1. [Hazırlama hizmetinin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) hakkında bilgi edinin.

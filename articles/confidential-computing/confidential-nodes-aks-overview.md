@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: ae3090689f9999c9ea6aa65447dadbdd7b0b2026
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2aa30f86b32005b9c85664b5bb2d0772a6e5f443
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91001078"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940778"
 ---
 # <a name="confidential-computing-nodes-on-azure-kubernetes-service-public-preview"></a>Azure Kubernetes hizmetindeki gizli bilgi işlem düğümleri (Genel Önizleme)
 
@@ -40,7 +40,7 @@ Azure Kubernetes hizmeti (AKS), [DCsv2 gizli bilgi işlem düğümlerinin](confi
 
 #### <a name="sgx-device-plugin"></a>SGX cihaz eklentisi <a id="sgx-plugin"></a>
 
-SGX cihaz eklentisi, EPC belleği için Kubernetes cihaz eklentisi arabirimini uygular. Etkin olarak, bu eklenti, EPC belleğini Kubernetes 'te ek bir kaynak türü yapar. Kullanıcılar, bu kaynak üzerinde diğer kaynaklar gibi sınırlar belirtebilir. Zamanlama işlevinden ayrı olarak, cihaz eklentisi gizli iş yükü kapsayıcılarına SGX cihaz sürücüsü izinleri atamaya yardımcı olur. EPC bellek tabanlı dağıtım () örneğinin örnek bir uygulamasını `kubernetes.azure.com/sgx_epc_mem_in_MiB` [burada bulabilirsiniz](https://github.com/azure-samples/confidential-computing/blob/main/containersamples/helloworld/helloworld.yaml)
+SGX cihaz eklentisi, EPC belleği için Kubernetes cihaz eklentisi arabirimini uygular. Etkin olarak, bu eklenti, EPC belleğini Kubernetes 'te ek bir kaynak türü yapar. Kullanıcılar, bu kaynak üzerinde diğer kaynaklar gibi sınırlar belirtebilir. Zamanlama işlevinden ayrı olarak, cihaz eklentisi gizli iş yükü kapsayıcılarına SGX cihaz sürücüsü izinleri atamaya yardımcı olur. EPC bellek tabanlı dağıtım () örneğinin örnek bir uygulamasını `kubernetes.azure.com/sgx_epc_mem_in_MiB` [burada bulabilirsiniz](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/helloworld/helm/templates/helloworld.yaml)
 
 #### <a name="sgx-quote-helper-service"></a>SGX quote yardımcı hizmeti <a id="sgx-quote"></a>
 
