@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 7db9ac0eb624c2732295639d65e0311fcf459f71
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90941026"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı 'nda yüksek kullanılabilirlik kavramları-esnek sunucu
@@ -18,7 +18,7 @@ ms.locfileid: "90941026"
 > [!IMPORTANT]
 > PostgreSQL için Azure veritabanı-esnek sunucu önizlemededir
 
-PostgreSQL için Azure veritabanı-esnek sunucu, bölgesel olarak **yedekli** sunucu dağıtımı kullanarak otomatik yük devretme özelliği ile yüksek kullanılabilirlik yapılandırması sunar. Esnek sunucu, bölgesel olarak yedekli bir yapılandırmada dağıtıldığında, farklı bir kullanılabilirlik bölgesindeki bir bekleme çoğaltmasını otomatik olarak sağlar ve yönetir. PostgreSQL akış çoğaltmasını kullanarak, veriler bekleyen çoğaltma sunucusuna **zaman uyumlu** modda çoğaltılır. 
+PostgreSQL için Azure veritabanı-esnek sunucu, bölgesel olarak **yedekli** sunucu dağıtımı kullanarak otomatik yük devretme özelliği ile yüksek kullanılabilirlik yapılandırması sunar. Alanlar arası yedekli bir yapılandırmada dağıtıldığında, esnek sunucu farklı bir kullanılabilirlik alanında bekleyen çoğaltmayı otomatik olarak sağlar ve yönetir. PostgreSQL akış çoğaltmasını kullanarak, veriler bekleyen çoğaltma sunucusuna **zaman uyumlu** modda çoğaltılır. 
 
 Bölgesel olarak yedekli yapılandırma, Kullanıcı tarafından başlatılan ölçek işlem işlemi gibi planlı olaylar sırasında ve ayrıca temel alınan donanım, yazılım hataları, ağ hataları ve kullanılabilirlik bölgesi hataları gibi planlanmamış olaylar sırasında sıfır veri kaybı ile otomatik yük devretme özelliği sunar. 
 
@@ -26,7 +26,7 @@ Bölgesel olarak yedekli yapılandırma, Kullanıcı tarafından başlatılan ö
 
 ## <a name="zone-redundant-high-availability-architecture"></a>Bölge yedekli yüksek kullanılabilirlik mimarisi
 
-Birincil veritabanı sunucunuzu dağıtmak için bölgeyi ve kullanılabilirlik bölgesini seçebilirsiniz. Bekleyen bir çoğaltma sunucusu, işlem katmanı, işlem boyutu, depolama boyutu ve ağ yapılandırması dahil olmak üzere birincil sunucuyla aynı yapılandırmaya sahip farklı bir kullanılabilirlik bölgesinde sağlanır. İşlem günlükleri, PostgreSQL akış çoğaltmasını kullanarak bekleme konumuna zaman uyumlu modda çoğaltılır. Otomatik yedeklemeler, birincil veritabanı sunucusundan düzenli olarak gerçekleştirilir, ancak işlem günlükleri sürekli olarak bekleme çoğaltmasından yedekleme depolamasına arşivlenir. 
+Birincil veritabanı sunucunuzun dağıtılacağı bölgeyi ve kullanılabilirlik alanını seçebilirsiniz. Bekleyen çoğaltma sunucusu, birincil sunucuyla aynı yapılandırmaya (aynı işlem katmanı, işlem boyutu, depolama boyutu ve ağ yapılandırması) sahip olur ve farklı bir kullanılabilirlik alanında sağlanır. İşlem günlükleri, PostgreSQL akış çoğaltmasını kullanarak bekleme konumuna zaman uyumlu modda çoğaltılır. Otomatik yedeklemeler, birincil veritabanı sunucusundan düzenli olarak gerçekleştirilir, ancak işlem günlükleri sürekli olarak bekleme çoğaltmasından yedekleme depolamasına arşivlenir. 
 
 Yüksek kullanılabilirlik yapılandırmasının sistem durumu, portalda sürekli olarak izlenir ve raporlanır. Bölge yedekli yüksek kullanılabilirlik durumları aşağıda listelenmiştir:
 
@@ -43,7 +43,7 @@ Yüksek kullanılabilirlik yapılandırmasının sistem durumu, portalda sürekl
 
 PostgreSQL istemci uygulamaları, VERITABANı sunucu adı kullanılarak birincil sunucuya bağlanır. Uygulama okumaları doğrudan birincil sunucudan sunulur, ancak işlemeler ve yazma işlemleri yalnızca birincil sunucuda ve bekleme çoğaltmasındaki veriler kalıcı olduktan sonra uygulamaya onaylanır. Bu ek gidiş dönüş gereksiniminden dolayı, uygulamalar yazma ve işlemeler için yükseltilmiş gecikme süresi bekleyebilir. Portalda yüksek kullanılabilirlik durumunu izleyebilirsiniz.
 
-:::image type="content" source="./media/business-continuity/concepts-high-availability-steady-state.png" alt-text="bölge yedekli yüksek kullanılabilirlik-sabit durum"::: 
+:::image type="content" source="./media/business-continuity/concepts-high-availability-steady-state.png" alt-text="bölge yedekli yüksek kullanılabilirlik"::: 
 
 1. İstemciler esnek sunucuya bağlanır ve yazma işlemleri gerçekleştirir.
 2. Değişiklikler, bekleme sitesine çoğaltılır.
@@ -64,7 +64,7 @@ Planlanmış kapalı kalma süresi olayları, Azure zamanlanmış düzenli yazı
 
 Planlanmamış kesintiler, yazılım hatalarını veya altyapı bileşeni başarısızlıklarını, veritabanının kullanılabilirliğini etkiler. Sunucu kullanılamamız, izleme sistemi tarafından algılanırsa, bekleme çoğaltmasındaki çoğaltma devre dışı olur ve bekleme çoğaltması birincil veritabanı sunucusu olarak etkinleştirilir. İstemciler aynı bağlantı dizesini kullanarak veritabanı sunucusuna yeniden bağlanabilir ve işlemlerini sürdürür. Genel yük devretme süresinin 60-120s olması beklenir. Ancak, yük devretme sırasında büyük işlemler ve kurtarma süresi gibi birincil veritabanı sunucusundaki etkinliğe bağlı olarak, yük devretme daha uzun sürebilir.
 
-:::image type="content" source="./media/business-continuity/concepts-high-availability-failover-state.png" alt-text="bölge yedekli yüksek kullanılabilirlik-yük devretme"::: 
+:::image type="content" source="./media/business-continuity/concepts-high-availability-failover-state.png" alt-text="bölge yedekli yüksek kullanılabilirlik"::: 
 
 1. Birincil veritabanı sunucusu çalışmıyor ve istemciler veritabanı bağlantısını kaybeder. 
 2. Bekleme sunucusu, yeni birincil sunucu olmak üzere etkinleştirilir. İstemci, aynı bağlantı dizesini kullanarak yeni birincil sunucuya bağlanır. İstemci uygulamasının birincil veritabanı sunucusuyla aynı bölgede olması gecikmeyi azaltır ve performansı geliştirir.
@@ -111,7 +111,7 @@ Yüksek kullanılabilirlik ile yapılandırılan esnek sunucular, güncel tutmak
 
 -   Yönetilen bakım penceresi sırasında müşterinin başlattığı yönetim görevlerinin yapılandırılması zamanlanamaz.
 
--   Ölçek işlem ve ölçek depolaması gibi planlı olaylar, önce bekleme durumunda ve sonra birincil sunucuda gerçekleşir. Hizmet yük devretmedi. 
+-   İşlemi ölçeklendirme ve depolamayı ölçeklendirme gibi planlı olaylar önce bekleyen çoğaltmada ve ardından da birincil sunucuda gerçekleşir. Hizmet yük devretmez. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

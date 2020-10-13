@@ -12,10 +12,10 @@ ms.date: 06/24/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: 413cfe4f3aed446ad26a210b4faa452c4f624685
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88640863"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Uygulama Proxy'si sorunlarını ve hata iletilerini giderme
@@ -47,7 +47,7 @@ Olay günlüğünden bağlayıcı hatasını bulduktan sonra, sorunu gidermek i�
 | Hata | Önerilen adımlar |
 | ----- | ----------------- |
 | Bağlayıcı kaydı başarısız oldu: Azure Yönetim Portalı uygulama proxy 'Sini etkinleştirdiğinizden ve Active Directory Kullanıcı adınızı ve parolanızı doğru girdiğinizden emin olun. Hata: ' bir veya daha fazla hata oluştu. ' | Azure AD 'de oturum açmadan kayıt penceresini kapattıysanız, bağlayıcı Sihirbazı 'nı yeniden çalıştırın ve bağlayıcıyı kaydedin. <br><br> Kayıt penceresi açılıp daha sonra oturum açmaya izin vermeden hemen kapatırsa bu hatayı alırsınız. Bu hata, sisteminizde bir ağ hatası olduğunda oluşur. Tarayıcıdan ortak bir Web sitesine bağlanmak ve bağlantı noktalarının [uygulama proxy önkoşulları](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)'nda belirtilen şekilde açık olduğundan emin olun. |
-| Temizleme hatası, kayıt penceresinde gösterilir. Devam edilemiyor | Bu hatayı görürseniz ve pencere kapandığında yanlış Kullanıcı adı veya parola girdiniz. Yeniden Deneyin. |
+| Temizleme hatası, kayıt penceresinde gösterilir. Devam edilemiyor | Bu hatayı görürseniz ve pencere kapandığında yanlış Kullanıcı adı veya parola girdiniz. Yeniden deneyin. |
 | Bağlayıcı kaydı başarısız oldu: Azure Yönetim Portalı uygulama proxy 'Sini etkinleştirdiğinizden ve Active Directory Kullanıcı adınızı ve parolanızı doğru girdiğinizden emin olun. Hata: ' AADSTS50059: istekte hiçbir kiracı tanımlama bilgisi bulunamadı veya belirtilen kimlik bilgileri tarafından kapsanıyor ve hizmet sorumlusu URI 'sine göre arama başarısız oldu. | Erişmeye çalıştığınız dizinin kuruluş KIMLIĞININ bir parçası olan bir etki alanı değil, bir Microsoft hesabı kullanarak oturum açmaya çalışıyorsunuz. Yöneticinin kiracı etki alanı ile aynı etki alanı adının bir parçası olduğundan emin olun. Örneğin, Azure AD etki alanı contoso.com ise, yöneticinin olması gerekir admin@contoso.com . |
 | PowerShell betikleri çalıştırmak için geçerli yürütme ilkesi alınamadı. | Bağlayıcı yüklemesi başarısız olursa, PowerShell yürütme ilkesinin devre dışı olmadığından emin olmak için denetleyin. <br><br>1. grup ilkesi düzenleyicisini açın.<br>2. **Computer Configuration**  >  **Administrative Templates**  >  **Windows bileşenleri**  >  **Windows PowerShell** Yönetim Şablonları bilgisayar yapılandırması ' na gidin ve **betik yürütmeyi aç**' a çift tıklayın.<br>3. yürütme ilkesi **yapılandırılmamış** ya da **etkin**olarak ayarlanabilir. **Etkin**olarak ayarlanırsa, Seçenekler ' in altında, yürütme ilkesinin **Yerel betikler ve uzaktan Imzalanmış betiklerine izin ver** ' e ayarlandığından emin olun veya **Tüm betiklerine izin verin**. |
 | Bağlayıcı yapılandırmayı indiremedi. | Kimlik doğrulama için kullanılan bağlayıcının istemci sertifikası, zaman aşımına uğradı. Bu, bağlayıcının bir proxy 'nin arkasında yüklü olması halinde de oluşabilir. Bu durumda, bağlayıcı Internet 'e erişemez ve uzak kullanıcılara uygulama sağlayamayacak. `Register-AppProxyConnector`Windows PowerShell 'de cmdlet 'ini kullanarak güveni el ile yenileyin. Bağlayıcınız bir proxy 'nin arkasındaysa, "Ağ Hizmetleri" ve "yerel sistem" bağlayıcı hesaplarına Internet erişimi verilmesi gerekir. Bu, proxy 'ye erişim izni vererek ya da proxy 'yi atlayacak şekilde ayarlanarak yapılabilir. |

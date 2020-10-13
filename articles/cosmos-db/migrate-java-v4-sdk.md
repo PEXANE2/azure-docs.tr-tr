@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 24e9087a175385f8e5c347a1d2df3b2785868506
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327863"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>Uygulamanızı Java SDK 'Sı v4 Azure Cosmos DB kullanmak için geçirin
@@ -31,7 +31,7 @@ Bu makalede, daha eski bir Java SDK 'sını kullanan mevcut Java uygulamanızın
 
 Aşağıdaki tabloda farklı Azure Cosmos DB Java SDK 'Ları, paket adı ve sürüm bilgileri listelenmektedir:
 
-| Java SDK| Yayın Tarihi | Paketlenmiş API 'Ler   | Maven jar  | Java paket adı  |API Referansı   | Sürüm Notları  |
+| Java SDK| Yayın Tarihi | Paketlenmiş API 'Ler   | Maven jar  | Java paket adı  |API Başvurusu   | Sürüm Notları  |
 |-------|------|-----------|-----------|--------------|-------------|---------------------------|
 | Zaman uyumsuz 2. x. x  | Haziran 2018    | Async (RxJava)  | `com.microsoft.azure::azure-cosmosdb` | `com.microsoft.azure.cosmosdb.rx` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Sürüm Notları](sql-api-sdk-async-java.md) |
 | 2. x. x eşitlemesini Eşitle     | Eyl 2018    | Sync   | `com.microsoft.azure::azure-documentdb` | `com.microsoft.azure.cosmosdb` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Sürüm Notları](sql-api-sdk-java.md)  |
@@ -87,8 +87,8 @@ Java SDK 3. x. x Azure Cosmos DB, `CosmosItemProperties` nesnesi ortak API taraf
 
 ### <a name="imports"></a>İşlemlerinin
 
-* Azure Cosmos DB Java SDK 4,0 paketleri şununla başlar`com.azure.cosmos`
-  * Azure Cosmos DB Java SDK 3. x. x paketleri şununla başlar`com.azure.data.cosmos`
+* Azure Cosmos DB Java SDK 4,0 paketleri şununla başlar `com.azure.cosmos`
+  * Azure Cosmos DB Java SDK 3. x. x paketleri şununla başlar `com.azure.data.cosmos`
 
 * Azure Cosmos DB Java SDK 4,0, iç içe bir pakete birkaç sınıfı koyar `com.azure.cosmos.models` . Bu paketlerin bazıları şunlardır:
 
@@ -100,7 +100,7 @@ Java SDK 3. x. x Azure Cosmos DB, `CosmosItemProperties` nesnesi ortak API taraf
   * `FeedOptions`
   * `PartitionKey`
   * `IndexingPolicy`
-  * `IndexingMode`... benzerlerini.
+  * `IndexingMode` ... benzerlerini.
 
 ### <a name="accessors"></a>C
 

@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 952bd6dddf9f276ed1a4a18f03799147f1902198
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90941007"
 ---
 # <a name="restart-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı 'nı yeniden başlatın-esnek sunucu
@@ -43,7 +43,7 @@ Esnek sunucunuzu yeniden başlatmak için aşağıdaki adımları izleyin.
 
 4.  Devam etmek istiyorsanız **Evet** ' e tıklayın.
    
-     :::image type="content" source="./media/how-to-restart-server-portal/restart-pop-up.png" alt-text="Yeniden başlatma Onayla":::
+     :::image type="content" source="./media/how-to-restart-server-portal/restart-pop-up.png" alt-text="Seçimi yeniden Başlat":::
  
 6.  Yeniden başlatma işleminin başlatıldığı bir bildirim gösterilir.
 

@@ -13,17 +13,17 @@ manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b18279e44bc5a3fd668d2ec4af6be29229af1b6b
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87910341"
 ---
 # <a name="add-b2b-collaboration-guest-users-without-an-invitation-link-or-email"></a>Bir davet bağlantısı veya e-posta olmadan B2B işbirliği Konuk kullanıcıları ekleme
 
 Artık, paylaşılan bir uygulamaya [doğrudan bağlantı](redemption-experience.md#redemption-through-a-direct-link) göndererek Konuk kullanıcıları davet edebilirsiniz. Bu yöntemde, bazı özel durumlar dışında, konuk kullanıcıların artık davet e-postasını kullanması gerekmez. Konuk Kullanıcı uygulama bağlantısını tıklatır, gizlilik koşullarını gözden geçirir ve kabul eder ve ardından uygulamaya sorunsuz bir şekilde erişir. Daha fazla bilgi için bkz. [B2B işbirliği daveti satın](redemption-experience.md)alma.
 
-Bu yeni yöntem kullanılabilir olmadan önce, davet e-postası gerekmeden Konuk kullanıcıları davet e-postası gerektirmeden davet edebilir (kuruluştan veya bir iş ortağı kuruluştan) **konuk davet** eden dizin rolüne davet edebilir ve ardından davet eden kullanıcıyı, Kullanıcı arabirimi veya PowerShell aracılığıyla dizine, gruplara veya uygulamalara Konuk kullanıcı eklemesini sağlayabilirsiniz. (PowerShell kullanıyorsanız, davet e-postasını tamamen gizleyebilirsiniz). Örnek:
+Bu yeni yöntem kullanılabilir olmadan önce, davet e-postası gerekmeden Konuk kullanıcıları davet e-postası gerektirmeden davet edebilir (kuruluştan veya bir iş ortağı kuruluştan) **konuk davet** eden dizin rolüne davet edebilir ve ardından davet eden kullanıcıyı, Kullanıcı arabirimi veya PowerShell aracılığıyla dizine, gruplara veya uygulamalara Konuk kullanıcı eklemesini sağlayabilirsiniz. (PowerShell kullanıyorsanız, davet e-postasını tamamen gizleyebilirsiniz). Örneğin:
 
 1. Konak kuruluştaki bir Kullanıcı (örneğin, WoodGrove) bir kullanıcıyı iş ortağı kuruluştan (örneğin, Sam@litware.com ) Konuk olarak davet eder.
 2. Konak kuruluştaki yönetici, Sam 'ın iş ortağı kuruluştan diğer kullanıcıları tanımlamasına ve eklemesine izin veren [ilkeleri ayarlar](delegate-invitations.md) (Litwlar). (Sam, **konuk davet** eden rolüne eklenmelidir.)

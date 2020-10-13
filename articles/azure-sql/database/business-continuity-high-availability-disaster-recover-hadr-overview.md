@@ -14,10 +14,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 06/25/2019
 ms.openlocfilehash: a69332f1534e32a85ce084289dd00533612cc282
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91327570"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Azure SQL Veritabanı'nda iş sürekliliğine genel bakış
@@ -65,13 +65,13 @@ Zaman içinde nokta geri yükleme (ıNR) için desteklenen en fazla yedekleme sa
 
 |                                              | Coğrafi çoğaltma | Yük devretme grupları  |
 |:---------------------------------------------| :-------------- | :----------------|
-| **Otomatik yük devretme**                          |     Hayır          |      Yes         |
-| **Aynı anda birden çok veritabanının yükünü devretme**  |     Hayır          |      Yes         |
-| **Kullanıcı, yük devretmeden sonra bağlantı dizesini güncelleştirmelidir**      |     Yes         |      Hayır          |
-| **SQL Yönetilen Örneği desteği**                   |     Hayır          |      Yes         |
-| **Birincil ile aynı bölgede olabilir**             |     Yes         |      Hayır          |
-| **Birden çok çoğaltma**                            |     Yes         |      Hayır          |
-| **Okuma ölçeğini destekler**                          |     Yes         |      Yes         |
+| **Otomatik yük devretme**                          |     Hayır          |      Evet         |
+| **Aynı anda birden çok veritabanının yükünü devretme**  |     Hayır          |      Evet         |
+| **Kullanıcı, yük devretmeden sonra bağlantı dizesini güncelleştirmelidir**      |     Evet         |      Hayır          |
+| **SQL Yönetilen Örneği desteği**                   |     Hayır          |      Evet         |
+| **Birincil ile aynı bölgede olabilir**             |     Evet         |      Hayır          |
+| **Birden çok çoğaltma**                            |     Evet         |      Hayır          |
+| **Okuma ölçeğini destekler**                          |     Evet         |      Evet         |
 
 
 ## <a name="recover-a-database-to-the-existing-server"></a>Bir veritabanını mevcut sunucuya kurtar

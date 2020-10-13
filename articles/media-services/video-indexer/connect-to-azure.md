@@ -11,21 +11,21 @@ ms.topic: article
 ms.date: 05/08/2020
 ms.author: juliako
 ms.openlocfilehash: 405533aad8247350d45cc53009abe6b58a511264
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83005939"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Azure 'a bağlı bir Video Indexer hesabı oluşturun
 
-Video Indexer bir hesap oluştururken, ücretsiz bir deneme hesabı (belirli bir sayıda dizin oluşturma dakikası aldığınız) veya ücretli bir seçenek (Kota ile sınırlı olmamak üzere) seçebilirsiniz. Ücretsiz deneme sürümü sayesinde, Video Indexer Web sitesi kullanıcılarına en fazla 600 dakikalık ücretsiz dizin oluşturma ve API kullanıcılarına 2400 dakikalık ücretsiz dizin oluşturma olanağı sağlar. Ücretli seçenekle, Azure aboneliğinize ve bir Azure Media Services hesabına bağlı bir Video Indexer hesabı oluşturursunuz. Dizinli ve medya hesabı ile ilgili ücretler için ödeme yaparsınız.
+Video Indexer hesabınızı oluştururken ücretsiz bir deneme hesabı (belirli sayıda ücretsiz dizin oluşturma dakikası elde edersiniz) veya ücretli bir seçenek (kota sınırlaması olmaz) arasından seçim yapabilirsiniz. Ücretsiz deneme kullanıldığında Video Indexer, web sitesi kullanıcılarına 600 dakikaya kadar ve API kullanıcılarına ise 2400 dakikaya kadar ücretsiz dizin oluşturma olanağı sunar. Ücretli seçenek kullanıldığında Azure aboneliğinize ve bir Azure Media Services hesabına bağlı bir Video Indexer hesabı oluşturulur. Dizin oluşturma faaliyeti yapılan dakika sayısının yanı sıra medya hesabı ile ilgili ücretler için ödeme yaparsınız.
 
 Bu makalede, bir Azure aboneliğine ve bir Azure Media Services hesabına bağlı Video Indexer hesabının nasıl oluşturulacağı gösterilmektedir. Bu konuda otomatik (varsayılan) Flow kullanılarak Azure 'a bağlanmak için gereken adımlar sağlanmaktadır. Ayrıca, Azure 'a el ile nasıl bağlanagösterdiğini gösterir (Gelişmiş).
 
 *Deneme* sürümünden *ücretli* video Indexer hesabına geçiş yapıyorsanız tüm videolar ve model özelleştirmesini, [içeriğinizi deneme hesabından içeri aktarma](#import-your-content-from-the-trial-account) bölümünde anlatıldığı şekilde yeni hesaba kopyalamayı seçebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği.
 
@@ -163,7 +163,7 @@ Azure bağlantısı başarısız olduysa, el ile bağlanarak sorunu gidermeyi de
 > [!NOTE]
 > İçerik her bir hesaptan yalnızca bir kez içeri aktarılabilir.
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 Aşağıdaki Azure Media Services ilgili konular geçerlidir:
 

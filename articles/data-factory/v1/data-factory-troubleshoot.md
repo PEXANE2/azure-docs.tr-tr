@@ -14,10 +14,10 @@ ms.reviewer: maghan
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: 45aa444393ed81bc320a770203ca114c35e16107
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84195910"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory'de sorun giderme
@@ -56,7 +56,7 @@ Veri Yönetimi Ağ Geçidi Hızlı Kurulumu için Internet Explorer veya Microso
 
 * Internet Explorer veya Microsoft ClickOnce uyumlu bir Web tarayıcısı kullanın.
 
-    Chrome kullanıyorsanız, [Chrome web mağazasına](https://chrome.google.com/webstore/) gidin, “ClickOnce” araması yapın, ClickOnce uzantılarından birini seçin ve yükleyin.
+    Chrome kullanıyorsanız [Chrome Web deposuna](https://chrome.google.com/webstore/)gidin, "ClickOnce" anahtar sözcüğü ile arama yapın, ClickOnce uzantılarından birini seçin ve yükleyebilirsiniz.
 
     Firefox için aynısını yapın (eklenti yüklemesi). Araç çubuğundaki Menüyü Aç düğmesine tıklayın (sağ üst köşede yer alan üç yatay çizgi), Eklentiler’e tıklayın, “ClickOnce” araması yapın, ClickOnce uzantılarından birini seçin ve yükleyin.
 * Portalda aynı dikey pencerede gösterilen **El Ile kurulum** bağlantısını kullanın. Yükleme dosyasını indirmek ve el ile çalıştırmak için bu yaklaşımı kullanın. Yükleme başarılı olduktan sonra Veri Yönetimi ağ geçidi yapılandırması iletişim kutusunu görürsünüz. Portal ekranındaki **anahtarı** kopyalayın ve ağ geçidini hizmete elle kaydetmek için yapılandırma yöneticisi içinde kullanın.  

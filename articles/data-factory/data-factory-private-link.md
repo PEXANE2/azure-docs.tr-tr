@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
 ms.openlocfilehash: 2cd9f01404a4e33303356dd3f452cd7dbc47a747
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328573"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Data Factory için Azure özel bağlantısı
@@ -37,7 +37,7 @@ Ayrıca, bir Internet Protokolü güvenliği (IPSec) VPN (siteden siteye) bağla
 
 Aşağıdaki tabloda gösterildiği gibi Azure Data Factory ve müşteri sanal ağı arasında birkaç iletişim kanalı gereklidir:
 
-| Etki alanı | Bağlantı noktası | Description |
+| Etki alanı | Bağlantı noktası | Açıklama |
 | ---------- | -------- | --------------- |
 | `adf.azure.com` | 443 | Data Factory yazma ve izleme için gereken bir denetim düzlemi. |
 | `*.{region}.datafactory.azure.net` | 443 | Şirket içinde barındırılan tümleştirme çalışma zamanı tarafından Data Factory hizmetine bağlanmak için gereklidir. |

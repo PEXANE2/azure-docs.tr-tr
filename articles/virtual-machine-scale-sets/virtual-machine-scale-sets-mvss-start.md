@@ -10,10 +10,10 @@ ms.date: 04/26/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 55c826b4baf38732684aaa0465aeaab6a45564db
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87831507"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Sanal Makine Ölçek Kümesi şablonları hakkında bilgi edinin
@@ -165,7 +165,7 @@ Aşağıdaki kod parçacığında, ölçek kümesindeki tüm VM 'Ler için Yöne
 ### <a name="specify-vm-network-configuration"></a>VM ağ yapılandırmasını belirtin
 Son olarak, ölçek kümesindeki VM 'Ler için ağ yapılandırmasını belirtin. Bu durumda, yalnızca daha önce oluşturulan alt ağın KIMLIĞINI belirtmeniz gerekir. Bu, ölçek kümesine ağ arabirimlerini bu alt ağa yerleştirmesine söyler.
 
-Şablon işlevini kullanarak alt ağı içeren sanal ağın KIMLIĞINI alabilirsiniz `resourceId` . Bu işlev, bir kaynağın türünü ve adını alır ve bu kaynağın tam nitelikli tanımlayıcısını döndürür. Bu KIMLIK şu biçimdedir:`/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/<resourceProviderNamespace>/<resourceType>/<resourceName>`
+Şablon işlevini kullanarak alt ağı içeren sanal ağın KIMLIĞINI alabilirsiniz `resourceId` . Bu işlev, bir kaynağın türünü ve adını alır ve bu kaynağın tam nitelikli tanımlayıcısını döndürür. Bu KIMLIK şu biçimdedir: `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/<resourceProviderNamespace>/<resourceType>/<resourceName>`
 
 Ancak, sanal ağın tanımlayıcısı yeterli değildir. Ölçek kümesi VM 'lerinin içinde olması gereken belirli bir alt ağı sağlayın. Bunu yapmak için, `/subnets/mySubnet` sanal AĞıN kimliğine bir araya geçin. Sonuç, alt ağın tam KIMLIĞIDIR. Bu birleştirme `concat` işlevini, bir dizi dizeyi alan ve birlikte birleştirmesini döndüren işlevle yapın.
 

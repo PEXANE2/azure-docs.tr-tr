@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: e4564005e3b9cc9673cc20596d4114d102174b9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85482862"
 ---
 # <a name="synapse-sql-recommendations"></a>SYNAPSE SQL önerileri
@@ -38,7 +38,7 @@ En iyi performans istatistikleri, SQL sorgu iyileştiricinin alt sorgu planları
 
 - [Tablo istatistikleri oluşturma ve güncelleştirme](sql-data-warehouse-tables-statistics.md)
 
-Bu önerilerin etkilenen tablolarının listesini görmek için aşağıdaki [T-SQL betiğini](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables)çalıştırın. Danışman, bu önerileri oluşturmak için sürekli olarak aynı T-SQL betiğini çalıştırır.
+Bu önerilerin etkilenen tablolarının listesini görmek için aşağıdaki  [T-SQL betiğini](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables)çalıştırın. Danışman, bu önerileri oluşturmak için sürekli olarak aynı T-SQL betiğini çalıştırır.
 
 ## <a name="replicate-tables"></a>Tabloları Çoğalt
 

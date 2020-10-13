@@ -14,10 +14,10 @@ ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: b8935b9f2c3c598aee7c5d0eb37f21d8114dac42
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88997464"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>Azure Data Factory sürüm 1 ardışık düzeninde özel etkinlikler kullanma
@@ -43,14 +43,14 @@ Aşağıdaki izlenecek yol, özel bir .NET etkinliği oluşturmaya ve bir işlem
 > - Şirket içi veri kaynaklarına erişmek için özel etkinlikten bir Veri Yönetimi ağ geçidi kullanılması mümkün değildir. Şu anda [veri yönetimi ağ geçidi](data-factory-data-management-gateway.md) , Data Factory içindeki kopyalama etkinliği ve saklı yordam etkinliğini destekler.
 
 ## <a name="walkthrough-create-a-custom-activity"></a>İzlenecek yol: özel etkinlik oluşturma
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 * Visual Studio 2012/2013/2015/2017
 * [Azure .NET SDK 'sını](https://azure.microsoft.com/downloads/) indirme ve yükleme
 
 ### <a name="azure-batch-prerequisites"></a>Azure Batch önkoşulları
 İzlenecek yolda, işlem kaynağı olarak Azure Batch kullanarak özel .NET etkinliklerinizi çalıştırırsınız. **Azure Batch** , bulutta etkin bir şekilde büyük ölçekli paralel ve yüksek performanslı bilgi Işlem (HPC) uygulamaları çalıştırmaya yönelik bir platform hizmetidir. Azure Batch, yönetilen bir **sanal makine koleksiyonunda**çalışacak işlem yoğunluğu olan işleri zamanlar ve işlerin ihtiyaçlarını karşılamak için işlem kaynaklarını otomatik olarak ölçeklendirebilir. Azure Batch hizmetine ayrıntılı bir genel bakış için [Azure Batch temel bilgiler][batch-technical-overview] makalesine bakın.
 
-Öğretici için, VM havuzu ile bir Azure Batch hesabı oluşturun. Adımlar şunlardır:
+Öğretici için, VM havuzu ile bir Azure Batch hesabı oluşturun. Adımlar aşağıdaki gibidir:
 
 1. [Azure Portal](https://portal.azure.com)kullanarak bir **Azure Batch hesabı** oluşturun. Yönergeler için [Azure Batch hesap oluşturma ve yönetme][batch-create-account] makalesine bakın.
 2. Azure Batch hesap adı, hesap anahtarı, URI ve havuz adı ' na göz önüne alın. Azure Batch bağlı bir hizmet oluşturmak için bunlara ihtiyacınız vardır.

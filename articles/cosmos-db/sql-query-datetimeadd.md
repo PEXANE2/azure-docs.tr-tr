@@ -8,10 +8,10 @@ ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
 ms.openlocfilehash: 0b2741a3d2b013ba7bd97038eb4ba4512f36af11
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86262234"
 ---
 # <a name="datetimeadd-azure-cosmos-db"></a>DateTimeAdd (Azure Cosmos DB)
@@ -31,12 +31,12 @@ DateTimeAdd (<DateTimePart> , <numeric_expr> ,<DateTime>)
 
 | DateTimePart | kısaltmaları        |
 | ------------ | -------------------- |
-| Year         | "Year", "yyyy", "yy" |
+| Yıl         | "Year", "yyyy", "yy" |
 | Ay        | "ay", "AA", "m"   |
 | Gün          | "gün", "gg", "d"     |
 | Saat         | "saat", "hh"         |
 | Dakika       | "Minute", "mı", "n"  |
-| İkinci       | "saniye", "ss", "s"  |
+| Second       | "saniye", "ss", "s"  |
 | Milisaniy  | "milisaniyelik", "MS"  |
 | Mikrosaniye ölçeğinde  | "mikro saniye", "MCS" |
 | Nanosaniyelik   | "nanosaniyelik", "NS"   |
@@ -87,7 +87,7 @@ DateTimeAdd `undefined` aşağıdaki nedenlerle döndürülür:
 
 ## <a name="examples"></a>Örnekler
   
-Aşağıdaki örnek, DateTime öğesine 1 ay ekler:`2020-07-09T23:20:13.4575530Z`
+Aşağıdaki örnek, DateTime öğesine 1 ay ekler: `2020-07-09T23:20:13.4575530Z`
 
 ```sql
 SELECT DateTimeAdd("mm", 1, "2020-07-09T23:20:13.4575530Z") AS OneMonthLater
@@ -101,7 +101,7 @@ SELECT DateTimeAdd("mm", 1, "2020-07-09T23:20:13.4575530Z") AS OneMonthLater
 ]
 ```  
 
-Aşağıdaki örnek, tarih saatten 2 saat çıkartır:`2020-07-09T23:20:13.4575530Z`
+Aşağıdaki örnek, tarih saatten 2 saat çıkartır: `2020-07-09T23:20:13.4575530Z`
 
 ```sql
 SELECT DateTimeAdd("hh", -2, "2020-07-09T23:20:13.4575530Z") AS TwoHoursEarlier
@@ -119,4 +119,4 @@ SELECT DateTimeAdd("hh", -2, "2020-07-09T23:20:13.4575530Z") AS TwoHoursEarlier
 
 - [Tarih ve saat işlevleri Azure Cosmos DB](sql-query-date-time-functions.md)
 - [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
+- [Azure Cosmos DB'ye giriş](introduction.md)

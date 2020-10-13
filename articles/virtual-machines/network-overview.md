@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: cynthn
 ms.openlocfilehash: fe1cdf738162fe5c4492ff0585f057256153a838
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90561423"
 ---
 # <a name="virtual-networks-and-virtual-machines-in-azure"></a>Azure 'da sanal ağlar ve sanal makineler 
@@ -69,7 +69,7 @@ Bu tabloda bir IP adresi oluşturmak için kullanabileceğiniz yöntemler listel
 
 | Yöntem | Açıklama |
 | ------ | ----------- |
-| [Azure Portal](../virtual-network/virtual-network-deploy-static-pip-arm-portal.md) | Varsayılan olarak, genel IP adresleri dinamiktir ve VM durdurulduğunda ya da silindiğinde VM ile ilişkili adres değişebilir. VM’nin her zaman aynı genel IP adresini kullanmasını sağlamak için statik bir genel IP adresi oluşturun. Varsayılan olarak, bir VM oluşturulurken NIC’ye portal tarafından dinamik özel IP adresi atanır. VM oluşturulduktan sonra bu IP adresini statik olarak değiştirebilirsiniz.|
+| [Azure portalındaki](../virtual-network/virtual-network-deploy-static-pip-arm-portal.md) | Varsayılan olarak, genel IP adresleri dinamiktir ve VM durdurulduğunda ya da silindiğinde VM ile ilişkili adres değişebilir. VM’nin her zaman aynı genel IP adresini kullanmasını sağlamak için statik bir genel IP adresi oluşturun. Varsayılan olarak, bir VM oluşturulurken NIC’ye portal tarafından dinamik özel IP adresi atanır. VM oluşturulduktan sonra bu IP adresini statik olarak değiştirebilirsiniz.|
 | [Azure PowerShell](../virtual-network/virtual-network-deploy-static-pip-arm-ps.md) | [New-Azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress) ' i **-Allocationmethod** parametresiyle dinamik veya statik olarak kullanırsınız. |
 | [Azure CLI](../virtual-network/virtual-network-deploy-static-pip-arm-cli.md) | [az network public-ip create](/cli/azure/network/public-ip) komutunu **--allocation-method** parametresi Dinamik veya Statik olacak şekilde kullanırsınız. |
 | [Şablon](../virtual-network/template-samples.md) | Bir şablon kullanarak genel IP adresi dağıtmak için [Genel IP Adresli bir Sanal Ağda Ağ Arabirimi](https://github.com/Azure/azure-quickstart-templates/tree/master/101-nic-publicip-dns-vnet) konusunu bir kılavuz olarak kullanın. |
@@ -90,7 +90,7 @@ Bu tabloda, bir VNet ve alt ağlar oluşturmak için kullanabileceğiniz yöntem
 
 | Yöntem | Açıklama |
 | ------ | ----------- |
-| [Azure Portal](../virtual-network/quick-create-portal.md) | Bir VM oluştururken VNet oluşturma işlemini Azure’a bırakırsanız, ad VNet’i ve **-vnet**’i içeren kaynak grubunun adının bir birleşimi olur. Adres alanı 10.0.0.0/24, gerekli alt ağ adı **default** ve alt ağ adres aralığı 10.0.0.0/24’tür. |
+| [Azure portalındaki](../virtual-network/quick-create-portal.md) | Bir VM oluştururken VNet oluşturma işlemini Azure’a bırakırsanız, ad VNet’i ve **-vnet**’i içeren kaynak grubunun adının bir birleşimi olur. Adres alanı 10.0.0.0/24, gerekli alt ağ adı **default** ve alt ağ adres aralığı 10.0.0.0/24’tür. |
 | [Azure PowerShell](../virtual-network/quick-create-powershell.md) | Bir alt ağ ve VNet oluşturmak için [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworkSubnetConfig) ve [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) kullanın. Mevcut bir VNet 'e alt ağ eklemek için [Add-AzVirtualNetworkSubnetConfig](/powershell/module/Az.Network/Add-AzVirtualNetworkSubnetConfig) komutunu da kullanabilirsiniz. |
 | [Azure CLI](../virtual-network/quick-create-cli.md) | Alt ağ ve VNet aynı anda oluşturulur. [az network vnet create](/cli/azure/network/vnet) komutuna alt ağın adını içeren bir **--subnet-name** parametresi sağlayın. |
 | Şablon | VNet ve alt ağları oluşturmanın en kolay yolu, [iki alt ağa sahip sanal ağ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets)gibi var olan bir şablonu indirmenin yanı sıra gereksinimlerinize göre değiştirmektir. |
@@ -111,7 +111,7 @@ Bu tabloda bir ağ güvenlik grubu oluşturmak için kullanabileceğiniz yöntem
 
 | Yöntem | Açıklama |
 | ------ | ----------- |
-| [Azure Portal](../virtual-network/tutorial-filter-network-traffic.md) | Azure portalında bir VM oluşturduğunuzda otomatik olarak bir NSG oluşturulur ve portalın oluşturduğu NIC ile ilişkilendirilir. NSG’nin adı, VM’nin adı ile **-nsg**’nin birleşiminde oluşur. Bu NSG, önceliği 1000 olan, hizmeti RDP olarak, protokolü TCP olarak, bağlantı noktası 3389 olarak ve eylemi İzin ver olarak ayarlanmış bir gelen kural içerir. VM’ye yönelik başka bir gelen trafiğe izin vermek istiyorsanız NSG’ye ek kurallar eklemeniz gerekir. |
+| [Azure portalındaki](../virtual-network/tutorial-filter-network-traffic.md) | Azure portalında bir VM oluşturduğunuzda otomatik olarak bir NSG oluşturulur ve portalın oluşturduğu NIC ile ilişkilendirilir. NSG’nin adı, VM’nin adı ile **-nsg**’nin birleşiminde oluşur. Bu NSG, önceliği 1000 olan, hizmeti RDP olarak, protokolü TCP olarak, bağlantı noktası 3389 olarak ve eylemi İzin ver olarak ayarlanmış bir gelen kural içerir. VM’ye yönelik başka bir gelen trafiğe izin vermek istiyorsanız NSG’ye ek kurallar eklemeniz gerekir. |
 | [Azure PowerShell](../virtual-network/tutorial-filter-network-traffic.md) | [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) komutunu kullanın ve gerekli kural bilgilerini sağlayın. NSG 'yi oluşturmak için [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) kullanın. Alt ağ için NSG 'yi yapılandırmak üzere [set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) komutunu kullanın. NSG 'yi VNet 'e eklemek için [set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) kullanın. |
 | [Azure CLI](../virtual-network/tutorial-filter-network-traffic-cli.md) | NSG’yi ilk olarak oluşturmak için [az network nsg create](/cli/azure/network/nsg) komutunu kullanın. NSG’ye kural eklemek için [az network nsg rule create](/cli/azure/network/nsg/rule) komutunu kullanın. NSG’yi alt ağa eklemek için [az network vnet subnet update](/cli/azure/network/vnet/subnet) komutunu kullanın. |
 | [Şablon](../virtual-network/template-samples.md) | Bir şablon kullanarak ağ güvenlik grubu dağıtmak için [Ağ Güvenlik Grubu Oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/101-security-group-create) konusunu kılavuz olarak kullanın. |
@@ -165,7 +165,7 @@ Bu tabloda, bir VNet’te VM oluşturmak için kullanabileceğiniz yöntemler li
 
 | Yöntem | Açıklama |
 | ------ | ----------- |
-| [Azure Portal](./windows/quick-create-portal.md) | Daha önce bahsedilen varsayılan ayarlarını kullanarak tek NIC’li bir VM oluşturur. Birden çok NIC içeren bir VM oluşturmak için farklı bir yöntem kullanmalısınız. |
+| [Azure portalındaki](./windows/quick-create-portal.md) | Daha önce bahsedilen varsayılan ayarlarını kullanarak tek NIC’li bir VM oluşturur. Birden çok NIC içeren bir VM oluşturmak için farklı bir yöntem kullanmalısınız. |
 | [Azure PowerShell](./windows/tutorial-manage-vm.md) | Daha önce oluşturduğunuz NIC 'yi VM yapılandırmasına eklemek için [Add-Azvmnetworkınterface](/powershell/module/az.compute/add-azvmnetworkinterface) kullanımını içerir. |
 | [Azure CLI](./linux/create-cli-complete.md) | Bir VM 'yi oluşturun ve tek bir adım olarak oluşturan bir VNet, alt ağ ve NIC 'ye bağlayın. |
 | [Şablon](./windows/ps-template.md) | Bir şablon kullanarak VM dağıtmak için [Çok basit Windows VM dağıtımı](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) konusunu kılavuz olarak kullanın. |

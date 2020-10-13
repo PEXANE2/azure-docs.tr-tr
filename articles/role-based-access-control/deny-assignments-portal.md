@@ -15,10 +15,10 @@ ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 92046b3a944a747ce76d2426855eec7b6bc2cd70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84790255"
 ---
 # <a name="list-azure-deny-assignments-using-the-azure-portal"></a>Azure portal kullanarak Azure reddetme atamalarını listeleyin
@@ -28,7 +28,7 @@ ms.locfileid: "84790255"
 > [!NOTE]
 > Kendi reddetme atamalarınızı doğrudan oluşturamazsınız. Atamaları reddetme hakkında daha fazla bilgi için bkz. [Azure atamaları reddetme](deny-assignments.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Reddetme atama hakkında bilgi almak için, şunları yapmanız gerekir:
 
@@ -56,10 +56,10 @@ Abonelik veya yönetim grubu kapsamındaki atamaları Reddet ' i listelemek içi
 
     |  |  |
     | --- | --- |
-    | **Adı** | Reddetme atamasının adı. |
+    | **Ad** | Reddetme atamasının adı. |
     | **Sorumlu türü** | Kullanıcı, Grup, sistem tanımlı grup veya hizmet sorumlusu. |
     | **Reddedildi**  | Reddetme atamasında bulunan güvenlik sorumlusunun adı. |
-    | **Numarasını** | Reddetme ataması için benzersiz tanımlayıcı. |
+    | **Id** | Reddetme ataması için benzersiz tanımlayıcı. |
     | **Dışlanan sorumlular** | Reddetme atamasından dışlanan güvenlik sorumluları olup olmadığı. |
     | **Alt öğeler için uygulanmıyor** | Reddetme atamasının alt kapsamlara devralınıp alınmayacağını belirtir. |
     | **Korunan sistem** | Reddetme atamasının Azure tarafından yönetilip yönetilmediği. Şu anda her zaman Evet. |

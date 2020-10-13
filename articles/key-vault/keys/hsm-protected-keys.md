@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
 ms.openlocfilehash: 33249da6772d146de3e5e7351bc82c203674ddff
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90532146"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>HSM korumalı anahtarları Key Vault’a içeri aktarma
@@ -35,7 +35,7 @@ HSM korumalı anahtarların Key Vault aktarmak, kullandığınız HSMs 'ye bağl
 |---|---|---|---|
 |[nCipher](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|Üreticisini<br/>Hizmet olarak HSM|<ul><li>HSM 'lerin nShield ailesi</li><li>hizmet olarak nShield</ul>|**Yöntem 1:** [nCipher bYok](hsm-protected-keys-ncipher.md) (anahtar içeri aktarma ve HSM doğrulaması için güçlü kanıtlama ile)<br/>**Yöntem 2:** [Yeni bYok yöntemini kullanma](hsm-protected-keys-byok.md) |
 |Thales|Üretici|<ul><li>Bellenim sürüm 7,3 veya daha yeni bir sürümü içeren Luna HSM 7 ailesi</li></ul>| [Yeni BYOK yöntemi kullan](hsm-protected-keys-byok.md)|
-|Fortanx|Üreticisini<br/>Hizmet olarak HSM|<ul><li>Kendi kendine savunma anahtar yönetimi hizmeti (SDKMS)</li><li>Equinix SmartKey</li></ul>|[Yeni BYOK yöntemi kullan](hsm-protected-keys-byok.md)|
+|Fortanx|Üreticisini<br/>Hizmet olarak HSM|<ul><li>Self-Defending anahtar yönetim hizmeti (SDKMS)</li><li>Equinix SmartKey</li></ul>|[Yeni BYOK yöntemi kullan](hsm-protected-keys-byok.md)|
 |Marvell|Üretici|Tüm LiquidSecurity HSM 'leri<ul><li>Bellenim sürümü 2.0.4 veya üzeri</li><li>Bellenim sürüm 3,2 veya daha yenisi</li></ul>|[Yeni BYOK yöntemi kullan](hsm-protected-keys-byok.md)|
 |Cryptomathic|ISV (Kurumsal anahtar yönetim sistemi)|Birden çok HSM markalarını ve modellerini kapsayan<ul><li>nCipher</li><li>Thales</li><li>Utıco</li></ul>[Ayrıntılar için bkz. Cryptomathic sitesi](https://www.cryptomathic.com/azurebyok)|[Yeni BYOK yöntemi kullan](hsm-protected-keys-byok.md)|
 

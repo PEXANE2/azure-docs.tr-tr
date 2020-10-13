@@ -9,10 +9,10 @@ ms.author: vikramb
 ms.date: 09/01/2020
 ms.custom: devx-track-terraform
 ms.openlocfilehash: 72d8cb0ef80210cca1dbf1d2726590c0cb8540e5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91261408"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Ticari Market iş ortağı ve müşteri kullanımı attributıon
@@ -266,7 +266,7 @@ Bu şablonu dağıttığınızda, Microsoft, \<PARTNER> dağıtılan Azure kayna
 
 \<PARTNER>Yazılım dağıttığınızda, Microsoft, \<PARTNER> dağıtılan Azure kaynaklarıyla yazılım yüklemeyi tanımlayabilir. Microsoft, yazılımı desteklemek için kullanılan Azure kaynaklarını ilişkilendirebiliyor. Microsoft bu bilgileri, ürünleriyle ilgili en iyi deneyimleri sağlamak ve işlerini işletmek için toplar. Veriler, Microsoft 'un adresinde bulunan gizlilik ilkelerine göre toplanır ve yönetilir https://www.microsoft.com/trustcenter .
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
 Ticari Market 'teki destek seçenekleri hakkında bilgi edinmek [Için Iş Ortağı Merkezi 'nde ticari Market programı desteği](./partner-center-portal/support.md).
 

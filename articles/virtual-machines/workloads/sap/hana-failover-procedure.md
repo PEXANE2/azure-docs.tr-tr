@@ -14,10 +14,10 @@ ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 6454903a7c37da30e317e29c126109b39b14efbc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83660570"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Olağanüstü durum kurtarma yük devretme yordamı
@@ -88,7 +88,7 @@ Aşağıdaki adımlarda, geri yüklenen depolama anlık görüntüsüne ve kulla
 
    ![Başlatma günlüğü alanını ayarla](./media/hana-overview-high-availability-disaster-recovery/initialize_log_dr3.PNG)
 
-1. **Son**'u seçin.
+1. **Son**’u seçin.
 
    ![DR geri yüklemeyi tamamlama](./media/hana-overview-high-availability-disaster-recovery/finish_dr4.PNG)
 
@@ -104,7 +104,7 @@ Bir DR 'den üretim sitesine yeniden yük devreolursunuz. Olağanüstü durum ku
 
 Olağanüstü durum kurtarma sitesinde SAP üretim iş yükünüzü bir süredir çalıştırıyorsunuz. Üretim sitesindeki sorunlar çözümlendikten sonra üretim sitenize yeniden yük devretmek istiyorsunuz. Verileri kaybedeceğinizi, üretim sitesine geri döndüğünüzde birkaç adım ve Azure Operations Team SAP HANA ile birlikte kapatma işlemi için bir adım daha vardır. Operations ekibinin, sorunlar çözümlendikten sonra üretim sitesiyle yeniden eşitleme başlatması için tetiklenmesi en iyisidir.
 
-Şu adımları uygulayın:
+Şu adımları izleyin:
 
 1. Azure işlemler ekibinin SAP HANA, üretim depolama birimlerini, artık üretim durumunu temsil eden olağanüstü durum kurtarma depolama birimlerinden eşitlemeye yönelik tetikleyiciyi alır. Bu durumda, üretim sitesindeki HANA büyük örnek birimi kapatılır.
 1. Azure işlemler ekibi üzerindeki SAP HANA çoğaltmayı izler ve sizi bilgilendirmeye başlamadan önce yakalandığından emin olur.

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
 ms.openlocfilehash: e4bbb27a2f49027ed5a456ad824f54b9c92a899c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83005868"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>Azure Cosmos DB FROM yan tümcesi
@@ -55,11 +55,11 @@ FROM <from_specification>
   
 -  İfade ise `<container_expression>` property_name, property_name bir diğer ad olarak kullanılır. İfade bir container_name ise, container_name bir diğer ad olarak kullanılacaktır.  
   
-- GEREKTIĞI`input_alias`  
+- GEREKTIĞI `input_alias`  
   
   `input_alias`Öğesinin, temel alınan kapsayıcı ifadesinin döndürdüğü bir değer kümesi olduğunu belirtir.  
  
-- `input_alias`'NDAKI  
+- `input_alias` 'NDAKI  
   
   `input_alias`Öğesinin, temel alınan kapsayıcı ifadesi tarafından döndürülen her bir dizinin tüm dizi öğeleri üzerinde yinelenerek elde edilen değer kümesini temsil etmesi gerektiğini belirtir. Bir dizi olmayan temeldeki kapsayıcı ifadesi tarafından döndürülen herhangi bir değer yok sayılır.  
   
