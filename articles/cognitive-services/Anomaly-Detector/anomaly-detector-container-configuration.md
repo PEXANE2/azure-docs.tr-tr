@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: aahi
 ms.openlocfilehash: c0bf08ae0b2d26b2f4992181d2e300e9dbeed818
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90903528"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Anomali Algılayıcısı kapsayıcılarını yapılandırma
@@ -27,10 +27,10 @@ Bu kapsayıcı aşağıdaki yapılandırma ayarlarına sahiptir:
 
 |Gerekli|Ayar|Amaç|
 |--|--|--|
-|Yes|[ApiKey](#apikey-configuration-setting)|Faturalandırma bilgilerini izlemek için kullanılır.|
+|Evet|[ApiKey](#apikey-configuration-setting)|Faturalandırma bilgilerini izlemek için kullanılır.|
 |Hayır|[ApplicationInsights](#applicationinsights-setting)|, Kapsayıcınıza [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) telemetri desteği eklemenize olanak tanır.|
-|Yes|[Faturalandırma](#billing-configuration-setting)|Azure üzerindeki hizmet kaynağının uç nokta URI 'sini belirtir.|
-|Yes|[Sözleşmesi](#eula-setting)| Kapsayıcının lisansını kabul ettiğinizi gösterir.|
+|Evet|[Faturalandırma](#billing-configuration-setting)|Azure üzerindeki hizmet kaynağının uç nokta URI 'sini belirtir.|
+|Evet|[Sözleşmesi](#eula-setting)| Kapsayıcının lisansını kabul ettiğinizi gösterir.|
 |Hayır|[Fluentd](#fluentd-settings)|Günlük ve isteğe bağlı olarak ölçüm verilerini Floentd sunucusuna yazın.|
 |Hayır|[Http proxy 'Si](#http-proxy-credentials-settings)|Giden istekler oluşturmak için bir HTTP proxy 'si yapılandırın.|
 |Hayır|[Günlüğe kaydetme](#logging-settings)|, Kapsayıcınız için ASP.NET Core günlük desteği sağlar. |
@@ -59,7 +59,7 @@ Bu ayar aşağıdaki yerde bulunabilir:
 
 * Azure portal: **anomali algılayıcısının** genel bakış, etiketli `Endpoint`
 
-|Gerekli| Ad | Veri türü | Açıklama |
+|Gerekli| Adı | Veri türü | Açıklama |
 |--|------|-----------|-------------|
 |Evet| `Billing` | Dize | Faturalama uç noktası URI 'SI. Faturalandırma URI 'sini alma hakkında daha fazla bilgi için bkz. [gerekli parametreleri toplama](anomaly-detector-container-howto.md#gathering-required-parameters). Daha fazla bilgi ve bölgesel uç noktaların tamamen listesi için bkz. bilişsel [Hizmetler Için özel alt etki alanı adları](../cognitive-services-custom-subdomains.md). |
 
@@ -88,7 +88,7 @@ Anomali algılayıcı kapsayıcıları, eğitim veya hizmet verilerini depolamak
 
 Konak bağlama konumunun tam sözdizimi, ana bilgisayar işletim sistemine bağlı olarak değişir. Ayrıca, Docker hizmeti hesabı ve konak bağlama konumu izinleri tarafından kullanılan izinler arasındaki bir çakışma nedeniyle [ana bilgisayarın](anomaly-detector-container-howto.md#the-host-computer)bağlama konumu erişilebilir olmayabilir. 
 
-|İsteğe Bağlı| Ad | Veri türü | Açıklama |
+|İsteğe Bağlı| Adı | Veri türü | Açıklama |
 |-------|------|-----------|-------------|
 |İzin verilmiyor| `Input` | Dize | Anomali algılayıcı kapsayıcıları bunu kullanmaz.|
 |İsteğe Bağlı| `Output` | Dize | Çıkış bağlama hedefi. Varsayılan değer: `/output`. Bu, günlüklerin konumudur. Bu, kapsayıcı günlüklerini içerir. <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output`|

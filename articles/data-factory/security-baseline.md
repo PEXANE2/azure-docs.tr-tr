@@ -8,10 +8,10 @@ ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 515cfd5267917f88131571adcb1bea0db274157c
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89437947"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure Data Factory için Azure Güvenlik temeli
@@ -30,7 +30,7 @@ Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](https:
 
 **Rehberlik**: bir Azure-SSIS INTEGRATION RUNTIME (IR) oluştururken, sanal ağ ile buna ekleme seçeneğiniz vardır. Bu, Azure Data Factory ağ güvenlik grubu (NSG) ve yük dengeleyici gibi belirli ağ kaynaklarını oluşturmalarına olanak tanır. Ayrıca kendi statik genel IP adresinizi sağlayabilir veya sizin için Azure Data Factory oluşturmak için bir tane oluşturabilirsiniz. Azure Data Factory tarafından otomatik olarak oluşturulan NSG 'de, bağlantı noktası 3389 varsayılan olarak tüm trafiğe açıktır. Yalnızca yöneticilerin erişimi olduğundan emin olmak için bunu kilitleyin.
 
-Şirket içinde barındırılan IRS, bir sanal ağ içindeki şirket içi bir makineye veya Azure sanal makinesine dağıtılabilir. Sanal ağ alt ağı dağıtımınızın yalnızca yönetim erişimine izin verecek şekilde yapılandırılmış bir NSG 'ye sahip olduğundan emin olun. Azure-SSIS IR, koruma için her IR düğümündeki Windows güvenlik duvarı kuralında varsayılan olarak giden bağlantı noktası 3389 ' i devre dışı bıraktı. Bir NSG 'yi alt ağla ilişkilendirerek ve katı kuralları ayarlayarak sanal ağ tarafından yapılandırılan kaynaklarınızın güvenliğini sağlayabilirsiniz.
+Self-Hosted IRS, bir sanal ağ içindeki şirket içi bir makineye veya Azure sanal makinesine dağıtılabilir. Sanal ağ alt ağı dağıtımınızın yalnızca yönetim erişimine izin verecek şekilde yapılandırılmış bir NSG 'ye sahip olduğundan emin olun. Azure-SSIS IR, koruma için her IR düğümündeki Windows güvenlik duvarı kuralında varsayılan olarak giden bağlantı noktası 3389 ' i devre dışı bıraktı. Bir NSG 'yi alt ağla ilişkilendirerek ve katı kuralları ayarlayarak sanal ağ tarafından yapılandırılan kaynaklarınızın güvenliğini sağlayabilirsiniz.
 
 Özel bağlantı kullanılabiliyorsa, Azure SQL Server gibi Azure Data Factory işlem hattınızla bağlantılı olan kaynakların güvenliğini sağlamak için özel uç noktaları kullanın. Özel bağlantıyla, sanal ağınız ile hizmet arasındaki trafik Microsoft omurga ağı üzerinden geçer ve bu da genel Internet 'ten etkilenme olasılığını ortadan kaldırır.
 
@@ -1172,7 +1172,7 @@ Veri depolarınız için, yedeklemeleri doğrulamaya yönelik yönergeler için 
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: yedeklemelerin ve müşteri tarafından yönetilen anahtarların korunmasını sağlayın
 
-**Rehberlik**: Integration Runtime bir Azure sanal MAKINESINDE (VM) çalıştırıyorsanız ve bu vm 'yi Azure Backup ile KAPATıRSANıZ, vm 'niz depolama HIZMETI ŞIFRELEMESI (SSE) ile geri kalanı şifrelenir. Azure Backup, Azure disk şifrelemesi kullanılarak şifrelenmiş Azure VM 'Leri de yedekleyebilir. Azure disk şifrelemesi, bir anahtar kasasında gizli dizi olarak korunmuş olan BitLocker şifreleme anahtarları (BEKs) ile tümleşir. Azure disk şifrelemesi Ayrıca Azure Key Vault anahtar şifreleme anahtarları (KEKs) ile tümleşir. Anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için Key Vault geçici silme özelliğini etkinleştirin.
+**Rehberlik**: Integration Runtime bir Azure sanal MAKINESINDE (VM) çalıştırıyorsanız ve bu vm 'yi Azure Backup ile KAPATıRSANıZ, vm 'niz depolama HIZMETI ŞIFRELEMESI (SSE) ile geri kalanı şifrelenir. Azure Backup, Azure disk şifrelemesi kullanılarak şifrelenmiş Azure VM 'Leri de yedekleyebilir. Azure disk şifrelemesi, bir anahtar kasasında gizli dizi olarak korunmuş olan BitLocker şifreleme anahtarları (BEKs) ile tümleşir. Azure disk şifrelemesi Ayrıca Azure Key Vault anahtar şifreleme anahtarları (KEKs) ile tümleşir. Anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için Key Vault Soft-Delete etkinleştirin.
 
 * [VM 'Ler için geçici silme](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#soft-delete)
 

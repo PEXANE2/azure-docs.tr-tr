@@ -13,10 +13,10 @@ ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: ec59c07d66150bf7b184c149a9b1ed9015c17645
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89433662"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Hibrit Azure Active Directory'ye katılmış cihazlarla ilgili sorunları giderme
@@ -246,7 +246,7 @@ Yalnızca Federal etki alanı hesapları için geçerlidir.
 Hatanın nedenleri:
 
 - DRS kaynağı için sessizce erişim belirteci alınamadı.
-   - Windows 10 cihazları, tümleşik Windows kimlik doğrulamasını etkin bir WS-Trust uç noktasına kullanarak Federasyon hizmetinden kimlik doğrulama belirteci edinir. Ayrıntılar: [Federasyon Hizmeti yapılandırma](hybrid-azuread-join-manual.md#set-up-issuance-of-claims)
+   - Windows 10 cihazları, tümleşik Windows kimlik doğrulamasını etkin bir WS-Trust uç noktasına kullanarak Federasyon hizmetinden kimlik doğrulama belirteci elde eden bir. Ayrıntılar: [Federasyon Hizmeti yapılandırma](hybrid-azuread-join-manual.md#set-up-issuance-of-claims)
 
 **Ortak hata kodları:**
 
@@ -261,7 +261,7 @@ Hata kodu, alt hata kodu, sunucu hata kodu ve sunucu hata iletisini bulmak için
 
 - **ERROR_ADAL_PROTOCOL_NOT_SUPPORTED** (0xcaa90017/-894894057)
    - Neden: kimlik doğrulama protokolü WS-Trust değil.
-   - Çözüm: şirket içi kimlik sağlayıcısı WS-Trust ' i desteklemelidir
+   - Çözüm: şirket içi kimlik sağlayıcısı WS-Trust desteklemelidir
 - **ERROR_ADAL_FAILED_TO_PARSE_XML** (0xcaa9002c/-894894036)
    - Neden: şirket içi Federasyon Hizmeti bir XML yanıtı döndürmedi.
    - Çözüm: MEX uç noktasının geçerli bir XML döndürürken emin olun. Proxy 'nin müdahale olmadığından ve XML olmayan yanıtları döndürmediğinden emin olun.

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.custom: devx-track-java
 ms.openlocfilehash: 9cce87fa742df2e623217b5b0f72ad19814fd3b7
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87371371"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Java Web uygulamalarında bağımlılıkları izleme, özel durumlar ve Yöntem yürütme süreleri
@@ -85,7 +85,7 @@ Azure Uygulama Hizmetleri için aşağıdakileri yapın:
 * Ayarlar > Uygulama Ayarları'nı seçin.
 * Uygulama Ayarları'nın altında yeni bir anahtar değer çifti ekleyin:
 
-Anahtar: `JAVA_OPTS` değer:`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
+Anahtar: `JAVA_OPTS` değer: `-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
 
 Java aracısının en son sürümü için [buradaki](https://github.com/Microsoft/ApplicationInsights-Java/releases
 )yayınları kontrol edin. 

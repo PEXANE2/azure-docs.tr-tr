@@ -17,10 +17,10 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6140f5fd431a0b089b45892130e075bde02a2eb2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91299774"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health sık sorulan sorular
@@ -70,10 +70,10 @@ Lisanslama bilgileri de [Azure AD fiyatlandırma sayfasında](https://aka.ms/aad
 
 | Roller | Özellikler | Almanya bulutu 'nda destekleniyor |
 | ------ | --------------- | --- |
-| Eşitleme için Health Connect | İzleme/öngörü/uyarılar/analiz | No |
-|  | Eşitleme hata raporu | Yes |
-| ADFS için Connect Health | İzleme/öngörü/uyarılar/analiz | No |
-| EKLER için Connect Health | İzleme/öngörü/uyarılar/analiz | No |
+| Eşitleme için Health Connect | İzleme/öngörü/uyarılar/analiz | Hayır |
+|  | Eşitleme hata raporu | Evet |
+| ADFS için Connect Health | İzleme/öngörü/uyarılar/analiz | Hayır |
+| EKLER için Connect Health | İzleme/öngörü/uyarılar/analiz | Hayır |
 
 Eşitleme için bağlantı durumunun aracı bağlantısının olduğundan emin olmak için lütfen [yükleme gereksinimini](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) uygun şekilde yapılandırın.
 

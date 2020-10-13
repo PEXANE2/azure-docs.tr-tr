@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 6a7b4d8c3d2e2b33d8e2a9936670992b1c922b6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84737368"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Ağ Izleyicisi ve açık kaynak araçları ile ağ üzerinden izinsiz bir algılama gerçekleştirme
@@ -38,7 +38,7 @@ Açık kaynaklı araçların her ikisi de bir Azure sanal makinesinde ayarlanabi
 
 ### <a name="install-suricata"></a>Suricata yüklemesi
 
-Tüm diğer yükleme yöntemleri için bkz.https://suricata.readthedocs.io/en/suricata-5.0.2/quickstart.html#installation
+Tüm diğer yükleme yöntemleri için bkz. https://suricata.readthedocs.io/en/suricata-5.0.2/quickstart.html#installation
 
 1. SANAL makinenizin komut satırı terminalinde aşağıdaki komutları çalıştırın:
 
@@ -217,7 +217,7 @@ Elastik arama yükleme hakkında daha fazla yönerge için, sayfa [yüklemeye](h
 
 Logstash 'i yükleme hakkında daha fazla bilgi için [resmi belgelere](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html) bakın
 
-### <a name="install-kibana"></a>Kibana 'i yükler
+### <a name="install-kibana"></a>Kibana'yı yükleme
 
 1. Kibana yüklemek için aşağıdaki komutları çalıştırın:
 
@@ -233,7 +233,7 @@ Logstash 'i yükleme hakkında daha fazla bilgi için [resmi belgelere](https://
     ./bin/kibana
     ```
 
-1. Kibana Web arabiriminizi görüntülemek için şuraya gidin`http://localhost:5601`
+1. Kibana Web arabiriminizi görüntülemek için şuraya gidin `http://localhost:5601`
 1. Bu senaryo için, Suricata günlükleri için kullanılan dizin deseninin "logstash-*" olması gerekir
 
 1. Kibana panosunu uzaktan görüntülemek istiyorsanız, **5601 numaralı bağlantı noktasına**erişime izin veren bir gelen NSG kuralı oluşturun.

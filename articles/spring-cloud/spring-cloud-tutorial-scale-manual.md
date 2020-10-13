@@ -8,10 +8,10 @@ author: bmitchell287
 ms.date: 10/06/2019
 ms.custom: devx-track-java
 ms.openlocfilehash: 33d25edafa9249300406365699930ded1c8ec75b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906847"
 ---
 # <a name="tutorial-scale-an-application-in-azure-spring-cloud"></a>Öğretici: Azure Spring Cloud 'da bir uygulamayı ölçeklendirme
@@ -34,7 +34,7 @@ Bu yordamları izlemek için şunlar gerekir:
 
 ## <a name="navigate-to-the-scale-page-in-the-azure-portal"></a>Azure portal ölçek sayfasına gidin
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. Azure yay bulutuna **genel bakış** sayfasına gidin.
 

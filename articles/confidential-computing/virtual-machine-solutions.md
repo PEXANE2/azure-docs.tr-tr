@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
 ms.openlocfilehash: f9b73e0919d660947edd0417f7379b3f6e6140c0
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88245861"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Azure sanal makinelerinde çözümler
@@ -23,9 +23,9 @@ Bu makalede, [Intel Software Guard uzantısı](https://software.intel.com/sgx) (
 
 Azure gizli bilgi işlem sanal makineleri, bulutta işlendiği sırada verilerinizin ve kodunuzun gizliliğini ve bütünlüğünü korumak için tasarlanmıştır 
 
-[DCsv2 serisi](../virtual-machines/dcv2-series.md) VM 'Ler en son ve en son gizli bilgi işlem boyutu ailesidir. Bu VM 'Ler daha büyük bir dağıtım özelliği yelpazesi destekler, 2x disk belleği önbelleği (EPC) ve DC Serisi VM 'lerimize kıyasla daha büyük bir boyut seçimi vardır. [DC Serisi](../virtual-machines/sizes-previous-gen.md#preview-dc-series) VM 'ler Şu anda önizleme aşamasındadır ve genel kullanıma sunulmayacak ve kullanım dışı bırakılacak.
+[DCsv2 serisi](../virtual-machines/dcv2-series.md) VM 'Ler en son ve en son gizli bilgi işlem boyutu ailesidir. Bu VM 'Ler daha büyük bir dağıtım özelliği yelpazesi destekler, 2x ve DC-Series sanal makinelerimize kıyasla daha büyük bir boyut seçimi vardır. [DC Serisi](../virtual-machines/sizes-previous-gen.md#preview-dc-series) VM 'ler Şu anda önizleme aşamasındadır ve genel kullanıma sunulmayacak ve kullanım dışı bırakılacak.
 
-[Hızlı başlangıç öğreticisini](quick-create-marketplace.md)izleyerek Microsoft ticari Marketi aracılığıyla bir DCSV2 serisi VM dağıtmaya başlayın.
+[Hızlı başlangıç öğreticisini](quick-create-marketplace.md)izleyerek Microsoft ticari Marketi aracılığıyla BIR DCsv2-Series VM dağıtmaya başlayın.
 
 ### <a name="current-available-sizes-and-regions"></a>Kullanılabilir geçerli Boyutlar ve bölgeler
 
@@ -47,16 +47,16 @@ az vm list-skus `
     --query "[?family=='standardDCSv2Family']"
 ```
 ### <a name="dedicated-host-requirements"></a>Adanmış ana bilgisayar gereksinimleri
-Bir **Standard_DC8_v2** sanal makine boyutunu DCSV2 serisi VM ailesinden dağıtmak, tam Konağı kaplayacaktır ve diğer kiracılar veya aboneliklerle paylaşılmaz. Bu VM SKU 'SU ailesi, genellikle adanmış bir ana bilgisayar hizmetine sahip olunarak karşılanacak uyumluluk ve güvenlik mevzuatı gereksinimlerini karşılamak için ihtiyacınız olabilecek yalıtımı sağlar. **Standard_DC8_v2** SKU seçtiğinizde, fiziksel ana bilgisayar sunucusu yalnızca sanal makinenize EPC belleği dahil tüm kullanılabilir donanım kaynaklarını ayırır. Lütfen bu işlevin altyapı tasarımı tarafından mevcut olduğunu ve **Standard_DC8_v2** tüm özelliklerinin desteklendiğini unutmayın. Bu dağıtım, diğer Azure VM aileleri tarafından sunulan [Azure ayrılmış ana bilgisayar](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts) hizmeti ile aynı değildir.
+DCSv2-Series VM ailesinden **Standard_DC8_v2** sanal makine boyutunu dağıtmak, tam ana bilgisayarı kaplayacaktır ve diğer kiracılar veya aboneliklerle paylaşılmaz. Bu VM SKU 'SU ailesi, genellikle adanmış bir ana bilgisayar hizmetine sahip olunarak karşılanacak uyumluluk ve güvenlik mevzuatı gereksinimlerini karşılamak için ihtiyacınız olabilecek yalıtımı sağlar. **Standard_DC8_v2** SKU seçtiğinizde, fiziksel ana bilgisayar sunucusu yalnızca sanal makinenize EPC belleği dahil tüm kullanılabilir donanım kaynaklarını ayırır. Lütfen bu işlevin altyapı tasarımı tarafından mevcut olduğunu ve **Standard_DC8_v2** tüm özelliklerinin desteklendiğini unutmayın. Bu dağıtım, diğer Azure VM aileleri tarafından sunulan [Azure ayrılmış ana bilgisayar](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts) hizmeti ile aynı değildir.
 
 
 ## <a name="deployment-considerations"></a>Dağıtma konuları
 
-10 dakikadan kısa bir süre içinde DCsv2 serisi bir sanal makine dağıtmak için hızlı başlangıç öğreticisini izleyin. 
+DCsv2-Series bir sanal makineyi 10 dakikadan kısa bir süre içinde dağıtmak için hızlı başlangıç öğreticisini izleyin. 
 
 - **Azure aboneliği** – bir gizli BILGI işlem VM örneği dağıtmak için bir Kullandıkça Öde aboneliğine veya diğer satın alma seçeneğine göz önünde bulundurun. [Ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/)kullanıyorsanız, uygun Azure işlem çekirdeği miktarı için kotayı kullanamazsınız.
 
-- **Fiyatlandırma ve bölgesel kullanılabilirlik** - [sanal makine fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)DCsv2 serisi VM 'ler için fiyatlandırmayı bulun. Azure bölgelerinde kullanılabilirlik için [bölgeye göre kullanılabilir ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) denetleyin.
+- **Fiyatlandırma ve bölgesel kullanılabilirlik** - [sanal makine fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)DCsv2-Series VM 'leri için fiyatlandırmayı bulun. Azure bölgelerinde kullanılabilirlik için [bölgeye göre kullanılabilir ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) denetleyin.
 
 
 - **Çekirdek kotası** – Azure aboneliğinizdeki çekirdek kotasını varsayılan değerden artırmanız gerekebilir. Aboneliğiniz Ayrıca, DCsv2-Series dahil olmak üzere belirli VM boyutu ailelerinde dağıtabileceğiniz çekirdek sayısını da sınırlayabilir. Kota artışı istemek için, ücretsiz [bir çevrimiçi müşteri destek isteği açın](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests) . Varsayılan sınırlar, abonelik kategorime bağlı olarak değişebilir.
@@ -84,7 +84,7 @@ Azure Resource Manager, Azure için dağıtım ve yönetim hizmetidir. Azure abo
 
 ARM şablonları hakkında bilgi edinmek için bkz. [şablon dağıtımı genel bakış](../azure-resource-manager/templates/overview.md).
 
-ARM şablonunda bir DCsv2 serisi VM dağıtmak için [sanal makine kaynağını](../virtual-machines/windows/template-description.md)kullanacaksınız. **VMSize** ve **ImageReference**için doğru özellikleri belirttiğinizden emin olun.
+ARM şablonunda bir DCsv2-Series VM dağıtmak için [sanal makine kaynağını](../virtual-machines/windows/template-description.md)kullanacaksınız. **VMSize** ve **ImageReference**için doğru özellikleri belirttiğinizden emin olun.
 
 ### <a name="vm-size"></a>VM boyutu
 
@@ -132,7 +132,7 @@ Sanal makine kaynağında ARM şablonunuzda aşağıdaki boyutlardan birini beli
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 
-Bu makalede, gizli bilgi işlem sanal makinesi oluştururken gereken niteliklerin ve yapılandırmaların öğrenildiği hakkında bilgi edindiniz. Artık bir DCsv2 serisi VM dağıtmak için Microsoft Azure Market gidebilirsiniz.
+Bu makalede, gizli bilgi işlem sanal makinesi oluştururken gereken niteliklerin ve yapılandırmaların öğrenildiği hakkında bilgi edindiniz. Artık DCsv2-Series bir sanal makine dağıtmak için Microsoft Azure Market gidebilirsiniz.
 
 > [!div class="nextstepaction"]
-> [Azure Marketi 'nde DCsv2 serisi bir sanal makine dağıtma](quick-create-marketplace.md)
+> [Azure Marketi 'nde DCsv2-Series sanal makine dağıtma](quick-create-marketplace.md)

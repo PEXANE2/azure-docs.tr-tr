@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.openlocfilehash: 26470709b37c2623c581499ec55572da402e96cb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906459"
 ---
 # <a name="configuring-tls-settings-in-azure-database-for-postgresql-single---server-using-azure-portal"></a>Azure portal kullanarak PostgreSQL için Azure veritabanı 'nda TLS ayarlarını yapılandırma
@@ -19,7 +19,7 @@ Bu makalede, bir PostgreSQL için Azure veritabanı 'nın bağlantılara izin ve
 
 PostgreSQL için Azure veritabanı 'na bağlanmak üzere TLS sürümü uygulayabilirsiniz. Müşteriler artık veritabanı sunucuları için en düşük TLS sürümünü ayarlamayı tercih etmektedir. Örneğin, minimum TLS ayarı sürümünü TLS 1,0 olarak ayarlamak, sunucunuzun TLS 1,0, 1,1 ve 1.2 + kullanarak istemcilerden gelen bağlantılara izin vermeyeceği anlamına gelir. Bunun yerine, minimum TLS sürümünün 1.2 + olarak ayarlanması, yalnızca TLS 1,2 kullanarak istemcilerden gelen bağlantılara izin vertiğinizi ve TLS 1,1 1,0 ile tüm bağlantıların reddedildiğini kabul edilmekte olduğunu gösterir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 
@@ -41,7 +41,7 @@ PostgreSQL en düşük TLS sürümünü ayarlamak için şu adımları izleyin:
 
 1. Bildirim, bağlantı güvenliği ayarının başarıyla etkinleştirildiğini onaylanır.
 
-    :::image type="content" source="./media/howto-tls-configurations/setting-tls-value-success.png" alt-text="PostgreSQL için Azure veritabanı-tek sunuculu TLS yapılandırması başarılı":::
+    :::image type="content" source="./media/howto-tls-configurations/setting-tls-value-success.png" alt-text="PostgreSQL için Azure veritabanı tek sunuculu TLS yapılandırması":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

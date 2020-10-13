@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
 ms.openlocfilehash: edb195fae2e05a1f746c10482576f7e0b1bff7c9
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88243913"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki uygulamalar için ağ kavramları
@@ -116,7 +116,7 @@ Kullandığınız ağ modelinden bağımsız olarak, hem Kubernetes kullanan hem
 * Azure platformu, bir AKS kümesi oluştururken sanal ağ kaynaklarını otomatik olarak oluşturabilir ve yapılandırabilir.
 * Sanal ağ kaynaklarını el ile oluşturup yapılandırabilir ve AKS kümenizi oluştururken bu kaynaklara iliştirebilirsiniz.
 
-Service endpoints veya UDRs gibi yetenekler hem Kubernetes kullanan hem de Azure CNı ile desteklense de [AKS için destek ilkeleri][support-policies] , yapabileceğiniz değişiklikleri tanımlar. Örnek:
+Service endpoints veya UDRs gibi yetenekler hem Kubernetes kullanan hem de Azure CNı ile desteklense de [AKS için destek ilkeleri][support-policies] , yapabileceğiniz değişiklikleri tanımlar. Örneğin:
 
 * Bir AKS kümesi için sanal ağ kaynaklarını el ile oluşturursanız, kendi UDRs veya hizmet uç noktalarınızı yapılandırırken bu kaynakları destekliyoruz.
 * Azure platformu AKS kümeniz için sanal ağ kaynaklarını otomatik olarak oluşturursa, kendi UDRs veya hizmet uç noktalarınızı yapılandırmak üzere bu AKS tarafından yönetilen kaynakları el ile değiştirmek desteklenmez.

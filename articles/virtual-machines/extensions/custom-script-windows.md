@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
 ms.openlocfilehash: e50c0b0fcb883b43650a5d99cea5aa39bae1cd94
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89426274"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows için Özel Betik Uzantısı
@@ -26,7 +26,7 @@ Bu belgede, Windows sistemlerinde Azure PowerShell modülü, Azure Resource Mana
 ## <a name="prerequisites"></a>Ön koşullar
 
 > [!NOTE]  
-> Kendi kendine beklemesi gerektiğinden, Update-AzVM öğesini parametresiyle aynı VM ile çalıştırmak için özel Betik uzantısı kullanmayın.  
+> Kendi kendine bekleneceği için, parametresiyle aynı VM ile Update-AzVM çalıştırmak için özel Betik uzantısı kullanmayın.  
 
 ### <a name="operating-system"></a>İşletim Sistemi
 
@@ -122,7 +122,7 @@ Bu öğeler gizli veriler olarak değerlendirilmeli ve uzantılar korumalı ayar
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Name | Değer/örnek | Veri Türü |
+| Adı | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | yayımcı | Microsoft.Compute | string |

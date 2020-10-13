@@ -15,10 +15,10 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48f924cef12db974faae8fb8ed73f01ff8c9a3f8
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056260"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Azure Active Directory özel etki alanı adlarını yönetme
@@ -73,7 +73,7 @@ Kuruluşunuz artık bu etki alanı adını kullanmadıysanız veya başka bir Az
 
 [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) veya [Microsoft Graph API](/graph/api/domain-forcedelete?view=graph-rest-beta)kullanarak bir etki alanı adını **silmeyi zorla** yapabilirsiniz. Bu seçenekler, zaman uyumsuz bir işlem kullanır ve "" gibi özel etki alanı adındaki tüm başvuruları user@contoso.com "." gibi ilk varsayılan etki alanı adı ile güncelleştirir user@contoso.onmicrosoft.com . 
 
-Azure portal **Forcedelete** ' i çağırmak için, etki alanı adına 1000 ' den az başvuru olduğundan emin olmanız ve Exchange 'in sağlama hizmeti 'Nin [Exchange Yönetim merkezinde](https://outlook.office365.com/ecp/)güncellenmesi veya kaldırılması gerektiği tüm başvurular olması gerekir. Bu, Exchange posta etkin güvenlik gruplarını ve dağıtılmış listeleri içerir; daha fazla bilgi için bkz. [posta etkin güvenlik gruplarını kaldırma](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups). Ayrıca, aşağıdakilerden biri geçerliyse **Forcedelete** işlemi başarılı olmaz:
+Azure portal **Forcedelete** ' i çağırmak için, etki alanı adına 1000 ' den az başvuru olduğundan emin olmanız ve Exchange 'in sağlama hizmeti 'Nin [Exchange Yönetim merkezinde](https://outlook.office365.com/ecp/)güncellenmesi veya kaldırılması gerektiği tüm başvurular olması gerekir. Buna Exchange Mail-Enabled güvenlik grupları ve dağıtılmış listeler dahildir; daha fazla bilgi için bkz. [posta etkin güvenlik gruplarını kaldırma](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups). Ayrıca, aşağıdakilerden biri geçerliyse **Forcedelete** işlemi başarılı olmaz:
 
 * Microsoft 365 etki alanı abonelik hizmetleri aracılığıyla bir etki alanı satın aldınız
 * Başka bir müşteri kuruluşu adına bir iş ortağıysanız
@@ -92,7 +92,7 @@ Azure portal **Forcedelete** ' i çağırmak için, etki alanı adına 1000 ' de
 ### <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
 **S: etki alanı silme neden, bu etki alanı adında ana kopyalı grupları değiş tokuş ederim belirten bir hata ile başarısız oluyor mu?** <br>
-Y **:** Bugün, posta etkin güvenlik grupları ve dağıtılmış listeler gibi bazı gruplar Exchange tarafından sağlanır ve [Exchange Yönetim Merkezi 'nde (EAC)](https://outlook.office365.com/ecp/)el ile temizlenmelidir. Özel etki alanı adını kullanan kalan ProxyAddresses olabilir ve başka bir etki alanı adına el ile güncelleştirilmeleri gerekir. 
+Y **:** Bugün, Mail-Enabled güvenlik grupları ve dağıtılmış listeler gibi bazı gruplar Exchange tarafından sağlanır ve [Exchange Yönetim Merkezi 'nde (EAC)](https://outlook.office365.com/ecp/)el ile temizlenmelidir. Özel etki alanı adını kullanan kalan ProxyAddresses olabilir ve başka bir etki alanı adına el ile güncelleştirilmeleri gerekir. 
 
 **S: yönetici contoso.com olarak oturum açdım \@ , ancak "contoso.com" etki alanı adını silemiyorum?**<br>
 Y **:** Kullanıcı hesabınızın adında silmeye çalıştığınız özel etki alanı adına başvurulamıyor. Genel yönetici hesabının, gibi ilk varsayılan etki alanı adını (. onmicrosoft.com) kullandığından emin olun admin@contoso.onmicrosoft.com . Gibi farklı bir genel yönetici hesabıyla oturum açın; örneğin admin@contoso.onmicrosoft.com , hesabın olduğu "fabrikam.com" gibi başka bir özel etki alanı adı admin@fabrikam.com .

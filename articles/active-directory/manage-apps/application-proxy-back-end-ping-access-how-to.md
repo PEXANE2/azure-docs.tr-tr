@@ -17,15 +17,15 @@ ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7cfbca2e7542315b59d741a9e8f6f9eb92af6ebf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84760227"
 ---
 # <a name="how-to-configure-an-application-proxy-application-to-use-pingaccess"></a>Bir uygulama proxy uygulamasını PingAccess kullanacak şekilde yapılandırma
 
-PingAccess ile işbirliği yaptığımız, uygulama proxy 'sinin avantajlarını üst bilgi tabanlı kimlik doğrulaması kullanarak genişletmenizi sağlar. Uygulamalarınız üst bilgileri kullanmazlar, diğer seçeneklerle ilgili ayrıntılı bilgi için bkz. [Çoklu oturum açma belgelerimize](application-proxy-configure-single-sign-on-with-kcd.md) bakın.
+PingAccess ile işbirliği yaptığımız, uygulama proxy 'sinin avantajlarını üst bilgi tabanlı kimlik doğrulaması kullanarak genişletmenizi sağlar. Uygulamalarınız üst bilgileri kullanmazlar, diğer seçeneklerle ilgili ayrıntılı bilgi için [tek Sign-On belgelerimize](application-proxy-configure-single-sign-on-with-kcd.md) bakın.
 
 ## <a name="overview-of-steps-and-recommended-documents"></a>Adımlara ve önerilen belgelere genel bakış
 
@@ -39,4 +39,4 @@ Bir uygulamayı PingAccess ile yapılandırmak için dört adım vardır:
 
 4.  PingAccess 'te uygulamaları yapılandırma
 
-Bu adımların her biri hakkında ayrıntılı bilgi için bkz. [üst bilgi belgeleriyle çoklu oturum açma](application-proxy-configure-single-sign-on-with-ping-access.md).
+Bu adımların her biri hakkında daha fazla bilgi için, [üst bilgi belgeleriyle tek Sign-On](application-proxy-configure-single-sign-on-with-ping-access.md)bakın.

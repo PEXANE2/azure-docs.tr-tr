@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 101e42263e46c5a21f26b0fa9cdeed798525fee9
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89047097"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>VMware VM 'Leri/fiziksel sunucular için ölçekte olağanüstü durum kurtarmayı ayarlama
@@ -26,7 +26,7 @@ Bu makalede, [Azure Site Recovery](site-recovery-overview.md) hizmetini kullanar
 - VMware VM 'Leri için büyük ölçekli olağanüstü durum kurtarma ve ihtiyacınız olan Azure kaynaklarını farklı şekilde planlarken, kapasite hesaplamaları için kullanılacak bir RTO değeri belirtebilirsiniz.
 
 
-## <a name="best-practices"></a>En iyi uygulamalar
+## <a name="best-practices"></a>Önerilen uygulamalar
 
 Büyük ölçekli olağanüstü durum kurtarma için bazı genel en iyi uygulamalar. Bu en iyi uygulamalar, belgenin sonraki bölümlerinde daha ayrıntılı bir şekilde ele alınmıştır.
 
@@ -100,7 +100,7 @@ Uyumluluk ne anlama geliyor? Azure VM 'yi başlatmak için, Azure 'un önyüklem
 
 **Makine Azure ile uyumlu mı?** | **Azure VM sınırları (yönetilen disk yük devretmesi)**
 --- | --- 
-Yes | 2000
+Evet | 2000
 Hayır | 1000
 
 - Sınırlar, aboneliğin hedef bölgesinde en az diğer işlerin devam ettiğini varsayar.

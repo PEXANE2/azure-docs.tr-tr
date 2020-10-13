@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/12/2020
 ms.author: aahi
 ms.openlocfilehash: 185a6a26350f7803d109e26d8985510380b8cc16
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056600"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Metin Analizi API'si v3 dil desteği 
@@ -86,7 +86,7 @@ ms.locfileid: "90056600"
 | İsveççe               |     `sv`      |     ✓      |            |                                 |                    |
 | Türkçe               |     `tr`      |     ✓      |            |                                 |                    |
 
-#### <a name="key-phrase-extraction"></a>[Anahtar ifade ayıklama](#tab/key-phrase-extraction)
+#### <a name="key-phrase-extraction"></a>[Anahtar tümceciği ayıklama](#tab/key-phrase-extraction)
 
 > [!NOTE]
 > 2020-07-01 ' den önceki Anahtar İfade Ayıklama model sürümlerinin 64 karakter sınırı vardır. Bu sınır sonraki model sürümlerinde yok.

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 10/24/2019
 ms.openlocfilehash: eacc104bf7157732f91507f631bcda2cd166bfb3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77588697"
 ---
 # <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Azure Sentinel ile arama sırasında verilerin izini sürme
@@ -110,7 +110,7 @@ Araştırma grafiğini kullanma hakkında yönergeler için bkz. [araştırma gr
     > [!div class="mx-imgBorder"]
     > ![Olaya yer işaretleri ekleme](./media/bookmarks/incident-actions.png)
 
-3. Gerektiğinde **Yeni olay oluştur** veya **var olan olaya Ekle**' yi seçin. Ardından:
+3. Gerektiğinde **Yeni olay oluştur** veya **var olan olaya Ekle**' yi seçin. Sonra:
     
     - Yeni bir olay için: Isteğe bağlı olarak olay ayrıntılarını güncelleştirin ve ardından **Oluştur**' u seçin.
     - Var olan bir olaya bir yer işareti eklemek için: bir olay seçin ve ardından **Ekle**' yi seçin. 

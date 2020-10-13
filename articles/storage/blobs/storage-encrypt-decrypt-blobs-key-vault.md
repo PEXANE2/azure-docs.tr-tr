@@ -12,10 +12,10 @@ ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8ac69b442b06864fd45561b26909e1247674611a
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89458391"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>Öğretici-Azure Key Vault kullanarak blob 'ları şifreleme ve şifre çözme
@@ -28,7 +28,7 @@ Azure Key Vault hakkında genel bilgi için bkz. [Azure Key Vault nedir?](../../
 
 Azure depolama için istemci tarafı şifreleme hakkında genel bilgi için bkz. [Istemci tarafı şifreleme ve Microsoft Azure depolama için Azure Key Vault](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakilere sahip olmanız gerekir:
 

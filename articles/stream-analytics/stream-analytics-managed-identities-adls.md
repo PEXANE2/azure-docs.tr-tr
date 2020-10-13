@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: 551f0065f1547e94d93993a38795234f455b9eef
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86044405"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Yönetilen kimlikleri kullanarak Azure Data Lake Storage 1. Stream Analytics kimlik doğrulama
@@ -84,7 +84,7 @@ Bu makalede, Visual Studio için Azure portal, Azure Resource Manager şablon da
 
    * İşte kullanılan ADLS 1. önek yolu için **yazma** ve **yürütme** izinlerini otomatik olarak ayarlayın ve bu klasöre ve tüm alt öğelere atayın.
 
-5. Stream Analytics CI kullanarak aşağıdaki özelliği içeren Kaynak Yöneticisi şablonları oluşturabilirsiniz [. ](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/)Bir derleme makinesinde (Visual Studio dışında) CD NuGet paketi sürüm 1.5.0 veya üzeri. Hizmet sorumlusunu almak ve PowerShell aracılığıyla hizmet sorumlusuna erişim sağlamak için sonraki bölümde Kaynak Yöneticisi şablonu dağıtım adımlarını izleyin.
+5. Stream Analytics CI kullanarak aşağıdaki özelliği içeren Kaynak Yöneticisi şablonları oluşturabilirsiniz [. ](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/) Bir derleme makinesinde (Visual Studio dışında) CD NuGet paketi sürüm 1.5.0 veya üzeri. Hizmet sorumlusunu almak ve PowerShell aracılığıyla hizmet sorumlusuna erişim sağlamak için sonraki bölümde Kaynak Yöneticisi şablonu dağıtım adımlarını izleyin.
 
 ## <a name="resource-manager-template-deployment"></a>Kaynak Yöneticisi şablonu dağıtımı
 

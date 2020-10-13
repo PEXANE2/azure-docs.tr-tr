@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/15/2020
 ms.openlocfilehash: 15cb1391cb6482401c2a091a4d5c0e9d819ba52d
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91777029"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Soru-Cevap Oluşturma Bilgi Bankası 'nın en iyi yöntemleri
@@ -48,7 +48,7 @@ En iyi yanıtlar basit yanıtlardan oluşur ancak çok basittir. Ve gibi yanıtl
 |Klavye üzerindeki güç düğmesiyle yüzey dizüstü bilgisayarınızı kapatın.|* Uyku, kapatma ve yeniden başlatma için anahtar birleşimleri.<br>* Bir yüzey dizüstü bilgisayarı nasıl sabit bir şekilde Önyükle<br>* Yüzey dizüstü bilgisayar için BIOS 'U değiştirme<br>* Uyku, kapatma ve yeniden başlatma arasındaki farklar|
 |Müşteri Hizmetleri, günde 24 saat boyunca telefon, Skype ve kısa mesaj yoluyla kullanılabilir.|* Sales için iletişim bilgileri.<br> * Office ve mağaza konumları ve saatleri bir kişi için ziyaret edin.<br> * Bir yüzey dizüstü bilgisayar için aksesuarlar.|
 
-## <a name="chit-chat"></a>Chit-sohbet
+## <a name="chit-chat"></a>Chit-Chat
 Botunuza, düşük çabayla daha fazla konuşma ve ilgi çekici hale getirmek için Chit sohbeti ekleyin. KB 'nizi oluştururken önceden tanımlanmış kişiselleştirimler aracılığıyla kolayca CHIT-chat veri kümeleri ekleyebilir ve bunları dilediğiniz zaman değiştirebilirsiniz. [KB 'nize Chit sohbeti ekleme](../How-To/chit-chat-knowledge-base.md)hakkında bilgi edinin.
 
 Chit-sohbet [birçok dilde](../how-to/chit-chat-knowledge-base.md#language-support)desteklenmektedir.
@@ -134,7 +134,7 @@ Bilgi bankasındaki bir soru ile bir kullanıcı sorgusuyla eşleşen derecelend
 
 Bu iki QnAs, çok benzer sözcüklerle phrased olduğundan, bu benzerlik,  *"konum olduğu yer `<x>` "* gibi phrased çok sayıda kullanıcı sorgusunun çok benzer puanlarını oluşmasına neden olabilir. Bunun yerine, KB 'unuzda birçok soruda olabilecek "konum" gibi kelimeleri önleyerek "  *Park partisi olan* " ve *"ATM*olduğu" gibi sorguları açıkça ayırt etmeye çalışın.
 
-## <a name="collaborate"></a>İşbirliği
+## <a name="collaborate"></a>İşbirliği yapma
 Soru-Cevap Oluşturma, kullanıcıların Bilgi Bankası 'nda [işbirliği](../How-to/collaborate-knowledge-base.md) yapmasına olanak sağlar. Kullanıcıların bilgi tabanlara erişebilmesi için Azure Soru-Cevap Oluşturma kaynak grubuna erişmesi gerekir. Bazı kuruluşlar Bilgi Bankası düzenlemesini ve bakımını dış olarak almak isteyebilir ve yine de Azure kaynaklarına erişimi koruyabilecek. Bu düzenleyici-onaylayan modeli, farklı aboneliklerde iki özdeş [soru-cevap oluşturma hizmeti](../How-to/set-up-qnamaker-service-azure.md) ayarlanarak ve düzenleme testi döngüsüne yönelik bir seçim yaparak yapılır. Sınama tamamlandıktan sonra Bilgi Bankası içerikleri, son olarak Bilgi Bankası 'nı yayımlayacak ve uç noktayı güncelleştiren, onaylayanın Soru-Cevap Oluşturma hizmetine bir [içeri aktarma](../Tutorials/migrate-knowledge-base.md) işlemi ile aktarılır.
 
 

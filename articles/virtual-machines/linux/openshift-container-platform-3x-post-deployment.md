@@ -11,10 +11,10 @@ ms.date: 10/14/2019
 ms.author: haroldw
 ms.custom: devx-track-ansible
 ms.openlocfilehash: 8e34f73f1c403e3a7d21c6c30844f8b9073b3113
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87373581"
 ---
 # <a name="post-deployment-tasks"></a>Dağıtım sonrası görevler
@@ -86,7 +86,7 @@ Azure portalında:
 
    ![Uygulama kaydı erişimi](media/openshift-post-deployment/app-registration-access.png)
 
-8. **Bitti**'yi seçin.
+8. **Bitti** seçeneğini belirleyin.
 
 ### <a name="configure-openshift-for-azure-ad-authentication"></a>Azure AD kimlik doğrulaması için OpenShift yapılandırma
 
@@ -142,7 +142,7 @@ oauthConfig:
         token: https://login.microsoftonline.com/<tenant Id>/oauth2/token
 ```
 
-Metnin IdentityProviders altında doğru şekilde hizalandığından emin olun. Aşağıdaki CLı komutunu kullanarak kiracı KIMLIĞINI bulun:```az account show```
+Metnin IdentityProviders altında doğru şekilde hizalandığından emin olun. Aşağıdaki CLı komutunu kullanarak kiracı KIMLIĞINI bulun: ```az account show```
 
 Openshıft ana hizmetlerini tüm ana düğümlerde yeniden başlatın:
 

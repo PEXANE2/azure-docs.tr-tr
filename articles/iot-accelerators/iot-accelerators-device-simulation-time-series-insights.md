@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 88255e60593403951db5b984bb9c69b1060a93c2
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540583"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Cihaz simülasyonu çözüm hızlandırıcısında gönderilen Telemetriyi görselleştirmek için Time Series Insights kullanın
 
 Cihaz benzetimi Çözüm Hızlandırıcısı, IoT çözümlerinizi test etmek için sanal cihazlardan telemetri oluşturmanıza imkan tanır. Bu nasıl yapılır Kılavuzu, bir Time Series Insights ortamı kullanarak sanal Telemetriyi görselleştirmeyi ve çözümlemeyi gösterir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu nasıl yapılır kılavuzundaki adımları izleyerek etkin bir Azure aboneliğine ihtiyacınız vardır. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 

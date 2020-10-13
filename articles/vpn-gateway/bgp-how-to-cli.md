@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.openlocfilehash: a69ce0592b79be0868dd7c15ac054910eee75fc7
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89393607"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>CLı kullanarak bir Azure VPN ağ geçidinde BGP 'yi yapılandırma
@@ -91,7 +91,7 @@ az network public-ip create -n GWPubIP -g TestBGPRG1 --allocation-method Dynamic
 
 #### <a name="2-create-the-vpn-gateway-with-the-as-number"></a>2. AS numarasıyla VPN Gateway oluşturun
 
-TestVNet1 için sanal ağ geçidini oluşturun. BGP, rota tabanlı bir VPN Ağ Geçidi gerektirir. Ayrıca, `-Asn` TestVNet1 için otonom sistem numarası 'nı (ASN) ayarlamak üzere ek parametreye ihtiyacınız vardır. Ağ geçidi oluşturma işleminin tamamlanması biraz zaman alabilir (45 dakika veya daha fazla). 
+TestVNet1 için sanal ağ geçidini oluşturun. BGP Route-Based bir VPN Ağ Geçidi gerektirir. Ayrıca, `-Asn` TestVNet1 için otonom sistem numarası 'nı (ASN) ayarlamak üzere ek parametreye ihtiyacınız vardır. Ağ geçidi oluşturma işleminin tamamlanması biraz zaman alabilir (45 dakika veya daha fazla). 
 
 Bu komutu parametresini kullanarak çalıştırırsanız `--no-wait` , hiçbir geri bildirim veya çıkış görmezsiniz. `--no-wait`Parametresi, ağ geçidinin arka planda oluşturulmasına olanak tanır. VPN ağ geçidinin hemen oluşturulduğu anlamına gelmez.
 

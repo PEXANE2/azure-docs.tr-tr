@@ -8,10 +8,10 @@ ms.date: 03/27/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 5a310dca40b8f5fea074c0cd3c75751d62ccb8f5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91297904"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Azure Cosmos DB yaşam süresi yapılandırma
@@ -24,7 +24,7 @@ Azure Cosmos DB, kapsayıcı düzeyinde yaşam süresi (TTL) yapılandırmayı s
 
 Zaman aşımı olmadan bir kapsayıcıda canlı kalma süresini etkinleştirmek için aşağıdaki adımları kullanın. TTL 'nin öğe düzeyinde geçersiz kılınmasına izin vermek için bunu etkinleştirin. TTL 'yi saniye için sıfır olmayan bir değer girerek de ayarlayabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. Yeni bir Azure Cosmos hesabı oluşturun veya var olan bir hesabı seçin.
 
@@ -208,7 +208,7 @@ Bir kapsayıcıda yaşam için varsayılan bir zaman ayarlamaya ek olarak, bir �
 
 Bir öğe üzerinde yaşam süresini etkinleştirmek için aşağıdaki adımları kullanın:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. Yeni bir Azure Cosmos hesabı oluşturun veya var olan bir hesabı seçin.
 

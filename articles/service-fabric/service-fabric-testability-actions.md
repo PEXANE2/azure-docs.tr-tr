@@ -7,10 +7,10 @@ ms.date: 06/07/2017
 ms.author: motanv
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8b1d4ae42fa033c03bd82ae5cee5794d98c23c65
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89022182"
 ---
 # <a name="testability-actions"></a>Test edilebilirlik eylemleri
@@ -31,20 +31,20 @@ Daha iyi kalite doğrulaması için, çeşitli düzgün ve düzgün olmayan hata
 ## <a name="testability-actions-list"></a>Test edilebilirlik eylemleri listesi
 | Eylem | Açıklama | Yönetilen API | PowerShell cmdlet 'i | Düzgün olmayan/düzgün olmayan hatalar |
 | --- | --- | --- | --- | --- |
-| CleanTestState |Test sürücüsünün kötü bir şekilde kapatılmasını durumunda tüm test durumunu kümeden kaldırır. |CleanTestStateAsync |Remove-ServiceFabricTestState |Geçerli değil |
+| CleanTestState |Test sürücüsünün kötü bir şekilde kapatılmasını durumunda tüm test durumunu kümeden kaldırır. |CleanTestStateAsync |Remove-ServiceFabricTestState |Uygulanamaz |
 | Invokedataloss |Bir hizmet bölümüne veri kaybı. |Invokedatalossasync |Invoke-ServiceFabricPartitionDataLoss |Normal |
-| Invokequorumkaybetme |Belirli bir durum bilgisi olan hizmet bölümünü çekirdek kaybına geçirir. |Invokequorumlossasync |Invoke-Servicefabricquorumkaybetme |Normal |
+| Invokequorumkaybetme |Belirli bir durum bilgisi olan hizmet bölümünü çekirdek kaybına geçirir. |Invokequorumlossasync |Invoke-ServiceFabricQuorumLoss |Normal |
 | MovePrimary |Durum bilgisi olan bir hizmetin belirtilen birincil çoğaltmasını belirtilen küme düğümüne taşımadır. |Moveının Yasync |Move-ServiceFabricPrimaryReplica |Normal |
 | MoveSecondary |Durum bilgisi olan bir hizmetin geçerli ikincil çoğaltmasını farklı bir küme düğümüne taşımadır. |MoveSecondaryAsync |Move-ServiceFabricSecondaryReplica |Normal |
 | RemoveReplica |Kümeden bir çoğaltmayı kaldırarak bir çoğaltma başarısızlığının benzetimini yapar. Bu, çoğaltmayı kapatacak ve ' none ' rolüne geçirecek ve tüm durumu kümeden kaldırılarak bu uygulamayı kaldırır. |Removereperepasync |Remove-ServiceFabricReplica |Normal |
 | RestartDeployedCodePackage |Bir kümedeki düğüme dağıtılan bir kod paketini yeniden başlatarak kod paketi işlem başarısızlığının benzetimini yapar. Bu işlem, bu işlemde barındırılan tüm Kullanıcı Hizmeti çoğaltmalarını yeniden başlatacak olan kod paketi işlemini iptal eder. |RestartDeployedCodePackageAsync |Restart-ServiceFabricDeployedCodePackage |Yaşanmamasını |
 | RestartNode |Bir düğümü yeniden başlatarak Service Fabric küme düğümü hatasına benzetir. |RestartNodeAsync |Restart-ServiceFabricNode |Yaşanmamasını |
 | RestartPartition |Bir bölümün bazı veya tüm çoğaltmalarını yeniden başlatarak bir veri merkezi kesintisi veya küme kararma senaryosunu taklit eder. |RestartPartitionAsync |Restart-ServiceFabricPartition |Normal |
-| RestartReplica |Bir kümede kalıcı bir çoğaltmayı yeniden başlatarak çoğaltmayı kapatıp yeniden açarak bir çoğaltma hatasına benzetim yapar. |RestartReplicaAsync |Restart-Servicefabricreplication |Normal |
-| StartNode |Zaten durdurulmuş bir kümede bir düğüm başlatır. |StartNodeAsync |Start-ServiceFabricNode |Geçerli değil |
+| RestartReplica |Bir kümede kalıcı bir çoğaltmayı yeniden başlatarak çoğaltmayı kapatıp yeniden açarak bir çoğaltma hatasına benzetim yapar. |RestartReplicaAsync |Restart-ServiceFabricReplica |Normal |
+| StartNode |Zaten durdurulmuş bir kümede bir düğüm başlatır. |StartNodeAsync |Start-ServiceFabricNode |Uygulanamaz |
 | StopNode |Bir kümedeki düğümü durdurarak bir düğüm başarısızlığının benzetimini yapar. StartNode çağrılana kadar düğüm aşağı kalacak. |StopNodeAsync |Stop-ServiceFabricNode |Yaşanmamasını |
-| ValidateApplication |Bir uygulamadaki tüm Service Fabric hizmetlerinin kullanılabilirliğini ve sistem durumunu doğrular, genellikle sisteme bazı bir hata alındıktan sonra. |ValidateApplicationAsync |Test-ServiceFabricApplication |Geçerli değil |
-| ValidateService |Service Fabric bir hizmetin kullanılabilirliğini ve sistem durumunu doğrular ve genellikle sisteme bazı bir hata alındıktan sonra. |ValidateServiceAsync |Test-ServiceFabricService |Geçerli değil |
+| ValidateApplication |Bir uygulamadaki tüm Service Fabric hizmetlerinin kullanılabilirliğini ve sistem durumunu doğrular, genellikle sisteme bazı bir hata alındıktan sonra. |ValidateApplicationAsync |Test-ServiceFabricApplication |Uygulanamaz |
+| ValidateService |Service Fabric bir hizmetin kullanılabilirliğini ve sistem durumunu doğrular ve genellikle sisteme bazı bir hata alındıktan sonra. |ValidateServiceAsync |Test-ServiceFabricService |Uygulanamaz |
 
 ## <a name="running-a-testability-action-using-powershell"></a>PowerShell kullanarak bir test edilebilirlik eylemi çalıştırma
 Bu öğreticide, PowerShell kullanarak bir test edilebilirlik eyleminin nasıl çalıştırılacağı gösterilmektedir. Yerel (tek Box) bir kümede veya Azure kümesinde nasıl bir test edilebilir eylemi çalıştırılacağını öğreneceksiniz. Microsoft.Fabric.Powershell.dll--Service Fabric PowerShell modülü--Microsoft Service Fabric MSI yüklediğinizde otomatik olarak yüklenir. Bir PowerShell istemi açtığınızda modül otomatik olarak yüklenir.
@@ -80,7 +80,7 @@ Restart-ServiceFabricNode -NodeName $nodeName -CompletionMode DoNotVerify
 
 Aşağıdaki ekran görüntüsünde **restart-ServiceFabricNode** teistiki komutu eylemde gösterilmiştir.
 
-![PowerShell 'de restart-ServiceFabricNode komutunu çalıştırmanın ekran görüntüsü.](media/service-fabric-testability-actions/Restart-ServiceFabricNode.png)
+![PowerShell 'de Restart-ServiceFabricNode komutunu çalıştırmanın ekran görüntüsü.](media/service-fabric-testability-actions/Restart-ServiceFabricNode.png)
 
 İlk **Get-ServiceFabricNode** (Service Fabric PowerShell modülünden bir cmdlet) çıkışı, yerel kümede beş düğüm olduğunu gösterir: node. 1 ila Node. 5. Test edilebilirlik eylemi (cmdlet) **Yeniden Başlat-ServiceFabricNode** düğüm üzerinde, Node. 4 adlı düğüm üzerinde yürütüldükten sonra, düğümün çalışma süresinin sıfırlandığını görüyoruz.
 

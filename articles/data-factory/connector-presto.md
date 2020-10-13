@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: 15f4133b03c1fe77548425500445937e86ed5a8e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87372510"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>Azure Data Factory kullanarak Presto 'dan veri kopyalama (Önizleme)
@@ -49,12 +49,12 @@ Aşağıdaki özellikler, Presto Linked Service için desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği şu şekilde ayarlanmalıdır: **Presto** | Yes |
-| konak | Presto Server 'ın IP adresi veya ana bilgisayar adı. (örn. 192.168.222.160)  | Yes |
-| serverVersion | Presto Server sürümü. (örn. 0,148-t)  | Yes |
-| kataloglarını | Sunucuya yönelik tüm istekler için Katalog bağlamı.  | Yes |
+| tür | Type özelliği şu şekilde ayarlanmalıdır: **Presto** | Evet |
+| konak | Presto Server 'ın IP adresi veya ana bilgisayar adı. (örn. 192.168.222.160)  | Evet |
+| serverVersion | Presto Server sürümü. (örn. 0,148-t)  | Evet |
+| kataloglarını | Sunucuya yönelik tüm istekler için Katalog bağlamı.  | Evet |
 | port | Presto Server 'ın istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası. Varsayılan değer 8080 ' dir.  | Hayır |
-| authenticationType | Presto sunucusuna bağlanmak için kullanılan kimlik doğrulama mekanizması. <br/>İzin verilen değerler: **anonim**, **LDAP** | Yes |
+| authenticationType | Presto sunucusuna bağlanmak için kullanılan kimlik doğrulama mekanizması. <br/>İzin verilen değerler: **anonim**, **LDAP** | Evet |
 | username | Presto sunucusuna bağlanmak için kullanılan Kullanıcı adı.  | Hayır |
 | password | Kullanıcı adına karşılık gelen parola. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Hayır |
 | enableSsl | Sunucu bağlantılarının TLS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer false'tur.  | Hayır |
@@ -64,7 +64,7 @@ Aşağıdaki özellikler, Presto Linked Service için desteklenir:
 | allowSelfSignedServerCert | Sunucudan kendinden imzalı sertifikalara izin verilip verilmeyeceğini belirtir. Varsayılan değer false'tur.  | Hayır |
 | Saat dilimi | Bağlantı tarafından kullanılan yerel saat dilimi. Bu seçenek için geçerli değerler, ıANA saat dilimi veritabanında belirtilmiştir. Varsayılan değer sistem saati bölgesidir.  | Hayır |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 {
@@ -96,9 +96,9 @@ Verileri Presto 'dan kopyalamak için DataSet 'in Type özelliğini **Prestoobje
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | DataSet 'in Type özelliği: **Prestoobject** olarak ayarlanmalıdır | Yes |
+| tür | DataSet 'in Type özelliği: **Prestoobject** olarak ayarlanmalıdır | Evet |
 | schema | Şemanın adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
-| table | Tablonun adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
+| tablo | Tablonun adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
 | tableName | Şemanın bulunduğu tablonun adı. Bu özellik geriye dönük uyumluluk için desteklenir. `schema` `table` Yeni iş yükü için ve kullanın. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -128,10 +128,10 @@ Verileri Presto 'dan kopyalamak için kopyalama etkinliğindeki kaynak türünü
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **Prestosource** olarak ayarlanmalıdır | Yes |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **Prestosource** olarak ayarlanmalıdır | Evet |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 "activities":[

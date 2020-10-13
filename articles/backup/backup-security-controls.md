@@ -4,10 +4,10 @@ description: Azure Backup hizmetinde kullanılan güvenlik denetimleri hakkında
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.openlocfilehash: 7ff3ff5c1b024a228778b0214e67239d3c8ab721
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89418764"
 ---
 # <a name="security-controls-for-azure-backup"></a>Azure Backup için güvenlik denetimleri
@@ -20,36 +20,36 @@ Bu makalede, Azure Backup yerleşik olarak bulunan güvenlik denetimleri Belgele
 
 | Güvenlik denetimi | Evet/Hayır | Notlar | Belgeler
 |---|---|--|--|
-| Hizmet uç noktası desteği| No |  |  |
-| VNet ekleme desteği| No |  |  |
-| Ağ yalıtımı ve güvenlik duvarı desteği| Yes | |  |
-| Azure VM 'Leri için Zorlamalı tünel desteği | Yes  |  |  |
-| Azure VM 'Leri içinde çalışan uygulamalar için Zorlamalı tünel desteği| No  |  |  |
+| Hizmet uç noktası desteği| Hayır |  |  |
+| VNet ekleme desteği| Hayır |  |  |
+| Ağ yalıtımı ve güvenlik duvarı desteği| Evet | |  |
+| Azure VM 'Leri için Zorlamalı tünel desteği | Evet  |  |  |
+| Azure VM 'Leri içinde çalışan uygulamalar için Zorlamalı tünel desteği| Hayır  |  |  |
 
 ## <a name="monitoring--logging"></a>& günlüğü izleme
 
 | Güvenlik denetimi | Evet/Hayır | Notlar| Belgeler
 |---|---|--|--|
-| Azure izleme desteği (Log Analytics, App Insights gibi)| Yes | Log Analytics, kaynak günlükleri aracılığıyla desteklenir. Daha fazla bilgi için bkz. [Log Analytics kullanarak Azure Backup korunan iş yüklerini izleme](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/). |  |
-| Denetim ve yönetim düzlemi günlüğü ve denetimi| Yes | Azure portal müşterinin tetiklediği tüm eylemler etkinlik günlüklerine kaydedilir. |  |
-| Veri düzlemi günlüğü ve denetimi| No | Azure Backup veri düzlemine doğrudan ulaşılamıyor.  |  |
+| Azure izleme desteği (Log Analytics, App Insights gibi)| Evet | Log Analytics, kaynak günlükleri aracılığıyla desteklenir. Daha fazla bilgi için bkz. [Log Analytics kullanarak Azure Backup korunan iş yüklerini izleme](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/). |  |
+| Denetim ve yönetim düzlemi günlüğü ve denetimi| Evet | Azure portal müşterinin tetiklediği tüm eylemler etkinlik günlüklerine kaydedilir. |  |
+| Veri düzlemi günlüğü ve denetimi| Hayır | Azure Backup veri düzlemine doğrudan ulaşılamıyor.  |  |
 
 ## <a name="identity"></a>Kimlik
 
 | Güvenlik denetimi | Evet/Hayır | Notlar| Belgeler
 |---|---|--|--|
-| Kimlik doğrulaması| Yes | Kimlik doğrulaması Azure Active Directory. |  |
-| Yetkilendirme| Yes | Oluşturulan müşteri ve Azure yerleşik rolleri kullanılır. Daha fazla bilgi için bkz. [Azure Backup kurtarma noktalarını yönetmek Için rol tabanlı Access Control kullanma](./backup-rbac-rs-vault.md). |  |
+| Kimlik Doğrulaması| Evet | Kimlik doğrulaması Azure Active Directory. |  |
+| Yetkilendirme| Evet | Oluşturulan müşteri ve Azure yerleşik rolleri kullanılır. Daha fazla bilgi için bkz. [Azure Backup kurtarma noktalarını yönetmek için Role-Based Access Control kullanma](./backup-rbac-rs-vault.md). |  |
 
 ## <a name="data-protection"></a>Veri koruma
 
 | Güvenlik denetimi | Evet/Hayır | Notlar | Belgeler
 |---|---|--|--|
-| Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar | Yes | Depolama hesapları için depolama hizmeti şifrelemesini kullanma. |  |
-| Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | No |  |  |
-| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| No |  |  |
-| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| No | HTTPS kullanma. |  |
-| Şifrelenmiş API çağrıları| Yes |  |  |
+| Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar | Evet | Depolama hesapları için depolama hizmeti şifrelemesini kullanma. |  |
+| Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Hayır |  |  |
+| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Hayır |  |  |
+| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifrelemesi ve VNet-VNet şifreleme gibi)| Hayır | HTTPS kullanma. |  |
+| Şifrelenmiş API çağrıları| Evet |  |  |
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi
 

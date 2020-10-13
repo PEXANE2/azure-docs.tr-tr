@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: memildin
 ms.openlocfilehash: 19e9a33350b6a1a67986dc35a372f737e45ab39a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906394"
 ---
 # <a name="prevent-misconfigurations-with-enforcedeny-recommendations"></a>Zorla/reddetme önerilerini kullanarak yanlış yapılandırma önleme
@@ -41,18 +41,18 @@ Bu, seçilen güvenlik önerileri için kaynak Ayrıntıları sayfasının en ü
     > [!TIP]
     > Tek bir aboneliği değiştirmek için satırın sonundaki üç noktayı kullanabilir veya birden fazla abonelik veya Grup seçmek için onay kutularını kullanabilir, sonra da **Reddet olarak değiştir**' i seçin.
 
-    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-prevent-resource-creation.png" alt-text="Azure Ilkesi reddetme kapsamını ayarlama":::
+    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-prevent-resource-creation.png" alt-text="Reddet düğmesinin vurgulandığı öneri sayfası":::
 
 
 ## <a name="enforce-a-secure-configuration"></a>Güvenli bir yapılandırma zorla
 
 1. Yeni kaynaklar bunu karşılamadığı takdirde, bir şablon dağıtımı dağıtacağınız öneriyi açın ve sayfanın üst kısmındaki **zorla** düğmesini seçin.
 
-    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-button.png" alt-text="Zorunlu Düğme vurgulanmış öneri sayfası":::
+    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-button.png" alt-text="Reddet düğmesinin vurgulandığı öneri sayfası":::
 
     Yapılandırma bölmesi tüm ilke yapılandırma seçenekleriyle açılır. 
 
-    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-config.png" alt-text="Yapılandırma seçeneklerini zorunlu kıl":::
+    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-config.png" alt-text="Reddet düğmesinin vurgulandığı öneri sayfası":::
 
 1. Kapsam, atama adı ve diğer ilgili seçenekleri ayarlayın.
 

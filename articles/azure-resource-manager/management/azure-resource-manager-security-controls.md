@@ -4,10 +4,10 @@ description: Azure Resource Manager hizmetini değerlendirmek için yerleşik g�
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.openlocfilehash: bb8742c38fae88dc1fd1fd1ec175b248f30df3a0
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86054466"
 ---
 # <a name="security-controls-for-azure-resource-manager"></a>Azure Resource Manager için güvenlik denetimleri
@@ -21,8 +21,8 @@ Bu makalede, Azure Resource Manager yerleşik olarak bulunan güvenlik denetimle
 | Güvenlik denetimi | Evet/Hayır | Notlar |
 |---|---|--|
 | Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar | Evet |  |
-| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | HTTPS/TLS. |
-| Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | YOK | Azure Resource Manager hiçbir müşteri içeriği depolar, yalnızca denetim verileri. |
+| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifrelemesi ve VNet-VNet şifreleme gibi)| Evet | HTTPS/TLS. |
+| Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Yok | Azure Resource Manager hiçbir müşteri içeriği depolar, yalnızca denetim verileri. |
 | Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Evet | |
 | Şifrelenmiş API çağrıları| Evet | |
 
@@ -41,7 +41,7 @@ Bu makalede, Azure Resource Manager yerleşik olarak bulunan güvenlik denetimle
 |---|---|--|
 | Azure izleme desteği (Log Analytics, App Insights vb.)| Hayır | |
 | Denetim ve yönetim düzlemi günlüğü ve denetimi| Evet | Etkinlik günlükleri, kaynaklarınız üzerinde gerçekleştirilen tüm yazma işlemlerini (PUT, POST, SILME) kullanıma sunar; bkz. [kaynaklardaki eylemleri denetlemek için etkinlik günlüklerini görüntüleme](view-activity-logs.md). |
-| Veri düzlemi günlüğü ve denetimi| YOK | |
+| Veri düzlemi günlüğü ve denetimi| Yok | |
 
 ## <a name="identity"></a>Kimlik
 
