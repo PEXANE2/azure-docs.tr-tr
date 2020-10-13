@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
 ms.openlocfilehash: e2f9ba27410195b187ad7c8ae39c04a66da4c234
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84738711"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli"></a>Azure ağ Izleyicisi Azure CLı kullanarak sanal ağ geçidi ve bağlantıları sorunlarını giderme
@@ -59,7 +59,7 @@ az network vpn-connection show --resource-group resourceGroupName --ids vpnConne
 
 Kaynak sorun giderme, kaynağın durumuyla ilgili verileri döndürür, ayrıca günlükleri gözden geçirilecek bir depolama hesabına kaydeder. Bu adımda, mevcut bir depolama hesabı varsa bir depolama hesabı oluşturuyoruz, onu kullanabilirsiniz.
 
-1. Depolama hesabı oluşturma
+1. Depolama hesabını oluşturma
 
     ```azurecli
     az storage account create --name storageAccountName --location westcentralus --resource-group resourceGroupName --sku Standard_LRS

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: 2c2fbb3352b159ce9f5231c56399638a1d393366
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513868"
 ---
 # <a name="azure-database-for-mysql-videos"></a>MySQL için Azure veritabanı videoları
@@ -43,4 +43,4 @@ PostgreSQL için Azure veritabanı ve MySQL için Azure veritabanı, topluluk s�
 >[!VIDEO https://channel9.msdn.com/Events/Build/2017/B8045/player]
 [Channel 9 ' da aç](https://channel9.msdn.com/events/Build/2017/B8045)
 
-Mayıs 2017 Microsoft/Build Conference 'daki Bu videoda, Microsoft 'un yönetilen MySQL teklifini Azure 'da öğrenebilirsiniz. Bu videoda, Microsoft 'un Azure 'da açık kaynaklı veritabanı sistemlerini destekleme stratejisi gösterilmektedir. Videoda, Azure 'da MySQL kullanan uygulamalar geliştirmeye veya dağıtmaya yönelik bir geliştirici olarak ne anlama geldiğini ele alınmaktadır. Bu videoda, hizmet mimarisine genel bir bakış gösterilmektedir ve MySQL için Azure veritabanı 'nın Web Apps gibi diğer Azure hizmetleriyle tümleşik olduğunu gösterir.
+Mayıs 2017 Microsoft/Build Conference 'daki Bu videoda, Microsoft 'un yönetilen MySQL teklifini Azure 'da öğrenebilirsiniz. Videoda, Microsoft 'un Azure 'da Open-Source veritabanı sistemlerini destekleme stratejisi gösterilmektedir. Videoda, Azure 'da MySQL kullanan uygulamalar geliştirmeye veya dağıtmaya yönelik bir geliştirici olarak ne anlama geldiğini ele alınmaktadır. Bu videoda, hizmet mimarisine genel bir bakış gösterilmektedir ve MySQL için Azure veritabanı 'nın Web Apps gibi diğer Azure hizmetleriyle tümleşik olduğunu gösterir.

@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: 32734ff9df2e55d24789742cd49984d8da212a17
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212187"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Işlevleri SendGrid bağlamaları
@@ -37,7 +37,7 @@ SendGrid bağlamaları [Microsoft. Azure. WebJobs. Extensions. SendGrid](https:/
 
 Aşağıdaki örnek, Service Bus kuyruğu tetikleyicisi kullanan bir [C# işlevini](functions-dotnet-class-library.md) ve SendGrid çıkış bağlamayı gösterir.
 
-### <a name="synchronous"></a>Zaman uyumlu
+### <a name="synchronous"></a>Zaman Uyumlu
 
 ```cs
 using SendGrid.Helpers.Mail;
@@ -363,7 +363,7 @@ Aşağıdaki tabloda, dosyasında  *function.js* bulunan bağlama yapılandırma
 | apiKey | ApiKey | API anahtarınızı içeren bir uygulama ayarının adı. Ayarlanmamışsa, varsayılan uygulama ayarı adı *AzureWebJobsSendGridApiKey*olur.| Hayır |
 | şöyle değiştirin:| Amaç | Alıcının e-posta adresi. | Evet |
 | Kaynak| Kaynak | Gönderenin e-posta adresi. |  Evet |
-| subject| Konu | E-postanın konusu. | Evet |
+| Konu| Konu | E-postanın konusu. | Evet |
 | metin| Metin | E-posta içeriği. | Evet |
 
 İsteğe bağlı özellikler, bağlamada tanımlanmış ve program aracılığıyla eklenmiş ya da geçersiz kılınan varsayılan değerlere sahip olabilir.

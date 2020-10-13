@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 836e01d3cd8fb25dda1616803d8b6f3e9ff4e06f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89645743"
 ---
 # <a name="data-encryption-models"></a>Veri şifreleme modelleri
@@ -27,7 +27,7 @@ ms.locfileid: "89645743"
 
 Sunucu tarafı şifreleme için üç senaryo vardır:
 
-- Hizmet tarafından yönetilen anahtarları kullanarak sunucu tarafı şifreleme
+- Service-Managed anahtarları kullanarak sunucu tarafı şifreleme
   - Azure kaynak sağlayıcıları şifreleme ve şifre çözme işlemlerini gerçekleştirir
   - Microsoft, anahtarları yönetir
   - Tam bulut işlevselliği
@@ -143,104 +143,104 @@ Müşteri denetimli donanımda hizmet tarafından yönetilen anahtarlar kullanı
 ## <a name="supporting-services"></a>Destekleyici hizmetler
 Her şifreleme modelini destekleyen Azure hizmetleri:
 
-| Ürün, özellik veya hizmet | Hizmet tarafından yönetilen anahtar kullanılarak sunucu tarafı   | Müşteri tarafından yönetilen anahtarı kullanarak sunucu tarafı | İstemci-yönetilen anahtarı kullanarak istemci tarafı  |
+| Ürün, özellik veya hizmet | Service-Managed anahtarı kullanarak Server-Side   | Customer-Managed anahtarı kullanarak Server-Side | Client-Managed anahtarı kullanarak Client-Side  |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 | **Yapay Zeka ve Makine Öğrenmesi**      |                    |                    |                    |
-| Azure Bilişsel Arama           | Yes                | Yes                | -                  |
-| Azure Bilişsel Hizmetler         | Yes                | Yes                | -                  |
-| Azure Machine Learning           | Yes                | Yes                | -                  |
-| Azure Machine Learning Studio    | Yes                | Önizleme, RSA 2048 bit | -               |
-| Content Moderator                | Yes                | Yes                | -                  |
-| Yüz Tanıma                             | Yes                | Yes                | -                  |
-| Language Understanding           | Yes                | Yes                | -                  |
-| Kişiselleştirme                     | Yes                | Yes                | -                  |
-| Soru-Cevap Oluşturucu                        | Yes                | Yes                | -                  |
-| Konuşma Hizmetleri                  | Yes                | Yes                | -                  |
-| Translator Metin Çevirisi                  | Yes                | Yes                | -                  |
-| Power BI                         | Yes                | Evet, RSA 4096 bit  | -                  |
+| Azure Bilişsel Arama           | Evet                | Evet                | -                  |
+| Azure Bilişsel Hizmetler         | Evet                | Evet                | -                  |
+| Azure Machine Learning           | Evet                | Evet                | -                  |
+| Azure Machine Learning Studio    | Evet                | Önizleme, RSA 2048 bit | -               |
+| Content Moderator                | Evet                | Evet                | -                  |
+| Yüz                             | Evet                | Evet                | -                  |
+| Language Understanding           | Evet                | Evet                | -                  |
+| Kişiselleştirme                     | Evet                | Evet                | -                  |
+| Soru-Cevap Oluşturucu                        | Evet                | Evet                | -                  |
+| Konuşma Hizmetleri                  | Evet                | Evet                | -                  |
+| Translator Metin Çevirisi                  | Evet                | Evet                | -                  |
+| Power BI                         | Evet                | Evet, RSA 4096 bit  | -                  |
 | **Analiz**                    |                    |                    |                    |
-| Azure Stream Analytics           | Yes                | Yok\*              | -                  |
-| Event Hubs                       | Yes                | Yes                | -                  |
-| İşlevler                        | Yes                | Yes                | -                  |
+| Azure Stream Analytics           | Evet                | yok\*              | -                  |
+| Event Hubs                       | Evet                | Evet                | -                  |
+| İşlevler                        | Evet                | Evet                | -                  |
 | Azure Analysis Services          | Evet                | -                  | -                  |
-| Azure Veri Kataloğu               | Yes                | -                  | -                  |
-| Azure HDInsight                  | Yes                | Tümü                | -                  |
-| Azure Izleyici Application Insights | Yes                | Yes                | -                  |
-| Azure Izleyici Log Analytics      | Yes                | Yes                | -                  |
-| Azure Veri Gezgini              | Yes                | Yes                | -                  |
-| Azure Data Factory               | Yes                | Yes                | -                  |
+| Azure Veri Kataloğu               | Evet                | -                  | -                  |
+| Azure HDInsight                  | Evet                | Tümü                | -                  |
+| Azure Izleyici Application Insights | Evet                | Evet                | -                  |
+| Azure Izleyici Log Analytics      | Evet                | Evet                | -                  |
+| Azure Veri Gezgini              | Evet                | Evet                | -                  |
+| Azure Data Factory               | Evet                | Evet                | -                  |
 | Azure Data Lake Store            | Evet                | Evet, RSA 2048 bit  | -                  |
 | **Kapsayıcılar**                   |                    |                    |                    |
-| Azure Kubernetes Service         | Yes                | Yes                | -                  |
-| Container Instances              | Yes                | Yes                | -                  |
-| Container Registry               | Yes                | Yes                | -                  |
+| Azure Kubernetes Service         | Evet                | Evet                | -                  |
+| Container Instances              | Evet                | Evet                | -                  |
+| Container Kayıt Defteri               | Evet                | Evet                | -                  |
 | **İşlem**                      |                    |                    |                    |
-| Virtual Machines                 | Yes                | Yes                | -                  |
-| Sanal makine ölçek kümesi        | Yes                | Evet                | -                  |
-| SAP HANA                         | Evet                | Yes                | -                  |
-| App Service                      | Yes                | Yes\*\*            | -                  |
-| Otomasyon                       | Yes                | Yes\*\*            | -                  |
-| Azure İşlevleri                  | Yes                | Yes\*\*            | -                  |
-| Azure portal                     | Yes                | Yes\*\*            | -                  |
-| Logic Apps                       | Yes                | Yes                | -                  |
-| Azure tarafından yönetilen uygulamalar       | Yes                | Yes\*\*            | -                  |
-| Service Bus                      | Yes                | Yes                | -                  |
-| Site Recovery                    | Yes                | Yes                | -                  |
+| Sanal Makineler                 | Evet                | Evet                | -                  |
+| Sanal makine ölçek kümesi        | Evet                | Evet                | -                  |
+| SAP HANA                         | Evet                | Evet                | -                  |
+| App Service                      | Evet                | Yes\*\*            | -                  |
+| Otomasyon                       | Evet                | Yes\*\*            | -                  |
+| Azure İşlevleri                  | Evet                | Yes\*\*            | -                  |
+| Azure portal                     | Evet                | Yes\*\*            | -                  |
+| Logic Apps                       | Evet                | Evet                | -                  |
+| Azure tarafından yönetilen uygulamalar       | Evet                | Yes\*\*            | -                  |
+| Service Bus                      | Evet                | Evet                | -                  |
+| Site Recovery                    | Evet                | Evet                | -                  |
 | **Veritabanları**                    |                    |                    |                    |
-| Sanal Makinelerde SQL Server   | Yes                | Yes                | Evet                |
-| Azure SQL Veritabanı               | Evet                | Evet, RSA 3072 bit  | Yes                |
-| MariaDB için Azure SQL veritabanı   | Yes                | -                  | -                  |
-| MySQL için Azure SQL veritabanı     | Yes                | Yes                | -                  |
-| PostgreSQL için Azure SQL veritabanı | Yes               | Yes                | -                  |
-| Azure Synapse Analytics          | Yes                | Evet, RSA 3072 bit  | -                  |
-| SQL Server Stretch Database      | Yes                | Evet, RSA 3072 bit  | Yes                |
-| Tablo Depolama                    | Yes                | Yes                | Yes                |
-| Azure Cosmos DB                  | Evet                | Yes                | -                  |
-| Azure Databricks                 | Yes                | Yes                | -                  |
-| Azure Veritabanı Geçiş Hizmeti | Yes                | Yok\*              | -                  |
+| Sanal Makinelerde SQL Server   | Evet                | Evet                | Evet                |
+| Azure SQL Veritabanı               | Evet                | Evet, RSA 3072 bit  | Evet                |
+| MariaDB için Azure SQL veritabanı   | Evet                | -                  | -                  |
+| MySQL için Azure SQL veritabanı     | Evet                | Evet                | -                  |
+| PostgreSQL için Azure SQL veritabanı | Evet               | Evet                | -                  |
+| Azure Synapse Analytics          | Evet                | Evet, RSA 3072 bit  | -                  |
+| SQL Server Stretch Database      | Evet                | Evet, RSA 3072 bit  | Evet                |
+| Tablo Depolama                    | Evet                | Evet                | Evet                |
+| Azure Cosmos DB                  | Evet                | Evet                | -                  |
+| Azure Databricks                 | Evet                | Evet                | -                  |
+| Azure Veritabanı Geçiş Hizmeti | Evet                | yok\*              | -                  |
 | **DevOps**                       |                    |                    |                    |
-| Azure DevOps Services            | Yes                | -                  | Yes                |
-| Azure Repos                      | Yes                | -                  | Yes                |
+| Azure DevOps Services            | Evet                | -                  | Evet                |
+| Azure Repos                      | Evet                | -                  | Evet                |
 | **Kimlik**                     |                    |                    |                    |
-| Azure Active Directory           | Yes                | -                  | -                  |
-| Azure Active Directory Domain Services | Yes          | Yes                | -                  |
+| Azure Active Directory           | Evet                | -                  | -                  |
+| Azure Active Directory Domain Services | Evet          | Evet                | -                  |
 | **Tümleştirme**                  |                    |                    |                    |
-| Service Bus                      | Yes                | Yes                | Yes                |
-| Event Grid                       | Yes                | -                  | -                  |
-| API Management                   | Yes                | -                  | -                  |
+| Service Bus                      | Evet                | Evet                | Evet                |
+| Event Grid                       | Evet                | -                  | -                  |
+| API Management                   | Evet                | -                  | -                  |
 | **IoT Hizmetleri**                 |                    |                    |                    |
-| IoT Hub                          | Yes                | Yes                | Yes                |
-| Cihaz sağlamayı IoT Hub      | Yes                | Yes                | -                  |
+| IoT Hub                          | Evet                | Evet                | Evet                |
+| Cihaz sağlamayı IoT Hub      | Evet                | Evet                | -                  |
 | **Yönetim ve İdare**    |                    |                    |                    |
-| Azure Site Recovery              | Yes                | -                  | -                  |
-| Azure Geçişi                    | Yes                | Yes                | -                  |
+| Azure Site Recovery              | Evet                | -                  | -                  |
+| Azure Geçişi                    | Evet                | Evet                | -                  |
 | **Medya**                        |                    |                    |                    |
-| Media Services                   | Yes                | -                  | Yes                |
+| Media Services                   | Evet                | -                  | Evet                |
 | **Güvenlik**                     |                    |                    |                    |
-| IoT için Azure Güvenlik Merkezi    | Yes                | Yes                | -                  |
-| Azure Sentinel                   | Yes                | Yes                | -                  |
+| IoT için Azure Güvenlik Merkezi    | Evet                | Evet                | -                  |
+| Azure Sentinel                   | Evet                | Evet                | -                  |
 | **Depolama**                      |                    |                    |                    |
-| Blob Depolama                     | Yes                | Yes                | Yes                |
-| Premium blob depolaması             | Yes                | Yes                | Yes                |
-| Disk Depolama                     | Yes                | Yes                | -                  |
-| Ultra Disk Depolama               | Yes                | Yes                | -                  |
-| Yönetilen Disk Depolama             | Yes                | Yes                | -                  |
-| Dosya Depolama                     | Yes                | Yes                | -                  |
-| Dosya Premium depolaması             | Yes                | Yes                | -                  |
-| Dosya Eşitleme                        | Yes                | Yes                | -                  |
-| Kuyruk Depolama                    | Yes                | Yes                | Yes                |
-| Avere vFXT                       | Yes                | -                  | -                  |
-| Redis için Azure Önbelleği            | Yes                | Yok\*              | -                  |
-| Azure NetApp Files               | Yes                | Yes                | -                  |
-| Arşiv Depolama                  | Yes                | Yes                | -                  |
-| StorSimple                       | Yes                | Yes                | Yes                |
-| Azure Backup                     | Yes                | Yes                | Yes                |
-| Data Box                         | Yes                | -                  | Yes                |
-| Data Box Edge                    | Yes                | Yes                | -                  |
+| Blob Depolama                     | Yes                | Evet                | Evet                |
+| Premium blob depolaması             | Evet                | Evet                | Evet                |
+| Disk Depolama                     | Evet                | Evet                | -                  |
+| Ultra Disk Depolama               | Evet                | Evet                | -                  |
+| Yönetilen Disk Depolama             | Evet                | Evet                | -                  |
+| Dosya Depolama                     | Yes                | Evet                | -                  |
+| Dosya Premium depolaması             | Evet                | Evet                | -                  |
+| Dosya Eşitleme                        | Evet                | Evet                | -                  |
+| Kuyruk Depolama                    | Evet                | Evet                | Evet                |
+| Avere vFXT                       | Evet                | -                  | -                  |
+| Redis için Azure Önbelleği            | Evet                | yok\*              | -                  |
+| Azure NetApp Files               | Evet                | Evet                | -                  |
+| Arşiv Depolama                  | Evet                | Evet                | -                  |
+| StorSimple                       | Evet                | Evet                | Evet                |
+| Azure Backup                     | Evet                | Evet                | Evet                |
+| Data Box                         | Evet                | -                  | Evet                |
+| Data Box Edge                    | Evet                | Evet                | -                  |
 
 \* Bu hizmet, verileri kalıcı olarak tutmaz. Varsa geçici önbellekler bir Microsoft anahtarıyla şifrelenir.
 
-\*\* Bu hizmet, verileri kendi Key Vault, depolama hesabınızda veya müşteri tarafından yönetilen anahtarla sunucu tarafı şifrelemeyi zaten destekleyen diğer veri kalıcı hizmetinde depolamayı destekler.
+\*\* Bu hizmet, Customer-Managed anahtarla Server-Side şifrelemeyi zaten destekleyen, kendi Key Vault, depolama hesabınızda veya diğer veri kalıcı hizmette veri depolamayı destekler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/21/2020
 ms.author: victorh
 ms.openlocfilehash: 2572e30c02552859eb5c61915a9ef524c0c6cc70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83758971"
 ---
 # <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>Azure PowerShell kullanarak özel bir kuralla Application Gateway üzerinde Web uygulaması güvenlik duvarı v2 'yi yapılandırma
@@ -21,13 +21,13 @@ ms.locfileid: "83758971"
 
 Özel kurallar, Web uygulaması güvenlik duvarı (WAF) v2 aracılığıyla geçen her istek için değerlendirilen kendi kurallarınızı oluşturmanızı sağlar. Bu kurallar, yönetilen kural kümelerindeki kuralların geri kalanından daha yüksek bir öncelik tutar. Özel kurallar için bir eylem (izin verme veya engelleme), eşleşme koşulu ve tam özelleştirmeye izin veren bir operatör vardır.
 
-Bu makale, özel bir kural kullanan Application Gateway WAF v2 oluşturur. İstek üst bilgisi Kullanıcı Aracısı *evbot*içeriyorsa, özel kural trafiği engeller.
+Bu makale, özel bir kural kullanan Application Gateway WAF v2 oluşturur. İstek üst bilgisi User-Agent *evbot*içeriyorsa, özel kural trafiği engeller.
 
 Daha fazla özel kural örneği görmek için bkz. [özel Web uygulaması güvenlik duvarı kuralları oluşturma ve kullanma](create-custom-waf-rules.md)
 
 Bu makaledeki Azure PowerShell, kopyalayabilir, yapıştırabileceğiniz ve çalıştırabileceğiniz bir sürekli komut dosyasında çalıştırmak istiyorsanız, bkz. [Azure Application Gateway PowerShell örnekleri](powershell-samples.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="azure-powershell-module"></a>Azure PowerShell modülü
 

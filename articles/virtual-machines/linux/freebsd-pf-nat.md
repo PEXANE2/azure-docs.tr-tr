@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
 ms.openlocfilehash: 6a20708c5564075c24eb031a39292b020a2ecc00
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91371329"
 ---
 # <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>Azure 'da güvenli bir güvenlik duvarı oluşturmak için FreeBSD 'nin paket filtresini kullanma
@@ -21,7 +21,7 @@ Bu makalede, ortak Web sunucusu senaryosuna yönelik Azure Resource Manager şab
 ## <a name="what-is-pf"></a>PF nedir?
 PF (Ayrıca, ara filtre), güvenlik duvarı için merkezi bir yazılım olan bir BSD lisanslı durum bilgisi paket filtresidir. PF, hızlı bir şekilde gelişmiştir ve artık diğer kullanılabilir güvenlik duvarlarından daha fazla avantaj sağlar. Ağ adresi çevirisi (NAT), günde bir günden bu yana, bu durumda, ALTQ tümleştirilerek ve PF 'nin yapılandırması aracılığıyla yapılandırılabilir hale getirerek, Paket Zamanlayıcısı ve etkin kuyruk yönetimi PF ile tümleştirilmiştir. Yük devretme ve artıklık için pfsync ve CARP gibi özellikler, oturum kimlik doğrulaması için authpf ve FTP-proxy, zor FTP protokolünün güvenlik düzeyini hafifletmek için de geniş bir şekilde genişletildi. Kısaca PF, güçlü ve özellik açısından zengin bir güvenlik duvarıdır. 
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 Web sunucularınız için bulutta güvenli bir güvenlik duvarı ayarlamayı ilgileniyorsanız, kullanmaya başlayalım. Ayrıca, ağ topolojinizi ayarlamak için bu Azure Resource Manager şablonunda kullanılan komut dosyalarını da uygulayabilirsiniz.
 Azure Resource Manager şablonu, PF ve NGINX web sunucusu yüklü ve yapılandırılmış iki FreeBSD sanal makinesi kullanarak NAT/yeniden yönlendirme gerçekleştiren bir FreeBSD sanal makinesini ayarlar. İki Web sunucusu çıkış trafiği için NAT gerçekleştirmeye ek olarak, NAT/yeniden yönlendirme sanal makinesi HTTP isteklerini keser ve hepsini bir kez deneme biçiminde iki Web sunucusuna yönlendirir. VNet, özel yönlendirilebilir olmayan IP adresi alanını (10.0.0.2/24) kullanır ve şablonun parametrelerini değiştirebilirsiniz. Azure Resource Manager şablonu, hedef IP adresine bağlı olarak Azure varsayılan yollarını geçersiz kılmak için kullanılan tek tek yolların bir koleksiyonu olan tüm sanal ağ için bir yol tablosu da tanımlar. 
 

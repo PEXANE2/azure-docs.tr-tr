@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: 781406a1bfd253f0ab3eb333f23917be4aeb3ba9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83771749"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>Mobil uygulamadan bir Web API 'SI çağırma
@@ -29,17 +29,17 @@ Bu makalede, ilk olarak MSAL sonucuna bakacağız. Daha sonra `AuthenticationRes
 ## <a name="msal-result"></a>MSAL sonucu
 MSAL aşağıdaki değerleri sağlar: 
 
-- `AccessToken`HTTP taşıyıcı isteğinde korunan Web API 'Lerini çağırır.
-- `IdToken`oturum açmış kullanıcıyla ilgili yararlı bilgiler içerir. Bu bilgiler kullanıcının adını, ana kiracısını ve depolama için benzersiz bir tanımlayıcıyı içerir.
-- `ExpiresOn`belirtecin sona erme zamanıdır. MSAL, bir uygulamanın otomatik yenilemesini işler.
-- `TenantId`kullanıcının oturum açmadığı kiracının tanımlayıcısıdır. Azure Active Directory (Azure AD) B2B 'daki Konuk kullanıcılar için bu değer, kullanıcının oturum açmakta olduğu kiracıyı tanımlar. Değer, kullanıcının ana kiracısını tanımlamaz.  
-- `Scopes`belirtecinizle verilen kapsamları gösterir. Verilen kapsamlar, istediğiniz kapsamların bir alt kümesi olabilir.
+- `AccessToken` HTTP taşıyıcı isteğinde korunan Web API 'Lerini çağırır.
+- `IdToken` oturum açmış kullanıcıyla ilgili yararlı bilgiler içerir. Bu bilgiler kullanıcının adını, ana kiracısını ve depolama için benzersiz bir tanımlayıcıyı içerir.
+- `ExpiresOn` belirtecin sona erme zamanıdır. MSAL, bir uygulamanın otomatik yenilemesini işler.
+- `TenantId` kullanıcının oturum açmadığı kiracının tanımlayıcısıdır. Azure Active Directory (Azure AD) B2B 'daki Konuk kullanıcılar için bu değer, kullanıcının oturum açmakta olduğu kiracıyı tanımlar. Değer, kullanıcının ana kiracısını tanımlamaz.  
+- `Scopes` belirtecinizle verilen kapsamları gösterir. Verilen kapsamlar, istediğiniz kapsamların bir alt kümesi olabilir.
 
 MSAL Ayrıca bir değer için bir soyutlama sağlar `Account` . Bir `Account` değer, geçerli kullanıcının oturum açmış olan hesabını temsil eder:
 
-- `HomeAccountIdentifier`kullanıcının ana kiracısını tanımlar.
-- `UserName`kullanıcının tercih ettiği kullanıcı adıdır. Azure AD B2C kullanıcılar için bu değer boş olabilir.
-- `AccountIdentifier`oturum açmış kullanıcıyı tanımlar. Çoğu durumda, `HomeAccountIdentifier` Kullanıcı başka bir kiracıda Konuk olmadığı sürece bu değer değeri ile aynıdır.
+- `HomeAccountIdentifier` kullanıcının ana kiracısını tanımlar.
+- `UserName` kullanıcının tercih ettiği kullanıcı adıdır. Azure AD B2C kullanıcılar için bu değer boş olabilir.
+- `AccountIdentifier` oturum açmış kullanıcıyı tanımlar. Çoğu durumda, `HomeAccountIdentifier` Kullanıcı başka bir kiracıda Konuk olmadığı sürece bu değer değeri ile aynıdır.
 
 ## <a name="call-an-api"></a>API çağırma
 
@@ -87,7 +87,7 @@ Erişim belirtecine sahip olduktan sonra, bir Web API 'SI çağırabilirsiniz. U
 
 ### <a name="msal-for-ios-and-macos"></a>iOS ve macOS için MSAL
 
-Belirteçleri elde etmek için yöntemler bir `MSALResult` nesne döndürür. `MSALResult`bir `accessToken` özellik sunar. `accessToken`Bir Web API 'sini çağırmak için ' i kullanabilirsiniz. Korumalı Web API 'sine erişmek için çağrı yapmadan önce bu özelliği HTTP yetkilendirme üstbilgisine ekleyin.
+Belirteçleri elde etmek için yöntemler bir `MSALResult` nesne döndürür. `MSALResult` bir `accessToken` özellik sunar. `accessToken`Bir Web API 'sini çağırmak için ' i kullanabilirsiniz. Korumalı Web API 'sine erişmek için çağrı yapmadan önce bu özelliği HTTP yetkilendirme üstbilgisine ekleyin.
 
 ```objc
 NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
@@ -160,4 +160,4 @@ catch(MsalUiRequiredException ex)
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Üretime taşı](scenario-mobile-production.md)
+> [Üretime taşıma](scenario-mobile-production.md)

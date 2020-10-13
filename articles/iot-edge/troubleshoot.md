@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 0e4ec7127df288ec1818df307da1ea9824141309
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87902465"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>IoT Edge cihazınızda sorun giderme
@@ -71,7 +71,7 @@ iotedge support-bundle --since 6h
 
 ## <a name="check-your-iot-edge-version"></a>IoT Edge sürümünüzü denetleyin
 
-IoT Edge eski bir sürümünü çalıştırıyorsanız, yükseltme sorununuzu çözebilir. `iotedge check`Araç, IoT Edge güvenlik arka plan programının en son sürümü olup olmadığını denetler, ancak IoT Edge hub ve aracı modüllerinin sürümlerini denetlemez. Cihazınızdaki çalışma zamanı modüllerinin sürümünü denetlemek için, ve komutlarını kullanın `iotedge logs edgeAgent` `iotedge logs edgeHub` . Modül başladığında sürüm numarası günlüklerde belirtilir.
+IoT Edge'in eski bir sürümünü çalıştırıyorsanız, yükseltme yapmak sorununuzu çözebilir. `iotedge check`Araç, IoT Edge güvenlik arka plan programının en son sürümü olup olmadığını denetler, ancak IoT Edge hub ve aracı modüllerinin sürümlerini denetlemez. Cihazınızdaki çalışma zamanı modüllerinin sürümünü denetlemek için, ve komutlarını kullanın `iotedge logs edgeAgent` `iotedge logs edgeHub` . Modül başlatıldığında sürüm numarası günlüklerde bildirilir.
 
 Cihazınızı güncelleştirme hakkında yönergeler için bkz. [IoT Edge güvenlik cini ve çalışma zamanını güncelleştirme](how-to-update-iot-edge.md).
 
@@ -255,7 +255,7 @@ Azure IoT Edge, desteklenen IoT Hub protokolleri kullanılarak şirket içi bir 
 
 IoT Edge, Azure IoT Edge çalışma zamanına ve dağıtılan modüllere güvenli hale getirmek için gelişmiş yapılandırma sağlarken, hala temel alınan makineye ve ağ yapılandırmasına bağımlıdır. Bu nedenle, güvenli uç için bulut iletişimine doğru ağ ve Güvenlik Duvarı kurallarının ayarlandığından emin olmanız zorunludur. Aşağıdaki tablo, Azure IoT Edge çalışma zamanının barındırıldığı temel sunucular için yapılandırma güvenlik duvarı kuralları olduğunda bir kılavuz olarak kullanılabilir:
 
-|Protokol|Bağlantı noktası|Gelen|Tarafına|Yönerge|
+|Protokol|Bağlantı noktası|Gelen|Tarafına|Rehber|
 |--|--|--|--|--|
 |MQTT|8883|ENGELLENDI (varsayılan)|ENGELLENDI (varsayılan)|<ul> <li>İletişim protokolü olarak MQTT kullanılırken açık olacak giden (giden) öğesini yapılandırın.<li>MQTT için 1883 IoT Edge desteklenmez. <li>Gelen (gelen) bağlantıların engellenmesi gerekir.</ul>|
 |AMQP|5671|ENGELLENDI (varsayılan)|Açık (varsayılan)|<ul> <li>IoT Edge için varsayılan iletişim protokolü. <li> Desteklenen diğer protokoller için Azure IoT Edge yapılandırılmamışsa veya AMQP istenen iletişim protokollemiyorsa, bu açık olacak şekilde yapılandırılmış olmalıdır.<li>IoT Edge, AMQP için 5672 tarafından desteklenmiyor.<li>Azure IoT Edge farklı IoT Hub desteklenen bir protokol kullandığında bu bağlantı noktasını engelleyin.<li>Gelen (gelen) bağlantıların engellenmesi gerekir.</ul></ul>|

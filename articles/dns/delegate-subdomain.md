@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 2/7/2019
 ms.author: rohink
 ms.openlocfilehash: add7674771fd19f6029a94c46624006f0cf30f1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84710890"
 ---
 # <a name="delegate-an-azure-dns-subdomain"></a>Azure DNS bir alt etki alanı verme
@@ -20,7 +20,7 @@ DNS alt etki alanı atamak için Azure portal kullanabilirsiniz. Örneğin, cont
 
 İsterseniz, [Azure PowerShell](delegate-subdomain-ps.md)kullanarak bir alt etki alanı için temsilci seçebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure DNS bir alt etki alanı atamak için, önce genel etki alanınızı Azure DNS olarak vermelisiniz. Ad sunucularınızı temsilci olarak yapılandırma hakkında yönergeler için bkz. [Azure DNS etki alanı verme](./dns-delegate-domain-azure-dns.md) . Etki alanınız Azure DNS bölgenize atandıktan sonra, alt etki alanınızı temsil edebilirsiniz.
 
@@ -33,10 +33,10 @@ Azure DNS bir alt etki alanı atamak için, önce genel etki alanınızı Azure 
 
 1. Azure portal **kaynak oluştur**' u seçin.
 2. Arama kutusuna **DNS**yazın ve **DNS bölgesi**' ni seçin.
-3. **Oluştur**'u seçin.
+3. **Oluştur**’u seçin.
 4. **DNS bölgesi oluştur** bölmesinde **ad** metin kutusuna **Engineering.contoso.com** yazın.
 5. Bölgeniz için kaynak grubunu seçin. Benzer kaynakları birlikte tutmak için üst bölgeyle aynı kaynak grubunu kullanmak isteyebilirsiniz.
-6. **Oluştur**'a tıklayın.
+6. **Oluştur**’a tıklayın.
 7. Dağıtım başarılı olduktan sonra yeni bölgeye gidin.
 
 ## <a name="note-the-name-servers"></a>Ad sunucularına göz önünde
@@ -54,7 +54,7 @@ Test için kullanılacak **bir** kayıt oluşturun. Örneğin, bir **www** a kay
 Ardından, **mühendislik** bölgesi için bir ad sunucusu (NS) kaydı oluşturun.
 
 1. Üst etki alanı için bölgeye gidin.
-2. **+ Kayıt kümesi**’ni seçin.
+2. **+ Kayıt kümesi** seçeneğini belirleyin.
 3. **Kayıt kümesi Ekle** bölmesinde, **ad** metin kutusuna **mühendislik** yazın.
 4. **Tür**için **NS**' yi seçin.
 5. **Ad sunucusu**' nun altında, daha önce **mühendislik** bölgesinden kaydettiğiniz dört ad sunucusunu girin.
@@ -65,7 +65,7 @@ Ardından, **mühendislik** bölgesi için bir ad sunucusu (NS) kaydı oluşturu
 Temsilciyi test etmek için nslookup 'ı kullanın.
 
 1. PowerShell penceresini açın.
-2. Komut isteminde şunu yazın:`nslookup www.engineering.contoso.com.`
+2. Komut isteminde şunu yazın: `nslookup www.engineering.contoso.com.`
 3. **10.10.10.10**adresini gösteren yetkili olmayan bir yanıt almanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

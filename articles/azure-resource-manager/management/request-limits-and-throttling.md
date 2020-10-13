@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/24/2020
 ms.custom: seodec18
 ms.openlocfilehash: 4d387749261747eb9ea1ea26629ade4fe8729856
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80239356"
 ---
 # <a name="throttling-resource-manager-requests"></a>Resource Manager isteklerini azaltma
@@ -25,7 +25,7 @@ Her abonelik düzeyi ve kiracı düzeyindeki işlem, azaltma sınırlarına tabi
 
 Saat başına varsayılan azaltma sınırları aşağıdaki tabloda gösterilmiştir.
 
-| Kapsam | Operations | Sınır |
+| Kapsam | İşlemler | Sınır |
 | ----- | ---------- | ------- |
 | Abonelik | okuma | 12000 |
 | Abonelik | /Delete | 15000 |
@@ -51,7 +51,7 @@ Bu bölümde, yaygın olarak kullanılan bazı kaynak sağlayıcılarının azal
 
 Microsoft. Network kaynak sağlayıcısı aşağıdaki kısıtlama sınırlarını uygular:
 
-| Çalışma | Sınır |
+| İşlem | Sınır |
 | --------- | ----- |
 | yazma/silme (PUT) | 5 dakikada 1000 |
 | okuma (GET) | 5 dakikada 10000 |
@@ -80,7 +80,7 @@ Bazı kaynak sağlayıcıları geçici bir sorunu raporlamak için 429 döndür�
 
 Yanıt üstbilgilerini inceleyerek kalan isteklerin sayısını belirleyebilirsiniz. Okuma istekleri, kalan okuma isteklerinin sayısı için üst bilgide bir değer döndürür. Yazma istekleri, kalan yazma isteklerinin sayısı için bir değer içerir. Aşağıdaki tabloda, bu değerler için inceleyebileceğiniz yanıt üstbilgileri açıklanmaktadır:
 
-| Yanıt üst bilgisi | Description |
+| Yanıt üst bilgisi | Açıklama |
 | --- | --- |
 | x-MS-ratelimit-kalan-abonelik-okumalar |Abonelik kapsamlı okuma kaldı. Bu değer, okuma işlemlerinde döndürülür. |
 | x-MS-ratelimit-kalan-abonelik-yazmaları |Abonelik kapsamlı yazmaları kaldı. Bu değer, yazma işlemlerinde döndürülür. |
@@ -103,7 +103,7 @@ Kodunuzda veya betiğinizdeki Bu üstbilgi değerlerinin alınması herhangi bir
 response.Headers.GetValues("x-ms-ratelimit-remaining-subscription-reads").GetValue(0)
 ```
 
-**PowerShell**'de, bir Invoke-WebRequest işleminden üst bilgi değerini alırsınız.
+**PowerShell**'de Invoke-WebRequest bir işlemden üst bilgi değerini alırsınız.
 
 ```powershell
 $r = Invoke-WebRequest -Uri https://management.azure.com/subscriptions/{guid}/resourcegroups?api-version=2016-09-01 -Method GET -Headers $authHeaders

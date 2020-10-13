@@ -14,10 +14,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: bcc44f61ccb7b4a19e7df39ab979669c5aa37da1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80154908"
 ---
 # <a name="federation-metadata"></a>Federasyon meta verileri
@@ -91,7 +91,7 @@ MIIDPjCCAiqgAwIBAgIQVWmXY/+9RqFA/OG9kFulHDAJBgUrDgMCHQUAMC0xKzApBgNVBAMTImFjY291
 
 `KeyDescriptor`Öğesi, Federasyon meta veri belgesinde iki yerde, WS-Federation 'e özgü bölümünde ve SAML 'ye özgü bölümünde görüntülenir. Her iki bölümde de yayımlanan sertifikalar aynı olacaktır.
 
-WS-Federation 'a özgü bölümünde, bir WS-Federasyon meta veri okuyucusu, türü olan bir öğeden sertifikaları okur `RoleDescriptor` `SecurityTokenServiceType` .
+WS-Federation-specific bölümünde, bir WS-Federation meta veri okuyucusu, türü olan bir öğeden sertifikaları okur `RoleDescriptor` `SecurityTokenServiceType` .
 
 Aşağıdaki meta veriler örnek bir `RoleDescriptor` öğe gösterir.
 
@@ -99,7 +99,7 @@ Aşağıdaki meta veriler örnek bir `RoleDescriptor` öğe gösterir.
 <RoleDescriptor xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:fed="https://docs.oasis-open.org/wsfed/federation/200706" xsi:type="fed:SecurityTokenServiceType"protocolSupportEnumeration="https://docs.oasis-open.org/wsfed/federation/200706">
 ```
 
-SAML 'ye özgü bölümünde, bir WS-Federasyon meta veri okuyucusu bir öğeden sertifikaları okur `IDPSSODescriptor` .
+SAML 'ye özgü bölümde bir WS-Federation meta veri okuyucusu bir öğeden sertifikaları okur `IDPSSODescriptor` .
 
 Aşağıdaki meta veriler örnek bir `IDPSSODescriptor` öğe gösterir.
 
@@ -108,8 +108,8 @@ Aşağıdaki meta veriler örnek bir `IDPSSODescriptor` öğe gösterir.
 ```
 Kiracıya özgü ve kiracıdan bağımsız sertifikaların biçiminde farklılık yoktur.
 
-### <a name="ws-federation-endpoint-url"></a>WS-Federation Endpoint URL 'SI
-Federasyon meta verileri, Azure AD 'nin, WS-Federation protokolünde çoklu oturum açma ve çoklu oturum kapatma için kullandığı URL 'YI içerir. Bu uç nokta öğesinde görüntülenir `PassiveRequestorEndpoint` .
+### <a name="ws-federation-endpoint-url"></a>WS-Federation uç noktası URL 'SI
+Federasyon meta verileri, Azure AD 'nin WS-Federation protokolünde çoklu oturum açma ve çoklu oturum kapatma için kullandığı URL 'YI içerir. Bu uç nokta öğesinde görüntülenir `PassiveRequestorEndpoint` .
 
 Aşağıdaki meta veriler, `PassiveRequestorEndpoint` kiracıya özgü uç nokta için örnek bir öğe gösterir.
 
@@ -122,7 +122,7 @@ https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db45/wsfed
 </EndpointReference>
 </fed:PassiveRequestorEndpoint>
 ```
-Kiracıdan bağımsız uç nokta için, aşağıdaki örnekte gösterildiği gibi WS-Federation URL 'SI WS-Federation uç noktasında görüntülenir.
+Kiracıdan bağımsız uç nokta için, aşağıdaki örnekte gösterildiği gibi WS-Federation URL 'SI WS-Federation uç noktada görüntülenir.
 
 ```
 <fed:PassiveRequestorEndpoint>

@@ -10,10 +10,10 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 57b9d46918414cef9e8cbcffb941b98c98f985ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80240354"
 ---
 # <a name="communicate-with-edgeagent-using-built-in-direct-methods"></a>Yerleşik doğrudan yöntemler kullanarak edgeAgent ile iletişim kurma
@@ -28,7 +28,7 @@ Bu doğrudan yöntemlerin adları, büyük/küçük harfe duyarsız işlenir.
 
 **Ping** yöntemi, bir cihazda IoT Edge çalışıp çalışmadığını veya cihazın IoT Hub açık bağlantısı olup olmadığını denetlemek için faydalıdır. IoT Edge aracısına ping getirmek ve durumunu almak için bu doğrudan yöntemi kullanın. Başarılı bir ping boş bir yük ve **"durum" döndürür: 200**.
 
-Örnek:
+Örneğin:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'ping' -n <hub name> -d <device name> -m '$edgeAgent'
@@ -46,7 +46,7 @@ RestartModule yöntemi IoT Edge sürüm 1.0.9 ve üzeri sürümlerde kullanılab
 
 RestartModule Direct yöntemini, edgeAgent modülünün kendisi de dahil olmak üzere IoT Edge cihazında çalışan herhangi bir modülde kullanabilirsiniz. Ancak, edgeAgent 'ı kapatmak için bu doğrudan yöntemini kullanırsanız, modül yeniden başlatılırken bağlantının kesintiye uğramasından dolayı başarılı bir sonuç almazsınız.
 
-Örnek:
+Örneğin:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'RestartModule' -n <hub name> -d <device name> -m '$edgeAgent' --method-payload \

@@ -1,7 +1,7 @@
 ---
 title: Azure çoklu oturum açma SAML Protokolü
 titleSuffix: Microsoft identity platform
-description: Bu makalede Azure Active Directory içindeki çoklu oturum açma (SSO) SAML Protokolü açıklanmaktadır
+description: Bu makalede Azure Active Directory ' de tek Sign-On (SSO) SAML Protokolü açıklanmaktadır
 services: active-directory
 documentationcenter: .net
 author: kenwith
@@ -15,19 +15,19 @@ ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
 ms.openlocfilehash: 4990b81d929019b3d201f004176234fa0ea78339
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88118459"
 ---
-# <a name="single-sign-on-saml-protocol"></a>Çoklu oturum açma SAML Protokolü
+# <a name="single-sign-on-saml-protocol"></a>Tek Sign-On SAML Protokolü
 
-Bu makalede, Azure Active Directory (Azure AD) tarafından çoklu oturum açma (SSO) için desteklenen SAML 2,0 kimlik doğrulama istekleri ve yanıtları ele alınmaktadır.
+Bu makalede, Azure Active Directory (Azure AD) tarafından tek Sign-On (SSO) için desteklenen SAML 2,0 kimlik doğrulama istekleri ve yanıtları ele alınmaktadır.
 
 Aşağıdaki protokol diyagramında çoklu oturum açma sırası açıklanmaktadır. Bulut hizmeti (hizmet sağlayıcısı), `AuthnRequest` (kimlik doğrulama isteği) öğesini Azure AD 'ye (kimlik sağlayıcısı) geçirmek için BIR http yeniden yönlendirme bağlaması kullanır. Daha sonra Azure AD, bulut hizmetine bir öğe göndermek için HTTP POST bağlamasını kullanır `Response` .
 
-![Çoklu oturum açma (SSO) Iş akışı](./media/single-sign-on-saml-protocol/active-directory-saml-single-sign-on-workflow.png)
+![Tek Sign-On (SSO) Iş akışı](./media/single-sign-on-saml-protocol/active-directory-saml-single-sign-on-workflow.png)
 
 > [!NOTE]
 > Bu makalede çoklu oturum açma için SAML kullanımı ele alınmaktadır. Çoklu oturum açmayı işlemenin diğer yolları hakkında daha fazla bilgi için (örneğin, OpenID Connect veya tümleşik Windows kimlik doğrulaması kullanarak) bkz. [Azure Active Directory uygulamalarda çoklu oturum açma](../manage-apps/what-is-single-sign-on.md).
@@ -273,7 +273,7 @@ Bu konu veya Kullanıcı hakkında talepler içerir. Aşağıdaki alıntıda ör
 ```        
 
 * **Ad talebi** - `Name` özniteliğin değeri ( `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` ), kimliği doğrulanmış kullanıcının Kullanıcı asıl adıdır, örneğin `testuser@managedtenant.com` .
-* **Objectıdentifier Claim** - `ObjectIdentifier` özniteliğin değeri ( `http://schemas.microsoft.com/identity/claims/objectidentifier` ), `ObjectId` Azure AD 'de kimliği doğrulanmış kullanıcıyı temsil eden dizin nesnesidir. `ObjectId`, sabit, genel olarak benzersiz ve kimliği doğrulanmış kullanıcının güvenli tanımlayıcısını yeniden kullanır.
+* **Objectıdentifier Claim** - `ObjectIdentifier` özniteliğin değeri ( `http://schemas.microsoft.com/identity/claims/objectidentifier` ), `ObjectId` Azure AD 'de kimliği doğrulanmış kullanıcıyı temsil eden dizin nesnesidir. `ObjectId` , sabit, genel olarak benzersiz ve kimliği doğrulanmış kullanıcının güvenli tanımlayıcısını yeniden kullanır.
 
 #### <a name="authnstatement"></a>Authndeyim
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/13/2020
 ms.openlocfilehash: 370ac9528b023f01aaff5e5a7ec62785a02bb4bd
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085353"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>HDInsight kümesi için Apache Spark uygulamalar oluşturmak için Azure Toolkit for IntelliJ kullanma
@@ -84,7 +84,7 @@ Scala eklentisini yüklemeye yönelik adımlar:
 
     ![Apache Spark SDK 'sını seçme](./media/apache-spark-intellij-tool-plugin/intellij-new-project.png)
 
-7. **Son**'u seçin.  Projenin kullanılabilir hale gelmesi birkaç dakika sürebilir.
+7. **Son**’u seçin.  Projenin kullanılabilir hale gelmesi birkaç dakika sürebilir.
 
 8. Spark projesi sizin için otomatik olarak bir yapı oluşturur. Yapıtı görüntülemek için aşağıdaki adımları uygulayın:
 
@@ -92,7 +92,7 @@ Scala eklentisini yüklemeye yönelik adımlar:
 
    b. **Proje yapısı** penceresinde **yapıtlar**' ı seçin.  
 
-   c. Yapıtı görüntüledikten sonra **iptal** ' i seçin.
+   c. Yapıtı görüntüledikten sonra **iptal**  ' i seçin.
 
       ![İletişim kutusunda yapıt bilgisi](./media/apache-spark-intellij-tool-plugin/default-artifact-dialog.png)
 
@@ -466,7 +466,7 @@ IntelliJ fıkır içinde oluşturduğunuz mevcut Spark Scala uygulamalarını Az
 
 Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz kümeyi aşağıdaki adımlarla silin:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 1. Üstteki **arama** kutusuna **HDInsight**yazın.
 
@@ -474,7 +474,7 @@ Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz kümeyi aş
 
 1. Görüntülenen HDInsight kümeleri listesinde, bu makale için oluşturduğunuz kümenin yanındaki **...** seçeneğini belirleyin.
 
-1. **Sil**’i seçin. **Evet**' i seçin.
+1. **Sil**’i seçin. **Evet**’i seçin.
 
 ![Azure portal HDInsight kümesini siler](./media/apache-spark-intellij-tool-plugin/hdinsight-azure-portal-delete-cluster.png "HDInsight kümesini Sil")
 
