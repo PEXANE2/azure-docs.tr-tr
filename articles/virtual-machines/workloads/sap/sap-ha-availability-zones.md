@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8265d328a23e871dc25692f22138a7bb648a8323
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9fc34a85f8a858adea2161e1734ead589180ea4
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653605"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978246"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Azure Kullanılabilirlik Alanlarıyla SAP iş yükü yapılandırmaları
 [Azure kullanılabilirlik alanları](../../../availability-zones/az-overview.md) , Azure 'un sağladığı yüksek kullanılabilirliğe sahip özelliklerden biridir. Kullanılabilirlik Alanları kullanmak, Azure üzerinde SAP iş yüklerinin genel kullanılabilirliğini geliştirir. Bu özellik bazı [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/regions/)zaten kullanılabilir. Gelecekte, daha fazla bölgede kullanıma sunulacaktır.
@@ -30,7 +30,7 @@ Bu grafik, temel SAP yüksek kullanılabilirliği mimarisini göstermektedir:
 
 ![Standart yüksek kullanılabilirlik yapılandırması](./media/sap-ha-availability-zones/standard-ha-config.png)
 
-SAP uygulama katmanı, tek bir Azure [kullanılabilirlik kümesi](../../windows/manage-availability.md)üzerinden dağıtılır. SAP merkezi hizmetlerinin yüksek kullanılabilirliğine sahip olmak için, ayrı bir kullanılabilirlik kümesinde iki VM dağıtımı yapabilirsiniz. Altyapı veya yazılım sorunu durumunda otomatik yük devretme ile yüksek kullanılabilirliğe sahip bir çerçeve olarak Windows Server Yük Devretme Kümelemesi veya Paceyapıcısı (Linux) kullanın. Bu dağıtımlar hakkında daha fazla bilgi edinmek için bkz.:
+SAP uygulama katmanı, tek bir Azure [kullanılabilirlik kümesi](../../manage-availability.md)üzerinden dağıtılır. SAP merkezi hizmetlerinin yüksek kullanılabilirliğine sahip olmak için, ayrı bir kullanılabilirlik kümesinde iki VM dağıtımı yapabilirsiniz. Altyapı veya yazılım sorunu durumunda otomatik yük devretme ile yüksek kullanılabilirliğe sahip bir çerçeve olarak Windows Server Yük Devretme Kümelemesi veya Paceyapıcısı (Linux) kullanın. Bu dağıtımlar hakkında daha fazla bilgi edinmek için bkz.:
 
 - [Küme Paylaşılan diski kullanarak bir Windows Yük devretme kümesinde SAP ASCS/SCS örneği oluşturma](./sap-high-availability-guide-wsfc-shared-disk.md)
 - [Dosya paylaşma kullanarak bir Windows Yük devretme kümesinde SAP ASCS/SCS örneği oluşturma](./sap-high-availability-guide-wsfc-file-share.md)

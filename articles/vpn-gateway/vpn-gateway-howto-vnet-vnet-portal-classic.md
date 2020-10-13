@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/12/2020
+ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: bdd27645045195016b7a563787470bf6f2187115
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ca190ae9e5679ce7622f89b39507d69d87f5b88
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "84985474"
+ms.locfileid: "91875590"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>VNet 'ten VNet 'e bağlantı yapılandırma (klasik)
 
@@ -73,23 +73,14 @@ Aşağıdaki tabloda, sanal ağlarınızı nasıl tanımlayacağınızı göster
 
 **Örnek**
 
-| Sanal Ağ | Adres Alanı | Region | Yerel ağ sitesine bağlanır |
+| Sanal Ağ | Adres Alanı | Bölge | Yerel ağ sitesine bağlanır |
 |:--- |:--- |:--- |:--- |
 | TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |Doğu ABD |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
 | TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |Batı ABD |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
 
 ## <a name="step-2---create-the-virtual-networks"></a><a name="vnetvalues"></a>2. adım-sanal ağları oluşturma
 
-[Azure Portal](https://portal.azure.com)iki sanal ağ oluşturun. Klasik sanal ağlar oluşturma adımları için bkz. [Klasik sanal ağ oluşturma](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). 
-
-Klasik bir sanal ağ oluşturmak için portalını kullanırken, aşağıdaki adımları kullanarak sanal ağ sayfasına gitmeniz gerekir, aksi takdirde klasik bir sanal ağ oluşturma seçeneği görünmez:
-
-1. ' + ' Düğmesine tıklayarak ' yeni ' sayfasını açın.
-2. ' Market 'te ara ' alanına ' sanal ağ ' yazın. Bunun yerine ağ-> sanal ağı ' nı seçerseniz, klasik VNet oluşturma seçeneğini kullanamazsınız.
-3. Döndürülen listeden ' sanal ağ ' öğesini bulun ve sanal ağ sayfasını açmak için tıklayın. 
-4. Sanal ağ sayfasında, klasik VNet oluşturmak için ' klasik ' seçeneğini belirleyin. 
-
-Bu makaleyi bir alıştırma olarak kullanıyorsanız, aşağıdaki örnek değerleri kullanabilirsiniz:
+Bu adımda, iki klasik sanal ağ oluşturursunuz. Bu makaleyi bir alıştırma olarak kullanıyorsanız, aşağıdaki örnek değerleri kullanabilirsiniz:
 
 **TestVNet1 için değerler**
 
@@ -125,7 +116,11 @@ GatewaySubnet: 10.41.1.0/27
 
 * **DNS sunucuları** : DNS sunucusu adını ve IP adresini girin. Bu ayarla bir DNS sunucusu oluşturulmaz. Söz konusu ayar, bu sanal ağa ilişkin ad çözümlemesi için kullanmak istediğiniz DNS sunucularını belirtmenize olanak sağlar.
 
-Bu bölümde, bağlantı türünü, yerel siteyi yapılandırır ve ağ geçidini oluşturursunuz.
+### <a name="to-create-a-classic-virtual-network"></a>Klasik bir sanal ağ oluşturmak için
+
+[!INCLUDE [basic classic vnet](../../includes/vpn-gateway-vnet-classic.md)]
+
+[!INCLUDE [basic classic DNS](../../includes/vpn-gateway-dns-classic.md)]
 
 ## <a name="step-3---configure-the-local-site"></a><a name="localsite"></a>3. adım-yerel siteyi yapılandırma
 
@@ -135,7 +130,7 @@ Azure, sanal ağlar arasında trafiğin nasıl yönlendirileceğini anlamak içi
 
 Her VNet için yerel site diğer VNet 'dir. Yapılandırma için aşağıdaki örnek değerler kullanılır:
 
-| Sanal Ağ | Adres Alanı | Region | Yerel ağ sitesine bağlanır |
+| Sanal Ağ | Adres Alanı | Bölge | Yerel ağ sitesine bağlanır |
 |:--- |:--- |:--- |:--- |
 | TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |Doğu ABD |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
 | TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |Batı ABD |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
@@ -205,38 +200,7 @@ Sanal ağ geçitleriniz her iki VNET için de oluşturulduktan sonra, yerel site
 
 ## <a name="step-7---retrieve-values-from-the-network-configuration-file"></a><a name="getvalues"></a>7. adım-ağ yapılandırma dosyasından değerleri alma
 
-Azure portal klasik VNET oluştururken, görüntülediğiniz ad PowerShell için kullandığınız tam ad değildir. Örneğin, portalda **TestVNet1** adında görünen bir VNet, ağ yapılandırma dosyasında çok daha uzun bir ada sahip olabilir. Ad şöyle görünebilir: **Grup ClassicRG TestVNet1**. Bağlantılarınızı oluştururken, ağ yapılandırma dosyasında gördüğünüz değerlerin kullanılması önemlidir.
-
-Aşağıdaki adımlarda, Azure hesabınıza bağlanır ve bağlantılarınız için gerekli olan değerleri almak için ağ yapılandırma dosyasını indirmeniz ve görüntülemeniz gerekir.
-
-1. Azure hizmet yönetimi (SM) PowerShell cmdlet 'lerinin en son sürümünü indirip yükleyin. Daha fazla bilgi için bkz. [Azure PowerShell çalışma](#powershell).
-
-2. PowerShell konsolunuzu yükseltilmiş haklarla açın. Bağlanmanıza yardımcı olması için aşağıdaki örnekleri kullanın. PowerShell hizmeti yönetim modülünü kullanarak bu komutları yerel olarak çalıştırmanız gerekir. Hizmet yönetimine geçiş yapmak için şu komutu kullanın:
-
-   ```powershell
-   azure config mode asm
-   ```
-3. Hesabınıza bağlanın. Bağlanmanıza yardımcı olması için aşağıdaki örneği kullanın:
-
-   ```powershell
-   Add-AzureAccount
-   ```
-4. Hesapla ilişkili abonelikleri kontrol edin.
-
-   ```powershell
-   Get-AzureSubscription
-   ```
-5. Birden fazla aboneliğiniz varsa, kullanmak istediğiniz aboneliği seçin.
-
-   ```powershell
-   Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"
-   ```
-6. Ağ yapılandırma dosyasını dışa aktarın ve görüntüleyin. Bilgisayarınızda bir dizin oluşturun ve sonra ağ yapılandırma dosyasını dizine aktarın. Bu örnekte, ağ yapılandırma dosyası **C:\azurenet dizinine**aktarılmalıdır.
-
-   ```powershell
-   Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
-   ```
-7. Dosyayı bir metin düzenleyici ile açın ve sanal ağlarınız ve sitelerinizin adlarını görüntüleyin. Bu adlar, bağlantılarınızı oluştururken kullandığınız adlar olacaktır.<br>VNet adları **Virtualnetworksite Name =** olarak listelenir.<br>Site adları **LocalNetworkSiteRef Name =** olarak listelenir
+[!INCLUDE [retrieve values](../../includes/vpn-gateway-values-classic.md)]
 
 ## <a name="step-8---create-the-vpn-gateway-connections"></a><a name="createconnections"></a>8. adım-VPN Gateway bağlantılarını oluşturma
 

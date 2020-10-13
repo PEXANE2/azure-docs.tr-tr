@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: 6cc4fdb82e98c30ca33eec58675f2175dfcc2607
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f77cc85bd62deb2cb2cb74c42cf245a409904b3a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89612792"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978314"
 ---
 # <a name="tutorial---configure-the-rolling-deployment-strategy-for-azure-linux-virtual-machines"></a>Öğretici-Azure Linux sanal makineleri için sıralı dağıtım stratejisini yapılandırma
 
@@ -29,7 +29,7 @@ Azure DevOps, her türlü Azure kaynağı için DevOps işleminin her bölümün
 
 Azure Pipelines, sanal makinelere dağıtımlar için tam özellikli bir CI/CD otomasyon araçları kümesi sağlar. Azure portal bir Azure VM için sürekli teslim işlem hattı yapılandırabilirsiniz.
 
-Bu makalede, Azure portal çok makineli dağıtımlar için bir CI/CD işlem hattının nasıl ayarlanacağı gösterilmektedir. Azure Portal Ayrıca [kanarya](https://aka.ms/AA7jdrz) ve [mavi-yeşil](https://aka.ms/AA83fwu)gibi diğer stratejileri de destekler.
+Bu makalede, Azure portal çok makineli dağıtımlar için bir CI/CD işlem hattının nasıl ayarlanacağı gösterilmektedir. Azure Portal Ayrıca [kanarya](./tutorial-azure-devops-canary-strategy.md) ve [mavi-yeşil](./tutorial-azure-devops-blue-green-strategy.md)gibi diğer stratejileri de destekler.
 
 ### <a name="configure-cicd-on-virtual-machines"></a>Sanal makinelerde CI/CD 'yi yapılandırma
 
@@ -78,8 +78,8 @@ Sürekli teslim seçeneğini kullanarak, Azure portal içindeki sanal makineleri
 
 ## <a name="other-deployment-strategies"></a>Diğer dağıtım stratejileri
 
-- [Kanarya dağıtım stratejisini yapılandırma](https://aka.ms/AA7jdrz)
-- [Mavi yeşil dağıtım stratejisini yapılandırma](https://aka.ms/AA83fwu)
+- [Kanarya dağıtım stratejisini yapılandırma](./tutorial-azure-devops-canary-strategy.md)
+- [Mavi yeşil dağıtım stratejisini yapılandırma](./tutorial-azure-devops-blue-green-strategy.md)
 
 ## <a name="azure-devops-projects"></a>Azure DevOps Projeleri
 

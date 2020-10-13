@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 199e19116e0d8ba6bcc4954e767265e6fb4cd238
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a8dfae58b9910504a11bf3986380398499e3357
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666356"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949607"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Konuşma birleştirme biçimlendirme dili (SSML) ile senssıs 'yi geliştirme
 
@@ -48,7 +48,7 @@ Her SSML belgesi SSML öğeleri (veya etiketleri) ile oluşturulur. Bu öğeler,
 
 `speak` , kök öğesidir ve tüm SSML belgeleri için **gereklidir** . `speak`Öğesi sürüm, dil ve biçimlendirme sözlük tanımı gibi önemli bilgiler içerir.
 
-**Sözdizimi**
+**Syntax**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="string"></speak>
@@ -66,7 +66,7 @@ Her SSML belgesi SSML öğeleri (veya etiketleri) ile oluşturulur. Bu öğeler,
 
 `voice`Öğe gereklidir. Metin okuma için kullanılan sesi belirtmek için kullanılır.
 
-**Sözdizimi**
+**Syntax**
 
 ```xml
 <voice name="string">
@@ -196,6 +196,8 @@ Varsayılan olarak, metinden konuşmaya hizmeti, standart ve sinir sesler için 
 
 Şu anda, bu sinir sesleri için konuşma stil ayarlamaları desteklenir:
 * `en-US-AriaNeural`
+* `en-US-JennyNeural`
+* `en-US-GuyNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
 
@@ -203,7 +205,7 @@ Değişiklikler tümce düzeyinde uygulanır ve stiller sese göre farklılık g
 
 Çince ses XiaoxiaoNeural için, konuşma stili yoğunluğu, kullanım örneğine daha iyi uyacak şekilde daha da değiştirilebilir. `styledegree`Konuşmayı daha anlamlı veya daha fazla ifade etmek için ile daha güçlü veya Softer stili belirtebilirsiniz.
 
-**Sözdizimi**
+**Syntax**
 
 ```xml
 <mstts:express-as style="string" styledegree="value"></mstts:express-as>
@@ -228,6 +230,10 @@ Her sinir sesi için hangi konuşma stillerinin desteklendiğini öğrenmek içi
 |                         | `style="chat"`            | Rastgele ve gevşek bir tonu ifade eder                         |
 |                         | `style="cheerful"`        | Pozitif ve kutlu bir tonu ifade eder                         |
 |                         | `style="empathetic"`      | Bir fikir ve anlalama hakkında ifade eder               |
+| `en-US-JennyNeural`     | `style="customerservice"` | Müşteri desteği için kolay ve yararlı bir tonu ifade eder  |
+|                         | `style="chat"`            | Rastgele ve gevşek bir tonu ifade eder                         |
+|                         | `style="assistant"`       | Dijital yardımcılar için bir sıcak ve gevşek tonu ifade eder    |
+| `en-US-GuyNeural`       | `style="newscast"`        | Anlatım haberleri için resmi ve profesyonel tonu ifade eder |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | Anlatım haberleri için resmi ve profesyonel tonu ifade eder |
 |                         | `style="customerservice"` | Müşteri desteği için kolay ve yararlı bir tonu ifade eder  |
 |                         | `style="assistant"`       | Dijital yardımcılar için bir sıcak ve gevşek tonu ifade eder    |
@@ -278,7 +284,7 @@ Bu SSML kod parçacığı, `styledegree` XiaoxiaoNeural için konuşma stili yo�
 > [!NOTE]
 > Bu sözcük veya tümcecik için birleştirilmiş konuşma doğal olmayan bir sözcük veya tümcecik için metin okuma (TTS) varsayılan davranışını geçersiz kılmak için bu öğeyi kullanın. `strength` `none` Metin okuma hizmeti tarafından otomatik olarak yerleştirilen bir bürünsel kesmesini engellemek için olarak ayarlayın.
 
-**Sözdizimi**
+**Syntax**
 
 ```xml
 <break strength="string" />
@@ -319,7 +325,7 @@ Bu SSML kod parçacığı, `styledegree` XiaoxiaoNeural için konuşma stili yo�
 
 `s`Öğesi metin ve şu öğeleri içerebilir: `audio` , `break` ,, `phoneme` `prosody` , `say-as` , `mstts:express-as` , ve `sub` .
 
-**Sözdizimi**
+**Syntax**
 
 ```XML
 <p></p>
@@ -349,7 +355,7 @@ Bu SSML kod parçacığı, `styledegree` XiaoxiaoNeural için konuşma stili yo�
 
 Fonetik alfabeller, bazen birlikte harflerin, sayıların veya karakterlerin üzerinde oluşan telefonlardan oluşur. Her telefonda benzersiz bir konuşma sesi açıklanır. Bu Latin alfabesinden farklıdır, burada herhangi bir harf birden çok konuşulan sesi temsil edebilir. "Candy" ve "işten" kelimelerdeki "c" harfinin farklı söylenmelerini veya "şeyler" ve "Bunlar" kelimelerinde "TH" harf birleşiminin farklı söylenmelerini göz önünde bulundurun.
 
-**Sözdizimi**
+**Syntax**
 
 ```XML
 <phoneme alphabet="string" ph="string"></phoneme>
@@ -395,7 +401,7 @@ Bazen metinden konuşmaya hizmeti bir sözcüğe doğru pronounce. Örneğin, bi
 > [!NOTE]
 > Özel sözlük Şu anda UTF-8 kodlamasını desteklemektedir. 
 
-**Sözdizimi**
+**Syntax**
 
 ```XML
 <lexicon uri="string"/>
@@ -432,7 +438,7 @@ Birden çok varlığın nasıl okunduğunu tanımlamak için, bir. xml veya. pls
 
 `lexicon`Öğesi en az bir öğe içeriyor `lexeme` . Her `lexeme` öğe en az bir `grapheme` öğe ve bir veya daha fazla `grapheme` , `alias` , ve `phoneme` öğesi içerir. `grapheme`Öğesi, <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">dikgrafi <span class="docon docon-navigate-external x-hidden-focus"></span> </a>tanımlayan metni içerir. `alias`Öğeler, bir kısaltın veya kısaltılmış bir terimin telaffuz olduğunu göstermek için kullanılır. `phoneme`Öğesi, nasıl bir açıklama ekleneceğini açıklayan metin sağlar `lexeme` .
 
-Özel sözlüğü kullanarak bir ifadenin söylenişini doğrudan ayarlayamayacağınızı aklınızda olmak önemlidir. Kısaltma veya kısaltılmış bir terim için telaffuz ayarlamanız gerekiyorsa, önce bir belirtin ve `alias` ardından `phoneme` ile ilişkilendirin `alias` . Örneğin:
+Özel sözlüğü kullanarak bir ifadenin söylenişini doğrudan ayarlayamayacağınızı aklınızda olmak önemlidir. Kısaltma veya kısaltılmış bir terim için telaffuz ayarlamanız gerekiyorsa, önce bir belirtin ve `alias` ardından `phoneme` ile ilişkilendirin `alias` . Örnek:
 
 ```xml
   <lexeme>
@@ -445,7 +451,7 @@ Birden çok varlığın nasıl okunduğunu tanımlamak için, bir. xml veya. pls
   </lexeme>
 ```
 
-Ayrıca, kısaltmasının veya kısaltılmış dönemin doğrudan bekleninizi de sağlayabilirsiniz `alias` . Örneğin:
+Ayrıca, kısaltmasının veya kısaltılmış dönemin doğrudan bekleninizi de sağlayabilirsiniz `alias` . Örnek:
 ```xml
   <lexeme>
     <grapheme>Scotland MV</grapheme> 
@@ -518,7 +524,7 @@ Ayrıntılı konuşma hizmeti fonetik alfabe hakkında daha fazla bilgi için bk
 
 Bürünsel öznitelik değerleri geniş bir aralığa göre değişebildiğinden, konuşma tanıyıcı atanan değerleri, seçili sesin gerçek bürünsel değerlerinin ne olduğuna ilişkin bir öneri olarak yorumlar. Metinden konuşmaya hizmeti, desteklenmeyen değerleri sınırlandırır veya yerini alır. Desteklenmeyen değerlere örnek olarak 1 MHz veya 120 birimi gösterilebilir.
 
-**Sözdizimi**
+**Syntax**
 
 ```XML
 <prosody pitch="value" contour="value" range="value" rate="value" duration="value" volume="value"></prosody>
@@ -529,7 +535,7 @@ Bürünsel öznitelik değerleri geniş bir aralığa göre değişebildiğinden
 | Öznitelik | Açıklama | Gerekli/Isteğe bağlı |
 |-----------|-------------|---------------------|
 | `pitch` | Metnin taban çizgisi aralığını gösterir. Bu aralığı şöyle ifade edebilirsiniz:<ul><li>Sayı olarak ifade edilen ve ardından "Hz" (Hertz) gelen mutlak bir değer. Örneğin, 600 Hz.</li><li>"+" Veya "-" işaretinden sonra gelen ve ardından "Hz" veya "St" gelen bir sayı olarak ifade edilen, sıklığı değiştirecek bir miktar belirten göreli bir değer. Örneğin: + 80 Hz veya-2ST. "St", değişim biriminin standart Diatonic ölçeğinde bir ton (yarım bir adım) yarısı olan semitone olduğunu gösterir.</li><li>Sabit değer:<ul><li>x-düşük</li><li>zayıf</li><li>orta</li><li>yüksek</li><li>x-yüksek</li><li>default</li></ul></li></ul>. | İsteğe Bağlı |
-| `contour` |Artık kontur hem sinir hem de standart sesleri desteklemektedir. Dağılım, sıklık içindeki değişiklikleri temsil eder. Bu değişiklikler, konuşma çıkışında belirlenen zaman konumlarında bir hedef dizisi olarak gösterilir. Her hedef, parametre çiftleri kümesi tarafından tanımlanır. Örneğin: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Her bir parametre kümesindeki ilk değer, metnin süresinin yüzdesi olarak sıklık değişikliğinin konumunu belirtir. İkinci değer, bir göreli değer veya sıklık için bir numaralandırma değeri kullanarak, sıklığı yükseltmek veya azaltmak için miktarı belirtir (bkz `pitch` .). | İsteğe Bağlı |
+| `contour` |Artık kontur hem sinir hem de standart sesleri desteklemektedir. Dağılım, sıklık içindeki değişiklikleri temsil eder. Bu değişiklikler, konuşma çıkışında belirlenen zaman konumlarında bir hedef dizisi olarak gösterilir. Her hedef, parametre çiftleri kümesi tarafından tanımlanır. Örnek: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Her bir parametre kümesindeki ilk değer, metnin süresinin yüzdesi olarak sıklık değişikliğinin konumunu belirtir. İkinci değer, bir göreli değer veya sıklık için bir numaralandırma değeri kullanarak, sıklığı yükseltmek veya azaltmak için miktarı belirtir (bkz `pitch` .). | İsteğe Bağlı |
 | `range` | Metin için sıklık aralığını temsil eden bir değer. `range`' I betimleyen mutlak değerleri, göreli değerleri veya numaralandırma değerlerini kullanarak ifade edebilirsiniz `pitch` . | İsteğe Bağlı |
 | `rate` | Metnin konuşma oranını gösterir. Şöyle ifade edebilirsiniz `rate` :<ul><li>Varsayılan değer çarpanı olarak davranan sayı olarak ifade edilen göreli bir değer. Örneğin, *1* değeri, fiyata hiçbir değişikliğe neden olmaz. *0,5* değeri, oranın bir haline neden olur. *3* değeri, ücretle sonuçlanmasına neden olur.</li><li>Sabit değer:<ul><li>x-yavaş</li><li>dığını</li><li>orta</li><li>Hızlı</li><li>x-Fast</li><li>default</li></ul></li></ul> | İsteğe Bağlı |
 | `duration` | Konuşma birleştirme (TTS) hizmeti, metni saniye veya milisaniye olarak okurken geçmesi gereken süre. Örneğin, *2s* veya *1800ms*. | İsteğe Bağlı |
@@ -601,7 +607,7 @@ Sıklık değişiklikleri, standart seslere veya tümce düzeyinde uygulanabilir
 
 `say-as` , öğe metninin (sayı veya tarih gibi) içerik türünü belirten isteğe bağlı bir öğedir. Bu, metnin nasıl pronounce hakkında konuşma birleştirme altyapısına kılavuzluk sağlar.
 
-**Sözdizimi**
+**Syntax**
 
 ```XML
 <say-as interpret-as="string" format="digit string" detail="string"> <say-as>
@@ -663,7 +669,7 @@ SSML belgesine dahil edilen tüm seslerin bu gereksinimleri karşılaması gerek
 * Tek bir yanıttaki tüm metin ve ses dosyaları için Birleşik Toplam süre 90 (90) saniyeyi aşamaz.
 * MP3, müşteriye özgü veya diğer gizli bilgileri içermemelidir.
 
-**Sözdizimi**
+**Syntax**
 
 ```xml
 <audio src="string"/></audio>
@@ -699,7 +705,7 @@ Belirtilen arka plan sesi metinden konuşmaya veya soluklaştırmadan kısaysa, 
 
 SSML belgesi başına yalnızca bir arka plan ses dosyasına izin verilir. Ancak, `audio` `voice` SSML belgenize Ek ses eklemek için öğesi içindeki etiketleri birbirine bağlayabilirsiniz.
 
-**Sözdizimi**
+**Syntax**
 
 ```XML
 <mstts:backgroundaudio src="string" volume="string" fadein="string" fadeout="string"/>

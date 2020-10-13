@@ -8,12 +8,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 08/12/2020
-ms.openlocfilehash: eff1db3aca2cab77d18698634b84e8e1b1c99f7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47d82982bbb7546b53dd4754c49bd22fe958d5ef
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89375898"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976495"
 ---
 # <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>Ticari Market 'e yönelik bir teklifi İnceleme ve yayımlama
 
@@ -49,7 +49,7 @@ Tüm sayfalar tamamlandıktan ve ilgili test notlarını girdikten sonra, doğru
 | Aşama | Ne olur? |
 | ------------ | ------------- | ------------- |
 | [Otomatik doğrulama](#automated-validation-phase) | Otomatik doğrulama kümesini işliyoruz. |
-| [Sertifika](#certification-phase) | El ile doğrulama yaptık. |
+| [Sertifikasyon](#certification-phase) | El ile doğrulama yaptık. |
 | [Önizleme oluşturma](#preview-creation-phase) | Teklif önizlemeniz için liste sayfası önizleme bağlantısına sahip olan herkes tarafından kullanılabilir. Teklifiniz Microsoft (transactable) üzerinden satılıyorsa, yalnızca teklifinizin **ön izleme İzleyicisi** sayfasında belirttiğiniz hedef kitle, test için teklif satın alabilir ve bu teklifi erişebilir. |
 | [Yayımcı oturumu kapatma](#publisher-sign-off-phase) | Teklifinizi önizlemenizi ve onaylamanıza yönelik bir istek içeren bir e-posta göndereceğiz. |
 | [Yayımlama](#publish-phase) | Önizleme teklifinin ticari Market 'e canlı olarak yayımlandığını doğrulamak için bir dizi adımı çalıştırdık. |
@@ -170,6 +170,84 @@ Teklifinizle canlı yapmayı seçtiniz ve bu, ticari Market 'te kullanılabilir 
     Teklifinizin Market 'te herkese açık hale geldiğini güvence altına aldığınızdan emin veriyoruz.
 
 Bu doğrulama denetimleri tamamlandıktan sonra teklifiniz Market 'te canlı olacaktır.
+
+## <a name="publishing-history"></a>Yayımlama geçmişi
+
+Iş ortağı merkezindeki **Geçmiş** sayfası, ticari Market tekliflerinizin yayımlama olaylarını gösterir. Her olay için, sayfada eylemi başlatan kullanıcı, olay türü ve olay tarih ve saati görüntülenir. [Doğrulama ve yayımlama adımları](#validation-and-publishing-steps) tamamlanma tarihi ve saati ile listelenir.
+
+Teklifinizin geçmişini görüntülemek için:
+
+1.    [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
+2.    Sol taraftaki gezinti menüsünde **ticari Market**  >  **genel bakış**' ı seçin.
+3.    Teklifinizi seçin.
+4.    Sol taraftaki gezinti menüsünde **Geçmiş** sekmesini seçin. Bu sayfa, teklifiniz için geçerli olan aşağıdaki olayların ayrıntılarını sağlar:
+
+|Olay    |Açıklama    |
+|---------|---------------|
+|Teklif oluşturuldu    |Teklif Iş Ortağı Merkezi 'nde oluşturulmuştur. Bir Kullanıcı, **ticari Market**  >  **'e genel bakış**bölümünde teklif türü, teklif kimliği ve teklif diğer adını seçti.    |
+|Plan oluşturuldu: *Plan adı*    |Kullanıcı plana **genel bakış** SEKMESINDE plan kimliği ve plan adı girerek yeni bir plan oluşturdu.</br>*Bu olay yalnızca planları destekleyen teklif türleri için geçerlidir*.    |
+|Plan silindi    |Kullanıcı **plana genel bakış** sayfasında **taslağı Sil** ' i seçerek yayımlanmamış bir taslak planı sildi.</br>*Bu olay yalnızca planları destekleyen teklif türleri için geçerlidir*.    |
+|Başlatılan plan satışı Durdur: *Plan adı*    |Kullanıcı **plana genel bakış** sayfasından **satışı durdur** ' ı seçerek bir planı başlattı.</br>*Bu olay yalnızca planları destekleyen teklif türleri için geçerlidir*.    |
+|Plan durdur satışı al: *Plan adı*    |Kullanıcı **plana genel bakış** sayfasında **satışı durdur** ' ı seçerek bir planı durdur-satışı iptal etti.</br>*Bu olay yalnızca planları destekleyen teklif türleri için geçerlidir*.    |
+|Önizlemeye gönderilen teklif    |Bir Kullanıcı, **Gözden geçirme ve yayımlama** sayfasından **Yayımla** ' yı seçerek, teklifi önizlemeye gönderdi.    |
+|Önizleme iptaline gönderim başlatıldı    |Bir Kullanıcı, önizlemeye gönderim sonrasında **teklif genel bakış** sayfasında **yayımlamayı iptal et** ' i seçerek önizleme için teklif yayınını iptal etmek istedi.</br>*Bu olay, iptal isteği işlendiği için görüntülenir*.    |
+|Önizlemeye gönderim iptal edildi    |Kullanıcı, önizlemeye gönderim sonrasında **teklif genel bakış** sayfasında **yayımlamayı iptal et** seçeneğini belirleyerek teklif yayınını önizlemek üzere iptal etti.</br>*Bu olay, iptal isteği başarıyla işlendikten sonra görüntülenir*.    |
+|Canlı gitmek için oturum kapatma    |**Teklif genel bakış** sayfasından **canlı ol** ' ı seçerek bir Kullanıcı teklifi ticari Market 'e yayımladı.    |
+|Market 'te yayımlama iptali başlatıldı    |Oturum kapattıktan sonra, bir Kullanıcı, teklif **genel bakış** sayfasında **yayımlamayı iptal et** ' i seçerek teklif yayınını iptal etmek istedi.</br>*Bu olay, iptal isteği işlendiği için görüntülenir*.    |
+|Ticari Market 'te yayımlamayı iptal etti    |Bir Kullanıcı, oturum açma işleminden sonra, canlı çalışmaya başladıktan sonra **teklif genel bakış** sayfasında **yayımlamayı iptal et** ' i seçerek teklif yayınını iptal etti.</br>*Bu olay, iptal isteği başarıyla işlendikten sonra görüntülenir*.    |
+|Özel izleyiciyi Eşitle    |Bir Kullanıcı **plana genel bakış** sayfasında veya **fiyatlandırma & kullanılabilirliği** sayfasında özel izleyiciyi **Eşitle** seçeneğini belirleyerek özel izleyiciyi güncelleştirmiş ve eşitledi.</br>*Bu olay yalnızca özel planları destekleyen teklif türleri için geçerlidir*.    |
+|Satış teklifini durdur    |Bir kullanıcı teklif **genel bakış** sayfasından satışı Durdur ' ı seçerek teklifi **satmaya** durdurdu.    |
+
+> [!NOTE]
+> Bir teklif taslağı kaydedildiğinde geçmiş sayfası söydeğildir.
+
+### <a name="filter-options"></a>Filtre seçenekleri
+
+Belirli yayımlama olaylarına teklifinizin tam geçmişini daraltmak için filtreleri kullanabilirsiniz:
+
+1.    Sayfanın sağ üst köşesinde bulunan filtre düğmesini seçin.
+2.    Bir filtre seçin ve seçtiğiniz ölçütlere karşılık gelen geçmiş olaylarını görmek için **Uygula** ' yı seçin.
+3.    Teklifinizin tam geçmişine geri dönmek için **filtreleri temizle** ' yi seçin.
+
+Dört filtre vardır:
+* Olaylar
+* Kullanıcılar
+* Tarih
+* Sayfalar
+
+**Sayfalar** filtresini seçtiğinizde, teklif türü için geçerli olan Iş Ortağı Merkezi sayfalarından herhangi birini seçebilirsiniz. Uygulandığında **, sayfa filtresi,** seçtiğiniz sayfadaki değişikliklerle ilgili olayları **önizlemek için gönderilen tüm teklifi** gösterir.
+
+* Tüm teklifler için, **teklif kurulumu** sayfası her gönderim olayı için varsayılan olarak dahil edilir.
+* Planları destekleyen teklifler için, her gönderim olayına **plana genel bakış** sayfası dahildir.
+* Sınama sürücüsünü destekleyen teklifler için, her gönderim olayına **test sürücüsü** sayfası dahildir.
+
+### <a name="users"></a>Kullanıcılar
+
+Bir olay kullanıcı tarafından başlatılmışsa, geçmiş sayfası kullanıcıyı aşağıdaki senaryolara göre gösterir:
+
+#### <a name="the-event-was-initiated-by-the-publisher"></a>Olay yayımcı tarafından başlatıldı
+
+Bir teklif için yayımlama izinlerine sahip olan kullanıcıların, başlattıkları yayımlama olayları için adı görüntülenir.
+
+[![Geçmiş sayfasında, yayımlama izinlerine sahip kullanıcıların adı görüntülenir.](./media/review-publish-offer/event-initiated-by-publisher.png)](./media/review-publish-offer/event-initiated-by-publisher.png#lightbox)
+
+#### <a name="the-event-was-initiated-by-microsoft"></a>Olay Microsoft tarafından başlatıldı
+
+Microsoft yöneticilerine, sizin adınıza eylem başlatabilir veya beklenmeyen bir sistem hatasından sonra düzeltici eylemler uygulayabilmeniz için izinler verebilirsiniz. Microsoft adı ve logosu, hesabınız adına Microsoft tarafından başlatılan olayları yayımlamak için görüntülenir.
+
+[![Geçmiş sayfasının Microsoft tarafından başlatılan olayları görüntüleme örneği.](./media/review-publish-offer/event-initiated-by-microsoft.png)](./media/review-publish-offer/event-initiated-by-microsoft.png#lightbox)
+
+#### <a name="the-event-was-initiated-by-an-unidentified-user"></a>Olay tanımlanmamış bir kullanıcı tarafından başlatıldı
+
+Artık bir hesapla ilişkili olmayan kullanıcıların adı, yayımlama izinleri geri alındıktan sonra **tarafından başlatılan** sütundan kaldırılır.
+
+[![Geçmiş sayfasının tanımlanmamış kullanıcılar tarafından başlatılan olayları görüntüleme örneği.](./media/review-publish-offer/event-initiated-by-unidentified-user.png)](./media/review-publish-offer/event-initiated-by-unidentified-user.png#lightbox)
+
+#### <a name="validation-and-publishing-steps"></a>Doğrulama ve yayımlama adımları
+
+[Doğrulama ve yayımlama adımlarına](#validation-and-publishing-steps)karşılık gelen sistem işlemleri için hiçbir Kullanıcı gösterilmez. Bu olaylar, olayın tamamlanma durumuna göre renk kodludur.
+
+[![Geçmiş sayfasının doğrulama ve yayımlama adımlarını görüntüleme örneği.](./media/review-publish-offer/validation-and-publishing-event.png)](./media/review-publish-offer/validation-and-publishing-event.png#lightbox)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

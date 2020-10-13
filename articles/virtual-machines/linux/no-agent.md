@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 09/01/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 63bc3caf97e1325c365171ba3f8e6353885d9b68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30e76ec3085922ec2a1d4693681eb97c9052c026
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322560"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978739"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>Sağlama Aracısı olmadan Genelleştirilmiş görüntüler oluşturma
 
@@ -199,7 +199,7 @@ WantedBy=multi-user.target
 Bu systemd hizmeti temel sağlama için üç şey yapar:
 
 1. Azure 'a (başarıyla geldiğini göstermek için) yönelik raporlar.
-1. Bu verileri [Azure Instance Metadata Service (ıMDS)](https://docs.microsoft.com/azure/virtual-machines/linux/instance-metadata-service)' den çekerek Kullanıcı tarafından sağlanan VM adından sanal makineyi yeniden adlandırır. **Göz önünde** IDS Ayrıca SSH ortak anahtarları gibi diğer [örnek meta verilerini](https://docs.microsoft.com/azure/virtual-machines/linux/instance-metadata-service#accessing-azure-instance-metadata-service)de sağlar, bu sayede ana bilgisayar adından fazlasını ayarlayabilirsiniz.
+1. Bu verileri [Azure Instance Metadata Service (ıMDS)](./instance-metadata-service.md)' den çekerek Kullanıcı tarafından sağlanan VM adından sanal makineyi yeniden adlandırır. **Göz önünde** IDS Ayrıca SSH ortak anahtarları gibi diğer [örnek meta verilerini](./instance-metadata-service.md#accessing-azure-instance-metadata-service)de sağlar, bu sayede ana bilgisayar adından fazlasını ayarlayabilirsiniz.
 1. Kendisini, sonraki yeniden başlatmalar üzerinde değil yalnızca ilk önyüklemede çalışacak şekilde devre dışı bırakır.
 
 Dosya sisteminde birimle birlikte etkinleştirmek için aşağıdakileri çalıştırın:

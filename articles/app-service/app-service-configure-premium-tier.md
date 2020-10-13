@@ -7,17 +7,17 @@ ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18
 ms.openlocfilehash: 0030a9340d874d94b9876e23f372e97655c145da
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91742701"
 ---
 # <a name="configure-premiumv3-tier-for-azure-app-service"></a>Azure App Service için PremiumV3 katmanını yapılandırma
 
 Yeni **PremiumV3** fiyatlandırma katmanı, daha hızlı IŞLEMCILER, SSD depolaması ve mevcut fiyatlandırma katmanlarının (çift **PremiumV2** katmanı) bellek-çekirdek oranını çok daha da sağlar. Performans avantajı sayesinde uygulamalarınızı daha az örnek üzerinde çalıştırarak tasarruf edebilirsiniz. Bu makalede, **PremiumV3** katmanında bir uygulama oluşturmayı veya bir uygulamayı **PremiumV3** katmanına ölçeklendirmeyi öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir uygulamayı **PremiumV3**'e ölçeklendirmek Için, **PremiumV3**'den daha düşük bir fiyatlandırma katmanında çalışan bir Azure App Service uygulamasına sahip olmanız ve uygulamanın PremiumV3 'yi destekleyen bir App Service dağıtımında çalışıyor olması gerekir.
 

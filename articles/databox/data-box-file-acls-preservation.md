@@ -6,18 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: conceptual
-ms.date: 09/25/2019
+ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: 74b8bfcd8cfedaa7c5e24b6c29d9229a4db5828a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8df77356b6b5b1b40e2abd772e13c2e811413ae
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450758"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950321"
 ---
 # <a name="preserving-file-acls-attributes-and-timestamps-with-azure-data-box"></a>Azure Data Box ile dosya ACL 'Lerini, öznitelikleri ve zaman damgalarını koruma
 
-Azure Data Box, Azure 'a veri gönderirken erişim denetim listelerini (ACL), zaman damgalarını ve dosya özniteliklerini korumanıza olanak sağlar. Bu makalede, verileri Azure dosyalarına yüklemek için sunucu Ileti bloğu (SMB) üzerinden Data Box veri kopyalarken aktarabileceğiniz meta veriler açıklanmaktadır. Windows ve Linux veri kopyalama araçlarıyla meta verileri kopyalamak için özel adımlar sağlanmaktadır.
+Azure Data Box, Azure 'a veri gönderirken erişim denetim listelerini (ACL), zaman damgalarını ve dosya özniteliklerini korumanıza olanak sağlar. Bu makalede, verileri Azure dosyalarına yüklemek için sunucu Ileti bloğu (SMB) üzerinden Data Box veri kopyalarken aktarabileceğiniz meta veriler açıklanmaktadır. 
+
+Windows ve Linux veri kopyalama araçlarıyla meta verileri kopyalamak için özel adımlar sağlanmaktadır. Veriler blob depolamaya aktarılırken korunmaz.
 
 Bu makalede, aktarılan ACL 'Ler, zaman damgaları ve dosya öznitelikleri topluca *meta veriler*olarak adlandırılır.
 

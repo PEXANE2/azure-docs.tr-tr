@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 07/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 611d676f5f588ff32f981692456160e269642a43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1b3e12bcf744ad0d762f686a908a01239fc4323
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87428129"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949250"
 ---
 # <a name="localization-string-ids"></a>Yerelleştirme dizesi kimlikleri
 
@@ -25,7 +25,7 @@ ms.locfileid: "87428129"
 
 ## <a name="sign-up-or-sign-in-page-elements"></a>Kaydolma veya oturum açma sayfası öğeleri
 
-KIMLIĞI olan bir içerik tanımı için aşağıdaki kimlikler kullanılır `api.signuporsignin` .
+KIMLIĞI `api.signuporsignin` ve [kendini onaylanan teknik profiliyle](self-asserted-technical-profile.md)bir içerik tanımı için aşağıdaki kimlikler kullanılır.
 
 | ID | Varsayılan değer |
 | -- | ------------- |
@@ -45,7 +45,7 @@ KIMLIĞI olan bir içerik tanımı için aşağıdaki kimlikler kullanılır `ap
 | **createaccount_link** | Hemen kaydolun |
 | **divider_title** | VEYA |
 | **cancel_message** | Kullanıcı parolasını unutuldu |
-| **button_signin** | Oturum aç |
+| **button_signin** | Oturum açın |
 | **social_intro** | Sosyal hesabınızla oturum açın |
   **remember_me** |Oturumumu açık bırak|
 | **unknown_error** | Oturumunuzu açmada sorun yaşıyoruz. Lütfen daha sonra yeniden deneyin. |
@@ -93,7 +93,7 @@ Aşağıdaki örnek, Facebook kimlik sağlayıcısını Arapça olarak yerelleş
 
 ## <a name="sign-up-and-self-asserted-pages-user-interface-elements"></a>Kaydolma ve kendiliğinden onaylanan sayfalar Kullanıcı arabirimi öğeleri
 
-Aşağıda, ve gibi bir içerik tanımının KIMLIĞI olan bir içerik tanımının kimlikleri verilmiştir `api.localaccountsignup` `api.selfasserted` `api.selfasserted.profileupdate` `api.localaccountpasswordreset` .
+Aşağıdakiler, `api.localaccountsignup` ve gibi, ile başlayan bir içerik TANıMıNıN kimliği veya `api.selfasserted` , ve `api.selfasserted.profileupdate` `api.localaccountpasswordreset` [kendi kendini onaylanan teknik profili](self-asserted-technical-profile.md)olan bir içerik tanımı için olan kimliklerdir.
 
 | ID | Varsayılan değer |
 | -- | ------------- |
@@ -102,7 +102,7 @@ Aşağıda, ve gibi bir içerik tanımının KIMLIĞI olan bir içerik tanımın
 | **cancel_message** | Kullanıcı kendi kendine onaylanan bilgileri girmeyi iptal etti |
 | **preloader_alt** | Lütfen bekleyin |
 | **ver_but_send** | Doğrulama kodu gönder |
-| **alert_yes** | Evet |
+| **alert_yes** | Yes |
 | **error_fieldIncorrect** | Bir veya daha fazla alan yanlış doldurulmuş. Lütfen girişlerinizi denetleyin ve yeniden deneyin. |
 | **yıl** | Yıl |
 | **verifying_blurb** | Bilgilerinizi işlerken lütfen bekleyin. |
@@ -155,7 +155,7 @@ Aşağıdaki örnek, Kullanıcı doğrulama kodu gönder düğmesine tıkladıkt
 
 ## <a name="phone-factor-authentication-page-user-interface-elements"></a>Telefon faktörü kimlik doğrulama sayfası kullanıcı arabirimi öğeleri
 
-Aşağıda KIMLIĞI olan bir içerik tanımının kimlikleri verilmiştir `api.phonefactor` .
+Aşağıda KIMLIĞI `api.phonefactor` ve [Telefon faktörü teknik profiliyle](phone-factor-technical-profile.md)bir içerik tanımının kimlikleri verilmiştir.
 
 | ID | Varsayılan değer |
 | -- | ------------- |
@@ -197,11 +197,11 @@ Aşağıda KIMLIĞI olan bir içerik tanımının kimlikleri verilmiştir `api.p
 
 Aşağıdaki örnek, MFA kayıt sayfasında bazı Kullanıcı arabirimi öğelerinin kullanımını gösterir:
 
-![Kaydolma sayfası eposta doğrulaması UX öğeleri](./media/localization-string-ids/localization-mfa1.png)
+![Telefon faktörü kimlik doğrulama kaydı UX öğeleri](./media/localization-string-ids/localization-mfa1.png)
 
 Aşağıdaki örnek, MFA doğrulama sayfasında bazı Kullanıcı arabirimi öğelerinin kullanımını gösterir:
 
-![Kaydolma sayfası eposta doğrulaması UX öğeleri](./media/localization-string-ids/localization-mfa2.png)
+![Telefon faktörü kimlik doğrulaması doğrulama UX öğeleri](./media/localization-string-ids/localization-mfa2.png)
 
 ## <a name="verification-display-control-user-interface-elements"></a>Doğrulama görüntüleme denetimi kullanıcı arabirimi öğeleri
 

@@ -6,12 +6,12 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e8824f534f573d97353cc86d2a1b112b1acdb211
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ace58bd3bb89f9e8545bf125f272e62c3a134061
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87494511"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949839"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Öğretici: özel eylemler ve kaynaklarla yönetilen uygulama oluşturma
 
@@ -353,6 +353,6 @@ Azure yönetilen uygulamalar hakkında sorularınız varsa [Stack Overflow](http
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yönetilen uygulamanızı Azure Market'te yayımlamak için bkz. [Market'teki Azure tarafından yönetilen uygulamalar](publish-marketplace-app.md).
+Yönetilen uygulamanızı Azure Market'te yayımlamak için bkz. [Market'teki Azure tarafından yönetilen uygulamalar](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md).
 
 [Azure özel sağlayıcılar](../custom-providers/overview.md)hakkında daha fazla bilgi edinin.

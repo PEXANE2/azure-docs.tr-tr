@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: e48c6cfd1160406d55ffdc3c9bafe733a6e5e4a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45c64261b60d88557e63cb8f9af922fd7aa71ad4
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400086"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977910"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure disk şifrelemesi sorun giderme kılavuzu
 
@@ -62,7 +62,7 @@ Bu sorunu geçici olarak çözmek için, aşağıdaki dört dosyayı bir Windows
 
 1. Birimleri denetlemek için DiskPart 'ı kullanın ve ardından devam edin.  
 
-Örneğin:
+Örnek:
 
 ```
 DISKPART> list vol
@@ -90,5 +90,5 @@ CLı ile Azure disk şifrelemesini devre dışı bırakmak için [az VM Encrypti
 
 Bu belgede, Azure disk şifrelemesi 'nde bazı yaygın sorunlar ve bu sorunları nasıl giderebileceğiniz hakkında daha fazla bilgi edindiniz. Bu hizmet ve özellikleri hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [Azure Güvenlik Merkezi 'nde disk şifrelemeyi uygulama](../../security-center/security-center-virtual-machine-protection.md)
+- [Azure Güvenlik Merkezi 'nde disk şifrelemeyi uygulama](../../security-center/asset-inventory.md)
 - [Azure bekleyen verileri şifreleme](../../security/fundamentals/encryption-atrest.md)

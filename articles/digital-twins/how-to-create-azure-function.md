@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a0f5a921ad9eba82f27b3a8945643737b6d76030
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11034a585db6ef3a3e1e445bbed8a1e51f83948d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89614074"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949795"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Verileri işlemek için Azure Işlevleri uygulamalarına bağlanma
 
@@ -236,7 +236,7 @@ Azure _rol atamaları ' nı seçin,_ Azure rol atamaları sayfasına kadar açı
 
 :::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
-Açılan _rol ataması Ekle (Önizleme)_ penceresinde, şunu seçin
+Açılan _rol ataması Ekle (Önizleme)_ penceresinde şunları seçin:
 
 * _Kapsam_: Kaynak grubu
 * _Abonelik_: Azure aboneliğinizi seçin

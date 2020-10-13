@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: d68e5335fff0341d8808e581061519977e1bb517
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 905ca5fd92a09b209bf099bfac0862132ec679a4
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543287"
+ms.locfileid: "91875625"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>Öğretici: Sectigo sertifika yöneticisiyle Azure Active Directory tümleştirme
 
-Bu öğreticide, Sectigo sertifika yöneticisini Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
+Bu öğreticide, Sectigo sertifika yöneticisini (SCM olarak da bilinir) Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
 
 Sectigo Sertifika Yöneticisi 'Ni Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
@@ -35,7 +35,10 @@ Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında d
 Azure AD tümleştirmesini Sectıgo Sertifika Yöneticisi ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Azure AD aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-* Çoklu oturum açma özellikli sectigo Sertifika Yöneticisi aboneliği.
+* Sectıgo sertifika yöneticisi hesabı.
+
+> [!NOTE]
+> Sectıgo, Sectigo Sertifika Yöneticisi 'nin birden çok örneğini çalıştırır. Sectıgo sertifika yöneticisinin ana örneği  **https: \/ /CERT-Manager.com**ve bu URL Bu öğreticide kullanılır.  Hesabınız farklı bir örnekten farklıysa, URL 'Leri uygun şekilde ayarlamanız gerekir.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -50,7 +53,7 @@ Sectıgo Sertifika Yöneticisi aşağıdaki özellikleri destekler:
 
 Sectigo sertifika yöneticisini Azure AD ile tümleştirmek için, yönetilen SaaS uygulamaları listenize Sectıgo Sertifika Yöneticisi eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Sol menüden **Azure Active Directory**' yi seçin.
 
@@ -99,47 +102,45 @@ Bu bölümde Azure AD çoklu oturum açma 'yı Azure portal Sectıgo Sertifika Y
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. **Temel SAML yapılandırması** bölmesinde, *IDP tarafından başlatılan modu*yapılandırmak için aşağıdaki adımları izleyin:
+1. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları izleyin:
 
-    1. **Tanımlayıcı** kutusuna şu URL 'lerden birini girin:
-       * https: \/ /CERT-Manager.com/Shibboleth
-       * https: \/ /Hard.CERT-Manager.com/Shibboleth
+    1. **Tanımlayıcı (VARLıK kimliği)** kutusunda, ana Sectıgo Sertifika Yöneticisi örneği için **https: \/ /CERT-Manager.com/Shibboleth**girin.
 
-    1. **Yanıt URL 'si** kutusuna şu URL 'lerden birini girin:
-        * https: \/ /CERT-Manager.com/Shibboleth.SSO/SAML2/Post
-        * https: \/ /Hard.CERT-Manager.com/Shibboleth.SSO/SAML2/Post
+    1. **Yanıt URL 'si** kutusunda, ana Sectıgo Sertifika Yöneticisi örneği için **https: \/ /CERT-Manager.com/Shibboleth.SSO/SAML2/Post**girin.
+        
+    > [!NOTE]
+    > Genel olarak, **oturum açma URL 'Si** *SP tarafından başlatılan mod*için zorunludur, bu da Sectigo Sertifika Yöneticisi ' nden oturum açması gerekmez.        
+
+1. İsteğe bağlı olarak, *IDP tarafından başlatılan modu* yapılandırmak ve **testin** çalışmasına ızın vermek için **temel SAML yapılandırma** bölümünde aşağıdaki adımları uygulayın:
 
     1. **Ek URL 'Ler ayarla**' yı seçin.
 
-    1. **Geçiş durumu** kutusunda şu URL 'lerden birini girin:
-       * https: \/ /CERT-Manager.com/customer/SSLSupport/idp
-       * https: \/ /Hard.CERT-Manager.com/customer/SSLSupport/idp
+    1. **Geçiş durumu** kutusunda, Sectigo Sertifika Yöneticisi MÜŞTERIYE özgü URL 'nizi girin. Ana Sectıgo Sertifika Yöneticisi örneği için **https: \/ /CERT-Manager.com/customer/ \<customerURI\> /IDP**girin.
 
     ![Sectıgo sertifika yöneticisi etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-relay.png)
 
-1.  Uygulamayı *SP tarafından başlatılan modda*yapılandırmak için aşağıdaki adımları izleyin:
+1. **Kullanıcı öznitelikleri & talepler** bölümünde aşağıdaki adımları uygulayın:
 
-    * **Oturum açma URL 'si** kutusuna şu URL 'lerden birini girin:
-      * https: \/ /CERT-Manager.com/Shibboleth.SSO/Login
-      * https: \/ /Hard.CERT-Manager.com/Shibboleth.SSO/Login
+    1. Tüm **ek talepleri**silin.
+    
+    1. **Yeni talep Ekle** ' yi seçin ve aşağıdaki dört talebi ekleyin:
+    
+        | Name | Ad Alanı | Kaynak | Kaynak özniteliği | Açıklama |
+        | --- | --- | --- | --- | --- |
+        | eduPersonPrincipalName | empty | Öznitelik | User. UserPrincipalName | Yöneticiler için Sectıgo Sertifika Yöneticisi içindeki **IDP kışı kimliği** alanıyla eşleşmelidir. |
+        | posta | empty | Öznitelik | Kullanıcı. Mail | Gerekli |
+        | givenName | empty | Öznitelik | Kullanıcı. | İsteğe Bağlı |
+        | sn | empty | Öznitelik | User. soyadı | İsteğe Bağlı |
 
-      ![Sectıgo sertifika yöneticisi etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/both-signonurl.png)
+       ![Sectıgo Sertifika Yöneticisi-dört yeni talep ekleyin](media/sectigo-certificate-manager-tutorial/additional-claims.png)
 
-1. **SAML Ile tek Sign-On ayarla** bölmesinde, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** yanındaki **İndir** ' i seçin. Gereksinimlerinize göre bir indirme seçeneği belirleyin. Sertifikayı bilgisayarınıza kaydedin.
+1. **SAML Imzalama sertifikası** bölümünde, **Federasyon meta verileri XML**' nün yanındaki **İndir** ' i seçin. XML dosyasını bilgisayarınıza kaydedin.
 
-    ![Sertifika (base64) indirme seçeneği](common/certificatebase64.png)
-
-1. **Sectıgo sertifika yöneticisini ayarla** bölümünde, gereksinimlerinize göre aşağıdaki URL 'leri kopyalayın:
-
-    * Oturum Açma URL’si
-    * Azure AD tanımlayıcısı
-    * Oturum kapatma URL 'SI
-
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![Federasyon meta verileri XML indirme seçeneği](common/metadataxml.png)
 
 ### <a name="configure-sectigo-certificate-manager-single-sign-on"></a>Sectigo Sertifika Yöneticisi çoklu oturum açmayı yapılandırma
 
-Sectigo Sertifika Yöneticisi tarafında çoklu oturum açmayı yapılandırmak için, indirilen sertifika (base64) dosyasını ve Azure portal kopyaladığınız ilgili URL 'Leri [Sectıgo Sertifika Yöneticisi destek ekibine](https://sectigo.com/support)gönderin. Sectıgo Sertifika Yöneticisi destek ekibi, SAML çoklu oturum açma bağlantısının her iki tarafında da doğru şekilde ayarlandığından emin olmak için, bunları göndereceğiniz bilgileri kullanır.
+Sectıgo Sertifika Yöneticisi tarafında çoklu oturum açmayı yapılandırmak için, indirilen Federasyon meta verileri XML dosyasını [Sectıgo Sertifika Yöneticisi destek ekibine](https://sectigo.com/support)gönderin. Sectıgo Sertifika Yöneticisi destek ekibi, SAML çoklu oturum açma bağlantısının her iki tarafında da doğru şekilde ayarlandığından emin olmak için, bunları göndereceğiniz bilgileri kullanır.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
@@ -159,7 +160,7 @@ Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturac
   
     1. **Kullanıcı adı** kutusuna **brittasıon yazın \@ \<your-company-domain> . \<extension\> ** Örneğin, **brittasıon \@ contoso.com**.
 
-    1. **Parolayı göster** onay kutusunu seçin. **Parola** kutusunda görüntülenen değeri yazın.
+    1. **Parolayı göster** onay kutusunu seçin. **Parola** kutusunda görüntülenen değeri kaydedin.
 
     1. **Oluştur**’u seçin.
 
@@ -167,7 +168,7 @@ Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturac
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Azure çoklu oturum açma 'yı kullanabilmesi için, Sectıgo Sertifika Yöneticisi 'ne Britta Simon erişimi verirsiniz.
+Bu bölümde, kullanıcının Azure çoklu oturum açmayı kullanabilmesi için Sectıgo Sertifika Yöneticisi 'ne giderek Britta Simon erişimi verirsiniz.
 
 1. Azure Portal **Kurumsal uygulamalar**  >  **tüm uygulamalar**  >  **sectıgo Sertifika Yöneticisi**' ni seçin.
 
@@ -197,9 +198,19 @@ Bu bölümde, Sectigo Sertifika Yöneticisi 'nde Britta Simon adlı bir Kullanı
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
-Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı My Apps portalını kullanarak test edersiniz.
+Bu bölümde Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Çoklu oturum açmayı ayarladıktan sonra, Uygulamalarım portalındaki **Sectıgo Sertifika Yöneticisi** ' ni seçtiğinizde, Sectigo Sertifika Yöneticisi 'nde otomatik olarak oturumunuz açılır. Uygulamalarım portalı hakkında daha fazla bilgi için bkz. [Apps Portalındaki uygulamalara erişme ve bunları kullanma](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="test-from-sectigo-certificate-manager-sp-initiated-single-sign-on"></a>Sectigo Sertifika Yöneticisi 'nden test (SP tarafından başlatılan çoklu oturum açma)
+
+Müşterinizin özel URL 'sine (ana Sectıgo Sertifika Yöneticisi örneği, https: \/ /CERT-Manager.com/Customer//) gidin \<customerURI\> ve aşağıdaki düğmeyi seçin **ya da ile oturum açın**.  Doğru yapılandırılmışsa, Sectigo Sertifika Yöneticisi 'nde otomatik olarak oturumunuz açılır.
+
+#### <a name="test-from-azure-single-sign-on-configuration-idp-initiated-single-sign-on"></a>Azure çoklu oturum açma yapılandırmasından test etme (ıDP tarafından başlatılan çoklu oturum açma)
+
+**Sectıgo Sertifika Yöneticisi** uygulama tümleştirme bölmesinde, **Çoklu oturum açma** ' yı seçin ve **Test** düğmesini seçin.  Doğru yapılandırılmışsa, Sectigo Sertifika Yöneticisi 'nde otomatik olarak oturumunuz açılır.
+
+#### <a name="test-by-using-the-my-apps-portal-idp-initiated-single-sign-on"></a>My Apps portalını kullanarak test etme (ıDP-başlatılan çoklu oturum açma)
+
+Uygulamalarım portalındaki **Sectıgo Sertifika Yöneticisi** ' ni seçin.  Doğru yapılandırılmışsa, Sectigo Sertifika Yöneticisi 'nde otomatik olarak oturumunuz açılır. Uygulamalarım portalı hakkında daha fazla bilgi için bkz. [Apps Portalındaki uygulamalara erişme ve bunları kullanma](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

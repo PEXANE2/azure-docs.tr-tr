@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 09/09/2020
+ms.date: 10/07/2020
 ms.author: aahi
 keywords: metin araştırma, yaklaşım analizi, metin analizi
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: 0fbd8b92846f6436128f64680a1fa9b77763a2c8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6d69c47c4833247ac259f9dcc166d7ab2696c117
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91710790"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977828"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Hızlı başlangıç: Metin Analizi istemci kitaplığını kullanma
 
@@ -30,6 +30,7 @@ Metin Analizi istemci kitaplığı 'nı kullanmaya başlamak için bu makaleyi k
 * Dil algılama
 * Varlık tanıma
 * Anahtar ifade ayıklama
+* Görüşün madenciliği
 
 ::: zone pivot="programming-language-csharp"
 
@@ -105,5 +106,5 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 * [Metin Analizine genel bakış](../overview.md)
 * [Yaklaşım analizi](../how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Varlık tanıma](../how-tos/text-analytics-how-to-entity-linking.md)
-* [Dili algılama](../how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Dili algıla](../how-tos/text-analytics-how-to-keyword-extraction.md)
 * [Dil tanıma](../how-tos/text-analytics-how-to-language-detection.md)

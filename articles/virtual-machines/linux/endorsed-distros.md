@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: guybo
-ms.openlocfilehash: 1417635c0e510badd191e99786f49dfb509c8206
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 0236644930af699180cf26b4baee7bb591d8bbaa
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893416"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978943"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure 'da desteklenen Linux dağıtımları
 
@@ -39,7 +39,7 @@ Azure Linux Aracısı zaten Azure Marketi görüntülerinde önceden yüklenmiş
 | Credavtiv tarafından ortaya çıkarıldı |8.x, 9.x |Çekirdekte |Paket: "waagent" altında depo Içinde <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
 |Kinvolk tarafından yataylı kapsayıcı Linux| Pro, Stable, Beta| Çekirdekte | WA-Linux-Agent zaten/usr/share/OEM/bin/waagent içinde yüklendi |
 | Oracle tarafından Oracle Linux |6.x, 7.x, 8.x |Çekirdekte |Paket: "Walınuxagent" altında depo Içinde <br/>Kaynak kodu: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| [Red Hat ile Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/overview) |6.x, 7.x, 8.x |Çekirdekte |Paket: "Walınuxagent" altında depo Içinde <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| [Red Hat ile Red Hat Enterprise Linux](../workloads/redhat/overview.md) |6.x, 7.x, 8.x |Çekirdekte |Paket: "Walınuxagent" altında depo Içinde <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | SUSE Linux Enterprise SUSE |SLES/SLES for SAP 11. x, 12. x, 15. x <br/> [SUSE genel bulut görüntüsü yaşam döngüsü](https://www.suse.com/c/suse-public-cloud-image-life-cycle/) |Çekirdekte |Leyebilir<p> Bulutta 11 için [: Araçlar](https://build.opensuse.org/project/show/Cloud:Tools) deposu<br>"genel bulut" modülünde "Python-Azure-Agent" altında bulunan 12 için<br/>Kaynak kodu: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | SUSE tarafından openSUSE |openSUSE Leap 15.x |Çekirdekte |Paket: [bulutta:](https://build.opensuse.org/project/show/Cloud:Tools) "Python-Azure-Agent" ın altındaki araçlar deposu <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Kurallı olarak Ubuntu |Ubuntu Server ve Pro. 16. x, 18. x, 20. x<p>Ubuntu 12,04 ve 14,04 için genişletilmiş destek hakkında bilgi burada bulunabilir: [Ubuntu genişletilmiş güvenlik Bakımı](https://www.ubuntu.com/esm). |Çekirdekte |Paket: "walınuxagent" altında depo Içinde <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |

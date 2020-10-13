@@ -4,16 +4,16 @@ description: EdgeAgent ve edgeHub modülü TWINS için belirli özellikleri ve d
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/17/2019
+ms.date: 08/31/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f2d6603c264c9da3f2700f460a8c61b24681fac6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa7a56bcad067176d8f9805b418cca45ad144579
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80546198"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978705"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>IoT Edge Aracısı ve IoT Edge hub modülünün özellikleri TWINS
 
@@ -33,30 +33,32 @@ IoT Edge Aracısı için ikizi modülü çağrılır `$edgeAgent` ve bir cihazda
 
 | Özellik | Açıklama | Gerekli |
 | -------- | ----------- | -------- |
-| schemaVersion | "1,0" olmalıdır | Evet |
-| Runtime. Type | "Docker" olmalıdır | Evet |
-| Runtime. Settings. minDockerVersion | Bu dağıtım bildirimi için gereken en düşük Docker sürümüne ayarla | Evet |
+| schemaVersion | "1,0" ya da "1,1". Sürüm 1,1 IoT Edge sürüm 1.0.10 ile kullanıma sunulmuştur ve önerilir. | Yes |
+| Runtime. Type | "Docker" olmalıdır | Yes |
+| Runtime. Settings. minDockerVersion | Bu dağıtım bildirimi için gereken en düşük Docker sürümüne ayarla | Yes |
 | Runtime. Settings. loggingOptions | IoT Edge aracı kapsayıcısı için günlük seçeneklerini içeren bir strıngiingjson. [Docker günlüğü seçenekleri](https://docs.docker.com/engine/admin/logging/overview/) | Hayır |
 | Runtime. Settings. registryCredentials<br>. {Registryıd}. Kullanıcı adı | Kapsayıcı kayıt defterinin Kullanıcı adı. Azure Container Registry için, Kullanıcı adı genellikle kayıt adıdır.<br><br> Tüm özel modül görüntüleri için kayıt defteri kimlik bilgileri gereklidir. | Hayır |
 | Runtime. Settings. registryCredentials<br>. {Registryıd}. parola | Kapsayıcı kayıt defteri için parola. | Hayır |
 | Runtime. Settings. registryCredentials<br>. {Registryıd}. adres | Kapsayıcı kayıt defterinin adresi. Azure Container Registry için, adres genellikle *{Registry Name}. azurecr. IO*olur. | Hayır |  
-| systemModules. edgeAgent. Type | "Docker" olmalıdır | Evet |
-| systemModules. edgeAgent. Settings. Image | IoT Edge aracısının görüntüsünün URI 'SI. Şu anda IoT Edge Aracısı kendisini güncelleştiremeyebilir. | Evet |
+| systemModules. edgeAgent. Type | "Docker" olmalıdır | Yes |
+| systemModules. edgeAgent. Settings. Image | IoT Edge aracısının görüntüsünün URI 'SI. Şu anda IoT Edge Aracısı kendisini güncelleştiremeyebilir. | Yes |
 | systemModules. edgeAgent. Settings<br>. createOptions | IoT Edge aracı kapsayıcısının oluşturulmasına yönelik seçenekleri içeren bir strıngiingjson. [Docker oluşturma seçenekleri](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Hayır |
 | systemModules.edgeAgent.configuration.id | Bu modülü dağıtan dağıtımın KIMLIĞI. | IoT Hub, bildirim bir dağıtım kullanılarak uygulandığında bu özelliği ayarlar. Dağıtım bildiriminin parçası değil. |
-| systemModules. edgeHub. Type | "Docker" olmalıdır | Evet |
-| systemModules. edgeHub. durumu | "Çalışıyor" olmalıdır | Evet |
-| systemModules. edgeHub. restartPolicy | "Always" olmalıdır | Evet |
-| systemModules. edgeHub. Settings. Image | IoT Edge hub 'ının görüntüsünün URI 'SI. | Evet |
+| systemModules. edgeHub. Type | "Docker" olmalıdır | Yes |
+| systemModules. edgeHub. durumu | "Çalışıyor" olmalıdır | Yes |
+| systemModules. edgeHub. restartPolicy | "Always" olmalıdır | Yes |
+| systemModules. edgeHub. startupOrder | Bir modülün başlangıç sırasında sahip olduğu nokta için bir tamsayı değeri. 0 ilk ve en fazla tamsayı (4294967295) en son. Değer sağlanmazsa, varsayılan en fazla tamsayıdır.  | Hayır |
+| systemModules. edgeHub. Settings. Image | IoT Edge hub 'ının görüntüsünün URI 'SI. | Yes |
 | systemModules. edgeHub. Settings<br>. createOptions | IoT Edge hub kapsayıcısının oluşturulmasına yönelik seçenekleri içeren bir strıngiingjson. [Docker oluşturma seçenekleri](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Hayır |
 | systemModules.edgeHub.configuration.id | Bu modülü dağıtan dağıtımın KIMLIĞI. | IoT Hub, bildirim bir dağıtım kullanılarak uygulandığında bu özelliği ayarlar. Dağıtım bildiriminin parçası değil. |
-| Modüler. {ModuleID}. sürüm | Bu modülün sürümünü temsil eden Kullanıcı tanımlı bir dize. | Evet |
-| Modüler. {ModuleID}. tür | "Docker" olmalıdır | Evet |
-| Modüler. {ModuleID}. durum | {"çalışıyor" \| "durduruldu"} | Evet |
-| Modüler. {ModuleID}. restartPolicy | {"hiçbir şekilde" \| "sorunlu" "sağlıksız" " \| \| her zaman"} | Evet |
+| Modüler. {ModuleID}. sürüm | Bu modülün sürümünü temsil eden Kullanıcı tanımlı bir dize. | Yes |
+| Modüler. {ModuleID}. tür | "Docker" olmalıdır | Yes |
+| Modüler. {ModuleID}. durum | {"çalışıyor" \| "durduruldu"} | Yes |
+| Modüler. {ModuleID}. restartPolicy | {"hiçbir şekilde" \| "sorunlu" "sağlıksız" " \| \| her zaman"} | Yes |
+| Modüler. {ModuleID}. startupOrder | Bir modülün başlangıç sırasında sahip olduğu nokta için bir tamsayı değeri. 0 ilk ve en fazla tamsayı (4294967295) en son. Değer sağlanmazsa, varsayılan en fazla tamsayıdır.  | Hayır |
 | Modüler. {ModuleID}. ımagepullpolicy | {"oluşturma sırasında" \| "hiçbir koşulda"} | Hayır |
 | Modüler. {ModuleID}. env | Modüle geçirilecek ortam değişkenlerinin listesi. Biçimi alır `"<name>": {"value": "<value>"}` | Hayır |
-| Modüler. {ModuleID}. Settings. image | Modül görüntüsünün URI 'SI. | Evet |
+| Modüler. {ModuleID}. Settings. image | Modül görüntüsünün URI 'SI. | Yes |
 | Modüler. {ModuleID}. Settings. createOptions | Modül kapsayıcısının oluşturulmasına yönelik seçenekleri içeren bir strıngiingjson. [Docker oluşturma seçenekleri](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Hayır |
 | Modüler. {ModuleID}. Configuration. ID | Bu modülü dağıtan dağıtımın KIMLIĞI. | IoT Hub, bildirim bir dağıtım kullanılarak uygulandığında bu özelliği ayarlar. Dağıtım bildiriminin parçası değil. |
 
@@ -107,9 +109,9 @@ IoT Edge Hub için ikizi modülü çağrılır `$edgeHub` ve bir cihazda çalı�
 
 | Özellik | Açıklama | Dağıtım bildiriminde gereklidir |
 | -------- | ----------- | -------- |
-| schemaVersion | "1,0" olmalıdır | Evet |
+| schemaVersion | "1,0" ya da "1,1". Sürüm 1,1 IoT Edge sürüm 1.0.10 ile kullanıma sunulmuştur ve önerilir. | Yes |
 | yolların. Routetablename | IoT Edge hub yolunu temsil eden bir dize. Daha fazla bilgi için bkz. [yolları bildirme](module-composition.md#declare-routes). | `routes`Öğe mevcut ancak boş olabilir. |
-| storeAndForwardConfiguration. timeToLiveSecs | IoT Edge hub 'ın, IoT Hub veya yerel bir modülse, yönlendirme uç noktaları bağlantısı kesildiğinde iletileri tutacağını belirten saniye cinsinden süre. Değer herhangi bir pozitif tamsayı olabilir. | Evet |
+| storeAndForwardConfiguration. timeToLiveSecs | IoT Edge hub 'ın, IoT Hub veya yerel bir modülse, yönlendirme uç noktaları bağlantısı kesildiğinde iletileri tutacağını belirten saniye cinsinden süre. Değer herhangi bir pozitif tamsayı olabilir. | Yes |
 
 ## <a name="edgehub-reported-properties"></a>EdgeHub tarafından bildirilen özellikler
 

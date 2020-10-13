@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: 919ff7474dd64cfe3005975beb4cab6f77c177ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7af95b9fe2f6d31faa239985f8e8165fd968372
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87825268"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978603"
 ---
 # <a name="save-costs-with-azure-dedicated-host-reservations"></a>Azure ayrılmış ana bilgisayar ayırmaları ile maliyetleri kaydetme
 
-Ayrılmış bir Azure ayrılmış ana bilgisayar örneğine kaydetme yaptığınızda para tasarrufu sağlayabilirsiniz. Ayırma indirimi, ayırma kapsamı ve öznitelikleriyle eşleşen çalışan adanmış ana bilgisayar sayısına otomatik olarak uygulanır. İndirimleri almak için ayrılmış bir konağa bir ayırma atamanız gerekmez. Ayrılmış örnek satın alma yalnızca kullanımınızın işlem parçasını kapsar ve yazılım lisanslama maliyetlerini içerir. [Sanal makineler Için Azure adanmış konaklarına genel bakış](./windows/dedicated-hosts.md)bölümüne bakın.
+Ayrılmış bir Azure ayrılmış ana bilgisayar örneğine kaydetme yaptığınızda para tasarrufu sağlayabilirsiniz. Ayırma indirimi, ayırma kapsamı ve öznitelikleriyle eşleşen çalışan adanmış ana bilgisayar sayısına otomatik olarak uygulanır. İndirimleri almak için ayrılmış bir konağa bir ayırma atamanız gerekmez. Ayrılmış örnek satın alma yalnızca kullanımınızın işlem parçasını kapsar ve yazılım lisanslama maliyetlerini içerir. [Sanal makineler Için Azure adanmış konaklarına genel bakış](./dedicated-hosts.md)bölümüne bakın.
 
 ## <a name="determine-the-right-dedicated-host-sku-before-you-buy"></a>Satın almadan önce doğru adanmış ana bilgisayar SKU 'sunu belirleme
 
@@ -129,7 +129,7 @@ Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinmek iç
 
 - [Azure Ayrılmış Sanal Makine Örnekleri nedir?](../cost-management-billing/reservations/save-compute-costs-reservations.md)
 
-- [Azure Ayrılmış Konaklarını kullanma](./windows/dedicated-hosts.md)
+- [Azure Ayrılmış Konaklarını kullanma](./dedicated-hosts.md)
 
 - [Ayrılmış Konaklar Fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-machines/dedicated-host/)
 

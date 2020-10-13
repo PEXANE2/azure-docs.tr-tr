@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: danis
-ms.openlocfilehash: 7ddbb48f3598780988feb25a11729a5086d31fde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a87c2b571027e0304909e69b252c9e080c4da9c1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88869278"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978637"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure 'da sanal makineler için Cloud-init desteği
 Bu makalede, Azure 'da sağlama sırasında bir sanal makineyi (VM) veya sanal makine ölçek kümelerini yapılandırmak üzere [Cloud-init](https://cloudinit.readthedocs.io) için mevcut destek açıklanmaktadır. Bu Cloud-init yapılandırması, kaynaklar Azure tarafından sağlandıktan sonra ilk önyüklemede çalıştırılır.  
@@ -46,7 +46,7 @@ Cloud-init ' i Azure 'da, desteklenen Linux 'un Azure 'da, paket desteğinin ve 
 | Yayımcı/sürüm | Sunduğu | SKU | Sürüm | görüntü bulutu-init Ready | Azure 'da Cloud-init paketi desteği|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |evet | Evet-paket sürümünden destek: *18.2-1.el7_6.2*|
-|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Evet (Not: Bu bir önizleme **görüntüsüdür ve artık kullanılmamalıdır,** bu, 1 Eylül 2020 ' den kaldırılacak) | Yok |
+|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Evet (Not: Bu bir önizleme **görüntüsüdür ve artık kullanılmamalıdır,** bu, 1 Eylül 2020 ' den kaldırılacak) | YOK |
 |RedHat 7,7 (Gen1)|RHEL |7,7 | 7.7.2020051912 | evet | Evet-paket sürümünden destek: *18.5 -6. EL7*|
 |RedHat 7,7 (Gen2)|RHEL | 77-Gen2 | 7.7.2020051913 | evet | Evet-paket sürümünden destek: *18.5 -6. EL7*|
 |RedHat 7,7 (Gen1)|RHEL |7-LVM | 7.7.2020051921 | evet | Evet-paket sürümünden destek: *18.5 -6. EL7*|
@@ -61,7 +61,7 @@ Cloud-init ' i Azure 'da, desteklenen Linux 'un Azure 'da, paket desteğinin ve 
 
 | Yayımcı/sürüm | Sunduğu | SKU | Sürüm | görüntü bulutu-init Ready | Azure 'da Cloud-init paketi desteği|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Evet (Not: Bu bir önizleme **görüntüsüdür ve artık kullanılmamalıdır,** bu, 1 Eylül 2020 ' den kaldırılacak) | Yok |
+|OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Evet (Not: Bu bir önizleme **görüntüsüdür ve artık kullanılmamalıdır,** bu, 1 Eylül 2020 ' den kaldırılacak) | YOK |
 |OpenLogic 7,7 |CentOS | 7,7 |7.7.2020062400 |evet | Evet-paket sürümünden destek: `18.5-6.el7.centos.5`|
 |OpenLogic 7,7 (Gen2) |CentOS | 7_7-Gen2 |7.7.2020062401 |evet | Evet-paket sürümünden destek: `18.5-6.el7.centos.5`|
 |OpenLogic 7,7 |CentOS-HPC | 7,7 |7.6.2020062600 |evet | Evet-paket sürümünden destek: `18.5-6.el7.centos.5`|
@@ -152,7 +152,7 @@ az vm create \
 
 VM oluşturulduğunda Azure CLı, dağıtımınıza özgü bilgileri gösterir. `publicIpAddress` değerini not edin. Bu adres, VM’ye erişmek için kullanılır.  VM 'nin oluşturulması, yüklenecek paketlerin ve başlatılacak uygulamayı biraz zaman alır. Azure CLI sizi isteme geri döndürdükten sonra çalışmaya devam eden arka plan görevleri vardır. VM 'de SSH oluşturabilir ve Cloud-init günlüklerini görüntülemek için sorun giderme bölümünde özetlenen adımları kullanabilirsiniz. 
 
-Ayrıca, [ARM şablonundaki parametreleri](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli#inline-parameters)geçirerek Cloud-init ETKIN bir VM dağıtabilirsiniz.
+Ayrıca, [ARM şablonundaki parametreleri](../../azure-resource-manager/templates/deploy-cli.md#inline-parameters)geçirerek Cloud-init ETKIN bir VM dağıtabilirsiniz.
 
 ## <a name="troubleshooting-cloud-init"></a>Cloud-init sorunlarını giderme
 VM sağlandıktan sonra Cloud-init, `--custom-data` sanal makineyi yapılandırmak için ' de tanımlanan tüm modüller ve betiklerle çalışır.  Yapılandırmadan herhangi bir hata veya türlü sorunu gidermeniz gerekiyorsa, `disk_setup` `runcmd` **/var/log/Cloud-init.log**dosyasında bulunan Cloud-init günlüğünde modül adını (veya örneğin) aramanız gerekir.
@@ -173,4 +173,3 @@ Cloud-init yapılandırma değişikliklerinin örnekleri için aşağıdaki belg
 - [İlk önyüklemede var olan paketleri güncelleştirmek için bir paket yöneticisi çalıştırın](cloudinit-update-vm.md)
 - [VM yerel ana bilgisayar adını değiştir](cloudinit-update-vm-hostname.md) 
 - [Uygulama paketi yüklemesi, yapılandırma dosyalarını güncelleştirme ve anahtarları ekleme](tutorial-automate-vm-deployment.md)
- 

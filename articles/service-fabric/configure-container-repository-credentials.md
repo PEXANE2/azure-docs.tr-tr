@@ -4,12 +4,12 @@ description: Kapsayıcı kayıt defterinden görüntü indirmek için depo kimli
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: 9bd6e6a0a22f7568760f014897fd28ff47e9450b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47a3fb39693bf6143d4033eed437f65b7e63eabb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89421433"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978688"
 ---
 # <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>Kapsayıcı görüntülerini indirmek için uygulamanızın depo kimlik bilgilerini yapılandırma
 
@@ -96,6 +96,9 @@ Service Fabric, kapsayıcılarınızın görüntülerini indirmek için belirte�
 1. VM için *sistem tarafından atanan yönetilen kimliğin* etkinleştirildiğinden emin olun.
 
     ![Azure portal: sanal makine ölçek kümesi kimliği oluşturma seçeneği](./media/configure-container-repository-credentials/configure-container-repository-credentials-acr-iam.png)
+
+> [!NOTE]
+> Kullanıcı tarafından atanan yönetilen kimlik için bu adımı atlayın. Aşağıdaki adımlar, ölçek kümesi yalnızca Kullanıcı tarafından atanan tek bir yönetilen kimlikle ilişkilendirildiği sürece aynı şekilde çalışır.
 
 2. Kayıt defterinden görüntüleri çekmek/okumak için sanal makine ölçek kümesine izin verin. Azure portal Azure Container Registry Access Control (ıAM) dikey penceresinde, sanal makineniz için bir *rol ataması* ekleyin:
 

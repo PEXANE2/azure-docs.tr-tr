@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b7d19d782e9cb29cfc917293f084b78830db89bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aba28e867f5fdb7bfaa917547f60565c39e382dd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797624"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977774"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM’lerde Azure Disk Şifrelemesi senaryoları
 
@@ -408,7 +408,7 @@ Azure disk şifrelemesi, aşağıdaki Linux senaryoları, özellikleri ve teknol
 - Şifrelenmiş bir sanal makinenin görüntüsünü veya anlık görüntüsünü oluşturma ve ek VM 'Leri dağıtmak için kullanma.
 - Çekirdek kilitlenme dökümü (kdump).
 - Oracle ACFS (ASM küme dosyası sistemi).
-- Gen2 VM 'Ler (bkz: [Azure 'da 2. nesil VM 'ler Için destek](generation-2.md#generation-1-vs-generation-2-capabilities)).
+- Gen2 VM 'Ler (bkz: [Azure 'da 2. nesil VM 'ler Için destek](../generation-2.md#generation-1-vs-generation-2-capabilities)).
 - Lsv2 serisi VM 'lerinin NVMe diskleri (bkz: [Lsv2-Series](../lsv2-series.md)).
 - "İç içe bağlama noktaları" olan bir VM. diğer bir deyişle, tek bir yolda birden çok bağlama noktası ("/1stmountpoint/Data/2stbağlamanoktası" gibi).
 - Bir işletim sistemi klasörünün üzerine bağlanmış bir veri sürücüsüne sahip bir VM.

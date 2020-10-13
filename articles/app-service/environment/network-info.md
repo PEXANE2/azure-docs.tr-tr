@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 0dfcf74ef07ff2bde7921860c6e13a59b0ccf023
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c5fa5ae54c7aea520a2346cba8feca294585b0d
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962545"
+ms.locfileid: "91875742"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Ortamında ağ konusunda dikkat edilmesi gerekenler #
 
@@ -161,7 +161,7 @@ Bir NSG 'de bir Alto işlevi için gerekli girişler trafiğe izin versin:
 * 53 numaralı bağlantı noktasındaki tüm IP 'lere UDP
 * 123 numaralı bağlantı noktasındaki tüm IP 'lere UDP
 * 80, 443 bağlantı noktasındaki tüm IP 'lere TCP
-* 1433 bağlantı noktalarında AzureSQL IP hizmet etiketine TCP
+* 1433 bağlantı noktalarında IP hizmeti etiketine TCP `Sql`
 * 12000 numaralı bağlantı noktasındaki tüm IP 'lere TCP
 * Tüm bağlantı noktalarında as alt ağına
 

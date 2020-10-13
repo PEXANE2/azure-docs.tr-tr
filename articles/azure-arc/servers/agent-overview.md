@@ -3,12 +3,12 @@ title: Bağlı makine Windows aracısına genel bakış
 description: Bu makalede, karma ortamlarda barındırılan sanal makinelerin izlenmesini destekleyen Azure Arc etkin sunucu aracısına sunulan ayrıntılı bir genel bakış sunulmaktadır.
 ms.date: 09/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 20f56745127a5182a5dfa057a4496b127d78eac7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 248604884cf1b7592b382a3490aab60102e12faf
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822191"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979164"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc etkin sunucular aracısına genel bakış
 
@@ -85,6 +85,7 @@ Hizmet Etiketleri:
 
 * AzureActiveDirectory
 * AzureTrafficManager
+* AzureResourceManager
 * AzureArcInfrastructure
 
 Adresleri
@@ -94,10 +95,15 @@ Adresleri
 |`management.azure.com`|Azure Resource Manager|
 |`login.windows.net`|Azure Active Directory|
 |`dc.services.visualstudio.com`|Application Insights|
-|`agentserviceapi.azure-automation.net`|Konuk Yapılandırması|
-|`*-agentservice-prod-1.azure-automation.net`|Konuk Yapılandırması|
 |`*.guestconfiguration.azure.com` |Konuk Yapılandırması|
 |`*.his.arc.azure.com`|Karma kimlik hizmeti|
+
+Önizleme aracıları (sürüm 0,11 ve daha düşük) aşağıdaki URL 'Lere da erişim gerektirir:
+
+| Aracı kaynağı | Açıklama |
+|---------|---------|
+|`agentserviceapi.azure-automation.net`|Konuk Yapılandırması|
+|`*-agentservice-prod-1.azure-automation.net`|Konuk Yapılandırması|
 
 Her bir hizmet etiketi/bölgesinin IP adresleri listesi için bkz. JSON dosyası- [Azure IP aralıkları ve hizmet etiketleri – genel bulut](https://www.microsoft.com/download/details.aspx?id=56519). Microsoft, her bir Azure hizmetini ve kullandığı IP aralıklarını içeren haftalık güncelleştirmeler yayımlar. Daha fazla bilgi için [hizmet etiketlerini](../../virtual-network/security-overview.md#service-tags)gözden geçirin.
 
@@ -177,7 +183,7 @@ Windows için bağlı makine aracısını yükledikten sonra, aşağıdaki ek si
 
 * Aşağıdaki çevresel değişkenler aracı yüklemesi sırasında oluşturulur.
 
-    |Adı |Varsayılan değer |Açıklama |
+    |Name |Varsayılan değer |Açıklama |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
@@ -239,7 +245,7 @@ Linux için bağlı makine aracısını yükledikten sonra, aşağıdaki ek sist
 
 * Aşağıdaki çevresel değişkenler aracı yüklemesi sırasında oluşturulur. Bu değişkenler ' de ayarlanır `/lib/systemd/system.conf.d/azcmagent.conf` .
 
-    |Adı |Varsayılan değer |Açıklama |
+    |Name |Varsayılan değer |Açıklama |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||

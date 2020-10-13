@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 072e885ec1c618229141dea477cd598d8db34ce7
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: e66d5c4dd4fc1c6c641da975b0ac2254f459642a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91756779"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976938"
 ---
 # <a name="quickstart-handle-sms-events"></a>Hızlı başlangıç: SMS olaylarını Işleme
 
@@ -86,19 +86,19 @@ Sonra **Seçimi Onayla**' yı seçin.
 Olay Tetikleyicilerini görüntülemek için ilk yerde olay üretmemiz gerekir.
 
 - `SMS Received` Iletişim Hizmetleri telefon numarası bir SMS mesajı aldığında olaylar üretilir. Bir olayı tetiklemek için, telefonunuzdan Iletişim Hizmetleri kaynağına bağlı telefon numarasına bir ileti gönderin.
-- `SMS Delivery Report Received` Iletişim Hizmetleri telefon numarası kullanarak bir kullanıcıya SMS gönderdiğinizde olaylar oluşturulur. Tetikleme ve olay için, `Delivery Report` [gönderilen SMS](../telephony-sms/send.md)seçeneklerinde seçeneğini etkinleştirmeniz gerekir. İle telefonunuza ileti göndermeyi deneyin `Delivery Report` . Bu eylemi tamamlamak, Azure hesabınızda birkaç ABD Doları veya daha kısa bir ücret doğurur.
+- `SMS Delivery Report Received` Iletişim Hizmetleri telefon numarası kullanarak bir kullanıcıya SMS gönderdiğinizde olaylar oluşturulur. Bir olayı tetiklemek için, `Delivery Report` [gönderilen SMS](../telephony-sms/send.md)seçeneklerinde seçeneğini etkinleştirmeniz gerekir. İle telefonunuza ileti göndermeyi deneyin `Delivery Report` . Bu eylemi tamamlamak, Azure hesabınızda birkaç ABD Doları veya daha kısa bir ücret doğurur.
 
 [Azure Iletişim Hizmetleri tarafından desteklenen olayların](../../concepts/event-handling.md)tam listesini inceleyin.
 
 ### <a name="receiving-sms-events"></a>SMS olaylarını alma
 
-Yukarıdaki iki eylemi tamamladıktan sonra,  `SMS Received` `SMS Delivery Report Received` uç noktanıza ve olayların gönderileceğini fark edersiniz. Bu olaylar, başlangıçta ayarladığımız [Azure Event Grid Viewer örneğinde](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/) görünür. Tüm yükü görmek için olayın yanındaki göz simgesine basabilirsiniz. Olaylar şöyle görünecektir:
+Yukarıdaki iki eylemi tamamladıktan sonra, `SMS Received` `SMS Delivery Report Received` uç noktanıza ve olayların gönderileceğini fark edersiniz. Bu olaylar, başlangıçta ayarladığımız [Azure Event Grid Viewer örneğinde](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/) görünür. Tüm yükü görmek için olayın yanındaki göz simgesine basabilirsiniz. Olaylar şöyle görünür:
 
 :::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="Kaynağın Olaylar sayfasında olay aboneliği düğmesini seçmeyi gösteren ekran görüntüsü.":::
 
 :::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="Kaynağın Olaylar sayfasında olay aboneliği düğmesini seçmeyi gösteren ekran görüntüsü.":::
 
-[Olay şemaları ve diğer olay kavramları](../../concepts/event-handling.md) hakkında daha fazla bilgi edinin
+[Olay şemaları ve diğer olay kavramları](../../concepts/event-handling.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
