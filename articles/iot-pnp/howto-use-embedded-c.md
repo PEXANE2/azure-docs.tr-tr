@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: edcfcda8de1fade605c409537155231d90d5849e
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91610084"
 ---
 # <a name="implement-iot-plug-and-play-on-constrained-devices"></a>Kısıtlanmış cihazlarda IoT Tak ve Kullan uygulama
@@ -24,7 +24,7 @@ Katıştırılmış C için SDK, [ıot Tak ve kullan kurallarını](concepts-con
 
 ### <a name="use-a-real-device"></a>Gerçek cihaz kullanma
 
-Katıştırılmış C, cihaz sağlama hizmeti ve IoT Tak ve Kullan için SDK kullanan tam uçtan uca bir öğretici için, [IoT Hub cihaz sağlama hizmeti aracılığıyla Azure 'A bağlanmak için bkz. YENIDEN AMAÇLANDıRıN PIC-IoT WX geliştirme panosu](https://github.com/Azure-Samples/Microchip-PIC-IoT-Wx).
+Katıştırılmış C, cihaz sağlama hizmeti ve IoT Tak ve Kullan için SDK kullanan tam uçtan uca öğretici için, [IoT Hub cihaz sağlama hizmeti aracılığıyla Azure 'A bağlanmak için bkz. yeniden amaçlandırın PIC-IoT WX geliştirme panosu](https://github.com/Azure-Samples/Microchip-PIC-IoT-Wx).
 
 ### <a name="introductory-samples"></a>Tanıtım örnekleri
 

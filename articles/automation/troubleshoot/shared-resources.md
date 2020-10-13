@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.openlocfilehash: c6bdc09d37cf29458346eaea360b4cd9e0d1226f
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187175"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>Paylaşılan kaynak sorunlarını giderme
@@ -97,7 +97,7 @@ Tüm Azurerd veya az modüllerin aynı Otomasyon hesabında gerekli olduğu yayg
 > [!NOTE]
 > `Az.Automation` `AzureRM.Automation` Dahil edilen tüm modülleri içeri aktaran tüm veya modülünü içeri aktarmaktan kaçının.
 
-Güncelleştirme işlemi askıya alıyorsa, `SimultaneousModuleImportJobCount` **Update-AzureModules.ps1** betiğine parametresini ekleyin ve varsayılan değer olan 10 ' dan daha düşük bir değer sağlayın. Bu mantığı uygularsanız, 3 veya 5 değeri ile başlatmayı deneyin. `SimultaneousModuleImportJobCount`, Azure modüllerini güncelleştirmek için kullanılan **Update-AutomationAzureModulesForAccount** sistem runbook 'unun bir parametresidir. Bu ayarlamayı yaparsanız, güncelleştirme işlemi daha fazla çalışır, ancak tamamlanması daha iyi olur. Aşağıdaki örnek, parametresini ve Runbook 'a nereye yerleştirileceğini gösterir:
+Güncelleştirme işlemi askıya alıyorsa, `SimultaneousModuleImportJobCount` **Update-AzureModules.ps1** betiğine parametresini ekleyin ve varsayılan değer olan 10 ' dan daha düşük bir değer sağlayın. Bu mantığı uygularsanız, 3 veya 5 değeri ile başlatmayı deneyin. `SimultaneousModuleImportJobCount` , Azure modüllerini güncelleştirmek için kullanılan **Update-AutomationAzureModulesForAccount** sistem runbook 'unun bir parametresidir. Bu ayarlamayı yaparsanız, güncelleştirme işlemi daha fazla çalışır, ancak tamamlanması daha iyi olur. Aşağıdaki örnek, parametresini ve Runbook 'a nereye yerleştirileceğini gösterir:
 
  ```powershell
          $Body = @"

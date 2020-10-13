@@ -6,10 +6,10 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/12/2019
 ms.openlocfilehash: bff846b4b64778d5e40ea7f08f88faf3dde81d9e
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91371618"
 ---
 # <a name="view-definition-artifact-in-azure-managed-applications"></a>Azure yönetilen uygulamalarında tanım yapıtı görüntüleme
@@ -127,9 +127,9 @@ Bu görünümü ** üzerindeviewDefinition.js**sağladığınızda, yönetilen u
 
 |Özellik|Gerekli|Açıklama|
 |---------|---------|---------|
-|üst bilgi|No|Genel Bakış sayfasının üst bilgisi.|
-|açıklama|No|Yönetilen uygulamanızın açıklaması.|
-|komutlar|No|Genel Bakış sayfasının ek araç çubuğu düğmelerinin dizisi, bkz. [Komutlar](#commands).|
+|üst bilgi|Hayır|Genel Bakış sayfasının üst bilgisi.|
+|açıklama|Hayır|Yönetilen uygulamanızın açıklaması.|
+|komutlar|Hayır|Genel Bakış sayfasının ek araç çubuğu düğmelerinin dizisi, bkz. [Komutlar](#commands).|
 
 ![Ekran görüntüsü, bir demo uygulamasını çalıştırmak için test eylemi denetimi olan bir yönetilen uygulamanın genel görünümünü gösterir.](./media/view-definition/overview.png)
 
@@ -166,27 +166,27 @@ Bu görünümü ** üzerindeviewDefinition.js**sağladığınızda, yönetilen u
 
 |Özellik|Gerekli|Açıklama|
 |---------|---------|---------|
-|displayName|No|Görünümün görüntülenmiş başlığı.|
-|sürüm|No|Görünümü işlemek için kullanılan platformun sürümü.|
-|grafik|Yes|Ölçümler sayfasının grafik dizisi.|
+|displayName|Hayır|Görünümün görüntülenmiş başlığı.|
+|sürüm|Hayır|Görünümü işlemek için kullanılan platformun sürümü.|
+|grafik|Evet|Ölçümler sayfasının grafik dizisi.|
 
 ### <a name="chart"></a>Grafik
 
 |Özellik|Gerekli|Açıklama|
 |---------|---------|---------|
-|displayName|Yes|Grafiğin görüntülenmekte olan başlığı.|
-|chartType|No|Bu grafik için kullanılacak görselleştirme. Varsayılan olarak, bir çizgi grafik kullanır. Desteklenen grafik türleri: `Bar, Line, Area, Scatter` .|
-|metrics|Yes|Bu grafiğe çizilecek ölçüm dizisi. Azure portal desteklenen ölçümler hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici Ile desteklenen ölçümler](../../azure-monitor/platform/metrics-supported.md)|
+|displayName|Evet|Grafiğin görüntülenmekte olan başlığı.|
+|chartType|Hayır|Bu grafik için kullanılacak görselleştirme. Varsayılan olarak, bir çizgi grafik kullanır. Desteklenen grafik türleri: `Bar, Line, Area, Scatter` .|
+|metrics|Evet|Bu grafiğe çizilecek ölçüm dizisi. Azure portal desteklenen ölçümler hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici Ile desteklenen ölçümler](../../azure-monitor/platform/metrics-supported.md)|
 
 ### <a name="metric"></a>Ölçüm
 
 |Özellik|Gerekli|Açıklama|
 |---------|---------|---------|
-|name|Yes|Ölçümün adı.|
-|Toplamatürü|Yes|Bu ölçüm için kullanılacak toplama türü. Desteklenen toplama türleri: `none, sum, min, max, avg, unique, percentile, count`|
-|ad alanı|No|Doğru ölçüm sağlayıcısı belirlenirken kullanılacak ek bilgiler.|
-|resourceTagFilter|No|Ölçümlerin gösterileceği kaynak etiketleri dizisi (Word ile ayrılacaktır `or` ). Kaynak türü filtresinin üzerine uygulanır.|
-|resourceType|Yes|Ölçümlerin gösterileceği kaynak türü.|
+|name|Evet|Ölçümün adı.|
+|Toplamatürü|Evet|Bu ölçüm için kullanılacak toplama türü. Desteklenen toplama türleri: `none, sum, min, max, avg, unique, percentile, count`|
+|ad alanı|Hayır|Doğru ölçüm sağlayıcısı belirlenirken kullanılacak ek bilgiler.|
+|resourceTagFilter|Hayır|Ölçümlerin gösterileceği kaynak etiketleri dizisi (Word ile ayrılacaktır `or` ). Kaynak türü filtresinin üzerine uygulanır.|
+|resourceType|Evet|Ölçümlerin gösterileceği kaynak türü.|
 
 ![Ekran görüntüsü, yönetilen bir uygulama için ölçüm görünümmy bu adlı bir Izleme sayfasını gösterir.](./media/view-definition/metrics.png)
 
@@ -226,13 +226,13 @@ Bu görünümde, özel kaynak türü için al, koy, SIL ve POST işlemleri gerç
 
 |Özellik|Gerekli|Açıklama|
 |---------|---------|---------|
-|displayName|Yes|Görünümün görüntülenmiş başlığı. Başlık, **üzerindeviewDefinition.js**her customresources görünümü için **benzersiz** olmalıdır.|
-|sürüm|No|Görünümü işlemek için kullanılan platformun sürümü.|
-|resourceType|Yes|Özel kaynak türü. Özel sağlayıcılarınızın **benzersiz** bir özel kaynak türü olması gerekir.|
-|simg|No|Görünümün simgesi. Örnek simgelerin listesi [JSON şemasında](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)tanımlanmıştır.|
-|createUIDefinition|No|Özel kaynak Oluştur komutu için UI tanımı şeması oluşturun. UI tanımları oluşturmaya giriş için bkz. [Createuıdefinition ile çalışmaya başlama](create-uidefinition-overview.md)|
-|komutlar|No|CustomResources görünümündeki ek araç çubuğu düğmelerinin dizisi, bkz. [Komutlar](#commands).|
-|sütunlar|No|Özel kaynağın sütun dizisi. Tanımlanmamışsa, `name` sütun varsayılan olarak gösterilir. Sütun `"key"` ve içermelidir `"displayName"` . Anahtar için, bir görünümde görüntülenecek özelliğin anahtarını sağlayın. İç içe ise, veya gibi nokta sınırlayıcı olarak kullanın `"key": "name"` `"key": "properties.property1"` . Görünen ad için, bir görünümde görüntülenecek özelliğin görünen adını sağlayın. Bir özellik de sağlayabilirsiniz `"optional"` . True olarak ayarlandığında, sütun varsayılan olarak bir görünümde gizlenir.|
+|displayName|Evet|Görünümün görüntülenmiş başlığı. Başlık, **üzerindeviewDefinition.js**her customresources görünümü için **benzersiz** olmalıdır.|
+|sürüm|Hayır|Görünümü işlemek için kullanılan platformun sürümü.|
+|resourceType|Evet|Özel kaynak türü. Özel sağlayıcılarınızın **benzersiz** bir özel kaynak türü olması gerekir.|
+|simg|Hayır|Görünümün simgesi. Örnek simgelerin listesi [JSON şemasında](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)tanımlanmıştır.|
+|createUIDefinition|Hayır|Özel kaynak Oluştur komutu için UI tanımı şeması oluşturun. UI tanımları oluşturmaya giriş için bkz. [Createuıdefinition ile çalışmaya başlama](create-uidefinition-overview.md)|
+|komutlar|Hayır|CustomResources görünümündeki ek araç çubuğu düğmelerinin dizisi, bkz. [Komutlar](#commands).|
+|sütunlar|Hayır|Özel kaynağın sütun dizisi. Tanımlanmamışsa, `name` sütun varsayılan olarak gösterilir. Sütun `"key"` ve içermelidir `"displayName"` . Anahtar için, bir görünümde görüntülenecek özelliğin anahtarını sağlayın. İç içe ise, veya gibi nokta sınırlayıcı olarak kullanın `"key": "name"` `"key": "properties.property1"` . Görünen ad için, bir görünümde görüntülenecek özelliğin görünen adını sağlayın. Bir özellik de sağlayabilirsiniz `"optional"` . True olarak ayarlandığında, sütun varsayılan olarak bir görünümde gizlenir.|
 
 ![Ekran görüntüsü, test özel kaynak türü ve denetim özel bağlam eylemi adlı bir kaynak sayfasını gösterir.](./media/view-definition/customresources.png)
 
@@ -255,10 +255,10 @@ Komutlar, sayfada görüntülenen ek araç çubuğu düğmelerinin bir dizisidir
 
 |Özellik|Gerekli|Açıklama|
 |---------|---------|---------|
-|displayName|Yes|Komut düğmesinin görünen adı.|
-|path|Yes|Özel sağlayıcı eylem adı. Eylem ** üzerindemainTemplate.js**tanımlanmış olmalıdır.|
-|simg|No|Komut düğmesinin simgesi. Örnek simgelerin listesi [JSON şemasında](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)tanımlanmıştır.|
-|createUIDefinition|No|Komut için UI tanımı şeması oluştur. UI tanımları oluşturmaya giriş için bkz. [Createuıdefinition ile çalışmaya başlama](create-uidefinition-overview.md).|
+|displayName|Evet|Komut düğmesinin görünen adı.|
+|path|Evet|Özel sağlayıcı eylem adı. Eylem ** üzerindemainTemplate.js**tanımlanmış olmalıdır.|
+|simg|Hayır|Komut düğmesinin simgesi. Örnek simgelerin listesi [JSON şemasında](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)tanımlanmıştır.|
+|createUIDefinition|Hayır|Komut için UI tanımı şeması oluştur. UI tanımları oluşturmaya giriş için bkz. [Createuıdefinition ile çalışmaya başlama](create-uidefinition-overview.md).|
 
 ## <a name="associations"></a>İçermektedir
 
@@ -282,10 +282,10 @@ Bu görünümde, mevcut Azure kaynaklarını öğesine göre genişletebilirsini
 
 |Özellik|Gerekli|Açıklama|
 |---------|---------|---------|
-|displayName|Yes|Görünümün görüntülenmiş başlığı. Başlık, **üzerindeviewDefinition.js**her ilişkilendirme görünümü için **benzersiz** olmalıdır.|
-|sürüm|No|Görünümü işlemek için kullanılan platformun sürümü.|
-|targetResourceType|Yes|Hedef kaynak türü. Bu, kaynak ekleme için görüntülenecek kaynak türüdür.|
-|createUIDefinition|No|İlişki kaynağı oluşturma komutu için UI tanımı şeması oluşturun. UI tanımları oluşturmaya giriş için bkz. [Createuıdefinition ile çalışmaya başlama](create-uidefinition-overview.md)|
+|displayName|Evet|Görünümün görüntülenmiş başlığı. Başlık, **üzerindeviewDefinition.js**her ilişkilendirme görünümü için **benzersiz** olmalıdır.|
+|sürüm|Hayır|Görünümü işlemek için kullanılan platformun sürümü.|
+|targetResourceType|Evet|Hedef kaynak türü. Bu, kaynak ekleme için görüntülenecek kaynak türüdür.|
+|createUIDefinition|Hayır|İlişki kaynağı oluşturma komutu için UI tanımı şeması oluşturun. UI tanımları oluşturmaya giriş için bkz. [Createuıdefinition ile çalışmaya başlama](create-uidefinition-overview.md)|
 
 ## <a name="looking-for-help"></a>Yardım aranıyor
 

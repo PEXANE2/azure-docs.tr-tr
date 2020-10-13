@@ -10,10 +10,10 @@ ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
 ms.openlocfilehash: badf10da8af0ed3829deb2498b51b5d5c8ce6a93
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91604415"
 ---
 # <a name="steps-to-add-a-role-assignment"></a>Rol ataması ekleme adımları
@@ -86,9 +86,9 @@ Güvenlik sorumlusunu, rolünü ve kapsamını öğrendikten sonra rolü atayabi
 Rol atamaları ekleme hakkında ayrıntılı adımlar için aşağıdaki makalelere göz atın.
 
 - [Azure portalını kullanarak Azure rol ataması ekleme veya kaldırma](role-assignments-portal.md)
-- [Azure PowerShell kullanarak Azure rol atamaları ekleme veya kaldırma](role-assignments-powershell.md)
-- [Azure CLı kullanarak Azure rol atamaları ekleme veya kaldırma](role-assignments-cli.md)
-- [REST API kullanarak Azure rol atamaları ekleme veya kaldırma](role-assignments-rest.md)
+- [Azure PowerShell kullanarak Azure rol atamalarını ekleme veya kaldırma](role-assignments-powershell.md)
+- [Azure CLI kullanarak Azure rol atamalarını ekleme veya kaldırma](role-assignments-cli.md)
+- [REST API kullanarak Azure rol atamalarını ekleme veya kaldırma](role-assignments-rest.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

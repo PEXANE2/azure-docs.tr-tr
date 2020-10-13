@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
 ms.openlocfilehash: 71147352c5b75195ed0dff2b05acc5315f3183cc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90941902"
 ---
 # <a name="connect-your-data-from-defender-for-iot-to-azure-sentinel-preview"></a>IoT için Defender 'daki verilerinizi Azure Sentinel 'e bağlama (Önizleme)
@@ -26,13 +26,13 @@ Azure Sentinel 'de IoT veri Bağlayıcısı için Azure Güvenlik Merkezi şu an
 Bu kılavuzda, Azure Sentinel 'e IoT verileri için Defender 'ı nasıl bağlayacağınızı öğrenin.
 
 > [!div class="checklist"]
-> * Önkoşullar
+> * Ön koşullar
 > * Bağlantı ayarları
 > * Log Analytics uyarı görünümü
 
 IoT için Defender 'daki uyarıları bağlama ve doğrudan Azure Sentinel 'e akış.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Çalışma alanının **okuma** ve **yazma** izinlerine sahip olmanız gerekir.
 - **IoT Için Defender 'ın** ilgili IoT Hub **etkinleştirilmiş** olması gerekir.

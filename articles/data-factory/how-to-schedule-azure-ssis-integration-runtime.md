@@ -14,10 +14,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
 ms.openlocfilehash: 4df4f7e1db880a38f647e8e384cbfb29b70954ec
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187260"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime'ı belirli bir zamanlamaya göre başlatma ve durdurma
@@ -30,7 +30,7 @@ Alternatif olarak, günlük ETL iş yüklerinizi yürütmeden ve bu işlemi tama
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Azure-SSIS IR zaten sağlamadıysanız [öğreticideki](tutorial-create-azure-ssis-runtime-portal.md)yönergeleri izleyerek sağlayın. 
 
 ## <a name="create-and-schedule-adf-pipelines-that-start-and-or-stop-azure-ssis-ir"></a>Azure-SSIS IR başlatılan ve durduran ADF işlem hatlarını oluşturma ve zamanlama
@@ -136,7 +136,7 @@ Her gün gece yarısı çalışacak ve üçüncü işlem hattı ile ilişkili ol
     1. **Sunucu adı**için ** &lt; sunucu adı &gt; . Database.Windows.net**girin.
     2. ** >>seçeneklerini **belirleyin.
     3. **Veritabanına Bağlan**Için **SSISDB**' yi seçin.
-    4. **Bağlan**’ı seçin. 
+    4. **Bağlan**'ı seçin. 
     5. **Integration Services katalogları**  ->  **sssıı** ' nı genişletin-klasör > **projelerinizi** >-SSIS proje-> **paketlerinizi**>. 
     6. Çalıştırmak için belirtilen SSIS paketine sağ tıklayın ve **raporlar**  ->  **Standart raporlar**  ->  **Tüm yürütmeler**' i seçin. 
     7. Çalıştığını doğrulayın. 
@@ -371,7 +371,7 @@ Aşağıdaki bölümde PowerShell runbook 'u oluşturma adımları sağlanmaktad
 
    ![Azure SSIS IR başlangıç zamanlaması](./media/how-to-schedule-azure-ssis-integration-runtime/new-schedule-start.png)
     
-3. **Parametrelere ve çalışma ayarları** sekmesine geçin. kaynak grubunuzu, ADF 'yi ve Azure-SSIS IR adlarını belirtin. **İşlem**için **Başlat** girin ve **Tamam**' ı seçin. Runbook 'larınızın **zamanlamalar** üzerinde zamanlama sayfasını görmek Için yeniden **Tamam ' ı** seçin. 
+3. Parametrelere geçin **ve ayarları Çalıştır** sekmesine geçin. Kaynak grubunuzu, ADF 'yi ve Azure-SSIS IR adlarını belirtin. **İşlem**için **Başlat** girin ve **Tamam**' ı seçin. Runbook 'larınızın **zamanlamalar** üzerinde zamanlama sayfasını görmek Için yeniden **Tamam ' ı** seçin. 
 
    ![Azure SSIS IR 'yi başlama için zamanlama](./media/how-to-schedule-azure-ssis-integration-runtime/start-schedule.png)
     

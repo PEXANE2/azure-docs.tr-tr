@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
 ms.openlocfilehash: 25e5cb6e34624f3272e83e1e7c1cd847b865ae8e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90941431"
 ---
 # <a name="metrics-advisor-glossary-of-common-vocabulary-and-concepts"></a>Ortak Sözlük ve kavramların ölçüm Danışmanı sözlüğü
@@ -60,7 +60,7 @@ Bu örnekte, *Kategori* ve *Pazar* boyutlardır. *Gelir* , farklı kategorilere 
 
 Bir uygulamada günlüğe kaydedilen hataların sayısı için verileriniz olduğunu varsayalım. Zaman serisi verileriniz şuna benzer görünebilir:
 
-| Zaman damgası | Uygulama bileşeni | Region | Hata sayısı |
+| Zaman damgası | Uygulama bileşeni | Bölge | Hata sayısı |
 | ----------|----------|--------|----- |
 | 2020-6-1 | Çalışan veritabanı | BATı AB | 9000 |
 | 2020-6-1 | İleti kuyruğu | DOĞU ABD | 1000 |
