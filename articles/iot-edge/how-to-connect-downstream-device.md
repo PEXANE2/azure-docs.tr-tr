@@ -13,10 +13,10 @@ ms.custom:
 - mqtt
 - devx-track-js
 ms.openlocfilehash: 78db26318fc95adec1b31799ed143b3e4a6b3acc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91281465"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Aşağı akış cihazını Azure IoT Edge ağ geçidine bağlama
@@ -37,7 +37,7 @@ Bu makalede, aşağı akış cihaz bağlantılarıyla ilgili yaygın sorunlar ve
 
 Bu makalede, terimler *ağ geçidi* ve *IoT Edge Ağ* geçidi, saydam bir ağ geçidi olarak yapılandırılmış bir IoT Edge cihazına başvurur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * IoT Edge cihazı yapılandırmak için kullanılan kök CA sertifika dosyasını, aşağı akış cihazınızda bulunan [saydam bir ağ geçidi olarak davranacak şekilde yapılandırın](how-to-create-transparent-gateway.md) . Aşağı akış cihazınız, ağ geçidi cihazının kimliğini doğrulamak için bu sertifikayı kullanır. Tanıtım sertifikalarını kullandıysanız, kök CA sertifikasına **Azure-iot-test-only. root. ca. cert. ped**adı verilir.
 * [Bir aşağı akış cihazının Azure IoT Hub kimlik doğrulaması](how-to-authenticate-downstream-device.md)bölümünde açıklandığı gibi ağ geçidi cihazını işaret eden değiştirilmiş bağlantı dizesine sahip olmalıdır.

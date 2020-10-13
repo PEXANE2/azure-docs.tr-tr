@@ -4,10 +4,10 @@ description: Bu öğreticide, Azure VMware çözümü özel bulutunu ölçeklend
 ms.topic: tutorial
 ms.date: 09/21/2020
 ms.openlocfilehash: e1226eb98607a34869bda1f998c7cecea2e50919
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91254423"
 ---
 # <a name="tutorial-scale-an-azure-vmware-solution-private-cloud"></a>Öğretici: Azure VMware çözümünü özel bulutu ölçeklendirme
@@ -32,7 +32,7 @@ Bu öğreticiyi tamamlayabilmeniz için özel bir buluta ihtiyacınız vardır. 
 
 1. **Küme Ekle** sayfasında, ana bilgisayar sayısını seçmek için kaydırıcıyı kullanın. **Kaydet**’i seçin.
 
-   :::image type="content" source="./media/tutorial-scale-private-cloud/ss3-configure-new-cluster.png" alt-text="Küme Ekle sayfasında, ana bilgisayar sayısını seçmek için kaydırıcıyı kullanın. Kaydet ' i seçin." border="true":::
+   :::image type="content" source="./media/tutorial-scale-private-cloud/ss3-configure-new-cluster.png" alt-text="Küme Ekle ' yi seçin" border="true":::
 
    Yeni kümenin dağıtımı başlar.
 
@@ -40,11 +40,11 @@ Bu öğreticiyi tamamlayabilmeniz için özel bir buluta ihtiyacınız vardır. 
 
 1. Mevcut bir özel bulutun Genel Bakış sayfasında, **özel bulutu Ölçeklendir** ' i seçin ve kümeyi düzenlemek için kurşun kalem simgesini seçin.
 
-   :::image type="content" source="./media/tutorial-scale-private-cloud/ss4-select-scale-private-cloud-2.png" alt-text="Genel görünümde ölçek özel bulutu seçin" border="true":::
+   :::image type="content" source="./media/tutorial-scale-private-cloud/ss4-select-scale-private-cloud-2.png" alt-text="Küme Ekle ' yi seçin" border="true":::
 
 1. **Kümeyi Düzenle** sayfasında, ana bilgisayar sayısını seçmek için kaydırıcıyı kullanın. **Kaydet**’i seçin.
 
-   :::image type="content" source="./media/tutorial-scale-private-cloud/ss5-scale-cluster.png" alt-text="Kümeyi Düzenle sayfasında, ana bilgisayar sayısını seçmek için kaydırıcıyı kullanın. Kaydet ' i seçin." border="true":::
+   :::image type="content" source="./media/tutorial-scale-private-cloud/ss5-scale-cluster.png" alt-text="Küme Ekle ' yi seçin" border="true":::
 
    Ana bilgisayarların kümeye eklenmesi başlayacaktır.
 

@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/15/2020
-ms.openlocfilehash: b524b0d8f24f011065772495bc2bb283a3c90d4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/08/2020
+ms.openlocfilehash: 06b92d982b42d97849994b4a21696b72461efe1f
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760262"
+ms.locfileid: "91893773"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Izleyici sık sorulan sorular
 
@@ -322,7 +322,6 @@ Evet, şu sunucuda yazabilirsiniz:
 * Sunucu telemetrisi: Application Insights modülü istemci IP adresini toplar. Ayarlanırsa, toplanmaz `X-Forwarded-For` .
 * IP adresi ve coğrafi konum verilerinin nasıl toplandığı hakkında daha fazla bilgi edinmek için Application Insights bu [makaleye](./app/ip-collection.md)bakın.
 
-
 Öğesini, `ClientIpHeaderTelemetryInitializer` IP adresini farklı bir üst bilgiden alacak şekilde yapılandırabilirsiniz. Bazı sistemlerde, örneğin, bir proxy, yük dengeleyici veya CDN ile taşınır `X-Originating-IP` . [Daha fazla bilgi edinin](https://apmtips.com/posts/2016-07-05-client-ip-address/).
 
 İstek telemetrinizi bir haritada göstermek için [Power BI kullanabilirsiniz](app/export-power-bi.md ) .
@@ -398,6 +397,29 @@ Aktarılan her öğe, `itemCount` öğenin kaç tane özgün olay temsil ettiği
     requests | summarize original_events = sum(itemCount), transmitted_events = count()
 ```
 
+### <a name="how-do-i-move-an-application-insights-resource-to-a-new-region"></a>Application Insights bir kaynağı yeni bir bölgeye taşımak Nasıl yaparım??
+
+Mevcut Application Insights kaynaklarının bir bölgeden diğerine taşınması **Şu anda desteklenmiyor**. Topladığınız geçmiş verileri yeni bir bölgeye **geçirilemez** . Kısmi geçici çözüm şunlardır:
+
+1. Yeni bölgede yepyeni bir Application Insights kaynak ([Klasik](app/create-new-resource.md) veya [çalışma alanı tabanlı](/app/create-workspace-resource.md)) oluşturun.
+2. Yeni kaynaktaki özgün kaynağa özgü tüm benzersiz özelleştirmeleri yeniden oluşturun.
+3. Uygulamanızı yeni bölge kaynak [izleme anahtarını](app/create-new-resource.md#copy-the-instrumentation-key) veya [bağlantı dizesini](app/sdk-connection-string.md)kullanacak şekilde değiştirin.  
+4. Yeni Application Insights kaynağınız ile her şeyin beklendiği gibi çalışmaya devam etmekte olduğunu onaylamak için test edin. 
+5. Bu noktada, **tüm geçmiş verilerin kaybolmasına**neden olacak özgün kaynağı silebilirsiniz. Veya veri saklama ayarlarının süresi boyunca geçmiş raporlama amacıyla özgün kaynağı koruyun.
+
+Genellikle yeni bölgedeki kaynak için el ile yeniden oluşturulması veya güncellenmesi gereken benzersiz özelleştirmeler şunlardır:
+
+- Özel panoları ve çalışma kitaplarını yeniden oluşturun. 
+- Herhangi bir özel günlük/ölçüm uyarısı kapsamını yeniden oluşturun veya güncelleştirin. 
+- Kullanılabilirlik uyarılarını yeniden oluşturun.
+- Kullanıcılarınızın yeni kaynağa erişmesi için gerekli olan tüm özel Role-Based Access Control (RBAC) ayarlarını yeniden oluşturun. 
+- Alma örnekleme, veri saklama, günlük uç ve özel ölçümler ile ilgili ayarları çoğaltın. Bu ayarlar, **kullanım ve tahmini maliyetler** bölmesi aracılığıyla denetlenir.
+- [Sürüm ek açıklamaları](/app/annotations.md), [canlı ölçümler güvenli denetim kanalı](app/live-stream.md#secure-the-control-channel) vb. gibi API anahtarlarına bağlı olan herhangi bir tümleştirme Yeni API anahtarları oluşturmanız ve ilişkili tümleştirmeyi güncelleştirmeniz gerekecektir. 
+- Klasik kaynaklarda sürekli dışarı aktarmanın yeniden yapılandırılması gerekir.
+- Çalışma alanı tabanlı kaynaklardaki tanılama ayarlarının yeniden yapılandırılması gerekir.
+
+> [!NOTE]
+> Yeni bir bölgede oluşturmakta olduğunuz kaynak klasik bir kaynağı değiştirirken, [Yeni bir çalışma alanı tabanlı kaynak oluşturma](app/create-workspace-resource.md) veya alternatif olarak [var olan kaynağınızı çalışma alanı temelinde geçirme](app/convert-classic-resource.md)avantajlarının araştırmalarını öneririz. 
 
 ### <a name="automation"></a>Otomasyon
 

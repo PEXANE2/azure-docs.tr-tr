@@ -4,10 +4,10 @@ description: Azure Service Fabric uygulamaları kaldırma ve dağıtma hakkında
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.openlocfilehash: 8bc4557c5d0d59330c7e91a4b3fdce83cfbf334c
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91827423"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>PowerShell kullanarak uygulama dağıtma ve kaldırma
@@ -314,7 +314,7 @@ Unregister-ServiceFabricApplicationType MyApplicationType 1.0.0
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage, ımatoreconnectionstring ister
+### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage ımatoreconnectionstring için sorar
 
 Service Fabric SDK ortamında doğru varsayılanlar ayarlanmış olmalıdır. Ancak gerekirse, tüm komutlar için ımatoreconnectionstring, Service Fabric kümesinin kullandığı değerle eşleşmelidir. Imabtoreconnectionstring ' i küme bildiriminde bulabilirsiniz, [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) ve Get-ImageStoreConnectionStringFromClusterManifest komutlarını kullanarak elde edebilirsiniz:
 

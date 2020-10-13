@@ -12,10 +12,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.openlocfilehash: d193438a232cc6bc113efb31ce4276117a366add
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91276905"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory 'de bir Azure-SSIS tümleştirme çalışma zamanı oluşturma
@@ -39,7 +39,7 @@ Bir Azure-SSIS IR sağlandıktan sonra, Azure 'da paketlerinizi dağıtmak ve ç
 
 Bu makalede, Azure portal, Azure PowerShell ve Azure Resource Manager şablonunu kullanarak bir Azure-SSIS IR sağlama gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -79,7 +79,7 @@ Data Factory ve Azure-SSIS IR kullanılabilen Azure bölgelerinin listesi için 
 
 Aşağıdaki tabloda, Azure-SSıR IR ile bağlantılı olarak bir Azure SQL veritabanı sunucusunun ve SQL yönetilen örneğinin belirli özellikleri karşılaştırılmaktadır:
 
-| Öne çıkan özelliği | SQL Veritabanı| SQL yönetilen örneği |
+| Özellik | SQL Veritabanı| SQL yönetilen örneği |
 |---------|--------------|------------------|
 | **Zamanlama** | SQL Server Agent kullanılamıyor.<br/><br/>Bkz. Data Factory işlem hattında [paket yürütmeyi zamanlama](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages?view=sql-server-2017#activity).| Yönetilen örnek Aracısı kullanılabilir. |
 | **Kimlik Doğrulaması** | **Db_owner** rolünde üye olarak, veri fabrikanızın yönetilen kimliği ile herhangi BIR Azure AD grubunu temsil eden bir bulunan veritabanı kullanıcısına sahıp bır SSISDB örneği oluşturabilirsiniz.<br/><br/>Bkz. [Azure SQL veritabanı sunucusunda BIR SSıSDB oluşturmak Için Azure AD kimlik doğrulamasını etkinleştirme](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database). | Veri fabrikanızın yönetilen kimliğini temsil eden kapsanan bir veritabanı kullanıcısına sahip bir SSıSDB örneği oluşturabilirsiniz. <br/><br/>Bkz. Azure [SQL yönetilen örneği 'NDE SSıSDB oluşturmak Için Azure AD kimlik doğrulamasını etkinleştirme](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-sql-managed-instance). |
@@ -274,7 +274,7 @@ Uygun olduğunda **Bağlantıyı Sına** ' yı seçin ve başarılı olursa **İ
       
          1. **İkinci statik genel IP adresi**için Azure-SSIS IR gereksinimlerini karşılayan ikinci STATIK genel IP adresini seçin. Herhangi bir hesabınız yoksa, yeni bağlantı **Oluştur** ' a tıklayarak Azure Portal STATIK genel IP adresleri oluşturun ve ardından buradan Yenile düğmesine tıklayın, böylece bunları seçebilirsiniz.
 
-   1. Azure-SSIS IR için ara sunucu olarak şirket içinde barındırılan bir IR yapılandırmak isteyip istemediğinizi seçmek için Azure-SSIS Integration Runtime onay kutusu **Için şirket Içinde barındırılan Integration Runtime ara sunucu olarak ayarla** ' yı seçin. Daha fazla bilgi için bkz. [proxy olarak şirket içinde barındırılan BIR IR ayarlama](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis). 
+   1. Azure-SSIS IR için ara sunucu olarak şirket içinde barındırılan bir IR yapılandırmak isteyip istemediğinizi seçmek için Azure-SSIS Integration Runtime onay kutusunu **bir ara sunucu olarak ayarla Self-Hosted Integration Runtime** seçin. Daha fazla bilgi için bkz. [proxy olarak şirket içinde barındırılan BIR IR ayarlama](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis). 
 
       Onay kutusunu seçerseniz, aşağıdaki adımları uygulayın.
 

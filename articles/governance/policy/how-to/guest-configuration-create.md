@@ -3,12 +3,12 @@ title: Windows için Konuk Yapılandırma ilkeleri oluşturma
 description: Windows için Azure Ilke Konuk yapılandırma ilkesi oluşturmayı öğrenin.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 3c8ab71b4ffc87209d190bc7ede0257f1377ff2b
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: ef571857664739c055912cb6460c4638d4cad32b
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728939"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893127"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Windows için Konuk Yapılandırma ilkeleri oluşturma
 
@@ -210,7 +210,7 @@ New-GuestConfigurationPackage `
   -Configuration './Config/AuditBitlocker.mof'
 ```
 
-Yapılandırma paketini oluşturduktan ve Azure 'a yayımlamadan önce, paketi iş istasyonunuzdan veya CI/CD ortamınızdan test edebilirsiniz. GuestConfiguration cmdlet 'i, `Test-GuestConfigurationPackage` Azure makinelerinde kullanıldığı gibi geliştirme ortamınızda aynı aracıyı içerir. Bu çözümü kullanarak, faturalandırılan bulut ortamlarına bırakmadan önce tümleştirme testini yerel olarak gerçekleştirebilirsiniz.
+Yapılandırma paketini oluşturduktan, ancak Azure 'a yayımlamadan önce, paketi iş istasyonunuzdan veya sürekli tümleştirme ve sürekli dağıtım (CI/CD) ortamınızdan test edebilirsiniz. GuestConfiguration cmdlet 'i, `Test-GuestConfigurationPackage` Azure makinelerinde kullanıldığı gibi geliştirme ortamınızda aynı aracıyı içerir. Bu çözümü kullanarak, faturalandırılan bulut ortamlarına bırakmadan önce tümleştirme testini yerel olarak gerçekleştirebilirsiniz.
 
 Aracı gerçekten yerel ortamı değerlendirdiğinden, çoğu durumda test-cmdlet 'ini, denetlemeyi planladığınız aynı işletim sistemi platformunda çalıştırmanız gerekir. Test yalnızca içerik paketine dahil edilen modülleri kullanır.
 
@@ -233,7 +233,7 @@ Cmdlet 'i PowerShell ardışık düzeninde girişi de destekler. Cmdlet 'inin ç
 New-GuestConfigurationPackage -Name AuditBitlocker -Configuration ./Config/AuditBitlocker.mof | Test-GuestConfigurationPackage
 ```
 
-Sonraki adım, dosyayı blob depolamaya yayımlamaktır. Aşağıdaki komut dosyası, bu görevi otomatikleştirmek için kullanabileceğiniz bir işlevi içerir. İşlevinde kullanılan komutlar `publish` `Az.Storage` modülü gerektirir.
+Sonraki adım, dosyayı Azure Blob depolama alanına yayımlamaktır. Aşağıdaki komut dosyası, bu görevi otomatikleştirmek için kullanabileceğiniz bir işlevi içerir. İşlevinde kullanılan komutlar `publish` `Az.Storage` modülü gerektirir.
 
 ```azurepowershell-interactive
 function publish {
@@ -600,7 +600,7 @@ $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 
 Azure Ilke Konuk yapılandırması atamaları sorunlarını gidermeye yardımcı olmak için Önizleme sürümünde bir araç sunulmaktadır. Araç önizlemededir ve modül adı [Konuk yapılandırması sorun giderici](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/)olarak PowerShell Galerisi yayımlandı.
 
-Bu araçtaki cmdlet 'ler hakkında daha fazla bilgi için yerleşik Kılavuzu göstermek üzere PowerShell 'deki Get-Help komutunu kullanın. Araç sık sık güncelleştirmeler alırken bu, en son bilgileri almanın en iyi yoludur.
+Bu araçtaki cmdlet 'ler hakkında daha fazla bilgi için, yerleşik Kılavuzu göstermek üzere PowerShell 'deki Get-Help komutunu kullanın. Araç sık sık güncelleştirmeler alırken bu, en son bilgileri almanın en iyi yoludur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

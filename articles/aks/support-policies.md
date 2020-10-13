@@ -4,12 +4,12 @@ description: Önizleme aşamasında olan Azure Kubernetes hizmeti (AKS) destek i
 services: container-service
 ms.topic: article
 ms.date: 09/18/2020
-ms.openlocfilehash: 188416d9ef6f8e7568b10e8ccbb405be0bff315d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86b1c0bba30b41a2ee17cfbdf05286c4d2b3fb8a
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888986"
+ms.locfileid: "91892719"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes hizmeti için destek ilkeleri
 
@@ -130,8 +130,7 @@ Yalnızca özel alt ağlardaki NSG 'leri özelleştirebilirsiniz. Yönetilen alt
 
 ## <a name="stopped-or-de-allocated-clusters"></a>Durdurulmuş veya serbest ayrılmış kümeler
 
-Yukarıdaki şekilde, tüm küme düğümlerinin IaaS API 'Leri/CLı/Portal aracılığıyla el ile serbest tahsisi, kümeyi destek dışında oluşturur.
-Tüm düğümü durdurmak/serbest bırakmak için desteklenen tek yol [aks kümesini durdurmak ve bu, küme durumunu 12 aya kadar koruyacak.
+Daha önce belirtildiği gibi, IaaS API 'Leri/CLı/Portal aracılığıyla tüm küme düğümlerini el ile serbest olarak ayırmak, kümeyi destek dışında oluşturur. Tüm düğümleri durdurmak/serbest bırakmak için desteklenen tek yol, küme durumunu 12 aya kadar koruyan [AKS kümesini durdurmaktır](start-stop-cluster.md#stop-an-aks-cluster).
 
 12 aydan uzun süre durdurulan kümeler artık durumu korumaz. 
 

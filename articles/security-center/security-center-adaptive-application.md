@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
 ms.openlocfilehash: 12140b71f8ef720a9e48b486a43e683b5766d102
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91439011"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Makinelerinizin saldırı yüzeylerini azaltmak için uyarlamalı uygulama denetimleri kullanma
@@ -54,7 +54,7 @@ Bilinen güvenli uygulamalar listesini tanımlayarak ve başka bir şey yürüt�
 |Fiyat|[Sunucular Için Azure Defender](defender-for-servers-introduction.md) gerekir|
 |Desteklenen makineler:|![Evet ](./media/icons/yes-icon.png) Azure ve Windows ve Linux çalıştıran Azure dışı makineler<br>![Evet ](./media/icons/yes-icon.png) [Azure yay](https://docs.microsoft.com/azure/azure-arc/) makineleri|
 |Gerekli roller ve izinler:|**Güvenlik okuyucu** ve **okuyucu** rolleri hem grupları hem de bilinen güvenli uygulamaların listesini görüntüleyebilir<br>**Katkıda bulunan** ve **Güvenlik yönetici** rolleri, grupları ve bilinen güvenli uygulamaların listesini düzenleyebilir|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Evet](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 

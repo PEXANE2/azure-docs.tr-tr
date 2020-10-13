@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 9/3/2020
 ms.author: JenCook
 ms.openlocfilehash: a7e3ade66aa4ebf7584e03b75f85c48b44537d97
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90998232"
 ---
 # <a name="azure-confidential-computing-virtual-machines-vms-overview"></a>Azure gizli bilgi işlem sanal makineleri (VM) genel bakış
@@ -48,5 +48,5 @@ Uygulama geliştirirken, kodunuzun ve verilerinizin parçalarını kuşkuya içi
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 - Azure gizli bilgi işlem sanal makinelerine çözüm dağıtmaya yönelik [en iyi uygulamaları okuyun](virtual-machine-solutions.md) .
-- [DCsv2 serisi sanal makine dağıtma](quick-create-portal.md)
+- [DCsv2-Series sanal makinesini dağıtma](quick-create-portal.md)
 - OE SDK kullanarak [bir kuşve uyumlu uygulama geliştirme](application-development.md)

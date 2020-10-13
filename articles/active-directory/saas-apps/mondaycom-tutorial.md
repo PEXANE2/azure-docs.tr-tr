@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 2128559d8074281c1019d99e1316da34c7ec6797
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed3d5de27a2d9ce5060ff4bfe71c595512658e58
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554617"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940625"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mondaycom"></a>Öğretici: monday.com ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, monday.com 'i Azure Active Directory (Azure AD) ile tümleştir
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -88,14 +88,14 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     c. Meta veri dosyası başarıyla karşıya yüklendikten sonra, **tanımlayıcı** ve **yanıt URL** değerleri temel SAML yapılandırması bölümünde otomatik olarak doldurulur.
 
-    ![image](common/idp-intiated.png)
+    ![Ekran görüntüsü; tanımlayıcı girebileceğiniz, yanıt U R L ve Kaydet ' i seçebileceğiniz temel SAML yapılandırmasını gösterir.](common/idp-intiated.png)
 
     > [!Note]
     > **Tanımlayıcı** ve **yanıt URL 'si** değerleri otomatik olarak doldurulmazsa, değerleri el ile girin. **Tanımlayıcı** ve **yanıt URL 'si** aynıdır ve değer aşağıdaki düzende bulunur:`https://<your-domain>.monday.com/saml/saml_callback`
 
 1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    ![image](common/metadata-upload-additional-signon.png)
+    ![Ekran görüntüsü, U R L 'ye bir Işaret girebileceğiniz ek U R 'Leri ayarlamayı gösterir.](common/metadata-upload-additional-signon.png)
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<YOUR_DOMAIN>.monday.com`
 
@@ -104,11 +104,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. monday.com uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
-    ![image](common/default-attributes.png)
+    ![Ekran görüntüsü, kullanıcı özniteliklerinin & taleplerini Kullanıcı. Ise ve Emaadresi Kullanıcı. Mail gibi varsayılan değerlerle gösterir.](common/default-attributes.png)
 
 1. Monday.com uygulaması, yukarıdakine ek olarak, aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Name | Kaynak özniteliği |
+    | Adı | Kaynak özniteliği |
     |--|--|
     | E-posta | Kullanıcı. Mail |
     | FirstName | Kullanıcı. |
@@ -166,15 +166,15 @@ Bu bölümde, monday.com 'e erişim vererek Azure çoklu oturum açma özelliği
 
 1. Sayfanın sağ üst köşesindeki **profile** gidin ve **yönetici**' ye tıklayın.
 
-    ![monday.com yapılandırması](./media/mondaycom-tutorial/configuration01.png)
+    ![Ekran görüntüsü seçili yönetim profilini gösterir.](./media/mondaycom-tutorial/configuration01.png)
 
 1. **Güvenlik** ' i SEÇIN ve SAML ' nin yanındaki **Aç** ' a tıkladığınızdan emin olun.
 
-    ![monday.com yapılandırması](./media/mondaycom-tutorial/configuration02.png)
+    ![Ekran görüntüsü, SAML 'nin yanında açma seçeneğiyle Güvenlik sekmesini gösterir.](./media/mondaycom-tutorial/configuration02.png)
 
 1. IDP 'nizden aşağıdaki ayrıntıları girin.
 
-    ![monday.com yapılandırması](./media/mondaycom-tutorial/configuration03.png)
+    ![Ekran görüntüsü, t 'ınızdan bilgi girebileceğiniz SAML sağlayıcısını gösterir.](./media/mondaycom-tutorial/configuration03.png)
 
     > [!NOTE]
     > Daha fazla bilgi için [Bu](https://support.monday.com/hc/articles/360000460605-SAML-Single-Sign-on?abcb=34642) makaleye bakın

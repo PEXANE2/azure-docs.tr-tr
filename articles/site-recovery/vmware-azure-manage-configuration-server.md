@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 5748ff87e94daef80b140e015371eb7a334fffac
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361492"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>VMware VM/fiziksel sunucu olağanüstü durum kurtarma işlemi için yapılandırma sunucusunu yönetme
@@ -183,13 +183,13 @@ Sunucuyu aşağıdaki gibi yükseltin:
     ![Güncelleştir](./media/vmware-azure-manage-configuration-server/update2.png)
 3. Güncelleştirme yükleyicisi dosyasını yapılandırma sunucusuna indirin.
 
-    ![Güncelleştirme](./media/vmware-azure-manage-configuration-server/update1.png)
+    ![Güncelleştir](./media/vmware-azure-manage-configuration-server/update1.png)
 
 4. Yükleyiciyi çalıştırmak için çift tıklayın.
 5. Yükleyici, makinede çalışan geçerli sürümü algılar. Yükseltmeyi başlatmak için **Evet** ' e tıklayın.
 6. Yükseltme işlemi tamamlandığında sunucu yapılandırması doğrular.
 
-    ![Güncelleştirme](./media/vmware-azure-manage-configuration-server/update3.png)
+    ![Güncelleştir](./media/vmware-azure-manage-configuration-server/update3.png)
 
 7. Yükleyiciyi kapatmak için **son** ' a tıklayın.
 8. Site Recovery bileşenlerinin geri kalanını yükseltmek için [yükseltme kılavuzumuza](https://aka.ms/asr_vmware_upgrades)bakın.
@@ -212,7 +212,7 @@ Yükleme dosyasını aşağıdaki gibi çalıştırın:
 
 ### <a name="parameters"></a>Parametreler
 
-|Parametre Adı| Tür | Description| Değerler|
+|Parametre Adı| Tür | Açıklama| Değerler|
 |-|-|-|-|
 | /ServerMode|Gerekli|Hem yapılandırma hem de işlem sunucusunun mu yoksa yalnızca işlem sunucusunun mu yükleneceğini belirtir|CS<br>PS|
 |/InstallLocation|Gerekli|Bileşenlerin yüklendiği klasör| Bilgisayardaki herhangi bir klasör|
@@ -287,7 +287,7 @@ Configuration sunucusunu isteğe bağlı olarak PowerShell kullanarak silebilirs
     `Remove-AzSiteRecoveryFabric -Fabric $fabric [-Force]`
 
 > [!NOTE]
-> Yapılandırma sunucusunu zorla silmeye yönelik Remove-AzSiteRecoveryFabric içinde **-zorlama** seçeneğini kullanabilirsiniz.
+> Yapılandırma sunucusunun zorla silinmesi için Remove-AzSiteRecoveryFabric ' de **-zorlama** seçeneğini kullanabilirsiniz.
 
 ## <a name="generate-configuration-server-passphrase"></a>Yapılandırma sunucusu parolası oluştur
 

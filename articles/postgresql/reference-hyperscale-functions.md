@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
 ms.openlocfilehash: 16c3a45e0d88a0546772b3fdc855c90f2e450d14
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91250340"
 ---
 # <a name="functions-in-the-hyperscale-citus-sql-api"></a>Hyperscale (Citus) SQL API 'sindeki işlevler
@@ -30,7 +30,7 @@ Dağıtılmış tablo \_ oluşturma \_ () işlevi, karma olarak dağıtılan bir
 
 Bu işlev, ana \_ \_ Dağıtılmış \_ tablo oluşturma () ve ardından ana \_ \_ çalışan parça oluşturma \_ () kullanımını değiştirir.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Bağımsız değişkenler
 
 **tablo \_ adı:** dağıtılması gereken tablonun adı.
 
@@ -64,7 +64,7 @@ SELECT create_distributed_table('github_events', 'repo_id',
 
 \_Başvuru tablosu oluştur \_ () işlevi, küçük bir başvuru veya boyut tablosu tanımlamak için kullanılır. Bu işlev bir tablo adı alır ve her çalışan düğümüne çoğaltılan tek bir parça ile dağıtılmış bir tablo oluşturur.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Bağımsız değişkenler
 
 **tablo \_ adı:** dağıtılması gereken küçük boyutun veya başvuru tablosunun adı.
 
@@ -84,7 +84,7 @@ SELECT create_reference_table('nation');
 
 \_ \_ Başvuru \_ tablosuna yükselt () işlevi, parça sayısı bir olan mevcut bir dağıtılmış tabloyu alır ve bunu tanınan bir başvuru tablosu olarak yükseltir. Bu işlev çağrıldıktan sonra tablo, [create_reference_table](#create_reference_table)oluşturulmuş gibi olacaktır.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Bağımsız değişkenler
 
 **tablo \_ adı:** bir başvuru tablosu olarak dağıtılacak olan dağıtılmış tablonun adı (parça sayısı = 1).
 
@@ -106,7 +106,7 @@ SELECT upgrade_to_reference_table('nation');
 
 Tablo dağıtım zamanında `colocate_with` , [create_distributed_table](#create_distributed_table)parametresi aracılığıyla tabloları birlikte `mark_tables_colocated` bulundurmamak, ancak gerekirse daha sonra bu işlemi gerçekleştirebilir.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Bağımsız değişkenler
 
 **kaynak \_ tablo \_ adı:** birlikte bulundurma grubunu hedefe atanacak şekilde, dağıtılmış tablonun adı.
 
@@ -142,7 +142,7 @@ Bir işlevi düzenleyici düğümünden çalışanlara yayar ve dağıtılmış 
 
 Postgres arama yolu, dağıtılmış işlev yürütmesi sırasında düzenleyiciyle çalışanlara yayılmaz, bu nedenle dağıtılmış işlev kodu, veritabanı nesnelerinin adlarını tamamen nitelemelidir. Ayrıca, işlevler tarafından yayılan bildirimler kullanıcıya gösterilmez.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Bağımsız değişkenler
 
 **işlev \_ adı:** dağıtılacak işlevin adı. Birden çok işlev PostgreSQL içinde aynı ada sahip olabileceğinden, adın parantez içindeki parametre türleri içermesi gerekir. Örneğin, `'foo(int)'` öğesinden farklıdır `'foo(int, text)'` .
 
@@ -184,7 +184,7 @@ SELECT create_distributed_function(
 
 Ana \_ Get \_ Table \_ Metadata () işlevi, dağıtılmış bir tablo için dağıtımla ilgili meta verileri döndürmek üzere kullanılabilir. Bu meta veriler, tabloya ilişkin ilişki KIMLIĞI, depolama türü, dağıtım yöntemi, dağıtım sütunu, çoğaltma sayısı, en büyük parça boyutu ve parça yerleştirme ilkesini içerir. Bu işlev, kapsamadan sonra, gerekli bilgileri almak için hiper ölçek (Citus) meta veri tablolarını sorgular ve onu kullanıcıya döndürmeden önce bir tanımlama grubu içine birleştirir.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Bağımsız değişkenler
 
 **tablo \_ adı:** meta verileri getirmek istediğiniz dağıtılmış tablonun adı.
 
@@ -222,7 +222,7 @@ SELECT * from master_get_table_metadata('github_events');
 
 Hiper ölçek (Citus), dağıtılmış bir tablonun her satırını, satırın dağıtım sütununun değerine ve tablonun dağıtım yöntemine göre bir parçaya atar. Çoğu durumda, kesin eşleme, veritabanı yöneticisinin yoksaydığı alt düzey bir ayrıntıdır. Bununla birlikte, el ile veritabanı bakım görevleri için ya da yalnızca öngörüye karşılamak üzere bir satırın parça belirlenmesi yararlı olabilir. `get_shard_id_for_distribution_column`İşlevi, bu bilgileri karma ve Aralık ile dağıtılan tablolar ve başvuru tabloları için sağlar. Ekleme dağıtımı için çalışmaz.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Bağımsız değişkenler
 
 **tablo \_ adı:** dağıtılmış tablo.
 
@@ -249,7 +249,7 @@ SELECT get_shard_id_for_distribution_column('my_table', 4);
 
 Daha ayrıntılı bir tartışma için bkz. [dağıtım sütunu seçme](concepts-hyperscale-choose-distribution-column.md).
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Bağımsız değişkenler
 
 **tablo \_ adı:** dağıtılmış tablo.
 
@@ -284,7 +284,7 @@ SELECT column_to_column_name(logicalrelid, partkey) AS dist_col_name
 Belirtilen dağıtılmış tablonun tüm parçaları tarafından kullanılan disk alanını al.
 Disk alanı, \" ana çatalın boyutunu içerir, ancak parçalar \" için görünürlük eşlemesini ve boş alan haritasını dışlar.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Bağımsız değişkenler
 
 **logicalrelid:** dağıtılmış bir tablonun adı.
 
@@ -308,7 +308,7 @@ pg_size_pretty
 
 Dizinler hariç olmak üzere, belirtilen dağıtılmış tablonun tüm parçaları tarafından kullanılan disk alanını alır (BILDIRIM, boş alan haritası ve görünürlük Haritası dahil).
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Bağımsız değişkenler
 
 **logicalrelid:** dağıtılmış bir tablonun adı.
 
@@ -332,7 +332,7 @@ pg_size_pretty
 
 Tüm dizinler ve BILDIRIM verileri dahil olmak üzere, belirtilen dağıtılmış tablonun tüm parçaları tarafından kullanılan toplam disk alanını alır.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Bağımsız değişkenler
 
 **logicalrelid:** dağıtılmış bir tablonun adı.
 
@@ -357,7 +357,7 @@ pg_size_pretty
 [Citus_stat_statements](reference-hyperscale-metadata.md#query-statistics-table)tüm satırları kaldırır.
 Bu işlev, öğesinden bağımsız olarak çalışır `pg_stat_statements_reset()` . Tüm istatistikleri sıfırlamak için her iki işlevi de çağırın.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Bağımsız değişkenler
 
 Yok
 
@@ -373,7 +373,7 @@ Bir parça yerleşimi, bir değiştirme komutu veya bir DDL işlemi sırasında 
 
 Bir parçayı onarmak için, işlev önce sağlıksız parça yerleşimini bırakır ve düzenleyiciden şemayı kullanarak yeniden oluşturur. Parça yerleşimi oluşturulduktan sonra, işlev sağlıklı yerleşimden verileri kopyalar ve yeni parça yerleştirmesini sağlıklı olarak işaretlemek için meta verileri güncelleştirir. Bu işlev, onarım sırasında parçanın eşzamanlı değişikliklerden korunmasını sağlar.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Bağımsız değişkenler
 
 parça ** \_ kimliği:** onarılacak parça kimliği.
 
@@ -407,7 +407,7 @@ Parça yazma engellemeyi önleyen ikinci yöntem, Postgres 10 mantıksal çoğal
 
 Başarılı bir taşıma işleminden sonra kaynak düğümdeki parçalar silinir. Taşıma herhangi bir noktada başarısız olursa, bu işlev bir hata oluşturur ve kaynak ve hedef düğümleri değişmeden bırakır.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Bağımsız değişkenler
 
 parça ** \_ kimliği:** taşınacak parça kimliği.
 
@@ -452,7 +452,7 @@ Bu varsayımlar varsa, varsayılan yeniden dengeleme hatalı bir plana neden ola
 
 [get_rebalance_table_shards_plan](#get_rebalance_table_shards_plan) \_ \_ Gerçekleştirilecek eylemleri görmek ve doğrulamak için yeniden dengeleme tablo parçaları çalıştırılmadan önce get_rebalance_table_shards_plan çağrısı yapmanız önerilir.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Bağımsız değişkenler
 
 **tablo \_ adı:** (isteğe bağlı) parçaları yeniden dengelenmesi gereken tablo adı. NULL ise, tüm mevcut birlikte bulundurma gruplarını yeniden dengeleyin.
 
@@ -498,7 +498,7 @@ SELECT rebalance_table_shards('github_events', excluded_shard_list:='{1,2}');
 [Rebalance_table_shards](#rebalance_table_shards) planlı parça hareketlerine çıkış yapmadan çıktıyı ayırın.
 Büyük olasılıkla, yeniden \_ Dengeleme tablosu parçalama \_ \_ \_ planı \_ \_ , aynı bağımsız değişkenlerle bir yeniden dengeleme tablosu parçalama çağrısının yapabileceğinden biraz farklı bir plana çıkış yapabilir. Aynı anda çalıştırılmazlar, bu nedenle sunucu grubuyla ilgili olgular; \- Örneğin, disk alanı, \- çağrılar arasında farklılık gösterebilir.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Bağımsız değişkenler
 
 Yeniden dengelenir tablo parçaları ile aynı bağımsız değişkenler \_ \_ : ilişki, eşik, en büyük parça \_ \_ taşımaları, dışlanan parça \_ \_ listesi ve yalnızca boşaltma \_ . Bağımsız değişkenlerin anlamı için ilgili işlevin belgelerine bakın.
 
@@ -518,7 +518,7 @@ Yeniden dengelenir tablo parçaları ile aynı bağımsız değişkenler \_ \_ :
 
 Parça yeniden dengelemesinin başlaması durumunda, `get_rebalance_progress()` işlev ilgili her parçanın ilerlemesini listeler. Planlı ve tarafından yürütülen taşımaları izler `rebalance_table_shards()` .
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Bağımsız değişkenler
 
 Yok
 
@@ -557,7 +557,7 @@ SELECT * FROM get_rebalance_progress();
 
 [Pg_dist_rebalance_strategy](reference-hyperscale-metadata.md?#rebalancer-strategy-table) bir satır ekleyin.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Bağımsız değişkenler
 
 Bu bağımsız değişkenler hakkında daha fazla bilgi için içindeki karşılık gelen sütun değerlerine bakın `pg_dist_rebalance_strategy` .
 
@@ -581,7 +581,7 @@ Yok
 
 [Pg_dist_rebalance_strategy](reference-hyperscale-metadata.md#rebalancer-strategy-table) tablosunu güncelleştirin ve bağımsız değişkeni tarafından adlandırılan stratejiyi, parçaları yeniden dengeleme sırasında seçilen varsayılan değer olacak şekilde değiştirerek.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Bağımsız değişkenler
 
 **ad:** pg \_ Dist yeniden \_ Dengeleme \_ stratejisindeki stratejinin adı
 
@@ -599,7 +599,7 @@ SELECT citus_set_default_rebalance_strategy('by_disk_size');
 
 Citus \_ Remote \_ Connection \_ stats () işlevi, her bir uzak düğüme yönelik etkin bağlantı sayısını gösterir.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Bağımsız değişkenler
 
 Yok
 
@@ -620,7 +620,7 @@ SELECT * from citus_remote_connection_stats();
 
 Master \_ boşalt \_ node () işlevi, parçaları belirlenen düğüme ve `shouldhaveshards` [pg_dist_node](reference-hyperscale-metadata.md#worker-node-table)' de true olarak ayarlanmış diğer düğümlere taşılar. Sunucu grubundan bir düğümü kaldırmadan ve düğümün fiziksel sunucusunu kapatmadan önce işlevi çağırın.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Bağımsız değişkenler
 
 **DüğümAdı:** Boşaltılır olan düğümün ana bilgisayar adı.
 
@@ -675,7 +675,7 @@ Birden çok düğüm boşaltıyor olduğunda, bunun yerine [rebalance_table_shar
 
 Çoğaltılan \_ tablo parçaları \_ () işlevi, verilen tablonun alt çoğaltılan parçalarını çoğaltır. İşlev ilk olarak, çoğaltma için getiribilecekleri, çoğaltılan parçaların ve konumların listesini hesaplar. Sonra işlevi bu parçaların üzerine kopyalar ve ilgili parça meta verilerini kopyayı yansıtacak şekilde güncelleştirir.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Bağımsız değişkenler
 
 **tablo \_ adı:** parçalar çoğaltılmakta olan tablonun adı.
 
@@ -707,7 +707,7 @@ SELECT replicate_table_shards('github_events', max_shard_copies:=10);
 
 Bu işlev, dağıtım sütununda belirli bir tek değere sahip satırları tutmak için yeni bir parça oluşturur. Büyük bir kiracının kendi parça ve son olarak kendi fiziksel düğümüne yerleştirilebileceği çok kiracılı hiper ölçek (Citus) kullanım örneği için özellikle kullanışlıdır.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Bağımsız değişkenler
 
 **tablo \_ adı:** yeni bir parça alınacak tablonun adı.
 
