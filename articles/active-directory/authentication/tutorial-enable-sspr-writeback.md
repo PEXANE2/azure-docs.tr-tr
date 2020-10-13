@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/13/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: f4687a98bfb58db8ed5e8a853fa0db2207f435e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3723bfdad91fcbcb8c135c29c49d5eb9237c5b86
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87419657"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966483"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Öğretici: şirket içi bir ortama Azure Active Directory self servis parola sıfırlama geri yazma özelliğini etkinleştirme
 
@@ -29,7 +29,7 @@ Parola geri yazma özelliği, Azure AD 'deki parola değişikliklerini şirket i
 >
 > BT ekibiniz kendi parolanızı sıfırlama özelliğini etkinleştirmediyseniz, ek yardım için yardım masasına ulaşın.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Parola geri yazma için gerekli izinleri yapılandırın
@@ -131,7 +131,7 @@ SSPR 'de parola geri yazma özelliğini etkinleştirmek için aşağıdaki adım
 
 Bu öğreticinin bir parçası olarak yapılandırdığınız SSPR geri yazma işlevini artık kullanmak istemiyorsanız, aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. **Azure Active Directory**arayıp seçin, **parola sıfırlama**' yı seçin ve ardından Şirket **içi tümleştirme**' i seçin.
 1. Şirket **içi dizininize yeniden parola yazma** seçeneğini *belirleyin.*
 1. **Kullanıcıların, parolasını sıfırlamadan hesapların kilidini açmalarına Izin ver** seçeneğini *belirleyin.*

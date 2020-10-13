@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 03/17/2020
 ms.openlocfilehash: 81d0731f6ea77325b3f33f91bf8d5d1386dab2fb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91283386"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Azure SQL Yönetilen Örneği için bağlantı mimarisi
@@ -111,7 +111,7 @@ SQL yönetilen örneğini sanal ağın içindeki ayrılmış bir alt ağda dağ�
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Hizmet destekli alt ağ yapılandırması ile zorunlu gelen güvenlik kuralları
 
-| Name       |Bağlantı noktası                        |Protokol|Kaynak           |Hedef|Eylem|
+| Adı       |Bağlantı noktası                        |Protokol|Kaynak           |Hedef|Eylem|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |yönetim  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |Mı ALT AĞı  |İzin Ver |
 |            |9000, 9003                  |TCP     |Corpnetgördünüz       |Mı ALT AĞı  |İzin Ver |
@@ -121,14 +121,14 @@ SQL yönetilen örneğini sanal ağın içindeki ayrılmış bir alt ağda dağ�
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Hizmet destekli alt ağ yapılandırması ile zorunlu giden güvenlik kuralları
 
-| Name       |Bağlantı noktası          |Protokol|Kaynak           |Hedef|Eylem|
+| Adı       |Bağlantı noktası          |Protokol|Kaynak           |Hedef|Eylem|
 |------------|--------------|--------|-----------------|-----------|------|
 |yönetim  |443, 12000    |TCP     |Mı ALT AĞı        |AzureCloud |İzin Ver |
 |mi_subnet   |Herhangi biri           |Herhangi biri     |Mı ALT AĞı        |Mı ALT AĞı  |İzin Ver |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>Hizmet destekli alt ağ yapılandırmasıyla Kullanıcı tanımlı rotalar
 
-|Name|Adres ön eki|Sonraki atlama|
+|Adı|Adres ön eki|Sonraki atlama|
 |----|--------------|-------|
 |alt ağdan vnetlocal|Mı ALT AĞı|Sanal ağ|
 |mi-13-64-11-sonrakii-Internet|13.64.0.0/11|İnternet|
@@ -331,7 +331,7 @@ SQL yönetilen örneğini sanal ağın içindeki ayrılmış bir alt ağda dağ�
 
 ### <a name="mandatory-inbound-security-rules"></a>Zorunlu gelen güvenlik kuralları
 
-| Name       |Bağlantı noktası                        |Protokol|Kaynak           |Hedef|Eylem|
+| Adı       |Bağlantı noktası                        |Protokol|Kaynak           |Hedef|Eylem|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |yönetim  |9000, 9003, 1438, 1440, 1452|TCP     |Herhangi biri              |Mı ALT AĞı  |İzin Ver |
 |mi_subnet   |Herhangi biri                         |Herhangi biri     |Mı ALT AĞı        |Mı ALT AĞı  |İzin Ver |
@@ -339,7 +339,7 @@ SQL yönetilen örneğini sanal ağın içindeki ayrılmış bir alt ağda dağ�
 
 ### <a name="mandatory-outbound-security-rules"></a>Zorunlu giden güvenlik kuralları
 
-| Name       |Bağlantı noktası          |Protokol|Kaynak           |Hedef|Eylem|
+| Adı       |Bağlantı noktası          |Protokol|Kaynak           |Hedef|Eylem|
 |------------|--------------|--------|-----------------|-----------|------|
 |yönetim  |443, 12000    |TCP     |Mı ALT AĞı        |AzureCloud |İzin Ver |
 |mi_subnet   |Herhangi biri           |Herhangi biri     |Mı ALT AĞı        |Mı ALT AĞı  |İzin Ver |
@@ -357,7 +357,7 @@ SQL yönetilen örneğini sanal ağın içindeki ayrılmış bir alt ağda dağ�
 
 ### <a name="user-defined-routes"></a>Kullanıcı tanımlı yollar
 
-|Name|Adres ön eki|Sonraki atlama|
+|Adı|Adres ön eki|Sonraki atlama|
 |----|--------------|-------|
 |subnet_to_vnetlocal|Mı ALT AĞı|Sanal ağ|
 |mi-13-64-11-sonrakii-Internet|13.64.0.0/11|İnternet|

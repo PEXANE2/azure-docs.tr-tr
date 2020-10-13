@@ -4,10 +4,10 @@ description: Uygulama verilerinizin düzenli veri yedeklemesini etkinleştirmek 
 ms.topic: conceptual
 ms.date: 5/24/2019
 ms.openlocfilehash: d20882ba5f7f31ef453c5d28f8bc37155cc99abd
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91538594"
 ---
 # <a name="periodic-backup-and-restore-in-a-standalone-service-fabric"></a>Tek başına Service Fabric düzenli yedekleme ve geri yükleme
@@ -42,7 +42,7 @@ Service Fabric, düzenli yedekleme ve geri yükleme özelliğiyle ilgili aşağ�
 - Yedeklemeleri geçici olarak askıya al
 - Yedeklemelerin bekletme yönetimi (yakında)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * Yapı sürümü 6,4 veya sonraki bir sürümünü içeren küme Service Fabric. Gerekli paketi indirme adımları için bu [makaleye](service-fabric-cluster-creation-for-windows-server.md) bakın.
 * Yedeklemeleri depolamak üzere depolamaya bağlanmak için gereken gizli dizileri şifrelemek için X. 509.440 sertifikası. Otomatik olarak imzalanan bir X. 509.440 sertifikası edinmeyi veya oluşturmayı öğrenmek için [makaleye](service-fabric-windows-cluster-x509-security.md) bakın.
 

@@ -8,10 +8,10 @@ ms.date: 9/22/2020
 ms.author: amgowda
 ms.service: container-service
 ms.openlocfilehash: 528b843e24e1d63e4822c253b3636ef490e8fe8e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90998226"
 ---
 # <a name="confidential-containers"></a>Gizli kapsayıcılar
@@ -101,7 +101,7 @@ Uygulamanız ile ilgili sorularınız mı var, yoksa bir Etkinleştirici olmak m
 
 ## <a name="reference-links"></a>Başvuru bağlantıları
 
-[Kanıtlama Microsoft Azure](../attestation/overview.md)
+[Microsoft Azure Doğrulama](../attestation/overview.md)
 
 [DCsv2 sanal makineleri](virtual-machine-solutions.md)
 

@@ -11,10 +11,10 @@ manager: rkarlin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 26e1852058383ef1e4cc4b3b604e1bdc79d60e14
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91612192"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Key Vault ve Azure CLı ile depolama hesabı anahtarlarını yönetme
@@ -53,7 +53,7 @@ Key Vault, tüm Azure AD kiracılarında önceden kaydedilmiş bir Microsoft uyg
 Bu kılavuzu gerçekleştirmek için, önce aşağıdakileri yapmanız gerekir:
 
 - [Azure CLI 'Yı yükler](/cli/azure/install-azure-cli).
-- [Anahtar kasası oluşturma](quick-create-cli.md)
+- [Anahtar Kasası oluşturma](quick-create-cli.md)
 - [Bir Azure depolama hesabı oluşturun](../../storage/common/storage-account-create.md?tabs=azure-cli). Depolama hesabı adı yalnızca küçük harfler ve rakamlar kullanmalıdır. Adın uzunluğu 3 ile 24 karakter arasında olmalıdır.
       
 ## <a name="manage-storage-account-keys"></a>Depolama hesabı anahtarlarını yönetme

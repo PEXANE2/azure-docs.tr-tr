@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 09/25/2020
 ms.author: allensu
 ms.openlocfilehash: c41bf8bc6e5aa3749786bc1189343dfdebdc1508
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321254"
 ---
 # <a name="monitoring-metrics-and-raw-logs-for-azure-cdn-from-microsoft"></a>Microsoft 'tan Azure CDN yönelik ölçümleri ve ham günlükleri izleme
@@ -61,7 +61,7 @@ Microsoft profilinden Azure CDN ham günlüklerini yapılandırmak için:
     * **Bir olay hub 'ına akış**
         * **Abonelik**, **Olay Hub 'ı ad alanı**, **Olay Hub 'ı adı (isteğe bağlı)** ve **Olay Hub 'ı ilke adı**' nı seçin.
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-02.png" alt-text="Günlük ayarları için hedefi yapılandırın." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-02.png" alt-text="CDN profili için tanılama ayarı ekleyin." border="true":::
 
 7. **Kaydet**’i seçin.
 
@@ -215,7 +215,7 @@ Daha fazla bilgi için bkz. [Azure izleyici ölçümleri](https://docs.microsoft
 
 **Microsoft 'tan Azure CDN tarafından desteklenen ölçümler**
 
-| Ölçümler         | Description                                                                                                      | Boyut                                                                                   |
+| Ölçümler         | Açıklama                                                                                                      | Boyut                                                                                   |
 |-----------------|------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
 | Bayt Isabet oranı * | Toplam çıkış için hesaplanan CDN önbelleğinden çıkış yüzdesi.                                      | Uç Noktası                                                                                    |
 | Istek sayısı    | CDN tarafından sunulan istemci isteklerinin sayısı.                                                                     | Uç Noktası </br> İstemci ülkesi. </br> İstemci bölgesi. </br> HTTP durumu. </br> HTTP durum grubu. |
@@ -235,23 +235,23 @@ Bayt isabet oranı hesaplamasında dışlanan senaryolar:
 
 2. **İzleme**altında **ölçümler**' i seçin:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-03.png" alt-text="CDN profili ölçümleri." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-03.png" alt-text="CDN profili için tanılama ayarı ekleyin." border="true":::
 
 3. **Ölçüm Ekle**' yi seçin, eklenecek ölçümü seçin:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-04.png" alt-text="CDN profili için ölçüm ekleyin ve seçin." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-04.png" alt-text="CDN profili için tanılama ayarı ekleyin." border="true":::
 
 4. Filtre eklemek için **Filtre Ekle** ' yi seçin:
     
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-05.png" alt-text="Ölçüme filtre uygulayın." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-05.png" alt-text="CDN profili için tanılama ayarı ekleyin." border="true":::
 
 5. Farklı boyutlara göre eğilimi görmek için bölmeyi **Uygula** ' yı seçin:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-06.png" alt-text="Ölçüme bölme uygulayın." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-06.png" alt-text="CDN profili için tanılama ayarı ekleyin." border="true":::
 
 6. Yeni **grafik ' i seçerek** yeni bir grafik ekleyin:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-07.png" alt-text="Ölçüm görünümüne yeni grafik ekleyin." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-07.png" alt-text="CDN profili için tanılama ayarı ekleyin." border="true":::
 
 ### <a name="alerts"></a>Uyarılar
 
@@ -259,7 +259,7 @@ Bayt isabet oranı hesaplamasında dışlanan senaryolar:
 
 Ölçümler bölümünde listelenen ölçümler için **Yeni uyarı kuralı** seçin:
 
-:::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="CDN uç noktası için uyarıları yapılandırın." border="true":::
+:::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="CDN profili için tanılama ayarı ekleyin." border="true":::
 
 Uyarı, Azure Izleyici 'ye göre ücretlendirilir. Uyarılar hakkında daha fazla bilgi için bkz. [Azure izleyici uyarıları](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
 
@@ -270,21 +270,21 @@ Ek bir maliyet için Azure Log Analytics ve ham günlükleri kullanarak ek ölç
 
 2. Oluşturduğunuz Log Analytics çalışma alanını seçin:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-09.png" alt-text="Log Analytics çalışma alanını seçin" border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-09.png" alt-text="CDN profili için tanılama ayarı ekleyin." border="true":::   
 
 3. Log Analytics çalışma alanında **genel** altında **Günlükler** ' i seçin.  Sonra **kullanmaya**başlayın ' ı seçin:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-10.png" alt-text="Log Analytics kaynak çalışma alanı." border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-10.png" alt-text="CDN profili için tanılama ayarı ekleyin." border="true":::   
  
 4. **CDN profillerini**seçin.  Özel bir sorgu girmek için ÇALıŞTıRıLACAK örnek bir sorgu seçin veya örnek ekranı kapatın:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-11.png" alt-text="Örnek sorgu ekranı." border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-11.png" alt-text="CDN profili için tanılama ayarı ekleyin." border="true":::   
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-12.png" alt-text="Sorgu yürütme." border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-12.png" alt-text="CDN profili için tanılama ayarı ekleyin." border="true":::   
 
 4. Verileri grafiğe göre görüntülemek için **grafik**' i seçin.  Grafiği Azure panosuna sabitlemek için **panoya sabitle** ' yi seçin:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-13.png" alt-text="Grafiği panoya sabitle." border="true"::: 
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-13.png" alt-text="CDN profili için tanılama ayarı ekleyin." border="true"::: 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 Bu makalede, Microsoft CDN hizmeti için HTTP RAW günlüklerini etkinleştirdiniz.

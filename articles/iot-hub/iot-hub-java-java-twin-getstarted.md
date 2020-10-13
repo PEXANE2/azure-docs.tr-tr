@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: mqtt, devx-track-java
 ms.openlocfilehash: b433ab29ab5a2520f503e002e630068126ddb328
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91838696"
 ---
 # <a name="get-started-with-device-twins-java"></a>Cihaz ikizlerini kullanmaya başlama (Java)
@@ -29,7 +29,7 @@ Bu öğreticide, iki Java konsol uygulaması oluşturursunuz:
 > [!NOTE]
 > [Azure IoT SDK 'ları](iot-hub-devguide-sdks.md) makalesi, hem cihaz hem de arka uç uygulamaları oluşturmak Için kullanabileceğiniz Azure IoT SDK 'ları hakkında bilgi sağlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). JDK 8 için karşıdan yüklemeye ulaşmak üzere **uzun süreli destek** altında **Java 8** ' i seçtiğinizden emin olun.
 

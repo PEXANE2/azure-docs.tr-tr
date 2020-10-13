@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
 ms.openlocfilehash: d03737f43ee719b72860e7ffeff076e3f156cade
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776349"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Öğretici: OpenVINO™ model sunucusunu kullanarak canlı videoyu çözümleyin – Intel 'ten AI uzantısı 
@@ -20,7 +20,7 @@ Bu öğretici bir Azure VM 'yi IoT Edge bir cihaz olarak kullanır ve sanal bir 
 > [!NOTE]
 > Bu öğreticide, Edge cihazınız olarak bir x86-64 makinenin kullanılması gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin bir abonelik içeren bir Azure hesabı. Henüz bir [hesabınız yoksa ücretsiz olarak bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 * [Visual Studio Code](https://code.visualstudio.com/), aşağıdaki uzantılara sahip:
@@ -45,7 +45,7 @@ Bu hızlı başlangıçta, IoT Edge üzerinde canlı video analizlerini kullanar
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/use-intel-openvino-tutorial/http-extension-with-vino.svg" alt-text="Genel Bakış":::
 
-Bu diyagramda, sinyallerin bu hızlı başlangıçta nasıl akagösterdiği gösterilmektedir. [Edge modülü](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) , gerçek zamanlı akış protokolü (RTSP) sunucusunu BARıNDıRAN bir IP kamerasına benzetim yapar. Bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü, bu sunucudan video akışını çeker ve [çerçeve hızı filtre işlemcisi](media-graph-concept.md#frame-rate-filter-processor) düğümüne video çerçeveleri gönderir. Bu işlemci, [http uzantısı işlemci](media-graph-concept.md#http-extension-processor) düğümüne ulaşan video akışının kare oranını sınırlandırır. 
+Bu diyagramda, sinyallerin bu hızlı başlangıçta nasıl akagösterdiği gösterilmektedir. [Edge modülü](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) , Real-Time Akış Protokolü (RTSP) sunucusunu BARıNDıRAN bir IP kamerasına benzetir. Bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü, bu sunucudan video akışını çeker ve [çerçeve hızı filtre işlemcisi](media-graph-concept.md#frame-rate-filter-processor) düğümüne video çerçeveleri gönderir. Bu işlemci, [http uzantısı işlemci](media-graph-concept.md#http-extension-processor) düğümüne ulaşan video akışının kare oranını sınırlandırır. 
 
 HTTP uzantısı düğümü bir ara sunucu rolünü yürütür. Video çerçevelerini belirtilen görüntü türüne dönüştürür. Daha sonra görüntüyü REST üzerinden bir HTTP uç noktası arkasında bulunan AI modellerini çalıştıran başka bir uç modülüne geçirir. Bu örnekte, bu Edge modülü, Intel 'teki OpenVINO™ model sunucusu – AI uzantısıdır. HTTP uzantısı işlemci düğümü, algılama sonuçlarını toplar ve olayları [IoT Hub havuz](media-graph-concept.md#iot-hub-message-sink) düğümüne yayımlar. Düğüm daha sonra bu olayları [IoT Edge hub 'ına](../../iot-edge/iot-edge-glossary.md#iot-edge-hub)gönderir.
 

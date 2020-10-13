@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: ramakk
-ms.openlocfilehash: a8d81acc0fcb4afa0f981fca3fd099296a0361df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50669dcce044988f2e45acc2a17ae43c140d1ab5
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569501"
+ms.locfileid: "91930314"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Azure NetApp Files ağ planlaması yönergeleri
 
 Ağ mimarisi planlaması, herhangi bir uygulama altyapısını tasarlamanın temel bir öğesidir. Bu makale, Azure NetApp Files zengin yetilerinden yararlanmak üzere iş yükleriniz için etkin bir ağ mimarisi tasarlamanıza yardımcı olur.
 
-Azure NetApp Files birimler, Azure sanal ağınız içinde [Temsilcili bir alt ağ](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet) olarak adlandırılan özel bir amaç alt ağında yer almak üzere tasarlanmıştır. Bu nedenle, birimlere doğrudan sanal ağınızdan, aynı bölgedeki eşlenmiş VNET 'lerden veya bir sanal ağ geçidi üzerinden (ExpressRoute veya VPN Gateway) Şirket içinden erişebilirsiniz. Alt ağ Azure NetApp Files için ayrılmıştır ve diğer Azure hizmetleriyle veya Internet 'e yönelik bağlantı yoktur.
+Azure NetApp Files birimler, Azure sanal ağınız içinde [Temsilcili bir alt ağ](../virtual-network/virtual-network-manage-subnet.md) olarak adlandırılan özel bir amaç alt ağında yer almak üzere tasarlanmıştır. Bu nedenle, birimlere doğrudan sanal ağınızdan, aynı bölgedeki eşlenmiş VNET 'lerden veya bir sanal ağ geçidi üzerinden (ExpressRoute veya VPN Gateway) Şirket içinden erişebilirsiniz. Alt ağ Azure NetApp Files için ayrılmıştır ve diğer Azure hizmetleriyle veya Internet 'e yönelik bağlantı yoktur.
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler  
 
@@ -58,7 +58,7 @@ Aşağıdaki tabloda Azure NetApp Files tarafından desteklenen ağ topolojileri
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
 |    Yerel VNet 'teki birime bağlantı    |    Evet    |         |
 |    Eşlenen VNet 'teki birime bağlantı (aynı bölge)    |    Evet    |         |
-|    Eşlenmiş VNet 'teki birime bağlantı (çapraz bölge veya genel eşleme)    |    Hayır    |    Yok    |
+|    Eşlenmiş VNet 'teki birime bağlantı (çapraz bölge veya genel eşleme)    |    Hayır    |    Hiçbiri    |
 |    ExpressRoute ağ geçidi üzerinden bir birime bağlantı    |    Evet    |         |
 |    Şirket içinden bir bağlantı noktasında ExpressRoute ağ geçidi ile VNet eşlemesi ve ağ geçidi geçişi ile VNet eşlemesi    |    Evet    |        |
 |    Şirket içinden VPN Gateway üzerinden bağlı olan VNet 'teki bir birime bağlantı    |    Evet    |         |
@@ -71,11 +71,11 @@ Bu bölümde, sanal ağ planlamasında size yardımcı olacak kavramlar açıkla
 
 ### <a name="azure-virtual-networks"></a>Azure sanal ağları
 
-Azure NetApp Files bir birimi sağlamadan önce, bir Azure sanal ağı (VNet) oluşturmanız veya aboneliğinizde zaten mevcut olan bir tane kullanmanız gerekir. VNet birimin ağ sınırını tanımlar.  Sanal ağlar oluşturma hakkında daha fazla bilgi için bkz. [Azure sanal ağ belgeleri](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
+Azure NetApp Files bir birimi sağlamadan önce, bir Azure sanal ağı (VNet) oluşturmanız veya aboneliğinizde zaten mevcut olan bir tane kullanmanız gerekir. VNet birimin ağ sınırını tanımlar.  Sanal ağlar oluşturma hakkında daha fazla bilgi için bkz. [Azure sanal ağ belgeleri](../virtual-network/virtual-networks-overview.md).
 
 ### <a name="subnets"></a>Alt ağlar
 
-Alt ağlar sanal ağı, içindeki Azure kaynakları tarafından kullanılabilen ayrı adres alanlarına bölüler.  Azure NetApp Files birimler, [Temsilcili alt ağ](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet)adlı özel amaçlı bir alt ağda yer alır. 
+Alt ağlar sanal ağı, içindeki Azure kaynakları tarafından kullanılabilen ayrı adres alanlarına bölüler.  Azure NetApp Files birimler, [Temsilcili alt ağ](../virtual-network/virtual-network-manage-subnet.md)adlı özel amaçlı bir alt ağda yer alır. 
 
 Alt ağ temsili, alt ağda hizmete özel kaynaklar oluşturmak için Azure NetApp Files hizmetine açık izinler verir.  Hizmeti dağıtmaya yönelik benzersiz bir tanımlayıcı kullanır. Bu durumda, Azure NetApp Files bağlantısının etkinleştirilmesi için bir ağ arabirimi oluşturulur.
 
@@ -102,7 +102,7 @@ Temel senaryo, aynı VNet 'teki bir sanal makineden (VM) Azure NetApp Files bir 
 
 ### <a name="vnet-peering"></a>VNet eşlemesi
 
-Aynı bölgede diğer her kaynağa erişmesi gereken ek VNET varsa, sanal ağlar Azure altyapısı aracılığıyla güvenli bağlantı sağlamak için [VNET eşlemesi](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) kullanılarak bağlanabilir. 
+Aynı bölgede diğer her kaynağa erişmesi gereken ek VNET varsa, sanal ağlar Azure altyapısı aracılığıyla güvenli bağlantı sağlamak için [VNET eşlemesi](../virtual-network/virtual-network-peering-overview.md) kullanılarak bağlanabilir. 
 
 Yukarıdaki diyagramda VNet 2 ve VNet 3 ' ü göz önünde bulundurun. VM 1 ' in VM 2 veya Volume 2 ' ye bağlanması gerekiyorsa veya VM 2 ' nin VM 1 veya birim 1 ' e bağlanması gerekiyorsa, VNET 2 ile VNet 3 arasında VNet eşlemesini etkinleştirmeniz gerekir. 
 
@@ -116,7 +116,7 @@ Aşağıdaki diyagramda karma bir ortam gösterilmektedir:
 
 ![Karma ağ ortamı](../media/azure-netapp-files/azure-netapp-files-network-hybrid-environment.png)
 
-Karma senaryoda, şirket içi veri merkezlerinden uygulamaların Azure 'daki kaynaklara erişmesi gerekir.  Bu, veri merkezinizi Azure 'a genişletmek veya Azure yerel hizmetleri 'ni veya olağanüstü durum kurtarma için kullanmak istediğiniz durumdur. Siteden siteye VPN veya ExpressRoute aracılığıyla şirket içi birden çok kaynağı Azure 'daki kaynaklara bağlama hakkında bilgi için bkz. [VPN Gateway planlama seçenekleri](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable) .
+Karma senaryoda, şirket içi veri merkezlerinden uygulamaların Azure 'daki kaynaklara erişmesi gerekir.  Bu, veri merkezinizi Azure 'a genişletmek veya Azure yerel hizmetleri 'ni veya olağanüstü durum kurtarma için kullanmak istediğiniz durumdur. Siteden siteye VPN veya ExpressRoute aracılığıyla şirket içi birden çok kaynağı Azure 'daki kaynaklara bağlama hakkında bilgi için bkz. [VPN Gateway planlama seçenekleri](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%252fazure%252fvirtual-network%252ftoc.json#planningtable) .
 
 Karma hub tabanlı topolojide Azure 'daki hub VNet, şirket içi ağınıza yönelik merkezi bir bağlantı noktası görevi görür. Bağlı bileşen hub 'iyle eşlenirler ve iş yüklerini yalıtmak için kullanılabilirler.
 

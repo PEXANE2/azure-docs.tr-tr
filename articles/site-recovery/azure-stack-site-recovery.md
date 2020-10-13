@@ -4,10 +4,10 @@ description: Azure Site Recovery hizmetiyle Azure Stack VM 'Ler için Azure 'da 
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.openlocfilehash: a7e58f5b24786169c9d0c989b79a14c4115acca8
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448964"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Azure Stack VM'lerini Azure'a çoğaltma
@@ -56,7 +56,7 @@ Bu adımlar tamamlandığında, Azure 'da ve gerektiğinde tam yük devretme ça
 7. Çoğaltılan makineler, çoğaltma yönetimi için yapılandırma sunucusu (bağlantı noktası HTTPS 443 gelen) ile iletişim kurar. Makineler, çoğaltma verilerini işlem sunucusuna gönderir (bağlantı noktası HTTPS 9443 gelen-değiştirilebilir).
 8. Trafik İnternet üzerinden Azure depolama genel uç noktalarına çoğaltılır. Alternatif olarak, Azure ExpressRoute genel eşliğini kullanabilirsiniz. Trafiğin siteden siteye bir VPN aracılığıyla şirket içi bir siteden Azure’a çoğaltılması desteklenmez.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu senaryoyu ayarlamanız için gerekenler aşağıda verilmiştir.
 
@@ -97,9 +97,9 @@ VM 'Lerin tabloda özetlenen işletim sistemlerinden birini çalıştırdığın
     - Site Recovery ayarlarken bu hesabı belirtirsiniz. Sonra işlem sunucusu, çoğaltma etkinleştirildiğinde Mobility hizmetini yüklemek için bu hesabı kullanır.
     - Bu hesap yalnızca anında yükleme için Site Recovery tarafından ve Mobility hizmetini güncelleştirmek için kullanılır.
     - Bir etki alanı hesabı kullanmıyorsanız, sanal makinede uzak kullanıcı erişim denetimini devre dışı bırakmanız gerekir:
-        - Kayıt defterinde, HKEY_LOCAL_MACHINE \Software\microsoft\windows\currentversion\policies\systemaltında **LocalAccountTokenFilterPolicy** DWORD değerini oluşturun.
+        - Kayıt defterinde HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System altında **LocalAccountTokenFilterPolicy** DWORD değerini oluşturun.
         - Değeri 1 olarak ayarlayın.
-        - Bunu yapmak için komut isteminde şunu yazın: **reg ADD HKEY_LOCAL_MACHINE \Software\microsoft\windows\currentversion\policies\sistem/V LocalAccountTokenFilterPolicy/t REG_DWORD/d 1**.
+        - Bunu yapmak için komut isteminde şunu yazın: **reg ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System/V LocalAccountTokenFilterPolicy/t REG_DWORD/d 1**.
 - Çoğaltmak istediğiniz VM 'deki Windows güvenlik duvarında dosya ve yazıcı paylaşımına ve WMI 'ye izin verin.
     - Bunu yapmak için, **WF. msc** ' yi çalıştırarak Windows Güvenlik Duvarı konsolunu açın. **Gelen kuralları**  >  **Yeni kural**' a sağ tıklayın. **Önceden tanımlanmış**' i seçin ve listeden **dosya ve yazıcı paylaşımı** ' nı seçin. Sihirbazı tamamladıktan sonra bağlantı > **sona ermesini**sağlamak için seçin.
     - Etki alanı bilgisayarları için, bunu yapmak için bir GPO kullanabilirsiniz.

@@ -3,12 +3,12 @@ title: Öğretici-ağ planlama denetim listesi
 description: Ağ gereksinimi önkoşulları ve Azure VMware çözümü için ağ bağlantısı ve ağ bağlantı noktalarıyla ilgili ayrıntılar hakkında bilgi edinin.
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 5538f9c5d6543ca312835f4ef6437e413dea231b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ee70b8a297e1b8418049ff229b3c1869819145b
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576686"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948213"
 ---
 # <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Azure VMware çözümü için ağ planlama denetim listesi 
 
@@ -36,6 +36,9 @@ Aboneliğinizde bir sanal ağ bağlantısı oluşturduğunuzda, ExpressRoute ba�
 AVS özel bulutu, Azure ExpressRoute bağlantısı kullanılarak Azure sanal ağınıza bağlanır. Bu yüksek bant genişliği, düşük gecikmeli bağlantı, özel bulut ortamınızdan Azure aboneliğinizde çalışan hizmetlere erişmenizi sağlar. Yönlendirme Sınır Ağ Geçidi Protokolü (BGP) tabanlı, otomatik olarak sağlandı ve her özel bulut dağıtımı için varsayılan olarak etkindir. 
 
 AVS özel bulutları `/22` , alt ağlar için aşağıda gösterilen en az bir CIDR ağ adres bloğu gerektirir. Bu ağ, şirket içi ağlarınızı tamamlar. Adres bloğu, aboneliğinizdeki ve şirket içi ağlardaki diğer sanal ağlarda kullanılan adres bloklarıyla çakışmamalıdır. Bu adres bloğu, yönetim, sağlama ve vMotion ağları içinde otomatik olarak sağlanırlar.
+
+>[!NOTE]
+>Adres blodinizin verilen aralıklar, 172.17.0.0/16 dışında, RFC 1918 özel adres alanları (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16).
 
 Örnek `/22` CIDR ağ adresi bloğu:  `10.10.0.0/22`
 

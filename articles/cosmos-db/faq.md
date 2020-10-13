@@ -8,10 +8,10 @@ ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 4bd29ce3bf2cc7cd69f86dbf172d3cd9a2044e79
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91570359"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB'deki farklı API'ler hakkında sık sorulan sorular
@@ -177,7 +177,7 @@ SQL API,,,,, `COUNT` `MIN` `MAX` `AVG` ve `SUM` SQL dilbilgisi aracılığıyla 
 
 ### <a name="how-does-the-sql-api-provide-concurrency"></a>SQL API 'SI eşzamanlılık nasıl sağlar?
 
-SQL API 'SI, HTTP varlık etiketleri veya ETags aracılığıyla iyimser eşzamanlılık denetimini (OCC) destekler. Her SQL API kaynağı bir ETag öğesine sahiptir ve bir belge her güncelleştirildiği zaman sunucu üzerinde ETag ayarlanır. ETag üst bilgisi ve geçerli değer tüm yanıt iletilerine dahildir. ETags, sunucunun bir kaynağın güncelleştirilip güncelleştirilmediğini meyeceğine karar vermesini sağlamak için IF-Match üst bilgisiyle birlikte kullanılabilir. IF-Match değeri, denetlenecek ETag değeridir. ETag değeri sunucu ETag değeriyle eşleşiyorsa, kaynak güncellenir. ETag artık geçerli değilse, sunucu işlemi "HTTP 412 Önkoşul hatası" Yanıt koduyla reddeder. İstemci daha sonra kaynak için geçerli ETag değerini almak üzere kaynağı yeniden ekler. Ayrıca, ETags bir kaynağın tekrar al gerekip gerekmediğini belirleyebilmek için If-None-Match üst bilgisiyle birlikte kullanılabilir.
+SQL API 'SI, HTTP varlık etiketleri veya ETags aracılığıyla iyimser eşzamanlılık denetimini (OCC) destekler. Her SQL API kaynağı bir ETag öğesine sahiptir ve bir belge her güncelleştirildiği zaman sunucu üzerinde ETag ayarlanır. ETag üst bilgisi ve geçerli değer tüm yanıt iletilerine dahildir. ETags, sunucunun bir kaynağın güncelleştirilip güncelleştirilmediğini meyeceğine karar vermesini sağlamak için If-Match üstbilgisiyle birlikte kullanılabilir. If-Match değeri, denetlenecek ETag değeridir. ETag değeri sunucu ETag değeriyle eşleşiyorsa, kaynak güncellenir. ETag artık geçerli değilse, sunucu işlemi "HTTP 412 Önkoşul hatası" Yanıt koduyla reddeder. İstemci daha sonra kaynak için geçerli ETag değerini almak üzere kaynağı yeniden ekler. Ayrıca, ETags bir kaynağın tekrar al gerekip gerekmediğini belirleyebilmek için If-None-Match üst bilgisiyle birlikte kullanılabilir.
 
 .NET 'te iyimser eşzamanlılık kullanmak için [Accesscondition](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accesscondition.aspx) sınıfını kullanın. Bir .NET örneği için bkz. GitHub 'daki DocumentManagement örneğindeki [program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs) .
 

@@ -9,23 +9,23 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 09/21/2020
 ms.author: pafarley
-ms.openlocfilehash: 6d460fc9ded9416ef9d2a30b1a0effa863626888
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ba3eae9b48650a549c3bb91bdf5e9a76cfbbe3b7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91318924"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963083"
 ---
 > [!IMPORTANT]
 > * Form tanıyıcı SDK 'Sı Şu anda, ' ın tanıyıcı hizmeti 'nin v 2.0 'ı hedefliyor.
 > * Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır. Aşağıdaki başvuru belgelerine bakın. 
 
-[Başvuru belgeleri](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer)  |  [Paket (Pypı)](https://pypi.org/project/azure-ai-formrecognizer/)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
+[Başvuru belgeleri](https://docs.microsoft.com/python/api/azure-ai-formrecognizer)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer)  |  [Paket (Pypı)](https://pypi.org/project/azure-ai-formrecognizer/)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
-* Eğitim verileri kümesi içeren bir Azure Depolama Blobu. Eğitim veri kümesini birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [özel bir model için eğitim verileri kümesi oluşturma](../../build-training-data-set.md) . Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **eğitme** klasörü altındaki dosyaları kullanabilirsiniz.
+* Eğitim verileri kümesi içeren bir Azure Depolama Blobu. Eğitim veri kümesini birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [özel bir model için eğitim verileri kümesi oluşturma](../../build-training-data-set.md) . Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **eğitme** klasörü altındaki dosyaları ( *sample_data.zip*indir ve Ayıkla) kullanabilirsiniz.
 * [Python 2,7, veya 3,5 veya üzeri](https://www.python.org/)
 * Azure aboneliğiniz olduktan sonra <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" bir form tanıyıcı kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtarınızı ve uç noktanızı almak için bir form tanıyıcı kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
     * Uygulamanızı form tanıyıcı API 'sine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
@@ -105,14 +105,14 @@ form_training_client = FormTrainingClient(endpoint, AzureKeyCredential(key))
 
 ## <a name="get-assets-for-testing"></a>Test için varlıkları al
 
-Bu kılavuzdaki kod parçacıkları, URL 'Ler tarafından erişilen uzak formları kullanır. Bunun yerine yerel form belgelerini işlemek istiyorsanız, [başvuru belgelerindeki](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer) ilgili yöntemlere ve [örneklere](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)bakın.
+Bu kılavuzdaki kod parçacıkları, URL 'Ler tarafından erişilen uzak formları kullanır. Bunun yerine yerel form belgelerini işlemek istiyorsanız, [başvuru belgelerindeki](https://docs.microsoft.com/python/api/azure-ai-formrecognizer) ilgili yöntemlere ve [örneklere](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)bakın.
 
 Ayrıca, eğitim ve test verileriniz için URL 'lere başvurular eklemeniz gerekecektir.
 * Özel model eğitim verilerinize yönelik SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 * Aşağıdaki örneklerde bulunan ( [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) ' da de mevcuttur) ve giriş görüntülerini kullanarak, blob depolamada tek BIR BELGENIN SAS URL 'sini almak için yukarıdaki adımları kullanabilirsiniz. 
 
 > [!NOTE]
-> Bu kılavuzdaki kod parçacıkları, URL 'Ler tarafından erişilen uzak formları kullanır. Bunun yerine yerel form belgelerini işlemek istiyorsanız, [başvuru belgelerindeki](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/)ilgili yöntemlere bakın.
+> Bu kılavuzdaki kod parçacıkları, URL 'Ler tarafından erişilen uzak formları kullanır. Bunun yerine yerel form belgelerini işlemek istiyorsanız, [başvuru belgelerindeki](https://docs.microsoft.com/python/api/azure-ai-formrecognizer)ilgili yöntemlere bakın.
 
 ## <a name="recognize-form-content"></a>Form içeriğini tanı
 
@@ -134,7 +134,7 @@ for cell in table.cells:
     print("Confidence score: {}\n".format(cell.confidence))
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Table found on page 1:
@@ -180,7 +180,7 @@ for receipt in result:
             print("{}: {} has confidence {}".format(name, field.value, field.confidence))
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 ReceiptType: Itemized has confidence 0.659
@@ -250,7 +250,7 @@ for doc in model.training_documents:
     print("Document errors: {}".format(doc.errors))
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 Bu, [Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/training)'da bulunan eğitim verileriyle eğitilen bir modelin çıktıdır.
 
@@ -326,7 +326,7 @@ for doc in model.training_documents:
     print("Document errors: {}".format(doc.errors))
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 Bu, [Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/training)'da bulunan eğitim verileriyle eğitilen bir modelin çıktıdır.
 
@@ -389,7 +389,7 @@ for recognized_form in result:
         ))
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 Önceki örnekteki modeli kullanarak aşağıdaki çıktı sağlanır.
 
@@ -427,7 +427,7 @@ print("Our account has {} custom models, and we can have at most {} custom model
 ))
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Our account has 5 custom models, and we can have at most 5000 custom models
@@ -450,7 +450,7 @@ for model in custom_models:
     print(model.model_id)
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 Bu, sınama hesabı için bir örnek çıktıdır.
 
@@ -477,7 +477,7 @@ print("Training started on: {}".format(custom_model.training_started_on))
 print("Training completed on: {}".format(custom_model.training_completed_on))
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 Bu, önceki örnekte oluşturulan özel modelin örnek çıktıdır.
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
 ms.openlocfilehash: 28a1990155e1406bf9b79572b3e5307cadfb8076
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91665931"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-azure-time-series-insight-environment"></a>Azure zaman serisi Insight ortamınıza IoT Hub olay kaynağı ekleme
@@ -25,7 +25,7 @@ Bu makalede, Azure IoT Hub verileri Azure Time Series Insights ortamınıza okuy
 > [!NOTE]
 > Bu makaledeki yönergeler hem Azure Time Series Insights Gen 1 hem de Azure zaman serisi Insight Gen 2 ortamları için geçerlidir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Azure Time Series Insights ortamı](time-series-insights-update-create-environment.md)oluşturun.
 * [Azure Portal kullanarak bir IoT Hub 'ı](../iot-hub/iot-hub-create-through-portal.md)oluşturun.

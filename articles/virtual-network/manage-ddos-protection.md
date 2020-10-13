@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
 ms.openlocfilehash: 706379649b47846b5c020dc76493a98e346c4a8f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317693"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Azure portal kullanarak Azure DDoS koruması standardını yönetme
@@ -44,7 +44,7 @@ DDoS koruma planı, aboneliklerde DDoS koruma standardı etkin olan bir sanal a�
 
     |Ayar        |Değer                                              |
     |---------      |---------                                          |
-    |Ad           | myDdosProtectionPlan                              |
+    |Adı           | myDdosProtectionPlan                              |
     |Abonelik   | Aboneliğinizi seçin.                         |
     |Kaynak grubu | **Yeni oluştur** ' u seçin ve *myresourcegroup* girin |
     |Konum       | Doğu ABD                                           |
@@ -57,7 +57,7 @@ DDoS koruma planı, aboneliklerde DDoS koruma standardı etkin olan bir sanal a�
 
     | Ayar         | Değer                                                        |
     | ---------       | ---------                                                    |
-    | Ad            | myVirtualNetwork                                             |
+    | Adı            | myVirtualNetwork                                             |
     | Abonelik    | Aboneliğinizi seçin.                                    |
     | Kaynak grubu  | **Var olanı kullan**’ı seçin ve sonra **myResourceGroup** seçeneğini belirleyin |
     | Konum        | Doğu ABD                                                      |
@@ -106,7 +106,7 @@ Azure Izleyici uyarı yapılandırması kullanılarak saldırı sırasında etki
 
     |Ayar                  |Değer                                                                                               |
     |---------                |---------                                                                                           |
-    |Ad                     | myDdosAlert                                                                                        |
+    |Adı                     | myDdosAlert                                                                                        |
     |Abonelik             | Uyarılarını almak istediğiniz genel IP adresini içeren aboneliği seçin.        |
     |Kaynak grubu           | Uyarılarını almak istediğiniz genel IP adresini içeren kaynak grubunu seçin.      |
     |Kaynak                 | Uyarıları almak istediğiniz genel IP adresini içeren genel IP adresini seçin. DDoS, bir sanal ağ içindeki kaynaklara atanan genel IP adreslerini izler. Sanal ağda genel IP adresleri olan kaynaklarınız yoksa, önce genel IP adresine sahip bir kaynak oluşturmanız gerekir. Azure App Service ortamları ve Azure VPN Gateway dışında [Azure hizmetleri Için sanal ağda](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)listelenen Kaynak Yöneticisi (klasik değil) aracılığıyla dağıtılan tüm KAYNAKLARıN genel IP adresini izleyebilirsiniz. Bu öğreticiye devam etmek için hızlı bir şekilde [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) sanal makinesi oluşturabilirsiniz.                   |
@@ -229,7 +229,7 @@ Uyarılar, saldırı altında genel IP adresi, coğrafi ve tehdit bilgileri ve d
 
 DDoS koruma planlarıyla çalışmak için, hesabınız [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolüne veya aşağıdaki tabloda listelenen uygun eylemlere atanmış [özel](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) bir role atanmalıdır:
 
-| Eylem                                            | Name                                     |
+| Eylem                                            | Adı                                     |
 | ---------                                         | -------------                            |
 | Microsoft. Network/Ddosprotectionplanlar/okuma        | DDoS koruma planını okuyun              |
 | Microsoft. Network/Ddosprotectionplanlar/yazma       | DDoS koruma planı oluşturma veya güncelleştirme  |

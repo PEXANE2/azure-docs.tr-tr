@@ -8,10 +8,10 @@ ms.date: 04/27/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47
 ms.openlocfilehash: feb6b36f8e5e7bbec83d8882552484f68abfd56d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91537761"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Azure Logic Apps ile tümleşen bir işlev oluşturma
@@ -47,7 +47,7 @@ Daha önce yapmadıysanız işlev uygulamanızı oluşturmak için bu adımları
 
 Bilişsel Hizmetler API'leri Azure’da tek kaynaklar halinde kullanılabilir. İzlenmekte olan tweetlerin duyarlılığını algılamak için Metin Analizi API’sini kullanın.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 2. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesine tıklayın.
 

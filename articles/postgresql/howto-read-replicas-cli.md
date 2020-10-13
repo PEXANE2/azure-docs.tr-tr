@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/10/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 20bedf7e48b2e40cd67e33ea024a3ae0a9d305a6
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91707549"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Azure CLı 'dan okuma çoğaltmaları oluşturun ve yönetin REST API
@@ -29,10 +29,10 @@ Doğru günlük kaydını yapılandırmak için Azure çoğaltma desteği parame
 
 Bu parametrenin bir değişikliğinden sonra sunucunun yeniden başlatılması gerekiyor. Dahili olarak, bu parametre Postgres parametrelerini, `wal_level` `max_replication_slots` ve ' ı ayarlar `max_wal_senders` .
 
-## <a name="azure-cli"></a>Azure CLI’si
+## <a name="azure-cli"></a>Azure CLI
 Azure CLı kullanarak okuma çoğaltmaları oluşturabilir ve yönetebilirsiniz.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 - [Azure CLI 2.0’ı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [PostgreSQL Için Azure veritabanı sunucusunun](quickstart-create-server-up-azure-cli.md) birincil sunucu olması.

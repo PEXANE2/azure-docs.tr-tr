@@ -17,10 +17,10 @@ ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 3ee0a376b28676e3f74ac2e53010c2c953ad9d7b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317829"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Güvenlik çerçevesi: hassas veriler | Karşı 
@@ -34,7 +34,7 @@ ms.locfileid: "91317829"
 | **Azure IaaS VM güven sınırı** | <ul><li>[Sanal makineler tarafından kullanılan diskleri şifrelemek için Azure disk şifrelemesini kullanma](#disk-vm)</li></ul> | 
 | **Service Fabric güven sınırı** | <ul><li>[Service Fabric uygulamalarında gizli dizileri şifreleyin](#fabric-apps)</li></ul> | 
 | **Dynamics CRM** | <ul><li>[Güvenlik modellemesini gerçekleştirin ve gereken yerlerde Iş birimleri/takımlar kullanın](#modeling-teams)</li><li>[Kritik varlıklarda özelliği paylaşmak için erişimi en aza indirin](#entities)</li><li>[Dynamics CRM Share özelliği ve iyi güvenlik uygulamalarıyla ilişkili riskler üzerinde Kullanıcıları eğitme](#good-practices)</li><li>[Özel durum yönetiminde yapılandırma ayrıntılarını gösteren bir geliştirme standartları kuralı ekleyin](#exception-mgmt)</li></ul> | 
-| **Azure Depolama** | <ul><li>[Bekleyen veriler için Azure Depolama Hizmeti Şifrelemesi (SSE) kullanma (Önizleme)](#sse-preview)</li><li>[Hassas verileri Azure depolama 'da depolamak için Istemci tarafı şifrelemeyi kullanma](#client-storage)</li></ul> | 
+| **Azure Depolama** | <ul><li>[Bekleyen veriler için Azure Depolama Hizmeti Şifrelemesi (SSE) kullanma (Önizleme)](#sse-preview)</li><li>[Hassas verileri Azure depolama 'da depolamak için Client-Side şifrelemeyi kullanma](#client-storage)</li></ul> | 
 | **Mobil Istemci** | <ul><li>[Telefon yerel depolama alanına yazılan hassas veya PII verilerini şifreleyin](#pii-phones)</li><li>[Son kullanıcılara dağıtmadan önce oluşturulan ikilileri gizleme](#binaries-end)</li></ul> | 
 | **WCF** | <ul><li>[ClientCredentialType 'ı sertifika veya Windows olarak ayarla](#cert)</li><li>[WCF-güvenlik modu etkin değil](#security)</li></ul> | 
 
@@ -332,7 +332,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **Başvurular**              | [Bekleyen veriler için Azure Depolama Hizmeti Şifrelemesi (Önizleme)](https://azure.microsoft.com/documentation/articles/storage-service-encryption/) |
 | **Adımlar** | <p>Rest 'teki veriler için Azure Depolama Hizmeti Şifrelemesi (SSE), kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamak üzere verilerinizi korumanıza ve korumanıza yardımcı olur. Bu özellik ile Azure Depolama, verilerinizi depolama alanında kalıcı hale gelmeden önce otomatik olarak şifreler ve alınmadan önce bunların şifresini çözer. Şifreleme, şifre çözme ve anahtar yönetimi kullanıcılara tamamen saydamdır. SSE yalnızca blok Blobları, sayfa Blobları ve ekleme Blobları için geçerlidir. Tablolar, kuyruklar ve dosyalar dahil olmak üzere diğer veri türleri şifrelenmeyecektir.</p><p>Şifreleme ve şifre çözme Iş akışı:</p><ul><li>Müşteri, depolama hesabında şifrelemeyi mümkün</li><li>Müşteri yeni veri yazdığında (blob, PUT bloğu, PUT sayfası, vb.) BLOB depolama birimine; her yazma, 256 bit AES şifrelemesi kullanılarak şifrelenir, en güçlü blok şifrelemeleri mevcuttur</li><li>Müşterinin verilere erişmesi gerektiğinde (blob al, vb.), verilerin kullanıcıya döndürülmesinden önce otomatik olarak şifresi çözülür</li><li>Şifreleme devre dışıysa, yeni yazma işlemleri artık şifrelenmez ve mevcut şifrelenmiş veriler, Kullanıcı tarafından yeniden başvuruluncaya kadar şifrelenmeye devam eder. Şifreleme etkinken, blob depolamaya yazma işlemleri şifrelenir. Verilerin durumu, depolama hesabı için şifrelemeyi etkinleştirme/devre dışı bırakma arasında geçiş yapma arasında değişiklik yapmaz</li><li>Tüm şifreleme anahtarları Microsoft tarafından depolanır, şifrelenir ve yönetilir</li></ul><p>Lütfen şu anda şifreleme için kullanılan anahtarların Microsoft tarafından yönetildiğini unutmayın. Microsoft, anahtarları başlangıçta oluşturur ve anahtarların güvenli depolama alanını ve iç Microsoft ilkesi tarafından tanımlanan normal döndürmeyi yönetir. Gelecekte, müşteriler kendi >şifreleme anahtarlarını yönetebilir ve Microsoft tarafından yönetilen anahtarlardan müşteri tarafından yönetilen anahtarlara geçiş yolu sağlar.</p>| 
 
-## <a name="use-client-side-encryption-to-store-sensitive-data-in-azure-storage"></a><a id="client-storage"></a>Hassas verileri Azure depolama 'da depolamak için Istemci tarafı şifrelemeyi kullanma
+## <a name="use-client-side-encryption-to-store-sensitive-data-in-azure-storage"></a><a id="client-storage"></a>Hassas verileri Azure depolama 'da depolamak için Client-Side şifrelemeyi kullanma
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |

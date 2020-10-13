@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: lcozzens
 ms.openlocfilehash: b90334d4978c485033323b398e1409fa5731e813
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91767588"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>Öğretici: .NET Framework uygulamasında dinamik yapılandırmayı kullanma
@@ -29,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Uygulama yapılandırma deposundaki değişikliklere yanıt olarak yapılandırmasını güncelleştirmek için .NET Framework uygulamanızı ayarlayın.
 > * Uygulamanıza en son yapılandırmayı ekleme.
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)

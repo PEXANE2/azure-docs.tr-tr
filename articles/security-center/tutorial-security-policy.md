@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: db1b73e36a4917f1a10754424b472284094b563e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22885d9d29bfbfc008b668889f7813ece1df8918
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90894578"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945762"
 ---
 # <a name="working-with-security-policies"></a>Güvenlik ilkeleriyle çalışma
 
@@ -46,7 +46,7 @@ Güvenlik Merkezi'nde güvenlik ilkelerinizi görüntüleme:
 
 1. **Güvenlik Merkezi** panosunda **güvenlik ilkesi**' ni seçin.
 
-    ![İlke Yönetimi bölmesi](./media/security-center-policies/security-center-policy-mgt.png)
+    :::image type="content" source="./media/security-center-policies/security-center-policy-mgt.png" alt-text="İlke yönetimi sayfası&quot;:::
 
    **İlke yönetimi** ekranında yönetim gruplarının, aboneliklerin ve çalışma alanlarının yanı sıra yönetim grubu yapınızı da görebilirsiniz.
 
@@ -57,7 +57,7 @@ Güvenlik Merkezi'nde güvenlik ilkelerinizi görüntüleme:
    ![ilke sayfası](./media/tutorial-security-policy/security-policy-page.png)
 
     > [!NOTE]
-    > Varsayılan ilkenize göre "MG devralınmış" etiketi varsa, ilke bir yönetim grubuna atandı ve görüntülemekte olduğunuz aboneliğin Devralındığı anlamına gelir.
+    > Varsayılan ilkenize göre &quot;MG devralınmış" etiketi varsa, ilke bir yönetim grubuna atandı ve görüntülemekte olduğunuz aboneliğin Devralındığı anlamına gelir.
 
 
 1. Bu sayfadaki kullanılabilir seçenekler arasından seçim yapın:
@@ -68,8 +68,19 @@ Güvenlik Merkezi'nde güvenlik ilkelerinizi görüntüleme:
 
     1. Varsayılan ilkeyi görüntülemek ve düzenlemek için, **geçerli Ilkeyi görüntüle** ' yi seçin ve aşağıda açıklandığı gibi devam edin. 
 
-       ![ilke ekranı](./media/security-center-policies/policy-screen.png)
-       
+        :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="İlke yönetimi sayfası&quot;:::
+
+   **İlke yönetimi** ekranında yönetim gruplarının, aboneliklerin ve çalışma alanlarının yanı sıra yönetim grubu yapınızı da görebilirsiniz.
+
+1. İlkelerini görüntülemek istediğiniz aboneliği veya yönetim grubunu seçin.
+
+1. Bu abonelik veya yönetim grubu için güvenlik ilkesi sayfası görüntülenir. Kullanılabilir ve atanan ilkeleri gösterir.
+
+   ![ilke sayfası](./media/tutorial-security-policy/security-policy-page.png)
+
+    > [!NOTE]
+    > Varsayılan ilkenize göre &quot;MG devralınmış":::
+
        Bu **güvenlik ilkesi** ekranı, seçtiğiniz abonelik veya yönetim grubunda atanan ilkeler tarafından gerçekleştirilen eylemi yansıtır.
        
        * En üstteki bağlantıları kullanarak abonelik veya yönetim grubuna uygulanan bir ilke **atamasını** açın. Bu bağlantılar atamaya erişmenizi ve ilkeyi düzenlemenizi veya devre dışı bırakmanızı sağlar. Örneğin, belirli bir ilke atamasının Endpoint Protection 'ın etkin bir şekilde reddediyor olduğunu görürseniz, ilkeyi düzenlemek veya devre dışı bırakmak için bağlantıyı kullanın.
@@ -121,7 +132,7 @@ Devre dışı bırakmak istediğiniz öneri, güvenlik merkezi 'nin mevzuat uyum
 
    ![ilkeyi devre dışı bırak](./media/tutorial-security-policy/disable-policy.png)
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
    > [!NOTE]
    > İlke devre dışı bırakma değişikliklerinin etkili olması 12 saate kadar sürebilir.
@@ -131,8 +142,7 @@ Devre dışı bırakmak istediğiniz öneri, güvenlik merkezi 'nin mevzuat uyum
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalede güvenlik ilkeleri açıklanmaktadır. İlgili bilgiler için aşağıdaki makalelere bakın:
 
-* PowerShell kullanarak ilkelerin nasıl ayarlanacağı hakkında yönergeler için bkz [. hızlı başlangıç: Azure PowerShell modülünü kullanarak uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma](../governance/policy/assign-policy-powershell.md)
-
-* Azure Ilkesinde bir güvenlik ilkesinin nasıl düzenleneceği hakkında yönergeler için bkz. [uyumluluğu zorlamak için Ilke oluşturma ve yönetme](../governance/policy/tutorials/create-and-manage.md).
-
-* Azure Ilkesi 'ni kullanarak abonelikler arasında veya yönetim gruplarında ilke ayarlama hakkında yönergeler için bkz. [Azure ilkesi nedir?](../governance/policy/overview.md)
+- [PowerShell kullanarak ilkeleri ayarlamayı öğrenin](../governance/policy/assign-policy-powershell.md) - 
+- [Azure Ilkesinde bir güvenlik ilkesini nasıl düzenleyeceğinizi öğrenin](../governance/policy/tutorials/create-and-manage.md) - 
+- [Azure ilkesi kullanarak abonelikler arasında veya yönetim gruplarında ilke ayarlamayı öğrenin](../governance/policy/overview.md).
+- [Yönetim grubundaki tüm aboneliklerde Güvenlik Merkezi 'ni nasıl etkinleştirebileceğinizi öğrenin](onboard-management-group.md)

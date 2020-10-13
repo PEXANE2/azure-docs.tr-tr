@@ -2,20 +2,20 @@
 title: Azure 'da Active Directory tabanlı Hizmetleri karşılaştırın | Microsoft Docs
 description: Bu genel bakışta, farklı kimlik tekliflerini Active Directory Domain Services, Azure Active Directory ve Azure Active Directory Domain Services karşılaştırırsınız.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
-ms.author: iainfou
-ms.openlocfilehash: af4ebcac38d4714b8a133087fe328b4d2f6c4872
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: joflore
+ms.openlocfilehash: 0576fdaa9bdcc90636c3cd2bc90ba2818f1e69e7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91396376"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962675"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Kendi kendini yönetilen Active Directory Domain Services, Azure Active Directory ve yönetilen Azure Active Directory Domain Services karşılaştırın
 

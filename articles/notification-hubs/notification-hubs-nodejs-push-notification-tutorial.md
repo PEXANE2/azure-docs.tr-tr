@@ -19,10 +19,10 @@ ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-js
 ms.openlocfilehash: 34962686ae36764a6dc16b164e91004be9ef038d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91250428"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Azure Notification Hubs ve Node.js anında iletme bildirimleri gönderme
@@ -90,7 +90,7 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 ![Azure portal Notification Hubs](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
 
 > [!NOTE]
-> Bağlantı dizesini, [Azure PowerShell](/powershell/azure/) tarafından sunulan **Get-AzureSbNamespace** cmdlet 'Ini veya Azure [komut satırı arabirimi (Azure CLI)](/cli/azure/install-classic-cli)ile **Azure SB ad alanı göster** komutunu kullanarak da alabilirsiniz.
+> Bağlantı dizesini, [Azure PowerShell](/powershell/azure/) tarafından sunulan **Get-AzureSbNamespace** cmdlet 'Ini veya Azure [Command-Line arabirimi (Azure CLI)](/cli/azure/install-classic-cli)ile **Azure SB ad alanı göster** komutunu kullanarak da alabilirsiniz.
 
 ## <a name="general-architecture"></a>Genel mimari
 

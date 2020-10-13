@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: d44866e2d04ab1bab5d2eca01374350a7d73a0ea
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91577348"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play"></a>IoT Tak ve Kullan için terimler sözlüğü
@@ -59,7 +59,7 @@ Bir bağlantı dizesi, bir uç noktaya bağlanmak için gereken bilgileri kapsü
 
 Tüm [cihaz modellerinin](#device-model) varsayılan bir bileşeni vardır. Basit bir cihaz modelinde yalnızca varsayılan bir bileşen vardır. böyle bir model, bileşen cihazı yok olarak da bilinir. Daha karmaşık bir modelde, varsayılan bileşenin altında iç içe yerleştirilmiş birden çok bileşen vardır.
 
-## <a name="device-certification"></a>Cihaz Sertifikası
+## <a name="device-certification"></a>Cihaz sertifikasyonu
 
 IoT Tak ve Kullan cihaz Sertifikası programı, bir cihazın IoT Tak ve Kullan sertifika gereksinimlerini karşıladığını doğrular. [Azure IoT cihaz kataloğuna yönelik ortak sertifikalı](https://aka.ms/devicecatalog)sertifikalı bir cihaz ekleyebilirsiniz.
 
@@ -81,7 +81,7 @@ Bir [cihaz Oluşturucu](#device-builder) ya da [Modül oluşturucusu](#module-bu
 
 Dijital ikizi, [ıot Tak ve kullan cihazının](#iot-plug-and-play-device)bir modelidir. Dijital bir ikizi, [dijital TWINS tanım dili](#digital-twins-definition-language)kullanılarak modellenir. Çalışma zamanında dijital TWINS ile etkileşim kurmak için [Azure IoT cihaz SDK](#azure-iot-device-sdk) 'larını kullanabilirsiniz. Örneğin, bir cihazdaki dijital ikizi bir özellik değeri ayarlayabilirsiniz ve SDK bu değişikliği buluttaki IoT çözümünüz ile iletişim kurar.
 
-## <a name="digital-twin-change-events"></a>Dijital ikizi değişiklik olayları
+## <a name="digital-twin-change-events"></a>Dijital ikiz değişiklik olayları
 
 [Iot Tak ve Kullan cihazı](#iot-plug-and-play-device) bir [IoT Hub 'ına](#azure-iot-hub)bağlandığında, hub, dijital ikizi değişikliklerinin bildirimlerini göndermek için yönlendirme özelliğini kullanabilir. Örneğin, bir cihazdaki [özellik](#properties) değeri her değiştiğinde IoT Hub, bir olay hub 'ı gibi bir uç noktaya bildirim gönderebilir.
 
@@ -101,7 +101,7 @@ Bir arabirim, [ıot Tak ve kullan cihazından](#iot-plug-and-play-device) veya [
 
 IoT Hub sorgu dili birden çok amaçla kullanılır. Örneğin, IoT Hub 'ınıza kayıtlı cihazları aramak veya [dijital ikizi yönlendirme](#digital-twin-route) davranışını daraltmak için dilini kullanabilirsiniz.
 
-## <a name="iot-plug-and-play-bridge"></a>IoT Tak ve Kullan Köprüsü
+## <a name="iot-plug-and-play-bridge"></a>IoT Tak Çalıştır köprüsü
 
 IoT Tak ve Kullan Köprüsü, Windows veya Linux ağ geçitlerine eklenen mevcut sensörler ve çevre birimlerinin [ıot Tak ve kullan cihazları](#iot-plug-and-play-device)olarak bağlanmasına olanak sağlayan açık kaynaklı bir uygulamadır.
 

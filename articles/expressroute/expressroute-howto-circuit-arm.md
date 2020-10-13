@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: duau
 ms.openlocfilehash: b5ac53c44429e23e2d22a934a9dc71bd485ec4cd
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761915"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak bir ExpressRoute bağlantı hattı oluşturma ve değiştirme
@@ -42,7 +42,7 @@ Get-AzExpressRouteServiceProvider
 
 Bağlantı sağlayıcınızın orada listelenip listelenmediğini denetleyin. Daha sonra bir devre oluşturduğunuzda ihtiyacınız olan aşağıdaki bilgileri unutmayın:
 
-* Name
+* Adı
 * PeeringLocations
 * BandwidthsOffered
 

@@ -12,10 +12,10 @@ ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ef7599441cbfa11c555453adea0ca135569524b5
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91459838"
 ---
 # <a name="define-a-conditional-access-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde koşullu erişim teknik profili tanımlama
@@ -53,7 +53,7 @@ Her oturum açma için, Azure AD B2C tüm ilkeleri değerlendirir ve Kullanıcı
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| OperationType | Yes | **Değerlendirme**olmalıdır.  |
+| OperationType | Evet | **Değerlendirme**olmalıdır.  |
 
 ### <a name="input-claims"></a>Giriş talepleri
 
@@ -61,10 +61,10 @@ Her oturum açma için, Azure AD B2C tüm ilkeleri değerlendirir ve Kullanıcı
 
 | Claimreferenceıd | Gerekli | Veri Türü | Açıklama |
 | --------- | -------- | ----------- |----------- |
-| UserId | Yes | string | Oturum açan kullanıcının tanımlayıcısı. |
-| AuthenticationMethodsUsed | Yes |stringCollection | Kullanıcının oturum açmak için kullandığı yöntemlerin listesi. Olası değerler: `Password` , ve `OneTimePasscode` . |
-| Ifederal | Yes |boolean | Bir kullanıcının bir Federasyon hesabıyla oturum açmış olup olmadığını gösterir. Değer olmalıdır `false` . |
-| IsMfaRegistered | Yes |boolean | Kullanıcının Multi-Factor Authentication için telefon numarasını zaten kaydetmediğini belirtir. |
+| UserId | Evet | string | Oturum açan kullanıcının tanımlayıcısı. |
+| AuthenticationMethodsUsed | Evet |stringCollection | Kullanıcının oturum açmak için kullandığı yöntemlerin listesi. Olası değerler: `Password` , ve `OneTimePasscode` . |
+| Ifederal | Evet |boolean | Bir kullanıcının bir Federasyon hesabıyla oturum açmış olup olmadığını gösterir. Değer olmalıdır `false` . |
+| IsMfaRegistered | Evet |boolean | Kullanıcının Multi-Factor Authentication için telefon numarasını zaten kaydetmediğini belirtir. |
 
 
 **Inputclaimstransformations** öğesi, giriş taleplerini değiştirmek veya koşullu erişim hizmetine göndermeden önce yenilerini oluşturmak Için kullanılan **inputclaimstranssize** öğelerinin bir koleksiyonunu içerebilir.
@@ -75,8 +75,8 @@ Her oturum açma için, Azure AD B2C tüm ilkeleri değerlendirir ve Kullanıcı
 
 | Claimreferenceıd | Gerekli | Veri Türü | Açıklama |
 | --------- | -------- | ----------- |----------- |
-| Zorluklar | Yes |stringCollection | Tanımlanan tehdidi düzeltme eylemlerinin listesi. Olası değerler: `block` |
-| MultiConditionalAccessStatus | Yes | stringCollection |  |
+| Zorluklar | Evet |stringCollection | Tanımlanan tehdidi düzeltme eylemlerinin listesi. Olası değerler: `block` |
+| MultiConditionalAccessStatus | Evet | stringCollection |  |
 
 **Outputclaimstransformations** öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
 
@@ -115,7 +115,7 @@ Koşullu erişim teknik profilinin **Düzeltme** modu, oturum açma tanımlanan 
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| OperationType | Yes | **Düzeltme**olmalıdır.  |
+| OperationType | Evet | **Düzeltme**olmalıdır.  |
 
 ### <a name="input-claims"></a>Giriş talepleri
 
@@ -123,7 +123,7 @@ Koşullu erişim teknik profilinin **Düzeltme** modu, oturum açma tanımlanan 
 
 | Claimreferenceıd | Gerekli | Veri Türü | Açıklama |
 | --------- | -------- | ----------- |----------- |
-| Memnun kalmayan | Yes | stringCollection| Değerlendirme modundan, zorluk talebine geri dönüş olarak, tanımlanan tehdidi düzeltmek için tatmin eden güçlüklerin listesi.|
+| Memnun kalmayan | Evet | stringCollection| Değerlendirme modundan, zorluk talebine geri dönüş olarak, tanımlanan tehdidi düzeltmek için tatmin eden güçlüklerin listesi.|
 
 
 **Inputclaimstransformations** öğesi, giriş taleplerini değiştirmek veya koşullu erişim hizmeti çağrılmadan önce yenilerini oluşturmak Için kullanılan **inputclaimstransınfo** öğelerinin bir koleksiyonunu içerebilir.

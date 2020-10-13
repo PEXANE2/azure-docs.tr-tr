@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 931a8463578468ec3a028d17b3f96d317c6fbe02
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826408"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Öğretici: HR2day by Merces ile tümleştirme Azure Active Directory
@@ -73,7 +73,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına bağlı olarak HR2
 HR2day ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[HR2day tarafından tek oturum açma Ile yapılandırma yapılandırın](#configure-hr2day-by-merces-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[HR2day tarafından tek oturum açma Ile yapılandırma yapılandırın](#configure-hr2day-by-merces-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcı tarafından Azure AD gösterimine bağlı olan Merces tarafından HR2day 'te Britta Simon 'a sahip olmak için **[HR2day tarafından test kullanıcısı oluşturun](#create-hr2day-by-merces-test-user)** .
@@ -93,7 +93,7 @@ HR2day tarafından Azure AD çoklu oturum açmayı yapılandırmak için aşağ�
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -117,7 +117,7 @@ HR2day tarafından Azure AD çoklu oturum açmayı yapılandırmak için aşağ�
 
 6. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde, yukarıdaki görüntüde gösterildiği gibi, **Düzen simgesini** kullanarak talepleri DÜZENLEYIN veya aşağıdaki resimde gösterildiği gibi SAML belirteci özniteliğini yapılandırmak için **yeni talep Ekle** ' yi kullanarak talepleri ekleyin ve aşağıdaki adımları gerçekleştirin:
 
-    | Adı |  Kaynak özniteliği |
+    | Name |  Kaynak özniteliği |
     | ---------- | ----------- |
     | ATTR_LOGINCLAIM | `join([mail],"102938475Z","@"` |
     | | |
@@ -140,7 +140,7 @@ HR2day tarafından Azure AD çoklu oturum açmayı yapılandırmak için aşağ�
 
     örneğin: **Kaydet**’e tıklayın.
 
-7. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+7. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -154,7 +154,7 @@ HR2day tarafından Azure AD çoklu oturum açmayı yapılandırmak için aşağ�
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-hr2day-by-merces-single-sign-on"></a>HR2day by Merces çoklu oturum açma ile yapılandırma
+### <a name="configure-hr2day-by-merces-single-sign-on"></a>HR2day by Merces tek Sign-On yapılandırma
 
 **HR2day tarafından** tek oturum açma 'yı yapılandırmak için, indirilen **sertifikayı (Base64)** ve Azure Portal ' dan HR2day ' den [Merces destek ekibine](mailto:servicedesk@merces.nl)uygun şekilde kopyalanmış URL 'leri göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

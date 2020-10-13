@@ -3,12 +3,12 @@ title: Yönetim gruplarınız ile çalışma-Azure Idare
 description: Yönetim grubu hiyerarşinizi görüntülemeyi, bakımını yapmayı, güncelleştirmeyi ve silmeyi öğrenin.
 ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 82eeb2520815ddac69d27ddccd58c842c3e33deb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c10333e5be746aa0ca696d235f2d5fed75060e9d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91531047"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951953"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Kaynakları yönetim gruplarıyla yönetme
 
@@ -43,7 +43,7 @@ Portal, PowerShell veya Azure CLı kullanarak yönetim grubunun adını değişt
 
    :::image type="content" source="./media/rename_context.png" alt-text="Yönetim grubu sayfasında Eylem çubuğunun ve ' grubu yeniden adlandır ' düğmesinin ekran görüntüsü." border="false":::
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ### <a name="change-the-name-in-powershell"></a>PowerShell 'de adı değiştirme
 
@@ -251,7 +251,7 @@ Azure portal hangi izinlere sahip olduğunu görmek için, yönetim grubunu seç
 
    :::image type="content" source="./media/move_small_context.png" alt-text="Yönetim grubu sayfasında Eylem çubuğunun ve ' grubu yeniden adlandır ' düğmesinin ekran görüntüsü." border="false":::
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ### <a name="move-subscriptions-in-powershell"></a>Abonelikleri PowerShell 'e taşıma
 
@@ -300,7 +300,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
    :::image type="content" source="./media/add_context_MG.png" alt-text="Yönetim grubu sayfasında Eylem çubuğunun ve ' grubu yeniden adlandır ' düğmesinin ekran görüntüsü." border="false":::
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ### <a name="move-management-groups-in-powershell"></a>Yönetim gruplarını PowerShell 'de taşıma
 
@@ -349,7 +349,7 @@ GET https://management.azure.com/providers/Microsoft.Management/managementgroups
 
 Yönetim grupları hakkında daha fazla bilgi almak için bkz.:
 
-- [Azure kaynaklarını düzenlemek için yönetim grupları oluşturma](./create.md)
+- [Azure kaynaklarını düzenlemek için yönetim grupları oluşturma](./create-management-group-portal.md)
 - [Yönetim gruplarınızı değiştirme, silme veya yönetme](./manage.md)
 - [Azure PowerShell Kaynak Modülünde yönetim gruplarını gözden geçirme](/powershell/module/az.resources#resources)
 - [REST API'de yönetim gruplarını gözden geçirme](/rest/api/resources/managementgroups)

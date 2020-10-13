@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: how-to
-ms.date: 09/07/2020
+ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: fa71cd502f730844e4f4398d41d06ada56fc2413
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d71181c5f45ab63febae7288f07189dc52ea12fd
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602294"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945922"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Azure bölgeleri arasında Azure VM 'Leri taşıma desteği
 
@@ -108,7 +108,7 @@ Azure galeri görüntüleri (üçüncü taraf tarafından yayımlanan)  | Destek
 Özel görüntüler (üçüncü taraf tarafından yayımlanan)| Desteklenir | VM desteklenen bir işletim sisteminde çalışıyorsa desteklenir.
 Site Recovery kullanan VM 'Ler | Desteklenmez | Arka uçta Site Recovery kullanarak kaynakları VM 'Ler arasında taşıyın. Zaten Site Recovery kullanıyorsanız, çoğaltmayı devre dışı bırakın ve ardından hazırlama işlemini başlatın.
 RBAC ilkeleri | Desteklenmez | VM 'lerde rol tabanlı erişim denetimi (RBAC) ilkeleri, hedef bölgedeki sanal makineye kopyalanmaz.
-Uzantıları | Desteklenmez | Uzantılar hedef bölgedeki sanal makineye kopyalanmaz. Taşıma işlemi tamamlandıktan sonra bunları el ile yükleyebilirsiniz.
+Uzantılar | Desteklenmez | Uzantılar hedef bölgedeki sanal makineye kopyalanmaz. Taşıma işlemi tamamlandıktan sonra bunları el ile yükleyebilirsiniz.
 
 
 ## <a name="supported-vm-storage-settings"></a>Desteklenen VM depolama ayarları
@@ -155,7 +155,7 @@ Premium P20 veya P30 veya P40 veya P50 disk | 16 KB veya daha büyük |20 MB/sn 
 NIC | Desteklenir | Hedef bölgede var olan bir kaynağı belirtin veya hazırlama işlemi sırasında yeni bir kaynak oluşturun. 
 İç yük dengeleyici | Desteklenir | Hedef bölgede var olan bir kaynağı belirtin veya hazırlama işlemi sırasında yeni bir kaynak oluşturun.  
 Genel yük dengeleyici | Şu anda desteklenmiyor | Hedef bölgede var olan bir kaynağı belirtin veya hazırlama işlemi sırasında yeni bir kaynak oluşturun.  
-Genel IP adresi | Desteklenir | Hedef bölgede var olan bir kaynağı belirtin veya hazırlama işlemi sırasında yeni bir kaynak oluşturun.  
+Genel IP adresi | Desteklenir | Hedef bölgede var olan bir kaynağı belirtin veya hazırlama işlemi sırasında yeni bir kaynak oluşturun.<br/><br/> Genel IP adresi bölgeye özeldir ve taşıma işleminden sonra hedef bölgede korunmaz. Hedef konumdaki ağ ayarlarını (Yük Dengeleme kuralları dahil) değiştirirken bunu aklınızda bulundurun.
 Ağ güvenlik grubu | Desteklenir | Hedef bölgede var olan bir kaynağı belirtin veya hazırlama işlemi sırasında yeni bir kaynak oluşturun.  
 Ayrılmış (statik) IP adresi | Desteklenir | Bunu şu anda yapılandıramazsınız. Değer varsayılan olarak kaynak değeridir. <br/><br/> Kaynak VM üzerindeki NIC 'nin statik bir IP adresi varsa ve hedef alt ağda aynı IP adresi varsa, hedef VM 'ye atanır.<br/><br/> Hedef alt ağda aynı IP adresi yoksa, sanal makine için taşıma işlemi başarısız olur.
 Dinamik IP adresi | Desteklenir | Bunu şu anda yapılandıramazsınız. Değer varsayılan olarak kaynak değeridir.<br/><br/> Kaynaktaki NIC dinamik IP adreslemesini içeriyorsa, hedef VM üzerindeki NIC de varsayılan olarak dinamik olur.

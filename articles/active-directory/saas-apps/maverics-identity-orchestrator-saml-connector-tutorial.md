@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: jeedes
 ms.openlocfilehash: fbab2bbaa47090ff4bd7fb99495912bd1f645b61
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91758150"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-with-maverics-identity-orchestrator-saml-connector"></a>Öğretici: Azure AD çoklu oturum açmayı Maverics Identity Orchestrator SAML Bağlayıcısı ile tümleştirme
@@ -38,7 +38,7 @@ Bu öğreticide, kimlik doğrulama ve erişim denetimi için Azure AD kullanmak 
 
 Ek yükleme ve yapılandırma yönergeleri için [Strata Web sitesine](https://www.strata.io)gidin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
 - Maverics Identity Orchestrator SAML Bağlayıcısı SSO özellikli aboneliği. Maverics yazılımını edinmek için [Strata satışları](mailto:sales@strata.io)ile görüşün.
@@ -157,7 +157,7 @@ secrets:
 Azure portal veya Azure CLı kullanarak bir Azure Anahtar Kasası ayarlayabilirsiniz.
 
 **Azure portalını kullanma**
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. [Yeni bir Anahtar Kasası oluşturun](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#create-a-vault).
 1. [Gizli dizileri anahtar kasasına ekleyin](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault).
 1. [Bir uygulamayı Azure AD 'ye kaydedin](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application).

@@ -4,12 +4,12 @@ description: Azure Işlevleri için Dayanıklı İşlevler uzantısında dayanı
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 0226e5141b100aa3fcf89dd1a5cade8f3cd6cf1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb91f205a9b83b0b4b410644ef6c0fcbbf60876a
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87056236"
+ms.locfileid: "91876456"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler süreölçerler (Azure Işlevleri)
 
@@ -22,7 +22,7 @@ ms.locfileid: "87056236"
 4:30 pm tarihinde süresi dolan bir Zamanlayıcı oluşturduğunuzda, temeldeki dayanıklı görev çerçevesi yalnızca 4:30 PM 'de görünür hale gelen bir iletiyi sıraya alır. Azure Işlevleri tüketim planında çalışırken, yeni görünür Zamanlayıcı iletisi, işlev uygulamasının uygun bir VM üzerinde etkinleştirilmesini sağlayacaktır.
 
 > [!NOTE]
-> * Dayanıklı zamanlayıcılar Şu anda 7 gün ile sınırlıdır. Daha uzun gecikmeler gerekliyse, bir döngüdeki Zamanlayıcı API 'Leri kullanılarak benzetilen olabilirler `while` .
+> * Dayanıklı bir uzantının [2.3.0 sürümünden](https://github.com/Azure/azure-functions-durable-extension/releases/tag/v2.3.0) başlayarak, dayanıklı zamanlayıcılar sınırsızdır. Uzantının önceki sürümlerinde, dayanıklı zamanlayıcılar yedi gün ile sınırlıdır. Daha eski bir sürüm kullanırken ve yedi günden daha uzun bir gecikme olması gerekiyorsa, `while` Bu gecikmeyi taklit etmek için bir döngüde Zamanlayıcı API 'lerini kullanın.
 > * `CurrentUtcDateTime` `DateTime.UtcNow` `currentUtcDateTime` `Date.now` `Date.UTC` Dayanıklı zamanlayıcılar için yangın süresini hesaplarken, .NET veya yerine her zaman kullanın JavaScript. Daha fazla bilgi için bkz. [Orchestrator işlev kodu kısıtlamaları](durable-functions-code-constraints.md) makalesi.
 
 ## <a name="usage-for-delay"></a>Gecikme kullanımı

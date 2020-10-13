@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/13/2020
 ms.openlocfilehash: 926b79e672c14249ec7c2b053dba7eb3a31443a7
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536061"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Azure Kaynak yazma anahtarına geçiş
@@ -77,7 +77,7 @@ Geçişin, LUıN portalından gerçekleştirilmesi gerekiyor. Örneğin, LUSıS 
    > [!div class="mx-imgBorder"]
    > ![Geçiş işleminde, şimdi geçir ' i seçtiğiniz ilk açılan pencere.](./media/migrate-authoring-key/prompt-when-migrating-2.png)
 
-3. Uygulamalarınızdan herhangi birine ortak çalışanlar varsa, onlara geçiş hakkında bilgi veren bir e-posta göndermeniz istenir. Bu, isteğe bağlı bir adımdır.
+3. Uygulamalarınızdan herhangi birine ortak çalışanlar varsa, onlara geçiş hakkında bilgi veren bir e-posta göndermeniz istenir. Bu isteğe bağlı bir adımdır.
 
    Her ortak çalışan ve uygulama için varsayılan e-posta uygulaması, hafif biçimli bir e-posta ile açılır. Göndermeden önce e-postayı düzenleyebilirsiniz. E-posta şablonu, tam uygulama KIMLIĞI ve uygulama adını içerir.
 
@@ -95,7 +95,7 @@ Geçişin, LUıN portalından gerçekleştirilmesi gerekiyor. Örneğin, LUSıS 
    > [!Note]
    > Hesabınızı Azure 'a geçirdikten sonra uygulamalarınız artık ortak olmayan uygulamalar tarafından kullanılamaz.
 
-4. Herhangi bir uygulamada ortak çalışan değilseniz, geçiş akışı sırasında bu seçeneği belirleyerek uygulamaların bir kopyasını dışarı aktarmanız istenir. Bu, isteğe bağlı bir adımdır.
+4. Herhangi bir uygulamada ortak çalışan değilseniz, geçiş akışı sırasında bu seçeneği belirleyerek uygulamaların bir kopyasını dışarı aktarmanız istenir. Bu isteğe bağlı bir adımdır.
 
    Seçeneğini belirlerseniz, aşağıdaki sayfa görüntülenir. İstediğiniz uygulamaları dışa aktarmak için soldaki indir düğmelerini seçin. Bu uygulamaları geçirdikten sonra geri aktarabilirsiniz, çünkü bu uygulamalar sizinle otomatik olarak geçirilmeyecektir.
 
