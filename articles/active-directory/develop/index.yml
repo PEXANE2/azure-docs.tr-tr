@@ -9,12 +9,12 @@ metadata:
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: b6dfd02b11c972ae4877e45e7424d3e35f0d0874
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 954712c2056a4251bc92b71c5b7cd2f1309804b2
+  ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91801894"
+  ms.lasthandoff: 10/13/2020
+  ms.locfileid: "91962029"
 landingContent:
 - title: Microsoft kimlik platformu hakkında
   linkLists:
@@ -120,23 +120,9 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
+    - text: Docs’taki yenilikler?
+      url: whats-new-docs.md
     - text: Microsoft Kimlik Web kitaplığına genel bakış
       url: microsoft-identity-web.md
     - text: 'Öğretici: Blazor Server'
       url: tutorial-blazor-server.md
-    - text: 'Hızlı Başlangıç: ASP.NET Core web API’sini koruma'
-      url: quickstart-v2-aspnet-core-web-api.md
-    - text: MSAL Python API başvurusu
-      url: /python/api/msal/
-    - text: 'Hızlı Başlangıç: Uygulama kaydetme(yeniden yazma)'
-      url: quickstart-register-app.md
-    - text: "Hızlı Başlangıç: Web API'sini kullanıma sunma (yeniden yazma)"
-      url: quickstart-configure-app-expose-web-apis.md
-    - text: "Hızlı Başlangıç: Web API'sine erişme (yeniden yazma)"
-      url: quickstart-configure-app-access-web-apis.md
-    - text: Xamarin Android aracılı uygulamayı MSAL.NET’e geçirme
-      url: msal-net-migration-android-broker.md
-    - text: Hataları ve özel durumları işleme - Android
-      url: msal-android-handling-exceptions.md
-    - text: Taleplerde dizin şeması uzantısı öznitelikleri
-      url: active-directory-schema-extensions.md

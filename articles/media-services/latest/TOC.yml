@@ -61,6 +61,8 @@
           href: protect-with-aes128.md
         - name: DRM ile dinamik olarak şifreleme
           href: protect-with-drm.md
+        - name: Azure AD ile içeriği koruma
+          href: azure-ad-content-protection.md
     - name: REST
       items:
         - name: Uzaktaki bir dosyayı kodlama ve akış ile aktarma REST
@@ -188,8 +190,6 @@
           href: streaming-policy-concept.md
         - name: İçerik anahtarı ilkeleri
           href: content-key-policy-concept.md
-        - name: Azure AD ile içeriği koruma
-          href: azure-ad-content-protection.md
     - name: İzleme
       items:
         - name: Event Grid ile olaylar
