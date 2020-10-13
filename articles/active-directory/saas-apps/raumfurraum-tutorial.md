@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: jeedes
 ms.openlocfilehash: fdc598a5afed5eb29e285b279eced98ad06e296c
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89500903"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-raumfrraum"></a>Öğretici: Çum ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory für [Çum
@@ -26,7 +26,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile korum] für [oyumu nasıl
 * Kullanıcılarınızın Azure AD hesaplarıyla birlikte otomatik olarak oturum açmalarına izin vermek için, für [oyum.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 

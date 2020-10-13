@@ -8,10 +8,10 @@ ms.author: viviali
 ms.date: 10/4/2019
 ms.topic: conceptual
 ms.openlocfilehash: f996bb2d5126ef038ca872aee1f1893979a5229b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081007"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Azure IoT Central verilerinizi Power BI panosunda görselleştirin ve çözümleyin
@@ -55,13 +55,13 @@ PBIX dosyasını açtığınızda, sayfayı okuyun ve kapak sayfasındaki yöner
 
 PBIX dosyasında **cihazlar ve telemetri** raporu bulunur ve cihazlar tarafından gönderilen telemetrinin geçmiş bir görünümünü gösterir. Farklı telemetri türlerinin bir dökümünü sağlar ve ayrıca cihazlar tarafından gönderilen en son Telemetriyi gösterir.
 
-:::image type="content" source="media/howto-connect-powerbi/report.png" alt-text="Power BI cihazlar ve telemetri raporu":::
+:::image type="content" source="media/howto-connect-powerbi/report.png" alt-text="Power BI çözümü işlem hattı":::
 
 ## <a name="pipeline-resources"></a>İşlem hattı kaynakları
 
 Azure portal işlem hattını oluşturan tüm Azure kaynaklarına erişebilirsiniz. Tüm kaynaklar, işlem hattını ayarlarken oluşturduğunuz kaynak grubunda bulunur.
 
-:::image type="content" source="media/howto-connect-powerbi/azure-deployment.png" alt-text="Kaynak grubunun Azure portal görünümü":::
+:::image type="content" source="media/howto-connect-powerbi/azure-deployment.png" alt-text="Power BI çözümü işlem hattı":::
 
 Aşağıdaki listede, ardışık düzendeki her bir kaynağın rolü açıklanmaktadır:
 

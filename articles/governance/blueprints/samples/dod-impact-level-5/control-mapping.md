@@ -1,24 +1,24 @@
 ---
 title: DOD etki düzeyi 5 şema örnek denetimleri
-description: DOD etkisi düzeyi 5 şema örneğinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
+description: DOD etkisi düzeyi 5 şema örneğinin denetim eşlemesi. Her denetim, değerlendirmede yardımcı olan bir veya daha fazla Azure Ilke tanımına eşlenir.
 ms.date: 09/17/2020
 ms.topic: sample
-ms.openlocfilehash: 6cd92cba69367c611a0e3a3c435e41e973a80d73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc187480f5342f076a7f07f058e8e570a0e7f146
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540549"
+ms.locfileid: "91929498"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-5-blueprint-sample"></a>DOD etkisi düzeyi 5 şema örneğinin denetim eşlemesi
 
-Aşağıdaki makalede, savunma etkisi düzeyi 5 (DoD IL5) şeması 'nın Azure şemaları bölümünün DoD etkisi düzeyi 5 denetimlerine nasıl eşleştiği açıklanır. Denetimler hakkında daha fazla bilgi için bkz. [DOD bulut bilgi Işlem güvenlik gereksinimleri Kılavuzu (SRG)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/pdf/Cloud_Computing_SRG_v1r3.pdf). Savunma bilgi sistemleri Kurumu (DıŞA), DoD bulut bilgi Işlem güvenlik gereksinimleri Kılavuzu ' nu (SRG) geliştirmekten ve korumadan sorumlu olan ABD Savunma Bakanlığı (DoD) bir ajansudur. SRG, DoD bilgilerini, sistemleri ve uygulamaları barındıran bulut hizmeti sağlayıcılarının (CSP 'Ler) temel güvenlik gereksinimlerini ve DoD 'nin bulut hizmetleri kullanımı için tanımlar.  
+Aşağıdaki makalede, savunma etkisi düzeyi 5 (DoD IL5) şeması 'nın Azure şemaları bölümünün DoD etkisi düzeyi 5 denetimlerine nasıl eşleştiği açıklanır. Denetimler hakkında daha fazla bilgi için bkz. [DOD bulut bilgi Işlem güvenlik gereksinimleri Kılavuzu (SRG)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/pdf/Cloud_Computing_SRG_v1r3.pdf).
+Savunma bilgi sistemleri Kurumu (DıŞA), DoD bulut bilgi Işlem güvenlik gereksinimleri Kılavuzu ' nu (SRG) geliştirmekten ve korumadan sorumlu olan ABD Savunma Bakanlığı (DoD) bir ajansudur. SRG, DoD bilgilerini, sistemleri ve uygulamaları barındıran bulut hizmeti sağlayıcılarının (CSP 'Ler) temel güvenlik gereksinimlerini ve DoD 'nin bulut hizmetleri kullanımı için tanımlar.  
 
 Aşağıdaki eşlemeler **DOD etki düzeyi 5** denetimlerine göre yapılır. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir denetim eşlemesine atlayın. Eşlenmiş denetimlerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından, önizlemeyi bulun ve seçin ** \[ \] : DOD etki düzeyi 5** yerleşik ilke girişimi.
 
 > [!IMPORTANT]
-> Aşağıdaki her denetim bir veya daha fazla [Azure ilke](../../../policy/overview.md) tanımı ile ilişkilidir. Bu ilkeler, denetimiyle [uyumluluğu değerlendirmenize](../../../policy/how-to/get-compliance-data.md) yardımcı olabilir; Ancak, bir denetim ve bir veya daha fazla ilke arasında genellikle bir 1:1 veya bir eşleşme yoktur. Bu nedenle, Azure Ilkesi ile **uyumlu** , yalnızca ilkelerin kendilerine başvurur; Bu, bir denetimin tüm gereksinimleriyle tamamen uyumlu olduğunuzdan emin değildir. Buna ek olarak, uyumluluk standardı şu anda herhangi bir Azure Ilke tanımı tarafından açıklanmayan denetimler içerir. Bu nedenle, Azure Ilkesinde uyumluluk, genel uyumluluk durumunuzu yalnızca kısmi görünümüdür. Bu uyumluluk şeması örneği için denetimler ve Azure Ilke tanımları arasındaki ilişkilendirmeler zaman içinde değişebilir.
-> Değişiklik geçmişini görüntülemek için [GitHub kayıt geçmişine](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/dod-impact-level-5/control-mapping.md)bakın.
+> Aşağıdaki her denetim bir veya daha fazla [Azure ilke](../../../policy/overview.md) tanımı ile ilişkilidir. Bu ilkeler, denetimiyle [uyumluluğu değerlendirmenize](../../../policy/how-to/get-compliance-data.md) yardımcı olabilir; Ancak, bir denetim ile bir veya daha fazla ilke arasında genellikle bire bir veya tam eşleşme yoktur. Bu nedenle, Azure Ilkesi ile **uyumlu** , yalnızca ilkelerin kendilerine başvurur; Bu, bir denetimin tüm gereksinimleriyle tamamen uyumlu olduğunuzdan emin değildir. Buna ek olarak, uyumluluk standardı şu anda herhangi bir Azure Ilke tanımı tarafından açıklanmayan denetimler içerir. Bu nedenle, Azure Ilkesinde uyumluluk, genel uyumluluk durumunuzu yalnızca kısmi görünümüdür. Bu uyumluluk şeması örneği için denetimler ve Azure Ilke tanımları arasındaki ilişkilendirmeler zaman içinde değişebilir. Değişiklik geçmişini görüntülemek için [GitHub kayıt geçmişine](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/dod-impact-level-5/control-mapping.md)bakın.
 
 ## <a name="ac-2-account-management"></a>AC-2 hesap yönetimi
 
@@ -238,7 +238,8 @@ Bu şema, sanal makinelerde, sanal makine ölçek kümelerinde ve SQL sunucular�
 
 ## <a name="ra-5-vulnerability-scanning"></a>RA-5 güvenlik açığı taraması
 
-Bu şema, Azure Güvenlik Merkezi 'nde işletim sistemi güvenlik açıklarını, SQL güvenlik açıklarını ve sanal makine güvenlik açıklarını izleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak bilgi sistemi güvenlik açıklarını yönetmenize yardımcı olur. Azure Güvenlik Merkezi, dağıtılan Azure kaynaklarının güvenlik durumu hakkında gerçek zamanlı Öngörüler elde etme olanağı sunan raporlama özellikleri sağlar. Bu şema Ayrıca, SQL sunucularında gelişmiş veri güvenliğini denetleyen ve uygulayan ilke tanımları da atar. Dağıtılmış kaynaklardaki güvenlik açıklarını anlamanıza yardımcı olmak için gelişmiş veri güvenliğine dahil edilen güvenlik açığı değerlendirmesi ve Gelişmiş tehdit koruması özellikleri.
+Bu şema, Azure Güvenlik Merkezi 'nde işletim sistemi güvenlik açıklarını, SQL güvenlik açıklarını ve sanal makine güvenlik açıklarını izleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak bilgi sistemi güvenlik açıklarını yönetmenize yardımcı olur.
+Azure Güvenlik Merkezi, dağıtılan Azure kaynaklarının güvenlik durumu hakkında gerçek zamanlı Öngörüler elde etme olanağı sunan raporlama özellikleri sağlar. Bu şema Ayrıca, SQL sunucularında gelişmiş veri güvenliğini denetleyen ve uygulayan ilke tanımları da atar. Dağıtılmış kaynaklardaki güvenlik açıklarını anlamanıza yardımcı olmak için gelişmiş veri güvenliğine dahil edilen güvenlik açığı değerlendirmesi ve Gelişmiş tehdit koruması özellikleri.
 
 - Gelişmiş veri güvenliği SQL yönetilen örneği üzerinde etkinleştirilmelidir
 - Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir
@@ -255,8 +256,7 @@ Azure 'un dağıtılmış hizmet reddi (DDoS) standart katmanı, temel hizmet ka
 
 ## <a name="sc-7-boundary-protection"></a>SC-7 sınır koruması
 
-Bu şema, Azure Güvenlik Merkezi 'nde ağ güvenlik grubu sağlamlaştırma önerilerini izleyen bir [Azure ilke](../../../policy/overview.md) tanımı atayarak sistem sınırını yönetmenize ve denetlemenize yardımcı olur. Azure Güvenlik Merkezi, Internet 'e yönelik sanal makinelerin trafik düzenlerini analiz eder ve olası saldırı yüzeyini azaltmak için ağ güvenlik grubu kuralı önerileri sağlar.
-Ayrıca, bu şema korunmayan uç noktaları, uygulamalar ve depolama hesaplarını izleyen ilke tanımları da atar. Bir güvenlik duvarı tarafından korunmayan uç noktalar ve uygulamalar ve Kısıtlanmamış erişimi olan depolama hesapları, bilgi sisteminde bulunan bilgilere istenmeden erişime izin verebilir.
+Bu şema, Azure Güvenlik Merkezi 'nde ağ güvenlik grubu sağlamlaştırma önerilerini izleyen bir [Azure ilke](../../../policy/overview.md) tanımı atayarak sistem sınırını yönetmenize ve denetlemenize yardımcı olur. Azure Güvenlik Merkezi, Internet 'e yönelik sanal makinelerin trafik düzenlerini analiz eder ve olası saldırı yüzeyini azaltmak için ağ güvenlik grubu kuralı önerileri sağlar. Ayrıca, bu şema korunmayan uç noktaları, uygulamalar ve depolama hesaplarını izleyen ilke tanımları da atar. Bir güvenlik duvarı tarafından korunmayan uç noktalar ve uygulamalar ve Kısıtlanmamış erişimi olan depolama hesapları, bilgi sisteminde bulunan bilgilere istenmeden erişime izin verebilir.
 
 - Internet 'e yönelik uç nokta ile erişim kısıtlı olmalıdır
 - Depolama hesapları, ağ erişimini kısıtlıyor olmalıdır
