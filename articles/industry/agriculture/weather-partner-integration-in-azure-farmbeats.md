@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 07/09/2020
 ms.author: sunasing
 ms.openlocfilehash: a2677b5343b2d65a39e7c9f6d5006db599c1ac73
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86497004"
 ---
 # <a name="weather-partner-integration"></a>Hava durumu iş ortağı tümleştirmesi
@@ -18,7 +18,7 @@ Bu makalede, veri sağlayıcılarının API 'Lerinden yararlanarak ve bu veriler
 
  > [!NOTE]
  > Bu belgelerin amacına yönelik olarak, Azure açık veri kümelerinde NOAA kullanılarak oluşturulan bir başvuru uygulamasını kullanacağız ve ' de kullanılabilir [https://github.com/azurefarmbeats/noaa_docker](https://github.com/azurefarmbeats/noaa_docker) .
- > Karşılık gelen Docker görüntüsü şurada bulunabilir:[https://hub.docker.com/r/azurefarmbeats/farmbeats-noaa](https://hub.docker.com/r/azurefarmbeats/farmbeats-noaa)
+ > Karşılık gelen Docker görüntüsü şurada bulunabilir: [https://hub.docker.com/r/azurefarmbeats/farmbeats-noaa](https://hub.docker.com/r/azurefarmbeats/farmbeats-noaa)
 
 Hava durumu ortağının bir Docker görüntüsünü/programını sağlaması gerekir (aşağıda belirtilen belirtimlerle) ve Docker görüntüsünü müşteriler tarafından erişilebilen bir kapsayıcı kayıt defterinde barındırın. Hava durumu ortağının müşterilerine aşağıdaki bilgileri sağlaması gerekir:
 
@@ -36,10 +36,10 @@ Yukarıdaki Docker bilgilerini kullanarak müşteri, bir hava durumu ortağını
 
 Farmtts API 'Leri Swagger teknik belgelerini içerir. Tüm API 'Ler ve bunların karşılık gelen istekleri veya yanıtları hakkında bilgi için bkz. [Farmtts Swagger](https://aka.ms/farmbeatsswagger). 
 
-Farmtts yüklediyseniz, şu adreste bulunan Farmtts Swagger verilerinize erişebilirsiniz:`https://yourfarmbeatswebsitename-api.azurewebsites.net/swagger`
+Farmtts yüklediyseniz, şu adreste bulunan Farmtts Swagger verilerinize erişebilirsiniz: `https://yourfarmbeatswebsitename-api.azurewebsites.net/swagger`
 
 "-Api" nin, Farmtts Web sitenizin adının sonuna ekleneceğini unutmayın.
-API uç noktası şu şekilde olacaktır:`https://yourfarmbeatswebsitename-api.azurewebsites.net`
+API uç noktası şu şekilde olacaktır: `https://yourfarmbeatswebsitename-api.azurewebsites.net`
 
 ### <a name="datahub-lib"></a>Datahub kitaplığı
 
@@ -55,7 +55,7 @@ Farmtts, taşıyıcı kimlik doğrulaması kullanır ve API 'Ler, isteğin üstb
 headers = *{"Authorization": "Bearer " + access_token, …}*
 ```
 
-Erişim belirteci, müşterinin Farmtts örneğinde çalışan bir Azure Işlevinden istenebilir. Azure Işlevi URL 'SI Docker programına bir bağımsız değişken olarak sağlanacak ve erişim belirteci URL üzerinde bir GET isteği yapılarak elde edilebilir. URL 'den gelen yanıt erişim belirtecini içerir. Datahub kitaplığı, iş ortaklarının erişim belirtecini almasını sağlamak için yardımcı işlevler sağlar. Diğer ayrıntıları [burada](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/auth/partner_auth_helper.py) bulabilirsiniz.
+Erişim belirteci, müşterinin Farmtts örneğinde çalışan bir Azure Işlevinden istenebilir. Azure Işlevi URL 'SI Docker programına bir bağımsız değişken olarak sağlanacak ve erişim belirteci URL üzerinde bir GET isteği yapılarak elde edilebilir. URL 'den gelen yanıt erişim belirtecini içerir. Datahub kitaplığı, iş ortaklarının erişim belirtecini almasını sağlamak için yardımcı işlevler sağlar. Burada daha fazla ayrıntı [bulabilirsiniz](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/auth/partner_auth_helper.py).
 
 Erişim belirteci yalnızca birkaç saat için geçerlidir ve süresi dolduğunda yeniden istenmesi gerekir.
 
@@ -85,7 +85,7 @@ API hizmeti bu dict 'yi seri hale getirir ve bunu bir [Keykasasında](https://do
 ```
 "PartnerCredentials" ın Iş ortağı kaydı sırasında müşteri tarafından sağlanan tam şekilde kullanılabilir olacağını unutmayın.
 
-Farmtts kitaplığı, iş ortaklarının etkinlik özelliklerinden kimlik bilgilerini okumasına olanak tanımak için yardımcı işlevler sağlar. Diğer ayrıntıları [burada](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/auth/partner_adf_helper.py) bulabilirsiniz.
+Farmtts kitaplığı, iş ortaklarının etkinlik özelliklerinden kimlik bilgilerini okumasına olanak tanımak için yardımcı işlevler sağlar. Burada daha fazla ayrıntı [bulabilirsiniz](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/auth/partner_adf_helper.py).
 
 Dosyanın ömrü yalnızca Docker kod yürütme sırasında olduğundan, Docker çalıştırıldıktan sonra silinir.
 
@@ -98,7 +98,7 @@ Aşağıda, Farmtts 'ye bir API çağrısı yaptığınızda belirtilmesi gereke
 **Üst bilgi** | **Açıklama ve örnek**
 --- | ---
 İçerik Türü | İstek biçimi (Content-Type: Application/ <format> ). Farmrets veri hub 'ı API 'Leri için, biçim JSON olur. Content-Type: Application/JSON
-Yetkilendirme | API çağrısı yapmak için gereken erişim belirtecini belirtir. Yetkilendirme: taşıyıcı <erişim-belirteç>
+Yetkilendirme | API çağrısı yapmak için gereken erişim belirtecini belirtir. Yetkilendirme: taşıyıcı <Access-Token>
 Kabul Et | Yanıt biçimi. Farmrets veri hub 'ı API 'Leri için, biçim JSON olur. Kabul et: uygulama/JSON
 
 ## <a name="data-format"></a>Veri biçimi
@@ -137,7 +137,7 @@ Bu bileşen, bir Farmher Kullanıcı, önyükleme işleminin bir parçası olara
   Dalgalı veri modeli | Açıklama |
   --- | ---
   Ad  | Hava durumu veri modelinin adı |
-  Description  | Modelin anlamlı bir açıklamasını sağlayın. |
+  Açıklama  | Modelin anlamlı bir açıklamasını sağlayın. |
   Özellikler  | Veri sağlayıcısı tarafından tanımlanan ek özellikler. |
   Hava ölçüleri > adı  | Hava durumu ölçüsünün adı. Örneğin humidity_max |
   Dalgalı ölçüler > veri türü  | Double veya Enum. Enum ise, measureEnumDefinition gerekir |
@@ -148,7 +148,7 @@ Bu bileşen, bir Farmher Kullanıcı, önyükleme işleminin bir parçası olara
   Hava ölçüleri > derinliği  | Algılayıcının santimetre cinsinden derinliği. Örneğin, zemin altındaki nemi 10 cm ölçümü.
   Hava ölçüleri > açıklaması  | Ölçümün anlamlı bir açıklamasını sağlayın. |
   **JobType** | **Açıklama** |
-  Name  | Işin adı; örneğin Get_Daily_Forecast; müşterinin Hava durumu verilerini almak için çalışacağı iş|
+  Adı  | Işin adı; örneğin Get_Daily_Forecast; müşterinin Hava durumu verilerini almak için çalışacağı iş|
   pipelineDetails > parametreler > adı  | parametrenin adı |
   pipelineDetails > parametreler > tür | String, INT, float, bool, Array seçeneklerinden biri |
   pipelineDetails > parametreler > IsRequired | Boolean gerekli parametre ise true, değilse false; Varsayılan değer true 'dur |
@@ -159,8 +159,8 @@ Bu bileşen, bir Farmher Kullanıcı, önyükleme işleminin bir parçası olara
   **Dalgalı bir Datalocation** | **Açıklama** |
   Dalgalı veri ModelId  | Önyükleme sırasında oluşturulan karşılık gelen dalgalı veri modelinin KIMLIĞI|
   location  | Enlem, boylam ve yükseltmeyi temsil eder |
-  Name | Nesnenin adı |
-  Description | Description |
+  Adı | Nesnenin adı |
+  Açıklama | Açıklama |
   farmId | **isteğe bağlı** İş parametresinin bir parçası olarak müşteri tarafından sunulan grubun KIMLIĞI |
   Özellikler  | Üreticiden ek özellikler.
 
@@ -249,7 +249,7 @@ Kurallı ileti biçimi aşağıdaki gibidir:
 
 İş ortağı işi mevcut iş çerçevesinde çalışmaya başladıktan sonra, bu hatalar, daha önceden var olan diğer işlere yönelik hatalarla aynı şekilde günlüğe kaydedilir (GetFarmData, Sensoryerleştirmesini vb. gibi). ADF işlem hattı içinde çalışan ADF etkinliği hem STDERR hem de STDOUT 'ı günlüğe kaydeder. Her iki dosya da Farmrets kaynak grubu içindeki "datahublogs-xxx" depolama hesabında kullanılabilir.
 
-Datahub kitaplığı, genel veri hub 'ı günlüklerinin bir parçası olarak günlüğe kaydetmeyi etkinleştirmek için yardımcı işlevler sağlar. Diğer ayrıntıları [burada](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/framework/logger.py) bulabilirsiniz.
+Datahub kitaplığı, genel veri hub 'ı günlüklerinin bir parçası olarak günlüğe kaydetmeyi etkinleştirmek için yardımcı işlevler sağlar. Burada daha fazla ayrıntı [bulabilirsiniz](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/framework/logger.py).
 
 **Sorun giderme seçeneği veya destek**
 

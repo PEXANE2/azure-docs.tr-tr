@@ -4,10 +4,10 @@ description: Azure Relay Azure özel bağlantı hizmeti ile tümleştirme hakkı
 ms.date: 09/24/2020
 ms.topic: article
 ms.openlocfilehash: 10d82fe8e272ed18dcc339830dfef0f71d4b2ddb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91263878"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>Azure Relay Azure özel bağlantısıyla tümleştirin (Önizleme)
@@ -18,7 +18,7 @@ Azure **özel bağlantı hizmeti** , Azure hizmetlerine (örneğin, Azure Relay,
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Azure portal kullanarak özel uç nokta ekleme
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 Bir Azure Relay ad alanını Azure özel bağlantısı (Önizleme) ile bütünleştirmek için aşağıdaki varlıklara veya izinlere ihtiyacınız olacaktır:
 
 - Bir Azure Relay ad alanı.
@@ -33,7 +33,7 @@ Bir Azure Relay ad alanını Azure özel bağlantısı (Önizleme) ile bütünle
 ### <a name="steps"></a>Adımlar
 İçinde yeni bir Azure Relay ad alanı ve varlık oluşturmaya yönelik adım adım yönergeler için, bkz. [Azure Portal kullanarak Azure Relay ad alanı oluşturma](relay-create-namespace-portal.md).
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 2. Arama çubuğuna **geçişler**' i yazın.
 3. Listeden özel uç nokta eklemek istediğiniz **ad alanını** seçin.
 4. **Ayarlar**altında **ağ** sekmesini seçin.
@@ -152,9 +152,9 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 
 Dört sağlama durumu vardır:
 
-| Hizmet eylemi | Hizmet tüketicisi özel uç nokta durumu | Description |
+| Hizmet eylemi | Hizmet tüketicisi özel uç nokta durumu | Açıklama |
 |--|--|--|
-| Yok | Beklemede | Bağlantı el ile oluşturulur ve Azure Relay ad alanı sahibinden onay bekliyor. |
+| Hiçbiri | Beklemede | Bağlantı el ile oluşturulur ve Azure Relay ad alanı sahibinden onay bekliyor. |
 | Onaylama | Onaylandı | Bağlantı otomatik olarak veya el ile onaylandı ve kullanılabilir hale gelmiştir. |
 | Reddet | Reddedildi | Bağlantı, Azure Relay ad alanı sahibi tarafından reddedildi. |
 | Kaldır | Bağlantı kesildi | Bağlantı, Azure Relay ad alanı sahibi tarafından kaldırıldı, Özel uç nokta bilgilendirici hale gelir ve temizlik için silinmelidir. |
@@ -236,7 +236,7 @@ Aliases:  <namespace-name>.servicebus.windows.net
 ### <a name="limitations"></a>Sınırlamalar 
 - Azure Relay ad alanı başına en fazla özel uç nokta sayısı: 64.
 - Abonelik başına özel uç noktalara sahip Azure Relay ad alanı sayısı üst sınırı: 64.
-- Ağ güvenlik grubu (NSG) kuralları ve Kullanıcı tanımlı yollar özel uç nokta için uygulanmaz. Daha fazla bilgi için bkz [. Azure özel bağlantı hizmeti: sınırlamalar](../private-link/private-link-service-overview.md#limitations)
+- Ağ güvenlik grubu (NSG) kuralları ve User-Defined yolları özel uç nokta için uygulanmaz. Daha fazla bilgi için bkz [. Azure özel bağlantı hizmeti: sınırlamalar](../private-link/private-link-service-overview.md#limitations)
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

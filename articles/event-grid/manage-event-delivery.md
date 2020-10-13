@@ -4,13 +4,13 @@ description: Event Grid için olay teslim seçeneklerini özelleştirmeyi açık
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.openlocfilehash: e780ddd5c49b1a2cced10a1907d25784b0285f01
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91261813"
 ---
-# <a name="set-dead-letter-location-and-retry-policy"></a>Atılacak mektup konumunu ayarla ve ilkeyi yeniden dene
+# <a name="set-dead-letter-location-and-retry-policy"></a>Teslim edilemeyen ileti konumu ve yeniden deneme ilkesi ayarlama
 
 Olay aboneliği oluştururken, olay teslimi ayarlarını özelleştirebilirsiniz. Bu makalede, bir atılacak mektup konumunun nasıl ayarlanacağı ve yeniden deneme ayarlarını nasıl özelleştireceğiniz gösterilmektedir. Bu özellikler hakkında daha fazla bilgi için bkz. [Event Grid ileti teslimi ve yeniden deneme](delivery-and-retry.md).
 
@@ -28,7 +28,7 @@ Atılacak bir harf konumu ayarlamak için bir uç noktaya teslim edilemeyen olay
 > - Event Grid hizmeti bu kapsayıcıda Bloblar oluşturur. Blobların adları, büyük harfli tüm harflerle Event Grid abonelik adına sahip olur. Örneğin, aboneliğin adı-blob-aboneliğim ise, atılacak mektup bloblarının adları-BLOB-ABONELIĞIM (myblobcontainer/MY-BLOB-SUBSCRIPTION/2019/8/8/5/111111111-1111-1111-1111-111111111111.js) olacaktır. Bu davranış, Azure hizmetleri arasında durum işlemede farklılık açısından korunmamıza olanak sağlar.
 
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 containername=testcontainer
@@ -74,7 +74,7 @@ Event Grid bir abonelik oluştururken, olayın ne kadar süreyle teslim etmesi g
 
 [Yeniden deneme zamanlamasını](delivery-and-retry.md#retry-schedule-and-duration)yapılandıramazsınız.
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Olayı 1440 dakikadan farklı bir değere yaşam süresi olarak ayarlamak için şunu kullanın:
 

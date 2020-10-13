@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: 9f3ba6b2f13b9f2bb1d538db84723e3a9baaef12
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87271850"
 ---
 # <a name="retrieve-a-specific-offer"></a>Belirli bir teklifi alma
@@ -42,7 +42,7 @@ Teklifin belirli bir sürümünü de alabilir veya teklifi taslak, görünüm ve
 | PublisherId | publisherID. Örneğin, contoso                                                        | Dize        |
 | OfferId     | Teklifi benzersiz bir şekilde tanımlayan GUID.                                                 | Dize        |
 | sürüm     | Alınan teklifin sürümü. Varsayılan olarak, en son teklif sürümü alınır. | Tamsayı       |
-| SlotID      | Teklifin alınacağı yuva aşağıdakilerden biri olabilir:      <br/>  - `Draft`(varsayılan), şu anda taslak içinde olan teklif sürümünü alır.  <br/>  -  `Preview`Şu anda önizleme aşamasında olan teklif sürümünü alır.     <br/>  -  `Production`Şu anda üretimde olan teklif sürümünü alır.          |      enum |
+| SlotID      | Teklifin alınacağı yuva aşağıdakilerden biri olabilir:      <br/>  - `Draft` (varsayılan), şu anda taslak içinde olan teklif sürümünü alır.  <br/>  -  `Preview` Şu anda önizleme aşamasında olan teklif sürümünü alır.     <br/>  -  `Production` Şu anda üretimde olan teklif sürümünü alır.          |      enum |
 | api-sürümü | En son API sürümü                                                                    | Tarih          |
 |  |  |  |
 
@@ -186,10 +186,10 @@ Teklifin belirli bir sürümünü de alabilir veya teklifi taslak, görünüm ve
 
 | **Kod**  | **Açıklama**                                                                                                                 |
 |  ------   | ------------------------------------------------------------------------------------------------------------------------------- |
-|  200      | `OK`-İstek başarıyla işlendi ve yayımcının altındaki tüm teklifler istemciye geri döndü.               |
-|  400      | `Bad/Malformed request`-Hata yanıtı gövdesinde daha fazla bilgi bulunabilir.                                                 |
-|  403      | `Forbidden`-İstemcinin belirtilen ad alanına erişimi yok.                                                        |
-|  404      | `Not found`-Belirtilen varlık yok. İstemci, PublisherId, OfferId ve sürümü (belirtilmişse) denetlemelidir.      |
+|  200      | `OK` -İstek başarıyla işlendi ve yayımcının altındaki tüm teklifler istemciye geri döndü.               |
+|  400      | `Bad/Malformed request` -Hata yanıtı gövdesinde daha fazla bilgi bulunabilir.                                                 |
+|  403      | `Forbidden` -İstemcinin belirtilen ad alanına erişimi yok.                                                        |
+|  404      | `Not found` -Belirtilen varlık yok. İstemci, PublisherId, OfferId ve sürümü (belirtilmişse) denetlemelidir.      |
 |  |  |
 
 ### <a name="offer-status"></a>Teklif durumu
@@ -199,7 +199,7 @@ Teklifin belirli bir sürümünü de alabilir veya teklifi taslak, görünüm ve
 |  Neveryayınlandı             | Teklif hiç yayımlanmadı.               |
 |  NotStarted                 | Teklif yenidir ancak başlatılmamış.              |
 |  WaitingForPublisherReview  | Teklif, yayımcı onayını bekliyor.      |
-|  Çalışıyor                    | Teklif gönderimi işleniyor.          |
+|  Çalışma                    | Teklif gönderimi işleniyor.          |
 |  Başarılı                  | Teklif gönderimi işlemeyi tamamladı.    |
 |  İptal edildi                   | Teklif Gönderimi iptal edildi.                |
 |  Başarısız                     | Teklif gönderimi başarısız oldu.                      |

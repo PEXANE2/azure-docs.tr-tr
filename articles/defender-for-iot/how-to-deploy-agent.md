@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 8e18b79cc14fe98879ec97361f6e275d8fd918bb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90942191"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>IoT cihazınızda bir güvenlik Aracısı seçin ve dağıtın
@@ -44,16 +44,16 @@ C tabanlı güvenlik aracısının daha düşük bir bellek parmak izi vardır v
 | --- | ----------- | --------- |
 | **Açık kaynak** | [GitHub](https://aka.ms/iot-security-github-c) 'da [MIT Lisansı](https://en.wikipedia.org/wiki/MIT_License) altında kullanılabilir | [GitHub](https://aka.ms/iot-security-github-cs) 'da [MIT Lisansı](https://en.wikipedia.org/wiki/MIT_License) altında kullanılabilir |
 | **Geliştirme dili**    | C | C# |
-| **Desteklenen Windows platformları?** | Hayır | Yes |
+| **Desteklenen Windows platformları?** | Hayır | Evet |
 | **Windows önkoşulları** | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
 | **Desteklenen Linux platformları?** | Evet, x64 ve x86 | Evet, yalnızca x64 |
 | **Linux önkoşulları** | libunwind8, libcurl3, UUID-Runtime, auditd, audispd-eklentiler | libunwind8, libcurl3, UUID-Runtime, auditd, audispd-Eklentiler, sudo, netstat, Iptables |
 | **Disk ayak izi** | 10,5 MB | 90 MB |
 | **Bellek ayak izi (Ortalama)** | 5,5 MB | 33 MB |
-| **IoT Hub için [kimlik doğrulaması](concept-security-agent-authentication-methods.md)** | Yes | Yes |
-| **Güvenlik verileri [toplama](how-to-agent-configuration.md#supported-security-events)** | Yes | Yes |
-| **Olay toplama** | Yes | Yes |
-| **[Güvenlik modülü ikizi](concept-security-module.md) aracılığıyla uzaktan yapılandırma** | Yes | Yes |
+| **IoT Hub için [kimlik doğrulaması](concept-security-agent-authentication-methods.md)** | Evet | Evet |
+| **Güvenlik verileri [toplama](how-to-agent-configuration.md#supported-security-events)** | Evet | Evet |
+| **Olay toplama** | Evet | Evet |
+| **[Güvenlik modülü ikizi](concept-security-module.md) aracılığıyla uzaktan yapılandırma** | Evet | Evet |
 
 ## <a name="security-agent-installation-guidelines"></a>Güvenlik Aracısı yükleme yönergeleri
 

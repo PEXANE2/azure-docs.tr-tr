@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: bb38a76de41885b6f39a1c6dce7c44bcb52a4d60
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86027452"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Spark tarafından oluşturulan Machine Learning modellerini çalıştırma
@@ -32,7 +32,7 @@ Bir ML modelini işlemek için kurulum adımları ve kodu, bir HDInsight Spark 1
 Spark 1,6 için Jupyter Not defterini HDInsight Spark 2,0 kümesiyle birlikte kullanmak üzere değiştirmek için Python kod dosyasını [Bu dosyayla](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py)değiştirin. Bu kod Spark 2,0 ' de oluşturulan modellerin nasıl kullanıldığını gösterir.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. Bu izlenecek yolu tamamlamak için bir Azure hesabı ve Spark 1,6 (veya Spark 2,0) HDInsight kümesine ihtiyacınız vardır. Bu gereksinimleri nasıl karşılacağınız hakkında yönergeler için bkz. [Azure HDInsight 'Ta Spark kullanarak veri bilimine genel bakış](spark-overview.md) . Bu konuda Ayrıca, burada kullanılan NYC 2013 TAXI verilerinin açıklaması ve Spark kümesindeki bir Jupyter Not defterinden kod yürütme yönergeleri de yer alır. 
 2. Spark 1,6 kümesi veya Spark 2,0 Not defterleri için veri araştırması [ve Spark ile modelleme](spark-data-exploration-modeling.md) konularında çalışarak, burada puanlanması gereken makine öğrenimi modellerini oluşturun. 
@@ -115,7 +115,7 @@ Jupyter Not defterleri ile birlikte sunulan pyspark çekirdekler 'in önceden ay
 PySpark çekirdeği,%% ile çağırabilmeniz için özel komutlar olan önceden tanımlanmış bazı "mıknatıcs" sağlar. Bu kod örneklerinde kullanılan iki komut vardır.
 
 * **%% Yerel** Sonraki satırlardaki kodun yerel olarak yürütüldüğü belirtildi. Kod geçerli bir Python kodu olmalıdır.
-* **%% SQL-o\<variable name>** 
+* **%% SQL-o \<variable name>** 
 * SqlContext 'e karşı bir Hive sorgusu yürütür. -O parametresi geçirilirse, sorgunun sonucu%% yerel Python bağlamında Pandas dataframe olarak kalıcı hale getirilir.
 
 Jupyter Not defterleri ve sağladıkları önceden tanımlanmış "mıknatık" hakkında daha fazla bilgi için bkz. [HDInsight 'ta HDInsight Spark Linux kümeleri içeren Jupyter Not defterleri için sunulan çekirdekler](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).

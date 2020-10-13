@@ -5,17 +5,17 @@ ms.date: 07/15/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.openlocfilehash: be078e7149ba008ab8b7ad44a016a0d1cf82df0e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91263020"
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>Azure blok zinciri çalışma ekranı 'nda kullanıcıları yönetme
 
 Azure blok zinciri çalışma ekranı, konsorsiyumun bir parçası olan kişiler ve kuruluşlar için Kullanıcı yönetimini içerir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Blok zinciri çalışma ekranı dağıtımı gereklidir. Dağıtım hakkındaki ayrıntılar için bkz. [Azure blok zinciri çalışma ekranı dağıtımı](deploy.md) .
 
@@ -25,7 +25,7 @@ Azure blok zinciri çalışma ekranı, kimlik doğrulaması, erişim denetimi ve
 
 Blok zinciri çalışma ekranı, uygulamaları ve rollere atamadan önce kullanıcıların Azure AD kiracısında mevcut olmaları gerekir. Azure AD 'ye Kullanıcı eklemek için aşağıdaki adımları kullanın:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sağ üst köşede hesabınızı seçin ve blok zinciri çalışma ekranı ile ilişkili Azure AD kiracısına geçiş yapın.
 1. **Azure Active Directory > kullanıcıları**' nı seçin. Dizininizde bulunan kullanıcıların listesini görürsünüz.
 1. Dizine kullanıcı eklemek için **Yeni Kullanıcı**' yı seçin. Dış kullanıcılar için **Yeni Konuk Kullanıcı**' yı seçin.
@@ -39,7 +39,7 @@ Kullanıcılar dizine eklendikten sonra, bir sonraki adım, hangi kullanıcılar
 
 Kullanıcıları Azure AD dizininde **yönetici** grubuna eklemek için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sağ üst köşede hesabınızı seçerek blok zinciri ile ilişkili Azure AD kiracısında olduğunuzdan emin olun.
 1. **Kurumsal uygulamalar > Azure Active Directory**seçin.
 1. **Uygulama türü** açılan filtresini **tüm uygulamalara** değiştirin ve **Uygula**' yı seçin.

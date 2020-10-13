@@ -4,16 +4,16 @@ description: Azure 'da Azure portal ve Azure Key Vault kullanarak güvenli Servi
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.openlocfilehash: c679a804db09b1034f31e9d8da1f7d2ad206f684
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90563735"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Azure 'da Azure portal kullanarak Service Fabric kümesi oluşturma
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
+> * [Azure portalındaki](service-fabric-cluster-creation-via-portal.md)
 > 
 > 
 
@@ -68,7 +68,7 @@ Uygulama gereksinimlerinizi karşılamak için bir üretim kümesi oluşturmak b
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>Service Fabric kümesi kaynağını arayın
 
-[Azure Portal][azure-portal] oturum açın.
+[Azure portalında][azure-portal] oturum açın.
 Yeni kaynak şablonu eklemek için **kaynak oluştur** ' a tıklayın. **Market** 'Teki Service Fabric kümesi şablonunu **her şey**için arayın.
 Listeden **Service Fabric kümesi** seçin.
 

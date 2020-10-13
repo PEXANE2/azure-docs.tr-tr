@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4543a46c9362ac6d20cc7597de9f59c1a7520163
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90600806"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Azure Active Directory ile güçlü bir kimlik temeli için dört adım
@@ -131,7 +131,7 @@ Bugünün dijital çalışma alanında, güvenliği üretkenlik ile dengelemek �
 
 Bu bölümde, geri kalan dikkatli sırasında kullanıcılarınızı güçleyerek kuruluşunuzdaki uçuşleştirme kaldırma önerileri listelenmiştir.
 
-### <a name="enable-self-service-password-reset-for-all-users"></a>Tüm kullanıcılar için self servis parola sıfırlamayı etkinleştir
+### <a name="enable-self-service-password-reset-for-all-users"></a>Tüm kullanıcılar için parola sıfırlamayı Self-Service etkinleştir
 
 Azure [self servis parola sıfırlama](../authentication/tutorial-enable-sspr.md) (SSPR), BT yöneticilerinin kullanıcıların yönetici müdahalesi olmadan parolalarını veya hesaplarını sıfırlamasına ve bunların kilidini açmalarına izin veren basit bir yol sunar. Sistem, kullanıcıların sisteme erişimini izleyen ayrıntılı raporlama içerir, ayrıca kötüye kullanım veya uygunsuz kullanım konusunda uyaran bildirimler sağlar.
 
@@ -147,7 +147,7 @@ Benzer şekilde, [self servis parola yönetimi raporu](../authentication/howto-s
 
 ### <a name="self-service-app-management"></a>Self Servis uygulama yönetimi
 
-Kullanıcılarınızın erişim panelinden uygulamaları kendi kendine bulabilmesi için, kullanıcıların kendi kendine bulmasını ve erişim istemesini sağlamak istediğiniz uygulamalara [self servis uygulama erişimini](../manage-apps/access-panel-manage-self-service-access.md) etkinleştirmeniz gerekir. Self Servis uygulama erişimi, kullanıcıların uygulamaları kendi kendine bulmasına ve isteğe bağlı olarak iş grubunun bu uygulamalara erişimi onaylamasını sağlayan harika bir yoldur. İş grubunun, erişim panellerinden, [parola çoklu oturum açma uygulamalarında](../manage-apps/application-sign-in-problem-password-sso-gallery.md#configure-password-sso-for-an-azure-ad-gallery-app) bu kullanıcılara atanan kimlik bilgilerini yönetmesine izin verebilirsiniz.
+Kullanıcılarınızın erişim panelinden uygulamaları kendi kendine bulabilmesi için, kullanıcıların kendi kendine bulmasını ve erişim istemesini sağlamak istediğiniz uygulamalara [self servis uygulama erişimini](../manage-apps/access-panel-manage-self-service-access.md) etkinleştirmeniz gerekir. Self Servis uygulama erişimi, kullanıcıların uygulamaları kendi kendine bulmasına ve isteğe bağlı olarak iş grubunun bu uygulamalara erişimi onaylamasını sağlayan harika bir yoldur. İş grubunun, uygulamalar üzerinde bu kullanıcılara atanan kimlik bilgilerini, erişim panellerinden doğrudan [uygulama Single-Sign](../manage-apps/application-sign-in-problem-password-sso-gallery.md#configure-password-sso-for-an-azure-ad-gallery-app) yönetmesine izin verebilirsiniz.
 
 ### <a name="self-service-group-management"></a>Self servis grup yönetimi
 

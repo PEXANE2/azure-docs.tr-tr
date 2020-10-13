@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
 ms.openlocfilehash: 0c54b4e3015e255a6948202a6c3ea7a83362032f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514908"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>StorSimple üzerinde barındırılan dosya paylaşımları için Azure Site Recovery kullanan otomatik olağanüstü durum kurtarma çözümü
@@ -37,7 +37,7 @@ Bu belgede, StorSimple depolamada barındırılan dosya paylaşımlarınız içi
 ## <a name="supported-azure-site-recovery-deployment-options"></a>Desteklenen Azure Site Recovery dağıtım seçenekleri
 Müşteriler, Hyper-V veya VMware üzerinde çalışan fiziksel sunucu veya sanal makine (VM) olarak dosya sunucuları dağıtabilir ve ardından StorSimple depolama alanından alınan birimlerden dosya paylaşımları oluşturabilir. Azure Site Recovery, hem fiziksel hem de sanal dağıtımları ikincil bir siteye veya Azure 'a koruyabilir. Bu belge, Hyper-V ' d a ve StorSimple depolamada dosya paylaşımları ile barındırılan bir dosya sunucusu VM 'si için kurtarma sitesi olarak Azure ile bir DR çözümünün ayrıntılarını içermektedir. Dosya sunucusu VM 'sinin bir VMware VM 'de olduğu diğer senaryolar veya fiziksel makine benzer şekilde uygulanabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 StorSimple depolamada barındırılan dosya paylaşımları için Azure Site Recovery kullanan tek tıklamayla oluşan bir olağanüstü durum kurtarma çözümünün uygulanması aşağıdaki önkoşullara sahiptir:
 
    - Hyper-V veya VMware üzerinde barındırılan şirket içi Windows Server 2012 R2 dosya sunucusu VM 'si veya fiziksel makine
@@ -93,7 +93,7 @@ Bu adım, şirket içi dosya sunucusu ortamını hazırlamanızı, bir Azure Sit
       
 1. **İleri**’ye tıklayın.
 1. **Sözleşme koşullarını** kabul edin ve ardından **İleri**' ye tıklayın.
-1. **Son**'a tıklayın.
+1. **Finish (Son)** düğmesine tıklayın.
 1. StorSimple Storage 'dan alınan birimleri kullanarak dosya paylaşımları oluşturun. Daha fazla bilgi için bkz. [birimleri yönetmek Için StorSimple Yöneticisi hizmetini kullanma](storsimple-manage-volumes.md).
    
    1. Şirket içi sanal makinelerinize Windows tuşu + Q tuşlarına basın ve **iSCSI**araması yapın.
@@ -170,7 +170,7 @@ Dosya paylaşımlarının yük devretme işlemini otomatik hale getirmek için A
    
 1. Otomasyon hesabında, **değişkenler** &gt; **bir değişken Ekle** ' ye tıklayın ve aşağıdaki değişkenleri ekleyin. Bu varlıkları şifrelemeyi seçebilirsiniz. Bu değişkenler, kurtarma planına özgüdür. Bir sonraki adımda oluşturacağınız kurtarma planınız, Name TestPlan olduğunda, değişkenleriniz TestPlan-Storsıadı, TestPlan-Azuyeniden gönderme Scriptionname vb. olmalıdır.
 
-   - **BaseUrl**: Azure bulutunun url 'si Kaynak Yöneticisi. **Get-AzEnvironment kullanarak Get | Select-Object name, ResourceManagerUrl** cmdlet 'i.
+   - **BaseUrl**: Azure bulutunun url 'si Kaynak Yöneticisi. **Get-AzEnvironment | Select-Object Name, ResourceManagerUrl** cmdlet 'ini kullanarak alın.
    - _Recoveryplanname_**-Resourcegroupname**: storsimple kaynağına sahip Kaynak Yöneticisi grubu.
    - _Recoveryplanname_**-ManagerName**: StorSimple cihazına sahip StorSimple kaynağı.
    - _Recoveryplanname_**-aygıtadı**: yük devredilecek olan StorSimple cihazı.

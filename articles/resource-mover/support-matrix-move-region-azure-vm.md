@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: raynew
 ms.openlocfilehash: fa71cd502f730844e4f4398d41d06ada56fc2413
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90602294"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Azure bölgeleri arasında Azure VM 'Leri taşıma desteği
@@ -108,7 +108,7 @@ Azure galeri görüntüleri (üçüncü taraf tarafından yayımlanan)  | Destek
 Özel görüntüler (üçüncü taraf tarafından yayımlanan)| Desteklenir | VM desteklenen bir işletim sisteminde çalışıyorsa desteklenir.
 Site Recovery kullanan VM 'Ler | Desteklenmez | Arka uçta Site Recovery kullanarak kaynakları VM 'Ler arasında taşıyın. Zaten Site Recovery kullanıyorsanız, çoğaltmayı devre dışı bırakın ve ardından hazırlama işlemini başlatın.
 RBAC ilkeleri | Desteklenmez | VM 'lerde rol tabanlı erişim denetimi (RBAC) ilkeleri, hedef bölgedeki sanal makineye kopyalanmaz.
-Uzantılar | Desteklenmez | Uzantılar hedef bölgedeki sanal makineye kopyalanmaz. Taşıma işlemi tamamlandıktan sonra bunları el ile yükleyebilirsiniz.
+Uzantıları | Desteklenmez | Uzantılar hedef bölgedeki sanal makineye kopyalanmaz. Taşıma işlemi tamamlandıktan sonra bunları el ile yükleyebilirsiniz.
 
 
 ## <a name="supported-vm-storage-settings"></a>Desteklenen VM depolama ayarları

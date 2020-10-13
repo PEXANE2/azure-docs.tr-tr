@@ -13,10 +13,10 @@ ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
 ms.openlocfilehash: f978343bd47c4b8c86653024e651b56c782f768c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90967503"
 ---
 # <a name="traffic-analytics"></a>Trafik Analizi
@@ -98,7 +98,7 @@ Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
 * Central US
 * Batı ABD
 * Batı ABD 2
-* Orta ABD
+* Central US
 * Orta Fransa
 * West Europe
 * Kuzey Avrupa
@@ -115,7 +115,7 @@ Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
 * US Gov Virginia
 * Çin Doğu 2
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="user-access-requirements"></a>Kullanıcı erişimi gereksinimleri
 

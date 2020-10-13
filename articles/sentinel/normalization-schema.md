@@ -16,10 +16,10 @@ ms.topic: reference
 ms.date: 09/08/2020
 ms.author: yelevin
 ms.openlocfilehash: eb1752ea66f2cbebf6a653705b5a760e8e268240
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90941119"
 ---
 # <a name="azure-sentinel-data-normalization-schema-reference"></a>Azure Sentinel veri normalleştirme Şeması Başvurusu
@@ -28,7 +28,7 @@ ms.locfileid: "90941119"
 
 Aşağıdaki terminoloji Sentinel 'in şemaları 'nda kullanılır:
 
-| Terim | Tanım |
+| Süre | Tanım |
 | ---- | ---------- |
 | Raporlama cihazı | Kayıtları Azure Sentinel 'e gönderen sistem. Kaydın Konu sistemi olmayabilir. |
 | Kayıt | Raporlama aygıtından gönderilen veri birimi. Bu, genellikle "günlük", "olay" veya "uyarı" olarak adlandırılır, ancak bunlardan biri olması gerekmez. |
@@ -41,11 +41,11 @@ Değerler aşağıdaki yönergelere göre normalleştirilmelidir. Bu, normalleş
 | Veri türü | Fiziksel tür | Biçim ve değer |
 | --------- | ------------- | ---------------- |
 | **Tarih/saat** | Alma yöntemi özelliğinin azalan öncelik olarak kullanımına bağlı olarak:<ul><li>Log Analytics yerleşik tarih saat türü</li><li>Log Analytics DateTime sayısal gösterimini kullanan bir tamsayı alanı</li><li>Log Analytics DateTime sayısal gösterimini kullanan bir dize alanı</li></ul> | DateTime gösterimini Log Analytics. <br></br>Log Analytics Tarih & zaman gösterimi doğası, ancak UNIX zaman gösteriminden farklı. Bu dönüştürme yönergelerine bakın. <br></br>Tarih & saat dilimi ayarlanmış olmalıdır. |
-| **MAC adresi** | Dize | İki nokta-onaltılı gösterim |
-| **IP adresi** | IP Adresi | Şemada ayrı IPv4 ve IPv6 adresleri yok. Herhangi bir IP adresi alanı, bir IPv4 adresi veya IPv6 adresi içerebilir:<ul><li>Bir nokta ondalık gösteriminde IPv4</li><li>8 onaltılı Tets gösteriminde IPv6, burada açıklanan kısa formlara izin verir.</li></ul> |
+| **MAC adresi** | Dize | Colon-Hexadecimal gösterimi |
+| **IP Adresi** | IP Adresi | Şemada ayrı IPv4 ve IPv6 adresleri yok. Herhangi bir IP adresi alanı, bir IPv4 adresi veya IPv6 adresi içerebilir:<ul><li>Bir nokta ondalık gösteriminde IPv4</li><li>8 onaltılı Tets gösteriminde IPv6, burada açıklanan kısa formlara izin verir.</li></ul> |
 | **Kullanıcı** | Dize | Aşağıdaki 3 Kullanıcı alanı kullanılabilir:<ul><li>Kullanıcı adı</li><li>Kullanıcı UPN 'si</li><li>Kullanıcı etki alanı</li></ul> |
 | **Kullanıcı Kimliği** | Dize | Şu 2 Kullanıcı kimliği şu anda destekleniyor:<ul><li>Kullanıcı SID 'SI</li><li>Azure Active Directory KIMLIĞI</li></ul> |
-| **Cihaz** | Dize | Aşağıdaki 3 cihaz/konak sütunları desteklenir:<ul><li>ID</li><li>Ad</li><li>Tam etki alanı adı (FQDN)</li></ul> |
+| **Cihaz** | Dize | Aşağıdaki 3 cihaz/konak sütunları desteklenir:<ul><li>ID</li><li>Adı</li><li>Tam etki alanı adı (FQDN)</li></ul> |
 | **Ülke** | Dize | Bu önceliğe göre ISO 3166-1 kullanan bir dize:<ul><li>Alfa-2 kodları (örneğin, Birleşik Devletler için ABD)</li><li>Alfa-3 kodları (örneğin, Birleşik Devletler için ABD)</li><li>Kısa ad</li></ul> |
 | **Bölge** | Dize | ISO 3166-2 kullanan ülke alt bölüm adı |
 | **Şehir** | Dize | |
@@ -89,7 +89,7 @@ Ağ oturumları tablosunun, sürümlenmiş 1.0.0 şeması aşağıda verilmişti
 | NetworkBytes | int | 78991 | Her iki yönde gönderilen bayt sayısı. Hem BytesReceived hem de BytesSent varsa, BytesTotal 'nin toplamına eşit olması gerekir. | Ağ |
 | NetworkDirection | Çoklu değer: gelen, giden (dize) | Inbound | Bağlantının veya oturumun kuruluşun içine veya dışına yönü. | Ağ |
 | DstGeoCity | Dize | Burpatton | Hedef IP adresiyle ilişkilendirilen şehir | Hedefine<br>Coğrafi Bölge |
-| DstGeoCountry | Ülke (dize) | USA | Kaynak IP adresiyle ilişkilendirilen ülke | Hedefine<br>Coğrafi Bölge |
+| DstGeoCountry | Ülke (dize) | ABD | Kaynak IP adresiyle ilişkilendirilen ülke | Hedefine<br>Coğrafi Bölge |
 | DstDvcHostname | Cihaz adı (dize) |  victim_pc | Hedef cihazın cihaz adı | Hedef<br>Cihaz |
 | DstDvcFqdn | Dize | victim_pc. contoso. Local | Günlüğün oluşturulduğu konağın tam etki alanı adı | Hedefine<br>Cihaz |
 | DstDomainHostname | string | 'NUN | Hedefin etki alanı, hedef konağın etki alanı (Web sitesi, etki alanı adı vb.), Örneğin DNS aramaları veya NS aramaları için | Hedef |
@@ -128,14 +128,14 @@ Ağ oturumları tablosunun, sürümlenmiş 1.0.0 şeması aşağıda verilmişti
 | Networkrulenumarası | int |  23 | Eşleşen kural numarası  | Ağ |
 | Networksessionıd | string | 172_12_53_32_4322__123_64_207_1_80 | Raporlama cihazı tarafından raporlanan oturum tanımlayıcısı. Örneğin, kimlik doğrulamasından sonraki belirli uygulamalar için L7 oturum tanımlayıcısı | Ağ |
 | SrcGeoCity | Dize | Burpatton | Kaynak IP adresiyle ilişkilendirilen şehir | Kaynaktaki<br>Coğrafi Bölge |
-| SrcGeoCountry | Ülke (dize) | USA | Kaynak IP adresiyle ilişkilendirilen ülke | Kaynaktaki<br>Coğrafi Bölge |
+| SrcGeoCountry | Ülke (dize) | ABD | Kaynak IP adresiyle ilişkilendirilen ülke | Kaynaktaki<br>Coğrafi Bölge |
 | SrcDvcHostname | Cihaz adı (dize) |  villaın | Kaynak cihazın cihaz adı | Kaynaktaki<br>Cihaz |
 | SrcDvcFqdn | string | Villain.malicious.com | Günlüğün oluşturulduğu konağın tam etki alanı adı | Kaynaktaki<br>Cihaz |
 | SrcDvcDomain | string | EVıLORG | Oturumun başlatıldığı cihazın etki alanı | Kaynaktaki<br>Cihaz |
 | SrcDvcOs | Dize | iOS | Kaynak cihazın işletim sistemi | Kaynaktaki<br>Cihaz |
 | SrcDvcModelName | Dize | Samsung Galaxy Note | Kaynak cihazın model adı | Kaynaktaki<br>Cihaz |
 | SrcDvcModelNumber | Dize | 10,0 | Kaynak cihazın model numarası | Kaynaktaki<br>Cihaz |
-| SrcDvcType | Dize | Mobil | Kaynak cihazın türü | Kaynaktaki<br> Cihaz |
+| SrcDvcType | Dize | Cep telefonu | Kaynak cihazın türü | Kaynaktaki<br> Cihaz |
 | SrcIntefaceName | Dize | eth01 | Kaynak cihaz tarafından bağlantı veya oturum için kullanılan ağ arabirimi. | Kaynak |
 | Srcınterfaceguid | Dize | 46ad544b-eaf0-47ef-827c-266030f545a6 | Kullanılan ağ arabiriminin GUID 'SI | Kaynak |
 | Srcıdresi | IP adresi | 77.138.103.108 | Bağlantının veya oturumun kaynaklandığı IP adresi. | Kaynaktaki<br>IP |

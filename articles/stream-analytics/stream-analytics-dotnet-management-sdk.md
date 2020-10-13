@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 5776c741bb69d345f191e5673fe388328d0fe7bb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89015603"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Yönetim .NET SDK: .NET için Azure Stream Analytics API 'sini kullanarak analiz işlerini ayarlama ve çalıştırma
@@ -25,7 +25,7 @@ Azure Stream Analytics, bulutta akış verileri üzerinde düşük gecikmeli, y�
 > [!NOTE]
 > Bu makaledeki örnek kodu, Azure Stream Analytics Management .NET SDK v2. x sürümü ile güncelleştirdik. Kullanılan örnek kod için lagecy (1. x) SDK sürümünü kullanır, lütfen bkz. [Stream Analytics Için yönetim .NET SDK v1. x kullanın](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu makaleye başlamadan önce, aşağıdaki gereksinimlere sahip olmanız gerekir:
 
 * Visual Studio 2019 veya 2015 ' ü yükler.
@@ -284,7 +284,7 @@ Aşağıdaki örnek kod, özel bir çıkış başlangıç saati 12 Aralık 2012,
    streamAnalyticsManagementClient.StreamingJobs.Delete(resourceGroupName, streamingJobName);
    ```
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

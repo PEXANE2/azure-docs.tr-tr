@@ -14,10 +14,10 @@ ms.date: 08/24/2020
 ms.author: kumud
 ms.reviewer: kumud
 ms.openlocfilehash: e60cdfb00d0dc9d446bd52a72e9fd15676acd285
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89458204"
 ---
 # <a name="how-network-security-groups-filter-network-traffic"></a>Ağ güvenlik grupları ağ trafiğini filtreleyerek
@@ -52,7 +52,7 @@ Azure, giden trafik için ilk olarak varsa bir ağ arabirimi ile ilişkilendiril
 - **VM4**: *VM4* adlı sanal makineye bağlı olan ağ arabirimi veya *Subnet3* ile ilişkilendirilmiş bir ağ güvenlik grubu olmadığından bu sanal makineden gelen tüm ağ trafiğine izin verilir.
 
 
-## <a name="intra-subnet-traffic"></a>Alt ağ trafiği
+## <a name="intra-subnet-traffic"></a>Intra-Subnet trafiği
 
 Bir alt ağla ilişkili bir NSG 'deki güvenlik kurallarının, sanal makine arasındaki bağlantıyı etkileyebileceğini unutmayın. Örneğin, *NSG1* 'e tüm gelen ve giden trafiği reddeden bir kural eklenirse, *VM1* ve *VM2* artık birbirleriyle iletişim kuramaz. Buna izin vermek için başka bir kural özellikle eklenmelidir. 
 
