@@ -4,10 +4,10 @@ description: Bu makalede, karma ortamlarda barındırılan sanal makinelerin izl
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: 20f56745127a5182a5dfa057a4496b127d78eac7
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91822191"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc etkin sunucular aracısına genel bakış
@@ -23,7 +23,7 @@ Azure bağlı makine Aracısı paketi, birlikte paketlenmiş çeşitli mantıksa
 
 * Karma örnek meta veri hizmeti (HıMDS), Azure ve bağlı makinenin Azure kimliğiyle bağlantıyı yönetir.
 
-* Konuk yapılandırma Aracısı, makinenin gerekli ilkelerle uyumlu olup olmadığını değerlendirmek gibi Konuk yapılandırma işlevlerini sağlar.
+* Konuk yapılandırma Aracısı, makinenin gerekli ilkelerle uyumlu olup olmadığını değerlendirmek gibi In-Guest Ilke ve konuk yapılandırma işlevlerini sağlar.
 
     Bağlantısı kesilen bir makine için Azure Ilkesi [Konuk yapılandırması](../../governance/policy/concepts/guest-configuration.md) ile ilgili aşağıdaki davranışa göz önünde edin:
 
@@ -43,7 +43,7 @@ Windows ve Linux için Azure bağlı makine Aracısı paketini aşağıda listel
 
 Windows ve Linux için Azure bağlı makine Aracısı, gereksinimlerinize bağlı olarak, en son sürüme el ile veya otomatik olarak yükseltilebilir. Daha fazla bilgi için [buraya](manage-agent.md)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
@@ -173,7 +173,7 @@ Windows için bağlı makine aracısını yükledikten sonra, aşağıdaki ek si
     |Hizmet adı |Görünen ad |İşlem adı |Açıklama |
     |-------------|-------------|-------------|------------|
     |hımds |Azure hibrit Instance Metadata Service |himds.exe |Bu hizmet, Azure ve bağlı makinenin Azure kimliğiyle bağlantıyı yönetmek için Azure örnek meta veri hizmeti 'ni (ıMDS) uygular.|
-    |DscService |Konuk yapılandırma hizmeti |dsc_service.exe |Azure 'Da Konuk Içinde Ilke uygulamak için kullanılan durum yapılandırması (DSC v2) kod temeli.|
+    |DscService |Konuk yapılandırma hizmeti |dsc_service.exe |In-Guest Ilkesi uygulamak için Azure 'da kullanılan Istenen durum yapılandırması (DSC v2) kod temeli.|
 
 * Aşağıdaki çevresel değişkenler aracı yüklemesi sırasında oluşturulur.
 
@@ -224,7 +224,7 @@ Linux için bağlı makine aracısını yükledikten sonra, aşağıdaki ek sist
     |Hizmet adı |Görünen ad |İşlem adı |Açıklama |
     |-------------|-------------|-------------|------------|
     |hımdsd. hizmeti |Azure hibrit Instance Metadata Service |/opt/azcmagent/bin/himds |Bu hizmet, Azure ve bağlı makinenin Azure kimliğiyle bağlantıyı yönetmek için Azure örnek meta veri hizmeti 'ni (ıMDS) uygular.|
-    |DSCD. hizmeti |Konuk yapılandırma hizmeti |/Seçenek/DSC/dsc_linux_service |Bu, Azure 'Da Konuk içi Ilkeyi uygulamak için kullanılan Istenen durum yapılandırması (DSC v2) kod tabandır.|
+    |DSCD. hizmeti |Konuk yapılandırma hizmeti |/Seçenek/DSC/dsc_linux_service |Bu, Azure içinde In-Guest Ilkesi uygulamak için kullanılan Istenen durum yapılandırması (DSC v2) kod tabandır.|
 
 * Sorun giderme için kullanılabilen çeşitli günlük dosyaları vardır. Bunlar aşağıdaki tabloda açıklanmıştır.
 

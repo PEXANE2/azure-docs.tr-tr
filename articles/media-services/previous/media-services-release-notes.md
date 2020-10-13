@@ -15,10 +15,10 @@ ms.date: 10/01/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4d335affa5a06bdb8e5c733c871654cf58947581
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91652967"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services sürüm notları
@@ -114,7 +114,7 @@ En son hizmet sürümü sayesinde, bir Iş başarısız olduğunda hizmet taraf�
 > Media Services Azure Access Control Service kimlik doğrulama anahtarları desteğini kullanımdan kaldırır. 22 Haziran 2018 ' de, Access Control Service anahtarlarını kullanarak kod aracılığıyla Media Services arka ucu ile kimlik doğrulaması yapamayacaktır. Kodunuzu [Azure AD tabanlı kimlik doğrulaması](media-services-use-aad-auth-to-access-ams-api.md)başına Azure Active Directory (Azure AD) kullanacak şekilde güncelleştirmeniz gerekir. Azure portal bu değişiklik hakkındaki uyarıları izleyin.
 
 ### <a name="updates-for-october-2017"></a>2017 Ekim güncelleştirmeleri
-#### <a name="sdks"></a>SDK
+#### <a name="sdks"></a>SDK’lar
 * .NET SDK, Azure AD kimlik doğrulamasını destekleyecek şekilde güncelleştirildi. Azure AD 'ye daha hızlı geçiş yapmak için, Access Control Service kimlik doğrulaması desteği Nuget.org üzerindeki en son .NET SDK 'sinden kaldırılmıştır. 
 * JAVA SDK 'Sı, Azure AD kimlik doğrulamasını destekleyecek şekilde güncelleştirildi. Java SDK 'sına Azure AD kimlik doğrulaması desteği eklenmiştir. Java SDK 'sını Media Services ile kullanma hakkında daha fazla bilgi için bkz [. Java istemci SDK 'sını kullanmaya başlama Azure Media Services](media-services-java-how-to-use.md)
 
@@ -307,7 +307,7 @@ Aşağıdaki yeni özellikler duyurulmuştur:
 ## <a name="april-2015-release"></a><a id="april_changes_15"></a>Nisan 2015 sürümü
 ### <a name="general-media-services-updates"></a>Genel Media Services güncelleştirmeleri
 * [Media Player](https://azure.microsoft.com/blog/2015/04/15/announcing-azure-media-player/) duyuruldu.
-* Media Services REST 2,10 ile başlayarak, birincil ve ikincil alma URL 'Leriyle gerçek zamanlı mesajlaşma protokolünü (RTMP) almak üzere yapılandırılmış Kanallar oluşturulur. Daha fazla bilgi için bkz. [Channel ınest Configurations](media-services-live-streaming-with-onprem-encoders.md#channel_input).
+* Media Services REST 2,10 ile başlayarak, birincil ve ikincil alma URL 'Leriyle bir Real-Time mesajlaşma Protokolü (RTMP) almak üzere yapılandırılmış Kanallar oluşturulur. Daha fazla bilgi için bkz. [Channel ınest Configurations](media-services-live-streaming-with-onprem-encoders.md#channel_input).
 * Azure Media Indexer güncelleştirildi.
 * Ispanyolca Dil desteği eklendi.
 * XML biçimi için yeni bir yapılandırma eklendi.
@@ -475,7 +475,7 @@ Bu sürümden itibaren, .NET için Media Services SDK, Media Services REST API k
 ### <a name="media-services-powershell-cmdlets-included-in-azure-sdk-tools"></a><a name="aug_13_powershell_changes"></a>Azure SDK araçları 'nda bulunan PowerShell cmdlet 'leri Media Services
 Aşağıdaki Media Services PowerShell cmdlet 'leri artık [Azure SDK araçlarına](https://github.com/Azure/azure-sdk-tools)eklenmiştir:
 
-* Get-Azudüzeltmelere Aservices 
+* Get-AzureMediaServices 
 
     Örnek: `Get-AzureMediaServicesAccount`
 * New-AzureMediaServicesAccount 

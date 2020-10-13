@@ -9,10 +9,10 @@ ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
 ms.openlocfilehash: b5827d60b5968eb9f5e9e0a2ca5ec884366aea3d
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91377164"
 ---
 VM 'Lerin tek bir bölgeye yerleştirilmesi, örnekler arasındaki fiziksel mesafeyi azaltır. Bunları tek bir kullanılabilirlik alanına koymak, bunları fiziksel olarak bir araya getirir. Ancak, Azure ayak izi büyüdükçe, tek bir kullanılabilirlik alanı birden fazla fiziksel veri merkezine yayılabilir ve bu da uygulamanızı etkileyen bir ağ gecikme süresi oluşmasına neden olabilir. 
@@ -58,7 +58,7 @@ Yakınlık yerleştirme gruplarınızın hizalama durumunu denetlemek için aşa
 
 - Yakınlık yerleşimi grubu birlikte bulundurma durumu Portal, CLı ve PowerShell kullanılarak görüntülenebilir.
 
-    -   PowerShell kullanırken, birlikte bulundurma durumu, '-eklenebilir Cationstatus ' isteğe bağlı parametresi eklenerek Get-AzProximityPlacementGroup cmdlet 'i kullanılarak elde edilebilir.
+    -   PowerShell kullanırken, birlikte bulundurma durumu, isteğe bağlı '-eklenebilir Cationstatus ' parametresi dahil Get-AzProximityPlacementGroup cmdlet 'i kullanılarak elde edilebilir.
 
     -   CLı kullanırken, birlikte bulundurma durumu, `az ppg show` isteğe bağlı '--include-birlikte bulundurma-durum ' parametresi eklenerek elde edilebilir.
 

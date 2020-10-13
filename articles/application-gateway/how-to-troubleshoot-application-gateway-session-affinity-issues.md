@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
 ms.openlocfilehash: 02d1d78dae4f02ac53d535f6c404b15f8d98f008
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90563769"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Azure Application Gateway oturum benzeşimi sorunlarını giderme
@@ -83,7 +83,7 @@ Bu sorunu belirlemek için yönergeleri izleyin:
     **İpucu** Fiddler 'in nasıl kullanılacağını bilmiyorsanız, alt kısımdaki "**ağ trafiğini toplamak ve Web hata ayıklayıcısını kullanarak çözümlemek**istiyorum" seçeneğini işaretleyin.
 
 2. İstemci tarafından sunulan tanımlama bilgilerinin ARRAffinity ayrıntılarına sahip olup olmadığını öğrenmek için oturum günlüklerini denetleyin ve çözümleyin. Tanımlama bilgisi kümesi içinde "**ARRAffinity =** *ARRAffinityValue*" gibi ARRAffinity ayrıntılarını bulamazsanız, istemcinin Application Gateway tarafından belirtilen ARRA tanımlama bilgisine yanıt verme anlamına gelir.
-    Örnek:
+    Örneğin:
 
     ![Ekran görüntüsünde, tek bir girişi vurgulanmış bir oturum günlüğü gösterilir.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-3.png)
 
@@ -195,7 +195,7 @@ Seçtiğiniz Web hata ayıklayıcıyı kullanın. Bu örnekte, Fiddler 'ı kulla
    > [!NOTE]
    > Bu ARRAffinity değeri tanımlama bilgisi-id ' dır, Application Gateway istemcinin belirli bir arka uç sunucusuna gönderilmesi için ayarlanır.
 
-   ![Ekran görüntüsü, set-Cookie değeri vurgulanmış şekilde bir günlük girişi ayrıntılarının bir örneğini gösterir.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-17.png)
+   ![Ekran görüntüsü, Set-Cookie değeri vurgulanmış bir günlük girişi ayrıntılarının bir örneğini gösterir.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-17.png)
 
 - **Örnek B:** Sonraki oturum günlüğü, daha önce gelen Application Gateway, istemci, ARRAAFFINITY olarak ayarlanmış olan geri yanıt verir. ARRAffinity tanımlama bilgisi kimliği eşleşiyorsa, paketin daha önce kullanılan arka uç sunucusuna gönderilmesi gerekir. İstemcinin ARRAffinity tanımlama bilgisinin değiştirilip değiştirilmediğini görmek için, sonraki birkaç http iletişim satırını kontrol edin.
 

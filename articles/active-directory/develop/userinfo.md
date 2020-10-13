@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 8f3fd462a52b035cd5b5447560e5472b41f237fa
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653239"
 ---
 # <a name="microsoft-identity-platform-userinfo-endpoint"></a>Microsoft Identity platform UserInfo uç noktası
@@ -48,7 +48,7 @@ UserInfo API 'sini çağırmak için aşağıdaki [OIDC izinlerini](v2-permissio
 |:--------------------|:---------------------------------------------------------|
 |Temsilci (iş veya okul hesabı) | OpenID (gerekli), profil, e-posta |
 |Temsilci (kişisel Microsoft hesabı) | OpenID (gerekli), profil, e-posta |
-|Uygulama | Geçerli değil |
+|Uygulama | Uygulanamaz |
 
 > [!TIP]
 > UserInfo uç noktasının yanı sıra [kimlik belirtecinin](id-tokens.md) bir belirtecini almak IÇIN bu URL 'yi tarayıcınızda kopyalayın ve istemci kimliği ve yenıden yönlendirme URI 'sini kendi ile değiştirin. Yalnızca OpenID veya Graph kapsamları için kapsam isteğinde bulunduğunu ve başka hiçbir şey olduğunu unutmayın.  Aynı belirteç isteğindeki iki farklı kaynak için izin isteyebileceğinizden bu gereklidir.

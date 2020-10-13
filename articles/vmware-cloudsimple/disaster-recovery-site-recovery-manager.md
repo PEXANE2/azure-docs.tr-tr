@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6714b2c5d87141fd94d0f96d9cf07913442d18d6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91267066"
 ---
 # <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>VMware Site Recovery Manager ile özel bulutu olağanüstü durum kurtarma hedefi olarak ayarlama
@@ -111,7 +111,7 @@ VMware belgelerini izleyerek şirket içi ortamınıza vSphere çoğaltma gereci
 
 2. Vmware.com adresinden VR ISO 'daki OVF 'yi kullanarak şirket içi ortamınızda vRA 'yi dağıtın. VRA 6,5 için, [Bu VMware blogu](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices) ilgili bilgileri içerir.
 
-3. Şirket içi vRA 'yi, şirket içi sitede vCenter çoklu oturum açma ile kaydedin. VSphere çoğaltma 6,5 hakkında ayrıntılı yönergeler için bkz. VMware Document [VMware vSphere çoğaltma 6,5 yükleme ve yapılandırma](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf).
+3. Şirket içi vRA 'yi, şirket içi sitede vCenter Single Sign-On ile kaydedin. VSphere çoğaltma 6,5 hakkında ayrıntılı yönergeler için bkz. VMware Document [VMware vSphere çoğaltma 6,5 yükleme ve yapılandırma](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf).
 
 ## <a name="install-vsphere-replication-appliance-in-your-private-cloud-environment"></a>Özel bulut ortamınıza vSphere çoğaltma gereci yüklemesi
 
@@ -137,7 +137,7 @@ Yükleme bu üst düzey adımlardan oluşur:
 3. Özel bulut ortamınızı vRA yüklemesi için hazırlayın.
 4. Vmware.com adresinden VR ISO 'daki OVF 'yi kullanarak özel bulutunuzda vRA 'yi dağıtın. VRA 6,5 için, [Bu VMware bloguna](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices) ilgili bilgiler vardır.
 5. VRA için güvenlik duvarı kurallarını yapılandırın. [Cloudsimple Portal 'da aşağıda açıklanmıştır: vRA Için güvenlik duvarı kurallarını yapılandırma](#cloudsimple-portal-configure-firewall-rules-for-vra).
-6. Özel bulut sitesinde özel bulut vRA 'yi vCenter çoklu oturum açma ile kaydedin.
+6. Özel bulut vRA 'yi özel bulut sitesinde vCenter Single Sign-On 'ye kaydedin.
 7. İki gereç arasında vSphere çoğaltma bağlantılarını yapılandırma. Güvenlik duvarları genelinde gerekli bağlantı noktalarının açıldığından emin olun. VSphere çoğaltma 6,5 için açık olması gereken bağlantı noktası numaraları listesi için [Bu VMware Bilgi Bankası makalesine](https://kb.vmware.com/s/article/2087769) bakın.
 
 VSphere çoğaltma 6,5 için ayrıntılı yükleme yönergeleri için bkz. VMware Document [VMware vSphere replication 6,5 yükleme ve yapılandırma](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf).
@@ -227,7 +227,7 @@ Ayrıcalıkları devre dışı bırakmak için bkz. [yükseltme ayrıcalıkları
 * [VSphere çoğaltma 6,5 ' i dağıttığınızda OVF seçimleri](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices/)
 * [VMware vSphere çoğaltma 6,5 yükleme ve yapılandırma](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf)
 * [SRM 6,5 için Önkoşullar ve En Iyi uygulamalar](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-BB0C03E4-72BE-4C74-96C3-97AC6911B6B8.html)
-* [Platform Hizmetleri denetleyicisi başına bir vCenter Server örneği ile Iki siteli topolojide Site Recovery Manager](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-F474543A-88C5-4030-BB86-F7CC51DADE22.html)
+* [Platform Hizmetleri denetleyicisi başına bir vCenter Server örneğiyle Two-Site topolojide Site Recovery Manager](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-F474543A-88C5-4030-BB86-F7CC51DADE22.html)
 * [VMware Site Recovery Manager 6,5 yükleme ve yapılandırma kılavuzu](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-437E1B65-A17B-4B4B-BA5B-C667C90FA418.html)
 * [Dizi tabanlı çoğaltma ve vSphere çoğaltma ile SRM üzerinde VMware blogu](https://blogs.vmware.com/virtualblocks/2017/06/22/srm-array-based-replication-vs-vsphere-replication)
 * [SRM çoklu site seçeneklerinde VMware blogu](https://blogs.vmware.com/virtualblocks/2016/07/28/srm-multisite)

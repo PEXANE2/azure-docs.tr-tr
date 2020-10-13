@@ -12,10 +12,10 @@ ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 37df1a052a58271c239b8b3bcaa4808ab7c355f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85204379"
 ---
 # <a name="json-claims-transformations"></a>JSON talep dönüştürmeleri
@@ -58,8 +58,8 @@ Aşağıdaki örnek, "e-posta" ve "OTP" talep değerine ve sabit dizelere göre 
 Aşağıdaki talep dönüştürmesi, SendGrid 'e gönderilen isteğin gövdesi olacak bir JSON dize talebi verir (bir üçüncü taraf e-posta sağlayıcısı). JSON nesnesinin yapısı, InputParameters 'ın nokta gösteriminde ve ınputclaim 'nin dönüştürme Tionclaimtypes öğesindeki kimlikler tarafından tanımlanır. Nokta gösterimindeki sayılar dizileri kapsıyor. Değerler Inputclaim değerlerinin ve InputParameters ' "Value" özelliklerinden gelir.
 
 - Giriş talepleri:
-  - **e-posta**, dönüşüm talep türü **kişiselleştirmeler. 0.. 0. e-posta**: " someone@example.com "
-  - **OTP**, dönüşüm talep türü **kişiselleştirmeler. 0. dynamic_template_data. OTP** "346349"
+  - **e-posta**, dönüşüm talep türü  **kişiselleştirmeler. 0.. 0. e-posta**: " someone@example.com "
+  - **OTP**, dönüşüm talep türü **personalizations.0.dynamic_template_data. OTP** "346349"
 - Giriş parametresi:
   - **template_id**: "d-4c56ffb40fa648b1aa6822283df94f60"
   - **Kimden. e-posta**: " service@contoso.com "
@@ -100,7 +100,7 @@ JSON verilerinden belirtilen bir öğeyi alır.
 | InputParameter | Claimtoayıkla | string | Ayıklanacak JSON öğesinin adı. |
 | OutputClaim | extractedClaim | string | Bu talep dönüşümünde oluşturulan ClaimType, _Claimtoextract_ giriş parametresinde belirtilen öğe değeri çağırılır. |
 
-Aşağıdaki örnekte, talep dönüştürmesi `emailAddress` JSON verilerinden öğesini ayıkladı:`{"emailAddress": "someone@example.com", "displayName": "Someone"}`
+Aşağıdaki örnekte, talep dönüştürmesi `emailAddress` JSON verilerinden öğesini ayıkladı: `{"emailAddress": "someone@example.com", "displayName": "Someone"}`
 
 ```xml
 <ClaimsTransformation Id="GetEmailClaimFromJson" TransformationMethod="GetClaimFromJson">
@@ -123,7 +123,7 @@ Aşağıdaki örnekte, talep dönüştürmesi `emailAddress` JSON verilerinden �
 - Giriş parametresi:
     - **Claimtoayıkla**: emaadresi
 - Çıkış talepleri:
-  - **Extractedclaim**:someone@example.com
+  - **Extractedclaim**: someone@example.com
 
 
 ## <a name="getclaimsfromjsonarray"></a>GetClaimsFromJsonArray
@@ -133,7 +133,7 @@ JSON verilerinden belirtilen öğelerin bir listesini alın.
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
 | Inputclaim | Jsonsourceclaım | string | Talepleri almak için talep dönüştürmesi tarafından kullanılan ClaimTypes. |
-| InputParameter | Erroronmissingclaim | boole | Taleplerden biri eksikse bir hata oluşturulup oluşturulmayacağını belirtir. |
+| InputParameter | Erroronmissingclaim | boolean | Taleplerden biri eksikse bir hata oluşturulup oluşturulmayacağını belirtir. |
 | InputParameter | ıncludeemptyclaim | string | Boş talepler eklenip eklenmeyeceğini belirtin. |
 | InputParameter | jsonSourceKeyName | string | Öğe anahtarı adı |
 | InputParameter | jsonSourceValueName | string | Öğe değeri adı |
@@ -265,7 +265,7 @@ JSON veri dizisindeki ilk öğeyi alır.
 | Inputclaim | ınputjsonclaim | string | JSON dizisinden öğeyi almak için talep dönüştürmesi tarafından kullanılan ClaimTypes. |
 | OutputClaim | extractedClaim | string | Bu Claimstrans, tarafından üretilen ClaimType, JSON dizisindeki ilk öğe çağırılır. |
 
-Aşağıdaki örnekte, talep dönüştürmesi JSON dizisinden ilk öğeyi (e-posta adresi) ayıklar `["someone@example.com", "Someone", 6353399]` .
+Aşağıdaki örnekte, talep dönüştürmesi JSON dizisinden ilk öğeyi (e-posta adresi) ayıklar  `["someone@example.com", "Someone", 6353399]` .
 
 ```xml
 <ClaimsTransformation Id="GetEmailFromJson" TransformationMethod="GetSingleValueFromJsonArray">
@@ -283,7 +283,7 @@ Aşağıdaki örnekte, talep dönüştürmesi JSON dizisinden ilk öğeyi (e-pos
 - Giriş talepleri:
   - **ınputjsonclaim**: [" someone@example.com ", "birisi", 6353399]
 - Çıkış talepleri:
-  - **Extractedclaim**:someone@example.com
+  - **Extractedclaim**: someone@example.com
 
 ## <a name="xmlstringtojsonstring"></a>XmlStringToJsonString
 

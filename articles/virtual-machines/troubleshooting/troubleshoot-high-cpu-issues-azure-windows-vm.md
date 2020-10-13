@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 9/24/2020
 ms.author: mnanda
 ms.openlocfilehash: 3bd19f301b1afd7dd1c35f03f6f6131a26b00708
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91596832"
 ---
 # <a name="troubleshoot-high-cpu-issues-for-azure-windows-virtual-machines"></a>Azure Windows sanal makinelerinde yüksek CPU sorunlarını giderme
@@ -35,7 +35,7 @@ G/ç ve ağ gecikme sorunlarından itibaren, CPU ve bellek sorunlarını giderme
 
 Perfmon veya procmon gibi mevcut performans sorunlarını giderme araçlarınızın çoğu, şirket içi sunucular için kullanılan Azure Windows VM 'lerinde çalışacaktır. Ancak, Perfinsıghts, Azure 'un En Iyi uygulamaları, SQL En Iyi uygulamaları, yüksek çözünürlüklü g/ç gecikme grafikleri, CPU ve bellek sekmeleri gibi daha fazla öngörü sağlamak üzere Azure VM 'Leri için özel olarak tasarlanmıştır.
 
-Kullanıcı modu veya çekirdek modu olarak çalışıp çalışmadığını, etkin bir işlemin herhangi bir iş parçacığının oluşturulduğu kodu çalıştırmak için CPU döngüleri gerekir. Birçok sorun doğrudan iş yüküyle ilgilidir. Sunucu, CPU da dahil olmak üzere kaynak tüketimine sahip olan iş yükünün türü.
+User-Mode veya çekirdek modu olarak çalışıp çalışmadığını, etkin bir işlemin herhangi bir iş parçacığının oluşturulduğu kodu çalıştırmak için CPU döngüleri gerekir. Birçok sorun doğrudan iş yüküyle ilgilidir. Sunucu, CPU da dahil olmak üzere kaynak tüketimine sahip olan iş yükünün türü.
 
 #### <a name="common-factors"></a>Ortak etmenler
 
@@ -184,7 +184,7 @@ Perfinsıghts raporunu açın. **Bulgular** sekmesi, tüm aykırı değerleri ka
 
 **CPU** altında, ayrıntılı model analizi, çekirdek başına veya işlem başına kullanılabilecek bir adanmış alt sekme vardır.
 
-**En ÜSTTEKI CPU tüketicileri** sekmesinin iki ayrı ilgi bölümü vardır ve burada işlemci istatistiklerini buradan görüntüleyebilirsiniz. Uygulama tasarımı sıklıkla tek Iş parçacıklı ya da tek bir işlemciye sabitdir. Bu senaryoda, bir veya birkaç çekirdek yüzde 100 ' de çalışır, diğer çekirdekler beklenen düzeylerde çalışır. Sunucu üzerindeki ortalama CPU beklendiği gibi çalıştığı için bu senaryolar daha karmaşıktır, ancak yüksek kullanıma sahip çekirdekler üzerinde sabitlenmiş süreçler beklenenden daha yavaş olacaktır.
+**En ÜSTTEKI CPU tüketicileri** sekmesinin iki ayrı ilgi bölümü vardır ve burada işlemci istatistiklerini buradan görüntüleyebilirsiniz. Uygulama tasarımı genellikle Single-Threaded veya kendisini tek bir işlemciye sabitler. Bu senaryoda, bir veya birkaç çekirdek yüzde 100 ' de çalışır, diğer çekirdekler beklenen düzeylerde çalışır. Sunucu üzerindeki ortalama CPU beklendiği gibi çalıştığı için bu senaryolar daha karmaşıktır, ancak yüksek kullanıma sahip çekirdekler üzerinde sabitlenmiş süreçler beklenenden daha yavaş olacaktır.
 
   ![yüksek CPU kullanımı](./media/troubleshoot-high-cpu-issues-azure-windows-vm/9-high-cpu-usage.png)
 
@@ -229,7 +229,7 @@ Başlamak için, **Sayaç Ekle** kategorisini seçin.
 
 1. Tüm Birleşik çekirdekler için istatistikleri sağlayan **_Total**seçin.
 
-1. **Add (Ekle)** seçeneğini belirleyin. Pencere, **eklenen sayaçlar**altında **% processortime süresini** gösterir.
+1. **Ekle**’yi seçin. Pencere, **eklenen sayaçlar**altında **% processortime süresini** gösterir.
 
   ![İşlemci zamanı Ekle](./media/troubleshoot-high-cpu-issues-azure-windows-vm/11-add-processor-time.png)
 

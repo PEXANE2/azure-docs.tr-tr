@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/07/2020
 ms.author: jeedes
 ms.openlocfilehash: b8593873774575635b31176b162086795e8a1320
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91744296"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-boomi"></a>Öğretici: Boomı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -152,7 +152,7 @@ Bu bölümde, B. Simon 'u, Boomi 'ya erişim vererek Azure çoklu oturum açma �
 
 1. **SSO seçenekleri** sekmesine tıklayın ve aşağıdaki adımları gerçekleştirin.
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/boomi-tutorial/tutorial_boomi_11.png)
+    ![Uygulama tarafında tek Sign-On yapılandırma](./media/boomi-tutorial/tutorial_boomi_11.png)
 
     a. **SAML çoklu oturum açmayı etkinleştir** onay kutusunu işaretleyin.
 

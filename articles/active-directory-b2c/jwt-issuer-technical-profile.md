@@ -12,10 +12,10 @@ ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: e8f5564f9e7e1176db1fed5fae38eee58874c2eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85204210"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde JWT belirteci veren için teknik profil tanımlama
@@ -64,7 +64,7 @@ Aşağıdaki örnek, için bir teknik profil göstermektedir `JwtIssuer` :
 | rolling_refresh_token_lifetime_secs | Hayır | Belirteç kayan pencere ömrünü Yenile. Bu süre dolduktan sonra, uygulama tarafından alınan en son yenileme belirtecinin geçerlilik süresinden bağımsız olarak Kullanıcı yeniden kimlik doğrulaması zorlanır. Bir kayan pencere ömrü zorlamak istemiyorsanız, allow_infinite_rolling_refresh_token değerini olarak ayarlayın `true` . Varsayılan değer 7.776.000 saniyedir (90 gün). En düşük (kapsamlı) 86.400 saniyedir (24 saat). En yüksek (kapsamlı) 31.536.000 saniyedir (365 gün). |
 | allow_infinite_rolling_refresh_token | Hayır | Olarak ayarlanırsa `true` , yenileme belirteci kayan pencere ömrü hiçbir zaman dolmaz. |
 | Issuanceclaımpattern | Hayır | Veren (İSS) talebini denetler. Değerlerden biri:<ul><li>AuthorityAndTenantGuid-ISS talebi, veya gibi etki alanı adınızı `login.microsoftonline` `tenant-name.b2clogin.com` ve https: \/ /login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/</li><li>AuthorityWithTfp-ISS talebi, `login.microsoftonline` `tenant-name.b2clogin.com` kiracı tanımınızda veya bağlı olan taraf ilkesi adınızla etki alanı adınızı içerir. https: \/ /login.microsoftonline.com/TFP/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-Sign-in/v2.0/</li></ul> Varsayılan değer: AuthorityAndTenantGuid |
-| Authenticationcontextreferenceclaımpattern | Hayır | `acr`Talep değerini denetler.<ul><li>Hiçbiri-Azure AD B2C ACR talebini yayınmıyor</li><li>PolicyId- `acr` talep, ilke adını içerir</li></ul>Bu değeri ayarlama seçenekleri TFP (güven çerçevesi ilkesi) ve ACR (kimlik doğrulama bağlamı başvurusu) ' dir. Bu değerin TFP olarak ayarlanması önerilir, değeri ayarlamak için `<Item>` `Key="AuthenticationContextReferenceClaimPattern"` ve değerinin var olduğundan ve değeri olduğundan emin olun `None` . Bağlı olan taraf ilkenizde öğe ekleyin `<OutputClaims>` , bu öğeyi ekleyin `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />` . Ayrıca ilkenizin türünü içerdiğinden emin olun`<ClaimType Id="trustFrameworkPolicy">   <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` |
+| Authenticationcontextreferenceclaımpattern | Hayır | `acr`Talep değerini denetler.<ul><li>Hiçbiri-Azure AD B2C ACR talebini yayınmıyor</li><li>PolicyId- `acr` talep, ilke adını içerir</li></ul>Bu değeri ayarlama seçenekleri TFP (güven çerçevesi ilkesi) ve ACR (kimlik doğrulama bağlamı başvurusu) ' dir. Bu değerin TFP olarak ayarlanması önerilir, değeri ayarlamak için `<Item>` `Key="AuthenticationContextReferenceClaimPattern"` ve değerinin var olduğundan ve değeri olduğundan emin olun `None` . Bağlı olan taraf ilkenizde öğe ekleyin `<OutputClaims>` , bu öğeyi ekleyin `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />` . Ayrıca ilkenizin türünü içerdiğinden emin olun `<ClaimType Id="trustFrameworkPolicy">   <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` |
 |Refreshtokenusergünneyııd| Hayır | Uç noktaya [erişim belirteci](authorization-code-flow.md#4-refresh-the-token) gönderi isteği yenileme sırasında yürütülmesi gereken bir Kullanıcı yolculuğu tanıtıcısı `/token` . |
 
 ## <a name="cryptographic-keys"></a>Şifreleme anahtarları

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/25/2020
 ms.openlocfilehash: 8bbd0b1979da69e5d4d18009100a7caee5a3d722
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397411"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>Öğretici: beceri kodunuzda tanılama, onarma ve değişiklikleri yapma
@@ -78,13 +78,13 @@ Bu bölümde, arama hizmetinin veri kaynağını, Beceri, dizinini ve Dizin olu�
 1. Azure depolama hesabınızın anahtarlar sayfasından storageConnectionString öğesini girin.
 1. Depolama hesabında oluşturduğunuz kapsayıcının Kapsayıcıadı ' nı girin.
 
-> :::image type="content" source="media/cognitive-search-debug/postman-enter-variables.png" alt-text="Postman 'da değişkenleri Düzenle":::
+> :::image type="content" source="media/cognitive-search-debug/postman-enter-variables.png" alt-text="HTTP uç noktası ve erişim anahtarı al":::
 
 Koleksiyon, bu bölümü gerçekleştirmek için kullanılan dört farklı REST çağrısı içerir.
 
 İlk çağrı veri kaynağını oluşturur. `clinical-trials-ds`. İkinci çağrı, Beceri oluşturur `clinical-trials-ss` . Üçüncü çağrı dizinini oluşturur `clinical-trials` . Dördüncü ve son çağrı Dizin oluşturucuyu oluşturur `clinical-trials-idxr` . Koleksiyondaki tüm çağrılar tamamlandıktan sonra Postman ' ı kapatıp Azure portal döndürün.
 
-> :::image type="content" source="media/cognitive-search-debug/postman-create-data-source.png" alt-text="veri kaynağı oluşturmak için Postman kullanma":::
+> :::image type="content" source="media/cognitive-search-debug/postman-create-data-source.png" alt-text="HTTP uç noktası ve erişim anahtarı al":::
 
 ## <a name="check-the-results"></a>Sonuçları denetleyin
 
@@ -107,7 +107,7 @@ Arama hizmeti genel bakış ekranına dönün.
 
 ## <a name="start-your-debug-session"></a>Hata ayıklama oturumunuzu başlatın
 
-> :::image type="content" source="media/cognitive-search-debug/new-debug-session-screen-required.png" alt-text="Yeni bir hata ayıklama oturumu başlatın":::
+> :::image type="content" source="media/cognitive-search-debug/new-debug-session-screen-required.png" alt-text="HTTP uç noktası ve erişim anahtarı al":::
 
 1. Hata ayıklama oturumları (Önizleme) sekmesine tıklayın.
 1. + NewDebugSession seçin
@@ -120,7 +120,7 @@ Arama hizmeti genel bakış ekranına dönün.
 > [!Important]
 > Bir hata ayıklama oturumu yalnızca tek bir belge ile kullanılabilir. Veri kümesindeki belirli bir belge > seçilebilir veya oturum, varsayılan olarak ilk belgeye ayarlanır.
 
-> :::image type="content" source="media/cognitive-search-debug/debug-execution-complete1.png" alt-text="Yeni hata ayıklama oturumu başlatıldı":::
+> :::image type="content" source="media/cognitive-search-debug/debug-execution-complete1.png" alt-text="HTTP uç noktası ve erişim anahtarı al":::
 
 Hata ayıklama oturumunun yürütülmesi tamamlandığında, oturum varsayılan olarak, Yetenek grafiğini vurgulayarak AI zenginleştirme sekmesine göre yapılır.
 
@@ -140,81 +140,27 @@ Hatalar/uyarılar sekmesinde, etiketli bir işlem için hata vardır `Enrichment
 1. **</>** Satırın başındaki simgeyi seçin ve Ifade değerlendirici ' ni açın.
 1. Bu ifadenin bir hataya neden olduğunu onaylamak için **değerlendir** düğmesine tıklayın. "LanguageCode" özelliğinin geçerli bir giriş olduğunu doğrulayacaktır.
 
-> :::image type="content" source="media/cognitive-search-debug/expression-evaluator-language.png" alt-text="İfade Değerlendirici":::
+> :::image type="content" source="media/cognitive-search-debug/expression-evaluator-language.png" alt-text="HTTP uç noktası ve erişim anahtarı al" öğesine karşılık gelen eşlenmiş yol yok.
 
-Oturumda bu hatayı araştırmak için iki yol vardır. İlk olarak, girişin nereden geldiğini, hiyerarşideki hangi becerinin bu sonucu üretmesi gerektiğini bakmamız gerekir mi? Yetenek ayrıntıları bölmesindeki yürütmeler sekmesi girişin kaynağını görüntülemelidir. Kaynak yoksa, bu bir alan eşleme hatası olduğunu gösterir.
-
-1. **Yürütmeler** sekmesine tıklayın.
-1. Girişlere bakın ve "languageCode" öğesini bulun. Bu giriş için listelenen kaynak yok. 
-1. Zenginleştirilmiş veri yapısını göstermek için sol bölmeyi değiştirin. "LanguageCode" öğesine karşılık gelen eşlenmiş yol yok.
-
-> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-language.png" alt-text="Zenginleştirilmiş veri yapısı":::
-
-"Language" için eşlenmiş bir yol var. Bu nedenle, Beceri ayarlarında bir yazım hatası vardır. Bu ifadeyi onarmak için, '/Document/Language ' ifadesiyle #1 beceriyle birlikte güncelleştirilmeleri gerekir.
-
-1. **</>**"Language" yolu Için Ifade değerlendirici ' ni açın.
-1. İfadeyi kopyalayın. Pencereyi kapatın.
-1. #1 beceri için yetenek ayarlarına gidin ve **</>** "languageCode" girişi Için Ifade değerlendirici ' ni açın.
-1. Yeni '/Document/Language ' değerini Ifade kutusuna yapıştırın ve **değerlendir**' e tıklayın.
-1. Doğru "en" girişini görüntülemelidir. İfadeyi güncelleştirmek için Uygula ' ya tıklayın.
-1. Sağ, yetenek ayrıntıları bölmesinde **Kaydet** ' e tıklayın.
-1. Oturumun pencere menüsünde **Çalıştır** ' a tıklayın. Bu, belgeyi kullanarak beceri 'in başka bir yürütmesini de başlatabilir. 
-
-Hata ayıklama oturumu yürütmesi tamamlandığında, hatalar/uyarılar sekmesine tıklayın ve "Enrichment. NerSkillV2. #1" etiketli hatanın gitti olduğunu gösterir. Ancak, hizmetin, kuruluşların ve konumların çıkış alanlarını arama dizinine eşleyemediğinden oluşan iki uyarı hala vardır. Eksik değerler var: '/Document/merged_content/kuruluşlar ' ve '/Document/merged_content/Locations '.
+> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-language.png" alt-text="HTTP uç noktası ve erişim anahtarı al" etiketli hatanın gitti olduğunu gösterir. Ancak, hizmetin, kuruluşların ve konumların çıkış alanlarını arama dizinine eşleyemediğinden oluşan iki uyarı hala vardır. Eksik değerler var: '/Document/merged_content/kuruluşlar ' ve '/Document/merged_content/Locations '.
 
 ## <a name="fix-missing-skill-output-values"></a>Eksik yetenek çıkış değerlerini düzeltir
 
-> :::image type="content" source="media/cognitive-search-debug/warnings-missing-value-locations-organizations.png" alt-text="Hatalar ve uyarılar":::
+> :::image type="content" source="media/cognitive-search-debug/warnings-missing-value-locations-organizations.png" alt-text="HTTP uç noktası ve erişim anahtarı al":::
 
 Bir yeteneğin eksik çıkış değerleri var. Beceriyle ilgili hatayı belirlemek için zenginleştirilmiş veri yapısına gidin, değer adını bulun ve kaynak kaynağına bakın. Eksik kuruluşlar ve konumlar değerleri söz konusu olduğunda, Beceri #1 çıktılardır. Her yol için </> Ifade Değerlendiricisi açmak, sırasıyla '/Document/Content/organizasyonlar ' ve '/Document/Content/Locations ' olarak listelenen ifadeleri görüntüler.
 
-> :::image type="content" source="media/cognitive-search-debug/expression-eval-missing-value-locations-organizations.png" alt-text="İfade değerlendirici kuruluşlar varlığı":::
+> :::image type="content" source="media/cognitive-search-debug/expression-eval-missing-value-locations-organizations.png" alt-text="HTTP uç noktası ve erişim anahtarı al" girişi Için Ifade değerlendirici ' ni açın.
 
-Bu varlıkların çıktısı boş ve boş olmamalıdır. Bu sonucu üreten girişler nelerdir?
+> :::image type="content" source="media/cognitive-search-debug/input-skill-missing-value-locations-organizations.png" alt-text="HTTP uç noktası ve erişim anahtarı al" çıktıları için ifade değerlendirici ' ni açın.
 
-1. **Yetenek grafiğine** gidin ve yetenek #1 seçin.
-1. Doğru yetenek ayrıntıları bölmesinde **yürütmeler** sekmesini seçin.
-1. **</>**"Metin" girişi Için Ifade değerlendirici ' ni açın.
+> :::image type="content" source="media/cognitive-search-debug/merge-output-detail-missing-value-locations-organizations.png" alt-text="HTTP uç noktası ve erişim anahtarı al" varlığı Için Ifade değerlendirici ' ni açın.
 
-> :::image type="content" source="media/cognitive-search-debug/input-skill-missing-value-locations-organizations.png" alt-text="Metin beceriye giriş":::
-
-Bu giriş için görüntülenmiş sonuç metin girişi gibi görünmüyor. Yeni satırlarla çevrelenen bir görüntü gibi görünüyor. Metnin bulunmaması, hiçbir varlık tanımlanmayacağı anlamına gelir. Beceri hiyerarşisine bakarak içeriğin ilk olarak #6 (OCR) yetenek tarafından işlendiğini ve sonra da #5 (birleştirme) beceriye geçtiğini gösterir. 
-
-1. **Yetenek grafiğinde**#5 (birleştirme) yeteneği seçin.
-1. Doğru beceri ayrıntıları bölmesinde **yürütmeler** sekmesini seçin ve **</>** "BIRLEŞTIRIMETIN" çıktıları için ifade değerlendirici ' ni açın.
-
-> :::image type="content" source="media/cognitive-search-debug/merge-output-detail-missing-value-locations-organizations.png" alt-text="Birleştirme yeteneği için çıkış":::
-
-Burada metin görüntüyle eşleştirilmiş. '/Document/merged_content ' ifadesine bakarak #1 beceriye yönelik "kuruluşlar" ve "konumlar" yollarında hata görünür. '/Document/Content ' kullanmak yerine "metin" girişleri için '/Document/merged_content ' kullanması gerekir.
-
-1. "Birleştirimetin" çıkışı için ifadeyi kopyalayın ve Ifade değerlendirici penceresini kapatın.
-1. **Beceri grafiğinde**yetenek #1 seçin.
-1. Doğru beceri ayrıntıları bölmesinde **yetenek ayarları** sekmesini seçin.
-1. **</>**"Metin" girişi Için Ifade değerlendirici ' ni açın.
-1. Yeni ifadeyi kutuya yapıştırın. **Değerlendir**' e tıklayın.
-1. Eklenen metin ile doğru giriş görüntülenmelidir. Yetenek ayarlarını güncelleştirmek için **Uygula** ' ya tıklayın.
+> :::image type="content" source="media/cognitive-search-debug/skill-output-detail-missing-value-locations-organizations.png" alt-text="HTTP uç noktası ve erişim anahtarı al" ayarına çift tıklayın ve '/Document/merged_content ' okumak için düzenleyin.
 1. Sağ, yetenek ayrıntıları bölmesinde **Kaydet** ' e tıklayın.
 1. Oturumlar penceresi menüsünde **Çalıştır** ' a tıklayın. Bu, belgeyi kullanarak beceri 'in başka bir yürütmesini de başlatabilir.
 
-Dizin oluşturucunun çalışmayı bitirdikten sonra hatalar hala orada kalır. Yetenek #1 ve Araştır ' a geri dönün. Niteliğin girişi ' merged_content ' olarak ' content ' üzerinden düzeltildi. Beceriye bu varlıkların çıkışları nelerdir?
-
-1. **AI zenginleştirme** sekmesini seçin.
-1. **Yetenek grafiği** ' ni seçin ve yetenek #1 ' ye tıklayın.
-1. "Çıktılar" bulmak için **yetenek ayarları** ' na gidin.
-1. **</>**"Kuruluşlar" varlığı Için Ifade değerlendirici ' ni açın.
-
-> :::image type="content" source="media/cognitive-search-debug/skill-output-detail-missing-value-locations-organizations.png" alt-text="Kuruluşlar varlığı için çıkış":::
-
-İfadenin sonucunu değerlendirmek, doğru sonucu verir. Yetenek, "kuruluşlar" varlığı için doğru değeri belirlemek üzere çalışmaktadır. Ancak, varlığın yolundaki çıkış eşlemesi hala bir hata üretiliyor. Becerinizdeki çıkış yolunu hatada çıkış yolu ile karşılaştıran, çıkışları, kuruluşları ve/Document/Content düğümü altındaki konumları ele alan beceri. Çıkış alanı eşlemesi, sonuçların/Document/merged_content düğümü altında ana öğe olmasını bekliyor. Önceki adımda, giriş '/Document/Content ' iken '/Document/merged_content ' olarak değiştirildi. Çıkışın doğru içerikle oluşturulduğundan emin olmak için, yetenek ayarlarındaki bağlamın değiştirilmesi gerekir.
-
-1. **AI zenginleştirme** sekmesini seçin.
-1. **Yetenek grafiği** ' ni seçin ve yetenek #1 ' ye tıklayın.
-1. "Bağlam" bulmak için **yetenek ayarları** ' na gidin.
-1. "Bağlam" ayarına çift tıklayın ve '/Document/merged_content ' okumak için düzenleyin.
-1. Sağ, yetenek ayrıntıları bölmesinde **Kaydet** ' e tıklayın.
-1. Oturumlar penceresi menüsünde **Çalıştır** ' a tıklayın. Bu, belgeyi kullanarak beceri 'in başka bir yürütmesini de başlatabilir.
-
-> :::image type="content" source="media/cognitive-search-debug/skill-setting-context-correction-missing-value-locations-organizations.png" alt-text="Yetenek ayarında bağlam düzeltmesi":::
+> :::image type="content" source="media/cognitive-search-debug/skill-setting-context-correction-missing-value-locations-organizations.png" alt-text="HTTP uç noktası ve erişim anahtarı al":::
 
 Tüm hatalar çözüldü.
 

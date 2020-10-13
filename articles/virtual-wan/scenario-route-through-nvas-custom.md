@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: e1cf9faeab60264d491539256828151e496ade8f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91267508"
 ---
 # <a name="scenario-route-traffic-through-nvas---custom-preview"></a>Senaryo: trafiği NVA 'lar aracılığıyla yönlendirme-özel (Önizleme)
@@ -65,14 +65,14 @@ Bu nedenle, bağlantı matrisi üç farklı bağlantı deseni sunar ve bu üç y
 
 Sanal ağlar arası ve daldan VNet trafiğinin hizmet VNet 'teki NVA 'dan (VNet 4) geldiğinden emin olmak için bu statik yollara ihtiyacımız vardır:
 
-| Description | Yol tablosu | Statik yol              |
+| Açıklama | Yol tablosu | Statik yol              |
 | ----------- | ----------- | ------------------------- |
 | Dallar    | RT_V2B      | 10.2.0.0/16-> vnet4conn  |
 | NVA tekerlek  | Varsayılan     | 10.1.0.0/16-> vnet4conn  |
 
 Artık sanal WAN, paketlerin gönderileceği bağlantıyı bilir, ancak bağlantının bu paketleri alırken ne yapılacağını bilmesi gerekir: bağlantı yolu tablolarının kullanıldığı yer.
 
-| Description | Bağlantı | Statik yol            |
+| Açıklama | Bağlantı | Statik yol            |
 | ----------- | ---------- | ----------------------- |
 | VNet2Branch | vnet4conn  | 10.2.0.0/16-> 10.4.0.5 |
 | Branch2VNet | vnet4conn  | 10.1.0.0/16-> 10.4.0.5 |
@@ -129,7 +129,7 @@ NVA aracılığıyla yönlendirmeyi ayarlamak için şunları göz önünde bulu
 
 **Şekil 2**
 
-:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="Şekil 2" lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
+:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="Şekil 1" lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

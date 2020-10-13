@@ -1,16 +1,16 @@
 ---
 title: ASP.NET Core uygulamalarını yapılandırma
-description: Yerel Windows örneklerinde veya önceden oluşturulmuş bir Linux kapsayıcısında, Azure App Service bir ASP.NET Core uygulamasının nasıl yapılandırılacağını öğrenin. Bu makalede en sık kullanılan yapılandırma görevleri gösterilmektedir.
+description: Yerel Windows örneklerinde veya önceden oluşturulmuş bir Linux kapsayıcısında, Azure App Service bir ASP.NET Core uygulamasının nasıl yapılandırılacağını öğrenin. Bu makalede en yaygın yapılandırma görevlerine yer verilmiştir.
 ms.devlang: dotnet
 ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: 3456adc2b143f1f51115183fe4873938d067d267
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88961678"
 ---
 # <a name="configure-an-aspnet-core-app-for-azure-app-service"></a>Azure App Service için bir ASP.NET Core uygulaması yapılandırma
@@ -98,7 +98,7 @@ App Service nasıl çalıştığı ve Linux 'ta ASP.NET Core uygulamalar derleme
 
 ## <a name="access-environment-variables"></a> Ortam değişkenlerine erişme
 
-App Service, uygulama ayarlarınızı uygulama kodunuzun dışında [ayarlayabilirsiniz](configure-common.md#configure-app-settings) . Daha sonra, standart ASP.NET Core bağımlılığı ekleme modelini kullanarak herhangi bir sınıfta bunlara erişebilirsiniz:
+App Service'te uygulama kodunuzun dışında [uygulama ayarlarını düzenleyebilirsiniz](configure-common.md#configure-app-settings). Daha sonra, standart ASP.NET Core bağımlılığı ekleme modelini kullanarak herhangi bir sınıfta bunlara erişebilirsiniz:
 
 ```csharp
 using Microsoft.Extensions.Configuration;
@@ -212,7 +212,7 @@ Daha fazla bilgi için bkz. [proxy sunucularıyla ve yük dengeleyicilerle çal�
 
 ::: zone pivot="platform-linux"
 
-## <a name="open-ssh-session-in-browser"></a>SSH oturumunu tarayıcıda aç
+## <a name="open-ssh-session-in-browser"></a>Tarayıcıda SSH oturumu açma
 
 [!INCLUDE [Open SSH session in browser](../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
@@ -228,6 +228,6 @@ Daha fazla bilgi için bkz. [proxy sunucularıyla ve yük dengeleyicilerle çal�
 ::: zone pivot="platform-linux"
 
 > [!div class="nextstepaction"]
-> [App Service Linux SSS](faq-app-service-linux.md)
+> [App Service Linux Hakkında SSS](faq-app-service-linux.md)
 
 ::: zone-end

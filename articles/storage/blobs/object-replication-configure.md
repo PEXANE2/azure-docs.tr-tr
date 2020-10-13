@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/15/2020
+ms.date: 10/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 48831a9482087dbeed0952cc30fcbc9c14fbaed0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0e42c8e22d004b574e65442f0fbdfce1c9bcabd7
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715628"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939434"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Blok Blobları için nesne çoğaltmasını yapılandırma
 
@@ -45,7 +45,7 @@ Hem kaynak hem de hedef depolama hesaplarına erişiminiz varsa, her iki hesap �
 
 Azure portal nesne çoğaltmasını yapılandırmadan önce, zaten mevcut değilse kaynak ve hedef kapsayıcıları ilgili depolama hesaplarında oluşturun. Ayrıca, blob sürüm oluşturmayı etkinleştirin ve kaynak hesapta akışı değiştirin ve hedef hesapta blob sürümü oluşturmayı etkinleştirin.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
 
 Azure portal, ilkeyi hedef hesap için yapılandırdıktan sonra kaynak hesapta otomatik olarak oluşturur.
 
@@ -272,7 +272,7 @@ Aşağıdaki örnek, *b* önekiyle eşleşen tek bir kuralla hedef hesapta bir �
 }
 ```
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
 
 Hedef hesapta nesne çoğaltmasını Azure portal bir JSON dosyası ile yapılandırmak için aşağıdaki adımları izleyin:
 
@@ -349,11 +349,45 @@ az storage account or-policy create \
 
 ---
 
+## <a name="check-the-replication-status-of-a-blob"></a>Bir Blobun çoğaltma durumunu denetleme
+
+Azure portal, PowerShell veya Azure CLı kullanarak kaynak hesabındaki bir Blobun çoğaltma durumunu kontrol edebilirsiniz. Çoğaltma tamamlanana veya başarısız olana kadar nesne çoğaltma özellikleri doldurulmuyor.
+
+# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
+
+Azure portal kaynak hesabındaki bir Blobun çoğaltma durumunu denetlemek için şu adımları izleyin:
+
+1. Azure portal kaynak hesabına gidin.
+1. Kaynak blobu içeren kapsayıcıyı bulun.
+1. Özelliklerini göstermek için blobu seçin. Blob başarıyla çoğaltılırsa, **nesne çoğaltma** bölümünde durumun *tamamlandı*olarak ayarlandığını görürsünüz. Bu kapsayıcının nesne çoğaltmasını yöneten kuralın çoğaltma ilkesi KIMLIĞI ve KIMLIĞI de listelenir.
+
+:::image type="content" source="media/object-replication-configure/check-replication-status-source.png" alt-text="Azure portal 'de çoğaltma kurallarını gösteren ekran görüntüsü":::
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Yok
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLı ile kaynak hesaptaki bir Blobun çoğaltma durumunu denetlemek için, aşağıdaki örnekte gösterildiği gibi, nesne çoğaltma **durumu** özelliğinin değerini alın:
+
+```azurecli
+az storage blob show \
+    --account-name <source-account-name> \
+    --container-name <source-container-name> \
+    --name <source-blob-name> \
+    --query 'objectReplicationSourceProperties[].rules[].status' \
+    --output tsv \
+    --auth-mode login
+```
+
+---
+
 ## <a name="remove-a-replication-policy"></a>Çoğaltma ilkesini kaldırma
 
 Bir çoğaltma ilkesini ve ilişkili kurallarını kaldırmak için Azure portal, PowerShell veya CLı kullanın.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
 
 Azure portal bir çoğaltma ilkesini kaldırmak için şu adımları izleyin:
 

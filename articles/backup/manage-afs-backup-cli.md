@@ -4,10 +4,10 @@ description: Azure Backup tarafından yedeklenen Azure dosya paylaşımlarını 
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.openlocfilehash: 44c095d58e2da5a74985ce216268aab15922ed1e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332755"
 ---
 # <a name="manage-azure-file-share-backups-with-the-azure-cli"></a>Azure CLı ile Azure dosya paylaşma yedeklemelerini yönetme
@@ -18,7 +18,7 @@ Azure CLı, Azure kaynaklarını yönetmek için bir komut satırı deneyimi sa�
 
 CLı 'yi yerel olarak yüklemek ve kullanmak için Azure CLı sürüm 2.0.18 veya üstünü çalıştırmanız gerekir. CLI sürümünü bulmak için şunu çalıştırın: `az --version`. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, zaten [Azure Backup](./backup-overview.md)tarafından yedeklenen bir Azure dosya paylaşımınız olduğu varsayılır. Bir tane yoksa, dosya paylaşımlarınız için yedeklemeyi yapılandırmak üzere [CLI Ile Azure dosya paylaşımlarını](backup-afs-cli.md) yedekleme bölümüne bakın. Bu makalede aşağıdaki kaynakları kullanırsınız:
 

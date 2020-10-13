@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 7f6be959bf09cbe20bb37dfa3d17d64467758bd6
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397904"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure Bilişsel Arama'daki Dizin Oluşturucular
@@ -88,7 +88,7 @@ Tam değerleri kaynaktan hedef alanlarla ilişkilendiren alan eşlemeleri gibi, 
 
 Sonraki görüntüde, Dizin Oluşturucu aşamaları için bir örnek Dizin Oluşturucu [hata ayıklama oturumu](cognitive-search-debug-session.md) temsili gösterilmektedir: belge çözme, alan eşlemeleri, Beceri yürütme ve çıkış alanı eşlemeleri.
 
-:::image type="content" source="media/search-indexer-overview/sample-debug-session.png" alt-text="örnek hata ayıklama oturumu" lightbox="media/search-indexer-overview/sample-debug-session.png":::
+:::image type="content" source="media/search-indexer-overview/sample-debug-session.png" alt-text="Dizin Oluşturucu aşamaları" lightbox="media/search-indexer-overview/sample-debug-session.png":::
 
 ## <a name="basic-configuration-steps"></a>Temel yapılandırma adımları
 

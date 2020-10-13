@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: e993e3086ac63a6e9d5b8372327e35016b36239f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91285171"
 ---
 # <a name="change-the-style-of-the-map"></a>Haritanın stilini değiştirme
@@ -101,7 +101,7 @@ Aşağıdaki görüntüde, düzen içinde gösterilen stil Seçici denetimi gös
 
 Aşağıdaki görüntüde, düzen içinde gösterilen stil Seçici denetimi gösterilmektedir `list` .
 
-:::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="Stil Seçici liste düzeni":::
+:::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="Stil Seçici simge düzeni":::
 
 > [!IMPORTANT]
 > Varsayılan olarak, stil Seçici denetimi Azure haritalar 'ın S0 fiyatlandırma katmanı altında bulunan tüm stilleri listeler. Bu listedeki stil sayısını azaltmak isterseniz, listede görünmesini istediğiniz stillerin bir dizisini `mapStyle` Stil seçicisinin seçeneğine geçirin. S1 kullanıyorsanız ve tüm kullanılabilir stilleri göstermek istiyorsanız, `mapStyles` Stil seçicisinin seçeneğini olarak ayarlayın `"all"` .

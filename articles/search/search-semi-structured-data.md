@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/25/2020
 ms.openlocfilehash: f501b9f4215b9eeb48aa8bc80d492d55cf940404
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397394"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>Öğretici: REST kullanarak Azure Storage 'dan JSON bloblarını dizine
@@ -76,11 +76,11 @@ Mümkünse, yakınlık ve yönetilebilirlik için aynı bölgede ve kaynak grubu
 
 1. Kapsayıcı oluşturulduktan sonra açın ve komut çubuğunda **karşıya yükle** ' yi seçin.
 
-   :::image type="content" source="media/search-semi-structured-data/upload-command-bar.png" alt-text="Komut çubuğuna yükle" border="false":::
+   :::image type="content" source="media/search-semi-structured-data/upload-command-bar.png" alt-text="Depolama hesabı oluştur" border="false":::
 
 1. Örnek dosyaları içeren klasöre gidin. Tümünü seçip **karşıya yükle**' ye tıklayın.
 
-   :::image type="content" source="media/search-semi-structured-data/clinicalupload.png" alt-text="Dosyaları karşıya yükleme" border="false":::
+   :::image type="content" source="media/search-semi-structured-data/clinicalupload.png" alt-text="Depolama hesabı oluştur" border="false":::
 
 Yükleme tamamlandıktan sonra dosyalar veri kapsayıcısında kendi alt klasöründe görünmelidir.
 
@@ -98,7 +98,7 @@ REST çağrıları için her istekte hizmet URL'sinin ve bir erişim anahtarın�
 
 1. **Ayarlar**  >  **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
-:::image type="content" source="media/search-get-started-postman/get-url-key.png" alt-text="HTTP uç noktası ve erişim anahtarı al" border="false":::
+:::image type="content" source="media/search-get-started-postman/get-url-key.png" alt-text="Depolama hesabı oluştur" border="false":::
 
 Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. İstek başına geçerli bir anahtara sahip olmak, isteği gönderen uygulama ve bunu işleyen hizmet arasında güven oluşturur.
 
@@ -110,7 +110,7 @@ Bu öğreticideki her çağrının istek yöntemleri **gönderi** ve **Get**' di
 
 Üst bilgiler ' de, "Content-Type" olarak ayarlayın `application/json` ve `api-key` Azure bilişsel arama hizmetinizin yönetim API anahtarı olarak ayarlayın. Üst bilgileri ayarladıktan sonra bu alýþtýrmadaki her istek için kullanabilirsiniz.
 
-  :::image type="content" source="media/search-get-started-postman/postman-url.png" alt-text="Postman istek URL 'SI ve üstbilgisi" border="false":::
+  :::image type="content" source="media/search-get-started-postman/postman-url.png" alt-text="Depolama hesabı oluştur" border="false":::
 
 URI 'Ler bir api sürümü belirtmeli ve her çağrının **oluşturulan bir 201**döndürmesi gerekir. JSON dizilerini kullanmak için genel olarak kullanılabilen api-Version vardır `2020-06-30` .
 
@@ -315,11 +315,11 @@ Bir dizin oluşturucu veri kaynağına bağlanır, verileri hedef arama dizinine
 
 1. `$select`Sonuçları daha az alanlarla sınırlamak için sorgu parametresini ekleyin: `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&$select=Gender,metadata_storage_size&api-version=2020-06-30&$count=true` .  Bu sorgu için 100 belge eşleşir, ancak varsayılan olarak Azure Bilişsel Arama yalnızca sonuçlarda 50 ' i döndürür.
 
-   :::image type="content" source="media/search-semi-structured-data/lastquery.png" alt-text="Parametre tabanlı sorgu" border="false":::
+   :::image type="content" source="media/search-semi-structured-data/lastquery.png" alt-text="Depolama hesabı oluştur" border="false":::
 
 1. Daha karmaşık sorguya örnek `$filter=MinimumAge ge 30 and MaximumAge lt 75` olarak, yalnızca en az bir parametre en az 30 ' a eşit veya daha büyük ve en az umage 75 ' den küçük olan sonuçları döndürür. `$select`İfadeyi `$filter` ifadesiyle değiştirin.
 
-   :::image type="content" source="media/search-semi-structured-data/metadatashort.png" alt-text="Yarı yapılandırılmış arama" border="false":::
+   :::image type="content" source="media/search-semi-structured-data/metadatashort.png" alt-text="Depolama hesabı oluştur" border="false":::
 
 Ayrıca, mantıksal işleçleri (ve, veya değil) ve karşılaştırma işleçlerini (EQ, ne, gt, lt, GE, Le) de kullanabilirsiniz. Dize karşılaştırmaları büyük/küçük harfe duyarlıdır. Daha fazla bilgi ve örnek için bkz. [basit sorgu oluşturma](search-query-simple-examples.md).
 
