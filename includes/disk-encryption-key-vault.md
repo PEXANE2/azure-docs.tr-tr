@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: 6f7f319d2ebb4cd39933addf04f249df02d7819f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 234aa602cccb90d130e4d4b6aca375726ca29f0d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81314107"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91989461"
 ---
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -148,7 +148,7 @@ Azure disk şifrelemesi, Anahtar Kasası gizli dizileri ve KEK URL 'Lerinin bir 
 Yeni bir KEK oluşturmak ve bunu Anahtar Kasanızda depolamak için Azure CLı [az keykasa Key Create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) komutunu kullanın.
 
 ```azurecli-interactive
-az keyvault key create --name "myKEK" --vault-name "<your-unique-keyvault-name>" --kty RSA-HSM
+az keyvault key create --name "myKEK" --vault-name "<your-unique-keyvault-name>" --kty RSA
 ```
 
 Bunun yerine, Azure CLı [az keykasa Key Import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) komutunu kullanarak bir özel anahtarı içeri aktarabilirsiniz:

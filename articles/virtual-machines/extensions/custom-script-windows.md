@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: e50c0b0fcb883b43650a5d99cea5aa39bae1cd94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0bb1e4cb9b24c9b46f623e1604930367b82a47eb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426274"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973827"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows için Özel Betik Uzantısı
 
@@ -48,7 +48,7 @@ Uzantıyı Azure Blob depolamaya erişmek için Azure Blob depolama kimlik bilgi
 
 ### <a name="internet-connectivity"></a>Internet bağlantısı
 
-GitHub veya Azure Storage gibi dışarıdan bir betiği indirmeniz gerekiyorsa, ek güvenlik duvarı ve ağ güvenlik grubu bağlantı noktalarının açılması gerekir. Örneğin, betiğinizin Azure Storage 'da bulunması halinde [depolama](../../virtual-network/security-overview.md#service-tags)için Azure NSG hizmet etiketlerini kullanarak erişime izin verebilirsiniz.
+GitHub veya Azure Storage gibi dışarıdan bir betiği indirmeniz gerekiyorsa, ek güvenlik duvarı ve ağ güvenlik grubu bağlantı noktalarının açılması gerekir. Örneğin, betiğinizin Azure Storage 'da bulunması halinde [depolama](../../virtual-network/network-security-groups-overview.md#service-tags)için Azure NSG hizmet etiketlerini kullanarak erişime izin verebilirsiniz.
 
 Betiğinizin yerel bir sunucu üzerinde olması, ek güvenlik duvarı ve ağ güvenlik grubu bağlantı noktalarının açık olması gerekebilir.
 
@@ -122,17 +122,17 @@ Bu öğeler gizli veriler olarak değerlendirilmeli ve uzantılar korumalı ayar
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Adı | Değer/örnek | Veri Türü |
+| Name | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| yayımcı | Microsoft.Compute | string |
-| tür | CustomScriptExtension | string |
+| yayımcı | Microsoft.Compute | dize |
+| tür | CustomScriptExtension | dize |
 | typeHandlerVersion | 1.10 | int |
 | Dosya URI 'leri (ör.) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
 | zaman damgası (ör.) | 123456789 | 32 bit tamsayı |
-| commandToExecute (ör.) | PowerShell-ExecutionPolicy Kısıtlamasız-dosya configure-music-app.ps1 | string |
-| storageAccountName (ör.) | örnek storageacct | string |
-| storageAccountKey (ör.) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | string |
+| commandToExecute (ör.) | PowerShell-ExecutionPolicy Kısıtlamasız-dosya configure-music-app.ps1 | dize |
+| storageAccountName (ör.) | örnek storageacct | dize |
+| storageAccountKey (ör.) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | dize |
 | Managedıdentity (ör.) | {} veya {"ClientID": "31b403aa-c364-4240-a7ff-d85fb6cd7232"} veya {"ObjectID": "12dd289c-0583-46e5-B9B4-115d5c19ef4b"} | JSON nesnesi |
 
 >[!NOTE]
@@ -344,7 +344,7 @@ Burada `<n>` , uzantının yürütmeleri arasında değişebilir bir ondalık ta
 
 `commandToExecute`Komutu yürütürken, uzantı bu dizini (örneğin, `...\Downloads\2` ) geçerli çalışma dizini olarak ayarlar. Bu işlem, özelliği aracılığıyla indirilen dosyaları bulmak için göreli yolların kullanılmasını sağlar `fileURIs` . Örnekler için aşağıdaki tabloya bakın.
 
-Mutlak indirme yolu zaman içinde farklılık gösterebileceğinden, mümkün olduğunda dizedeki göreli betik/dosya yollarını kabul etmek daha iyidir `commandToExecute` . Örneğin:
+Mutlak indirme yolu zaman içinde farklılık gösterebileceğinden, mümkün olduğunda dizedeki göreli betik/dosya yollarını kabul etmek daha iyidir `commandToExecute` . Örnek:
 
 ```json
 "commandToExecute": "powershell.exe . . . -File \"./scripts/myscript.ps1\""

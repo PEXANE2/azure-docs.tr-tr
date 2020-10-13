@@ -2,7 +2,7 @@
 title: PowerShell kullanarak Azure DS etki alanı Hizmetleri 'ni etkinleştirme | Microsoft Docs
 description: Azure AD PowerShell ve Azure PowerShell kullanarak Azure Active Directory Domain Services yapılandırmayı ve etkinleştirmeyi öğrenin.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: d4bc5583-6537-4cd9-bc4b-7712fdd9272a
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: sample
 ms.date: 10/02/2020
-ms.author: iainfou
+ms.author: joflore
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b43e546cc4f7a07462817080b287628df2af8a95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b2ea0806f70d9f99982b9d9af9c462ff0099966
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91704642"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967979"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>PowerShell kullanarak Azure Active Directory Domain Services etkinleştirme
 
@@ -27,7 +27,7 @@ Bu makalede, PowerShell kullanarak Azure AD DS nasıl etkinleştirileceği göst
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız vardır:
 

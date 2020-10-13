@@ -3,12 +3,12 @@ title: Azure VMware çözümü ayrılmış örneği ile maliyetleri kaydetme
 description: Azure VMware çözümü için ayrılmış bir örnek satın almayı öğrenin.
 ms.topic: how-to
 ms.date: 10/02/2020
-ms.openlocfilehash: a477b1730d70ec729a2be333b545b6faeb009998
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa354d4fbfef868ea1e6783656be7871669f200d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91492494"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951426"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Azure VMware çözümü ile maliyetleri kaydetme
 
@@ -22,7 +22,7 @@ Ayrılmış örnekler bazı özel durumlarla birlikte kullanılabilir.
 
 -   **Yetersiz kota**   -Tek/paylaşılan bir abonelik kapsamındaki bir ayırma, yeni ayrılmış örnek için abonelikte kullanılabilir Konaklar kotasına sahip olmalıdır. Bu sorunu çözmek için [Kota artışı isteği oluşturabilirsiniz](enable-azure-vmware-solution.md) .
 
--   **Teklif uygunluğu**-Microsoft Ile bir [Azure Kurumsal Anlaşma (EA)](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-agreements)gerekir   .
+-   **Teklif uygunluğu**-Microsoft Ile bir [Azure Kurumsal Anlaşma (EA)](../cost-management-billing/manage/ea-portal-agreements.md)gerekir   .
 
 -   **Kapasite kısıtlamaları**   Nadir koşullarda Azure, bir bölgedeki düşük kapasiteden dolayı Azure VMware Çözüm Konağı SKU 'Ları için yeni ayırmalar satın almayı sınırlandırır.
 

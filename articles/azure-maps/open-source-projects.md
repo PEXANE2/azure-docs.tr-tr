@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 94ba4b159e0a7e52603e7c200c11828f996cf6d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b45eea7a6c4bccbdc6669752255469174493ab55
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90090525"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938357"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure haritalar topluluk-açık kaynaklı projeler
 
@@ -39,8 +39,10 @@ Aşağıda, Azure Maps web SDK 'sının yeteneklerini genişleten açık kaynakl
 |-|-|
 | [Azure haritalar animasyon modülü](https://github.com/Azure-Samples/azure-maps-animations) | Azure Haritalar Web SDK 'Sı ile kullanmak için zengin bir animasyon kitaplığı. |
 | [Azure Maps coğrafi konum denetim modülü](https://github.com/Azure-Samples/azure-maps-geolocation-control) | Kullanıcının haritada konumunu bulmak için tarayıcının coğrafi konum API 'sini kullanan bir denetim sağlayan bir Azure Maps web SDK modülü. |
+| [Azure haritalar gridded veri kaynağı modülü](https://github.com/Azure-Samples/azure-maps-gridded-data-source) | Bir kılavuz alanının hücrelerine işaret eden bir veri kaynağı sağlayan Azure Maps web SDK için bir modül. Bu işlem, tesseller, veri atma veya onaltılık bölmeler gibi birçok adla da bilinir.  |
 | [Azure haritalar tam ekran denetim modülü](https://github.com/Azure-Samples/azure-maps-fullscreen-control) | Haritayı tam ekranda göstermek için bir denetim sağlayan bir Azure Maps web SDK modülü. |
 | [Azure haritalar seçim denetimi modülü](https://github.com/Azure-Samples/azure-maps-selection-control) | Çizim araçlarını kullanarak veya bir yol aralığı poligonu isteyerek veri kaynağındaki verileri seçmeye yönelik denetimler sağlayan bir Azure Maps web SDK modülü. |
+| [Azure haritalar çekme eşleme Modülü](https://github.com/Azure-Samples/azure-maps-swipe-map) | İki çakışan harita arasında kaydırmaya izin veren, iki çakışan veri kümesini karşılaştırmak için ideal olan Azure Maps web SDK modülü. |
 | [Azure haritalar eşitleme eşleme Modülü](https://github.com/Azure-Samples/azure-maps-sync-maps) | İki veya daha fazla harita kameralarını eşitleyen bir Azure Maps web SDK modülü. |
 | [Azure haritalar Hizmetleri Kullanıcı arabirimi modülü](https://github.com/Azure-Samples/azure-maps-services-ui) | Azure haritalar REST hizmetlerini çevrelediği Web UI denetimleri kümesi. |
 

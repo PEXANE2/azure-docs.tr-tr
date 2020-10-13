@@ -8,14 +8,16 @@ ms.topic: conceptual
 description: Azure Dev Spaces ve Azure Kubernetes hizmetlerini kullanarak iş sürekliliği sağlamanıza ve olağanüstü durum kurtarma için hazırlık yapmayı öğrenin
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 4e47d4b05dedb981d55c527f76ae1c3a120f23d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 824eb1e65e7da5736080e47509aa163a868d8ec9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86232432"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973147"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Azure Dev Spaces 'de iş sürekliliği ve olağanüstü durum kurtarma
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 ## <a name="review-disaster-recovery-guidance-for-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) için olağanüstü durum kurtarma kılavuzunu gözden geçirin
 

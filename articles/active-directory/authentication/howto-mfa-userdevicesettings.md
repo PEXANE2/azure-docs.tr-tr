@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/20/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49c389170e9d586a2001009226c6542d4d152f7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7705792e58a50371a11d0b733b36ffa325681045
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87418228"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968642"
 ---
 # <a name="manage-user-settings-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication için Kullanıcı ayarlarını yönetme
 
@@ -26,7 +26,7 @@ Azure Multi-Factor Authentication kullanıcılarının yönetilmesine yardımcı
 
 *Kimlik doğrulama Yöneticisi* rolünü atadıysanız, kullanıcıların kendi parolalarını SıFıRLAMALARıNı, MFA için yeniden kaydolmayı veya mevcut MFA oturumlarını kullanıcı nesnesinden iptal etmeyi zorunlu kılabilirsiniz. Kullanıcı ayarlarını yönetmek için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol tarafta **Azure Active Directory** > **Kullanıcılar** > **Tüm kullanıcılar**'ı seçin.
 1. Üzerinde bir eylem gerçekleştirmek istediğiniz kullanıcıyı seçin ve **kimlik doğrulama yöntemleri**' ni seçin. Pencerenin üst kısmında, Kullanıcı için aşağıdaki seçeneklerden birini belirleyin:
    - **Parola sıfırlama** Kullanıcı parolasını sıfırlar ve sonraki oturum açma sırasında değiştirilmesi gereken geçici bir parola atar.
@@ -45,7 +45,7 @@ Gerekirse, bir kullanıcının oluşturduğu tüm uygulama parolalarını silebi
 
 Bir kullanıcının uygulama parolalarını silmek için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol tarafta **Azure Active Directory**  >  **Kullanıcılar**  >  **tüm kullanıcılar**' ı seçin.
 1. **Multi-Factor Authentication**'ı seçin. Bu menü seçeneğini görmek için sağa kaydırmanız gerekebilir. Tam Azure portal pencere ve menü konumunu görmek için aşağıdan örnek ekran görüntüsünü seçin: [ ![ Azure AD 'de kullanıcılar penceresinden Multi-Factor Authentication seçin.](media/howto-mfa-userstates/selectmfa-cropped.png)](media/howto-mfa-userstates/selectmfa.png#lightbox)
 1. Yönetmek istediğiniz kullanıcı veya kullanıcıların yanındaki kutuyu işaretleyin. Sağ tarafta hızlı adım seçeneklerinin bir listesi görüntülenir.

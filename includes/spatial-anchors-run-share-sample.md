@@ -4,17 +4,22 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 8/27/2020
 ms.author: rgarcia
-ms.openlocfilehash: efd5ff494620d4fab3fb904d9bcf054b57a3290b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50e4799f09322eab05b4f8ddf7004c2e0078fdab
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358829"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971498"
 ---
 ## <a name="android"></a>[Android](#tab/Android)
 
 Java Android örneği cihazlar arasında paylaşmayı destekler.
-Dosyayı `SharedActivity.java` Android Studio içindeki Samples klasöründen açın. Önceki adımda elde ettiğiniz URL 'yi (ASP.NET Web uygulaması Azure dağıtımından) dosyadaki değeri olarak girin `SharingAnchorsServiceUrl` `SharedActivity.java` . `index.html`URL içindeki öğesini ile değiştirin `api/anchors` . Şöyle görünmelidir: `https://<app_name>.azurewebsites.net/api/anchors` .
+
+Android Studio ' de, Samples klasöründen *Sharedactivity. Java* dosyasını açın. 
+
+Önceki adımda kopyaladığınız URL 'YI (ASP.NET Web uygulaması Azure dağıtımından) `SharingAnchorsServiceUrl` *sharedactivity. Java* dosyasındaki değeri olarak girin. 
+
+`index.html`URL içindeki öğesini ile değiştirin `api/anchors` . Şöyle görünmelidir: `https://<app_name>.azurewebsites.net/api/anchors` .
 
 [!INCLUDE [Run shared sample](spatial-anchors-deploy-sample.md)]
 
@@ -23,16 +28,28 @@ Dosyayı `SharedActivity.java` Android Studio içindeki Samples klasöründen a�
 ## <a name="ios"></a>[iOS](#tab/iOS)
 
 Amaç-C iOS örneği, cihazlar arasında paylaşmayı destekler.
-Dosyayı `SharedDemoViewController.m` Samples klasöründe açın. Önceki adımda elde ettiğiniz URL 'yi (ASP.NET Web uygulaması Azure dağıtımından) dosyadaki değeri olarak girin `SharingAnchorsServiceUrl` `SharedDemoViewController.m` . `index.html`URL içindeki öğesini ile değiştirin `api/anchors` . Şöyle görünmelidir: `https://<app_name>.azurewebsites.net/api/anchors` .
 
-Uygulamayı cihazınıza dağıtın. Uygulama başladıktan sonra, **paylaşılan tanıtım tanıtımı ' nı başlatmak Için dokunun** seçeneğini belirleyin. Uygulamadaki yönergeleri izleyin. Bağlantı noktası **numarasını bulmak Için dokunun '** **ı veya bağlayıcı oluşturmak ve hizmete kaydetmek için dokunun**seçeneğini belirleyebilirsiniz.
+Samples klasöründeki *Shareddemoviewcontroller. d* dosyasını açın. 
+
+Önceki adımda edindiğiniz URL 'YI (ASP.NET Web uygulaması Azure dağıtımından) `SharingAnchorsServiceUrl` *Shareddemoviewcontroller. d* dosyasında için değer olarak girin. 
+
+`index.html`URL içindeki öğesini ile değiştirin `api/anchors` . Şöyle görünmelidir: `https://<app_name>.azurewebsites.net/api/anchors` .
+
+Uygulamayı cihazınıza dağıtın. 
+
+Uygulama başladıktan sonra, **paylaşılan tanıtım ' i başlatmak Için dokunun** seçeneğini belirleyin ve ardından uygulamadaki yönergeleri izleyin. Bağlantı noktası **numarasını bulmak Için dokunun '** **ı veya bağlayıcı oluşturmak ve hizmete kaydetmek için dokunun**seçeneğini belirleyebilirsiniz.
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
 ## <a name="xamarin"></a>[Xamarin](#tab/Xamarin)
 
 Hem Xamarin Android hem de iOS örnekleri cihazlar arasında paylaşmayı destekler.
-Dosyayı `AccountDetails.cs` Samples klasöründe açın. Önceki adımda elde ettiğiniz URL 'yi (ASP.NET Web uygulaması Azure dağıtımından) dosyadaki değeri olarak girin `AnchorSharingServiceUrl` `AccountDetails.cs` . `index.html`URL içindeki öğesini ile değiştirin `api/anchors` . Şöyle görünmelidir: `https://<app_name>.azurewebsites.net/api/anchors` .
+
+Samples klasöründe *AccountDetails.cs* dosyasını açın. 
+
+Önceki adımda elde ettiğiniz URL 'YI (ASP.NET Web uygulaması Azure dağıtımından) `AnchorSharingServiceUrl` *AccountDetails.cs* dosyasındaki değeri olarak girin. 
+
+`index.html`URL içindeki öğesini ile değiştirin `api/anchors` . Şöyle görünmelidir: `https://<app_name>.azurewebsites.net/api/anchors` .
 
 [!INCLUDE [Run shared sample](spatial-anchors-deploy-sample.md)]
 
@@ -52,21 +69,23 @@ Dosyayı `AccountDetails.cs` Samples klasöründe açın. Önceki adımda elde e
 
 [!INCLUDE [Configure Unity Scene](spatial-anchors-unity-configure-scene.md)]
 
-**Proje** bölmesinde öğesine gidin `Assets\AzureSpatialAnchors.Examples\Resources` . `SpatialAnchorSamplesConfig` öğesini seçin. Ardından, **Inspector** bölmesinde, `Sharing Anchors Service url` ile değiştirme için değeri olarak (ASP.NET Web App Azure dağıtımından) değerini girin `Base Sharing Url` `index.html` `api/anchors` . Şöyle görünmelidir: `https://<app_name>.azurewebsites.net/api/anchors` .
+**Proje** bölmesinde öğesine gidin `Assets\AzureSpatialAnchors.Examples\Resources` . 
+
+**SpatialAnchorSamplesConfig**öğesini seçin. Ardından, **Inspector** bölmesinde, `Sharing Anchors Service` için değer olarak URL 'yi (ASP.NET Web App Azure dağıtımından) girin `Base Sharing Url` . `index.html` yerine `api/anchors` yazın. Şöyle görünmelidir: `https://<app_name>.azurewebsites.net/api/anchors` .
 
 **Dosya**Kaydet ' i seçerek sahneyi kaydedin  >  **Save**.
 
 ## <a name="deploy-to-your-device"></a>Cihazınıza dağıtma
 
-### <a name="deploy-to-android-device"></a>Android cihazına dağıtma
+### <a name="deploy-to-an-android-device"></a>Android cihazına dağıtma
 
 Android cihazınızda oturum açın ve USB kablosu kullanarak bilgisayarınıza bağlayın.
 
 **Dosya**derleme ayarları ' nı seçerek **derleme ayarlarını** açın  >  **Build Settings**.
 
-**Yapı**' ın altında, tüm sahnelerin yanında onay işareti olduğundan emin olun.
+**Derlemede sahne**' ın altında, her sahnenin yanında bir onay işareti olduğundan emin olun.
 
-**Dışarı aktarma projesinin** onay işareti olmadığından emin olun. **Oluştur ve Çalıştır ' ı**seçin. Dosyanızı kaydetmeniz istenecektir `.apk` . Bunun için herhangi bir ad seçebilirsiniz.
+**Dışarı aktarma projesinin** onay işareti olmadığından emin olun. **Oluştur ve Çalıştır ' ı**seçin. *. Apk* dosyanızı kaydetmeniz istenecektir. Bunun için herhangi bir ad seçebilirsiniz.
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
@@ -74,7 +93,7 @@ Android cihazınızda oturum açın ve USB kablosu kullanarak bilgisayarınıza 
 
 **Dosya**derleme ayarları ' nı seçerek **derleme ayarlarını** açın  >  **Build Settings**.
 
-**Yapı**' ın altında, tüm sahnelerin yanında onay işareti olduğundan emin olun.
+**Derlemede sahne**' ın altında, her sahnenin yanında bir onay işareti olduğundan emin olun.
 
 [!INCLUDE [Configure Xcode](spatial-anchors-unity-ios-xcode.md)]
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: mimckitt
-ms.openlocfilehash: f3ddf0491c31ded6983df9da724e9321775bd1d3
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 2d6ce99104b649ea75651692622623d1a6236e75
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945235"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968880"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Genel amaçlı sanal makine boyutları
 
@@ -31,7 +31,7 @@ Genel amaçlı VM boyutları dengeli CPU-bellek oranını sağlar. Test ve geli�
 
 - [Dv4 ve Dsv4 serisi](dv4-dsv4-series.md) Dv4 ve Dsv4 serisi, bir hiper iş yüklerinin çoğu için daha iyi bir değer teklifi sağlayan, bir hiper iş yükü yapılandırmasında Intel® Xeon® Platinum 8272CL (Cascade Lake) işlemcileri üzerinde çalışır. 3,4 GHz 'nin tüm çekirdek Turbo saat hızına sahiptir.
 
-- [Ddv4 ve Ddsv4 serisi](ddv4-ddsv4-series.md) Ddv4 ve Ddsv4 serisi, &reg; &reg; bir hiper iş yükleri için daha iyi bir değer teklifi sağlayan, bir hiper iş parçacığı yapılandırmasındaki Intel Xeon Platinum 8272CL (Cascade Lake) işlemcilerde çalışır. 3,4 GHz, [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) ve [Intel &reg; Advanced Vector Extensions 512 (Intel &reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)tüm Core Turbo saat hızına sahiptir. Ayrıca [Intel &reg; derin öğrenme artışı](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html)de desteklenir. Bu yeni VM boyutları %50 daha büyük yerel depolamaya sahip olacak ve [Gen2 VM 'leri](./linux/generation-2.md)ile [Dv3/Dsv3](./dv3-dsv3-series.md) boyutlarına kıyasla hem okuma hem de yazma için daha iyi yerel disk IOPS olacaktır.
+- [Ddv4 ve Ddsv4 serisi](ddv4-ddsv4-series.md) Ddv4 ve Ddsv4 serisi, &reg; &reg; bir hiper iş yükleri için daha iyi bir değer teklifi sağlayan, bir hiper iş parçacığı yapılandırmasındaki Intel Xeon Platinum 8272CL (Cascade Lake) işlemcilerde çalışır. 3,4 GHz, [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) ve [Intel &reg; Advanced Vector Extensions 512 (Intel &reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)tüm Core Turbo saat hızına sahiptir. Ayrıca [Intel &reg; derin öğrenme artışı](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html)de desteklenir. Bu yeni VM boyutları %50 daha büyük yerel depolamaya sahip olacak ve [Gen2 VM 'leri](./generation-2.md)ile [Dv3/Dsv3](./dv3-dsv3-series.md) boyutlarına kıyasla hem okuma hem de yazma için daha iyi yerel disk IOPS olacaktır.
 
 - [Dv3 ve Dsv3 serisi](dv3-dsv3-series.md) VM 'Ler 2. nesil Intel® Xeon® Platinum 8272CL (Cascade Lake) üzerinde çalışır, bir hiper iş yükleri için daha iyi bir değer teklifi sağlayan Intel® Xeon® 8171M 2.1 GHz (ufuk Gölü), Intel® Xeon® E5-2673 v4 2,3 GHz (çok Iyi) veya Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri. Bellek ve ağ sınırları, hiper iş parçacığına geçme ile hizalanmak üzere bir çekirdek temelinde ayarlanırken, bellek (~ 3,5 GiB/vCPU 'dan 4 GiB/vCPU 'ya) genişletildi. Dv3 serisi artık D/dv2-Series ' in yüksek bellek sanal makine boyutlarına sahiptir; bunlar bellek için iyileştirilmiş [Ev3 ve Esv3-serisine](ev3-esv3-series.md)taşınmıştır.
 

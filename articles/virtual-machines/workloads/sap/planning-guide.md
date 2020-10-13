@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8884711bbb32054ca1d8e4d9f9e7dee753f0c629
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63378369b9924f01c5d0217746a8a2c330c88631
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361934"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970631"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineleri planlama ve uygulama
 
@@ -486,18 +486,18 @@ Fiyatlandırma modeli olarak, aşağıda gösterildiği gibi çeşitli farklı f
 Farklı hizmet sunan farklı hizmet tekliflerindeki her birinin fiyatlandırması, site [Linux sanal makineleri fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) ve [Windows sanal makineleri fiyatlandırmasında](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)kullanılabilir. Bir yıl ve üç yıllık ayrılmış örnek için Ayrıntılar ve esneklik için şu makalelere bakın:
 
 - [Azure Ayrılmış Sanal Makine Örnekleri nedir?](../../../cost-management-billing/reservations/save-compute-costs-reservations.md)
-- [Ayrılmış VM Örnekleriyle sanal makine boyutu esnekliği](../../windows/reserved-vm-instance-size-flexibility.md)
+- [Ayrılmış VM Örnekleriyle sanal makine boyutu esnekliği](../../reserved-vm-instance-size-flexibility.md)
 - [Azure rezervasyon indirimini sanal makinelere uygulama](../../../cost-management-billing/manage/understand-vm-reservation-charges.md)
 
 Spot fiyatlandırma hakkında daha fazla bilgi için [Azure spot sanal makineler](https://azure.microsoft.com/pricing/spot/)makalesini okuyun. Aynı VM türünün fiyatlandırması farklı Azure bölgeleri arasında da farklı olabilir. Bazı müşteriler için daha az maliyetli bir Azure bölgesine dağıtılması gerekir.
 
-Ayrıca, Azure adanmış bir konağın kavramlarını da sunmaktadır. Adanmış konak kavramı, Azure tarafından gerçekleştirilen düzeltme eki uygulama döngülerinde daha fazla denetim sağlar. Düzeltme eki uygulama, kendi zamanlamalarınız doğrultusunda zaman alabilir. Bu teklif, müşterileri normal iş yükü döngüsünü izleyemeyebilir iş yüküne yönelik olarak hedefler. Azure ayrılmış ana bilgisayar teklifleri kavramlarını okumak için, [Azure adanmış ana bilgisayar](../../windows/dedicated-hosts.md)makalesini okuyun. Bu teklifin kullanılması SAP iş yükü için desteklenir ve altyapı ve Microsoft 'un nihai bakım planları üzerinde daha fazla denetime sahip olmak isteyen çeşitli SAP müşterileri tarafından kullanılır. Microsoft 'un sanal makineleri barındıran Azure altyapısını nasıl koruduğu ve düzeltme eklerinin bulunduğu hakkında daha fazla bilgi için, [Azure 'da sanal makineler Için bakım](../../maintenance-and-updates.md)makalesini okuyun.
+Ayrıca, Azure adanmış bir konağın kavramlarını da sunmaktadır. Adanmış konak kavramı, Azure tarafından gerçekleştirilen düzeltme eki uygulama döngülerinde daha fazla denetim sağlar. Düzeltme eki uygulama, kendi zamanlamalarınız doğrultusunda zaman alabilir. Bu teklif, müşterileri normal iş yükü döngüsünü izleyemeyebilir iş yüküne yönelik olarak hedefler. Azure ayrılmış ana bilgisayar teklifleri kavramlarını okumak için, [Azure adanmış ana bilgisayar](../../dedicated-hosts.md)makalesini okuyun. Bu teklifin kullanılması SAP iş yükü için desteklenir ve altyapı ve Microsoft 'un nihai bakım planları üzerinde daha fazla denetime sahip olmak isteyen çeşitli SAP müşterileri tarafından kullanılır. Microsoft 'un sanal makineleri barındıran Azure altyapısını nasıl koruduğu ve düzeltme eklerinin bulunduğu hakkında daha fazla bilgi için, [Azure 'da sanal makineler Için bakım](../../maintenance-and-updates.md)makalesini okuyun.
 
 #### <a name="generation-1-and-generation-2-virtual-machines"></a>1. nesil ve 2. nesil sanal makineler
-Microsoft 'un Hiper Yöneticisi iki farklı nesil sanal makineyi işleyebilir. Bu biçimler 1. **kuşak** ve **2. nesil**olarak adlandırılır. **2. nesil** Windows Server 2012 hiper yönetici ile 2012 yılında sunulmuştur. Azure, 1. nesil sanal makineler kullanarak başladı. Azure sanal makinelerini dağıtırken, varsayılan olarak 1. kuşak biçimini kullanmaya devam etmektedir. Ayrıca 2. nesil VM biçimlerini de dağıtabilirsiniz. [Azure üzerinde 2. nesil VM 'ler Için destek](../../windows/generation-2.md) makalesinde 2. nesil VM olarak DAĞıTıLABILECEK Azure VM aileleri listelenir. Bu makalede ayrıca, 2. nesil sanal makinelerin Hyper-V özel bulutu ve Azure üzerinde çalıştırılabilen önemli işlevsel farklılıkları listelenmektedir. Daha önemli bu makalede, 1. nesil sanal makineler ve 2. nesil VM 'Ler arasındaki işlevsel farklılıklar Azure 'da çalıştırılanlar için de listelenmiştir.
+Microsoft 'un Hiper Yöneticisi iki farklı nesil sanal makineyi işleyebilir. Bu biçimler 1. **kuşak** ve **2. nesil**olarak adlandırılır. **2. nesil** Windows Server 2012 hiper yönetici ile 2012 yılında sunulmuştur. Azure, 1. nesil sanal makineler kullanarak başladı. Azure sanal makinelerini dağıtırken, varsayılan olarak 1. kuşak biçimini kullanmaya devam etmektedir. Ayrıca 2. nesil VM biçimlerini de dağıtabilirsiniz. [Azure üzerinde 2. nesil VM 'ler Için destek](../../generation-2.md) makalesinde 2. nesil VM olarak DAĞıTıLABILECEK Azure VM aileleri listelenir. Bu makalede ayrıca, 2. nesil sanal makinelerin Hyper-V özel bulutu ve Azure üzerinde çalıştırılabilen önemli işlevsel farklılıkları listelenmektedir. Daha önemli bu makalede, 1. nesil sanal makineler ve 2. nesil VM 'Ler arasındaki işlevsel farklılıklar Azure 'da çalıştırılanlar için de listelenmiştir.
 
 > [!NOTE]
-> Azure 'da çalışan 1. nesil ve 2. nesil VM 'lerin işlevsel farklılıkları vardır. Bu farklılıkların bir listesini görmek için  [Azure 'da 2. nesil VM 'ler Için destek](../../windows/generation-2.md) makalesini okuyun.
+> Azure 'da çalışan 1. nesil ve 2. nesil VM 'lerin işlevsel farklılıkları vardır. Bu farklılıkların bir listesini görmek için  [Azure 'da 2. nesil VM 'ler Için destek](../../generation-2.md) makalesini okuyun.
 
 Var olan bir VM 'yi bir nesle başka bir nesle taşımak mümkün değildir. Sanal makine üretimini değiştirmek için, oluşturma işlemi için gereken yeni bir VM 'yi dağıtmanız ve neslin sanal makinesinde çalıştırdığınız yazılımı yeniden yüklemeniz gerekir. Bu değişiklik yalnızca VM 'nin temel VHD görüntüsünü etkiler ve veri diskleri veya bağlı NFS ya da SMB paylaşımlarını etkilemez. Örneğin, 1. nesil bir VM 'de, başlangıçta atanan veri diskleri, NFS veya SMB paylaşımları.
 
@@ -767,7 +767,7 @@ Microsoft Azure, VM 'Leri ve ilişkili diskleri dağıtmanın birden çok yolunu
 
 Belirli bir SAP sistemini Şirket içinden Azure 'a taşımayı planlarsınız. Bu işlem, işletim sistemini, SAP Ikililerini ve DBMS ikililerini içeren VHD 'yi, DBMS 'nin veri ve günlük dosyalarıyla Azure 'a karşıya yükleyerek yapılabilir. [Aşağıdaki senaryo #2][planning-guide-5.1.2]aksine, Azure VM 'de ana bilgisayar adı, SAP SID 'SI ve SAP Kullanıcı hesaplarını şirket içi ortamda yapılandırıldıklarında saklayın. Bu nedenle, görüntüyü genelleştirerek gerekli değildir. Şirket içi hazırlama adımları ve genelleştirilmiş VM 'Ler ya da VHD 'lerin Azure 'a yüklenmesi için, [BIR VM 'yi Şirket içinden bu belgenin Genelleştirilmiş olmayan bir disketiyle Azure 'a taşımaya yönelik bölüm hazırlama][planning-guide-5.2.1] bölümüne bakın. Bölüm senaryosunu okuyun 3: Azure 'da böyle bir görüntüyü dağıtmanın ayrıntılı adımları için [dağıtım KıLAVUZUNDA][deployment-guide] [SAP Ile GENELLEŞTIRILMIŞ bir Azure VHD kullanarak bir VM 'Yi Şirket içinden taşıma][deployment-guide-3.4] .
 
-Bu kılavuzda ayrıntılı olarak açıklanmayacak başka bir seçenek, SAP NetWeaver uygulama sunucularını ve SAP NetWeaver merkezi hizmetlerini Azure 'a çoğaltmak için Azure Site Recovery kullanmaktır. Veritabanı katmanı için Azure Site Recovery kullanmanız önerilmez ve HANA sistem çoğaltması gibi veritabanına özgü çoğaltma mekanizmalarını kullanın. Daha fazla bilgi için bkz. Şirket [içi uygulamalar için olağanüstü durum kurtarma hakkında](https://docs.microsoft.com/azure/site-recovery/site-recovery-workload) bilgi için bkz. bölüm [koruma](https://docs.microsoft.com/azure/site-recovery/site-recovery-workload#protect-sap) .
+Bu kılavuzda ayrıntılı olarak açıklanmayacak başka bir seçenek, SAP NetWeaver uygulama sunucularını ve SAP NetWeaver merkezi hizmetlerini Azure 'a çoğaltmak için Azure Site Recovery kullanmaktır. Veritabanı katmanı için Azure Site Recovery kullanmanız önerilmez ve HANA sistem çoğaltması gibi veritabanına özgü çoğaltma mekanizmalarını kullanın. Daha fazla bilgi için bkz. Şirket [içi uygulamalar için olağanüstü durum kurtarma hakkında](../../../site-recovery/site-recovery-workload.md) bilgi için bkz. bölüm [koruma](../../../site-recovery/site-recovery-workload.md#protect-sap) .
 
 #### <a name="deploying-a-vm-with-a-customer-specific-image"></a><a name="e18f7839-c0e2-4385-b1e6-4538453a285c"></a>Müşteriye özgü bir görüntüyle VM dağıtma
 
@@ -1805,7 +1805,7 @@ Sanal makinelerinizin kullanılabilirliğini etkileyebilecek iki tür Azure plat
 * Planlı bakım olayları, Microsoft tarafından, sanal makinelerinizin üzerinde çalıştığı platform altyapısının genel güvenilirlik, performans ve güvenliğini geliştirmek amacıyla temel alınan Azure platformunda yapılan düzenli güncelleştirmelerdir.
 * Plansız bakım olayları, sanal makinenizin altında yatan donanım ya da fiziksel altyapı bir şekilde arıza yaptığında gerçekleştirilir. Buna yerel ağ hataları, yerel disk hataları veya raf düzeyinde diğer hatalar dahildir. Böyle bir hata algılandığında, Azure platformu sanal makinenizi sanal makinenizi barındıran uygun olmayan fiziksel sunucudan sağlıklı fiziksel bir sunucuya otomatik olarak geçirilir. Bu tür olaylar nadirdir, ancak sanal makinenizin yeniden başlatılmasına da neden olabilir.
 
-Daha fazla ayrıntı için bkz. [Azure 'Da Windows sanal makinelerinin kullanılabilirliği](../../windows/manage-availability.md) ve [Linux sanal makinelerinin Azure 'da kullanılabilirliği](../../linux/manage-availability.md).
+Daha fazla ayrıntı için bkz. [Azure 'Da Windows sanal makinelerinin kullanılabilirliği](../../manage-availability.md) ve [Linux sanal makinelerinin Azure 'da kullanılabilirliği](../../manage-availability.md).
 
 #### <a name="azure-storage-redundancy"></a>Azure depolama artıklığı
 
