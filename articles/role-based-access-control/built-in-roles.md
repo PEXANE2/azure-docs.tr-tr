@@ -10,10 +10,10 @@ ms.author: rolyon
 ms.date: 09/22/2020
 ms.custom: generated
 ms.openlocfilehash: f5d5b4f801dd406518a6ba516bf2e38e01cb96ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91275277"
 ---
 # <a name="azure-built-in-roles"></a>Azure yerleşik rolleri
@@ -27,7 +27,7 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 ## <a name="all"></a>Tümü
 
 > [!div class="mx-tableFixed"]
-> | Yerleşik rol | Description | ID |
+> | Yerleşik rol | Açıklama | ID |
 > | --- | --- | --- |
 > | **Genel** |  |  |
 > | [Katkıda Bulunan](#contributor) | Tüm kaynakları yönetmek için tam erişim verir, ancak Azure RBAC 'de roller atamanıza izin vermez. | b24988ac-6180-42a0-ab88-20f7382dd24c |
@@ -115,13 +115,13 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 > | [Log Analytics Okuyucusu](#log-analytics-reader) | Log Analytics okuyucu tüm izleme verilerini görüntüleyip arayabilir ve tüm Azure kaynaklarında Azure tanılama 'nın yapılandırılmasını görüntüleme dahil olmak üzere izleme ayarlarını görüntüleyebilir. | 73c42c96-874c-492b-b04d-ab87d138a893 |
 > | [Şema kayıt defterine katkıda bulunan (Önizleme)](#schema-registry-contributor-preview) | Şema kayıt defteri gruplarını ve şemalarını okuyun, yazın ve silin. | 5dffeca3-4936-4216-b2bc-10343a5abb25 |
 > | [Şema kayıt defteri okuyucusu (Önizleme)](#schema-registry-reader-preview) | Şema kayıt defteri gruplarını ve şemaları okuyun ve listeleyin. | 2c56ea50-C6B3-40a6-83c0-9d98858bc7d2 |
-> | **Blok Zinciri** |  |  |
+> | **Blok zinciri** |  |  |
 > | [Blok zinciri üye düğümü erişimi (Önizleme)](#blockchain-member-node-access-preview) | Blok zinciri üye düğümlerine erişim sağlar | 31a002a1-acaf-453E-8a5b-297c9ca1ea24 |
 > | **AI + makine öğrenimi** |  |  |
 > | [Bilişsel hizmetler Katılımcısı](#cognitive-services-contributor) | Bilişsel hizmetler için anahtar oluşturma, okuma, güncelleştirme, silme ve yönetme olanağı sağlar. | 25fbc0a9-bd7c-42A3-aa1a-3b75d497ee68 |
 > | [Bilişsel hizmetler veri okuyucu (Önizleme)](#cognitive-services-data-reader-preview) | Bilişsel hizmetler verilerini okumanızı sağlar. | b59867f0-fa02-499b-be73-45a86b5b3e1c |
 > | [Bilişsel hizmetler kullanıcısı](#cognitive-services-user) | Bilişsel hizmetler 'in anahtarlarını okuyup listelemenizi sağlar. | a97b65f3-24c7-4388-baec-2e87135dc908 |
-> | **Karma Gerçeklik** |  |  |
+> | **Karma gerçeklik** |  |  |
 > | [Uzaktan Işleme Yöneticisi](#remote-rendering-administrator) | Azure uzaktan Işleme için kullanıcıya dönüştürme, oturum yönetme, işleme ve Tanılama özelliklerini sağlar | 3df8b902-2a6f-47c7-8cc5-360e9b272a7e |
 > | [Uzaktan Işleme Istemcisi](#remote-rendering-client) | Azure uzaktan Işleme için Kullanıcı yönetme, işleme ve tanılama özellikleri sağlar. | d39065c4-c120-43c9-ab0a-63eed9795f0a |
 > | [Uzamsal bağlayıcı hesabı Katılımcısı](#spatial-anchors-account-contributor) | Hesabınızdaki uzamsal bağlantıları yönetmenizi sağlar, ancak onları silmez | 8bbe83f1-e2a6-4df7-8cb4-4e04d4e5c827 |
@@ -4602,7 +4602,7 @@ Log Analytics okuyucu tüm izleme verilerini görüntüleyip arayabilir ve tüm 
 }
 ```
 
-## <a name="blockchain"></a>Blok Zinciri
+## <a name="blockchain"></a>Blok zinciri
 
 
 ### <a name="blockchain-member-node-access-preview"></a>Blok zinciri üye düğümü erişimi (Önizleme)
@@ -7252,7 +7252,7 @@ Azure Laboratuvar hesaplarınız altında yeni laboratuvarlar oluşturmanızı s
 }
 ```
 
-## <a name="monitor"></a>İzleyici
+## <a name="monitor"></a>İzleme
 
 
 ### <a name="application-insights-component-contributor"></a>Application Insights bileşeni Katılımcısı

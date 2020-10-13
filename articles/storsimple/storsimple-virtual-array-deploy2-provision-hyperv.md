@@ -16,10 +16,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d6dfc95820e911781ffa88e2207601703f165839
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87070595"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>StorSimple Sanal dizisi dağıtma-Hyper-V içinde sağlama
@@ -168,11 +168,11 @@ Sanal dizinizi başlatmak ve buna bağlanmak için aşağıdaki adımları gerç
    ![Oturum açma kutusunda belirsiz karakterler gösteren vSphere istemci konsolu sekmesinin ekran görüntüsü.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image23.png)
 4. Güvenlik nedeniyle cihazın yönetici parolasının ilk oturum açma işleminin ardından değiştirilmesi gerekir. Parolayı değiştirmeniz istenir.
 
-   ![VSphere istemci konsolu sekmesinin ekran görüntüsü. sayfadaki metin parolanın değiştirilmesi gerektiğini belirtir.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image24.png)
+   ![VSphere istemci konsolu sekmesinin ekran görüntüsü. Sayfadaki metin parolanın değiştirilmesi gerektiğini belirtir.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image24.png)
 
    En az 8 karakterden oluşan bir parola girin. Parolanın şu 4 gereksinimden en az 3 tanesini karşılaması gerekir: büyük harf, küçük harf, rakam ve özel karakter. Onaylamak için parolayı yeniden girin. Parolanın değiştirildiği bildirilir.
 
-   ![VSphere istemci konsolu sekmesinin ekran görüntüsü. sayfadaki metin parolanın değiştiğini belirtir.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image25.png)
+   ![VSphere istemci konsolu sekmesinin ekran görüntüsü. Sayfadaki metinde parolanın değiştiği belirtilir.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image25.png)
 5. Parola başarıyla değiştirildikten sonra, sanal dizi yeniden başlatılabilir. Cihazın başlatılmasını bekleyin.
 
    ![Ana StorSimpleAdmin sayfasının ekran görüntüsü. Sayfadaki metin, kullanıcıdan sistem olay bildirimi hizmetini beklemesini ister.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image26.png)
@@ -187,12 +187,12 @@ Sanal dizinizi başlatmak ve buna bağlanmak için aşağıdaki adımları gerç
     Sonra, ağı yapılandırın.
 7. `Get-HcsIpAddress`Sanal diziniz üzerinde etkin olan ağ arabirimlerini listelemek için komutunu kullanın. Cihazınızda tek bir ağ arabirimi varsa `Ethernet` varsayılan adı atanır.
 
-   ![Get-Hcsıpaddress komutunun çıkışıyla bir konsol penceresi gösteren ekran görüntüsü. "Ethernet", cihazın adı olarak listelenir.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image29m.png)
+   ![Get-HcsIpAddress komutunun çıkışıyla bir konsol penceresi gösteren ekran görüntüsü. "Ethernet", cihazın adı olarak listelenir.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image29m.png)
 8. Ağı yapılandırmak için `Set-HcsIpAddress` cmdlet'ini kullanın. Aşağıdaki örneğe bakın:
 
     `Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
 
-    ![Get-Help set-Hcsıpaddress komutunun çıkışıyla birlikte bir konsol penceresi gösteren ekran görüntüsü ve set-Hcsıpaddress komutunun doğru kullanımı.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image30.png)
+    ![Get-Help Set-HcsIpAddress komutunun çıkışıyla ve Set-HcsIpAddress komutunun doğru kullanımının bir konsol penceresini gösteren ekran görüntüsü.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image30.png)
 9. İlk kurulum işlemleri tamamlandıktan ve cihaz önyüklendikten sonra cihaz başlık metnini görürsünüz. Cihazı yönetmek için başlık metninde görüntülenen IP adresini ve URL'yi not edin. Sanal dizininizdeki Web Kullanıcı arabirimine bağlanmak ve yerel kurulumu ve kaydı gerçekleştirmek için bu IP adresini kullanın.
 
    ![Cihaz başlık metniyle bir konsol penceresi gösteren ekran görüntüsü. Bu metin, cihaz IP adresini ve URL 'YI içerir.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image31m.png)

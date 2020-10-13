@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
 ms.openlocfilehash: a052364b06ac1b9b30cef76db10a79e8ed85b9a3
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89470162"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell için özellikler & araçları
@@ -61,7 +61,7 @@ Cloud Shell içindeki PowerShell, Exchange Online modülünün özel bir derleme
 > [!NOTE]
 > Modül adı ile başlamalıdır `tmp_` , aynı ön eke sahip modüller yüklediyseniz, cmdlet 'leri de ortaya çıkmış olur. 
 
-![Get-Command-module tmp_ * komutunu çalıştıran bir Azure Cloud Shell ekran görüntüsü.](media/features-powershell/exchangeonlinecmdlets.png)
+![Get-Command-Module tmp_ * komutunu çalıştıran bir Azure Cloud Shell ekran görüntüsü.](media/features-powershell/exchangeonlinecmdlets.png)
 
 ### <a name="deep-integration-with-open-source-tooling"></a>Açık kaynak araçları ile derin tümleştirme
 
@@ -69,7 +69,7 @@ Cloud Shell, Terkform, Anbotsız ve Chef InSpec gibi açık kaynaklı araçlar i
 
 ## <a name="tools"></a>Araçlar
 
-|Kategori   |Name   |
+|Kategori   |Adı   |
 |---|---|
 |Linux araçları            |bash<br> ZSH<br> dak<br> tmux<br> derinlemesine<br>               |
 |Azure araçları            |[Azure CLI](https://github.com/Azure/azure-cli) ve [Azure klasik CLI](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](../storage/common/storage-use-azcopy-v10.md)<br> [Azure İşlevleri CLI](https://github.com/Azure/azure-functions-core-tools)<br> [Service Fabric CLI](../service-fabric/service-fabric-cli.md)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|

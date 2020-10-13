@@ -12,10 +12,10 @@ ms.date: 05/25/2020
 ms.author: kenwith
 ms.reviewer: celested
 ms.openlocfilehash: 5892100140c6022763453a4141d87e6a7ba4ed75
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91266573"
 ---
 # <a name="workday-attribute-reference"></a>Workday öznitelik başvurusu
@@ -63,7 +63,7 @@ Aşağıdaki tablo, Workday özniteliklerinin listesini ve iş günü gelen sağ
 | 29 | Locationıdentifier                    | WD: Worker/WD: Worker \_ Data/WD: \_ iş verileri/WD: konum \_ verisi/WD: iş \_ sitesi \_ Özet \_ verileri/WD: Location \_ Reference/WD: ID \[ @wd:type = ' Location \_ ID ' \] /Text\(\)                                                                                                                                                                                                                                            |
 | 30 | ManagerReference                      | WD: Worker/WD: Worker \_ Data/WD: Yönetim \_ zinciri \_ verileri/WD: çalışan \_ Denetim \_ Yönetim \_ zinciri \_ veri \[ konumu \( \) = 1 \] /WD: Yönetim \_ zinciri \_ verileri \[ son \( \) = Konum \( \) \] /WD: yönetici \_ başvurusu/WD: ID \[ @wd:type = ' WID ' \] /Text\(\)                                                                                                                                                                            |
 | 31 | MiddleName                            | WD: Worker/WD: Worker \_ Data/WD: Personal \_ Data/WD: Name \_ Data/WD: yasal \_ ad \_ Data/WD: ad \_ detail \_ Data/WD: ortadaki \_ ad/metin\(\)                                                                                                                                                                                                                                                                                |
-| 32 | Mobil                                | WD: Worker/WD: çalışan \_ verileri/WD: Personal \_ Data/WD: Contact \_ Data/WD: telefon \_ verisi \[ çevirisi \( dize \( WD: telefon \_ cihaz \_ türü \_ Reference/@wd:Descriptor \) , ' abcdefghgpqrstuıxyz ', ' abcdefghgpqrstuıxyz ' \) = ' MOBILE ' ve çeviri \( dizesi \( WD: kullanım \_ verileri/WD: Type \_ Data/WD: Type \_ Reference/@wd:Descriptor \) , ' abcdefghgpqrstuerxyz ', ' abcdefghgpqrstuerxyz ' \) = ' Work ' \] /@wd:Formatted \_ Phone    |
+| 32 | Cep telefonu                                | WD: Worker/WD: çalışan \_ verileri/WD: Personal \_ Data/WD: Contact \_ Data/WD: telefon \_ verisi \[ çevirisi \( dize \( WD: telefon \_ cihaz \_ türü \_ Reference/@wd:Descriptor \) , ' abcdefghgpqrstuıxyz ', ' abcdefghgpqrstuıxyz ' \) = ' MOBILE ' ve çeviri \( dizesi \( WD: kullanım \_ verileri/WD: Type \_ Data/WD: Type \_ Reference/@wd:Descriptor \) , ' abcdefghgpqrstuerxyz ', ' abcdefghgpqrstuerxyz ' \) = ' Work ' \] /@wd:Formatted \_ Phone    |
 | 33 | Belediye                          | WD: Worker/WD: çalışan \_ verileri/WD: \_ iş verileri/WD: konum \_ verileri/WD: iş \_ sitesi \_ Özet \_ verileri/WD: Adres \_ verileri/WD: municipitesi/metin\(\)                                                                                                                                                                                                                                                                   |
 | 34 | PositionId                            | WD: Worker/WD: Worker \_ Data/WD: iş \_ verileri/WD: konum \_ verileri/WD: konum \_ kimliği/metin\(\)                                                                                                                                                                                                                                                                                                                     |
 | 35 | PositionTitle                         | WD: Worker/WD: Worker \_ Data/WD: iş \_ verileri/WD: konum \_ verileri/WD: konum \_ başlık/metin\(\)                                                                                                                                                                                                                                                                                                                  |
@@ -117,7 +117,7 @@ Aşağıdaki tablo, Workday özniteliklerinin listesini ve iş günü gelen sağ
 
 Aşağıda gösterildiği gibi, bağlantı URL 'sinde WWS API v 30.0 veya üstünü kullanıyorsanız:
 
-:::image type="content" source="../saas-apps/media/workday-inbound-tutorial/workday-url-version-info.png" alt-text="Workday sürüm bilgisi":::
+:::image type="content" source="../saas-apps/media/workday-inbound-tutorial/workday-url-version-info.png" alt-text="Sürüm bilgisi olmayan Workday":::
 
 ... ardından, sağlama işini açmadan önce lütfen öznitelik eşleme altında **XPath API 'si ifadelerini** güncelleştirin **-> gelişmiş seçenekler ' > ve iş günü Için öznitelik listesini düzenle** ' yi kullanarak tabloda listelenen değerleri kullanın. 
 
@@ -158,7 +158,7 @@ Ek XPATHs yapılandırmak için, [yapılandırmanızı yönetme](../saas-apps/wo
 | 29 | Locationıdentifier                    | WD: Worker/WD: Worker \_ Data/WD: istihdam \_ Data/WD: Worker \_ iş \_ verileri \[ @wd:Primary_Job = 1]/WD: konum \_ verisi/WD: iş \_ sitesi \_ Özet \_ verileri/WD: konum \_ başvurusu/WD: ID \[ @wd:type = ' Location \_ ID ' \] /Text\(\)                                                                                                                                                                           |
 | 30 | ManagerReference                      | WD: Worker/WD: Worker \_ Data/WD: Yönetim \_ zinciri \_ verileri/WD: çalışan \_ Denetim \_ Yönetim \_ zinciri \_ veri \[ konumu \( \) = 1 \] /WD: Yönetim \_ zinciri \_ verileri \[ son \( \) = Konum \( \) \] /WD: yönetici \_ başvurusu/WD: ID \[ @wd:type = ' WID ' \] /Text\(\)                                                                                                                                                      |
 | 31 | MiddleName                            | WD: Worker/WD: Worker \_ Data/WD: Personal \_ Data/WD: Name \_ Data/WD: yasal \_ ad \_ Data/WD: ad \_ detail \_ Data/WD: ortadaki \_ ad/metin\(\)                                                                                                                                                                                                                                                          |
-| 32 | Mobil                                | WD: Worker/WD: çalışan \_ verileri/WD: kişisel \_ veri/WD: iletişim \_ verileri/WD: telefon \_ verileri \[ WD: Usage \_ Data/@wd:Public = ' 1 ' ve dize \( WD: kullanım \_ verileri/WD: Type \_ Data/WD: tür \_ Reference/WD: ID \[ @wd:type = ' Communication \_ Usage \_ Type \_ ID ' \] \) = ' Work ' ve dize \( WD: Phone cihaz türü \_ \_ \_ Reference/WD: ID \[ @wd:type = ' Phone \_ cihaz \_ türü \_ ID ' \] \) = ' Mobile '\]/@wd:Workday_Traditional_Formatted_Phone   |
+| 32 | Cep telefonu                                | WD: Worker/WD: çalışan \_ verileri/WD: kişisel \_ veri/WD: iletişim \_ verileri/WD: telefon \_ verileri \[ WD: Usage \_ Data/@wd:Public = ' 1 ' ve dize \( WD: kullanım \_ verileri/WD: Type \_ Data/WD: tür \_ Reference/WD: ID \[ @wd:type = ' Communication \_ Usage \_ Type \_ ID ' \] \) = ' Work ' ve dize \( WD: Phone cihaz türü \_ \_ \_ Reference/WD: ID \[ @wd:type = ' Phone \_ cihaz \_ türü \_ ID ' \] \) = ' Mobile '\]/@wd:Workday_Traditional_Formatted_Phone   |
 | 33 | Belediye                          | WD: Worker/WD: Worker \_ Data/WD: istihdam \_ Data/WD: Worker \_ iş \_ verileri \[ @wd:Primary_Job = 1]/WD: konum \_ verileri/WD: Iş \_ sitesi \_ Özet \_ verileri/WD: Adres \_ verileri/WD: municipitesi/metin\(\)                                                                                                                                                                                                  |
 | 34 | PositionId                            | WD: Worker/WD: Worker \_ Data/WD: iş \_ verileri/WD: çalışan \_ iş \_ verileri \[ @wd:Primary_Job = 1]/WD: konum \_ verileri/WD: konum \_ kimliği/metin\(\)                                                                                                                                                                                                                                                    |
 | 35 | PositionTitle                         | WD: Worker/WD: Worker \_ Data/WD: iş \_ verileri/WD: çalışan \_ iş \_ verileri \[ @wd:Primary_Job = 1]/WD: konum \_ verisi/WD: konum \_ başlık/metin\(\)                                                                                                                                                                                                                                                 |
@@ -243,7 +243,7 @@ Aşağıda verilen XPath API deyiminizi oluştururken kullanabileceğiniz [MICRO
 * true
 * not
 * yanlış
-* sayı
+* number
 * Tavan
 * TOPLA
 * round
