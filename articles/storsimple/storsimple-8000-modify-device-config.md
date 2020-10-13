@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: d0e13f8e66e6035c22c9c2323b9653c5c4a81671
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a08ddae1d10cc8b26f3aa7ee85e731c2cea15f93
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514677"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962896"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>StorSimple cihaz yapılandırmanızı değiştirmek için StorSimple Aygıt Yöneticisi hizmetini kullanın
 
@@ -61,7 +61,7 @@ Bir cihaz açıklaması genellikle cihazın sahibini ve fiziksel konumunu belirl
 
 Cihazınızın, bulut depolama hizmeti sağlayıcınızda kimlik doğrulaması için zaman eşitlemesini gerekir. Cihaz saati ayarlarını değiştirmek için cihazınızdaki **Genel ayarlar** dikey penceresini kullanın.
 
-![Genel ayarlarda cihaz açıklaması](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
+![Genel ayarlar 'da cihaz açıklaması 2](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
 
  Aşağı açılan listeden saat diliminizi seçin. En fazla iki ağ zaman Protokolü (NTP) sunucusu belirtebilirsiniz:
 

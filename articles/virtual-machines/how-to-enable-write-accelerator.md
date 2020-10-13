@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 2/20/2019
 ms.author: raiye
 ms.subservice: disks
-ms.openlocfilehash: 0b5e6134de2260998e599bad0d1bf6b381898ffd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd0f489bd6109a5dcd6625eb26286e0d40c50c63
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88513247"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962335"
 ---
 # <a name="enable-write-accelerator"></a>Yazma Hızlandırıcısı etkinleştir
 
@@ -77,23 +77,23 @@ Yazma Hızlandırıcısı tarafından desteklenen diskleri etkinleştirmek veya 
 
 Yeni bir switch parametresi, **-writeaccelerator** aşağıdaki cmdlet 'lere eklenmiştir:
 
-- [Set-AzVMOsDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk?view=azurermps-6.0.0)
-- [Add-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/Add-AzVMDataDisk?view=azurermps-6.0.0)
-- [Set-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/Set-AzVMDataDisk?view=azurermps-6.0.0)
-- [Add-AzVmssDataDisk](https://docs.microsoft.com/powershell/module/az.compute/Add-AzVmssDataDisk?view=azurermps-6.0.0)
+- [Set-AzVMOsDisk](/powershell/module/az.compute/set-azvmosdisk?view=azurermps-6.0.0)
+- [Add-AzVMDataDisk](/powershell/module/az.compute/Add-AzVMDataDisk?view=azurermps-6.0.0)
+- [Set-AzVMDataDisk](/powershell/module/az.compute/Set-AzVMDataDisk?view=azurermps-6.0.0)
+- [Add-AzVmssDataDisk](/powershell/module/az.compute/Add-AzVmssDataDisk?view=azurermps-6.0.0)
 
 Parametresi verme özelliği false olarak ayarlanır ve Yazma Hızlandırıcısı tarafından desteklenmeyen diskleri dağıtır.
 
 Yeni bir switch parametresi, **-osdiskwriteaccelerator** aşağıdaki cmdlet 'lere eklenmiştir:
 
-- [Set-AzVmssStorageProfile](https://docs.microsoft.com/powershell/module/az.compute/Set-AzVmssStorageProfile?view=azurermps-6.0.0)
+- [Set-AzVmssStorageProfile](/powershell/module/az.compute/Set-AzVmssStorageProfile?view=azurermps-6.0.0)
 
 Parametresi belirtilmeden, varsayılan olarak, Yazma Hızlandırıcısı kullanmayan diskler döndüren özelliği false olarak ayarlar.
 
 Yeni bir isteğe bağlı Boole (null yapılamayan) parametresi, **-osdiskwriteaccelerator** aşağıdaki cmdlet 'lere eklenmiştir:
 
-- [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/Update-AzVM?view=azurermps-6.0.0)
-- [Güncelleştirme-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/Update-AzVmss?view=azurermps-6.0.0)
+- [Update-AzVM](/powershell/module/az.compute/Update-AzVM?view=azurermps-6.0.0)
+- [Güncelleştirme-AzVmss](/powershell/module/az.compute/Update-AzVmss?view=azurermps-6.0.0)
 
 Diskler ile Azure Yazma Hızlandırıcısı desteğini denetlemek için $true ya da $false belirtin.
 
@@ -168,13 +168,13 @@ Yazma Hızlandırıcısı, disk önbelleğe alma ayarlarınızı belirttiğiniz 
 
 ## <a name="enabling-write-accelerator-using-the-azure-cli"></a>Yazma Hızlandırıcısını Azure CLI ile etkinleştirme
 
-Yazma Hızlandırıcısı sağlamak için [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) kullanabilirsiniz.
+Yazma Hızlandırıcısı sağlamak için [Azure CLI](/cli/azure/?view=azure-cli-latest) kullanabilirsiniz.
 
-Mevcut bir diskte Yazma Hızlandırıcısı etkinleştirmek için [az VM Update](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-update)kullanın, DiskName, VMName ve ResourceGroup değerlerini kendi değerlerinizle değiştirmeniz durumunda aşağıdaki örnekleri kullanabilirsiniz: `az vm update -g group1 -n vm1 -write-accelerator 1=true`
+Mevcut bir diskte Yazma Hızlandırıcısı etkinleştirmek için [az VM Update](/cli/azure/vm?view=azure-cli-latest#az-vm-update)kullanın, DiskName, VMName ve ResourceGroup değerlerini kendi değerlerinizle değiştirmeniz durumunda aşağıdaki örnekleri kullanabilirsiniz: `az vm update -g group1 -n vm1 -write-accelerator 1=true`
 
-Yazma Hızlandırıcısı etkin bir disk eklemek için [az VM disk Attach](https://docs.microsoft.com/cli/azure/vm/disk?view=azure-cli-latest#az-vm-disk-attach)kullanın, kendi değerlerinizi yerine koymak için aşağıdaki örneği kullanabilirsiniz: `az vm disk attach -g group1 -vm-name vm1 -disk d1 --enable-write-accelerator`
+Yazma Hızlandırıcısı etkin bir disk eklemek için [az VM disk Attach](/cli/azure/vm/disk?view=azure-cli-latest#az-vm-disk-attach)kullanın, kendi değerlerinizi yerine koymak için aşağıdaki örneği kullanabilirsiniz: `az vm disk attach -g group1 -vm-name vm1 -disk d1 --enable-write-accelerator`
 
-Yazma Hızlandırıcısı devre dışı bırakmak için [az VM Update](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-update)kullanın, özellikleri false olarak ayarlar: `az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false`
+Yazma Hızlandırıcısı devre dışı bırakmak için [az VM Update](/cli/azure/vm?view=azure-cli-latest#az-vm-update)kullanın, özellikleri false olarak ayarlar: `az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false`
 
 ## <a name="enabling-write-accelerator-using-rest-apis"></a>REST API 'Leri kullanarak Yazma Hızlandırıcısı etkinleştirme
 

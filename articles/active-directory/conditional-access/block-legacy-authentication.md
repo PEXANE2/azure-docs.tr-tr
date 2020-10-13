@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ca9f4e290c5dad45e5bf87439ebcd1c88a7c540f
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90602012"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Nasıl yapılır: koşullu erişimle Azure AD 'de eski kimlik doğrulamasını engelleme   
@@ -35,7 +35,7 @@ Alex Weinert, Microsoft 'taki kimlik Güvenliği Direktörü, 12 Mart 2020 ' de,
 
 Ortamınız, kiracınızın korumasını geliştirmek için eski kimlik doğrulamasını engellemeye hazırsanız, bu hedefi koşullu erişimle gerçekleştirebilirsiniz. Bu makalede, kiracınız için eski kimlik doğrulamasını engelleyen koşullu erişim ilkelerini nasıl yapılandırabileceğiniz açıklanmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, hakkında bilgi sahibi olduğunuz varsayılmaktadır: 
 

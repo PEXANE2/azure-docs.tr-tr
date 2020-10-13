@@ -1,14 +1,14 @@
 ---
 title: İlke uyumluluk verilerini al
 description: Azure Ilke değerlendirmeleri ve etkileri uyumluluğu tespit edin. Azure kaynaklarınızın uyumluluk ayrıntılarını nasıl alabileceğinizi öğrenin.
-ms.date: 10/05/2020
+ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 186312ae91c3545a7aac1a9c7a108e2197f3fa8a
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 2b4db7daf75f153cadb03e5dd028084e311bb874
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873634"
+ms.locfileid: "91596039"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure kaynaklarının uyumluluk verilerini alın
 
@@ -161,15 +161,14 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 Bir atamada, ilke veya girişim kurallarını takip etmez ve _muaf tutulmazsa_bir kaynak **uyumlu** değildir. Aşağıdaki tabloda, farklı ilke efektlerinin, sonuçta elde edilen uyumluluk durumu için koşul değerlendirmesiyle nasıl çalıştığı gösterilmektedir:
 
-| Kaynak Durumu | Etki | İlke Değerlendirmesi | Uyumluluk Durumu |
+| Kaynak durumu | Etki | İlke değerlendirmesi | Uyumluluk durumu |
 | --- | --- | --- | --- |
-| Yeni veya Güncelleştirilmiş | Denetim, değiştirme, Auditınotexist | Doğru | Uyumlu Değil |
-| Yeni veya Güncelleştirilmiş | Denetim, değiştirme, Auditınotexist | Yanlış | Uyumlu |
-| Var | Reddet, denetle, Ekle, Değiştir, DeployIfNotExist, AuditIfNotExist | Doğru | Uyumlu Değil |
-| Var | Reddet, denetle, Ekle, Değiştir, DeployIfNotExist, AuditIfNotExist | Yanlış | Uyumlu |
+| Var | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Doğru | Uyumlu değil |
+| Var | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Yanlış | Uyumlu |
+| Yeni | Audit, AuditIfNotExist\* | Doğru | Uyumlu değil |
+| Yeni | Audit, AuditIfNotExist\* | Yanlış | Uyumlu |
 
-> [!NOTE]
-> DeployIfNotExist ve Auditınotexist etkileri, IF ifadesinin TRUE olmasını ve varlık koşulunun uyumsuz olması için FALSE olmasını gerektirir. TRUE olduğunda, IF koşulu ilgili kaynaklar için varlık koşulunun değerlendirilmesini tetikler.
+\* Modify, Append, DeployIfNotExist ve Auditınotexist etkileri, IF ifadesinin TRUE olmasını gerektirir. Etkiler ayrıca varlık koşulunun uyumlu olmaması için FALSE olmasını gerektirir. TRUE olduğunda, IF koşulu ilgili kaynaklar için varlık koşulunun değerlendirilmesini tetikler.
 
 Örneğin, ortak ağlara sunulan bazı depolama hesaplarıyla (kırmızı renkle vurgulanmış) bir kaynak grubunuz olduğunu varsayalım.
 
@@ -190,7 +189,7 @@ Bu örnekte, güvenlik riskleri konusunda dikkatli olmanız gerekir. Artık bir 
 - **Başlamadı**: ilke veya kaynak için değerlendirme çevrimi başlatılmadı.
 - **Kayıtlı değil**: Azure Ilke kaynak sağlayıcısı kayıtlı değil veya oturum açmış hesabın uyumluluk verilerini okuma izni yok.
 
-Azure Ilkesi, bir kaynağın eşleşme olup olmadığını anlamak için tanımda **tür**, **ad**veya **tür** alanlarını kullanır. Kaynak eşleştiğinde, uygulanabilir kabul edilir ve **uyumlu**, **uyumsuz**ya da **muaf**bir duruma sahip olur. Her iki **tür**, **ad**veya **tür** , tanımdaki tek özelliktir, dahil edilen ve muaf olmayan tüm kaynaklar uygulanabilir kabul edilir ve değerlendirilir.
+Azure Ilkesi, bir kaynağın eşleşme olup olmadığını anlamak için tanımdaki **tür** ve **ad** alanlarını kullanır. Kaynak eşleştiğinde, uygulanabilir kabul edilir ve **uyumlu**, **uyumsuz**ya da **muaf**bir duruma sahip olur. Her iki **tür** veya **ad** tanımdaki tek özelliktir, dahil edilen ve muaf olmayan tüm kaynaklar uygulanabilir kabul edilir ve değerlendirilir.
 
 Uyumluluk yüzdesi, **uyumlu** ve **muaf** kaynakları _Toplam kaynağa_bölerek belirlenir. _Toplam kaynak_ , **uyumlu**, **uyumlu olmayan**, **muaf**ve **Çakışan** kaynakların toplamı olarak tanımlanır. Genel uyumluluk numaraları, tüm ayrı kaynakların toplamına göre **uyumlu** veya **muaf tutulan** ayrı kaynakların toplamıdır. Aşağıdaki görüntüde, uygulanabilir ve yalnızca bir tane **uyumlu olmayan**20 farklı kaynak vardır.
 Genel kaynak uyumluluğu %95 ' dir (19/20).
@@ -211,14 +210,14 @@ Bir ilke veya girişim farklı kapsamlara atanabileceği için tablo, her ataman
 :::image type="content" source="../media/getting-compliance-data/compliance-details.png" alt-text="Contoso R G kaynak grubundaki ortak ağlara açık olan depolama hesaplarının diyagramı." border="false":::
 
 **Kaynak uyumluluğu** sekmesindeki kaynakların listesi, geçerli atama için mevcut kaynakların değerlendirme durumunu gösterir. Sekme varsayılan olarak **uyumlu değildir**, ancak filtrelenebilir.
-Kaynak oluşturma isteği tarafından tetiklenen olaylar (ekleme, denetim, reddetme, dağıtma, değiştirme), **Olaylar** sekmesinde gösterilir.
+Kaynak oluşturma isteği tarafından tetiklenen olaylar (Append, denetle, Reddet, dağıt), **Olaylar** sekmesi altında gösterilir.
 
 > [!NOTE]
 > AKS altyapı ilkesi için, gösterilen kaynak kaynak grubudur.
 
 :::image type="content" source="../media/getting-compliance-data/compliance-events.png" alt-text="Contoso R G kaynak grubundaki ortak ağlara açık olan depolama hesaplarının diyagramı." border="false":::
 
-<a name="component-compliance"></a> Kaynak [sağlayıcısı modu](../concepts/definition-structure.md#resource-provider-modes) kaynakları için kaynak **uyumluluğu** sekmesinde, kaynağı seçip satırı sağ tıklatıp **görünüm uyumluluk ayrıntıları** ' nı seçerek bileşen uyumluluk ayrıntılarını açılır. Bu sayfa, bu kaynağa, olaylara, bileşen olaylarına ve değişiklik geçmişine atanan ilkeleri görmek için de sekmeler sağlar.
+Kaynak [sağlayıcısı modu](../concepts/definition-structure.md#resource-provider-modes) kaynakları için kaynak **uyumluluğu** sekmesinde, kaynağı seçip satırı sağ tıklatıp **görünüm uyumluluk ayrıntıları** ' nı seçerek bileşen uyumluluk ayrıntılarını açılır. Bu sayfa, bu kaynağa, olaylara, bileşen olaylarına ve değişiklik geçmişine atanan ilkeleri görmek için de sekmeler sağlar.
 
 :::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Contoso R G kaynak grubundaki ortak ağlara açık olan depolama hesaplarının diyagramı." border="false":::
 

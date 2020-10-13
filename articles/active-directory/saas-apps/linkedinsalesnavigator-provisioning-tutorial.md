@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
 ms.openlocfilehash: e908c8d19a4640995c536580b6584558212ada3e
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361593"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için LinkedIn Sales Navigator 'ı yapılandırma
@@ -51,7 +51,7 @@ Sağlama hizmetini yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki 
 Bu bölümde, Azure AD 'nizi LinkedIn Sales Navigator 'ın SCıM Kullanıcı hesabı sağlama API 'sine bağlama ve sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup atamasını temel alan LinkedIn Sales Navigator 'daki atanan kullanıcı hesaplarını oluşturmak, güncelleştirmek ve devre dışı bırakmak için yapılandırma işlemi kılavuzluk eder.
 
 > [!TIP]
-> Ayrıca, [Azure Portal](https://portal.azure.com)' de sağlanan yönergeleri Izleyerek LinkedIn Sales NAVIGATOR için SAML tabanlı çoklu oturum açma 'yı da etkinleştirebilirsiniz. Çoklu oturum açma özelliği otomatik sağlanmadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlayabilse de.
+> Ayrıca, [Azure Portal](https://portal.azure.com)sağlanan yönergeleri Izleyerek LinkedIn Sales NAVIGATOR için SAML tabanlı tek Sign-On de seçebilirsiniz. Çoklu oturum açma özelliği otomatik sağlanmadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlayabilse de.
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-sales-navigator-in-azure-ad"></a>Azure AD 'de LinkedIn Sales Navigator 'a otomatik Kullanıcı hesabı sağlamayı yapılandırmak için:
 

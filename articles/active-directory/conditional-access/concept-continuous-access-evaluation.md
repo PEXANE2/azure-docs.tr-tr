@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0f1bde255355e7a4f47df6a3969837410692cef5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91266068"
 ---
 # <a name="continuous-access-evaluation"></a>Sürekli erişim değerlendirmesi
@@ -156,7 +156,7 @@ Bu senaryo, sınırlı döngüden kaçınmak için ortamınızda varsa, Azure AD
 
 | Office güncelleştirme kanalı | Disableadadlatopwamoverride | DisableAADWAM |
 | --- | --- | --- |
-| Yarı yıllık kurumsal kanal | Etkin veya 1 olarak ayarlanırsa, CAE desteklenmez. | Etkin veya 1 olarak ayarlanırsa, CAE desteklenmez. |
+| Semi-Annual kurumsal kanal | Etkin veya 1 olarak ayarlanırsa, CAE desteklenmez. | Etkin veya 1 olarak ayarlanırsa, CAE desteklenmez. |
 | Geçerli kanal <br> veya <br> Aylık kurumsal kanal | CAE, ayarından bağımsız olarak desteklenir | CAE, ayarından bağımsız olarak desteklenir |
 
 Office Update kanallarının bir açıklaması için bkz. [Microsoft 365 uygulamaları için güncelleştirme kanallarına genel bakış](https://docs.microsoft.com/deployoffice/overview-update-channels). Kuruluşların web hesabı Yöneticisi 'Ni (WAM) devre dışı bırakmadığından önerilir.
