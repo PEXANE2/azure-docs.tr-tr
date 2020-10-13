@@ -12,10 +12,10 @@ ms.date: 10/01/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: ee18916a59bb081d65494f46e7aba7c29c7177cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "71718524"
 ---
 # <a name="detect-adult-content"></a>Yetişkin içeriğini algıla
@@ -35,7 +35,7 @@ Görüntü İşleme, geliştiricilerin bu görüntülerin yazılımda görüntü
 
 ## <a name="use-the-api"></a>API’yi kullanma
 
-[Görüntü analizi](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 'siyle yetişkinlere yönelik içeriği algılayabilirsiniz. `Adult` Değerini **visualfeatures** sorgu parametresine eklediğinizde, API üç Boole özelliği&mdash;`isAdultContent` `isRacyContent`, ve `isGoryContent` &mdash;JSON yanıtında döndürür. Yöntemi ayrıca karşılık gelen özellikleri&mdash;`adultScore` `racyScore`döndürür ve `goreScore` &mdash;ilgili her kategori için sıfır ile bir arasındaki güven puanlarını temsil eder.
+[Görüntü analizi](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 'siyle yetişkinlere yönelik içeriği algılayabilirsiniz. Değerini `Adult` **visualfeatures** sorgu parametresine eklediğinizde, API üç Boole özelliği, &mdash; `isAdultContent` `isRacyContent` ve `isGoryContent` &mdash; JSON yanıtında döndürür. Yöntemi ayrıca karşılık gelen özellikleri döndürür &mdash; `adultScore` `racyScore` ve ilgili `goreScore` &mdash; her kategori için sıfır ile bir arasındaki güven puanlarını temsil eder.
 
 - [Hızlı başlangıç: bir görüntüyü çözümleme (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
 - [Hızlı başlangıç: bir görüntüyü çözümleme (REST API)](./quickstarts/csharp-analyze.md)

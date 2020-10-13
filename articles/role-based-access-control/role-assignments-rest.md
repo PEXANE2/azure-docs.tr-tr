@@ -16,17 +16,17 @@ ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: d66b4c8e9f41f661cfc399f72a9ad97405a860fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84790855"
 ---
-# <a name="add-or-remove-azure-role-assignments-using-the-rest-api"></a>REST API kullanarak Azure rol atamaları ekleme veya kaldırma
+# <a name="add-or-remove-azure-role-assignments-using-the-rest-api"></a>REST API kullanarak Azure rol atamalarını ekleme veya kaldırma
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]Bu makalede, REST API kullanarak rollerin nasıl atanacağı açıklanır.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] Bu makalede, REST API kullanarak rollerin nasıl atanacağı açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Rol atamaları eklemek veya kaldırmak için şunları yapmanız gerekir:
 
@@ -38,7 +38,7 @@ Azure RBAC 'de, erişim izni vermek için bir rol ataması eklersiniz. Rol atama
 
 1. Atamak istediğiniz rol tanımının tanımlayıcısını almak için [rol tanımları-liste](/rest/api/authorization/roledefinitions/list) REST API kullanın veya [yerleşik roller](built-in-roles.md) ' e bakın.
 
-1. Rol atama tanımlayıcısı için kullanılacak benzersiz bir tanımlayıcı oluşturmak için bir GUID aracı kullanın. Tanımlayıcının biçimi vardır:`00000000-0000-0000-0000-000000000000`
+1. Rol atama tanımlayıcısı için kullanılacak benzersiz bir tanımlayıcı oluşturmak için bir GUID aracı kullanın. Tanımlayıcının biçimi vardır: `00000000-0000-0000-0000-000000000000`
 
 1. Aşağıdaki istek ve gövdeyi başlatın:
 
@@ -170,5 +170,5 @@ Aşağıda çıktının bir örneği gösterilmektedir:
 
 - [REST API kullanarak Azure rol atamalarını listeleyin](role-assignments-list-rest.md)
 - [Kaynakları Resource Manager şablonları ve Resource Manager REST API’si ile dağıtma](../azure-resource-manager/templates/deploy-rest.md)
-- [Azure REST API başvurusu](/rest/api/azure/)
+- [Azure REST API Başvurusu](/rest/api/azure/)
 - [REST API kullanarak Azure özel rolleri oluşturun veya güncelleştirin](custom-roles-rest.md)

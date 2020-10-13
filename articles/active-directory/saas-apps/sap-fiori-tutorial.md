@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
 ms.openlocfilehash: 4d2f6766fa32beb9cebaa8f77c04f6865e15e14d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88543403"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>Öğretici: SAP Fiori ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -158,7 +158,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > 
     > `ServicePrincipal`Komut dosyasını çalıştırmadan önce nesne kimliğini kendiniz ayarlayabilir veya buraya geçirebilirsiniz.
 
-1. SAP Fiori uygulaması, SAML onayları 'nin belirli bir biçimde olmasını bekler. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu öznitelik değerlerini yönetmek için, **SAML Ile çoklu oturum açmayı ayarla** bölmesinde **Düzenle**' yi seçin.
+1. SAP Fiori uygulaması, SAML onayları 'nin belirli bir biçimde olmasını bekler. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu öznitelik değerlerini yönetmek için, **SAML Ile tek Sign-On ayarla** bölmesinde **Düzenle**' yi seçin.
 
     ![Kullanıcı öznitelikleri bölmesi](common/edit-attribute.png)
 
@@ -238,9 +238,9 @@ Bu bölümde, SAP Fiori 'e erişim vererek Azure çoklu oturum açma özelliğin
 
     ![SAP 'de Özet algoritması değerini doğrulama](./media/sapfiori-tutorial/tutorial-sapnetweaver-identityprovider.png)
 
-1. **Çoklu oturum açma uç noktaları**altında **http post**' ı seçin ve ardından **İleri**' yi seçin.
+1. **Tek Sign-On uç noktaları**altında **http post**' ı seçin ve ardından **İleri**' yi seçin.
 
-    ![SAP 'de çoklu oturum açma uç noktaları seçenekleri](./media/sapfiori-tutorial/tutorial-sapnetweaver-httpredirect.png)
+    ![SAP 'de tek Sign-On uç noktası seçenekleri](./media/sapfiori-tutorial/tutorial-sapnetweaver-httpredirect.png)
 
 1. **Çoklu oturum kapatma uç noktaları**altında **http yeniden yönlendirme**' yi seçin ve **İleri**' yi seçin.
 
@@ -258,7 +258,7 @@ Bu bölümde, SAP Fiori 'e erişim vererek Azure çoklu oturum açma özelliğin
 
     ![SAP 'deki güvenilen sağlayıcı ve Kimlik Federasyonu sekmeleri](./media/sapfiori-tutorial/tutorial-sapnetweaver-trustedprovider.png)
 
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
     ![Kimlik Federasyonu sekmesindeki Ekle seçeneği](./media/sapfiori-tutorial/tutorial-sapnetweaver-addidentityprovider.png)
 

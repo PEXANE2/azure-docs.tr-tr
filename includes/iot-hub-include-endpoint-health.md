@@ -9,16 +9,16 @@ ms.date: 04/28/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: a0d1de622eefad4ae5e55a427f8b0b1bf4360c0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84792107"
 ---
 Uç noktaların sistem durumunu almak için [uç nokta durumu al](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) REST API kullanabilirsiniz. Uç nokta bu durumlardan birinde olduğunda gecikme süresinin daha yüksek olması Beklendiğimiz için, uç nokta durumu ölü veya sağlıksız olduğunda hataları tanımlamak ve hatalarını ayıklamak için ileti gecikmesini yönlendirme ile ilgili [IoT Hub ölçümlerini](../articles/iot-hub/iot-hub-metrics.md) kullanmanızı öneririz.
 
 
-|Sistem Durumu|Description|
+|Sistem Durumu|Açıklama|
 |---|---|
 |sağlıklı|Uç nokta iletileri beklendiği gibi kabul ediyor.|
 |sağlıksız|Uç nokta iletileri kabul etmiyor ve IoT Hub bu uç noktaya ileti gönderimi yeniden deniyor.|

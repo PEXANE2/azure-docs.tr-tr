@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: 973b8a49c4a849f5a50fb3ab72321746a5ca06a7
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86083483"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Azure HDInsight’ta ODBC kullanarak Microsoft Power BI ile Apache Hive verilerini görselleştirme
@@ -28,7 +28,7 @@ Bu makalede, verileri `hivesampletable` Power BI için bir Hive tablosundan yük
 
 Bilgiler ayrıca yeni [etkileşimli sorgu](../interactive-query/apache-interactive-query-get-started.md) kümesi türü için de geçerlidir. Doğrudan sorgu kullanarak HDInsight etkileşimli sorgusuna bağlanma için bkz. [Azure HDInsight 'ta doğrudan sorgu kullanarak Microsoft Power BI etkileşimli sorgu Hive verilerini görselleştirme](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleye geçmeden önce aşağıdaki öğelere sahip olmanız gerekir:
 
@@ -44,7 +44,7 @@ Bkz. [HIVE ODBC veri kaynağı oluşturma](apache-hadoop-connect-excel-hive-odbc
 
 **Hivesampletable** Hive tablosu tüm HDInsight kümeleriyle birlikte gelir.
 
-1. Power BI Desktop'ı başlatın.
+1. Power BI Desktop’ı başlatın.
 
 1. Üstteki menüden, **ana**  >  **veri al**  >  **daha fazla...** seçeneğine gidin.
 
@@ -52,7 +52,7 @@ Bkz. [HIVE ODBC veri kaynağı oluşturma](apache-hadoop-connect-excel-hive-odbc
 
 1. **Veri al** iletişim kutusundan soldan **diğer** ' i seçin, sağ taraftaki **ODBC** ' i seçin ve ardından alt kısımdaki **Bağlan** ' ı seçin.
 
-1. **ODBC** iletişim kutusundan, açılan listeden son bölümde oluşturduğunuz veri kaynağı adını seçin. Sonra **Tamam**’ı seçin.
+1. **ODBC** iletişim kutusundan, açılan listeden son bölümde oluşturduğunuz veri kaynağı adını seçin. Ardından **Tamam**'ı seçin.
 
 1. İlk kullanım için bir **ODBC sürücüsü** iletişim kutusu açılır. Sol menüden **varsayılan veya özel** ' i seçin. Ardından, **Gezgin**'i açmak için **Bağlan** ' ı seçin.
 

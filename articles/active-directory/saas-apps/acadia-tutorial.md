@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 1/17/2019
 ms.author: jeedes
 ms.openlocfilehash: f3fa61e7c00dca8cb133ec21ba395d943ebdc956
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708467"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-acadia"></a>Öğretici: Acaçya ile tümleştirme Azure Active Directory
@@ -74,7 +74,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına bağlı olarak, Az
 Azure AD çoklu oturum açmayı, Acadia ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurmanız gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, **[Acadia çoklu oturum açmayı yapılandırın](#configure-acadia-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için, **[Acadia çoklu oturum açmayı yapılandırın](#configure-acadia-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcı Azure AD gösterimi ile bağlantılı olan Acadia 'de Britta Simon 'un bir karşılığı olacak şekilde, **[Acadia test kullanıcısı oluşturun](#create-acadia-test-user)** .
@@ -94,7 +94,7 @@ Azure AD çoklu oturum açmayı, Acadia ile yapılandırmak için aşağıdaki a
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -115,7 +115,7 @@ Azure AD çoklu oturum açmayı, Acadia ile yapılandırmak için aşağıdaki a
     > [!NOTE]
     > 4 ve 5. adımları için değerler, **temel SAML yapılandırması** bölümünde **meta veri dosyasını karşıya yükle** ' ye tıklanarak içeri aktarılabilecek bir meta veri dosyasında sunulacaktır. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Meta veri değerlerinin doğru olduğunu doğrulamak için Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz. Belirtilen değerler yanlışsa, [Acadia istemci destek ekibine](mailto:support@systemsalliance.com) başvurun.
 
-6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -129,7 +129,7 @@ Azure AD çoklu oturum açmayı, Acadia ile yapılandırmak için aşağıdaki a
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-acadia-single-sign-on"></a>Acadia çoklu oturum açmayı yapılandırma
+### <a name="configure-acadia-single-sign-on"></a>Acadia tek Sign-On yapılandırma
 
 **Acadia** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **meta veri XML**'Sini, **uygulama Federasyon meta veri URL 'Sini**ve Azure Portal ' den [Acadia destek ekibine](mailto:support@systemsalliance.com)uygun şekilde kopyalanmış URL 'leri göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak için bu ayarı yapılandırır.
 

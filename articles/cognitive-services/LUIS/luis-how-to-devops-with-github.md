@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/5/2020
 ms.author: anwigley
 ms.openlocfilehash: 6df65040277ac61cca5fb4bf7fce5b5a7b2f3afe
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84783766"
 ---
 # <a name="apply-devops-to-luis-app-development-using-github-actions"></a>GitHub eylemlerini kullanarak LUSıS uygulama geliştirmeye DevOps uygulama
@@ -38,6 +38,6 @@ LUSıS için DevOps ve yazılım mühendisliği en iyi uygulamaları uygulayan t
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Kendi projem ile DevOps uygulamak için [Lusıs DevOps şablon](https://github.com/Azure-Samples/LUIS-DevOps-Template) deposunu kullanın.
-* [LUSıS için kaynak denetimi ve dal stratejileri](luis-concept-devops-sourcecontrol.md)
+* [LUIS için kaynak denetimi ve dal stratejileri](luis-concept-devops-sourcecontrol.md)
 * [LUSıS DevOps için test etme](luis-concept-devops-testing.md)
 * [LUSıS DevOps için Otomasyon iş akışları](luis-concept-devops-automation.md)

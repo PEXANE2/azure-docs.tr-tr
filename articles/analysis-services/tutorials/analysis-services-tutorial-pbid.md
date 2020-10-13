@@ -8,10 +8,10 @@ ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: 950447aa146f05714b6ec5ea3d6e47c368a2140e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89229319"
 ---
 # <a name="tutorial-connect-with-power-bi-desktop"></a>Öğretici: Power BI Desktop ile bağlanma
@@ -23,7 +23,7 @@ Bu öğreticide, Power BI Desktop'u kullanarak sunucunuzdaki örnek adventurewor
 > * Power BI Desktop kullanarak bağlanma
 > * Temel bir rapor oluşturma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Sunucunuza [örnek adventureworks model veritabanını ekleyin](../analysis-services-create-sample-model.md).
 - Örnek adventureworks model veritabanı üzerinde [*okuma*](../analysis-services-server-admins.md) izinlerine sahip olun.
@@ -57,7 +57,7 @@ Power BI Desktop'tan sunucunuza bağlanmak için önce sunucu adını bilmelisin
 
 4. **GÖRSEL ÖĞELER**'de **Kümelenmiş Çubuk Grafik**'i seçin, sonra **Biçim**'e (rulo fırça simgesi) tıklayın ve **Veri etiketleri**'ni açın. 
 
-   ![Görselleştirmeler](./media/analysis-services-tutorial-pbid/aas-pbid-visualizations-report.png)
+   ![Görsel öğeler](./media/analysis-services-tutorial-pbid/aas-pbid-visualizations-report.png)
 
 5. **Alanlar**  >  **Internet Sales** tablosunda, **Internet satışları toplamı** ve **kenar boşluğu** ölçüleri ' ni seçin. **Ürün Kategorisi** tablosunda **Ürün Kategorisi Adı**'nı seçin.
 

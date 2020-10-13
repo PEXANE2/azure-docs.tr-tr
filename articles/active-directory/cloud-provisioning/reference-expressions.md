@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c14f406e5671e1eefb43f0208044f9945e446267
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89226582"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory öznitelik eşlemeleri için ifadeler yazma
@@ -38,8 +38,8 @@ Aşağıdaki belge, verileri dönüştürmek için kullanılan betiğe benzer if
   3. Diğer Işlevler. Örneğin: FunctionOne ( `<<argument1>>` , functiontwo ( `<<argument2>>` ))
 * Dize sabitleri için, dizede bir ters eğik çizgi (\) veya tırnak işareti (") gerekiyorsa, ters eğik çizgi (\) simgesiyle atlanmalıdır. Örneğin: "Şirket adı: \\ " contoso \\ ""
 
-## <a name="list-of-functions"></a>İşlevlerin listesi
-| İşlevlerin listesi | Açıklama |
+## <a name="list-of-functions"></a>İşlev listesi
+| İşlev listesi | Açıklama |
 |-----|----|
 |[Ekle](#append)|Bir kaynak dize değeri alır ve son eki bunun sonuna ekler.|
 |[BitAnd](#bitand)|BitAnd işlevi, belirtilen bitleri bir değer üzerinde ayarlar.|
@@ -73,21 +73,21 @@ Aşağıdaki belge, verileri dönüştürmek için kullanılan betiğe benzer if
 |[Ayırmayı](#split)|Belirtilen sınırlayıcı karakteri kullanarak bir dizeyi çok değerli bir diziye böler.|
 |[StringFromSID](#stringfromsid)|StringFromSid işlevi, bir güvenlik tanımlayıcısı içeren bir bayt dizisini dizeye dönüştürür.| 
 |[StripSpaces](#stripspaces) |Kaynak dizeden tüm boşluk ("") karakterlerini kaldırır.| 
-|[Anahtar](#switch)|**Kaynak** değeri bir **anahtarla**eşleştiğinde, bu **anahtar**için **değer** döndürür. | 
+|[Değiştirebilirsiniz](#switch)|**Kaynak** değeri bir **anahtarla**eşleştiğinde, bu **anahtar**için **değer** döndürür. | 
 |[ToLower](#tolower)|Bir *kaynak* dize değeri alır ve belirtilen kültür kurallarını kullanarak küçük harfe dönüştürür.| 
 |[ToUpper](#toupper)|Bir *kaynak* dize değeri alır ve belirtilen kültür kurallarını kullanarak büyük harfe dönüştürür.|
 |[Kırpma](#trim)|Trim işlevi bir dizeden baştaki ve sondaki boşlukları kaldırır.|
 |[Word](#word)|Word işlevi, kullanılacak sınırlayıcıları ve döndürülecek sözcük numarasını açıklayan parametrelere göre dize içinde içerilen bir sözcük döndürür.|
 
 ---
-### <a name="append"></a>Ekle
+### <a name="append"></a>Ekleme
 **Çalışmayacaktır**<br> Append (kaynak, sonek)
 
 **Açıklama:**<br> Bir kaynak dize değeri alır ve son eki bunun sonuna ekler.
 
 **Parametrelere**<br> 
 
-   | Name | Gerekli/yinelenen | Tür | Notlar |
+   | Adı | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
    | **önekini** |Gerekli |Dize |Kaynak değerin sonuna eklemek istediğiniz dize. |
@@ -179,7 +179,7 @@ Bu işlevin çıkış biçimi Azure Active Directory tarafından, DN öznitelik 
 48656C6C6F20776F726C6421 döndürür
 
 ---
-### <a name="count"></a>Count
+### <a name="count"></a>Sayı
 **Açıklama:**  
 Count işlevi, birden çok değerli bir öznitelikteki öğelerin sayısını döndürür
 
@@ -250,7 +250,7 @@ AccountName özniteliği yoksa, nesne üzerinde bir hata oluşturur.
 
 **Parametrelere**<br> 
 
-   | Name | Gerekli/yinelenen | Tür | Notlar |
+   | Adı | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
    | **InPutFormat** |Gerekli |Dize |Kaynak değerinin biçimi bekleniyordu. Desteklenen biçimler için bkz. [/DotNet/Standard/Base-Types/Custom-Date-and-Time-Format-Strings](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
@@ -392,7 +392,7 @@ Kaynak değerlerinden biri çok değerli bir öznitelik ise, bu öznitelikteki h
 
 **Parametrelere**<br> 
 
-   | Name | Gerekli/yinelenen | Tür | Notlar |
+   | Adı | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **ayırıcı** |Gerekli |Dize |Tek bir dizede bitiştirildiği zaman kaynak değerlerini ayırmak için kullanılan dize. Hiçbir ayırıcı gerekmiyorsa "" olabilir. |
    | **source1 ... Kaynakcen** |Gerekli, değişken sayısı |Dize |Birlikte birleştirilecek dize değerleri. |
@@ -429,11 +429,11 @@ Dize Numchar 'lar içinde belirtilen sayıdan daha az karakter içeriyorsa, dize
 
 **Parametrelere**<br> 
 
-   | Name | Gerekli/yinelenen | Tür | Notlar |
+   | Adı | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Dize |Genellikle özniteliğin adı. |
-   | **başından** |Gerekli |integer |Alt dizenin başlaması gereken **kaynak** dizedeki dizin. Dizedeki ilk karakter 1 dizinine sahip olacak, ikinci karakter dizin 2 ' ye sahip olur ve bu şekilde devam eder. |
-   | **uzunluklu** |Gerekli |integer |Alt dizenin uzunluğu. Uzunluk **kaynak** dizenin dışında biterse, işlev **Başlangıç** dizininden **kaynak** dizenin sonuna kadar alt dize döndürür. |
+   | **start** |Gerekli |tamsayı |Alt dizenin başlaması gereken **kaynak** dizedeki dizin. Dizedeki ilk karakter 1 dizinine sahip olacak, ikinci karakter dizin 2 ' ye sahip olur ve bu şekilde devam eder. |
+   | **length** |Gerekli |tamsayı |Alt dizenin uzunluğu. Uzunluk **kaynak** dizenin dışında biterse, işlev **Başlangıç** dizininden **kaynak** dizenin sonuna kadar alt dize döndürür. |
 
 ---
 ### <a name="normalizediacritics"></a>Normalizediacritika
@@ -443,7 +443,7 @@ Dize Numchar 'lar içinde belirtilen sayıdan daha az karakter içeriyorsa, dize
 
 **Parametrelere**<br> 
 
-   | Name | Gerekli/yinelenen | Tür | Notlar |
+   | Adı | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Dize | Genellikle ad veya soyadı özniteliği. |
 
@@ -455,7 +455,7 @@ Dize Numchar 'lar içinde belirtilen sayıdan daha az karakter içeriyorsa, dize
 
 **Parametrelere**<br> 
 
-   | Name | Gerekli/yinelenen | Tür | Notlar |
+   | Adı | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Boole dizesi |Beklenen **kaynak** değerleri "true" veya "false" şeklindedir. |
 
@@ -497,7 +497,7 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 **Parametrelere**<br> 
 
-   | Name | Gerekli/yinelenen | Tür | Notlar |
+   | Adı | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Dize |Genellikle **kaynak** nesneden özniteliğin adı. |
    | **oldValue** |İsteğe Bağlı |Dize |**Kaynak** veya **şablonda**değiştirilmekte olan değer. |
@@ -522,7 +522,7 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 **Parametrelere**<br> 
 
-   | Name | Gerekli/yinelenen | Tür | Notlar |
+   | Adı | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **uniqueValueRule1 ... uniqueValueRuleN** |En az 2 gerekir, üst sınır yoktur |Dize | Değerlendirilecek benzersiz değer oluşturma kurallarının listesi. |
 
@@ -535,7 +535,7 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 **Parametrelere**<br> 
 
-  | Name | Gerekli/yinelenen | Tür | Notlar |
+  | Adı | Gerekli/yinelenen | Tür | Notlar |
   |--- | --- | --- | --- |
   | **AppRoleAssignments** |Gerekli |Dize |**[Approtaatamalar]** nesnesi. |
 
@@ -547,10 +547,10 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 **Parametrelere**<br> 
 
-   | Name | Gerekli/yinelenen | Tür | Notlar |
+   | Adı | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Dize |Güncelleştirilecek **kaynak** değeri. |
-   | **ayırıcı** |Gerekli |Dize |Dizeyi ayırmak için kullanılacak karakteri belirtir (örneğin: ",") |
+   | **sınırlayıcı** |Gerekli |Dize |Dizeyi ayırmak için kullanılacak karakteri belirtir (örneğin: ",") |
 
 ---
 ### <a name="stringfromsid"></a>StringFromSid
@@ -568,7 +568,7 @@ StringFromSid işlevi, bir güvenlik tanımlayıcısı içeren bir bayt dizisini
 
 **Parametrelere**<br> 
 
-   | Name | Gerekli/yinelenen | Tür | Notlar |
+   | Adı | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Dize |Güncelleştirilecek **kaynak** değeri. |
 
@@ -580,12 +580,12 @@ StringFromSid işlevi, bir güvenlik tanımlayıcısı içeren bir bayt dizisini
 
 **Parametrelere**<br> 
 
-   | Name | Gerekli/yinelenen | Tür | Notlar |
+   | Adı | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Dize |Denetlenecek **kaynak** değeri. |
    | **Değerinin** |İsteğe Bağlı |Dize |Kaynak herhangi bir anahtara eşleşmezse kullanılacak varsayılan değer. Boş dize ("") olabilir. |
    | **anahtar** |Gerekli |Dize |**Kaynak** değeri Karşılaştırılacak **anahtar** . |
-   | **deeri** |Gerekli |Dize |Anahtarla eşleşen **kaynak** için değiştirme değeri. |
+   | **değer** |Gerekli |Dize |Anahtarla eşleşen **kaynak** için değiştirme değeri. |
 
 ---
 ### <a name="tolower"></a>ToLower
@@ -595,7 +595,7 @@ StringFromSid işlevi, bir güvenlik tanımlayıcısı içeren bir bayt dizisini
 
 **Parametrelere**<br> 
 
-   | Name | Gerekli/yinelenen | Tür | Notlar |
+   | Adı | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı |
    | **ayarı** |İsteğe Bağlı |Dize |RFC 4646 ' i temel alan kültür adı biçimi *languagecode2-Country/regioncode2*, burada *languagecode2* iki harfli dil kodu ve *Ülke/regioncode2* ise iki harfli alt kültür kodudur. Japonca (Japonya) için ja-JP ve Ingilizce (Birleşik Devletler) için en-US sayılabilir. İki harfli dil kodunun kullanılamadığı durumlarda ISO 639-2 ' den türetilen üç harfli bir kod kullanılır.|
@@ -609,7 +609,7 @@ StringFromSid işlevi, bir güvenlik tanımlayıcısı içeren bir bayt dizisini
 
 **Parametrelere**<br> 
 
-  | Name | Gerekli/yinelenen | Tür | Notlar |
+  | Adı | Gerekli/yinelenen | Tür | Notlar |
   | --- | --- | --- | --- |
   | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
   | **ayarı** |İsteğe Bağlı |Dize |RFC 4646 ' i temel alan kültür adı biçimi *languagecode2-Country/regioncode2*, burada *languagecode2* iki harfli dil kodu ve *Ülke/regioncode2* ise iki harfli alt kültür kodudur. Japonca (Japonya) için ja-JP ve Ingilizce (Birleşik Devletler) için en-US sayılabilir. İki harfli dil kodunun kullanılamadığı durumlarda ISO 639-2 ' den türetilen üç harfli bir kod kullanılır.|

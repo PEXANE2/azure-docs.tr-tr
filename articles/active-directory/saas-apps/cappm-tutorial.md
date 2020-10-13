@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/05/2020
 ms.author: jeedes
 ms.openlocfilehash: 969fb8c688fe26e1aa830cab2bbc35c5712b060e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88530758"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarity"></a>Öğretici: açıklık ile Azure Active Directory tümleştirme
@@ -62,7 +62,7 @@ Azure AD SSO 'yu netle yapılandırmak ve test etmek için aşağıdaki yapı ta
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
     1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-2. **[Netme çoklu oturum açmayı yapılandırma](#configure-clarity-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırma.
+2. **[Netme çoklu oturum açmayı yapılandırma](#configure-clarity-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
     1. En **[netme testi Kullanıcı oluşturma](#create-clarity-test-user)** -kullanıcının Azure AD gösterimine bağlı bir netme için B. Simon 'un bir karşılığı.
 6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
@@ -76,7 +76,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki adımları uygulayın:
+4. **SAML Ile tek Sign-On ayarlama** sayfasında, aşağıdaki adımları gerçekleştirin:
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://ca.ondemand.saml.20.post.<companyname>`
 
@@ -123,7 +123,7 @@ Bu bölümde, netlik erişimine izin vererek Azure çoklu oturum açma özelliğ
 1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın
 
-## <a name="configure-clarity-single-sign-on"></a>Açıklık çoklu oturum açmayı yapılandırma
+## <a name="configure-clarity-single-sign-on"></a>Netme tek Sign-On yapılandırma
 
 **Netme** tarafında çoklu oturum açma 'yı yapılandırmak için, indirilen **sertifikayı (Base64)** ve Azure Portal ' den daha uygun kopyalanmış URL 'leri [netlik desteği ekibine](mailto:catechnicalsupport@ca.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

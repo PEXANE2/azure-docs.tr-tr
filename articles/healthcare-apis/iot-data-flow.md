@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: punagpal
 ms.openlocfilehash: 43b7bcba97617d6931fd5c191e62e833a25bf89d
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513391"
 ---
-# <a name="azure-iot-connector-for-fhir-preview-data-flow"></a>FHıR için Azure IoT Bağlayıcısı (Önizleme) veri akışı
+# <a name="azure-iot-connector-for-fhir-preview-data-flow"></a>FHIR için Azure IoT Bağlayıcısı’nın (önizleme) veri akışı
 
 Bu makalede, FHIR * için Azure IoT Bağlayıcısı 'nda veri akışına genel bakış sunulmaktadır. Azure IoT Bağlayıcısı 'nda, cihaz verilerini FHıR tabanlı [gözlemleme](https://www.hl7.org/fhir/observation.html) kaynaklarına dönüştüren farklı veri işleme aşamaları hakkında bilgi edineceksiniz.
 

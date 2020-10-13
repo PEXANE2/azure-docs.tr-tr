@@ -4,10 +4,10 @@ description: Azure CLı komutları kullanılarak kapsayıcı görüntüsü veril
 ms.topic: article
 ms.date: 07/31/2019
 ms.openlocfilehash: 449a1c09bf88e3e0e0aeca4d3b687371d2a6b91a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78403352"
 ---
 # <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>Azure CLı kullanarak Azure Container Registry kapsayıcı görüntülerini silme
@@ -154,7 +154,7 @@ fi
 
 [Bildirim Özeti](container-registry-concepts.md#manifest-digest) bölümünde belirtildiği gibi, var olan bir etiketi kullanarak değiştirilmiş bir görüntüyü, daha önce gönderilen görüntünün etiketlerini, bir tek kalan (veya "Dangling") görüntüsüne neden olacak şekilde **çıkarır** . Daha önce gönderilen görüntünün bildirimi ve katman verileri--kayıt defterinde kalır. Aşağıdaki olay sırasını göz önünde bulundurun:
 
-1. İlet resmi *ACR-HelloWorld* WITH Tag **latest**:`docker push myregistry.azurecr.io/acr-helloworld:latest`
+1. İlet resmi *ACR-HelloWorld* WITH Tag **latest**: `docker push myregistry.azurecr.io/acr-helloworld:latest`
 1. Depo *ACR-HelloWorld*için bildirimleri denetle:
 
    ```azurecli
@@ -175,7 +175,7 @@ fi
    ```
 
 1. *ACR-HelloWorld* dockerfile 'ı değiştirme
-1. İlet resmi *ACR-HelloWorld* WITH Tag **latest**:`docker push myregistry.azurecr.io/acr-helloworld:latest`
+1. İlet resmi *ACR-HelloWorld* WITH Tag **latest**: `docker push myregistry.azurecr.io/acr-helloworld:latest`
 1. Depo *ACR-HelloWorld*için bildirimleri denetle:
 
    ```azurecli

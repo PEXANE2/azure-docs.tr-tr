@@ -10,10 +10,10 @@ caps.latest.revision: 14
 author: georgewallace
 ms.author: tagore
 ms.openlocfilehash: 6d0e84b6724d9df4162d4be3e06a9952087a53a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79537355"
 ---
 # <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure Cloud Services Definition Loadbalanceraraştırma şeması
@@ -47,19 +47,19 @@ Varsayılan yük dengeleyici araştırması, sanal makinenin içindeki Konuk ara
 - [Loadbalanceraraştırmaları öğesi](#LoadBalancerProbes)
 - [Loadbalanceraraştırma öğesi](#LoadBalancerProbe)
 
-##  <a name="loadbalancerprobes-element"></a><a name="LoadBalancerProbes"></a>Loadbalanceraraştırmaları öğesi
+##  <a name="loadbalancerprobes-element"></a><a name="LoadBalancerProbes"></a> Loadbalanceraraştırmaları öğesi
 `LoadBalancerProbes`Öğesi, yük dengeleyici araştırmaları koleksiyonunu açıklar. Bu öğe [Loadbalanceraraştırma öğesinin](#LoadBalancerProbe)üst öğesidir. 
 
-##  <a name="loadbalancerprobe-element"></a><a name="LoadBalancerProbe"></a>Loadbalanceraraştırma öğesi
+##  <a name="loadbalancerprobe-element"></a><a name="LoadBalancerProbe"></a> Loadbalanceraraştırma öğesi
 `LoadBalancerProbe`Öğesi bir modelin sistem durumu araştırmasını tanımlar. Birden çok yük dengeleyici yoklamaları tanımlayabilirsiniz. 
 
 Aşağıdaki tablo, öğesinin özniteliklerini açıklar `LoadBalancerProbe` :
 
-|Öznitelik|Tür|Description|
+|Öznitelik|Tür|Açıklama|
 | ------------------- | -------- | -----------------|
 | `name`              | `string` | Gereklidir. Yük dengeleyici araştırmasının adı. Ad benzersiz olmalıdır.|
 | `protocol`          | `string` | Gereklidir. Bitiş noktasının protokolünü belirtir. Olası değerler: `http` veya `tcp`. `tcp`Belirtilmişse, araştırmanın başarılı olması için alınan BIR ACK gereklidir. `http`Belirtilmişse, araştırmanın başarılı olması için BELIRTILEN URI 'den 200 bir Tamam yanıtı gerekir.|
-| `path`              | `string` | VM 'den sistem durumu istemek için kullanılan URI. `path`, `protocol` olarak ayarlandıysa gereklidir `http` . Aksi takdirde, buna izin verilmez.<br /><br /> Varsayılan değer yoktur.|
+| `path`              | `string` | VM 'den sistem durumu istemek için kullanılan URI. `path` , `protocol` olarak ayarlandıysa gereklidir `http` . Aksi takdirde, buna izin verilmez.<br /><br /> Varsayılan değer yoktur.|
 | `port`              | `integer` | İsteğe bağlı. Araştırmayı iletişim kurmak için bağlantı noktası. Bu, araştırma için aynı bağlantı noktası kullanılacaksa, her bitiş noktası için isteğe bağlıdır. Yoklama için farklı bir bağlantı noktası da yapılandırabilirsiniz. Olası değerler 1 ile 65535 arasında (dahil) arasındadır.<br /><br /> Varsayılan değer bitiş noktası tarafından ayarlanır.|
 | `intervalInSeconds` | `integer` | İsteğe bağlı. Uç noktanın sistem durumu için ne sıklıkla araştırılıp saniye cinsinden aralığı. Genellikle, zaman aralığı, örneği döndürmeden önce iki tam yoklamadan önce ayrılan zaman aşımı süresi (saniye cinsinden) değerinden biraz daha küçüktür.<br /><br /> Varsayılan değer 15 ' tir, en küçük değer 5 ' tir.|
 | `timeoutInSeconds`  | `integer` | İsteğe bağlı. Yanıt olmaması durumunda daha fazla trafiğin bitiş noktasına teslim edilmesine neden olacağı, saniye cinsinden zaman aşımı süresi. Bu değer, uç noktaların Azure 'da kullanılan tipik süreden daha hızlı veya daha yavaş kullanıma alınmasını sağlar (Varsayılanlar olan).<br /><br /> Varsayılan değer 31 ' dir, en küçük değer 11 ' dir.|

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cynthn
 ms.openlocfilehash: c2ed33aea77b5478e8d17f6bd0213ef3e778b806
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67188708"
 ---
 ## <a name="transfer-local-files-to-cloud-shell"></a>Yerel dosyaları Cloud Shell aktar
@@ -25,7 +25,7 @@ ms.locfileid: "67188708"
 
 ![Karşıya yüklenecek yerel dosyalar](../articles/cloud-shell/media/persisting-shell-storage/upload.png)
 1. Bağlı dosya paylaşımınıza gidin.
-2. Ardından **Yükle** düğmesini seçin.
+2. **Karşıya Yükle** düğmesini seçin.
 3. Karşıya yüklemek istediğiniz dosya veya dosyaları seçin.
 4. Karşıya yüklemeyi onaylayın.
 

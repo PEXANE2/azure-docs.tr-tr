@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 8936c2150c32a22877f9b56736ecc4b8f3424b32
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88533189"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>Öğretici: Uberflip ile tümleştirme Azure Active Directory
@@ -50,7 +50,7 @@ Uberflip aşağıdaki özellikleri destekler:
 
 Uberflip 'ın Azure AD 'ye tümleştirmesini yapılandırmak için, Azure Marketi 'nden yönetilen SaaS uygulamaları listenize Uberflip eklemeniz gerekir:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Sol bölmede **Azure Active Directory**’yi seçin.
 
    ![Azure Active Directory seçeneği](common/select-azuread.png)
@@ -94,7 +94,7 @@ Azure AD çoklu oturum açmayı Uberflip ile yapılandırmak için aşağıdaki 
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-1. **SAML Ile çoklu oturum açmayı ayarla** bölmesinde, **temel SAML yapılandırması** bölmesini açmak için **Düzenle** ' yi (kurşun kalem simgesi) seçin.
+1. **SAML Ile tek Sign-On ayarla** bölmesinde, **temel SAML yapılandırması** bölmesini açmak için **Düzenle** (kurşun kalem simgesi) öğesini seçin.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -115,7 +115,7 @@ Azure AD çoklu oturum açmayı Uberflip ile yapılandırmak için aşağıdaki 
 
      ![Uberflip etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/both-signonurl.png)
 
-1. **SAML Ile çoklu oturum açmayı ayarla** bölmesinde, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML Ile tek Sign-On ayarla** bölmesinde, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
    ![Federasyon meta verileri XML indirme seçeneği](common/metadataxml.png)
 

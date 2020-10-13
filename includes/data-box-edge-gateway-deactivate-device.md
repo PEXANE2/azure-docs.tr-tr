@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
 ms.openlocfilehash: 21c19027d21a87e199d74644cfc5c8f3cd52ba4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79128568"
 ---
-Cihazınızı sıfırlamak için, veri diskine ve cihazınızın önyükleme diskine ait tüm verileri güvenli bir şekilde silmek gerekir. 
+Cihazınızı sıfırlamak için veri diskinde ve cihazınızın önyükleme diskinde bulunan tüm verileri güvenli bir şekilde silmeniz gerekir. 
 
 `Reset-HcsAppliance`Cmdlet 'ini kullanarak hem veri disklerini hem de önyükleme diskini veya yalnızca veri disklerini silebilirsiniz. `ClearData`Ve `BootDisk` anahtarları, veri disklerini ve önyükleme diskini sırasıyla temizlemenize olanak tanır.
 
-`BootDisk`Anahtar, önyükleme diskini temizler ve cihazın kullanılamamasına neden olur. Yalnızca cihazın Microsoft 'a döndürülmesi gerektiğinde kullanılmalıdır. Daha fazla bilgi için bkz. [cihazı Microsoft 'A döndürme](https://docs.microsoft.com/azure/databox-online/data-box-edge-return-device).
+`BootDisk`Anahtar, önyükleme diskini temizler ve cihazın kullanılamamasına neden olur. Yalnızca cihazın Microsoft’a iade edilmesi gerektiğinde kullanılması gerekir. Daha fazla bilgi için bkz. [cihazı Microsoft 'A döndürme](https://docs.microsoft.com/azure/databox-online/data-box-edge-return-device).
 
-Yerel Web Kullanıcı arabiriminde cihaz sıfırlamayı kullanırsanız, yalnızca veri diskleri güvenli bir şekilde temizlenir ancak önyükleme diski bozulmadan tutulur. Önyükleme diski, cihaz yapılandırmasını içerir.
+Yerel web kullanıcı arabiriminde cihaz sıfırlama özelliğini kullanırsanız, yalnızca veri diskleri güvenli bir şekilde silinir ve önyükleme diskinde işlem yapılmaz. Önyükleme diski cihaz yapılandırmasını içerir.
 
 1. [PowerShell arabirimine bağlanın](#connect-to-the-powershell-interface).
 2. Komut istemine şunları yazın:

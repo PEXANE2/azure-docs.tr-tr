@@ -11,21 +11,21 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: jiajzhan
 ms.openlocfilehash: 770e97ad126f66efb43bf8cf7eb12f7510858192
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78675337"
 ---
 # <a name="speech-service-phonetic-sets"></a>Konuşma hizmeti fonetik kümeleri
 
-Konuşma hizmeti, yedi dilden oluşan fonetik alfaberlerini (kısaca "telefon kümeleri") tanımlar. `en-US`, `fr-FR`, `de-DE`, `es-ES`, `ja-JP`, `zh-CN`ve `zh-TW`. Konuşma hizmeti telefon kümeleri genellikle <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">Uluslararası Fonetik alfabesinden (IPA) <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>eşlenir. Konuşma hizmeti telefon kümeleri, metin okuma hizmeti sunumunun bir parçası olarak [konuşma sensumu biçimlendirme dili (SSML)](speech-synthesis-markup.md)ile birlikte kullanılır. Bu makalede, bu telefon kümelerinin nasıl eşleştirildiğini ve hangi telefon kümesinin ne zaman kullanılacağını öğreneceksiniz.
+Konuşma hizmeti, yedi dilden oluşan fonetik alfaberlerini (kısaca "telefon kümeleri") tanımlar. `en-US`, `fr-FR` , `de-DE` , `es-ES` , `ja-JP` , `zh-CN` ve `zh-TW` . Konuşma hizmeti telefon kümeleri genellikle <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">Uluslararası Fonetik alfabesinden (IPA) <span class="docon docon-navigate-external x-hidden-focus"></span> </a>eşlenir. Konuşma hizmeti telefon kümeleri, metin okuma hizmeti sunumunun bir parçası olarak [konuşma sensumu biçimlendirme dili (SSML)](speech-synthesis-markup.md)ile birlikte kullanılır. Bu makalede, bu telefon kümelerinin nasıl eşleştirildiğini ve hangi telefon kümesinin ne zaman kullanılacağını öğreneceksiniz.
 
 # <a name="en-us"></a>[en-US](#tab/en-US)
 
 ### <a name="english-suprasegmentals"></a>İngilizce suprasegmentals
 
-| Örnek 1 (ünsüz için OnSet, sesli harfler için ilk) | Örnek 2 (ünlüme için ıntersesli, Word, sesli harf için mus) | Örnek 3 (sessiz için Coda, sesli harf için son sözcük) | Açıklamalar |
+| Örnek 1 (ünsüz için OnSet, sesli harfler için ilk) | Örnek 2 (ünlüme için ıntersesli, Word, sesli harf için mus) | Örnek 3 (sessiz için Coda, sesli harf için son sözcük) | Yorumlar |
 |--|--|--|--|
 | Burger/b **1** r-g AX r/ | Falafel/f AX-l AA **1** -f AX l/ | gutar/g IH-t AA **1** r/ | Konuşma hizmeti telefon kümesi, Stle dili 'nin ünlüşinden sonra stres koy |
 | inopportune/ih **2** -n AA-p AX r-t ODTÜ 1 n/ | debenzerlik/d IH-s ih **2**-m AX-l Eh 1-r AX-t iy/ | iş gücü/w 1 r k-f Ao **2** r s/ | Konuşma hizmeti telefon kümesi, alt-stler hecesi ünlübir noktadan sonra stres koy |
@@ -123,7 +123,7 @@ Konuşma hizmeti, yedi dilden oluşan fonetik alfaberlerini (kısaca "telefon k�
 
 ### <a name="french-suprasegmentals"></a>Fransız suprasegmentals
 
-Konuşma hizmeti telefon kümesi, devam eden harften sonra stres koyar; ancak `fr-FR` konuşma hizmeti telefon SETI, IPA alt stres ' ˌ ' özelliğini desteklemiyor. IPA alt stres gerekliyse, IPA doğrudan kullanmanız gerekir.
+Konuşma hizmeti telefon kümesi, devam eden harften sonra stres koyar; ancak `fr-FR` konuşma hizmeti telefon seti, IPA alt stres ' ˌ ' özelliğini desteklemiyor. IPA alt stres gerekliyse, IPA doğrudan kullanmanız gerekir.
 
 ### <a name="french-vowels"></a>Fransızca sesli harfler
 
@@ -179,13 +179,13 @@ Konuşma hizmeti telefon kümesi, devam eden harften sonra stres koyar; ancak `f
 **1** *yalnızca bazı yabancı sözcükler için.*
 
 > [!TIP]
-> `fr-FR` Konuşma hizmeti telefon seti, aşağıdaki Fransızca, `n‿` `t‿`, ve `z‿`' ı desteklemez. Gerekirse, IPA doğrudan kullanmayı göz önünde bulundurmanız gerekir.
+> `fr-FR`Konuşma hizmeti telefon seti, aşağıdaki Fransızca,, ve ' ı desteklemez `n‿` `t‿` `z‿` . Gerekirse, IPA doğrudan kullanmayı göz önünde bulundurmanız gerekir.
 
 # <a name="de-de"></a>[de-DE](#tab/de-DE)
 
 ### <a name="german-suprasegmentals"></a>Almanya suprasegmentals
 
-| Örnek 1 (ünsüz için OnSet, sesli harfler için ilk) | Örnek 2 (ünlüme için ıntersesli, Word, sesli harf için mus) | Örnek 3 (sessiz için Coda, sesli harf için son sözcük) | Açıklamalar |
+| Örnek 1 (ünsüz için OnSet, sesli harfler için ilk) | Örnek 2 (ünlüme için ıntersesli, Word, sesli harf için mus) | Örnek 3 (sessiz için Coda, sesli harf için son sözcük) | Yorumlar |
 |--|--|--|--|
 | Anders/a **1** n-b AX r s/ | Multiplikationszeichen/m hata! l-t iy-p l iy-k a-TS y ow **1** n s-TS ay-c n/ | Biologie/b iy-ow-l ow-g Iy **1**/ | Konuşma hizmeti telefon kümesi, Stle dili 'nin ünlüşinden sonra stres koy |
 | Allgemeınwısen/a **2** l-g AX-m ay 1 n-v IH-s n/ | Abfallentsorgungsfirma/a 1 p-f a l-^ Eh n t-z Oh **2** AX r-g hata! ng s-f IH AX r-m a/ | Computertomographie/k Oh m-p y ODTÜ 1-t AX r-t ow-m ow-g r a-f iy **2**/ | Konuşma hizmeti telefon kümesi, alt-stler hecesi ünlübir noktadan sonra stres koy |
@@ -256,7 +256,7 @@ Konuşma hizmeti telefon kümesi, devam eden harften sonra stres koyar; ancak `f
 | Talar | `ts` | **Z**UG | AR**z**t | WIT**z** |  |
 | ch | `tʃ` | **TSch**echien | aufgepu**TSch**t | bdesdeu**TSch** |  |
 | v | `v` | **w**Inken | Q**u**Alle | [<sup>9</sup>](#de-c-9) Gr**Oo**ve |  |
-| x | [<sup>10</sup>](#de-c-10)`x`,[<sup>11</sup>](#de-c-11)`ç` | [<sup>12</sup>](#de-c-12) Ba**ch**silinebilir | Ma**mögli****ch**St | Schma**ch** ' ı**ch** |
+| x | [<sup>10</sup>](#de-c-10) `x` ,[<sup>11</sup>](#de-c-11)`ç` | [<sup>12</sup>](#de-c-12) Ba**ch**silinebilir | Ma**mögli****ch**St | Schma**ch** ' ı**ch** |
 | z | `z` | **s**UPA |  |  |  |
 | zh | `ʒ` | **G**enre | B**Re**ezinski | Edvi**g**e |
 
@@ -279,9 +279,9 @@ Konuşma hizmeti telefon kümesi, devam eden harften sonra stres koyar; ancak `f
 <a id="de-c-9"></a>
 **9** *yalnızca yabancı kaynak sözcüklerde, örneğin: gr**Oo**ve.*<br>
 <a id="de-c-10"></a>
-**10** *ön uç `x` olmayan tüm sesli harfler (a, aa, Oh, ow, uh, ODTÜ ve diphthong AW) sonrasında IPA sabit bir "CH" dır.*<br>
+**10** * `x` ön uç olmayan tüm sesli harfler (a, aa, Oh, ow, uh, ODTÜ ve diphthong AW) sonrasında IPA sabit bir "CH" dır.*<br>
 <a id="de-c-11"></a>
-**11** *IPA `ç` , ön sesli bir ' CH ' (IH, iy, Eh, AE, uy, UE, OE, eu de Diphthongs ay, oy) ve ünsüzler*<br>
+**11** *IPA, `ç` ön sesli bir ' CH ' (IH, iy, Eh, AE, uy, UE, OE, eu de Diphthongs ay, oy) ve ünsüzler*<br>
 <a id="de-c-12"></a>
 **12** *sözcük başlangıçta yalnızca yabancı kaynak kelimesiyle, örneğin: **J**Uan. Dili-başlangıçta da şu şekilde kelimeyle: ba**ch**silinebilir.*<br>
 
@@ -292,9 +292,9 @@ Konuşma hizmeti telefon kümesi, devam eden harften sonra stres koyar; ancak `f
 | ^      | `ʔ`   | beachtlich/b ax-^ a 1 x t-l IH c/ |
 
 > [!NOTE]
-> İki sesli harfler orijinal bir diphthong dışında iki ayrı sesli bir [GS\] telefonu eklememiz gerekiyor. Bu sözlü, daha fazla bilgi için bkz <a href="http://en.wikipedia.org/wiki/Glottal_stop" target="_blank">. gırtstop. <span class="docon docon-navigate-external x-hidden-focus"> </a> </a>
+> İki \] sesli harfler orijinal bir diphthong dışında iki ayrı sesli bir [GS telefonu eklememiz gerekiyor. Bu sözlü, daha fazla bilgi için bkz <a href="http://en.wikipedia.org/wiki/Glottal_stop" target="_blank"> . gırtstop <span class="docon docon-navigate-external x-hidden-focus"> </a> </a> .
 
-# <a name="es-es"></a>[es-ES](#tab/es-ES)
+# <a name="es-es"></a>[ES-ES](#tab/es-ES)
 
 ### <a name="spanish-vowels"></a>İspanyolca sesli harfler
 
@@ -336,11 +336,11 @@ Konuşma hizmeti telefon kümesi, devam eden harften sonra stres koyar; ancak `f
 | x      | `x`        | **j**OTA   | bir**j**o        | rElo**j**      |
 
 > [!TIP]
-> `es-ES` Konuşma hizmeti telefon seti, aşağıdaki İspanyolca IPA, `β`, `ð`ve `ɣ`' yi desteklemez. Gerekirse, IPA doğrudan kullanmayı göz önünde bulundurmanız gerekir.
+> `es-ES`Konuşma hizmeti telefon seti, aşağıdaki Ispanyolca IPA,, ve ' yi desteklemez `β` `ð` `ɣ` . Gerekirse, IPA doğrudan kullanmayı göz önünde bulundurmanız gerekir.
 
 # <a name="zh-cn"></a>[zh-CN](#tab/zh-CN)
 
-İçin `zh-CN` konuşma hizmeti telefon kümesi, yerel telefon <a href="https://en.wikipedia.org/wiki/Pinyin" target="_blank">Pinyin <span class="docon docon-navigate-external x-hidden-focus"></span> </a> kümesini temel alır.
+İçin konuşma hizmeti telefon kümesi, `zh-CN` yerel telefon <a href="https://en.wikipedia.org/wiki/Pinyin" target="_blank">Pinyin <span class="docon docon-navigate-external x-hidden-focus"></span> </a> kümesini temel alır.
 
 ### <a name="tone"></a>Ton
 
@@ -362,7 +362,7 @@ Konuşma hizmeti telefon kümesi, devam eden harften sonra stres koyar; ancak `f
 
 # <a name="zh-tw"></a>[zh-TW](#tab/zh-TW)
 
-İçin `zh-TW` konuşma hizmeti telefon kümesi, yerel telefonun <a href="https://en.wikipedia.org/wiki/Bopomofo" target="_blank">Bopomofo <span class="docon docon-navigate-external x-hidden-focus"></span> </a> kümesini temel alır.
+İçin konuşma hizmeti telefon kümesi, `zh-TW` Yerel telefonun <a href="https://en.wikipedia.org/wiki/Bopomofo" target="_blank">Bopomofo <span class="docon docon-navigate-external x-hidden-focus"></span> </a> kümesini temel alır.
 
 ### <a name="tone"></a>Ton
 
@@ -384,14 +384,14 @@ Konuşma hizmeti telefon kümesi, devam eden harften sonra stres koyar; ancak `f
 
 # <a name="ja-jp"></a>[ja-JP](#tab/ja-JP)
 
-İçin `ja-JP` konuşma hizmeti telefon kümesi, yerel telefon <a href="https://en.wikipedia.org/wiki/Kana" target="_blank">kana <span class="docon docon-navigate-external x-hidden-focus"></span> </a> kümesini temel alır.
+İçin konuşma hizmeti telefon kümesi, `ja-JP` yerel telefon <a href="https://en.wikipedia.org/wiki/Kana" target="_blank">kana <span class="docon docon-navigate-external x-hidden-focus"></span> </a> kümesini temel alır.
 
 ### <a name="stress"></a>Stress
 
 | `sapi` | `ipa`          |
 |--------|----------------|
-| `ˈ`    | `ˈ`mainstress |
-| `+`    | `ˌ`Alt stres  |
+| `ˈ`    | `ˈ` mainstress |
+| `+`    | `ˌ` Alt stres  |
 
 #### <a name="example"></a>Örnek
 
