@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
 ms.openlocfilehash: a0171481b97cff2ea085a80b387bff13590529a5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90905890"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Döküm alma ve geri yükleme işlemlerini kullanarak MySQL veritabanınızı MySQL için Azure Veritabanı'na geçirme
@@ -67,7 +67,7 @@ Bağlanmak için, MySQL için Azure veritabanı **'Na genel bakış** bölümün
 
 Bağlantı bilgilerini MySQL çalışma ekranına ekleyin.
 
-:::image type="content" source="./media/concepts-migrate-dump-restore/2_setup-new-connection.png" alt-text="MySQL çalışma ekranı bağlantı dizesi":::
+:::image type="content" source="./media/concepts-migrate-dump-restore/2_setup-new-connection.png" alt-text="Azure portal bağlantı bilgilerini bulun":::
 
 ## <a name="preparing-the-target-azure-database-for-mysql-server-for-fast-data-loads"></a>Hızlı veri yükleri için MySQL için Azure veritabanı sunucusu için hedef hazırlama
 Daha hızlı veri yükleri için hedef Azure veritabanını MySQL sunucusuna hazırlamak üzere aşağıdaki sunucu parametreleri ve yapılandırmasının değiştirilmesi gerekir.

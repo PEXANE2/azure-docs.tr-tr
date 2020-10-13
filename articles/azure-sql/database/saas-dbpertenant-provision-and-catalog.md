@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: bc649551986190f944e3225ff0914d091acd3f88
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619704"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Yeni kiracılar sağlamayı ve bunları kataloğa kaydetmeyi öğrenin
@@ -86,7 +86,7 @@ Wingtip bilet uygulamasının yeni kiracı sağlaması uygulayıp uygulamadığ�
 
 2. Kesme noktası eklemek için imlecinizi *Yeni-kiracı '* ı belirten satıra yerleştirin. Ardından F9 tuşuna basın.
 
-   ![Ekran görüntüsü, bir kesme noktası eklemek için vurgulanmış yeni kiracı içeren bir komut dosyası gösterir.](./media/saas-dbpertenant-provision-and-catalog/breakpoint.png)
+   ![Ekran görüntüsü, New-Tenant bir kesme noktası eklemek için vurgulanmış bir komut dosyası gösterir.](./media/saas-dbpertenant-provision-and-catalog/breakpoint.png)
 
 3. Betiği çalıştırmak için F5 tuşuna basın.
 
@@ -103,7 +103,7 @@ Bu iş akışını açık bir şekilde izlemeniz gerekmez. Betikte hata ayıklam
 
 * **CatalogAndDatabaseManagement. psm1 modülünü içeri aktarın.** Parça [yönetimi](elastic-scale-shard-map-management.md) işlevleri üzerinde bir katalog ve kiracı düzeyinde bir soyutlama sağlar. Bu modül, Katalog deseninin çoğunu kapsüller ve araştırmayı kapsar.
 * **SubscriptionManagement. psm1 modülünü içeri aktarın.** Azure 'da oturum açma ve birlikte çalışmak istediğiniz Azure aboneliğini seçme işlevlerini içerir.
-* **Yapılandırma ayrıntılarını alın.** F11 kullanarak Get-Configuration içine geçin ve uygulama yapılandırmasının nasıl belirtilme şeklini görün. Kaynak adlarına ve uygulamaya özgü diğer değerler burada tanımlanmıştır. Betikleri öğrenene kadar bu değerleri değiştirmeyin.
+* **Yapılandırma ayrıntılarını alın.** F11 kullanarak Get-Configuration adımla ve uygulama yapılandırmasının nasıl belirtilme hakkında bilgi sahibi olmanız gerekir. Kaynak adlarına ve uygulamaya özgü diğer değerler burada tanımlanmıştır. Betikleri öğrenene kadar bu değerleri değiştirmeyin.
 * **Katalog nesnesini alın.** Daha yüksek düzeyde betikte kullanılan bir katalog nesnesini oluşturan ve döndüren Get-Catalog ' a adımla. Bu işlev, **Azureshardmanagement. psm1**'dan içeri aktarılan parça yönetim işlevlerini kullanır. Katalog nesnesi aşağıdaki öğelerden oluşur:
 
    * $catalogServerFullyQualifiedName, standart gövde ile ve Kullanıcı adınız: _catalog- \<user\> . Database. Windows .net_kullanılarak oluşturulur.

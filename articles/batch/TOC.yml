@@ -257,12 +257,16 @@
           href: batch-pool-resize-start-event.md
         - name: Havuz yeniden boyutlandırma tamamlama olayı
           href: batch-pool-resize-complete-event.md
+        - name: Havuz otomatik ölçeklendirme olayı
+          href: batch-pool-autoscale-event.md
         - name: Görev başlangıç olayı
           href: batch-task-start-event.md
         - name: Görev tamamlama olayı
           href: batch-task-complete-event.md
         - name: Görev başarısızlık olayı
           href: batch-task-fail-event.md
+        - name: Görev zamanlaması başarısızlık olayı
+          href: batch-task-schedule-fail-event.md
     - name: Azure İlkesi yerleşik ilkeler
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

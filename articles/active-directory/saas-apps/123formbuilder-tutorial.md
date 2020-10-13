@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: jeedes
 ms.openlocfilehash: d980e0a5dd4b042f919775c205a20ea69e51f0bd
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91709028"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-123formbuilder-sso"></a>Öğretici: 123FormBuilder SSO ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -143,7 +143,7 @@ Bu bölümde, 123FormBuilder SSO erişimi vererek Azure çoklu oturum açma öze
 
 2. **Microsoft Azure AD çoklu oturum açma-uygulama ayarlarını yapılandırma** aşağıdaki adımları uygulayın:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/123formbuilder-tutorial/url3.png)
+    ![Tek Sign-On yapılandırma](./media/123formbuilder-tutorial/url3.png)
 
     a. Uygulamayı **IDP tarafından başlatılan modda**yapılandırmak istiyorsanız, örneğiniz için **tanımlayıcı** değeri KOPYALAYıN ve Azure Portal **temel SAML yapılandırması** bölümünde **tanımlayıcı** metin kutusuna yapıştırın.
 

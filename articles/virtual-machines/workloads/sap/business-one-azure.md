@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ccec58f012dcd4b6371c15e79fa964600e775f54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ea10ee5b6fb14558e6bb93b83da0d5c46cff330
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654659"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977655"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure Sanal Makineler'de SAP Business One
 Bu belge, Azure sanal makinelerinde SAP Business One dağıtımı için rehberlik sağlar. Belgeler, SAP için Iş 'nin yükleme belgelerinin yerini almaz. Belgeler, Azure altyapısına ilişkin Iş tek uygulamaları çalıştırmak için temel planlama ve dağıtım yönergelerini kapsamalıdır.
@@ -95,7 +95,7 @@ Azure 'da dağıtmanız gereken ağ altyapısı, kendiniz için tek bir Iş sist
 Sunulan Basitleştirilmiş yapılandırma, yönlendirmeyi denetlemeye ve sınırlamaya izin veren çeşitli güvenlik örnekleri sunar. İle başlar 
 
 - Müşterinin Şirket içi tarafında yönlendirici/güvenlik duvarı.
-- Sonraki örnek, içinde SAP Business One yapılandırmanızı çalıştırdığınız Azure VNet 'in yönlendirme ve güvenlik kurallarını tanıtmak için kullanabileceğiniz [Azure ağ güvenlik grubudur](../../../virtual-network/security-overview.md) .
+- Sonraki örnek, içinde SAP Business One yapılandırmanızı çalıştırdığınız Azure VNet 'in yönlendirme ve güvenlik kurallarını tanıtmak için kullanabileceğiniz [Azure ağ güvenlik grubudur](../../../virtual-network/network-security-groups-overview.md) .
 - Iş kolu kullanıcılarının, veritabanını çalıştıran Iş tek bir sunucuyu çalıştıran sunucuyu görebilmesi için, iş bir istemciyi ve iş tek sunucusunu barındıran VM 'yi VNet 'in içindeki iki farklı alt ağda ayırmanız gerekir.
 - Iş tek sunucuya erişimi sınırlandırmak için, Azure NSG 'yi iki farklı alt ağa yeniden atandı.
 
@@ -111,7 +111,7 @@ Veritabanı türü için SQL Server ve SAP HANA kullanılabilir. DBMS 'den bağ�
 
 Yalnızca belirli ve genel veritabanı belgelerinde vurgulandı olsa da şunları öğrenmelisiniz:
 
-- Azure ['Da Windows sanal makinelerinin kullanılabilirliğini yönetme](../../windows/manage-availability.md) ve [Linux sanal makinelerinin Azure 'da kullanılabilirliğini yönetme](../../linux/manage-availability.md)
+- Azure ['Da Windows sanal makinelerinin kullanılabilirliğini yönetme](../../manage-availability.md) ve [Linux sanal makinelerinin Azure 'da kullanılabilirliğini yönetme](../../manage-availability.md)
 - [Sanal Makineler için SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)
 
 Bu belgeler, depolama türleri ve yüksek kullanılabilirlik yapılandırması seçimine karar vermenize yardımcı olmalıdır.

@@ -9,10 +9,10 @@ ms.date: 04/11/2019
 ms.author: asrastog
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 815dc0a90d79323fb88c98867b5540105a6fa8cc
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91356205"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Azure Cosmos DB'yi kullanarak Azure IoT Hub cihaz bağlantısı olaylarını sıralama
@@ -21,7 +21,7 @@ Azure Event Grid, etkinlik tabanlı uygulamalar oluşturmanıza ve iş çözüml
 
 Sıra numarası, onaltılık bir sayının dize gösterimidir. Daha büyük sayıyı belirlemek için dize karşılaştırma kullanabilirsiniz. Dizeyi onaltılı olarak dönüştürüyorsanız sayı 256 bitlik bir sayı olacaktır. Sıra numarası kesinlikle artıyor ve en son olay diğer olaylardan daha yüksek bir sayıya sahip olacaktır. Bu, sık kullanılan cihaz bağlantısı ve bağlantınız varsa ve Azure Event Grid etkinlik sıralamasını desteklemediğinden bir aşağı akış eylemini tetiklemek için yalnızca en son olayın kullanılmasını sağlamak istiyorsanız kullanışlıdır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Etkin bir Azure hesabı. Bir [hesabınız yoksa ücretsiz bir hesap oluşturabilirsiniz](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -333,7 +333,7 @@ Yürütülen saklı yordamın sonuçlarını Cosmos DB belgenizde görebilirsini
 
    ![Outcome](./media/iot-hub-how-to-order-connection-state-events/cosmosDB-outcome.png)
 
-## <a name="use-the-azure-cli"></a>Azure CLI kullanma
+## <a name="use-the-azure-cli"></a>Azure CLI'yi kullanma
 
 [Azure Portal](https://portal.azure.com)kullanmak yerine, IoT Hub ADıMLARı Azure CLI kullanarak gerçekleştirebilirsiniz. Ayrıntılar için, [olay aboneliği oluşturmak](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) ve [IoT cihazı oluşturmak](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create)için Azure CLI sayfalarına bakın.
 

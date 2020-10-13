@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/05/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a788134f64066b0469d34fbfbacacd8c45438bde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 295c6376d555585d58f7c0b57c3ac4ba682e9bd5
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85203155"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948281"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -77,15 +77,15 @@ Bir **teknisyen** öğesi, talep sağlayıcısı tarafından desteklenen bir tek
 
 | Öznitelik | Gerekli | Açıklama |
 |---------|---------|---------|
-| Id | Evet | Teknik profilin benzersiz tanıtıcısı. Teknik profile bu tanımlayıcı kullanılarak ilke dosyasındaki diğer öğelerden başvurulabilir. Örneğin, **Orchestrationsteps** ve **Validationteknisyen alprofile**. |
+| Id | Yes | Teknik profilin benzersiz tanıtıcısı. Teknik profile bu tanımlayıcı kullanılarak ilke dosyasındaki diğer öğelerden başvurulabilir. Örneğin, **Orchestrationsteps** ve **Validationteknisyen alprofile**. |
 
 **Teknisyen** aşağıdaki öğeleri içerir:
 
 | Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | Etki alanı | 0:1 | Teknik profilin etki alanı adı. Örneğin, teknik profiliniz Facebook kimlik sağlayıcısını belirtiyorsa, etki alanı adı Facebook.com olur. |
-| DisplayName | 1:1 | Kullanıcılara görüntülenebilecek teknik profilin adı. |
-| Açıklama | 0:1 | Kullanıcılara görüntülenebilecek teknik profilin açıklaması. |
+| DisplayName | 1:1 | Teknik profilin görünen adı. |
+| Açıklama | 0:1 | Teknik profilin açıklaması. |
 | Protokol | 0:1 | Diğer tarafla iletişim için kullanılan protokol. |
 | Meta veri | 0:1 | Bir işlem sırasında uç noktayla iletişim kurmak için protokol tarafından kullanılan anahtar/değer çiftleri koleksiyonu. |
 | Inputtokenformat | 0:1 | Giriş belirtecinin biçimi. Olası değerler: `JSON` , `JWT` , `SAML11` veya `SAML2` . `JWT`Değer, IETF belirtimine göre JSON Web Token temsil eder. `SAML11`Değer, OASSıS belirtimine göre SAML 1,1 güvenlik belirtecini temsil eder.  `SAML2`Değer, OASSıS belirtimine göre SAML 2,0 güvenlik belirtecini temsil eder. |
@@ -111,7 +111,7 @@ Bir **teknisyen** öğesi, talep sağlayıcısı tarafından desteklenen bir tek
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Ad | Evet | Teknik profilin bir parçası olarak kullanılan Azure AD B2C tarafından desteklenen geçerli bir protokol adı. Olası değerler: `OAuth1` , `OAuth2` , `SAML2` , `OpenIdConnect` , `Proprietary` veya `None` . |
+| Ad | Yes | Teknik profilin bir parçası olarak kullanılan Azure AD B2C tarafından desteklenen geçerli bir protokol adı. Olası değerler: `OAuth1` , `OAuth2` , `SAML2` , `OpenIdConnect` , `Proprietary` veya `None` . |
 | İşleyici | Hayır | Protokol adı olarak ayarlandığında `Proprietary` , protokol işleyicisini belirlemek için Azure AD B2C tarafından kullanılan derlemenin tam nitelikli adını belirtin. |
 
 ## <a name="metadata"></a>Meta veri
@@ -128,7 +128,7 @@ Bir **teknisyen** öğesi, talep sağlayıcısı tarafından desteklenen bir tek
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Anahtar | Evet | Meta veri anahtarı. Meta veri öğelerinin listesi için her teknik profil türüne bakın. |
+| Anahtar | Yes | Meta veri anahtarı. Meta veri öğelerinin listesi için her teknik profil türüne bakın. |
 
 ## <a name="cryptographickeys"></a>CryptographicKeys
 
@@ -145,7 +145,7 @@ Bir **teknisyen** öğesi, talep sağlayıcısı tarafından desteklenen bir tek
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | Id | Hayır | İlke dosyasındaki diğer öğelerden başvurulan belirli bir anahtar çiftinin benzersiz tanıtıcısı. |
-| Storagereferenceıd değerine | Evet | İlke dosyasındaki diğer öğelerden başvurulan bir depolama anahtarı kapsayıcısının tanımlayıcı değeri. |
+| Storagereferenceıd değerine | Yes | İlke dosyasındaki diğer öğelerden başvurulan bir depolama anahtarı kapsayıcısının tanımlayıcı değeri. |
 
 ## <a name="inputclaimstransformations"></a>Inputclaimstransformations
 
@@ -161,7 +161,7 @@ Bir **teknisyen** öğesi, talep sağlayıcısı tarafından desteklenen bir tek
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ReferenceId | Evet | İlke dosyasında veya üst ilke dosyasında zaten tanımlanmış olan bir talep dönüşümünün tanımlayıcısı. |
+| ReferenceId | Yes | İlke dosyasında veya üst ilke dosyasında zaten tanımlanmış olan bir talep dönüşümünün tanımlayıcısı. |
 
 ## <a name="inputclaims"></a>Inputclaims
 
@@ -177,7 +177,7 @@ Bir **teknisyen** öğesi, talep sağlayıcısı tarafından desteklenen bir tek
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Evet | İlke dosyası veya üst ilke dosyasında ClaimsSchema bölümünde zaten tanımlanmış olan bir talep türünün tanımlayıcısı. |
+| ClaimTypeReferenceId | Yes | İlke dosyası veya üst ilke dosyasında ClaimsSchema bölümünde zaten tanımlanmış olan bir talep türünün tanımlayıcısı. |
 | Değerinin | Hayır | ClaimTypeReferenceId tarafından belirtilen talep yoksa, sonuçta elde edilen talebin teknik profille bir ınputclaim olarak kullanılabilmesi için bir talep oluşturmak için kullanılacak varsayılan değer. |
 | PartnerClaimType | Hayır | Belirtilen ilke talep türünün eşlendiği dış iş ortağının talep türünün tanımlayıcısı. PartnerClaimType özniteliği belirtilmemişse, belirtilen ilke talep türü aynı ada sahip iş ortağı talep türüne eşlenir. Talep türü adınız diğer taraftan farklıysa bu özelliği kullanın. Örneğin, ilk talep adı ' bir ' ise, iş ortağı ' first_name ' adlı bir talep kullanır. |
 
@@ -217,7 +217,7 @@ Dislayclaim özelliği şu anda **önizlemededir**.
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Evet | İlke dosyası veya üst ilke dosyasında ClaimsSchema bölümünde zaten tanımlanmış olan bir talep türünün tanımlayıcısı. |
+| ClaimTypeReferenceId | Yes | İlke dosyası veya üst ilke dosyasında ClaimsSchema bölümünde zaten tanımlanmış olan bir talep türünün tanımlayıcısı. |
 | Değerinin | Hayır | ClaimTypeReferenceId tarafından belirtilen talep yoksa, sonuçta elde edilen talebin teknik profille bir ınputclaim olarak kullanılabilmesi için bir talep oluşturmak için kullanılacak varsayılan değer. |
 | PartnerClaimType | Hayır | Belirtilen ilke talep türünün eşlendiği dış iş ortağının talep türünün tanımlayıcısı. PartnerClaimType özniteliği belirtilmemişse, belirtilen ilke talep türü aynı ada sahip iş ortağı talep türüne eşlenir. Talep türü adınız diğer taraftan farklıysa bu özelliği kullanın. Örneğin, ilk talep adı ' bir ' ise, iş ortağı ' first_name ' adlı bir talep kullanır. |
 
@@ -235,7 +235,7 @@ Dislayclaim özelliği şu anda **önizlemededir**.
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Evet | İlke dosyası veya üst ilke dosyasında ClaimsSchema bölümünde zaten tanımlanmış olan bir talep türünün tanımlayıcısı. |
+| ClaimTypeReferenceId | Yes | İlke dosyası veya üst ilke dosyasında ClaimsSchema bölümünde zaten tanımlanmış olan bir talep türünün tanımlayıcısı. |
 | Değerinin | Hayır | ClaimTypeReferenceId tarafından belirtilen talep yoksa, sonuçta elde edilen talebin teknik profille bir ınputclaim olarak kullanılabilmesi için bir talep oluşturmak için kullanılacak varsayılan değer. |
 |AlwaysUseDefaultValue |Hayır |Varsayılan değerin kullanımını zorunlu kılın.  |
 | PartnerClaimType | Hayır | Belirtilen ilke talep türünün eşlendiği dış iş ortağının talep türünün tanımlayıcısı. PartnerClaimType özniteliği belirtilmemişse, belirtilen ilke talep türü aynı ada sahip iş ortağı talep türüne eşlenir. Talep türü adınız diğer taraftan farklıysa bu özelliği kullanın. Örneğin, ilk talep adı ' bir ' ise, iş ortağı ' first_name ' adlı bir talep kullanır. |
@@ -254,7 +254,7 @@ Dislayclaim özelliği şu anda **önizlemededir**.
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ReferenceId | Evet | İlke dosyasında veya üst ilke dosyasında zaten tanımlanmış olan bir talep dönüşümünün tanımlayıcısı. |
+| ReferenceId | Yes | İlke dosyasında veya üst ilke dosyasında zaten tanımlanmış olan bir talep dönüşümünün tanımlayıcısı. |
 
 ## <a name="validationtechnicalprofiles"></a>Validationcealprofiles
 
@@ -270,7 +270,7 @@ Dislayclaim özelliği şu anda **önizlemededir**.
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ReferenceId | Evet | İlke dosyasında veya üst ilke dosyasında zaten tanımlanmış olan bir teknik profilin tanımlayıcısı. |
+| ReferenceId | Yes | İlke dosyasında veya üst ilke dosyasında zaten tanımlanmış olan bir teknik profilin tanımlayıcısı. |
 
 ## <a name="subjectnaminginfo"></a>Subjectnamingınfo
 
@@ -278,7 +278,7 @@ Dislayclaim özelliği şu anda **önizlemededir**.
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ClaimType | Evet | İlke dosyasında ClaimsSchema bölümünde zaten tanımlanmış olan bir talep türünün tanımlayıcısı. |
+| ClaimType | Yes | İlke dosyasında ClaimsSchema bölümünde zaten tanımlanmış olan bir talep türünün tanımlayıcısı. |
 
 ## <a name="includetechnicalprofile"></a>Includetekchnicalprofile
 
@@ -286,7 +286,7 @@ Dislayclaim özelliği şu anda **önizlemededir**.
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ReferenceId | Evet | İlke dosyasında veya üst ilke dosyasında zaten tanımlanmış olan bir teknik profilin tanımlayıcısı. |
+| ReferenceId | Yes | İlke dosyasında veya üst ilke dosyasında zaten tanımlanmış olan bir teknik profilin tanımlayıcısı. |
 
 ## <a name="usetechnicalprofileforsessionmanagement"></a>Useteknisyen Alprofileforsessionmanagement
 
@@ -294,7 +294,7 @@ Dislayclaim özelliği şu anda **önizlemededir**.
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ReferenceId | Evet | İlke dosyasında veya üst ilke dosyasında zaten tanımlanmış olan bir teknik profilin tanımlayıcısı. |
+| ReferenceId | Yes | İlke dosyasında veya üst ilke dosyasında zaten tanımlanmış olan bir teknik profilin tanımlayıcısı. |
 
 ## <a name="enabledforuserjourneys"></a>Enabledforuser, neys
 

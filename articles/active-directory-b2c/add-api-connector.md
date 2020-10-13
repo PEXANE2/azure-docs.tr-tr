@@ -14,7 +14,7 @@ ms.openlocfilehash: 824b8f386e6bf822444450305e603e6068a34c5e
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91854367"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>Kaydolma Kullanıcı akışına API Bağlayıcısı ekleme
@@ -23,7 +23,7 @@ Bir [API bağlayıcısını](api-connectors-overview.md)kullanmak IÇIN önce AP
 
 ## <a name="create-an-api-connector"></a>API Bağlayıcısı oluşturma
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. **Azure hizmetleri**altında **Azure AD B2C**' yi seçin.
 4. **API bağlayıcıları (Önizleme)** öğesini seçin ve ardından **yeni API Bağlayıcısı**' nı seçin.
 
@@ -86,7 +86,7 @@ Ayrıca, **Kullanıcı arabirimi yerel ayarları (' ui_locales ')** talebi tüm 
 
 Kaydolma Kullanıcı akışına bir API Bağlayıcısı eklemek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. **Azure hizmetleri**altında **Azure AD B2C**' yi seçin.
 4. **Kullanıcı akışları**' nı seçin ve ardından API bağlayıcısını eklemek istediğiniz kullanıcı akışını seçin.
 5. **API bağlayıcıları**' nı seçin ve ardından Kullanıcı akışında aşağıdaki adımlarda ÇAĞıRMAK istediğiniz API uç noktalarını seçin:
@@ -296,7 +296,7 @@ Content-type: application/json
 ### <a name="using-serverless-cloud-functions"></a>Sunucusuz bulut işlevlerini kullanma
 Azure Işlevlerinde HTTP Tetikleyicileri gibi sunucusuz işlevler, API Bağlayıcısı ile kullanmak üzere API uç noktaları oluşturma basit bir yol sağlar. [Örneğin](code-samples.md#api-connectors), doğrulama mantığını gerçekleştirmek ve belirli e-posta etki alanları için oturum açma işlemleri kısıtlamak gibi sunucusuz bulut işlevini kullanabilirsiniz. Sunucusuz bulut işlevi ayrıca daha karmaşık senaryolar için diğer Web API 'Lerini, Kullanıcı depolarını ve diğer bulut hizmetlerini çağırıp çağırabilir.
 
-### <a name="best-practices"></a>En iyi uygulamalar
+### <a name="best-practices"></a>Önerilen uygulamalar
 Aşağıdakileri doğrulayın:
 * API 'niz, yukarıda özetlenen API isteği ve yanıt sözleşmelerini takip eden bir. 
 * API bağlayıcısının **uç nokta URL 'si** doğru API uç noktasını işaret eder.

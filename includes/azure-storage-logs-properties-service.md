@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: normesta
 ms.openlocfilehash: 6d90b4b68f1f9f4a0fcd20c1d371a32759449fab
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91711634"
 ---
 | Özellik | Açıklama |
@@ -29,7 +29,7 @@ ms.locfileid: "91711634"
 |**requestMd5** | İstekteki **Content-MD5** üst bilgisi veya **x-MS-Content-MD5** üst bilgisi değeri. Bu alanda belirtilen MD5 karma değeri istekteki içeriği temsil eder. Örneğin: `788815fd0198be0d275ad329cafd1830`. <br>Bu alan boş olabilir.  |
 |**serverMd5** | Depolama hizmeti tarafından hesaplanan MD5 karmasının değeri. Örneğin: `3228b3cf1069a5489b298446321f8521`. <br>Bu alan boş olabilir.  |
 |**Zamanı** | Döndürülen nesnenin son değiştirilme zamanı (LMT).  Örneğin: `Tuesday, 09-Aug-11 21:13:26 GMT`. <br>Birden çok nesne döndüresağlayan işlemler için bu alan boştur. |
-|**conditionsUsed** | Bir koşulu temsil eden, anahtar-değer çiftleri için noktalı virgülle ayrılmış bir liste. Koşullar aşağıdakilerden herhangi biri olabilir: <li> If-Modified-Since <li> If-değiştirilmemiş-bu yana <li> IF-Match <li> If-None-Match  <br> Örneğin: `If-Modified-Since=Friday, 05-Aug-11 19:11:54 GMT`. |
+|**conditionsUsed** | Bir koşulu temsil eden, anahtar-değer çiftleri için noktalı virgülle ayrılmış bir liste. Koşullar aşağıdakilerden herhangi biri olabilir: <li> If-Modified-Since <li> If-değiştirilmemiş-bu yana <li> If-Match <li> If-None-Match  <br> Örneğin: `If-Modified-Since=Friday, 05-Aug-11 19:11:54 GMT`. |
 |**contentLengthHeader** | Depolama hizmetine gönderilen isteğin Içerik uzunluğu üstbilgisinin değeri. İstek başarılı olduysa, bu değer requestBodySize değerine eşittir. Bir istek başarısız olursa, bu değer requestBodySize eşit olmayabilir veya boş olabilir. |
 |**tlsVersion** | İstek bağlantısında kullanılan TLS sürümü. Örneğin: `TLS 1.2`. |
 |**Smbtreeconnectıd** | Sunucu Ileti bloğu ( **SMB) ağaç** bağlantı zamanında oluşturulmuştur. Örnek: `0x3` |

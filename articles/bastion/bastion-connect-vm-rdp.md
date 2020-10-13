@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 02/24/2020
+ms.date: 10/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 79eb09a005f62846fc2f7e3e7b493d5e366edabc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b9653daf945b6a189bc528cd00de832ae97c03b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84744332"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978161"
 ---
 # <a name="connect-to-a-windows-virtual-machine-using-azure-bastion"></a>Azure savunma kullanarak bir Windows sanal makinesine bağlanma
 
@@ -21,6 +21,8 @@ Azure savunma 'yı kullanarak, sanal makinelerinize doğrudan Azure portal SSL �
 Azure savunma, sağlandığı sanal ağdaki tüm VM 'lere güvenli bağlantı sağlar. Azure savunma 'nın kullanılması, sanal makinelerinizin, RDP/SSH bağlantı noktalarını dış dünyaya sunulmasını sağlarken RDP/SSH kullanarak güvenli erişim sağlamaya devam eder. Daha fazla bilgi için bkz. [Genel Bakış](bastion-overview.md).
 
 ## <a name="before-you-begin"></a>Başlamadan önce
+
+### <a name="install-the-bastion-host"></a>Savunma konağını yükler
 
 VM 'nin bulunduğu sanal ağ için bir Azure savunma ana bilgisayarı ayarladığınızdan emin olun. Savunma hizmeti, sanal ağınıza sağlandıktan ve dağıtıldıktan sonra, sanal ağdaki herhangi bir VM 'ye bağlanmak için kullanabilirsiniz. Bir Azure savunma ana bilgisayarı kurmak için bkz. [Azure savunma Konağı oluşturma](bastion-create-host-portal.md).
 
@@ -38,18 +40,10 @@ Windows VM 'ye bağlanmak için aşağıdaki bağlantı noktalarının Windows V
 
 * Gelen bağlantı noktaları: RDP (3389)
 
-## <a name="connect"></a><a name="rdp"></a>Bağlanabilmeniz
+## <a name="connect"></a><a name="rdp"></a>Bağlan
 
-1. [Azure portalını](https://portal.azure.com) açın. Bağlanmak istediğiniz sanal makineye gidin, ardından **Bağlan** ' a tıklayın ve **açılan listeden savunma** ' yi seçin.
-
-   ![VM bağlantısı](./media/bastion-connect-vm-rdp/connect.png)
-1. Atlama ' ye tıkladıktan sonra, üç sekmeye (RDP, SSH ve savunma) sahip bir yan çubuk görüntülenir. Sanal ağ için bir savunma sağlandıysa, savunma sekmesi varsayılan olarak etkindir. Sanal ağ için bir savunma sağlamadıysanız, bağlantıyı yapılandırmak için bağlantıya tıklayabilirsiniz. Yapılandırma yönergeleri için bkz. yapılandırmayı [yapılandırma](bastion-create-host-portal.md).
-
-   ![Savunma sekmesi](./media/bastion-connect-vm-rdp/bastion.png)
-1. Savunma sekmesinde, sanal makinenizin Kullanıcı adını ve parolasını girin ve ardından **Bağlan**' a tıklayın. Bu sanal makineyle savunma aracılığıyla RDP bağlantısı, bağlantı noktası 443 ve savunma hizmeti kullanılarak doğrudan Azure portal (HTML5 üzerinden) açılır.
-
-   ![RDP bağlantısı](./media/bastion-connect-vm-rdp/443rdp.png)
+[!INCLUDE [Connect to a Windows VM](../../includes/bastion-vm-rdp.md)]
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Savunma [hakkında SSS](bastion-faq.md) makalesini okuyun
+Savunma [hakkında SSS](bastion-faq.md)makalesini okuyun.

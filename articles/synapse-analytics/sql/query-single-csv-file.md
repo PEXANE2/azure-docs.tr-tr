@@ -10,10 +10,10 @@ ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: d2f8a30503e14e647cbc9151ebcea7efa000ca07
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91288299"
 ---
 # <a name="query-csv-files"></a>CSV dosyalarını sorgulama
@@ -93,7 +93,7 @@ Tümce içindeki bir veri türünden sonraki sayılar `WITH` CSV dosyasındaki s
 
 Aşağıdaki bölümlerde, çeşitli CSV dosyası türlerini sorgulama hakkında bilgi alabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 İlk adımınız tabloların oluşturulacağı **bir veritabanı oluşturmaktır** . Sonra bu veritabanında [kurulum betiğini](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) yürüterek nesneleri başlatın. Bu kurulum betiği, veri kaynaklarını, veritabanı kapsamlı kimlik bilgilerini ve bu örneklerde kullanılan harici dosya biçimlerini oluşturacaktır.
 
@@ -131,7 +131,7 @@ Aşağıdaki sorgu, bir üst bilgi satırı olmadan bir dosyanın nasıl okunaca
 
 Dosya önizlemesi:
 
-![Üst bilgi satırı olmayan ve UNIX stili yeni satıra sahip CSV dosyasının ilk 10 satırı.](./media/query-single-csv-file/population-unix.png)
+![Üst bilgi satırı olmayan ve yeni Unix-Style satır içeren CSV dosyasının ilk 10 satırı.](./media/query-single-csv-file/population-unix.png)
 
 ```sql
 SELECT *
@@ -159,7 +159,7 @@ Aşağıdaki sorgu, bir üst bilgi satırı olan bir okuma dosyasının, UNIX st
 
 Dosya önizlemesi:
 
-![Üst bilgi satırı ve UNIX stili yeni satıra sahip CSV dosyasının ilk 10 satırı.](./media/query-single-csv-file/population-unix-hdr.png)
+![Üst bilgi satırı ve Unix-Style yeni satırla CSV dosyasının ilk 10 satırı.](./media/query-single-csv-file/population-unix-hdr.png)
 
 ```sql
 SELECT *
@@ -187,7 +187,7 @@ Aşağıdaki sorgu, bir üst bilgi satırıyla bir dosyanın nasıl okunacağın
 
 Dosya önizlemesi:
 
-![Üst bilgi satırı ve UNIX stili yeni satır ve tırnak işaretli değerler içeren CSV dosyasının ilk 10 satırı.](./media/query-single-csv-file/population-unix-hdr-quoted.png)
+![Üst bilgi satırı ve Unix-Style yeni satır ve tırnak işaretli değerler içeren CSV dosyasının ilk 10 satırı.](./media/query-single-csv-file/population-unix-hdr-quoted.png)
 
 ```sql
 SELECT *
@@ -220,7 +220,7 @@ Aşağıdaki sorgu, bir üst bilgi satırıyla bir dosyanın nasıl okunacağın
 
 Dosya önizlemesi:
 
-![Üst bilgi satırı ile CSV dosyasının ilk 10 satırı ve alan sınırlayıcısı için kullanılan UNIX stili yeni satır ve çıkış karakteri.](./media/query-single-csv-file/population-unix-hdr-escape.png)
+![Üst bilgi satırı ile CSV dosyasının ilk 10 satırı ve alan sınırlayıcısı için kullanılan yeni satır ve çıkış karakteri Unix-Style.](./media/query-single-csv-file/population-unix-hdr-escape.png)
 
 ```sql
 SELECT *
@@ -283,7 +283,7 @@ Aşağıdaki sorgu, bir dosyanın bir başlık satırı ile, UNIX stili yeni bir
 
 Dosya önizlemesi:
 
-![Üst bilgi satırı ve UNIX stili yeni çizgi ve sekme sınırlayıcısı ile CSV dosyasının ilk 10 satırı.](./media/query-single-csv-file/population-unix-hdr-tsv.png)
+![Üst bilgi satırı ve Unix-Style yeni çizgi ve sekme sınırlayıcısı ile CSV dosyasının ilk 10 satırı.](./media/query-single-csv-file/population-unix-hdr-tsv.png)
 
 ```sql
 SELECT *
