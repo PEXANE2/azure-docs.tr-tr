@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
-ms.openlocfilehash: 4a78e966d420591ebe7a9607777158cf17ddf698
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6f2c16730a9140fdbd1710a3aa0df0ee91795d6
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91370892"
+ms.locfileid: "91874841"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Veri akışlarını eşleme performansı ve ayarlama Kılavuzu
 
@@ -260,6 +260,10 @@ JOIN koşullarınız için değişmez değer değerleri kullanırsanız veya bir
 #### <a name="sorting-before-joins"></a>Birleşimlerden önce sıralama
 
 SSIS gibi araçlarla birleştirme birleştirmesinin aksine, JOIN dönüşümü zorunlu bir birleştirme birleştirme işlemi değildir. JOIN anahtarları dönüşümden önce sıralama gerektirmez. Azure Data Factory ekibi, veri akışlarında eşleme dönüştürmelerinin kullanılmasını önermez.
+
+### <a name="window-transformation-performance"></a>Pencere dönüştürme performansı
+
+[Pencere dönüştürmesi](data-flow-window.md) , verileri ```over()``` dönüştürme ayarlarındaki yan tümcesinin bir parçası olarak seçtiğiniz sütunlardaki değere göre bölümlendirir. Windows dönüşümünde sunulan çok sayıda popüler toplam ve analitik işlev vardır. Bununla birlikte, kullanım durumu, sıralama veya satır numarası amacıyla tüm veri kümeniz üzerinde bir pencere oluşturmak için, ```rank()``` ```rowNumber()``` bunun yerine [Rank dönüşümünü](data-flow-rank.md) ve [vekil anahtar dönüşümünü](data-flow-surrogate-key.md)kullanmanız önerilir. Bu dönüşüm, bu işlevleri kullanarak daha iyi bir tam veri kümesi işlemi gerçekleştirir.
 
 ### <a name="repartitioning-skewed-data"></a>Asimetrik verileri yeniden bölümleme
 

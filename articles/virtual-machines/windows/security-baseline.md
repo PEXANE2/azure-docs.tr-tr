@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7726a0f1acb8f7fde2b491979d478badeca1b384
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e79055c3dbc710be23a82eede98e1b55b17e10d5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400390"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978029"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Windows Sanal Makineleri için Azure Güvenlik temeli
 
@@ -32,7 +32,7 @@ Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](../../
 
 Alternatif olarak, Merkezi güvenlik duvarı için belirli bir kullanım durumu varsa, bu gereksinimleri karşılamak için Azure Güvenlik duvarı da kullanılabilir.
 
-* [Azure 'da sanal ağlar ve sanal makineler](./network-overview.md)
+* [Azure 'da sanal ağlar ve sanal makineler](../network-overview.md)
 
 * [Sanal ağ oluşturma](../../virtual-network/quick-create-portal.md)
 
@@ -80,7 +80,7 @@ Azure Güvenlik Merkezi 'nin, sınırlı bir süre için onaylanan IP adresleriy
 
 * [Azure Güvenlik duvarını dağıtma](../../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Azure Güvenlik Merkezi tümleşik tehdit zekasını anlama](../../security-center/threat-protection.md)
+* [Azure Güvenlik Merkezi tümleşik tehdit zekasını anlama](../../security-center/azure-defender.md)
 
 * [Azure Güvenlik Merkezi Uyarlamalı ağ sağlamlaştırma 'yi anlama](../../security-center/security-center-adaptive-network-hardening.md)
 
@@ -146,7 +146,7 @@ Azure Güvenlik Merkezi 'nin, sınırlı bir süre için onaylanan IP adresleriy
 
 * [Azure Ilkesini yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Ağ için Azure Ilke örnekleri](/azure/governance/policy/samples/#network)
+* [Ağ için Azure Ilke örnekleri](../../governance/policy/samples/built-in-policies.md#network)
 
 * [Azure Blueprint oluşturma](../../governance/blueprints/create-blueprint-portal.md)
 
@@ -180,7 +180,7 @@ Windows Sanal Makineleri ilişkili ağ kaynağına yönelik yapılandırmaların
 
 * [Azure Ilkesini yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Ağ için Azure Ilke örnekleri](/azure/governance/policy/samples/#network)
+* [Ağ için Azure Ilke örnekleri](../../governance/policy/samples/built-in-policies.md#network)
 
 **Azure Güvenlik Merkezi izleme**: kullanılamıyor
 
@@ -252,7 +252,7 @@ Kuruluşunuz, güvenlik olay günlüğü verilerini sanal makineden sürdürmek 
 
 **Rehberlik**: sanal makine günlüklerini depolamak için kullanılan tüm depolama hesaplarının veya Log Analytics çalışma alanlarının, kuruluşunuzun uyumluluk düzenlemelerine göre ayarlanmış günlük tutma süresine sahip olduğundan emin olun.
 
-* [Azure 'da sanal makineleri izleme](./monitor.md)
+* [Azure 'da sanal makineleri izleme](../../azure-monitor/insights/monitor-vm-azure.md)
 
 * [Log Analytics çalışma alanı saklama süresini yapılandırma](../../azure-monitor/platform/manage-cost-storage.md)
 
@@ -458,7 +458,7 @@ Alternatif olarak, anormal etkinliklere yönelik uyarıları ayarlamak için Azu
 
 * [Azure Izleyici 'de özel sorgular gerçekleştirme](../../azure-monitor/log-query/get-started-queries.md)
 
-* [Azure 'da sanal makineleri izleme](./monitor.md)
+* [Azure 'da sanal makineleri izleme](../../azure-monitor/insights/monitor-vm-azure.md)
 
 **Azure Güvenlik Merkezi izleme**: kullanılamıyor
 
@@ -508,7 +508,7 @@ Alternatif olarak, anormal etkinliklere yönelik uyarıları ayarlamak için Azu
 
 * [Ek Azure abonelikleri oluşturma](../../cost-management-billing/manage/create-subscription.md)
 
-* [Yönetim Grupları oluşturma](../../governance/management-groups/create.md)
+* [Yönetim Grupları oluşturma](../../governance/management-groups/create-management-group-portal.md)
 
 * [Etiketler oluşturma ve kullanma](../../azure-resource-manager/management/tag-resources.md)
 
@@ -610,7 +610,7 @@ Microsoft, bulut hizmetleri ve müşteriler arasında seyahat edildiğinde veril
 
 **Rehberlik**: Azure sanal makinelerinizde güvenlik açığı değerlendirmeleri gerçekleştirmeye yönelik Azure Güvenlik Merkezi önerilerini izleyin. Sanal makinelerinize yönelik güvenlik açığı değerlendirmelerini gerçekleştirmek için, Azure Güvenlik önerilir veya üçüncü taraf çözümü kullanın.
 
-* [Azure Güvenlik Merkezi güvenlik açığı değerlendirmesi önerilerini uygulama](../../security-center/security-center-vulnerability-assessment-recommendations.md)
+* [Azure Güvenlik Merkezi güvenlik açığı değerlendirmesi önerilerini uygulama](../../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -692,7 +692,7 @@ Microsoft, bulut hizmetleri ve müşteriler arasında seyahat edildiğinde veril
 
 * [Ek Azure abonelikleri oluşturma](../../cost-management-billing/manage/create-subscription.md)
 
-* [Yönetim Grupları oluşturma](../../governance/management-groups/create.md)
+* [Yönetim Grupları oluşturma](../../governance/management-groups/create-management-group-portal.md)
 
 * [Etiketler oluşturma ve kullanma](../../azure-resource-manager/management/tag-resources.md)
 
@@ -775,7 +775,7 @@ Yazılım uygulamalarının izlenmesi için Değişiklik İzleme kullanmanın ya
 
 * [Azure Ilkesini yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Ilkesiyle belirli bir kaynak türünü reddetme](/azure/governance/policy/samples/not-allowed-resource-types)
+* [Azure Ilkesiyle belirli bir kaynak türünü reddetme](../../governance/policy/samples/index.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -817,13 +817,13 @@ Yazılım uygulamalarının izlenmesi için Değişiklik İzleme kullanmanın ya
 
 **Kılavuz**: Azure ortamınızda dağıtılan yüksek riskli uygulamalar, sanal ağ, alt ağ, abonelikler, yönetim grupları vb. ve bir Azure Güvenlik Duvarı, Web uygulaması güvenlik duvarı (WAF) veya ağ güvenlik grubu (NSG) kullanılarak yeterince güvenli hale getirilmiş olabilir.
 
-* [Azure 'da sanal ağlar ve sanal makineler](./network-overview.md)
+* [Azure 'da sanal ağlar ve sanal makineler](../network-overview.md)
 
 * [Azure Güvenlik Duvarı 'na genel bakış](../../firewall/overview.md)
 
 * [Web uygulaması güvenlik duvarına genel bakış](../../web-application-firewall/overview.md)
 
-* [Ağ güvenliğine genel bakış](../../virtual-network/security-overview.md)
+* [Ağ güvenliğine genel bakış](../../virtual-network/network-security-groups-overview.md)
 
 * [Azure sanal ağına genel bakış](../../virtual-network/virtual-networks-overview.md)
 

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 1afa5df20c9bcbf63f8ad9f527e54f622eba3d19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/10/2020
+ms.openlocfilehash: f4a7f5581703ae6932f3b40e62085fed76f5e6f2
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90893795"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945711"
 ---
 # <a name="filter-based-feature-selection"></a>Filtre Tabanlı Özellik Seçimi
 
@@ -90,8 +90,14 @@ Standart istatistiksel bir ölçüm seçersiniz. Modül bir sütun çifti arası
 
     - Özellik sütunlarından daha az sonuç sütunu belirtirseniz, Özellikler azalan puana göre sıralanır. Yalnızca en üstteki Özellikler döndürülür. 
 
-7.  İşlem hattını gönder veya filtre tabanlı özellik seçimi modülünü seçin ve ardından **Seçileni Çalıştır**' ı seçin.
+7.  İşlem hattını gönderme.
 
+> [!IMPORTANT]
+> Çıkarma aşamasında **filtre tabanlı özellik seçimini** kullanacaksanız, özelliği seçili sonucu depolamak Için [Sütunları Seç dönüşümünü](./select-columns-transform.md) , sonra da seçilen özelliği Puanlama veri kümesine uygulamak için [dönüşüm Uygula](./apply-transformation.md) ' yı kullanmanız gerekir.
+>
+> Sütun seçimlerinin Puanlama işlemi için aynı olmasını sağlamak üzere işlem hattınızı derlemek için aşağıdaki ekran görüntüsüne bakın.
+> [!div class="mx-imgBorder"]
+> ![Örnek işlem hattı](media/module/filter-based-feature-selection-score.png)
 
 ## <a name="results"></a>Sonuçlar
 

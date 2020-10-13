@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 65116f979131590a66ff2f08896e7a89ae075303
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e52a808b187e3823acfee2c260986518f2f6f49
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89074160"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978012"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Öğretici: Azure PowerShell ile Windows VM’leri Oluşturma ve Yönetme
 
@@ -262,7 +262,7 @@ Status
 PowerState/running
 ```
 
-Aboneliğinizdeki tüm VM 'lerin güç durumunu almak için, [sanal makineler-tüm API](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall) 'Leri parametresi **statusonly** *true*olarak ayarlanmış şekilde kullanın.
+Aboneliğinizdeki tüm VM 'lerin güç durumunu almak için, [sanal makineler-tüm API](/rest/api/compute/virtualmachines/listall) 'Leri parametresi **statusonly** *true*olarak ayarlanmış şekilde kullanın.
 
 ## <a name="management-tasks"></a>Yönetim görevleri
 

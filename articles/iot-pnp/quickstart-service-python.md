@@ -3,17 +3,17 @@ title: Azure IoT çözümünüze (Python) bağlı olan IoT Tak ve Kullan cihazı
 description: Azure IoT çözümünüze bağlı bir IoT Tak ve Kullan cihazına bağlanmak ve bunlarla etkileşim kurmak için Python kullanın.
 author: elhorton
 ms.author: elhorton
-ms.date: 7/13/2020
+ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: be5ff3e863752dfc187bd91257425af5e8de85c4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d04a1eda7dc414233075f5d70e29c967c8bdfc35
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91574984"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946085"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-python"></a>Hızlı başlangıç: çözümünüze bağlı olan IoT Tak ve Kullan cihazla etkileşim kurma (Python)
 
@@ -73,13 +73,16 @@ Bu hızlı başlangıçta, IoT Tak ve Kullan cihazı olarak Python 'da yazılmı
 
 Bu hızlı başlangıçta, yeni ayarladığınız örnek cihazla etkileşim kurmak için Python 'da örnek bir IoT çözümü kullanırsınız.
 
-1. **Hizmet** terminali olarak kullanmak için başka bir Terminal penceresi açın. 
+1. **Hizmet** terminali olarak kullanmak için başka bir Terminal penceresi açın.
 
 1. Kopyalanan Python SDK deposunun */Azure-iot-SDK-Python/Azure-iot-hub/Samples* klasörüne gidin.
 
-1. Samples klasöründe, dijital Ikizi Manager sınıfı ile işlemleri gösteren dört örnek dosya vardır: *get_digital_twin_sample. Kopyala, update_digitial_twin_sample. Kopyala, invoke_command_sample. Kopyala ve invoke_component_command_sample-. Kopyala*.  Bu örnekler, IoT Tak ve Kullan cihazlarıyla etkileşim kurmak için her bir API 'nin nasıl kullanılacağını gösterir:
+1. *Registry_manager_pnp_sample. Kopyala* dosyasını açın ve kodu gözden geçirin. Bu örnek, IoT Tak ve Kullan cihazlarınızla etkileşim kurmak için **Iothubregistrymanager** sınıfının nasıl kullanılacağını gösterir.
 
-### <a name="get-digital-twin"></a>Dijital ikizi al
+> [!NOTE]
+> Bu hizmet örnekleri, **IoT Hub hizmeti Istemcisinden** **Iothubregistrymanager** sınıfını kullanır. Dijital TWINS API 'SI de dahil olmak üzere API 'Ler hakkında daha fazla bilgi edinmek için bkz. [hizmet Geliştirici Kılavuzu](concepts-developer-guide-service.md).
+
+### <a name="get-the-device-twin"></a>Cihaz ikizi al
 
 Ortamınızı IoT Hub 'ınıza ve cihazınıza bağlanacak şekilde yapılandırmak için, [ıot Tak ve kullan hızlı başlangıçlarını ve öğreticilerini ayarlama](set-up-environment.md) bölümünde iki ortam değişkeni oluşturdunuz:
 
@@ -89,79 +92,77 @@ Ortamınızı IoT Hub 'ınıza ve cihazınıza bağlanacak şekilde yapılandır
 Bu örneği çalıştırmak için **hizmet** terminalinde aşağıdaki komutu kullanın:
 
 ```cmd/sh
-python get_digital_twin_sample.py
+set IOTHUB_METHOD_NAME="getMaxMinReport"
+set IOTHUB_METHOD_PAYLOAD="hello world"
+python registry_manager_pnp_sample.py
 ```
 
-Çıktı, cihazın dijital ikizi gösterir ve model KIMLIĞINI yazdırır:
+> [!NOTE]
+> Bu örneği Linux üzerinde çalıştırıyorsanız, yerine kullanın `export` `set` .
+
+Çıktı, cihazı ikizi gösterir ve onun model KIMLIĞINI yazdırır:
 
 ```cmd/sh
-{'$dtId': 'mySimpleThermostat', '$metadata': {'$model': 'dtmi:com:example:Thermostat;1'}}
-Model Id: dtmi:com:example:Thermostat;1
+The Model ID for this device is:
+dtmi:com:example:Thermostat;1
 ```
 
-Aşağıdaki kod parçacığında *get_digital_twin_sample. Kopyala*dosyasından örnek kod gösterilmektedir:
+Aşağıdaki kod parçacığında *registry_manager_pnp_sample. Kopyala*dosyasından örnek kod gösterilmektedir:
 
 ```python
-    # Get digital twin and retrieve the modelId from it
-    digital_twin = iothub_digital_twin_manager.get_digital_twin(device_id)
-    if digital_twin:
-        print(digital_twin)
-        print("Model Id: " + digital_twin["$metadata"]["$model"])
-    else:
-        print("No digital_twin found")
+    # Create IoTHubRegistryManager
+    iothub_registry_manager = IoTHubRegistryManager(iothub_connection_str)
+
+    # Get device twin
+    twin = iothub_registry_manager.get_twin(device_id)
+    print("The device twin is: ")
+    print("")
+    print(twin)
+    print("")
+
+    # Print the device's model ID
+    additional_props = twin.additional_properties
+    if "modelId" in additional_props:
+        print("The Model ID for this device is:")
+        print(additional_props["modelId"])
+        print("")
 ```
 
-### <a name="update-a-digital-twin"></a>Dijital ikizi güncelleştirme
+### <a name="update-a-device-twin"></a>Cihaz ikizi güncelleştirme
 
-Bu örnekte, cihazınızın dijital ikizi özelliklerini güncelleştirmek için bir *düzeltme ekinin* nasıl kullanılacağı gösterilmektedir. *Update_digital_twin_sample. Kopyala* 'dan aşağıdaki kod parçacığında düzeltme ekinin nasıl oluşturulacağı gösterilmektedir:
+Bu örnekte, `targetTemperature` cihazdaki yazılabilir özelliği güncelleştirme gösterilmektedir:
 
 ```python
-# If you already have a component thermostat1:
-# patch = [{"op": "replace", "path": "/thermostat1/targetTemperature", "value": 42}]
-patch = [{"op": "add", "path": "/targetTemperature", "value": 42}]
-iothub_digital_twin_manager.update_digital_twin(device_id, patch)
-print("Patch has been succesfully applied")
-```
-
-Bu örneği çalıştırmak için **hizmet** terminalinde aşağıdaki komutu kullanın:
-
-```cmd/sh
-python update_digital_twin_sample.py
+    # Update twin
+    twin_patch = Twin()
+    twin_patch.properties = TwinProperties(
+        desired={"targetTemperature": 42}
+    )  # this is relevant for the thermostat device sample
+    updated_twin = iothub_registry_manager.update_twin(device_id, twin_patch, twin.etag)
+    print("The twin patch has been successfully applied")
+    print("")
 ```
 
 Aşağıdaki çıktıyı gösteren **cihaz** terminalinde, güncelleştirmenin uygulandığını doğrulayabilirsiniz:
 
 ```cmd/sh
 the data in the desired properties patch was: {'targetTemperature': 42, '$version': 2}
-previous values
-42
 ```
 
 **Hizmet** terminali, düzeltme ekinin başarılı olduğunu onaylar:
 
 ```cmd/sh
-Patch has been successfully applied
+The twin patch has been successfully applied
 ```
 
 ### <a name="invoke-a-command"></a>Komut çağırma
 
-Bir komutu çağırmak için *invoke_command_sample. Kopyala* örneğini çalıştırın. Bu örnek, basit bir termostat cihazında bir komutun nasıl çağıralınacağını gösterir. Bu örneği çalıştırmadan önce, `IOTHUB_COMMAND_NAME` `IOTHUB_COMMAND_PAYLOAD` **hizmet** terminalinde ve ortam değişkenlerini ayarlayın:
-
-```cmd/sh
-set IOTHUB_COMMAND_NAME="getMaxMinReport" # this is the relevant command for the thermostat sample
-set IOTHUB_COMMAND_PAYLOAD="hello world" # this payload doesn't matter for this sample
-```
-
-**Hizmet** terminalinde, örneği çalıştırmak için aşağıdaki komutu kullanın:
-  
-```cmd/sh
-python invoke_command_sample.py
-```
+Örnek daha sonra bir komutu çağırır:
 
 **Hizmet** terminali cihazdan bir onay iletisi gösterir:
 
 ```cmd/sh
-{"tempReport": {"avgTemp": 34.5, "endTime": "13/07/2020 16:03:38", "maxTemp": 49, "minTemp": 11, "startTime": "13/07/2020 16:02:18"}}
+The device method has been successfully invoked
 ```
 
 **Cihaz** terminalinde, cihazın şu komutu aldığını görürsünüz:
@@ -172,7 +173,6 @@ hello world
 Will return the max, min and average temperature from the specified time hello to the current time
 Done generating
 {"tempReport": {"avgTemp": 34.2, "endTime": "09/07/2020 09:58:11", "maxTemp": 49, "minTemp": 10, "startTime": "09/07/2020 09:56:51"}}
-Sent message
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

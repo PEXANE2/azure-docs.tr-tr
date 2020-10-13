@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
 ms.openlocfilehash: 5bf6a17c1a4aa1c7f212045af0d1b750ddb2a906
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653562"
 ---
 # <a name="mv2-series"></a>Mv2 serisi
 
 Mv2-Series, bir hiper iş parçacıklı Intel® Xeon® Platinum 81805 2.5 GHz (ufuk Gölü) işlemcisi üzerinde çalışan yüksek performans, 2,5 GHz ve en fazla Turbo frekansı 3,8 GHz ile çalışır. Tüm Mv2 serisi sanal makine boyutları, hem standart hem de Premium kalıcı diskler kullanabilir. Mv2 serisi örnekler, ilişkisel veritabanı sunucuları, büyük önbellekler ve bellek içi analiz için ideal olan yüksek bellek içi veritabanlarını ve iş yüklerini desteklemek üzere benzersiz işlem performansı sağlayan bellek için iyileştirilmiş VM boyutlarıdır.
 
-Mv2 serisi VM 'nin özelliği, hiper Iş parçacığı teknolojisinin Intel®
+Mv2 serisi VM 'nin özelliği Intel® Hyper-Threading teknolojisi
 
 [Premium Depolama](premium-storage-performance.md): desteklenir<br>
 [Premium depolama önbelleği](premium-storage-performance.md): desteklenir<br>

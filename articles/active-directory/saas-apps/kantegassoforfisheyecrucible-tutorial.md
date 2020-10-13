@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: ce5572c4c5aca6f48496250c942d50b90551f36f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6742253ad815ab8058a9c05d82200e77d9d18a43
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546958"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946029"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-fisheyecrucible"></a>Öğretici: Fheye/CRUCIBLE için Kantega SSO ile tümleştirme Azure Active Directory
 
@@ -99,7 +99,7 @@ Fheye/CRUCIBLE için Kantega SSO 'SU ile Azure AD çoklu oturum açmayı yapıla
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    ![Fheys/CRUCIBLE etki alanı ve URL 'Ler çoklu oturum açma bilgileri için Kantega SSO](common/idp-intiated.png)
+    !["Tanımlayıcı" ve "Yanıt U R L" metin kutusu vurgulanmış ve "Kaydet" düğmesi seçili olan "temel S A M L yapılandırma" bölümünü gösteren ekran görüntüsü.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
@@ -134,43 +134,43 @@ Fheye/CRUCIBLE için Kantega SSO 'SU ile Azure AD çoklu oturum açmayı yapıla
 
 1. Dişli üzerine gelin ve **eklentilere**tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforfisheyecrucible-tutorial/addon1.png)
+    !["COG" simgesini ve "eklentileri" seçili olduğunu gösteren ekran görüntüsü.](./media/kantegassoforfisheyecrucible-tutorial/addon1.png)
 
 1. Sistem ayarları bölümünde **yeni eklentiler bul**' a tıklayın. 
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforfisheyecrucible-tutorial/add-on2.png)
+    !["Yeni eklentiler bul" seçiliyken "sistem ayarları" bölümünü gösteren ekran görüntüsü.](./media/kantegassoforfisheyecrucible-tutorial/add-on2.png)
 
 1. **CRUCIBLE Için Kantega SSO** 'yu arayın ve yeni SAML eklentisini yüklemek için **Install** düğmesine tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforfisheyecrucible-tutorial/addon2.png)
+    ![Arama kutusuna ve "Install" düğmesine seçili "CRUCIBLE için" Kanvalar için Attlasian marketi "sayfasını gösteren ekran görüntüsü.](./media/kantegassoforfisheyecrucible-tutorial/addon2.png)
 
 1. Eklenti yüklemesi başlar. 
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforfisheyecrucible-tutorial/addon33.png)
+    ![Eklenti için "yükleme" iletişim kutusunu gösteren ekran görüntüsü.](./media/kantegassoforfisheyecrucible-tutorial/addon33.png)
 
 1. Yükleme tamamlandıktan sonra. **Kapat**’a tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforfisheyecrucible-tutorial/addon34.png)
+    !["Yüklenecek ve hazırlanıyor" iletişim kutusunu ve "Kapat" düğmesinin seçili olduğunu gösteren ekran görüntüsü.](./media/kantegassoforfisheyecrucible-tutorial/addon34.png)
 
 1.  **Yönet**'e tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforfisheyecrucible-tutorial/addon35.png)
+    ![Bir M L & Kerberos "uygulama sayfasına ve" Yönet "düğmesine seçili olan" Kantega s S O "adlı ekran görüntüsü.](./media/kantegassoforfisheyecrucible-tutorial/addon35.png)
 
 1. Yeni eklentiyi yapılandırmak için **Yapılandır** ' a tıklayın. 
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforfisheyecrucible-tutorial/addon3.png)
+    !["Kullanıcı tarafından yüklenen eklentiler" sayfasını ve "Yapılandır" düğmesinin seçili olduğunu gösteren ekran görüntüsü.](./media/kantegassoforfisheyecrucible-tutorial/addon3.png)
 
 1. **SAML** bölümünde. **Kimlik sağlayıcısı ekle** açılır listesinden **Azure ACTIVE DIRECTORY (Azure AD)** öğesini seçin.
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforfisheyecrucible-tutorial/addon4.png)
+    !["Kimlik sağlayıcısı ekle" açılan ve "Azure Active Directory (Azure AD)" seçiliyken "Eklentiler-Kantega çoklu oturum açma" sayfasını gösteren ekran görüntüsü. ](./media/kantegassoforfisheyecrucible-tutorial/addon4.png)
 
 1. Abonelik düzeyini **temel**olarak seçin.
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforfisheyecrucible-tutorial/addon5.png)
+    !["Temel" seçiliyken "Azure A D 'yi hazırlama" bölümünü gösteren ekran görüntüsü.](./media/kantegassoforfisheyecrucible-tutorial/addon5.png)
 
 1. **Uygulama özellikleri** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforfisheyecrucible-tutorial/addon6.png)
+    !["App ı D U R I" metin kutusu ve kopyala düğmesinin seçili olduğu "uygulama özellikleri" bölümünü gösteren ekran görüntüsü.](./media/kantegassoforfisheyecrucible-tutorial/addon6.png)
 
     a. **Uygulama KIMLIĞI URI** değerini kopyalayın ve Azure Portal IÇINDEKI **temel SAML yapılandırması** bölümünde **kimlik, yanıt URL 'si ve Sign-On URL 'si** olarak kullanın.
 
@@ -178,7 +178,7 @@ Fheye/CRUCIBLE için Kantega SSO 'SU ile Azure AD çoklu oturum açmayı yapıla
 
 1. **Meta veri içeri aktarma** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforfisheyecrucible-tutorial/addon7.png)
+    !["Bilgisayarımdaki meta veri dosyası" bölümünün seçildiği "meta veri alma" bölümünü gösteren ekran görüntüsü.](./media/kantegassoforfisheyecrucible-tutorial/addon7.png)
 
     a. Bilgisayarımdaki **meta veri dosyasını**seçin ve Azure Portal 'ten indirdiğiniz meta veri dosyasını karşıya yükleyin.
 
@@ -186,7 +186,7 @@ Fheye/CRUCIBLE için Kantega SSO 'SU ile Azure AD çoklu oturum açmayı yapıla
 
 1. **Ad ve SSO konumu** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforfisheyecrucible-tutorial/addon8.png)
+    !["Kimlik sağlayıcı adı" metin kutusu vurgulanmış ve "Ileri" düğmesi seçili olan "ad ve S S O konumunu" gösteren ekran görüntüsü.](./media/kantegassoforfisheyecrucible-tutorial/addon8.png)
 
     a. Kimlik sağlayıcısı **adı** metin kutusuna kimlik sağlayıcısının adını ekleyin (ör. Azure AD).
 
@@ -194,11 +194,11 @@ Fheye/CRUCIBLE için Kantega SSO 'SU ile Azure AD çoklu oturum açmayı yapıla
 
 1. Imzalama sertifikasını doğrulayın ve **İleri**' ye tıklayın.   
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforfisheyecrucible-tutorial/addon9.png)
+    !["Imza doğrulama" Bölüm bilgilerini ve "Ileri" düğmesini seçili gösteren ekran görüntüsü.](./media/kantegassoforfisheyecrucible-tutorial/addon9.png)
 
 1. **Fheys Kullanıcı hesapları** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforfisheyecrucible-tutorial/addon10.png)
+    !["Fheys 'in Iç dizininde kullanıcı oluşturma" seçeneği ve "Ileri" düğmesi seçili olan "Fheys Kullanıcı hesapları" bölümünü gösteren ekran görüntüsü.](./media/kantegassoforfisheyecrucible-tutorial/addon10.png)
 
     a. **Gerekirse, Fheys 'in Iç dizininde kullanıcı oluştur** ' u seçin ve Kullanıcı için Grup adını girin (birden çok No olabilir. virgülle ayrılmış gruplar).
 
@@ -206,11 +206,11 @@ Fheye/CRUCIBLE için Kantega SSO 'SU ile Azure AD çoklu oturum açmayı yapıla
 
 1. **Finish (Son)** düğmesine tıklayın.
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforfisheyecrucible-tutorial/addon11.png)
+    !["Son" düğmesinin seçili olduğu "Özet" bölümünü gösteren ekran görüntüsü.](./media/kantegassoforfisheyecrucible-tutorial/addon11.png)
 
 1. **Azure AD Için bilinen etki alanları** bölümünde aşağıdaki adımları uygulayın:  
 
-    ![Tek Sign-On yapılandırma](./media/kantegassoforfisheyecrucible-tutorial/addon12.png)
+    !["Kaydet" düğmesinin seçili olduğu "Azure A için bilinen etki alanları" bölümünde gösterilen ekran görüntüsü.](./media/kantegassoforfisheyecrucible-tutorial/addon12.png)
 
     a. Sayfanın sol panelinden **bilinen etki alanları ' nı** seçin.
 
@@ -240,7 +240,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -278,11 +278,11 @@ Azure AD kullanıcılarının fhete/Crucıya 'da oturum açmasını sağlamak i�
 
 1. Dişli üzerine gelin ve **kullanıcılara**tıklayın.
 
-    ![Çalışan Ekle](./media/kantegassoforfisheyecrucible-tutorial/user1.png)
+    !["COG" simgesinin seçili olduğunu ve açılan listeden "kullanıcılar" seçeneğini gösteren ekran görüntüsü.](./media/kantegassoforfisheyecrucible-tutorial/user1.png)
 
 1. **Kullanıcılar** sekmesi bölümünde **Kullanıcı Ekle**' ye tıklayın.
 
-    ![Çalışan Ekle](./media/kantegassoforfisheyecrucible-tutorial/user2.png)
+    !["Kullanıcı Ekle" düğmesinin seçili olduğu "kullanıcılar" bölümünü gösteren ekran görüntüsü.](./media/kantegassoforfisheyecrucible-tutorial/user2.png)
 
 1. **Yeni Kullanıcı Ekle** iletişim sayfasında, aşağıdaki adımları uygulayın:
 

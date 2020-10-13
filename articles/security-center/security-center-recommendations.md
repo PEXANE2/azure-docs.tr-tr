@@ -13,19 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 7f6c0f2a311590219fb59bfe1ec63831c03e8af2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0efb2c26a63418835dd2b7561a1fb9d3a9d5fee8
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314445"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945575"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik önerileri 
 Bu konu başlığı altında, Azure Güvenlik Merkezi 'nde Azure kaynaklarınızı korumanıza yardımcı olan önerilerin nasıl görüntüleneceği ve anlayabileceği açıklanmaktadır.
 
-> [!NOTE]
-> Bu belge, örnek bir dağıtım kullanarak hizmeti tanıtır.  Bu belge adım adım kılavuz değildir.
->
 
 ## <a name="what-are-security-recommendations"></a>Güvenlik önerileri nelerdir?
 
@@ -35,39 +32,36 @@ Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için Azure kaynak
 
 Her öneri şunları sağlar:
 
-- Sorunun kısa bir açıklaması.
-- Öneriyi uygulamak için gerçekleştirilecek düzeltme adımları.
-- Etkilenen kaynaklar.
+- Sorunun kısa bir açıklaması
+- Öneriyi uygulamak için gerçekleştirilecek düzeltme adımları
+- Etkilenen kaynaklar
 
 ## <a name="monitor-recommendations"></a>İzleme önerileri <a name="monitor-recommendations"></a>
 
-Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için kaynaklarınızın güvenlik durumunu analiz eder. **Genel bakış** bölümündeki **öneriler** kutucuğu, Güvenlik Merkezi tarafından tanımlanan toplam öneri sayısını gösterir.
+Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için kaynaklarınızın güvenlik durumunu analiz eder. 
 
-![Güvenlik Merkezi 'ne genel bakış](./media/security-center-recommendations/asc-overview.png)
-
-1. **Genel bakış**' ın altında **öneriler kutucuğunu** seçin. **Öneriler** listesi açılır.
-
-1. Öneriler, güvenlik denetimleri halinde gruplandırılır.
+1. Ortamınız için geçerli olan önerileri görmek için Güvenlik Merkezi 'nin menüsünde **öneriler** sayfasını açın. Öneriler, güvenlik denetimleri halinde gruplandırılır.
 
       ![Güvenlik denetimine göre gruplanmış öneriler](./media/security-center-recommendations/view-recommendations.png)
 
-1. Bir denetimi genişletin ve öneri sayfasını görüntülemek için belirli bir öneri seçin.
+1. Bir denetimi genişletin ve öneri ayrıntıları sayfasını görüntülemek için belirli bir öneri seçin.
 
     :::image type="content" source="./media/security-center-recommendations/recommendation-details-page.png" alt-text="Öneri ayrıntıları sayfası." lightbox="./media/security-center-recommendations/recommendation-details-page.png":::
 
     Sayfa şunları içerir:
 
-    - Desteklenen önerilerden düğmeleri **zorla** ve **Reddet** (bkz. [zorla/reddetme önerilerini kullanarak yapılandırmaları önleme](prevent-misconfigurations.md))
-    - **Önem derecesi göstergesi**
-    - **Yenilik aralığı**  (ilgili yerlerde) 
-    - **Açıklama** -sorunun kısa bir açıklaması
-    - **Düzeltme adımları** -etkilenen kaynaklardaki güvenlik sorununu düzeltmek için gereken el ile adımların bir açıklaması. ' Hızlı düzeltme ' ile ilgili öneriler için, kaynaklarınıza önerilen düzeltmeyi uygulamadan önce **Düzeltme mantığını görüntüle** ' yi seçebilirsiniz. 
-    - **Etkilenen kaynaklar** -kaynaklarınız sekmeler halinde gruplandırılır:
+    1. Desteklenen önerilerden düğmeleri **zorla** ve **Reddet** (bkz. [zorla/reddetme önerilerini kullanarak yapılandırmaları önleme](prevent-misconfigurations.md))
+    1. **Önem derecesi göstergesi**
+    1. **Yenilik aralığı**  (ilgili yerlerde) 
+    1. **Açıklama** -sorunun kısa bir açıklaması
+    1. **Düzeltme adımları** -etkilenen kaynaklardaki güvenlik sorununu düzeltmek için gereken el ile adımların bir açıklaması. ' Hızlı düzeltme ' ile ilgili öneriler için, kaynaklarınıza önerilen düzeltmeyi uygulamadan önce **Düzeltme mantığını görüntüle** ' yi seçebilirsiniz. 
+    1. **Etkilenen kaynaklar** -kaynaklarınız sekmeler halinde gruplandırılır:
         - **Sağlıklı kaynaklar** – etkilenmeyen veya üzerinde sorunu zaten seçtiğiniz ilgili kaynaklar.
         - **Sağlıksız kaynaklar** – hala belirtilen sorundan etkilenen kaynaklar.
         - **Geçerli olmayan kaynaklar** – önerinin kesin yanıt veremediğinde kaynaklar. Uygulanamaz sekmesi her bir kaynağın nedenlerini de içerir. 
 
             :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="Öneri ayrıntıları sayfası.":::
+    1. Öneriyi düzeltecek veya bir mantıksal uygulamayı tetikleyen eylem düğmeleri.
 
 ## <a name="preview-recommendations"></a>Önizleme önerileri
 

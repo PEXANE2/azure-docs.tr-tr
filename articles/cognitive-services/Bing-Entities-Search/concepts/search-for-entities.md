@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
 ms.openlocfilehash: 1805f6f7a61f7e0b0a6e4d5bd6931c0a7d1f1b6f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220319"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91872077"
 ---
 # <a name="searching-for-entities-with-the-bing-entity-api"></a>Bing varlık API 'SI ile varlıkları arama
 
@@ -174,7 +174,7 @@ Varlık bilgilerini (ad, açıklama ve görüntü) görüntülediğinizde `webSe
 
 ## <a name="find-places"></a>Yerleri bul
 
-Alan, [yer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#place) nesnelerinin bir listesini Içeren bir [Localentityanswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) nesnesidir (daha fazla bilgi için [varlık türlerine](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types) bakın). `places` Listede isteği karşılayan bir veya daha fazla yerel varlık bulunur.
+`places`Alan, [yer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#place) nesnelerinin bir listesini Içeren bir [Localentityanswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) nesnesidir (daha fazla bilgi için [varlık türlerine](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types) bakın). Listede isteği karşılayan bir veya daha fazla yerel varlık bulunur.
 
 Yerler restoranlar, oteller veya yerel işletmeler olabilir. [entityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entitypresentationinfo) alanı, yerel varlık türünü tanımlayan ipuçları içerir. Listede Place, LocalBusiness, Restaurant gibi ipuçları bulunur. Dizideki ardışık ipuçları varlık türünü daraltır. Olası türlerin listesi için bkz. [Varlık Türleri](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types)
 

@@ -127,6 +127,8 @@
               href: network-watcher-nsg-flow-logging-rest.md
             - name: Azure Resource Manager
               href: network-watcher-nsg-flow-logging-azure-resource-manager.md
+            - name: Yerleşik İlke
+              href: nsg-flow-logs-policy-portal.md
         - name: NSG akış günlüğü depolama bloblarını silme
           href: network-watcher-delete-nsg-flow-log-blobs.md
         - name: NSG akış günlüklerini analiz etme

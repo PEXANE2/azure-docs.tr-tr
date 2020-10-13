@@ -1,14 +1,14 @@
 ---
 title: Azure İlkesine Genel Bakış
 description: Azure İlkesi, Azure ortamında ilke tanımlarınızı oluşturmak, atamak ve yönetmek için kullandığınız bir Azure hizmetidir.
-ms.date: 09/22/2020
+ms.date: 10/05/2020
 ms.topic: overview
-ms.openlocfilehash: 596e52cca2be2a347c26502434048053a8b4684c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 54dce519bfaa8c42afa967fc5c0579f31986aefb
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91538965"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873923"
 ---
 # <a name="what-is-azure-policy"></a>Azure İlkesi nedir?
 
@@ -72,16 +72,16 @@ Azure İlkesi iki Kaynak Sağlayıcısı’nda işlemler olarak bilinen bazı iz
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
 - [Microsoft. Poliyelei](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Birçok Yerleşik rol Azure İlkesi kaynaklarına izin verir. **Kaynak Ilkesi katılımcısı** rolü çoğu Azure ilke işlemini içerir. **Sahibinin** tam hakları vardır. **Katkıda bulunan** ve **okuyucunun** _tüm Azure_ ilke işlemlerine erişimi vardır. **Katkıda bulunan** kaynak düzeltmesini tetikleyebilir, ancak tanımları veya atamaları _oluşturamaz_ .
+Birçok Yerleşik rol Azure İlkesi kaynaklarına izin verir. **Kaynak Ilkesi katılımcısı** rolü çoğu Azure ilke işlemini içerir. **Sahibinin** tam hakları vardır. **Katkıda bulunan** ve **okuyucunun** _tüm Azure_ ilke işlemlerine erişimi vardır. **Katkıda bulunan** kaynak düzeltmesini tetikleyebilir, ancak tanımları veya atamaları _oluşturamaz_ . **Kullanıcı erişimi Yöneticisi** , yönetilen kimliği **Deployifnotexists** üzerinde vermek veya atamaları gereken izinleri **değiştirmek** için gereklidir.
 
 Yerleşik rollerin hiçbirinde gerekli izinler yoksa [özel rol](../../role-based-access-control/custom-roles.md) oluşturun.
 
 > [!NOTE]
-> Bir **Deployifnotexists** ilke atamasının yönetilen kimliği, şablona dahil edilen kaynakları oluşturmak veya güncelleştirmek için yeterli izinlere sahip olmalıdır. Daha fazla bilgi için bkz. [düzeltme için ilke tanımlarını yapılandırma](./how-to/remediate-resources.md#configure-policy-definition).
+> Bir **Deployifnotexists** veya **değişiklik** ilkesi atamasının yönetilen kimliği, hedeflenen kaynakları oluşturmak veya güncelleştirmek için yeterli izinlere sahip olmalıdır. Daha fazla bilgi için bkz. [düzeltme için ilke tanımlarını yapılandırma](./how-to/remediate-resources.md#configure-policy-definition).
 
 ### <a name="resources-covered-by-azure-policy"></a>Azure Ilkesi kapsamındaki kaynaklar
 
-Azure Ilkesi, Azure 'daki tüm kaynakları değerlendirir. [Konuk yapılandırması](./concepts/guest-configuration.md), [Azure Kubernetes hizmeti](../../aks/intro-kubernetes.md)ve [Azure Key Vault](../../key-vault/general/overview.md)gibi belirli kaynak sağlayıcıları için ayarları ve nesneleri yönetmeye yönelik daha derin bir tümleştirme vardır. Daha fazla bilgi edinmek için bkz. [kaynak sağlayıcısı modları](./concepts/definition-structure.md).
+Azure Ilkesi, Azure ve yay etkin kaynaklardaki tüm kaynakları değerlendirir. [Konuk yapılandırması](./concepts/guest-configuration.md), [Azure Kubernetes hizmeti](../../aks/intro-kubernetes.md)ve [Azure Key Vault](../../key-vault/general/overview.md)gibi belirli kaynak sağlayıcıları için ayarları ve nesneleri yönetmeye yönelik daha derin bir tümleştirme vardır. Daha fazla bilgi edinmek için bkz. [kaynak sağlayıcısı modları](./concepts/definition-structure.md).
 
 ### <a name="recommendations-for-managing-policies"></a>İlkeleri yönetme ile ilgili öneriler
 
@@ -103,16 +103,15 @@ Göz önünde bulundurmanız gereken birkaç işaretçi ve ipucu aşağıda veri
 
 ### <a name="policy-definition"></a>İlke tanımı
 
-Azure İlkesi'nde bir ilke oluşturmak ve uygulamak için önce ilke tanımını oluşturmanız gerekir. Her ilke tanımında, üzerinde zorlanan koşullar vardır. Ve koşullar karşılanıyorsa, tanımlanmış bir etkiye sahiptir.
+Azure İlkesi'nde bir ilke oluşturmak ve uygulamak için önce ilke tanımını oluşturmanız gerekir. Her ilke tanımında, bu ilkelerin uygulandığı koşullar bulunur. Ve koşullar karşılanıyorsa, tanımlanmış bir etkiye sahiptir.
 
-Azure Ilkesinde, varsayılan olarak kullanılabilen birkaç yerleşik ilke sunuyoruz. Örnek:
+Azure Ilkesinde, varsayılan olarak kullanılabilen birkaç yerleşik ilke sunuyoruz. Örneğin:
 
 - **Izin verilen depolama hesabı SKU 'ları** (reddetme): dağıtılmakta olan bir depolama HESABıNıN bir SKU boyutları kümesi içinde olup olmadığını belirler. Etkisi, tanımlı SKU boyutları kümesine bağlı olmayan tüm depolama hesaplarını reddetmektir.
 - **Izin verilen kaynak türü** (reddetme): dağıtabileceğiniz kaynak türlerini tanımlar. Etkisi, bu tanımlı listenin parçası olmayan tüm kaynakları reddetmektir.
 - **Izin verilen konumlar** (reddetme): yeni kaynaklar için kullanılabilir konumları kısıtlar. Sahip olduğu eylem ise coğrafi uyumluluk gereksinimlerinizi uygulamaktır.
 - **Izin verilen sanal makine SKU 'ları** (reddetme): dağıtabileceğiniz bir sanal makine SKU 'Su kümesi belirtir.
 - **Kaynaklara bir etiket ekleyin** (değiştir): dağıtım isteği tarafından belirtilmemişse gerekli bir etiketi ve varsayılan değerini uygular.
-- **Append etiketi ve varsayılan değeri** (Append): gerekli bir etiketi ve değerini bir kaynağa zorlar.
 - **İzin verilmeyen kaynak türleri** (reddetme): bir kaynak türleri listesinin dağıtılmasını engeller.
 
 Bu ilke tanımlarını uygulamak için (hem yerleşik hem de özel tanımlar), bunları atamanız gerekir. Bu ilkelerden herhangi birini Azure portalı, PowerShell veya Azure CLI üzerinden atayabilirsiniz.

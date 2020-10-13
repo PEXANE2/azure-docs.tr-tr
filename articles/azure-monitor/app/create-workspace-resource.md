@@ -2,13 +2,13 @@
 title: Yeni bir Azure Izleyici Application Insights çalışma alanı tabanlı kaynak oluştur | Microsoft Docs
 description: Yeni Azure Izleyici Application Insights çalışma alanı tabanlı kaynakları etkinleştirmek için gereken adımlar hakkında bilgi edinin.
 ms.topic: conceptual
-ms.date: 09/10/2020
-ms.openlocfilehash: 29fa9f1dc401ac4132d9c6c0d8c054b3f4a154ac
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.date: 10/06/2020
+ms.openlocfilehash: 9b91e5065729bee6af3f8018c36930e132eb1a15
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932439"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945422"
 ---
 # <a name="workspace-based-application-insights-resources"></a>Çalışma alanı tabanlı Application Insights kaynakları
 
@@ -81,7 +81,7 @@ Aynı durum, ASP.NET ve ASP.NET Core için Visual Studio 'daki Application Insig
 
 ## <a name="creating-a-resource-automatically"></a>Otomatik olarak kaynak oluşturma
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Azure CLı komutlarına önizleme Application Insights erişmek için öncelikle şunu çalıştırmanız gerekir:
 
@@ -204,6 +204,10 @@ Application Insights kaynak bölmesi içinden **Özellikler**  >  **çalışma a
 ## <a name="export-telemetry"></a>Telemetriyi dışarı aktarma
 
 Eski sürekli dışa aktarma işlevselliği, çalışma alanı tabanlı kaynaklar için desteklenmez. Bunun yerine, Application Insights kaynağınız içinden **Tanılama ayarları**  >  **Tanılama ayarını Ekle** ' yi seçin. Bir depolama hesabına arşivlemek veya bir Azure Olay Hub 'ına akış yapmak için tüm tabloları veya tabloların bir alt kümesini seçebilirsiniz.
+
+> [!NOTE]
+> Şu anda telemetri dışarı aktarma için ek ücret alınmaz. Bu özellik için fiyatlandırma bilgileri, [Azure izleyici fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/monitor/)kullanıma sunulacaktır.  Faturalandırma başlamadan önce Bildirimler gönderilir. Bildirim süresinden sonra kullanmaya devam etmeyi tercih etmeniz gerekir <feature name> , ilgili ücret üzerinden faturalandırılırsınız. 
+ 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

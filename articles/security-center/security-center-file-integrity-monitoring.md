@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: b64ff51836f8d291acf57b1cd9ca100c4f87ebed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b6b27f4f71e9159c17ec2df68c6af5f1b98b177
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541178"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946102"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde dosya bütünlüğü izleme
 Bu yönergeyi kullanarak Azure Güvenlik Merkezi 'nde dosya bütünlüğü izleme (FIM) yapılandırma hakkında bilgi edinin.
@@ -29,28 +29,32 @@ Bu yönergeyi kullanarak Azure Güvenlik Merkezi 'nde dosya bütünlüğü izlem
 |Görünüş|Ayrıntılar|
 |----|:----|
 |Yayın durumu:|Genel olarak kullanılabilir (GA)|
-|Fiyat|[Sunucular Için Azure Defender](defender-for-servers-introduction.md) gerekir|
+|Fiyat|[Sunucular Için Azure Defender](defender-for-servers-introduction.md)gerektirir.<br>FIM Log Analytics çalışma alanına veri yükler. Veri ücretleri, karşıya yüklediğiniz veri miktarına bağlı olarak uygulanır. Daha fazla bilgi için bkz. [Log Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/log-analytics/) .|
 |Gerekli roller ve izinler:|**Çalışma alanı sahıbı** FIM 'yi etkinleştirebilir/devre dışı bırakabilir (daha fazla bilgi için bkz. [Log Analytics için Azure rolleri](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)).<br>**Okuyucu** , sonuçları görüntüleyebilir.|
-|Larının|![Evet ](./media/icons/yes-icon.png) ticari bulutlar<br>![Evet ](./media/icons/yes-icon.png) US gov<br>![](./media/icons/no-icon.png)Çin gov, diğer gov yok<br>Yalnızca Azure Otomasyonu 'nun değişiklik izleme çözümünün kullanılabildiği bölgelerde desteklenir.<br>Bkz. [bağlantılı Log Analytics çalışma alanı Için desteklenen bölgeler](../automation/how-to/region-mappings.md).<br>[Değişiklik izleme hakkında daha fazla bilgi edinin](../automation/change-tracking.md) |
+|Larının|![Evet ](./media/icons/yes-icon.png) ticari bulutlar<br>![Evet ](./media/icons/yes-icon.png) US gov<br>![](./media/icons/no-icon.png)Çin gov, diğer gov yok<br>Yalnızca Azure Otomasyonu 'nun değişiklik izleme çözümünün kullanılabildiği bölgelerde desteklenir.<br>Bkz. [bağlantılı Log Analytics çalışma alanı Için desteklenen bölgeler](../automation/how-to/region-mappings.md).<br>[Değişiklik izleme hakkında daha fazla bilgi edinin](../automation/change-tracking.md).|
 |||
 
-
-
-
-
 ## <a name="what-is-fim-in-security-center"></a>Güvenlik Merkezi 'nde FIM nedir?
-Değişiklik izleme olarak da bilinen dosya bütünlüğü izleme (FIM), işletim sisteminin, uygulama yazılımlarının ve diğer kullanıcıların bir saldırıyı gösterebilen değişiklikler için dosyaları ve kayıt defterlerini inceler. Bir karşılaştırma yöntemi, dosyanın geçerli durumunun dosyanın son taramasından farklı olup olmadığını belirlemede kullanılır. Dosyalarınızda geçerli veya şüpheli değişiklikler yapıldığını öğrenmek için bu karşılaştırmayı kullanabilirsiniz.
+Değişiklik izleme olarak da bilinen dosya bütünlüğü izleme (FIM), işletim sistemi dosyalarını, Windows kayıt defterlerini, uygulama yazılımını, Linux sistem dosyalarını ve daha fazlasını inceleyerek bir saldırının göstergesi olabilecek değişiklikler için. 
 
-Güvenlik Merkezi 'nin dosya bütünlüğü izleme, Windows dosyaları, Windows kayıt defteri ve Linux dosyalarının bütünlüğünü doğrular. FIM 'yi etkinleştirerek izlenmesini istediğiniz dosyaları seçersiniz. Güvenlik Merkezi, şu gibi etkinlik için FIM 'yi etkin olan dosyaları izler:
+Güvenlik Merkezi, varlıkların FIM ile izlenmesini önerir ve ayrıca, izlemek üzere kendi FIM ilkelerinizi veya varlıklarınızı tanımlayabilirsiniz. FIM, şu gibi şüpheli etkinlikler için sizi uyarır:
 
-- Dosya ve kayıt defteri oluşturma ve kaldırma
+- Dosya ve kayıt defteri anahtarı oluşturma veya kaldırma
 - Dosya değişiklikleri (dosya boyutundaki değişiklikler, erişim denetim listeleri ve içeriğin karması)
 - Kayıt defteri değişiklikleri (boyut, erişim denetim listeleri, tür ve içeriğe yapılan değişiklikler)
 
-Güvenlik Merkezi, içinde FIM 'yi kolayca etkinleştirebilmeniz için varlıkların izlenmesini öneriyor. Ayrıca, izlemek üzere kendi FIM ilkelerinizi veya varlıklarınızı tanımlayabilirsiniz. Bu izlenecek yol size nasıl yapılacağını gösterir.
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
-> [!NOTE]
-> Dosya bütünlüğü izleme (FIM) özelliği, Windows ve Linux bilgisayarları ve VM 'Leri için geçerlidir ve yalnızca, **sunucular Için Azure Defender** etkinleştirildiğinde kullanılabilir. Daha fazla bilgi için bkz. [fiyatlandırma](security-center-pricing.md) . FIM Log Analytics çalışma alanına veri yükler. Veri ücretleri, karşıya yüklediğiniz veri miktarına bağlı olarak uygulanır. Daha fazla bilgi için bkz. [Log Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/log-analytics/) .
+> [!div class="checklist"]
+> * FIM ile izlemek için önerilen varlıkların listesini gözden geçirin
+> * Kendi özel FIM kurallarınızı tanımlayın
+> * İzlenen varlıklarınızda yapılan değişiklikleri denetleme
+> * Dizinler genelinde izlemeyi basitleştirmek için joker karakterler kullanın
+
+
+## <a name="how-does-fim-work"></a>FIM nasıl çalışır?
+
+Önceki tarama sırasında, bu öğelerin geçerli durumu ile aynı durum karşılaştırılırken FIM, şüpheli değişiklikler yapılırsa sizi uyarır.
 
 FIM, ortamınızdaki değişiklikleri izlemek ve tanımlamak için Azure Değişiklik İzleme çözümünü kullanır. Dosya bütünlüğü izleme etkinleştirildiğinde, **çözüm**türünde bir **değişiklik izleme** kaynağınız olur. Veri toplama sıklığı ayrıntılarını, Azure Değişiklik İzleme için [Değişiklik izleme verileri toplama ayrıntıları](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details) konusunda bulabilirsiniz.
 
@@ -58,11 +62,11 @@ FIM, ortamınızdaki değişiklikleri izlemek ve tanımlamak için Azure Değiş
 > **Değişiklik izleme** kaynağını kaldırırsanız, güvenlik merkezi 'nde de dosya bütünlüğü izleme özelliğini devre dışı bırakacaksınız.
 
 ## <a name="which-files-should-i-monitor"></a>Hangi dosyaları izmalıyım?
-Hangi dosyaların izleneceğini seçerken sistem ve uygulamalarınız için kritik olan dosyaları düşünmeniz gerekir. Planlanmadan değiştirilmesini beklemediğiniz dosyaları seçmeyi düşünün. Uygulamalar veya işletim sistemi tarafından sıkça değiştirilen dosyaları seçme (örneğin, günlük dosyaları ve metin dosyaları), bir saldırının tanımlanmasını zorlaştıran çok sayıda gürültü oluşturur.
+Hangi dosyaların izleneceğini seçerken, sistem ve uygulamalarınız için hangi dosyaların kritik olduğunu göz önünde bulundurun. Planlanmadan değiştirilmesini beklemediğiniz dosyaları izleyin. Uygulamalar veya işletim sistemi (örneğin, günlük dosyaları ve metin dosyaları) tarafından sık değiştirilen dosyaları seçerseniz, bir saldırının tanımlanmasını zorlaştırarak çok sayıda gürültü oluşturur.
 
-Güvenlik Merkezi, bilinen saldırı desenlerine göre izlemek için önerilen öğelerin aşağıdaki listesini sağlar. Bu dosyalar ve Windows kayıt defteri anahtarları bulunur. Tüm anahtarlar tablodaki HKEY_LOCAL_MACHINE ("HKLM") altındadır.)
+Güvenlik Merkezi, bilinen saldırı desenlerine göre izlemek için önerilen öğelerin aşağıdaki listesini sağlar.
 
-|**Linux dosyaları**|**Windows dosyaları**|**Windows kayıt defteri anahtarları**|
+|Linux dosyaları|Windows dosyaları|Windows kayıt defteri anahtarları (HKLM = HKEY_LOCAL_MACHINE)|
 |:----|:----|:----|
 |/bin/login|C:\autoexec.bat|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0 \ Cryptsıpdllremovesigneddatamsg \{ C689AAB8-8E78-11D0-8C47-00C04FC295EE}|
 |/bin/passwd|C:\boot.ini|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0 \ Cryptsıpdllremovesigneddatamsg \{ 603Bcc1f-4b59-4e08-b724-d2c6297ef351}|
@@ -96,6 +100,8 @@ Güvenlik Merkezi, bilinen saldırı desenlerine göre izlemek için önerilen �
 
 
 ## <a name="enable-file-integrity-monitoring"></a>Dosya bütünlüğünü izlemeyi etkinleştir 
+
+FIM yalnızca Azure portal Güvenlik Merkezi sayfalarından kullanılabilir. Şu anda FIM ile çalışmaya yönelik REST API yok.
 
 1. **Azure Defender** panosunun **Gelişmiş koruma** alanından **Dosya bütünlüğü izleme**' yi seçin.
 
@@ -230,7 +236,7 @@ Değişiklik **ayrıntıları** , arama alanına bir değişiklik girdiğinizde 
 
    ![Etkin ayarını false olarak ayarla][19]
 
-6. **Kaydet**’i seçin.
+6. **Kaydet**'i seçin.
 
 ## <a name="folder-and-path-monitoring-using-wildcards"></a>Joker karakterler kullanılarak klasör ve yol izleme
 

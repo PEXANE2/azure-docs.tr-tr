@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 0f43b667b94e39548d81e6c6258d987f47074cb1
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: e70586fc2000e90b00d06d16bf5ba8df0bf5442f
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761337"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944991"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-java"></a>Hızlı başlangıç: çözümünüze bağlı olan IoT Tak ve Kullan cihazla etkileşim kurma (Java)
 
@@ -21,7 +21,7 @@ ms.locfileid: "91761337"
 
 IoT Tak ve Kullan, arka plandaki cihaz uygulamasıyla ilgili bilgi sahibi olmadan bir cihazın özellikleri ile etkileşim kurmanızı sağlayarak IoT 'yi basitleştirir. Bu hızlı başlangıçta, çözümünüze bağlı bir IoT Tak ve Kullan cihazına bağlanmak ve bunları denetlemek için Java 'nın nasıl kullanılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -76,7 +76,7 @@ Ortamınızı IoT Hub 'ınıza ve cihazınıza bağlanacak şekilde yapılandır
 Bu hızlı başlangıçta, yeni ayarladığınız örnek cihazla etkileşim kurmak için Java 'da yazılmış bir örnek IoT çözümü kullanırsınız.
 
 > [!NOTE]
-> Bu örnek, **IoT Hub hizmeti istemcisinden** **com. Microsoft. Azure. SDK. IoT. Service. *;** ad alanını kullanır. Model KIMLIĞINI alma hakkında daha fazla bilgi edinmek için bkz. [Geliştirici Kılavuzu](concepts-developer-guide-service.md).
+> Bu örnek, **IoT Hub hizmeti istemcisinden** **com. Microsoft. Azure. SDK. IoT. Service** ad alanını kullanır. Dijital TWINS API 'SI de dahil olmak üzere API 'Ler hakkında daha fazla bilgi edinmek için bkz. [hizmet Geliştirici Kılavuzu](concepts-developer-guide-service.md).
 
 1. **Hizmet** terminali olarak kullanmak için başka bir Terminal penceresi açın.
 
@@ -88,7 +88,7 @@ Bu hızlı başlangıçta, yeni ayarladığınız örnek cihazla etkileşim kurm
     mvm exec:java -Dexec.mainClass="samples.com.microsoft.azure.sdk.iot.service.Thermostat"
     ```
 
-### <a name="get-digital-twin"></a>Dijital ikizi al
+### <a name="get-device-twin"></a>Cihaz ikizi al
 
 Aşağıdaki kod parçacığı, hizmetinde cihaz ikizi nasıl alınacağını gösterir:
 
@@ -99,9 +99,9 @@ twinClient.getTwin(twin);
 System.out.println("Model Id of this Twin is: " + twin.getModelId());
 ```
 
-### <a name="update-a-digital-twin"></a>Dijital ikizi güncelleştirme
+### <a name="update-a-device-twin"></a>Cihaz ikizi güncelleştirme
 
-Aşağıdaki kod parçacığı, dijital ikizi özelliklerini güncelleştirmek için bir *düzeltme ekinin* nasıl kullanılacağını gösterir:
+Aşağıdaki kod parçacığı, ikizi cihaz aracılığıyla özellikleri güncelleştirmek için nasıl *Düzeltme Eki* kullanacağınızı gösterir:
 
 ```java
 String propertyName = "targetTemperature";

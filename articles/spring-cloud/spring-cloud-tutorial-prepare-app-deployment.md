@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: ff0582e3c4f654ed2a7f5efdc9ce8fd7a226595a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9d4356f5dc0b1eace586b741593b9c718c35caf
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906829"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945456"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Azure Spring Cloud 'da bir uygulamayı dağıtıma hazırlama
 
@@ -210,6 +210,8 @@ Spring Boot 2,1 kullanıyorsanız, pom.xml dosyanıza aşağıdaki bağımlılı
         <version>2.1.2</version>
 </dependency>
 ```
+> [!WARNING]
+> Yapılandırmanızda belirtmeyin `server.port` . Azure Spring Cloud, bu ayarı bir sabit bağlantı noktası numarasına overide. Lütfen bu ayara de dikkat edin ve kodunuzda sunucu bağlantı noktası belirtmeyin.
 
 ## <a name="other-recommended-dependencies-to-enable-azure-spring-cloud-features"></a>Azure Spring Cloud özelliklerini etkinleştirmek için önerilen diğer bağımlılıklar
 
@@ -227,6 +229,7 @@ Yönetilen Azure hizmeti kayıt defteri hizmetini kullanmak için, `spring-cloud
 ```
 
 Hizmet kayıt defteri sunucusunun uç noktası, uygulamanıza ortam değişkenleri olarak otomatik olarak eklenir. Uygulamalar, kendilerini hizmet kayıt defteri sunucusuna kaydedebilir ve diğer bağımlı mikro hizmetleri bulabilir.
+
 
 #### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient ek açıklaması
 
