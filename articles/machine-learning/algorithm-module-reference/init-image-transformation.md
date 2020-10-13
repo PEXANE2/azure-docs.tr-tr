@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
 ms.openlocfilehash: aa81987f9214870e248ef9b625e6afcd1093fe5d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907880"
 ---
 # <a name="init-image-transformation"></a>Init Görüntü Dönüşümü
@@ -67,7 +67,7 @@ Dönüştürme tamamlandıktan sonra, [görüntü dönüştürme](apply-image-tr
 
 ###  <a name="module-parameters"></a>Modül parametreleri  
 
-| Ad                    | Aralık   | Tür    | Varsayılan | Açıklama                              |
+| Adı                    | Aralık   | Tür    | Varsayılan | Açıklama                              |
 | ----------------------- | ------- | ------- | ------- | ---------------------------------------- |
 | Yeniden boyutlandırma                  | Herhangi biri     | Boole | Doğru    | Giriş PIL görüntüsünü verilen boyuta göre yeniden boyutlandır |
 | Boyut                    | >= 1     | Tamsayı | 256     | İstenen çıkış boyutunu belirtin          |
@@ -91,7 +91,7 @@ Dönüştürme tamamlandıktan sonra, [görüntü dönüştürme](apply-image-tr
 | Rastgele perspektif      | Herhangi biri     | Boole | Yanlış   | Verilen PIL görüntüsünün perspektif dönüşümünü 0,5 olasılık ile rastgele gerçekleştirir |
 | Rastgele silme          | Herhangi biri     | Boole | Yanlış   | Görüntüde rastgele bir dikdörtgen bölgesi seçer ve 0,5 olasılığa sahip piksellerini siler |
 
-###  <a name="output"></a>Çıkış  
+###  <a name="output"></a>Çıktı  
 
 | Ad                        | Tür                    | Açıklama                              |
 | --------------------------- | ----------------------- | ---------------------------------------- |

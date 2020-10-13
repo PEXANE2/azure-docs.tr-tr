@@ -8,10 +8,10 @@ ms.date: 09/18/2020
 ms.author: thweiss
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: dd1a59c2e6b0656233174c53b08ab013ce73d0f1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334438"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Cosmos hesabı için Azure özel bağlantısını yapılandırma
@@ -46,7 +46,7 @@ Azure portal kullanarak mevcut bir Azure Cosmos hesabı için özel bir uç nokt
     | Kaynak grubu | Kaynak grubunu seçin.|
     | **Örnek ayrıntıları** |  |
     | Name | Özel uç noktanız için herhangi bir ad girin. Bu ad alındıysanız, benzersiz bir tane oluşturun. |
-    |Region| Özel bağlantı dağıtmak istediğiniz bölgeyi seçin. Özel uç noktayı, sanal ağınızın bulunduğu aynı konumda oluşturun.|
+    |Bölge| Özel bağlantı dağıtmak istediğiniz bölgeyi seçin. Özel uç noktayı, sanal ağınızın bulunduğu aynı konumda oluşturun.|
     |||
 1. **Sonraki: kaynak**' ı seçin.
 1. **Özel uç nokta oluştur-kaynak**bölümünde bu bilgileri girin veya seçin:
@@ -69,7 +69,7 @@ Azure portal kullanarak mevcut bir Azure Cosmos hesabı için özel bir uç nokt
     | Sanal ağ| Sanal ağınızı seçin. |
     | Alt ağ | Alt ağlarınızı seçin. |
     |**Özel DNS tümleştirme**||
-    |Özel DNS bölgesi ile tümleştirme |**Evet** seçeneğini belirleyin. <br><br/> Özel uç noktanıza özel olarak bağlanmak için bir DNS kaydına ihtiyacınız vardır. Özel uç noktanızı özel bir DNS bölgesiyle tümleştirmenizi öneririz. Ayrıca, kendi DNS sunucularınızı kullanabilir veya sanal makinelerinizdeki konak dosyalarını kullanarak DNS kayıtları oluşturabilirsiniz. |
+    |Özel DNS bölgesi ile tümleştirme |**Evet**’i seçin. <br><br/> Özel uç noktanıza özel olarak bağlanmak için bir DNS kaydına ihtiyacınız vardır. Özel uç noktanızı özel bir DNS bölgesiyle tümleştirmenizi öneririz. Ayrıca, kendi DNS sunucularınızı kullanabilir veya sanal makinelerinizdeki konak dosyalarını kullanarak DNS kayıtları oluşturabilirsiniz. |
     |Özel DNS Bölgesi |**privatelink.documents.Azure.com**öğesini seçin. <br><br/> Özel DNS bölgesi otomatik olarak belirlenir. Azure portal kullanarak değiştiremezsiniz.|
     |||
 
@@ -98,7 +98,7 @@ Aşağıdaki tabloda, farklı Azure Cosmos hesabı API türleri, desteklenen alt
 1. Daha önce oluşturduğunuz özel uç nokta için arama yapın. Bu durumda, **cdbPrivateEndpoint3**.
 1. DNS ayarlarını ve IP adreslerini görmek için **genel bakış** sekmesini seçin.
 
-:::image type="content" source="./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png" alt-text="Azure portal özel IP adresleri":::
+:::image type="content" source="./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png" alt-text="Azure portal özel uç nokta oluşturma seçimleri":::
 
 Özel uç nokta başına birden çok IP adresi oluşturuldu:
 
@@ -411,7 +411,7 @@ Bu hesaplar için, her API türü için bir özel uç nokta oluşturmanız gerek
 
 Şablon başarıyla dağıtıldıktan sonra, aşağıdaki görüntüde gösterilene benzer bir çıktı görebilirsiniz. Bu `provisioningState` değer, `Succeeded` Özel uç noktaların doğru şekilde ayarlandığının değeridir.
 
-:::image type="content" source="./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png" alt-text="Kaynak Yöneticisi şablonu için dağıtım çıkışı":::
+:::image type="content" source="./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png" alt-text="Azure portal özel uç nokta oluşturma seçimleri":::
 
 Şablon dağıtıldıktan sonra, özel IP adresleri alt ağ içinde ayrılır. Azure Cosmos hesabının güvenlik duvarı kuralı yalnızca özel uç noktadan gelen bağlantıları kabul edecek şekilde yapılandırılmıştır.
 

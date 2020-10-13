@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.subservice: alerts
 ms.openlocfilehash: 579729eca8269d75569166a5bda32a979544b164
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715330"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Izleyici ölçüm uyarılarında sorun giderme sorunları 
@@ -250,7 +250,7 @@ Birden çok koşul içeren bir uyarı kuralında boyutları kullanırken aşağ�
 - Her bir koşul içinde yalnızca boyut başına bir değer seçebilirsiniz.
 - "Tüm geçerli ve gelecekteki değerleri Seç" seçeneğini (Select \* ) kullanamazsınız.
 - Farklı koşullarda yapılandırılan ölçümler aynı boyutu destekledikleri zaman, yapılandırılmış bir boyut değerinin tüm bu ölçümler için (ilgili koşullarda) aynı şekilde ayarlanması gerekir.
-Örnek:
+Örneğin:
     - Bir depolama hesabında tanımlanan ölçüm uyarısı kuralını düşünün ve iki koşulu izler:
         * Toplam **işlem** sayısı > 5
         * Ortalama **SuccessE2ELatency** > 250 MS

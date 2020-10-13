@@ -5,10 +5,10 @@ ms.date: 11/20/2019
 ms.topic: how-to
 ms.reviewer: janders
 ms.openlocfilehash: b3a4650977f1ad1a7a6967daa162adc8d2ef7bff
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90530395"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Azure blok zinciri hizmeti işlem düğümlerini yapılandırma
@@ -71,7 +71,7 @@ Uç noktanıza Azure AD erişim denetimi sağlamak için:
     |---------|-------------|
     | Rol | **Sahip**, **katkıda bulunan**veya **Reader**' ı seçin.
     | Şunlara erişim ata: | **Azure AD Kullanıcı, Grup veya hizmet sorumlusu**' nı seçin.
-    | Şunu seçin: | Eklemek istediğiniz kullanıcı, Grup veya hizmet sorumlusu için arama yapın.
+    | Seç | Eklemek istediğiniz kullanıcı, Grup veya hizmet sorumlusu için arama yapın.
 
 1. Rol atamasını eklemek için **Kaydet** ' i seçin.
 

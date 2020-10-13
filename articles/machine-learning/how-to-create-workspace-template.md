@@ -11,10 +11,10 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
 ms.openlocfilehash: 20fa52febaa42850609f3f793d6f4aa4ae2704a6
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91626335"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Azure Machine Learning için bir çalışma alanı oluşturmak üzere Azure Resource Manager şablonu kullanma
@@ -26,7 +26,7 @@ Bu makalede, Azure Resource Manager şablonları kullanarak Azure Machine Learni
 
 Daha fazla bilgi için bkz. [Azure Resource Manager şablonuyla uygulama dağıtma](../azure-resource-manager/templates/deploy-powershell.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir **Azure aboneliği**. Bir tane yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
@@ -544,7 +544,7 @@ New-AzResourceGroupDeployment `
 
 --- -->
 
-## <a name="use-the-azure-portal"></a>Azure portalı kullanma
+## <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
 1. [Özel şablondan kaynak dağıtma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)bölümündeki adımları izleyin. __Şablon seçin__ ekranına geldiğinizde, açılan listeden **201-Machine-Learning-Advanced** şablonunu seçin.
 1. Şablonu kullanmak için __şablon seç__ ' i seçin. Dağıtım senaryonuza bağlı olarak aşağıdaki gerekli bilgileri ve diğer parametreleri sağlayın.

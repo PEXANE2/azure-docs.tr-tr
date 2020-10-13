@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
 ms.openlocfilehash: b1b766e3cb337151c5ca9b35e2040a2a47124151
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91568534"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Azure portal kullanarak Azure Data Factory işlem hattında dallanan ve zincirleme etkinlikleri
@@ -314,7 +314,7 @@ Bu adımda, bir Kopyalama etkinliği ve iki Web etkinliği ile bir işlem hattı
     1. **sourceBlobContainer** parametresi için **adftutorial/dummy/input** yolunu girin. Sahte klasörün adftutorial kapsayıcısında bulunmadığından emin olun.
     2. **sinkBlobContainer** parametresi için **adftutorial/dummy/output** yolunu girin.
     3. **Receiver** parametresine ait bir **e-posta adresi** girin.
-    4. **Son**'a tıklayın.
+    4. **Finish (Son)** düğmesine tıklayın.
 
 ## <a name="monitor-the-failed-pipeline-run"></a>Başarısız olan işlem hattı çalıştırmasını izleme
 

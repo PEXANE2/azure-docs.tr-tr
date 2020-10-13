@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 659cca6979a8d8be7d12c49fe01a9d0a5d7ac58e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713768"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>Öğretici: Amazon Business ile Azure Active Directory tümleştirme
@@ -60,7 +60,7 @@ Amazon Business 'ın Azure AD ile tümleştirilmesini yapılandırmak için, gal
 Azure AD SSO 'yu Amazon Business ile yapılandırmak ve test etmek için aşağıdaki oluşturma adımlarını izleyin:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-2. **[Amazon BUSINESS SSO 'Yu yapılandırma](#configure-amazon-business-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[Amazon BUSINESS SSO 'Yu yapılandırma](#configure-amazon-business-sso)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
 5. Amazon Business **[test kullanıcısı oluşturma](#create-amazon-business-test-user)** -kullanıcının Azure AD gösterimine bağlı olan Amazon Business 'ta B. Simon 'a karşılık gelen bir.
@@ -72,7 +72,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. [Azure Portal](https://portal.azure.com/), **Amazon Business** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -123,7 +123,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     e. **Kaydet**’e tıklayın.
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama Sertifikası** bölümünde **meta veri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML Ile tekli Sign-On ayarlama** sayfasında, **SAML Imzalama Sertifikası** bölümünde **meta veri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -139,7 +139,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Kullanıcı Profili](media/amazon-business-tutorial/user-profile.png)
 
-1. **Sistem tümleştirmeler** sihirbazında, **Çoklu oturum açma (SSO)** seçeneğini belirleyin.
+1. **Sistem tümleştirmeler** sihirbazında, **tek Sign-On (SSO)** öğesini seçin.
 
     ![Çoklu Oturum Açma (SSO)](media/amazon-business-tutorial/sso-settings.png)
 

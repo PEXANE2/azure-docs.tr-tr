@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.openlocfilehash: 4c3b5674fe039a89eb97b915d13b5d472a6a0568
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91316401"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>LUSıS uygulamanız için nelerin iyi olduğunu anlayın
@@ -128,7 +128,7 @@ Geliştiriciler, bir [tahmin uç noktası](luis-how-to-azure-subscription.md) UR
 
 Modelinize eğitilen, yayımladım ve [uç nokta](luis-glossary.md#endpoint) sorgularını aldıktan sonra, Luo tarafından önerilen noktaları [gözden geçirin](luis-how-to-review-endpoint-utterances.md) . LUO, amaç veya varlık için düşük puanları olan uç nokta dıklarını seçer.
 
-## <a name="best-practices"></a>En iyi uygulamalar
+## <a name="best-practices"></a>Önerilen uygulamalar
 
 [En iyi uygulamaları](luis-concept-best-practices.md) gözden geçirin ve bunları düzenli yazma döngünüzün bir parçası olarak uygulayın.
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: 2a251ef426d41413cf81f46ca05b11640f01e87a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333792"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services kavramlar
@@ -155,7 +155,7 @@ Bir Player tarafından bir akış istendiğinde, Media Services, bir zarf şifre
 
 Belirteç kısıtlı ilkesini yapılandırırken, birincil doğrulama anahtarını, verenin ve hedef kitle parametrelerini belirtmeniz gerekir. Birincil doğrulama anahtarı, belirtecin imzalandığı anahtarı içerir ve veren, belirteci veren güvenli belirteç hizmetidir. Hedef kitle (bazen kapsam olarak adlandırılır) belirtecin amacını veya belirtecin erişim yetkisi aldığı kaynağı açıklar. Media Services anahtar teslim hizmeti, belirteçteki bu değerlerin şablondaki değerlerle eşleştiğini doğrular.
 
-Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+Daha fazla bilgi için aşağıdaki makalelere bakın:
 - [İçeriğe karşı korumaya genel bakış](media-services-content-protection-overview.md)
 - [AES ile koruma-128](media-services-protect-with-aes128.md)
 - [PlayReady/Widevine ile koruma](media-services-protect-with-playready-widevine.md)

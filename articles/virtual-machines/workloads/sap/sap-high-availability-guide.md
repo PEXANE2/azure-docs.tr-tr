@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3a330fc18f39ffd7007e2a41a28016df69a2b739
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91314666"
 ---
 # <a name="high-availability-azure-virtual-machines-for-sap-netweaver"></a>SAP NetWeaver için yüksek kullanılabilirliğe sahip Azure sanal makineleri
@@ -522,7 +522,7 @@ Ascs/SCS çok düzeyli şablonunu ayarlamak için, [Ass/SCS çok düzeyli şablo
   -  **Sistem kullanılabilirliği**. **Ha**'yi seçin.
   -  **Yönetici Kullanıcı adı ve yönetici parolası**. Makinede oturum açmak için kullanılabilecek yeni bir kullanıcı oluşturun.
   -  **Yeni veya var olan alt ağ**. Yeni bir sanal ağın ve alt ağın oluşturulması gerekip gerekmediğini veya mevcut bir alt ağın kullanılıp kullanılmayacağını ayarlayın. Şirket içi ağınıza bağlı bir sanal ağınız zaten varsa, **mevcut**' ı seçin.
-  -  **Alt ağ kimliği**. VM 'yi tanımlanmış VM 'ye atanmış bir alt ağa sahip olduğunuz mevcut bir VNet 'e dağıtmak istiyorsanız, söz konusu alt ağın KIMLIĞINI adlandırın. KIMLIK genellikle şöyle görünür:/Subscriptions/<*abonelik kimliği*>/resourceGroups/<*kaynak grubu adı*>/Providers/Microsoft.Network/virtualnetworks/<*sanal ağ adı*>/Subnets/<*alt ağ adı*>
+  -  **Alt ağ kimliği**. VM 'yi tanımlanmış VM 'ye atanmış bir alt ağa sahip olduğunuz mevcut bir VNet 'e dağıtmak istiyorsanız, söz konusu alt ağın KIMLIĞINI adlandırın. KIMLIK genellikle şöyle görünür:/Subscriptions/<*abonelik kimliği*>/resourceGroups/<*kaynak grubu adı*>/Providers/Microsoft.Network/virtualNetworks/<*sanal ağ adı*>/Subnets/<*alt ağ adı*>
 
 Şablon, birden çok SAP sistemini destekleyen bir Azure Load Balancer örneğini dağıtır.
 
@@ -740,7 +740,7 @@ SAP ASCS veya SCS örnekleri için farklı numaralar kullanmak istiyorsanız, ba
 1. Azure Portal ** < *SID*>-lb-ascs yük dengeleyici**  >  **Yük Dengeleme kuralları**' nı seçin.
 2. SAP ASCS veya SCS örneğine ait olan tüm yük dengeleme kuralları için şu değerleri değiştirin:
 
-   * Name
+   * Adı
    * Bağlantı noktası
    * Arka uç bağlantı noktası
 

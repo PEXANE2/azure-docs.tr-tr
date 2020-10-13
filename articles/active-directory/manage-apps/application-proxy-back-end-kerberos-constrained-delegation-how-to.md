@@ -12,10 +12,10 @@ ms.date: 04/23/2019
 ms.author: kenwith
 ms.reviewer: asteen, japere
 ms.openlocfilehash: 3ca3df010426347846b29734426edfad4536516b
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91568723"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Uygulama proxy 'Si için Kerberos kısıtlanmış temsil yapılandırmalarının sorunlarını giderme
@@ -33,7 +33,7 @@ Bu makalede aşağıdaki varsayımlar yapılır:
 - Sunucu ve uygulama Konakları tek bir Azure Active Directory etki alanında bulunur. Etki alanları arası ve orman senaryolarıyla ilgili ayrıntılı bilgi için, bkz. [KCD teknik incelemesi](https://aka.ms/KCDPaper).
 - Konu uygulaması, ön kimlik doğrulama etkin olan bir Azure kiracısında yayımlanır. Kullanıcıların, form tabanlı kimlik doğrulaması aracılığıyla Azure 'da kimlik doğrulaması yapması beklenir. Zengin istemci kimlik doğrulama senaryoları Bu makalede ele alınmıştır. Gelecekte bir noktada eklenebilirler.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD Uygulama Ara Sunucusu, birçok tür altyapıya da ortamda dağıtılabilir. Mimariler kuruluştan kuruluşa farklılık gösterir. KCD ile ilgili sorunların en yaygın nedenleri ortamlar değildir. Basit yanlış yapılandırma veya genel hatalar çoğu soruna neden olur.
 

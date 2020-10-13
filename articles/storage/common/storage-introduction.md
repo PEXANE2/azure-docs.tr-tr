@@ -9,10 +9,10 @@ ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 1f335640eb37f51857fa295298d0a3ca91f2a370
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91714992"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Temel Azure depolama hizmetlerine giriş
@@ -91,7 +91,7 @@ Azure Kuyruk hizmeti, iletileri depolamak ve almak için kullanılır. Kuyruk il
 
 Azure Kuyrukları hakkında daha fazla bilgi için bkz. [Kuyruklara Giriş](../queues/storage-queues-introduction.md).
 
-## <a name="table-storage"></a>Table Storage
+## <a name="table-storage"></a>Tablo depolama
 
 Azure Tablo depolama artık Azure Cosmos DB’nin bir parçasıdır. Azure Tablo depolama belgelerini görmek için bkz. [Azure Tablo Depolamaya Genel Bakış](../tables/table-storage-overview.md). Mevcut Azure Tablo depolama hizmetine ek olarak, aktarım hızı için iyileştirilmiş tablolar, genel dağıtım ve otomatik ikincil dizinler sağlayan yeni bir Azure Cosmos DB Tablo API'si teklifi vardır. Daha fazla bilgi edinmek ve yeni Premium deneyimi denemek için bkz. [Azure Cosmos DB tablo API'si](https://aka.ms/premiumtables).
 
@@ -171,7 +171,7 @@ Bir depolama hesabındaki kaynaklara, HTTP/HTTPS istekleri yapan herhangi bir di
 
 - [Depolama için Azure PowerShell Cmdlet'leri](https://docs.microsoft.com/powershell/module/az.storage)
 - [Depolama için Azure CLI Cmdlet'leri](https://docs.microsoft.com/cli/azure/storage)
-- [AzCopy komut satırı yardımcı programı](https://aka.ms/downloadazcopy)
+- [AzCopy Command-Line yardımcı programı](https://aka.ms/downloadazcopy)
 - [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/), Microsoft’un Windows, macOS ve Linux üzerinde Azure Depolama verileriyle görsel olarak çalışmanızı sağlayan ücretsiz ve tek başına uygulamasıdır.
 - [Azure depolama Istemci araçları](../storage-explorers.md)
 - [Azure Geliştirici Araçları](https://azure.microsoft.com/tools/)

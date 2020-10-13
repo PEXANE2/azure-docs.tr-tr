@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/28/2020
 ms.author: jeedes
 ms.openlocfilehash: 6ab6a355b986daeca41ffd18a51689cd9d880dcd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713819"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-askyourteam"></a>Öğretici: AskYourTeam ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -85,7 +85,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<COMPANY>.app.askyourteam.com/login`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri, öğreticide daha sonra açıklanan gerçek yanıt URL 'SI ve oturum açma URL 'SI değerleriyle güncelleştirin.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek yanıt URL 'SI ile ve öğreticide daha sonra açıklanan Sign-On URL değerleriyle güncelleştirin.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -139,13 +139,13 @@ Bu bölümde, Askyourekibine erişim vererek Azure çoklu oturum açma özelliğ
 
 1. **Ayarları Düzenle**' ye tıklayın.
 
-    ![Ekran görüntüsü, bir düzenleme ayarları düğmesi ile çoklu oturum açma iletisini gösterir.](./media/askyourteam-tutorial/configure2.png)
+    ![Ekran görüntüsü, bir düzenleme ayarları düğmesi olan tek Sign-On iletisini gösterir.](./media/askyourteam-tutorial/configure2.png)
 
-1. **Çoklu oturum açma tümleştirmesi düzenleme** sayfasında, aşağıdaki adımları uygulayın: 
+1. **Tek Sign-On tümleştirmesini Düzenle** sayfasında, aşağıdaki adımları gerçekleştirin: 
 
-    ![Ekran görüntüsünde, bu adımın değerlerini girebileceğiniz çoklu oturum açma tümleştirmesini düzenleme gösterilmektedir.](./media/askyourteam-tutorial/configure3.png)
+    ![Ekran görüntüsünde, bu adımın değerlerini girebileceğiniz tek Sign-On tümleştirmesini düzenleme gösterilmektedir.](./media/askyourteam-tutorial/configure3.png)
 
-    a. **SAML çoklu oturum açma hizmeti URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
+    a. **SAML tek Sign-On HIZMETI URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
     b. **SAML VARLıK kimliği** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcı** değerini yapıştırın.
 

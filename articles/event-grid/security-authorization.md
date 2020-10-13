@@ -4,10 +4,10 @@ description: Azure Event Grid ve kavramlarını açıklar.
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 09317b310a5934d27b82d265ec7f9b276135f882
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86119098"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>Event Grid kaynaklarına erişimi yetkilendirme
@@ -185,14 +185,14 @@ Web kancası olmayan bir olay işleyicisi (örneğin, bir olay hub 'ı veya kuyr
 Olay kaynağı olan kaynakta **Microsoft. EventGrid/Eventabonelikleriniz/Write** izninizin olması gerekir. Kaynak kapsamına yeni bir abonelik yazıyorsanız, bu izne ihtiyacınız vardır. Gerekli kaynak, bir sistem konusuna veya özel konuya abone olup olmadığınız temel alınarak farklılık gösterir. Her iki tür de bu bölümde açıklanmaktadır.
 
 ### <a name="system-topics-azure-service-publishers"></a>Sistem konuları (Azure hizmet yayımcıları)
-Sistem konuları için, olayı yayımlayan kaynağın kapsamına yeni bir olay aboneliği yazma izninizin olması gerekir. Kaynağın biçimi:`/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}`
+Sistem konuları için, olayı yayımlayan kaynağın kapsamına yeni bir olay aboneliği yazma izninizin olması gerekir. Kaynağın biçimi: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}`
 
-Örneğin, **myacct**adlı bir depolama hesabındaki bir olaya abone olmak için Microsoft. Eventgrid/Eventaboneliklerin/Write izninizin olması gerekir:`/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct`
+Örneğin, **myacct**adlı bir depolama hesabındaki bir olaya abone olmak için Microsoft. Eventgrid/Eventaboneliklerin/Write izninizin olması gerekir: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct`
 
 ### <a name="custom-topics"></a>Özel konular
-Özel konularda, olay Kılavuzu konusunun kapsamına yeni bir olay aboneliği yazma izninizin olması gerekir. Kaynağın biçimi:`/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.EventGrid/topics/{topic-name}`
+Özel konularda, olay Kılavuzu konusunun kapsamına yeni bir olay aboneliği yazma izninizin olması gerekir. Kaynağın biçimi: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.EventGrid/topics/{topic-name}`
 
-Örneğin, **MyTopic**adlı özel bir konuya abone olmak için Microsoft. Eventgrid/Eventaboneliklerin/Write izninizin olması gerekir:`/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`
+Örneğin, **MyTopic**adlı özel bir konuya abone olmak için Microsoft. Eventgrid/Eventaboneliklerin/Write izninizin olması gerekir: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`
 
 
 

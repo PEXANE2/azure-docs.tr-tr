@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: jushiman
 ms.openlocfilehash: 8f679626b69bd855e86b94cdde51955edd068e8f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91714899"
 ---
 # <a name="enable-automanage-for-virtual-machines-through-azure-policy"></a>Azure Ilkesi aracılığıyla sanal makineler için oto yönetimini etkinleştir
@@ -20,7 +20,7 @@ ms.locfileid: "91714899"
 Çok sayıda VM için bir oto yönetimi etkinleştirmek istiyorsanız, bunu yerleşik bir [Azure ilkesi](..\governance\azure-management.md)kullanarak yapabilirsiniz. Bu makale, doğru ilkeyi bulmada ve Azure portal ' de oto yönetimi etkinleştirmek üzere nasıl atayacağınızı size kılavuzluk eder.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) .
 

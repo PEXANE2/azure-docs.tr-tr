@@ -10,10 +10,10 @@ ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
 ms.openlocfilehash: 03c8f5acfc10738401f61de099f946c33497d705
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569813"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Python SDK Azure Cosmos DB: sürüm notları ve kaynakları
@@ -117,7 +117,7 @@ ms.locfileid: "91569813"
 
 * İstemci bağlantısı, içinde tanımlanan HTTP işlem hattını tüketmek üzere uyarlanmıştır `azure.core.pipeline` .
 
-* Etkileşimli nesneler artık proxy olarak yeniden adlandırıldı. Buna aşağıdakiler dahildir:
+* Etkileşimli nesneler artık proxy olarak yeniden adlandırıldı. Şunları içerir:
 
   * `Database` -> `DatabaseProxy`
   * `User` -> `UserProxy`
@@ -294,7 +294,7 @@ Sürüm 4.0.0 B1, Python dili en iyi uygulamalarına uygun bir Kullanıcı dostu
 ### <a name="142"></a>1.4.2
 
 * Upsert uygulama. Upsert özelliği desteklemek için yeni UpsertXXX yöntemleri eklenmiştir.
-* KIMLIK tabanlı yönlendirme uygulayın. Ortak API değişikliği yok, tüm değişiklikler iç.
+* ID-Based yönlendirmeyi uygulayın. Ortak API değişikliği yok, tüm değişiklikler iç.
 
 ### <a name="130"></a>1.3.0
 

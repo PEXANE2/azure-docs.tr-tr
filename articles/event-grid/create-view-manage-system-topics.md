@@ -4,10 +4,10 @@ description: Bu makalede, Azure portal kullanarak var olan sistem konusunun nas�
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 2dbb0893668d72cfebf2d64e6515ff6ab6fed9bc
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86115120"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-in-the-azure-portal"></a>Azure portal Event Grid sistem konuları oluşturun, görüntüleyin ve yönetin
@@ -35,7 +35,7 @@ Azure kaynağı (depolama hesabı, Event Hubs ad alanı vb.) için bir sistem ko
     
         > [!NOTE]
         > Bu sistem konu adını ölçümler ve tanılama günlükleri aramak için kullanabilirsiniz.
-    6. **İncele ve oluştur**’u seçin.
+    6. **Gözden geçir ve oluştur**’u seçin.
 
         ![Sistem konusu oluştur](./media/create-view-manage-system-topics/create-event-grid-system-topic-page.png)
     5. Ayarları gözden geçirin ve **Oluştur**' u seçin. 

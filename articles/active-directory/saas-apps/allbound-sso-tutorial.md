@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: c9ca3b98d01e44c0c899e165e5f892ab5d9a5954
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715918"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-allbound-sso"></a>Öğretici: Allbağlanacak SSO ile tümleştirme Azure Active Directory
@@ -74,7 +74,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açmayı, Allbağlanacak SSO ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Tüm uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Allbağlı SSO çoklu oturum açmayı yapılandırın](#configure-allbound-sso-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[ALLBAĞLı SSO çoklu oturum açmayı yapılandırın](#configure-allbound-sso-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan, Alllinked SSO 'da Britta Simon 'un bir karşılığı olacak şekilde, **[ALLLINKED SSO test kullanıcısı oluşturun](#create-allbound-sso-test-user)** .
@@ -94,7 +94,7 @@ Azure AD çoklu oturum açmayı Allbağlanacak SSO ile yapılandırmak için aş
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarla** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarla** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -115,7 +115,7 @@ Azure AD çoklu oturum açmayı Allbağlanacak SSO ile yapılandırmak için aş
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [Allbağlanacak SSO istemci destek ekibine](mailto:engineering@allbound.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -129,7 +129,7 @@ Azure AD çoklu oturum açmayı Allbağlanacak SSO ile yapılandırmak için aş
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-allbound-sso-single-sign-on"></a>Allbağlı SSO çoklu oturum açmayı yapılandırma
+### <a name="configure-allbound-sso-single-sign-on"></a>Allbağlanacak SSO tek Sign-On yapılandırma
 
 **Allbağlanacak SSO** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'Leri Azure Portal ' den [allbağlı SSO destek ekibine](mailto:engineering@allbound.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

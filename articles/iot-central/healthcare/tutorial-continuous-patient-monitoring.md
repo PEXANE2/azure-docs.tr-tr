@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: 1967a2fb5adebe01ef4bff8d58f7832bffe95762
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90531279"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Öğretici: sürekli hasta izleme uygulama şablonunu dağıtma ve gözden geçirme
@@ -61,11 +61,11 @@ Uygulama şablonu dağıttıktan sonra, önce **Lamna in hasta izleme panosuna**
 
 * Cihazın hasta veya uzak bir senaryo için kullanıldığını belirtmek üzere cihazınızın **hasta durumunu** değiştirin.
 
-:::image type="content" source="media/lamna-in-patient.png" alt-text="Hasta durumu":::
+:::image type="content" source="media/lamna-in-patient.png" alt-text="Healthcre uygulama şablonu":::
 
 Burkville Hospstanu işleci panosunu görmek için **uzak hasta panosuna git** ' i de seçebilirsiniz. Bu pano benzer bir eylem, telemetri ve bilgi kümesi içerir. Ayrıca, kullanımda olan birden çok cihazı görebilir ve her birinde **bellenimi güncelleştirmeyi** seçebilirsiniz.
 
-:::image type="content" source="media/lamna-remote.png" alt-text="Uzak Operatör Panosu":::
+:::image type="content" source="media/lamna-remote.png" alt-text="Healthcre uygulama şablonu":::
 
 ### <a name="device-templates"></a>Cihaz şablonları
 
@@ -75,7 +75,7 @@ Burkville Hospstanu işleci panosunu görmek için **uzak hasta panosuna git** '
 
 * **Akıllı Knee ayracı**: Bu cihaz, bir Knee değiştirme Sury 'den kurtarma yaparken, hastaların kullandığı bir Knee ayracını temsil eder. Bu şablonu seçerseniz cihaz verileri, hareket aralığı ve hızlandırma gibi işlevleri görürsünüz.
 
-:::image type="content" source="media/smart-vitals-device-template.png" alt-text="Akıllı yama şablonu":::
+:::image type="content" source="media/smart-vitals-device-template.png" alt-text="Healthcre uygulama şablonu":::
 
 ### <a name="device-groups"></a>Device groups
 
@@ -93,7 +93,7 @@ Cihaz grupları sekmesini seçerseniz, uygulamadaki her bir cihaz şablonu için
 
 * **Düzeltme Eki pili düşük**: Bu kural, cihazdaki pil düzeyi %10 ' un altına gittiğinde tetiklenir. Cihazını ücretlendirmesi için bir bildirim tetiklemek üzere bu kuralı kullanın.
 
-:::image type="content" source="media/brace-temp-rule.png" alt-text="Kurallar":::
+:::image type="content" source="media/brace-temp-rule.png" alt-text="Healthcre uygulama şablonu":::
 
 ### <a name="jobs"></a>İşler
 
@@ -113,7 +113,7 @@ Cihaz grupları sekmesini seçerseniz, uygulamadaki her bir cihaz şablonu için
 
 **Komutlar** sekmesi cihazdaki komutları çalıştırmanızı sağlar.
 
-:::image type="content" source="media/knee-brace-dashboard.png" alt-text="Knee küme ayracı panosu":::
+:::image type="content" source="media/knee-brace-dashboard.png" alt-text="Healthcre uygulama şablonu":::
 
 ### <a name="data-export"></a>Veri dışarı aktarma
 
@@ -123,7 +123,7 @@ Veri dışa aktarma işlemi, cihaz verilerinizi [FHıR Için Azure API 'si](conc
 
 Bu uygulamayı kullanmaya devam edemeyecekiniz, **yönetim > uygulama ayarlarını** ziyaret ederek uygulamayı silin ve **Sil**' e tıklayın.
 
-:::image type="content" source="media/admin-delete.png" alt-text="Tidy kaynakları":::
+:::image type="content" source="media/admin-delete.png" alt-text="Healthcre uygulama şablonu":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

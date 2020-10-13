@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/22/2020
 ms.openlocfilehash: 18ff2c9690de1708cd8382d83a0c01662a8e6fb0
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619792"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL veritabanı şart sözlüğü
@@ -24,7 +24,7 @@ ms.locfileid: "91619792"
 
 ## <a name="azure-sql-database"></a>Azure SQL Veritabanı
 
-|Bağlam|Terim|Daha fazla bilgi|
+|Bağlam|Süre|Daha fazla bilgi|
 |:---|:---|:---|
 |Azure hizmeti|Azure SQL veritabanı veya SQL veritabanı|[Azure SQL Veritabanı](database/sql-database-paas-overview.md)|
 |Satın alma modeli|DTU tabanlı satın alma modeli|[DTU tabanlı satın alma modeli](database/service-tiers-dtu.md)|
@@ -32,7 +32,7 @@ ms.locfileid: "91619792"
 |Dağıtım seçeneği |Tek veritabanı|[Tek veritabanları](database/single-database-overview.md)|
 ||Elastik havuz|[Elastik havuz](database/elastic-pool-overview.md)|
 |Hizmet katmanı|Temel, standart, Premium, Genel Amaçlı, hiper ölçek, İş Açısından Kritik|Sanal çekirdek modelindeki hizmet katmanları için bkz. [SQL veritabanı hizmet katmanları](database/service-tiers-vcore.md#service-tiers). DTU modelindeki hizmet katmanları için bkz. [DTU modeli](database/service-tiers-dtu.md#compare-the-dtu-based-service-tiers).|
-|İşlem Katmanı|Sunucusuz işlem|[Sunucusuz işlem](database/service-tiers-vcore.md#compute-tiers)
+|İşlem katmanı|Sunucusuz işlem|[Sunucusuz işlem](database/service-tiers-vcore.md#compute-tiers)
 ||Sağlanan işlem|[Sağlanan işlem](database/service-tiers-vcore.md#compute-tiers)
 |İşlem oluşturma|5. nesil, d serisi, Fsv2 serisi|[Donanım nesilleri](database/service-tiers-vcore.md#hardware-generations)
 |Sunucu varlığı| Sunucu |[Mantıksal SQL sunucuları](database/logical-servers.md)|
@@ -41,14 +41,14 @@ ms.locfileid: "91619792"
 
 ## <a name="azure-sql-managed-instance"></a>Azure SQL Yönetilen Örnek
 
-|Bağlam|Terim|Daha fazla bilgi|
+|Bağlam|Süre|Daha fazla bilgi|
 |:---|:---|:---|
 |Azure hizmeti|Azure SQL Yönetilen Örnek|[SQL Yönetilen Örnek](managed-instance/sql-managed-instance-paas-overview.md)|
 |Satın alma modeli|Sanal çekirdek tabanlı satın alma modeli|[Sanal çekirdek tabanlı satın alma modeli](database/service-tiers-vcore.md)|
 |Dağıtım seçeneği |Tek Örnek|[Tek örnek](managed-instance/sql-managed-instance-paas-overview.md)|
 ||Örnek Havuzu (Önizleme)|[Örnek havuzları](managed-instance/instance-pools-overview.md)|
 |Hizmet katmanı|Genel Amaçlı, İş Açısından Kritik|[SQL yönetilen örnek hizmeti katmanları](managed-instance/sql-managed-instance-paas-overview.md#service-tiers)|
-|İşlem Katmanı|Sağlanan işlem|[Sağlanan işlem](database/service-tiers-vcore.md#compute-tiers)|
+|İşlem katmanı|Sağlanan işlem|[Sağlanan işlem](database/service-tiers-vcore.md#compute-tiers)|
 |İşlem oluşturma|5. nesil|[Donanım nesilleri](database/service-tiers-vcore.md#hardware-generations)
 |Sunucu varlığı|Yönetilen örnek veya örnek| SQL yönetilen örneği sunucuda olan N/A |
 |Kaynak türü|Sanal Çekirdek|SQL yönetilen örneği için işlem kaynağına sunulan bir CPU çekirdeği.|

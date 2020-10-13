@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
 ms.openlocfilehash: c56bb7030b2ebc12e3afc24e2d8cb29ce2dda0bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74079487"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Cihazınız ve IoT Hub arasında ileti göndermek ve almak için Visual Studio için Cloud Explorer 'ı kullanın
@@ -34,7 +34,7 @@ Bu makalede, aşağıdaki görevleri gerçekleştirebilirsiniz:
 
 - Bulutta cihaza iletiler göndermek için Visual Studio için Cloud Explorer 'ı kullanın.
 
-## <a name="what-you-need"></a>Ne gerekiyor
+## <a name="what-you-need"></a>Gerekenler
 
 Aşağıdaki önkoşulların olması gerekir:
 

@@ -8,10 +8,10 @@ ms.date: 05/28/2020
 ms.author: jasonh
 ms.custom: devx-track-js
 ms.openlocfilehash: a40be5212fb1335482ec5011d24c8eaf5f3d9a00
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91409689"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sinde depolanan verileri yönetmek için MongoDB uzantı komutlarını kullanma 
@@ -26,7 +26,7 @@ MongoDB için Azure Cosmos DB API 'SI, MongoDB sunucu sürümü 3,2 ve 3,6 ile u
 
 Aşağıdaki uzantı komutları, veritabanı istekleri aracılığıyla Azure Cosmos DB özel kaynakları oluşturma ve değiştirme olanağı sağlar:
 
-* [Veritabanı oluştur](#create-database)
+* [Veritabanı oluşturma](#create-database)
 * [Veritabanını güncelleştir](#update-database)
 * [Veritabanını al](#get-database)
 * [Koleksiyon Oluştur](#create-collection)
@@ -43,7 +43,7 @@ Veritabanı uzantısı Oluştur komutu yeni bir MongoDB veritabanı oluşturur. 
 | `offerThroughput` | `int`  | Veritabanında ayarladığınız üretilen iş hacmi. Bu parametre isteğe bağlıdır. |
 | `autoScaleSettings` | `Object` | [Otomatik ölçeklendirme modu](provision-throughput-autoscale.md)için gereklidir. Bu nesne, otomatik ölçeklendirme kapasitesi moduyla ilişkili ayarları içerir. `maxThroughput`Koleksiyonun dinamik olarak artırılabileceği en yüksek Istek birimi miktarını açıklayan değeri ayarlayabilirsiniz. |
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 Komut başarılı olursa, şu yanıtı döndürür:
 
@@ -98,7 +98,7 @@ Veritabanı uzantısını Güncelleştir komutu, belirtilen veritabanıyla iliş
 
 Bu komut, oturum bağlamında belirtilen veritabanını kullanır. Bu, komutunda kullandığınız veritabanıdır `use <database>` . Şu anda, veritabanı adı bu komut kullanılarak değiştirilemez.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 Komut başarılı olursa, şu yanıtı döndürür:
 
@@ -146,7 +146,7 @@ Aşağıdaki tabloda komut içindeki parametreler açıklanmaktadır:
 |---------|---------|---------|
 |  `customAction`   |   `string`      |   Özel komutun adı. "GetDatabase" olmalıdır|
         
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 Komut başarılı olursa, yanıt aşağıdaki alanları içeren bir belge içerir:
 
@@ -219,7 +219,7 @@ Aşağıdaki tabloda komut içindeki parametreler açıklanmaktadır:
 | `shardKey` | `string` | Büyük aktarım hızı olan koleksiyonlar için gereklidir | Parçalı koleksiyon için parça anahtarının yolu. İçinde 10.000 RU/sn 'den fazla ayarlarsanız bu parametre gereklidir `offerThroughput` .  Belirtilmişse, ekli tüm belgeler bu anahtar ve değeri gerektirir. |
 | `autoScaleSettings` | `Object` | [Otomatik ölçeklendirme modu](provision-throughput-autoscale.md) için gerekli | Bu nesne, otomatik ölçeklendirme kapasitesi moduyla ilişkili ayarları içerir. `maxThroughput`Koleksiyonun dinamik olarak artırılabileceği en yüksek Istek birimi miktarını açıklayan değeri ayarlayabilirsiniz. |
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 Varsayılan özel komut yanıtını döndürür. Çıktıda parametreler için özel komutun [varsayılan çıktısına](#default-output) bakın.
 
@@ -234,7 +234,7 @@ use test
 db.runCommand({customAction: "CreateCollection", collection: "testCollection"});
 ```
 
-Bu, 400RU/s ile yeni bir sabit, parçalama, koleksiyon ve `_id` otomatik olarak oluşturulan alanın bir diziniyle sonuçlanır. Bu tür bir yapılandırma, işlev aracılığıyla yeni koleksiyonlar oluştururken de geçerlidir `insert()` . Örnek: 
+Bu, 400RU/s ile yeni bir sabit, parçalama, koleksiyon ve `_id` otomatik olarak oluşturulan alanın bir diziniyle sonuçlanır. Bu tür bir yapılandırma, işlev aracılığıyla yeni koleksiyonlar oluştururken de geçerlidir `insert()` . Örneğin: 
 
 ```javascript
 use test
@@ -309,7 +309,7 @@ Aşağıdaki tabloda komut içindeki parametreler açıklanmaktadır:
 | `offerThroughput` | `int` |   Koleksiyonda ayarlanacak sağlanan aktarım hızı.|
 | `autoScaleSettings` | `Object` | [Otomatik ölçeklendirme modu](provision-throughput-autoscale.md)için gereklidir. Bu nesne, otomatik ölçeklendirme kapasitesi moduyla ilişkili ayarları içerir. `maxThroughput`Değer, koleksiyonun dinamik olarak artırılacakları en yüksek Istek birimi sayısını açıklar. |
 
-## <a name="output"></a>Çıkış
+## <a name="output"></a>Çıktı
 
 Varsayılan özel komut yanıtını döndürür. Çıktıda parametreler için özel komutun [varsayılan çıktısına](#default-output) bakın.
 
@@ -343,7 +343,7 @@ Aşağıdaki tabloda komut içindeki parametreler açıklanmaktadır:
 | `customAction`    |   `string`      |   Özel komutun adı. "GetCollection" olmalıdır.      |
 | `collection`    |    `string`     |    Koleksiyonun adı.     |
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 Komut başarılı olursa, yanıt aşağıdaki alanları içeren bir belge içerir
 
@@ -423,7 +423,7 @@ Belirtilmemişse, özel bir yanıt aşağıdaki alanlara sahip bir belge içerir
 | `code`    |   `int`      |   Yalnızca komut başarısız olduğunda (örneğin, ok = = 0) döndürülür. MongoDB hata kodunu içerir. Bu, isteğe bağlı bir yanıt parametresidir.      |
 |  `errMsg`   |  `string`      |    Yalnızca komut başarısız olduğunda (örneğin, ok = = 0) döndürülür. Kullanıcı dostu bir hata iletisi içerir. Bu, isteğe bağlı bir yanıt parametresidir.      |
 
-Örnek:
+Örneğin:
 
 ```javascript
 { "ok" : 1 }

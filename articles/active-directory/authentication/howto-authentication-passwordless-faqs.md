@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 16e232cedb13dc246bf7a568adfad401c1fe3eb8
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89236723"
 ---
 # <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad-preview"></a>Azure AD 'de karma FIDO2 güvenlik anahtarları için dağıtım hakkında sık sorulan sorular (SSS) (Önizleme)
@@ -185,7 +185,7 @@ Azure AD Kerberos sunucusu, bir şirket içi AD DS ortamında etki alanı denetl
 
 * *CN = AzureADKerberos, OU = etki alanı denetleyicileri,\<domain-DN>*
     
-    AD DS ' de bir salt okuma etki alanı denetleyicisini (RODC) temsil eden bir *bilgisayar* nesnesi. Bu nesneyle ilişkili bilgisayar yok. Bunun yerine, bir DC 'nin mantıksal bir gösterimidir.
+    AD DS bir Read-Only etki alanı denetleyicisini (RODC) temsil eden bir *bilgisayar* nesnesi. Bu nesneyle ilişkili bilgisayar yok. Bunun yerine, bir DC 'nin mantıksal bir gösterimidir.
 
 * *CN = krbtgt_AzureAD, CN = kullanıcılar,\<domain-DN>*
 
@@ -234,7 +234,7 @@ HTTP isteği, standart bir birincil yenileme belirteci (PRT) isteği. Bu PRT ist
 
 Azure AD, şifreli istemci anahtarını ve ileti arabelleğini, ek özellikler olarak PRT yanıtıyla birleştirir. Yük, Azure AD cihaz oturum anahtarı kullanılarak şifrelenir.
 
-| Alan              | Tür   | Description  |
+| Alan              | Tür   | Açıklama  |
 |--------------------|--------|--------------|
 | tgt_client_key     | string | Base64 kodlamalı istemci anahtarı (gizli). Bu anahtar, TGT 'yi korumak için kullanılan istemci sırrı ' dir. Bu passwordless senaryosunda, istemci parolası her TGT isteğinin bir parçası olarak sunucu tarafından oluşturulur ve ardından yanıtta istemciye döndürülür. |
 | tgt_key_type       | int    | KERB_MESSAGE_BUFFER dahil olan istemci anahtarı ve Kerberos oturum anahtarı için kullanılan şirket içi AD DS anahtar türü. |

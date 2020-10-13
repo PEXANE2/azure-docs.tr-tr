@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: b6e5a22a073a2a61db4a630388fee886e2f4ed26
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543342"
 ---
 # <a name="azure-operational-security"></a>Azure operasyonel güvenlik
@@ -228,7 +228,7 @@ Ağ Izleyicisi Şu anda aşağıdaki yeteneklere sahiptir:
 -   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview">Denetim günlükleri</a>**-ağ yapılandırmasının bir parçası olarak gerçekleştirilen işlemler günlüğe kaydedilir. Bu Günlükler Azure portal görüntülenebilir veya Power BI ya da üçüncü taraf araçları gibi Microsoft araçları kullanılarak alınabilir. Denetim günlükleri Portal, PowerShell, CLı ve REST API aracılığıyla kullanılabilir. Denetim günlükleri hakkında daha fazla bilgi için bkz. Kaynak Yöneticisi ile denetim işlemleri. Denetim günlükleri tüm ağ kaynaklarında yapılan işlemler için kullanılabilir.
 
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview">IP akışı doğrulama</a>** -akış bilgileri 5 demet paket parametrelerine (hedef IP, kaynak IP, hedef bağlantı noktası, kaynak bağlantı noktası ve protokol) bağlı olarak bir pakete izin verilip verilmediğini denetler. Paket bir ağ güvenlik grubu tarafından reddedilirse, paketi reddeden kural ve ağ güvenlik grubu döndürülür.
+-   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview">IP akışı doğrulama </a>** -akış bilgileri 5 demet paket parametrelerine (hedef IP, kaynak IP, hedef bağlantı noktası, kaynak bağlantı noktası ve protokol) bağlı olarak bir pakete izin verilip verilmediğini denetler. Paket bir ağ güvenlik grubu tarafından reddedilirse, paketi reddeden kural ve ağ güvenlik grubu döndürülür.
 
 -   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview">Sonraki atlama</a>** -Azure ağ dokusunda yönlendirilmekte olan paketlerin bir sonraki atlamasını belirler ve bu, Kullanıcı tanımlı hatalı yapılandırılmış yolların tanılanmasına olanak tanır.
 
@@ -325,7 +325,7 @@ Bu makalede açıklanmaktadır
 <ul>
 <li>Varlıklarınızı yakın bir şekilde korumak için güvenlikle ilgili olayları, denetimi ve ihlal analizini toplayın:</li>
 <ul>
-<li>Güvenlik sonrası</li>
+<li>Güvenlik duruşu</li>
 <li>Önemli sorun</li>
 <li>Özet tehditler</li>
 </ul>

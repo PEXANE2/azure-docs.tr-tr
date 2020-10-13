@@ -12,10 +12,10 @@ ms.date: 12/14/2017
 ms.author: swmachan
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 68b0de40940fa75dd4eb4e1572405f31ce1c22b8
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934387"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>Collaborative Translation Framework (CTF) raporlamasını kullanma
@@ -51,7 +51,7 @@ Bu yöntemler şunları sağlar:
 
 Bu yöntem, Kullanıcı tarafından oluşturulan çevirilerin sayısını alır. Bu, uriPrefix, from, to, User, Minderecelendirme ve Maxderecelendirme istek parametrelerine göre gruplanmış çeviri sayısı listesini sağlar.
 
-**Syntax**
+**Sözdizimi**
 
 > [!div class="tabbedCodeSnippets"]
 > ```cs
@@ -96,14 +96,14 @@ Sonuç kümesi **Usertranslationcount**dizisini içeriyor. Her UserTranslationCo
 
 | Alan | Açıklama |
 |:---|:---|
-| Count| Alınan sonuçların sayısı|
+| Sayı| Alınan sonuçların sayısı|
 | Kaynak | Kaynak dili|
 | Derecelendirme| AddTranslation () yöntem çağrısında gönderenin tarafından uygulanan derecelendirme|
 | Amaç| Hedef dil|
 | Kullanılmamışsa| AddTranslation () yöntem çağrısında uygulanan URI|
 | Kullanıcı| Kullanıcı adı|
 
-**Özel durumlar**
+**Özel Durumlar**
 
 | Özel durum | İleti | Koşullar |
 |:---|:---|:---|
@@ -122,7 +122,7 @@ Sonuç kümesi **Usertranslationcount**dizisini içeriyor. Her UserTranslationCo
 
 Bu yöntem, Kullanıcı tarafından oluşturulan çevirileri alır. Bu, uriPrefix, from, to, User ve Minderecelendirme ve Maxderecelendirme istek parametrelerine göre gruplanmış çevirileri sağlar.
 
-**Syntax**
+**Sözdizimi**
 
 > [!div class="tabbedCodeSnippets"]
 > ```cs
@@ -176,7 +176,7 @@ Sonuç kümesi **Usertranslation**dizisini içerir. Her UserTranslation aşağı
 |Kullanılmamışsa|   AddTranslation () yöntem çağrısında uygulanan URI|
 |Kullanıcı   |Kullanıcı adı|
 
-**Özel durumlar**
+**Özel Durumlar**
 
 | Özel durum | İleti | Koşullar |
 |:---|:---|:---|

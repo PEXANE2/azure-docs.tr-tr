@@ -10,10 +10,10 @@ ms.date: 08/20/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.openlocfilehash: 16080440a9458753992c62309ce75ed241fb64d5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715128"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Azure depolama hesabı (Önizleme) için paylaşılan anahtar yetkilendirmesini engelleyin
@@ -125,7 +125,7 @@ Paylaşılan anahtarla yetkilendirilmiş istekleri güvenli bir şekilde reddede
 > [!WARNING]
 > Herhangi bir istemci şu anda paylaşılan anahtarla Depolama hesabınızdaki verilere erişiyorsa, Microsoft, depolama hesabına paylaşılan anahtar erişimine izin vermeden önce bu istemcileri Azure AD 'ye geçirmenize olanak önerir.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
 
 Azure portal bir depolama hesabı için paylaşılan anahtar yetkilendirmesi engellemek için şu adımları izleyin:
 

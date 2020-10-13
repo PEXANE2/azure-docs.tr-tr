@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.openlocfilehash: d1e2b91b46bee761c7feb1000920d5ae1e65ba4c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713620"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>Öğretici: Andromeda ile tümleştirme Azure Active Directory
@@ -74,7 +74,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açmayı Andromeda ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Andromeda çoklu oturum açmayı yapılandırın](#configure-andromeda-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Andromeda çoklu oturum açmayı yapılandırın](#configure-andromeda-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan Andromeda 'de Britta Simon 'ın bir karşılığı olacak şekilde **[Andromeda test kullanıcısı oluşturun](#create-andromeda-test-user)** .
@@ -94,7 +94,7 @@ Azure AD çoklu oturum açmayı Andromeda ile yapılandırmak için aşağıdaki
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -113,9 +113,9 @@ Azure AD çoklu oturum açmayı Andromeda ile yapılandırmak için aşağıdaki
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<tenantURL>.ngcxpress.com/SAMLLogon.aspx`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Değeri gerçek tanımlayıcı, yanıt URL 'SI ve Öğreticinin ilerleyen kısımlarında açıklanan oturum açma URL 'SI ile güncelleşceksiniz.
+    > Bu değerler gerçek değildir. Değeri gerçek tanımlayıcı, yanıt URL 'SI ile ve Öğreticinin ilerleyen kısımlarında açıklanan Sign-On URL 'SI ile güncelleşceksiniz.
 
-6. Andromeda uygulaması, SAML onaylamalarını belirli bir biçimde bekliyor. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu özniteliklerin değerlerini, uygulama tümleştirme sayfasındaki **Kullanıcı öznitelikleri** bölümünden yönetebilirsiniz. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **Kullanıcı öznitelikleri** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
+6. Andromeda uygulaması, SAML onaylamalarını belirli bir biçimde bekliyor. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu özniteliklerin değerlerini, uygulama tümleştirme sayfasındaki **Kullanıcı öznitelikleri** bölümünden yönetebilirsiniz. **SAML Ile tek Sign-On ayarlama** sayfasında, **Kullanıcı öznitelikleri** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
 
     ![Ekran görüntüsü,,, Kullanıcı. mda ve emaadresi Kullanıcı. Mail gibi kullanıcı özniteliklerini gösterir.](common/edit-attribute.png)
 
@@ -151,7 +151,7 @@ Azure AD çoklu oturum açmayı Andromeda ile yapılandırmak için aşağıdaki
 
     örneğin: **Kaydet**’e tıklayın.
 
-8. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+8. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -165,7 +165,7 @@ Azure AD çoklu oturum açmayı Andromeda ile yapılandırmak için aşağıdaki
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-andromeda-single-sign-on"></a>Andromeda çoklu oturum açmayı yapılandırma
+### <a name="configure-andromeda-single-sign-on"></a>Andromeda Single Sign-On yapılandırma
 
 1. Andromeda şirket sitenizde yönetici olarak oturum açın.
 
