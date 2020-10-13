@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: 178c54b9726f21775603d67cb0911237aa4caf01
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90601373"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory kimlik doğrulaması yönetim işlemleri başvuru kılavuzu
@@ -105,7 +105,7 @@ Kimlik doğrulama seçeneklerinizi daha iyi anlamak için bkz. [Azure Active Dir
 
 ### <a name="programmatic-usage-of-credentials"></a>Kimlik bilgilerinin programlı kullanımı
 
-PowerShell veya Microsoft Graph API kullanan uygulamalar kullanan Azure AD betikleri, güvenli kimlik doğrulaması gerektirir. Bu komut dosyalarını ve araçları yürüten zayıf kimlik bilgisi yönetimi, kimlik bilgilerinin hırsızlık riskini artırır. Sabit kodlanmış parolalara veya parola istemlerine dayalı betikler veya uygulamalar kullanıyorsanız, öncelikle yapılandırma dosyalarındaki veya kaynak kodundaki parolaları gözden geçirmeniz, ardından bu bağımlılıkları değiştirmeniz ve mümkün olduğunda Azure Yönetilen kimlikler, tümleşik-Windows kimlik doğrulaması veya [Sertifikalar](../reports-monitoring/tutorial-access-api-with-certificates.md) kullanmanız gerekir. Önceki çözümlerin mümkün olmadığı uygulamalar için [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)kullanmayı göz önünde bulundurun.
+PowerShell veya Microsoft Graph API kullanan uygulamalar kullanan Azure AD betikleri, güvenli kimlik doğrulaması gerektirir. Bu komut dosyalarını ve araçları yürüten zayıf kimlik bilgisi yönetimi, kimlik bilgilerinin hırsızlık riskini artırır. Sabit kodlanmış parolalara veya parola istemlerine dayalı betikler veya uygulamalar kullanıyorsanız, öncelikle yapılandırma dosyalarında veya kaynak kodunda parolaları gözden geçirmeniz, sonra bu bağımlılıkları değiştirmeniz ve mümkün olduğunda Azure yönetilen kimliklerini, Integrated-Windows kimlik doğrulamasını veya [sertifikaları](../reports-monitoring/tutorial-access-api-with-certificates.md) kullanmanız gerekir. Önceki çözümlerin mümkün olmadığı uygulamalar için [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)kullanmayı göz önünde bulundurun.
 
 Parola kimlik bilgileri ile hizmet sorumluları olduğunu tespit ederseniz ve bu parola kimlik bilgilerinin betikler veya uygulamalar tarafından nasıl sağlandığı hakkında emin değilseniz, kullanım düzenlerini daha iyi anlamak için uygulamanın sahibine başvurun.
 
@@ -115,7 +115,7 @@ Microsoft ayrıca, parola kimlik bilgilerine sahip hizmet sorumluları varsa kul
 
 ### <a name="on-premises-authentication"></a>Şirket içi kimlik doğrulaması
 
-Tümleşik Windows kimlik doğrulaması (ıWA) veya kesintisiz çoklu oturum açma (SSO) ile yönetilen kimlik doğrulamasıyla, Parola karması eşitleme veya doğrudan kimlik doğrulama ile federal kimlik doğrulaması, şirket ağının içinde şirket içi etki alanı denetleyicilerine göz atın ve bu en iyi kullanıcı deneyimidir. Kimlik bilgisi istemi FAG 'sini en aza indirir ve kullanıcıların kimlik avı saldırılarına karşı daha fazla erişme riskini azaltır. Daha önce PHS veya PTA ile bulut tarafından yönetilen kimlik doğrulaması kullanıyorsanız, ancak kullanıcıların şirket içinde kimlik doğrulaması yaparken parolalarını yazmaları gerekiyorsa, [sorunsuz SSO](../hybrid/how-to-connect-sso.md)'yu hemen dağıtmanız gerekir. Diğer taraftan, şu anda, son olarak bulut tarafından yönetilen kimlik doğrulamasına geçirmeye yönelik planlarınız varsa, geçiş projesinin bir parçası olarak sorunsuz SSO uygulamanız gerekir.
+Tümleşik Windows kimlik doğrulaması (ıWA) veya kesintisiz tek Sign-On (SSO) ile yönetilen kimlik doğrulamasıyla, Parola karması eşitleme veya doğrudan kimlik doğrulama ile federal kimlik doğrulaması, şirket ağının içinde şirket içi etki alanı denetleyicilerine göz atın. Kimlik bilgisi istemi FAG 'sini en aza indirir ve kullanıcıların kimlik avı saldırılarına karşı daha fazla erişme riskini azaltır. Daha önce PHS veya PTA ile bulut tarafından yönetilen kimlik doğrulaması kullanıyorsanız, ancak kullanıcıların şirket içinde kimlik doğrulaması yaparken parolalarını yazmaları gerekiyorsa, [sorunsuz SSO](../hybrid/how-to-connect-sso.md)'yu hemen dağıtmanız gerekir. Diğer taraftan, şu anda, son olarak bulut tarafından yönetilen kimlik doğrulamasına geçirmeye yönelik planlarınız varsa, geçiş projesinin bir parçası olarak sorunsuz SSO uygulamanız gerekir.
 
 ### <a name="device-trust-access-policies"></a>Cihaz güven erişimi ilkeleri
 
@@ -309,7 +309,7 @@ Aşağıda, Microsoft bulut hizmetleri için Scrutinize isteyebileceğiniz izinl
 | | Mail. Read. Shared |
 | | Mail. ReadWrite |
 
-- Uygulamalar, oturum açmış kullanıcının tam kullanıcı kimliğine bürünme izni verdi. Örnek:
+- Uygulamalar, oturum açmış kullanıcının tam kullanıcı kimliğine bürünme izni verdi. Örneğin:
 
 |Kaynak | İzin |
 | :- | :- |

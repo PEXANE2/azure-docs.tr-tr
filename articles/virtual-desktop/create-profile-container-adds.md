@@ -7,10 +7,10 @@ ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: ea834ed874f3011d95f8b924df860576f72bc4ee
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88825622"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Azure dosyaları ve Azure AD DS bir profil kapsayıcısı oluşturma
@@ -96,7 +96,7 @@ Depolama hesabı erişim anahtarını almak için:
 
 6. VM 'de oturum açtıktan sonra yönetici olarak bir komut istemi çalıştırın.
 
-7. Aşağıdaki komutu çalıştırın:
+7. Şu komutu çalıştırın:
 
      ```cmd
      net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
@@ -107,7 +107,7 @@ Depolama hesabı erişim anahtarını almak için:
     - `<share-name>`Daha önce oluşturduğunuz paylaşımın adıyla değiştirin.
     - `<storage-account-key>`Azure 'daki depolama hesabı anahtarıyla değiştirin.
 
-    Örnek:
+    Örneğin:
 
      ```cmd
      net use y: \\fsprofile.file.core.windows.net\share HDZQRoFP2BBmoYQ=(truncated)= /user:Azure\fsprofile)
@@ -125,7 +125,7 @@ Depolama hesabı erişim anahtarını almak için:
     - `<mounted-drive-letter>`Sürücüyü eşlemek için kullandığınız sürücünün harfiyle değiştirin.
     - `<user-email>`Paylaşıma erişmesi gereken kullanıcıları içeren Kullanıcı veya Active Directory grubunun UPN 'si ile değiştirin.
 
-    Örnek:
+    Örneğin:
 
      ```cmd
      icacls <mounted-drive-letter>: /grant john.doe@contoso.com:(M)
@@ -146,7 +146,7 @@ FSLogix profil kapsayıcısını yapılandırmak için:
 
 3. Yükleyici başlatıldıktan sonra **Lisans hüküm ve koşullarını kabul** ediyorum ' u seçin. Uygulanabiliyorsa, yeni bir anahtar sağlayın.
 
-4. **Yükle**’yi seçin.
+4. **Yükle**'yi seçin.
 
 5. **Drive C** **Program Files**  >  **FSLogix**  >  Fslogix aracısının düzgün yüklendiğinden emin olmak için sürücü C 'yi açın ve Program Files fslogix**uygulamalarına** gidin.
 
@@ -206,7 +206,7 @@ Kullanıcıları atamak için:
 
     Önceki cmdlet 'ler gibi,, `<your-wvd-tenant>` `<wvd-pool>` ve değerlerini de ilgili değerlerle değiştirdiğinizden emin olun `<user-principal>` .
 
-    Örnek:
+    Örneğin:
 
      ```powershell
      $pool1 = "contoso"

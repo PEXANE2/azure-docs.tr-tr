@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0a53e9ae42031203347784b78e162e8f806eb3c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16659eafccd4c15e37ef8a6d16a3765d0afdbc3e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320259"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960652"
 ---
 # <a name="linux-support"></a>Linux desteği
 
-Linux cihazlarımızda, Linux basit istemci iş ortaklarımız tarafından sağlanmış olan aşağıdaki desteklenen istemcilerle Windows sanal masaüstü kaynaklarına erişebilirsiniz. Desteklenen Windows sanal masaüstü istemcilerini daha Linux tabanlı işletim sistemleri ve cihazlarda etkinleştirmek için bir dizi iş ortaklarıyla çalışıyoruz. Burada listelenmeyen bir Linux platformunda Windows sanal masaüstü desteğine ihtiyacınız varsa, lütfen [UserVoice sayfamızda](https://remotedesktop.uservoice.com/forums/923035-remote-desktop-support-on-linux)bize bildirin.
+Linux cihazlarınızdan Windows sanal masaüstü kaynaklarına, Linux basit istemci iş ortaklarımız tarafından sağlanmış olan, [Web istemcisi](connect-web.md) veya aşağıdaki desteklenen istemcilerle erişebilirsiniz. Desteklenen Windows sanal masaüstü istemcilerini daha Linux tabanlı işletim sistemleri ve cihazlarda etkinleştirmek için bir dizi iş ortaklarıyla çalışıyoruz. Burada listelenmeyen bir Linux platformunda Windows sanal masaüstü desteğine ihtiyacınız varsa [UserVoice sayfamızda](https://remotedesktop.uservoice.com/forums/923035-remote-desktop-support-on-linux)bize bilgi verin.
 
 ## <a name="connect-with-your-linux-device"></a>Linux aygıtınızla bağlantı kurmak
 
