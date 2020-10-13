@@ -15,10 +15,10 @@ ms.date: 07/09/2020
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 05ec19fd2351b3a9ac1f383ce4747404eeead936
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89067833"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory'de Saklı Yordam etkinliğiyle bir SSIS paketi çalıştırma
@@ -27,7 +27,7 @@ ms.locfileid: "89067833"
 
 Bu makalede, bir Azure Data Factory Işlem hattındaki bir SSIS paketinin saklı yordam etkinliği kullanılarak nasıl çalıştırılacağı açıklanmaktadır. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="azure-sql-database"></a>Azure SQL Veritabanı 
 Bu makaledeki izlenecek yol, SSIS kataloğunu barındırmak için Azure SQL veritabanı 'nı kullanır. Azure SQL yönetilen örneği de kullanabilirsiniz.
@@ -117,7 +117,7 @@ Bu adımda, bir işlem hattı oluşturmak için Data Factory Kullanıcı arabiri
     ![İşlem hattını doğrulama](./media/how-to-invoke-ssis-package-stored-procedure-activity/validate-pipeline.png)
 7. Data Factory **Tümünü** Yayımla düğmesine tıklayarak ardışık düzeni yayımlayın. 
 
-    ![Yayımlama](./media/how-to-invoke-ssis-package-stored-procedure-activity/publish-all-button.png)    
+    ![Yayımla](./media/how-to-invoke-ssis-package-stored-procedure-activity/publish-all-button.png)    
 
 ### <a name="run-and-monitor-the-pipeline"></a>İşlem hattını çalıştırma ve izleme
 Bu bölümde bir işlem hattı çalıştırması tetiklersiniz ve sonra bunu izleyebilirsiniz. 

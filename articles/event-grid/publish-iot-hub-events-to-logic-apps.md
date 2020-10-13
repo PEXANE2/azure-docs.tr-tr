@@ -9,10 +9,10 @@ ms.date: 09/14/2020
 ms.author: philmea
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 5092aa0b5b23f04af1f49933bca234815f03f454
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604650"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Öğretici: Event Grid ve Logic Apps kullanarak Azure IoT Hub olayları hakkında e-posta bildirimleri gönderme
@@ -29,11 +29,11 @@ Bu makalede IoT Hub ve Event Grid kullanan bir örnek yapılandırma gösterilme
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-an-iot-hub"></a>IoT hub oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
 
 Portalda Azure Cloud Shell terminali kullanarak hızlı bir şekilde yeni bir IoT Hub oluşturabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. 
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
 
 1. Sayfanın sağ üst köşesinde Cloud Shell düğmesini seçin.
 

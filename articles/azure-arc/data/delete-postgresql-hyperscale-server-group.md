@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: dcabe4b1520c66b8d5bfa398dc1248972587cd32
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90942150"
 ---
 # <a name="delete-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc etkin bir PostgreSQL hiper ölçek sunucu grubunu silme
@@ -49,7 +49,7 @@ azdata arc postgres server delete -n postgres01
 
 ## <a name="reclaim-the-kubernetes-persistent-volume-claims-pvcs"></a>Kubernetes kalıcı birim taleplerini geri kazanma (PVC)
 
-Bir sunucu grubunu silmek, ilişkili [PVC](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)'leri kaldırmaz. Bu tasarım gereğidir. Amaç, örneğin silinmesinin yanlışlıkla olması durumunda kullanıcının veritabanı dosyalarına erişmesine yardımcı olur. PVC 'Lerin silinmesi zorunlu değildir. Ancak önerilir. Bu PVC 'yi geri kazanmıyorsanız, Kubernetes kümeniz disk alanının tükendiğinden, sonunda hatalarla karşılaşırsınız. PVC 'leri geri kazanmak için aşağıdaki adımları uygulayın:
+Bir sunucu grubunu silmek, ilişkili [PVC](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)'leri kaldırmaz. Bu tasarım gereğidir. Amacı, örneğin yanlışlıkla silinmesi durumunda kullanıcının veritabanı dosyalarına erişmesine yardımcı olmaktır. PVC’lerin silinmesi zorunlu değildir. Ancak bunun yapılması önerilir. Bu PVC’leri geri kazanmazsanız Kubernetes kümeniz disk alanının tükendiğini düşündüğü için sonunda hatalarla karşılaşırsınız. PVC'leri geri kazanmak için aşağıdaki adımları izleyin:
 
 ### <a name="1-list-the-pvcs-for-the-server-group-you-deleted"></a>1. sildiğiniz sunucu grubu için PVC 'leri listeleyin
 PVC 'leri listelemek için şu komutu çalıştırın:
@@ -57,7 +57,7 @@ PVC 'leri listelemek için şu komutu çalıştırın:
 kubectl get pvc [-n <namespace name>]
 ```
 
-Bu, özel olarak sildiğiniz sunucu grubuna yönelik PVC 'Ler içindeki PVSs listesini döndürür. Örnek:
+Bu, özel olarak sildiğiniz sunucu grubuna yönelik PVC 'Ler içindeki PVSs listesini döndürür. Örneğin:
 ```console
 kubectl get pvc
 NAME                STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
@@ -79,7 +79,7 @@ Bu komutun genel biçimi:
 kubectl delete pvc <name of pvc>  [-n <namespace name>]
 ```
 
-Örnek:
+Örneğin:
 ```console
 kubectl delete pvc data-postgres01-0
 kubectl delete pvc data-postgres01-1 
@@ -91,7 +91,7 @@ kubectl delete pvc logs-postgres01-2
 kubectl delete pvc logs-postgres01-3
 ```
 
-Bu kubectl komutlarının her biri, PVC 'nin başarıyla silinmesini doğrulayacaktır. Örnek:
+Bu kubectl komutlarının her biri, PVC 'nin başarıyla silinmesini doğrulayacaktır. Örneğin:
 ```console
 persistentvolumeclaim "data-postgres01-0" deleted
 ```

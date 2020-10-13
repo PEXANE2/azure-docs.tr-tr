@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: d2355b26fc6a946e47a3d2c135b7c23729b186c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f7ff20dbdd0dac5b56d0f746733b14dfe44803e
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554679"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940656"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moconavi"></a>Öğretici: moconavi ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Moconavi 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini moconavi ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -191,15 +191,15 @@ Bu bölümde, moconavi 'de Britta Simon adlı bir Kullanıcı oluşturacaksını
 
 3. **Ayarları bağla** düğmesine tıklayın.
 
-    ![Çoklu oturum açmayı test etme](./media/moconavi-tutorial/testing1.png)
+    ![Ekran görüntüsünde bağlantı ayarı düğmesi ile moconavi gösterilmektedir.](./media/moconavi-tutorial/testing1.png)
 
 4. `https://mcs-admin.moconavi.biz/gateway` **URL 'ye Bağlan** metin kutusuna girin ve ardından **bitti** düğmesine tıklayın.
 
-    ![Çoklu oturum açmayı test etme](./media/moconavi-tutorial/testing2.png)
+    ![Ekran görüntüsünde U R L 'ye Bağlan kutusu ve bitti düğmesi gösterilir.](./media/moconavi-tutorial/testing2.png)
 
 5. Aşağıdaki ekran görüntüsünde aşağıdaki adımları gerçekleştirin:
 
-    ![Çoklu oturum açmayı test etme](./media/moconavi-tutorial/testing3.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz moconavi sayfasını gösterir.](./media/moconavi-tutorial/testing3.png)
 
     a. Giriş kimlik doğrulaması **anahtarını**girin `azureAD` : **giriş kimlik doğrulama anahtarı** metin kutusuna.
 
@@ -209,11 +209,11 @@ Bu bölümde, moconavi 'de Britta Simon adlı bir Kullanıcı oluşturacaksını
 
 6. Azure AD parolanızı **parola** metin kutusuna girin ve ardından **oturum aç** düğmesine tıklayın.
 
-    ![Çoklu oturum açmayı test etme](./media/moconavi-tutorial/testing4.png)
+    ![Ekran görüntüsünde, Azure A parolasının nereye girilecek gösterilir.](./media/moconavi-tutorial/testing4.png)
 
 7. Menü görüntülenirken Azure AD kimlik doğrulaması başarılı olur.
 
-    ![Çoklu oturum açmayı test etme](./media/moconavi-tutorial/testing5.png)
+    ![Ekran görüntüsünde, moconavi 'deki telefon simgesi gösterilir.](./media/moconavi-tutorial/testing5.png)
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 

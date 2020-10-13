@@ -12,10 +12,10 @@ ms.date: 9/10/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4d64f7423d537958b6d3c388cb12f23bd2e30e36
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90087111"
 ---
 # <a name="secure-hybrid-access-secure-legacy-apps-with-azure-active-directory"></a>Güvenli karma erişim: Azure Active Directory ile güvenli eski uygulamalar
@@ -26,7 +26,7 @@ Artık şirket içi ve bulut eski kimlik doğrulama uygulamalarınızı, ile Azu
 
 - [Mevcut uygulama teslim denetleyiciniz ve ağlarınız](#sha-through-networking-and-delivery-controllers)
 
-- [Sanal özel ağ (VPN) ve yazılım tanımlı çevre (SDP) uygulamaları](#sha-through-vpn-and-sdp-applications)
+- [Sanal özel ağ (VPN) ve Software-Defined çevre (SDP) uygulamaları](#sha-through-vpn-and-sdp-applications)
 
 Azure AD [koşullu erişim](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) ve Azure AD [kimlik KORUMASı](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection)gibi Azure AD özelliklerine sahip tüm uygulamalarda, boşluğu köprüleyin ve güvenlik duruşunuzu güçlendirebilirsiniz.
 
