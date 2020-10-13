@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/31/2019
 ms.author: jeedes
-ms.openlocfilehash: daef8a91c2f31379ebf50d1e8ec66d0b33ebb2cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 081c61610c4134917ffa90cf45fb096f3df4bcbe
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88534856"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939316"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-administrator-console"></a>Öğretici: Netüse Yönetici Konsolu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -148,19 +148,19 @@ Bu bölümde, Netüse Yönetici Konsolu erişim izni vererek Azure çoklu oturum
 
 1. Sol gezinti bölmesindeki **Ayarlar** sekmesine tıklayın.
 
-    ![Netüse Yönetici Konsolu yapılandırması](./media/netskope-cloud-security-tutorial/config-settings.png)
+    ![Ekran görüntüsü, gezinti bölmesinde seçilen ayarı gösterir.](./media/netskope-cloud-security-tutorial/config-settings.png)
 
 1. **Yönetim** sekmesini tıklatın.
 
-    ![Netüse Yönetici Konsolu yapılandırması](./media/netskope-cloud-security-tutorial/config-administration.png)
+    ![Ekran görüntüsü ayarlardan seçilen yönetimi gösterir.](./media/netskope-cloud-security-tutorial/config-administration.png)
 
 1. **SSO** sekmesi ' ne tıklayın.
 
-    ![Netüse Yönetici Konsolu yapılandırması](./media/netskope-cloud-security-tutorial/config-sso.png)
+    ![Ekran görüntüsü, Yönetim bölümünde seçilen S 'yi gösterir.](./media/netskope-cloud-security-tutorial/config-sso.png)
 
 1. **Ağ ayarları** bölümünde aşağıdaki adımları uygulayın:
     
-    ![Netüse Yönetici Konsolu yapılandırması](./media/netskope-cloud-security-tutorial/config-pasteurls.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz ağ ayarlarını gösterir.](./media/netskope-cloud-security-tutorial/config-pasteurls.png)
 
     a. **Onaylama tüketici hizmeti URL 'si** değerini kopyalayın ve Azure Portal **temel SAML YAPıLANDıRMASı** bölümündeki **yanıt URL** metin kutusuna yapıştırın.
 
@@ -168,11 +168,11 @@ Bu bölümde, Netüse Yönetici Konsolu erişim izni vererek Azure çoklu oturum
 
 1. **SSO/SLO ayarları** bölümünün altındakı **düzenleme ayarları** ' na tıklayın.
 
-    ![Netüse Yönetici Konsolu yapılandırması](./media/netskope-cloud-security-tutorial/config-editsettings.png)
+    ![Ekran görüntüsü, Ayarları Düzenle ' yi seçebileceğiniz S S/S L O ayarlarını gösterir.](./media/netskope-cloud-security-tutorial/config-editsettings.png)
 
 1. **Ayarlar** açılan penceresinde, aşağıdaki adımları gerçekleştirin;
 
-    ![Netüse Yönetici Konsolu yapılandırması](./media/netskope-cloud-security-tutorial/configuration.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz ayarlar iletişim kutusunu gösterir.](./media/netskope-cloud-security-tutorial/configuration.png)
 
     a. **SSO 'Yu etkinleştir**' i seçin.
 
@@ -194,23 +194,23 @@ Bu bölümde, Netüse Yönetici Konsolu erişim izni vererek Azure çoklu oturum
 
 1. Sol gezinti bölmesindeki **Ayarlar** sekmesine tıklayın.
 
-    ![Netüse Yönetici Konsolu kullanıcı oluşturma](./media/netskope-cloud-security-tutorial/config-settings.png)
+    ![Ekran görüntüsü seçili ayarları gösterir.](./media/netskope-cloud-security-tutorial/config-settings.png)
 
 1. **Etkin platform** sekmesi ' ne tıklayın.
 
-    ![Netüse Yönetici Konsolu kullanıcı oluşturma](./media/netskope-cloud-security-tutorial/user1.png)
+    ![Ekran görüntüsü ayarlarından seçilen etkin platformu gösterir.](./media/netskope-cloud-security-tutorial/user1.png)
 
 1. **Kullanıcılar** sekmesi ' ne tıklayın.
 
-    ![Netüse Yönetici Konsolu kullanıcı oluşturma](./media/netskope-cloud-security-tutorial/add-user.png)
+    ![Ekran görüntüsü, etkin platformlardan seçilen kullanıcıları gösterir.](./media/netskope-cloud-security-tutorial/add-user.png)
 
 1. **Kullanıcı Ekle**' ye tıklayın.
 
-    ![Netüse Yönetici Konsolu kullanıcı oluşturma](./media/netskope-cloud-security-tutorial/user-add.png)
+    ![Ekran görüntüsü, Kullanıcı Ekle ' yi seçebileceğiniz kullanıcılar iletişim kutusunu gösterir.](./media/netskope-cloud-security-tutorial/user-add.png)
 
 1. Eklemek istediğiniz kullanıcının e-posta adresini girin ve **Ekle**' ye tıklayın.
 
-    ![Netüse Yönetici Konsolu kullanıcı oluşturma](./media/netskope-cloud-security-tutorial/add-user-popup.png)
+    ![Ekran görüntüsünde, kullanıcı listesi girebileceğiniz Kullanıcı ekleme gösterilir.](./media/netskope-cloud-security-tutorial/add-user-popup.png)
 
 ## <a name="test-sso"></a>Test SSO 'SU
 
