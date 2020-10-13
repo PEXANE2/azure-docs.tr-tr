@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 4564019f540d0dd08c8e0b2827b4a6b7df9c2cf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b963e0b4797af8269b87f704edca231f000c9372
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544001"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996692"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>Öğretici: Optimizely ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Optimizely Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Optimizely ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -110,17 +110,17 @@ Azure AD çoklu oturum açmayı Optimizely ile yapılandırmak için aşağıdak
 
 5. Optimizely uygulamanız, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. **Kullanıcı öznitelikleri** iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![image](common/edit-attribute.png)
+    ![Sağ üst köşedeki "Düzenle" simgesiyle "Kullanıcı öznitelikleri" iletişim kutusunu gösteren ekran görüntüsü.](common/edit-attribute.png)
 
 6. Optimizely uygulaması, yukarıdakine ek olarak, SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde AŞAĞıDAKI tabloda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin:
 
-    | Adı | Kaynak özniteliği |
+    | Name | Kaynak özniteliği |
     | ---------------| --------------- |
     | e-posta | Kullanıcı. Mail |
     
     a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
 
-    ![image](common/new-save-attribute.png)
+    !["Yeni talep Ekle" ve "Kaydet" eylemlerinin vurgulandığı "Kullanıcı talepleri" iletişim kutusunu gösteren ekran görüntüsü.](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
@@ -164,7 +164,7 @@ Azure AD çoklu oturum açmayı Optimizely ile yapılandırmak için aşağıdak
 
 4. Sağ üst köşedeki hesap adı ' na ve ardından **Hesap ayarları**' na tıklayın.
 
-    ![Azure AD tek Sign-On](./media/optimizely-tutorial/tutorial_optimizely_09.png)
+    ![Sağ üst köşede seçilen hesap adını, menüden "hesap ayarları" seçilmiş olarak gösteren ekran görüntüsü.](./media/optimizely-tutorial/tutorial_optimizely_09.png)
 
 5. Hesap sekmesinde, **genel bakış** bölümünde, çoklu oturum açma altında **SSO 'yu etkinleştir** kutusunu işaretleyin.
   
@@ -195,7 +195,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -231,7 +231,7 @@ Bu bölümde, Optimizely içinde Britta Simon adlı bir Kullanıcı oluşturacak
 
 2. Projeye yeni ortak çalışan eklemek için **yeni ortak**çalışan ' e tıklayın.
    
-    ![Azure AD test kullanıcısı oluşturma](./media/optimizely-tutorial/create_aaduser_10.png)
+    !["Ortak çalışanlar" sekmesi ve "yeni ortak çalışan" düğmesi seçili olan Optimizely ana sayfasını gösteren ekran görüntüsü.](./media/optimizely-tutorial/create_aaduser_10.png)
 
 3. E-posta adresini girin ve bunlara bir rol atayın. **Davet et**' e tıklayın.
 

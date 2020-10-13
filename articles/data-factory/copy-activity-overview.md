@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: jingwang
-ms.openlocfilehash: 5eade0ad48dcdd1f0c18ef6e65e498a7b9c79c15
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 8a84c9979bdfac1165d44d03572567ab1ea7ab1f
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951700"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995336"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Etkinliği Azure Data Factory Kopyala
 
@@ -201,7 +201,7 @@ Program aracılığıyla yapılandırmak için `additionalColumns` kopyalama etk
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| additionalColumns | Havuza kopyalamak için ek veri sütunları ekleyin.<br><br>Dizideki her nesne `additionalColumns` bir ek sütunu temsil eder. , `name` Sütun adını tanımlar ve `value` Bu sütunun veri değerini gösterir.<br><br>İzin verilen veri değerleri şunlardır:<br>- **`$$FILEPATH`** -ayrılmış bir değişken, kaynak dosyaların göreli yolunu veri kümesinde belirtilen klasör yoluna depolayacağını gösterir. Dosya tabanlı kaynağa uygulayın.<br>- **$ $Column: <source_column_name>** -ayrılmış bir değişken model, belirtilen kaynak sütununun başka bir sütun olarak yinelendiğini belirtir<br>- **İfadesini**<br>- **Statik değer** | Hayır |
+| additionalColumns | Havuza kopyalamak için ek veri sütunları ekleyin.<br><br>Dizideki her nesne `additionalColumns` bir ek sütunu temsil eder. , `name` Sütun adını tanımlar ve `value` Bu sütunun veri değerini gösterir.<br><br>İzin verilen veri değerleri şunlardır:<br>- **`$$FILEPATH`** -ayrılmış bir değişken, kaynak dosyaların göreli yolunu veri kümesinde belirtilen klasör yoluna depolayacağını gösterir. Dosya tabanlı kaynağa uygulayın.<br>- **`$$COLUMN:<source_column_name>`** -ayrılmış bir değişken stili, belirtilen kaynak sütununun başka bir sütun olarak yinelendiğini belirtir<br>- **İfadesini**<br>- **Statik değer** | Hayır |
 
 **Örnek:**
 

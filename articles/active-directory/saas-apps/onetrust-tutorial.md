@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 2c840f123d74222770f1d044e085cf131f5ab708
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf2ac8cda9df18bf02b93446605ed2283562cf6b
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88547979"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996188"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-onetrust-privacy-management-software"></a>Öğretici: OneTrust gizlilik yönetimi yazılımıyla Azure Active Directory tümleştirme
 
@@ -101,7 +101,7 @@ Azure AD çoklu oturum açmayı OneTrust gizlilik yönetimi yazılımıyla yapı
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    ![OneTrust gizlilik yönetimi yazılım etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
+    !["Tanımlayıcı" ve "Yanıtla U R L" metin kutuları vurgulanmış ve "Kaydet" düğmesi seçili olan "temel S A M L yapılandırma" bölümünü gösteren ekran görüntüsü.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusuna bir URL yazın:`https://www.onetrust.com/saml2`
 
@@ -157,7 +157,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

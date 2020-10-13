@@ -5,17 +5,17 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 10/23/2019
 ms.reviewer: cweining
-ms.openlocfilehash: ab142b4e0a2d5486727ffc71fc94ae4944513052
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b439dcfc755f0113ffabf792850a2bd0fbcf322e
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935815"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996523"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET uygulamalarında özel durumlarda anlık görüntü hatalarını ayıklama
 Bir özel durum oluştuğunda, Canlı Web uygulamanızdan otomatik olarak bir hata ayıklama anlık görüntüsü toplayabilirsiniz. Anlık görüntü, kaynak kodu ve değişkenlerin durumunu özel durumun oluşturulduğu anda gösterir. [Azure Application Insights](./app-insights-overview.md) Snapshot Debugger Web uygulamanızdan özel durum telemetrisini izler. Üretim aşamasındaki sorunları tanılamak için ihtiyaç duyduğunuz bilgilere sahip olmanız için, en önemli özel durumlarınızın anlık görüntülerini toplar. [Anlık görüntü toplayıcısı NuGet paketini](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) uygulamanıza ekleyin ve isteğe bağlı olarak [ApplicationInsights.config](./configuration-with-applicationinsights-config.md)koleksiyon parametrelerini yapılandırın. Anlık görüntüler Application Insights portalındaki [özel durumlar](./asp-net-exceptions.md) üzerinde görünür.
 
-Hata ayıklama anlık görüntülerini portalda görüntüleyerek çağrı yığınını görebilir ve her bir çağrı yığını çerçevesinde değişkenleri inceleyebilirsiniz. Kaynak kodla daha güçlü bir hata ayıklama deneyimi sağlamak için, Visual Studio 2019 Enterprise ile anlık görüntüler açın. Visual Studio 'da, bir özel durum beklemeden [anlık görüntüleri etkileşimli olarak almak için de anlık görüntü noktaları ayarlayabilirsiniz](https://aka.ms/snappoint) .
+Hata ayıklama anlık görüntülerini portalda görüntüleyerek çağrı yığınını görebilir ve her bir çağrı yığını çerçevesinde değişkenleri inceleyebilirsiniz. Kaynak kodla daha güçlü bir hata ayıklama deneyimi sağlamak için, Visual Studio 2019 Enterprise ile anlık görüntüler açın. Visual Studio 'da, bir özel durum beklemeden [anlık görüntüleri etkileşimli olarak almak için de anlık görüntü noktaları ayarlayabilirsiniz](/visualstudio/debugger/debug-live-azure-applications) .
 
 Hata ayıklama anlık görüntüleri 15 gün boyunca depolanır. Bu bekletme ilkesi, uygulama başına temelinde ayarlanır. Bu değeri artırmanız gerekiyorsa Azure portal bir destek talebi açarak artış isteyebilirsiniz.
 
@@ -142,4 +142,3 @@ Application Insights Snapshot Debugger ötesinde:
 * Özel durum beklemeden anlık görüntüler almak için kodunuzda anlık görüntü [noktalarını ayarlayın](/visualstudio/debugger/debug-live-azure-applications) .
 * [Web uygulamalarınızda özel durumları tanılayın,](./asp-net-exceptions.md) Application Insights için daha fazla özel durum görünür hale getirme açıklanmaktadır.
 * [Akıllı algılama](./proactive-diagnostics.md) , performans bozuklularını otomatik olarak bulur.
-

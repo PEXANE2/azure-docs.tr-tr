@@ -54,6 +54,20 @@
               href: class-type-matlab.md
             - name: SolidWorks bilgisayar destekli tasarım (CAD)
               href: class-type-solidworks.md
+        - name: Teams içinde Azure Lab Services'i kullanma
+          items:
+            - name: Genel Bakış
+              href: lab-services-within-teams-overview.md
+            - name: Teams'den laboratuvar oluşturma
+              href: how-to-get-started-create-lab-within-teams.md
+            - name: Kullanıcı listelerini yönetme
+              href: how-to-manage-user-lists-within-teams.md
+            - name: VM havuzunu yönetme
+              href: how-to-manage-vm-pool-within-teams.md
+            - name: Zamanlamalar oluşturma
+              href: how-to-create-schedules-within-teams.md
+            - name: VM'ye erişme (öğrenci görünümü)
+              href: how-to-access-vm-for-students-within-teams.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Yönetici kılavuzu

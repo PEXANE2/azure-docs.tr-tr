@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyici 'deki uyarıları günlüğe kaydet |
 description: Bu makalede, kapsayıcılar için Azure Izleyici 'den bellek ve CPU kullanımı için nasıl özel günlük uyarıları oluşturacağınız açıklanır.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 8c02442fef9b174075065e7852b7a25233899c48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddf898978bdaf51cb81a95c3209855c51212280f
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294555"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995251"
 ---
 # <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici 'den günlük uyarıları oluşturma
 
@@ -307,4 +307,4 @@ Bu bölümde, kapsayıcılar için Azure Izleyici 'den performans verilerini kul
 
 - Daha önceden tanımlanmış sorguları ve Uyarıları izlemek için değerlendirmek veya özelleştirmek üzere ön tanımlı sorguları ve örnekleri görmek için [günlük sorgusu örneklerini](container-insights-log-search.md#search-logs-to-analyze-data) görüntüleyin, kümelerinizi görselleştirmeyi veya çözümlemeyi inceleyin.
 
-- Azure Izleyici hakkında daha fazla bilgi edinmek ve Kubernetes kümenizin diğer yönlerini izlemek için bkz. [Kubernetes küme performansını görüntüleme](container-insights-analyze.md) ve [Kubernetes küme durumunu görüntüleme](container-insights-health.md).
+- Azure Izleyici hakkında daha fazla bilgi edinmek ve Kubernetes kümenizin diğer yönlerini izlemek için bkz. [Kubernetes küme performansını görüntüleme](container-insights-analyze.md) ve [Kubernetes küme durumunu görüntüleme](./container-insights-overview.md).

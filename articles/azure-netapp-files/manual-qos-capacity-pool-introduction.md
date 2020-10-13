@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 10/12/2020
 ms.author: b-juche
-ms.openlocfilehash: 14b905c69f0dab933159b414028db3e985d314a3
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 239b985bf45942afbff8ca49d7e15ead24456304
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91935841"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993984"
 ---
 # <a name="manual-qos-capacity-pool"></a>El ile QoS kapasite havuzu
 
@@ -34,6 +34,10 @@ Bu makalede, el ile hizmet kalitesi (QoS) kapasite havuzu işlevlerine giriş sa
 Bir *Otomatik* QoS kapasite havuzunda, işleme, havuzdaki birimlere göre otomatik olarak atanır ve birimlere atanan boyut kotasıyla orantılıdır.  
 
 QoS türleri hakkında dikkat edilmesi gereken noktalar için bkz. [Azure NetApp Files depolama hiyerarşisi](azure-netapp-files-understand-storage-hierarchy.md) ve [performans Azure NetApp Files değerlendirmeleri](azure-netapp-files-performance-considerations.md) .
+
+## <a name="example-of-using-manual-qos"></a>El ile QoS kullanma örneği
+
+Örneğin, bir SAP HANA sistemi, Oracle veritabanı veya birden çok birim gerektiren diğer iş yükleri ile el ile QoS kapasite havuzu kullandığınızda, bu uygulama birimlerini oluşturmak için kapasite havuzu kullanılabilir.  Her birim, uygulama gereksinimlerini karşılamak için bireysel boyut ve üretilen iş miktarını sağlayabilir.  Avantajlar hakkında daha fazla bilgi için bkz. [El Ile QoS kapasite havuzundaki birimlerin aktarım hızı limiti örnekleri](azure-netapp-files-service-levels.md#throughput-limit-examples-of-volumes-in-a-manual-qos-capacity-pool) .  
 
 ## <a name="how-to-specify-the-manual-qos-type"></a>El ile QoS türünü belirtme
 

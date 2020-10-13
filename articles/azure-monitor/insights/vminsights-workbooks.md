@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 8ae8c633bdfca72d6e383715cac9b1bcdddd9d17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43cdb9de111bdea5486e49a56d58d38279b685c7
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449782"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996374"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>VM’ler için Azure İzleyici’de çalışma kitaplarıyla etkileşimli raporlar oluşturma
 
-Çalışma kitapları metin, [günlük sorgularını](../log-query/query-language.md), ölçümleri ve parametreleri zengin etkileşimli raporlara birleştirir. Çalışma kitapları aynı Azure kaynaklarına erişimi olan diğer takım üyeleri tarafından düzenlenebilir.
+Çalışma kitapları metin, [günlük sorgularını](/azure/data-explorer/kusto/query/), ölçümleri ve parametreleri zengin etkileşimli raporlara birleştirir. Çalışma kitapları aynı Azure kaynaklarına erişimi olan diğer takım üyeleri tarafından düzenlenebilir.
 
 Çalışma kitapları şu senaryolar için yararlıdır:
 

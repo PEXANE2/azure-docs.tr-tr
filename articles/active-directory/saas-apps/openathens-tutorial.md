@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: fc60552fadf10dde88c0e6d8c6f46bd25c68cf2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da8ae35ce85ca9ffb031511e81270afd8529681d
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543950"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994195"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-openathens"></a>Öğretici: Openatina ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Openatina 'ı Azure Active Directory (Azure AD) ile tümleştir
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -108,7 +108,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -134,15 +134,15 @@ Bu bölümde, Openatina erişimi vererek Azure çoklu oturum açma özelliğini 
 
 1. **Yönetim** sekmesi altındaki listeden **Bağlantılar** ' ı seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/openathens-tutorial/tutorial_openathens_application1.png)
+    !["Yönetim" sekmesinden "bağlantılar" seçiliyken "Openatina" Şirket sitesi sayfasını gösteren ekran görüntüsü.](./media/openathens-tutorial/tutorial_openathens_application1.png)
 
 1. **SAML 1.1/2.0**' ı seçin ve ardından **Yapılandır** düğmesini seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/openathens-tutorial/tutorial_openathens_application2.png)
+    !["Yerel kimlik doğrulama sistemi türünü seç" i gösteren ekran görüntüsü. "S A M L 1.1/2.0" ve "Yapılandır" düğmesi seçili iletişim kutusu.](./media/openathens-tutorial/tutorial_openathens_application2.png)
 
 1. Yapılandırmayı eklemek için, Azure portal indirdiğiniz Metadata. xml dosyasını karşıya yüklemek için, **Gözden** geçirme düğmesini seçin ve ardından **Ekle**' yi seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/openathens-tutorial/tutorial_openathens_application3.png)
+    !["S A M L kimlik doğrulama sistemi Ekle" gösteren ekran görüntüsü. "gözatıp" eylemine ve "Ekle" düğmesine sahip iletişim kutusu seçildi.](./media/openathens-tutorial/tutorial_openathens_application3.png)
 
 1. **Ayrıntılar** sekmesi altında aşağıdaki adımları gerçekleştirin.
 
@@ -164,7 +164,7 @@ Bu bölümde, Openatina erişimi vererek Azure çoklu oturum açma özelliğini 
 
     h. **</> bağlı olan taraf** sekmesinden, **SP meta veri XML** dosyasını indirmek için **meta veri URL 'sini** kopyalayın ve bunu tarayıcıda açın. Bu SP meta veri dosyasını Azure AD 'deki **temel SAML yapılandırması** bölümüne yükleyin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/openathens-tutorial/tutorial_openathens_application5.png)
+    !["Bağlı olan taraf" sekmesinin seçili olduğunu ve "metadata U R L" vurgulanmasını gösteren ekran görüntüsü.](./media/openathens-tutorial/tutorial_openathens_application5.png)
 
 ### <a name="create-openathens-test-user"></a>Openatina test kullanıcısı oluşturma
 

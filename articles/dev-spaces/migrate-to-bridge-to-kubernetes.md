@@ -3,14 +3,14 @@ title: Kubernetes Köprüsü’ne geçiş
 services: azure-dev-spaces
 ms.date: 10/12/2020
 ms.topic: conceptual
-description: Güç Azure Dev Spaces olan süreçler açıklanmaktadır
+description: Azure Dev Spaces, Kubernetes 'e köprülemek için geçiş işlemini açıklar
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Kubernetes ile Köprü oluşturma
-ms.openlocfilehash: cc7f4f095a0306beffc0e224d7e813f7f02455da
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2b923e87e1eefe9cb0ba4afc018eed728ee6aaba
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962862"
+ms.locfileid: "91993934"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Kubernetes Köprüsü’ne geçiş
 
@@ -84,10 +84,34 @@ Kubernetes Köprüsü, dağıtım yöntemlerinden bağımsız olarak Kubernetes 
 
 1. Visual Studio IDE 'nizi 16,7 veya üzeri bir sürüme güncelleştirin ve köprüyü [Visual Studio Market][vs-marketplace]Kubernetes uzantısına yüklersiniz.
 1. Azure portal veya [Azure dev Spaces CLI][azds-delete]kullanarak Azure dev Spaces denetleyiciyi devre dışı bırakın.
-1. `azds.yaml`Dosyayı projenizden kaldırın.
+1. [Azure Cloud Shell](https://shell.azure.com)kullanın. Ya da Bash yüklü olan Mac, Linux veya Windows üzerinde, bir bash kabuğu istemi açın. Aşağıdaki araçların komut satırı ortamınızda kullanılabildiğinden emin olun: Azure CLı, Docker, kubectl, kıvrık, tar ve gunzip.
+1. Bir kapsayıcı kayıt defteri oluşturun veya var olan bir kayıt defteri kullanın. Azure 'da [Azure Container Registry](../container-registry/index.yml) kullanarak veya [Docker Hub](https://hub.docker.com/)kullanarak bir kapsayıcı kayıt defteri oluşturabilirsiniz.
+1. Azure Dev Spaces varlıkları Kubernetes varlıklarına köprü haline dönüştürmek için geçiş betiğini çalıştırın. Betik, Kubernetes ile Köprüle uyumlu yeni bir görüntü oluşturur, onu belirlenen kayıt defterine yükler ve ardından kümeyi görüntüyle güncelleştirmek için [Held](https://helm.sh) kullanır. Kaynak grubu, AKS kümesinin adı ve bir kapsayıcı kayıt defteri sağlamanız gerekir. Burada gösterildiği gibi diğer komut satırı seçenekleri vardır:
+
+   ```azure-cli
+   curl -sL https://aka.ms/migrate-tool | bash -s -- -g ResourceGroupName -n AKSName -h ContainerRegistryName -r PathOfTheProject -y
+   ```
+
+   Betik aşağıdaki bayrakları destekler:
+
+   ```cmd  
+    -g Name of resource group of AKS Cluster [required]
+    -n Name of AKS Cluster [required]
+    -h Container registry name. Examples: ACR, Docker [required]
+    -k Kubernetes namespace to deploy resources (uses 'default' otherwise)
+    -r Path to root of the project that needs to be migrated (default = current working directory)
+    -t Image name & tag in format 'name:tag' (default is 'projectName:stable')
+    -i Enable a public endpoint to access your service over internet. (default is false)
+    -y Doesn't prompt for non-tty terminals
+    -d Helm Debug switch
+   ```
+
+1. *AZD. YAML* içindeki ortam değişkeni ayarları gibi özelleştirmeleri, projenizin *values. yıml* dosyasına el ile geçirin.
+1. seçim `azds.yaml` Dosyayı projenizden kaldırın.
 1. Uygulamanızı yeniden dağıtın.
 1. Dağıtılan uygulamanızda Kubernetes için köprü yapılandırın. Visual Studio 'da Kubernetes ile Köprü kullanma hakkında daha fazla bilgi için bkz. [Kubernetes Için köprü kullanma][use-btk-vs].
 1. Yeni oluşturulan köprü ile Kubernetes hata ayıklama profilini kullanarak Visual Studio 'da hata ayıklamayı başlatın.
+1. Kümenizi yeniden dağıtmak için gerektiğinde betiği tekrar çalıştırabilirsiniz.
 
 ### <a name="use-visual-studio-code-to-transition-to-bridge-to-kubernetes-from-azure-dev-spaces"></a>Azure Dev Spaces ile Kubernetes köprüsüne geçiş yapmak için Visual Studio Code kullanın
 

@@ -1,22 +1,18 @@
 ---
 title: Red Hat güncelleştirme altyapısı | Microsoft Docs
 description: Microsoft Azure içindeki isteğe bağlı Red Hat Enterprise Linux örnekleri için Red Hat güncelleştirme altyapısı hakkında bilgi edinin
-services: virtual-machines-linux
-documentationcenter: ''
 author: asinn826
-manager: BorisB2015
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: dadfd3abfad0c588f53d47cb7ab1eb138d4f90ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: cynthn
+ms.openlocfilehash: 3bdbd84785053b79198479305e1ca76e133a46f3
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89612508"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994275"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure 'da isteğe bağlı Red Hat Enterprise Linux VM 'Ler için Red Hat güncelleştirme altyapısı
  [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (rhuı), Azure gibi bulut sağlayıcılarının Red Hat ile barındırılan depo içeriğini yansıtmasını, Azure 'a özgü içerikle özel depolar oluşturmasını ve Son Kullanıcı VM 'leri için kullanılabilir olmasını sağlar.

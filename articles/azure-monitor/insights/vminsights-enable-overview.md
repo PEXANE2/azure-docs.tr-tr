@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/27/2020
-ms.openlocfilehash: 449979443577d22f8cc2ec35ec770dd1e107bb76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4041b824d099edbefcc45c68163257ca69ddf7de
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88998416"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995691"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>VM'ler için Azure İzleyici genel bakış 'ı etkinleştir
 
@@ -30,7 +30,7 @@ VM'ler için Azure İzleyici ayarlamak için:
 * PowerShell kullanarak, belirtilen bir abonelik veya kaynak grubundaki birden fazla Azure VM 'yi, Azure Arc VM 'Leri, Azure VMSS veya Azure yay makinelerini etkinleştirin.
 * Şirket ağınızda veya diğer bulut ortamınızda barındırılan VM 'Leri veya fiziksel bilgisayarları izlemek için VM'ler için Azure İzleyici etkinleştirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdaki bölümlerde yer alan bilgileri anladığınızdan emin olun. 
 
@@ -69,8 +69,8 @@ VM'ler için Azure İzleyici, aşağıdaki bölgelerde bir Log Analytics çalı�
 Log Analytics bir çalışma alanınız yoksa, kaynaklardan birini kullanarak bir tane oluşturabilirsiniz:
 * [Azure CLI](../learn/quick-create-workspace-cli.md)
 * [PowerShell](../platform/powershell-workspace-configuration.md)
-* [Azure portalındaki](../learn/quick-create-workspace.md)
-* [Azure Resource Manager](../platform/template-workspace-configuration.md)
+* [Azure portalı](../learn/quick-create-workspace.md)
+* [Azure Resource Manager](../samples/resource-manager-workspace.md)
 
 - Azure sanal makine
 - Azure sanal makine ölçek kümesi
@@ -96,8 +96,8 @@ VM'ler için Azure İzleyici, Arc uzantı hizmetinin kullanılabildiği bölgele
 
 | Bağlı kaynak | Desteklenir | Açıklama |
 |:--|:--|:--|
-| Windows aracıları | Evet | [Windows aracıların Log Analytics aracı](../platform/log-analytics-agent.md)Ile birlikte bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](../platform/agents-overview.md#supported-operating-systems). |
-| Linux aracıları | Evet | Linux aracısının [Log Analytics aracısıyla](../platform/log-analytics-agent.md)birlikte, Linux aracılarının bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
+| Windows aracıları | Yes | [Windows aracıların Log Analytics aracı](../platform/log-analytics-agent.md)Ile birlikte bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](../platform/agents-overview.md#supported-operating-systems). |
+| Linux aracıları | Yes | Linux aracısının [Log Analytics aracısıyla](../platform/log-analytics-agent.md)birlikte, Linux aracılarının bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
 | System Center Operations Manager yönetim grubu | Hayır | |
 
 ## <a name="agents"></a>Aracılar
@@ -113,7 +113,7 @@ Aşağıda, bu aracıları dağıtmaya yönelik birden çok yöntem verilmiştir
 
 | Yöntem | Açıklama |
 |:---|:---|
-| [Azure portalındaki](./vminsights-enable-portal.md) | Her iki aracıyı tek bir sanal makineye, sanal makine ölçek kümesine veya Azure Arc ile bağlantılı karma sanal makinelere kurun. |
+| [Azure portalı](./vminsights-enable-portal.md) | Her iki aracıyı tek bir sanal makineye, sanal makine ölçek kümesine veya Azure Arc ile bağlantılı karma sanal makinelere kurun. |
 | [Resource Manager şablonları](vminsights-enable-powershell.md) | CLı ve PowerShell dahil Kaynak Yöneticisi şablonu dağıtmak için desteklenen yöntemlerden herhangi birini kullanarak her iki aracıyı de yükler. |
 | [Azure İlkesi](./vminsights-enable-policy.md) | Bir sanal makine veya sanal makine ölçek kümesi oluşturulduğunda aracıları otomatik olarak yüklemek için Azure Ilke girişimi atayın. |
 | [El ile yüklemesi](./vminsights-enable-hybrid.md) | Veri merkezinize veya diğer bulut ortamlarınıza dahil olmak üzere Azure dışında barındırılan bilgisayarlarda, aracıları Konuk işletim sistemine yükler. |

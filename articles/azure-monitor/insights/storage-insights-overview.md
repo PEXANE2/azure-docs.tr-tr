@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 6d6754594a321d297d983f9bd7e90ce074857919
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c030c1548a931bc749ad799a5aa88813c35d19cd
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961984"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91997032"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Depolama hizmetinizi depolama için Azure Izleyici ile izleme
 
@@ -31,7 +31,7 @@ Birleşik BT, şunları sağlar:
 
 * Hangi ölçümleri görmek istediğinizi değiştirmek, sınırlarınız ile hizalı olan eşikleri değiştirmek veya ayarlamak ve kendi çalışma kitabınız olarak kaydetmek için **özelleştirilebilir** . Çalışma kitabındaki grafikler Azure panosuna sabitlenebilir.  
 
-Bu özellik, herhangi bir şeyi etkinleştirmenizi veya yapılandırmanızı gerektirmez, depolama hesaplarınızdaki depolama ölçümleri varsayılan olarak toplanır. Azure depolama 'da kullanılabilen ölçümler hakkında bilginiz varsa, Azure depolama [ölçümlerini](../../storage/common/monitor-storage.md)Inceleyerek Azure depolama ölçümlerinde açıklama ve tanımı görüntüleyin.
+Bu özellik, herhangi bir şeyi etkinleştirmenizi veya yapılandırmanızı gerektirmez, depolama hesaplarınızdaki depolama ölçümleri varsayılan olarak toplanır. Azure depolama 'da kullanılabilen ölçümler hakkında bilginiz varsa, Azure depolama [ölçümlerini](../../storage/blobs/monitor-blob-storage.md)Inceleyerek Azure depolama ölçümlerinde açıklama ve tanımı görüntüleyin.
 
 >[!NOTE]
 >Bu özelliğe erişmek için ücret alınmaz ve [Azure izleyici fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/monitor/) sayfasında açıklandığı gibi, yalnızca yapılandırdığınız veya etkinleştirdiğiniz Azure izleyici temel özellikleri için ücretlendirilirsiniz.
@@ -67,7 +67,7 @@ Açılan listelerin altındaki sayaç kutucuğu, abonelikteki toplam depolama he
 **Kullanılabilirlik**, **e2e gecikme süresi**, **sunucu gecikmesi**ve **işlem hata türü/hata** sütunlarında bir değer seçin, sizi bu depolama hesabı için seçilen sütunla eşleşen belirli depolama ölçümleri türüne uyarlanmış bir rapora yönlendirir. Her bir kategorinin çalışma kitapları hakkında daha fazla bilgi için aşağıdaki [ayrıntılı depolama çalışma kitapları](#detailed-storage-workbooks) bölümüne bakın. 
 
 >[!NOTE]
->Raporda hangi hataların gösterilebileceği hakkında ayrıntılı bilgi için bkz. [yanıt türü şeması](../../storage/common/monitor-storage-reference.md#metrics-dimensions) ve **serverothererror**, **clienentothererror**, **clientkısıtlanror**gibi yanıt türlerini arayın. Seçili depolama hesaplarına bağlı olarak, üçten fazla üç tür hata bildirildiğinde, diğer tüm hatalar **diğeri**kategorisi altında gösterilir.
+>Raporda hangi hataların gösterilebileceği hakkında ayrıntılı bilgi için bkz. [yanıt türü şeması](../../storage/blobs/monitor-blob-storage-reference.md#metrics-dimensions) ve **serverothererror**, **clienentothererror**, **clientkısıtlanror**gibi yanıt türlerini arayın. Seçili depolama hesaplarına bağlı olarak, üçten fazla üç tür hata bildirildiğinde, diğer tüm hatalar **diğeri**kategorisi altında gösterilir.
 
 Varsayılan **kullanılabilirlik** eşiği:
 
@@ -274,4 +274,3 @@ Her çalışma kitabı, bu dosyayı kaydettiğiniz depolama hesabına kaydedilir
 * Çalışma kitaplarının desteklemek için tasarlandıkları senaryoları, mevcut raporların yeni nasıl yazılacağını ve özelleştirildiğini ve [Azure izleyici çalışma kitaplarını kullanarak etkileşimli raporlar oluşturma](../platform/workbooks-overview.md)konusunu gözden geçirin.
 
 * Azure depolama ile ilgili sorunları tanımlamak, tanılamak ve sorunlarını gidermek için Depolama Analizi ve diğer araçları kullanma hakkında ayrıntılı bir kılavuz için bkz. [izleme, tanılama ve sorun giderme Microsoft Azure depolama](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md).
-

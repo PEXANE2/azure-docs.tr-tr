@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 7bf3afef81c70355326ed9341f2dd8a39d542b54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e2cb00f4b8228b3587930fc5b237d308c532c8c
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554116"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996081"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>Öğretici: Panorama9 ile tümleştirme Azure Active Directory
 
@@ -132,7 +132,7 @@ Azure AD çoklu oturum açmayı Panorama9 ile yapılandırmak için aşağıdaki
 
 2. Üstteki araç çubuğunda, **Yönet**' e ve ardından **Uzantılar**' a tıklayın.
    
-    ![Uzantıları](./media/panorama9-tutorial/ic790023.png "Uzantıları")
+    ![Uzantılar](./media/panorama9-tutorial/ic790023.png "Uzantılar")
 
 3. **Uzantılar** Iletişim kutusunda **Çoklu oturum açma**' ya tıklayın.
    
@@ -170,7 +170,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -210,7 +210,7 @@ Panorama9 durumunda sağlama, el ile gerçekleştirilen bir görevdir.
 
 2. Üstteki menüde **Yönet**' e ve ardından **Kullanıcılar**' a tıklayın.
    
-    ![Kullanıcılar](./media/panorama9-tutorial/ic790027.png "Kullanıcılar")
+    !["Yönet" ve "kullanıcılar" sekmelerini gösteren ekran görüntüsü.](./media/panorama9-tutorial/ic790027.png "Kullanıcılar")
 
 3. Kullanıcılar bölümünde **+** Yeni Kullanıcı eklemek Için tıklayın.
 

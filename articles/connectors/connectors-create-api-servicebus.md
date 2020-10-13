@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 09/14/2020
+ms.date: 10/12/2020
 tags: connectors
-ms.openlocfilehash: 2993fc718462d1ac2a9cfd02be5642fb21f86702
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5834a1927fda71faa924e14265fb7f82034887de
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526536"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996354"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Azure Logic Apps ve Azure Service Bus kullanarak bulutta ileti alışverişi yapın
 
@@ -29,7 +29,7 @@ Service Bus yanıt alan Tetikleyicileri kullanabilir ve çıktıyı mantıksal u
 
 [!INCLUDE [Warning about creating infinite loops](../../includes/connectors-infinite-loops.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure hesabı ve aboneliği Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -79,7 +79,7 @@ Mantıksal uygulamanızın Service Bus ad alanına erişim izinleri olduğunu do
    Bir **veya daha fazla ileti bir sıraya ulaştığında (otomatik tamamlamayı)** tetikleyicisi gibi bazı Tetikleyiciler, bir veya daha fazla ileti döndürebilir. Bu Tetikleyiciler tetiklendiğinde, tetikleyicisinin **en yüksek ileti sayısı** özelliği tarafından belirtilen ileti sayısı arasında bir değer döndürür.
 
     > [!NOTE]
-    > Otomatik tamamlama tetikleyicisi bir iletiyi otomatik olarak tamamlar, ancak tamamlama yalnızca sonraki tetikleyici çalıştırmasında gerçekleştirilir. Bu davranış, mantıksal uygulamanızın tasarımını etkileyebilir. Örneğin, mantıksal uygulamanız kısıtlı bir duruma girerse bu değişiklik yinelenen iletilerle sonuçlanabileceğinden, otomatik tamamlanmış tetikleyicide eşzamanlılık değişikliği yapmaktan kaçının. Eşzamanlılık denetimini değiştirmek şu koşulları oluşturur: kısıtlanmış Tetikleyiciler `WorkflowRunInProgress` kodla atlanır, tamamlama işlemi gerçekleşmez ve yoklama aralığından sonra sonraki tetikleyici çalıştırması gerçekleşir. Service Bus kilit süresini yoklama aralığından daha uzun bir değere ayarlamanız gerekir. Ancak, bu ayara rağmen mantıksal uygulamanız bir sonraki yoklama aralığında daraltılmış bir durumda kalırsa ileti yine de tamamlanmamış olabilir.
+    > Otomatik tamamlama tetikleyicisi bir iletiyi otomatik olarak tamamlar, ancak tamamlama yalnızca bir sonraki Service Bus çağrısında gerçekleşir. Bu davranış, mantıksal uygulamanızın tasarımını etkileyebilir. Örneğin, mantıksal uygulamanız kısıtlı bir duruma girerse bu değişiklik yinelenen iletilerle sonuçlanabileceğinden, otomatik tamamlanmış tetikleyicide eşzamanlılık değişikliği yapmaktan kaçının. Eşzamanlılık denetimini değiştirmek şu koşulları oluşturur: kısıtlanmış Tetikleyiciler `WorkflowRunInProgress` kodla atlanır, tamamlama işlemi gerçekleşmez ve yoklama aralığından sonra sonraki tetikleyici çalıştırması gerçekleşir. Service Bus kilit süresini yoklama aralığından daha uzun bir değere ayarlamanız gerekir. Ancak, bu ayara rağmen mantıksal uygulamanız bir sonraki yoklama aralığında daraltılmış bir durumda kalırsa ileti yine de tamamlanmamış olabilir.
 
 1. Tetikleyiciniz ilk kez Service Bus ad alanına bağlanıyorsa, mantıksal uygulama Tasarımcısı sizden bağlantı bilgilerini isterse, bu adımları izleyin.
 
@@ -162,6 +162,10 @@ Mantıksal uygulamanızın Service Bus ad alanına erişim izinleri olduğunu do
 İlgili iletileri belirli bir sırada göndermeniz gerektiğinde, [Azure Service Bus bağlayıcısını](../connectors/connectors-create-api-servicebus.md)kullanarak [ *sıralı konvoy* düzenini](/azure/architecture/patterns/sequential-convoy) kullanabilirsiniz. Bağıntılı iletiler, Service Bus [oturum](../service-bus-messaging/message-sessions.md) kimliği gibi bu iletiler arasındaki ilişkiyi tanımlayan bir özelliğe sahiptir.
 
 Bir mantıksal uygulama oluşturduğunuzda, sıralı konvoy düzenini uygulayan **Service Bus oturumları şablonunu kullanarak bağıntılı sıralı teslimi** seçebilirsiniz. Daha fazla bilgi için bkz. [ilgili iletileri sırayla gönderme](../logic-apps/send-related-messages-sequential-convoy.md).
+
+## <a name="delays-in-updates-to-your-logic-app-taking-effect"></a>Mantıksal uygulamanıza yönelik güncelleştirmelerde yapılan gecikmeler
+
+Service Bus tetikleyicisinin yoklama aralığı 10 saniye gibi küçükse, mantıksal uygulamanızdaki güncelleştirmeler 10 dakikaya kadar etkili olmayabilir. Bu sorunu geçici olarak çözmek için, mantıksal uygulamanızı güncelleştirmeden önce yoklama aralığını 30 saniye veya 1 dakika gibi daha büyük bir değere geçici olarak artırabilirsiniz. Güncelleştirmeyi yaptıktan sonra, yoklama aralığını özgün değere sıfırlayabilirsiniz. 
 
 <a name="connector-reference"></a>
 

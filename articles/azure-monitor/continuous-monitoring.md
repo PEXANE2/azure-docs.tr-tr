@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 0173d324da4f6cf2a24b825fe44fc07b7fe50b84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e41fa9f9918f4f17bd89e80610ae608e83eb3402
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318139"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996391"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Azure Izleyici ile sürekli izleme
 
@@ -43,7 +43,7 @@ Uygulamalar, temel aldığı altyapı olarak yalnızca güvenilir. Tüm altyapı
 
 [Kod olarak altyapı](/azure/devops/learn/what-is-infrastructure-as-code) , DevOps ekiplerinin kaynak kodu için kullandığı sürüm oluşturma ile, açıklayıcı bir modelde altyapının yönetimidir. Ortamınıza güvenilirlik ve ölçeklenebilirlik ekler ve uygulamalarınızı yönetmek için kullanılan benzer süreçlerden yararlanmanızı sağlar.
 
--  Büyük bir kaynak kümesi üzerinde uyarıları izlemeyi ve yapılandırmayı etkinleştirmek için [Kaynak Yöneticisi şablonlarını](platform/template-workspace-configuration.md) kullanın.
+-  Büyük bir kaynak kümesi üzerinde uyarıları izlemeyi ve yapılandırmayı etkinleştirmek için [Kaynak Yöneticisi şablonlarını](./samples/resource-manager-workspace.md) kullanın.
 - Kaynaklarınız üzerinde farklı kurallara zorlamak için [Azure ilkesini](../governance/policy/overview.md) kullanın. Bu, bu kaynakların kurumsal standartlarınız ve hizmet düzeyi Sözleşmelerinizle uyumlu kalmasını sağlar. 
 
 
@@ -87,4 +87,3 @@ Geliştirme ve işlemlerinizin aynı telemetri ve araçların erişimine sahip o
 
 - [Azure izleyici](overview.md)'nin fark bileşenleri hakkında bilgi edinin.
 - Yayın ardışık düzenine [sürekli Izleme ekleyin](./app/continuous-monitoring.md) .
-
