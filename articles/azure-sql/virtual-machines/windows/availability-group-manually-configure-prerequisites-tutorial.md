@@ -15,10 +15,10 @@ ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 278e5feb327c1376b7644050f414f680334d5c50
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91263241"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server her zaman açık kullanılabilirlik grupları oluşturmaya yönelik önkoşullar
@@ -44,7 +44,7 @@ Bir Azure hesabınız olmalıdır. [Ücretsiz bir Azure hesabı açabilir](https
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **+** Portalda yeni bir nesne oluşturmak için seçin.
 
    ![Yeni nesne](./media/availability-group-manually-configure-prerequisites-tutorial-/01-portalplus.png)
@@ -232,7 +232,7 @@ Aşağıdaki adımlarda, **ad-birincil DC** makinesini Corp.contoso.com için bi
     ![Rol Ekle iletişim kutusu](./media/availability-group-manually-configure-prerequisites-tutorial-/23-addroles.png)
 
 7. **Onay** bölümüne ulaşana kadar **İleri ' yi** seçin. **Gerekirse hedef sunucuyu otomatik olarak yeniden Başlat** onay kutusunu seçin.
-8. **Yükle**’yi seçin.
+8. **Yükle**'yi seçin.
 9. Özelliklerin yüklenmesi bittikten sonra, **Sunucu Yöneticisi** panosuna geri dönün.
 10. Sol bölmedeki yeni **AD DS** seçeneğini belirleyin.
 11. Sarı uyarı çubuğunda **daha fazla** bağlantıyı seçin.
@@ -248,7 +248,7 @@ Aşağıdaki adımlarda, **ad-birincil DC** makinesini Corp.contoso.com için bi
     | **Etki Alanı Denetleyicisi Seçenekleri** |**DSRM parolası** = contoso! 0000<br/>**Parolayı onaylayın** = contoso! 0000 |
 
 14. Sihirbazdaki diğer sayfalara gitmek için **İleri ' yi** seçin. **Önkoşul denetimi** sayfasında, aşağıdaki iletiyi görmediğinizi doğrulayın: **tüm önkoşul denetimleri başarıyla geçildi**. Geçerli uyarı iletilerini gözden geçirebilirsiniz, ancak yüklemeye devam etmek mümkündür.
-15. **Yükle**’yi seçin. **Ad-birincil-DC** sanal makinesi otomatik olarak yeniden başlatılır.
+15. **Yükle**'yi seçin. **Ad-birincil-DC** sanal makinesi otomatik olarak yeniden başlatılır.
 
 ### <a name="note-the-ip-address-of-the-primary-domain-controller"></a>Birincil etki alanı denetleyicisinin IP adresini aklınızda
 
@@ -397,7 +397,7 @@ Ardından, üç VM oluşturun-iki SQL Server VM ve ek bir küme düğümü için
 | Sanal makine yapılandırma **temelleri** |**Ad** = küme-FSW<br/>**Kullanıcı adı** = DomainAdmin<br/>**Parola** = contoso! 0000<br/>**Abonelik** = aboneliğiniz<br/>**Kaynak grubu** = SQL-ha-RG<br/>**Konum** = Azure konumunuz |**Ad** = SqlServer-0<br/>**Kullanıcı adı** = DomainAdmin<br/>**Parola** = contoso! 0000<br/>**Abonelik** = aboneliğiniz<br/>**Kaynak grubu** = SQL-ha-RG<br/>**Konum** = Azure konumunuz |**Ad** = SqlServer-1<br/>**Kullanıcı adı** = DomainAdmin<br/>**Parola** = contoso! 0000<br/>**Abonelik** = aboneliğiniz<br/>**Kaynak grubu** = SQL-ha-RG<br/>**Konum** = Azure konumunuz |
 | Sanal makine yapılandırma **boyutu** |**Boyut** = DS1 \_ v2 (1 vcpu, 3,5 GB) |**Boyut** = DS2 \_ v2 (2 sanal CPU, 7 GB)</br>Boyut SSD depolamayı desteklemelidir (Premium disk desteği). )) |**Boyut** = DS2 \_ v2 (2 sanal CPU, 7 GB) |
 | Sanal makine yapılandırma **ayarları** |**Depolama**: yönetilen diskleri kullanın.<br/>**Sanal ağ** = autoHAVNET<br/>**Subnet** = sqlsubnet (10.1.1.0/24)<br/>**Genel IP adresi** otomatik olarak oluşturulur.<br/>**Ağ güvenlik grubu** = yok<br/>**Izleme tanılaması** = etkin<br/>**Tanılama depolama hesabı** = otomatik olarak oluşturulan bir depolama hesabı kullan<br/>**Kullanılabilirlik kümesi** = sqlAvailabilitySet<br/> |**Depolama**: yönetilen diskleri kullanın.<br/>**Sanal ağ** = autoHAVNET<br/>**Subnet** = sqlsubnet (10.1.1.0/24)<br/>**Genel IP adresi** otomatik olarak oluşturulur.<br/>**Ağ güvenlik grubu** = yok<br/>**Izleme tanılaması** = etkin<br/>**Tanılama depolama hesabı** = otomatik olarak oluşturulan bir depolama hesabı kullan<br/>**Kullanılabilirlik kümesi** = sqlAvailabilitySet<br/> |**Depolama**: yönetilen diskleri kullanın.<br/>**Sanal ağ** = autoHAVNET<br/>**Subnet** = sqlsubnet (10.1.1.0/24)<br/>**Genel IP adresi** otomatik olarak oluşturulur.<br/>**Ağ güvenlik grubu** = yok<br/>**Izleme tanılaması** = etkin<br/>**Tanılama depolama hesabı** = otomatik olarak oluşturulan bir depolama hesabı kullan<br/>**Kullanılabilirlik kümesi** = sqlAvailabilitySet<br/> |
-| Sanal makine yapılandırması **SQL Server ayarları** |Geçerli değil |**SQL bağlantısı** = özel (sanal ağ içinde)<br/>**Bağlantı noktası** = 1433<br/>**SQL kimlik doğrulaması** = devre dışı<br/>**Depolama yapılandırması** = genel<br/>**Otomatik düzeltme eki uygulama** = Pazar 2:00<br/>**Otomatik yedekleme** = devre dışı</br>**Azure Key Vault tümleştirme** = devre dışı |**SQL bağlantısı** = özel (sanal ağ içinde)<br/>**Bağlantı noktası** = 1433<br/>**SQL kimlik doğrulaması** = devre dışı<br/>**Depolama yapılandırması** = genel<br/>**Otomatik düzeltme eki uygulama** = Pazar 2:00<br/>**Otomatik yedekleme** = devre dışı</br>**Azure Key Vault tümleştirme** = devre dışı |
+| Sanal makine yapılandırması **SQL Server ayarları** |Uygulanamaz |**SQL bağlantısı** = özel (sanal ağ içinde)<br/>**Bağlantı noktası** = 1433<br/>**SQL kimlik doğrulaması** = devre dışı<br/>**Depolama yapılandırması** = genel<br/>**Otomatik düzeltme eki uygulama** = Pazar 2:00<br/>**Otomatik yedekleme** = devre dışı</br>**Azure Key Vault tümleştirme** = devre dışı |**SQL bağlantısı** = özel (sanal ağ içinde)<br/>**Bağlantı noktası** = 1433<br/>**SQL kimlik doğrulaması** = devre dışı<br/>**Depolama yapılandırması** = genel<br/>**Otomatik düzeltme eki uygulama** = Pazar 2:00<br/>**Otomatik yedekleme** = devre dışı</br>**Azure Key Vault tümleştirme** = devre dışı |
 
 <br/>
 

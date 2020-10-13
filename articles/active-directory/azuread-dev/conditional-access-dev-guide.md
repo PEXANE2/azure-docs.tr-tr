@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
 ms.openlocfilehash: 1075cce9b9e3bc3267756bba84691788293fa8d2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88116328"
 ---
 # <a name="developer-guidance-for-the-azure-active-directory-conditional-access-feature"></a>Azure Active Directory Koşullu erişim özelliği için Geliştirici Kılavuzu
@@ -153,9 +153,9 @@ Bu senaryoda, koşullu erişim korumalı bir Web API 'SI çağırmak için ADAL.
 
 ADAL.js, belirteçleri elde eden birkaç işlev vardır: `login()` , `acquireToken(...)` , `acquireTokenPopup(…)` , ve `acquireTokenRedirect(…)` .
 
-* `login()`etkileşimli bir oturum açma isteği aracılığıyla bir KIMLIK belirteci edinir, ancak herhangi bir hizmet için (koşullu erişim korumalı Web API 'SI dahil) erişim belirteçleri almaz.
-* `acquireToken(…)`daha sonra, bir erişim belirtecini sessizce almak için kullanılabilir ve bu, herhangi bir koşulda Kullanıcı arabirimini göstermez.
-* `acquireTokenPopup(…)`ve `acquireTokenRedirect(…)` her ikisi de bir kaynak için, her zaman oturum açma kullanıcı arabirimini gösteren bir belirteç istemek için kullanılır.
+* `login()` etkileşimli bir oturum açma isteği aracılığıyla bir KIMLIK belirteci edinir, ancak herhangi bir hizmet için (koşullu erişim korumalı Web API 'SI dahil) erişim belirteçleri almaz.
+* `acquireToken(…)` daha sonra, bir erişim belirtecini sessizce almak için kullanılabilir ve bu, herhangi bir koşulda Kullanıcı arabirimini göstermez.
+* `acquireTokenPopup(…)` ve `acquireTokenRedirect(…)` her ikisi de bir kaynak için, her zaman oturum açma kullanıcı arabirimini gösteren bir belirteç istemek için kullanılır.
 
 Bir uygulama, Web API 'sini çağırmak için bir erişim belirtecine ihtiyaç duyduğunda, çalışır `acquireToken(…)` . Belirteç oturumunun kullanım alanı dolmuşsa veya koşullu erişim ilkesiyle uyumlu olması gerekiyorsa, *Acquiretoken* işlevi başarısız olur ve uygulama `acquireTokenPopup()` veya kullanır `acquireTokenRedirect()` .
 

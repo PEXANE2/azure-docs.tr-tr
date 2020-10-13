@@ -1,22 +1,22 @@
 ---
-title: Android uygulamasını geçirme | Microsoft Azure haritaları
-description: Android uygulamasını Google Maps 'tan Microsoft Azure Maps 'a geçirme
+title: Öğretici-Android uygulamasını geçirme | Microsoft Azure haritaları
+description: Android uygulamasını Google Maps 'tan Microsoft Azure Maps 'a geçirme öğreticisi
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/19/2020
-ms.topic: how-to
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 96f68bdf58d9cc98815e4ae76ae01da87c38dc88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b493b78971b7e802d82e8f61203abdaaca527016
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319648"
+ms.locfileid: "91873889"
 ---
-# <a name="migrate-an-android-app-from-google-maps"></a>Google Maps 'tan Android uygulaması geçirme
+# <a name="tutorial---migrate-an-android-app-from-google-maps"></a>Öğretici-Google Maps 'tan bir Android uygulaması geçirme
 
 Azure Haritalar Android SDK, Web SDK 'sına benzer bir API arabirimine sahiptir. Bu SDK 'Lardan biriyle geliştirdiyseniz, aynı kavramların, en iyi uygulamaların ve mimarilerin birçoğu geçerlidir.
 

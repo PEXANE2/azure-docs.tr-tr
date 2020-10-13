@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
 ms.openlocfilehash: 94c668e7ffaff81fed9c2e511bc38239069fa43e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87305219"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics ağ geçidini kullanarak internet erişimi olmadan bilgisayarları bağlama
@@ -141,7 +141,7 @@ Kurulum Sihirbazı 'nı kullanarak bir ağ geçidi yüklemek için aşağıdaki 
    ![Ağ geçidi proxy 'sinin yapılandırmasının ekran görüntüsü](./media/gateway/gateway-wizard02.png)
 
 1. Microsoft Update etkinleştirilmemişse, Microsoft Update sayfası görüntülenir ve etkinleştirmeyi seçebilirsiniz. Bir seçim yapın ve ardından **İleri**' yi seçin. Aksi halde, bir sonraki adıma devam edin.
-1. **Hedef klasör** sayfasında, C:\Program Files\oms Gateway varsayılan klasörünü bırakın ya da ağ geçidini yüklemek istediğiniz konumu girin. Sonra **İleri**’yi seçin.
+1. **Hedef klasör** sayfasında, C:\Program Files\oms Gateway varsayılan klasörünü bırakın ya da ağ geçidini yüklemek istediğiniz konumu girin. Ardından **İleri**’yi seçin.
 1. **Yüklemeye hazırlanma** sayfasında, **yükler**' i seçin. Kullanıcı hesabı denetimi, yüklemek için izin isterse, **Evet**' i seçin.
 1. Kurulum bittikten sonra **son**' u seçin. Hizmetin çalıştığını doğrulamak için, Services. msc ek bileşenini açın ve **OMS ağ geçidinin** hizmet listesinde göründüğünü ve durumunun **çalıştığını**doğrulayın.
 
@@ -306,7 +306,7 @@ Her bir bölgenin URL 'sini bulmak için Otomasyon belgelerinin [ağınızı yap
 Bilgisayarınız karma runbook çalışanı olarak otomatik olarak kaydedilmişse, örneğin Güncelleştirme Yönetimi çözümü bir veya daha fazla VM için etkinleştirilmişse, aşağıdaki adımları izleyin:
 
 1. Iş çalışma zamanı veri hizmeti URL 'Lerini Log Analytics ağ geçidinde Izin verilen ana bilgisayar listesine ekleyin. Örnek: `Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
-1. Aşağıdaki PowerShell cmdlet 'ini kullanarak Log Analytics Ağ Geçidi hizmetini yeniden başlatın:`Restart-Service OMSGatewayService`
+1. Aşağıdaki PowerShell cmdlet 'ini kullanarak Log Analytics Ağ Geçidi hizmetini yeniden başlatın: `Restart-Service OMSGatewayService`
 
 Bilgisayarınız, karma Runbook Worker kayıt cmdlet 'i kullanılarak Azure Otomasyonu 'na katılırsa, şu adımları izleyin:
 
@@ -321,8 +321,8 @@ Cmdlet 'leri kullanarak Log Analytics ağ geçidinin yapılandırma ayarlarını
 
 1. Log Analytics ağ geçidini (Microsoft Windows Installer) yükler.
 1. Bir PowerShell konsol penceresi açın.
-1. Şu komutu yazarak modülü içeri aktarın:`Import-Module OMSGateway`
-1. Önceki adımda bir hata oluşmamışsa modül başarıyla içeri aktarıldı ve cmdlet 'ler kullanılabilir. Girmesini`Get-Module OMSGateway`
+1. Şu komutu yazarak modülü içeri aktarın: `Import-Module OMSGateway`
+1. Önceki adımda bir hata oluşmamışsa modül başarıyla içeri aktarıldı ve cmdlet 'ler kullanılabilir. `Get-Module OMSGateway` değerini girin
 1. Değişiklik yapmak için cmdlet 'lerini kullandıktan sonra OMS Ağ Geçidi hizmetini yeniden başlatın.
 
 3. adımdaki bir hata modülün içeri aktarılmadığı anlamına gelir. PowerShell modülü bulamadığında hata ortaya çıkabilir. Modülü OMS ağ geçidi yükleme yolunda bulabilirsiniz: *C:\Program FILES\MICROSOFT OMS Gateway\PowerShell\OmsGateway*.
@@ -332,7 +332,7 @@ Cmdlet 'leri kullanarak Log Analytics ağ geçidinin yapılandırma ayarlarını
 | `Get-OMSGatewayConfig` |Anahtar |Hizmetin yapılandırmasını alır |`Get-OMSGatewayConfig` |  
 | `Set-OMSGatewayConfig` |Anahtar (gerekli) <br> Değer |Hizmetin yapılandırmasını değiştirir |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
 | `Get-OMSGatewayRelayProxy` | |Geçiş (yukarı akış) proxy adresini alır |`Get-OMSGatewayRelayProxy` |  
-| `Set-OMSGatewayRelayProxy` |Adres<br> Kullanıcı adı<br> Parola (güvenli dize) |Geçiş (yukarı akış) proxy 'sinin adresini (ve kimlik bilgilerini) ayarlar |1. bir geçiş proxy 'si ve kimlik bilgisi ayarlayın:<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2. kimlik doğrulaması gerektirmeyen bir geçiş proxy 'si ayarlayın:`Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3. geçiş proxy ayarını temizleyin:<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
+| `Set-OMSGatewayRelayProxy` |Adres<br> Kullanıcı adı<br> Parola (güvenli dize) |Geçiş (yukarı akış) proxy 'sinin adresini (ve kimlik bilgilerini) ayarlar |1. bir geçiş proxy 'si ve kimlik bilgisi ayarlayın:<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2. kimlik doğrulaması gerektirmeyen bir geçiş proxy 'si ayarlayın: `Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3. geçiş proxy ayarını temizleyin:<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
 | `Get-OMSGatewayAllowedHost` | |İzin verilen ana bilgisayarı alır (izin verilen Konakları otomatik olarak indirilmez, yalnızca yerel olarak yapılandırılmış izin verilen ana bilgisayar) |`Get-OMSGatewayAllowedHost` | 
 | `Add-OMSGatewayAllowedHost` |Ana bilgisayar (gerekli) |Konağı izin verilenler listesine ekler |`Add-OMSGatewayAllowedHost -Host www.test.com` |  
 | `Remove-OMSGatewayAllowedHost` |Ana bilgisayar (gerekli) |Konağı izin verilenler listesinden kaldırır |`Remove-OMSGatewayAllowedHost`<br> `-Host www.test.com` |  
@@ -350,7 +350,7 @@ Ağ Geçidi tarafından günlüğe kaydedilen olayları toplamak için Log Analy
 
 Aşağıdaki tabloda Log Analytics ağ geçidi günlük olaylarının olay kimlikleri ve açıklamaları gösterilmektedir.
 
-| **ID** | **Açıklama** |
+| **NUMARASıNı** | **Açıklama** |
 | --- | --- |
 | 400 |Özel KIMLIĞI olmayan herhangi bir uygulama hatası. |
 | 401 |Yanlış yapılandırma. Örneğin, listenPort = bir tamsayı yerine "metin". |

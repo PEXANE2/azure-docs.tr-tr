@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 20add4859b272b6d121666cde9c56296119d41e4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836539"
 ---
 # <a name="private-link-for-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı için özel bağlantı
@@ -22,7 +22,7 @@ ms.locfileid: "87836539"
 > [!NOTE]
 > Özel bağlantı özelliği yalnızca Genel Amaçlı veya bellek için Iyileştirilmiş fiyatlandırma katmanlarında bulunan MariaDB sunucuları için Azure veritabanı 'nda kullanılabilir. Veritabanı sunucusunun bu fiyatlandırma katmanlarından birinde olduğundan emin olun.
 
-## <a name="data-exfiltration-prevention"></a>Veri kaybı önleme
+## <a name="data-exfiltration-prevention"></a>Veri sızdırmayı önleme
 
 MariaDB için Azure veritabanı 'nda veri değişim-bir veritabanı yöneticisi gibi yetkili bir Kullanıcı, bir sistemden veri ayıklayıp onu kuruluşun dışında başka bir konuma veya sisteme taşıyabildik. Örneğin, Kullanıcı, verileri üçüncü tarafa ait bir depolama hesabına taşıtır.
 
@@ -57,7 +57,7 @@ Bu kurulumun sonunda, Azure VM yalnızca Batı ABD bölgesindeki MariaDB için A
 
 Özel bağlantıları etkinleştirmek için özel uç noktalar gereklidir. Bu işlem, aşağıdaki nasıl yapılır kılavuzlarından yararlanarak yapılabilir.
 
-* [Azure Portal](https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-portal)
+* [Azure portalındaki](https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-portal)
 * [CLI](https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-cli)
 
 ### <a name="approval-process"></a>Onay Işlemi

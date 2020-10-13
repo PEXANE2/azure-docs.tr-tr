@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
 ms.openlocfilehash: d37aa275a07586738bf7416cee6611bdc8284df3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88004767"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Redsıs için Premium bir Azure önbelleği için Redsıs Kümelemesi yapılandırma
@@ -62,7 +62,7 @@ Kümeleme etkin olan çalışan bir Premium önbellekteki küme boyutunu değiş
 
 Küme boyutunu değiştirmek için kaydırıcıyı kullanın veya parça **sayısı** metin kutusunda 1 ile 10 arasında bir sayı yazın ve kaydetmek için **Tamam** ' a tıklayın.
 
-Küme boyutunun artırılması, en yüksek aktarım hızını ve önbellek boyutunu artırır. Küme boyutunun artırılması en yüksek değeri artırmaz. istemciler için kullanılabilir bağlantılar.
+Küme boyutunun artırılması, en yüksek aktarım hızını ve önbellek boyutunu artırır. Küme boyutunun artırılması, istemcilerin kullanabildiği en fazla bağlantı miktarını artırmaz.
 
 > [!NOTE]
 > Bir kümeyi ölçeklendirmek, pahalı bir komut olan [MIGRATE](https://redis.io/commands/migrate) komutunu çalıştırır, bu nedenle en düşük düzeyde etki için bu işlemi yoğun olmayan saatlerde çalıştırmayı göz önünde bulundurun. Geçiş işlemi sırasında sunucu yükünde bir ani artış görürsünüz. Bir kümenin ölçeklendirilmesi uzun süredir çalışan bir işlemdir ve geçen süre, anahtar sayısına ve bu anahtarlarla ilişkili değerlerin boyutuna bağlıdır.

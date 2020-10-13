@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
 ms.openlocfilehash: efbe8bc24b430716da46601ed073300e4c79cca7
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743735"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>Yönetilen diskler için performans katmanları (Önizleme)
@@ -42,10 +42,10 @@ Cihazınız değiştikçe faturanızı değişiklikleriniz. Örneğin, bir P10 d
 | 512 GiB | P20 | P30, P40, P50 |
 | 1 TiB | P30 | P40, P50 |
 | 2 TiB | P40 | P50 |
-| 4 TiB | P50 | Hiçbiri |
+| 4 TiB | P50 | Yok |
 | 8 TiB | P60 |  P70, P80 |
 | 16 TiB | P70 | P80 |
-| 32 TiB | P80 | Hiçbiri |
+| 32 TiB | P80 | Yok |
 
 Fatura bilgileri için bkz. [yönetilen disk fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks/).
 

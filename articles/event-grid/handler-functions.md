@@ -3,20 +3,29 @@ title: Azure Event Grid olaylar için olay işleyicisi olarak Azure işlevi
 description: Azure işlevlerini Event Grid olayları için olay işleyicileri olarak nasıl kullanabileceğinizi açıklar.
 ms.topic: conceptual
 ms.date: 09/18/2020
-ms.openlocfilehash: db06962c020eb954bf0c595e5a4019b1df774898
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: cd500eed180096388eede96f768f08b896ca6456
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629697"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873736"
 ---
 # <a name="azure-function-as-an-event-handler-for-event-grid-events"></a>Event Grid olaylar için olay işleyicisi olarak Azure işlevi
 
 Olay işleyicisi, olayın gönderildiği yerdir. İşleyici, olayı işlemek için bir eylem gerçekleştirir. Birkaç Azure hizmeti, olayları işleyecek şekilde otomatik olarak yapılandırılır ve **Azure işlevleri** bunlardan biridir. 
 
-Event Grid olaylara yanıt vermek için sunucusuz bir mimaride **Azure işlevlerini** kullanın. İşleyici olarak bir Azure işlevi kullanırken, genel HTTP tetikleyicisi yerine Event Grid tetikleyicisini kullanın. Event Grid Event Grid Tetikleyicileri otomatik olarak doğrular. Genel HTTP Tetikleyicileri ile [doğrulama yanıtını](webhook-event-delivery.md) kendiniz uygulamanız gerekir.
 
-Daha fazla bilgi için bkz. işlevlerde Event Grid tetikleyicisini kullanmaya genel bakış için [Azure işlevleri Event Grid tetikleyicisi](../azure-functions/functions-bindings-event-grid.md) .
+Bir Azure işlevini olaylar için işleyici olarak kullanmak için aşağıdaki yaklaşımlardan birini izleyin: 
+
+-   [Event Grid tetikleyicisi](../azure-functions/functions-bindings-event-grid-trigger.md)kullanın.  **Uç nokta türü**olarak **Azure işlevini** belirtin. Ardından, Azure işlev uygulamasını ve olayları işleyecek işlevi belirtin. 
+-   [Http tetikleyicisini](../azure-functions/functions-bindings-http-webhook.md)kullanın.  **Uç nokta türü**olarak **Web kancası** belirtin. Ardından, olayları işleyecek Azure işlevinin URL 'sini belirtin. 
+
+İkinci yaklaşımda aşağıdaki avantajları sunan ilk yaklaşımı (Event Grid tetikleyicisi) kullanmanızı öneririz:
+-   Event Grid Event Grid Tetikleyicileri otomatik olarak doğrular. Genel HTTP Tetikleyicileri ile [doğrulama yanıtını](webhook-event-delivery.md) kendiniz uygulamanız gerekir.
+-   Event Grid, işlevin olayları işleyebileceği algılanan ücret temelinde, olayların bir Event Grid olayı tarafından tetiklenen bir işleve teslim edileceği oranı otomatik olarak ayarlar. Bu oran, işlevin olay işleme hızı zamana göre farklılık gösterebileceğinden, bir işlevin olaylarını işlemek için bir işlevin değil, özellik averts dağıtım hatalarıyla eşleşir. Yüksek performans verimliliği artırmak için olay aboneliğinde toplu işlemeyi etkinleştirin. Daha fazla bilgi için bkz. [toplu Işlemeyi etkinleştirme](#enable-batching).
+
+    > [!NOTE]
+    > Şu anda, olay **Cloudevents** şemasında teslim edildiğinde Azure işlevleri uygulaması için Event Grid tetikleyicisi kullanamazsınız. Bunun yerine, bir HTTP tetikleyicisi kullanın.
 
 ## <a name="tutorials"></a>Öğreticiler
 

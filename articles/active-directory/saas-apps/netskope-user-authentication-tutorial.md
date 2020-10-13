@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 4a2bd9b7240033df47f57dc3432ce50819d8754b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 62d6d5527cd917304e4c8bc0c4740f4edb772218
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544035"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939214"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-user-authentication"></a>Öğretici: Netüse Kullanıcı kimlik doğrulamasıyla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -92,7 +92,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!NOTE]
     > Oturum açma URL 'SI değerleri gerçek değil. Oturum açma URL 'SI değerini, gerçek oturum açma URL 'SI ile güncelleştirin. Oturum açma URL 'SI değerini almak için [Netüse Kullanıcı kimlik doğrulama istemci destek ekibine](mailto:support@netskope.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -136,15 +136,15 @@ Bu bölümde, Netüse Kullanıcı kimlik doğrulamasına erişim vererek, B. Sim
 
 1. **Etkin platform** sekmesi ' ne tıklayın.
 
-    ![Netüse Kullanıcı kimlik doğrulaması yapılandırması](./media/netskope-user-authentication-tutorial/user1.png)
+    ![Ekran görüntüsü ayarlarından seçilen etkin platformu gösterir.](./media/netskope-user-authentication-tutorial/user1.png)
 
 1. **Ara sunucuyu ileri** kaydırarak **SAML**' yi seçin.
 
-    ![Netüse Kullanıcı kimlik doğrulaması yapılandırması](./media/netskope-user-authentication-tutorial/config-saml.png)
+    ![Ekran görüntüsü etkin platformdan seçilen SAML 'yi gösterir.](./media/netskope-user-authentication-tutorial/config-saml.png)
 
 1. **SAML ayarları** sayfasında, aşağıdaki adımları gerçekleştirin:
 
-    ![Netüse Kullanıcı kimlik doğrulaması yapılandırması](./media/netskope-user-authentication-tutorial/configure-copyurls.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz SAML ayarlarını gösterir.](./media/netskope-user-authentication-tutorial/configure-copyurls.png)
 
     a. **SAML VARLıK kimliği** değerini kopyalayın ve Azure Portal **temel SAML yapılandırması** bölümünde **tanımlayıcı** metin kutusuna yapıştırın.
 
@@ -152,11 +152,11 @@ Bu bölümde, Netüse Kullanıcı kimlik doğrulamasına erişim vererek, B. Sim
 
 1. **Hesap Ekle**' ye tıklayın.
 
-    ![Netüse Kullanıcı kimlik doğrulaması yapılandırması](./media/netskope-user-authentication-tutorial/config-addaccount.png)
+    ![Ekran görüntüsü SAML bölmesinde seçili HESABı Ekle ' ye gösterilir.](./media/netskope-user-authentication-tutorial/config-addaccount.png)
 
 1. **SAML hesabı ekle** sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Netüse Kullanıcı kimlik doğrulaması yapılandırması](./media/netskope-user-authentication-tutorial/config-settings1.png)
+    ![Ekran görüntüsünde, açıklanan değerleri girebileceğiniz SAML hesabı ekleme gösterilmektedir.](./media/netskope-user-authentication-tutorial/config-settings1.png)
 
     a. **Ad** metin kutusuna Azure AD gibi bir ad girin.
 
@@ -174,23 +174,23 @@ Bu bölümde, Netüse Kullanıcı kimlik doğrulamasına erişim vererek, B. Sim
 
 1. Sol gezinti bölmesindeki **Ayarlar** sekmesine tıklayın.
 
-    ![Netüse Kullanıcı kimlik doğrulaması Kullanıcı oluşturma](./media/netskope-user-authentication-tutorial/config-settings.png)
+    ![Ekran görüntüsü seçili ayarı gösterir.](./media/netskope-user-authentication-tutorial/config-settings.png)
 
 1. **Etkin platform** sekmesi ' ne tıklayın.
 
-    ![Netüse Kullanıcı kimlik doğrulaması Kullanıcı oluşturma](./media/netskope-user-authentication-tutorial/user1.png)
+    ![Ekran görüntüsü ayarlarından seçilen etkin platformu gösterir.](./media/netskope-user-authentication-tutorial/user1.png)
 
 1. **Kullanıcılar** sekmesi ' ne tıklayın.
 
-    ![Netüse Kullanıcı kimlik doğrulaması Kullanıcı oluşturma](./media/netskope-user-authentication-tutorial/add-user.png)
+    ![Ekran görüntüsü, etkin platformlardan seçilen kullanıcıları gösterir.](./media/netskope-user-authentication-tutorial/add-user.png)
 
 1. **Kullanıcı Ekle**' ye tıklayın.
 
-    ![Netüse Kullanıcı kimlik doğrulaması Kullanıcı oluşturma](./media/netskope-user-authentication-tutorial/user-add.png)
+    ![Ekran görüntüsü, Kullanıcı Ekle ' yi seçebileceğiniz kullanıcılar iletişim kutusunu gösterir.](./media/netskope-user-authentication-tutorial/user-add.png)
 
 1. Eklemek istediğiniz kullanıcının e-posta adresini girin ve **Ekle**' ye tıklayın.
 
-    ![Netüse Kullanıcı kimlik doğrulaması Kullanıcı oluşturma](./media/netskope-user-authentication-tutorial/add-user-popup.png)
+    ![Ekran görüntüsünde, kullanıcı listesi girebileceğiniz Kullanıcı ekleme gösterilir.](./media/netskope-user-authentication-tutorial/add-user-popup.png)
 
 ## <a name="test-sso"></a>Test SSO 'SU
 

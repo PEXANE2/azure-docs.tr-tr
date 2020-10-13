@@ -4,10 +4,10 @@ description: Bu makalede, Azure Event Hubs Apache Kafka için etkileşim kuran i
 ms.topic: reference
 ms.date: 07/20/2020
 ms.openlocfilehash: f9a03d1d3433461a575b32cd69893408a8b0ef97
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87099717"
 ---
 # <a name="recommended-configurations-for-apache-kafka-clients"></a>Apache Kafka istemcileri için önerilen yapılandırma
@@ -60,8 +60,8 @@ Ana `librdkafka` yapılandırma dosyası ([bağlantı](https://github.com/edenhi
 Özellik | Önerilen değerler | İzin verilen Aralık | Notlar
 ---|---:|-----:|---
 `retries` | > 0 | | Varsayılan değer 2 ' dir. Bu değeri tutmanız önerilir. 
-`request.timeout.ms` | 30000.. 60000 | > 20000| EH, varsayılan olarak en az 20.000 MS için varsayılan değer olarak kullanılır.  `librdkafka`Varsayılan değer, sorunlu olabilecek 5000 ' dir. *Düşük zaman aşımı değerleri olan istekler kabul edilirken, istemci davranışı garanti edilmez.*
-`partitioner` | `consistent_random` | Bkz. librdkafka belgeleri | `consistent_random`Varsayılan ve en iyisidir.  Çoğu durumda boş ve null anahtarlar ideal olarak işlenir.
+`request.timeout.ms` | 30000.. 60000 | > 20000| EH, varsayılan olarak en az 20.000 MS için varsayılan değer olarak kullanılır.  `librdkafka` Varsayılan değer, sorunlu olabilecek 5000 ' dir. *Düşük zaman aşımı değerleri olan istekler kabul edilirken, istemci davranışı garanti edilmez.*
+`partitioner` | `consistent_random` | Bkz. librdkafka belgeleri | `consistent_random` Varsayılan ve en iyisidir.  Çoğu durumda boş ve null anahtarlar ideal olarak işlenir.
 `enable.idempotence` | yanlış | | Idempotan desteklenmiyor.
 `compression.codec` | `none` || Sıkıştırma Şu anda desteklenmiyor.
 

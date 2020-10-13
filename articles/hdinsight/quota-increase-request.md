@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
 ms.openlocfilehash: 999be38e413288d2eb2f6342874e692972f300ad
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91409723"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>Azure HDInsight için kota artışı isteniyor
@@ -28,13 +28,13 @@ Kota sınırına ulaşmamızı belirten bir hata aldıysanız, önemli bilgiler 
 1. İstediğiniz küme VM 'nizin boyutunu, ölçeğini ve türünü saptayın.
 1. Aboneliğinizin geçerli kota kapasitesi sınırlarını denetleyin. Kullanılabilir çekirdekleri denetlemek için aşağıdaki adımları uygulayın:
 
-    1. [Azure Portal](https://portal.azure.com/) oturum açın.
+    1. [Azure portalında](https://portal.azure.com/) oturum açın.
     1. HDInsight kümesinin **genel bakış** sayfasına gidin.
     1. Sol taraftaki menüden **kota sınırları**' nı seçin. Sayfada kullanılan çekirdek sayısı, mevcut çekirdek sayısı ve toplam çekirdek sayısı görüntülenir.
 
 Kota artışı istemek için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Sayfanın sol alt tarafında **Yardım + Destek** ' i seçin.
 
     ![Yardım ve destek düğmesi](./media/quota-increase-request/help-support-button.png)

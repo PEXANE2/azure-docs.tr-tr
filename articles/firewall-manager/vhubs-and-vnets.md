@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 09/14/2020
 ms.author: victorh
 ms.openlocfilehash: 71ff23e749139087f24da406474403167dcc1c0d
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90563157"
 ---
 # <a name="what-are-the-azure-firewall-manager-architecture-options"></a>Azure Güvenlik Duvarı Yöneticisi mimari seçenekleri nelerdir?
@@ -44,7 +44,7 @@ Aşağıdaki tabloda bu iki mimari seçeneği karşılaştırılmaktadır ve kur
 |**Birden çok güvenlik sağlayıcısı desteği**|Üçüncü taraf güvenlik duvarlarına Zorlamalı tünel elle yapılandırılmış şekilde desteklenir|İki güvenlik sağlayıcısı için otomatik destek: özel trafik filtrelemesi için Azure Güvenlik Duvarı ve Internet filtreleme için üçüncü taraf|
 |**Application Gateway üzerinde Web Uygulaması Güvenlik Duvarı** |Sanal ağda destekleniyor|Şu anda bağlı olan ağda destekleniyor|
 |**Ağ sanal gereci**|Sanal ağda destekleniyor|Şu anda bağlı olan ağda destekleniyor|
-|**Azure DDoS koruması standart desteği**|Yes|Hayır|
+|**Azure DDoS koruması standart desteği**|Evet|Hayır|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

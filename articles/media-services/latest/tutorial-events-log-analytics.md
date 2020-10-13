@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: inhenkel
 ms.openlocfilehash: dfd7b3dcc7e27dd1251c35c6272b5aa7f8036006
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88942471"
 ---
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>Öğretici: Azure 'da Azure Media Services olaylarını depolama Log Analytics
@@ -124,7 +124,7 @@ Etkinliğe abone olduğunuza göre artık bir eylem oluşturun.
     > [!div class="mx-imgBorder"]
     > ![Konu seçildi](media/tutorial-events-log-analytics/topic-selected.png)
 
-1. Mantıksal uygulamanın **kod görünümünü** seçin. Giriş ve günlük türü satırlarını arayın.
+1. Mantıksal uygulamanın **kod görünümünü** seçin. Giriş ve Log-Type satırları ' na bakın.
     > [!div class="mx-imgBorder"]
     > ![İki satırın kod görünümü](media/tutorial-events-log-analytics/code-view-two-lines.png)
 

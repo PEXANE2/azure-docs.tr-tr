@@ -9,10 +9,10 @@ ms.date: 02/25/2019
 ms.author: duau
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 460ea446fc6dfc43e81a1a57bbba032a61f3a72d
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90532554"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>ExpressRoute devrelerini klasik bilgisayardan Kaynak Yöneticisi dağıtım modeline PowerShell kullanarak taşıma
@@ -92,7 +92,7 @@ Devrenizi taşımak için aşağıdaki kod parçacığını değiştirin ve çal
 Move-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Location "West US" -ServiceKey "<Service-key>"
 ```
 
-Klasik modda, bir ExpressRoute bağlantı hattının bir bölgeye bağlı olması kavramı yoktur. Ancak, Kaynak Yöneticisi ' de, her kaynağın bir Azure bölgesine eşlenmesi gerekir. Move-Azexpressroutedevresi cmdlet 'inde belirtilen bölge Teknik olarak herhangi bir bölge olabilir. Kuruluş amacıyla, eşleme konumunuzu en iyi şekilde temsil eden bir bölge seçmek isteyebilirsiniz.
+Klasik modda, bir ExpressRoute bağlantı hattının bir bölgeye bağlı olması kavramı yoktur. Ancak, Kaynak Yöneticisi ' de, her kaynağın bir Azure bölgesine eşlenmesi gerekir. Move-AzExpressRouteCircuit cmdlet 'inde belirtilen bölge Teknik olarak herhangi bir bölge olabilir. Kuruluş amacıyla, eşleme konumunuzu en iyi şekilde temsil eden bir bölge seçmek isteyebilirsiniz.
 
 > [!NOTE]
 > * Klasik ExpressRoute devrenizi Kaynak Yöneticisi dağıtım modeline taşıdıktan sonra, varsayılan olarak hem klasik hem de Kaynak Yöneticisi dağıtım modellerine erişim sahibi olur.

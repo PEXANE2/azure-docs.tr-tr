@@ -17,10 +17,10 @@ ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f2625698ae1d76dbae3ed8a8855b88dd6ac7bb17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84763695"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Azure Active Directory 'daki Galeri uygulamaları için SAML belirtecinde gelişmiş sertifika imzalama seçenekleri
@@ -62,10 +62,10 @@ Bir uygulamanın SAML sertifika imzalama seçeneklerini ve sertifika imzalama al
 Ardından, bu uygulama için SAML belirtecindeki sertifika imzalama seçeneklerini değiştirin:
 
 1. Uygulamaya Genel Bakış sayfasının sol bölmesinde, **Çoklu oturum açma**' yı seçin.
-1. **SAML-Preview Ile çoklu oturum açmayı ayarla** sayfası görünürse, 5. adıma gidin.
+1. **SAML Ile tek Sign-On ayarla-önizleme** sayfası görüntülenirse, 5. adıma gidin.
 1. **Çoklu oturum açma yöntemi seç** sayfası görünmezse, bu sayfayı göstermek için **Çoklu oturum açma modlarını Değiştir** ' i seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında, varsa **SAML** ' yi seçin. ( **SAML** kullanılamıyorsa, uygulama SAML 'yi desteklemez ve bu yordamın ve makalenin geri kalanını yoksayabilirsiniz.)
-1. **SAML-Preview Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** başlığını bulun ve **düzenleme** simgesini (bir kurşun kalem) seçin. **SAML Imzalama sertifikası** sayfası görüntülenir.
+1. **SAML-Preview Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** başlığını bulun ve **düzenleme** simgesini (bir kurşun kalem) seçin. **SAML Imzalama sertifikası** sayfası görüntülenir.
 
    ![Örnek: SAML imzalama sertifikası sayfası](./media/certificate-signing-options/saml-signing-page.png)
 

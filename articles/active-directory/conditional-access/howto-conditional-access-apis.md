@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: videor, jeevanb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 33f3766e02316eccb519bea15246541531750ed1
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90008092"
 ---
 # <a name="conditional-access-programmatic-access"></a>Koşullu erişim: programlı erişim
@@ -50,7 +50,7 @@ Bir şablon kullanarak, ön üretim ortamınızda koşullu erişim ilkeleri dağ
 
 - [Microsoft Graph API şablonlarıyla koşullu erişim ilkelerini yapılandırma](https://github.com/Azure-Samples/azure-ad-conditional-access-apis/tree/main/01-configure/templates)
 
-## <a name="test"></a>Test etme
+## <a name="test"></a>Test
 
 Bu örnek, üretim ortamınız gibi bir ortamdan, koşullu erişim ilkelerini bir ortamdan diğerine kopyalayasağlayan onay iş akışlarıyla daha güvenli dağıtım uygulamalarını modeller.
 

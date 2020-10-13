@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.custom: devx-track-javai
 ms.openlocfilehash: f67957d711958febdb01dfad0b3c44a92cb0bcfa
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91535245"
 ---
 # <a name="get-started-with-reliable-services-in-java"></a>Java 'da Reliable Services kullanmaya başlama
@@ -118,7 +118,7 @@ Bu düzenleme, hizmetinizi yüksek oranda kullanılabilir ve düzgün şekilde d
 
 `runAsync()` zaman uyumlu olarak engellenmemelidir. RunAsync uygulamanız, çalışma zamanının devam etmesine izin vermek için bir tamamlayıcı Tablefuture döndürmelidir. İş yükünüzün, bir uzun süre çalışan bir görevi, tamamlanmalı ve bu görevin tamamlanması gerekir.
 
-#### <a name="cancellation"></a>İptal
+#### <a name="cancellation"></a>İptal Etme
 İş yükünüzün iptali, belirtilen iptal belirteci tarafından düzenlenen bir işbirliği çabadır. Sistem, başlamadan önce görevin bitmesini bekler (başarılı tamamlama, iptal veya hata ile). İptal belirtecini dikkate almak, tüm işleri tamamlamak ve `runAsync()` sistem iptali istediğinde mümkün olduğunca hızlı bir şekilde çıkmak önemlidir. Aşağıdaki örnek, bir iptal olayının nasıl işleneceğini göstermektedir:
 
 ```java

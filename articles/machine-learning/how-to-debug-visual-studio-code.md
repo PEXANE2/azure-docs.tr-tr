@@ -10,10 +10,10 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
 ms.openlocfilehash: 374cc79b42d2dcaed0312c0ec205073906ce1fc5
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530684"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Visual Studio Code ile etkileşimli hata ayıklama
@@ -26,7 +26,7 @@ Visual Studio Code (VS Code) ve [depugpy](https://github.com/microsoft/debugpy/)
 
 Machine Learning denemeleri 'i buluta göndermeden önce doğrulamak, çalıştırmak ve hatalarını ayıklamak için Azure Machine Learning uzantısını kullanın.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 * Azure Machine Learning VS Code uzantısı (Önizleme). Daha fazla bilgi için bkz. [set up Azure Machine Learning vs Code uzantısı](tutorial-setup-vscode-extension.md).
 * [Docker](https://www.docker.com/get-started)
@@ -84,7 +84,7 @@ Uzaktan denemenin çalışmasına benzer şekilde, günlükleri ve çıkışlar�
 
 Bazı durumlarda, ML ardışık düzeninde kullanılan Python kodunda etkileşimli olarak hata ayıklaması yapmanız gerekebilir. VS Code ve hata ayıklama GPY kullanarak, eğitim ortamında çalışırken koda ekleyebilirsiniz.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 * __Azure sanal ağını__kullanmak üzere yapılandırılmış bir __Azure Machine Learning çalışma alanı__ .
 * İşlem hattı adımlarının bir parçası olarak Python betikleri kullanan bir __Azure Machine Learning işlem hattı__ . Örneğin, bir PythonScriptStep.

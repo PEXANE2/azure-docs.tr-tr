@@ -7,10 +7,10 @@ ms.date: 06/30/2017
 ms.custom: devx-track-java
 ms.author: pakunapa
 ms.openlocfilehash: d53d20510db70d81aab796efab48de40c880bb3a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87316133"
 ---
 # <a name="service-remoting-in-java-with-reliable-services"></a>Reliable Services ile Java 'da hizmet uzaktan iletişimi
@@ -26,7 +26,7 @@ Belirli bir iletişim protokolüne veya örneğin, WebAPI, Windows Communication
 Bir hizmet için uzaktan iletişim kurulması iki basit adımda yapılır:
 
 1. Hizmetinizin uygulanması için bir arabirim oluşturun. Bu arabirim, hizmetinize bir uzak yordam çağrısı için kullanılabilen yöntemleri tanımlar. Yöntemler görev döndüren zaman uyumsuz yöntemler olmalıdır. Arabirimin, `microsoft.serviceFabric.services.remoting.Service` hizmetin uzaktan iletişim arabirimine sahip olduğunu bildirmek için uygulaması gerekir.
-2. Hizmetinizde uzaktan iletişim dinleyicisi kullanın. Bu, `CommunicationListener` Uzaktan iletişim özellikleri sağlayan bir uygulamasıdır. `FabricTransportServiceRemotingListener`, varsayılan uzaktan iletişim aktarım protokolü kullanılarak uzaktan iletişim dinleyicisi oluşturmak için kullanılabilir.
+2. Hizmetinizde uzaktan iletişim dinleyicisi kullanın. Bu, `CommunicationListener` Uzaktan iletişim özellikleri sağlayan bir uygulamasıdır. `FabricTransportServiceRemotingListener` , varsayılan uzaktan iletişim aktarım protokolü kullanılarak uzaktan iletişim dinleyicisi oluşturmak için kullanılabilir.
 
 Örneğin, aşağıdaki durum bilgisi olmayan hizmet bir uzak yordam çağrısı üzerinden "Merhaba Dünya" almak için tek bir yöntem sunar.
 
@@ -86,7 +86,7 @@ ServiceProxy oluşturma hafif bir işlemdir, bu sayede ihtiyacınız olan kadar 
 ### <a name="serviceproxyfactory-lifetime"></a>ServiceProxyFactory ömrü
 [Fabricserviceproxyfactory](/java/api/microsoft.servicefabric.services.remoting.client.fabricserviceproxyfactory) , farklı uzaktan iletişim arabirimleri için ara sunucu oluşturan bir fabrikadır. `ServiceProxyBase.create`Proxy oluşturmak IÇIN API kullanıyorsanız, Framework bir oluşturur `FabricServiceProxyFactory` .
 [Serviceremotingclientfactory](/java/api/microsoft.servicefabric.services.remoting.client.serviceremotingclientfactory) özelliklerini geçersiz kılmanız gerektiğinde el ile bir tane oluşturmak yararlı olur.
-Fabrika, pahalı bir işlemdir. `FabricServiceProxyFactory`iletişim istemcilerinin önbelleğini korur.
+Fabrika, pahalı bir işlemdir. `FabricServiceProxyFactory` iletişim istemcilerinin önbelleğini korur.
 En iyi yöntem, mümkün olduğunca uzun süre önbelleğe alma yöntemidir `FabricServiceProxyFactory` .
 
 ## <a name="remoting-exception-handling"></a>Uzaktan iletişim özel durum Işleme

@@ -4,10 +4,10 @@ description: Bu makalede, bir temel (özel görüntü, Market görüntüsü veya
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: f012a8c59a8e938334c3e1abc4c7b3ccd0e48d3e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91308903"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Azure DevTest Labs formülleri yönetme
@@ -27,7 +27,7 @@ Kullanıcıları ve izinleri ekleme hakkında daha fazla bilgi için, bkz. [Azur
 ### <a name="create-a-formula-from-a-base"></a>Bir tabandan formül oluşturma
 Aşağıdaki adımlar özel görüntüden, Market görüntüsünden veya başka bir formülden formül oluşturma sürecinde size kılavuzluk gösterir.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 
@@ -39,7 +39,7 @@ Aşağıdaki adımlar özel görüntüden, Market görüntüsünden veya başka 
     ![Formül Ekle](./media/devtest-lab-create-formulas/add-formula.png)
 6. **Temel seçin** sayfasında, formülü oluşturmak istediğiniz temel (özel görüntü, Market görüntüsü veya paylaşılan görüntü Galerisi görüntüsünü) seçin.
 
-    :::image type="content" source="./media/devtest-lab-create-formulas/select-base.png" alt-text="Temel görüntüyü seçin":::
+    :::image type="content" source="./media/devtest-lab-create-formulas/select-base.png" alt-text="Temel görüntüyü seçin&quot;:::
 1. **Formül oluştur** sayfasının **temel ayarlar** sekmesinde, aşağıdaki değerleri belirtin:
    
     * **Formül adı** -formülünüz için bir ad girin. Bu değer, bir VM oluşturduğunuzda temel görüntüler listesinde görüntülenir. Ad siz yazarken onaylanır ve geçerli değilse, bir ileti geçerli bir ad için gereksinimleri gösterir.
@@ -58,9 +58,9 @@ Aşağıdaki adımlar özel görüntüden, Market görüntüsünden veya başka 
     - **Alt ağ** -alt ağı değiştirmek Için **alt ağı Değiştir**' i seçin. 
     - **IP adresi yapılandırması** -genel, özel veya paylaşılan IP adreslerini istediğinizi belirtin. Paylaşılan IP adresleri hakkında daha fazla bilgi için bkz. [Azure DevTest Labs PAYLAŞıLAN IP adreslerini anlama](./devtest-lab-shared-ip.md).
     - **Sona erme tarihi ve saati** -bu alanı düzenleyemezsiniz. 
-    - **Bu makineyi çakışmadan oluşturun** -makinenin "çakışmaz" olması, oluşturma sırasında sahiplik atanmayacağı anlamına gelir. Bunun yerine, laboratuar kullanıcıları laboratuvar sayfasında makineye sahiplik ("talep") alabilir.  
+    - **Bu makineyi çakışmadan oluşturun** -makinenin &quot;çakışmaz&quot; olması, oluşturma sırasında sahiplik atanmayacağı anlamına gelir. Bunun yerine, laboratuar kullanıcıları laboratuvar sayfasında makineye sahiplik (&quot;talep&quot;) alabilir.  
 
-        !["Formül oluştur (yeniden kullanılabilir temel)" sayfasının Gelişmiş ayarlarını gösteren ekran görüntüsü.](./media/devtest-lab-create-formulas/advanced-settings.png)
+        ![&quot;Formül oluştur (yeniden kullanılabilir temel)" sayfasının Gelişmiş ayarlarını gösteren ekran görüntüsü.](./media/devtest-lab-create-formulas/advanced-settings.png)
     - Temel olarak paylaşılan bir görüntü Galerisi görüntüsü seçtiyseniz, temel olarak kullanmak istediğiniz galerideki görüntünün sürümünü seçmenizi sağlayan **görüntü sürümü** alanını da görürsünüz. 
 
         ![Gelişmiş ayarlar sayfası](./media/devtest-lab-create-formulas/advanced-settings-shared-image-gallery.png)
@@ -76,7 +76,7 @@ Aşağıdaki adımlar, var olan bir VM 'yi temel alan bir formül oluşturma sü
 > 
 > 
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 2. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 3. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin.  
 4. Laboratuvarın **genel bakış** sayfasında, formülü oluşturmak istediğiniz VM 'yi seçin.
@@ -93,7 +93,7 @@ Aşağıdaki adımlar, var olan bir VM 'yi temel alan bir formül oluşturma sü
 ## <a name="modify-a-formula"></a>Bir formülü değiştirme
 Bir formülü değiştirmek için şu adımları izleyin:
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 2. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 3. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin.  
 4. Laboratuvarın sayfasında **formüller (yeniden kullanılabilir tabanlar)** öğesini seçin.
@@ -105,7 +105,7 @@ Bir formülü değiştirmek için şu adımları izleyin:
 ## <a name="delete-a-formula"></a>Formül silme
 Bir formülü silmek için şu adımları izleyin:
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 2. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 3. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin.  
 4. Laboratuvar **ayarları** sayfasında **formüller**' i seçin.

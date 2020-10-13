@@ -1,6 +1,6 @@
 ---
 title: Linux için Azure seri konsolu | Microsoft Docs
-description: Azure sanal makineler ve sanal makine ölçek kümeleri için iki yönlü seri konsol, Linux örneği kullanılarak.
+description: Bir Linux örneği kullanarak Azure sanal makineleri ve sanal makine ölçek kümeleri için seri konsol Bi-Directional.
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
 ms.openlocfilehash: 9a31a22a5b037162198f594d9bcf35c91a0a4654
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91306880"
 ---
 # <a name="azure-serial-console-for-linux"></a>Linux için Azure Serial Console
@@ -33,7 +33,7 @@ Windows için seri konsol belgeleri için bkz. [Windows Için seri konsol](./ser
 > [!NOTE]
 > Seri konsol Şu anda yönetilen bir önyükleme tanılama depolama hesabıyla uyumsuz. Seri Konsolu kullanmak için özel bir depolama hesabı kullandığınızdan emin olun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - VM 'niz veya sanal makine ölçek kümesi örneğinizin kaynak yönetimi dağıtım modelini kullanması gerekir. Klasik dağıtımlar desteklenmez.
 
@@ -109,7 +109,7 @@ Seri konsoluna tüm erişim şu anda sanal makinenin [önyükleme tanılama](./b
 Bir Kullanıcı seri konsoluna bağlandıysa ve başka bir kullanıcı aynı sanal makineye erişim isteğinde bulunursa, ilk kullanıcının bağlantısı kesilir ve ikinci Kullanıcı aynı oturuma bağlanır.
 
 > [!CAUTION]
-> Bu, bağlantısı kesilen bir kullanıcının oturum açmayacağı anlamına gelir. Bağlantı kesildikten sonra (SıGHUP veya benzer mekanizmayı kullanarak) bir oturum açma zorlaması yapma yeteneği, hala yol haritası üzerinde. Windows için özel yönetim konsolunda (SAC) etkin bir otomatik zaman aşımı vardır; Ancak, Linux için Terminal zaman aşımı ayarını yapılandırabilirsiniz. Bunu yapmak için, `export TMOUT=600` konsolunda oturum açmak üzere kullandığınız kullanıcının *. bash_profile* veya *. Profile* dosyasına ekleyin. Bu ayar 10 dakika sonra oturumu zaman aşımına uğrar.
+> Bu, bağlantısı kesilen bir kullanıcının oturum açmayacağı anlamına gelir. Bağlantı kesildikten sonra (SıGHUP veya benzer mekanizmayı kullanarak) bir oturum açma zorlaması yapma yeteneği, hala yol haritası üzerinde. Windows için özel yönetim konsolunda (SAC) etkin bir otomatik zaman aşımı vardır; Ancak, Linux için Terminal zaman aşımı ayarını yapılandırabilirsiniz. Bunu yapmak için, `export TMOUT=600` konsolunda oturum açmak için kullandığınız kullanıcı için *.bash_profile* veya *. Profile* dosyanıza ekleyin. Bu ayar 10 dakika sonra oturumu zaman aşımına uğrar.
 
 ## <a name="accessibility"></a>Erişilebilirlik
 Erişilebilirlik, Azure seri konsolu için önemli bir odadır. Bu uçta, seri konsolunun tam olarak erişilebilir olduğunu umuyoruz.

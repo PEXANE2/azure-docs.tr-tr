@@ -4,10 +4,10 @@ description: Aboneliğinizdeki kaynaklardan bir Azure Resource Manager şablonu 
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.openlocfilehash: 0262517df11f0d91920fd7e44f96ff532ffbe63f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87423244"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Azure portal bir şablona tek ve çoklu kaynak verme
@@ -55,7 +55,7 @@ Klasik dağıtım modeliyle oluşturulan kaynakları dışarı aktarmak için, [
 
 Bir kaynak türünün dışarı aktarılmadığını belirten bir şablonu dışarı aktarırken uyarı alırsanız, bu kaynağın özelliklerini yine de bulabilirsiniz. Kaynak özelliklerini görüntülemeye yönelik farklı seçenekler hakkında bilgi edinmek için bkz. [keşif kaynağı özellikleri](view-resources.md). Kaynak türü için [Azure REST API](/rest/api/azure/) de bakabilirsiniz.
 
-## <a name="export-template-from-a-resource-group"></a>Bir kaynak grubundan şablonu dışarı aktarma
+## <a name="export-template-from-a-resource-group"></a>Kaynak grubundan şablonu dışarı aktarma
 
 Bir kaynak grubundan bir veya daha fazla kaynağı dışarı aktarmak için:
 

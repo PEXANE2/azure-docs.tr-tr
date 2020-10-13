@@ -3,12 +3,12 @@ title: Bir müşteriyi Azure Lighthouse’a ekleme
 description: Bir müşteriyi Azure Mathouse 'a eklemeyi öğrenin. böylece, kaynakları Azure tarafından atanan kaynak yönetimi kullanılarak kendi kiracınız aracılığıyla erişilebilir ve yönetilebilir.
 ms.date: 09/24/2020
 ms.topic: how-to
-ms.openlocfilehash: 2e404c471990575460ccda3a26e7cdcb3ec1cf1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6902fb787b14c4443e28852b9aaf2533da9b49d3
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396680"
+ms.locfileid: "91873222"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Bir müşteriyi Azure Lighthouse’a ekleme
 
@@ -19,7 +19,7 @@ Bu makalede, bir hizmet sağlayıcı olarak, bir müşteriyi Azure açık Thouse
 
 Birden çok müşteri için ekleme işlemini yineleyebilirsiniz. Uygun izinlere sahip bir Kullanıcı, yönetim kiracınızda oturum açtığında, bu kullanıcıya, her bir müşteri kiracısında oturum açmaya gerek kalmadan, yönetim işlemlerini gerçekleştirmek üzere müşteri kiracı kapsamları genelinde yetki atanabilir.
 
-Müşteri görevlendirmeleri genelinde etkileri izlemek ve tanıma almak için, Microsoft İş Ortağı Ağı (MPN) KIMLIĞINIZI eklendi aboneliklerinizin her birine erişimi olan en az bir kullanıcı hesabıyla ilişkilendirin. Bu ilişkilendirmeyi hizmet sağlayıcı kiracınızda gerçekleştirmeniz gerekir. Kiracınızda MPN KIMLIĞINIZLE ilişkilendirilen bir hizmet sorumlusu hesabı oluşturmanızı ve sonra bu hizmet sorumlusunu bir müşteriyi her açışınızda dahil edilmesini öneririz. Daha fazla bilgi için bkz. [iş ortağı KIMLIĞINIZI bağlamak için, temsilcili kaynaklar üzerinde iş ortağı kazanılmış krediyi
+Müşteri görevlendirmeleri genelinde etkileri izlemek ve tanıma almak için, Microsoft İş Ortağı Ağı (MPN) KIMLIĞINIZI eklendi aboneliklerinizin her birine erişimi olan en az bir kullanıcı hesabıyla ilişkilendirin. Bu ilişkilendirmeyi hizmet sağlayıcı kiracınızda gerçekleştirmeniz gerekir. Kiracınızda MPN KIMLIĞINIZLE ilişkilendirilen bir hizmet sorumlusu hesabı oluşturmanızı ve sonra bu hizmet sorumlusunu bir müşteriyi her açışınızda dahil edilmesini öneririz. Daha fazla bilgi için bkz. [temsilci atanan kaynaklarda iş ortağı kazanılmış krediyi sağlamak için iş ortağı kimliğinizi bağlama](partner-earned-credit.md).
 
 > [!NOTE]
 > Müşteriler Azure Market ' te [yayımladığınız](publish-managed-services-offers.md)bir yönetilen hizmet teklifi (genel veya özel) satın alırken Azure 'da da eklendi de olabilir. Burada açıklanan ekleme işlemini Azure Marketi 'Nde yayınlanan tekliflerden de kullanabilirsiniz.

@@ -4,10 +4,10 @@ description: Azure abonelikleriniz için işlemsel mükemmelliği iyileştirmek 
 ms.topic: article
 ms.date: 10/24/2019
 ms.openlocfilehash: 036adb7e7d59bd78980c72b210ad41faea277d00
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88258490"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak işlemsel mükemmellik elde edin
@@ -55,13 +55,13 @@ Azure Ilkesi, Azure 'da ilke oluşturmak, atamak ve yönetmek için kullanabilec
 ***Kaynak gruplarından etiket devralmayı*etkinleştirin.** Bu ilke, bir kaynak oluşturulduğunda veya güncelleştirildiğinde üst kaynak grubunda belirtilen etiketi ve değeri ekler veya değiştirir. Bir düzeltme görevi tetikleyerek mevcut kaynakları düzeltebilirsiniz.
 
 ## <a name="no-validation-environment-enabled"></a>Etkin doğrulama ortamı yok
-Azure Advisor, geçerli abonelikte etkin bir doğrulama ortamınız olmadığını belirler. Konak havuzlarınızı oluştururken, \" \" \" Özellikler sekmesinde doğrulama ortamı için Hayır ' ı seçmiş olursunuz \" . Doğrulama ortamı etkinleştirilmiş en az bir konak havuzu olması, olası sorunları erken algılamada Windows sanal masaüstü hizmeti dağıtımları aracılığıyla iş sürekliliği sağlar. [Daha fazla bilgi](https://docs.microsoft.com/azure/virtual-desktop/create-validation-host-pool)
+Azure Advisor, geçerli abonelikte etkin bir doğrulama ortamınız olmadığını belirler. Konak havuzlarınızı oluştururken, \" \" \" Özellikler sekmesinde doğrulama ortamı için Hayır ' ı seçmiş olursunuz \" . Doğrulama ortamı etkinleştirilmiş en az bir konak havuzu olması, olası sorunları erken algılamada Windows sanal masaüstü hizmeti dağıtımları aracılığıyla iş sürekliliği sağlar. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/virtual-desktop/create-validation-host-pool)
 
-## <a name="ensure-production-non-validation-environment-to-benefit-from-stable-functionality"></a>Kararlı işlevlerden faydalanmak için üretime (doğrulama olmayan) sahip bir ortam sağlayın
+## <a name="ensure-production-non-validation-environment-to-benefit-from-stable-functionality"></a>Üretim ortamının (doğrulama ortamı değil) kararlı işlevsellikten yararlanmasını sağlama
 Azure Advisor, ana bilgisayar havuzlarınızın çok fazla sayıda doğrulama ortamı etkinleştirildiğini algılar. Doğrulama ortamlarının amacını en iyi şekilde sunması için, doğrulama ortamında en az bir tane, ancak ana bilgisayar havuzlarınızın yarısından daha fazlası olmalıdır. Doğrulama ortamı etkinken ve BT 'nin devre dışı bırakıldığı ana bilgisayar havuzlarınız arasında sağlıklı bir denge sahibi olmak için, Windows sanal masaüstü 'nün belirli güncelleştirmelerle birlikte sunduğu çok aşamalı dağıtımların avantajlarından en iyi şekilde faydalanabileceksiniz. Bu sorunu onarmak için, konak havuzunuzun özelliklerini açın ve \" \" \" doğrulama ortamı ayarında ileri ' yi seçin \" .
 
-## <a name="enable-traffic-analytics-to-view-insights-into-traffic-patterns-across-azure-resources"></a>Azure kaynakları genelinde trafik desenlerinin öngörülerini görüntülemek için Trafik Analizi etkinleştirin
-Trafik Analizi, Azure 'da Kullanıcı ve uygulama etkinliğine görünürlük sağlayan bulut tabanlı bir çözümdür. Trafik Analizi, trafik akışına Öngörüler sağlamak için ağ Izleyicisi ağ güvenlik grubu (NSG) akış günlüklerini analiz eder. Trafik Analizi ile Azure ve Azure olmayan dağıtımlar genelinde en önemli noktaları görüntüleyebilir, ortamınızda açık bağlantı noktalarını, protokolleri ve kötü amaçlı akışları araştırabilir ve performans için ağ dağıtımınızı en iyi duruma getirebilirsiniz. Akış günlüklerini 10 dakika ve 60 dakikalık işleme aralıklarında işleyebilir ve trafiğiniz üzerinde daha hızlı analiz sağlayabilirsiniz. Azure kaynaklarınız için Trafik Analizi etkinleştirmek iyi bir uygulamadır. 
+## <a name="enable-traffic-analytics-to-view-insights-into-traffic-patterns-across-azure-resources"></a>Azure kaynakları arasındaki trafik düzenleriyle ilgili içgörüleri görüntülemek için Trafik Analizi'ni etkinleştirme
+Trafik Analizi, Azure'daki kullanıcı ve uygulama etkinliğine yönelik görünürlük sağlayan bulut tabanlı bir çözümdür. Trafik Analizi, Ağ İzleyicisi ağ güvenlik grubu (NSG) akış günlüklerini analiz ederek trafik akışıyla ilgili içgörüler sunar. Trafik Analizi ile Azure'da ve Azure harici dağıtımlarda en sık iletişim kuran birimleri görüntüleyebilir, ortamınızdaki açık bağlantı noktalarını, protokolleri ve kötü amaçlı akışları araştırabilir ve ağ dağıtımınızı en iyi performans için iyileştirebilirsiniz. Akış günlüklerini 10 ve 60 dakikalık işleme aralıklarında işleyebilir ve trafiğiniz üzerinde daha hızlı analiz gerçekleştirebilirsiniz. Azure kaynaklarınız için Trafik Analizi etkinleştirmek iyi bir uygulamadır. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

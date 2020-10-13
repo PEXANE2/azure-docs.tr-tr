@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
 ms.openlocfilehash: 288fb5b552eab2029ea72f73a835fc73d97244b9
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90018210"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Stream Analytics, Azure İşlevleri ve SendGrid kullanarak özel kurallarla Azure IoT Central’ın kapsamını genişletme
@@ -62,7 +62,7 @@ Aşağıdaki ayarlarla [bir Event Hubs ad alanı oluşturmak için Azure Portal]
 
 | Ayar | Değer |
 | ------- | ----- |
-| Ad    | Ad alanı adınızı seçin |
+| Adı    | Ad alanı adınızı seçin |
 | Fiyatlandırma katmanı | Temel |
 | Abonelik | Aboneliğiniz |
 | Kaynak grubu | DetectStoppedDevices |
@@ -75,7 +75,7 @@ Aşağıdaki ayarlarla [bir Stream Analytics işi oluşturmak için Azure Portal
 
 | Ayar | Değer |
 | ------- | ----- |
-| Ad    | İş adınızı seçin |
+| Adı    | İş adınızı seçin |
 | Abonelik | Aboneliğiniz |
 | Kaynak grubu | DetectStoppedDevices |
 | Konum | Doğu ABD |
@@ -103,7 +103,7 @@ Aşağıdaki ayarlarla [bir SendGrid hesabı oluşturmak için Azure Portal](htt
 
 | Ayar | Değer |
 | ------- | ----- |
-| Ad    | SendGrid hesabınızın adını seçin |
+| Adı    | SendGrid hesabınızın adını seçin |
 | Parola | Parola oluştur |
 | Abonelik | Aboneliğiniz |
 | Kaynak grubu | DetectStoppedDevices |
@@ -326,7 +326,7 @@ Bu çözüm, bir cihazın 120 saniyeden uzun bir telemetri göndermeyi durdurdu�
 
 Devam etmeden önce dışa aktarma durumunun **çalışmaya** bitmesini bekleyin.
 
-## <a name="test"></a>Test etme
+## <a name="test"></a>Test
 
 Çözümü test etmek için, IoT Central 'den sanal olarak durdurulan cihazlara sürekli veri vermeyi devre dışı bırakabilirsiniz:
 

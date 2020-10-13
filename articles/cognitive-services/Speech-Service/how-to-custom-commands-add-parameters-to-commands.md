@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.openlocfilehash: 0ed237debc2395ed307658b2d57a541574f9478a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87284158"
 ---
 # <a name="add-parameters-to-commands"></a>Komutlara parametre ekleme
@@ -36,7 +36,7 @@ Birden çok cihazı açmak ve kapatmak için mevcut **turnOn** komutunu düzenle
    1. **Yeniden Adlandır**' ı seçin. Komut pencerelerini **Yeniden Adlandır** ' da **adı** **turnonoff**olarak değiştirin.
 
 1. Ardından, bu komuta kullanıcının cihazı açmak mı yoksa kapatmak mı istediğini temsil eden yeni bir parametre eklersiniz.
-   1. Orta bölmenin en üstünde bulunan **Ekle** ' yi seçin. Açılan listeden **parametre**' ı seçin.
+   1. Orta bölmenin en üstünde bulunan  **Ekle** ' yi seçin. Açılan listeden **parametre**' ı seçin.
    1. Sağ bölmedeki **Parametreler** bölümünde, **ad** kutusuna **OnOff**olarak bir değer ekleyin.
    1. **Gerekli**' yi seçin. **Gerekli bir parametre için yanıt Ekle** penceresinde **basit düzenleyici**' yi seçin. **İlk çeşitte**, Ekle
         ```
@@ -55,13 +55,13 @@ Birden çok cihazı açmak ve kapatmak için mevcut **turnOn** komutunu düzenle
        | Ad               | `OnOff`           | Parametre için açıklayıcı bir ad                                                                           |
        | Geneldir          | unchecked       | Bu parametre için bir değerin uygulamadaki tüm komutlara genel olarak uygulanıp uygulanmadığı belirten onay kutusu|
        | Gerekli           | checked         | Komutu tamamlamadan önce Bu parametre için bir değer gerekip gerekmediğini belirten onay kutusu |
-       | Gerekli parametre için yanıt      |Basit düzenleyici >`On or Off?`      | Bilinmiyorsa bu parametrenin değerini sormak için bir istem |
+       | Gerekli parametre için yanıt      |Basit düzenleyici > `On or Off?`      | Bilinmiyorsa bu parametrenin değerini sormak için bir istem |
        | Tür               | Dize          | Parametre türü, örneğin sayı, dize, tarih saat veya Coğrafya   |
        | Yapılandırma      | Önceden tanımlanmış giriş değerlerini iç katalogdan kabul et | Dizeler için bu, girişleri olası bir değerler kümesiyle sınırlandırır |
        | Önceden tanımlanmış giriş değerleri     | `on`, `off`           | Olası değerler ve bunların diğer adları kümesi         |
        
         
-   1. Önceden tanımlanmış giriş değerlerini eklemek için, **önceden tanımlanmış bir giriş Ekle** ve **Yeni öğe** penceresinde, yukarıdaki tabloda belirtilen **adı** yazın. Bu durumda, diğer adları kullanmıyoruz, bu nedenle boş bırakabilirsiniz.
+   1. Önceden tanımlanmış giriş değerlerini eklemek için, **önceden tanımlanmış bir giriş Ekle** ve **Yeni öğe**  penceresinde, yukarıdaki tabloda belirtilen **adı** yazın. Bu durumda, diğer adları kullanmıyoruz, bu nedenle boş bırakabilirsiniz.
    
       > [!div class="mx-imgBorder"]
       > ![Parametre oluştur](media/custom-commands/create-on-off-parameter.png)
@@ -75,10 +75,10 @@ Birden çok cihazı açmak ve kapatmak için mevcut **turnOn** komutunu düzenle
 
        | Ayar            | Önerilen değer       |
        | ------------------ | --------------------- |
-       | Ad               | `SubjectDevice`         |
+       | Adı               | `SubjectDevice`         |
        | Geneldir          | unchecked             |
        | Gerekli           | checked               |
-       | Gerekli parametre için yanıt     | Basit düzenleyici >`Which device do you want to control?`    | 
+       | Gerekli parametre için yanıt     | Basit düzenleyici > `Which device do you want to control?`    | 
        | Tür               | Dize                |          |
        | Yapılandırma      | Önceden tanımlanmış giriş değerlerini iç katalogdan kabul et | 
        | Önceden tanımlanmış giriş değerleri | `tv`, `fan`               |
@@ -88,11 +88,11 @@ Birden çok cihazı açmak ve kapatmak için mevcut **turnOn** komutunu düzenle
 
 ### <a name="modify-example-sentences"></a>Örnek cümleleri değiştirme
 
-Parametreleri olan komutlar için, olası tüm birleşimleri kapsayan örnek cümleler eklemek yararlıdır. Örnek:
+Parametreleri olan komutlar için, olası tüm birleşimleri kapsayan örnek cümleler eklemek yararlıdır. Örneğin:
 
-* Tam parametre bilgileri-`turn {OnOff} the {SubjectDevice}`
-* Kısmi parametre bilgileri-`turn it {OnOff}`
-* Parametre bilgisi yok-`turn something`
+* Tam parametre bilgileri- `turn {OnOff} the {SubjectDevice}`
+* Kısmi parametre bilgileri- `turn it {OnOff}`
+* Parametre bilgisi yok- `turn something`
 
 Farklı bilgi derecesine sahip örnek cümleler, özel komutlar uygulamasının, kısmi bilgilerle hem tek kararlı çözümlerin hem de çok yönlü çözümlerin çözümlenmesine izin verir.
 
@@ -106,10 +106,10 @@ turn something {OnOff}
 turn something
 ```
 
-**Kaydet**'i seçin.
+**Kaydet**’i seçin.
 
 > [!TIP]
-> Örnek cümleler düzenleyicisinde parametrelerinizi belirtmek için küme ayraçları kullanın. - `turn {OnOff} the {SubjectDevice}`Daha önce oluşturulan parametreler tarafından desteklenen otomatik tamamlama sekmesini kullanın.
+> Örnek cümleler düzenleyicisinde parametrelerinizi belirtmek için küme ayraçları kullanın. - `turn {OnOff} the {SubjectDevice}` Daha önce oluşturulan parametreler tarafından desteklenen otomatik tamamlama sekmesini kullanın.
 
 ### <a name="modify-completion-rules-to-include-parameters"></a>Tamamlama kurallarını parametreleri içerecek şekilde değiştirme
 
@@ -124,7 +124,7 @@ Mevcut tamamlama kuralını **ConfirmationResponse**değiştirin.
     ```
     Ok, turning the {SubjectDevice} {OnOff}
     ```
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ### <a name="try-it-out"></a>Deneyin
 1. Sağ bölmenin üstünde **eğitme** simgesini seçin.
@@ -149,9 +149,9 @@ Aşağıdaki yapılandırmayla yeni parametre **sıcaklığı** ekleyin
 
 | Yapılandırma      | Önerilen değer     |
 | ------------------ | ----------------|
-| Ad               | `Temperature`           |
+| Adı               | `Temperature`           |
 | Gerekli           | checked         |
-| Gerekli parametre için yanıt      | Basit düzenleyici >`What temperature would you like?`
+| Gerekli parametre için yanıt      | Basit düzenleyici > `What temperature would you like?`
 | Tür               | Sayı          |
 
 
@@ -169,7 +169,7 @@ Mevcut tamamlama kurallarını aşağıdaki yapılandırmaya göre düzenleyin.
 | Yapılandırma      | Önerilen değer     |
 | ------------------ | ----------------|
 | Koşullar         | Gerekli parametre > sıcaklık           |
-| Eylemler           | Konuşma yanıtı gönder >`Ok, setting temperature to {Temperature} degrees` |
+| Eylemler           | Konuşma yanıtı gönder > `Ok, setting temperature to {Temperature} degrees` |
 
 ### <a name="try-it-out"></a>Deneyin
 
@@ -186,9 +186,9 @@ Aşağıdaki yapılandırmaya sahip **DateTime** adlı bir parametre ekleyin.
 
    | Ayar                           | Önerilen değer                     | 
    | --------------------------------- | ----------------------------------------|
-   | Ad                              | `DateTime`                               |
+   | Adı                              | `DateTime`                               |
    | Gerekli                          | checked                                 |
-   | Gerekli parametre için yanıt   | Basit düzenleyici >`For what time?`            | 
+   | Gerekli parametre için yanıt   | Basit düzenleyici > `For what time?`            | 
    | Tür                              | DateTime                                |
    | Tarih Varsayılanları                     | Tarih eksik ise bugün kullan            |
    | Zaman Varsayılanları                     | Eğer zaman içinde kullanım günü kullanım günü     |
@@ -210,7 +210,7 @@ Mevcut tamamlama kurallarını aşağıdaki yapılandırmaya göre düzenleyin.
 
    | Ayar    | Önerilen değer                               |
    | ---------- | ------------------------------------------------------- |
-   | Eylemler    | Konuşma yanıtı gönder-`Ok, alarm set for {DateTime}`  |
+   | Eylemler    | Konuşma yanıtı gönder- `Ok, alarm set for {DateTime}`  |
 
 
 ### <a name="try-it-out"></a>Deneyin
