@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: c0d4c72bd60f35088773ec6dc5df80709c5ae98c
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91666832"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Azure sanal ağ için IPv6 nedir?
@@ -50,7 +50,7 @@ Azure VNet için IPv6 aşağıdaki özellikleri içerir:
     > IPv6 alt ağları tam/64 boyutunda olmalıdır.  Bu, gelecekteki uyumluluğun, bazı yönlendiricilerin yalnızca/64 IPv6 yollarını kabul edebileceği için alt ağın şirket içi bir ağa yönlendirilmesini etkinleştirmeye karar vermenize olanak sağlar.  
 - Kaynaklarınızı ağ güvenlik grupları için IPv6 kurallarıyla koruyun.
     - Azure platformunun dağıtılmış hizmet reddi (DDoS) korumaları, Internet 'e yönelik genel IP 'lere genişletilir
-- Kullanıcı tanımlı yollarla sanal ağınızdaki IPv6 trafiğinin yönlendirilmesini, özellikle de Uygulamanızı artırmak için ağ sanal gereçlerini kullanarak özelleştirin.
+- Uygulamanızı artırmak için ağ sanal gereçlerini kullanırken, sanal ağınızdaki IPv6 trafiğinin User-Defined yollarla yönlendirilmesini özelleştirin.
 - Linux ve Windows Sanal Makineleri tüm Azure VNET için IPv6 'Yı kullanabilir
 - [Standart IPv6 genel Load Balancer](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) , aşağıdakiler dahil olmak üzere dayanıklı, ölçeklenebilir uygulamalar oluşturmaya yönelik destek:
     - Hangi arka uç havuzu örneklerinin sistem durumu olduğunu ve bu nedenle yeni akışlar alabileceğini belirleyen isteğe bağlı IPv6 sistem durumu araştırması.

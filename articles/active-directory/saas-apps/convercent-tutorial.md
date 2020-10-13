@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 2dfc8bbb570c57ef22c2bde210dc7a64b48fb06d
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91775840"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-convercent"></a>Öğretici: Söysan ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Azure AD ile aynı şekilde tümleştirerek aşağıdaki avantajlar sunulmaktad�
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini dönüştürül ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -72,7 +72,7 @@ Bu bölümde, çoklu oturum açma için **Britta Simon** adlı bir test kullanı
 Azure AD ile çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, **[tek oturum açmayı yapılandırma](#configure-convercent-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için, **[tek oturum açmayı yapılandırma](#configure-convercent-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcıya yönelik Azure AD gösterimine bağlı bir Söysan 'da Britta Simon 'ın bir karşılığı olacak şekilde **[söysan test kullanıcısı oluşturun](#create-convercent-test-user)** .
@@ -92,7 +92,7 @@ Azure AD çoklu oturum açmayı, Conversan ile yapılandırmak için aşağıdak
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -111,9 +111,9 @@ Azure AD çoklu oturum açmayı, Conversan ile yapılandırmak için aşağıdak
     b. **Geçiş durumu** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<instancename>.convercent.com/`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, oturum açma URL 'SI ve geçiş durumuyla güncelleştirin. Bu değerleri almak için, [istemci destek ekibine](http://support.convercent.com/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, Sign-On URL ve geçiş durumuyla güncelleştirin. Bu değerleri almak için, [istemci destek ekibine](http://support.convercent.com/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -127,7 +127,7 @@ Azure AD çoklu oturum açmayı, Conversan ile yapılandırmak için aşağıdak
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-convercent-single-sign-on"></a>Söysan çoklu oturum açmayı yapılandırma
+### <a name="configure-convercent-single-sign-on"></a>Tek tek Sign-On yapılandırma
 
 Bir **yandan tek oturum açma 'yı yapılandırmak** için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'Leri Azure Portal ' den [dönüştürül destek ekibine](http://support.convercent.com/)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

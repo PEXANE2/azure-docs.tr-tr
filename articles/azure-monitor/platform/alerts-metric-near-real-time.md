@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 9/30/2020
 ms.subservice: alerts
 ms.openlocfilehash: 96f0cda9bdf6a17adb4d8d50b63ef5588e52f700
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578113"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure Izleyici 'de ölçüm uyarıları için desteklenen kaynaklar
@@ -45,9 +45,9 @@ Daha yeni uyarılar tarafından desteklenen Azure izleyici ölçüm kaynakların
 |Microsoft. ClassicStorage/storageAccounts/fileServices | Evet | Hayır | |
 |Microsoft. ClassicStorage/storageAccounts/queueServices | Evet | Hayır | |
 |Microsoft. ClassicStorage/storageAccounts/tableServices | Evet | Hayır | |
-|Microsoft. Biliveservices/hesapları | Evet | Hayır | [Bilişsel Hizmetler](./metrics-supported.md#microsoftcognitiveservicesaccounts) |
+|Microsoft. Biliveservices/hesapları | Evet | Hayır | [Bilişsel hizmetler](./metrics-supported.md#microsoftcognitiveservicesaccounts) |
 |Microsoft.Compute/virtualMachines | Evet | Evet<sup>1</sup> | [Sanal Makineler](./metrics-supported.md#microsoftcomputevirtualmachines) |
-|Microsoft.Compute/virtualMachineScaleSets | Evet | Hayır |[Sanal Makine Ölçek Kümeleri](./metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
+|Microsoft.Compute/virtualMachineScaleSets | Evet | Hayır |[Sanal makine ölçek kümeleri](./metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
 |Microsoft. Containerınstance/containerGroups | Evet| Hayır | [Kapsayıcı grupları](./metrics-supported.md#microsoftcontainerinstancecontainergroups) |
 |Microsoft. ContainerRegistry/kayıt defterleri | Hayır | Hayır | [Kapsayıcı kayıt defterleri](./metrics-supported.md#microsoftcontainerregistryregistries) |
 |Microsoft. ContainerService/Managedkümeler | Evet | Hayır | [Yönetilen Kümeler](./metrics-supported.md#microsoftcontainerservicemanagedclusters) |
@@ -85,7 +85,7 @@ Daha yeni uyarılar tarafından desteklenen Azure izleyici ölçüm kaynakların
 |Microsoft. Network/Applicationgateway 'ler | Evet | Hayır | [Uygulama ağ geçitleri](./metrics-supported.md#microsoftnetworkapplicationgateways) |
 |Microsoft. Network/azurefirewalls | Evet | Hayır | [Güvenlik duvarları](./metrics-supported.md#microsoftnetworkazurefirewalls) |
 |Microsoft. Network/dnsZones | Hayır | Hayır | [DNS Bölgeleri](./metrics-supported.md#microsoftnetworkdnszones) |
-|Microsoft. Network/Expressroutedevreleri | YOK | Hayır |[Express Route Devreleri](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
+|Microsoft. Network/Expressroutedevreleri | Yok | Hayır |[Express Route Devreleri](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
 |Microsoft. Network/loadBalancers (yalnızca standart SKU 'Lar için)| Evet| Hayır | [Yük dengeleyiciler](./metrics-supported.md#microsoftnetworkloadbalancers) |
 |Microsoft. Network/Natgateway 'ler| Hayır | Hayır | |
 |Microsoft. Network/privateEndpoints| Hayır | Hayır | |

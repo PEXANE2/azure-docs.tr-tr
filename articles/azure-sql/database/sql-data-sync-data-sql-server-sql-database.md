@@ -15,7 +15,7 @@ ms.openlocfilehash: 7bdb2c6ba6717624b19184ca3bcb47ee9b3da367
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856118"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure için SQL Data Sync nedir?
@@ -149,7 +149,7 @@ Eşitleme grubu oluşturma, güncelleştirme ve silme sırasında sağlama ve sa
 
 #### <a name="unsupported-column-types"></a>Desteklenmeyen sütun türleri
 
-Veri eşitleme, salt okuma veya sistem tarafından oluşturulmuş sütunları eşitleyemiyor. Örnek:
+Veri eşitleme, salt okuma veya sistem tarafından oluşturulmuş sütunları eşitleyemiyor. Örneğin:
 
 - Hesaplanan sütunlar.
 - Zamana bağlı tablolar için sistem tarafından oluşturulan sütunlar.

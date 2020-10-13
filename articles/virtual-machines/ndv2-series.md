@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 7ab9d270ae5da52cbf9b5ba0ed4730233225a7c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74c8924116cf9b565ea63e3b72a409686a4d725c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653460"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975729"
 ---
 # <a name="updated-ndv2-series"></a>NDv2-Series güncelleştirildi
 
@@ -27,7 +27,7 @@ Kritik öneme sahip olan NDv2, her iki hesaplama için de (VM başına 8 GPU) ve
 > [!IMPORTANT]
 > ND40rs_v2 VM 'de [InfiniBand etkinleştirilirken](./workloads/hpc/enable-infiniband.md) lütfen 4.7-1.0.0.1 Mellanox ofed sürücüsünü kullanın.
 >
-> Daha fazla GPU belleği nedeniyle, yeni ND40rs_v2 VM [2. nesil sanal makinelerin](./windows/generation-2.md) ve Market görüntülerinin kullanılmasını gerektirir. 
+> Daha fazla GPU belleği nedeniyle, yeni ND40rs_v2 VM [2. nesil sanal makinelerin](./generation-2.md) ve Market görüntülerinin kullanılmasını gerektirir. 
 >
 > Lütfen unutmayın: GPU başına 16 GB bellek içeren ND40s_v2 artık önizleme için kullanılamaz ve güncelleştirilmiş ND40rs_v2 yerini almıştır.
 

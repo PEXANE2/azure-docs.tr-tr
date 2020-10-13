@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 4348d3d71259b5bdf63b1c52af53bff59c650086
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17d36acfa2de699ff2b22ac16d327ea738519f4a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87829025"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975391"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Azure CLı ile tamamen bir Linux sanal makinesi oluşturma
 Azure 'da hızlı bir şekilde bir sanal makine (VM) oluşturmak için, gerekli destekleyici kaynakları oluşturmak üzere varsayılan değerleri kullanan tek bir Azure CLı komutu kullanabilirsiniz. Sanal ağ, genel IP adresi ve ağ güvenlik grubu kuralları gibi kaynaklar otomatik olarak oluşturulur. Üretim kullanımıyla ortamınızda daha fazla denetim için bu kaynakları daha önce oluşturabilir ve ardından sanal makinelerinizi bunlara ekleyebilirsiniz. Bu makalede, bir sanal makine oluşturma ve tek tek destekleyen kaynakların her biri için size kılavuzluk eder.
@@ -434,7 +434,7 @@ Hata etki alanları, ortak bir güç kaynağı ve ağ anahtarını paylaşan bir
 
 Güncelleştirme etki alanları, sanal makinelerin ve temel alınan fiziksel donanımların aynı anda yeniden başlatılabilen gruplarını gösterir. Planlı bakım sırasında, güncelleştirme etki alanlarının yeniden başlatıldığı sıra sıralı olmayabilir, ancak aynı anda yalnızca bir güncelleştirme etki alanı yeniden başlatılır.
 
-Azure, bir kullanılabilirlik kümesine yerleştirilirken VM 'Leri hata ve güncelleştirme etki alanlarına otomatik olarak dağıtır. Daha fazla bilgi için bkz. [sanal makinelerin kullanılabilirliğini yönetme](manage-availability.md).
+Azure, bir kullanılabilirlik kümesine yerleştirilirken VM 'Leri hata ve güncelleştirme etki alanlarına otomatik olarak dağıtır. Daha fazla bilgi için bkz. [sanal makinelerin kullanılabilirliğini yönetme](../manage-availability.md).
 
 [Az VM kullanılabilirliği-set create](/cli/azure/vm/availability-set)komutuyla VM 'niz için bir kullanılabilirlik kümesi oluşturun. Aşağıdaki örnek *myAvailabilitySet* adında bir kullanılabilirlik kümesi oluşturur:
 

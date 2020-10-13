@@ -4,10 +4,10 @@ description: Bu öğreticide, bulutta olay tabanlı bir video kaydı kaydetmek v
 ms.topic: tutorial
 ms.date: 05/27/2020
 ms.openlocfilehash: a2388a01544d2158e7ca6f1692df07b14ec03a93
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91773561"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Öğretici: buluta yönelik olay tabanlı video kaydı ve buluttan kayıttan yürütme
@@ -36,7 +36,7 @@ Başlamadan önce şu makaleleri okuyun:
 * [Dağıtımı düzenleme. * .template.js](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
 * [IoT Edge dağıtım bildiriminde yolların nasıl bildirilemeyeceğini gösteren](../../iot-edge/module-composition.md#declare-routes) bölüm
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticinin önkoşulları şunlardır:
 

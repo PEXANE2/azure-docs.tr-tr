@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 18c8cd675470d1f1f93baf5ab2a8f811d546ffac
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826866"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-cloudsuite"></a>Öğretici: Infor CloudSuite ile tümleştirme Azure Active Directory
@@ -74,7 +74,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Infor clouds
 Azure AD çoklu oturum açmayı, Infor CloudSuite ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, **[CloudSuite Için ınsingle oturum açmayı yapılandırın](#configure-infor-cloudsuite-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için, **[CloudSuite Için ınsingle oturum açmayı yapılandırın](#configure-infor-cloudsuite-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. User 'ın Azure AD gösterimine bağlı olan Cloudtta, Infor CloudSuite 'e yönelik Britta Simon 'ın bir karşılığı olacak şekilde **[Infor cloudsuite test kullanıcısı oluşturun](#create-infor-cloudsuite-test-user)** .
@@ -94,7 +94,7 @@ Azure AD çoklu oturum açmayı Infor CloudSuite ile birlikte yapılandırmak i�
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -136,7 +136,7 @@ Azure AD çoklu oturum açmayı Infor CloudSuite ile birlikte yapılandırmak i�
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [CloudSuite istemci desteği ekibine](mailto:support@infor.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -150,7 +150,7 @@ Azure AD çoklu oturum açmayı Infor CloudSuite ile birlikte yapılandırmak i�
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-infor-cloudsuite-single-sign-on"></a>CloudSuite Için Infor CloudSuite çoklu oturum açmayı yapılandırma
+### <a name="configure-infor-cloudsuite-single-sign-on"></a>CloudSuite Için Infor CloudSuite tek Sign-On yapılandırma
 
 **Infor cloudsuite** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'Leri Azure Portal 'ten [cloudsuite destek ekibine](mailto:support@infor.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

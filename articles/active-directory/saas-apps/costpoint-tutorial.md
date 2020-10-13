@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 7b32c5576ef38f07d28777e1a72aafa935042930
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91775737"
 ---
 # <a name="tutorial-integrate-costpoint-with-azure-active-directory"></a>Öğretici: Costpoint 'i Azure Active Directory tümleştirin
@@ -28,7 +28,7 @@ Bu öğreticide, Costpoint 'i Azure Active Directory (Azure AD) ile tümleştirm
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -106,7 +106,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
 
    1. **Ek URL 'Ler ayarla**' yı seçin. **Geçiş durumu**için aşağıdaki kalıbı kullanarak bir değer girin: `system=[your system]` (örneğin, **System = deltekcp**).
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalayıp Not defteri 'ne kaydetmek için **Kopyala** simgesini seçin.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL** 'sini kopyalamak ve Not defteri 'ne kaydetmek için **Kopyala** simgesini seçin.
 
    ![SAML Imzalama sertifikası](common/copy-metadataurl.png)
 

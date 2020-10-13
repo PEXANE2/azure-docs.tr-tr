@@ -1,5 +1,5 @@
 ---
-title: Azure portal ' de GPU ile Azure Stack Edge Pro cihazını bağlama, yapılandırma, etkinleştirme öğreticisi | Microsoft Docs
+title: Azure portal 'de GPU ile Azure Stack Edge Pro cihazını bağlama, yapılandırma, etkinleştirme öğreticisi | Microsoft Docs
 description: Azure Stack Edge Pro GPU 'SU dağıtma öğreticisi, fiziksel cihazınızı bağlanmanızı, ayarlamanıza ve etkinleştirmenizi sağlar.
 services: databox
 author: alkohli
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 1f86b0fc847ade3153c8eaddb0d82bd968913b46
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd4078d414048d858c46f6757daa0a87a698eaab
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899652"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976088"
 ---
-# <a name="tutorial-configure-device-settings-for-azure-stack-edge-pro-with-gpu"></a>Öğretici: Azure Stack Edge Pro cihaz ayarlarını GPU ile yapılandırma
+# <a name="tutorial-configure-the-device-settings-for-azure-stack-edge-pro-with-gpu"></a>Öğretici: Azure Stack Edge Pro cihaz ayarlarını GPU ile yapılandırma
 
 Bu öğreticide, yerleşik bir GPU ile Azure Stack Edge Pro cihazınız için cihazla ilgili ayarları nasıl yapılandıracağınız açıklanmaktadır. Yerel Web Kullanıcı arabirimi aracılığıyla cihaz adınızı, güncelleştirme sunucusunu ve zaman sunucusunu ayarlayabilirsiniz.
 
@@ -26,12 +26,12 @@ Bu öğreticide şunları öğrenirsiniz:
 
 > [!div class="checklist"]
 >
-> * Önkoşullar
+> * Ön koşullar
 > * Cihaz ayarlarını yapılandırma
 > * Güncelleştirmeyi yapılandır 
 > * Saati Yapılandır
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 GPU ile Azure Stack Edge Pro cihazınızda cihazla ilgili ayarları yapılandırmadan önce şunları yaptığınızdan emin olun:
 
@@ -67,7 +67,7 @@ Cihazla ilgili ayarları yapılandırmak için aşağıdaki adımları izleyin:
 
     5. Ayarlar uygulandıktan sonra **İleri: güncelleştirme sunucusu**' nu seçin.
 
-        ![Yerel Web Kullanıcı arabirimi "cihaz" sayfası](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-4.png)
+        ![Yerel Web Kullanıcı arabirimi "cihaz" sayfa 3](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-4.png)
 
 ## <a name="configure-update"></a>Güncelleştirmeyi yapılandır
 
@@ -79,12 +79,12 @@ Cihazla ilgili ayarları yapılandırmak için aşağıdaki adımları izleyin:
 
         Güncelleştirmeleri **Windows Server Update Services** 'dan (WSUS) dağıtmayı da tercih edebilirsiniz. WSUS sunucusunun yolunu belirtin.
         
-        ![Yerel Web Kullanıcı arabirimi "güncelleştirme sunucusu" sayfası](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/update-3.png)
+        ![Yerel Web Kullanıcı arabirimi "güncelleştirme sunucusu" sayfa 2](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/update-3.png)
 
         > [!NOTE] 
         > Ayrı bir Windows Update sunucusu yapılandırıldıysa ve *https* üzerinden bağlanmayı seçerseniz ( *http*yerine), güncelleştirme sunucusuna bağlanmak için gereken imzalama zinciri sertifikaları gereklidir. Sertifika oluşturma ve karşıya yükleme hakkında daha fazla bilgi için, [sertifikaları Yönet](azure-stack-edge-j-series-manage-certificates.md)' e gidin. 
 
-2. **Uygula**’yı seçin.
+2. **Apply** (Uygula) seçeneğini belirleyin.
 3. Güncelleştirme sunucusu yapılandırıldıktan sonra, **İleri: Saat**' i seçin.
     
 
@@ -120,7 +120,7 @@ Bu öğreticide şunları öğrenirsiniz:
 
 > [!div class="checklist"]
 >
-> * Önkoşullar
+> * Ön koşullar
 > * Cihaz ayarlarını yapılandırma
 > * Güncelleştirmeyi yapılandır 
 > * Saati Yapılandır

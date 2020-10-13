@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3deb7c0802dbfcdb65bcff6cb2653e73017651f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be79f7bd6687b2e53e6abe19dc0a20999942071d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89536464"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974983"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure dijital TWINS modellerini yönetme
 
@@ -113,7 +113,7 @@ foreach (string fileName in dtdlFiles)
 client.CreateModels(dtdlStrings);
 ```
 
-Model dosyaları tek bir modelden daha fazla bulunabilir. Bu durumda, modellerin bir JSON dizisine yerleştirilmesi gerekir. Örneğin:
+Model dosyaları tek bir modelden daha fazla bulunabilir. Bu durumda, modellerin bir JSON dizisine yerleştirilmesi gerekir. Örnek:
 
 ```json
 [
@@ -148,19 +148,19 @@ Aşağıda bazı örnek çağrılar verilmiştir:
 // 'client' is a valid DigitalTwinsClient object
 
 // Get a single model, metadata and data
-ModelData md1 = client.GetModel(id);
+DigitalTwinsModelData md1 = client.GetModel(id);
 
 // Get a list of the metadata of all available models
-Pageable<ModelData> pmd2 = client.GetModels();
+Pageable<DigitalTwinsModelData> pmd2 = client.GetModels();
 
 // Get a list of metadata and full model definitions
-Pageable<ModelData> pmd3 = client.GetModels(null, true);
+Pageable<DigitalTwinsModelData> pmd3 = client.GetModels(null, true);
 
 // Get models and metadata for a model ID, including all dependencies (models that it inherits from, components it references)
-Pageable<ModelData> pmd4 = client.GetModels(new string[] { modelId }, true);
+Pageable<DigitalTwinsModelData> pmd4 = client.GetModels(new string[] { modelId }, true);
 ```
 
-API 'leri, tüm dönüş nesnelerini almak için çağırır `ModelData` . `ModelData` Azure dijital TWINS örneğinde depolanan model hakkında ad, DTMı ve model oluşturma tarihi gibi meta verileri içerir. `ModelData`Nesne Ayrıca, isteğe bağlı olarak modelin kendisini de içerir. Parametrelere bağlı olarak, yalnızca meta verileri almak için alma çağrılarını kullanabilirsiniz (örneğin, kullanılabilir araçların Kullanıcı arabirimi listesini göstermek istediğiniz senaryolarda faydalıdır) veya modelin tamamı.
+API 'leri, tüm dönüş nesnelerini almak için çağırır `DigitalTwinsModelData` . `DigitalTwinsModelData` Azure dijital TWINS örneğinde depolanan model hakkında ad, DTMı ve model oluşturma tarihi gibi meta verileri içerir. `DigitalTwinsModelData`Nesne Ayrıca, isteğe bağlı olarak modelin kendisini de içerir. Parametrelere bağlı olarak, yalnızca meta verileri almak için alma çağrılarını kullanabilirsiniz (örneğin, kullanılabilir araçların Kullanıcı arabirimi listesini göstermek istediğiniz senaryolarda faydalıdır) veya modelin tamamı.
 
 `RetrieveModelWithDependencies`Çağrı yalnızca istenen modeli değil, istenen modelin bağımlı olduğu tüm modelleri de döndürür.
 
@@ -224,7 +224,7 @@ client.DecommissionModel(dtmiOfPlanetInterface);
 //...
 ```
 
-Modelin yetki alma durumu, `ModelData` model alma API 'leri tarafından döndürülen kayıtlara dahildir.
+Modelin yetki alma durumu, `DigitalTwinsModelData` model alma API 'leri tarafından döndürülen kayıtlara dahildir.
 
 #### <a name="deletion"></a>Silme
 

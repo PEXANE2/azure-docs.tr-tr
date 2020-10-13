@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: 5bf6a17c1a4aa1c7f212045af0d1b750ddb2a906
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4de2ec68d3cd10dfc4e95c6c2232837a7fca626
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653562"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975765"
 ---
 # <a name="mv2-series"></a>Mv2 serisi
 
@@ -35,7 +35,7 @@ Mv2 serisi VM 'nin özelliği Intel® Hyper-Threading teknolojisi
 | Standard_M416ms_v2<sup>1</sup> | 416 | 11400 | 8192 | 64 | 250000/1600 (14080) | 80000/2000 | 8 | 32000 |
 | Standard_M416s_v2<sup>1</sup> | 416 | 5700 | 8192 | 64 | 250000/1600 (14080) | 80000/2000 | 8 | 32000 |
 
-<sup>1</sup> Mv2 serisi VM 'ler yalnızca 2. nesil ve 2. nesil desteklenen görüntülerin bir alt kümesini destekler. Mv2-Series için desteklenen görüntülerin tam listesi için lütfen aşağıya bakın. Linux kullanıyorsanız, bir görüntüyü bulma ve seçme hakkında yönergeler için bkz. [Azure 'da 2. nesil sanal makineler Için destek](./linux/generation-2.md) . Windows kullanıyorsanız, bir görüntüyü bulma ve seçme hakkında yönergeler için bkz. [Azure 'da 2. nesil sanal makineler Için destek](./windows/generation-2.md) . 
+<sup>1</sup> Mv2 serisi VM 'ler yalnızca 2. nesil ve 2. nesil desteklenen görüntülerin bir alt kümesini destekler. Mv2-Series için desteklenen görüntülerin tam listesi için lütfen aşağıya bakın. Linux kullanıyorsanız, bir görüntüyü bulma ve seçme hakkında yönergeler için bkz. [Azure 'da 2. nesil sanal makineler Için destek](./generation-2.md) . Windows kullanıyorsanız, bir görüntüyü bulma ve seçme hakkında yönergeler için bkz. [Azure 'da 2. nesil sanal makineler Için destek](./generation-2.md) . 
 
 - Windows Server 2019 veya üzeri
 - SUSE Linux Enterprise Server 12 SP4 ve üzeri ya da SUSE Linux Enterprise Server 15 SP1 ve üzeri

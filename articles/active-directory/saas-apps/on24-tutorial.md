@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 3977aee84b1281e7918987c63185069892b5909e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 163a0c9a7e728ee9cd08c4a154ea499c059cf2f6
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554288"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944517"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-on24-virtual-environment-saml-connection"></a>Öğretici: ON24 sanal ortamı SAML bağlantısı ile Azure Active Directory tümleştirme
 
@@ -147,7 +147,7 @@ Azure AD çoklu oturum açmayı ON24 sanal ortam SAML bağlantısıyla yapıland
 
 5.  Uygulamayı **SP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımı uygulayın:
 
-    ![ON24 sanal ortamı SAML bağlantısı etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/both-signonurl.png)
+    !["Ek U R ls ayarla" bölümünü "ek U r 'yi Imzala" metin kutusu vurgulanmış şekilde gösteren ekran görüntüsü.](common/both-signonurl.png)
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://vshow.on24.com/vshow/<INSTANCENAME>`
 
@@ -195,7 +195,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

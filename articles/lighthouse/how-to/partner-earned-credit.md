@@ -4,10 +4,10 @@ description: İş ortağı KIMLIĞINIZI, Azure açık Thouse aracılığıyla y�
 ms.date: 10/05/2020
 ms.topic: how-to
 ms.openlocfilehash: 5caa205ce74152c7ec047952f66c1bf9188ddf02
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776179"
 ---
 # <a name="link-your-partner-id-to-enable-partner-earned-credit-on-delegated-resources"></a>İş ortağı KIMLIĞINIZI, temsilcili kaynaklar üzerinde ortağın kazanıldığını etkinleştirmek için bağlayın
@@ -20,7 +20,7 @@ ms.locfileid: "91776179"
 
 ## <a name="associate-your-partner-id-when-you-onboard-new-customers"></a>Yeni müşterileri eklediğinizde iş ortağı KIMLIĞINIZI ilişkilendirin
 
-Azure Resource Manager şablonlar (ARM şablonları) aracılığıyla müşterileri eklerken, iş ortağı KIMLIĞINIZI bağlamak ve iş ortağı kazanılmış krediyi etkinleştirmek için aşağıdaki işlemi kullanın. Bu adımları tamamlayabilmeniz için [MPN iş ortağı kimliğinizi](/partner-center/partner-center-account-setup#locate-your-mpn-id) bilmeniz gerekir. İş ortağı profilinizde gösterilen **ilişkili MPN kimliğini** kullandığınızdan emin olun.
+Azure Resource Manager şablonlar (ARM şablonları) aracılığıyla müşterileri eklerken, iş ortağı KIMLIĞINIZI bağlamak ve iş ortağı kazanılmış krediyi etkinleştirmek için aşağıdaki işlemi kullanın. Bu adımları tamamlayabilmeniz için [MPN iş ortağı kimliğinizi](/partner-center/partner-center-account-setup#locate-your-mpn-id) bilmeniz gerekir. İş ortağı profilinizde gösterilen **İlişkili MPN kimliğini** kullandığınızdan emin olun.
 
 Kolaylık olması için kiracınızda bir hizmet sorumlusu hesabı oluşturmanızı, **ilişkili MPN Kimliğinizle**bağlamayı ve ardından, sahip olduğunuz her MÜŞTERIYE, [PEC için uygun olan bir Azure yerleşik rolüyle](https://docs.microsoft.com/partner-center/azure-roles-perms-pec)birlikte erişim vermeyi öneririz.
 

@@ -10,12 +10,12 @@ ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 9b1dc7d7eee263b781d39c4beccf9388efbaa3d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb183b5c8aff018d4dc73819b938b24ad0daa934
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334146"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975799"
 ---
 # <a name="deploy-javascript-app-to-read-data-from-fhir-service"></a>FHıR hizmetinden veri okumak için JavaScript uygulaması dağıtma
 Bu öğreticide, bir FHıR hizmetinden veri okuyan küçük bir JavaScript uygulaması dağıtacaksınız. Bu öğreticideki adımlar şunlardır:
@@ -24,7 +24,7 @@ Bu öğreticide, bir FHıR hizmetinden veri okuyan küçük bir JavaScript uygul
 1. Uygulamaya erişimi test etme
 1. Bu FHıR verilerini okuyan bir Web uygulaması oluşturun
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu öğretici kümesine başlamadan önce aşağıdaki öğelere ihtiyacınız olacaktır:
 1. Bir Azure aboneliği
 1. Azure Active Directory kiracısı
@@ -36,7 +36,7 @@ Bu öğretici kümesine başlamadan önce aşağıdaki öğelere ihtiyacınız o
 ## <a name="deploy-azure-api-for-fhir"></a>FHIR için Azure API'sini dağıtma
 Öğreticideki ilk adım, FHıR kurulumu için Azure API 'nizi doğru şekilde almanızı sağlar.
 
-1. [FHıR Için Azure API](fhir-paas-portal-quickstart.md) 'sini dağıtma
+1. Henüz yapmadıysanız, [FHıR Için Azure API](fhir-paas-portal-quickstart.md)'sini dağıtın.
 1. FHıR için Azure API 'niz dağıtıldıktan sonra, FHıR için Azure API 'nize gidip CORS ' yi seçerek [CORS](configure-cross-origin-resource-sharing.md) ayarlarını yapılandırın. 
     1. **Kaynakları** * olarak ayarla
     1. **Üst bilgileri** * olarak ayarla

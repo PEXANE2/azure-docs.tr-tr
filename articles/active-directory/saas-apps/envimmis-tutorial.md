@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 1eb408025a45f09a6bdb854f4379a560842ef2d7
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826271"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>Öğretici: ENVI MMSıS ile tümleştirme Azure Active Directory
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, Envi **Simon**adlı bir test kull
 Azure AD çoklu oturum açma 'yı Envi MMWITH ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[ENVI 'Yi yapılandırma çoklu oturum açma](#configure-envi-mmis-single-sign-on)** ayarlarını, uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için yapılandırın.
+2. Bir uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[ENVI MMSıS 'In çoklu oturum açma yapılandırması](#configure-envi-mmis-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. **[ENVı mmsıs test kullanıcısı oluşturma](#create-envi-mmis-test-user)** -kullanıcının Azure AD gösterimine bağlı olan Envi mmon 'Da Britta Simon 'ın bir karşılığı olmalıdır.
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı ENVI MMWITH ile yapılandırmak için aşağıda
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarla** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarla** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -114,7 +114,7 @@ Azure AD çoklu oturum açmayı ENVI MMWITH ile yapılandırmak için aşağıda
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [ENVI Mmsıs istemci destek ekibine](mailto:support@ioscorp.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-6. SAML **Imzalama sertifikası** bölümünde, **SAML Ile çoklu oturum açmayı ayarla** sayfasında, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+6. **SAML Ile tek Sign-On ayarla** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -128,7 +128,7 @@ Azure AD çoklu oturum açmayı ENVI MMWITH ile yapılandırmak için aşağıda
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-envi-mmis-single-sign-on"></a>ENVI 'Yi yapılandırma tek oturum açma
+### <a name="configure-envi-mmis-single-sign-on"></a>ENVI MMSıS tek Sign-On yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, ENVI MMSıS sitenizde yönetici olarak oturum açın.
 
@@ -160,7 +160,7 @@ Azure AD çoklu oturum açmayı ENVI MMWITH ile yapılandırmak için aşağıda
 
 7. İndirilen meta veri dosyasını karşıya yükledikten sonra, alanlar otomatik olarak doldurulur. **Güncelleştir** 'e tıklayın
 
-    ![Çoklu oturum açma Kaydet düğmesini yapılandırma](./media/envimmis-tutorial/configure6.png)
+    ![Tek Sign-On Kaydet düğmesini yapılandırma](./media/envimmis-tutorial/configure6.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 

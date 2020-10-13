@@ -111,20 +111,24 @@
       href: concept-detecting-adult-content.md
 - name: Sorumlu AI
   items:
-    - name: Saydamlık Notu
+    - name: Uzamsal Analiz
       items:
-        - name: Uzamsal Analize Giriş
-          href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview?context=/azure/cognitive-services/Computer-vision/context/context'
-        - name: Özellikler ve sınırlamalar
-          href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/accuracy-and-limitations?context=/azure/cognitive-services/Computer-vision/context/context'
-    - name: 'Uyumluluk, gizlilik ve güvenlik'
-      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=/azure/cognitive-services/Computer-vision/context/context'
-    - name: Yapay zeka dağıtımında sorumlu kullanım
-      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/responsible-use-deployment?context=/azure/cognitive-services/Computer-vision/context/context'
-    - name: Tasarım yönergelerini açıklama
-      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/disclosure-design?context=/azure/cognitive-services/Computer-vision/context/context'
-    - name: Araştırma içgörüleri
-      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/research-insights?context=/azure/cognitive-services/Computer-vision/context/context'
+        - name: Saydamlık Notu
+          items:
+            - name: Uzamsal Analize Giriş
+              href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview?context=/azure/cognitive-services/Computer-vision/context/context'
+            - name: Özellikler ve sınırlamalar
+              href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/accuracy-and-limitations?context=/azure/cognitive-services/Computer-vision/context/context'
+        - name: Dağıtım Yönergeleri
+          items:
+            - name: Yapay zeka dağıtımında sorumlu kullanım
+              href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/responsible-use-deployment?context=/azure/cognitive-services/Computer-vision/context/context'
+            - name: Tasarım yönergelerini açıklama
+              href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/disclosure-design?context=/azure/cognitive-services/Computer-vision/context/context'
+            - name: Araştırma içgörüleri
+              href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/research-insights?context=/azure/cognitive-services/Computer-vision/context/context'
+        - name: 'Uyumluluk, gizlilik ve güvenlik'
+          href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=/azure/cognitive-services/Computer-vision/context/context'
 - name: Kapsayıcılar
   items:
     - name: API kapsayıcısını okuma
@@ -165,7 +169,7 @@
       href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
     - name: Azure PowerShell
       href: 'https://aka.ms/azure-powershell-cognitiveservices'

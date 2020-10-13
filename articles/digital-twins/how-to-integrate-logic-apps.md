@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: baf89ec75f844ae1a1f7797d26d2fb04a0d5df34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1288f117a6b6c9fb05fd29578be35c676453177
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849852"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975170"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Özel bağlayıcı kullanarak Logic Apps tümleştirme
 
@@ -108,7 +108,7 @@ Aşağıdaki *Logic Apps özel bağlayıcıyı Düzenle* sayfasında, bu bilgile
 * **Özel bağlayıcılar**
     - API uç noktası: REST (varsayılan olarak bırakın)
     - İçeri aktarma modu: Openapı dosyası (varsayılanı bırak)
-    - Dosya: Bu, daha önce indirdiğiniz özel Swagger dosyası olacaktır. *Içeri aktar*' a basın, makinenizde dosyayı bulun (*Azure_Digital_Twins_Custom_Swaggers\LogicApps\preview\2020-05-31-preview\digitaltwins.js*) ve *Aç*' a basın.
+    - Dosya: Bu, daha önce indirdiğiniz özel Swagger dosyası olacaktır. *Içeri aktar*' a gidin, makinenizde dosyayı bulun (*Azure_Digital_Twins_Custom_Swaggers \logicapps \...\digitaltwins.js*) ve *Aç*' a basın.
 * **Genel bilgiler**
     - Simge: dilediğiniz simgeyi karşıya yükleyin
     - Simge arka plan rengi: renk için ' #xxxxxx ' biçiminde onaltılık kod girin.
@@ -201,7 +201,7 @@ Bağlayıcıya bağlanmak için Azure kimlik bilgilerinizle oturum açmanız ist
 Yeni *DigitalTwinsAdd* kutusunda, alanları aşağıdaki gibi girin:
 * _kimlik_: örnekte mantıksal uygulamanın güncelleştirilmesini istediğiniz dijital Ikizi 'ıN *ikizi kimliğini* doldurursunuz.
 * _ikizi_: Bu alan, seçilen API isteğinin gerektirdiği gövdeye girebileceğiniz yerdir. *Digitaltwınsupdate*için bu gövde JSON Patch kodu biçimindedir. İkizi 'nizi güncelleştirmek için bir JSON Patch yapılandırma hakkında daha fazla bilgi için *nasıl yapılır: dijital TWINS yönetme*konusunun [dijital ikizi güncelleştirme](how-to-manage-twin.md#update-a-digital-twin) bölümüne bakın.
-* _api sürümü_: geçerli genel önizlemede, bu değer *2020-05-31-Preview* ' dir
+* _api sürümü_: en son API sürümü. Geçerli genel önizlemede, bu değer *2020-05-31-Preview* ' dir
 
 Logic Apps tasarımcısında *Kaydet* ' i ziyaret edin.
 
