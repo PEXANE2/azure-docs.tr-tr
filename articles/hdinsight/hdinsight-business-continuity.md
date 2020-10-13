@@ -8,12 +8,12 @@ keywords: Hadoop yüksek kullanılabilirlik
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 49f1f475ba4169ea6943dec161577a15e76657f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: beb3c54a0ab7f6f063232a1ad49744d99746c589
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91857784"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893654"
 ---
 # <a name="azure-hdinsight-business-continuity"></a>Azure HDInsight iş sürekliliği
 
@@ -84,7 +84,7 @@ Daha fazla bilgi edinmek için [Azure HDInsight tarafından desteklenen yüksek 
 
 ### <a name="hdinsight-metastore"></a>HDInsight meta veri deposu
 
-HDInsight, [Azure SQL veritabanını](https://azure.microsoft.com/support/legal/sla/sql-database/v1_4/) bir% 99,99 SLA 'sı sağlayan bir meta veri deposu olarak kullanır. Zaman uyumsuz çoğaltma ile veri merkezinde verilerin üç çoğaltması devam ederse. Bir çoğaltma kaybı varsa, alternatif bir çoğaltma sorunsuz bir şekilde sunulur. [Etkin coğrafi çoğaltma](../azure-sql/database/active-geo-replication-overview.md) , en fazla dört veri merkeziyle oluşan kutudan daha fazlasını destekler. El ile veya veri merkezi olan bir yük devretme olduğunda, hiyerarşideki ilk çoğaltma otomatik olarak okuma-yazma özelliğine sahip olur. Daha fazla bilgi için bkz. [Azure SQL veritabanı iş sürekliliği](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md).
+HDInsight, [Azure SQL veritabanını](https://azure.microsoft.com/support/legal/sla/sql-database/v1_4/) bir% 99,99 SLA 'sı sağlayan bir meta veri deposu olarak kullanır. Verilerin üç çoğaltması, zaman uyumlu çoğaltma ile bir veri merkezi içinde kalır. Bir çoğaltma kaybı varsa, alternatif bir çoğaltma sorunsuz bir şekilde sunulur. [Etkin coğrafi çoğaltma](../azure-sql/database/active-geo-replication-overview.md) , en fazla dört veri merkeziyle oluşan kutudan daha fazlasını destekler. El ile veya veri merkezi olan bir yük devretme olduğunda, hiyerarşideki ilk çoğaltma otomatik olarak okuma-yazma özelliğine sahip olur. Daha fazla bilgi için bkz. [Azure SQL veritabanı iş sürekliliği](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md).
 
 ### <a name="hdinsight-storage"></a>HDInsight depolaması
 
@@ -112,7 +112,7 @@ Bölgeler arası yüksek kullanılabilirlik olağanüstü durum kurtarma kullana
 |----|------------------------|-----------------------|
 |Veri Depolama|İkincil bölgedeki birincil verileri/tabloları çoğaltma|Yalnızca seçkin verileri Çoğalt|
 |Veri çıkış|Giden çapraz bölge veri aktarımları bir fiyata gelir. Bant genişliği fiyatlandırma yönergelerini gözden geçirin|Bölge çıkış parmak izini azaltmak için yalnızca seçkin verileri Çoğalt|
-|Küme Işlem|İkincil bölgede ek HDInsight kümesi/s|Birincil hatadan sonra ikincil işlem dağıtmak için otomatikleştirilmiş betikleri kullanın. < \br>< \br>ikincil küme boyutunu en düşük düzeyde tutmak için otomatik ölçeklendirmeyi kullanın. < \br>< \br>, ucuz VM SKU 'larını kullanın. < \br>< \br> VM SKU 'larının indirimli olduğu bölgelerde ikincil oluşturun.|
+|Küme Işlem|İkincil bölgede ek HDInsight kümesi/s|Birincil hatadan sonra ikincil işlem dağıtmak için otomatikleştirilmiş betikleri kullanın. İkincil küme boyutunu en düşük düzeyde tutmak için otomatik ölçeklendirmeyi kullanın. Ucuz VM SKU 'larını kullanın. VM SKU 'Larının indirimli olabileceği bölgelerde ikincil öğeler oluşturun.|
 |Kimlik Doğrulaması |İkincil bölgedeki çok kullanıcılı senaryolar, ek Azure AD DS kurulumları oluşturacak|İkincil bölgedeki çok kullanıcılı kurulumlardan kaçının.|
 
 ### <a name="complexity-optimizations"></a>Karmaşıklık iyileştirmeleri

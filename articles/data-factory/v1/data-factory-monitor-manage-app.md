@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: e378c1e25fb434e689eadd91e9e8562ffe7e61fd
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91570090"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Izleme ve yönetim uygulamasını kullanarak Azure Data Factory işlem hatlarını izleme ve yönetme
@@ -210,7 +210,7 @@ Etkinlik pencereleri aşağıdaki durumlardan birinde olabilir:
 <td>Atlandı</td><td>-</td><td>Etkinlik penceresi işlenmedi.</td>
 </tr>
 <tr>
-<td>Yok</td><td>-</td><td>Farklı bir durumla mevcut olan, ancak sıfırlanan bir etkinlik penceresi.</td>
+<td>Hiçbiri</td><td>-</td><td>Farklı bir durumla mevcut olan, ancak sıfırlanan bir etkinlik penceresi.</td>
 </tr>
 </table>
 

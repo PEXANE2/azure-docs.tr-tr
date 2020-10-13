@@ -3,12 +3,12 @@ title: Windows için grup ilkesi taban çizgisinden Konuk yapılandırma ilkesi 
 description: Windows Server 2019 güvenlik taban çizgisinden grup ilkesi bir ilke tanımına nasıl dönüştüreceğiniz hakkında bilgi edinin.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 58fe4fa3e5056192fa5febe4883a1457d130871b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dce22885981ab01fe37fac8588899d12a5afb87d
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88547777"
+ms.locfileid: "91893382"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Windows için grup ilkesi taban çizgisinden Konuk yapılandırma ilkesi tanımları oluşturma
 
@@ -87,7 +87,7 @@ Ardından, indirilen sunucu 2019 taban çizgisini Konuk yapılandırma ve temel 
 
 ## <a name="create-azure-policy-guest-configuration"></a>Azure Ilke Konuk yapılandırması oluştur
 
-Sonraki adım, dosyayı blob depolamaya yayımlamaktır. 
+Sonraki adım, dosyayı Azure Blob depolama alanına yayımlamaktır. 
 
 1. Aşağıdaki komut dosyası, bu görevi otomatikleştirmek için kullanabileceğiniz bir işlevi içerir. İşlevde kullanılan komutların modülü gerektirdiğini göz önünde `publish` `Az.Storage` .
 

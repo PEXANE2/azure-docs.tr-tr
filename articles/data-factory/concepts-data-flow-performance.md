@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
 ms.openlocfilehash: 4a78e966d420591ebe7a9607777158cf17ddf698
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91370892"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Veri akışlarını eşleme performansı ve ayarlama Kılavuzu
@@ -173,7 +173,7 @@ Veri akışları çeşitli dosya türlerini destekleirken, Azure Data Factory en
 
 Aynı veri akışını bir dosya kümesinde çalıştırıyorsanız, joker karakterleri kullanarak veya bir dosya listesinden okurken bir klasörden okumanızı öneririz. Tek bir veri akışı etkinliği çalıştırması, toplu işteki tüm dosyalarınızı işleyebilir. Bu ayarları ayarlama hakkında daha fazla bilgi, [Azure Blob depolama](connector-azure-blob-storage.md#source-transformation)gibi bağlayıcı belgelerinde bulunabilir.
 
-Mümkünse, her bir bir dosya kümesi üzerinde veri akışı çalıştırmak için her etkinlik Için kullanmaktan kaçının. Bu, her bir için öğesinin her yinelemesinin kendi Spark kümesini (genellikle gerekli değildir ve pahalı olabilir) çalışmasına neden olur. 
+Mümkünse, bir dosya kümesi üzerinde veri akışlarını çalıştırmak için For-Each etkinliğini kullanmaktan kaçının. Bu, her bir için öğesinin her yinelemesinin kendi Spark kümesini (genellikle gerekli değildir ve pahalı olabilir) çalışmasına neden olur. 
 
 ## <a name="optimizing-sinks"></a>Havuzları iyileştirme
 

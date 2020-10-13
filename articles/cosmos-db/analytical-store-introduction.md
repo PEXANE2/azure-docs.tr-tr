@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: rosouz
 ms.openlocfilehash: d27eb4dc6c4e4bd8f0a744ad925d91aee0faa8d0
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91567154"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Azure Cosmos DB analitik depo (Önizleme) nedir?
@@ -155,7 +155,7 @@ Bu, tüm özellik veri türlerinin ve bunların son ek temsillerini analitik dep
 |Null   | ". null"   | null|
 |Dize|    ". String" | "ABC"|
 |Zaman damgası |    ". Timestamp" |  Zaman damgası (0, 0)|
-|Tarih-Saat   |". Date"    | Iztarihi ("2020-08-21T07:43:07.375 Z")|
+|DateTime   |". Date"    | Iztarihi ("2020-08-21T07:43:07.375 Z")|
 |ObjectId   |". ObjectID"    | ObjectID ("5f3f7b59330ec25c132623a2")|
 |Belge   |". Object" |    {"a": "a"}|
 
