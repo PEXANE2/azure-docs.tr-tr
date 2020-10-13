@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: f3c86f4b194e6d3935434b35cae958dfcf772986
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 129eff8c954c0c5469d3607e6ae16ce3202630ed
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314921"
+ms.locfileid: "91929345"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda dağıtım sütunları seçin – hiper ölçek (Citus)
 
@@ -71,8 +71,6 @@ Hiper ölçekte (Citus) zaman serisi bilgilerini modelleyen en yaygın hata, zam
 
 -   **Dağıtım sütunu olarak zaman damgası seçmeyin.** Farklı bir dağıtım sütunu seçin. Çok kiracılı bir uygulamada, kiracı KIMLIĞINI kullanın veya gerçek zamanlı bir uygulamada varlık KIMLIĞINI kullanın.
 -   **Bunun yerine PostgreSQL tablo bölümlemesini kullanın.** Zaman içinde oluşan büyük bir veriyi, farklı zaman aralıkları içeren her tablo ile birden fazla devralınmış tabloya bölmek için tablo bölümleme kullanın. Hiper ölçekte (Citus) bir Postgres bölümlenmiş tablo dağıtmak, devralınan tablolar için parçalar oluşturur.
-
-Bu tür bir uygulamanın nasıl oluşturulacağını gösteren bir örnek için [zaman serisi öğreticisini](https://aka.ms/hyperscale-tutorial-timeseries) okuyun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Dağıtılmış veriler [arasındaki arada](concepts-hyperscale-colocation.md) bulunan sorguların hızla çalışmasına nasıl yardımcı olduğunu öğrenin.

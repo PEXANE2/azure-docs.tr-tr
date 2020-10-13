@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/24/2020
 ms.author: mnanda
-ms.openlocfilehash: 3bd19f301b1afd7dd1c35f03f6f6131a26b00708
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ffac5ac4d1a8143590e1d72aaafc8a02d6ab04ca
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596832"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977264"
 ---
 # <a name="troubleshoot-high-cpu-issues-for-azure-windows-virtual-machines"></a>Azure Windows sanal makinelerinde yüksek CPU sorunlarını giderme
 
@@ -90,11 +90,11 @@ Perfinsıghts, VM performans sorunları için Azure desteği 'nden önerilen ara
 
 #### <a name="run-perfinsights"></a>Çalışan Perfinsıghts
 
-Perfinsıghts, hem [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) hem de [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) işletim sistemi için kullanılabilir. Windows için seçenekler şunlardır.
+Perfinsıghts, hem [Windows](./how-to-use-perfinsights.md) hem de [Linux](./how-to-use-perfinsights-linux.md) işletim sistemi için kullanılabilir. Windows için seçenekler şunlardır.
 
 #### <a name="run-and-analyze-reports-through-azure-portal"></a>Azure portal aracılığıyla raporları çalıştırma ve çözümleme
 
-[Azure Portal aracılığıyla yüklendiğinde](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics), aslında VM 'ye bir uzantı yüklenir. Kullanıcılar ayrıca, [VM dikey penceresindeki uzantılara](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics-vm-extension)doğrudan gidip bir performans tanılama seçeneği belirleyerek bir uzantı olarak Perfinsıghts 'i de yükleyebilir.
+[Azure Portal aracılığıyla yüklendiğinde](./performance-diagnostics.md), aslında VM 'ye bir uzantı yüklenir. Kullanıcılar ayrıca, [VM dikey penceresindeki uzantılara](./performance-diagnostics-vm-extension.md)doğrudan gidip bir performans tanılama seçeneği belirleyerek bir uzantı olarak Perfinsıghts 'i de yükleyebilir.
 
 #### <a name="azure-portal-option-1"></a>Azure portal seçeneği 1
 
@@ -132,7 +132,7 @@ Rapor, aboneliğinizdeki depolama hesaplarından birinde depolanır. Daha sonra 
 
 #### <a name="run-perfinsights-from-within-the-vm"></a>VM içinden Perfinsıghts çalıştırma
 
-Bu yöntem, daha uzun süreler için Perfinsıghts 'i çalıştırmak istiyorsanız kullanılabilir. [Perfinsıghts makalesi](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights#how-do-i-run-perfinsights) , yürütülebilir dosya olarak perfinsıghts çalıştırmak için gereken farklı komutlara ve bayraklara yönelik ayrıntılı bir yol sunar. Yüksek CPU kullanımı amacına yönelik olarak, aşağıdaki modlardan birini kullanmanız gerekir:
+Bu yöntem, daha uzun süreler için Perfinsıghts 'i çalıştırmak istiyorsanız kullanılabilir. [Perfinsıghts makalesi](./how-to-use-perfinsights.md#how-do-i-run-perfinsights) , yürütülebilir dosya olarak perfinsıghts çalıştırmak için gereken farklı komutlara ve bayraklara yönelik ayrıntılı bir yol sunar. Yüksek CPU kullanımı amacına yönelik olarak, aşağıdaki modlardan birini kullanmanız gerekir:
 
 - Gelişmiş senaryo
 
@@ -289,7 +289,7 @@ Ayarlar etkinleştirildikten sonra, bu **Konuk** sayaçlarını **ölçümler** 
 
   ![Ölçüm ad alanı](./media/troubleshoot-high-cpu-issues-azure-windows-vm/19-metrics-namespace.png)
 
-Azure izleyici 'yi Azure sanal makinelerini yönetmek üzere kullanma hakkında daha fazla bilgi için bkz. Azure [sanal makinelerini Azure izleyici Ile izleme](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-vm-azure).
+Azure izleyici 'yi Azure sanal makinelerini yönetmek üzere kullanma hakkında daha fazla bilgi için bkz. Azure [sanal makinelerini Azure izleyici Ile izleme](../../azure-monitor/insights/monitor-vm-azure.md).
 
 ### <a name="reactive-troubleshooting"></a>Reaktif sorun giderme
 
@@ -311,7 +311,7 @@ Perfinsıghts henüz **Zamanlanmış bir çalıştırma** özelliğine sahip de�
 
 Aynı sanal ağdaki eş bir Azure VM bilgisayarından Logman.exe de başlatılabilir.
 
-Bu parametreler hakkında daha fazla bilgi edinmek için bkz. [Logman Create Counter](https://docs.microsoft.com/windows-server/administration/windows-commands/logman-create-counter).
+Bu parametreler hakkında daha fazla bilgi edinmek için bkz. [Logman Create Counter](/windows-server/administration/windows-commands/logman-create-counter).
 
 Sorun oluştuğu sırada Perfmon verileri toplandıktan sonra, verileri çözümlemek için geri kalan adımlar daha önce ele alınmıştır.
 

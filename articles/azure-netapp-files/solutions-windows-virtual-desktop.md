@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: b-juche
-ms.openlocfilehash: a003090fd610f2ac75895cccbf97750adbd4cfcd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0cd1f6210fbdb74e3fd511150157dccca3e92dda
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88258326"
+ms.locfileid: "91932473"
 ---
 # <a name="benefits-of-using-azure-netapp-files-with-windows-virtual-desktop"></a>Windows Sanal Masaüstü ile Azure NetApp Files kullanmanın avantajları 
 
 Bu makalede, Azure NetApp Files ile Windows sanal masaüstü (WVD) dağıtımı hakkında en iyi Yöntem Kılavuzu sunulmaktadır.
 
-Azure NetApp Files, Azure 'un yüksek performanslı bir dosya depolama hizmetidir. Windows sanal masaüstü dağıtımlarının son derece büyük ölçekli ölçeğini destekleyebilen en çok 450.000 ıOPS ve alt milisaniyelik gecikme süresi sağlayabilir. Veri düzlemi erişimini korurken, g/ç 'yi duraklatmadan Azure NetApp Files hacimlerinizin hizmet düzeyini isteğe bağlı olarak değiştirebilir ve neredeyse anında ayarlayabilirsiniz. Bu özellik, WVD Deployment ölçeğini maliyet açısından kolayca iyileştirmenize olanak tanır. Ayrıca, birim performansını etkilemeden, verimli, zaman içinde ses anlık görüntüleri oluşturabilirsiniz. Bu özellik, tek bir [Fslogix Kullanıcı profili kapsayıcılarını](https://docs.microsoft.com/azure/virtual-desktop/store-fslogix-profile) dizinden bir kopya aracılığıyla geri almanızı `~snapshot` veya birim geri alma özelliği aracılığıyla tüm birimi bir kerede geri almayı anında mümkün kılar.  Bir birimi veri kaybından veya bozulmaya karşı korumak için en fazla 255 (rotasyonlu) anlık görüntüsü ile yöneticiler, nelerin yapıldığını geri alma şansınız vardır.
+Azure NetApp Files, Azure 'un yüksek performanslı bir dosya depolama hizmetidir. Windows sanal masaüstü dağıtımlarının son derece büyük ölçekli ölçeğini destekleyebilen en çok 450.000 ıOPS ve alt milisaniyelik gecikme süresi sağlayabilir. Veri düzlemi erişimini korurken, g/ç 'yi duraklatmadan Azure NetApp Files hacimlerinizin hizmet düzeyini isteğe bağlı olarak değiştirebilir ve neredeyse anında ayarlayabilirsiniz. Bu özellik, WVD Deployment ölçeğini maliyet açısından kolayca iyileştirmenize olanak tanır. Ayrıca, birim performansını etkilemeden, verimli, zaman içinde ses anlık görüntüleri oluşturabilirsiniz. Bu özellik, tek bir [Fslogix Kullanıcı profili kapsayıcılarını](../virtual-desktop/store-fslogix-profile.md) dizinden bir kopya aracılığıyla geri almanızı `~snapshot` veya birim geri alma özelliği aracılığıyla tüm birimi bir kerede geri almayı anında mümkün kılar.  Bir birimi veri kaybından veya bozulmaya karşı korumak için en fazla 255 (rotasyonlu) anlık görüntüsü ile yöneticiler, nelerin yapıldığını geri alma şansınız vardır.
 
 ## <a name="sample-blueprints"></a>Örnek planlar
 
-Aşağıdaki örnek planlar Windows sanal masaüstü 'nün Azure NetApp Files tümleştirmesini göstermektedir. Havuza alınmış bir masaüstü senaryosunda, kullanıcılar [Çoklu oturum sanal makinelerini](https://docs.microsoft.com/azure/virtual-desktop/windows-10-multisession-faq#what-is-windows-10-enterprise-multi-session)kullanarak, havuzdaki en iyi kullanılabilir oturuma (en [ilk mod](https://docs.microsoft.com/azure/virtual-desktop/host-pool-load-balancing#breadth-first-load-balancing-method)) ana bilgisayar olarak yönlendirilir. Diğer yandan, kişisel masaüstleri her bir kullanıcının kendi sanal makinesine sahip olduğu senaryolar için ayrılmıştır.
+Aşağıdaki örnek planlar Windows sanal masaüstü 'nün Azure NetApp Files tümleştirmesini göstermektedir. Havuza alınmış bir masaüstü senaryosunda, kullanıcılar [Çoklu oturum sanal makinelerini](../virtual-desktop/windows-10-multisession-faq.md#what-is-windows-10-enterprise-multi-session)kullanarak, havuzdaki en iyi kullanılabilir oturuma (en [ilk mod](../virtual-desktop/host-pool-load-balancing.md#breadth-first-load-balancing-method)) ana bilgisayar olarak yönlendirilir. Diğer yandan, kişisel masaüstleri her bir kullanıcının kendi sanal makinesine sahip olduğu senaryolar için ayrılmıştır.
 
 ### <a name="pooled-desktop-scenario"></a>Havuza alınmış masaüstü senaryosu
 
-Havuza alınmış senaryo için, Windows sanal masaüstü ekibi, kullanıcı sayısına vCPU 'ya göre aşağıdaki kılavuzu [önerir](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/virtual-machine-recs#multi-session-recommendations) . Bu öneriye göre hiçbir sanal makine boyutu belirtilmediğini unutmayın.
+Havuza alınmış senaryo için, Windows sanal masaüstü ekibi, kullanıcı sayısına vCPU 'ya göre aşağıdaki kılavuzu [önerir](/windows-server/remote/remote-desktop-services/virtual-machine-recs#multi-session-recommendations) . Bu öneriye göre hiçbir sanal makine boyutu belirtilmediğini unutmayın.
 
 |     İş yükü türü     |     Açık    |     Orta    |     Ağır    |
 |-----------------------|--------------|---------------|--------------|
@@ -42,7 +42,7 @@ Havuza alınmış senaryo için, Windows sanal masaüstü ekibi, kullanıcı say
 
 Bu öneri, her bir D16as_V4 sanal makinesinde yaklaşık 62 "bilgi/orta Kullanıcı" olarak günlüğe kaydederek 500-Kullanıcı Logınsı testi tarafından onaylanır. 
 
-Örnek olarak, D16as_V4 sanal makine başına 62 Kullanıcı Azure NetApp Files, her ortam için 60.000 kullanıcıyı kolayca destekleyebilir. D32as_v4 sanal makinenin üst limitini değerlendirmek için test işlemi devam etmektedir. VCPU başına WVD User önerisi D32as_v4, aşağıdaki şekilde gösterildiği gibi, 120.000 ' den fazla kullanıcının [1.000 IP VNET limitini](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies)broaching önce 1.000 sanal makinelere sığmasını sağlamak için geçerlidir.  
+Örnek olarak, D16as_V4 sanal makine başına 62 Kullanıcı Azure NetApp Files, her ortam için 60.000 kullanıcıyı kolayca destekleyebilir. D32as_v4 sanal makinenin üst limitini değerlendirmek için test işlemi devam etmektedir. VCPU başına WVD User önerisi D32as_v4, aşağıdaki şekilde gösterildiği gibi, 120.000 ' den fazla kullanıcının [1.000 IP VNET limitini](./azure-netapp-files-network-topologies.md)broaching önce 1.000 sanal makinelere sığmasını sağlamak için geçerlidir.  
 
 ![Windows sanal masaüstü havuza alınmış masaüstü senaryosu](../media/azure-netapp-files/solutions-pooled-desktop-scenario.png)   
 

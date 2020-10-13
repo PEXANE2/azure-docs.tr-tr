@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/17/2017
 ms.author: alkohli
-ms.openlocfilehash: 1c2df017a9af47bfa330c8e0fa7561bf5b2d5bae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ffb13912780edcf3d92093e672d1dae983e50a8
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514685"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977417"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>StorSimple cihazınızı izlemek için StorSimple Aygıt Yöneticisi hizmetini kullanın
 
@@ -77,7 +77,7 @@ Güncelleştirme 3 veya üzeri bir sürümü çalıştırıyorsanız, birincil d
 
 Listedeki birimlerin her birine daha fazla tıklayabilir ve ilgili kullanımı görebilirsiniz.
 
-![Yerel olarak sabitlenmiş tüm birimlerde birincil kapasite kullanımı](./media/storsimple-8000-monitor-device/device-primary-storage-usage-by-volume.png)
+![Yerel olarak sabitlenmiş tüm birimler için birincil kapasite kullanımı 2](./media/storsimple-8000-monitor-device/device-primary-storage-usage-by-volume.png)
 
 ### <a name="cloud-storage-usage"></a>Bulut depolama alanı kullanımı
 Bu grafiklerde kullanılan bulut depolama alanı miktarı gösterilmektedir. Bu veriler yinelenenleri kaldırılmış ve sıkıştırılır. Bu miktar, herhangi bir birincil birimde yansıtılmayan ve eski veya gerekli saklama amaçlarıyla tutulan veriler içerebilen bulut anlık görüntülerini içerir. Birincil ve bulut depolama tüketimi rakamlarını, veri azaltma oranının bir fikrini alacak şekilde karşılaştırabilir, ancak sayı tam olarak olmaz.

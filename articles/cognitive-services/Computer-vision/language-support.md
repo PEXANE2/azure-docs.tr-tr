@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 844ef8c09f10e1df888ef4990db22be8705d5c01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5c263506db68ea62b0d65b7b866cfab33a36236
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530208"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976887"
 ---
 # <a name="language-support-for-computer-vision"></a>Görüntü İşleme için dil desteği
 
@@ -25,7 +25,7 @@ Görüntü İşleme bazı özellikleri birden çok dili destekler; Burada bahsed
 
 Görüntü İşleme OCR API 'Leri çeşitli dilleri destekler. Bir dil kodu belirtmenizi gerektirmez. Daha fazla bilgi için bkz. [optik karakter tanıma (OCR)](concept-recognizing-text.md) .
 
-|Dil| Dil kodu | OCR APı 'SI | V 3.0 'ı oku | V 3.1 Genel önizlemeyi oku |
+|Dil| Dil kodu | OCR APı 'SI | V 3.1 'i oku | Okuma v 3.1-Önizleme. 2 |
 |:-----|:----:|:-----:|:---:|:---:|
 |Arapça | `ar`|✔ | | |
 |Basitleştirilmiş Çince | `zh-Hans`|✔ | |✔ |

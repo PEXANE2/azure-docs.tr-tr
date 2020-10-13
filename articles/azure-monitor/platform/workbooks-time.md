@@ -2,19 +2,17 @@
 title: Azure Izleyici çalışma kitapları zaman parametreleri
 description: Kullanıcıların, analiz zaman bağlamını ayarlamaya izin vermek için zaman parametrelerini ayarlamayı öğrenin. Zaman parametreleri neredeyse tüm raporlar tarafından kullanılır.
 services: azure-monitor
-author: mrbullwinkle
 manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.author: mbullwin
-ms.openlocfilehash: c84133d5728f7b6593e0606dda2eef28b8167e43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 471b775abfebec646ab3950803622271c0bd559b
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "90972876"
+ms.locfileid: "91932303"
 ---
 # <a name="workbook-time-parameters"></a>Çalışma kitabı zaman parametreleri
 

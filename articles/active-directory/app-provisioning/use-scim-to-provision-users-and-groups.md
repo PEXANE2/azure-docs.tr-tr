@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 59c899d2450e9d439426239384945258e8df694a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd534443c56612d0c0d67c228cba154fb1db18c3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91266658"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967061"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Azure AD ile bir SCıM uç noktası oluşturun ve Kullanıcı sağlamasını yapılandırın
 
@@ -747,7 +747,7 @@ TLS 1,2 şifre paketleri minimum çubuğu:
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP aralıkları
-Azure AD sağlama hizmeti şu anda [burada](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)listelenen AZUREACTIVEDIRECTORY Için IP aralıkları altında çalışır. Azure AD sağlama hizmeti 'nin uygulamanıza bağlanmasına izin vermek için AzureActiveDirectory etiketinin altına listelenen IP aralıklarını ekleyebilirsiniz. 
+Azure AD sağlama hizmeti şu anda [burada](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)listelenen AZUREACTIVEDIRECTORY Için IP aralıkları altında çalışır. Azure AD sağlama hizmeti 'nin uygulamanıza bağlanmasına izin vermek için AzureActiveDirectory etiketinin altına listelenen IP aralıklarını ekleyebilirsiniz. Hesaplanan adresler için IP aralığı listesini dikkatle gözden geçirmeniz gerekeceğini unutmayın. ' 40.126.25.32 ' gibi bir adres, IP aralığı listesinde ' 40.126.0.0/18 ' olarak temsil edilebilir. Ayrıca, aşağıdaki [API 'yi](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)kullanarak IP aralığı listesini de program aracılığıyla alabilirsiniz.
 
 ## <a name="step-3-build-a-scim-endpoint"></a>3. Adım: SCıM uç noktası oluşturma
 

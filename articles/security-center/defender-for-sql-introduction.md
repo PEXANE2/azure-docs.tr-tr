@@ -9,10 +9,10 @@ ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
 ms.openlocfilehash: 328a565dbb22a13c71a7001d43941e7be062dff9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449061"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>SQL için Azure Defender 'a giriş
@@ -26,7 +26,7 @@ SQL için Azure Defender, Azure Güvenlik Merkezi 'nin [veri güvenlik paketini]
 |Yayın durumu:|**Azure SQL veritabanı sunucuları Için Azure Defender** -genel kullanıma sunuldu (GA)<br>**MAKINELERDE SQL Server 'lar Için Azure Defender** -Önizleme|
 |Fiyat|**SQL Için Azure Defender 'ı** oluşturan iki plan, [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır|
 |Korumalı SQL sürümleri:|Azure SQL Veritabanı <br>Azure SQL Yönetilen Örnek<br>Azure Synapse Analytics (eski adı SQL DW)<br>SQL Server (tüm desteklenen sürümler)|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov|
+|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Evet](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov|
 |||
 
 ## <a name="what-does-azure-defender-for-sql-protect"></a>SQL için Azure Defender neleri korur?

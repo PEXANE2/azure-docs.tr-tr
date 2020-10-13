@@ -12,7 +12,7 @@ ms.openlocfilehash: 7e05e89cae8688162c6ac6ded5ad56c85394dc8c
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91858803"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Azure HDInsight kümeleri ile Data Lake Storage 1. kullanma
@@ -108,13 +108,13 @@ New-AzResourceGroupDeployment `
 
 ## <a name="use-data-lake-storage-gen1-as-additional-storage"></a>Ek depolama alanı olarak Data Lake Storage 1. kullan
 
-Data Lake Storage 1., küme için ek depolama alanı olarak da kullanabilirsiniz. Bu gibi durumlarda, küme varsayılan depolaması bir Azure Blob depolama alanı veya Azure Data Lake Storage 1. hesabı olabilir. HDInsight işlerini ek depolama alanı olarak Azure Data Lake Storage 1. depolanan verilere karşı çalıştırırken, tam yolu kullanın. Örnek:
+Data Lake Storage 1., küme için ek depolama alanı olarak da kullanabilirsiniz. Bu gibi durumlarda, küme varsayılan depolaması bir Azure Blob depolama alanı veya Azure Data Lake Storage 1. hesabı olabilir. HDInsight işlerini ek depolama alanı olarak Azure Data Lake Storage 1. depolanan verilere karşı çalıştırırken, tam yolu kullanın. Örneğin:
 
 `adl://mydatalakestore.azuredatalakestore.net/<file_path>`
 
 URL 'de artık **cluster_root_path** yok. Bunun nedeni, Data Lake Storage bu durumda varsayılan bir depolama değildir. Bu nedenle, tüm yapmanız gereken dosyaların yolunu sağlamaktır.
 
-Ek depolama alanı olarak Data Lake Storage 1. kullanmak için, hizmet sorumlusu ile dosyalarınızın depolandığı yollara erişim izni verin.  Örnek:
+Ek depolama alanı olarak Data Lake Storage 1. kullanmak için, hizmet sorumlusu ile dosyalarınızın depolandığı yollara erişim izni verin.  Örneğin:
 
 `adl://mydatalakestore.azuredatalakestore.net/<file_path>`
 

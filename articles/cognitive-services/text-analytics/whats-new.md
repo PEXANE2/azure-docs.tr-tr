@@ -8,18 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 09/29/2020
+ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: 12f3ce506d8b4588dc9c670e49cabd3bc7767566
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f0a40e30cc58a01a66ba808076fe1d42c31c326
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460280"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978892"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Metin Analizi API’sindeki yenilikler
 
 Metin Analizi API'si, sürekli olarak güncelleştirilir. Son geliştirmelerin güncel kalması için, bu makalede yeni yayınlar ve özellikler hakkında bilgi verilmektedir.
+
+## <a name="october-2020"></a>2020 Ekim
+
+* Model sürümünden başlayarak Yaklaşım Analizi için Hintçe desteği `2020-04-01` . 
 
 ## <a name="september-2020"></a>Eylül 2020
 
@@ -220,4 +224,4 @@ Varlık bağlama, Ingilizce ve Ispanyolca 'yi destekler. NER dil desteği varlı
 * [Yaklaşım analizi](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Dil algılama](how-tos/text-analytics-how-to-language-detection.md)
 * [Varlık tanıma](how-tos/text-analytics-how-to-entity-linking.md)
-* [Anahtar tümceciği ayıklama](how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Anahtar ifade ayıklama](how-tos/text-analytics-how-to-keyword-extraction.md)

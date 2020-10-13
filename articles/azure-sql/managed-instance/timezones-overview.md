@@ -10,13 +10,13 @@ ms.topic: reference
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
-ms.date: 05/25/2020
-ms.openlocfilehash: fc1532fab23ec520722ea71d814496e786b91651
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: 7b95ddfdb75dd5e5951a9c95442798692582fe6a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617936"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978382"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği 'nde saat dilimleri
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -95,7 +95,7 @@ Bir yük devretme grubundaki birincil ve ikincil bir örnek genelinde aynı saat
 
 ## <a name="limitations"></a>Sınırlamalar
 
-- Mevcut yönetilen Örneğin saat dilimi değiştirilemez.
+- Mevcut yönetilen Örneğin saat dilimi değiştirilemez. Geçici bir çözüm olarak, uygun saat dilimine sahip yeni bir yönetilen örnek oluşturun ve ardından el ile yedekleme ve geri yükleme gerçekleştirin ya da önerdiğimiz bir [süre içinde, bir çapraz örnek zaman geri yükleme](https://docs.microsoft.com/azure/azure-sql/managed-instance/point-in-time-restore?tabs=azure-portal#restore-an-existing-database)gerçekleştirin.
 - SQL Server Agent işlerden başlatılan dış işlemler, örneğin saat dilimini gözlemlemektir.
 
 ## <a name="list-of-supported-time-zones"></a>Desteklenen saat dilimlerinin listesi

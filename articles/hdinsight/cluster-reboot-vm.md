@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/22/2020
-ms.openlocfilehash: 149a82526263f5e372db81b5a92a9ee90a2c76f3
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 2177e74bd627e80ea1afbcacaf85baf4e030834c
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089981"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91928988"
 ---
 # <a name="reboot-vms-for-hdinsight-clusters"></a>HDInsight kümeleri için VM 'Leri yeniden başlatma
 
@@ -31,8 +31,8 @@ Bir düğüm yeniden başlatıldığında, küme sağlıksız hale gelebilir ve 
 - Geçici disk, düğüm üzerinde dolu.
 - VM 'deki işlem tablosu işlemin tamamlandığı birçok girişe sahiptir, ancak "sonlandırılmış durum" ile listelenir.
 
-> [!WARNING]
-> Yeniden başlatma verilerin kaybolmasına neden olabileceğinden, **HBase** ve **Kafka** kümeleri için VM 'leri yeniden başlatma konusunda dikkatli olun.
+> [!NOTE]
+> Yeniden başlatma verilerin kaybolmasına neden olabileceğinden, sanal makinelerin, **HBase** ve **Kafka** kümelerinde yeniden başlatılması desteklenmez.
 
 ## <a name="use-powershell-to-reboot-vms"></a>VM 'Leri yeniden başlatmak için PowerShell 'i kullanma
 

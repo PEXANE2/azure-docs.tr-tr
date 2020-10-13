@@ -8,10 +8,10 @@ ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 75344204e03920c96d0868ad584b8701813fabf0
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569527"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Cosmos DB için Azure Güvenlik temeli
@@ -334,7 +334,7 @@ Azure Active Directory kullanarak tuşlara programlı olarak erişme: https://do
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: Azure Active Directory ile çoklu oturum açma (SSO) kullanın
 
-**Rehberlik**: Azure Cosmos DB kullanıcılara yetki vermek için iki tür anahtar kullanır ve veri düzlemi düzeyinde çoklu oturum AÇMAYı (SSO) desteklemez. Cosmos DB için denetim düzlemine erişim REST API aracılığıyla kullanılabilir ve SSO 'yu destekler. Kimlik doğrulaması yapmak için isteklerinizin yetkilendirme üst bilgisini Azure Active Directory aldığınız JSON Web Token ayarlayın.
+**Rehberlik**: Azure Cosmos DB kullanıcılara yetki vermek için iki tür anahtar kullanır ve veri düzlemi düzeyinde tek Sign-On (SSO) desteklemez. Cosmos DB için denetim düzlemine erişim REST API aracılığıyla kullanılabilir ve SSO 'yu destekler. Kimlik doğrulaması yapmak için isteklerinizin yetkilendirme üst bilgisini Azure Active Directory aldığınız JSON Web Token ayarlayın.
 
 Cosmos DB REST API için Azure veritabanı 'nı anlayın: https://docs.microsoft.com/rest/api/cosmos-db/
 
@@ -991,7 +991,7 @@ Key Vault anahtarlarını yedekleme: https://docs.microsoft.com/powershell/modul
 
 **Rehberlik**: veritabanı veya kapsayıcı silinirse, verileri otomatik çevrimiçi yedeklemelerden geri yüklemek için bir destek bileti dosyası veya Azure desteği çağırabilirsiniz. Azure desteği, yalnızca standart, geliştirici ve planlardan daha yüksek planlar gibi seçili planlar için kullanılabilir. Yedeklemenin belirli bir anlık görüntüsünü geri yüklemek için Azure Cosmos DB, verilerin söz konusu anlık görüntüye ait yedekleme döngüsünün süresi boyunca kullanılabilir olmasını gerektirir.
 
-PowerShell kullanarak Azure Key Vault depolanan Sırlarınızın sınamasını geri yükleme. Restore-AzureKeyVaultKey cmdlet 'i, belirtilen anahtar kasasında bir anahtar oluşturur. Bu anahtar, giriş dosyasındaki yedeklenen anahtarın bir çoğaltmasıdır ve özgün anahtarla aynı ada sahiptir.
+PowerShell kullanarak Azure Key Vault depolanan Sırlarınızın sınamasını geri yükleme. Restore-AzureKeyVaultKey cmdlet 'i belirtilen anahtar kasasında bir anahtar oluşturur. Bu anahtar, giriş dosyasındaki yedeklenen anahtarın bir çoğaltmasıdır ve özgün anahtarla aynı ada sahiptir.
 
 Otomatik yedeklemeleri Azure Cosmos DB anlayın:
 
@@ -1013,11 +1013,11 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 
 **Kılavuz**: Cosmos db içinde depolanan tüm Kullanıcı verileri REST ve aktarımda şifrelendiğinden, herhangi bir işlem gerçekleştirmeniz gerekmez. Bunu yerleştirmek için başka bir yol da, bekleyen şifrelemenin varsayılan olarak "açık" olmasını sağlar. Kapatılacak veya açık bir denetim yoktur. Azure Cosmos DB, hesabın çalıştığı tüm bölgelerde AES-256 şifrelemesini kullanır.
 
-Anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için Key Vault geçici silme özelliğini etkinleştirin.
+Anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için Key Vault Soft-Delete etkinleştirin.
 
 Azure Cosmos DB 'de veri şifrelemesini anlayın: https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest
 
-Key Vault 'da geçici silmeyi etkinleştirme: https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
+Key Vault Soft-Delete etkinleştirme: https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 
 **Azure Güvenlik Merkezi izleme**: Evet
 

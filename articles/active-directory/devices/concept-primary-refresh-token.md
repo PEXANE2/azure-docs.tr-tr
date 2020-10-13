@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 000bc150b1a4addb4b68bd86b8d72524ec1015fc
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91450424"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Birincil Yenileme Belirteci nedir?
@@ -87,7 +87,7 @@ Bir PRT iki farklı yöntemde yenilenir:
    * Uygulama, erişim belirteci için bir WAM sessizce ister ancak bu uygulama için kullanılabilir yenileme belirteci yok. Bu durumda, WAM, uygulama için bir belirteç istemek üzere PRT 'yi kullanır ve yanıtta yeni bir PRT 'yi geri alır.
    * Uygulama, erişim belirteci için WAM ister ancak PRT geçersiz ya da Azure AD ek yetkilendirme gerektirir (örneğin, Azure Multi-Factor Authentication). Bu senaryoda, WAM kullanıcının yeniden kimlik doğrulamasını veya ek doğrulama sağlamasını gerektiren etkileşimli bir oturum açma işlemini başlatır ve başarılı bir kimlik doğrulamasında yeni bir PRT verilir.
 
-Bir ADFS ortamında, PRT 'yi yenilemek için etki alanı denetleyicisine doğrudan görüş satırı gerekli değildir. PRT yenileme, WS-Trust protokolü kullanılarak proxy üzerinde yalnızca/ADFS/Services/Trust/2005/usernamemixed ve/ADFS/Services/Trust/13/usernamemixed uç noktalarının etkinleştirilmesini gerektirir.
+Bir ADFS ortamında, PRT 'yi yenilemek için etki alanı denetleyicisine doğrudan görüş satırı gerekli değildir. PRT yenilemesi, WS-Trust protokolü kullanılarak proxy üzerinde yalnızca/ADFS/Services/Trust/2005/usernamemixed ve/ADFS/Services/Trust/13/usernamemixed endpoints gerektirir.
 
 Windows Aktarım uç noktaları, yalnızca parola değiştirildiğinde, PRT yenileme için değil, parola kimlik doğrulaması için gereklidir.
 

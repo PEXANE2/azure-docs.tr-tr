@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b5438132f32117e0ec48a6f985c3b9d2045a9da2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 602e3f58ac5f8f194ad4704a4e792d4f0aec3a3e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88649695"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978790"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure'da SAP HANA altyapı yapılandırmaları ve işlemleri
 Bu belgede, Azure yerel sanal makinelerinde (VM 'Ler) dağıtılan Azure altyapısını ve işletim SAP HANA sistemlerini yapılandırmaya yönelik yönergeler sağlanmaktadır. Belge ayrıca, M128s VM SKU 'SU için SAP HANA genişleme için yapılandırma bilgilerini içerir. Bu belge, aşağıdaki içeriği içeren standart SAP belgelerinin yerine geçecek şekilde tasarlanmamıştır:
@@ -79,7 +79,7 @@ Azure 'da SAP HANA birlikte kullanılacak depolama yapılandırmalarının ve de
 VPN veya ExpressRoute aracılığıyla Azure 'da siteden siteye bağlantınız olduğunda, VPN veya ExpressRoute devresine bir sanal ağ geçidi üzerinden bağlanmış en az bir Azure sanal ağınızın olması gerekir. Basit dağıtımlarda, sanal ağ geçidi, SAP HANA örneklerini barındıran Azure sanal ağının (VNet) bir alt ağında dağıtılabilir. SAP HANA yüklemek için Azure sanal ağı 'nda iki ek alt ağ oluşturursunuz. Bir alt ağ, SAP HANA örneklerini çalıştırmak için VM 'Leri barındırır. Diğer alt ağ, SAP HANA Studio 'yu, diğer yönetim yazılımlarını veya uygulama yazılımınızı barındırmak için JumpBox veya yönetim sanal makineleri çalıştırır.
 
 > [!IMPORTANT]
-> İşlevsellik dışında, ancak performans nedenlerinden daha önemlisi, SAP NetWeaver, Hybru veya S/4HANA tabanlı SAP sisteminin DBMS katmanı arasındaki iletişim yolundaki [Azure ağ sanal gereçlerini](https://azure.microsoft.com/solutions/network-appliances/) yapılandırmak desteklenmez. SAP uygulama katmanı ve DBMS katmanı arasındaki iletişimin doğrudan bir tane olması gerekir. Bu ASG ve NSG kuralları doğrudan iletişime izin vermedikçe, kısıtlama [Azure ASG ve NSG kurallarını](../../../virtual-network/security-overview.md) içermez. [SAP uygulamalarında SUSE Linux Enterprise Server Azure VM 'LERINDE SAP NetWeaver Için yüksek kullanılabilirlik](./high-availability-guide-suse.md)bölümünde açıklandığı gibi, NVA 'lar ' nin desteklenmediği daha fazla senaryo, Linux Paceyapıcısı küme düğümlerini ve SBD cihazlarını temsil eden Azure VM 'ler arasında iletişim yollarıdır. Ya da Azure VM 'Ler ile Windows Server SOFS arasındaki iletişim yollarında, [Azure 'da bir dosya paylaşımının kullanıldığı bir Windows Yük devretme KÜMESINDE SAP ASCS/SCS örneği kümesinde](./sap-high-availability-guide-wsfc-file-share.md)açıklandığı şekilde ayarlanır. İletişim yollarındaki NVA 'lar iki iletişim ortağı arasındaki ağ gecikmesini kolayca çift açabilir, SAP uygulama katmanı ve DBMS katmanı arasındaki kritik yollarda üretilen işi kısıtlayabilir. Müşterilerin gözlemlediği bazı senaryolarda NVA 'lar, Linux Paceyapıcısı küme düğümleri arasındaki iletişimin bir NVA üzerinden SBD cihazlarıyla iletişim kurması gereken durumlarda pacemaker Linux kümelerinin başarısız olmasına neden olabilir.  
+> İşlevsellik dışında, ancak performans nedenlerinden daha önemlisi, SAP NetWeaver, Hybru veya S/4HANA tabanlı SAP sisteminin DBMS katmanı arasındaki iletişim yolundaki [Azure ağ sanal gereçlerini](https://azure.microsoft.com/solutions/network-appliances/) yapılandırmak desteklenmez. SAP uygulama katmanı ve DBMS katmanı arasındaki iletişimin doğrudan bir tane olması gerekir. Bu ASG ve NSG kuralları doğrudan iletişime izin vermedikçe, kısıtlama [Azure ASG ve NSG kurallarını](../../../virtual-network/network-security-groups-overview.md) içermez. [SAP uygulamalarında SUSE Linux Enterprise Server Azure VM 'LERINDE SAP NetWeaver Için yüksek kullanılabilirlik](./high-availability-guide-suse.md)bölümünde açıklandığı gibi, NVA 'lar ' nin desteklenmediği daha fazla senaryo, Linux Paceyapıcısı küme düğümlerini ve SBD cihazlarını temsil eden Azure VM 'ler arasında iletişim yollarıdır. Ya da Azure VM 'Ler ile Windows Server SOFS arasındaki iletişim yollarında, [Azure 'da bir dosya paylaşımının kullanıldığı bir Windows Yük devretme KÜMESINDE SAP ASCS/SCS örneği kümesinde](./sap-high-availability-guide-wsfc-file-share.md)açıklandığı şekilde ayarlanır. İletişim yollarındaki NVA 'lar iki iletişim ortağı arasındaki ağ gecikmesini kolayca çift açabilir, SAP uygulama katmanı ve DBMS katmanı arasındaki kritik yollarda üretilen işi kısıtlayabilir. Müşterilerin gözlemlediği bazı senaryolarda NVA 'lar, Linux Paceyapıcısı küme düğümleri arasındaki iletişimin bir NVA üzerinden SBD cihazlarıyla iletişim kurması gereken durumlarda pacemaker Linux kümelerinin başarısız olmasına neden olabilir.  
 > 
 
 > [!IMPORTANT]
@@ -108,7 +108,7 @@ IP adreslerini atamaya yönelik farklı yöntemlere genel bir bakış için bkz.
 
 SAP HANA çalıştıran VM 'Ler için, atanan statik IP adresleriyle çalışmanız gerekir. Nedeni, HANA başvuru IP adreslerine yönelik bazı yapılandırma öznitelikleridir.
 
-[Azure ağ güvenlik grupları (NSG 'ler)](../../../virtual-network/virtual-network-vnet-plan-design-arm.md) , SAP HANA örneğine veya atlama kutusuna yönlendirilen trafiği yönlendirmek için kullanılır. NSG 'ler ve sonuç olarak [uygulama güvenlik grupları](../../../virtual-network/security-overview.md#application-security-groups) , SAP HANA alt ağı ve yönetim alt ağıyla ilişkilendirilir.
+[Azure ağ güvenlik grupları (NSG 'ler)](../../../virtual-network/virtual-network-vnet-plan-design-arm.md) , SAP HANA örneğine veya atlama kutusuna yönlendirilen trafiği yönlendirmek için kullanılır. NSG 'ler ve sonuç olarak [uygulama güvenlik grupları](../../../virtual-network/network-security-groups-overview.md#application-security-groups) , SAP HANA alt ağı ve yönetim alt ağıyla ilişkilendirilir.
 
 Aşağıdaki görüntüde, hub ve bağlı ağ VNet mimarisine göre SAP HANA için kaba bir dağıtım şemasına genel bakış gösterilmektedir:
 
@@ -324,4 +324,3 @@ Listelenen makaleleri hakkında bilgi edinin
 - [SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde SAP HANA yüksek kullanılabilirliği](./sap-hana-high-availability.md)
 - [Red Hat Enterprise Linux üzerinde Azure VM 'lerinde SAP HANA yüksek kullanılabilirliği](./sap-hana-high-availability-rhel.md)
 
- 

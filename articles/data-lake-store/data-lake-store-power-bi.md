@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: bcc561cd5eea4372d798fff4580362ba0879c3a4
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91574203"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Azure Data Lake Storage 1. Power BI kullanarak verileri çözümleme
 Bu makalede, Azure Data Lake Storage 1. depolanan verileri analiz etmek ve görselleştirmek için Power BI Desktop kullanmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).

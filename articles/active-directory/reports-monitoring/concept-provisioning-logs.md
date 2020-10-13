@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6109f35c42d4b4a44430eeb99ec115f4cdc1a619
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91812565"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Azure Active Directory portalında raporları sağlama (Önizleme)
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) içindeki raporlama mimarisi aşağıdaki bile
 
 Bu konu, sağlama raporuna genel bir bakış sağlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="who-can-access-the-data"></a>Verilere kimler erişebilir?
 * Uygulama sahipleri

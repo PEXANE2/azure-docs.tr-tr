@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 5bb6b61bb7d9392984bf5c308ce7ee039234461e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bcd0f6d4d1ac505598c839f89850f9b55a9c36a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91295575"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977502"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>StorSimple Sanal diziniz üzerinde 1,0 güncelleştirmesini yükler
 
@@ -102,26 +102,26 @@ Bu yordamın tamamlandığı 4 dakika sürer. Güncelleştirmeyi veya düzeltmey
 
 1. Yerel Web Kullanıcı arabiriminde **bakım**  >  **yazılım güncelleştirmesi**' ne gidin. Çalıştırdığınız yazılım sürümünü bir yere unutmayın. **Bu güncelleştirmeye yalnızca Güncelleştirme 0,6 (10.0.10293.0) çalıştırıyorsanız devam edin. Önceki bir sürümü çalıştırıyorsanız, önce cihazınıza [güncelleştirme 0,6](storsimple-virtual-array-install-update-06.md) ' ü yükledikten sonra güncelleştirme 1 ' i uygulayın.**
    
-    ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-1/update1m.png)
+    ![cihazı Güncelleştir 1](./media/storsimple-virtual-array-install-update-1/update1m.png)
 
 2. **Güncelleştirme dosyası yolu**' nda, güncelleştirme veya düzeltme için dosya adını girin. Bir ağ paylaşımında yer alıyorsa güncelleştirme veya düzeltme yükleme dosyasına da gidebilirsiniz. **Uygula**’ya tıklayın.
    
-    ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-1/update2m.png)
+    ![cihaz güncelleştirme 2](./media/storsimple-virtual-array-install-update-1/update2m.png)
 
 3. Bir uyarı görüntülenir. Sanal dizi tek düğümlü bir cihaz olduğundan, güncelleştirme uygulandıktan sonra cihaz yeniden başlatılır ve kapalı kalma süresi vardır. Onay simgesine tıklayın.
    
-   ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-1/update3m.png)
+   ![cihaz güncelleştirme 3](./media/storsimple-virtual-array-install-update-1/update3m.png)
 
 4. Güncelleştirme başlar. Cihaz başarıyla güncelleştirildikten sonra yeniden başlatılır. Yerel Kullanıcı arabirimine bu süre içinde erişilemiyor.
    
-    ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-1/update5m.png)
+    ![güncelleştirme aygıtı 4](./media/storsimple-virtual-array-install-update-1/update5m.png)
 
 5. Yeniden başlatma işlemi tamamlandıktan sonra **oturum açma** sayfasına yönlendirilirsiniz. Cihaz yazılımının güncelleştirildiğini doğrulamak için, yerel Web Kullanıcı arabiriminde **bakım**  >  **yazılım güncelleştirmesi**' ne gidin. Güncelleştirme 1,0 için, görüntülenmiş yazılım sürümü **10.0.0.0.0.10296** olmalıdır.
    
    > [!NOTE]
    > Yazılım sürümlerini yerel Web Kullanıcı arabiriminde ve Azure portal biraz farklı bir şekilde raporlarız. Örneğin, yerel Web Kullanıcı arabirimi raporları **10.0.0.0.0.10296** ve aynı sürüm için **10.0.10296.0** raporlar Azure Portal.
    
-    ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-1/update6m.png)
+    ![güncelleştirme aygıtı 5](./media/storsimple-virtual-array-install-update-1/update6m.png)
 
 6. Dosya kullanarak Windows Güvenlik düzeltmesini yüklemek için 2-4 adımlarını yineleyin `windows8.1-kb4012213-x64` . Sanal dizi, yüklemeden sonra yeniden başlatılır ve yerel Web Kullanıcı arabiriminde oturum açmanız gerekir.
 

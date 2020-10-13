@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: allensu
 ms.openlocfilehash: 295bc0a20a547bf944f48af6711b18af34571b02
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362589"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>Verizon Premium kuralları altyapı başvurusundan Azure CDN
@@ -67,7 +67,7 @@ Bir ilkenin üretim veya hazırlama ortamına uygulanabileceğini içeren iş ak
 
 ![İlke dağıtımı iş akışı](./media/cdn-verizon-premium-rules-engine-reference/policy-deployment-workflow.png)
 
-|Adım |Description |
+|Adım |Açıklama |
 |---------|---------|
 |[Taslak Oluştur](https://docs.vdms.com/cdn/index.html#HRE/AdministeringDraftsandRules.htm#Create)    |    Bir taslak, içeriğinize yönelik isteklerin CDN tarafından nasıl işleneceğini tanımlayan bir kurallar kümesinden oluşur.     |
 |Taslağı kilitle   |     Bir taslak sonlandırıldıktan sonra kilitleme ve salt okunurdur bir ilkeye dönüştürülmesi gerekir.    |
@@ -75,7 +75,7 @@ Bir ilkenin üretim veya hazırlama ortamına uygulanabileceğini içeren iş ak
 |Dağıtım Isteği Incelemesi   |    <br>Dağıtım isteği, otomatik doğrulama ve hata algılamayı daha düşük hale gelir.</br><br>Dağıtım isteklerinin çoğunluğu otomatik olarak onaylansa da, daha karmaşık ilkeler için el ile gözden geçirme gerekir.</br>   |
 |İlke dağıtımı ([hazırlama](https://docs.vdms.com/cdn/index.html#HRE/Environment.htm#Staging))   |  <br> Hazırlama ortamına bir dağıtım isteği onaylanınca, hazırlama ortamına bir ilke uygulanır. Bu ortam, bir ilkenin sahte site trafiğine karşı sınanmasını sağlar.</br><br>İlke canlı site trafiğine uygulanmaya hazırsa, üretim ortamı için yeni bir dağıtım isteği gönderilmesi gerekir.</br>      |
 |İlke dağıtımı ([Üretim](https://docs.vdms.com/cdn/index.html#HRE/Environment.htm#Producti))   |  Üretim ortamına bir dağıtım isteği onaylandıktan sonra, üretim ortamına bir ilke uygulanır. Bu ortam, bir ilkenin CDN 'nin canlı trafiği nasıl işleyeceğini belirlemek için son yetkili görevi görmesini sağlar.     |
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Sözdizimi
 
 Özel karakterlerin ele alındığı şekilde, eşleşme koşulunun veya özelliğin metin değerlerini nasıl işleydiğine göre farklılık gösterir. Bir eşleştirme koşulu veya özelliği, aşağıdaki yollarla metni yorumlayabilir:
 
@@ -93,7 +93,7 @@ Bir yüzde sembolü, URL kodlamasını göstermek için kullanılır (örneğin,
 
 Joker karakter değeri olarak yorumlanan metin özel karakterlere ek anlam atar. Aşağıdaki tabloda aşağıdaki karakter kümesinin nasıl yorumlanacağı açıklanmaktadır:
 
-Karakter | Description
+Karakter | Açıklama
 ----------|------------
 \ | Bu tabloda belirtilen karakterlerden herhangi birini atlamak için ters eğik çizgi kullanılır. Bir ters eğik çizgi, önüne kaçılması gereken özel karakterden önce belirtilmelidir.<br/>Örneğin, aşağıdaki sözdizimi bir yıldız işaretine çıkar: `\*`
 % | Bir yüzde sembolü, URL kodlamasını göstermek için kullanılır (örneğin, `%20` ).
@@ -105,7 +105,7 @@ deeri | Tek bir teklifin özel anlamı yoktur. Ancak, bir değerin değişmez de
 
 Normal ifadeler, metin değeri içinde aranan bir model tanımlar. Normal ifade gösterimi çeşitli simgelere özgü anlamları tanımlar. Aşağıdaki tabloda, özel karakterlerin, normal ifadeleri destekleyen koşullar ve özellikler ile nasıl işlendiği gösterilmektedir.
 
-Özel karakter | Description
+Özel karakter | Açıklama
 ------------------|------------
 \ | Ters eğik çizgi, bu karakterin normal ifade anlamı yerine değişmez değer olarak işlenmesine neden olan karakteri izler. Örneğin, aşağıdaki sözdizimi bir yıldız işaretine çıkar: `\*`
 % | Bir yüzde sembolünün anlamı, kullanımına bağlıdır.<br/><br/> `%{HTTPVariable}`: Bu sözdizimi bir HTTP değişkenini tanımlar.<br/>`%{HTTPVariable%Pattern}`: Bu sözdizimi bir HTTP değişkenini ve sınırlayıcı olarak tanımlamak için bir yüzde simgesi kullanır.<br />`\%`: Bir yüzde sembolünü kaçış, bir sabit değer olarak veya URL kodlamasının (örneğin,) kullanılmasına izin verir `\%20` .

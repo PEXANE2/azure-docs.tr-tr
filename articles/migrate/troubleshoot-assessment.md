@@ -8,10 +8,10 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
 ms.openlocfilehash: a7b463394a6919dee56e0448997dbd6c59ac9cc6
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91576600"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Değerlendirme/bağımlılık görselleştirmesi sorunlarını giderme
@@ -23,7 +23,7 @@ Bu makale, [Azure geçişi: Sunucu değerlendirmesi](migrate-services-overview.m
 
 Değerlendirme hazırlık sorunlarını aşağıdaki şekilde giderin:
 
-**Sorun** | **Düzeltme**
+**Konuda** | **Düzeltme**
 --- | ---
 Desteklenmeyen önyükleme türü | Azure, EFı önyükleme türü olan VM 'Leri desteklemez. Geçiş çalıştırmadan önce önyükleme türünü BIOS 'a dönüştürmeniz önerilir. <br/><br/>Bu sanal makinelerin geçişini yönetmek için Azure geçişi sunucu geçişini kullanabilirsiniz. Geçiş sırasında VM 'nin önyükleme türünü BIOS 'a dönüştürür.
 Koşullu olarak desteklenen Windows işletim sistemi | İşletim sistemi destek son tarihini geçti ve [Azure 'da destek](https://aka.ms/WSosstatement)için özel bir destek SÖZLEŞMESINE (CSA) ihtiyaç duyuyor. Azure 'a geçiş yapmadan önce yükseltmeyi göz önünde bulundurun.

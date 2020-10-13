@@ -3,14 +3,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 09/19/2019
+ms.date: 09/30/2019
 ms.author: alkohli
-ms.openlocfilehash: a23b0b2c71207bf84a4938d54a78a62efb6cbcbd
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ca7b83d24f2416b224963559361faf5a7775cd0d
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "71172675"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631554"
 ---
 Microsoft cihazı alıp taradığında, sipariş durumu **Alındı** olarak güncelleştirilir. Ardından cihaz hasar veya kurcalama belirtileri için fiziksel doğrulama sürecinden geçer.
 
@@ -20,7 +20,7 @@ Kopyalama tamamlandıktan sonra, sipariş durumu **Tamamlandı** olarak güncell
 
 Kaynaktan silmeden önce verilerinizin Azure’a yüklendiğinden emin olun. Verileriniz şuralarda olabilir:
 
-- Azure Depolama hesaplarınız. Data Box'a veri kopyaladığınızda, türlerine bağlı olarak bu veriler Azure Depolama hesabınızda aşağıdaki yollardan birine yüklenir.
+- Azure Depolama hesaplarınız. Data Box'a veri kopyaladığınızda, bu veriler Azure Depolama hesabınızda aşağıdaki yollardan birine yüklenir:
 
   - Blok blobları ve sayfa blobları için: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
   - Azure Dosyaları için: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
@@ -37,7 +37,7 @@ Kaynaktan silmeden önce verilerinizin Azure’a yüklendiğinden emin olun. Ver
 
         ![Kaynak gruplarına bağlı yönetilen disk](media/data-box-verify-upload-return/managed-disks-resource-group.png)
 
-    - Bir VHDX veya dinamik/fark kayıt VHD'si kopyaladıysanız, VHDX/VHD bir sayfa blobu olarak hazırlama depolama hesabına yüklenir ancak VHD'nin yönetilen diske dönüştürülmesi başarısız olur. Hazırlama **Depolama hesabı > Bloblar**’a gidin ve sonra uygun kapsayıcıyı seçin: Standart SSD, Standart HDD veya Premium SSD. VHD'ler, hazırlama depolama hesabınıza sayfa blobları olarak yüklenir.
+    - Bir VHDX veya dinamik ya da fark kayıt VHD'si kopyaladıysanız, VHDX veya VHD bir sayfa blobu olarak hazırlama depolama hesabına yüklenir ancak VHD'nin yönetilen diske dönüştürülmesi başarısız olur. Hazırlama **Depolama hesabı > Bloblar**’a gidin ve uygun kapsayıcıyı seçin: Standart SSD, Standart HDD veya Premium SSD. VHD'ler, hazırlama depolama hesabınıza sayfa blobları olarak yüklenir ve ücret doğurur.
 
 
 ## <a name="erasure-of-data-from-data-box"></a>Data Box'tan verileri silme

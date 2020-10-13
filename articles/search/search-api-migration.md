@@ -7,13 +7,13 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: 0f1050bf58e0cd8d9a601d60a4c5dc22a5420483
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/09/2020
+ms.openlocfilehash: d7734fde529c24e8113ea3b019d343b7223f0122
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88949040"
+ms.locfileid: "91929651"
 ---
 # <a name="upgrade-to-the-latest-rest-api-in-azure-cognitive-search"></a>Azure Bilişsel Arama en son REST API yükseltin
 
@@ -40,13 +40,19 @@ Bu durumlardan herhangi biri sizin için geçerlidir, kodunuzu uygun şekilde de
 
 ## <a name="upgrade-to-2020-06-30"></a>2020-06-30 sürümüne yükselt
 
-Sürüm 2020-06-30, REST API genel kullanıma açık olan sürümüdür. Hiçbir önemli değişiklik yoktur, ancak birkaç davranış farkı vardır. 
+Sürüm 2020-06-30, REST API genel kullanıma açık olan sürümüdür. Tek bir değişiklik ve birkaç davranış farkı vardır. 
 
 Özellikler artık bu API sürümünde genel kullanıma sunulmuştur:
 
 * [Bilgi deposu](knowledge-store-concept-intro.md), becerileri aracılığıyla oluşturulan ve aşağı akış analizi için oluşturulan ve diğer uygulamalar aracılığıyla işlenen içerik kalıcı depolama. Bu özellik sayesinde, Dizin Oluşturucu temelli bir AI zenginleştirme işlem hattı, bir arama dizinine ek olarak bir bilgi deposunu doldurabilir. Bu özelliğin önizleme sürümünü kullandıysanız, genel kullanıma sunulan sürüme eşdeğerdir. Gerekli tek kod değişikliği api sürümünü değiştiriyor.
 
-Davranış değişiklikleri şunları içerir:
+### <a name="breaking-change"></a>Son değişiklik
+
+Önceki API sürümlerine karşı yazılan mevcut kod, API-Version = 2020-06-30 ' da ve daha sonra kod aşağıdaki işlevleri içeriyorsa, üzerine kesilir:
+
+* Herhangi bir EDM. Date değişmez değeri (gibi `2020-12-12` ), filtre ifadelerinde, Edm. DateTimeOffset biçiminde bir tarih gelmelidir: `2020-12-12T00:00:00Z` . Bu değişiklik, saat dilimi farklılıkları nedeniyle hatalı veya beklenmeyen sorgu sonuçlarını işlemek için gerekli.
+
+### <a name="behavior-changes"></a>Davranış değişiklikleri
 
 * [BM25 derecelendirme algoritması](index-ranking-similarity.md) önceki derecelendirme algoritmasından daha yeni teknolojinin yerini alır. Yeni hizmetler, bu algoritmayı otomatik olarak kullanacaktır. Mevcut hizmetler için, parametreleri yeni algoritmayı kullanacak şekilde ayarlamanız gerekir.
 

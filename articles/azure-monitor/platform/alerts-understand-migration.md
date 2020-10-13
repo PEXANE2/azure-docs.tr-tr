@@ -6,12 +6,12 @@ ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 52a74593fcfbdc2c1e464077e4ae460f6a5a9c39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6509425f11b09a2fa5229f9dd68a508241391925
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852404"
+ms.locfileid: "91875929"
 ---
 # <a name="understand-migration-options-to-newer-alerts"></a>Geçiş seçeneklerini daha yeni uyarılara anlayın
 
@@ -254,10 +254,12 @@ Geçişin bir parçası olarak yeni ölçüm uyarıları ve yeni eylem grupları
 
 ### <a name="policy-with-deny-effect-preventing-us-from-migrating-your-rules"></a>Kurallarınızı geçirmemizi engelleyen ' Reddet ' efektli ilke
 
-Geçişin bir parçası olarak yeni ölçüm uyarıları ve yeni eylem grupları oluşturulur ve ardından klasik uyarı kuralları silinir. Ancak bir ilke, kaynak oluşturmamızı önleyebilir. İlkeye bağlı olarak, bazı veya tüm kurallar geçirilemez. İşlemi engelleyen ilkeler [geçiş aracında](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)listelenir. Bu sorunu aşağıdakilerden birini yaparak çözün:
+Geçişin bir parçası olarak yeni ölçüm uyarıları ve yeni eylem grupları oluşturulur ve ardından klasik uyarı kuralları silinir. Ancak, bir [Azure ilke](../../governance/policy/index.yml) ataması, kaynak oluşturmamızı önleyebilir. İlke atamaya bağlı olarak, bazı veya tüm kurallar geçirilemez. İşlemi engelleyen ilke atamaları [geçiş aracında](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)listelenir. Bu sorunu aşağıdakilerden birini yaparak çözün:
 
-- İlke atamasından geçiş işleminin süresi boyunca abonelikler veya kaynak grupları hariç tutulur. [İlkeleri dışlama kapsamını yönetme hakkında daha fazla bilgi edinin](../../governance/policy/tutorials/create-and-manage.md#exempt-a-non-compliant-or-denied-resource-using-exclusion).
-- ' Audit ' veya ' append ' etkisini kaldırma veya değiştirme (örneğin, eksik etiketlerle ilgili sorunları çözebilen). [İlkeleri yönetme etkisi hakkında daha fazla bilgi edinin](../../governance/policy/concepts/definition-structure.md#policy-rule).
+- İlke atamasından geçiş işlemi süresince abonelikler, kaynak grupları veya tek tek kaynaklar hariç tutulur. [İlke dışlama kapsamlarını yönetme hakkında daha fazla bilgi edinin](../../governance/policy/tutorials/create-and-manage.md#remove-a-non-compliant-or-denied-resource-from-the-scope-with-an-exclusion).
+- ' Zorlama modu ' nu ilke atamasında **devre dışı** olarak ayarlayın. [İlke atamasının enforcementMode özelliği hakkında daha fazla bilgi edinin](../../governance/policy/concepts/assignment-structure.md#enforcement-mode).
+- Abonelikler, kaynak grupları veya tek kaynaklarda ilke atamasına bir Azure Ilke muafiyeti (Önizleme) ayarlayın. [Azure ilke muafiyeti yapısı hakkında daha fazla bilgi edinin](../../governance/policy/concepts/exemption-structure.md).
+- ' DISABLED ', ' Audit ', ' append ' veya ' Modify ' gibi etkileri kaldırma veya değiştirme (örneğin, eksik etiketlerle ilgili sorunları çözebilen). [İlke efektlerini yönetme hakkında daha fazla bilgi edinin](../../governance/policy/concepts/definition-structure.md#policy-rule).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

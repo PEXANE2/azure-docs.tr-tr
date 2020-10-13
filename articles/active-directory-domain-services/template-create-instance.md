@@ -2,20 +2,20 @@
 title: Şablon kullanarak Azure DS etki alanı Hizmetleri 'ni etkinleştirme | Microsoft Docs
 description: Azure Resource Manager şablonu kullanarak Azure Active Directory Domain Services yapılandırmayı ve etkinleştirmeyi öğrenin
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: sample
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: 316f77b2447bd75b03a05c4e6466d153bf51201d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: f257a186f05dc94923d1d39829b5ed68b518f20c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88722645"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967639"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Azure Active Directory Domain Services yönetilen etki alanı oluşturma
 
@@ -23,7 +23,7 @@ Azure Active Directory Domain Services (Azure AD DS), Windows Server Active Dire
 
 Bu makalede, Azure Resource Manager şablonu kullanarak yönetilen bir etki alanının nasıl oluşturulacağı gösterilmektedir. Destekleyici kaynaklar Azure PowerShell kullanılarak oluşturulur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız vardır:
 

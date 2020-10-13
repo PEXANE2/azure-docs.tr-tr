@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: a912b7a6d918a40aaae54c9b177250dc3c30c84d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61a1d7cb3a5f43aa8100f1c7e8a102ab19b803f5
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "86256569"
+ms.locfileid: "91932456"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Application Insights ile olay Analizi ve görselleştirme
 
@@ -34,7 +34,7 @@ Yukarıdaki görüntüde sağ panelde, listede iki ana giriş türü vardır: is
 
 ![Application Insights Isteği ayrıntıları](media/service-fabric-diagnostics-event-analysis-appinsights/ai-request-details.png)
 
-Application Insights, içinde gelen tüm verilere yönelik sorgulama için belirlenmiş bir görünüme sahiptir. Application Insights portalına gitmek için genel bakış sayfasının en üstündeki "Ölçüm Gezgini" düğmesine tıklayın. Burada, kusto sorgu dilini kullanarak, istekler, özel durumlar, performans sayaçları ve diğer ölçümler için önce bahsedilen özel olaylara karşı sorgular çalıştırabilirsiniz. Aşağıdaki örnek, son 1 saat içindeki tüm istekleri gösterir.
+Application Insights, içinde gelen tüm verilere yönelik sorgulama için belirlenmiş bir görünüme sahiptir. Application Insights portalına gitmek için genel bakış sayfasının üst kısmında "Ölçüm Gezgini" seçeneğini belirleyin. Burada, kusto sorgu dilini kullanarak, istekler, özel durumlar, performans sayaçları ve diğer ölçümler için önce bahsedilen özel olaylara karşı sorgular çalıştırabilirsiniz. Aşağıdaki örnek, son 1 saat içindeki tüm istekleri gösterir.
 
 ![Application Insights Isteği ayrıntıları](media/service-fabric-diagnostics-event-analysis-appinsights/ai-metrics-explorer.png)
 
@@ -57,15 +57,15 @@ Filtrelerinizin gerekli değişikliklerini yaptığınızdan ve diğer tüm gird
 
 ## <a name="application-insights-sdk"></a>Application Insights SDK
 
-Tanılama ve izlemeye yönelik daha modüler bir yaklaşıma izin verdiklerinden, EventFlow ve WAD 'in toplama çözümleri olarak kullanılması önerilir. Örneğin, EventFlow 'tan çıktılarınızı değiştirmek istiyorsanız, gerçek araçınıza hiçbir değişiklik gerektirmez, ancak yapılandırma dosyanızda basit bir değişiklik yapmanız gerekmez. Ancak, Application Insights kullanarak yatırım yapmanız ve farklı bir platforma değişmemek istiyorsanız, olayları toplamak ve Application Insights göndermek için Application Insights ' yeni SDK 'yi kullanarak bakmanız gerekir. Bu, artık, verilerinizi Application Insights göndermek için EventFlow ' ı yapılandırmanız gerekmediği anlamına gelir, bunun yerine Applicationınsight Service Fabric NuGet paketini yükler. Paket ayrıntılarını [burada](https://github.com/Microsoft/ApplicationInsights-ServiceFabric)bulabilirsiniz.
+Tanılama ve izlemeye yönelik daha modüler bir yaklaşıma izin verdiklerinden, diğer bir deyişle, EventFlow 'daki çıktılarınızı değiştirmek istiyorsanız, gerçek araçınıza hiçbir değişiklik gerektirmez, ancak yapılandırma dosyanızda basit bir değişiklik yapılması gerekmez. Application Insights kullanarak yatırmaya karar verirseniz ve farklı bir platforma geçiş yapmak zorunda değilse, olayları toplamak ve Application Insights göndermek için Application Insights ' yeni SDK ' yı kullanarak bakmanız gerekir. Bu, artık, verilerinizi Application Insights göndermek için EventFlow ' ı yapılandırmanız gerekmediği anlamına gelir, bunun yerine Applicationınsight Service Fabric NuGet paketini yükler. Paket ayrıntılarını [burada](https://github.com/Microsoft/ApplicationInsights-ServiceFabric)bulabilirsiniz.
 
 [Mikro hizmetler ve kapsayıcılar için Application Insights desteği](https://azure.microsoft.com/blog/app-insights-microservices/) , üzerinde çalışılan yeni özelliklerden bazılarını gösterir (Şu anda hala beta sürümünde) ve Application Insights daha zengin kullanıma hazır izleme seçeneklerine sahip olabilirsiniz. Bunlar, bağımlılık izlemeyi (bir kümedeki tüm hizmetlerinizin ve uygulamalarınızın bir AppMap 'i ve aralarındaki iletişimi oluşturma) ve hizmetinizden gelen izlemelerin daha iyi bağıntısını (bir uygulamanın veya hizmetin iş akışında bir sorunu daha iyi gösterme konusunda yardımcı olur) içerir.
 
-.NET ' te geliştiriyorsanız ve büyük olasılıkla bazı Service Fabric programlama modellerini kullanıyor ve olay ve günlük verilerini görselleştirmeyi ve analiz etmek için platformunuz olarak Application Insights kullanmak istiyorsanız, izleme ve tanılama iş akışınız olarak Application Insights SDK rotası aracılığıyla gitmeniz önerilir. Günlüklerinizi toplamak ve göstermek [üzere Application Insights kullanmaya başlamak için](../azure-monitor/app/asp-net-trace-logs.md) [bunu okuyun.](../azure-monitor/app/asp-net-more.md)
+.NET ' te geliştiriyorsanız ve büyük olasılıkla bazı Service Fabric programlama modellerini kullanıyor ve olay ve günlük verilerini görselleştirmeyi ve analiz etmek için platformunuz olarak Application Insights kullanmak istiyorsanız, izleme ve tanılama iş akışınız olarak Application Insights SDK rotası aracılığıyla gitmeniz önerilir. Günlüklerinizi toplamak ve göstermek üzere Application Insights kullanmaya başlamak için [Application Insights belgelerini](../azure-monitor/azure-monitor-app-hub.yml) ve [izleme günlükleri belgelerini](../azure-monitor/app/asp-net-trace-logs.md) okuyun.
 
 ## <a name="navigating-the-application-insights-resource-in-azure-portal"></a>Azure portal Application Insights kaynakta gezinme
 
-Olaylarınız ve günlüklerinizin çıktısı olarak Application Insights yapılandırdıktan sonra, bilgilerin Application Insights kaynağında birkaç dakika içinde gösterilmesi gerekir. Sizi Application Insights kaynak panosuna götürebileceğiniz Application Insights kaynağına gidin. Application Insights görev çubuğunda **Ara** ' ya tıklayarak aldığı en son izlemeleri görüntüleyin ve bunlara filtre uygulayabilir.
+Olaylarınız ve günlüklerinizin çıktısı olarak Application Insights yapılandırdıktan sonra, bilgilerin Application Insights kaynağında birkaç dakika içinde gösterilmesi gerekir. Sizi Application Insights kaynak panosuna götürebileceğiniz Application Insights kaynağına gidin. Application Insights görev çubuğunda **Ara** ' yı seçerek alınan en son izlemeleri ve bunlara göre filtreleyebilmesini görüntüleyin.
 
 *Ölçüm Gezgini* , uygulamalarınızın, hizmetlerinizin ve kümenizin rapor olabileceği ölçümlere dayalı özel panolar oluşturmaya yönelik yararlı bir araçtır. Topladığınız verileri temel alarak kendinize birkaç grafik ayarlamak için [Application Insights ölçümleri keşfetme](../azure-monitor/platform/metrics-charts.md) konusuna bakın.
 

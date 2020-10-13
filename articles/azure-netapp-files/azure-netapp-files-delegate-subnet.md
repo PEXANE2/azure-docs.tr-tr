@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: b-juche
-ms.openlocfilehash: bed1375631c017d23ed53b6102c424533237099e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb3d1fd49c2623ff6dcbe8a19ae8c8ca3b46425a
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447564"
+ms.locfileid: "91930637"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>Azure NetApp Files için bir alt ağı temsilci olarak belirleme 
 
@@ -33,7 +33,7 @@ Azure NetApp Files için bir alt ağ temsilciliğini almalısınız.   Bir birim
    VNet 'te yalnızca tek bir Temsilcili alt ağa sahip olabilirsiniz. Bir NetApp hesabı, her biri kendi Temsilcili alt ağına sahip olan birden fazla VNET 'e birim dağıtabilir.  
 * Temsilci alt ağında bir ağ güvenlik grubu veya hizmet uç noktası belirtemezsiniz. Bunun yapılması alt ağ temsilcisinin başarısız olmasına neden olur.
 * Genel olarak eşlenmiş bir sanal ağdan bir birime erişim şu anda desteklenmiyor.
-* [Kullanıcı tanımlı yollar](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) (udrs) ve ağ güvenlik grupları (NSG 'ler) Azure NetApp Files için temsilci alt ağlarda desteklenmez. Ancak, Azure NetApp Files için Temsilcili alt ağ ile aynı VNet içinde bile UDRs ve NSG 'leri diğer alt ağlara uygulayabilirsiniz.  
+* [Kullanıcı tanımlı yollar](../virtual-network/virtual-networks-udr-overview.md#custom-routes) (udrs) ve ağ güvenlik grupları (NSG 'ler) Azure NetApp Files için temsilci alt ağlarda desteklenmez. Ancak, Azure NetApp Files için Temsilcili alt ağ ile aynı VNet içinde bile UDRs ve NSG 'leri diğer alt ağlara uygulayabilirsiniz.  
    Azure NetApp Files, temsilci alt ağına bir sistem yolu oluşturur. Yol, sorun giderme için gerekiyorsa yol tablosundaki **etkin yollar** ' da gösterilir.
 
 ## <a name="steps"></a>Adımlar
@@ -54,6 +54,4 @@ Ayrıca, [Azure NetApp Files için bir birim oluşturduğunuzda](azure-netapp-fi
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure NetApp Files için birim oluşturma](azure-netapp-files-create-volumes.md)
-* [Azure hizmetleri için sanal ağ tümleştirmesi hakkında bilgi edinin](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
-
-
+* [Azure hizmetleri için sanal ağ tümleştirmesi hakkında bilgi edinin](../virtual-network/virtual-network-for-azure-services.md)
