@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 04b5c9464c614c32f178e35e72cee98450007a62
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4c48f25f1d4bd3822a93d2c780dd148d9e29827
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91772796"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940540"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Azure rol tabanlı erişim denetimi (Önizleme) ile Key Vault anahtarlarına, sertifikalara ve gizli anahtarlara erişim sağlama
 
@@ -70,7 +70,7 @@ Anahtar Kasası için yeni Azure RBAC izin modeli, kasa erişimi ilkesi izin mod
 Rol atamaları eklemek için şunları yapmanız gerekir:
 
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
-- `Microsoft.Authorization/roleAssignments/write`ve `Microsoft.Authorization/roleAssignments/delete` [Kullanıcı erişimi Yöneticisi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles.md#user-access-administrator) veya [sahibi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles.md#owner) gibi izinler
+- `Microsoft.Authorization/roleAssignments/write`ve `Microsoft.Authorization/roleAssignments/delete` [Kullanıcı erişimi Yöneticisi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) veya [sahibi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) gibi izinler
 
 ### <a name="enable-azure-rbac-permissions-on-key-vault"></a>Key Vault Azure RBAC izinlerini etkinleştirme
 

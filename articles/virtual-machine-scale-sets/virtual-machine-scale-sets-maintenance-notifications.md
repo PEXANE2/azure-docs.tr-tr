@@ -10,10 +10,10 @@ ms.date: 08/20/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 5521e49c767a2510bf7c8c53cf6ac5e86b73b466
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87837185"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Sanal makine ölçek kümeleri için planlı bakım bildirimleri
@@ -72,7 +72,7 @@ Aşağıdaki durumlarda self servis bakımını kullanmak en iyisidir:
 
 Planlı bir bakım dalgası zamanlandığında, Azure portal kullanarak yaklaşan bakım dalgasının etkilediği sanal makine ölçek kümelerinin listesini görüntüleyebilirsiniz. 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Sol taraftaki menüden **tüm hizmetler**' i seçin ve ardından **Sanal Makine Ölçek Kümeleri**' ni seçin.
 3. **Sanal Makine Ölçek Kümeleri**altında, **Sütunları Düzenle** ' yi seçerek kullanılabilir sütunların listesini açın.
 4. **Kullanılabilir sütunlar** bölümünde **self servis bakımı**' nı seçin ve ardından **Seçili sütunlar** listesine taşıyın. **Uygula**’yı seçin.  
@@ -91,7 +91,7 @@ Planlı bir bakım dalgası zamanlandığında, Azure portal kullanarak yaklaşa
 
 Azure, abonelik sahibine ve ortak sahipler grubuna bir e-posta göndererek planlı bakım için bir zamanlama iletişim kurar. Etkinlik günlüğü uyarıları oluşturarak bu iletişime alıcılar ve kanallar ekleyebilirsiniz. Daha fazla bilgi için bkz. [Azure etkinlik günlüğü ile abonelik izleme etkinliği](../azure-monitor/platform/platform-logs-overview.md).
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Sol taraftaki menüden **izleyici**' yi seçin. 
 3. **İzleyici-uyarılar (klasik)** bölmesinde **+ etkinlik günlüğü uyarısı Ekle**' yi seçin.
 4. **Etkinlik günlüğü uyarısı Ekle** sayfasında istenen bilgileri seçin veya girin. **Ölçütlerde**aşağıdaki değerleri ayarladığınızdan emin olun:
@@ -106,7 +106,7 @@ Etkinlik günlüğü uyarılarını yapılandırma hakkında daha fazla bilgi ed
 
 Daha fazla bakım ile ilgili ayrıntıları sanal makine ölçek kümelerine genel bakış bölümüne bakabilirsiniz. Planlı bakım dalgasına sanal makine ölçek kümesindeki en az bir VM eklenirse, sayfanın üstüne yakın yeni bir bildirim şeridi eklenir. **Bakım** sayfasına gitmek için bildirim şeridini seçin. 
 
-**Bakım** sayfasında, hangi VM örneğinin planlı bakımın etkilendiğini görebilirsiniz. Bakımı başlatmak için, etkilenen VM 'ye karşılık gelen onay kutusunu seçin. Ardından, **Bakımı Başlat**' ı seçin.
+**Bakım** sayfasında, hangi VM örneğinin planlı bakımın etkilendiğini görebilirsiniz. Bakımı başlatmak için, etkilenen VM 'ye karşılık gelen onay kutusunu seçin. Ardından,  **Bakımı Başlat**' ı seçin.
 
 Bakım başladıktan sonra, sanal makine ölçek kümesindeki etkilenen VM 'Ler yerinde bakımda ve geçici olarak kullanılamaz. Self servis penceresini kaçırdıysanız, sanal makine ölçek kümesi Azure tarafından korunacağı zaman penceresini yine de görebilirsiniz.
  

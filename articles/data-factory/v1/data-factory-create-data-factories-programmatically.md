@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: c9dce90b0dc563fb0fa7ecaaa0882167eef444a0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89019904"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Azure Data Factory .NET SDK kullanarak Azure veri fabrikaları oluşturun, izleyin ve yönetin
@@ -29,7 +29,7 @@ Data Factory .NET SDK kullanarak Azure veri fabrikalarını programlı bir şeki
 > [!NOTE]
 > Bu makale, Data Factory .NET API’nin tamamını kapsamaz. Data Factory için .NET API hakkında kapsamlı belgeler için bkz. [Data Factory .NET API başvurusu](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) . 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

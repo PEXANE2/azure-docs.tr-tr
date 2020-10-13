@@ -9,10 +9,10 @@ ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
 ms.openlocfilehash: a79a030c4f57c3dabdd14c01aa2062cab7026cd3
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91611529"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Azure VM 'Leri için kısa ömürlü işletim sistemi diskleri
@@ -40,7 +40,7 @@ Kalıcı ve kısa ömürlü işletim sistemi diskleri arasındaki önemli farkl�
 | **Bölge desteği**              | Tüm bölgeler                                                                                  | Tüm bölgeler                              |
 | **Veri kalıcılığı**            | IŞLETIM sistemi diskine yazılan işletim sistemi diski verileri Azure depolama 'da depolanıyor                                  | İşletim sistemi diskine yazılan veriler yerel VM depolama alanında depolanır ve Azure Storage 'da kalıcı değildir. |
 | **Serbest bırakılmış durumu durdur**      | VM 'Ler ve ölçek kümesi örnekleri, durdurma-serbest bırakıldı durumundan durdurulup yeniden başlatılabilir | VM 'Ler ve ölçek kümesi örnekleri durdurulamıyor-serbest bırakılamaz                                  |
-| **Özelleştirilmiş işletim sistemi diski desteği** | Yes                                                                                          | Hayır                                                                                 |
+| **Özelleştirilmiş işletim sistemi diski desteği** | Evet                                                                                          | Hayır                                                                                 |
 | **İşletim sistemi diski yeniden boyutlandırma**              | VM oluşturma sırasında ve VM durdurulduktan sonra desteklenir-serbest bırakıldı                                | Yalnızca VM oluşturma sırasında desteklenir                                                  |
 | **Yeni bir VM boyutuna yeniden boyutlandırma**   | İşletim sistemi diski verileri korunur                                                                    | İşletim sistemi diskindeki veriler silinir, işletim sistemi yeniden sağlandı                                      |
 

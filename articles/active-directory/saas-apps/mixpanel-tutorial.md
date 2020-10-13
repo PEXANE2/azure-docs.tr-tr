@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/28/2019
 ms.author: jeedes
-ms.openlocfilehash: eecd7281c925fa26ade3aa140df310e69f3385c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 123b85905a5c56949a0c1d35bb1e37215ed8097c
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554746"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940727"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mixpanel"></a>Öğretici: Mixpanel ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Mixpanel 'i Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini Mixpanel ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -130,15 +130,15 @@ Azure AD çoklu oturum açmayı Mixpanel ile yapılandırmak için aşağıdaki 
 
 3. **Erişim güvenliği** sekmesine tıklayın ve ardından **Ayarları Değiştir**' e tıklayın.
    
-    ![Mixpanel ayarları](./media/mixpanel-tutorial/tutorial_mixpanel_08.png) 
+    ![Ekran görüntüsü, ayarları değiştirebileceğiniz erişim güvenliği sekmesini gösterir.](./media/mixpanel-tutorial/tutorial_mixpanel_08.png) 
 
 4. **Sertifikanızı değiştirin** iletişim sayfasında, indirilen sertifikanızı karşıya yüklemek Için **Dosya Seç** ' e tıklayın ve ardından **İleri**' ye tıklayın.
    
-    ![Mixpanel ayarları](./media/mixpanel-tutorial/tutorial_mixpanel_09.png) 
+    ![Ekran görüntüsü, sertifika dosyası seçebileceğiniz sertifikayı değiştirme iletişim kutusunu gösterir.](./media/mixpanel-tutorial/tutorial_mixpanel_09.png) 
 
 5.  Kimlik **doğrulama URL 'Sini değiştirin** iletişim kutusundaki kimlik doğrulama URL 'si metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın ve ardından **İleri**' ye tıklayın.
    
-    ![Mixpanel ayarları](./media/mixpanel-tutorial/tutorial_mixpanel_10.png) 
+    ![Ekran görüntüsü, oturum açma U r L 'nizi kopyalayabileceğiniz kimlik doğrulama U R L bölmesini gösterir.](./media/mixpanel-tutorial/tutorial_mixpanel_10.png) 
 
 6. **Bitti**’ye tıklayın.
 
@@ -205,7 +205,7 @@ Bu bölümün amacı, Mixpanel 'de Britta Simon adlı bir Kullanıcı oluşturma
 
 4. **Takım üyesi** metin kutusunda, Azure 'Da Britta e-posta adresini yazın.
    
-    ![Mixpanel ayarları](./media/mixpanel-tutorial/tutorial_mixpanel_11.png) 
+    ![Ekran görüntüsü, davet etmek için bir adres eklediğiniz takım sekmesini gösterir.](./media/mixpanel-tutorial/tutorial_mixpanel_11.png) 
 
 5. **Davet et**' e tıklayın. 
 

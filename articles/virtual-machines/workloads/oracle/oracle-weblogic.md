@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: rezar
 ms.openlocfilehash: e8f1b115f8a52b4352478f91dd5849c45bfebdc1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274376"
 ---
-# <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Oracle WebLogic Server 'ı Azure sanal makinelerinde çalıştırmaya yönelik çözümler nelerdir?
+# <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Azure Sanal Makineler’de çalışan Oracle WebLogic Server’a yönelik çözümler nelerdir?
 
 Bu sayfada, Azure sanal makinelerinde Oracle WebLogic Server (WLS) çalıştırmaya yönelik çözümler açıklanmaktadır. Bu çözümler, Oracle ve Microsoft tarafından ortaklaşa geliştirilmiştir.
 
@@ -56,7 +56,7 @@ Bu teklif, WLS sanal makinelerinin yüksek düzeyde kullanılabilir ve ölçekle
 
 Çözümler, kapsamlı bir üretime yönelik dağıtım mimarilerinin göreli kolaylıklarla etkinleştirecektir. İş uygulaması geliştirmeye odaklanmaya izin vererek, çoğu geçiş durumunu mümkün olduğunca en verimli şekilde karşılayabilirsiniz.
 
-:::image type="content" source="media/oracle-weblogic/weblogic-architecture-vms.png" alt-text="Azure 'da karmaşık WebLogic Server dağıtımları etkin":::
+:::image type="content" source="media/oracle-weblogic/weblogic-architecture-vms.png" alt-text="Azure 'da WebLogic Server dağıtmak için Azure portal kullanabilirsiniz":::
 
 Çözümler tarafından otomatik olarak sağlananların ötesinde, müşteriler dağıtımlarını daha da özelleştirmek için tamamen esneklik sunar. Büyük olasılıkla uygulama dağıtımı müşterileri, diğer Azure kaynaklarını dağıtımlarıyla tümleştirecektir. Müşterilerin çözümleri daha da geliştirmek için geri bildirim sağlaması önerilir.
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: da75e1d6208db5adf5f0f63d2a5525fc651513b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 233ba17e1ae1b554eff092151ad9f05fd660beb3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855911"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970019"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>Klasik modelden Azure Resource Manager’a platform destekli geçişe ayrıntılı teknik bakış
 
@@ -135,7 +135,7 @@ Bu, değişikliklerinizi klasik dağıtım modeline dönüştürmek ve geçişi 
 Doğrulama adımını tamamladıktan sonra geçişi işleyebilirsiniz. Kaynaklar artık klasik dağıtım modelinde görünmez ve yalnızca Kaynak Yöneticisi dağıtım modelinde kullanılabilir. Geçirilen kaynaklar yalnızca yeni portalda yönetilebilir.
 
 > [!NOTE]
-> Bu, bir kere etkili olan bir işlemdir. Başarısız olursa, işlemi yeniden deneyin. Başarısız olmaya devam ederse, bir destek bileti oluşturun veya [Microsoft Q&a](https://docs.microsoft.com/answers/index.html) 'da bir forum oluşturun
+> Bu, bir kere etkili olan bir işlemdir. Başarısız olursa, işlemi yeniden deneyin. Başarısız olmaya devam ederse, bir destek bileti oluşturun veya [Microsoft Q&a](/answers/index.html) 'da bir forum oluşturun
 >
 >
 

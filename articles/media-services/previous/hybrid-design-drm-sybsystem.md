@@ -16,10 +16,10 @@ ms.date: 08/31/2020
 ms.author: willzhan
 ms.reviewer: juliako
 ms.openlocfilehash: 1bf01e98e418edfe8f15043d16a199b276b71020
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89266910"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>DRM alt sistemlerinin karma tasarımı
@@ -99,11 +99,11 @@ Bir varlık teslim ilkesinin yapılandırması sayesinde, AMS dinamik paketleyic
 
 |**& kaynağı barındıran içerik**|**DRM şifrelemesi**|**DRM lisansı verme**|**İçerik anahtarını yapılandır**|**Varlık teslim ilkesini yapılandırma**|**Örnek**|
 |---|---|---|---|---|---|
-|AMS|AMS|AMS|Yes|Yes|Örnek 1|
-|AMS|AMS|Üçüncü taraf|Yes|Yes|Örnek 2|
-|AMS|Üçüncü taraf|AMS|Yes|Hayır|Örnek 3|
+|AMS|AMS|AMS|Evet|Evet|Örnek 1|
+|AMS|AMS|Üçüncü taraf|Evet|Evet|Örnek 2|
+|AMS|Üçüncü taraf|AMS|Evet|Hayır|Örnek 3|
 |AMS|Üçüncü taraf|Dışarıya|Hayır|Hayır|Örnek 4|
-|Üçüncü taraf|Üçüncü taraf|AMS|Yes|Hayır|    
+|Üçüncü taraf|Üçüncü taraf|AMS|Evet|Hayır|    
 
 Örneklerde, PlayReady koruması hem DASH hem de kesintisiz akış için geçerlidir. Aşağıdaki video URL 'Leri kesintisiz akış URL 'lardır. Karşılık gelen DASH URL 'Lerini almak için, yalnızca "(format = MPD-Time-CSF)" ekleyin. [Azure Medya test yürütücüyü](https://aka.ms/amtest) bir tarayıcıda test etmek için kullanabilirsiniz. Hangi akış protokolünü kullanacağınızı, hangi teknoloji altında kullanacağınızı yapılandırmanıza olanak tanır. IE11 ve Windows 10 ' da Microsoft Edge, EME aracılığıyla PlayReady 'yi destekler. Daha fazla bilgi için, bkz. [test aracı hakkında ayrıntılar](./offline-playready-streaming-windows-10.md).
 
@@ -142,5 +142,5 @@ Media Services öğrenme yollarını görüntüleyin.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

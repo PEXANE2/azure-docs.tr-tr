@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
 ms.openlocfilehash: 240c96016304c009c36485869ac15f5f38076fb7
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90088298"
 ---
 # <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Azure Ilkesini kullanarak VM'ler için Azure İzleyici etkinleştirme
@@ -21,7 +21,7 @@ Azure Ilkesi hakkında bilgi sahibi değilseniz Azure [ilkesi 'ni kullanarak Azu
 > [!NOTE]
 > Azure Ilkesini Azure sanal makine ölçek kümeleri ile kullanmak veya Azure sanal makinelerini etkinleştirmek üzere doğrudan Azure Ilkesiyle çalışmak için bkz. Azure [ilkesini kullanarak Azure izleyici 'yi ölçekli olarak dağıtma](../deploy-scale.md#azure-monitor-for-vms).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 - [Log Analytics çalışma alanı oluşturun ve yapılandırın](vminsights-configure-workspace.md).
 - Etkinleştirmiş olduğunuz sanal makine veya sanal makine ölçek kümesinin işletim sisteminin desteklendiğinden emin olmak için [desteklenen işletim sistemleri](vminsights-enable-overview.md#supported-operating-systems) bölümüne bakın. 
 

@@ -12,10 +12,10 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.openlocfilehash: 59c899d2450e9d439426239384945258e8df694a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91266658"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Azure AD ile bir SCıM uç noktası oluşturun ve Kullanıcı sağlamasını yapılandırın
@@ -98,7 +98,7 @@ Daha sonra, uygulamanızın gerektirdiği özniteliklerin Azure AD 'de bir özni
 |bölüm|urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Department|
 | displayName |displayName |
 |Çalışan|urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: employeeNumber|
-| Facsıle-TelephoneNumber |phoneNumbers [tür EQ "Faks"]. değer |
+| Facsimile-TelephoneNumber |phoneNumbers [tür EQ "Faks"]. değer |
 | givenName |name.givenName |
 | jobTitle |başlık |
 | posta |emails[type eq "work"].value |
@@ -1123,7 +1123,7 @@ Bu gereksinimlerle uyumluluk bildirimleri için uygulama sağlayıcınıza veya 
 > [!IMPORTANT]
 > Azure AD SCıM uygulaması, Azure AD Kullanıcı sağlama hizmeti 'nin üzerine kurulmuştur. Bu, kullanıcıların Azure AD ile hedef uygulama arasında sürekli olarak eşitlenmesi için tasarlanan ve çok özel bir standart işlem kümesi uyguladığı şekilde tasarlanmıştır. Azure AD SCıM istemcisinin davranışını anlamak için bu davranışları anlamak önemlidir. Daha fazla bilgi için bkz. sağlama [döngüleri: başlangıç ve artımlı](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) , [sağlama nasıl?](how-provisioning-works.md).
 
-### <a name="getting-started"></a>Kullanmaya başlama
+### <a name="getting-started"></a>Başlarken
 
 Bu makalede açıklanan SCıM profilini destekleyen uygulamalar, Azure AD uygulama galerisinde "Galeri dışı uygulama" özelliği kullanılarak Azure Active Directory bağlanabilir. Bağlantı kurulduktan sonra Azure AD, her 40 dakikada bir eşitleme işlemi çalıştırarak, atanan kullanıcılar ve gruplar için uygulamanın SCıM uç noktasını sorgular ve atama ayrıntılarına göre bunları oluşturur veya değiştirir.
 

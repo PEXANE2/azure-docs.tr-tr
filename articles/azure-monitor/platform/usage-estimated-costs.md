@@ -9,10 +9,10 @@ ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
 ms.openlocfilehash: eb96537f67c61fb31759da020068f784d0e89993
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323409"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Azure Izleyici 'de kullanımı ve tahmini maliyetleri izleme
@@ -74,7 +74,7 @@ Buradan, "kaynağa göre maliyet" görünümünde daha ayrıntılı bilgi edinme
 
 Azure Izleyici kullanımınızı görüntülemeye yönelik başka bir seçenek de Izleyici hub 'ındaki **kullanım ve tahmini maliyetler** sayfasıdır. Bu, [uyarı, ölçümler, bildirimler](https://azure.microsoft.com/pricing/details/monitor/), [Azure Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)ve [Azure Application Insights](https://azure.microsoft.com/pricing/details/application-insights/)gibi çekirdek izleme özelliklerinin kullanımını gösterir. Fiyatlandırma planlarındaki müşteriler 2018 Nisan 'dan önce kullanılabilir ve ayrıca, Öngörüler ve analiz teklifiyle satın alınan Log Analytics kullanımını da içerir.
 
-Bu sayfada, kullanıcılar, abonelik başına toplanan son 31 gün boyunca kaynak kullanımını görüntüleyebilirler. `Drill-ins`kullanım eğilimlerini 31 günlük süre içinde gösterin. Bu tahmin için çok fazla veri gelmesi gerekir, bu nedenle lütfen sayfa yüklenirken hasta olun.
+Bu sayfada, kullanıcılar, abonelik başına toplanan son 31 gün boyunca kaynak kullanımını görüntüleyebilirler. `Drill-ins` kullanım eğilimlerini 31 günlük süre içinde gösterin. Bu tahmin için çok fazla veri gelmesi gerekir, bu nedenle lütfen sayfa yüklenirken hasta olun.
 
 Bu örnekte, izleme kullanımı ve elde edilen maliyetlerin tahmini gösterilmektedir:
 

@@ -8,26 +8,26 @@ ms.author: crtreasu
 ms.date: 08/17/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8c9e6462beb48e3326de3c2348b73053f717e032
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: ee7a0ca1abedd2f80cd8f5fe66e603315a10966f
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91441268"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939537"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Öğretici: Azure uzamsal bağlayıcıları kullanarak yeni bir HoloLens Unity uygulaması oluşturmaya yönelik adım adım yönergeler
 
 Bu öğreticide, Azure uzamsal bağlayıcılarla yeni bir HoloLens Unity uygulamasının nasıl oluşturulacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 
 1. **Evrensel Windows platformu geliştirme** iş yükü ve **Windows 10 SDK (10.0.18362.0 veya üzeri)** bileşeni ve <a href="https://git-scm.com/download/win" target="_blank">Windows için git</a>ile <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017 +</a> yüklü bir Windows makinesi.
 2. Visual Studio için [C++/Wınrt Visual Studio uzantısı (VSIX)](https://aka.ms/cppwinrt/vsix) [Visual Studio Market](https://marketplace.visualstudio.com/)yüklenmelidir.
-3. [Geliştirici modu](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) etkin bir HoloLens cihazı. Bu makalede, [Windows 10 ekim 2018 güncelleştirmesi](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018 ) (RS5 olarak da bilinir) Ile bir HoloLens cihazı gerekir. HoloLens 'te en son sürüme güncelleştirmek için **Ayarlar** uygulamasını açın, **güncelleştirme & güvenlik**' e gidin ve **Güncelleştirmeleri denetle** düğmesini seçin.
+3. [Geliştirici modu](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) etkin bir HoloLens cihazı. Bu makalede, [Windows 10 mayıs 2020 güncelleştirmesi](https://docs.microsoft.com/windows/mixed-reality/whats-new/release-notes-may-2020 )Ile bir HoloLens cihazı gerekir. HoloLens 'te en son sürüme güncelleştirmek için **Ayarlar** uygulamasını açın, **güncelleştirme & güvenlik**' e gidin ve **Güncelleştirmeleri denetle** düğmesini seçin.
 
-## <a name="getting-started"></a>Kullanmaya başlama
+## <a name="getting-started"></a>Başlarken
 
 İlk olarak proje ve Unity sahümüzü ayarlayacağız:
 1. Unity 'yi başlatın.
@@ -236,6 +236,6 @@ Bir bağlantı, buluta yüklendi, yeniden bulmaya başlamaya hazırız. Aşağı
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=234-271)]
 
-İşte bu kadar! Tüm senaryoyu uçtan uca denemek için uygulamanızı **Visual Studio** 'dan en son bir kez çalıştırın. Cihazınızın etrafında ilerleyin ve beyaz kürenin yerinizi koyun. Daha sonra, Sphere sarıya dönüşene kadar baş ortamınızı ortam verilerini yakalamaya devam ettirmeyi sürdürün. Yerel çıpası karşıya yüklenecek ve Sphere 'niz mavi kullanacaktır. Son olarak, yerel bağlayıcıyı kaldırmak ve buluta karşılık gelen bir sorgu başlatmak için ekranınıza daha fazla dokunun. Bulut uzamsal bağlantı noktası bulunana kadar cihazınızı etrafında taşımaya devam edin. Yeşil Sphere 'ın doğru konumda görünmesi gerekir ve tüm senaryoyu yeniden yineleyebilirsiniz.
+Hepsi bu! Tüm senaryoyu uçtan uca denemek için uygulamanızı **Visual Studio** 'dan en son bir kez çalıştırın. Cihazınızın etrafında ilerleyin ve beyaz kürenin yerinizi koyun. Daha sonra, Sphere sarıya dönüşene kadar baş ortamınızı ortam verilerini yakalamaya devam ettirmeyi sürdürün. Yerel çıpası karşıya yüklenecek ve Sphere 'niz mavi kullanacaktır. Son olarak, yerel bağlayıcıyı kaldırmak ve buluta karşılık gelen bir sorgu başlatmak için ekranınıza daha fazla dokunun. Bulut uzamsal bağlantı noktası bulunana kadar cihazınızı etrafında taşımaya devam edin. Yeşil Sphere 'ın doğru konumda görünmesi gerekir ve tüm senaryoyu yeniden yineleyebilirsiniz.
 
 [!INCLUDE [AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md)]
