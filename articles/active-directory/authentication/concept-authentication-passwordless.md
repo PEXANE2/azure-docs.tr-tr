@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 352956c1f55de5cfff3ee114394e86a75d55765d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b308b47ff813237bdf90637334f20ac6b5490a19
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965548"
+ms.locfileid: "91992823"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory için passwordless kimlik doğrulama seçenekleri
 
@@ -128,7 +128,7 @@ Aşağıdaki sağlayıcılar, passwordless deneyimiyle uyumlu oldukları bilinen
 | Sağlayıcı | İletişim |
 | --- | --- |
 | Yılıco | [https://www.yubico.com/support/contact/](https://www.yubico.com/support/contact/) |
-| Feian | [https://shop.ftsafe.us/pages/microsoft](https://shop.ftsafe.us/pages/microsoft) |
+| Feian | [https://ftsafe.us/pages/microsoft](https://ftsafe.us/pages/microsoft) |
 | CIHAZDAN | [https://www.hidglobal.com/contact-us](https://www.hidglobal.com/contact-us) |
 | Ensurlik | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |
 | TrustKey çözümleri | [https://www.trustkeysolutions.com/security-keys/](https://www.trustkeysolutions.com/security-keys/) |

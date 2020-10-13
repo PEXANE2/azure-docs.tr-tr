@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f1bde255355e7a4f47df6a3969837410692cef5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ca23c1503b01c1aa9523edc2576599d7b6ab458
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91266068"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992818"
 ---
 # <a name="continuous-access-evaluation"></a>Sürekli erişim değerlendirmesi
 
@@ -103,7 +103,7 @@ CAE özellikli istemciler kullanmıyorsanız, erişim belirteci yaşam süresini
 
 1. CAE özellikli bir istemci, bir kaynak için erişim belirteci isteyen Azure AD 'ye kimlik bilgileri veya yenileme belirteci sunar.
 1. İstemciye diğer yapıtlar ile birlikte bir erişim belirteci döndürülür.
-1. Yönetici [, Kullanıcı için tüm yenileme belirteçlerini açıkça iptal eder](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). Azure AD 'den kaynak sağlayıcısına bir iptal olayı gönderilir.
+1. Yönetici [, Kullanıcı için tüm yenileme belirteçlerini açıkça iptal eder](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). Azure AD 'den kaynak sağlayıcısına bir iptal olayı gönderilir.
 1. Kaynak sağlayıcısına bir erişim belirteci sunulur. Kaynak sağlayıcısı belirtecin geçerliliğini değerlendirir ve Kullanıcı için herhangi bir iptal olayı olup olmadığını denetler. Kaynak sağlayıcı, kaynağa erişim izni vermeye karar vermek için bu bilgileri kullanır.
 1. Bu durumda, kaynak sağlayıcısı erişimi reddeder ve istemciye bir 401 + talep sınaması gönderir.
 1. CAE özellikli istemci, 401 + talep sınamasını anlamıştır. Önbellekler atlar ve adım 1 ' e döner ve yenileme belirtecini Azure AD 'ye geri talebi ile birlikte gönderir. Daha sonra Azure AD tüm koşulları yeniden değerlendirmenize ve kullanıcıdan bu durumda yeniden kimlik doğrulaması sorması istenir.
@@ -144,7 +144,7 @@ CAE için, yalnızca adlandırılmış IP tabanlı adlandırılmış konumlara i
 
 ### <a name="ip-address-configuration"></a>IP adresi yapılandırması
 
-Kimlik sağlayıcınız ve kaynak sağlayıcılarınız farklı IP adresleri görebilir. Bu uyumsuzluk, kuruluşunuzdaki ağ proxy uygulamaları veya kimlik sağlayıcınız ile kaynak sağlayıcınız arasında yanlış IPv4/IPv6 yapılandırması nedeniyle oluşabilir. Örneğin:
+Kimlik sağlayıcınız ve kaynak sağlayıcılarınız farklı IP adresleri görebilir. Bu uyumsuzluk, kuruluşunuzdaki ağ proxy uygulamaları veya kimlik sağlayıcınız ile kaynak sağlayıcınız arasında yanlış IPv4/IPv6 yapılandırması nedeniyle oluşabilir. Örnek:
 
 - Kimlik sağlayıcınız istemciden bir IP adresi görür.
 - Kaynak sağlayıcınız bir proxy üzerinden geçtikten sonra istemciden farklı bir IP adresi görür.
@@ -159,7 +159,7 @@ Bu senaryo, sınırlı döngüden kaçınmak için ortamınızda varsa, Azure AD
 | Semi-Annual kurumsal kanal | Etkin veya 1 olarak ayarlanırsa, CAE desteklenmez. | Etkin veya 1 olarak ayarlanırsa, CAE desteklenmez. |
 | Geçerli kanal <br> veya <br> Aylık kurumsal kanal | CAE, ayarından bağımsız olarak desteklenir | CAE, ayarından bağımsız olarak desteklenir |
 
-Office Update kanallarının bir açıklaması için bkz. [Microsoft 365 uygulamaları için güncelleştirme kanallarına genel bakış](https://docs.microsoft.com/deployoffice/overview-update-channels). Kuruluşların web hesabı Yöneticisi 'Ni (WAM) devre dışı bırakmadığından önerilir.
+Office Update kanallarının bir açıklaması için bkz. [Microsoft 365 uygulamaları için güncelleştirme kanallarına genel bakış](/deployoffice/overview-update-channels). Kuruluşların web hesabı Yöneticisi 'Ni (WAM) devre dışı bırakmadığından önerilir.
 
 ### <a name="policy-change-timing"></a>İlke değiştirme zamanlaması
 

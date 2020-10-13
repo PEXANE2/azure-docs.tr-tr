@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: 818ef3a29724f18cad5924bf1961b74afadfdb75
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: bf31c2d4a90abeec62d785d0294a9c50f3b675ab
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939605"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993601"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>Azure dışı makinelerinizi Güvenlik Merkezi 'ne bağlama
 
-Güvenlik Merkezi, Azure dışı bilgisayarların güvenlik durumunu izleyebilir ancak öncelikle bu kaynakları eklemeniz gerekir. 
+Güvenlik Merkezi, Azure olmayan bilgisayarlarınızın güvenlik duruşunu izleyebilir, ancak önce bunları Azure 'a bağlamanız gerekir. 
 
-Azure dışı bilgisayarları aşağıdaki yollarla ekleyebilirsiniz:
+Azure dışı bilgisayarlarınızı aşağıdaki yollarla bağlayabilirsiniz:
 
 - Azure yay kullanma (**önerilir**)
 - Azure portal (**Başlangıç** ve **Stok**) Güvenlik Merkezi sayfalarından
@@ -30,7 +30,7 @@ Bunların her biri bu sayfada açıklanmıştır.
 
 ## <a name="add-non-azure-machines-with-azure-arc"></a>Azure Arc ile Azure olmayan makineler ekleme
 
-Azure Arc 'ın kullanılması, Azure dışı makinelerinizi Azure Güvenlik Merkezi 'ne eklemenin tercih edilen yoludur.
+Azure Arc, Azure dışı makinelerinizi Azure Güvenlik Merkezi 'ne eklemenin tercih edilen yoludur.
 
 Azure Arc etkin olan bir makine, Azure kaynağı olur ve diğer Azure kaynaklarınız gibi önerilerle birlikte Güvenlik Merkezi 'nde görünür. 
 
@@ -50,7 +50,7 @@ Ayrıca, Azure Arc makinede ilkeleri etkinleştirme, Log Analytics aracısını 
 
 ::: zone pivot="azure-portal"
 
-## <a name="add-non-azure-machines-from-security-centers-portal-pages"></a>Güvenlik Merkezi 'nin Portal sayfalarından Azure olmayan makineler ekleme
+## <a name="add-non-azure-machines-from-the-azure-portal"></a>Azure portal Azure dışı makineler ekleme
 
 1. Güvenlik Merkezi 'nin menüsünden **Başlarken** sayfasını açın.
 1. **Başlangıç** sekmesini seçin.

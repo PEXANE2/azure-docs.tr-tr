@@ -1,26 +1,18 @@
 ---
 title: Azure VM 'de SAP S/4HANA veya siyah beyaz/4HANA dağıtma | Microsoft Docs
 description: Azure VM 'de SAP S/4HANA veya siyah beyaz/4HANA dağıtma
-services: virtual-machines-linux
-documentationcenter: ''
 author: hermanndms
-manager: juergent
-editor: ''
-tags: azure-resource-manager
-keywords: ''
-ms.assetid: 44bbd2b6-a376-4b5c-b824-e76917117fa9
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: c110a4e0429ba52e01c472097a2241f91d504cf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: cynthn
+ms.openlocfilehash: 116de28501b77262ef126ed420982d853376da4e
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77616201"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993402"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>Azure 'da SAP S/4HANA veya siyah beyaz/4HANA dağıtma
 Bu makalede SAP Cloud gereç kitaplığı (SAP CAL) 3,0 kullanılarak Azure 'da S/4HANA 'nın nasıl dağıtılacağı açıklanır. Siyah beyaz/4HANA gibi diğer SAP HANA tabanlı çözümleri dağıtmak için aynı adımları izleyin.

@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f1d4c5b55dd2a24c1fb41540fdc5d3ae26849a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ef10f51f058739b0e545d341b77af4313dd9e97
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258685"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992854"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Koşullu Erişim dağıtımını planlama
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) koşullu erişim (CA), kararları otomatik hal
 
 Microsoft, temel düzeyde güvenlik sağlayan [güvenlik Varsayılanları](../fundamentals/concept-fundamentals-security-defaults.md) adlı standart koşullu ilkeler sağlar. Bununla birlikte, kuruluşunuzun güvenlik varsayılanlarını önerenden daha fazla esneklik ihtiyacı olabilir. Koşullu erişimi, güvenlik varsayılanlarını daha fazla ayrıntı ile özelleştirmek ve gereksinimlerinizi karşılayan yeni ilkeleri yapılandırmak için kullanabilirsiniz.
 
-## <a name="learn"></a>Learn
+## <a name="learn"></a>Öğrenin
 
 Başlamadan önce, [Koşullu erişimin](overview.md) nasıl çalıştığını ve ne zaman kullanılacağını anladığınızdan emin olun.
 
@@ -52,7 +52,7 @@ Bkz. [koşullu erişim lisans gereksinimleri](overview.md).
 
 Ek özellikler gerekliyse, ilgili lisanslara de ihtiyacınız olabilir. Daha fazla bilgi için bkz. [Azure Active Directory fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory/).
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 * Azure AD Premium veya deneme lisansı etkin çalışan bir Azure AD kiracısı. Gerekirse, [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -89,7 +89,7 @@ Ortamınızda bu dağıtımın stratejisini belirlerken kurumsal ihtiyaçların�
 
 ### <a name="engage-the-right-stakeholders"></a>Doğru paydaşlara katılın
 
-Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlulukların eşleşmeyen beklentileri nedeniyle bu, genellikle bu şekilde yapılır. Bu sınırları önlemek için, doğru paydaşları ve proje rollerinin açık [olduğundan emin olun](https://aka.ms/deploymentplans) .
+Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlulukların eşleşmeyen beklentileri nedeniyle bu, genellikle bu şekilde yapılır. Bu sınırları önlemek için, doğru paydaşları ve proje rollerinin açık [olduğundan emin olun](../fundamentals/active-directory-deployment-plans.md) .
 
 ### <a name="plan-communications"></a>İletişimi planlama
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 70ab387018fc54b4dad9ee911d4c7557e1e7805c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3a8e8b908c9d278654bfe992474811d6a9ddb86
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030353"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993714"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure İzleyici ile Azure kaynaklarını izleme
 Azure kaynaklarına bağlı kritik Uygulamalarınız ve iş süreçleriniz olduğunda, bu kaynakları kullanılabilirlik, performans ve işlem için izlemek istersiniz. Bu makalede, Azure kaynakları tarafından oluşturulan izleme verileri ve bu verileri çözümlemek ve uyarmak için Azure Izleyici 'nin özelliklerini nasıl kullanabileceğiniz açıklanır.
@@ -80,7 +80,7 @@ Tanılama ayarları, belirli bir kaynağın kaynak günlüklerinin ve ölçümle
 - Üçüncü taraf Sıems ve diğer Log Analytics çözümleri gibi dış sistemlere veri akışı için [Olay Hub 'ları](../platform/resource-logs.md#send-to-azure-event-hubs) . 
 - Denetim, statik analiz veya yedekleme için yararlı olan [Azure depolama hesabı](../platform/resource-logs.md#send-to-azure-storage) .
 
-Azure portal aracılığıyla tanılama ayarlarını oluşturmak ve yönetmek için [Azure 'da platform günlükleri ve ölçümleri toplamak üzere tanılama oluştur](../platform/diagnostic-settings.md) bölümündeki yordamı izleyin. Bir şablonda tanımlamak ve bir kaynağın oluşturulduğu sırada tüm izlemeyi etkinleştirmek için [Kaynak Yöneticisi şablonu kullanarak Azure 'da tanılama ayarı oluşturma](../platform/diagnostic-settings-template.md) konusuna bakın.
+Azure portal aracılığıyla tanılama ayarlarını oluşturmak ve yönetmek için [Azure 'da platform günlükleri ve ölçümleri toplamak üzere tanılama oluştur](../platform/diagnostic-settings.md) bölümündeki yordamı izleyin. Bir şablonda tanımlamak ve bir kaynağın oluşturulduğu sırada tüm izlemeyi etkinleştirmek için [Kaynak Yöneticisi şablonu kullanarak Azure 'da tanılama ayarı oluşturma](../samples/resource-manager-diagnostic-settings.md) konusuna bakın.
 
 
 ## <a name="monitoring-in-the-azure-portal"></a>Azure portal izleme
@@ -160,5 +160,4 @@ Uyarıları görüntülemek ve bu kaynakla ilgili uyarı kurallarını yönetmek
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Farklı Azure hizmetlerine yönelik kaynak günlüklerinin ayrıntıları için bkz. [Azure Kaynak günlükleri Için desteklenen hizmetler, şemalar ve Kategoriler](../platform/resource-logs-schema.md) .  
-
+* Farklı Azure hizmetlerine yönelik kaynak günlüklerinin ayrıntıları için bkz. [Azure Kaynak günlükleri Için desteklenen hizmetler, şemalar ve Kategoriler](../platform/resource-logs-schema.md) .

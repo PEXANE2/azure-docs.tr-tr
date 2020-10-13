@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/01/2020
-ms.openlocfilehash: 265179909c8ae4a6fa630b835bc9993f042d6460
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfa27b0df7febbfb8c97f11f69f87c352810699b
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80585708"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993177"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Azure Izleyici günlük sorgusu dil farklılıkları
 
@@ -33,7 +33,7 @@ Aşağıdaki bölümlerde, Azure Izleyici tarafından desteklenmeyen kusto sorgu
 * [cursor_after()](/azure/kusto/query/cursorafterfunction)
 * [cursor_before_or_at()](/azure/kusto/query/cursorbeforeoratfunction)
 * [cursor_current (), current_cursor ()](/azure/kusto/query/cursorcurrent)
-* [database()](/azure/kusto/query/databasefunction)
+* [veritabanı ()](/azure/kusto/query/databasefunction)
 * [current_principal()](/azure/kusto/query/current-principalfunction)
 * [extent_id()](/azure/kusto/query/extentidfunction)
 * [extent_tags()](/azure/kusto/query/extenttagsfunction)
@@ -56,5 +56,5 @@ Aşağıdaki operatörler belirli Azure Izleyici özelliklerini destekler ve Azu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure izleyici günlük sorgularını yazmak için farklı kaynaklara](query-language.md)başvurular alın.
+- [Azure izleyici günlük sorgularını yazmak için farklı kaynaklara](/azure/data-explorer/kusto/query/)başvurular alın.
 - [Kusto sorgu dili için tüm başvuru belgelerine](/azure/kusto/query/)erişin.

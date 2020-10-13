@@ -8,12 +8,12 @@ ms.author: mbullwin
 ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.openlocfilehash: 0539dcecbbbfe28817122e0f47e813182a9abd9d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 27b74f99d926bf72bc22f153a8d76deb56646987
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87322151"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993887"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Mobil uygulamanızı App Center ve Application Insights ile analiz etmeye başlama
 
@@ -81,7 +81,7 @@ Uygulamanız özel olayları gönderdikten ve bunlar App Center tarafından alı
      | **Kaynak Grubu**     | Yeni bir kaynak grubu veya menüde var olanlardan biri | İçinde yeni Application Insights kaynağının oluşturulacağı kaynak grubu |
    | **Konum** | Menüden bir konum | Yakınınızda bulunan veya uygulamanızın barındırıldığı konumun yakınında olan bir konum seçin |
 
-3. **Oluştur**’a tıklayın.
+3. **Oluştur**'a tıklayın.
 
 Uygulamanız birden çok platformu (iOS, Android, vb.) destekliyorsa, en iyisi her platform için ayrı bir Application Insights kaynağı oluşturmaktır.
 
@@ -124,7 +124,7 @@ Application Insights, uygulamalarınızın özel olay telemetrisini App Center'�
    1. Metin düzenleyicisinde sorgunun herhangi bir yerine tıklayarak sorguyu seçin.
    2. Ardından, **Git**'e tıklayarak sorguyu çalıştırın. 
 
-   [Application Insights Analytics](../log-query/log-query-overview.md) ve [Log Analytics sorgu dili](https://aka.ms/LogAnalyticsLanguageReference) hakkında daha fazla bilgi edinin.
+   [Application Insights Analytics](../log-query/log-query-overview.md) ve [Log Analytics sorgu dili](/azure/data-explorer/kusto/query/) hakkında daha fazla bilgi edinin.
 
 
 2. **Özel olay telemetrinizi segmentlere ayırın ve filtreleyin.** Application Insights **Genel Bakış** sayfasında, içindekiler tablosundan **Kullanıcılar**'ı seçin.
@@ -168,4 +168,3 @@ Application Insights kaynağını silmek için:
 
 > [!div class="nextstepaction"]
 > [Müşterilerin uygulamanızı nasıl kullandığını anlama](../app/usage-overview.md)
-
