@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.custom: devx-track-python
-ms.openlocfilehash: 1e2558074275f9b97bd4a2fd9a3d111c5de02948
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 402a61b4b5335c19d75cd1182243783453a0e7fa
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87853424"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974864"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Python kullanarak Azure 'da Windows VM 'Leri oluşturma ve yönetme
 
@@ -492,7 +492,7 @@ Dağıtımın birçok yönü, sanal makineniz için bir boyuta karar verirken g�
 
 ### <a name="add-a-data-disk-to-the-vm"></a>VM’ye veri diski ekleme
 
-Sanal makinelerde VHD olarak depolanan bir veya daha fazla [veri diski](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) olabilir.
+Sanal makinelerde VHD olarak depolanan bir veya daha fazla [veri diski](../managed-disks-overview.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) olabilir.
 
 1. Sanal makineye bir veri diski eklemek için,. Kopyala dosyasındaki değişkenlerden sonra bu işlevi ekleyin: 
 

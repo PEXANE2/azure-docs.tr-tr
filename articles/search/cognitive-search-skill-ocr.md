@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 56e3c1e48df51cd24d70517ee23d47ef27d378d7
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 8b6a7c3e05b26cbda80ebf1a3fc0d4fed8255e6b
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935339"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950814"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR Bilişsel Beceri
 
-**Optik karakter tanıma (OCR)** yeteneği, görüntü dosyalarında yazdırılmış ve el yazısı metinleri tanır. Bu beceri bilişsel hizmetler 'de [görüntü işleme](../cognitive-services/computer-vision/home.md) API [v 3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) tarafından sunulan makine öğrenimi modellerini kullanır. **OCR** becerisi aşağıdaki işlevlere eşlenir:
+**Optik karakter tanıma (OCR)** yeteneği, görüntü dosyalarında yazdırılmış ve el yazısı metinleri tanır. Bu beceri bilişsel hizmetler 'de [görüntü işleme](../cognitive-services/computer-vision/overview.md) API [v 3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) tarafından sunulan makine öğrenimi modellerini kullanır. **OCR** becerisi aşağıdaki işlevlere eşlenir:
 
 + Ingilizce, Ispanyolca, Almanca, Fransızca, Italyanca, Portekizce ve Felemenkçe için yeni ["okuma"](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) API 'si kullanılır.
 + Diğer tüm diller için ["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-api) API 'si kullanılır.

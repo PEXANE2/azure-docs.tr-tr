@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ab54b68ab3f7984ee18a39cf3a81fa663af54dee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 547834542b605b226ebffd68e05296ee847dc6de
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90889096"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974337"
 ---
 # <a name="disk-bursting"></a>Disk genişletme
 [!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting.md)]
@@ -29,7 +29,7 @@ VM düzeyi patlaması, aşağıdaki desteklenen boyutlarda de Orta Batı ABD de 
 Bu işlemi destekleyen sanal makineler için burdıya varsayılan olarak etkindir.
 
 ## <a name="disk-level-bursting"></a>Disk düzeyinde patlama
-Ayrıca, tüm bölgelerde P20 ve daha küçük bir disk boyutu için [Premium SSD](disks-types.md#premium-ssd) 'larımız de mevcuttur. Disk patlaması, bunu destekleyen disk boyutlarının yeni dağıtımları üzerinde varsayılan olarak etkindir. Disk kullanımını destekliyorsa, mevcut disk boyutları aşağıdaki yöntemlerden birini kullanarak ani bir şekilde etkinleştirebilir: 
+Ayrıca, tüm bölgelerde P20 ve daha küçük bir disk boyutu için [Premium SSD](../disks-types.md#premium-ssd) 'larımız de mevcuttur. Disk patlaması, bunu destekleyen disk boyutlarının yeni dağıtımları üzerinde varsayılan olarak etkindir. Disk kullanımını destekliyorsa, mevcut disk boyutları aşağıdaki yöntemlerden birini kullanarak ani bir şekilde etkinleştirebilir: 
 - **VM 'yi yeniden başlatma** 
 - **Diski kullanımdan çıkarın ve yeniden bağlayın**
 

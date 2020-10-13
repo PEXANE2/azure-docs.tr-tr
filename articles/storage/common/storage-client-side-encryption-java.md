@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Depolama için Java ile istemci tarafı şifreleme | Microsoft Docs
+title: Microsoft Azure Depolama için Java ile şifrelemeyi Client-Side | Microsoft Docs
 description: Java için Azure Storage Istemci kitaplığı, istemci tarafı şifrelemeyi ve Azure depolama uygulamalarınız için en yüksek güvenlik Azure Key Vault ile tümleştirmeyi destekler.
 services: storage
 author: tamram
@@ -12,13 +12,13 @@ ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-java
 ms.openlocfilehash: fafce52f9d760fac0d5c3f0ea1be2480547c5d4d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91817519"
 ---
-# <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Microsoft Azure Depolama için Java ile istemci tarafı şifreleme ve Azure Key Vault
+# <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Microsoft Azure Depolama için Client-Side şifreleme ve Azure Key Vault Java
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## <a name="overview"></a>Genel Bakış
@@ -122,7 +122,7 @@ Depolama istemci kitaplığı, anahtarları yönetmek için Azure genelinde orta
 3. Şifreleme ilkesi oluştururken bir giriş olarak önbelleğe alma Çözümleyicisi 'ni kullanın.
    Key Vault kullanımı ile ilgili daha fazla bilgiyi şifreleme kodu örneklerinde bulabilirsiniz.
 
-## <a name="best-practices"></a>En iyi uygulamalar
+## <a name="best-practices"></a>Önerilen uygulamalar
 Şifreleme desteği yalnızca Java için depolama istemci kitaplığı 'nda kullanılabilir.
 
 > [!IMPORTANT]

@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: apimpm
-ms.openlocfilehash: 78743c5f045f2544cafe88414ed996d08bacd2a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 231ce9d946a2fb6650f25d90aaa423d1c95fb106
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631121"
+ms.locfileid: "91930722"
 ---
 # <a name="tutorial-mock-api-responses"></a>Öğretici: sahte API yanıtları
 
@@ -34,7 +34,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 :::image type="content" source="media/mock-api-responses/mock-api-responses01.png" alt-text="Moclenmiş API yanıtı":::
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 + [Azure API Management terminolojisini](api-management-terminology.md) öğrenin.
 + [Azure API Management'ta ilke kavramını](api-management-howto-policies.md) anlayın.
@@ -107,7 +107,7 @@ Bu örnek için gerekli olmamasına rağmen, bir API işleminin ek ayarları di�
 1. **Kaydet**’i seçin.
 
     > [!TIP]
-    > API 'niz için, **sahte işlem özelliği etkinleştirilmiş** sarı bir çubuk, API Management döndürülen yanıtların gerçek bir arka uç yanıtı değil, bir sahte işlem ilkesi gönderdiğini gösterir.
+    > API 'niz için metin **taşıtmasını etkin** olan sarı bir çubuk, API Management 'den döndürülen yanıtların [sahte işlem ilkesi](api-management-advanced-policies.md#mock-response) tarafından tıklandığını ve arka uç tarafından üretilmediğini belirtir.
 
 ## <a name="test-the-mocked-api"></a>Sahte API’yi test etme
 

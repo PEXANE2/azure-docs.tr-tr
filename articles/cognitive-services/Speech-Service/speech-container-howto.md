@@ -12,12 +12,12 @@ ms.date: 10/07/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: Şirket içi, Docker, kapsayıcı
-ms.openlocfilehash: 0ba479e8c73cb7b0f397f39124ec32d7b9afbf4f
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: c26c69a0f6cbf0f9f658d3b7a32cce99319767b4
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91813279"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930450"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Konuşma hizmeti API 'Leri için Docker Kapsayıcıları yükleyip çalıştırın 
 
@@ -50,7 +50,7 @@ Konuşma kapsayıcıları, müşterilerin hem sağlam bulut özellikleri hem de 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Konuşma kapsayıcılarını kullanmadan önce aşağıdaki Önkoşullar:
 
@@ -176,7 +176,7 @@ Dışındaki tüm Etiketler `latest` aşağıdaki biçimdedir ve büyük/küçü
 Aşağıdaki etiket, biçiminin bir örneğidir:
 
 ```
-2.4.0-amd64-en-us-preview
+2.5.0-amd64-en-us-preview
 ```
 
 **Konuşmadan metne** kapsayıcının desteklenen tüm yerel ayarları Için lütfen [konuşmadan metne görüntü etiketleri](../containers/container-image-tags.md#speech-to-text)bölümüne bakın.
@@ -316,7 +316,7 @@ ApiKey={API_KEY}
 
 #### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>Konuşmayı metne dönüştürme sırasında yaklaşımı çözümleme 
 
-Konuşmayı metin kapsayıcısının 2.2.0 ' den başlayarak, çıkışta yaklaşım [Analizi v3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) 'sini çağırabilirsiniz. Yaklaşım analizini çağırmak için Metin Analizi API'si kaynak uç noktasına ihtiyacınız olacaktır. Örnek: 
+Konuşmayı metin kapsayıcısının 2.2.0 ' den başlayarak, çıkışta yaklaşım [Analizi v3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) 'sini çağırabilirsiniz. Yaklaşım analizini çağırmak için Metin Analizi API'si kaynak uç noktasına ihtiyacınız olacaktır. Örneğin: 
 * `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0-preview.1/sentiment`
 * `https://localhost:5000/text/analytics/v3.0-preview.1/sentiment`
 

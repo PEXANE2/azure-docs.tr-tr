@@ -8,10 +8,10 @@ ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: da60d6a2146385e1dfd0717afb1172b378e52533
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91716007"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>Linux 'ta Azure dosyaları sorunlarını giderme (SMB)
@@ -100,7 +100,7 @@ Bir dosya paylaşımının, dizinin veya dosyanın açık tanıtıcılarını g�
 Bir dosya paylaşımının, dizinin veya dosyanın açık tanıtıcılarını kapatmak için, [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell cmdlet 'ini kullanın.
 
 > [!Note]  
-> Get-AzStorageFileHandle ve Close-AzStorageFileHandle cmdlet 'leri az PowerShell Module sürüm 2,4 veya üzeri sürümlerde bulunur. En son az PowerShell modülünü yüklemek için bkz. [Azure PowerShell modülünü yüklemek](https://docs.microsoft.com/powershell/azure/install-az-ps).
+> Get-AzStorageFileHandle ve Close-AzStorageFileHandle cmdlet 'leri az PowerShell Module 2,4 veya sonraki bir sürüme dahildir. En son az PowerShell modülünü yüklemek için bkz. [Azure PowerShell modülünü yüklemek](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Linux 'ta Azure dosyalarından yavaş dosya kopyalama
@@ -167,7 +167,7 @@ SMB istemcileri tüm açık tutamaçları kapatmışsa ve sorun oluşmaya devam 
 - Açık tutamaçları kapatmak için [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell cmdlet 'ini kullanın. 
 
 > [!Note]  
-> Get-AzStorageFileHandle ve Close-AzStorageFileHandle cmdlet 'leri az PowerShell Module sürüm 2,4 veya üzeri sürümlerde bulunur. En son az PowerShell modülünü yüklemek için bkz. [Azure PowerShell modülünü yüklemek](https://docs.microsoft.com/powershell/azure/install-az-ps).
+> Get-AzStorageFileHandle ve Close-AzStorageFileHandle cmdlet 'leri az PowerShell Module 2,4 veya sonraki bir sürüme dahildir. En son az PowerShell modülünü yüklemek için bkz. [Azure PowerShell modülünü yüklemek](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Linux sanal makinesine bağlanmış Azure dosya paylaşımında yavaş performans

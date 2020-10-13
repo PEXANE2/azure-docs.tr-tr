@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0757c867d46144ac9fb9b9eca8b2a588aeeb15d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86ed3f005788627166c65b30398279f04388546c
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288333"
+ms.locfileid: "91930858"
 ---
 # <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SQL isteğe bağlı SQL (Önizleme) kullanarak JSON dosyalarını sorgulama
 
@@ -58,7 +58,7 @@ from openrowset(
     ) with (doc nvarchar(max)) as rows
 ```
 
-Bu sorgu, her JSON belgesini sonuç kümesinin ayrı bir satırı olarak döndürür. Bu dosyaya erişebildiğinizden emin olun. Dosyanız SAS anahtarı veya özel kimlikle korunuyorsa [SQL oturum açma için sunucu düzeyi kimlik bilgilerini](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)ayarlamanız gerekir. 
+Önceki örnek sorgudaki JSON belgesi bir nesne dizisi içerir. Sorgu, her nesneyi sonuç kümesinde ayrı bir satır olarak döndürür. Bu dosyaya erişebildiğinizden emin olun. Dosyanız SAS anahtarı veya özel kimlikle korunuyorsa [SQL oturum açma için sunucu düzeyi kimlik bilgilerini](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)ayarlamanız gerekir. 
 
 ### <a name="data-source-usage"></a>Veri kaynağı kullanımı
 

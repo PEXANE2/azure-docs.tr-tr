@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 09/24/2020
+ms.date: 10/09/2020
 ms.author: aahi
-ms.openlocfilehash: d6820e890607ff16230ecf48e8318e6d1119a3a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f37828d5561ef382f572c1fdd4917a71f8a00407
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707515"
+ms.locfileid: "91930178"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Metin Analizi içinde adlandırılmış varlık tanımayı kullanma
 
@@ -68,20 +68,6 @@ Bir POST isteği oluşturun. Hızlı bir şekilde yapılandırmak ve göndermek 
 
 ### <a name="request-endpoints"></a>İstek uç noktaları
 
-#### <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
-
-Adlandırılmış varlık tanıma v3, NER ve varlık bağlama istekleri için ayrı uç noktalar kullanır. İsteğinize göre aşağıdan bir URL biçimi kullanın:
-
-Varlık bağlama
-* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/linking`
-
-[İçin adlandırılmış varlık tanıma sürüm 3,0 başvurusu `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
-
-HI
-* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
-
-[İçin adlandırılmış varlık tanıma sürüm 3,0 başvurusu `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
-
 #### <a name="version-31-preview2"></a>[Sürüm 3,1-Önizleme. 2](#tab/version-3-preview)
 
 Adlandırılmış varlık tanıma `v3.1-preview.2` , ner ve varlık bağlama istekleri için ayrı uç noktalar kullanır. İsteğinize göre aşağıdan bir URL biçimi kullanın:
@@ -105,6 +91,20 @@ Ayrıca, `domain=phi` metindeki sağlık () bilgilerini algılamak için isteğe
 Lütfen, `redactedText` ALGıLANAN PII varlıklarının varlıkların her bir karakteri için bir * ile değiştirildiği değiştirilmiş giriş metnini içeren yanıt json ' da özelliğinin eklenmesini unutmayın.
 
 [Adlandırılmış varlık tanıma sürüm 3,1-Önizleme başvurusu `PII`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionPii)
+
+#### <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
+
+Adlandırılmış varlık tanıma v3, NER ve varlık bağlama istekleri için ayrı uç noktalar kullanır. İsteğinize göre aşağıdan bir URL biçimi kullanın:
+
+Varlık bağlama
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/linking`
+
+[İçin adlandırılmış varlık tanıma sürüm 3,0 başvurusu `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
+
+HI
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
+
+[İçin adlandırılmış varlık tanıma sürüm 3,0 başvurusu `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
 
 ---
 
@@ -142,6 +142,96 @@ Hemen çıktı döndürülür. Sonuçları, JSON kabul eden bir uygulamada akı�
 ### <a name="example-responses"></a>Örnek yanıtlar
 
 Sürüm 3, genel NER, PII ve varlık bağlama için ayrı uç noktalar sağlar. Her iki işlem için de yanıtlar aşağıda verilmiştir. 
+
+#### <a name="version-31-preview"></a>[Sürüm 3,1-Önizleme](#tab/version-3-preview)
+
+PII yanıtı örneği:
+```json
+{
+  "documents": [
+    {
+    "redactedText": "You can even pre-order from their online menu at *************************, call ************ or send email to ***************************!",
+    "id": "0",
+    "entities": [
+        {
+        "text": "www.contososteakhouse.com",
+        "category": "URL",
+        "offset": 49,
+        "length": 25,
+        "confidenceScore": 0.8
+        }, 
+        {
+        "text": "312-555-0176",
+        "category": "Phone Number",
+        "offset": 81,
+        "length": 12,
+        "confidenceScore": 0.8
+        }, 
+        {
+        "text": "order@contososteakhouse.com",
+        "category": "Email",
+        "offset": 111,
+        "length": 27,
+        "confidenceScore": 0.8
+        }
+      ],
+    "warnings": []
+    }
+  ],
+  "errors": [],
+  "modelVersion": "2020-07-01"
+}
+```
+
+Bir varlık bağlama yanıtı örneği:
+
+```json
+{
+  "documents": [
+    {
+      "id": "1",
+      "entities": [
+        {
+          "bingId": "f8dd5b08-206d-2554-6e4a-893f51f4de7e", 
+          "name": "Space Needle",
+          "matches": [
+            {
+              "text": "Space Needle",
+              "offset": 30,
+              "length": 12,
+              "confidenceScore": 0.4
+            }
+          ],
+          "language": "en",
+          "id": "Space Needle",
+          "url": "https://en.wikipedia.org/wiki/Space_Needle",
+          "dataSource": "Wikipedia"
+        },
+        {
+          "bingId": "5fbba6b8-85e1-4d41-9444-d9055436e473",
+          "name": "Seattle",
+          "matches": [
+            {
+              "text": "Seattle",
+              "offset": 62,
+              "length": 7,
+              "confidenceScore": 0.25
+            }
+          ],
+          "language": "en",
+          "id": "Seattle",
+          "url": "https://en.wikipedia.org/wiki/Seattle",
+          "dataSource": "Wikipedia"
+        }
+      ],
+      "warnings": []
+    }
+  ],
+  "errors": [],
+  "modelVersion": "2020-02-01"
+}
+```
+
 
 #### <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
 
@@ -197,92 +287,7 @@ Genel bir NER yanıtı örneği:
   "modelVersion": "2020-04-01"
 }
 ```
-#### <a name="version-31-preview"></a>[Sürüm 3,1-Önizleme](#tab/version-3-preview)
 
-PII yanıtı örneği:
-```json
-{
-  "documents": [
-    {
-    "redactedText": "You can even pre-order from their online menu at *************************, call ************ or send email to ***************************!",
-    "id": "0",
-    "entities": [
-        {
-        "text": "www.contososteakhouse.com",
-        "category": "URL",
-        "offset": 49,
-        "length": 25,
-        "confidenceScore": 0.8
-        }, 
-        {
-        "text": "312-555-0176",
-        "category": "Phone Number",
-        "offset": 81,
-        "length": 12,
-        "confidenceScore": 0.8
-        }, 
-        {
-        "text": "order@contososteakhouse.com",
-        "category": "Email",
-        "offset": 111,
-        "length": 27,
-        "confidenceScore": 0.8
-        }
-      ],
-    "warnings": []
-    }
-  ],
-  "errors": [],
-  "modelVersion": "2020-07-01"
-}
-```
-Bir varlık bağlama yanıtı örneği:
-```json
-{
-  "documents": [
-    {
-      "id": "1",
-      "entities": [
-        {
-          "bingId": "f8dd5b08-206d-2554-6e4a-893f51f4de7e", 
-          "name": "Space Needle",
-          "matches": [
-            {
-              "text": "Space Needle",
-              "offset": 30,
-              "length": 12,
-              "confidenceScore": 0.4
-            }
-          ],
-          "language": "en",
-          "id": "Space Needle",
-          "url": "https://en.wikipedia.org/wiki/Space_Needle",
-          "dataSource": "Wikipedia"
-        },
-        {
-          "bingId": "5fbba6b8-85e1-4d41-9444-d9055436e473",
-          "name": "Seattle",
-          "matches": [
-            {
-              "text": "Seattle",
-              "offset": 62,
-              "length": 7,
-              "confidenceScore": 0.25
-            }
-          ],
-          "language": "en",
-          "id": "Seattle",
-          "url": "https://en.wikipedia.org/wiki/Seattle",
-          "dataSource": "Wikipedia"
-        }
-      ],
-      "warnings": []
-    }
-  ],
-  "errors": [],
-  "modelVersion": "2020-02-01"
-}
-```
 ---
 
 

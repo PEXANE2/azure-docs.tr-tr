@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 1298a1676d7a7ac0321ae768c3e596f481e80a8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36377d34a03150fefb8332bcfbe7bb6633ccc606
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617885"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973318"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL yönetilen örneği arasındaki T-SQL farklılıkları
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -353,7 +353,11 @@ SQL Server ' de etkinleştirilen DBCC deyimleri SQL yönetilen örneği 'nde des
 
 ### <a name="distributed-transactions"></a>Dağıtılmış işlemler
 
-MSDTC ve [elastik işlemler](../database/elastic-transactions-overview.md) Şu anda SQL yönetilen örneği 'nde desteklenmiyor.
+[Dağıtılmış işlemler](../database/elastic-transactions-overview.md) için kısmi destek şu anda genel önizlemededir. Desteklenen senaryolar şunlardır:
+* Katılımcıların yalnızca [sunucu güven grubunun](https://aka.ms/mitrusted-groups)parçası olan Azure SQL yönetilen örnekleri olduğu işlemler.
+* .NET (TransactionScope sınıfı) ve Transact-SQL ' den başlatılan işlemler.
+
+Azure SQL yönetilen örneği şu anda MSDTC şirket içi veya Azure sanal makinelerinde düzenli olarak desteklenen diğer senaryoları desteklemez.
 
 ### <a name="extended-events"></a>Genişletilmiş Olaylar
 

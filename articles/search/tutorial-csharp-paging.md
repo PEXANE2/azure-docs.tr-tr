@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8dfc69bf251a811363426a3aeca7379d18458b47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a08756a1e3153aa69bd0e79dc23e88d4bf211e5d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667240"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950695"
 ---
 # <a name="tutorial-add-paging-to-search-results-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak arama sonuçlarına sayfalama ekleme
 
@@ -35,7 +35,7 @@ Bu öğreticide geliştirdiğiniz kodun tamamlanmış sürümleri aşağıdaki p
 
 * [2B-Ekle-sonsuz-kaydırma (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/2b-add-infinite-scroll)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [1-temel arama sayfası (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/1-basic-search-page) projesi. Bu proje, önceki öğreticiden ya da GitHub 'dan bir kopyadan oluşturulmuş kendi sürümünüz olabilir.
 
@@ -304,7 +304,7 @@ Temel arama sayfası çözümünün açık olmasını sağlayabilirsiniz.
     }
     ```
 
-1. Önceki derste tanıtılan **Runqueryasync** yönteminin, söz dizimi hatasını çözmek için değiştirilmesi gerekir. **Skip** ayarından başlayarak yalnızca bir sayfa değeri Istemek Için [**SearchOptions**](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchoptions) sınıfının **Skip**, **size**ve **includetotalcount** alanlarını kullanırız. Görünümümüzü için sayfalama değişkenlerini de hesapladık. Tüm yöntemi aşağıdaki kodla değiştirin.
+1. Önceki derste tanıtılan **Runqueryasync** yönteminin, söz dizimi hatasını çözmek için değiştirilmesi gerekir. **Skip** ayarından başlayarak yalnızca bir sayfa değeri Istemek Için [**SearchOptions**](/dotnet/api/azure.search.documents.searchoptions) sınıfının **Skip**, **size**ve **includetotalcount** alanlarını kullanırız. Görünümümüzü için sayfalama değişkenlerini de hesapladık. Tüm yöntemi aşağıdaki kodla değiştirin.
 
     ```csharp
     private async Task<ActionResult> RunQueryAsync(SearchData model, int page, int leftMostPage)

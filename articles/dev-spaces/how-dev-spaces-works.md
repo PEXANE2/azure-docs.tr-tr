@@ -5,14 +5,16 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 description: Güç Azure Dev Spaces olan süreçler açıklanmaktadır
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: 81408ed4bbe5322538d893b29c7397104c5b0844
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8de2c27ce03c871e60b6437656ad630fc8de8408
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981274"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963712"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Azure Dev Spaces nasıl çalışır?
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Bir Kubernetes uygulamasının geliştirilmesi zor olabilir. Docker ve Kubernetes yapılandırma dosyalarına ihtiyacınız vardır. Uygulamanızı yerel olarak test etme ve diğer bağımlı hizmetlerle etkileşim kurma hakkında bilgi almanız gerekir. Birden çok hizmeti aynı anda ve bir geliştirici ekibi ile geliştirmeyi ve test etmeyi işlemeniz gerekebilir.
 

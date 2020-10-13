@@ -14,12 +14,12 @@ ms.date: 05/18/2020
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: 4990b81d929019b3d201f004176234fa0ea78339
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40bf202e0f14f18d817e4e918f8372ba3c0a4ad8
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88118459"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950678"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Tek Sign-On SAML Protokolü
 
@@ -51,7 +51,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 | ID | Gerekli | Azure AD döndürülen yanıtın özniteliğini doldurmak için bu özniteliği kullanır `InResponseTo` . KIMLIK bir sayıyla başlamamalıdır, bu nedenle ortak bir strateji, bir GUID 'nin dize gösterimine "ID" gibi bir dizeyi eklemek için kullanılır. Örneğin, `id6c1c178c166d486687be4aaf5e482730` geçerli BIR kimliğidir. |
 | Sürüm | Gerekli | Bu parametre **2,0**olarak ayarlanmalıdır. |
 | IssueInstant | Gerekli | Bu, UTC değeri ve [gidiş dönüş biçimine ("o")](/dotnet/standard/base-types/standard-date-and-time-format-strings)sahip bir tarih saat dizesidir. Azure AD bu türde bir DateTime değeri bekler, ancak bu değeri değerlendirmez veya kullanmaz. |
-| AssertionConsumerServiceUrl | İsteğe Bağlı | Sağlanmışsa, bu parametrenin `RedirectUri` Azure AD 'deki bulut hizmeti ile eşleşmesi gerekir. |
+| AssertionConsumerServiceURL | İsteğe Bağlı | Sağlanmışsa, bu parametrenin `RedirectUri` Azure AD 'deki bulut hizmeti ile eşleşmesi gerekir. |
 | ForceAuthn | İsteğe Bağlı | Bu bir Boole değeridir. Doğru ise, kullanıcının Azure AD ile geçerli bir oturumu olsa bile yeniden kimlik doğrulaması yapması zorunlu olacaktır. |
 | Ipassive | İsteğe Bağlı | Bu, Azure AD 'nin Kullanıcı etkileşimi olmadan kullanıcının kimlik doğrulaması yapması gerekip gerekmediğini, varsa oturum tanımlama bilgisini kullanmasını belirten bir Boole değeridir. Bu değer doğru ise, Azure AD oturum tanımlama bilgisini kullanarak kullanıcının kimliğini doğrulamaya çalışacaktır. |
 

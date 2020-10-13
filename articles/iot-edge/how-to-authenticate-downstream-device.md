@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a9d2116062dc45f3602bf5ee0efba31ad815c0c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2f189adf198a7e04edd3900a1e6da134329857e
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447852"
+ms.locfileid: "91932150"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Azure IoT Hub’da bir aşağı akış cihazının kimliğini doğrulama
 
@@ -59,7 +59,7 @@ Yeni cihaz kimliğini oluşturduğunuzda, aşağıdaki bilgileri sağlayın:
 
 * Kimlik doğrulama türü olarak **simetrik anahtar** ' ı seçin.
 
-* İsteğe bağlı olarak, **bir üst cihaz ayarlamayı** seçin ve bu aşağı akış cihazının bağlanacağı IoT Edge ağ geçidi cihazını seçin. Bu adım simetrik anahtar kimlik doğrulaması için isteğe bağlıdır, ancak bir üst cihaz ayarlandığında, aşağı akış cihazınız için [çevrimdışı yetenekler](offline-capabilities.md) sağladığından önerilir. Üst öğeyi daha sonra eklemek veya değiştirmek için cihaz ayrıntılarını her zaman güncelleştirebilirsiniz.
+* **Bir üst cihaz ayarla** ' yı seçin ve bu aşağı akış cihazının bağlanacağı IoT Edge ağ geçidi cihazını seçin. Bu adım, aşağı akış cihazınız için [çevrimdışı yetenekleri](offline-capabilities.md) sunar. Üst öğeyi daha sonra dilediğiniz zaman değiştirebilirsiniz.
 
    ![Portalda simetrik anahtar kimlik doğrulaması ile cihaz KIMLIĞI oluşturma](./media/how-to-authenticate-downstream-device/symmetric-key-portal.png)
 
@@ -201,7 +201,7 @@ Veya
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;x509=true;GatewayHostName=myGatewayDevice
 ```
 
-Bu aşağı akış cihazı için bir üst/alt ilişki kurduysanız, ağ geçidini doğrudan bağlantı ana bilgisayarı olarak çağırarak bağlantı dizesini basitleştirebilirsiniz. X. 509.440 kimlik doğrulaması için üst/alt ilişkileri gerekir, ancak simetrik anahtar kimlik doğrulaması için isteğe bağlıdır. Örneğin:
+Üst/alt öğe ilişkisi sayesinde, ağ geçidini doğrudan bağlantı ana bilgisayarı olarak çağırarak bağlantı dizesini basitleştirebilirsiniz. Örneğin:
 
 ```
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz

@@ -12,7 +12,7 @@ ms.openlocfilehash: 104424c1e3bd1df69106db7da45b744755b51e82
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91858814"
 ---
 # <a name="create-a-cluster-with-data-lake-storage-gen2-using-the-azure-portal"></a>Azure portal kullanarak Data Lake Storage 2. bir küme oluşturma
@@ -29,7 +29,7 @@ Depolama için Data Lake Storage 2. kullanan bir HDInsight kümesi oluşturmak i
 
 Henüz bir tane yoksa, Kullanıcı tarafından atanan bir yönetilen kimlik oluşturun.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol üst köşedeki **kaynak oluştur ' a**tıklayın.
 1. Arama kutusuna **Kullanıcı atandı** yazın ve **Kullanıcı tarafından atanan yönetilen kimlik**' e tıklayın.
 1. **Oluştur**’a tıklayın.
@@ -44,7 +44,7 @@ Yönetilen kimliklerin Azure HDInsight 'ta nasıl çalıştığı hakkında daha
 
 Azure Data Lake Storage 2. ile kullanmak için bir depolama hesabı oluşturun.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol üst köşedeki **kaynak oluştur ' a**tıklayın.
 1. Arama kutusuna **depolama** yazın ve **depolama hesabı**' na tıklayın.
 1. **Oluştur**’a tıklayın.

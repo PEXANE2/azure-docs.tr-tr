@@ -2,17 +2,14 @@
 title: Azure Application Insights Visual Studio 'da hata ayıklama
 description: Hata ayıklama ve üretim sırasında wen uygulaması performans analizi ve tanılama.
 ms.topic: conceptual
-author: NumberByColors
-ms.author: daviste
-ms.date: 07/07/2017
-ms.reviewer: mbullwin
+ms.date: 03/17/2017
 ms.custom: vs-azure
-ms.openlocfilehash: 1bb18cc43ef306a208500ff49ec41dbfb74b788e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3937719fd47ba988cf1e0a93f4c06fcc8112d3e
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323477"
+ms.locfileid: "91932218"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Visual Studio 'da Azure Application Insights ile uygulamalarınızın hatalarını ayıklama
 Visual Studio’da (2015 ve sonraki sürümler) hem hata ayıklama hem de üretim sırasında [Azure Application Insights](./app-insights-overview.md)’tan alınan telemetri verilerini kullanarak, ASP.NET web uygulamanızdaki performansı çözümleyebilir ve sorunları tanılayabilirsiniz.
@@ -94,8 +91,6 @@ Telemetriyi portala göndermeden önce hatalarını ayıklamak istediğiniz [öz
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-|  |  |
-| --- | --- |
-| **[Daha fazla veri ekleme](./asp-net-more.md)**<br/>Kullanımı, kullanılabilirliği, bağımlılıkları, özel durumları izleyin. Günlük altyapılarından izlemeleri tümleştirin. Özel telemetri yazın. |![Visual studio](./media/visual-studio/64.png) |
-| **[Application Insights portalıyla çalışma](./overview-dashboard.md)**<br/>Panolar, güçlü tanılama ve analiz araçları, uyarılar, uygulamanızın canlı bağımlılık Haritası ve aktarılmış telemetri verilerini görüntüleyin. |![Visual studio](./media/visual-studio/62.png) |
+
+ * **[Application Insights portalı Ile çalışma](./overview-dashboard.md)**. Panolar, güçlü tanılama ve analiz araçları, uyarılar, uygulamanızın canlı bağımlılık Haritası ve aktarılmış telemetri verilerini görüntüleyin. 
 

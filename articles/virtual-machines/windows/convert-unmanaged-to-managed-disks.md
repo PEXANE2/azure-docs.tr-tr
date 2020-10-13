@@ -7,16 +7,16 @@ ms.subservice: disks
 ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: cf601c7f7429d4676ec480ddc016158150da8ce5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2168b3e3c55eaf06b93358f4623b181f134b4f9e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88815208"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974203"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Windows sanal makinesini yönetilmeyen disklerden yönetilen disklere dönüştürme
 
-Yönetilmeyen diskler kullanan mevcut Windows sanal makinelerinizi (VM) varsa, [Azure yönetilen diskler](managed-disks-overview.md) hizmeti aracılığıyla VM 'leri yönetilen diskleri kullanacak şekilde dönüştürebilirsiniz. Bu işlem hem işletim sistemi diskini hem de bağlı veri disklerini dönüştürür.
+Yönetilmeyen diskler kullanan mevcut Windows sanal makinelerinizi (VM) varsa, [Azure yönetilen diskler](../managed-disks-overview.md) hizmeti aracılığıyla VM 'leri yönetilen diskleri kullanacak şekilde dönüştürebilirsiniz. Bu işlem hem işletim sistemi diskini hem de bağlı veri disklerini dönüştürür.
 
  
 
@@ -95,7 +95,7 @@ Dönüştürmeden önce, tüm VM uzantılarının ' sağlama başarılı ' durum
 
 Azure portal kullanarak, yönetilmeyen diskleri yönetilen disklere de dönüştürebilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Portaldaki VM 'Ler listesinden VM 'yi seçin.
 3. VM 'nin dikey penceresinde, menüden **diskler** ' i seçin.
 4. **Diskler** dikey penceresinin üst kısmında, **yönetilen disklere geçir**' i seçin.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0b910e3b119167fb4c6de55289d92b9d538c8ddb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6fedefccf57364e690415542114030ba7ce12b49
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87284566"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974100"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>Windows sanal makineleri için Azure disk şifrelemesi hakkında SSS
 
@@ -140,5 +140,5 @@ Azure Backup, şifrelenmiş VM 'nin aynı abonelik ve bölge içinde yedeklenmes
 Bu belgede, Azure disk şifrelemesi ile ilgili en sık sorulan sorular hakkında daha fazla bilgi edindiniz. Bu hizmet hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Azure Disk Şifrelemesine Genel Bakış](disk-encryption-overview.md)
-- [Azure Güvenlik Merkezi 'nde disk şifrelemeyi uygulama](../../security-center/security-center-virtual-machine-protection.md)
+- [Azure Güvenlik Merkezi 'nde disk şifrelemeyi uygulama](../../security-center/asset-inventory.md)
 - [Azure bekleyen verileri şifreleme](../../security/fundamentals/encryption-atrest.md)

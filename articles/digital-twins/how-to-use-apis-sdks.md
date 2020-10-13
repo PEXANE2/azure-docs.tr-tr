@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2af4f2e2148c96a6059836f861cf56d4a4ac005b
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 61c8468400898655b6501b7a8fada607b77b1466
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766175"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91931504"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins API’lerini ve SDK’larını kullanma
 
@@ -29,7 +29,7 @@ Denetim düzlemi API 'Leri, Azure dijital TWINS örneğinizi bir bütün olarak 
 Genel önizleme için en güncel Denetim düzlemi API sürümü _**2020-03-01-Preview**_' dır.
 
 Denetim düzlemi API 'Lerini kullanmak için:
-* En son [Swagger klasörüne](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)başvurarak API 'leri doğrudan çağırabilirsiniz. Bu depo ayrıca kullanımı gösteren örneklerin bir klasörünü de içerir.
+* [Denetim düzlemi Swagger klasöründeki](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)en son Swagger 'A başvurarak API 'leri doğrudan çağırabilirsiniz. Bu depo ayrıca kullanımı gösteren örneklerin bir klasörünü de içerir.
 * Şu anda, içindeki denetim API 'Leri için SDK 'Lara erişebilirsiniz...
   - [.Net (C#)](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/1.0.0-preview.1) ([kaynak](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins)) ([başvuru [otomatik olarak oluşturulan]](https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet-preview&preserve-view=true))
   - [Java](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_03_01_preview/azure-mgmt-digitaltwins) ([kaynak](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins)) ([başvuru [otomatik olarak oluşturulan]](https://docs.microsoft.com/java/api/overview/azure/digitaltwins/management?view=azure-java-preview&preserve-view=true))
@@ -51,7 +51,7 @@ Genel önizleme için en güncel veri düzlemi API sürümü _**2020-05-31-Previ
 
 Veri düzlemi API 'Lerini kullanmak için:
 * API 'Leri doğrudan çağırabilirsiniz...
-   - en son [Swagger klasörüne](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)başvuruluyor. Bu depo ayrıca kullanımı gösteren örneklerin bir klasörünü de içerir. 
+   - [veri düzlemi Swagger klasöründe](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)en son Swagger 'ye başvuruluyor. Bu depo ayrıca kullanımı gösteren örneklerin bir klasörünü de içerir. 
    - [API başvuru belgelerini](https://docs.microsoft.com/rest/api/azure-digitaltwins/)görüntüleme.
 * **.Net (C#)** SDK 'sını kullanabilirsiniz. .NET SDK 'Yı kullanmak için...
    - paketi NuGet: [Azure. DigitalTwins. Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core)' dan görüntüleyebilir ve ekleyebilirsiniz. 

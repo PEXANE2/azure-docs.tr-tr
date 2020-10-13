@@ -8,23 +8,23 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: 94763cee852893057348f8eea1fa74fa742f62a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ffd7d2513e87f818001d7ccf96212a4dbef7ac2
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91534735"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950151"
 ---
 # <a name="accessing-secure-resources-via-private-endpoints"></a>Özel uç noktalar aracılığıyla güvenli kaynaklara erişme
 
 Azure kaynakları (örneğin, veri kaynakları olarak kullanılan depolama hesapları), yalnızca belirli bir sanal ağ listesinden erişilebilmesi için yapılandırılabilir. Ayrıca, herhangi bir "ortak ağ" erişimine izin vermemek için de yapılandırılabilir.
-Müşteriler, Dizin oluşturucular aracılığıyla bu tür veri kaynaklarından verilere güvenli bir şekilde erişmek için Azure Bilişsel Arama 'yi (giden) [özel bir uç nokta bağlantısı](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) oluşturmak üzere isteyebilir.
+Müşteriler, Dizin oluşturucular aracılığıyla bu tür veri kaynaklarından verilere güvenli bir şekilde erişmek için Azure Bilişsel Arama 'yi (giden) [özel bir uç nokta bağlantısı](../private-link/private-endpoint-overview.md) oluşturmak üzere isteyebilir.
 
 ## <a name="shared-private-link-resources-management-apis"></a>Paylaşılan özel bağlantı kaynakları yönetim API 'Leri
 
 Müşteri isteğiyle Azure Bilişsel Arama tarafından oluşturulan özel uç noktalar, "güvenli" kaynaklara erişmek için *paylaşılan özel bağlantı kaynakları*olarak adlandırılır. Müşteri, [Azure özel bağlantı hizmetine](https://azure.microsoft.com/services/private-link/)eklenmediyse 'e sahip olan bir kaynağa (örneğin, bir depolama hesabı) erişimi paylaşıyor.
 
-Azure Bilişsel Arama, arama yönetimi API 'SI aracılığıyla, [paylaşılan özel bağlantı kaynakları oluşturma veya güncelleştirme](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate)özelliği aracılığıyla sunulur. Bu API 'yi, Azure Bilişsel Arama Dizin oluşturucudan güvenli bir kaynağa erişimi yapılandırmak için diğer *paylaşılan özel bağlantı kaynakları* yönetim API 'leriyle birlikte kullanacaksınız.
+Azure Bilişsel Arama, arama yönetimi API 'SI aracılığıyla, [paylaşılan özel bağlantı kaynakları oluşturma veya güncelleştirme](/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate)özelliği aracılığıyla sunulur. Bu API 'yi, Azure Bilişsel Arama Dizin oluşturucudan güvenli bir kaynağa erişimi yapılandırmak için diğer *paylaşılan özel bağlantı kaynakları* yönetim API 'leriyle birlikte kullanacaksınız.
 
 Bazı kaynaklara yönelik özel uç nokta bağlantıları `2020-08-01-Preview` , yalnızca aşağıdaki tabloda bulunan "Önizleme" etiketiyle belirtilen arama YÖNETIMI API 'sinin () önizleme sürümü ile oluşturulabilir. "Önizleme" etiketini içermeyen kaynaklar hem önizleme API 'si hem de GA API 'SI () ile oluşturulabilir `2020-08-01`
 
@@ -40,7 +40,7 @@ Azure Bilişsel Arama giden özel uç noktaların oluşturulabilmesi için Azure
 | Azure Key Vault | `vault` |
 | Azure Işlevleri (Önizleme) | `sites` |
 
-Giden özel uç nokta bağlantılarının desteklendiği Azure kaynakları listesi, [desteklenen API listesi](https://docs.microsoft.com/rest/api/searchmanagement/privatelinkresources/listsupported)aracılığıyla da sorgulanabilir.
+Giden özel uç nokta bağlantılarının desteklendiği Azure kaynakları listesi, [desteklenen API listesi](/rest/api/searchmanagement/privatelinkresources/listsupported)aracılığıyla da sorgulanabilir.
 
 Bu kılavuzun amaçları doğrultusunda, REST API çağrılarını göstermek için [Armclient](https://github.com/projectkudu/ARMClient) ve [Postman](https://www.postman.com/) karışımı kullanılır.
 
@@ -51,12 +51,12 @@ Kılavuzun geri kalanında __contoso-Search__ hizmetinin, dizin oluşturucuları
 
 ## <a name="securing-your-storage-account"></a>Depolama hesabınızın güvenliğini sağlama
 
-Depolama hesabını [yalnızca belirli alt ağlardan erişime izin verecek](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-a-virtual-network)şekilde yapılandırın. Azure portal aracılığıyla, bu seçeneği denetleyip kümeyi boş bırakırsanız, herhangi bir sanal ağdan hiçbir trafiğe izin verilmeyeceği anlamına gelir.
+Depolama hesabını [yalnızca belirli alt ağlardan erişime izin verecek](../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)şekilde yapılandırın. Azure portal aracılığıyla, bu seçeneği denetleyip kümeyi boş bırakırsanız, herhangi bir sanal ağdan hiçbir trafiğe izin verilmeyeceği anlamına gelir.
 
    ![Sanal ağ erişimi](media\search-indexer-howto-secure-access\storage-firewall-noaccess.png "Sanal ağ erişimi")
 
 > [!NOTE]
-> [Güvenilen Microsoft hizmet yaklaşımı](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services) , bu tür bir depolama hesabında sanal ağ veya IP kısıtlamalarını atlamak için kullanılabilir ve arama hizmetinin [nasıl yapılır kılavuzunda](search-indexer-howto-access-trusted-service-exception.md)açıklandığı gibi, depolama hesabındaki verilere erişmesini sağlayabilir. Ancak, Azure Bilişsel Arama ile depolama hesabı arasındaki bu yaklaşım iletişim, güvenli Microsoft omurga ağı üzerinden depolama hesabının genel IP adresi aracılığıyla gerçekleşir.
+> [Güvenilen Microsoft hizmet yaklaşımı](../storage/common/storage-network-security.md#trusted-microsoft-services) , bu tür bir depolama hesabında sanal ağ veya IP kısıtlamalarını atlamak için kullanılabilir ve arama hizmetinin [nasıl yapılır kılavuzunda](search-indexer-howto-access-trusted-service-exception.md)açıklandığı gibi, depolama hesabındaki verilere erişmesini sağlayabilir. Ancak, Azure Bilişsel Arama ile depolama hesabı arasındaki bu yaklaşım iletişim, güvenli Microsoft omurga ağı üzerinden depolama hesabının genel IP adresi aracılığıyla gerçekleşir.
 
 ## <a name="step-1-create-a-shared-private-link-resource-to-the-storage-account"></a>1. Adım: depolama hesabına paylaşılan bir özel bağlantı kaynağı oluşturma
 
@@ -101,7 +101,7 @@ Bu URI, işlemin durumunu elde etmek için düzenli aralıklarla yoklanabilir. D
 ## <a name="step-2a-approve-the-private-endpoint-connection-for-the-storage-account"></a>Adım 2a: depolama hesabı için özel uç nokta bağlantısını onaylama
 
 > [!NOTE]
-> Bu bölüm, depolama için özel bir uç noktanın onay akışında gezinmek üzere Azure portal kullanır. Bunun yerine depolama kaynak sağlayıcısı (RP) ile kullanılabilen [REST API](https://docs.microsoft.com/rest/api/storagerp/privateendpointconnections) de kullanılabilir.
+> Bu bölüm, depolama için özel bir uç noktanın onay akışında gezinmek üzere Azure portal kullanır. Bunun yerine depolama kaynak sağlayıcısı (RP) ile kullanılabilen [REST API](/rest/api/storagerp/privateendpointconnections) de kullanılabilir.
 >
 > CosmosDB, Azure SQL Server vb. gibi diğer sağlayıcılar da özel uç nokta bağlantılarını yönetmek için benzer RP API 'Leri sunar.
 
@@ -117,7 +117,7 @@ Azure Bilişsel Arama tarafından oluşturulan özel uç noktayı seçin (öncek
 
 ## <a name="step-2b-query-the-status-of-the-shared-private-link-resource"></a>Adım 2b: paylaşılan özel bağlantı kaynağının durumunu sorgulama
 
- Paylaşılan özel bağlantı kaynağının onay sonrasında güncelleştirildiğini onaylamak için, [Get API 'si](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources/get)aracılığıyla durumunu elde edin.
+ Paylaşılan özel bağlantı kaynağının onay sonrasında güncelleştirildiğini onaylamak için, [Get API 'si](/rest/api/searchmanagement/sharedprivatelinkresources/get)aracılığıyla durumunu elde edin.
 
 `armclient GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe?api-version=2020-08-01`
 
@@ -143,24 +143,24 @@ Azure Bilişsel Arama tarafından oluşturulan özel uç noktayı seçin (öncek
 > [!NOTE]
 > Bu adım, Özel uç nokta bağlantısı onaylanmadan önce bile gerçekleştirilebilir. Özel uç nokta bağlantısı onaylanana kadar, güvenli bir kaynakla (depolama hesabı gibi) iletişim kurmayı denediği herhangi bir dizin oluşturucu geçici bir hata durumunda sona acaktır. Yeni Dizin oluşturucular oluşturulamaz. Özel uç nokta bağlantısı onaylandığında, Dizin oluşturucular özel depolama hesabına erişebilecektir.
 
-1. Güvenli depolama hesabına ve depolama hesabı içinde uygun bir kapsayıcıya işaret eden [bir veri kaynağı oluşturun](https://docs.microsoft.com/rest/api/searchservice/create-data-source) . Aşağıda Postman aracılığıyla gerçekleştirilen bu istek gösterilmektedir.
+1. Güvenli depolama hesabına ve depolama hesabı içinde uygun bir kapsayıcıya işaret eden [bir veri kaynağı oluşturun](/rest/api/searchservice/create-data-source) . Aşağıda Postman aracılığıyla gerçekleştirilen bu istek gösterilmektedir.
 ![Veri Kaynağı Oluşturma](media\search-indexer-howto-secure-access\create-ds.png "Veri kaynağı oluşturma")
 
-2. Benzer şekilde [bir dizin oluşturun](https://docs.microsoft.com/rest/api/searchservice/create-index) ve isteğe bağlı olarak REST API kullanarak [bir beceri oluşturun](https://docs.microsoft.com/rest/api/searchservice/create-skillset) .
+2. Benzer şekilde [bir dizin oluşturun](/rest/api/searchservice/create-index) ve isteğe bağlı olarak REST API kullanarak [bir beceri oluşturun](/rest/api/searchservice/create-skillset) .
 
-3. Yukarıda oluşturulan veri kaynağına, dizine ve beceri işaret eden [bir Dizin Oluşturucu oluşturun](https://docs.microsoft.com/rest/api/searchservice/create-indexer) . Ayrıca, Dizin Oluşturucu yapılandırma özelliğini olarak ayarlayarak, Dizin oluşturucuyu özel yürütme ortamında çalışacak şekilde zorlayın `executionEnvironment` `"Private"` .
+3. Yukarıda oluşturulan veri kaynağına, dizine ve beceri işaret eden [bir Dizin Oluşturucu oluşturun](/rest/api/searchservice/create-indexer) . Ayrıca, Dizin Oluşturucu yapılandırma özelliğini olarak ayarlayarak, Dizin oluşturucuyu özel yürütme ortamında çalışacak şekilde zorlayın `executionEnvironment` `"Private"` .
 ![Dizin Oluşturucu oluştur](media\search-indexer-howto-secure-access\create-idr.png "Dizin Oluşturucu oluşturma")
 
-Dizin Oluşturucu başarıyla oluşturulmalıdır ve özel uç nokta bağlantısı üzerinden depolama hesabından ilerleme-dizin oluşturma içeriği yapılmalıdır. Dizin oluşturucunun durumu, [Dizin Oluşturucu durum API 'si](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)aracılığıyla izlenebilir.
+Dizin Oluşturucu başarıyla oluşturulmalıdır ve özel uç nokta bağlantısı üzerinden depolama hesabından ilerleme-dizin oluşturma içeriği yapılmalıdır. Dizin oluşturucunun durumu, [Dizin Oluşturucu durum API 'si](/rest/api/searchservice/get-indexer-status)aracılığıyla izlenebilir.
 
 > [!NOTE]
-> Zaten mevcut dizin oluşturucular varsa, öğesini olarak ayarlamak için [PUT API 'si](https://docs.microsoft.com/rest/api/searchservice/create-indexer) aracılığıyla yalnızca bunları güncelleştirebilirsiniz `executionEnvironment` `"Private"` .
+> Zaten mevcut dizin oluşturucular varsa, öğesini olarak ayarlamak için [PUT API 'si](/rest/api/searchservice/create-indexer) aracılığıyla yalnızca bunları güncelleştirebilirsiniz `executionEnvironment` `"Private"` .
 
 ## <a name="troubleshooting-issues"></a>Sorun giderme
 
 - Bir Dizin Oluşturucu oluştururken, oluşturma "veri kaynağı kimlik bilgileri geçersiz" ile benzer bir hata iletisiyle başarısız olursa, Özel uç nokta bağlantısının *onaylanmadığı* ya da işlevsel olmadığı anlamına gelir.
-[Get API](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources/get)'sini kullanarak paylaşılan özel bağlantı kaynağının durumunu alın. *Onaylanmış* ise `properties.provisioningState` kaynağın konumunu denetleyin. `Incomplete`Bu durumda, bu kaynak için temel alınan bağımlılıkların bir kısmının sağlanması başarısız oldu `PUT` . sorunu çözmesi için paylaşılan özel bağlantı kaynağını "yeniden oluşturma" isteği yeniden gönderin. Yeniden onay gerekli olabilir. doğrulamak için kaynağın durumunu yeniden kontrol edin.
-- Dizin Oluşturucu, ayarı yapılmadan oluşturulduysa `executionEnvironment` , Dizin Oluşturucu oluşturma işlemi başarılı olur ancak yürütme geçmişi, dizin oluşturucunun çalışmasının başarısız olduğunu gösterir. Yürütme ortamını belirtmek için [Dizin oluşturucuyu güncelleştirmeniz](https://docs.microsoft.com/rest/api/searchservice/update-indexer) gerekir.
+[Get API](/rest/api/searchmanagement/sharedprivatelinkresources/get)'sini kullanarak paylaşılan özel bağlantı kaynağının durumunu alın. *Onaylanmış* ise `properties.provisioningState` kaynağın konumunu denetleyin. `Incomplete`Bu durumda, bu kaynak için temel alınan bağımlılıkların bir kısmının sağlanması başarısız oldu `PUT` . sorunu çözmesi için paylaşılan özel bağlantı kaynağını "yeniden oluşturma" isteği yeniden gönderin. Yeniden onay gerekli olabilir. doğrulamak için kaynağın durumunu yeniden kontrol edin.
+- Dizin Oluşturucu, ayarı yapılmadan oluşturulduysa `executionEnvironment` , Dizin Oluşturucu oluşturma işlemi başarılı olur ancak yürütme geçmişi, dizin oluşturucunun çalışmasının başarısız olduğunu gösterir. Yürütme ortamını belirtmek için [Dizin oluşturucuyu güncelleştirmeniz](/rest/api/searchservice/update-indexer) gerekir.
 - Dizin Oluşturucu, ayarı yapılmadan oluşturulduysa `executionEnvironment` ve başarıyla çalıştıktan sonra, Azure bilişsel arama 'nin yürütme ortamının, arama hizmeti 'ne özgü "özel" ortam olduğunu karar verdiği anlamına gelir. Bununla birlikte, bu, çeşitli faktörlere (Dizin Oluşturucu tarafından kullanılan kaynaklar, arama hizmeti üzerindeki yük vb.) göre değişebilir ve daha sonraki bir noktada başarısız olabilir. bu sayede, `executionEnvironment` `"Private"` gelecekte başarısız olmamasını sağlamak için olarak ayarlamanızı öneririz.
 - [Kotalar ve sınırlar](search-limits-quotas-capacity.md) , kaç tane paylaşılan özel bağlantı kaynağı oluşturulup arama hizmetinin SKU 'suna bağlı olarak belirlenir.
 
@@ -168,5 +168,5 @@ Dizin Oluşturucu başarıyla oluşturulmalıdır ve özel uç nokta bağlantıs
 
 Özel uç noktalar hakkında daha fazla bilgi edinin:
 
-- [Özel uç noktalar nelerdir?](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)
-- [Özel uç noktalar için gereken DNS yapılandırması](https://docs.microsoft.com/azure/private-link/private-endpoint-dns)
+- [Özel uç noktalar nelerdir?](../private-link/private-endpoint-overview.md)
+- [Özel uç noktalar için gereken DNS yapılandırması](../private-link/private-endpoint-dns.md)
