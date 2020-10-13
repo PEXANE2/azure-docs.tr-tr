@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 286d350493afb1e74f9d2ba6eb445b2c46d995b6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713564"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bamboo-by-resolution-gmbh"></a>Öğretici: çözüm GmbH tarafından Bamboo için SAML SSO ile tümleştirme Azure Active Directory
@@ -74,7 +74,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına bağlı olarak ç�
 Bamboo tarafından çözümlenmek üzere SAML SSO ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Bamboo IÇIN SAML SSO 'yu çözüm GmbH çoklu oturum açma Için yapılandırın](#configure-saml-sso-for-bamboo-by-resolution-gmbh-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Bamboo IÇIN SAML SSO 'yu çözüm GmbH çoklu oturum açma Ile yapılandırın](#configure-saml-sso-for-bamboo-by-resolution-gmbh-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. **[Bamboo by Resolution GmbH test KULLANıCıSıNA SAML SSO 'Su oluşturun](#create-saml-sso-for-bamboo-by-resolution-gmbh-test-user)** ve bu, kullanıcının Azure AD gösterimine bağlı olan Bamboo tarafından çözümlenme GmbH için SAML SSO 'su Ile Ilgili Britta Simon 'un bir karşılığı olur.
@@ -94,7 +94,7 @@ Bamboo tarafından çözümlenmek üzere SAML SSO ile Azure AD çoklu oturum aç
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -115,7 +115,7 @@ Bamboo tarafından çözümlenmek üzere SAML SSO ile Azure AD çoklu oturum aç
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [Bamboo by Resolution GmbH Client support ekibine yönelik SAML SSO ile](https://marketplace.atlassian.com/plugins/com.resolution.atlasplugins.samlsso-bamboo/server/support) iletişim kurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -129,7 +129,7 @@ Bamboo tarafından çözümlenmek üzere SAML SSO ile Azure AD çoklu oturum aç
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-saml-sso-for-bamboo-by-resolution-gmbh-single-sign-on"></a>Bamboo için SAML SSO 'yu çözüm GmbH çoklu oturum açma ile yapılandırma
+### <a name="configure-saml-sso-for-bamboo-by-resolution-gmbh-single-sign-on"></a>Bamboo için SAML SSO 'yu çözüm GmbH tek Sign-On yapılandırma
 
 1. Bamboo için SAML SSO 'da yönetici olarak çözüm GmbH Şirket sitesini oturum açın.
 

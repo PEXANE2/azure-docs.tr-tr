@@ -10,12 +10,12 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 6a63df282cadf86668e69d2422a6c791e86010b6
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: eb698cf3c4cf2bdc47e3df57c65847f499d8760c
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767154"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893671"
 ---
 # <a name="plan-your-telephony-and-sms-solution"></a>Telefon ve SMS çözümünüzü planlama
 
@@ -48,7 +48,7 @@ Aşağıdaki tabloda bu telefon numarası türleri özetlenmektedir:
 | Telefon numarası türü | Örnek                              | Ülke kullanılabilirliği    | Telefon numarası özelliği |Yaygın kullanım durumu                                                                                                     |
 | ----------------- | ------------------------------------ | ----------------------- | ------------------------|------------------------------------------------------------------------------------------------------------------- |
 | Yerel (coğrafi)        | + 1 (yerel alan kodu) XXX XX XX  | ABD                      | Çağırma (giden) | Uygulamalarınızda kullanıcılara telefon numarası atama  |
-| Ücretsiz         | + 1 (ücretsiz alan *kodu*) xxx xx xx | ABD                      | Çağırma (giden), SMS (gelen/giden)| Telefon numaralarını etkileşimli sesli yanıt (ıVR) sistemleri/botlar, SMS uygulamalarına atama                                        |
+| Toll-Free         | + 1 (ücretsiz alan *kodu*) xxx xx xx | ABD                      | Çağırma (giden), SMS (gelen/giden)| Telefon numaralarını etkileşimli sesli yanıt (ıVR) sistemleri/botlar, SMS uygulamalarına atama                                        |
 
 
 ## <a name="phone-number-plans-in-azure-communication-services"></a>Azure Iletişim hizmetlerinde telefon numarası planları 
@@ -68,13 +68,15 @@ Aşağıdaki tabloda, bu telefon numarası türleriyle ilişkili gelen ve giden 
 |Sayı türü| Sayıları alma | Çağrısı yap                                        | Şuradan gelen çağrıları al                                    |Iletileri buraya gönder       | Şuradan Ileti al |
 |-----------| ------------------ | ---------------------------------------------------  |-------------------------------------------------------|-----------------------|--------|
 | Yerel (coğrafi)  | ABD                 | ABD, Kanada, Birleşik Krallık, Almanya, Fransa,. + daha fazla *| ABD, Kanada, Birleşik Krallık, Almanya, Fransa,. + daha fazla * |Kullanılamaz| Kullanılamaz |
-| Ücretsiz | ABD                 | ABD                                                   | ABD                                                    |ABD                | ABD |
+| Toll-Free | ABD                 | ABD                                                   | ABD                                                    |ABD                | ABD |
 
 * Çağrı hedefleri ve fiyatlandırma hakkında daha fazla bilgi için [fiyatlandırma sayfasına](../pricing.md)bakın.
 
 ## <a name="azure-subscriptions-eligibility"></a>Azure aboneliklerine uygunluk
 
 Telefon numarası almak için ücretli bir Azure aboneliğinde olmanız gerekir. Telefon numaraları, deneme hesaplarında elde alınamaz. 
+
+Şu anda telefon numarası kullanılabilirliği, Birleşik Devletler fatura adresi olan Azure abonelikleri ile kısıtlıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

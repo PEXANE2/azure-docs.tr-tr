@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: e859ac13c72ed07d3f57da6e61fd6d9f827f0fca
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bceffe5c53b9cbc863fd9c923ffa4718ebd50436
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88854895"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893824"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Konuşma CLı 'nın temellerini öğrenin
 
@@ -69,6 +69,51 @@ Bu komutta, hem kaynak **(çevrilecek**dil) hem de hedef (çevrilecek **dil) dil
 
 > [!NOTE]
 > Tüm desteklenen dillerin bir listesi için ilgili yerel ayar kodlarıyla birlikte [dil ve yerel ayar makalesine](language-support.md) bakın.
+
+### <a name="configuration-files-in-the-datastore"></a>Veri deposundaki yapılandırma dosyaları
+
+Konuşma CLı, yapılandırma dosyalarında yerel konuşma CLı veri deposunda depolanan birden çok ayarı okuyup yazabilir ve bir @ symbol kullanan konuşma CLı çağrıları içinde adlandırılır. Konuşma CLı, yeni bir ayarı `./spx/data` geçerli çalışma dizininde oluşturduğu yeni bir alt dizinde kaydetmeye çalışır.
+Bir yapılandırma değeri ararken, konuşma CLı geçerli çalışma dizininizde ve sonra `./spx/data` yolunda görünür.
+Daha önce, ve değerlerini kaydetmek için veri deposunu `@key` kullandınız `@region` , bu nedenle bunları her bir komut satırı çağrısıyla belirtmeniz gerekmez.
+Yapılandırma dosyalarını kendi yapılandırma ayarlarınızı depolamak için de kullanabilir veya çalışma zamanında oluşturulan URL 'Leri ya da diğer dinamik içeriği geçirmek için kullanabilirsiniz.
+
+Bu bölümde, kullanarak komut ayarlarını depolamak ve getirmek için yerel veri deposundaki bir yapılandırma dosyasının kullanımı `spx config` ve seçeneğini kullanarak konuşma CLI 'dan çıktı depolaması gösterilmektedir `--output` .
+
+Aşağıdaki örnek, `@my.defaults` yapılandırma dosyasını temizler, dosyadaki **anahtar** ve **bölge** için anahtar-değer çiftleri ekler ve ' a yapılan çağrıda yapılandırmayı kullanır `spx recognize` .
+
+```shell
+spx config @my.defaults --clear
+spx config @my.defaults --add key 000072626F6E20697320636F6F6C0000
+spx config @my.defaults --add region westus
+
+spx config @my.defaults
+
+spx recognize --nodefaults @my.defaults --file hello.wav
+```
+
+Ayrıca, bir yapılandırma dosyasına dinamik içerik yazabilirsiniz. Örneğin, aşağıdaki komut özel bir konuşma modeli oluşturur ve yeni modelin URL 'sini bir yapılandırma dosyasında depolar. Sonraki komut, söz konusu URL 'deki modelin döndürülmeden önce kullanıma hazırlanana kadar bekler.
+
+```shell
+spx csr model create --name "Example 4" --datasets @my.datasets.txt --output url @my.model.txt
+spx csr model status --model @my.model.txt --wait
+```
+
+Aşağıdaki örnek yapılandırma dosyasına iki URL yazar `@my.datasets.txt` .
+Bu senaryoda, `--output` bir yapılandırma dosyası oluşturmak veya mevcut bir dosyaya eklemek için isteğe bağlı bir **Add** anahtar sözcüğü içerebilir.
+
+
+```shell
+spx csr dataset create --name "LM" --kind Language --content https://crbn.us/data.txt --output url @my.datasets.txt
+spx csr dataset create --name "AM" --kind Acoustic --content https://crbn.us/audio.zip --output add url @my.datasets.txt
+
+spx config @my.datasets.txt
+```
+
+Varsayılan yapılandırma dosyalarının kullanımı ( `@spx.default` , `@default.config` ve `@*.default.config` komutuna özgü varsayılan ayarlar için) dahil olmak üzere veri deposu dosyaları hakkında daha fazla bilgi için şu komutu girin:
+
+```shell
+spx help advanced setup
+```
 
 ## <a name="batch-operations"></a>Toplu işlemler
 

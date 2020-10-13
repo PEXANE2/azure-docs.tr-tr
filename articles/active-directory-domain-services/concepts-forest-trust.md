@@ -2,20 +2,20 @@
 title: Güvenler Azure AD Domain Services için nasıl çalışır | Microsoft Docs
 description: Orman güveninin nasıl çalıştığı hakkında daha fazla bilgi edinin Azure AD Domain Services
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 0eed3b6d68e8bfe62e9589b2ef4074df92445095
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.author: joflore
+ms.openlocfilehash: 50b400ffa047d3865a9df77912da187de1ce9cc9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258788"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962624"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Güven ilişkilerinin Azure Active Directory Domain Services içindeki kaynak ormanları için nasıl çalıştığı
 

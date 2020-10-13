@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/17/2020
 ms.author: absha
 ms.openlocfilehash: 69d388b12e564b307cd117c3a86ae960dabaa937
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362721"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Azure Application Gateway arka uca izin vermek için sertifikalar oluşturma
@@ -25,7 +25,7 @@ Bu makalede şunları öğreneceksiniz:
 - Bir arka uç sertifikasından kimlik doğrulama sertifikasını dışarı aktar (v1 SKU 'SU için)
 - Güvenilen kök sertifikayı bir arka uç sertifikasından dışarı aktar (v2 SKU 'SU için)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Application Gateway ile arka uç örneklerine izin vermek için gereken kimlik doğrulama sertifikalarını veya güvenilir kök sertifikaları oluşturmak için mevcut bir arka uç sertifikası gerekir. Arka uç sertifikası, TLS/SSL sertifikasıyla aynı veya ek güvenlik için farklı olabilir. Application Gateway, size bir TLS/SSL sertifikası oluşturma veya satın alma mekanizması sağlamaz. Test amacıyla, otomatik olarak imzalanan bir sertifika oluşturabilirsiniz, ancak bunu üretim iş yükleri için kullanmamalısınız. 
 

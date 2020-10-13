@@ -15,10 +15,10 @@ ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 57d66c844b7e73f1e3326d628f854a9811ca96fd
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91802710"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Active Directory Federasyon Hizmetleri (AD FS) uygulama kimlik doğrulamasını Azure Active Directory olarak taşıma
@@ -458,7 +458,7 @@ Uygulamanızı nasıl yapılandırdığınıza bağlı olarak, SSO 'nun düzgün
 ‎ |
 | SAML tabanlı SSO| **Çoklu oturum açma**altında bulunan [Test SAML ayarları](https://docs.microsoft.com/azure/active-directory/develop/howto-v1-debug-saml-sso-issues) düğmesini kullanın.
 ‎ |
-| Parola tabanlı SSO| [Uygulamaps güvenli oturum açma](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [-](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [uzantısını](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)indirip yükleyin. Bu uzantı, bir SSO işlemi kullanmanızı gerektiren kuruluşunuzun bulut uygulamalarından herhangi birini başlatmanıza yardımcı olur.
+| Password-Based SSO 'SU| [Uygulamaps güvenli oturum açma](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [-](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [uzantısını](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)indirip yükleyin. Bu uzantı, bir SSO işlemi kullanmanızı gerektiren kuruluşunuzun bulut uygulamalarından herhangi birini başlatmanıza yardımcı olur.
 ‎ |
 | Uygulama Ara Sunucusu| Bağlayıcının çalıştığından ve uygulamanıza atandığından emin olun. Daha fazla yardım için [uygulama proxy sorun giderme kılavuzunu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot) ziyaret edin.
 ‎ |
@@ -484,7 +484,7 @@ Dağıtım tamamlandıktan sonra, başarılı dağıtım kullanıcılarına bir 
 
 * Kullanıcılara MFA ayarlarını güncelleştirmesi gerekebilecek kullanıcıları hatırlatın.
 
-* Self servis parola sıfırlama dağıtılırsa, kullanıcıların kimlik doğrulama yöntemlerini güncelleştirmesi veya doğrulaması gerekebilir. Bkz. [MFA](https://aka.ms/mfatemplates) ve [SSPR](https://aka.ms/ssprtemplates) Son Kullanıcı iletişim şablonları.
+* Self-Service parola sıfırlama dağıtılırsa, kullanıcıların kimlik doğrulama yöntemlerini güncelleştirmesi veya doğrulaması gerekebilir. Bkz. [MFA](https://aka.ms/mfatemplates) ve [SSPR](https://aka.ms/ssprtemplates) Son Kullanıcı iletişim şablonları.
 
 Dış kullanıcılarla iletişim: Bu Kullanıcı grubu genellikle sorunlar durumunda en kritik düzeyde etkilendi. Bu özellikle, güvenlik sonrası, dış iş ortakları için farklı koşullu erişim kuralları veya risk profilleri kümesini belirlemesi durumunda geçerlidir. Dış iş ortaklarının, bulut geçiş zamanlamasının farkında olduğundan ve dış işbirliğine özgü tüm akışları test eden bir pilot dağıtıma katılması gereken bir zaman dilimi bulunduğundan emin olun. Son olarak, sorun olması durumunda yardım masasına erişmek için bir yol olduğundan emin olun.
 

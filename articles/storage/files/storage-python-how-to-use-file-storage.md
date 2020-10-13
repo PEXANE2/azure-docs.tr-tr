@@ -8,12 +8,12 @@ ms.date: 10/08/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-python
-ms.openlocfilehash: 11c31b9ce3c5a8d8fba18d8e7c46ac38b0559aec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bef69037fad8bf8ee9537e90f26ca967560b9d2
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856322"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876106"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Python ile Azure Dosyaları için geliştirme
 
@@ -95,7 +95,7 @@ from azure.storage.file import FileService
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-`FileService`Nesnesi paylaşımlar, dizinler ve dosyalarla çalışmanıza olanak sağlar. Aşağıdaki kod, `FileService` depolama hesabı adını ve hesap anahtarını kullanarak bir nesnesi oluşturur. `<myaccount>` ve `<mykey>` ifadelerini hesap adınız ve anahtarınız ile değiştirin.
+[FileService](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true) nesnesi paylaşımlar, dizinler ve dosyalarla çalışmanıza olanak sağlar. Aşağıdaki kod, `FileService` depolama hesabı adını ve hesap anahtarını kullanarak bir nesnesi oluşturur. `<myaccount>` ve `<mykey>` ifadelerini hesap adınız ve anahtarınız ile değiştirin.
 
 ```python
 file_service = FileService(account_name='myaccount', account_key='mykey')
@@ -113,7 +113,7 @@ Aşağıdaki kod örneği, yoksa, paylaşım oluşturmak için bir [Shareclient]
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Aşağıdaki kod örneği, `FileService` yoksa, paylaşma oluşturmak için bir nesnesi kullanır.
+Aşağıdaki kod örneği, yoksa, paylaşma oluşturmak için bir [FileService](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true) nesnesi kullanır.
 
 ```python
 file_service.create_share('myshare')
@@ -153,7 +153,7 @@ Aşağıdaki yöntem belirtilen dosyanın içeriğini belirtilen Azure dosya pay
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Bir Azure dosya paylaşımında, en azından dosyaların bulunabileceği bir kök dizin bulunur. Bir dosya oluşturmak ve verileri karşıya yüklemek için,, `create_file_from_path` , `create_file_from_stream` `create_file_from_bytes` veya yöntemlerini kullanın `create_file_from_text` . Verilerin boyutu 64 MB 'ı aştığında, gereken parçalama gerçekleştiren yüksek düzeyli yöntemlerdir.
+Bir Azure dosya paylaşımında, en azından dosyaların bulunabileceği bir kök dizin bulunur. Bir dosya oluşturmak ve verileri karşıya yüklemek için [create_file_from_path](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#create-file-from-path-share-name--directory-name--file-name--local-file-path--content-settings-none--metadata-none--validate-content-false--progress-callback-none--max-connections-2--file-permission-none--smb-properties--azure-storage-file-models-smbproperties-object---timeout-none-), [create_file_from_stream](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#create-file-from-stream-share-name--directory-name--file-name--stream--count--content-settings-none--metadata-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--file-permission-none--smb-properties--azure-storage-file-models-smbproperties-object--), [create_file_from_bytes](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#create-file-from-bytes-share-name--directory-name--file-name--file--index-0--count-none--content-settings-none--metadata-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--file-permission-none--smb-properties--azure-storage-file-models-smbproperties-object--)veya [create_file_from_text](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#create-file-from-text-share-name--directory-name--file-name--text--encoding--utf-8---content-settings-none--metadata-none--validate-content-false--timeout-none--file-permission-none--smb-properties--azure-storage-file-models-smbproperties-object--) yöntemlerini kullanın. Verilerin boyutu 64 MB 'ı aştığında, gereken parçalama gerçekleştiren yüksek düzeyli yöntemlerdir.
 
 `create_file_from_path` Belirtilen yoldan bir dosyanın içeriğini karşıya yükler ve `create_file_from_stream` içeriği zaten açık olan bir dosyadan/akıştan karşıya yükler. `create_file_from_bytes` bir bayt dizisini karşıya yükler ve belirtilen `create_file_from_text` kodlamayı kullanarak belirtilen metin değerini yükler (varsayılan olarak UTF-8).
 
@@ -181,7 +181,7 @@ Bir alt dizindeki dosya ve dizinleri listelemek için [list_directories_and_file
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Bir paylaşımdaki dosya ve dizinleri listelemek için ** \_ dizinleri \_ ve \_ dosyaları Listele** yöntemini kullanın. Bu yöntem bir oluşturucu döndürür. Aşağıdaki kod, bir paylaşımdaki her bir dosya ve dizinin **adını** konsola verir.
+Bir paylaşımdaki dosya ve dizinleri listelemek için [list_directories_and_files](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#list-directories-and-files-share-name--directory-name-none--num-results-none--marker-none--timeout-none--prefix-none--snapshot-none-) yöntemi kullanın. Bu yöntem bir oluşturucu döndürür. Aşağıdaki kod, bir paylaşımdaki her bir dosya ve dizinin **adını** konsola verir.
 
 ```python
 generator = file_service.list_directories_and_files('myshare')
@@ -203,7 +203,7 @@ Aşağıdaki örnek, `download_file` belirtilen dosyanın içeriğini almak içi
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Bir dosyadaki verileri indirmek için,, `get_file_to_path` veya kullanın `get_file_to_stream` `get_file_to_bytes` `get_file_to_text` . Verilerin boyutu 64 MB 'ı aştığında, gereken parçalama gerçekleştiren yüksek düzeyli yöntemlerdir.
+Bir dosyadaki verileri indirmek için [get_file_to_path](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#get-file-to-path-share-name--directory-name--file-name--file-path--open-mode--wb---start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--snapshot-none-), [get_file_to_stream](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#get-file-to-stream-share-name--directory-name--file-name--stream--start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--snapshot-none-), [get_file_to_bytes](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#get-file-to-bytes-share-name--directory-name--file-name--start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--snapshot-none-)veya [get_file_to_text](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#get-file-to-text-share-name--directory-name--file-name--encoding--utf-8---start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--snapshot-none-)kullanın. Verilerin boyutu 64 MB 'ı aştığında, gereken parçalama gerçekleştiren yüksek düzeyli yöntemlerdir.
 
 Aşağıdaki örnek, `get_file_to_path` Dosya dosyasının içeriğini indirmek ve *out-sunset.png* dosyasına depolamak **myfile** için kullanımını gösterir.
 
@@ -313,7 +313,7 @@ Bir dosyayı silmek için [delete_file](/azure/developer/python/sdk/storage/azur
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Bir dosyayı silmek için çağrısı yapın `delete_file` .
+Bir dosyayı silmek için [delete_file](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#delete-file-share-name--directory-name--file-name--timeout-none-)çağırın.
 
 ```python
 file_service.delete_file('myshare', None, 'myfile')

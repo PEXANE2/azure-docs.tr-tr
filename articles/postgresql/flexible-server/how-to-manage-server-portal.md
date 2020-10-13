@@ -6,13 +6,13 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 13d78110f50d6ce72b8525914ed0e91dfcadd2cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc
+ms.openlocfilehash: 1ac418d855696138341115412dc7e2601d4cf3a1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941314"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961417"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>Azure portal kullanarak bir PostgreSQL için Azure veritabanı 'nı yönetme-esnek sunucu
 
@@ -21,7 +21,7 @@ ms.locfileid: "90941314"
 
 Bu makalede, PostgreSQL için Azure veritabanınızı yönetme (esnek sunucu) açıklanmaktadır. Yönetim görevleri işlem ve depolama ölçeklendirmesi, yönetici parola sıfırlama ve sunucu ayrıntılarını görüntüleme içerir.
 
-## <a name="sign-in"></a>Oturum aç
+## <a name="sign-in"></a>Oturum açın
 
 [Azure portalında](https://portal.azure.com) oturum açın. Azure portal esnek sunucu kaynağına gidin.
 

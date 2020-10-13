@@ -6,12 +6,12 @@ ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 3826019a19aa744cb03737ed7f0c985f8063a1aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4009f3c132c76f6632d6bb706649befa746001f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88815615"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972535"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Azure'da sanal makineler için kullanılabilirlik seçenekleri
 
@@ -51,7 +51,7 @@ Azure sanal makine ölçek kümeleri, yük dengeli bir VM grubu oluşturmanızı
 
 **Hata etki alanları ve güncelleştirme etki alanları**
 
-Sanal Makine Ölçek Kümeleri, hata etki alanlarını ve güncelleştirme etki alanlarını hizalayarak yüksek kullanılabilirlik için tasarlamayı basitleştirir. Ölçek kümesi için yalnızca hata etki alanı sayısı tanımlamanız gerekir. Ölçek kümelerinin kullanabildiği hata etki alanlarının sayısı bölgeye göre farklılık gösterebilir. Bkz. [Azure 'da sanal makinelerin kullanılabilirliğini yönetme](./windows/manage-availability.md).
+Sanal Makine Ölçek Kümeleri, hata etki alanlarını ve güncelleştirme etki alanlarını hizalayarak yüksek kullanılabilirlik için tasarlamayı basitleştirir. Ölçek kümesi için yalnızca hata etki alanı sayısı tanımlamanız gerekir. Ölçek kümelerinin kullanabildiği hata etki alanlarının sayısı bölgeye göre farklılık gösterebilir. Bkz. [Azure 'da sanal makinelerin kullanılabilirliğini yönetme](./manage-availability.md).
 
 
 ## <a name="availability-sets"></a>Kullanılabilirlik kümeleri
@@ -61,7 +61,7 @@ Bir kullanılabilirlik kümesinde VM 'Ler bu hata etki alanlarına otomatik olar
 
 [Azure Yönetilen Diskler](./faq-for-disks.md)’i kullanan sanal makineler, yönetilen kullanılabilirlik kümesi kullanılırken yönetilen disk hata etki alanları ile hizalanır. Bu hizalama, bir VM'ye bağlı tüm yönetilen disklerin, aynı yönetilen disk hata etki alanı içinde olmasını sağlar. 
 
-Yönetilen bir kullanılabilirlik kümesinde yalnızca, yönetilen disklere sahip VM’ler oluşturulabilir. Yönetilen disk hata etki alanlarının sayısı bölgeye göre farklılık gösterir (bölge başına iki ya da üç yönetilen disk hata etki alanı). [Linux VM 'leri](./linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) veya [Windows VM 'leri](./windows/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set)için bu yönetilen disk hata etki alanları hakkında daha fazla bilgi edinebilirsiniz.
+Yönetilen bir kullanılabilirlik kümesinde yalnızca, yönetilen disklere sahip VM’ler oluşturulabilir. Yönetilen disk hata etki alanlarının sayısı bölgeye göre farklılık gösterir (bölge başına iki ya da üç yönetilen disk hata etki alanı). [Linux VM 'leri](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) veya [Windows VM 'leri](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)için bu yönetilen disk hata etki alanları hakkında daha fazla bilgi edinebilirsiniz.
 
 ![Yönetilen kullanılabilirlik kümesi](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
 

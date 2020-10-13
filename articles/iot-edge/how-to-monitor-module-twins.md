@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1bf2e3f07d9e5576f62ef9badd9c8a46ac92fad0
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 1a11d3a9a972188af4cf8f054349da98d69691a3
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450155"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876167"
 ---
 # <a name="monitor-module-twins"></a>Modül ikizlerini izleme
 
@@ -168,15 +168,15 @@ Aşağı akış cihazlarınızla ilgili sorun yaşıyorsanız, bu verilerin ince
 
 Özel modüllerinizin bağlantısı hakkındaki bilgiler, ikizi aracı modülünde IoT Edge tutulur. Özel modülünüzün ikizi modülü, birincil olarak çözümünüzün verilerini korumak için kullanılır. deployment.jsdosyasında tanımladığınız istenen özellikler ikizi modülüne yansıtılır ve modülünüzün bildirilen özellik değerlerini gerektiği şekilde güncelleştirebilir.
 
-Modülünüzün uygulama koduna bağlı olarak ikizi modülünde bildirilen özellik değerlerini güncelleştirmek için [Azure IoT Hub cihaz SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-device-sdks) 'leriyle tercih ettiğiniz programlama dilini kullanabilirsiniz. Aşağıdaki yordam, [SimulatedTemperatureSensor](https://github.com/Azure/iotedge/blob/dd5be125df165783e4e1800f393be18e6a8275a3/edge-modules/SimulatedTemperatureSensor/src/Program.cs) modülündeki kodu kullanarak bunu yapmak için .NET için Azure SDK 'sını kullanır:
+Modülünüzün uygulama koduna bağlı olarak ikizi modülünde bildirilen özellik değerlerini güncelleştirmek için [Azure IoT Hub cihaz SDK](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks) 'leriyle tercih ettiğiniz programlama dilini kullanabilirsiniz. Aşağıdaki yordam, [SimulatedTemperatureSensor](https://github.com/Azure/iotedge/blob/dd5be125df165783e4e1800f393be18e6a8275a3/edge-modules/SimulatedTemperatureSensor/src/Program.cs) modülündeki kodu kullanarak bunu yapmak için .NET için Azure SDK 'sını kullanır:
 
-1. [Createfromenvironmentaysnc](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.createfromenvironmentasync) yöntemiyle [moduleclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient) örneği oluşturun.
+1. [Createfromenvironmentaysnc](/dotnet/api/microsoft.azure.devices.client.moduleclient.createfromenvironmentasync) yöntemiyle [moduleclient](/dotnet/api/microsoft.azure.devices.client.moduleclient) örneği oluşturun.
 
-1. [GetTwinAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.gettwinasync?view=azure-dotnet) yöntemiyle Module ikizi 'in özelliklerinin bir koleksiyonunu alın.
+1. [GetTwinAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.gettwinasync) yöntemiyle Module ikizi 'in özelliklerinin bir koleksiyonunu alın.
 
-1. İstenen özelliklerde yapılan değişiklikleri [Setdesiredpropertyupdatecallbackasync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.setdesiredpropertyupdatecallbackasync?view=azure-dotnet) yöntemiyle yakalamak için bir dinleyici (geri çağırma geçirerek) oluşturun.
+1. İstenen özelliklerde yapılan değişiklikleri [Setdesiredpropertyupdatecallbackasync](/dotnet/api/microsoft.azure.devices.client.deviceclient.setdesiredpropertyupdatecallbackasync) yöntemiyle yakalamak için bir dinleyici (geri çağırma geçirerek) oluşturun.
 
-1. Geri çağırma yönteminde, ikizi modülündeki bildirilen özellikleri [UpdateReportedPropertiesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient) yöntemiyle güncelleştirin ve bu özellik değerlerinin bir TwinCollection geçirerek ayarlamak istediğiniz özellik değerlerini bir [TwinCollection](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.shared.twincollection) geçirerek güncelleştirin.
+1. Geri çağırma yönteminde, ikizi modülündeki bildirilen özellikleri [UpdateReportedPropertiesAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient) yöntemiyle güncelleştirin ve bu özellik değerlerinin bir TwinCollection geçirerek ayarlamak istediğiniz özellik değerlerini bir [TwinCollection](/dotnet/api/microsoft.azure.devices.shared.twincollection) geçirerek güncelleştirin.
 
 ## <a name="access-the-module-twins"></a>Modül TWINS 'e erişin
 

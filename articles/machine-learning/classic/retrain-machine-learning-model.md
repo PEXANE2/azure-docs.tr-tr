@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18, devx-track-csharp
 ms.date: 02/14/2019
 ms.openlocfilehash: 2f115313b17ed159973d2545b947e2ff031508eb
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362342"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Makine öğrenimi modelini yeniden eğitme ve dağıtma
@@ -150,7 +150,7 @@ Ardından, [Get-AzMlWebService](https://docs.microsoft.com/powershell/module/az.
 $wsd = Get-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 ```
 
-Var olan bir Web hizmetinin kaynak grubu adını öğrenmek için, aboneliğinizdeki Web hizmetlerini göstermek üzere herhangi bir parametre olmadan Get-AzMlWebService cmdlet 'ini çalıştırın. Web hizmeti ' ni bulun ve Web hizmeti KIMLIĞINE bakın. Kaynak grubunun adı, *ResourceGroups* öğesinden hemen sonra, kimliğin dördüncü öğesidir. Aşağıdaki örnekte, kaynak grubu adı varsayılan-Machinöğrenim-Güneydoğu ABD ' dir.
+Mevcut bir Web hizmetinin kaynak grubu adını öğrenmek için, aboneliğinizdeki Web hizmetlerini göstermek üzere Get-AzMlWebService cmdlet 'ini herhangi bir parametre olmadan çalıştırın. Web hizmeti ' ni bulun ve Web hizmeti KIMLIĞINE bakın. Kaynak grubunun adı, *ResourceGroups* öğesinden hemen sonra, kimliğin dördüncü öğesidir. Aşağıdaki örnekte, kaynak grubu adı varsayılan-Machinöğrenim-Güneydoğu ABD ' dir.
 
 ```azurepowershell
 Properties : Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServicePropertiesForGraph

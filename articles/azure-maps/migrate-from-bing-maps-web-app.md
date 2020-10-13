@@ -1,6 +1,6 @@
 ---
 title: "Öğretici: Bing Haritalar 'dan bir Web uygulaması geçirme | Microsoft Azure haritaları"
-description: Bir Web uygulamasını Bing Haritalar 'dan Microsoft Azure Maps 'a geçirme.
+description: Bir Web uygulamasını Bing Haritalar 'dan Microsoft Azure Maps 'a geçirmeye yönelik öğretici.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 9/10/2020
@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 469565385ce4b3ee4b1589f105216213d584c8c9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 42ba92a0134ae1e8da91bbe7513668fa24c4718f
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319750"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876524"
 ---
-# <a name="migrate-a-web-app-from-bing-maps"></a>Bing Haritalar 'dan bir Web uygulaması geçirme
+# <a name="tutorial---migrate-a-web-app-from-bing-maps"></a>Öğretici-Bing Haritalar 'dan bir Web uygulaması geçirme
 
 Bing Haritalar kullanan Web uygulamaları genellikle Bing Haritalar V8 JavaScript SDK 'sını kullanır. Azure Haritalar Web SDK 'Sı, geçirilecek Azure tabanlı uygun SDK 'dir. Azure Haritalar Web SDK 'Sı, etkileşimli haritaları, Web veya mobil uygulamalarınızda görüntülenmek üzere kendi içeriklerinizi ve Imagery 'yi özelleştirmenize olanak tanır. Bu denetimde büyük veri kümelerini yüksek performansla oluşturmanızı sağlayan WebGL bileşeni kullanılmaktadır. JavaScript veya TypeScript kullanarak bu SDK ile geliştirin.
 
@@ -59,7 +59,7 @@ Aşağıdaki tabloda, Bing Maps V8 JavaScript SDK 'sindeki temel API özellikler
 | Streetside canlandırın       | Planlandı                                                                                |
 | GeoJSON desteği          | ✓                                                                                      |
 | GeoXML desteği           | ✓                                                                                      |
-| İyi bilinen metin desteği  | ✓                                                                                      |
+| Well-Known metin desteği  | ✓                                                                                      |
 | Özel harita stilleri        | Kısmi                                                                                |
 
 Azure Maps [, Web SDK 'sının](open-source-projects.md#open-web-sdk-modules) yeteneklerini genişleten birçok ek açık kaynaklı modüle da sahiptir.
@@ -932,16 +932,16 @@ Azure haritalar 'da veriler bir veri kaynağı tarafından eklenir ve yönetilir
 
 Kümeleme etkinleştirildiğinde veri kaynağı, işleme için katmanlara kümelenmiş ve kümelenmemiş veri noktaları gönderir. Veri kaynağı yüzlerce binlerce veri noktası kümelemesine sahiptir. Kümelenmiş bir veri noktası üzerinde aşağıdaki özelliklere sahiptir:
 
-| Özellik adı               | Tür    | Description                                    |
+| Özellik adı               | Tür    | Açıklama                                    |
 |-----------------------------|---------|------------------------------------------------|
 | `cluster`                   | boolean | Özelliğin bir kümeyi temsil ettiğini belirtir.     |
 | `cluster_id`                | string  | Kümeyle `DataSource` `getClusterExpansionZoom` , `getClusterChildren` , ve işlevleriyle KULLANıLABILECEK benzersiz bir kimlik `getClusterLeaves` . |
-| `point_count`               | sayı  | Kümenin içerdiği noktaların sayısı.     |
+| `point_count`               | number  | Kümenin içerdiği noktaların sayısı.     |
 | `point_count_abbreviated`   | string  | Long ise değeri abbreviates bir dize `point_count` . (örneğin, 4.000 4K olur) |
 
 `DataSource`Sınıfı, kullanarak bir kümeyle ilgili ek bilgilere erişmek için aşağıdaki yardımcı işleve sahiptir `cluster_id` .
 
-| İşlev       | Dönüş türü        | Description     |
+| İşlev       | Dönüş türü        | Açıklama     |
 |----------------|--------------------|-----------------|
 | `getClusterChildren(clusterId: number)`                              | `Promise<Feature<Geometry, any> | Shape>` | Sonraki yakınlaştırma düzeyinde verilen kümenin alt öğelerini alır. Bu alt öğeler, şekillerin ve alt kümelerin bir birleşimi olabilir. Alt kümeler, küme özellikleriyle eşleşen özelliklerle özellik olacaktır. |
 | `getClusterExpansionZoom(clusterId: number)`                         | `Promise<number>`                            | Kümenin genişlemekte veya parçalanmasına başlayacağı yakınlaştırma düzeyini hesaplar.    |
@@ -1409,7 +1409,7 @@ Azure haritalar 'da, coğrafi olarak başvurulan görüntüler sınıfı kullan�
 
 ### <a name="add-kml-data-to-the-map"></a>KML verilerini haritaya ekleme
 
-Hem Azure hem de Bing Haritalar, haritada KML, KMZ, GeoRSS, GeoJSON ve Iyi bilinen metin (WKT) verilerini içeri aktarabilir ve işleyebilir. Azure haritalar Ayrıca GPX, GML, uzamsal CSV dosyalarını, Web eşleme Hizmetleri 'ni (WMS), Web eşleme kutucuk Hizmetleri 'ni (WMTS) ve web özelliği hizmetlerini (WFS) destekler.
+Hem Azure hem de Bing Haritalar haritadaki KML, KMZ, GeoRSS, GeoJSON ve Well-Known Text (WKT) verilerini içeri aktarabilir ve işleyebilir. Azure haritalar Ayrıca GPX, GML, uzamsal CSV dosyalarını, Web-Mapping Hizmetleri (WMS), Web-Mapping kutucuk Hizmetleri (WMTS) ve web özelliği hizmetlerini (WFS) destekler.
 
 **Önce: Bing Haritalar**
 

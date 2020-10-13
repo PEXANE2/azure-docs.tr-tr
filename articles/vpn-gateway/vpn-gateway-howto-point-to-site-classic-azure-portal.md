@@ -1,18 +1,18 @@
 ---
-title: 'Noktadan Siteye bağlantısı ve istemci kimlik doğrulaması kullanarak bir bilgisayarı sanal ağa bağlama: Klasik Azure portalı | Microsoft Docs'
+title: 'Noktadan siteye ve sertifika kimlik doğrulaması kullanarak bir bilgisayarı sanal ağa bağlama: klasik Azure portal | Microsoft Docs'
 description: Azure portalını kullanarak klasik bir Noktadan siteye VPN ağ geçidi bağlantısı oluşturun.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 01/09/2020
+ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: f68631771b8f86d995108112b1243ab38bf826bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf0618c120a7fe572aa55b423d36dce3ef5656da
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "84984791"
+ms.locfileid: "91876201"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Sertifika kimlik doğrulaması kullanarak noktadan siteye bağlantı yapılandırma (klasik)
 
@@ -35,7 +35,7 @@ Tek bir istemci bilgisayarından sanal ağınıza güvenli bir bağlantı oluşt
 
 ![Noktadan Siteye diyagramı](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/point-to-site-connection-diagram.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Noktadan siteye sertifika kimlik doğrulama bağlantıları aşağıdaki önkoşulları gerektirir:
 
@@ -79,31 +79,11 @@ Başlamadan önce, bir Azure aboneliğiniz olduğunu doğrulayın. Henüz Azure 
 
 ### <a name="part-1-create-a-virtual-network"></a>1. Kısım: Sanal ağ oluşturma
 
-Zaten bir sanal ağınız (VNet) yoksa, bir tane oluşturun. Ekran görüntüleri örnek olarak verilmiştir. Değerlerin kendinizinkilerle değiştirildiğinden emin olun. Azure portalını kullanarak sanal ağ oluşturmak için şu adımları uygulayın:
+Zaten bir sanal ağınız varsa, ayarların VPN ağ geçidi tasarımınızla uyumlu olduğunu doğrulayın. Diğer ağlarla çakışabilecek herhangi bir alt ağ olup olmadığına özellikle dikkat edin.
 
-1. [Azure portalı](https://portal.azure.com) menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin. **Yeni** sayfa açılır.
+[!INCLUDE [basic classic vnet](../../includes/vpn-gateway-vnet-classic.md)]
 
-2. Market 'te **Ara** alanına *sanal ağ* girin ve döndürülen listeden **sanal ağ** ' ı seçin. **Sanal ağ** sayfası açılır.
-
-3. **Bir dağıtım modeli seçin** listesinden **Klasik**' i seçin ve ardından **Oluştur**' u seçin. **Sanal ağ oluştur** sayfası açılır.
-
-4. **Sanal ağ oluştur** sayfasında sanal ağ ayarlarını yapılandırın. Bu sayfada, ilk adres alanınızı ve tek alt ağ adres aralığınızı eklersiniz. VNet oluşturma işlemini tamamladıktan sonra geri dönüp ek alt ağları ve adres alanlarını ekleyin.
-
-   ![Sanal ağ oluştur sayfası](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/vnet125.png)
-
-5. Açılan listeden kullanmak istediğiniz **aboneliği** seçin.
-
-6. Var olan bir **kaynak grubunu**seçin. Ya da yeni **Oluştur** ' u seçip bir ad girerek yeni bir kaynak grubu oluşturun. Yeni bir kaynak grubu oluşturuyorsanız, planlanan yapılandırma değerlerinize göre kaynak grubunu adlandırın. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure Resource Manager'a genel bakış](../azure-resource-manager/management/overview.md#resource-groups).
-
-7. VNet 'iniz için bir **konum** seçin. Bu ayar, bu sanal ağa dağıttığınız kaynakların coğrafi konumunu belirler.
-
-8. VNet oluşturmak için **Oluştur** ' u seçin. **Bildirimler** sayfasında, **devam eden bir dağıtım** iletisi görürsünüz.
-
-8. Sanal ağınız oluşturulduktan sonra, **Bildirimler** sayfasındaki ileti **dağıtım başarılı**olarak değişir. Sanal ortamınızı panoda kolayca bulmak istiyorsanız **panoya sabitle ' yi** seçin. 
-
-10. DNS sunucusu ekleme (isteğe bağlı). Sanal ağınızı oluşturduktan sonra ad çözümlemesi için bir DNS sunucusunun IP adresini ekleyebilirsiniz. Belirttiğiniz DNS sunucusu IP adresi, sanal ağınızdaki kaynakların adlarını çözümleyebilen bir DNS sunucusunun adresi olmalıdır.
-
-    Bir DNS sunucusu eklemek için sanal ağ sayfanızda **DNS sunucuları** ' nı seçin. Ardından, kullanmak istediğiniz DNS sunucusunun IP adresini girin ve **Kaydet**' i seçin.
+[!INCLUDE [basic classic DNS](../../includes/vpn-gateway-dns-classic.md)]
 
 ### <a name="part-2-create-a-gateway-subnet-and-a-dynamic-routing-gateway"></a>2. Bölüm: ağ geçidi alt ağı ve dinamik yönlendirme ağ geçidi oluşturma
 

@@ -4,12 +4,12 @@ description: Sayfa görüntüleme ve oturum sayıları, Web istemcisi verileri, 
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 5a90f0b4223d69ccb6c4def871eb9d5bf5fbc2e8
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: b109aaea1ae5e751f40b55a3c703f0739661e10d
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91841450"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876218"
 ---
 # <a name="application-insights-for-web-pages"></a>Web sayfaları için Application Insights
 
@@ -200,6 +200,41 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | ajaxPerfLookupDelay | 25 | Varsayılan olarak 25 MS olur. Bir istek için Windows. Performance zamanlamalarını bulmayı yeniden denemeden önce beklenecek süre `ajax` (süre milisaniye cinsinden) ve doğrudan setTimeout () öğesine geçirilir.
 | enableUnhandledPromiseRejectionTracking | yanlış | Doğru ise, işlenmeyen Promise reddi sayısı, yeniden toplanacak ve bir JavaScript hatası olarak raporlanır. DisableExceptionTracking true olduğunda (özel durumları izlememeyin), yapılandırma değeri yok sayılır ve işlenmemiş Promise geri alma raporlanmaz.
 
+## <a name="enable-time-on-page-tracking"></a>Sayfa üzerinde zamanı izlemeyi etkinleştir
+
+Ayar olarak `autoTrackPageVisitTime: true` , bir kullanıcının her sayfada harcadığı zaman izlenir. Yeni bir sayfa görünümünde, *önceki* sayfada harcanan sürenin adlı [özel ölçüm](../platform/metrics-custom-overview.md) olarak gönderildiği süre `PageVisitTime` . Bu özel ölçüm, [Ölçüm Gezgini](../platform/metrics-getting-started.md) "günlük tabanlı ölçüm" olarak görüntülenebilir.
+
+## <a name="enable-correlation"></a>Bağıntıyı etkinleştir
+
+Bağıntı, dağıtılmış izlemeyi sağlayan ve [uygulama Haritası](../app/app-map.md), [uçtan uca işlem görünümü](../app/app-map.md#go-to-details)ve diğer tanılama araçlarını destekleyen verileri oluşturur ve gönderir.
+
+Aşağıdaki örnek, aşağıdaki senaryoya özgü notlarla bağıntı sağlamak için gereken tüm olası konfigürasyonları göstermektedir:
+
+```javascript
+// excerpt of the config section of the JavaScript SDK snippet with correlation
+// between client-side AJAX and server requests enabled.
+cfg: { // Application Insights Configuration
+    instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+    disableFetchTracking: false,
+    enableCorsCorrelation: true,
+    enableRequestHeaderTracking: true,
+    enableResponseHeaderTracking: true,
+    correlationHeaderExcludedDomains: ['myapp.azurewebsites.net', '*.queue.core.windows.net']
+    /* ...Other Configuration Options... */
+}});
+</script>
+
+``` 
+
+İstemcinin iletişim kurduğu üçüncü taraf sunuculardan herhangi biri `Request-Id` ve `Request-Context` üst bilgileri kabul edemez ve yapılandırmalarını güncelleştiremezsiniz, bunları yapılandırma özelliği aracılığıyla dışlama listesine koymanız gerekir `correlationHeaderExcludeDomains` . Bu özellik joker karakterleri destekler.
+
+Sunucu tarafı, bu üst bilgilerle bağlantıları kabul edebilmelidir. `Access-Control-Allow-Headers`Sunucu tarafında yapılandırmaya bağlı olarak, genellikle ve el ile ekleyerek sunucu tarafı listesini genişletmek gereklidir `Request-Id` `Request-Context` .
+
+Erişim-denetim-Izin-üst bilgiler: `Request-Id` , `Request-Context` , `<your header>`
+
+> [!NOTE]
+> 2020 veya sonraki sürümlerde yayınlanan OpenTelemtry veya Application Insights SDK 'Ları kullanıyorsanız, [WC3 TraceContext](https://www.w3.org/TR/trace-context/)kullanmanızı öneririz. Yapılandırma kılavuzunu [buradan](../app/correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)görebilirsiniz.
+
 ## <a name="single-page-applications"></a>Tek sayfalı uygulamalar
 
 Varsayılan olarak, bu SDK tek sayfalı uygulamalarda oluşan durum tabanlı yol **değiştirmeyi işlemez.** Tek sayfalı uygulamanız için otomatik yönlendirme değişikliği izlemeyi etkinleştirmek için, `enableAutoRouteTracking: true` Kurulum yapılandırmanıza ekleyebilirsiniz.
@@ -208,10 +243,6 @@ Varsayılan olarak, bu SDK tek sayfalı uygulamalarda oluşan durum tabanlı yol
 > [!NOTE]
 > `enableAutoRouteTracking: true`Yalnızca tepki verme eklentisini kullanmıyorsanız **not** kullanın. Her ikisi de yol değiştiğinde yeni PageViews gönderebilir. Her ikisi de etkinse, yinelenen PageViews gönderilebilir.
 
-## <a name="configuration-autotrackpagevisittime"></a>Yapılandırma: oto Trackpagevisittime
-
-Ayar olarak `autoTrackPageVisitTime: true` , bir kullanıcının her sayfada harcadığı zaman izlenir. Yeni bir sayfa görünümünde, *önceki* sayfada harcanan sürenin adlı [özel ölçüm](../platform/metrics-custom-overview.md) olarak gönderildiği süre `PageVisitTime` . Bu özel ölçüm, [Ölçüm Gezgini](../platform/metrics-getting-started.md) "günlük tabanlı ölçüm" olarak görüntülenebilir.
-
 ## <a name="extensions"></a>Uzantılar
 
 | Uzantılar |
@@ -219,38 +250,6 @@ Ayar olarak `autoTrackPageVisitTime: true` , bir kullanıcının her sayfada har
 | [React](javascript-react-plugin.md)|
 | [React Native](javascript-react-native-plugin.md)|
 | [Angular](javascript-angular-plugin.md) |
-
-## <a name="correlation"></a>Bağıntı
-
-İstemci-sunucu tarafı bağıntı için desteklenir:
-
-- XHR/AJAX istekleri 
-- İstekleri getir 
-
-İstemci-sunucu tarafı bağıntı, ve istekleri için **desteklenmez** `GET` `POST` .
-
-### <a name="enable-cross-component-correlation-between-client-ajax-and-server-requests"></a>İstemci AJAX ve sunucu istekleri arasında çapraz bileşen bağıntısını etkinleştir
-
-`CORS`Bağıntıyı etkinleştirmek için, istemcinin iki ek istek üst bilgisi `Request-Id` ve `Request-Context` sunucu tarafı, bu üst bilgilerle bağlantıları kabul edebilmeleri gerekir. Bu üst bilgilerin gönderilmesi `enableCorsCorrelation: true` JAVASCRIPT SDK Yapılandırması içinde ayarlanarak etkinleştirilir. 
-
-`Access-Control-Allow-Headers`Sunucu tarafında yapılandırmaya bağlı olarak, genellikle ve el ile ekleyerek sunucu tarafı listesini genişletmek gereklidir `Request-Id` `Request-Context` .
-
-Erişim-denetim-Izin-üst bilgiler: `Request-Id` , `Request-Context` , `<your header>`
-
-İstemcinin iletişim kurduğu üçüncü taraf sunuculardan herhangi biri `Request-Id` ve `Request-Context` üst bilgileri kabul edemez ve yapılandırmalarını güncelleştiremezsiniz, bunları yapılandırma özelliği aracılığıyla dışlama listesine koymanız gerekir `correlationHeaderExcludeDomains` . Bu özellik joker karakterleri destekler.
-
-```javascript
-// excerpt of the config section of the JavaScript SDK snippet with correlation
-// between client-side AJAX and server requests enabled.
-cfg: { // Application Insights Configuration
-    instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
-    enableCorsCorrelation: true,
-    correlationHeaderExcludedDomains: ['myapp.azurewebsites.net', '*.queue.core.windows.net']
-    /* ...Other Configuration Options... */
-}});
-</script>
-
-``` 
 
 ## <a name="explore-browserclient-side-data"></a>Tarayıcı/istemci tarafı verilerini keşfet
 
