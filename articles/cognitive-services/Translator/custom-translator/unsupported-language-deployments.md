@@ -8,13 +8,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 05/26/2020
+ms.date: 04/24/2019
 ms.author: swmachan
-ms.openlocfilehash: 4b6214ebfaf4b9ed6dd97f6a6ac2f5c4ae164a59
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3c5c74fc853b5a2425a58e1704aad43350cba212
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85964694"
 ---
 # <a name="unsupported-language-deployments"></a>Desteklenmeyen dil dağıtımları
@@ -25,7 +25,7 @@ Microsoft Translator hub 'ının yakında kullanımdan kaldırılması sayesinde
 
 Artık, desteklenmeyen modellerinizi özel çevirici aracılığıyla dağıtmanıza izin veren bir işlemdir.  Bu işlem, en son v3 API 'sini kullanarak içerik çevirmeye devam etmenize olanak sağlar.  Bu modeller, dağıtımını kaldırmak seçinceye kadar veya dil çiftinin özel çevirmende kullanılabilir hale gelene kadar barındırılacak.  Bu makalede, desteklenmeyen dil çiftlerine sahip modelleri dağıtma işlemi açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Modellerinizin dağıtıma aday olması için aşağıdaki ölçütleri karşılaması gerekir:
 * Modeli içeren proje, geçiş aracı kullanılarak hub 'dan özel çevirmene geçirilmiş olmalıdır.  Projeleri ve çalışma alanlarını geçirme işlemi [burada](how-to-migrate.md)bulunabilir.
@@ -47,7 +47,7 @@ Gönderildikten sonra, model artık **istenmeyen insanlar** sekmesinde kullanıl
 
 ## <a name="whats-next"></a>Sırada ne var?
 
-Dağıtım için seçtiğiniz modeller, hub kullanımdan çıkarıldı ve tüm modeller dağıtıldıktan sonra kaydedilir.  Desteklenmeyen modellerin dağıtımına yönelik istekleri göndermek 24 Mayıs 'a kadar.  Bu modelleri 15 Haziran 'da, Translator v3 aracılığıyla erişilebilen bir noktada dağıtacağız.  Bunlara ek olarak, 1 Temmuz 'dan itibaren Translator v2 üzerinden de kullanılabilir.  
+Dağıtım için seçtiğiniz modeller, hub kullanımdan çıkarıldı ve tüm modeller dağıtıldıktan sonra kaydedilir.  Desteklenmeyen modellerin dağıtımına yönelik istekleri göndermek 24 Mayıs 'a kadar.  Bu modelleri 15 Haziran 'da, Translator v3 API aracılığıyla erişilebilecek bir noktada dağıtacağız.  Bunlara ek olarak, 1 Temmuz 'dan itibaren v2 API 'SI üzerinden de kullanılabilir.  
 
 Hub 'ın kullanımdan kaldırılması sırasında önemli tarihler hakkında daha fazla bilgi için [buraya](https://www.microsoft.com/translator/business/hub/)bakın.
 Dağıtıldıktan sonra, normal barındırma ücretleri uygulanır.  Ayrıntılar için bkz. [fiyatlandırma](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/) .  
@@ -57,4 +57,4 @@ Standart özel çevirici modellerinden farklı olarak, hub modelleri yalnızca t
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Bir modeli eğitme](how-to-train-model.md).
-- [Translator v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)aracılığıyla dağıtılan özel çeviri modelinizi kullanmaya başlayın.
+- Dağıtılmış özel çeviri modelinizi [Microsoft Translator metin çevirisi API'si v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)aracılığıyla kullanmaya başlayın.

@@ -8,10 +8,10 @@ ms.date: 05/19/2020
 ms.author: dech
 ms.custom: devx-track-python, devx-track-csharp
 ms.openlocfilehash: 47ac6b4caf97b264df58732f8d031fc63091171e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89019275"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-c-notebooks-preview"></a>Azure Cosmos DB C# not defterlerinde yerleşik Not defteri komutlarını ve özelliklerini kullanma (Önizleme)
@@ -117,12 +117,12 @@ Yerleşik [nteryasası Veri Gezgini](https://blog.nteract.io/designing-the-ntera
 
 :::image type="content" source="media/use-notebook-features-and-commands/csharp-query-cell.png" alt-text="CSharp sorgu hücresi":::
 
-:::image type="content" source="media/use-notebook-features-and-commands/csharp-nteract-built-in-chart.png" alt-text="nteryasası Veri Gezgini":::
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-nteract-built-in-chart.png" alt-text="CSharp sorgu hücresi":::
 
 ## <a name="use-built-in-dictionary-viewer"></a>Yerleşik sözlük görüntüleyicisini kullan
 Bir değişkeni görüntülemek için yerleşik sözlük görüntüleyicisini kullanabilirsiniz. Bir hücrede, son satırda görselleştirmek istediğiniz değişkeni koyun ve bu, hücre çalıştırıldığında otomatik olarak görüntülenir.
 
-:::image type="content" source="media/use-notebook-features-and-commands/csharp-built-in-dictionary-viewer.png" alt-text="Yerleşik sözlük Görüntüleyicisi":::
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-built-in-dictionary-viewer.png" alt-text="CSharp sorgu hücresi":::
 
 ## <a name="upload-json-items-to-a-container"></a>JSON öğelerini bir kapsayıcıya yükleme
 ``%%upload``BIR JSON dosyasındaki verileri belirtilen Azure Cosmos kapsayıcısına yüklemek için Magic komutunu kullanabilirsiniz. Öğeleri karşıya yüklemek için aşağıdaki komutu kullanın:
@@ -160,7 +160,7 @@ Total RUs consumed : 25022.58
 ## <a name="reset-notebooks-workspace"></a>Not defteri çalışma alanını Sıfırla
 Not defteri çalışma alanını varsayılan ayarlara sıfırlamak için komut çubuğundan **çalışma alanını Sıfırla** ' yı seçin. Bu, tüm özel yüklü paketleri kaldıracak ve jupi sunucusunu yeniden başlatacak. Not defterleriniz, dosyalarınız ve Azure Cosmos kaynaklarınızın etkilenmemesi gerekir.  
 
-:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="Not defteri çalışma alanını Sıfırla":::
+:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="CSharp sorgu hücresi":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 09/30/2020
 ms.author: b-juche
-ms.openlocfilehash: beb1cc9957f7b43bc6ad9b9b6ee6c7707eb0c2d6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 56ae3ac1331ed054a1fb808ae06e990b67c06bae
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91571570"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932422"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp Files yenilikleri
 
@@ -31,7 +31,7 @@ Azure NetApp Files düzenli olarak güncelleştirilir. Bu makale, en son yeni ö
 
   Azure NetApp Files, bölgeler arası çoğaltmayı desteklemektedir. Bu yeni olağanüstü durum kurtarma özelliği sayesinde, Azure NetApp Files birimlerinizi bir Azure bölgesinden diğerine hızlı ve ekonomik bir şekilde çoğaltıp, verileri öngörülebilir bölgesel hatalardan koruyabilirsiniz. Azure NetApp Files çapraz bölge çoğaltma, NetApp anlık görüntü® teknolojisini kullanır; yalnızca değiştirilen bloklar ağ üzerinden sıkıştırılmış, etkin bir biçimde gönderilir. Bu özel teknoloji, bölgeler genelinde çoğaltmak için gereken veri miktarını en aza indirir, bu nedenle veri aktarımı maliyetleri kaydediliyor. Ayrıca çoğaltma süresini kısaltır, bu sayede daha küçük bir geri yükleme noktası hedefi (RPO) elde edebilirsiniz.
 
-* [El Ile QoS kapasite havuzu](manage-manual-qos-capacity-pool.md) (Önizleme)  
+* [El Ile QoS kapasite havuzu](manual-qos-capacity-pool-introduction.md) (Önizleme)  
 
     El ile QoS kapasite havuzunda, bir birimin kapasitesini ve iş üretimini bağımsız olarak atayabilirsiniz. El ile QoS kapasite havuzu ile oluşturulan tüm birimlerin toplam verimlilik, havuzun toplam verimi ile sınırlıdır. Havuz boyutu ve hizmet düzeyi aktarım hızı birleşimine göre belirlenir. Alternatif olarak, bir kapasite havuzunun [QoS türü](azure-netapp-files-understand-storage-hierarchy.md#qos_types) otomatik (otomatik) olabilir ve varsayılan değer olan. Bir otomatik QoS kapasite havuzunda, işleme, havuzdaki birimlere göre otomatik olarak atanır ve birimlere atanan boyut kotasıyla orantılıdır.
 

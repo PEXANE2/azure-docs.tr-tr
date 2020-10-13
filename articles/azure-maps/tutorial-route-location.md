@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
 ms.openlocfilehash: 3cb9bee65ab7fa2c29185c40ecb48fd531192187
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321722"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>Öğretici: Azure Maps Route Service ve Map Control kullanarak yol yönlerini görüntüleme
@@ -174,7 +174,7 @@ Bu öğreticide, bir çizgi katmanı kullanarak yolu oluşturacağız. Başlang�
 
 3. **MapRoute.html** 'yi kaydedin ve tarayıcınızı yenileyin. Eşleme artık Seattle üzerinden ortalanır. Teardrop mavi pin başlangıç noktasını işaretler. Yuvarlak mavi pin bitiş noktasını işaretler.
 
-    :::image type="content" source="./media/tutorial-route-location/map-pins.png" alt-text="Yolların başlangıç ve bitiş noktasını haritada görüntüle":::
+    :::image type="content" source="./media/tutorial-route-location/map-pins.png" alt-text="Harita denetiminin temel eşleme işlemesi":::
 
 <a id="getroute"></a>
 
@@ -216,7 +216,7 @@ Bu bölümde, yol yönlerini ve bir noktadan diğerine tahmini varış süresini
 
 3. **MapRoute.html** dosyasını kaydedin ve web tarayıcınızı yenileyin. Harita şimdi yolu başlangıçtan bitiş noktasına görüntülemelidir.
 
-     :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="Azure harita denetimi ve yönlendirme hizmeti":::
+     :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="Harita denetiminin temel eşleme işlemesi":::
 
 Örneğin tam kaynak kodunu [buradan](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)edinebilirsiniz. [Burada](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)canlı bir örnek bulabilirsiniz.
 

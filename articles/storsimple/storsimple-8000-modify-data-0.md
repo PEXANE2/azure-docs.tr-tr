@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
 ms.openlocfilehash: 1d5d57cab9906c04c5c207fa7df2d2fae6f749e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514610"
 ---
 # <a name="modify-the-data-0-network-interface-settings-on-your-storsimple-8000-series-device"></a>StorSimple 8000 serisi cihazınızda DATA 0 ağ arabirimi ayarlarını değiştirin
@@ -47,10 +47,10 @@ StorSimple cihazınızın Windows PowerShell arabirimine bağlanıp bir Kurulum 
 > [!NOTE]
 > Sabit denetleyiciler IP 'Lerinin, Azure portal StorSimple cihazının **ağ ayarları** dikey penceresi aracılığıyla yeniden yapılandırılması gerekir. Daha fazla bilgi için [ağ arabirimlerini değiştirme](storsimple-8000-modify-device-config.md#modify-network-interfaces)bölümüne gidin.
 
-## <a name="modify-data-0-network-settings-through-set-hcsnetinterface-cmdlet"></a>Set-Hcsnetınterface cmdlet 'i aracılığıyla VERI 0 ağ ayarlarını değiştir
+## <a name="modify-data-0-network-settings-through-set-hcsnetinterface-cmdlet"></a>Set-HcsNetInterface cmdlet 'ini kullanarak VERILERI 0 ağ ayarlarını değiştirme
 DATA 0 ağ arabirimini yeniden yapılandırmak için alternatif bir yol, `Set-HcsNetInterface` cmdlet 'i kullanmaktır. Cmdlet 'i, StorSimple cihazınızın Windows PowerShell arabiriminden yürütülür. Bu yordamı kullanırken, denetleyici sabit IP 'Leri burada da yapılandırılabilir. VERI 0 ayarlarını değiştirmek için aşağıdaki adımları gerçekleştirin: 
 
-#### <a name="to-modify-data-0-network-settings-through-the-set-hcsnetinterface-cmdlet"></a>Set-Hcsnetınterface cmdlet 'i aracılığıyla VERI 0 ağ ayarlarını değiştirmek için
+#### <a name="to-modify-data-0-network-settings-through-the-set-hcsnetinterface-cmdlet"></a>Set-HcsNetInterface cmdlet 'i aracılığıyla VERI 0 ağ ayarlarını değiştirmek için
 1. Seri konsol menüsünde, seçenek 1 ' i seçin, **tam erişim Ile oturum açın**. İstendiğinde, Cihaz Yöneticisi parolasını belirtin. Varsayılan parola `Password1` .
 2. Komut istemine şunları yazın:
    

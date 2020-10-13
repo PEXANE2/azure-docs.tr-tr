@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
 ms.openlocfilehash: f3c142491363f30513877ae4368f291430aa3675
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85831939"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Azure Bastion sorunlarını giderme
@@ -41,7 +41,7 @@ Y **:** Azure savunma yalnızca RSA SSH anahtarlarını destekler, bu noktada za
 
 **SSH-keygen-t RSA-b 4096-C " email@domain.com "**
 
-Çıktı:
+Çıkış:
 
 ```
 ashishj@dreamcatcher:~$ ssh-keygen -t rsa -b 4096 -C "email@domain.com"

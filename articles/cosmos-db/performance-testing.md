@@ -8,10 +8,10 @@ ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: ffe368d763ee93d1864f0f807cbe18b8ebfe41c9
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85851661"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Azure Cosmos DB ile performans ve ölçek testi
@@ -93,7 +93,7 @@ Uygulamayı çalıştırdıktan sonra, aktarım hızı ve gecikme süresi üzeri
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, .NET konsol uygulaması kullanarak Azure Cosmos DB nasıl performans ve ölçek testi gerçekleştirekullanabileceğinizi inceledik. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+Bu makalede, .NET konsol uygulaması kullanarak Azure Cosmos DB nasıl performans ve ölçek testi gerçekleştirekullanabileceğinizi inceledik. Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 * [Azure Cosmos DB performans testi örneği](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
 * [Azure Cosmos DB performansını geliştirmek için istemci yapılandırma seçenekleri](performance-tips.md)

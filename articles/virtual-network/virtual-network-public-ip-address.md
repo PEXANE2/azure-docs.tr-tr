@@ -18,10 +18,10 @@ ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
 ms.openlocfilehash: 92e71a8c08ef2c64509d7e00b0c43abdd58cf036
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91804036"
 ---
 # <a name="manage-public-ip-addresses"></a>Genel IP adreslerini yönetme
@@ -82,7 +82,7 @@ Oluşturma sırasında genel IP adresinin belirli öznitelikleri hakkında daha 
    
 |İşlem|Azure portal|Azure PowerShell|Azure CLI|
 |---|---|---|---|
-|Görünüm | Genel IP 'nin **genel bakış** bölümünde |Genel IP adresi nesnesini almak ve ayarlarını görüntülemek için [Get-Azpublicıpaddress](/powershell/module/az.network/get-azpublicipaddress)| [az Network public-ip](/cli/azure/network/public-ip#az-network-public-ip-show) ayarları göstermek için show|
+|Görüntüle | Genel IP 'nin **genel bakış** bölümünde |Genel IP adresi nesnesini almak ve ayarlarını görüntülemek için [Get-Azpublicıpaddress](/powershell/module/az.network/get-azpublicipaddress)| [az Network public-ip](/cli/azure/network/public-ip#az-network-public-ip-show) ayarları göstermek için show|
 |Liste | **Genel IP adresleri** kategorisi altında |Bir veya daha fazla genel IP adresi nesnesini almak ve ayarlarını görüntülemek için [Get-Azpublicıpaddress](/powershell/module/az.network/get-azpublicipaddress)|Genel IP adreslerini listelemek için [az Network public-ip List](/cli/azure/network/public-ip#az-network-public-ip-list)|
 |Değiştir | İlişkisi kesilen bir IP için, boşta kalma zaman aşımını, DNS adı etiketini değiştirmek veya temel IP 'nin statik ve dinamik olarak atamasını değiştirmek için **yapılandırma** ' yı seçin  |Ayarları güncelleştirmek için [set-Azpublicıpaddress](/powershell/module/az.network/set-azpublicipaddress) |güncelleştirmek için [az Network public-ip Update](/cli/azure/network/public-ip#az-network-public-ip-update) |
 
@@ -90,7 +90,7 @@ Oluşturma sırasında genel IP adresinin belirli öznitelikleri hakkında daha 
 
 |Kaynak|Azure portal|Azure PowerShell|Azure CLI|
 |---|---|---|---|
-|[Sanal makine](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm)|IP adresinin NIC yapılandırmasından ilişkilendirmesini **kaldırmak için ilişkiyi kaldırın '** ı seçin ve **Sil**' i seçin.|IP adresinin NIC yapılandırmasından ilişkilendirmesini kaldırmak için [set-Azpublicıpaddress](/powershell/module/az.network/set-azpublicipaddress) ; [Remove-Azpublicıpaddress](/powershell/module/az.network/remove-azpublicipaddress) öğesini Sil|[az Network public-ip Update--](/cli/azure/network/public-ip#az-network-public-ip-update) IP adresinin NIC yapılandırmasından ilişkilendirmesini kaldırmak için kaldırın; [az Network PUBLIC-](/cli/azure/network/public-ip#az-network-public-ip-delete) silmek için Delete |
+|[Sanal Makine](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm)|IP adresinin NIC yapılandırmasından ilişkilendirmesini **kaldırmak için ilişkiyi kaldırın '** ı seçin ve **Sil**' i seçin.|IP adresinin NIC yapılandırmasından ilişkilendirmesini kaldırmak için [set-Azpublicıpaddress](/powershell/module/az.network/set-azpublicipaddress) ; [Remove-Azpublicıpaddress](/powershell/module/az.network/remove-azpublicipaddress) öğesini Sil|[az Network public-ip Update--](/cli/azure/network/public-ip#az-network-public-ip-update) IP adresinin NIC yapılandırmasından ilişkilendirmesini kaldırmak için kaldırın; [az Network PUBLIC-](/cli/azure/network/public-ip#az-network-public-ip-delete) silmek için Delete |
 |Load Balancer ön uç | Kullanılmayan bir genel IP adresine gidip **ilişkilendir** ' i seçin ve bunu değiştirmek Için Ilgili ön uç IP yapılandırması ile Load Balancer seçin (eski IP, VM için aynı yöntem kullanılarak silinebilir)  | Yeni ön uç IP yapılandırmasını genel Load Balancer ilişkilendirmek için [set-Azloadbalancerfrontendıpconfig](/powershell/module/az.network/set-azloadbalancerfrontendipconfig) ; Silinecek [-Azpublicıpaddress](/powershell/module/az.network/remove-azpublicipaddress) ; , birden fazla varsa ön uç IP yapılandırmasını kaldırmak için [Remove-Azloadbalancerfrontendıpconfig](/powershell/module/az.network/remove-azloadbalancerfrontendipconfig) komutunu da kullanabilir |[az Network lb ön uç-IP Update](/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az_network_lb_frontend_ip_update) Ile yeni ön uç IP yapılandırmasını genel Load Balancer ilişkilendirebilirsiniz; Silinecek [-Azpublicıpaddress](/powershell/module/az.network/remove-azpublicipaddress) ; , birden fazla varsa ön uç IP yapılandırmasını kaldırmak için [az Network lb ön uç-IP Delete](/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az_network_lb_frontend_ip_delete) komutunu da kullanabilirsiniz|
 |Güvenlik Duvarı|Yok| Güvenlik duvarını serbest bırakma ve tüm IP yapılandırmasını kaldırma [()](https://docs.microsoft.com/azure/firewall/firewall-faq#how-can-i-stop-and-start-azure-firewall) | [az Network Firewall IP-Config Delete](/cli/azure/ext/azure-firewall/network/firewall/ip-config#ext_azure_firewall_az_network_firewall_ip_config_delete) , IP 'yi kaldırmak için (ancak önce PowerShell kullanılmalıdır)|
 

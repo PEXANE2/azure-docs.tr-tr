@@ -5,7 +5,7 @@
   items:
     - name: Yüz Tanıma hizmeti nedir?
       href: Overview.md
-- name: Hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   items:
     - name: İstemci kitaplığını kullanma
       href: Quickstarts/client-libraries.md
