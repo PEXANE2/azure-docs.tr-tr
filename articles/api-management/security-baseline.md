@@ -8,10 +8,10 @@ ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 4db7727558d0b7f4c26aba3ffa823bebb07862f6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713774"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API Management için Azure Güvenlik temeli
@@ -367,7 +367,7 @@ Beklenmeyen bir şey olduğunda size bilgi vermek için ölçüm uyarıları olu
 
 **Kılavuz**: Azure API Management Denetim düzlemi 'ne (Azure Portal) yönetici erişimi olan hesapların envanterini saklayın.
 
-Azure Active Directory (AD), açıkça atanması ve sorgulanabilir olması gereken yerleşik roller içerir. API Management, API Management Hizmetleri ve varlıkları için ayrıntılı erişim yönetimini sağlamak üzere bu rollere ve rol tabanlı Access Control bağımlıdır.
+Azure Active Directory (AD), açıkça atanması ve sorgulanabilir olması gereken yerleşik roller içerir. API Management, API Management Hizmetleri ve varlıkları için ayrıntılı erişim yönetimini etkinleştirmek üzere bu rollere ve Role-Based Access Control bağımlıdır.
 
 Ayrıca, API Management API Management Kullanıcı sisteminde yerleşik bir Yöneticiler grubu içerir. Geliştirici portalındaki API 'lerin API Management Denetim görünürlüğünde gruplar ve Yöneticiler grubunun üyeleri tüm API 'Leri görebilir.
 
@@ -1112,9 +1112,9 @@ Yönetilen kimlikler, Azure Key Vault API Management özel etki alanı adları i
 
 * [BLOB depolama için güvenlik önerisi](../storage/blobs/security-recommendations.md)
 
-Anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için Key Vault geçici silme özelliğini etkinleştirin.
+Anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için Key Vault Soft-Delete etkinleştirin.
 
-* [Key Vault 'da geçici silme özelliğini etkinleştirme](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+* [Key Vault Soft-Delete etkinleştirme](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 

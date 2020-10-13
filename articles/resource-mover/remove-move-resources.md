@@ -7,28 +7,35 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: raynew
-ms.openlocfilehash: 241ccbda67f7a2518d0c44a0d362673922ad4284
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38a633a7a11ac29271231679e7075920e1f33a70
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89653133"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945952"
 ---
-# <a name="remove-resources-from-a-move-collection"></a>Bir taşıma koleksiyonundan kaynak kaldırma
+# <a name="manage-move-collections-and-resource-groups"></a>Taşıma koleksiyonlarını ve kaynak gruplarını yönetme
 
-Bu makalede, [Azure Kaynak taşıyıcısı](overview.md)içindeki bir taşıma koleksiyonundan kaynakların nasıl kaldırılacağı açıklanır. Azure bölgeleri arasında Azure kaynakları taşırken taşıma koleksiyonları kullanılır.
+Bu makalede, [Azure Kaynak taşıyıcısı](overview.md)' de bir taşıma koleksiyonundan kaynakları kaldırma veya taşıma koleksiyonu/kaynak grubunu kaldırma açıklanır. Azure bölgeleri arasında Azure kaynakları taşırken taşıma koleksiyonları kullanılır.
 
 ## <a name="remove-a-resource-portal"></a>Kaynak kaldırma (portal)
 
-Kaynak taşıyıcısı portalında şu şekilde kaldırın:
+Kaynak taşıyıcısı portalındaki bir taşıma koleksiyonundaki kaynakları şu şekilde kaldırabilirsiniz:
 
-1. **Bölgeler arasında**' de **Kaldır**>, koleksiyondan kaldırmak istediğiniz kaynakları seçin.
+1. **Bölgeler arasında**, koleksiyondan kaldırmak istediğiniz tüm kaynakları seçin ve **Kaldır**' ı seçin. 
 
     ![Kaldırmak için seçilecek düğme](./media/remove-move-resources/portal-select-resources.png)
 
-1. **Kaynakları kaldır**' da **Kaldır**' a tıklayın.
+2. **Kaynakları kaldır**' da **Kaldır**' a tıklayın.
 
     ![Bir taşıma koleksiyonundan kaynakları kaldırmak için seçilecek düğme](./media/remove-move-resources/remove-portal.png)
+
+## <a name="remove-a-move-collectionresource-group-portal"></a>Bir taşıma koleksiyonunu/kaynak grubunu kaldırma (portal)
+
+Portalda bir taşıma koleksiyonunu/kaynak grubunu kaldırabilirsiniz.
+
+1. Koleksiyondan kaynakları kaldırmak için yukarıdaki yordamdaki yönergeleri izleyin. Bir kaynak grubunu kaldırıyorsanız, kaynağın hiç kaynak içermediğinden emin olun.
+2. Taşıma koleksiyonunu veya kaynak grubunu silin.  
 
 ## <a name="remove-a-resource-powershell"></a>Kaynak kaldırma (PowerShell)
 
@@ -41,16 +48,20 @@ Remove-AzResourceMoverMoveResource -SubscriptionId  <subscription-id> -ResourceG
 **Beklenen çıkış** 
  ![ Taşıma koleksiyonundan kaynak kaldırıldıktan sonra çıkış metni](./media/remove-move-resources/remove-resource.png)
 
+
+
 ## <a name="remove-a-collection-powershell"></a>Bir koleksiyonu kaldırma (PowerShell)
 
 PowerShell kullanarak tüm taşıma koleksiyonunu aşağıdaki gibi kaldırın:
 
-```azurepowershell-interactive
-# Remove a resource using the resource ID
-Remove-AzResourceMoverMoveResource -SubscriptionId  <subscription-id> -ResourceGroupName RegionMoveRG-centralus-westcentralus  -MoveCollectionName MoveCollection-centralus-westcentralus 
-```
-**Beklenen çıkış** 
- ![ Taşıma koleksiyonu kaldırıldıktan sonra çıkış metni](./media/remove-move-resources/remove-collection.png)
+1. PowerShell kullanarak koleksiyondaki kaynakları kaldırmak için yukarıdaki yönergeleri izleyin.
+2. Çalıştır:
+
+    ```azurepowershell-interactive
+    # Remove a resource using the resource ID
+    Remove-AzResourceMoverMoveResource -SubscriptionId  <subscription-id> -ResourceGroupName RegionMoveRG-centralus-westcentralus  -MoveCollectionName MoveCollection-centralus-westcentralus 
+    ```
+    **Beklenen çıkış** ![ Taşıma koleksiyonu kaldırıldıktan sonra çıkış metni](./media/remove-move-resources/remove-collection.png)
 
 ## <a name="vm-resource-state-after-removing"></a>Kaldırdıktan sonra VM kaynağı durumu
 

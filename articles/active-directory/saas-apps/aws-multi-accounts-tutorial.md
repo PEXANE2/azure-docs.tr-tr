@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/07/2020
 ms.author: jeedes
 ms.openlocfilehash: 24814ede954980e3a9fc3c3ba60546cedad4e8fd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713444"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Öğretici: Amazon Web Services (AWS) ile Azure Active Directory tümleştirme (eski öğretici)
@@ -45,7 +45,7 @@ Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek is
 
 * Tüm AWS hesapları aynı Federasyon meta veri XML dosyasını kullanacak ve sertifika geçişi sırasında, tüm AWS hesaplarında sertifikayı aynı anda güncelleştirmek için bu çok büyük bir Alıştırmayı kullanmanız gerekir
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini Amazon Web Services (AWS) ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -93,7 +93,7 @@ Amazon Web Services (AWS) ' **de, bağlantı** ilişkisini oluşturmak için **K
 Amazon Web Services (AWS) ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Amazon Web Services (AWS) çoklu oturum açmayı yapılandırın](#configure-amazon-web-services-aws-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Amazon Web Services (AWS) çoklu oturum açmayı yapılandırın](#configure-amazon-web-services-aws-single-sign-on)** .
 3. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
@@ -110,19 +110,19 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 4. **Temel SAML yapılandırması** bölümünde, uygulama zaten Azure ile önceden tümleştirilmiş olduğundan ve **Kaydet**' e tıkladığınızda, kullanıcının herhangi bir adım yapması gerekmez.
 
-5. Amazon Web Services (AWS) uygulaması, belirli bir biçimde SAML onayları bekler. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu özniteliklerin değerlerini, uygulama tümleştirme sayfasındaki **Kullanıcı öznitelikleri & talepler** bölümünde yönetebilirsiniz. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **Kullanıcı öznitelikleri & talepler** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
+5. Amazon Web Services (AWS) uygulaması, belirli bir biçimde SAML onayları bekler. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu özniteliklerin değerlerini, uygulama tümleştirme sayfasındaki **Kullanıcı öznitelikleri & talepler** bölümünde yönetebilirsiniz. **SAML Ile tek Sign-On ayarlama** sayfasında, **Kullanıcı öznitelikleri & talepler** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
 
     ![Ekran görüntüsü, düzenleme denetimi olarak adlandırılan Kullanıcı özniteliklerini gösterir.](common/edit-attribute.png)
 
 6. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde, YUKARıDAKI görüntüde gösterildiği gibi SAML belirteci özniteliğini yapılandırın ve aşağıdaki adımları gerçekleştirin:
 
-    | Name  | Kaynak özniteliği  | Ad Alanı |
+    | Adı  | Kaynak özniteliği  | Ad Alanı |
     | --------------- | --------------- | --------------- |
     | Roleoturumadı | User. UserPrincipalName | `https://aws.amazon.com/SAML/Attributes` |
     | Rol            | Kullanıcı. atandroles |  `https://aws.amazon.com/SAML/Attributes`|
@@ -146,29 +146,29 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
     örneğin: **Kaydet**’e tıklayın.
 
-7. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'Sini indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+7. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'Sini indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-### <a name="configure-amazon-web-services-aws-single-sign-on"></a>Amazon Web Services (AWS) çoklu oturum açmayı yapılandırma
+### <a name="configure-amazon-web-services-aws-single-sign-on"></a>Amazon Web Services (AWS) tek Sign-On yapılandırma
 
 1. Farklı bir tarayıcı penceresinde, Amazon Web Services (AWS) Şirket sitenizde yönetici olarak oturum açın.
 
 1. **AWS giriş**' e tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma][11]
+    ![Tek Sign-On Home 'ı yapılandırma][11]
 
 1. **Kimlik ve erişim yönetimi**' ne tıklayın.
 
-    ![Çoklu oturum açma kimliğini yapılandırma][12]
+    ![Tek Sign-On kimliğini yapılandırma][12]
 
 1. **Kimlik sağlayıcıları**' na ve ardından **sağlayıcı oluştur**' a tıklayın.
 
-    ![Çoklu oturum açma sağlayıcısını yapılandırma][13]
+    ![Tek Sign-On sağlayıcıyı yapılandırma][13]
 
 1. **Sağlayıcıyı yapılandır** iletişim sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Çoklu oturum açma iletişim kutusunu yapılandırma][14]
+    ![Tek Sign-On iletişim kutusunu Yapılandır][14]
 
     a. **Sağlayıcı türü**olarak **SAML**' yi seçin.
 
@@ -180,15 +180,15 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 1. **Sağlayıcı bilgilerini doğrula** Iletişim sayfasında **Oluştur**' a tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma][15]
+    ![Tek Sign-On doğrulamasını yapılandırma][15]
 
 1. **Roller**' e tıklayın ve ardından **rol oluştur**' a tıklayın.
 
-    ![Çoklu oturum açma rollerini yapılandırma][16]
+    ![Tek Sign-On rollerini yapılandırma][16]
 
 1. **Rol oluştur** sayfasında, aşağıdaki adımları uygulayın:  
 
-    ![Çoklu oturum açma güvenini yapılandırma][19]
+    ![Tek Sign-On güveni yapılandırma][19]
 
     a. **Güvenilen varlık seçin**' ın altında **SAML 2,0 Federasyonu** ' ni seçin.
 
@@ -214,7 +214,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 1. **Gözden geçirme** iletişim kutusunda, aşağıdaki adımları uygulayın:
 
-    ![Çoklu oturum açma Incelemesini yapılandırma][34]
+    ![Tek Sign-On Incelemeyi yapılandırma][34]
 
     a. **Rol adı** metin kutusuna aşağıdaki düzende bulunan değeri girin `accountname-aws-admin` .
 

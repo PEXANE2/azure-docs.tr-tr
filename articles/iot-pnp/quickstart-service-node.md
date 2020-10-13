@@ -3,17 +3,17 @@ title: Azure IoT çözümünüze bağlı bir IoT Tak ve Kullan cihazından etkil
 description: Azure IoT çözümünüze bağlı bir IoT Tak ve Kullan cihazına bağlanmak ve bunlarla etkileşim kurmak için Node.js kullanın.
 author: elhorton
 ms.author: elhorton
-ms.date: 08/11/2020
+ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 6ad6e48642e7b7df4b93b37b5ef66381833d8bbc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a6ade8d44e6c751f45849743c66d0a34075943b4
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91575002"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946136"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-nodejs"></a>Hızlı başlangıç: çözümünüze bağlı olan IoT Tak ve Kullan cihazla etkileşim kurma (Node.js)
 
@@ -47,7 +47,7 @@ git clone https://github.com/Azure/azure-iot-sdk-node
 
 Örnek yapılandırma hakkında daha fazla bilgi edinmek için bkz. [örnek Readme](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/pnp/readme.md).
 
-Bu hızlı başlangıçta, IoT Tak ve Kullan cihazı olarak Node.js yazılmış örnek bir termostat cihazı kullanabilirsiniz. Örnek cihazı çalıştırmak için:
+Bu hızlı başlangıçta, IoT Tak ve Kullan cihazı olarak Node.js yazılmış örnek bir termostat cihazı kullanırsınız. Örnek cihazı çalıştırmak için:
 
 1. Bir Terminal penceresi açın ve GitHub 'dan kopyaladığınız Node.js deposu için Microsoft Azure IoT SDK 'sını içeren yerel klasöre gidin.
 
@@ -94,48 +94,103 @@ Bu hızlı başlangıçta, yeni ayarladığınız örnek cihazla etkileşim kurm
 1. **Hizmet** terminaline gidin ve cihaz bilgilerini okumak üzere örneği çalıştırmak için aşağıdaki komutu kullanın:
 
     ```cmd/sh
-    node get_digital_twin.js
+    node twin.js
     ```
 
-1. **Hizmet** terminali çıkışında, dijital ikizi yanıtını görürsünüz. Cihazın model KIMLIĞINI ve bildirilen ilişkili özellikleri görürsünüz:
+1. **Hizmet** terminali çıkışında, cihaz ikizi yanıtını görürsünüz. Cihazın model KIMLIĞINI ve bildirilen ilişkili özellikleri görürsünüz:
 
     ```json
-    "$dtId": "mySimpleThermostat",
-    "serialNumber": "123abc",
-    "maxTempSinceLastReboot": 51.96167432818655,
-    "$metadata": {
-      "$model": "dtmi:com:example:Thermostat;1",
-      "serialNumber": { "lastUpdateTime": "2020-07-09T14:04:00.6845182Z" },
-      "maxTempSinceLastReboot": { "lastUpdateTime": "2020-07-09T14:04:00.6845182" }
+    Model Id: dtmi:com:example:Thermostat;1
+    {
+      "deviceId": "my-pnp-device",
+      "etag": "AAAAAAAAAAE=",
+      "deviceEtag": "Njc3MDMxNDcy",
+      "status": "enabled",
+      "statusUpdateTime": "0001-01-01T00:00:00Z",
+      "connectionState": "Connected",
+      "lastActivityTime": "0001-01-01T00:00:00Z",
+      "cloudToDeviceMessageCount": 0,
+      "authenticationType": "sas",
+      "x509Thumbprint": {
+        "primaryThumbprint": null,
+        "secondaryThumbprint": null
+      },
+      "modelId": "dtmi:com:example:Thermostat;1",
+      "version": 4,
+      "properties": {
+        "desired": {
+          "$metadata": {
+            "$lastUpdated": "2020-10-05T11:35:19.4574755Z"
+          },
+          "$version": 1
+        },
+        "reported": {
+          "maxTempSinceLastReboot": 31.343640523762232,
+          "serialNumber": "123abc",
+          "$metadata": {
+            "$lastUpdated": "2020-10-05T11:35:23.7339042Z",
+            "maxTempSinceLastReboot": {
+              "$lastUpdated": "2020-10-05T11:35:23.7339042Z"
+            },
+            "serialNumber": {
+              "$lastUpdated": "2020-10-05T11:35:23.7339042Z"
+            }
+          },
+          "$version": 3
+        }
+      },
+      "capabilities": {
+        "iotEdge": false
+      },
+      "tags": {}
     }
     ```
 
-1. Aşağıdaki kod parçacığında, Device ikizi 'in model KIMLIĞINI alan *get_digital_twin.js* kodu gösterilmektedir:
+1. Aşağıdaki kod parçacığında, Device ikizi 'in model KIMLIĞINI alan *twin.js* kodu gösterilmektedir:
 
     ```javascript
-    console.log("Model Id: " + inspect(digitalTwin.$metadata.$model))
+    var registry = Registry.fromConnectionString(connectionString);
+    registry.getTwin(deviceId, function(err, twin) {
+      if (err) {
+        console.error(err.message);
+      } else {
+        console.log('Model Id: ' + twin.modelId);
+        //...
+      }
+      //...
+    }
     ```
 
 Bu senaryoda, çıkış çıkışları `Model Id: dtmi:com:example:Thermostat;1` .
 
+> [!NOTE]
+> Bu hizmet örnekleri, **IoT Hub hizmeti Istemcisinden** **kayıt defteri** sınıfını kullanır. Dijital TWINS API 'SI de dahil olmak üzere API 'Ler hakkında daha fazla bilgi edinmek için bkz. [hizmet Geliştirici Kılavuzu](concepts-developer-guide-service.md).
+
 ### <a name="update-a-writable-property"></a>Yazılabilir bir özelliği güncelleştirme
 
-1. Dosya *update_digital_twin.js* bir kod düzenleyicisinde açın.
+1. Dosya *twin.js* bir kod düzenleyicisinde açın.
 
-1. Örnek kodu gözden geçirin. Cihazınızın dijital ikizi güncelleştirmek için nasıl JSON yaması oluşturacağınız hakkında bilgi alabilirsiniz. Bu örnekte, kod termostat 'nın sıcaklığını 42 değeriyle değiştirir:
+1. Örnek kodu gözden geçirin, Device ikizi 'ı güncelleştirmenin iki yolunu gösterir. İlk yolu kullanmak için, `twinPatch` değişkeni aşağıdaki gibi değiştirin:
 
     ```javascript
-    const patch = [{
-        op: 'add',
-        path: '/targetTemperature',
-        value: '42'
-      }]
+    var twinPatch = {
+      tags: {
+        city: "Redmond"
+      },
+      properties: {
+        desired: {
+          targetTemperature: 42
+        }
+      }
+    };
     ```
+
+    `targetTemperature`Özelliği, termostat cihaz modelinde yazılabilir bir özellik olarak tanımlanır.
 
 1. **Hizmet** terminalinde, özelliği güncelleştirme örneğini çalıştırmak için aşağıdaki komutu kullanın:
 
     ```cmd/sh
-    node update_digital_twin.js
+    node twin.js
     ```
 
 1. **Cihaz terminalinizde** , cihazın güncelleştirmeyi aldığını görürsünüz:
@@ -151,44 +206,54 @@ Bu senaryoda, çıkış çıkışları `Model Id: dtmi:com:example:Thermostat;1`
       }
     }
     updated the property
-    Properties have been reported for component
     ```
 
 1. **Hizmet** terminalinizde, özelliğin güncelleştirildiğini onaylamak için aşağıdaki komutu çalıştırın:
 
     ```cmd/sh
-    node get_digital_twin.js
+    node twin.js
     ```
 
-1. **Hizmet** terminali çıkışında, bileşen altındaki dijital ikizi yanıtında `thermostat1` raporlanan hedef sıcaklığın olduğunu görürsünüz. Cihazın güncelleştirmeyi tamamlaması biraz zaman alabilir. Cihaz özellik güncelleştirmesini işleyene kadar bu adımı yineleyin:
+1. **Hizmet** terminali çıkışında, ¬ raporlanan ' Özellikler bölümünde, raporlanan hedef sıcaklığın olduğunu görürsünüz. Cihazın güncelleştirmeyi tamamlaması biraz zaman alabilir. Cihaz özellik güncelleştirmesini işleyene kadar bu adımı yineleyin:
 
     ```json
-    targetTemperature: 42,
+    "reported": {
+      //...
+      "targetTemperature": {
+        "value": 42,
+        "ac": 200,
+        "ad": "Successfully executed patch for targetTemperature",
+        "av": 4
+      },
+      //...
+    }
     ```
 
 ### <a name="invoke-a-command"></a>Komut çağırma
 
-1. *invoke_command.js* dosyasını açın ve kodu gözden geçirin.
+1. *device_method.js* dosyasını açın ve kodu gözden geçirin.
 
 1. **Hizmet** terminali ' ne gidin. Komutu çağırmak için örneği çalıştırmak için aşağıdaki komutu kullanın:
 
     ```cmd/sh
-    set IOTHUB_COMMAND_NAME=getMaxMinReport
-    set IOTHUB_COMMAND_PAYLOAD=commandpayload
-    node invoke_command.js
+    set IOTHUB_METHOD_NAME=getMaxMinReport
+    set IOTHUB_METHOD_PAYLOAD=commandpayload
+    node device_method.js
     ```
 
 1. **Hizmet** terminalinde çıktı aşağıdaki onayı gösterir:
 
     ```cmd/sh
+    getMaxMinReport on my-pnp-device:
     {
-        xMsCommandStatuscode: 200,  
-        xMsRequestId: 'ee9dd3d7-4405-4983-8cee-48b4801fdce2',  
-        connection: 'close',  'content-length': '18',  
-        'content-type': 'application/json; charset=utf-8',  
-        date: 'Thu, 09 Jul 2020 15:05:14 GMT',  
-        server: 'Microsoft-HTTPAPI/2.0',  vary: 'Origin',  
-        body: 'min/max response'
+      "status": 200,
+      "payload": {
+        "maxTemp": 23.460596940801928,
+        "minTemp": 23.460596940801928,
+        "avgTemp": 23.460596940801928,
+        "endTime": "2020-10-05T12:48:08.562Z",
+        "startTime": "2020-10-05T12:47:54.450Z"
+      }
     }
     ```
 

@@ -8,12 +8,12 @@ ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperfq1
-ms.openlocfilehash: 773c5f95cdbec6961b063720106794e6ec00451d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb310861edc2ba1ee183bc6f996cb1593457e3c7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89299941"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972042"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Azure yönetilen disklerine giriş
 
@@ -35,7 +35,7 @@ Yönetilen diskleri kullanarak, her bölge için bir abonelikte en fazla 50.000 
 
 ### <a name="integration-with-availability-sets"></a>Kullanılabilirlik kümeleriyle tümleştirme
 
-Yönetilen diskler, [bir kullanılabilirlik kümesindeki VM](windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) disklerinin tek bir başarısızlık noktasını önlemek için birbirinden yeterince yalıtılmış olmasını sağlamak üzere kullanılabilirlik kümeleriyle tümleştirilir. Diskler otomatik olarak farklı depolama ölçek birimlerine (damgalar) yerleştirilir. Bir damga, donanım veya yazılım arızası nedeniyle başarısız olursa, yalnızca bu damgalar üzerinde disklere sahip VM örnekleri başarısız olur. Örneğin, beş VM 'de çalışan bir uygulamanız olduğunu ve VM 'Lerin bir kullanılabilirlik kümesinde olduğunu varsayalım. Bu VM 'Lerin disklerin hepsi aynı damgada depolanmayacak, bu nedenle bir damga daha sonra uygulamanın diğer örnekleri çalışmaya devam eder.
+Yönetilen diskler, [bir kullanılabilirlik kümesindeki VM](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) disklerinin tek bir başarısızlık noktasını önlemek için birbirinden yeterince yalıtılmış olmasını sağlamak üzere kullanılabilirlik kümeleriyle tümleştirilir. Diskler otomatik olarak farklı depolama ölçek birimlerine (damgalar) yerleştirilir. Bir damga, donanım veya yazılım arızası nedeniyle başarısız olursa, yalnızca bu damgalar üzerinde disklere sahip VM örnekleri başarısız olur. Örneğin, beş VM 'de çalışan bir uygulamanız olduğunu ve VM 'Lerin bir kullanılabilirlik kümesinde olduğunu varsayalım. Bu VM 'Lerin disklerin hepsi aynı damgada depolanmayacak, bu nedenle bir damga daha sonra uygulamanın diğer örnekleri çalışmaya devam eder.
 
 ### <a name="integration-with-availability-zones"></a>Kullanılabilirlik Alanları ile tümleştirme
 
@@ -47,7 +47,7 @@ Bölgesel felate karşı korumak için [Azure Backup](../backup/backup-overview.
 
 ### <a name="granular-access-control"></a>Ayrıntılı erişim denetimi
 
-Yönetilen bir disk için belirli izinleri bir veya daha fazla kullanıcıya atamak üzere [Azure rol tabanlı erişim denetimi 'ni (Azure RBAC)](../role-based-access-control/overview.md) kullanabilirsiniz. Yönetilen diskler, okuma, yazma (oluşturma/güncelleştirme), silme ve disk için [paylaşılan erişim imzası (SAS) URI 'sini](../storage/common/storage-dotnet-shared-access-signature-part-1.md) alma gibi çeşitli işlemler sunar. Yalnızca bir kişinin işini gerçekleştirmesi için ihtiyaç duyacağı işlemlere erişim izni verebilirsiniz. Örneğin, bir kişinin yönetilen bir diski bir depolama hesabına kopyalamasını istemiyorsanız, bu yönetilen disk için dışarı aktarma eylemine erişim izni vermemeye izin vermeyi tercih edebilirsiniz. Benzer şekilde, bir kişinin yönetilen bir diski kopyalamak için SAS URI 'sini kullanmasını istemiyorsanız, bu izni yönetilen diske vermemenizi tercih edebilirsiniz.
+Yönetilen bir disk için belirli izinleri bir veya daha fazla kullanıcıya atamak üzere [Azure rol tabanlı erişim denetimi 'ni (Azure RBAC)](../role-based-access-control/overview.md) kullanabilirsiniz. Yönetilen diskler, okuma, yazma (oluşturma/güncelleştirme), silme ve disk için [paylaşılan erişim imzası (SAS) URI 'sini](../storage/common/storage-sas-overview.md) alma gibi çeşitli işlemler sunar. Yalnızca bir kişinin işini gerçekleştirmesi için ihtiyaç duyacağı işlemlere erişim izni verebilirsiniz. Örneğin, bir kişinin yönetilen bir diski bir depolama hesabına kopyalamasını istemiyorsanız, bu yönetilen disk için dışarı aktarma eylemine erişim izni vermemeye izin vermeyi tercih edebilirsiniz. Benzer şekilde, bir kişinin yönetilen bir diski kopyalamak için SAS URI 'sini kullanmasını istemiyorsanız, bu izni yönetilen diske vermemenizi tercih edebilirsiniz.
 
 ### <a name="upload-your-vhd"></a>VHD 'nizi karşıya yükleyin
 
@@ -96,7 +96,7 @@ Bu diskin en fazla 4.095 GiB kapasitesi vardır.
 
 ### <a name="temporary-disk"></a>Geçici disk
 
-Çoğu VM, yönetilen bir disk olmayan geçici bir disk içerir. Geçici disk, uygulamalar ve süreçler için kısa vadeli depolama sağlar ve yalnızca sayfa veya takas dosyaları gibi verileri depolamak için tasarlanmıştır. Geçici diskteki veriler, [bakım olayı](windows/manage-availability.md?toc=/azure/virtual-machines/windows/toc.json#understand-vm-reboots---maintenance-vs-downtime) sırasında veya [bir VM 'yi](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json)yeniden dağıttığınızda kaybolabilir. Sanal makinenin başarılı bir standart yeniden başlatması sırasında, geçici diskteki veriler devam edecektir. Geçici diskler olmadan VM 'Ler hakkında daha fazla bilgi için, bkz. [Yerel geçici disk Içermeyen Azure VM boyutları](azure-vms-no-temp-disk.md).
+Çoğu VM, yönetilen bir disk olmayan geçici bir disk içerir. Geçici disk, uygulamalar ve süreçler için kısa vadeli depolama sağlar ve yalnızca sayfa veya takas dosyaları gibi verileri depolamak için tasarlanmıştır. Geçici diskteki veriler, [bakım olayı](./manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#understand-vm-reboots---maintenance-vs-downtime) sırasında veya [bir VM 'yi](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json)yeniden dağıttığınızda kaybolabilir. Sanal makinenin başarılı bir standart yeniden başlatması sırasında, geçici diskteki veriler devam edecektir. Geçici diskler olmadan VM 'Ler hakkında daha fazla bilgi için, bkz. [Yerel geçici disk Içermeyen Azure VM boyutları](azure-vms-no-temp-disk.md).
 
 Azure Linux VM 'lerinde geçici disk genellikle/dev/sdb ve Windows VM 'lerinde geçici disk D: varsayılan olarak olur. Konakta şifrelemeyi etkinleştirmediğiniz takdirde geçici disk sunucu tarafı şifrelemesi tarafından şifrelenmez.
 
@@ -104,7 +104,7 @@ Azure Linux VM 'lerinde geçici disk genellikle/dev/sdb ve Windows VM 'lerinde g
 
 Yönetilen disk anlık görüntüsü, varsayılan olarak standart yönetilen disk olarak depolanan bir yönetilen diskin salt okunurdur, kilitlenmeyle tutarlı bir tam kopyasıdır. Anlık görüntülerle, yönetilen disklerinizi dilediğiniz zaman bir noktada yedekleyebilirsiniz. Bu anlık görüntüler, kaynak diskten bağımsız olarak bulunur ve yeni yönetilen diskler oluşturmak için kullanılabilir. 
 
-Anlık görüntüler, kullanılan boyuta göre faturalandırılır. Örneğin, sağlanan 64 GiB kapasitesine sahip bir yönetilen diskin anlık görüntüsünü ve 10 GiB 'nin gerçek kullanılan veri boyutunu oluşturursanız, bu anlık görüntü yalnızca 10 GiB 'nin kullanılan veri boyutu için faturalandırılır. [Azure kullanım raporuna](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)bakarak anlık görüntülerinizin kullanılan boyutunu görebilirsiniz. Örneğin, bir anlık görüntünün kullanılan veri boyutu 10 GiB ise **günlük** kullanım raporu, tüketilen miktar olarak 10 GiB/(31 gün) = 0,3226 gösterir.
+Anlık görüntüler, kullanılan boyuta göre faturalandırılır. Örneğin, sağlanan 64 GiB kapasitesine sahip bir yönetilen diskin anlık görüntüsünü ve 10 GiB 'nin gerçek kullanılan veri boyutunu oluşturursanız, bu anlık görüntü yalnızca 10 GiB 'nin kullanılan veri boyutu için faturalandırılır. [Azure kullanım raporuna](../cost-management-billing/understand/review-individual-bill.md)bakarak anlık görüntülerinizin kullanılan boyutunu görebilirsiniz. Örneğin, bir anlık görüntünün kullanılan veri boyutu 10 GiB ise **günlük** kullanım raporu, tüketilen miktar olarak 10 GiB/(31 gün) = 0,3226 gösterir.
 
 Yönetilen diskler için anlık görüntüler oluşturma hakkında daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
 

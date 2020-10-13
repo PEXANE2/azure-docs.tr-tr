@@ -7,10 +7,10 @@ ms.date: 09/22/2020
 ms.topic: conceptual
 keywords: PowerShell, runbook, JSON, Azure Otomasyonu
 ms.openlocfilehash: 18f1d4ced2a80f9adb5da2c209987fc1997a3f22
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91304160"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-a-powershell-runbook"></a>PowerShell runbook 'unda Azure Resource Manager şablonu dağıtma
@@ -19,7 +19,7 @@ Azure Kaynak [yönetimi şablonu](../azure-resource-manager/templates/quickstart
 
 Bu makalede, yeni bir Azure depolama hesabı dağıtmak için [Azure Storage](../storage/common/storage-introduction.md) 'da depolanan kaynak yöneticisi şablonunu kullanan bir PowerShell runbook 'u oluşturacağız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Henüz bir aboneliğiniz yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) ya da [ücretsiz hesap için kaydolabilirsiniz](https://azure.microsoft.com/free/).
 * Runbook’u tutacak ve Azure kaynaklarında kimlik doğrulamasını yapacak bir [Automation hesabı](./manage-runas-account.md). Bu hesabın sanal makineyi başlatma ve durdurma izni olmalıdır.
