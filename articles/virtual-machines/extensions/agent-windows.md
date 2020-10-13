@@ -7,12 +7,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 07/20/2019
 ms.author: mimckitt
-ms.openlocfilehash: 2db83b643ec3000c5b86388f4b603bba32f2a9a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ef2c9ef4e2a2296ceb214c89bb6e3fb98dcb26f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91855784"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974915"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure sanal makine aracısına genel bakış
 Microsoft Azure sanal makine Aracısı (VM Aracısı), Azure yapı denetleyicisi ile sanal makine (VM) etkileşimini yöneten güvenli ve hafif bir işlemdir. VM aracısının Azure sanal makine uzantıları 'nı etkinleştirmek ve yürütmek için birincil bir rolü vardır. VM uzantıları, yazılım yükleme ve yapılandırma gibi VM 'nin dağıtım sonrası yapılandırmasını etkinleştirir. VM uzantıları, bir VM 'nin yönetici parolasını sıfırlama gibi kurtarma özelliklerini de etkinleştirir. Azure VM Aracısı olmadan VM uzantıları çalıştırılamaz.
@@ -68,7 +68,7 @@ $vm | Update-AzVM
 
 - VM 'nizin 168.63.129.16 IP adresine erişimi olduğundan emin olun. Daha fazla bilgi için bkz. [IP adresi 168.63.129.16 nedir](../../virtual-network/what-is-ip-address-168-63-129-16.md).
 
-- Konuk VM içinde DHCP 'nin etkinleştirildiğinden emin olun. IaaS VM Aracısı ve uzantıları 'nın çalışması için DHCP 'den ana bilgisayar veya doku adresini almak için bu gereklidir. Statik bir özel IP gerekiyorsa, Azure portal veya PowerShell aracılığıyla yapılandırmanız gerekir ve VM içindeki DHCP seçeneğinin etkinleştirildiğinden emin olun. PowerShell ile statik IP adresi ayarlama hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/virtual-network/virtual-networks-static-private-ip-arm-ps#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) .
+- Konuk VM içinde DHCP 'nin etkinleştirildiğinden emin olun. IaaS VM Aracısı ve uzantıları 'nın çalışması için DHCP 'den ana bilgisayar veya doku adresini almak için bu gereklidir. Statik bir özel IP gerekiyorsa, Azure portal veya PowerShell aracılığıyla yapılandırmanız gerekir ve VM içindeki DHCP seçeneğinin etkinleştirildiğinden emin olun. PowerShell ile statik IP adresi ayarlama hakkında [daha fazla bilgi edinin](../../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) .
 
 
 ## <a name="detect-the-vm-agent"></a>VM aracısını Algıla
@@ -120,7 +120,7 @@ Bir sertifikayı kalıcı olarak kaldırmak için, ' dan kaldırmanız `OSProfil
 
 Bir sanal makine için, ' dan sertifikaları kaldırmak için [Remove-AzVMSecret]() ' i kullanın `OSProfile` .
 
-Sanal makine ölçek kümesi sertifikaları hakkında daha fazla bilgi için bkz. [Sanal Makine Ölçek Kümeleri-nasıl yaparım? kullanımdan kaldırılan sertifikaları kaldırma](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#how-do-i-remove-deprecated-certificates) .
+Sanal makine ölçek kümesi sertifikaları hakkında daha fazla bilgi için bkz. [Sanal Makine Ölçek Kümeleri-nasıl yaparım? kullanımdan kaldırılan sertifikaları kaldırma](../../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-remove-deprecated-certificates) .
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

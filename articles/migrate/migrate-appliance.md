@@ -4,10 +4,10 @@ description: Azure geçişi gereci desteğinin bir özetini sağlar.
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: ac3c90f1c09d290d5112a0e0d7abc5218788caf7
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91450042"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Geçişi gereci
@@ -180,7 +180,7 @@ IPv6 adresleri | 'nin. Guest.Net
 Aktarım hızını oku (MB/saniye) | net. alınan. Ortalama
 Yazma üretilen işi (MB/saniye) | net. iletilmiş. Average
 **Envanter yolu ayrıntıları** | 
-Name | kapsayıcı. GetType (). Ada
+Adı | kapsayıcı. GetType (). Ada
 Alt nesnenin türü | kapsayıcı. ChildType
 Başvuru ayrıntıları | kapsayıcı. MoRef
 Üst Ayrıntılar | Container. Parent
@@ -227,7 +227,7 @@ Uygulamanın, uygulama bulma için etkinleştirilen her bir VM 'den topladığı
 
 **Veriler**  | **PowerShell cmdlet 'i** | **Özellik**
 --- | --- | ---
-Name  | Get-WindowsFeature  | Name
+Adı  | Get-WindowsFeature  | Adı
 Özellik türü | Get-WindowsFeature  | FeatureType
 Üst  | Get-WindowsFeature  | Üst
 
@@ -237,7 +237,7 @@ Uygulamanın, uygulama bulma için etkinleştirilmiş Microsoft SQL Server çal�
 
 **Veriler**  | **Kayıt Defteri Konumu**  | **Key**
 --- | --- | ---
-Name  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\ınstance Names\SQL  | ınstalınstalstance
+Adı  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\ınstance Names\SQL  | ınstalınstalstance
 Sürüm  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Sürüm 
 Hizmet Paketi  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | SP2
 Sürüm  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Sürüm 
@@ -248,7 +248,7 @@ Bu, gerecin uygulama bulma için etkin her VM 'yi topladığı işletim sistemi 
 
 Veriler  | WMI sınıfı  | WMI sınıfı özelliği
 --- | --- | ---
-Name  | Win32_operatingsystem  | Başlık
+Adı  | Win32_operatingsystem  | Başlık
 Sürüm  | Win32_operatingsystem  | Sürüm
 Mimari  | Win32_operatingsystem  | OSArchitecture
 
@@ -258,7 +258,7 @@ Uygulamanın, uygulama bulma için etkinleştirilen her bir VM 'den topladığı
 
 Veriler  | Komut
 --- | --- 
-Name | RPM, dpkg-Query, Snap
+Adı | RPM, dpkg-Query, Snap
 Sürüm | RPM, dpkg-Query, Snap
 Sağlayıcı | RPM, dpkg-Query, Snap
 
@@ -268,7 +268,7 @@ Bu, gerecin uygulama bulma için etkin her VM 'yi topladığı işletim sistemi 
 
 **Veriler**  | **Komut** 
 --- | --- | ---
-Name <br/> sürüm | Aşağıdaki dosyalardan bir veya daha fazlası toplanmıştır:<br/> <br/>/etc/OS-Release  <br> /usr/lib/OS-Release  <br> /etc/Enterprise-Release  <br> /etc/redhat-release  <br> /etc/Oracle-Release  <br> /etc/SuSE-release  <br> /etc/LSB-Release  <br> /etc/debian_version 
+Adı <br/> sürüm | Aşağıdaki dosyalardan bir veya daha fazlası toplanmıştır:<br/> <br/>/etc/OS-Release  <br> /usr/lib/OS-Release  <br> /etc/Enterprise-Release  <br> /etc/redhat-release  <br> /etc/Oracle-Release  <br> /etc/SuSE-release  <br> /etc/LSB-Release  <br> /etc/debian_version 
 Mimari | uname
 
 
@@ -454,7 +454,7 @@ Gereç üzerinde çalışan Azure geçiş aracıları güncelleştirildiğinden,
 ### <a name="turn-off-auto-update"></a>Otomatik güncelleştirmeyi devre dışı bırakma
 
 1. Gereci çalıştıran makinede, kayıt defteri düzenleyicisini açın.
-2. **HKEY_LOCAL_MACHINE \software\microsoft\azureappliance**adresine gidin.
+2. **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance**gidin.
 3. Otomatik güncelleştirmeyi devre dışı bırakmak için, DWORD değeri 0 olan bir kayıt defteri anahtarı **Otomatik güncelleştirme** anahtarı oluşturun.
 
     ![Kayıt defteri anahtarını ayarla](./media/migrate-appliance/registry-key.png)
@@ -464,13 +464,13 @@ Gereç üzerinde çalışan Azure geçiş aracıları güncelleştirildiğinden,
 
 Aşağıdaki yöntemlerden birini kullanarak otomatik güncelleştirme 'yi açabilirsiniz:
 
-- HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance. 'den otomatik güncelleştirme kayıt defteri anahtarını silerek
+- HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance otomatik güncelleştirme kayıt defteri anahtarını silerek.
 - Otomatik güncelleştirmeyi açmak için **önkoşulları ayarlama** bölmesindeki en son güncelleştirme denetimlerinden **gereç hizmetlerini görüntüle** ' ye tıklayın.
 
 Kayıt defteri anahtarını silmek için:
 
 1. Gereci çalıştıran makinede, kayıt defteri düzenleyicisini açın.
-2. **HKEY_LOCAL_MACHINE \software\microsoft\azureappliance**adresine gidin.
+2. **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance**gidin.
 3. Daha önce otomatik güncelleştirmeyi devre dışı bırakmak için oluşturulmuş kayıt **defteri anahtarını silin**.
 
 Gereç Configuration Manager açmak için, bulma tamamlandıktan sonra:

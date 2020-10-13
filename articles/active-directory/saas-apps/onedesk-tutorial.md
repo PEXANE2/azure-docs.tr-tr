@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 4c3eb3706858bd2bfd2160e58698c0f5136c41f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e8ed59783a6a714434b17a1d1abbb22fbe30939
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88547922"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944066"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onedesk"></a>Öğretici: OneDesk ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -107,7 +107,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -141,7 +141,7 @@ Bu bölümde, OneDesk erişimi vererek Azure çoklu oturum açma özelliğini ku
 
 1. **Tümleştirmeler** sekmesine tıklayın.
 
-    ![Ayarlar sekmesi](./media/onedesk-tutorial/img-integration.png)
+    !["Tümleştirmeler" sekmesinin seçili olduğunu gösteren ekran görüntüsü.](./media/onedesk-tutorial/img-integration.png)
 
 1. **Çoklu oturum açma**' ya tıklayın, **meta veri dosyasını karşıya yükle** ' yi seçin ve Azure Portal indirdiğiniz meta veri dosyasını karşıya yüklemek için **Dosya Seç** ' e tıklayın.
 
