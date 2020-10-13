@@ -12,10 +12,10 @@ ms.date: 05/18/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9b389841bdba107ba27371387d4a6e5d1f009d41
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88919361"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>C 'de sakıncalı malzeme için video içeriğini analiz etme #
@@ -24,7 +24,7 @@ Bu makalede, [.NET için Content moderator SDK 'yı](https://www.nuget.org/packa
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 - Herhangi bir [Visual Studio 2015 veya 2017](https://www.visualstudio.com/downloads/) sürümü
 
 ## <a name="set-up-azure-resources"></a>Azure kaynakları ayarlama
@@ -121,7 +121,7 @@ private static readonly string CONTENT_MODERATOR_PRESET_FILE = "preset.json";
 
 Yerel bir video dosyası (en basit durum) kullanmak istiyorsanız, projeye ekleyin ve `INPUT_FILE` değerini değer olarak girin (göreli yollar yürütme dizinine göre değişir).
 
-Ayrıca, geçerli dizindeki dosyasında _preset.js_ oluşturmanız ve bir sürüm numarası belirtmek için kullanmanız gerekir. Örnek:
+Ayrıca, geçerli dizindeki dosyasında _preset.js_ oluşturmanız ve bir sürüm numarası belirtmek için kullanmanız gerekir. Örneğin:
 
 ```JSON
 {
