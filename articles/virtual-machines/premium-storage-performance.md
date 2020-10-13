@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f89358f4ca34c39527d7e65307ada042ba3df7e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6519f9d549c513e03400366447812a170f9ab41c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776162"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978671"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Depolama: yüksek performans için tasarım
 
@@ -130,7 +130,7 @@ PerfMon sayaçları işlemci, bellek ve sunucunuzdaki her mantıksal disk ve fiz
 | **En fazla bellek** |Uygulamayı sorunsuz bir şekilde çalıştırmak için gereken bellek miktarı |Kullanılan kaydedilmiş bayt yüzdesi |Vmstat kullanma |
 | **Maks. CPU** |Uygulamayı sorunsuz şekilde çalıştırmak için CPU miktarı gereklidir |% İşlemci zamanı |% Util |
 
-[Iostat](https://linux.die.net/man/1/iostat) ve [Perfmon](https://docs.microsoft.com/windows/win32/perfctrs/performance-counters-portal)hakkında daha fazla bilgi edinin.
+[Iostat](https://linux.die.net/man/1/iostat) ve [Perfmon](/windows/win32/perfctrs/performance-counters-portal)hakkında daha fazla bilgi edinin.
 
 
 
@@ -343,7 +343,7 @@ Bu çoklu iş parçacığı oluşturmayı veya bir uygulamanın paralel işlemes
 
 Örneğin, SQL Server kullanarak uygulamanızın aynı anda büyük bir sorgu ve dizin işlemi yürüttüğünü varsayalım. Dizin işleminin büyük sorguyla karşılaştırıldığında daha fazla performansa sahip olduğunu varsayalım. Böyle bir durumda, Dizin işleminin MAXDOP değerini sorgu için MAXDOP değerinden daha yüksek olacak şekilde ayarlayabilirsiniz. Bu şekilde SQL Server, dizin işlemi için, büyük sorguya ayırabildiğinden işlemci sayısıyla karşılaştırıldığında daha fazla sayıda işlemciye sahiptir. Her işlem için kullanılacak SQL Server iş parçacığı sayısını kontrol etmeyi unutmayın. Çoklu iş parçacığı için ayrılan en fazla işlemci sayısını kontrol edebilirsiniz.
 
-SQL Server [paralellik dereceleri](https://technet.microsoft.com/library/ms188611.aspx) hakkında daha fazla bilgi edinin. Uygulamanızda çoklu iş parçacığı ve bunların yapılandırmasını etkileyen bu ayarları, performansı iyileştirmek için öğrenin.
+SQL Server [paralellik dereceleri](/previous-versions/sql/sql-server-2008-r2/ms188611(v=sql.105)) hakkında daha fazla bilgi edinin. Uygulamanızda çoklu iş parçacığı ve bunların yapılandırmasını etkileyen bu ayarları, performansı iyileştirmek için öğrenin.
 
 ## <a name="queue-depth"></a>Sıra derinliği
 

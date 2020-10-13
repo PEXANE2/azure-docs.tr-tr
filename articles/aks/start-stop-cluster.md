@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 09/24/2020
 author: palma21
-ms.openlocfilehash: 4a814d575e0879daec64ebfdabc1539219bea250
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc756994cf0f6e12af1c1ad5a6c8db304b4253e3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91368949"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968795"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster-preview"></a>Azure Kubernetes hizmeti (AKS) kümesini durdurma ve başlatma (Önizleme)
 
@@ -30,6 +30,7 @@ Küme Başlat/Durdur özelliğini kullanırken aşağıdaki kısıtlamalar geçe
 - Bu özellik yalnızca sanal makine ölçek kümeleri desteklenen kümeler için desteklenir.
 - Önizleme süresince, bu özellik özel kümeler için desteklenmez.
 - Durdurulan bir AKS kümesinin küme durumu 12 aya kadar korunur. Kümeniz 12 aydan uzun bir süre için durdurulmuşsa, küme durumu kurtarılamaz. Daha fazla bilgi için bkz. [aks destek ilkeleri](support-policies.md).
+- Önizleme süresince kümeyi durdurmayı denemeden önce küme otomatik Scaler (CA) öğesini durdurmanız gerekir.
 - Yalnızca durdurulmuş bir AKS kümesini başlatabilir ya da silebilirsiniz. Ölçek veya yükseltme gibi işlemleri gerçekleştirmek için önce kümenizi başlatın.
 
 ### <a name="install-the-aks-preview-azure-cli"></a>`aks-preview`Azure CLI 'yı yükler 

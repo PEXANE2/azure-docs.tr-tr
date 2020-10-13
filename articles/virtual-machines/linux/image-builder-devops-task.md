@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 9f948fcc8ad36f8bef8b1ab6a1b74131faea9bd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88bbd83d7ac5b834255c9b4d46d7cef4394f15d3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88068363"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968676"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure görüntü Oluşturucu hizmeti DevOps görevi
 
@@ -31,8 +31,8 @@ Bu makalede, uygulamanızı ve işletim sistemini yükleyip yapılandırmak içi
 * Visual Studio Market ' [den kararlı DevOps görevini](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder)yükler.
 * Bir VSTS DevOps hesabınız ve derleme işlem hattının oluşturulması gerekir
 * İşlem hatları tarafından kullanılan abonelikte görüntü Oluşturucu özelliği gereksinimlerini kaydedin ve etkinleştirin:
-    * [Az PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-powershell#register-features)
-    * [Az CLı](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder#register-the-features)
+    * [Az PowerShell](../windows/image-builder-powershell.md#register-features)
+    * [Az CLı](../windows/image-builder.md#register-the-features)
     
 * Kaynak görüntü kaynak grubunda standart bir Azure depolama hesabı oluşturun, diğer kaynak grubu/depolama hesaplarını kullanabilirsiniz. Depolama hesabı, yapı yapıtlarını DevOps görevinin görüntüsüne aktarma kullanılır.
 
@@ -71,14 +71,14 @@ Geçici görüntü şablonu yapısının depolanacağı kaynak grubunu kullanın
  
 ### <a name="location"></a>Konum
 
-Konum, Image Builder 'ın çalışacağı bölgedir. Yalnızca bir dizi [bölge](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#regions) desteklenir. Kaynak görüntülerin bu konumda bulunması gerekir. Örneğin, paylaşılan görüntü Galerisi kullanıyorsanız, bu bölgede bir çoğaltma olması gerekir.
+Konum, Image Builder 'ın çalışacağı bölgedir. Yalnızca bir dizi [bölge](../windows/image-builder-overview.md#regions) desteklenir. Kaynak görüntülerin bu konumda bulunması gerekir. Örneğin, paylaşılan görüntü Galerisi kullanıyorsanız, bu bölgede bir çoğaltma olması gerekir.
 
 ### <a name="managed-identity-required"></a>Yönetilen kimlik (gerekli)
-Image Builder, kaynak özel görüntüleri okumak, Azure depolama 'ya bağlanmak ve özel görüntüler oluşturmak için kullandığı yönetilen bir kimlik gerektirir. Daha ayrıntılı bilgi için [buraya](https://aka.ms/azvmimagebuilder#permissions) bakın.
+Image Builder, kaynak özel görüntüleri okumak, Azure depolama 'ya bağlanmak ve özel görüntüler oluşturmak için kullandığı yönetilen bir kimlik gerektirir. Daha ayrıntılı bilgi için [buraya](./image-builder-overview.md#permissions) bakın.
 
 ### <a name="vnet-support"></a>VNET desteği
 
-Şu anda DevOps görevi var olan bir alt ağın belirtilmesini desteklemiyor, bu yol haritasında yer alır, ancak mevcut bir VNET 'i kullanmak istiyorsanız, içinde yer alan bir görüntü Oluşturucu şablonuyla bir ARM şablonu kullanabilirsiniz, bunun nasıl elde edildiğini öğrenmek için lütfen Windows görüntü Oluşturucu şablon örneklerine bakın veya alternatif olarak [az AıB PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-powershell)kullanın.
+Şu anda DevOps görevi var olan bir alt ağın belirtilmesini desteklemiyor, bu yol haritasında yer alır, ancak mevcut bir VNET 'i kullanmak istiyorsanız, içinde yer alan bir görüntü Oluşturucu şablonuyla bir ARM şablonu kullanabilirsiniz, bunun nasıl elde edildiğini öğrenmek için lütfen Windows görüntü Oluşturucu şablon örneklerine bakın veya alternatif olarak [az AıB PowerShell](../windows/image-builder-powershell.md)kullanın.
 
 ### <a name="source"></a>Kaynak
 
@@ -154,7 +154,7 @@ Aşağıdaki örnek bunun nasıl çalıştığını açıklar:
     & 'c:\buildArtifacts\webapp\webconfig.ps1'
     ```
 
-* Linux-Linux sistemlerinde derleme yapıtları `/tmp` dizine konur. Ancak, birçok Linux OSs 'de, bir yeniden başlatma işlemi için/tmp dizin içeriği silinir. Yapıtların görüntüde mevcut olmasını istiyorsanız, başka bir dizin oluşturmanız ve bunları üzerine kopyalamanız gerekir.  Örneğin:
+* Linux-Linux sistemlerinde derleme yapıtları `/tmp` dizine konur. Ancak, birçok Linux OSs 'de, bir yeniden başlatma işlemi için/tmp dizin içeriği silinir. Yapıtların görüntüde mevcut olmasını istiyorsanız, başka bir dizin oluşturmanız ve bunları üzerine kopyalamanız gerekir.  Örnek:
 
     ```bash
     sudo mkdir /lib/buildArtifacts
@@ -176,7 +176,7 @@ Aşağıdaki örnek bunun nasıl çalıştığını açıklar:
 > Image Builder, derleme yapıtlarını otomatik olarak kaldırmaz, derleme yapıtlarını kaldırmak için her zaman kodunuzun olması önemle önerilir.
 > 
 
-* Windows-Image Builder dosyaları `c:\buildArtifacts` dizine dağıtır. Dizin kalıcı olduğundan dizini kaldırmanız gerekir. Bunu, yürüttiğiniz betikte kaldırabilirsiniz. Örneğin:
+* Windows-Image Builder dosyaları `c:\buildArtifacts` dizine dağıtır. Dizin kalıcı olduğundan dizini kaldırmanız gerekir. Bunu, yürüttiğiniz betikte kaldırabilirsiniz. Örnek:
 
     ```PowerShell
     # Clean up buildArtifacts directory
@@ -186,7 +186,7 @@ Aşağıdaki örnek bunun nasıl çalıştığını açıklar:
     Remove-Item -Path "C:\buildArtifacts" -Force 
     ```
     
-* Linux-derleme yapıtları `/tmp` dizine konur. Ancak, birçok Linux OSs 'de, bir yeniden başlatma işlemi, `/tmp` Dizin içerikleri silinir. İçeriği kaldırmak için işletim sistemine bağlı olmayan ve içeriği kaldırmak için kodunuzun olması önerilir. Örneğin:
+* Linux-derleme yapıtları `/tmp` dizine konur. Ancak, birçok Linux OSs 'de, bir yeniden başlatma işlemi, `/tmp` Dizin içerikleri silinir. İçeriği kaldırmak için işletim sistemine bağlı olmayan ve içeriği kaldırmak için kodunuzun olması önerilir. Örnek:
 
     ```bash
     sudo rm -R "/tmp/AppsAndImageBuilderLinux"
@@ -194,7 +194,7 @@ Aşağıdaki örnek bunun nasıl çalıştığını açıklar:
     
 #### <a name="total-length-of-image-build"></a>Görüntü derlemesinin toplam uzunluğu
 
-Henüz DevOps ardışık düzen görevinde Toplam uzunluk değiştirilemez. Varsayılan değer olan 240 dakika kullanılır. [Buildtimeoutınminutes](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#properties-buildtimeoutinminutes)değerini artırmak Istiyorsanız, sürüm ARDıŞıK DÜZENINDE az CLI görevi kullanabilirsiniz. Görevi bir şablonu kopyalamak ve gönderecek şekilde yapılandırın. Bir örnek için, bu [çözüme](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder)bakın veya az PowerShell kullanın.
+Henüz DevOps ardışık düzen görevinde Toplam uzunluk değiştirilemez. Varsayılan değer olan 240 dakika kullanılır. [Buildtimeoutınminutes](./image-builder-json.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#properties-buildtimeoutinminutes)değerini artırmak Istiyorsanız, sürüm ARDıŞıK DÜZENINDE az CLI görevi kullanabilirsiniz. Görevi bir şablonu kopyalamak ve gönderecek şekilde yapılandırın. Bir örnek için, bu [çözüme](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder)bakın veya az PowerShell kullanın.
 
 
 #### <a name="storage-account"></a>Depolama Hesabı
@@ -312,7 +312,7 @@ Hayır. Benzersiz bir şablon adı kullanılır ve sonra silinir.
 
 Bir yapı hatası varsa, DevOps görevi hazırlama kaynak grubunu silmez. Yapı özelleştirme günlüğünü içeren hazırlama kaynak grubuna erişebilirsiniz.
 
-Sanal makine görüntüsü Oluşturucu görevi için DevOps günlüğünde bir hata görürsünüz ve özelleştirme. log konumunu görürsünüz. Örneğin:
+Sanal makine görüntüsü Oluşturucu görevi için DevOps günlüğünde bir hata görürsünüz ve özelleştirme. log konumunu görürsünüz. Örnek:
 
 :::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="Yayın ardışık düzeninde yapıt Ekle ' ye seçme.":::
 

@@ -1,20 +1,20 @@
 ---
 title: Klasik bir sanal ağdan Azure AD Domain Services geçirme | Microsoft Docs
 description: Klasik sanal ağ modelinden mevcut Azure AD Domain Services yönetilen bir etki alanını Kaynak Yöneticisi tabanlı bir sanal ağa geçirmeyi öğrenin.
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 09/24/2020
-ms.author: iainfou
-ms.openlocfilehash: ef05704ea03316ef0c95510e27ee630ddcfb0b44
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.author: joflore
+ms.openlocfilehash: a66268c0cd0c2382b412873ec7f78b87d3491594
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91266913"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968183"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Klasik sanal ağ modelinden Azure Active Directory Domain Services Kaynak Yöneticisi 'ye geçirin
 
@@ -153,11 +153,11 @@ Kaynak Yöneticisi dağıtım modeline ve sanal ağa geçiş, 5 ana adıma böl�
 
 | Adım    | Üzerinde gerçekleştirilen  | Tahmini süre  | Downtime  | Geri alma/geri yükleme? |
 |---------|--------------------|-----------------|-----------|-------------------|
-| [1. adım-yeni sanal ağı güncelleştirme ve bulma](#update-and-verify-virtual-network-settings) | Azure portal | 15 dakika | Kesinti süresi gerekli değildir | Yok |
+| [1. adım-yeni sanal ağı güncelleştirme ve bulma](#update-and-verify-virtual-network-settings) | Azure portal | 15 dakika | Kesinti süresi gerekli değildir | YOK |
 | [2. adım-yönetilen etki alanını geçiş için hazırlama](#prepare-the-managed-domain-for-migration) | PowerShell | 15 – ortalama 30 dakika | Azure AD DS kapalı kalma süresi bu komut tamamlandıktan sonra başlar. | Geri alma ve geri yükleme var. |
 | [3. adım-yönetilen etki alanını mevcut bir sanal ağa taşıma](#migrate-the-managed-domain) | PowerShell | 1 – 3 saat (Ortalama) | Bu komut tamamlandığında bir etki alanı denetleyicisi kullanılabilir, kapalı kalma süresi sona erer. | Hata durumunda hem geri alma (self servis) hem de geri yükleme kullanılabilir. |
 | [4. Adım-çoğaltma etki alanı denetleyicisi için test ve bekleme](#test-and-verify-connectivity-after-the-migration)| PowerShell ve Azure portal | test sayısına bağlı olarak 1 saat veya daha fazla | Her iki etki alanı denetleyicisi de kullanılabilir ve normal şekilde çalışır. | Yok. İlk VM başarıyla geçirildikten sonra, geri alma veya geri yükleme seçeneği yoktur. |
-| [5. adım-Isteğe bağlı yapılandırma adımları](#optional-post-migration-configuration-steps) | Azure portal ve VM 'Ler | Yok | Kesinti süresi gerekli değildir | Yok |
+| [5. adım-Isteğe bağlı yapılandırma adımları](#optional-post-migration-configuration-steps) | Azure portal ve VM 'Ler | YOK | Kesinti süresi gerekli değildir | YOK |
 
 > [!IMPORTANT]
 > Ek kapalı kalma süresini önlemek için, geçiş işlemine başlamadan önce bu geçiş makalesinin ve kılavuzunun hepsini okuyun. Geçiş işlemi, Azure AD DS etki alanı denetleyicilerinin bir süre için kullanılabilirliğini etkiler. Kullanıcılar, hizmetler ve uygulamalar geçiş işlemi sırasında yönetilen etki alanında kimlik doğrulaması yapamaz.

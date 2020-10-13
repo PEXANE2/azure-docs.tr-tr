@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 9a31a22a5b037162198f594d9bcf35c91a0a4654
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25e3a9cb363ae4e64b953aeb7a6da4e2e66c9fc7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306880"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977108"
 ---
 # <a name="azure-serial-console-for-linux"></a>Linux için Azure Serial Console
 
@@ -73,7 +73,7 @@ Oracle Linux        | Seri konsol erişimi varsayılan olarak etkinleştirilmiş
 ### <a name="custom-linux-images"></a>Özel Linux görüntüleri
 Özel Linux sanal makinenizin seri konsolunu etkinleştirmek için, */etc/ınittab* dosyasındaki konsol erişimini etkinleştirin ve üzerinde bir Terminal çalıştırın `ttyS0` . Örneğin: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`. Ayrıca ttyS0 üzerinde bir Getty oluşturmanız gerekebilir. Bu, ile yapılabilir `systemctl start serial-getty@ttyS0.service` .
 
-Ayrıca, seri çıkış için hedef olarak ttyS0 eklemek isteyeceksiniz. Özel bir görüntünün seri konsoluyla çalışacak şekilde yapılandırılması hakkında daha fazla bilgi için bkz. [Azure 'da bir LINUX VHD oluşturma ve yükleme](https://aka.ms/createuploadvhd#general-linux-system-requirements)konusunda genel sistem gereksinimleri.
+Ayrıca, seri çıkış için hedef olarak ttyS0 eklemek isteyeceksiniz. Özel bir görüntünün seri konsoluyla çalışacak şekilde yapılandırılması hakkında daha fazla bilgi için bkz. [Azure 'da bir LINUX VHD oluşturma ve yükleme](../linux/create-upload-generic.md#general-linux-system-requirements)konusunda genel sistem gereksinimleri.
 
 Özel bir çekirdek oluşturuyorsanız, bu çekirdek bayraklarını etkinleştirmeyi göz önünde bulundurun: `CONFIG_SERIAL_8250=y` ve `CONFIG_MAGIC_SYSRQ_SERIAL=y` . Yapılandırma dosyası genellikle */Boot/* Path içinde bulunur.
 
@@ -114,7 +114,7 @@ Bir Kullanıcı seri konsoluna bağlandıysa ve başka bir kullanıcı aynı san
 ## <a name="accessibility"></a>Erişilebilirlik
 Erişilebilirlik, Azure seri konsolu için önemli bir odadır. Bu uçta, seri konsolunun tam olarak erişilebilir olduğunu umuyoruz.
 
-### <a name="keyboard-navigation"></a>Klavye ile gezinti
+### <a name="keyboard-navigation"></a>Klavye ile gezinme
 Azure portal seri konsol arabiriminde gezinmek için klavyenizde **Tab** tuşunu kullanın. Konumunuz ekranda vurgulanacaktır. Seri konsol penceresinin odağını bırakmak için klavyenizde **CTRL** + **F6** tuşuna basın.
 
 ### <a name="use-serial-console-with-a-screen-reader"></a>Bir ekran okuyucuyla seri konsol kullanma
@@ -128,7 +128,7 @@ Sorun                           |   Risk azaltma
 Bağlantı başlığından sonra **ENTER** tuşuna basmak, oturum açma isteminin görüntülenmesine neden olmaz. | GRUB doğru şekilde yapılandırılmamış olabilir. Şu komutları çalıştırın: `grub2-mkconfig -o /etc/grub2-efi.cfg` ve/veya `grub2-mkconfig -o /etc/grub2.cfg` . Daha fazla bilgi için bkz. ENTER tuşuna basarak [hiçbir şey yapılmıyor](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Bu sorun, Linux 'un seri bağlantı noktasına bağlanamamasına neden olan özel bir VM, sağlamlaştırılmış gereç veya GRUB yapılandırması çalıştırıyorsanız oluşabilir.
 Seri konsol metin yalnızca ekran boyutunun bir kısmını kaplar (genellikle bir metin düzenleyicisi kullanarak). | Seri konsolları, pencere boyutu ([RFC 1073](https://www.ietf.org/rfc/rfc1073.txt)) üzerinde anlaşmaya varılanır, yani güncelleştirme ekranı boyutuna gönderilen SIGWINCH sinyali yoktur ve VM 'nin terminalin boyutuyla ilgili hiçbir bilgisi olmayacaktır. Size komutu sağlamak için xterm veya benzer bir yardımcı program yükleyip `resize` komutunu çalıştırın `resize` .
 Uzun dizeleri yapıştırma işe yaramıyor. | Seri konsol, seri bağlantı noktası bant genişliğinin aşırı yüklenmesini engellemek için, terminale yapıştırılan dizelerin uzunluğunu 2048 karakter olarak sınırlandırır.
-SLES BYOS görüntülerinde klavye girişi Erratic. Klavye girişi yalnızca sporadolarak tanınıyor. | Bu, Plymouth paketiyle ilgili bir sorundur. Plymouth, Azure 'da çalıştırılmamalıdır ve bir giriş ekranına gerek kalmaz ve Plymouth 'in seri konsolu kullanma yeteneğini kesintiye uğratır. Plymouth `sudo zypper remove plymouth` öğesini ve ardından yeniden başlatın. Alternatif olarak, çizginin sonuna ekleyerek, GRUB yapılandırmasının çekirdek satırını değiştirebilirsiniz `plymouth.enable=0` . Bunu önyükleme [sırasında önyükleme girdisini düzenleyerek](https://aka.ms/serialconsolegrub#single-user-mode-in-suse-sles)veya ' de GRUB_CMDLINE_LINUX satırı düzenleyerek `/etc/default/grub` , grub ile yeniden başlatarak `grub2-mkconfig -o /boot/grub2/grub.cfg` ve sonra yeniden başlatarak yapabilirsiniz.
+SLES BYOS görüntülerinde klavye girişi Erratic. Klavye girişi yalnızca sporadolarak tanınıyor. | Bu, Plymouth paketiyle ilgili bir sorundur. Plymouth, Azure 'da çalıştırılmamalıdır ve bir giriş ekranına gerek kalmaz ve Plymouth 'in seri konsolu kullanma yeteneğini kesintiye uğratır. Plymouth `sudo zypper remove plymouth` öğesini ve ardından yeniden başlatın. Alternatif olarak, çizginin sonuna ekleyerek, GRUB yapılandırmasının çekirdek satırını değiştirebilirsiniz `plymouth.enable=0` . Bunu önyükleme [sırasında önyükleme girdisini düzenleyerek](./serial-console-grub-single-user-mode.md#single-user-mode-in-suse-sles)veya ' de GRUB_CMDLINE_LINUX satırı düzenleyerek `/etc/default/grub` , grub ile yeniden başlatarak `grub2-mkconfig -o /boot/grub2/grub.cfg` ve sonra yeniden başlatarak yapabilirsiniz.
 
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: 70de7363634cee2790a40ecf056134cf002c762d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c84d97a86dd1dc912964b78d488c460faa744dd2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274716"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977349"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Azure 'da Oracle veritabanı tasarlama ve uygulama
 
@@ -49,7 +49,7 @@ Aşağıdaki tabloda, şirket içi uygulama ve bir Oracle veritabanının Azure 
 | **Ağ** |LAN/WAN  |SDN (yazılım tanımlı ağ)|
 | **Güvenlik grubu** |IP/bağlantı noktası kısıtlama araçları |[Ağ güvenlik grubu (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
 | **Esnekliği** |MTBF (hataların arasındaki ortalama süre) |MTTR (ortalama kurtarma süresi)|
-| **Planlı bakım** |Düzeltme eki uygulama/yükseltme|[Kullanılabilirlik kümeleri](../../windows/infrastructure-example.md) (Azure tarafından yönetilen düzeltme eki/yükseltmeler) |
+| **Planlı bakım** |Düzeltme eki uygulama/yükseltme|[Kullanılabilirlik kümeleri](/previous-versions/azure/virtual-machines/windows/infrastructure-example) (Azure tarafından yönetilen düzeltme eki/yükseltmeler) |
 | **Kaynak** |Ayrılmış  |Diğer istemcilerle paylaşılıyor|
 | **Bölgeler** |Veri merkezleri |[Bölge çiftleri](../../regions.md#region-pairs)|
 | **Depolama** |SAN/fiziksel diskler |[Azure tarafından yönetilen depolama](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
@@ -230,7 +230,7 @@ Azure ortamınızı ayarladıktan ve yapılandırdıktan sonra, bir sonraki adı
 - [Oracle ASM’yi yapılandırma](configure-oracle-asm.md)
 - [Oracle Data Guard’ı yapılandırma](configure-oracle-dataguard.md)
 - [Oracle altın kapısını yapılandırma](configure-oracle-golden-gate.md)
-- [Oracle yedekleme ve kurtarma](oracle-backup-recovery.md)
+- [Oracle yedekleme ve kurtarma](./oracle-overview.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9991bae3d5c8487cc80cca0bf9a249e715b5c521
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e80332b172eeb4c49ae068e1781ffcaf1657f13
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89650703"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978229"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 'da SAP iş yükleri: planlama ve dağıtım denetim listesi
 
@@ -60,8 +60,8 @@ Bu aşamada, SAP iş yükünüzün geçişini Azure platformuna planlarsınız. 
     - SAP Merkezi Hizmetleri için çok SID küme yapılandırmalarının kullanılması, Azure 'da Windows, SLES ve RHEL Konuk işletim sistemlerinde desteklenir. Bir çok SID kümesine yerleştirdiğiniz daha fazla ASCS/SCS 'yi, elde eden yarıçapın artırabileceğini aklınızda bulundurun. İlgili Konuk işletim sistemi senaryosuna ait belgeleri şu makalelerde bulabilirsiniz:
         - [SAP ASCS/SCS örneği Windows Server Yük Devretme Kümelemesi ve paylaşılan disk ile Azure üzerinde çok düzeyli yüksek kullanılabilirlik](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md)
         - [SAP ASCS/SCS örneği Windows Server Yük Devretme Kümelemesi ve dosya paylaşımıyla Azure 'da yüksek oranda kullanılabilirlik](./sap-ascs-ha-multi-sid-wsfc-file-share.md)
-        - [SAP NetWeaver için SUSE Linux Enterprise Server Azure VM 'lerde yüksek kullanılabilirlik çoklu SID Kılavuzu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
-        - [SAP NetWeaver için Red Hat Enterprise Linux Azure VM 'lerde yüksek kullanılabilirlik çoklu SID Kılavuzu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
+        - [SAP NetWeaver için SUSE Linux Enterprise Server Azure VM 'lerde yüksek kullanılabilirlik çoklu SID Kılavuzu](./high-availability-guide-suse-multi-sid.md)
+        - [SAP NetWeaver için Red Hat Enterprise Linux Azure VM 'lerde yüksek kullanılabilirlik çoklu SID Kılavuzu](./high-availability-guide-rhel-multi-sid.md)
     - Yüksek kullanılabilirlik ve olağanüstü durum kurtarma mimarisi.
         - RTO ve RPO temelinde, yüksek kullanılabilirlik ve olağanüstü durum kurtarma mimarisinin nasıl görünmesi gerektiğini tanımlayın.
         - Bir bölge içinde yüksek kullanılabilirlik için, istenen DBMS 'nin Azure 'da sunmasına ne olduğunu denetleyin. Çoğu DBMS paketi, üretim sistemleri için önerdiğimiz, zaman uyumlu bir etkin bekleme, zaman uyumlu yöntemler sunar. Ayrıca, [SAP iş yükleri ve ilgili belgeler Için Azure sanal MAKINELER DBMS dağıtımına ilişkin bazı hususlar](./dbms_guide_general.md) ile başlayan farklı VERITABANLARı için SAP ile ilgili belgelere bakın.
@@ -109,7 +109,7 @@ Bir pilot dağıtımı sırasında tam bir HADR çözümü ve güvenlik tasarım
            -  [Azure 'Da Windows sanal makineleri Için boyutlar](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Boyut için *önbelleğe alınmamış maksimum disk aktarım hızını* göz önünde bulundurmanız önemlidir.
            -  [Azure 'Da Linux sanal makineleri Için boyutlar](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Boyut için *önbelleğe alınmamış maksimum disk aktarım hızını* göz önünde bulundurmanız önemlidir.
    2. Depolama’yı seçin.
-        - [SAP iş yükü için belge Azure depolama türlerini](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) denetleyin
+        - [SAP iş yükü için belge Azure depolama türlerini](./planning-guide-storage.md) denetleyin
         - En azından, SAP uygulama katmanlarını temsil eden VM 'Ler için ve performans duyarlı olmayan DBMS 'lerin dağıtımı için [Azure Standart SSD depolama](../../disks-types.md#standard-ssd) kullanın.
         - Genel olarak, [Azure Standart HDD disklerinin](../../disks-types.md#standard-hdd)kullanımını önermiyoruz.
         - Uzaktan performansa duyarlı tüm DBMS VM 'Leri için [Azure Premium Depolama](../../disks-types.md#premium-ssd) kullanın.
@@ -127,7 +127,7 @@ Bir pilot dağıtımı sırasında tam bir HADR çözümü ve güvenlik tasarım
         - SAP uygulama katmanı ve SAP DBMS katmanı arasındaki veri yolunu değerlendirin ve test edin.
             -  SAP NetWeaver, Hybru veya S/4HANA 'ya dayalı sap sistemleri için SAP uygulaması ve DBMS katmanı arasındaki iletişim yoluna [Azure ağ sanal gereçlerinin](https://azure.microsoft.com/solutions/network-appliances/) yerleştirilmesi desteklenmez.
             -  SAP uygulama katmanının ve SAP DBMS 'nin eşlenmeyen farklı Azure sanal ağlarında yerleştirilmesi desteklenmez.
-            -  SAP uygulama katmanı ve SAP DBMS katmanı arasındaki yolları tanımlamak için [uygulama güvenlik grubu ve ağ güvenlik grubu kurallarını](../../../virtual-network/security-overview.md) kullanabilirsiniz.
+            -  SAP uygulama katmanı ve SAP DBMS katmanı arasındaki yolları tanımlamak için [uygulama güvenlik grubu ve ağ güvenlik grubu kurallarını](../../../virtual-network/network-security-groups-overview.md) kullanabilirsiniz.
         - SAP uygulama katmanında ve SAP DBMS katmanında kullanılan VM 'lerde [Azure hızlandırılmış ağ](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) 'ın etkinleştirildiğinden emin olun. Azure 'da hızlandırılmış ağı desteklemek için farklı işletim sistemi düzeylerinin gerekli olduğunu aklınızda bulundurun:
             - Windows Server 2012 R2 veya üzeri.
             - SUSE Linux 12 SP3 veya üzeri.
@@ -138,7 +138,7 @@ Bir pilot dağıtımı sırasında tam bir HADR çözümü ve güvenlik tasarım
         - Linux konuk işletim sistemleriyle birlikte Azure Load Balancer kullanıyorsanız, Linux ağ parametresinin **net.ipv4.tcp_timestamps** **0**olarak ayarlandığından emin olun. Bu öneri, daha eski [SAP note #2382421](https://launchpad.support.sap.com/#/notes/2382421)sürümlerindeki önerilerle çakışıyor. SAP Note artık bu parametrenin Azure yük dengeleyiciler ile çalışması için **0** olarak ayarlanması gerektiğini belirten bir durum olarak güncelleştirilir.
         - En iyi ağ gecikmesini sağlamak için [Azure yakınlık yerleştirme gruplarını](../../linux/co-location.md) kullanmayı düşünün. Daha fazla bilgi için bkz. [SAP uygulamalarıyla en iyi ağ gecikmesi Için Azure yakınlık yerleşimi grupları](sap-proximity-placement-scenarios.md).
    4. Yüksek kullanılabilirlik ve olağanüstü durum kurtarma dağıtımları.
-        - SAP uygulama katmanını belirli bir Azure kullanılabilirlik bölgesi belirtmeden dağıtırsanız, SAP iletişim kutusu örnekleri veya tek bir SAP sisteminin ara yazılım örneklerini çalıştıran tüm VM 'Lerin bir [kullanılabilirlik kümesinde](../../windows/manage-availability.md)dağıtıldığından emin olun.
+        - SAP uygulama katmanını belirli bir Azure kullanılabilirlik bölgesi belirtmeden dağıtırsanız, SAP iletişim kutusu örnekleri veya tek bir SAP sisteminin ara yazılım örneklerini çalıştıran tüm VM 'Lerin bir [kullanılabilirlik kümesinde](../../manage-availability.md)dağıtıldığından emin olun.
         - SAP Merkezi Hizmetleri ve DBMS için yüksek kullanılabilirliğe ihtiyacınız yoksa, bu VM 'Leri SAP uygulama katmanıyla aynı Kullanılabilirlik kümesine dağıtabilirsiniz.
         - Pasif çoğaltma kullanarak yüksek kullanılabilirlik için SAP merkezi hizmetlerini ve DBMS katmanını koruduğunuzda, SAP Merkezi Hizmetleri için iki düğümü ayrı bir kullanılabilirlik kümesine ve farklı bir kullanılabilirlik kümesindeki iki DBMS düğümüne yerleştirin.
         - Azure Kullanılabilirlik Alanları dağıtırsanız, kullanılabilirlik kümelerini kullanamazsınız. Ancak, etkin ve pasif Merkezi Hizmetler düğümlerini iki farklı Kullanılabilirlik Alanları dağıttığınızdan emin olmanız gerekir. Aralarında en düşük gecikme süresine sahip Kullanılabilirlik Alanları kullanın.
@@ -179,7 +179,7 @@ Bir pilot dağıtımı sırasında tam bir HADR çözümü ve güvenlik tasarım
    4. Bölgeler arası DR işlevlerini ve mimarisini test edin.
 1. Güvenlik denetimleri.
    1. Azure rol tabanlı erişim denetimi (Azure RBAC) mimarinizin geçerliliğini test edin. Amaç, farklı takımların erişimini ve izinlerini ayırmak ve sınırlamak. Örneğin, SAP tabanlı ekip üyeleri VM 'Leri dağıtıp Azure depolama 'dan belirli bir Azure sanal ağına disk atayabilmelidir. Ancak SAP tabanlı ekibin kendi sanal ağlarını oluşturamayacak veya mevcut sanal ağların ayarlarını değiştirememesi gerekir. Ağ ekibinin üyeleri, SAP uygulaması ve DBMS VM 'lerinin çalıştığı sanal ağlarda VM 'Leri dağıtabilmelidir. Ya da bu ekibin üyeleri sanal makinelerin özniteliklerini değiştirebilir veya hatta VM 'Leri ya da diskleri silebilir.  
-   1.  [Ağ güvenlik grubu ve ASC](../../../virtual-network/security-overview.md) kurallarının beklenen şekilde çalıştığını ve korunan kaynakları koruduğuna emin olun.
+   1.  [Ağ güvenlik grubu ve ASC](../../../virtual-network/network-security-groups-overview.md) kurallarının beklenen şekilde çalıştığını ve korunan kaynakları koruduğuna emin olun.
    1.  Şifrelenmesi gereken tüm kaynakların şifrelendiğinden emin olun. Sertifikaları yedeklemek, bu sertifikaları depolamak ve erişmek ve şifrelenmiş varlıkları geri yüklemek için süreçler tanımlayın ve uygulayın.
    1.  Bir işletim sistemi destek noktasından mümkün olduğunda, işletim sistemi diskleri için [Azure disk şifrelemesi](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) kullanın.
    1.  Çok fazla şifreleme katmanı kullandığınızdan emin olun. Bazı durumlarda, aynı sunucudaki farklı diskleri veya bileşenleri korumak için, DBMS Saydam Veri Şifrelemesi yöntemlerinden biriyle birlikte Azure disk şifrelemesi 'ni kullanmak mantıklı değildir.  Örneğin, bir SAP DBMS sunucusunda Azure disk şifrelemesi (ADE) işletim sistemi önyükleme diskinde etkinleştirilebilir (IŞLETIM sistemi ADE 'yi destekliyorsa) ve bu veri diskleri DBMS veri Kalıcılık dosyaları tarafından kullanılmıyor olabilir.  Örnek, DBMS TDE şifreleme anahtarlarını tutan diskte ADE 'yi kullanmaktır.

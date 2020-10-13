@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 203176c4c7ffed95cb4f1616f29f3953fcc0afc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58d4459e1869a9d1f7ccb8234c0356ac486a950c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320107"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975561"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Azure Site Recovery kullanarak Premium depolamaya geçiş
 
-[Azure Premium SSD](disks-types.md) 'ler, g/ç yoğunluklu iş yüklerini çalıştıran sanal makineler (VM) için yüksek performanslı ve düşük gecikmeli disk desteği sunar. Bu kılavuz, [Azure Site Recovery](../../site-recovery/site-recovery-overview.md)kullanarak, sanal makine disklerinizi standart bir depolama hesabından Premium depolama hesabına geçirmenize yardımcı olur.
+[Azure Premium SSD](../disks-types.md) 'ler, g/ç yoğunluklu iş yüklerini çalıştıran sanal makineler (VM) için yüksek performanslı ve düşük gecikmeli disk desteği sunar. Bu kılavuz, [Azure Site Recovery](../../site-recovery/site-recovery-overview.md)kullanarak, sanal makine disklerinizi standart bir depolama hesabından Premium depolama hesabına geçirmenize yardımcı olur.
 
 Site Recovery, şirket içi fiziksel sunucuların ve sanal makinelerin buluta (Azure) veya ikincil bir veri merkezine çoğaltılmasını düzenleyerek iş sürekliliği ve olağanüstü durum kurtarma stratejinize katkıda bulunan bir Azure hizmetidir. Birincil konumunuzda kesintiler meydana geldiğinde, uygulamaları ve iş yüklerini kullanılabilir durumda tutmak için ikincil konuma yük devreder. Normal bir işleme döndüğünde birincil konumunuza geri dönebilirsiniz. 
 
@@ -167,7 +167,7 @@ Yapılandırma sunucunuzun oluşturduğunuz çoğaltma ilkesiyle başarıyla ili
 
    ![Kaynak seçiliyken çoğaltma bölmesini etkinleştir][13]
 
-Azure Storage ortamınızı tasarlarken, bir kullanılabilirlik kümesindeki her VM için ayrı depolama hesapları kullanmanızı öneririz. [Her kullanılabilirlik kümesi için birden çok depolama hesabı kullanmak](../linux/manage-availability.md)üzere depolama katmanındaki en iyi uygulamayı izlemenizi öneririz. VM disklerini birden çok depolama hesabına dağıtmak, depolama kullanılabilirliğinin artırılmasına ve g/ç 'yi Azure Storage altyapısına dağıtmanıza yardımcı olur.
+Azure Storage ortamınızı tasarlarken, bir kullanılabilirlik kümesindeki her VM için ayrı depolama hesapları kullanmanızı öneririz. [Her kullanılabilirlik kümesi için birden çok depolama hesabı kullanmak](../manage-availability.md)üzere depolama katmanındaki en iyi uygulamayı izlemenizi öneririz. VM disklerini birden çok depolama hesabına dağıtmak, depolama kullanılabilirliğinin artırılmasına ve g/ç 'yi Azure Storage altyapısına dağıtmanıza yardımcı olur.
 
 Sanal makinelerleriniz, tüm VM 'lerin disklerini tek bir depolama hesabında çoğaltmak yerine bir kullanılabilirlik kümesinde ise, birden çok VM 'yi birden çok kez geçirmeyi kesinlikle öneririz. Bu şekilde, aynı Kullanılabilirlik kümesindeki VM 'Ler tek bir depolama hesabını paylaşmaz. Her VM için tek seferde bir hedef depolama hesabı ayarlamak için **çoğaltmayı etkinleştir** bölmesini kullanın.
  

@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 639764c9cae5e27e90a55da00b246807e49d2a20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a3a7cad8399146834eed0282e0655a551bc083a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88652857"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977281"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>Ana bilgisayar depolama alanını Azure 'a taşıma
 
@@ -57,7 +57,7 @@ Azure Storage, Azure [diskleri](../../../managed-disks-overview.md), [Azure dosy
 <tr><td>Azure Dosyaları
 </td>
 <td>
-Bir SMB arabirimi, istemci kitaplıkları ve her yerden depolanan dosyaların erişimine izin veren bir <a href="https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api">rest</a> arabirimi sağlar.
+Bir SMB arabirimi, istemci kitaplıkları ve her yerden depolanan dosyaların erişimine izin veren bir <a href="/rest/api/storageservices/file-service-rest-api">rest</a> arabirimi sağlar.
 </td>
 <td><ul>
 <li>Uygulama, Azure 'da çalışan ve diğer uygulamalar arasında veri paylaşmak için yerel dosya sistemi API 'Lerini kullandığında uygulamayı buluta taşıyın ve taşıyın.</li>
@@ -67,7 +67,7 @@ Bir SMB arabirimi, istemci kitaplıkları ve her yerden depolanan dosyaların er
 </tr>
 <tr><td>Azure Blobları
 </td>
-<td>Yapılandırılmamış veri depolanmasına ve Blok Bloblarında çok büyük ölçekte erişilmesine izin veren istemci kitaplıkları ve <a href="https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api">rest</a> arabirimi sağlar. Ayrıca kurumsal büyük veri analizi çözümleri için <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage 2.</a> destekler.
+<td>Yapılandırılmamış veri depolanmasına ve Blok Bloblarında çok büyük ölçekte erişilmesine izin veren istemci kitaplıkları ve <a href="/rest/api/storageservices/blob-service-rest-api">rest</a> arabirimi sağlar. Ayrıca kurumsal büyük veri analizi çözümleri için <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage 2.</a> destekler.
 </td>
 <td><ul>
 <li>Bir uygulamada akış ve rastgele erişim senaryolarını destekler.</li>
@@ -77,7 +77,7 @@ Bir SMB arabirimi, istemci kitaplıkları ve her yerden depolanan dosyaların er
 </tr>
 <tr><td>Azure Diskleri
 </td>
-<td>, Verilerin kalıcı olarak depolanmasına ve bağlı bir sanal sabit diskten erişilmesine izin veren istemci kitaplıkları ve <a href="https://docs.microsoft.com/rest/api/compute/disks">rest</a> arabirimi sağlar.
+<td>, Verilerin kalıcı olarak depolanmasına ve bağlı bir sanal sabit diskten erişilmesine izin veren istemci kitaplıkları ve <a href="/rest/api/compute/disks">rest</a> arabirimi sağlar.
 </td>
 <td><ul>
 <li>Kalıcı disklere veri okumak ve yazmak için yerel dosya sistemi API 'Leri kullanan uygulamaları kaldırın ve taşıyın.</li>

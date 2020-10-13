@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/25/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8f389581d8fbeb912507b303c46109dd08fcab8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2653742b788ab24fc295ebc156090d1db5f85268
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88871525"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978501"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>SAP Ass/SCS için bir Windows Yük devretme kümesi ve paylaşılan disk kullanarak SAP HA için Azure altyapısını hazırlama
 
@@ -165,10 +165,10 @@ ms.locfileid: "88871525"
 Bu makalede, bir SAP ASCS örneğini kümelemek için bir seçenek olarak *Küme Paylaşılan diski* kullanarak bir Windows Yük devretme kümesine yüksek KULLANıLABILIRLIĞE sahip SAP KÖKLERI/SCS örneği yükleme ve yapılandırma için Azure altyapısını hazırlamak üzere uygulamanız gereken adımlar açıklanmaktadır.
 *Küme paylaşılan diskinin* iki seçeneği belgelerde sunulmaktadır:
 
-- [Azure paylaşılan diskleri](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared)
+- [Azure paylaşılan diskleri](../../windows/disks-shared.md)
 - Kümelenmiş paylaşılan diskin benzetimini yapan yansıtılmış depolama alanı oluşturmak için [SIOS Dataman küme sürümünü](https://us.sios.com/products/datakeeper-cluster/) kullanma 
 
-Sunulan yapılandırma, SAP iş yükleri için en iyi ağ gecikme süresine ulaşmak üzere [Azure yakınlık yerleştirme gruplarına (PPG)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) bağlıdır. Belgeler veritabanı katmanını kapsamaz.  
+Sunulan yapılandırma, SAP iş yükleri için en iyi ağ gecikme süresine ulaşmak üzere [Azure yakınlık yerleştirme gruplarına (PPG)](./sap-proximity-placement-scenarios.md) bağlıdır. Belgeler veritabanı katmanını kapsamaz.  
 
 > [!NOTE]
 > Azure yakınlık yerleştirme grupları, Azure Paylaşılan disk kullanımı için önkoşuldur.
@@ -199,7 +199,7 @@ Görüntülenen senaryonun ana bilgisayar adları ve IP adresleri şunlardır:
 
 ## <a name="create-azure-internal-load-balancer"></a><a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a> Azure iç yük dengeleyici oluşturma
 
-SAP ASCS, SAP SCS ve yeni SAP ERS2, sanal konak adı ve sanal IP adresleri kullanın. Azure 'da bir sanal IP adresi kullanmak için bir [yük dengeleyici](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) gereklidir. [Standart yük dengeleyiciyi](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)kullanmanızı kesinlikle öneririz. 
+SAP ASCS, SAP SCS ve yeni SAP ERS2, sanal konak adı ve sanal IP adresleri kullanın. Azure 'da bir sanal IP adresi kullanmak için bir [yük dengeleyici](../../../load-balancer/load-balancer-overview.md) gereklidir. [Standart yük dengeleyiciyi](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md)kullanmanızı kesinlikle öneririz. 
 
 
 Aşağıdaki listede, (A) SCS/ERS yük dengeleyicinin yapılandırması gösterilmektedir. Aynı Azure Yük dengeleyicisinde gerçekleştirilen SAP ASCS ve ERS2 için yapılandırma.  
@@ -263,8 +263,8 @@ Aşağıdaki kayıt defteri girdilerinin her iki küme düğümünde de değişt
 
 | Yol| Değişken adı | Değişken türü  | Değer | Belgeler |
 | --- | --- | --- |---| ---|
-| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveTime |REG_DWORD (ondalık) |120000 |[KeepAliveTime](https://technet.microsoft.com/library/cc957549.aspx) |
-| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |Keepaliveınterval |REG_DWORD (ondalık) |120000 |[Keepaliveınterval](https://technet.microsoft.com/library/cc957548.aspx) |
+| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveTime |REG_DWORD (ondalık) |120000 |[KeepAliveTime](/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10)) |
+| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |Keepaliveınterval |REG_DWORD (ondalık) |120000 |[Keepaliveınterval](/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10)) |
 
 
 Değişiklikleri uygulamak için her iki küme düğümünü yeniden başlatın.
@@ -325,7 +325,7 @@ Daha fazla bilgi için bkz. [Windows Server 2019 Yük Devretme Kümelemesi yeni 
    ```
 
 ### <a name="configure-cluster-cloud-quorum"></a>Küme bulutu çekirdeğini yapılandırma
-Windows Server 2016 veya 2019 kullandığınızda, küme çekirdeği olarak [Azure Cloud tanığını](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness)yapılandırmanızı öneririz.
+Windows Server 2016 veya 2019 kullandığınızda, küme çekirdeği olarak [Azure Cloud tanığını](/windows-server/failover-clustering/deploy-cloud-witness)yapılandırmanızı öneririz.
 
 Küme düğümlerinden birinde bu komutu çalıştırın:
 

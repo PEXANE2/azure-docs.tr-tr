@@ -4,12 +4,12 @@ description: Bu makalede, Azure Event Hubs (Önizleme) tarafından sağlanan şe
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 1da59d7757a7f78235ab3ef7ab18ca78e419b761
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 30ef2f102a4b8d9f9908ba915f179889710bafd0
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812429"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938806"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Event Hubs’da Azure Şema Kayıt Defteri (Önizleme)
 Birçok olay akışı ve mesajlaşma senaryosunda, olay veya ileti yükü, Apache avro gibi şema odaklı bir biçim kullanılarak serileştirilmiş veya serisi kaldırılan yapılandırılmış verileri içerir. Gönderenlerin ve alıcıların her ikisi de JSON şeması ile bir şema belgesiyle verilerin bütünlüğünü doğrulamak isteyebilir. Şema temelli biçimler için, şemanın ileti tüketicisi tarafından kullanılabilir olması, tüketicinin verileri seri durumdan çıkarabilmesi için bir önkoşuldur. 
@@ -70,4 +70,4 @@ Azure portal kullanarak uygulama kaydetme hakkında yönergeler için bkz. [Azur
     - [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/schemaregistry/azure-data-schemaregistry-avro/src/samples)
     - [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/schemaregistry/schema-registry-avro/samples )
     - [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/schemaregistry/azure-schemaregistry-avroserializer/samples )
-    - [Azure şema kayıt defteri için Kafka avro tümleştirmesi](https://github.com/Azure/azure-schema-registry-for-kafka/tree/master/avro/samples)
+    - [Azure şema kayıt defteri için Kafka avro tümleştirmesi](https://github.com/Azure/azure-schema-registry-for-kafka/tree/master/csharp/avro/samples)

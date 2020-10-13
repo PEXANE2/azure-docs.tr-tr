@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 3f7298ec7bba82eaddc4a002723f44bc5da68433
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 899fddf08a817126ce775733da38ffd10ab3ab23
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945354"
+ms.locfileid: "91952123"
 ---
 # <a name="azure-security-centers-overview-page"></a>Azure Güvenlik Merkezi 'ne genel bakış sayfası
 

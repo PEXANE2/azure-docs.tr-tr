@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 7394cb50010bddddf8f8eff4b4f04eaf4d3231b6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b08a7d6ab271c266ba850d72d5a8b23a06dc5a3f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87052115"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977672"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Azure 'da Red hat iş yükleri
 
@@ -41,11 +41,11 @@ Azure ayrıca Red Hat Gold görüntüleri ( `rhel-byos` ) sağlar. Bu görüntü
 * [Azure Portal, Azure CLI veya PowerShell cmdlet 'Inde Red Hat altın görüntülerini bulmayı](./byos.md)öğrenin.
 
 > [!NOTE]
-> İki faturalandırma, bir kullanıcının RHEL abonelikleri için iki kez ödeme yaptığı durumlarda tahakkuk edilir. Bu senaryo genellikle bir müşteri, bir RHEL Kullandıkça Öde sanal makinesine yetkilendirme eklemek için Red Hat aboneliği-Manager kullandığında oluşur. Örneğin, bir RHEL Kullandıkça Öde görüntüsüne SAP paketleri için yetkilendirme eklemek üzere abonelik Yöneticisi 'ni kullanan bir müşteri, RHEL için iki kez ödeme yaptığından, dolaylı olarak ikiye faturalandırılır. Kullandıkça Öde Premium ücreti üzerinden ve bir kez SAP aboneliğinden bir kez ödeme yapar. Bu senaryo, KCG görüntü kullanıcılarına gerçekleşmez.
+> İki faturalandırma, bir kullanıcının RHEL abonelikleri için iki kez ödeme yaptığı durumlarda tahakkuk edilir. Bu senaryo genellikle bir müşteri bir RHEL Kullandıkça Öde sanal makinesine yetkilendirme eklemek için Red Hat Subscription-Manager kullandığında meydana gelir. Örneğin, bir RHEL Kullandıkça Öde görüntüsündeki SAP paketlerine yönelik yetkilendirmeleri eklemek için Subscription-Manager kullanan bir müşteri, RHEL için iki kez ödeme yaptığından, dolaylı olarak çift faturalandırılır. Kullandıkça Öde Premium ücreti üzerinden ve bir kez SAP aboneliğinden bir kez ödeme yapar. Bu senaryo, KCG görüntü kullanıcılarına gerçekleşmez.
 
 ### <a name="generation-2-images"></a>2. nesil görüntüler
 
-2. nesil sanal makineler (VM 'Ler) 1. nesil VM 'lere kıyasla daha yeni özellikler sağlar. Daha fazla bilgi için 2. [nesil belgelere](../../linux/generation-2.md)bakın. RHEL görüntü perspektifinden ilgili önemli fark, 2. nesil VM 'Lerin BIOS üretici yazılımı arabirimi yerine UEFı kullanır. Ayrıca önyükleme sırasında ana önyükleme kaydı (MBR) yerine bir GUID bölümleme tablosu (GPT) kullanır. GPT kullanımı, diğer işlerin yanı sıra 2 TB 'tan büyük işletim sistemi disk boyutları için izin verir. Ayrıca, [Mv2 serisi VM 'ler](../../mv2-series.md) yalnızca 2. nesil görüntülerde çalışır.
+2. nesil sanal makineler (VM 'Ler) 1. nesil VM 'lere kıyasla daha yeni özellikler sağlar. Daha fazla bilgi için 2. [nesil belgelere](../../generation-2.md)bakın. RHEL görüntü perspektifinden ilgili önemli fark, 2. nesil VM 'Lerin BIOS üretici yazılımı arabirimi yerine UEFı kullanır. Ayrıca önyükleme sırasında ana önyükleme kaydı (MBR) yerine bir GUID bölümleme tablosu (GPT) kullanır. GPT kullanımı, diğer işlerin yanı sıra 2 TB 'tan büyük işletim sistemi disk boyutları için izin verir. Ayrıca, [Mv2 serisi VM 'ler](../../mv2-series.md) yalnızca 2. nesil görüntülerde çalışır.
 
 RHEL 2. nesil görüntüleri Azure Marketi 'nde bulabilirsiniz. Azure CLı kullandığınızda görüntülenen tüm görüntülerin listesindeki görüntü SKU 'sunda "Gen2" öğesini arayın. 2. nesil bir VM dağıtmak için VM dağıtım işlemindeki **Gelişmiş** sekmesine gidin.
 

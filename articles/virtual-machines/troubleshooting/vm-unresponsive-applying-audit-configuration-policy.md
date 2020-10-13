@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: bc41783bf977806b5f9bba5b953f1f581ad07f18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff21975c34c28d7476635467e0c1abb8e6575e35
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89299533"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977961"
 ---
 # <a name="virtual-machine-is-unresponsive-while-applying-audit-policy-configuration-policy"></a>Denetim ilkesi yapılandırma ilkesi uygulanırken sanal makine yanıt vermiyor
 
@@ -27,7 +27,7 @@ Bu makalede, bir Azure VM 'nin önyüklenmesini önleyen denetim Ilkesi yapılan
 
 ## <a name="symptom"></a>Belirti
 
-VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) kullandığınızda, ekran görüntüsünde, **Denetim Ilkesi yapılandırma ilkesini uygulayan**ileti ile bir önyükleme SıRASıNDA işletim sisteminin (OS) yanıt vermeyen bir şekilde görüntülediğini görürsünüz.
+VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](./boot-diagnostics.md) kullandığınızda, ekran görüntüsünde, **Denetim Ilkesi yapılandırma ilkesini uygulayan**ileti ile bir önyükleme SıRASıNDA işletim sisteminin (OS) yanıt vermeyen bir şekilde görüntülediğini görürsünüz.
 
   !["Denetim Ilkesi yapılandırma ilkesi uygulanıyor" iletisiyle işletim sistemi önyüklemesi](./media/vm-unresponsive-applying-audit-configuration-policy/1.png)
 
@@ -54,7 +54,7 @@ Sorunlu ilke şu şekildedir: *Bilgisayar Yapılandırması \ Yönetim Şablonla
 
 ### <a name="create-and-access-a-repair-vm"></a>Bir onarım VM 'si oluşturma ve erişme
 
-1. Bir onarım VM 'si hazırlamak için [VM onarım komutlarının](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 1-3 adımlarını kullanın.
+1. Bir onarım VM 'si hazırlamak için [VM onarım komutlarının](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 1-3 adımlarını kullanın.
 1. Uzak Masaüstü Bağlantısı kullanarak, onarım sanal makinesine bağlanın.
 
 ### <a name="disable-the-policy"></a>İlkeyi devre dışı bırak
@@ -153,7 +153,7 @@ Sorunlu ilke şu şekildedir: *Bilgisayar Yapılandırması \ Yönetim Şablonla
    
 ### <a name="rebuild-the-virtual-machine"></a>Sanal makineyi yeniden derle
 
-1. VM 'yi yeniden derlemek için [VM onarım komutlarının 5. adımını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) kullanın.
+1. VM 'yi yeniden derlemek için [VM onarım komutlarının 5. adımını](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) kullanın.
 
 1. Sorunun sorunu düzeltti olup olmadığını görmek için VM 'niz normal şekilde önyükleniyorsa test edin.
 
@@ -175,11 +175,11 @@ Bu sorunu çözmek için öncelikle kilitlenme için bellek dökümü dosyasın�
 
 #### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>İşletim sistemi diskini yeni bir onarım VM 'sine iliştirme
 
-1. Yeni bir onarım VM 'si hazırlamak için [VM onarım komutlarının](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 1-3 adımlarını kullanın.
+1. Yeni bir onarım VM 'si hazırlamak için [VM onarım komutlarının](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 1-3 adımlarını kullanın.
 1. Uzak Masaüstü Bağlantısı kullanarak, onarım VM 'ye bağlanın.
 
 #### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>Döküm dosyasını bulma ve destek bileti gönderme
 
 1. VM 'yi Onar sayfasında, bağlı işletim sistemi diskinde Windows klasörü ' ne gidin. Bağlı işletim sistemi diskine atanan sürücü harfi *F*olarak etiketlenmişse, adresine gitmeniz gerekir `F:\Windows` .
 1. Dosyayı bulun `memory.dmp` ve ardından bellek dökümü dosyası ile [bir destek bileti gönderebilirsiniz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .
-1. Dosyayı bulmada sorun yaşıyorsanız `memory.dmp` , bunun yerine, [seri konsolundaki maskelenemeyen kesme (NMI) çağrılarını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows#use-the-serial-console-for-nmi-calls) kullanın. [Burada NMI çağrılarını kullanarak kilitlenme bilgi döküm dosyası oluşturma](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump)kılavuzunu izleyin.
+1. Dosyayı bulmada sorun yaşıyorsanız `memory.dmp` , bunun yerine, [seri konsolundaki maskelenemeyen kesme (NMI) çağrılarını](./serial-console-windows.md#use-the-serial-console-for-nmi-calls) kullanın. [Burada NMI çağrılarını kullanarak kilitlenme bilgi döküm dosyası oluşturma](/windows/client-management/generate-kernel-or-complete-crash-dump)kılavuzunu izleyin.

@@ -9,19 +9,19 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d508e2e24ac35171d87cdba9cb79981dfb8764e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69a2bc002b2ccccba90bde5b6c92d162b6e78815
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757478"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952259"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>Kullanım verilerini, ölçümleri ve günlükleri Azure Izleyici 'ye yükleme
 
 Düzenli olarak, faturalama amaçları, ölçümleri izlemek ve günlükleri Azure 'a yüklemek için kullanım bilgilerini dışarı aktarabilirsiniz.  Bu üç türden verilerin herhangi birini dışarı ve karşıya yükleme işlemi, Azure 'daki veri denetleyicisi, SQL yönetilen örnek ve PostgreSQL hiper ölçek sunucu grubu kaynaklarını da oluşturur ve güncelleştirir.
 
 > [!NOTE] 
-Önizleme dönemi boyunca, Azure Arc etkin veri hizmetlerini kullanma maliyeti yoktur.
+> Önizleme dönemi boyunca, Azure Arc etkin veri hizmetlerini kullanma maliyeti yoktur.
 
 ## <a name="prerequisites"></a>Ön koşullar
 

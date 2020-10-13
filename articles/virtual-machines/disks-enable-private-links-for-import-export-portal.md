@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 4387bf8067b399165b32ab1cdbb9e6ce55ab5f59
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 95c4464d1ab8416f609f75f2b59fb85a578ef5b7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91816367"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979062"
 ---
 # <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>Özel bağlantılarla yönetilen disklere yönelik içeri/dışarı aktarma erişimini kısıtlamak için Azure portal kullanın
 
@@ -40,7 +40,7 @@ NetworkAccessPolicy özelliğini, `DenyAll` herhangi bir gövdenin bir disk veya
 
 1. Yeni bir disk erişim kaynağı oluşturmak için **+ Ekle** ' yi seçin.
 1. Oluştur dikey penceresinde aboneliğinizi, bir kaynak grubunu seçin, bir ad girin ve bir bölge seçin.
-1. **Gözden geçir ve oluştur**’u seçin.
+1. **Gözden geçir + oluştur**’u seçin.
 
     :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-create-basics.png" alt-text="Disk erişimi oluşturma dikey penceresinin ekran görüntüsü. İstenen adı girin, bir bölge seçin, bir kaynak grubu seçin ve devam edin":::
 
@@ -77,7 +77,7 @@ Artık bir disk erişim kaynağına sahip olduğunuza göre, bu işlemi kullanar
     > Seçilen alt ağ için etkin bir ağ güvenlik grubunuz (NGS) varsa, bu yalnızca bu alt ağdaki özel uç noktalar için devre dışı bırakılır. Bu alt ağdaki diğer kaynakların NSG zorlaması olmaya devam edecektir.
 
 1. Uygun alt ağı seçin
-1. **Gözden geçir ve oluştur**’u seçin.
+1. **Gözden geçir + oluştur**’u seçin.
 
     :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="Disk erişimi oluşturma dikey penceresinin ekran görüntüsü. İstenen adı girin, bir bölge seçin, bir kaynak grubu seçin ve devam edin":::
 
@@ -86,7 +86,7 @@ Artık bir disk erişim kaynağına sahip olduğunuza göre, bu işlemi kullanar
 1. Yapılandırmak istediğiniz diske gidin
 1. **Ağ** seçin
 1. **Özel uç nokta ' ı (disk erişimi aracılığıyla)** seçin ve daha önce oluşturduğunuz disk erişimini seçin.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
     :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-managed-disk-networking-blade.png" alt-text="Disk erişimi oluşturma dikey penceresinin ekran görüntüsü. İstenen adı girin, bir bölge seçin, bir kaynak grubu seçin ve devam edin":::
 
@@ -95,4 +95,4 @@ Artık yönetilen diskinizi içeri/dışarı aktarırken kullanabileceğiniz öz
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Özel bağlantılar için SSS](./faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
-- [Yönetilen anlık görüntüleri, PowerShell ile farklı bölgedeki bir depolama hesabına VHD olarak verme/kopyalama](scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-storage-account.md)
+- [Yönetilen anlık görüntüleri, PowerShell ile farklı bölgedeki bir depolama hesabına VHD olarak verme/kopyalama](./scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md)

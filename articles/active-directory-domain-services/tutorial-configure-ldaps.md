@@ -1,20 +1,20 @@
 ---
 title: Öğretici-Azure Active Directory Domain Services için LDAPS 'yi yapılandırma | Microsoft Docs
 description: Bu öğreticide, Azure Active Directory Domain Services yönetilen bir etki alanı için güvenli basit Dizin Erişimi Protokolü 'nü (LDAPS) nasıl yapılandıracağınızı öğreneceksiniz.
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 1164d838a45496a075d356995a60beb967cdfcca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: f5ebe594f1f50c7b7490e5ead8cb3fe7636f0ce7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88054349"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967486"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanı için Güvenli LDAP yapılandırma
 
@@ -24,7 +24,7 @@ Azure AD DS ile, yönetilen etki alanını güvenli basit Dizin Erişim Protokol
 
 Bu öğreticide, Azure AD DS yönetilen bir etki alanı için LDAPS 'nin nasıl yapılandırılacağı gösterilmektedir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure AD DS ile kullanmak için dijital bir sertifika oluşturun
@@ -234,7 +234,7 @@ Belirli bir IP adresi kümesinden TCP bağlantı noktası 636 üzerinden gelen g
     | Protokol                          | TCP          |
     | Eylem                            | İzin Ver        |
     | Öncelik                          | 401          |
-    | Adı                              | AllowLDAPS   |
+    | Name                              | AllowLDAPS   |
 
 1. Hazırsanız, kuralı kaydetmek ve uygulamak için **Ekle** ' yi seçin.
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 611edb06762b96ded7671b70ec0f5d4f07f51848
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78ea26adb8299cc13d4677c66a0e06cba901d9dc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87829093"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977383"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows için sanal makine uzantıları ve özellikleri
 
@@ -70,7 +70,7 @@ Uzantı paketleri Azure Storage uzantı deposundan indirilir ve uzantı durumu k
 > [!IMPORTANT]
 > Konuk güvenlik duvarını veya bir ara sunucu kullanarak *168.63.129.16* 'e erişimi engellediğiniz takdirde, uzantılar yukarıdakilerden bağımsız olarak başarısız olur. 80, 443 ve 32526 bağlantı noktaları gereklidir.
 
-Aracılar yalnızca uzantı paketleri ve raporlama durumunu indirmek için kullanılabilir. Örneğin, bir uzantı yüklemesinin GitHub 'dan (özel betik) bir betiği indirmesi veya Azure depolama 'ya (Azure Backup) erişmesi gerekiyorsa, ek güvenlik duvarı/ağ güvenlik grubu bağlantı noktalarının açılması gerekir. Farklı uzantılar, kendi sağında uygulamalar olduklarından farklı gereksinimlere sahiptir. Azure depolama veya Azure Active Directory erişimi gerektiren uzantılar için, [Azure NSG hizmeti etiketlerini](../../virtual-network/security-overview.md#service-tags) depolama veya AzureActiveDirectory kullanarak erişime izin verebilirsiniz.
+Aracılar yalnızca uzantı paketleri ve raporlama durumunu indirmek için kullanılabilir. Örneğin, bir uzantı yüklemesinin GitHub 'dan (özel betik) bir betiği indirmesi veya Azure depolama 'ya (Azure Backup) erişmesi gerekiyorsa, ek güvenlik duvarı/ağ güvenlik grubu bağlantı noktalarının açılması gerekir. Farklı uzantılar, kendi sağında uygulamalar olduklarından farklı gereksinimlere sahiptir. Azure depolama veya Azure Active Directory erişimi gerektiren uzantılar için, [Azure NSG hizmeti etiketlerini](../../virtual-network/network-security-groups-overview.md#service-tags) depolama veya AzureActiveDirectory kullanarak erişime izin verebilirsiniz.
 
 Windows Konuk Aracısı, aracı trafik isteklerini aracılığıyla yeniden yönlendirebilmeniz için proxy sunucu desteğine sahip değildir. Bu, Windows Konuk aracısının internet üzerindeki kaynaklara veya IP 168.63.129.16 üzerinden ana bilgisayar üzerinde erişim için özel ara sunucunuza (varsa) bağlı olacağı anlamına gelir.
 
@@ -263,7 +263,7 @@ Aracılar ve uzantılar aynı güncelleştirme mekanizmasını paylaşır. Bazı
 Bir güncelleştirme kullanılabilir olduğunda, yalnızca Uzantılardaki bir değişiklik olduğunda VM 'de ve diğer VM modeli değiştikçe şu şekilde değişir:
 
 - Veri diskleri
-- Uzantıları
+- Uzantılar
 - Önyükleme tanılaması kapsayıcısı
 - Konuk işletim sistemi gizli dizileri
 - VM boyutu

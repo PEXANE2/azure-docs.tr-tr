@@ -2,13 +2,13 @@
 title: Şablon işlevleri-mantıksal
 description: Mantıksal değerleri belirleyebilmek için bir Azure Resource Manager şablonunda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: 8fe1c00240fc24c3c1454b118f9e0d9a9d54fe4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: ede41bd6c03eb7a01ae63526810d0310f31e4014
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84677398"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978518"
 ---
 # <a name="logical-functions-for-arm-templates"></a>ARM şablonları için mantıksal işlevler
 
@@ -16,9 +16,11 @@ Kaynak Yöneticisi, Azure Resource Manager (ARM) şablonlarınıza karşılaşt�
 
 * [and](#and)
 * [bool](#bool)
+* [yanlýþ](#false)
 * [if](#if)
 * [başlatılmadı](#not)
 * [veya](#or)
+* [değeri](#true)
 
 ## <a name="and"></a>ve
 
@@ -30,8 +32,8 @@ Tüm parametre değerlerinin doğru olup olmadığını denetler.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |boolean |Doğru olup olmadığını kontrol etmek için ilk değer. |
-| arg2 |Evet |boolean |Doğru olup olmadığını kontrol etmek için ikinci değer. |
+| arg1 |Yes |boolean |Doğru olup olmadığını kontrol etmek için ilk değer. |
+| arg2 |Yes |boolean |Doğru olup olmadığını kontrol etmek için ikinci değer. |
 | ek bağımsız değişkenler |Hayır |boolean |Doğru olup olmadığını denetlemek için ek bağımsız değişkenler. |
 
 ### <a name="return-value"></a>Döndürülen değer
@@ -82,10 +84,15 @@ Parametreyi Boole değerine dönüştürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dize veya tamsayı |Boole değerine dönüştürülecek değer. |
+| arg1 |Yes |dize veya tamsayı |Boole değerine dönüştürülecek değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
+
 Dönüştürülmüş değerin Boole değeri.
+
+### <a name="remarks"></a>Açıklamalar
+
+Boolean değerleri almak için [true ()](#true) ve [false ()](#false) de kullanabilirsiniz.
 
 ### <a name="examples"></a>Örnekler
 
@@ -126,6 +133,44 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 | Trueınt | Bool | Doğru |
 | Yanlışint | Bool | Yanlış |
 
+## <a name="false"></a>yanlış
+
+`false()`
+
+Yanlış değerini döndürür.
+
+### <a name="parameters"></a>Parametreler
+
+False işlevi herhangi bir parametreyi kabul etmez.
+
+### <a name="return-value"></a>Döndürülen değer
+
+Her zaman false olan bir Boole değeri.
+
+### <a name="example"></a>Örnek
+
+Aşağıdaki örnek, yanlış bir çıkış değeri döndürür.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "falseOutput": {
+            "value": "[false()]",
+            "type" : "bool"
+        }
+    }
+}
+```
+
+Yukarıdaki örnekteki çıktı:
+
+| Ad | Tür | Değer |
+| ---- | ---- | ----- |
+| Yanlışçıktı | Bool | Yanlış |
+
 ## <a name="if"></a>if
 
 `if(condition, trueValue, falseValue)`
@@ -136,9 +181,9 @@ Bir koşulun doğru veya yanlış olduğunu temel alarak bir değer döndürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| koşul |Evet |boolean |Doğru veya yanlış olduğunu denetlemek için değer. |
-| trueValue |Evet | dize, int, nesne veya dizi |Koşul doğru olduğunda döndürülecek değer. |
-| Yanlışdeğer |Evet | dize, int, nesne veya dizi |Koşul false olduğunda döndürülecek değer. |
+| koşul |Yes |boolean |Doğru veya yanlış olduğunu denetlemek için değer. |
+| trueValue |Yes | dize, int, nesne veya dizi |Koşul doğru olduğunda döndürülecek değer. |
+| Yanlışdeğer |Yes | dize, int, nesne veya dizi |Koşul false olduğunda döndürülecek değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -241,7 +286,7 @@ Boole değerini ters değerine dönüştürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |boolean |Dönüştürülecek değer. |
+| arg1 |Yes |boolean |Dönüştürülecek değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -314,8 +359,8 @@ Herhangi bir parametre değerinin doğru olup olmadığını denetler.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |boolean |Doğru olup olmadığını kontrol etmek için ilk değer. |
-| arg2 |Evet |boolean |Doğru olup olmadığını kontrol etmek için ikinci değer. |
+| arg1 |Yes |boolean |Doğru olup olmadığını kontrol etmek için ilk değer. |
+| arg2 |Yes |boolean |Doğru olup olmadığını kontrol etmek için ikinci değer. |
 | ek bağımsız değişkenler |Hayır |boolean |Doğru olup olmadığını denetlemek için ek bağımsız değişkenler. |
 
 ### <a name="return-value"></a>Döndürülen değer
@@ -355,6 +400,44 @@ Yukarıdaki örnekteki çıktı:
 | Andexamptaoutput | Bool | Yanlış |
 | Orexamptaoutput | Bool | Doğru |
 | Notexamptaoutput | Bool | Yanlış |
+
+## <a name="true"></a>true
+
+`true()`
+
+True değerini döndürür.
+
+### <a name="parameters"></a>Parametreler
+
+True işlevi herhangi bir parametreyi kabul etmez.
+
+### <a name="return-value"></a>Döndürülen değer
+
+Her zaman true olan bir Boole değeri.
+
+### <a name="example"></a>Örnek
+
+Aşağıdaki örnek, doğru bir çıkış değeri döndürür.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "trueOutput": {
+            "value": "[true()]",
+            "type" : "bool"
+        }
+    }
+}
+```
+
+Yukarıdaki örnekteki çıktı:
+
+| Ad | Tür | Değer |
+| ---- | ---- | ----- |
+| trueOutput | Bool | Doğru |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

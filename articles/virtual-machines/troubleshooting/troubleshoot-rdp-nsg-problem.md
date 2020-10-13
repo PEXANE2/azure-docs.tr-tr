@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: 6c877690cf27edd73f1d828b8a1dda6f4f34e780
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 878e2c233f2171c3c9a6fbd2a8d629d3f3987c3a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77918181"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976734"
 ---
 #  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>NSG 'de RDP bağlantı noktası etkinleştirilmediği için bir VM 'ye uzaktan bağlanılamıyor
 
@@ -48,7 +48,7 @@ Bir NSG 'de RDP bağlantı noktasını etkinleştirmek için şu adımları izle
 
 Kaynak IP adresini belirtirseniz, bu ayar VM 'ye bağlanmak için yalnızca belirli bir IP adresinden veya IP adresi aralığından gelen trafiğe izin verir. RDP oturumunu başlatmak için kullandığınız bilgisayarın aralığın içinde olduğundan emin olun.
 
-NSG 'ler hakkında daha fazla bilgi için bkz. [ağ güvenlik grubu](../../virtual-network/security-overview.md).
+NSG 'ler hakkında daha fazla bilgi için bkz. [ağ güvenlik grubu](../../virtual-network/network-security-groups-overview.md).
 
 > [!NOTE]
 > RDP bağlantı noktası 3389, Internet 'e açıktır. Bu nedenle, bu bağlantı noktasını yalnızca test için önerilen için kullanmanızı öneririz. Üretim ortamları için bir VPN veya özel bağlantı kullanmanızı öneririz.
@@ -56,6 +56,3 @@ NSG 'ler hakkında daha fazla bilgi için bkz. [ağ güvenlik grubu](../../virtu
 ## <a name="next-steps"></a>Sonraki adımlar
 
 NSG 'de RDP bağlantı noktası zaten etkinse bkz. [Azure VM 'de RDP genel hatası giderme](./troubleshoot-rdp-general-error.md).
-
-
-

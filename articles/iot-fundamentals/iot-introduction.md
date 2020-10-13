@@ -10,12 +10,12 @@ ms.author: dobett
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 73eb0b3164a386bb270e42ceba56d5dc7045af1c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6ecc79eb52acbe393ac2777a0ec388e538a7f8fd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81729000"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978909"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Azure Nesnelerin İnterneti (IoT) nedir?
 
@@ -74,6 +74,8 @@ Bir IoT çözümünde, arka uç hizmeti şöyle bir işlevsellik sağlar:
 
 Kuruluşların Azure IoT kullanımıyla ilgili gerçek yaşam örnekleri için bkz. [IoT Için Microsoft Teknik olay incelemeleri](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured). 
 
+IoT mimarisinin ayrıntılı incelemesi için bkz. [Microsoft Azure IoT Başvuru Mimarisi](https://aka.ms/iotrefarchitecture).
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bazı gerçek iş durumlarında ve kullanılan mimaride, [Microsoft Azure IoT teknik olay incelemeleri](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured)' ne bakın.
@@ -81,5 +83,3 @@ Bazı gerçek iş durumlarında ve kullanılan mimaride, [Microsoft Azure IoT te
 IoT DevKit ile deneyebileceğiniz bazı örnek projelerde [IoT devkit proje kataloğuna](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/)bakın. 
 
 Farklı hizmetlerin ve nasıl kullanıldıkları hakkında daha kapsamlı bir açıklama için bkz. [Azure IoT Hizmetleri ve teknolojileri](iot-services-and-technologies.md).
-
-IoT mimarisinin ayrıntılı incelemesi için bkz. [Microsoft Azure IoT Başvuru Mimarisi](https://aka.ms/iotrefarchitecture).

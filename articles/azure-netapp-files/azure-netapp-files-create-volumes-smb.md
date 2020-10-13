@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: b-juche
-ms.openlocfilehash: e2c487b62813bc4480786daa08666fe6471bd18d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d0a16dc639fb3206b480c1091a66686955cbb11d
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325717"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932354"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için SMB birimi oluşturma
 
@@ -62,9 +62,9 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
 
     Azure NetApp Files dağıtıldığı sanal ağın adres alanı yeni veya var olan bir Active Directory sitesine eklenmelidir (Azure NetApp Files tarafından erişilebilen bir etki alanı denetleyicisi). 
 
-* Belirtilen DNS sunucularına, Azure NetApp Files için [temsilci alt ağından](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet) ulaşılabilir olmalıdır.  
+* Belirtilen DNS sunucularına, Azure NetApp Files için [temsilci alt ağından](./azure-netapp-files-delegate-subnet.md) ulaşılabilir olmalıdır.  
 
-    Desteklenen ağ topolojileri için [Azure NetApp Files ağ planlama yönergelerine](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) bakın.
+    Desteklenen ağ topolojileri için [Azure NetApp Files ağ planlama yönergelerine](./azure-netapp-files-network-topologies.md) bakın.
 
     Ağ güvenlik grupları (NSG 'ler) ve güvenlik duvarları, Active Directory ve DNS trafiği isteklerine izin vermek için uygun şekilde yapılandırılmış kurallara sahip olmalıdır. 
 
@@ -72,7 +72,7 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
 
     Azure NetApp Files atanmış alt ağ tarafından erişilemeyen etki alanı denetleyicileriniz varsa, Active Directory bağlantısını oluştururken bir Active Directory sitesi belirtebilirsiniz.  Azure NetApp Files, yalnızca Azure NetApp Files atanmış alt ağ adres alanının olduğu sitedeki etki alanı denetleyicileriyle iletişim kurması gerekir.
 
-    Bkz. AD siteleri ve hizmetleriyle ilgili [site topolojisini tasarlama](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology) . 
+    Bkz. AD siteleri ve hizmetleriyle ilgili [site topolojisini tasarlama](/windows-server/identity/ad-ds/plan/designing-the-site-topology) . 
     
 * Bir SMB birimi için, [birleşimi Active Directory](#create-an-active-directory-connection) penceresindeki **AES şifreleme** kutusunu işaretleyerek, AES şifrelemesini etkinleştirebilirsiniz. Azure NetApp Files DES, Kerberos AES 128 ve Kerberos AES 256 şifreleme türlerini (en az güvenli olan en az güvenli) destekler. AES şifrelemesini etkinleştirirseniz Active Directory birleştirmek için kullanılan Kullanıcı kimlik bilgileri, Active Directory için etkinleştirilen yetenekler ile eşleşen en yüksek karşılık gelen hesap seçeneğine sahip olmalıdır.    
 
@@ -82,21 +82,21 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
 
     ![Active Directory Kullanıcıları ve bilgisayarları MMC](../media/azure-netapp-files/ad-users-computers-mmc.png)
 
-* Azure NetApp Files, Azure NetApp Files hizmeti ve hedeflenen [Active Directory etki alanı denetleyicileri](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)arasında LDAP trafiğinin güvenli aktarımını sağlayan [LDAP imzalamayı](https://docs.microsoft.com/troubleshoot/windows-server/identity/enable-ldap-signing-in-windows-server)destekler. LDAP imzalama için Microsoft Danışmanlık [ADV190023](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023) ' nin kılavuzunu takip ediyorsanız, [Birleştir Active Directory](#create-an-active-directory-connection) penceresindeki **LDAP imzalama** kutusunu işaretleyerek Azure NetApp Files ' de LDAP imzalama özelliğini etkinleştirmeniz gerekir. 
+* Azure NetApp Files, Azure NetApp Files hizmeti ve hedeflenen [Active Directory etki alanı denetleyicileri](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)arasında LDAP trafiğinin güvenli aktarımını sağlayan [LDAP imzalamayı](/troubleshoot/windows-server/identity/enable-ldap-signing-in-windows-server)destekler. LDAP imzalama için Microsoft Danışmanlık [ADV190023](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023) ' nin kılavuzunu takip ediyorsanız, [Birleştir Active Directory](#create-an-active-directory-connection) penceresindeki **LDAP imzalama** kutusunu işaretleyerek Azure NetApp Files ' de LDAP imzalama özelliğini etkinleştirmeniz gerekir. 
 
     [LDAP kanalı bağlama](https://support.microsoft.com/help/4034879/how-to-add-the-ldapenforcechannelbinding-registry-entry) yapılandırmasının Azure NetApp Files hizmeti üzerinde hiçbir etkisi yoktur. 
 
-Ek AD bilgileri hakkında Azure NetApp Files [SMB SSS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs) bölümüne bakın. 
+Ek AD bilgileri hakkında Azure NetApp Files [SMB SSS](./azure-netapp-files-faqs.md#smb-faqs) bölümüne bakın. 
 
 ## <a name="decide-which-domain-services-to-use"></a>Hangi etki alanı hizmetlerinin kullanılacağını belirleyin 
 
-Azure NetApp Files, AD bağlantıları için hem [Active Directory Domain Services](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) (eklemeleri) hem Azure Active Directory Domain Services (aeklemeleri) destekler.  Bir AD bağlantısı oluşturmadan önce, ekleme veya AEKLEMESINE göre ' yi kullanıp kullanmayacağınızı belirlemeniz gerekir.  
+Azure NetApp Files, AD bağlantıları için hem [Active Directory Domain Services](/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) (eklemeleri) hem Azure Active Directory Domain Services (aeklemeleri) destekler.  Bir AD bağlantısı oluşturmadan önce, ekleme veya AEKLEMESINE göre ' yi kullanıp kullanmayacağınızı belirlemeniz gerekir.  
 
-Daha fazla bilgi için bkz. [otomatik olarak yönetilen Active Directory Domain Services, Azure Active Directory ve yönetilen Azure Active Directory Domain Services karşılaştırma](https://docs.microsoft.com/azure/active-directory-domain-services/compare-identity-solutions). 
+Daha fazla bilgi için bkz. [otomatik olarak yönetilen Active Directory Domain Services, Azure Active Directory ve yönetilen Azure Active Directory Domain Services karşılaştırma](../active-directory-domain-services/compare-identity-solutions.md). 
 
 ### <a name="active-directory-domain-services"></a>Active Directory Domain Services
 
-Azure NetApp Files için tercih edilen [Active Directory Siteleri ve Hizmetleri](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) kapsamını kullanabilirsiniz. Bu seçenek, [Azure NetApp Files tarafından erişilebilen](azure-netapp-files-network-topologies.md)etki alanı denetleyicilerini ACTIVE DIRECTORY DOMAIN SERVICES (ekler) okuma ve yazma işlemleri sağlar. Ayrıca, hizmetin belirtilen Active Directory Siteleri ve Hizmetleri sitesinde olmayan etki alanı denetleyicileriyle iletişim kurmasını da engeller. 
+Azure NetApp Files için tercih edilen [Active Directory Siteleri ve Hizmetleri](/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) kapsamını kullanabilirsiniz. Bu seçenek, [Azure NetApp Files tarafından erişilebilen](azure-netapp-files-network-topologies.md)etki alanı denetleyicilerini ACTIVE DIRECTORY DOMAIN SERVICES (ekler) okuma ve yazma işlemleri sağlar. Ayrıca, hizmetin belirtilen Active Directory Siteleri ve Hizmetleri sitesinde olmayan etki alanı denetleyicileriyle iletişim kurmasını da engeller. 
 
 EKLEME kullandığınızda sitenizin adını bulmak için, kuruluşunuzda Active Directory Domain Services sorumlu yönetim grubuyla iletişim sağlayabilirsiniz. Aşağıdaki örnekte, site adının görüntülendiği Active Directory Siteleri ve Hizmetleri eklentisi gösterilmektedir: 
 
@@ -106,7 +106,7 @@ Azure NetApp Files için bir AD bağlantısı yapılandırdığınızda, **ad si
 
 ### <a name="azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 
 
-Azure Active Directory Domain Services (AEKLEYEN) yapılandırma ve kılavuz için bkz. [Azure AD Domain Services belgeleri](https://docs.microsoft.com/azure/active-directory-domain-services/).
+Azure Active Directory Domain Services (AEKLEYEN) yapılandırma ve kılavuz için bkz. [Azure AD Domain Services belgeleri](../active-directory-domain-services/index.yml).
 
 Azure NetApp Files için ek AEKLEYEN konular geçerlidir: 
 
@@ -184,10 +184,10 @@ Bu ayar, **NetApp hesabı**altındaki **Active Directory bağlantılarında** ya
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFAesEncryption
         ```
         
-        Ayrıca, [Azure CLI komutlarını](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) kullanarak `az feature register` `az feature show` özelliği kaydedebilir ve kayıt durumunu görüntüleyebilirsiniz. 
+        Ayrıca, [Azure CLI komutlarını](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) kullanarak `az feature register` `az feature show` özelliği kaydedebilir ve kayıt durumunu görüntüleyebilirsiniz. 
 
     * **LDAP Imzalama**   
-        LDAP imzalamayı etkinleştirmek için bu onay kutusunu seçin. Bu işlev, Azure NetApp Files hizmeti ve Kullanıcı tarafından belirtilen [Active Directory Domain Services etki alanı denetleyicileri](https://docs.microsoft.com/windows/win32/ad/active-directory-domain-services)arasında güvenli LDAP aramaları sunar. Daha fazla bilgi için bkz. [ADV190023 | LDAP kanalı bağlamayı ve LDAP IMZALAMAYı etkinleştirmek için Microsoft Kılavuzu](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).  
+        LDAP imzalamayı etkinleştirmek için bu onay kutusunu seçin. Bu işlev, Azure NetApp Files hizmeti ve Kullanıcı tarafından belirtilen [Active Directory Domain Services etki alanı denetleyicileri](/windows/win32/ad/active-directory-domain-services)arasında güvenli LDAP aramaları sunar. Daha fazla bilgi için bkz. [ADV190023 | LDAP kanalı bağlamayı ve LDAP IMZALAMAYı etkinleştirmek için Microsoft Kılavuzu](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).  
 
         ![LDAP imzalamayı Active Directory](../media/azure-netapp-files/active-directory-ldap-signing.png) 
 
@@ -206,7 +206,7 @@ Bu ayar, **NetApp hesabı**altındaki **Active Directory bağlantılarında** ya
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFLdapSigning
         ```
         
-        Ayrıca, [Azure CLI komutlarını](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) kullanarak `az feature register` `az feature show` özelliği kaydedebilir ve kayıt durumunu görüntüleyebilirsiniz. 
+        Ayrıca, [Azure CLI komutlarını](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) kullanarak `az feature register` `az feature show` özelliği kaydedebilir ve kayıt durumunu görüntüleyebilirsiniz. 
 
      * **Yedekleme ilkesi kullanıcıları**  
         Azure NetApp Files ile kullanım için oluşturulan bilgisayar hesabına yükseltilmiş ayrıcalıklar gerektiren ek hesaplar ekleyebilirsiniz. Belirtilen hesapların dosya veya klasör düzeyinde NTFS izinlerini değiştirmesine izin verilir. Örneğin, Azure NetApp Files bir SMB dosya paylaşımında veri geçirmek için kullanılan ayrıcalıklı olmayan bir hizmet hesabı belirtebilirsiniz.  
@@ -228,7 +228,7 @@ Bu ayar, **NetApp hesabı**altındaki **Active Directory bağlantılarında** ya
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
         ```
         
-        Ayrıca, [Azure CLI komutlarını](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) kullanarak `az feature register` `az feature show` özelliği kaydedebilir ve kayıt durumunu görüntüleyebilirsiniz. 
+        Ayrıca, [Azure CLI komutlarını](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) kullanarak `az feature register` `az feature show` özelliği kaydedebilir ve kayıt durumunu görüntüleyebilirsiniz. 
 
     * **Kullanıcı adınız** ve **Parolanız** dahil kimlik bilgileri
 
@@ -325,6 +325,6 @@ Windows SMB istemcisinde nesnenin özelliklerinin **güvenlik** sekmesini kullan
 
 * [Windows veya Linux sanal makineleri için birimi bağlama veya ayırma](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Azure NetApp Files için kaynak sınırları](azure-netapp-files-resource-limits.md)
-* [SMB hakkında SSS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs)
-* [Azure hizmetleri için sanal ağ tümleştirmesi hakkında bilgi edinin](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
-* [Azure CLı kullanarak yeni bir Active Directory ormanı yüklemesi](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)
+* [SMB hakkında SSS](./azure-netapp-files-faqs.md#smb-faqs)
+* [Azure hizmetleri için sanal ağ tümleştirmesi hakkında bilgi edinin](../virtual-network/virtual-network-for-azure-services.md)
+* [Azure CLı kullanarak yeni bir Active Directory ormanı yüklemesi](/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)

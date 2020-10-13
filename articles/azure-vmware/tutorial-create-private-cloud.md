@@ -3,12 +3,12 @@ title: Öğretici-Azure 'da vSphere kümesi dağıtma
 description: Azure VMWare çözümünü kullanarak Azure 'da bir vSphere kümesi dağıtmayı öğrenin
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 3fab49640364ef1b2e68953d366b20f77556b486
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b673a67fac734c9cb63e96b6a0c3dc9182f4b994
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578334"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952293"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>Öğretici: Azure 'da Azure VMware çözümü özel bulutu dağıtma
 
@@ -16,13 +16,13 @@ Azure VMware çözümü, Azure 'da bir vSphere kümesi dağıtmanıza olanak tan
 
 Azure VMware çözümü, başlatma sırasında özel bulutunuzu şirket içi vCenter 'ünüzle yönetmenize izin vermediğinden ek yapılandırma gerekir. Bu yordamlar ve ilgili Önkoşullar Bu öğreticide ele alınmıştır.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure VMware çözümü özel bulutu oluşturma
 > * Özel bulutun dağıtıldığını doğrulayın
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Özel bir bulut oluşturmak için uygun yönetici hakları ve izinleri.
@@ -43,7 +43,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure VMware çözümü özel bulutu oluşturmak için Azure portal yerine Azure Cloud Shell kullanarak Azure CLı 'yi kullanabilirsiniz.  Azure VMware çözümü ile kullanabileceğiniz komutların listesi için bkz. [Azure VMware komutları](https://docs.microsoft.com/cli/azure/ext/vmware/vmware).
+Azure VMware çözümü özel bulutu oluşturmak için Azure portal yerine Azure Cloud Shell kullanarak Azure CLı 'yi kullanabilirsiniz.  Azure VMware çözümü ile kullanabileceğiniz komutların listesi için bkz. [Azure VMware komutları](/cli/azure/ext/vmware/vmware).
 
 #### <a name="open-azure-cloud-shell"></a>Azure Cloud Shell’i açma
 
@@ -82,7 +82,7 @@ Artık ihtiyacınız olmayan bir Azure VMware çözümü özel bulutunuz varsa, 
 > [!CAUTION]
 > Özel bulutun silinmesi geri alınamaz bir işlemdir. Özel bulut silindikten sonra, tüm çalışan iş yüklerini ve bileşenlerini sonlandırdığı ve genel IP adresleri dahil tüm özel bulut verilerini ve yapılandırma ayarlarını yok etmek için veriler kurtarılamaz.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Özel bir bulut silindikten sonra, sanal makineleri ve bunların verilerini kurtarmanın bir yolu yoktur. Sanal makine verileri daha sonra gerekli olacaktır, önce yönetici özel bulutu silmeden önce tüm verileri yedeklemeli olmalıdır.
 
@@ -96,7 +96,7 @@ Artık ihtiyacınız olmayan bir Azure VMware çözümü özel bulutunuz varsa, 
 
 ## <a name="azure-vmware-commands"></a>Azure VMware komutları
 
-Azure VMware çözümü ile kullanabileceğiniz komutların listesi için bkz. [Azure VMware komutları](https://docs.microsoft.com/cli/azure/ext/vmware/vmware).
+Azure VMware çözümü ile kullanabileceğiniz komutların listesi için bkz. [Azure VMware komutları](/cli/azure/ext/vmware/vmware).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
