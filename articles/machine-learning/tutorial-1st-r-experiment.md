@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: fe9b0e9d2e2e46c7c4d04549777a5c27df6bdf18
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: bf89e99842efa726e6ca05a08998c9d058dc02e3
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940115"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019384"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Öğretici: bir Machine Learning modeli oluşturmak için R kullanma (Önizleme)
 
@@ -72,7 +72,7 @@ https://github.com/Azure/azureml-sdk-for-rBu öğreticide çalıştıracağını
 
 1. RStudio 'da, depoyu kopyalamak istediğiniz dizine "Terminal" sekmesine ve CD 'ye gidin.
 
-1. https://github.com/Azure/azureml-sdk-for-rDepoyu kopyalamak için terminalde "git clone" öğesini çalıştırın.
+1. `git clone https://github.com/Azure/azureml-sdk-for-r`Depoyu kopyalamak için terminalde çalıştırın.
 
 1. RStudio 'da, kopyalanmış *azureml-SDK-for-r* klasörünün *Vignettes* klasörüne gidin.  *Vignettes*altında, *eğitme ve dağıtım-ilk modeli ' ni seçin. *Bu öğreticide kullanılan Vignette 'yi bulmak için rmd dosyası. Vignette için kullanılan ek dosyalar, *eğitme ve-dağıt-ilk model* alt klasöründe bulunur. Vignette 'yı açtıktan sonra, çalışma dizinini **oturum >, çalışma dizini > olarak kaynak dosya konumu olarak ayarlayın**. 
 

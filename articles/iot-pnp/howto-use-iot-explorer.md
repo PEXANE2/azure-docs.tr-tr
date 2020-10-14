@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: e64586ced7a619de02ae3a9d6beda35660ca04a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf68bdafbb8b6fde187a2d787bb5464e5ece4cb2
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577586"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019163"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Azure IoT Gezginini yükleyip kullanma
 
@@ -36,7 +36,7 @@ Azure IoT gezgin aracını kullanmak için şunlar gerekir:
 [Azure IoT Explorer sürümleri](https://github.com/Azure/azure-iot-explorer/releases) ' ne gidin ve en son sürümün varlık listesini genişletin. Uygulamanın en son sürümünü indirip yükleyin.
 
 >[!Important]
->0.11.0 IoT Explorer sürümü yalnızca IoT Tak ve Kullan GA sürümünü (Eylül 2020 ' den) destekler. Önceki önizlemede bulunan özellikleri kullanmak için-Ağustos 2019 ' den yayın bir 0.10. x sürümü yükler.
+> ' Ye göre herhangi bir depodan modelleri çözümlemek için 0.13. x sürümüne Güncelleştir [https://github.com/Azure/iot-plugandplay-models](https://github.com/Azure/iot-plugandplay-models)
 
 ## <a name="use-azure-iot-explorer"></a>Azure IoT Gezginini Kullanma
 
@@ -136,4 +136,4 @@ Seçili arabirime yönelik Telemetriyi görüntülemek için **telemetri** sekme
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu nasıl yapılır makalesinde IoT Tak ve Kullan cihazlarınızla etkileşim kurmak için Azure IoT Gezginini yüklemeyi ve kullanmayı öğrendiniz. Önerilen bir sonraki adım, [Azure CLI ıot Tak ve kullan komutlarının](./howto-use-iot-pnp-cli.md)nasıl kullanılacağını öğrenirsiniz.
+Bu nasıl yapılır makalesinde IoT Tak ve Kullan cihazlarınızla etkileşim kurmak için Azure IoT Gezginini yüklemeyi ve kullanmayı öğrendiniz. Önerilen bir sonraki adım, [DTDL yazma araçlarını yüklemeyi ve kullanmayı](howto-use-dtdl-authoring-tools.md)öğrenirsiniz.

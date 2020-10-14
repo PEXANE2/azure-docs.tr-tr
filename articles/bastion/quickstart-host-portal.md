@@ -1,27 +1,27 @@
 ---
 title: "Hızlı başlangıç: bir VM 'den savunma Konağı oluşturma ve özel IP adresi aracılığıyla bağlanma"
 titleSuffix: Azure Bastion
-description: Bu makalede, bir sanal makineden Azure savunma ana bilgisayarı oluşturmayı ve özel bir IP adresi kullanarak güvenli bir şekilde bağlamayı öğrenin.
+description: Bu hızlı başlangıç makalesinde, bir sanal makineden Azure savunma ana bilgisayarı oluşturmayı ve özel bir IP adresi kullanarak güvenli bir şekilde bağlamayı öğrenin.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: quickstart
 ms.date: 10/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0ff85e6ceb6867db417d8d8202ff3281478e5687
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 6f451e7b115c00bc7b2cf350e00b9f704ab1d29f
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996998"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019061"
 ---
 # <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>Hızlı başlangıç: özel IP adresi ve Azure savunma kullanarak bir sanal makineye bağlanma
 
-Bu hızlı başlangıç makalesinde, Azure savunma ve Azure portal kullanarak tarayıcınız aracılığıyla özel bir IP adresi kullanarak bir sanal makineye nasıl bağlanabilmeniz gösterilmektedir. Bu makaledeki adımlar sanal makinenize sanal ağınıza bir savunma dağıtmanıza ve sonra VM 'ye bağlanmanıza yardımcı olur. Sanal ağınız için doğrudan VM 'nizden bir savunma ana bilgisayarı oluşturmanın avantajı, ayarların çoğunun sizin için önceden doldurulduğu bir avantajdır.
+Bu hızlı başlangıç makalesinde, Azure savunma ve Azure portal kullanarak tarayıcınızla bir sanal makineye nasıl bağlanabilmeniz gösterilmektedir. Azure VM 'nizden Azure portal sanal ağınıza bir savunma dağıtımı yapabilirsiniz. Savunma 'yı dağıttıktan sonra, Azure portal kullanarak VM 'ye özel IP adresi aracılığıyla bağlanabilirsiniz. VM 'nizin genel bir IP adresi veya özel bir yazılıma ihtiyacı yoktur. VNet 'iniz için doğrudan sanal ağınız için bir savunma ana bilgisayarı oluşturmanın avantajlarından biri, ayarların çoğunun sizin için önceden doldurulduğu bir avantajdır.
 
 Hizmet sağlandıktan sonra, RDP/SSH deneyimi aynı sanal ağdaki tüm sanal makineler için kullanılabilir. Azure savunma hakkında daha fazla bilgi için bkz. [Azure](bastion-overview.md)savunma nedir?.
 
-## <a name="prerequisites"></a><a name="prereq"></a>Önkoşullar
+## <a name="prerequisites"></a><a name="prereq"></a>Ön koşullar
 
 * Bir sanal ağ.
 * Sanal ağdaki bir Windows sanal makinesi.
@@ -36,7 +36,7 @@ Hizmet sağlandıktan sonra, RDP/SSH deneyimi aynı sanal ağdaki tüm sanal mak
 
 |**Ad** | **Değer** |
 | --- | --- |
-| Name |  TestVNet1-savunma |
+| Ad |  TestVNet1-savunma |
 | Sanal ağ |  TestVNet1 (VM 'ye bağlı) |
 | + Alt ağ adı | AzureBastionSubnet |
 | AzureBastionSubnet adresleri |  10.1.254.0/27 |
@@ -96,7 +96,7 @@ Sanal ağ ve sanal makineler kullanarak işiniz bittiğinde, kaynak grubunu ve i
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, sanal ağınız için bir savunma ana bilgisayarı oluşturdunuz ve ardından savunma ana bilgisayarı aracılığıyla güvenli bir şekilde sanal makineye bağlanırsınız.
+Bu hızlı başlangıçta, sanal ağınız için bir savunma ana bilgisayarı oluşturdunuz ve ardından savunma ana bilgisayarı aracılığıyla güvenli bir şekilde sanal makineye bağlanırsınız. Daha sonra, bir sanal makine ölçek kümesine bağlanmak istiyorsanız aşağıdaki adımla devam edebilirsiniz.
 
-* Azure savunma hakkında daha fazla bilgi edinmek için bkz. [Azure](bastion-overview.md) savunma nedir? ve savunma hakkında [SSS](bastion-faq.md).
-* Bir sanal makine ölçek kümesine bağlanmak için bkz. [Azure savunma kullanarak bir sanal makine ölçek kümesine bağlanma](bastion-connect-vm-scale-set.md).
+> [!div class="nextstepaction"]
+> [Azure savunma kullanarak bir sanal makine ölçek kümesine bağlanma](bastion-connect-vm-scale-set.md)

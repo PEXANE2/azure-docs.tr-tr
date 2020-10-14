@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7da19ddd96c15ff5688d6e153d1859ed8c11ec8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b404d05f512449c99e60c0bfdc93aab22c399ef
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616559"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019027"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Azure dijital TWINS 'de ikizi modellerini anlama
 
@@ -57,7 +57,7 @@ Azure dijital TWINS 'te DTDL **özelliği** ve **telemetri** alanları arasında
 
 Azure dijital TWINS modelleriyle ilgili özellikler ve telemetri arasındaki fark aşağıdaki gibidir:
 * Depolama alanının yedeklenmemesi için **Özellikler** bekleniyor. Bu, herhangi bir zamanda bir özelliği okuyabilmeniz ve değerini alabilmek anlamına gelir. Özellik yazılabilir ise, özelliğinde bir değeri de saklayabilirsiniz.  
-* **Telemetri** bir olay akışı gibidir; Bu, kısa ömrü olan bir veri iletisi kümesidir. Olay ve işlem sırasında gerçekleştirilecek eylemler için dinlemeyi ayarlamazsanız, olayın daha sonra izlenmesi gerekmez. Geri dönemiyorum ve daha sonra okuyamıyorum. 
+* **Telemetri** bir olay akışı gibidir; Bu, kısa ömrü olan bir veri iletisi kümesidir. Olay ve işlem sırasında gerçekleştirilecek eylemler için dinlemeyi ayarlamazsanız, olayın daha sonra izlenmesi gerekmez. Buraya geri dönüp daha sonra okuyamıyorum. 
   - C# koşullarında telemetri bir C# olayı gibidir. 
   - IoT koşullarında telemetri genellikle bir cihaz tarafından gönderilen tek bir ölçümdür.
 

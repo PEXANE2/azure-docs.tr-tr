@@ -13,12 +13,12 @@ ms.author: abnarain
 ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: b8935b9f2c3c598aee7c5d0eb37f21d8114dac42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8cd72d34535ac3a2aec60aa3d2369da34dd7194
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88997464"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017412"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>Azure Data Factory sürüm 1 ardışık düzeninde özel etkinlikler kullanma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -31,7 +31,7 @@ ms.locfileid: "88997464"
 Azure Data Factory ardışık düzeninde kullanabileceğiniz iki tür etkinlik vardır.
 
 - Verileri [, desteklenen kaynak ve havuz veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats)arasında taşımak Için [veri taşıma etkinlikleri](data-factory-data-movement-activities.md) .
-- Azure HDInsight, Azure Batch ve Azure Machine Learning gibi işlem hizmetlerini kullanarak verileri dönüştürmek için [veri dönüştürme etkinlikleri](data-factory-data-transformation-activities.md) .
+- Azure HDInsight, Azure Batch ve Azure Machine Learning Studio (klasik) gibi işlem hizmetlerini kullanarak verileri dönüştürmek için [veri dönüştürme etkinlikleri](data-factory-data-transformation-activities.md) .
 
 Data Factory desteklemediği bir veri deposuna/veritabanından veri taşımak için kendi veri taşıma mantığınızla özel bir **etkinlik** oluşturun ve etkinliği bir işlem hattında kullanın. Benzer şekilde, Data Factory tarafından desteklenmeyen bir şekilde verileri dönüştürmek/işlemek için kendi veri dönüştürme mantığınızla özel bir etkinlik oluşturun ve etkinliği bir işlem hattında kullanın.
 
@@ -50,7 +50,7 @@ Aşağıdaki izlenecek yol, özel bir .NET etkinliği oluşturmaya ve bir işlem
 ### <a name="azure-batch-prerequisites"></a>Azure Batch önkoşulları
 İzlenecek yolda, işlem kaynağı olarak Azure Batch kullanarak özel .NET etkinliklerinizi çalıştırırsınız. **Azure Batch** , bulutta etkin bir şekilde büyük ölçekli paralel ve yüksek performanslı bilgi Işlem (HPC) uygulamaları çalıştırmaya yönelik bir platform hizmetidir. Azure Batch, yönetilen bir **sanal makine koleksiyonunda**çalışacak işlem yoğunluğu olan işleri zamanlar ve işlerin ihtiyaçlarını karşılamak için işlem kaynaklarını otomatik olarak ölçeklendirebilir. Azure Batch hizmetine ayrıntılı bir genel bakış için [Azure Batch temel bilgiler][batch-technical-overview] makalesine bakın.
 
-Öğretici için, VM havuzu ile bir Azure Batch hesabı oluşturun. Adımlar aşağıdaki gibidir:
+Öğretici için, VM havuzu ile bir Azure Batch hesabı oluşturun. Adımlar şunlardır:
 
 1. [Azure Portal](https://portal.azure.com)kullanarak bir **Azure Batch hesabı** oluşturun. Yönergeler için [Azure Batch hesap oluşturma ve yönetme][batch-create-account] makalesine bakın.
 2. Azure Batch hesap adı, hesap anahtarı, URI ve havuz adı ' na göz önüne alın. Azure Batch bağlı bir hizmet oluşturmak için bunlara ihtiyacınız vardır.
@@ -1025,7 +1025,7 @@ GitHub 'daki [Azure Data Factory yerel ortam](https://github.com/gbrueckl/Azure.
 | Örnek | Özel etkinlik ne yapar |
 | --- | --- |
 | [Http veri yükleyici](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample). |Data Factory 'daki özel C# etkinliğini kullanarak bir HTTP uç noktasından Azure Blob depolama alanına veri indirir. |
-| [Twitter Yaklaşım Analizi örneği](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Azure Machine Learning Studio modelini çağırır ve yaklaşım analizi, Puanlama, tahmin vb. |
+| [Twitter Yaklaşım Analizi örneği](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Azure Machine Learning Studio (klasik) modeli çağırır ve yaklaşım analizi, Puanlama, tahmin vb. |
 | [R betiğini çalıştırın](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample). |Zaten R 'nin yüklü olduğu HDInsight kümenizde RScript.exe çalıştırarak R betiğini çağırır. |
 | [Çapraz AppDomain .NET etkinliği](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Data Factory başlatıcısı tarafından kullanılan farklı derleme sürümlerini kullanır |
 | [Azure Analysis Services bir modeli yeniden işleme](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/AzureAnalysisServicesProcessSample) |  Azure Analysis Services bir modeli yeniden işler. |

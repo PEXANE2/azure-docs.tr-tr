@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2020
 ms.author: memildin
-ms.openlocfilehash: 8e92c893d97ce9fadfa2d40476631c2b9ba5d177
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: d829ffb9d3a264052e3f688018acd7afa854578e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999269"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018279"
 ---
 # <a name="azure-security-center-data-security"></a>Azure Güvenlik Merkezi veri güvenliği
 
@@ -57,19 +57,19 @@ Azure Defender kullanmıyorsanız, ayrıca güvenlik Ilkesindeki sanal makineler
 
 Makinelerinizden toplanan verilerin depolandığı çalışma alanını ve bölgeyi belirtebilirsiniz. Varsayılan olarak, aşağıdaki tabloda gösterildiği gibi makinelerinizden toplanan verileri en yakın çalışma alanına depoladığınızda:
 
-| VM'nin Bulunduğu Coğrafi Bölge                              | Çalışma Alanının Bulunduğu Coğrafi Bölge |
-|-------------------------------------|---------------|
-| Birleşik Devletler, Brezilya, Güney Afrika | Amerika Birleşik Devletleri |
-| Kanada                              | Kanada        |
-| Avrupa (Birleşik Krallık hariç)   | Avrupa        |
-| Birleşik Krallık                      | Birleşik Krallık |
-| Asya (Hindistan, Japonya, Kore, Çin hariç)   | Asya Pasifik  |
-| Güney Kore                              | Asya Pasifik  |
-| Hindistan                               | Hindistan         |
-| Japonya                               | Japonya         |
-| Çin                               | Çin         |
-| Avustralya                           | Avustralya     |
-|||
+| VM'nin Bulunduğu Coğrafi Bölge                                      | Çalışma Alanının Bulunduğu Coğrafi Bölge  |
+|---------------------------------------------|----------------|
+| Birleşik Devletler, Brezilya, Güney Afrika         | Amerika Birleşik Devletleri  |
+| Kanada                                      | Kanada         |
+| Avrupa (Birleşik Krallık hariç)           | Avrupa         |
+| Birleşik Krallık                              | Birleşik Krallık |
+| Asya (Hindistan, Japonya, Kore, Çin hariç) | Asya Pasifik   |
+| Güney Kore                                       | Asya Pasifik   |
+| Hindistan                                       | Hindistan          |
+| Japonya                                       | Japonya          |
+| Çin                                       | Çin          |
+| Avustralya                                   | Avustralya      |
+|                                             |                |
 
 > [!NOTE]
 > **Depolama Için Azure Defender** , yapıtları ilgili Azure kaynağının konumuna göre bölgeli olarak depolar. [Depolama Için Azure Defender 'A giriş](defender-for-storage-introduction.md)hakkında daha fazla bilgi edinin.
@@ -80,18 +80,16 @@ Makinelerinizden toplanan verilerin depolandığı çalışma alanını ve bölg
 Müşteriler aşağıdaki veri akışlarından Güvenlik Merkezi ile ilgili verilere erişebilir:
 
 
-|Akış  |Veri türleri  |
-|---------|---------|
-|[Azure etkinlik günlüğü](../azure-monitor/platform/activity-log.md)| Tüm güvenlik uyarıları, onaylanan Güvenlik Merkezi [tam zamanında](security-center-just-in-time.md) erişim istekleri ve [Uyarlamalı uygulama denetimleri](security-center-adaptive-application.md) tarafından oluşturulan tüm uyarılar |
-|[Azure Izleyici günlükleri](../azure-monitor/platform/data-platform.md)|Tüm güvenlik uyarıları.|
-|[Azure Kaynak Grafiği](../governance/resource-graph/overview.md)|Güvenlik uyarıları, güvenlik önerileri, güvenlik açığı değerlendirmesi sonuçları, güvenli puan bilgileri, uyumluluk denetimlerinin durumu ve daha fazlası.|
-|[Azure Güvenlik Merkezi REST API](https://docs.microsoft.com/rest/api/securitycenter/)|Güvenlik uyarıları, güvenlik önerileri ve daha fazlası. .|
-|||
+| Akış                                                                                | Veri türleri                                                                                                                                                                                                          |
+|---------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Azure etkinlik günlüğü](../azure-monitor/platform/activity-log.md)                       | Tüm güvenlik uyarıları, onaylanan Güvenlik Merkezi [tam zamanında](security-center-just-in-time.md) erişim istekleri ve [Uyarlamalı uygulama denetimleri](security-center-adaptive-application.md)tarafından oluşturulan tüm uyarılar.|
+| [Azure Izleyici günlükleri](../azure-monitor/platform/data-platform.md)                      | Tüm güvenlik uyarıları.                                                                                                                                                                                                |
+| [Azure Kaynak Grafiği](../governance/resource-graph/overview.md)                      | Güvenlik uyarıları, güvenlik önerileri, güvenlik açığı değerlendirmesi sonuçları, güvenli puan bilgileri, uyumluluk denetimlerinin durumu ve daha fazlası.                                                                       |
+| [Azure Güvenlik Merkezi REST API](https://docs.microsoft.com/rest/api/securitycenter/) | Güvenlik uyarıları, güvenlik önerileri ve daha fazlası.                                                                                                                                                                |
+|                                                                                       |                                                                                                                                                                                                                     |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu belgede Azure Güvenlik Merkezi'nde verilerin yönetilmesi ve korunması hakkında bilgi aldınız. 
 
-Azure Güvenlik Merkezi hakkında daha fazla bilgi edinmek bkz.:
-
-- [Azure Güvenlik Merkezi nedir?](security-center-introduction.md)
+Azure Güvenlik Merkezi hakkında daha fazla bilgi edinmek için bkz. [Azure Güvenlik Merkezi nedir?](security-center-introduction.md)

@@ -1,235 +1,131 @@
 ---
-title: Azure IoT model deposunun kavramlarını anlayın | Microsoft Docs
-description: Bir çözüm geliştiricisi veya BT uzmanı olarak, Azure IoT model deposunun temel kavramları hakkında bilgi edinin.
-author: prashmo
-ms.author: prashmo
-ms.date: 07/24/2020
+title: Cihaz modeli deposunun kavramlarını anlayın | Microsoft Docs
+description: Bir çözüm geliştiricisi veya BT uzmanı olarak, cihaz modeli deposunun temel kavramları hakkında bilgi edinin.
+author: rido-min
+ms.author: rmpablos
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5d07257d1e23ee792aa996e31a2c28c17bc23d34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78accf9009e532b4f254bf1b96c9fe269815b8af
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715069"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019180"
 ---
-# <a name="azure-iot-model-repository"></a>Azure IoT model deposu
+# <a name="device-model-repository"></a>Cihaz modeli deposu
 
-Azure IoT modeli deposu, cihaz üreticilerinin IoT Tak Çalıştır cihaz modellerini yönetmesine ve paylaşmasına olanak sağlar. Cihaz modelleri, [dijital TWINS modelleme dili (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)KULLANıLARAK tanımlanan JSON ld belgelerdir. Model deposu hizmetinde depolanan modeller, özel olarak erişim denetimi aracılığıyla veya IoT Tak ve Kullan bulut çözümünü bütünleştirmek ve geliştirmek için herhangi bir kimlik doğrulaması gerektirmeden, çözüm geliştiricileri ile genel olarak paylaşılabilir.
+Cihaz modeli deposu (DMR), cihaz oluşturucuların IoT Tak ve Kullan cihaz modellerini yönetmesine ve paylaşmasına olanak sağlar. Cihaz modelleri, [dijital TWINS modelleme dili (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)KULLANıLARAK tanımlanan JSON ld belgelerdir.
+
+DMR, DTDL arabirimlerini cihaz ikizi modeli tanımlayıcısı (DTMı) temelinde bir klasör yapısına depolamak için bir model tanımlar. DTMı 'yi göreli bir yola dönüştürerek DMR 'de bir arabirim bulabilirsiniz. Örneğin, `dtmi:com:example:Thermostat;1` dtmı öğesine çevrilir `/dtmi/com/example/thermostat-1.json` .
+
+## <a name="public-device-model-repository"></a>Ortak cihaz modeli deposu
+
+Microsoft, şu özelliklerle genel bir DMR barındırır:
+
+- Seçkin modeller. Microsoft, açık bir GitHub PR doğrulama iş akışı kullanarak tüm kullanılabilir arabirimleri gözden geçirir ve onaylar.
+- Değiştirilemezlik.  Yayımlandıktan sonra bir arabirim güncelleştirilemiyor.
+- Hiper ölçek. Microsoft, güvenli ve yüksek oranda ölçeklenebilir bir uç nokta oluşturmak için gereken tüm altyapıyı sağlar.
+
+## <a name="custom-device-model-repository"></a>Özel cihaz modeli deposu
+
+Özel bir DMR oluşturmak için, yerel dosya sistemi veya özel HTTP Web sunucuları gibi herhangi bir depolama ortamında aynı DMR modelini kullanabilirsiniz. Özel bir DMR 'den, yalnızca DMR 'e erişmek için kullanılan temel URL 'YI değiştirerek Genel DRM ile aynı şekilde bir model alabilirsiniz.
 
 > [!NOTE]
-> Cihaz oluşturucular, IoT Tak ve Kullan cihaz modellerini doğrudan bir cihaza, modüller kullanmasına veya bir IoT Edge modülünde uygulamayı seçebilir.
-
-Model deposuna şunu kullanarak erişebilirsiniz:
-
-- [Azure IoT model deposu](https://aka.ms/iotmodelrepo) portalı
-- [Azure IoT model deposu REST API](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync)
-- [Azure CLı IoT modeli depo komutları](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp?view=azure-cli-latest&preserve-view=true)
+> Genel DMR içindeki modelleri doğrulamak için kullanılan araçlar özel depolarda yeniden kullanılabilir.
 
 ## <a name="public-models"></a>Ortak modeller
 
-Model deposunda depolanan genel dijital ikizi modelleri, herhangi bir kimlik doğrulaması olmadan uygulamasında kullanmak ve bütünleştirmek için herkes tarafından kullanılabilir. Ayrıca, genel modeller cihaz oluşturucular ve çözüm geliştiricilerinin IoT Tak ve Kullan cihaz modellerini paylaşmasını ve yeniden kullanmasına olanak sağlayan açık bir ekonomik sistem sağlar.
+Model deposunda depolanan genel dijital ikizi modelleri, uygulamalarında kullanmak ve bütünleştirmek için herkes tarafından kullanılabilir. Ortak modeller, cihaz oluşturucular ve çözüm geliştiricilerinin IoT Tak ve Kullan cihaz modellerini paylaşmasını ve yeniden kullanmasına yönelik açık bir ekonomik sistemi etkinleştirir.
 
-Ortak hale getirmek için model deposunda model yayımlama yönergeleri için **Şirket modelleri** altındaki [model yayımlama](#publish-a-model) bölümüne bakın.
+Model deposunda model yayımlama hakkında yönergeler için model [Yayımlama](#publish-a-model) bölümüne bakın.
 
-Model deposu portalını kullanarak bir ortak modeli görüntülemek için:
+Kullanıcılar resmi [GitHub deposundan](https://github.com/Azure/iot-plugandplay-models)ortak arabirimlere gözatabilir, arama yapabilir ve görüntüleyebilir.
 
-1. [Azure IoT model deposu portalı](https://aka.ms/iotmodelrepo)' na gidin.
+Klasörlerdeki tüm arabirimler `dtmi` genel uç noktada da kullanılabilir [https://devicemodels.azure.com](https://devicemodels.azure.com)
 
-1. **Ortak modelleri görüntüle**' yi seçin.
+### <a name="resolve-models"></a>Modelleri çözümle
 
-    ![Ortak modelleri görüntüle](./media/concepts-model-repository/public-models.png)
+Bu arabirimlere programlı bir şekilde erişmek için, bir dtmı 'yi genel uç noktasını sorgulamak için kullanabileceğiniz göreli bir yola dönüştürmeniz gerekir. Aşağıdaki kod örneğinde bunun nasıl yapılacağı gösterilmektedir:
 
-REST API kullanarak ortak modeli program aracılığıyla görüntülemek için bkz. model REST API belgelerini [Al](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync) .
+Bir DTMı 'yi mutlak bir yola dönüştürmek için `DtmiToPath` işlevini kullanın `IsValidDtmi` :
 
-```csharp
-var httpClient = new HttpClient();
-httpClient.BaseAddress = new Uri("https://repo.azureiotrepository.com");
+```cs
+static string DtmiToPath(string dtmi)
+{
+    if (!IsValidDtmi(dtmi))
+    {
+        return null;
+    }
+    // dtmi:com:example:Thermostat;1 -> dtmi/com/example/thermostat-1.json
+    return $"/{dtmi.ToLowerInvariant().Replace(":", "/").Replace(";", "-")}.json";
+}
 
-var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05-01-preview").ConfigureAwait(false);
+static bool IsValidDtmi(string dtmi)
+{
+    // Regex defined at https://github.com/Azure/digital-twin-model-identifier#validation-regular-expressions
+    Regex rx = new Regex(@"^dtmi:[A-Za-z](?:[A-Za-z0-9_]*[A-Za-z0-9])?(?::[A-Za-z](?:[A-Za-z0-9_]*[A-Za-z0-9])?)*;[1-9][0-9]{0,8}$");
+    return rx.IsMatch(dtmi);
+}
 ```
 
-CLı kullanarak ortak bir modeli görüntülemek için bkz. Azure CLı [model al](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show&preserve-view=true) komutu.
+Sonuç yolu ve deponun temel URL 'SI ile arabirimi elde etmemiz için şunu kullanabilirsiniz:
 
-## <a name="company-models"></a>Şirket modelleri
+```cs
+const string _repositoryEndpoint = "https://devicemodels.azure.com";
 
-Şirket modeli deposu, kuruluşunuz için Azure IoT model deposundaki, şirketinizin veya kuruluşunuzun kullanıcıları tarafından yazılan dijital ikizi modellerini oluşturmak ve yönetmek için bir kiracıya yöneliktir. Şirket modelleri yalnızca şirket veya kuruluşunuzun kimliği doğrulanmış kullanıcıları tarafından kullanılabilir. Model deposu kiracı yöneticisi, şirket veya kuruluştaki diğer kullanıcılara şirket modeli deposundaki modellere izin atayabilir ve erişimi denetleyebilir.
-
-### <a name="set-up-your-company-model-repository"></a>Şirket modeli deponuzu ayarlama
-
-Model deposuna erişmek için *iş veya okul Azure Active Directory (Azure AD) hesabınızı* kullanın. Kuruluşunuzun zaten bir Azure AD kiracısı varsa, bu Azure AD kiracısında Kullanıcı hesaplarını ve hizmet sorumlularını kullanabilirsiniz.
-
-Bir Azure AD kiracısı ayarlama ve bir Azure AD kiracısında Kullanıcı veya hizmet sorumlusu oluşturma hakkında bilgi edinmek için bkz. [ek bilgi](#additional-information) bölümü.
-
-- Kuruluşunuzdaki ilk kullanıcı model deposuna erişmek veya portalda oturum açmak için, **Kiracı Yöneticisi** rolü vermiş olursunuz. Bu rol, kuruluşunuzun depo kiracısındaki diğer kullanıcılara roller atamanıza olanak tanır.
-
-- Başka roller, **Okuma modelleri** veya **model oluşturma**gibi bir **Kiracı Yöneticisi** atanabilir.
-
-### <a name="understand-access-management"></a>Erişim yönetimini anlama
-
-Aşağıdaki tabloda, şirket modeli deposundaki desteklenen yetenekler ve bunlarla ilişkili izinler özetlenmektedir:
-
-| Özellik  | İzin| Açıklama|
-|-------------|-----------|------------|
-|Modelleri oku|Modelleri oku|Varsayılan olarak, şirket kiracısındaki tüm kullanıcılar şirket modellerini görüntüleyebilir. Ayrıca, Kullanıcı aynı zamanda diğer şirketler tarafından bunlara paylaşılan özel model (ler) de görüntüleyebilir.|
-|Erişimi Yönetme|Erişimi Yönetme|Kuruluştaki diğer kullanıcılar için Kullanıcı rolü atamasını (ekleme veya kaldırma) yönetin.|
-|Model oluşturma|Model oluşturma|Şirket modeli deposunda modeller oluşturun.|
-|Modelleri Yayımla|Modelleri Yayımla|Modelleri, modelin görüntülemesi için herkese açık hale getirmek üzere yayımlayın.|
-
-Aşağıdaki tabloda, desteklenen roller ve erişim yönetimi için kullanılabilen model deposundaki özellikleri özetlenmektedir.
-
-|Rol|Özellik|
-|----|----------|
-|TenantAdministrator|Erişimi yönetme, modelleri okuma|
-|Oluşturucu|Model oluşturma, modelleri okuma|
-|Publisher|Modelleri Yayımla, modelleri oku|
-
-#### <a name="passing-a-security-token-when-accessing-company-models-with-a-rest-api"></a>Bir REST API şirket modellerine erişirken bir güvenlik belirteci geçirme
-
-Özel veya paylaşılan şirket modellerini yönetmek için REST API 'Lerini çağırdığınızda, Kullanıcı veya hizmet sorumlusu için JWT biçiminde bir yetkilendirme belirteci sağlamanız gerekir. Bir kullanıcı veya hizmet sorumlusu için JWT belirteci alma hakkında bilgi edinmek için [ek bilgiler](#additional-information) bölümüne bakın.
-
-Şirket modellerini veya paylaşılan modelleri hedeflerken, JWT belirtecinin API 'deki yetkilendirme HTTP üstbilgisine geçirilmesi gerekir. Ortak modeller hedeflenirken JWT belirteci gerekli değildir.
-
-```csharp
-// sample token
-var authorizationToken = "eyJhbGciOiJIUzI1NiIsInR5cCTI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
-httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authorizationToken);
+string dtmiPath = DtmiToPath(dtmi.ToString());
+string fullyQualifiedPath = $"{_repositoryEndpoint}{dtmiPath}";
+string modelContent = await _httpClient.GetStringAsync(fullyQualifiedPath);
 ```
 
-### <a name="view-company-or-shared-models"></a>Şirket veya paylaşılan modelleri görüntüleme
+## <a name="publish-a-model"></a>Modeli yayımlama
 
-Bir modeli okumak için depo kiracının *okuyucu* rolünün bir üyesi olmanız veya modelin sizinle paylaşılması gerekir. Sizinle paylaşılan yayımdan kaldırılan modellerin listesini ve sizinle paylaşılan yayımlanmış modellerin listesini görebilirsiniz. Varsayılan olarak kullanıcılar, şirketlerinin modellerini, diğer şirketlerin paylaştığı modelleri ve tüm ortak modelleri okuyabilir.
+> [!Important]
+> Genel DMR 'e model gönderebilmek için bir GitHub hesabınızın olması gerekir.
 
-Portalı kullanarak bir şirketi veya paylaşılan modeli görüntülemek için:
+1. Genel GitHub deposunun çatalını oluştur: [https://github.com/Azure/iot-plugandplay-models](https://github.com/Azure/iot-plugandplay-models) .
+1. Çatallanmış depoyu kopyalayın. Değişikliklerinizin dalından yalıtılmış olmasını sağlamak için isteğe bağlı olarak yeni bir dal oluşturun `main` .
+1. Klasörü `dtmi` /dosya adı kuralını kullanarak yeni arabirimleri klasöre ekleyin. Bkz. [Add-model](#add-model) aracı.
+1. [Değişiklikleri doğrulamak için betikleri](#validate-files) kullanarak modelleri yerel olarak doğrulayın bölümü.
+1. Değişiklikleri yerel olarak işleyin ve Çatalınıza gönderin.
+1. Çatalınızdan dalı hedefleyen bir PR oluşturun `main` . Bkz. [bir sorun veya çekme isteği belgeleri oluşturma](https://docs.github.com/free-pro-team@latest/desktop/contributing-and-collaborating-using-github-desktop/creating-an-issue-or-pull-request) .
+1. [PR gereksinimlerini](https://github.com/Azure/iot-plugandplay-models/blob/main/pr-reqs.md)gözden geçirin.
 
-1. [Azure IoT model deposu portalında](https://aka.ms/iotmodelrepo)oturum açın.
+PR, yeni gönderilen arabirimleri doğrulayan bir dizi GitHub eylemini tetikler ve çekme isteğinin tüm denetimleri karşıladığından emin olur.
 
-1. Sol bölmedeki **Şirket modellerini** Genişlet – **yayımdan kaldırıldı**
+Microsoft, bir çekme isteğini üç iş günü içinde tüm denetlemeler ile yanıtlar.
 
-    ![Şirket modellerini görüntüleme](./media/concepts-model-repository/view-company-models.png)
+### <a name="add-model"></a>Model Ekle
 
-1. Sol bölmedeki **paylaşılan modelleri Genişlet – yayımdan kaldırıldı**
+Aşağıdaki adımlarda add-model.js betiğin yeni bir arabirim eklemenize nasıl yardımcı olduğu gösterilmektedir. Bu betik Node.js çalıştırmasını gerektirir:
 
-    ![Paylaşılan modelleri görüntüle](./media/concepts-model-repository/view-shared-models.png)
+1. Bir komut isteminden yerel git deposuna gidin
+1. `npm install` komutunu çalıştırın
+1. `npm run add-model <path-to-file-to-add>` komutunu çalıştırın
 
-REST API kullanarak bir şirketi veya paylaşılan modeli görüntülemek için, [modeli al](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync) REST API belgelerine bakın. HTTP isteğindeki bir JWT yetkilendirme üst bilgisine geçme hakkında daha fazla bilgi için, bkz. [Şirket modellerine erişirken bir güvenlik belirteci geçirme REST API](#passing-a-security-token-when-accessing-company-models-with-a-rest-api) .
+Herhangi bir hata iletisi için konsol çıkışını izleyin.
 
-```csharp
-var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05-01-preview").ConfigureAwait(false);
-```
+### <a name="local-validation"></a>Yerel doğrulama
 
-CLı kullanarak bir şirket modelini veya paylaşılan modeli görüntülemek için bkz. Azure CLı [model al](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show&preserve-view=true) komutu.
+Sorunları önceden tanılamanıza yardımcı olmak üzere PR 'yi göndermeden önce, aynı doğrulama denetimlerini yerel olarak çalıştırabilirsiniz.
 
-### <a name="manage-roles"></a>Rolleri yönetme
+#### <a name="validate-files"></a>dosyaları doğrula
 
-Kiracı Yöneticisi, şirket veya kuruluşa özel modeller oluşturabilmek, modeller yayınlamak veya diğer kullanıcılar için rolleri yönetmek için depo kiracısındaki kullanıcılara roller atayabilir.
+`npm run validate-files <file1.json> <file2.json>` dosya yolunun beklenen klasör ve dosya adlarıyla eşleşip eşleşmediğini denetler.
 
-Portalı kullanarak bir model deposu kiracı rolüne kullanıcı eklemek için:
+#### <a name="validate-ids"></a>doğrulama kimlikleri
 
-1. [Azure IoT model deposu portalında](https://aka.ms/iotmodelrepo)oturum açın.
+`npm run validate-ids <file1.json> <file2.json>` belgede tanımlanan tüm kimliklerin ana KIMLIğIN aynı kökünü kullanıp kullanmadığını denetler.
 
-1. Sol bölmede **erişim yönetimi** ' ni seçin ve **+ Ekle**' yi seçin. **Izin Ekle** bölmesinde, role eklemek istediğiniz kullanıcının çalışma adresini yazın:
+#### <a name="validate-deps"></a>Validate-Deps
 
-    ![İş adresi ekle](./media/concepts-model-repository/add-user.png)
+`npm run validate-deps <file1.json> <file2.json>` Tüm bağımlılıkların klasörde kullanılabilir olduğunu denetler `dtmi` .
 
-1. **Rol** açılan menüsünden kullanıcıyı eklemek istediğiniz rolü seçin. Sonra **Kaydet**' i seçin:
+#### <a name="validate-models"></a>Validate-modeller
 
-    ![Rol Seç](./media/concepts-model-repository/choose-role.png)
-
-### <a name="upload-a-model"></a>Bir modeli karşıya yükleyin
-
-Bir modeli şirket modeli deposuna yüklemek için depo kiracının **Oluşturucu** rolünün bir üyesi olmanız gerekir.
-
-Bu modeller yayımlanmaz ve yalnızca kuruluşunuzdaki kullanıcılar tarafından varsayılan olarak erişilebilir. Ayrıca, bir veya daha fazla yayımdan kaldırılmış modeli dış kullanıcılarla paylaşabilirsiniz.
-
-Karşıya yüklenen modeller sabittir.
-
-Bu modellerin model kimlikleri, tüm karşıya yüklenen modellerin tüm depo kiracılar genelinde genel olarak benzersiz olmalıdır.
-
-Portalı kullanarak bir modeli karşıya yüklemek için:
-
-1. [Azure IoT model deposu portalında](https://aka.ms/iotmodelrepo)oturum açın.
-
-1. Sol bölmedeki **Şirket modelleri** ' ni genişletin ve **model oluştur**' u seçin. Ardından **JSON al**' ı seçin.
-
-    ![Model oluştur](./media/concepts-model-repository/create-model.png)
-
-1. Karşıya yüklemek istediğiniz dosyayı seçin. Portal modelinizi başarıyla doğrulaırsa **Kaydet**' i seçin.
-
-REST API kullanarak bir modeli karşıya yüklemek için bkz. [model oluşturma](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdateasync/createorupdateasync) API 'si. HTTP isteğindeki bir JWT yetkilendirme üst bilgisine geçme hakkında daha fazla bilgi için, bkz. [Şirket modellerine erişirken bir güvenlik belirteci geçirme REST API](#passing-a-security-token-when-accessing-company-models-with-a-rest-api) .
-
-```csharp
-var httpContent = new StringContent(jsonLdModel, Encoding.UTF8, "application/json");
-var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.PutAsync($"/models/{modelId}?api-version=2020-05-01-preview", httpContent).ConfigureAwait(false);
-```
-
-CLı kullanarak bir modeli karşıya yüklemek için bkz. Azure CLı [model oluşturma](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-create&preserve-view=true) komutu.
-
-### <a name="publish-a-model"></a>Modeli yayımlama
-
-Modeli yayımlamak için aşağıdaki gereksinimlerin karşılanması gerekir:
-
-1. Model yayımlamak için kuruluşunuz [Microsoft İş Ortağı Ağı](https://docs.microsoft.com/partner-center/)'nın üyesi olmalıdır. İş ortağı merkezi hesabı oluşturmak için bkz. [İş Ortağı Merkezi hesabı oluşturma](https://docs.microsoft.com/partner-center/mpn-create-a-partner-center-account). Hesabınız onaylandıktan sonra modellerinizi yayımlayabilirsiniz. Daha fazla bilgi için bkz. [İş Ortağı Merkezi hakkında SSS](https://support.microsoft.com/help/4340639/partner-center-account-faqs).
-
-2. Kullanıcı, depo kiracının *Yayımcı* rolünün bir üyesi olmalıdır.
-
-Kuruluşunuzdaki kullanıcılar tarafından oluşturulan ve yayımlanan modeller *yayımlanmış modeller*olarak görülebilir. Bu modeller geneldir ve **ortak modeller**altındaki herkes tarafından bulunabilir.
-
-Portalı kullanarak model yayımlamak için:
-
-1. [Azure IoT model deposu portalında](https://aka.ms/iotmodelrepo)oturum açın.
-
-2. Sol bölmedeki **Şirket modelleri** ' ni genişletin ve yayımlamak istediğiniz modeli seçin. Ardından **Yayımla**’yı seçin.
-
-    ![Model yayımlama](./media/concepts-model-repository/publish-model.png)
-
-> [!NOTE]
-> Bir Microsoft Iş ortağı (MPN) KIMLIĞINIZ olmadığını söyleyen bir bildirim alırsanız, bildirimdeki kayıt adımlarını izleyin. Daha fazla bilgi için bu bölümün başındaki gereksinimlere bakın.
-
-REST API kullanarak bir modeli yayımlamak için bkz. [model yayımlama](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdateasync/createorupdateasync) REST API belgeleri. `update-metadata=true`REST API kullanarak bir modeli yayımlamak için sorgu dizesi parametresini sağlayın. HTTP isteğindeki bir JWT yetkilendirme üst bilgisine geçme hakkında daha fazla bilgi için, bkz. [Şirket modellerine erişirken bir güvenlik belirteci geçirme REST API](#passing-a-security-token-when-accessing-company-models-with-a-rest-api) .
-
-CLı kullanarak bir model yayımlamak için bkz. Azure CLı [bir model yayımlama](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-publish&preserve-view=true) komutu.
-
-> [!NOTE]
-> Sertifika testlerini çalıştırmadan önce modeller model deposunda yayımlanmalıdır. Daha fazla bilgi edinmek için bkz. [ıot Tak ve kullan cihazlarını onaylama](howto-certify-device.md).
-
-### <a name="share-a-model"></a>Modeli paylaşma
-
-Dış kuruluşların kullanıcılarıyla oluşturduğunuz şirket modellerini paylaşabilirsiniz. Bu şekilde, ortak çalışanların özel şirket modellerinizle çözümleri görüntülemesine ve geliştirmesine izin verebilirsiniz.
-
-Örneğin, bir cihaz üreticisi şirket veya kuruluş için özel modelleri sürdürmek isteyebilir. Bunların cihaz yeteneklerinin gizli kalmasını gerektiren müşterileri olabilir.
-
-Şirketlerin veya kuruluşların genelinde model paylaşımı, ortak olmayan modellere güvenli erişim sağlar.
-
-Portalı kullanarak bir şirket modelini paylaşmak için:
-
-- Bir modeli oluştursanız, modeli **Şirket modelleri** bölümünde görüntülediğinizde **Paylaşım** ve **paylaşılan** düğmeleri de etkindir.
-
-    ![Model paylaşma](./media/concepts-model-repository/share-model.png)
-
-- Modeli bir dış kullanıcıyla paylaşmak için, **paylaşma**' yı seçin. **Model paylaşma** bölmesinde, dış kullanıcının e-posta adresini girin ve **Kaydet**' i seçin.
-
-- Modeli paylaştığınız kullanıcıları görmek için, **Ile paylaşılan**' ı seçin.
-
-- Modeli belirli bir kullanıcıyla paylaşmayı durdurmak için, **paylaşılan** bölmesinde bulunan kullanıcılar listesinden kullanıcıyı seçin. Ardından **Kaldır** ' ı seçin ve sorulduğunda seçiminizi onaylayın.
-
-    ![Paylaşmayı durdur](./media/concepts-model-repository/stop-sharing.png)
-
-## <a name="additional-information"></a>Ek bilgiler
-
-Azure AD ile çalışırken aşağıdaki konuları yararlı bulabilirsiniz:
-
-- Yeni bir Azure AD kiracısı oluşturmak için bkz. [Azure AD 'de yeni kiracı oluşturma](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant). Çoğu kuruluş zaten Azure AD kiracılarına sahip olur.
-
-- Bir Azure AD kiracısına Kullanıcı veya Konuk kullanıcıları eklemek için bkz. [Azure ad kullanarak Kullanıcı ekleme veya silme](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory).
-
-- Bir Azure AD kiracısına hizmet sorumlusu eklemek için, [kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)konusuna bakın.
-
-- Azure AD 'den REST API 'Leri çağırırken kullanılacak JWT belirtecini alma hakkında bilgi edinmek için bkz. [bir istemci uygulamasından istekleri yetkilendirmek Için Azure AD 'den belirteç alma](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app).
+Modellerinizi yerel olarak doğrulamak için [Dtdl doğrulama örneğini](https://github.com/Azure-Samples/DTDL-Validator) çalıştırabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

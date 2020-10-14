@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: dfd7b3dcc7e27dd1251c35c6272b5aa7f8036006
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc3060c9253b23b97089ea35625aceb26737baba
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88942471"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017004"
 ---
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>Öğretici: Azure 'da Azure Media Services olaylarını depolama Log Analytics
 
@@ -38,16 +38,16 @@ Azure Media Services v3, olayları [Azure Event Grid](media-services-event-schem
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 > * [Azure aboneliği](how-to-set-azure-subscription.md)
 > * [Media Services](create-account-howto.md) hesabı ve kaynak grubu.
 > * IŞLETIM sisteminiz için [FFmpeg](https://ffmpeg.org/download.html) yüklemesi.
-> * [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) çalışma alanı
+> * [Log Analytics](../../azure-monitor/learn/quick-create-workspace.md) çalışma alanı
 
 ## <a name="subscribe-to-a-media-services-event-with-logic-app"></a>Logic App ile Media Services olayına abone olma
 
-1. Azure portal, daha önce yapmadıysanız, bir [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) çalışma alanı oluşturun. Çalışma alanı KIMLIĞI ve anahtarlardan biri gerekir, bu nedenle bu tarayıcı penceresini açık tutun. Ardından, portalı başka bir sekmede veya pencerede açın.
+1. Azure portal, daha önce yapmadıysanız, bir [Log Analytics](../../azure-monitor/learn/quick-create-workspace.md) çalışma alanı oluşturun. Çalışma alanı KIMLIĞI ve anahtarlardan biri gerekir, bu nedenle bu tarayıcı penceresini açık tutun. Ardından, portalı başka bir sekmede veya pencerede açın.
 
 1. Azure Media Services hesabınıza gidin ve **Olaylar**' ı seçin. Bu, Azure Media Services olaylarına abone olmak için tüm yöntemleri gösterir.
     > [!div class="mx-imgBorder"]
@@ -134,17 +134,17 @@ Etkinliğe abone olduğunuza göre artık bir eylem oluşturun.
     > [!div class="mx-imgBorder"]
     > ![Değişiklikten sonra mantıksal uygulama JSON 'ı](media/tutorial-events-log-analytics/changed-lines.png)
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 1. Doğrulamak için **mantıksal uygulama Tasarımcısı**' nı seçin.
     > [!div class="mx-imgBorder"]
     > ![Gövde ve Işlev adımlarını doğrulama](media/tutorial-events-log-analytics/verify-changes-to-json.png)
 
-1. Kaynak grubundaki tüm kaynakları incelediğinizde, biri olaylar ve diğeri Log Analytics olarak listelenen bir mantıksal uygulama ve iki mantıksal uygulama API Bağlayıcısı vardır. Event Grid sistem konuları hakkında daha fazla bilgi için [Event Grid sistem konuları](https://docs.microsoft.com/azure/event-grid/system-topics)makalesini okuyun.
+1. Kaynak grubundaki tüm kaynakları incelediğinizde, biri olaylar ve diğeri Log Analytics olarak listelenen bir mantıksal uygulama ve iki mantıksal uygulama API Bağlayıcısı vardır. Event Grid sistem konuları hakkında daha fazla bilgi için [Event Grid sistem konuları](../../event-grid/system-topics.md)makalesini okuyun.
     > [!div class="mx-imgBorder"]
     > ![Kaynak grubundaki tüm yeni kaynakları görüntüle](media/tutorial-events-log-analytics/contoso-rg-listing.png)
 
-## <a name="test"></a>Test
+## <a name="test"></a>Test etme
 
 Gerçekten nasıl çalıştığını test etmek için Azure Media Services ' de canlı bir olay oluşturun. Bir RTMP canlı olayı oluşturun ve bir. mp4 örnek dosyasına dayalı bir "canlı" akış göndermek için FFmpeg kullanın. Olay oluşturulduktan sonra, RTMP alma URL 'sini alın.
 
@@ -174,7 +174,7 @@ Gerçekten nasıl çalıştığını test etmek için Azure Media Services ' de 
 
 1. **İçerik/dosya... onay kutusunu kullanma haklarım ' ı** seçin.
 
-1. **Gözden geçir ve oluştur**’u seçin.
+1. **Gözden geçir + oluştur**’u seçin.
 
 1. Ayarlarınızı gözden geçirin ve **Oluştur**' u seçin.  Canlı olay listesi görüntülenir ve canlı olay alma URL 'SI gösterilir.
 
@@ -231,4 +231,4 @@ Bu öğreticide oluşturduğunuz kaynakları kullanmaya devam etmek istemiyorsan
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Farklı sorgular oluşturabilir ve bunları kaydedebilirsiniz. Bunlar [Azure panosuna](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-logs-dashboards)eklenebilir.
+Farklı sorgular oluşturabilir ve bunları kaydedebilirsiniz. Bunlar [Azure panosuna](../../azure-monitor/learn/tutorial-logs-dashboards.md)eklenebilir.

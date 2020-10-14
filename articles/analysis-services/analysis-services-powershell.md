@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3e64ffe5007d27a44167f08807a9694875fe48c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28f414c5eaaea7b987f2c3694cb8fc73b70838e9
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87050441"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018789"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>Azure Analysis Services’ı PowerShell ile yönetme
 
@@ -46,21 +46,21 @@ Belgeler- [SqlServer başvurusu](/powershell/module/sqlserver)
 
 |Cmdlet|Açıklama|
 |------------|-----------------| 
-|[Add-Rolemebir](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Bir veritabanı rolüne üye ekleyin.| 
-|[Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase)|Analysis Services bir veritabanını yedekleyin.|  
-|[Remove-Rolemeoda](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Bir üyeyi veritabanı rolünden kaldırın.|   
-|[Invoke-ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|Bir TMSL betiği yürütün.|
-|[Invoke-ProcessASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processasdatabase)|Bir veritabanını işleyin.|  
-|[Invoke-ProcessPartition](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processpartition)|Bir bölümü işleyin.| 
-|[Invoke-ProcessTable](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processtable)|Bir tabloyu işleyin.|  
-|[Birleştirme-bölüm](https://docs.microsoft.com/powershell/module/sqlserver/merge-partition)|Bölüm birleştirme.|  
-|[Restore-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase)|Bir Analysis Services veritabanını geri yükleyin.| 
+|[Add-Rolemebir](/powershell/module/sqlserver/Add-RoleMember)|Bir veritabanı rolüne üye ekleyin.| 
+|[Backup-ASDatabase](/powershell/module/sqlserver/backup-asdatabase)|Analysis Services bir veritabanını yedekleyin.|  
+|[Remove-Rolemeoda](/powershell/module/sqlserver/remove-rolemember)|Bir üyeyi veritabanı rolünden kaldırın.|   
+|[Invoke-ASCmd](/powershell/module/sqlserver/invoke-ascmd)|Bir TMSL betiği yürütün.|
+|[Invoke-ProcessASDatabase](/powershell/module/sqlserver/invoke-processasdatabase)|Bir veritabanını işleyin.|  
+|[Invoke-ProcessPartition](/powershell/module/sqlserver/invoke-processpartition)|Bir bölümü işleyin.| 
+|[Invoke-ProcessTable](/powershell/module/sqlserver/invoke-processtable)|Bir tabloyu işleyin.|  
+|[Birleştirme-bölüm](/powershell/module/sqlserver/merge-partition)|Bölüm birleştirme.|  
+|[Restore-ASDatabase](/powershell/module/sqlserver/restore-asdatabase)|Bir Analysis Services veritabanını geri yükleyin.| 
   
 
 ## <a name="related-information"></a>İlgili bilgiler
 
-* [SQL Server PowerShell](https://docs.microsoft.com/sql/powershell/sql-server-powershell)      
-* [PowerShell modülünü indir SQL Server](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
-* [SSMS 'yi indir](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
+* [SQL Server PowerShell](/sql/powershell/sql-server-powershell)      
+* [PowerShell modülünü indir SQL Server](/sql/ssms/download-sql-server-ps-module)   
+* [SSMS 'yi indir](/sql/ssms/download-sql-server-management-studio-ssms)   
 * [PowerShell Galerisi içinde SqlServer modülü](https://www.powershellgallery.com/packages/SqlServer)    
-* [Uyumluluk düzeyi 1200 ve üzeri için tablolu model programlama](https://docs.microsoft.com/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200)
+* [Uyumluluk düzeyi 1200 ve üzeri için tablolu model programlama](/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200)

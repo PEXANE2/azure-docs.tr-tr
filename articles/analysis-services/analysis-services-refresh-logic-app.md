@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.custom: references_regions
-ms.openlocfilehash: c4908373035b1a3148cd77db513f4e6bd23a50d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a8d434fca7cab4432f38fc64093cf1fe060bd5f
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540736"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019095"
 ---
 # <a name="refresh-with-logic-apps"></a>Logic Apps ile yenileme
 
@@ -67,14 +67,14 @@ HTTP etkinliğini şu şekilde yapılandırın:
 |---------|---------|
 |**Yöntem**     |POST         |
 |**URI**     | https://*sunucu bölgenizi*/Servers/*AAS sunucu adı*/models/*veritabanınızın adı*/yenilemeler <br /> <br /> Örneğin: https: \/ /westus.asazure.Windows.net/Servers/MyServer/models/AdventureWorks/refreshes|
-|**Üst bilgiler**     |   İçerik türü, uygulama/JSON <br /> <br />  ![Üst bilgiler](./media/analysis-services-async-refresh-logic-app/6.png)    |
+|**Üst Bilgiler**     |   İçerik türü, uygulama/JSON <br /> <br />  ![Üst Bilgiler](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**Gövde**     |   İstek gövdesini oluşturan hakkında daha fazla bilgi edinmek için, [REST API-Post/Refresh Ile zaman uyumsuz yenileme](analysis-services-async-refresh.md#post-refreshes)bölümüne bakın. |
 |**Kimlik Doğrulaması**     |Active Directory OAuth         |
 |**Kiracı**     |Azure Active Directory Tenantıd 'nizi girin         |
 |**Hedef kitle**     |https://*. aşama zure. Windows. net         |
 |**İstemci KIMLIĞI**     |Hizmet asıl adı ClientID değerini girin         |
 |**Kimlik bilgisi türü**     |Gizli dizi         |
-|**Gizli dizi**     |Hizmet sorumlusu adı gizli anahtarını girin         |
+|**Gizlilikle**     |Hizmet sorumlusu adı gizli anahtarını girin         |
 
 Örnek:
 
@@ -117,4 +117,4 @@ Mantıksal uygulamayı kaydedin.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Örnekler](analysis-services-samples.md)  
-[REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)
+[REST API](/rest/api/analysisservices/servers)

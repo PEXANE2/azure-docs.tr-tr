@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 09/28/2020
-ms.openlocfilehash: 4ef569864b27eff7f57aa2b0a922034fa28f587c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/13/2020
+ms.openlocfilehash: e4708e49ebd45210e381a1b58752bbfa287a9eeb
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91405250"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019877"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime için kurulumu özelleştirme
 
@@ -127,7 +127,7 @@ ADF Kullanıcı arabirimindeki Express özel kurulumları ile Azure-SSIS IR sağ
 
 #### <a name="running-cmdkey-command"></a>Cmdkey komutu çalıştırılıyor
 
-Hızlı özel kurulumunuz için **cmdkey komut türünü Çalıştır** ' ı seçerseniz, Azure-SSIS IR Windows cmdkey komutunu çalıştırabilirsiniz. Bunu yapmak için sırasıyla **/Add**, **/User**ve **/Pass** metin kutularına hedeflenen bilgisayar adı veya etki alanı adı, Kullanıcı adı, hesap adı ve parola ya da hesap anahtarınızı girin. Bu, Azure-SSIS IR SQL sunucuları, dosya paylaşımları veya Azure dosyaları için erişim kimlik bilgilerini kalıcı hale getirebilmeniz için izin verir. Örneğin, Azure dosyalarına erişmek için `YourAzureStorageAccountName.file.core.windows.net` `azure\YourAzureStorageAccountName` `YourAzureStorageAccountKey` sırasıyla **/Add**, **/User**ve **/Pass**gibi bir giriş yapabilirsiniz. Bu, yerel makinenizde Windows [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) komutunu çalıştırmaya benzer.
+Hızlı özel kurulumunuz için **cmdkey komut türünü Çalıştır** ' ı seçerseniz, Azure-SSIS IR Windows cmdkey komutunu çalıştırabilirsiniz. Bunu yapmak için sırasıyla **/Add**, **/User**ve **/Pass** metin kutularına hedeflenen bilgisayar adı veya etki alanı adı, Kullanıcı adı, hesap adı ve parola ya da hesap anahtarınızı girin. Bu, Azure-SSIS IR SQL sunucuları, dosya paylaşımları veya Azure dosyaları için erişim kimlik bilgilerini kalıcı hale getirebilmeniz için izin verir. Örneğin, Azure dosyalarına erişmek için `YourAzureStorageAccountName.file.core.windows.net` `azure\YourAzureStorageAccountName` `YourAzureStorageAccountKey` sırasıyla **/Add**, **/User**ve **/Pass**gibi bir giriş yapabilirsiniz. Bu, yerel makinenizde Windows [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) komutunu çalıştırmaya benzer. Şimdilik cmdkey komutunu çalıştırmak için yalnızca bir hızlı özel kurulum desteklenir. Birden çok cmdkey komutunu çalıştırmak için bunun yerine standart bir özel kurulum kullanın.
 
 #### <a name="adding-environment-variables"></a>Ortam değişkenleri ekleme
 
@@ -143,7 +143,7 @@ Hızlı özel kurulumlarınız için **lisanslı bileşen türünü yükleme** '
 
    * **Sentryone 'ın 'ın görev fabrikası** bileşenini seçerseniz, Azure-SSIS IR [görev fabrikası](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) paketini sentryone 'ın adresinden yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **2020.1.3**.
 
-   * **Oh22's HEDDA ' yi seçerseniz. IO** bileşeni, Hedda 'yi yükleyebilirsiniz [. ](https://hedda.io/ssis-component/)Azure-SSIS IR, GÇ veri kalitesi/oh22 'den bileşeni Temizleme. Bunu yapmak için, hizmetini önceden satın almanız gerekir. Geçerli tümleşik sürüm **1.0.14**.
+   * **Oh22's HEDDA ' yi seçerseniz. IO** bileşeni, Hedda 'yi yükleyebilirsiniz [. ](https://github.com/oh22is/HEDDA.IO/tree/master/SSIS-IR)Azure-SSIS IR, GÇ veri kalitesi/oh22 'den bileşeni Temizleme. Bunu yapmak için, hizmetini önceden satın almanız gerekir. Geçerli tümleşik sürüm **1.0.14**.
 
    * **Oh22's SQLPhonetics.net** bileşenini seçerseniz, Azure-SSIS IR [SQLPhonetics.net](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) veri kalitesini/eşleşen bileşenini oh22 adresinden yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **1.0.45**.
 
@@ -175,7 +175,7 @@ Azure PowerShell kullanarak özel kurulumlarla Azure-SSIS IR sağlamak veya yeni
    $AzureSSISName = "[your Azure-SSIS IR name]"
    # Custom setup info: Standard/express custom setups
    $SetupScriptContainerSasUri = "" # OPTIONAL to provide a SAS URI of blob container for standard custom setup where your script and its associated files are stored
-   $ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|InstallAzurePowerShell|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO|KingswaySoft.IntegrationToolkit|KingswaySoft.ProductivityPack|Theobald.XtractIS|AecorSoft.IntegrationService or leave it empty]" # OPTIONAL to configure an express custom setup without script
+   $ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|InstallAzurePowerShell|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO|KingswaySoft.IntegrationToolkit|KingswaySoft.ProductivityPack|Theobald.XtractIS|AecorSoft.IntegrationService|CData.Standard|CData.Extended or leave it empty]" # OPTIONAL to configure an express custom setup without script
 
    # Add custom setup parameters if you use standard/express custom setups
    if(![string]::IsNullOrEmpty($SetupScriptContainerSasUri))
@@ -242,6 +242,16 @@ Azure PowerShell kullanarak özel kurulumlarla Azure-SSIS IR sağlamak veya yeni
            $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
            $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
        }
+       if($ExpressCustomSetup -eq "CData.Standard")
+       {
+           $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
+           $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+       }
+       if($ExpressCustomSetup -eq "CData.Extended")
+       {
+           $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
+           $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+       }    
        # Create an array of one or more express custom setups
        $setups = New-Object System.Collections.ArrayList
        $setups.Add($setup)
@@ -288,6 +298,8 @@ Standart özel kurulumların bazı örneklerini görüntülemek ve yeniden kulla
       * Azure-SSIS IR her bir düğümüne .NET Framework önceki bir sürümünü yüklemek için özel bir kurulum betiği (*Main. cmd*) içeren BIR *.NET Framework 3,5* klasörü. Bu sürüm bazı özel bileşenler için gerekli olabilir.
 
       * Azure-SSIS IR her bir düğümüne SQL Server komut satırı yardımcı programları (*MsSqlCmdLnUtils.msi*) yüklemek için özel bir kurulum betiği (*Main. cmd*) içeren bir *bcp* klasörü. Bu yardımcı programlardan biri toplu kopyalama programıdır (*bcp*).
+
+      * Kendi DNS sonekini (örneğin, *test.com*), nitelenmemiş tek etiketli bir etki alanı adına eklemek için özel bir kurulum betiği (*Main. cmd*) IÇEREN bir *dns son eki* klasörü ve Azure-SSIS IR DNS sorguları üzerinde kullanmadan önce tam etki alanı adına (FQDN) dönüştürün.
 
       * Azure-SSIS IR her bir düğümüne bazı C# derlemelerini ve kitaplıklarını yüklemek için özel bir kurulum betiği (*Main. cmd*) Içeren bir *Excel* klasörü. Bunları, Excel dosyalarını dinamik olarak okumak ve yazmak için betik görevlerinde kullanabilirsiniz. 
       

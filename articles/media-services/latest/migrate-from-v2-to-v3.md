@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: b4e79a2aab5ca72ff8263bfc5734757bbff41005
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48ce6edc3d071d84c3921f85c2e9798b804d0279
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297748"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017770"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Media Services V2 'den v3 'e geçmek için geçiş kılavuzu
 
@@ -44,8 +44,8 @@ Bugün [eski Media Services V2 API 'lerinde](../previous/media-services-overview
 *  v3, Azure Resource Manager'da yerleşik olan yönetim ve işlem işlevselliğini kullanıma sunan, birleşik bir API yüzeyini temel alır. Azure Resource Manager şablonlar, dönüşümler, akış uç noktaları, canlı olaylar ve daha fazlasını oluşturmak ve dağıtmak için kullanılabilir.
 * [Openapı belirtimi (eski adı Swagger)](https://aka.ms/ams-v3-rest-sdk) belgesi.
     Dosya tabanlı kodlama da dahil olmak üzere tüm hizmet bileşenleri için şemayı gösterir.
-* [.Net](https://aka.ms/ams-v3-dotnet-ref), .NET Core, [Node.js](/javascript/api/overview/azure/mediaservices/management), [Python](https://aka.ms/ams-v3-python-ref), [Java](https://aka.ms/ams-v3-java-ref), [Go](https://aka.ms/ams-v3-go-ref)ve Ruby için kullanılabilir SDK 'lar.
-* Basit betik desteği için [Azure CLI](https://aka.ms/ams-v3-cli-ref) tümleştirmesi.
+* [.Net](/dotnet/api/overview/azure/mediaservices/management), .NET Core, [Node.js](/javascript/api/overview/azure/mediaservices/management), [Python](/python/api/overview/azure/mediaservices/management), [Java](/java/api/overview/azure/mediaservices/management), [Go](https://aka.ms/ams-v3-go-ref)ve Ruby için kullanılabilir SDK 'lar.
+* Basit betik desteği için [Azure CLI](/cli/azure/ams) tümleştirmesi.
 
 ### <a name="new-features"></a>Yeni özellikler
 
@@ -69,7 +69,7 @@ Bugün [eski Media Services V2 API 'lerinde](../previous/media-services-overview
     * v3 [varlıklarını](assets-concept.md)görüntüleme (yönetme), 
     * [API 'lere erişme hakkında bilgi alın](./access-api-howto.md). 
 
-    Diğer tüm yönetim görevleri (örneğin, [dönüşümler ve işler](transforms-jobs-concept.md) ve [içerik koruması](content-protection-overview.md)) için [REST API](/rest/api/media/), [CLI](https://aka.ms/ams-v3-cli-ref)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
+    Diğer tüm yönetim görevleri (örneğin, [dönüşümler ve işler](transforms-jobs-concept.md) ve [içerik koruması](content-protection-overview.md)) için [REST API](/rest/api/media/), [CLI](/cli/azure/ams)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
 * Işlerinizin eşzamanlılık ve performansını denetlemek için, özellikle video veya ses analizine sahip olanlar için hesabınıza medya ayrılmış birimleri (MRU) sağlamanız gerekir. Daha fazla bilgi için bkz. [Medya İşlemeyi Ölçeklendirme](../previous/media-services-scale-media-processing-overview.md). [Media Services v3 Için clı 2,0](media-reserved-units-cli-how-to.md)kullanarak, [Azure Portal](../previous/media-services-portal-scale-media-processing.md)veya [v2 API 'lerini](../previous/media-services-dotnet-encoding-units.md)kullanarak MRUs 'yi yönetebilirsiniz. Media Services v2 veya v3 API 'Leri kullanıp kullanmayacağınızı MRU sağlamanız gerekir.
 * V3 API ile oluşturulan Media Services varlıkları v2 API 'SI tarafından yönetilemez.  
 * V2 API 'sindeki varlıkların hepsi, v3 API 'sinde otomatik olarak gösterilmez.  Aşağıda, uyumlu olmayan iki sürümde varlıkların örnekleri verilmiştir:  

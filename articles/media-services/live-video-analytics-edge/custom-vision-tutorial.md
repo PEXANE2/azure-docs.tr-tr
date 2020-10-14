@@ -3,12 +3,12 @@ title: IoT Edge ve Azure Özel Görüntü İşleme canlı video analiziyle canl�
 description: Özel Görüntü İşleme kullanarak, bir oyunsuna ve canlı video analizine ait canlı IoT Edge video analizine ait AI genişletilebilirliği özelliğini kullanarak, canlı video akışından oyungeleks 'i tespit etmek için modeli bir kenara dağıtabilirsiniz.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 7989b3636fe953b8110e356506a5867fefd2d8b6
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: e77521765156a13f0675602ffd0b39f78d8957bb
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940183"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016816"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Öğretici: IoT Edge ve Azure Özel Görüntü İşleme canlı video analizi ile canlı videoyu çözümleyin
 
@@ -32,12 +32,12 @@ Bu öğreticide, bir oyunsuna algılayıp, canlı video analizinden gelen oyunpa
 Başlamadan önce aşağıdaki makaleleri okumanız önerilir: 
 
 * [IoT Edge genel bakış üzerinde canlı video analizi](overview.md)
-* [Azure Özel Görüntü İşleme genel bakış](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/home)
+* [Azure Özel Görüntü İşleme genel bakış](../../cognitive-services/custom-vision-service/overview.md)
 * [IoT Edge terminolojisinde canlı video analizi](terminology.md)
 * [Medya grafiği kavramları](media-graph-concept.md)
 * [Video kaydı olmadan Canlı Video Analizi](analyze-live-video-concept.md)
 * [Kendi modelinizle canlı video analizi çalıştırma](use-your-model-quickstart.md)
-* [Öğretici: IoT Edge modülünü geliştirme](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux)
+* [Öğretici: IoT Edge modülünü geliştirme](../../iot-edge/tutorial-develop-for-linux.md)
 * [Dağıtımı düzenleme. * .template.js](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
 
 ## <a name="prerequisites"></a>Ön koşullar
@@ -64,17 +64,17 @@ Bu öğreticide, canlı bir akışın benzetimini yapmak için bir [oyuncar bir 
 > :::image type="content" source="./media/custom-vision-tutorial/topology-custom-vision.svg" alt-text="Özel Görüntü İşleme genel bakış":::
 
 Bu diyagramda, sinyallerin Bu öğreticide nasıl akagösterdiği gösterilmektedir. [Edge modülü](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) , Real-Time Akış Protokolü (RTSP) sunucusunu BARıNDıRAN bir IP kamerasına benzetir. Bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü, bu sunucudan video akışını çeker ve [çerçeve hızı filtre işlemcisi](media-graph-concept.md#frame-rate-filter-processor) düğümüne video çerçeveleri gönderir. Bu işlemci, [http uzantısı işlemci](media-graph-concept.md#http-extension-processor) düğümüne ulaşan video akışının kare oranını sınırlandırır.
-HTTP uzantısı düğümü bir ara sunucu rolünü yürütür. Video çerçevelerini belirtilen görüntü türüne dönüştürür. Ardından, görüntüyü REST üzerinden bir HTTP uç noktasının arkasında bulunan bir AI modeli çalıştıran başka bir Edge modülüne geçirir. Bu örnekte, bu Edge modülü Özel Görüntü İşleme kullanılarak oluşturulan oyunker algılayıcı modelidir. HTTP uzantısı işlemci düğümü, algılama sonuçlarını toplar ve olayları [IoT Hub havuz](media-graph-concept.md#iot-hub-message-sink) düğümüne yayımlar. Düğüm daha sonra bu olayları [IoT Edge hub 'ına](https://docs.microsoft.com/azure/iot-edge/iot-edge-glossary#iot-edge-hub)gönderir.
+HTTP uzantısı düğümü bir ara sunucu rolünü yürütür. Video çerçevelerini belirtilen görüntü türüne dönüştürür. Ardından, görüntüyü REST üzerinden bir HTTP uç noktasının arkasında bulunan bir AI modeli çalıştıran başka bir Edge modülüne geçirir. Bu örnekte, bu Edge modülü Özel Görüntü İşleme kullanılarak oluşturulan oyunker algılayıcı modelidir. HTTP uzantısı işlemci düğümü, algılama sonuçlarını toplar ve olayları [IoT Hub havuz](media-graph-concept.md#iot-hub-message-sink) düğümüne yayımlar. Düğüm daha sonra bu olayları [IoT Edge hub 'ına](../../iot-edge/iot-edge-glossary.md#iot-edge-hub)gönderir.
 
 ## <a name="build-and-deploy-a-custom-vision-toy-detection-model"></a>Özel Görüntü İşleme oyunnı algılama modeli oluşturun ve dağıtın 
 
 Ad Özel Görüntü İşleme önerdiğinde, bulutta kendi özel nesne algılayıcısının veya sınıflandırıcınızı oluşturmak için onu kullanabilirsiniz. Bulutta veya bir kenara kapsayıcılar aracılığıyla dağıtılabilecek özel Vision modelleri oluşturmak için basit, kullanımı kolay ve sezgisel bir arabirim sağlar. 
 
-Bir oyunker algılayıcısı oluşturmak için, bu özel vizyonun Web portalı [hızlı başlangıç makalesi](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector) aracılığıyla bir nesne algılayıcısının derlemesini izlemenizi öneririz.
+Bir oyunker algılayıcısı oluşturmak için, bu özel vizyonun Web portalı [hızlı başlangıç makalesi](../../cognitive-services/custom-vision-service/get-started-build-detector.md) aracılığıyla bir nesne algılayıcısının derlemesini izlemenizi öneririz.
 
 Ek notlar:
  
-* Bu öğretici için, hızlı başlangıç makalesinin [Önkoşul bölümünde](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector#prerequisites)sunulan örnek görüntüleri kullanmayın. Bunun yerine, bir oyunalgılayıcısı özel bakış modeli oluşturmak için belirli bir görüntü kümesi yararlanılabilir, hızlı başlangıçta [eğitim görüntülerinizi seçmeniz](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector#choose-training-images) istendiğinde [Bu görüntüleri](https://lvamedia.blob.core.windows.net/public/ToyCarTrainingImages.zip) kullanmanızı öneririz.
+* Bu öğretici için, hızlı başlangıç makalesinin [Önkoşul bölümünde](../../cognitive-services/custom-vision-service/get-started-build-detector.md#prerequisites)sunulan örnek görüntüleri kullanmayın. Bunun yerine, bir oyunalgılayıcısı özel bakış modeli oluşturmak için belirli bir görüntü kümesi yararlanılabilir, hızlı başlangıçta [eğitim görüntülerinizi seçmeniz](../../cognitive-services/custom-vision-service/get-started-build-detector.md#choose-training-images) istendiğinde [Bu görüntüleri](https://lvamedia.blob.core.windows.net/public/ToyCarTrainingImages.zip) kullanmanızı öneririz.
 * Hızlı başlangıç aracının etiketleme resmi bölümünde, resimde görülen oyunu kamyonu "teslim kamyonu" etiketiyle etiketleyerek lütfen emin olun.
 
 İşiniz bittiğinde, model memnuniyet uyarınca hazırsanız, performans sekmesindeki dışarı aktar düğmesini kullanarak bir Docker kapsayıcısına dışarı aktarabilirsiniz. Lütfen kapsayıcı platformu türü olarak Linux 'u seçtiğinizden emin olun. Bu, kapsayıcının çalışacağı platformdur. Kapsayıcıyı yüklediğiniz makine Windows veya Linux olabilir. Aşağıdaki yönergeler, bir Windows makinesine indirilen kapsayıcı dosyasını temel alır.
@@ -171,7 +171,7 @@ Sonraki çağrı dizisi kaynakları temizler:
     
 ## <a name="interpret-the-results"></a>Sonuçları yorumlama
 
-Medya grafiğini çalıştırdığınızda, HTTP uzantısı işlemci düğümünün sonuçları IoT Hub 'ına IoT Hub havuz düğümünden geçer. ÇıKTı penceresinde gördüğünüz iletiler bir Body bölümü ve bir applicationProperties bölümü içerir. Daha fazla bilgi için bkz. [IoT Hub Iletileri oluşturma ve okuma](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
+Medya grafiğini çalıştırdığınızda, HTTP uzantısı işlemci düğümünün sonuçları IoT Hub 'ına IoT Hub havuz düğümünden geçer. ÇıKTı penceresinde gördüğünüz iletiler bir Body bölümü ve bir applicationProperties bölümü içerir. Daha fazla bilgi için bkz. [IoT Hub Iletileri oluşturma ve okuma](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
 Aşağıdaki iletilerde, canlı video analizi modülü, uygulama özelliklerini ve gövdenin içeriğini tanımlar.
 
@@ -307,7 +307,6 @@ Diğer öğreticileri veya hızlı başlangıçlarını denemek istiyorsanız ol
 Gelişmiş kullanıcılar için ek güçlükleri gözden geçirin:
 
 * RTSP simülatörü kullanmak yerine RTSP desteği olan bir [IP kamerası](https://en.wikipedia.org/wiki/IP_camera) kullanın. [ONVIF uyumlu](https://www.onvif.org/conformant-products/) ürünler sayfasında RTSP 'YI destekleyen IP kameralarını arayabilirsiniz. Profiller G, S veya T ile uyumlu olan cihazları arayın.
-* Azure Linux VM yerine AMD64 veya x64 Linux cihazı kullanın. Bu cihaz, IP kamerası ile aynı ağda olmalıdır. [Linux üzerinde Azure IoT Edge çalışma zamanını Install](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)bölümündeki yönergeleri izleyebilirsiniz. 
+* Azure Linux VM yerine AMD64 veya x64 Linux cihazı kullanın. Bu cihaz, IP kamerası ile aynı ağda olmalıdır. [Linux üzerinde Azure IoT Edge çalışma zamanını Install](../../iot-edge/how-to-install-iot-edge-linux.md)bölümündeki yönergeleri izleyebilirsiniz. 
 
-Ardından, [ilk IoT Edge modülünüzü bir sanal Linux cihazına dağıtma](https://docs.microsoft.com/azure/iot-edge/quickstart-linux)konusundaki yönergeleri Izleyerek cihazı Azure IoT Hub kaydettirin.
-
+Ardından, [ilk IoT Edge modülünüzü bir sanal Linux cihazına dağıtma](../../iot-edge/quickstart-linux.md)konusundaki yönergeleri Izleyerek cihazı Azure IoT Hub kaydettirin.

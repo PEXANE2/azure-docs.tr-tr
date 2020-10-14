@@ -2,29 +2,29 @@
 title: Azure CLı kullanarak bir savunma Konağı oluşturma | Azure savunma
 description: Bu makalede, bir savunma konağını oluşturma ve silme hakkında bilgi edinin
 services: bastion
-author: mialdrid
+author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 03/26/2020
-ms.author: mialdrid
-ms.openlocfilehash: 8ee90d80230f9115946525ede325e874e98e358e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/13/2020
+ms.author: cherylmc
+ms.openlocfilehash: 851ec86feb5244ff43759a7aef2b80876dcfa734
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90024341"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018551"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-cli"></a>Azure CLı kullanarak Azure savunma Konağı oluşturma
 
-Bu makalede, Azure CLı kullanarak Azure savunma ana bilgisayarı oluşturma işlemi gösterilmektedir. Sanal ağınızda Azure savunma hizmetini sağladığınızda, sorunsuz RDP/SSH deneyimi aynı sanal ağdaki tüm VM 'Ler tarafından kullanılabilir. Azure savunma dağıtımı, abonelik/hesap veya sanal makine başına değil, sanal ağ başına değildir.
+Bu makalede, Azure CLı kullanarak Azure savunma ana bilgisayarı oluşturma işlemi gösterilmektedir. Savunma 'yı dağıttıktan sonra, Azure portal kullanarak bir VM 'ye kendi özel IP adresi aracılığıyla tarayıcınızı kullanarak bağlanabilirsiniz. VM 'nizin genel bir IP adresi, ek bir istemci veya özel bir yazılım olması gerekmez. Azure savunma dağıtımı, abonelik/hesap veya sanal makine başına değil, sanal ağ başına değildir. Sorunsuz RDP/SSH deneyimi, aynı sanal ağdaki tüm VM 'Ler tarafından kullanılabilir.
 
-İsteğe bağlı olarak, [Azure Portal](bastion-create-host-portal.md)kullanarak veya [Azure PowerShell](bastion-create-host-powershell.md)kullanarak bir Azure savunma ana bilgisayarı oluşturabilirsiniz.
+İsteğe bağlı olarak, [Azure Portal](tutorial-create-host-portal.md)kullanarak veya [Azure PowerShell](bastion-create-host-powershell.md)kullanarak bir Azure savunma ana bilgisayarı oluşturabilirsiniz.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 Azure aboneliğiniz olduğunu doğrulayın. Henüz Azure aboneliğiniz yoksa [MSDN abonelik avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial) için kaydolabilirsiniz.
 
-[!INCLUDE [cloudshell cli](../../includes/vpn-gateway-cloud-shell-cli.md)]
+[!INCLUDE [Cloud Shell CLI](../../includes/vpn-gateway-cloud-shell-cli.md)]
 
 ## <a name="create-a-bastion-host"></a><a name="createhost"></a>Savunma Konağı oluşturma
 
@@ -53,6 +53,7 @@ Bu bölüm, Azure CLı kullanarak yeni bir Azure savunma kaynağı oluşturmanı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Ek bilgi için savunma [hakkında SSS](bastion-faq.md) makalesini okuyun.
+* Bir sanal makineye bağlanın.
+   * [Linux VM](bastion-connect-vm-ssh.md)
+   * [Windows VM](bastion-connect-vm-rdp.md)
 
-* Azure savunma alt ağıyla ağ güvenlik gruplarını kullanmak için bkz. [NSG Ile çalışma](bastion-nsg.md).

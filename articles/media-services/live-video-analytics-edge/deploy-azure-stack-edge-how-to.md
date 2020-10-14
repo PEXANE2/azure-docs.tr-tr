@@ -3,12 +3,12 @@ title: Azure Stack Edge üzerinde canlı video analizi dağıtma
 description: Bu makalede, Azure Stack Kenarunuzda canlı video analizlerini dağıtmanıza yardımcı olacak adımlar listelenmektedir.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: b13bb779a5a780b21f2d5d96ed8831ef5c26564d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f33b6fb0f0dc5c5b733a0fcb021e2792ce9c6ec6
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941139"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019605"
 ---
 # <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>Azure Stack Edge üzerinde canlı video analizi dağıtma
 
@@ -21,27 +21,27 @@ Canlı video analizi için IoT Hub aracılığıyla dağıtılacak, ancak Azure 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [Sahip olduğunuz ayrıcalıklara](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)sahip olduğunuz Azure aboneliği.
-* [Azure Stack Edge](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-deploy-prep) kaynağı
+* [Sahip olduğunuz ayrıcalıklara](../../role-based-access-control/built-in-roles.md#owner)sahip olduğunuz Azure aboneliği.
+* [Azure Stack Edge](../../databox-online/azure-stack-edge-gpu-deploy-prep.md) kaynağı
    
-* [Bir IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal)
-* Canlı video analizi modülü için bir [hizmet sorumlusu](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/create-custom-azure-resource-manager-role-how-to#create-service-principal) .
+* [Bir IoT Hub](../../iot-hub/iot-hub-create-through-portal.md)
+* Canlı video analizi modülü için bir [hizmet sorumlusu](./create-custom-azure-resource-manager-role-how-to.md#create-service-principal) .
 
    IoT Hub kullanılabildiği şu bölgelerden birini kullanın: Doğu ABD 2, Orta ABD, Orta Kuzey ABD, Japonya Doğu, Batı ABD 2, Orta Batı ABD, Kanada Doğu, UK Güney, Fransa Orta, Fransa Güney, İsviçre Kuzey, İsviçre Batı ve Japonya Batı.
 * Depolama hesabı
 
     Genel amaçlı v2 (GPv2) depolama hesapları kullanmanız önerilir.  
-    [Genel amaçlı v2 depolama hesabı](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade?tabs=azure-portal)hakkında daha fazla bilgi edinin.
+    [Genel amaçlı v2 depolama hesabı](../../storage/common/storage-account-upgrade.md?tabs=azure-portal)hakkında daha fazla bilgi edinin.
 * Geliştirme makinenizde [Visual Studio Code](https://code.visualstudio.com/) . [Azure IoT araçları uzantısına](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)sahip olduğunuzdan emin olun.
 * Geliştirme makinenizin bağlı olduğu ağın bağlantı noktası 5671 üzerinden gelişmiş Ileti kuyruğu protokolüne izin vermek için bağlı olduğundan emin olun. Bu kurulum, Azure IoT araçlarının Azure IoT Hub ile iletişim kurmasını sağlar.
 
 ## <a name="configuring-azure-stack-edge-for-using-live-video-analytics"></a>Canlı video analizlerini kullanmak için Azure Stack Edge 'i yapılandırma
 
-Azure Stack Edge, ağ veri aktarımı özelliklerine sahip bir hizmet olarak donanım ve bir AI özellikli sınır bilgi işlem aygıtıdır. [Azure Stack Edge ve ayrıntılı kurulum yönergeleri](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-prep)hakkında daha fazla bilgi edinin. Başlamak için aşağıdaki bağlantılardaki yönergeleri izleyin:
+Azure Stack Edge, ağ veri aktarımı özelliklerine sahip bir hizmet olarak donanım ve bir AI özellikli sınır bilgi işlem aygıtıdır. [Azure Stack Edge ve ayrıntılı kurulum yönergeleri](../../databox-online/azure-stack-edge-deploy-prep.md)hakkında daha fazla bilgi edinin. Başlamak için aşağıdaki bağlantılardaki yönergeleri izleyin:
 
-* [Azure Stack Edge/Data Box Gateway kaynak oluşturma](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-prep)
-* [Yükleme ve kurulum](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-install)
-* [Bağlantı ve etkinleştirme](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-connect-setup-activate)
+* [Azure Stack Edge/Data Box Gateway kaynak oluşturma](../../databox-online/azure-stack-edge-deploy-prep.md)
+* [Yükleme ve kurulum](../../databox-online/azure-stack-edge-deploy-install.md)
+* [Bağlantı ve etkinleştirme](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md)
 
 ### <a name="attach-an-iot-hub-to-azure-stack-edge"></a>Azure Stack Edge 'e IoT Hub iliştirme
 
@@ -55,7 +55,7 @@ Azure Stack Edge, ağ veri aktarımı özelliklerine sahip bir hizmet olarak don
     | Alan|Değer|
     |---|---|
     |IoT Hub|Yeni veya mevcut seçeneklerinden birini belirleyin.<br/>Varsayılan olarak IoT kaynağı oluşturulurken Standart katmanı (S1) kullanılır. Bir ücretsiz katman IoT kaynağı kullanmak için kaynağı oluşturun ve sonra da mevcut kaynağı seçin.<br/>Her durumda IoT Hub kaynak, Azure Stack Edge kaynağı kullanılan aynı abonelik ve kaynak grubunu kullanır.|
-    |Adı|IoT Hub kaynağınız için bir ad girin.|
+    |Ad|IoT Hub kaynağınız için bir ad girin.|
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-get-started.png" alt-text="Azure Stack Edge":::
@@ -80,7 +80,7 @@ Devam etmeden önce şunları yaptığınızdan emin olun:
 
 * Azure Stack Edge kaynağını etkinleştirdiniz.
 * Azure Stack Edge kaynağına erişmek için PowerShell 5,0 veya sonraki bir sürümü çalıştıran bir Windows istemci sistemine erişiminiz var.
-* Bir Kubernetes kümesi dağıtmak için, Azure Stack Edge kaynağınızı [Yerel Web Kullanıcı arabirimi](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-connect-setup-activate#connect-to-the-local-web-ui-setup)aracılığıyla yapılandırmanız gerekir. 
+* Bir Kubernetes kümesi dağıtmak için, Azure Stack Edge kaynağınızı [Yerel Web Kullanıcı arabirimi](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md#connect-to-the-local-web-ui-setup)aracılığıyla yapılandırmanız gerekir. 
     
     * İşlemi etkinleştirmek için cihazınızın yerel Web Kullanıcı arabiriminde Işlem sayfasına gidin.
     

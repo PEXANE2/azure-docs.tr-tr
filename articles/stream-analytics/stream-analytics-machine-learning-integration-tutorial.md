@@ -1,6 +1,6 @@
 ---
-title: Azure Machine Learning ile tümleştirme Azure Stream Analytics
-description: Bu makalede, Kullanıcı tanımlı bir işlev kullanarak Azure Machine Learning tümleştiren basit bir Azure Stream Analytics işinin nasıl hızlı bir şekilde ayarlanacağı açıklanır.
+title: Azure Machine Learning Studio ile tümleştirme Azure Stream Analytics (klasik)
+description: Bu makalede, Kullanıcı tanımlı bir işlev kullanarak Azure Machine Learning Studio (klasik) tümleştiren basit bir Azure Stream Analytics işinin hızlı bir şekilde nasıl ayarlanacağı açıklanır.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -8,16 +8,16 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 26a1208131f1d9d3df7dccd8e27bda37992f043f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 529b1ce8026d9880bbc8caf87ab59148baf92df3
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88236689"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019469"
 ---
 # <a name="do-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Azure Stream Analytics ve Azure Machine Learning Studio (klasik) ile yaklaşım analizini yapın
 
-Bu makalede, yaklaşım analizi için Azure Machine Learning Studio (klasik) kullanan basit bir Azure Stream Analytics işinin nasıl ayarlanacağı gösterilmektedir. Akış metin verilerini analiz etmek ve yaklaşım Puanını öğrenmek için Cortana Intelligence Gallery Machine Learning bir yaklaşım Analizi modeli kullanırsınız.
+Bu makalede, yaklaşım analizi için Azure Machine Learning Studio (klasik) kullanan basit bir Azure Stream Analytics işinin nasıl ayarlanacağı gösterilmektedir. Akış metin verilerini analiz etmek ve yaklaşım Puanını öğrenmek için Cortana Intelligence Gallery bir Studio (klasik) yaklaşımı analiz modeli kullanırsınız.
 
 > [!TIP]
 > Daha iyi performans ve güvenilirlik için Azure Machine Learning Studio (klasik) UDF yerine [Azure Machine Learning UDF 'leri](machine-learning-udf.md) kullanmanız önemle önerilir.
@@ -79,31 +79,31 @@ Bu adımda, depolama kapsayıcınıza bir CSV dosyası yüklersiniz.
 
 2. **Studio 'Da aç (klasik)** seçeneğini belirleyin.  
    
-   ![Stream Analytics Machine Learning, Machine Learning Studio açın](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-open-ml-studio.png)  
+   ![Stream Analytics Azure Machine Learning Studio (klasik), Open Studio (klasik)](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-open-ml-studio.png)  
 
 3. Çalışma alanına gitmek için oturum açın. Bir konum seçin.
 
 4. Sayfanın alt kısmındaki **Çalıştır** ' ı seçin. İşlem çalışır ve yaklaşık bir dakika sürer.
 
-   ![deneme Machine Learning Studio Çalıştır](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-run-experiment.png)  
+   ![Studio 'da deneme Çalıştır (klasik)](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-run-experiment.png)  
 
 5. İşlem başarıyla çalıştırıldıktan sonra sayfanın alt kısmındaki **Web Hizmeti Dağıt** ' ı seçin.
 
-   ![deneme Machine Learning Studio Web hizmeti olarak dağıtma](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-deploy-web-service.png)  
+   ![Web hizmeti olarak Studio 'da (klasik) deneme dağıtımı](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-deploy-web-service.png)  
 
 6. Yaklaşım Analizi modelinin kullanıma hazırlandığını doğrulamak için **Test** düğmesini seçin. "Microsoft seviyorum" gibi metin girişi sağlayın.
 
-   ![Machine Learning Studio test denemesi](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test.png)  
+   ![Studio 'da test denemesi (klasik)](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test.png)  
 
    Test çalışırsa, aşağıdaki örneğe benzer bir sonuç görürsünüz:
 
-   ![Machine Learning Studio test sonuçları](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test-results.png)  
+   ![Studio 'da test sonuçları (klasik)](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test-results.png)  
 
 7. **Uygulamalar** sütununda Excel **2010 veya önceki bir çalışma kitabı** bağlantısını seçerek Excel çalışma kitabını indirin. Çalışma kitabı, daha sonra Stream Analytics işini ayarlamak için gerekli olan API anahtarını ve URL 'YI içerir.
 
-    ![Stream Analytics Machine Learning, Hızlı Bakış](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-quick-glance.png)  
+    ![Stream Analytics Azure Machine Learning Studio (klasik), Hızlı Bakış](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-quick-glance.png)  
 
-## <a name="create-a-stream-analytics-job-that-uses-the-machine-learning-model"></a>Machine Learning modelini kullanan bir Stream Analytics işi oluşturma
+## <a name="create-a-stream-analytics-job-that-uses-the-studio-classic-model"></a>Studio (klasik) modelini kullanan bir Stream Analytics işi oluşturma
 
 Artık, BLOB depolama alanındaki CSV dosyasından örnek çoklu alanı içeren bir Stream Analytics iş oluşturabilirsiniz.
 
@@ -127,7 +127,7 @@ Artık, BLOB depolama alanındaki CSV dosyasından örnek çoklu alanı içeren 
    |Kapsayıcı|Önceki adımda oluşturduğunuz kapsayıcıyı seçin.|
    |Olay serileştirme biçimi|CSV|
 
-3. **Kaydet**’i seçin.
+3. **Kaydet**'i seçin.
 
 ### <a name="configure-the-job-output"></a>İş çıktısını yapılandırma
 
@@ -145,11 +145,11 @@ Artık, BLOB depolama alanındaki CSV dosyasından örnek çoklu alanı içeren 
    |Kapsayıcı|Önceki adımda oluşturduğunuz kapsayıcıyı seçin.|
    |Olay serileştirme biçimi|CSV|
 
-3. **Kaydet**’i seçin.
+3. **Kaydet**'i seçin.
 
-### <a name="add-the-machine-learning-function"></a>Machine Learning işlevini ekleme
+### <a name="add-the-studio-classic-function"></a>Studio (klasik) işlevini ekleme
 
-Daha önce bir Web hizmetine Machine Learning modeli yayımladınız. Bu senaryoda, Akış Analizi işi çalıştırıldığında, her örnek tweet, yaklaşım analizi için girişten Web hizmetine gönderilir. Machine Learning Web hizmeti, bir yaklaşım ( `positive` , `neutral` , veya `negative` ) ve Tweet 'in pozitif olma olasılığını döndürür.
+Daha önce bir Web hizmetine bir Studio (klasik) modeli yayımladınız. Bu senaryoda, Akış Analizi işi çalıştırıldığında, her örnek tweet, yaklaşım analizi için girişten Web hizmetine gönderilir. Studio (klasik) Web hizmeti, bir yaklaşım ( `positive` , `neutral` , veya `negative` ) ve Tweet 'in pozitif olma olasılığını döndürür.
 
 Bu bölümde, Stream çözümleme işinde bir işlev tanımlarsınız. İşlevi, Web hizmetine bir Tweet göndermek ve yanıtı geri almak için çağrılabilir.
 
@@ -169,7 +169,7 @@ Bu bölümde, Stream çözümleme işinde bir işlev tanımlarsınız. İşlevi,
 
 ### <a name="create-a-query-to-transform-the-data"></a>Verileri dönüştürmek için bir sorgu oluşturma
 
-Stream Analytics girişi incelemek ve işlemek için bildirime dayalı SQL tabanlı bir sorgu kullanır. Bu bölümde, girişten her Tweet okuyan ve sonra yaklaşım analizini gerçekleştirmek için Machine Learning işlevini çağıran bir sorgu oluşturacaksınız. Sorgu daha sonra sonucu tanımladığınız çıktıya (BLOB depolama) gönderir.
+Stream Analytics girişi incelemek ve işlemek için bildirime dayalı SQL tabanlı bir sorgu kullanır. Bu bölümde, girişten her Tweet okuyan ve sonra yaklaşım analizini gerçekleştirmek için Studio (klasik) işlevini çağıran bir sorgu oluşturacaksınız. Sorgu daha sonra sonucu tanımladığınız çıktıya (BLOB depolama) gönderir.
 
 1. Stream Analytics işe genel bakış ' a dönün.
 
@@ -215,18 +215,18 @@ Artık Stream Analytics işini başlatabilirsiniz.
 
 3. Oluşturulan CSV dosyasını açın. Aşağıdaki örneğe benzer bir şey görürsünüz:  
 
-   ![Stream Analytics Machine Learning, CSV görünümü](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-csv-view.png)  
+   ![Stream Analytics Azure Machine Learning Studio (klasik), CSV görünümü](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-csv-view.png)  
 
 ### <a name="view-metrics"></a>Ölçümleri görüntüle
 
-Ayrıca, işlevle ilgili ölçümleri de görüntüleyebilirsiniz Azure Machine Learning. İşle ilgili aşağıdaki ölçümler, işe genel bakış ' ın **izleme** kutusunda görüntülenir:
+Ayrıca, Studio (klasik) işlevle ilgili ölçümleri de görüntüleyebilirsiniz. İşle ilgili aşağıdaki ölçümler, işe genel bakış ' ın **izleme** kutusunda görüntülenir:
 
-* **Işlev istekleri** bir Machine Learning Web hizmetine gönderilen istek sayısını gösterir.  
-* **Işlev olayları** istekteki olay sayısını gösterir. Varsayılan olarak, bir Machine Learning Web hizmetine yapılan her istek en fazla 1.000 olay içerir.
+* **Işlev istekleri** , bir Studio (klasik) Web hizmetine gönderilen isteklerin sayısını gösterir.  
+* **Işlev olayları** istekteki olay sayısını gösterir. Varsayılan olarak, bir Studio (klasik) Web hizmetine yapılan her istek en fazla 1.000 olay içerir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Stream Analytics giriş](stream-analytics-introduction.md)
 * [Azure Akış Analizi Sorgu Dili Başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [REST API ve Machine Learning tümleştirin](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
+* [REST API ve Machine Learning Studio tümleştirin (klasik)](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 * [Azure Akış Analizi Yönetimi REST API'si Başvurusu](https://msdn.microsoft.com/library/azure/dn835031.aspx)

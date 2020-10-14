@@ -2,50 +2,79 @@
 title: Azure DevTest Labs'de laboratuvar oluşturma | Microsoft Belgeleri
 description: Bu makale, Azure portal ve Azure DevTest Labs kullanarak laboratuvar oluşturma sürecinde size yol gösterir.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: 09999c5b0187f924f9cfbbc2afad8954adee0fd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: 962997bcc66188c66fd9db856fe44e4926f8e70c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85481264"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019656"
 ---
 # <a name="create-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs'de laboratuvar oluşturma
+
 Azure DevTest Labs'deki bir laboratuvar, Sanal Makineler (VM'ler) gibi kaynaklardan oluşan grupları kapsayan ve limitlerin yanı sıra kotalar belirleyerek söz konusu kaynakları daha iyi yönetmenizi sağlayan bir altyapıdır. Bu makalede, Azure portalını kullanarak laboratuvar oluşturma işlemi ayrıntılı olarak açıklanmıştır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
+
 Laboratuvar oluşturmak için aşağıdakilere ihtiyacınız vardır:
 
 * Azure aboneliği. Azure satın alma seçenekleri hakkında bilgi edinmek için bkz. [Azure'ı satın alma](https://azure.microsoft.com/pricing/purchase-options/) veya [Ücretsiz bir aylık deneme](https://azure.microsoft.com/pricing/free-trial/). Laboratuvarı oluşturmak için aboneliğin sahibi olmanız gerekir.
 
-## <a name="steps-to-create-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs'de laboratuvar oluşturma adımları
-Aşağıdaki adımlar, Azure portal kullanarak Azure DevTest Labs’de nasıl bir laboratuvar oluşturulacağını göstermektedir. 
+## <a name="get-started-with-azure-devtest-labs-in-minutes"></a>Azure DevTest Labs ile dakikalar içinde çalışma başlama
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)’ında oturum açın.
-1. Sol taraftaki ana menüden **Tüm Hizmetler**'i (listenin en üst kısmında) seçin. DevOps bölümünde bulunan **DevTest Labs** seçeneğinin yanındaki * (Star **DEVOPS** ) seçeneğini belirleyin. Bu eylem, bir sonraki sefer kolayca erişebilmek için **DevTest Labs** 'i sol gezinti menüsüne ekler. 
+Aşağıdaki bağlantıya tıklayarak, Azure DevTest Labs yeni bir laboratuvar oluşturmaya başlayabilmeniz için Azure portal sayfasına aktarılacaktır.
 
-    ![Tüm hizmetler-DevTest Labs seçin](./media/devtest-lab-create-lab/all-services-select.png)
-2. Şimdi sol gezinti menüsünde **DevTest Labs** ' i seçin. Araç çubuğunda **Ekle** ' yi seçin. 
-   
-    ![Laboratuvar ekleme](./media/devtest-lab-create-lab/add-lab-button.png)
-1. **DevTest Laboratuvarı oluştur** sayfasında, aşağıdaki işlemleri yapın: 
-    1. Laboratuvar için bir **ad** girin.
-    2. Laboratuvarla ilişkilendirilecek **Abonelik** seçimini yapın.
-    3. Laboratuvar için **kaynak grubu için bir ad** girin. 
-    4. Laboratuvarın depolayabileceği bir **konum** seçin.
-    4. **Otomatik kapatma**’yı seçerek laboratuvarın tüm VM’lerinin otomatik olarak kapatılmasını etkinleştirmek isteyip istemediğinizi belirleyin ve buna yönelik parametreleri tanımlayın. VM'nin otomatik olarak kapatılmasını istediğiniz zamanı belirtmenizi sağlayan otomatik kapanma özelliği temel olarak maliyet tasarrufu sağlayan bir özelliktir. Laboratuvar oluşturulduktan sonra otomatik kapatmalar ayarlarını, [Azure DevTest Labs laboratuvar için tüm Ilkeleri yönetme](./devtest-lab-set-lab-policy.md#set-auto-shutdown)makalesinde açıklanan adımları izleyerek değiştirebilirsiniz.
-    1. Laboratuvarda oluşturacağınız tüm kaynaklara eklenecek özel etiketler oluşturmak istiyorsanız **Etiketler** için **AD** ve **DEĞER** bilgilerini girin. Laboratuvarları kategorilere göre yönetmek ve düzenlemek istiyorsanız etiketler faydalı olacaktır. Laboratuvarı oluşturduktan sonra etiket ekleme dahil olmak üzere etiketler hakkında daha fazla bilgi için bkz. [Laboratuvara etiket ekleme](devtest-lab-add-tag.md).
-    6. Yapılandırma otomasyonu yönelik Azure Resource Manager şablonlarını almak için **Otomasyon seçenekleri**’ni seçin. 
-    7. **Oluştur**’u seçin. **Bildirim** alanını gözlemleyerek laboratuvar oluşturma işleminin durumunu izleyebilirsiniz. 
-    
-        ![DevTest Labs laboratuvar bölümü oluşturma](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
-    8. Tamamlandıktan sonra, bildirimde **Kaynağa Git** ' i seçin. Alternatif olarak, yeni oluşturulan Laboratuvarı laboratuvarlar listesinde görmek için **DevTest Labs** sayfasını yenileyin.  Listeden Laboratuvarı seçin. Laboratuvarınızın giriş sayfasını görürsünüz. 
+[Azure DevTest Labs ile dakikalar içinde çalışma başlama](https://go.microsoft.com/fwlink/?LinkID=627034&clcid=0x409)
 
-        ![Laboratuvarın ana sayfası](./media/devtest-lab-create-lab/lab-home-page.png)
+## <a name="fill-out-settings-for-your-new-account"></a>Yeni hesabınızın ayarlarını doldurun
 
-[!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+**DevTest Labs oluşturma** sayfasında, aşağıdaki ayarları doldurun.
+
+> [!TIP]
+> Her sayfanın en altında, **Otomasyon için bir şablon indirmeyi**sağlayan bir bağlantı bulacaksınız.
+
+### <a name="basic-settings"></a>Temel ayarlar
+
+Varsayılan olarak, **temel ayarlar** sekmesini görürsünüz. Bu değerleri doldurun:
+
+|Ad|Açıklama|
+|---|---|
+|**Abonelik** | Gereklidir. Laboratuvarla ilişkilendirilecek **Abonelik** seçimini yapın.|
+|**Kaynak grubu**| Gereklidir. Laboratuvar için **kaynak grubu için bir ad** girin. Bir tane yoksa yeni bir tane oluşturun.|
+|**Laboratuvar adı**| Gereklidir. Laboratuvar için bir **ad** girin.|
+|**Konum**|Gereklidir. Laboratuvarın depolayabileceği bir konum seçin.|
+|**Genel ortamlar**| Bkz. [genel ortamları yapılandırma ve kullanma](devtest-lab-configure-use-public-environments.md).
+
+### <a name="auto-shutdown-settings"></a>Otomatik olarak kapatılıyor ayarları
+
+Ayarlarını görmek için **otomatik kapatılma** sayfasına geçin. Otomatik kapatma, bir laboratuvardaki tüm makineleri her gün zamanlanan bir saatte otomatik olarak kapatmanızı sağlar.
+
+Sayfasında, **Otomatik kapatmayı** etkinleştirebilir ve tüm laboratuvarın VM 'lerinin otomatik olarak kapatılmasını sağlayacak parametreleri tanımlayabilirsiniz. VM'nin otomatik olarak kapatılmasını istediğiniz zamanı belirtmenizi sağlayan otomatik kapanma özelliği temel olarak maliyet tasarrufu sağlayan bir özelliktir. Laboratuvar oluşturulduktan sonra otomatik kapatmalar ayarlarını, [Azure DevTest Labs laboratuvar için tüm Ilkeleri yönetme](./devtest-lab-set-lab-policy.md#set-auto-shutdown)makalesinde açıklanan adımları izleyerek değiştirebilirsiniz.
+
+### <a name="networking"></a>Ağ
+
+Laboratuvar oluştururken sizin için varsayılan bir ağ oluşturulur.
+
+Ayarı istediğiniz gibi değiştirmek/yapılandırmak için **ağ** sekmesine geçin. Örneğin, var olan bir sanal ağı seçin.
+
+### <a name="tags"></a>Etiketler
+
+Laboratuvarda oluşturacağınız tüm kaynaklara eklenecek özel etiketler oluşturmak istiyorsanız **Etiketler** için **AD** ve **DEĞER** bilgilerini girin. Laboratuvarları kategorilere göre yönetmek ve düzenlemek istiyorsanız etiketler faydalı olacaktır. Laboratuvarı oluşturduktan sonra etiket ekleme dahil olmak üzere etiketler hakkında daha fazla bilgi için bkz. [Laboratuvara etiket ekleme](devtest-lab-add-tag.md).
+
+### <a name="review-and-create"></a>Gözden geçir ve oluştur
+
+İşiniz bittiğinde **Oluştur**' u seçin. Portal sayfasının sağ üst kısmındaki **Bildirimler** alanını izleyerek Laboratuvar oluşturma işleminin durumunu izleyebilirsiniz. 
+
+## <a name="completed-the-creation"></a>Oluşturma tamamlandı
+
+Tamamlandıktan sonra, sayfanın alt kısmında ve bildirim penceresinde **Kaynağa Git** düğmesi görünür. Alternatif olarak, yeni oluşturulan Laboratuvarı laboratuvarlar listesinde görmek için **DevTest Labs** sayfasını yenileyin.  
+
+**Kaynağa Git** düğmesine basın ve yeni DevTest Labs hesabınızın giriş sayfasına yönlendirilirsiniz.
+
+Ayrıca, Azure portal **DevTest Labs** için arama yapabilirsiniz. Listeden yeni hesabınızı seçin ve giriş sayfasına gidin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Laboratuvarınızı oluşturduktan sonra dikkate alınması gereken sonraki adımlardan birkaçı şu şekildedir:
 
 * [Laboratuvara erişimin güvenliğini sağlama](devtest-lab-add-devtest-user.md)

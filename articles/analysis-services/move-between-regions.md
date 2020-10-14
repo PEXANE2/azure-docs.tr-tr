@@ -8,12 +8,12 @@ ms.date: 06/09/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 4844f3e34a6b49559affbb4d4ed7bc5b5e38e538
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f7ecf960ae94fae4d829e73daf051b9062e478d
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87050364"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018203"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>Analysis Services farklı bir bölgeye taşıma
 
@@ -48,7 +48,7 @@ Bir sunucuyu farklı bir bölgeye taşımadan önce ayrıntılı bir plan oluşt
 > [!NOTE]
 > Veri kaynaklarına bağlanmak için bir şirket içi veri ağ geçidi kullanıyorsanız, ağ geçidi kaynağını da hedef sunucu bölgesine taşımanız gerekir. Daha fazla bilgi edinmek için bkz. Şirket [içi veri ağ geçidini yükleyip yapılandırma](analysis-services-gateway-install.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - **Azure depolama hesabı**: bir. abf yedekleme dosyasını depolamak için gereklidir.
 - **SQL Server Management Studio (SSMS)**: model veritabanlarını yedeklemek ve geri yüklemek için gereklidir.
@@ -71,7 +71,7 @@ Depolama ayarları yapılandırıldığında, depolama kapsayıcıda bir model v
 
 Şablonu Azure portalını kullanarak dışarı aktarmak için:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. **Tüm kaynaklar**' ı seçin ve ardından Analysis Services sunucunuzu seçin.
 
@@ -88,7 +88,7 @@ Depolama ayarları yapılandırıldığında, depolama kapsayıcıda bir model v
 
 Bir şablonu PowerShell kullanarak dışarı aktarmak için:
 
-1. [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) komutuyla Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin:
+1. [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) komutuyla Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin:
 
    ```azurepowershell-interactive
    Connect-AzAccount
@@ -177,7 +177,7 @@ Verdiğiniz dosyada template.jsdeğiştirmek için bir metin düzenleyicisi kull
 
 #### <a name="regions"></a>Bölgeler
 
-Azure bölgelerini almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/). PowerShell kullanarak bölgeleri almak için [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) komutunu çalıştırın.
+Azure bölgelerini almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/). PowerShell kullanarak bölgeleri almak için [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) komutunu çalıştırın.
 
 ```azurepowershell-interactive
    Get-AzLocation | format-table 
@@ -203,7 +203,7 @@ Farklı bir bölgeye yeni bir sunucu kaynağı dağıtmak için, önceki bölüm
 
 7. Şablon düzenleyicisinin yeni hedef sunucunuz için doğru özellikleri gösterdiğini doğrulayın.
 
-8. **Kaydet**’i seçin.
+8. **Kaydet**'i seçin.
 
 9. Özellik değerlerini girin veya seçin:
 
@@ -301,4 +301,4 @@ Remove-AzAnalysisServicesServer -Name "myserver" -ResourceGroupName "myResourceG
 ---
 
 > [!NOTE]
-> Bölge taşımayı tamamladıktan sonra, yeni hedef sunucunuzun kaynak sunucu bölgesindeki depolama kapsayıcısı yerine yedeklemeler için aynı bölgedeki bir depolama kapsayıcısını kullanması önerilir. 
+> Bölge taşımayı tamamladıktan sonra, yeni hedef sunucunuzun kaynak sunucu bölgesindeki depolama kapsayıcısı yerine yedeklemeler için aynı bölgedeki bir depolama kapsayıcısını kullanması önerilir.

@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
-ms.openlocfilehash: b74621f357613bc60457ab4846b58f6f85009401
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/13/2020
+ms.openlocfilehash: 12693fb11556380e62df277be093ce20c02ff372
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541892"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018041"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Language Understanding (LUSıS) bilişsel hizmetler 'de veri depolama ve kaldırma
 LUO, anahtar tarafından belirtilen bölgeye karşılık gelen bir Azure veri deposunda şifrelenmiş verileri depolar. Bu veriler 30 gün boyunca depolanır. 
@@ -50,9 +50,14 @@ Etkin öğrenimi istemiyorsanız, [etkin öğrenmeyi devre dışı](luis-how-to-
 <a name="accounts"></a>
 
 ## <a name="delete-an-account"></a>Hesap silme
-Bir hesabı silerseniz, tüm uygulamalar, örnek ve günlükleriyle birlikte silinir. Veriler, hesap ve veriler kalıcı olarak silinmeden önce 60 gün boyunca tutulur.
+Geçirdiyseniz, hesabınızı silebilirsiniz ve tüm uygulamalarınız, örnek deneyleriyle ve günlükleriyle birlikte silinecektir. Veriler, hesap ve veriler kalıcı olarak silinmeden önce 90 gün boyunca tutulur.
 
 Hesap silme, **Ayarlar** sayfasından kullanılabilir. **Ayarlar** sayfasına ulaşmak için sağ üst gezinti çubuğundan hesap adınızı seçin.
+
+## <a name="delete-an-authoring-resource"></a>Bir yazma kaynağını silme
+[Bir yazma kaynağına geçiş](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring)yaptıysanız, kaynağın kendisini Azure Portal silmek, bu kaynakla ilişkili tüm uygulamalarınızı, örnek dıklarıyla ve günlükleriyle birlikte silecek. Veriler kalıcı olarak silinmeden önce 90 gün boyunca tutulur.    
+
+Kaynağınızı silmek için [Azure Portal](https://ms.portal.azure.com/#home) gıdın ve lusıs Authoring Resource ' ı seçin. **Genel bakış** sekmesine gidin ve sayfanın üst kısmındaki **Sil** düğmesine tıklayın. Ardından kaynağınızın silindiğini doğrulayın. 
 
 ## <a name="data-inactivity-as-an-expired-subscription"></a>Süresi biten bir abonelik olarak verilerin etkin olmaması
 Veri saklama ve silme amaçları doğrultusunda, etkin olmayan bir _Luo uygulaması Microsoft 'un_ kullanım açısından süresi geçen bir abonelik olarak kabul edilebilir. Son 90 gün için aşağıdaki ölçütleri karşılıyorsa bir uygulama etkin değil olarak kabul edilir: 

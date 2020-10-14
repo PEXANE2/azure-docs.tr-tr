@@ -1,23 +1,23 @@
 ---
-title: Azure Active Directory öznitelik eşlemeleri için ifadeler yazma
-description: Azure Active Directory ' de SaaS uygulama nesnelerinin otomatik sağlanması sırasında öznitelik değerlerini kabul edilebilir bir biçime dönüştürmek için ifade eşlemelerini nasıl kullanacağınızı öğrenin.
+title: Azure Active Directory öznitelik eşlemeleri için ifadeler yazma başvurusu
+description: Azure Active Directory ' de SaaS uygulama nesnelerinin otomatik sağlanması sırasında öznitelik değerlerini kabul edilebilir bir biçime dönüştürmek için ifade eşlemelerini nasıl kullanacağınızı öğrenin. İşlevlerin başvuru listesini içerir.
 services: active-directory
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: how-to
+ms.topic: reference
 ms.date: 02/05/2020
 ms.author: kenwith
-ms.openlocfilehash: d454ab3ad382c6237ab9f8c215473801285ba3c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14e3b23b4246f26e1ac59e0b12b043341546d0a0
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88235681"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018252"
 ---
-# <a name="how-to-write-expressions-for-attribute-mappings-in-azure-ad"></a>Nasıl yapılır: Azure AD 'de öznitelik eşlemeleri için ifadeler yazma
+# <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-ad"></a>Azure AD 'de öznitelik eşlemeleri için ifade yazma başvurusu
 
 Sağlamayı bir SaaS uygulamasına yapılandırdığınızda, belirtebileceğiniz öznitelik eşlemelerinin türlerinden biri bir ifade eşlemedir. Bunlar için, kullanıcılarınızın verilerini SaaS uygulaması için daha kabul edilebilir biçimlere dönüştürmenizi sağlayan bir betik benzeri ifade yazmalısınız.
 
@@ -25,9 +25,8 @@ Sağlamayı bir SaaS uygulamasına yapılandırdığınızda, belirtebileceğini
 
 Öznitelik eşlemeleri için Ifadeler söz dizimi Visual Basic for Applications (VBA) işlevlerinin bir rekidir.
 
-* İfadenin tamamı, parantez içindeki bağımsız değişkenlerin ardında yer aldığı bir addan oluşan işlevler bakımından tanımlanmalıdır: <br>
-  *Fonksiyonadı ( `<<argument 1>>` , `<<argument N>>` )*
-* İşlevleri birbirlerine iç içe yerleştirebilirsiniz. Örneğin: <br> *FunctionOne (FunctionTwo ( `<<argument1>>` ))*
+* Tüm ifadenin, parantez içindeki bağımsız değişkenler tarafından izlenen bir addan oluşan işlevler bakımından tanımlanması gerekir: *fonksiyonadı ( `<<argument 1>>` , `<<argument N>>` )*
+* İşlevleri birbirlerine iç içe yerleştirebilirsiniz. Örneğin:  *Functionone (FunctionTwo ( `<<argument1>>` ))*
 * İşlevlere üç farklı türde bağımsız değişken geçirebilirsiniz:
   
   1. Köşeli ayraçlar içine alınması gereken öznitelikler. Örneğin: [attributeName]
@@ -43,154 +42,162 @@ Sağlamayı bir SaaS uygulamasına yapılandırdığınızda, belirtebileceğini
 ---
 ### <a name="append"></a>Ekleme
 
-**Çalışmayacaktır**<br> Append (kaynak, sonek)
+**İşlev:** Append (kaynak, sonek)
 
-**Açıklama:**<br> Bir kaynak dize değeri alır ve son eki bunun sonuna ekler.
+**Açıklama:** Bir kaynak dize değeri alır ve son eki bunun sonuna ekler.
 
-**Parametrelere**<br> 
+**Parametrelere**
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
 | **önekini** |Gerekli |Dize |Kaynak değerin sonuna eklemek istediğiniz dize. |
 
 ---
 ### <a name="bitand"></a>BitAnd
-**Çalışmayacaktır**<br> BitAnd (değer1, değer2)
+**İşlev:** BitAnd (değer1, değer2)
 
-**Açıklama:**<br> Bu işlev, her iki parametreyi de ikili gösterimine dönüştürür ve bir bit şu şekilde ayarlar:
+**Açıklama:** Bu işlev, her iki parametreyi de ikili gösterimine dönüştürür ve bir bit şu şekilde ayarlar:
 
-0-değer1 ve değer2 içindeki karşılık gelen bitlerin biri veya her ikisi 0 ise                                                  
-1-karşılık gelen bitlerin her ikisi de 1 ' dir.                                    
+- 0-değer1 ve değer2 içindeki karşılık gelen bitlerin biri veya her ikisi 0 ise
+- 1-karşılık gelen bitlerin her ikisi de 1 ' dir.
 
 Diğer bir deyişle, her iki parametrenin de karşılık gelen bitlerinin 1 olduğu durumlar dışında her durumda 0 döndürür.
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **value1** |Gerekli |sayı |Değer2 ile birlikte olması gereken sayısal değer|
 | **value2** |Gerekli |sayı |Değer1 ile birlikte olması gereken sayısal değer|
 
-**Örnek:**<br>
-BitAnd (&HF, &HF7)                                                                                
-11110111 ve 00000111 = 00000111, bitve 7 değerini, 00000111 ikili değerini döndürür
+**Örneğinde**
+`BitAnd(&HF, &HF7)`
+
+11110111 ve 00000111 = 00000111 `BitAnd` , 00000111 ikili değeri olan 7 döndürür.
 
 ---
 ### <a name="cbool"></a>CBool
-**Çalışmayacaktır**<br> CBool (Ifade)
+**Çalışmayacaktır** 
+`CBool(Expression)`
 
-**Açıklama:**<br> CBool, değerlendirilen ifadeye göre Boole değeri döndürür. İfade sıfır olmayan bir değer olarak değerlendirilirse, CBool true değerini döndürür, aksi takdirde false döndürür.
+**Açıklama:**  
+ `CBool` değerlendirilen ifadeye göre Boole değeri döndürür. İfade sıfır olmayan bir değer olarak değerlendiriliyorsa `CBool` *true*değerini döndürür, aksi takdirde *false*döndürür.
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **expression** |Gerekli | ifade | Herhangi bir geçerli ifade |
 
-**Örnek:**<br>
-CBool ([Attribute1] = [attribute2])                                                                    
+**Örneğinde**
+`CBool([attribute1] = [attribute2])`                                                                    
 Her iki öznitelik de aynı değere sahip olduğunda true döndürür.
 
 ---
 ### <a name="coalesce"></a>Coalesce
-**Çalışmayacaktır**<br> Birleşim (Source1, SOURCE2,..., defaultValue)
+**İşlev:** Birleşim (Source1, SOURCE2,..., defaultValue)
 
-**Açıklama:**<br> NULL olmayan ilk kaynak değeri döndürür. Tüm bağımsız değişkenler NULL ve defaultValue varsa, defaultValue döndürülür. Tüm bağımsız değişkenler NULL ve defaultValue yoksa, birleşim NULL döndürür.
+**Açıklama:** NULL olmayan ilk kaynak değeri döndürür. Tüm bağımsız değişkenler NULL ve defaultValue varsa, defaultValue döndürülür. Tüm bağımsız değişkenler NULL ve defaultValue yoksa, birleşim NULL döndürür.
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **source1 ... Kaynakcen** | Gerekli | Dize |Gerekli, değişken sayısı. Genellikle kaynak nesneden özniteliğin adı. |
 | **Değerinin** | İsteğe Bağlı | Dize | Tüm kaynak değerleri NULL olduğunda kullanılacak varsayılan değer. Boş dize ("") olabilir.
 
 ---
 ### <a name="converttobase64"></a>ConvertToBase64
-**Çalışmayacaktır**<br> ConvertToBase64 (kaynak)
+**İşlev:** ConvertToBase64 (kaynak)
 
-**Açıklama:**<br> ConvertToBase64 işlevi bir dizeyi Unicode Base64 dizesine dönüştürür.
+**Açıklama:** ConvertToBase64 işlevi bir dizeyi Unicode Base64 dizesine dönüştürür.
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |64 tabanına dönüştürülecek dize|
 
-**Örnek:**<br>
-ConvertToBase64 ("Hello World!")                                                                                                        
+**Örneğinde**
+`ConvertToBase64("Hello world!")`
+
 "Sablagwabebek Vacaadilevahiababkacea" döndürür
 
 ---
 ### <a name="converttoutf8hex"></a>ConvertToUTF8Hex
-**Çalışmayacaktır**<br> ConvertToUTF8Hex (kaynak)
+**İşlev:** ConvertToUTF8Hex (kaynak)
 
-**Açıklama:**<br> ConvertToUTF8Hex işlevi bir dizeyi UTF8 onaltılık kodlanmış bir değere dönüştürür.
+**Açıklama:** ConvertToUTF8Hex işlevi bir dizeyi UTF8 onaltılık kodlanmış bir değere dönüştürür.
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |UTF8 onaltılı olarak dönüştürülecek dize|
 
-**Örnek:**<br>
-ConvertToUTF8Hex ("Hello World!")                                                                                                         
+**Örneğinde**
+`ConvertToUTF8Hex("Hello world!")`
+
 48656C6C6F20776F726C6421 döndürür
 
 ---
 ### <a name="count"></a>Sayı
-**Çalışmayacaktır**<br> Count (öznitelik)
+**İşlev:** Count (öznitelik)
 
-**Açıklama:**<br> Count işlevi, birden çok değerli bir öznitelikteki öğelerin sayısını döndürür
+**Açıklama:** Count işlevi, birden çok değerli bir öznitelikteki öğelerin sayısını döndürür
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **özniteliğe** |Gerekli |özniteliği |Sayılacak öğeleri olan çok değerli öznitelik|
 
 ---
 ### <a name="cstr"></a>CStr
-**Çalışmayacaktır**<br> CStr (değer)
+**İşlev:** CStr (değer)
 
-**Açıklama:**<br> CStr işlevi bir değeri dize veri türüne dönüştürür.
+**Açıklama:** CStr işlevi bir değeri dize veri türüne dönüştürür.
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **değer** |Gerekli | sayısal, başvuru veya Boole | Sayısal bir değer, başvuru özniteliği veya Boole olabilir. |
 
-**Örnek:**<br>
-CStr ([DN])                                                            
+**Örneğinde**
+`CStr([dn])`
+
 "CN = ali, DC = contoso, DC = com" döndürür
 
 ---
 ### <a name="datefromnum"></a>Tarih Fromnum
-**Çalışmayacaktır**<br> DateFromNum (değer)
+**İşlev:** DateFromNum (değer)
 
-**Açıklama:**<br> DateFromNum işlevi, AD 'nin tarih biçimindeki bir değeri bir tarih saat türüne dönüştürür.
+**Açıklama:** DateFromNum işlevi, AD 'nin tarih biçimindeki bir değeri bir tarih saat türüne dönüştürür.
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **değer** |Gerekli | Tarih | Tarih saat türüne dönüştürülecek AD tarihi |
 
-**Örnek:**<br>
-DateFromNum ([lastLogonTimestamp])                                                                                                   
-DateFromNum (129699324000000000)                                                            
-2012-01-01 23:00:00 temsil eden bir tarih saat döndürür
+**Örneğinde**
+`DateFromNum([lastLogonTimestamp])`
+
+`DateFromNum(129699324000000000)`
+
+1 Ocak 2012 ' i temsil eden bir tarih saat 11:00PM döndürür.
 
 ---
 ### <a name="formatdatetime"></a>FormatDateTime
-**Çalışmayacaktır**<br> FormatDateTime (kaynak, InPutFormat, outputFormat)
+**İşlev:** FormatDateTime (kaynak, InPutFormat, outputFormat)
 
-**Açıklama:**<br> Bir biçimden tarih dizesi alır ve onu farklı bir biçime dönüştürür.
+**Açıklama:** Bir biçimden tarih dizesi alır ve onu farklı bir biçime dönüştürür.
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
 | **InPutFormat** |Gerekli |Dize |Kaynak değerinin biçimi bekleniyordu. Desteklenen biçimler için bkz. [/DotNet/Standard/Base-Types/Custom-Date-and-Time-Format-Strings](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
@@ -198,242 +205,243 @@ DateFromNum (129699324000000000)
 
 ---
 ### <a name="guid"></a>Guid
-**Çalışmayacaktır**<br> GUID ()
+**İşlev:** GUID ()
 
-**Açıklama:**<br> İşlev GUID 'Si yeni bir rastgele GUID oluşturur
+**Açıklama:** İşlev GUID 'Si yeni bir rastgele GUID oluşturur
 
 ---
 ### <a name="iif"></a>Mayan
-**Çalışmayacaktır**<br> IıF (koşul, valueIfTrue, valueIfFalse)
+**İşlev:** IıF (koşul, valueIfTrue, valueIfFalse)
 
-**Açıklama:**<br> IıF işlevi, belirli bir koşula göre olası bir değer kümesinden birini döndürür.
+**Açıklama:** IıF işlevi, belirli bir koşula göre olası bir değer kümesinden birini döndürür.
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **koşul** |Gerekli |Değişken veya Ifade |Doğru veya yanlış olarak değerlendirilebilen herhangi bir değer veya ifade. |
 | **valueIfTrue** |Gerekli |Değişken veya dize | Koşul true olarak değerlendirilirse döndürülen değer. |
 | **valueIfFalse** |Gerekli |Değişken veya dize |Koşul false olarak değerlendirilirse, döndürülen değer.|
 
-**Örnek:**<br>
-IıF ([Country] = "USA", [Ülke], [departman])
+**Örneğinde**
+`IIF([country]="USA",[country],[department])`
 
 ---
 ### <a name="instr"></a>InStr
-**Çalışmayacaktır**<br> InStr (değer1, değer2, Start, compareType)
+**İşlev:** InStr (değer1, değer2, Start, compareType)
 
-**Açıklama:**<br> InStr işlevi bir dizedeki alt dizenin ilk oluşumunu bulur
+**Açıklama:** InStr işlevi bir dizedeki alt dizenin ilk oluşumunu bulur
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **value1** |Gerekli |Dize |Aranacak dize |
 | **value2** |Gerekli |Dize |Bulunan dize |
-| **start** |İsteğe Bağlı |Tamsayı |Alt dizeyi bulmak için başlangıç konumu|
+| **başından** |İsteğe Bağlı |Tamsayı |Alt dizeyi bulmak için başlangıç konumu|
 | **compareType** |İsteğe Bağlı |Sabit listesi |VbTextCompare veya vbBinaryCompare olabilir |
 
-**Örnek:**<br>
-InStr ("hızlı kahverengi Fox", "Quick")                                                                             
-Evalues 'a 5
+**Örneğinde**
+`InStr("The quick brown fox","quick")`
 
-InStr ("yineleniyor", "e", 3, vbBinaryCompare)                                                                                  
+5 olarak değerlendirilir
+
+`InStr("repEated","e",3,vbBinaryCompare)`
+
 7 olarak değerlendirilir
 
 ---
 ### <a name="isnull"></a>IsNull
-**Çalışmayacaktır**<br> IsNull (Ifade)
+**İşlev:** IsNull (Ifade)
 
-**Açıklama:**<br> İfade null olarak değerlendirilirse, IsNull işlevi true döndürür. Bir öznitelik için, bir null özniteliğin yokluğuna göre ifade edilir.
+**Açıklama:** İfade null olarak değerlendirilirse, IsNull işlevi true döndürür. Bir öznitelik için, bir null özniteliğin yokluğuna göre ifade edilir.
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **expression** |Gerekli |ifade |Değerlendirilecek ifade |
 
-**Örnek:**<br>
-IsNull ([displayName])                                                                                                
-Öznitelik yoksa true döndürür
+**Örneğinde**
+`IsNull([displayName])`
+
+Özniteliği yoksa true döndürür.
 
 ---
 ### <a name="isnullorempty"></a>IsNullOrEmpty
-**Çalışmayacaktır**<br> IsNullOrEmpty (Ifade)
+**İşlev:** IsNullOrEmpty (Ifade)
 
-**Açıklama:**<br> İfade null veya boş bir dize ise, IsNullOrEmpty işlevi true değerini döndürür. Özniteliği için, öznitelik yoksa veya varsa ancak boş bir dize ise, bu true olarak değerlendirilir.
+**Açıklama:** İfade null veya boş bir dize ise, IsNullOrEmpty işlevi true değerini döndürür. Özniteliği için, öznitelik yoksa veya varsa ancak boş bir dize ise, bu true olarak değerlendirilir.
 Bu işlevin tersi ısun olarak adlandırılmıştır.
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **expression** |Gerekli |ifade |Değerlendirilecek ifade |
 
-**Örnek:**<br>
-IsNullOrEmpty ([displayName])                                               
-Öznitelik yoksa veya boş bir dize ise true döndürür
+**Örneğinde**
+`IsNullOrEmpty([displayName])`
+
+Öznitelik yoksa veya boş bir dize ise, true döndürür.
 
 ---
 ### <a name="ispresent"></a>Olmasına
-**Çalışmayacaktır**<br> Isun (Ifade)
+**İşlev:** Isun (Ifade)
 
-**Açıklama:**<br> İfade null olmayan ve boş olmayan bir dize olarak değerlendirilirse, ıssun işlevi true değerini döndürür. Bu işlevin tersi IsNullOrEmpty olarak adlandırılmıştır.
+**Açıklama:** İfade null olmayan ve boş olmayan bir dize olarak değerlendirilirse, ıssun işlevi true değerini döndürür. Bu işlevin tersi IsNullOrEmpty olarak adlandırılmıştır.
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **expression** |Gerekli |ifade |Değerlendirilecek ifade |
 
-**Örnek:**<br>
-Anahtar (ısunu ([directManager]), [directManager], ısun ([skiplevelManager]), [skiplevelManager], ıssun ([Yönetmen]), [Yönetmen])
+**Örneğinde**
+`Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
 
 ---
 ### <a name="isstring"></a>Isstrıng
-**Çalışmayacaktır**<br> IsString (Ifade)
+**İşlev:** IsString (Ifade)
 
-**Açıklama:**<br> İfade bir dize türü olarak değerlendirilebiliyorsa, IsString işlevi true olarak değerlendirilir.
+**Açıklama:** İfade bir dize türü olarak değerlendirilebiliyorsa, IsString işlevi true olarak değerlendirilir.
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **expression** |Gerekli |ifade |Değerlendirilecek ifade |
 
 ---
 ### <a name="item"></a>Öğe
-**Çalışmayacaktır**<br> Öğe (öznitelik, dizin)
+**İşlev:** Öğe (öznitelik, dizin)
 
-**Açıklama:**<br> Item işlevi, birden çok değerli dize/öznitelikten bir öğe döndürür.
+**Açıklama:** Item işlevi, birden çok değerli dize/öznitelikten bir öğe döndürür.
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **özniteliğe** |Gerekli |Öznitelik |Aranacak çok değerli öznitelik |
 | **indeks** |Gerekli |Tamsayı | Çoklu değerli dizedeki bir öğenin dizini|
 
-**Örnek:**<br>
-Öğe ([proxyAddresses], 1)
+**Örneğinde**
+`Item([proxyAddresses], 1)`
 
 ---
 ### <a name="join"></a>Birleştir
-**Çalışmayacaktır**<br> JOIN (separator, source1, SOURCE2,...)
+**İşlev:** JOIN (separator, source1, SOURCE2,...)
 
-**Açıklama:**<br> JOIN (), birden çok **kaynak** dize değerini tek bir dizeye birleştirebildiğinden ve her bir değer bir **ayırıcı** dizeyle ayrılabilmesi dışında Append () ile benzerdir.
+**Açıklama:** JOIN (), birden çok **kaynak** dize değerini tek bir dizeye birleştirebildiğinden ve her bir değer bir **ayırıcı** dizeyle ayrılabilmesi dışında Append () ile benzerdir.
 
 Kaynak değerlerinden biri çok değerli bir öznitelik ise, bu öznitelikteki her değer, ayırıcı değeriyle ayırarak birlikte birleştirilir.
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **ayırıcı** |Gerekli |Dize |Tek bir dizede bitiştirildiği zaman kaynak değerlerini ayırmak için kullanılan dize. Hiçbir ayırıcı gerekmiyorsa "" olabilir. |
 | **source1 ... Kaynakcen** |Gerekli, değişken sayısı |Dize |Birlikte birleştirilecek dize değerleri. |
 
 ---
 ### <a name="left"></a>Sol
-**Çalışmayacaktır**<br> Left (dize, NumChars)
+**İşlev:** Left (dize, NumChars)
 
-**Açıklama:**<br> Left işlevi bir dizenin sol tarafında belirtilen sayıda karakteri döndürür. NumChars = 0 ise boş bir dize döndürür.
+**Açıklama:** Left işlevi bir dizenin sol tarafında belirtilen sayıda karakteri döndürür. NumChars = 0 ise boş bir dize döndürür.
 NumChars 0 <, giriş dizesi döndürür.
 Dize null ise boş dize döndürün.
 Dize Numchar 'lar içinde belirtilen sayıdan daha az karakter içeriyorsa, dize ile özdeş bir dize (yani, 1 parametresindeki tüm karakterleri içeren) döndürülür.
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **Dize** |Gerekli |Öznitelik | Karakterlerin döndürdüğü dize |
 | **NumChars** |Gerekli |Tamsayı | Dizenin başından (solda) döndürülecek karakter sayısını tanımlayan sayı|
 
-**Örnek:**<br>
-Sol ("John tikan", 3)                                                            
-"Joh" döndürür
+**Örneğinde**
+`Left("John Doe", 3)`
+
+"Joh" döndürür.
 
 ---
 ### <a name="mid"></a>Orta
-**Çalışmayacaktır**<br> Mid (kaynak, başlangıç, uzunluk)
+**İşlev:** Mid (kaynak, başlangıç, uzunluk)
 
-**Açıklama:**<br> Kaynak değerin alt dizesini döndürür. Alt dize, kaynak dizeden yalnızca bazı karakterleri içeren bir dizedir.
+**Açıklama:** Kaynak değerin alt dizesini döndürür. Alt dize, kaynak dizeden yalnızca bazı karakterleri içeren bir dizedir.
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Genellikle özniteliğin adı. |
-| **start** |Gerekli |tamsayı |Alt dizenin başlaması gereken **kaynak** dizedeki dizin. Dizedeki ilk karakter 1 dizinine sahip olacak, ikinci karakter dizin 2 ' ye sahip olur ve bu şekilde devam eder. |
+| **başından** |Gerekli |tamsayı |Alt dizenin başlaması gereken **kaynak** dizedeki dizin. Dizedeki ilk karakter 1 dizinine sahip olacak, ikinci karakter dizin 2 ' ye sahip olur ve bu şekilde devam eder. |
 | **length** |Gerekli |tamsayı |Alt dizenin uzunluğu. Uzunluk **kaynak** dizenin dışında biterse, işlev **Başlangıç** dizininden **kaynak** dizenin sonuna kadar alt dize döndürür. |
 
 ---
 ### <a name="normalizediacritics"></a>Normalizediacritika
-**Çalışmayacaktır**<br> Normalizediacritika (kaynak)
+**İşlev:** Normalizediacritika (kaynak)
 
-**Açıklama:**<br> Bir dize bağımsız değişkeni gerektirir. Dizeyi döndürür, ancak tüm aksanlı karakterlerle eşdeğer, aksanlı olmayan karakterler konur. Genellikle, aksanlı karakter (vurgu işaretleri) içeren ilk adları ve soyadlarını, Kullanıcı asıl adları, SAM hesap adları ve e-posta adresleri gibi çeşitli Kullanıcı tanımlayıcılarında kullanılabilecek geçerli değerlere dönüştürmek için kullanılır.
+**Açıklama:** Bir dize bağımsız değişkeni gerektirir. Dizeyi döndürür, ancak tüm aksanlı karakterlerle eşdeğer, aksanlı olmayan karakterler konur. Genellikle, aksanlı karakter (vurgu işaretleri) içeren ilk adları ve soyadlarını, Kullanıcı asıl adları, SAM hesap adları ve e-posta adresleri gibi çeşitli Kullanıcı tanımlayıcılarında kullanılabilecek geçerli değerlere dönüştürmek için kullanılır.
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize | Genellikle ad veya soyadı özniteliği. |
 
 ---
 ### <a name="not"></a>Not
-**Çalışmayacaktır**<br> Not (kaynak)
+**İşlev:** Not (kaynak)
 
-**Açıklama:**<br> **Kaynağın**Boole değerini çevirir. **Kaynak** değer "*true*" ise, "*false*" döndürür. Aksi takdirde "*true*" döndürür.
+**Açıklama:** **Kaynağın**Boole değerini çevirir. **Kaynak** değeri true Ise, false döndürür. Aksi takdirde, true döndürür.
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Boole dizesi |Beklenen **kaynak** değerleri "true" veya "false" şeklindedir. |
 
 ---
 ### <a name="numfromdate"></a>NumFromDate
-**Çalışmayacaktır**<br> NumFromDate (değer)
+**İşlev:** NumFromDate (değer)
 
-**Açıklama:**<br> NumFromDate işlevi, bir DateTime değerini [AccountExpires](/windows/win32/adschema/a-accountexpires)gibi öznitelikleri ayarlamak için gereken Active Directory biçime dönüştürür. Workday ve başarılı faktörlerdeki bulut HR uygulamalarından alınan DateTime değerlerini eşdeğer AD gösterimlerine dönüştürmek için bu işlevi kullanın. 
+**Açıklama:** NumFromDate işlevi, bir DateTime değerini [AccountExpires](/windows/win32/adschema/a-accountexpires)gibi öznitelikleri ayarlamak için gereken Active Directory biçime dönüştürür. Workday ve başarılı faktörlerdeki bulut HR uygulamalarından alınan DateTime değerlerini eşdeğer AD gösterimlerine dönüştürmek için bu işlevi kullanın. 
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **değer** |Gerekli | Dize | Desteklenen biçimdeki tarih saat dizesi. Desteklenen biçimler için bkz https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx .. |
 
-**Örnek:**<br>
-* Workday örneği <br>
-  AD 'nin *2020-12-31-08:00* Ile *AccountExpires* alanında olan Workday 'den *sözleşmeli tenddate* özniteliğini eşlemek istediğinizi varsayarsak, bu işlevi kullanabilir ve saat dilimi sapmasını yerel ayarınızdan eşleşecek şekilde değiştirebilirsiniz. 
+**Örnek:**
+* İşgünü örneği AD içindeki *2020-12-31-08:00* Ile *AccountExpires* alanında bulunan saat dilimi ' nden *sözleşmeli Tenddate* özniteliğini eşlemek istediğinizi varsayarsak, bu işlevi kullanabilir ve saat dilimi sapmasını yerel ayarınızdan eşleşecek şekilde değiştirebilirsiniz. 
   `NumFromDate(Join("", FormatDateTime([ContractEndDate], "yyyy-MM-ddzzz", "yyyy-MM-dd"), "T23:59:59-08:00"))`
 
-* Başarılı etken örneği <br>
-  AD içinde *M/d/yyyy HH: mm: ss TT* Ile *AccountExpires* alanı biçimindeki *EndDate* özniteliğini başarılı bir şekilde eşlemek istediğinizi varsayarsak, bu işlevi kullanabilir ve saat dilimi sapmasını yerel ayarınızdan eşleşecek şekilde değiştirebilirsiniz.
+* AD içinde *M/d/yyyy HH: mm: ss TT* Ile *AccountExpires* alanı biçimindeki *EndDate* özniteliğini, bu işlevi nasıl kullanabileceğinizi ve saat dilimi sapmasını yerel ayarınızdan eşleşecek şekilde nasıl değiştirebildiğiniz hakkında bir örnektir.
   `NumFromDate(Join("",FormatDateTime([endDate],"M/d/yyyy hh:mm:ss tt","yyyy-MM-dd"),"T23:59:59-08:00"))`
 
 
 ---
 ### <a name="removeduplicates"></a>RemoveDuplicates
-**Çalışmayacaktır**<br> Removeyinelemelerini (öznitelik)
+**İşlev:** Removeyinelemelerini (öznitelik)
 
-**Açıklama:**<br> Removeyinelemelerini işlevi, birden çok değerli dizeyi alır ve her değerin benzersiz olduğundan emin olur.
+**Açıklama:** Removeyinelemelerini işlevi, birden çok değerli dizeyi alır ve her değerin benzersiz olduğundan emin olur.
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **özniteliğe** |Gerekli |Çoklu değerli öznitelik |Yinelenen öğeleri kaldırılacak birden çok değerli öznitelik|
 
-**Örnek:**<br>
-Removeyinelemelerini ([proxyAddresses])                                                                                                       
-Tüm yinelenen değerlerin kaldırıldığı bir ayıklanmış proxyAddress özniteliği döndürür
+**Örnek:** 
+ `RemoveDuplicates([proxyAddresses])` Tüm yinelenen değerlerin kaldırıldığı bir ayıklanmış proxyAddress özniteliği döndürür.
 
 ---
 ### <a name="replace"></a>Değiştir
-**Çalışmayacaktır**<br> Replace (kaynak, oldValue, regexGroupName, regexGroupName, replacementValue, replacementAttributeName, şablon)
+**İşlev:** Replace (kaynak, oldValue, regexGroupName, regexGroupName, replacementValue, replacementAttributeName, şablon)
 
-**Açıklama:**<br>
-Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı şekilde çalışır:
+**Açıklama:** Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı şekilde çalışır:
 
 * **OldValue** ve **replacementvalue** sağlandığında:
   
@@ -452,9 +460,9 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
   * **Kaynakta** değer yoksa, **kaynak** döndürülür
   * **Kaynakta** bir değer varsa, Işlev **regexmodel** öğesini **kaynak** dizeye uygular ve **Regexgroupname** ile eşleşen tüm değerleri **replacementAttributeName** ile ilişkili değerle değiştirir
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Genellikle **kaynak** nesneden özniteliğin adı. |
 | **oldValue** |İsteğe Bağlı |Dize |**Kaynak** veya **şablonda**değiştirilmekte olan değer. |
@@ -466,9 +474,9 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
-**Çalışmayacaktır**<br> SelectUniqueValue (uniqueValueRule1, uniqueValueRule2, uniqueValueRule3,...)
+**İşlev:** SelectUniqueValue (uniqueValueRule1, uniqueValueRule2, uniqueValueRule3,...)
 
-**Açıklama:**<br> İfadeler kullanılarak tanımlanan benzersiz değer oluşturma kuralları olan en az iki bağımsız değişken gerektirir. İşlevi her kuralı değerlendirir ve hedef uygulamada/dizinde benzersizlik için oluşturulan değeri denetler. Bulunan ilk benzersiz değer döndürülecek bir değer olacaktır. Tüm değerler hedefte zaten mevcutsa, giriş biriktirme listesini alır ve bu nedenle denetim günlüklerine kaydedilir. Sağlanbağlanabilen bağımsız değişken sayısına üst sınır yoktur.
+**Açıklama:** İfadeler kullanılarak tanımlanan benzersiz değer oluşturma kuralları olan en az iki bağımsız değişken gerektirir. İşlevi her kuralı değerlendirir ve hedef uygulamada/dizinde benzersizlik için oluşturulan değeri denetler. Bulunan ilk benzersiz değer döndürülecek bir değer olacaktır. Tüm değerler hedefte zaten mevcutsa, giriş biriktirme listesini alır ve bu nedenle denetim günlüklerine kaydedilir. Sağlanbağlanabilen bağımsız değişken sayısına üst sınır yoktur.
 
 
  - Bu, üst düzey bir işlevdir, iç içe geçirilemez.
@@ -477,59 +485,59 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
  - Bu işlev şu anda yalnızca "Workday for User sağlamasını Active Directory" için desteklenir. Diğer sağlama uygulamalarıyla birlikte kullanılamaz. 
 
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **uniqueValueRule1 ... uniqueValueRuleN** |En az 2 gerekir, üst sınır yoktur |Dize | Değerlendirilecek benzersiz değer oluşturma kurallarının listesi. |
 
 
 ---
 ### <a name="singleapproleassignment"></a>Singleapprotaatama
-**Çalışmayacaktır**<br> Singleapprotaatama ([Approtaatamalar])
+**İşlev:** Singleapprotaatama ([Approtaatamalar])
 
-**Açıklama:**<br> Belirli bir uygulama için kullanıcıya atanan tüm Approtaatamalar listesinden tek bir Approtaatama döndürür. Approtaatamalar nesnesini tek bir rol adı dizesine dönüştürmek için bu işlev gereklidir. En iyi yöntem, tek seferde bir kullanıcıya yalnızca bir Approelatama atandığından emin olmak ve birden çok rol atanmamışsa döndürülen rol dizesinin tahmin edilebilir olamayacağını unutmayın. 
+**Açıklama:** Belirli bir uygulama için kullanıcıya atanan tüm Approtaatamalar listesinden tek bir Approtaatama döndürür. Approtaatamalar nesnesini tek bir rol adı dizesine dönüştürmek için bu işlev gereklidir. En iyi yöntem, tek seferde bir kullanıcıya yalnızca bir Approelatama atandığından emin olmak ve birden çok rol atanmamışsa döndürülen rol dizesinin tahmin edilebilir olamayacağını unutmayın. 
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **AppRoleAssignments** |Gerekli |Dize |**[Approtaatamalar]** nesnesi. |
 
 ---
 ### <a name="split"></a>Bölme
-**Çalışmayacaktır**<br> Böl (kaynak, sınırlayıcı)
+**İşlev:** Böl (kaynak, sınırlayıcı)
 
-**Açıklama:**<br> Belirtilen sınırlayıcı karakteri kullanarak bir dizeyi çok değerli bir diziye böler.
+**Açıklama:** Belirtilen sınırlayıcı karakteri kullanarak bir dizeyi çok değerli bir diziye böler.
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Güncelleştirilecek **kaynak** değeri. |
 | **sınırlayıcı** |Gerekli |Dize |Dizeyi ayırmak için kullanılacak karakteri belirtir (örneğin: ",") |
 
 ---
 ### <a name="stripspaces"></a>StripSpaces
-**Çalışmayacaktır**<br> StripSpaces (kaynak)
+**İşlev:** StripSpaces (kaynak)
 
-**Açıklama:**<br> Kaynak dizeden tüm boşluk ("") karakterlerini kaldırır.
+**Açıklama:** Kaynak dizeden tüm boşluk ("") karakterlerini kaldırır.
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Güncelleştirilecek **kaynak** değeri. |
 
 ---
 ### <a name="switch"></a>Anahtar
-**Çalışmayacaktır**<br> Anahtar (kaynak, defaultValue, KEY1, değer1, key2, değer2,...)
+**İşlev:** Anahtar (kaynak, defaultValue, KEY1, değer1, key2, değer2,...)
 
-**Açıklama:**<br> **Kaynak** değeri bir **anahtarla**eşleştiğinde, bu **anahtar**için **değer** döndürür. **Kaynak** değeri herhangi bir anahtara eşleşmezse, **DefaultValue**döndürür.  **Anahtar** ve **değer** parametrelerinin her zaman çiftler halinde gelmesi gerekir. İşlev her zaman çift sayıda parametre bekler. İşlev, yönetici gibi başvuru öznitelikleri için kullanılmamalıdır. 
+**Açıklama:** **Kaynak** değeri bir **anahtarla**eşleştiğinde, bu **anahtar**için **değer** döndürür. **Kaynak** değeri herhangi bir anahtara eşleşmezse, **DefaultValue**döndürür.  **Anahtar** ve **değer** parametrelerinin her zaman çiftler halinde gelmesi gerekir. İşlev her zaman çift sayıda parametre bekler. İşlev, yönetici gibi başvuru öznitelikleri için kullanılmamalıdır. 
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Güncelleştirilecek **kaynak** değeri. |
 | **Değerinin** |İsteğe Bağlı |Dize |Kaynak herhangi bir anahtara eşleşmezse kullanılacak varsayılan değer. Boş dize ("") olabilir. |
@@ -538,66 +546,67 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 ---
 ### <a name="tolower"></a>ToLower
-**Çalışmayacaktır**<br> ToLower (kaynak, kültür)
+**İşlev:** ToLower (kaynak, kültür)
 
-**Açıklama:**<br> Bir *kaynak* dize değeri alır ve belirtilen kültür kurallarını kullanarak küçük harfe dönüştürür. Belirtilen bir *kültür* bilgisi yoksa, sabit kültür kullanacaktır.
+**Açıklama:** Bir *kaynak* dize değeri alır ve belirtilen kültür kurallarını kullanarak küçük harfe dönüştürür. Belirtilen bir *kültür* bilgisi yoksa, sabit kültür kullanacaktır.
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı |
 | **ayarı** |İsteğe Bağlı |Dize |RFC 4646 ' i temel alan kültür adı biçimi *languagecode2-Country/regioncode2*, burada *languagecode2* iki harfli dil kodu ve *Ülke/regioncode2* ise iki harfli alt kültür kodudur. Japonca (Japonya) için ja-JP ve Ingilizce (Birleşik Devletler) için en-US sayılabilir. İki harfli dil kodunun kullanılamadığı durumlarda ISO 639-2 ' den türetilen üç harfli bir kod kullanılır.|
 
 ---
 ### <a name="toupper"></a>ToUpper
-**Çalışmayacaktır**<br> ToUpper (kaynak, kültür)
+**İşlev:** ToUpper (kaynak, kültür)
 
-**Açıklama:**<br> Bir *kaynak* dize değeri alır ve belirtilen kültür kurallarını kullanarak büyük harfe dönüştürür. Belirtilen bir *kültür* bilgisi yoksa, sabit kültür kullanacaktır.
+**Açıklama:** Bir *kaynak* dize değeri alır ve belirtilen kültür kurallarını kullanarak büyük harfe dönüştürür. Belirtilen bir *kültür* bilgisi yoksa, sabit kültür kullanacaktır.
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
 | **ayarı** |İsteğe Bağlı |Dize |RFC 4646 ' i temel alan kültür adı biçimi *languagecode2-Country/regioncode2*, burada *languagecode2* iki harfli dil kodu ve *Ülke/regioncode2* ise iki harfli alt kültür kodudur. Japonca (Japonya) için ja-JP ve Ingilizce (Birleşik Devletler) için en-US sayılabilir. İki harfli dil kodunun kullanılamadığı durumlarda ISO 639-2 ' den türetilen üç harfli bir kod kullanılır.|
 
 ---
 ### <a name="word"></a>Word
-**Çalışmayacaktır**<br> Sözcük (dize, WordNumber, sınırlayıcılar)
+**İşlev:** Sözcük (dize, WordNumber, sınırlayıcılar)
 
-**Açıklama:**<br> Word işlevi, kullanılacak sınırlayıcıları ve döndürülecek sözcük numarasını açıklayan parametrelere göre dize içinde içerilen bir sözcük döndürür. Sınırlayıcıdaki karakterlerden biri tarafından ayrılan dizedeki her karakter dizesi, sözcük olarak tanımlanır:
+**Açıklama:** Word işlevi, kullanılacak sınırlayıcıları ve döndürülecek sözcük numarasını açıklayan parametrelere göre dize içinde içerilen bir sözcük döndürür. Sınırlayıcıdaki karakterlerden biri tarafından ayrılan dizedeki her karakter dizesi, sözcük olarak tanımlanır:
 
 Sayı < 1 ise boş bir dize döndürür.
 Dize null ise, boş bir dize döndürür.
 Dize sayı olan sözcüklerden daha az sözcük içeriyorsa veya dize sınırlayıcılar tarafından tanımlanan herhangi bir sözcük içermiyorsa, boş bir dize döndürülür.
 
-**Parametrelere**<br> 
+**Parametrelere** 
 
-| Adı | Gerekli/yinelenen | Tür | Notlar |
+| Ad | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **Dize** |Gerekli |Çoklu değerli öznitelik |Bir sözcüğün döndürdüğü dize.|
 | **WordNumber** |Gerekli | Tamsayı | Hangi sözcük sayısının dönmesi gerektiğini tanımlayan sayı|
 | **ıcı** |Gerekli |Dize| Sözcükleri tanımlamak için kullanılması gereken sınırlayıcıları temsil eden bir dize|
 
-**Örnek:**<br>
-Word ("hızlı kahverengi Fox", 3, "")                                                                                       
-"Kahverengi" döndürür
+**Örneğinde**
+`Word("The quick brown fox",3," ")`
 
-Word ("this, String!&çok sayıda ayırıcı içeriyor", 3, ",! & #")                                                                       
-"İçerir" sonucunu döndürür
+"Kahverengi" döndürür.
+
+`Word("This,string!has&many separators",3,",!&#")`
+
+"İçerir" sonucunu döndürür.
 
 ---
 
 ## <a name="examples"></a>Örnekler
 ### <a name="strip-known-domain-name"></a>Bilinen etki alanı adını şeridi
-Kullanıcı adı almak için kullanıcının e-postalarından bilinen bir etki alanı adını çıkarmanız gerekir. <br>
-Örneğin, etki alanı "contoso.com" ise aşağıdaki ifadeyi kullanabilirsiniz:
+Kullanıcı adı almak için kullanıcının e-postalarından bilinen bir etki alanı adını çıkarmanız gerekir. Örneğin, etki alanı "contoso.com" ise aşağıdaki ifadeyi kullanabilirsiniz:
 
-**İfadesini** <br>
+**İfadesini** 
 `Replace([mail], "@contoso.com", , ,"", ,)`
 
-**Örnek giriş/çıkış:** <br>
+**Örnek giriş/çıkış:** 
 
 * **Giriş** (posta): " john.doe@contoso.com "
 * **Çıkış**: "John. tikan"
@@ -605,10 +614,10 @@ Kullanıcı adı almak için kullanıcının e-postalarından bilinen bir etki a
 ### <a name="append-constant-suffix-to-user-name"></a>Sabit son eki Kullanıcı adına Ekle
 Salesforce korumalı alanı kullanıyorsanız, eşitlemeden önce tüm kullanıcı adlarınıza ek bir sonek eklemeniz gerekebilir.
 
-**İfadesini** <br>
+**İfadesini** 
 `Append([userPrincipalName], ".test")`
 
-**Örnek giriş/çıkış:** <br>
+**Örnek giriş/çıkış:** 
 
 * **Giriş**: (UserPrincipalName): " John.Doe@contoso.com "
 * **Çıkış**: " John.Doe@contoso.com.test "
@@ -616,10 +625,10 @@ Salesforce korumalı alanı kullanıyorsanız, eşitlemeden önce tüm kullanıc
 ### <a name="generate-user-alias-by-concatenating-parts-of-first-and-last-name"></a>Birinci ve soyadı parçalarını birleştirerek kullanıcı diğer adı oluştur
 Kullanıcının ilk adının ilk 3 harfini ve Kullanıcı adının ilk 5 harfini ayırarak bir kullanıcı diğer adı oluşturmanız gerekir.
 
-**İfadesini** <br>
+**İfadesini** 
 `Append(Mid([givenName], 1, 3), Mid([surname], 1, 5))`
 
-**Örnek giriş/çıkış:** <br>
+**Örnek giriş/çıkış:** 
 
 * **Giriş** ("John"): "John"
 * **Giriş** (soyad): "tikan"
@@ -628,10 +637,9 @@ Kullanıcının ilk adının ilk 3 harfini ve Kullanıcı adının ilk 5 harfini
 ### <a name="remove-diacritics-from-a-string"></a>Bir dizeden aksanları kaldırma
 Vurgu işaretleri içeren karakterleri, vurgu işaretleri içermeyen denk karakterlerle değiştirmeniz gerekir.
 
-**İfadesini** <br>
-Normalizediacritika ([1})
+**İfade:** Normalizediacritika ([1})
 
-**Örnek giriş/çıkış:** <br>
+**Örnek giriş/çıkış:** 
 
 * **Giriş** (Zoë): ""
 * **Çıkış**: "Bure"
@@ -639,19 +647,17 @@ Normalizediacritika ([1})
 ### <a name="split-a-string-into-a-multi-valued-array"></a>Dizeyi çok değerli bir diziye bölme
 Virgülle ayrılmış dizelerin bir listesini almanız ve bunları Salesforce 'ın PermissionSets özniteliği gibi bir çok değerli özniteliğe takılmış bir diziye bölmeniz gerekir. Bu örnekte, Azure AD 'de extensionAttribute5 'de izin kümelerinin bir listesi doldurulmuştur.
 
-**İfadesini** <br>
-Böl ([extensionAttribute5], ",")
+**İfade:** Böl ([extensionAttribute5], ",")
 
-**Örnek giriş/çıkış:** <br>
+**Örnek giriş/çıkış:** 
 
 * **Giriş** (extensionAttribute5): "PermissionSetOne, Izinleri Izinionsettingwo"
 * **Çıkış**: ["Permissionsetone", "Permissionsettingwo"]
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>Belirli bir biçimde bir dize olarak çıkış tarihi
-Belirli bir biçimde bir SaaS uygulamasına tarihler göndermek istiyorsunuz. <br>
-Örneğin, ServiceNow için tarihleri biçimlendirmek istiyorsunuz.
+Belirli bir biçimde bir SaaS uygulamasına tarihler göndermek istiyorsunuz. Örneğin, ServiceNow için tarihleri biçimlendirmek istiyorsunuz.
 
-**İfadesini** <br>
+**İfadesini** 
 
 `FormatDateTime([extensionAttribute1], "yyyyMMddHHmmss.fZ", "yyyy-MM-dd")`
 
@@ -662,10 +668,9 @@ Belirli bir biçimde bir SaaS uygulamasına tarihler göndermek istiyorsunuz. <b
 
 ### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Önceden tanımlanmış seçenek kümesine göre bir değeri değiştirin
 
-Kullanıcının saat dilimini Azure AD 'de depolanan durum koduna göre tanımlamanız gerekir. <br>
-Durum kodu önceden tanımlanmış seçeneklerle eşleşmezse, "Avustralya/Sidney" varsayılan değerini kullanın.
+Kullanıcının saat dilimini Azure AD 'de depolanan durum koduna göre tanımlamanız gerekir. Durum kodu önceden tanımlanmış seçeneklerle eşleşmezse, "Avustralya/Sidney" varsayılan değerini kullanın.
 
-**İfadesini** <br>
+**İfadesini** 
 `Switch([state], "Australia/Sydney", "NSW", "Australia/Sydney","QLD", "Australia/Brisbane", "SA", "Australia/Adelaide")`
 
 **Örnek giriş/çıkış:**
@@ -676,7 +681,7 @@ Durum kodu önceden tanımlanmış seçeneklerle eşleşmezse, "Avustralya/Sidne
 ### <a name="replace-characters-using-a-regular-expression"></a>Normal ifade kullanarak karakterleri değiştirme
 Normal ifade değeriyle eşleşen karakterler bulmanız ve bunları kaldırmanız gerekir.
 
-**İfadesini** <br>
+**İfadesini** 
 
 Replace ([Mailtakma ad],, "[a-zA-Z_] *",, "",,)
 
@@ -699,7 +704,7 @@ Aşağıdaki örnekte, UPN değeri PreferredFirstName ve PreferredLastName kayna
 ### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>UserPrincipalName (UPN) özniteliği için benzersiz değer oluştur
 Kullanıcının adı, ikinci adı ve soyadı temelinde, UPN özniteliği için bir değer oluşturmanız ve değeri UPN özniteliğine atamadan önce hedef AD dizininde benzersizliği denetlemeniz gerekir.
 
-**İfadesini** <br>
+**İfadesini** 
 
 ```ad-attr-mapping-expr
     SelectUniqueValue( 
@@ -720,10 +725,10 @@ Kullanıcının adı, ikinci adı ve soyadı temelinde, UPN özniteliği için b
 ### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>NULL değilse Flow posta değeri, aksi takdirde Flow userPrincipalName
 Varsa posta özniteliğini akışa almak istiyorsunuz. Aksi takdirde, bunun yerine userPrincipalName değerini akmasını istersiniz.
 
-**İfadesini** <br>
+**İfadesini** 
 `Coalesce([mail],[userPrincipalName])`
 
-**Örnek giriş/çıkış:** <br>
+**Örnek giriş/çıkış:** 
 
 * **Giriş** (posta): null
 * **Giriş** (UserPrincipalName): " John.Doe@contoso.com "

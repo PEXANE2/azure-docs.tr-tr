@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 10/01/2020
 ms.author: inhenkel
-ms.openlocfilehash: 515379a4207a582b441d132b1c28ff11bc83c714
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23baa6ed92aa01251b4c7ccf34ef784910a0321f
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91651761"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019843"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services V2 ve v3 karşılaştırması
 
@@ -74,7 +74,7 @@ Bu makalede, Azure Media Services v3 sürümünde tanıtılan ve iki sürüm ara
 
 V3 API 'si, v2 API 'sine göre aşağıdaki özellik boşluklarını içerir. Boşlukların kapatılması devam ediyor.
 
-* [Premium kodlayıcı](../previous/media-services-premium-workflow-encoder-formats.md) ve eski [Medya analizi Işlemcileri](../previous/media-services-analytics-overview.md) (Azure Media Services Dizin Oluşturucu 2 Preview, yüz Redactor vb.) v3 aracılığıyla erişilemez.<br/>Media Indexer 1 veya 2 Preview 'dan geçiş yapmak isteyen müşteriler, v3 API 'sindeki AudioAnalyzer ön ayarını hemen kullanabilir.  Bu yeni önayar, eski Media Indexer 1 veya 2 ' den daha fazla özellik içeriyor. 
+* [Premium kodlayıcı](../previous/media-services-encode-asset.md) ve eski [Medya analizi Işlemcileri](../previous/legacy-components.md) (Azure Media Services Dizin Oluşturucu 2 Preview, yüz Redactor vb.) v3 aracılığıyla erişilemez.<br/>Media Indexer 1 veya 2 Preview 'dan geçiş yapmak isteyen müşteriler, v3 API 'sindeki AudioAnalyzer ön ayarını hemen kullanabilir.  Bu yeni önayar, eski Media Indexer 1 veya 2 ' den daha fazla özellik içeriyor. 
 * V2 API 'lerinde [Media Encoder Standard gelişmiş özelliklerin](../previous/media-services-advanced-encoding-with-mes.md) birçoğu şu anda v3 'de bulunmamaktadır:
   
     * Kıymetlerin dikiş
