@@ -10,12 +10,12 @@ ms.workload: media
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b636d1cdf2e4b9bd137768e22240d8a47d724a97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 363bb5389eda8336d04b1ff457f8246e89a042d8
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266043"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014401"
 ---
 # <a name="deliver-content-to-customers"></a>Müşterilere içerik sunma
 
@@ -69,7 +69,7 @@ Konum belirleyicilerinin süre sonu tarihleri vardır. Azure portal, gelecekte b
 > 
 > 
 
-Bir bulucunun sona erme tarihini güncelleştirmek için [REST](/rest/api/media/operations/locator#update_a_locator) ya da [.NET](https://go.microsoft.com/fwlink/?LinkID=533259) API’lerini kullanın. SAS bulucunun sona erme tarihini güncelleştirdiğinizde URL’nin değiştiğini unutmayın.
+Bir bulucunun sona erme tarihini güncelleştirmek için [REST](/rest/api/media/operations/locator#update_a_locator) ya da [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client.ilocator) API’lerini kullanın. SAS bulucunun sona erme tarihini güncelleştirdiğinizde URL’nin değiştiğini unutmayın.
 
 Konumlandırıcı, Kullanıcı başına erişim denetimini yönetmek için tasarlanmamıştır. Dijital Rights Management (DRM) çözümlerini kullanarak, bireysel kullanıcılara farklı erişim hakları verebilirsiniz. Daha fazla bilgi için bkz. [medyayı güvenli hale getirme](/previous-versions/azure/dn282272(v=azure.100)).
 

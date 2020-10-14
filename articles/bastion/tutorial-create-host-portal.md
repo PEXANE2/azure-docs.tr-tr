@@ -5,20 +5,18 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: tutorial
-ms.date: 10/09/2020
+ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: e4f8bc38a79fdbb84624e126c84d679a906a701b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c5361a777b2fdab20fab70214ddcb3bbf5248acb
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91980179"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015268"
 ---
-# <a name="tutorial-create-an-azure-bastion-host-and-connect-to-a-windows-vm"></a>Öğretici: bir Azure savunma ana bilgisayarı oluşturma ve Windows VM 'ye bağlanma
+# <a name="tutorial-create-an-azure-bastion-host-and-connect-to-a-windows-vm-through-a-browser"></a>Öğretici: bir Azure savunma ana bilgisayarı oluşturma ve bir tarayıcıdan Windows VM 'ye bağlanma
 
-Azure portal aracılığıyla bir tarayıcı aracılığıyla bir Windows sanal makinesine (VM) bağlanabilirsiniz. Özel bir IP adresi kullanarak doğrudan TLS üzerinden tarayıcı aracılığıyla sanal makinenize bağlanın. İstemci yazılımını yerel olarak yüklemeniz ve yapılandırmanız gerekmez.
-
-Savunma kullanarak bir VM 'ye bağlanmak için, sanal ağınızda (VNet) Azure savunma hizmetini sağlamanız gerekir. Hizmet sağlandıktan sonra, VM 'nin güvenlik yapılandırmasına bağlı olarak, bu bağlantı türü sanal ağ üzerindeki tüm VM 'Ler tarafından kullanılabilir. Azure savunma dağıtımı, abonelik/hesap veya sanal makine başına değil, sanal ağ başına değildir.
+Bu öğreticide, Azure savunma ve Azure portal kullanarak tarayıcınız aracılığıyla bir sanal makineye nasıl bağlanabilmeniz gösterilmektedir. Azure portal, sanal ağınıza savunma dağıtırsınız. Savunma 'yı dağıttıktan sonra, Azure portal kullanarak bir VM 'ye özel IP adresi aracılığıyla bağlanırsınız. VM 'nizin genel bir IP adresi veya özel bir yazılıma ihtiyacı yoktur. Hizmet sağlandıktan sonra, RDP/SSH deneyimi aynı sanal ağdaki tüm sanal makineler için kullanılabilir. Azure savunma hakkında daha fazla bilgi için bkz. [Azure](bastion-overview.md)savunma nedir?.
 
 Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 

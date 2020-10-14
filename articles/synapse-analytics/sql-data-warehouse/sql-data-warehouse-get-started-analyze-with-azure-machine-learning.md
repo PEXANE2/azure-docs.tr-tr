@@ -12,18 +12,18 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
-ms.openlocfilehash: 9cf65b2fdeb7faa03b950593db86dd32a4ef91a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea4038e88d41a089958d4199e4c5a00f0d2acabd
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86495851"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015575"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Azure Machine Learning ile veri çözümleme
 
 Bu öğretici, tahmine dayalı bir makine öğrenimi modeli oluşturmak için [Azure Machine Learning tasarımcısını](https://docs.microsoft.com/azure/machine-learning/concept-designer) kullanır. Model, Azure SYNAPSE 'de depolanan verileri temel alır. Öğreticinin senaryosu, bir müşterinin bir bisiklet satın alabileceği ya da Adventure Works 'Ün hedeflenen bir pazarlama kampanyası oluşturabileceğiniz şekilde tahmin edilmesine yönelik bir tahmin sağlamaktır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide ilerleyebilmeniz için şunlar gereklidir:
 
@@ -56,7 +56,7 @@ FROM [dbo].[vTargetMail]
 
 Veriler Azure Data Lake Storage kullanılabilir olduktan sonra, [Azure Storage Services 'a bağlanmak](https://docs.microsoft.com/azure/machine-learning/how-to-access-data)için Azure Machine Learning Içindeki veri depoları kullanılır. Bir veri deposu ve karşılık gelen bir veri kümesi oluşturmak için aşağıdaki adımları izleyin:
 
-1. Azure Machine Learning Studio 'yu Azure portal 'den başlatın veya [Azure Machine Learning Studio](https://ml.azure.com/)'da oturum açın.
+1. Azure portal Azure Machine Learning Studio 'yu başlatın veya [Azure Machine Learning Studio](https://ml.azure.com/)'da oturum açın.
 
 1. **Yönet** bölümündeki sol bölmede bulunan **veri depoları** ' na tıklayın ve ardından **Yeni veri deposu**' na tıklayın.
 

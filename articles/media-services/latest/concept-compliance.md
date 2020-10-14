@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: e4c0ee0b1a049a7e82cbd1fac8e261fff5fdf375
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 884b1b85da5b52101ae5a0053003d47260a1134d
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269735"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015830"
 ---
 # <a name="media-services-regulatory-compliance"></a>Yasal uyumluluk Media Services
 
@@ -33,11 +33,11 @@ Media Services kamu hizmetleri DoD CC SRG IL 2, DoD CC SRG Il 4, DoD CC SRG Il 5
 
 3PAO ve JAB tarafından Media Services gözden geçirmesi 2020 için planlanmıyor.
 
-Azure hizmetleri uyumluluğu hakkında daha fazla bilgi için [Fedrampa ve DOD CC SRG denetim kapsamı](https://docs.microsoft.com/azure/azure-government/compliance/azure-services-in-fedramp-auditscope) makalesini okuyun.
+Azure hizmetleri uyumluluğu hakkında daha fazla bilgi için [Fedrampa ve DOD CC SRG denetim kapsamı](../../azure-government/compliance/azure-services-in-fedramp-auditscope.md) makalesini okuyun.
 
 ## <a name="azure-compliance-documentation"></a>Azure uyumluluk belgeleri
 
-Kuruluşunuzun küresel, ABD Kamu, bölgesel, finans hizmetleri, sağlık, medya ve üretim için yasal veya yasal standartlarla uyumlu olması gerekiyorsa, [Azure uyumluluk belgeleriyle](https://docs.microsoft.com/azure/compliance/)başlayın.
+Kuruluşunuzun küresel, ABD Kamu, bölgesel, finans hizmetleri, sağlık, medya ve üretim için yasal veya yasal standartlarla uyumlu olması gerekiyorsa, [Azure uyumluluk belgeleriyle](../../compliance/index.yml)başlayın.
 
 Ayrıca, denetim raporları, gizlilik ve Genel Veri Koruma Yönetmeliği (GDPR), uyumluluk şemaları, ülke ve bölgesel yönergeler, uygulama ve eşlemeler için denetim listesi ve teknik incelemeler ve Analist Raporları gibi ek uyumluluk kaynakları da bulacaksınız.
 

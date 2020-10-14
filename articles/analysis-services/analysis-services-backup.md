@@ -8,16 +8,16 @@ ms.date: 07/13/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 66d09c2faa52cee3e94402be708d654b548c0de1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af1850f77c1d13c761bfc2a143074b5067b349b4
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86507004"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014061"
 ---
 # <a name="analysis-services-database-backup-and-restore"></a>Analysis Services veritabanı yedekleme ve geri yükleme
 
-Tablo modeli veritabanlarının Azure Analysis Services yedeklenmesi, şirket içi Analysis Services kadar çok aynıdır. Birincil fark, yedekleme dosyalarınızı depoladığınız yerdir. Yedekleme dosyaları, bir [Azure depolama hesabındaki](../storage/common/storage-create-storage-account.md)bir kapsayıcıya kaydedilmelidir. Zaten sahip olduğunuz bir depolama hesabı ve kapsayıcısı kullanabilir ya da sunucunuz için depolama ayarları yapılandırılırken oluşturulabilir.
+Tablo modeli veritabanlarının Azure Analysis Services yedeklenmesi, şirket içi Analysis Services kadar çok aynıdır. Birincil fark, yedekleme dosyalarınızı depoladığınız yerdir. Yedekleme dosyaları, bir [Azure depolama hesabındaki](../storage/common/storage-account-create.md)bir kapsayıcıya kaydedilmelidir. Zaten sahip olduğunuz bir depolama hesabı ve kapsayıcısı kullanabilir ya da sunucunuz için depolama ayarları yapılandırılırken oluşturulabilir.
 
 > [!NOTE]
 > Depolama hesabı oluşturmak, yeni bir faturalanabilir hizmete neden olabilir. Daha fazla bilgi için bkz. [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/blobs/).
@@ -75,10 +75,10 @@ Yedeklemeden önce, sunucunuz için depolama ayarlarını yapılandırmanız ger
 
 
 ### <a name="powershell"></a>PowerShell
-[Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase) cmdlet 'ini kullanın.
+[Backup-ASDatabase](/powershell/module/sqlserver/backup-asdatabase) cmdlet 'ini kullanın.
 
 ## <a name="restore"></a>Geri Yükleme
-Geri yükleme sırasında, yedekleme dosyanız sunucunuz için yapılandırdığınız depolama hesabında olmalıdır. Bir yedekleme dosyasını şirket içi bir konumdan depolama hesabınıza taşımanız gerekiyorsa [Microsoft Azure Depolama Gezgini](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) veya [AzCopy](../storage/common/storage-use-azcopy.md) komut satırı yardımcı programını kullanın. 
+Geri yükleme sırasında, yedekleme dosyanız sunucunuz için yapılandırdığınız depolama hesabında olmalıdır. Bir yedekleme dosyasını şirket içi bir konumdan depolama hesabınıza taşımanız gerekiyorsa [Microsoft Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md) veya [AzCopy](../storage/common/storage-use-azcopy-v10.md) komut satırı yardımcı programını kullanın. 
 
 
 
@@ -102,11 +102,11 @@ Geri yükleme sırasında, yedekleme dosyanız sunucunuz için yapılandırdığ
 
 ### <a name="powershell"></a>PowerShell
 
-[Restore-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase) cmdlet 'ini kullanın.
+[Restore-ASDatabase](/powershell/module/sqlserver/restore-asdatabase) cmdlet 'ini kullanın.
 
 
 ## <a name="related-information"></a>İlgili bilgiler
 
-[Azure depolama hesapları](../storage/common/storage-create-storage-account.md)  
+[Azure depolama hesapları](../storage/common/storage-account-create.md)  
 [Yüksek kullanılabilirlik](analysis-services-bcdr.md)      
 [Analysis Services ağ bağlantısı SSS](analysis-services-network-faq.md)

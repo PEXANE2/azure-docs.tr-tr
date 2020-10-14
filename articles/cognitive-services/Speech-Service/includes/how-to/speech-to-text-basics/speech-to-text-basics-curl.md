@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/09/2020
 ms.author: v-jawe
-ms.openlocfilehash: 1ec0281145609f9ae06ad07e1ad2cfd2b7f9aba8
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 36d12b29054f736b65af5ac411adbc26d870b982
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940822"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014163"
 ---
 Bu hızlı başlangıçta, konuşma hizmeti ve kıvrımlı kullanarak konuşmayı metne dönüştürmeyi öğreneceksiniz.
 
@@ -19,7 +19,7 @@ Konuşmadan metne yönelik kavramlar hakkında üst düzey bir bakış için bkz
 
 Bu makalede bir Azure hesabınız ve konuşma hizmeti aboneliğiniz olduğunu varsaymaktadır. Hesabınız ve aboneliğiniz yoksa [konuşma hizmetini ücretsiz deneyin](../../../overview.md#try-the-speech-service-for-free).
 
-## <a name="convert-text-to-speech"></a>Metni konuşmaya Dönüştür
+## <a name="convert-speech-to-text"></a>Konuşmayı metne dönüştürme
 
 Komut isteminde aşağıdaki komutu çalıştırın. Komutuna aşağıdaki değerleri eklemeniz gerekir.
 - Konuşma hizmeti abonelik anahtarınız.

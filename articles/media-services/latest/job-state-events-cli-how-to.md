@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 072bfb22eba82d7a39d985f72cbc78c0639a4795
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b646965be03b5d3f57483887e256d33262192375
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90976827"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013296"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>Azure CLı kullanarak Event Grid Media Services olaylar oluşturma ve izleme
 
@@ -32,7 +32,7 @@ Bu makalede, Azure CLı kullanarak Azure Media Services hesabınıza yönelik ol
 - Etkin bir Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 - CLı 'yi yerel olarak yükleyip kullanın, bu makale için Azure CLı 2,0 veya sonraki bir sürümü gerekir. Kullandığınız sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli). 
 
-    Şu anda, tüm [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) komutları Azure Cloud Shell çalışmaz. CLı 'nın yerel olarak kullanılması önerilir.
+    Şu anda, tüm [Media Services v3 CLI](/cli/azure/ams) komutları Azure Cloud Shell çalışmaz. CLı 'nın yerel olarak kullanılması önerilir.
 
 - [Media Services hesabı oluşturun](./create-account-howto.md).
 

@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b4c48f25f1d4bd3822a93d2c780dd148d9e29827
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 38072e95ed89d8fbc095e2f8ed41ea1381636300
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940540"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015164"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Azure rol tabanlı erişim denetimi (Önizleme) ile Key Vault anahtarlarına, sertifikalara ve gizli anahtarlara erişim sağlama
 
@@ -37,7 +37,7 @@ Tek tek anahtarlar, gizli diziler ve sertifikalar izinleri yalnızca belirli sen
 
 -   Katmanlar arasında erişim denetimini ayırmak için gereken çok katmanlı uygulamalar
 
--   Uygulamaların ilgili anahtar kasasındaki gizli dizi alt kümelerine erişmesi gerektiğinde ortak gizli dizileri olan paylaşılan anahtar Kasası
+-   Birden çok uygulama arasında bireysel gizli dizi paylaşma
 
 Azure Key Vault yönetim yönergeleri hakkında daha fazla bilgi için bkz.:
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 28947d1fa4ece5d6285651ef07342cae06ad8bc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d114017d5e5dfecfe20afc69849763a87aadd41
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86077380"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015345"
 ---
 # <a name="automation-with-service-principals"></a>Hizmet sorumlularıyla otomasyon
 
@@ -33,8 +33,8 @@ Hizmet sorumluları Azure portal veya PowerShell kullanarak oluşturulabilir. Da
 
 Hizmet sorumlusu kimlik bilgileri ve sertifikaları, runbook işlemleri için Azure Otomasyonu 'nda güvenli bir şekilde depolanabilir. Daha fazla bilgi edinmek için şu makalelere bakın:
 
-[Azure Automation 'da kimlik bilgisi varlıkları](../automation/automation-credentials.md)   
-[Azure Otomasyonu'ndaki sertifika varlıkları](../automation/automation-certificates.md)
+[Azure Automation 'da kimlik bilgisi varlıkları](../automation/shared-resources/credentials.md)   
+[Azure Otomasyonu'ndaki sertifika varlıkları](../automation/shared-resources/certificates.md)
 
 ## <a name="add-service-principals-to-server-admin-role"></a>Sunucu Yöneticisi rolüne hizmet sorumluları ekleme
 
@@ -92,7 +92,7 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO ve ADOMD 
 
-İstemci uygulamalarıyla ve web uygulamalarıyla bağlantı kurarken, NuGet’ten [AMO ve ADOMD istemci kitaplıkları](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) sürüm 15.0.2 ve üzeri yüklenebilir paketleri bağlantı dizelerinde şu söz dizimiyle hizmet sorumlularının kullanılmasını destekler: `app:AppID` ve parola veya `cert:thumbprint`. 
+İstemci uygulamalarıyla ve web uygulamalarıyla bağlantı kurarken, NuGet’ten [AMO ve ADOMD istemci kitaplıkları](/analysis-services/client-libraries?view=azure-analysis-services-current) sürüm 15.0.2 ve üzeri yüklenebilir paketleri bağlantı dizelerinde şu söz dizimiyle hizmet sorumlularının kullanılmasını destekler: `app:AppID` ve parola veya `cert:thumbprint`. 
 
 Aşağıdaki örnekte bir model veritabanı yenileme işlemi gerçekleştirmek için `appID` ve `password` kullanılmıştır:
 
@@ -109,8 +109,8 @@ db.Model.SaveChanges();
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure PowerShell oturum açın](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
+[Azure PowerShell oturum açın](/powershell/azure/authenticate-azureps)   
 [Logic Apps ile yenileme](analysis-services-refresh-logic-app.md)  
 [Azure Otomasyonu ile yenileme](analysis-services-refresh-azure-automation.md)  
 [Sunucu Yöneticisi rolüne hizmet sorumlusu ekleme](analysis-services-addservprinc-admins.md)  
-[Hizmet sorumluları ile Power BI Premium çalışma alanını ve veri kümesi görevlerini otomatikleştirme](https://docs.microsoft.com/power-bi/admin/service-premium-service-principal) 
+[Hizmet sorumluları ile Power BI Premium çalışma alanını ve veri kümesi görevlerini otomatikleştirme](/power-bi/admin/service-premium-service-principal)

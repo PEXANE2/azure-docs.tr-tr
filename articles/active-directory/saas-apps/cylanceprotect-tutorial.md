@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 5457730494d509a2923ce929f41e397cb6064126
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 236c24ac63aef6b802edf53f9c414a522c2308e4
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88550097"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015166"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cylanceprotect"></a>Öğretici: CylancePROTECT ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, CylancePROTECT 'i Azure Active Directory (Azure AD) ile tümle�
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -79,7 +79,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     a. **Tanımlayıcı** metin kutusuna URL 'yi yazın:
     
-    | Region | URL değeri |
+    | Bölge | URL değeri |
     |----------|---------|
     | Asia-Pacific Kuzeydoğu (APNE1)| `https://login-apne1.cylance.com/EnterpriseLogin/ConsumeSaml`|
     | Asia-Pacific Güneydoğu (AU) | `https://login-au.cylance.com/EnterpriseLogin/ConsumeSaml` |
@@ -89,7 +89,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     b. **Yanıt URL** 'si metin kutusuna URL 'yi yazın:
     
-    | Region | URL değeri |
+    | Bölge | URL değeri |
     |----------|---------|
     | Asia-Pacific Kuzeydoğu (APNE1)|`https://login-apne1.cylance.com/EnterpriseLogin/ConsumeSaml`|
     | Asia-Pacific Güneydoğu (AU)|`https://login-au.cylance.com/EnterpriseLogin/ConsumeSaml`|
@@ -144,7 +144,7 @@ Bu bölümde, CylancePROTECT erişimi vererek Azure çoklu oturum açma özelli�
 
 ## <a name="configure-cylanceprotect-sso"></a>CylancePROTECT SSO 'Yu yapılandırma
 
-**Cylanceprotect** tarafında çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (Base64)** ve Azure Portal ' den [cylanceprotect destek ekibine](https://www.cylance.com/en-us/resources/support/support-overview.html)doğru kopyalanmış URL 'leri göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır. Daha fazla bilgi için Cyleme belgelerini kullanın: [https://support.cylance.com/s/article/Use-Microsoft-Azure-with-CylancePROTECT4](https://support.cylance.com/s/article/Use-Microsoft-Azure-with-CylancePROTECT4) .
+**Cylanceprotect** tarafında çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (Base64)** ve Azure Portal ' den [cylanceprotect destek ekibine](https://www.cylance.com/en-us/resources/support/support-overview.html)doğru kopyalanmış URL 'leri göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır. Daha fazla bilgi için Cyleme belgelerini kullanın: [https://support.cylance.com/s/](https://support.cylance.com/s/) .
 
 ### <a name="create-cylanceprotect-test-user"></a>CylancePROTECT test kullanıcısı oluşturma
 

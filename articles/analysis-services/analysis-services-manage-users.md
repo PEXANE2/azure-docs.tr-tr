@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c44ac820349973240328fbb92dea14668b019a12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 032b63700f2842826de916a8f077975689d56911
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400800"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014911"
 ---
 # <a name="authentication-and-user-permissions"></a>Kimlik doğrulaması ve kullanıcı izinleri
 
-Azure Analysis Services, kimlik yönetimi ve Kullanıcı kimlik doğrulaması için Azure Active Directory (Azure AD) kullanır. Bir Azure Analysis Services sunucusuna oluşturan, yöneten veya bağlanan tüm kullanıcıların aynı abonelikte bir [Azure AD kiracısında](../active-directory/fundamentals/active-directory-administer.md) geçerli bir kullanıcı kimliği olması gerekir.
+Azure Analysis Services, kimlik yönetimi ve Kullanıcı kimlik doğrulaması için Azure Active Directory (Azure AD) kullanır. Bir Azure Analysis Services sunucusuna oluşturan, yöneten veya bağlanan tüm kullanıcıların aynı abonelikte bir [Azure AD kiracısında](../active-directory/fundamentals/active-directory-whatis.md) geçerli bir kullanıcı kimliği olması gerekir.
 
-Azure Analysis Services [Azure AD B2B işbirliğini](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)destekler. B2B sayesinde kuruluş dışından gelen kullanıcılar, bir Azure AD dizininde Konuk Kullanıcı olarak davet edilebilir. Konuklar başka bir Azure AD kiracı dizininden veya geçerli herhangi bir e-posta adresinden olabilir. Davet edildikten ve Kullanıcı Azure 'dan e-posta ile gönderilen daveti kabul ettikten sonra, Kullanıcı kimliği kiracı dizinine eklenir. Bu kimlikler, güvenlik gruplarına veya bir sunucu yöneticisi veya veritabanı rolünün üyeleri olarak eklenebilir.
+Azure Analysis Services [Azure AD B2B işbirliğini](../active-directory/external-identities/what-is-b2b.md)destekler. B2B sayesinde kuruluş dışından gelen kullanıcılar, bir Azure AD dizininde Konuk Kullanıcı olarak davet edilebilir. Konuklar başka bir Azure AD kiracı dizininden veya geçerli herhangi bir e-posta adresinden olabilir. Davet edildikten ve Kullanıcı Azure 'dan e-posta ile gönderilen daveti kabul ettikten sonra, Kullanıcı kimliği kiracı dizinine eklenir. Bu kimlikler, güvenlik gruplarına veya bir sunucu yöneticisi veya veritabanı rolünün üyeleri olarak eklenebilir.
 
 ![Azure Analysis Services kimlik doğrulama mimarisi](./media/analysis-services-manage-users/aas-manage-users-arch.png)
 
 ## <a name="authentication"></a>Kimlik Doğrulaması
 
-Tüm istemci uygulamaları ve araçları bir sunucuya bağlanmak için bir veya daha fazla Analysis Services [istemci kitaplığı](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) (amo, MSOLAP, ADOMD) kullanır. 
+Tüm istemci uygulamaları ve araçları bir sunucuya bağlanmak için bir veya daha fazla Analysis Services [istemci kitaplığı](/analysis-services/client-libraries?view=azure-analysis-services-current) (amo, MSOLAP, ADOMD) kullanır. 
 
 Üç istemci kitaplığı da Azure AD etkileşimli akışını ve etkileşimli olmayan kimlik doğrulama yöntemlerini destekler. Etkileşimli olmayan iki yöntem, Active Directory parola ve Active Directory tümleşik kimlik doğrulama yöntemleri, AMOMD ve MSOLAP kullanan uygulamalarda kullanılabilir. Bu iki yöntem hiçbir koşulda açılan iletişim kutularında sonuç vermez.
 
@@ -34,11 +34,11 @@ Kullandığınız istemci uygulamasına veya araca bağlı olarak, kimlik doğru
 
 Power BI Desktop, Visual Studio ve SSMS desteği, Azure Multi-Factor Authentication (MFA) de destekleyen etkileşimli bir yöntem olan evrensel kimlik doğrulaması Active Directory. Azure MFA, basit bir oturum açma işlemi sağlarken verilere ve uygulamalara erişimi korumaya yardımcı olur. Çeşitli doğrulama seçenekleriyle (telefon araması, SMS mesajı, PIN ile akıllı kartlar veya mobil uygulama bildirimi) güçlü kimlik doğrulaması sağlar. Azure AD ile etkileşimli MFA, doğrulama için bir açılır iletişim kutusu ile sonuçlanabilir. **Evrensel kimlik doğrulaması önerilir**.
 
-Azure 'da bir Windows hesabı kullanarak oturum açıyorsanız ve evrensel kimlik doğrulaması seçilmemiş ya da kullanılabilir (Excel), [Active Directory Federasyon Hizmetleri (AD FS) (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md) gerekir. Federasyon ile Azure AD ve Microsoft 365 kullanıcıların kimliği, şirket içi kimlik bilgileri kullanılarak doğrulanır ve Azure kaynaklarına erişebilir.
+Azure 'da bir Windows hesabı kullanarak oturum açıyorsanız ve evrensel kimlik doğrulaması seçilmemiş ya da kullanılabilir (Excel), [Active Directory Federasyon Hizmetleri (AD FS) (AD FS)](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs) gerekir. Federasyon ile Azure AD ve Microsoft 365 kullanıcıların kimliği, şirket içi kimlik bilgileri kullanılarak doğrulanır ve Azure kaynaklarına erişebilir.
 
 ### <a name="sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS)
 
-Azure Analysis Services sunucular, Windows kimlik doğrulaması, Active Directory parola kimlik doğrulaması ve Active Directory evrensel kimlik doğrulaması kullanarak [SSMS v 17.1](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) ve üzeri bağlantıları destekler. Genel olarak, Active Directory evrensel kimlik doğrulaması kullanmanız önerilir:
+Azure Analysis Services sunucular, Windows kimlik doğrulaması, Active Directory parola kimlik doğrulaması ve Active Directory evrensel kimlik doğrulaması kullanarak [SSMS v 17.1](/sql/ssms/download-sql-server-management-studio-ssms) ve üzeri bağlantıları destekler. Genel olarak, Active Directory evrensel kimlik doğrulaması kullanmanız önerilir:
 
 *  Etkileşimli ve etkileşimli olmayan kimlik doğrulama yöntemlerini destekler.
 
@@ -81,4 +81,4 @@ Bu düzeydeki roller, portalda veya Azure Resource Manager şablonlar kullanıla
 [Azure Active Directory gruplarıyla kaynaklara erişimi yönetme](../active-directory/fundamentals/active-directory-manage-groups.md)   
 [Veritabanı rollerini ve kullanıcılarını yönetme](analysis-services-database-users.md)  
 [Sunucu yöneticilerini yönetme](analysis-services-server-admins.md)  
-[Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md)  
+[Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md)

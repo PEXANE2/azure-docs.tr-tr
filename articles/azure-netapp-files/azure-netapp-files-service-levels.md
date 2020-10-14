@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/06/2020
+ms.date: 10/12/2020
 ms.author: b-juche
-ms.openlocfilehash: 1c64bd10b34b61797cb3bf3de0cd7d2aa819e795
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7eac6a40476cffe875a03de49c9c9311ffbf4d39
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777148"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016051"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Azure NetApp Files için hizmet düzeyleri
 Hizmet düzeyleri, bir kapasite havuzunun özniteliğidir. Hizmet düzeyleri, birime atanan kota temelinde kapasite havuzundaki bir birim için izin verilen en yüksek aktarım hızına göre tanımlanır ve farklılaştırılır.
@@ -53,15 +53,15 @@ Aşağıdaki diyagramda, bir otomatik QoS kapasite havuzundaki birimlerin veriml
 
 ![Hizmet düzeyi çizimi](../media/azure-netapp-files/azure-netapp-files-service-levels.png)
 
-* Yukarıdaki örnek 1 ' de, 2 GB kota atanmış Premium Depolama katmanına sahip bir otomatik QoS KAPASİTE havuzundan bir birime, 128 MIB/s (2 TiB * 64 MIB/s) aktarım hızı sınırı atanır. Bu senaryo, kapasite havuzu boyutu veya gerçek birim tüketimi ne olursa olsun geçerlidir.
+* Örnek 1 ' de, 2 TiB kota atanmış Premium Depolama katmanına sahip bir otomatik QoS KAPASİTE havuzundan bir birime, 128 MIB/s (2 TiB * 64 MIB/s) aktarım hızı sınırı atanır. Bu senaryo, kapasite havuzu boyutu veya gerçek birim tüketimi ne olursa olsun geçerlidir.
 
-* Yukarıdaki 2. örnekte, 100 GiB kotasının atandığı Premium Depolama katmanına sahip bir otomatik QoS KAPASİTE havuzundan bir birime, 6,25 MiB/sn (0,09765625 TiB * 64 MiB/s) aktarım hızı sınırı atanır. Bu senaryo, kapasite havuzu boyutu veya gerçek birim tüketimi ne olursa olsun geçerlidir.
+* Örnek 2 ' de, 100 GiB kotasına atanmış Premium Depolama katmanına sahip bir otomatik QoS KAPASİTE havuzundan bir birime, 6,25 MiB/s (0,09765625 TiB * 64 MiB/s) aktarım hızı sınırı atanır. Bu senaryo, kapasite havuzu boyutu veya gerçek birim tüketimi ne olursa olsun geçerlidir.
 
 ### <a name="throughput-limit-examples-of-volumes-in-a-manual-qos-capacity-pool"></a>Bir el ile QoS kapasite havuzundaki birimlerin aktarım hızı sınırı örnekleri 
 
 El ile QoS kapasite havuzu kullanıyorsanız, bir birimin kapasitesini ve iş üretimini bağımsız olarak atayabilirsiniz. El ile QoS kapasite havuzunda bir birim oluşturduğunuzda, üretilen iş (MIB/S) değerini belirtebilirsiniz. Bir el ile QoS kapasite havuzundaki birimlere atanan toplam verimlilik, havuzun boyutuna ve hizmet düzeyine bağlıdır. Bu, (TiB x hizmet düzeyi aktarım hızı/TiB içindeki kapasite havuzu boyutu) tarafından belirlenir. Örneğin, Ultra hizmet düzeyine sahip 10-TiB kapasite havuzunda birimler için kullanılabilir toplam 1280 MIB/sn (10 TiB x 128 MIB/s/TiB) üretilen iş kapasitesi vardır.
 
-SAP HANA sistem için, bu kapasite havuzu aşağıdaki birimleri oluşturmak için kullanılabilir. Her birim, uygulama gereksinimlerinizi karşılamak için bireysel boyut ve aktarım hızı sağlar:
+Örneğin, bir SAP HANA sistem için, bu kapasite havuzu aşağıdaki birimleri oluşturmak için kullanılabilir. Her birim, uygulama gereksinimlerinizi karşılamak için bireysel boyut ve aktarım hızı sağlar:
 
 * SAP HANA veri hacmi: Boyut 4 TiB, en fazla 704 MIB/sn
 * SAP HANA günlük birimi: Boyut 0,5 TiB, en fazla 256 MIB/sn
@@ -76,7 +76,7 @@ Aşağıdaki diyagramda SAP HANA birimlerine yönelik senaryolar gösterilmekted
 
 - [Azure NetApp Files fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage/netapp/)
 - [Azure NetApp Files için maliyet modeli](azure-netapp-files-cost-model.md) 
-- [Kapasite havuzunu ayarlama](azure-netapp-files-set-up-capacity-pool.md)
+- [Kapasite havuzu oluşturma](azure-netapp-files-set-up-capacity-pool.md)
 - [Azure NetApp Files için Hizmet Düzeyi Sözleşmesi (SLA)](https://azure.microsoft.com/support/legal/sla/netapp/)
 - [Birimin hizmet düzeyini dinamik olarak değiştirme](dynamic-change-volume-service-level.md) 
 - [Bölgeler arası çoğaltma için hizmet düzeyi hedefleri](cross-region-replication-introduction.md#service-level-objectives)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 4414dc86ff318cfff5d224ce7aa064c31f3df460
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61233173452bb45162c7b254203e0ff2922a9784
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294538"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013755"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Linux bilgisayarlarına Log Analytics Aracısı 'nı yükler
 Bu makalede, aşağıdaki yöntemleri kullanarak Linux bilgisayarlarına Log Analytics aracısını yükleme hakkında ayrıntılı bilgi verilmektedir:
@@ -215,7 +215,7 @@ sudo sh ./omsagent-*.universal.x64.sh --extract
 ## <a name="cache-information"></a>Önbellek bilgileri
 Linux için Log Analytics aracısındaki veriler, Azure Izleyici 'ye gönderilmeden önce *% STATE_DIR_WS%/out_oms_common*. Buffer * konumundaki yerel makinede önbelleğe alınır. Özel günlük verilerinin *% STATE_DIR_WS%/out_oms_blob*. Buffer * içinde ara belleğe alınmış olması. Yol bazı [çözümler ve veri türleri](https://github.com/microsoft/OMS-Agent-for-Linux/search?utf8=%E2%9C%93&q=+buffer_path&type=)için farklı olabilir.
 
-Aracı 20 saniyede bir karşıya yüklemeye çalışır. Başarısız olursa, işlem başarılı olana kadar üstel olarak zaman uzunluğu artacaktır. İkinci denemeden önce 30 saniye 60, sonraki, 120 saniye öncesi ve bu şekilde yeniden bağlantı başarıyla bağlanana kadar yeniden denemeler arasında en fazla 9 dakika sürer. Aracı, bir sonrakine geçmeden önce belirli bir veri öbeği için yalnızca 10 kez yeniden dener. Bu, aracı başarıyla yeniden karşıya yükleyeünceye kadar devam eder. , Verilerin atılmadan önce 8,5 saate kadar arabelleğe alınbileceği anlamına gelir.
+Aracı 20 saniyede bir karşıya yüklemeye çalışır. Başarısız olursa, bu işlem başarılı olana kadar üstel bir zaman uzunluğu artırır: ikinci denemeden önce 30 saniye, üçüncü, 120 saniyeden önce 60 saniye... Bu nedenle, yeniden denemeler arasında başarıyla bağlanana kadar en fazla 16 dakikalık bir süre sürer. Aracı, belirli bir veri öbeğinin sonuna kadar, bir sonrakine geçmeden önce 6 kez yeniden dener. Bu, aracı başarıyla yeniden karşıya yükleyeünceye kadar devam eder. Bu, verilerin atılmadan yaklaşık 30 dakikaya kadar arabelleğe alınmayacağı anlamına gelir.
 
 Varsayılan önbellek boyutu 10 MB 'tır, ancak [omsagent. conf dosyasında](https://github.com/microsoft/OMS-Agent-for-Linux/blob/e2239a0714ae5ab5feddcc48aa7a4c4f971417d4/installer/conf/omsagent.conf)değiştirilebilir.
 

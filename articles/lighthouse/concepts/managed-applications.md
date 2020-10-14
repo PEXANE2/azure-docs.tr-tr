@@ -3,12 +3,12 @@ title: Azure Lighthouse ve Azure yönetilen uygulamaları
 description: Azure 'un birlikte kullanımı ve Azure tarafından yönetilen uygulamaların farklı senaryolara nasıl yardımcı olduğunu ve bunların birlikte nasıl kullanılabileceğini anlayın.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 078361ba3cff80a5fff03e3d9ca767afcc3ca029
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 144917716da38cc99078f663cc2f4cb8ba0199c8
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970767"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014996"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse ve Azure yönetilen uygulamaları
 
@@ -23,7 +23,7 @@ Azure yönetilen uygulamaları ve Azure açık uygulaması, bir hizmet sağlayı
 
 [Azure](../overview.md), bir hizmet sağlayıcı, doğrudan müşterinin aboneliğine (veya kaynak grubuna) çok çeşitli yönetim görevleri gerçekleştirebilir. Bu erişim, bir mantıksal projeksiyon aracılığıyla elde edilir ve bu da hizmet sağlayıcılarının kendi kiracısında oturum açmasını ve müşterinin kiracısına ait kaynaklara erişmesini sağlar. Müşteri, hizmet sağlayıcısına hangi abonelikleri veya kaynak gruplarını temsil etmek istediğinizi belirleyebilir ve müşteri bu kaynaklara tam erişim sağlar. Ayrıca, hizmet sağlayıcının erişimini istediğiniz zaman da kaldırabilirler.
 
-Azure 'un açık olması için, müşteriler, [ARM şablonları dağıtarak](../how-to/onboard-customer.md) veya [Azure Marketi 'Nde yönetilen bir hizmet teklifi](managed-services-offers.md)aracılığıyla [Azure tarafından yetkilendirilen kaynak yönetimi](azure-delegated-resource-management.md) için eklendi. Müşteri görevlendirmelerinizi izleyebilir ve [iş ortağı kimliğinizi bağlayarak](../how-to/partner-earned-credit.md)iş ortağı tarafından kazanılan kredileri alabilirsiniz.
+Azure 'un açık olması için, müşteriler, [ARM şablonları dağıtarak](../how-to/onboard-customer.md) veya [Azure Marketi 'Nde yönetilen bir hizmet teklifi](managed-services-offers.md)aracılığıyla [Azure tarafından yetkilendirilen kaynak yönetimi](azure-delegated-resource-management.md) için eklendi. [İş ortağı kimliğinizi bağlayarak](../how-to/partner-earned-credit.md)müşteri görevlendirmelerinizi takip edebilirsiniz.
 
 Azure açık saati, genellikle bir hizmet sağlayıcısı müşteri için yönetim görevlerini devam ederken gerçekleştirirken kullanılır.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ee332eb7dea86e07c2d8f9b75a0e152dc7482a41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fed184c349789dc38f12f62567acc0d0500ca94c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87438825"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016102"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Şirket içi veri ağ geçidi ile şirket içi veri kaynaklarına bağlanma
 
@@ -91,11 +91,11 @@ Ağ geçidini, doğrudan TCP yerine HTTPS kullanarak Azure Service Bus ile ileti
 
 Aşağıdaki makaleler, ağ geçidinin desteklediği tüm hizmetler için geçerli olan şirket içi veri ağ geçidi genel içeriğine eklenmiştir:
 
-* [Şirket içi veri ağ geçidi hakkında SSS](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)   
-* [Şirket içi veri ağ geçidi uygulamasını kullanma](https://docs.microsoft.com/data-integration/gateway/service-gateway-app)   
-* [Kiracı düzeyinde yönetim](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin)
-* [Ara sunucu ayarlarını yapılandırma](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)   
-* [İletişim ayarlarını değiştirme](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)   
-* [Günlük dosyalarını yapılandırma](https://docs.microsoft.com/data-integration/gateway/service-gateway-log-files)   
-* [Sorun giderme](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
-* [Ağ geçidi performansını izleme ve en iyi duruma getirme](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
+* [Şirket içi veri ağ geçidi hakkında SSS](/data-integration/gateway/service-gateway-onprem-faq)   
+* [Şirket içi veri ağ geçidi uygulamasını kullanma](/data-integration/gateway/service-gateway-app)   
+* [Kiracı düzeyinde yönetim](/data-integration/gateway/service-gateway-tenant-level-admin)
+* [Ara sunucu ayarlarını yapılandırma](/data-integration/gateway/service-gateway-proxy)   
+* [İletişim ayarlarını değiştirme](/data-integration/gateway/service-gateway-communication)   
+* [Günlük dosyalarını yapılandırma](/data-integration/gateway/service-gateway-log-files)   
+* [Sorun giderme](/data-integration/gateway/service-gateway-tshoot)
+* [Ağ geçidi performansını izleme ve en iyi duruma getirme](/data-integration/gateway/service-gateway-performance)

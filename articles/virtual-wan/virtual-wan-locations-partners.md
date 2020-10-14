@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: d1655b42b57edaeeaaaada802a248f56e0ba1470
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c689c83e50a42885900f62d1a65d0aa75f36f2ec
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801469"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014044"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Sanal WAN iş ortakları ve sanal hub konumları
 
@@ -40,7 +40,7 @@ Bazı bağlantı ortakları, otomasyonu, Azure sanal hub VNet ve VPN Gateway olu
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-Aşağıdaki iş ortakları, yakın gelecekte 128 Technologies, Arista, Cisco Systems (vınla), F5 Networks, Oracle SD-WAN ve keskin bağlantı için yol haritasında alınmıştır.
+Aşağıdaki iş ortakları, iş ortağı cihazı ile Azure sanal WAN VPN ağ geçitleri arasında IPSec bağlantısını otomatik hale getirmek için çalışma kapsamını belirten şirketler arasında imzalanmış bir terim sayfasını temel alır. 128 Technologies, Arista, F5 Networks, Oracle SD-WAN (talar) ve Netlınk.
 
 ## <a name="partners-with-integrated-virtual-hub-offerings"></a>Tümleşik sanal hub teklifleri olan iş ortakları
 Otomatik şube ofis IPSec bağlantısına sahip olmanın yanı sıra, bazı iş ortakları doğrudan Azure sanal WAN hub 'ına tümleştirilen **ağ sanal gereçlerini (NVA 'lar)** sunar.  Bu, müşterilere şube bağlantılarını sanal hub 'daki uyumlu bir üçüncü taraf gerecine sonlandırma seçeneği sağlar.  

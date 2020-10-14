@@ -3,12 +3,12 @@ title: IoT Edge sürüm notlarında canlı video analizi-Azure
 description: Bu konu, IoT Edge sürümler, geliştirmeler, hata düzeltmeleri ve bilinen sorunlar üzerine canlı video analizinin sürüm notlarını sağlar.
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: e33a62891f9503a4f2ff907585316c3737c876e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18da50fe763ef7c5fc3c06ac00052679c488cae7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250479"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015643"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>IoT Edge sürüm notlarında canlı video analizi
 
@@ -36,7 +36,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.4
 
 ### <a name="module-updates"></a>Modül güncelleştirmeleri
 
-* Yeni bir Graf uzantısı düğümü olan [MediaGraphCognitiveServicesVisionExtension](spatial-analysis-tutorial.md) , bilişsel hizmetler 'Den [uzamsal analiz](https://docs.microsoft.com/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview)(Önizleme) modülüyle tümleştirilebilen şekilde kullanılabilir.
+* Yeni bir Graf uzantısı düğümü olan [MediaGraphCognitiveServicesVisionExtension](spatial-analysis-tutorial.md) , bilişsel hizmetler 'Den [uzamsal analiz](/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview)(Önizleme) modülüyle tümleştirilebilen şekilde kullanılabilir.
 * Linux ARM64 cihazları için destek eklendi-bu tür cihazlara dağıtım için [el ile adımları](deploy-iot-edge-device.md) kullanın.
 
 ### <a name="documentation-updates"></a>Belge güncelleştirmeleri

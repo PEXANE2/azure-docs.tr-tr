@@ -5,20 +5,20 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: overview
-ms.date: 09/01/2020
+ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: 680eb8414696109e8cc15d82d8bd5f2c5740f488
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f4aa1ef29ffb27efb29d969e48af4cf5288e08ae
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89291883"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014792"
 ---
 # <a name="what-is-azure-bastion"></a>Azure Bastion nedir?
 
-Azure savunma hizmeti, sanal ağınızın içinde sağladığınız yeni, platform tarafından yönetilen yeni bir PaaS hizmetidir. Doğrudan TLS üzerinden Azure portal sanal makinelerinize güvenli ve sorunsuz RDP/SSH bağlantısı sağlar. Azure Bastion aracılığıyla bağlandığınızda, sanal makinelerinizin bir genel IP adresi olması gerekmez.
+Azure savunma, tarayıcınızı ve Azure portal kullanarak bir sanal makineye bağlanmanıza olanak sağlayan, dağıttığınız bir hizmettir. Azure savunma hizmeti, sanal ağınızın içinde sağladığınız tam platform tarafından yönetilen bir PaaS hizmetidir. Doğrudan TLS üzerinden Azure portal sanal makinelerinize güvenli ve sorunsuz RDP/SSH bağlantısı sağlar. Azure savunma aracılığıyla bağlandığınızda, sanal makinelerinizde genel bir IP adresi, aracı veya özel istemci yazılımı gerekmez.
 
-Savunma, sağlandığı sanal ağdaki tüm VM 'lere güvenli RDP ve SSH bağlantısı sağlar. Azure savunma 'nın kullanılması, sanal makinelerinizin, RDP/SSH bağlantı noktalarını dış dünyaya sunulmasını sağlarken RDP/SSH kullanarak güvenli erişim sağlamaya devam eder. Azure savunma sayesinde, sanal makineye doğrudan Azure portal bağlanırsınız. Ek bir istemci, aracı veya yazılım parçası gerekmez.
+Savunma, sağlandığı sanal ağdaki tüm VM 'lere güvenli RDP ve SSH bağlantısı sağlar. Azure savunma 'nın kullanılması, sanal makinelerinizin, RDP/SSH bağlantı noktalarını dış dünyaya sunulmasını sağlarken RDP/SSH kullanarak güvenli erişim sağlamaya devam eder.
 
 ## <a name="architecture"></a>Mimari
 
@@ -57,5 +57,5 @@ RSS akışına abone olun ve [Azure Updates](https://azure.microsoft.com/updates
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bir Azure savunma konak kaynağı oluşturun](bastion-create-host-portal.md).
+* [Öğretici: bir Azure savunma Konağı oluşturun ve bir WINDOWS VM 'ye bağlanın](tutorial-create-host-portal.md).
 * Azure'un diğer önemli [ağ özelliklerinden](../networking/networking-overview.md) bazıları hakkında bilgi edinin.

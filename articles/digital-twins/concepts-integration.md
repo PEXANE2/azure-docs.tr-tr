@@ -7,16 +7,18 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7e360c158c7887109684d13f774cbbda1813373e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fcad5798d421939717a6beae01ae9930cfcb117
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91729143"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015030"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Azure dijital TWINS 'i diğer hizmetlerle tümleştirme
 
-Azure dijital TWINS genellikle diğer hizmetlerle birlikte kullanılır. Azure dijital TWINS, [**olay yollarını**](concepts-route-events.md)kullanarak telemetri ve bildirimler sunmak için kullanılan [IoT Hub](../iot-hub/about-iot-hub.md) veya [Logic Apps](../logic-apps/logic-apps-overview.md)gibi yukarı akış hizmetlerinden veri alır. 
+Azure dijital TWINS, genellikle verilerinizi çeşitli yollarla kullanan esnek ve bağlı çözümler oluşturmak için diğer hizmetlerle birlikte kullanılır.
+
+Azure dijital TWINS, [**olay yollarını**](concepts-route-events.md)kullanarak telemetri ve bildirim teslim etmek için kullanılan [IoT Hub](../iot-hub/about-iot-hub.md) veya [Logic Apps](../logic-apps/logic-apps-overview.md)gibi yukarı akış hizmetlerinden veri alabilir. 
 
 Azure dijital TWINS Ayrıca verileri [Azure haritalar](../azure-maps/about-azure-maps.md) ve [Time Series Insights](../time-series-insights/time-series-insights-update-overview.md), depolama, iş akışı tümleştirmesi, analiz ve daha fazlası gibi aşağı akış hizmetlerine yönlendirebilir. 
 
@@ -24,7 +26,7 @@ Azure dijital TWINS Ayrıca verileri [Azure haritalar](../azure-maps/about-azure
 
 Azure dijital TWINS;[IoT Hub](../iot-hub/about-iot-hub.md), [Logic Apps](../logic-apps/logic-apps-overview.md), kendi özel hizmetiniz ve daha fazlasını içeren herhangi bir hizmetten gelen verilerle ve etkinliklerle yönetilebilir. Bu sayede ortamınızdaki fiziksel cihazlardan telemetri toplayabilir ve Bulutta Azure dijital TWINS grafiğini kullanarak bu verileri işleyebilirsiniz.
 
-Azure dijital TWINS 'in yerleşik IoT Hub yok. Şu anda üretimde olan mevcut bir IoT Hub kullanabilir veya yeni bir tane dağıtabilirsiniz. Bu, IoT Hub tüm cihaz yönetimi özelliklerine tam erişim sağlar.
+Azure Digital TWINS, arka planda yerleşik IoT Hub sahip olmak yerine, hizmetle birlikte kullanmak için "kendi kendinize getirme" IoT Hub sağlar. Şu anda üretimde mevcut olan bir IoT Hub kullanabilir veya bu amaçla kullanılmak üzere yeni bir tane dağıtabilirsiniz. Bu, IoT Hub tüm cihaz yönetimi özelliklerine tam erişim sağlar.
 
 Herhangi bir kaynaktaki verileri Azure dijital TWINS 'e almak için bir [**Azure işlevi**](../azure-functions/functions-overview.md)kullanın. Bu model hakkında daha fazla bilgi edinin [*IoT Hub nasıl yapılır: alma telemetriyle*](how-to-ingest-iot-hub-data.md)ilgili daha fazla bilgi edinin veya Azure dijital TWINS [*öğreticisinde kendiniz deneyin: uçtan uca bir çözümü bağlama*](tutorial-end-to-end.md). 
 

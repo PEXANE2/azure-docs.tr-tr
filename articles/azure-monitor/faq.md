@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 4b7f596d2184d25229cc1a8e496d0d78eaaabdb6
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 180490dc79554efa072311e9a2b7f5df348b432b
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994671"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014248"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Izleyici sık sorulan sorular
 
@@ -401,7 +401,7 @@ Aktarılan her öğe, `itemCount` öğenin kaç tane özgün olay temsil ettiği
 
 Mevcut Application Insights kaynaklarının bir bölgeden diğerine taşınması **Şu anda desteklenmiyor**. Topladığınız geçmiş verileri yeni bir bölgeye **geçirilemez** . Kısmi geçici çözüm şunlardır:
 
-1. Yeni bölgede yepyeni bir Application Insights kaynak ([Klasik](app/create-new-resource.md) veya [çalışma alanı tabanlı](/app/create-workspace-resource.md)) oluşturun.
+1. Yeni bölgede yepyeni bir Application Insights kaynak ([Klasik](app/create-new-resource.md) veya [çalışma alanı tabanlı](/azure/azure-monitor/app/create-workspace-resource)) oluşturun.
 2. Yeni kaynaktaki özgün kaynağa özgü tüm benzersiz özelleştirmeleri yeniden oluşturun.
 3. Uygulamanızı yeni bölge kaynak [izleme anahtarını](app/create-new-resource.md#copy-the-instrumentation-key) veya [bağlantı dizesini](app/sdk-connection-string.md)kullanacak şekilde değiştirin.  
 4. Yeni Application Insights kaynağınız ile her şeyin beklendiği gibi çalışmaya devam etmekte olduğunu onaylamak için test edin. 
@@ -414,7 +414,7 @@ Genellikle yeni bölgedeki kaynak için el ile yeniden oluşturulması veya gün
 - Kullanılabilirlik uyarılarını yeniden oluşturun.
 - Kullanıcılarınızın yeni kaynağa erişmesi için gerekli olan tüm özel Role-Based Access Control (RBAC) ayarlarını yeniden oluşturun. 
 - Alma örnekleme, veri saklama, günlük uç ve özel ölçümler ile ilgili ayarları çoğaltın. Bu ayarlar, **kullanım ve tahmini maliyetler** bölmesi aracılığıyla denetlenir.
-- [Sürüm ek açıklamaları](/app/annotations.md), [canlı ölçümler güvenli denetim kanalı](app/live-stream.md#secure-the-control-channel) vb. gibi API anahtarlarına bağlı olan herhangi bir tümleştirme Yeni API anahtarları oluşturmanız ve ilişkili tümleştirmeyi güncelleştirmeniz gerekecektir. 
+- [Sürüm ek açıklamaları](/azure/azure-monitor/app/annotations), [canlı ölçümler güvenli denetim kanalı](app/live-stream.md#secure-the-control-channel) vb. gibi API anahtarlarına bağlı olan herhangi bir tümleştirme Yeni API anahtarları oluşturmanız ve ilişkili tümleştirmeyi güncelleştirmeniz gerekecektir. 
 - Klasik kaynaklarda sürekli dışarı aktarmanın yeniden yapılandırılması gerekir.
 - Çalışma alanı tabanlı kaynaklardaki tanılama ayarlarının yeniden yapılandırılması gerekir.
 

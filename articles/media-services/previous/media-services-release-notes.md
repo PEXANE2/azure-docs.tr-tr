@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4d335affa5a06bdb8e5c733c871654cf58947581
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd4f50365ced61e35ae6d10a9763a0f9815098d7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652967"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014112"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services sürüm notları
 
@@ -53,8 +53,8 @@ Media Services REST API sürümü geçmişi hakkında daha fazla bilgi için [Az
 
 Aşağıdaki v2 özellikleri artık geçmiş iş ilerleme verileriyle doldurulmayacak:
 
-* [HistoricalEvents](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.historicalevents)
-* [PerfMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.perfmessage)
+* [HistoricalEvents](/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.historicalevents)
+* [PerfMessage](/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.perfmessage)
 
 Görev geçmişini almak için, bildirim uç noktalarını kullanarak Web kancaları veya kuyruk iletileri aracılığıyla v2 iş bildirimlerini kullanmanız gerekir. Daha fazla bilgi için bkz.
 
@@ -81,7 +81,7 @@ Ayrıca bkz. [Azure Media Indexer ve Azure Media Indexer 2 ' den Azure Media Ser
 
 *Windows Azure Medya Kodlayıcısı* (WAME) ve *Azure Medya Kodlayıcısı* (AME) medya işlemcilerinin kullanımdan kalkması duyuruluyor. Kullanımdan kaldırma tarihleri için, bu [eski bileşenler](legacy-components.md) konusuna bakın.
 
-Ayrıntılar için bkz. [WAME 'i Media Encoder Standard geçirin](https://go.microsoft.com/fwlink/?LinkId=2101334) ve [adı Media Encoder Standard geçirin](https://go.microsoft.com/fwlink/?LinkId=2101335).
+Ayrıntılar için bkz. [WAME 'i Media Encoder Standard geçirin](./migrate-windows-azure-media-encoder.md) ve [adı Media Encoder Standard geçirin](./migrate-azure-media-encoder.md).
 
 ## <a name="march-2019"></a>Mart 2019
 
@@ -198,7 +198,7 @@ Bazı istemciler Kesintisiz Akış bildiriminde bir yineleme Etiketi sorunu üze
 
 ## <a name="april-2016-release"></a><a id="apr_changes16"></a>Nisan 2016 sürümü
 ### <a name="media-analytics"></a>Media Analytics
- Güçlü video zekası için Media Analytics Media Services. Daha fazla bilgi için bkz. [Media Services Analytics 'e genel bakış](media-services-analytics-overview.md).
+ Güçlü video zekası için Media Analytics Media Services. Daha fazla bilgi için bkz. [Media Services Analytics 'e genel bakış](./legacy-components.md).
 
 ### <a name="apple-fairplay-preview"></a>Apple FairPlay (Önizleme)
 Artık, Apple FairPlay ile HTTP Canlı Akışı (HLS) içeriğinizi dinamik olarak şifrelemek için Media Services kullanabilirsiniz. Ayrıca, istemcilere FairPlay lisansları sunmak için Media Services lisans teslim hizmetini de kullanabilirsiniz. Daha fazla bilgi için bkz. Apple FairPlay ile korunan HLS içeriğinizi akışa almak için Azure Media Services kullanma. "
@@ -275,7 +275,7 @@ Daha fazla bilgi için [Bu bloga](https://azure.microsoft.com/blog/azure-media-s
 ## <a name="july-2015-release"></a><a id="july_changes_15"></a>Temmuz 2015 sürümü
 * Media Encoder Standard genel kullanılabilirliği duyuruldu. Daha fazla bilgi için [Bu blog gönderisine](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)bakın.
   
-    Media Encoder Standard, [Bu bölümde](https://go.microsoft.com/fwlink/?LinkId=618336)açıklandığı gibi önayarları kullanır. 4K kodlama için bir ön ayar kullandığınızda, Premium ayrılmış birim türünü alın. Daha fazla bilgi için bkz. [Ölçek kodlaması](media-services-scale-media-processing-overview.md).
+    Media Encoder Standard, [Bu bölümde](./media-services-mes-presets-overview.md)açıklandığı gibi önayarları kullanır. 4K kodlama için bir ön ayar kullandığınızda, Premium ayrılmış birim türünü alın. Daha fazla bilgi için bkz. [Ölçek kodlaması](media-services-scale-media-processing-overview.md).
 * Canlı gerçek zamanlı açıklamalı alt yazılar Media Services ve Media Player birlikte kullanıldı. Daha fazla bilgi için [Bu blog gönderisine](https://azure.microsoft.com/blog/2015/07/08/live-real-time-captions-with-azure-media-services-and-player/)bakın.
 
 ### <a name="media-services-net-sdk-updates"></a>Media Services .NET SDK güncelleştirmeleri

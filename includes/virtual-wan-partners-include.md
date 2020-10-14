@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 4bf53561e7788b1d4ce9789c3b555cb1e089545b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70a8ee78bbc90725346edbb7c83c247d48d86c4c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267317"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014043"
 ---
 İş ortakları tarafından sunulan hizmetler hakkında daha fazla bilgi için bu bölümdeki bağlantıları kontrol edebilirsiniz. Dal cihazı ortağınız aşağıdaki bölümde listelenmiyorsa, dal cihaz sağlayıcınızın bizimle iletişim kurun. E-posta göndererek bizimle iletişim kurabilirler azurevirtualwan@microsoft.com .
 
@@ -27,7 +27,7 @@ ms.locfileid: "91267317"
 | [Fortinet](https://www.fortinet.com/azure-vwan) |[Fortigate ve Microsoft Azure sanal WAN tümleştirmesi dağıtım kılavuzu](https://www.fortinet.com/content/dam/fortinet/assets/deployment-guides/dg-fortigate-azure-wan-integration.pdf),[yönlendirme senaryosu blogu ](https://www.fortinet.com/blog/business-and-technology/fortinet-secure-sd-wan-enhances-azure-virtual-wan-integrations)|
 |[HPE Aruba]( https://www.arubanetworks.com/microsoft-vwan/)|[Aruba SD-WAN ve Microsoft Azure sanal WAN dağıtım kılavuzu](https://www.arubanetworks.com/assets/tg/DG_Using-Aruba-SD-WAN-with-Microsoft-Azure-Virtual-WAN.pdf)|
 | [Netlen Ry](https://netfoundry.io/solutions/netfoundry-for-microsoft-azure-virtual-wan/)|[Netbulunan Destek Merkezi: Azure sanal WAN](https://support.netfoundry.io/hc/en-us/articles/360018137891-Introduction-to-Azure-Virtual-WAN-sites)|
-|[Nuage/Nokia (yalnızca Ingiliz telekomünikasyon aracılığıyla sağlanır)](https://www.nuagenetworks.net/our-partners/nuage-networks-virtualized-cloud-interconnect-for-azure/)|* |
+|[Nuage/Nokia (yalnızca Ingiliz telekomünikasyon aracılığıyla sağlanır)](https://www.nuagenetworks.net/our-partners/nuage-networks-virtualized-cloud-interconnect-for-azure/)|[Nuage ve Azure sanal WAN dağıtım kılavuzu](https://onestore.nokia.com/asset/210073)|
 |[Açık sistemler]( https://open-systems.com/solutions/microsoft-azure-virtual-wan)|[Açık sistemler ve Azure sanal WAN dağıtım kılavuzu](https://open-systems.com/wp-content/uploads/2020/07/Azure-Virtual-WAN-UserGuide.pdf)|
 |[Palo Alto Networks](https://researchcenter.paloaltonetworks.com/2018/09/azure-vwan-integration/) |* |
 |[Riverbed Technology](https://www.riverbed.com/go/steelconnect-azurewan.html)|* |

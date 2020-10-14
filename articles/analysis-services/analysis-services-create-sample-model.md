@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5b84c2e50ae7f5038cf9cb8a96c0c51d6537c929
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f882a40940a5c7202e9cf1f5c8b8927f008f4a39
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230916"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013619"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Öğretici: Portaldan bir örnek model ekleme
 
@@ -24,13 +24,13 @@ Bu öğreticide, sunucunuza örnek Adventure Works tablolu model veritabanını 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 - Bir Azure Analysis Services sunucusu. Daha fazla bilgi için bkz. [Sunucu oluşturma - portal](analysis-services-create-server.md).
 - Sunucu yöneticisi izinleri
-- [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
@@ -62,7 +62,7 @@ Bu adımlarda, SSMS kullanarak sunucudan modelin nasıl silineceği açıklanır
 
 2. **Sunucuya Bağlan** alanına sunucu adını yapıştırın, ardından **Kimlik doğrulaması** alanında **Active Directory - MFA ile Evrensel desteği**'ni seçin, kullanıcı adınızı girin ve **Bağlan**'a tıklayın.
 
-    ![Oturum aç](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-signin.png)
+    ![Oturum açın](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-signin.png)
 
 3. **Nesne Gezgini**’nde `adventureworks` örnek veritabanına sağ tıklayın ve sonra da **Sil**’e tıklayın.
 
@@ -74,5 +74,3 @@ Bu öğreticide, sunucunuza temel bir örnek model eklemeyi öğrendiniz. Artık
 
 > [!div class="nextstepaction"]
 > [Öğretici: Sunucu yönetici ve kullanıcı rollerini yapılandırma](tutorials/analysis-services-tutorial-roles.md)
-
-
