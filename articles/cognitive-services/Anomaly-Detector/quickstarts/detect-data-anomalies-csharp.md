@@ -3,20 +3,20 @@ title: 'Hızlı başlangıç: anomali algılayıcısının REST API ve C kullana
 titleSuffix: Azure Cognitive Services
 description: Anomali algılayıcısı API 'sinin iki algılama modunu kullanarak zaman serisi verilerinizde bozukluklar olup olmadığı hakkında bilgi edinin.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 09/03/2020
-ms.author: aahi
+ms.author: mbullwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c19f901f4419cca59a3b4e070191c8bb89ce7c34
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 919d608bda4b0a288996ad9d8d7908e5eb5ace23
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91319206"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019707"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>Hızlı başlangıç: anomali algılayıcısının REST API ve C kullanarak zaman serisi verilerinizde bozukluklar algılama #
 
@@ -30,7 +30,7 @@ Bu hızlı başlangıcı, zaman serisi verilerinizde bulunan anormallikleri alg�
 
 Bu uygulama C# dilinde yazıldığı sırada API, çoğu programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir. Bu hızlı başlangıç için kaynak kodunu [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/csharp-detect-anomalies.cs)'da bulabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 - Azure aboneliğiniz olduktan sonra <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtar ve uç noktanıza ulaşmak için Azure Portal bir anomali algılayıcı kaynağı oluşturun. Dağıtım için bekleyin ve **Kaynağa Git** düğmesine tıklayın.
