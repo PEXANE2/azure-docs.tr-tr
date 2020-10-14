@@ -5,20 +5,20 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 4/21/2020
+ms.date: 10/13/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0c1d83c2dac0163cd9b9cbc07969103381e85471
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d03b6f4a512c22564480405ec0f0e0c0e62a958
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855387"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048432"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>Azure portal kullanarak ölçekli IoT Edge modüllerini dağıtın
 
-Aynı anda birçok cihaz için devam eden dağıtımları yönetmek üzere Azure portal **Otomatik dağıtım IoT Edge** oluşturun. IoT Edge için otomatik dağıtımlar IoT Hub [otomatik cihaz yönetimi](/azure/iot-hub/iot-hub-automatic-device-management) özelliğinin bir parçasıdır. Dağıtımlar birden çok modülü birden çok cihaza dağıtmanızı, modüllerin durumunu ve durumunu izlemenizi ve gerektiğinde değişiklik yapmayı sağlayan dinamik işlemlerdir.
+Aynı anda birçok cihaz için devam eden dağıtımları yönetmek üzere Azure portal **Otomatik dağıtım IoT Edge** oluşturun. IoT Edge için otomatik dağıtımlar IoT Hub [otomatik cihaz yönetimi](../iot-hub/iot-hub-automatic-device-management.md) özelliğinin bir parçasıdır. Dağıtımlar birden çok modülü birden çok cihaza dağıtmanızı, modüllerin durumunu ve durumunu izlemenizi ve gerektiğinde değişiklik yapmayı sağlayan dinamik işlemlerdir.
 
 Daha fazla bilgi için bkz. [tek cihazlarda veya ölçekte IoT Edge otomatik dağıtımları anlama](module-deployment-monitoring.md).
 
@@ -53,6 +53,11 @@ Dağıtım ve katmanlı bir dağıtım oluşturma adımları çok benzerdir. Her
 
 Dağıtım oluşturmak için beş adım vardır. Aşağıdaki bölümler her bir adım adım yol gösterir.
 
+>[!NOTE]
+>Bu makaledeki adımlarda IoT Edge aracısının ve hub 'ın en son şema sürümü yansıtılacaktır. Şema sürümü 1,1, IoT Edge Version 1.0.10 ile birlikte yayımlanmıştır ve modül başlangıç sırası ve yol önceliği belirleme özelliklerini sunar.
+>
+>Sürüm 1.0.9 veya daha önceki bir sürümü çalıştıran bir cihaza dağıtıyorsanız, sihirbazın **modüller** adımında, şema sürümü 1,0 ' i kullanmak Için **çalışma zamanı ayarlarını** düzenleyin.
+
 ### <a name="step-1-name-and-label"></a>1. Adım: adı ve etiketi
 
 1. Dağıtımınıza 128 küçük harflerden oluşan benzersiz bir ad verin. Boşluklardan ve aşağıdaki geçersiz karakterlerden kaçının: `& ^ [ ] { } \ | " < > /` .
@@ -65,55 +70,19 @@ Bir dağıtıma en çok 50 modül ekleyebilirsiniz. Modül olmadan bir dağıtı
 
 Dağıtımlarda, IoT Edge Aracısı ve IoT Edge hub modülleri için ayarları yönetebilirsiniz. İki çalışma zamanı modülünü yapılandırmak için **çalışma zamanı ayarları** ' nı seçin. Katmanlı dağıtımda, çalışma zamanı modülleri dahil edilmez, bu nedenle yapılandırılamaz.
 
-Üç tür modül ekleyebilirsiniz:
-
-* IoT Edge modülü
-* Market modülü
-* Azure Stream Analytics modülü
-
-#### <a name="add-an-iot-edge-module"></a>IoT Edge modülü ekleme
-
 Özel kodu bir modül olarak eklemek veya el ile bir Azure hizmet modülünü eklemek için aşağıdaki adımları izleyin:
 
-1. Sayfanın **Container Registry kimlik bilgileri** bölümünde, bu dağıtımın modül görüntülerini içeren tüm özel kapsayıcı kayıt defterleri için adları ve kimlik bilgilerini belirtin. IoT Edge Aracısı bir Docker görüntüsü için kapsayıcı kayıt defteri kimlik bilgilerini bulamazsa hata 500 ' i raporlar.
-1. Sayfanın **IoT Edge modüller** bölümünde **Ekle**' ye tıklayın.
-1. Açılır menüden **IoT Edge modülünü** seçin.
-1. Modülünüzü bir **IoT Edge modül adı**verin.
-1. **Görüntü URI 'si** alanı için modülünüzün kapsayıcı görüntüsünü girin.
-1. Bir **yeniden başlatma ilkesi**seçmek için açılan menüyü kullanın. Aşağıdaki seçeneklerden birini seçin:
-   * **her zaman** -bu, herhangi bir nedenle kapanırsa modül her zaman yeniden başlatılır.
-   * **hiçbir** sebeple, herhangi bir nedenle kapanmadıysa modül hiçbir şekilde yeniden başlatmaz.
-   * **hata** durumunda-modül kilitlenirse yeniden başlatılır, ancak temiz bir şekilde kapanmaz.
-   * **sağlıksız** -sistem durumu kilitlenirse veya sağlıksız bir durum döndürürse modül yeniden başlatılır. Sistem durumu işlevini uygulamak için her modüle kadar.
-1. Modülün **Istenen durumunu** seçmek için açılan menüyü kullanın. Aşağıdaki seçeneklerden birini seçin:
-   * **çalıştırma,** varsayılan seçenektir. Modül dağıtıldıktan hemen sonra çalışmaya başlayacaktır.
-   * **durduruldu** -dağıtıldıktan sonra, siz veya başka bir modülle başlamak üzere çağrılana kadar modül boşta kalır.
-1. Kapsayıcıya geçirilmesi gereken herhangi bir **kapsayıcı oluşturma seçeneğini** belirtin. Daha fazla bilgi için bkz. [Docker Create](https://docs.docker.com/engine/reference/commandline/create/).
-1. İkizi modülüne etiket veya diğer özellikler eklemek istiyorsanız **module Ikizi Settings** ' i seçin.
-1. Bu modülün **ortam değişkenlerini** girin. Ortam değişkenleri bir modüle yapılandırma bilgileri sağlar.
-1. Modülünüzü dağıtıma eklemek için **Ekle** ' yi seçin.
+1. Sayfanın **Container Registry ayarları** bölümünde, modül görüntülerinizi içeren özel kapsayıcı kayıt defterlerine erişim için kimlik bilgilerini sağlayın.
+1. Sayfanın **IoT Edge modüller** bölümünde **Ekle**' yi seçin.
+1. Açılan menüden üç tür modülden birini seçin:
 
-#### <a name="add-a-module-from-the-marketplace"></a>Market 'ten bir modül ekleme
+   * **IoT Edge modülü** -modül adı ve KAPSAYıCı görüntüsü URI 'sini sağlarsınız. Örneğin, örnek SimulatedTemperatureSensor modülünün görüntü URI 'SI `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0` . Modül görüntüsü bir özel kapsayıcı kayıt defterinde depolanıyorsa, görüntüye erişmek için bu sayfadaki kimlik bilgilerini ekleyin.
+   * **Market modülü** -Azure Marketi 'nde barındırılan modüller. Bazı Market modülleri ek yapılandırma gerektirir, bu nedenle [Azure marketi IoT Edge modüller](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) listesindeki modül ayrıntılarını gözden geçirin.
+   * **Azure Stream Analytics modülü** -bir Azure Stream Analytics iş yüküyle oluşturulan modüller.
 
-Azure Marketi 'nden bir modül eklemek için aşağıdaki adımları izleyin:
+1. Gerekirse, dağıtımınıza ek modüller eklemek için adım 2 ve 3 ' ü tekrarlayın.
 
-1. Sayfanın **IoT Edge modüller** bölümünde **Ekle**' ye tıklayın.
-1. Açılan menüden **Market modülü** ' nü seçin.
-1. **IoT Edge Module marketi** sayfasından bir modül seçin. Seçtiğiniz modül, aboneliğiniz, kaynak grubunuz ve cihazınız için otomatik olarak yapılandırılır. Daha sonra IoT Edge modüller listenizde görünür. Bazı modüller için ek yapılandırma gerekebilir. Daha fazla bilgi için bkz. [Azure Marketi 'nden modülleri dağıtma](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace).
-
-#### <a name="add-a-stream-analytics-module"></a>Stream Analytics modülü ekleme
-
-Azure Stream Analytics bir modül eklemek için aşağıdaki adımları izleyin:
-
-1. Sayfanın **IoT Edge modüller** bölümünde **Ekle**' ye tıklayın.
-1. Açılır menüden **Azure Stream Analytics modülünü** seçin.
-1. Sağ bölmede **aboneliğinizi**seçin.
-1. IoT **Edge işinizi**seçin.
-1. Modülünüzü dağıtıma eklemek için **Kaydet** ' i seçin.
-
-#### <a name="configure-module-settings"></a>Modül ayarlarını yapılandırma
-
-Bir dağıtıma modül ekledikten sonra, bu adı seçerek **güncelleştirme IoT Edge modülü** sayfasını açabilirsiniz. Bu sayfada modül ayarlarını, ortam değişkenlerini, oluşturma seçeneklerini ve ikizi modülünü düzenleyebilirsiniz. Market 'ten bir modül eklediyseniz, bu parametrelerin bazıları zaten doldurulmuş olabilir.
+Bir dağıtıma modül ekledikten sonra, bu adı seçerek **güncelleştirme IoT Edge modülü** sayfasını açabilirsiniz. Bu sayfada modül ayarlarını, ortam değişkenlerini, oluşturma seçeneklerini, başlangıç sırasını ve ikizi modülünü düzenleyebilirsiniz. Market 'ten bir modül eklediyseniz, bu parametrelerin bazıları zaten doldurulmuş olabilir. Kullanılabilir modül ayarları hakkında daha fazla bilgi için bkz. [Modül yapılandırması ve yönetimi](module-composition.md#module-configuration-and-management).
 
 Katmanlı bir dağıtım oluşturuyorsanız, aynı cihazları hedefleyen diğer dağıtımlarda var olan bir modül yapılandırıyorsanız. Modül ikizi diğer sürümlerin üzerine yazmadan güncelleştirmek için, **module Ikizi ayarları** sekmesini açın. Modül ikizi 'ın istenen özellikleri içindeki bir alt bölüm için benzersiz bir adla yeni bir **module Ikizi özelliği** oluşturun (örneğin,) `properties.desired.settings` . Yalnızca alanın içinde Özellikler tanımlarsanız `properties.desired` , daha düşük öncelikli dağıtımlarda tanımlanan modül için istenen özelliklerin üzerine yazılır.
 
@@ -125,9 +94,13 @@ Yapılandırılmış bir dağıtım için tüm modülleriniz olduktan sonra Iler
 
 ### <a name="step-3-routes"></a>3. Adım: rotalar
 
-Rotalar, modüllerin bir dağıtım içindeki birbirleriyle nasıl iletişim kuracağını tanımlar. Varsayılan olarak, sihirbaz, **yukarı akış** adlı bir yol sağlar ve **/ileti/olarak tanımlanır \* $upstream**. Bu, herhangi bir modülle çıkış iletilerinin IoT Hub 'ınıza gönderildiği anlamına gelir.  
+**Rotalar** sekmesinde, iletilerin modüller arasında nasıl geçtiğini tanımlar ve IoT Hub. İletiler ad/değer çiftleri kullanılarak oluşturulur.
 
-Bilgileri [Declare rotalarındaki](module-composition.md#declare-routes)bilgilerle ekleyin veya güncelleştirin, ardından inceleme bölümüne devam etmek için **İleri** ' yi seçin.
+Örneğin, bir ad **rotası** ve **/Ileti/ \* $upstream Into** değeri olan bir yol, herhangi bir modülle giden iletileri alır ve bunları IoT Hub 'ınıza gönderir.  
+
+**Öncelik** ve **yaşam süresi** parametreleri, bir yol tanımına dahil ettiğiniz isteğe bağlı parametrelerdir. Priority parametresi, ilk olarak hangi yolların işlenmesi gerektiğini veya hangi yolların son işlenmesi gerektiğini seçmenizi sağlar. Öncelik, 0-9 sayısı ayarlanarak belirlenir, burada 0 üst önceliktir. Yaşam süresi parametresi, bu rotadaki iletilerin işlenmeyi veya kuyruktan kaldırılıncaya kadar ne kadar süreyle tutulması gerektiğini bildirmenize olanak tanır.
+
+Yolların nasıl oluşturulacağı hakkında daha fazla bilgi için bkz. [yolları bildirme](module-composition.md#declare-routes).
 
 **İleri ' yi seçin: ölçümler**.
 
@@ -139,7 +112,7 @@ Bilgileri [Declare rotalarındaki](module-composition.md#declare-routes)bilgiler
 
 1. **Ölçüm ölçütü**için bir sorgu girin. Sorgu IoT Edge hub modülünün ikizi [bildirilen özelliklerini](module-edgeagent-edgehub.md#edgehub-reported-properties)temel alır. Ölçüm, sorgu tarafından döndürülen satır sayısını temsil eder.
 
-   Örneğin:
+   Örnek:
 
    ```sql
    SELECT deviceId FROM devices
@@ -183,7 +156,7 @@ Bir dağıtımı değiştirdiğinizde, değişiklikler hedeflenen tüm cihazlara
 
 1. IoT Hub 'ınızda sol bölme menüsünden **IoT Edge** ' yi seçin.
 1. **IoT Edge dağıtımları** sekmesini seçin ve ardından yapılandırmak istediğiniz dağıtımı seçin.
-1. **Hedef koşul** sekmesini seçin. **Hedef koşulu** hedeflenen cihazları hedefleyecek şekilde değiştirin. **Önceliği**de ayarlayabilirsiniz.  **Kaydet**’i seçin.
+1. **Hedef koşul** sekmesini seçin. **Hedef koşulu** hedeflenen cihazları hedefleyecek şekilde değiştirin. **Önceliği**de ayarlayabilirsiniz.  **Kaydet**'i seçin.
 
     Hedef koşulu güncelleştirirseniz, aşağıdaki güncelleştirmeler gerçekleşir:
 
@@ -191,7 +164,7 @@ Bir dağıtımı değiştirdiğinizde, değişiklikler hedeflenen tüm cihazlara
     * Şu anda bu dağıtımı çalıştıran bir cihaz artık hedef koşulu karşılamıyorsa, bu dağıtımı kaldırır ve sonraki en yüksek öncelikli dağıtımı alır.
     * Şu anda bu dağıtımı çalıştıran bir cihaz artık hedef koşulunu karşılamıyorsa ve diğer dağıtımların hedef koşulunu karşılamıyorsa, cihazda hiçbir değişiklik gerçekleşmez. Cihaz geçerli durumunda mevcut modüllerini çalıştırmaya devam eder, ancak artık bu dağıtımın bir parçası olarak yönetilmez. Başka bir dağıtımın hedef koşulunu karşılıyorsa, bu dağıtımı kaldırır ve yenisini alır.
 
-1. **Ölçümler** sekmesini seçin ve **ölçümleri Düzenle** düğmesine tıklayın. Örnek sözdizimini kılavuz olarak kullanarak özel ölçümleri ekleyin veya değiştirin. **Kaydet**’i seçin.
+1. **Ölçümler** sekmesini seçin ve **ölçümleri Düzenle** düğmesine tıklayın. Örnek sözdizimini kılavuz olarak kullanarak özel ölçümleri ekleyin veya değiştirin. **Kaydet**'i seçin.
 
     ![Bir dağıtımda özel ölçümleri düzenleme](./media/how-to-deploy-monitor/metric-list.png)
 

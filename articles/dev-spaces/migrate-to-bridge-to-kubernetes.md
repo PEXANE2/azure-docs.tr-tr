@@ -5,12 +5,12 @@ ms.date: 10/12/2020
 ms.topic: conceptual
 description: Azure Dev Spaces, Kubernetes 'e köprülemek için geçiş işlemini açıklar
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Kubernetes ile Köprü oluşturma
-ms.openlocfilehash: 209776be80f2814dc8e4d347c0eea273017f70ad
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 008cb90c172d8106115e4424956d82d026dbcee0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019945"
+ms.locfileid: "92044709"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Kubernetes Köprüsü’ne geçiş
 
@@ -108,7 +108,6 @@ Kubernetes Köprüsü, dağıtım yöntemlerinden bağımsız olarak Kubernetes 
 
 1. *AZD. YAML* içindeki ortam değişkeni ayarları gibi özelleştirmeleri, projenizin *values. yıml* dosyasına el ile geçirin.
 1. seçim `azds.yaml` Dosyayı projenizden kaldırın.
-1. Uygulamanızı yeniden dağıtın.
 1. Dağıtılan uygulamanızda Kubernetes için köprü yapılandırın. Visual Studio 'da Kubernetes ile Köprü kullanma hakkında daha fazla bilgi için bkz. [Visual Studio 'Da Kubernetes Için köprü kullanma][use-btk-vs]. VS Code için bkz. [vs Code Kubernetes Için köprü kullanma][use-btk-vsc].
 1. Yeni oluşturulan köprü ile Kubernetes hata ayıklama/başlatma profilini kullanarak hata ayıklamayı başlatın.
 1. Kümenizi yeniden dağıtmak için gerektiğinde betiği tekrar çalıştırabilirsiniz.

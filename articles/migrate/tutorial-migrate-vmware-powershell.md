@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 10/1/2020
 ms.author: rahugup
-ms.openlocfilehash: ea2768c22aeaab3dabb546df5aced0f2a5b35e41
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: eed10f13b9495ab2cccfd9c57ae14ccc5d8e4a63
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92002680"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043553"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless---powershell"></a>VMware VM 'lerini Azure 'a geçirme (aracısız)-PowerShell
 
@@ -33,7 +33,7 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlardır:
 
@@ -43,7 +43,7 @@ Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlard
 
 ## <a name="install-azure-migrate-powershell-module"></a>Azure geçişi PowerShell modülünü yükler
 
-Azure geçişi PowerShell modülü genel önizlemede kullanılabilir. Aşağıdaki komutu kullanarak PowerShell modülünü yüklemeniz gerekir. 
+Azure geçişi PowerShell modülü önizlemede kullanılabilir. Aşağıdaki komutu kullanarak PowerShell modülünü yüklemeniz gerekir. 
 
 ```azurepowershell
 Install-Module -Name Az.Migrate 
@@ -424,7 +424,7 @@ $StopReplicationJob = Remove-AzMigrateServerReplication -InputObject $Replicatin
     - [Azure Disk Şifrelemesi](../security/fundamentals/azure-disk-encryption-vms-vmss.md)’ni dağıtarak disklerin güvenliğinin sağlanmasına yardımcı olun ve verileri hırsızlık ve yetkisiz erişime karşı koruyun.
     - [IaaS kaynaklarının güvenliğini sağlama](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/) hakkında daha fazla bilgi edinin ve [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)’ni ziyaret edin.
 - İzleme ve yönetim için:
--  Azure Maliyet Yönetimi’ni dağıtarak kaynak kullanımını ve harcamayı izleyin.
+-  [Azure Maliyet Yönetimi](../cost-management-billing/cloudyn/overview.md)’ni dağıtarak kaynak kullanımını ve harcamayı izleyin.
 
 
 

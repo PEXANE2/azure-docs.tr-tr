@@ -3,22 +3,33 @@ title: Çalışmaya başlayın ve ekiplerden Azure Lab Services Laboratuvarı ol
 description: Nasıl başlacağınızı ve ekiplerden Azure Lab Services Laboratuvarı oluşturmayı öğrenin.
 ms.topic: article
 ms.date: 10/08/2020
-ms.openlocfilehash: b585196fe61a09697cfa203aaa33f08afae2b427
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 0604e2934ff6b011acfa9dd4a4b25fa58193e69b
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946848"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044454"
 ---
 # <a name="get-started-and-create-a-lab-services-lab-from-teams"></a>Çalışmaya başlayın ve ekiplerden Laboratuvar Hizmetleri Laboratuvarı oluşturun
 
-Bu makalede, takımlara bir Azure Lab Services uygulamasının nasıl ekleneceği gösterilmektedir. Ardından, ekiplerden Laboratuvar oluşturma.
+Bu makalede, **Azure Lab Services** uygulamasının bir takıma nasıl ekleneceği ve ardından MS ekipleri ortamında nasıl laboratuvar oluşturulacağı gösterilmektedir.
 
-## <a name="add-a-lab-services-app-to-teams"></a>Takımlara Laboratuvar Hizmetleri uygulaması ekleme
+## <a name="prerequisites"></a>Önkoşullar
 
-Laboratuvar hizmetlerini doğrudan takımlar kanallarınıza ekleyebilirsiniz ve ardından, uygulama ekipteki herkes tarafından kullanılabilir. Bu üç adımı izleyin:
+Bu öğreticide, takımınız için sanal makinelerle bir laboratuvar ayarlarsınız. Laboratuvar hesabında laboratuvar ayarlamak için laboratuvar hesabındaki şu rollerden birinin üyesi olmanız gerekir: Owner, Lab Creator veya katkıda bulunan. Laboratuvar hesabı oluşturmak için kullandığınız hesap, sahip rolüne otomatik olarak eklenir. Bu nedenle, bir laboratuvar oluşturmak için laboratuvar hesabı oluşturmak için kullandığınız kullanıcı hesabını kullanabilirsiniz.
 
-1. Uygulamayı eklemek istediğiniz takımlar kanalına gidin ve **+** "..." seçeneğine tıklayarak sekme eklemeyi seçin. sağ taraftaki pencerenin en üstünden. 
+Ekipler içinde Azure Lab Services kullanırken tipik iş akışı burada verilmiştir
+
+1. Kullanıcı Azure portal [bir laboratuvar hesabı oluşturur](tutorial-setup-lab-account.md#create-a-lab-account) .
+1. [Laboratuvar hesabı Oluşturucusu, diğer kullanıcıları](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role) **Laboratuvar Oluşturucu** rolüne ekler. Örneğin, laboratuvar hesabı oluşturan/yönetici laboratuvar **Oluşturucu** rolüne eğitimciler ekler; böylece, sınıfları için laboratuvarları oluşturabilirler.
+1. Daha sonra, eğitimciler Create Labs, şablon VM 'yi önceden yapılandırır ve ekipteki herkese VM 'yi sağlamak üzere Laboratuvarı yayımlar.
+1. Laboratuvar yayımlandıktan sonra, Azure Lab Services için ilk oturum açmada ekip üyeliği listesinde herkese bir sanal makine atanır (SSO) veya [Labs Web sitesine](https://labs.azure.com)erişerek **Azure Lab Services** uygulama içeren sekmeye tıklayın. Böylece kullanıcılar VM 'yi kullanarak iş ve ev ödevini yapabilir.
+
+## <a name="add-azure-lab-services-app-as-a-tab-to-a-team"></a>Takıma bir sekme olarak Azure Lab Services uygulaması ekleme
+
+Ekip sahibi olarak, doğrudan takımlar kanallarınızda **Azure Lab Services** uygulama ekleyebilir ve ardından bu uygulama ekipteki herkes tarafından kullanılabilir. Aşağıdaki üç adımı izleyin:
+
+1. Uygulamayı eklemek istediğiniz takımlar kanalına gidin ve **+** sekme eklemeyi seçin. 
 1. Sekme seçeneklerinde **Azure Lab Services** arayın ve bu uygulamayı ekleyin. 
 
     > [!NOTE]
@@ -30,33 +41,11 @@ Laboratuvar hizmetlerini doğrudan takımlar kanallarınıza ekleyebilirsiniz ve
     Ekiplerle aynı kiracıda bulunan ve **sahibi**, **katılımcısı**veya **oluşturan** erişimi olan hesaplar görüntülenir. 
 
    ![ALS 'e hoş geldiniz](./media/integrate-with-teams/welcome.png) 
-1. **Kaydet** ' e basın ve uygulama takımlara eklenir ve sekme kanala eklenir. 
+1. **Kaydet** ' e basın ve sekme kanala eklenir.
 
     Artık, kanalınızdan **Azure Lab Services** sekmesini seçebilir ve aşağıdaki adımda anlatıldığı gibi laboratuvarları yönetmeye başlayabilirsiniz.
 
-    Bir takımın bir üyesi sekmeyi eklediğinde, Kanaldaki herkes için görüntülenir. Uygulamaya erişimi olan tüm kullanıcılar, Microsoft ekipleri için kullandıkları kimlik bilgileriyle çoklu oturum açma erişimi sağlar. Uygulamaya erişimi olmayan tüm kullanıcılar ekiplerde sekmeyi görebilir, ancak kullanıcılara şirket içi uygulamaya ve uygulamanın yayımlanmış sürümüne Azure portal izin verene kadar engellenmiştir.
-
-## <a name="create-a-classroom-lab"></a>Sınıf laboratuvarı oluşturma
-
 Laboratuvar hesabı seçildikten sonra, takım sahipleri takım için Labs oluşturabilir. Laboratuvar oluşturma işleminin tamamı ve laboratuar düzeyindeki tüm görevler takımlar içinde gerçekleştirilebilir. Kullanıcılar aynı takım ve takım sahibi içinde birden çok Laboratuvar oluşturma seçeneğine sahip olacak ve laboratuvar hesabı düzeyinde uygun erişimle, yalnızca belirli bir takımla ilişkili laboratuvarları görür.
-
-## <a name="giving-access-to-users-of-the-lab-account"></a>Laboratuvar hesabı kullanıcılarına erişim verme
-
-Laboratuvar hesabı düzeyindeki kullanıcılara erişim sağlama, [Azure](https://ms.portal.azure.com/) portalında gerçekleşecektir.
-
-1. Azure portal Azure Lab Services hesabınıza gidin. 
-1. **Laboratuvar hesabı** sayfasında **ERIŞIM denetimi (IAM)** seçeneğini belirleyin, araç çubuğunda **+ Ekle** ' yi seçin ve ardından araç çubuğunda **+ rol ataması Ekle** ' yi seçin. 
-
-    ![Access Control > rol ataması Ekle düğmesi](./media/tutorial-setup-lab-account/add-role-assignment-button.png)
-1. **Rol ataması Ekle** sayfasında, **rol**için **Laboratuvar Oluşturucu** ' yı seçin, laboratuvar oluşturucuları rolüne eklemek istediğiniz kullanıcıyı seçin ve **Kaydet**' i seçin. 
-
-    ![Laboratuvar Oluşturucu Ekle](./media/tutorial-setup-lab-account/add-lab-creator.png)
-
-### <a name="creating-classroom-labs"></a>Sınıf laboratuvarları oluşturma
-
-Sınıf laboratuvarları oluşturma işlemi, ekiplerden veya [Laboratuvar Hizmetleri Web sitesinden](https://labs.azure.com)Labs oluştururken de aynıdır. 
-
-Bu makaleyi ayarlama hakkında ayrıntılar için bkz. ana hat laboratuvarları oluşturma işlemi: [Azure Lab Services sınıf laboratuvarlarını yönetin](how-to-manage-classroom-labs.md).
 
 ## <a name="deleting-classroom-labs"></a>Sınıf laboratuvarlarını silme
 
@@ -77,7 +66,8 @@ Takımlar içinde bir laboratuvar oluşturulduğunda, laboratuvar Kullanıcı Li
 Ayrıca aşağıdaki makalelere bakın:
 
 - [Takımlara genel bakış içinde Azure Lab Services kullanma](lab-services-within-teams-overview.md)
-- [Ekiplerden laboratuvar hizmetlerinde bir VM havuzunu yönetme](how-to-manage-vm-pool-within-teams.md)
-- [Ekiplerden Laboratuvar Hizmetleri zamanlamaları oluşturma](how-to-create-schedules-within-teams.md)
-- [Ekiplerden laboratuvar hizmetlerinde bir VM 'ye (öğrenci görünümü) erişme](how-to-access-vm-for-students-within-teams.md)
+- [Takımlar içindeki laboratuvar kullanıcı listelerini yönetme](how-to-manage-user-lists-within-teams.md)
+- [Laboratuvarın takımlar içindeki VM havuzunu yönetme](how-to-manage-vm-pool-within-teams.md)
+- [Takımlar içinde laboratuvar zamanlamaları oluşturma ve yönetme](how-to-create-schedules-within-teams.md)
+- [Takımlar içindeki bir VM 'ye erişme – öğrenci görünümü](how-to-access-vm-for-students-within-teams.md)
 

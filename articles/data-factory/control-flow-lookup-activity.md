@@ -10,13 +10,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: fd345f0eed5bd7140047b12a3c1a7471872c8bb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: 371afbd9380ed1ecf28d0b26e2b4c5cd16ae6317
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91270449"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044080"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure Data Factory 'de arama etkinliği
 
@@ -31,11 +31,11 @@ Arama etkinliği, bir yapılandırma dosyasının veya tablosunun içeriğini ok
 
 Aşağıdaki veri kaynakları arama etkinliği için desteklenir. 
 
-Arama etkinliği 5000 satıra kadar sürebilir; Sonuç kümesi daha fazla kayıt içeriyorsa, ilk 5000 satır döndürülür. Arama etkinliği çıkışı 4 MB 'lık büyüklüğü destekler, boyut sınırı aşarsa etkinlik başarısız olur. Şu anda, zaman aşımından önce arama etkinliğinin en uzun süresi bir saattir.
+Arama etkinliği 5000 satıra kadar sürebilir; Sonuç kümesi daha fazla kayıt içeriyorsa, ilk 5000 satır döndürülür. Arama etkinliği çıkışı 4 MB 'lık büyüklüğü destekler, boyut sınırı aşarsa etkinlik başarısız olur. Şu anda, zaman aşımından önceki arama etkinliğinin en uzun süresi 24 saattir.
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -58,8 +58,8 @@ Arama etkinliği 5000 satıra kadar sürebilir; Sonuç kümesi daha fazla kayıt
 
 Ad | Açıklama | Tür | Gerekli mi?
 ---- | ----------- | ---- | --------
-veri kümesi | Arama için veri kümesi başvurusu sağlar. İlgili her bağlayıcı makalesinin **veri kümesi özellikleri** bölümünden Ayrıntılar alın. | Anahtar/değer çifti | Evet
-kaynak | Kopyalama etkinliği kaynağıyla aynı olan veri kümesine özgü kaynak özelliklerini içerir. İlgili her bağlayıcı makalesinin **etkinlik özelliklerini kopyalama** bölümünden Ayrıntılar alın. | Anahtar/değer çifti | Evet
+veri kümesi | Arama için veri kümesi başvurusu sağlar. İlgili her bağlayıcı makalesinin **veri kümesi özellikleri** bölümünden Ayrıntılar alın. | Anahtar/değer çifti | Yes
+kaynak | Kopyalama etkinliği kaynağıyla aynı olan veri kümesine özgü kaynak özelliklerini içerir. İlgili her bağlayıcı makalesinin **etkinlik özelliklerini kopyalama** bölümünden Ayrıntılar alın. | Anahtar/değer çifti | Yes
 yalnızca FirstRow | Yalnızca ilk satırın mi yoksa tüm satırların mi döndürülüp döndürülmeyeceğini gösterir. | Boole | Hayır. Varsayılan değer: `true`.
 
 > [!NOTE]

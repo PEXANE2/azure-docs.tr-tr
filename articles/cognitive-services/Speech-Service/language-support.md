@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 483c29d4aed4102440b09f26fe6778709836145f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b449913c9d1abbbec84f0ff77f7a1c1bc5321bf
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629837"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048466"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -154,7 +154,7 @@ Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [bölgeler](r
 | `en-CA` | İngilizce (Kanada) | Kadın | `en-CA-ClaraNeural` | Genel |
 | `en-GB` | İngilizce (Birleşik Krallık) | Kadın | `en-GB-LibbyNeural` | Genel |
 | `en-GB` | İngilizce (Birleşik Krallık) | Kadın | `en-GB-MiaNeural` | Genel |
-| `en-GB` <sup>Yeni</sup> | İngilizce (İngiltere) | Erkek | `En-GB-RyanNeural` | Genel |
+| `en-GB` <sup>Yeni</sup> | İngilizce (İngiltere) | Erkek | `en-GB-RyanNeural` | Genel |
 | `en-IE` <sup>Yeni</sup> | İrlanda Ingilizce (Irlanda) | Kadın | `en-IE-EmilyNeural` | Genel |
 | `en-IN` | İngilizce (Hindistan) | Kadın | `en-IN-NeerjaNeural` | Genel |
 | `en-US` | İngilizce (Birleşik Devletler) | Kadın | `en-US-AriaNeural` | Genel, birden çok ses stili mevcuttur |
@@ -399,7 +399,7 @@ Sinir seslerini nasıl yapılandıracağınızı ve ayarlayabileceğinizi öğre
 
 | Yerel Ayar | Dil | Metne bağımlı doğrulama | Metnin bağımsız doğrulaması | Metnin bağımsız tanımlayıcısı |
 |----|----|----|----|----|
-| tr-TR | İngilizce (ABD) | evet | evet | evet |
+| en-US | İngilizce (ABD) | evet | evet | evet |
 |zh-CN    |Çince (Mandarin, Basitleştirilmiş)|    yok|    evet|    evet|
 |de-DE    |Almanca (Almanya)    |yok    |evet    |evet|
 |en-GB    |İngilizce (UK)    |yok    |evet    |evet|

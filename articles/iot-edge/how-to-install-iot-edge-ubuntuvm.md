@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: pdecarlo
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 95fd10ab7de4885d3630b5defe4080fe0203b62f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d14ef742c19556a9df2bd193a54bfaa1672d5964
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91296986"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044233"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Ubuntu sanal makinelerinde Azure IoT Edge çalıştırma
 
@@ -50,7 +50,7 @@ Bu makalede, önceden sağlanmış bir cihaz bağlantı dizesi kullanılarak yü
 
     **Yönetici Kullanıcı adı**: dağıtımda kök ayrıcalıklar sağlanacak olan Kullanıcı adı.
 
-    **Cihaz bağlantı dizesi**: hedeflediğiniz [IoT Hub](../iot-hub/about-iot-hub.md)içinde oluşturulmuş bir cihaz için bir [Cihaz bağlantı dizesi](how-to-register-device.md) .
+    **Cihaz bağlantı dizesi**: hedeflediğiniz [IoT Hub](../iot-hub/about-iot-hub.md)içinde oluşturulmuş bir cihaz için bir [Cihaz bağlantı dizesi](./how-to-manual-provision-symmetric-key.md) .
 
     **VM boyutu**: dağıtılacak sanal makine [boyutu](../cloud-services/cloud-services-sizes-specs.md)
 

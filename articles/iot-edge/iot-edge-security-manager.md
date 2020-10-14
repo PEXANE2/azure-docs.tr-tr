@@ -9,12 +9,12 @@ ms.author: eustacea
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: d5cfa16196a8815b711fd5277a80f6eb67d3a388
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d50ff37c3d29ae8e9e25d8759ef3c55787a58047
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76548705"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043009"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge Güvenlik Yöneticisi
 
@@ -75,7 +75,7 @@ IoT Edge güvenlik arka plan programı, güvenlik sağlamlaştırma için herhan
 
 #### <a name="cloud-interface"></a>Bulut arabirimi
 
-Bulut arabirimi, IoT Edge güvenlik arka plan programı, bulut Tebrikler gibi bulut hizmetlerine güvenlik yenilemesi gibi cihaz güvenliğine erişmesini sağlar.  Örneğin, IoT Edge güvenlik arka plan programı Şu anda bu arabirimi kullanarak cihaz kimliği yaşam döngüsü yönetimi için Azure IoT Hub [cihaz sağlama hizmeti](https://docs.microsoft.com/azure/iot-dps/) 'ne erişin.  
+Bulut arabirimi, IoT Edge güvenlik arka plan programı, bulut Tebrikler gibi bulut hizmetlerine güvenlik yenilemesi gibi cihaz güvenliğine erişmesini sağlar.  Örneğin, IoT Edge güvenlik arka plan programı Şu anda bu arabirimi kullanarak cihaz kimliği yaşam döngüsü yönetimi için Azure IoT Hub [cihaz sağlama hizmeti](../iot-dps/index.yml) 'ne erişin.  
 
 #### <a name="management-api"></a>Yönetim API'si
 
@@ -103,7 +103,7 @@ Microsoft, [GitHub üzerinde IoT Edge güvenlik arka plan programı](https://git
 
 IoT Edge güvenlik arka plan programının yüklenmesi ve güncelleştirmeleri, işletim sisteminin paket yönetim sistemi üzerinden yönetilir. Donanım köküne sahip IoT Edge cihazlar, güvenli önyükleme ve güncelleştirme yönetimi sistemleri aracılığıyla yaşam döngüsünü yöneterek arka plan 'un bütünlüğünden daha fazla sağlamlaştırma sağlamalıdır. Cihaz üreticileri bu avenilgili cihaz özelliklerine göre araştırmalıdır.
 
-#### <a name="versioning"></a>Sürüm oluşturma
+#### <a name="versioning"></a>Sürüm Oluşturma
 
 IoT Edge Runtime, IoT Edge güvenlik arka plan programının sürümünü izler ve raporlar. Sürüm, IoT Edge Agent modülünün bildirdiği özelliğin *Runtime. platform. Version* özniteliği olarak bildirilir.
 

@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 11/15/2019
 ms.author: matjazl
-ms.openlocfilehash: be3cf7d946e7502147942fa8954ade70dd47bedf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2850f831100533908d55c4aab372338e07b3807f
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839937"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042499"
 ---
 # <a name="configure-database-settings"></a>Veritabanı ayarlarını yapılandırma 
 
@@ -41,7 +41,7 @@ Veritabanı üretimi 10.000 RU/sn 'den büyükse veya veritabanında depolanan v
 Bu makalede, FHıR için RUs for Azure API 'nizi güncelleştirmeyi öğrendiniz. Müşteri tarafından yönetilen anahtarları bir veritabanı ayarı olarak yapılandırma hakkında bilgi edinmek için:
 
 >[!div class="nextstepaction"]
->[Müşteri tarafından yönetilen anahtarları yapılandırma](bring-your-own-key.md)
+>[Müşteri tarafından yönetilen anahtarları yapılandırma](customer-managed-key.md)
 
 Ya da FHıR için tam olarak yönetilen bir Azure API 'SI dağıtabilirsiniz:
  

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 06/16/2020
-ms.openlocfilehash: d724ef463d7c7ad237b5fd023e9c15f50de96f04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: 1a8dbbb42a548a8c4e9a1117166aa621e8734208
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803475"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044505"
 ---
 # <a name="common-issues-when-certifying-virtual-machine-images-for-azure-marketplace"></a>Azure Marketi için sanal makine görüntülerini sertifikalarken karşılaşılan yaygın sorunlar
 
@@ -29,7 +29,7 @@ Görüntünüzü güncelleştirmelerle yeniden yayımlamak için bir istek gönd
 
 Bu hata, başka bir yayımcıya ait olan ve görüntüyü güncelleştirdiğiniz bir temel görüntü kullandığınızda oluşur. Bu durumda, görüntünüzü yayımlamanıza izin verilmez.
 
-Bu sorunu onarmak için, görüntüyü Azure Marketi 'nden alın ve üzerinde değişiklikler yapın. Daha fazla bilgi için aşağıdaki makalelere bakın:
+Bu sorunu onarmak için, görüntüyü Azure Marketi 'nden alın ve üzerinde değişiklikler yapın. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Linux görüntüleri](../../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
 - [Windows görüntüleri](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base)
@@ -46,7 +46,7 @@ VM uzantılarını etkinleştirmek için aşağıdakileri yapın:
 1. Linux VM 'nizi seçin.
 1. **Tanılama ayarları**' na gidin.
 1. **Depolama hesabını**güncelleştirerek taban matrislerini etkinleştirin.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
    ![Konuk düzeyinde izlemeyi etkinleştir](./media/vm-certification-issues-solutions-1.png)
 
@@ -372,6 +372,61 @@ Yayımcılar, yukarıdaki senaryo için aşağıdaki ek bilgilerle özel durumla
    7. Zaman çizelgesi-bu özel durumun istendiği Tarih 
    8.   Ek-tüm önem bulgu belgelerini ekleyin. Kilitli VM 'Ler için, test raporunu ve özel şablonlar için ek olarak özel ARM şablonunu sağlayın. Kilitli VM 'Ler için rapor iliştirilemedi ve özel şablonlar için özel ARM şablonu, istek reddine neden olacak
 
+## <a name="how-to-address-a-vulnerability-or-exploit-in-a-vm-offer"></a>Bir VM teklifinde bir güvenlik açığını nasıl ele almak veya açıktan yararlanmak
+
+Bu SSS, sanal makine görüntülerinizden biriyle bir güvenlik açığı veya yararlanma bulunduğunda bir sanal makine (VM) görüntüsü sağlamanıza yardımcı olur. Bu SSS yalnızca Azure Marketi 'Nde yayınlanan Azure sanal makine teklifleri için geçerlidir.
+
+> [!NOTE]
+> Son VM görüntüsünü bir plandan kaldıramazsınız ve bir teklif için son planı satmayı durduramazsınız.
+
+Aşağıdakilerden birini yapın:
+
+1. Güvenlik açığı bulunan VM görüntüsünün yerini alacak yeni bir VM görüntünüz varsa, [bir sabıt VM görüntüsü sağlama](#how-to-provide-a-fixed-vm-image)bölümüne gidin.
+1. Bir plandaki tek VM görüntüsünü değiştirmek için yeni bir VM Görüntünüz yoksa ve plan ile işiniz bittiğinde, [planı satmaya de durdurabilirsiniz](update-existing-offer.md#stop-selling-an-offer-or-plan).
+1. Teklifteki tek VM görüntüsünü değiştirmeyi planlamıyorsanız, [teklifi satmasını durdurmanız](update-existing-offer.md#stop-selling-an-offer-or-plan)önerilir.
+
+### <a name="how-to-provide-a-fixed-vm-image"></a>Sabit bir VM görüntüsü sağlama
+
+Bir güvenlik açığı veya açıktan yararlanan bir VM görüntüsünü değiştirmek için sabit bir VM görüntüsü sağlamak üzere şunları yapmanız gerekir:
+
+1. Güvenlik açığı veya açıktan yararlanmak için yeni bir VM görüntüsü sağlayın.
+1. Güvenlik açığı veya açıktan yararlanan VM görüntüsünü kaldırın.
+1. Teklifi yeniden yayımlayın.
+
+#### <a name="provide-a-new-vm-image-to-address-the-security-vulnerability-or-exploit"></a>Güvenlik açığı veya açıktan yararlanmak için yeni bir VM görüntüsü sağlayın
+
+Bu adımları tamamlayabilmeniz için, eklemek istediğiniz VM görüntüsünün teknik varlığını hazırlamanız gerekir. Daha fazla bilgi için bkz. [Azure Marketi Sanal Makine teklifi için teknik varlıklar oluşturma](create-azure-vm-technical-asset.md) ve [VM Görüntünüz için SAS URI 'si edinme](get-sas-uri.md).
+
+1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
+1. Sol gezinti menüsünde **ticari Market**  >  **genel bakış**' ı seçin.
+1. **Teklif diğer adı** sütununda teklifi seçin.
+1. **Plana genel bakış** sekmesinde, **ad** sütununda, VM 'yi eklemek istediğiniz planı seçin.
+1. **Teknik yapılandırma** sekmesinde, **VM GÖRÜNTÜLERI**altında **+ VM görüntüsü Ekle**' yi seçin.
+   > [!NOTE]
+   > Bir plana tek seferde yalnızca bir VM görüntüsü ekleyebilirsiniz. Birden çok VM görüntüsü eklemek için ilk olanı yayımlayın ve sonraki VM görüntüsünü eklemeden önce _Yayımcı imza_ aşamasına gelene kadar bekleyin.
+1. Görüntülenen kutulara yeni bir disk sürümü ve sanal makine görüntüsü belirtin.
+1. **Taslağı kaydet**'i seçin.
+1. VM görüntüsünü güvenlik güvenlik açığıyla birlikte kaldırmak için sonraki bölüme geçin.
+
+#### <a name="remove-the-vm-image-that-has-the-security-vulnerability-or-exploit"></a>Güvenlik açığı veya açıktan yararlanan VM görüntüsünü kaldırın
+
+[Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
+1. Sol gezinti menüsünde **ticari Market**  >  **genel bakış**' ı seçin.
+1. **Teklif diğer adı** sütununda teklifi seçin.
+1. **Plana genel bakış** sekmesinde, **ad** sütununda, kaldırmak istediğiniz VM 'yi içeren planı seçin.
+1. **Teknik yapılandırma** sekmesinde, **VM görüntüleri**altında, kaldırmak istediğiniz VM görüntüsünün yanındaki VM görüntüsünü **Kaldır**' ı seçin.
+1. Görüntülenen iletişim kutusunda **devam**' ı seçin.
+1. **Taslağı kaydet**'i seçin.
+1. Teklifi yeniden yayımlamak için sonraki bölüme geçin.
+
+#### <a name="republish-the-offer"></a>Teklifi yeniden yayımlayın
+
+VM görüntüsünü kaldırdıktan veya değiştirdikten sonra teklifi yeniden yayımlamanız gerekir.
+1. **Gözden geçir ve Yayımla '** yı seçin.
+1. Sertifika ekibine herhangi bir bilgi sağlamanız gerekiyorsa, **sertifikayı sertifika notları** kutusuna ekleyin.
+1. **Yayımla**’yı seçin.
+
+Yayımlama süreci hakkında daha fazla bilgi için bkz. [ticari Market 'e yönelik bir teklifi İnceleme ve yayımlama](../review-publish-offer.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

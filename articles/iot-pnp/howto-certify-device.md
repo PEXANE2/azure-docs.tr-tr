@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6aa4273933190ccfe495bcaf243ee15a5ce823fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cdee274ebc815b23b8ce59e8b9eca90d00e3818
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577654"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042975"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>IoT Tak Çalıştır cihazlarına sertifika verme
 
@@ -47,13 +47,13 @@ Sertifika gereksinimlerini karşılamak için cihazınızın şunları yapmanız
 
 ## <a name="test-with-the-azure-iot-extension-cli"></a>Azure IoT Uzantısı CLI ile test etme
 
-[Azure ıOT CLI uzantısı](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/product?view=azure-cli-latest&preserve-view=true) , cihazı Azure Sertifikalı cihaz portalı aracılığıyla sertifika için göndermeden önce cihaz uygulamasının modelle eşleştiğini doğrulamanızı sağlar.
+[Azure ıOT CLI uzantısı](/cli/azure/ext/azure-iot/iot/product?preserve-view=true&view=azure-cli-latest) , cihazı Azure Sertifikalı cihaz portalı aracılığıyla sertifika için göndermeden önce cihaz uygulamasının modelle eşleştiğini doğrulamanızı sağlar.
 
 Aşağıdaki adımlarda, CLı kullanarak sertifika testlerinin nasıl hazırlanacağı ve çalıştırılacağı gösterilmektedir:
 
 ### <a name="install-the-azure-iot-extension-for-the-azure-cli"></a>Azure CLı için Azure IoT uzantısını yükler
 
-Ortamınızdaki [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true) 'yı ayarlamak için yükleme yönergelerine bakın.
+Ortamınızdaki [Azure CLI](/cli/azure/?preserve-view=true&view=azure-cli-latest) 'yı ayarlamak için yükleme yönergelerine bakın.
 
 Azure IoT uzantısını yüklemek için şu komutu çalıştırın:
 
@@ -61,7 +61,7 @@ Azure IoT uzantısını yüklemek için şu komutu çalıştırın:
 az extension add --name azure-iot
 ```
 
-Daha fazla bilgi için bkz. [Azure IoT Için Azure CLI](https://docs.microsoft.com/cli/azure/azure-cli-reference-for-iot?view=azure-cli-latest&preserve-view=true).
+Daha fazla bilgi için bkz. [Azure IoT Için Azure CLI](/cli/azure/azure-cli-reference-for-iot?preserve-view=true&view=azure-cli-latest).
 
 ### <a name="create-a-new-product-test"></a>Yeni bir ürün testi oluşturun
 
@@ -75,7 +75,7 @@ az iot product test create --badge-type Pnp --at SymmetricKey --device-type Fini
 ```
 
 > [!NOTE]
-> CLı kullandığınızda aboneliğinizde [oturum açmanız](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true) gerekir.
+> CLı kullandığınızda aboneliğinizde [oturum açmanız](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest) gerekir.
 
 Komuttan gelen JSON çıktısı, `primaryKey` `registrationId` cihazınızı bağladığınızda kullanılacak, ve öğesini içerir `scopeID` .
 

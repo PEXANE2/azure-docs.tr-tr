@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: 084a823571281c91419a56b6212ddf6c44dd80bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db4383526874c98f717c5f166b296d814724184a
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322640"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044644"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure dijital TWINS sorunlarını giderme: ölçümler
 
@@ -70,7 +70,7 @@ Faturalandırma ile yapılacak ölçümler:
 | --- | --- | --- | --- | --- | --- |
 | BillingApiOperations | Faturalama API 'SI Işlemleri (Önizleme) | Sayı | Toplam | Azure Digital TWINS hizmetinde yapılan tüm API isteklerinin sayısı için faturalandırma ölçümü. | Ölçüm kimliği |
 | Billingiletide Işlendi | Işlenen faturalama Iletileri (Önizleme) | Sayı | Toplam | Azure dijital TWINS 'den dış uç noktalara gönderilen ileti sayısı için faturalandırma ölçümü.<br><br>Faturalama amacıyla tek bir ileti olarak kabul edilebilmesi için yükün 1 KB 'den büyük olmaması gerekir. Bundan büyük yük, 1 KB 'lık artışlarla ek iletiler olarak sayılır (Bu nedenle 1 ile 2 KB arasında bir ileti 2 ileti olarak sayılır, 2 ile 3 KB arasında bir ileti 3 ileti olur ve bu şekilde devam eder).<br>Bu kısıtlama, yanıtlar için de geçerlidir. bu nedenle yanıt gövdesinde 1,5 KB döndüren bir çağrı, örneğin, 2 işlem olarak faturalandırılacaktır. | Ölçüm kimliği |
-| BillingQueryUnits | Faturalama sorgu birimleri (Önizleme) | Sayı | Toplam | Sorgu birimlerinin sayısı, sorgu yürütmek için tüketilen, hizmet kaynağı kullanımının dahili olarak hesaplanan bir ölçümüdür. Sorgu birimlerini ölçmek için bir yardımcı API de mevcuttur: [Querychargehelper sınıfı](https://docs.microsoft.com/dotnet/api/azure.digitaltwins.core.querychargehelper?view=azure-dotnet-preview&preserve-view=true) | Ölçüm kimliği |
+| BillingQueryUnits | Faturalama sorgu birimleri (Önizleme) | Sayı | Toplam | Sorgu birimlerinin sayısı, sorgu yürütmek için tüketilen, hizmet kaynağı kullanımının dahili olarak hesaplanan bir ölçümüdür. Sorgu birimlerini ölçmek için bir yardımcı API de mevcuttur: [Querychargehelper sınıfı](/dotnet/api/azure.digitaltwins.core.querychargehelper?preserve-view=true&view=azure-dotnet-preview) | Ölçüm kimliği |
 
 #### <a name="ingress-metrics"></a>Giriş ölçümleri
 

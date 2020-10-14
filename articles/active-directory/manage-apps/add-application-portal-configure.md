@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: d2a538cac1e8bcf9c67c88b206cacd928bfb73c8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 50c1cd62f52583a005e6e7fe8fb29ee8eafd1af9
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91448243"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044471"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdaki bir uygulama için özellikleri yapılandırma
 
@@ -41,10 +41,7 @@ Uygulama özelliklerini düzenlemek için:
 
 1. Azure AD portalında **Kurumsal uygulamalar**' ı seçin. Ardından, yapılandırmak istediğiniz uygulamayı bulun ve seçin.
 2. **Yönet** bölümünde **Özellikler** ' i seçerek, düzenlenecek **Özellikler** bölmesini açın.
-
-    ![Düzenlenebilir uygulama özelliklerini gösteren Özellikler ekranının ekran görüntüsü.](media/add-application-portal/edit-properties.png)
-
-3. Yapılandırmak için kullanılabilen seçenekleri anlamak için bir dakikanızı ayırın:
+3. Kullanılabilir seçenekleri anlamak için bir dakikanızı ayırın. Mevcut seçenekler, uygulamanın Azure AD ile nasıl tümleştirilebilmesine bağlıdır. Örneğin, SAML tabanlı çoklu oturum açma kullanan bir uygulamanın *Kullanıcı erişim URL 'si* gibi alanları vardır, ancak OIDC tabanlı çoklu oturum açma kullanan bir uygulama bunu olmaz. Ayrıca, **Azure Active Directory > uygulama kayıtları** aracılığıyla eklenen uygulamaların varsayılan OIDC tabanlı uygulamalara göre olduğunu da unutmayın. Azure Active Directory aracılığıyla eklenen uygulamalar **> kurumsal uygulamalar** , bir dizi çoklu oturum açma standardını kullanabilir. Tüm uygulamaların, bir uygulama görüntülendiğinde ve kullanılabilir olduğunda yapılandırma alanları olacaktır. Bu alanlar aşağıdaki gibidir:
     - **Kullanıcıların oturum açması Için etkinleştirildi mi?** uygulamaya atanan kullanıcıların oturum açıp açamayacağını belirler.
     - **Kullanıcı Ataması gerekli mi?** uygulamaya atanmamış kullanıcıların oturum açıp açamayacağını belirler.
     - **Kullanıcılara görünebilir mi?** bir uygulamaya atanan kullanıcıların bu uygulamayı [uygulamamda](https://myapps.microsoft.com) Microsoft 365 ve uygulama başlatıcısı 'nda göremeyeceğini belirler. (Microsoft 365 web sitesinin sol üst köşesindeki waffle menüsüne bakın.)

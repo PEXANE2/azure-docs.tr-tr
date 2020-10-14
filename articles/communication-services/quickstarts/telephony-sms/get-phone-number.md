@@ -9,12 +9,12 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: e06c3720e180c1dc4fa2f227fd86d15cbbb0ff33
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: a9c33fad6d376c2f568f4eefbb0379486b5c40f3
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91756980"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044777"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak telefon numarası alın
 
@@ -22,7 +22,7 @@ ms.locfileid: "91756980"
 
 Telefon numarası satın almak için Azure portal kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Etkin bir Iletişim Hizmetleri kaynağı.](../create-communication-resource.md)
@@ -103,7 +103,7 @@ Telefon numaralarınızı yönetmek için menüdeki telefon numaraları dikey pe
 > [!NOTE]
 > Sağlanan sayıların bu sayfada gösterilmesi birkaç dakika sürebilir.
 
-### <a name="customizing-phone-number-plans"></a>Telefon numarası planlarını özelleştirme
+### <a name="customizing-phone-number-features"></a>Telefon numarası özelliklerini özelleştirme
 `Numbers`Sayfada, planı özelleştirmek istediğiniz numaraya tıklayarak telefon numarasını seçebilirsiniz...
 
 :::image type="content" source="../media/manage-phone-azure-portal-capability-update.png" alt-text="Iletişim Hizmetleri kaynağının ana sayfasını gösteren ekran görüntüsü.":::

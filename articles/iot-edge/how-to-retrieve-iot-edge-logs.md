@@ -10,18 +10,18 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: b5d2156707d8a4c308ed577b7407d5eae30edc65
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f5f2a9800d3796d217294e757076d6ff706281d1
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979880"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044207"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>IoT Edge dağıtımlarından günlükleri alma
 
 IoT Edge aracı modülüne dahil olan doğrudan yöntemleri kullanarak cihaza fiziksel veya SSH erişimi gerekmeden IoT Edge dağıtımlarınızdan günlükleri alın. Doğrudan yöntemler cihaza uygulanır ve sonra buluttan çağrılabilir. IoT Edge Aracısı, IoT Edge cihazlarınızı uzaktan izlemenize ve yönetmenize yardımcı olan doğrudan yöntemler içerir. Bu makalede ele alınan doğrudan Yöntemler 1.0.10 sürümü ile birlikte kullanılabilir.
 
-Doğrudan yöntemler hakkında daha fazla bilgi için, bunları kullanma ve kendi modüllerinize uygulama hakkında daha fazla bilgi için, bkz. [IoT Hub doğrudan yöntemleri anlama ve çağırma](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-direct-methods).
+Doğrudan yöntemler hakkında daha fazla bilgi için, bunları kullanma ve kendi modüllerinize uygulama hakkında daha fazla bilgi için, bkz. [IoT Hub doğrudan yöntemleri anlama ve çağırma](../iot-hub/iot-hub-devguide-direct-methods.md).
 
 Bu doğrudan yöntemlerin adları, büyük/küçük harfe duyarlı olarak işlenir.
 
@@ -67,13 +67,13 @@ Bu yöntem, aşağıdaki şemaya sahip bir JSON yükünü kabul eder:
 |-|-|-|
 | schemaVersion | dize | Ayarla `1.0` |
 | öğeler | JSON dizisi | `id`Ve tanımlama gruplarını içeren bir dizi `filter` . |
-| ID | dize | Modül adını sağlayan bir normal ifade. Bir Edge cihazında birden çok modülle eşleşir. [.Net normal ifade](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) biçimi bekleniyor. |
+| ID | dize | Modül adını sağlayan bir normal ifade. Bir Edge cihazında birden çok modülle eşleşir. [.Net normal ifade](/dotnet/standard/base-types/regular-expressions) biçimi bekleniyor. |
 | filtre | JSON bölümü | Kayıt düzeninde normal ifadeyle eşleşen modüller için uygulanacak günlük filtreleri `id` . |
 | Connect | tamsayı | En son 'den başlayarak almak için geçmişte bulunan günlük satırı sayısı. Seçim. |
 | getirildikten | tamsayı | Yalnızca bu kez bir süre (1 d, 90 m, 2 gün 3 saat 2 dakika), rfc3339 zaman damgası veya UNIX zaman damgası olarak günlükleri geri döndürür.  `tail`Ve `since` belirtilirse, Günlükler `since` önce değeri kullanılarak alınır. Sonra `tail` değer sonuca uygulanır ve nihai sonuç döndürülür. Seçim. |
 | Until | tamsayı | Yalnızca bir rfc3339 zaman damgası, UNIX zaman damgası veya süre (1 d, 90 m, 2 gün 3 saat 2 dakika) olarak belirtilen süreden önceki günlükleri döndürür. Seçim. |
 | günlük düzeyi | tamsayı | Günlük satırlarını belirtilen günlük düzeyinden küçük veya buna eşit olarak filtreleyin. Günlük satırları önerilen günlük biçimini izlemelidir ve [Syslog önem düzeyi](https://en.wikipedia.org/wiki/Syslog#Severity_level) standardını kullanmalıdır. Seçim. |
-| Regex | dize | [.Net normal ifadeler](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) biçimini kullanarak belirtilen normal ifadeyle eşleşen içeriğe sahip olan günlük satırlarını filtreleyin. Seçim. |
+| Regex | dize | [.Net normal ifadeler](/dotnet/standard/base-types/regular-expressions) biçimini kullanarak belirtilen normal ifadeyle eşleşen içeriğe sahip olan günlük satırlarını filtreleyin. Seçim. |
 | encoding | dize | `gzip` veya `none`. `none` varsayılan değerdir. |
 | contentType | dize | `json` veya `text`. `text` varsayılan değerdir. |
 
@@ -166,7 +166,7 @@ Bu yöntem, "sasUrl" anahtarının eklenmesiyle **GetModuleLogs**ile benzer bir 
 
 | Ad | Tür | Açıklama |
 |-|-|-|
-| sasURL | dize (URI) | [Azure Blob depolama kapsayıcısına yazma erişimi olan paylaşılan erişim imzası URL 'si](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/). |
+| sasURL | dize (URI) | [Azure Blob depolama kapsayıcısına yazma erişimi olan paylaşılan erişim imzası URL 'si](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer). |
 
 Günlükleri karşıya yükleme başarılı bir isteği, **"durum": 200** ve ardından aşağıdaki şemaya sahip bir yük getirir:
 
@@ -259,7 +259,7 @@ Azure portal, `UploadModuleLogs` sasURL 'sini bilgilerinizi doldurduktan sonra Y
 
 ## <a name="upload-support-bundle-diagnostics"></a>Destek paketi tanılamayı karşıya yükle
 
-Mevcut bir Azure Blob depolama kapsayıcısına IoT Edge modül günlüklerinin bir ZIP dosyasını paketleyip yüklemek için **Uploadsupportpaketini** doğrudan yöntemini kullanın. Bu doğrudan yöntem, [`iotedge support-bundle`](https://docs.microsoft.com/azure/iot-edge/troubleshoot#gather-debug-information-with-support-bundle-command) günlükleri almak için IoT Edge cihazınızda komutunu çalıştırır.
+Mevcut bir Azure Blob depolama kapsayıcısına IoT Edge modül günlüklerinin bir ZIP dosyasını paketleyip yüklemek için **Uploadsupportpaketini** doğrudan yöntemini kullanın. Bu doğrudan yöntem, [`iotedge support-bundle`](./troubleshoot.md#gather-debug-information-with-support-bundle-command) günlükleri almak için IoT Edge cihazınızda komutunu çalıştırır.
 
 Bu yöntem, aşağıdaki şemaya sahip bir JSON yükünü kabul eder:
 
@@ -276,7 +276,7 @@ Bu yöntem, aşağıdaki şemaya sahip bir JSON yükünü kabul eder:
 | Ad | Tür | Açıklama |
 |-|-|-|
 | schemaVersion | dize | Ayarla `1.0` |
-| sasURL | dize (URI) | [Azure Blob depolama kapsayıcısına yazma erişimi olan paylaşılan erişim Imzası URL 'SI](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/) |
+| sasURL | dize (URI) | [Azure Blob depolama kapsayıcısına yazma erişimi olan paylaşılan erişim Imzası URL 'SI](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
 | getirildikten | tamsayı | Yalnızca bu kez bir süre (1 d, 90 m, 2 gün 3 saat 2 dakika), rfc3339 zaman damgası veya UNIX zaman damgası olarak günlükleri geri döndürür. Seçim. |
 | Until | tamsayı | Yalnızca bir rfc3339 zaman damgası, UNIX zaman damgası veya süre (1 d, 90 m, 2 gün 3 saat 2 dakika) olarak belirtilen süreden önceki günlükleri döndürür. Seçim. |
 | edgeRuntimeOnly | boolean | True ise yalnızca Edge aracısından, Edge hub 'ından ve Edge güvenlik arka plan programından günlükleri geri döndürür. Varsayılan: false.  Seçim. |

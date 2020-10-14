@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 082e05bddd4fe12b279368e44b2d986bd4fa91a7
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 7ff1e2f00b20344fc19d797ed5bafdfbc2113b66
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945337"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044675"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure Digital Twins nedir?
 
@@ -38,13 +38,13 @@ Modeller, [dijital TWINS tanım dili (DTDL)](https://github.com/Azure/opendigita
 * Modeller, TWINS 'nizi, etkileşimlerini yansıtan bir bilgi grafiğine bağlayabilmeniz için varlıklarınız arasında anlamsal **ilişkiler** tanımlar. Modelleri, dünyanın bir açıklamasında ve ilişkileri fiiller olarak düşünebilir.
 * Ayrıca, model devralmayı kullanarak TWINS 'yi özelleştirebilirsiniz. Bir model diğerinden kalıtımla alabilir.
 
-DTDL, [ıot Tak ve kullan (PnP)](../iot-pnp/overview-iot-plug-and-play.md) ve [Time Series Insights (TSI)](../time-series-insights/time-series-insights-update-overview.md)dahil olmak üzere diğer Azure IoT hizmetlerinin tamamında veri modelleri için kullanılır. Bu, Azure dijital TWINS çözümünüzü bağlı ve Azure ekosisteminin diğer bölümleriyle uyumlu tutmanıza yardımcı olur.
+DTDL, [ıot Tak ve kullan (PnP)](../iot-pnp/overview-iot-plug-and-play.md) ve [Time Series Insights (TSI)](../time-series-insights/overview-what-is-tsi.md)dahil olmak üzere diğer Azure IoT hizmetlerinin tamamında veri modelleri için kullanılır. Bu, Azure dijital TWINS çözümünüzü bağlı ve Azure ekosisteminin diğer bölümleriyle uyumlu tutmanıza yardımcı olur.
 
 ### <a name="live-execution-environment"></a>Canlı yürütme ortamı
 
 Azure dijital TWINS 'deki dijital modeller gerçek dünyanın canlı, güncel temsilleridir. Özel DTDL modellerinizde ilişkileri kullanarak, TWINS 'i ortamınızı temsil eden **canlı bir grafiğe** bağlayacaksınız.
 
-Azure dijital TWINS grafınızı, [**Azure Digital TWINS Explorer**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)örnek bir uygulamanın yardımıyla görüntüleyebilirsiniz.
+Azure dijital TWINS grafınızı, [**Azure Digital TWINS Explorer**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)örnek bir uygulamanın yardımıyla görüntüleyebilirsiniz.
 
 Örnek görselleştirmenin nasıl görüneceğine ilişkin bir görünüm aşağıda verilmiştir:
 

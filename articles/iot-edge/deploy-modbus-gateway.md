@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
-ms.openlocfilehash: 23fbbd87230ea0a0147dc9d90c77729f4d531e98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d07a1d1ab0d3b1f4315c09f1c403126139b34612
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76511153"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043910"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>IoT Edge cihaz ağ geçidi aracılığıyla Modbus TCP cihazlarını bağlama
 
@@ -35,7 +35,7 @@ Bu makalede Modbus TCP protokolünü kullandığınız varsayılır. Modülün M
 
 Modbus ağ geçidinin işlevselliğini test etmek istiyorsanız Microsoft tarafından sağlanan örnek modülü kullanabilirsiniz. Modüle Azure Marketi, [Modbus](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview)veya görüntü URI 'si ile erişebilirsiniz `mcr.microsoft.com/azureiotedge/modbus:1.0` .
 
-Kendi modülünüzü oluşturmak ve ortamınız için özelleştirmek istiyorsanız, GitHub 'da açık kaynaklı [Azure IoT Edge Modbus modülü](https://github.com/Azure/iot-edge-modbus) projesi vardır. Kendi kapsayıcı görüntünüzü oluşturmak için bu projedeki yönergeleri izleyin. Bir kapsayıcı görüntüsü oluşturmak için, [Visual Studio 'Da C# modülleri geliştirme](how-to-visual-studio-develop-csharp-module.md) veya [Visual Studio Code modüller geliştirme](how-to-vs-code-develop-module.md)bölümüne bakın. Bu makaleler, yeni modüller oluşturma ve kapsayıcı görüntülerini bir kayıt defterine yayımlama hakkında yönergeler sağlar.
+Kendi modülünüzü oluşturmak ve ortamınız için özelleştirmek istiyorsanız, GitHub 'da açık kaynaklı [Azure IoT Edge Modbus modülü](https://github.com/Azure/iot-edge-modbus) projesi vardır. Kendi kapsayıcı görüntünüzü oluşturmak için bu projedeki yönergeleri izleyin. Bir kapsayıcı görüntüsü oluşturmak için, [Visual Studio 'Da C# modülleri geliştirme](./how-to-visual-studio-develop-module.md) veya [Visual Studio Code modüller geliştirme](how-to-vs-code-develop-module.md)bölümüne bakın. Bu makaleler, yeni modüller oluşturma ve kapsayıcı görüntülerini bir kayıt defterine yayımlama hakkında yönergeler sağlar.
 
 ## <a name="try-the-solution"></a>Çözümü deneyin
 
@@ -51,7 +51,7 @@ Bu bölümde Microsoft 'un örnek Modbus modülünün IoT Edge cihazınıza dağ
 
    1. Açılan menü **Ekle** ' ye tıklayın ve **Market modülü**' nü seçin.
    2. `Modbus`Microsoft tarafından **Modbus TCP modülünü** arayın ve seçin.
-   3. Modül, IoT Hub için otomatik olarak yapılandırılır ve IoT Edge modülleri listesinde görünür. Yollar da otomatik olarak yapılandırılır. **Gözden geçir ve oluştur**’u seçin.
+   3. Modül, IoT Hub için otomatik olarak yapılandırılır ve IoT Edge modülleri listesinde görünür. Yollar da otomatik olarak yapılandırılır. **Gözden geçir + oluştur**’u seçin.
    4. Dağıtım bildirimini gözden geçirin ve **Oluştur**' u seçin.
 
 5. Listeden Modbus modülünü seçin `ModbusTCPModule` ve **Modül ikizi ayarları** sekmesini seçin. Module ikizi istenen özellikler için gerekli JSON otomatik olarak doldurulur.

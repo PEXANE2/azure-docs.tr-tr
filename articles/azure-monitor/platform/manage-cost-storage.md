@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/29/2020
+ms.date: 10/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: c78cfd2a453a082ce3f352504719a7fb8cc2b8ec
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: f8f5d41b7f4df3cd82a388bc24ccc8fa5a9a91f6
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875963"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044114"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure İzleyici Günlükleri ile kullanımı ve maliyetleri yönetme    
 
@@ -102,7 +102,7 @@ Ayrıca, parametresini kullanarak (Azure Resource Manager şablonunda) [Azure Re
 
 Tek başına fiyatlandırma katmanındaki kullanım, alınan veri hacmi tarafından faturalandırılır. **Log Analytics** hizmetinde raporlanır ve ölçer "veri çözümlendi" olarak adlandırılmıştır. 
 
-Bir saat ayrıntı düzeyi temelinde izlenen VM başına (düğüm) düğüm başına fiyatlandırma katmanı ücretleri. İzlenen her düğüm için, çalışma alanı faturalandırılmamış günde 500 MB veri tahsis edilir. Bu ayırma, çalışma alanı düzeyinde toplanır. Günlük toplam veri ayırmanın üzerine gelen veriler, veri fazla yaşı olarak GB başına faturalandırılır. Faturanızda, çalışma alanı düğüm başına fiyatlandırma katmanındaysa hizmetin Log Analytics kullanımı için **öngörü ve analiz** olacağını unutmayın. Kullanım üç ölçüm üzerinden bildirilir:
+Bir saat ayrıntı düzeyi temelinde izlenen VM başına (düğüm) düğüm başına fiyatlandırma katmanı ücretleri. İzlenen her düğüm için, çalışma alanı faturalandırılmamış günde 500 MB veri tahsis edilir. Bu ayırma saatlik ayrıntı düzeyi ile hesaplanır ve her gün çalışma alanı düzeyinde toplanır. Günlük toplam veri ayırmanın üzerine gelen veriler, veri fazla yaşı olarak GB başına faturalandırılır. Faturanızda, çalışma alanı düğüm başına fiyatlandırma katmanındaysa hizmetin Log Analytics kullanımı için **öngörü ve analiz** olacağını unutmayın. Kullanım üç ölçüm üzerinden bildirilir:
 
 1. Düğüm: Bu, düğüm * ay birimleri cinsinden izlenen düğümlerin (VM) sayısı için kullanımdır.
 2. Düğüm başına veri fazla kullanımı: Bu, toplanan veri ayırmanın fazla olması halinde alınan veri GB sayısıdır.
@@ -125,6 +125,10 @@ Eski fiyatlandırma katmanlarının hiçbirinde bölgesel tabanlı fiyatlandırm
 
 > [!NOTE]
 > System Center için OMS E1 Suite, OMS E2 Suite veya OMS Add-On satın alma işleminden gelen yetkilendirmeleri kullanmak için, *düğüm başına* fiyatlandırma katmanını Log Analytics seçin.
+
+## <a name="log-analytics-and-security-center"></a>Log Analytics ve Güvenlik Merkezi
+
+[Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/) 'nin faturalandırması Log Analytics faturalandırmaya yakından bağlıdır. Güvenlik Merkezi, bir dizi [güvenlik veri türüne](https://docs.microsoft.com/azure/azure-monitor/reference/tables/tables-category#security) KARŞı 500 MB/düğüm/gün ayırması sağlar (WindowsEvent, güncelleştirme yönetimi çözümü çalışma alanında çalışmadığı veya çözüm hedefleme etkin olduğunda SecurityAlert, Securitybaseline, SecurityBaselineSummary, securitydetection, Securityevent, WindowsFirewall, MaliciousIPCommunication, LinuxAuditLog, SysmonEvent, protectionstatus) ve Update ve updateSummary veri türleri. Çalışma alanı eski düğüm başına fiyatlandırma katmanındaysa, güvenlik merkezi ve Log Analytics ayırmaları birleştirilir ve tüm faturalandırılabilir veriler için birleştirilir.  
 
 ## <a name="change-the-data-retention-period"></a>Veri saklama süresini değiştirme
 
@@ -284,6 +288,24 @@ find where TimeGenerated > ago(24h) project _BilledSize, Computer
 | summarize TotalVolumeBytes=sum(_BilledSize) by computerName
 ```
 
+### <a name="nodes-billed-by-the-legacy-per-node-pricing-tier"></a>Eski düğüm başına fiyatlandırma katmanında faturalandırılan düğümler
+
+Saatlik ayrıntı düzeyi olan düğümler için [eski düğüm başına fiyatlandırma katmanı](#legacy-pricing-tiers) , yalnızca bir güvenlik veri türleri kümesi gönderen düğümlerin sayımını yapmaz. Günlük düğüm sayısı aşağıdaki sorguya yakın olacaktır:
+
+```kusto
+find where TimeGenerated >= startofday(ago(7d)) and TimeGenerated < startofday(now()) project Computer, _IsBillable, Type, TimeGenerated
+| where Type !in ("SecurityAlert", "SecurityBaseline", "SecurityBaselineSummary", "SecurityDetection", "SecurityEvent", "WindowsFirewall", "MaliciousIPCommunication", "LinuxAuditLog", "SysmonEvent", "ProtectionStatus", "WindowsEvent")
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| where _IsBillable == true
+| summarize billableNodesPerHour=dcount(computerName) by bin(TimeGenerated, 1h)
+| summarize billableNodesPerDay = sum(billableNodesPerHour)/24., billableNodeMonthsPerDay = sum(billableNodesPerHour)/24./31.  by day=bin(TimeGenerated, 1d)
+| sort by day asc
+```
+
+Faturanızda bulunan birim sayısı, sorguda temsil edilen düğüm * ay birimleridir `billableNodeMonthsPerDay` . Çalışma alanında Güncelleştirme Yönetimi çözümü yüklüyse, güncelleştirmeyi ve UpdateSummary veri türlerini yukarıdaki sorgudaki WHERE yan tümcesinde bulunan listeye ekleyin. Son olarak, Yukarıdaki sorguda temsil edilmeyen çözüm hedeflemesi kullanıldığında gerçek faturalandırma algoritmasında bazı ek karmaşıklıklar vardır. 
+
+
 > [!TIP]
 > `find`Veri türlerinde taramalar için [kaynakların yürütülmesi yoğun](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) olduğundan, bu sorguları dikkatli bir şekilde kullanın. **Bilgisayar başına** sonuçlara Ihtiyacınız yoksa kullanım verileri türü üzerinde sorgulama yapın (aşağıya bakın).
 
@@ -338,7 +360,7 @@ Usage
 | where TimeGenerated > ago(32d)
 | where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
 | where IsBillable == true
-| summarize BillableDataGB = sum(Quantity) / 1000 by Solution, DataType
+| summarize BillableDataGB = sum(Quantity) by Solution, DataType
 | sort by Solution asc, DataType asc
 ```
 

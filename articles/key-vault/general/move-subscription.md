@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: e6ab37539d00b6748d0e63a3f559bf70f493cf42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a06fd55d73c37caaa35797131d2b31817bf90f0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394746"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042414"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Azure Key Vault başka bir aboneliğe taşıma
 
@@ -37,6 +37,9 @@ Bir Anahtar Kasası oluşturduğunuzda, otomatik olarak oluşturulduğu aboneli�
 
 ## <a name="limitations"></a>Sınırlamalar
 
+> [!IMPORTANT]
+> **Disk şifrelemesi için kullanılan anahtar kasaları taşınamaz** Bir VM için disk şifrelemesi ile Anahtar Kasası kullanıyorsanız, disk şifrelemesi etkinken Anahtar Kasası farklı bir kaynak grubuna veya aboneliğe taşınamaz. Anahtar kasasını yeni bir kaynak grubuna veya aboneliğe taşımadan önce disk şifrelemesini devre dışı bırakmanız gerekir. 
+
 Bazı hizmet sorumluları (kullanıcılar ve uygulamalar) belirli bir kiracıya bağlanır. Anahtar kasanızı başka bir Kiracıdaki bir aboneliğe taşırsanız, belirli bir hizmet sorumlusuna erişimi geri yükleyemeyeceksiniz. Anahtar kasanızı taşıdığınız kiracıda tüm gerekli hizmet sorumlularının mevcut olduğundan emin olun.
 
 ## <a name="design-considerations"></a>Tasarım konusunda dikkat edilmesi gerekenler
@@ -51,7 +54,7 @@ Kuruluşunuz, abonelik düzeyinde uygulama veya dışlamaları olan Azure Ilkesi
 
 Azure portal Azure Ilke sayfasına gitdiğinizden emin olun ve geçerli aboneliğiniz için ilke atamalarından ve taşıdığınız aboneliğin yanı sıra uyuşmazlıkların bulunmadığından emin olun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Katılımcı düzeyinde, anahtar kasanızın bulunduğu geçerli aboneliğe erişimi veya daha yükseği.
 * Katılımcı düzeyi, anahtar kasanızı taşımak istediğiniz aboneliğe erişim veya daha yüksek.
