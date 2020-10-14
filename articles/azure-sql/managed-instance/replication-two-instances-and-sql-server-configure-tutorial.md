@@ -1,6 +1,6 @@
 ---
 title: Azure SQL yönetilen örneği ve SQL Server arasında işlemsel çoğaltmayı yapılandırma
-description: Yayımcı tarafından yönetilen bir örnek, bir dağıtıcı yönetilen örneği ve bir Azure VM 'de bir SQL Server abonesi ile özel DNS bölgesi ve VPN eşlemesi gibi gerekli ağ bileşenleri arasında çoğaltmayı yapılandıran bir öğretici.
+description: Yayımcı tarafından yönetilen bir örnek, bir dağıtıcı yönetilen örneği ve bir Azure VM 'de SQL Server abonesini, özel DNS bölgesi ve VNet eşlemesi gibi gerekli ağ bileşenleriyle birlikte çoğaltmayı yapılandıran bir öğretici.
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: security
@@ -10,12 +10,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 11/21/2019
-ms.openlocfilehash: 9d6592ccfb3ba5236a660d689d8b5d2cd1600c48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff29e93149c618bb7d6df6b4477cc79fcf4b53d2
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91283199"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058565"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Öğretici: Azure SQL yönetilen örneği ve SQL Server arasında işlemsel çoğaltmayı yapılandırma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "91283199"
 
 İşlemsel çoğaltma şu anda SQL yönetilen örneği için genel önizlemededir. 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -38,9 +38,9 @@ Bu öğretici, deneyimli bir hedef kitle için tasarlanmıştır ve kullanıcın
 
 
 > [!NOTE]
-> Bu makalede, Azure SQL yönetilen örneği 'nde [İşlemsel çoğaltmanın](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) kullanımı açıklanmaktadır. Her bir örnek için tamamen okunabilir çoğaltmalar oluşturmanıza olanak sağlayan bir Azure SQL yönetilen örnek özelliği olan [Yük devretme grupları](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group)ile ilgisiz değildir. [Yük devretme gruplarıyla işlemsel çoğaltmayı](replication-transactional-overview.md#with-failover-groups)yapılandırırken ek hususlar vardır.
+> Bu makalede, Azure SQL yönetilen örneği 'nde [İşlemsel çoğaltmanın](/sql/relational-databases/replication/transactional/transactional-replication) kullanımı açıklanmaktadır. Her bir örnek için tamamen okunabilir çoğaltmalar oluşturmanıza olanak sağlayan bir Azure SQL yönetilen örnek özelliği olan [Yük devretme grupları](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group)ile ilgisiz değildir. [Yük devretme gruplarıyla işlemsel çoğaltmayı](replication-transactional-overview.md#with-failover-groups)yapılandırırken ek hususlar vardır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Öğreticiyi tamamlayabilmeniz için aşağıdaki önkoşullara sahip olduğunuzdan emin olun:
 
@@ -48,10 +48,10 @@ Bu öğretici, deneyimli bir hedef kitle için tasarlanmıştır ve kullanıcın
 - Aynı sanal ağ içinde iki yönetilen örnek dağıtmaya yönelik deneyim.
 - Şirket içinde ya da bir Azure VM 'de SQL Server abone. Bu öğretici bir Azure VM kullanır.  
 - [SQL Server Management Studio (SSMS) 18,0 veya üzeri](/sql/ssms/download-sql-server-management-studio-ssms).
-- [Azure PowerShell](/powershell/azure/install-az-ps?view=azps-1.7.0)en son sürümü.
+- [Azure PowerShell](/powershell/azure/install-az-ps)en son sürümü.
 - 445 ve 1433 bağlantı noktaları hem Azure Güvenlik duvarında hem de Windows güvenlik duvarında SQL trafiğine izin verir.
 
-## <a name="1---create-the-resource-group"></a>1-kaynak grubunu oluşturma
+## <a name="create-the-resource-group"></a>Kaynak grubunu oluşturma
 
 Yeni bir kaynak grubu oluşturmak için aşağıdaki PowerShell kod parçacığını kullanın:
 
@@ -64,7 +64,7 @@ $Location = "East US 2"
 New-AzResourceGroup -Name  $ResourceGroupName -Location $Location
 ```
 
-## <a name="2---create-two-managed-instances"></a>2-iki yönetilen örnek oluşturma
+## <a name="create-two-managed-instances"></a>İki yönetilen örnek oluşturma
 
 [Azure Portal](https://portal.azure.com)kullanarak bu yeni kaynak grubu içinde iki yönetilen örnek oluşturun.
 
@@ -76,9 +76,9 @@ New-AzResourceGroup -Name  $ResourceGroupName -Location $Location
 Yönetilen örnek oluşturma hakkında daha fazla bilgi için, bkz. [portalda yönetilen örnek oluşturma](instance-create-quickstart.md).
 
   > [!NOTE]
-  > Kolaylık sağlaması için ve en yaygın yapılandırma olduğundan, bu öğretici dağıtıcı tarafından yönetilen örneği yayımcının aynı sanal ağ içinde yerleştirmesini önerir. Ancak, dağıtıcıyı ayrı bir sanal ağda oluşturmak mümkündür. Bunu yapmak için yayımcının sanal ağları ve dağıtıcı arasında VPN eşlemesi yapılandırmanız ve ardından dağıtımcı ve abonenin sanal ağları arasında VPN eşlemesi yapılandırmanız gerekir.
+  > Kolaylık sağlaması için ve en yaygın yapılandırma olduğundan, bu öğretici dağıtıcı tarafından yönetilen örneği yayımcının aynı sanal ağ içinde yerleştirmesini önerir. Ancak, dağıtıcıyı ayrı bir sanal ağda oluşturmak mümkündür. Bunu yapmak için yayımcının sanal ağları ve dağıtıcı arasında VNet eşlemesi yapılandırmanız ve ardından dağıtımcı ve abonenin sanal ağları arasında VNet eşlemesini yapılandırmanız gerekir.
 
-## <a name="3---create-a-sql-server-vm"></a>3-SQL Server VM oluşturma
+## <a name="create-a-sql-server-vm"></a>SQL Server VM oluşturma
 
 [Azure Portal](https://portal.azure.com)kullanarak SQL Server sanal makine oluşturun. SQL Server sanal makine aşağıdaki özelliklere sahip olmalıdır:
 
@@ -89,9 +89,9 @@ Yönetilen örnek oluşturma hakkında daha fazla bilgi için, bkz. [portalda y�
 
 SQL Server VM Azure 'a dağıtma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: SQL Server VM oluşturma](../virtual-machines/windows/sql-vm-create-portal-quickstart.md).
 
-## <a name="4---configure-vpn-peering"></a>4-VPN eşlemesini yapılandırma
+## <a name="configure-vnet-peering"></a>VNet eşlemesini yapılandırma
 
-İki yönetilen örnek sanal ağ ve SQL Server sanal ağı arasında iletişimi etkinleştirmek için VPN eşlemesini yapılandırın. Bunu yapmak için şu PowerShell kod parçacığını kullanın:
+İki yönetilen örnek sanal ağ ile SQL Server sanal ağı arasında iletişimi etkinleştirmek için VNet eşlemesini yapılandırın. Bunu yapmak için şu PowerShell kod parçacığını kullanın:
 
 ```powershell-interactive
 # Set variables
@@ -110,13 +110,13 @@ $virtualNetwork1 = Get-AzVirtualNetwork `
   -ResourceGroupName $resourceGroup `
   -Name $subvNet  
 
-# Configure VPN peering from publisher to subscriber
+# Configure VNet peering from publisher to subscriber
 Add-AzVirtualNetworkPeering `
   -Name $pubsubName `
   -VirtualNetwork $virtualNetwork1 `
   -RemoteVirtualNetworkId $virtualNetwork2.Id
 
-# Configure VPN peering from subscriber to publisher
+# Configure VNet peering from subscriber to publisher
 Add-AzVirtualNetworkPeering `
   -Name $subpubName `
   -VirtualNetwork $virtualNetwork2 `
@@ -136,11 +136,11 @@ Get-AzVirtualNetworkPeering `
 
 ```
 
-VPN eşlemesi kurulduktan sonra, SQL Server SQL Server Management Studio (SSMS) başlatarak ve her iki yönetilen örneğe bağlanarak bağlantıyı test edin. SSMS kullanarak yönetilen örneğe bağlanma hakkında daha fazla bilgi için bkz. [SSMS kullanarak SQL yönetilen örneğine bağlanma](point-to-site-p2s-configure.md#connect-with-ssms).
+VNet eşlemesi kurulduktan sonra, SQL Server SQL Server Management Studio (SSMS) başlatarak ve her iki yönetilen örneğe bağlanarak bağlantıyı test edin. SSMS kullanarak yönetilen örneğe bağlanma hakkında daha fazla bilgi için bkz. [SSMS kullanarak SQL yönetilen örneğine bağlanma](point-to-site-p2s-configure.md#connect-with-ssms).
 
 ![Yönetilen örneklere yönelik bağlantıyı test etme](./media/replication-two-instances-and-sql-server-configure-tutorial/test-connectivity-to-mi.png)
 
-## <a name="5---create-a-private-dns-zone"></a>5-özel bir DNS bölgesi oluşturma
+## <a name="create-a-private-dns-zone"></a>Özel bir DNS bölgesi oluşturma
 
 Özel bir DNS bölgesi, yönetilen örnekler ve SQL Server arasında DNS yönlendirmeye izin verir.
 
@@ -155,7 +155,7 @@ VPN eşlemesi kurulduktan sonra, SQL Server SQL Server Management Studio (SSMS) 
 
    ![Özel DNS bölgesi oluştur](./media/replication-two-instances-and-sql-server-configure-tutorial/create-private-dns-zone.png)
 
-1. **Gözden geçir ve oluştur**’u seçin. Özel DNS bölgeniz için parametreleri gözden geçirin ve ardından **Oluştur** ' u seçerek kaynağı oluşturun.
+1. **Gözden geçir + oluştur**’u seçin. Özel DNS bölgeniz için parametreleri gözden geçirin ve ardından **Oluştur** ' u seçerek kaynağı oluşturun.
 
 ### <a name="create-an-a-record"></a>Bir kayıt oluştur
 
@@ -180,7 +180,7 @@ VPN eşlemesi kurulduktan sonra, SQL Server SQL Server Management Studio (SSMS) 
 1. Sanal ağınızı bağlamak için **Tamam ' ı** seçin.
 1. Abone sanal ağı için gibi bir bağlantı eklemek için bu adımları tekrarlayın `Sub-link` .
 
-## <a name="6---create-an-azure-storage-account"></a>6-Azure depolama hesabı oluşturma
+## <a name="create-an-azure-storage-account"></a>Azure depolama hesabı oluşturma
 
 Çalışma dizini için [bir Azure depolama hesabı oluşturun](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) ve ardından depolama hesabı içinde bir [dosya paylaşma](../../storage/files/storage-how-to-create-file-share.md) oluşturun.
 
@@ -194,9 +194,9 @@ Depolama erişim anahtarı bağlantı dizesini şu biçimde kopyalayın: `Defaul
 
 Daha fazla bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](../../storage/common/storage-account-keys-manage.md).
 
-## <a name="7---create-a-database"></a>7-veritabanı oluşturma
+## <a name="create-a-database"></a>Veritabanı oluşturma
 
-Yayımcı tarafından yönetilen örnekte yeni bir veritabanı oluşturun. Bunu yapmak için şu adımları uygulayın:
+Yayımcı tarafından yönetilen örnekte yeni bir veritabanı oluşturun. Bunu yapmak için aşağıdaki adımları izleyin:
 
 1. SQL Server üzerinde SQL Server Management Studio başlatın.
 1. `sql-mi-publisher`Yönetilen örneğe bağlanın.
@@ -242,9 +242,9 @@ SELECT * FROM ReplTest
 GO
 ```
 
-## <a name="8---configure-distribution"></a>8-dağıtımı yapılandırma
+## <a name="configure-distribution"></a>Dağıtımı Yapılandır
 
-Bağlantı kurulduktan sonra bir örnek veritabanınız varsa, `sql-mi-distributor` yönetilen örneğiniz üzerinde dağıtımı yapılandırabilirsiniz. Bunu yapmak için şu adımları uygulayın:
+Bağlantı kurulduktan sonra bir örnek veritabanınız varsa, `sql-mi-distributor` yönetilen örneğiniz üzerinde dağıtımı yapılandırabilirsiniz. Bunu yapmak için aşağıdaki adımları izleyin:
 
 1. SQL Server üzerinde SQL Server Management Studio başlatın.
 1. `sql-mi-distributor`Yönetilen örneğe bağlanın.
@@ -277,9 +277,9 @@ Bağlantı kurulduktan sonra bir örnek veritabanınız varsa, `sql-mi-distribut
    EXEC sys.sp_adddistributor @distributor = 'sql-mi-distributor.b6bf57.database.windows.net', @password = '<distributor_admin_password>'
    ```
 
-## <a name="9---create-the-publication"></a>9-yayını oluşturma
+## <a name="create-the-publication"></a>Yayını oluşturma
 
-Dağıtım yapılandırıldıktan sonra yayını oluşturabilirsiniz. Bunu yapmak için şu adımları uygulayın:
+Dağıtım yapılandırıldıktan sonra yayını oluşturabilirsiniz. Bunu yapmak için aşağıdaki adımları izleyin:
 
 1. SQL Server üzerinde SQL Server Management Studio başlatın.
 1. `sql-mi-publisher`Yönetilen örneğe bağlanın.
@@ -298,9 +298,9 @@ Dağıtım yapılandırıldıktan sonra yayını oluşturabilirsiniz. Bunu yapma
 1. **Sihirbazı tamamladıktan** sonra yayınınızı `ReplTest` oluşturmak için yayınınızı adlandırın ve **İleri** ' yi seçin.
 1. Yayınınız oluşturulduktan sonra, **Nesne Gezgini** ' deki **çoğaltma** düğümünü yenileyin ve yeni yayınınızı görmek için **Yerel yayınlar** ' ı genişletin.
 
-## <a name="10---create-the-subscription"></a>10-abonelik oluşturma
+## <a name="create-the-subscription"></a>Abonelik oluşturma
 
-Yayın oluşturulduktan sonra, aboneliği oluşturabilirsiniz. Bunu yapmak için şu adımları uygulayın:
+Yayın oluşturulduktan sonra, aboneliği oluşturabilirsiniz. Bunu yapmak için aşağıdaki adımları izleyin:
 
 1. SQL Server üzerinde SQL Server Management Studio başlatın.
 1. `sql-mi-publisher`Yönetilen örneğe bağlanın.
@@ -331,7 +331,7 @@ exec sp_addpushsubscription_agent
 GO
 ```
 
-## <a name="11---test-replication"></a>11-test çoğaltma
+## <a name="test-replication"></a>Sınama çoğaltması
 
 Çoğaltma yapılandırıldıktan sonra, yayımcıya yeni öğeler ekleyerek ve abonelere yayan değişiklikleri izleyerek test edebilirsiniz.
 
@@ -393,7 +393,7 @@ Olası çözümler:
 - Abone oluşturulurken kullanılan DNS adını doğrulayın.
 - Sanal ağlarınızın özel DNS bölgesinde doğru şekilde bağlandığını doğrulayın.
 - Bir kaydlarınızın doğru şekilde yapılandırıldığını doğrulayın.
-- VPN eşlerinizin doğru şekilde yapılandırıldığını doğrulayın.
+- VNet eşlerinizin doğru şekilde yapılandırıldığını doğrulayın.
 
 ### <a name="no-publications-to-which-you-can-subscribe"></a>Abone olabileceğiniz yayınlar yok
 
