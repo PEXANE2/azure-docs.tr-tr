@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperfq1
-ms.openlocfilehash: 8d5e5e6cc77c7fe1d32f0834831ef1b930ee834d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ae0c4c69cf500fb352cc889e068888084d1d8f8b
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966177"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045967"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge cihazını ara sunucu üzerinden iletişim kuracak şekilde yapılandırma
 
@@ -93,7 +93,7 @@ $proxyCredential = (Get-Credential).GetNetworkCredential()
 Deploy-IoTEdge -InvokeWebRequestParameters @{ '-Proxy' = '<proxy URL>'; '-ProxyCredential' = $proxyCredential }
 ```
 
-Ara sunucu parametreleri hakkında daha fazla bilgi için bkz. [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest). Windows yükleme parametreleri hakkında daha fazla bilgi için bkz. [Windows üzerinde IoT Edge Için PowerShell betikleri](reference-windows-scripts.md).
+Ara sunucu parametreleri hakkında daha fazla bilgi için bkz. [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest). Windows yükleme parametreleri hakkında daha fazla bilgi için bkz. [Windows üzerinde IoT Edge Için PowerShell betikleri](reference-windows-scripts.md).
 
 ## <a name="configure-the-daemons"></a>Daemon 'ları yapılandırma
 
@@ -108,7 +108,7 @@ Moby Docker üzerine inşa edildiğinden, Moby cini ortam değişkenleriyle yap�
 IoT Edge cihaz işletim sisteminiz için geçerli olan makaleyi seçin:
 
 * [Linux 'Ta Docker Daemon 'ı yapılandırma](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy) Linux cihazlarındaki Moby Daemon, Docker adını tutar.
-* [Windows 'Da Docker Daemon yapılandırma](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration) Windows cihazlarındaki Moby Daemon, ıotedge-Moby olarak adlandırılır. Bir Windows cihazında hem Docker Desktop hem de Moby paralel olarak çalıştırılabilmesini sağladığından adlar farklıdır.
+* [Windows 'Da Docker Daemon yapılandırma](/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration) Windows cihazlarındaki Moby Daemon, ıotedge-Moby olarak adlandırılır. Bir Windows cihazında hem Docker Desktop hem de Moby paralel olarak çalıştırılabilmesini sağladığından adlar farklıdır.
 
 ### <a name="iot-edge-daemon"></a>IoT Edge Daemon
 

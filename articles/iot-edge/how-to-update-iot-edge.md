@@ -9,12 +9,12 @@ ms.date: 06/22/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e16e7fa5ecc2fb947f9f82c1cdd27af6758d6bda
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7cde23372f6a3af0320e2d48c78a0d7fe69a2600
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971758"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045712"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>IoT Edge güvenlik daemon'ını ve çalışma zamanını güncelleştirme
 
@@ -194,7 +194,7 @@ IoT Edge cihazı güncelleştirmek için iki bileşen kullanılır:
 
 3. İndirdiğiniz. cab dosyasının üzerinde bir mimari soneki varsa, dosyayı yalnızca **Microsoft-Azure-IoTEdge.cab**olarak yeniden adlandırın.
 
-4. Çevrimdışı bileşenlerle güncelleştirmek için, [nokta kaynağı](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) PowerShell betiğinin yerel kopyasıdır. Sonra, `-OfflineInstallationPath` parametresini komutunun bir parçası olarak kullanın `Update-IoTEdge` ve dosya dizinine mutlak yolu sağlayın. Örneğin,
+4. Çevrimdışı bileşenlerle güncelleştirmek için, [nokta kaynağı](/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) PowerShell betiğinin yerel kopyasıdır. Sonra, `-OfflineInstallationPath` parametresini komutunun bir parçası olarak kullanın `Update-IoTEdge` ve dosya dizinine mutlak yolu sağlayın. Örneğin,
 
    ```powershell
    . <path>\IoTEdgeSecurityDaemon.ps1

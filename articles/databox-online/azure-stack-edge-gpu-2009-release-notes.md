@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 09/29/2020
+ms.date: 10/13/2020
 ms.author: alkohli
-ms.openlocfilehash: c43f7ba52ed0f6018ee32583011bb92786708119
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ddc83874526a99383f94491771a81da2cde86d8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460484"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047310"
 ---
 # <a name="azure-stack-edge-pro-with-gpu-general-availability-ga-release-notes"></a>Azure Stack Edge Pro GPU genel kullanılabilirliği (GA) sürüm notları
 
@@ -21,11 +21,11 @@ Aşağıdaki sürüm notları, GPU ile Azure Stack Edge Pro cihazlarınız için
 
 Sürüm notları sürekli olarak güncelleştirilir ve geçici bir çözüm gerektiren kritik sorunlar keşfedildiğinde eklenirler. Azure Stack Edge Pro cihazınızı dağıtmadan önce, sürüm notlarında bulunan bilgileri dikkatle gözden geçirin.
 
-Bu makale, **2.1.1364.2110**yazılım sürüm numarası ile eşleşen **Azure Stack Edge Pro 2009** sürümü için geçerlidir.
+Bu makale, **2.1.1377.2170**yazılım sürüm numarası ile eşleşen **Azure Stack Edge Pro 2010** sürümü için geçerlidir.
 
 ## <a name="whats-new"></a>Yenilikler
 
-Azure Stack Edge 2009 sürümünde aşağıdaki yeni özellikler mevcuttur. 
+Azure Stack Edge 2010 sürümünde aşağıdaki yeni özellikler mevcuttur. 
 
 - Depolama **sınıfları** -bu sürümde, depolama sınıfları, depolamayı dinamik olarak sağlamanıza olanak tanıyan kullanılabilir. Daha fazla bilgi için [Azure Stack Edge Pro GPU cihazınızda Kubernetes depolama yönetimi](azure-stack-edge-gpu-kubernetes-storage.md#dynamicprovisioning)bölümüne bakın. 
 - **Ölçüm sunucusu Ile Kubernetes panosu** -bu sürümde, bir ölçüm sunucusu eklentisi Ile bir Kubernetes panosu eklenir. Azure Stack Edge Pro cihazınızda çalışan uygulamalara genel bir bakış almak, Kubernetes küme kaynaklarının durumunu görüntülemek ve cihazda oluşan tüm hataları görmek için panoyu kullanabilirsiniz. Ölçüm sunucusu, cihazdaki Kubernetes kaynakları genelinde CPU ve bellek kullanımını toplar. Daha fazla bilgi için bkz. [Azure Stack Edge Pro GPU cihazınızı izlemek Için Kubernetes panosunu kullanma](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md).

@@ -8,16 +8,16 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 07da9316ea76e609948eed586f776be33c91b4bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6de96b9913b70dd1b2d423e00c58b95ccb8dcb07
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87287265"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048160"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>IoT Edge'de Azure Blob Depolama ile verileri kenarda depolama
 
-IoT Edge üzerindeki Azure Blob depolama alanı, uç noktada bir [Blok Blobu](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) ve [ekleme blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) depolama çözümü sağlar. IoT Edge cihazınızdaki BLOB depolama modülü, Blobların IoT Edge cihazınızda yerel olarak depolanması dışında bir Azure Blob hizmeti gibi davranır. Bloblarınıza, daha önce kullandığınız Azure depolama SDK yöntemlerini veya blob API çağrılarını kullanarak erişebilirsiniz. Bu makalede, IoT Edge cihazınızda bir blob hizmeti çalıştıran IoT Edge kapsayıcısında Azure Blob depolama ile ilgili kavramlar açıklanmaktadır.
+IoT Edge üzerindeki Azure Blob depolama alanı, uç noktada bir [Blok Blobu](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) ve [ekleme blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) depolama çözümü sağlar. IoT Edge cihazınızdaki BLOB depolama modülü, Blobların IoT Edge cihazınızda yerel olarak depolanması dışında bir Azure Blob hizmeti gibi davranır. Bloblarınıza, daha önce kullandığınız Azure depolama SDK yöntemlerini veya blob API çağrılarını kullanarak erişebilirsiniz. Bu makalede, IoT Edge cihazınızda bir blob hizmeti çalıştıran IoT Edge kapsayıcısında Azure Blob depolama ile ilgili kavramlar açıklanmaktadır.
 
 Bu modül senaryolarda yararlı olur:
 
@@ -110,7 +110,7 @@ $creds = Get-Credential
 New-SmbGlobalMapping -RemotePath <remote SMB path> -Credential $creds -LocalPath <Any available drive letter>
 ```
 
-Örneğin:
+Örnek:
 
 ```powershell
 $creds = Get-Credential
@@ -136,7 +136,7 @@ sudo chown -R 11000:11000 <blob-dir>
 sudo chmod -R 700 <blob-dir>
 ```
 
-Örneğin:
+Örnek:
 
 ```terminal
 sudo chown -R 11000:11000 /srv/containerdata
@@ -160,7 +160,7 @@ sudo chmod -R 700 <blob-dir>
 
 ## <a name="configure-log-files"></a>Günlük dosyalarını yapılandırma
 
-Modülünüzün günlük dosyalarını yapılandırma hakkında daha fazla bilgi için, bu [üretim en iyi uygulamalarına](https://docs.microsoft.com/azure/iot-edge/production-checklist#set-up-logs-and-diagnostics)bakın.
+Modülünüzün günlük dosyalarını yapılandırma hakkında daha fazla bilgi için, bu [üretim en iyi uygulamalarına](./production-checklist.md#set-up-logs-and-diagnostics)bakın.
 
 ## <a name="connect-to-your-blob-storage-module"></a>BLOB depolama modülünüzü bağlama
 

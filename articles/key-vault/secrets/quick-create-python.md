@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: b5159ce623c03d1158bf719611c158067fdd5b9e
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 751e4dbace2b61f53ef9b8d9bef45aa6ce17f9ca
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019112"
+ms.locfileid: "92047880"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-python"></a>Hızlı başlangıç: Python için Azure Key Vault gizli istemci kitaplığı
 
@@ -21,7 +21,7 @@ Python için Azure Key Vault gizli istemci kitaplığı ile çalışmaya başlay
 
 [API başvuru belgeleri](/python/api/overview/azure/keyvault-secrets-readme)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-secrets)  |  [Paket (Python paket dizini)](https://pypi.org/project/azure-keyvault-secrets/)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Python 2.7 + veya 3.5.3 +](https://docs.microsoft.com/azure/developer/python/configure-local-development-environment)
@@ -31,7 +31,7 @@ Bu hızlı başlangıçta, [Azure CLI](/cli/azure/install-azure-cli) 'Yi bir Lin
 
 
 ## <a name="set-up-your-local-environment"></a>Yerel ortamınızı ayarlama
-Bu hızlı başlangıç, Azure 'da kullanıcının kimliğini doğrulamak için Azure CLı ile Azure Identity Library kullanıyor. Geliştiriciler, çağrılarının kimliğini doğrulamak için Visual Studio veya Visual Studio Code de kullanabilir. daha fazla bilgi için bkz [. Azure Identity istemci kitaplığı ile Istemci kimlik doğrulaması](https://docs.microsoft.com/java/api/overview/azure/identity-readme)
+Bu hızlı başlangıç, Azure 'da kullanıcının kimliğini doğrulamak için Azure CLı ile Azure Identity Library kullanıyor. Geliştiriciler, aramalarını doğrulamak için Visual Studio veya Visual Studio Code de kullanabilir. daha fazla bilgi için bkz. [Azure Identity istemci kitaplığı ile Istemci kimlik doğrulaması](https://docs.microsoft.com/java/api/overview/azure/identity-readme).
 
 ### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -49,7 +49,7 @@ Bu hızlı başlangıç, Azure 'da kullanıcının kimliğini doğrulamak için 
 
 ### <a name="install-the-packages"></a>Paketleri yükler
 
-1. Bir Terminal veya komut isteminde uygun bir proje klasörü oluşturun ve ardından [Python sanal ortamlarını kullanma](/azure/developer/python/configure-local-development-environment?tabs=cmd#use-python-virtual-environments) bölümünde açıklandığı gibi bir Python sanal ortamı oluşturun ve etkinleştirin
+1. Bir Terminal veya komut isteminde uygun bir proje klasörü oluşturun ve ardından [Python sanal ortamlarını kullanma](/azure/developer/python/configure-local-development-environment?tabs=cmd#use-python-virtual-environments)bölümünde açıklandığı gibi bir Python sanal ortamı oluşturun ve etkinleştirin.
 
 1. Azure Active Directory Identity Library 'yi yükler:
 
@@ -70,7 +70,7 @@ Bu hızlı başlangıç, Azure 'da kullanıcının kimliğini doğrulamak için 
 
 ### <a name="grant-access-to-your-key-vault"></a>Anahtar kasanıza erişim izni verin
 
-Anahtar kasanız için Kullanıcı hesabınıza gizli izin veren bir erişim ilkesi oluşturun
+Anahtar kasanız için Kullanıcı hesabınıza gizli izin veren bir erişim ilkesi oluşturun.
 
 ```console
 az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-permissions delete get list set

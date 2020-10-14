@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/12/2020
 ms.author: cynthn
-ms.openlocfilehash: dd2d42bb83afa5a97bd5bd71d7b1a4bcc506d93e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 73a7090afe771eef82523753c4067399d9f5dd5e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976173"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048092"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Önizleme: görüntüleri şifrelemek için müşteri tarafından yönetilen anahtarları kullanın
 
@@ -23,7 +23,7 @@ Görüntülerinizin şifrelenmesi için platform tarafından yönetilen anahtarl
 
 Müşteri tarafından yönetilen anahtarlar kullanılarak sunucu tarafı şifreleme Azure Key Vault kullanır. [RSA anahtarlarınızı](../key-vault/keys/hsm-protected-keys.md) Key Vault içeri aktarabilir ya da Azure Key Vault yeni RSA anahtarları oluşturabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, görüntünüz için kullanmak üzere bir disk şifrelemesi ayarlamış olmanız gerekir.
 
@@ -41,7 +41,7 @@ Paylaşılan görüntü Galerisi görüntülerini şifrelemek için müşteri ta
 
 - Şifreleme anahtarı kümeleri bölgesel kaynaklardır, bu nedenle her bölge farklı bir şifreleme anahtarı kümesi gerektirir.
 
-- Müşteri tarafından yönetilen anahtarlar kullanan resimleri paylaşamazsınız. 
+- Müşteri tarafından yönetilen anahtarlar kullanan görüntüleri kopyalayamaz veya paylaşamazsınız. 
 
 - Bir diski veya görüntüyü şifrelemek için kendi anahtarlarınızı kullandıysanız, bu diskleri veya görüntüleri şifrelemek için platform tarafından yönetilen anahtarları kullanmaya geri dönemezsiniz.
 

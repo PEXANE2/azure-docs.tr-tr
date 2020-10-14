@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b63e1c0bba4d6ac250119c2ac0d9a1cd0e4ee362
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6dfd63f92b8c420a3c5281ee2962b211b8779dd1
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91577025"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045066"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-running-on-windows-to-iot-hub-java"></a>Hızlı başlangıç: Windows 'ta IoT Hub için çalışan bir örnek IoT Tak ve Kullan cihaz uygulaması bağlama (Java)
 
@@ -26,7 +26,7 @@ Bu hızlı başlangıçta örnek bir IoT Tak ve Kullan cihaz uygulaması oluştu
 
 Bu hızlı başlangıcı Windows üzerinde gerçekleştirmek için, yerel Windows ortamınıza aşağıdaki yazılımı yüklersiniz:
 
-* Java SE Development Kit 8. [Azure ve Azure Stack Için Java uzun süreli destek](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true), **uzun süreli destek**altında **Java 8**' i seçin.
+* Java SE Development Kit 8. [Azure ve Azure Stack Için Java uzun süreli destek](/java/azure/jdk/?preserve-view=true&view=azure-java-stable), **uzun süreli destek**altında **Java 8**' i seçin.
 * [Apache Maven 3](https://maven.apache.org/download.cgi).
 
 ## <a name="download-the-code"></a>Kodu indirme
@@ -119,4 +119,4 @@ Date since = new Gson().fromJson(jsonRequest, Date.class);
 Bu hızlı başlangıçta IoT Hub 'ına IoT Tak ve Kullan cihazını bağlamayı öğrendiniz. IoT Tak ve Kullan cihazlarınızla etkileşim kuran bir çözüm oluşturma hakkında daha fazla bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [Nasıl yapılır: bir cihaza bağlanma ve cihazla etkileşim kurma](howto-develop-solution.md)
+> [Nasıl yapılır: bir cihaza bağlanma ve cihazla etkileşim kurma](./quickstart-service-node.md)

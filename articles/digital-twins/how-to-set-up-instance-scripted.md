@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 83741f5bc55eb222b379a274ef403f766553b21f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e8e26f73aef155e4194ca7a4178827b6a7366fb
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328657"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047429"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure dijital TWINS örneği ve kimlik doğrulaması (komut dosyası) ayarlama
 
@@ -20,7 +20,7 @@ ms.locfileid: "91328657"
 
 Bu makalede, örneği oluşturma ve kimlik doğrulamasını ayarlama dahil olmak üzere **Yeni bir Azure dijital TWINS örneği ayarlama**adımları ele alınmaktadır. Bu makaleyi tamamladıktan sonra, programlamaya başlamak için kullanabileceğiniz bir Azure dijital TWINS örneğine sahip olursunuz.
 
-Bu makalenin bu sürümü, işlemi kolaylaştıran [ **otomatikleştirilmiş bir dağıtım betiği** örneği](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/) çalıştırarak bu adımları tamamlar. 
+Bu makalenin bu sürümü, işlemi kolaylaştıran [ **otomatikleştirilmiş bir dağıtım betiği** örneği](/samples/azure-samples/digital-twins-samples/digital-twins-samples/) çalıştırarak bu adımları tamamlar. 
 * Betiğin arka planda çalıştığı el ile CLı adımlarını görüntülemek için, bu makalenin CLı sürümüne bakın: [*nasıl yapılır: bir örnek ve kimlik doğrulaması (CLI) ayarlama*](how-to-set-up-instance-cli.md).
 * Azure portal göre el ile adımları görüntülemek için, bu makalenin Portal sürümüne bakın: [*nasıl yapılır: bir örnek ve kimlik doğrulaması (portal) ayarlama*](how-to-set-up-instance-portal.md).
 
@@ -28,7 +28,7 @@ Bu makalenin bu sürümü, işlemi kolaylaştıran [ **otomatikleştirilmiş bir
 
 ## <a name="prerequisites-download-the-script"></a>Önkoşullar: betiği Indir
 
-Örnek betik, PowerShell 'de yazılmıştır. Bu örnek bağlantıyı inceleyerek makinenize indirebileceğiniz [**Azure dijital TWINS örneklerinin**](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/)bir parçasıdır. Bu, söz konusu örnek bağlantısına giderek ve başlık altındaki *posta indirme* düğmesini seçmiş olursunuz.
+Örnek betik, PowerShell 'de yazılmıştır. Bu örnek bağlantıyı inceleyerek makinenize indirebileceğiniz [**Azure dijital TWINS örneklerinin**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)bir parçasıdır. Bu, söz konusu örnek bağlantısına giderek ve başlık altındaki *posta indirme* düğmesini seçmiş olursunuz.
 
 Bu işlem, örnek projeyi _**Azure_Digital_Twins_samples.zip**_ olarak makinenize indirir. Makinenizde bulunan klasöre gidin ve dosyaları ayıklamak için dosyayı ayıklayın.
 
@@ -163,7 +163,7 @@ Bu doğrulama adımlarından biri veya her ikisi başarısız olursa, [portalı]
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure Digital TWINS CLı komutlarını kullanarak örneğiniz için tek REST API çağrılarını test edin: 
-* [az DT Reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true)
+* [az DT Reference](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)
 * [*Nasıl yapılır: Azure dijital TWINS CLı 'sını kullanma*](how-to-use-cli.md)
 
 Ya da bkz. istemci uygulamasının kimlik doğrulama kodunu yazarak istemci uygulamanızı örneğinizle bağlama:

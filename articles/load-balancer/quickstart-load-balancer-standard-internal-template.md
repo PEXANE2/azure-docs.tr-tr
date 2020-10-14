@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager şablonu kullanarak iç yük dengeleyici oluşturma (ARM şablonu)
-description: Azure Resource Manager şablonu kullanarak iç Azure yük dengeleyici oluşturmayı öğrenin (ARM şablonu).
+title: 'Hızlı başlangıç: şablon kullanarak iç yük dengeleyici oluşturma'
+description: Bu hızlı başlangıçta, bir Azure Resource Manager şablonu (ARM şablonu) kullanarak iç Azure Yük dengeleyicinin nasıl oluşturulacağı gösterilmektedir.
 services: load-balancer
 author: asudbring
 ms.service: load-balancer
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: allensu
 ms.date: 09/14/2020
-ms.openlocfilehash: 287afc51aa15ed4cadba7e2d6cd389e4869d7d61
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aa68dad2f8f018a9f3f70f2f02fd5e989ccbad4e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90532867"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047769"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak VM 'Lerin yükünü dengelemek için iç yük dengeleyici oluşturma
 

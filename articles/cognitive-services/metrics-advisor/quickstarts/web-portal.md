@@ -3,19 +3,19 @@ title: 'Hızlı başlangıç: ölçüm Danışmanı Web portalı'
 titleSuffix: Azure Cognitive Services
 description: Ölçüm Danışmanı Web portalını kullanmaya nasıl başlayacağınızı öğrenin.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: quickstart
 ms.date: 09/30/2020
-ms.author: aahi
-ms.openlocfilehash: 65542ca88d055af2c537907d7ae801250943ed0b
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.author: mbullwin
+ms.openlocfilehash: 0afd8fab6072e1563d2b2f277e8a53b56a8161c2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930382"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048245"
 ---
 # <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>Hızlı başlangıç: Web portalını kullanarak ilk ölçümünüzün Izlenmesi
 
@@ -27,7 +27,7 @@ Bir ölçüm Danışmanı örneği sağladığınızda, hizmetle çalışmak iç
 * Tanılama öngörülerini keşfet
 * Anomali uyarıları oluşturun ve bunlara abone olun
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * Azure aboneliğiniz olduktan sonra, ölçüm Danışmanı <a href="https://go.microsoft.com/fwlink/?linkid=2142156"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> örneğinizi dağıtmak için Azure Portal ölçüm Danışmanı kaynağı oluşturun.  

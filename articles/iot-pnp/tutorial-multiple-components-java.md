@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: a7c1f0d207a113b2c12010cbc0a8876edd9269bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fce6477313cb7fb917c0fb81d03a73eec4714915
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577263"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046409"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-multiple-component-device-application-to-iot-hub-java"></a>Öğretici: bir örnek IoT Tak ve Kullan birden çok bileşen cihaz uygulamasını IoT Hub 'ye bağlama (Java)
 
@@ -28,7 +28,7 @@ Bu öğreticide, bileşenleriyle bir örnek IoT Tak ve Kullan cihaz uygulaması 
 
 Bu öğreticiyi Windows üzerinde gerçekleştirmek için, yerel Windows ortamınıza aşağıdaki yazılımları yüklersiniz:
 
-* Java SE Development Kit 8. [Azure ve Azure Stack Için Java uzun süreli destek](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true), **uzun süreli destek**altında **Java 8**' i seçin.
+* Java SE Development Kit 8. [Azure ve Azure Stack Için Java uzun süreli destek](/java/azure/jdk/?preserve-view=true&view=azure-java-stable), **uzun süreli destek**altında **Java 8**' i seçin.
 * [Apache Maven 3](https://maven.apache.org/download.cgi).
 
 ## <a name="download-the-code"></a>Kodu indirme

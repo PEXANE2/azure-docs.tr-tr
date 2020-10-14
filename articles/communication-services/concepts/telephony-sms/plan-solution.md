@@ -10,12 +10,12 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: eb698cf3c4cf2bdc47e3df57c65847f499d8760c
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: b25ac36bc0b424a9d6f76b37b532e52dc56e19e3
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893671"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048228"
 ---
 # <a name="plan-your-telephony-and-sms-solution"></a>Telefon ve SMS çözümünüzü planlama
 
@@ -74,7 +74,7 @@ Aşağıdaki tabloda, bu telefon numarası türleriyle ilişkili gelen ve giden 
 
 ## <a name="azure-subscriptions-eligibility"></a>Azure aboneliklerine uygunluk
 
-Telefon numarası almak için ücretli bir Azure aboneliğinde olmanız gerekir. Telefon numaraları, deneme hesaplarında elde alınamaz. 
+Telefon numarası almak için ücretli bir Azure aboneliğinde olmanız gerekir. Telefon numaraları, deneme hesaplarında veya Azure Ücretsiz kredilerine göre alınamıyor. 
 
 Şu anda telefon numarası kullanılabilirliği, Birleşik Devletler fatura adresi olan Azure abonelikleri ile kısıtlıdır.
 

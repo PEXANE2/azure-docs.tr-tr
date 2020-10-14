@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 224f86a40fa812003463301f97bcae07de907f3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0435fe3946118d59d786dd3e6cec350a5ab4eee4
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91580721"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046460"
 ---
 # <a name="iot-plug-and-play-bridge"></a>IoT Tak Çalıştır köprüsü
 
@@ -29,17 +29,17 @@ IoT Tak ve Kullan Köprüsü, bağdaştırıcı belgelerinin bağlantılarıyla 
 
 |Çevre birimi|Windows|Linux|
 |---------|---------|---------|
-|[Bluetooth LE](https://aka.ms/iot-pnp-bridge-bluetooth)       |Evet|Hayır|
-|[Kameralar](https://aka.ms/iot-pnp-bridge-camera)               |Evet|Hayır|
-|[Modbus](https://aka.ms/iot-pnp-bridge-modbus)                |Evet|Evet|
-|[MQTT](https://aka.ms/iot-pnp-bridge-mqtt)                    |Evet|Evet|
-|[Ardışık](https://aka.ms/iot-pnp-bridge-serial)                |Evet|Evet|
-|[Windows USB çevre birimleri](https://aka.ms/iot-pnp-bridge-usb)  |Evet|Geçerli değil|
+|[Bluetooth LE](https://aka.ms/iot-pnp-bridge-bluetooth)       |Yes|Hayır|
+|[Kameralar](https://aka.ms/iot-pnp-bridge-camera)               |Yes|Hayır|
+|[Modbus](https://aka.ms/iot-pnp-bridge-modbus)                |Yes|Yes|
+|[MQTT](https://aka.ms/iot-pnp-bridge-mqtt)                    |Yes|Yes|
+|[Ardışık](https://aka.ms/iot-pnp-bridge-serial)                |Yes|Yes|
+|[Windows USB çevre birimleri](https://aka.ms/iot-pnp-bridge-usb)  |Yes|Geçerli değil|
 
 >[!Important]
 >Geliştiriciler IoT **[Tak ve Kullan köprüsü geliştirici belgelerindeki](https://aka.ms/iot-pnp-bridge-dev-doc)** yönergeler aracılığıyla diğer cihaz protokollerini desteklemek için IoT Tak ve kullan köprüsünü genişletebilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="os-platform"></a>İşletim sistemi platformu
 
@@ -67,7 +67,7 @@ IoT Tak ve Kullan köprüsü oluşturmak, genişletmek ve geliştirmek için ger
 
 ### <a name="azure-iot-products-and-tools"></a>Azure IoT ürünleri ve araçları
 
-- **Azure IoT Hub** -cihazınızı uygulamasına bağlamak için Azure aboneliğinizde bir [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) 'ınız olması gerekir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/). Bir IoT Hub 'ınız yoksa, [oluşturmak için bu yönergeleri izleyin](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-using-cli).
+- **Azure IoT Hub** -cihazınızı uygulamasına bağlamak için Azure aboneliğinizde bir [Azure IoT Hub](../iot-hub/index.yml) 'ınız olması gerekir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/). Bir IoT Hub 'ınız yoksa, [oluşturmak için bu yönergeleri izleyin](../iot-hub/iot-hub-create-using-cli.md).
 
 > [!Note]
 > IoT Tak ve Kullan şu anda Orta ABD, Kuzey Avrupa ve Doğu Japonya bölgelerinde oluşturulan IoT Hub 'larda sunulmaktadır. IoT Tak ve Kullan desteği temel katmanlı IoT Hub 'larına dahil değildir. IoT Tak ve Kullan cihazlarınızla etkileşim kurmak için Azure IoT gezgin aracını kullanabilirsiniz. İşletim sisteminiz için [Azure IoT Explorer 'ın en son sürümünü indirin ve yükleyin](./howto-use-iot-explorer.md) .

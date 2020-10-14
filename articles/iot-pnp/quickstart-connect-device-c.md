@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: d8782bf6cab85b1b87c0cfc418a4731cc134db8f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e490171fd533783aab9fd44798a9c81c55faf89f
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91577076"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047939"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-running-on-linux-or-windows-to-iot-hub-c"></a>Hızlı başlangıç: Linux veya Windows üzerinde çalışan bir örnek IoT Tak ve Kullan cihaz uygulamasını IoT Hub 'a bağlama (C)
 
@@ -52,7 +52,7 @@ gcc --version
 
 Bu hızlı başlangıcı Windows üzerinde gerçekleştirmek için, yerel Windows ortamınıza aşağıdaki yazılımı yüklersiniz:
 
-* [Visual Studio (Community, Professional veya Enterprise)](https://visualstudio.microsoft.com/downloads/) -Visual Studio 'Yu [yüklerken](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019&preserve-view=true) C++ Iş yüküyle **Masaüstü geliştirmeyi** eklediğinizden emin olun.
+* [Visual Studio (Community, Professional veya Enterprise)](https://visualstudio.microsoft.com/downloads/) -Visual Studio 'Yu [yüklerken](/cpp/build/vscpp-step-0-installation?preserve-view=true&view=vs-2019) C++ Iş yüküyle **Masaüstü geliştirmeyi** eklediğinizden emin olun.
 * [Git](https://git-scm.com/download/).
 * [CMake](https://cmake.org/download/).
 
@@ -159,4 +159,4 @@ Kod, IoT Hub 'ınızdan gönderilen yüklerden JSON nesnelerini ayrıştırmak i
 Bu hızlı başlangıçta IoT Hub 'ına IoT Tak ve Kullan cihazını bağlamayı öğrendiniz. IoT Tak ve Kullan cihazlarınızla etkileşim kuran bir çözüm oluşturma hakkında daha fazla bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [Nasıl yapılır: bir cihaza bağlanma ve cihazla etkileşim kurma](howto-develop-solution.md)
+> [Nasıl yapılır: bir cihaza bağlanma ve cihazla etkileşim kurma](./quickstart-service-node.md)

@@ -3,19 +3,19 @@ title: Farklı kaynaklardan ölçüm Danışmanı 'na veri akışları ekleme
 titleSuffix: Azure Cognitive Services
 description: Ölçüm danışmanına farklı veri akışları ekleme
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.author: aahi
-ms.openlocfilehash: 11b75bcadc6292c17ef7e1e0f482d0c53bd9f8f5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: mbullwin
+ms.openlocfilehash: a37f3cfd250d152129245395680dbd847359e869
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971957"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046919"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Farklı veri kaynaklarından ölçüm Danışmanı 'na veri akışları ekleme
 
@@ -43,7 +43,7 @@ Farklı türlerde veri kaynaklarını ölçüm Danışmanı 'na bağlamaya yöne
 |[**Azure Veri Gezgini (Kusto)**](#kusto) | Temel<br>Managedıdentity kimliğine|
 |[**Azure Data Lake Storage Gen2**](#adl) | Temel<br>DataLakeGen2SharedKey<br>Hizmet sorumlusu<br>Anahtar kasasından hizmet sorumlusu<br> |
 |[**Azure SQL veritabanı/SQL Server**](#sql) | Temel<br>Managedıdentity kimliğine<br>Hizmet sorumlusu<br>Anahtar kasasından hizmet sorumlusu<br>Azuressqlconnectionstring
-|[**Azure Tablo depolama**](#table) | Temel | 
+|[**Azure Table Storage**](#table) | Temel | 
 |[**ElasticSearch**](#es) | Temel |
 |[**Http isteği**](#http) | Temel | 
 |[**Etkileyen (etkileyen XQL)**](#influxdb) | Temel |
@@ -210,7 +210,7 @@ The timestamp field must match one of these two formats:
     select StartDate, JobStatusId, COUNT(*) AS JobNumber from IngestionJobs WHERE and StartDate = '2019-12-12 00:00:00'
     ```
 
-## <a name="span-idtableazure-table-storagespan"></a><span id="table">Azure Tablo depolama</span>
+## <a name="span-idtableazure-table-storagespan"></a><span id="table">Azure Table Storage</span>
 
 * **Bağlantı dizesi**: Azure Tablo depolamadan bağlantı dizesinin nasıl alınacağını öğrenmek için lütfen [bir bağlantı dizesini görüntüleme ve kopyalama](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage?toc=%2Fazure%2Fstorage%2Ftables%2Ftoc.json&tabs=azure-portal#view-account-access-keys) bölümüne bakın.
 

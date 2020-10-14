@@ -8,12 +8,12 @@ ms.date: 04/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0e4ec7127df288ec1818df307da1ea9824141309
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 540c4394a73ceff1f68a613561c034ca3bc7efc5
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87902465"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046579"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>IoT Edge cihazınızda sorun giderme
 
@@ -251,7 +251,7 @@ iotedge restart edgeAgent && iotedge restart edgeHub
 
 ## <a name="check-your-firewall-and-port-configuration-rules"></a>Güvenlik Duvarı ve bağlantı noktası yapılandırma kurallarınızı denetleyin
 
-Azure IoT Edge, desteklenen IoT Hub protokolleri kullanılarak şirket içi bir sunucudan Azure bulutuna iletişimin iletişimine izin veriyor, bkz. [iletişim protokolü seçme](../iot-hub/iot-hub-devguide-protocols.md). Gelişmiş güvenlik için Azure IoT Edge ile Azure IoT Hub arasındaki iletişim kanalları her zaman giden olarak yapılandırılır. Bu yapılandırma, kötü amaçlı bir varlığın araştırılacak saldırı yüzeyini en aza indiren [hizmet yardımlı iletişim düzenine](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/)dayanır. Gelen iletişim yalnızca Azure IoT Hub Azure IoT Edge cihaza ileti göndermek için gereken belirli senaryolar için gereklidir. Buluttan cihaza iletiler, güvenli TLS kanalları kullanılarak korunur ve X. 509.440 sertifikaları ve TPM cihaz modülleri kullanılarak daha da güvenli hale getirilir. Azure IoT Edge Güvenlik Yöneticisi bu iletişimin nasıl kurulamadığını yönetir, bkz. [IoT Edge Security Manager](../iot-edge/iot-edge-security-manager.md).
+Azure IoT Edge, desteklenen IoT Hub protokolleri kullanılarak şirket içi bir sunucudan Azure bulutuna iletişimin iletişimine izin veriyor, bkz. [iletişim protokolü seçme](../iot-hub/iot-hub-devguide-protocols.md). Gelişmiş güvenlik için Azure IoT Edge ile Azure IoT Hub arasındaki iletişim kanalları her zaman giden olarak yapılandırılır. Bu yapılandırma, kötü amaçlı bir varlığın araştırılacak saldırı yüzeyini en aza indiren [hizmet yardımlı iletişim düzenine](/archive/blogs/clemensv/service-assisted-communication-for-connected-devices)dayanır. Gelen iletişim yalnızca Azure IoT Hub Azure IoT Edge cihaza ileti göndermek için gereken belirli senaryolar için gereklidir. Buluttan cihaza iletiler, güvenli TLS kanalları kullanılarak korunur ve X. 509.440 sertifikaları ve TPM cihaz modülleri kullanılarak daha da güvenli hale getirilir. Azure IoT Edge Güvenlik Yöneticisi bu iletişimin nasıl kurulamadığını yönetir, bkz. [IoT Edge Security Manager](../iot-edge/iot-edge-security-manager.md).
 
 IoT Edge, Azure IoT Edge çalışma zamanına ve dağıtılan modüllere güvenli hale getirmek için gelişmiş yapılandırma sağlarken, hala temel alınan makineye ve ağ yapılandırmasına bağımlıdır. Bu nedenle, güvenli uç için bulut iletişimine doğru ağ ve Güvenlik Duvarı kurallarının ayarlandığından emin olmanız zorunludur. Aşağıdaki tablo, Azure IoT Edge çalışma zamanının barındırıldığı temel sunucular için yapılandırma güvenlik duvarı kuralları olduğunda bir kılavuz olarak kullanılabilir:
 

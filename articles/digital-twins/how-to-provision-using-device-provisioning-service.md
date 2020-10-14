@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: efc507cb69b3368a2102b6de0b905657d5806ef2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a2345dce542f941df0122acd12b4acedd3b49a3
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90561440"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047243"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Cihaz sağlama hizmeti 'ni (DPS) kullanarak Azure dijital TWINS 'de cihazları otomatik olarak yönetme
 
@@ -22,7 +22,7 @@ Bu makalede açıklanan çözüm, cihaz sağlama hizmeti 'ni kullanarak Azure di
 
 _Sağlama_ ve _devre dışı bırakma_ aşamaları hakkında daha fazla bilgi Için ve tüm kurumsal IoT projelerinde ortak olan genel cihaz yönetim aşamaları kümesini daha iyi anlamak için, IoT Hub cihaz yönetimi belgelerinin [ *cihaz yaşam döngüsü* bölümüne](../iot-hub/iot-hub-device-management-overview.md#device-lifecycle) bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Sağlamayı ayarlamadan önce, modeller ve TWINS içeren bir **Azure dijital TWINS örneğine** sahip olmanız gerekir. Bu örnek, verileri temel alarak dijital ikizi bilgilerini güncelleştirme özelliği ile de ayarlanmalıdır. 
 
@@ -32,7 +32,7 @@ Bu ayarı zaten yoksa, Azure dijital TWINS [*öğreticisini izleyerek oluşturab
 * Azure Digital TWINS örnek **_ana bilgisayar adı_** ([portalda bul](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
 * Azure Event Hubs bağlantı dizesi **_bağlantı dizesi_** ([portalda bul](../event-hubs/event-hubs-get-connection-string.md#get-connection-string-from-the-portal))
 
-Bu örnek ayrıca cihaz sağlama hizmetini kullanarak sağlamayı içeren bir **cihaz simülatörü** kullanır. Cihaz simülatörü şurada bulunur: [Azure dijital TWINS ve IoT Hub tümleştirme örneği](https://docs.microsoft.com/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/). Örnek bağlantısına gidip başlık altındaki *posta indir* düğmesini seçerek makinenizde örnek projeyi alın. İndirilen klasörü sıkıştırmayı açın.
+Bu örnek ayrıca cihaz sağlama hizmetini kullanarak sağlamayı içeren bir **cihaz simülatörü** kullanır. Cihaz simülatörü şurada bulunur: [Azure dijital TWINS ve IoT Hub tümleştirme örneği](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/). Örnek bağlantısına gidip başlık altındaki *posta indir* düğmesini seçerek makinenizde örnek projeyi alın. İndirilen klasörü sıkıştırmayı açın.
 
 Cihaz simülatörü **Node.js**, sürüm 10.0. x veya üzerini temel alır. [*Geliştirme ortamınızı hazırlama*](https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md) Bu öğretici Için Node.js Windows veya Linux 'ta nasıl yükleneceğini açıklar.
 
@@ -69,7 +69,7 @@ Cihaz sağlama hizmeti kullanılarak yeni bir cihaz sağlandığında, bu cihaz 
 
 IoT cihazları sağlamak için kullanılacak bir cihaz sağlama hizmeti örneği oluşturun. Aşağıdaki Azure CLı yönergelerini kullanabilir veya Azure portal kullanabilirsiniz: [*hızlı başlangıç: IoT Hub cihaz sağlama hizmeti 'ni Azure Portal ayarlama*](../iot-dps/quick-setup-auto-provision.md).
 
-Aşağıdaki Azure CLı komutu bir cihaz sağlama hizmeti oluşturacaktır. Bir ad, kaynak grubu ve bölge belirtmeniz gerekecektir. Bu komut, [makinenizde yüklü](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)Azure CLI 'niz varsa [Cloud Shell](https://shell.azure.com)veya yerel olarak çalıştırılabilir.
+Aşağıdaki Azure CLı komutu bir cihaz sağlama hizmeti oluşturacaktır. Bir ad, kaynak grubu ve bölge belirtmeniz gerekecektir. Bu komut, [makinenizde yüklü](/cli/azure/install-azure-cli?view=azure-cli-latest)Azure CLI 'niz varsa [Cloud Shell](https://shell.azure.com)veya yerel olarak çalıştırılabilir.
 
 ```azurecli
 az iot dps create --name <Device Provisioning Service name> --resource-group <resource group name> --location <region; for example, eastus>
@@ -258,7 +258,7 @@ Bu akıştan gezinirken, bu kaydı yeni oluşturduğunuz işleve bağlayacaksın
 
 ### <a name="set-up-the-device-simulator"></a>Cihaz simülatörünü ayarlama
 
-Bu örnek, cihaz sağlama hizmeti kullanılarak sağlamayı içeren bir cihaz simülatörü kullanır. Cihaz simülatörü şurada bulunur: [Azure dijital TWINS ve IoT Hub tümleştirme örneği](https://docs.microsoft.com/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/). Örneği henüz indirmediyseniz, örnek bağlantısına gidip başlık altında *posta yükle* düğmesini seçerek hemen alın. İndirilen klasörü sıkıştırmayı açın.
+Bu örnek, cihaz sağlama hizmeti kullanılarak sağlamayı içeren bir cihaz simülatörü kullanır. Cihaz simülatörü şurada bulunur: [Azure dijital TWINS ve IoT Hub tümleştirme örneği](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/). Örneği henüz indirmediyseniz, örnek bağlantısına gidip başlık altında *posta yükle* düğmesini seçerek hemen alın. İndirilen klasörü sıkıştırmayı açın.
 
 Bir komut penceresi açın ve indirilen klasöre ve ardından *cihaz simülatör* dizinine gidin. Aşağıdaki komutu kullanarak projenin bağımlılıklarını yükler:
 
@@ -447,7 +447,7 @@ Projeyi kaydedin, sonra işlev uygulamasını yeniden yayımlayın. İşlev uygu
 
 Daha sonra, oluşturduğunuz Azure dijital TWINS örneğine ve Olay Hub 'ına başvuruyu içeren işlev uygulamanızda ortam değişkenlerini ayarlamanız gerekir. Uçtan uca öğreticiyi kullandıysanız ([*öğretici: uçtan uca çözümü bağlama*](./tutorial-end-to-end.md)), ilk ayar önceden yapılandırılmıştır.
 
-Bu Azure CLı komutuyla ayarı ekleyin. Bu komut, [makinenizde yüklü](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)Azure CLI 'niz varsa [Cloud Shell](https://shell.azure.com)veya yerel olarak çalıştırılabilir.
+Bu Azure CLı komutuyla ayarı ekleyin. Bu komut, [makinenizde yüklü](/cli/azure/install-azure-cli?view=azure-cli-latest)Azure CLI 'niz varsa [Cloud Shell](https://shell.azure.com)veya yerel olarak çalıştırılabilir.
 
 ```azurecli
 az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
@@ -480,7 +480,7 @@ Kullanımdan kaldırma işleminin tetiklenmesi için cihazı IoT Hub el ile silm
 
 [Bu makalenin ilk yarısında](#auto-provision-device-using-device-provisioning-service)IoT Hub ve karşılık gelen dijital ikizi bir cihaz oluşturdunuz. 
 
-Şimdi IoT Hub gidin ve cihazı silin (bunu bir [Azure CLI komutuyla](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-delete) veya [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)' de yapabilirsiniz). 
+Şimdi IoT Hub gidin ve cihazı silin (bunu bir [Azure CLI komutuyla](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-delete) veya [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)' de yapabilirsiniz). 
 
 Cihaz Azure dijital TWINS 'den otomatik olarak kaldırılacak. 
 
@@ -497,7 +497,7 @@ Cihazın ikizi artık Azure dijital TWINS örneğinde bulunamadığını görmen
 
 Bu makalede oluşturulan kaynaklara artık ihtiyacınız yoksa, bunları silmek için aşağıdaki adımları izleyin.
 
-Azure Cloud Shell veya yerel Azure CLı kullanarak, [az Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) komutuyla bir kaynak grubundaki tüm Azure kaynaklarını silebilirsiniz. Bu, kaynak grubunu kaldırır; Azure dijital TWINS örneği; IoT Hub ve Hub cihaz kaydı; olay Kılavuzu konusu ve ilişkili abonelikler; depolama gibi ilişkili kaynaklar da dahil olmak üzere, Olay Hub 'ları ve her ikisi de Azure Işlevleri uygulaması.
+Azure Cloud Shell veya yerel Azure CLı kullanarak, [az Group Delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) komutuyla bir kaynak grubundaki tüm Azure kaynaklarını silebilirsiniz. Bu, kaynak grubunu kaldırır; Azure dijital TWINS örneği; IoT Hub ve Hub cihaz kaydı; olay Kılavuzu konusu ve ilişkili abonelikler; depolama gibi ilişkili kaynaklar da dahil olmak üzere, Olay Hub 'ları ve her ikisi de Azure Işlevleri uygulaması.
 
 > [!IMPORTANT]
 > Silinen kaynak grupları geri alınamaz. Kaynak grubu ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun. 

@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7365e4904bb8e1920e7d4c57c165e489f2ff302e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65e7a425fdf8ee1b253bcb696792b569b7195d4c
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540600"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047378"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure dijital TWINS 'te uç noktaları ve yolları yönetme (API 'Ler ve CLı)
 
@@ -24,7 +24,7 @@ Uç noktalar ve rotalar [Eventroutes API 'leri](how-to-use-apis-sdks.md), [.net 
 
 Ayrıca, [Azure Portal](https://portal.azure.com)aracılığıyla da yönetilebilecek. Bunun yerine portalı kullanan Bu makalenin bir sürümü için bkz. [*nasıl yapılır: uç noktaları ve yolları yönetme (portal)*](how-to-manage-routes-portal.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir **Azure hesabınızın** olması gerekir ( [buradan](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)birini ücretsiz olarak ayarlayabilirsiniz)
 * Azure aboneliğinizde bir **Azure dijital TWINS örneği** gerekir. Zaten bir örneğiniz yoksa, [*nasıl yapılır: örnek ve kimlik doğrulaması ayarlama*](how-to-set-up-instance-portal.md)bölümündeki adımları kullanarak bir tane oluşturabilirsiniz. Bu makalede daha sonra kullanmak için kurulum 'un aşağıdaki değerlerini kullanın:
@@ -44,7 +44,7 @@ Bir uç noktayı Azure dijital TWINS 'e bağlamak için, uç nokta için kullanm
 
 ### <a name="create-an-event-grid-endpoint"></a>Event Grid uç noktası oluşturma
 
-Aşağıdaki örnek, Azure CLı kullanarak olay Kılavuzu türü uç noktasının nasıl oluşturulacağını göstermektedir. [Azure Cloud Shell](https://shell.azure.com)KULLANABILIR veya [CLI 'yi yerel olarak yükleyebilirsiniz](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
+Aşağıdaki örnek, Azure CLı kullanarak olay Kılavuzu türü uç noktasının nasıl oluşturulacağını göstermektedir. [Azure Cloud Shell](https://shell.azure.com)KULLANABILIR veya [CLI 'yi yerel olarak yükleyebilirsiniz](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
 
 İlk olarak, bir olay Kılavuzu konusu oluşturun. Aşağıdaki komutu kullanabilir veya *özel olay* hızlı başlangıcı Event Grid [ *özel konu oluştur* bölümünü](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) ziyaret ederek adımları daha ayrıntılı şekilde görüntüleyebilirsiniz.
 

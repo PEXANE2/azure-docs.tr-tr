@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: sample
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2020
+ms.date: 10/14/2020
 ms.custom: designer
-ms.openlocfilehash: 15393a0e618c14fbaff46a51a300284d8afb4b77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15f8e424529513b2932dcb18de941a8fe1867c1d
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90889756"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045457"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Azure Machine Learning Designer için veri kümeleri & örnek işlem hatları
 
@@ -46,7 +46,7 @@ Tasarımcı örneği kullanımı aşağıda verilmiştir:
 
    1. Tuvalin sağındaki **Ayarlar** bölmesinde, **işlem hedefini seç**' i seçin.
 
-   1. Görüntülenen iletişim kutusunda, var olan bir işlem hedefini seçin veya yeni bir tane oluşturun. **Kaydet**’i seçin.
+   1. Görüntülenen iletişim kutusunda, var olan bir işlem hedefini seçin veya yeni bir tane oluşturun. **Kaydet**'i seçin.
 
    1. Bir işlem hattı çalıştırması göndermek için tuvalin en üstünde **Gönder** ' i seçin.
 
@@ -86,9 +86,7 @@ Bu yerleşik sınıflandırma örneklerini keşfet. Örnekleri açıp modül aç
 
 Bu yerleşik bilgisayar görme örneklerini keşfet. Örnekleri açıp modül açıklamalarını görüntüleyerek, belge bağlantıları olmadan örnekler hakkında daha fazla bilgi edinebilirsiniz.
 
-| Örnek başlık | Açıklama | 
-| --- | --- |
-| Geniş & derin tabanlı öneri-Restoran derecelendirme tahmini | Restoran/Kullanıcı özellikleri ve derecelendirmelerinden bir restoran öneren altyapısı oluşturun.|
+| DenseNet kullanarak görüntü sınıflandırması | PyTorch Denfaturalandırmasına bağlı olarak görüntü sınıflandırma modeli oluşturmak için bilgisayar görme modüllerini kullanın. | 
 
 ## <a name="recommender"></a>Öneren
 
@@ -96,7 +94,8 @@ Bu yerleşik öneren örnekleri keşfedebilirsiniz. Örnekleri açıp modül aç
 
 | Örnek başlık | Açıklama | 
 | --- | --- |
-| DenseNet kullanarak görüntü sınıflandırması | PyTorch DenseNet 'yi temel alan görüntü sınıflandırma modeli oluşturmak için bilgisayar görme modüllerini kullanın.| 
+| Geniş & derin tabanlı öneri-Restoran derecelendirme tahmini | Restoran/Kullanıcı özellikleri ve derecelendirmelerinden bir restoran öneren altyapısı oluşturun.|
+| Öneri-film derecelendirmesi | Film/Kullanıcı özellikleri ve derecelendirmelerinden bir film öneren altyapısı oluşturun.|
 
 ## <a name="utility"></a>Yardımcı Program
 
@@ -119,7 +118,7 @@ Azure Machine Learning tasarımcısında yeni bir işlem hattı oluşturduğunuz
 | Veri kümesi &nbsp; adı&nbsp;&nbsp;&nbsp;&nbsp;| Veri kümesi açıklaması |
 |-------------|:--------------------|
 | Yetişkin Census geliri Ikili sınıflandırma veri kümesi | > 100 ' nin ayarlanmış bir gelir dizini ile 16 yaşın üzerinde çalışan yetişkinler kullanılarak 1994 Census veritabanının bir alt kümesi.<br/>**Kullanım**: bir kişinin 50 bin üzerinde bir yıl boyunca mi olduğunu tahmin etmek için demografik kullanan kişileri sınıflandırın.<br/> **Ilgili araştırma**: Kohavi, R., Becker, B., (1996). [UCI Machine Learning deposu](https://archive.ics.uci.edu/ml). Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi|
-|Otomobil fiyat verileri (ham)|, Bir sigorta riski puanı ve bu fiyat dahil olmak üzere, marka ve model bazında otomobil hakkında bilgiler.<br/> Risk puanı başlangıçta otomatik fiyatla ilişkilendirilir. Daha sonra, söz konusu bir işlemdeki bir işlem için, symboling olarak bilinen bir işlemde gerçek risk için ayarlanır. + 3 değeri, otomatik olarak riskli olduğunu ve büyük olasılıkla güvenli olduğunu belirten-3 değerini gösterir.<br/>**Kullanım**: </b> gerileme veya çok sayıda sınıflandırma kullanarak, özelliklerle risk Puanını tahmin edin.<br/>**Ilgili araştırma**: </b> schlikökü, J.C. (1987). [UCI Machine Learning deposu](https://archive.ics.uci.edu/ml). Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi. |
+|Otomobil fiyat verileri (ham)|, Bir sigorta riski puanı ve bu fiyat dahil olmak üzere, marka ve model bazında otomobil hakkında bilgiler.<br/> Risk puanı başlangıçta otomatik fiyatla ilişkilendirilir. Daha sonra, söz konusu bir işlemdeki bir işlem için, symboling olarak bilinen bir işlemde gerçek risk için ayarlanır. + 3 değeri, otomatik olarak riskli olduğunu ve büyük olasılıkla güvenli olduğunu belirten-3 değerini gösterir.<br/>**Kullanım**: gerileme veya çok sayıda sınıflandırma kullanarak, özelliklerle risk Puanını tahmin edin.<br/>**Ilgili araştırma**: schlikökü, J.C. (1987). [UCI Machine Learning deposu](https://archive.ics.uci.edu/ml). Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi. |
 | CRM uygulama paylaşılan etiketleri |KDD Fin2009 müşteri ilişkisi tahmin sınamasına ait Etiketler ([orange_small_train_appetency. Etiketler](http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels)).|
 |Paylaşılan CRM dalgalanması etiketleri|KDD Fin2009 müşteri ilişkisi tahmin sınamasına ait Etiketler ([orange_small_train_churn. Etiketler](http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels)).|
 |CRM veri kümesi paylaşıldı | Bu veriler, KDD Fin2009 müşteri ilişkisi tahmin Challenge ([orange_small_train.data.zip](http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip)) ' den gelir. <br/>Veri kümesi, Fransız telekomünikasyon şirketi turuncu 'dan 50K müşterileri içerir. Her müşterinin 230 anonim özelliği vardır, bunlar sayısal ve 40 kategorik olan 190 ' dir. Özellikler çok seyrek. |
@@ -130,7 +129,9 @@ Azure Machine Learning tasarımcısında yeni bir işlem hattı oluşturduğunuz
 |Film derecelendirmeleri|Veri kümesi, film arası doldurulabilir veri kümesinin genişletilmiş bir sürümüdür. Veri kümesi, filmler için 170K derecelendirmesine sahiptir ve Twitter 'daki iyi yapılandırılmış ara kaynaklardan ayıklanır. Her örnek bir tweet temsil eder ve bir tanımlama grubu: Kullanıcı KIMLIĞI, ıMDB film KIMLIĞI, derecelendirme, zaman damgası, bu tweet için sık kullanılanlar sayısı ve bu tweet yeniden dengelendirme sayısı. DataSet, öneren Systems Challenge 2014 için bir. diyor, S. Çizms, B. Loni ve D. Tikk tarafından kullanılabilir hale getirilir.|
 |Hava durumu veri kümesi|NOAA 'den saatlik Land tabanlı hava durumu gözlemlerini ([201304 ile 201310 arasında Birleşik veriler](https://az754797.vo.msecnd.net/data/WeatherDataset.csv)).<br/>Hava durumu verileri, April-October 2013 zaman dilimini kapsayan Havaalanı hava durumu istasyonlarından gerçekleştirilen gözlemleri kapsamaktadır. Tasarımcıya yüklemeden önce veri kümesi şu şekilde işlenir:    <br/> -Hava durumu istasyonu kimlikleri ilgili Havaalanı kimliklerine eşlendi    <br/> -70 ortalamanızı ile ilişkilendirilmemiş Hava durumu istasyonları filtrelendi    <br/> -Tarih sütunu ayrı yıl, ay ve gün sütunlarına bölündü    <br/> -Şu sütunlar seçildi: Airportıd, Year, ay, gün, saat, saat dilimi, ufuk koşulu, görünürlük, dalgalı Thertype, DryBulbFarenheit, Dronblik, WetBulbFarenheit, Wetbulbgrat, DewPointFarenheit, Dewpointsanti, Relativenem, WIN,,,.|
 |Vikipedi SP 500 veri kümesi|Veriler https://www.wikipedia.org/) ,, XML verileri olarak depolanan her bir S&P 500 şirketinin makalelerine bağlı olarak, Vikipden türetilir.    <br/>Tasarımcıya yüklemeden önce veri kümesi şu şekilde işlenir:    <br/> -Belirli bir şirkete ait metin içeriğini Ayıkla    <br/> -Wiki biçimlendirmesini kaldır    <br/> -Alfasayısal olmayan karakterleri kaldır    <br/> -Tüm metni küçük harfe Dönüştür    <br/> -Bilinen şirket kategorileri eklendi    <br/>Bazı şirketlerde bir makalenin bulunamadığını, bu nedenle kayıt sayısının 500 ' den küçük olduğunu unutmayın.|
-
+|Restoran özellik verileri| Restoran ve bunların özellikleri (yiyecek türü, dinleme stili ve konum gibi) için bir meta veri kümesi. <br/>**Kullanım**: bir öneren sistemini eğitmek ve test etmek için bu veri kümesini diğer iki restoran veri kümesiyle birlikte kullanın.<br/> **Ilgili araştırma**: Bache, K. ve Lichman, M. (2013). [UCI Machine Learning deposu](https://archive.ics.uci.edu/ml). Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi.|
+|Restoran derecelendirmeleri| Kullanıcılar tarafından, 0 ' dan 2 ' ye kadar bir ölçeğe göre restoranlar için verilen derecelendirmeleri içerir.<br/>**Kullanım**: bir öneren sistemini eğitmek ve test etmek için bu veri kümesini diğer iki restoran veri kümesiyle birlikte kullanın. <br/>**Ilgili araştırma**: Bache, K. ve Lichman, M. (2013). [UCI Machine Learning deposu](https://archive.ics.uci.edu/ml). Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi.|
+|Restoran müşteri verileri| Demografik ve Tercihler dahil olmak üzere müşteriler hakkında bir meta veri kümesi. <br/>**Kullanım**: bir öneren sistemini eğitmek ve test etmek için bu veri kümesini diğer iki restoran veri kümesiyle birlikte kullanın. <br/> **Ilgili araştırma**: Bache, K. ve Lichman, M. (2013). [UCI Machine Learning deposu](https://archive.ics.uci.edu/ml) Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi.|
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: be79f7bd6687b2e53e6abe19dc0a20999942071d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a7fcd32335b5d9e04986355adeea473cf77b970e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974983"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048211"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure dijital TWINS modellerini yönetme
 
@@ -84,7 +84,7 @@ Aşağıdaki bölümlerde, [Azure Digital TWINS API 'leri ve SDK 'ları](how-to-
 Modeller oluşturulduktan sonra Azure dijital TWINS örneğine yükleyebilirsiniz.
 
 > [!TIP]
-> Azure dijital TWINS örneğinizi karşıya yüklemeden önce modellerinizi çevrimdışı doğrulamanız önerilir. [Modeldl istemci tarafı ayrıştırıcı kitaplığı](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) ve nasıl yapılır: modellerinizi hizmete yüklemeden önce bunları denetlemek için [*modelleri denetlemek için modeller ve doğrulama*](how-to-parse-models.md) bölümünde açıklanan [dtdl doğrulayıcısı örneğini](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) kullanabilirsiniz.
+> Azure dijital TWINS örneğinizi karşıya yüklemeden önce modellerinizi çevrimdışı doğrulamanız önerilir. [Modeldl istemci tarafı ayrıştırıcı kitaplığı](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) ve nasıl yapılır: modellerinizi hizmete yüklemeden önce bunları denetlemek için [*modelleri denetlemek için modeller ve doğrulama*](how-to-parse-models.md) bölümünde açıklanan [dtdl doğrulayıcısı örneğini](/samples/azure-samples/dtdl-validator/dtdl-validator) kullanabilirsiniz.
 
 Bir modeli karşıya yüklemeye hazırsanız, aşağıdaki kod parçacığını kullanabilirsiniz:
 

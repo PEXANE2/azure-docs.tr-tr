@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/29/2020
+ms.date: 10/13/2020
 ms.author: alkohli
-ms.openlocfilehash: 3ec89b897b4ea2e802188e3aefe9b830d7ff1cf8
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b0377d7b209da76b03a115dc82831eeb00e1ff95
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969186"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047089"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 'larınızı güncelleştirin 
 
@@ -22,7 +22,7 @@ Bu makalede, yerel Web Kullanıcı arabirimi aracılığıyla ve Azure portal ar
 Bu makalede açıklanan yordam, yazılımın farklı bir sürümü kullanılarak gerçekleştirilmiştir, ancak işlem geçerli yazılım sürümü için aynı kalır.
 
 > [!IMPORTANT]
-> - Güncelleştirme **2009** , cihazınızdaki **2.1.1364.2110** yazılım sürümüne karşılık gelir. Bu güncelleştirme hakkında daha fazla bilgi için, [sürüm notları](azure-stack-edge-gpu-2009-release-notes.md)' na gidin.
+> - Güncelleştirme **2010** , cihazınızdaki **2.1.1377.2170** yazılım sürümüne karşılık gelir. Bu güncelleştirme hakkında daha fazla bilgi için, [sürüm notları](azure-stack-edge-gpu-2009-release-notes.md)' na gidin.
 >
 > - Güncelleştirme veya düzeltme yüklendiğinde cihazınızın yeniden başlatıldığını aklınızda bulundurun. Bu güncelleştirme, iki güncelleştirmeyi sırayla uygulamanızı gerektirir. Önce cihaz yazılım güncelleştirmelerini ve sonra Kubernetes güncelleştirmelerini uygularsınız. Azure Stack Edge Pro tek düğümlü bir cihaz olduğu için, devam eden g/ç miktarı bozulur ve cihazınız, cihaz yazılım güncelleştirmesi için 30 dakikaya varan bir kesinti yaşar.
 
@@ -163,9 +163,9 @@ Microsoft Update kataloğundan güncelleştirmeyi indirmek için aşağıdaki ad
 
 2. Microsoft Update kataloğunun arama kutusuna, indirmek istediğiniz güncelleştirme için düzeltme veya koşulların Bilgi Bankası (KB) numarasını girin. Örneğin, **Azure Stack Edge Pro**yazın ve ardından **Ara**' ya tıklayın.
    
-    Güncelleştirme listesi **Azure Stack Edge Pro 2006**olarak görüntülenir.
+    Güncelleştirme listesi **Azure Stack Edge güncelleştirme 2010**olarak görüntülenir.
    
-    ![Katalog ara 2](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)
+    <!--![Search catalog 2](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)-->
 
 4. **İndir**'i seçin. *SoftwareUpdatePackage.exe* ile indirilecek iki dosya vardır ve sırasıyla cihaz yazılım güncelleştirmelerine ve Kubernetes güncelleştirmelerine karşılık gelen *Kubernetes_Package.exe* sonekleri vardır. Dosyaları yerel sistemdeki bir klasöre indirin. Ayrıca, klasörü cihazdan erişilebilen bir ağ paylaşımında da kopyalayabilirsiniz.
 
@@ -198,9 +198,9 @@ Bu yordamın tamamlandığı 20 dakika sürer. Güncelleştirmeyi veya düzeltme
 
 5. Güncelleştirme başlar. Cihaz başarıyla güncelleştirildikten sonra yeniden başlatılır. Yerel Kullanıcı arabirimine bu süre içinde erişilemiyor.
    
-6. Yeniden başlatma işlemi tamamlandıktan sonra **oturum açma** sayfasına yönlendirilirsiniz. Cihaz yazılımının güncelleştirildiğini doğrulamak için, yerel Web Kullanıcı arabiriminde **bakım**  >  **yazılım güncelleştirmesi**' ne gidin. Bu örnekteki görüntülenmiş yazılım sürümü **2.0.1257.1591**' dir.
+6. Yeniden başlatma işlemi tamamlandıktan sonra **oturum açma** sayfasına yönlendirilirsiniz. Cihaz yazılımının güncelleştirildiğini doğrulamak için, yerel Web Kullanıcı arabiriminde **bakım**  >  **yazılım güncelleştirmesi**' ne gidin. Geçerli yayın için, görüntülenmiş yazılım sürümü **2.1.1377.2170**olmalıdır.
 
-   ![güncelleştirme cihazı 6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png) 
+   <!--![update device 6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png)--> 
 
 7. Şimdi Kubernetes yazılım sürümünü güncelleştecaksınız. Yukarıdaki adımları tekrarlayın. *Kubernetes_Package.exe* sonekine sahip Kubernetes güncelleştirme dosyasına bir yol sağlayın.  
 

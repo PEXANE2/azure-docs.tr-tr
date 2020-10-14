@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: eae7a44d77d63641ba9ad062c504aaf624582668
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: acd2f12150155efbccc668b99dcc4683d81b87e0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969237"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047055"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Hızlı başlangıç: ilk IoT Edge modülünüzü sanal bir Windows cihazına dağıtma
 
@@ -45,7 +45,7 @@ Cloud Shell örneğine Azure IoT uzantısını ekleyin.
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bulut kaynakları:
 
@@ -74,7 +74,7 @@ IoT Edge cihazı:
   Komutuyla belirttiğiniz yönetici adı ve parolayı kullanarak Windows sanal makinenize bağlanmak için bu dosyayı Uzak Masaüstü Bağlantısı açın `az vm create` .
 
 > [!NOTE]
-> Windows sanal makineniz, en son [Windows uzun süreli destek derlemesi](https://docs.microsoft.com/windows/release-information/)olan windows sürüm 1809 (derleme 17763) ile başlar. Windows varsayılan olarak her 22 saatte bir güncelleştirmeleri otomatik olarak denetler. Sanal makinenize bir denetim kurulduktan sonra Windows, Windows için IoT Edge uyumsuz bir sürüm güncelleştirmesini gönderir ve bu, Windows özellikleri için IoT Edge kullanımını engeller. Sanal makinenizin kullanımını 22 saat içinde veya [Windows güncelleştirmelerini geçici olarak duraklatarak](https://support.microsoft.com/help/4028233/windows-10-manage-updates)kısıtlamanızı öneririz.
+> Windows sanal makineniz, en son [Windows uzun süreli destek derlemesi](/windows/release-information/)olan windows sürüm 1809 (derleme 17763) ile başlar. Windows varsayılan olarak her 22 saatte bir güncelleştirmeleri otomatik olarak denetler. Sanal makinenize bir denetim kurulduktan sonra Windows, Windows için IoT Edge uyumsuz bir sürüm güncelleştirmesini gönderir ve bu, Windows özellikleri için IoT Edge kullanımını engeller. Sanal makinenizin kullanımını 22 saat içinde veya [Windows güncelleştirmelerini geçici olarak duraklatarak](https://support.microsoft.com/help/4028233/windows-10-manage-updates)kısıtlamanızı öneririz.
 >
 > Bu hızlı başlangıçta basitlik için bir Windows Masaüstü sanal makinesi kullanılmaktadır. Üretim senaryolarında genel olarak hangi Windows işletim sistemlerinin kullanılabildiği hakkında bilgi için bkz. [Azure IoT Edge desteklenen sistemler](support.md).
 >

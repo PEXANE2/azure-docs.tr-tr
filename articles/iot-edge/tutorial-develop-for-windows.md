@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 409d4195a8c0a4b41996274f68ec74864bebe208
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 0728e5d12b13164d127941a49603836ff92fd515
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873362"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045810"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Öğretici: Windows cihazları için IoT Edge modülleri geliştirme
 
@@ -24,7 +24,7 @@ Hızlı başlangıçta, bir Windows sanal makinesini kullanarak IoT Edge bir cih
 
 Bu öğretici, bir **C# modülünü bir Windows cihazına**dağıtma örneğini kullanır. En yaygın geliştirme senaryosu olduğundan bu örnek seçildi. Farklı bir dilde geliştirme veya Azure hizmetlerini modül olarak dağıtmaya çalışıyorsanız, bu öğretici geliştirme araçları hakkında bilgi edinmek için yine de yararlı olacaktır. Geliştirme kavramlarını anladıktan sonra, ayrıntıları görmek için tercih ettiğiniz dili veya Azure hizmetini seçebilirsiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -51,7 +51,7 @@ Aşağıdaki tabloda, Visual Studio Code ve Visual Studio 'da **Windows kapsayı
 | **Diller** | C# (hata ayıklama desteklenmiyor) | C <br> C# |
 | **Daha fazla bilgi** | [Visual Studio Code için Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Visual Studio 2017 için Azure IoT Edge araçları](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools)<br>[Visual Studio 2019 için Azure IoT Edge araçları](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Geliştirme makinesi:
 
@@ -87,13 +87,13 @@ Bu öğretici, Visual Studio 2019 için geliştirme adımlarını öğretir. Vis
 
 1. Geliştirme makinenizde Visual Studio 2019 ' i hazırlayın.
 
-   * Geliştirme makinenizde zaten Visual Studio yoksa, aşağıdaki iş yükleriyle [Visual studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio) ' i yükleyebilirsiniz:
+   * Geliştirme makinenizde zaten Visual Studio yoksa, aşağıdaki iş yükleriyle [Visual studio 2019](/visualstudio/install/install-visual-studio) ' i yükleyebilirsiniz:
 
       * Azure geliştirme
       * C++ ile masaüstü geliştirme
       * .NET Core platformlar arası geliştirme
 
-   * Geliştirme makinenizde Visual Studio 2019 zaten varsa, gerekli iş yüklerini eklemek için [Visual Studio 'Yu değiştirme](https://docs.microsoft.com/visualstudio/install/modify-visual-studio) bölümündeki adımları izleyin.
+   * Geliştirme makinenizde Visual Studio 2019 zaten varsa, gerekli iş yüklerini eklemek için [Visual Studio 'Yu değiştirme](/visualstudio/install/modify-visual-studio) bölümündeki adımları izleyin.
 
 2. Visual Studio 2019 için [Azure IoT Edge araçları](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) uzantısını indirip yükleyin.
 
@@ -157,7 +157,7 @@ IoT Edge çalışma zamanının kapsayıcı görüntülerinizi IoT Edge cihaza �
 
 1. Modül çözümünüzdeki dosyada **deployment.template.js** açın.
 
-1. $EdgeAgent istenen özelliklerde **Registrycredentials** özelliğini bulun. Kayıt defteri adresiniz, projeyi oluştururken verdiğiniz bilgilerden bir daha olmalıdır ve sonra Kullanıcı adı ve parola alanları değişken adlarını içermelidir. Örneğin:
+1. $EdgeAgent istenen özelliklerde **Registrycredentials** özelliğini bulun. Kayıt defteri adresiniz, projeyi oluştururken verdiğiniz bilgilerden bir daha olmalıdır ve sonra Kullanıcı adı ve parola alanları değişken adlarını içermelidir. Örnek:
 
    ```json
    "registryCredentials": {

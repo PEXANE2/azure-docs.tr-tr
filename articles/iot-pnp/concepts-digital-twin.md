@@ -7,12 +7,12 @@ ms.date: 07/17/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5d5ffe4e7d92530f18e278382ab3637c3326e57c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea523045875e0abc9e14924c7bb388ea2cfcc2db
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578062"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046477"
 ---
 # <a name="understand-iot-plug-and-play-digital-twins"></a>IoT Tak Çalıştır dijital ikizlerini anlama
 
@@ -307,7 +307,7 @@ Aşağıdaki kod parçacıkları, bileşenin yan yana JSON gösterimini gösteri
 
 ## <a name="digital-twin-apis"></a>Dijital ikizi API 'Leri
 
-Azure dijital TWINS, Device Digital ikizi 'yi yönetmek için **Digital ikizi**, **Update Digital Ikizi**, **Component komutunu çağır** ve **Invoke komutunu** kullanarak donatılmıştır. [REST API 'leri](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin) doğrudan ya da bir [hizmet SDK 'sı](../iot-pnp/libraries-sdks.md)aracılığıyla kullanabilirsiniz.
+Azure dijital TWINS, Device Digital ikizi 'yi yönetmek için **Digital ikizi**, **Update Digital Ikizi**, **Component komutunu çağır** ve **Invoke komutunu** kullanarak donatılmıştır. [REST API 'leri](/rest/api/iothub/service/digitaltwin) doğrudan ya da bir [hizmet SDK 'sı](../iot-pnp/libraries-sdks.md)aracılığıyla kullanabilirsiniz.
 
 ## <a name="digital-twin-change-events"></a>Dijital ikiz değişiklik olayları
 
@@ -383,5 +383,5 @@ Artık dijital TWINS hakkında bilgi edindiğinize göre, bazı ek kaynaklar aş
 
 - [IoT Tak ve Kullan Digital ikizi API 'Lerini kullanma](howto-manage-digital-twin.md)
 - [Çözümünüzden bir cihazla etkileşim kurma](quickstart-service-node.md)
-- [IoT dijital Ikizi REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [IoT dijital Ikizi REST API](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT Gezgini](howto-use-iot-explorer.md)

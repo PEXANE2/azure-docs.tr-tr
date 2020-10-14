@@ -8,12 +8,12 @@ ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 8f739982ac9193c80cae23d91b77091f75c3fd13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6c6c1cfdfef864be17adfed2d115150c4fbede0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564377"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045134"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure haritalar ınkapısının haritasını güncelleştirmek için Azure dijital TWINS kullanma
 
@@ -25,7 +25,7 @@ Bu şekilde nasıl ele alınacaktır:
 2. Azure Maps ınkapılı haritalar Özellik stateset 'i güncelleştirmek için bir Azure işlevi oluşturma.
 3. Haritalar KIMLIĞINIZI ve özellik stateset KIMLIĞINIZI Azure dijital TWINS grafiğinde depolama.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 * Azure dijital TWINS [*öğreticisini izleyin: uçtan uca çözümü bağlama*](./tutorial-end-to-end.md).
     * Bu ikizi ek bir uç nokta ve rotayla genişletiyorsunuz. Ayrıca, bu öğreticiden işlev uygulamanıza başka bir işlev da eklersiniz. 
@@ -64,7 +64,7 @@ Bu kalıp, IoT cihazı yerine doğrudan ikizi 'dan, eşleme mantığınızı gü
     >[!NOTE]
     >Şu anda bu komut gruplarını etkileyen Cloud Shell ' de **bilinen bir sorun** var: `az dt route` , `az dt model` , `az dt twin` .
     >
-    >Çözümlemek için, `az login` komutu çalıştırmadan önce Cloud Shell ' de çalıştırın ya da Cloud Shell yerine [Yerel CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) kullanın. Bunun hakkında daha fazla bilgi için bkz. [*sorun giderme: Azure dijital TWINS 'de bilinen sorunlar*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell).
+    >Çözümlemek için, `az login` komutu çalıştırmadan önce Cloud Shell ' de çalıştırın ya da Cloud Shell yerine [Yerel CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) kullanın. Bunun hakkında daha fazla bilgi için bkz. [*sorun giderme: Azure dijital TWINS 'de bilinen sorunlar*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell).
 
     ```azurecli
     az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
@@ -74,7 +74,7 @@ Bu kalıp, IoT cihazı yerine doğrudan ikizi 'dan, eşleme mantığınızı gü
 
 Uçtan uca öğreticiden işlev uygulamanız içinde Event Grid tetiklenen bir işlev oluşturacağız ([*öğretici: uçtan uca bir çözümü bağlama*](./tutorial-end-to-end.md)). Bu işlev, bir odanın sıcaklığını güncelleştirmek için bu bildirimleri paketten çıkarın ve Azure Maps özelliği stateset 'e güncelleştirmeler gönderir. 
 
-Başvuru bilgileri için aşağıdaki belgeye bakın: [*Azure işlevleri için Azure Event Grid tetikleyicisi*](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-grid-trigger).
+Başvuru bilgileri için aşağıdaki belgeye bakın: [*Azure işlevleri için Azure Event Grid tetikleyicisi*](../azure-functions/functions-bindings-event-grid-trigger.md).
 
 İşlev kodunu aşağıdaki kodla değiştirin. Yalnızca TWINS 'in bulunduğu güncelleştirmeleri filtreleyerek, güncelleştirilmiş sıcaklığın okunmasını ve bu bilgileri Azure Maps 'a göndermeyecektir.
 

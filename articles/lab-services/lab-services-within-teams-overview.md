@@ -3,18 +3,21 @@ title: Microsoft ekipleri dahilinde Azure Lab Services
 description: Microsoft ekipleri dahilinde Azure Lab Services kullanımına ilişkin bir genel bakış sağlar.
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 8b70ab3cbf1a342646f6a2897550c4bf8f7601a7
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 0c7defdb6f801a10c5fadfdca805381a31f39378
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946851"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047837"
 ---
 # <a name="azure-lab-services-within-microsoft-teams"></a>Microsoft ekipleri dahilinde Azure Lab Services
 
-Azure Lab Services sahipleri/oluşturucuları artık Microsoft ekipleri dahilinde Labs oluşturabiliyor.
+Azure Lab Services, **Azure Lab Services** takımlar uygulaması kullanılarak Microsoft ekipleri dahilinde yararlanılabilir olabilir. Laboratuvar hesaplarına sahip/katkıda bulunan/Oluşturucu erişimi olan herhangi bir takım sahibi, laboratuvarlar oluşturabilir ve ekipteki herkese sanal makineler sağlayabilir.
 
-Bu makalede takımlar tümleştirmesinin avantajları özetlenmektedir ve takımlar içinde Azure Lab Services nasıl yönetileceği hakkında yönergeler için diğer makalelere bağlantılar sağlanır. 
+Bu makalede, takımlar dahilinde Azure Lab Services kullanmanın avantajları özetlenmektedir ve takımlar içinde laboratuvarların oluşturulması ve yönetilmesi ile ilgili yönergeler için diğer makalelere bağlantılar sağlanmıştır. 
+
+> [!NOTE]
+>**Azure Lab Services** Takımlar uygulaması yalnızca bir takıma eklenebilir, bireysel sohbetlere veya grup sohbetlerine eklenemez.
 
 ## <a name="benefits"></a>Yararları
 
@@ -31,8 +34,8 @@ Microsoft ekipleriyle Azure Lab Services Tümleştirme, eğitimciler bir sınıf
 
 Aşağıdaki makalelere bakın:
 
-- [Çalışmaya başlayın ve ekiplerden Laboratuvar Hizmetleri Laboratuvarı oluşturun](how-to-get-started-create-lab-within-teams.md)
-- [Ekiplerden Laboratuvar Hizmetleri Kullanıcı listelerini yönetme](how-to-manage-user-lists-within-teams.md)
-- [Ekiplerden laboratuvar hizmetlerinde bir VM havuzunu yönetme](how-to-manage-vm-pool-within-teams.md)
-- [Ekiplerden Laboratuvar Hizmetleri zamanlamaları oluşturma](how-to-create-schedules-within-teams.md)
-- [Ekiplerden laboratuvar hizmetlerinde bir VM 'ye (öğrenci görünümü) erişme](how-to-access-vm-for-students-within-teams.md)
+- [Çalışmaya başlayın ve takımlar içinde laboratuvar oluşturun](how-to-get-started-create-lab-within-teams.md)
+- [Takımlar içindeki laboratuvar kullanıcı listelerini yönetme](how-to-manage-user-lists-within-teams.md)
+- [Laboratuvarın takımlar içindeki VM havuzunu yönetme](how-to-manage-vm-pool-within-teams.md)
+- [Takımlar içinde laboratuvar zamanlamaları oluşturma ve yönetme](how-to-create-schedules-within-teams.md)
+- [Takımlar içindeki bir VM 'ye erişme – öğrenci görünümü](how-to-access-vm-for-students-within-teams.md)

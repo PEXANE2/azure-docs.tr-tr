@@ -4,12 +4,12 @@ description: Azure VMware çözümüyle ilgili bazı yaygın soruların yanıtla
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 67309aafe5c1bc841399006285a9862f711e4296
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: bd75e3d708ddfb9d5545111e7bc4935c8dd50141
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018568"
+ms.locfileid: "92045236"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware çözümü hakkında sık sorulan sorular
 
@@ -73,6 +73,9 @@ Evet, üzerinde yüklü olduğu sistem özel bulut vCenter 'a erişebilir ve gen
 #### <a name="are-there-special-instructions-for-installing-and-using-vmrc-with-azure-vmware-solution-vms"></a>Azure VMware Çözüm VM 'Leri ile VMRC 'yi yüklemek ve kullanmak için özel yönergeler var mı?
 Hayır, [VMware tarafından sunulan yönergeleri](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) kullanın ve bu YÖNERGELERDE belirtilen VM önkoşullarını yerine uygulayın. 
 
+#### <a name="is-vmware-hcx-supported-on-vpns"></a>Şu VPN 'lerde VMware HCX destekleniyor mu?
+Hayır.
+
 
 ## <a name="compute-network-storage-and-backup"></a>İşlem, ağ, depolama ve yedekleme
 
@@ -111,6 +114,10 @@ Bu yedekleme çözümleri müşteriler tarafından yüklenip yönetildiğinden, 
 #### <a name="what-is-the-correct-storage-policy-for-the-dedup-set-up"></a>Yinelenenleri kaldırma ayarı için doğru depolama ilkesi nedir?
 
 VM şablonunuz için *thin_provision* depolama ilkesini kullanın.  Varsayılan değer *thick_provision*.
+
+#### <a name="are-the-snmp-infrastructure-logs-shared"></a>SNMP altyapı günlükleri paylaşılıyor mu?
+
+Hayır.
 
 ## <a name="hosts-clusters-and-private-clouds"></a>Konaklar, kümeler ve özel bulutlar
 

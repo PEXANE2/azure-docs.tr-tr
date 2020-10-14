@@ -3,19 +3,19 @@ title: Ölçüm Danışmanı sözlüğü
 titleSuffix: Azure Cognitive Services
 description: Ölçüm Danışmanı hizmeti için önemli fikirler ve kavramlar
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.author: aahi
-ms.openlocfilehash: 25e5cb6e34624f3272e83e1e7c1cd847b865ae8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: mbullwin
+ms.openlocfilehash: 34f9d480234ecaef0d581cfecd68e2cdd1cf6fdc
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941431"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046783"
 ---
 # <a name="metrics-advisor-glossary-of-common-vocabulary-and-concepts"></a>Ortak Sözlük ve kavramların ölçüm Danışmanı sözlüğü
 

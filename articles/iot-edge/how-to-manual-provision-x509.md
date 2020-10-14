@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: kgremban
-ms.openlocfilehash: 8cfb7c5a0821bd030252a105b98b1c138b9ef820
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b1aa12bd73772b5d6332a36d749ec4d7d10d4026
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979887"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048194"
 ---
 # <a name="set-up-an-azure-iot-edge-device-with-x509-certificate-authentication"></a>X. 509.440 sertifikası kimlik doğrulaması ile bir Azure IoT Edge cihazı ayarlama
 
@@ -36,7 +36,7 @@ El ile sağlama için, IoT Edge cihazların kimliğini doğrulamak için iki se�
 
 Bu makalede, X. 509.440 sertifika kimlik doğrulamasıyla kayıt ve sağlama sürecinde adım adım gösterilmektedir. Simetrik Anahtarlarla bir cihaz ayarlamayı öğrenmek isterseniz bkz. [simetrik anahtar kimlik doğrulamasıyla Azure IoT Edge cihazı ayarlama](how-to-manual-provision-symmetric-key.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları izlemeden önce, üzerinde IoT Edge çalışma zamanı yüklü bir cihazınız olmalıdır. Aksi takdirde, [Azure IoT Edge çalışma zamanını yükleme veya kaldırma](how-to-install-iot-edge.md)bölümündeki adımları izleyin.
 
@@ -91,12 +91,12 @@ IoT Hub 'ınıza bağlanan tüm Edge özellikli cihazlar **IoT Edge** sayfasınd
 ### <a name="prerequisites-for-the-azure-cli"></a>Azure CLı önkoşulları
 
 * Azure aboneliğinizdeki bir [IoT Hub 'ı](../iot-hub/iot-hub-create-using-cli.md) .
-* Ortamınızdaki [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) . Azure CLı sürümünüz en azından 2.0.70 veya üzeri olmalıdır. Doğrulamak için `az --version` kullanın. Bu sürüm, az uzantı komutlarını destekler ve Knack komut çerçevesini kullanıma sunar.
+* Ortamınızdaki [Azure CLI](/cli/azure/install-azure-cli) . Azure CLı sürümünüz en azından 2.0.70 veya üzeri olmalıdır. Doğrulamak için `az --version` kullanın. Bu sürüm, az uzantı komutlarını destekler ve Knack komut çerçevesini kullanıma sunar.
 * [Azure CLI Için IoT uzantısı](https://github.com/Azure/azure-iot-cli-extension).
 
 ### <a name="create-an-iot-edge-device-with-the-azure-cli"></a>Azure CLı ile IoT Edge cihaz oluşturma
 
-IoT Hub 'ınızda yeni bir cihaz kimliği oluşturmak için [az IoT Hub Device-Identity Create](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) komutunu kullanın. Örnek:
+IoT Hub 'ınızda yeni bir cihaz kimliği oluşturmak için [az IoT Hub Device-Identity Create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) komutunu kullanın. Örnek:
 
    ```azurecli
    az iot hub device-identity create --device-id [device id] --hub-name [hub name] --edge-enabled --auth-method x509_thumbprint --primary-thumbprint [SHA thumbprint] --secondary-thumbprint [SHA thumbprint]
@@ -113,7 +113,7 @@ Bu komut çeşitli parametreleri içerir:
 
 ### <a name="view-iot-edge-devices-with-the-azure-cli"></a>Azure CLı ile IoT Edge cihazları görüntüleme
 
-IoT Hub 'ınızdaki tüm cihazları görüntülemek için [az IoT Hub Device-Identity List](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-list) komutunu kullanın. Örnek:
+IoT Hub 'ınızdaki tüm cihazları görüntülemek için [az IoT Hub Device-Identity List](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-list) komutunu kullanın. Örnek:
 
    ```azurecli
    az iot hub device-identity list --hub-name [hub name]

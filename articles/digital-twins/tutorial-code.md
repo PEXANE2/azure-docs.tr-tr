@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: a0896ebb788593357e90bea6334c5a3e5abcff1c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 09e5875f6838c14d0d82f19f58a5bfd4f337f368
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976394"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046120"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Öğretici: Azure dijital TWINS API 'Leri ile kodlama
 
@@ -25,7 +25,7 @@ Azure dijital TWINS ile çalışan geliştiriciler, Azure dijital TWINS hizmeti 
 > * Kaynakları temizleme
 > * Sonraki adımlar
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici, kurulum ve proje çalışması için komut satırını kullanır. Bu nedenle, alýþtýrmalar üzerinde gezinmek için herhangi bir kod düzenleyicisini kullanabilirsiniz.
 
@@ -181,7 +181,7 @@ Projenizi oluşturduğunuz dizinde, *üzerindeSampleModel.js*adlı yeni bir *. J
 > Bu öğretici için Visual Studio kullanıyorsanız, yeni oluşturulan JSON dosyasını seçmek ve Özellik denetçisindeki *Çıkış Dizinine Kopyala* özelliğini, *daha yeniyse* veya *her zaman*kopyalamak üzere ayarlamak isteyebilirsiniz. Bu, öğreticinin geri kalanı sırasında program 'yu **F5** ile çalıştırdığınızda, Visual Studio 'nun varsayılan yol ile json dosyasını bulmasını sağlayacaktır.
 
 > [!TIP] 
-> DTDL 'nin geçerli olduğundan emin olmak için model belgelerini denetlemek için kullanabileceğiniz dilden bağımsız bir [Dtdl doğrulayıcısı örneği](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) vardır. Bu, [*nasıl yapılır: modellerinizi ayrıştırma ve doğrulama*](how-to-parse-models.md)hakkında daha fazla bilgi edinmek için dtdl ayrıştırıcısı kitaplığı üzerine kurulmuştur.
+> DTDL 'nin geçerli olduğundan emin olmak için model belgelerini denetlemek için kullanabileceğiniz dilden bağımsız bir [Dtdl doğrulayıcısı örneği](/samples/azure-samples/dtdl-validator/dtdl-validator) vardır. Bu, [*nasıl yapılır: modellerinizi ayrıştırma ve doğrulama*](how-to-parse-models.md)hakkında daha fazla bilgi edinmek için dtdl ayrıştırıcısı kitaplığı üzerine kurulmuştur.
 
 Daha sonra, yeni oluşturduğunuz modeli Azure dijital TWINS örneğinize yüklemek için *program.cs* 'e daha fazla kod ekleyin.
 

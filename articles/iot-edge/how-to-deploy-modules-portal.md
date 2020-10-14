@@ -4,17 +4,16 @@ description: Bir IoT Edge modülünü IoT Hub bir dağıtım bildirimiyle yapıl
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/30/2019
+ms.date: 10/13/2020
 ms.topic: conceptual
-ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 67c7c71e1f1f3eb9e76aa4938cb4a0a15ca405c8
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ef3f09648e0d9101d07c6d8941ee7f79ae97b2b8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978807"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048041"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Azure portal Azure IoT Edge modüllerini dağıtma
 
@@ -22,7 +21,7 @@ ms.locfileid: "91978807"
 
 Bu makalede, Azure portal dağıtım bildirimi oluşturma ve dağıtımı bir IoT Edge cihazına gönderme işlemlerinde nasıl kılavuzluk gösterilmektedir. Paylaşılan etiketlerine göre birden çok cihazı hedefleyen bir dağıtım oluşturma hakkında bilgi için, bkz. [IoT Edge modüllerini ölçeklendirerek dağıtma ve izleme](how-to-deploy-at-scale.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliğinizdeki bir [IoT Hub 'ı](../iot-hub/iot-hub-create-through-portal.md) .
 * IoT Edge bir cihaz.
@@ -35,6 +34,11 @@ Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasınd
 
 Azure portal, JSON belgesini el ile oluşturmak yerine dağıtım bildirimini oluşturma konusunda size yol gösteren bir sihirbaza sahiptir. Üç adım vardır: **modüller ekleme**, **rotalar belirtme**ve **dağıtımı İnceleme**.
 
+>[!NOTE]
+>Bu makaledeki adımlarda IoT Edge aracısının ve hub 'ın en son şema sürümü yansıtılacaktır. Şema sürümü 1,1, IoT Edge Version 1.0.10 ile birlikte yayımlanmıştır ve modül başlangıç sırası ve yol önceliği belirleme özelliklerini sunar.
+>
+>Sürüm 1.0.9 veya daha önceki bir sürümü çalıştıran bir cihaza dağıtıyorsanız, sihirbazın **modüller** adımında, şema sürümü 1,0 ' i kullanmak Için **çalışma zamanı ayarlarını** düzenleyin.
+
 ### <a name="select-device-and-add-modules"></a>Cihaz seçin ve modül ekleyin
 
 1. [Azure Portal](https://portal.azure.com) oturum açın ve IoT Hub 'ınıza gidin.
@@ -43,21 +47,30 @@ Azure portal, JSON belgesini el ile oluşturmak yerine dağıtım bildirimini ol
 1. Üstteki çubukta **modülleri ayarla**' yı seçin.
 1. Sayfanın **Container Registry ayarları** bölümünde, modül görüntülerinizi içeren özel kapsayıcı kayıt defterlerine erişim için kimlik bilgilerini sağlayın.
 1. Sayfanın **IoT Edge modüller** bölümünde **Ekle**' yi seçin.
-1. Açılan menüden modül türlerine bakın:
+1. Açılan menüden üç tür modülden birini seçin:
 
    * **IoT Edge modülü** -modül adı ve KAPSAYıCı görüntüsü URI 'sini sağlarsınız. Örneğin, örnek SimulatedTemperatureSensor modülünün görüntü URI 'SI `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0` . Modül görüntüsü bir özel kapsayıcı kayıt defterinde depolanıyorsa, görüntüye erişmek için bu sayfadaki kimlik bilgilerini ekleyin.
    * **Market modülü** -Azure Marketi 'nde barındırılan modüller. Bazı Market modülleri ek yapılandırma gerektirir, bu nedenle [Azure marketi IoT Edge modüller](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) listesindeki modül ayrıntılarını gözden geçirin.
    * **Azure Stream Analytics modülü** -bir Azure Stream Analytics iş yüküyle oluşturulan modüller.
 
-1. Modül eklendikten sonra, modül ayarlarını açmak için listeden modül adını seçin. Gerekirse isteğe bağlı alanları doldurun. Kapsayıcı oluşturma seçenekleri hakkında daha fazla bilgi için, ilkeyi yeniden başlatın ve istenen durum bkz. [Edgeagent istenen özellikler](module-edgeagent-edgehub.md#edgeagent-desired-properties). Modül ikizi hakkında daha fazla bilgi için bkz. [istenen özellikleri tanımlama veya güncelleştirme](module-composition.md#define-or-update-desired-properties).
-1. Gerekirse, dağıtımınıza ek modüller eklemek için 5 ' ten 8 ' e kadar olan adımları yineleyin.
+1. Modül eklendikten sonra, modül ayarlarını açmak için listeden modül adını seçin. Gerekirse isteğe bağlı alanları doldurun.
+
+   Kullanılabilir modül ayarları hakkında daha fazla bilgi için bkz. [Modül yapılandırması ve yönetimi](module-composition.md#module-configuration-and-management).
+
+   Modül ikizi hakkında daha fazla bilgi için bkz. [istenen özellikleri tanımlama veya güncelleştirme](module-composition.md#define-or-update-desired-properties).
+
+1. Dağıtımınıza ek modüller eklemek için 6 ' dan 8 ' e kadar olan adımları yineleyin.
 1. **İleri ' yi seçin:** rotalar bölümüne devam etmek için yollar.
 
 ### <a name="specify-routes"></a>Rotaları belirtin
 
-**Rotalar** sekmesinde, iletilerin modüller arasında nasıl geçtiğini tanımlar ve IoT Hub. İletiler ad/değer çiftleri kullanılarak oluşturulur. Varsayılan olarak bir rota **route** olarak adlandırılır ve **/ileti/olarak tanımlanır \* $upstream**. Bu, herhangi bir modülle giden tüm iletilerin IoT Hub 'ınıza gönderildiği anlamına gelir.  
+**Rotalar** sekmesinde, iletilerin modüller arasında nasıl geçtiğini tanımlar ve IoT Hub. İletiler ad/değer çiftleri kullanılarak oluşturulur. Varsayılan olarak, yeni bir cihaz için ilk dağıtım, **route** adlı bir yol içerir ve **/ileti/olarak tanımlanır \* $upstream**, bu da herhangi bir modülle giden tüm iletilerin IoT Hub 'ınıza gönderilmesi anlamına gelir.  
 
-Bilgileri [bildirme rotalarındaki](module-composition.md#declare-routes)bilgilerle ekleyin veya güncelleştirin, ardından İleri ' yi seçin. sihirbazın sonraki adımına devam etmek için ileri ' ye tıklayın ve **Oluştur** ' a tıklayın.
+**Öncelik** ve **yaşam süresi** parametreleri, bir yol tanımına dahil ettiğiniz isteğe bağlı parametrelerdir. Priority parametresi, ilk olarak hangi yolların işlenmesi gerektiğini veya hangi yolların son işlenmesi gerektiğini seçmenizi sağlar. Öncelik, 0-9 sayısı ayarlanarak belirlenir, burada 0 üst önceliktir. Yaşam süresi parametresi, bu rotadaki iletilerin işlenmeyi veya kuyruktan kaldırılıncaya kadar ne kadar süreyle tutulması gerektiğini bildirmenize olanak tanır.
+
+Yolların nasıl oluşturulacağı hakkında daha fazla bilgi için bkz. [yolları bildirme](module-composition.md#declare-routes).
+
+Yollar ayarlandıktan sonra, Ileri ' yi seçin ve sihirbazın sonraki adımına geçmek için **Oluştur + oluştur** ' u seçin.
 
 ### <a name="review-deployment"></a>Dağıtımı gözden geçir
 

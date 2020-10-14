@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/27/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 15609435c7bc099d0ffe40759ea0f323b58a4545
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ee7c1c57c271a6173f4ee978a10ff37526c04c33
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89088422"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047862"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak VM 'Lerin yükünü dengelemek için iç yük dengeleyici oluşturma
 
@@ -911,7 +911,7 @@ New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig -AvailabilitySetNam
 
 Özel Betik uzantısını yüklemek için [set-Azvmexgerkomutunu](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension?view=latest) kullanın. 
 
-Uzantı, IIS Web sunucusunu yüklemek için PowerShell Add-WindowsFeature Web-Server ' ı çalıştırır ve ardından Default.htm sayfasını, sanal makinenin ana bilgisayar adını gösterecek şekilde güncelleştirir:
+Uzantı, IIS Web sunucusunu yüklemek için PowerShell Add-WindowsFeature Web-Server çalıştırır ve ardından VM 'nin ana bilgisayar adını göstermek için Default.htm sayfasını güncelleştirir:
 
 ### <a name="vm1"></a>VM1 
 
@@ -1024,7 +1024,7 @@ New-AzVMConfig -VMName $vm -VMSize $siz | Set-AzVMOperatingSystem -Windows -Comp
 New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig
 ```
 
-### <a name="test"></a>Test
+### <a name="test"></a>Test etme
 
 1. Azure portalında [oturum açın](https://portal.azure.com).
 
@@ -1066,8 +1066,8 @@ Bu hızlı başlangıçta
 * Yük dengeleyici trafik kuralı ve sistem durumu araştırması yapılandırıldı.
 * Yük dengeleyici test edildi.
 
-Azure Load Balancer hakkında daha fazla bilgi edinmek için [Azure Load Balancer nedir?](load-balancer-overview.md) ve [sık sorulan sorular Load Balancer](load-balancer-faqs.md).
-
-* [Load Balancer ve kullanılabilirlik bölgeleri](load-balancer-standard-availability-zones.md)hakkında daha fazla bilgi edinin.
+Azure Load Balancer hakkında daha fazla bilgi edinmek için devam edin..
+> [!div class="nextstepaction"]
+> [Azure Load Balancer nedir?](load-balancer-overview.md)
 
 

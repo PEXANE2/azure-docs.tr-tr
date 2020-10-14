@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: kgremban
-ms.openlocfilehash: e5dc5601be5bd6d8003b196b5e7768e66bc48478
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3a02459f5b92aa7d708c29c737ed9428ed14215a
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979901"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045695"
 ---
 # <a name="install-or-uninstall-the-azure-iot-edge-runtime"></a>Azure IoT Edge çalışma zamanını yükleme veya kaldırma
 
@@ -24,7 +24,7 @@ IoT Edge bir cihaz kurmak için iki adım vardır. İlk adım, bu makalede ele a
 
 Bu makalede, Azure IoT Edge çalışma zamanını Linux veya Windows cihazlarına yüklemek için gereken adımlar listelenmektedir. Windows cihazlarında, Linux kapsayıcıları veya Windows kapsayıcıları kullanma ek bir seçeneğiniz vardır. Şu anda, üretim senaryolarında Windows 'daki Windows kapsayıcıları önerilir. Windows üzerinde Linux kapsayıcıları, özellikle de Linux cihazlarına dağıtmak üzere bir Windows BILGISAYARı geliştiriyorsanız geliştirme ve test senaryoları için yararlıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Şu anda üretim senaryolarında desteklenen işletim sistemleri hakkında en son bilgiler için, bkz. [Azure IoT Edge desteklenen sistemler](support.md#operating-systems)
 
@@ -267,7 +267,7 @@ Cihazınız yükleme sırasında çevrimdışı kalırsa veya IoT Edge belirli b
 
 4. İsteğe bağlı olarak, Visual C++ yeniden dağıtılabilir için bir yükleyici indirebilirsiniz. Örneğin, PowerShell betiği şu sürümü kullanır: [vc_redist.x64.exe](https://download.microsoft.com/download/0/6/4/064F84EA-D1DB-4EAA-9A5C-CC2F0FF6A638/vc_redist.x64.exe). Yükleyiciyi, IoT Edge dosyaları olarak IoT cihazınızda aynı klasöre kaydedin.
 
-5. Çevrimdışı bileşenlerle yüklemek için, [nokta kaynağı](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts#script-scope-and-dot-sourcing) PowerShell betiğinin yerel kopyasıdır. 
+5. Çevrimdışı bileşenlerle yüklemek için, [nokta kaynağı](/powershell/module/microsoft.powershell.core/about/about_scripts#script-scope-and-dot-sourcing) PowerShell betiğinin yerel kopyasıdır. 
 
 6. Parametresiyle [Deploy-ıotedge](reference-windows-scripts.md#deploy-iotedge) komutunu çalıştırın `-OfflineInstallationPath` . Dosya dizinine mutlak yol girin. Örneğin,
 

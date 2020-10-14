@@ -8,19 +8,19 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 0e80f866aa7affb07b13847b44658e33c7044da6
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d368c938e805164b70c7d3a22f9229b5efd89dde
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976904"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045416"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Hızlı başlangıç: Azure yay bulutuna uygulama oluşturma ve dağıtma
 
 ::: zone pivot="programming-language-csharp"
 Bu hızlı başlangıçta, Azure CLı kullanarak mikro hizmet uygulamalarını derleyin ve Azure Spring Cloud 'a dağıtırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bu serideki önceki hızlı başlangıçlarını doldurun:
 
@@ -185,7 +185,7 @@ Bu belgede, aşağıdaki kullanılarak mikro hizmet uygulamalarının Azure Spri
 
 Azure CLı veya Maven kullanarak dağıtımdan önce [Azure Spring Cloud 'ın bir örneğini](spring-cloud-quickstart-provision-service-instance.md) sağlayan örnekleri tamamlayın ve [yapılandırma sunucusunu ayarlayın](spring-cloud-quickstart-setup-config-server.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [JDK 8 ' i yükler](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)
 * [Azure aboneliğine kaydolma](https://azure.microsoft.com/free/)
@@ -261,7 +261,7 @@ Bir Web tarayıcısı aracılığıyla uygulamaya erişmek için bir yönteme ih
 1. Aşağıdaki komutu çalıştırarak Git deposunu kopyalayın:
 
     ```
-    git clone https://github.com/Azure-Samples/PiggyMetrics
+    git clone https://github.com/Azure-Samples/piggymetrics
     ```
   
 1. Dizini değiştirin ve aşağıdaki komutu çalıştırarak projeyi derleyin:

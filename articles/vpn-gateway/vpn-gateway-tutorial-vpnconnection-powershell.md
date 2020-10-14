@@ -5,15 +5,15 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 09/02/2020
+ms.date: 10/13/2020
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: 9b712c1b2e8ac33ec189542bf6f60929ac59858d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61e03f539f000b55ae00d90afa769ca9c1c30dc1
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89420566"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048296"
 ---
 # <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>Öğretici: PowerShell kullanarak S2S VPN bağlantıları oluşturma ve yönetme
 
@@ -33,7 +33,7 @@ Aşağıdaki diyagramda bu öğreticinin topolojisi gösterilmektedir:
 
 [!INCLUDE [working with cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
 
-## <a name="requirements"></a>Gereksinimler
+## <a name="prerequisites"></a>Önkoşullar
 
 İlk öğreticiyi doldurun: aşağıdaki kaynakları oluşturmak için [Azure PowerShell Ile VPN ağ geçidi oluşturma](vpn-gateway-tutorial-create-gateway-powershell.md) :
 
@@ -242,8 +242,7 @@ Bu öğreticide, S2S VPN bağlantıları oluşturup yönetme konusunda aşağıd
 > * Daha fazla VPN bağlantısı ekleme
 > * Bir VPN bağlantısını silme
 
-S2S, Sanal Ağdan Sanal Ağa ve P2S bağlantıları hakkında bilgi edinmek için sonraki öğreticilere ilerleyin.
+Sonra, P2S bağlantısı ekleyebilirsiniz:
 
 > [!div class="nextstepaction"]
-> * [VNet 'ten VNet 'e bağlantılar oluşturma](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [P2S bağlantıları oluşturma](vpn-gateway-howto-point-to-site-resource-manager-portal.md)

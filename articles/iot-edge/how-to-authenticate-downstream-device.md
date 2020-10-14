@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d2f189adf198a7e04edd3900a1e6da134329857e
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 73584353d0d003588ef7de6131d3c3c4bbfcff59
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932150"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046732"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Azure IoT Hub’da bir aşağı akış cihazının kimliğini doğrulama
 
@@ -29,7 +29,7 @@ Aşağı akış cihazları şu üç yöntemden birini kullanarak IoT Hub kimlik 
 
 Bu makaledeki adımlarda el ile cihaz sağlama gösterilmektedir. Azure IoT Hub cihaz sağlama hizmeti (DPS) ile otomatik olarak aşağı akış cihazları sağlama desteklenmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Bir IoT Edge cihazını, saydam bir ağ geçidi olarak davranacak şekilde yapılandırma](how-to-create-transparent-gateway.md)adımlarını uygulayın.
 
@@ -110,7 +110,7 @@ X. 509.440 otomatik imzalı kimlik doğrulaması için bazen parmak izi kimlik d
 
 4. Hem birincil hem de ikincil cihaz sertifikalarını ve bunların anahtarlarını aşağı akış cihazında herhangi bir konuma kopyalayın. Ayrıca, ağ geçidi cihaz sertifikasını ve aşağı akış cihaz sertifikalarını oluşturan paylaşılan kök CA sertifikasının bir kopyasını da taşıyın.
 
-   IoT Hub bağlanan aşağı akış cihazında bulunan uygulamalarda bu sertifika dosyalarına başvurabileceksiniz. Sertifika dosyalarını taşımak için [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) veya [Güvenli kopya Protokolü](https://www.ssh.com/ssh/scp/) gibi bir işlev gibi bir hizmet kullanabilirsiniz.
+   IoT Hub bağlanan aşağı akış cihazında bulunan uygulamalarda bu sertifika dosyalarına başvurabileceksiniz. Sertifika dosyalarını taşımak için [Azure Key Vault](../key-vault/index.yml) veya [Güvenli kopya Protokolü](https://www.ssh.com/ssh/scp/) gibi bir işlev gibi bir hizmet kullanabilirsiniz.
 
 5. Tercih ettiğiniz dile bağlı olarak, X. 509.440 sertifikalarına IoT uygulamalarında nasıl başvurulabilen örnekleri gözden geçirin:
 
@@ -156,7 +156,7 @@ Bu bölüm, [Azure IoT Hub 'ınızda X. 509.440 güvenliğini ayarlama](../iot-h
 
 5. Cihaz sertifikasını ve anahtarlarını aşağı akış cihazında herhangi bir konuma kopyalayın. Ayrıca, ağ geçidi cihaz sertifikasını ve aşağı akış cihaz sertifikalarını oluşturan paylaşılan kök CA sertifikasının bir kopyasını da taşıyın.
 
-   IoT Hub bağlanan aşağı akış cihazında bulunan uygulamalarda bu dosyalara başvurabileceksiniz. Sertifika dosyalarını taşımak için [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) veya [Güvenli kopya Protokolü](https://www.ssh.com/ssh/scp/) gibi bir işlev gibi bir hizmet kullanabilirsiniz.
+   IoT Hub bağlanan aşağı akış cihazında bulunan uygulamalarda bu dosyalara başvurabileceksiniz. Sertifika dosyalarını taşımak için [Azure Key Vault](../key-vault/index.yml) veya [Güvenli kopya Protokolü](https://www.ssh.com/ssh/scp/) gibi bir işlev gibi bir hizmet kullanabilirsiniz.
 
 6. Tercih ettiğiniz dile bağlı olarak, X. 509.440 sertifikalarına IoT uygulamalarında nasıl başvurulabilen örnekleri gözden geçirin:
 
@@ -201,7 +201,7 @@ Veya
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;x509=true;GatewayHostName=myGatewayDevice
 ```
 
-Üst/alt öğe ilişkisi sayesinde, ağ geçidini doğrudan bağlantı ana bilgisayarı olarak çağırarak bağlantı dizesini basitleştirebilirsiniz. Örneğin:
+Üst/alt öğe ilişkisi sayesinde, ağ geçidini doğrudan bağlantı ana bilgisayarı olarak çağırarak bağlantı dizesini basitleştirebilirsiniz. Örnek:
 
 ```
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz
