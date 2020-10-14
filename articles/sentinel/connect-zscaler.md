@@ -14,18 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: cc784afe5db64ccc4aad13fae7a2fa748e4befa3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef6677b6f1103c26bd719a3585800765a029f7fb
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77588000"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056847"
 ---
 # <a name="connect-zscaler-internet-access-to-azure-sentinel"></a>Zscaler Internet erişimini Azure Sentinel 'e bağlama
-
-> [!IMPORTANT]
-> Azure Sentinel 'deki Zscaler veri Bağlayıcısı Şu anda genel önizlemededir.
-> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bu makalede, Zscaler Internet erişim gerecinizi Azure Sentinel 'e nasıl bağlayabileceğiniz açıklanır. Zscaler veri Bağlayıcısı, Azure Sentinel ile Zscaler Internet erişimi (ZIA) günlüklerinizi kolayca bağlamanıza, panoları görüntülemenize, özel uyarılar oluşturmaya ve araştırmaya olanak tanır. Azure Sentinel 'de Zscaler 'ın kullanılması, kuruluşunuzun Internet kullanımı hakkında daha fazla öngörü sağlar ve güvenlik işlemi yeteneklerini geliştirir. 
 

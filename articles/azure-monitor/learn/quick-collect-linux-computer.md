@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: b856381e8d085c6839effd1de6d9867b214d24ee
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 04d53dc213d5e992dc79e322b071025bdb447b1b
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89020397"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057510"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Hızlı başlangıç: Azure Izleyici ile Karma ortamda bir Linux bilgisayarından veri toplama
 
@@ -62,13 +62,11 @@ Linux için Log Analytics aracısını yüklemeden önce, Log Analytics çalış
 
 2. Log Analytics çalışma alanları listenizde, daha önce oluşturduğunuz çalışma alanını seçin. ( **Defaultlaworkspace**adında bir adlandırılmış olabilir.)
 
-3. **Gelişmiş ayarları**seçin:
-
-    ![Azure portal Log Analytics için Gelişmiş ayarlar menüsü](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png) 
+3. **Aracılar yönetimini**seçin:
  
-4. **Bağlı Kaynaklar**’ı seçin ve ardından **Linux Sunucuları**’nı seçin.
+4. Ardından **Linux sunucuları**' nı seçin.
 
-5. **Çalışma Alanı Kimliği** ve **Birincil Anahtar**’ın sağındaki değer. Her ikisini de kopyalayıp sık kullandığınız bir düzenleyiciye yapıştırın.
+5. **Çalışma alanı kimliği** ve **birincil anahtarın**sağ tarafındaki değer. Her ikisini de kopyalayıp sık kullandığınız bir düzenleyiciye yapıştırın.
 
 ## <a name="install-the-agent-for-linux"></a>Linux için aracıyı yükleme
 

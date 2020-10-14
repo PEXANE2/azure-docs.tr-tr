@@ -12,16 +12,16 @@ ms.date: 12/09/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv, marsma
 ms.custom: aaddev
-ms.openlocfilehash: 23ab8c5092a546a7b66b93900c6c083ac8e84394
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3a631a80e7ac5eed3c3239cb79e35b87c70ab1b0
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88117779"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055469"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Microsoft Identity Platform'un gelişimi
 
-Microsoft kimlik platformu, Azure Active Directory (Azure AD) geliştirici platformunun geliştirilmesiyle ortaya çıkmıştır. Geliştiricilerin kullanıcılara oturum açmasını, Microsoft Graph gibi API 'Leri çağırmak için belirteçleri veya geliştiricilerin derolduğu API 'Leri çağırmasını sağlar. Bir kimlik doğrulama hizmeti, açık kaynak kitaplıkları, uygulama kaydı ve yapılandırma (bir geliştirici portalı ve uygulama API 'SI aracılığıyla), tam geliştirici belgeleri, hızlı başlangıç örnekleri, kod örnekleri, Öğreticiler, nasıl yapılır kılavuzlarından ve diğer geliştirici içeriğiyle oluşur. Microsoft Identity Platform OAuth 2.0 ve OpenID Connect gibi sektör standardı protokolleri destekler.
+[Microsoft Identity platformu](../develop/index.yml) Azure Active Directory (Azure AD) geliştirici platformunun bir evmidir. Geliştiricilerin kullanıcılara oturum açmasını, Microsoft Graph gibi API 'Leri çağırmak için belirteçleri veya geliştiricilerin derolduğu API 'Leri çağırmasını sağlar. Bir kimlik doğrulama hizmeti, açık kaynak kitaplıkları, uygulama kaydı ve yapılandırma (bir geliştirici portalı ve uygulama API 'SI aracılığıyla), tam geliştirici belgeleri, hızlı başlangıç örnekleri, kod örnekleri, Öğreticiler, nasıl yapılır kılavuzlarından ve diğer geliştirici içeriğiyle oluşur. Microsoft Identity Platform OAuth 2.0 ve OpenID Connect gibi sektör standardı protokolleri destekler.
 
 Birçok geliştirici daha önce Azure AD v 1.0 platformundan, Azure AD kimlik doğrulama kitaplığı (ADAL), uygulama kaydı ve yapılandırma için Azure portal ve programlı uygulama yapılandırması için Microsoft Graph API 'sini kullanarak iş ve okul hesaplarının (Azure AD tarafından sağlanan) kimlik doğrulaması yapmasını sağlar.
 
@@ -49,7 +49,7 @@ Azure portal **[uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=20
 
 Azure AD B2C tümleştirme için (sosyal veya yerel kimliklerin kimliğini doğrularken), uygulamanızı bir Azure AD B2C kiracısına kaydetmeniz gerekir. Bu deneyim Ayrıca Azure portal bir parçasıdır.
 
-Herhangi bir Microsoft kimliği için kimlik doğrulaması için Microsoft Identity platformu ile tümleştirilmiş uygulamalarınızı programlı bir şekilde yapılandırmak için [uygulama API](/graph/api/resources/application?view=graph-rest-1.0) 'sini kullanın.
+Herhangi bir Microsoft kimliği için kimlik doğrulaması için Microsoft Identity platformu ile tümleştirilmiş uygulamalarınızı programlı bir şekilde yapılandırmak için [uygulama API](/graph/api/resources/application) 'sini kullanın.
 
 ### <a name="msal-libraries"></a>MSAL kitaplıkları
 
@@ -57,15 +57,10 @@ MSAL kitaplığını kullanarak tüm Microsoft kimliklerinin kimliğini doğrula
 
 Uygulamanızı Azure AD B2C ile bütünleştirmek için MSAL kitaplıklarını da kullanabilirsiniz.
 
-Web uygulamaları ve Web API 'Leri oluşturmaya yönelik sunucu tarafı kitaplıkları genel kullanıma sunulmuştur: [ASP.net](/aspnet/overview) ve [ASP.NET Core](/aspnet/core/?view=aspnetcore-2.2)
-
 ### <a name="microsoft-identity-platform-endpoint"></a>Microsoft Identity platform uç noktası
 
-Microsoft Identity platform (v 2.0) uç noktası artık OıDC sertifikalı. Microsoft kimlik doğrulama kitaplıkları (MSAL) veya standartlarla uyumlu başka bir kitaplık ile birlikte kullanılır. Endüstri standartlarına uygun olarak insanlarca okunabilir kapsamlar uygular.
+Microsoft Identity platform (v 2.0) uç noktası OıDC sertifikalı. Microsoft kimlik doğrulama kitaplıkları (MSAL) veya standartlarla uyumlu başka bir kitaplık ile birlikte kullanılır. Endüstri standartlarına uygun olarak insanlarca okunabilir kapsamlar uygular.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-v1.0 ve v2.0 hakkında daha fazla bilgi edinin.
-
-* [Microsoft Identity platform (v 2.0)](../develop/v2-overview.md) genel bakış
-* [Geliştiriciler için Azure Active Directory (v 1.0)](v1-overview.md) genel bakış
+[Microsoft Identity platform belgelerinde](../develop/index.yml)daha fazla bilgi edinin.

@@ -1,15 +1,15 @@
 ---
 title: 'Hızlı başlangıç: ilk Azure CLı sorgunuz'
 description: Bu hızlı başlangıçta, Azure CLı için kaynak grafik uzantısını etkinleştirmek ve ilk sorgunuzu çalıştırmak için adımları izleyin.
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2abec0e4143dfa4a2d5b7146b9c09a2b33777a9e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 216972fb3c64efa22dc4d344e5021a3c2da74266
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667903"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056779"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak ilk kaynak grafik sorgunuzu çalıştırma
 
@@ -17,7 +17,7 @@ Azure Kaynak Grafı’nı kullanmada ilk adım, [Azure CLI](/cli/azure/) uzantı
 
 Bu işlemin sonunda, uzantıyı seçtiğiniz Azure CLI yüklemesine eklemiş ve ilk Kaynak Grafı sorgunuzu çalıştırmış olacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 

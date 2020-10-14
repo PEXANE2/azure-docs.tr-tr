@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 7bdb2c6ba6717624b19184ca3bcb47ee9b3da367
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 268455e582e54dfa8eb73fe81eaad19f453e303b
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856118"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057901"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure için SQL Data Sync nedir?
 
@@ -83,7 +83,7 @@ Veri eşitleme, aşağıdaki senaryolar için tercih edilen çözüm değildir:
 | **Avantajlar** | -Etkin-etkin destek<br/>-Şirket içi ve Azure SQL veritabanı arasında çift yönlü | -Düşük gecikme süresi<br/>-İşlemsel tutarlılık<br/>-Geçişten sonra var olan topolojiyi yeniden kullan <br/>-Azure SQL yönetilen örnek desteği |
 | **Dezavantajlar** | -5 dk veya daha fazla gecikme<br/>-İşlem tutarlılığı yok<br/>-Daha yüksek performans etkisi | -Azure SQL veritabanından yayımlanamıyor <br/>-Yüksek bakım maliyeti |
 
-## <a name="get-started"></a>başlarken 
+## <a name="get-started"></a>Kullanmaya başlayın 
 
 ### <a name="set-up-data-sync-in-the-azure-portal"></a>Azure portal veri eşitlemesini ayarlama
 
@@ -136,7 +136,7 @@ Eşitleme grubu oluşturma, güncelleştirme ve silme sırasında sağlama ve sa
 - Aşağıdaki veri türlerini birincil anahtar olarak kullanırken dikkatli olun, çünkü desteklenen duyarlık yalnızca ikinci-saat, DateTime, datetime2, DateTimeOffset olur.
 - Nesnelerin (veritabanları, tablolar ve sütunlar) adları, yazdırılabilir karakterler (.), sol köşeli ayraç ([) veya sağ köşeli ayraç (]) içeremez.
 - Azure Active Directory kimlik doğrulaması desteklenmiyor.
-- Aynı ada ancak farklı şemaya (örneğin, dbo. Customers ve Sales. Customers) sahip tablolar desteklenmez.
+- Aynı ada sahip ancak farklı bir şemaya sahip tablolar varsa (örneğin, dbo. Customers ve Sales. Customers) yalnızca bir tablo eşitlemeye eklenebilir.
 - User-Defined veri türlerine sahip sütunlar desteklenmez
 - Sunucuları farklı abonelikler arasında taşımak desteklenmez. 
 
@@ -149,7 +149,7 @@ Eşitleme grubu oluşturma, güncelleştirme ve silme sırasında sağlama ve sa
 
 #### <a name="unsupported-column-types"></a>Desteklenmeyen sütun türleri
 
-Veri eşitleme, salt okuma veya sistem tarafından oluşturulmuş sütunları eşitleyemiyor. Örneğin:
+Veri eşitleme, salt okuma veya sistem tarafından oluşturulmuş sütunları eşitleyemiyor. Örnek:
 
 - Hesaplanan sütunlar.
 - Zamana bağlı tablolar için sistem tarafından oluşturulan sütunlar.

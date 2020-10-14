@@ -4,12 +4,12 @@ description: Azure VMware çözümüyle ilgili bazı yaygın soruların yanıtla
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: bd75e3d708ddfb9d5545111e7bc4935c8dd50141
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: bdfe3956d8c715e391270aab6b3c589430c91593
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045236"
+ms.locfileid: "92058038"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware çözümü hakkında sık sorulan sorular
 
@@ -76,6 +76,11 @@ Hayır, [VMware tarafından sunulan yönergeleri](https://docs.vmware.com/en/VMw
 #### <a name="is-vmware-hcx-supported-on-vpns"></a>Şu VPN 'lerde VMware HCX destekleniyor mu?
 Hayır.
 
+#### <a name="can-azure-bastion-be-used-for-connecting-to-avs-vms"></a>Azure savunma, AVS VM 'lerine bağlanmak için kullanılabilir mi?
+Azure 'da, Azure VMware çözümünün Internet 'e sunulmasını engellemek için bağlantı kutusu 'na bağlanmanız önerilir. Azure IaaS nesneleri olmadığından Azure VMware Çözüm VM 'lerine bağlanmak için Azure savunma 'yi kullanamazsınız.
+
+#### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>Azure VMware çözümüne bağlanmak için mevcut bir ExpressRoute ağ geçidi kullanılabilir mi?
+Evet, sanal ağ başına dört ExpressRoute bağlantı hattı sınırını aşmadığı sürece Azure VMware çözümüne bağlanmak için mevcut bir ExpressRoute ağ geçidini kullanabilirsiniz.  Bununla birlikte, ExpressRoute aracılığıyla şirket içi Azure VMware çözümüne erişmek için ExpressRoute Global Reach sahip olmanız gerekir. Bu, ExpressRoute ağ geçidi, bağlı olan devreler arasında geçişli yönlendirme sağlamamalıdır.
 
 ## <a name="compute-network-storage-and-backup"></a>İşlem, ağ, depolama ve yedekleme
 

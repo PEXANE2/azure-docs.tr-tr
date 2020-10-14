@@ -1,14 +1,14 @@
 ---
 title: 'Hızlı başlangıç: ilk portal sorgunuz'
 description: Bu hızlı başlangıçta, Azure Kaynak Grafiği gezginini kullanarak Azure portal ilk sorgunuzu çalıştırmak için adımları izleyin.
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 4d68366005ad6379669d29fb8264f78d1b8f4972
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b5f5203b3842ebc3edbd97bca1ca3c101f47e397
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88056389"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057391"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Hızlı başlangıç: Azure Kaynak Grafiği gezginini kullanarak ilk kaynak Graph sorgunuzu çalıştırma
 
@@ -16,7 +16,7 @@ Azure Kaynak Graph 'ın gücü Azure Kaynak grafik Gezgini aracılığıyla Azur
 
 Bu hızlı başlangıçta, ilk kaynak Graph sorgunuzu çalıştırmak ve sonuçları bir panoya sabitlediğiniz Azure portal ve kaynak Graph Explorer 'ı kullandınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -51,7 +51,7 @@ Kaynak türünü seçme `where type =="<resource type>"` sorgu kutusuna yer koya
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>Kaynak grafik sorgusundan grafik oluşturma
 
-Yukarıdaki son sorguyu çalıştırdıktan sonra, **grafikler** sekmesini seçerseniz "sonuç kümesi bir pasta grafik görselleştirmesi ile uyumlu değildir." iletisini alırsınız. Sonuçları listelemek için gereken sorgular bir grafiğe yapılamaz, ancak kaynak sayısı sağlayan sorgular olabilir. [Örnek sorgu-sayı sanal makinelerini işletim sistemi türüne göre](./samples/starter.md#count-os)kullanarak, kaynak Graph sorgusundan bir görselleştirme oluşturalım.
+Önceki sorguyu çalıştırdıktan sonra, **grafikler** sekmesini seçerseniz "sonuç kümesi bir pasta grafik görselleştirmesi ile uyumlu değildir." iletisini alırsınız. Sonuçları listelemek için gereken sorgular bir grafiğe yapılamaz, ancak kaynak sayısı sağlayan sorgular olabilir. [Örnek sorgu-sayı sanal makinelerini işletim sistemi türüne göre](./samples/starter.md#count-os)kullanarak, kaynak Graph sorgusundan bir görselleştirme oluşturalım.
 
 1. Pencerenin **sorgu 1** bölümünde aşağıdaki sorguyu girin ve **Sorguyu Çalıştır**' ı seçin.
 
@@ -67,7 +67,7 @@ Yukarıdaki son sorguyu çalıştırdıktan sonra, **grafikler** sekmesini seçe
 
 ## <a name="pin-the-query-visualization-to-a-dashboard"></a>Sorgu görselleştirmesini panoya sabitleme
 
-Görselleştirilebilen bir sorgunun sonuçları varsa, bu veri görselleştirmesi daha sonra panolarınızdan birine sabitlenebilir. Yukarıdaki sorguyu çalıştırdıktan sonra aşağıdaki adımları izleyin:
+Görselleştirilebilen bir sorgunun sonuçları varsa, bu veri görselleştirmesi daha sonra panolarınızdan birine sabitlenebilir. Önceki sorguyu çalıştırdıktan sonra aşağıdaki adımları izleyin:
 
 1. **Kaydet** ' i seçin ve "Işletim sistemi türüne göre VM 'ler" adını sağlayın. Ardından sağ bölmenin alt kısmındaki **Kaydet** ' i seçin.
 

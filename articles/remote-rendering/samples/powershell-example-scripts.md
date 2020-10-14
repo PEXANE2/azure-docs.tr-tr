@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fbac172952c9feea92341dbc028567235b9250bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c17750fbe016e8bfa86569f34f9af26b1c6de3bd
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89075282"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055860"
 ---
 # <a name="example-powershell-scripts"></a>Örnek PowerShell betikleri
 
@@ -23,9 +23,9 @@ Azure uzaktan Işleme aşağıdaki iki REST API 'yi sağlar:
 [ARR örnekleri deposu](https://github.com/Azure/azure-remote-rendering) , hizmetin REST API 'leriyle etkileşim kurmak için *Scripts* klasöründeki örnek betikleri içerir. Bu makalede kullanımları açıklanmaktadır.
 
 > [!CAUTION]
-REST API işlevlerinin çok sık çağrılması sunucunun başarısız olmasına neden olur ve bu da hata döndürür. Bu örnekte http hata kodu kimliği 429 ' dir ("çok fazla istek"). Thumb kuralı olarak, **sonraki çağrılar arasında 5-10 saniyelik**bir gecikme olmalıdır.
+> REST API işlevlerinin çok sık çağrılması sunucunun başarısız olmasına neden olur ve bu da hata döndürür. Bu örnekte http hata kodu kimliği 429 ' dir ("çok fazla istek"). Thumb kuralı olarak, **sonraki çağrılar arasında 5-10 saniyelik**bir gecikme olmalıdır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Örnek betikleri yürütmek için [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)işlevsel kurulumuna ihtiyacınız vardır.
 

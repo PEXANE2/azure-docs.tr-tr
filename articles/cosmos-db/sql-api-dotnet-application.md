@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 6772150338dd0d172f2f100c2aa8cae7175b18d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd659ebd74b67a036c189cae763205e6b0371f7c
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051312"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058174"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Öğretici: .NET SDK kullanarak Azure Cosmos DB ile ASP.NET Core MVC web uygulaması geliştirme
 
@@ -43,7 +43,7 @@ Bu öğreticinin içindekiler:
 > [!TIP]
 > Bu öğreticide, ASP.NET Core MVC ve Azure App Service kullanarak önceki deneyiminiz olduğunu varsaymaktadır. ASP.NET Core veya [Önkoşul araçları](#prerequisites)' nı yeni kullanıyorsanız, [GitHub][GitHub]'dan tüm örnek projeyi indirmeniz, gerekli NuGet paketlerini eklemeniz ve çalıştırmanız önerilir. Projeyi oluşturduktan sonra, proje bağlamındaki kodla ilgili bilgi edinmek için bu makaleyi gözden geçirebilirsiniz.
 
-## <a name="prerequisites"></a><a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a><a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki yönergeleri izleyerek önce aşağıdaki kaynaklara sahip olduğunuzdan emin olun:
 
@@ -214,13 +214,13 @@ Bu adımları tamamladıktan sonra, Visual Studio 'daki tüm *cshtml* belgelerin
 
 ### <a name="declare-and-initialize-services"></a><a name="initialize-services"></a>Hizmetleri bildirme ve başlatma
 
-İlk olarak, Azure Cosmos DB bağlanma ve kullanma mantığını içeren bir sınıf ekleyeceğiz. Bu öğreticide, bu mantığı adlı bir sınıfa `CosmosDBService` ve adlı bir arabirime kapsülliyoruz `ICosmosDBService` . Bu hizmet CRUD işlemlerini yapar. Ayrıca, tamamlanmamış öğeleri Listeleme, öğeleri oluşturma, düzenlemesi ve silme gibi akış işlemlerini de okur.
+İlk olarak, Azure Cosmos DB bağlanma ve kullanma mantığını içeren bir sınıf ekleyeceğiz. Bu öğreticide, bu mantığı adlı bir sınıfa `CosmosDbService` ve adlı bir arabirime kapsülliyoruz `ICosmosDbService` . Bu hizmet CRUD işlemlerini yapar. Ayrıca, tamamlanmamış öğeleri Listeleme, öğeleri oluşturma, düzenlemesi ve silme gibi akış işlemlerini de okur.
 
 1. **Çözüm Gezgini**, projenize sağ tıklayın ve **Add**  >  **Yeni klasör**Ekle ' yi seçin. Klasör *hizmetlerini*adlandırın.
 
 1. **Hizmetler** klasörüne sağ tıklayın, sınıf **Ekle**' yi seçin  >  **Class**. Yeni sınıfı *Cosmosdbservice* olarak adlandırın ve **Ekle**' yi seçin.
 
-1. *CosmosDBService.cs* içeriğini aşağıdaki kodla değiştirin:
+1. *CosmosDbService.cs* içeriğini aşağıdaki kodla değiştirin:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
 

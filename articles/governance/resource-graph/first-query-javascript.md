@@ -1,15 +1,15 @@
 ---
 title: 'Hızlı başlangıç: ilk JavaScript sorgunuz'
 description: Bu hızlı başlangıçta, JavaScript için kaynak grafik kitaplığını etkinleştirmek ve ilk sorgunuzu çalıştırmak için adımları izleyin.
-ms.date: 06/23/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: cdc0589829f250851212ad990dde99eb6dcc958f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 194097594340e2f34433c07185c6132f8a13c845
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91251975"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057425"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-javascript"></a>Hızlı başlangıç: JavaScript kullanarak ilk kaynak grafik sorgunuzu çalıştırma
 
@@ -17,17 +17,17 @@ Bu hızlı başlangıç, JavaScript yüklemenize kitaplıkları ekleme sürecind
 
 Bu işlemin sonunda, JavaScript yüklemenize kitaplıkları eklemiş ve ilk kaynak Graf sorgunuzu çalıştıracaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - **Azure aboneliği**: bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 - **Node.js**: [Node.js](https://nodejs.org/) sürüm 12 veya üzeri gereklidir.
 
-## <a name="application-setup"></a>Uygulama kurulumu
+## <a name="application-initialization"></a>Uygulama başlatma
 
-JavaScript 'i Azure Kaynak Grafiği 'ni sorgulamak üzere etkinleştirmek için, ortamın ayarlanması gerekir. Bu kurulum, [Windows 10 üzerinde Bash](/windows/wsl/install-win10)dahil olmak üzere JavaScript 'in kullanılabileceği her yerde çalışmaktadır.
+JavaScript 'i Azure Kaynak Grafiği 'ni sorgulamak üzere etkinleştirmek için, ortamın yapılandırılması gerekir. Bu kurulum, [Windows 10 üzerinde Bash](/windows/wsl/install-win10)dahil olmak üzere JavaScript 'in kullanılabileceği her yerde çalışmaktadır.
 
-1. Aşağıdaki komutu çalıştırarak yeni bir Node.js projesi ayarlayın.
+1. Aşağıdaki komutu çalıştırarak yeni bir Node.js projesi başlatın.
 
    ```bash
    npm init -y
