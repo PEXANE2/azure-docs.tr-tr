@@ -95,8 +95,6 @@
       href: howto-use-iot-explorer.md
     - name: IoT Tak Çalıştır köprüsünü yükleme ve kullanma
       href: howto-use-iot-pnp-bridge.md
-    - name: Azure IoT CLI uzantısını yükleme ve kullanma
-      href: howto-use-iot-pnp-cli.md
     - name: DTDL yazma araçlarını yükleme ve kullanma
       href: howto-use-dtdl-authoring-tools.md
     - name: Ekli C kullanma
