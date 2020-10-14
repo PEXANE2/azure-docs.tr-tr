@@ -1,14 +1,14 @@
 ---
 title: Yönetim gruplarınız ile çalışma-Azure Idare
 description: Yönetim grubu hiyerarşinizi görüntülemeyi, bakımını yapmayı, güncelleştirmeyi ve silmeyi öğrenin.
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: c10333e5be746aa0ca696d235f2d5fed75060e9d
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 4ce265084662fb7a83f902e046d6e079abff9a48
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951953"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058106"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Kaynakları yönetim gruplarıyla yönetme
 
@@ -119,7 +119,7 @@ az account management-group delete --name 'Contoso'
 
 1. **Tüm hizmetler**  >  **Yönetim gruplarını**seçin.
 
-1. Yönetim grubu hiyerarşisi sayfası yüklenir. Bu sayfa, erişiminiz olan tüm yönetim gruplarını ve abonelikleri keşfedebileceğiniz yerdir. Grup adı seçildiğinde hiyerarşide bir düzey yer alır. Gezinti, dosya Gezgini ile aynı şekilde çalışmaktadır.
+1. Yönetim grubu hiyerarşisi sayfası yüklenir. Bu sayfa, erişiminiz olan tüm yönetim gruplarını ve abonelikleri keşfedebileceğiniz yerdir. Grup adını seçtiğinizde hiyerarşide daha düşük bir düzeye gidersiniz. Gezinti, dosya Gezgini ile aynı şekilde çalışmaktadır.
 
 1. Yönetim grubunun ayrıntılarını görmek için yönetim grubunun başlığının yanındaki **(Ayrıntılar)** bağlantısını seçin. Bu bağlantı kullanılamıyorsa, bu yönetim grubunu görüntüleme izniniz yok.
 
@@ -211,7 +211,7 @@ Taşıma eylemini gerçekleştiriyorsanız şunlar gerekir:
 
 **Özel durum**: hedef veya var olan üst yönetim grubu kök yönetim grubinise, izin gereksinimleri geçerli değildir. Kök yönetim grubu tüm yeni yönetim grupları ve abonelikler için varsayılan giriş noktası olduğundan, bir öğeyi taşımak için üzerinde izinleriniz olması gerekmez.
 
-Abonelikte sahip rolü geçerli yönetim grubundan devralınmışsa, taşıma hedefleriniz sınırlıdır. Aboneliği yalnızca sahip rolüne sahip olduğunuz başka bir yönetim grubuna taşıyabilirsiniz. Aboneliğin sahipliğini kaybedeceinizden katılımcı olduğunuz bir yönetim grubuna taşıyamazsınız. Abonelik (yönetim grubundan devralınmadı) için sahip rolüne doğrudan atandıysanız, bunu katılımcı olduğunuz herhangi bir yönetim grubuna taşıyabilirsiniz.
+Abonelikte sahip rolü geçerli yönetim grubundan devralınmışsa, taşıma hedefleriniz sınırlıdır. Aboneliği yalnızca sahip rolüne sahip olduğunuz başka bir yönetim grubuna taşıyabilirsiniz. Aboneliğin sahipliğini kaybedeceinizden, aboneliği yalnızca katılımcısı olduğunuz bir yönetim grubuna taşıyamazsınız. Aboneliğin sahip rolüne doğrudan atandıysanız, bunu katılımcı olduğunuz herhangi bir yönetim grubuna taşıyabilirsiniz.
 
 Azure portal hangi izinlere sahip olduğunu görmek için, yönetim grubunu seçin ve ardından **IAM**öğesini seçin. Azure rolleri hakkında daha fazla bilgi edinmek için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md).
 

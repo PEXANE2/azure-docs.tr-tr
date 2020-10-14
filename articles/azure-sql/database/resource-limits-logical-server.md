@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 09/15/2020
-ms.openlocfilehash: 6589211839a5c1667a6b5cef22220fd917f7e4af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e70897825dfebe03e920ff5948ad597b57bdd7d7
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618971"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058259"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics sunucuları için kaynak sınırları
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -59,7 +59,7 @@ Veritabanı işlem CPU kullanımı yüksek hale geldiğinde sorgu gecikmesi arta
 Yüksek işlem kullanımı ile karşılaşıldığında, risk azaltma seçenekleri şunlardır:
 
 - Veritabanını daha fazla işlem kaynağı sağlamak için veritabanının veya elastik havuzun işlem boyutunu artırma. Bkz. [tek veritabanı kaynaklarını ölçeklendirme](single-database-scale.md) ve [elastik havuz kaynaklarını ölçeklendirme](elastic-pool-scale.md).
-- Her bir sorgunun CPU kaynak kullanımını azaltmak için sorguları en iyi duruma getirme. Daha fazla bilgi için bkz. [sorgu ayarlama/Ipuçcu](performance-guidance.md#query-tuning-and-hinting).
+- Her bir sorgunun CPU kaynak kullanımını azaltmak için sorguları en iyi duruma getirme. Daha fazla bilgi için bkz. [Sorgu Ayarlama/İpucu Sağlama](performance-guidance.md#query-tuning-and-hinting).
 
 ### <a name="storage"></a>Depolama
 
@@ -78,7 +78,7 @@ En fazla oturum ve çalışan sayısı, hizmet katmanı ve işlem boyutu (DTU/eD
 Yüksek oturum veya çalışan kullanımı ile karşılaşıldığında, risk azaltma seçenekleri şunlardır:
 
 - Veritabanı veya elastik havuzun hizmet katmanını veya işlem boyutunu artırma. Bkz. [tek veritabanı kaynaklarını ölçeklendirme](single-database-scale.md) ve [elastik havuz kaynaklarını ölçeklendirme](elastic-pool-scale.md).
-- Artan çalışan kullanımının nedeni, işlem kaynakları için çekişme nedeniyle, her bir sorgunun kaynak kullanımını azaltmak için sorguları en iyi duruma getirme. Daha fazla bilgi için bkz. [sorgu ayarlama/Ipuçcu](performance-guidance.md#query-tuning-and-hinting).
+- Artan çalışan kullanımının nedeni, işlem kaynakları için çekişme nedeniyle, her bir sorgunun kaynak kullanımını azaltmak için sorguları en iyi duruma getirme. Daha fazla bilgi için bkz. [Sorgu Ayarlama/İpucu Sağlama](performance-guidance.md#query-tuning-and-hinting).
 - [MAXDOP](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines) (en fazla paralellik derecesi) ayarı azaltıyor.
 - Yineleme sayısını ve sorgu engelleme süresini azaltmak için sorgu iş yükünü iyileştirme.
 
@@ -137,11 +137,11 @@ Tek veritabanları için, iş yükü grubu sınırları veritabanına göre tüm
 
 [Sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) görünümü tarafından döndürülen IOPS ve aktarım hızı/en yüksek değerleri, garanti olarak değil, limit/Caps olarak davranır. Ayrıca, kaynak İdaresi belirli bir depolama gecikmesini garanti etmez. Belirli bir kullanıcı iş yükü için en iyi ulaşılabilir gecikme süresi, ıOPS ve aktarım hızı yalnızca GÇ kaynak idare sınırlarına, ayrıca kullanılan GÇ boyutlarının karışımına ve temel depolamanın özelliklerine göre değişir. SQL veritabanı, 512 KB ve 4 MB arasında bir boyut farklılık gösteren IOs kullanır. IOPS sınırlarını zorlama amaçları doğrultusunda, Azure Storage 'da veri dosyaları olan veritabanlarının dışında, her GÇ boyutundan bağımsız olarak hesaba katılmaz. Bu durumda, Azure Storage ıO Accounting ile hizalamak için 256 KB 'den büyük olan IOs birden fazla 256 KB 'lık IOs olarak hesaba katılmaz.
 
-Azure depolama 'daki veri dosyalarını kullanan temel, standart ve Genel Amaçlı veritabanları için, `primary_group_max_io` bir veritabanında bu IOPS sayısını birikecek şekilde yeterli veri dosyası yoksa veya veriler dosyalar arasında eşit olarak dağıtılmadıysa veya temeldeki Blobların performans katmanı kaynak idare sınırının altındakı IOPS/aktarım hızını sınırlıyorsa, değer ulaşılabilir olmayabilir. Benzer şekilde, sık işlem işleme tarafından oluşturulan küçük günlük IOs ile, `primary_max_log_rate` temel Azure depolama BLOBUNUN IOPS sınırı nedeniyle değer bir iş yükü tarafından ulaşılabilir olmayabilir.
+Azure depolama 'daki veri dosyalarını kullanan temel, standart ve Genel Amaçlı veritabanları için, `primary_group_max_io` bir veritabanında bu IOPS sayısını birikecek şekilde yeterli veri dosyası yoksa veya veriler dosyalar arasında eşit olarak dağıtılmadıysa veya temeldeki Blobların performans katmanı kaynak idare sınırlarının altındakı IOPS/aktarım hızını sınırlıyorsa, değer ulaşılabilir olmayabilir. Benzer şekilde, sık gerçekleştirilen işlem yürütmeleri tarafından oluşturulan küçük günlük IOs sayesinde, `primary_max_log_rate` temel Azure depolama blobunda IOPS sınırı nedeniyle bu değer bir iş yükü tarafından ulaşılabilir olmayabilir. Azure Premium Storage kullanan veritabanları için, Azure SQL veritabanı, veritabanı boyutundan bağımsız olarak gereken ıOPS/aktarım hızını almak için yeterli büyüklükte depolama Blobları kullanır. Daha büyük veritabanları için, toplam ıOPS/verimlilik kapasitesini artırmak üzere birden çok veri dosyası oluşturulur.
 
 `avg_data_io_percent` `avg_log_write_percent` [Sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)ve [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) görünümlerinde bildirilen ve gibi kaynak kullanımı değerleri, maksimum kaynak idare limitlerinin yüzdesi olarak hesaplanır. Bu nedenle, kaynak yönetimi, ıOPS/aktarım hızı dışındaki faktörler olduğunda, bildirilen kaynak kullanımı %100 altında kalsa da, iş yükünün arttığı sırada ıOPS/verimlilik düzleştirme ve gecikme sürelerini görmek mümkündür.
 
-Veritabanı dosyası başına okuma ve yazma ıOPS, aktarım hızı ve gecikme süresini görmek için [sys.dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) işlevini kullanın. Bu işlev, öğesine göre hesaba dahil olmayan arka plan GÇ da dahil olmak üzere veritabanına karşı tüm GÇ yüzeylerini, `avg_data_io_percent` ancak temel DEPOLAMANıN IOPS ve aktarım hızını kullanır ve gözlemlenen depolama gecikmesini etkileyebilir. İşlevi, `io_stall_queued_read_ms` sırasıyla ve sütunlarında, okuma ve yazma işlemleri IÇIN GÇ kaynak İdaresi tarafından kullanıma sunulmuş ek gecikme süresini de yüzey halinde gösterir `io_stall_queued_write_ms` .
+Veritabanı dosyası başına okuma ve yazma ıOPS, aktarım hızı ve gecikme süresini görmek için [sys.dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) işlevini kullanın. Bu işlev, öğesine göre hesaba dahil olmayan arka plan GÇ da dahil olmak üzere veritabanına karşı tüm GÇ yüzeylerini, `avg_data_io_percent` ancak temel DEPOLAMANıN IOPS ve aktarım hızını kullanır ve gözlemlenen depolama gecikmesini etkileyebilir. İşlevi, `io_stall_queued_read_ms` sırasıyla ve sütunlarında okuma ve yazma işlemleri IÇIN GÇ kaynak İdaresi tarafından kullanıma sunulmuş ek gecikme süresini yüzey halinde gösterir `io_stall_queued_write_ms` .
 
 ### <a name="transaction-log-rate-governance"></a>İşlem günlüğü oranı idare
 

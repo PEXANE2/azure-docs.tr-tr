@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f70d1caacfd655c956d4fcc36e3f0d3848d8f0fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01f762ef1fa3a997c01873df02abf87362b8c06f
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230577"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055962"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Azure AD günlüklerini Azure Izleyici günlükleriyle tümleştirme
 
@@ -46,6 +46,7 @@ Daha fazla analiz için denetim etkinlik günlüklerini ve oturum açma etkinli�
 
 * **Denetim günlükleri**: [Denetim günlükleri etkinlik raporu](concept-audit-logs.md), kiracınızda gerçekleştirilen her görevin geçmişine erişmenizi sağlar.
 * **Oturum açma günlükleri**: [Oturum açma işlemleri etkinlik raporuyla](concept-sign-ins.md), denetim günlüklerinde bildirilen görevleri kimlerin gerçekleştirdiğini saptayabilirsiniz.
+* **Sağlama günlükleri**: [sağlama günlükleri](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics)ile, tüm üçüncü taraf uygulamalarınızda oluşturulan, güncellenen ve sildiğiniz kullanıcıları izleyebilirsiniz. 
 
 > [!NOTE]
 > B2C ile ilgili denetim ve oturum açma işlemleri etkinlik günlükleri şu an için desteklenmemektedir.
@@ -66,7 +67,7 @@ Bu özelliğin kullanılması için Azure AD Premium P1 veya P2 lisansı gerekir
 
 ## <a name="send-logs-to-azure-monitor"></a>Günlükleri Azure Izleyici 'ye gönderme
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
 
 2. **Azure Active Directory**  >  **Tanılama ayarlarını**Azure Active Directory  ->  **Tanılama ayarı Ekle**' yi seçin. Tanılama ayarları yapılandırma sayfasına ulaşmak için **Denetim günlükleri** veya **oturum açma** sayfasından **ayarları dışarı aktar** ' ı da seçebilirsiniz.  
     

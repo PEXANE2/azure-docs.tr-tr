@@ -1,15 +1,15 @@
 ---
 title: 'Hızlı başlangıç: şablonlarla paylaşılan bir sorgu oluşturma'
 description: Bu hızlı başlangıçta, sanal makineleri işletim sistemine göre sayan bir kaynak grafiği paylaşılan sorgusu oluşturmak için bir Azure Resource Manager şablonu (ARM şablonu) kullanırsınız.
-ms.date: 07/06/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: cc9da201b10b697f125e8ffe7402f23f5eaa8362
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a629dd5325fc20d6f173d9f4e0524885af8fdf49
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88685536"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057017"
 ---
 # <a name="quickstart-create-a-shared-query-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak paylaşılan sorgu oluşturma
 
@@ -21,7 +21,7 @@ Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakk�
 
 :::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Azure 'da paylaşılan bir sorgu oluşturmak için ARM şablonunu dağıtma" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fresourcegraph-sharedquery-countos%2Fazuredeploy.json":::
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -48,14 +48,14 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 
 1. Aşağıdaki değerleri seçin veya girin:
 
-   | Name | Değer |
+   | Ad | Değer |
    |------|-------|
    | Abonelik | Azure aboneliğinizi seçin. |
    | Kaynak grubu | **Yeni oluştur**' u seçin, bir ad belirtin ve ardından **Tamam**' ı seçin. |
    | Konum | Bir bölge seçin. Örneğin **Orta ABD**. |
-   | Sorgu adı | Varsayılan değer **sayısı VM 'lerini işletim sistemi olarak**bırakın. |
-   | Sorgu kodu | Varsayılan değeri bırakın `Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)` |
-   | Sorgu açıklaması | **Bu paylaşılan sorgunun tüm sanal makine kaynaklarını saydığı ve işletim sistemi türüne göre özetlediği** varsayılan değeri bırakın. |
+   | Sorgu adı | Varsayılan değeri bırakın: **VM 'leri işletim sistemine göre say**. |
+   | Sorgu kodu | Varsayılan değeri bırakın: `Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)` |
+   | Sorgu açıklaması | Varsayılan değeri bırakın: **Bu paylaşılan sorgu tüm sanal makine kaynaklarını sayar ve işletim sistemi türüne göre özetler.** |
    | Yukarıda belirtilen hüküm ve koşulları kabul ediyorum | Seçin |
 
 1. **Satın al**'ı seçin.
@@ -75,7 +75,7 @@ Yeni paylaşılan sorguyu çalıştırmak için aşağıdaki adımları izleyin:
 
 1. **İşletim sistemine göre sayı VM 'leri**adlı paylaşılan sorguyu seçin, sonra **genel bakış** sayfasında **sonuçlar** sekmesini seçin.
 
-Alternatif olarak, paylaşılan sorgu kaynak grafik Gezgini ' nden açılabilir:
+Paylaşılan sorgu kaynak grafiği Gezgini 'nden de açılabilir:
 
 1. Portal arama çubuğundan **Kaynak Grafiği Gezgini** ' ni arayın ve seçin.
 
@@ -83,7 +83,7 @@ Alternatif olarak, paylaşılan sorgu kaynak grafik Gezgini ' nden açılabilir:
 
 1. **Türü** _paylaşılan sorgular_olarak değiştirin. Listedeki **VM 'Leri bayt sayısı** ' nı görmüyorsanız, sonuçları sınırlandırmak için filtre kutusunu kullanın. **İşletim sistemi paylaşılan sorgusuna göre VM sayısı** görünür olduğunda, adını seçin.
 
-1. Sorgu yüklendikten sonra **Sorguyu Çalıştır** düğmesini seçin. Sonuçlar aşağıdaki **sonuçlar** sekmesinde görüntülenir.
+1. Sorgu yüklendikten sonra **Sorguyu Çalıştır** düğmesini seçin. Sonuçlar, **sonuçlar** sekmesinde görüntülenir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

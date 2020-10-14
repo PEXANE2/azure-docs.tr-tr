@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 282ce16c926c61008d0ebd70106b161425a15c9e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 33d110f327a381241fd9dbf55996a6e3f9fd3a43
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89079090"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057986"
 ---
 # <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---arm-template"></a>Hızlı başlangıç: birden çok genel IP adresi-ARM şablonuyla Azure Güvenlik Duvarı oluşturma
 
-Bu hızlı başlangıçta, birden çok genel IP adresi ile bir Azure Güvenlik Duvarı dağıtmak için bir Azure Resource Manager şablonu (ARM şablonu) kullanırsınız. Dağıtılan güvenlik duvarında, iki Windows Server 2019 sanal makinesine RDP bağlantılarına izin veren NAT kural koleksiyonu kuralları vardır.
+Bu hızlı başlangıçta, bir Azure Güvenlik duvarını genel IP adresi önekinden birden çok genel IP adresi ile dağıtmak için bir Azure Resource Manager şablonu (ARM şablonu) kullanırsınız. Dağıtılan güvenlik duvarında, iki Windows Server 2019 sanal makinesine RDP bağlantılarına izin veren NAT kural koleksiyonu kuralları vardır.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -42,6 +42,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 Şablonda birden çok Azure kaynağı tanımlanmış:
 
 - [**Microsoft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
+- [**Microsoft. Network/publicIPPrefix**](/azure/templates/microsoft.network/publicipprefixes)
 - [**Microsoft. Network/Publicıpaddresses**](/azure/templates/microsoft.network/publicipaddresses)
 - [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)

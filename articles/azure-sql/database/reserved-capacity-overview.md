@@ -11,20 +11,22 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
-ms.date: 08/29/2019
-ms.openlocfilehash: 7a7373f5fcd36298d2feeff6a2a5b67c9e10e40b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/13/2020
+ms.openlocfilehash: c1bedf56896332430c6f4b937aab37764a0c6a43
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321603"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058276"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-sql-database--sql-managed-instance"></a>Ayrılmış kapasiteye sahip kaynakların maliyetlerini kaydetme-Azure SQL veritabanı & SQL yönetilen örneği
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)] 
 
 Kullandıkça Öde fiyatlarıyla karşılaştırıldığında işlem kaynakları için bir ayırmaya girerek Azure SQL veritabanı ve SQL yönetilen örneği ile tasarruf edin. Ayrılmış kapasite ile, işlem maliyetlerine göre önemli bir indirim elde etmek için SQL veritabanı ve/veya SQL yönetilen örnek kullanımı için bir veya üç yıl boyunca bir taahhüt yaparsınız. Ayrılmış kapasiteyi satın almak için Azure bölgesini, dağıtım türünü, performans katmanını ve terimi belirtmeniz gerekir.
 
-Ayırmayı belirli bir veritabanına veya yönetilen örneğe atamanız gerekmez. Zaten çalışmakta olan veya yeni dağıtılan mevcut dağıtımların eşleşmesi, avantajı otomatik olarak alır. Bir rezervasyon satın alarak, bir veya üç yıllık bir dönem için işlem maliyetlerine yönelik kullanıma de kayıt yapılır. Bir rezervasyon satın alarak, rezervasyon öznitelikleriyle eşleşen işlem ücretleri artık Kullandıkça Öde tarifelerine göre ücretlendirilir. Bir ayırma, hizmetle ilişkili yazılım, ağ veya depolama ücretlerini kapsamaz. Rezervasyon döneminin sonunda, faturalandırma avantajı sona erer ve veritabanı ya da yönetilen örnek Kullandıkça Öde fiyatı üzerinden faturalandırılır. Ayırmalar otomatik olarak yenilemez. Fiyatlandırma bilgileri için bkz. [ayrılmış kapasite teklifi](https://azure.microsoft.com/pricing/details/sql-database/managed/).
+Ayırmayı belirli bir veritabanına veya yönetilen örneğe atamanız gerekmez. Zaten çalışmakta olan veya yeni dağıtılan mevcut dağıtımların eşleşmesi, avantajı otomatik olarak alır. Bir rezervasyon satın alarak, bir veya üç yıllık bir dönem için işlem maliyetlerine yönelik kullanıma de kayıt yapılır. Bir rezervasyon satın alarak, rezervasyon öznitelikleriyle eşleşen işlem ücretleri artık Kullandıkça Öde tarifelerine göre ücretlendirilir. 
+
+Bir ayırma, hem birincil hem de faturalandırılabilir ikincil işlem çoğaltmaları için geçerlidir, ancak hizmetle ilişkili yazılım, ağ veya depolama ücretlerini kapsamaz. Rezervasyon döneminin sonunda, faturalandırma avantajı sona erer ve veritabanı ya da yönetilen örnek Kullandıkça Öde fiyatı üzerinden faturalandırılır. Ayırmalar otomatik olarak yenilemez. Fiyatlandırma bilgileri için bkz. [ayrılmış kapasite teklifi](https://azure.microsoft.com/pricing/details/sql-database/managed/).
 
 Ayrılmış kapasiteyi [Azure Portal](https://portal.azure.com)satın alabilirsiniz. [Peşin olarak veya aylık ödemelerle](../../cost-management-billing/reservations/prepare-buy-reservation.md) rezervasyon ödemesi yapın. Ayrılmış kapasite satın almak için:
 
@@ -32,6 +34,9 @@ Ayrılmış kapasiteyi [Azure Portal](https://portal.azure.com)satın alabilirsi
 - Kurumsal abonelikler için, [EA portal](https://ea.azure.com)’da **Ayrılmış Örnek Ekle** seçeneği etkinleştirilmelidir. Ya da bu ayar devre dışı bırakılırsa, abonelikte bir EA yöneticisi olmanız gerekir. Ayrılmış kapasite.
 
 Kurumsal müşterilerin ve kullandıkça öde müşterilerinin rezervasyon satın alma işlemleri için nasıl ücretlendirilildiği hakkında daha fazla bilgi için bkz. [Kurumsal kaydınız Için Azure ayırma kullanımını anlama](../../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) ve [Kullandıkça Öde aboneliğiniz için Azure rezervasyon kullanımını anlama](../../cost-management-billing/reservations/understand-reserved-instance-usage.md).
+
+> [!NOTE]
+> Satın alma ayrılmış kapasitesi, kullanımınız için belirli altyapı kaynaklarını (sanal makineler veya düğümler) önceden ayırmaz veya ayırmaz.
 
 ## <a name="determine-correct-size-before-purchase"></a>Satın almadan önce doğru boyutu belirleme
 

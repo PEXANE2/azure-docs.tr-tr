@@ -6,18 +6,18 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 57a9186033b8df71d1972289fe33b0fe654690f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8d6481bdf3476f8f91c437138f4b6f1ebd1f1de
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316435"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058208"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Öğretici: C 'de Language Understanding etkinleştirilmiş bir Web uygulaması bot kullanın #
 
 Dil anlama (LUU) ile tümleştirilmiş bir sohbet bot oluşturmak Için C# kullanın. Bot, Azure [Web App bot](https://docs.microsoft.com/azure/bot-service/) kaynağı ve [bot Framework sürüm](https://github.com/Microsoft/botbuilder-dotnet) v4 ile oluşturulmuştur.
 
-**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
+**Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:**
 
 > [!div class="checklist"]
 > * Web uygulaması robotu oluşturma. Bu işlem sizin için yeni bir LUIS uygulaması oluşturur.
@@ -25,9 +25,9 @@ Dil anlama (LUU) ile tümleştirilmiş bir sohbet bot oluşturmak Için C# kulla
 > * Robotu ve öykünücüyü bilgisayarınızda yerel olarak başlatma
 > * Robotta konuşma sonuçlarını görüntüleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* [Robot öykünücüsü](https://aka.ms/abs/build/emulatordownload)
+* [Bot Framework öykünücüsü](https://aka.ms/abs/build/emulatordownload)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)
 
 ## <a name="create-a-web-app-bot-resource"></a>Web uygulaması bot kaynağı oluşturma
@@ -314,18 +314,18 @@ Visual Studio 2019 ' de, bot 'ı başlatın. Web uygulaması robotunun `http://l
 
 ![Bir giriş sayfası, bot 'unuzla ilgili bilgileri görüntüler.](./media/bfv4-csharp/running-bot-web-home-page-success.png)
 
-## <a name="use-the-bot-emulator-to-test-the-bot"></a>Bot öykünücüsünü test etmek için kullanın
+## <a name="use-the-bot-framework-emulator-to-test-the-bot"></a>Bot Framework öykünücüsünü kullanarak botu test etme
 
-1. Bot öykünücüsünü başlatın ve **bot 'ı aç**' ı seçin.
+1. Bot Framework öykünücüsünü başlatın ve **bot 'ı aç**' ı seçin.
 1. **Bir bot** açılır penceresi açın iletişim kutusunda, gıbı bot URL 'nizi girin `http://localhost:3978/api/messages` . `/api/messages`Yol, bot 'ın Web adresidir.
 1. İndirdiğiniz bot kodunun kökündeki dosya **appsettings.js** bulunan **Microsoft uygulama kimliği** ve **Microsoft uygulama parolasını**girin, ardından **Bağlan**' ı seçin.
 
-1. Bot öykünücüsünde, `Book a flight from Seattle to Berlin tomorrow` önceki bir bölümde bulunan **Web sohbetinde testte** aldığınız gibi temel bot için aynı yanıtı girin ve alın.
+1. Bot Framework öykünücüsünde, `Book a flight from Seattle to Berlin tomorrow` önceki bölümde yer alan **Web sohbetinde testte** aldığınız gibi temel bot için aynı yanıtı girin ve alın.
 
     [![Ekran görüntüsü, temel bir bot yanıtıyla bot Framework öykünücüsünü gösterir.](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
 1. **Evet**’i seçin. Bot, eylemlerinin bir özeti ile yanıt verir.
-1. Bot öykünücüsünün günlüğünden, dahil edilen satırı seçin `<- trace LuisV3 Trace` . Bu, deterance 'in amacı ve varlıkları için LUSıS 'den gelen JSON yanıtını görüntüler.
+1. Bot Framework öykünücüsünün günlüğünden, dahil edilen satırı seçin `<- trace LuisV3 Trace` . Bu, deterance 'in amacı ve varlıkları için LUSıS 'den gelen JSON yanıtını görüntüler.
 
     [![Ekran görüntüsünde, LuisV3 Trace seçili ve JSON yanıtı vurgulanmış olan temel bir bot yanıtı gösterilmektedir.](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
 

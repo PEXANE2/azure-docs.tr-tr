@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ed5d3e96310f089221af09c4a11d2a139e8548f3
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 8d60c604ecde8607c0da8a125108e13683bdf6c8
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047922"
+ms.locfileid: "92058548"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-net-sdk-v4"></a>Hızlı başlangıç: .NET için Azure Key Vault gizli istemci kitaplığı (SDK v4)
 
@@ -21,7 +21,7 @@ ms.locfileid: "92047922"
 
 [API başvuru belgeleri](/dotnet/api/azure.security.keyvault.secrets?view=azure-dotnet&preserve-view=true)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault)  |  [Paket (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/dotnet)
 * [.NET Core 3,1 SDK veya üzeri](https://dotnet.microsoft.com/download/dotnet-core)
@@ -110,15 +110,13 @@ $Env:KEY_VAULT_NAME=<your-key-vault-name>
 ```
 
 macOS veya Linux
-```cmd
+```bash
 export KEY_VAULT_NAME=<your-key-vault-name>
 ```
 
 ## <a name="object-model"></a>Nesne modeli
 
 .NET için Azure Key Vault gizli istemci kitaplığı, gizli dizileri yönetmenizi sağlar. [Kod örnekleri](#code-examples) bölümünde, bir istemci oluşturma, gizli anahtar ayarlama, gizli anahtar alma ve gizli dizi silme işlemlerinin nasıl yapılacağı gösterilir.
-
-Konsol uygulamasının tamamına adresinden ulaşılabilir https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app .
 
 ## <a name="code-examples"></a>Kod örnekleri
 
@@ -138,9 +136,11 @@ Aşağıdaki örnekte, anahtar kasanızın adı, "https://. vault.azure.net" bi�
 
 ### <a name="save-a-secret"></a>Gizli dizi Kaydet
 
-Konsol uygulamasının kimliğinin doğrulandığına göre, anahtar kasasına bir gizli dizi ekleyin. Bu görev için [istemcisini kullanın. SetSecret](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) yöntemi. Yöntemin ilk parametresi, &mdash; Bu örnekteki "MySecret" gizli anahtarı için bir ad kabul eder.
+Konsol uygulamasının kimliğinin doğrulandığına göre, anahtar kasasına bir gizli dizi ekleyin. Bu görev için [Setsecretasync](/dotnet/api/azure.security.keyvault.secrets.secretclient.setsecretasync) yöntemini kullanın. Yöntemin ilk parametresi, &mdash; Bu örnekteki "MySecret" gizli anahtarı için bir ad kabul eder.
 
-[!code-csharp[](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=setsecret)]
+```csharp
+await client.SetSecretAsync(secretName, secretValue);
+``````
 
 Parolanın [az keykasası Secret Show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show&preserve-view=true) komutuyla ayarlandığını doğrulayabilirsiniz:
 
@@ -154,17 +154,21 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 
 ### <a name="retrieve-a-secret"></a>Gizli dizi alma
 
-Artık önceden ayarlanan değeri istemcisiyle elde edebilirsiniz [. GetSecret](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync) yöntemi.
+Artık [Getsecretasync](/dotnet/api/azure.security.keyvault.secrets.secretclient.getsecretasync) yöntemiyle daha önce ayarlanan değeri alabilirsiniz.
 
-[!code-csharp[](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=getsecret)]
+```csharp
+var secret = await client.GetSecretAsync(secretName);
+``````
 
 Gizli anahtar artık olarak kaydedilir `secret.Value` .
 
 ### <a name="delete-a-secret"></a>Gizli anahtarı silme
 
-Son olarak, anahtar kasanızdan parolayı istemciyle silelim [. DeleteSecret](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync) yöntemi.
+Son olarak, [Startdeletesecretasync](/dotnet/api/azure.security.keyvault.secrets.secretclient.startdeletesecretasync) yöntemiyle anahtar kasanızdan parolayı silelim.
 
-[!code-csharp[](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=deletesecret)]
+```csharp
+await client.StartDeleteSecretAsync(secretName);
+``````
 
 Parolanın [az keykasasecret Show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show&preserve-view=true) komutuyla yapıldığını doğrulayabilirsiniz:
 
@@ -225,7 +229,7 @@ Aşağıdaki adımları tamamlayarak, .NET Core konsol uygulamasını Key Vault 
     {
         class Program
         {
-            static void Main(string[] args)
+            static async Task Main(string[] args)
             {
                 const string secretName = "mySecret";
                 var keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
@@ -237,7 +241,7 @@ Aşağıdaki adımları tamamlayarak, .NET Core konsol uygulamasını Key Vault 
                 var secretValue = Console.ReadLine();
     
                 Console.Write($"Creating a secret in {keyVaultName} called '{secretName}' with the value '{secretValue}' ...");
-                client.SetSecret(secretName, secretValue);
+                await client.SetSecretAsync(secretName, secretValue);
                 Console.WriteLine(" done.");
     
                 Console.WriteLine("Forgetting your secret.");
@@ -245,19 +249,15 @@ Aşağıdaki adımları tamamlayarak, .NET Core konsol uygulamasını Key Vault 
                 Console.WriteLine($"Your secret is '{secretValue}'.");
     
                 Console.WriteLine($"Retrieving your secret from {keyVaultName}.");
-                KeyVaultSecret secret = client.GetSecret(secretName);
+                var secret = await client.GetSecretAsync(secretName);
                 Console.WriteLine($"Your secret is '{secret.Value}'.");
     
                 Console.Write($"Deleting your secret from {keyVaultName} ...");
-                DeleteSecretOperation operation = client.StartDeleteSecret(secretName);
+                DeleteSecretOperation operation = await client.StartDeleteSecretAsync(secretName);
                 // You only need to wait for completion if you want to purge or recover the secret.
-                while (!operation.HasCompleted)
-                {
-                    Thread.Sleep(2000);
-                
-                    operation.UpdateStatus();
-                }
-                client.PurgeDeletedSecret(secretName);
+                await operation.WaitForCompletionAsync();
+
+                await client.PurgeDeletedSecret(secretName);
                 Console.WriteLine(" done.");
             }
         }

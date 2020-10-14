@@ -3,18 +3,18 @@ title: Hizmetinizi dağıtmak için bir Azure Resource Manager şablonu kullanma
 titleSuffix: Azure Cognitive Search
 description: Azure Resource Manager şablonunu kullanarak bir Azure Bilişsel Arama hizmet örneğini hızlıca dağıtabilirsiniz.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 07/15/2020
-ms.openlocfilehash: c7d11b9e699ec4cba59d2af9e411692cbce35278
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: abaf9abe9c52afba095fa52eee32a598ab6b3fcd
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88640183"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058463"
 ---
 # <a name="quickstart-deploy-cognitive-search-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Bilişsel Arama dağıtma
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 6c88a1eaee50676cfe6bb9589779d7156b805e30
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 77dc64d9660f9a0bf66559c4a5a976362cf1acd0
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920985"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951647"
 ---
 ::: zone target = "docs"
 
@@ -97,11 +97,11 @@ Windows Server ana bilgisayarı kullanıyorsanız Data Box Heavy'ye bağlanmak i
 
 1. İlk adım kimlik doğrulamasından geçmek ve oturum başlatmaktır. **Bağlan ve kopyala**'ya gidin. Depolama hesabınızla ilişkilendirilmiş paylaşımların erişim kimlik bilgilerini almak için **Kimlik bilgilerini al**'a tıklayın.
 
-    ![Paylaşım kimlik bilgilerini alma 1](media/data-box-heavy-deploy-copy-data/get-share-credentials-1.png)
+    ![Paylaşım kimlik bilgilerini alma](media/data-box-heavy-deploy-copy-data/get-share-credentials-1.png)
 
 2. Paylaşıma erişme ve veri kopyalama iletişim kutusunda paylaşıma karşılık gelen **Kullanıcı adı** ve **Parola** değerlerini kopyalayın. **Tamam** düğmesine tıklayın.
     
-    ![Paylaşım kimlik bilgilerini alma 1](media/data-box-heavy-deploy-copy-data/get-share-credentials-2.png)
+    ![Paylaşım kimlik bilgilerini alma 2](media/data-box-heavy-deploy-copy-data/get-share-credentials-2.png)
 
 3. Ana bilgisayarınızdan depolama hesabınızla (aşağıdaki örnekte *databoxe2etest*) ilişkili paylaşımlara erişmek için bir komut penceresi açın. Komut istemine şunları yazın:
 
@@ -122,7 +122,7 @@ Windows Server ana bilgisayarı kullanıyorsanız Data Box Heavy'ye bağlanmak i
 
 4. Windows + R tuşlarına basın. **Çalıştır** penceresinde `\\<device IP address>` değerini belirtin. Dosya Gezgini'ni açmak için **Tamam**’a tıklayın.
     
-    ![Paylaşıma Dosya Gezgini ile bağlanma 2](media/data-box-heavy-deploy-copy-data/connect-shares-file-explorer-1.png)
+    ![Dosya Gezgini aracılığıyla paylaşıma bağlanma](media/data-box-heavy-deploy-copy-data/connect-shares-file-explorer-1.png)
 
     Artık paylaşımları klasörler olarak görebilirsiniz.
     

@@ -17,12 +17,12 @@ ms.date: 10/07/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6109f35c42d4b4a44430eeb99ec115f4cdc1a619
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61a143d4294359249bffceac12e65c36ea9e5fb9
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812565"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056166"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Azure Active Directory portalında raporları sağlama (Önizleme)
 
@@ -42,7 +42,7 @@ Bu konu, sağlama raporuna genel bir bakış sağlar.
 ## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="who-can-access-the-data"></a>Verilere kimler erişebilir?
-* Uygulama sahipleri
+* Uygulama sahipleri, sahip oldukları uygulamalar için günlükleri görüntüleyebilir
 * Güvenlik Yöneticisi, güvenlik okuyucu, rapor okuyucu, uygulama Yöneticisi ve bulut uygulaması yönetici rolleri kullanıcıları
 * Genel Yöneticiler
 
@@ -56,7 +56,7 @@ Tüm sağlama etkinliği raporunu görmek için kiracınızın kendisiyle ilişk
 Sağlama günlükleri aşağıdaki soruların yanıtlarını sağlar:
 
 * ServiceNow 'da hangi gruplar başarıyla oluşturuldu?
-* Roller Amazon Web Services içeri aktarılsın mı?
+* Amazon Web Services hangi roller içeri aktarıldı?
 * DropBox 'ta başarısız olan kullanıcılar nelerdir?
 
 Sağlama günlüklerine, [Azure portal](https://portal.azure.com) **Azure Active Directory** dikey penceresinin **izleme** bölümünde **sağlama günlükleri** ' ni seçerek erişebilirsiniz. Bazı sağlama kayıtlarının portalda gösterilmesi iki saate kadar sürebilir.
@@ -211,7 +211,7 @@ Ayrıntılar aşağıdaki kategorilere göre gruplandırılır:
 
 ## <a name="what-you-should-know"></a>Bilmeniz gerekenler
 
-- Azure portal, bir Premium sürümünüz varsa ve ücretsiz sürümünüz varsa 7 gün sonra, bildirilen sağlama verilerini 30 gün boyunca depolar. Sağlama günlükleri, 30 günden daha fazla bekletme için Log Analytics 'e yayımlanabilir. 
+- Azure portal, bir Premium sürümünüz varsa ve ücretsiz sürümünüz varsa 7 gün sonra, bildirilen sağlama verilerini 30 gün boyunca depolar. Sağlama günlükleri, 30 günden daha fazla bekletme için [Log Analytics](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics) 'e yayımlanabilir. 
 
 - Değişiklik KIMLIĞI özniteliğini benzersiz tanımlayıcı olarak kullanabilirsiniz. Bu örneğin, ürün desteğiyle etkileşim kurarken faydalı olur.
 

@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: b0f2a6fcd888afd7eb99a810fad6e876fe6ff4ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8049df552c9754a1674c9e38e6d9b9b2cea3bd85
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617069"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058225"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>Öğretici: iki yönetilen örnek arasında çoğaltmayı yapılandırma
 
@@ -27,7 +27,7 @@ ms.locfileid: "91617069"
 
 İşlemsel çoğaltma şu anda SQL yönetilen örneği için genel önizlemededir. 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -48,7 +48,7 @@ Bu öğretici, deneyimli bir hedef kitle için tasarlanmıştır ve kullanıcın
 
 SQL yönetilen örneği yayımcı ve/veya bir dağıtıcı olarak çalışacak şekilde yapılandırmak için şunları yapmanız gerekir:
 
-- Yayımcı tarafından yönetilen örnek, dağıtıcı ve abone ile aynı sanal ağda, ya da her üç varlığın sanal ağları arasında [sanal ağ eşlemesi](../../virtual-network/tutorial-connect-virtual-networks-powershell.md) yapılandırılmış olur. 
+- Yayımcı tarafından yönetilen örnek, dağıtıcı ve abone ile aynı sanal ağda olduğundan veya üç varlığın sanal ağları arasında [VPN ağ geçitlerinin](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) yapılandırıldığından emin olur. 
 - Bağlantı, çoğaltma katılımcıları arasında SQL Kimlik Doğrulaması kullanır.
 - Çoğaltma çalışma dizini için bir Azure depolama hesabı payı.
 - Bağlantı noktası 445 (TCP Giden), yönetilen örneklerin Azure dosya paylaşımında erişmesi için NSG güvenlik kurallarında açıktır.  Hatayla karşılaşırsanız `failed to connect to azure storage \<storage account name> with os error 53` , uygun SQL yönetilen örnek alt ağının NSG 'ye bir giden kuralı eklemeniz gerekir.
