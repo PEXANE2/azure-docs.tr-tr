@@ -8,12 +8,12 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 95dc5b70174cd738104260aac2e175c0657d9c90
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c69e919c76c0aecb6cf8a3ee5e9b7e5d286c168a
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966211"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046052"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Linux 'ta TPM ile IoT Edge cihaz oluşturma ve sağlama
 
@@ -31,9 +31,9 @@ Görevler aşağıdaki gibidir:
 >
 > Fiziksel bir cihaz kullanıyorsanız, bu makaledeki [sağlama bilgilerini bir fiziksel cihazdan alma](#retrieve-provisioning-information-from-a-physical-device) bölümüne geçebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* [Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)' y i etkin bir Windows geliştirme makinesi. Bu makalede bir Ubuntu sunucu VM 'sini çalıştıran Windows 10 kullanılır.
+* [Hyper-V](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)' y i etkin bir Windows geliştirme makinesi. Bu makalede bir Ubuntu sunucu VM 'sini çalıştıran Windows 10 kullanılır.
 * Etkin bir IoT Hub.
 
 > [!NOTE]
@@ -174,7 +174,7 @@ DPS 'de bir kayıt oluşturduğunuzda, bir **Ilk cihaz Ikizi durumu**bildirme f�
 
 Bu cihaz için bir kayıt mevcut olduğuna göre, IoT Edge çalışma zamanı cihazı yükleme sırasında otomatik olarak sağlayabilir.
 
-## <a name="install-the-iot-edge-runtime"></a>IoT Edge çalışma zamanını yükler
+## <a name="install-the-iot-edge-runtime"></a>IoT Edge çalışma zamanını yükleme
 
 IoT Edge çalışma zamanı tüm IoT Edge cihazlarına dağıtılır. Bileşenleri kapsayıcılarda çalıştırılır ve kenarda kod çalıştırabilmeniz için cihaza ek kapsayıcılar dağıtmanıza izin verir. IoT Edge çalışma zamanını sanal makinenize yükler.
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: e70586fc2000e90b00d06d16bf5ba8df0bf5442f
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: ce41e6b502aef1c44cf96f3b4a5efe401fba3173
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91944991"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046494"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-java"></a>Hızlı başlangıç: çözümünüze bağlı olan IoT Tak ve Kullan cihazla etkileşim kurma (Java)
 
@@ -27,7 +27,7 @@ IoT Tak ve Kullan, arka plandaki cihaz uygulamasıyla ilgili bilgi sahibi olmada
 
 Bu hızlı başlangıcı Windows üzerinde gerçekleştirmek için, yerel Windows ortamınıza aşağıdaki yazılımı yüklersiniz:
 
-* Java SE Development Kit 8. [Azure ve Azure Stack Için Java uzun süreli destek](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true), **uzun süreli destek**altında **Java 8**' i seçin.
+* Java SE Development Kit 8. [Azure ve Azure Stack Için Java uzun süreli destek](/java/azure/jdk/?preserve-view=true&view=azure-java-stable), **uzun süreli destek**altında **Java 8**' i seçin.
 * [Apache Maven 3](https://maven.apache.org/download.cgi).
 
 ### <a name="clone-the-sdk-repository-with-the-sample-code"></a>Örnek kodla SDK deposunu kopyalayın

@@ -9,12 +9,12 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: 984977d7cef1a923bf7f17de0c503bddeeebcd82
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 3a5d0ba92ab976f9ea3aa2722f92865f06d5a70e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998390"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045049"
 ---
 # <a name="what-is-iot-plug-and-play"></a>IoT Tak Çalıştır nedir?
 
@@ -26,7 +26,7 @@ IoT Tak ve Kullan, çözüm oluşturucuların akıllı cihazları el ile herhang
 
 Bu öğeleri, daha kolay işbirliği yapmak ve geliştirmeyi hızlandırmak için modeller genelinde yeniden kullanmak üzere arabirimlerde gruplandırabilirsiniz.
 
-IoT Tak ve Kullan [Azure dijital TWINS](../digital-twins/about-digital-twins.md)ile çalışmasını sağlamak Için, [dijital TWINS tanım dili (dtdl)](https://github.com/Azure/opendigitaltwins-dtdl)kullanarak modeller ve arabirimler tanımlarsınız. IoT Tak ve Kullan ve DTDL, topluluk için açıktır ve Microsoft, müşteriler, iş ortakları ve sektörle işbirliği ile gelir. Her ikisi de JSON-LD ve RDF gibi açık W3C standartlarına dayalıdır ve bu da hizmetler ve araçlar arasında daha kolay benimsenme sağlar.
+IoT Tak ve Kullan [Azure dijital TWINS](../digital-twins/overview.md)ile çalışmasını sağlamak Için, [dijital TWINS tanım dili (dtdl)](https://github.com/Azure/opendigitaltwins-dtdl)kullanarak modeller ve arabirimler tanımlarsınız. IoT Tak ve Kullan ve DTDL, topluluk için açıktır ve Microsoft, müşteriler, iş ortakları ve sektörle işbirliği ile gelir. Her ikisi de JSON-LD ve RDF gibi açık W3C standartlarına dayalıdır ve bu da hizmetler ve araçlar arasında daha kolay benimsenme sağlar.
 
 IoT Tak ve Kullan ve DTDL kullanmanın ek maliyeti yoktur. [Azure IoT Hub](../iot-hub/about-iot-hub.md) ve diğer Azure hizmetleri için standart ücretler aynı kalır.
 
@@ -74,4 +74,3 @@ IoT Tak ve Kullan 'ye genel bir bakış edinolduğunuza göre, önerilen sonraki
 
 - [Bir cihazı IoT Hub bağlama (C)](./quickstart-connect-device-c.md)
 - [Çözümünüzden bir cihazla etkileşim kurma (Node.js)](./quickstart-service-node.md)
-

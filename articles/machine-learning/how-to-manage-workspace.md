@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: d2885c6cc259cba74ab991ecf5046856984824f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0b5d3678c3d9c7e55eede13c630510df89d5128
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631264"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045576"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure portal Azure Machine Learning çalışma alanları oluşturun ve yönetin
 
@@ -46,9 +46,6 @@ Bir çalışma alanı oluşturmak için bir Azure aboneliğine ihtiyacınız var
    Abonelik |Kullanmak istediğiniz Azure aboneliğini seçin.
    Kaynak grubu | Aboneliğinizde mevcut kaynak gruplarından birini seçin veya bir ad girerek yeni bir kaynak grubu oluşturun. Kaynak grubu, bir Azure çözümü için ilgili kaynakları barındırır. Bu örnekte **docs-AML**kullanılır. Mevcut bir kaynak grubunu kullanmak için *katkıda bulunan* veya *sahip* rolünün olması gerekir.  Erişim hakkında daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanına erişimi yönetme](how-to-assign-roles.md).
    Bölge | Çalışma alanınızı oluşturmak için kullanıcılarınıza en yakın Azure bölgesini ve veri kaynaklarını seçin.
-   Çalışma alanı sürümü | **Temel** veya **Kurumsal**' i seçin.  Bu çalışma alanı sürümü, erişim ve fiyatlandırmaya sahip olduğunuz özellikleri belirler. [Azure Machine Learning](overview-what-is-azure-ml.md)hakkında daha fazla bilgi edinin. 
-
-    ![Çalışma alanınızı yapılandırma](./media/how-to-manage-workspace/select-edition.png)
 
 1. Çalışma alanını yapılandırmayı bitirdiğinizde, **gözden geçir + oluştur**' u seçin. İsteğe bağlı olarak, çalışma alanı için daha fazla ayar yapılandırmak üzere [ağ](#networking) ve [Gelişmiş](#advanced) bölümleri kullanın.
 

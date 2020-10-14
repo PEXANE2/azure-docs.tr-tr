@@ -57,6 +57,8 @@
               href: azure-stack-edge-gpu-kubernetes-rbac.md
             - name: Kubernetes iş yükleri
               href: azure-stack-edge-gpu-kubernetes-workload-management.md
+        - name: Key Vault tümleştirmesini görüntüleme
+          href: azure-stack-edge-gpu-activation-key-vault.md
     - name: Nasıl yapılır
       items:
         - name: IoT Edge örneklerini dağıtma

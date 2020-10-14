@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 496ca7edfbfb81d8d8838d704b128701a5960e5b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c9e489d58b2c4bee0cd9551d15bfa59c3610d959
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974932"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047208"
 ---
 # <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>DTDL ayrıştırıcısı kitaplığıyla modelleri ayrıştırma ve doğrulama
 
@@ -20,11 +20,11 @@ Azure dijital TWINS 'deki [modeller](concepts-models.md) JSON-ld tabanlı dijita
 
 Bunu yapmanıza yardımcı olmak için NuGet: [**Microsoft. Azure. DigitalTwins. Parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)üzerinde bir .NET istemci tarafı dtdl ayrıştırma kitaplığı sağlanır. 
 
-Ayrıştırıcı kitaplığını doğrudan C# kodunuzda kullanabilir veya ayrıştırıcı kitaplığı: [**Dtdl Doğrulayıcı örneği**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)üzerinde oluşturulmuş dilden bağımsız kod örnek projesini kullanabilirsiniz.
+Ayrıştırıcı kitaplığını doğrudan C# kodunuzda kullanabilir veya ayrıştırıcı kitaplığı: [**Dtdl Doğrulayıcı örneği**](/samples/azure-samples/dtdl-validator/dtdl-validator)üzerinde oluşturulmuş dilden bağımsız kod örnek projesini kullanabilirsiniz.
 
 ## <a name="use-the-dtdl-validator-sample"></a>DTDL doğrulayıcısı örneğini kullanma
 
-[**Dtdl doğrulayıcısı**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) , dtdl 'nin geçerli olduğundan emin olmak için model belgelerini doğrulayabilecek örnek bir projem. .NET Parser kitaplığı üzerine kurulmuştur ve dilden bağımsız olur. Örnek bağlantıda *ZIP 'ı indir* düğmesi ile edinebilirsiniz.
+[**Dtdl doğrulayıcısı**](/samples/azure-samples/dtdl-validator/dtdl-validator) , dtdl 'nin geçerli olduğundan emin olmak için model belgelerini doğrulayabilecek örnek bir projem. .NET Parser kitaplığı üzerine kurulmuştur ve dilden bağımsız olur. Örnek bağlantıda *ZIP 'ı indir* düğmesi ile edinebilirsiniz.
 
 Kaynak kodda, ayrıştırıcı kitaplığının nasıl kullanılacağına ilişkin örnekler gösterilmektedir. Bir DTDL dosyaları dizin ağacını doğrulamak için, komut satırı yardımcı programı olarak Doğrulayıcı örneğini kullanabilirsiniz. Ayrıca etkileşimli bir mod sağlar.
 

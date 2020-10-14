@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 06/19/2020
 ms.author: alkohli
 ms.openlocfilehash: 526b3ad89e128d264b5d14d8cc87d9a81d431a9c
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86210470"
 ---
 Veri kopyalamaya başlamadan önce:
 
-1. *Kopyalama günlüğünü*indirin. **Bağlan ve Kopyala** sayfasında, **günlüğü Kopyala**' yı seçin. İstendiğinde, günlüğü sisteminize kaydedin. 
+1. *Kopyalama günlüğünü* indirin. **Bağlan ve kopyala** sayfasında, **Günlüğü kopyala**’yı seçin. İstendiğinde, günlüğü sisteminize kaydedin. 
 
-    ![Kopya günlüğünü indirin 1](../articles/databox/media/data-box-deploy-export-copy-data/download-copy-log-1.png)
+    ![Kopyalama günlüğü 1’i indirin](../articles/databox/media/data-box-deploy-export-copy-data/download-copy-log-1.png)
 
   
-    *Ayrıntılı günlüğü*indirmek için adımları tekrarlayın. 
+    *Ayrıntılı günlüğü* indirmek için adımları yineleyin. 
 
-2. *Ayrıntılı günlüğü*gözden geçirin. *Ayrıntılı günlük* , Azure depolama hesabından başarıyla aktarılmış olan tüm dosyaların bir listesini içerir. Günlük Ayrıca dosya boyutu ve sağlama toplamı hesaplamasını içerir.
+2. *Ayrıntılı günlüğü* inceleyin. *Ayrıntılı günlük*, Azure Depolama hesabından başarıyla dışarı aktarılmış tüm dosyaların bir listesini içerir. Günlük ayrıca dosya boyutu ve sağlama toplamı hesaplamasını da içerir.
 
     ```powershell
     <File CloudFormat="BlockBlob" Path="validblobdata/test1.2.3.4" Size="1024" crc64="7573843669953104266">
@@ -52,9 +52,9 @@ Veri kopyalamaya başlamadan önce:
     </File>
     ``````
 
-3. Herhangi bir hata için *kopyalama günlüğünü* gözden geçirin. Bu günlük, hatalar nedeniyle kopyalanamayan dosyaları gösterir.
+3. Herhangi bir hata için *kopyalama günlüğünü* inceleyin. Bu günlük, hatalar nedeniyle kopyalanamayan dosyaları gösterir.
 
-    Bir hata olmadığında ve Azure 'dan Data Box cihaza veri kopyalama sırasında tüm dosyalar kopyalanırsa, kopyalama günlüğü ' nin örnek bir çıktısı aşağıda verilmiştir.
+    Hata olmadığı ve Azure’dan Data Box cihazına veri kopyalama sırasında tüm dosyaların kopyalandığı duruma ait kopyalama günlüğünün örnek bir çıktısı aşağıda verilmiştir.
 
     ```powershell
     <CopyLog Summary="Summary">
@@ -63,7 +63,7 @@ Veri kopyalamaya başlamadan önce:
       <FilesErrored>0</FilesErrored>
     </CopyLog>
     ``` 
-    Burada, kopyalama günlüğünde hatalar olduğunda ve bazı dosyaların Azure 'dan kopyalanması başarısız olduğunda örnek bir çıktı verilmiştir.
+    Kopyalama günlüğünde hatalar olduğu ve bazı dosyaların Azure’dan kopyalanamadığı duruma ait örnek bir çıktı verilmiştir.
 
     ```powershell
     <ErroredEntity CloudFormat="AppendBlob" Path="export-ut-appendblob/wastorage.v140.3.0.2.nupkg">
@@ -88,7 +88,7 @@ Veri kopyalamaya başlamadan önce:
     </CopyLog>    
     ```
 
-    Bu dosyaları dışarı aktarmak için aşağıdaki seçenekleriniz vardır: 
+    Bu dosyaları dışarı aktarmak için aşağıdaki seçenekleri kullanabilirsiniz: 
 
-    - Ağ üzerinden kopyalanamayan dosyaları aktarabilirsiniz. 
-    - Veri boyutunuz kullanılabilir cihaz kapasitesinden büyükse kısmi bir kopya oluşur ve kopyalanamayan tüm dosyalar bu günlükte listelenir. Bu günlüğü, yeni bir Data Box sıra oluşturmak ve sonra bu dosyaların üzerine kopyalamak için giriş XML 'i olarak kullanabilirsiniz.
+    - Kopyalanamayan dosyaları ağ üzerinden aktarabilirsiniz. 
+    - Veri boyutunuz kullanılabilir cihaz kapasitesinden büyükse kısmi kopyalama gerçekleşir ve kopyalanamayan tüm dosyalar bu günlükte listelenir. Bu günlüğü, yeni bir Data Box siparişi oluşturmak ve daha sonra bu dosyaları kopyalamak için giriş XML dosyası olarak kullanabilirsiniz.

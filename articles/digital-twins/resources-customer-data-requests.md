@@ -8,12 +8,12 @@ ms.date: 05/05/2020
 ms.topic: conceptual
 ms.service: digital-twins
 services: digital-twins
-ms.openlocfilehash: 31da6a6b5375571f53cd7b478e957cc350ef591c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60aa6ed3f1b66d88d05751fdee2444120705f8d2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86522355"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047701"
 ---
 # <a name="azure-digital-twins-customer-data-request-features"></a>Azure dijital TWINS müşteri verileri istek özellikleri
 
@@ -35,7 +35,7 @@ Azure dijital TWINS, ortama erişimi olan kullanıcıların [Azure Active Direct
 
 ## <a name="deleting-customer-data"></a>Müşteri verilerini silme
 
-Azure dijital TWINS yöneticileri, kullanıcılarla ilgili verileri silmek için Azure portal kullanabilir. Azure dijital TWINS REST API 'Lerini kullanarak tek tek dijital TWINS 'lerde silme işlemleri gerçekleştirmek da mümkündür. Kullanılabilir API 'Ler hakkında daha fazla bilgi için bkz. [Azure Digital TWINS REST API 'leri belgeleri](https://docs.microsoft.com/rest/api/azure-digitaltwins/).
+Azure dijital TWINS yöneticileri, kullanıcılarla ilgili verileri silmek için Azure portal kullanabilir. Azure dijital TWINS REST API 'Lerini kullanarak tek tek dijital TWINS 'lerde silme işlemleri gerçekleştirmek da mümkündür. Kullanılabilir API 'Ler hakkında daha fazla bilgi için bkz. [Azure Digital TWINS REST API 'leri belgeleri](/rest/api/azure-digitaltwins/).
 
 ## <a name="exporting-customer-data"></a>Müşteri verilerini dışa aktarma
 
@@ -45,4 +45,4 @@ Kullanıcı rolleri ve rol atamaları dahil olmak üzere müşteri verileri seç
 
 ## <a name="links-to-additional-documentation"></a>Ek belgelere bağlantılar
 
-Azure dijital TWINS hizmeti API 'lerinin tam listesi için bkz. [Azure Digital TWıNS REST API 'leri belgeleri](https://docs.microsoft.com/rest/api/azure-digitaltwins/).
+Azure dijital TWINS hizmeti API 'lerinin tam listesi için bkz. [Azure Digital TWıNS REST API 'leri belgeleri](/rest/api/azure-digitaltwins/).
