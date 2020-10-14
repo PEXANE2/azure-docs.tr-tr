@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.custom: references_regions
 author: bwren
 ms.author: bwren
-ms.date: 10/13/2020
-ms.openlocfilehash: 59febbac1a83e45c8b2bf9c233c3772f561eb111
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.date: 10/14/2020
+ms.openlocfilehash: 6b94b6d66046c29de99339887d5c5c87d6c5bb5f
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92050046"
+ms.locfileid: "92055945"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Izleyici 'de çalışma alanı verilerini dışarı aktarma Log Analytics (Önizleme)
 Azure Izleyici 'de Log Analytics çalışma alanı verileri dışarı aktarma işlemi, Log Analytics çalışma alanınızdaki seçili tablolardan verileri sürekli olarak bir Azure depolama hesabına veya Azure Event Hubs toplanarak dışarı aktaralmanıza olanak sağlar. Bu makalede, bu özellik hakkında ayrıntılar ve çalışma alanlarınızdaki veri dışarı aktarmayı yapılandırma adımları sağlanmaktadır.
@@ -79,7 +79,7 @@ Veriler, Azure Izleyici 'ye ulaştığında neredeyse gerçek zamanlı olarak ol
 İçe aktarılmış verilerin hacmi genellikle zaman içinde artar ve daha büyük aktarım hızlarını işlemek ve kısıtlama senaryolarından ve veri gecikmesinden kaçınmak için Olay Hub 'ı ölçeğinin artması gerekir. İşleme birimlerinin sayısını otomatik olarak artırmak ve kullanım ihtiyaçlarını karşılamak için Event Hubs otomatik Şişir özelliğini kullanmanız gerekir. Ayrıntılar için bkz. [Azure Event Hubs üretilen iş birimlerini otomatik olarak ölçeklendirme](../../event-hubs/event-hubs-auto-inflate.md) .
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Log Analytics veri dışarı aktarma yapılandırmadan önce tamamlanması gereken önkoşullar aşağıda verilmiştir.
 
 - Depolama hesabının ve Olay Hub 'ının zaten oluşturulması ve Log Analytics çalışma alanıyla aynı bölgede olması gerekir. Verilerinizi diğer depolama hesaplarına çoğaltmanız gerekiyorsa [Azure depolama yedekliliği seçeneklerinin](../../storage/common/storage-redundancy.md)herhangi birini kullanabilirsiniz.  
@@ -254,6 +254,10 @@ Desteklenen tablolar şu anda aşağıda belirtilenler ile sınırlıdır. Kıs�
 | AADDomainServicesLogonLogoff | |
 | AADDomainServicesPolicyChange | |
 | AADDomainServicesPrivilegeUse | |
+| Aadmanagedıdentitysignınlogs | |
+| Aadnonınteractiveusersignınlogs | |
+| AADProvisioningLogs | |
+| Aadserviceprincipalsignınlogs | |
 | Adassessmentönerisi | |
 | ADFActivityRun | |
 | Adfardışık düzen eylemsizlik | |
@@ -268,7 +272,8 @@ Desteklenen tablolar şu anda aşağıda belirtilenler ile sınırlıdır. Kıs�
 | ADXQuery | |
 | Ayumurdeliveryfailurelogs | |
 | Ayumurpublishfailurelogs | |
-| Uyarı | Bu tabloya ait verilerden bazıları depolama hesabı üzerinden alınır. Bu bölüm şu anda dışa aktarma içinde yok. |
+| Uyarı |Kısmi destek. Bu tabloya ait verilerden bazıları depolama hesabı üzerinden alınır. Bu veriler şu anda dışarıya aktarılmamış. |
+| Anomalileri | |
 | ApiManagementGatewayLogs | |
 | Appcenterhatası | |
 | AppPlatformSystemLogs | |
@@ -277,6 +282,7 @@ Desteklenen tablolar şu anda aşağıda belirtilenler ile sınırlıdır. Kıs�
 | AppServiceConsoleLogs | |
 | AppServiceFileAuditLogs | |
 | AppServiceHTTPLogs | |
+| AppServiceIPSecAuditLogs | |
 | AppServicePlatformLogs | |
 | AuditLogs | |
 | AutoscaleEvaluationsLog | |
@@ -291,7 +297,7 @@ Desteklenen tablolar şu anda aşağıda belirtilenler ile sınırlıdır. Kıs�
 | CommonSecurityLog | |
 | CommonSecurityLog | |
 | ComputerGroup | |
-| ConfigurationData | Bazı veriler dışarı aktarma için desteklenmeyen iç hizmetlerden alınır. Bu bölüm şu anda dışa aktarma içinde yok. |
+| ConfigurationData | Kısmi destek. Bazı veriler dışarı aktarma için desteklenmeyen iç hizmetlerden alınır. Bu veriler şu anda dışarıya aktarılmamış. |
 | Containerımageınventory | |
 | Containerınventory | |
 | ContainerLog | |
@@ -312,15 +318,43 @@ Desteklenen tablolar şu anda aşağıda belirtilenler ile sınırlıdır. Kıs�
 | DnsEvents | |
 | DnsInventory | |
 | Dynamics365Activity | |
-| Olay | Bu tabloya ait verilerden bazıları depolama hesabı üzerinden alınır. Bu bölüm şu anda dışa aktarma içinde yok. |
+| Olay | Kısmi destek. Bu tabloya ait verilerden bazıları depolama hesabı üzerinden alınır. Bu veriler şu anda dışarıya aktarılmamış. |
 | ExchangeAssessmentRecommendation | |
 | ExchangeAssessmentRecommendation | |
 | FailedIngestion | |
 | FunctionAppLogs | |
-| Sinyal | Desteklenir | |
+| HDInsightAmbariClusterAlerts | |
+| HDInsightAmbariSystemMetrics | |
+| HDInsightGatewayAuditLogs | |
+| HDInsightHadoopAndYarnLogs | |
+| HDInsightHadoopAndYarnMetrics | |
+| HDInsightHBaseLogs | |
+| HDInsightHBaseMetrics | |
+| HDInsightHiveAndLLAPLogsSample | |
+| HDInsightKafkaLogs | |
+| HDInsightKafkaMetrics | |
+| HDInsightOozieLogs | |
+| HDInsightSecurityLogs | |
+| HDInsightSparkApplicationEvents | |
+| HDInsightSparkBlockManagerEvents | |
+| HDInsightSparkEnvironmentEvents | |
+| HDInsightSparkEventsLog | |
+| HDInsightSparkExecutorEvents | |
+| HDInsightSparkExtraEvents | |
+| HDInsightSparkJobEvents | |
+| HDInsightSparkLogs | |
+| HDInsightSparkSQLExecutionEvents | |
+| HDInsightSparkStageEvents | |
+| HDInsightSparkStageTaskAccumulables | |
+| HDInsightSparkTaskEvents | |
+| HDInsightStormLogs | |
+| HDInsightStormMetrics | |
+| HDInsightStormTopologyMetrics | |
+| Sinyal | |
 | HuntingBookmark | |
-| Insightsölçümlerini | Bazı veriler dışarı aktarma için desteklenmeyen iç hizmetlerden alınır. Bu bölüm şu anda dışa aktarma içinde yok. |
+| Insightsölçümlerini | Kısmi destek. Bazı veriler dışarı aktarma için desteklenmeyen iç hizmetlerden alınır. Bu bölüm şu anda dışa aktarma içinde yok. |
 | Intuneauditlogs | |
+| Intunedevicekarmaşıkanceorg | |
 | Intuneoperationallogs | |
 | KubeEvents | |
 | KubeHealth | |
@@ -329,24 +363,30 @@ Desteklenen tablolar şu anda aşağıda belirtilenler ile sınırlıdır. Kıs�
 | KubePodInventory | |
 | KubeServices | |
 | KubeServices | |
+| LAQueryLogs 'lar | |
 | McasShadowItReporting | |
 | MicrosoftAzureBastionAuditLogs | |
 | Microsoftdatasharerecei, Snapshotlog | |
 | MicrosoftDataShareSentSnapshotLog | |
 | MicrosoftDataShareShareLog | |
 | Microsofthealthumererererce | |
+| NWConnectionMonitorDestinationListenerResult | |
+| NWConnectionMonitorDNSResult | |
+| NWConnectionMonitorPathResult | |
 | NWConnectionMonitorPathResult | |
 | NWConnectionMonitorTestResult | |
-| Officeetkinliği | O365 'den LA 'ya Web kancaları aracılığıyla alınacak verilerden bazıları. Bu bölüm şu anda dışa aktarma içinde yok. |
-| İşlem | Bazı veriler dışarı aktarma için desteklenmeyen iç hizmetlerden alınır. Bu bölüm şu anda dışa aktarma içinde yok. |
-| Perf | Desteklenir | |
-| Sccmassessmentönerisi | | 
+| NWConnectionMonitorTestResult | |
+| Officeetkinliği | Kısmi destek. Office 365 ' den Web kancaları aracılığıyla alınacak verilerden bazıları Log Analytics. Bu veriler şu anda dışarıya aktarılmamış. |
+| İşlem | Kısmi destek. Bazı veriler dışarı aktarma için desteklenmeyen iç hizmetlerden alınır. Bu veriler şu anda dışarıya aktarılmamış. |
+| Perf | Kısmi destek. Şu anda yalnızca Windows performans verileri destekleniyor. Linux performans verileri şu anda dışarıya aktarılmamış. |
+| ProtectionStatus | |
+| Sccmassessmentönerisi | |
 | Scomassessmentönerisi | |
 | SecurityAlert | |
 | SecurityBaseline | |
 | SecurityBaselineSummary | |
 | SecurityDetection | |
-| SecurityEvent | Desteklenir | |
+| SecurityEvent | |
 | Securityıncident | |
 | Securityıotrawevent | |
 | Securitynestedönerisi | |
@@ -359,24 +399,29 @@ Desteklenen tablolar şu anda aşağıda belirtilenler ile sınırlıdır. Kıs�
 | Spassessmentönerisi | |
 | Sqlassessmentönerisi | |
 | SucceededIngestion | |
-| Syslog |Kısmi | Bu tabloya ait verilerden bazıları depolama hesabı üzerinden alınır. Bu bölüm şu anda dışa aktarma içinde yok. |
+| SynapseGatewayEvents | |
+| SynapseRBACEvents | |
+| Syslog | Kısmi destek. Bu tabloya ait verilerden bazıları depolama hesabı üzerinden alınır. Bu veriler şu anda dışarıya aktarılmamış. |
 | Threatıntelligenceındicator | |
-| Güncelleştir |Kısmi | Bazı veriler dışarı aktarma için desteklenmeyen iç hizmetlerden alınır. Bu bölüm şu anda dışa aktarma içinde yok. |
+| Güncelleştir | Kısmi destek. Bazı veriler dışarı aktarma için desteklenmeyen iç hizmetlerden alınır. Bu veriler şu anda dışarıya aktarılmamış. |
 | UpdateRunProgress | |
 | UpdateSummary | |
 | Kullanım | |
 | UserAccessAnalytics | |
 | UserPeerAnalytics | |
+| Listem | |
 | WindowsEvent | |
 | WindowsFirewall | |
-| Iletilen veri |Kısmi | Bazı veriler dışarı aktarma için desteklenmeyen iç hizmetlerden alınır. Bu bölüm şu anda dışa aktarma içinde yok. |
+| Iletilen veri | Kısmi destek. Bazı veriler dışarı aktarma için desteklenmeyen iç hizmetlerden alınır. Bu veriler şu anda dışarıya aktarılmamış. |
 | WorkloadMonitoringPerf | |
 | WorkloadMonitoringPerf | |
+| WVDAgentHealthStatus | |
 | WVDCheckpoints | |
 | WVDConnections | |
 | WVDErrors | |
 | WVDFeeds | |
 | WVDManagement | |
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

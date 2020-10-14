@@ -3,29 +3,29 @@ title: Öğretici-VMware HCX 'i dağıtma ve yapılandırma
 description: Azure VMware çözümünüz özel bulutunuz için VMware HCX çözümünü dağıtmayı ve yapılandırmayı öğrenin.
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 341de74c8034eb60c5738720f730ab6b0f0f127f
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 58fd8b4518f60f1f736d8c19ddcf62729353f251
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948604"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058004"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>VMware HCX’i dağıtma ve yapılandırma
 
-Bu makalede, Azure VMWare çözümünüz özel bulutunuz için VMware HCX 'i dağıtma ve yapılandırma yordamlarına adım adım ilerliyoruz. VMware HCX, VMware iş yüklerinizin Azure VMware çözümüne ve diğer bağlı sitelere çeşitli geçiş türleri aracılığıyla geçirilmesini sağlar.
+Bu makalede, Azure VMware Çözüm özel bulutunuz için VMware HCX şirket içi "bağlayıcısını" dağıtma ve yapılandırma yordamlarına kılavuzluk ederiz. VMware HCX, VMware iş yüklerinizin Azure VMware çözümüne ve diğer bağlı sitelere çeşitli geçiş türleri aracılığıyla geçirilmesini sağlar. Azure VMware çözümü, "Cloud Manager" ' ı zaten dağıttı ve yapılandırmıştır, bu nedenle "bağlayıcı" yükleme, etkinleştirme ve yapılandırma, şirket içi VMware veri merkezinde müşteri için gereklidir.
 
-VMware HCX Advanced (Azure VMware çözümünde önceden dağıtılan) en fazla üç site bağlantısını (Şirket içi buluta veya buluta buluta) destekler. VMware HCX Enterprise için üçten fazla üç site bağlantısı gerekliyse, bir [destek isteği](https://rc.portal.azure.com/#create/Microsoft.Support)göndererek [VMware HCX kurumsal](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) eklentisini (Şu anda *Önizleme*aşamasında) etkinleştirme seçeneğiniz vardır. VMware HCX Enterprise Edition (EE), Azure VMware çözümüyle bir *Önizleme* işlevi/hizmeti olarak sunulmaktadır. Azure VMware çözümü için VMware HCX EE *Önizleme*aşamasındadır. Bu, ücretsiz bir işlevdir/hizmettir ve hizmet hüküm ve koşullarına tabidir. VMware HCX EE hizmeti GA olduktan sonra, faturalandırmaya geçiş yapılacak 30 günlük bir bildirim alırsınız. Ayrıca, hizmeti kapatma/devre dışı bırakma seçeneğiniz de vardır.
+VMware HCX gelişmiş Bağlayıcısı (Azure VMware çözümünde önceden dağıtılır) en fazla üç site bağlantısını (Şirket içi buluta veya buluta buluta) destekler. Üçten fazla site bağlantısı gerekliyse, müşteriler bir [destek isteği](https://rc.portal.azure.com/#create/Microsoft.Support)göndererek [VMware HCX kurumsal](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) eklentisini (Şu anda *önizlemede*) etkinleştirme seçeneğine sahiptir. VMware HCX Enterprise Edition (EE), Azure VMware çözümüyle bir *Önizleme* işlevi/hizmeti olarak sunulmaktadır. Azure VMware çözümü için VMware HCX EE *Önizleme*aşamasındadır. Bu, ücretsiz bir işlevdir/hizmettir ve hizmet hüküm ve koşullarına tabidir. VMware HCX EE hizmeti GA olduktan sonra, faturalandırmaya geçiş yapılacak 30 günlük bir bildirim alırsınız. Ayrıca, hizmeti kapatma/devre dışı bırakma seçeneğiniz de vardır.
 
 Başlamadan önce, [başlamadan önce](#before-you-begin), [yazılım sürümü gereksinimleri](#software-version-requirements)ve [önkoşulları](#prerequisites)için baştan önce gözden geçirin. 
 
 Ardından, aşağıdakileri yapmak için gereken tüm yordamları inceleyeceğiz:
 
 > [!div class="checklist"]
-> * Şirket içi VMware HCX OVA (bağlayıcı) dağıtma
-> * VMware HCX 'i etkinleştir
-> * Şirket içi ortamınızı Azure VMware Çözüm ortamınızla eşleştirin.
-> * InterConnect 'i yapılandırma (işlem profili, ağ profili ve hizmet ağı)
-> * Gereç durumunu denetleyerek kurulumu tamamen doldurun.
+> * Şirket içi VMware HCX OVA (HCX Bağlayıcısı) dağıtma
+> * VMware HCX bağlayıcısını etkinleştir
+> * Azure VMware çözümünüz HCX Cloud Manager ile şirket içi HCX bağlayıcınızı eşleştirin
+> * InterConnect 'i yapılandırma (ağ profili, işlem profili ve hizmet ağı)
+> * Gereç durumunu denetleyerek ve geçişin doğrulanmasını sağlayarak kurulumu tamamen yapın
 
 İşiniz bittiğinde, bu makalenin sonunda önerilen sonraki adımları izleyebilirsiniz.  
 
@@ -38,7 +38,7 @@ Ardından, aşağıdakileri yapmak için gereken tüm yordamları inceleyeceğiz
 * HCX üzerinde VMware vSphere [blog serisi](https://blogs.vmware.com/vsphere/2019/10/cloud-migration-series-part-2.html) gibi, isteğe bağlı olarak HCX üzerinde ilgili VMware malzemeleri gözden geçirin. 
 * İsteğe bağlı olarak Azure VMware Çözüm desteği kanalları aracılığıyla bir Azure VMware çözümü HCX Kurumsal etkinleştirme isteyin.
 * İsteğe bağlı olarak [HCX için gereken ağ bağlantı noktalarını gözden geçirin](https://ports.vmware.com/home/VMware-HCX).
-* WAN Interconnect gerecini dağıtmak için `\22` özel bulut oluşturma için belirtilen müşteriden belırlı CIDR aralıkları zaten ayrıldı.
+* Azure VMware çözümü HCX CLoud Manager, Azure VMware Çözüm özel bulutu için sunulan/22 sürümünden önceden yapılandırılmış olsa da, HCX şirket içi Bağlayıcısı, ağ aralıklarının şirket içi ağınızdan müşteri tarafından ayrılmasını gerektirir. Bu ağlar ve aralıklar belgede daha aşağı açıklanacaktır.
 
 İşlem ve depolama kaynaklarına karşı iş yüklerini boyutlandırma, önemli bir planlama adımıdır. İlk özel bulut ortamı planlamasının parçası olarak boyutlandırma adımını ele edin. 
 
@@ -63,32 +63,31 @@ Altyapı bileşenleri, gerekli en düşük sürümü çalıştırıyor olmalıd�
 
 * Şirket içi bileşenler ve şirket içi bileşenler arasındaki iletişimin Azure VMware Çözüm SDDC ile olması için gerekli tüm bağlantı noktaları açık olmalıdır (bkz. [VMware HCX belgeleri](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-E456F078-22BE-494B-8E4B-076EF33A9CF4.html)).
 
-* Şirket içi HCX x ve NE gibi araçlar vCenter ve ESXi altyapısına erişebilmelidir.
 
 ### <a name="ip-addresses"></a>IP adresleri
 
 [!INCLUDE [hcx-network-segments](includes/hcx-network-segments.md)]
    
-## <a name="deploy-the-vmware-hcx-ova-on-premises"></a>VMware HCX OVA 'yı şirket içinde dağıtma
+## <a name="deploy-the-vmware-hcx-connector-ova-on-premises"></a>VMware HCX bağlayıcı OVA 'yı şirket içinde dağıtma
 
 >[!NOTE]
->Sanal Gereci şirket içi vCenter 'nize dağıtmadan önce, VMware HCX OVA 'yı indirmeniz gerekir. 
+>Sanal Gereci şirket içi vCenter 'ınıza dağıtmadan önce, VMware HCX bağlayıcı OVA 'yı indirmeniz gerekir. 
 
-1. `https://x.x.x.9`443 numaralı bağlantı noktasında **cloudadmin** Kullanıcı kimlik bilgileriyle Azure VMware çözümü HCX Yöneticisi ' nde oturum açın ve ardından **destek**bölümüne gidin.
+1. Bir tarayıcı penceresi açın, 443 numaralı bağlantı noktasında cloudadmin Kullanıcı kimlik bilgileriyle Azure VMware çözümü HCX Yöneticisi ' nde oturum açın `https://x.x.x.9` ve ardından **destek**' e gidin. **cloudadmin**
 
    >[!TIP]
-   >HCX yöneticisinin IP adresini belirlemek için, Azure VMware Çözüm dikey penceresinde bağlantıyı **Yönet**' e gidin  >  **Connectivity** ve ardından **HCX** sekmesini seçin. 
+   >Azure VMware çözümünde HCX Cloud Manager 'ın IP 'sini aklınızda edin. HCX Cloud Manager 'ın IP adresini belirlemek için, Azure VMware Çözüm dikey penceresinde bağlantıyı **Yönet**' e gidin  >  **Connectivity** ve ardından **HCX** sekmesini seçin. 
    >
    >VCenter parolası, özel bulutu ayarlarken tanımlanmıştır.
 
-1. VMware HCX OVA dosyasını indirmek için **indirme** bağlantısını seçin.
+1. VMware HCX bağlayıcı OVA dosyasını indirmek için **indirme** bağlantısını seçin.
 
-1. Şirket içi vCenter ' a gidin ve şirket içi vCenter 'unuzda dağıtmak üzere indirdiğiniz OVA dosyası olan bir OVF şablonu seçin.  
+1. Şirket içi vCenter 'ınıza gidin ve HCX bağlayıcısını şirket içi vCenter 'ınıza dağıtmak için indirdiğiniz OVA dosyası olan bir OVF şablonu seçin.  
 
    :::image type="content" source="media/tutorial-vmware-hcx/select-ovf-template.png" alt-text="Şirket içi vCenter ' a gidin ve şirket içi vCenter 'nize dağıtmak için bir OVF şablonu seçin." lightbox="media/tutorial-vmware-hcx/select-ovf-template.png":::
 
 
-1. Bir ad ve konum, HCX dağıttığınız bir kaynak/küme seçin ve ardından ayrıntıları ve gerekli kaynakları gözden geçirin.  
+1. Bir ad ve konum, HCX bağlayıcısını dağıttığınız kaynağı/kümeyi seçin ve ardından ayrıntıları ve gerekli kaynakları gözden geçirin.  
 
    :::image type="content" source="media/tutorial-vmware-hcx/configure-template.png" alt-text="Şirket içi vCenter ' a gidin ve şirket içi vCenter 'nize dağıtmak için bir OVF şablonu seçin." lightbox="media/tutorial-vmware-hcx/configure-template.png":::
 
@@ -98,10 +97,10 @@ Altyapı bileşenleri, gerekli en düşük sürümü çalıştırıyor olmalıd�
 
    :::image type="content" source="media/tutorial-vmware-hcx/customize-template.png" alt-text="Şirket içi vCenter ' a gidin ve şirket içi vCenter 'nize dağıtmak için bir OVF şablonu seçin." lightbox="media/tutorial-vmware-hcx/customize-template.png":::
 
-1. **İleri**' yi seçin, yapılandırmayı doğrulayın ve sonra HCX ova 'yı dağıtmak için **son** ' u seçin.
+1. **İleri**' yi seçin, yapılandırmayı doğrulayın ve sonra HCX BAĞLAYıCı ova 'yı dağıtmak için **son** ' u seçin.
      
    >[!NOTE]
-   >Genellikle, dağıttığınız VMware HCX Yöneticisi, kümenin yönetim ağı üzerine dağıtılır.  
+   >Genellikle, dağıtmakta olduğunuz VMware HCX Bağlayıcısı, kümenin yönetim ağı üzerine dağıtılır.  
    
    > [!IMPORTANT]
    > Dağıtım tamamlandıktan sonra sanal gereci el ile açmanız gerekebilir.
@@ -112,9 +111,9 @@ Bu adıma uçtan uca bir genel bakış için [Azure VMware çözümü-VMware HCX
 
 ## <a name="activate-vmware-hcx"></a>VMware HCX 'i etkinleştir
 
-VMware HCX OVA 'yı şirket içinde dağıttıktan sonra VMware HCX 'i etkinleştirmeye hazırsınız demektir. VMware HCX 'i etkinleştirebilmeniz için önce bir lisans almanız gerekir.
+VMware HCX bağlayıcı OVA 'yı şirket içinde dağıttıktan ve gereci başlattıktan sonra, etkinleştirmeye hazırsınız ancak ilk olarak Azure 'daki Azure VMware Çözüm Portalından bir lisans anahtarı almanız gerekiyor.
 
-1. Azure VMware çözümünde **Manage**  >  **bağlantıyı**Yönet ' e gidin, **HCX** sekmesini seçin ve ardından **Ekle**' yi seçin.
+1. Azure VMware Çözüm portalında **Manage**  >  **bağlantıyı**Yönet ' e gidin, **HCX** sekmesini seçin ve ardından **Ekle**' yi seçin.
 
 1. Şirket içi VMware HCX yöneticisinde oturum açın `https://HCXManagerIP:9443` ve **yönetici** Kullanıcı kimlik bilgileriyle oturum açın. 
 
@@ -151,13 +150,13 @@ VMware HCX OVA 'yı şirket içinde dağıttıktan sonra VMware HCX 'i etkinleş
 Bu adıma uçtan uca genel bakış için [Azure VMware, VMware HCX etkinleştirme](https://www.youtube.com/embed/BkAV_TNYxdE) videosunu görüntüleyin.
 
 
-## <a name="configure-vmware-hcx"></a>VMware HCX yapılandırma
+## <a name="configure-vmware-hcx-connector"></a>VMware HCX bağlayıcısını yapılandırma
 
 Artık bir site eşleştirme eklemeye, bir ağ ve işlem profili oluşturmaya ve geçiş, ağ uzantısı ya da olağanüstü durum kurtarma gibi hizmetleri etkinleştirmeye hazır olursunuz. 
 
 ### <a name="add-a-site-pairing"></a>Site eşleştirmesi ekleme
 
-Azure VMware çözümünde VMware HCX yöneticisini, veri merkezinizdeki VMware HCX Yöneticisi ile bağlayabilirsiniz (eşleştirin). 
+Azure VMware çözümünde VMware HCX bulut yöneticisini, veri merkezinizdeki VMware HCX Bağlayıcısı ile bağlayabilirsiniz (eşleştirin). 
 
 1. Şirket içi vCenter oturumunuzu açın ve **giriş**bölümünde **HCX**' i seçin.
 
@@ -167,14 +166,14 @@ Azure VMware çözümünde VMware HCX yöneticisini, veri merkezinizdeki VMware 
 
    :::image type="content" source="media/tutorial-vmware-hcx/connect-remote-site.png" alt-text="Şirket içi vCenter ' a gidin ve şirket içi vCenter 'nize dağıtmak için bir OVF şablonu seçin." lightbox="media/tutorial-vmware-hcx/connect-remote-site.png":::
 
-1. **Uzak HCX URL 'sini veya IP adresini**, Azure VMware Çözüm cloudadmin@vsphere.local Kullanıcı adı ve **parolasını**girin ve sonra **Bağlan**' ı seçin.
+1. Daha önce not ettiğiniz **uzak HCX URL 'sini veya IP adresini** , Azure VMware Çözüm cloudadmin@vsphere.local Kullanıcı adı ve **parolasını**girin ve sonra **Bağlan**' ı seçin.
 
    > [!NOTE]
-   > **Uzak HCX URL 'si** , Azure VMware çözümünüz özel bulutu HCX Yöneticisi, genellikle yönetim ağının ". 9" adresidir.  Örneğin, vCenter 'niz 192.168.4.2 ise, HCX URL 'niz 192.168.4.9 olur.
+   > **Uzak HCX URL 'si** , Azure VMware çözümünüz özel bulutu HCX Cloud Manager IP 'sidir, genellikle yönetim ağının ". 9" adresidir.  Örneğin, vCenter 'niz 192.168.4.2 ise, HCX URL 'niz 192.168.4.9 olur.
    >
    > **Parola** , vCenter 'da oturum açmak için kullandığınız parolayla aynı olacaktır. Bu parolayı ilk dağıtım ekranında tanımladınız.
 
-   Azure VMware çözümünde ve HCX Yöneticisi şirket içi bağlı (eşleştirilmiş) HCX yöneticinizin gösterildiği bir ekran görürsünüz.
+   Azure VMware çözümünde ve HCX bağlayıcı şirket içi bağlı (eşleştirilmiş) HCX bulut yöneticinizin gösterildiği bir ekran görürsünüz.
 
    :::image type="content" source="media/tutorial-vmware-hcx/site-pairing-complete.png" alt-text="Şirket içi vCenter ' a gidin ve şirket içi vCenter 'nize dağıtmak için bir OVF şablonu seçin.":::
 
@@ -184,7 +183,7 @@ Bu adıma uçtan uca genel bakış için [Azure VMware Solution-VMware HCX site 
 
 ### <a name="create-network-profiles"></a>Ağ profilleri oluşturma
 
-VMware HCX, birkaç sanal gereç (otomatik) dağıtır ancak birden çok IP kesimine ihtiyaç duyuyor.  Ağ profillerinizi oluştururken, [VMware HCX ağ kesimleri dağıtım öncesi hazırlama ve planlama aşaması](production-ready-deployment-steps.md#vmware-hcx-network-segments)SıRASıNDA tanımladığınız IP segmentlerini tanımlarsınız.
+VMware HCX, birden çok IP kesimi gerektiren sanal gereçlerin (otomatik) bir alt kümesini dağıtır.  Ağ profillerinizi oluştururken, [VMware HCX ağ kesimleri dağıtım öncesi hazırlama ve planlama aşaması](production-ready-deployment-steps.md#vmware-hcx-network-segments)SıRASıNDA tanımladığınız IP segmentlerini tanımlarsınız.
 
 Dört ağ profili oluşturacaksınız:
 

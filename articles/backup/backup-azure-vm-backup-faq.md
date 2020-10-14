@@ -4,12 +4,12 @@ description: Bu makalede, Azure VM 'Leri Azure Backup hizmetiyle yedekleme hakk�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 8813794d44803a32bc6e156d3ca76360d84604c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51c54aa732259180a5393488891b21956553f581
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91370836"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056727"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Sık sorulan sorular-Azure VM 'lerini yedekleme
 
@@ -21,7 +21,7 @@ Bu makalede, Azure VM 'Leri [Azure Backup](./backup-overview.md) hizmetiyle yede
 
 Bir VM oluşturduğunuzda, [desteklenen işletim sistemlerini](backup-support-matrix-iaas.md#supported-backup-actions)çalıştıran VM 'ler için yedeklemeyi etkinleştirebilirsiniz.
 
-### <a name="why-initial-backup-is-taking-lot-of-time-to-complete"></a>Ilk yedeklemenin tamamlanma süresi çok uzun sürüyor?
+### <a name="why-initial-backup-is-taking-lot-of-time-to-complete"></a>İlk yedeklemenin tamamlanması neden uzun sürüyor?
 
 İlk yedekleme her zaman tam bir yedeklemedir ve verilerin boyutuna ve yedeklemenin ne zaman işleneceğini temel alır. <br>
 Yedekleme performansını geliştirmek için bkz. [yedekleme en iyi uygulamaları](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#best-practices); [Yedekleme konuları](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-and-restore-considerations) ve [yedekleme performansı](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-performance)<br>
@@ -79,7 +79,7 @@ Kilidi kaldırın ve gelecekteki yedeklemelerin başarılı olması için bu kay
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disks"></a>, SSD tarafından yönetilen standart diskleri Azure Backup destekler mi?
 
-Evet, Azure Backup [Standart SSD yönetilen diskleri](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)destekler.
+Evet, Azure Backup [Standart SSD yönetilen diskleri](https://docs.microsoft.com/azure/virtual-machines/disks-types#standard-ssd)destekler.
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>Yazma Hızlandırıcısı (WA) özellikli bir diskle VM 'yi yedekleyebiliriz?
 
@@ -161,7 +161,7 @@ Gizli/anahtar alma işlemleri gibi işlemler bu adımı gerektirmez ve geri yük
 
 Evet, bir VM 'nin etki alanı denetleyicisiyle ilişkisi kopmuş olması nedeniyle VM 'ye bir kez erişirsiniz. Daha fazla bilgi için bu [makaleye](./backup-azure-arm-restore-vms.md#post-restore-steps) bakın
 
-### <a name="why-restore-operation-is-taking-long-time-to-complete"></a>Geri yükleme işleminin tamamlanmasını neden uzun sürüyor?
+### <a name="why-restore-operation-is-taking-long-time-to-complete"></a>Geri yükleme işleminin tamamlanması neden uzun sürüyor?
 
 Toplam geri yükleme süresi, saniye başına giriş/çıkış işlemlerine (ıOPS) ve depolama hesabının aktarım hızına bağlıdır. Hedef depolama hesabı diğer uygulama okuma ve yazma işlemleriyle birlikte yüklenirse toplam geri yükleme süresi etkilenebilir. Geri yükleme işlemini geliştirmek için, diğer uygulama verileriyle yüklenmeyen bir depolama hesabı seçin.
 

@@ -1,14 +1,14 @@
 ---
 title: Sık karşılaşılan hataları giderme
 description: İlke ihlalleri ve şema parametre işlevleri gibi şemaları oluşturma, atama ve kaldırma ile ilgili sorunların nasıl giderileceği hakkında bilgi edinin.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: e8362e2a22317d73e0fd392bd497cd9f2c5ffe4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1689141f95aaac9183391af79edb0cabf5343b6
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651319"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058293"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Azure şemaları 'nı kullanarak hatalarda sorun giderme
 
@@ -59,7 +59,7 @@ Bir yapıtı gibi bir işlevi kullanan bir şema parametresini geçirmek, `[reso
 
 #### <a name="resolution"></a>Çözüm
 
-Bir işlevi bir parametre olarak kullanarak geçirmek için, tüm dizeyi, `[` şema parametresi gibi görünen şekilde kaçış `[[resourceGroup().tags.myTag]` . Kaçış karakteri, şema, şema işlerken değeri bir dize olarak işlemeye neden olur. Daha sonra, planlar, işlevin beklenen şekilde dinamik olmasını sağlayan yapıtı üzerine koyar. Daha fazla bilgi için bkz. [Azure Resource Manager şablonlarındaki sözdizimi ve ifadeler](../../../azure-resource-manager/templates/template-expressions.md).
+Bir işlevi bir parametre olarak kullanarak geçirmek için, tüm dizeyi, `[` şema parametresi gibi görünen şekilde kaçış `[[resourceGroup().tags.myTag]` . Kaçış karakteri, şema, şema işlerken değeri bir dize olarak işlemeye neden olur. Daha sonra, planlar hizmeti, işlevi yapıtlara, beklendiği gibi dinamik olmasını sağlayacak şekilde koyar. Daha fazla bilgi için bkz. [Azure Resource Manager şablonlarındaki sözdizimi ve ifadeler](../../../azure-resource-manager/templates/template-expressions.md).
 
 ## <a name="delete-errors"></a>Hataları Sil
 
@@ -75,7 +75,7 @@ Bir işlevi bir parametre olarak kullanarak geçirmek için, tüm dizeyi, `[` ş
 
 #### <a name="resolution"></a>Çözüm
 
-Terminal olmayan bir durumdaki şema atamaları, _6 saatlik_ bir zaman aşımından sonra **başarısız** olarak otomatik olarak işaretlenir. Zaman aşımı şeması şema atamasının durumunu ayarladığında, silme yeniden denenebilir.
+Terminal olmayan bir durumdaki şema atamaları, _altı saatlik_ bir zaman aşımından sonra **başarısız** olarak otomatik olarak işaretlenir. Zaman aşımı şeması şema atamasının durumunu ayarladığında, silme yeniden denenebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

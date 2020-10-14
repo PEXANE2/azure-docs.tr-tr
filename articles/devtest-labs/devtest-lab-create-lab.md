@@ -3,12 +3,12 @@ title: Azure DevTest Labs'de laboratuvar oluşturma | Microsoft Belgeleri
 description: Bu makale, Azure portal ve Azure DevTest Labs kullanarak laboratuvar oluşturma sürecinde size yol gösterir.
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: 962997bcc66188c66fd9db856fe44e4926f8e70c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 9fa33a59dd35bfe3469f30f2349f8a08c45bd5e3
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019656"
+ms.locfileid: "92058438"
 ---
 # <a name="create-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs'de laboratuvar oluşturma
 
@@ -35,7 +35,11 @@ Aşağıdaki bağlantıya tıklayarak, Azure DevTest Labs yeni bir laboratuvar o
 
 ### <a name="basic-settings"></a>Temel ayarlar
 
-Varsayılan olarak, **temel ayarlar** sekmesini görürsünüz. Bu değerleri doldurun:
+Varsayılan olarak, **temel ayarlar** sekmesini görürsünüz. 
+
+![temel ayarlar](./media/devtest-lab-create-lab/basic-settings.png)
+
+Bu değerleri doldurun:
 
 |Ad|Açıklama|
 |---|---|
@@ -49,29 +53,41 @@ Varsayılan olarak, **temel ayarlar** sekmesini görürsünüz. Bu değerleri do
 
 Ayarlarını görmek için **otomatik kapatılma** sayfasına geçin. Otomatik kapatma, bir laboratuvardaki tüm makineleri her gün zamanlanan bir saatte otomatik olarak kapatmanızı sağlar.
 
+![Otomatik olarak kapatılıyor sekmesi](./media/devtest-lab-create-lab/auto-shutdown.png)
+
 Sayfasında, **Otomatik kapatmayı** etkinleştirebilir ve tüm laboratuvarın VM 'lerinin otomatik olarak kapatılmasını sağlayacak parametreleri tanımlayabilirsiniz. VM'nin otomatik olarak kapatılmasını istediğiniz zamanı belirtmenizi sağlayan otomatik kapanma özelliği temel olarak maliyet tasarrufu sağlayan bir özelliktir. Laboratuvar oluşturulduktan sonra otomatik kapatmalar ayarlarını, [Azure DevTest Labs laboratuvar için tüm Ilkeleri yönetme](./devtest-lab-set-lab-policy.md#set-auto-shutdown)makalesinde açıklanan adımları izleyerek değiştirebilirsiniz.
 
 ### <a name="networking"></a>Ağ
 
-Laboratuvar oluştururken sizin için varsayılan bir ağ oluşturulur.
+Laboratuvar oluştururken sizin için varsayılan bir ağ oluşturulur. Ayarı istediğiniz gibi değiştirmek/yapılandırmak için **ağ** sekmesine geçin. Örneğin, var olan bir sanal ağı seçin.
 
-Ayarı istediğiniz gibi değiştirmek/yapılandırmak için **ağ** sekmesine geçin. Örneğin, var olan bir sanal ağı seçin.
+![Ağ sekmesi ](./media/devtest-lab-create-lab/networking.png)
 
 ### <a name="tags"></a>Etiketler
 
 Laboratuvarda oluşturacağınız tüm kaynaklara eklenecek özel etiketler oluşturmak istiyorsanız **Etiketler** için **AD** ve **DEĞER** bilgilerini girin. Laboratuvarları kategorilere göre yönetmek ve düzenlemek istiyorsanız etiketler faydalı olacaktır. Laboratuvarı oluşturduktan sonra etiket ekleme dahil olmak üzere etiketler hakkında daha fazla bilgi için bkz. [Laboratuvara etiket ekleme](devtest-lab-add-tag.md).
 
+![Etiketler sekmesi ](./media/devtest-lab-create-lab/tags.png)
+
 ### <a name="review-and-create"></a>Gözden geçir ve oluştur
 
 İşiniz bittiğinde **Oluştur**' u seçin. Portal sayfasının sağ üst kısmındaki **Bildirimler** alanını izleyerek Laboratuvar oluşturma işleminin durumunu izleyebilirsiniz. 
+
+![Sekme oluştur](./media/devtest-lab-create-lab/create-1.png)
 
 ## <a name="completed-the-creation"></a>Oluşturma tamamlandı
 
 Tamamlandıktan sonra, sayfanın alt kısmında ve bildirim penceresinde **Kaynağa Git** düğmesi görünür. Alternatif olarak, yeni oluşturulan Laboratuvarı laboratuvarlar listesinde görmek için **DevTest Labs** sayfasını yenileyin.  
 
+![Hizmet oluşturuluyor](./media/devtest-lab-create-lab/create-2.png)
+
 **Kaynağa Git** düğmesine basın ve yeni DevTest Labs hesabınızın giriş sayfasına yönlendirilirsiniz.
 
+![Kaynak](./media/devtest-lab-create-lab/go-to-resource.png)
+
 Ayrıca, Azure portal **DevTest Labs** için arama yapabilirsiniz. Listeden yeni hesabınızı seçin ve giriş sayfasına gidin. 
+
+![Hizmet oluşturuldu](./media/devtest-lab-create-lab/created.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

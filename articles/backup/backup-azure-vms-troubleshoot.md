@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makinelerini yedekleme ve geri yükleme il
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 39bc6178d0cabf6c0220d2c54e0c532a6f9a5aa2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 908c7e4bc0ca15d952ef1d4d969c5bf686e0bdc3
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316741"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058123"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure sanal makinelerinde yedekleme hatalarının sorunlarını giderme
 
@@ -31,8 +31,7 @@ Bu bölümde, Azure sanal makinesinin yedekleme işlemi hatası ele alınmaktad�
 * **Olay günlüğü** , diğer yedekleme ürünlerinden (örneğin, Windows Server Yedekleme) olan yedekleme başarısızlıklarını gösterebilir ve Azure Backup nedeni değildir. Sorunun Azure Backup olup olmadığını anlamak için aşağıdaki adımları kullanın:
   * Olay kaynağında veya iletisinde giriş **yedeğiyle** ilgili bir hata varsa, Azure ıAAS VM yedeklemesi yedeklerinin başarılı olup olmadığını ve istenen anlık görüntü türüyle bir geri yükleme noktası oluşturulup oluşturulmayacağını denetleyin.
   * Azure Backup çalışıyorsa, sorun büyük olasılıkla başka bir yedekleme çözümüyle birlikte olur.
-  * Azure Backup düzgün çalıştığı ancak "Windows Server Yedekleme" başarısız olduğu Olay Görüntüleyicisi hatası 517 ' a bir örnek aşağıda verilmiştir:<br>
-    ![Başarısız Windows Server Yedekleme](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
+  * Burada Azure Backup düzgün çalıştığı ancak "Windows Server Yedekleme" başarısız olduğu Olay Görüntüleyicisi hatası 517 bir örneğidir: ![ başarısız Windows Server yedekleme](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
   * Azure Backup başarısız olursa, bu makaledeki ortak VM yedekleme hataları bölümünde karşılık gelen hata kodunu arayın.
 
 ## <a name="common-issues"></a>Genel sorunlar
@@ -106,31 +105,33 @@ Hata iletisi: VSS yazarları hatalı durumda olduğundan anlık görüntü işle
 VSS yazıcılarının hatalı durumda olması nedeniyle bu hata oluşur. Azure Backup uzantıları, disklerin anlık görüntülerini almak için VSS yazıcılarında etkileşim kurar. Bu sorunu çözmek için şu adımları izleyin:
 
 1. Adım: Hatalı durumda olan VSS yazıcılarını yeniden başlatın.
-- Yükseltilmiş bir komut isteminden komutunu çalıştırın ```vssadmin list writers``` .
-- Çıktı tüm VSS yazıcılarını ve bunların durumlarını içerir. **[1] kararlı**olmayan bir duruma sahıp her VSS Yazıcı IÇIN ilgili VSS yazıcısının hizmetini yeniden başlatın. 
-- Hizmeti yeniden başlatmak için, yükseltilmiş bir komut isteminden aşağıdaki komutları çalıştırın:
+
+* Yükseltilmiş bir komut isteminden komutunu çalıştırın ```vssadmin list writers``` .
+* Çıktı tüm VSS yazıcılarını ve bunların durumlarını içerir. **[1] kararlı**olmayan bir duruma sahıp her VSS Yazıcı IÇIN ilgili VSS yazıcısının hizmetini yeniden başlatın.
+* Hizmeti yeniden başlatmak için, yükseltilmiş bir komut isteminden aşağıdaki komutları çalıştırın:
 
  ```net stop serviceName``` <br>
  ```net start serviceName```
 
 > [!NOTE]
 > Bazı hizmetlerin yeniden başlatılmasına yönelik üretim ortamınız üzerinde bir etkisi olabilir. Onay işleminin izlendiğinden ve hizmetin zamanlanan kesinti sırasında yeniden başlatıldığından emin olun.
- 
-   
+
 2. Adım: VSS yazıcılarını yeniden başlatmak sorunu çözmezse, iş parçacıklarının blob anlık görüntüleri için oluşturulmasını engellemek üzere yükseltilmiş bir komut isteminden (yönetici olarak) aşağıdaki komutu çalıştırın.
 
 ```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
 ```
+
 3. Adım: 1 ve 2. adımlar sorunu çözmezse, bu, sınırlı ıOPS nedeniyle VSS yazıcılarının zaman aşımına uğramasından kaynaklanıyor olabilir.<br>
 
 Doğrulamak için, ***sistem ve Olay Görüntüleyicisi uygulama günlükleri*** ' ne gidin ve aşağıdaki hata iletisini kontrol edin:<br>
 *Gölge kopya sağlayıcısı, gölge kopya oluşturulan birime yazma işlemlerini tutarken zaman aşımına uğradı. Bu, büyük olasılıkla bir uygulama veya sistem hizmeti tarafından birimdeki aşırı etkinlikten kaynaklanıyor olabilir. Birimdeki etkinlik azaltıldığında daha sonra yeniden deneyin.*<br>
 
 Çözüm:
-- Yükü VM disklerinde dağıtmak için olanaklar olup olmadığını denetleyin. Bu, tek disklerdeki yükü azaltır. [Depolama düzeyinde tanılama ölçümlerini etkinleştirerek IOPS azaltmasını kontrol](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm)edebilirsiniz.
-- VM üzerindeki yük en düşük düzeyde olduğunda, yedekleme ilkesini yoğun saatlerde yedeklemeler gerçekleştirmek üzere değiştirin.
-- Azure disklerini, daha yüksek IOPS 'yi destekleyecek şekilde yükseltin. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/virtual-machines/disks-types)
+
+* Yükü VM disklerinde dağıtmak için olanaklar olup olmadığını denetleyin. Bu, tek disklerdeki yükü azaltır. [Depolama düzeyinde tanılama ölçümlerini etkinleştirerek IOPS azaltmasını kontrol](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm)edebilirsiniz.
+* VM üzerindeki yük en düşük düzeyde olduğunda, yedekleme ilkesini yoğun saatlerde yedeklemeler gerçekleştirmek üzere değiştirin.
+* Azure disklerini, daha yüksek IOPS 'yi destekleyecek şekilde yükseltin. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/virtual-machines/disks-types)
 
 ### <a name="extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state"></a>ExtensionFailedVssServiceInBadState - VSS (Birim Gölge Kopyası) hizmeti hatalı durumda olduğundan anlık görüntü işlemi başarısız oldu
 
@@ -140,31 +141,32 @@ Hata iletisi: VSS (birim gölge kopyası) hizmeti hatalı durumda olduğundan an
 VSS hizmeti hatalı durumda olduğundan bu hata oluşur. Azure Backup uzantıları, disklerin anlık görüntülerini almak için VSS hizmetiyle etkileşime geçer. Bu sorunu çözmek için şu adımları izleyin:
 
 VSS (birim gölge kopyası) hizmetini yeniden başlatın.
-- Services. msc ' ye gidin ve ' birim gölge kopyası hizmeti ' ' ni yeniden başlatın.<br>
-veya<br>
-- Yükseltilmiş bir komut isteminden aşağıdaki komutları çalıştırın:
+
+* Services. msc ' ye gidin ve ' birim gölge kopyası hizmeti ' ' ni yeniden başlatın.<br>
+(veya)<br>
+* Yükseltilmiş bir komut isteminden aşağıdaki komutları çalıştırın:
 
  ```net stop VSS``` <br>
  ```net start VSS```
 
- 
 Sorun devam ederse, VM 'yi zamanlanan kapalı kalma süresi üzerinde yeniden başlatın.
 
 ### <a name="usererrorskunotavailable---vm-creation-failed-as-vm-size-selected-is-not-available"></a>UserErrorSkuNotAvailable-VM boyutu seçili olmadığından VM oluşturma başarısız oldu
 
-Hata kodu: UserErrorSkuNotAvailable hata iletisi: seçili VM boyutu kullanılabilir olmadığından VM oluşturma başarısız oldu. 
- 
+Hata kodu: UserErrorSkuNotAvailable hata iletisi: seçili VM boyutu kullanılabilir olmadığından VM oluşturma başarısız oldu.
+
 Bu hata, geri yükleme işlemi sırasında seçilen VM boyutu desteklenmeyen bir boyut olduğu için oluşur. <br>
 
 Bu sorunu çözmek için geri yükleme işlemi sırasında [diskleri geri yükle](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) seçeneğini kullanın. [PowerShell cmdlet 'lerini](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks)kullanarak [kullanılabilir desteklenen VM BOYUTLARı](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-compute-support) listesinden bir VM oluşturmak için bu diskleri kullanın.
 
 ### <a name="usererrormarketplacevmnotsupported---vm-creation-failed-due-to-market-place-purchase-request-being-not-present"></a>UserErrorMarketPlaceVMNotSupported-VM oluşturma, Pazar yeri satın alma isteği olmadığı için başarısız oldu
 
-Hata kodu: UserErrorMarketPlaceVMNotSupported hata iletisi: Pazar yeri satın alma isteği mevcut olmadığından VM oluşturma başarısız oldu. 
- 
+Hata kodu: UserErrorMarketPlaceVMNotSupported hata iletisi: Pazar yeri satın alma isteği mevcut olmadığından VM oluşturma başarısız oldu.
+
 Azure Backup, Azure Marketi 'nde bulunan VM 'lerin yedeklenmesini ve geri yüklenmesini destekler. Bu hata, Azure Marketi 'nde artık kullanılamayan bir VM 'yi (belirli bir plan/yayımcı ayarı ile) geri yüklemeye çalıştığınızda oluşur. [daha fazla bilgi edinin](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal).
-- Bu sorunu çözmek için geri yükleme işlemi sırasında [diskleri geri yükle](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) seçeneğini kullanın ve ardından sanal makineye karşılık gelen en son Market BILGILERINI kullanarak VM oluşturmak için [POWERSHELL](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks) veya [Azure CLI](https://docs.microsoft.com/azure/backup/tutorial-restore-disk) cmdlet 'lerini kullanın.
-- Yayımcının Market bilgisi yoksa, verilerinizi almak için veri disklerini kullanabilir ve bunları mevcut bir VM 'ye ekleyebilirsiniz.
+
+* Bu sorunu çözmek için geri yükleme işlemi sırasında [diskleri geri yükle](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) seçeneğini kullanın ve ardından sanal makineye karşılık gelen en son Market BILGILERINI kullanarak VM oluşturmak için [POWERSHELL](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks) veya [Azure CLI](https://docs.microsoft.com/azure/backup/tutorial-restore-disk) cmdlet 'lerini kullanın.
+* Yayımcının Market bilgisi yoksa, verilerinizi almak için veri disklerini kullanabilir ve bunları mevcut bir VM 'ye ekleyebilirsiniz.
 
 ### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure-yedekleme uzantısı için yapılandırma ayrıştırılırken hata oluştu
 
@@ -244,7 +246,7 @@ Bu, anlık görüntünün Konuk yerine konak üzerinden alınmasını sağlar. Y
 
 **2. adım**: Yedekleme zamanlamasını VM 'nin daha az yük altında olduğu bir saate değiştirmeyi deneyin (daha az CPU veya IOPS gibi)
 
-**3. adım**: [VM 'nin boyutunu artırmayı](https://azure.microsoft.com/blog/resize-virtual-machines/) deneyin ve işlemi yeniden deneyin
+**3. adım**: [VM 'nin boyutunu artırmayı](https://docs.microsoft.com/azure/virtual-machines/windows/resize-vm) deneyin ve işlemi yeniden deneyin
 
 ### <a name="320001-resourcenotfound---could-not-perform-the-operation-as-vm-no-longer-exists--400094-bcmv2vmnotfound---the-virtual-machine-doesnt-exist--an-azure-virtual-machine-wasnt-found"></a>320001, ResourceNotFound-VM artık mevcut olmadığından işlem gerçekleştirilemedi/400094, BCMV2VMNotFound-sanal makine yok/bir Azure sanal makinesi bulunamadı
 
@@ -315,12 +317,12 @@ Hata kodu: UserErrorRequestDisallowedByPolicy <BR> Hata iletisi: VM 'de anlık g
 
 ## <a name="restore"></a>Geri Yükleme
 
-#### <a name="disks-appear-offline-after-file-restore"></a>Dosya geri yüklemeden sonra diskler çevrimdışı görünüyor
+### <a name="disks-appear-offline-after-file-restore"></a>Dosya geri yüklemeden sonra diskler çevrimdışı görünüyor
 
-Geri yükleme sonrasında, disklerin çevrimdışı olduğunu fark edersiniz: 
+Geri yükleme sonrasında, disklerin çevrimdışı olduğunu fark edersiniz:
+
 * Betiğin yürütüldüğü makinenin işletim sistemi gereksinimlerini karşıladığını doğrulayın. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#system-requirements).  
 * Aynı kaynağa geri yüklemediğinizden emin olun, [daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#original-backed-up-machine-versus-another-machine).
-
 
 | Hata ayrıntıları | Geçici çözüm |
 | --- | --- |

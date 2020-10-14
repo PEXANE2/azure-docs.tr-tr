@@ -2,18 +2,18 @@
 title: Azure portal arama dizini oluşturma
 titleSuffix: Azure Cognitive Search
 description: Bu Azure portal hızlı başlangıçta, Azure Bilişsel Arama 'de ilk arama dizininizi oluşturmak, yüklemek ve sorgulamak için veri alma Sihirbazı 'nı kullanın.
-author: tchristiani
 manager: nitinme
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/16/2020
-ms.openlocfilehash: 460c37107ac2dbd8bc3377d3716e708331db9904
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: b783366958380f391dc76583c42988badc9915c8
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91740946"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056489"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure Bilişsel Arama dizini oluşturma
 
@@ -21,7 +21,7 @@ ms.locfileid: "91740946"
 
 Ayrıca, görüntü dosyalarından ve yapılandırılmamış metinden metin ve yapı ayıklayabilmeniz için, sihirbazın AI zenginleştirme sayfaları vardır. AI ile içerik işleme, optik karakter tanıma (OCR), anahtar tümceciği ve varlık ayıklama ve görüntü analizi içerir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
