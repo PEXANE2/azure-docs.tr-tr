@@ -13,19 +13,16 @@ ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: c6e59ab0432ad2b7bdccb5ce9916e85eb6d95048
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f6170de65ae5e1ca8ecb5f7cc8a78f4f194ac41
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116402"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055299"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Neden Microsoft kimlik platformuna (v2.0) güncelleştirmelisiniz?
 
 Yeni bir uygulama geliştirirken, Microsoft Identity platform (v 2.0) ve Azure Active Directory (v 1.0) uç noktaları arasındaki farkları bilmemiz önemlidir. Bu makalede, uç noktalar ile Microsoft Identity platformu için bazı mevcut sınırlamalar arasındaki temel farklılıklar ele alınmaktadır.
-
-> [!NOTE]
-> Microsoft Identity platform uç noktası tüm Azure AD senaryolarını ve özelliklerini desteklemez. Microsoft Identity platform uç noktasını kullanmanız gerekip gerekmediğini öğrenmek için [Microsoft Identity platform sınırlamaları](#limitations)hakkında bilgi edinin.
 
 ## <a name="who-can-sign-in"></a>Kimler oturum açabilir
 
@@ -35,7 +32,7 @@ Yeni bir uygulama geliştirirken, Microsoft Identity platform (v 2.0) ve Azure A
 * Microsoft Identity platform uç noktası, Azure AD 'den ve hotmail.com, outlook.com ve msn.com gibi kişisel Microsoft hesaplarından (MSA) iş ve okul hesaplarının oturum açmasını sağlar.
 * Her iki uç nokta de *[tek kiracılı](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* olarak yapılandırılmış uygulamalar veya kiracıya özgü uç noktayı () işaret edecek şekilde yapılandırılmış *çok kiracılı* uygulamalar için Azure AD dizininin *[Konuk kullanıcılarının](../external-identities/what-is-b2b.md)* oturum açma işlemlerini kabul eder `https://login.microsoftonline.com/{TenantId_or_Name}` .
 
-Microsoft Identity platform uç noktası, kişisel Microsoft hesaplarından ve iş ve okul hesaplarından oturum açma işlemlerini kabul eden uygulamalar yazmanıza izin verir. Bu, uygulamanızı tamamen hesap belirsiz şekilde yazmanıza olanak sağlar. Örneğin, uygulamanız [Microsoft Graph](https://graph.microsoft.io)çağırırsa, bazı ek işlevler ve veriler, SharePoint siteleri veya dizin verileri gibi iş hesapları için kullanılabilir. Ancak, [bir kullanıcının postasını okumak](/graph/api/user-list-messages?view=graph-rest-1.0)gibi birçok eylem için aynı kod e-postaya hem kişisel hem de iş ve okul hesapları için erişebilir.
+Microsoft Identity platform uç noktası, kişisel Microsoft hesaplarından ve iş ve okul hesaplarından oturum açma işlemlerini kabul eden uygulamalar yazmanıza izin verir. Bu, uygulamanızı tamamen hesap belirsiz şekilde yazmanıza olanak sağlar. Örneğin, uygulamanız [Microsoft Graph](https://graph.microsoft.io)çağırırsa, bazı ek işlevler ve veriler, SharePoint siteleri veya dizin verileri gibi iş hesapları için kullanılabilir. Ancak, [bir kullanıcının postasını okumak](/graph/api/user-list-messages)gibi birçok eylem için aynı kod e-postaya hem kişisel hem de iş ve okul hesapları için erişebilir.
 
 Microsoft Identity platform uç noktası için, Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanarak tüketici, eğitim ve kurumsal işletim LDS 'ye erişim elde edebilirsiniz. Azure AD v 1.0 uç noktası yalnızca iş ve okul hesaplarından oturum açma işlemlerini kabul eder.
 
@@ -114,7 +111,7 @@ Bu kapsamlar, uygulamanızı en düşük düzeyde bir şekilde kodlarabilmeniz i
 Microsoft Identity platform uç noktası, yüklerini küçük tutmak için varsayılan olarak belirteçlerinde daha küçük bir talepler kümesi yayınlar. Bir Microsoft Identity platform belirtecinde artık varsayılan olarak sağlanmayan bir v 1.0 belirtecindeki belirli bir talebe bağımlılığı olan uygulama ve hizmetlerinize sahipseniz, bu talebi dahil etmek için [isteğe bağlı talepler](../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) özelliğini kullanmayı göz önünde bulundurun.
 
 > [!IMPORTANT]
-> v 1.0 ve v 2.0 belirteçleri hem v 1.0 hem de v 2.0 uç noktaları tarafından verilebilir! id_tokens, istedikleri bitiş noktasıyla *her zaman* *eşleşir ve erişim belirteçleri,* istemcinizin bu belirteci kullanarak çağırabilecekleri Web API 'si tarafından beklenen biçimle eşleşir.  Uygulama, v 1.0 biçim erişim belirteçlerini bekleyen Microsoft Graph çağrısı yapmak için v 2.0 uç noktasını kullanıyorsa, uygulamanız v 1.0 biçiminde bir belirteç alır.  
+> v 1.0 ve v 2.0 belirteçleri hem v 1.0 hem de v 2.0 uç noktaları tarafından verilebilir! id_tokens, istedikleri bitiş noktasıyla *her zaman* *eşleşir ve erişim belirteçleri,* istemcinizin bu belirteci kullanarak çağırabilecekleri Web API 'si tarafından beklenen biçimle eşleşir.  Uygulama, v 1.0 biçim erişim belirteçlerini bekleyen Microsoft Graph çağrısı yapmak için v 2.0 uç noktasını kullanıyorsa, uygulamanız v 1.0 biçiminde bir belirteç alır.
 
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -153,18 +150,22 @@ Bir uygulamayı Microsoft Identity platform ile kullanmak üzere nasıl kaydedec
 * Masaüstü veya mobil uygulama oluşturuyorsanız, Microsoft kimlik doğrulama kitaplıklarından birini (MSAL) kullanabilirsiniz. Bu kitaplıklar genel olarak kullanılabilir veya üretim tarafından desteklenen bir önizlemede, bunları üretim uygulamalarında kullanmak güvenlidir. Önizleme koşulları ve [kimlik doğrulama kitaplıkları](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)için kullanılabilir kitaplıklar hakkında daha fazla bilgi edinebilirsiniz.
 * Microsoft kitaplıkları tarafından kapsanmayan platformlar için, uygulama kodunuzda protokol iletileri doğrudan göndererek ve alarak Microsoft Identity platform uç noktasıyla tümleştirilebilir. OpenID Connect ve OAuth protokolleri, bu tür bir tümleştirme yapmanıza yardımcı olmak için [açıkça belgelenmiştir](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) .
 * Son olarak, açık kaynaklı OpenID Connect ve OAuth kitaplıklarını Microsoft Identity platform uç noktasıyla tümleştirme için kullanabilirsiniz. Microsoft Identity platform uç noktası, değişiklik yapılmadan birçok açık kaynaklı protokol kitaplığı ile uyumlu olmalıdır. Bu tür kitaplıkların kullanılabilirliği dile ve platforma göre değişiklik gösterir. [OpenID Connect](https://openid.net/connect/) ve [OAuth 2,0](https://oauth.net/2/) Web siteleri popüler uygulamaların bir listesini tutar. Daha fazla bilgi için bkz. [Microsoft Identity platform ve Authentication kitaplıkları](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)ve Microsoft Identity platform uç noktasıyla sınanmış açık kaynaklı istemci kitaplıkları ve örnekleri listesi.
-* Başvuru için, `.well-known` Microsoft Identity platform ortak uç noktası için uç nokta `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` . `common`Kiracınıza özgü verileri almak için KIRACı Kimliğinizle değiştirin.  
+* Başvuru için, `.well-known` Microsoft Identity platform ortak uç noktası için uç nokta `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` . `common`Kiracınıza özgü verileri almak için KIRACı Kimliğinizle değiştirin.
 
 ### <a name="protocol-changes"></a>Protokol değişiklikleri
 
-Microsoft Identity platform uç noktası SAML veya WS-Federation; desteklemez yalnızca OpenID Connect ve OAuth 2,0 ' i destekler.  V 1.0 uç noktasındaki OAuth 2,0 protokollerine yapılan önemli değişiklikleri şunlardır: 
+Microsoft Identity platform uç noktası SAML veya WS-Federation; desteklemez yalnızca OpenID Connect ve OAuth 2,0 ' i destekler.  V 1.0 uç noktasındaki OAuth 2,0 protokollerine yapılan önemli değişiklikleri şunlardır:
 
-* `email`İsteğe bağlı bir talep yapılandırılmışsa **veya** istekte Scope = email belirtilmişse talep döndürülür. 
-* Parametresi, `scope` parametresi yerine artık desteklenmektedir `resource` .  
-* Birçok yanıt, OAuth 2,0 belirtimine daha uyumlu hale getirmek için değiştirilmiştir, örneğin, `expires_in` bir dize yerine doğru bir int olarak döndürülüyor.  
+* `email`İsteğe bağlı bir talep yapılandırılmışsa **veya** istekte Scope = email belirtilmişse talep döndürülür.
+* Parametresi, `scope` parametresi yerine artık desteklenmektedir `resource` .
+* Birçok yanıt, OAuth 2,0 belirtimine daha uyumlu hale getirmek için değiştirilmiştir, örneğin, `expires_in` bir dize yerine doğru bir int olarak döndürülüyor.
 
 Microsoft Identity platform uç noktasında desteklenen protokol işlevselliğinin kapsamını daha iyi anlamak için bkz. [OpenID Connect ve OAuth 2,0 protokol başvurusu](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
 
-#### <a name="saml-restrictions"></a>SAML kısıtlamaları
+#### <a name="saml-usage"></a>SAML kullanımı
 
-Windows uygulamalarında Active Directory Authentication Library (ADAL) kullandıysanız, Security Assertion Markup Language (SAML) onaylama izni kullanan Windows tümleşik kimlik doğrulamasının avantajlarından faydalanabilirsiniz. Bu izin ile, federasyon Azure AD kiracılarının kullanıcıları kimlik bilgilerini girmeden şirket içi Active Directory örneğiyle sessizce kimlik doğrulaması yapabilir. SAML onaylama izni, Microsoft Identity platform uç noktasında desteklenmez.
+Windows uygulamalarında Active Directory Authentication Library (ADAL) kullandıysanız, Security Assertion Markup Language (SAML) onaylama izni kullanan Windows tümleşik kimlik doğrulamasının avantajlarından faydalanabilirsiniz. Bu izin ile, federasyon Azure AD kiracılarının kullanıcıları kimlik bilgilerini girmeden şirket içi Active Directory örneğiyle sessizce kimlik doğrulaması yapabilir. SAML hala kurumsal kullanıcılarla kullanılmak üzere [desteklenen bir protokolse](../develop/active-directory-saml-protocol-reference.md) , v 2.0 uç noktası yalnızca OAuth 2,0 uygulamalarıyla birlikte kullanılabilir.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+[Microsoft Identity platform belgelerinde](../develop/index.yml)daha fazla bilgi edinin.

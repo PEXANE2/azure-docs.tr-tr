@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.reviewer: jmartens, larryfr
 ms.author: tracych
 author: tracychms
-ms.date: 08/14/2020
+ms.date: 10/13/2020
 ms.custom: Build2020, devx-track-python
-ms.openlocfilehash: 8e8d0a13bc01e95311345154648ecb00b624c4bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e55a8e8dd78a6093c875cd20dd8b240816e7426
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905604"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055112"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Azure Machine Learning kullanarak büyük miktarlarda veri üzerinde toplu çıkarımı çalıştırın
 
@@ -26,6 +26,9 @@ Bu makalede Azure Machine Learning modelinizin paralel çalıştırılması ve b
 Büyük veri kümeleri üzerinde veya karmaşık modellerle sınırlama zaman alabilir. `ParallelRunStep`Sınıfı, genel sonuçları daha hızlı bir şekilde elde etmenizi sağlar. Tek bir değerlendirme çalıştırmak oldukça hızlı olsa da birçok senaryo (nesne algılama, video işleme, doğal dil işleme vb.) birçok değerlendirme çalıştırmayı içerir. 
 
 İle `ParallelRunStep` , toplu iş ınlaların büyük makine kümelerine ölçeklendirilmesi basittir. Bu tür kümeler, geliştirilmiş üretkenlik ve iyileştirilmiş maliyetle terabaytlarca yapılandırılmış veya yapılandırılmamış verileri işleyebilir.
+
+> [!NOTE]
+> Paralel iş yükleri için ParallelRunStep, aynı anda birçok modeli eğitmek veya büyük verileri işlemek için de kullanılabilir.
 
 Bu makalede, aşağıdaki görevleri öğreneceksiniz:
 
@@ -37,7 +40,7 @@ Bu makalede, aşağıdaki görevleri öğreneceksiniz:
 > 1. Yeni veri girişi ve parametreleriyle toplu çıkarımı çalıştırmayı yeniden gönderin. 
 > 1. Sonuçlara bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 

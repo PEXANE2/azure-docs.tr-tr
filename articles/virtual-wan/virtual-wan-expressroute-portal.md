@@ -1,5 +1,5 @@
 ---
-title: Öğretici-Azure sanal WAN kullanarak ExpressRoute bağlantıları oluşturma
+title: 'Öğretici: Azure sanal WAN kullanarak ExpressRoute bağlantıları oluşturma'
 description: Bu öğreticide Azure sanal WAN kullanarak Azure ve şirket içi ortamlara ExpressRoute bağlantıları oluşturma hakkında bilgi edinin.
 services: virtual-wan
 author: cherylmc
@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.date: 10/07/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 50b86c4c86391b6ffdee18cdadbdddbdff8642a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d880be6cbc37b273258075e6efc7a98d3478384
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841144"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054823"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Öğretici: Azure sanal WAN kullanarak bir ExpressRoute ilişkilendirmesi oluşturma
 
 Bu öğreticide, Azure 'daki kaynaklarınıza bir ExpressRoute bağlantı hattı üzerinden bağlanmak için sanal WAN 'ın nasıl kullanılacağı gösterilmektedir. Sanal WAN ve sanal WAN kaynakları hakkında daha fazla bilgi için bkz. [sanal WAN 'A genel bakış](virtual-wan-about.md).
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Sanal WAN oluşturma
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Ağ Geçidi boyutunu değiştirme
 > * Varsayılan bir yol tanıtma
 
-## <a name="before-you-begin"></a>Başlamadan önce
+## <a name="prerequisites"></a>Ön koşullar
 
 Yapılandırmanıza başlamadan önce aşağıdaki ölçütleri karşıladığınızı doğrulayın:
 
@@ -153,6 +153,17 @@ Azure sanal hub 'ının varsayılan yolu olan 0.0.0.0/0 yolunu ExpressRoute biti
 
    ![Varsayılan yolu yay](./media/virtual-wan-expressroute-portal/defaultroute2.png "Varsayılan yolu yay")
 
+## <a name="clean-up-resources"></a><a name="cleanup"></a>Kaynakları temizleme
+
+Bu kaynaklar artık gerekli değilse, [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) komutunu kullanarak kaynak grubunu ve içerdiği tüm kaynakları kaldırabilirsiniz. "myResourceGroup" yerine kaynak grubunuzun adını yazın ve aşağıdaki PowerShell komutunu çalıştırın:
+
+```azurepowershell-interactive
+Remove-AzResourceGroup -Name myResourceGroup -Force
+```
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sanal WAN hakkında daha fazla bilgi için [Sanal WAN'a Genel Bakış](virtual-wan-about.md) sayfasına bakın.
+Sonra, sanal WAN hakkında daha fazla bilgi edinmek için bkz.:
+
+> [!div class="nextstepaction"]
+> * [Sanal WAN hakkında SSS](virtual-wan-faq.md)
