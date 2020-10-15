@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: beebe60d70b7e4908bd3e9348fe815036d6955c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77cea7ebd333b958675438aaeb5e0e2a326a5866
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85920063"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075187"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Ortak bulut hizmeti başlangıç görevleri
 Bu makalede, bulut hizmetinizde gerçekleştirmek isteyebileceğiniz yaygın başlangıç görevlerinin bazı örnekleri verilmiştir. Bir rol başlamadan önce işlemleri gerçekleştirmek için başlangıç görevleri kullanabilirsiniz. Gerçekleştirmek isteyebileceğiniz işlemler, bir bileşeni yüklemeyi, COM bileşenlerini kaydetmeyi, kayıt defteri anahtarlarını ayarlamayı veya uzun süre çalışan bir işlemi başlatmayı içerir. 
@@ -52,7 +52,7 @@ Değişkenler, dağıtım hakkındaki bir şeye başvurmak için [geçerli bir A
 
 
 ## <a name="configure-iis-startup-with-appcmdexe"></a>AppCmd.exe ile IIS başlatmasını yapılandırma
-[AppCmd.exe](https://technet.microsoft.com/library/jj635852.aspx) komut satırı aracı, Azure 'DA başlangıçta IIS ayarlarını yönetmek için kullanılabilir. *AppCmd.exe* , Azure 'da başlangıç görevlerinde kullanmak için yapılandırma ayarlarına uygun, komut satırı erişimi sağlar. *AppCmd.exe*kullanarak, uygulamalar ve siteler için Web sitesi ayarları eklenebilir, değiştirilebilir veya kaldırılabilir.
+[AppCmd.exe](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj635852(v=ws.11)) komut satırı aracı, Azure 'DA başlangıçta IIS ayarlarını yönetmek için kullanılabilir. *AppCmd.exe* , Azure 'da başlangıç görevlerinde kullanmak için yapılandırma ayarlarına uygun, komut satırı erişimi sağlar. *AppCmd.exe*kullanarak, uygulamalar ve siteler için Web sitesi ayarları eklenebilir, değiştirilebilir veya kaldırılabilir.
 
 Ancak, bir başlangıç görevi olarak *AppCmd.exe* kullanımı için birkaç şey daha vardır:
 
@@ -499,14 +499,14 @@ Bulut [Hizmeti modelini ve paketini](cloud-services-model-and-package.md) gözde
 Bulut hizmeti paketinizi [oluşturun ve dağıtın](cloud-services-how-to-create-deploy-portal.md) .
 
 [ServiceDefinition. csdef]: cloud-services-model-and-package.md#csdef
-[Görev]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
-[Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
-[Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
-[Ortam]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
-[Değişken]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
-[Roleınstancevalue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
-[RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-[Uç Noktalar]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
-[LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
-[LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
-[Roleınstancevalue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
+[Görev]: /previous-versions/azure/reference/gg557552(v=azure.100)#Task
+[Startup]: /previous-versions/azure/reference/gg557552(v=azure.100)#Startup
+[Runtime]: /previous-versions/azure/reference/gg557552(v=azure.100)#Runtime
+[Ortam]: /previous-versions/azure/reference/gg557552(v=azure.100)#Environment
+[Değişken]: /previous-versions/azure/reference/gg557552(v=azure.100)#Variable
+[Roleınstancevalue]: /previous-versions/azure/reference/gg557552(v=azure.100)#RoleInstanceValue
+[RoleEnvironment]: /previous-versions/azure/reference/ee773173(v=azure.100)
+[Noktalarının]: /previous-versions/azure/reference/gg557552(v=azure.100)#Endpoints
+[LocalStorage]: /previous-versions/azure/reference/gg557552(v=azure.100)#LocalStorage
+[LocalResources]: /previous-versions/azure/reference/gg557552(v=azure.100)#LocalResources
+[Roleınstancevalue]: /previous-versions/azure/reference/gg557552(v=azure.100)#RoleInstanceValue
