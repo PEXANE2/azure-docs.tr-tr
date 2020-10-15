@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: efec40e4236c00fd4792e9d6aa51943cf43838ca
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 434093df3465e363d95fb79342d1854b99583d08
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89001425"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091432"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>Hızlı başlangıç: .NET için Azure Blob depolama istemci kitaplığı v11
 
@@ -33,7 +33,7 @@ ms.locfileid: "89001425"
 
 Ek kaynaklar:
 
-* [API başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet)
+* [API başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
 * [Kitaplık kaynak kodu](https://github.com/Azure/azure-storage-net/tree/master/Blob)
 * [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
 * [Örnekler](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
@@ -205,7 +205,7 @@ Bu örnek kod parçacıkları, .NET için Azure Blob depolama istemci kitaplığ
 
 ### <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-Aşağıdaki kod, ortam değişkeninin depolama hesabına işaret eden bir [Cloudstorageaccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount?view=azure-dotnet) nesnesi oluşturmak için ayrıştırılabilen bir bağlantı dizesi içerip içermediğini denetler. Bağlantı dizesinin geçerli olup olmadığını denetlemek için [TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse?view=azure-dotnet) yöntemini kullanın. `TryParse`Başarılı olursa, `storageAccount` değişkenini başlatır ve döndürür `true` .
+Aşağıdaki kod, ortam değişkeninin depolama hesabına işaret eden bir [Cloudstorageaccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount) nesnesi oluşturmak için ayrıştırılabilen bir bağlantı dizesi içerip içermediğini denetler. Bağlantı dizesinin geçerli olup olmadığını denetlemek için [TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse) yöntemini kullanın. `TryParse`Başarılı olursa, `storageAccount` değişkenini başlatır ve döndürür `true` .
 
 Bu kodu metodun içine ekleyin `ProcessAsync` :
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: c7fcced1833cb5f4ccb9c2c2fd44dd84a9abb3cb
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 7f52bd94a0286ea50d09ab7c77dce339e8a3ebf3
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077873"
+ms.locfileid: "92089375"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Program aracılığıyla Azure panoları oluşturma
 
@@ -55,7 +55,7 @@ Panoyu yapılandırdıktan sonra, bir sonraki adım, Panoyu **Share** komutunu k
 
 ![bir panoyu paylaşma](./media/azure-portal-dashboards-create-programmatically/share-command.png)
 
-**Paylaşma** seçeneğinin belirlenmesi, hangi aboneliğin ve kaynak grubunun yayımlanacağını seçmenizi ister. Seçtiğiniz aboneliğe ve kaynak grubuna yazma erişiminizin olması gerekir. Daha fazla bilgi için bkz. [Azure RBAC kullanarak rol atamaları ekleme veya kaldırma ve Azure Portal](../role-based-access-control/role-assignments-portal.md).
+**Paylaşma** seçeneğinin belirlenmesi, hangi aboneliğin ve kaynak grubunun yayımlanacağını seçmenizi ister. Seçtiğiniz aboneliğe ve kaynak grubuna yazma erişiminizin olması gerekir. Daha fazla bilgi için bkz. [Azure portalı kullanarak Azure rol atamalarını ekleme veya kaldırma](../role-based-access-control/role-assignments-portal.md).
 
 ![paylaşım ve erişim değişiklikleri yapın](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: c30b82e44833e413c1576bf64e8fef263c58b246
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bc245fa02f57a433a76a316caac67ed5d884fe9
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91264618"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072756"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde kendi IP adresi aralıklarınız ile Kubernetes kullanan ağını kullanma
 
@@ -20,7 +20,7 @@ Varsayılan olarak, aks kümeleri [Kubernetes kullanan][kubenet]kullanır ve siz
 
 Bu makalede, bir aks kümesi için bir sanal ağ alt ağı oluşturmak ve kullanmak için *Kubernetes kullanan* Networking 'in nasıl kullanılacağı gösterilmektedir. Ağ seçenekleri ve konuları hakkında daha fazla bilgi için bkz. [Kubernetes ve AKS Için ağ kavramları][aks-network-concepts].
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * AKS kümesinin sanal ağı giden internet bağlantısına izin vermelidir.
 * Aynı alt ağda birden fazla AKS kümesi oluşturmayın.
@@ -56,7 +56,7 @@ Azure, bir UDR 'de en fazla 400 yolu destekler, bu nedenle 400 düğümden daha 
 * Azure CNı kümelerinin aksine, birden fazla Kubernetes kullanan kümesi bir alt ağ paylaşamaz.
 * **Kubernetes kullanan üzerinde desteklenmeyen** özellikler şunlardır:
    * [Azure ağ ilkeleri](use-network-policies.md#create-an-aks-cluster-and-enable-network-policy), ancak calıco ağ ilkeleri Kubernetes kullanan üzerinde destekleniyor
-   * [Windows düğüm havuzları](windows-node-limitations.md)
+   * [Windows düğüm havuzları](./windows-faq.md)
    * [Sanal düğümler eklentisi](virtual-nodes-portal.md#known-limitations)
 
 ### <a name="ip-address-availability-and-exhaustion"></a>IP adresi kullanılabilirliği ve tükenmesi

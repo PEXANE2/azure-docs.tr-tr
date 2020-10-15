@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/30/2017
 ms.author: tagore
 ms.custom: devx-track-python
-ms.openlocfilehash: 35d0f77d5f4dde9e156d22e64881ba674189d327
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef155116904ee0d3ecab250a254010e2f7664757
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87851520"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073997"
 ---
 # <a name="use-service-management-from-python"></a>Python 'da hizmet yönetimi kullanma
 Bu kılavuzda, Python 'dan programlı olarak ortak hizmet yönetimi görevlerini nasıl gerçekleştireceğiniz gösterilmektedir. [Python Için Azure SDK](https://github.com/Azure/azure-sdk-for-python) 'Daki **ServiceManagementService** sınıfı, [Azure Portal][management-portal]mevcut olan hizmet yönetimiyle ilgili işlevlerin büyük bölümüne programlı erişimi destekler. Bulut Hizmetleri, dağıtımlar, veri yönetimi hizmetleri ve sanal makineler oluşturmak, güncelleştirmek ve silmek için bu işlevi kullanabilirsiniz. Bu işlevsellik, hizmet yönetimine programlı erişim gerektiren uygulamalar oluşturmak için yararlı olabilir.
@@ -194,7 +194,7 @@ sms.delete_deployment('myhostedservice', 'v1')
 ```
 
 ## <a name="create-a-storage-service"></a><a name="CreateStorageService"> </a>Depolama hizmeti oluşturma
-[Depolama hizmeti](../storage/common/storage-create-storage-account.md) , Azure [BLOB 'ları](../storage/blobs/storage-python-how-to-use-blob-storage.md), [tabloları](../cosmos-db/table-storage-how-to-use-python.md)ve [kuyrukları](../storage/queues/storage-python-how-to-use-queue-storage.md)için erişmenizi sağlar. Bir depolama hizmeti oluşturmak için, hizmet için bir ad (3 ila 24 küçük harf ve Azure içinde benzersiz) gerekir. Ayrıca bir açıklama, etiket (en fazla 100 karakter, Base64 olarak kodlanmış) ve bir konum gerekir. Aşağıdaki örnek, bir konum belirterek depolama hizmeti oluşturmayı göstermektedir:
+[Depolama hizmeti](../storage/common/storage-account-create.md) , Azure [BLOB 'ları](../storage/blobs/storage-quickstart-blobs-python.md), [tabloları](../cosmos-db/table-storage-how-to-use-python.md)ve [kuyrukları](../storage/queues/storage-python-how-to-use-queue-storage.md)için erişmenizi sağlar. Bir depolama hizmeti oluşturmak için, hizmet için bir ad (3 ila 24 küçük harf ve Azure içinde benzersiz) gerekir. Ayrıca bir açıklama, etiket (en fazla 100 karakter, Base64 olarak kodlanmış) ve bir konum gerekir. Aşağıdaki örnek, bir konum belirterek depolama hizmeti oluşturmayı göstermektedir:
 
 ```python
 from azure import *
@@ -446,9 +446,9 @@ sms.create_virtual_machine_deployment(service_name=name,
     vm_image_name = image_name)
 ```
 
-Klasik dağıtım modelinde Linux sanal makinesini yakalama hakkında daha fazla bilgi edinmek için bkz. [bir Linux sanal makinesi yakalama](../virtual-machines/linux/classic/capture-image-classic.md).
+Klasik dağıtım modelinde Linux sanal makinesini yakalama hakkında daha fazla bilgi edinmek için bkz. [bir Linux sanal makinesi yakalama](/previous-versions/azure/virtual-machines/linux/classic/capture-image-classic).
 
-Klasik dağıtım modelinde bir Windows sanal makinesini yakalama hakkında daha fazla bilgi edinmek için bkz. [Windows sanal makinesi yakalama](../virtual-machines/windows/classic/capture-image-classic.md).
+Klasik dağıtım modelinde bir Windows sanal makinesini yakalama hakkında daha fazla bilgi edinmek için bkz. [Windows sanal makinesi yakalama](/previous-versions/azure/virtual-machines/windows/classic/capture-image-classic).
 
 ## <a name="next-steps"></a><a name="What's Next"> </a>Sonraki adımlar
 Hizmet yönetiminin temellerini öğrendiğinize göre, [Azure Python SDK 'Nın tüm API başvuru belgelerine](https://azure-sdk-for-python.readthedocs.org/) erişebilir ve Python uygulamanızı yönetmek için karmaşık görevleri kolayca gerçekleştirebilirsiniz.
@@ -474,7 +474,7 @@ Daha fazla bilgi için bkz. [Python Geliştirici Merkezi](https://azure.microsof
 [Delete a virtual machine]: #DeleteVM
 [Next steps]: #NextSteps
 [management-portal]: https://portal.azure.com/
-[svc-mgmt-rest-api]: https://msdn.microsoft.com/library/windowsazure/ee460799.aspx
+[svc-mgmt-rest-api]: /previous-versions/azure/ee460799(v=azure.100)
 
 
 [cloud service]:/azure/cloud-services/

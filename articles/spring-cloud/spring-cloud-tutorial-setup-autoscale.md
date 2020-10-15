@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/22/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 5ca0c498e9fd03ce6397824465f9e1e006eeccc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4effdbf5fb924b59a540ce16e769633c484c641a
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905380"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091075"
 ---
 # <a name="tutorial-set-up-autoscale-for-microservice-applications"></a>Öğretici: mikro hizmet uygulamaları için otomatik ölçeklendirmeyi ayarlama
 
@@ -25,12 +25,12 @@ Otomatik ölçeklendirme, mikro hizmet uygulamalarının talep değiştiğinde e
 Bu yordamları izlemek için şunlar gerekir:
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
-* Dağıtılmış bir Azure yay bulut hizmeti örneği. Kullanmaya başlamak için [Azure CLI aracılığıyla uygulama dağıtma hızlı](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli) başlangıcını izleyin.
+* Dağıtılmış bir Azure yay bulut hizmeti örneği. Kullanmaya başlamak için [Azure CLI aracılığıyla uygulama dağıtma hızlı](./spring-cloud-quickstart.md) başlangıcını izleyin.
 * Hizmet örneğiniz için en az bir uygulama zaten oluşturulmuş.
 
 ## <a name="navigate-to-the-autoscale-page-in-the-azure-portal"></a>Azure portal otomatik ölçeklendirme sayfasına gidin
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalda](https://portal.azure.com/) oturum açın.
 2. Azure Spring Cloud **genel bakış** sayfasına gidin.
 3. Hizmetinizi içeren kaynak grubunu seçin.
 4. Sol gezinti bölmesindeki menüde **Ayarlar** ' ın altında **uygulamalar** sekmesini seçin.
@@ -70,5 +70,5 @@ Temel katmandadır ve bu limitlerden biri veya daha fazlası ile kısıtlanıyor
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Microsoft Azure otomatik ölçeklendirmeyi genel bakış](https://docs.microsoft.com/azure/azure-monitor/platform/autoscale-overview)
-* [Azure CLı Izleme otomatik ölçeklendirme](https://docs.microsoft.com/cli/azure/monitor/autoscale?view=azure-cli-latest&preserve-view=true)
+* [Microsoft Azure otomatik ölçeklendirmeyi genel bakış](../azure-monitor/platform/autoscale-overview.md)
+* [Azure CLı Izleme otomatik ölçeklendirme](/cli/azure/monitor/autoscale?preserve-view=true&view=azure-cli-latest)

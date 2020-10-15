@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 02772f153cdda7e3f3c866c727d589e755e19033
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd0b9d1369fb1c0e662de83b7056da0ff7c83bd1
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906929"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090837"
 ---
 # <a name="integrate-azure-spring-cloud-with-azure-load-balance-solutions"></a>Azure Spring Cloud’u Azure Load Balance Çözümleriyle tümleştirme
 
@@ -26,12 +26,12 @@ Azure zaten farklı Yük Dengeleme çözümleri sağlıyor. Azure yay bulutunu A
 2.  Azure yay bulutunu Azure uygulama ağ geçidi ile tümleştirme
 3.  Azure yay bulutunu Azure ön kapısına tümleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Azure yay bulutu: [Azure yay bulut hizmeti oluşturma](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart)
-* Azure Traffic Manager: [Traffic Manager oluşturma](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile/)
-* Azure uygulama ağ geçidi: [uygulama ağ geçidi oluşturma](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
-* Azure ön kapı: [ön kapı oluşturma](https://docs.microsoft.com/azure/frontdoor/quickstart-create-front-door)
+* Azure yay bulutu: [Azure yay bulut hizmeti oluşturma](./spring-cloud-quickstart.md)
+* Azure Traffic Manager: [Traffic Manager oluşturma](../traffic-manager/quickstart-create-traffic-manager-profile.md)
+* Azure uygulama ağ geçidi: [uygulama ağ geçidi oluşturma](../application-gateway/quick-create-portal.md)
+* Azure ön kapı: [ön kapı oluşturma](../frontdoor/quickstart-create-front-door.md)
 
 ## <a name="integrate-azure-spring-cloud-with-azure-traffic-manager"></a>Azure yay bulutunu Azure Traffic Manager tümleştirme
 
@@ -92,6 +92,6 @@ Azure Spring Cloud Service ile tümleştirme ve arka uç havuzunu yapılandırma
     ![Ön kapı 2](media/spring-cloud-load-balancers/front-door-2.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Traffic Manager oluşturma](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile/)
-* [Uygulama ağ geçidi oluşturma](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
-* [Ön kapı oluşturma](https://docs.microsoft.com/azure/frontdoor/quickstart-create-front-door)
+* [Traffic Manager oluşturma](../traffic-manager/quickstart-create-traffic-manager-profile.md)
+* [Uygulama ağ geçidi oluşturma](../application-gateway/quick-create-portal.md)
+* [Ön kapı oluşturma](../frontdoor/quickstart-create-front-door.md)

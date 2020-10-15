@@ -10,18 +10,18 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f54b91ab1ea4521c17a3b40c88214f5637ab47a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2cf137eae9e026f4854034efe1565dc8f7f0b35d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021621"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091670"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Microsoft Azure Depolama için şifreleme ve Azure Key Vault Client-Side
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## <a name="overview"></a>Genel Bakış
-[.Net Için Azure Storage Istemci kitaplığı](/dotnet/api/overview/azure/storage?view=azure-dotnet) , Azure depolama 'ya yüklemeden önce istemci uygulamalardaki verileri şifrelemeyi ve istemciye indirme sırasında verilerin şifresini çözmesini destekler. Kitaplık Ayrıca depolama hesabı anahtar yönetimi için [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) tümleştirmeyi destekler.
+[.Net Için Azure Storage Istemci kitaplığı](/dotnet/api/overview/azure/storage) , Azure depolama 'ya yüklemeden önce istemci uygulamalardaki verileri şifrelemeyi ve istemciye indirme sırasında verilerin şifresini çözmesini destekler. Kitaplık Ayrıca depolama hesabı anahtar yönetimi için [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) tümleştirmeyi destekler.
 
 İstemci tarafı şifreleme ve Azure Key Vault kullanarak blob 'ları şifreleme sürecinde size yol gösteren adım adım bir öğretici için, bkz. [Azure Key Vault kullanarak Microsoft Azure depolama bloblarını şifreleme ve şifre çözme](../blobs/storage-encrypt-decrypt-blobs-key-vault.md).
 
@@ -128,7 +128,7 @@ Key Vault, yüksek değerli ana anahtarlar için tasarlanmıştır ve Key Vault 
 
 Key Vault kullanımı ile ilgili daha fazla bilgiyi [şifreleme kodu örneklerinde](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples)bulabilirsiniz.
 
-## <a name="best-practices"></a>Önerilen uygulamalar
+## <a name="best-practices"></a>En iyi uygulamalar
 Şifreleme desteği yalnızca .NET için depolama istemci kitaplığı 'nda kullanılabilir. Windows Phone ve Windows Çalışma Zamanı Şu anda şifrelemeyi desteklemiyor.
 
 > [!IMPORTANT]

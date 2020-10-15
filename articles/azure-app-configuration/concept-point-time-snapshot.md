@@ -8,12 +8,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: cbcfedc091fd111bceffe775cb337c118a87c767
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23f613584638026a2b371849c7d1014b3bb1f136
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601087"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073079"
 ---
 # <a name="point-in-time-snapshot"></a>Belirli bir noktanın anlık görüntüsü
 
@@ -23,7 +23,7 @@ Azure Uygulama yapılandırması, anahtar değerlerinde yapılan değişiklikler
 
 Azure portal veya CLı 'yi, geçmiş anahtar değerlerini almak için kullanabilirsiniz. Azure CLı 'de, `az appconfig revision list` gerekli değerleri almak için uygun parametreler ekleyerek öğesini kullanın.  Mağaza adını ( `--name <app-config-store-name>` ) ya da bir bağlantı dizesini () kullanarak Azure uygulama yapılandırma örneğini belirtin `--connection-string <your-connection-string>` . Zaman içinde belirli bir nokta ( `--datetime` ) belirterek ve döndürülecek en fazla öğe sayısını () belirterek çıktıyı kısıtlayın `--top` .
 
-Azure CLı yerel olarak yüklü değilse, isteğe bağlı olarak [Azure Cloud Shell](/azure/cloud-shell/overview)kullanabilirsiniz.
+Azure CLı yerel olarak yüklü değilse, isteğe bağlı olarak [Azure Cloud Shell](../cloud-shell/overview.md)kullanabilirsiniz.
 
 Anahtar değerinizdeki tüm kayıtlı değişiklikleri alın.
 
@@ -58,4 +58,4 @@ az appconfig revision list --name <your-app-config-store-name> --top 10 --fields
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core web uygulaması oluşturma](./quickstart-aspnet-core-app.md)  
+> [ASP.NET Core web uygulaması oluşturma](./quickstart-aspnet-core-app.md)
