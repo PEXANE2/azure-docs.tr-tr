@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 365cb0912d84f0664b2a5432cd54cd553df62466
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98dc9345d2c8b392fd094458b612857d6d454739
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282032"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071498"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>OPC Kasası sertifika yönetimi hizmetini derleme ve dağıtma
 
@@ -25,13 +25,13 @@ Bu makalede, OPC Kasası sertifika yönetimi hizmetinin Azure 'da nasıl dağıt
 > [!NOTE]
 > Daha fazla bilgi için GitHub [OPC Kasası deposuna](https://github.com/Azure/azure-iiot-opc-vault-service)bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="install-required-software"></a>Gerekli yazılımları yükler
 
 Şu anda derleme ve dağıtma işlemi Windows ile sınırlıdır.
 Örnekler, hizmet ve dağıtım için örnek oluşturmanız gereken C# .NET Standard için yazılmıştır.
-.NET Standard için ihtiyacınız olan tüm araçlar .NET Core araçları ile birlikte gelir. Bkz. [.NET Core ile çalışmaya başlama](https://docs.microsoft.com/dotnet/articles/core/getting-started).
+.NET Standard için ihtiyacınız olan tüm araçlar .NET Core araçları ile birlikte gelir. Bkz. [.NET Core ile çalışmaya başlama](/dotnet/articles/core/getting-started).
 
 1. [.NET Core 2.1 + 'Yi yükler][dotnet-install].
 2. [Docker][docker-url] 'ı (isteğe bağlı, yalnızca yerel Docker derlemesi gerekliyse) yükler.

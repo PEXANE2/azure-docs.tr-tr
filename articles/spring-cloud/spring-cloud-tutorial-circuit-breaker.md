@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: fa66f17c6f96ac7f70188c5a28c0b180ed2f03e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c189411b13baf2497f0752c15550dd419f88f754
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906892"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088610"
 ---
 # <a name="use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>Azure Spring Cloud ile devre kesici panosunu kullanma
 
@@ -42,7 +42,7 @@ mvn clean package -D skipTests -f recommendation-service/pom.xml
 mvn clean package -D skipTests -f hystrix-turbine/pom.xml
 ```
 ## <a name="provision-your-azure-spring-cloud-instance"></a>Azure Spring Cloud örneğinizi sağlama
-[Azure CLI üzerinde bir hizmet örneği sağlayın](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#provision-a-service-instance-on-the-azure-cli)yordamını izleyin.
+[Azure CLI üzerinde bir hizmet örneği sağlayın](./spring-cloud-quickstart.md#provision-an-instance-of-azure-spring-cloud)yordamını izleyin.
 
 ## <a name="deploy-your-applications-to-azure-spring-cloud"></a>Uygulamalarınızı Azure Spring Cloud 'a dağıtın
 Bu uygulamalar **config Server**kullanmaz, bu nedenle Azure Spring Cloud Için **yapılandırma sunucusu** ayarlanması gerekmez.  Oluşturun ve aşağıdaki gibi dağıtın:
@@ -82,6 +82,6 @@ Hyçabax ölçüm akışlarına Ayrıca adresinden de erişilebilir `test-endpoi
 Bir Web uygulaması olarak Hyçabax panosu üzerinde çalışıyor olmalıdır `test-endpoint` . Düzgün çalışmıyorsa iki neden olabilir: Birincisi, ' `test-endpoint` den temel URL 'yi değiştirdi `/ to /<APP-NAME>/<DEPLOYMENT-NAME>` veya İkincisi, Web uygulaması statik kaynak için mutlak yol kullanıyor. Üzerinde çalışmasını sağlamak için `test-endpoint` ön uç dosyalarında el ile düzenlemeniz gerekebilir <base> .
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure CLı üzerinde bir hizmet örneği sağlama](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#provision-a-service-instance-on-the-azure-cli)
-* [Azure yay bulutu 'nda bir Java Spring uygulamasını dağıtıma hazırlama](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment)
+* [Azure CLı üzerinde bir hizmet örneği sağlama](./spring-cloud-quickstart.md#provision-an-instance-of-azure-spring-cloud)
+* [Azure yay bulutu 'nda bir Java Spring uygulamasını dağıtıma hazırlama](./spring-cloud-tutorial-prepare-app-deployment.md)
 ::: zone-end

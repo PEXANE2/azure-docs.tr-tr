@@ -3,16 +3,17 @@ title: SYNAPSE Analytics için Azure Güvenlik temeli
 description: SYNAPSE Analytics güvenlik temeli, Azure Güvenlik kıyaslaması 'nda belirtilen güvenlik önerilerini uygulamaya yönelik yordamsal kılavuz ve kaynaklar sağlar.
 author: msmbaldwin
 ms.service: synapse-analytics
+ms.subservice: security
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: bbec83c655d568b43b319f30a96da0a8fc1effe8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7e464520556790afe22177c0b2245ce93e48873
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230662"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088916"
 ---
 # <a name="azure-security-baseline-for-synapse-analytics"></a>SYNAPSE Analytics için Azure Güvenlik temeli
 

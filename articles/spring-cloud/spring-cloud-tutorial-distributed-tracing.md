@@ -8,21 +8,21 @@ ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 97926d5bdf3123ae50714d36ad0234872f67aa96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30eb19e418292e74989be81d94ed684c917f6971
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90908296"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088644"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Azure Spring Cloud ile dağıtılmış izleme kullanma
 
-Azure Spring Cloud 'daki dağıtılmış izleme araçlarıyla, karmaşık sorunları kolayca ayıklayabilir ve izleyebilirsiniz. Azure Spring Cloud, Azure 'ın [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) [yay bulutuna](https://spring.io/projects/spring-cloud-sleuth) karşı tümleşir. Bu tümleştirme Azure portal güçlü dağıtılmış izleme yeteneği sağlar.
+Azure Spring Cloud 'daki dağıtılmış izleme araçlarıyla, karmaşık sorunları kolayca ayıklayabilir ve izleyebilirsiniz. Azure Spring Cloud, Azure 'ın [Application Insights](../azure-monitor/app/app-insights-overview.md) [yay bulutuna](https://spring.io/projects/spring-cloud-sleuth) karşı tümleşir. Bu tümleştirme Azure portal güçlü dağıtılmış izleme yeteneği sağlar.
 
 ::: zone pivot="programming-language-csharp"
 Bu makalede, bir .NET Core Steeltoe uygulamasının dağıtılmış izlemeyi kullanmak üzere nasıl etkinleştirileceğini öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu yordamları izlemek için, [Azure Spring Cloud 'a dağıtım için hazırlanmış](spring-cloud-tutorial-prepare-app-deployment.md)bir Steeltoe uygulamasına ihtiyacınız vardır.
 
@@ -84,7 +84,7 @@ Bu makalede şunları öğreneceksiniz:
 > * Mikro hizmet uygulamalarınız için bağımlılık haritalarını görüntüleyin.
 > * Farklı filtrelerle izleme verilerinde arama yapın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu yordamları izlemek için, zaten sağlanmış ve çalışan bir Azure yay bulut hizmetine ihtiyacınız vardır. Azure yay bulut hizmeti sağlamak ve çalıştırmak için [Ilk Azure yay bulutu uygulaması](spring-cloud-quickstart.md) hızlı başlangıç adımlarını gerçekleştirin.
 
@@ -144,15 +144,15 @@ Zaten bir uygulama oluşturup dağıttıysanız, örnek hızı değiştirebilirs
 
 ## <a name="view-the-application-map"></a>Uygulama haritasını görüntüleme
 
-**Dağıtılmış izleme** sayfasına dönün ve **uygulama haritasını görüntüle**' yi seçin. Uygulamanızın ve izleme ayarlarının görsel temsilini gözden geçirin. Uygulama haritasını nasıl kullanacağınızı öğrenmek için bkz. [uygulama Haritası: dağıtılmış uygulamaları önceliklendirme](https://docs.microsoft.com/azure/azure-monitor/app/app-map).
+**Dağıtılmış izleme** sayfasına dönün ve **uygulama haritasını görüntüle**' yi seçin. Uygulamanızın ve izleme ayarlarının görsel temsilini gözden geçirin. Uygulama haritasını nasıl kullanacağınızı öğrenmek için bkz. [uygulama Haritası: dağıtılmış uygulamaları önceliklendirme](../azure-monitor/app/app-map.md).
 
 ## <a name="use-search"></a>Aramayı Kullanma
 
-Diğer belirli telemetri öğelerini sorgulamak için Search işlevini kullanın. **Dağıtılmış izleme** sayfasında, **Ara**' yı seçin. Arama işlevini kullanma hakkında daha fazla bilgi için bkz. [Application Insights arama kullanma](https://docs.microsoft.com/azure/azure-monitor/app/diagnostic-search).
+Diğer belirli telemetri öğelerini sorgulamak için Search işlevini kullanın. **Dağıtılmış izleme** sayfasında, **Ara**' yı seçin. Arama işlevini kullanma hakkında daha fazla bilgi için bkz. [Application Insights arama kullanma](../azure-monitor/app/diagnostic-search.md).
 
 ## <a name="use-application-insights"></a>Application Insights kullan
 
-Application Insights, uygulama eşlemesi ve arama işlevine ek olarak izleme özellikleri sağlar. Azure portal uygulamanızın adı için arama yapın ve ardından izleme bilgilerini bulmak için bir Application Insights sayfası açın. Bu araçların nasıl kullanılacağına dair daha fazla bilgi için [Azure izleyici günlük sorgularını](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language)inceleyin.
+Application Insights, uygulama eşlemesi ve arama işlevine ek olarak izleme özellikleri sağlar. Azure portal uygulamanızın adı için arama yapın ve ardından izleme bilgilerini bulmak için bir Application Insights sayfası açın. Bu araçların nasıl kullanılacağına dair daha fazla bilgi için [Azure izleyici günlük sorgularını](/azure/data-explorer/kusto/query/)inceleyin.
 
 ## <a name="disable-application-insights"></a>Application Insights devre dışı bırak
 

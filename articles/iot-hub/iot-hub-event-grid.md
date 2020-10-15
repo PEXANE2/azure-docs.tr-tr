@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: c1dc3b5fe4eecea42baf7073b9c806eea1648cff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af1e47c61977d0bc5d03f8cdb87393ed2014e736
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056175"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072314"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Eylemleri tetiklemek için Event Grid kullanarak IoT Hub olaylara tepki verme
 
@@ -73,6 +73,8 @@ Aşağıdaki örnekte, bir cihaz bağlantılı olayının şeması gösterilmekt
   "metadataVersion": "1"
 }]
 ```
+
+
 
 ### <a name="device-telemetry-schema"></a>Cihaz telemetri şeması
 
@@ -163,6 +165,10 @@ Aşağıdaki örnekte, bir cihaz oluşturulan olayının şeması gösterilmekte
   "metadataVersion": "1"
 }]
 ```
+
+
+> [!WARNING]
+> Bir cihaz oluşturma olayından ilişkili *ikizi verileri* , varsayılan bir yapılandırmadır ve yeni oluşturulan bir cihazdaki gerçek ve diğer cihaz özelliklerine *güvenmemelidir* `authenticationType` . `authenticationType`Yeni oluşturulan bir cihazdaki ve diğer cihaz özellikleri için, Azure IoT SDK 'lerinde sunulan Register Manager API 'sini kullanın.
 
 Her bir özelliğin ayrıntılı açıklaması için, bkz. [IoT Hub için olay şeması Azure Event Grid](../event-grid/event-schema-iot-hub.md).
 
