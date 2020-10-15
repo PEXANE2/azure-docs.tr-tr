@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: c348b800e9587f13e6ff004317a2aa12efb03394
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa863ce556840903d16238d6afef32136ba2b80d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941674"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090854"
 ---
 # <a name="tutorial-configure-security-agents"></a>Öğretici: güvenlik aracılarını yapılandırma
 
@@ -117,8 +117,8 @@ Aşağıdaki tablo, IoT güvenlik aracıları için Defender 'ın denetlenebilir
 
 Varsayılan değerler [GitHub](https\://aka.ms/iot-security-module-default)'da uygun şemada mevcuttur.
 
-| Adı| Durum | Geçerli değerler| Varsayılan değerler| Açıklama |
-|----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
+| Name| Durum | Geçerli değerler| Varsayılan değerler| Description |
+|----------|--------|--|-------|----|
 |highPriorityMessageFrequency|Gerekli: false |Geçerli değerler: ISO 8601 biçimindeki süre |Varsayılan değer: PT7M |Yüksek öncelikli iletiler gönderilmeden önce en uzun zaman aralığı.|
 |lowPriorityMessageFrequency |Gerekli: false|Geçerli değerler: ISO 8601 biçimindeki süre |Varsayılan değer: PT5H |Düşük öncelikli iletiler gönderilmeden önce geçen en uzun süre.|
 |Anlık görüntüyle |Gerektir: false|Geçerli değerler: ISO 8601 biçimindeki süre |Varsayılan değer PT13H |Cihaz durumu anlık görüntülerinin oluşturulmasına yönelik zaman aralığı.|
@@ -129,7 +129,7 @@ Varsayılan değerler [GitHub](https\://aka.ms/iot-security-module-default)'da u
 ### <a name="supported-security-events"></a>Desteklenen güvenlik olayları
 
 |Olay adı| ÖzellikAdı | Varsayılan değer| Anlık görüntü olayı| Ayrıntılar durumu  |
-|----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
+|----------|-|---------|----|----|
 |Tanılama olayı|eventPriorityDiagnostic| Kapalı| Yanlış| Aracıda ilgili tanılama olayları. Ayrıntılı günlük kaydı için bu olayı kullanın.|
 |Yapılandırma hatası |eventPriorityConfigurationError |Düşük |Yanlış |Aracı yapılandırmayı ayrıştıramadı. Şemaya göre yapılandırmayı doğrulayın.|
 |Bırakılan olay istatistikleri |eventPriorityDroppedEventsStatistics |Düşük |Doğru|Aracıyla ilgili olay istatistikleri. |

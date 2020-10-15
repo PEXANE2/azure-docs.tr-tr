@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: b0ab1e2e43210ecd7a61b7dffcb12d2c7c5c1c46
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b6219c82dc23deb467e87a6866839b8eace8b5d
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86536615"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072654"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Azure Time Series Insights’ı Uzaktan İzleme ile tümleştirme
 
@@ -126,7 +126,7 @@ Uzaktan Izleme çözümünüze erişimi olan tüm kullanıcıların Time Series 
 1. Rol atamasını oluşturmak için **Kaydet**'i seçin. Birkaç dakika sonra, güvenlik sorumlusu, veri erişim ilkelerinde role atanır.
 
 > [!NOTE]
-> Time Series Insights Gezgini 'ne ek kullanıcılara erişim vermeniz gerekiyorsa, bu adımları [veri erişimi vermek](../time-series-insights/time-series-insights-data-access.md#grant-data-access)için kullanabilirsiniz.
+> Time Series Insights Gezgini 'ne ek kullanıcılara erişim vermeniz gerekiyorsa, bu adımları [veri erişimi vermek](../time-series-insights/concepts-access-policies.md#grant-data-access)için kullanabilirsiniz.
 
 ## <a name="configure-azure-stream-analytics"></a>Azure Stream Analytics Yapılandır 
 
@@ -217,7 +217,7 @@ Time Series Insights tümleştirmesini tamamlayabilmeniz için, güncelleştiril
 
 1. En son etiketini kullanarak GitHub deposundan [en son Docker Compose YAML dosyasını](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm) çekin. 
 
-1. [SSH anahtarları oluşturma ve kullanma](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)konusunda açıklanan ADıMLARı izleyerek VM 'ye SSH.
+1. [SSH anahtarları oluşturma ve kullanma](../virtual-machines/linux/ssh-from-windows.md)konusunda açıklanan ADıMLARı izleyerek VM 'ye SSH.
 
 1. Bağlandıktan sonra yazın `cd /app` .
 
@@ -300,4 +300,4 @@ Time Series Insights tümleştirmesini tamamlayabilmeniz için, güncelleştiril
 
 * Verilerinizi araştırıp Time Series Insights Gezginden bir uyarının nasıl tanılandığını öğrenmek için, [kök neden analizi](iot-accelerators-remote-monitoring-root-cause-analysis.md)yapma konusundaki öğreticimize bakın.
 
-* Time Series Insights Explorer 'da verileri nasıl araştırıp sorguleyeceğinizi öğrenmek için, [Azure Time Series Insights Gezgini](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer)'ndeki belgeler bölümüne bakın.
+* Time Series Insights Explorer 'da verileri nasıl araştırıp sorguleyeceğinizi öğrenmek için, [Azure Time Series Insights Gezgini](../time-series-insights/time-series-insights-explorer.md)'ndeki belgeler bölümüne bakın.

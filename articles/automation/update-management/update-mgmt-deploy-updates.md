@@ -3,18 +3,18 @@ title: Azure Otomasyonu Güncelleştirme Yönetimi için güncelleştirme dağı
 description: Bu makalede, güncelleştirme dağıtımlarının nasıl planlanmakta ve bunların durumlarını incelemesinin nasıl yapılacağı açıklanır.
 services: automation
 ms.subservice: update-management
-ms.date: 09/16/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: fa5cabd5410f0cbe7382db0289d98bc69d4a01fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5f7d86ff668a151bdf83908c3199d01a0a53246
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294725"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073759"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Güncelleştirmeler nasıl dağıtılır ve sonuçlar incelenmek
 
-Bu makalede, bir güncelleştirme dağıtımının nasıl zamanlanmakta olduğu ve dağıtım tamamlandıktan sonra işlemin incelenmesi açıklanmaktadır. Seçilen bir Azure sanal makinesinden, seçilen yay etkin sunucusundan veya Otomasyon hesabından tüm yapılandırılmış makineler ve sunucular arasında bir güncelleştirme dağıtımı yapılandırabilirsiniz. 
+Bu makalede, bir güncelleştirme dağıtımının nasıl zamanlanmakta olduğu ve dağıtım tamamlandıktan sonra işlemin incelenmesi açıklanmaktadır. Seçilen bir Azure sanal makinesinden, seçilen yay etkin sunucusundan veya Otomasyon hesabından tüm yapılandırılmış makineler ve sunucular arasında bir güncelleştirme dağıtımı yapılandırabilirsiniz.
 
 Her senaryo altında, oluşturduğunuz dağıtım makine veya sunucu ' yı seçtiğiniz hedefler ya da Otomasyon hesabınızdan bir dağıtım oluşturmak için bir veya daha fazla makineyi hedefleyebilirsiniz. Bir Azure VM veya Arc etkin sunucusundan bir güncelleştirme dağıtımı zamanladığınızda, adımlar Otomasyon hesabınızdan aşağıdaki özel durumlarla birlikte dağıtımıyla aynıdır:
 
@@ -59,7 +59,7 @@ Yeni bir güncelleştirme dağıtımı zamanlamak için aşağıdaki adımları 
     > [!NOTE]
     > Bir Azure VM veya Arc etkin sunucu seçtiyseniz bu seçenek kullanılamaz. Makine, zamanlanan dağıtım için otomatik olarak hedeflenir.
 
-6. **Güncelleştirilecek makineler** bölümünde, açılan menüden kaydedilmiş bir arama, içeri aktarılan bir grup seçin ya da **makineleri** seçin ve tek tek makineleri seçin. Bu seçenekle, her makine için Log Analytics aracısının hazır olduğunu görebilirsiniz. Azure Izleyici günlüklerinde bilgisayar grupları oluşturmaya yönelik farklı yöntemler hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../../azure-monitor/platform/computer-groups.md).
+6. **Güncelleştirilecek makineler** bölümünde, açılan menüden kaydedilmiş bir arama, içeri aktarılan bir grup seçin ya da **makineleri** seçin ve tek tek makineleri seçin. Bu seçenekle, her makine için Log Analytics aracısının hazır olduğunu görebilirsiniz. Azure Izleyici günlüklerinde bilgisayar grupları oluşturmaya yönelik farklı yöntemler hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../../azure-monitor/platform/computer-groups.md). Zamanlanmış bir güncelleştirme dağıtımında en fazla 500 makine ekleyebilirsiniz.
 
     > [!NOTE]
     > Bir Azure VM veya Arc etkin sunucu seçtiyseniz bu seçenek kullanılamaz. Makine, zamanlanan dağıtım için otomatik olarak hedeflenir.
@@ -89,7 +89,7 @@ Yeni bir güncelleştirme dağıtımı zamanlamak için aşağıdaki adımları 
 
     * Bakım pencereleri kaç güncelleştirme yüklendiğini denetler.
     * Bakım penceresinin sonuna yaklaşıyorsa Güncelleştirme Yönetimi yeni güncelleştirmeleri yüklemeyi durdurmaz.
-    * Bakım penceresi aşılırsa Güncelleştirme Yönetimi devam eden güncelleştirmeleri sonlandıramaz.
+    * Bakım penceresi aşılırsa Güncelleştirme Yönetimi devam eden güncelleştirmeleri sonlandıramaz. Yüklenecek kalan güncelleştirmeler denenmez. Bu sürekli olarak kullanılıyorsa, bakım pencerenizin süresini yeniden değerlendirmelisiniz.
     * Bakım penceresi Windows üzerinde aşılırsa, çoğu zaman bir hizmet paketi güncelleştirmesinin yüklenmesi uzun sürmesi nedeniyle oluşur.
 
     > [!NOTE]

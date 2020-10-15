@@ -9,12 +9,12 @@ ms.service: azure-supportability
 ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mblythe
-ms.openlocfilehash: d8a480481e47995f9f819122a3e8cc0b0a21a254
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b44b38e52b50dd7994326f09bebbb775c93c0e2e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85851875"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073708"
 ---
 # <a name="create-an-azure-support-request"></a>Azure destek isteği oluşturma
 
@@ -35,7 +35,7 @@ Destek isteği deneyimi üç ana hedefle odaklanır:
 
 Azure, faturalandırma, kota ayarlamaları ve hesap aktarımları dahil olmak üzere abonelik yönetimi için sınırsız destek sağlar. Teknik destek için bir destek planına ihtiyacınız vardır. Daha fazla bilgi için bkz. [Destek planlarını karşılaştırma](https://azure.microsoft.com/support/plans).
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 Azure portal **Yardım + Destek** alabilirsiniz. Bu, bir hizmetin Azure portal menüsünde, genel üst bilgisinde veya kaynak menüsünden kullanılabilir. Bir destek isteğini kaydedebilmeniz için, uygun izinlere sahip olmanız gerekir.
 
@@ -114,5 +114,5 @@ Daha fazla bilgi edinmek için bu bağlantıları izleyin:
 * [Azure destek bileti REST API](/rest/api/support)
 * [Görüşlerinizi ve önerilerinizi bize gönderin](https://feedback.azure.com/forums/266794-support-feedback)
 * [Twitter](https://twitter.com/azuresupport) 'da bizimle iletişime katılın
-* [Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/products/azure) Meslektaşlarınızdan yardım alın
+* [Microsoft Q&soru sayfasında](/answers/products/azure) Meslektaşlarınızdan yardım alın
 * [Azure DESTEĞI hakkında](https://azure.microsoft.com/support/faq) daha fazla bilgi

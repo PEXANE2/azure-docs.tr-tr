@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1
-ms.openlocfilehash: 6d05f5fa20b5deee14b1a2fada389d869d48908a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc5b958813ea1107d98525b6dfc1b0b56c9c5400
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91709096"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091211"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python’da otomatik ML denemelerini yapılandırma
 
@@ -37,7 +37,7 @@ Otomatik makine öğreniminde kullanılabilen yapılandırma seçenekleri:
 
 Kod deneyimini tercih ediyorsanız, [Azure Machine Learning Studio 'da otomatik makine öğrenimi denemeleri de oluşturabilirsiniz](how-to-use-automated-ml-for-ml-models.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İhtiyacınız olan bu makalede, 
 * Azure Machine Learning çalışma alanı. Çalışma alanını oluşturmak için, bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
@@ -222,7 +222,7 @@ Her otomatik makine öğrenimi denemesinde, verileriniz, farklı ölçeklerde bu
 
 Denemeleri 'nizi yapılandırırken `AutoMLConfig` , ayarı etkinleştirebilir/devre dışı bırakabilirsiniz `featurization` . Aşağıdaki tabloda, [oto Mlconfig nesnesinde](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)fealeştirme için kabul edilen ayarlar gösterilmektedir. 
 
-|Korleştirme yapılandırması | Açıklama |
+|Korleştirme yapılandırması | Description |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Ön işleme 'nin bir parçası olarak, [veri guardı ve korleştirme adımlarının](how-to-configure-auto-features.md#featurization) otomatik olarak gerçekleştirileceğini belirtir. **Varsayılan ayar**.|
 |`"featurization": 'off'`| Korleştirme adımının otomatik olarak yapılmaması gerektiğini gösterir.|
@@ -343,7 +343,7 @@ Bir &nbsp; puana &nbsp; &nbsp; &nbsp; ulaşıldı| Kullanım `experiment_exit_sc
 
 Bir not defteriniz varsa, eğitim sonuçlarınızı bir pencere öğesinde veya satır içi olarak görüntüleyebilirsiniz. Daha fazla ayrıntı için bkz. [modelleri izleme ve değerlendirme](how-to-monitor-view-training-logs.md#monitor-automated-machine-learning-runs) .
 
-Bkz. [otomatik makine öğrenimi sonuçlarını](how-to-understand-automated-ml.md) tanımlar ve her çalıştırma için belirtilen performans grafiklerinin ve ölçümlerin örnekleri. 
+Her çalıştırma için sunulan performans grafiklerinin ve ölçümlerinin tanımları ve örnekleri için [otomatik makine öğrenimi sonuçlarını değerlendir](how-to-understand-automated-ml.md) bölümüne bakın. 
 
 Bir Özet Özeti almak ve belirli bir modele hangi özelliklerin eklendiğini anlamak için bkz. uygun [Saydamlık](how-to-configure-auto-features.md#featurization-transparency). 
 

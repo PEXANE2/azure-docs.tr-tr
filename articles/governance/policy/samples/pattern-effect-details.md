@@ -1,14 +1,14 @@
 ---
 title: 'Model: bir ilke tanımının etkileri'
 description: Bu Azure Ilke deseninin farklı etkileri bir ilke tanımının nasıl kullanılacağına ilişkin bir örnek sağlar.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: sample
-ms.openlocfilehash: 9c7e7689aa837a2dba0992112df3cd36ac9affe6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1da9bd153707db35c07ed3c176542797a694d7a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85565736"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073045"
 ---
 # <a name="azure-policy-pattern-effects"></a>Azure Ilke stili: efektler
 
@@ -24,7 +24,7 @@ Bu ilke tanımı, değerlendirilen kaynakta, **TagName** parametresinde tanımla
 
 :::code language="json" source="~/policy-templates/patterns/pattern-effect-details-1.json" range="40-50":::
 
-Bir **değiştirme** etkisi, **roledefinitionıds** ve **işlemlerini**tanımlayan **policyrule. then. Details** bloğunu gerektirir. Bu parametreler, Azure Ilkesine etiketi eklemek ve kaynağı **düzeltmek** ve bu işlemi gerçekleştirmek için hangi rollerin gerekli olduğunu bildirir. Bu örnekte, **işlem** _ekler_ ve bu parametreleri etiketi ve değerini ayarlamak için kullanılır.
+Bir **değiştirme** etkisi, **roledefinitionıds** ve **işlemlerini**tanımlayan **policyrule. then. Details** bloğunu gerektirir. Bu parametreler, Azure Ilkesine etiketi eklemek ve kaynağı düzeltmek için gereken rolleri ve kullanılacak **değiştirme** işlemini bildirir. Bu örnekte, etiketi ve değerini ayarlamak için _Add_ **işlemi** ve parametreleri kullanılır.
 
 ## <a name="sample-2-complex-effect"></a>Örnek 2: karmaşık efekt
 

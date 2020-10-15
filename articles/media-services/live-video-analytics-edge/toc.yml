@@ -115,3 +115,5 @@
       href: faq.md
     - name: Üretim hazırlığı ve en iyi uygulamalar
       href: production-readiness.md
+    - name: Saydamlık ve sorumlu yapay zeka ilkeleri
+      href: 'https://azure.microsoft.com/resources/transparency-note-live-video-analytics-lva/'

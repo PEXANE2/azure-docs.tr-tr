@@ -43,7 +43,19 @@
         - name: Batch örnekleri deposu
           href: 'https://github.com/Azure/azure-batch-samples'
     - name: Azure CLI
-      href: cli-samples.md
+      items:
+        - name: Batch hizmeti modunda bir Batch hesabı oluşturma
+          href: ./scripts/batch-cli-sample-create-account.md
+        - name: Kullanıcı aboneliği modunda bir Batch hesabı oluşturma
+          href: ./scripts/batch-cli-sample-create-user-subscription-account.md
+        - name: Azure Batch hesabına uygulama ekleme
+          href: ./scripts/batch-cli-sample-add-application.md
+        - name: Linux havuzu oluşturma ve yönetme
+          href: ./scripts/batch-cli-sample-manage-linux-pool.md
+        - name: Windows havuzu oluşturma ve yönetme
+          href: ./scripts/batch-cli-sample-manage-windows-pool.md
+        - name: Bir işi ve görevleri çalıştırma
+          href: ./scripts/batch-cli-sample-run-job.md
 - name: Kavramlar
   items:
     - name: Güvenlik
@@ -224,7 +236,7 @@
           href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/batch
     - name: Azure PowerShell
       href: /powershell/module/az.batch
