@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/17/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 32e4658af48a0ae3bde08de18cf1d8204878d671
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6054fe5f71f54794d4974a71cdfd61a7959534ff
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91025045"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92082274"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>BGP tüm Azure VPN Gateway SKU'larında destekleniyor mu?
 BGP, temel SKU hariç tüm Azure VPN Gateway SKU 'Larında desteklenir.
@@ -108,3 +108,6 @@ Evet.
 
 ### <a name="what-should-i-add-to-my-on-premises-vpn-device-for-the-bgp-peering-session"></a>BGP eşdeğer oturumu için şirket içi VPN cihazıma ne eklemeliyim?
 VPN cihazınızdaki Azure BGP Eşdeğer IP adresinin, IPsec S2S VPN tüneline yönlenmiş konak rotasını eklemelisiniz. Örneğin, Azure VPN Eşdeğer IP’si "10.12.255.30" olursa, "10.12.255.30" için VPN cihazınızdaki eşleşen IPsec tüneli arabiriminin sonraki durak arabirimine sahip bir konak rotası eklemelisiniz.
+
+### <a name="does-the-virtual-network-gateway-support-bidirectional-forwarding-detection-bfd-for-site-to-site-connections-with-bgp"></a>Sanal ağ geçidi, BGP ile siteden siteye bağlantılar için çift yönlü Iletme algılamasını (BFD) destekliyor mu?
+Hayır. Çift yönlü Iletme algılaması (BFD), standart BGP keepcanlı tutmayı kullanmaktan daha hızlı komşu kesinti süresini algılamak için BGP boyunca kullanılabilen bir protokoldür. BFD, genel Internet veya geniş alan ağı bağlantılarında değil, LAN ortamlarında çalışmak için tasarlanan alt saniye zamanlayıcıları kullanır. Genel Internet üzerinden yapılan bağlantılar için, belirli paketlerin gecikilmesi veya bırakılmaması olağan dışı bir durum değildir, bu nedenle bu ısrarlı zamanlayıcılar, yolların BGP tarafından faturalandırılmasına neden olabilecek bir kararsızlık ekler. Alternatif olarak, şirket içi cihazınızı varsayılan 60 saniyelik ön canlı tutma aralığından daha düşük olan zamanlayıcılar ve daha hızlı yakınsama süresi için 180 saniyelik bekleme süreölçeri ile yapılandırabilirsiniz.

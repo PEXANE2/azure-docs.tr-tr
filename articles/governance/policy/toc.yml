@@ -194,7 +194,7 @@
       href: 'https://github.com/azure/azure-policy#known-issues'
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/policy
     - name: Azure PowerShell
       items:
@@ -240,6 +240,8 @@
           href: /rest/api/resources/policyassignments
         - name: İlke Tanımları
           href: /rest/api/resources/policydefinitions
+        - name: İlke Muafiyetleri
+          href: /rest/api/resources/policyexemptions
         - name: Girişim Tanımları
           href: /rest/api/resources/policysetdefinitions
         - name: İlke Tarafından İzlenen Kaynaklar

@@ -166,6 +166,8 @@
               href: how-to-setup-authentication.md
             - name: Kullanıcıları ve rolleri yönetme
               href: how-to-assign-roles.md
+            - name: Erişim denetimi için yönetilen kimlikler kullanma
+              href: how-to-use-managed-identities.md
             - name: AKS dağıtımlarında Azure AD kimliği kullanma
               href: how-to-use-azure-ad-identity.md
         - name: Ağ güvenliği
