@@ -1,14 +1,14 @@
 ---
 title: 'Model: bir ilke tanımındaki değer işleci'
 description: Bu Azure Ilke modelinde, bir ilke tanımında değer işlecinin nasıl kullanılacağına ilişkin bir örnek verilmiştir.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: sample
-ms.openlocfilehash: e246e3a5e2517fa80626081227070bcb2f967784
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8392c69ff3d63ff4ecad2a26d5d914b4766147b8
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85565669"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072892"
 ---
 # <a name="azure-policy-pattern-the-value-operator"></a>Azure Ilke stili: değer operatörü
 

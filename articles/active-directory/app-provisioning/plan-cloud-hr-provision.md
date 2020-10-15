@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 3a3f461941bfcd5091ebb14818bac05d6844b3fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb36366143286c05603a8d14b5ad56ebb6544bda
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706362"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070393"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Kullanıcı sağlamayı Azure Active Directory için bulut HR uygulaması planlayın
 
@@ -31,7 +31,7 @@ Azure AD, aşağıdaki bulut HR uygulaması (uygulama) iş akışlarını etkinl
 - **Cloud HR uygulamasına geri yaz:** Azure AD 'den e-posta adreslerini ve Kullanıcı adı özniteliklerini Cloud HR uygulamasına geri yazın.
 
 > [!NOTE]
-> Bu dağıtım planı, Azure AD Kullanıcı sağlama ile bulut HR uygulaması iş akışlarınızı nasıl dağıtacağınızı gösterir. Hizmet olarak yazılım (SaaS) uygulamalarına otomatik Kullanıcı sağlamayı dağıtma hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı sağlama dağıtımı planı](https://aka.ms/deploymentplans/provisioning).
+> Bu dağıtım planı, Azure AD Kullanıcı sağlama ile bulut HR uygulaması iş akışlarınızı nasıl dağıtacağınızı gösterir. Hizmet olarak yazılım (SaaS) uygulamalarına otomatik Kullanıcı sağlamayı dağıtma hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı sağlama dağıtımı planı](./plan-auto-user-provisioning.md).
 
 ## <a name="enabled-hr-scenarios"></a>Etkin HR senaryoları
 
@@ -79,7 +79,7 @@ Bulut HR uygulamasını Azure AD Kullanıcı sağlama tümleştirmesi olarak yap
 
 Ayrıca, bulut HR uygulamasından kaynaklayacağı ve Active Directory ya da Azure AD 'ye sağlanan her kullanıcı için geçerli Azure AD Premium P1 veya daha yüksek bir abonelik lisansı gerekir. Bulut HR uygulamasına ait hatalı sayıda lisans, Kullanıcı sağlama sırasında hatalara yol açabilir.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - Azure AD Connect sağlama aracısını yapılandırmak için Azure AD [karma kimlik yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator)  .
 - Azure portal sağlama uygulamasını yapılandırmak için Azure AD [Uygulama Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) rolü
@@ -126,7 +126,7 @@ Ortamınızda bu dağıtımın stratejisini belirlerken kurumsal ihtiyaçların�
 
 ### <a name="engage-the-right-stakeholders"></a>Doğru paydaşlara katılın
 
-Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlulukların eşleşmeyen beklentileri için bu işlem yapılır. Bu sınırları önlemek için, [doğru paydaşları ilgi çekici olduğunuzdan emin olun](https://aka.ms/deploymentplans). Ayrıca, projedeki paydaş rollerinin iyi anlaşıldığından emin olun. Paydaşları ve proje giriş ve accountikleri belgeleyin.
+Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlulukların eşleşmeyen beklentileri için bu işlem yapılır. Bu sınırları önlemek için, [doğru paydaşları ilgi çekici olduğunuzdan emin olun](../fundamentals/active-directory-deployment-plans.md). Ayrıca, projedeki paydaş rollerinin iyi anlaşıldığından emin olun. Paydaşları ve proje giriş ve accountikleri belgeleyin.
 
 IK kuruluştan, mevcut ık iş süreçlerine ve çalışan kimliğine ve iş verileri işleme gereksinimlerine giriş sağlayabilen bir temsilci ekleyin.
 
@@ -378,7 +378,7 @@ Azure AD, kuruluşunuzun Kullanıcı sağlama kullanımı ve denetim günlükler
 
 Başarılı bir [Başlangıç döngüsünden](../app-provisioning/how-provisioning-works.md#initial-cycle)sonra, Azure AD sağlama hizmeti, aşağıdaki olaylardan biri gerçekleşene kadar her bir uygulamaya özgü öğreticilerde tanımlanan aralıklarda sonsuza kadar sürekli artımlı güncelleştirmeler çalıştırmaya devam eder:
 
-- Hizmet el ile durduruldu. [Azure Portal](https://portal.azure.com/) veya uygun [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) komutu kullanılarak yeni bir başlangıç çevrimi tetiklenir.
+- Hizmet el ile durduruldu. [Azure Portal](https://portal.azure.com/) veya uygun [Microsoft Graph API](/graph/api/resources/synchronization-overview) komutu kullanılarak yeni bir başlangıç çevrimi tetiklenir.
 - Yeni bir başlangıç çevrimi, öznitelik eşlemelerinde veya kapsam filtrelerinizdeki bir değişikliğe göre tetiklenir.
 - Sağlama işlemi, yüksek hata oranı nedeniyle karantinaya alınır. Dört haftadan uzun bir süre içinde kalır ve bu süre otomatik olarak devre dışıdır.
 
@@ -416,6 +416,6 @@ Sağlama sırasında oluşabilecek sorunları gidermek için aşağıdaki makale
 ### <a name="next-steps"></a>Sonraki adımlar
 
 - [Öznitelik eşlemeleri için ifadeler yazma](functions-for-customizing-application-data.md)
-- [Azure AD eşitleme API 'sine genel bakış](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+- [Azure AD eşitleme API 'sine genel bakış](/graph/api/resources/synchronization-overview)
 - [Kapsam dışına çıkan Kullanıcı hesaplarını silmeyi atlayın](skip-out-of-scope-deletions.md)
 - [Azure AD Connect sağlama Aracısı: sürüm yayınlama geçmişi](provisioning-agent-release-version-history.md)

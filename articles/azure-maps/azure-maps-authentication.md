@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 4a923fd34391137f2064cb338ea180ae3782f5e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ad4724280039f2820611a621186d8174e9af986
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88036853"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091415"
 ---
 # <a name="authentication-with-azure-maps"></a>Azure Haritalar ile kimlik doğrulaması
 
@@ -51,7 +51,7 @@ Azure AD ile kimlik doğrulama hakkında genel bilgi için bkz. [kimlik doğrula
 
 ### <a name="managed-identities-for-azure-resources-and-azure-maps"></a>Azure kaynakları ve Azure Maps için Yönetilen kimlikler
 
-Azure [kaynakları Için Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) , Azure AD ile kimlik doğrulaması yapılabilecek otomatik olarak yönetilen uygulama tabanlı güvenlik sorumlusu ile Azure hizmetleri sağlar. Rol tabanlı erişim denetimi (RBAC) ile, yönetilen kimlik güvenlik sorumlusu, Azure haritalar hizmetlerine erişme yetkisine sahip olabilir. Yönetilen kimliklerin bazı örnekleri şunlardır: Azure App Service, Azure Işlevleri ve Azure sanal makineleri. Yönetilen kimliklerin listesi için bkz. [Azure kaynakları için Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities).
+Azure [kaynakları Için Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) , Azure AD ile kimlik doğrulaması yapılabilecek otomatik olarak yönetilen uygulama tabanlı güvenlik sorumlusu ile Azure hizmetleri sağlar. Azure rol tabanlı erişim denetimi (Azure RBAC) sayesinde, yönetilen kimlik güvenlik sorumlusunun Azure haritalar hizmetlerine erişme yetkisi bulunabilir. Yönetilen kimliklerin bazı örnekleri şunlardır: Azure App Service, Azure Işlevleri ve Azure sanal makineleri. Yönetilen kimliklerin listesi için bkz. [Azure kaynakları için Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities).
 
 ### <a name="configuring-application-azure-ad-authentication"></a>Uygulama Azure AD kimlik doğrulamasını yapılandırma
 
@@ -82,7 +82,7 @@ Authorization: Bearer eyJ0e….HNIVN
 
 Azure haritalar; Azure AD kullanıcıları, gruplar, uygulamalar, Azure kaynakları ve Azure tarafından yönetilen kimlikler dahil olmak üzere [Azure rol tabanlı erişim denetimi (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) için tüm asıl türlere erişimi destekler. Asıl türlere, rol tanımı olarak da bilinen bir izin kümesi verilir. Rol tanımı REST API eylemlere izinler sağlar. Bir veya daha fazla Azure Maps hesabına erişim uygulamak, kapsam olarak bilinir. Bir sorumlusu, rol tanımını ve kapsamı uygularken bir rol ataması oluşturulur. 
 
-Sonraki bölümlerde Azure AD rol tabanlı erişim denetimi ile Azure haritalar tümleştirmesinin kavramları ve bileşenleri ele alınmaktadır. Azure haritalar hesabınızı ayarlama işleminin bir parçası olarak Azure AD dizini, Azure Maps hesabının bulunduğu Azure aboneliğiyle ilişkilendirilir. 
+Sonraki bölümlerde Azure RBAC tümleştirmesi ile Azure Maps tümleştirmesinin kavramları ve bileşenleri ele alınmaktadır. Azure haritalar hesabınızı ayarlama işleminin bir parçası olarak Azure AD dizini, Azure Maps hesabının bulunduğu Azure aboneliğiyle ilişkilendirilir. 
 
 Azure RBAC 'yi yapılandırırken bir güvenlik sorumlusu seçer ve bir rol atamasına uygularsınız. Azure portal rol atamaları ekleme hakkında bilgi edinmek için bkz. [Azure rol atamaları ekleme veya kaldırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 
@@ -90,7 +90,7 @@ Azure RBAC 'yi yapılandırırken bir güvenlik sorumlusu seçer ve bir rol atam
 
 Uygulama senaryolarını desteklemek için aşağıdaki rol tanımı türleri mevcuttur.
 
-| Azure rol tanımı       | Açıklama                                                                                              |
+| Azure rol tanımı       | Description                                                                                              |
 | :-------------------------- | :------------------------------------------------------------------------------------------------------- |
 | Azure haritalar veri okuyucu      | Sabit Azure haritaları REST API 'Lerine erişim sağlar.                                                       |
 | Azure haritalar veri Katılımcısı | Kesilebilir Azure Maps REST API 'Lerine erişim sağlar. Değiştirici, eylemler tarafından tanımlanır: yazma ve silme. |
@@ -104,7 +104,7 @@ Azure haritalar REST API 'Lerinde yazma veya silme eylemlerini gerçekleştirmek
 | Oluşturucu            | Azure haritalar veri Katılımcısı |
 | Uzamsal            | Azure haritalar veri Katılımcısı |
 
-RBAC ayarlarınızı görüntüleme hakkında daha fazla bilgi için bkz. [Azure Maps IÇIN RBAC yapılandırma](https://aka.ms/amrbac).
+Azure RBAC ayarlarınızı görüntüleme hakkında daha fazla bilgi için bkz. Azure [RBAC for Azure Maps nasıl yapılandırılır](https://aka.ms/amrbac).
 
 #### <a name="custom-role-definitions"></a>Özel rol tanımları
 
@@ -131,9 +131,9 @@ Bir kaynak grubuna rol ataması atamak, gruptaki birden çok Azure harita hesab�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-RBAC hakkında daha fazla bilgi için bkz.
+Azure RBAC hakkında daha fazla bilgi için bkz.
 > [!div class="nextstepaction"]
-> [Rol tabanlı erişim denetimi](https://docs.microsoft.com/azure/role-based-access-control/overview)
+> [Azure rol tabanlı erişim denetimi](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 Azure AD ve Azure Maps ile bir uygulamanın kimliğini doğrulama hakkında daha fazla bilgi edinmek için bkz.
 > [!div class="nextstepaction"]

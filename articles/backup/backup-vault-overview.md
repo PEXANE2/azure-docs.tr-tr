@@ -3,12 +3,12 @@ title: Yedekleme kasalarına genel bakış
 description: Yedekleme kasalarına genel bakış.
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 773152212ed831c0083cfdf912f45ece578d079f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c189997ecc4814917182246b35003649d317ac77
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90998135"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091296"
 ---
 # <a name="backup-vaults-overview"></a>Yedekleme kasaları genel bakış
 
@@ -16,7 +16,7 @@ Bu makalede bir yedekleme kasasının özellikleri açıklanmaktadır. Yedekleme
 
 - **Yedekleme verilerini güvenli hale getirmeye yardımcı olmak Için geliştirilmiş yetenekler**: yedekleme kasaları sayesinde, bulut yedeklemelerini korumak için güvenlik özellikleri sağlar Azure Backup. Güvenlik özellikleri, üretim ve yedekleme sunucuları tehlikeye atılsa bile yedeklemelerinizi güvenli hale getirmek ve verileri güvenli bir şekilde kurtarmanız için de güvence altına alınır. [Daha fazla bilgi edinin](backup-azure-security-feature.md)
 
-- **Rol tabanlı Access Control (RBAC)**: RBAC, Azure 'da ayrıntılı erişim yönetimi denetimi sağlar. [Azure çeşitli yerleşik roller sağlar](../role-based-access-control/built-in-roles.md)ve Azure Backup [kurtarma noktalarını yönetmek için üç yerleşik rol](backup-rbac-rs-vault.md)içerir. Yedekleme kasaları, yedekleme ve geri yükleme erişimini sınırlayan RBAC ile uyumludur. [Daha fazla bilgi edinin](backup-rbac-rs-vault.md)
+- Azure **rol tabanlı erişim denetimi (Azure RBAC)**: Azure RBAC, Azure 'da ayrıntılı erişim yönetimi denetimi sağlar. [Azure çeşitli yerleşik roller sağlar](../role-based-access-control/built-in-roles.md)ve Azure Backup [kurtarma noktalarını yönetmek için üç yerleşik rol](backup-rbac-rs-vault.md)içerir. Yedekleme kasaları, bu kullanıcı rollerine yönelik yedekleme ve geri yükleme erişimini sınırlayan Azure RBAC ile uyumludur. [Daha fazla bilgi edinin](backup-rbac-rs-vault.md)
 
 ## <a name="storage-settings-in-the-backup-vault"></a>Yedekleme kasasındaki depolama ayarları
 

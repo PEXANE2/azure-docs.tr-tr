@@ -3,12 +3,12 @@ title: Azure Backup aracısında sorun giderme
 description: Bu makalede Azure Backup aracısının yüklenmesi ve kaydettirilmesinde nasıl sorun giderileceği hakkında bilgi edinebilirsiniz.
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 86f9dfd8554e2560ea16a85c3551dba3f7dc01f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e2e807a8b849af435fe82d54bbfdd96b729fa38
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019632"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091466"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı sorunlarını giderme
 
@@ -67,7 +67,7 @@ Microsoft Azure kurtarma hizmetleri (MARS) Aracısı ile ilgili sorun gidermeye 
 
 | Hata   | Önerilen Eylemler |
 | ---     | ---    |
-|Kasa kimlik bilgileri dosyası indirilemedi. (KIMLIK: 403) | <ul><li> Farklı bir tarayıcı kullanarak kasa kimlik bilgilerini indirmeyi deneyin veya şu adımları uygulayın: <ul><li> Internet Explorer 'ı başlatın. F12 ' i seçin. </li><li> **Ağ** sekmesine gidin ve önbelleği ve tanımlama bilgilerini temizleyin. </li> <li> Sayfayı yenileyin.<br></li></ul> <li> Aboneliğin devre dışı bırakılıp bırakılmadığını kontrol edin.<br></li> <li> Bir güvenlik duvarı kuralının indirmeyi engelleyip engellemediğini denetleyin. <br></li> <li> Kasadaki limiti tüketmemiş olduğunuzdan emin olun (kasa başına 50 makine).<br></li>  <li> Kullanıcının kasa kimlik bilgilerini indirmek ve kasaya bir sunucu kaydetmek için gereken Azure Backup izinlere sahip olduğundan emin olun. Bkz. [Azure Backup kurtarma noktalarını yönetmek için Role-Based Access Control kullanma](backup-rbac-rs-vault.md).</li></ul> |
+|Kasa kimlik bilgileri dosyası indirilemedi. (KIMLIK: 403) | <ul><li> Farklı bir tarayıcı kullanarak kasa kimlik bilgilerini indirmeyi deneyin veya şu adımları uygulayın: <ul><li> Internet Explorer 'ı başlatın. F12 ' i seçin. </li><li> **Ağ** sekmesine gidin ve önbelleği ve tanımlama bilgilerini temizleyin. </li> <li> Sayfayı yenileyin.<br></li></ul> <li> Aboneliğin devre dışı bırakılıp bırakılmadığını kontrol edin.<br></li> <li> Bir güvenlik duvarı kuralının indirmeyi engelleyip engellemediğini denetleyin. <br></li> <li> Kasadaki limiti tüketmemiş olduğunuzdan emin olun (kasa başına 50 makine).<br></li>  <li> Kullanıcının kasa kimlik bilgilerini indirmek ve kasaya bir sunucu kaydetmek için gereken Azure Backup izinlere sahip olduğundan emin olun. Bkz. [Azure Backup kurtarma noktalarını yönetmek Için Azure rol tabanlı erişim denetimi kullanma](backup-rbac-rs-vault.md).</li></ul> |
 
 ## <a name="the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup"></a>Microsoft Azure Kurtarma Hizmeti Aracısı, Microsoft Azure Backup'a bağlanamadı
 
@@ -222,7 +222,7 @@ Kurtarma hala başarısız olursa, sunucunuzu veya istemcinizi yeniden başlatı
 
 Önbellek klasörü (karalama klasörü olarak da bilinir) yanlış yapılandırılmışsa, eksik Önkoşullar veya kısıtlı erişim varsa yedekleme işlemi başarısız olabilir.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 MARS Aracısı işlemlerinin başarılı olabilmesi için önbellek klasörünün aşağıdaki gereksinimlere uyması gerekir:
 

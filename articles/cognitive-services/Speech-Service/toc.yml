@@ -26,10 +26,6 @@
       href: get-started-speech-to-text.md
     - name: Nasıl yapılır kılavuzları
       items:
-        - name: Blob depolama alanında depolanan konuşmayı tanıma
-          href: quickstarts/from-blob.md
-        - name: Konuşma tanıma modunu seçme
-          href: how-to-choose-recognition-mode.md
         - name: Konuşmayı tanıma için kaynak dili değiştirme
           href: how-to-specify-source-language.md
         - name: Özel Konuşma ile doğruluğu geliştirme
@@ -37,8 +33,6 @@
         - name: Sıkıştırılmış ses giriş biçimlerini kullanma
           href: how-to-use-codec-compressed-audio-input-streams.md
           displayName: 'codec,codecs,compression,compressed,mp3,flac,mulaw,alaw,mp4,mp4a,wav,opus,ogg,pcm,silk'
-        - name: Tümcecik listeleriyle doğruluğu geliştirme
-          href: how-to-phrase-lists.md
         - name: Belirli bir mikrofon giriş cihazı seçme
           href: how-to-select-audio-input-devices.md
         - name: Otomatik kaynak dili algılamayı kullanma
@@ -47,6 +41,8 @@
           href: batch-transcription.md
     - name: Öğreticiler
       items:
+        - name: Blob depolama alanında depolanan konuşmayı tanıma
+          href: quickstarts/from-blob.md
         - name: Kiracı modelleriyle doğruluğu geliştirme
           href: tutorial-tenant-model.md
     - name: Özelleştirme

@@ -1,19 +1,19 @@
 ---
-title: Yedeklemeleri Role-Based Access Control yönetme
-description: Kurtarma Hizmetleri kasasındaki yedekleme yönetimi işlemlerine erişimi yönetmek için rol tabanlı Access Control kullanın.
+title: Azure rol tabanlı erişim denetimi ile yedeklemeleri yönetme
+description: Kurtarma Hizmetleri kasasındaki yedekleme yönetimi işlemlerine erişimi yönetmek için Azure rol tabanlı erişim denetimi kullanın.
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: c24d075dcb9ac36ce741db746d69aa9e61fac39d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0dd8d08c4ee79082f47929cf7d453f3f4bbd60ee
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89376137"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090888"
 ---
-# <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Azure Backup kurtarma noktalarını yönetmek için Role-Based Access Control kullanma
+# <a name="use-azure-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Azure Backup kurtarma noktalarını yönetmek için Azure rol tabanlı erişim denetimi kullanma
 
-Azure rol tabanlı erişim denetimi (Azure RBAC), Azure için ayrıntılı erişim yönetimine izin vermez. RBAC kullanarak ekibiniz içinde görevleri ayırabilir, bu işlere gerek duyan kişilere sadece erişim miktarını verebilirsiniz.
+Azure rol tabanlı erişim denetimi (Azure RBAC), Azure için ayrıntılı erişim yönetimine izin vermez. Azure RBAC kullanarak ekibiniz içinde görevleri ayırabilir, bu işlere gerek duyan kişilere sadece erişim miktarını verebilirsiniz.
 
 > [!IMPORTANT]
 > Azure Backup tarafından sunulan roller Azure portal veya REST API ya da kurtarma hizmetleri Kasası PowerShell veya CLı cmdlet 'leri aracılığıyla gerçekleştirilebilecek eylemlerle sınırlıdır. Azure Backup Aracısı istemci kullanıcı arabirimi veya System Center Data Protection Manager Kullanıcı arabirimi veya Azure Backup Sunucusu Kullanıcı arabiriminde gerçekleştirilen eylemler, bu rollerin denetimi dışındadır.
@@ -77,9 +77,9 @@ Aşağıdaki tabloda, yedekleme yönetim eylemleri ve Azure dosya paylaşma işl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/role-assignments-portal.md): Azure Portal RBAC ile çalışmaya başlayın.
+* [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/role-assignments-portal.md): Azure Portal Azure RBAC ile çalışmaya başlayın.
 * İle erişimin nasıl yönetileceğini öğrenin:
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)
   * [REST API](../role-based-access-control/role-assignments-rest.md)
-* [Rol tabanlı Access Control sorun giderme](../role-based-access-control/troubleshooting.md): yaygın sorunları gidermeye yönelik öneriler alın.
+* [Azure rol tabanlı erişim denetimi sorunlarını giderme](../role-based-access-control/troubleshooting.md): yaygın sorunları gidermeye yönelik öneriler alın.

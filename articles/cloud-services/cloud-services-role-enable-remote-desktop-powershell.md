@@ -9,17 +9,17 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 13d5be5b1e0bcdf84001f21a45364296d67a5da4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7742267f5ce199f3a5bffc52200374d2323f0622
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87013906"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072467"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-powershell"></a>PowerShell kullanarak Azure Cloud Services bir rol için Uzak Masaüstü Bağlantısı etkinleştirme
 
 > [!div class="op_single_selector"]
-> * [Azure portalındaki](cloud-services-role-enable-remote-desktop-new-portal.md)
+> * [Azure portalı](cloud-services-role-enable-remote-desktop-new-portal.md)
 > * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
@@ -30,7 +30,7 @@ Bu makalede, PowerShell kullanarak bulut hizmeti rolleriniz üzerinde Uzak Masa�
 ## <a name="configure-remote-desktop-from-powershell"></a>Uzak Masaüstü 'Nü PowerShell 'den yapılandırma
 [Set-Azurezerviceremotedesktopextension](/powershell/module/servicemanagement/azure.service/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) cmdlet 'i belirtilen roller üzerinde uzak masaüstünü veya bulut hizmeti dağıtımınızın tüm rollerini etkinleştirmenizi sağlar. Cmdlet 'i, bir PSCredential nesnesini kabul eden *Credential* parametresi aracılığıyla uzak masaüstü kullanıcısına ait Kullanıcı adını ve parolayı belirtmenizi sağlar.
 
-PowerShell 'i etkileşimli olarak kullanıyorsanız, [Get-Credentials](https://technet.microsoft.com/library/hh849815.aspx) cmdlet 'Ini çağırarak PSCredential nesnesini kolayca ayarlayabilirsiniz.
+PowerShell 'i etkileşimli olarak kullanıyorsanız, [Get-Credentials](/powershell/module/microsoft.powershell.security/get-credential) cmdlet 'Ini çağırarak PSCredential nesnesini kolayca ayarlayabilirsiniz.
 
 ```powershell
 $remoteusercredentials = Get-Credential
@@ -38,7 +38,7 @@ $remoteusercredentials = Get-Credential
 
 Bu komut, uzak kullanıcı için Kullanıcı adını ve parolayı güvenli bir şekilde girmenize izin veren bir iletişim kutusu görüntüler.
 
-PowerShell Otomasyon senaryolarında yardımcı olduğundan, **PSCredential** nesnesini Kullanıcı etkileşimi gerektirmeyen bir şekilde de ayarlayabilirsiniz. İlk olarak, güvenli bir parola ayarlamanız gerekir. Bir düz metin parolası belirterek, [ConvertTo-SecureString](https://technet.microsoft.com/library/hh849818.aspx)kullanarak güvenli bir dizeye dönüştürebilirsiniz. Ardından, bu güvenli dizeyi [ConvertFrom-SecureString](https://technet.microsoft.com/library/hh849814.aspx)kullanarak şifrelenmiş bir standart dizeye dönüştürmeniz gerekir. Artık bu şifrelenen standart dizeyi, [set-Content](https://technet.microsoft.com/library/ee176959.aspx)kullanarak bir dosyaya kaydedebilirsiniz.
+PowerShell Otomasyon senaryolarında yardımcı olduğundan, **PSCredential** nesnesini Kullanıcı etkileşimi gerektirmeyen bir şekilde de ayarlayabilirsiniz. İlk olarak, güvenli bir parola ayarlamanız gerekir. Bir düz metin parolası belirterek, [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring)kullanarak güvenli bir dizeye dönüştürebilirsiniz. Ardından, bu güvenli dizeyi [ConvertFrom-SecureString](/powershell/module/microsoft.powershell.security/convertfrom-securestring)kullanarak şifrelenmiş bir standart dizeye dönüştürmeniz gerekir. Artık bu şifrelenen standart dizeyi, [set-Content](/previous-versions/windows/it-pro/windows-powershell-1.0/ee176959(v=technet.10))kullanarak bir dosyaya kaydedebilirsiniz.
 
 Parolayı her seferinde yazmanız gerekmiyorsa, güvenli bir parola dosyası da oluşturabilirsiniz. Ayrıca, güvenli bir parola dosyası düz metin dosyasından daha iyidir. Güvenli bir parola dosyası oluşturmak için aşağıdaki PowerShell 'i kullanın:
 
@@ -47,9 +47,9 @@ ConvertTo-SecureString -String "Password123" -AsPlainText -Force | ConvertFrom-S
 ```
 
 > [!IMPORTANT]
-> Parolayı ayarlarken [karmaşıklık gereksinimlerini](https://technet.microsoft.com/library/cc786468.aspx)karşıladığınızdan emin olun.
+> Parolayı ayarlarken [karmaşıklık gereksinimlerini](/previous-versions/windows/it-pro/windows-server-2003/cc786468(v=ws.10))karşıladığınızdan emin olun.
 
-Güvenli parola dosyasından kimlik bilgisi nesnesini oluşturmak için, dosya içeriğini okumanız ve [ConvertTo-SecureString](https://technet.microsoft.com/library/hh849818.aspx)kullanarak bunları güvenli bir dizeye dönüştürmeniz gerekir.
+Güvenli parola dosyasından kimlik bilgisi nesnesini oluşturmak için, dosya içeriğini okumanız ve [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring)kullanarak bunları güvenli bir dizeye dönüştürmeniz gerekir.
 
 [Set-Azurezerviceremotedesktopextension](/powershell/module/servicemanagement/azure.service/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) cmdlet 'i Ayrıca, Kullanıcı hesabının süresinin dolacağı bir **Tarih saat** belirten bir *süre sonu* parametresini kabul eder. Örneğin, hesabı geçerli tarih ve saatten birkaç gün dolacak şekilde ayarlayabilirsiniz.
 
@@ -101,5 +101,3 @@ Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallCo
 ## <a name="additional-resources"></a>Ek kaynaklar
 
 [Cloud Services’ı Yapılandırma](cloud-services-how-to-configure-portal.md)
-
-

@@ -169,15 +169,15 @@
           href: update-regulatory-compliance-packages.md
     - name: Sunucular için Azure Defender’ı kullanma
       items:
-        - name: VM’ler için güvenlik açığı taraması
+        - name: Güvenlik açığı taraması
           items:
-            - name: VM’lerinizi tümleşik VA çözümüyle tarama
-              displayName: 'qualys, vulnerability'
+            - name: Makineler için tümleşik VA tarayıcısı
+              displayName: 'qualys, vulnerability, arc'
               href: deploy-vulnerability-assessment-vm.md
             - name: VM’lerinizi KLG VA çözümüyle tarama
               displayName: 'qualys, rapid7, vulnerability'
               href: deploy-vulnerability-assessment-byol-vm.md
-            - name: VM'lerinizdeki güvenlik açıklarını gözden geçirme ve düzeltme
+            - name: Güvenlik açıklarını gözden geçirme ve düzeltme
               displayName: 'qualys, rapid7, vulnerability'
               href: remediate-vulnerability-findings-vm.md
             - name: Belirli güvenlik açığı bulgularını devre dışı bırakma

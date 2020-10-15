@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 9/16/2020
+ms.date: 10/14/2020
 ms.author: b-juche
-ms.openlocfilehash: 0ddb9998c1e1b9b70303aeb4608bc0b53bc103ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6963a1f39534573bca39431febe391e89d462875
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325496"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072790"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files için kaynak sınırları
 
@@ -31,23 +31,23 @@ Aşağıdaki tabloda Azure NetApp Files için kaynak sınırları açıklanmakta
 
 |  Kaynak  |  Varsayılan limit  |  Destek isteği aracılığıyla ayarlanabilir  |
 |----------------|---------------------|--------------------------------------|
-|  Azure bölgesi başına NetApp hesabı sayısı   |  10    |  Evet   |
-|  NetApp hesabı başına kapasite havuzlarının sayısı   |    25     |   Evet   |
-|  Abonelik başına birim sayısı   |    500     |   Evet   |
-|  Kapasite havuzu başına birim sayısı     |    500   |    Evet     |
-|  Birim başına anlık görüntü sayısı       |    255     |    Hayır        |
-|  Azure sanal ağı başına Azure NetApp Files (Microsoft. NetApp/birimler) için temsilci seçilen alt ağ sayısı    |   1   |    Hayır    |
-|  Bir VNet 'te kullanılan IP sayısı (anında eşlenen sanal ağlar dahil) Azure NetApp Files   |    1000   |    Hayır   |
-|  Tek bir kapasite havuzunun en küçük boyutu   |  4 TiB     |    Hayır  |
-|  Tek bir kapasite havuzunun en büyük boyutu    |  500 TiB   |   Hayır   |
-|  Tek bir birimin en küçük boyutu    |    100 GiB    |    Hayır    |
-|  Tek bir birimin en büyük boyutu     |    100 TiB    |    Hayır    |
-|  Tek bir dosyanın en büyük boyutu     |    16 TiB    |    Hayır    |    
-|  Tek bir dizindeki dizin meta verilerinin en büyük boyutu      |    320 MB    |    Hayır    |    
-|  Birim başına en fazla dosya sayısı ([maxfiles](#maxfiles))     |    100.000.000    |    Evet    |    
-|  El ile QoS birimi için atanan en düşük aktarım hızı     |    1 MIB/sn   |    Hayır    |    
-|  El ile QoS birimi için atanan en yüksek aktarım hızı     |    4.500 MIB/sn    |    Hayır    |    
-|  Çapraz bölge çoğaltma verileri koruma birimlerinin sayısı (hedef birimler)     |    5    |    Evet    |     
+|  Azure bölgesi başına NetApp hesabı sayısı   |  10    |  Yes   |
+|  NetApp hesabı başına kapasite havuzlarının sayısı   |    25     |   Yes   |
+|  Abonelik başına birim sayısı   |    500     |   Yes   |
+|  Kapasite havuzu başına birim sayısı     |    500   |    Yes     |
+|  Birim başına anlık görüntü sayısı       |    255     |    No        |
+|  Azure sanal ağı başına Azure NetApp Files (Microsoft. NetApp/birimler) için temsilci seçilen alt ağ sayısı    |   1   |    No    |
+|  Bir VNet 'te kullanılan IP sayısı (anında eşlenen sanal ağlar dahil) Azure NetApp Files   |    1000   |    No   |
+|  Tek bir kapasite havuzunun en küçük boyutu   |  4 TiB     |    No  |
+|  Tek bir kapasite havuzunun en büyük boyutu    |  500 TiB   |   No   |
+|  Tek bir birimin en küçük boyutu    |    100 GiB    |    No    |
+|  Tek bir birimin en büyük boyutu     |    100 TiB    |    No    |
+|  Tek bir dosyanın en büyük boyutu     |    16 TiB    |    No    |    
+|  Tek bir dizindeki dizin meta verilerinin en büyük boyutu      |    320 MB    |    No    |    
+|  Birim başına en fazla dosya sayısı ([maxfiles](#maxfiles))     |    100.000.000    |    Yes    |    
+|  El ile QoS birimi için atanan en düşük aktarım hızı     |    1 MIB/sn   |    No    |    
+|  El ile QoS birimi için atanan en yüksek aktarım hızı     |    4.500 MIB/sn    |    No    |    
+|  Çapraz bölge çoğaltma verileri koruma birimlerinin sayısı (hedef birimler)     |    5    |    Yes    |     
 
 Daha fazla bilgi için bkz. [Kapasite Yönetimi SSS](azure-netapp-files-faqs.md#capacity-management-faqs).
 
@@ -65,7 +65,7 @@ Hizmet, bir birimin sağlanan boyutuna bağlı olarak maxfiles sınırını dina
 |    > 3 TiB ancak <= 4 TiB    |    80.000.000     |
 |    > 4 TiB                 |    100.000.000    |
 
-Bir birim için en az 4 TiB kotayı zaten ayırdıysanız, maxfiles limitini 100.000.000 ' den fazla artırmak için bir [destek isteği](#limit_increase) başlatabilirsiniz.
+Bir birim için en az 4 TiB kotayı zaten ayırdıysanız, maxfiles limitini 100.000.000 ' den fazla artırmak için bir [destek isteği](#limit_increase) başlatabilirsiniz. Artırmış olduğunuz her 100.000.000 dosya için (veya bir kesri), karşılık gelen birim kotasını 4 TiB ile artırmanız gerekir.  Örneğin, maxfiles limitini 100.000.000 dosyadan 200.000.000 dosya (veya aralarında herhangi bir sayı) olarak artırırsanız, birim kotasını 4 TiB 'den 8 TiB 'ye artırmanız gerekir.
 
 ## <a name="request-limit-increase"></a>İstek sınırı artışı <a name="limit_increase"></a> 
 
