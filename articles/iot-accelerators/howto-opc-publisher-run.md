@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 6a4b65195488f101d36aaf73956f1422bfccbbf9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7d6581a1892ebd74a1adba5c09c0af9d3cf9d43
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282145"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079012"
 ---
 # <a name="run-opc-publisher"></a>OPC Yayımcısını Çalıştırma
 
@@ -370,7 +370,7 @@ Desteklenen işletim sistemlerini ve işlemci mimarilerini görmek için [Docker
 
 ## <a name="run-as-an-azure-iot-edge-module"></a>Azure IoT Edge modülü olarak çalıştır
 
-OPC yayımcısı [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge) modülü olarak kullanılmak üzere kullanılabilir. OPC yayımcısını IoT Edge modülü olarak kullandığınızda, desteklenen tek taşıma protokolleri **Amqp_Tcp_Only** ve **Mqtt_Tcp_Only**.
+OPC yayımcısı [Azure IoT Edge](../iot-edge/index.yml) modülü olarak kullanılmak üzere kullanılabilir. OPC yayımcısını IoT Edge modülü olarak kullandığınızda, desteklenen tek taşıma protokolleri **Amqp_Tcp_Only** ve **Mqtt_Tcp_Only**.
 
 OPC yayımcısını IoT Edge dağıtımınıza modül olarak eklemek için, Azure portal IoT Hub ayarlarınıza gidin ve aşağıdaki adımları tamamlayın:
 

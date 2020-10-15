@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 47fdf445fa11693dd3a998b8c73ac0c3ed8452a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff9093872b2a5e069aef43ae2230b08447eea602
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85389369"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069866"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeler kullanarak talepler ekleyin ve Kullanıcı girişini özelleştirin
 
@@ -95,12 +95,12 @@ Kaydolma sırasında şehir talebini toplamak için, teknik profile bir çıkı�
    </TechnicalProfile>
   </TechnicalProfiles>
 </ClaimsProvider>
-<ClaimsProvider>
 ```
 
 Bir Federasyon hesabıyla ilk oturum açma işleminden sonra şehir talebini toplamak için, teknik profile bir çıkış talebi olarak eklenmesi gerekir `SelfAsserted-Social` . Yerel ve Federal hesap kullanıcılarının profil verilerini daha sonra düzenleyebilmeleri için, çıkış talebini `SelfAsserted-ProfileUpdate` Teknik profile ekleyin. Uzantı dosyasındaki bu teknik profilleri geçersiz kılın. Talepler ekranda sunulan sırayı denetlemek için çıkış taleplerinin tamamının listesini belirtin. **Claimsproviders** öğesini bulun. Yeni bir ClaimsProviders şu şekilde ekleyin:
 
 ```xml
+<ClaimsProvider>
   <DisplayName>Self Asserted</DisplayName>
   <TechnicalProfiles>
     <!--Federated account first-time sign-in page-->

@@ -2,17 +2,17 @@
 title: 'Kullanıcı VPN bağlantısı için Azure AD kimlik doğrulamasını yapılandırma: sanal WAN'
 description: Kullanıcı VPN için Azure Active Directory kimlik doğrulamasını yapılandırma hakkında bilgi edinin.
 services: virtual-wan
-author: kumudD
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/17/2020
+ms.date: 10/14/2020
 ms.author: alzam
-ms.openlocfilehash: 21c2cba1d67ba415849b20dedf9ba157ca191d05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1102e2dafcf1a78bc9c243f27549b13793ec5408
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87832527"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079182"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>Kullanıcı VPN için Azure Active Directory kimlik doğrulamasını yapılandırma
 
@@ -22,15 +22,14 @@ Bu tür bir bağlantı, istemci bilgisayarda bir istemcinin yapılandırılmış
 
 Bu makalede şunları öğreneceksiniz:
 
-> [!div class="checklist"]
-> * Sanal WAN oluşturma
-> * Sanal hub oluşturma
-> * Kullanıcı VPN yapılandırması oluşturma
-> * Sanal WAN Kullanıcı VPN profilini indir
-> * Kullanıcı VPN yapılandırmasını bir sanal hub 'a Uygula
-> * VNet 'i sanal hub 'a bağlama
-> * Kullanıcı VPN istemci yapılandırmasını indirme ve uygulama
-> * Sanal WAN 'nizi görüntüleme
+* Sanal WAN oluşturma
+* Sanal hub oluşturma
+* Kullanıcı VPN yapılandırması oluşturma
+* Sanal WAN Kullanıcı VPN profilini indir
+* Kullanıcı VPN yapılandırmasını bir sanal hub 'a Uygula
+* VNet 'i sanal hub 'a bağlama
+* Kullanıcı VPN istemci yapılandırmasını indirme ve uygulama
+* Sanal WAN 'nizi görüntüleme
 
 ![Sanal WAN diyagramı](./media/virtual-wan-about/virtualwanp2s.png)
 

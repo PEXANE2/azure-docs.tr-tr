@@ -4,14 +4,14 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: bed2a4ccbe87aef9afa395ed789da393e885cc89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 368c594352b59f7ec6d04b12ca44e0cd492dc907
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779518"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92082108"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - Dağıtılan bir Iletişim Hizmetleri kaynağı. [Iletişim Hizmetleri kaynağı oluşturun](../../create-communication-resource.md).
@@ -141,7 +141,7 @@ call = callAgent.join(context, groupCallContext, joinCallOptions);
 ### <a name="overview"></a>Genel Bakış
 Mobil anında iletme bildirimleri, mobil cihazlarda gördüğünüz açılır bildirimlerdir. Çağırmak için VoIP (Internet Protokolü üzerinden ses) anında iletme bildirimleri üzerine odaklanacağız. Anında iletme bildirimleri için kaydolacağız, anında iletme bildirimlerini işleyecek ve sonra anında iletme bildirimlerinin kaydını sileceğiz.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Bu bölümü gerçekleştirmek için bir Firebase hesabı oluşturun ve bulut mesajlaşma 'yı (FCM) etkinleştirin. Firebase Cloud Messaging 'in bir Azure Notification Hub (ANH) örneğine bağlı olduğundan emin olun. Yönergeler için bkz. [Firebase 'ı Azure 'A bağlama](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started) .
 Bu bölüm ayrıca uygulamanızı derlemek için Android Studio sürüm 3,6 veya üstünü kullandığınızı varsayar.
@@ -517,7 +517,7 @@ API 'Leri izleyen işleyici nesnesi
 // Create a view for a video stream
 renderer.createView()
 ```
-* Dispose oluşturucuyu ve `RendererView` Bu işleyiciyle ilişkili tümü
+* Dispose oluşturucuyu ve tüm `RendererView` Bu işleyiciyle ilişkili. Tüm ilişkili görünümleri kullanıcı arabiriminden kaldırdığınızda çağrılabilir.
 ```java
 renderer.dispose()
 ```
