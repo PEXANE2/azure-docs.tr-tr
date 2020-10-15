@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9ca190ae9e5679ce7622f89b39507d69d87f5b88
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 4b1007fe89cf455b6af8ebba00f24e8019ad8013
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875590"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078298"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>VNet 'ten VNet 'e bağlantı yapılandırma (klasik)
 
@@ -22,7 +22,7 @@ ms.locfileid: "91875590"
 Bu makale, sanal ağlar arasında bir VPN Gateway bağlantısı oluşturmanıza yardımcı olur. Sanal ağlar aynı ya da farklı bölgelerde ve aynı ya da farklı aboneliklerde bulunuyor olabilirler. Bu makaledeki adımlar, klasik dağıtım modeli ve Azure portal için geçerlidir. Ayrıca aşağıdaki listeden farklı bir seçenek belirtip farklı bir dağıtım aracı veya dağıtım modeli kullanarak da bu yapılandırmayı oluşturabilirsiniz:
 
 > [!div class="op_single_selector"]
-> * [Azure portalındaki](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure portalı](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure portal (klasik)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
@@ -32,8 +32,6 @@ Bu makale, sanal ağlar arasında bir VPN Gateway bağlantısı oluşturmanıza 
 >
 
 ![VNet 'ten VNet 'e bağlantı diyagramı](./media/vpn-gateway-howto-vnet-vnet-portal-classic/v2vclassic.png)
-
-
 
 ## <a name="about-vnet-to-vnet-connections"></a>Sanal Ağdan Sanal Ağa bağlantıları hakkında
 
@@ -61,7 +59,7 @@ Sanal ağları aşağıdaki sebeplerden dolayı bağlamak isteyebilirsiniz:
 
 Sanal ağlar arası bağlantılar hakkında daha fazla bilgi için bu makalenin sonunda yer alan [Sanal ağdan sanal ağa dikkat edilecek noktalar](#faq) bölümünü inceleyin.
 
-### <a name="working-with-azure-powershell"></a><a name="powershell"></a>Azure PowerShell çalışma
+## <a name="prerequisites"></a>Önkoşullar
 
 Çoğu adım için portalı kullanıyoruz, ancak sanal ağlar arasındaki bağlantıları oluşturmak için PowerShell kullanmanız gerekir. Azure portal kullanarak bağlantı oluşturamazsınız. [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
@@ -87,7 +85,7 @@ Bu adımda, iki klasik sanal ağ oluşturursunuz. Bu makaleyi bir alıştırma o
 Ad: TestVNet1<br>
 Adres alanı: 10.11.0.0/16, 10.12.0.0/16 (isteğe bağlı)<br>
 Alt ağ adı: varsayılan<br>
-Alt ağ adres aralığı: 10.11.0.1/24<br>
+Alt ağ adres aralığı: 10.11.0.0/24<br>
 Kaynak grubu: ClassicRG<br>
 Location: East US<br>
 GatewaySubnet: 10.11.1.0/27

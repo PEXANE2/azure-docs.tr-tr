@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 62a6e8c9fdec3b30bd193e9887d7e0cb7926e73e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f90c1e492d6da4f85fe86e4c5c76b89bdfaa4797
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86243010"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078434"
 ---
 # <a name="generate-shared-access-signature"></a>Paylaşılan erişim Imzası oluştur
 
-Bu makalede, ifadeleri kullanarak [paylaşılan erişim imzasının](../../storage/common/storage-sas-overview.md) nasıl oluşturulacağı ve isteğin yeniden yazma-URI Ilkesi ile Azure depolama 'ya nasıl iletebileceği gösterilir. Bir ilke kodu ayarlamak veya düzenlemek için, [Ilke ayarlama veya düzenleme](../set-edit-policies.md)bölümünde açıklanan adımları izleyin. Diğer örnekleri görmek için bkz. [ilke örnekleri](../policy-samples.md).
+Bu makalede, ifadeleri kullanarak [paylaşılan erişim imzasının](../../storage/common/storage-sas-overview.md) nasıl oluşturulacağı ve isteğin yeniden yazma-URI Ilkesi ile Azure depolama 'ya nasıl iletebileceği gösterilir. Bir ilke kodu ayarlamak veya düzenlemek için, [Ilke ayarlama veya düzenleme](../set-edit-policies.md)bölümünde açıklanan adımları izleyin. Diğer örnekleri görmek için bkz. [ilke örnekleri](../policy-reference.md).
 
 ## <a name="policy"></a>İlke
 
@@ -35,4 +35,4 @@ Kodu **gelen** bloğa yapıştırın.
 APıM ilkeleri hakkında daha fazla bilgi edinin:
 
 + [Dönüştürme ilkeleri](../api-management-transformation-policies.md)
-+ [İlke örnekleri](../policy-samples.md)
++ [İlke örnekleri](../policy-reference.md)

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: phsignor
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 0add5001e2e62e26d448b06927210c14f17729f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5016dbff30eb054e413acc66b1b2dfee62a5873
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804348"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070682"
 ---
 # <a name="configure-permission-classifications"></a>İzin sınıflandırmalarını yapılandırma
 
@@ -33,7 +33,7 @@ ms.locfileid: "91804348"
 
 Azure portal kullanarak izinleri sınıflandırmak için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com) [genel yönetici](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)olarak oturum açın.
+1. [Azure Portal](https://portal.azure.com) [genel yönetici](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator), [Uygulama Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)veya [bulut uygulama Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator) olarak oturum açın
 1. **Azure Active Directory**  >  **kurumsal uygulamaların**  >  **onay ve**izin  >  **izin sınıflandırmalarını**seçin.
 1. Başka bir izni "düşük etki" olarak sınıflandırmak için **Izin Ekle** ' yi seçin.
 1. API 'YI seçin ve ardından temsilci izinleri seçin.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
-ms.openlocfilehash: 3a8d3309cdc5ddb0ae75ed6fcf0376118275b835
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a737fada3e019029967bc752aaa0dedc354fa880
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87848018"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078332"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>Azure API Management ilkelerini ayarlama veya düzenleme
 
@@ -136,4 +136,4 @@ Aşağıdaki ilgili konulara bakın:
 
 + [API dönüştürme](transform-api.md)
 + İlke deyimlerinin ve ayarlarının tam listesi için [Ilke başvurusu](./api-management-policies.md)
-+ [İlke örnekleri](policy-samples.md)
++ [İlke örnekleri](./policy-reference.md)

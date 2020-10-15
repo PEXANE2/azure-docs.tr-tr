@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/28/2020
 ms.author: baanders
-ms.openlocfilehash: 450ea0b8024192f6f351b4893fe6e8e07db236f7
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 333a7ec4ae0e5c8cbc94a603e2ccf81ee92e7d48
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931996"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078468"
 ---
 ## <a name="query-language-features"></a>Sorgu dili özellikleri
 
@@ -33,6 +33,7 @@ Sorgularınızı aşağıdaki işlemlerle daha da geliştirebilirsiniz:
   - Önizleme süresince en fazla beş düzeye `JOIN` izin verilir.
 * Yalnızca en üstteki sorgu sonuçlarını seçin ( `Select TOP` işleç)
 * Kullanarak bir sonuç kümesindeki öğelerin sayısını say `Select COUNT`
+* Bir sorgunun döndüreceği sütunları seçmek için projeksiyonları kullanma
 * Skaler işlevleri kullanın: `IS_BOOL` , `IS_DEFINED` , `IS_NULL` , `IS_NUMBER` , `IS_OBJECT` , `IS_PRIMITIVE` , `IS_STRING` , `STARTSWITH` , `ENDSWITH` .
 * Sorgu karşılaştırma işleçlerini kullanın: `IN` / `NIN` , `=` , `!=` , `<` , `>` , `<=` , `>=` .
 * Herhangi bir bileşim ( `AND` , `OR` , `NOT` işleç) `IS_OF_MODEL` , skaler işlevler ve karşılaştırma işleçlerini kullanın.
