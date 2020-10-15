@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 345b4950e25f48eb1a48c5e583908d0f771771ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ceb8fd154e8ad533f4bf6bc9eb0ec3900749f8b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86206236"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075374"
 ---
 # <a name="access-and-customize-developer-portal"></a>Geliştirici portalına erişme ve özelleştirme
 
 Geliştirici portalı, API 'lerinizin belgelerinde otomatik olarak oluşturulan ve tamamen özelleştirilebilir bir Web sitesidir. API tüketicilerinin API 'lerinizi keşfedebileceği, nasıl kullanılacağını ve nasıl erişim isteyeceğini burada bulabilirsiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Geliştirici portalının yönetilen sürümüne erişin
@@ -131,7 +131,7 @@ Portalı yayımladıktan sonra, yönetim paneliyle aynı URL 'de buna erişebili
 Portalınızın ziyaretçilerinin yerleşik etkileşimli konsol aracılığıyla API 'Leri test etmek için API 'lerinizin CORS 'yi (Cross-Origin kaynak paylaşımı) etkinleştirmeniz gerekir. Daha fazla bilgi için [Bu belge makalesine](api-management-howto-developer-portal.md#cors) başvurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Bulut harcamalarınızı iyileştirin ve kaydedin](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+- [Bulut harcamalarınızı iyileştirin ve kaydedin](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
 
 Geliştirici portalı hakkında daha fazla bilgi edinin:
 
