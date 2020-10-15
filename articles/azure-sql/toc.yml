@@ -37,6 +37,8 @@
           href: database/scale-resources.md
         - name: Okuma Amaçlı Ölçeği Genişletme
           href: database/read-scale-out.md
+        - name: Dağıtılmış işlemler
+          href: database/elastic-transactions-overview.md
         - name: Güvenlik
           items:
             - name: Genel Bakış
@@ -90,8 +92,6 @@
                   href: database/transparent-data-encryption-tde-overview.md
                 - name: Kendi Anahtarını Getir (KAG)
                   href: database/transparent-data-encryption-byok-overview.md
-            - name: Dağıtılmış işlemler
-              href: database/elastic-transactions-overview.md
         - name: İş sürekliliği
           displayName: 'Backup, back up, restore, recovery'
           items:
@@ -625,7 +625,7 @@
                       href: database/saas-multitenantdb-tenant-analytics.md
     - name: Örnekler
       items:
-        - name: Azure CLI
+        - name: Azure CLI’si
           href: database/az-cli-script-samples-content-guide.md?tabs=single-database
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=single-database
@@ -828,6 +828,20 @@
                           href: 'https://docs.microsoft.com/sql/machine-learning/data-exploration/python-dataframe-pandas?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: SQL’e veri çerçevesi ekleme
                           href: 'https://docs.microsoft.com/sql/machine-learning/data-exploration/python-dataframe-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                - name: Veri türü dönüştürmeleri
+                  items:
+                    - name: Python’dan SQL’e
+                      href: 'https://docs.microsoft.com/sql/machine-learning/python/python-libraries-and-data-types?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                    - name: R’dan SQL’e
+                      href: 'https://docs.microsoft.com/sql/machine-learning/r/r-libraries-and-data-types?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                - name: Dağıtma
+                  items:
+                    - name: Saklı yordamları kullanarak operasyonel hale getirme
+                      href: 'https://docs.microsoft.com/sql/machine-learning/r/operationalizing-your-r-code?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                    - name: R kodunu SQL Server için dönüştürme
+                      href: 'https://docs.microsoft.com/sql/machine-learning/r/converting-r-code-for-use-in-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                    - name: sqlrutils kullanarak saklı yordam oluşturma
+                      href: 'https://docs.microsoft.com/sql/machine-learning/r/how-to-create-a-stored-procedure-using-sqlrutils?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                 - name: Tahminler
                   items:
                     - name: PREDICT T-SQL ile yerel puanlama
@@ -906,7 +920,7 @@
           href: managed-instance/user-initiated-failover.md
     - name: Örnekler
       items:
-        - name: Azure CLI
+        - name: Azure CLI’si
           href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=managed-instance

@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: philmea
-ms.openlocfilehash: 8309b625a590131c5f521335e180967ab2c2667c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57d2ac4f1e80c24a750e0e5f8eb22850718594a1
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91363163"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071039"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Öğretici: bağlı cihazlarınızı toplu olarak yönetme
 
@@ -59,7 +59,7 @@ Başlamadan önce:
 * [IoT DevKit cihazındaki önyükleme yükleyicinin sürüm 1.4.0 veya daha yüksek](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/)olduğundan emin olun.
 * IoT DevKit SDK 'sının önyükleme yükleyicisinden aynı sürümde olduğundan emin olun. IoT DevKit SDK 'sını, VS Code Azure IoT çalışma ekranı kullanarak güncelleştirebilirsiniz. Komut paletini açın ve **Arduino: Board Manager**girin. Daha fazla bilgi için bkz. [geliştirme ortamını hazırlama](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md#prepare-the-development-environment).
 
-Ayrıca, en az bir IoT DevKit cihazını uzaktan Izleme çözüm hızlandırıcısına bağlamanız gerekir. IoT DevKit cihazı bağlanamadıysanız, bkz. [Mxyongaıot DEVKIT AZ3166 'ı IoT uzaktan izleme çözüm hızlandırıcısına bağlama](iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md).
+Ayrıca, en az bir IoT DevKit cihazını uzaktan Izleme çözüm hızlandırıcısına bağlamanız gerekir. IoT DevKit cihazı bağlanamadıysanız, bkz. [Mxyongaıot DEVKIT AZ3166 'ı IoT uzaktan izleme çözüm hızlandırıcısına bağlama](./iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2.md).
 
 ## <a name="navigate-to-the-dashboard"></a>Panoya gidin
 
@@ -274,4 +274,4 @@ Yeniden başlatma tamamlandığında, IoT DevKit cihazınız artık bellenimin 1
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, çözümünüze bağlı bir cihaz grubunun bellenimini güncelleştirme konusu gösterilmektedir. Cihazları güncelleştirmek için çözümünüz otomatik cihaz yönetimini kullanır. Çözümünüzün temel alınan IoT Hub 'ında otomatik cihaz yönetimi özelliği hakkında daha fazla bilgi edinmek için bkz. [Azure Portal kullanarak IoT cihazlarını ölçeklendirerek yapılandırma ve izleme](../iot-hub/iot-hub-auto-device-config.md).
+Bu öğreticide, çözümünüze bağlı bir cihaz grubunun bellenimini güncelleştirme konusu gösterilmektedir. Cihazları güncelleştirmek için çözümünüz otomatik cihaz yönetimini kullanır. Çözümünüzün temel alınan IoT Hub 'ında otomatik cihaz yönetimi özelliği hakkında daha fazla bilgi edinmek için bkz. [Azure Portal kullanarak IoT cihazlarını ölçeklendirerek yapılandırma ve izleme](../iot-hub/iot-hub-automatic-device-management.md).

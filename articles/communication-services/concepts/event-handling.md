@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 2a205daeffb659ce0dd5756066d11691a89c166e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 67c701946eedf85176b3d14b09d3e723c4c74285
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91664962"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072127"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Azure Iletişim hizmetlerinde olay Işleme
 
@@ -36,9 +36,9 @@ Azure Iletişim Hizmetleri aşağıdaki olay türlerini yayar:
 | ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | Microsoft. Communication. Smsalındı                         | Iletişim hizmetiyle ilişkili bir telefon numarası tarafından SMS alındığında yayımlandı. |
 | Microsoft. Communication. Smsdeliveryreportalındı           | Iletişim hizmeti tarafından gönderilen bir SMS için teslim raporu alındığında yayımlandı.     |
-| Microsoft. Communication. ChatMessageReceived *                | Üyesi olan bir sohbet iş parçacığında kullanıcı için bir ileti alındığında yayımlandı.        |
-| Microsoft. Communication. ChatMessageEdited *                   | Kullanıcının üyesi olduğu bir sohbet iş parçacığında bir ileti düzenlendiğinde yayımlandı.                |
-| Microsoft. Communication. ChatMessageDeleted *                  | Kullanıcının üyesi olduğu bir sohbet iş parçacığında bir ileti silindiğinde yayımlandı.               |
+| Microsoft. Communication. ChatMessageReceived                | Üyesi olan bir sohbet iş parçacığında kullanıcı için bir ileti alındığında yayımlandı.        |
+| Microsoft. Communication. ChatMessageEdited                   | Kullanıcının üyesi olduğu bir sohbet iş parçacığında bir ileti düzenlendiğinde yayımlandı.                |
+| Microsoft. Communication. ChatMessageDeleted                  | Kullanıcının üyesi olduğu bir sohbet iş parçacığında bir ileti silindiğinde yayımlandı.               |
 | Microsoft. Communication. ChatThreadCreatedWithUser           | Kullanıcı bir sohbet iş parçacığı oluşturma sırasında üye olarak eklendiğinde yayımlandı.           |
 | Microsoft. Communication. ChatThreadWithUserDeleted           | Kullanıcının üyesi olduğu bir sohbet iş parçacığı silindiğinde yayımlandı.                           |
 | Microsoft. Communication. ChatThreadPropertiesUpdatedPerUser  | Bir sohbet iş parçacığının özellikleri kullanıcının üyesi olduğu güncelleştirildiği zaman yayımlandı.              |
@@ -47,7 +47,6 @@ Azure Iletişim Hizmetleri aşağıdaki olay türlerini yayar:
 
 Iletişim Hizmetleri kaynağınız tarafından oluşturulan olaylara abone olmak için Azure portal veya Azure CLı kullanabilirsiniz. [Iletişim HIZMETLERINDE SMS olaylarını nasıl işleyeceğinizi](../quickstarts/telephony-sms/handle-sms-events.md) inceleyerek olayları işlemeye başlayın
 
-* Lütfen tetiklenecek bu olaylara yönelik "ileti gönder" API çağrılarında "gönderen adı" nı sağladığınızdan emin olun.
 
 ## <a name="event-subjects"></a>Olay konuları
 

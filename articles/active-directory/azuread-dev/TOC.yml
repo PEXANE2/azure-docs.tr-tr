@@ -1,15 +1,18 @@
 - name: Geliştiriciler için Azure Active Directory
   href: index.yml
 - name: Genel Bakış
-  href: v1-overview.md
-- name: Örnekler
-  href: sample-v1-code.md
-- name: Kavramlar
+  expanded: true
   items:
+    - name: Genel Bakış
+      href: v1-overview.md
     - name: Microsoft Identity Platform'un gelişimi
       href: about-microsoft-identity-platform.md
     - name: Neden v2.0'a yükseltmeli?
       href: azure-ad-endpoint-comparison.md
+- name: Örnekler
+  href: sample-v1-code.md
+- name: Kavramlar
+  items:
     - name: Uygulama türleri
       items:
         - name: Uygulama türleri
