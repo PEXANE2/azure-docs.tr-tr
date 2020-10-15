@@ -1,18 +1,18 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/08/2020
-ms.author: akjosh
+ms.date: 10/14/2020
+ms.author: olayemio
 ms.custom: include file
-ms.openlocfilehash: 662afb902c97e164cc24bc664b854db118904210
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5c06d0beeb76193c2b8ddba9413878dbf428819
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89494320"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071787"
 ---
 Paylaşılan görüntü Galerisi, yansımalarınızın etrafında yapı ve kuruluş oluşturmanıza yardımcı olan bir hizmettir. Paylaşılan görüntü galerileri şunları sağlar:
 
@@ -56,19 +56,36 @@ Her görüntü tanımı için, kombinasyon- **Yayımcı**, **teklif** ve **SKU**
 
 Bunların üçü de benzersiz değer kümelerine sahiptir. Bu biçim, bir market görüntüsünün en son sürümünü almak için Azure PowerShell ' de [Azure Market görüntüleri](../articles/virtual-machines/windows/cli-ps-findimage.md) için yayımcı, TEKLIF ve SKU 'yu nasıl belirteceğinize benzer. Her görüntü tanımının bu değerlerin benzersiz bir kümesine sahip olması gerekir.
 
+Görüntü tanımları, hangi görüntü sürümü türlerinin içerebileceğini belirleyen aşağıdaki parametreleri tanımlamalıdır:
+-   İşletim sistemi durumu-işletim sistemi durumunu [Genelleştirilmiş veya özelleştirilmiş](#generalized-and-specialized-images)olarak ayarlayabilirsiniz.
+- İşletim sistemi-Windows veya Linux olabilir.
+
+
+
 Aşağıda, kaynaklarınızı daha kolay izleyebilmek için görüntü tanımınızda ayarlanabilme diğer parametreler verilmiştir:
 
-* İşletim sistemi durumu-işletim sistemi durumunu [Genelleştirilmiş veya özelleştirilmiş](#generalized-and-specialized-images)olarak ayarlayabilirsiniz.
-* İşletim sistemi-Windows veya Linux olabilir.
-* Açıklama-görüntü tanımının neden mevcut olduğuna ilişkin daha ayrıntılı bilgi için açıklama kullanın. Örneğin, ön uç sunucunuz için uygulamanın önceden yüklenmiş olduğu bir görüntü tanımınız olabilir.
-* EULA-görüntü tanımına özgü bir son kullanıcı lisans anlaşmasını işaret etmek için kullanılabilir.
-* Gizlilik bildirimi ve sürüm notları-Azure Storage 'da sürüm notlarını ve gizlilik bildirimlerini depolayın ve görüntü tanımının bir parçası olarak bunlara erişmek için bir URI sağlayın.
-* Yaşam bitiş tarihi-eski görüntü tanımlarını silmek için Otomasyonu kullanabilmeniz için görüntü tanımınıza son kullanım tarihi ekleyin.
-* Etiket-görüntü tanımınızı oluştururken Etiketler ekleyebilirsiniz. Etiketler hakkında daha fazla bilgi için bkz. [kaynakları düzenlemek için etiketleri kullanma](../articles/azure-resource-manager/management/tag-resources.md)
-* En düşük ve en yüksek vCPU ve bellek önerileri-görüntünüz vCPU ve bellek önerileri içeriyorsa, bu bilgileri görüntü tanımınıza ekleyebilirsiniz.
-* İzin verilmeyen disk türleri-sanal makinenizin depolama gereksinimleriyle ilgili bilgiler sağlayabilirsiniz. Örneğin, görüntü standart HDD disklerine uygun değilse, bunları izin vermeme listesine eklersiniz.
-* Hyper-V oluşturma-görüntünün bir gen 1 veya Gen 2 Hyper-V VHD 'sinden oluşturulup oluşturulmayacağını belirtebilirsiniz.
-* Market görüntüleri için satın alma planı bilgileri- `-PurchasePlanPublisher ` , `-PurchasePlanName` , ve `-PurchasePlanProduct` . Satın alma planı bilgileri hakkında daha fazla bilgi için bkz. [Azure Marketi 'nde görüntüleri bulma](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage) ve [görüntü oluştururken Azure Marketi satın alma planı bilgilerini sağlama](../articles/virtual-machines/marketplace-images.md).
+- Açıklama-görüntü tanımının neden mevcut olduğuna ilişkin daha ayrıntılı bilgi için açıklama kullanın. Örneğin, ön uç sunucunuz için uygulamanın önceden yüklenmiş olduğu bir görüntü tanımınız olabilir.
+- EULA-görüntü tanımına özgü bir son kullanıcı lisans anlaşmasını işaret etmek için kullanılabilir.
+- Gizlilik bildirimi ve sürüm notları-Azure Storage 'da sürüm notlarını ve gizlilik bildirimlerini depolayın ve görüntü tanımının bir parçası olarak bunlara erişmek için bir URI sağlayın.
+- Yaşam bitiş tarihi-eski görüntü tanımlarını silmek için Otomasyonu kullanabilmeniz için görüntü tanımınıza son kullanım tarihi ekleyin.
+- Etiket-görüntü tanımınızı oluştururken Etiketler ekleyebilirsiniz. Etiketler hakkında daha fazla bilgi için bkz. [kaynakları düzenlemek için etiketleri kullanma](../articles/azure-resource-manager/management/tag-resources.md)
+- En düşük ve en yüksek vCPU ve bellek önerileri-görüntünüz vCPU ve bellek önerileri içeriyorsa, bu bilgileri görüntü tanımınıza ekleyebilirsiniz.
+- İzin verilmeyen disk türleri-sanal makinenizin depolama gereksinimleriyle ilgili bilgiler sağlayabilirsiniz. Örneğin, görüntü standart HDD disklerine uygun değilse, bunları izin vermeme listesine eklersiniz.
+-   Hyper-V oluşturma-görüntünün 1. kuşak veya [2. nesil](../articles/virtual-machines/generation-2.md) Hyper-V VHD 'sinden oluşturulup oluşturulmayacağını belirtin. Varsayılan 1. kuşak.
+- Market görüntüleri için satın alma planı bilgileri- `-PurchasePlanPublisher` , `-PurchasePlanName` , ve `-PurchasePlanProduct` . Satın alma planı bilgileri hakkında daha fazla bilgi için bkz. [Azure Marketi 'nde görüntüleri bulma](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage) ve [görüntü oluştururken Azure Marketi satın alma planı bilgilerini sağlama](../articles/virtual-machines/marketplace-images.md).
+
+
+## <a name="image-versions"></a>Görüntü sürümleri
+
+Bir **görüntü sürümü** bir sanal makine oluşturmak için kullandığınız şeydir. Ortamınız için gerektiğinde bir görüntünün birden fazla sürümüne sahip olabilirsiniz. Bir sanal makine oluşturmak için **görüntü sürümü** kullandığınızda, sanal makine için yeni diskler oluşturmak üzere görüntü sürümü kullanılır. Görüntü sürümleri birden çok kez kullanılabilir.
+
+Görüntü sürümünün özellikleri şunlardır:
+
+- Sürüm numarası. Bu, görüntü sürümünün adı olarak kullanılır. Her zaman şu biçimdedir: MajorVersion. MinorVersion. Patch. Bir VM oluştururken **en son** kullanımı belirttiğinizde, en yüksek MajorVersion, sonra MinorVersion ve Patch temel alınarak en son görüntü seçilir. 
+- Kaynaktaki. Kaynak bir VM, yönetilen disk, anlık görüntü, yönetilen görüntü veya başka bir görüntü sürümü olabilir. 
+- En son dışında tut. Sürümün en son görüntü sürümü olarak kullanılmasını sağlayabilirsiniz. 
+- Yaşam tarihi sonu. Bu görüntüden VM 'Lerin oluşturuoluşturuoluşturulamadığı tarih.
+
 
 ## <a name="generalized-and-specialized-images"></a>Genelleştirilmiş ve özelleştirilmiş görüntüler
 
@@ -129,14 +146,14 @@ Paylaşılan görüntü Galerisi, görüntü tanımı ve görüntü sürümü t�
 
 | Kullanıcıyla paylaşıldı     | Paylaşılan Görüntü Galerisi | Görüntü Tanımı | Görüntü sürümü |
 |----------------------|----------------------|--------------|----------------------|
-| Paylaşılan Görüntü Galerisi | Evet                  | Evet          | Evet                  |
-| Görüntü Tanımı     | Hayır                   | Evet          | Evet                  |
+| Paylaşılan Görüntü Galerisi | Yes                  | Yes          | Yes                  |
+| Görüntü Tanımı     | Hayır                   | Yes          | Yes                  |
 
 En iyi deneyim için Galeri düzeyinde paylaşım yapmanızı öneririz. Ayrı görüntü sürümlerinin paylaşılmasını önermiyoruz. RBAC hakkında daha fazla bilgi için bkz. [RBAC kullanarak Azure kaynaklarına erişimi yönetme](../articles/role-based-access-control/role-assignments-portal.md).
 
 Görüntüler aynı zamanda çok kiracılı bir uygulama kaydı kullanan kiracılar arasında bile ölçeklenebilir şekilde paylaşılabilir. Kiracılar arasında görüntü paylaşma hakkında daha fazla bilgi için bkz. [Azure kiracılar genelinde galerı VM görüntülerini paylaşma](../articles/virtual-machines/linux/share-images-across-tenants.md).
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Faturalama
 Paylaşılan görüntü Galerisi hizmetinin kullanılması için ek ücret alınmaz. Aşağıdaki kaynaklar için ücretlendirilirsiniz:
 - Paylaşılan görüntü sürümlerini depolamanın depolama maliyeti. Maliyet, görüntü sürümünün yineleme sayısına ve sürümün çoğaltılacağı bölge sayısına bağlıdır. Örneğin, 2 görüntünüz varsa ve her ikisi de 3 bölgeye çoğaltılırsa, boyutlarına göre 6 yönetilen disk üzerinden ücretlendirilirsiniz. Daha fazla bilgi için bkz. [yönetilen diskler fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks/).
 - Kaynak bölgeden çoğaltılan bölgelere ilk görüntü sürümünün çoğaltılmasıyla ilgili ağ çıkış ücretleri. Sonraki çoğaltmalar bölge içinde işlenir, bu nedenle ek ücret alınmaz. 
@@ -146,12 +163,12 @@ Paylaşılan görüntü Galerisi hizmetinin kullanılması için ek ücret alın
 Oluşturulduktan sonra, görüntü Galerisi kaynaklarında bazı değişiklikler yapabilirsiniz. Bunlarla sınırlı:
  
 Paylaşılan görüntü Galerisi:
-- Açıklama
+- Description
 
 Görüntü tanımı:
 - Önerilen vCPU 'Lar
 - Önerilen bellek
-- Açıklama
+- Description
 - Yaşam tarihi sonu
 
 Görüntü sürümü:

@@ -9,12 +9,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: c930636f9af45edc66670c3f757333fef8e8756e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6de03969a22c5b699fdfd2be17a6ba65905d23e6
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89458833"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073402"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>Konuk İşletim Sistemi Ailesi 1 kullanımdan kaldırma bildirimi
 OS ailesi 1 ' in kullanımdan kaldırılması ilk olarak 1 Haziran 2013 ' de duyuruldu.
@@ -23,7 +23,7 @@ OS ailesi 1 ' in kullanımdan kaldırılması ilk olarak 1 Haziran 2013 ' de duy
 
 **3 kasım 2014** Konuk işletim sistemi ailesi 1 için genişletilmiş destek sona erdi ve tamamen kullanımdan kaldırıldı. Tüm hizmetler hala aile 1 ' de etkilenecektir. Bu hizmetleri dilediğiniz zaman durduracağız. Kendiniz de el ile yükseltmediğiniz müddetçe hizmetlerinizin çalışmaya devam edeceğini garanti yoktur.
 
-Başka sorularınız varsa, [Cloud Services Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-cloud-services.html) ziyaret edin veya [Azure desteği 'ne başvurun](https://azure.microsoft.com/support/options/).
+Başka sorularınız varsa, [Cloud Services Için Microsoft Q&soru sayfasını](/answers/topics/azure-cloud-services.html) ziyaret edin veya [Azure desteği 'ne başvurun](https://azure.microsoft.com/support/options/).
 
 ## <a name="are-you-affected"></a>Etkilensin mi?
 Aşağıdakilerden biri geçerliyse Cloud Services etkilenir:
@@ -32,7 +32,7 @@ Aşağıdakilerden biri geçerliyse Cloud Services etkilenir:
 2. Bulut hizmetiniz için ServiceConfiguration. cscfg dosyasında açıkça belirtilmiş bir osFamily değeri yok. Şu anda sistem bu durumda varsayılan değeri "1" kullanır.
 3. Azure portal, Konuk Işletim sistemi aile değerini "Windows Server 2008" olarak listeler.
 
-Bulut hizmetlerinizin hangi işletim sistemi ailesinden çalıştığını öğrenmek için, Azure PowerShell aşağıdaki betiği çalıştırabilirsiniz, ancak önce [Azure PowerShell ayarlamanız](/powershell/azure/) gerekir. Betiği hakkında daha fazla bilgi için bkz. [Azure Konuk işletim sistemi ailesi 1 yaşam sonu: haziran 2014](https://docs.microsoft.com/archive/blogs/ryberry/azure-guest-os-family-1-end-of-life-june-2014).
+Bulut hizmetlerinizin hangi işletim sistemi ailesinden çalıştığını öğrenmek için, Azure PowerShell aşağıdaki betiği çalıştırabilirsiniz, ancak önce [Azure PowerShell ayarlamanız](/powershell/azure/) gerekir. Betiği hakkında daha fazla bilgi için bkz. [Azure Konuk işletim sistemi ailesi 1 yaşam sonu: haziran 2014](/archive/blogs/ryberry/azure-guest-os-family-1-end-of-life-june-2014).
 
 ```Powershell
 foreach($subscription in Get-AzureSubscription) {

@@ -1,16 +1,16 @@
 ---
-title: Çalışmaya başlayın ve ekiplerden Azure Lab Services Laboratuvarı oluşturun
-description: Nasıl başlacağınızı ve ekiplerden Azure Lab Services Laboratuvarı oluşturmayı öğrenin.
+title: Kullanmaya başlayın ve takımlar içinde Azure Lab Services Laboratuvarı oluşturun
+description: Nasıl başlacağınızı ve takımlar içinde Azure Lab Services Laboratuvarı oluşturmayı öğrenin.
 ms.topic: article
 ms.date: 10/08/2020
-ms.openlocfilehash: 0604e2934ff6b011acfa9dd4a4b25fa58193e69b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 4f8c0e2c5f7b75990460b0a1812d4fec3a758259
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044454"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092146"
 ---
-# <a name="get-started-and-create-a-lab-services-lab-from-teams"></a>Çalışmaya başlayın ve ekiplerden Laboratuvar Hizmetleri Laboratuvarı oluşturun
+# <a name="get-started-and-create-a-lab-services-lab-within-teams"></a>Kullanmaya başlayın ve takımlar içinde Laboratuvar Hizmetleri Laboratuvarı oluşturun
 
 Bu makalede, **Azure Lab Services** uygulamasının bir takıma nasıl ekleneceği ve ardından MS ekipleri ortamında nasıl laboratuvar oluşturulacağı gösterilmektedir.
 
@@ -34,40 +34,38 @@ Ekip sahibi olarak, doğrudan takımlar kanallarınızda **Azure Lab Services** 
 
     > [!NOTE]
     > Yalnızca takım **sahipleri** takım için laboratuvarları oluşturabilir.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/integrate-with-teams/add.png" alt-text="Sekme ekle":::
 1. Bu takımda sınıf laboratuvarları oluşturmak için kullanmak istediğiniz bir laboratuvar hizmetleri hesabı seçin. 
 
     Azure Lab Services, [Azure Lab Services Web sitesinde](https://labs.azure.com) çoklu oturum açma kullanır ve erişiminiz olan tüm Laboratuvar hesaplarını çeker. 
 
     Ekiplerle aynı kiracıda bulunan ve **sahibi**, **katılımcısı**veya **oluşturan** erişimi olan hesaplar görüntülenir. 
 
-   ![ALS 'e hoş geldiniz](./media/integrate-with-teams/welcome.png) 
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/integrate-with-teams/welcome.png" alt-text="Sekme ekle":::
 1. **Kaydet** ' e basın ve sekme kanala eklenir.
 
-    Artık, kanalınızdan **Azure Lab Services** sekmesini seçebilir ve aşağıdaki adımda anlatıldığı gibi laboratuvarları yönetmeye başlayabilirsiniz.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/integrate-with-teams/created.png" alt-text="Sekme ekle":::
+
+    Artık, kanalınızdan **Azure Lab Services** sekmesini seçebilir ve aşağıdaki makalelerde açıklandığı gibi laboratuvarları yönetmeye başlayabilirsiniz.
 
 Laboratuvar hesabı seçildikten sonra, takım sahipleri takım için Labs oluşturabilir. Laboratuvar oluşturma işleminin tamamı ve laboratuar düzeyindeki tüm görevler takımlar içinde gerçekleştirilebilir. Kullanıcılar aynı takım ve takım sahibi içinde birden çok Laboratuvar oluşturma seçeneğine sahip olacak ve laboratuvar hesabı düzeyinde uygun erişimle, yalnızca belirli bir takımla ilişkili laboratuvarları görür.
-
-## <a name="deleting-classroom-labs"></a>Sınıf laboratuvarlarını silme
-
-Takımlar içinde oluşturulan bir laboratuvar, laboratuvar [Hizmetleri Web sitesinde](https://labs.azure.com) , [Azure Lab Services yerleşik sınıf laboratuvarları yönetme](how-to-manage-classroom-labs.md)bölümünde açıklandığı gibi doğrudan laboratuvar silinerek silinebilir. 
-
-Laboratuvar silme, takım silindiğinde de tetiklenir. Laboratuvarın oluşturulduğu takım silinirse, otomatik kullanıcı listesi eşitleme tetiklendikten sonra laboratuvar 24 saat sonra otomatik olarak silinir. 
-
-Sekmeyi silme veya uygulamayı kaldırma, laboratuvarın silinmesine neden olmaz. Sekme silinirse, takım üyelik listesindeki kullanıcılar, laboratuvar silme, Web sitesinde laboratuvar silinerek veya takım silinirken açıkça tetiklenmediği takdirde [Laboratuvar Hizmetleri Web sitesindeki](https://labs.azure.com) VM 'lere erişebilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Takımlar içinde bir laboratuvar oluşturulduğunda, laboratuvar Kullanıcı Listesi otomatik olarak doldurulur ve takım üyeliğiyle eşitlenir. Ekip üzerinde sahipler, Üyeler ve konuklar dahil herkes otomatik olarak laboratuvar Kullanıcı listesine eklenecektir. Azure Laboratuvar Hizmetleri, takım üyeliğiyle bir eşitleme koruyacak ve 24 saatte bir otomatik eşitleme tetiklenecektir. Ayrıntılar için bkz.
 
-[Ekiplerden Laboratuvar Hizmetleri Kullanıcı listelerini yönetme](how-to-manage-user-lists-within-teams.md)
+[Takımlar içindeki Laboratuvar Hizmetleri Kullanıcı listelerini yönetme](how-to-manage-user-lists-within-teams.md)
 
 ### <a name="see-also"></a>Ayrıca bkz.
 
 Ayrıca aşağıdaki makalelere bakın:
 
 - [Takımlara genel bakış içinde Azure Lab Services kullanma](lab-services-within-teams-overview.md)
-- [Takımlar içindeki laboratuvar kullanıcı listelerini yönetme](how-to-manage-user-lists-within-teams.md)
 - [Laboratuvarın takımlar içindeki VM havuzunu yönetme](how-to-manage-vm-pool-within-teams.md)
 - [Takımlar içinde laboratuvar zamanlamaları oluşturma ve yönetme](how-to-create-schedules-within-teams.md)
 - [Takımlar içindeki bir VM 'ye erişme – öğrenci görünümü](how-to-access-vm-for-students-within-teams.md)
-
+- [Takımlar içindeki laboratuvarları silme](how-to-delete-lab-within-teams.md)

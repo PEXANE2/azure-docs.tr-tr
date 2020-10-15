@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 06/8/2020
 ms.author: chenyl
-ms.openlocfilehash: abe7503e7eb73d533ae901af21de001960173fb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc7082744bc43baad2e26d09a83907540cf6a1df
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85559409"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92094084"
 ---
 # <a name="managed-identities-for-azure-signalr-service"></a>Azure SignalR hizmeti için Yönetilen kimlikler
 
@@ -65,7 +65,7 @@ Azure SignalR hizmeti, tam olarak yönetilen bir hizmettir, bu nedenle belirteç
     - [Azure hizmetinin kaynak KIMLIĞI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-azure-ad-authentication)
 
     > [!NOTE]
-    > Bir erişim belirtecini hizmetinize kendiniz doğruladıysanız, kaynak biçimlerinden birini seçebilirsiniz. Yalnızca **kimlik doğrulama** ayarlarındaki **kaynak** değerinin ve doğrulamanın tutarlı olduğundan emin olun. Bir veri düzlemi için rol tabanlı erişim denetimi (RBAC) kullanıyorsanız, hizmet sağlayıcısının istediği kaynağı kullanmanız gerekir.
+    > Bir erişim belirtecini hizmetinize kendiniz doğruladıysanız, kaynak biçimlerinden birini seçebilirsiniz. Yalnızca **kimlik doğrulama** ayarlarındaki **kaynak** değerinin ve doğrulamanın tutarlı olduğundan emin olun. Bir veri düzlemi için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanıyorsanız, hizmet sağlayıcısının istediği kaynağı kullanmanız gerekir.
 
 ### <a name="validate-access-tokens"></a>Erişim belirteçlerini doğrula
 
