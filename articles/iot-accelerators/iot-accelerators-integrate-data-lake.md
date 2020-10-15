@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 0a684151e01b298c60ff17ef1470e0648a425850
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbd895686b52ae7d1ced00b635d4d33e93c970a7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73889247"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069854"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>Uzaktan Izleme çözümünü Azure Data Lake Store ile tümleştirme
 
@@ -180,4 +180,4 @@ Azure Stream Analytics, verileri akımış bir giriş kaynağı belirtmek, veril
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Azure Data Lake Analytics, Data Lake Store veri kümelerinde büyük veri analizi gerçekleştirmek için kullanılabilir. [Data Lake Analytics belgeleri](https://docs.microsoft.com/azure/data-lake-analytics)hakkında daha fazla bilgi edinin.
+Azure Data Lake Analytics, Data Lake Store veri kümelerinde büyük veri analizi gerçekleştirmek için kullanılabilir. [Data Lake Analytics belgeleri](../data-lake-analytics/index.yml)hakkında daha fazla bilgi edinin.
