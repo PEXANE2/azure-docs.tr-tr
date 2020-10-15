@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/23/2020
 ms.author: magoedte
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 441e53123512a9611f9568edccfd40a3e17c981f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9315b898e290dc758c300f9b74006b4b08888e9e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89055439"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078961"
 ---
 # <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Otomasyon hesabı oluşturma
 
@@ -84,7 +84,7 @@ JSON şablonu, ortamınızda standart bir yapılandırma olarak kullanılacak di
 
 Azure Otomasyonu ve Azure Izleyici 'de yeni başladıysanız aşağıdaki yapılandırma ayrıntılarını anlamanız önemlidir. Yeni otomasyon hesabınıza bağlı bir Log Analytics çalışma alanı oluşturmaya, yapılandırmaya ve kullanmaya çalıştığınızda hatalardan kaçınmanıza yardımcı olabilirler.
 
-* Erişim denetimi modu, fiyatlandırma katmanı, bekletme ve kapasite ayırma düzeyi gibi çalışma alanı yapılandırma seçeneklerini tam olarak anlamak için [ek ayrıntıları](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace) gözden geçirin.
+* Erişim denetimi modu, fiyatlandırma katmanı, bekletme ve kapasite ayırma düzeyi gibi çalışma alanı yapılandırma seçeneklerini tam olarak anlamak için [ek ayrıntıları](../azure-monitor/samples/resource-manager-workspace.md#create-a-log-analytics-workspace) gözden geçirin.
 
 * Desteklenen bölgeleri satır içi veya bir parametre dosyasında belirtmek için [çalışma alanı eşlemelerini](how-to/region-mappings.md) gözden geçirin. Log Analytics çalışma alanını ve aboneliğinizdeki Otomasyon hesabını bağlamak için yalnızca belirli bölgeler desteklenir.
 
@@ -104,7 +104,7 @@ Azure Otomasyonu ve Azure Izleyici 'de yeni başladıysanız aşağıdaki yapıl
 
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 2. Azure portal, az önce oluşturduğunuz Otomasyon hesabını açın. 
 
