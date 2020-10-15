@@ -1,116 +1,123 @@
 ---
 title: Çoğaltma gecikmesi sorunlarını giderme-MySQL için Azure veritabanı
-description: MySQL için Azure veritabanı okuma çoğaltmalarıyla çoğaltma gecikmesini nasıl giderebileceğinizi öğrenin
+description: MySQL için Azure veritabanı okuma çoğaltmaları ' nı kullanarak çoğaltma gecikmesini nasıl giderebileceğinizi öğrenin.
 keywords: MySQL, sorun giderme, saniye cinsinden çoğaltma gecikme süresi
 author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 10/08/2020
-ms.openlocfilehash: 16a502a53b4441faf68ea342e0bc865731d38b1a
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: cb02b29c100da7b8d63f214acc78906a757344c0
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91877166"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096105"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda çoğaltma gecikmesi sorunlarını giderme
 
-[Çoğaltma oku](concepts-read-replicas.md) özelliği, bir MySQL Için Azure veritabanı sunucusu sunucusundan salt bir çoğaltma sunucusuna veri çoğaltmanıza olanak sağlar. Okuma/raporlama sorgularını uygulamadan çoğaltma sunucularına yönlendirerek iş yükünü ölçeklendirmek için okuma çoğaltmaları kullanılır. Bu, birincil sunucunun basıncını azaltır ve ölçeklendirilirken uygulamanın genel performansını ve gecikme süresini geliştirir. Çoğaltmalar, MySQL altyapısının yerel ikili günlük (binlog) dosya konumu tabanlı çoğaltma teknolojisini kullanılarak zaman uyumsuz olarak güncelleştirilir. Binlog çoğaltma hakkında daha fazla bilgi edinmek için [MySQL binlog çoğaltmasına genel bakış](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)bölümüne bakın. 
+[Çoğaltma oku](concepts-read-replicas.md) özelliği, bir MySQL Için Azure veritabanı sunucusu sunucusundan salt bir çoğaltma sunucusuna veri çoğaltmanıza olanak sağlar. Okuma ve raporlama sorgularını uygulamadan çoğaltma sunucularına yönlendirerek iş yüklerini ölçekleyebilirsiniz. Bu kurulum, kaynak sunucu üzerindeki basıncı azaltır. Ayrıca, ölçeklendirilirken uygulamanın genel performansını ve gecikme süresini geliştirir. 
 
-İkincil okuma çoğaltmalarının çoğaltma gecikmesi, dahil ancak bunlarla sınırlı olmamak üzere faktör sayısına bağlıdır 
+Çoğaltmalar, MySQL altyapısının yerel ikili günlük (binlog) dosya konumu tabanlı çoğaltma teknolojisi kullanılarak zaman uyumsuz olarak güncelleştirilir. Daha fazla bilgi için bkz. [MySQL binlog dosyası konum tabanlı çoğaltma yapılandırmasına genel bakış](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html). 
 
-- Ağ gecikmesi
-- Kaynak sunucudaki işlem hacmi
-- Kaynak ve ikincil okuma çoğaltması sunucusunun işlem katmanı
-- Birincil ve ikincil sunucuda çalışan sorgular. 
+İkincil okuma çoğaltmalarının çoğaltma gecikmesi çeşitli etkenlere bağlıdır. Bu faktörler arasında şunlar yer alır ancak bunlarla sınırlı değildir: 
 
-Bu belgede, MySQL için Azure veritabanı 'nda çoğaltma gecikmesini nasıl giderebileceğinizi öğreneceksiniz. Ayrıca, çoğaltma sunucularında daha fazla çoğaltma gecikme süresinin bazı yaygın nedenlerini de anlamış olursunuz.
+- Ağ gecikmesi.
+- Kaynak sunucudaki işlem hacmi.
+- Kaynak sunucunun ve ikincil okuma çoğaltması sunucusunun işlem katmanı.
+- Kaynak sunucuda ve ikincil sunucuda çalışan sorgular. 
+
+Bu makalede, MySQL için Azure veritabanı 'nda çoğaltma gecikmesini nasıl giderebileceğinizi öğreneceksiniz. Çoğaltma sunucularında daha fazla çoğaltma gecikme süresinin bazı yaygın nedenlerini de anlamış olursunuz.
 
 ## <a name="replication-concepts"></a>Çoğaltma kavramları
 
-İkili günlük etkinleştirildiğinde, kaynak sunucu, çoğaltma için kullanılan ikili günlüğe kaydedilmiş işlemi yazar. En fazla 16 TB depolamayı destekleyen yeni sağlanan tüm sunucular için ikili günlük varsayılan olarak açıktır. Çoğaltma sunucularında, biri GÇ iş parçacığı ve diğeri de SQL iş parçacığı adlı çoğaltma sunucusu başına çalışan iki iş parçacığı vardır.
+İkili günlük etkinleştirildiğinde, kaynak sunucu kaydedilmiş işlemleri ikili günlüğe yazar. İkili günlük çoğaltma için kullanılır. 16 TB 'a kadar depolamayı destekleyen yeni sağlanan tüm sunucular için varsayılan olarak açıktır. Çoğaltma sunucularında, her çoğaltma sunucusunda iki iş parçacığı çalışır. Bir iş parçacığı *GÇ iş parçacığıdır*ve diğeri *SQL iş parçacığıdır*:
 
-- **GÇ iş parçacığı** kaynak sunucuya bağlanır ve ikili günlükleri güncelleştirilmiş olarak ister. Bu iş parçacığı ikili günlük güncelleştirmelerini aldıktan sonra, geçiş günlüğü adlı yerel bir günlüğe bir çoğaltma sunucusuna kaydedilir.
-- **SQL iş parçacığı** geçiş günlüğünü okur ve veri değişikliğini çoğaltma sunucularına uygular.
+- GÇ iş parçacığı kaynak sunucuya bağlanır ve ikili günlükleri güncelleştirilmiş olarak ister. Bu iş parçacığı ikili günlük güncelleştirmelerini alır. Bu güncelleştirmeler bir çoğaltma sunucusuna, *geçiş günlüğü*adlı yerel bir günlüğe kaydedilir.
+- SQL iş parçacığı geçiş günlüğünü okur ve sonra veri değişikliklerini çoğaltma sunucularında uygular.
 
 ## <a name="monitoring-replication-latency"></a>İzleme çoğaltma gecikmesi
 
-MySQL için Azure veritabanı, [Azure izleyici](concepts-monitoring.md)'de saniye cinsinden yineleme gecikmesi sağlar. Bu ölçüm yalnızca okuma çoğaltmaları sunucularında kullanılabilir. Bu ölçüm, MySQL 'de kullanılabilir seconds_behind_master ölçümü kullanılarak hesaplanır. Daha fazla çoğaltma gecikme süresinin kök nedenini anlamak için [MySQL](connect-workbench.md) çalışma sunucusunu veya [Azure Cloud Shell](https://shell.azure.com) 'i kullanarak çoğaltma sunucusuna bağlanın ve aşağıdaki komutu yürütün:
+MySQL için Azure veritabanı, [Azure izleyici](concepts-monitoring.md)'de saniye cinsinden çoğaltma gecikmesi için ölçüm sağlar. Bu ölçüm yalnızca okuma çoğaltması sunucularında kullanılabilir. MySQL 'de kullanılabilen seconds_behind_master ölçümü tarafından hesaplanır. 
 
- Değerleri gerçek çoğaltma sunucunuzun adı ve Yönetici Kullanıcı oturum açma adı ile değiştirin. Yönetici Kullanıcı adı, \<servername> MySQL Için Azure veritabanı için ' @ ' gerektirir:
+Daha fazla çoğaltma gecikmesi Nedenini anlamak için, [MySQL](connect-workbench.md) çalışma sunucusunu veya [Azure Cloud Shell](https://shell.azure.com)kullanarak çoğaltma sunucusuna bağlanın. Ardından aşağıdaki komutu çalıştırın.
 
-  ```azurecli-interactive
-  mysql --host=myreplicademoserver.mysql.database.azure.com --user=myadmin@mydemoserver -p 
-  ```
+>[!NOTE] 
+> Kodunuzda, örnek değerleri, çoğaltma sunucunuzun adı ve yönetici kullanıcı adınızla değiştirin. Yönetici Kullanıcı adı, `@\<servername>` MySQL Için Azure veritabanı gerektirir.
 
-  Deneyim Cloud Shell terminalinde şöyle görünür
-  ```
-  Requesting a Cloud Shell.Succeeded.
-  Connecting terminal...
+```azurecli-interactive
+mysql --host=myreplicademoserver.mysql.database.azure.com --user=myadmin@mydemoserver -p 
+```
 
-  Welcome to Azure Cloud Shell
+Bu deneyim Cloud Shell terminalinde nasıl görünür:
 
-  Type "az" to use Azure CLI
-  Type "help" to learn about Cloud Shell
+```
+Requesting a Cloud Shell.Succeeded.
+Connecting terminal...
 
-  user@Azure:~$mysql -h myreplicademoserver.mysql.database.azure.com -u myadmin@mydemoserver -p
-  Enter password:
-  Welcome to the MySQL monitor.  Commands end with ; or \g.
-  Your MySQL connection id is 64796
-  Server version: 5.6.42.0 Source distribution
+Welcome to Azure Cloud Shell
 
-  Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+Type "az" to use Azure CLI
+Type "help" to learn about Cloud Shell
 
-  Oracle is a registered trademark of Oracle Corporation and/or its
-  affiliates. Other names may be trademarks of their respective
-  owners.
+user@Azure:~$mysql -h myreplicademoserver.mysql.database.azure.com -u myadmin@mydemoserver -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 64796
+Server version: 5.6.42.0 Source distribution
 
-  Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-  mysql>
-  ```
-  Aynı Azure Cloud Shell terminalde, aşağıdaki komutu yürütün
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
 
-  ```
-  mysql> SHOW SLAVE STATUS;
-  ```
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
 
-  Tipik bir çıktı şöyle görünür:
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+mysql>
+```
+
+Aynı Cloud Shell terminalde, aşağıdaki komutu çalıştırın:
+
+```
+mysql> SHOW SLAVE STATUS;
+```
+
+Tipik bir çıktı aşağıda verilmiştir:
   
 >[!div class="mx-imgBorder"]
 > :::image type="content" source="./media/howto-troubleshoot-replication-latency/show-status.png" alt-text="İzleme çoğaltma gecikmesi&quot;:::
 
 
-Çıktı çok fazla bilgi içerir, ancak normalde aşağıdaki sütunlara odaklanmak önemlidir:
+Çıktı çok fazla bilgi içerir. Normal olarak, yalnızca aşağıdaki tabloda açıklanan satırlara odaklanmanız gerekir.
 
 |Ölçüm|Açıklama|
 |---|---|
-|Slave_IO_State| GÇ iş parçacığının geçerli durumu. Normalde durum, eşitleme ise &quot;ana öğe gönderilmesi bekleniyor&quot; olur. Bununla birlikte, &quot;ana ağa bağlanma&quot; gibi bir durum görürseniz, çoğaltma ana sunucuyla bağlantıyı kaybetti. Ana bağlantının çalışıp çalışmadığını veya bağlantıyı engelleyip engellemediğini denetleyin.|
-|Master_Log_File| Ana dosyanın yazıldığı ikili günlük dosyası.|
-|Read_Master_Log_Pos| Yukarıdaki ikili günlük dosyasında, ana dosyanın yazıldığı konumu temsil eder.|
-|Relay_Master_Log_File| Belirtilen, çoğaltma sunucusunun ana bilgisayardan okuduğu ikili günlük dosyasını temsil eder.|
-|Slave_IO_Running| GÇ iş parçacığının çalışıp çalışmadığını belirtir. &quot;Yes&quot; olması gerekir. &quot;Hayır&quot; ise, büyük olasılıkla çoğaltma bozulur.|
-|Slave_SQL_Running| SQL iş parçacığının çalışıp çalışmadığını belirtir. &quot;Yes&quot; olması gerekir. &quot;Hayır&quot; ise, büyük olasılıkla çoğaltma bozulur.|
-|Exec_Master_Log_Pos| Çoğaltmanın uygulama Relay_Master_Log_File konumunu görüntüler. Gecikme varsa, bu konum sırası Read_Master_Log_Pos daha küçük olmalıdır.|
-|Relay_Log_Space|Geçiş günlük boyutunun üst sınırını görüntüler. &quot;Relay_log_space_limit&quot; gibi genel değişkenleri göster ' i sorgulayarak boyutu kontrol edebilirsiniz.|
+|Slave_IO_State| GÇ iş parçacığının geçerli durumunu temsil eder. Normalde, kaynak (ana) sunucusu eşitleme ise durum &quot;ana öğe gönderilmesi bekleniyor&quot; olur. &quot;Ana ağa bağlanma" gibi bir durum, çoğaltmanın kaynak sunucuyla olan bağlantıyı kaybettiğini belirtir. Kaynak sunucunun çalıştığından emin olun veya bir güvenlik duvarının bağlantıyı engelleyip engellemediğini denetleyin.|
+|Master_Log_File| Kaynak sunucunun yazıldığı ikili günlük dosyasını temsil eder.|
+|Read_Master_Log_Pos| Kaynak sunucunun ikili günlük dosyasında yazdığını gösterir.|
+|Relay_Master_Log_File| Çoğaltma sunucusunun kaynak sunucudan okuduğu ikili günlük dosyasını temsil eder.|
+|Slave_IO_Running| GÇ iş parçacığının çalışıp çalışmadığını belirtir. Değer olmalıdır `Yes` . Değer ise `NO` , çoğaltma muhtemelen bozulur.|
+|Slave_SQL_Running| SQL iş parçacığının çalışıp çalışmadığını belirtir. Değer olmalıdır `Yes` . Değer ise `NO` , çoğaltma muhtemelen bozulur.|
+|Exec_Master_Log_Pos| Çoğaltmanın uygulama Relay_Master_Log_File konumunu gösterir. Gecikme süresi varsa, bu konum sırası Read_Master_Log_Pos daha küçük olmalıdır.|
+|Relay_Log_Space|Geçiş günlük boyutunun üst sınırını gösterir. Boyutunu girerek kontrol edebilirsiniz `SHOW GLOBAL VARIABLES` `relay_log_space_limit` .|
 |Seconds_Behind_Master| Çoğaltma gecikmesini saniye cinsinden görüntüler.|
-|Last_IO_Errno|Varsa, GÇ iş parçacığı hata kodunu görüntüler. Bu kodlar hakkında daha fazla bilgi için bkz. [MySQL belgeleri](https://dev.mysql.com/doc/refman/5.7/en/server-error-reference.html).|
+|Last_IO_Errno|Varsa, GÇ iş parçacığı hata kodunu görüntüler. Bu kodlar hakkında daha fazla bilgi için [MySQL sunucusu hata iletisi başvurusuna](https://dev.mysql.com/doc/mysql-errors/5.7/en/server-error-reference.html)bakın.|
 |Last_IO_Error| Varsa, GÇ iş parçacığı hata iletisini görüntüler.|
-|Last_SQL_Errno|Varsa, SQL iş parçacığı hata kodunu görüntüler. Bu kodlar hakkında daha fazla bilgi için bkz. [MySQL belgeleri](https://dev.mysql.com/doc/refman/5.7/en/server-error-reference.html).|
+|Last_SQL_Errno|Varsa, SQL iş parçacığı hata kodunu görüntüler. Bu kodlar hakkında daha fazla bilgi için [MySQL sunucusu hata iletisi başvurusuna](https://dev.mysql.com/doc/mysql-errors/5.7/en/server-error-reference.html)bakın.|
 |Last_SQL_Error|Varsa, SQL iş parçacığı hata iletisini görüntüler.|
-|Slave_SQL_Running_State| Geçerli SQL iş parçacığı durumunu gösterir. Bu durumda gösterilen &quot;sistem kilidi&quot; nin normal bir davranış olduğunu unutmayın. &quot;Bağımlı işlemin yürütülmesi bekleniyor" durumuna bakmak normaldir. Çoğaltmanın, yöneticinin yürütülen işlemleri güncelleştirmesini beklediğini belirtir.|
+|Slave_SQL_Running_State| Geçerli SQL iş parçacığı durumunu gösterir. Bu durumda, `System lock` normaldir. Durumunu görmek de normaldir `Waiting for dependent transaction to commit` . Bu durum, çoğaltmanın kaynak sunucunun işlenen işlemleri güncelleştirmesini beklediğini belirtir.|
 
-Slave_IO_Running Evet ise ve Slave_SQL_Running Evet ise, çoğaltma sorunsuz bir şekilde çalışır. 
+Slave_IO_Running `Yes` ve Slave_SQL_Running ise, `Yes` çoğaltma sorunsuz şekilde çalışır. 
 
-Ardından Last_IO_Errno, Last_IO_Error, Last_SQL_Errno ve Last_SQL_Error denetlemeniz gerekir.  Bu alanlar, SQL iş parçacığının durdurulmasına neden olan en son hatanın hata numarasını ve hata iletisini tutar. Hata numarası 0 ve boş ileti bir hata olmadığı anlamına gelir. [MySQL belgelerindeki](https://dev.mysql.com/doc/refman/5.7/en/server-error-reference.html)hata koduna bakarak hata içindeki sıfır olmayan bir değer araştırılmalıdır.
+Ardından Last_IO_Errno, Last_IO_Error, Last_SQL_Errno ve Last_SQL_Error denetleyin.  Bu alanlar, SQL iş parçacığının durdurulmasına neden olan en son hatanın hata numarasını ve hata iletisini görüntüler. Hata numarası `0` ve boş bir ileti bir hata olmadığı anlamına gelir. [MySQL sunucusu hata iletisi başvurusunda](https://dev.mysql.com/doc/mysql-errors/5.7/en/server-error-reference.html)hata kodunu denetleyerek sıfır olmayan hata değerlerini araştırın.
 
 ## <a name="common-scenarios-for-high-replication-latency"></a>Yüksek çoğaltma gecikmesi için yaygın senaryolar
 
-### <a name="network-latency-or-high-cpu-on-source-server"></a>Kaynak sunucuda ağ gecikmesi veya yüksek CPU
+Aşağıdaki bölümlerde, yüksek çoğaltma gecikmesi ortak olan senaryolar ele verilmektedir.
 
-Aşağıdaki değerleri gözlemlerseniz, çoğaltma gecikme süresinin en yaygın nedeni, kaynak sunucuda yüksek ağ gecikmesi veya yüksek CPU tüketimidir. Bu durumda, GÇ iş parçacığı çalışıyor ve ana bilgisayarda bekliyor. Ana (kaynak sunucu), çoğaltma yalnızca dosya #10 aldığından #20 ikili günlük dosyasına zaten yazıldı. Bu senaryoda yüksek çoğaltma gecikmesi için katkıda bulunan temel etkenler, kaynak sunucuda ağ hızı veya yüksek CPU kullanımlardır.  Azure 'da, bir bölgedeki ağ gecikmesi genellikle milisaniye cinsinden ve bölge genelinde aralıklar arasında olabilir. Çoğu durumda, kaynak sunucuya bağlanmak için GÇ iş parçacığındaki gecikme, GÇ iş parçacığı işlemenin yavaş olmasına neden olan kaynak sunucuda yüksek CPU kullanımı nedeniyle oluşur. Bu, CPU kullanımını izleyerek ve kaynak sunucudaki eşzamanlı bağlantı sayısını Azure izleyici kullanılarak gözlemleyerek tespit edilebilir.
+### <a name="network-latency-or-high-cpu-consumption-on-the-source-server"></a>Kaynak sunucuda ağ gecikmesi veya yüksek CPU tüketimi
 
-Kaynak sunucuda yüksek CPU kullanımı görmüyorsanız olası nedenler ağ gecikmesi olabilir. ani bir şekilde yüksek ağ gecikmesi görürseniz, bilinen sorunlar veya kesintiler olduğundan emin olmak için [Azure durum sayfasını](https://status.azure.com/status) kontrol etmenizi öneririz. 
+Aşağıdaki değerleri görürseniz, çoğaltma gecikme süresi büyük olasılıkla kaynak sunucuda yüksek ağ gecikmesi veya yüksek CPU tüketimine neden olur. 
 
 ```
 Slave_IO_State: Waiting for master to send event
@@ -118,9 +125,17 @@ Master_Log_File: the binary file sequence is larger then Relay_Master_Log_File, 
 Relay_Master_Log_File: the file sequence is smaller than Master_Log_File, e.g. mysql-bin.00010
 ```
 
-### <a name="heavy-burst-of-transactions-on-source-server"></a>Kaynak sunucudaki işlemlerin ağır patlaması
+Bu durumda, GÇ iş parçacığı çalışıyor ve kaynak sunucu üzerinde bekliyor. Kaynak sunucu zaten 20 günlük dosyası numarasına yazıldı. Çoğaltma yalnızca dosya numarası 10 ' a kadar aldı. Bu senaryoda yüksek çoğaltma gecikme süresinin birincil faktörleri, kaynak sunucuda ağ hızı veya yüksek CPU kullanımlardır.  
 
-Aşağıdaki değerleri gözlemlerseniz, çoğaltma gecikme süresinin en yaygın nedeni, kaynak sunucu üzerindeki işlemlerin yoğun bir şekilde patlaması olur. Aşağıdaki çıktıda çoğaltma, ana kopyanın arkasındaki ikili günlüğü alabilse de, çoğaltma GÇ iş parçacığı geçiş günlük alanının dolu olduğunu gösterir. Bu nedenle, çoğaltma daha hızlı bir şekilde yakalamaya çalıştığından, gecikme nedeniyle ağ hızı gecikmeye neden olmaz. Bunun yerine, güncelleştirilmiş ikili günlük boyutu, geçiş günlük alanının üst sınırını aşıyor. Bu sorunu gidermek için, ana sunucuda [yavaş sorgu günlüğü](concepts-server-logs.md) etkinleştirilmelidir. Yavaş sorgu günlükleri, kaynak sunucuda uzun süre çalışan işlemleri tanımlamanızı sağlar. Sunucuda gecikme süresini azaltmak için tanımlanan sorguların ayarlanmış olması gerekir. 
+Azure 'da bir bölgedeki ağ gecikmesi genellikle ölçülen milisaniyelik olabilir. Bölgeler arasında, gecikme süresi milisaniye ile saniyeye saniye arasındadır. 
+
+Çoğu durumda, GÇ iş parçacıkları ve kaynak sunucu arasındaki bağlantı gecikmesi, kaynak sunucuda yüksek CPU kullanımı nedeniyle oluşur. GÇ iş parçacıkları yavaş işlenir. Bu sorunu, Azure Izleyici 'yi kullanarak CPU kullanımını ve kaynak sunucudaki eşzamanlı bağlantı sayısını denetlemek için algılayabilirsiniz.
+
+Kaynak sunucuda yüksek CPU kullanımı görmüyorsanız, sorun ağ gecikmesi olabilir. Ağ gecikmesi aniden anormal bir şekilde yüksekse, bilinen sorunlar veya kesintiler için [Azure durum sayfasına](https://status.azure.com/status) bakın. 
+
+### <a name="heavy-bursts-of-transactions-on-the-source-server"></a>Kaynak sunucudaki işlemlerin büyük bir kopyası
+
+Aşağıdaki değerleri görürseniz, kaynak sunucudaki yoğun işlem gecikmesi büyük olasılıkla çoğaltma gecikmesine neden olur. 
 
 ```
 Slave_IO_State: Waiting for the slave SQL thread to free enough relay log space
@@ -128,15 +143,18 @@ Master_Log_File: the binary file sequence is larger then Relay_Master_Log_File, 
 Relay_Master_Log_File: the file sequence is smaller then Master_Log_File, e.g. mysql-bin.00010
 ```
 
-Bu kategorideki gecikme süresinin yaygın nedenleri aşağıda verilmiştir:
+Çıktı, çoğaltmanın kaynak sunucunun arkasındaki ikili günlüğü alacağının gösterir. Ancak çoğaltma GÇ iş parçacığı, geçiş günlük alanının zaten dolu olduğunu gösterir. 
 
-#### <a name="replication-latency-due-to-data-load-on-source-server"></a>Kaynak sunucuda veri yükleme nedeniyle çoğaltma gecikmesi
-Bazı durumlarda, kaynak sunucularda haftalık veya aylık veri yükü vardır. Ne yazık ki bu durumda çoğaltma gecikmesi kaçınılmaz. Bu senaryoda, kaynak sunucudaki veri yüklemesi tamamlandıktan sonra çoğaltma sunucuları sonunda yakalar.
+Ağ hızı gecikmeye neden olmaz. Çoğaltma yakalamaya çalışıyor. Ancak güncelleştirilmiş ikili günlük boyutu, geçiş günlük alanının üst sınırını aşıyor. 
+
+Bu sorunu gidermek için, kaynak sunucuda [yavaş sorgu günlüğünü](concepts-server-logs.md) etkinleştirin. Kaynak sunucuda uzun süre çalışan işlemleri belirlemek için yavaş sorgu günlüklerini kullanın. Ardından, sunucuda gecikme süresini azaltmak için tanımlanan sorguları ayarlayın. 
+
+Bu sıralamanın çoğaltma gecikmesi genellikle kaynak sunucudaki veri yükünün oluşmasına neden olur. Kaynak sunucularda haftalık veya aylık veri yükleri olduğunda, çoğaltma gecikmesi ne yazık ki kaçınılmaz. Çoğaltma sunucuları, kaynak sunucudaki veri yükünün sonunda sona ermesinden sonra yakalar.
 
 
 ### <a name="slowness-on-the-replica-server"></a>Çoğaltma sunucusunda yavaşlık
 
-Aşağıdaki değerleri gözlemlerseniz, en sık karşılaşılan neden Çoğaltma sunucusunda daha fazla araştırma gerektiren bir sorun olabilir. Bu senaryoda, çıkışta görüldüğü gibi, hem GÇ hem de SQL iş parçacıkları iyi çalışıyor ve çoğaltma, ana yazma işlemleri ile aynı ikili günlük dosyasını okuyor. Ancak, Çoğaltma sunucusunda, kaynak sunucudan aynı işlemi yansıtacak bir gecikme süresi oluşur. 
+Aşağıdaki değerleri gözlemlerseniz, sorun Çoğaltma sunucusunda olabilir. 
 
 ```
 Slave_IO_State: Waiting for master to send event
@@ -149,15 +167,19 @@ Exec_Master_Log_Pos: The position of slave reads from master binary log file is 
 Seconds_Behind_Master: There is latency and the value here is greater than 0
 ```
 
-Bu kategorideki gecikme süresinin yaygın nedenleri aşağıda verilmiştir:
+Bu senaryoda, çıkış hem GÇ iş parçacığı hem de SQL iş parçacığının iyi çalıştığını gösterir. Çoğaltma, kaynak sunucunun yazdığı ikili günlük dosyasını okur. Ancak, Çoğaltma sunucusunda bazı gecikme süreleri kaynak sunucudan aynı işlemi yansıtır. 
 
-#### <a name="no-primary-or-unique-key-on-a-table"></a>Tabloda birincil veya benzersiz anahtar yok
+Aşağıdaki bölümlerde bu tür bir gecikme süresinin yaygın nedenleri açıklanır.
 
-MySQL için Azure veritabanı satır tabanlı çoğaltmayı kullanır. Satır tabanlı çoğaltma ile, ana sunucu her tablo satırı değişikliğine ilişkin olayları ikili günlüğe yazar. SQL Iş parçacığı, bu değişiklikleri çoğaltma sunucusundaki ilgili tablo satırlarında yürütür. Bir tabloda birincil veya benzersiz anahtar, çoğaltma gecikmesi genel nedenleriyle ilgili değildir. Birincil veya benzersiz anahtarların olmaması, değişiklikleri uygulamak için SQL iş parçacığına göre hedef tablodaki tüm satırları taramaya yol açar.
+#### <a name="no-primary-key-or-unique-key-on-a-table"></a>Tabloda birincil anahtar veya benzersiz anahtar yok
 
-MySQL 'de birincil anahtar, NULL değerler içermediğinden hızlı sorgu performansını sağlayan ilişkili bir dizindir. InnoDB Storage altyapısı ile tablo verileri, son derece hızlı aramalar yapmak ve birincil anahtara göre sıralama yapmak için fiziksel olarak düzenlenir. Bu nedenle, çoğaltma sunucusunu oluşturmadan önce kaynak sunucudaki tablolarda birincil anahtar eklemeniz önerilir. Bu senaryoda, kaynak sunucuya birincil anahtarlar eklemeniz ve çoğaltma gecikmesini artırmaya yardımcı olmak için okuma çoğaltmalarının yeniden oluşturulması gerekir.
+MySQL için Azure veritabanı satır tabanlı çoğaltmayı kullanır. Kaynak sunucu, olayları ikili günlüğe yazar ve tek tablo satırlarındaki değişiklikleri kaydeder. SQL iş parçacığı daha sonra bu değişiklikleri çoğaltma sunucusundaki ilgili tablo satırlarına çoğaltır. Bir tabloda birincil anahtar veya benzersiz anahtar olmadığında SQL iş parçacığı değişiklikleri uygulamak için hedef tablodaki tüm satırları tarar. Bu tarama çoğaltma gecikmesine neden olabilir.
 
-Kaynak sunucuda birincil anahtarı eksik olan tabloları belirleyebilmek için aşağıdaki sorguyu kullanabilirsiniz:
+MySQL 'de birincil anahtar, NULL değerler içeremediği için hızlı sorgu performansını sağlayan ilişkili bir dizindir. InnoDB Storage altyapısını kullanıyorsanız, tablo verileri fiziksel olarak hızlı aramalar yapmak ve birincil anahtara göre sıralama yapmak için fiziksel olarak düzenlenir. 
+
+Çoğaltma sunucusunu oluşturmadan önce kaynak sunucudaki tablolara birincil anahtar eklemenizi öneririz. Kaynak sunucuya birincil anahtarlar ekleyin ve ardından çoğaltma gecikmesini artırmaya yardımcı olmak için okuma çoğaltmalarını yeniden oluşturun.
+
+Kaynak sunucuda birincil anahtar eksik olan tabloları bulmak için aşağıdaki sorguyu kullanın:
 
 ```sql 
 select tab.table_schema as database_name, tab.table_name 
@@ -173,29 +195,47 @@ order by tab.table_schema, tab.table_name;
 
 ```
 
-#### <a name="replication-latency-due-to-long-running-queries-on-replica-server"></a>Çoğaltma sunucusunda uzun süre çalışan sorgular nedeniyle çoğaltma gecikme süresi
+#### <a name="long-running-queries-on-the-replica-server"></a>Çoğaltma sunucusunda uzun süre çalışan sorgular
 
-Çoğaltma sunucusundaki iş yükünün, SQL iş parçacığını GÇ iş parçacığına devam etmesini engelleyebilmesini sağlayabilirsiniz. Bu, Çoğaltma sunucusunda uzun süre çalışan bir sorgu varsa yüksek çoğaltma gecikmesinin yaygın nedenleriyle biridir. Bu durumda, sorunu gidermeye yardımcı olmak için Çoğaltma sunucusunda [yavaş sorgu günlüğü](concepts-server-logs.md) etkinleştirilmelidir. Yavaş sorgular kaynak tüketimlerini artırabilir veya sunucunun yavaşlamasına neden olabilir, bu nedenle çoğaltma ana öğe ile yakalayamaz. Bu senaryoda, yavaş sorguları ayarlamanız gerekir. Daha hızlı sorgular SQL iş parçacığının engellenmesini önler ve çoğaltma gecikmesini önemli ölçüde geliştirir.
+Çoğaltma sunucusundaki iş yükü, SQL iş parçacığı gecikmesini GÇ iş parçacığı arkasında yapabilir. Çoğaltma sunucusunda uzun süre çalışan sorgular, yüksek çoğaltma gecikmesinin genel nedenleriyle biridir. Bu sorunu gidermek için, Çoğaltma sunucusunda [yavaş sorgu günlüğünü](concepts-server-logs.md) etkinleştirin. 
+
+Yavaş sorgular, çoğaltma kaynak sunucuyla yakalayamaması için kaynak tüketimini artırabilir veya sunucunun yavaşlamasına neden olabilir. Bu senaryoda, yavaş sorguları ayarlayın. Daha hızlı sorgular SQL iş parçacığının engellenmesini engeller ve çoğaltma gecikmesini önemli ölçüde geliştirir.
 
 
-#### <a name="replication-latency-due-to-ddl-queries-on-source-server"></a>Kaynak sunucudaki DDL sorguları nedeniyle çoğaltma gecikme süresi
-Kaynak sunucuda yürütülen [alter table](https://dev.mysql.com/doc/refman/5.7/en/alter-table.html) gibi uzun süre çalışan bir ddl komutu varsa ve yürütülmesi 1 saat sürdü. Bu süre boyunca, kaynak sunucuda paralel olarak çalışan binlerce başka sorgu olabilir. DDL, çoğaltmaya çoğaltıldığında, veritabanının tutarlılığını sağlamak için MySQL altyapısının DDL 'yi tek bir çoğaltma iş parçacığında çalıştırması gerekir. Bu nedenle, diğer tüm çoğaltılan sorgular engellenir ve bu Çoğaltma sunucusunda DDL işlemi tamamlanana kadar bir saat veya daha fazla bekleme yapması gerekecektir. Bu, çevrimiçi DDL işleminden bağımsız olarak geçerlidir. DDL işlemleri ile çoğaltma, daha fazla çoğaltma gecikmesini görmeniz beklenir.
+#### <a name="ddl-queries-on-the-source-server"></a>Kaynak sunucuda DDL sorguları
+Kaynak sunucuda, gibi bir veri tanımlama dili (DDL) komutu [`ALTER TABLE`](https://dev.mysql.com/doc/refman/5.7/en/alter-table.html) uzun zaman alabilir. DDL komutu çalışırken, diğer binlerce sorgu kaynak sunucuda paralel olarak çalışıyor olabilir. 
 
-Kaynak sunucuda [yavaş sorgu günlüğü](concepts-server-logs.md) etkinse bu senaryo, kaynak sunucuda bir DDL komutunun yürütülüp yürütülmadığını görmek için yavaş sorgu günlüklerine bakarak algılanabilir. Dizin bırakma, yeniden adlandırma ve oluşturma, tablo verilerinin kopyalanmasını ve tablonun yeniden oluşturulmasını gerektirebilecek ALTER TABLE için ıNPLACE algoritması kullanmalıdır. Genellikle ıNPLACE algoritması için eşzamanlı DML desteklenir, ancak tablodaki bir özel meta veri kilidi, işlemin hazırlanması ve yürütme aşamaları sırasında kısaca alınmış olabilir. Bu nedenle, CREATE INDEX deyimleri için, yan tümce ALGORITMASı ve KILIDI, okumak ve yazmak üzere tablo kopyalama yöntemini ve eşzamanlılık düzeyini etkilemek için kullanılabilir, ancak tam metın veya uzamsal dizin eklemek DML işlemlerini de engeller. ALGORITMA ve kılıt yan tümceleri ile dizin oluşturma örneği hakkında daha fazla bilgi için bkz:
+DDL 'nin çoğaltılırsa, veritabanı tutarlılığını sağlamak için MySQL altyapısı DDL 'yi tek bir çoğaltma iş parçacığında çalıştırır. Bu görev sırasında, diğer tüm çoğaltılan sorgular engellenir ve Çoğaltma sunucusunda DDL işlemi bitene kadar beklemeniz gerekir. Hatta çevrimiçi DDL işlemleri bu gecikmeye neden olur. DDL işlemleri çoğaltma gecikmesini artırır.
+
+Kaynak sunucuda [yavaş sorgu günlüğünü](concepts-server-logs.md) etkinleştirdiyseniz, kaynak sunucuda çalışan bir DDL komutunu denetleyerek bu gecikme sorununu tespit edebilirsiniz. Dizin bırakma, yeniden adlandırma ve oluşturma aracılığıyla ALTER TABLE için INPLACE algoritmasını kullanabilirsiniz. Tablo verilerini kopyalamanız ve tabloyu yeniden oluşturmanız gerekebilir. 
+
+Genellikle, eş zamanlı DML, ıNPLACE algoritması için desteklenir. Ancak işlemi hazırlarken ve çalıştırdığınızda tablo üzerinde özel bir meta veri kilidi alabilirsiniz. Bu nedenle CREATE INDEX ifadesinde, tablo kopyalama yöntemini ve okuma ve yazma için eşzamanlılık düzeyini etkilemek için yan tümce ALGORITMASıNı ve KILIDI kullanabilirsiniz. Bir tam metın dizini veya uzamsal dizin ekleyerek DML işlemlerini yine de engelleyebilirsiniz. 
+
+Aşağıdaki örnek, ALGORITMA ve kılıt yan tümceleri kullanarak bir dizin oluşturur.
 
 ```sql
 ALTER TABLE table_name ADD INDEX index_name (column), ALGORITHM=INPLACE, LOCK=NONE;
 ```
 
-Ne yazık ki, bir kilit gerektiren DDL ifadesinde, çoğaltma gecikmesi önlenemez, bunun yerine bu tür DDL işlemleri, olası etkiyi azaltmak için nibir süre boyunca yoğun saatlerde gerçekleştirilmelidir.
+Ne yazık ki kilit gerektiren bir DDL bildiriminde çoğaltma gecikmesini önleyebilirsiniz. Olası etkileri azaltmak için, bu tür DDL işlemlerini yoğun olmayan saatlerde yapın, örneğin gece boyunca.
 
-#### <a name="replication-latency-due-to-replica-server-lower-sku"></a>Çoğaltma sunucusu alt SKU 'SU nedeniyle çoğaltma gecikme süresi
+#### <a name="downgraded-replica-server"></a>Çoğaltma sunucusu düşürülemez
 
-MySQL için Azure veritabanı okuma çoğaltmaları, ana sunucuyla aynı sunucu yapılandırmasıyla oluşturulur. Çoğaltma sunucusu yapılandırması oluşturulduktan sonra değiştirilebilir. Ancak, çoğaltma sunucusu indirgenirse, iş yükü çoğaltma gecikmesine yol açabilecek şekilde daha yüksek kaynak tüketimine neden olabilir. Bu, Azure Izleyici 'den çoğaltma sunucusunun CPU ve bellek tüketimini izleyerek gözlemlenebilir. Bu senaryoda, çoğaltmanın ana öğe ile devam edebileceğinden emin olmak için çoğaltma sunucusunun yapılandırmasının kaynaktan eşit veya daha büyük bir değer tutulması önerilir.
+MySQL için Azure veritabanı 'nda, okuma çoğaltmaları, kaynak sunucuyla aynı sunucu yapılandırmasını kullanır. Oluşturulduktan sonra çoğaltma sunucusu yapılandırmasını değiştirebilirsiniz. 
 
-#### <a name="improving-replication-latency-using-server-parameter-tuning-on-source-server"></a>Kaynak sunucuda sunucu parametre ayarlamayı kullanarak çoğaltma gecikmesini artırma
+Çoğaltma sunucusu indirgenirse, iş yükü daha fazla kaynak tüketebilir ve bu da çoğaltma gecikmesine neden olabilir. Bu sorunu tespit etmek için Azure Izleyici 'yi kullanarak çoğaltma sunucusunun CPU ve bellek tüketimini denetleyin. 
 
-MySQL için Azure veritabanı 'nda, çoğaltma varsayılan olarak çoğaltmalarda paralel iş parçacıklarıyla çalışacak şekilde iyileştirilmiştir. Çoğaltma sunucusunun yakalayamamakta olduğu kaynak sunucudaki yüksek eşzamanlılık iş yükleri için, kaynak sunucuda binlog_group_commit_sync_delay parametresi yapılandırılarak çoğaltma gecikmesi artırılabilir. Bu parametre, ikili günlük dosyasının eşitlenmesi için kaç mikrosaniye ikili günlük işlemesini denetler. Bu avantaj, uygulanan her işlemi hemen uygulamak yerine, ana öğe ikili günlük güncelleştirmelerini toplu olarak göndermelidir. Bu, çoğaltmada GÇ 'yi azaltır ve performansı artırmaya yardımcı olur. Bu senaryoda, binlog_group_commit_sync_delay 1000 veya bu şekilde ayarlamak ve çoğaltma gecikmesini izlemek faydalı olabilir. Bu parametre, yalnızca yüksek eşzamanlı iş yükleri için, dikkatli ve yararlanılabilir ayarlanmalıdır. Çok sayıda tekil işlem içeren düşük eşzamanlılık senaryosunda, GÇ iş parçacığı toplu ikili günlük güncelleştirmelerini beklerken yalnızca birkaç işlem yürütüldüğünden, binlog_group_commit_sync_delay ayarlanması gecikme süresine eklenebilir. 
+Bu senaryoda, çoğaltma sunucusunun yapılandırmasını kaynak sunucu değerlerine eşit veya ondan daha büyük değerlerle tutmanızı öneririz. Bu yapılandırma, çoğaltmanın kaynak sunucu ile kalmasına izin verir.
+
+#### <a name="improving-replication-latency-by-tuning-the-source-server-parameters"></a>Kaynak sunucu parametrelerini ayarlayarak çoğaltma gecikmesini artırma
+
+MySQL için Azure veritabanı 'nda, varsayılan olarak çoğaltma, çoğaltmalarda paralel iş parçacıklarıyla çalışacak şekilde en iyi duruma getirilir. Kaynak sunucudaki yüksek eşzamanlılık iş yükleri çoğaltma sunucusunun arkasına dönmesine neden oluyorsa, kaynak sunucuda binlog_group_commit_sync_delay parametresini yapılandırarak çoğaltma gecikmesini geliştirebilirsiniz. 
+
+Binlog_group_commit_sync_delay parametresi, ikili günlük dosyasının eşitlenmesi için kaç mikrosaniye ikili günlük işlemesini denetler. Bu parametrenin avantajı, her bir kaydedilmiş işlemi hemen uygulamak yerine, kaynak sunucunun ikili günlük güncelleştirmelerini toplu olarak göndereceğini unutmayın. Bu gecikme, çoğaltmada GÇ 'yi azaltır ve performansı artırmaya yardımcı olur. 
+
+Binlog_group_commit_sync_delay parametresini 1000 olarak ayarlamak yararlı olabilir. Sonra çoğaltma gecikmesini izleyin. Bu parametreyi dikkatle ayarlayın ve yalnızca yüksek eşzamanlılık iş yükleri için kullanın. 
+
+Birçok tek işlem içeren düşük eşzamanlılık iş yükleri için binlog_group_commit_sync_delay ayarı gecikmeyi artırabilir. GÇ iş parçacığı yalnızca birkaç işlem yapıldığından bile toplu ikili günlük güncelleştirmeleri beklediği için gecikme artabilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[MySQL binlog çoğaltmasına genel bakış](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)hakkında daha fazla bilgi edinin.
+[MySQL binlog çoğaltmasına genel bakış konusuna](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)göz atın.

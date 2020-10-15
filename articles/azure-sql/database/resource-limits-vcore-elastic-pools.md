@@ -10,13 +10,13 @@ ms.topic: reference
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 07/21/2020
-ms.openlocfilehash: 8ffa2a92dd33d16bf047035fb98a79a53b5f2246
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: fb4746972f78dc40a3ec264d2e1964e8d4e99b3d
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91620180"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097601"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Sanal çekirdek satın alma modelini kullanarak elastik havuzlar için kaynak sınırları
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -54,7 +54,7 @@ Hizmet katmanını, işlem boyutunu (hizmet hedefi) ve depolama miktarını [Azu
 |Depolama türü|Premium (uzak) depolama|Premium (uzak) depolama|Premium (uzak) depolama|Premium (uzak) depolama|Premium (uzak) depolama|Premium (uzak) depolama|
 |GÇ gecikme süresi (yaklaşık)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|
 |Havuz başına en fazla veri ıOPS <sup>2</sup> |400|800|1200|1600|2000|2400|
-|Havuz başına en fazla günlük hızı (MBps)|4.7|9.4|14,1|18.8|23,4|28,1|
+|Havuz başına en fazla günlük hızı (MBps)|6|12|18|24|30|36|
 |Havuz başına en fazla eş zamanlı çalışan (istek) <sup>3</sup> |210|420|630|840|1050|1260|
 |Havuz başına en fazla eşzamanlı oturum açma <sup>3</sup> |210|420|630|840|1050|1260|
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|30.000|
@@ -86,7 +86,7 @@ Hizmet katmanını, işlem boyutunu (hizmet hedefi) ve depolama miktarını [Azu
 |Depolama türü|Premium (uzak) depolama|Premium (uzak) depolama|Premium (uzak) depolama|Premium (uzak) depolama|Premium (uzak) depolama|Premium (uzak) depolama|
 |GÇ gecikme süresi (yaklaşık)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|
 |Havuz başına en fazla veri ıOPS <sup>2</sup>|2800|3200|3600|4000|6400|9600|
-|Havuz başına en fazla günlük hızı (MBps)|32,8|37,5|37,5|37,5|37,5|37,5|
+|Havuz başına en fazla günlük hızı (MBps)|42|48|48|48|48|48|
 |Havuz başına en fazla eş zamanlı çalışan (istek) <sup>3</sup>|1470|1680|1890|2100|3360|5040|
 |Maksimum eşzamanlı oturum açma Havuzu (istek) <sup>3</sup>|1470|1680|1890|2100|3360|5040|
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|30.000|
@@ -120,7 +120,7 @@ Hizmet katmanını, işlem boyutunu (hizmet hedefi) ve depolama miktarını [Azu
 |Depolama türü|Premium (uzak) depolama|Premium (uzak) depolama|Premium (uzak) depolama|Premium (uzak) depolama|Premium (uzak) depolama|Premium (uzak) depolama|Premium (uzak) depolama|
 |GÇ gecikme süresi (yaklaşık)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|
 |Havuz başına en fazla veri ıOPS <sup>2</sup>|800|1600|2400|3200|4000|4800|5600|
-|Havuz başına en fazla günlük hızı (MBps)|9.4|18.8|28,1|37,5|37,5|37,5|37,5|
+|Havuz başına en fazla günlük hızı (MBps)|12|24|36|48|48|48|48|
 |Havuz başına en fazla eş zamanlı çalışan (istek) <sup>3</sup>|210|420|630|840|1050|1260|1470|
 |Havuz başına en fazla eşzamanlı oturum açma sayısı (istek) <sup>3</sup>|210|420|630|840|1050|1260|1470|
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
@@ -152,7 +152,7 @@ Hizmet katmanını, işlem boyutunu (hizmet hedefi) ve depolama miktarını [Azu
 |Depolama türü|Premium (uzak) depolama|Premium (uzak) depolama|Premium (uzak) depolama|Premium (uzak) depolama|Premium (uzak) depolama|Premium (uzak) depolama|Premium (uzak) depolama|
 |GÇ gecikme süresi (yaklaşık)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|
 |Havuz başına en fazla veri ıOPS <sup>2</sup> |6.400|7.200|8,000|9.600|12.800|16.000|16.000|
-|Havuz başına en fazla günlük hızı (MBps)|37,5|37,5|37,5|37,5|37,5|37,5|37,5|
+|Havuz başına en fazla günlük hızı (MBps)|48|48|48|48|48|48|48|
 |Havuz başına en fazla eş zamanlı çalışan (istek) <sup>3</sup>|1680|1890|2100|2520|3360|4200|8400|
 |Havuz başına en fazla eşzamanlı oturum açma sayısı (istek) <sup>3</sup>|1680|1890|2100|2520|3360|4200|8400|
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
@@ -186,7 +186,7 @@ Hizmet katmanını, işlem boyutunu (hizmet hedefi) ve depolama miktarını [Azu
 |Depolama türü|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|
 |GÇ gecikme süresi (yaklaşık)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|
 |Havuz başına en fazla veri ıOPS <sup>2</sup>|2560|3200|3840|4480|5120|
-|Havuz başına en fazla günlük hızı (MBps)|30|30|30|30|30|
+|Havuz başına en fazla günlük hızı (MBps)|48|48|48|48|48|
 |Havuz başına en fazla eş zamanlı çalışan (istek) <sup>3</sup>|400|500|600|700|800|
 |Havuz başına en fazla eşzamanlı oturum açma sayısı (istek) <sup>3</sup>|800|1000|1200|1400|1600|
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|
@@ -219,7 +219,7 @@ Hizmet katmanını, işlem boyutunu (hizmet hedefi) ve depolama miktarını [Azu
 |Depolama türü|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|
 |GÇ gecikme süresi (yaklaşık)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|
 |Havuz başına en fazla veri ıOPS <sup>2</sup>|5760|6400|7680|10240|11520|23040|
-|Havuz başına en fazla günlük hızı (MBps)|30|30|30|30|30|30|
+|Havuz başına en fazla günlük hızı (MBps)|48|48|48|48|48|48|
 |Havuz başına en fazla eş zamanlı çalışan (istek) <sup>3</sup>|900|1000|1200|1600|1800|3600|
 |Havuz başına en fazla eşzamanlı oturum açma sayısı (istek) <sup>3</sup>|1800|2000|2400|3200|3600|7200|
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|30.000|

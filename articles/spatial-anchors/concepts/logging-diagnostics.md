@@ -9,12 +9,12 @@ ms.date: 02/22/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: da941aa8b616fffeb2e283480c2a1e2f9cf7a093
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45d345e8d8dbe45ecb4873904f31141111827647
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89003125"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097363"
 ---
 # <a name="logging-and-diagnostics-in-azure-spatial-anchors"></a>Azure uzamsal bağlayıcılarda günlüğe kaydetme ve tanılama
 
@@ -43,9 +43,9 @@ Kullanıcı için ilgilendiğiniz iki geri çağrı vardır. Aşağıdaki örnek
 
 Bu olay geri çağırmaları, oturumdaki günlükleri ve hataları işlemek için verilmiştir:
 
-- [LogLevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.loglevel): çalışma zamanından alınan olaylar için ayrıntı düzeyini belirtir.
-- [Onlogdebug](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.onlogdebug): standart hata ayıklama günlüğü olayları sağlar.
-- [Hata](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error): çalışma zamanının hata olarak kabul eden günlük olaylarını sağlar.
+- [LogLevel](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.loglevel): çalışma zamanından alınan olaylar için ayrıntı düzeyini belirtir.
+- [Onlogdebug](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.onlogdebug): standart hata ayıklama günlüğü olayları sağlar.
+- [Hata](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error): çalışma zamanının hata olarak kabul eden günlük olaylarını sağlar.
 
 ## <a name="diagnostics-logging"></a>Tanılama günlüğü
 

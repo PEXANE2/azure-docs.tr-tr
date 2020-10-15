@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/14/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 87d56f32877fbe5b817dab5d9ad98e1f1f71386c
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: f75fbf286741fcc122332574332a30ad7fa23644
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92054755"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096207"
 ---
 # <a name="localization-string-ids"></a>Yerelleştirme dizesi kimlikleri
 
@@ -143,7 +143,7 @@ Aşağıdakiler, `api.localaccountsignup` ve gibi, ile başlayan bir içerik TAN
 | **cancel_message** | Kullanıcı kendi kendine onaylanan bilgileri girmeyi iptal etti |
 | **preloader_alt** | Lütfen bekleyin |
 | **ver_but_send** | Doğrulama kodu gönder |
-| **alert_yes** | Yes |
+| **alert_yes** | Evet |
 | **error_fieldIncorrect** | Bir veya daha fazla alan yanlış doldurulmuş. Lütfen girişlerinizi denetleyin ve yeniden deneyin. |
 | **yıl** | Yıl |
 | **verifying_blurb** | Bilgilerinizi işlerken lütfen bekleyin. |
@@ -343,7 +343,42 @@ Aşağıdaki örnek, MFA doğrulama sayfasında bazı Kullanıcı arabirimi öğ
 
 ## <a name="verification-display-control-user-interface-elements"></a>Doğrulama görüntüleme denetimi kullanıcı arabirimi öğeleri
 
-[Doğrulama görüntüleme denetimi](display-control-verification.md) için kimlikler şunlardır
+Aşağıda, [sayfa düzeni sürüm](page-layout.md) 2.1.0 veya üzeri bir [doğrulama görüntüleme denetiminin](display-control-verification.md) kimlikleri verilmiştir.
+
+| ID | Varsayılan değer |
+| -- | ------------- |
+|intro_msg| Doğrulama gereklidir. Lütfen gönder düğmesine tıklayın.|
+|success_send_code_msg | Doğrulama kodu gelen kutunuza gönderildi. Lütfen aşağıdaki giriş kutusuna kopyalayın.|
+|failure_send_code_msg | E-posta adresinizi doğrularken sorun yaşıyoruz. Lütfen geçerli bir e-posta adresi girin ve yeniden deneyin.|
+|success_verify_code_msg | E-posta adresi doğrulandı. Artık devam edebilirsiniz.|
+|failure_verify_code_msg | E-posta adresinizi doğrularken sorun yaşıyoruz. Lütfen tekrar deneyin.|
+|but_send_code | Doğrulama kodu gönder|
+|but_verify_code | Kodu doğrula|
+|but_send_new_code | Yeni kod gönder|
+|but_change_claims | E-postayı değiştir|
+
+### <a name="verification-display-control-example"></a>Doğrulama görüntüleme denetimi örneği
+
+```xml
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+   <!-- Display control UI elements-->
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="intro_msg">Verification is necessary. Please click Send button.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="success_send_code_msg">Verification code has been sent to your inbox. Please copy it to the input box below.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="failure_send_code_msg">We are having trouble verifying your email address. Please enter a valid email address and try again.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="success_verify_code_msg">E-mail address verified. You can now continue.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="failure_verify_code_msg">We are having trouble verifying your email address. Please try again.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_code">Send verification code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_verify_code">Verify code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_new_code">Send new code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_change_claims">Change e-mail</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
+## <a name="verification-display-control-user-interface-elements-deprecated"></a>Doğrulama görüntüleme denetimi kullanıcı arabirimi öğeleri (kullanım dışı)
+
+Aşağıda, [sayfa düzeni sürüm](page-layout.md) 2.0.0 ile [doğrulama görüntüleme denetiminin](display-control-verification.md) kimlikleri verilmiştir.
 
 | ID | Varsayılan değer |
 | -- | ------------- |
@@ -355,7 +390,7 @@ Aşağıdaki örnek, MFA doğrulama sayfasında bazı Kullanıcı arabirimi öğ
 |verification_control_but_verify_code |Kodu doğrula |
 |verification_control_code_sent| Doğrulama kodu gönderildi. Lütfen aşağıdaki giriş kutusuna kopyalayın. |
 
-### <a name="verification-display-control-example"></a>Doğrulama görüntüleme denetimi örneği
+### <a name="verification-display-control-example-deprecated"></a>Doğrulama görüntüleme denetimi örneği (kullanım dışı)
 
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
@@ -468,8 +503,8 @@ Aşağıda, [Azure MFA teknik profili](multi-factor-auth-technical-profile.md) h
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
   <LocalizedStrings>
-    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</LocalizedString>
-    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">That code is incorrect. Please try again.</LocalizedString>

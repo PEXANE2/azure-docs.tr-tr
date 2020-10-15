@@ -7,16 +7,16 @@ ms.date: 09/14/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 911f819343f675ebe0a2604d912e6e26aa646eb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e06c79b9cbd5643d119974a4ed8628ea1b1cd4f
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90533093"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096768"
 ---
 # <a name="x509-certificate-attestation"></a>X.509 sertifikası kanıtlama
 
-Bu makale, X. 509.440 sertifika kanıtlama kullanarak cihazları sağlarken ilgili kavramlara genel bakış sunar. Bu makale, bir cihazı dağıtıma hazırlamayla ilgili olarak tüm personbuna yöneliktir.
+Bu makale, cihazları X. 509.440 sertifika kanıtlama kullanarak sağlarken dahil edilen cihaz sağlama hizmeti (DPS) kavramlarına genel bir bakış sunar. Bu makale, bir cihazı dağıtıma hazırlamayla ilgili olarak tüm personbuna yöneliktir.
 
 X. 509.440 sertifikaları, bir donanım güvenlik modülü HSM 'de depolanabilir.
 
@@ -44,6 +44,12 @@ Kök sertifika, bir sertifika yetkilisini (CA) temsil eden kendinden imzalı bir
 
 Ara sertifika, kök sertifika tarafından imzalanmış bir X. 509.440 sertifikasıdır (veya zincirinde kök sertifikaya sahip başka bir ara sertifika tarafından). Bir zincirdeki son ara sertifika, yaprak sertifikayı imzalamak için kullanılır. Ara sertifika, ara CA sertifikası olarak da adlandırılır.
 
+##### <a name="why-are-intermediate-certs-useful"></a>Ara sertifikalar neden kullanışlıdır?
+Ara sertifikalar çeşitli şekillerde kullanılır. Örneğin, ara sertifikalar, cihazları ürün hatları, müşterileri satın alan müşteriler, şirket bölümleri veya fabrikalar için gruplamak üzere kullanılabilir. 
+
+Contoso 'nun, *ContosoRootCert*adlı kök sertifikayı kullanarak kendi ortak anahtar ALTYAPıSıNA (PKI) sahip büyük bir kuruluş olduğunu düşünün. Contoso 'nun her bir yan kuruluşu, *ContosoRootCert*tarafından imzalanan kendi ara sertifikasına sahiptir. Böylece her bir yan kuruluş, her bir cihazın yaprak sertifikalarını imzalamak için ara sertifikasını kullanır. Bu senaryoda, contoso, *ContosoRootCert* ile birlikte doğrulanan tek bir DPS örneğini [kullanabilir.](./how-to-verify-certificates.md) Her bir yan kuruluş için bir kayıt grubuna sahip olabilirler. Bu şekilde, her bir yan kuruluş sertifikaların doğrulanması konusunda endişelenmenize gerek kalmaz.
+
+
 ### <a name="end-entity-leaf-certificate"></a>Son varlık "yaprak" sertifikası
 
 Yaprak sertifikası veya son varlık sertifikası, sertifika sahibini tanımlar. Sertifika zincirinde kök sertifikaya ve sıfır veya daha fazla ara sertifikaya sahiptir. Yaprak sertifikası diğer sertifikaları imzalamak için kullanılmaz. Cihazı, sağlama hizmetine benzersiz olarak tanımlar ve bazen cihaz sertifikası olarak adlandırılır. Kimlik doğrulama sırasında cihaz, hizmetten gelen bir itiraz kanıtını yanıtlamak için bu sertifikayla ilişkili özel anahtarı kullanır.
@@ -54,12 +60,42 @@ Daha fazla bilgi edinmek için bkz. [X. 509.440 CA sertifikaları ile imzalanmı
 
 ## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>X. 509.440 sertifikalarıyla sağlama hizmetine cihaz erişimini denetleme
 
-Sağlama Hizmeti, X. 509.440 kanıtlama mekanizmasını kullanan cihazlara erişimi denetlemek için kullanabileceğiniz iki tür kayıt girişini kullanıma sunar:  
+Sağlama Hizmeti, X. 509.440 kanıtlama mekanizmasıyla cihaz erişimini denetlemek için kullanabileceğiniz iki kayıt türünü kullanıma sunar:  
 
 - [Ayrı kayıt](./concepts-service.md#individual-enrollment) girdileri, belirli bir cihazla ilişkili cihaz sertifikasıyla yapılandırılır. Bu girişler belirli cihazlar için kayıtları denetler.
 - [Kayıt grubu](./concepts-service.md#enrollment-group) girdileri, belirli bir ara veya kök CA sertifikası ile ilişkilendirilir. Bu girişler, kendi sertifika zincirinde ara veya kök sertifikaya sahip tüm cihazların kayıtlarını denetler. 
 
-Bir cihaz sağlama hizmetine bağlanırsa, hizmet daha az özel kayıt girişi üzerinde daha belirli kayıt girdilerine öncelik verir. Diğer bir deyişle, cihaz için tek bir kayıt varsa, sağlama hizmeti bu girişi uygular. Cihaz için tek bir kayıt yoksa ve cihazın sertifika zincirindeki ilk ara sertifikaya yönelik bir kayıt grubu varsa, hizmet bu girişi uygular ve bu şekilde köke zincirin. Hizmet, bulduğu ilk geçerli girişi uygular, örneğin:
+#### <a name="dps-device-chain-requirements"></a>DPS cihaz zinciri gereksinimleri
+
+Bir cihaz bir kayıt grubu kullanarak DPS 'e kayıt girişiminde bulunduğunda, cihazın yaprak sertifikadan sertifika zincirini, sahip olma [kanıtını](how-to-verify-certificates.md)doğrulayan bir sertifikaya gönderebilmesi gerekir. Aksi takdirde, kimlik doğrulaması başarısız olur.
+
+Örneğin, yalnızca kök sertifika doğrulanırsa ve kayıt grubuna bir ara sertifika yüklenirse, cihazın yaprak sertifikadan sertifika zincirini doğrulanmış kök sertifikaya kadar bir şekilde sunması gerekir. Bu sertifika zinciri, içindeki tüm ara sertifikaları içerir. DPS sertifika zincirini doğrulanmış bir sertifikaya geçemıyorsa kimlik doğrulaması başarısız olur.
+
+Örneğin, bir cihaz için aşağıdaki cihaz zincirini kullanarak bir şirketi düşünün.
+
+![Örnek cihaz sertifika zinciri](./media/concepts-x509-attestation/example-device-cert-chain.png) 
+
+Yalnızca kök sertifika doğrulanır ve *intermediate2* sertifikası kayıt grubuna yüklenir.
+
+![Örnek kök doğrulandı](./media/concepts-x509-attestation/example-root-verified.png) 
+
+Cihaz, sağlama sırasında yalnızca aşağıdaki cihaz zincirini gönderirse, kimlik doğrulaması başarısız olur. DPS, *intermediate1* sertifikasının geçerliliğini varsayarak kimlik doğrulamasını deneyemediği için
+
+![Örnek başarısız sertifika zinciri](./media/concepts-x509-attestation/example-fail-cert-chain.png) 
+
+Cihaz, sağlama sırasında tam cihaz zincirini aşağıdaki gibi gönderirse, DPS cihaz kimlik doğrulamasını deneyebilir.
+
+![Örnek cihaz sertifika zinciri](./media/concepts-x509-attestation/example-device-cert-chain.png) 
+
+
+
+
+> [!NOTE]
+> Ara Sertifikalar [, birlikte bulunan ile de](how-to-verify-certificates.md)doğrulanabilir.
+
+
+#### <a name="dps-order-of-operations-with-certificates"></a>Sertifikalarla gerçekleştirilen işlemlerin DPS sırası
+Bir cihaz sağlama hizmetine bağlanırsa, hizmet daha az özel kayıt girişi üzerinde daha belirli kayıt girdilerine öncelik verir. Diğer bir deyişle, cihaz için tek bir kayıt varsa, sağlama hizmeti bu girişi uygular. Cihaz için tek bir kayıt yoksa ve cihazın sertifika zincirindeki ilk ara sertifika için bir kayıt grubu varsa, hizmet bu girişi uygular, ve bu şekilde, köke olan zinciri kapatır. Hizmet, bulduğu ilk geçerli girişi uygular, örneğin:
 
 - Bulunan ilk kayıt girdisi etkinse hizmet cihazı sağlar.
 - Bulunan ilk kayıt girdisi devre dışıysa, hizmet cihazı sağlamaz.  

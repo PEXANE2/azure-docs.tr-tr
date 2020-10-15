@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 05/18/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9457836a3048ff08b228bf9d5b84400af15d6cc5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: eb02de25cfcb0dde01699c1169d03f0d822c4ae2
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88854938"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097414"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Azure uzamsal bağlantıları hakkında sık sorulan sorular
 
@@ -33,7 +33,7 @@ Y **:** Azure uzamsal Tutturucuların Şu anda internet 'e bir ağ bağlantısı
 
 **S: Azure uzamsal Tutturucuların bağlantı gereksinimleri nelerdir?**
 
-Y **:** Azure uzamsal bağlantıları Wi-Fi ve mobil geniş bant bağlantılarıyla birlikte kullanılabilir.
+Y **:** Azure uzamsal bağlayıcıları Wi-Fi ve mobil geniş bant bağlantılarıyla birlikte kullanılabilir.
 
 **S: Azure uzamsal bağlantıları bağlantıları ne kadar doğru bulabilir?**
 
@@ -128,4 +128,4 @@ Y **:** Unreal desteği gelecekte kabul edilecek.
 
 **S: Azure uzamsal bağlantıları hangi bağlantı noktaları ve protokoller kullanır?**
 
-Y **:** Azure uzamsal bağlantıları, TCP bağlantı noktası 443 üzerinden şifrelenmiş bir protokol kullanarak iletişim kurar. Kimlik doğrulaması için, 443 bağlantı noktası üzerinden HTTPS kullanarak iletişim kuran [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)kullanır.
+Y **:** Azure uzamsal bağlantıları, TCP bağlantı noktası 443 üzerinden şifrelenmiş bir protokol kullanarak iletişim kurar. Kimlik doğrulaması için, 443 bağlantı noktası üzerinden HTTPS kullanarak iletişim kuran [Azure Active Directory](../active-directory/index.yml)kullanır.

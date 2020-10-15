@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 07/31/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 440d8af17bccaf8d3fcb92f65e5d91ed969aec31
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b29873e161b64c52abbfdf3f2611714f6b012361
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971419"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097295"
 ---
 # <a name="tutorial-share-spatial-anchors-across-sessions-and-devices"></a>Öğretici: oturumlarda ve cihazlarda uzamsal bağlayıcıları paylaşma
 
@@ -86,7 +86,7 @@ Kaynak grubunu **Myresourcegroup**olarak adlandırın ve ardından **Tamam**' ı
 
 Visual Studio Code açın ve ardından projeyi *Sharing\sharingservicesample* klasöründe açın. 
 
-Paylaşım hizmetini Visual Studio Code aracılığıyla dağıtmak için, <a href="https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">Visual Studio Code Ile Azure 'da ASP.NET Core uygulama yayımlama</a>bölümündeki yönergeleri izleyin. "Visual Studio Code ile aç" bölümünde başlatın. Zaten dağıtılacak ve yayımlanacak bir projeniz olduğundan, önceki adımda açıklandığı gibi başka bir ASP.NET projesi oluşturmayın: SharingServiceSample.
+Paylaşım hizmetini Visual Studio Code aracılığıyla dağıtmak için, <a href="/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">Visual Studio Code Ile Azure 'da ASP.NET Core uygulama yayımlama</a>bölümündeki yönergeleri izleyin. "Visual Studio Code ile aç" bölümünde başlatın. Zaten dağıtılacak ve yayımlanacak bir projeniz olduğundan, önceki adımda açıklandığı gibi başka bir ASP.NET projesi oluşturmayın: SharingServiceSample.
 
 ---
 
@@ -104,4 +104,3 @@ ASP.NET Core Web uygulamanızı, paylaşılan uzamsal bağlayıcı tanımlayıc�
 
 > [!div class="nextstepaction"]
 > [Bağlayıcıları depolamak için Azure Cosmos DB kullanma](./tutorial-use-cosmos-db-to-store-anchors.md)
-

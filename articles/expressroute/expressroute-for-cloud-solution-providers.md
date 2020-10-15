@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 17b8fc3824fb1c7e6cfcfc3d4333dc226b51724d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18ee64e6866764e250cfa08a1d4721674bb66e5a
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653647"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097346"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>Bulut Çözüm Sağlayıcıları (CSP) için ExpressRoute
 Microsoft, geleneksel satıcılar veya dağıtımcıların (CSP), yeni hizmetler geliştirmeye yatırım yapmaya gerek kalmadan müşterileriniz için hızlı bir şekilde yeni hizmetler ve çözümler sağlayabilmesi amacıyla hiper ölçekli hizmetler sağlar. Bulut Çözüm Sağlayıcısının (CSP) bu hizmetleri doğrudan yönetebilmesini sağlamak için Microsoft, CSP’nin Microsoft Azure kaynaklarını müşterilerinizin adına yönetebilmesine olanak sağlayan programlar ve API’ler sunar. Bu kaynaklardan biri de ExpressRoute’dur. ExpressRoute, CSP’nin var olan Azure hizmetlerine bağlanmasına olanak sağlar. ExpressRoute, Azure 'daki hizmetlere yönelik yüksek hızlı bir özel iletişim bağlantıdır. 
@@ -21,7 +21,7 @@ Microsoft, geleneksel satıcılar veya dağıtımcıların (CSP), yeni hizmetler
 ExpressRoute, tek bir müşterinin aboneliğine bağlı olan ve birden fazla müşteri tarafından paylaşılamayan yüksek kullanılabilirlik için bir dizi devreden oluşur. Yüksek kullanılabilirliği sürdürmek için her bağlantı hattı farklı bir yönlendiricide sonlandırılmalıdır.
 
 > [!NOTE]
-> ExpressRoute’da bant genişliği ve bağlantı sınırları vardır, yani büyük/karmaşık uygulamalar tek bir müşteri için birden fazla bağlantı hattı gerektirir.
+> Her ExpressRoute devresi için bant genişliği ve bağlantı sayısı sınırı vardır. Tek bir müşterinin ihtiyaçları bu sınırları aşarsa, karma ağ uygulamaları için birden çok ExpressRoute devresine gerek duyar.
 > 
 > 
 
@@ -75,30 +75,30 @@ ExpressRoute, 50 MB/sn 'den 10 GB/sn 'ye kadar olan ağ hızlarını destekler. 
 ExpressRoute, yüksek hızlı bağlantıların daha iyi kullanımı için birden fazla sanal ağın tek bir ExpressRoute bağlantı hattına bağlanmasını destekler. Tek bir ExpressRoute bağlantı hattı, aynı müşteriye ait birden fazla Azure aboneliği arasında paylaşılabilir.
 
 ## <a name="configuring-expressroute"></a>ExpressRoute’u yapılandırma
-ExpressRoute, tek bir ExpressRoute bağlantı hattı üzerinden üç tür trafiği ([yönlendirme etki alanları](#expressroute-routing-domains)) destekleyecek şekilde yapılandırılabilir. Bu trafik; Microsoft eşliği, Azure genel eşliği ve özel eşliği olarak ayrılır. Tek bir ExpressRoute bağlantı hattı üzerinden gönderilmek üzere trafik türlerinden birini veya hepsini seçebilirsiniz veya ExpressRoute bağlantı hattının boyutuna ve müşteriniz tarafından gerekli görülen yalıtıma bağlı olarak birden çok ExpressRoute bağlantı hattı kullanabilirsiniz. Müşterinizin güvenlik yaklaşımı, genel ve özel trafiğin aynı bağlantı hattı üzerinden çapraz geçiş yapmalarına izin vermeyebilir.
+ExpressRoute, tek bir ExpressRoute bağlantı hattı üzerinden üç tür trafiği ([yönlendirme etki alanları](#expressroute-routing-domains)) destekleyecek şekilde yapılandırılabilir. Bu trafik, özel eşleme, Microsoft eşleme ve genel eşleme (kullanım dışı) olarak bölünmüştür. Tek bir ExpressRoute bağlantı hattı üzerinden gönderilmek üzere trafik türlerinden birini veya hepsini seçebilirsiniz veya ExpressRoute bağlantı hattının boyutuna ve müşteriniz tarafından gerekli görülen yalıtıma bağlı olarak birden çok ExpressRoute bağlantı hattı kullanabilirsiniz. Müşterinizin güvenlik yaklaşımı, genel ve özel trafiğin aynı bağlantı hattı üzerinden çapraz geçiş yapmalarına izin vermeyebilir.
 
 ### <a name="connect-through-model"></a>Aracılı bağlantı modeli
-Bir bağlantı temelli yapılandırmada, tüm ağ underpinnings müşterilerinin veri merkezi kaynaklarınızı Azure 'da barındırılan aboneliklere bağlamak sizin sorumluluğunuzdadır. Azure özelliklerini kullanmak isteyen müşterilerinizin her birinin kendi ExpressRoute bağlantısına ihtiyacı olacak ve bu bağlantılar tarafınızdan yönetilecek. Müşterinin ExpressRoute bağlantı hattını edinmede yararlanacağı aynı yöntemleri kullanacaksınız.  Bağlantı hattı hazırlama ve bağlantı hattı durumları için [ExpressRoute iş akışları](expressroute-workflows.md) makalesinde özetlenen aynı adımları izleyeceksiniz. Daha sonra Sınır Ağ Geçidi (BGP) protokolü yollarını yapılandırarak şirket içi ağ ve Azure sanal ağı arasındaki trafiği kontrol edeceksiniz. 
+Bir bağlantı temelli yapılandırmada, tüm ağ underpinnings, müşterinizin veri merkezi kaynaklarını Azure 'da barındırılan aboneliklere bağlamak için de sorumlu olursunuz. Azure özelliklerini kullanmak isteyen müşterilerinizin her birine kendi ExpressRoute bağlantısı gerekir ve bu, sizin tarafınızdan yönetilecektir. Müşterinin ExpressRoute devresini temin etmek için kullanacağı yöntemlerin aynısını kullanacaksınız. Bağlantı hattı sağlama ve devre durumları için [ExpressRoute iş akışları](expressroute-workflows.md) makalesinde özetlenen adımların aynısını takip edersiniz. Daha sonra, şirket içi ağ ile Azure vNet arasındaki trafiği denetlemek için Sınır Ağ Geçidi Protokolü (BGP) yollarını yapılandıracaksınız.
 
 ### <a name="connect-to-model"></a>Doğrudan bağlantı modeli
-Doğrudan bağlantı yapılandırmasında müşterinizin Azure ile zaten bir bağlantısı vardır ya da müşteriniz, sizin veri merkezinizden değil, kendi veri merkezinden Azure’a ExpressRoute İnternet servis sağlayıcısına bir bağlantı oluşturacaktır.  Hazırlama sürecine başlamak için müşteriniz, yukarıda, Aracılı Bağlantı modeli bölümünde belirtilen adımları takip edecektir.  Bağlantı hattı kurulduktan sonra müşterinizin, kendi ağınıza ve Azure sanal ağına bağlanabilmek için şirket içi yönlendiricileri yapılandırması gerekecektir.
+Bir bağlantı yapılandırmasında, müşterinizin zaten bir Azure bağlantısı var veya veri merkeziniz yerine kendi veri merkezlerinden ExpressRoute 'u doğrudan Azure 'a bağlayan Internet servis sağlayıcısına bir bağlantı başlatacak. Hazırlama sürecine başlamak için müşteriniz, yukarıda, Aracılı Bağlantı modeli bölümünde belirtilen adımları takip edecektir.  Devre kurulduktan sonra, müşterinizin şirket içi yönlendiricileri hem ağınıza hem de Azure sanal ağlarına erişebilecek şekilde yapılandırmanız gerekecektir.
 
 Yolların kendi veri merkez(ler)inizdeki kaynakların, kendi veri merkezinizdeki müşteri kaynaklarıyla ya da Azure’de barındırılan kaynaklarla iletişim kurabilmesi için bağlantıyı kurma ve yolları yapılandırma sürecinde yardımcı olabilirsiniz. 
 
 ## <a name="expressroute-routing-domains"></a>ExpressRoute yönlendirme etki alanları
-ExpressRoute üç yönlendirme etki alanı sunar: Genel, özel ve Microsoft eşlemesi. Yönlendirme etki alanlarının her biri, yüksek kullanılabilirlik için etkin-etkin yapılandırmada aynı yönlendiricilerle yapılandırılır. ExpressRoute yönlendirme etki alanları hakkında daha fazla ayrıntı için [buraya](expressroute-circuit-peerings.md) göz atın.
+ExpressRoute yeni devreler için iki yönlendirme etki alanı sunar: özel eşleme ve Microsoft eşleme. Yönlendirme etki alanlarının her biri, yüksek kullanılabilirlik için etkin-etkin yapılandırmada aynı yönlendiricilerle yapılandırılır. ExpressRoute yönlendirme etki alanları hakkında daha fazla ayrıntı için [buraya](expressroute-circuit-peerings.md) göz atın.
 
 Sadece istediğiniz veya ihtiyaç duyduğunuz yol(lar)a izin verecek özel yol filtreleri tanımlayabilirsiniz. Bu değişiklikleri nasıl uygulayacağınızı görmek, yönlendirme filtreleri hakkında daha fazla ayrıntı ve daha fazla bilgi için şu makaleye göz atın:[PowerShell kullanarak bir ExpressRoute yönlendirmesi oluşturma ve değiştirme](expressroute-howto-routing-classic.md)
 
 > [!NOTE]
-> Microsoft Eşlemesi ve Genel Eşleme için bağlantı, müşteri ya da CSP tarafından sahip olunan genel bir IP adresinden sağlanmalıdır ve tüm tanımlı kurallara uymalıdır.  Daha fazla bilgi için bkz. [ExpressRoute ](expressroute-prerequisites.md).  
+> Microsoft eşlemesi için bağlantının, müşterinin veya CSP 'nin sahip olduğu bir genel IP adresi olması ve tüm tanımlı kurallara uyması gerekir. Daha fazla bilgi için bkz. [ExpressRoute ](expressroute-prerequisites.md).  
 > 
 > 
 
 ## <a name="routing"></a>Yönlendirme
 ExpressRoute, Azure ağlarına Azure Virtual Network Gateway üzerinden bağlanır. Ağ geçitleri, Azure sanal ağlarına yönlendirme sağlar.
 
-Azure Sanal Ağları’nı oluşturma, ayrıca Sanal Ağdan doğrudan trafiğe çift yönlü sanal ağ alt ağı için varsayılan bir yönlendirme tablosu oluşturur. Varsayılan rota tablosu çözüm için yetersiz kalıyorsa, giden trafiği özel uygulamalara yönlendirecek ya da yolların özel alt ağlara ya da dış ağlara erişimini engelleyecek özel yollar oluşturulabilir. 
+Azure Sanal Ağları’nı oluşturma, ayrıca Sanal Ağdan doğrudan trafiğe çift yönlü sanal ağ alt ağı için varsayılan bir yönlendirme tablosu oluşturur. Varsayılan yol tablosu çözüm için yetersizse, giden trafiği özel gereçlere yönlendirmek veya belirli alt ağlara veya dış ağlara yolları engellemek için özel yollar oluşturulabilir.
 
 ### <a name="default-routing"></a>Varsayılan yönlendirme
 Varsayılan rota tablosu aşağıdaki rotaları içerir:

@@ -3,18 +3,20 @@ title: Azure İlkesine Genel Bakış
 description: Azure İlkesi, Azure ortamında ilke tanımlarınızı oluşturmak, atamak ve yönetmek için kullandığınız bir Azure hizmetidir.
 ms.date: 10/05/2020
 ms.topic: overview
-ms.openlocfilehash: 54dce519bfaa8c42afa967fc5c0579f31986aefb
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 8a32e32afb544588bb033cc64ede5ecbe6e2bac2
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873923"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097397"
 ---
 # <a name="what-is-azure-policy"></a>Azure İlkesi nedir?
 
-Azure İlkesi, kuruluş standartlarının uygulanmasına ve büyük ölçekte uyumluluk değerlendirmesi yapılmasına yardımcı olur. Uyumluluk panosu sayesinde, ortamın genel durumunu değerlendirmek için, kaynak başına, ilke başına ayrıntı düzeyi ile ayrıntıya gitme olanağı sunan bir toplu görünüm sağlar. Ayrıca, mevcut kaynaklar için toplu düzeltme ve yeni kaynaklar için otomatik düzeltme aracılığıyla kaynaklarınızı uyumluluğa getirmeye yardımcı olur.
+Azure İlkesi, kuruluş standartlarının uygulanmasına ve büyük ölçekte uyumluluk değerlendirmesi yapılmasına yardımcı olur. Uyumluluk panosu sayesinde, ortamın genel durumunu değerlendirmek için toplanan bir görünüm sağlar. Bu özellik, kaynak başına, ilke başına ayrıntı düzeyi detayına gidebilir. Ayrıca, mevcut kaynaklar için toplu düzeltme ve yeni kaynaklar için otomatik düzeltme aracılığıyla kaynaklarınızı uyumluluğa getirmeye yardımcı olur.
 
 Azure Ilkesi için genel kullanım örnekleri, kaynak tutarlılığı, mevzuata uyumluluk, güvenlik, maliyet ve yönetim için idare uygulamayı içerir. Bu yaygın kullanım örnekleri için ilke tanımları, Azure ortamınızda, başlamanıza yardımcı olacak yerleşik olarak zaten kullanılabilir.
+
+Tüm Azure Ilke verileri ve nesneleri bekleyen olarak şifrelenir. Daha fazla bilgi için bkz. [bekleyen Azure veri şifrelemesi](../../security/fundamentals/encryption-atrest.md).
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -105,7 +107,7 @@ Göz önünde bulundurmanız gereken birkaç işaretçi ve ipucu aşağıda veri
 
 Azure İlkesi'nde bir ilke oluşturmak ve uygulamak için önce ilke tanımını oluşturmanız gerekir. Her ilke tanımında, bu ilkelerin uygulandığı koşullar bulunur. Ve koşullar karşılanıyorsa, tanımlanmış bir etkiye sahiptir.
 
-Azure Ilkesinde, varsayılan olarak kullanılabilen birkaç yerleşik ilke sunuyoruz. Örneğin:
+Azure Ilkesinde, varsayılan olarak kullanılabilen birkaç yerleşik ilke sunuyoruz. Örnek:
 
 - **Izin verilen depolama hesabı SKU 'ları** (reddetme): dağıtılmakta olan bir depolama HESABıNıN bir SKU boyutları kümesi içinde olup olmadığını belirler. Etkisi, tanımlı SKU boyutları kümesine bağlı olmayan tüm depolama hesaplarını reddetmektir.
 - **Izin verilen kaynak türü** (reddetme): dağıtabileceğiniz kaynak türlerini tanımlar. Etkisi, bu tanımlı listenin parçası olmayan tüm kaynakları reddetmektir.
@@ -146,7 +148,7 @@ Bu girişimin altında sahip olabileceğiniz ilke tanımlarından bazıları şu
 | İlke | Parametrenin adı |Parametrenin türü  |Not |
 |---|---|---|---|
 | policyA | allowedLocations | array  |Parametre türü “array” olarak tanımlandığından bu parametre, bir değer için dizilerin bulunduğu bir liste bekler |
-| policyB | allowedSingleLocation |string |Parametre türü “array” olarak tanımlandığından bu parametre, bir değer için bir sözcük bekler |
+| policyB | allowedSingleLocation |dize |Parametre türü “array” olarak tanımlandığından bu parametre, bir değer için bir sözcük bekler |
 
 Bu senaryoda **initiativeC** için girişim parametreleri tanımlanırken üç seçeneğiniz vardır:
 

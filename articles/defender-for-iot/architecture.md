@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: rkarlin
-ms.openlocfilehash: ea62592ed155215b14666d0d56e09dbb1a83ed6e
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 4189cb8628db58343c816535836af82825014b7e
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093472"
+ms.locfileid: "92096326"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>IoT mimarisi için Azure Defender
 
@@ -29,12 +29,19 @@ Bu makalede, IoT için Defender çözümünün işlevsel sistem mimarisi açıkl
 IoT için Defender, hem Azure bulutuna hem de şirket içi bileşenlere bağlanır. Çözüm, birden fazla uzak konum içeren büyük ve coğrafi olarak dağıtılmış ortamlarda ölçeklenebilirlik için tasarlanmıştır. Bu çözüm, ülke, bölge, iş birimi veya bölgeye göre çok katmanlı bir dağıtılmış mimariye izin vermez. 
 
 IoT için Azure Defender aşağıdaki bileşenleri içerir: 
-- IoT sensörleri için Azure Defender
-- Yönetim konsolları:
-    - Algılayıcı konsolu
-    - Şirket içi yönetim konsolu
-    - Azure portal
-- Katıştırılmış Güvenlik Aracısı (güvenlik modülü ve IoT SDK)
+
+**Buluta bağlı dağıtımlar**
+
+- IoT algılayıcı VM veya gereç için Azure Defender
+- Bulut yönetimi için Azure portal ve Azure Sentinel ile tümleştirme
+- Yerel site yönetimi için şirket içi yönetim konsolu
+- Katıştırılmış bir güvenlik Aracısı (isteğe bağlı)
+
+**AIR-gapped (çevrimdışı) dağıtımlar**
+
+- IoT algılayıcı VM veya gereç için Azure Defender
+- Yerel site yönetimi için şirket içi yönetim konsolu
+
 
 ![IoT mimarisi için Defender](./media/architecture/defender-iot-security-architecture.png)
 

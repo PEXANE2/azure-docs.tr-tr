@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 8239d037d6bd68638998cbb36c47c7dac4bce30d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13a88b327b5ba56b52cd4f08d9c7fae5d653ed38
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537625"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095951"
 ---
 # <a name="train-a-model-using-a-custom-docker-image"></a>Özel bir Docker görüntüsü kullanarak bir modeli eğitme
 
@@ -29,7 +29,7 @@ Azure Machine Learning varsayılan bir Docker temel görüntüsü sağlarken, ko
 Bu kodu şu ortamlardan birinde çalıştırın:
 * Azure Machine Learning işlem örneği-indirme veya yükleme gerekli değil
     * Öğreticiyi doldurun: SDK ve örnek depoyla önceden yüklenmiş adanmış bir not defteri sunucusu oluşturmak için [ortamı ve çalışma alanını kurma](tutorial-1st-experiment-sdk-setup.md) .
-    * Azure Machine Learning [örnekleri deposunda](https://github.com/Azure/azureml-examples), bu dizine giderek tamamlanan bir not defteri bulun: **nasıl kullanılır-azureml > ml-çerçeveler > fastai > eğitme-özel-Docker** 
+    * Azure Machine Learning [örnekleri deposunda](https://github.com/Azure/azureml-examples), bu dizine giderek tamamlanan bir not defteri bulun: **Not defterleri > fastai > tren-pets-resnet34. ipynb** 
 
 * Kendi Jupyter Notebook sunucunuz
     * Bir [çalışma alanı yapılandırma dosyası](how-to-configure-environment.md#workspace)oluşturun.

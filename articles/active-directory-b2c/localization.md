@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/20/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84850b7d44033a2759c51c5c6b9c53d1c945a99d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27a00c69a4423e45b46b9c3d0340bb7cd1a35d65
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005387"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095909"
 ---
 # <a name="localization-element"></a>Yerelleştirme öğesi
 
@@ -45,7 +45,7 @@ ms.locfileid: "87005387"
 
 **Yerelleştirme** Öğesı aşağıdaki XML öğelerini içerir
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | SupportedLanguages | 1: n | Desteklenen dillerin listesi. |
 | LocalizedResources | 0: n | Yerelleştirilmiş kaynakların listesi. |
@@ -63,7 +63,7 @@ ms.locfileid: "87005387"
 
 **Supportedlanguages** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | SupportedLanguage | 1: n | Dilleri tanımlamak için RFC 5646-Tags başına bir dil etiketine uyan içeriği görüntüler. |
 
@@ -77,7 +77,7 @@ ms.locfileid: "87005387"
 
 **Localizedresources** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | LocalizedCollections | 0: n | Çeşitli kültürlerde tüm koleksiyonları tanımlar. Bir koleksiyon çeşitli kültürler için farklı sayıda öğe ve farklı dize içerebilir. Koleksiyon örnekleri, talep türlerinde görünen numaralandırmaları içerir. Örneğin, bir ülke/bölge listesi kullanıcıya bir açılan listede gösterilir. |
 | LocalizedStrings | 0: n | Çeşitli kültürlerde koleksiyonlarda görünen dizeler hariç tüm dizeleri tanımlar. |
@@ -86,7 +86,7 @@ ms.locfileid: "87005387"
 
 **Localizedcollections** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | LocalizedCollection | 1: n | Desteklenen dillerin listesi. |
 
@@ -102,7 +102,7 @@ ms.locfileid: "87005387"
 
 **Localizedcollection** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | Öğe | 0: n | Kullanıcının, açılan menüdeki bir değer gibi kullanıcı arabirimindeki bir talep için seçim yapmak üzere kullanılabilir bir seçenek tanımlar. |
 
@@ -138,7 +138,7 @@ Aşağıdaki örnek, **Localizedcollections** öğesinin kullanımını gösteri
 
 **Localizedstrings** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | LocalizedString | 1: n | Yerelleştirilmiş bir dize. |
 
@@ -163,6 +163,7 @@ Yerelleştirilmesi için bir talep türüne ait ElementType başvurusu, bir tale
 |Koşul Kullanıcı iletisi|`Predicate`|Koşulun adı| Yerelleştirilecek koşulun özniteliği. Olası değerler: `HelpText` .|
 |Koşul grubu Kullanıcı iletisi|`InputValidation`|PredicateValidation öğesinin KIMLIĞI.|PredicateGroup öğesinin KIMLIĞI. Koşul grubu, ElementID 'de tanımlandığı şekilde koşul doğrulama öğesinin bir alt öğesi olmalıdır.|
 |Kullanıcı arabirimi öğeleri |`UxElement` | | Yerelleştirilecek Kullanıcı arabirimi öğesinin KIMLIĞI.|
+|[Görüntüleme denetimi](display-controls.md) |`DisplayControl` |Görüntü denetiminin KIMLIĞI. | Yerelleştirilecek Kullanıcı arabirimi öğesinin KIMLIĞI.|
 
 ## <a name="examples"></a>Örnekler
 
@@ -330,6 +331,23 @@ UxElement değeri, Kullanıcı arabirimi öğelerinden birini yerelleştirmek i�
 ```xml
 <LocalizedString ElementType="UxElement" StringId="button_continue">Create new account</LocalizedString>
 <LocalizedString ElementType="UxElement" StringId="button_cancel">Cancel</LocalizedString>
+```
+
+### <a name="displaycontrol"></a>DisplayControl
+
+DisplayControl değeri, [görüntüleme denetimi](display-controls.md) Kullanıcı arabirimi öğelerinden birini yerelleştirmek için kullanılır. Aşağıdaki örnek, gönder ve Doğrula düğmelerinin nasıl yerelleştirileceğini gösterir. 
+
+```xml
+<LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_code">Send verification code</LocalizedString>
+<LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_verify_code">Verify code</LocalizedString>
+```
+
+Otomatik olarak onaylanan bir teknik profilin meta veri bölümünde, başvurulan ContentDefinition 'ın DataUri 'nin [sayfa düzeni sürüm](page-layout.md) 2.1.0 veya üzeri olarak ayarlanmış olması gerekir. Örnek:
+
+```xml
+<ContentDefinition Id="api.selfasserted">
+  <DataUri>urn:com:microsoft:aad:b2c:elements:selfasserted:2.1.0</DataUri>
+  ...
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

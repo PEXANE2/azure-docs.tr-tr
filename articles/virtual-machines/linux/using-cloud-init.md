@@ -6,14 +6,14 @@ ms.service: virtual-machines-linux
 ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 06/15/2020
+ms.date: 10/14/2020
 ms.author: danis
-ms.openlocfilehash: a87c2b571027e0304909e69b252c9e080c4da9c1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 87cb4a233470fadc9cde616790aff0d5cd7b151b
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978637"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096666"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure 'da sanal makineler için Cloud-init desteği
 Bu makalede, Azure 'da sağlama sırasında bir sanal makineyi (VM) veya sanal makine ölçek kümelerini yapılandırmak üzere [Cloud-init](https://cloudinit.readthedocs.io) için mevcut destek açıklanmaktadır. Bu Cloud-init yapılandırması, kaynaklar Azure tarafından sağlandıktan sonra ilk önyüklemede çalıştırılır.  
@@ -97,10 +97,10 @@ Bu SLES görüntüleri Cloud-init kullanılarak sağlanacak şekilde güncelleş
 ### <a name="debian"></a>Debian
 | Yayımcı/sürüm | Sunduğu | SKU | Sürüm | görüntü bulutu-init Ready | Azure 'da Cloud-init paketi desteği|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| de, (Gen1) |detem-10 | 10-clouınvoit |Cloud-init-Önizleme| Evet (yalnızca Önizleme) | Hayır, önizleme aşamasında. |
-| de, (Gen2) |detem-10 | 10-cloudinit-Gen2 |Cloud-init-Önizleme| Evet (yalnızca Önizleme) | Hayır, önizleme aşamasında. |
-
-
+| de, (Gen1) |detem-10 | 10-clouınvoit |Cloud-init-Önizleme| Evet (Not: Bu bir önizleme **görüntüsüdür ve artık kullanılmamalıdır,** bu, 1 Ocak 2021 ' de kaldırılacak) | Hayır, önizleme aşamasında. |
+| de, (Gen2) |detem-10 | 10-cloudinit-Gen2 |Cloud-init-Önizleme| Evet (Not: Bu bir önizleme **görüntüsüdür ve artık kullanılmamalıdır,** bu, 1 Ocak 2021 ' de kaldırılacak) | Hayır, önizleme aşamasında. |
+| de, (Gen1) |detem-10 | 10-clouınvoit |10:0.20201013.422| evet | Evet-paket sürümünden destek: `20.2-2~deb10u1` |
+| de, (Gen2) |detem-10 | 10-cloudinit-Gen2 |0.20201013.422| evet | Evet-paket sürümünden destek: `20.2-2~deb10u1` |
 
 
 Şu anda Azure Stack, Cloud-init özellikli görüntülerin sağlanması destekleyecektir.

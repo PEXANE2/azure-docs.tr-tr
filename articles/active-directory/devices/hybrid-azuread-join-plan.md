@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1106ec63e79d336b740b444a187244de64c03f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 955e77bc947baed889de24ce34e7acec737164f6
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269582"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097312"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Nasıl yapılır: karma Azure Active Directory JOIN Uygulamanızı planlayın
 
@@ -56,7 +56,7 @@ Karma Azure AD katılımı, çok çeşitli Windows cihazlarını destekler. Wind
 
 - Windows 10
 - Windows Server 2016
-  - **Note**: Azure Ulusal bulut müşterileri sürüm 1809 gerektirir
+  - **Note**: Azure Ulusal bulut müşterileri sürüm 1803 gerektirir
 - Windows Server 2019
 
 Windows masaüstü işletim sistemi çalıştıran cihazlarda desteklenen sürüm, [Windows 10 sürüm bilgileri](/windows/release-information/)makalesinde listelenmiştir. En iyi uygulama olarak Microsoft, en son Windows 10 sürümüne yükseltmenizi önerir.
@@ -162,7 +162,7 @@ Bazen, şirket içi AD kullanıcılarınızın UPN 'leri Azure AD UPN 'inizden f
 
 Aşağıdaki tabloda, Windows 10 karma Azure AD 'ye yönelik bu şirket içi AD UPN 'leri için destek ayrıntıları verilmiştir
 
-| Şirket içi AD UPN türü | Etki alanı türü | Windows 10 sürümü | Açıklama |
+| Şirket içi AD UPN türü | Etki alanı türü | Windows 10 sürümü | Description |
 | ----- | ----- | ----- | ----- |
 | Lemez | Federe | 1703 sürümünden | Genel kullanıma sunuldu |
 | Yönlendirilemeyen | Federe | 1803 sürümünden | Genel kullanıma sunuldu |

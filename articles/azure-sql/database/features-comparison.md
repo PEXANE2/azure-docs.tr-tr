@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 07/22/2020
-ms.openlocfilehash: 30107c99f16b1b2f7c91ce8a662f44a041410d01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84d11f350c82fa09abf0803e795a92fdb373c36c
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119377"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097618"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Özellikler karşılaştırması: Azure SQL veritabanı ve Azure SQL yönetilen örneği
 
@@ -184,7 +184,7 @@ Verilerinizi SQL Server, Azure SQL veritabanı ve Azure SQL yönetilen örneği 
 Microsoft, Azure SQL veritabanı 'na özellik eklemeye devam etmektedir. Bu filtreleri kullanarak en yeni güncelleştirmeler için Azure için hizmet güncelleştirmeleri Web sayfasını ziyaret edin:
 
 - [Azure SQL veritabanı](https://azure.microsoft.com/updates/?service=sql-database)'na filtrelendi.
-- SQL Veritabanı özellikleri için Genel Kullanılabilirlik [(GA) duyuruları](https://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability).
+- SQL veritabanı özellikleri için [genel kullanıma yönelik \( ga \) duyuruları](https://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) .
 
 Azure SQL veritabanı ve Azure SQL yönetilen örneği hakkında daha fazla bilgi için bkz.:
 
