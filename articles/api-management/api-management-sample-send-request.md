@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 10beee563e4a93332cd817ee04c1e74bda6e9c51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54985cbd874f6a8a3dd0db08df3ceb4b53c72cac
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88210350"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093285"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Azure API Management Service 'ten dış hizmetler kullanma
 Azure API Management hizmetinde kullanılabilen ilkeler, yalnızca gelen istek, giden yanıt ve temel yapılandırma bilgilerini temel alan çok sayıda kullanışlı iş gerçekleştirebilir. Ancak API Management ilkelerden, dış hizmetlerle etkileşime girebilmek birçok fırsat daha açar.
@@ -178,7 +178,7 @@ Pano kaynağını oluşturmanın ilk adımı Azure portal yeni bir işlem yapıl
 ### <a name="making-the-requests"></a>İstekleri yapma
 İşlem oluşturulduktan sonra, bu işlem için özel olarak bir ilke yapılandırabilirsiniz. 
 
-![Pano işlemi](./media/api-management-sample-send-request/api-management-dashboard-policy.png)
+![Ilke kapsamı ekranını gösteren ekran görüntüsü.](./media/api-management-sample-send-request/api-management-dashboard-policy.png)
 
 İlk adım, gelen istekten herhangi bir sorgu parametresi ayıklayarak bunları arka uca iletebilmeniz için kullanılır. Bu örnekte, Pano bir zaman dilimine göre bilgileri gösteriyor ve bu nedenle `fromDate` ve `toDate` parametresi vardır. `set-variable`İlkeyi, Istek URL 'sindeki bilgileri ayıklamak için kullanabilirsiniz.
 

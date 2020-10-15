@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a05c7a6f9c3752507705e1c4242becfe1d65ffd6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24bdb192ddfe1759cb1d70fff9936979f5e28143
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334846"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093370"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Yedekleme için Azure Güvenlik temeli
 
@@ -486,7 +486,7 @@ Azure Backup yedekleme yönetim işlemlerini denetlemek için üç yerleşik rol
 
 - [Azure RBAC 'yi yapılandırma](../role-based-access-control/role-assignments-portal.md)
 
-- [Azure Backup kurtarma noktalarını yönetmek için Role-Based Access Control kullanma](./backup-rbac-rs-vault.md)
+- [Azure Backup kurtarma noktalarını yönetmek için Azure rol tabanlı erişim denetimi kullanma](./backup-rbac-rs-vault.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
