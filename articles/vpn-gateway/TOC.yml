@@ -1,10 +1,11 @@
-- name: VPN Gateway Belgeleri
+- name: VPN Ağ Geçidi belgeleri
   href: index.yml
 - name: Genel Bakış
   items:
     - name: VPN Ağ Geçidi nedir?
       href: vpn-gateway-about-vpngateways.md
 - name: Öğreticiler
+  expanded: true
   items:
     - name: VPN ağ geçidi oluşturma ve yönetme
       href: vpn-gateway-tutorial-create-gateway-powershell.md
