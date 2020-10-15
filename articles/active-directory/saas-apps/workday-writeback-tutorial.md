@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.topic: article
 ms.workload: identity
-ms.date: 05/26/2020
+ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: 8c76bddc0fae024b0dd2bdd27d6b1e10d71dec71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1428a92857f48920c86ed7a3f0719fa42b38b24
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90017481"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072042"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>Öğretici: Azure AD 'den Workday 'ye öznitelik geri yazmayı yapılandırma
 Bu öğreticinin amacı, Azure AD 'deki öznitelikleri Workday 'e geri yazma için gerçekleştirmeniz gereken adımları gösteriyoruz. Workday geri yazma sağlama uygulaması, aşağıdaki Workday özniteliklerine değer atanmasını destekler:
@@ -144,16 +144,31 @@ Workday sağlama uygulama yapılandırması tamamlandıktan sonra, Azure portal 
 
 1. **Sağlama** sekmesinde, **sağlama durumunu** **Açık**olarak ayarlayın.
 
+1. **Kapsam** açılan menüsünde **tüm kullanıcıları ve grupları Eşitle**' yi seçin. Bu seçenekle, geri yazma uygulaması tüm kullanıcıların eşlenen özniteliklerini Azure AD 'den Workday 'e yazacak ve **eşleme**  ->  **kaynak nesne kapsamı**altında tanımlanan kapsam kurallarına tabidir. 
+
+   > [!div class="mx-imgBorder"]
+   > ![Geri yazma kapsamını Seç](./media/sap-successfactors-inbound-provisioning/select-writeback-scope.png)
+
+   > [!NOTE]
+   > Workday geri yazma sağlama uygulaması **yalnızca atanan kullanıcı ve grupları Eşitle**seçeneğini desteklemez.
+ 
+
 2. **Kaydet**’e tıklayın.
 
 3. Bu işlem, kaynak dizinde kaç Kullanıcı olduğuna bağlı olarak değişken sayıda saat sürebilen ilk eşitlemeyi başlatacak. İlerleme çubuğunu, eşitleme döngüsünün ilerlemesini izlemek için kontrol edebilirsiniz. 
 
-4. Herhangi bir zamanda, sağlama hizmeti 'nin gerçekleştirdiği işlemleri görmek için Azure portal **Denetim günlükleri** sekmesini kontrol edin. Denetim günlükleri, kaynak kaynağından içeri aktarılan ve hedef uygulamaya aktarılan kullanıcılar gibi sağlama hizmeti tarafından gerçekleştirilen tüm bireysel eşitleme olaylarını listeler.  
+4. Herhangi bir zamanda, sağlama hizmetinin gerçekleştirdiği işlemleri görmek için Azure portal **sağlama günlükleri** sekmesini kontrol edin. Denetim günlükleri, kaynak kaynağından içeri aktarılan ve hedef uygulamaya aktarılan kullanıcılar gibi sağlama hizmeti tarafından gerçekleştirilen tüm bireysel eşitleme olaylarını listeler.  
 
 5. İlk eşitleme tamamlandıktan sonra, aşağıda gösterildiği gibi **sağlama** sekmesine bir özet raporu yazar.
 
      > [!div class="mx-imgBorder"]
      > ![Sağlama ilerleme çubuğu](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
+
+## <a name="known-issues-and-limitations"></a>Bilinen sorunlar ve sınırlamalar
+
+* Geri yazma uygulaması, **Communication_Usage_Type_ID** ve **Phone_Device_Type_ID**parametreleri için önceden tanımlanmış bir değer kullanır. Workday kiracınız Bu öznitelikler için farklı bir değer kullanıyorsa geri yazma işlemi başarısız olur. Önerilen bir geçici çözüm, Workday 'deki Type_IDs güncelleştirbir çözümdür. 
+* Geri yazma uygulaması, ikincil telefon numaralarını güncelleştirecek şekilde yapılandırıldığında, Workday 'deki mevcut ikincil telefon numarasının yerini almaz. Çalışan kaydına bir tane daha ikincil telefon numarası ekler. Bu davranışa geçici bir çözüm yoktur. 
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
