@@ -11,12 +11,12 @@ ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: 0d00db9909f05028b55505400d0810b00e0114c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4598cb1d54fbbeb09e3bc5f58f0cce949b3c848
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88932551"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073810"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure Cloud Services ve ASP.NET kullanmaya başlama
 
@@ -33,7 +33,7 @@ Uygulama bir reklam bülteni panosudur. Kullanıcılar metin girerek ve görünt
 Uygulama bir arka uç işleminde küçük resim oluşturmaya yönelik CPU yoğunluklu iş yükünü azaltmak üzere [kuyruk merkezli çalışma deseni](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) kullanır.
 
 ## <a name="alternative-architecture-app-service-and-webjobs"></a>Alternatif mimari: App Service ve Web Işleri
-Bu öğreticide bir Azure bulut hizmetinde hem ön ucun hem de arka ucun nasıl çalıştırılacağı gösterilmektedir. Diğer bir seçenek de ön ucu [Azure App Service](/azure/app-service/) çalıştırmak ve arka uç Için [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) özelliğini kullanmaktır. WebJobs kullanan bir öğretici için bkz. [Azure WebJobs SDK ile Çalışmaya Başlama](https://github.com/Azure/azure-webjobs-sdk/wiki). Senaryonuza en uygun hizmetleri seçme hakkında daha fazla bilgi için bkz. [Azure App Service, Cloud Services ve sanal makineler karşılaştırması](/azure/architecture/guide/technology-choices/compute-decision-tree).
+Bu öğreticide bir Azure bulut hizmetinde hem ön ucun hem de arka ucun nasıl çalıştırılacağı gösterilmektedir. Diğer bir seçenek de ön ucu [Azure App Service](../app-service/index.yml) çalıştırmak ve arka uç Için [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) özelliğini kullanmaktır. WebJobs kullanan bir öğretici için bkz. [Azure WebJobs SDK ile Çalışmaya Başlama](https://github.com/Azure/azure-webjobs-sdk/wiki). Senaryonuza en uygun hizmetleri seçme hakkında daha fazla bilgi için bkz. [Azure App Service, Cloud Services ve sanal makineler karşılaştırması](/azure/architecture/guide/technology-choices/compute-decision-tree).
 
 ## <a name="what-youll-learn"></a>Öğrenecekleriniz
 * Azure SDK’sını yükleyerek Azure dağıtımı için makinenizi etkinleştirme.
@@ -43,7 +43,7 @@ Bu öğreticide bir Azure bulut hizmetinde hem ön ucun hem de arka ucun nasıl 
 * Dosyaları karşıya yükleme ve Azure Blob hizmetine depolama.
 * Katmanlar arasında iletişim için Azure Queue hizmetini kullanma.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Öğretici *web rolü* ve *çalışan rolü* terminolojisi gibi [Azure bulut hizmetleri hakkında temel kavramları](cloud-services-choose-me.md) anladığınızı varsayar.  Ayrıca Visual Studio’da [ASP.NET MVC](https://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) veya [Web Forms](https://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview) projeleri ile nasıl çalışılacağını bildiğinizi varsayar. Örnek uygulama MVC kullanır, ancak öğreticinin büyük bölümü Web Forms için de geçerlidir.
 
 Uygulamayı bir Azure aboneliği olmadan yerel olarak çalıştırabilirsiniz, ancak uygulamayı buluta dağıtmak için bir abonelik gerekecektir. Bir hesabınız yoksa, [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668) veya [ücretsiz deneme için kaydolabilirsiniz.](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A55E3C668)
@@ -169,7 +169,7 @@ Gerçek bir uygulamada genellikle uygulama verilerine karşı günlük verileri 
 
 4. **Çoğaltma** açılır listesini **Yerel olarak yedekli depolama** olarak ayarlayın.
 
-    Bir depolama hesabı için coğrafi çoğaltma etkinleştirildiğinde, birincil konumda önemli bir olağanüstü durum oluşursa yük devretmeyi etkinleştirmek için depolanan içerik ikincil bir veri merkezine çoğaltılır. Coğrafi çoğaltma ek ücretlere neden olabilir. Test ve geliştirme hesaplarında genellikle coğrafi çoğaltma için ödeme yapmak istemezsiniz. Daha fazla bilgi için bkz. [Depolama hesabı oluşturma, yönetme veya silme](../storage/common/storage-create-storage-account.md).
+    Bir depolama hesabı için coğrafi çoğaltma etkinleştirildiğinde, birincil konumda önemli bir olağanüstü durum oluşursa yük devretmeyi etkinleştirmek için depolanan içerik ikincil bir veri merkezine çoğaltılır. Coğrafi çoğaltma ek ücretlere neden olabilir. Test ve geliştirme hesaplarında genellikle coğrafi çoğaltma için ödeme yapmak istemezsiniz. Daha fazla bilgi için bkz. [Depolama hesabı oluşturma, yönetme veya silme](../storage/common/storage-account-create.md).
 
 5. **Kaynak grubu**’nda **Var olanı kullan**’a tıklayın ve bulut hizmeti için kullanılan kaynak grubunu seçin.
 6. **Konum** açılır listesini bulut hizmeti için seçtiğiniz aynı bölgeye ayarlayın.
@@ -290,7 +290,7 @@ Visual Studio kullanıcı arabirimini kullanılarak yapılandırdığınız rol 
 
     ![Ayarlar adımı](./media/cloud-services-dotnet-get-started/pubsettings.png)
 
-    **Gelişmiş** sekmesindeki varsayılan ayarlar bu öğretici için uygundur. Gelişmiş sekmesi hakkında bilgi için bkz. [Azure Uygulaması Yayımlama Sihirbazı](https://docs.microsoft.com/azure/vs-azure-tools-publish-azure-application-wizard).
+    **Gelişmiş** sekmesindeki varsayılan ayarlar bu öğretici için uygundur. Gelişmiş sekmesi hakkında bilgi için bkz. [Azure Uygulaması Yayımlama Sihirbazı](/visualstudio/azure/vs-azure-tools-publish-azure-application-wizard).
 4. **Özet** adımında **Yayımla** öğesine tıklayın.
 
     ![Özet adımı](./media/cloud-services-dotnet-get-started/pubsummary.png)
@@ -776,5 +776,5 @@ Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
 * [Azure Cloud Services Bölüm 1: Giriş](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [ Cloud Services nasıl yönetilir](cloud-services-how-to-manage-portal.md)
-* [Azure Depolama](https://docs.microsoft.com/azure/storage/)
+* [Azure Depolama](../storage/index.yml)
 * [Bulut hizmeti sağlayıcısı seçme](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)

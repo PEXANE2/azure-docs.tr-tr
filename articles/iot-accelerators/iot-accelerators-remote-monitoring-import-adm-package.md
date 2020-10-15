@@ -8,19 +8,19 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8100914e9a1d1489cb80de55a689e17f6d28a941
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 266e31ae9865c8fb427e06e89cd755e7ff38b27f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61443454"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073878"
 ---
 # <a name="import-an-automatic-device-management-package-into-your-remote-monitoring-solution-accelerator"></a>Otomatik cihaz yönetim paketini uzaktan Izleme çözüm hızlandırıcısına aktarma
 
 Otomatik Cihaz Yönetimi yapılandırması, bir cihaz grubuna dağıtılacak yapılandırma değişikliklerini tanımlar. Bu makalede, kuruluşunuzdaki bir geliştiricinin zaten bir otomatik cihaz yönetimi yapılandırması oluşturduğunu varsaymaktadır. Bir geliştiricinin yapılandırma oluşturma hakkında bilgi edinmek için aşağıdaki IoT Hub nasıl yapılır makalelerinden birine bakın:
 
-- [Azure portal kullanarak IoT cihazlarını ölçeklendirerek yapılandırma ve izleme](../iot-hub/iot-hub-auto-device-config.md)
-- [Azure CLı kullanarak IoT cihazlarını ölçeklendirerek yapılandırma ve izleme](../iot-hub/iot-hub-auto-device-config-cli.md)
+- [Azure portal kullanarak IoT cihazlarını ölçeklendirerek yapılandırma ve izleme](../iot-hub/iot-hub-automatic-device-management.md)
+- [Azure CLı kullanarak IoT cihazlarını ölçeklendirerek yapılandırma ve izleme](../iot-hub/iot-hub-automatic-device-management-cli.md)
 
 Geliştirici bir geliştirme ortamında otomatik cihaz yönetimi yapılandırması oluşturur ve test eder. Hazırsanız, yapılandırmayı uzaktan Izleme çözüm hızlandırıcısına aktarabilirsiniz.
 
