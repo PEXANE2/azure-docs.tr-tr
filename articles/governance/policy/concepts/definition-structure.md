@@ -3,12 +3,12 @@ title: İlke tanımı yapısının ayrıntıları
 description: Kuruluşunuzda Azure kaynakları için kural oluşturmak üzere ilke tanımlarının nasıl kullanıldığını açıklar.
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7b6cb1b9e9a57fb3278ec931364bc355258d649d
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 84af781ae58ab45b69d71ebdc22fbced910da246
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019962"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074269"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
 
@@ -111,7 +111,7 @@ Aşağıdaki kaynak sağlayıcısı modu tam olarak desteklenmektedir:
 Aşağıdaki kaynak sağlayıcısı modları Şu anda **Önizleme**olarak desteklenmektedir:
 
 - `Microsoft.ContainerService.Data`[Azure Kubernetes hizmetinde](../../../aks/intro-kubernetes.md)giriş denetleyicisi kurallarını yönetmek için. Bu kaynak sağlayıcısı modunu kullanan tanımların, [Enforceregopolicy](./effects.md#enforceregopolicy) efektini kullanması **gerekir** . Bu mod _kullanım dışıdır_.
-- `Microsoft.KeyVault.Data`[Azure Key Vault](../../../key-vault/general/overview.md)' deki kasaların ve sertifikaların yönetilmesi için.
+- `Microsoft.KeyVault.Data`[Azure Key Vault](../../../key-vault/general/overview.md)' deki kasaların ve sertifikaların yönetilmesi için. Bu ilke tanımları hakkında daha fazla bilgi için bkz. [Azure ilkesi ile Azure Key Vault tümleştirme](../../../key-vault/general/azure-policy.md).
 
 > [!NOTE]
 > Kaynak sağlayıcısı modları yalnızca yerleşik ilke tanımlarını destekler ve [muafiyetleri](./exemption-structure.md)desteklemez.
@@ -609,8 +609,20 @@ Aşağıdaki işlevler yalnızca ilke kurallarında kullanılabilir:
     "definitionReferenceId": "StorageAccountNetworkACLs"
   }
   ```
-  
-  
+
+
+- `ipRangeContains(range, targetRange)`
+    - **Aralık**: [gerekli] dize-bir IP adresi aralığı belirten dize.
+    - **targetRange**: [gerekli] dize-bir IP adresi aralığı belirten dize.
+
+    Verilen IP adresi aralığının hedef IP adresi aralığını içerip içermediğini döndürür. Boş aralıklar veya IP aileleri arasında karıştırma yapılmasına izin verilmez ve değerlendirme hatasına neden olur.
+
+    Desteklenen biçimler:
+    - Tek IP adresi (örnekler: `10.0.0.0` , `2001:0DB8::3:FFFE` )
+    - CıDR aralığı (örnekler: `10.0.0.0/24` , `2001:0DB8::/110` )
+    - Başlangıç ve bitiş IP adresleri tarafından tanımlanan Aralık (örnekler: `192.168.0.1-192.168.0.9` , `2001:0DB8::-2001:0DB8::3:FFFF` )
+
+
 #### <a name="policy-function-example"></a>İlke işlevi örneği
 
 Bu ilke kuralı örneği, kaynak `resourceGroup` **name** `concat` `like` adını kaynak grubu adıyla başlatmak üzere zorlayan bir koşul oluşturmak için, ad özelliğini almak üzere Array ve Object işleviyle birlikte, kaynak işlevini kullanır.
@@ -679,7 +691,7 @@ Diğer adların listesi her zaman büyüyordur. Şu anda Azure Ilkesi tarafında
   > Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }
   > ```
 
-- Azure CLI
+- Azure CLI’si
 
   ```azurecli-interactive
   # Login first with az login if not using Cloud Shell
@@ -699,7 +711,7 @@ Diğer adların listesi her zaman büyüyordur. Şu anda Azure Ilkesi tarafında
 
 ### <a name="understanding-the--alias"></a>[*] Diğer adını anlama
 
-Kullanılabilir diğer adların birkaçı, ' normal ' ad olarak görünen bir sürüme ve ona eklenmiş bir sürümüne sahiptir **\[\*\]** . Örneğin:
+Kullanılabilir diğer adların birkaçı, ' normal ' ad olarak görünen bir sürüme ve ona eklenmiş bir sürümüne sahiptir **\[\*\]** . Örnek:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`

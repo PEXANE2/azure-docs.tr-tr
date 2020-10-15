@@ -4,12 +4,12 @@ description: Uzun süreli saklama (Önizleme) ile PostgreSQL için Azure veritab
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: ae18a5bb40d8993c82b2f3e03f231711ba3beebe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a30f822db134ce82e772602cb2430d7e8d0db23e
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90998144"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093897"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Uzun süreli saklama ile PostgreSQL için Azure veritabanı yedekleme (Önizleme)
 
@@ -17,7 +17,7 @@ Azure Backup ve Azure veritabanı Hizmetleri, yedeklemeleri 10 yıla kadar koruy
 
 Uzun süreli saklama 'nın yanı sıra, çözüm aşağıda listelenen birçok farklı özelliğe de sahiptir:
 
-- Azure Active Directory ve Yönetilen Hizmet Kimliği (MSI) kimlik doğrulaması kullanarak veritabanına RBAC tabanlı erişim.
+- Azure Active Directory ve Yönetilen Hizmet Kimliği (MSI) kimlik doğrulaması kullanılarak veritabanına Azure rol tabanlı erişim denetimi (Azure RBAC).
 - Bireysel veritabanı düzeyinde müşteri denetimli zamanlanmış ve isteğe bağlı yedekleme.
 - Veritabanı düzeyi herhangi bir Postgres sunucusuna veya doğrudan blob depolamaya geri yükler.
 - Uzun vadeli bekletme.

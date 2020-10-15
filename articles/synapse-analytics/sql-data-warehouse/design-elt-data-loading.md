@@ -11,12 +11,12 @@ ms.date: 05/13/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: af3eb828e1fd2c4aa14467e5afc18f1b5a0b7fa1
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: fecdd65ae0dbf9faeb0e74e6446a9deaf8273106
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047718"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075034"
 ---
 # <a name="data-loading-strategies-for-synapse-sql-pool"></a>Synapse SQL havuzu için veri yükleme stratejileri
 
@@ -24,7 +24,7 @@ Geleneksel SMP SQL havuzları verileri yüklemek için bir Ayıkla, dönüştür
 
 Ayıklama, yükleme ve dönüştürme (ELT) işleminin kullanımı, MPP özelliğinden yararlanır ve yüklemeden önce veri dönüştürme için gereken kaynakları ortadan kaldırır.
 
-SQL havuzu [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ve [SqlBulkCopy apı](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)gibi popüler SQL Server seçenekleri de dahil olmak üzere birçok yükleme yöntemini desteklese de, verileri yüklemenin en hızlı ve en ölçeklenebilir yolu PolyBase dış tabloları ve [Copy deyimleridir](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (Önizleme).
+SQL havuzu [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ve [SqlBulkCopy apı](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)gibi popüler SQL Server seçenekleri de dahil olmak üzere birçok yükleme yöntemini desteklese de, verileri yüklemenin en hızlı ve en ölçeklenebilir yolu PolyBase dış tabloları ve [Copy deyimleridir](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 PolyBase ve COPY ifadesiyle, Azure Blob depolamada depolanan dış verilere veya T-SQL dili üzerinden Azure Data Lake Store erişebilirsiniz. Yükleme sırasında en fazla esneklik için, COPY ifadesini kullanmanızı öneririz.
 

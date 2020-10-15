@@ -7,18 +7,18 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: lcozzens
-ms.openlocfilehash: 21eba653bcd853db9550d0d3781aacd281884605
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e127a11f3821325602a78d46c69b2330bfb8293
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588084"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074626"
 ---
 # <a name="import-or-export-configuration-data"></a>Yapılandırma verilerini içeri veya dışarı aktarma
 
 Azure Uygulama yapılandırması, veri içeri ve dışarı aktarma işlemlerini destekler. Uygulama yapılandırma depem ve kod projeniz arasında toplu ve Exchange verilerinde yapılandırma verileriyle çalışmak için bu işlemleri kullanın. Örneğin, test için bir uygulama yapılandırma deposu ve bir üretim için bir tane oluşturabilirsiniz. Verileri iki kez girmeniz gerekmiyorsa, bunlar arasında uygulama ayarlarını kopyalayabilirsiniz.
 
-Bu makale, uygulama yapılandırmasıyla veri içeri ve dışarı aktarmaya yönelik bir kılavuz sağlar. GitHub deponuz ile devam eden bir eşitleme kurmak istiyorsanız [GitHub Eylemimize](https://aka.ms/azconfig-gha1)göz atın.
+Bu makale, uygulama yapılandırmasıyla veri içeri ve dışarı aktarmaya yönelik bir kılavuz sağlar. GitHub deponuz ile devam eden bir eşitleme kurmak istiyorsanız [GitHub Eylemimize](./concept-github-action.md)göz atın.
 
 ## <a name="import-data"></a>Veri içeri aktarma
 
@@ -65,4 +65,4 @@ Uygulama yapılandırmasında depolanan yazma yapılandırması verilerini başk
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core web uygulaması oluşturma](./quickstart-aspnet-core-app.md)  
+> [ASP.NET Core web uygulaması oluşturma](./quickstart-aspnet-core-app.md)
