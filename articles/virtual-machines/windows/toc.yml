@@ -555,6 +555,8 @@
           href: client-images.md
         - name: Mevcut bir diski indirme
           href: download-vhd.md
+        - name: Görüntü sürümünden yönetilen disk
+          href: ../managed-disk-from-image-version.md
     - name: VM’leri koruma
       items:
         - name: Öneriler
@@ -1055,7 +1057,7 @@
   href: ../troubleshooting/index.yml
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/vm
     - name: Azure PowerShell
       href: /powershell/azure/

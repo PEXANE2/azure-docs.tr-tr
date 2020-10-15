@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 08/07/2020
-ms.openlocfilehash: 1c649499fd9eaedac0ca4ff9c182e13a9da223ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48f178a74dea0403ff8926cf34fd64cdd9c6839f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88053159"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072008"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Azure Stream Analytics veri hataları
 
@@ -211,6 +211,10 @@ Kaynak günlüklerinin şemasını görmek için [tanılama günlüklerini kulla
 ```
 
 ## <a name="output-data-errors"></a>Çıkış verileri hataları
+
+Azure Stream Analytics, yapılandırmaya bağlı olarak çıkış havuzunda g/ç isteği ile veya olmayan çıkış verileri hatalarını tanımlayabilir. Örneğin,  `PartitionKey` Azure Tablo çıkışı kullanılırken, bir g/ç isteği olmadan bir gerekli sütun eksik olabilir. Ancak, SQL çıktısında kısıtlama ihlalleri bir g/ç isteği gerektirir.
+
+Yalnızca çıkış havuzuna bir çağrı yapıldıktan sonra algılanamayan ve işlemeyi yavaşlatabilecek birkaç veri hatası vardır. Bu sorunu çözmek için, işinizin yapılandırmasını veya veri hatasına neden olan sorguyu değiştirin.
 
 ### <a name="outputdataconversionerrorrequiredcolumnmissing"></a>OutputDataConversionError. RequiredColumnMissing yok
 

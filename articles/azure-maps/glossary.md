@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 4c3e6216c172b0ba1273fea1690c030a05f4c456
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 831fc28711a181d45a8c69e3f46056604b30649e
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83742227"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089477"
 ---
 # <a name="glossary"></a>Sözlük
 
@@ -53,7 +53,7 @@ Aşağıdaki listede, Azure haritalar hizmetleriyle kullanılan yaygın sözcük
 
 <a name="azure-location-based-services-lbs"></a>**Azure konum tabanlı hizmetler (lbs)**: Önizlemedeki Azure Maps 'in eski adı.
 
-<a name="azure-active-directory"></a>**Azure Active Directory (Azure AD)**: Azure AD, Microsoft 'un bulut tabanlı kimlik ve erişim yönetimi hizmetidir. Azure haritalar Azure AD tümleştirmesi, tüm Azure Maps API 'Leri için önizleme aşamasında şu anda kullanılabilir. Azure AD, Azure Maps kaynaklarına ayrıntılı erişime izin vermek için rol tabanlı erişim denetimi 'ni (RBAC) destekler. Azure haritalar Azure AD tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. Azure Maps [ve Azure AD](azure-maps-authentication.md) ve [kimlik doğrulamasını Azure haritalar 'da yönetme](how-to-manage-authentication.md).
+<a name="azure-active-directory"></a>**Azure Active Directory (Azure AD)**: Azure AD, Microsoft 'un bulut tabanlı kimlik ve erişim yönetimi hizmetidir. Azure haritalar Azure AD tümleştirmesi, tüm Azure Maps API 'Leri için önizleme aşamasında şu anda kullanılabilir. Azure AD, Azure Maps kaynaklarına ayrıntılı erişim sağlamak için Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) destekler. Azure haritalar Azure AD tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. Azure Maps [ve Azure AD](azure-maps-authentication.md) ve [kimlik doğrulamasını Azure haritalar 'da yönetme](how-to-manage-authentication.md).
 
 <a name="azure-maps-key"></a>**Azure haritalar anahtarı**: [paylaşılan anahtar kimlik doğrulamasına](#shared-key-authentication)bakın.
 

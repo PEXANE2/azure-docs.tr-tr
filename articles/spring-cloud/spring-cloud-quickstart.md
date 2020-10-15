@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 1d7196f85f64ed466e99986996832952ffe1d59c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fe6f72b60257a1101765dcb539cc3e0eb1d2346e
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91336267"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090055"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Hızlı başlangıç: ilk Azure Spring Cloud uygulamanızı dağıtın
 
@@ -21,7 +21,7 @@ ms.locfileid: "91336267"
 Bu hızlı başlangıçta, Azure 'da çalıştırmak üzere basit bir Azure yay bulutu mikro hizmet uygulamasının nasıl dağıtılacağı açıklanmaktadır.
 
 >[!NOTE]
-> Azure yay bulutu için steeltoe desteği şu anda genel önizleme olarak sunulmaktadır. Genel Önizleme teklifleri, müşterilerin resmi sürümünden önceki yeni özelliklerle deneme yapmasına olanak tanır.  Genel Önizleme özellikleri ve Hizmetleri üretim kullanımı için tasarlanmamıştır.  Önizlemeler sırasında destek hakkında daha fazla bilgi için bkz. [SSS](https://azure.microsoft.com/support/faq/) veya dosya a [destek isteği](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+> Azure yay bulutu için steeltoe desteği şu anda genel önizleme olarak sunulmaktadır. Genel Önizleme teklifleri, müşterilerin resmi sürümünden önceki yeni özelliklerle deneme yapmasına olanak tanır.  Genel Önizleme özellikleri ve Hizmetleri üretim kullanımı için tasarlanmamıştır.  Önizlemeler sırasında destek hakkında daha fazla bilgi için bkz. [SSS](https://azure.microsoft.com/support/faq/) veya dosya a [destek isteği](../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 Bu hızlı başlangıcı izleyerek şunları nasıl yapacağınızı öğreneceksiniz:
 
@@ -37,7 +37,7 @@ Bu hızlı başlangıçta kullanılan uygulama kodu, .NET Core Web API 'SI proje
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [.NET Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1). Azure yay bulut hizmeti, .NET Core 3,1 ve sonraki sürümlerini destekler.
-* [Azure CLI sürüm 2.0.67 veya üzeri](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
+* [Azure CLI sürüm 2.0.67 veya üzeri](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
 * [Git](https://git-scm.com/).
 
 ## <a name="install-azure-cli-extension"></a>Azure CLI uzantısını yükleme
@@ -338,10 +338,10 @@ Bu hızlı başlangıçta nasıl yapılacağı açıklanmaktadır:
 
 Bu hızlı başlangıcı tamamlamak için:
 
-* [JDK 8 ' i yükler](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)
+* [JDK 8 ' i yükler](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
 * [Azure aboneliğine kaydolma](https://azure.microsoft.com/free/)
-* Seçim [Azure CLI sürüm 2.0.67 veya üstünü](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) ve Azure yay bulutu uzantısını şu komutla birlikte yüklersiniz: `az extension add --name spring-cloud`
-* Seçim [Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) ve [oturum açmayı](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in) yükleyip
+* Seçim [Azure CLI sürüm 2.0.67 veya üstünü](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) ve Azure yay bulutu uzantısını şu komutla birlikte yüklersiniz: `az extension add --name spring-cloud`
+* Seçim [Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) ve [oturum açmayı](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in) yükleyip
 
 ## <a name="generate-a-spring-cloud-project"></a>Yay bulutu projesi oluşturma
 
@@ -439,7 +439,7 @@ Aşağıdaki yordam, IntelliJ FIKRINDEN örnek uygulamayı dağıtmak üzere Azu
     ![Projeyi içeri aktar](media/spring-cloud-quickstart-java/intellij-new-project.png)
 
 ### <a name="deploy-the-app"></a>Uygulamayı dağıtma
-Azure 'a dağıtmak için Azure hesabınızla oturum açmanız ve aboneliğinizi seçmeniz gerekir.  Oturum açma ayrıntıları için bkz. [yükleme ve oturum açma](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
+Azure 'a dağıtmak için Azure hesabınızla oturum açmanız ve aboneliğinizi seçmeniz gerekir.  Oturum açma ayrıntıları için bkz. [yükleme ve oturum açma](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
 
 1. IntelliJ Proje Gezgini ' nde projenize sağ tıklayın ve **Azure**  ->  **yay bulutu 'na Azure dağıtımı**' nı seçin.
 
@@ -448,7 +448,7 @@ Azure 'a dağıtmak için Azure hesabınızla oturum açmanız ve aboneliğinizi
 1. **Ad** alanındaki uygulamanın adını kabul edin. **Ad** , uygulama adı değil, yapılandırmaya başvurur. Kullanıcıların genellikle bunu değiştirmesi gerekmez.
 1. **Yapıt** metin kutusunda *HELLOSPRING-0.0.1-Snapshot. jar*öğesini seçin.
 1. **Abonelik** metin kutusunda aboneliğinizi doğrulayın.
-1. **Yay bulutu** metin kutusunda, [Azure Spring Cloud Instance sağlama](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-provision-service-instance)bölümünde oluşturduğunuz Azure Spring Cloud örneğini seçin.
+1. **Yay bulutu** metin kutusunda, [Azure Spring Cloud Instance sağlama](./spring-cloud-quickstart-provision-service-instance.md)bölümünde oluşturduğunuz Azure Spring Cloud örneğini seçin.
 1. **Genel uç noktayı** *Etkinleştir*olarak ayarlayın.
 1. **Uygulama:** metin kutusunda **uygulama oluştur...** seçeneğini belirleyin.
 1. *Merhaba yay*girin ve ardından **Tamam**' a tıklayın.
