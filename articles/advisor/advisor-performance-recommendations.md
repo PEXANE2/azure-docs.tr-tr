@@ -3,12 +3,12 @@ title: Danışman ile Azure uygulamalarının performansını geliştirme
 description: İş açısından kritik uygulamalarınızın hızını ve yanıt hızını artırmak için Azure Danışmanı 'nda performans önerilerini kullanın.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 9625bb3b063234e9cadb20aacfcc5ca8a28b35cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44252171a714acec0a9c0e83c9272b2f845560b3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91405165"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077822"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak Azure uygulamalarının performansını geliştirme
 
@@ -142,22 +142,22 @@ Veritabanı sunucunuza yönelik her yeni bağlantı belleği kaplar. Veritabanı
 
 ## <a name="add-regions-with-traffic-to-your-azure-cosmos-db-account"></a>Azure Cosmos DB hesabınıza trafiğe sahip bölgeler ekleyin
 
-Danışman, şu anda yapılandırılmamış bir bölgeden gelen trafiğe sahip Azure Cosmos DB hesaplarını algılar. Bu bölge eklenmesini önerir. Bunun yapılması, bu bölgeden gelen istekler için gecikme süresini geliştirir ve bölge kesintileri durumunda kullanılabilirliği sağlar. [Azure Cosmos DB ile genel veri dağıtımı hakkında daha fazla bilgi edinin.](https://aka.ms/cosmos/globaldistribution)
+Danışman, şu anda yapılandırılmamış bir bölgeden gelen trafiğe sahip Azure Cosmos DB hesaplarını algılar. Bu bölge eklenmesini önerir. Bunun yapılması, bu bölgeden gelen istekler için gecikme süresini geliştirir ve bölge kesintileri durumunda kullanılabilirliği sağlar. [Azure Cosmos DB ile genel veri dağıtımı hakkında daha fazla bilgi edinin.](../cosmos-db/distribute-data-globally.md)
 
 ## <a name="configure-your-azure-cosmos-db-indexing-policy-by-using-custom-included-or-excluded-paths"></a>Azure Cosmos DB Dizin oluşturma ilkenizi özel dahil edilen veya dışlanan yollar kullanarak yapılandırma
 
-Advisor varsayılan dizin oluşturma ilkesini kullanan, ancak özel bir dizin oluşturma ilkesinden faydalanabilecek Azure Cosmos DB kapsayıcıları tanımlar. Bu belirleme iş yükü düzenine göre belirlenir. Varsayılan dizin oluşturma ilkesi tüm özellikleri dizine ekler. Sorgu filtrelerinde açık dahil edilen veya dışlanan yolların kullanıldığı özel bir dizin oluşturma ilkesi, dizin oluşturma için tüketilen ru ve depolamayı azaltabilir. [Dizin ilkelerini değiştirme hakkında daha fazla bilgi edinin.](https://aka.ms/cosmosdb/modify-index-policy)
+Advisor varsayılan dizin oluşturma ilkesini kullanan, ancak özel bir dizin oluşturma ilkesinden faydalanabilecek Azure Cosmos DB kapsayıcıları tanımlar. Bu belirleme iş yükü düzenine göre belirlenir. Varsayılan dizin oluşturma ilkesi tüm özellikleri dizine ekler. Sorgu filtrelerinde açık dahil edilen veya dışlanan yolların kullanıldığı özel bir dizin oluşturma ilkesi, dizin oluşturma için tüketilen ru ve depolamayı azaltabilir. [Dizin ilkelerini değiştirme hakkında daha fazla bilgi edinin.](/azure/cosmos-db/index-policy)
 
 ## <a name="set-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Azure Cosmos DB sorgu sayfası boyutunu (Maxıtemcount)-1 olarak ayarlayın 
 
-Azure Advisor, 100 sorgu sayfası boyutunu kullanan Azure Cosmos DB kapsayıcıları tanımlar. Daha hızlı taramalar için bir sayfa boyutu-1 kullanılmasını önerir. [Maxıtemcount hakkında daha fazla bilgi edinin.](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
+Azure Advisor, 100 sorgu sayfası boyutunu kullanan Azure Cosmos DB kapsayıcıları tanımlar. Daha hızlı taramalar için bir sayfa boyutu-1 kullanılmasını önerir. [Maxıtemcount hakkında daha fazla bilgi edinin.](../cosmos-db/sql-api-query-metrics.md)
 
 ## <a name="consider-using-accelerated-writes-feature-in-your-hbase-cluster-to-improve-cluster-performance"></a>Küme performansını geliştirmek için HBase kümenizdeki hızlandırılmış yazma özelliğini kullanmayı düşünün
 Azure Advisor, son 7 gün içinde sistem günlüklerini analiz eder ve kümenizin aşağıdaki senaryolarla karşılaşıp karşılaşdığını tanımlar:
 1. Yüksek WAL eşitleme süresi gecikmesi 
 2. Yüksek yazma isteği sayısı (1000 avg_write_requests/second/node için en az 3 adet bir saatlik zaman penceresi)
 
-Bu koşullar, kümenizin yüksek yazma gecikme sürelerine sahip olduğunu gösterir. Bunun nedeni, kümenizde gerçekleştirilen ağır iş yükünün olması olabilir. Kümenizin performansını artırmak için, Azure HDInsight HBase tarafından sunulan hızlandırılmış yazma özelliğini kullanmayı düşünmek isteyebilirsiniz. HDInsight Apache HBase kümeleri için Hızlandırılmış Yazma İşlemleri özelliği, bulut depolaması kullanmak yerine her bir RegionServer örneğine (çalışan düğümü) premium SSD yönetilen diskler ekler. Sonuç olarak, uygulamalarınız için düşük yazma gecikme süresine ve daha iyi dayanıklılığa sahip olursunuz. Bu özellik hakkında daha fazla [bilgi edinmek için daha fazla bilgi edinin](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes#how-to-enable-accelerated-writes-for-hbase-in-hdinsight)
+Bu koşullar, kümenizin yüksek yazma gecikme sürelerine sahip olduğunu gösterir. Bunun nedeni, kümenizde gerçekleştirilen ağır iş yükünün olması olabilir. Kümenizin performansını artırmak için, Azure HDInsight HBase tarafından sunulan hızlandırılmış yazma özelliğini kullanmayı düşünmek isteyebilirsiniz. HDInsight Apache HBase kümeleri için Hızlandırılmış Yazma İşlemleri özelliği, bulut depolaması kullanmak yerine her bir RegionServer örneğine (çalışan düğümü) premium SSD yönetilen diskler ekler. Sonuç olarak, uygulamalarınız için düşük yazma gecikme süresine ve daha iyi dayanıklılığa sahip olursunuz. Bu özellik hakkında daha fazla [bilgi edinmek için daha fazla bilgi edinin](../hdinsight/hbase/apache-hbase-accelerated-writes.md#how-to-enable-accelerated-writes-for-hbase-in-hdinsight)
 
 ## <a name="review-azure-data-explorer-table-cache-period-policy-for-better-performance-preview"></a>Daha iyi performans için Azure Veri Gezgini tablo önbelleği-süre (ilke) gözden geçirin (Önizleme)
 Bu öneri, yapılandırılmış olan önbelleğe alma süresinden (ilke) daha ötesine bakan çok sayıda sorguya sahip olan Azure Veri Gezgini tablolarını gösterir (Önbellek dışındaki verilere erişen sorgu yüzdesine göre sıralanmış ilk 10 tablo görüntülenir). Kümenin performansını geliştirmek için önerilen eylem: Bu tablodaki sorguları gereken en düşük zaman aralığıyla (tanımlanan ilke içinde) sınırlayın. Alternatif olarak tüm zaman aralığındaki veriler gerekliyse önbellek süresini önerilen değere yükseltin.
@@ -169,11 +169,11 @@ Advisor Analysis, MySQL sunucunuzun düşük geçici tablo parametresi ayarları
 Danışman, verilerin dağıtılmayan ancak düzenleyici üzerinde kalan sunucu gruplarını tanımlar. Bu, danışman, tam Hyperscale (Citus) avantajlarının sunucu gruplarınız için çalışan düğümlerine veri dağıtmasını önerir. Bu, sunucu grubundaki her bir düğümün kaynağını kullanarak sorgu performansını geliştirir. [Daha fazla bilgi edinin](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
 ## <a name="improve-user-experience-and-connectivity-by-deploying-vms-closer-to-windows-virtual-desktop-deployment-location"></a>VM 'Leri Windows Sanal Masaüstü Dağıtım konumuna daha yakın bir şekilde dağıtarak Kullanıcı deneyimini ve bağlantısını geliştirme
-Sanal makinelerinizin, kullanıcılarınızın Windows Sanal Masaüstü (WVD) kullanarak bağlandığı bölgeden farklı veya fazla uzak bir bölgede bulunduğunu belirledik. Bu durum bağlantı sürelerinin uzamasına yol açabilir ve genel olarak WVD'de kullanıcının deneyimini etkiler. Konak havuzlarınız için sanal makine oluştururken kullanıcıya daha yakın bir bölge kullanmaya çalışmalısınız. Yakında bulunmak WVD hizmetinden memnuniyetin devam etmesini ve genel olarak daha iyi bir deneyim kalitesi elde edilmesini sağlar. [Bağlantı gecikme süresi hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/virtual-desktop/connection-latency).
+Sanal makinelerinizin, kullanıcılarınızın Windows Sanal Masaüstü (WVD) kullanarak bağlandığı bölgeden farklı veya fazla uzak bir bölgede bulunduğunu belirledik. Bu durum bağlantı sürelerinin uzamasına yol açabilir ve genel olarak WVD'de kullanıcının deneyimini etkiler. Konak havuzlarınız için sanal makine oluştururken kullanıcıya daha yakın bir bölge kullanmaya çalışmalısınız. Yakında bulunmak WVD hizmetinden memnuniyetin devam etmesini ve genel olarak daha iyi bir deneyim kalitesi elde edilmesini sağlar. [Bağlantı gecikme süresi hakkında daha fazla bilgi edinin](../virtual-desktop/connection-latency.md).
 
 ## <a name="upgrade-to-the-latest-version-of-the-immersive-reader-sdk"></a>Tam Ekran Okuyucu SDK'sının en son sürümüne yükseltme yapın
 Bu abonelik kapsamındaki kaynakların güncel olmayan Tam Ekran Okuyucu SDK’sı sürümlerini kullandığını belirledik. Tam Ekran Okuyucu SDK'sının en son sürümünü kullanmak, tümleştirme deneyiminizi özelleştirme ve geliştirmeye yönelik güncelleştirilmiş güvenlik, performans ve genişletilmiş özellik kümesi sağlar.
-[Modern Okuyucu SDK 'sı](https://aka.ms/ImmersiveReaderAzureAdvisorSDKLearnMore)hakkında daha fazla bilgi edinin.
+[Modern Okuyucu SDK 'sı](../cognitive-services/immersive-reader/index.yml)hakkında daha fazla bilgi edinin.
 
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Danışman 'de performans önerilerine erişme

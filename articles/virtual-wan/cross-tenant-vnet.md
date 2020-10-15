@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: wellee
-ms.openlocfilehash: 881f955014032d18fec447784a879fbf4f0e24fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 875fd40fea315269f7fe72032942c40551a6b144
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91571533"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078978"
 ---
 # <a name="connect-cross-tenant-vnets-to-a-virtual-wan-hub"></a>Platformlar arası VNET 'leri bir sanal WAN hub 'ına bağlama
 
@@ -30,7 +30,7 @@ Bu yapılandırma adımları Azure portal ve PowerShell 'in bir birleşimi kulla
 
 ## <a name="before-you-begin"></a>Başlamadan Önce
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları kullanmak için, ortamınızda aşağıdaki yapılandırmanın zaten ayarlanmış olması gerekir:
 
@@ -54,7 +54,7 @@ Sanal hub 'a sahip olan üst aboneliğin uzak Kiracıdaki sanal ağlara değişi
 1. Ardından, uzak kiracı aboneliğini ve üst kiracı aboneliğini PowerShell 'in geçerli oturumuna ekleyin. Aşağıdaki komutu çalıştırın. Üst öğede oturum açtıysanız, yalnızca uzak kiracı için komutu çalıştırmanız gerekir.
 
    ```azurepowershell-interactive
-   Add-AzAccount “xxxxx-b34a-4df9-9451-4402dcaecc5b”
+   Add-AzAccount "xxxxx-b34a-4df9-9451-4402dcaecc5b"
    ```
 
 1. Üst kimlik bilgilerini kullanarak Azure PowerShell oturum açarak rol atamasının başarılı olduğunu doğrulayın ve aşağıdaki komutu çalıştırın:
@@ -72,25 +72,25 @@ Aşağıdaki adımlarda, sanal ağı sanal hub 'a bağladığınızda iki abonel
 1. Aşağıdaki komutu çalıştırarak uzak hesabınızın bağlamında olduğunuzdan emin olun:
 
    ```azurepowershell-interactive
-   Select-AzSubscription -SubscriptionId “[remote ID]”
+   Select-AzSubscription -SubscriptionId "[remote ID]"
    ```
 
 1. Hub 'a bağlamak istediğiniz sanal ağın meta verilerini depolamak için yerel bir değişken oluşturun.
 
    ```azurepowershell-interactive
-   $remote = Get-AzVirtualNetwork -Name "[v-net name]" -ResourceGroupName "[resource group name]"
+   $remote = Get-AzVirtualNetwork -Name "[vnet name]" -ResourceGroupName "[resource group name]"
    ```
 
 1. Üst hesaba geri dönün.
 
    ```azurepowershell-interactive
-   Select-AzSubscription -SubscriptionId “[parent ID]”
+   Select-AzSubscription -SubscriptionId "[parent ID]"
    ```
 
 1. VNet 'i hub 'a bağlayın.
 
    ```azurepowershell-interactive
-   New-AzVirtualHubVnetConnection -ResourceGroupName "[Parent Resource Group Name]" -VirtualHubName "[virtual hub name]" -Name "[name of connection]" -RemoteVirtualNetwork $[local variable name]
+   New-AzVirtualHubVnetConnection -ResourceGroupName "[parent resource group name]" -VirtualHubName "[virtual hub name]" -Name "[name of connection]" -RemoteVirtualNetwork $[local variable name]
    ```
 
 1. Yeni bağlantıyı herhangi bir PowerShell veya Azure portal görüntüleyebilirsiniz.

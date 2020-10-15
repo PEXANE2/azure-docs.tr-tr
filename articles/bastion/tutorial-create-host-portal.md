@@ -1,5 +1,5 @@
 ---
-title: 'Azure savunma Konağı oluşturma: Windows VM: Portal'
+title: 'Öğretici: Azure savunma Konağı oluşturma: Windows VM: Portal'
 description: Bu makalede, bir Azure savunma ana bilgisayarı oluşturmayı ve bir Windows VM 'ye bağlanmayı öğreneceksiniz.
 services: bastion
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: c5361a777b2fdab20fab70214ddcb3bbf5248acb
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: daf3b6c36b191f52f0d7ac7638ef59695325f541
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015268"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078553"
 ---
 # <a name="tutorial-create-an-azure-bastion-host-and-connect-to-a-windows-vm-through-a-browser"></a>Öğretici: bir Azure savunma ana bilgisayarı oluşturma ve bir tarayıcıdan Windows VM 'ye bağlanma
 
@@ -26,7 +26,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir sanal ağ.
 * Sanal ağdaki bir Windows sanal makinesi.
@@ -40,7 +40,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 ## <a name="create-a-bastion-host"></a><a name="createhost"></a>Savunma Konağı oluşturma
 
@@ -87,4 +87,7 @@ Bu uygulamayı kullanmaya devam etmeyecekecekseniz, aşağıdaki adımları kull
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir savunma ana bilgisayarı oluşturdunuz ve bunu bir sanal ağla ilişkilendirdiyseniz ve bir Windows VM 'ye bağlanırsınız. Azure savunma alt ağımızı kullanarak ağ güvenlik grupları 'nı kullanmayı tercih edebilirsiniz. Bunu yapmak için bkz. [NSG Ile çalışma](bastion-nsg.md).
+Bu öğreticide, bir savunma ana bilgisayarı oluşturdunuz ve bunu bir sanal ağla ilişkilendirdikten sonra bir Windows VM 'sine bağlanırsınız. Azure savunma alt ağımızı kullanarak ağ güvenlik grupları 'nı kullanmayı tercih edebilirsiniz. Bunu yapmak için bkz.:
+
+> [!div class="nextstepaction"]
+> [NSG’ler ile çalışma](bastion-nsg.md)
