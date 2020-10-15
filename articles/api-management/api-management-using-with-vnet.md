@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/22/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: 67b855beae4ea36bf4ef7e6bb396c6b7ae1d89e3
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: fbff4cc067ce831e9d9f69a457f348a94257e86d
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874348"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076921"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Sanal ağlar ile Azure API Management’ı kullanma
 Azure Sanal Ağları (VNET’ler) Azure kaynaklarınızdan herhangi birini, erişimini denetlediğiniz İnternet tabanlı olmayan ve yönlendirilebilir bir ağa yerleştirmenizi sağlar. Bu ağlar daha sonra, çeşitli VPN teknolojileri kullanılarak şirket içi ağlarınıza bağlanabilir. Azure sanal ağları hakkında daha fazla bilgi edinmek için buradaki bilgilerle başlayın: [Azure sanal ağına genel bakış](../virtual-network/virtual-networks-overview.md).
@@ -32,7 +32,7 @@ Azure API Management, sanal ağ (VNET) içinde dağıtılabilir ve bu sayede ağ
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız gerekir:
 
@@ -109,7 +109,7 @@ Aşağıda, API Management hizmeti bir sanal ağa dağıttığınızda oluşabil
 
 <a name="required-ports"> </a> Bir API Management hizmet ÖRNEĞI bir sanal ağda barındırıldığı zaman, aşağıdaki tablodaki bağlantı noktaları kullanılır.
 
-| Kaynak/hedef bağlantı noktaları | Yön          | Aktarım Protokolü |   [Hizmet etiketleri](../virtual-network/security-overview.md#service-tags) <br> Kaynak/hedef   | Amaç ( \* )                                                 | Sanal ağ türü |
+| Kaynak/hedef bağlantı noktaları | Yön          | Aktarım Protokolü |   [Hizmet etiketleri](../virtual-network/network-security-groups-overview.md#service-tags) <br> Kaynak/hedef   | Amaç ( \* )                                                 | Sanal ağ türü |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | */[80], 443                  | Inbound            | TCP                | ıNTERNET/VIRTUAL_NETWORK            | API Management istemci iletişimi                      | Dış             |
 | */3443                     | Inbound            | TCP                | Apimanaya/VIRTUAL_NETWORK       | Azure portal ve PowerShell için yönetim uç noktası         | Dış & Iç  |
@@ -153,7 +153,7 @@ Aşağıda, API Management hizmeti bir sanal ağa dağıttığınızda oluşabil
 
 + **Azure Load Balancer**: hizmet etiketinin gelen istek için izin verme, bu, `AZURE_LOAD_BALANCER` `Developer` arkasında yalnızca bir işlem birimi dağıttiğimiz için SKU için bir gereksinim değildir. Ancak [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) `Premium` , Load Balancer ' den gelen sistem durumu araştırmasının başarısız olması nedeniyle, 168.63.129.16 from, daha yüksek SKU 'ya ölçeklendirilirken kritik hale gelir.
 
-+ **Application Insights**: [Azure Application Insights](api-management-howto-app-insights.md) Monitoring API Management etkinleştirilmişse, sanal ağdan [telemetri uç noktasına](/azure/azure-monitor/app/ip-addresses#outgoing-ports) giden bağlantıya izin vermemiz gerekir. 
++ **Application Insights**: [Azure Application Insights](api-management-howto-app-insights.md) Monitoring API Management etkinleştirilmişse, sanal ağdan [telemetri uç noktasına](../azure-monitor/app/ip-addresses.md#outgoing-ports) giden bağlantıya izin vermemiz gerekir. 
 
 + **Express Route veya ağ sanal gereci kullanarak tünel trafiğini şirket Içi güvenlik duvarında zorla**: ortak bir müşteri yapılandırması, API Management atanmış alt ağdan gelen tüm trafiği şirket içi bir güvenlik duvarı veya ağ sanal gereci üzerinden akışa zorlayan kendi varsayılan yolunu (0.0.0.0/0) tanımlamaktır. Giden trafik, şirket içi veya NAT 'ın, artık çeşitli Azure uç noktalarıyla çalışmayan tanınmayan bir adres kümesine engellediği için bu trafik akışı, Azure API Management ile bağlantıyı keser. Çözüm için birkaç şey yapmanız gerekir:
 
@@ -225,12 +225,12 @@ IP adresleri **Azure ortamı**tarafından bölünür. Gelen isteklere izin veril
 | Azure Genel| Brezilya Güney| 191.233.24.179|
 | Azure Genel| Brezilya Güneydoğu| 191.232.18.181|
 | Azure Genel| Güneydoğu Asya| 40.90.185.46|
-| Azure Genel| Güney Afrika Kuzey| 102.133.130.197|
+| Azure Genel| Güney Afrika - Kuzey| 102.133.130.197|
 | Azure Genel| Orta Kanada| 52.139.20.34|
 | Azure Genel| Güney Kore - Güney| 40.80.232.185|
 | Azure Genel| Orta Hindistan| 13.71.49.1|
 | Azure Genel| Batı ABD| 13.64.39.16|
-| Azure Genel| Avustralya Güneydoğu| 20.40.160.107|
+| Azure Genel| Güneydoğu Avustralya| 20.40.160.107|
 | Azure Genel| Orta Avustralya| 20.37.52.67|
 | Azure Genel| Güney Hindistan| 20.44.33.246|
 | Azure Genel| Central US| 13.86.102.66|
@@ -247,7 +247,7 @@ IP adresleri **Azure ortamı**tarafından bölünür. Gelen isteklere izin veril
 | Azure Genel| Orta Avustralya 2| 20.39.99.81|
 | Azure Genel| BAE Orta| 20.37.81.41|
 | Azure Genel| İsviçre Kuzey| 51.107.0.91|
-| Azure Genel| Güney Afrika Batı| 102.133.0.79|
+| Azure Genel| Güney Afrika - Batı| 102.133.0.79|
 | Azure Genel| Almanya Orta Batı| 51.116.96.0|
 | Azure Genel| Almanya Kuzey| 51.116.0.0|
 | Azure Genel| Norveç Doğu| 51.120.2.185|
@@ -272,7 +272,7 @@ IP adresleri **Azure ortamı**tarafından bölünür. Gelen isteklere izin veril
 * [Farklı dağıtım modellerinden bir sanal ağ bağlama](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [Azure API Management çağrıları izlemek için API denetçisini kullanma](api-management-howto-api-inspector.md)
 * [Sanal ağ hakkında sık sorulan sorular](../virtual-network/virtual-networks-faq.md)
-* [Hizmet etiketleri](../virtual-network/security-overview.md#service-tags)
+* [Hizmet etiketleri](../virtual-network/network-security-groups-overview.md#service-tags)
 
 [api-management-using-vnet-menu]: ./media/api-management-using-with-vnet/api-management-menu-vnet.png
 [api-management-setup-vpn-select]: ./media/api-management-using-with-vnet/api-management-using-vnet-select.png
@@ -285,6 +285,6 @@ IP adresleri **Azure ortamı**tarafından bölünür. Gelen isteklere izin veril
 [Related content]: #related-content
 
 [UDRs]: ../virtual-network/virtual-networks-udr-overview.md
-[Network Security Group]: ../virtual-network/security-overview.md
+[Network Security Group]: ../virtual-network/network-security-groups-overview.md
 [ServiceEndpoints]: ../virtual-network/virtual-network-service-endpoints-overview.md
-[ServiceTags]: ../virtual-network/security-overview.md#service-tags
+[ServiceTags]: ../virtual-network/network-security-groups-overview.md#service-tags
