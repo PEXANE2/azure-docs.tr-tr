@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f4eb90cc0e8867230c7fb1a2a169b5ba0126e46a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e907a3ec2e2521524cdf23e1403ae38a19275aa6
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86205888"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071328"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Azure API Management örneği kapasitesi
 
@@ -28,7 +28,7 @@ Bu makalede **kapasitenin** ne olduğu ve nasıl davrandığı açıklanmaktadı
 > [!IMPORTANT]
 > Bu makalede, Azure API Management örneğinizi kapasite ölçüsüne göre izleyip ölçeklendirebileceğinizi ele alınmaktadır. Ancak, tek bir API Management örneği kapasiteye *ulaştığı* zaman ne olduğunu anlamak da aynı şekilde önemlidir. Azure API Management örneklerin fiziksel olarak aşırı yüklenmesine engel olmak için herhangi bir hizmet düzeyi azaltmayı uygulamacaktır. Bir örnek fiziksel kapasitesine ulaştığında, gelen istekleri işleyemeyecek aşırı yüklenmiş web sunucusuna benzer şekilde davranır: gecikme artar, bağlantılar bırakılır, zaman aşımı hataları oluşur, vb. olur. Bu, API istemcilerinin diğer bir dış hizmetle (örn. yeniden deneme ilkeleri uygulanarak) olduğu gibi bu olasılığa yönelik hazırlanmak üzere hazırlanması gerektiği anlamına gelir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları takip etmek için şunları yapmanız gerekir:
 
@@ -107,4 +107,4 @@ Düşük **kapasiteli ölçüm** , API Management örneğinizin herhangi bir sor
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure API Management hizmet örneğini ölçeklendirme veya yükseltme](upgrade-and-scale.md)
-- [Bulut harcamalarınızı iyileştirin ve kaydedin](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+- [Bulut harcamalarınızı iyileştirin ve kaydedin](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
