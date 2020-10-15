@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
-ms.openlocfilehash: 9338ad86595771c1c70d243250c2d57af5eb7858
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae284a6afa1f2e396aef8177229c344b569be6ec
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83683797"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075680"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>TLS 1,2 desteklemeyen uygulamaların sorunlarını giderme
 Bu makalede, eski TLS protokollerinin (TLS 1,0 ve 1,1) nasıl etkinleştirileceği ve Windows Server 2019 bulut hizmeti Web ve çalışan rolleri üzerinde ek protokolleri desteklemek üzere eski şifre paketlerinin uygulanması açıklanmaktadır. 
@@ -25,7 +25,7 @@ Bu makalede, eski TLS protokollerinin (TLS 1,0 ve 1,1) nasıl etkinleştirilece�
 TLS 1,0 ve TLS 1,1 ' nin kullanım dışı bırakılması sırasında müşterilerimizin, kullanımdan kalkmayı planlayabilmeleri için eski protokolleri ve şifre paketlerini desteklemesi gerekebilecek bazı adımları anladık.  Bu eski değerleri yeniden etkinleştirmenizi önermeyiz, ancak müşterilere yardımcı olmaya yönelik rehberlik sunuyoruz. Müşterilerin bu makalede özetlenen değişiklikleri uygulamadan önce gerileme riskini değerlendirmelerini öneririz. 
 
 > [!NOTE]
-> Konuk işletim sistemi ailesi 6 sürümü, TLS 1,0 ve 1,1 'i açıkça devre dışı bırakarak ve belirli bir şifre paketleri kümesi tanımlayarak TLS 1,2 ' i zorlar. Konuk işletim sistemi aileleri hakkında daha fazla bilgi için bkz. [Konuk işletim sistemi sürüm haberleri](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases)
+> Konuk işletim sistemi ailesi 6 sürümü, TLS 1,0 ve 1,1 'i açıkça devre dışı bırakarak ve belirli bir şifre paketleri kümesi tanımlayarak TLS 1,2 ' i zorlar. Konuk işletim sistemi aileleri hakkında daha fazla bilgi için bkz. [Konuk işletim sistemi sürüm haberleri](./cloud-services-guestos-update-matrix.md#family-6-releases)
 
 
 ## <a name="dropping-support-for-tls-10-tls-11-and-older-cipher-suites"></a>TLS 1,0, TLS 1,1 ve daha eski şifre paketlerinin desteğini bırakma 
@@ -362,4 +362,3 @@ Yukarıdaki adımlar tamamlandığına göre, güncelleştirmeyi mevcut bulut hi
 
 Uç noktalarınızın TLS durumunu doğrulamak için [Ssllabs](https://www.ssllabs.com/) kullanabilirsiniz 
 
- 
