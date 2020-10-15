@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 278e5feb327c1376b7644050f414f680334d5c50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 812fb35f404092453ad35b2f70c4a5b1697fbfe0
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263241"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075714"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server her zaman açık kullanılabilirlik grupları oluşturmaya yönelik önkoşullar
 
@@ -44,7 +44,7 @@ Bir Azure hesabınız olmalıdır. [Ücretsiz bir Azure hesabı açabilir](https
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. **+** Portalda yeni bir nesne oluşturmak için seçin.
 
    ![Yeni nesne](./media/availability-group-manually-configure-prerequisites-tutorial-/01-portalplus.png)
@@ -276,7 +276,7 @@ Bu sunucunun özel IP adresini aklınızda edin.
 
 3. **Özel**' i seçin ve birincil etki alanı DENETLEYICISININ özel IP adresini yazın.
 
-4. **Kaydet**’i seçin.
+4. **Kaydet**'i seçin.
 
 ### <a name="configure-the-second-domain-controller"></a>İkinci etki alanı denetleyicisini yapılandırma
 
@@ -420,6 +420,10 @@ Artık VM 'Leri **corp.contoso.com**'e katabilirsiniz. Hem SQL Server VM 'Ler he
 7. "Corp.contoso.com etki alanına hoş geldiniz" iletisini gördüğünüzde **Tamam**' ı seçin.
 8. **Kapat**' ı seçin ve ardından açılan Iletişim kutusunda **Şimdi yeniden Başlat** ' ı seçin.
 
+## <a name="add-accounts"></a>Hesap ekleme
+
+Yükleme hesabını her bir VM 'ye yönetici olarak ekleyin, SQL Server içinde yükleme hesabına ve yerel hesaplara izin verin ve SQL Server hizmet hesabını güncelleştirin. 
+
 ### <a name="add-the-corpinstall-user-as-an-administrator-on-each-cluster-vm"></a>Corp\ınstall kullanıcısını her küme sanal makinesine yönetici olarak ekleyin
 
 Her bir sanal makine etki alanının bir üyesi olarak yeniden başlatıldıktan sonra, **Corp\ınstall** ' i yerel Yöneticiler grubunun bir üyesi olarak ekleyin.
@@ -438,16 +442,6 @@ Her bir sanal makine etki alanının bir üyesi olarak yeniden başlatıldıktan
 7. **Yönetici özellikleri** iletişim kutusunu kapatmak için **Tamam ' ı** seçin.
 8. **SqlServer-1** ve **cluster-FSW**üzerinde önceki adımları yineleyin.
 
-### <a name="set-the-sql-server-service-accounts"></a><a name="setServiceAccount"></a>SQL Server hizmet hesaplarını ayarlama
-
-Her SQL Server VM SQL Server hizmet hesabını ayarlayın. Etki alanı hesaplarını yapılandırdığınızda oluşturduğunuz hesapları kullanın.
-
-1. **SQL Server Configuration Manager**’ı açın.
-2. SQL Server hizmetine sağ tıklayın ve ardından **Özellikler**' i seçin.
-3. Hesabı ve parolayı ayarlayın.
-4. Diğer SQL Server VM bu adımları yineleyin.  
-
-SQL Server kullanılabilirlik grupları için, her SQL Server VM bir etki alanı hesabı olarak çalıştırılması gerekir.
 
 ### <a name="create-a-sign-in-on-each-sql-server-vm-for-the-installation-account"></a>Yükleme hesabı için her SQL Server VM bir oturum açma oluşturun
 
@@ -467,13 +461,54 @@ Kullanılabilirlik grubunu yapılandırmak için yükleme hesabı 'nı (Corp\ın
 
 1. Etki alanı Yöneticisi ağ kimlik bilgilerini girin.
 
-1. Yükleme hesabını kullanın.
+1. Yükleme hesabını (Corp\ınstall) kullanın.
 
 1. Oturum açma adını **sysadmin** sabit sunucu rolünün bir üyesi olacak şekilde ayarlayın.
 
 1. **Tamam**’ı seçin.
 
 Yukarıdaki adımları diğer SQL Server VM tekrarlayın.
+
+### <a name="configure-system-account-permissions"></a>Sistem hesabı izinlerini yapılandırma
+
+Sistem hesabı için bir hesap oluşturmak ve uygun izinleri vermek için, her bir SQL Server örneği için aşağıdaki adımları izleyin:
+
+1. Her bir SQL Server örneği için bir hesap oluşturun `[NT AUTHORITY\SYSTEM]` . Aşağıdaki betik bu hesabı oluşturur:
+
+   ```sql
+   USE [master]
+   GO
+   CREATE LOGIN [NT AUTHORITY\SYSTEM] FROM WINDOWS WITH DEFAULT_DATABASE=[master]
+   GO 
+   ```
+
+1. `[NT AUTHORITY\SYSTEM]`Her SQL Server örneğine aşağıdaki izinleri verin:
+
+   - `ALTER ANY AVAILABILITY GROUP`
+   - `CONNECT SQL`
+   - `VIEW SERVER STATE`
+
+   Aşağıdaki betik şu izinleri verir:
+
+   ```sql
+   GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM]
+   GO
+   GRANT CONNECT SQL TO [NT AUTHORITY\SYSTEM]
+   GO
+   GRANT VIEW SERVER STATE TO [NT AUTHORITY\SYSTEM]
+   GO 
+   ```
+
+### <a name="set-the-sql-server-service-accounts"></a><a name="setServiceAccount"></a>SQL Server hizmet hesaplarını ayarlama
+
+Her SQL Server VM SQL Server hizmet hesabını ayarlayın. Etki alanı hesaplarını yapılandırdığınızda oluşturduğunuz hesapları kullanın.
+
+1. **SQL Server Configuration Manager**’ı açın.
+2. SQL Server hizmetine sağ tıklayın ve ardından **Özellikler**' i seçin.
+3. Hesabı ve parolayı ayarlayın.
+4. Diğer SQL Server VM bu adımları yineleyin.  
+
+SQL Server kullanılabilirlik grupları için, her SQL Server VM bir etki alanı hesabı olarak çalıştırılması gerekir.
 
 ## <a name="add-failover-clustering-features-to-both-sql-server-vms"></a>SQL Server VM 'lerine Yük Devretme Kümelemesi özellikleri ekleme
 
@@ -524,35 +559,6 @@ Bağlantı noktalarını açma yöntemi, kullandığınız güvenlik duvarı ç�
 
 İkinci SQL Server VM bu adımları yineleyin.
 
-## <a name="configure-system-account-permissions"></a>Sistem hesabı izinlerini yapılandırma
-
-Sistem hesabı için bir hesap oluşturmak ve uygun izinleri vermek için, her bir SQL Server örneği için aşağıdaki adımları izleyin:
-
-1. Her bir SQL Server örneği için bir hesap oluşturun `[NT AUTHORITY\SYSTEM]` . Aşağıdaki betik bu hesabı oluşturur:
-
-   ```sql
-   USE [master]
-   GO
-   CREATE LOGIN [NT AUTHORITY\SYSTEM] FROM WINDOWS WITH DEFAULT_DATABASE=[master]
-   GO 
-   ```
-
-1. `[NT AUTHORITY\SYSTEM]`Her SQL Server örneğine aşağıdaki izinleri verin:
-
-   - `ALTER ANY AVAILABILITY GROUP`
-   - `CONNECT SQL`
-   - `VIEW SERVER STATE`
-
-   Aşağıdaki betik şu izinleri verir:
-
-   ```sql
-   GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM]
-   GO
-   GRANT CONNECT SQL TO [NT AUTHORITY\SYSTEM]
-   GO
-   GRANT VIEW SERVER STATE TO [NT AUTHORITY\SYSTEM]
-   GO 
-   ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
