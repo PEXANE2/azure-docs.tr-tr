@@ -77,7 +77,7 @@
         - name: Veritabanı ayarlarını yapılandırma
           href: configure-database.md
         - name: Müşteri tarafından yönetilen anahtarları yapılandırma
-          href: bring-your-own-key.md
+          href: customer-managed-key.md
         - name: CORS Yapılandırma
           href: configure-cross-origin-resource-sharing.md
         - name: Dışarı aktarmayı yapılandırma
@@ -87,6 +87,8 @@
       items:
         - name: Verileri dışarı aktarma
           href: export-data.md
+        - name: Tanımlanmamış dışarı aktarma
+          href: de-identified-export.md
     - name: Kimlik nesnesi kimliklerini bulma
       href: find-identity-object-ids.md
     - name: FHIR® için Azure API üzerinde Tanılama Günlüğüne Kaydetmeyi etkinleştirme
