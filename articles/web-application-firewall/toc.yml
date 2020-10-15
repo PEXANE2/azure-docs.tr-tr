@@ -77,6 +77,10 @@
           href: ./afds/waf-front-door-geo-filtering.md
         - name: SSS
           href: ./afds/waf-faq.md
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
     - name: WAF ve Azure İlkesi
       href: ./shared/waf-azure-policy.md
 - name: Nasıl yapılır kılavuzları
@@ -131,6 +135,8 @@
           href: ./afds/waf-front-door-tutorial-geo-filtering.md
         - name: İzleme ve günlüğe kaydetme
           href: ./afds/waf-front-door-monitor.md
+    - name: Web Uygulaması Güvenlik Duvarı ile Azure Sentinel kullanma
+      href: waf-sentinel.md
     - name: Sorun giderme
       items:
         - name: Application Gateway

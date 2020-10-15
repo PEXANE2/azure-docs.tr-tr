@@ -64,7 +64,9 @@
               href: how-to-manage-user-lists-within-teams.md
             - name: VM havuzunu yönetme
               href: how-to-manage-vm-pool-within-teams.md
-            - name: Zamanlamalar oluşturma
+            - name: Laboratuvarları silme
+              href: how-to-get-started-create-lab-within-teams.md#deleting-classroom-labs
+            - name: Zamanlamalar ve ayarlar
               href: how-to-create-schedules-within-teams.md
             - name: VM'ye erişme (öğrenci görünümü)
               href: how-to-access-vm-for-students-within-teams.md

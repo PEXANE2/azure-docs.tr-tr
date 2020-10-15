@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: ce8dbe017e3cc80588cd1aa37ad02a82199ccc10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aec8448cb82480397f561e095420bbd49982d4b2
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892573"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093047"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Tanılama ayarlarıyla günlükleri ve ölçümleri çözümleme
 
@@ -27,18 +27,18 @@ Azure Spring Cloud 'ın tanılama işlevini kullanarak, aşağıdaki hizmetlerde
 İzlemek istediğiniz günlük kategorisini ve ölçüm kategorisini seçin.
 
 > [!TIP]
-> Günlüklerinizi akışa almak mı istiyorsunuz? Bu [Azure CLI komutuna](https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud/app?view=azure-cli-latest&preserve-view=true#ext-spring-cloud-az-spring-cloud-app-logs)göz atın!
+> Günlüklerinizi akışa almak mı istiyorsunuz? Bu [Azure CLI komutuna](/cli/azure/ext/spring-cloud/spring-cloud/app?preserve-view=true&view=azure-cli-latest#ext-spring-cloud-az-spring-cloud-app-logs)göz atın!
 
 ## <a name="logs"></a>Günlükler
 
-|Günlük | Açıklama |
+|Günlük | Description |
 |----|----|
 | **ApplicationConsole** | Tüm müşteri uygulamalarının konsol günlüğü. |
 | **Sistem günlükleri** | Şu anda, bu kategoride yalnızca [Spring Cloud config Server](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) kaydedilir. |
 
 ## <a name="metrics"></a>Ölçümler
 
-Ölçümlerin tüm listesi için bkz. [yay bulut ölçümleri](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-metrics-options).
+Ölçümlerin tüm listesi için bkz. [yay bulut ölçümleri](./spring-cloud-concept-metrics.md#user-metrics-options).
 
 Başlamak için, bu hizmetlerden birini verileri alacak şekilde etkinleştirin. Log Analytics yapılandırma hakkında bilgi edinmek için bkz. [Azure izleyici 'de Log Analytics kullanmaya başlama](../azure-monitor/log-query/get-started-portal.md).
 
@@ -110,7 +110,7 @@ Günlükleri ve ölçümleri aşağıdaki başlıklar altında açıklandığı 
 > [!NOTE]
 > `==` büyük/küçük harfe duyarlıdır, ancak `=~` değildir.
 
-Log Analytics 'de kullanılan sorgu dili hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici günlük sorguları](../azure-monitor/log-query/query-language.md).
+Log Analytics 'de kullanılan sorgu dili hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici günlük sorguları](/azure/data-explorer/kusto/query/).
 
 ### <a name="use-your-storage-account"></a>Depolama hesabınızı kullanın
 
@@ -131,7 +131,7 @@ Bir depolama hesabına tanılama bilgileri gönderme hakkında daha fazla bilgi 
 1. Uygulama günlüklerini gözden geçirmek için, **Öngörüler-logs-applicationconsole**adlı bir olay hub 'ı arayın.
 1. Uygulama ölçümlerini gözden geçirmek için, **Öngörüler-ölçümler-pt1m**adlı bir olay hub 'ı arayın.
 
-Tanılama bilgilerini bir olay hub 'ına gönderme hakkında daha fazla bilgi için, bkz. [Event Hubs kullanarak etkin yoldaki Azure Tanılama verileri akışı](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-stream-event-hubs).
+Tanılama bilgilerini bir olay hub 'ına gönderme hakkında daha fazla bilgi için, bkz. [Event Hubs kullanarak etkin yoldaki Azure Tanılama verileri akışı](../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md).
 
 ## <a name="analyze-the-logs"></a>Günlükleri çözümleyin
 

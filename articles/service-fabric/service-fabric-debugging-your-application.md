@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2bec6667ea44e195ea1fccb5313b45ed060312a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35c4875ca9bf3165fff84164eb3bb7ebe44cf932
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000116"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093404"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Visual Studio'yu kullanarak Service Fabric uygulamanızda hata ayıklama
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ Azure Service Fabric uygulamanızı yerel bir bilgisayar geliştirme kümesinde 
 1. [Service Fabric geliştirme ortamınızı ayarlama](service-fabric-get-started.md)adımlarını izleyerek bir yerel geliştirme kümesi başlatın.
 2. **F5** tuşuna basın veya **hata**  >  **ayıklamayı Başlat**' a tıklayın.
    
-    ![Bir uygulamada hata ayıklamayı başlatma][startdebugging]
+    ![Hata ayıklama menüsünü gösteren ekran görüntüsü.][startdebugging]
 3. Kodunuzda kesme noktaları ayarlayın ve **Hata Ayıkla** menüsündeki komutlar ' a tıklayarak uygulamada gezinin.
    
    > [!NOTE]

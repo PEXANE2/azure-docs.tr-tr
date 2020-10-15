@@ -2,19 +2,19 @@
 title: Azure depolama güvenlik duvarlarını ve sanal ağları yapılandırma | Microsoft Docs
 description: Azure Storage güvenlik duvarları ve Azure sanal ağını kullanarak depolama hesabınız için katmanlı ağ güvenliğini yapılandırın.
 services: storage
-author: tamram
+author: santoshc
 ms.service: storage
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 4d4afd87a16ecb28687d901614e3bbc5d9673fa9
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 7e7a61247c8f449291fb8ec0b91b7513ee75f6c9
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874654"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072501"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma
 
@@ -356,7 +356,7 @@ Azure portal, PowerShell veya CLIv2 aracılığıyla depolama hesapları için I
 > [!IMPORTANT]
 > [Varsayılan kuralı](#change-the-default-network-access-rule) **Reddet**olarak ayarladığınızdan emin olun veya ağ kurallarının hiçbir etkisi yoktur.
 
-## <a name="exceptions"></a>Özel Durumlar
+## <a name="exceptions"></a>Özel durumlar
 
 Ağ kuralları, çoğu senaryo için Uygulamalarınız ve verileriniz arasındaki bağlantılar için güvenli bir ortam oluşturmaya yardımcı olur. Ancak bazı uygulamalar, sanal ağ veya IP adresi kuralları aracılığıyla benzersiz olarak yalıtılmamış Azure hizmetlerine bağımlıdır. Ancak, tam uygulama işlevselliğini etkinleştirmek için bu hizmetler depolama alanına verilmelidir. Bu gibi durumlarda, bu hizmetlerin verilerinize, günlüklerine veya analizlerinize erişmesini sağlamak için ***güvenilir Microsoft hizmetlerine Izin ver...*** ayarını kullanabilirsiniz.
 

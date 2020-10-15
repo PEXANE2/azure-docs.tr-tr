@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 7e61a881470b206981b65e175c1f7f40b161ebf8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e62a5c984afb434b8c47b5ee8c5c66c61485dbfc
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319767"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090446"
 ---
 # <a name="secure-an-input-constrained-device-with-azure-ad-and-azure-maps-rest-apis"></a>Azure AD ve Azure haritalar REST API 'Leri ile giriş kısıtlı bir cihazın güvenliğini sağlama
 
@@ -55,7 +55,7 @@ Azure AD oturum açma özelliğini etkinleştirmek için Azure AD 'de cihaz taba
     > [!div class="mx-imgBorder"]
     > ![Uygulama API 'SI izinlerini seçin](./media/how-to-manage-authentication/select-app-permissions.png)
 
-6. Kullanıcılar veya gruplar için Azure rol tabanlı erişim denetimi 'ni yapılandırın. Bkz. [Kullanıcılar Için Azure Maps 'e rol tabanlı erişim verme](#grant-role-based-access-for-users-to-azure-maps).
+6. Kullanıcılar veya gruplar için Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) yapılandırın. Bkz. [Kullanıcılar Için Azure Maps 'e rol tabanlı erişim verme](#grant-role-based-access-for-users-to-azure-maps).
 
 7. Uygulamada belirteç akışı almak için kod ekleyin, uygulama ayrıntıları için bkz. [cihaz kodu akışı](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-acquire-token#device-code-flow). Belirteçleri alırken, `user_impersonation` önceki adımlarda seçili olan kapsama başvurun:
 
@@ -110,7 +110,7 @@ Bölümü
 }
 ```
 
-[!INCLUDE [grant role access to users](./includes/grant-rbac-users.md)]
+[!INCLUDE [grant role-based access to users](./includes/grant-rbac-users.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

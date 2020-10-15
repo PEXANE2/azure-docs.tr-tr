@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 7d146004fb4fa120e08b4d67c1d68d51cc6f3c8f
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 866f1c404df2de87c2b3ce58b791ceb5257fca1b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767724"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074456"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Hızlı başlangıç: ASP.NET Core uygulamasına özellik bayrakları ekleme
 
@@ -20,7 +20,7 @@ Bu hızlı başlangıçta, Azure Uygulama yapılandırması 'nı kullanarak bir 
 
 .NET Core Özellik Yönetimi kitaplıkları Framework 'ü kapsamlı özellik bayrağı desteğiyle genişletir. Bu kitaplıklar, .NET Core yapılandırma sisteminin üzerine kurulmuştur. Bunlar, .NET Core yapılandırma sağlayıcısı aracılığıyla uygulama yapılandırmasıyla sorunsuz bir şekilde tümleşir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/dotnet)
 * [.NET Core SDK](https://dotnet.microsoft.com/download)
@@ -106,7 +106,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     ---
 
-    Önceki değişiklikten sonra, [uygulama yapılandırması için yapılandırma sağlayıcısı](https://go.microsoft.com/fwlink/?linkid=2074664) .NET Core Yapılandırma API 'sine kaydedilir.
+    Önceki değişiklikten sonra, [uygulama yapılandırması için yapılandırma sağlayıcısı](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration) .NET Core Yapılandırma API 'sine kaydedilir.
 
 1. *Startup.cs*' de .NET Core Özellik Yöneticisi 'ne bir başvuru ekleyin:
 
@@ -260,7 +260,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta yeni bir uygulama yapılandırma deposu oluşturdunuz ve bunu, [Özellik Yönetimi kitaplıkları](https://go.microsoft.com/fwlink/?linkid=2074664)aracılığıyla bir ASP.NET Core Web uygulamasındaki özellikleri yönetmek için kullandınız.
+Bu hızlı başlangıçta yeni bir uygulama yapılandırma deposu oluşturdunuz ve bunu, [Özellik Yönetimi kitaplıkları](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)aracılığıyla bir ASP.NET Core Web uygulamasındaki özellikleri yönetmek için kullandınız.
 
 * [Özellik yönetimi](./concept-feature-management.md)hakkında daha fazla bilgi edinin.
 * [Özellik bayraklarını yönetin](./manage-feature-flags.md).

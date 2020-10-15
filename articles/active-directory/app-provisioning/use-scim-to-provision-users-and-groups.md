@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 3a6f7bd282dbfc5087c5ddcb066c8e38a478c99f
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: bfd9e08387a4de2220ef56afdd0ef79bd837ed4c
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018670"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070206"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Öğretici-Azure AD ile bir SCıM uç noktası oluşturun ve Kullanıcı sağlamayı yapılandırın
 
@@ -747,7 +747,7 @@ TLS 1,2 şifre paketleri minimum çubuğu:
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP aralıkları
-Azure AD sağlama hizmeti şu anda [burada](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)listelenen AZUREACTIVEDIRECTORY Için IP aralıkları altında çalışır. Azure AD sağlama hizmeti 'nin uygulamanıza bağlanmasına izin vermek için AzureActiveDirectory etiketinin altına listelenen IP aralıklarını ekleyebilirsiniz. Hesaplanan adresler için IP aralığı listesini dikkatle gözden geçirmeniz gerekeceğini unutmayın. ' 40.126.25.32 ' gibi bir adres, IP aralığı listesinde ' 40.126.0.0/18 ' olarak temsil edilebilir. Ayrıca, aşağıdaki [API 'yi](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)kullanarak IP aralığı listesini de program aracılığıyla alabilirsiniz.
+Azure AD sağlama hizmeti şu anda [burada](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)listelenen AZUREACTIVEDIRECTORY Için IP aralıkları altında çalışır. Azure AD sağlama hizmeti 'nin uygulamanıza bağlanmasına izin vermek için AzureActiveDirectory etiketinin altına listelenen IP aralıklarını ekleyebilirsiniz. Hesaplanan adresler için IP aralığı listesini dikkatle gözden geçirmeniz gerekeceğini unutmayın. ' 40.126.25.32 ' gibi bir adres, IP aralığı listesinde ' 40.126.0.0/18 ' olarak temsil edilebilir. Ayrıca, aşağıdaki [API 'yi](/rest/api/virtualnetwork/servicetags/list)kullanarak IP aralığı listesini de program aracılığıyla alabilirsiniz.
 
 ## <a name="step-3-build-a-scim-endpoint"></a>3. Adım: SCıM uç noktası oluşturma
 
