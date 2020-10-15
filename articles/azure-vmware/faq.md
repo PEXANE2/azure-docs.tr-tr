@@ -4,12 +4,12 @@ description: Azure VMware çözümüyle ilgili bazı yaygın soruların yanıtla
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: bdfe3956d8c715e391270aab6b3c589430c91593
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 8868f86f0cf46ff82e37cd433d7b5bca0d69567d
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058038"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078944"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware çözümü hakkında sık sorulan sorular
 
@@ -74,7 +74,7 @@ Evet, üzerinde yüklü olduğu sistem özel bulut vCenter 'a erişebilir ve gen
 Hayır, [VMware tarafından sunulan yönergeleri](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) kullanın ve bu YÖNERGELERDE belirtilen VM önkoşullarını yerine uygulayın. 
 
 #### <a name="is-vmware-hcx-supported-on-vpns"></a>Şu VPN 'lerde VMware HCX destekleniyor mu?
-Hayır.
+Bant genişliği ve gecikme süresi gereksinimleri nedeniyle Hayır.
 
 #### <a name="can-azure-bastion-be-used-for-connecting-to-avs-vms"></a>Azure savunma, AVS VM 'lerine bağlanmak için kullanılabilir mi?
 Azure 'da, Azure VMware çözümünün Internet 'e sunulmasını engellemek için bağlantı kutusu 'na bağlanmanız önerilir. Azure IaaS nesneleri olmadığından Azure VMware Çözüm VM 'lerine bağlanmak için Azure savunma 'yi kullanamazsınız.

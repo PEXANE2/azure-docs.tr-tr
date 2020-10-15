@@ -3,12 +3,12 @@ title: Azure Kubernetes hizmeti (AKS) için sık sorulan sorular
 description: Azure Kubernetes hizmeti (AKS) ile ilgili bazı yaygın soruların yanıtlarını bulun.
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 4150f850263aed7b8aa4317028386dc285f06ade
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9506b3430775f137c09fe3d155b203cdcbd14783
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905341"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070563"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) hakkında sık sorulan sorular
 
@@ -212,7 +212,7 @@ Müşteri verilerinin tek bir bölgede depolanmasını etkinleştirme özelliği
 [aks-cluster-autoscaler]: cluster-autoscaler.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [aks-windows-cli]: windows-container-cli.md
-[aks-windows-limitations]: windows-node-limitations.md
+[aks-windows-limitations]: ./windows-faq.md
 [reservation-discounts]:../cost-management-billing/reservations/save-compute-costs-reservations.md
 [api-server-authorized-ip-ranges]: ./api-server-authorized-ip-ranges.md
 [multi-node-pools]: ./use-multiple-node-pools.md

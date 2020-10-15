@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 99784e43130b70554c05ff79a10993f2b6eebbde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31d26769fa3ef49684f8a2eedf6a0691316e742b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86499622"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071243"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management etki alanları arası ilkeler
-Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. İlke ekleme ve yapılandırma hakkında daha fazla bilgi için bkz. [API Management ilkeleri](https://go.microsoft.com/fwlink/?LinkID=398186).
+Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. İlke ekleme ve yapılandırma hakkında daha fazla bilgi için bkz. [API Management ilkeleri](./api-management-policies.md).
 
 ## <a name="cross-domain-policies"></a><a name="CrossDomainPolicies"></a> Etki alanları arası ilkeler
 
@@ -55,7 +55,7 @@ API 'yi `cross-domain` Adobe Flash ve Microsoft Silverlight tarayıcı tabanlı 
 
 |Ad|Açıklama|Gerekli|
 |----------|-----------------|--------------|
-|etki alanları arası|Kök öğe. Alt öğeler, [Adobe etki alanları arası ilke dosyası belirtimine](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)uymalıdır.|Evet|
+|etki alanları arası|Kök öğe. Alt öğeler, [Adobe etki alanları arası ilke dosyası belirtimine](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)uymalıdır.|Yes|
 
 ### <a name="usage"></a>Kullanım
 Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
@@ -126,21 +126,21 @@ Bu örnek, alma ve GÖNDERI dışında özel üst bilgileri veya yöntemleri ola
 
 |Ad|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
-|CORS|Kök öğe.|Evet|Yok|
-|izin verilen-kaynaklar|`origin`Etki alanları arası istekler için izin verilen kaynakları tanımlayan öğeleri içerir. `allowed-origins``origin`herhangi bir kaynağa izin vermek için belirten tek bir öğe `*` veya bir URI içeren bir ya da daha fazla öğe içerebilir `origin` .|Evet|Yok|
-|başlangıç|Değer `*` tüm kaynakları veya tek bir kaynağı belirten BIR URI 'yi izin verebilir. URI bir düzen, konak ve bağlantı noktası içermelidir.|Evet|Bağlantı noktası bir URI 'de yoksayılırsa, HTTP için bağlantı noktası 80 ve HTTPS için bağlantı noktası 443 kullanılır.|
-|izin verilen-Yöntemler|GET veya POST dışındaki yöntemlere izin veriliyorsa bu öğe gereklidir. `method`Desteklenen HTTP fiillerini belirten öğeleri içerir. Değer `*` tüm yöntemleri gösterir.|Hayır|Bu bölüm yoksa GET ve POST desteklenir.|
-|method|Bir HTTP fiilini belirtir.|Bölüm mevcutsa en az bir `method` öğe gereklidir `allowed-methods` .|Yok|
-|izin verilen-üstbilgiler|Bu öğe `header` , isteğe dahil edilebilir üst bilgilerin adlarını belirten öğeleri içerir.|Hayır|Yok|
-|kullanıma yönelik üst bilgiler|Bu öğe `header` , istemci tarafından erişilebilen üst bilgilerin adlarını belirten öğeleri içerir.|Hayır|YOK|
-|üst bilgi|Bir üst bilgi adı belirtir.|`header` `allowed-headers` Bölümünde veya bölümü varsa en az bir öğe gereklidir `expose-headers` .|Yok|
+|CORS|Kök öğe.|Yes|YOK|
+|izin verilen-kaynaklar|`origin`Etki alanları arası istekler için izin verilen kaynakları tanımlayan öğeleri içerir. `allowed-origins``origin`herhangi bir kaynağa izin vermek için belirten tek bir öğe `*` veya bir URI içeren bir ya da daha fazla öğe içerebilir `origin` .|Yes|YOK|
+|başlangıç|Değer `*` tüm kaynakları veya tek bir kaynağı belirten BIR URI 'yi izin verebilir. URI bir düzen, konak ve bağlantı noktası içermelidir.|Yes|Bağlantı noktası bir URI 'de yoksayılırsa, HTTP için bağlantı noktası 80 ve HTTPS için bağlantı noktası 443 kullanılır.|
+|izin verilen-Yöntemler|GET veya POST dışındaki yöntemlere izin veriliyorsa bu öğe gereklidir. `method`Desteklenen HTTP fiillerini belirten öğeleri içerir. Değer `*` tüm yöntemleri gösterir.|No|Bu bölüm yoksa GET ve POST desteklenir.|
+|method|Bir HTTP fiilini belirtir.|Bölüm mevcutsa en az bir `method` öğe gereklidir `allowed-methods` .|YOK|
+|izin verilen-üstbilgiler|Bu öğe `header` , isteğe dahil edilebilir üst bilgilerin adlarını belirten öğeleri içerir.|No|YOK|
+|kullanıma yönelik üst bilgiler|Bu öğe `header` , istemci tarafından erişilebilen üst bilgilerin adlarını belirten öğeleri içerir.|No|YOK|
+|üst bilgi|Bir üst bilgi adı belirtir.|`header` `allowed-headers` Bölümünde veya bölümü varsa en az bir öğe gereklidir `expose-headers` .|YOK|
 
 ### <a name="attributes"></a>Öznitelikler
 
 |Ad|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
-|izin ver-kimlik bilgileri|`Access-Control-Allow-Credentials`Ön kontrol yanıtındaki üst bilgi bu özniteliğin değerine ayarlanır ve istemcinin etki alanları arası isteklerde kimlik bilgilerini gönderme yeteneğini etkiler.|Hayır|yanlış|
-|ön kontrol-sonuç-en yüksek yaş|`Access-Control-Max-Age`Ön kontrol yanıtında üst bilgi bu özniteliğin değerine ayarlanır ve Kullanıcı aracısının ön uçuş yanıtını önbelleğe alma yeteneğini etkiler.|Hayır|0|
+|izin ver-kimlik bilgileri|`Access-Control-Allow-Credentials`Ön kontrol yanıtındaki üst bilgi bu özniteliğin değerine ayarlanır ve istemcinin etki alanları arası isteklerde kimlik bilgilerini gönderme yeteneğini etkiler.|No|yanlış|
+|ön kontrol-sonuç-en yüksek yaş|`Access-Control-Max-Age`Ön kontrol yanıtında üst bilgi bu özniteliğin değerine ayarlanır ve Kullanıcı aracısının ön uçuş yanıtını önbelleğe alma yeteneğini etkiler.|No|0|
 
 ### <a name="usage"></a>Kullanım
 Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
@@ -171,13 +171,13 @@ Geri çağırma parametresini eklerseniz `?cb=XXX` , BIR JSONP sonucu döndürü
 
 |Ad|Açıklama|Gerekli|
 |----------|-----------------|--------------|
-|JSONP|Kök öğe.|Evet|
+|JSONP|Kök öğe.|Yes|
 
 ### <a name="attributes"></a>Öznitelikler
 
 |Ad|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
-|geri arama-parametre-adı|Etki alanları arası JavaScript işlev çağrısı, işlevin bulunduğu tam etki alanı adıyla önekli.|Evet|Yok|
+|geri arama-parametre-adı|Etki alanları arası JavaScript işlev çağrısı, işlevin bulunduğu tam etki alanı adıyla önekli.|Yes|YOK|
 
 ### <a name="usage"></a>Kullanım
 Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
@@ -192,4 +192,4 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#s
 + [API Management ilkeler](api-management-howto-policies.md)
 + [API dönüştürme](transform-api.md)
 + İlke deyimlerinin ve ayarlarının tam listesi için [Ilke başvurusu](./api-management-policies.md)
-+ [İlke örnekleri](policy-samples.md)
++ [İlke örnekleri](./policy-reference.md)

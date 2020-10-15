@@ -1,18 +1,18 @@
 ---
 title: 'ExpressRoute şifrelemesini yapılandırma: Azure sanal WAN için ExpressRoute üzerinden IPSec'
-description: Bu öğreticide, ExpressRoute özel eşlemesi üzerinden siteden siteye VPN bağlantısı oluşturmak için Azure sanal WAN ' ı nasıl kullanacağınızı öğrenin.
+description: Azure sanal WAN kullanarak ExpressRoute özel eşlemesi üzerinden siteden siteye VPN bağlantısı oluşturma hakkında bilgi edinin.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: bbce84ad917da71ab363b20f3aef9da79ed3f2b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c6f71277c276bed603989774637bd95999de333
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827956"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079063"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute şifrelemesi: sanal WAN için ExpressRoute üzerinden IPSec
 
@@ -115,7 +115,7 @@ VPN sitesini oluşturup hub 'a bağlandıktan sonra, bağlantıyı ExpressRoute 
 1. **Azure özel IP adresini kullan**için **Evet**' i seçin. Bu ayar, hub VPN ağ geçidini, genel IP adresleri yerine, bu bağlantı için ağ geçidinde bulunan hub adres aralığı içinde özel IP adresleri kullanacak şekilde yapılandırır. Bu, şirket içi ağdan gelen trafiğin bu VPN bağlantısı için genel internet kullanmak yerine ExpressRoute özel eşleme yollarından geçeceğini güvence altına alır. Aşağıdaki ekran görüntüsünde Bu ayar gösterilmektedir:
 
    :::image type="content" source="./media/vpn-over-expressroute/vpn-link-configuration.png" alt-text="ExpressRoute üzerinden VPN" border="false":::
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 Değişikliklerinizi kaydettikten sonra, Merkez VPN ağ geçidi, ExpressRoute üzerinden şirket içi VPN cihazıyla IPSec/ıKE bağlantıları kurmak için VPN ağ geçidinde özel IP adreslerini kullanır.
 

@@ -6,12 +6,12 @@ author: laurenhughes
 ms.topic: article
 ms.date: 09/21/2020
 ms.author: lahugh
-ms.openlocfilehash: 6a9567669445cb5aa94c1108051c961a216fabad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce51e76829c19def1c1603b1a88592d1e683ccae
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335611"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070648"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>Azure portal (Önizleme) ile Kubernetes kaynaklarına erişin
 
@@ -20,11 +20,11 @@ Azure portal, Azure Kubernetes Service (AKS) kümenizdeki Kubernetes kaynakları
 Azure portal Kubernetes kaynak görünümü, kullanımdan kaldırılması için ayarlanan [aks Pano eklentisinin][kubernetes-dashboard]yerini alır.
 
 >[!NOTE]
->Capabilty Şu anda [özel Azure Kubernetes hizmet kümelerinde](https://docs.microsoft.com/azure/aks/private-clusters)desteklenmiyor.
+>Capabilty Şu anda [özel Azure Kubernetes hizmet kümelerinde](./private-clusters.md)desteklenmiyor.
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure portal Kubernetes kaynaklarını görüntülemek için bir AKS kümeniz olması gerekir. Herhangi bir küme desteklenir, ancak Azure Active Directory (Azure AD) Tümleştirmesi kullanılıyorsa, kümenizde [aks tarafından yönetilen Azure AD tümleştirmesi][aks-managed-aad]kullanılmalıdır. Kümeniz eski Azure AD kullanıyorsa, kümenizi portalda veya [Azure CLI][cli-aad-upgrade]ile yükseltebilirsiniz.
 
