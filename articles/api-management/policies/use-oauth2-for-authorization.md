@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 09d51759c07e7dacc25d5b5ffce9698831c37a7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f5a10eb2ebc3b3a7c527dd718e37faf03c927bc
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75442362"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076105"
 ---
 # <a name="use-oauth2-for-authorization-between-the-gateway-and-a-backend"></a>Ağ Geçidi ile arka uç arasında yetkilendirme için OAuth2 kullanma
 
 Bu makalede, ağ geçidi ile arka uç arasında yetkilendirme için OAuth2 kullanmayı gösteren bir Azure API yönetim ilkesi örneği gösterilmektedir. AAD'den erişim belirtecini alma ve bunu arka uca iletme işlemini de gösterir. 
 
-Bir ilke kodu ayarlamak veya düzenlemek için, [Ilke ayarlama veya düzenleme](../set-edit-policies.md)bölümünde açıklanan adımları izleyin. Diğer örnekleri görmek için bkz. [ilke örnekleri](../policy-samples.md).
+Bir ilke kodu ayarlamak veya düzenlemek için, [Ilke ayarlama veya düzenleme](../set-edit-policies.md)bölümünde açıklanan adımları izleyin. Diğer örnekleri görmek için bkz. [ilke örnekleri](../policy-reference.md).
 
 Aşağıdaki betik {{Property}} içinde görünen özellikleri kullanır. Özellikler hakkında bilgi edinmek ve bunları API Management ilkelerinde kullanmayı öğrenmek için [Bu](../api-management-howto-properties.md) konuya bakın.
  
@@ -39,5 +39,4 @@ Kodu **gelen** bloğa yapıştırın.
 APıM ilkeleri hakkında daha fazla bilgi edinin:
 
 + [Dönüştürme ilkeleri](../api-management-transformation-policies.md)
-+ [İlke örnekleri](../policy-samples.md)
-
++ [İlke örnekleri](../policy-reference.md)
