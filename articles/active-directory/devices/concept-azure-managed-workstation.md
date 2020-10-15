@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4298518dae9afdf197321073846fa1ab9262ec0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84d0731a67ac47b8b0fc73cb485857458b3febbb
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601394"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093319"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>Güvenli, Azure tarafından yönetilen iş istasyonlarını anlayın
 
@@ -64,7 +64,7 @@ Tüm kullanıcılar ve işleçler, güvenli bir iş istasyonu kullanırken fayda
 * SWIFT ödeme terminali gibi son derece hassas iş istasyonu
 * İş istasyonu ticari gizli dizileri işliyor
 
-Riski azaltmak için, bu hesapları kullanan ayrıcalıklı iş istasyonları için yükseltilmiş güvenlik denetimleri uygulamalısınız. Daha fazla bilgi için bkz. [Azure Active Directory özelliği dağıtım kılavuzu](../fundamentals/active-directory-deployment-checklist-p2.md), [Microsoft 365 yol haritası](https://aka.ms/o365secroadmap)ve [ayrıcalıklı erişim yol haritasını güvenlik](https://aka.ms/sparoadmap).
+Riski azaltmak için, bu hesapları kullanan ayrıcalıklı iş istasyonları için yükseltilmiş güvenlik denetimleri uygulamalısınız. Daha fazla bilgi için bkz. [Azure Active Directory özelliği dağıtım kılavuzu](../fundamentals/active-directory-deployment-checklist-p2.md), [Microsoft 365 yol haritası](/microsoft-365/security/office-365-security/security-roadmap)ve [ayrıcalıklı erişim yol haritasını güvenlik](/windows-server/identity/securing-privileged-access/securing-privileged-access).
 
 ## <a name="why-use-dedicated-workstations"></a>Adanmış iş istasyonlarını neden kullanmalısınız?
 

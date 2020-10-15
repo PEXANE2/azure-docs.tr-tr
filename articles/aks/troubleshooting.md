@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) kullanırken karşılaşılan yaygı
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 930dae7ae163a04fb8b5fc5ae44b9170a7e3c6ce
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: dcbfed4fc83b980b3e54a808406b8d27e1e6c919
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893144"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074422"
 ---
 # <a name="aks-troubleshooting"></a>AKS sorunlarını giderme
 
@@ -206,7 +206,7 @@ Azure 'daki bir Kubernetes kümesi (AKS veya No) sıklıkla bir ölçek artırma
 Service returned an error. Status=429 Code=\"OperationNotAllowed\" Message=\"The server rejected the request because too many requests have been received for this subscription.\" Details=[{\"code\":\"TooManyRequests\",\"message\":\"{\\\"operationGroup\\\":\\\"HighCostGetVMScaleSet30Min\\\",\\\"startTime\\\":\\\"2020-09-20T07:13:55.2177346+00:00\\\",\\\"endTime\\\":\\\"2020-09-20T07:28:55.2177346+00:00\\\",\\\"allowedRequestCount\\\":1800,\\\"measuredRequestCount\\\":2208}\",\"target\":\"HighCostGetVMScaleSet30Min\"}] InnerError={\"internalErrorCode\":\"TooManyRequestsReceived\"}"}
 ```
 
-Bu azaltma hataları [burada](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling) ve [burada](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshooting-throttling-errors) ayrıntılı olarak açıklanmaktadır
+Bu azaltma hataları [burada](../azure-resource-manager/management/request-limits-and-throttling.md) ve [burada](../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md) ayrıntılı olarak açıklanmaktadır
 
 AKS mühendislik ekibinin retıoni, en az 1.18. x sürümünü çalıştırıyor olduğunuzdan emin olmak için birçok geliştirme içerir. Bu geliştirmelerin [burada](https://github.com/Azure/AKS/issues/1413) ve [burada](https://github.com/kubernetes-sigs/cloud-provider-azure/issues/247)daha fazla ayrıntıya ulaşabilirsiniz.
 
@@ -230,14 +230,14 @@ Bu azaltma hataları, abonelik düzeyinde ölçülerek, şu durumlarda yine de g
 
 Kubernetes sürüm 1,10 ' de, Bağlamabirimi. WaitForAttach bir Azure disk uzaktan bağlantısı ile başarısız olabilir.
 
-Linux 'ta yanlış bir DevicePath biçim hatası görebilirsiniz. Örneğin:
+Linux 'ta yanlış bir DevicePath biçim hatası görebilirsiniz. Örnek:
 
 ```console
 MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af9f967" : azureDisk - Wait for attach expect device path as a lun number, instead got: /dev/disk/azure/scsi1/lun1 (strconv.Atoi: parsing "/dev/disk/azure/scsi1/lun1": invalid syntax)
   Warning  FailedMount             1m (x10 over 21m)   kubelet, k8s-agentpool-66825246-0  Unable to mount volumes for pod
 ```
 
-Windows 'ta yanlış bir DevicePath (LUN) numarası hatası görebilirsiniz. Örneğin:
+Windows 'ta yanlış bir DevicePath (LUN) numarası hatası görebilirsiniz. Örnek:
 
 ```console
 Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.WaitForAttach failed for volume "disk01" : azureDisk - WaitForAttach failed within timeout node (15282k8s9010) diskId:(andy-mghyb
@@ -250,7 +250,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 |--|:--:|
 | 1.10 | 1.10.2 veya üzeri |
 | 1,11 | 1.11.0 veya üzeri |
-| 1,12 ve üzeri | Yok |
+| 1,12 ve üzeri | YOK |
 
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Azure diski için mountOptions 'da uid ve GID ayarlanırken hata oluştu
@@ -284,7 +284,7 @@ spec:
   >[!NOTE]
   > GID ve uid, varsayılan olarak kök veya 0 olarak bağlandığından. GID veya Uid, kök olmayan olarak ayarlandıysa, örneğin 1000, Kubernetes `chown` Bu disk altındaki tüm dizinleri ve dosyaları değiştirmek için kullanılır. Bu işlem zaman alabilir ve diski bağlama işlemi çok yavaş olabilir.
 
-* `chown`GID ve uid ayarlamak Için ınitcontainers içinde kullanın. Örneğin:
+* `chown`GID ve uid ayarlamak Için ınitcontainers içinde kullanın. Örnek:
 
 ```yaml
 initContainers:
@@ -307,7 +307,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 | 1.12 | 1.12.9 veya üzeri |
 | 1.13 | 1.13.6 veya üzeri |
 | 1,14 | 1.14.2 veya üzeri |
-| 1,15 ve üzeri | Yok |
+| 1,15 ve üzeri | YOK |
 
 Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız ve düğümünüz eski bir disk listesine sahipse, mevcut olmayan tüm diskleri VM 'den toplu bir işlem olarak ayırarak azaltabilirsiniz. **Mevcut olmayan diskleri tek tek ayırmak başarısız olabilir.**
 
@@ -326,7 +326,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 | 1.12 | 1.12.10 veya üzeri |
 | 1.13 | 1.13.8 veya üzeri |
 | 1,14 | 1.14.4 veya üzeri |
-| 1,15 ve üzeri | Yok |
+| 1,15 ve üzeri | YOK |
 
 Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız ve düğümünüz hatalı durumdaysa, aşağıdakilerden birini kullanarak VM durumunu el ile güncelleştirerek azaltabilirsiniz:
 
@@ -435,7 +435,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 |--|:--:|
 | 1.12 | 1.12.6 veya üzeri |
 | 1.13 | 1.13.4 veya üzeri |
-| 1,14 ve üzeri | Yok |
+| 1,14 ve üzeri | YOK |
 
 ### <a name="azure-files-mount-fails-because-of-storage-account-key-changed"></a>Azure dosyaları bağlama, depolama hesabı anahtarı değiştiği için başarısız oluyor
 
@@ -443,13 +443,13 @@ Depolama hesabı anahtarınız değiştiyse Azure dosyaları bağlama hatalarıy
 
 `azurestorageaccountkey`Base64 ile kodlanmış depolama hesabı anahtarınızla Azure dosya gizli anahtarındaki alanı el ile güncelleştirerek azaltabilirsiniz.
 
-Depolama hesabı anahtarınızı Base64 olarak kodlamak için kullanabilirsiniz `base64` . Örneğin:
+Depolama hesabı anahtarınızı Base64 olarak kodlamak için kullanabilirsiniz `base64` . Örnek:
 
 ```console
 echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64
 ```
 
-Azure gizli dosyanızı güncelleştirmek için kullanın `kubectl edit secret` . Örneğin:
+Azure gizli dosyanızı güncelleştirmek için kullanın `kubectl edit secret` . Örnek:
 
 ```console
 kubectl edit secret azure-storage-account-{storage-account-name}-secret

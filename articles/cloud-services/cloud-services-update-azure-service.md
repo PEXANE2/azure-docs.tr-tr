@@ -7,12 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: 731f4e8cc8a93f33d6887f44fc8d09585e92a75a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f12e5b6b0b2902d69936b9cf2695b7ee21db88e2
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75360353"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075051"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Bulut hizmetini güncelleştirme
 
@@ -21,7 +21,7 @@ Hem rollerinin hem de konuk işletim sisteminin dahil olduğu bir bulut hizmetin
 ## <a name="update-an-azure-service"></a>Azure hizmetini güncelleştirme
 Azure, rol örneklerinizi yükseltme etki alanları (UD) adlı mantıksal gruplandırmalar halinde düzenler. Yükseltme etki alanları (UD), Grup olarak güncellenen rol örneklerinin mantıksal kümeleridir.  Azure, bir tek seferde bir UD hizmeti güncelleyen ve diğer UDs 'deki örneklerin trafiğe hizmet vermeye devam etmesine olanak tanır.
 
-Varsayılan yükseltme etki alanı sayısı 5 ' tir. Hizmetin tanım dosyasına (. csdef) upgradeDomainCount özniteliğini ekleyerek, farklı sayıda yükseltme etki alanı belirtebilirsiniz. UpgradeDomainCount özniteliği hakkında daha fazla bilgi için bkz. [Azure Cloud Services Tanım Şeması (. csdef dosyası)](https://docs.microsoft.com/azure/cloud-services/schema-csdef-file).
+Varsayılan yükseltme etki alanı sayısı 5 ' tir. Hizmetin tanım dosyasına (. csdef) upgradeDomainCount özniteliğini ekleyerek, farklı sayıda yükseltme etki alanı belirtebilirsiniz. UpgradeDomainCount özniteliği hakkında daha fazla bilgi için bkz. [Azure Cloud Services Tanım Şeması (. csdef dosyası)](./schema-csdef-file.md).
 
 Hizmetinizdeki bir veya daha fazla rolün yerinde güncelleştirilmesini gerçekleştirdiğinizde, Azure Updates, ait oldukları yükseltme etki alanına göre rol örnekleri kümesi sağlar. Azure, belirli bir yükseltme etki alanındaki tüm örnekleri güncelliyor, bunları güncelleştirirken, bunları çevrimiçi olarak geri getiren bir sonraki etki alanına taşınıyor. Azure, yalnızca geçerli yükseltme etki alanında çalışan örnekleri durdurarak, çalışan hizmete en az etkisi olan bir güncelleştirmenin meydana geldiğinden emin olur. Daha fazla bilgi için bu makalenin sonraki kısımlarında bulunan [güncelleştirme](#howanupgradeproceeds) bölümüne bakın.
 
@@ -47,18 +47,18 @@ Aşağıdaki tabloda, bir güncelleştirme sırasında bir hizmette izin verilen
 
 | Barındırma, hizmetler ve rollere izin verilen değişiklikler | Yerinde güncelleştirme | Hazırlandı (VIP takas) | Sil ve yeniden Dağıt |
 | --- | --- | --- | --- |
-| İşletim sistemi sürümü |Evet |Evet |Evet |
-| .NET güven düzeyi |Evet |Evet |Evet |
-| Sanal makine boyutu<sup>1</sup> |Evet<sup>2</sup> |Evet |Evet |
-| Yerel depolama ayarları |Yalnızca<sup>2</sup> artır |Evet |Evet |
-| Bir hizmette rol ekleme veya kaldırma |Evet |Evet |Evet |
-| Belirli bir rolün örnek sayısı |Evet |Evet |Evet |
-| Bir hizmet için uç nokta sayısı veya türü |Evet<sup>2</sup> |Hayır |Evet |
-| Yapılandırma ayarlarının adları ve değerleri |Evet |Evet |Evet |
-| Yapılandırma ayarlarının değerleri (ancak adları değil) |Evet |Evet |Evet |
-| Yeni sertifika ekle |Evet |Evet |Evet |
-| Mevcut sertifikaları Değiştir |Evet |Evet |Evet |
-| Yeni kod dağıtma |Evet |Evet |Evet |
+| İşletim sistemi sürümü |Yes |Yes |Yes |
+| .NET güven düzeyi |Yes |Yes |Yes |
+| Sanal makine boyutu<sup>1</sup> |Evet<sup>2</sup> |Yes |Yes |
+| Yerel depolama ayarları |Yalnızca<sup>2</sup> artır |Yes |Yes |
+| Bir hizmette rol ekleme veya kaldırma |Yes |Yes |Yes |
+| Belirli bir rolün örnek sayısı |Yes |Yes |Yes |
+| Bir hizmet için uç nokta sayısı veya türü |Evet<sup>2</sup> |Hayır |Yes |
+| Yapılandırma ayarlarının adları ve değerleri |Yes |Yes |Yes |
+| Yapılandırma ayarlarının değerleri (ancak adları değil) |Yes |Yes |Yes |
+| Yeni sertifika ekle |Yes |Yes |Yes |
+| Mevcut sertifikaları Değiştir |Yes |Yes |Yes |
+| Yeni kod dağıtma |Yes |Yes |Yes |
 
 <sup>1</sup> Boyut değişikliği, bulut hizmeti için kullanılabilen boyutların alt kümesiyle sınırlıdır.
 
@@ -182,7 +182,4 @@ Aşağıdaki diyagramda, hizmet iki yükseltme etki alanını tanımladığında
 ## <a name="next-steps"></a>Sonraki adımlar
 [Cloud Services yönetme](cloud-services-how-to-manage-portal.md)  
 [Cloud Services Izleme](cloud-services-how-to-monitor.md)  
-[Cloud Services’ı Yapılandırma](cloud-services-how-to-configure-portal.md)  
-
-
-
+[Cloud Services’ı Yapılandırma](cloud-services-how-to-configure-portal.md)

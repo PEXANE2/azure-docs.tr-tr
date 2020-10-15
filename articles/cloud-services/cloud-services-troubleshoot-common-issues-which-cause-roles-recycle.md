@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 4bf33db28d68b600d860a132027e5be440377b34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0484eb919a9de11b64dcc3334c5a9a942d875ca6
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460295"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075136"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>Rollerin geri dönüştürülmesine neden olan yaygın sorunlar
 Bu makalede, dağıtım sorunlarının bazı yaygın nedenleri ele alınmaktadır ve bu sorunları çözmenize yardımcı olacak sorun giderme ipuçları sunulmaktadır. Bir uygulamada sorun olduğunu belirten bir ifade, rol örneğinin başlayamadığını veya başlatma, meşgul ve durdurma durumları arasında geçiş yapar.
@@ -63,11 +63,11 @@ DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
 Bir Web rolünü TLS altında çalıştırmak için, verdiğiniz yönetim sertifikanızın özel anahtarı içerdiğinden emin olmanız gerekir. Sertifikayı dışarı aktarmak için *Windows Sertifika Yöneticisi* 'ni kullanırsanız, **özel anahtarı dışarı aktar** seçeneğini için **Evet** ' i seçtiğinizden emin olun. Sertifika, şu anda desteklenen tek Biçim olan PFX biçiminde aktarılmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Cloud Services için daha fazla [sorun giderme makalesini](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) görüntüleyin.
+Cloud Services için daha fazla [sorun giderme makalesini](../index.yml?product=cloud-services&tag=top-support-issue) görüntüleyin.
 
-[Kevin Williamson 'ın blog serisinde](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)daha fazla rol geri dönüşüm senaryosu görüntüleyin.
+[Kevin Williamson 'ın blog serisinde](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)daha fazla rol geri dönüşüm senaryosu görüntüleyin.
 
-[RoleEntryPoint]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx
-[Başlangıçta]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx
-[OnStop]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx
-[Çalışmaz]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx
+[RoleEntryPoint]: /previous-versions/azure/reference/ee758619(v=azure.100)
+[Başlangıçta]: /previous-versions/azure/reference/ee772851(v=azure.100)
+[OnStop]: /previous-versions/azure/reference/ee772844(v=azure.100)
+[Çalıştır]: /previous-versions/azure/reference/ee772746(v=azure.100)

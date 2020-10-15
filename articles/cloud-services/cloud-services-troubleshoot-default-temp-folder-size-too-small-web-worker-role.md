@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 77c4f627668b91c4bc21ad73b3511c1775943229
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d18e174eac30bbcf87010531821a4017efb088ba
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460210"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075119"
 ---
 # <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>Varsayılan GEÇICI klasör boyutu bir bulut hizmeti Web/çalışan rolünde çok küçük
 Bir bulut hizmeti çalışanının veya Web rolünün varsayılan geçici dizini en fazla 100 MB olabilir, bu da bazı bir noktada dolu olabilir. Bu makalede, geçici dizin için boş alan kalmadı.
@@ -70,8 +70,8 @@ namespace WorkerRole1
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure Web rolü ASP.NET geçici klasörünün boyutunu nasıl artırabileceğinizi](https://docs.microsoft.com/archive/blogs/kwill/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder)açıklayan bir blog okuyun.
+[Azure Web rolü ASP.NET geçici klasörünün boyutunu nasıl artırabileceğinizi](/archive/blogs/kwill/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder)açıklayan bir blog okuyun.
 
-Cloud Services için daha fazla [sorun giderme makalesini](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-debugging-cloud-services-overview) görüntüleyin.
+Cloud Services için daha fazla [sorun giderme makalesini](/visualstudio/azure/vs-azure-tools-debugging-cloud-services-overview) görüntüleyin.
 
-Azure PaaS bilgisayar tanılama verilerini kullanarak bulut hizmeti rolü sorunlarını giderme hakkında bilgi edinmek için [Kevin Williamson 'ın blog serisini](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)görüntüleyin.
+Azure PaaS bilgisayar tanılama verilerini kullanarak bulut hizmeti rolü sorunlarını giderme hakkında bilgi edinmek için [Kevin Williamson 'ın blog serisini](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)görüntüleyin.

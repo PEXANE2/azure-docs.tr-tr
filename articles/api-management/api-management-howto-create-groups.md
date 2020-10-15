@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 517b70d798d8cdd1b361b244111a8b6781286207
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea674981036b4be292329a4b30b43180ed26d642
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87851231"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092792"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Azure API Management'ta geliştirici hesaplarını yönetmek için grup oluşturma ve kullanma
 
@@ -38,7 +38,7 @@ Yayımcı portalındaki grupları oluşturma ve yönetmeye ek olarak, API Manage
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki görevleri tamamlar: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
 
@@ -66,10 +66,10 @@ Artık grup oluşturuldığına göre, ürünler ve geliştiricilerle ilişkilen
 3. **Access Control**tuşuna basın.
 4. **+ Grup Ekle**' ye tıklayın.
 
-    ![Bir grubu ürünle ilişkilendir](./media/api-management-howto-create-groups/groups002.png)
+    ![Grup Ekle düğmesini vurgulayan ekran görüntüsü.](./media/api-management-howto-create-groups/groups002.png)
 5. Eklemek istediğiniz grubu seçin.
 
-    ![Bir grubu ürünle ilişkilendir](./media/api-management-howto-create-groups/groups003.png)
+    ![Seçili grubu gösteren ve Seç düğmesini vurgulayan ekran görüntüsü.](./media/api-management-howto-create-groups/groups003.png)
 
     Ürünlerden bir grubu kaldırmak için **Sil**' e tıklayın.
 
@@ -90,7 +90,7 @@ Bu bölümde, grupların üyelerle ilişkilendirilmesi gösterilmektedir.
     ![Üye ekleme](./media/api-management-howto-create-groups/groups005.png)
 3. **+ Ekle** ' ye basın ve üye seçin.
 
-    ![Üye ekleme](./media/api-management-howto-create-groups/groups006.png)
+    ![Ekle düğmesini, Seçili kullanıcıyı ve Seç düğmesini vurgulayan ekran görüntüsü.](./media/api-management-howto-create-groups/groups006.png)
 4. **Seç**' e basın.
 
 Geliştirici ve grup arasında ilişkilendirme eklendikten sonra **Kullanıcılar** sekmesinden görüntüleyebilirsiniz.

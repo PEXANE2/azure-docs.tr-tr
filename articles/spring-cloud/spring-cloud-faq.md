@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 618e9586e9824e6cea592ff78a1fbd3b991abd83
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 9562cff9fd9ed37cbd4fd94c42acd54e6be3b47c
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945405"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92094016"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud hakkında SSS
 
@@ -54,7 +54,7 @@ Hangi birini kullanmalıyım ve her katmandaki sınırlar nelerdir?
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>Nasıl geri bildirimde bulunabilirim ve rapor sorunları verebilir?
 
-Azure Spring Cloud ile ilgili herhangi bir sorunla karşılaşırsanız bir [Azure destek isteği](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)oluşturun. Bir özellik isteği göndermek veya geri bildirim sağlamak için [Azure geri bildirimi](https://feedback.azure.com/forums/34192--general-feedback)' ne gidin.
+Azure Spring Cloud ile ilgili herhangi bir sorunla karşılaşırsanız bir [Azure destek isteği](../azure-portal/supportability/how-to-create-azure-support-request.md)oluşturun. Bir özellik isteği göndermek veya geri bildirim sağlamak için [Azure geri bildirimi](https://feedback.azure.com/forums/34192--general-feedback)' ne gidin.
 
 ## <a name="development"></a>Geliştirme
 
@@ -70,9 +70,9 @@ Azure yay bulutu, Java 8 ve 11 ' i destekler. Bkz. [Java çalışma zamanı ve i
 
 ### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Yay bulutu uygulama Günlüklerimi ve ölçümlerini nereden görüntüleyebilirim?
 
-Uygulama Genel Bakış sekmesinde ve [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#interacting-with-azure-monitor-metrics) sekmesinde ölçümleri bulun.
+Uygulama Genel Bakış sekmesinde ve [Azure izleyici](../azure-monitor/platform/data-platform-metrics.md#interacting-with-azure-monitor-metrics) sekmesinde ölçümleri bulun.
 
-Azure Spring Cloud, Azure depolama, EventHub ve [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs#log-queries)yay bulut uygulaması günlüklerini ve ölçümlerini vermeyi destekler. Log Analytics tablo adı *Appplatformlogsforspring*' dir. Nasıl etkinleştireceğinizi öğrenmek için bkz. [Tanılama Hizmetleri](diagnostic-services.md).
+Azure Spring Cloud, Azure depolama, EventHub ve [Log Analytics](../azure-monitor/platform/data-platform-logs.md#log-queries)yay bulut uygulaması günlüklerini ve ölçümlerini vermeyi destekler. Log Analytics tablo adı *Appplatformlogsforspring*' dir. Nasıl etkinleştireceğinizi öğrenmek için bkz. [Tanılama Hizmetleri](diagnostic-services.md).
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Azure yay bulutu dağıtılmış izlemeyi destekliyor mu?
 
@@ -106,7 +106,7 @@ Azure CLı kullanarak Spring Cloud 'ın tanılama ayarlarını silebilirsiniz:
 
 ### <a name="which-versions-of-java-runtime-are-supported-in-azure-spring-cloud"></a>Azure Spring Cloud 'da hangi Java çalışma zamanı sürümleri desteklenir?
 
-Azure Spring Cloud, en son Derlemelerle Java LTS sürümlerini destekler, şu anda 2020 Haziran, Java 8 derleme 252 ve Java 11 derleme 7 destekleniyor. Bkz [. Azure için JDK 'yi ve Azure Stack yüklemeyi](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)
+Azure Spring Cloud, en son Derlemelerle Java LTS sürümlerini destekler, şu anda 2020 Haziran, Java 8 derleme 252 ve Java 11 derleme 7 destekleniyor. Bkz [. Azure için JDK 'yi ve Azure Stack yüklemeyi](/azure/developer/java/fundamentals/java-jdk-install)
 
 ### <a name="who-built-these-java-runtimes"></a>Bu Java çalışma zamanlarını kim derlediniz?
 
@@ -118,14 +118,14 @@ LTS ve MTS JDK sürümleri, gerektiğinde üç aylık güvenlik güncelleştirme
 
 ### <a name="how-long-will-java-8-and-java-11-lts-versions-be-supported"></a>Java 8 ve Java 11 LTS sürümleri ne kadar süreyle destekleniyor?
 
-Bkz. [Azure ve Azure Stack için uzun süreli Java desteği](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support).
+Bkz. [Azure ve Azure Stack için uzun süreli Java desteği](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 
 * Java 8 LTS, Aralık 2030 ' ye kadar desteklenecektir.
 * Java 11 LTS, 2027 Eylül tarihine kadar desteklenecektir.
 
 ### <a name="how-can-i-download-a-supported-java-runtime-for-local-development"></a>Yerel geliştirme için desteklenen bir Java çalışma zamanını nasıl indirebilirim?
 
-Bkz. [Azure için JDK 'Yi yükleyip Azure Stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install).
+Bkz. [Azure için JDK 'Yi yükleyip Azure Stack](/azure/developer/java/fundamentals/java-jdk-install).
 
 ### <a name="what-is-the-retire-policy-for-older-java-runtimes"></a>Eski Java çalışma zamanları için devre dışı bırakma ilkesi nedir?
 
@@ -136,7 +136,7 @@ Genel bildirim, herhangi bir eski çalışma zamanı sürümü kullanımdan kald
 
 ### <a name="how-can-i-get-support-for-issues-at-the-java-runtime-level"></a>Java çalışma zamanı düzeyinde sorunlar için nasıl destek alabilirim?
 
-Azure desteği ile bir destek bileti açabilirsiniz.  Bkz. [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+Azure desteği ile bir destek bileti açabilirsiniz.  Bkz. [Azure destek isteği oluşturma](../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 ### <a name="what-is-the-operation-system-to-run-my-apps"></a>Uygulamalarımı çalıştırmak için işletim sistemi nedir?
 

@@ -164,10 +164,10 @@
   items:
     - name: Azure güncelleştirmeleri
       href: 'https://azure.microsoft.com/updates/?product=storage'
-    - name: Microsoft Q&A üzerinde Azure Depolama
+    - name: Microsoft Q&A üzerinde tablo depolama
       href: 'https://docs.microsoft.com/answers/topics/azure-table-storage.html'
-    - name: Stack Overflow üzerinde Azure Depolama
-      href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
+    - name: Stack Overflow üzerinde tablo depolama
+      href: 'https://stackoverflow.com/questions/tagged/azure-table-storage'
     - name: Tablo depolama fiyatlandırması
       href: 'https://azure.microsoft.com/en-us/pricing/details/storage/tables/'
     - name: Azure fiyatlandırma hesaplayıcısı

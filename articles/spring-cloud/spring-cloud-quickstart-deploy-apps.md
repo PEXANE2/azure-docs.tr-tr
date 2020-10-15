@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: d368c938e805164b70c7d3a22f9229b5efd89dde
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 29eb99d9e009d58c44be8f9d2e5d9fa01d117092
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045416"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092962"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Hızlı başlangıç: Azure yay bulutuna uygulama oluşturma ve dağıtma
 
@@ -187,10 +187,10 @@ Azure CLı veya Maven kullanarak dağıtımdan önce [Azure Spring Cloud 'ın bi
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [JDK 8 ' i yükler](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)
+* [JDK 8 ' i yükler](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
 * [Azure aboneliğine kaydolma](https://azure.microsoft.com/free/)
-* Seçim [Azure CLI sürüm 2.0.67 veya üstünü yükleyip](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) Azure Spring Cloud uzantısını şu komutla birlikte yüklersiniz: `az extension add --name spring-cloud`
-* Seçim [Azure Toolkit for IntelliJ yükleyip](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) [oturum açın](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
+* Seçim [Azure CLI sürüm 2.0.67 veya üstünü yükleyip](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) Azure Spring Cloud uzantısını şu komutla birlikte yüklersiniz: `az extension add --name spring-cloud`
+* Seçim [Azure Toolkit for IntelliJ yükleyip](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) [oturum açın](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
 
 ## <a name="deployment-procedures"></a>Dağıtım yordamları
 
@@ -304,7 +304,7 @@ Bir Web tarayıcısı aracılığıyla uygulamaya erişmek için bir yönteme ih
     ![Projeyi içeri aktar](media/spring-cloud-intellij-howto/revision-import-project-1.png)
 
 ### <a name="deploy-gateway-app-to-azure-spring-cloud"></a>Ağ Geçidi uygulamasını Azure Spring Cloud 'a dağıtma
-Azure 'a dağıtmak için Azure Toolkit for IntelliJ Azure hesabınızla oturum açmanız ve aboneliğinizi seçmeniz gerekir. Oturum açma ayrıntıları için bkz. [yükleme ve oturum açma](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
+Azure 'a dağıtmak için Azure Toolkit for IntelliJ Azure hesabınızla oturum açmanız ve aboneliğinizi seçmeniz gerekir. Oturum açma ayrıntıları için bkz. [yükleme ve oturum açma](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
 
 1. IntelliJ Proje Gezgini ' nde projenize sağ tıklayın ve **Azure**  ->  **yay bulutu 'na Azure dağıtımı**' nı seçin.
 
@@ -313,7 +313,7 @@ Azure 'a dağıtmak için Azure Toolkit for IntelliJ Azure hesabınızla oturum 
 1. **Ad** alanına, var olan ada *: ağ geçidini* ekleyin. **Name**
 1. **Yapıt** metin kutusunda, *com. pınmetriölçümleri: Gateway: 1.0-Snapshot*' ı seçin.
 1. **Abonelik** metin kutusunda aboneliğinizi doğrulayın.
-1. **Yay bulutu** metin kutusunda, [Azure Spring Cloud Instance sağlama](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-provision-service-instance)bölümünde oluşturduğunuz Azure Spring Cloud örneğini seçin.
+1. **Yay bulutu** metin kutusunda, [Azure Spring Cloud Instance sağlama](./spring-cloud-quickstart-provision-service-instance.md)bölümünde oluşturduğunuz Azure Spring Cloud örneğini seçin.
 1. **Genel uç noktayı** *Etkinleştir*olarak ayarlayın.
 1. **Uygulama:** metin kutusunda **uygulama oluştur...** seçeneğini belirleyin.
 1. *Ağ geçidini*girin, ardından **Tamam**' a tıklayın.

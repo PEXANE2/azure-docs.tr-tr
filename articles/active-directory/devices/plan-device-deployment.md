@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60d3e3c174ad9a3372df084cac9eb67270779298
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf30570f10f176c47aed0f99127e03a027eff775
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90563905"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093098"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Azure Active Directory cihaz dağıtımınızı planlayın
 
@@ -62,7 +62,7 @@ Ortamınızda bu dağıtımın stratejisini belirlerken kurumsal ihtiyaçların�
 
 ### <a name="engage-the-right-stakeholders"></a>Doğru paydaşlara katılın
 
-Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlulukların eşleşmeyen beklentileri nedeniyle bu, genellikle bu şekilde yapılır. Bu sınırları önlemek için, [doğru paydaşları](https://aka.ms/deploymentplans) ve projedeki paydaş rollerinin iyi anlaşıldığından emin olun. 
+Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlulukların eşleşmeyen beklentileri nedeniyle bu, genellikle bu şekilde yapılır. Bu sınırları önlemek için, [doğru paydaşları](../fundamentals/active-directory-deployment-plans.md) ve projedeki paydaş rollerinin iyi anlaşıldığından emin olun. 
 
 Bu plan için aşağıdaki paydaşları listenize ekleyin:
 

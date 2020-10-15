@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c062b907f1e8a8e0541db0d69c6e24901f3145f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fe19a1fadd54b7146ccb074d82a68ec259100f2
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268562"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093268"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Öğretici: Hibrit Azure Active Directory'ye katılmış cihazları elle yapılandırma
 
@@ -25,7 +25,7 @@ Azure Active Directory (Azure AD) ' de cihaz yönetimiyle, Kullanıcıların kay
 > [!TIP]
 > Azure AD Connect kullanmak sizin için bir seçenek ise, [yönetilen](hybrid-azuread-join-managed-domains.md) veya [Federasyon](hybrid-azuread-join-federated-domains.md) etki alanları için ilgili öğreticilere bakın. Azure AD Connect kullanarak, karma Azure AD JOIN 'in yapılandırmasını önemli ölçüde kolaylaştırabilirsiniz.
 
-Şirket içi Active Directory ortamınız varsa ve etki alanınıza katılmış cihazları Azure AD'ye katmak istiyorsanız hibrit Azure AD'ye katılmış cihazları yapılandırarak bunu gerçekleştirebilirsiniz. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Şirket içi Active Directory ortamınız varsa ve etki alanınıza katılmış cihazları Azure AD'ye katmak istiyorsanız hibrit Azure AD'ye katılmış cihazları yapılandırarak bunu gerçekleştirebilirsiniz. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Karma Azure AD katılımı el ile yapılandırın
@@ -115,7 +115,7 @@ Aşağıdaki Windows PowerShell betiğini kullanarak nesnenin varlığını doğ
    $scp.Keywords;
    ```
 
-**$SCP. Anahtar sözcük** çıkışları, Azure AD kiracı bilgilerini gösterir. Aşağıda bir örnek verilmiştir:
+**$SCP. Anahtar sözcük** çıkışları, Azure AD kiracı bilgilerini gösterir. İşte bir örnek:
 
    ```
    azureADName:microsoft.com
@@ -564,11 +564,11 @@ Cihaz durumunu bulup doğrulamak için 3 yol aşağıda verilmiştir:
 ### <a name="using-the-azure-portal"></a>Azure portalını kullanma
 
 1. [Doğrudan bağlantı](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)kullanarak cihazlar sayfasına gidin.
-2. Cihazı bulma hakkında bilgi [, Azure Portal kullanarak cihaz kimliklerini yönetme](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices)bölümünde bulunabilir.
+2. Cihazı bulma hakkında bilgi [, Azure Portal kullanarak cihaz kimliklerini yönetme](./device-management-azure-portal.md#manage-devices)bölümünde bulunabilir.
 3. **Kayıtlı** sütun **bekliyor**Ifadesini IÇERIYORSA, karma Azure AD katılımı tamamlanmaz. Federasyon ortamlarında, bu durum yalnızca kayıt başarısız olduysa ve AAD Connect cihazları eşitlemek üzere yapılandırılmışsa gerçekleşebilir.
 4. **Kayıtlı** sütun bir **Tarih/saat**IÇERIYORSA, karma Azure AD katılımı tamamlanmıştır.
 
-### <a name="using-powershell"></a>PowerShell’i kullanma
+### <a name="using-powershell"></a>PowerShell'i kullanma
 
 **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** kullanarak Azure kiracınızdaki cihaz kayıt durumunu doğrulayın. Bu cmdlet [Azure Active Directory PowerShell modülüdür](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-2.0).
 

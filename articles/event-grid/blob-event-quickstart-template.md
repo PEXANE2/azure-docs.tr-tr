@@ -3,12 +3,13 @@ title: Blob Depolama olaylarını Web uç noktasına gönder-şablon
 description: BLOB depolama hesabı oluşturmak ve olaylarını abone olmak için Azure Event Grid ve Azure Resource Manager şablonu kullanın. Olayları bir Web kancasına gönder. '
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: fc6216142c6bec99cb12bf4e0bdae920f27f1bf2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: subject-armqs
+ms.openlocfilehash: bfaee324f3e46f64fd4ad0d8b7e1240331b56c27
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91598349"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093659"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>Hızlı başlangıç: bir ARM şablonu kullanarak BLOB Depolama olaylarını Web uç noktasına yönlendirme
 
@@ -88,5 +89,5 @@ Azure Resource Manager şablonları hakkında daha fazla bilgi için aşağıdak
 
 * [Azure Resource Manager belgeleri](../azure-resource-manager/index.yml)
 * [Azure Resource Manager şablonlarında kaynakları tanımlama](/azure/templates/)
-* [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/)
+* [Azure Hızlı Başlangıç şablonları](https://azure.microsoft.com/resources/templates/)
 * [Azure Event Grid şablonları](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid).

@@ -10,18 +10,18 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 7f6c7a651e133122dab86d6ed81572f239718b43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7080bd98bda5c4280ff7b06b235458bea0e9103c
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86243248"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093591"
 ---
 # <a name="monitor-published-apis"></a>Yayımlanan API’leri izleme
 
 Azure İzleyici ile Azure kaynaklarından gelen ölçüm ve günlükleri görselleştirebilir, sorgulayabilir, yönlendirebilir, arşivleyebilir ve bunlar üzerinde işlem uygulayabilirsiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Etkinlik günlüklerini görüntüleme
@@ -33,7 +33,7 @@ Aşağıdaki videoda, Azure İzleyici'yi kullanarak API Management’ı izleme i
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Monitor-API-Management-with-Azure-Monitor/player]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + [Azure API Management terminolojisini](api-management-terminology.md) öğrenin.
 + Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
@@ -75,18 +75,18 @@ Uyarıları yapılandırmak için:
 
 1. Sayfanın alt kısmındaki menü çubuğundan **Uyarılar** ' ı seçin.
 
-    ![alerts](./media/api-management-azure-monitor/alert-menu-item.png)
+    ![Sayfanın alt tarafında bulunan menüdeki uyarıları gösteren ekran görüntüsü.](./media/api-management-azure-monitor/alert-menu-item.png)
 
 2. Bu uyarı için **Yeni bir uyarı kuralına** tıklayın.
 3. **Koşul Ekle**' ye tıklayın.
 4. Sinyal türü açılan kutusunda **ölçümler** ' i seçin.
 5. İzlenecek sinyal olarak **yetkisiz ağ geçidi isteği** ' ni seçin.
 
-    ![alerts](./media/api-management-azure-monitor/signal-type.png)
+    ![Sinyal türü alanını ve yetkisiz ağ geçidi Istekleri sinyal adını vurgulayan bir ekran görüntüsü.](./media/api-management-azure-monitor/signal-type.png)
 
 6. **Sinyal mantığını Yapılandır** görünümünde, uyarının tetiklenme sonrasında bir eşik belirtin ve **bitti**' ye tıklayın.
 
-    ![alerts](./media/api-management-azure-monitor/threshold.png)
+    ![Sinyal mantığını Yapılandır görünümünü gösteren ekran görüntüsü.](./media/api-management-azure-monitor/threshold.png)
 
 7. Mevcut bir eylem grubu seçin veya yeni bir tane oluşturun. Aşağıdaki örnekte, yöneticilere bir e-posta gönderilir. 
 
@@ -176,46 +176,46 @@ API Management Şu anda her bir girdiyle aşağıdaki şemaya sahip her bir API 
 }  
 ```
 
-| Özellik  | Tür | Açıklama |
+| Özellik  | Tür | Description |
 | ------------- | ------------- | ------------- |
 | isRequestSuccess | boolean | HTTP isteği, 2xx veya 3xx aralığı içinde yanıt durum koduyla tamamlandıysa true olur |
-| saat | date-time | Ağ geçidinin başladığı zaman zaman damgası isteği işleme |
-| operationName | string | 'Microsoft.ApiManagement/GatewayLogs' sabit değeri |
-| category | string | 'GatewayLogs' sabit değeri |
+| time | date-time | Ağ geçidinin başladığı zaman zaman damgası isteği işleme |
+| operationName | dize | 'Microsoft.ApiManagement/GatewayLogs' sabit değeri |
+| category | dize | 'GatewayLogs' sabit değeri |
 | durationMs | tamsayı | Kısa süre sonra gönderilen istek sayısı dolduğunda, ağ geçidi tarafından alınan istek süresi (milisaniye). ClienTime, cacheTime ve backendTime bilgilerini içerir. |
-| callerIpAddress | string | İlk Ağ Geçidi çağıranın (bir aracı olabilir) IP adresi |
-| correlationId | string | API Management tarafından atanmış benzersiz http isteği tanımlayıcısı |
-| location | string | İsteği işleyen Ağ Geçidinin bulunduğu Azure bölgesinin adı |
-| httpStatusCodeCategory | string | Http yanıtı durum kodunun kategorisi: Başarılı (301 veya daha küçük ya da 304 ya da 307), Yetkisiz (401, 403, 429), Hatalı (400, 500 ve 600 arası), Diğer |
-| resourceId | string | /SUBSCRIPTIONS/ \<subscription> /ResourceGroups/ \<resource-group> /providers/microsoftAPI Management kaynağının kimliği. ıMANAGEMENTPACK/HIZMET/\<name> |
+| callerIpAddress | dize | İlk Ağ Geçidi çağıranın (bir aracı olabilir) IP adresi |
+| correlationId | dize | API Management tarafından atanmış benzersiz http isteği tanımlayıcısı |
+| location | dize | İsteği işleyen Ağ Geçidinin bulunduğu Azure bölgesinin adı |
+| httpStatusCodeCategory | dize | Http yanıtı durum kodunun kategorisi: Başarılı (301 veya daha küçük ya da 304 ya da 307), Yetkisiz (401, 403, 429), Hatalı (400, 500 ve 600 arası), Diğer |
+| resourceId | dize | /SUBSCRIPTIONS/ \<subscription> /ResourceGroups/ \<resource-group> /providers/microsoftAPI Management kaynağının kimliği. ıMANAGEMENTPACK/HIZMET/\<name> |
 | properties | object | Geçerli isteğin özellikleri |
-| method | string | Gelen isteğin HTTP yöntemi |
-| url | string | Gelen isteğin URL’si |
-| clientProtocol | string | Gelen isteğin HTTP protokolü sürümü |
+| method | dize | Gelen isteğin HTTP yöntemi |
+| url | dize | Gelen isteğin URL’si |
+| clientProtocol | dize | Gelen isteğin HTTP protokolü sürümü |
 | responseCode | tamsayı | Bir istemciye gönderilen HTTP yanıtının durum kodu |
-| backendMethod | string | Arka uca gönderilen isteğin HTTP yöntemi |
-| backendUrl | string | Arka uca gönderilen isteğin URL’si |
+| backendMethod | dize | Arka uca gönderilen isteğin HTTP yöntemi |
+| backendUrl | dize | Arka uca gönderilen isteğin URL’si |
 | backendResponseCode | tamsayı | Arka uçtan alınan HTTP yanıtının kodu |
-| backendProtocol | string | Arka uca gönderilen isteğin HTTP protokolü sürümü | 
+| backendProtocol | dize | Arka uca gönderilen isteğin HTTP protokolü sürümü | 
 | requestSize | tamsayı | İstek işlenirken bir istemciden alınan bayt sayısı | 
 | responseSize | tamsayı | İstek işlenirken bir istemciye gönderilen bayt sayısı | 
-| cache | string | API Management önbelleğinin istek işlemeye katılım durumu (örn. hit, miss, none) | 
+| cache | dize | API Management önbelleğinin istek işlemeye katılım durumu (örn. hit, miss, none) | 
 | cacheTime | tamsayı | Genel API Management önbelleği GÇ (bağlanma, gönderme ve alma bayt’ları) için harcanan milisaniye sayısı | 
 | backendTime | tamsayı | Genel arka uç GÇ (bağlanma, gönderme ve alma bayt’ları) için harcanan milisaniye sayısı | 
 | clientTime | tamsayı | Genel istemci G/Ç (bağlanma, gönderme ve alma bayt’ları) için harcanan milisaniye sayısı | 
-| apiId | string | Geçerli istek için API varlığı tanımlayıcısı | 
-| operationId | string | Geçerli istek için işlem varlığı tanımlayıcısı | 
-| productId | string | Geçerli istek için ürün varlığı tanımlayıcısı | 
-| userId | string | Geçerli istek için kullanıcı varlığı tanımlayıcısı | 
-| apimSubscriptionId | string | Geçerli istek için abonelik varlığı tanımlayıcısı | 
-| backendId | string | Geçerli istek için arka uç varlığı tanımlayıcısı | 
+| apiId | dize | Geçerli istek için API varlığı tanımlayıcısı | 
+| operationId | dize | Geçerli istek için işlem varlığı tanımlayıcısı | 
+| productId | dize | Geçerli istek için ürün varlığı tanımlayıcısı | 
+| userId | dize | Geçerli istek için kullanıcı varlığı tanımlayıcısı | 
+| apimSubscriptionId | dize | Geçerli istek için abonelik varlığı tanımlayıcısı | 
+| backendId | dize | Geçerli istek için arka uç varlığı tanımlayıcısı | 
 | LastError | object | Son istek işleme hatası | 
 | elapsed | tamsayı | Ağ geçidinin isteği aldığı ve hatanın gerçekleştiği sırada geçen milisaniye sayısı | 
 | kaynak | dize | İlke veya işleme iç işleyicisinin adı hataya neden oldu | 
-| scope | string | Hataya neden olan ilkeyi içeren ilke belgesinin kapsamı | 
-| section | string | Hataya neden olan ilkeyi içeren ilke belgesinin bölümü | 
-| reason | string | Hata nedeni | 
-| message | string | Hata iletisi | 
+| scope | dize | Hataya neden olan ilkeyi içeren ilke belgesinin kapsamı | 
+| section | dize | Hataya neden olan ilkeyi içeren ilke belgesinin bölümü | 
+| reason | dize | Hata nedeni | 
+| message | dize | Hata iletisi | 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

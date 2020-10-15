@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: bbde23dd888d179917f123d00745fb7d0099c2d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cbec0b4b28574bfbe46516de54f1b8a3fad7ce2
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86259296"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091143"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Service Fabric ve Azure API Management'a genel bakış
 
@@ -29,13 +29,13 @@ Ortak bir Service Fabric mimarisi, HTTP API 'Leri kullanıma sunan arka uç hizm
 
 Bu senaryoda, bir durum bilgisiz Web hizmeti, Service Fabric uygulamasına ağ geçidi olarak görev yapar. Bu yaklaşım, aşağıdaki diyagramda gösterildiği gibi arka uç hizmetlerine Proxy HTTP istekleri sağlayan bir Web hizmeti yazmanızı gerektirir:
 
-![Azure API Management topolojisine genel bakış ile Service Fabric][sf-web-app-stateless-gateway]
+![Durum bilgisi olmayan bir Web hizmetinin Service Fabric uygulamasına ağ geçidi olarak nasıl hizmet gösterdiğini gösteren diyagram.][sf-web-app-stateless-gateway]
 
 Uygulamalar karmaşıklıkla büyüdükçe, sayısız arka uç hizmetlerinin önünde bir API sunması gereken ağ geçitlerini yapın. Azure API Management, iş akışı kuralları, erişim denetimi, hız sınırlandırma, izleme, olay günlüğü ve yanıt önbelleğe alma ile karmaşık API 'Leri, sizin bölüminizdeki en az çalışma ile işleyecek şekilde tasarlandı. Azure API Management, istek temelli API ağ geçidinizi yazmak zorunda kalmadan istekleri doğrudan Service Fabric arka uç hizmetlerine yönlendirmek için Service Fabric hizmet bulmayı, Bölüm çözünürlüğünü ve çoğaltma seçimini destekler. 
 
 Bu senaryoda, Web Kullanıcı arabirimi hala bir Web hizmeti aracılığıyla sunulurken, HTTP API çağrıları aşağıdaki diyagramda gösterildiği gibi Azure API Management aracılığıyla yönetilir ve yönlendirilir:
 
-![Azure API Management topolojisine genel bakış ile Service Fabric][sf-apim-web-app]
+![Web Kullanıcı arabiriminin Web hizmeti aracılığıyla ne kadar hizmet olarak sunulduğunu gösteren diyagram, HTTP API çağrıları yönetilen ve Azure API Management aracılığıyla yönlendirilir.][sf-apim-web-app]
 
 ## <a name="application-scenarios"></a>Uygulama senaryoları
 
@@ -51,7 +51,7 @@ En basit durumda, trafik durum bilgisi olmayan bir hizmet örneğine iletilir. B
 
 Aşağıdaki senaryoda, bir Service Fabric uygulaması `fabric:/app/fooservice` , Iç HTTP API 'sini kullanıma sunan, adlı, durum bilgisi olmayan bir hizmet içerir. Hizmet örneği adı iyi bilinmektedir ve API Management gelen işlem ilkesinde doğrudan sabit kodlanmış olabilir. 
 
-![Azure API Management topolojisine genel bakış ile Service Fabric][sf-apim-static-stateless]
+![Bir Service Fabric uygulaması gösteren diyagram, iç HTTP API 'sini kullanıma sunan bir durum bilgisi olmayan hizmet içerir.][sf-apim-static-stateless]
 
 ## <a name="send-traffic-to-a-stateful-service"></a>Durum bilgisi olan bir hizmete trafik gönderme
 
@@ -77,12 +77,12 @@ Bu örnekte, aşağıdaki formül kullanılarak dinamik olarak oluşturulan bir 
 
 - `fabric:/app/users/<username>`
 
-  Her hizmetin benzersiz bir adı vardır, ancak hizmetler Kullanıcı veya yönetici girişine yanıt olarak oluşturulduğundan ve bu nedenle APIM ilkelerine veya yönlendirme kurallarına sabit olarak kodlanamadığından bilinen adlar bilinmez. Bunun yerine, bir isteğin gönderileceği hizmetin adı, arka uç ilke tanımında `name` URL istek yolunda belirtilen değerden oluşturulur. Örneğin:
+  Her hizmetin benzersiz bir adı vardır, ancak hizmetler Kullanıcı veya yönetici girişine yanıt olarak oluşturulduğundan ve bu nedenle APIM ilkelerine veya yönlendirme kurallarına sabit olarak kodlanamadığından bilinen adlar bilinmez. Bunun yerine, bir isteğin gönderileceği hizmetin adı, arka uç ilke tanımında `name` URL istek yolunda belirtilen değerden oluşturulur. Örnek:
 
   - `/api/users/foo`Hizmet örneğine yönlendirilme isteği`fabric:/app/users/foo`
   - `/api/users/bar`Hizmet örneğine yönlendirilme isteği`fabric:/app/users/bar`
 
-![Azure API Management topolojisine genel bakış ile Service Fabric][sf-apim-dynamic-stateless]
+![Dinamik olarak oluşturulan bir ada sahip bir uygulamanın her kullanıcısı için yeni bir durum bilgisi olmayan hizmet örneğinin oluşturulduğu bir örnek gösteren diyagram.][sf-apim-dynamic-stateless]
 
 ## <a name="send-traffic-to-multiple-stateful-services"></a>Birden çok durum bilgisi olan hizmete trafik gönderme
 
@@ -96,14 +96,14 @@ Bu örnekte, aşağıdaki formül kullanılarak dinamik olarak oluşturulan bir 
 
 - `fabric:/app/users/<username>`
 
-  Her hizmetin benzersiz bir adı vardır, ancak hizmetler Kullanıcı veya yönetici girişine yanıt olarak oluşturulduğundan ve bu nedenle APIM ilkelerine veya yönlendirme kurallarına sabit olarak kodlanamadığından bilinen adlar bilinmez. Bunun yerine, bir isteğin gönderileceği hizmetin adı, arka uç ilke tanımında `name` URL istek yolu sağlanmış değerden oluşturulur. Örneğin:
+  Her hizmetin benzersiz bir adı vardır, ancak hizmetler Kullanıcı veya yönetici girişine yanıt olarak oluşturulduğundan ve bu nedenle APIM ilkelerine veya yönlendirme kurallarına sabit olarak kodlanamadığından bilinen adlar bilinmez. Bunun yerine, bir isteğin gönderileceği hizmetin adı, arka uç ilke tanımında `name` URL istek yolu sağlanmış değerden oluşturulur. Örnek:
 
   - `/api/users/foo`Hizmet örneğine yönlendirilme isteği`fabric:/app/users/foo`
   - `/api/users/bar`Hizmet örneğine yönlendirilme isteği`fabric:/app/users/bar`
 
 Her hizmet örneği aynı zamanda iki bölümden oluşan Int64 bölüm şeması ve ile yayılan bir anahtar aralığı kullanılarak bölümlenir `Int64.MinValue` `Int64.MaxValue` . Arka uç ilkesi, `id` burada, Bölüm anahtarını hesaplamak için herhangi bir algoritma kullanılabilse de, URL isteği yolunda belirtilen değeri 64 bitlik bir tamsayıya dönüştürerek bu aralıktaki bir bölüm anahtarını hesaplar. 
 
-![Azure API Management topolojisine genel bakış ile Service Fabric][sf-apim-dynamic-stateful]
+![Her bir hizmet örneğinin aynı zamanda iki bölümden oluşan Int64 Bölüm Şeması kullanılarak bölümlendiğinden ve Int64. MinValue ile Int64. MaxValue arasında bir anahtar aralığıyla bölümlenmiş olduğunu gösteren diyagram.][sf-apim-dynamic-stateful]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
