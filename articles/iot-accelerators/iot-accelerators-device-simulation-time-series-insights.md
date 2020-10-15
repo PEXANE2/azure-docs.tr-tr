@@ -8,18 +8,18 @@ ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 88255e60593403951db5b984bb9c69b1060a93c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db9ba3efe60af830c0e15310b6127c18130f00b9
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540583"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076258"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Cihaz simülasyonu çözüm hızlandırıcısında gönderilen Telemetriyi görselleştirmek için Time Series Insights kullanın
 
 Cihaz benzetimi Çözüm Hızlandırıcısı, IoT çözümlerinizi test etmek için sanal cihazlardan telemetri oluşturmanıza imkan tanır. Bu nasıl yapılır Kılavuzu, bir Time Series Insights ortamı kullanarak sanal Telemetriyi görselleştirmeyi ve çözümlemeyi gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzundaki adımları izleyerek etkin bir Azure aboneliğine ihtiyacınız vardır. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -55,7 +55,7 @@ Aşağıdaki adımlar, tüketici grubunu oluşturmak için Azure Cloud Shell Azu
 
 [Azure Time Series Insights](../../articles/time-series-insights/time-series-insights-overview.md) , bulutta IoT ölçekli zaman serisi verilerinin yönetilmesi için tam olarak yönetilen bir analiz, depolama ve görselleştirme hizmetidir. Yeni bir Time Series Insights ortamı oluşturmak için:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 1. Time Series Insights **nesnelerin interneti kaynak oluştur**' u seçin  >  **Internet of Things**  >  **Time Series Insights**:
 
@@ -113,7 +113,7 @@ IoT Hub 'ınıza bağlanmak için yeni bir olay kaynağı oluşturun. Önceki ad
 1. **Oluştur**’a tıklayın.
 
 > [!NOTE]
-> Time Series Insights gezgin 'e daha [fazla kullanıcı erişimi](../../articles/time-series-insights/time-series-insights-data-access.md#grant-data-access) verebilirsiniz.
+> Time Series Insights gezgin 'e daha [fazla kullanıcı erişimi](../time-series-insights/concepts-access-policies.md#grant-data-access) verebilirsiniz.
 
 ## <a name="start-a-simulation"></a>Simülasyon başlatma
 

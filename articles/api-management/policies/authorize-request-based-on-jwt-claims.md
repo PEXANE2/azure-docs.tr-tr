@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 1b84854688fbdcc017b16698dfebfe54a7210110
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5b0c2feb31eab5e39bbebd7108b3ec8504769d4
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75422174"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076292"
 ---
 # <a name="authorize-access-based-on-jwt-claims"></a>JWT talepleri temelinde erişim yetkisi verme
 
-Bu makalede, JWT taleplerini temel alan bir API üzerinde belirli HTTP yöntemlerine erişimin nasıl yetkilendirdiğini gösteren bir Azure API yönetim ilkesi örneği gösterilmektedir. Bir ilke kodu ayarlamak veya düzenlemek için, [Ilke ayarlama veya düzenleme](../set-edit-policies.md)bölümünde açıklanan adımları izleyin. Diğer örnekleri görmek için bkz. [ilke örnekleri](../policy-samples.md).
+Bu makalede, JWT taleplerini temel alan bir API üzerinde belirli HTTP yöntemlerine erişimin nasıl yetkilendirdiğini gösteren bir Azure API yönetim ilkesi örneği gösterilmektedir. Bir ilke kodu ayarlamak veya düzenlemek için, [Ilke ayarlama veya düzenleme](../set-edit-policies.md)bölümünde açıklanan adımları izleyin. Diğer örnekleri görmek için bkz. [ilke örnekleri](../policy-reference.md).
 
 ## <a name="policy"></a>İlke
 
@@ -35,5 +35,4 @@ Kodu **gelen** bloğa yapıştırın.
 APıM ilkeleri hakkında daha fazla bilgi edinin:
 
 + [Dönüştürme ilkeleri](../api-management-transformation-policies.md)
-+ [İlke örnekleri](../policy-samples.md)
-
++ [İlke örnekleri](../policy-reference.md)

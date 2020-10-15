@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: e286f77009a17870332ed5caf1c66c18dd21d020
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64db4e5451425002eeaac11695ac011a96047d9b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75442481"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076190"
 ---
 # <a name="add-capabilities-to-a-backend-service"></a>Arka uç hizmetine özellik ekleme
 
-Bu makalede, bir arka uç hizmetine nasıl özellik ekleneceğini gösteren bir Azure API yönetim ilkesi örneği gösterilmektedir. Örneğin, hava durumu tahmini API'sinde enlem ve boylam yerine bir yer adını kabul edin. Bir ilke kodu ayarlamak veya düzenlemek için, [Ilke ayarlama veya düzenleme](../set-edit-policies.md)bölümünde açıklanan adımları izleyin. Diğer örnekleri görmek için bkz. [ilke örnekleri](../policy-samples.md).
+Bu makalede, bir arka uç hizmetine nasıl özellik ekleneceğini gösteren bir Azure API yönetim ilkesi örneği gösterilmektedir. Örneğin, hava durumu tahmini API'sinde enlem ve boylam yerine bir yer adını kabul edin. Bir ilke kodu ayarlamak veya düzenlemek için, [Ilke ayarlama veya düzenleme](../set-edit-policies.md)bölümünde açıklanan adımları izleyin. Diğer örnekleri görmek için bkz. [ilke örnekleri](../policy-reference.md).
 
 ## <a name="policy"></a>İlke
 
@@ -35,5 +35,4 @@ Kodu **gelen** bloğa yapıştırın.
 APıM ilkeleri hakkında daha fazla bilgi edinin:
 
 + [Dönüştürme ilkeleri](../api-management-transformation-policies.md)
-+ [İlke örnekleri](../policy-samples.md)
-
++ [İlke örnekleri](../policy-reference.md)
