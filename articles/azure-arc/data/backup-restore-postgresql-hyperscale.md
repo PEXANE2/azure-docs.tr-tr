@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 4fb64a2ea55744d66b203ef4d901f22ae4695e1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d27537f017707e937303dd0c08a589db28aac6ef
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630432"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071447"
 ---
 # <a name="backup-and-restore-for-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Azure Arc etkin PostgreSQL hiper ölçek sunucu grupları için yedekleme ve geri yükleme
 
@@ -82,7 +82,12 @@ azdata arc postgres server create -n postgres01 --workers 2 --storage-class-back
 
 ## <a name="take-manual-full-backup"></a>El ile tam yedekleme yapın
 
+
 Ardından, el ile tam yedekleme gerçekleştirin.
+
+> [!CAUTION]
+> **Yalnızca Azure Kubernetes hizmeti (aks) kullanıcıları için:** Azure Kubernetes Service (aks) üzerinde barındırılan bir sunucu grubunun yedeklerini alma sorunu hakkında farkındayız. Bunu düzeltmek için zaten çalışıyoruz. Güncelleştirme gelecek bir sürüme/güncelleştirmeye dağıtılana kadar, bir yedeklemeden önce sunucu gruplarınızın dizin sayısını silmeniz gerekir. Sunucu grubunuzun her biri için ( **kubectl Get Pod \<namespace name> **komutunu çalıştırarak Pod 'yi listeleyerek), **kubectl Delete Pod \<server group pod name> -n ' y \<namespace name> **i çalıştırarak onları silin. Sunucu grubunuzun parçası olmayan Pod 'leri silmeyin. Pod silme, verilerinizi riske sokuyor. Bir yedekleme yapmadan önce tüm yığınların yeniden çevrimiçi ve durum = çalışıyor durumuna kadar bekleyin. Pod 'un durumu, yukarıdaki kubectl Get Pod komutunun çıktısında verilmiştir.
+
 
 Sunucu grubunuzun tüm veri ve günlük klasörlerinin tam yedeklemesini yapmak için aşağıdaki komutu çalıştırın:
 
@@ -96,12 +101,12 @@ Burada:
 
 Bu komut, Azure Arc etkin PostgreSQL hiper ölçek sunucu grubunu oluşturan tüm düğümlerde dağıtılmış tam yedeklemeyi koordine edecektir. Diğer bir deyişle, düzenleyici ve çalışan düğüminizdeki tüm verileri yedekler.
 
-Örneğin:
+Örnek:
 ```console
 azdata arc postgres backup create --name MyBackup_Aug31_0730amPST --server-name postgres01
 ```
 
-Yedekleme tamamlandığında yedeklemenin KIMLIĞI, adı ve durumu döndürülür. Örneğin:
+Yedekleme tamamlandığında yedeklemenin KIMLIĞI, adı ve durumu döndürülür. Örnek:
 ```console
 {
   "ID": "d134f51aa87f4044b5fb07cf95cf797f",
@@ -125,7 +130,7 @@ Geri yüklenecek yedeklemeleri listelemek için aşağıdaki komutu çalıştır
 azdata arc postgres backup list --server-name <servergroup name>
 ```
 
-Örneğin:
+Örnek:
 ```console
 azdata arc postgres backup list --server-name postgres01
 ```
@@ -151,7 +156,7 @@ Burada:
 - __yedekleme kimliği__ , yedekleme listesi komutunda GÖSTERILEN yedeklemenin kimliğidir (adım 3 ' e başvurun).
 Bu, Azure Arc etkin PostgreSQL hiper ölçek sunucu grubunu oluşturan tüm düğümlerde dağıtılan bir tam geri yüklemeyi koordine edecektir. Diğer bir deyişle, Düzenleyicinizdeki ve çalışan düğümlerdeki tüm verileri geri yükler.
 
-Örneğin:
+Örnek:
 ```console
 azdata arc postgres backup restore --server-name postgres01 --backup-id d134f51aa87f4044b5fb07cf95cf797f
 ```

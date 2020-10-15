@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 01213cd4d04783d0d877b4565493f06fa3718f8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f54467c03a67797d52ac499ca9ba455c0f75e240
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399644"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071464"
 ---
 # <a name="run-the-opc-vault-certificate-management-service-securely"></a>OPC Kasası sertifika yönetimi hizmetini güvenli bir şekilde çalıştırın
 
@@ -97,7 +97,7 @@ Tüm sistemler sürekli olarak izlenmeli ve en son güvenlik güncelleştirmeler
 Uygun güvenlik izlemeye abone olun veya uygulayın. Örneğin, bir merkezi izleme çözümüne abone olun (örneğin, Azure Güvenlik Merkezi veya Microsoft 365 izleme çözümü) ve güvenlik olaylarının izleme çözümüne aktarılmasını sağlamak için uygun şekilde yapılandırın.
 
 > [!IMPORTANT]
-> Varsayılan olarak, OPC kasası hizmeti bir izleme çözümü olarak [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/devops) ile dağıtılır. [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/) gibi bir güvenlik çözümü eklemek kesinlikle önerilir.
+> Varsayılan olarak, OPC kasası hizmeti bir izleme çözümü olarak [Azure Application Insights](../azure-monitor/app/devops.md) ile dağıtılır. [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/) gibi bir güvenlik çözümü eklemek kesinlikle önerilir.
 
 ### <a name="assess-the-security-of-open-source-software-components"></a>Açık kaynaklı yazılım bileşenlerinin güvenliğini değerlendirin
 
@@ -145,7 +145,7 @@ Son 12 ayda verilen tüm sertifikaların ayrıntılı bir kümesini sağlar.
 
 ### <a name="document-the-standard-operating-procedure-for-securely-deleting-cryptographic-keys"></a>Şifreleme anahtarlarını güvenli bir şekilde silmek için standart işletim yordamını belgeleyin
 
-CA 'nın kullanım ömrü boyunca, anahtar silme yalnızca nadiren olabilir. Hiçbir kullanıcının Key Vault sertifikası silme hakkı atanmamış ve bir veren CA sertifikasını silmeye yönelik hiçbir API 'nin neden olmadığı. Sertifika yetkilisi şifreleme anahtarlarını güvenli bir şekilde silmek için el ile standart işletim yordamı yalnızca Azure portal Key Vault doğrudan erişim yoluyla kullanılabilir. Key Vault de sertifika grubunu silebilirsiniz. Hemen silme işlemini sağlamak için [Key Vault geçici silme](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) işlevini devre dışı bırakın.
+CA 'nın kullanım ömrü boyunca, anahtar silme yalnızca nadiren olabilir. Hiçbir kullanıcının Key Vault sertifikası silme hakkı atanmamış ve bir veren CA sertifikasını silmeye yönelik hiçbir API 'nin neden olmadığı. Sertifika yetkilisi şifreleme anahtarlarını güvenli bir şekilde silmek için el ile standart işletim yordamı yalnızca Azure portal Key Vault doğrudan erişim yoluyla kullanılabilir. Key Vault de sertifika grubunu silebilirsiniz. Hemen silme işlemini sağlamak için [Key Vault geçici silme](../key-vault/general/soft-delete-overview.md) işlevini devre dışı bırakın.
 
 ## <a name="certificates"></a>Sertifikalar
 
