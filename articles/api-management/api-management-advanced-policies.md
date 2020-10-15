@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 6ac3457a22128f313084ab070a5a61c2d26d4b85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01d50f6228d63801f62ae933a8367f842d89ef97
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87851690"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071379"
 ---
 # <a name="api-management-advanced-policies"></a>API Management gelişmiş ilkeleri
 
-Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. İlke ekleme ve yapılandırma hakkında daha fazla bilgi için bkz. [API Management ilkeleri](https://go.microsoft.com/fwlink/?LinkID=398186).
+Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. İlke ekleme ve yapılandırma hakkında daha fazla bilgi için bkz. [API Management ilkeleri](./api-management-policies.md).
 
 ## <a name="advanced-policies"></a><a name="AdvancedPolicies"></a> Gelişmiş İlkeler
 
@@ -128,15 +128,15 @@ Bu örnek, ürünü kullanırken arka uç hizmetinden alınan yanıttan veri ö�
 
 | Öğe   | Açıklama                                                                                                                                                                                                                                                               | Gerekli |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| 'yu    | Kök öğe.                                                                                                                                                                                                                                                             | Evet      |
-| oluşturulurken      | İlkenin veya bölümlerinin için kullanılacak koşul `if` `ifelse` `choose` . `choose`İlkede birden çok bölüm varsa `when` , bunlar sırayla değerlendirilir. `condition`Bir zaman öğesi olarak değerlendirildikten sonra `true` , başka hiçbir `when` koşul değerlendirilmez. | Evet      |
-| güvenmiyorsanız | Koşulların hiçbiri olarak değerlendiriliyorsa kullanılacak ilke kod parçacığını içerir `when` `true` .                                                                                                                                                                               | Hayır       |
+| 'yu    | Kök öğe.                                                                                                                                                                                                                                                             | Yes      |
+| oluşturulurken      | İlkenin veya bölümlerinin için kullanılacak koşul `if` `ifelse` `choose` . `choose`İlkede birden çok bölüm varsa `when` , bunlar sırayla değerlendirilir. `condition`Bir zaman öğesi olarak değerlendirildikten sonra `true` , başka hiçbir `when` koşul değerlendirilmez. | Yes      |
+| güvenmiyorsanız | Koşulların hiçbiri olarak değerlendiriliyorsa kullanılacak ilke kod parçacığını içerir `when` `true` .                                                                                                                                                                               | No       |
 
 ### <a name="attributes"></a>Öznitelikler
 
 | Öznitelik                                              | Açıklama                                                                                               | Gerekli |
 | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- | -------- |
-| Condition = "Boole ifadesi &#124; Boolean sabiti" | İçeren ilke deyimi değerlendirildiğinde değerlendirilen Boole ifadesi veya sabiti `when` . | Evet      |
+| Condition = "Boole ifadesi &#124; Boolean sabiti" | İçeren ilke deyimi değerlendirildiğinde değerlendirilen Boole ifadesi veya sabiti `when` . | Yes      |
 
 ### <a name="usage"></a><a name="ChooseUsage"></a> Kullanımıyla
 
@@ -246,16 +246,16 @@ Bu işlem düzeyi ilke, istekleri arka uç hizmetine iletmiyor.
 
 | Öğe         | Açıklama   | Gerekli |
 | --------------- | ------------- | -------- |
-| ileri-istek | Kök öğe. | Evet      |
+| ileri-istek | Kök öğe. | Yes      |
 
 ### <a name="attributes"></a>Öznitelikler
 
 | Öznitelik                                     | Açıklama                                                                                                                                                                                                                                                                                                    | Gerekli | Varsayılan |
 | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| timeout = "Integer"                             | Bir zaman aşımı hatası oluşturulmadan önce, arka uç hizmeti tarafından HTTP yanıt üst bilgilerinin döndürülmesi için beklenecek saniye cinsinden süre. Minimum değer 0 saniyedir. Temeldeki ağ altyapısı bu süreden sonra boştaki bağlantıları düşürüebileceğinden, 240 saniyeden büyük değerler gerçekleştirilemez. | Hayır       | Yok    |
-| iz-yönlendirmeler = "false &#124; true"          | Arka uç hizmetinden gelen yönlendirmelerin, ağ geçidi tarafından izlenen veya çağırana döndürülmeyeceğini belirtir.                                                                                                                                                                                                    | Hayır       | yanlış   |
-| buffer-Request-Body = "false &#124; true"       | "True" olarak ayarlandığında istek arabelleğe alınır ve [yeniden denenmek](api-management-advanced-policies.md#Retry)üzere tekrar kullanılır.                                                                                                                                                                                               | Hayır       | yanlış   |
-| hata-başarısız-Status-Code = "false &#124; true" | Doğru olarak ayarlandığında, 400 ile 599 arasında bir yanıt kodu için [hata üzerinde](api-management-error-handling-policies.md) Tetikleyiciler bölümü.                                                                                                                                                                      | Hayır       | yanlış   |
+| timeout = "Integer"                             | Bir zaman aşımı hatası oluşturulmadan önce, arka uç hizmeti tarafından HTTP yanıt üst bilgilerinin döndürülmesi için beklenecek saniye cinsinden süre. Minimum değer 0 saniyedir. Temeldeki ağ altyapısı bu süreden sonra boştaki bağlantıları düşürüebileceğinden, 240 saniyeden büyük değerler gerçekleştirilemez. | No       | Yok    |
+| iz-yönlendirmeler = "false &#124; true"          | Arka uç hizmetinden gelen yönlendirmelerin, ağ geçidi tarafından izlenen veya çağırana döndürülmeyeceğini belirtir.                                                                                                                                                                                                    | No       | yanlış   |
+| buffer-Request-Body = "false &#124; true"       | "True" olarak ayarlandığında istek arabelleğe alınır ve [yeniden denenmek](api-management-advanced-policies.md#Retry)üzere tekrar kullanılır.                                                                                                                                                                                               | No       | yanlış   |
+| hata-başarısız-Status-Code = "false &#124; true" | Doğru olarak ayarlandığında, 400 ile 599 arasında bir yanıt kodu için [hata üzerinde](api-management-error-handling-policies.md) Tetikleyiciler bölümü.                                                                                                                                                                      | No       | yanlış   |
 
 ### <a name="usage"></a>Kullanım
 
@@ -298,14 +298,14 @@ Aşağıdaki örnek, bir arka uca iletilen isteklerin sayısının bir bağlam d
 
 | Öğe           | Açıklama   | Gerekli |
 | ----------------- | ------------- | -------- |
-| limit-eşzamanlılık | Kök öğe. | Evet      |
+| limit-eşzamanlılık | Kök öğe. | Yes      |
 
 ### <a name="attributes"></a>Öznitelikler
 
 | Öznitelik | Açıklama                                                                                        | Gerekli | Varsayılan |
 | --------- | -------------------------------------------------------------------------------------------------- | -------- | ------- |
-| anahtar       | Bir dize. İzin verilen ifade. Eşzamanlılık kapsamını belirtir. Birden çok ilke tarafından paylaşılabilir. | Evet      | Yok     |
-| en yüksek sayı | Bir tamsayı. İlkeye girmesine izin verilen en fazla istek sayısını belirtir.           | Evet      | Yok     |
+| anahtar       | Bir dize. İzin verilen ifade. Eşzamanlılık kapsamını belirtir. Birden çok ilke tarafından paylaşılabilir. | Yes      | YOK     |
+| en yüksek sayı | Bir tamsayı. İlkeye girmesine izin verilen en fazla istek sayısını belirtir.           | Yes      | YOK     |
 
 ### <a name="usage"></a>Kullanım
 
@@ -351,13 +351,13 @@ Herhangi bir dize Event Hubs oturum açma değeri olarak kullanılabilir. Bu ör
 
 | Öğe         | Açıklama                                                                     | Gerekli |
 | --------------- | ------------------------------------------------------------------------------- | -------- |
-| -eventhub arası | Kök öğe. Bu öğenin değeri, Olay Hub 'ınıza kaydedilecek dizedir. | Evet      |
+| -eventhub arası | Kök öğe. Bu öğenin değeri, Olay Hub 'ınıza kaydedilecek dizedir. | Yes      |
 
 ### <a name="attributes"></a>Öznitelikler
 
 | Öznitelik     | Açıklama                                                               | Gerekli                                                             |
 | ------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| günlükçü kimliği     | API Management hizmetinize kayıtlı günlükçü KIMLIĞI.         | Evet                                                                  |
+| günlükçü kimliği     | API Management hizmetinize kayıtlı günlükçü KIMLIĞI.         | Yes                                                                  |
 | bölüm kimliği  | İletilerin gönderildiği bölümün dizinini belirtir.             | İsteğe bağlı. Kullanılıyorsa, bu öznitelik kullanılamayabilir `partition-key` . |
 | Bölüm-anahtar | İletiler gönderilirken bölüm ataması için kullanılan değeri belirtir. | İsteğe bağlı. Kullanılıyorsa, bu öznitelik kullanılamayabilir `partition-id` .  |
 
@@ -396,14 +396,14 @@ status code and media type. If no example or schema found, the content is empty.
 
 | Öğe       | Açıklama   | Gerekli |
 | ------------- | ------------- | -------- |
-| sahte yanıt | Kök öğe. | Evet      |
+| sahte yanıt | Kök öğe. | Yes      |
 
 ### <a name="attributes"></a>Öznitelikler
 
 | Öznitelik    | Açıklama                                                                                           | Gerekli | Varsayılan |
 | ------------ | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| durum kodu  | Yanıt durum kodunu belirtir ve karşılık gelen örneği veya şemayı seçmek için kullanılır.                 | Hayır       | 200     |
-| içerik türü | `Content-Type`Yanıt üst bilgisi değerini belirtir ve karşılık gelen örneği veya şemayı seçmek için kullanılır. | Hayır       | Yok    |
+| durum kodu  | Yanıt durum kodunu belirtir ve karşılık gelen örneği veya şemayı seçmek için kullanılır.                 | No       | 200     |
+| içerik türü | `Content-Type`Yanıt üst bilgisi değerini belirtir ve karşılık gelen örneği veya şemayı seçmek için kullanılır. | No       | Yok    |
 
 ### <a name="usage"></a>Kullanım
 
@@ -455,18 +455,18 @@ Aşağıdaki örnekte, istek iletimi bir üstel yeniden deneme algoritması kull
 
 | Öğe | Açıklama                                                         | Gerekli |
 | ------- | ------------------------------------------------------------------- | -------- |
-| retry   | Kök öğe. , Alt öğeleri olarak başka herhangi bir ilke içerebilir. | Evet      |
+| retry   | Kök öğe. , Alt öğeleri olarak başka herhangi bir ilke içerebilir. | Yes      |
 
 ### <a name="attributes"></a>Öznitelikler
 
 | Öznitelik        | Açıklama                                                                                                                                           | Gerekli | Varsayılan |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| koşul        | Yeniden denemelerin durdurulup durdurulmadığını belirten bir Boole sabit değeri veya [ifadesi](api-management-policy-expressions.md) `false` () `true` .      | Evet      | Yok     |
-| count            | Denemek için en fazla yeniden deneme sayısını belirten pozitif bir sayı.                                                                                | Evet      | Yok     |
-| interval         | Yeniden deneme girişimleri arasındaki bekleme aralığını belirten saniye cinsinden pozitif bir sayı.                                                                 | Evet      | Yok     |
-| Maksimum Aralık     | Yeniden deneme girişimleri arasındaki en fazla bekleme aralığını belirten saniye cinsinden pozitif bir sayı. Üstel yeniden deneme algoritması uygulamak için kullanılır. | Hayır       | Yok     |
-| delta            | Bekleme aralığı artışını belirten saniye cinsinden pozitif bir sayı. Doğrusal ve üstel yeniden deneme algoritmalarının uygulanması için kullanılır.             | Hayır       | Yok     |
-| ilk hızlı yeniden deneme | Olarak ayarlanırsa `true` , ilk yeniden deneme denemesi hemen gerçekleştirilir.                                                                                  | Hayır       | `false` |
+| koşul        | Yeniden denemelerin durdurulup durdurulmadığını belirten bir Boole sabit değeri veya [ifadesi](api-management-policy-expressions.md) `false` () `true` .      | Yes      | YOK     |
+| count            | Denemek için en fazla yeniden deneme sayısını belirten pozitif bir sayı.                                                                                | Yes      | YOK     |
+| interval         | Yeniden deneme girişimleri arasındaki bekleme aralığını belirten saniye cinsinden pozitif bir sayı.                                                                 | Yes      | YOK     |
+| Maksimum Aralık     | Yeniden deneme girişimleri arasındaki en fazla bekleme aralığını belirten saniye cinsinden pozitif bir sayı. Üstel yeniden deneme algoritması uygulamak için kullanılır. | No       | YOK     |
+| delta            | Bekleme aralığı artışını belirten saniye cinsinden pozitif bir sayı. Doğrusal ve üstel yeniden deneme algoritmalarının uygulanması için kullanılır.             | No       | YOK     |
+| ilk hızlı yeniden deneme | Olarak ayarlanırsa `true` , ilk yeniden deneme denemesi hemen gerçekleştirilir.                                                                                  | No       | `false` |
 
 > [!NOTE]
 > Yalnızca, `interval` belirtildiğinde, **sabit** Aralık yeniden denemeleri gerçekleştirilir.
@@ -512,10 +512,10 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#s
 
 | Öğe         | Açıklama                                                                               | Gerekli |
 | --------------- | ----------------------------------------------------------------------------------------- | -------- |
-| dönüş-yanıt | Kök öğe.                                                                             | Evet      |
-| Set-Header      | Bir [Set-Header](api-management-transformation-policies.md#SetHTTPheader) ilke deyimidir. | Hayır       |
-| gövde kümesi        | Bir [Set-Body](api-management-transformation-policies.md#SetBody) ilke deyimidir.         | Hayır       |
-| durum ayarla      | Bir [set-Status](api-management-advanced-policies.md#SetStatus) ilke deyimidir.           | Hayır       |
+| dönüş-yanıt | Kök öğe.                                                                             | Yes      |
+| Set-Header      | Bir [Set-Header](api-management-transformation-policies.md#SetHTTPheader) ilke deyimidir. | No       |
+| gövde kümesi        | Bir [Set-Body](api-management-transformation-policies.md#SetBody) ilke deyimidir.         | No       |
+| durum ayarla      | Bir [set-Status](api-management-advanced-policies.md#SetStatus) ilke deyimidir.           | No       |
 
 ### <a name="attributes"></a>Öznitelikler
 
@@ -582,20 +582,20 @@ Bu örnek ilke, `send-one-way-request` http yanıt kodu 500 değerinden büyük 
 
 | Öğe                    | Açıklama                                                                                                 | Gerekli                        |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- |
-| tek yönlü istek gönder       | Kök öğe.                                                                                               | Evet                             |
+| tek yönlü istek gönder       | Kök öğe.                                                                                               | Yes                             |
 | url                        | İsteğin URL 'SI.                                                                                     | If modu = Copy; Aksi halde evet. |
 | method                     | İstek için HTTP yöntemi.                                                                            | If modu = Copy; Aksi halde evet. |
-| üst bilgi                     | İstek üst bilgisi. Birden çok istek üst bilgisi için birden çok üstbilgi öğesi kullanın.                                  | Hayır                              |
-| body                       | İstek gövdesi.                                                                                           | Hayır                              |
-| kimlik doğrulama-sertifika | [İstemci kimlik doğrulaması için kullanılacak sertifika](api-management-authentication-policies.md#ClientCertificate) | Hayır                              |
+| üst bilgi                     | İstek üst bilgisi. Birden çok istek üst bilgisi için birden çok üstbilgi öğesi kullanın.                                  | No                              |
+| body                       | İstek gövdesi.                                                                                           | No                              |
+| kimlik doğrulama-sertifika | [İstemci kimlik doğrulaması için kullanılacak sertifika](api-management-authentication-policies.md#ClientCertificate) | No                              |
 
 ### <a name="attributes"></a>Öznitelikler
 
 | Öznitelik     | Açıklama                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Gerekli | Varsayılan  |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
-| Mode = "String" | Bunun yeni bir istek mi yoksa geçerli isteğin bir kopyası mı olduğunu belirler. Giden modda Mode = Copy, istek gövdesini başlatmaz.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Hayır       | Yeni      |
-| name          | Ayarlanacak üst bilginin adını belirtir.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Evet      | Yok      |
-| var-eylem | Üstbilgi zaten belirtildiğinde gerçekleştirilecek eylemi belirtir. Bu öznitelik aşağıdaki değerlerden birine sahip olmalıdır.<br /><br /> -override-mevcut üstbilginin değerini değiştirir.<br />-Skip-mevcut üst bilgi değerini değiştirmez.<br />-Append-değeri varolan üst bilgi değerine ekler.<br />-Delete-üstbilgiyi istekten kaldırır.<br /><br /> `override`Aynı ada sahip birden çok girdiyi listelemek üzere ayarlandığında, üstbilgi tüm girişlere göre ayarlanmakta (birden çok kez listelenecektir), ancak sonuçlarda listelenen değerler ayarlanır. | Hayır       | override |
+| Mode = "String" | Bunun yeni bir istek mi yoksa geçerli isteğin bir kopyası mı olduğunu belirler. Giden modda Mode = Copy, istek gövdesini başlatmaz.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | No       | Yeni      |
+| name          | Ayarlanacak üst bilginin adını belirtir.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Yes      | YOK      |
+| var-eylem | Üstbilgi zaten belirtildiğinde gerçekleştirilecek eylemi belirtir. Bu öznitelik aşağıdaki değerlerden birine sahip olmalıdır.<br /><br /> -override-mevcut üstbilginin değerini değiştirir.<br />-Skip-mevcut üst bilgi değerini değiştirmez.<br />-Append-değeri varolan üst bilgi değerine ekler.<br />-Delete-üstbilgiyi istekten kaldırır.<br /><br /> `override`Aynı ada sahip birden çok girdiyi listelemek üzere ayarlandığında, üstbilgi tüm girişlere göre ayarlanmakta (birden çok kez listelenecektir), ancak sonuçlarda listelenen değerler ayarlanır. | No       | override |
 
 ### <a name="usage"></a>Kullanım
 
@@ -666,23 +666,23 @@ Bu örnekte, bir yetkilendirme sunucusuyla bir başvuru belirtecini doğrulamak 
 
 | Öğe                    | Açıklama                                                                                                 | Gerekli                        |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- |
-| gönderme isteği               | Kök öğe.                                                                                               | Evet                             |
+| gönderme isteği               | Kök öğe.                                                                                               | Yes                             |
 | url                        | İsteğin URL 'SI.                                                                                     | If modu = Copy; Aksi halde evet. |
 | method                     | İstek için HTTP yöntemi.                                                                            | If modu = Copy; Aksi halde evet. |
-| üst bilgi                     | İstek üst bilgisi. Birden çok istek üst bilgisi için birden çok üstbilgi öğesi kullanın.                                  | Hayır                              |
-| body                       | İstek gövdesi.                                                                                           | Hayır                              |
-| kimlik doğrulama-sertifika | [İstemci kimlik doğrulaması için kullanılacak sertifika](api-management-authentication-policies.md#ClientCertificate) | Hayır                              |
+| üst bilgi                     | İstek üst bilgisi. Birden çok istek üst bilgisi için birden çok üstbilgi öğesi kullanın.                                  | No                              |
+| body                       | İstek gövdesi.                                                                                           | No                              |
+| kimlik doğrulama-sertifika | [İstemci kimlik doğrulaması için kullanılacak sertifika](api-management-authentication-policies.md#ClientCertificate) | No                              |
 
 ### <a name="attributes"></a>Öznitelikler
 
 | Öznitelik                       | Açıklama                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Gerekli | Varsayılan  |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
-| Mode = "String"                   | Bunun yeni bir istek mi yoksa geçerli isteğin bir kopyası mı olduğunu belirler. Giden modda Mode = Copy, istek gövdesini başlatmaz.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Hayır       | Yeni      |
-| Response-variable-name = "String" | Bir yanıt nesnesi alacak bağlam değişkeninin adı. Değişken yoksa, ilke başarıyla yürütüldüğünde oluşturulur ve koleksiyon aracılığıyla erişilebilir hale gelir [`context.Variable`](api-management-policy-expressions.md#ContextVariables) .                                                                                                                                                                                                                                                                                                                          | Evet      | Yok      |
-| timeout = "Integer"               | URL çağrısının başarısız olması için geçmesi gereken saniye cinsinden zaman aşımı aralığı.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Hayır       | 60       |
-| yoksayma-hata                    | True ise ve istek bir hatayla sonuçlanır:<br /><br /> -Response-değişken adı belirtilmişse null değer içerecektir.<br />-Response değişkeni adı belirtilmemişse, bağlam. İstek güncelleştirilmeyecek.                                                                                                                                                                                                                                                                                                                                                                                   | Hayır       | yanlış    |
-| name                            | Ayarlanacak üst bilginin adını belirtir.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Evet      | Yok      |
-| var-eylem                   | Üstbilgi zaten belirtildiğinde gerçekleştirilecek eylemi belirtir. Bu öznitelik aşağıdaki değerlerden birine sahip olmalıdır.<br /><br /> -override-mevcut üstbilginin değerini değiştirir.<br />-Skip-mevcut üst bilgi değerini değiştirmez.<br />-Append-değeri varolan üst bilgi değerine ekler.<br />-Delete-üstbilgiyi istekten kaldırır.<br /><br /> `override`Aynı ada sahip birden çok girdiyi listelemek üzere ayarlandığında, üstbilgi tüm girişlere göre ayarlanmakta (birden çok kez listelenecektir), ancak sonuçlarda listelenen değerler ayarlanır. | Hayır       | override |
+| Mode = "String"                   | Bunun yeni bir istek mi yoksa geçerli isteğin bir kopyası mı olduğunu belirler. Giden modda Mode = Copy, istek gövdesini başlatmaz.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | No       | Yeni      |
+| Response-variable-name = "String" | Bir yanıt nesnesi alacak bağlam değişkeninin adı. Değişken yoksa, ilke başarıyla yürütüldüğünde oluşturulur ve koleksiyon aracılığıyla erişilebilir hale gelir [`context.Variable`](api-management-policy-expressions.md#ContextVariables) .                                                                                                                                                                                                                                                                                                                          | Yes      | YOK      |
+| timeout = "Integer"               | URL çağrısının başarısız olması için geçmesi gereken saniye cinsinden zaman aşımı aralığı.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | No       | 60       |
+| yoksayma-hata                    | True ise ve istek bir hatayla sonuçlanır:<br /><br /> -Response-değişken adı belirtilmişse null değer içerecektir.<br />-Response değişkeni adı belirtilmemişse, bağlam. İstek güncelleştirilmeyecek.                                                                                                                                                                                                                                                                                                                                                                                   | No       | yanlış    |
+| name                            | Ayarlanacak üst bilginin adını belirtir.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Yes      | YOK      |
+| var-eylem                   | Üstbilgi zaten belirtildiğinde gerçekleştirilecek eylemi belirtir. Bu öznitelik aşağıdaki değerlerden birine sahip olmalıdır.<br /><br /> -override-mevcut üstbilginin değerini değiştirir.<br />-Skip-mevcut üst bilgi değerini değiştirmez.<br />-Append-değeri varolan üst bilgi değerine ekler.<br />-Delete-üstbilgiyi istekten kaldırır.<br /><br /> `override`Aynı ada sahip birden çok girdiyi listelemek üzere ayarlandığında, üstbilgi tüm girişlere göre ayarlanmakta (birden çok kez listelenecektir), ancak sonuçlarda listelenen değerler ayarlanır. | No       | override |
 
 ### <a name="usage"></a>Kullanım
 
@@ -716,15 +716,15 @@ Gizli bilgilerin ilke belgesinde depolanmasını önlemek için, [özelliklerin]
 
 | Öğe | Açıklama  | Gerekli |
 | ------- | ------------ | -------- |
-| proxy   | Kök öğe | Evet      |
+| proxy   | Kök öğe | Yes      |
 
 ### <a name="attributes"></a>Öznitelikler
 
 | Öznitelik         | Açıklama                                            | Gerekli | Varsayılan |
 | ----------------- | ------------------------------------------------------ | -------- | ------- |
-| URL = "String"      | Biçiminde proxy URL 'SI http://host:port .             | Evet      | Yok     |
-| username = "String" | Proxy ile kimlik doğrulaması için kullanılacak Kullanıcı adı. | Hayır       | Yok     |
-| Password = "String" | Proxy ile kimlik doğrulaması için kullanılacak parola. | Hayır       | Yok     |
+| URL = "String"      | Biçiminde proxy URL 'SI http://host:port .             | Yes      | YOK     |
+| username = "String" | Proxy ile kimlik doğrulaması için kullanılacak Kullanıcı adı. | No       | YOK     |
+| Password = "String" | Proxy ile kimlik doğrulaması için kullanılacak parola. | No       | YOK     |
 
 ### <a name="usage"></a>Kullanım
 
@@ -779,7 +779,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#s
 
 | Öğe    | Açıklama                                                       | Gerekli |
 | ---------- | ----------------------------------------------------------------- | -------- |
-| Set-yöntemi | Kök öğe. Öğesinin değeri HTTP yöntemini belirtir. | Evet      |
+| Set-yöntemi | Kök öğe. Öğesinin değeri HTTP yöntemini belirtir. | Yes      |
 
 ### <a name="usage"></a>Kullanım
 
@@ -822,14 +822,14 @@ Bu örnekte, yetkilendirme belirtecinin geçersiz olması durumunda 401 yanıtı
 
 | Öğe    | Açıklama   | Gerekli |
 | ---------- | ------------- | -------- |
-| durum ayarla | Kök öğe. | Evet      |
+| durum ayarla | Kök öğe. | Yes      |
 
 ### <a name="attributes"></a>Öznitelikler
 
 | Öznitelik       | Açıklama                                                | Gerekli | Varsayılan |
 | --------------- | ---------------------------------------------------------- | -------- | ------- |
-| Code = "integer"  | Döndürülecek HTTP durum kodu.                            | Evet      | Yok     |
-| Reason = "String" | Durum kodunu döndürme nedeninin açıklaması. | Evet      | Yok     |
+| Code = "integer"  | Döndürülecek HTTP durum kodu.                            | Yes      | YOK     |
+| Reason = "String" | Durum kodunu döndürme nedeninin açıklaması. | Yes      | YOK     |
 
 ### <a name="usage"></a>Kullanım
 
@@ -860,14 +860,14 @@ Aşağıdaki örnek, gelen bölümündeki bir değişken kümesi ilkesini göste
 
 | Öğe      | Açıklama   | Gerekli |
 | ------------ | ------------- | -------- |
-| Set değişkeni | Kök öğe. | Evet      |
+| Set değişkeni | Kök öğe. | Yes      |
 
 ### <a name="attributes"></a>Öznitelikler
 
 | Öznitelik | Açıklama                                                              | Gerekli |
 | --------- | ------------------------------------------------------------------------ | -------- |
-| name      | Değişkenin adı.                                                | Evet      |
-| değer     | Değişkenin değeri. Bu bir ifade veya sabit değer olabilir. | Evet      |
+| name      | Değişkenin adı.                                                | Yes      |
+| değer     | Değişkenin değeri. Bu bir ifade veya sabit değer olabilir. | Yes      |
 
 ### <a name="usage"></a>Kullanım
 
@@ -944,18 +944,18 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#s
 
 | Öğe  | Açıklama                                                                                                                                          | Gerekli |
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| izleme    | Kök öğe.                                                                                                                                        | Evet      |
-| message  | Günlüğe kaydedilecek bir dize veya ifade.                                                                                                                 | Evet      |
-| meta veriler | Application Insights [izleme](../azure-monitor/app/data-model-trace-telemetry.md) telemetrisine özel bir özellik ekler. | Hayır       |
+| izleme    | Kök öğe.                                                                                                                                        | Yes      |
+| message  | Günlüğe kaydedilecek bir dize veya ifade.                                                                                                                 | Yes      |
+| meta veriler | Application Insights [izleme](../azure-monitor/app/data-model-trace-telemetry.md) telemetrisine özel bir özellik ekler. | No       |
 
 ### <a name="attributes"></a>Öznitelikler
 
 | Öznitelik | Açıklama                                                                                                               | Gerekli | Varsayılan |
 | --------- | ------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| kaynak    | Dize sabit değeri, izleme görüntüleyicisine anlamlı ve iletinin kaynağını belirtmektir.                                   | Evet      | Yok     |
-| önem derecesi  | İzlemenin önem derecesini belirtir. İzin verilen değerler `verbose` , `information` , `error` (en küçükten en büyüğe). | Hayır       | Ayrıntılı |
-| name      | Özelliğin adı.                                                                                                     | Evet      | Yok     |
-| değer     | Özelliğin değeri.                                                                                                    | Evet      | Yok     |
+| kaynak    | Dize sabit değeri, izleme görüntüleyicisine anlamlı ve iletinin kaynağını belirtmektir.                                   | Yes      | YOK     |
+| önem derecesi  | İzlemenin önem derecesini belirtir. İzin verilen değerler `verbose` , `information` , `error` (en küçükten en büyüğe). | No       | Ayrıntılı |
+| name      | Özelliğin adı.                                                                                                     | Yes      | YOK     |
+| değer     | Özelliğin değeri.                                                                                                    | Yes      | YOK     |
 
 ### <a name="usage"></a>Kullanım
 
@@ -1019,13 +1019,13 @@ Aşağıdaki örnekte, `choose` ilkenin en hızlı alt ilkelerine sahip iki ilke
 
 | Öğe | Açıklama                                                                                                   | Gerekli |
 | ------- | ------------------------------------------------------------------------------------------------------------- | -------- |
-| bekleneceğini    | Kök öğe. Yalnızca alt öğeler `send-request` , `cache-lookup-value` , ve ilkeler olarak bulunabilir `choose` . | Evet      |
+| bekleneceğini    | Kök öğe. Yalnızca alt öğeler `send-request` , `cache-lookup-value` , ve ilkeler olarak bulunabilir `choose` . | Yes      |
 
 ### <a name="attributes"></a>Öznitelikler
 
 | Öznitelik | Açıklama                                                                                                                                                                                                                                                                                                                                                                                                            | Gerekli | Varsayılan |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| for       | `wait`İlkenin tüm hızlı alt ilkelerin tamamlanmasını mi yoksa yalnızca bir tane mi bekleyeceğini belirler. İzin verilen değerler şunlardır:<br /><br /> - `all` -Tüm ilk alt ilkelerin tamamlanmasını bekle<br />-herhangi bir anlık alt ilkenin tamamlanmasını bekleyin. İlk acil alt öğe ilkesi tamamlandıktan sonra, `wait` ilke tamamlanır ve diğer tüm anlık alt ilkelerin yürütülmesi sonlandırılır. | Hayır       | tümü     |
+| :       | `wait`İlkenin tüm hızlı alt ilkelerin tamamlanmasını mi yoksa yalnızca bir tane mi bekleyeceğini belirler. İzin verilen değerler şunlardır:<br /><br /> - `all` -Tüm ilk alt ilkelerin tamamlanmasını bekle<br />-herhangi bir anlık alt ilkenin tamamlanmasını bekleyin. İlk acil alt öğe ilkesi tamamlandıktan sonra, `wait` ilke tamamlanır ve diğer tüm anlık alt ilkelerin yürütülmesi sonlandırılır. | No       | tümü     |
 
 ### <a name="usage"></a>Kullanım
 
@@ -1041,4 +1041,4 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#s
 -   [API Management ilkeler](api-management-howto-policies.md)
 -   [İlke ifadeleri](api-management-policy-expressions.md)
 -   İlke deyimlerinin ve ayarlarının tam listesi için [Ilke başvurusu](./api-management-policies.md)
--   [İlke örnekleri](policy-samples.md)
+-   [İlke örnekleri](./policy-reference.md)
