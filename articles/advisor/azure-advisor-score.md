@@ -3,12 +3,12 @@ title: Danışman puanı kullanarak Azure iş yüklerini iyileştirin
 description: Azure 'dan en iyi şekilde yararlanmak için danışman puanı kullanın
 ms.topic: article
 ms.date: 09/09/2020
-ms.openlocfilehash: 29d8480f501a78c1668b52034f439f998419f9d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4c401a8b532c247806c5fe30728a1f4afd334a4
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335628"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074031"
 ---
 # <a name="optimize-azure-workloads-using-advisor-score"></a>Danışman puanı kullanarak Azure iş yüklerini iyileştirin
 
@@ -17,7 +17,7 @@ ms.locfileid: "91335628"
 Azure Advisor, iş yükleriniz için en iyi yöntem önerilerini sağlar. Bu öneriler kişiselleştirilmiş ve size yardımcı olmaya yönelik eylem yapılabilir:
 * İş yüklerinizin duruşunu iyileştirin ve Azure dağıtımlarınızı iyileştirin
 * En iyi uygulamaları takip ederek en iyi sorunları önleyici şekilde engelleyin
-* Azure iş yüklerinizi [Microsoft Azure Well-Architected çerçevesinin](https://docs.microsoft.com/azure/architecture/framework/) beş anına karşı değerlendirin
+* Azure iş yüklerinizi [Microsoft Azure Well-Architected çerçevesinin](/azure/architecture/framework/) beş anına karşı değerlendirin
 
 Advisor 'ın temel bir özelliği olarak, **danışman puanı** bu hedeflere etkin ve verimli bir şekilde ulaşmanıza yardımcı olacak şekilde denetimli hale getirilmelidir. 
 
@@ -56,7 +56,7 @@ Danışman puanı hesaplaması dört adımda özetlenebilir:
   * Uzun süreli önerilere sahip kaynaklar puanınızdan daha fazla sayacaktır.
   * Danışman 'de ertelemeyi veya kapatabilmeniz gereken kaynaklar puanınızdan tamamen kaldırılır. 
     
-Danışman bu modeli bir danışman kategori düzeyinde uygular (güvenlik, [güvenli puan](https://docs.microsoft.com/azure/security-center/secure-score-security-controls#introduction-to-secure-score) modeli kullanır), her kategori Için bize danışman puanı vermek ve bir basit ortalama, son danışman Puanını üretir.
+Danışman bu modeli bir danışman kategori düzeyinde uygular (güvenlik, [güvenli puan](../security-center/secure-score-security-controls.md#introduction-to-secure-score) modeli kullanır), her kategori Için bize danışman puanı vermek ve bir basit ortalama, son danışman Puanını üretir.
 
 
 ## <a name="advisor-score-faq"></a>Danışman puanı SSS

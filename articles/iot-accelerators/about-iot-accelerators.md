@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: a8314fed43c8282c536fc6e95e6c3aa877408b09
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f976bf4260e4a677aee5b5ccc4287db3d0b2e40d
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91542504"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074303"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Azure IoT çözüm hızlandırıcıları nedir?
 
@@ -85,7 +85,7 @@ Tüm çözüm hızlandırıcıları aynı tasarım ilkelerini ve hedeflerini tak
 | Bağlı Fabrika      | MVC           | [.NET](https://github.com/Azure/azure-iot-connected-factory)          |
 | Cihaz Benzetimi      | Mikro hizmetler | [.NET](https://github.com/Azure/device-simulation-dotnet)          |
 
-Mikro hizmet mimarisi hakkında daha fazla bilgi edinmek için bkz. [Azure IoT başvuru mimarisine Giriş](https://docs.microsoft.com/azure/architecture/reference-architectures/iot/).
+Mikro hizmet mimarisi hakkında daha fazla bilgi edinmek için bkz. [Azure IoT başvuru mimarisine Giriş](/azure/architecture/reference-architectures/iot/).
 
 ## <a name="deployment-options"></a>Dağıtım seçenekleri
 

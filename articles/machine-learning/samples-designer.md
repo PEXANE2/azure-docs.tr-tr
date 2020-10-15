@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/14/2020
 ms.custom: designer
-ms.openlocfilehash: 15f8e424529513b2932dcb18de941a8fe1867c1d
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: ecdb011310d8aa5bd63e9b9e9679bb525cb4f7b3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045457"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074609"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Azure Machine Learning Designer için veri kümeleri & örnek işlem hatları
 
@@ -65,21 +65,21 @@ Tasarımcı örneği kullanımı aşağıda verilmiştir:
 
 Bu yerleşik gerileme örneklerini gezin.
 
-| Örnek başlık | Açıklama | 
+| Örnek başlık | Description | 
 | --- | --- |
-| [Gerileme-otomobil fiyat tahmini (temel)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) | Doğrusal regresyon kullanarak otomobil fiyatlarını tahmin edin. |
-| [Gerileme-otomobil fiyat tahmini (Gelişmiş)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) | Karar ormanını kullanarak otomobil fiyatlarını tahmin edin ve karar ağacı gerilediğini kullanın. En iyi algoritmayı bulmak için modelleri karşılaştırın.
+| [Gerileme-otomobil fiyat tahmini (temel)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/regression-automobile-price-prediction-basic.md) | Doğrusal regresyon kullanarak otomobil fiyatlarını tahmin edin. |
+| [Gerileme-otomobil fiyat tahmini (Gelişmiş)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/regression-automobile-price-prediction-compare-algorithms.md) | Karar ormanını kullanarak otomobil fiyatlarını tahmin edin ve karar ağacı gerilediğini kullanın. En iyi algoritmayı bulmak için modelleri karşılaştırın.
 
 ## <a name="classification"></a>Sınıflandırma
 
 Bu yerleşik sınıflandırma örneklerini keşfet. Örnekleri açıp modül açıklamalarını görüntüleyerek, belge bağlantıları olmadan örnekler hakkında daha fazla bilgi edinebilirsiniz.
 
-| Örnek başlık | Açıklama | 
+| Örnek başlık | Description | 
 | --- | --- |
-| [Özellik seçimi ile ikili sınıflandırma-gelir tahmini](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-predict-income.md) | İki sınıf artırılmış bir karar ağacı kullanarak geliri yüksek veya düşük olarak tahmin edin. Özellikleri seçmek için Pearson bağıntısını kullanın.
-| [Özel Python betiği ile ikili sınıflandırma-kredi riski tahmini](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-credit-risk-cost-sensitive.md) | Kredi uygulamalarını yüksek veya düşük riskli olarak sınıflandırın. Verilerinizi ağırlığa yönelik Python betiği yürütme modülünü kullanın.
-| [İkili sınıflandırma-müşteri Ilişki tahmini](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-churn.md) | İki sınıf artırılmış bir karar ağacının kullanıldığı müşteri karmaşıklığını tahmin edin. Taraflı verileri örneklemek için IÇTE 'yi kullanın.
-| [Metin sınıflandırması-Vikipedi SP 500 veri kümesi](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-text-classification.md) | Birden çok Lass Lojistik gerileme ile Vikipedi makalelerinden şirket türlerini sınıflandırın. |
+| [Özellik seçimi ile ikili sınıflandırma-gelir tahmini](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-feature-selection-income-prediction.md) | İki sınıf artırılmış bir karar ağacı kullanarak geliri yüksek veya düşük olarak tahmin edin. Özellikleri seçmek için Pearson bağıntısını kullanın.
+| [Özel Python betiği ile ikili sınıflandırma-kredi riski tahmini](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-python-credit-prediction.md) | Kredi uygulamalarını yüksek veya düşük riskli olarak sınıflandırın. Verilerinizi ağırlığa yönelik Python betiği yürütme modülünü kullanın.
+| [İkili sınıflandırma-müşteri Ilişki tahmini](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-customer-relationship-prediction.md) | İki sınıf artırılmış bir karar ağacının kullanıldığı müşteri karmaşıklığını tahmin edin. Taraflı verileri örneklemek için IÇTE 'yi kullanın.
+| [Metin sınıflandırması-Vikipedi SP 500 veri kümesi](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/text-classification-wiki.md) | Birden çok Lass Lojistik gerileme ile Vikipedi makalelerinden şirket türlerini sınıflandırın. |
 | Birden çok Lass sınıflandırması-harf tanıma | Yazılan harflerin sınıflandırılmasında ikili Sınıflandırıcıların bir kopyasını oluşturun. |
 
 ## <a name="computer-vision"></a>Görüntü işleme
@@ -92,7 +92,7 @@ Bu yerleşik bilgisayar görme örneklerini keşfet. Örnekleri açıp modül a�
 
 Bu yerleşik öneren örnekleri keşfedebilirsiniz. Örnekleri açıp modül açıklamalarını görüntüleyerek, belge bağlantıları olmadan örnekler hakkında daha fazla bilgi edinebilirsiniz.
 
-| Örnek başlık | Açıklama | 
+| Örnek başlık | Description | 
 | --- | --- |
 | Geniş & derin tabanlı öneri-Restoran derecelendirme tahmini | Restoran/Kullanıcı özellikleri ve derecelendirmelerinden bir restoran öneren altyapısı oluşturun.|
 | Öneri-film derecelendirmesi | Film/Kullanıcı özellikleri ve derecelendirmelerinden bir film öneren altyapısı oluşturun.|
@@ -101,10 +101,10 @@ Bu yerleşik öneren örnekleri keşfedebilirsiniz. Örnekleri açıp modül aç
 
 Machine Learning yardımcı programlarını ve özelliklerini gösteren örnekler hakkında daha fazla bilgi edinin. Örnekleri açıp modül açıklamalarını görüntüleyerek, belge bağlantıları olmadan örnekler hakkında daha fazla bilgi edinebilirsiniz.
 
-| Örnek başlık | Açıklama | 
+| Örnek başlık | Description | 
 | --- | --- |
 | Vowpal Wabbit modelini kullanan ikili sınıflandırma-yetişkinlere yönelik gelir tahmini | Vowpal Wabbit, makine öğrenimini çevrimiçi, karma, allazaltma, azaltma, learning2search, etkin ve etkileşimli öğrenimler gibi tekniklerle bağlayan bir makine öğrenimi sistemidir. Bu örnek, ikili sınıflandırma modeli oluşturmak için Vowpal Wabbit modelinin nasıl kullanılacağını gösterir. 
-| [Özel R betiği kullan-Uçuş gecikmesi tahmini](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-flight-delay.md) | Zamanlanan bir pastger uçuşun 15 dakikadan fazla ertelenmesini tahmin etmek için özelleştirilmiş R betiği kullanın.
+| [Özel R betiği kullan-Uçuş gecikmesi tahmini](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/r-script-flight-delay-prediction.md) | Zamanlanan bir pastger uçuşun 15 dakikadan fazla ertelenmesini tahmin etmek için özelleştirilmiş R betiği kullanın.
 | Ikili sınıflandırma için çapraz doğrulama-yetişkinlere yönelik gelir tahmini | Yetişkinlere yönelik gelir için ikili bir sınıflandırıcı oluşturmak üzere çapraz doğrulama kullanın.
 | Permütasyon Özelliği Önem Derecesi | Test veri kümesinin önem puanlarını hesaplamak için permütasyon özelliği önem derecesini kullanın. 
 | Ikili sınıflandırma için parametreleri ayarlama-yetişkinlere yönelik gelir tahmini | İkili bir sınıflandırıcı oluşturmak için en uygun hiper parametreleri bulmak için model hiper parametrelerini ayarla ' yı kullanın. |

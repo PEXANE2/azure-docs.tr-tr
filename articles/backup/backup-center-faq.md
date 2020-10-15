@@ -3,12 +3,12 @@ title: Yedekleme merkezi-SSS
 description: Bu makalede yedekleme merkezi hakkında sık sorulan sorular yanıtlanmaktadır
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: b10a9e73e65cf12c43ce28b429a8f12e0b960a76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e227eb6a14d06791e52ec33e090afdcb01bab61
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90998206"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92094050"
 ---
 # <a name="backup-center---frequently-asked-questions"></a>Yedekleme merkezi-sık sorulan sorular
 
@@ -34,7 +34,7 @@ Hayır. Yedekleme merkezi kullanıma hazır hale gelir. Bununla birlikte, yedekl
 
 ### <a name="do-i-need-to-have-any-special-permissions-to-use-backup-center"></a>Yedekleme merkezi 'ni kullanmak için özel izinlere sahip olmam gerekiyor mu?
 
-Yedekleme merkezi 'nin bu şekilde herhangi bir yeni izin gerekmez. Yönettiğiniz kaynaklar için doğru RBAC erişimine sahip olduğunuz sürece bu kaynaklar için yedekleme merkezi 'ni kullanabilirsiniz. Örneğin, yedeklemeleriniz hakkındaki bilgileri görüntülemek için kasalarınıza **okuyucu** erişimine sahip olmanız gerekir. Yedeklemeyi yapılandırmak ve yedeklemeyle ilgili diğer eylemleri gerçekleştirmek için **yedek katkıda bulunan** veya **yedekleme işletmeni** rollerinin olması gerekir. [Azure Backup Için RBAC rolleri](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault)hakkında daha fazla bilgi edinin.
+Yedekleme merkezi 'nin bu şekilde herhangi bir yeni izin gerekmez. Yönettiğiniz kaynaklara yönelik doğru Azure RBAC erişiminizin düzeyine sahip olduğunuz sürece bu kaynaklar için yedekleme merkezi 'ni kullanabilirsiniz. Örneğin, yedeklemeleriniz hakkındaki bilgileri görüntülemek için kasalarınıza **okuyucu** erişimine sahip olmanız gerekir. Yedeklemeyi yapılandırmak ve yedeklemeyle ilgili diğer eylemleri gerçekleştirmek için **yedek katkıda bulunan** veya **yedekleme işletmeni** rollerinin olması gerekir. [Azure Backup Için Azure rolleri](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault)hakkında daha fazla bilgi edinin.
 
 ## <a name="pricing"></a>Fiyatlandırma
 

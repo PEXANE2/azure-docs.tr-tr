@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makine kurtarma noktasından dosya ve klas
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 3f26f761b3d683be71f7f6d900d91dd432ceefc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 654ed7467410743e0db1abc2e51f1304b4f91a5d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91292974"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093727"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -376,7 +376,7 @@ Bu özellik, VM verilerine tüm VM veya VM disklerini geri yükleme veya en az a
 
 #### <a name="select-recovery-point-who-can-generate-script"></a>Kurtarma noktası seçin (komut dosyası oluşturabilir)
 
-Betik, VM verilerine erişim sağlar. bu nedenle, ilk yerde kimin oluşturabileceği hakkında daha fazla veri düzenlemek önemlidir. Azure portal oturum açmanız ve betiği oluşturmak için [RBAC yetkinizin](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) olması gerekir.
+Betik, VM verilerine erişim sağlar. bu nedenle, ilk yerde kimin oluşturabileceği hakkında daha fazla veri düzenlemek önemlidir. Azure portal oturum açmanız ve betiği oluşturmak için [Azure RBAC yetkiniz](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) olması gerekir.
 
 Dosya kurtarma, VM geri yükleme ve diskleri geri yükleme için gereken yetkilendirme düzeyine ihtiyaç duyuyor. Diğer bir deyişle, yalnızca yetkili kullanıcılar betiği oluşturabileceği VM verilerini görüntüleyebilir.
 
