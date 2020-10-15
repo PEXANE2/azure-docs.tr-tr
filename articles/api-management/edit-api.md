@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/08/2017
 ms.author: apimpm
-ms.openlocfilehash: 8d3f476f4a6ecf05d63223f3ba2c2b5173e1d0bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3ce7318266f3fbaf818e5bcfa245ce5f64d74ba
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87905168"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076938"
 ---
 # <a name="edit-an-api"></a>API’yi düzenleme
 
@@ -26,7 +26,7 @@ Bu öğreticideki adımlar, bir API’yi düzenlemek için API Management’ın 
 + Bu işlemi, APIM örneğindeki işlemleri ekleyerek, silerek ve yeniden adlandırarak yapabilirsiniz. 
 + API’nizin swagger’ını düzenleyebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
 + [İlk API’nizi içeri aktarma ve yayımlama](import-and-publish.md)
@@ -64,5 +64,5 @@ Aşağıdaki adımları izleyerek Azure portaldan arka uç API’nizi güncelle�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [APIM ilke örnekleri](policy-samples.md) 
+> [APIM ilke örnekleri](./policy-reference.md) 
 >  [Yayınlanmış BIR API 'Yi dönüştürme ve koruma](transform-api.md)
