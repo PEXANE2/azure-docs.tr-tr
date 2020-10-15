@@ -7,12 +7,12 @@ ms.date: 01/27/2020
 ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: e00b1cf11b906390335f257b20787d394b3a8ed4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26fc916a2bacc0f6ae9791a53b642e93bb031466
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85117174"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077992"
 ---
 # <a name="standard-quota-increase-limits-by-vm-series"></a>Standart kota: VM serisine göre sınırları artırma
 
@@ -30,7 +30,7 @@ Yeni bir spot VM 'yi her dağıttığınızda, tüm spot sanal makine örnekleri
 
 Azure portal kullanarak VM Serisi için vCPU kota sınırı artışını isteyebilirsiniz. VM Serisi kotasının bir artışı toplam bölgesel vCPU limitini aynı tutara göre otomatik olarak arttırır.
 
-Standart vCPU kotaları hakkında daha fazla bilgi edinmek için bkz. [sanal makine vCPU kotaları](../../virtual-machines/windows/quotas.md) ve [Azure aboneliği ve hizmet limitleri](https://docs.microsoft.com/azure/azure-supportability/classic-deployment-model-quota-increase-requests).
+Standart vCPU kotaları hakkında daha fazla bilgi edinmek için bkz. [sanal makine vCPU kotaları](../../virtual-machines/windows/quotas.md) ve [Azure aboneliği ve hizmet limitleri](./classic-deployment-model-quota-increase-requests.md).
 
 Standart kota için bölgeye göre vCPU sınırını artırma hakkında bilgi edinmek için bkz. [Standart kota: bölgeye göre sınırları artırma](regional-quota-requests.md).
 

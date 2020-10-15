@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: bdaf1261e9945aa862157f7e43a44387e14d3657
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7fcced1833cb5f4ccb9c2c2fd44dd84a9abb3cb
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764052"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077873"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Program aracılığıyla Azure panoları oluşturma
 
@@ -78,13 +78,13 @@ Bu panoyu gelecekte herhangi bir sanal makine için yayımlamak üzere JSON içi
 Azure 'da kaynak oluşturan API 'Ler için iki yaklaşım vardır:
 
 * Zorunlu API 'Ler tek seferde bir kaynak oluşturur. Daha fazla bilgi için bkz. [kaynaklar](/rest/api/resources/resources).
-* Tek bir API çağrısıyla birden çok bağımlı kaynak oluşturan şablon tabanlı bir dağıtım sistemi. Daha fazla bilgi için bkz.  [Kaynak Yöneticisi şablonları ve Azure PowerShell ile kaynak dağıtma](../azure-resource-manager/resource-group-template-deploy.md).
+* Tek bir API çağrısıyla birden çok bağımlı kaynak oluşturan şablon tabanlı bir dağıtım sistemi. Daha fazla bilgi için bkz.  [Kaynak Yöneticisi şablonları ve Azure PowerShell ile kaynak dağıtma](../azure-resource-manager/templates/deploy-powershell.md).
 
 Şablon tabanlı dağıtım Parametreleştirme ve şablon oluşturmayı destekler. Bu yaklaşımı Bu makalede kullanırız.
 
 ## <a name="programmatically-create-a-dashboard-from-your-template-using-a-template-deployment"></a>Şablon dağıtımını kullanarak şablonınızdan program aracılığıyla pano oluşturma
 
-Azure, birden fazla kaynağın dağıtımını yönetme olanağı sunar. Dağıtılacak kaynak kümesini ve bunlar arasındaki ilişkileri ifade eden bir dağıtım şablonu oluşturursunuz.  Her bir kaynağın JSON biçimi, bunları bir tane oluşturup oluşturuyoruz. Fark, şablon dilinin değişkenler, parametreler, temel işlevler ve daha fazlası gibi birkaç kavram eklemesi gerektiğidir. Bu genişletilmiş söz dizimi yalnızca bir şablon dağıtımı bağlamında desteklenir. Daha önce ele alınan zorunlu API 'lerle birlikte kullanılırsa çalışmaz. Daha fazla bilgi için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](../azure-resource-manager/resource-group-authoring-templates.md).
+Azure, birden fazla kaynağın dağıtımını yönetme olanağı sunar. Dağıtılacak kaynak kümesini ve bunlar arasındaki ilişkileri ifade eden bir dağıtım şablonu oluşturursunuz.  Her bir kaynağın JSON biçimi, bunları bir tane oluşturup oluşturuyoruz. Fark, şablon dilinin değişkenler, parametreler, temel işlevler ve daha fazlası gibi birkaç kavram eklemesi gerektiğidir. Bu genişletilmiş söz dizimi yalnızca bir şablon dağıtımı bağlamında desteklenir. Daha önce ele alınan zorunlu API 'lerle birlikte kullanılırsa çalışmaz. Daha fazla bilgi için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](../azure-resource-manager/templates/template-syntax.md).
 
 Parametreleştirme, şablonun parametre sözdizimi kullanılarak yapılmalıdır.  Daha önce bulduğumuz kaynak KIMLIĞININ tüm örneklerini burada gösterildiği gibi değiştirirsiniz.
 
@@ -125,7 +125,7 @@ Gerekli şablon meta verilerini ve şu şekilde JSON şablonunun en üstünde bu
 Şablonunuzu yapılandırdıktan sonra, aşağıdaki yöntemlerden birini kullanarak dağıtın:
 
 * [REST API'leri](/rest/api/resources/deployments)
-* [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
+* [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure CLI](/cli/azure/group/deployment#az-group-deployment-create)
 * [Azure portal şablonu dağıtım sayfası](https://portal.azure.com/#create/Microsoft.Template)
 

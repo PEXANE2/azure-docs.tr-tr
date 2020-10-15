@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 8cee2c13386a076f0321619754468cfc1e9fb31c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e59aece0be39bf671e3d1e62f1a0e4c2a42a1ec8
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75442423"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076479"
 ---
 # <a name="route-the-request-based-on-the-size-of-its-body"></a>İsteği, gövdesinin boyutu temelinde yönlendirme
 
-Bu makalede, bunların gövdelerinin boyutuna bağlı olarak isteklerin nasıl yönlendirildiğini gösteren bir Azure API yönetim ilkesi örneği gösterilmektedir. Bir ilke kodu ayarlamak veya düzenlemek için, [Ilke ayarlama veya düzenleme](../set-edit-policies.md)bölümünde açıklanan adımları izleyin. Diğer örnekleri görmek için bkz. [ilke örnekleri](../policy-samples.md).
+Bu makalede, bunların gövdelerinin boyutuna bağlı olarak isteklerin nasıl yönlendirildiğini gösteren bir Azure API yönetim ilkesi örneği gösterilmektedir. Bir ilke kodu ayarlamak veya düzenlemek için, [Ilke ayarlama veya düzenleme](../set-edit-policies.md)bölümünde açıklanan adımları izleyin. Diğer örnekleri görmek için bkz. [ilke örnekleri](../policy-reference.md).
 
 ## <a name="policy"></a>İlke
 
@@ -35,5 +35,4 @@ Kodu **gelen** bloğa yapıştırın.
 APıM ilkeleri hakkında daha fazla bilgi edinin:
 
 + [Dönüştürme ilkeleri](../api-management-transformation-policies.md)
-+ [İlke örnekleri](../policy-samples.md)
-
++ [İlke örnekleri](../policy-reference.md)
