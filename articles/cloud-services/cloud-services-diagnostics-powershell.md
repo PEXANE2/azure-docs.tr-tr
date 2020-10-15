@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: tagore
-ms.openlocfilehash: e3c4beac5bd88ba0bbefa91fc83976416b24d2fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0bf7fa56ca511981820f63cd7178493a7d048e3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88141083"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077516"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>PowerShell kullanarak Azure Cloud Services tanılamayı etkinleştirme
 Uygulama günlükleri, performans sayaçları vb. gibi tanılama verilerini bir bulut hizmetinden Azure Tanılama uzantısını kullanarak toplayabilirsiniz. Bu makalede, PowerShell kullanarak bir bulut hizmeti için Azure Tanılama uzantısının nasıl etkinleştirileceği açıklanır.  Bu makale için gereken önkoşullar için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/) .
@@ -131,8 +131,5 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 * Azure tanılama 'yı kullanma hakkında ek yönergeler ve sorunları gidermeye yönelik diğer teknikler için bkz. [azure Cloud Services ve sanal makinelerde tanılamayı etkinleştirme](cloud-services-dotnet-diagnostics.md).
-* [Tanılama yapılandırma şeması](/azure/azure-monitor/platform/diagnostics-extension-schema-1dot3) , tanılama uzantısı için çeşitli XML yapılandırmaları seçeneklerini açıklar.
-* Sanal makineler için tanılama uzantısını nasıl etkinleştireceğinizi öğrenmek için bkz. [Azure Resource Manager şablonu kullanarak izleme ve tanılama Ile Windows sanal makinesi oluşturma](../virtual-machines/windows/extensions-diagnostics-template.md)
-
-
-
+* [Tanılama yapılandırma şeması](../azure-monitor/platform/diagnostics-extension-schema-windows.md) , tanılama uzantısı için çeşitli XML yapılandırmaları seçeneklerini açıklar.
+* Sanal makineler için tanılama uzantısını nasıl etkinleştireceğinizi öğrenmek için bkz. [Azure Resource Manager şablonu kullanarak izleme ve tanılama Ile Windows sanal makinesi oluşturma](../virtual-machines/extensions/diagnostics-template.md)

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 9b7af755c7f0903787bb3798ea1f6877cae180f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20926988d554d562f36587734bd99c34b4731e69
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90908311"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088729"
 ---
 # <a name="bind-an-azure-cosmos-db-database-to-your-azure-spring-cloud-application"></a>Azure Cosmos DB veritabanını Azure Spring Cloud uygulamanıza bağlama
 
@@ -29,7 +29,7 @@ Spring Boot uygulamalarınızı el ile yapılandırmak yerine Azure Spring Cloud
 
 Azure Cosmos DB, bağlamayı destekleyen beş farklı API türüne sahiptir. Aşağıdaki yordamda bunların nasıl kullanılacağı gösterilmektedir:
 
-1. Azure Cosmos DB veritabanı oluşturun. Yardım için [veritabanı oluşturma](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal) hızlı başlangıç kılavuzuna bakın. 
+1. Azure Cosmos DB veritabanı oluşturun. Yardım için [veritabanı oluşturma](../cosmos-db/create-cosmosdb-resources-portal.md) hızlı başlangıç kılavuzuna bakın. 
 
 1. Veritabanınızın adını kaydedin. Bu yordam için veritabanı adı **TestDB**' dir.
 

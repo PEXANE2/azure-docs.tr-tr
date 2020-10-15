@@ -1,22 +1,22 @@
 ---
-title: IoT Tak ve Kullan cihazını genel modüle dönüştürme | Microsoft Docs
-description: C# PnP Cihaz kodunu kullanın ve bir modüle dönüştürün.
+title: Genel IoT Tak ve Kullan genel modülünü bağlama | Microsoft Docs
+description: Örnek C# IoT Tak ve Kullan Cihaz kodunu genel bir modülde kullanın.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ccc450242c50f82d4215f6b172f72d8eceab7c52
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 671809b9cdbe72c8f3091b0056897c2342a38b1f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046346"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089171"
 ---
-# <a name="tutorial-how-to-convert-an-iot-plug-and-play-device-to-a-module-c"></a>Öğretici: IoT Tak ve Kullan cihazını modüle dönüştürme (C#)
+# <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>Öğretici: IoT Tak ve Kullan modülünü bağlama (C#)
 
-Bu öğreticide, IoT Tak ve Kullan Cihaz kodunu genel bir modül olarak çalışacak şekilde nasıl dönüştürebileceğiniz gösterilmektedir.
+Bu öğreticide, bir genel IoT Tak ve Kullan [modülünün](../iot-hub/iot-hub-devguide-module-twins.md)nasıl bağlanacağı gösterilmektedir.
 
 Bir cihaz, bir IoT Hub 'ına bağlanırken model KIMLIĞINI yayımladığında bir IoT Tak ve Kullan aygıtıdır ve model KIMLIĞI tarafından tanımlanan dijital TWINS tanım dili (DTDL) modelinde açıklanan özellikleri ve yöntemleri uygular. Cihazların DTDL ve model KIMLIĞINI kullanma hakkında daha fazla bilgi edinmek için bkz. [ıot Tak ve kullan Geliştirici Kılavuzu](./concepts-developer-guide-device-csharp.md). Modüller model kimliklerini ve DTDL modellerini aynı şekilde kullanır.
 
@@ -98,7 +98,7 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 
 1. Visual Studio 'da, **hata ayıklama > Project > termostat özellikleri**' ne gidin. Ardından projeye aşağıdaki ortam değişkenlerini ekleyin:
 
-    | Ad | Değer |
+    | Name | Değer |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | Dizisi |
     | IOTHUB_MODULE_CONNECTION_STRING | Daha önce bir nota yaptığınız modül bağlantı dizesi |
@@ -173,7 +173,7 @@ Hizmet SDK 'Ları, bağlı IoT Tak ve Kullan cihazların ve modüllerinin model 
 
 1. Visual Studio 'da, **hata ayıklama > Project > termostat özellikleri**' ne gidin. Ardından projeye aşağıdaki ortam değişkenlerini ekleyin:
 
-    | Ad | Değer |
+    | Name | Değer |
     | ---- | ----- |
     | IOTHUB_DEVICE_ID | My-Module-cihazım |
     | IOTHUB_CONNECTION_STRING | [Ortamınızı ayarlamayı](set-up-environment.md) tamamladıktan sonra bir değişiklik yapmış olduğunuz değer |

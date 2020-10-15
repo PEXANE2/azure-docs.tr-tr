@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 2fc20737ab371135a62d510d9d083e084b592fae
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: ea0887dd1d28bb958b27813df7f4c7a221470bac
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945779"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088763"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Mevcut bir özel etki alanını Azure Spring Cloud ile eşleme
 
@@ -26,7 +26,7 @@ Sertifikalar Web trafiğini şifreler. Bu TLS/SSL sertifikaları, Azure Key Vaul
 * Azure yay bulutuna dağıtılan bir uygulama (bkz. [hızlı başlangıç: Azure Portal kullanarak mevcut bir Azure Spring Cloud uygulamasını başlatma](spring-cloud-quickstart.md)veya mevcut bir uygulamayı kullanma).
 * GoDaddy gibi etki alanı sağlayıcısı için DNS kayıt defterine erişimi olan bir etki alanı adı.
 * Bir üçüncü taraf sağlayıcıdan özel bir sertifika (otomatik olarak imzalanan sertifikanız). Sertifika, etki alanıyla aynı olmalıdır.
-* [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) dağıtılan bir örnek
+* [Azure Key Vault](../key-vault/general/overview.md) dağıtılan bir örnek
 
 ## <a name="import-certificate"></a>Sertifikayı içeri aktarma
 ### <a name="prepare-your-certificate-file-in-pfx-optional"></a>Sertifika dosyanızı PFX 'de hazırlama (isteğe bağlı)
@@ -82,7 +82,7 @@ Sertifikanızı anahtar kasasına yüklemek için:
 1. **Sertifika oluşturma yönteminin**altında **sertifika oluştur** iletişim kutusunda öğesini seçin `Import` .
 1. **Sertifika dosyasını karşıya yükle**altında, sertifika konumuna gidin ve seçin.
 1. **Parola**altında, sertifikanız için özel anahtarı girin.
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’a tıklayın.
 
     ![Sertifikayı içeri aktar 1](./media/custom-dns-tutorial/import-certificate-a.png)
 
@@ -224,7 +224,6 @@ az spring-cloud app update -n <app name> --resource-group <resource group name> 
 İşlem tamamlandığında, uygulamanızı işaret eden HTTPS URL 'Lerinden herhangi birine gidin. HTTP URL 'Lerinin çalışmadığına unutmayın.
 
 ## <a name="see-also"></a>Ayrıca bkz.
-* [Azure Key Vault nedir?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
-* [Sertifikayı içeri aktar](https://docs.microsoft.com/azure/key-vault/certificate-scenarios#import-a-certificate)
-* [Azure CLı kullanarak Spring Cloud uygulamanızı başlatın](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli)
-
+* [Azure Key Vault nedir?](../key-vault/general/overview.md)
+* [Sertifikayı içeri aktar](../key-vault/certificates/certificate-scenarios.md#import-a-certificate)
+* [Azure CLı kullanarak Spring Cloud uygulamanızı başlatın](./spring-cloud-quickstart.md)

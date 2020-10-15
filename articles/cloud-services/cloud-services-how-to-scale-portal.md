@@ -7,19 +7,19 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: e5452e0794083afabbee2759c5b37feb1eed0c88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e457742d8a940ff3a1602cc3dcf1b1d77126ac3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86223695"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076683"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Portalda bir bulut hizmeti için otomatik ölçeklendirmeyi yapılandırma
 
 Koşullar, bir ölçek genişletme veya genişletme işlemini tetikleyen bir bulut hizmeti çalışan rolü için ayarlanabilir. Rolün koşulları, rolün CPU, disk veya ağ yüküne bağlı olabilir. Ayrıca, bir ileti kuyruğuna veya aboneliğinizle ilişkili başka bir Azure kaynağının ölçüsüne göre bir koşul da ayarlayabilirsiniz.
 
 > [!NOTE]
-> Bu makale, bulut hizmeti Web ve çalışan rollerine odaklanır. Doğrudan bir sanal makine (klasik) oluşturduğunuzda bir bulut hizmetinde barındırılır. Standart bir sanal makineyi bir [kullanılabilirlik kümesiyle](../virtual-machines/windows/classic/configure-availability-classic.md) ilişkilendirerek ölçeklendirebilir ve el ile açıp kapatabilirsiniz.
+> Bu makale, bulut hizmeti Web ve çalışan rollerine odaklanır. Doğrudan bir sanal makine (klasik) oluşturduğunuzda bir bulut hizmetinde barındırılır. Standart bir sanal makineyi bir [kullanılabilirlik kümesiyle](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic) ilişkilendirerek ölçeklendirebilir ve el ile açıp kapatabilirsiniz.
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 Uygulamanız için ölçeklendirmeyi yapılandırmadan önce aşağıdaki bilgileri göz önünde bulundurmanız gerekir:
@@ -105,6 +105,3 @@ Bu ayar, rolden otomatik ölçeklendirmeyi kaldırır ve ardından örnek sayıs
 3. Ölçeklendirilecek rolün örnekleri.
 
 Ölçek ayarlarını yapılandırdıktan sonra üstteki **Kaydet** simgesini seçin.
-
-
-
