@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: 471aa6e5297f8b68f08567a66e3f07e9688ca57e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84e450a55f9482c3a713943adfcc4d7940ab873f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87002939"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076717"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Azure portal Cloud Services yönetme
 Azure portal **Cloud Services** alanında şunları yapabilirsiniz:
@@ -83,7 +83,7 @@ Konuk işletim sistemi güncelleştirmelerinin ve hizmet düzeltme işlemlerinin
 
 **Bir değiştirme uygulamam için kapalı kalma süresine neden olur mu? Bunu nasıl işleymem gerekir?**
 
-Önceki bölümde açıklandığı gibi, Azure Yük dengeleyicide yalnızca bir yapılandırma değişikliği olduğundan, dağıtım takası genellikle hızlıdır. Bazı durumlarda, 10 veya daha fazla saniye sürebilir ve geçici bağlantı hatalarıyla sonuçlanır. Müşterilerinizin etkisini sınırlandırmak için, [istemci yeniden deneme mantığını](../best-practices-retry-general.md)uygulamayı düşünün.
+Önceki bölümde açıklandığı gibi, Azure Yük dengeleyicide yalnızca bir yapılandırma değişikliği olduğundan, dağıtım takası genellikle hızlıdır. Bazı durumlarda, 10 veya daha fazla saniye sürebilir ve geçici bağlantı hatalarıyla sonuçlanır. Müşterilerinizin etkisini sınırlandırmak için, [istemci yeniden deneme mantığını](/azure/architecture/best-practices/transient-faults)uygulamayı düşünün.
 
 ## <a name="delete-deployments-and-a-cloud-service"></a>Dağıtımları ve bulut hizmetini silme
 Bir bulut hizmetini silebilmeniz için, mevcut her bir dağıtımı silmeniz gerekir.
@@ -124,6 +124,3 @@ Bir dağıtımı veya bulut hizmetinizi silmek için aşağıdaki yordamı kulla
 * [Bulut hizmetini dağıtmayı](cloud-services-how-to-create-deploy-portal.md)öğrenin.
 * Özel bir [etki alanı adı](cloud-services-custom-domain-name-portal.md)yapılandırın.
 * [TLS/SSL sertifikalarını](cloud-services-configure-ssl-certificate-portal.md)yapılandırma.
-
-
-
