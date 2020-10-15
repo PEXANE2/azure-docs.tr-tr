@@ -7,12 +7,12 @@ ms.service: azure-supportability
 ms.topic: troubleshooting
 ms.date: 01/27/2020
 ms.author: xingwan
-ms.openlocfilehash: 87533b2e0c1397d0b8b2e9a89450a80a75c5e348
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fccde344a06d39bd4bb8e3178444ec20677e2f50
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763831"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078519"
 ---
 # <a name="region-or-sku-unavailable"></a>Bölge veya SKU kullanılamıyor
 
@@ -68,7 +68,7 @@ Uygun bir bölge veya SKU bulamıyorsanız, şu adımları izleyerek bir **Abone
 
 1. **Sorun türü**için **sorun türünü seç**' i seçin.
 
-1. **Sorun türü seç**için bir seçenek belirleyin, örneğin, **aboneliğime veya kaynak**sorunumu  >  **Yukarıda listelenmeyen**bir seçeneğe tıklayın. **Kaydet**’i seçin.
+1. **Sorun türü seç**için bir seçenek belirleyin, örneğin, **aboneliğime veya kaynak**sorunumu  >  **Yukarıda listelenmeyen**bir seçeneğe tıklayın. **Kaydet**'i seçin.
 
    ![İstek için bir sorun belirtin](./media/SKU-series-unavailable/support-request-select-problem-type.png)
 
@@ -76,12 +76,12 @@ Uygun bir bölge veya SKU bulamıyorsanız, şu adımları izleyerek bir **Abone
 
 1. İletişim bilgileriniz ile birlikte sağlayabilmeniz için ek bilgileri girin.
 
-1. **Gözden geçir ve oluştur**’u seçin. Bilgilerinizi doğruladıktan sonra, isteği oluşturmak için **Oluştur** ' u seçin.
+1. **Gözden geçir + oluştur**’u seçin. Bilgilerinizi doğruladıktan sonra, isteği oluşturmak için **Oluştur** ' u seçin.
 
 ## <a name="send-us-your-suggestions"></a>Önerilerinizi bize gönderin
 
-Her zaman geri bildirim ve önerilerle karşılaşıyoruz! [Önerilerinizi](https://feedback.azure.com/forums/266794-support-feedback)bize gönderin. Ayrıca, [Twitter](https://twitter.com/azuresupport) 'Da veya [Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/products/azure)bizimle iletişim sağlayabilirsiniz.
+Her zaman geri bildirim ve önerilerle karşılaşıyoruz! [Önerilerinizi](https://feedback.azure.com/forums/266794-support-feedback)bize gönderin. Ayrıca, [Twitter](https://twitter.com/azuresupport) 'Da veya [Microsoft Q&soru sayfasında](/answers/products/azure)bizimle iletişim sağlayabilirsiniz.
 
-## <a name="learn-more"></a>Daha fazlasını öğrenin
+## <a name="learn-more"></a>Daha fazla bilgi edinin
 
 [Azure desteği SSS](https://azure.microsoft.com/support/faq)

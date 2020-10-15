@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 883cf48fd38d79544d08a68f2c18fc2d2efb4706
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ac7d99f4a47711f9974d30d877a3237eec15443
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776298"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078842"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Otomasyonu’nda runbook yürütme
 
@@ -71,7 +71,7 @@ Runbook 'larınız, [kaynaklarla ilgili kaynakları](/rest/api/resources/resourc
 
 ## <a name="security"></a>Güvenlik
 
-Azure Otomasyonu, [Azure Güvenlik Merkezi 'ni (ASC)](../security-center/security-center-intro.md) kullanarak kaynaklarınız için güvenlik sağlar ve Linux sistemlerinde tehlikeye atabilir. Kaynaklar Azure 'da olup olmadığı için iş yükleriniz genelinde güvenlik sağlanır. Bkz. [Azure Otomasyonu 'nda kimlik doğrulamaya giriş](automation-security-overview.md).
+Azure Otomasyonu, [Azure Güvenlik Merkezi 'ni (ASC)](../security-center/security-center-introduction.md) kullanarak kaynaklarınız için güvenlik sağlar ve Linux sistemlerinde tehlikeye atabilir. Kaynaklar Azure 'da olup olmadığı için iş yükleriniz genelinde güvenlik sağlanır. Bkz. [Azure Otomasyonu 'nda kimlik doğrulamaya giriş](automation-security-overview.md).
 
 ASC, bir VM 'de imzalanmış veya imzasız herhangi bir komut dosyasını çalıştırabilen kullanıcılara yönelik kısıtlamaları. VM 'ye kök erişimi olan bir kullanıcı değilseniz, makineyi bir dijital imza ile açıkça yapılandırmanız veya kapatmanız gerekir. Aksi takdirde, yalnızca bir Otomasyon hesabı oluşturduktan ve uygun özelliği etkinleştirerek işletim sistemi güncelleştirmelerini uygulamak için bir komut dosyası çalıştırabilirsiniz.
 
@@ -156,7 +156,7 @@ Aşağıdaki tabloda, bir iş için olası durumlar açıklanmaktadır. Tüm run
 
 Azure Otomasyonu 'nda runbook 'ların yürütülmesi Otomasyon hesabı için bir etkinlik günlüğündeki ayrıntıları yazar. Günlüğü kullanma hakkında ayrıntılı bilgi için bkz. [etkinlik günlüğünden ayrıntıları alma](manage-runbooks.md#retrieve-details-from-activity-log).
 
-## <a name="exceptions"></a>Özel Durumlar
+## <a name="exceptions"></a>Özel durumlar
 
 Bu bölümde, runbook 'larınızda özel durumları veya aralıklı sorunları işlemenin bazı yolları açıklanmaktadır. Bir WebSocket özel durumu örnek olarak kullanılır. Doğru özel durum işleme, geçici ağ hatalarının runbook 'larınızın başarısız olmasına neden olmasını engeller.
 
