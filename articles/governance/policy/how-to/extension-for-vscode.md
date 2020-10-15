@@ -1,14 +1,14 @@
 ---
 title: Visual Studio Code için Azure Ilke uzantısı
 description: Visual Studio Code için Azure Ilke uzantısı 'nı kullanarak Azure Resource Manager diğer adları arama hakkında bilgi edinin.
-ms.date: 06/16/2020
+ms.date: 10/14/2020
 ms.topic: how-to
-ms.openlocfilehash: 9b3f27492bee5301e22e83ebf9734afa3de43897
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea05ffab9c57c50e451008a1ec7c534afbedf282
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89648340"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077941"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Visual Studio Code için Azure Ilke uzantısı 'nı kullanın
 
@@ -21,7 +21,7 @@ Visual Studio Code için Azure Ilke uzantısı, Visual Studio Code tarafından d
 > [!NOTE]
 > Visual Studio Code için Azure Ilke uzantısında görüntülenen ilkelerde yerel olarak yapılan değişiklikler Azure ile eşitlenmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlamak için aşağıdaki öğeler gereklidir:
 
@@ -82,7 +82,7 @@ Kaynakları ve arama diğer adlarını değerlendirmek için Azure hesabınıza 
 
    - Komut paleti: 
 
-     Menü çubuğundan, **görüntüleme**  >  **komut paleti**' ne gidin ve **Azure: abonelikleri Seç**' i girin.
+     Menü çubuğundan, **görüntüleme** > **komut paleti**' ne gidin ve **Azure: abonelikleri Seç**' i girin.
 
    - Pencere altbilgisi
 

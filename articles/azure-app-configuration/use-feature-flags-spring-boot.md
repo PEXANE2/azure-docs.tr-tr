@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2019
 ms.author: mametcal
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 83c437cb613e3dad04dee17f0f67040532066c3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0dcf85add4e1c9f1d701c4ce4a122c8d6b31382a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87326605"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077839"
 ---
 # <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>Öğretici: bir Spring Boot uygulamasında Özellik bayraklarını kullanma
 
@@ -185,5 +185,5 @@ public String getOldFeature() {
 
 Bu öğreticide, kitaplıkları kullanarak Spring Boot uygulamanızda nasıl özellik bayrakları uygulayacağınızı öğrendiniz `spring-cloud-azure-feature-management-web` . Spring Boot ve App Configuration içindeki özellik yönetimi desteği hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
-* [Yay önyükleme özelliği bayrağı örnek kodu](/azure/azure-app-configuration/quickstart-feature-flag-spring-boot)
+* [Yay önyükleme özelliği bayrağı örnek kodu](./quickstart-feature-flag-spring-boot.md)
 * [Özellik bayraklarını yönetme](./manage-feature-flags.md)
