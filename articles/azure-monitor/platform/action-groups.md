@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 7937b412b1eb3f311f0212f19c4eb9fc7782459d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 534e78018d19ff496dc4d2b3b54a3d0b3c46cf0f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327740"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093761"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure portalında eylem grupları oluşturma ve yönetme
 Bir eylem grubu, bir Azure aboneliğinin sahibi tarafından tanımlanan bildirim tercihleri koleksiyonudur. Azure Izleyici ve hizmet durumu uyarıları, kullanıcılara bir uyarının tetiklendiğini bildirmek için eylem gruplarını kullanır. Çeşitli uyarılar, kullanıcının gereksinimlerine bağlı olarak aynı eylem grubunu veya farklı eylem gruplarını kullanabilir. Bir abonelikte en fazla 2.000 eylem grubu yapılandırabilirsiniz.
@@ -287,7 +287,32 @@ Bu IP adreslerindeki değişikliklerle ilgili güncelleştirmeleri almak için, 
 
 Bir eylem grubunda sınırlı sayıda Web kancası eylemi olabilir.
 
+### <a name="service-tag"></a>Hizmet etiketi
+Hizmet etiketi, belirli bir Azure hizmetinden bir IP adresi önekleri grubunu temsil eder. Microsoft, hizmet etiketi ile çevrelenmiş adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir ve bir ActionGroup için sık sık güncelleştirmelerin ağ güvenlik kurallarına göre karmaşıklığını en aza indirir.
 
+1. Azure portal ' de Azure Hizmetleri *ağ güvenlik grubu*araması ' nı arayın.
+2. **Ekle** ' ye tıklayın ve ağ güvenlik grubu oluşturun.
+
+   1. Kaynak grubu adını ekleyin ve ardından *örnek ayrıntılarını*girin.
+   1. **Gözden geçir + oluştur** ' a ve ardından *Oluştur*' a tıklayın.
+   
+   :::image type="content" source="media/action-groups/action-group-create-security-group.png" alt-text="Ağ güvenlik grubu oluşturma hakkında örnek."border="true":::
+
+3. Kaynak grubu ' na gidin ve ardından oluşturduğunuz *ağ güvenlik grubu* ' na tıklayın.
+
+    1. *Gelen güvenlik kuralları*' nı seçin.
+    1. **Ekle**'ye tıklayın.
+    
+    :::image type="content" source="media/action-groups/action-group-add-service-tag.png" alt-text="Hizmet etiketi ekleme hakkında örnek."border="true":::
+
+4. Sağ bölmede yeni bir pencere açılır.
+    1.  Kaynak seçin: **hizmet etiketi**
+    1.  Kaynak hizmet etiketi: **ActionGroup**
+    1.  **Ekle**'ye tıklayın.
+    
+    :::image type="content" source="media/action-groups/action-group-service-tag.png" alt-text="Hizmet etiketi ekleme hakkında örnek."border="true":::
+
+ActionGroup için **hizmet etiketi** kullanımı, IP adresleri için sık sık güncelleştirmelerin karmaşıklığını en aza indirmenize yardımcı olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [SMS uyarı davranışı](./alerts-sms-behavior.md)hakkında daha fazla bilgi edinin.  

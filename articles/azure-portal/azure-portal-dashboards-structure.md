@@ -12,19 +12,19 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 12/20/2019
 ms.author: mblythe
-ms.openlocfilehash: b77c9cfd6e4d1721839acb9db5469b5f0ac73a48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 014463fb0a5af639ff0da5f8db2805f9796fd928
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90561610"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072484"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure Panolarının yapısı
 Bu belge, örnek olarak aşağıdaki Panoyu kullanarak bir Azure panosunun yapısını gösterir:
 
 ![örnek pano](./media/azure-portal-dashboards-structure/sample-dashboard.png)
 
-Paylaşılan [Azure panoları kaynak olduğundan](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), bu pano JSON olarak temsil edilebilir.  Aşağıdaki JSON, yukarıda görselleştirilen panoyu temsil eder.
+Paylaşılan [Azure panoları kaynak olduğundan](../azure-resource-manager/management/overview.md), bu pano JSON olarak temsil edilebilir.  Aşağıdaki JSON, yukarıda görselleştirilen panoyu temsil eder.
 
 ```json
 
@@ -303,7 +303,7 @@ Ad, abonelik, kaynak türü veya kaynak grubu bilgilerini içermeyen kaynak KIML
 Tüm panolar __Microsoft. Portal/panolar__türündedir.
 
 ### <a name="the-location-property"></a>Location özelliği
-Diğer kaynakların aksine, panolar çalışma zamanı bileşenine sahip değildir.  Panolar için konum, panonun JSON gösterimini depolayan birincil coğrafi konumu gösterir. Değer, [abonelikler kaynağında konumlar API 'si](https://docs.microsoft.com/rest/api/resources/subscriptions)kullanılarak getirilen konum kodlarından biri olmalıdır.
+Diğer kaynakların aksine, panolar çalışma zamanı bileşenine sahip değildir.  Panolar için konum, panonun JSON gösterimini depolayan birincil coğrafi konumu gösterir. Değer, [abonelikler kaynağında konumlar API 'si](/rest/api/resources/subscriptions)kullanılarak getirilen konum kodlarından biri olmalıdır.
 
 ### <a name="the-tags-property"></a>Tags özelliği
 Etiketler, Azure kaynaklarının, kaynağınızı rastgele ad değer çiftleriyle düzenlemenize olanak sağlayan ortak bir özelliktir. Panolar için __gizli-title__adlı bir özel etiket vardır. Panonuz bu özelliği doldurduktan sonra, portalda panonuz için görünen ad olarak kullanılır. Azure kaynak kimlikleri yeniden adlandırılamaz, ancak Etiketler olabilir. Bu etiket, panonuzda bir ekran adı vermek için bir yol sağlar.

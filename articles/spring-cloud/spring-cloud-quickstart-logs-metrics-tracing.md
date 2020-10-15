@@ -8,17 +8,17 @@ ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a5b4d0591f58d2ce4d3d2e9055c70fdc7118e123
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c879b890f9527ea0eee3d702db6f04a38432aa00
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91326261"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093066"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>Hızlı başlangıç: Günlükler, ölçümler ve izleme ile Azure yay bulut uygulamalarını Izleme
 
 ::: zone pivot="programming-language-csharp"
-Azure Spring Cloud 'daki yerleşik izleme özelliği sayesinde, karmaşık sorunları ayıklayabilir ve izleyebilirsiniz. Azure Spring Cloud, Azure 'ın [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) [Şirket içinde dağıtılmış izlemeyi](https://steeltoe.io/docs/3/tracing/distributed-tracing) tümleştirmektedir. Bu tümleştirme, Azure portal güçlü Günlükler, ölçümler ve dağıtılmış izleme yeteneği sağlar.
+Azure Spring Cloud 'daki yerleşik izleme özelliği sayesinde, karmaşık sorunları ayıklayabilir ve izleyebilirsiniz. Azure Spring Cloud, Azure 'ın [Application Insights](../azure-monitor/app/app-insights-overview.md) [Şirket içinde dağıtılmış izlemeyi](https://steeltoe.io/docs/3/tracing/distributed-tracing) tümleştirmektedir. Bu tümleştirme, Azure portal güçlü Günlükler, ölçümler ve dağıtılmış izleme yeteneği sağlar.
 
 Aşağıdaki yordamlarda, önceki hızlı başlangıçlarda dağıttığınız örnek uygulamayla günlük akışı, Log Analytics, ölçüm ve dağıtılmış Izlemenin nasıl kullanılacağı açıklanmaktadır.
 
@@ -69,7 +69,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
     
 1. Görüntüyü uyarı ve hata günlükleriyle sınırlayan WHERE yan tümcesini kaldırmak için sorguyu düzenleyin.
 
-1. Ardından `Run` öğesini seçin ve günlükleri görürsünüz. Sorgu yazma hakkında daha fazla bilgi için bkz. [Azure Log Analytics docs](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries) .
+1. Ardından `Run` öğesini seçin ve günlükleri görürsünüz. Sorgu yazma hakkında daha fazla bilgi için bkz. [Azure Log Analytics docs](../azure-monitor/log-query/get-started-queries.md) .
 
    [![Günlük Analizi sorgusu-Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png#lightbox)
 
@@ -107,7 +107,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-Azure Spring Cloud 'daki yerleşik izleme özelliği sayesinde, karmaşık sorunları ayıklayabilir ve izleyebilirsiniz. Azure Spring Cloud, Azure 'ın [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) [yay bulutuna](https://spring.io/projects/spring-cloud-sleuth) karşı tümleşir. Bu tümleştirme, Azure portal güçlü Günlükler, ölçümler ve dağıtılmış izleme yeteneği sağlar. Aşağıdaki yordamlarda, dağıtılmış Plımetrik uygulamalarıyla günlük akışı, Log Analytics, ölçüm ve dağıtılmış izlemenin nasıl kullanılacağı açıklanmaktadır.
+Azure Spring Cloud 'daki yerleşik izleme özelliği sayesinde, karmaşık sorunları ayıklayabilir ve izleyebilirsiniz. Azure Spring Cloud, Azure 'ın [Application Insights](../azure-monitor/app/app-insights-overview.md) [yay bulutuna](https://spring.io/projects/spring-cloud-sleuth) karşı tümleşir. Bu tümleştirme, Azure portal güçlü Günlükler, ölçümler ve dağıtılmış izleme yeteneği sağlar. Aşağıdaki yordamlarda, dağıtılmış Plımetrik uygulamalarıyla günlük akışı, Log Analytics, ölçüm ve dağıtılmış izlemenin nasıl kullanılacağı açıklanmaktadır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -165,7 +165,7 @@ Azure Toolkit for IntelliJ kullanarak günlükleri almak için:
 
    [![Günlük Analizi girişi ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
     
-1. Ardından filtrelenmiş günlükleri görürsünüz. Sorgu yazma hakkında daha fazla bilgi için bkz. [Azure Log Analytics docs](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries) .
+1. Ardından filtrelenmiş günlükleri görürsünüz. Sorgu yazma hakkında daha fazla bilgi için bkz. [Azure Log Analytics docs](../azure-monitor/log-query/get-started-queries.md) .
 
    [![Günlük Analizi sorgusu ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png#lightbox)
 

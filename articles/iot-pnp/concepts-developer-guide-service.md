@@ -7,12 +7,12 @@ ms.date: 10/01/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 431ea692ac734a875e27cb8ed4b015155e0e9b91
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 7523dd39303a211772dd39eef811f55739336ff0
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042431"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093710"
 ---
 # <a name="iot-plug-and-play-service-developer-guide"></a>IoT Tak ve Kullan hizmeti Geliştirici Kılavuzu
 
@@ -30,14 +30,14 @@ Hizmet SDK 'Ları, masaüstü veya Web uygulaması gibi bir çözümden cihaz bi
 
 - IoT Hub hizmeti istemcisi. Bu hizmet, model KIMLIĞINI bir Device ikizi özelliği olarak kullanıma sunar.
 
-- Dijital TWINS hizmeti istemcisi. Yeni dijital TWINS API 'SI, bileşenler, Özellikler ve komutlar gibi [dijital TWINS tanım dili (DTDL)](concepts-digital-twin.md) model yapıları üzerinde çalışır. Dijital Ikizi API 'Leri, çözüm oluşturucuların IoT Tak ve Kullan çözümleri oluşturmalarına daha kolay hale getirir.
+- Dijital TWINS istemcisi. Yeni dijital TWINS API 'SI, bileşenler, Özellikler ve komutlar gibi [dijital TWINS tanım dili (DTDL)](concepts-digital-twin.md) model yapıları üzerinde çalışır. Dijital Ikizi API 'Leri, çözüm oluşturucuların IoT Tak ve Kullan çözümleri oluşturmalarına daha kolay hale getirir.
 
-| Platform | IoT Hub hizmeti istemcisi | Dijital TWINS hizmet istemcisi |
-| -------- | ---------------------- | ---------------------------- |
-| .NET     | [Belgeler](/dotnet/api/microsoft.azure.devices) <br/> [Örnekler](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/PnpServiceSamples)| [Örnekler](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/DigitalTwinClientSamples) |
-| Java     | [Belgeler](/java/api/com.microsoft.azure.sdk.iot.service.devicetwin.devicetwindevice?preserve-view=true&view=azure-java-stable) <br/> [Örnekler](https://github.com/Azure/azure-iot-sdk-java/blob/master/service/iot-service-samples/pnp-service-sample)| [Örnekler](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/digitaltwin-service-samples) |
-| Node.js  | [Belgeler](/javascript/api/azure-iothub/twin?preserve-view=true&view=azure-node-latest) <br/> [Örnek](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/twin.js)| [Belgeler](/javascript/api/azure-iot-digitaltwins-service/?preserve-view=true&view=azure-node-latest) <br/> [Örnek](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/get_digital_twin.js) |
-| Python   | [Belgeler](/python/api/azure-iot-hub/azure.iot.hub.iothubregistrymanager?preserve-view=true&view=azure-python) <br/> [Örnek](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/iothub_registry_manager_method_sample.py)| [Belgeler](/python/api/azure-iot-hub/azure.iot.hub.iothubdigitaltwinmanager?preserve-view=true&view=azure-python) <br/> [Örnek](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/get_digital_twin_sample.py) |
+| Platform | Belgeler | Örnekler |
+| -------- | ------------- | ------- |
+| .NET     | [Başvuru](/dotnet/api/microsoft.azure.devices) | [Hizmet istemcisi](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/PnpServiceSamples) </br> [Digital Twins](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/DigitalTwinClientSamples) |
+| Java     | [Başvuru](/java/api/com.microsoft.azure.sdk.iot.service.devicetwin.devicetwindevice?preserve-view=true&view=azure-java-stable) <br/> | [Hizmet istemcisi](https://github.com/Azure/azure-iot-sdk-java/blob/master/service/iot-service-samples/pnp-service-sample) </br>[Digital Twins](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/digitaltwin-service-samples) |
+| Node.js  | [Başvuru](/javascript/api/azure-iothub?preserve-view=true&view=azure-node-latest) | [Hizmet istemcisi](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/twin.js) </br> [Digital Twins](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/get_digital_twin.js) |
+| Python   | [Başvuru](/python/api/azure-iot-hub/azure.iot.hub?preserve-view=true&view=azure-python) <br/> | [Hizmet istemcisi](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/iothub_registry_manager_method_sample.py) </br> [Digital Twins](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/get_digital_twin_sample.py) |
 
 ## <a name="iot-hub-service-client-examples"></a>IoT Hub hizmeti istemci örnekleri
 
@@ -161,7 +161,7 @@ catch (DeviceNotFoundException)
 }
 ```
 
-## <a name="digital-twin-examples"></a>Digital ikizi örnekleri
+## <a name="iot-hub-digital-twin-examples"></a>IoT Hub Digital ikizi örnekleri
 
 Dijital TWINS kullanarak cihaz durumuyla etkileşim kurmak için **Digitaltwınclient** sınıfını kullanırsınız. Cihazın [Dtdl](concepts-digital-twin.md) modeli, cihazın uyguladığı özellikleri ve komutları tanımlar.
 
@@ -369,43 +369,6 @@ catch (HttpOperationException e)
         Console.WriteLine("Unable to execute command getMaxMinReport on component thermostat1.");
     }
 }
-```
-
-## <a name="rest-api"></a>REST API
-
-Aşağıdaki örneklerde, bağlı bir IoT Tak ve Kullan cihazından etkileşimde bulunmak için IoT Hub REST API kullanılmaktadır. API 'nin geçerli sürümü `2020-09-30` . `?api-version=2020-09-30`Rest PI çağrılarınızın sonuna ekleyin.
-
-> [!NOTE]
-> Modül TWINS 'leri Şu anda API tarafından desteklenmiyor `digitalTwins` .
-
-Termostat cihazınız çağrılırsa `t-123` , REST API Get çağrısıyla cihazınız tarafından uygulanan tüm arabirimlerin tüm özelliklerini alırsınız:
-
-```REST
-GET /digitalTwins/t-123
-```
-
-Bu çağrıda, `$metadata.$model` cihaz tarafından duyurulan model kimliğiyle JSON özelliği dahil edilir.
-
-Tüm arabirimlerde tüm özelliklere, `GET /DigitalTwin/{device-id}` cihazın tanımlayıcısı olan REST API şablonuyla erişilir `{device-id}` :
-
-```REST
-GET /digitalTwins/{device-id}
-```
-
-IoT Tak ve Kullan cihaz komutlarını doğrudan çağırabilirsiniz. `Thermostat` `t-123` Cihazdaki bileşen bir `restart` komuta sahipse, bunu bir REST API Post çağrısıyla çağırabilirsiniz:
-
-```REST
-POST /digitalTwins/t-123/components/Thermostat/commands/restart
-```
-
-Genel olarak, bu REST API şablonu aracılığıyla komutlar çağrılabilir:
-
-- `device-id`: cihaz için tanımlayıcı.
-- `component-name`: cihaz yetenek modelindeki Implements bölümünde arabirimin adı.
-- `command-name`: komutun adı.
-
-```REST
-/digitalTwins/{device-id}/components/{component-name}/commands/{command-name}
 ```
 
 ## <a name="read-device-telemetry"></a>Cihaz telemetrisini okuma

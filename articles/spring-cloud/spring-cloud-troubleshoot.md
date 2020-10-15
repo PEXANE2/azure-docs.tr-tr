@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 98b7f9b1ed5e09a1f731e45f8ca2d148a4084986
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5346858aa119f11ef34916b24c70c966286ab86
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336165"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089052"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Yaygın Azure Spring Cloud sorunlarını giderme
 
@@ -68,7 +68,7 @@ Uygulama kilitlenmelerinden hata ayıklaması yaparken, uygulamanın çalışma 
 
 
 
-Azure Log Analytics hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de Log Analytics kullanmaya başlama](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal).
+Azure Log Analytics hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de Log Analytics kullanmaya başlama](../azure-monitor/log-query/get-started-portal.md).
 ::: zone-end
 
 ### <a name="my-application-experiences-high-cpu-usage-or-high-memory-usage"></a>Uygulamam yüksek CPU kullanımı veya yüksek bellek kullanımıyla karşılaşıyor
@@ -91,7 +91,7 @@ Daha fazla bilgi için bkz. [Azure yay bulutu Için ölçümler](spring-cloud-co
 
 Tüm örnekler çalışıyor ve çalışıyorsa, uygulama günlüklerinizi sorgulamak ve kod mantığınızı gözden geçirmek için Azure Log Analytics 'ye gidin. Bu, bunlardan herhangi birinin ölçek Bölümlendirmeyi etkileyebileceğini görmenizi sağlayacak. Daha fazla bilgi için bkz. [Tanılama ayarlarıyla günlükleri ve ölçümleri çözümleme](diagnostic-services.md).
 
-Azure Log Analytics hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de Log Analytics kullanmaya başlama](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal). [Kusto sorgu dilini](https://docs.microsoft.com/azure/kusto/query/)kullanarak günlükleri sorgulayın.
+Azure Log Analytics hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de Log Analytics kullanmaya başlama](../azure-monitor/log-query/get-started-portal.md). [Kusto sorgu dilini](/azure/kusto/query/)kullanarak günlükleri sorgulayın.
 
 ::: zone pivot="programming-language-java"
 ### <a name="checklist-for-deploying-your-spring-application-to-azure-spring-cloud"></a>Spring uygulamanızı Azure Spring Cloud 'a dağıtmaya yönelik denetim listesi
@@ -113,14 +113,14 @@ Uygulamanızı eklemeden önce, aşağıdaki ölçütlere uyduğundan emin olun:
 
 Azure portal kullanarak bir Azure Spring Cloud Service örneği ayarlarken, Azure yay bulutu sizin için doğrulama gerçekleştirir.
 
-Ancak Azure [CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) veya [Azure Resource Manager şablonunu](https://docs.microsoft.com/azure/azure-resource-manager/)kullanarak Azure yay bulut hizmeti örneğini ayarlamaya çalışırsanız şunları doğrulayın:
+Ancak Azure [CLI](/cli/azure/get-started-with-azure-cli) veya [Azure Resource Manager şablonunu](../azure-resource-manager/index.yml)kullanarak Azure yay bulut hizmeti örneğini ayarlamaya çalışırsanız şunları doğrulayın:
 
 * Abonelik etkin.
 * Konum, Azure Spring Cloud tarafından [desteklenir](spring-cloud-faq.md) .
 * Örnek için kaynak grubu zaten oluşturulmuş.
 * Kaynak adı adlandırma kuralına uyar. Yalnızca küçük harf, sayı ve kısa çizgi içermelidir. İlk karakter harf olmalıdır. Son karakter harf veya sayı olmalıdır. Değer, 2 ile 32 karakter arasında olmalıdır.
 
-Azure yay bulut hizmeti örneğini Kaynak Yöneticisi şablonunu kullanarak ayarlamak istiyorsanız, önce [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlamak](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)için bölümüne bakın.
+Azure yay bulut hizmeti örneğini Kaynak Yöneticisi şablonunu kullanarak ayarlamak istiyorsanız, önce [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlamak](../azure-resource-manager/templates/template-syntax.md)için bölümüne bakın.
 
 Azure Spring Cloud Service örneğinin adı, altında bir alt etki alanı adı istemek için kullanılır, bu `azureapps.io` nedenle ad var olan bir adla çakışırsa kurulum başarısız olur. Etkinlik günlüklerinde daha fazla ayrıntı bulabilirsiniz.
 
@@ -129,7 +129,7 @@ Azure Spring Cloud Service örneğinin adı, altında bir alt etki alanı adı i
 
 .NET Core Steeltoe uygulamasının bir *. zip* dosyasını Azure portal veya Kaynak Yöneticisi şablonunu kullanarak karşıya yükleyemezsiniz.
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)kullanarak uygulama paketinizi dağıttığınızda, Azure CLI dağıtım ilerlemesini düzenli aralıklarla yoklar ve sonunda dağıtım sonucunu görüntüler.
+[Azure CLI](/cli/azure/get-started-with-azure-cli)kullanarak uygulama paketinizi dağıttığınızda, Azure CLI dağıtım ilerlemesini düzenli aralıklarla yoklar ve sonunda dağıtım sonucunu görüntüler.
 
 Uygulamanızın doğru *. zip* dosya biçiminde paketlendiğinden emin olun. Doğru paketlenmemişse, işlem yanıt vermeyi durdurur veya bir hata iletisi alırsınız.
 ::: zone-end
@@ -139,7 +139,7 @@ Uygulamanızın doğru *. zip* dosya biçiminde paketlendiğinden emin olun. Do�
 
 Java arşiv dosyası (JAR)/Source paketini Azure portal veya Kaynak Yöneticisi şablonunu kullanarak karşıya yükleyemezsiniz.
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)kullanarak uygulama paketinizi dağıttığınızda, Azure CLI dağıtım ilerlemesini düzenli aralıklarla yoklar ve sonunda dağıtım sonucunu görüntüler.
+[Azure CLI](/cli/azure/get-started-with-azure-cli)kullanarak uygulama paketinizi dağıttığınızda, Azure CLI dağıtım ilerlemesini düzenli aralıklarla yoklar ve sonunda dağıtım sonucunu görüntüler.
 
 Yoklama kesintiye uğrarsa, yine de şu komutu kullanarak dağıtım günlüklerini getirebilirsiniz:
 
@@ -153,7 +153,7 @@ Uygulamanızın doğru [YÜRÜTÜLEBILIR jar biçiminde](https://docs.spring.io/
 
 Azure portal veya Kaynak Yöneticisi şablonunu kullanarak JAR/kaynak paketini karşıya yükleyemezsiniz.
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)kullanarak uygulama paketinizi dağıttığınızda, Azure CLI dağıtım ilerlemesini düzenli aralıklarla yoklar ve sonunda dağıtım sonucunu görüntüler.
+[Azure CLI](/cli/azure/get-started-with-azure-cli)kullanarak uygulama paketinizi dağıttığınızda, Azure CLI dağıtım ilerlemesini düzenli aralıklarla yoklar ve sonunda dağıtım sonucunu görüntüler.
 
 Yoklama kesintiye uğrarsa, yine de şu komutu kullanarak derleme ve dağıtım günlüklerini getirebilirsiniz:
 
@@ -171,7 +171,7 @@ Mevcut bir yay bulut tabanlı çözümünü Azure 'a geçiriyorsanız, Azure Spr
 
 Ayrıca Azure Log Analytics _hizmet kayıt defteri_ istemci günlüklerine bakabilirsiniz. Daha fazla bilgi için bkz. [Tanılama ayarlarıyla günlükleri ve ölçümleri çözümleme](diagnostic-services.md)
 
-Azure Log Analytics hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de Log Analytics kullanmaya başlama](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal). [Kusto sorgu dilini](https://docs.microsoft.com/azure/kusto/query/)kullanarak günlükleri sorgulayın.
+Azure Log Analytics hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de Log Analytics kullanmaya başlama](../azure-monitor/log-query/get-started-portal.md). [Kusto sorgu dilini](/azure/kusto/query/)kullanarak günlükleri sorgulayın.
 
 ### <a name="i-want-to-inspect-my-applications-environment-variables"></a>Uygulamamın ortam değişkenlerini incelemek istiyorum
 
@@ -231,7 +231,7 @@ Uygulama paketinizdeki _JMX_ 'in etkin olduğunu görmek için işaretleyin. Bu 
 </dependency>
 ```
 
-Uygulama günlüklerinizin bir depolama hesabına arşivlenmesi, ancak Azure Log Analytics 'e gönderilmemesi durumunda, [çalışma alanınızı doğru şekilde ayarlayıp ayarlamadığını](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)kontrol edin. Ücretsiz bir Azure Log Analytics katmanı kullanıyorsanız, [ücretsiz katmanın bir hizmet düzeyi sözleşmesi (SLA) sağlamayacağını](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/)unutmayın.
+Uygulama günlüklerinizin bir depolama hesabına arşivlenmesi, ancak Azure Log Analytics 'e gönderilmemesi durumunda, [çalışma alanınızı doğru şekilde ayarlayıp ayarlamadığını](../azure-monitor/learn/quick-create-workspace.md)kontrol edin. Ücretsiz bir Azure Log Analytics katmanı kullanıyorsanız, [ücretsiz katmanın bir hizmet düzeyi sözleşmesi (SLA) sağlamayacağını](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/)unutmayın.
 ::: zone-end
 
 ## <a name="next-steps"></a>Sonraki adımlar
