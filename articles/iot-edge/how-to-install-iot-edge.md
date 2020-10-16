@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: kgremban
-ms.openlocfilehash: 3a02459f5b92aa7d708c29c737ed9428ed14215a
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 7ab62b04f8bea76c7efb587665f87ccaf123da24
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045695"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109009"
 ---
 # <a name="install-or-uninstall-the-azure-iot-edge-runtime"></a>Azure IoT Edge çalışma zamanını yükleme veya kaldırma
 
@@ -24,7 +24,7 @@ IoT Edge bir cihaz kurmak için iki adım vardır. İlk adım, bu makalede ele a
 
 Bu makalede, Azure IoT Edge çalışma zamanını Linux veya Windows cihazlarına yüklemek için gereken adımlar listelenmektedir. Windows cihazlarında, Linux kapsayıcıları veya Windows kapsayıcıları kullanma ek bir seçeneğiniz vardır. Şu anda, üretim senaryolarında Windows 'daki Windows kapsayıcıları önerilir. Windows üzerinde Linux kapsayıcıları, özellikle de Linux cihazlarına dağıtmak üzere bir Windows BILGISAYARı geliştiriyorsanız geliştirme ve test senaryoları için yararlıdır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Şu anda üretim senaryolarında desteklenen işletim sistemleri hakkında en son bilgiler için, bkz. [Azure IoT Edge desteklenen sistemler](support.md#operating-systems)
 
@@ -83,6 +83,12 @@ Linux kapsayıcılarıyla IoT Edge, [Docker Desktop gereksinimlerini](https://do
 Azure IoT Edge, [OCI uyumlu](https://www.opencontainers.org/) bir kapsayıcı altyapısına bağlıdır. Cihazınızın kapsayıcıları destekleyeceği şekilde emin olun.
 
 Bir sanal makineye IoT Edge yüklüyorsanız, iç içe sanallaştırmayı etkinleştirin ve en az 2 GB bellek ayırın. Hyper-V için 2. nesil sanal makinelerde varsayılan olarak etkinleştirilmiş iç içe sanallaştırma vardır. VMware için, sanal makinenizde özelliği etkinleştirmek üzere bir geçiş düğmesi vardır.
+
+IoT çekirdek cihazına IoT Edge yüklüyorsanız, cihazınızda Windows kapsayıcılarının desteklenip desteklenmediğini denetlemek için [uzak bir PowerShell oturumunda](/windows/iot-core/connect-your-device/powershell) aşağıdaki komutu kullanın:
+
+```powershell
+Get-Service vmcompute
+```
 
 ---
 
@@ -160,6 +166,9 @@ Yüklemek istediğiniz sürüm listelenmemişse, sonraki bölümde yer alan [çe
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
+>[!TIP]
+>IoT çekirdek cihazları için, uzak bir PowerShell oturumu kullanarak yükleme komutlarının çalıştırılmasını öneririz. Daha fazla bilgi için bkz. [Windows IoT Için PowerShell kullanma](/windows/iot-core/connect-your-device/powershell).
+
 1. PowerShell'i yönetici olarak çalıştırın.
 
    PowerShell (x86) değil, PowerShell için AMD64 oturumu kullanın. Hangi oturum türünü kullandığınızı bilmiyorsanız, aşağıdaki komutu çalıştırın:
@@ -186,7 +195,7 @@ Yüklemek istediğiniz sürüm listelenmemişse, sonraki bölümde yer alan [çe
    Deploy-IoTEdge -ContainerOs Linux
    ```
 
-3. Bu noktada, çıkış sizden yeniden başlatmanız istenebilir. Bu durumda cihazınızı şimdi yeniden başlatın.
+3. Bu noktada, IoT çekirdek cihazları otomatik olarak yeniden başlatılabilir. Windows 10 veya Windows Server cihazları yeniden başlatmanızı isteyebilir. Bu durumda cihazınızı şimdi yeniden başlatın.
 
 Bir cihaza IoT Edge yüklediğinizde, aşağıdakileri de içeren ek parametreleri kullanarak işlemi değiştirebilirsiniz:
 
@@ -321,6 +330,8 @@ IoT Edge yüklemesini Windows cihazınızdan kaldırmak istiyorsanız, bir yöne
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
 Uninstall-IoTEdge
 ```
+
+`Uninstall-IoTEdge`Komut Windows IoT Core üzerinde çalışmaz. IoT Edge kaldırmak için Windows IoT çekirdek görüntünüzü yeniden dağıtmanız gerekir.
 
 Kaldırma seçenekleri hakkında daha fazla bilgi için komutunu kullanın `Get-Help Uninstall-IoTEdge -full` .
 

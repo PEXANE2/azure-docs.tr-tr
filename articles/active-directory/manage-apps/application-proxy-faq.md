@@ -1,5 +1,5 @@
 ---
-title: Azure AD Uygulama Ara Sunucusu sık sorulan sorular | Microsoft Docs
+title: Azure Active Directory Uygulama Ara Sunucusu sık sorulan sorular
 description: Şirket içi uygulamaları uzak kullanıcılara yayımlamak için Azure AD Uygulama Ara Sunucusu kullanma hakkında sık sorulan soruların (SSS) yanıtlarını öğrenin.
 services: active-directory
 author: kenwith
@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: edf51dad768e8d8b5ea5dc6c1eff88f43f0f6b70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28c34e97fa340b6fb95877ebece740897ae72e7a
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589172"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104572"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) uygulama proxy 'Si hakkında sık sorulan sorular
 
@@ -84,7 +84,6 @@ Uygulama proxy 'Si Windows Server 2012 R2 veya üstünü gerektirir. Windows Ser
     HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
     ```
 
-
 ## <a name="application-configuration"></a>Uygulama yapılandırması
 
 ### <a name="i-am-receiving-an-error-about-an-invalid-certificate-or-possible-wrong-password"></a>Geçersiz bir sertifika veya hatalı parola ile ilgili bir hata alıyorum
@@ -124,6 +123,12 @@ Daha fazla bilgi için bkz. [uygulama proxy 'si Ile Kerberos kısıtlanmış tem
 ### <a name="does-ntlm-authentication-work-with-azure-ad-application-proxy"></a>NTLM kimlik doğrulaması Azure AD Uygulama Ara Sunucusu ile çalışıyor mu?
 
 NTLM kimlik doğrulaması, ön kimlik doğrulama veya çoklu oturum açma yöntemi olarak kullanılamaz. NTLM kimlik doğrulaması yalnızca istemci ile yayınlanan web uygulaması arasında doğrudan anlaşılırken kullanılabilir. NTLM kimlik doğrulamasının kullanılması genellikle tarayıcıda bir oturum açma isteminin görünmesine neden olur.
+
+### <a name="can-i-use-the-logon-identity-on-premises-user-principal-name-or-on-premises-sam-account-name-in-a-b2b-iwa-single-sign-on-scenario"></a>"Şirket içi Kullanıcı asıl adı" veya "Şirket içi SAM hesap adı" oturum açma kimliğini bir B2B ıWA çoklu oturum açma senaryosunda kullanabilir miyim?
+
+Hayır, Azure AD 'deki bir Konuk Kullanıcı yukarıda belirtilen oturum açma kimliklerinden herhangi biri için gerekli olan özniteliğe sahip olmadığından bu işe yaramayacaktır.
+
+Bu durumda, "Kullanıcı asıl adı" na geri dönüş olur. B2B senaryosu hakkında daha fazla bilgi için lütfen [Azure AD 'de B2B kullanıcılarına şirket içi uygulamalarınıza erişim verme](../external-identities/hybrid-cloud-to-on-premises.md)konusunu okuyun.
 
 ## <a name="pass-through-authentication"></a>Doğrudan kimlik doğrulama
 
@@ -198,5 +203,5 @@ Bu senaryo doğrudan desteklenmez. Bu senaryoya ilişkin seçenekleriniz şunlar
 1. Hem HTTP hem de HTTPS URL 'Lerini joker karakterle ayrı uygulamalar olarak yayımlayın, ancak her birine farklı bir özel etki alanı verin. Bu yapılandırma, farklı dış URL 'ler olduğundan çalışacaktır.
 
 2. HTTPS URL 'sini bir joker uygulama aracılığıyla yayımlayın. HTTP uygulamalarını bu uygulama proxy PowerShell cmdlet 'lerini kullanarak ayrı ayrı yayımlayın:
-   - [Uygulama proxy 'Si uygulama yönetimi](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management)
-   - [Uygulama proxy Bağlayıcısı yönetimi](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management)
+   - [Uygulama proxy 'Si uygulama yönetimi](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management&preserve-view=true)
+   - [Uygulama proxy Bağlayıcısı yönetimi](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management&preserve-view=true)

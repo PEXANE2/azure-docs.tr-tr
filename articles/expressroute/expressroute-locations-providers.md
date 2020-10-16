@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: 96b0123b4e81b4f3402de00e7b6a0adac85d00b8
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 820fec5fd782d66e5b681f5fbb9bbb8f8d4f6648
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093223"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106527"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -96,7 +96,7 @@ Aşağıdaki tabloda bağlantı konumları ve her konum için hizmet sağlayıc�
 | **Dubai** | [PCCS](https://www.pacificcontrols.net/cloudservices/index.html) | 3 | BAE Kuzey | yok | Etisalat UAE |
 | **Dubai2** | [du datamena](http://datamena.com/solutions/data-centre) | 3 | BAE Kuzey | yok | DE-CIX, du datamena, Megaport, turuncu, Cumxcom |
 | **Dublin** | [Equinix DB3](https://www.equinix.com/locations/europe-colocation/ireland-colocation/dublin-data-centers/db3/) | 1 | Kuzey Avrupa | 10G, 100G | CenturyLink Cloud Connect, Colt, EAR, Equinix, GEANT, Eunetçalışmalar, ınterxiyon, Megaport |
-| **Frankfurt** | [Interxiyon FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | Almanya Orta Batı | 10G, 100G | &T Netbono, CenturyLink Cloud Connect, Colt, DE-CIX, Equinix, Eunetçalışma, GEANT, ınterxiyon, Megaport, turuncu, Telia taşıyıcısı, T-Systems |
+| **Frankfurt** | [Interxiyon FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | Almanya Orta Batı | 10G, 100G | &T Netbono, CenturyLink Cloud Connect, Colt, DE-CIX, Equinix, Eunetçalışma, GEANT, Intercloud, ınterxiyon, Megaport, turuncu, Telia taşıyıcısı, T-Systems |
 | **Cenevre** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | İsviçre Batı | 10G, 100G | Equinix, Megaport |
 | **Hong Kong** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | Doğu Asya | 'Yi | Aryaka Networks, Ingiliz Teletası, CenturyLink Cloud Connect, Başkan, Çin telekomünikasyon küresel, Equinx, Intercloud, Megaport, NTT Communications, turuncu, PCCW küresel Limited, Tata Iletişimleri, Telia taşıyıcısı, Verizon |
 | **Hong Kong2** | [MEGA-ı](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | Doğu Asya | 'Yi | Çin Mobile International, Çin telekomünikasyon küresel, PCFA küresel sınırlı, SingTel |

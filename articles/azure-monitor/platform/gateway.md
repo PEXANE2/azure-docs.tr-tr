@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 94c668e7ffaff81fed9c2e511bc38239069fa43e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc4d1b852b0a498de0834731b2b1cd1225b9748b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87305219"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107785"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics ağ geçidini kullanarak internet erişimi olmadan bilgisayarları bağlama
 
@@ -141,7 +141,7 @@ Kurulum Sihirbazı 'nı kullanarak bir ağ geçidi yüklemek için aşağıdaki 
    ![Ağ geçidi proxy 'sinin yapılandırmasının ekran görüntüsü](./media/gateway/gateway-wizard02.png)
 
 1. Microsoft Update etkinleştirilmemişse, Microsoft Update sayfası görüntülenir ve etkinleştirmeyi seçebilirsiniz. Bir seçim yapın ve ardından **İleri**' yi seçin. Aksi halde, bir sonraki adıma devam edin.
-1. **Hedef klasör** sayfasında, C:\Program Files\oms Gateway varsayılan klasörünü bırakın ya da ağ geçidini yüklemek istediğiniz konumu girin. Ardından **İleri**’yi seçin.
+1. **Hedef klasör** sayfasında, C:\Program Files\oms Gateway varsayılan klasörünü bırakın ya da ağ geçidini yüklemek istediğiniz konumu girin. Sonra **İleri**’yi seçin.
 1. **Yüklemeye hazırlanma** sayfasında, **yükler**' i seçin. Kullanıcı hesabı denetimi, yüklemek için izin isterse, **Evet**' i seçin.
 1. Kurulum bittikten sonra **son**' u seçin. Hizmetin çalıştığını doğrulamak için, Services. msc ek bileşenini açın ve **OMS ağ geçidinin** hizmet listesinde göründüğünü ve durumunun **çalıştığını**doğrulayın.
 
@@ -206,7 +206,7 @@ Windows Server 2016 Ağ Yükü Dengeleme kümesini nasıl tasarlayacağınızı 
 Bir Azure Load Balancer tasarlamayı ve dağıtmayı öğrenmek için bkz. Azure Load Balancer nedir [?](../../load-balancer/load-balancer-overview.md). Temel yük dengeleyiciyi dağıtmak için, **arka uç sunucuları oluşturma**bölümünde özetlenen adımları dışlayarak bu [hızlı](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) başlangıçta özetlenen adımları izleyin.   
 
 > [!NOTE]
-> **Temel SKU 'yu**kullanarak Azure Load Balancer yapılandırma, Azure sanal makinelerinin bir kullanılabilirlik kümesine ait olmasını gerektirir. Kullanılabilirlik kümeleri hakkında daha fazla bilgi edinmek için bkz. [Azure 'Da Windows sanal makinelerinin kullanılabilirliğini yönetme](../../virtual-machines/windows/manage-availability.md). Mevcut sanal makineleri bir kullanılabilirlik kümesine eklemek için [Azure Resource Manager VM kullanılabilirlik kümesi ayarla](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)' ya bakın.
+> **Temel SKU 'yu**kullanarak Azure Load Balancer yapılandırma, Azure sanal makinelerinin bir kullanılabilirlik kümesine ait olmasını gerektirir. Kullanılabilirlik kümeleri hakkında daha fazla bilgi edinmek için bkz. [Azure 'Da Windows sanal makinelerinin kullanılabilirliğini yönetme](../../virtual-machines/manage-availability.md). Mevcut sanal makineleri bir kullanılabilirlik kümesine eklemek için [Azure Resource Manager VM kullanılabilirlik kümesi ayarla](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)' ya bakın.
 > 
 
 Yük dengeleyici oluşturulduktan sonra, trafiği bir veya daha fazla ağ geçidi sunucusuna dağıtan bir arka uç havuzunun oluşturulması gerekir. Hızlı başlangıç makalesi bölümünde açıklanan adımları izleyerek [Yük Dengeleyici için kaynak oluşturma](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)bölümüne bakın.  
@@ -389,4 +389,3 @@ Yardım almak için portalın sağ üst köşesindeki soru işareti simgesini se
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bağlı kaynaklardan veri toplamak için [veri kaynakları ekleyin](./agent-data-sources.md) ve verileri Log Analytics çalışma alanınızda depolayın.
-

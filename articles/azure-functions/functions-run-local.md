@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 8dfc1471955a6d10199a078922151ff3aeda4294
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 094449ddcbfc2baf41657d00de030ef3c1cddbb5
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88929507"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108499"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools ile çalışma
 
@@ -166,7 +166,7 @@ func init MyFunctionProj
 ```
 
 >[!IMPORTANT]
-> Java, ilk HTTP tetiklemeli işlevinizle birlikte yerel Işlevler projesini oluşturmak için bir Maven ıbetype kullanır. Java projenizi oluşturmak için şu komutu kullanın: `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` . Maven arşiv EType kullanan bir örnek için bkz. [komut satırı hızlı başlangıç](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java).  
+> Java, ilk HTTP tetiklemeli işlevinizle birlikte yerel Işlevler projesini oluşturmak için bir Maven ıbetype kullanır. Java projenizi oluşturmak için şu komutu kullanın: `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` . Maven arşiv EType kullanan bir örnek için bkz. [komut satırı hızlı başlangıç](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java).  
 
 Bir proje adı sağladığınızda, bu ada sahip yeni bir klasör oluşturulur ve başlatılır. Aksi takdirde, geçerli klasör başlatılır.  
 Sürüm 3. x/2. x ' te, komutunu çalıştırdığınızda projeniz için bir çalışma zamanı seçmeniz gerekir. 
@@ -309,7 +309,7 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 Ayrıca, aşağıdaki bağımsız değişkenleri kullanarak komutta bu seçenekleri belirtebilirsiniz:
 
-| Bağımsız Değişken     | Açıklama                            |
+| Bağımsız Değişken     | Description                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (Sürüm 2. x ve sonraki sürümler.) 1. x sürümünde ve portalda kullanılan C# betiği (. CSX) şablonlarını üretir. |
 | **`--language`**, **`-l`**| C#, F # veya JavaScript gibi şablon programlama dili. Bu seçenek, 1. x sürümünde gereklidir. Sürüm 2. x ve sonraki sürümlerde, bu seçeneği kullanmayın veya çalışan çalışma zamanıyla eşleşen bir dil seçin. |
@@ -333,7 +333,7 @@ func new --template "Queue Trigger" --name QueueTriggerJS
 
 Bir Işlevler projesi çalıştırmak için, Işlevler ana bilgisayarını çalıştırın. Konak, projedeki tüm işlevler için Tetikleyicileri mümkün. Başlat komutu, Proje dilinize bağlı olarak farklılık gösterir.
 
-# <a name="c"></a>[,\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 ```
 func start --build
@@ -597,7 +597,7 @@ Bir hata veya özellik isteğini dosyabir [GitHub sorunu açın](https://github.
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure portalındaki]: https://portal.azure.com 
+[Azure portalı]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 [AzureWebJobsStorage]: functions-app-settings.md#azurewebjobsstorage

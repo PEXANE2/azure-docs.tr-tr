@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0c3d3a050c0b929a3f1042b42006c289ddeb9acb
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: fd23cab844d40f75aa0034096be1bca897d54ff6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048126"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108363"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Azure Digital TWINS 'i Azure SignalR hizmeti ile tümleştirme
 
@@ -20,7 +20,7 @@ Bu makalede, Azure Digital TWINS 'i [Azure SignalR hizmeti](../azure-signalr/sig
 
 Bu makalede açıklanan çözüm, dijital ikizi telemetri verilerini, tek bir Web sayfası veya bir mobil uygulama gibi bağlı istemcilere anında gönderebilmeniz için izin verir. Sonuç olarak, istemciler, gerçek zamanlı ölçümler ve durum, sunucu yoklamaları veya güncelleştirmeler için yeni HTTP istekleri göndermek zorunda kalmadan IoT cihazlarından güncellenir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Devam etmeden önce gerçekleştirmeniz gereken önkoşullar şunlardır:
 
@@ -195,7 +195,7 @@ Bu konsolda başka bir şey yapmanız gerekmez, ancak sonraki adımları tamamla
 ### <a name="configure-the-sample-client-web-app"></a>Örnek istemci Web uygulamasını yapılandırma
 
 Daha sonra, **SignalR Integration Web uygulaması örneğini** şu adımlarla ayarlayın:
-1. Visual Studio 'Yu veya tercih ettiğiniz herhangi bir kod düzenleyicisini kullanarak, [*Önkoşullar*](#prerequisites) bölümünde indirdiğiniz sıkıştırılmış _**Azure_Digital_Twins_SignalR_integration_web_app_sample**_ klasörünü açın.
+1. Visual Studio 'Yu veya tercih ettiğiniz herhangi bir kod düzenleyicisini kullanarak, [*örnek uygulamaları indirme*](#download-the-sample-applications) bölümüne indirdiğiniz zip 'lenmiş _**Azure_Digital_Twins_SignalR_integration_web_app_sample**_ klasörünü açın.
 
 1. *Src/App.js* dosyasını açın ve içindeki URL 'yi, `HubConnectionBuilder` daha önce KAYDETTIĞINIZ **Negotiate** işlevinin HTTP uç noktası URL 'si ile değiştirin:
 

@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: 1da4154530f823d391aea779011a34a35edfd070
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 796aca02e6f70da8f5b94f6bbdbd2fd1d535bd77
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89071168"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108482"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Işlevleri PowerShell Geliştirici Kılavuzu
 
@@ -77,8 +77,8 @@ $TriggerMetadata.sys
 | Özellik   | Açıklama                                     | Tür     |
 |------------|-------------------------------------------------|----------|
 | UtcNow     | UTC olarak işlev tetiklendiğinde        | DateTime |
-| MethodName | Tetiklenen Işlevin adı     | string   |
-| RandGuid   | işlevin bu yürütmeye yönelik benzersiz bir GUID | string   |
+| MethodName | Tetiklenen Işlevin adı     | dize   |
+| RandGuid   | işlevin bu yürütmeye yönelik benzersiz bir GUID | dize   |
 
 Her tetikleyici türünün farklı bir meta veri kümesi vardır. Örneğin, için, `$TriggerMetadata` `QueueTrigger` `InsertionTime` `Id` `DequeueCount` diğer şeyleri kapsayan,,,. Sıra tetikleyicisinin meta verileri hakkında daha fazla bilgi için, [sıra tetikleyicilerinin resmi belgelerine](functions-bindings-storage-queue-trigger.md#message-metadata)gidin. Tetikleyici meta verilerinin içinde neler olduğunu görmek için, üzerinde çalıştığınız [tetikleyicilerle](functions-triggers-bindings.md) ilgili belgelere bakın.
 
@@ -126,7 +126,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 Çağırmak için geçerli parametreler aşağıda verilmiştir `Push-OutputBinding` :
 
-| Ad | Tür | Konum | Açıklama |
+| Ad | Tür | Konum | Description |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | Dize | 1 | Ayarlamak istediğiniz çıkış bağlamasının adı. |
 | **`-Value`** | Nesne | 2 | Ayarlamak istediğiniz çıkış bağlamasının değeri, işlem hattı ByValue 'dan kabul edilir. |
@@ -143,7 +143,7 @@ Aşağıdaki ortak parametreler de desteklenir:
 * `PipelineVariable`
 * `OutVariable` 
 
-Daha fazla bilgi için bkz. [CommonParameters hakkında](https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi için bkz. [CommonParameters hakkında](/powershell/module/microsoft.powershell.core/about/about_commonparameters).
 
 #### <a name="push-outputbinding-example-http-responses"></a>Push-OutputBinding örnek: HTTP yanıtları
 
@@ -276,7 +276,7 @@ Geliştirme için İşlev Uygulaması yerel olarak çalıştırıyorsanız, vars
 Tüm tetikleyiciler ve bağlamalar kodda birkaç gerçek veri türü olarak temsil edilir:
 
 * Hashtable
-* string
+* dize
 * Byte []
 * int
 * double
@@ -299,10 +299,10 @@ Betiğe geçirilen istek nesnesi, `HttpRequestContext` aşağıdaki özelliklere
 |-----------|----------------------------------------------------------------|---------------------------|
 | **`Body`**    | İsteğin gövdesini içeren bir nesne. `Body` , verileri temel alan en iyi türe serileştirilir. Örneğin, veriler JSON ise, bir Hashtable olarak geçirilir. Veriler bir dizeyse, bir dize olarak geçirilir. | object |
 | **`Headers`** | İstek üst bilgilerini içeren bir sözlük.                | Sözlük<dize, dize><sup>*</sup> |
-| **`Method`** | İsteğin HTTP yöntemi.                                | string                    |
+| **`Method`** | İsteğin HTTP yöntemi.                                | dize                    |
 | **`Params`**  | İsteğin yönlendirme parametrelerini içeren nesne. | Sözlük<dize, dize><sup>*</sup> |
 | **`Query`** | Sorgu parametrelerini içeren bir nesne.                  | Sözlük<dize, dize><sup>*</sup> |
-| **`Url`** | İsteğin URL 'SI.                                        | string                    |
+| **`Url`** | İsteğin URL 'SI.                                        | dize                    |
 
 <sup>*</sup> Tüm `Dictionary<string,string>` anahtarlar büyük/küçük harfe duyarlıdır.
 
@@ -313,7 +313,7 @@ Geri göndermeniz gereken yanıt nesnesi, `HttpResponseContext` aşağıdaki öz
 | Özellik      | Açıklama                                                 | Tür                      |
 |---------------|-------------------------------------------------------------|---------------------------|
 | **`Body`**  | Yanıtın gövdesini içeren bir nesne.           | object                    |
-| **`ContentType`** | Yanıt için içerik türünü ayarlamanın kısa bir tarafı. | string                    |
+| **`ContentType`** | Yanıt için içerik türünü ayarlamanın kısa bir tarafı. | dize                    |
 | **`Headers`** | Yanıt üst bilgilerini içeren bir nesne.               | Sözlük veya Hashtable   |
 | **`StatusCode`**  | Yanıtın HTTP durum kodu.                       | dize veya tamsayı             |
 
@@ -470,7 +470,7 @@ requirements.psd1 dosyasını güncelleştirdiğinizde, bir yeniden başlatmanı
 
 Aşağıdaki uygulama ayarları, yönetilen bağımlılıkların nasıl indirileceğini ve yükleneceğini değiştirmek için kullanılabilir. Uygulama yükseltmeniz içinde başlar `MDMaxBackgroundUpgradePeriod` ve yükseltme işlemi yaklaşık olarak içinde tamamlanır `MDNewSnapshotCheckPeriod` .
 
-| İşlev Uygulaması ayarı              | Varsayılan değer             | Açıklama                                         |
+| İşlev Uygulaması ayarı              | Varsayılan değer             | Description                                         |
 |   -----------------------------   |   -------------------     |  -----------------------------------------------    |
 | **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00` (7 gün)     | Her PowerShell çalışan işlemi, işlem başlatma ve sonrasında PowerShell Galerisi modül yükseltmelerini denetlemeyi başlatır `MDMaxBackgroundUpgradePeriod` . PowerShell Galerisi yeni bir modül sürümü kullanılabilir olduğunda, dosya sistemine yüklenir ve PowerShell çalışanları için kullanılabilir hale getirilir. Bu değeri azaltmak, işlev uygulamanızın daha önce daha yeni modül sürümlerini almasını sağlar, ancak aynı zamanda uygulama kaynak kullanımını (ağ g/ç, CPU, depolama) de artırır. Bu değerin artırılması uygulamanın kaynak kullanımını düşürür, ancak uygulamanıza yeni modül sürümlerinin teslim edilmesini de erteleyebilir. | 
 | **`MDNewSnapshotCheckPeriod`**         | `01:00:00` (1 saat)       | Yeni modül sürümleri dosya sistemine yüklendikten sonra, her PowerShell çalışan işleminin yeniden başlatılması gerekir. PowerShell çalışanlarını yeniden başlatmak, geçerli işlev yürütmesini kesintiye uğratmak için uygulamanızın kullanılabilirliğini etkiler. Tüm PowerShell çalışan süreçler yeniden başlatılana kadar, işlev etkinleştirmeleri eski veya yeni modül sürümlerini kullanabilir. Tüm PowerShell çalışanlarının yeniden başlatılması içinde tamamlanır `MDNewSnapshotCheckPeriod` . Bu değerin artırılması kesintiler sıklığını düşürür, ancak işlev etkinleştirmeleri eski veya yeni modül sürümlerini belirleyici olmayan şekilde kullandığınızda zaman dilimini de artırabilir. |
@@ -560,7 +560,7 @@ Varsayılan olarak, Işlevler PowerShell çalışma zamanı tek seferde yalnızc
 
 Bu ortam değişkenlerini, işlev uygulamanızın [uygulama ayarlarında](functions-app-settings.md) ayarlarsınız.
 
-Kullanım durumunuza bağlı olarak, Dayanıklı İşlevler ölçeklenebilirliği önemli ölçüde iyileştirebilir. Daha fazla bilgi için bkz. [dayanıklı işlevler uygulama desenleri](/azure/azure-functions/durable/durable-functions-overview?tabs=powershell#application-patterns).
+Kullanım durumunuza bağlı olarak, Dayanıklı İşlevler ölçeklenebilirliği önemli ölçüde iyileştirebilir. Daha fazla bilgi için bkz. [dayanıklı işlevler uygulama desenleri](./durable/durable-functions-overview.md?tabs=powershell#application-patterns).
 
 >[!NOTE]
 > "İstekler kullanılabilir çalışma alanları nedeniyle sıraya alındı" uyarısı alabilir, lütfen bunun bir hata olmadığını unutmayın. İleti, isteklerin sıraya alındığını ve önceki istekler tamamlandığında işleneceğini size söylecektir.

@@ -6,12 +6,12 @@ ms.custom: devx-track-java
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: ce2169838faaee8da459f80979fa31318e9d50c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9592d848398c71bc573c073f0b712898f666640
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322185"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104878"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Azure 'da bir işlev oluşturmak ve yayımlamak için Java ve Gradle kullanma
 
@@ -20,11 +20,11 @@ Bu makalede, Gradle komut satırı aracıyla Azure Işlevleri 'nde bir Java işl
 > [!NOTE]
 > Gradle, tercih edilmemiş geliştirme aracınız değilse [Maven](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java), [IntelliJ fikrini](/azure/developer/java/toolkit-for-intellij/quickstart-functions) ve [vs Code](./functions-create-first-function-vs-code.md?pivots=programming-language-java)kullanarak Java geliştiricileri için benzer öğreticilerimize göz atın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Java kullanarak işlev uygulamaları geliştirebilmeniz için şunlar yüklü olmalıdır:
 
-- [Java Developer Kit](https://aka.ms/azure-jdks), sürüm 8
+- [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), sürüm 8
 - [Azure CLI]
 - [Azure Functions Core Tools](./functions-run-local.md#v2) sürüm 2.6.666 veya üzeri
 - [Gradle](https://gradle.org/), sürüm 4,10 ve üzeri
@@ -176,4 +176,4 @@ HTTP ile tetiklenen bir işlev içeren bir Java işlevleri projesi oluşturdunuz
 
 
 [Azure CLI]: /cli/azure
-[Azure portalındaki]: https://portal.azure.com
+[Azure portalı]: https://portal.azure.com

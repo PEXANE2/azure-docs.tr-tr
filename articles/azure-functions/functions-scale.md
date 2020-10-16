@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c5dd703851054b058d96440a3a994b9d10eecfa3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88e9d16a205df16a2be63e67f45cdbcf9144b30f
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372672"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108465"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure İşlevleri’ni ölçeklendirme ve barındırma
 
@@ -168,7 +168,7 @@ az resource update --resource-type Microsoft.Web/sites -g <resource_group> -n <f
 
 Konak yapılandırması, çalışma zamanı kaplama ve kaynak verimliliği dahil, ne kadar iyi ölçeklendirilemeyeceğini etkileyecek bir işlev uygulamasının birçok yönü vardır.  Daha fazla bilgi için [performans konuları makalesinin ölçeklenebilirlik bölümüne](functions-best-practices.md#scalability-best-practices)bakın. Ayrıca, işlev uygulamanız ölçeklenirken bağlantıların nasıl davranacağını de bilmelisiniz. Daha fazla bilgi için bkz. [Azure işlevlerinde bağlantıları yönetme](manage-connections.md).
 
-Python ve Node.js ölçeklendirme hakkında daha fazla bilgi için bkz. [Azure Işlevleri Python Geliştirici Kılavuzu-ölçeklendirme ve eşzamanlılık](functions-reference-python.md#scaling-and-concurrency) ve [Azure işlevleri Node.js Geliştirici Kılavuzu-ölçeklendirme ve eşzamanlılık](functions-reference-node.md#scaling-and-concurrency).
+Python ve Node.js ölçeklendirme hakkında daha fazla bilgi için bkz. [Azure Işlevleri Python Geliştirici Kılavuzu-ölçeklendirme ve eşzamanlılık](functions-reference-python.md#scaling-and-performance) ve [Azure işlevleri Node.js Geliştirici Kılavuzu-ölçeklendirme ve eşzamanlılık](functions-reference-node.md#scaling-and-concurrency).
 
 ### <a name="billing-model"></a>Faturalama modeli
 

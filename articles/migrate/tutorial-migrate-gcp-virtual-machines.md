@@ -4,12 +4,12 @@ description: Bu makalede, Azure geçişi ile GCP VM 'lerinin Azure 'a nasıl ge�
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: cd3bf225c6de0401aaa625cf3bb037b3beb58a35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5bee73c6bbad9eef91e867b55ffde453a4012914
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91716623"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108584"
 ---
 # <a name="discover-assess-and-migrate-google-cloud-platform-gcp-vms-to-azure"></a>Google Cloud Platform (GCP) sanal makinelerini Azure 'a bulma, değerlendirme ve geçirme
 
@@ -58,7 +58,7 @@ Bir değerlendirmeyi denemenizi öneririz, ancak değerlendirme gerçekleştirme
 
 
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 - Geçirmek istediğiniz GCP VM 'lerinin desteklenen bir işletim sistemi sürümünü çalıştırdığından emin olun. GCP VM 'Leri geçiş amacıyla fiziksel makineler gibi değerlendirilir. Fiziksel sunucu geçişi iş akışı için [desteklenen işletim sistemlerini ve çekirdek sürümlerini](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) gözden geçirin. Linux sanal makinelerinize yönelik işletim sistemi ve çekirdek sürümlerini denetlemek için *hostnamectl* veya *uname-a* gibi standart komutları kullanabilirsiniz.  Gerçek geçişe devam etmeden önce VM 'nin beklendiği gibi çalışıp çalışmadığını doğrulamak için bir test geçişi gerçekleştirmenizi öneririz.
 - GCP sanal makinelerinizin Azure 'a geçiş için [desteklenen yapılandırmalara](./migrate-support-matrix-physical-migration.md#physical-server-requirements) uyduğundan emin olun.
@@ -399,7 +399,7 @@ Test geçişinin beklendiği gibi çalışıp çalışmadığını doğruladıkt
 **Cevap:** EC2 VM 'lerinizi Azure 'a geçirmeden önce bu değişiklikleri yapmanız gerekebilir:
 
 - VM sağlama için Cloud-init kullanıyorsanız, VM 'yi Azure 'a çoğaltmadan önce VM üzerinde Cloud-init devre dışı bırakmak isteyebilirsiniz. VM üzerinde Cloud-init tarafından gerçekleştirilen sağlama adımları GCP 'ye özgü olabilir ve Azure 'a geçişten sonra geçerli olmayacaktır.  
-- Kullandığınız işletim sistemi için gerekli herhangi bir değişiklik olup olmadığını öğrenmek için [Önkoşullar](#prerequisites) bölümünü gözden geçirin
+- Azure 'a geçirmeden önce işletim sistemi için gerekli herhangi bir değişiklik olup olmadığını öğrenmek için [Önkoşullar](#prerequisites) bölümünü gözden geçirin.
 - Son geçişten önce her zaman bir test geçişi çalıştırmanızı öneririz.  
 
 ## <a name="next-steps"></a>Sonraki adımlar

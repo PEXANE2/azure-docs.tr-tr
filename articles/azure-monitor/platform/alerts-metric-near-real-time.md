@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 9/30/2020
 ms.subservice: alerts
-ms.openlocfilehash: 96f0cda9bdf6a17adb4d8d50b63ef5588e52f700
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d99e37171f2fb5b86bee897caca55c3e8782f92e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578113"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108822"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure Izleyici 'de ölçüm uyarıları için desteklenen kaynaklar
 
@@ -85,7 +85,7 @@ Daha yeni uyarılar tarafından desteklenen Azure izleyici ölçüm kaynakların
 |Microsoft. Network/Applicationgateway 'ler | Evet | Hayır | [Uygulama ağ geçitleri](./metrics-supported.md#microsoftnetworkapplicationgateways) |
 |Microsoft. Network/azurefirewalls | Evet | Hayır | [Güvenlik duvarları](./metrics-supported.md#microsoftnetworkazurefirewalls) |
 |Microsoft. Network/dnsZones | Hayır | Hayır | [DNS Bölgeleri](./metrics-supported.md#microsoftnetworkdnszones) |
-|Microsoft. Network/Expressroutedevreleri | Yok | Hayır |[Express Route Devreleri](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
+|Microsoft. Network/Expressroutedevreleri | YOK | Hayır |[Express Route Devreleri](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
 |Microsoft. Network/loadBalancers (yalnızca standart SKU 'Lar için)| Evet| Hayır | [Yük dengeleyiciler](./metrics-supported.md#microsoftnetworkloadbalancers) |
 |Microsoft. Network/Natgateway 'ler| Hayır | Hayır | |
 |Microsoft. Network/privateEndpoints| Hayır | Hayır | |
@@ -119,7 +119,7 @@ Daha yeni uyarılar tarafından desteklenen Azure izleyici ölçüm kaynakların
 ## <a name="payload-schema"></a>Yük şeması
 
 > [!NOTE]
-> Web kancası tümleştirmelerinize yönelik olarak, Azure Izleyici 'deki tüm uyarı hizmetlerinde tek bir Genişletilebilir ve birleştirilmiş uyarı yüküne sahip olmanın avantajını sağlayan [ortak uyarı şemasını](https://aka.ms/commonAlertSchemaDocs)da kullanabilirsiniz. [Ortak uyarı şeması tanımları hakkında bilgi edinin.](https://aka.ms/commonAlertSchemaDefinitions)
+> Web kancası tümleştirmelerinize yönelik olarak, Azure Izleyici 'deki tüm uyarı hizmetlerinde tek bir Genişletilebilir ve birleştirilmiş uyarı yüküne sahip olmanın avantajını sağlayan [ortak uyarı şemasını](./alerts-common-schema.md)da kullanabilirsiniz. [Ortak uyarı şeması tanımları hakkında bilgi edinin.](./alerts-common-schema-definitions.md)
 
 
 POST işlemi, uygun şekilde yapılandırılmış bir [eylem grubu](./action-groups.md) kullanıldığında, neredeyse tüm yeni ölçüm uyarıları IÇIN aşağıdaki JSON yükünü ve şemayı içerir:
@@ -180,4 +180,3 @@ POST işlemi, uygun şekilde yapılandırılmış bir [eylem grubu](./action-gro
 * Yeni [Uyarılar deneyimi](./alerts-overview.md)hakkında daha fazla bilgi edinin.
 * [Azure 'da günlük uyarıları](./alerts-unified-log.md)hakkında bilgi edinin.
 * [Azure 'daki uyarılar](./alerts-overview.md)hakkında bilgi edinin.
-

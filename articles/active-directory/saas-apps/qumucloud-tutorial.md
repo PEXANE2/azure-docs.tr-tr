@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 37005176452ba75f6b79af7ab1bf9faab5402f51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c75e2f635c14556cfd08ab73a66d8ebc30aeb8e2
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548948"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108652"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qumu-cloud"></a>Öğretici: Qumu Cloud ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Qumu bulutunu Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini Qumu bulutu ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -101,7 +101,7 @@ Azure AD çoklu oturum açmayı Qumu bulutu ile yapılandırmak için aşağıda
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    ![Qumu bulut etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
+    ![Ekran görüntüsü; tanımlayıcı girebileceğiniz, yanıt U R L ve Kaydet ' i seçebileceğiniz temel SAML yapılandırmasını gösterir.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<subdomain>.qumucloud.com/saml/SSO`
 
@@ -109,7 +109,7 @@ Azure AD çoklu oturum açmayı Qumu bulutu ile yapılandırmak için aşağıda
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    ![Qumu bulut etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
+    ![Ekran görüntüsü, U R L 'ye bir Işaret girebileceğiniz ek U R 'Leri ayarlamayı gösterir.](common/metadata-upload-additional-signon.png)
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<subdomain>.qumucloud.com`
 
@@ -118,7 +118,7 @@ Azure AD çoklu oturum açmayı Qumu bulutu ile yapılandırmak için aşağıda
 
 6. Qumu Cloud uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. **Kullanıcı öznitelikleri** iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![image](common/edit-attribute.png)
+    ![Ekran görüntüsü, düzenleme simgesi seçili olan kullanıcı özniteliklerini gösterir.](common/edit-attribute.png)
 
 7. Qumu Cloud Application, yukarıdaki gibi daha fazla özniteliğin SAML yanıtına geri geçirilmesini bekler. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde AŞAĞıDAKI tabloda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin:
 
@@ -131,9 +131,9 @@ Azure AD çoklu oturum açmayı Qumu bulutu ile yapılandırmak için aşağıda
 
     a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
 
-    ![image](common/new-save-attribute.png)
+    ![Ekran görüntüsü, yeni talep ekleme seçeneğiyle Kullanıcı taleplerini gösterir.](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz Kullanıcı taleplerini Yönet iletişim kutusunu gösterir.](common/new-attribute-details.png)
 
     b. **Ad** metin kutusuna, bu satır için gösterilen öznitelik adını yazın.
 

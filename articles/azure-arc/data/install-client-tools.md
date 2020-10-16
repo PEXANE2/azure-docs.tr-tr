@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 3eb41b868aba7e7350f54594fa43f01eeeabebc4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d61bc99e851b28712262dba8512c06b6e8872c0e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90942107"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108227"
 ---
 # <a name="install-client-tools-for-deploying-and-managing-azure-arc-enabled-data-services"></a>Azure Arc özellikli veri hizmetlerini dağıtmak ve yönetmek için istemci araçlarını yükleme
 
@@ -32,7 +32,7 @@ Aşağıdaki tabloda, Azure Arc etkin veri hizmetlerinin oluşturulması ve yön
 | Araç | Gerekli | Açıklama | Yükleme |
 |---|---|---|---|
 | Azure Data CLı (azdata) | Evet | Büyük veri kümesini yüklemek ve yönetmek için komut satırı aracı. Azure Data CLı Ayrıca, komutları kullanarak Azure SQL ve SQL Server örneklerine ve Postgres sunucularına bağlanmak ve bunları sorgulamak için bir komut satırı yardımcı programı içerir `azdata sql query` (komut satırından tek bir sorgu çalıştırma), `azdata sql shell` (etkileşimli kabuk) `azdata postgres query` ve `azdata postgres shell` . | [Yükleme](/sql/azdata/install/deploy-install-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json) |
-| Azure Data Studio | Evet | Azure SQL, SQL Server, PostrgreSQL ve MySQL gibi çeşitli veritabanlarına bağlanmak ve sorgu sorgulamak için zengin deneyim aracı. Azure Data Studio uzantılar, Azure Arc etkin veri Hizmetleri için bir yönetim deneyimi sağlar. | [Yükleme](https://aka.ms/getazuredatastudio) |
+| Azure Data Studio | Evet | Azure SQL, SQL Server, PostrgreSQL ve MySQL gibi çeşitli veritabanlarına bağlanmak ve sorgu sorgulamak için zengin deneyim aracı. Azure Data Studio uzantılar, Azure Arc etkin veri Hizmetleri için bir yönetim deneyimi sağlar. | [Yükleme](/sql/azure-data-studio/download-azure-data-studio) |
 | Azure Data Studio için Azure Data CLı uzantısı | Evet | Henüz yoksa Azure Data CLı yükleyecek Azure Data Studio uzantısı.| Azure Data Studio 'de uzantılar galerisinden yüklemesi.|
 | Azure Data Studio için Azure Arc uzantısı | Evet | Azure Arc etkin veri Hizmetleri için bir yönetim deneyimi sağlayan Azure Data Studio uzantısı. Azure Data Studio için Azure Data CLı uzantısında bir bağımlılık vardır. | Azure Data Studio 'de uzantılar galerisinden yüklemesi.|
 | Azure Data Studio PostgreSQL uzantısı | Hayır | PostgreSQL için yönetim özellikleri sağlayan Azure Data Studio için PostgreSQL uzantısı. | <!--{need link} [Install](../azure-data-studio/data-virtualization-extension.md) --> Azure Data Studio 'de uzantılar galerisinden yüklemesi.|

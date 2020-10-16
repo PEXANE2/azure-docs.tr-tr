@@ -4,12 +4,12 @@ description: Ortak uyarı şemasını anlama, neden kullanılması gerekir ve na
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: faf9975e2795623305583d061d1af7f5eb0cfbe0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb182f88a896be436e3981ff4e361010ee2655f6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86539491"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108839"
 ---
 # <a name="common-alert-schema"></a>Ortak uyarı şeması
 
@@ -39,7 +39,7 @@ Ortak uyarı şeması öncelikle uyarı bildirimlerinde kendisini bildirir. Gör
 
 Yeni şema aynı zamanda hem Azure portal hem de hemen gelecekte Azure mobil uygulaması daha zengin bir uyarı tüketim deneyimi sağlayacaktır. 
 
-[Web kancaları/Logic Apps/Azure Işlevleri/Otomasyonu runbook 'Ları için şema tanımları hakkında daha fazla bilgi edinin.](https://aka.ms/commonAlertSchemaDefinitions)
+[Web kancaları/Logic Apps/Azure Işlevleri/Otomasyonu runbook 'Ları için şema tanımları hakkında daha fazla bilgi edinin.](./alerts-common-schema-definitions.md)
 
 > [!NOTE]
 > Aşağıdaki eylemler ortak uyarı şemasını desteklemez: ITSM Bağlayıcısı.
@@ -120,5 +120,5 @@ Ortak uyarı şemasını kabul etmek için [eylem GRUPLARı API](/rest/api/monit
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Web kancaları/Logic Apps/Azure Işlevleri/Otomasyonu runbook 'Ları için ortak uyarı şeması tanımları.](https://aka.ms/commonAlertSchemaDefinitions)
-- [Tüm uyarılarınızı işlemek için ortak uyarı şemasıyla yararlanan bir mantıksal uygulama oluşturmayı öğrenin.](./alerts-common-schema-integrations.md) 
+- [Web kancaları/Logic Apps/Azure Işlevleri/Otomasyonu runbook 'Ları için ortak uyarı şeması tanımları.](./alerts-common-schema-definitions.md)
+- [Tüm uyarılarınızı işlemek için ortak uyarı şemasıyla yararlanan bir mantıksal uygulama oluşturmayı öğrenin.](./alerts-common-schema-integrations.md)

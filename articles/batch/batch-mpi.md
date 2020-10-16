@@ -4,12 +4,12 @@ description: Ileti geçirme arabirimi (MPı) uygulamalarını Azure Batch ' deki
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: 6207fc5295de28d4caf956b74e14f97f1113120c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3dc52d13cf41347e7382872e887d87fc9b25a95b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850634"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108091"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Batch 'de Ileti geçirme arabirimi (MPı) uygulamalarını çalıştırmak için çok örnekli görevleri kullanma
 
@@ -95,8 +95,8 @@ Aşağıdaki makalelerde "RDMA özellikli" olarak belirtilen boyutları arayın:
   * [Cloud Services Için boyutlar](../cloud-services/cloud-services-sizes-specs.md) (yalnızca Windows)
 * **Virtualmachineconfiguration** havuzları
 
-  * [Azure 'daki sanal makinelerin boyutları](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux)
-  * [Azure 'daki sanal makinelerin boyutları](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows)
+  * [Azure 'daki sanal makinelerin boyutları](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) (Linux)
+  * [Azure 'daki sanal makinelerin boyutları](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) (Windows)
 
 > [!NOTE]
 > [Linux işlem DÜĞÜMLERINDE](batch-linux-nodes.md)RDMA 'nin avantajlarından yararlanmak Için düğümlerde **Intel MPI** kullanmanız gerekir.

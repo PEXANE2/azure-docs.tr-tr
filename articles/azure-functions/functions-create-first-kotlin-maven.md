@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 526287feb93052d10428971dfd8f660d4265c831
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: acb4290a90532b38f44a957e33c69f7d2b3f11f8
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89071270"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104827"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>Hızlı başlangıç: Kotlin ve Maven ile ilk işlevinizi oluşturma
 
@@ -20,11 +20,11 @@ Bu makale, Azure Işlevleri 'ne bir Kotlin işlev projesi derlemek ve yayımlama
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Kotlin kullanarak işlevleri geliştirmek için aşağıdakilerin yüklü olması gerekir:
 
-- [Java Developer Kit](https://aka.ms/azure-jdks), sürüm 8
+- [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), sürüm 8
 - [Apache Maven](https://maven.apache.org), sürüm 3.0 veya üzeri
 - [Azure CLI](/cli/azure)
 - [Azure Functions Core Tools](./functions-run-local.md#v2) sürüm 2.6.666 veya üzeri

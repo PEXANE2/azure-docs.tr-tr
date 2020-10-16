@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: a8fa14999c75528171fbe811ee64f65b913ed820
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0a11cf3bfac7d1e8fd2d117e13532e2ce49caa0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399814"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107819"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Kimlik altyapınızı güvenli hale getirmenin beş adımı
 
-Bu belgeyi okuyorsanız güvenliğin önemini farkındayız. Büyük olasılıkla kuruluşunuzun güvenliğini sağlama sorumluluğunu zaten taşıyor olabilirsiniz. Diğerlerinin güvenliğin önemini ikna etmeniz gerekiyorsa, en son [Microsoft Güvenlik Zekası raporunu](https://go.microsoft.com/fwlink/p/?linkid=2073747)okumak için bunları gönderin.
+Bu belgeyi okuyorsanız güvenliğin önemini farkındayız. Büyük olasılıkla kuruluşunuzun güvenliğini sağlama sorumluluğunu zaten taşıyor olabilirsiniz. Diğerlerinin güvenliğin önemini ikna etmeniz gerekiyorsa, en son [Microsoft Güvenlik Zekası raporunu](https://www.microsoft.com/security/business/security-intelligence-report)okumak için bunları gönderin.
 
 Bu belge, kuruluşunuzun siber saldırılara karşı yük almasını sağlamak için Beş adımlı bir denetim listesi kullanarak Azure Active Directory yeteneklerini kullanarak daha güvenli bir duruma sahip olmanıza yardımcı olur.
 

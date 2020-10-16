@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 21e2b197c31a30ab8a249e2e8e398072a624154c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 423fdcdf48d90b4c428497f22cb6924900de8931
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394100"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107530"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Azure Işlevleri için Azure Güvenlik temeli
 
@@ -90,7 +90,7 @@ Ayrıca, tüm gelen isteklerin kimliğini doğrulamak ve kötü amaçlı trafiğ
 
 - [Azure Güvenlik duvarını dağıtma](../firewall/tutorial-firewall-deploy-portal.md)
 
-- [Azure Güvenlik Merkezi tümleşik tehdit zekasını anlama](../security-center/threat-protection.md)
+- [Azure Güvenlik Merkezi tümleşik tehdit zekasını anlama](../security-center/azure-defender.md)
 
 - [Azure Güvenlik Merkezi Uyarlamalı ağ sağlamlaştırma 'yi anlama](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -545,7 +545,7 @@ Ayrıca, Özel uç noktaları ağ yalıtımı gerçekleştirmek için de kullana
 
 - [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
 
-- [Yönetim Grupları oluşturma](../governance/management-groups/create.md)
+- [Yönetim Grupları oluşturma](../governance/management-groups/create-management-group-portal.md)
 
 - [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
@@ -649,7 +649,7 @@ Ayrıca, Azure Işlev uygulamalarınızın güvenliğini sağlamaya yardımcı o
 
 - [CI/CD ardışık düzenine sürekli güvenlik doğrulaması ekleme](/azure/devops/migrate/security-validation-cicd-pipeline?view=azure-devops)
 
-- [Azure Güvenlik Merkezi güvenlik açığı değerlendirmesi önerilerini uygulama](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [Azure Güvenlik Merkezi güvenlik açığı değerlendirmesi önerilerini uygulama](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -727,7 +727,7 @@ Ayrıca, aşağıdaki yerleşik ilke tanımlarını kullanarak müşteri aboneli
 
 - [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
 
-- [Yönetim Grupları oluşturma](../governance/management-groups/create.md)
+- [Yönetim Grupları oluşturma](../governance/management-groups/create-management-group-portal.md)
 
 - [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
@@ -1087,7 +1087,7 @@ Müşteri tarafından yönetilen anahtarlar kullanıyorsanız, Key Vault içinde
 
 - [Azure Depolama bekleyen verileri şifreleme](../storage/common/storage-service-encryption.md)
 
-- [Key Vault Soft-Delete etkinleştirme](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+- [Key Vault Soft-Delete etkinleştirme](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 

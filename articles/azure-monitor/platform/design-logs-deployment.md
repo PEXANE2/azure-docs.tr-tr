@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 6bdc7a087e60791ba3e3367aca3ea3a4500478ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21da883867da41e81ed1787faa0ebe0e6dd25d99
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91534208"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107887"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Azure İzleyici Günlükleri dağıtımınızı tasarlama
 
@@ -64,7 +64,7 @@ Rol tabanlı erişim denetimi (RBAC) sayesinde kullanıcılara ve yalnızca çal
 
 Bir kullanıcının erişimi olan veriler, aşağıdaki tabloda listelenen faktörlerin birleşimiyle belirlenir. Her biri aşağıdaki bölümlerde açıklanmıştır.
 
-| Faktör | Açıklama |
+| Faktör | Description |
 |:---|:---|
 | [Erişim modu](#access-mode) | Kullanıcının çalışma alanına erişmek için kullandığı yöntem.  Kullanılabilir verilerin kapsamını ve uygulanan erişim denetimi modunu tanımlar. |
 | [Erişim denetimi modu](#access-control-mode) | Çalışma alanında izinlerin, çalışma alanında veya kaynak düzeyinde uygulanıp uygulanmadığını tanımlayan ayar. |
@@ -91,7 +91,7 @@ Kullanıcılara verilere erişim için iki seçenek vardır:
     > - Service Fabric
     > - Application Insights
     >
-    > Bir sorgu çalıştırıp ilgilendiğiniz kayıtları inceleyerek günlüklerin kaynakları ile düzgün bir şekilde ilişkilendiriliyorsa test edebilirsiniz. Doğru kaynak KIMLIĞI [_ResourceId](log-standard-properties.md#_resourceid) özellikte ise, veriler kaynak merkezli sorgular tarafından kullanılabilir.
+    > Bir sorgu çalıştırıp ilgilendiğiniz kayıtları inceleyerek günlüklerin kaynakları ile düzgün bir şekilde ilişkilendiriliyorsa test edebilirsiniz. Doğru kaynak KIMLIĞI [_ResourceId](./log-standard-columns.md#_resourceid) özellikte ise, veriler kaynak merkezli sorgular tarafından kullanılabilir.
 
 Azure Izleyici, günlük aramasını gerçekleştirdiğiniz bağlama göre otomatik olarak doğru modu belirler. Kapsam her zaman Log Analytics en sol üst bölümünde sunulur.
 
@@ -164,4 +164,3 @@ Bu modele geçişinizi planlarken, aşağıdakileri göz önünde bulundurun:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu kılavuzda önerilen güvenlik izinlerini ve denetimleri uygulamak için [günlüklere erişimi yönet](manage-access.md)' i gözden geçirin.
-

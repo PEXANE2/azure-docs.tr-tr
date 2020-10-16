@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: twooley
-ms.openlocfilehash: c61862ccc7bac839627e9e7a9fbff9859155c6a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9bb787138267fd8a9fab4dea233c1c828b457d67
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323086"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109196"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Sqoop kullanarak Data Lake Storage 1. ve Azure SQL veritabanı arasında veri kopyalama
 
@@ -24,14 +24,14 @@ Büyük veri uygulamaları, Günlükler ve dosyalar gibi yapılandırılmamış 
 
 [Apache Sqoop](https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html) , ilişkisel veritabanları ve Data Lake Storage 1. gibi büyük bir veri deposu arasında veri aktarmak için tasarlanan bir araçtır. Azure SQL veritabanı gibi bir ilişkisel veritabanı yönetim sisteminden (RDBMS) verileri Data Lake Storage 1. içine aktarmak için bu işlemi kullanabilirsiniz. Daha sonra büyük veri iş yüklerini kullanarak verileri dönüştürebilir ve analiz edebilir ve ardından verileri bir RDBMS 'ye geri aktarabilirsiniz. Bu makalede, Azure SQL veritabanı 'nda içeri/dışarı aktarılacak ilişkisel veritabanınız olarak bir veritabanı kullanırsınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure Data Lake Storage 1. hesabı**. Hesabı oluşturma hakkında yönergeler için bkz. [Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)
 * Data Lake Storage 1. hesabına erişimi olan **Azure HDInsight kümesi** . Bkz. [Data Lake Storage 1. HDInsight kümesi oluşturma](data-lake-store-hdinsight-hadoop-use-portal.md). Bu makalede Data Lake Storage 1. erişimi olan bir HDInsight Linux kümeniz olduğunu varsaymaktadır.
-* **Azure SQL veritabanı**. Azure SQL veritabanı 'nda veritabanı oluşturma hakkında yönergeler için bkz. [Azure SQL veritabanı 'nda veritabanı oluşturma](../sql-database/sql-database-get-started.md)
+* **Azure SQL veritabanı**. Azure SQL veritabanı 'nda veritabanı oluşturma hakkında yönergeler için bkz. [Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md)
 
 ## <a name="create-sample-tables-in-the-database"></a>Veritabanında örnek tablolar oluşturma
 
@@ -156,7 +156,7 @@ An HDInsight kümesinde Sqoop paketleri zaten var. HDInsight kümesini ek depola
 
 ## <a name="performance-considerations-while-using-sqoop"></a>Sqoop kullanılırken performans konuları
 
-Data Lake Storage 1. verileri kopyalamak için Sqoop işinizin performans ayarlaması hakkında bilgi için [Sqoop performans blog gönderisine](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)bakın.
+Data Lake Storage 1. verileri kopyalamak için Sqoop işinizin performans ayarlaması hakkında bilgi için [Sqoop performans blog gönderisine](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

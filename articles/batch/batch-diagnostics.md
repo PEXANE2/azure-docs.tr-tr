@@ -4,12 +4,12 @@ description: Havuzlar ve görevler gibi Azure Batch hesabı kaynakları için ta
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 265149e8d3cd775974ec690ebffbce92a1b82b2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe2697c73f2a5f3f0b33cfb598f11f39420ed723
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91848696"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108108"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Tanılama değerlendirmesi ve izleme için toplu iş ölçümleri, uyarılar ve Günlükler
 
@@ -105,7 +105,7 @@ Azure portal yeni bir tanılama ayarı oluşturmak için aşağıdaki adımları
 6. **ServiceLog**, **allölçümlerini**veya her ikisini birden seçin.
 7. Tanılama ayarını oluşturmak için **Kaydet** ' i seçin.
 
-Ayrıca, [Kaynak Yöneticisi bir şablon](../azure-monitor/platform/diagnostic-settings-template.md)kullanarak veya Azure PowerShell ya da Azure CLI ile tanılama ayarlarını yapılandırmak Için [Azure Portal Azure izleyici aracılığıyla toplamayı etkinleştirebilirsiniz](../azure-monitor/platform/diagnostic-settings.md) . Daha fazla bilgi için bkz. [Azure platform günlüklerine genel bakış](../azure-monitor/platform/platform-logs-overview.md).
+Ayrıca, [Kaynak Yöneticisi bir şablon](../azure-monitor/samples/resource-manager-diagnostic-settings.md)kullanarak veya Azure PowerShell ya da Azure CLI ile tanılama ayarlarını yapılandırmak Için [Azure Portal Azure izleyici aracılığıyla toplamayı etkinleştirebilirsiniz](../azure-monitor/platform/diagnostic-settings.md) . Daha fazla bilgi için bkz. [Azure platform günlüklerine genel bakış](../azure-monitor/platform/platform-logs-overview.md).
 
 ### <a name="access-diagnostics-logs-in-storage"></a>Depolama alanındaki tanılama günlüklerine erişin
 
@@ -119,7 +119,7 @@ m={two-digit numeric month}/d={two-digit numeric day}/
 h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
 
-Örneğin:
+Örnek:
 
 ```json
 insights-metrics-pt1m/resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/

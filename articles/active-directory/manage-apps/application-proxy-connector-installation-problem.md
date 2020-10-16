@@ -1,37 +1,32 @@
 ---
-title: Uygulama proxy 'Si aracı bağlayıcısını yükleme sorunu | Microsoft Docs
-description: Uygulama proxy 'Si aracı bağlayıcısını yüklerken karşılaşabileceğiniz sorunları giderme
+title: Uygulama Ara Sunucusu Aracı Bağlayıcısı’nı yüklerken sorun oluşuyor
+description: Azure Active Directory için uygulama proxy aracısı bağlayıcısını yüklerken karşılaşabileceğiniz sorunları giderme.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/21/2018
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 602ca070bcaefd20585681e409ab85e9d455160a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7babe23426cafe01cadc7a5557f91896aa9bbae4
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764698"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108210"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Uygulama Ara Sunucusu Aracı Bağlayıcısı’nı yüklerken sorun oluşuyor
 
-Microsoft AAD uygulama proxy Bağlayıcısı, bulut kullanılabilir uç noktadan iç etki alanına bağlantı kurmak için giden bağlantıları kullanan bir iç etki alanı bileşenidir.
+Microsoft Azure Active Directory uygulama proxy Bağlayıcısı, bulut kullanılabilir uç noktadan iç etki alanına bağlantı kurmak için giden bağlantıları kullanan bir iç etki alanı bileşenidir.
 
 ## <a name="general-problem-areas-with-connector-installation"></a>Bağlayıcı yüklemesiyle ilgili genel sorun alanı
 
 Bağlayıcının yüklemesi başarısız olduğunda, kök neden genellikle aşağıdaki alanlardan biridir:
 
-1.  **Bağlantı** – başarılı bir yükleme işleminin tamamlanabilmesi için yeni bağlayıcının sonraki güven özelliklerini kaydetmesi ve kurması gerekir. Bu, AAD uygulama proxy 'Si bulut hizmetine bağlanarak yapılır.
+1.  **Bağlantı** – başarılı bir yükleme işleminin tamamlanabilmesi için yeni bağlayıcının sonraki güven özelliklerini kaydetmesi ve kurması gerekir. Bu, Azure Active Directory Uygulama Ara Sunucusu bulut hizmetine bağlanarak yapılır.
 
 2.  **Güven kurulumu** – yeni bağlayıcı, otomatik olarak imzalanan bir sertifika oluşturur ve bulut hizmetine kaydeder.
 
@@ -42,7 +37,7 @@ Bağlayıcının yüklemesi başarısız olduğunda, kök neden genellikle aşa�
 
 ## <a name="verify-connectivity-to-the-cloud-application-proxy-service-and-microsoft-login-page"></a>Cloud Application Proxy hizmeti ve Microsoft oturum açma sayfasıyla bağlantıyı doğrulama
 
-**Amaç:** Bağlayıcı makinenin AAD uygulama proxy 'Si kayıt uç noktasına ve Microsoft oturum açma sayfasına bağlanabildiğini doğrulayın.
+**Amaç:** Bağlayıcı makinenin uygulama proxy 'Si kayıt uç noktasına ve Microsoft oturum açma sayfasına bağlanabildiğini doğrulayın.
 
 1.  Bağlayıcı sunucusunda, 443 ve 80 bağlantı noktalarının açık olduğunu doğrulamak için [Telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) veya diğer bağlantı noktası test aracı kullanarak bir bağlantı noktası testi çalıştırın.
 
@@ -67,7 +62,7 @@ Bağlayıcının yüklemesi başarısız olduğunda, kök neden genellikle aşa�
 
 **İstemci sertifikasını doğrulamak için:**
 
-Geçerli istemci sertifikasının parmak izini doğrulayın. Sertifika depolama alanı%ProgramData%\microsoft\Microsoft AAD uygulama proxy 'Si Connector\Config\TrustSettings.xml bulunabilir
+Geçerli istemci sertifikasının parmak izini doğrulayın. Sertifika depolama alanı ' nda bulunabilir `%ProgramData%\microsoft\Microsoft AAD Application Proxy Connector\Config\TrustSettings.xml` .
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -79,23 +74,17 @@ Geçerli istemci sertifikasının parmak izini doğrulayın. Sertifika depolama 
 </ConnectorTrustSettingsFile>
 ```
 
-Olası **ısınuserstore** değerleri ve anlamları aşağıda verilmiştir:
+Olası **ısınuserstore** değerleri **true** ve **false**şeklindedir. **Doğru** değeri, otomatik olarak yenilenen sertifikanın, ağ hizmetinin Kullanıcı sertifikası deposundaki kişisel kapsayıcıda depolandığı anlamına gelir. **False** değeri, istemci sertifikasının yükleme sırasında veya Register-AppProxyConnector komutu tarafından başlatılan kayıt sırasında oluşturulduğu ve yerel makinenin sertifika deposundaki kişisel kapsayıcıda depolandığı anlamına gelir.
 
-- **false** -istemci sertifikası, yükleme sırasında veya Register-AppProxyConnector komutuyla başlatılan kayıt sırasında oluşturulmuştur. Bu, yerel makinenin sertifika deposundaki kişisel kapsayıcıda saklanır. 
-
-Sertifikayı doğrulamak için aşağıdaki adımları izleyin:
-
-1. **Certlm. msc** çalıştırma
-2. Yönetim konsolunda kişisel kapsayıcıyı genişletin ve Sertifikalar ' a tıklayın.
-3. **Connectorregistrationca.msappproxy.net** tarafından verilen sertifikayı bulma
-
-- **doğru** -otomatik olarak yenilenen sertifika, ağ hizmetinin Kullanıcı sertifikası deposundaki kişisel kapsayıcıda depolanır. 
-
-Sertifikayı doğrulamak için aşağıdaki adımları izleyin:
-
+Değer **true**ise, sertifikayı doğrulamak için şu adımları izleyin:
 1. [PsTools.zip](https://docs.microsoft.com/sysinternals/downloads/pstools) indir
 2. Paketten [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) 'yi ayıklayın ve yükseltilmiş bir komut isteminden **PsExec-i-u "NT authorıty\servıce" cmd.exe** çalıştırın.
 3. Yeni görünen komut isteminde **certmgr. msc** dosyasını çalıştır
+4. Yönetim konsolunda kişisel kapsayıcıyı genişletin ve Sertifikalar ' a tıklayın.
+5. **Connectorregistrationca.msappproxy.net** tarafından verilen sertifikayı bulma
+
+Değer **false**ise, sertifikayı doğrulamak için aşağıdaki adımları izleyin:
+1. **Certlm. msc** çalıştırma
 2. Yönetim konsolunda kişisel kapsayıcıyı genişletin ve Sertifikalar ' a tıklayın.
 3. **Connectorregistrationca.msappproxy.net** tarafından verilen sertifikayı bulma
 

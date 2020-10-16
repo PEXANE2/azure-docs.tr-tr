@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 10/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: da1f3154d492a36a196d87eec98af462fd659cd2
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: b33f3e58f82d52e77437c29f7e5219926b2578c3
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057527"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106986"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Hızlı Başlangıç: Azure Sentinel'i kullanıma alma
 
@@ -47,12 +47,11 @@ Veri kaynaklarınızı bağlandıktan sonra, verilerinizi temel alan bir expertl
 
     | Çalışma alanı Coğrafya | Azure Sentinel-üretilen veri Coğrafya |
     | --- | --- |
-    | Birleşik Devletler<br>Hindistan<br>Brezilya<br>Afrika<br>Güney Kore | Birleşik Devletler |
+    | Amerika Birleşik Devletleri<br>Hindistan<br>Brezilya<br>Afrika<br>Güney Kore | Amerika Birleşik Devletleri |
     | Avrupa<br>Fransa<br>İsviçre | Avrupa |
     | Avustralya | Avustralya |
     | Birleşik Krallık | Birleşik Krallık |
     | Kanada | Kanada |
-    | Asya Pasifik | Asya Pasifik (Singapur) |
     | Japonya | Japonya |
     |
 

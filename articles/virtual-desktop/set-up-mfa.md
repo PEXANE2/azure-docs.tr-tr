@@ -3,15 +3,15 @@ title: Windows sanal masaüstü için Azure Multi-Factor Authentication ayarlama
 description: Windows sanal masaüstü 'nde daha yüksek güvenlik için Azure Multi-Factor Authentication ayarlama.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 09/14/2020
+ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e31693eafcf32de1460cfa5b74ae35ffd05b5a67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e67e3d391ba69bacb82a9154f577942a017e5795
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089930"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108992"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Windows Sanal Masaüstü için Multi-Factor Authentication'ı etkinleştirme
 
@@ -64,6 +64,8 @@ Windows sanal masaüstüne bağlanırken çok faktörlü kimlik doğrulaması ge
 
    >[!IMPORTANT]
    > Windows sanal masaüstü Azure Resource Manager sağlayıcısı (50e95039-B200-4007-bc97-8d5790743a63) adlı uygulamayı seçmeyin. Bu uygulama yalnızca kullanıcı akışını almak için kullanılır ve MFA 'ya sahip olmamalıdır.
+   > 
+   > Windows sanal masaüstü 'Nü (klasik) kullanıyorsanız, koşullu erişim ilkesi tüm erişimi engelliyorsa ve yalnızca Windows sanal masaüstü uygulama kimliklerini dışlayıp, bu hatayı, ilkeye 9cdead84-a844-4324-93f2-b2e6bb768d07 uygulama KIMLIĞINI ekleyerek çözebilirsiniz. Bu uygulama KIMLIĞI eklenmediğinden Windows sanal masaüstü (klasik) kaynaklarının akış keşfi engellenir.
 
 10. **Koşullar**  >  **istemci uygulamaları**' na gidin ve ilkeyi uygulamak istediğiniz yeri seçin:
     
